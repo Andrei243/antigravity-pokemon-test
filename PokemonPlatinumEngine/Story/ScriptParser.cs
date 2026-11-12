@@ -606,6 +606,9 @@ public static class ScriptParser
             case "rocksmash":
             case "smashencounter":
                 return new Instruction { Op = Op.SmashEncounter, Line = line };
+            case "headbutt":
+                // The tree in front shaken (plan 38 · EX4), and what falls out of it battled
+                return new Instruction { Op = Op.Headbutt, Line = line };
             case "poketch":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Poketch, Line = line };
@@ -1088,7 +1091,7 @@ public static class ScriptParser
             // the decoration PC filled
             case "openbase":
             {
-                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "give", "buy", "room") : "open";
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room") : "open";
                 if (what is not ("give" or "buy" or "room")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
                 string decoration = r.Text("a decoration's name");
                 if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
@@ -1198,6 +1201,13 @@ public static class ScriptParser
             // `heart count`, `heart missed`, `heart opened`
             case "heart":
                 return new Instruction { Op = Op.Heart, Line = line, Name = r.OneOf("has", "give", "spring", "open", "locked", "count", "missed", "opened", "courier") };
+
+            // The photo tour (plan 44 · SD5): `tour ride "<course>"`, `tour open "<course>"`, `tour points`
+            case "tour":
+            {
+                string tourWord = r.OneOf("ride", "open", "points");
+                return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord == "points" ? null : r.Text("a course's id") };
+            }
 
             // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,
             // and of the Pokémon the script belongs to `pasture mood`, `find`, `pet`, `feed` (the item last chosen), `care`, `take`
@@ -1498,6 +1508,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.EndScene, Line = line };
 
             // The charms of a Pokédex filled (plan 40 · GE5): "charm due" how many are earned and not in the bag, "charm give" the first
+            case "records":
+                return new Instruction { Op = Op.Records, Line = line, Name = r.OneOf("mix", "bases", "count") };
             case "charm":
                 return new Instruction { Op = Op.Charm, Line = line, Name = r.OneOf("due", "give") };
 

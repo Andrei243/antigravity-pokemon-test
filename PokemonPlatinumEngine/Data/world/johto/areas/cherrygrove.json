@@ -49,6 +49,47 @@
     { "species": "Krabby", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Exeggcute", "level": 2, "maxLevel": 3 },
+      { "species": "Exeggcute", "level": 2, "maxLevel": 3 },
+      { "species": "Exeggcute", "level": 2, "maxLevel": 3 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 4, "maxLevel": 5 },
+      { "species": "Spinarak", "level": 4, "maxLevel": 5 },
+      { "species": "Spinarak", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 }
+    ],
+    "secret": [
+      { "species": "Exeggcute", "level": 18, "maxLevel": 20 },
+      { "species": "Exeggcute", "level": 18, "maxLevel": 20 },
+      { "species": "Taillow", "level": 18, "maxLevel": 20 },
+      { "species": "Taillow", "level": 18, "maxLevel": 20 },
+      { "species": "Taillow", "level": 18, "maxLevel": 20 },
+      { "species": "Taillow", "level": 21, "maxLevel": 25 }
+    ],
+    "trees": [
+      "570,408 570,409",
+      "564,411 565,411",
+      "562,411 563,411",
+      "552,407 553,407",
+      "548,407 549,407",
+      "560,391 561,391",
+      "552,390 552,391 553,391"
+    ],
+    "secretTrees": [
+      "522,387 523,387",
+      "524,387 525,387",
+      "521,389 521,388",
+      "526,389 526,388"
+    ]
+  },
   "warps": [
     { "x": 564, "z": 391, "to": "cherrygrove_pokecenter_1f", "toWarp": 0 },
     { "x": 555, "z": 391, "to": "cherrygrove_pokemart", "toWarp": 0 },

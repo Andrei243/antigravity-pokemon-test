@@ -82,10 +82,12 @@ internal static class GrownAnimation
             var gait = Scratch(ref gaitScratch, pose.Count);
             gait.Reset();
             Standing(p.Time, legs, gait);
-            var stepping = Gait(sk, p, legs, gait);
+            var stepping = p.Skating ? Skate(sk, p, legs, gait) : Gait(sk, p, legs, gait);
             pose.BlendToward(gait, walk);
             feet = Feet.Lerp(rest, stepping, walk);
         }
+        // A glide (skates let go of, or ice) with no step under way: the skater's stance alone
+        if (p.Gliding && !(p.Skating && walk > 0f)) Glide(legs, pose, 1f - walk);
 
         // What moves the body over its feet before they are solved: a start, a stop, a lean, a step-turn's dip
         if (p.Start > 0f && p.Start < 1f)
@@ -264,6 +266,70 @@ internal static class GrownAnimation
         pose.Offset[HumanBones.Bag] += new Vector3(0, (0.003f + 0.006f * run) * legs.Size * bounce, 0);
 
         return new Feet { AnkleL = ankleL, AnkleR = ankleR, PitchL = pitchL, PitchR = pitchR };
+    }
+
+    // ------------------------------------------------------------------ skating
+
+    /// <summary>
+    /// The skater's stride (style guide, "Grown animation", "Skating"): one push for each two of the gait's cycles, each
+    /// foot in turn driven out to its side and a little back on its wheels for nearly half its cycle, lifted and brought
+    /// back under the body, then rolling under it while the other pushes; the body crouched and leaning into the way it
+    /// goes, the hips turned toward the pushing foot, the arms swinging across the body against it. Returns where the feet go.
+    /// </summary>
+    private static Feet Skate(Skeleton sk, CharacterPose p, Legs legs, SkeletonPose pose)
+    {
+        float L = legs.Length;
+        float cycle = p.Walk * 0.5f;
+        cycle -= MathF.Floor(cycle);
+        var rest = RestFeet(sk);
+        (Vector3 Ankle, float Out) Push(Vector3 ankle, float phase, float side)
+        {
+            // Out and back on the ground, then lifted home, then rolling under the body
+            float outward = phase < SkatePush ? Smooth(0f, SkatePush, phase) : phase < SkateReturn ? 1f - Smooth(SkatePush, SkateReturn, phase) : 0f;
+            float lift = phase >= SkatePush && phase < SkateReturn ? MathF.Sin((phase - SkatePush) / (SkateReturn - SkatePush) * MathF.PI) : 0f;
+            return (ankle + new Vector3(side * 0.26f * L * outward, 0.1f * L * lift, -0.16f * L * outward), outward);
+        }
+        var (ankleL, outL) = Push(rest.AnkleL, cycle, 1f);
+        float other = cycle + 0.5f;
+        var (ankleR, outR) = Push(rest.AnkleR, other - MathF.Floor(other), -1f);
+
+        // Crouched over the skates, leaning into the way, the head up to look ahead
+        float sway = outL - outR;
+        pose.Offset[HumanBones.Root] += new Vector3(-0.05f * L * sway, -SkateCrouch * L, 0.02f * L);
+        pose.Turn(HumanBones.Hips, 0.06f, 0.12f * sway);
+        pose.Turn(HumanBones.Spine, 0.24f);
+        pose.Turn(HumanBones.Chest, 0.06f, -0.1f * sway);
+        pose.Turn(HumanBones.Neck, -0.1f);
+        pose.Turn(HumanBones.Head, -0.2f);
+        // The arms swing across the body, against the pushing leg; the elbows a little bent
+        pose.Turn(HumanBones.UpperArmL, -0.45f * sway, 0f, -0.1f + 0.15f * MathF.Max(0f, sway));
+        pose.Turn(HumanBones.UpperArmR, 0.45f * sway, 0f, 0.1f - 0.15f * MathF.Max(0f, -sway));
+        pose.Turn(HumanBones.ForeArmL, -0.35f);
+        pose.Turn(HumanBones.ForeArmR, -0.35f);
+        // What follows through: the coat and the hair streaming back, the skirt and the bag with the sway
+        pose.Turn(HumanBones.CoatTail, 0.3f);
+        pose.Turn(HumanBones.Skirt, 0.05f, 0f, 0.05f * sway);
+        pose.Turn(HumanBones.Hair, 0.2f);
+        pose.Turn(HumanBones.Bag, 0.08f, 0f, 0.06f * sway);
+        return new Feet { AnkleL = ankleL, AnkleR = ankleR };
+    }
+
+    /// <summary>How much of a foot's skating cycle it pushes for on the ground, and by when it is home under the body.</summary>
+    public const float SkatePush = 0.42f, SkateReturn = 0.58f;
+
+    /// <summary>How far the skater's hips drop, as a share of the leg.</summary>
+    public const float SkateCrouch = 0.07f;
+
+    /// <summary>The glide (skates let go of, or ice): the knees a little bent, leaning forward, the arms out for balance, by <paramref name="share"/>.</summary>
+    private static void Glide(Legs legs, SkeletonPose pose, float share)
+    {
+        if (share <= 0f) return;
+        pose.Offset[HumanBones.Root] += new Vector3(0, -0.05f * legs.Length * share, 0);
+        pose.Turn(HumanBones.Spine, 0.14f * share);
+        pose.Turn(HumanBones.Head, -0.12f * share);
+        pose.Turn(HumanBones.UpperArmL, 0f, 0f, 0.35f * share);
+        pose.Turn(HumanBones.UpperArmR, 0f, 0f, -0.35f * share);
+        pose.Turn(HumanBones.Hair, 0.1f * share);
     }
 
     /// <summary>

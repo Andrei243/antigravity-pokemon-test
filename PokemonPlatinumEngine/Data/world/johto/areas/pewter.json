@@ -14,6 +14,59 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 3, "maxLevel": 5 },
+      { "species": "Pineco", "level": 3, "maxLevel": 5 },
+      { "species": "Pineco", "level": 3, "maxLevel": 5 },
+      { "species": "Wurmple", "level": 3, "maxLevel": 5 },
+      { "species": "Wurmple", "level": 3, "maxLevel": 5 },
+      { "species": "Wurmple", "level": 3, "maxLevel": 5 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 7, "maxLevel": 9 },
+      { "species": "Hoothoot", "level": 7, "maxLevel": 9 },
+      { "species": "Hoothoot", "level": 7, "maxLevel": 9 },
+      { "species": "Wurmple", "level": 7, "maxLevel": 9 },
+      { "species": "Wurmple", "level": 7, "maxLevel": 9 },
+      { "species": "Wurmple", "level": 7, "maxLevel": 9 }
+    ],
+    "secret": [
+      { "species": "Wurmple", "level": 5, "maxLevel": 9 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 9 },
+      { "species": "Starly", "level": 5, "maxLevel": 9 },
+      { "species": "Starly", "level": 5, "maxLevel": 9 },
+      { "species": "Starly", "level": 5, "maxLevel": 9 },
+      { "species": "Starly", "level": 8, "maxLevel": 12 }
+    ],
+    "trees": [
+      "1052,117 1053,117",
+      "1060,117 1061,117",
+      "1070,117 1071,117",
+      "1040,111 1041,111 1040,109 1041,109",
+      "1042,111 1043,111 1043,110 1043,109 1042,109",
+      "1042,99 1043,99 1043,101",
+      "1044,101 1045,101 1044,99 1045,99",
+      "1052,101 1053,101",
+      "1043,93",
+      "1051,93",
+      "1061,87 1062,87 1061,85 1062,85",
+      "1065,87 1066,87 1065,85 1066,85",
+      "1065,81 1065,80",
+      "1066,73 1067,73",
+      "1062,73 1063,73",
+      "1060,77 1061,77",
+      "1029,75 1030,75",
+      "1031,75 1032,75",
+      "1030,85 1030,84",
+      "1030,81 1030,80",
+      "1030,79 1030,78 1030,77 1031,77"
+    ],
+    "secretTrees": [
+      "1037,119",
+      "1037,120 1037,121"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1048, "z": 78, "to": "pewter_museum_of_science", "toWarp": 0 },

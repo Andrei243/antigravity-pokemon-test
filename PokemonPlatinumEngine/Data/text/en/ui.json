@@ -942,7 +942,13 @@
     "galarMineTwo": "Kabu's gym is back in Motostoke. Take Galar Mine No. 2 south from Hulbury.",
     "galarMarnie": "Out of the mine and into Motostoke. Someone is waiting by the east wall.",
     "galarKabu": "Win the Fire Badge at Motostoke Stadium, through Kabu's mission.",
-    "galarFree": "That is as far as the line runs for now. Galar's south is yours to explore."
+    "galarHammerlocke": "Three badges won. North out of Route 5 over Hammerlocke Hills to Hammerlocke.",
+    "galarVault": "Sonia is in the vault on the west side of Hammerlocke.",
+    "galarRoute6": "Out of Hammerlocke's west gate onto Route 6, towards Stow-on-Side.",
+    "galarStow": "Win the fourth badge at Stow-on-Side Stadium.",
+    "galarMural": "Something is happening at the mural on the hill above Stow-on-Side.",
+    "galarOpal": "Through Glimwood Tangle to Ballonlea, and win the Fairy Badge from Opal.",
+    "galarFree": "That is as far as the road runs for now. Galar from Postwick to Ballonlea is yours to explore."
   },
 
   "close": {
@@ -1425,7 +1431,8 @@
         "one": "{rods} Rod",
         "other": "{rods} Rods"
       },
-      "ours": "Rarely, after the Hall of Fame"
+      "ours": "Rarely, after the Hall of Fame",
+      "headbutt": "Headbutt trees"
     },
     "search": {
       "title": "Search the Pokédex",
@@ -1537,7 +1544,7 @@
     "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave",
     "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg",
     "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
-    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon"
+    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon", "Ghost": "Ghost", "Ice": "Ice"
   },
   "run": {
     "heading": "WAYS TO PLAY",
@@ -4939,6 +4946,11 @@
       "answer": "\"And {player} told us, in just two words: {phrase}!\"",
       "close": "\"Short and sweet! That's all from Jubilife Street Talk.\""
     },
+    "mixed": {
+      "open": "\"It's Jubilife Street Talk, Mixed Records edition! Trainers who mixed records with us had their say.\"",
+      "answer": "\"Asked about life with Pokémon, {name} told us: {phrase}!\"",
+      "close": "\"Records mixed, voices heard! That's all from Street Talk.\""
+    },
     "search": {
       "open": "\"Gabby here, with Ty behind the camera! This is our hunt for trainers worth a second look!\"",
       "met": "\"This week we tracked down a trainer called {player} {place}, and we got our battle!\"",
@@ -5158,7 +5170,7 @@
     "ready": "Congratulations, Champion of {from}! The {vessel} to {to} is ready.",
     "welcome": "Your Pokémon are welcome aboard, every one of them. All aboard!",
     "harbour": "Welcome, Champion of {from}! Our {vessel} sails on, and back to every region you've been to.",
-    "hubHarbour": "Welcome to the Hub! Our {vessel} sails to every region you've been to.",
+    "hubHarbour": "Welcome to Wayhaven! Our {vessel} sails to every region you've been to.",
     "whereTo": "Where would you like to go?",
     "otherRegions": "OTHER REGIONS",
     "stay": "STAY"
@@ -7041,6 +7053,19 @@
     "dyeQuestion": "Dye it {what}?",
     "answer": { "yes": "YES" }
   },
+  "photoTour": {
+    "heading": "PHOTO TOUR",
+    "film": "FILM {count}",
+    "fruit": "FRUIT {count}",
+    "zoom": "×{zoom}",
+    "points": "{points} pts",
+    "total": "This ride: {points} points",
+    "none": "Not one photograph counted this time.",
+    "hints": {
+      "keep": "Keep",
+      "leave": "Done"
+    }
+  },
   "photoStudio": {
     "heading": "PHOTO STUDIO",
     "row": {
@@ -7122,5 +7147,8 @@
       "Cheerful": "cheerful",
       "Elated": "overjoyed"
     }
+  },
+  "recordMix": {
+    "list": "{first} and {last}"
   }
 }

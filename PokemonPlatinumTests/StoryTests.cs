@@ -678,11 +678,11 @@ public class StoryTests
         // The gift box's gifts, which a Gift Runner's gift give calls by the gift's data (plan 40 · GE7)
         started.UnionWith(Scripts.All.Where(s => s.File == ScriptRunner.GiftScripts).Select(s => s.FullName));
         // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
-        started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace, FieldScripts.Whirlpool });
+        started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace, FieldScripts.Whirlpool, FieldScripts.HeadbuttTree });
         // Dive down from dark water and up from the sea floor, which A on the tile underfoot runs (plan 21 · H5)
         started.UnionWith(new[] { FieldScripts.Dive, FieldScripts.Surface });
         // A secret base's spot faced and its PC (plan 21 · H10)
-        started.UnionWith(new[] { FieldScripts.SecretBaseSpot, FieldScripts.SecretBasePc });
+        started.UnionWith(new[] { FieldScripts.SecretBaseSpot, FieldScripts.SecretBasePc, FieldScripts.FriendsBasePc });
         // An Escape Rope from the bag, and a gate onto the Cycling Road refusing someone on foot
         started.UnionWith(new[] { FieldScripts.EscapeRope, FieldScripts.CyclistsOnly });
         // Waking up after a lost battle, in a Pokémon Center or at home

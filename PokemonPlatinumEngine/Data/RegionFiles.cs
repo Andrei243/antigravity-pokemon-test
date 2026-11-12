@@ -4,6 +4,14 @@ using System.Collections.Generic;
 namespace PokemonPlatinumEngine.Data;
 
 /// <summary>The boy and the girl a region's game is played as, as <c>CharacterModels</c> knows them.</summary>
+/// <summary>A region's other version's badges (plan 33 · GL5): the variable and its value that choose it, and the names.</summary>
+public sealed class RegionVersionBadges
+{
+    public string Variable { get; set; } = "";
+    public int Value { get; set; }
+    public List<string> Badges { get; set; } = new();
+}
+
 public sealed class RegionHeroes
 {
     public string Boy { get; set; } = "PLAYER";
@@ -146,6 +154,13 @@ public sealed class RegionFile
 
     /// <summary>The names of the region's badges, in the order of its Trainer Card (none to eight; plan 18 · W2 reads them).</summary>
     public List<string> Badges { get; set; } = new();
+
+    /// <summary>
+    /// The badges of the region's other version (plan 33 · GL5: a Shield game's Galar), slot for slot beside
+    /// <see cref="Badges"/>: the story's <see cref="RegionVersionBadges.Variable"/> at its value names them on the Trainer
+    /// Card, and a script may give or ask either name of a slot. Null where the region has one version.
+    /// </summary>
+    public RegionVersionBadges? VersionBadges { get; set; }
 
     /// <summary>The badge each field move asks for here, by the move's name (plan 18 · W2 reads them).</summary>
     public Dictionary<string, string> Gates { get; set; } = new();

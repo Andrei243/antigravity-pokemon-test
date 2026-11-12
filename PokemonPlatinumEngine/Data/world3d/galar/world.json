@@ -8,7 +8,7 @@
   // reached by the train from Wedgehurst Station and smaller than the plan's scale (docs/mechanics/rulings.md, "The Wild
   // Area"): eight parts of one open stretch of downs and lakes, each with its weather of the day from calendar.json
   "region": "Galar",
-  "chunks": [-5, -33, 4, 1],
+  "chunks": [-5, -44, 4, 1],
   "baseHeight": 0.4,
   "cover": { "shore": 0.6 },
   "areas": [
@@ -36,12 +36,21 @@
     // along the downs, then east to Hulbury on its harbour; Galar Mine No. 2 runs south from Hulbury under the banks to
     // a door in Motostoke's east wall
     { "key": "galar_route_5", "name": "Route 5", "polygon": [[-40, -960], [60, -960], [60, -1056], [-40, -1056]], "music": "galar/route1" },
-    { "key": "hulbury", "name": "Hulbury", "polygon": [[60, -960], [160, -960], [160, -1056], [60, -1056]], "music": "galar/wedgehurst" }
+    { "key": "hulbury", "name": "Hulbury", "polygon": [[60, -960], [160, -960], [160, -1056], [60, -1056]], "music": "galar/wedgehurst" },
+    // North of Route 5 (plan 33 · GL5, its first session): out through the gap in Route 5's north bank onto Hammerlocke
+    // Hills, the Wild Area's northern half begun; Hammerlocke behind its walls; Route 6 west of the city and north to
+    // Stow-on-Side; Ballonlea north of the city's walls, come to through Glimwood Tangle (a grid map) from Stow-on-Side
+    { "key": "wild_area_hammerlocke_hills", "name": "Hammerlocke Hills", "polygon": [[-40, -1056], [60, -1056], [60, -1154], [-40, -1154]], "music": "galar/wild_area" },
+    { "key": "hammerlocke", "name": "Hammerlocke", "polygon": [[-40, -1154], [104, -1154], [104, -1282], [-40, -1282]], "music": "galar/wedgehurst" },
+    { "key": "galar_route_6", "name": "Route 6", "polygon": [[-160, -1154], [-40, -1154], [-40, -1300], [-160, -1300]], "music": "galar/route1" },
+    { "key": "stow_on_side", "name": "Stow-on-Side", "polygon": [[-160, -1300], [-40, -1300], [-40, -1408], [-160, -1408]], "music": "galar/wedgehurst" },
+    { "key": "ballonlea", "name": "Ballonlea", "polygon": [[-40, -1282], [160, -1282], [160, -1408], [-40, -1408]], "music": "galar/wedgehurst" }
   ],
   "maps": [
     { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
       "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins", "wild_area_lake_axewell",
       "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank",
-      "motostoke", "galar_route_3", "galar_route_4", "turffield", "galar_route_5", "hulbury"] }
+      "motostoke", "galar_route_3", "galar_route_4", "turffield", "galar_route_5", "hulbury",
+      "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea"] }
   ]
 }

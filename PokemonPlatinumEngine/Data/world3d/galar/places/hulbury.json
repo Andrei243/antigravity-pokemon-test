@@ -1,14 +1,17 @@
 {
   // Hulbury (plan 33 · GL4, its second session): a harbour town on a level of its own above the sea, the home of Nessa,
   // the gym challenge's second Leader. The high street runs east from Route 5 past the Pokémon Center to the stadium,
-  // a way leads down to the quay and its lighthouse, the seafood restaurant faces the harbour (its door owed), and
+  // a way leads down to the quay and its lighthouse, the seafood restaurant faces the harbour, and
   // Galar Mine No. 2 opens in the bank on the town's south side. Our own town. Scripts: Data/scripts/hulbury.txt
   "markers": [
     { "name": "hulbury_west", "at": [66, 26.3, -1004], "yaw": 90 },
     { "name": "hulbury_center_door", "at": [79, 26.3, -994], "yaw": 180 },
     { "name": "hulbury_stadium_door", "at": [128, 26.3, -994], "yaw": 180 },
     { "name": "galar_mine_2_north", "at": [96, 26.3, -967], "yaw": 180 },
-    { "name": "galar_mine_2_back", "at": [96, 26.3, -980], "yaw": 180 }
+    { "name": "galar_mine_2_back", "at": [96, 26.3, -980], "yaw": 180 },
+    // Plan 33 · GL5: the doors GL4 owed, the seafood restaurant's and the lighthouse's
+    { "name": "hulbury_restaurant_door", "at": [84, 26.3, -1008], "yaw": 0 },
+    { "name": "hulbury_lighthouse_door", "at": [142, 26.3, -1016], "yaw": 0 }
   ],
   "doors": [
     {
@@ -28,6 +31,18 @@
       "box": { "min": [94, 25.4, -964], "max": [98, 29, -962.2] },
       "room": "GalarMine2", "at": [4, 1], "facing": "down",
       "out": "galar_mine_2_north"
+    },
+    {
+      "name": "hulbury_restaurant_door",
+      "box": { "min": [83, 25.4, -1012], "max": [85, 30, -1011] },
+      "room": "Hulbury_Restaurant", "at": [4, 8], "facing": "up",
+      "out": "hulbury_restaurant_door"
+    },
+    {
+      "name": "hulbury_lighthouse_door",
+      "box": { "min": [141, 25.4, -1020], "max": [143, 30, -1019] },
+      "room": "Hulbury_Lighthouse", "at": [4, 8], "facing": "up",
+      "out": "hulbury_lighthouse_door"
     }
   ],
   "triggers": [

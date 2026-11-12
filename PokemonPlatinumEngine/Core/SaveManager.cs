@@ -253,6 +253,14 @@ public class SaveData
     public Models.GiftsSave? Gifts { get; set; }
 
     /// <summary>
+    /// Records mixed with the player's other saves (plan 40 · GE10, <see cref="Models.RecordMix"/>): each other game's
+    /// trainer, secret base and interview, and the friend's base being visited. Null while none are, and in every save from
+    /// before it, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.RecordMixSave? MixedRecords { get; set; }
+
+    /// <summary>
     /// The stage show (plan 42 · PS1, PS2, <see cref="Models.StageShow.ShowRecords"/>): the trunk of props, each Pokémon's
     /// last dressing, the shows played and won and the fans' gifts owed. Null while nothing is, and in every save from
     /// before it, so no save version was raised.
@@ -405,6 +413,10 @@ public class SaveData
 
     /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
     public List<Models.PhotoPrint>? PhotoBook { get; set; }
+
+    /// <summary>The photo tour's report (plan 44 · SD5): each species' best photograph by stars and course, each course's best ride; null while empty.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.TourReportSave? PhotoTour { get; set; }
     /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD1); null while empty, so an older save needs nothing.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.HeartsRecord? Hearts { get; set; }

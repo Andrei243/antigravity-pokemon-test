@@ -112,5 +112,79 @@
         "Nu sunt destui bani pentru asta..."
       ]
     }
+  ],
+  "TourGuide": [
+    {
+      "en": [
+        "I take trainers out along a river in a little cart, camera in hand, to photograph Pokémon going about their day."
+      ],
+      "text": [
+        "Plimb antrenorii de-a lungul unui râu într-un căruț, cu aparatul în mână, ca să fotografieze Pokémoni la treburile lor."
+      ]
+    },
+    {
+      "en": [
+        "The tour is only for those with a National Pokédex, though. Come back once yours has grown."
+      ],
+      "text": [
+        "Doar că turul e numai pentru cei cu Pokédexul Național. Revino când al tău s-a mărit."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the photo tour! I'm Maribel Orr, and I judge every photograph that comes back from the rail."
+      ],
+      "text": [
+        "Bun venit la turul foto! Sunt Maribel Orr și jurizez fiecare fotografie adusă de pe șină."
+      ]
+    },
+    {
+      "en": [
+        "Aim as the cart rolls along, toss fruit to draw them close, and blow the whistle to turn their heads."
+      ],
+      "text": [
+        "Ochește cât merge căruțul, aruncă fructe ca să-i aduci aproape și fluieră ca să întoarcă privirea."
+      ]
+    },
+    {
+      "en": [
+        "Shall we ride the Reed River?"
+      ],
+      "text": [
+        "Mergem pe Râul cu Trestii?"
+      ]
+    },
+    {
+      "en": [
+        "Back already! I've judged your film: {result} points all told."
+      ],
+      "text": [
+        "Te-ai și întors! Ți-am jurizat filmul: {result} puncte în total."
+      ]
+    },
+    {
+      "en": [
+        "Every best photograph goes into my report. Rain and the hour change what the river's residents get up to, so ride again!"
+      ],
+      "text": [
+        "Fiecare fotografie cea mai bună intră în raportul meu. Ploaia și ora schimbă ce fac locuitorii râului, așa că mai vino!"
+      ]
+    },
+    {
+      "en": [
+        "Not a single photograph I could score... Never mind. Get them big, in the middle and facing you next time."
+      ],
+      "text": [
+        "Nicio fotografie pe care s-o pot puncta... Nu-i nimic. Data viitoare prinde-i mari, în mijloc și cu fața spre tine."
+      ]
+    },
+    {
+      "en": [
+        "The cart waits whenever you do."
+      ],
+      "text": [
+        "Căruțul te așteaptă oricând."
+      ]
+    }
   ]
 }

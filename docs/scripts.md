@@ -383,6 +383,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `escape` | Through a fade out of the caves, to where the player went into them (Dig, an Escape Rope). |
 | `sweetscent` | Draws out a wild Pokémon of the place where the player stands, on land or water, and battles it. `RESULT` is 0 when nothing lives there. |
 | `smashencounter` | After a rock is smashed: where the place keeps Pokémon under its rocks (Hoenn's areas, Emerald's `rock_smash_mons` and rate; plan 21 · H4), one may come out, and it is battled. `RESULT` is 1 when one did, 0 when the rock hid nothing (always, in Platinum's places). | The older name `rocksmash` is the same command; HeartGold's table (plan 20 · J9) counts its rate in a hundred and its rock is the tile ahead, 90 and 10 for its two slots.
+| `headbutt` | After Headbutt is used on the tree in front (plan 38 · EX4): the tree shakes, and where an area of Johto lists the tree (HeartGold's trees, `WorldAreaFile.Headbutt`) a Pokémon of its table may fall out and is battled (`Overworld/HeadbuttTrees.cs`). `RESULT` is 1 when one did, 0 when nothing fell (always, outside Johto and for a tree no area lists). | Which table a tree gives follows from the trainer number and the tree's number with no draw; only the shake draws (rulings, "Headbutt trees"). `common.HeadbuttTree` and `common.UseHeadbutt` use it.
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
 | `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. `safari start 600` is a game of another number of steps (plan 19 · K6: FireRed's Safari Zone in Fuchsia City), and the two common scripts send a player of Kanto back to its entrance. `safari start endless` is HeartGold's game (plan 20 · J8, part b): thirty balls and no steps, over when the last ball is thrown or the player walks out; the panel over the field shows the balls alone, and the common scripts send a player of Johto back inside the Safari Zone's gate. Emerald's is `safari start 500` at Route 121's gate (plan 21 · H6, part b), and the common scripts send a player of Hoenn back to that gate's door with `VAR_SAFARI_ZONE_STATE` 1, which its arrival walks out past the counter. |
@@ -561,9 +562,10 @@ and a decoration PC (`StoredDecoration`s, saved). The game starts `common.Secret
 | Command | What it does |
 |---|---|
 | `openbase` | The spot in front becomes the player's base (the one before emptied, everything in it back in the PC) and the player goes in, to stand before its PC: `RESULT` 0 with no spot in front. A warp: the script goes on in the room. |
-| `openbase check` | `RESULT` 0 with no spot in front, 1 at a spot while the player has no base, 2 at the player's own base, 3 at another spot while the player has a base elsewhere. Nothing to see: a hurry passes it. |
+| `openbase check` | `RESULT` 0 with no spot in front, 1 at a spot while the player has no base, 2 at the player's own base, 3 at another spot while the player has a base elsewhere, 4 at a friend's base mixed in at the record desk (plan 40 · GE10), where the player's own is not. Nothing to see: a hurry passes it. |
 | `openbase kind` | `RESULT` is the kind of the spot in front, in Emerald's order: 1 a red cave's indent, 2 a brown, 3 a blue, 4 a yellow, 5 a tree, 6 a shrub; 0 for none. |
 | `openbase enter` | Into the player's base, inside its door. |
+| `openbase visit` | Into the friend's base at the spot in front (plan 40 · GE10), inside its door: laid out with what stood in it and its owner standing by the PC, a friend's trainer battled as the friends' hall's are, the door leading back to the spot. `RESULT` 0 with none there. |
 | `openbase pc` | Opens the decorating over the base's floor (the shared `DecorationScreen`), and the script waits: `RESULT` 0 outside the player's own base. |
 | `openbase packup` | Everything in the base back into the PC, the base given up, and the player out to where its spot is faced from. |
 | `openbase give "Red Brick"` | A decoration into the PC, without a word: `RESULT` 1, or 0 with no room for its kind (ten desks, chairs, plants, posters and cushions, thirty ornaments and mats, forty dolls). `{thing}` names it. |
@@ -923,6 +925,17 @@ Plan 44 · SD2; `docs/mechanics/rulings.md`, "Locked hearts". Lockwork's locked 
 | `heart locked` | `RESULT` how many of the team are locked. |
 | `heart count`, `heart missed`, `heart opened` | `RESULT` how many locks have been reclaimed, missed (knocked out, so the courier carries them) and opened since the game began. |
 | `heart courier` | Plan 44 · SD4, the courier in Lockwork's tower: builds the team of the person spoken to from the first six locks missed (each as the trainer of ours whose team it was in has it), for the script's `battle self` after it. `RESULT` how many he carries, 0 with none missed. |
+
+### The photo tour
+
+Plan 44 · SD5; style guide, "The photo tour". The tour's one command, `tour`; a course is an id of `Data/photo-tour.json`
+(`reed_river`), and an id no course has is a finding of `ScriptLibrary.Problems`.
+
+| Command | What it does |
+|---|---|
+| `tour ride "<course>"` | A ride on the course (`GameState.PhotoTour`, `PhotoTourScreen`): the script waits until the judged panel is left and hears the ride's total in `RESULT` (`{result}`), its photographs judged into the report; 0 with no ride (the course not open yet). A game with no window plays the ride at once by the autopilot. It stops a scene's hurry. |
+| `tour open "<course>"` | `RESULT` 1 when the report's total has opened the course, else 0. |
+| `tour points` | `RESULT` the report's total: each species' best photograph on each course, summed. |
 
 ### Treats
 
@@ -1335,7 +1348,7 @@ that waits for the player. In a hurry:
 - **every flag, variable, item, Pokémon, `hide`, `show` and `place` happens exactly as when the scene is played.**
 
 The hurry **stops** before anything that waits for the player or that can't be ended at once, which is then carried out
-at the scene's own pace: `ask` and `choose`; a battle (`battle`, `wildbattle`, `catchinglesson`, `sweetscent`, `smashencounter`,
+at the scene's own pace: `ask` and `choose`; a battle (`battle`, `wildbattle`, `catchinglesson`, `sweetscent`, `smashencounter`, `headbutt`,
 `honeytree battle`, `master`); a screen (`starter`, `shop`, `pc`, `wardrobe`, `travel`, `namerival`, `choosepokemon`, `chooseitem`, `halloffame
 show`, `credits`, `hatch`, `poffin cook`, `supercontest enter` and `photo`, `seal capsules` and `shop`, and everything of
 `fossil`, `gamecorner`, `villa`, `palpark`, `frontier`, `tower`, `factory`, `hall`, `castle`, `arcade`, `tutor`, `amity`
@@ -1383,6 +1396,19 @@ label Give
   if var RESULT > 0 goto Give
   end
 ```
+
+### Records mixed between one's own saves
+
+Plan 40 · GE10 (`Models/RecordMix.cs`): the record desk upstairs in every Pokémon Center (`common.RecordDesk`) mixes the
+game's records with the player's other save slots, which are read and never written; a damaged slot and the game in play
+give nothing. Each other game gives its trainer (stood in the friends' hall after the folder's files), its Hoenn secret
+base (visited at its spot with `openbase visit`, listed by the base PC's REGISTRY) and its interview (on television).
+
+| Command | What it does |
+|---|---|
+| `records mix` | Mixes with the other saves: `RESULT` is how many were mixed (0 with none), and `{thing}` names their players ("Ann and Bo"). |
+| `records count` | `RESULT` is how many records the game keeps (at most eight, one to a game), and `{thing}` names whose. |
+| `records bases` | `RESULT` is how many friends' secret bases are registered (one to a spot), and `{thing}` names whose. |
 
 ### The gift box and the trade board
 
@@ -1463,7 +1489,7 @@ the hub's plaza (`Models/Plaza.cs`, the host's `Plaza`), `missions` its board (`
 | `plaza rank`, `plaza next`, `plaza pitches` | `RESULT` and `{number}`: the rank, the pennants still to earn for the next (0 at the top), the pitches at the rank. |
 | `plaza coins` | `RESULT` the pennants held; they stand over the field until the script ends. |
 | `plaza pitch N` | Asks which stall stands at pitch N: the stalls offered, LEAVE IT EMPTY, AS IT IS. `RESULT` 1 changed (the hall furnished afresh), 0 left as it was, 2 for a pitch the rank hasn't; `{thing}` the stall. |
-| `plaza give N`, `plaza spend N` | Pennants paid in or spent; `RESULT` 1, or 0 when there aren't N to spend (nothing is spent). |
+| `plaza give N`, `plaza spend N` | Pennants paid in or spent; `give`'s `RESULT` is 1 when the hall had been opened (by its manager or by pennants paid before) and 0 the first time (the pennants are paid all the same, and keep the hall from then on), `spend`'s 1, or 0 when there aren't N to spend (nothing is spent). |
 | `plaza guests` | The day's guests drawn on the first coming of a day; `RESULT` and `{number}` how many stand today. |
 | `plaza stall` | Said of a keeper (`keeper_N`): `RESULT` the place in `plaza.json`'s list of the stall at their pitch, 0 for none; `{thing}` its name. |
 | `plaza shop` | Said of a keeper: their stall's goods on the shop's screen at the hall's rank, paid in pennants; waits. |

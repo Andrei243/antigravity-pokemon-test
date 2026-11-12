@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Raylib_cs;
@@ -33,6 +34,52 @@ public sealed partial class WorldRenderer
     /// </summary>
     internal bool GrownField { get; set; }
 
+    /// <summary>
+    /// Whether a talk is under way (a box of text or a script has the field): the engine sets it every frame. In a grown
+    /// region the player who faces north into someone on the next tile stands back (<see cref="TalkStepBack"/>).
+    /// </summary>
+    internal bool InTalk { get; set; }
+
+    /// <summary>
+    /// How far a grown player is drawn south of their tile while they talk to someone on the tile north of them, in tiles
+    /// (plan 30, the gate's owed; style guide, "Scale in a grown region", "Talking"): a grown body 1.5 tiles tall a tile
+    /// south of a person covered them to the chest from any of the field's cameras, since a tile of ground shows only
+    /// sin(pitch) of a tile on the picture. Half a tile more keeps the face and shoulders of whoever speaks clear. Only the
+    /// picture moves: the player's tile, and who they speak to, never do.
+    /// </summary>
+    public const float TalkStepBack = 0.5f;
+
+    /// <summary>How long the step back takes, and the step forward again, in seconds.</summary>
+    public const float TalkStepSeconds = 0.25f;
+
+    // How far through the step back the player is (0 standing on their tile, 1 stood back) and when it was last moved on
+    private float talkBack;
+
+    /// <summary>How far through the step back the player is this frame (0 to 1), for a tool to print.</summary>
+    internal float TalkBackShare => talkBack;
+    private double talkBackAt = double.NaN;
+
+    /// <summary>
+    /// The player's step back this frame, in tiles south (nought in a chibi region, out of a talk, or with nobody on the
+    /// tile they face north into): eased in and out on the camera's clock.
+    /// </summary>
+    private float TalkBackOf(Overworld.Map map, Overworld.Player player)
+    {
+        if (!GrownField) { talkBack = 0f; talkBackAt = double.NaN; return 0f; }
+        bool wanted = InTalk && player.Facing == Data.Direction.Up && player.Mount == null
+            && map.NPCs.At(player.GridX, player.GridY - 1) is { } ahead && !ahead.IsThing;
+        // (on the camera's clock, which runs while a box of text is up: the field's own stands still in a talk)
+        double now = cameraClock;
+        // A clock gone back (a new place) or never read: whatever is wanted holds at once
+        bool fresh = double.IsNaN(talkBackAt) || now < talkBackAt;
+        float dt = fresh ? 0f : (float)Math.Min(now - talkBackAt, 0.25);
+        talkBackAt = now;
+        float step = dt / TalkStepSeconds;
+        talkBack = fresh ? (wanted ? 1f : 0f) : wanted ? Math.Min(1f, talkBack + step) : Math.Max(0f, talkBack - step);
+        float t = talkBack * talkBack * (3f - 2f * talkBack);
+        return TalkStepBack * t;
+    }
+
     /// <summary>A grown region's people drawn as live rigs and impostors (plan 30 · FM3): the harness reads its counts.</summary>
     internal FieldRigs LiveRigs => liveRigs;
 
@@ -55,7 +102,7 @@ public sealed partial class WorldRenderer
         }
         if (!GrownField) return;
         figuresShown.Clear();
-        foreach (var actor in actors) figuresShown.Add(new FieldFigure(actor.Rig, actor.Feet, actor.Yaw, actor.Pose, actor.Over, actor.Who, actor.Sprite, actor.Seating));
+        foreach (var actor in actors) figuresShown.Add(new FieldFigure(actor.Rig, actor.Feet, actor.Yaw, actor.Pose, actor.Over, actor.Who, actor.Sprite, actor.Seating, actor.Drawn));
         liveRigs.Prepare(context, figuresShown, camera.Target, VerticalScale, pitchDeg, Life.Now);
     }
 

@@ -49,6 +49,44 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 12, "maxLevel": 14 },
+      { "species": "Pineco", "level": 12, "maxLevel": 14 },
+      { "species": "Pineco", "level": 12, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 12, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 12, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 12, "maxLevel": 14 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 15, "maxLevel": 17 },
+      { "species": "Spinarak", "level": 15, "maxLevel": 17 },
+      { "species": "Spinarak", "level": 15, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 17 }
+    ],
+    "trees": [
+      "414,166 414,167",
+      "414,182 414,183",
+      "414,184 414,185",
+      "410,189 411,189",
+      "404,182 404,183 405,183",
+      "400,189 401,189",
+      "388,164 389,164 389,163",
+      "380,189 381,189",
+      "374,189 375,189",
+      "369,186 369,187",
+      "369,182 369,183",
+      "369,176 369,177",
+      "369,174 369,175",
+      "364,169 365,169",
+      "360,163 361,163",
+      "362,163 363,163",
+      "369,158 369,159",
+      "378,173 379,173 379,172"
+    ]
+  },
   "warps": [
     { "x": 376, "z": 149, "to": "burned_tower_1f", "toWarp": 0 },
     { "x": 375, "z": 173, "to": "ecruteak_southwest_house", "toWarp": 0 },

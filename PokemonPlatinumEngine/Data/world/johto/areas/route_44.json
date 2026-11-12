@@ -68,6 +68,40 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 21, "maxLevel": 22 },
+      { "species": "Heracross", "level": 21, "maxLevel": 22 },
+      { "species": "Heracross", "level": 21, "maxLevel": 22 },
+      { "species": "Aipom", "level": 21, "maxLevel": 22 },
+      { "species": "Aipom", "level": 21, "maxLevel": 22 },
+      { "species": "Aipom", "level": 21, "maxLevel": 22 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 23, "maxLevel": 24 },
+      { "species": "Spearow", "level": 23, "maxLevel": 24 },
+      { "species": "Spearow", "level": 23, "maxLevel": 24 },
+      { "species": "Aipom", "level": 23, "maxLevel": 24 },
+      { "species": "Aipom", "level": 23, "maxLevel": 24 },
+      { "species": "Aipom", "level": 23, "maxLevel": 24 }
+    ],
+    "trees": [
+      "623,171 624,171 624,172 624,173 623,173",
+      "614,178 615,178",
+      "606,172 607,172 607,171 606,171",
+      "608,164 608,163 608,162",
+      "604,184 604,183 603,184",
+      "591,184 592,184",
+      "585,176 586,176",
+      "589,172 590,172 589,170 590,170",
+      "586,166 586,164 585,164 586,165",
+      "565,170 566,170 565,171",
+      "550,174 551,174",
+      "557,168 558,168",
+      "597,176 598,176",
+      "567,164 568,164 568,163 568,162"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

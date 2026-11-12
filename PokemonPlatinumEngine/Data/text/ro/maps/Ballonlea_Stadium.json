@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Ballonlea Stadium"
+    ],
+    "text": [
+      "Stadionul Ballonlea"
+    ]
+  },
+  "people": {
+    "ballonlea_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "ballonlea_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul arenei"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

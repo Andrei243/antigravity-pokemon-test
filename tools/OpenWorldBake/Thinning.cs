@@ -83,6 +83,9 @@ public static class Thinning
                 if (faces != 2) { locked[(int)(key >> 32)] = true; locked[(int)(key & 0xFFFFFFFF)] = true; }
 
             // Each face's plane, to each of its vertices
+            // (one span for every face: a stackalloc in the loop is never given back until the constructor ends, and a
+            // chunk of many faces ran the stack out)
+            Span<double> plane = stackalloc double[10];
             for (int t = 0; t < count; t++)
             {
                 var a = pos[tri[t * 3]]; var b = pos[tri[t * 3 + 1]]; var c = pos[tri[t * 3 + 2]];
@@ -91,12 +94,9 @@ public static class Thinning
                 if (length < 1e-12) continue;
                 normal = normal * (1 / length);
                 double d = -D3.Dot(normal, a);
-                Span<double> plane = stackalloc double[10]
-                {
-                    normal.X * normal.X, normal.X * normal.Y, normal.X * normal.Z, normal.X * d,
-                    normal.Y * normal.Y, normal.Y * normal.Z, normal.Y * d,
-                    normal.Z * normal.Z, normal.Z * d, d * d
-                };
+                plane[0] = normal.X * normal.X; plane[1] = normal.X * normal.Y; plane[2] = normal.X * normal.Z; plane[3] = normal.X * d;
+                plane[4] = normal.Y * normal.Y; plane[5] = normal.Y * normal.Z; plane[6] = normal.Y * d;
+                plane[7] = normal.Z * normal.Z; plane[8] = normal.Z * d; plane[9] = d * d;
                 for (int e = 0; e < 3; e++)
                 {
                     int v = tri[t * 3 + e];

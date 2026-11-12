@@ -68,6 +68,43 @@
     { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 28, "maxLevel": 29 },
+      { "species": "Pineco", "level": 28, "maxLevel": 29 },
+      { "species": "Pineco", "level": 28, "maxLevel": 29 },
+      { "species": "Exeggcute", "level": 28, "maxLevel": 29 },
+      { "species": "Exeggcute", "level": 28, "maxLevel": 29 },
+      { "species": "Exeggcute", "level": 28, "maxLevel": 29 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 31, "maxLevel": 32 },
+      { "species": "Spinarak", "level": 31, "maxLevel": 32 },
+      { "species": "Spinarak", "level": 31, "maxLevel": 32 },
+      { "species": "Exeggcute", "level": 31, "maxLevel": 32 },
+      { "species": "Exeggcute", "level": 31, "maxLevel": 32 },
+      { "species": "Exeggcute", "level": 31, "maxLevel": 32 }
+    ],
+    "trees": [
+      "788,394 789,394",
+      "782,392 782,391",
+      "782,398 783,398",
+      "765,402 765,401",
+      "756,402 756,401",
+      "748,406 749,406 748,408 749,408",
+      "744,400 745,400 744,399",
+      "736,407 737,407",
+      "708,403 709,403 709,404 709,405",
+      "775,397 775,396 774,397 774,396",
+      "790,404 791,404 790,406 791,406",
+      "784,410 784,409",
+      "760,408 761,408",
+      "720,391 721,391",
+      "720,409 720,408",
+      "729,404 729,403 728,403",
+      "754,408 755,408 754,406 755,406"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

@@ -370,6 +370,13 @@ public static class Objectives
         (719, "galarMineTwo", AtLeast("VAR_GALAR_STORY", 22), true),
         (720, "galarMarnie", AtLeast("VAR_GALAR_STORY", 23), true),
         (721, "galarKabu", AtLeast("VAR_GALAR_STORY", 24), true),
+        // Plan 33 · GL5, its first session: Hammerlocke, the vault, Hop on Route 6, Stow-on-Side's badge, the mural, Opal
+        (722, "galarHammerlocke", AtLeast("VAR_GALAR_STORY", 25), true),
+        (723, "galarVault", AtLeast("VAR_GALAR_STORY", 26), true),
+        (724, "galarRoute6", AtLeast("VAR_GALAR_STORY", 27), true),
+        (725, "galarStow", AtLeast("VAR_GALAR_STORY", 28), true),
+        (726, "galarMural", AtLeast("VAR_GALAR_STORY", 29), true),
+        (727, "galarOpal", AtLeast("VAR_GALAR_STORY", 30), true),
         (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

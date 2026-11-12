@@ -46,12 +46,17 @@ public static class FieldScripts
     public const string RockFace = "common.RockFace";
     /// <summary>A whirlpool faced from the water (HeartGold's, plan 20 · J8).</summary>
     public const string Whirlpool = "common.Whirlpool";
+    /// <summary>A Headbutt tree faced on foot in Johto by a team that knows the move (HeartGold's, plan 38 · EX4).</summary>
+    public const string HeadbuttTree = "common.HeadbuttTree";
     /// <summary>Dark water under a surfer where the sea floor lies below, and the sea floor under a diver (Emerald's, plan 21 · H5).</summary>
     public const string Dive = "common.Dive";
     public const string Surface = "common.Surface";
     // A secret base's spot faced, and its PC (Emerald's SecretBase_EventScript_CheckEntrance and the base's PC; plan 21 · H10)
     public const string SecretBaseSpot = "common.SecretBaseSpot";
     public const string SecretBasePc = "common.SecretBasePC";
+
+    /// <summary>The PC of a friend's secret base, mixed in at the record desk (plan 40 · GE10): it only tells whose it is.</summary>
+    public const string FriendsBasePc = "common.FriendsBasePC";
 
     /// <summary>An Escape Rope used from the bag, and the Cycling Road's gate keepers turning back anyone not riding.</summary>
     public const string EscapeRope = "common.EscapeRope";

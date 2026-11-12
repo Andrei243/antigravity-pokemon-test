@@ -215,6 +215,8 @@ public partial class GameEngine
         if (flow.Map.Name == MuseumGallery) HangThePaintings(flow.Map);
         // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
+        // and out of one, no friend's base is being visited any more (plan 40 · GE10)
+        else flow.Records.Visiting = null;
         // The pasture's herd is the box shown, laid as the meadow is come to and taken off as it is left (plan 35 · BN5)
         KeepThePasture();
         // The friends' trainers stand in the friends' hall as it is come to (plan 13 · V23)
@@ -1340,6 +1342,10 @@ public partial class GameEngine
                 case ScriptScreen.PhotoStudio:
                     game.OpenStudio();
                     break;
+                case ScriptScreen.PhotoTour:
+                    // A ride on a course (plan 44 · SD5): the script hears its total as it is left
+                    game.OpenPhotoTour(counter ?? "");
+                    break;
                 case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
                     // The salon's chair and a boutique's dye house (plan 43 · LF3)
                     game.OpenSalon(dye: counter != Instruction.SalonCounter);
@@ -1719,6 +1725,26 @@ public partial class GameEngine
             return true;
         }
 
+        public bool Headbutt()
+        {
+            var map = game.flow.Map;
+            var player = game.flow.Player;
+            var (dx, dy) = FieldMovement.Delta(player.Facing);
+            int x = player.GridX + dx, y = player.GridY + dy;
+            // The tree shakes whatever it holds (leaves shaken loose from its crown, as a honey tree's)
+            if (!Skipping)
+            {
+                game.world.Life.ShakeTree(map, x, y, 56f / 32f * Graphics.MapScene.VerticalScaleOf(map), 2);
+                AudioManager.PlaySound("use_headbutt");
+            }
+            if (map.ShakeHeadbuttTree(x, y, PlayerIdentity.Number, player.Lead) is not { } wild) return false;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
+            game.flow.Player.Encounters.Reset();
+            game.StartWildBattle(wild);
+            return true;
+        }
+
         // ---- sound
 
         public void Music(string? song)
@@ -1782,6 +1808,7 @@ public partial class GameEngine
 
         // The photo book and its spots (plan 43 · LF4)
         public PhotoBook? PhotoBook => game.flow.PhotoBook;
+        public TourReport? PhotoTour => game.flow.PhotoTour;
         public bool PhotoAtSpot(string spot) => game.OpenPhotoAtSpot(spot);
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;

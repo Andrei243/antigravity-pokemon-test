@@ -55,7 +55,11 @@ script Kabu
   defeat "galar_gym_trainer_ash"
   defeat "galar_gym_trainer_ember"
   setvar VAR_GALAR_STORY 24
-  say "Three badges. Keep that fire burning on the road ahead, and train every single day."
+  # Leon and Hop wait at Hammerlocke's gate (plan 33 · GL5)
+  setflag FLAG_GALAR_LEON_HAMMERLOCKE
+  setflag FLAG_GALAR_HOP_HAMMERLOCKE
+  objective galarHammerlocke
+  say "Three badges. Keep that fire burning on the road ahead, and train every single day. Hammerlocke is north, past Route 5."
   endscene
   end
 label Won

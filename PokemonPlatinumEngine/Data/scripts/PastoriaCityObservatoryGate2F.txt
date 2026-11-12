@@ -48,3 +48,29 @@ label Area6
 label Short
   text "There isn't enough money for that..."
   end
+
+# The photo tour (plan 44 · SD5; the user's answers 47a and 64a): its guide, Maribel Orr, stands by the binoculars once
+# the National Pokédex is had (decision 7), and takes the player out along the Reed River's rail. A ride's photographs
+# are judged into the report as it ends, the script hearing the ride's total.
+
+script TourGuide
+  if nationaldex goto Open
+  say "I take trainers out along a river in a little cart, camera in hand, to photograph Pokémon going about their day."
+  say "The tour is only for those with a National Pokédex, though. Come back once yours has grown."
+  end
+label Open
+  say "Welcome to the photo tour! I'm Maribel Orr, and I judge every photograph that comes back from the rail."
+  say "Aim as the cart rolls along, toss fruit to draw them close, and blow the whistle to turn their heads."
+  ask "Shall we ride the Reed River?"
+  if no goto Later
+  tour ride "reed_river"
+  if result == 0 goto Nothing
+  say "Back already! I've judged your film: {result} points all told."
+  say "Every best photograph goes into my report. Rain and the hour change what the river's residents get up to, so ride again!"
+  end
+label Nothing
+  say "Not a single photograph I could score... Never mind. Get them big, in the middle and facing you next time."
+  end
+label Later
+  say "The cart waits whenever you do."
+  end

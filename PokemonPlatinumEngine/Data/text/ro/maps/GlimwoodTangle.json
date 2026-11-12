@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "Glimwood Tangle"
+    ],
+    "text": [
+      "Glimwood Tangle"
+    ]
+  },
+  "people": {
+    "galar_beauty_rhian": {
+      "name": {
+        "en": [
+          "Rhian"
+        ],
+        "text": [
+          "Rhian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Rhian: Isn't the glow lovely? It's even lovelier with a battle in it!"
+        ],
+        "text": [
+          "Frumusețea Rhian: Nu-i așa că strălucirea e minunată? E și mai minunată cu o luptă în ea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Rhian: Lovely. Even losing looks lovely in here."
+        ],
+        "text": [
+          "Frumusețea Rhian: Minunat. Aici până și pierderea arată minunat."
+        ]
+      }
+    },
+    "galar_hiker_dewi": {
+      "name": {
+        "en": [
+          "Dewi"
+        ],
+        "text": [
+          "Dewi"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Dewi: I came in for mushrooms and got lost. A battle will cheer me up!"
+        ],
+        "text": [
+          "Drumețul Dewi: Am venit după ciuperci și m-am rătăcit. O luptă o să mă înveselească!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Dewi: Ballonlea is east, you say? Thank you kindly."
+        ],
+        "text": [
+          "Drumețul Dewi: Ballonlea e la est, zici? Mulțumesc frumos."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

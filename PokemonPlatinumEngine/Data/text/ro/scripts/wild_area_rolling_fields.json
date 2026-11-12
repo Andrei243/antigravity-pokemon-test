@@ -5,7 +5,7 @@
         "Digging Brother"
       ],
       "text": [
-        ""
+        "Fratele săpător"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Dig, dig, dig! For 500 Watts I'll dig you up whatever's down there. Could be something good! You have {var:VAR_GALAR_WATTS} W."
       ],
       "text": [
-        ""
+        "Sap, sap, sap! Pentru 500 de Watt îți scot la suprafață orice e acolo jos. Poate fi ceva bun! Ai {var:VAR_GALAR_WATTS} W."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Pay 500 Watts for a dig?"
       ],
       "text": [
-        ""
+        "Plătești 500 de Watt pentru o săpătură?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The brother dug and dug..."
       ],
       "text": [
-        ""
+        "Fratele a săpat și a tot săpat..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "There you go! The ground's always got something for those who ask it nicely."
       ],
       "text": [
-        ""
+        "Poftim! Pământul are mereu ceva pentru cei care îl roagă frumos."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "That's not 500 Watts, friend. Touch a den's beam of light and you'll have plenty."
       ],
       "text": [
-        ""
+        "Ăștia nu-s 500 de Watt, prietene. Atinge raza de lumină a unei vizuini și o să ai destui."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Suit yourself! The ground's not going anywhere."
       ],
       "text": [
-        ""
+        "Cum vrei! Pământul nu pleacă nicăieri."
       ]
     }
   ]

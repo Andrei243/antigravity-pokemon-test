@@ -229,6 +229,10 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>The photo book (plan 43 · LF4): a spot's photograph is kept as a record with no picture.</summary>
     public PhotoBook? PhotoBook { get; set; } = new();
 
+    /// <summary>The photo tour's report (plan 44 · SD5): a ride is played at once by the autopilot on <see cref="TourSeed"/>, at noon in the course's first weather.</summary>
+    public TourReport? PhotoTour { get; set; } = new();
+    public uint TourSeed { get; set; } = 1;
+
     public bool PhotoAtSpot(string spot)
     {
         if (PhotoSpots.Get(spot) is not { } s || PhotoBook is not { } book) return false;
@@ -318,7 +322,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     {
         Log.Add($"openbase {what}");
         // (what is only asked, check and kind, may be hurried through)
-        if (what is "open" or "enter" or "pc" or "packup")
+        if (what is "open" or "enter" or "visit" or "pc" or "packup")
         {
             NeverInAHurry($"a secret base's '{what}'");
             Waits();
@@ -1061,6 +1065,14 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             Log[^1] = $"open {screen} {here.Id} {RivalName}";
             Answer = 1;
         }
+        // A ride of the photo tour (plan 44 · SD5): played by the autopilot and judged into the report
+        if (screen == ScriptScreen.PhotoTour && PhotoTourCourses.Get(counter) is { } course && PhotoTour != null)
+        {
+            var ride = new TourRide(course, TourSeed, 12, TourRide.WeatherFor(course, TourSeed));
+            TourAutopilot.Play(ride);
+            Answer = PhotoTour.Take(ride);
+            Log[^1] = $"open {screen} {course.Id} {Answer}";
+        }
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
@@ -1326,6 +1338,19 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     /// <summary>What <c>smashencounter</c> finds under the rock: a species and its level, or null when it hid nothing.</summary>
     public (string Species, int Level)? Smashed { get; set; }
+
+    /// <summary>What <c>headbutt</c> shakes out of the tree in front: a species and its level, or null when nothing falls.</summary>
+    public (string Species, int Level)? Headbutted { get; set; }
+
+    public bool Headbutt()
+    {
+        Shown("a tree shaken");
+        NeverInAHurry("a tree's Pokémon");
+        Log.Add("headbutt");
+        if (Headbutted is not var (species, level)) return false;
+        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
+        return true;
+    }
 
     public bool SmashEncounter()
     {
@@ -1693,6 +1718,19 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         FriendsWon++;
         Log.Add("friendwon");
     }
+
+    // ------------------------------------------------------------------ records mixed (plan 40 · GE10)
+
+    /// <summary>The records this host's game has mixed in; empty unless a test or the record desk fills it.</summary>
+    public RecordMixState? MixedRecords { get; set; } = new();
+
+    /// <summary>The other saves the record desk mixes with, as a test hands them over; none unless it does.</summary>
+    public List<Core.SaveData> Others { get; } = new();
+
+    public IReadOnlyList<Core.SaveData> OtherSaves() => Others;
+
+    /// <summary>The game in play, as a record knows it.</summary>
+    public (int TrainerId, DateTime? Started) OwnGame { get; set; } = (0, null);
 
     // ------------------------------------------------------------------ the Hall of Fame's end (plan 02 · S14)
 

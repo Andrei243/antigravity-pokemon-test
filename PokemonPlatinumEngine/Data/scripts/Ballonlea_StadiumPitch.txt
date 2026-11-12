@@ -1,0 +1,27 @@
+# Ballonlea Stadium's pitch (plan 33 · GL5, its first session): Opal's battle for the Fairy Badge, the gym challenge's
+# fifth (`givebadge fairy`). She Dynamaxes her last Pokémon. VAR_GALAR_STORY 29 to 30 (postwick.txt's count). Our own
+# lines.
+
+
+script Opal
+  face opal player
+  speaker "Opal"
+  if badge fairy goto Won
+  scene "Opal"
+  say "Ah, a challenger who answers questions properly. How refreshing. I'm Opal, and this pink little gym is mine."
+  say "I've been Leader here a very long time, dear. Let's see if you have the pink in you that my successor will need!"
+  battle opal as "galar_opal_1"
+  say "Hmm. Not bad. Not bad at all. You've plenty of pink in you, though you don't wear it."
+  say "The Fairy Badge. Take it, and mind you look after it."
+  givebadge fairy
+  text "{player} received the Fairy Badge from Opal!"
+  setflag FLAG_GALAR_DEFEATED_BALLONLEA_GYM
+  defeat "galar_gym_trainer_posy"
+  defeat "galar_gym_trainer_luned"
+  setvar VAR_GALAR_STORY 30
+  say "Five badges. The road on runs back through Hammerlocke and west. Off you go, dear. I've a successor to find."
+  endscene
+  end
+label Won
+  say "Pink is the colour of a life well lived, dear. Remember that."
+  end

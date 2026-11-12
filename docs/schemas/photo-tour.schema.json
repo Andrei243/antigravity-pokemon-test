@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The photo tour's courses (Data/photo-tour.json, plan 44 · SD5)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "courses": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "seconds": {
+            "type": "number"
+          },
+          "rail": {
+            "type": "array",
+            "items": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "weathers": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "Clear",
+                "Rain"
+              ]
+            }
+          },
+          "opensAt": {
+            "type": "integer"
+          },
+          "look": {
+            "type": "string"
+          },
+          "music": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "residents": {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "species": {
+                  "type": "string"
+                },
+                "at": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "face": {
+                  "type": "number"
+                },
+                "shy": {
+                  "type": "boolean"
+                },
+                "day": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "act": {
+                        "enum": [
+                          "Idle",
+                          "Walk",
+                          "Sleep",
+                          "Eat",
+                          "Play",
+                          "Show",
+                          "Fruit",
+                          "Woke",
+                          "Turn",
+                          "Flee",
+                          "Rare"
+                        ]
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "to": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": "number"
+                        }
+                      },
+                      "with": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "move": {
+                        "enum": [
+                          "Physical",
+                          "Special",
+                          "Status"
+                        ]
+                      },
+                      "face": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "act"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "rare": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "type": "string"
+                    },
+                    "seconds": {
+                      "type": "number"
+                    },
+                    "from": {
+                      "type": "number"
+                    },
+                    "to": {
+                      "type": "number"
+                    },
+                    "weather": {
+                      "enum": [
+                        "Clear",
+                        "Rain",
+                        null
+                      ]
+                    },
+                    "hours": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "species",
+                "at"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "screens": {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "at": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "at"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "rail"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

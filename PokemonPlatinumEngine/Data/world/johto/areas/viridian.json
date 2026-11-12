@@ -49,6 +49,47 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 3, "maxLevel": 4 },
+      { "species": "Pineco", "level": 3, "maxLevel": 4 },
+      { "species": "Pineco", "level": 3, "maxLevel": 4 },
+      { "species": "Wurmple", "level": 3, "maxLevel": 4 },
+      { "species": "Wurmple", "level": 3, "maxLevel": 4 },
+      { "species": "Wurmple", "level": 3, "maxLevel": 4 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 5, "maxLevel": 7 },
+      { "species": "Spinarak", "level": 5, "maxLevel": 7 },
+      { "species": "Spinarak", "level": 5, "maxLevel": 7 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 7 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 7 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 7 }
+    ],
+    "trees": [
+      "1032,271 1033,271 1033,273",
+      "1033,274 1033,275",
+      "1028,271 1029,271",
+      "1014,271 1015,271",
+      "1013,270 1013,269 1012,269",
+      "1044,271 1045,271",
+      "1054,270",
+      "1054,269 1054,268",
+      "1052,267 1053,267",
+      "1022,271 1023,271",
+      "1050,263 1050,262",
+      "1050,261 1050,260",
+      "1050,251 1050,250 1050,249 1051,249",
+      "1054,248",
+      "1054,243 1054,242",
+      "1054,247 1054,246",
+      "1054,239 1054,238",
+      "1052,231",
+      "1048,231 1049,231",
+      "1044,231 1045,231",
+      "1040,231 1041,231"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1045, "z": 239, "to": "viridian_gym", "toWarp": 0 },

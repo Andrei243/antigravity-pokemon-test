@@ -263,6 +263,8 @@ public partial class GameEngine
         world.Talking = SpeakerNow();
         // A grown region's people are live rigs (plan 30 · FM3); everywhere else the sprites they always were
         world.GrownField = KitHere == Data.CharacterKit.Grown;
+        // A talk under way (a box of text, a script): a grown player before the one they face stands back a little
+        world.InTalk = flow.State == GameState.Dialogue || flow.Runner.IsRunning;
         world.Render(flow.Map, flow.Player);
     }
 

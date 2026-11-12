@@ -55,7 +55,7 @@ public partial class GameEngine
         if (flow.Map.SecretBaseSpots.ContainsKey((x, y)))
             return StartScript(FieldScripts.SecretBaseSpot);
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name) && flow.Map.InBounds(x, y) && flow.Map.BehaviourAt(x, y) == TileBehavior.Computer)
-            return StartScript(FieldScripts.SecretBasePc);
+            return StartScript(flow.Records.Visiting != null ? FieldScripts.FriendsBasePc : FieldScripts.SecretBasePc);
         return false;
     }
 
@@ -66,6 +66,8 @@ public partial class GameEngine
         {
             case "check":
                 if (SpotAhead() is not { } spot) return 0;
+                // A friend's base mixed in at the record desk stands at its spot (plan 40 · GE10): visited, never made over
+                if (FriendsBaseAhead() != null) return 4;
                 if (flow.SecretBase == null) return 1;
                 return IsOwnBaseAt(flow.Map, spot.X, spot.Y) ? 2 : 3;
             case "kind":
@@ -77,12 +79,14 @@ public partial class GameEngine
                 GoIntoSecretBase(first: true);
                 return 1;
             }
+            case "visit":
+                return VisitFriendsBase() ? 1 : 0;
             case "enter":
                 if (flow.SecretBase == null) return 0;
                 GoIntoSecretBase(first: false);
                 return 1;
             case "pc":
-                if (flow.SecretBase == null || SecretBaseLayouts.OfMap(flow.Map.Name) != flow.SecretBase.Layout) return 0;
+                if (flow.Records.Visiting != null || flow.SecretBase == null || SecretBaseLayouts.OfMap(flow.Map.Name) != flow.SecretBase.Layout) return 0;
                 OpenSecretBaseDecoration();
                 return 1;
             case "packup":
@@ -153,6 +157,7 @@ public partial class GameEngine
     /// </summary>
     internal void LayOutSecretBase(Map room)
     {
+        TakeTheOwnerAway();
         if (baseRoom != null)
         {
             foreach (var prop in baseProps) baseRoom.Props.Remove(prop);
@@ -163,7 +168,10 @@ public partial class GameEngine
         baseSolid.Clear();
         baseRoom = room;
         var layout = SecretBaseLayouts.OfMap(room.Name);
-        if (flow.SecretBase is { } own && layout != null && own.Layout == layout)
+        // A friend's base being visited is laid out in its room in place of the player's own (plan 40 · GE10)
+        if (flow.Records.Visiting is { Base: { } visited } friend && layout != null && visited.Layout == layout)
+            LayOutFriendsBase(room, friend);
+        else if (flow.SecretBase is { } own && layout != null && own.Layout == layout)
         {
             foreach (var (decoration, x, y) in SecretBases.Standing(own, flow.Decorations))
             {

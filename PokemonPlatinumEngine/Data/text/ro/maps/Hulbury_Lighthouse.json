@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hulbury Lighthouse"
+    ],
+    "text": [
+      "Farul din Hulbury"
+    ]
+  },
+  "people": {
+    "lighthouse_keeper": {
+      "name": {
+        "en": [
+          "Lighthouse Keeper"
+        ],
+        "text": [
+          "Paznicul farului"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The lamp's at the top of a long stair, and my knees aren't what they were. The ships still find their way in, though."
+        ],
+        "text": [
+          "Lampa e în capătul unei scări lungi, iar genunchii mei nu mai sunt ce-au fost. Dar corăbiile tot își găsesc drumul spre port."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

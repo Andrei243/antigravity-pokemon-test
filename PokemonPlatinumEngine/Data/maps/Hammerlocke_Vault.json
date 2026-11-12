@@ -1,0 +1,114 @@
+{
+  "name": "Hammerlocke_Vault",
+  "displayName": "The Vault",
+  "bgmTrack": "galar/wedgehurst",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 5,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 8,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 1,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "vault_curator",
+      "name": "Curator",
+      "npcType": "gentleman",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "These tapestries tell of the Darkest Day, when a great darkness fell over Galar and two heroes drove it back."
+      ]
+    },
+    {
+      "id": "sonia_vault",
+      "name": "Sonia",
+      "npcType": "sonia",
+      "x": 4,
+      "y": 4,
+      "facing": "Up",
+      "dialog": [
+        "Two heroes with a sword and a shield. Why does every telling of it leave out what they faced?"
+      ],
+      "shownBy": "FLAG_GALAR_SONIA_VAULT"
+    }
+  ],
+  "wildEncounters": []
+}

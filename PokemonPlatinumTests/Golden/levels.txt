@@ -3,6 +3,9 @@
 === AnistarCity_Gym
 Anistar Gym
 trainers 2, 42-43: kalos_psychic_aurele 43, kalos_psychic_lucile 42
+=== Ballonlea_StadiumMission
+Ballonlea Stadium
+trainers 2, 33: galar_gym_trainer_luned 33, galar_gym_trainer_posy 33
 === CafeCabin
 Café Cabin
 trainers 3, 25: collector_edwin 25, collector_fernando 25, waitress_kati 25
@@ -44,6 +47,10 @@ trainers 3, 19-20: galar_fisherman_cormac 20, galar_worker_hale 19, galar_yell_g
 === GeosengeTown_FlareHQ
 Team Flare Secret HQ
 trainers 4, 48-50: kalos_bryony_1 50, kalos_celosia_1 50, kalos_flare_grunt_hq_1 48, kalos_flare_grunt_hq_2 49
+=== GlimwoodTangle
+Glimwood Tangle
+grass 30-33
+trainers 2, 31: galar_beauty_rhian 31, galar_hiker_dewi 31
 === HearthomeGymRoom1
 Hearthome Gym
 trainers 2, 20-23: lass_molly 23, youngster_donny 22
@@ -146,6 +153,9 @@ trainers 2, 52-53: kalos_skier_agathe 53, kalos_skier_basile 53
 === SnowpointGym
 Snowpoint Gym
 trainers 6, 39-44: ace_trainer_alicia 43, ace_trainer_anton 44, ace_trainer_brenna 41, ace_trainer_isaiah 44, ace_trainer_savannah 42, ace_trainer_sergio 42
+=== StowOnSide_StadiumMission
+Stow-on-Side Stadium
+trainers 2, 32: galar_gym_trainer_cerys 32, galar_gym_trainer_dai 32
 === SunyshoreGym
 Sunyshore Gym
 trainers 1, 47: school_kid_tiera 47

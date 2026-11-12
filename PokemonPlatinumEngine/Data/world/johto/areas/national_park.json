@@ -34,6 +34,63 @@
     "Caterpie",
     "Caterpie"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 10, "maxLevel": 12 },
+      { "species": "Pineco", "level": 10, "maxLevel": 12 },
+      { "species": "Pineco", "level": 10, "maxLevel": 12 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 12 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 12 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 12 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 13, "maxLevel": 15 },
+      { "species": "Spinarak", "level": 13, "maxLevel": 15 },
+      { "species": "Spinarak", "level": 13, "maxLevel": 15 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 15 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 15 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 15 }
+    ],
+    "secret": [
+      { "species": "Exeggcute", "level": 18, "maxLevel": 20 },
+      { "species": "Exeggcute", "level": 18, "maxLevel": 20 },
+      { "species": "Cherubi", "level": 18, "maxLevel": 20 },
+      { "species": "Cherubi", "level": 18, "maxLevel": 20 },
+      { "species": "Cherubi", "level": 18, "maxLevel": 20 },
+      { "species": "Cherubi", "level": 21, "maxLevel": 25 }
+    ],
+    "trees": [
+      "34,63 35,63",
+      "32,61 33,61 33,62",
+      "27,56 27,55 26,55 26,56 26,57",
+      "23,55 23,54",
+      "23,49 23,48",
+      "23,47 23,46",
+      "23,43 23,42",
+      "23,35 23,34",
+      "23,33 23,32",
+      "27,23 27,22",
+      "30,21 31,21 31,20",
+      "36,15 37,15",
+      "40,13 41,13",
+      "46,13 47,13",
+      "48,13 49,13",
+      "54,13 55,13",
+      "56,13 57,13",
+      "60,13 61,13",
+      "64,15 65,15",
+      "68,16 68,17",
+      "68,18 68,19",
+      "76,25 77,25"
+    ],
+    "secretTrees": [
+      "80,15 81,15",
+      "80,21 81,21",
+      "82,20",
+      "82,19 82,18",
+      "82,17 82,16"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

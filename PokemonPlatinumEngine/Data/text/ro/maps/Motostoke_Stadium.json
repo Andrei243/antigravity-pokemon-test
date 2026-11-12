@@ -4,7 +4,7 @@
       "Motostoke Stadium"
     ],
     "text": [
-      ""
+      "Stadionul Motostoke"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Hop"
         ],
         "text": [
-          ""
+          "Hop"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Registered! Now we're real challengers!"
         ],
         "text": [
-          ""
+          "Înscriși! Acum suntem concurenți adevărați!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Bede"
         ],
         "text": [
-          ""
+          "Bede"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Hmph."
         ],
         "text": [
-          ""
+          "Hmf."
         ]
       }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models.Delve;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Models.Frontier;
@@ -90,27 +91,20 @@ public sealed class PyramidFloor
     public List<(int X, int Y, Direction Facing)> Trainers { get; } = new();
     public List<(int X, int Y)> Finds { get; } = new();
 
-    private readonly bool[] open = new bool[Width * Height];
+    /// <summary>The squares laid from <see cref="Pieces"/> (plan 38 · EX6: the laying out is <see cref="FloorLayout"/>'s, which the hideaways share).</summary>
+    public FloorLayout Grid { get; }
 
     /// <summary>Whether a tile of the map is the floor's open ground.</summary>
-    public bool IsOpen(int x, int y) => x >= 0 && y >= 0 && x < Width && y < Height && open[y * Width + x];
+    public bool IsOpen(int x, int y) => Grid.IsOpen(x, y);
 
     private PyramidFloor(int seed, int floor, Random rng)
     {
         Seed = seed;
         Floor = floor;
         Template = TemplateFor(floor, rng.Next(100));
-        Layout = Enumerable.Range(0, Squares * Squares).Select(_ => rng.Next(Pieces.Count)).ToArray();
-        for (int s = 0; s < Layout.Length; s++)
-        {
-            var piece = Pieces[Layout[s]];
-            int sx = Left + s % Squares * Square, sy = Top + s / Squares * Square;
-            for (int y = 0; y < Square; y++)
-                for (int x = 0; x < Square; x++)
-                    open[(sy + y) * Width + sx + x] = piece[y][x] == '.';
-        }
-        EntranceSquare = rng.Next(Squares * Squares);
-        do ExitSquare = rng.Next(Squares * Squares); while (ExitSquare == EntranceSquare);
+        Grid = FloorLayout.Lay(Pieces, Square, Squares, Left, Top, Width, Height, rng);
+        Layout = Grid.Layout;
+        (EntranceSquare, ExitSquare) = Grid.ChooseWays(rng);
         Entrance = MiddleOf(EntranceSquare);
         Exit = MiddleOf(ExitSquare);
 
@@ -142,40 +136,10 @@ public sealed class PyramidFloor
     /// <summary>The floor a seed makes, for a floor of the round (0 to 6).</summary>
     public static PyramidFloor Generate(int seed, int floor) => new(seed, floor, new Random(seed));
 
-    // The open tile nearest a square's middle
-    private (int X, int Y) MiddleOf(int square)
-    {
-        int sx = Left + square % Squares * Square, sy = Top + square / Squares * Square;
-        (int X, int Y) best = (sx + 3, sy + 3);
-        int bestD = int.MaxValue;
-        for (int y = sy; y < sy + Square; y++)
-            for (int x = sx; x < sx + Square; x++)
-            {
-                if (!IsOpen(x, y)) continue;
-                int d = Math.Abs(2 * x - (2 * sx + Square - 1)) + Math.Abs(2 * y - (2 * sy + Square - 1));
-                if (d < bestD) { bestD = d; best = (x, y); }
-            }
-        return best;
-    }
+    private (int X, int Y) MiddleOf(int square) => Grid.MiddleOf(square);
 
     /// <summary>Every open tile walked to from a tile, by the four ways, past none of the tiles named.</summary>
-    public HashSet<(int X, int Y)> Reachable((int X, int Y) from, IReadOnlySet<(int, int)> blocked)
-    {
-        var seen = new HashSet<(int X, int Y)> { from };
-        var queue = new Queue<(int X, int Y)>();
-        queue.Enqueue(from);
-        while (queue.Count > 0)
-        {
-            var (x, y) = queue.Dequeue();
-            foreach (var (dx, dy) in new[] { (0, -1), (0, 1), (-1, 0), (1, 0) })
-            {
-                var next = (x + dx, y + dy);
-                if (!IsOpen(next.Item1, next.Item2) || blocked.Contains(next) || !seen.Add(next)) continue;
-                queue.Enqueue(next);
-            }
-        }
-        return seen;
-    }
+    public HashSet<(int X, int Y)> Reachable((int X, int Y) from, IReadOnlySet<(int, int)> blocked) => Grid.Reachable(from, blocked);
 
     /// <summary>
     /// The floor as a hand-made map's file (plan 14 · B10): the cave's floor and its rocks inside a hall's walls, the stairs
@@ -192,7 +156,7 @@ public sealed class PyramidFloor
             var s = new char[Width];
             for (int x = 0; x < Width; x++)
             {
-                bool inside = x >= Left && x < Left + Square * Squares && y >= Top && y < Top + Square * Squares;
+                bool inside = Grid.Inside(x, y);
                 if (!inside) { g[x] = '#'; s[x] = '#'; continue; }
                 if ((x, y) == Exit) { g[x] = 's'; s[x] = '.'; continue; }
                 g[x] = IsOpen(x, y) ? 'c' : 'R';

@@ -1,0 +1,30 @@
+# Route 6 (plan 33 · GL5, its first session), on the open world's engine: its places are
+# Data/world3d/galar/places/galar_route_6.json. The lines are our own, on Sword and Shield's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Hammerlocke, Route 6, Stow-on-Side and Ballonlea"). VAR_GALAR_STORY is
+# postwick.txt's count: 26 Sonia in the vault, 27 Hop beaten on Route 6.
+
+
+# Out of the west gate after the vault: Hop, wanting a battle before Stow-on-Side
+script HopOnRoute6
+  scene "Hop on Route 6"
+  faceto player hop_route6
+  speaker "Hop"
+  say "There you are! I couldn't wait any longer. Three badges each, and Leon watching. Let's see whose team is ready for the fourth!"
+  if starter "Grookey" goto AgainstGrookey
+  if starter "Scorbunny" goto AgainstScorbunny
+  battle hop_route6 as "galar_hop_5c" canlose
+  goto Fought
+label AgainstGrookey
+  battle hop_route6 as "galar_hop_5a" canlose
+  goto Fought
+label AgainstScorbunny
+  battle hop_route6 as "galar_hop_5b" canlose
+label Fought
+  speaker "Hop"
+  say "Another close one! I keep thinking I'll get ahead of you, and then you go and get stronger again."
+  say "Stow-on-Side's at the top of the route. I'm off to the market first. Leon always brings me something back from there!"
+  clearflag FLAG_GALAR_HOP_ROUTE_6
+  setvar VAR_GALAR_STORY 27
+  objective galarStow
+  endscene
+  end

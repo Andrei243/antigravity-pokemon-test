@@ -91,6 +91,24 @@ public class PlazaTests
     }
 
     [Fact]
+    public void ACaseClosedPaysPennantsAndSaysSoOnlyOnceTheHallIsOpen()
+    {
+        // Looker's agency's share (plan 41's leftovers): 40 pennants for a case closed, paid whether or not the hall has
+        // met the player, told only once it has
+        foreach (bool opened in new[] { false, true })
+        {
+            var host = Host(Finished(RegionDatabase.Sinnoh, RegionDatabase.Kanto));
+            host.Plaza!.Opened = opened;
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find("CasePennants", "Hub_Office")!);
+            runner.RunToEnd();
+            Assert.Empty(host.Problems);
+            Assert.Equal(40, host.Plaza.Coins);
+            Assert.Equal(opened, host.Transcript.Any(l => l.Text.Contains("40 pennants", StringComparison.Ordinal)));
+        }
+    }
+
+    [Fact]
     public void AStallIsOfferedOnlyOnceItsRegionIsFinishedAndItsRankReached()
     {
         var story = Finished(RegionDatabase.Sinnoh, RegionDatabase.Kanto);

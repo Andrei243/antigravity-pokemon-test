@@ -34,6 +34,29 @@
     "Rattata",
     "Rattata"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 14, "maxLevel": 15 },
+      { "species": "Pineco", "level": 14, "maxLevel": 15 },
+      { "species": "Pineco", "level": 14, "maxLevel": 15 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 15 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 15 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 15 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 16, "maxLevel": 17 },
+      { "species": "Spinarak", "level": 16, "maxLevel": 17 },
+      { "species": "Spinarak", "level": 16, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 16, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 16, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 16, "maxLevel": 17 }
+    ],
+    "trees": [
+      "269,183 270,183 270,182 270,181 269,181",
+      "284,193 285,193",
+      "274,216 275,216"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

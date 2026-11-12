@@ -180,6 +180,18 @@
         "A final with every Champion on one stage... What a cast!"
       ],
       "shownBy": "FLAG_HUB_COURT_DIANTHA"
+    },
+    {
+      "id": "kukui",
+      "name": "Kukui",
+      "npcType": "kukui",
+      "x": 13,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Woo! A whole court of Champions under one roof. Alola's going to bring the heat, cousin!"
+      ],
+      "shownBy": "FLAG_HUB_COURT_KUKUI"
     }
   ],
   "wildEncounters": []

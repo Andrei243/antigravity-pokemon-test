@@ -1,0 +1,95 @@
+{
+  "displayName": {
+    "en": [
+      "Ballonlea Stadium"
+    ],
+    "text": [
+      "Stadionul Ballonlea"
+    ]
+  },
+  "people": {
+    "mission_quiz_1": {
+      "name": {
+        "en": [
+          "Quizmaster"
+        ],
+        "text": [
+          "Examinatorul"
+        ]
+      }
+    },
+    "mission_quiz_2": {
+      "name": {
+        "en": [
+          "Quizmaster"
+        ],
+        "text": [
+          "Examinatorul"
+        ]
+      }
+    },
+    "mission_quiz_3": {
+      "name": {
+        "en": [
+          "Quizmaster"
+        ],
+        "text": [
+          "Examinatorul"
+        ]
+      }
+    },
+    "galar_gym_trainer_posy": {
+      "name": {
+        "en": [
+          "Posy"
+        ],
+        "text": [
+          "Posy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Posy: Pink is the colour of power, Opal says. Let me show you what she means!"
+        ],
+        "text": [
+          "Antrenoarea arenei Posy: Rozul e culoarea puterii, zice Opal. Lasă-mă să-ți arăt ce vrea să spună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Posy: Not pink enough, was I?"
+        ],
+        "text": [
+          "Antrenoarea arenei Posy: N-am fost destul de roz, nu?"
+        ]
+      }
+    },
+    "galar_gym_trainer_luned": {
+      "name": {
+        "en": [
+          "Luned"
+        ],
+        "text": [
+          "Luned"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Luned: Opal's quizzes are hard, but I'm harder. Battle!"
+        ],
+        "text": [
+          "Antrenoarea arenei Luned: Întrebările lui Opal sunt grele, dar eu sunt și mai tare. La luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Luned: Well, I didn't see that coming. Off you go to Opal."
+        ],
+        "text": [
+          "Antrenoarea arenei Luned: Ei, asta n-am prevăzut-o. Du-te la Opal."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

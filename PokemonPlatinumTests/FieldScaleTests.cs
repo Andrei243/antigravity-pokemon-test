@@ -126,8 +126,14 @@ public class FieldScaleTests
         Assert.Equal(stood.Y + Seats.GrownHeightOf(PropType.Cushion), onCushion.Y, 4);
         Assert.Equal(stood.Y, FieldRigChoice.GrownSeated(stood, Stance.SitGround, Direction.Up, PropType.Cushion, raised: true, seat).Y);
         // Live in the stances the grown kit is placed in, a sprite in the rest
-        Assert.True(FieldRigChoice.LiveIn(Stance.Stand) && FieldRigChoice.LiveIn(Stance.Sit) && FieldRigChoice.LiveIn(Stance.SitGround));
-        Assert.False(FieldRigChoice.LiveIn(Stance.Lie) || FieldRigChoice.LiveIn(Stance.Swim) || FieldRigChoice.LiveIn(Stance.Fish) || FieldRigChoice.LiveIn(Stance.Tug));
+        // (a swimmer treads water live since the gate's owed; a fisher is live only as the player, holding the rod's look)
+        Assert.True(FieldRigChoice.LiveIn(Stance.Stand) && FieldRigChoice.LiveIn(Stance.Sit) && FieldRigChoice.LiveIn(Stance.SitGround) && FieldRigChoice.LiveIn(Stance.Swim));
+        Assert.False(FieldRigChoice.LiveIn(Stance.Lie) || FieldRigChoice.LiveIn(Stance.Fish) || FieldRigChoice.LiveIn(Stance.Tug));
+        // Far off, a sitter is an impostor of their own stance as a stander is; a swimmer or a lier stays the sprite
+        Assert.True(FieldRigs.HasImpostor(Stance.Sit) && FieldRigs.HasImpostor(Stance.SitGround) && FieldRigs.HasImpostor(Stance.Stand));
+        Assert.False(FieldRigs.HasImpostor(Stance.Swim) || FieldRigs.HasImpostor(Stance.Lie));
+        Assert.Equal("PLAYER~Teen", FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Stand));
+        Assert.NotEqual(FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Stand), FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Sit));
     }
 
     [Fact]

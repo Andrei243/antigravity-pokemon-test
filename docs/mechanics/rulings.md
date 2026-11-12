@@ -6547,10 +6547,11 @@ the lines are our own.
   - Dolls and cushions stand on the floor, one to a tile, as every decoration does here; Emerald stands them on desks
     and mats too. A big doll stands on one tile, two tiles tall.
   - Kept clear: the tile inside the door and the tile before the PC (Emerald keeps clear the tile the player stood on
-    when they turned the PC on, which is that one), and the visitor's spot is no matter, as no friend's base comes.
+    when they turned the PC on, which is that one).
   - The Solid Board isn't laid over a hole, the breakable door and the mud ball don't break, and the mats make no sound.
   - The base's door leads back to the tile the player opened it from, facing away from the spot.
-  - REGISTRY says that no friend's base is registered: friends' bases come by record mixing, and nothing is linked.
+  - REGISTRY lists the friends' bases mixed in at a record desk from the player's other saves (plan 40 · GE10, "Records
+    mixed between one's own saves"), and says that none is registered before any is.
   - PACK UP takes everything back into the PC and gives the base up, and the player is put out at its spot (Emerald's
     `MoveOutOfSecretBase`).
   - A base's room wears a house's interior until the six kinds have their own looks.
@@ -6558,7 +6559,7 @@ the lines are our own.
 | What | Emerald | Here |
 | --- | --- | --- |
 | Making a base | Secret Power at a spot, in, then "make it here?" | "Use Secret Power?" at the spot, then in |
-| A friend's base | Record mixing, its trainer and the registry | None; REGISTRY is empty |
+| A friend's base | Record mixing, its trainer and the registry | Mixed from the player's other saves at a record desk (plan 40 · GE10) |
 | Dolls and cushions | On the floor, a desk or a mat | On the floor |
 | The decoration PC | Eight pockets by kind | One list, the same rooms by kind |
 
@@ -10122,6 +10123,24 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   that shape: the day's six tiles of the route's surfable water (row by row), worked out by `SplitMix` from the day's number (Dewford's
   trend isn't kept); a cast with any rod onto one hooks Feebas **one time in two** (the one draw, made only on those tiles), at levels
   20 to 25, in every slot of the rod's table. `HoennSpeciesTests.Owed` no longer lists Feebas and Milotic.
+- **Headbutt trees** (EX4, 2026-11-12; `Overworld/HeadbuttTrees.cs`, `Map.HeadbuttTreeAt`, `common.HeadbuttTree`). HeartGold's
+  trees and their three tables (common, rare, secret; six slots each with a range of levels) are imported whole by `--game
+  heartgold --data` into each area's `headbutt` (a tree's tiles are in the map's own tiles, the same as the area's objects, and
+  all but a few lie on HeartGold's `HEADBUTT` behaviour: two of Route 35's lie in its grass, where nobody faces them as a tree);
+  **the pinned pokeheartgold holds none of its Headbutt code**, so the rule is
+  ours: a secret tree gives its own table; of the plain trees, a tree is **rich** for a player when the last digit of the 16-bit
+  trainer number plus the tree's number, modulo 5, is under 2 (two trees in five, with no draw: the same tree always gives the same
+  table to the same player), giving the rare table **four times in five**, and the others the common table **half the time**; a slot
+  by Gold and Silver's Headbutt weights (50, 15, 15, 10, 5, 5) and a level in its range, the lead's ability having its say and no
+  Repel keeping it away (`WildEncounterRules.Meet`, as a rock smashed). A tile of the `HEADBUTT` behaviour no area lists is a tree
+  with nobody in it: it shakes and nothing falls. Only the shake draws, on the map's generator, so nothing else moves. The field
+  offers a tree only **in Johto** (decision 6), on foot, to a team that knows the move, and asks no Badge (HeartGold asks none); the
+  party menu lists HEADBUTT only in Johto. Ilex Forest's man by the way in (`d36r0101_gsbigman`; which of HeartGold's people of the
+  forest teaches it was not read, its scripts being outside what the importer fetches) teaches Headbutt once, free (`tutor once`,
+  `MoveTutors.Kanto`'s row: a species that may learn Headbutt or Zen Headbutt, its nearest kin among Platinum's tutors' moves;
+  `FLAG_TUTOR_HEADBUTT`). The Pokédex's area page shows the trees' species as "Headbutt trees" (`HabitatWays.Headbutt`), Johto's
+  areas alone (HeartGold's Kanto routes have trees too, which Johto's world holds and shakes, but Johto's habitats file lists none of
+  Kanto's areas, as before).
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
@@ -11265,6 +11284,50 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   travel mode and plan 30's `RotomBike` mode has no engine in an open map; giving it would ship a bike that rides the
   grid. It is owed with that engine.
 
+## Hammerlocke, Route 6, Stow-on-Side and Ballonlea (2026-11-12, plan 33 · GL5, its first session)
+
+- **The land grows north again, eleven rows** (plan 33 · decision 1 still unanswered): the region's rectangle of chunks
+  is `[-5, -44, 4, 1]` (460 chunks, about 59 MB of bake), not wider. Sword puts the Wild Area's northern half and
+  Hammerlocke north of Motostoke, where Route 3 to Hulbury already stand here, so the order of the places is kept and
+  the ground is the cheapest left: north of Route 5. `terrain/wild_area_north_route6.json` lays the whole of it as a mass
+  too steep to climb and cuts the floors into it (plateaus alone, no control points): a gap in Route 5's north bank
+  (east of the bank's middle, so the bank's top stays unreached), Hammerlocke Hills, Hammerlocke behind walls that are
+  the mass with a south and a west gate, Route 6 west of the city, Stow-on-Side at its head with the mural's hill, and
+  Ballonlea north of the city's walls. Every floor is at 26 m; Stow-on-Side keeps no height of its own (a ramp would
+  have wanted a road cut at its heights, and the sense of the hill is the mural's). The gap is shut by a sign without
+  the Fire Badge.
+- **Hammerlocke Hills is the Wild Area's northern half begun**: one part of it, with its zones (the species Sword shows
+  in the north, our levels and weights) and a column of `calendar.json` (the Giant's Seat's a week later). The rest of
+  the north half (the Dusty Bowl, the Bridge Field and the others) is the second session's or later.
+- **Glimwood Tangle is a grid map** (`GlimwoodTangle`) between doors in Stow-on-Side's east bank and Ballonlea's west
+  bank, as the mines are; it is shut by a sign without the fourth badge. Its glow is not drawn: it is a dark cave map
+  with the wood's Pokémon. **The ways under and through the banks are drawn as mouths**: a short tunnel carved into the
+  face where each door stands (`carve/mouths.json`: the Galar Mine's two, Galar Mine No. 2's two, Glimwood's two), the
+  owed mouths of GL4's second session.
+- **The version's gym** (plan 33 · decision 2): Bea in a Sword game and Allister in a Shield one stand on one spot of
+  Stow-on-Side's pitch, the version's shown by `FLAG_GALAR_SHIELD_GAME`, which the pitch's arrival keeps to
+  `VAR_GALAR_VERSION`. **A region's badges may be named by version**: `galar.json`'s `versionBadges` (a variable, its
+  value, and the other version's names slot for slot) names the card's badges (`Region.BadgeNamesIn`) and lets a script
+  give or ask either name of a slot (`StoryState.FindBadge`), so the Ghost Badge is the Fighting Badge's place and a
+  Shield game's Ice Badge will be the Rock Badge's. The mission is a talk either way: three gym trainers at the gates,
+  Bea's spinning floor or Allister's masks.
+- **The chapter goes on** (`VAR_GALAR_STORY`, postwick.txt's count): Leon and Hop at Hammerlocke's south gate the first
+  time through (25; Kabu's script shows them), Sonia and the tapestries in the vault (26), Hop's battle on Route 6 (27,
+  ours: Sword's placing of a battle there was not confirmed), the fourth badge (28), the mural: Bede breaking into it,
+  the statue of the two heroes behind it, the chairman ending Bede's challenge (29), and Opal's Fairy Badge (30). Our
+  lines on Sword's beats as publicly told. People shown by flags of ours, so no story version moves. Objectives 722 to
+  727. Opal's mission is a quiz of three questions of ours whose answers change nothing in the battle.
+- **Ours**: Hammerlocke Hills', Route 6's and Glimwood Tangle's trainers and tables, Hop's fifth teams, the gym trainers',
+  Bea's (Machamp at 36), Allister's (Gengar at 36) and Opal's (Alcremie at 38) at Sword's caps after three and four
+  badges, and three looks (`bea`, `allister`, `opal`, chibi-kit stand-ins on the Adult and Elder builds as the cast before
+  them).
+- **GL4's owed doors**: the Pokémon Nursery on Route 5 is a Day Care (`Route5_Nursery`, the common `DayCareLady`
+  inside and `DayCareMan` at the door as the keeper), and Hulbury's seafood restaurant and lighthouse have rooms of a
+  house's plan with their people.
+- **Left owed**: Hammerlocke's stadium door with Raihan's gym (seven badges), the vault's room as more than a house's
+  plan, Route 7, Route 8, Circhester, Route 9 with the Rotom Bike's water (the bike itself still waits for an open-map
+  engine), Spikemuth and the rest of the Wild Area's north half; the shots of every new place.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or
@@ -11460,7 +11523,7 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
 - **The questionnaire** is Madame Ottilie Fray in Jubilife TV's lobby (`JubilifeTV1F`, 18, 16, `Questionnaire`): two questions on the phrase picker, the second answered by SPARROW and CLOCKWORK (19b, two words of ours appended to the picker's little words) in either order, which sets `FLAG_GIFT_BOX_OPEN`. Plan 43 · LF10's film desk takes another tile of the lobby.
 - **The Gift Runners** (18b, yellow scarves; `common.Courier`) take the part of FireRed's deliverymen on Kanto's Centers' upper floors, HeartGold's delivery men in Johto's Marts (the first of each Mart's two) and Emerald's mystery gift men on Hoenn's Centers' upper floors, and are new people of ours on every Sinnoh Center's upper floor (14, 8), in every Unova Center (9, 12) and in every Kalos and Alola Center (2, 8). Every one wears a look of ours, `gift_runner` in `characters.json`: a courier's cap and a scarf in the box's yellow. Before the box is open a Runner says both words, so the test that every pair of words is said in the world holds.
 - **The gifts** are the sheet's twelve rows and one for each festival and great day. Swapped where the data has no such thing: the five fireworks Seals are five Party Seal D, the snowflake set five Star Seal B. The four ribbons (Champion Hearth, Naturalist's, Thousand Names, Gift Day) and the five backdrops (Midnight Bloom, Field Notes, Lantern, Blossom, Sea-Burst) are rows of ours after Platinum's, in the importer (`Program.cs`) and its files. The Laurel Gallery's five Eggs all carry the Champion Hearth Ribbon. The Registry's Pikachu brings the **Pikashunium Z** and St Valentine's card the **Fairy Gem**, which were owed to this session by `ItemSourcesTests`. An event Pokémon's first trainer is its sender (a number of the sender's name), so it counts as another trainer's, as an event Pokémon does; an Egg hatches the player's own. A gift that brings a Pokémon or an Egg waits while the team is full or a Monotype run refuses its types, and is never lost.
-- **The great days in every region** (the note of part D): New Year's Day (the sheet's first row), Easter (Good Friday to Easter Monday, the Gregorian reckoning), Christmas (24 to 26 December) and, quietly, St Valentine's Day: a gift at any Gift Runner, a Runner's greeting first, and things in the festival town of each region with one (Jubilife City for Sinnoh's, Celadon, Ecruteak, Slateport and Castelia). Kalos and Alola have their Gift Runners (so their gifts and greetings) but no festival town yet; Galar, Paldea and Hisui, whose worlds have no Pokémon Center rooms, have neither: their plans place them.
+- **The great days in every region** (the note of part D): New Year's Day (the sheet's first row), Easter (Good Friday to Easter Monday, the Gregorian reckoning), Christmas (24 to 26 December) and, quietly, St Valentine's Day: a gift at any Gift Runner, a Runner's greeting first, and things in the festival town of each region with one (Jubilife City for Sinnoh's, Celadon, Ecruteak, Slateport and Castelia). Kalos and Alola have their Gift Runners (so their gifts and greetings); since the same day the four things stand also in Lumiose City, Hau'oli City, Hisui's Jubilife Village (the Galaxy Team keeps the days too, which is ours) and Wayhaven, none of them a festival town of its own, and since Galar's towns are open maps, which stand no things of the map, inside Wedgehurst's Pokémon Center, with a Gift Runner there. Paldea has neither until its towns stand.
 - **The festivals** (21 at its default, 22b): Sinnoh's four, Kanto's Harvest Moon in Celadon City (15 to 21 September), Johto's Bellfall in Ecruteak City (1 to 7 November), Hoenn's Tide Day in Slateport City (20 June), Unova's Bridgelight in Castelia City (1 to 7 February). Their flags are kept by the clock every frame (`KeepTheClock`), never by a script and never saved apart. Each has things of the map and a nameless stall keeper (61 at its default). Sunyshore's Summer Night bursts over the sea once a night, the first time the city is come to after dark (`FLAG_DAILY_SUNYSHORE_SUMMER_BURST`).
 - **The trade board** keeps three requests a day for each region and five blind trades a day (decision 8), drawn by `SplitMix` from the day and the region. A request wants a species of the region's own Pokédex (named on its card only once seen) at a least level of 5 to 40, and offers one of the regions entered; one time in four the trainer is from abroad, for the Masuda method. Nothing legendary, mythical or of ours is wanted, offered or sent blind; three blind trades in four are a first stage. The Pokémon is chosen from the team (`choosepokemon`), never the boxes. A run that holds its Pokémon (a Nuzlocke or restrictions under way, as the Home box asks) trades nothing. The desks: Sinnoh's GTS receptionist, Goldenrod's and Castelia's link receptionists (after the Linking Cord), a receptionist of Celadon's and Lilycove's Centers' upper floors. The Global Terminal's backdrop lady gives City at Night for the first board trade.
 ## The Laurel Gallery: every Hall of Fame in one hall (2026-11-12, plan 41 · EG2)
@@ -11963,3 +12026,43 @@ shown in bars, the monitor's own resolution to be found, and a choice of resolut
   NATIVE (the default, 0) is today's picture, the preset's own; a smaller size caps the scene's share of its target
   (`RenderContext.ResolutionCap`, taken as the smaller with dynamic resolution's step), and the interface stays at 4K.
   The harness never sets it.
+
+## Records mixed between one's own saves (2026-11-12, plan 40 · GE10)
+
+The user wanted GE10 built (2026-11-12; plan 40's decision 10, which had left it optional). Emerald mixes records over
+a cable or the wireless link; this game has neither, so the records are mixed between the player's own save slots, at a
+desk of ours. Nothing of it rides on plan 07's online server, and nothing waits on a deployment.
+
+- **The desk**: the attendant at the east desk upstairs in every Pokémon Center (`teala_east`, whose words had said the
+  link was down) runs `common.RecordDesk`: a question, then `records mix`. What she said before is kept as her lines and
+  no longer said.
+- **What is read**: every other slot that reads whole or from its backup (`SaveSlots.Read`, which writes nothing; the
+  bytes of each slot and its backup are the same afterwards). A damaged slot is passed over, and so is a slot that holds
+  the game in play itself (the same trainer's number and the same first day), whichever slot it is in. Only the save in
+  play is written, the next time it is saved.
+- **What each other game gives** (`Models/RecordMix.cs`, `SaveData.MixedRecords`, null with none, no version raised):
+  - **Its trainer**: the player's name, look and team as the battle room would build it (plan 13 · V13): an Egg, a
+    species of ours and one the data lacks are left out; a level past 100 is held to 100; a form, ability or item the
+    battle room doesn't allow is let go; of its moves only those its species may know stand, and the four latest it learns
+    by level where none does. A Pokémon still illegal after that is left out, and a game with none left gives no trainer.
+    The team is kept as plain choices and made into a friend's trainer file (plan 13 · V22) each time it stands, so a
+    change of the data never makes a record unreadable. Its class and its two lines are worked out from the other game's
+    trainer number, so the same game's trainer is always the same.
+  - **Its Hoenn secret base**: its spot, the tile its door leads back to, and what stood in it by kind and tile (at most
+    sixteen), never by the other save's decoration PC.
+  - **Its interview**: the two words given to Jubilife City's reporters, where they are whole.
+- **Kept**: one record to a game, keyed by its trainer's number and first day; mixing with the same game again replaces
+  its record. The newest stand first, eight at most.
+- **The friends' hall** stands the mixed trainers after the folder's files (V23), within its eight spots, a trainer once.
+- **Hoenn**: a mixed base stands at its spot, the newest at a spot where two share it. Facing that spot goes in
+  (`openbase check` is 4, `openbase visit`), where the player's own base isn't there; a spot holding a friend's base
+  takes no base of the player's (Emerald's registered bases hold their spots too). The room is laid out with what stood
+  in it and its owner on the open floor nearest the PC's front tile, battled as the friends' hall's trainers are (level
+  50, copies, once a day); its PC is a friend's and is not touched (`common.FriendsBasePC`). A room shared with the
+  player's own base shows the friend's while it is visited. A game saved inside a friend's base wakes in it as it was
+  (`RecordMixSave.Visiting`). The base PC's REGISTRY names whose bases are registered.
+- **Television**: Street Talk's mixed edition (`Programme.MixedInterviews`, `broadcast mixed`) tells the three newest
+  interviews mixed in; it is on only once there is one, so no game's die moves before then.
+- **Not built**: Emerald's other mixed records (the Trainer Hill's times, the Lilycove Lady's and the television's other
+  shows, the Battle Tower's partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice), which stay as their
+  own rulings have them.
