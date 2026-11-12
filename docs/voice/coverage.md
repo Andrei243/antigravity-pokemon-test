@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1769 | 1706 | 63 | 1 | 0 |
+| People of the hand-made maps (`map:`) | 1770 | 1707 | 63 | 1 | 0 |
 | Scripts (`script:`) | 13567 | 13006 | 561 | 17 | 36 |
 | People of the world (`world:`) | 8183 | 8121 | 62 | 4 | 0 |
-| **All** | 23803 | 23114 | 689 | 22 | 36 |
+| **All** | 23804 | 23115 | 689 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -89,7 +89,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `steven` | 91 | 1 |
 | `class:bug_catcher (any)` | 90 | 0 |
 | `class:bird_keeper (any)` | 88 | 0 |
-| `gift_runner` | 86 | 0 |
+| `gift_runner` | 87 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `class:twins (any)` | 84 | 0 |
 | `look:aqua_grunt (any)` | 83 | 3 |

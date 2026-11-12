@@ -63,6 +63,24 @@
           "Toți concurenții rămași în Cupă se odihnesc aici cu o noapte înainte. Am venit până aici doar ca să-i privesc."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
     }
   },
   "signs": {}
