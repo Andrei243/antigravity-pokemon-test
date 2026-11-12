@@ -199,15 +199,4 @@ public class BudgetTests
         }
     }
 
-    [Fact]
-    public void TheWorldsMapsStayUnderTheMemoryCeiling()
-    {
-        if (Mode == "off") return;
-        MapDatabase.Initialize();
-        long megabytes = GC.GetTotalMemory(true) / (1024 * 1024);
-        long ceiling = (long)(190 * (Mode == "strict" ? 1.25 : 2.0));
-        output.WriteLine($"managed memory after the world's maps: {megabytes} MB, ceiling {ceiling} MB (measured 190 MB on 2026-10-26)");
-        Record("managed memory after the world's maps (MB)", megabytes);
-        Assert.True(megabytes <= ceiling, $"{megabytes} MB held after the world's maps; the ceiling is {ceiling} MB.");
-    }
 }

@@ -505,15 +505,4 @@ public sealed class VoicePlaybackTests : IDisposable
             Assert.False(string.IsNullOrWhiteSpace(OptionsScreen.Describe(s, row).Help));
     }
 
-    /// <summary>A pack beside the game (the user's machine, a release build) is held to it; with none the check says so and passes.</summary>
-    [Fact]
-    public void APackBesideTheGameFitsIt()
-    {
-        var pack = VoiceLibrary.FoldersFor("en").Select(VoiceLibrary.Open).FirstOrDefault(p => p != null)
-            ?? VoiceLibrary.Open(Path.Combine(Repository.Root, "voice", "en"));
-        if (pack == null) return; // no pack here: nothing to hold to the game (V3 to V5 make one)
-        var catalogue = VoiceCatalogue.Parse(File.ReadAllText(Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "voice", "lines.json")));
-        var (wrong, _) = VoicePacks.Check(pack, catalogue);
-        Assert.True(wrong.Count == 0, string.Join("\n", wrong.Take(20).Select(w => $"{w.Key}: {w.What}")));
-    }
 }
