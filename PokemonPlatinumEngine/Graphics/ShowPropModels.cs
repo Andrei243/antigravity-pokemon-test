@@ -369,11 +369,14 @@ internal static class ShowPropModels
 
         private void Cape()
         {
-            s.Ellipsoid(V(0, -0.62f, -0.35f), V(0.88f, 0.7f, 0.82f), body, 0, mat: ClothM);
-            s.Ellipsoid(V(0, -0.7f, -0.35f), V(0.8f, 0.7f, 0.76f), body, 0, op: SdfOp.Cut);
-            s.Paint(s.Box(V(0, -0.62f, -1.1f), V(1f, 0.8f, 0.08f), 0.02f, trim, 0, mat: ClothM));
-            s.Torus(V(0, -0.05f, 0.25f), 0.3f, 0.05f, trim, 0, mat: ClothM, rotation: AboutX(0.5f));
-            s.Sphere(V(0, 0.02f, 0.52f), 0.1f, trim, 0, mat: MetalM);
+            // A curved sheet lying along the back from the origin away from the head: a slice of a hollow cylinder whose
+            // axis runs along the back, its edges falling to the sides
+            s.Cylinder(V(0, -0.82f, -0.75f), 0.9f, 0.78f, 0.04f, body, 0, mat: ClothM, rotation: FacingFront);
+            s.Cylinder(V(0, -0.82f, -0.75f), 0.82f, 0.9f, 0f, body, 0, op: SdfOp.Cut, rotation: FacingFront);
+            s.Box(V(0, -1.25f, -0.75f), V(1.2f, 0.7f, 1.0f), 0f, body, 0, op: SdfOp.Cut);
+            s.Paint(s.Box(V(0, 0, -1.48f), V(1.2f, 1.2f, 0.07f), 0.02f, trim, 0, mat: ClothM));
+            s.Capsule(V(-0.45f, 0.04f, 0.02f), V(0.45f, 0.04f, 0.02f), 0.07f, 0.07f, trim, 0, mat: ClothM);
+            s.Sphere(V(0, 0.08f, 0.04f), 0.1f, trim, 0, mat: MetalM);
         }
 
         private void Wings()

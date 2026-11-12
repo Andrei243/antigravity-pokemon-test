@@ -97,7 +97,7 @@ internal static class PropAnchors
         if (ownHead && Neck(model, headBone, size) is { } neck)
             found[PropSlot.Neck] = neck;
 
-        if (body.Count > 0 && Back(model, bodyBone, body, size) is { } back)
+        if (body.Count > 0 && Back(model, bodyBone, body, size, ownHead ? headBone : -1, faceBack: crownBone == bodyBone) is { } back)
             found[PropSlot.Back] = back;
 
         if (LimbEnd(model, PokeRole.Arm, size) is { } hand)
@@ -283,7 +283,7 @@ internal static class PropAnchors
     /// framed by its surface (up out of the back, forward toward the front, or toward the head where the back faces
     /// straight behind).
     /// </summary>
-    private static PropAnchor? Back(PokeModel model, int bodyBone, List<int> body, float size)
+    private static PropAnchor? Back(PokeModel model, int bodyBone, List<int> body, float size, int headBone, bool faceBack)
     {
         var mesh = model.Mesh;
         float joint = model.Skeleton[bodyBone].Joint.Z;
@@ -299,7 +299,8 @@ internal static class PropAnchors
                 var n = mesh.Normals[v];
                 if (MathF.Abs(p.X - cx) > reach * half + model.Cell) continue;
                 if (behind && p.Z > joint) continue;
-                if (n.Y < 0.15f && n.Z > -0.3f) continue;
+                // Never a face turned to the ground; on a body whose head is its own top (a hat's place), the back's own face
+                if (n.Y < -0.1f || (n.Y < 0.15f && n.Z > -0.3f) || (faceBack && n.Z > -0.3f)) continue;
                 if (p.Y > bestY) { bestY = p.Y; best = v; }
             }
             if (best >= 0) break;
@@ -308,7 +309,12 @@ internal static class PropAnchors
         var up = mesh.Normals[best];
         up = up.LengthSquared() > 1e-6f ? Vector3.Normalize(up with { X = 0f }) : Vector3.UnitY;
         if (up.LengthSquared() < 1e-6f || float.IsNaN(up.X)) up = Vector3.UnitY;
-        var forward = Vector3.UnitZ - Vector3.Dot(Vector3.UnitZ, up) * up;
+        // Forward: toward the head where there is one (up the back of an upright body, along a quadruped's), else the front
+        var toward = headBone >= 0 ? model.Skeleton[headBone].Joint - mesh.Positions[best] : Vector3.UnitZ;
+        if (toward.LengthSquared() < 1e-8f) toward = Vector3.UnitZ;
+        toward = Vector3.Normalize(toward);
+        var forward = toward - Vector3.Dot(toward, up) * up;
+        if (forward.LengthSquared() < 1e-4f) forward = Vector3.UnitZ - Vector3.Dot(Vector3.UnitZ, up) * up;
         forward = forward.LengthSquared() > 1e-4f ? Vector3.Normalize(forward) : Vector3.Normalize(Vector3.UnitY - Vector3.Dot(Vector3.UnitY, up) * up);
         return new PropAnchor(PropSlot.Back, bodyBone, mesh.Positions[best], up, forward, size, mesh.Positions[best], Vector2.Zero);
     }
