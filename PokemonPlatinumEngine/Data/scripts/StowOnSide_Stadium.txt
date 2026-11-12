@@ -1,0 +1,33 @@
+# Stow-on-Side Stadium's lobby (plan 33 · GL5, its first session): the fourth gym of the challenge, Bea's in a Sword game
+# and Allister's in a Shield one (VAR_GALAR_VERSION). The mission is through the back (StowOnSide_StadiumMission.txt),
+# and the pitch beyond it (StowOnSide_StadiumPitch.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge fighting goto Won
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "Welcome to Stow-on-Side Stadium! Bea's gym mission is through the doors behind me. Keep your footing!"
+  say "A gym trainer stands at each of the course's gates. Pass each one's test, then Bea awaits on the pitch."
+  end
+label Shield
+  say "Welcome to Stow-on-Side Stadium! Allister's gym mission is through the doors behind me. Don't be frightened!"
+  say "A masked gym trainer stands at each of the course's gates. Pass each one's test, then Allister awaits on the pitch."
+  end
+label Won
+  say "Congratulations on your fourth badge! Ballonlea is through Glimwood Tangle, east of town."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge fighting goto Won
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "Bea's Fighting types hit hard. Flying, psychic and fairy moves will take them down a peg!"
+  end
+label Shield
+  say "Allister's Ghost types play tricks. Dark and ghost moves will see right through them!"
+  end
+label Won
+  say "Four badges! Halfway to the Champion Cup. Ballonlea is through the glowing wood to the east."
+  end

@@ -1,0 +1,78 @@
+{
+  "name": "StowOnSide_StadiumPitch",
+  "displayName": "Stow-on-Side Stadium",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Fighting",
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "StowOnSide_StadiumMission",
+      "targetX": 6,
+      "targetY": 2,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "bea",
+      "name": "Bea",
+      "npcType": "bea",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Bea",
+      "hiddenBy": "FLAG_GALAR_SHIELD_GAME"
+    },
+    {
+      "id": "allister",
+      "name": "Allister",
+      "npcType": "allister",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Allister",
+      "shownBy": "FLAG_GALAR_SHIELD_GAME"
+    }
+  ],
+  "wildEncounters": []
+}

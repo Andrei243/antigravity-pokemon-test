@@ -1,7 +1,8 @@
 # Route 5 (plan 33 · GL4, its second session), on the open world's engine: its places are
 # Data/world3d/galar/places/galar_route_5.json. The lines are our own, on Sword and Shield's beats as they are publicly
 # described (docs/mechanics/rulings.md, "Route 5, Hulbury, Galar Mine No. 2 and Kabu"). VAR_GALAR_STORY is
-# postwick.txt's count: 19 the Grass Badge, 20 Hop beaten on Route 5.
+# postwick.txt's count: 19 the Grass Badge, 20 Hop beaten on Route 5. The gap north onto Hammerlocke Hills waits for the
+# Fire Badge (plan 33 · GL5).
 
 
 # Through the gap in Turffield's north bank the day after the Grass Badge: Hop, wanting a battle before Hulbury
@@ -28,4 +29,12 @@ label Fought
   setvar VAR_GALAR_STORY 20
   objective galarNessa
   endscene
+  end
+
+
+# The gap in Route 5's north bank onto Hammerlocke Hills (plan 33 · GL5): open to challengers with three badges
+script NorthShut
+  if badge fire end
+  text "A League staffer's sign stands in the gap: the Wild Area's north is for challengers with three badges."
+  walkto player route5_north_back
   end

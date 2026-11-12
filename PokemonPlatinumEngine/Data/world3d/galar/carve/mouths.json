@@ -1,0 +1,13 @@
+{
+  // The mouths of the ways under and through the banks (plan 33 · GL4's owed mouths and GL5): each a short tunnel cut
+  // into the face where its door stands, so the door is seen as a dark way in, not as plain wall. The grid map behind
+  // it (the Galar Mine, Galar Mine No. 2, Glimwood Tangle) takes the rest of the distance. Our own
+  "carves": [
+    { "kind": "capsules", "name": "the Galar Mine's south mouth", "points": [[-90, 25.7, -855], [-90, 25.7, -863]], "radius": 2.2, "floor": 23.9 },
+    { "kind": "capsules", "name": "the Galar Mine's north mouth", "points": [[-90, 25.9, -883], [-90, 25.9, -875]], "radius": 2.2, "floor": 24.1 },
+    { "kind": "capsules", "name": "Galar Mine No. 2's north mouth", "points": [[96, 27.8, -964], [96, 27.8, -956]], "radius": 2.2, "floor": 26 },
+    { "kind": "capsules", "name": "Galar Mine No. 2's south mouth", "points": [[107, 17.8, -680], [116, 17.8, -680]], "radius": 2.2, "floor": 16 },
+    { "kind": "capsules", "name": "Glimwood Tangle's way in from Stow-on-Side", "points": [[-45, 27.8, -1338], [-40, 27.8, -1338]], "radius": 2.2, "floor": 26 },
+    { "kind": "capsules", "name": "Glimwood Tangle's way out into Ballonlea", "points": [[-31, 27.8, -1338], [-36, 27.8, -1338]], "radius": 2.2, "floor": 26 }
+  ]
+}

@@ -23,9 +23,10 @@
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Grookey", "Scorbunny", "Sobble" ],
   // Galar's eight badges in the gym challenge's order. The fourth and the sixth are the version's (plan 33 · decision
-  // 2): Fighting or Ghost, Rock or Ice; the card names them by the version the save chose (VAR_GALAR_VERSION), and
-  // these are Sword's names, which a Shield game's GL5 swaps
+  // 2): Fighting or Ghost, Rock or Ice. These are Sword's names; a Shield game's (VAR_GALAR_VERSION 2) are the same
+  // places under "versionBadges" (plan 33 · GL5), which the card shows and a script may give by either name
   "badges": [ "Grass", "Water", "Fire", "Fighting", "Fairy", "Rock", "Dark", "Dragon" ],
+  "versionBadges": { "variable": "VAR_GALAR_VERSION", "value": 2, "badges": [ "Grass", "Water", "Fire", "Ghost", "Fairy", "Ice", "Dark", "Dragon" ] },
   // Sword and Shield ask no badge of a field move outside battle
   "gates": {},
   "professor": {

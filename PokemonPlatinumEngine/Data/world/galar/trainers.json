@@ -938,5 +938,447 @@
         "personality": 88222762
       }
     ]
+  },
+  // Plan 33 · GL5, its first session (ours): Hammerlocke Hills, Route 6, Glimwood Tangle, Hop's fifth teams, the
+  // gym trainers of Stow-on-Side and Ballonlea, Bea (a Sword game), Allister (a Shield game) and Opal, each Leader at
+  // the cap of the badges before (Sword's 36 and 38)
+  {
+    "id": "galar_hiker_owain",
+    "name": "Owain",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 108,
+    "party": [
+      {
+        "species": "Onix",
+        "level": 27,
+        "ivScale": 0,
+        "personality": 211002442
+      },
+      {
+        "species": "Rhyhorn",
+        "level": 28,
+        "ivScale": 0,
+        "personality": 841461696
+      }
+    ]
+  },
+  {
+    "id": "galar_worker_brann",
+    "name": "Brann",
+    "class": "Worker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 120,
+    "party": [
+      {
+        "species": "Silicobra",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 552764672
+      },
+      {
+        "species": "Drilbur",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 3385381120
+      }
+    ]
+  },
+  {
+    "id": "galar_picnicker_tamsin",
+    "name": "Tamsin",
+    "class": "Picnicker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 120,
+    "party": [
+      {
+        "species": "Helioptile",
+        "level": 29,
+        "ivScale": 0,
+        "personality": 3224316928
+      },
+      {
+        "species": "Dwebble",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 998108160
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_5a",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Dubwool",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 981838848
+      },
+      {
+        "species": "Corvisquire",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 2907859968
+      },
+      {
+        "species": "Pincurchin",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 1895836672
+      },
+      {
+        "species": "Drizzile",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 846916608
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_5b",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Dubwool",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 2050927616
+      },
+      {
+        "species": "Corvisquire",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 756509696
+      },
+      {
+        "species": "Pincurchin",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 3722521600
+      },
+      {
+        "species": "Thwackey",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 474475520
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_5c",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Dubwool",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 2089266240
+      },
+      {
+        "species": "Corvisquire",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 3586131712
+      },
+      {
+        "species": "Pincurchin",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 4007996416
+      },
+      {
+        "species": "Raboot",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 2465983488
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_cerys",
+    "name": "Cerys",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 128,
+    "party": [
+      {
+        "species": "Machoke",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 3744181248
+      },
+      {
+        "species": "Pancham",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 1543531520
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_dai",
+    "name": "Dai",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 128,
+    "party": [
+      {
+        "species": "Haunter",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 3575000064
+      },
+      {
+        "species": "Sinistea",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 2212031488
+      }
+    ]
+  },
+  {
+    "id": "galar_bea_1",
+    "name": "Bea",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Hitmontop",
+        "level": 34,
+        "ivScale": 12,
+        "personality": 3276057600
+      },
+      {
+        "species": "Grapploct",
+        "level": 34,
+        "ivScale": 12,
+        "personality": 413494272
+      },
+      {
+        "species": "Sirfetch'd",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 1834429504
+      },
+      {
+        "species": "Machamp",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 2535032576
+      }
+    ]
+  },
+  {
+    "id": "galar_allister_1",
+    "name": "Allister",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Mimikyu",
+        "level": 34,
+        "ivScale": 12,
+        "personality": 2264968192
+      },
+      {
+        "species": "Cursola",
+        "level": 34,
+        "ivScale": 12,
+        "personality": 3081858048
+      },
+      {
+        "species": "Gourgeist",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 3446877184
+      },
+      {
+        "species": "Gengar",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 2574380032
+      }
+    ]
+  },
+  {
+    "id": "galar_beauty_rhian",
+    "name": "Rhian",
+    "class": "Beauty",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 124,
+    "party": [
+      {
+        "species": "Spritzee",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 2473176064
+      },
+      {
+        "species": "Swirlix",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 4268125184
+      }
+    ]
+  },
+  {
+    "id": "galar_hiker_dewi",
+    "name": "Dewi",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 124,
+    "party": [
+      {
+        "species": "Boldore",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 243543040
+      },
+      {
+        "species": "Phantump",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 2075061312
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_posy",
+    "name": "Posy",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 132,
+    "party": [
+      {
+        "species": "Clefairy",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 4009117440
+      },
+      {
+        "species": "Spritzee",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 2994629632
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_luned",
+    "name": "Luned",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 132,
+    "party": [
+      {
+        "species": "Kirlia",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 213658624
+      },
+      {
+        "species": "Hattrem",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 3381062720
+      }
+    ]
+  },
+  {
+    "id": "galar_opal_1",
+    "name": "Opal",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3800,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Mawile",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 3824044032
+      },
+      {
+        "species": "Togekiss",
+        "level": 37,
+        "ivScale": 12,
+        "personality": 1449449472
+      },
+      {
+        "species": "Alcremie",
+        "level": 38,
+        "ivScale": 12,
+        "personality": 2462066688
+      }
+    ]
   }
 ]

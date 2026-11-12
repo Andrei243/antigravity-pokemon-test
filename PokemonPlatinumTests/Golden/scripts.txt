@@ -268,6 +268,79 @@ way -
 from Olympia at 6,4 of AnistarCity_Gym
 way -
   Olympia> The stars say you are not yet ready to face me. Visit Laverre's Gym first, and its tree.
+=== Ballonlea_Stadium.GymGuide
+from Gym Guide at 2,7 of Ballonlea_Stadium
+way -
+  Gym Guide> Opal's Fairy types shrug off dragons and bully dark and fighting types. Steel and poison moves are the answer!
+=== Ballonlea_Stadium.Receptionist
+from Receptionist at 6,4 of Ballonlea_Stadium
+way -
+  Receptionist> Welcome to Ballonlea Stadium! Opal's gym mission is through the doors behind me: a quiz, no less.
+  Receptionist> Three quizmasters stand at the course's gates. Answer each one rightly and they'll let you by. Then Opal awaits.
+=== Ballonlea_StadiumMission.MissionQuiz1
+from Quizmaster at 6,13 of Ballonlea_StadiumMission
+way 0
+  Quizmaster> Question one! Which type has no effect on a Fairy type at all?
+  Quizmaster> Quite right! Dragon moves can't touch a fairy. On you go!
+  ? Question one! Which type has no effect on a Fairy type at all? = Dragon
+  + FLAG_GALAR_BALLONLEA_QUIZ_1
+way 2, from answer 1
+  Quizmaster> Oh dear, not quite! Have a think and come back to me.
+  ? Question one! Which type has no effect on a Fairy type at all? = Dark
+way 1, from answer 1
+  Quizmaster> Oh dear, not quite! Have a think and come back to me.
+  ? Question one! Which type has no effect on a Fairy type at all? = Fighting
+=== Ballonlea_StadiumMission.MissionQuiz2
+from Quizmaster at 6,9 of Ballonlea_StadiumMission
+way 0
+  Quizmaster> Question two! What is the name of the town where you won your first badge?
+  Quizmaster> Oh dear, not quite! Have a think and come back to me.
+  ? Question two! What is the name of the town where you won your first badge? = Hulbury
+way 2, from answer 1
+  Quizmaster> Oh dear, not quite! Have a think and come back to me.
+  ? Question two! What is the name of the town where you won your first badge? = Motostoke
+way 1, from answer 1
+  Quizmaster> Quite right! Milo's town, and all those Wooloo. On you go!
+  ? Question two! What is the name of the town where you won your first badge? = Turffield
+  + FLAG_GALAR_BALLONLEA_QUIZ_2
+=== Ballonlea_StadiumMission.MissionQuiz3
+from Quizmaster at 6,5 of Ballonlea_StadiumMission
+way 0
+  Quizmaster> Last question! What is Opal's favourite colour?
+  Quizmaster> Oh dear, not quite! Look around you, dear, and come back to me.
+  ? Last question! What is Opal's favourite colour? = Blue
+way 2, from answer 1
+  Quizmaster> Quite right! Pink, pink and more pink. The mission is cleared!
+  ? Last question! What is Opal's favourite colour? = Pink
+  + FLAG_GALAR_BALLONLEA_QUIZ_3
+way 1, from answer 1
+  Quizmaster> Oh dear, not quite! Look around you, dear, and come back to me.
+  ? Last question! What is Opal's favourite colour? = Green
+=== Ballonlea_StadiumPitch.Opal
+from Opal at 7,4 of Ballonlea_StadiumPitch
+way 0
+  Opal> Ah, a challenger who answers questions properly. How refreshing. I'm Opal, and this pink little gym is mine.
+  Opal> I've been Leader here a very long time, dear. Let's see if you have the pink in you that my successor will need!
+  Opal> Hmm. Not bad. Not bad at all. You've plenty of pink in you, though you don't wear it.
+  Opal> The Fairy Badge. Take it, and mind you look after it.
+  > Lucas received the Fairy Badge from Opal!
+  Opal> Five badges. The road on runs back through Hammerlocke and west. Off you go, dear. I've a successor to find.
+  * scene Ballonlea_StadiumPitch.Opal
+  * battle galar_opal_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_posy
+  * defeat galar_gym_trainer_luned
+  * endscene
+  + FLAG_GALAR_DEFEATED_BALLONLEA_GYM
+  = VAR_GALAR_STORY 0 -> 30
+  + beaten galar_gym_trainer_luned
+  + beaten galar_gym_trainer_posy
+  + beaten galar_opal_1
+  = badges Galar 0 -> 10000
+  + seen Ballonlea_StadiumPitch.Opal
+way 1, from answer 1
+  * battle galar_opal_1 Lost
+  * scene over, unseen
 === BattleArcade.Beauty
 from Beauty at 4,14 of BattleArcade
 way -
@@ -7061,7 +7134,7 @@ way 0
   Kabu> Hah! You turned the heat back on me. I haven't been burned like that in years.
   Kabu> Take the Fire Badge. You've earned the right to carry it.
   > Lucas received the Fire Badge from Kabu!
-  Kabu> Three badges. Keep that fire burning on the road ahead, and train every single day.
+  Kabu> Three badges. Keep that fire burning on the road ahead, and train every single day. Hammerlocke is north, past Route 5.
   * scene Motostoke_StadiumPitch.Kabu
   * battle galar_kabu_1 Won
   * fanfare FanfareBadge
@@ -7069,7 +7142,10 @@ way 0
   * defeat galar_gym_trainer_ember
   * endscene
   + FLAG_GALAR_DEFEATED_MOTOSTOKE_GYM
+  + FLAG_GALAR_HOP_HAMMERLOCKE
+  + FLAG_GALAR_LEON_HAMMERLOCKE
   = VAR_GALAR_STORY 0 -> 24
+  = VAR_OBJECTIVE 0 -> 722
   + beaten galar_gym_trainer_ash
   + beaten galar_gym_trainer_ember
   + beaten galar_kabu_1
@@ -9135,6 +9211,87 @@ way -
   Editor> Is that a Pokédex? Then you know Professor Rowan! You're exactly the Pokémon finder this paper has been looking for!
   Editor> ... Only the presses have jammed again, and there's no telling what our lead story needs until they run. Look in another day, will you?
   + FLAG_TALKED_TO_POKEMON_NEWS_PRESS_GYM_GUIDE
+=== StowOnSide_Stadium.GymGuide
+from Gym Guide at 2,7 of StowOnSide_Stadium
+way -
+  Gym Guide> Bea's Fighting types hit hard. Flying, psychic and fairy moves will take them down a peg!
+=== StowOnSide_Stadium.Receptionist
+from Receptionist at 6,4 of StowOnSide_Stadium
+way -
+  Receptionist> Welcome to Stow-on-Side Stadium! Bea's gym mission is through the doors behind me. Keep your footing!
+  Receptionist> A gym trainer stands at each of the course's gates. Pass each one's test, then Bea awaits on the pitch.
+=== StowOnSide_StadiumMission.MissionGate1
+from Gym Trainer at 6,13 of StowOnSide_StadiumMission
+way -
+  Gym Trainer> The floor under this gate spins! Keep your feet and you may pass.
+  > The floor whirled round and round. Lucas kept their balance and stepped off steady!
+  + FLAG_GALAR_STOW_GATE_1
+=== StowOnSide_StadiumMission.MissionGate2
+from Gym Trainer at 6,9 of StowOnSide_StadiumMission
+way -
+  Gym Trainer> Faster spins at this gate. Bea runs this course every morning before breakfast!
+  > The floor spun twice as fast. Lucas leaned into it and came off without a stumble!
+  + FLAG_GALAR_STOW_GATE_2
+=== StowOnSide_StadiumMission.MissionGate3
+from Gym Trainer at 6,5 of StowOnSide_StadiumMission
+way -
+  Gym Trainer> Last gate, and the fastest floor of all. Step on when you're ready.
+  > Everything became a blur. Lucas held firm until it slowed. The mission is cleared!
+  + FLAG_GALAR_STOW_GATE_3
+=== StowOnSide_StadiumPitch.Allister
+from Allister at 7,4 of StowOnSide_StadiumPitch
+way 0
+  Allister> ...You found your way past the masks. I'm Allister, the Leader here. Ghosts aren't so scary, once you get to know them.
+  Allister> Please... don't hold back. My Pokémon won't.
+  Allister> ...You weren't scared at all. That's... really something.
+  Allister> Here. The Ghost Badge.
+  > Lucas received the Ghost Badge from Allister!
+  > As Lucas left the pitch, a deep rumble came down from the hill above the town.
+  * scene StowOnSide_StadiumPitch.Allister
+  * battle galar_allister_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_cerys
+  * defeat galar_gym_trainer_dai
+  * endscene
+  + FLAG_GALAR_BEDE_AT_MURAL
+  + FLAG_GALAR_DEFEATED_STOW_ON_SIDE_GYM
+  = VAR_GALAR_STORY 0 -> 28
+  = VAR_OBJECTIVE 0 -> 726
+  + beaten galar_allister_1
+  + beaten galar_gym_trainer_cerys
+  + beaten galar_gym_trainer_dai
+  = badges Galar 0 -> 1000
+  + seen StowOnSide_StadiumPitch.Allister
+way 1, from answer 1
+  * battle galar_allister_1 Lost
+  * scene over, unseen
+=== StowOnSide_StadiumPitch.Bea
+from Bea at 7,4 of StowOnSide_StadiumPitch
+way 0
+  Bea> So you kept your feet. Good. I am Bea, Stow-on-Side's Leader. I train my body and my Pokémon together, every day.
+  Bea> Words are not needed. Show me your strength!
+  Bea> ...I see. Your strength is real. I will train harder still.
+  Bea> Take the Fighting Badge.
+  > Lucas received the Fighting Badge from Bea!
+  > As Lucas left the pitch, a deep rumble came down from the hill above the town.
+  * scene StowOnSide_StadiumPitch.Bea
+  * battle galar_bea_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_cerys
+  * defeat galar_gym_trainer_dai
+  * endscene
+  + FLAG_GALAR_BEDE_AT_MURAL
+  + FLAG_GALAR_DEFEATED_STOW_ON_SIDE_GYM
+  = VAR_GALAR_STORY 0 -> 28
+  = VAR_OBJECTIVE 0 -> 726
+  + beaten galar_bea_1
+  + beaten galar_gym_trainer_cerys
+  + beaten galar_gym_trainer_dai
+  = badges Galar 0 -> 1000
+  + seen StowOnSide_StadiumPitch.Bea
+way 1, from answer 1
+  * battle galar_bea_1 Lost
+  * scene over, unseen
 === SunyshoreCityEastHouse.Scientist
 from Scientist at 5,5 of SunyshoreCityEastHouse
 way -

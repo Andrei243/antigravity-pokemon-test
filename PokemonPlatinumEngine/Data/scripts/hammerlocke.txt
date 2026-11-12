@@ -1,0 +1,25 @@
+# Hammerlocke (plan 33 · GL5, its first session), the walled city at the heart of Galar, on the open world's engine: its
+# places are Data/world3d/galar/places/hammerlocke.json. The lines are our own, on Sword and Shield's beats as they are
+# publicly described (docs/mechanics/rulings.md, "Hammerlocke, Route 6, Stow-on-Side and Ballonlea"). VAR_GALAR_STORY is
+# postwick.txt's count: 24 the Fire Badge, 25 Leon and Hop at the gate.
+
+
+# Through the south gate with three badges: Leon and Hop, waiting under the walls
+script LeonInHammerlocke
+  scene "Leon in Hammerlocke"
+  faceto player leon_hammerlocke
+  speaker "Hop"
+  say "{player}! You made it! Three badges each, and here we are in Hammerlocke!"
+  speaker "Leon"
+  say "Welcome to Hammerlocke, the two of you. This city's walls have stood longer than the League has, and Raihan's gym is the last before the Champion Cup."
+  say "He won't see a challenger with fewer than seven badges, though. Your road runs west from here, out of the gate and up Route 6 to Stow-on-Side."
+  say "And if you've a moment, look in at the vault. Sonia's been up there all week with the old tapestries. She'd like to see you, I'd bet."
+  speaker "Hop"
+  say "I'm going straight to Route 6! I've been training the whole way from Motostoke. See you on the road, {player}!"
+  clearflag FLAG_GALAR_LEON_HAMMERLOCKE
+  clearflag FLAG_GALAR_HOP_HAMMERLOCKE
+  setflag FLAG_GALAR_SONIA_VAULT
+  setvar VAR_GALAR_STORY 25
+  objective galarVault
+  endscene
+  end

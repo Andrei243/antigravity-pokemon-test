@@ -1,0 +1,63 @@
+{
+  // Route 6 (plan 33 · GL5, its first session): out of Hammerlocke's west gate, a dry stretch of sand and rock west and
+  // then north up to Stow-on-Side, with a low ridge and a rock knoll in the way. Hop waits by the gate for a battle the
+  // first time through; two trainers and the sand's Pokémon. Our own route at about half the original's distances.
+  // Scripts: Data/scripts/galar_route_6.txt
+  "markers": [
+    { "name": "route6_east", "at": [-52, 26.3, -1214], "yaw": 270 }
+  ],
+  "triggers": [
+    // Out of the west gate after the vault: Hop, wanting a battle before Stow-on-Side
+    { "name": "route6_hop", "box": { "min": [-60, 23, -1222], "max": [-50, 30, -1206] }, "script": "HopOnRoute6", "var": "VAR_GALAR_STORY", "value": 26 }
+  ],
+  "zones": [
+    {
+      "name": "route_6_south",
+      "polygon": [[-140, -1250], [-80, -1250], [-80, -1212], [-140, -1212]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Silicobra", "minLevel": 28, "maxLevel": 31, "weight": 25 },
+        { "species": "Hippopotas", "minLevel": 28, "maxLevel": 31, "weight": 15 },
+        { "species": "Helioptile", "minLevel": 28, "maxLevel": 30, "weight": 20, "weather": ["Clear", "Cloudy"] },
+        { "species": "Dwebble", "minLevel": 28, "maxLevel": 30, "weight": 20 },
+        { "species": "Durant", "minLevel": 29, "maxLevel": 31, "weight": 10 },
+        { "species": "Trapinch", "minLevel": 28, "maxLevel": 30, "weight": 10, "weather": ["Sandstorm"] }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "route_6_north",
+      "polygon": [[-110, -1290], [-60, -1290], [-60, -1262], [-110, -1262]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Heatmor", "minLevel": 29, "maxLevel": 31, "weight": 20 },
+        { "species": "Golett", "minLevel": 28, "maxLevel": 31, "weight": 25 },
+        { "species": "Torkoal", "minLevel": 28, "maxLevel": 31, "weight": 25 },
+        { "species": "Axew", "minLevel": 29, "maxLevel": 30, "weight": 10 },
+        { "species": "Duskull", "minLevel": 28, "maxLevel": 30, "weight": 20, "time": "Night" }
+      ],
+      "density": 2, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "hop_route6", "at": [-60, 26.3, -1220], "yaw": 90, "look": "hop", "displayName": "Hop",
+      "lines": ["Stow-on-Side's up at the top of the route. Fourth badge, here we come!"],
+      "shownBy": "FLAG_GALAR_HOP_ROUTE_6"
+    },
+    {
+      "name": "worker_brann", "at": [-118, 26.3, -1232], "yaw": 90, "trainer": "galar_worker_brann",
+      "lines": ["We dig for fossils out here. Today I'll dig up a win instead!", "Nothing but sand in that one. Back to the digging."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "picnicker_tamsin", "at": [-92, 26.3, -1276], "yaw": 180, "trainer": "galar_picnicker_tamsin",
+      "lines": ["Stow-on-Side has the best market in Galar. I'm spending my prize money there!", "Well, there goes my shopping."],
+      "sight": { "length": 8, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-140, -1176], "kind": "pine", "size": 0.9 },
+    { "at": [-56, -1176], "kind": "pine" }
+  ]
+}

@@ -4,7 +4,7 @@
       "Turffield Pokémon Center"
     ],
     "text": [
-      ""
+      "Centrul Pokémon din Turffield"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Nurse Joy"
         ],
         "text": [
-          ""
+          "Asistenta Joy"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "PC Terminal"
         ],
         "text": [
-          ""
+          "Terminal PC"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
         ],
         "text": [
-          ""
+          "Vânzătorul: Bine ai venit! În Galar, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Challenger"
         ],
         "text": [
-          ""
+          "Concurentul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Milo's mission is all about Wooloo. Walk into one and it trots along ahead of you. Mind the gym trainers, though!"
         ],
         "text": [
-          ""
+          "Misiunea lui Milo e numai despre Wooloo. Mergi spre unul și o ia la trap înaintea ta. Dar ai grijă la antrenorii arenei!"
         ]
       }
     }

@@ -151,6 +151,15 @@ public sealed class Region
     /// <summary>The names of the region's badges, in the order of its Trainer Card (plan 18 · W2).</summary>
     public IReadOnlyList<string> BadgeNames => (IReadOnlyList<string>?)File?.Badges ?? Array.Empty<string>();
 
+    /// <summary>
+    /// The badges' names as the game the story is in has them (plan 33 · GL5): the other version's
+    /// (<see cref="RegionFile.VersionBadges"/>) where its variable says so, else <see cref="BadgeNames"/>. Only the names
+    /// change; the badges are kept by their places.
+    /// </summary>
+    public IReadOnlyList<string> BadgeNamesIn(StoryState story) =>
+        File?.VersionBadges is { } other && other.Badges.Count == BadgeNames.Count && story.Var(other.Variable) == other.Value
+            ? other.Badges : BadgeNames;
+
     /// <summary>The badge each field move asks for here, by the move's name (<c>Cut</c>, <c>RockSmash</c>) to the badge's (plan 18 · W2).</summary>
     public IReadOnlyDictionary<string, string> Gates => (IReadOnlyDictionary<string, string>?)File?.Gates ?? new Dictionary<string, string>();
 
@@ -1193,6 +1202,14 @@ public static class RegionDatabase
                 // No. 2, and Kabu's mission in Motostoke's stadium
                 "Hulbury_PokemonCenter", "Hulbury_Stadium", "Hulbury_StadiumMission", "Hulbury_StadiumPitch", "GalarMine2",
                 "Motostoke_StadiumMission",
+                // Plan 33 · GL5, its first session: the doors GL4 owed (the Pokémon Nursery, Hulbury's seafood restaurant
+                // and lighthouse); Hammerlocke's Pokémon Center and the vault; Stow-on-Side's Pokémon Center, stadium,
+                // mission and pitch; Glimwood Tangle; Ballonlea's Pokémon Center, stadium, mission and pitch
+                "Route5_Nursery", "Hulbury_Restaurant", "Hulbury_Lighthouse",
+                "Hammerlocke_PokemonCenter", "Hammerlocke_Vault",
+                "StowOnSide_PokemonCenter", "StowOnSide_Stadium", "StowOnSide_StadiumMission", "StowOnSide_StadiumPitch",
+                "GlimwoodTangle",
+                "Ballonlea_PokemonCenter", "Ballonlea_Stadium", "Ballonlea_StadiumMission", "Ballonlea_StadiumPitch",
             }
         },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 },

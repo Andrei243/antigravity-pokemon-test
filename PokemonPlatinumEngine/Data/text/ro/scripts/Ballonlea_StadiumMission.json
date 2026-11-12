@@ -1,0 +1,122 @@
+{
+  "MissionQuiz1": [
+    {
+      "en": [
+        "Quizmaster"
+      ],
+      "text": [
+        "Examinatorul"
+      ]
+    },
+    {
+      "en": [
+        "Question one! Which type has no effect on a Fairy type at all?",
+        "Dragon",
+        "Fighting",
+        "Dark"
+      ],
+      "text": [
+        "Prima întrebare! Ce tip nu are niciun efect asupra unui Pokémon de tip Zână?",
+        "Dragon",
+        "Luptă",
+        "Întuneric"
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, not quite! Have a think and come back to me."
+      ],
+      "text": [
+        "Vai, nu chiar! Mai gândește-te și revino la mine."
+      ]
+    },
+    {
+      "en": [
+        "Quite right! Dragon moves can't touch a fairy. On you go!"
+      ],
+      "text": [
+        "Exact! Atacurile de tip Dragon nu pot atinge o zână. Mergi mai departe!"
+      ]
+    }
+  ],
+  "MissionQuiz2": [
+    {
+      "en": [
+        "Quizmaster"
+      ],
+      "text": [
+        "Examinatorul"
+      ]
+    },
+    {
+      "en": [
+        "Question two! What is the name of the town where you won your first badge?",
+        "Hulbury",
+        "Turffield",
+        "Motostoke"
+      ],
+      "text": [
+        "A doua întrebare! Cum se numește orașul unde ai câștigat prima insignă?",
+        "Hulbury",
+        "Turffield",
+        "Motostoke"
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, not quite! Have a think and come back to me."
+      ],
+      "text": [
+        "Vai, nu chiar! Mai gândește-te și revino la mine."
+      ]
+    },
+    {
+      "en": [
+        "Quite right! Milo's town, and all those Wooloo. On you go!"
+      ],
+      "text": [
+        "Exact! Orașul lui Milo, cu toți acei Wooloo. Mergi mai departe!"
+      ]
+    }
+  ],
+  "MissionQuiz3": [
+    {
+      "en": [
+        "Quizmaster"
+      ],
+      "text": [
+        "Examinatorul"
+      ]
+    },
+    {
+      "en": [
+        "Last question! What is Opal's favourite colour?",
+        "Blue",
+        "Green",
+        "Pink"
+      ],
+      "text": [
+        "Ultima întrebare! Care este culoarea preferată a lui Opal?",
+        "Albastru",
+        "Verde",
+        "Roz"
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, not quite! Look around you, dear, and come back to me."
+      ],
+      "text": [
+        "Vai, nu chiar! Uită-te în jur, dragă, și revino la mine."
+      ]
+    },
+    {
+      "en": [
+        "Quite right! Pink, pink and more pink. The mission is cleared!"
+      ],
+      "text": [
+        "Exact! Roz, roz și iar roz. Misiunea e îndeplinită!"
+      ]
+    }
+  ]
+}

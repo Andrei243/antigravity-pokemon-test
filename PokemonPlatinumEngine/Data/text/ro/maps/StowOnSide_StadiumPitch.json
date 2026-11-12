@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Stow-on-Side Stadium"
+    ],
+    "text": [
+      "Stadionul Stow-on-Side"
+    ]
+  },
+  "people": {
+    "bea": {
+      "name": {
+        "en": [
+          "Bea"
+        ],
+        "text": [
+          "Bea"
+        ]
+      }
+    },
+    "allister": {
+      "name": {
+        "en": [
+          "Allister"
+        ],
+        "text": [
+          "Allister"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

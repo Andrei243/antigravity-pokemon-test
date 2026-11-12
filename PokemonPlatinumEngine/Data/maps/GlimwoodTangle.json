@@ -1,0 +1,146 @@
+{
+  "name": "GlimwoodTangle",
+  "displayName": "Glimwood Tangle",
+  "bgmTrack": "galar/route1",
+  "interior": "None",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 24,
+  "height": 18,
+  "ground": [
+    "XXXXXXXXXXXXXXXXXXXXXXXX",
+    "XXXXXXXXXXXXXXXXXXXXXXXX",
+    "XXXcccXXXXXXXXXXXcccXXXX",
+    "XXcccccXXXccccXXcccccXXX",
+    "XXccXcccXcccccccccXcccXX",
+    "XcccXXcccccXXXccccXXccXX",
+    "XcccXXccccXXXXXcccccccXX",
+    "XXccccccXXXccXXXcccccXXX",
+    "XXXccccXXccccccXXcccXXXX",
+    "XXXXccXXccccXccccccccXXX",
+    "XXcccccccccXXXcccXXcccXX",
+    "XcccccXXccccXccccXXccccX",
+    "MccccXXXXccccccXXXXccccM",
+    "XcccccXXXXccccXXXXcccccX",
+    "XXcccccXXXXccXXXXcccccXX",
+    "XXXXccccccccccccccccXXXX",
+    "XXXXXXccccXXXXccccXXXXXX",
+    "XXXXXXXXXXXXXXXXXXXXXXXX"
+  ],
+  "solid": [
+    "########################",
+    "########################",
+    "###...###########...####",
+    "##.....###....##.....###",
+    "##..#...#.........#...##",
+    "#...##.....###....##..##",
+    "#...##....#####.......##",
+    "##......###..###.....###",
+    "###....##......##...####",
+    "####..##....#........###",
+    "##.........###...##...##",
+    "#.....##....#....##....#",
+    ".....####......####.....",
+    "#.....####....####.....#",
+    "##.....####..####.....##",
+    "####................####",
+    "######....####....######",
+    "########################"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 12,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Left"
+    },
+    {
+      "sourceX": 23,
+      "sourceY": 12,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "galar_beauty_rhian",
+      "name": "Rhian",
+      "npcType": "beauty",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "trainer": {
+        "id": "galar_beauty_rhian",
+        "name": "Rhian",
+        "trainerClass": "Beauty",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Beauty Rhian: Isn't the glow lovely? It's even lovelier with a battle in it!",
+        "dialogueAfter": "Beauty Rhian: Lovely. Even losing looks lovely in here.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "galar_hiker_dewi",
+      "name": "Dewi",
+      "npcType": "hiker",
+      "x": 16,
+      "y": 13,
+      "facing": "Up",
+      "trainer": {
+        "id": "galar_hiker_dewi",
+        "name": "Dewi",
+        "trainerClass": "Hiker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Hiker Dewi: I came in for mushrooms and got lost. A battle will cheer me up!",
+        "dialogueAfter": "Hiker Dewi: Ballonlea is east, you say? Thank you kindly.",
+        "sightRange": 4
+      }
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Morelull",
+      "minLevel": 30,
+      "maxLevel": 33,
+      "weight": 25
+    },
+    {
+      "speciesName": "Impidimp",
+      "minLevel": 30,
+      "maxLevel": 33,
+      "weight": 20
+    },
+    {
+      "speciesName": "Hattrem",
+      "minLevel": 31,
+      "maxLevel": 33,
+      "weight": 15
+    },
+    {
+      "speciesName": "Spritzee",
+      "minLevel": 30,
+      "maxLevel": 32,
+      "weight": 15
+    },
+    {
+      "speciesName": "Phantump",
+      "minLevel": 30,
+      "maxLevel": 33,
+      "weight": 15
+    },
+    {
+      "speciesName": "Shiinotic",
+      "minLevel": 32,
+      "maxLevel": 33,
+      "weight": 10
+    }
+  ]
+}

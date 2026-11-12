@@ -1362,7 +1362,13 @@
     "galarMineTwo": "Sala lui Kabu e înapoi în Motostoke. Ia-o spre sud din Hulbury prin Mina Galar nr. 2.",
     "galarMarnie": "Ai ieșit din mină în Motostoke. Cineva te așteaptă lângă zidul de est.",
     "galarKabu": "Câștigă Insigna Foc la Stadionul Motostoke, trecând prin misiunea lui Kabu.",
-    "galarFree": "Până aici merge linia deocamdată. Sudul regiunii Galar îți stă deschis.",
+    "galarHammerlocke": "Ai trei insigne. Spre nord, din Ruta 5 peste Dealurile Hammerlocke, până la Hammerlocke.",
+    "galarVault": "Sonia te așteaptă în cripta din partea de vest a orașului Hammerlocke.",
+    "galarRoute6": "Ieși pe poarta de vest a orașului Hammerlocke pe Ruta 6, spre Stow-on-Side.",
+    "galarStow": "Câștigă a patra insignă la Stadionul Stow-on-Side.",
+    "galarMural": "Se întâmplă ceva la pictura murală de pe dealul de deasupra orașului Stow-on-Side.",
+    "galarOpal": "Treci prin Glimwood Tangle până la Ballonlea și câștigă Insigna Zână de la Opal.",
+    "galarFree": "Până aici merge drumul deocamdată. Galar, de la Postwick la Ballonlea, îți stă deschis.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
     "kalosClemont": "Întoarce-te în Lumiose City și câștigă de la Clemont, în vârful Turnului Prism, Insigna Tensiune.",
@@ -2008,7 +2014,7 @@
     "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val",
     "Bug": "Insectă", "Cliff": "Stâncă", "Rumble": "Bubuit", "Plant": "Plantă", "Voltage": "Tensiune", "Fairy": "Zână", "Psychic": "Psihic", "Iceberg": "Aisberg",
     "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
-    "Grass": "Iarbă", "Water": "Apă", "Fire": "Foc", "Fighting": "Luptă", "Rock": "Rocă", "Dark": "Întuneric", "Dragon": "Dragon"
+    "Grass": "Iarbă", "Water": "Apă", "Fire": "Foc", "Fighting": "Luptă", "Rock": "Rocă", "Dark": "Întuneric", "Dragon": "Dragon", "Ghost": "Fantomă", "Ice": "Gheață"
   },
   "card": {
     "runSub": "Cum se joacă acest joc. Ales la început și neschimbat apoi.",

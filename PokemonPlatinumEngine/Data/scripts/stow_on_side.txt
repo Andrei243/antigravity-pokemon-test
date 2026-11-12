@@ -1,0 +1,40 @@
+# Stow-on-Side (plan 33 · GL5, its first session), the market town at the head of Route 6, on the open world's engine:
+# its places are Data/world3d/galar/places/stow_on_side.json. The lines are our own, on Sword and Shield's beats as they
+# are publicly described (docs/mechanics/rulings.md, "Hammerlocke, Route 6, Stow-on-Side and Ballonlea").
+# VAR_GALAR_STORY is postwick.txt's count: 28 the fourth badge, 29 the mural.
+
+
+# The way into Glimwood Tangle: open to challengers with the fourth badge (the Fighting Badge's place, which a Shield
+# game's Ghost Badge takes)
+script GlimwoodShut
+  if badge fighting end
+  text "A League staffer's sign stands at the way into the wood: Glimwood Tangle is for challengers with four badges."
+  walkto player glimwood_west
+  end
+
+
+# Before the mural with the fourth badge: Bede breaking into it for the chairman, the statue it was hiding, and the
+# chairman ending his challenge
+script Mural
+  scene "The mural"
+  faceto player bede_stow
+  text "A great crash rang out from the hill. Stone dust rose over the mural, and someone was standing in it."
+  speaker "Bede"
+  say "You again! Stand back. The chairman wants wishing stars, and there are plenty in this old wall. I'm only helping it along."
+  text "Bede's Pokémon struck the mural again. With a long groan the old stone gave way and fell..."
+  text "Behind it stood two great figures cut from the rock: two heroes, and in their hands a sword and a shield."
+  speaker "Sonia"
+  say "Bede, what have you done? ...And what is that? A sword and a shield! It's the tale, but the tapestries never showed them like this."
+  speaker "Chairman Rose"
+  say "Bede. I asked you to gather wishing stars, not to bring down a town's history on its head."
+  say "A challenger endorsed by me must make Galar proud. I'm afraid your gym challenge ends here."
+  speaker "Bede"
+  say "...Chairman? But I did exactly as you..."
+  text "Bede went down the hill after the chairman without another word."
+  speaker "Sonia"
+  say "Two heroes, two Pokémon, a sword and a shield. I need to think. Go on to Ballonlea, through Glimwood Tangle. I'll write to you!"
+  clearflag FLAG_GALAR_BEDE_AT_MURAL
+  setvar VAR_GALAR_STORY 29
+  objective galarOpal
+  endscene
+  end

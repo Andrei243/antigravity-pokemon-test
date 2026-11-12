@@ -293,6 +293,11 @@ public sealed class StoryState
         var names = RegionDatabase.Get(region)?.BadgeNames ?? Array.Empty<string>();
         for (int k = 0; k < names.Count; k++)
             if (string.Equals(names[k], name, StringComparison.OrdinalIgnoreCase)) return k;
+        // The region's other version's names name the same places (plan 33 · GL5: a Shield game's Ghost Badge is the
+        // fourth, where a Sword game's Fighting Badge stands)
+        if (RegionDatabase.Get(region)?.File?.VersionBadges is { } other && other.Badges.Count == names.Count)
+            for (int k = 0; k < names.Count; k++)
+                if (string.Equals(other.Badges[k], name, StringComparison.OrdinalIgnoreCase)) return k;
         return -1;
     }
 

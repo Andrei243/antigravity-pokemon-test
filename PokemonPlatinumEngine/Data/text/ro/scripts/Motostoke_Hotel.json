@@ -5,7 +5,7 @@
         "Team Yell Grunt"
       ],
       "text": [
-        ""
+        "Membru al Echipei Yell"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oi! Another challenger? Team Yell's backing Marnie, and Marnie only. You'd best go home!"
       ],
       "text": [
-        ""
+        "Ei! Încă un concurent? Echipa Yell o susține pe Marnie și numai pe Marnie. Mai bine du-te acasă!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "We're not moving from this counter till every room's ours. Yell, yell, yell!"
       ],
       "text": [
-        ""
+        "Nu ne mișcăm de la tejghea până nu-s toate camerele ale noastre. Yell, yell, yell!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Chairman Rose"
       ],
       "text": [
-        ""
+        "Președintele Rose"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Now then! The gym challenge is a celebration. I won't have challengers kept from their rest by shouting."
       ],
       "text": [
-        ""
+        "Ei bine! Provocarea arenelor e o sărbătoare. Nu voi lăsa concurenții să fie ținuți treji de urlete."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Team Yell Grunt"
       ],
       "text": [
-        ""
+        "Membru al Echipei Yell"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "The chairman? Right, we're off. This isn't over!"
       ],
       "text": [
-        ""
+        "Președintele? Bine, plecăm. Încă n-am terminat!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Chairman Rose"
       ],
       "text": [
-        ""
+        "Președintele Rose"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "My apologies for that. Rose, chairman of the Pokémon League. And you must be one of Leon's endorsed challengers."
       ],
       "text": [
-        ""
+        "Îmi cer scuze pentru asta. Rose, președintele Ligii Pokémon. Iar tu trebuie să fii unul dintre concurenții recomandați de Leon."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Rest well. Tomorrow the whole of Galar will be watching you. I look forward to the show!"
       ],
       "text": [
-        ""
+        "Odihnește-te bine. Mâine tot Galarul se va uita la tine. Abia aștept spectacolul!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "{player} checked in and slept soundly. The morning of the opening ceremony came bright and loud."
       ],
       "text": [
-        ""
+        "{player} s-a cazat și a dormit dus. Dimineața ceremoniei de deschidere a venit luminoasă și zgomotoasă."
       ]
     }
   ],
@@ -95,7 +95,7 @@
         "Hotel Clerk"
       ],
       "text": [
-        ""
+        "Recepționerul hotelului"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Good luck in the challenge! We keep a room for every challenger, the night before the ceremony."
       ],
       "text": [
-        ""
+        "Baftă în provocare! Păstrăm o cameră pentru fiecare concurent în noaptea dinaintea ceremoniei."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Welcome to the hotel. Challengers for the gym challenge have a room waiting."
       ],
       "text": [
-        ""
+        "Bine ai venit la hotel. Concurenții la provocarea arenelor au o cameră pregătită."
       ]
     }
   ]

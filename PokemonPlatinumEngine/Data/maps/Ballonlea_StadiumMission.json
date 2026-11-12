@@ -1,0 +1,173 @@
+{
+  "name": "Ballonlea_StadiumMission",
+  "displayName": "Ballonlea Stadium",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Fairy",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "######D######",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Ballonlea_Stadium",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 1,
+      "targetMap": "Ballonlea_StadiumPitch",
+      "targetX": 7,
+      "targetY": 12,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "mission_quiz_1",
+      "name": "Quizmaster",
+      "npcType": "clerk",
+      "x": 6,
+      "y": 13,
+      "facing": "Down",
+      "script": "MissionQuiz1",
+      "hiddenBy": "FLAG_GALAR_BALLONLEA_QUIZ_1"
+    },
+    {
+      "id": "mission_quiz_2",
+      "name": "Quizmaster",
+      "npcType": "clerk",
+      "x": 6,
+      "y": 9,
+      "facing": "Down",
+      "script": "MissionQuiz2",
+      "hiddenBy": "FLAG_GALAR_BALLONLEA_QUIZ_2"
+    },
+    {
+      "id": "mission_quiz_3",
+      "name": "Quizmaster",
+      "npcType": "clerk",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "MissionQuiz3",
+      "hiddenBy": "FLAG_GALAR_BALLONLEA_QUIZ_3"
+    },
+    {
+      "id": "galar_gym_trainer_posy",
+      "name": "Posy",
+      "npcType": "beauty",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "galar_gym_trainer_posy",
+        "name": "Posy",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Posy: Pink is the colour of power, Opal says. Let me show you what she means!",
+        "dialogueAfter": "Gym Trainer Posy: Not pink enough, was I?",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "galar_gym_trainer_luned",
+      "name": "Luned",
+      "npcType": "psychic_f",
+      "x": 10,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "galar_gym_trainer_luned",
+        "name": "Luned",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Luned: Opal's quizzes are hard, but I'm harder. Battle!",
+        "dialogueAfter": "Gym Trainer Luned: Well, I didn't see that coming. Off you go to Opal.",
+        "sightRange": 4
+      }
+    }
+  ],
+  "wildEncounters": []
+}

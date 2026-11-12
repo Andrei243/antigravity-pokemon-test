@@ -1,0 +1,104 @@
+{
+  "MissionGate1": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor al arenei"
+      ]
+    },
+    {
+      "en": [
+        "The floor under this gate spins! Keep your feet and you may pass."
+      ],
+      "text": [
+        "Podeaua de sub poarta asta se învârte! Ține-te pe picioare și poți trece."
+      ]
+    },
+    {
+      "en": [
+        "The floor whirled round and round. {player} kept their balance and stepped off steady!"
+      ],
+      "text": [
+        "Podeaua s-a rotit iar și iar. {player} și-a păstrat echilibrul și a coborât neclintit!"
+      ]
+    },
+    {
+      "en": [
+        "Behind my mask is a face you saw in the lobby. Can you guess whose? ...Yes! On you go."
+      ],
+      "text": [
+        "În spatele măștii mele e o față pe care ai văzut-o în hol. Ghicești a cui? ...Da! Mergi mai departe."
+      ]
+    }
+  ],
+  "MissionGate2": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor al arenei"
+      ]
+    },
+    {
+      "en": [
+        "Faster spins at this gate. Bea runs this course every morning before breakfast!"
+      ],
+      "text": [
+        "La poarta asta se învârte mai repede. Bea parcurge traseul în fiecare dimineață, înainte de micul dejun!"
+      ]
+    },
+    {
+      "en": [
+        "The floor spun twice as fast. {player} leaned into it and came off without a stumble!"
+      ],
+      "text": [
+        "Podeaua s-a rotit de două ori mai repede. {player} s-a aplecat în rotire și a coborât fără să se clatine!"
+      ]
+    },
+    {
+      "en": [
+        "My mask is a ghost's, but am I one? Look closely... You saw my shadow. Off you go!"
+      ],
+      "text": [
+        "Masca mea e de fantomă, dar sunt eu una? Uită-te atent... Mi-ai văzut umbra. Poți trece!"
+      ]
+    }
+  ],
+  "MissionGate3": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor al arenei"
+      ]
+    },
+    {
+      "en": [
+        "Last gate, and the fastest floor of all. Step on when you're ready."
+      ],
+      "text": [
+        "Ultima poartă și cea mai rapidă podea dintre toate. Urcă atunci când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "Everything became a blur. {player} held firm until it slowed. The mission is cleared!"
+      ],
+      "text": [
+        "Totul s-a încețoșat. {player} a rezistat până când rotirea a încetinit. Misiunea e îndeplinită!"
+      ]
+    },
+    {
+      "en": [
+        "The last mask. I won't move unless you can tell me who I am... Right again! The mission is cleared."
+      ],
+      "text": [
+        "Ultima mască. Nu mă mișc decât dacă îmi spui cine sunt... Iar ai ghicit! Misiunea e îndeplinită."
+      ]
+    }
+  ]
+}

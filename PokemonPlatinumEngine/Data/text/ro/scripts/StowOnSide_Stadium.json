@@ -1,0 +1,86 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Stow-on-Side Stadium! Bea's gym mission is through the doors behind me. Keep your footing!"
+      ],
+      "text": [
+        "Bine ai venit la Stadionul Stow-on-Side! Misiunea arenei lui Bea e dincolo de ușile din spatele meu. Ține-te bine pe picioare!"
+      ]
+    },
+    {
+      "en": [
+        "A gym trainer stands at each of the course's gates. Pass each one's test, then Bea awaits on the pitch."
+      ],
+      "text": [
+        "La fiecare poartă a traseului stă un antrenor al arenei. Treci de proba fiecăruia, apoi Bea te așteaptă pe teren."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Stow-on-Side Stadium! Allister's gym mission is through the doors behind me. Don't be frightened!"
+      ],
+      "text": [
+        "Bine ai venit la Stadionul Stow-on-Side! Misiunea arenei lui Allister e dincolo de ușile din spatele meu. Nu te speria!"
+      ]
+    },
+    {
+      "en": [
+        "A masked gym trainer stands at each of the course's gates. Pass each one's test, then Allister awaits on the pitch."
+      ],
+      "text": [
+        "La fiecare poartă a traseului stă un antrenor mascat al arenei. Treci de proba fiecăruia, apoi Allister te așteaptă pe teren."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on your fourth badge! Ballonlea is through Glimwood Tangle, east of town."
+      ],
+      "text": [
+        "Felicitări pentru a patra insignă! Ballonlea e dincolo de Glimwood Tangle, la est de oraș."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul arenei"
+      ]
+    },
+    {
+      "en": [
+        "Bea's Fighting types hit hard. Flying, psychic and fairy moves will take them down a peg!"
+      ],
+      "text": [
+        "Pokémonii de tip Luptă ai lui Bea lovesc tare. Atacurile de Zbor, Psihic și Zână îi vor mai potoli!"
+      ]
+    },
+    {
+      "en": [
+        "Allister's Ghost types play tricks. Dark and ghost moves will see right through them!"
+      ],
+      "text": [
+        "Pokémonii de tip Fantomă ai lui Allister fac farse. Atacurile de Întuneric și Fantomă îi vor da de gol!"
+      ]
+    },
+    {
+      "en": [
+        "Four badges! Halfway to the Champion Cup. Ballonlea is through the glowing wood to the east."
+      ],
+      "text": [
+        "Patru insigne! La jumătatea drumului spre Cupa Campionilor. Ballonlea e dincolo de pădurea care strălucește, spre est."
+      ]
+    }
+  ]
+}
