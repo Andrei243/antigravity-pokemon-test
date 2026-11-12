@@ -297,7 +297,7 @@ public class TmMakerTests
             var screen = game.CraftingScreen;
             Assert.Equal(GameState.Crafting, game.State);
             Assert.Equal(CraftingTab.Machines, screen.Tab);
-            Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Machines }, screen.Tabs);
+            Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Machines, CraftingTab.Crosses }, screen.Tabs);
             Assert.Equal("TM27", screen.SelectedMachine!.Name);
 
             screen.Confirm();
@@ -323,7 +323,7 @@ public class TmMakerTests
             Assert.Equal(CraftingTab.Materials, screen.Tab);
             screen.Cancel();
             game.OpenCrafting();
-            Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make }, screen.Tabs);
+            Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Crosses }, screen.Tabs);
             Assert.Empty(screen.Machines);
             screen.Confirm();
             Assert.Equal(1, game.Bag.GetQuantity(Item("TM27")));

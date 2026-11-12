@@ -3,6 +3,10 @@
   // (one trainer of HeartGold's table carried by both twins). Its three Apricorn trees are plan 20 · J6's and the
   // Wednesday sibling a later chapter's
   "area": "route_37",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_37.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 392, "y": 215, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
 
   // Plan 40 · GE3: SoulSilver's Ledyba and Vulpix, once the National Pokédex is had
 

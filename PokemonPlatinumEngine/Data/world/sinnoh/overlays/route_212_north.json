@@ -1,5 +1,9 @@
 {
   "area": "route_212_north",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_212_north.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 465, "y": 783, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
   // The Pokémon Mansion's hall, on the original's plan (plan 01 · M11, part b): its back door leads to the Trophy Garden

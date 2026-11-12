@@ -58,6 +58,8 @@ public sealed partial class ScriptRunner
 
     // What the patch of soil the script belongs to holds, as berry status and berry mulched last read it (plan 06 · R14a)
     private string berryName = "", mulchName = "";
+    // The berry the last harvest crossed into (plan 39 · CR5), "" for none: `{crossed}`
+    private string crossed = "";
     // The Apricorn last named by a script, the ball it makes and how many (plan 20 · J6)
     private string apricornName = "", apricornBall = "";
     private int apricornCount;
@@ -154,6 +156,7 @@ public sealed partial class ScriptRunner
         afterBusy = null;
         lastOutcome = BattleOutcome.None;
         Result = 0;
+        potPatch = null;
         chosenMember = null;
         EndedInDefeat = false;
         turns = 0;
@@ -2067,6 +2070,9 @@ public sealed partial class ScriptRunner
         }
     }
 
+    // Which of Johto's Berry Pots the script is tending (plan 39 · CR5: `berry pot`), in place of the soil it belongs to
+    private int? potPatch;
+
     private void Berry(Instruction i)
     {
         var patches = host.Berries;
@@ -2076,7 +2082,19 @@ public sealed partial class ScriptRunner
             Result = host.Bag.AllItems.Any(s => s.Quantity > 0 && UI.BagScreen.Fits(what, s.Data)) ? 1 : 0;
             return;
         }
-        int id = Subject?.BerryPatch ?? throw Wrong(i, "this script belongs to no patch of soil");
+        // The pot chosen from the four (RESULT 0 to 3): the berry words that follow tend it
+        if (i.Name == "pot")
+        {
+            potPatch = BerryPatches.PotFirst + Math.Clamp(Result, 0, BerryPatches.PotCount - 1);
+            return;
+        }
+        // Whether the last harvest held a cross (plan 39 · CR5), `{crossed}` naming it
+        if (i.Name == "crossed")
+        {
+            Result = crossed.Length > 0 ? 1 : 0;
+            return;
+        }
+        int id = potPatch ?? Subject?.BerryPatch ?? throw Wrong(i, "this script belongs to no patch of soil");
         var patch = patches[id];
         switch (i.Name)
         {
@@ -2102,6 +2120,10 @@ public sealed partial class ScriptRunner
                 // The game's record of berries planted, which the Villa's catalogue asks (plan 06 · R16b)
                 host.Pastimes.BerriesPlanted++;
                 berryName = berry.Name;
+                // With the crafting kit in the bag, a berry beside another of a pair of the table notes the cross on both
+                // (plan 39 · CR5); without it nothing is noted
+                if (HasCraftingKit())
+                    BerryCrossing.Note(patches, id, potPatch != null ? BerryCrossing.PotsBeside(id) : host.PatchesBeside(Subject!));
                 break;
             }
             case "mulch":
@@ -2115,14 +2137,27 @@ public sealed partial class ScriptRunner
             }
             case "pick":
             {
+                // A patch with a cross noted rolls once, before it is picked bare, for one of its fruit to be the cross
+                // (plan 39 · CR5); a patch with none draws nothing
+                string? cross = patch.Cross;
                 var (berry, count) = patches.Pick(id);
                 Result = 0;
+                crossed = "";
                 if (berry == null || count <= 0 || ItemDatabase.Get(berry) is not { } item) break;
-                host.Bag.AddItem(item, count);
+                int crossCount = BerryCrossing.Roll(cross, count, host.Chance);
+                if (crossCount > 0 && ItemDatabase.Get(cross!) is { } crossItem)
+                {
+                    host.Bag.AddItem(crossItem, crossCount);
+                    host.Crafting?.FoundCross(crossItem.Name);
+                    crossed = crossItem.Name;
+                    count -= crossCount;
+                }
+                if (count > 0) host.Bag.AddItem(item, count);
                 lastItem = item.Name;
                 berryName = item.Name;
-                berryYield = count;
-                Result = count;
+                // ("picked 3 × Cheri Berry", and then "one of them had crossed into ...")
+                berryYield = count + crossCount;
+                Result = count + crossCount;
                 break;
             }
         }
@@ -2664,6 +2699,7 @@ public sealed partial class ScriptRunner
             "item" => NameOfItem(lastItem),
             "berry" => NameOfItem(berryName),
             "yield" => berryYield.ToString(),
+            "crossed" => NameOfItem(crossed),
             "apricorn" => apricornName,
             "ball" => apricornBall,
             "apricorns" => apricornCount.ToString(),

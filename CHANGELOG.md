@@ -5,6 +5,9 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- With the crafting kit in your bag, rocks, fallen logs, herb bushes, heaps of shells and snow drifts appear along the routes of every region you can travel to. Each gives you something for the kit once a day, and cutting a tree or smashing a rock sometimes leaves wood or stone too.
+- Berries planted side by side can now cross into rare berries, as long as you carry the crafting kit. The kit's new CROSSES page shows every cross and which berries make it. In Goldenrod, the florist gives kit holders four Berry Pots to grow berries in wherever you go.
+- Waiters in the Seven Stars Restaurant, Celadon City's restaurant and the Olivine Café, and stall keepers in Slateport's market and on Castelia's avenue, now serve meals for your whole team and sell cooking goods, once you have the crafting kit.
 - The hub's halls are open. The Laurel Gallery keeps every region's Hall of Fame: a plinth for each region you've crowned, each showing that region's first team and every team since. The PC's Hall of Fame now has a tab for each region.
 - The Laurel Circuit: at the Gallery's desk you can go back to every League you've won and fight its Elite Four and Champion again, all at one level, then face every Champion in a row in the Laurel Court. Each circuit you win makes the next one harder and earns a title and a medal.
 - Looker has opened the Open Door Agency in the hub, half in disguise as a clerk. He takes a case in each region you've crowned (Sinnoh, Kanto, Johto, Hoenn, Unova and Kalos): find the clues, tell him what they mean, and face the culprit. The cases show on the requests page.

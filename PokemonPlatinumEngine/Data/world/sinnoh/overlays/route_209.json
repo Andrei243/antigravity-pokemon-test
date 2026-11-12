@@ -1,5 +1,9 @@
 {
   "area": "route_209",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_209.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 551, "y": 694, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",
   // The gate to Hearthome City, where the rival waits once Fantina is beaten (plan 02 · S7), built to the original's plan,

@@ -23,6 +23,9 @@ public sealed partial class ScriptRunner
     private string materialId = "";
     private int materialCount;
 
+    /// <summary>Whether the crafting kit is in the bag: nothing of plan 39 happens without it.</summary>
+    private bool HasCraftingKit() => ItemDatabase.Get(GameEngine.CraftingKitItem) is { } kit && host.Bag.GetQuantity(kit) > 0;
+
     private void CraftCommand(Instruction i)
     {
         var kit = ItemDatabase.Get(GameEngine.CraftingKitItem);
@@ -48,6 +51,29 @@ public sealed partial class ScriptRunner
         {
             Result = held && pouch != null ? 1 : 0;
             if (Result == 1) host.Open(ScriptScreen.Crafting, Subject, "tm");
+            return;
+        }
+        // A gathering spot of the field (plan 39 · CR2): RESULT 1 with something taken today, `{material}` and
+        // `{materials}` naming it, or 0 when it has been picked today. Nothing, and no draw, without the kit
+        if (i.Name == "gather")
+        {
+            Result = 0;
+            if (!held || pouch == null || Subject?.GatherKind is not { } kind) return;
+            string spot = Gathering.KeyOf(Subject.ScriptFile ?? place, Subject.Key ?? Subject.Name);
+            if (Gathering.Pick(host.Crafting!, spot, kind, ApricornBox.DayOf(GameClock.Today), host.Chance) is not { } found) return;
+            (materialId, materialCount) = (found.Id, found.Count);
+            Result = 1;
+            return;
+        }
+        // A tree cut or a rock smashed with the kit in the bag (plan 39 · CR2): one time in three, a piece of its
+        // material (RESULT 1, `{material}` naming it); without the kit nothing and no draw
+        if (i.Name == "cleared")
+        {
+            Result = 0;
+            if (!held || pouch == null) return;
+            if (Gathering.Cleared(pouch, i.Other == "tree", host.Chance) is not { } left) return;
+            (materialId, materialCount) = (left.Id, left.Count);
+            Result = 1;
             return;
         }
         if (i.Name == "open")

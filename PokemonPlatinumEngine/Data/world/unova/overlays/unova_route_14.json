@@ -6,6 +6,10 @@
   // which is not open, and stays shut. Black 2's trigger by the falls (715, 352) belongs to a scene of the old roads and
   // has no script here
   "area": "unova_route_14",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "unova_route_14.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 732, "y": 351, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "unova/route14",
   "people": {
     "0": { "name": "Glinda", "trainer": { "dialogueBefore": "I train by running the length of this valley every morning. You're my warm-down!", "dialogueAfter": "Some warm-down. I'm the one who's beaten." } },

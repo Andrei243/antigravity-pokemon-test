@@ -2,6 +2,10 @@
   // Route 9 (plan 19 · K5, part a): east from Cerulean City to Rock Tunnel, its trainers FireRed's. The tree at its
   // west end falls to Cut
   "area": "route_9",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_9.gather", "name": "Rock", "npcType": "GatherRock", "x": 355, "y": 59, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "kanto/route3",
   "trees": "Round",
   "people": {

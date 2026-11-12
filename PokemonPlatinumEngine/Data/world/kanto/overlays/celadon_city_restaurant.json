@@ -2,6 +2,10 @@
   // Celadon City's restaurant (plan 19 · K5, part b): the man down on his luck gives his Coin Case away
   // (celadon_city_restaurant.txt)
   "area": "celadon_city_restaurant",
+  // A meal for the team (plan 39 · CR7; the place's MealStand script), shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "celadon_city_restaurant.meal_stand", "name": "Waiter", "npcType": "Waiter", "x": 9, "y": 8, "facing": "Left", "script": "MealStand", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "kanto/celadon",
   "people": {
     "balding_man": { "name": "Man", "script": "CoinCaseMan" },

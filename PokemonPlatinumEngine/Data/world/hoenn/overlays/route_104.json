@@ -4,6 +4,10 @@
   // 21 · H3) and the Pretty Petal flower shop on the northern half. The rival who waits by the cottage when not met in
   // Rustboro is still to come
   "area": "route_104",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_104.gather", "name": "Shells", "npcType": "GatherShore", "x": 18, "y": 207, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
   "people": {

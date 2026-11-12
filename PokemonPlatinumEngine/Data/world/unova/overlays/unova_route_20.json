@@ -3,6 +3,10 @@
   // The Pokémon Rangers who come in a later season and the Cave of Being are later sessions'; the gate to Virbank City
   // and Team Plasma's grunt are plan 22 · U5, part b's
   "area": "unova_route_20",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "unova_route_20.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 154, "y": 662, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "unova/route19",
   "trees": "Round",
   // Plan 22 · U10, the last part: the stream that runs down into the Cave of Being's pond meets its lower stretch only at a

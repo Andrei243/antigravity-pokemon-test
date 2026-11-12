@@ -1,5 +1,9 @@
 {
   "area": "route_217",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_217.gather", "name": "Snow drift", "npcType": "GatherSnow", "x": 304, "y": 327, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route216",
   "trees": "Pine",
   // The rock crusted with ice stands on this route: Eevee become Glaceon here, as the original's table of places says.

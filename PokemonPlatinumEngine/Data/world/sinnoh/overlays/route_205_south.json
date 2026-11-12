@@ -1,5 +1,9 @@
 {
   "area": "route_205_south",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_205_south.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 207, "y": 638, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route205",
   "trees": "Pine",
   // Plan 01 · M11, part a: rooms on the original's plans

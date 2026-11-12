@@ -2,6 +2,10 @@
   // Route 11 (plan 19 · K4, part b): east of Vermilion City, a road of Gamers and Engineers. Its gate east is open
   // to its upper floor; the way on to Route 12 is plan 19 · K5's
   "area": "route_11",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_11.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 345, "y": 221, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "kanto/route11",
   "people": {
     "youngster": {

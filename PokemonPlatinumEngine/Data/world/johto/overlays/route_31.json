@@ -3,6 +3,10 @@
   // the Dark Cave (warp 2, open since plan 20 · J10) lie at its two ends. Bug Catcher Wade's team is
   // read from Johto's trainers.json; the man who wants his mail taken is plan 20 · J4's
   "area": "route_31",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_31.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 542, "y": 274, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
 
   // Plan 40 · GE3: SoulSilver's Ledyba, once the National Pokédex is had
 

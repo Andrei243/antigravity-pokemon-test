@@ -9,6 +9,8 @@
   "area": "unova_route_22",
   // A Hidden Grotto's mouth in a notch of the trees (plan 22 · U11: grottoes.json, common.GrottoMouth)
   "npcs": [
+    // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+    {"id": "unova_route_22.gather", "name": "Rock", "npcType": "GatherRock", "x": 746, "y": 139, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"},
     { "id": "grotto_mouth_7", "name": "Hollow", "npcType": "GrottoHollow", "x": 720, "y": 136, "facing": "Down", "script": "GrottoMouth" }
   ],
   "bgmTrack": "unova/route12",

@@ -702,6 +702,8 @@ public class StoryTests
         // Wild Pokémon (plan 06 · R13): a honey tree, Honey from the bag and poison's survivors (the assistant's sister's
         // news of swarms is called by her own script since her house was built, plan 01 · M11)
         started.UnionWith(new[] { FieldScripts.HoneyTree, FieldScripts.UseHoney, FieldScripts.PoisonSurvived });
+        // Johto's Berry Pots, used from the bag (plan 39 · CR5)
+        started.Add(FieldScripts.BerryPots);
         // Two trainers who saw the player at once (plan 02 · S6)
         started.Add(FieldScripts.TrainerPair);
         // An Egg hatching at the end of a step (plan 06 · R15)

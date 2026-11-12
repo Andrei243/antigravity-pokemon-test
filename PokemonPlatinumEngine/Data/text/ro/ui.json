@@ -6258,12 +6258,22 @@
     }
   },
   "crafting": {
+    "cross": {
+      "unknown": "?????",
+      "found": "GĂSITĂ",
+      "count": "{n} / {of}",
+      "pair": "Două boabe diferite, cu gustul cel mai puternic {flavour}, plantate una lângă alta.",
+      "beside": "{berry} plantată lângă o boabă al cărei gust cel mai puternic e {flavour}.",
+      "how": "Cu trusa în rucsac, plantează-le în soluri sau ghivece alăturate. Din când în când, o recoltă aduce una."
+    },
+    "flavour": { "spicy": "iute", "dry": "sec", "sweet": "dulce", "bitter": "amar", "sour": "acru" },
     "title": "TRUSA DE CREAȚIE",
     "tab": {
       "materials": "MATERIALE",
       "machines": "TM-URI",
       "make": "CREEAZĂ",
-      "pantry": "CĂMARĂ"
+      "pantry": "CĂMARĂ",
+      "crosses": "ÎNCRUCIȘĂRI"
     },
     "hint": {
       "make": "Creează",

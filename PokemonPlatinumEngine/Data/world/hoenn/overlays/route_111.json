@@ -8,6 +8,10 @@
   // lobby (plan 21, part l: TrainerHillLobby, a room of ours); Gabby and Ty come by turns on this
   // route, 118 and 120 (plan 21 · H6, part c: GabbyAndTyUpdateLocation in common.txt)
   "area": "route_111",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_111.gather", "name": "Rock", "npcType": "GatherRock", "x": 220, "y": 61, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "ours": { "land": [ ["Saguarox", 148, 152] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",

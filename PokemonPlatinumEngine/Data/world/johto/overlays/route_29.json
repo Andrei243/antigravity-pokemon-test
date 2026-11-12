@@ -3,6 +3,10 @@
   // side (Route 46 itself opened with plan 20 · J10, beyond the gate house). The Apricorn tree is J6's, and
   // the girl who is here only on Tuesdays plan 20 · J13's
   "area": "route_29",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_29.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 616, "y": 403, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "johto/route29",
   "trees": "Round",
   // The catching lesson at New Bark Town's edge (HeartGold's trigger 0; route_29.txt, plan 20 · J4)

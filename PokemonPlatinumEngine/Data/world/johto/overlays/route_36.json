@@ -7,6 +7,10 @@
   // sister waits by the tree until then; the man by the gate gives HM06, and Arthur of Thursday stands here on
   // Thursdays. The Apricorn tree is plan 20 · J6's
   "area": "route_36",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_36.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 382, "y": 240, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
 
   // Plan 40 · GE3: SoulSilver's Vulpix, where HeartGold has Growlithe, once the National Pokédex is had
 

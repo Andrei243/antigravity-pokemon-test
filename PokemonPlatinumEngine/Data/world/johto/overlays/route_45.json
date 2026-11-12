@@ -3,6 +3,10 @@
   // Dark Cave's back way in. Its seven trainers by their own records; its Apricorn tree is plan 20 · J6's and the
   // photographer plan 20 · J11's. It plays Route 34's song, as HeartGold's header shares it
   "area": "route_45",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_45.gather", "name": "Rock", "npcType": "GatherRock", "x": 649, "y": 277, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
 
   // Plan 40 · GE3: SoulSilver's Teddiursa and Skarmory, where HeartGold has Phanpy and Gligar, once the National Pokédex is had
 

@@ -758,6 +758,23 @@
     "canBeRegistered": true,
     "fieldUse": "CraftingKit"
   },
+  // Johto's Berry Pots (plan 39 · CR5; HeartGold's key item of four pots, which plan 20 · J7 left out): given by Goldenrod's
+  // florist to a player with the crafting kit, used from the bag wherever the player is (common.BerryPots); berries grown in
+  // two pots side by side cross as two soils do. Id 9901, after the kit
+  "Berry Pots": {
+    "new": true,
+    "id": 9901,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Four little pots of soil in a row, with a watering can. Berries can be grown in them wherever you go.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "BerryPots"
+  },
   // Plan 36 · TR3: the training tools the import carries at its placeholder price of 20, priced as ours so that the
   // training hall's stall sells them and every counter buys them back at half (docs/mechanics/rulings.md, "Peak training
   // and the training tools"). The mints and the Ability Patch are sold for Battle Points too (Data/training.json)

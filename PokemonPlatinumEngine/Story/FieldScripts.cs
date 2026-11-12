@@ -28,6 +28,12 @@ public static class FieldScripts
     public const string BerryPatch = "common.BerryPatch";
     public const string ApricornTree = "common.ApricornTree";
 
+    /// <summary>Johto's Berry Pots used from the bag (plan 39 · CR5): one of the four chosen, and planted, watered or picked.</summary>
+    public const string BerryPots = "common.BerryPots";
+
+    /// <summary>A gathering spot of the field (plan 39 · CR2): what it gives today, once a calendar day.</summary>
+    public const string Gather = "common.Gather";
+
     /// <summary>A Pokémon standing in the field (plan 10 · F1): its cry, then its lines.</summary>
     public const string Pokemon = "common.Pokemon";
 
@@ -103,6 +109,7 @@ public static class FieldScripts
         if (npc.IsItemBall) return ItemBall;
         if (npc.IsBerrySoil) return BerryPatch;
         if (npc.IsApricornTree) return ApricornTree;
+        if (npc.IsGatherSpot) return Gather;
         if (npc.IsPokemon) return Pokemon;
         if (npc.Obstacle is { } obstacle)
             return obstacle switch { PropType.CutTree => CutTree, PropType.CrackedRock => Rock, _ => Boulder };

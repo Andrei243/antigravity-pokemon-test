@@ -15,3 +15,34 @@ script CoinCaseMan
 label Done
   say "Slot machines are a mug's game. Mark my words!"
   end
+
+
+# A meal for the team (plan 39 · CR7): three dishes of ours from recipes.json's `stands`, each eaten there and then
+# (`craft meal`), its price taken first; and the pantry's goods for the camp's pot. Shown once the crafting kit is in
+# the bag (FLAG_GOT_CRAFTING_KIT).
+script MealStand
+  face self player
+  speaker "Waiter"
+  say "Welcome! Today's specials are for Pokémon and Trainer alike. The whole team eats, here and now."
+  choose "What will it be?" "Bean Hotpot, 1,600" "Potato Hash, 1,800" "Honey Oat Cakes, 2,000" "The pantry" "Nothing, thanks"
+  if result == 4 goto Bye
+  if result == 3 goto Pantry
+  setvar VAR_TEMP_1 RESULT
+  if var VAR_TEMP_1 == 0 takemoney 1600
+  if var VAR_TEMP_1 == 1 takemoney 1800
+  if var VAR_TEMP_1 == 2 takemoney 2000
+  if result == 0 goto Short
+  if var VAR_TEMP_1 == 0 craft meal "beanHotpot"
+  if var VAR_TEMP_1 == 1 craft meal "potatoHash"
+  if var VAR_TEMP_1 == 2 craft meal "honeyOatCakes"
+  say "Enjoy! Every plate came back clean."
+  end
+label Pantry
+  say "We sell the same goods we cook with. Take what you like for your own pot."
+  craft pantry
+  end
+label Short
+  say "Oh dear, that's a little more than you have on you."
+label Bye
+  say "Come back when you're hungry!"
+  end
