@@ -159,6 +159,22 @@ internal static class GroundBaker
             return Hash(x / 8, y / 8, 632) % 3 == 0 ? Rgb(214, 188, 142) : Rgb(222, 198, 154);
         }
 
+        if (style == InteriorStyle.Field)
+        {
+            // A sports ground's turf: stripes two tiles wide mown the two ways, a darker blade in pairs of texels now and then
+            bool light = x / 64 % 2 == 0;
+            var (mown, against) = (Rgb(98, 166, 78), Rgb(86, 150, 68));
+            var tone = light ? mown : against;
+            return Hash(x / 2, y / 2, 641) % 23 == 0 ? PixelCanvas.Shadow(tone, 0.12f) : tone;
+        }
+
+        if (style == InteriorStyle.Court)
+        {
+            // A hard court: blue-green in two close tones in patches of eight, a lighter fleck in pairs of texels
+            var tone = Hash(x / 8, y / 8, 651) % 3 == 0 ? Rgb(74, 132, 128) : Rgb(80, 140, 134);
+            return Hash(x / 2, y / 2, 652) % 41 == 0 ? PixelCanvas.Light1(tone, 0.2f) : tone;
+        }
+
         if (style == InteriorStyle.GameHall)
         {
             // The Game Corner's carpet: deep red, a small gold lozenge in the middle of every tile, a darker seam between them
@@ -416,6 +432,8 @@ internal static class GroundBaker
             InteriorStyle.Aerie => (Rgb(196, 222, 244), Rgb(246, 250, 255), Tone.Of(150, 108, 70), Tone.Of(240, 244, 250), Tone.Of(96, 68, 46)),
             // A Battle Tent's canvas: cream and red stripes, a rope-coloured rail over a hem of deep red canvas
             InteriorStyle.Tent => (Rgb(242, 228, 198), Rgb(200, 70, 60), Tone.Of(150, 50, 44), Tone.Of(214, 180, 120), Tone.Of(96, 64, 40)),
+            // A sports ground's stands: pale concrete with a grey motif over a padded wall of deep green, a white rail
+            InteriorStyle.Field or InteriorStyle.Court => (Rgb(214, 214, 206), Rgb(190, 192, 186), Tone.Of(46, 104, 70), Tone.Of(244, 244, 240), Tone.Of(32, 70, 50)),
             _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
         };
 

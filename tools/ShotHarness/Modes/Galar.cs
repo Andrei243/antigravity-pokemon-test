@@ -55,6 +55,45 @@ partial class Harness
             ShootAt(galar, "ga87b_rose_tower_darkest_day", "rose_tower_back");
             game.Story.Unset("FLAG_GALAR_DARKEST_DAY");
         }
+        // The landmarks themselves: a door's marker faces out of its door, so the shots above have the building behind the
+        // camera. These stand the player back from each landmark on the marker's side and turn the camera to it.
+        foreach (var (shot, marker, tx, tz, back) in new (string, string, double, double, double)[]
+        {
+            ("ga88_hammerlocke_stadium_front", "hammerlocke_stadium_door", 68, -1256, 46),
+            ("ga88b_hammerlocke_vault", "hammerlocke_south_gate", -19, -1261, 40),
+            ("ga89_stow_mural_front", "stow_mural_back", -132, -1385, 26),
+            ("ga89b_stow_stadium_front", "stow_stadium_door", -64, -1385, 40),
+            ("ga90_ballonlea_front", "ballonlea_center_door", 40, -1360, 44),
+            ("ga91_circhester_stadium_front", "heros_bath", 104, -1510, 50),
+            ("ga92_spikemuth_stage", "spikemuth_gate", -134, -1421, 22),
+            ("ga93_wyndon_stadium_front", "wyndon_stadium_door", 0, -1609, 40),
+            ("ga94_rose_tower_front", "rose_tower_back", 96, -1610, 58),
+        })
+            ShootToward(galar, shot, marker, tx, tz, back);
+        if (Wanted("ga95_rose_tower_darkest_day_front"))
+        {
+            game.Story.Set("FLAG_GALAR_DARKEST_DAY");
+            ShootToward(galar, "ga95_rose_tower_darkest_day_front", "rose_tower_back", 96, -1610, 58);
+            game.Story.Unset("FLAG_GALAR_DARKEST_DAY");
+        }
+    }
+
+    /// <summary>The player stood <paramref name="back"/> metres from a landmark, on its marker's side, facing it.</summary>
+    void ShootToward(PokemonPlatinumEngine.OpenWorld.OpenMap galar, string shot, string marker, double tx, double tz, double back)
+    {
+        if (!Wanted(shot)) return;
+        if (galar.Marker(marker) is not { } m) { Console.WriteLine($"!! Galar has no marker {marker}"); return; }
+        double mx = m.Pos.X / 1000.0, mz = m.Pos.Z / 1000.0;
+        double dx = mx - tx, dz = mz - tz, len = Math.Sqrt(dx * dx + dz * dz);
+        if (len < 0.001) { dx = 0; dz = 1; len = 1; }
+        double x = tx + dx / len * back, z = tz + dz / len * back;
+        var at = OnLabGround(galar, x, z, 90, 0);
+        double yaw = Math.Atan2(tx - x, tz - z) * 180 / Math.PI;
+        PutInLab(galar, at, yaw, yaw);
+        game.LocationSign.Hide();
+        Frames(40);
+        Shot(shot);
+        Console.WriteLine($"  {shot}: {back} m from ({tx}, {tz}) by {marker}, {galar.AreaAt(at)?.Key ?? "no area"}");
     }
 
     void ShootAt(PokemonPlatinumEngine.OpenWorld.OpenMap galar, string shot, string marker)
