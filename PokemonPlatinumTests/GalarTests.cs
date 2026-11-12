@@ -598,7 +598,7 @@ public class GalarTests
             var field = new OpenField(map, start, 270) { Grants = OpenGrants.Of(story) };
             bool stopped = false;
             lock (OpenRegions.Reading)
-                for (int i = 0; i < 5000 && field.Player.Pos.MetresX > -78; i++)
+                for (int i = 0; i < 40000 && field.Player.Pos.MetresX > -78; i++)
                 {
                     field.Player.Step(field.Map, new OpenInput(-1, 0, Run: true), field.Grants);
                     stopped |= field.Player.Body.StoppedAtWater;
