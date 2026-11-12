@@ -276,7 +276,11 @@ internal sealed class FieldRigs
         var at = f.Feet;
         // A grown swimmer treads water with the water at its shoulders: its feet sunk under the surface its sprite was set
         // at by that much of it, stretched as it is drawn (plan 30, the gate's owed)
-        if (f.Pose.Stance == Overworld.Stance.Swim && f.Seating is { } water)
+        // A grown rider of a ride on land is handed the seat on its back: the rig's root goes under it by the saddle's
+        // height, as the open world's mount puts it (GrownAnimation.SaddleOf), so the hips sit on the back and the legs hang
+        if (f.Pose.Riding == Riding.Mount)
+            at -= new Vector3(0f, GrownAnimation.SaddleOf(rig.Skeleton) * rig.Scale * vs, 0f);
+        else if (f.Pose.Stance == Overworld.Stance.Swim && f.Seating is { } water)
             at = water.Stood - new Vector3(0f, CharacterSprites.WaterLineHeight(rig) * vs, 0f);
         else if (f.Seating is { } seating && f.Pose.Stance != Overworld.Stance.Stand)
             at = FieldRigChoice.GrownSeated(seating.Stood, f.Pose.Stance, seating.Facing, seating.Seat, seating.Raised,
