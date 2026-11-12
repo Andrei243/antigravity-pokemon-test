@@ -15399,6 +15399,18 @@ way -
   Anyone> This ship goes to Kanto.
   Anyone> Only trainers who have entered Sinnoh's Hall of Fame may come aboard. Come back when you're Champion!
   * open Travel
+=== common.BedroomPC
+from a trainer with lines of their own
+way 0
+  > Lucas turned on the computer.
+  > Decorate your room with things from your decoration PC?
+  ? Decorate your room with things from your decoration PC? = Yes
+  * sound pc_on
+  * openbase bedroom
+  * sound pc_off
+way 1, from answer 1
+  ? Decorate your room with things from your decoration PC? = No
+  * sound pc_off
 === common.BerryPatch
 from a berry patch at Blooming, Growth mulch, faced Left, a bag of what it takes
 from a berry patch at Blooming, Growth mulch, faced Left, an empty bag
