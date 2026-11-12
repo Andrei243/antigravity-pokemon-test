@@ -340,6 +340,40 @@ public class FreeMovementTests
     }
 
     [Fact]
+    public void SomeoneSpokenToDiagonallyIsFacedAndNotTheNearestOfFourWays()
+    {
+        var map = Lawn();
+        var player = Free(5, 5);
+        var walk = new Walk();
+        walk.Hold(player, map, Way(0, -1), 1);
+        for (int f = 0; f < 60; f++) player.StandStill(Frame);
+        Assert.Equal(Direction.Up, player.Facing);
+        // North-east of the body: faced along the diagonal, the facing kept since the way is exactly between two
+        player.TurnToFace(6, 4);
+        Assert.Equal(FreeMovement.YawOf(Vector2.Normalize(new Vector2(1, -1))), player.Yaw, 3);
+        Assert.Equal(Direction.Up, player.Facing);
+        // Further round (two east, one north): the facing becomes the nearer cardinal
+        player.TurnToFace(7, 4);
+        Assert.Equal(Direction.Right, player.Facing);
+        // From off the tile's centre, held while the talk has the field: the body eases onto the centre and keeps the yaw
+        var off = Free(5, 5);
+        walk.Hold(off, map, Way(0.4f, 0.9f), 2);
+        if (off.IsMoving) for (int f = 0; f < 120 && off.IsMoving; f++) off.StandStill(Frame);
+        off.TurnToFace(off.GridX + 1, off.GridY - 1);
+        float aimed = off.Yaw;
+        for (int f = 0; f < 120; f++) off.StandStill(Frame);
+        Assert.Equal((0, 0), off.Offset);
+        Assert.Equal(aimed, off.Yaw, 3);
+        Assert.Equal(FreeMovement.YawOf(Vector2.Normalize(new Vector2(1, -1))), aimed, 3);
+        // On the grid nothing turns
+        var grid = new Player(5, 5);
+        grid.SetPosition(5, 5, Direction.Left);
+        float before = grid.Yaw;
+        grid.TurnToFace(6, 4);
+        Assert.Equal((Direction.Left, before), (grid.Facing, grid.Yaw));
+    }
+
+    [Fact]
     public void AScriptsWalkAndATrainersHoldCentreTheBodyFirst()
     {
         var map = Lawn();

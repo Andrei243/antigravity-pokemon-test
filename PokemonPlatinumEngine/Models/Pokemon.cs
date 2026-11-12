@@ -539,6 +539,12 @@ public class Pokemon
     public int Pokerus { get; set; }
 
     /// <summary>
+    /// The days a Furfrou's trim has left (plan 23, "Finishing Kalos"; <see cref="FormRules.Trim"/>): five as the groomer
+    /// gives it, one fewer each day that passes, and the trim grown out at nought. 0 for anyone untrimmed.
+    /// </summary>
+    public int TrimDays { get; set; }
+
+    /// <summary>
     /// The six marks the PC's boxes put on a Pokémon to sort it by (plan 06 · R12): a bit each for the circle,
     /// triangle, square, heart, star and diamond (<see cref="Markings"/>).
     /// </summary>
@@ -1439,6 +1445,7 @@ public class Pokemon
         Ball = other.Ball;
         OriginalTrainer = other.OriginalTrainer;
         Pokerus = other.Pokerus;
+        TrimDays = other.TrimDays;
         Marks = other.Marks;
         CapsuleId = other.CapsuleId;
         Capsule = other.Capsule;

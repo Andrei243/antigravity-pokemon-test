@@ -12,7 +12,7 @@ partial class Harness
     // battle is won (the foes are left a single HP at each menu, the lead kept whole). It prints each event's field and
     // bracket, who met whom headless and who won, the record and the Battle Points, and whether the save is byte for byte
     // what it was but for its record (the plan's "Done when").
-    public void VenuesTournament(bool fresh)
+    public void VenuesTournament(bool fresh, bool kalos = false)
     {
         if (fresh)
         {
@@ -110,8 +110,9 @@ partial class Harness
             Frames(40);
             if (screen.Step == PokemonPlatinumEngine.UI.TournamentStep.Events)
             {
-                if (eventsShot != null) { Shot(eventsShot); eventsShot = null; }
+                if (eventsShot != null && !shootOnTheEvent) { Shot(eventsShot); eventsShot = null; }
                 for (int k = 0; k < eventToChoose; k++) { screen.Move(0, 1); Frames(2); }
+                if (eventsShot != null) { Frames(10); Shot(eventsShot); eventsShot = null; }
                 screen.Confirm();
                 Frames(4);
                 Console.WriteLine($"  event chosen: {screen.Answer}");
@@ -212,6 +213,33 @@ partial class Harness
 
         At(GameEngine.DomeLobbyMap, 12, 8, Direction.Right);
         Frames(30);
+
+        // ---- VENUES_FROM=kalos: Kalos's events alone (plan 23, "Finishing Kalos"'s owed shots; nothing before moves)
+        if (kalos)
+        {
+            int Index(string id) => TournamentDatabase.Events.ToList().FindIndex(e => e.Id == id);
+            Console.WriteLine($"  events offered: {string.Join(", ", TournamentDatabase.Events.Select(e => e.Id))}");
+            game.Story.Set("KalosHallOfFame");
+            // Kalos's Leaders on the list, its League's event locked behind them (vn40_pwt_kalos_events)
+            shootOnTheEvent = true;
+            eventsShot = "vn40_pwt_kalos_events";
+            bracketShot = "vn41_pwt_kalos_leaders_bracket";
+            PlayEvent(Index("kalosLeaders"), null, null);
+            // Kalos's League, opened by that title: Diantha always in, on the stage (vn42, vn43)
+            eventsShot = "vn42_pwt_kalos_league_open";
+            bracketShot = "vn43_pwt_kalos_league_bracket";
+            PlayEvent(Index("kalosChampion"), "vn44_pwt_diantha", "Diantha");
+            // Beyond the League, opened by World Champions: Diantha's team beyond (vn45, vn46)
+            records.Tournament.Titles["worldLeaders"] = 1;
+            records.Tournament.Titles["worldChampions"] = 1;
+            var beyond = TrainerDatabase.Get("kalos_diantha_beyond");
+            Console.WriteLine($"  Diantha beyond: {(beyond == null ? "!! no team" : string.Join("/", Tournament.ThreeOf(beyond).Select(p => $"{p.Species.Name} Lv{p.Level}")))}");
+            eventsShot = "vn45_pwt_beyond_open";
+            bracketShot = "vn46_pwt_beyond_bracket";
+            PlayEvent(Index("worldBeyond"), "vn47_pwt_diantha_beyond", "Diantha");
+            shootOnTheEvent = false;
+            return;
+        }
         string before = SaveButTheRecord();
 
         // ---- Sinnoh Leaders: the events, the pick, the bracket, three matches to the title
@@ -258,4 +286,7 @@ partial class Harness
 
     // The shot of the doubles event's first match at its menu (plan 14 · B12), taken by the battle's reader once
     private string? doublesShot;
+
+    // Whether the events' shot is taken with the cursor on the event to be chosen (VENUES_FROM=kalos) rather than at the top
+    private bool shootOnTheEvent;
 }

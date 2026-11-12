@@ -5052,6 +5052,10 @@
       "note": "first spoken at unova_pokemon_league_6.txt(12)",
       "provisional": true
     },
+    "groomer": {
+      "note": "first spoken at LumioseCity_GroomingSalon.txt(9)",
+      "provisional": true
+    },
     "guide_gent": {
       "note": "first spoken at cherrygrove.txt(21)",
       "provisional": true
@@ -11398,6 +11402,7 @@
     "Gordie": "gordie",
     "Grant": "grant",
     "Grimsley": "grimsley",
+    "Groomer": "groomer",
     "Grunt": "look:grunt",
     "Guard": "look:guard",
     "Guide": "look:gym_guide",

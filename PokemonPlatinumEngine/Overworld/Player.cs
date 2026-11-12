@@ -345,6 +345,25 @@ public class Player
         return (ahead == Standing ? faced : ahead, faced);
     }
 
+    /// <summary>
+    /// In a free place, turns the body at once to face a tile's middle from its own tile's middle (plan 30, the gate's owed:
+    /// someone spoken to diagonally is faced, not the nearest of the four ways); <see cref="Facing"/> becomes the cardinal
+    /// nearest that way, which the grid's rules read. On the grid, or moving, nothing changes.
+    /// </summary>
+    public void TurnToFace(int x, int y)
+    {
+        if (Directions != MovementDirections.Free || IsMoving) return;
+        // (aimed from the tile's centre, which a held body eases onto while the talk has the field, StandStill)
+        var way = new Vector2(FreeMovement.CentreOf(x) - FreeMovement.CentreOf(GridX), FreeMovement.CentreOf(y) - FreeMovement.CentreOf(GridY));
+        if (way.LengthSquared() < 1f) return;
+        way = Vector2.Normalize(way);
+        // (a way exactly between two cardinals keeps the one already faced, so a talk across a corner changes no facing)
+        var (fx, fy) = FieldMovement.Delta(Facing);
+        if (fx * way.X + fy * way.Y < 0.7071f) Facing = FreeMovement.NearestCardinal(way);
+        freeYaw = (FreeMovement.YawOf(way), Facing);
+        Yaw = freeYaw.Value.Yaw;
+    }
+
     /// <summary>The pace of the step under way, in tiles a second: what someone walking behind keeps up with.</summary>
     public float Stride => stride;
 

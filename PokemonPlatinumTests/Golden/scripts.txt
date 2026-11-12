@@ -6778,6 +6778,17 @@ way -
 from Évrard at 9,7 of LumioseCity_GrandeTable
 way -
   Évrard> Madame Ernestine takes the bill before the first course. That is how grand we are.
+=== LumioseCity_GroomingSalon.Groomer
+from Groomer at 5,4 of LumioseCity_GroomingSalon
+way 0
+  Groomer> A trim, a fluff, a little ribbon. Shall I give your Furfrou a new look? It's 500 dollars.
+  Groomer> Which one is the lucky Furfrou?
+  Groomer> Whenever its coat needs taming, you know where I am.
+  ? A trim, a fluff, a little ribbon. Shall I give your Furfrou a new look? It's 500 dollars. = Yes
+  * open ChoosePokemon Furfrou
+way 1, from answer 1
+  Groomer> Whenever its coat needs taming, you know where I am.
+  ? A trim, a fluff, a little ribbon. Shall I give your Furfrou a new look? It's 500 dollars. = No
 === LumioseCity_HatShop.Milliner
 from Milliner at 5,4 of LumioseCity_HatShop
 way -

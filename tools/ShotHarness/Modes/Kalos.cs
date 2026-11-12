@@ -33,6 +33,8 @@ partial class Harness
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "finished") { KalosFinished(); return; }
         // KALOS_FROM=garden: after Kalos finished, the palace garden, its fireworks, the castle tour and the designer (wk720 on, wks540 on), not part of the whole mode
         if (Environment.GetEnvironmentVariable("KALOS_FROM") == "garden") { KalosGarden(); return; }
+        // KALOS_FROM=owed: "Finishing Kalos"'s owed shots alone (kwb_band_*, kwo01, kwg01 to kwg03), not part of the whole mode
+        if (Environment.GetEnvironmentVariable("KALOS_FROM") == "owed") { KalosOwed(); return; }
         engine.NewGameRegion = "Kalos";
         engine.StartNewGame();
         game.State = GameState.Overworld;

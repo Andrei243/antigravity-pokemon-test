@@ -2446,6 +2446,14 @@ public sealed partial class ScriptRunner
                 Result = slot < 0 ? 255 : slot;
                 break;
             }
+            // Plan 23, "Finishing Kalos": Lumiose's groomer trims the Furfrou the variable names (its place, as choosepokemon
+            // gave it): RESULT 0 where that is no Furfrou, 1 trimmed, 2 in that trim already (its five days begin again)
+            case "trim":
+            {
+                int slot = Value(i.Record);
+                Result = slot < 0 || slot >= team.Count ? 0 : FormRules.Trim(team[slot], i.Other);
+                break;
+            }
             // ScrCmd_CheckPartyCombeeGenderCount: 0 with no Combee, 1 with one sex, 2 with both
             case "combee":
             {

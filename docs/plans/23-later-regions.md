@@ -156,9 +156,26 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   Kalos** (plan 30, "The gate's owed, settled"): `fw30`, `fw33`, `fw36` to `fw39` shot in the `kalosgrown` mode
   (`KALOSGROWN_FROM=walk`), with lying people, map fishers, Route 17's Mamoswine ridden and a live body under a deck as
   grown figures (`kg60` to `kg69`); Kalos has no ledge and no ice tile, so `fw31` and `fw32` have nothing to show.
-  **Still owed**: the World Tournament's Kalos events and a species of ours met in Kalos's grass on the harness (shots
+  **Still owed** then: the World Tournament's Kalos events and a species of ours met in Kalos's grass on the harness (shots
   only, the content is built and tested); `profile` with twelve live rigs and Lumiose's line on the Windows machine (the
   user's); the Friend Safari's other friends (plan 07); the user's look at the grown kit's Kalos and its gate.
+- **Kalos's last owed** (2026-11-12, later; the user's "do all that is left for Kalos"). A sweep of every "Left" of this
+  plan's Kalos bullets and the rulings found everything built since but two things of Kalos's own and the shots.
+  **Lumiose's groomer** trims a Furfrou of the team into one of the nine trims for 500 dollars, the trim lasting five days
+  on the team (`team trim`, `FormRules.Trim`, `TrimDaysPass`, `Pokemon.TrimDays` saved; rulings, "Lumiose's groomer and
+  Furfrou's trims"), the last of plan 06 · R29b's left; `KalosGroomerTests`. **The owed shots**, the `kalos` mode's
+  `KALOS_FROM=owed` (not part of the whole mode): the thirteen bands lit with their grown busts (`kwb_band_<name>`; four
+  cards changed where a bust sank into its light colour, Grant's, Ramos's, Valerie's and Wikstrom's, and a Leader's name
+  plate drawn over a grown bust's shoulder, which hid "Grant", "Olympia" and "Wulfric": style guide, the fifth table), a
+  species of ours met from Route 18's own slots of ours after the Hall of Fame (`kwo01`: Coronafrill at 197; `kg50` was a
+  hand-made battle on Route 2), and the groomer (`kwg01` to `kwg03`); the `venues` mode's `VENUES_FROM=kalos`: Kalos
+  Leaders on the events' list (`vn40`), its bracket (`vn41`), Kalos's League opened with Diantha seated (`vn42`, `vn43`)
+  and Beyond the League with Diantha's team beyond, Coronafrill, Signalmus and Faerieon (`vn45`, `vn46`; she went out in
+  the headless matches both times, so no `vn44`/`vn47` of her on the stage). All looked at. And plan 30's grown details
+  ("The gate's owed, settled", "Kalos's last owed"). **Left**, each another's or the user's: Cyllage's terraces are flat
+  (the drawings have no heights, MapDraw's legend has no layer for them: a tool's work, not Kalos's content); the Friend
+  Safari's other friends and Lumiose's online rooms (plan 07 · O7); `profile`'s Lumiose line and twelve live rigs (the
+  user's Windows machine); the user's look at the grown Kalos.
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
 

@@ -135,9 +135,21 @@ public class FieldScaleTests
         // Live in every stance since the gate's owed were shot: a swimmer treads water, a lier lies along the bed and a
         // fisher of the map holds the rod's look as the player does
         foreach (var stance in Enum.GetValues<Stance>()) Assert.True(FieldRigChoice.LiveIn(stance), $"{stance} is live");
-        // Far off, a sitter is an impostor of their own stance as a stander is; a swimmer, a lier or a fisher stays the sprite
-        Assert.True(FieldRigs.HasImpostor(Stance.Sit) && FieldRigs.HasImpostor(Stance.SitGround) && FieldRigs.HasImpostor(Stance.Stand));
-        Assert.False(FieldRigs.HasImpostor(Stance.Swim) || FieldRigs.HasImpostor(Stance.Lie) || FieldRigs.HasImpostor(Stance.Fish));
+        // Far off, everyone is an impostor of their own stance (since the gate's last owed: a swimmer, a fisher and a lier
+        // too), a tug baked as a fisher, the fisher's and the lier's frames wider than an upright body's
+        foreach (var stance in Enum.GetValues<Stance>()) Assert.True(FieldRigs.HasImpostor(stance), $"{stance} has an impostor");
+        Assert.Equal(FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Fish), FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Tug));
+        Assert.Equal((FieldRigs.ImpostorW, FieldRigs.ImpostorH), FieldRigs.ImpostorFrame(Stance.Swim));
+        Assert.True(FieldRigs.ImpostorFrame(Stance.Fish).W > FieldRigs.ImpostorW && FieldRigs.ImpostorFrame(Stance.Lie).W > FieldRigs.ImpostorFrame(Stance.Fish).W);
+        // A lier's card: facing the camera (south) the head lies north of the feet and its card is sunk by the neck seen
+        // into the picture; facing east the card's foot is the feet's and only the back's depth sinks it
+        var south = FieldRigs.LierCard(stood, 0f, 1.2f, 0.1f, 1.9f);
+        Assert.Equal(stood.Z - 1.2f, south.Z, 4);
+        Assert.Equal(stood.X, south.X, 4);
+        var east = FieldRigs.LierCard(stood, MathF.PI / 2f, 1.2f, 0.1f, 1.9f);
+        Assert.Equal(stood.Z, east.Z, 3);
+        Assert.Equal(stood.X, east.X, 3);
+        Assert.True(south.Y < east.Y && east.Y < stood.Y + 0.02f);
         // A lier's feet lie a body's length less the pillow ahead of their tile's middle, so the crown comes to the pillow
         var lying = FieldRigChoice.LieAlong(stood, Direction.Down, 1.5f);
         Assert.Equal(stood.Z + 1.5f - FieldRigChoice.PillowBehind, lying.Z, 4);

@@ -577,6 +577,9 @@ public class GrownAnimationTests
             ("ride swimming", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Swim, Astride = 0.28f, Time = 0.4f }),
             ("glide", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Glide, Astride = 0.28f, Time = 0.4f }),
             ("ride climbing", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Climb, Astride = 0.28f, Time = 0.4f }),
+            // The grid's ride on land holding the reins (plan 30, the gate's owed)
+            ("reins", new CharacterPose { Riding = Riding.Mount, RideStance = RideStance.Reins, Time = 0.4f }),
+            ("fish", new CharacterPose { Stance = Stance.Fish, Time = 0.4f }), ("tug", new CharacterPose { Stance = Stance.Tug, Time = 0.9f }),
             ("cheer", new CharacterPose { Emote = Emote.Cheer, EmoteTime = 0.7f, Time = 0.4f }),
             ("wave", new CharacterPose { Emote = Emote.Wave, EmoteTime = 0.8f, Time = 0.4f }), ("throw", new CharacterPose { Emote = Emote.Throw, EmoteTime = CharacterAnimation.ThrowRelease, Time = 0.4f })
         };

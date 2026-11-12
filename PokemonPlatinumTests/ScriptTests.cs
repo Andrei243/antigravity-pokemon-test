@@ -515,6 +515,7 @@ public class ScriptTests
           team deoxys "Deoxys-Speed"
           team ends "Wailord" "Relicanth"
           team rotom heat
+          team trim heart VAR_X
           setvar VAR_X RESULT
           nationaldex
           hall enough single

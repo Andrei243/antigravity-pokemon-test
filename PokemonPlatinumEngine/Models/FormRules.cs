@@ -190,7 +190,47 @@ public static class FormRules
     {
         if (p.Species.Name != "Furfrou" || p.Form == null) return false;
         p.ChangeForm(null);
+        p.TrimDays = 0;
         return true;
+    }
+
+    /// <summary>How many days a trim lasts (X and Y's five).</summary>
+    public const int TrimLasts = 5;
+
+    /// <summary>The nine trims Lumiose's groomer gives (plan 23, "Finishing Kalos"), by the script's word, in the order offered, and the form each is.</summary>
+    public static readonly (string Word, string Form)[] Trims =
+    {
+        ("heart", "Furfrou-Heart"), ("star", "Furfrou-Star"), ("diamond", "Furfrou-Diamond"), ("debutante", "Furfrou-Debutante"),
+        ("matron", "Furfrou-Matron"), ("dandy", "Furfrou-Dandy"), ("lareine", "Furfrou-La-Reine"), ("kabuki", "Furfrou-Kabuki"),
+        ("pharaoh", "Furfrou-Pharaoh")
+    };
+
+    /// <summary>
+    /// The groomer's trim (plan 23, "Finishing Kalos"; X and Y's Furfrou Groomer): a Furfrou, no Egg, takes the trim's form
+    /// with <see cref="TrimLasts"/> days to it. 0 where it isn't a Furfrou, 1 trimmed, 2 where it wore that trim already
+    /// (its days begin again).
+    /// </summary>
+    public static int Trim(Pokemon p, string word)
+    {
+        if (p.IsEgg || p.Species.Name != "Furfrou") return 0;
+        var trim = Array.Find(Trims, t => t.Word == word);
+        if (trim.Form == null) return 0;
+        bool same = p.Form == trim.Form;
+        if (!same) p.ChangeForm(trim.Form);
+        p.TrimDays = TrimLasts;
+        return same ? 2 : 1;
+    }
+
+    /// <summary>Days pass for the team (X and Y's): each trim has a day fewer, and one with none left grows out.</summary>
+    public static void TrimDaysPass(IEnumerable<Pokemon> team, int days)
+    {
+        if (days <= 0) return;
+        foreach (var p in team)
+        {
+            if (p.Species.Name != "Furfrou" || p.Form == null) continue;
+            p.TrimDays = Math.Max(0, p.TrimDays - days);
+            if (p.TrimDays == 0) TrimGrowsOut(p);
+        }
     }
 
     /// <summary>Whether it is night for Shaymin: from eight in the evening to four in the morning.</summary>
