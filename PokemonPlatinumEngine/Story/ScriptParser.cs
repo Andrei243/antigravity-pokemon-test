@@ -1113,22 +1113,27 @@ public static class ScriptParser
             // the decoration PC filled
             case "openbase":
             {
-                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room") : "open";
-                if (what is not ("give" or "buy" or "room")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade") : "open";
+                if (what is not ("give" or "buy" or "room" or "trade")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
                 string decoration = r.Text("a decoration's name");
                 if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
-                return new Instruction { Op = Op.OpenBase, Line = line, Name = what, Other = decoration };
+                // The Frontier island's two clerks of dolls and cushions (plan 21's leftovers): its price in Battle Points
+                int points = what == "trade" ? r.Int("its price in Battle Points") : 0;
+                if (what == "trade" && points <= 0) throw r.Error("a decoration is traded for one Battle Point or more");
+                return new Instruction { Op = Op.OpenBase, Line = line, Name = what, Other = decoration, Number = points };
             }
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {
-                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete", "once", "remember");
+                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete", "once", "remember", "frontier", "spend");
                 string which = what switch
                 {
                     "moves" => r.Text("the place of a shard tutor"),
                     "special" => r.OneOf("dracometeor", "ultimate"),
                     // Plan 19 · K5: a tutor of Kanto's who teaches one move, once (MoveTutors.Kanto)
                     "once" => r.Text("the move a tutor of Kanto teaches"),
+                    // The Battle Frontier island's Lounge 7 tutors (plan 21's leftovers)
+                    "frontier" => r.OneOf("left", "right"),
                     _ => ""
                 };
                 return new Instruction { Op = Op.Tutor, Line = line, Name = what, Other = which };
@@ -1423,7 +1428,7 @@ public static class ScriptParser
             case "venue":
             {
                 string what = r.OneOf("enough", "choose", "check", "begin", "active", "next", "opponent", "fight", "won", "finish", "points", "streak", "best", "end",
-                    "tent", "rent", "trade", "length", "brain");
+                    "tent", "rent", "trade", "length", "brain", "nature");
                 // Hoenn's Battle Tents (plan 21 · H3's last part): a round of three begun in a tent, Slateport's rentals and trades
                 string which = what is "begin" or "streak" or "best" ? r.OneOf("palace", "arena") : what == "finish" ? r.OneOf("won", "lost")
                     : what == "tent" ? r.OneOf("verdanturf", "fallarbor", "slateport") : "";

@@ -5048,6 +5048,10 @@
         "accent": "en-us"
       }
     },
+    "greta": {
+      "note": "first spoken at BattleArena.txt(64)",
+      "provisional": true
+    },
     "grimsley": {
       "note": "first spoken at unova_pokemon_league_6.txt(12)",
       "provisional": true
@@ -10557,6 +10561,10 @@
         "accent": "en-us"
       }
     },
+    "spenser": {
+      "note": "first spoken at BattlePalace.txt(65)",
+      "provisional": true
+    },
     "stall_keeper": {
       "note": "first spoken at common.txt(2892)",
       "brief": {
@@ -10763,6 +10771,10 @@
         "pitch": 1.048,
         "accent": "en-us"
       }
+    },
+    "tucker": {
+      "note": "first spoken at BattleDome.txt(70)",
+      "provisional": true
     },
     "tuscany": {
       "note": "first spoken at route_29.txt(45)",
@@ -11397,6 +11409,7 @@
     "Glass Worker": "glass_worker",
     "Gordie": "gordie",
     "Grant": "grant",
+    "Greta": "greta",
     "Grimsley": "grimsley",
     "Grunt": "look:grunt",
     "Guard": "look:guard",
@@ -11713,6 +11726,7 @@
     "Sonia": "sonia",
     "Sophocles": "sophocles",
     "Sparring Coach": "sparring_coach",
+    "Spenser": "spenser",
     "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
     "Station Attendant": "station_attendant",
@@ -11742,6 +11756,7 @@
     "Trevor": "trevor_2",
     "Trick Master": "trick_master",
     "Tristan": "tristan",
+    "Tucker": "tucker",
     "Tuscany": "tuscany",
     "TV": "tv",
     "TV Producer": "tv_producer",

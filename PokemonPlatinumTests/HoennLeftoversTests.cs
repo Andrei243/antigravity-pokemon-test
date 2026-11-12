@@ -199,6 +199,74 @@ public class HoennLeftoversTests
         Assert.Contains(host.Log, l => l == "pastime wheel 6");
     }
 
+    // ------------------------------------------------------------------ the Exchange Service Corner's dolls
+
+    [Fact]
+    public void TheIslandsDollClerksTradeBattlePointsForDecorations()
+    {
+        var host = new HeadlessScriptHost();
+        host.Frontier.GivePoints(200);
+        host.Answers.Enqueue(0);
+        var clerk = new NPC { Name = "Clerk", Key = "teala_2" };
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("DecorClerk2", "battle_frontier_exchange_service_corner")!, clerk);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        Assert.Equal(72, host.Frontier.BattlePoints);
+        Assert.Contains(host.Decorations, d => d.Kind == DecorationDatabase.Get("Lapras Doll")!.Id);
+
+        // Too few points: nothing is traded
+        host.Answers.Enqueue(2);
+        runner.Start(ScriptLibrary.Default.Find("DecorClerk2", "battle_frontier_exchange_service_corner")!, clerk);
+        runner.RunToEnd();
+        Assert.Equal(72, host.Frontier.BattlePoints);
+        Assert.Contains(host.Transcript, l => l.Text.Contains("enough Battle Points"));
+    }
+
+    [Fact]
+    public void TheLoungesTutorsTeachForBattlePointsOnceTheMoveIsLearned()
+    {
+        foreach (var (move, points, kin) in MoveTutors.FrontierLounge.Values.SelectMany(m => m))
+        {
+            Assert.NotNull(MoveDatabase.Get(move));
+            Assert.NotNull(MoveDatabase.Get(kin));
+            Assert.InRange(points, 16, 48);
+        }
+        var host = new HeadlessScriptHost();
+        var chansey = new Pokemon(PokemonDatabase.Get("Chansey")!, 50, new Random(5));
+        chansey.Moves.RemoveAll(m => m.Data.Name == "Soft-Boiled");
+        while (chansey.Moves.Count > 2) chansey.Moves.RemoveAt(chansey.Moves.Count - 1);
+        host.Party.Add(chansey);
+        host.Frontier.GivePoints(20);
+        var teachable = MoveTutors.FrontierTeachable(chansey, "left");
+        int softBoiled = teachable.FindIndex(m => m.Move == "Soft-Boiled");
+        Assert.True(softBoiled >= 0);
+        host.Answers.Enqueue(0);          // yes
+        host.Answers.Enqueue(softBoiled); // the move
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("LeftTutor", "battle_frontier_lounge_7")!, new NPC { Name = "Tutor", Key = "expert_f" });
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        Assert.True(chansey.Knows("Soft-Boiled"));
+        Assert.Equal(4, host.Frontier.BattlePoints);
+    }
+
+    [Fact]
+    public void TheNatureGirlReadsAPokemonAsThePalaceDoes()
+    {
+        Assert.Equal(PalaceGroup.Attack, PalaceNatures.Leaning(Nature.Brave, low: false));
+        var host = new HeadlessScriptHost();
+        var p = new Pokemon(PokemonDatabase.Get("Bidoof")!, 20, new Random(3)) { Nature = Nature.Brave };
+        host.Party.Add(p);
+        host.Answers.Enqueue(0);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("NatureGirl", "battle_frontier_lounge_5")!, new NPC { Name = "Little Girl", Key = "little_girl" });
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        Assert.Contains(host.Transcript, l => l.Text.Contains("loves to attack"));
+        Assert.Contains(host.Transcript, l => l.Text.Contains("when it's hurt"));
+    }
+
     // ------------------------------------------------------------------ the Trainer Hill
 
     [Fact]

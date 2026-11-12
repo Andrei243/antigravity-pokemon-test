@@ -1,9 +1,10 @@
 {
-  // A lounge of the Battle Frontier island (plan 21 · H12, part b)
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b); the little girl reads a Pokémon's nature (plan 21's
+  // leftovers, 2026-11-12; battle_frontier_lounge_5.txt)
   "area": "battle_frontier_lounge_5",
   "bgmTrack": "hoenn/lilycove",
   "people": {
-    "little_girl": { "name": "Little Girl", "dialog": [ "I can tell what a Pokémon is like just by watching it. Some are shy, some are bold, some are a bit silly!" ] },
+    "little_girl": { "name": "Little Girl", "script": "NatureGirl", "still": true },
     "gentleman": { "name": "Gentleman", "dialog": [ "A Pokémon's nature shapes how it grows. My granddaughter seems to see it at a glance." ] },
     "black_belt": { "name": "Black Belt", "dialog": [ "A bold Pokémon for attack, a calm one for defence. Choose your team with care!" ] },
     "little_boy": { "name": "Little Boy", "dialog": [ "My sister says my Pokémon is naughty. Just like me!" ] }

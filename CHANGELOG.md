@@ -4,6 +4,9 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- The Battle Frontier annex's Battle Palace, Battle Arena and Battle Dome now have Frontier Brains of their own: Spenser the Palace Maven at your 21st win in a row (and the 42nd), Greta the Arena Tycoon at the 28th (and the 56th), and Tucker the Dome Ace, who waits in the final once you have won four tournaments in a row (and again after nine).
+- Saturdays are service day at Mauville's Game Corner: the right roulette table takes 6 Coins a ball and every win pays double. The tables now tell you when you beat your best run of wins in a row.
+- The Trainer Hill's lobby has a clerk selling medicine and battle items for the climb, with stronger stock once you are Hoenn's Champion, and its board reads out the best times your other games have brought in from the record desks.
 - Three more regions keep a festival of their own: Garland Days in Hau'oli City (8 to 10 August), with lei arches, a dancer teaching the Z-Move poses and a stall; the Wool Fair in Wedgehurst's Pokémon Center (1 to 3 May), with hay bales, a fleece judge and a stall; and the Sheaf Feast in Jubilife Village (22 to 24 September), with the first sheaves of the harvest. Each leaves a gift at a Gift Runner, and every Pokémon Center in Galar now has a Gift Runner.
 - Grayfall Keep has a seventh bay: once you are Alola's Champion, Team Skull's Plumeria and Guzma are among the leaders who answered the rumour.
 - Once you are Sinnoh's Champion, twelve hideaways open under the Underground, two in each set of tunnels: a fern grotto, a lake cavern, a crystal hall, an ember hall and more, each home to Pokémon of its own types, standing about where you can see them. Their Pokémon change every day, and with the National Pokédex they include Pokémon from Kanto, Johto and Hoenn, among them the first partners of those regions.
