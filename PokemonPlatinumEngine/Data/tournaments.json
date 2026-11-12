@@ -350,7 +350,8 @@
             { "trainer": "kanto_champion_beyond", "look": "blue" },
             { "trainer": "johto_champion_lance_beyond", "look": "lance" },
             { "trainer": "hoenn_wallace_beyond", "look": "wallace" },
-            { "trainer": "unova_champion_iris_beyond", "look": "iris" }
+            { "trainer": "unova_champion_iris_beyond", "look": "iris" },
+            { "trainer": "kalos_diantha_beyond", "look": "diantha" }
           ],
           "pool": [
             { "trainer": "elite_four_aaron_beyond", "look": "aaron" },
@@ -372,7 +373,11 @@
             { "trainer": "unova_elite_four_shauntal_beyond", "look": "shauntal" },
             { "trainer": "unova_elite_four_grimsley_beyond", "look": "grimsley" },
             { "trainer": "unova_elite_four_marshal_beyond", "look": "marshal" },
-            { "trainer": "unova_elite_four_caitlin_beyond", "look": "caitlin" }
+            { "trainer": "unova_elite_four_caitlin_beyond", "look": "caitlin" },
+            { "trainer": "kalos_malva_beyond", "look": "malva" },
+            { "trainer": "kalos_siebold_beyond", "look": "siebold" },
+            { "trainer": "kalos_wikstrom_beyond", "look": "wikstrom" },
+            { "trainer": "kalos_drasna_beyond", "look": "drasna" }
           ],
           "kind": "champions",
           "after": "worldChampions"

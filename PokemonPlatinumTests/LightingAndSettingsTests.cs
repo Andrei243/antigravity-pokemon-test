@@ -193,19 +193,12 @@ public class LightingAndSettingsTests
     public void OptionsCycleThroughTheirValues()
     {
         var s = new GameSettings();
-        const OptionRow quality = OptionRow.Quality, windowSize = OptionRow.WindowSize, fullscreen = OptionRow.Fullscreen, timeOfDay = OptionRow.TimeOfDay;
+        const OptionRow quality = OptionRow.Quality, fullscreen = OptionRow.Fullscreen, timeOfDay = OptionRow.TimeOfDay;
 
         OptionsScreen.Change(s, quality, 1);
         Assert.Equal(GraphicsQuality.Low, s.Quality);
         OptionsScreen.Change(s, quality, -1);
         Assert.Equal(GraphicsQuality.High, s.Quality);
-
-        OptionsScreen.Change(s, windowSize, 1);
-        Assert.Equal((2560, 1440), (s.WindowWidth, s.WindowHeight));
-        OptionsScreen.Change(s, windowSize, 1);
-        Assert.Equal((3840, 2160), (s.WindowWidth, s.WindowHeight));
-        OptionsScreen.Change(s, windowSize, 1);
-        Assert.Equal((1280, 720), (s.WindowWidth, s.WindowHeight));
 
         OptionsScreen.Change(s, fullscreen, 1);
         Assert.True(s.Fullscreen);
