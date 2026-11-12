@@ -151,7 +151,7 @@ name too), `{self}`, `{lead}` (the first Pokémon of the team), `{starter}`, `{r
 `{assistantstarter}` (the one of the three neither child took), `{item}` (the last item given or taken),
 `{money}`, `{result}` and `{var:NAME}`; `{member:NAME}` is the nickname of the team's Pokémon at the place the
 variable gives (from 0), and `{swarm}` and `{swarmplace}` the species of the day's swarm and where it is,
-`{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{marsh:1}` to `{marsh:6}` the Pokémon the day has brought to that area of the Great Marsh (the Sinnoh Pokédex's list; plan 01 · M11, part b: the observatory's binoculars), `{friendsafari:1}` to `{friendsafari:3}` the type of one of the player's three grounds of Kalos's Friend Safari, drawn from the trainer number alone (plan 23, Kalos finished; `Overworld/FriendSafari.cs`), `{ticket}` the Lottery Corner's number of the day and
+`{trophygarden}` the Trophy Garden's newest (plan 06 · R13), `{marsh:1}` to `{marsh:6}` the Pokémon the day has brought to that area of the Great Marsh (the Sinnoh Pokédex's list; plan 01 · M11, part b: the observatory's binoculars), `{friendsafari:1}` to `{friendsafari:3}` the type of one of the player's three grounds of Kalos's Friend Safari, drawn from the trainer number alone (plan 23, Kalos finished; `Overworld/FriendSafari.cs`), `{ticket}` the Lottery Corner's number of the day, `{luckynumber}` the week's lucky number of Johto's radio (plan 42 · PS3) and
 `{winner}` the Pokémon whose ID number the last `lottery draw` matched (plan 06 · R14a), `{berry}`, `{yield}` and
 `{mulch}` what the patch of soil the script belongs to holds, as the last `berry` command left them, and (plan 06 ·
 R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care, `{level:N}` the level its steps there
@@ -431,6 +431,7 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `globallink check` | The Global Link counter (plan 07 · O7): `RESULT` 1 when the options name an online server (`OnlineServer` in `settings.json`), else 0. The headless host says 0 unless a test sets `OnlineServerSet`. |
 | `globallink` | Opens the Global Link counter (`UI/GlobalLinkScreen.cs` over `Online/GlobalLinkSession.cs`, plan 07 · O5): the friend code, a link code made or typed, and a trade room whose trades are written into the slot before the server is told. Waits for it to be left. |
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
+| `lottery weekly` | Johto's lucky number draw (plan 42 · PS3): as `lottery draw` with the week's ticket (`Lottery.WeeklyTicket`, today and the trainer number), which `{luckynumber}` says; `lottery boxed` and `{winner}` follow it. A `FLAG_WEEKLY_` flag goes when a new week begins. |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 
 ### The Super Contests

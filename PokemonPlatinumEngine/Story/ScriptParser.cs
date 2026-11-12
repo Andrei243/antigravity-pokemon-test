@@ -709,7 +709,7 @@ public static class ScriptParser
             case "honeytree":
                 return new Instruction { Op = Op.HoneyTree, Line = line, Name = r.OneOf("status", "slather", "battle") };
             case "lottery":
-                return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed") };
+                return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed", "weekly") };
             case "berry":
                 return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches", "pot", "crossed") };
             // Apricorn trees, the Apricorn Box and Kurt's balls (plan 20 · J6)

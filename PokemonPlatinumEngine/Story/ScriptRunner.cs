@@ -55,6 +55,7 @@ public sealed partial class ScriptRunner
     // The last lottery drawn, and the day's ticket (plan 06 · R14a)
     private Models.Lottery.Draw lottery;
     private int Ticket => Models.Lottery.TicketOf(host.Encounters.DailyNumber);
+    private int WeeklyTicket => Models.Lottery.WeeklyTicket(host.Today, host.TrainerNumber);
 
     // What the patch of soil the script belongs to holds, as berry status and berry mulched last read it (plan 06 · R14a)
     private string berryName = "", mulchName = "";
@@ -1314,6 +1315,12 @@ public sealed partial class ScriptRunner
                 if (i.Name == "draw")
                 {
                     lottery = Models.Lottery.Check(Ticket, (int)(host.TrainerNumber & 0xffff), host.Party.Members, host.Boxed);
+                    Result = lottery.Digits;
+                }
+                // Johto's lucky number draw (plan 42 · PS3): the week's ticket in place of the day's
+                else if (i.Name == "weekly")
+                {
+                    lottery = Models.Lottery.Check(WeeklyTicket, (int)(host.TrainerNumber & 0xffff), host.Party.Members, host.Boxed);
                     Result = lottery.Digits;
                 }
                 else Result = lottery.InBox ? 1 : 0;
@@ -2756,6 +2763,8 @@ public sealed partial class ScriptRunner
                 Words.Type(FriendSafari.Of(PlayerIdentity.Number)[grounds - 1].Type),
             // The day's lottery ticket, and whose Pokémon matched it (plan 06 · R14a)
             "ticket" => Ticket.ToString("D5"),
+            // The week's lucky number (plan 42 · PS3), as the Pokégear's radio reads it out
+            "luckynumber" => Models.Lottery.TicketText(WeeklyTicket),
             "winner" => lottery.Winner?.DisplayName ?? "",
             // The Day Care's two by their places, and who was last left or taken back (plan 06 · R15)
             "daycare" when DayCarePlace(argument) is { } at => host.DayCare[at]?.DisplayName ?? "",

@@ -25,11 +25,11 @@
       "script": "Quiz",
       "still": true
     },
+    // The Lucky Number Show's counter (plan 42 · PS3, scripts/goldenrod_radio_tower_1f.txt)
     "d23r0101_gsman1": {
       "name": "Man",
-      "dialog": [
-        "I work on the Lucky Number Show. Tune in once a week and see if your number comes up!"
-      ]
+      "script": "LuckyNumber",
+      "still": true
     },
     "d23r0101_gsgirl2": {
       "name": "Girl",

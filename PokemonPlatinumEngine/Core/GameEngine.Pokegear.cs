@@ -112,6 +112,9 @@ public partial class GameEngine
     private string StationLine(RadioStation station)
     {
         string? species = null, place = null;
+        // The lucky number draw reads out this week's number (plan 42 · PS3), the one the Radio Tower's counter matches
+        if (station == RadioStation.LuckyNumber)
+            return RadioShows.LuckyLine(fieldRandom, Lottery.WeeklyTicket(GameClock.Today, TrainerNumber));
         // Buena's show says tonight's word in the evening (plan 20, Johto's leftovers): the word she asks for
         if (station == RadioStation.BuenasPassword && BuenasPassword.OnTheAir(GameClock.Now))
             return PlayerIdentity.Fill(RadioShows.PasswordLine(fieldRandom, BuenasPassword.Shown(BuenasPassword.WordOf(GameClock.Today))));

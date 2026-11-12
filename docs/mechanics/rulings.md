@@ -11611,6 +11611,15 @@ an Ultra Ball, a PP Up, an Exp. Share, a Max Revive and a Master Ball (items 2, 
 - `Lottery.WeeklyPrize` is HeartGold's list, which is `Prize`'s. Jubilife's `TicketOf`, `Matching`, `Check` and `Prize` are
   unchanged, and `Matching` and `Check` serve both.
 - The radio's three lines (`Lottery.RadioLines`, `luckyDraw.radio.*`) are ours.
+- **The station** (built the same day, ours where HeartGold's was not read): `RadioStation.LuckyNumber`, slot 9 of
+  Johto's dial at (80, 80), clear within 4 and heard within 12, its ring clear of the four others'; HeartGold's own spot and
+  hours for its Lucky Channel were not read, so it is on at every hour and gives way to Team Rocket's broadcast and
+  Mahogany's signal as every Johto station does. Kanto's dial has none. A line is one of the three, drawn on the field's
+  chance, for `Lottery.WeeklyTicket(today, the trainer number)`.
+- **The counter** (`goldenrod_radio_tower_1f.txt`'s `LuckyNumber`, the floor's man of the Lucky Number Show): `lottery weekly`
+  checks the week's ticket as `lottery draw` checks the day's, `{luckynumber}` says it, and `FLAG_WEEKLY_CLAIMED_LUCKY_NUMBER`
+  holds the week's go. Every `FLAG_WEEKLY_` flag goes when the days that pass cross a week's boundary
+  (`StoryState.ClearWeekly`, from `DailyEvents.DaysPass` told today's date), however many days pass at once.
 
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
