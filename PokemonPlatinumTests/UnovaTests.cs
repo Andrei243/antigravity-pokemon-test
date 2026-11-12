@@ -630,7 +630,9 @@ public class UnovaTests
                 // and the old roads from the Skyarrow Bridge to Nuvema Town since plan 22 · U10, part f
                 || m.Name is "c1_build" or "c1_rest" or "c1_school" or "c2_build" or "c2_cafe" or "c2_museum" or "t1_house" or "t1_labo" or "t2_house01" or "t2_build01" or "sodateya"
                 // and Black City and Route 15 since plan 22 · U10, part g
-                || m.Name is "bc_build_s1" or "bc_house_s1" or "bc_shop_s1" or "bc_mugen_s1" or "palpark")
+                || m.Name is "bc_build_s1" or "bc_house_s1" or "bc_shop_s1" or "bc_mugen_s1" or "palpark"
+                // and the League's hall on its plaza since plan 22 · U12's last session
+                || m.Name == "c09_league")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
