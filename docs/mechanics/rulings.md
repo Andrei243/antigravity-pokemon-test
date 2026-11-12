@@ -10590,10 +10590,15 @@ Every table a new region adds its row to, swept for Kalos. Nothing of X and Y's 
 - **The bands** (plan 09 · L15). Kalos's eight Leaders, four of the Elite Four and Diantha wear bands of their own
   (`SceneTransition.KalosBands`, the style guide's fifth table), each after its Gym's type or its room and none the base
   colour of another region's; until now they wore the plain steel-grey band.
-- **Not built: the League's teams beyond** (plan 03 · D15-T). The rule of the 26 built teams is the rematch team slot
-  for slot in species of the region's batch, none twice in the region's teams. Kalos's League fields 26 Pokémon (five
-  each and Diantha's six) and Kalos's batch holds 24 placeable species, so the rule can't be met; it waits for the user
-  (a species allowed twice, or teams of fewer).
+- **The League's teams beyond** (plan 03 · D15-T), built 2026-11-12 on the user's decision. The rule of the 26 teams
+  of the first five regions is the rematch team slot for slot in species of the region's batch, none twice in the
+  region's teams. Kalos's League fields 26 Pokémon (five each and Diantha's six) against a batch of 24 placeable
+  species, so for this batch alone repeats are allowed, the fewest that fit: two (Kelpdrake in Siebold's and Drasna's
+  teams, Sonarwing in Malva's and Drasna's). The five teams are `kalos_malva_beyond`, `kalos_siebold_beyond`,
+  `kalos_wikstrom_beyond`, `kalos_drasna_beyond` and `kalos_diantha_beyond`; they stand at 200 (the last of each at 203,
+  Diantha's five at 204 and her last at 207, the batch's highest evolution and four, as the other Champions), ready at
+  Kalos's Hall of Fame with a Pokémon at 120 (Faerieon's evolution). `BeyondTeamsTests` holds the repeats to exactly two,
+  for Kalos only. The Champions' circuit's final calls Diantha on hers.
 
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6; 2026-11-12, CR2, CR5, CR7)
 
@@ -11442,8 +11447,7 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   (`ChampionsCircuit.Stamp`, both hosts' `EnterHallOfFame`), once each.
 - **The final** opens in the Laurel Court with every finished region stamped: the herald, Piers Lindqvist (53a), calls
   each finished region's Champion forward in the chain's order (`Data/circuit.json`): Cynthia, Kanto's rival, Lance and
-  Wallace on their teams beyond, Iris on hers, Diantha on her second round's (`kalos_diantha_rematch`, since Kalos has no
-  team beyond); Alola's, Galar's and Paldea's rows come with their regions. No healing between, the bag allowed; each
+  Wallace on their teams beyond, Iris on hers, Diantha on her team beyond (`kalos_diantha_beyond`, since 2026-11-12); Alola's, Galar's and Paldea's rows come with their regions. No healing between, the bag allowed; each
   battle opens on its Champion's band where the bands name them. A battle lost ends the final with the circuit still under
   way (the team healed, as `canlose` does).
 - **The final won** ends the circuit and counts it (`circuit won`): its team on the gallery's circuit plinth (the record
