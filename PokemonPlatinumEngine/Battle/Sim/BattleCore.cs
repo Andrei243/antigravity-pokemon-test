@@ -182,6 +182,30 @@ public sealed class CoreSetup
     public int TurnLimit { get; init; }
 
     /// <summary>
+    /// A staged battle's first term (docs/mechanics/rulings.md, "Staged battles"): the foe's level is drawn as ??? on the
+    /// screen. The rules read nothing of it but that the battle is staged (<see cref="BattleCore.Staged"/>); a record keeps it.
+    /// </summary>
+    public bool HideLevel { get; init; }
+
+    /// <summary>
+    /// A staged battle's second term: every move aimed at a Pokémon of the other side fails with a fixed line, and does
+    /// nothing at all to anyone (<see cref="BattleCore.Untouched"/>). Off unless given, which changes nothing; a record keeps it.
+    /// </summary>
+    public bool Untouchable { get; init; }
+
+    /// <summary>
+    /// A staged battle's third term: the other side chooses nothing and is asked nothing; each turn it only watches, and
+    /// says so. Off unless given, which changes nothing; a record keeps it.
+    /// </summary>
+    public bool Passive { get; init; }
+
+    /// <summary>
+    /// A staged battle ends by itself after this many turns, as the wild Pokémon's flight (<see cref="BattleResult.EnemyFled"/>).
+    /// 0 for never, which changes nothing; a record keeps it.
+    /// </summary>
+    public int EndAfterTurns { get; init; }
+
+    /// <summary>
     /// A battle between two players (plan 28 · I4): both sides answered from outside, either of whom may give the match
     /// up at any question (<see cref="ChoiceKind.Forfeit"/>) and neither of whom may run. Made by
     /// <see cref="Link.LinkSetup"/> beside <see cref="Frontier"/>, whose rules it takes whole. Off unless given, which
@@ -398,6 +422,12 @@ public sealed partial class BattleCore : IBattleContext
         }
         // Nothing is used from the bag in a raid (plan 33 · GL3); its catch is the den's, after the battle
         if (IsRaid) NoBattleItems = true;
+        // A staged battle (a foe that can't be beaten or can't be touched) gives nothing and takes nothing
+        HideLevel = setup.HideLevel;
+        Untouchable = setup.Untouchable;
+        Passive = setup.Passive;
+        EndAfterTurns = Math.Max(0, setup.EndAfterTurns);
+        if (Staged) NoRewards = true;
         int slots = Format.PlacesOf(BattleSide.Player);
         // A horde of fewer than five is fought with as many places as it has Pokémon
         int foeSlots = IsHorde ? Math.Min(Format.PlacesOf(BattleSide.Enemy), WildPokemon.Count) : Format.PlacesOf(BattleSide.Enemy);
@@ -676,7 +706,8 @@ public sealed partial class BattleCore : IBattleContext
 
             // A Pokémon in the middle of a move, or that has to recharge, has nothing to choose
             var choices = new List<BattleChoice>();
-            var free = InTurnOrderOfPlaces().Where(b => b.IsActive && !b.IsHeldToItsMove).ToList();
+            // A staged battle's passive side chooses nothing and is asked nothing (BattleCore.Staged.cs)
+            var free = ThatChoose(InTurnOrderOfPlaces().Where(b => b.IsActive && !b.IsHeldToItsMove)).ToList();
             var asked = free.Where(b => ControllerOf(b) == null).Select(b => b.Place).ToList();
             megaChosen.Clear();
             zChosen.Clear();
@@ -708,10 +739,12 @@ public sealed partial class BattleCore : IBattleContext
             }
             // The Great Marsh's Pokémon and Pal Park's have no moves to choose: they watch, or run
             if (Kind is BattleKind.Safari or BattleKind.PalPark) choices.RemoveAll(c => c.Who.Side == BattleSide.Enemy);
-            foreach (var b in InTurnOrderOfPlaces().Where(b => b.IsActive && b.IsHeldToItsMove))
+            foreach (var b in ThatChoose(InTurnOrderOfPlaces().Where(b => b.IsActive && b.IsHeldToItsMove)))
                 choices.Add(BattleChoice.GoOn(b.Place));
 
             foreach (var request in PlayTurn(choices)) yield return request;
+            // A staged battle that ends by itself once its turns are played (BattleCore.Staged.cs)
+            EndIfTheTurnsAreOver();
         }
     }
 
@@ -917,6 +950,8 @@ public sealed partial class BattleCore : IBattleContext
             yield break;
         }
 
+        // A staged battle's passive side only watches, and says so (BattleCore.Staged.cs)
+        SayItOnlyWatches();
         // A raid's boss of four or five stars acts again before the turn's end (plan 33 · GL3)
         foreach (var request in TheBossActsAgain()) yield return request;
         if (Result != BattleResult.None) yield break;
@@ -1277,7 +1312,8 @@ public sealed partial class BattleCore : IBattleContext
             {
                 var foe = by.User;
                 // A Dynamaxed Pokémon isn't taken down (plan 06 · R22; Showdown's destinybond onFaint)
-                if (down.Volatile.DestinyBond && !foe.Volatile.Dynamaxed)
+                // (nor a staged battle's untouchable foe: BattleCore.Staged.cs)
+                if (down.Volatile.DestinyBond && !foe.Volatile.Dynamaxed && !IsUntouched(down, foe))
                 {
                     foe.Pokemon!.CurrentHP = 0;
                     Say(Text.Of("battle.tookDownWithIt", ("pokemon", down.Name), ("foe", foe.Name))).With(new HpChanged(foe.Place, 0, Healed: false));

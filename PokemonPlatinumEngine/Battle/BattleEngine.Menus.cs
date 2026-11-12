@@ -120,7 +120,7 @@ public partial class BattleEngine
     public BattleInfo? InfoShown { get; private set; }
 
     /// <summary>What the information panel would show now: the field, both sides and every Pokémon on it, as far as the player has been told.</summary>
-    public BattleInfo Info => BattleInfo.Of(core.Field, PlayerSlots, EnemySlots, Revealed);
+    public BattleInfo Info => BattleInfo.Of(core.Field, PlayerSlots, EnemySlots, Revealed, HidesLevel(BattleSide.Enemy));
 
     /// <summary>
     /// Opens the information panel over the commands (the <c>Item</c> action, C or the pad's left face button). It

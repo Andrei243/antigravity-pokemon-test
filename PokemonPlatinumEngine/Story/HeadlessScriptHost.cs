@@ -871,7 +871,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         string with = (second != null ? $" and {second.TrainerData?.Id}" : "") + (partner != null ? $" with {partner.Id}" : "") + (first ? " first" : "")
             + (terms is { Inverse: true } ? " inverse" : "")
             // A Master Trainer's battle (plan 14 · B14): the one Pokémon put forward, and the bag closed
-            + (terms?.Alone is { } alone ? $" alone {alone.Species.Name}" : "") + (terms is { NoBattleItems: true } ? " noitems" : "");
+            + (terms?.Alone is { } alone ? $" alone {alone.Species.Name}" : "") + (terms is { NoBattleItems: true } ? " noitems" : "") + StagedWords(terms);
         Log.Add($"battle {trainer.TrainerData?.Id}{with} {Outcome}");
         if (Outcome == BattleOutcome.Won)
         {
@@ -904,7 +904,12 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         Log.Add($"royal {first.TrainerData?.Id} {second.TrainerData?.Id} {third.TrainerData?.Id} {Outcome}");
     }
 
-    public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
+    /// <summary>A staged battle's terms as the log writes them (docs/mechanics/rulings.md, "Staged battles"); nothing for none.</summary>
+    private static string StagedWords(BattleTerms? terms) => terms is not { Staged: true } t ? ""
+        : (t.HideLevel ? " hidelevel" : "") + (t.Untouchable ? " untouchable" : "") + (t.Passive ? " passive" : "")
+          + (t.EndAfterTurns > 0 ? $" endafter {t.EndAfterTurns}" : "");
+
+    public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null, BattleTerms? terms = null, bool mayLose = false)
     {
         if (catcher != null) Log.Add($"catcher {catcher.Name} {catcher.Own.Species.Name} {catcher.Own.Level}");
         Shown("start a battle");
@@ -912,7 +917,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         Waits();
         // The lesson is the assistant's battle: their ball always catches, and what they catch is theirs
         Outcome = kind == BattleKind.CatchingLesson ? BattleOutcome.Caught : Fight?.Invoke(null) ?? BattleOutcome.Won;
-        Log.Add($"{(kind == BattleKind.CatchingLesson ? "catchinglesson" : "wildbattle")} {wild.Species.Name} {wild.Level}{(cannotFlee ? " nofleeing" : "")} {Outcome}");
+        // A staged battle's foe is never caught (docs/mechanics/rulings.md, "Staged battles")
+        if (Outcome == BattleOutcome.Caught && terms is { Staged: true }) Outcome = BattleOutcome.Won;
+        Log.Add($"{(kind == BattleKind.CatchingLesson ? "catchinglesson" : "wildbattle")} {wild.Species.Name} {wild.Level}{(cannotFlee ? " nofleeing" : "")}{StagedWords(terms)}{(mayLose ? " canlose" : "")} {Outcome}");
         if (Outcome == BattleOutcome.Caught && kind != BattleKind.CatchingLesson) GivePokemon(wild);
         else if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }

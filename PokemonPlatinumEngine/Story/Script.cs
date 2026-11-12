@@ -385,6 +385,15 @@ public sealed class Instruction
     /// <summary>For <c>battle self inverse</c>: an inverse battle, its type chart turned round (plan 14 · B1).</summary>
     public bool Inverse { get; init; }
 
+    /// <summary>
+    /// For <c>battle</c> and <c>wildbattle</c> with <c>hidelevel</c>, <c>untouchable</c>, <c>passive</c> and <c>endafter N</c>:
+    /// a staged battle's terms (docs/mechanics/rulings.md, "Staged battles"); null for none.
+    /// </summary>
+    public Battle.BattleTerms? Staged { get; init; }
+
+    /// <summary>For <c>wildbattle … canlose</c>: a loss the story goes on from, as <c>battle … canlose</c>'s.</summary>
+    public bool CanLose { get; init; }
+
     /// <summary>For <c>wildbattle … shiny</c>: the Pokémon met is a shiny one (plan 20 · J11: the Lake of Rage's red Gyarados).</summary>
     public bool Shiny { get; init; }
 

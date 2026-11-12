@@ -793,7 +793,8 @@ public sealed partial class ScriptRunner
                 }
                 bool mayLose = i.Option;
                 // What the line asks of the battle itself (plan 14 · B1): an inverse battle
-                var terms = i.Inverse ? new BattleTerms(Inverse: true) : null;
+                // and a staged battle's terms (docs/mechanics/rulings.md, "Staged battles")
+                var terms = i.Inverse || i.Staged != null ? (i.Staged ?? new BattleTerms()) with { Inverse = i.Inverse } : null;
                 // A rematch the Vs. Seeker found: the trainer brings the team of the level the story has reached, for
                 // this battle, and stops waiting for one (VsSeeker_GetRematchTrainerID, SetMoveCodeForFacingDirection)
                 var own = foe.TrainerData;
@@ -906,8 +907,10 @@ public sealed partial class ScriptRunner
                     : null;
                 // A trial's totem, with its aura (plan 23 · Z6)
                 if (i.Op == Op.WildBattle && i.Totem is { } totem) host.TotemBattle(wild, totem);
-                else host.WildBattle(wild, kind, cannotFlee: i.Option, catcher);
-                afterBusy = () => AfterBattle(mayLose: false);
+                // A staged foe's terms and a loss the story goes on from (docs/mechanics/rulings.md, "Staged battles")
+                else host.WildBattle(wild, kind, cannotFlee: i.Option, catcher, i.Staged, i.CanLose);
+                bool wildMayLose = i.CanLose;
+                afterBusy = () => AfterBattle(mayLose: wildMayLose);
                 break;
             }
 
