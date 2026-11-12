@@ -149,8 +149,14 @@ uniform float lampReach;
 
 vec3 ApplyFog(vec3 color, vec3 world)
 {
-    float f = smoothstep(fogNear, fogFar, length(viewPos - world)) * fogAmount;
-    return mix(color, fogColor, f);
+    // The air between: thickening with the distance as haze does (never a wall of it), lying thicker low down, and
+    // brighter and warmer looking toward the sun
+    vec3 to = world - viewPos;
+    float d = length(to);
+    float low = 1.0 + 0.6 * clamp(1.0 - (world.y - viewPos.y + 20.0) / 80.0, 0.0, 1.0);
+    float f = (1.0 - exp(-max(d - fogNear * 0.25, 0.0) * low / (fogFar * 0.62))) * fogAmount;
+    float toSun = pow(max(dot(to / max(d, 0.001), sunDir), 0.0), 6.0);
+    return mix(color, fogColor + sunColor * (0.16 * toSun), f);
 }
 
 float CloudLight(vec3 world)
@@ -176,12 +182,21 @@ vec3 Lamp(vec3 world, vec3 n)
 float Hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float Hash3(vec3 p) { return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }";
 
+    // The ground (style guide, "Open world", "Ground"): each cover a material worked out from the noise sheet read at
+    // three sizes in the world (so nothing repeats to the eye), laid by the face's own axes and blended between them,
+    // the covers of a triangle's corners meeting along a ragged, soft border, and the surface's grain felt by the light.
+    // The slots are the atlas's order (OpenCoverArt.Order): 0 to 3 the grasses and the highland, 4 mud, 5 the path,
+    // 6 sand, 7 the cave's floor, 8 and 9 the rocks, 10 snow, 11 climbable rock
     private const string TerrainFragment = @"#version 330
 in vec3 fragWorld;
 in vec3 fragNormal;
 in vec3 fragBary;
 flat in ivec3 fragSlots;
 uniform sampler2D texture0;
+uniform vec3 coverBase[16];
+uniform vec3 coverPatch[16];
+uniform vec3 coverDark[16];
+uniform vec3 coverLight[16];
 uniform vec3 sunDir;
 uniform vec3 sunColor;
 uniform vec3 skyAmbient;
@@ -189,65 +204,133 @@ uniform vec3 groundAmbient;
 uniform float worldRamp;
 out vec4 finalColor;
 " + Shared + CascadeFunctions + @"
-const float Texels = 16.0;
-const float TileMetres = 2.0;
-const float Slots = 16.0;
-const float Tile = 32.0;
-const float Pad = 16.0;
-const float Cell = 64.0;
+// How many metres the sheet covers at each of its three sizes: no two a whole multiple of one another
+const float Fine = 1.0 / 3.1;
+const float Mid = 1.0 / 23.0;
+const float Macro = 1.0 / 190.0;
 
-vec2 Project(vec3 v, int axis) { return axis == 1 ? v.xz : axis == 0 ? vec2(v.z, -v.y) : vec2(v.x, -v.y); }
+// The sheet by the face's own axes. Level ground (most of any picture) reads it once, from above; only a face that
+// leans reads the two sides too, with the slopes worked out beforehand (no slope may be asked inside a branch)
+vec4 Sheet(vec3 p, vec3 w, float s, vec3 dx, vec3 dy)
+{
+    vec4 top = textureGrad(texture0, p.xz * s, dx.xz * s, dy.xz * s);
+    if (w.y > 0.985) return top;
+    return top * w.y + textureGrad(texture0, p.zy * s, dx.zy * s, dy.zy * s) * w.x
+                     + textureGrad(texture0, p.xy * s, dx.xy * s, dy.xy * s) * w.z;
+}
+
+// One cover's colour at a point, and how rough it is to the light
+vec3 Cover(int slot, vec4 fine, vec4 mid, vec4 macro, float steep, vec3 p, out float rough)
+{
+    vec3 base = coverBase[slot], patch = coverPatch[slot], dark = coverDark[slot], light = coverLight[slot];
+    vec3 c = mix(base, patch, smoothstep(0.40, 0.62, mid.r * 0.7 + fine.g * 0.3));
+    if (slot <= 3)
+    {
+        // Grass: clumps with shade between them and lit tips, and sweeps of drier grass over tens of metres
+        c = mix(c, dark, smoothstep(0.30, 0.70, fine.b) * 0.34);
+        c = mix(c, light, smoothstep(0.70, 0.95, fine.a) * 0.24);
+        c = mix(c, c * vec3(1.12, 1.03, 0.78), smoothstep(0.50, 0.85, macro.g) * 0.45);
+        c *= 0.90 + 0.20 * macro.r;
+        rough = 0.45;
+    }
+    else if (slot == 6)
+    {
+        // Sand: ripples across the wind where it lies level, and a slow change of tone
+        float ripple = sin((p.x * 0.55 + p.z * 0.83) * 7.0 + mid.r * 9.0 + fine.g * 1.5) * 0.5 + 0.5;
+        c = mix(c, dark, smoothstep(0.55, 0.95, ripple) * 0.30 * (1.0 - steep));
+        c = mix(c, light, smoothstep(0.80, 0.97, fine.a) * 0.20);
+        c *= 0.93 + 0.14 * macro.r;
+        rough = 0.30;
+    }
+    else if (slot == 10)
+    {
+        // Snow: drifts with blue hollows, and a glint here and there
+        c = mix(base, patch, smoothstep(0.30, 0.70, mid.r));
+        c = mix(c, dark, smoothstep(0.55, 0.90, mid.a * 0.7 + fine.r * 0.3) * 0.45);
+        c = mix(c, vec3(0.94, 0.96, 1.0), (1.0 - smoothstep(0.015, 0.04, fine.b)) * 0.45);
+        rough = 0.22;
+    }
+    else if (slot >= 8)
+    {
+        // Rock: on a face, strata of their own tone with a crease under each; cracks and chips everywhere
+        float beds = slot == 11 ? 2.6 : 1.3;
+        float s = p.y * beds + mid.r * 2.2 + macro.g * 4.0;
+        float f = fract(s);
+        float tone = Hash(vec2(floor(s), float(slot)));
+        c = mix(c, mix(base * 0.84, patch * 1.06, tone), steep * 0.85);
+        c = mix(c, dark, (1.0 - smoothstep(0.0, 0.10, f)) * steep * 0.65);
+        c = mix(c, light, smoothstep(0.90, 1.0, f) * steep * (slot == 11 ? 0.5 : 0.2));
+        c = mix(c, dark, smoothstep(0.84, 0.99, fine.a) * smoothstep(0.35, 0.65, mid.g) * 0.34);
+        c = mix(c, light, smoothstep(0.76, 0.95, fine.r) * 0.26);
+        c *= 0.86 + 0.28 * macro.r;
+        rough = 1.0;
+    }
+    else
+    {
+        // The path, mud and a cave's floor: pebbles strewn in drifts, worn darker here and there; mud lies wet in its hollows
+        float pebble = (1.0 - smoothstep(0.10, 0.20, fine.b)) * smoothstep(0.42, 0.58, mid.g * 0.7 + fine.r * 0.3);
+        c = mix(c, mix(dark, light, smoothstep(0.3, 0.7, fine.r)), pebble * 0.7);
+        c = mix(c, dark, smoothstep(0.62, 0.92, slot == 4 ? mid.a : fine.a) * (slot == 4 ? 0.55 : 0.16));
+        c *= 0.91 + 0.18 * macro.r;
+        rough = slot == 4 ? 0.40 : 0.65;
+    }
+    return c;
+}
+
+// How far a cover reaches into its neighbours, from the noise by its slot: the same on every triangle
+float Push(int slot, vec4 fine, vec4 mid)
+{
+    float k = fract(float(slot) * 0.618);
+    return (mix(fine.g, 1.0 - fine.b, k) - 0.5) * 0.5 + (mid.a - 0.5) * 0.3;
+}
 
 void main()
 {
     if (mirrorClip.x > 0.5 && fragWorld.y < mirrorClip.y) discard;
     vec3 n = normalize(fragNormal);
-    // Derivatives first, while every fragment of the quad takes them
-    vec3 wx = dFdx(fragWorld), wy = dFdy(fragWorld);
-    vec3 bx = dFdx(fragBary), by = dFdy(fragBary);
-
-    // The face's own axis for this 1/16 m cube: top, east-west or north-south, by the normal's weights to the fourth power
     vec3 w = pow(abs(n), vec3(4.0));
     w /= (w.x + w.y + w.z);
-    float pick = Hash3(floor(fragWorld * Texels) + vec3(0.5, 7.0, 13.0));
-    int axis = pick < w.y ? 1 : (pick < w.y + w.x ? 0 : 2);
-    vec2 plane = Project(fragWorld, axis);
-    vec2 texel = floor(plane * Texels);
-    vec2 centre = (texel + 0.5) / Texels;
+    vec3 wdx = dFdx(fragWorld), wdy = dFdy(fragWorld);
+    // (what the water mirrors is seen bent and small: it needs the land's colours, not its grain)
+    bool mirrored = mirrorClip.x > 0.5;
+    vec4 fine = mirrored ? vec4(0.5) : Sheet(fragWorld, w, Fine, wdx, wdy);
+    vec4 mid = Sheet(fragWorld, w, Mid, wdx, wdy);
+    vec4 macro = texture(texture0, fragWorld.xz * Macro);
+    float steep = 1.0 - w.y;
 
-    // The corners' weights at the texel's middle: the triangle's weights move linearly over its plane
-    vec2 px = Project(wx, axis), py = Project(wy, axis);
-    float det = px.x * py.y - py.x * px.y;
-    vec3 b = fragBary;
-    if (abs(det) > 1e-14)
-    {
-        vec2 d = centre - plane;
-        float s = (d.x * py.y - py.x * d.y) / det;
-        float t = (px.x * d.y - d.x * px.y) / det;
-        b += s * bx + t * by;
-    }
-
-    // The cover of the corner whose weight is greatest, the weights of corners of one cover summed, jittered per texel
+    // The corners' covers, those of one cover summed, each pushed by the noise and the greatest winning softly
     ivec3 c = fragSlots;
+    vec3 b = fragBary;
     if (c.y == c.x) { b.x += b.y; b.y = -9.0; }
     if (c.z == c.x) { b.x += b.z; b.z = -9.0; }
     else if (c.z == c.y && b.y > -1.0) { b.y += b.z; b.z = -9.0; }
-    float salt = float(axis) * 31.0;
-    b += (vec3(Hash(texel + salt), Hash(texel + salt + 17.3), Hash(texel + salt + 41.7)) - 0.5) * 0.56;
-    int slot = b.x >= b.y && b.x >= b.z ? c.x : (b.y >= b.z ? c.y : c.z);
+    b += vec3(Push(c.x, fine, mid), Push(c.y, fine, mid), Push(c.z, fine, mid));
+    float most = max(b.x, max(b.y, b.z));
+    vec3 share = max(b - most + 0.16, 0.0);
+    share /= (share.x + share.y + share.z);
 
-    // The tile's texel there, in the middle of its cell: whole texels near, between mip levels far (the cell's pad is
-    // the tile's own, so a far level reads nothing of another cover)
-    vec2 tile = fract(centre / TileMetres);
-    vec2 atlas = vec2((Pad + tile.x * Tile) / Cell, (float(slot) * Cell + Pad + tile.y * Tile) / (Cell * Slots));
-    vec2 scale = vec2(Tile / Cell, Tile / (Cell * Slots)) / TileMetres;
-    vec3 albedo = textureGrad(texture0, atlas, px * scale, py * scale).rgb;
+    vec3 albedo = vec3(0.0);
+    float rough = 0.0, r;
+    if (share.x > 0.0) { albedo += Cover(c.x, fine, mid, macro, steep, fragWorld, r) * share.x; rough += r * share.x; }
+    if (share.y > 0.0) { albedo += Cover(c.y, fine, mid, macro, steep, fragWorld, r) * share.y; rough += r * share.y; }
+    if (share.z > 0.0) { albedo += Cover(c.z, fine, mid, macro, steep, fragWorld, r) * share.z; rough += r * share.z; }
+
+    // The grain as the light feels it: the surface's height from the noise, its slope across the picture turned
+    // into a lean of the normal (far off the sheet's mip levels flatten it, so the distance is smooth)
+    float h = fine.r * 0.5 + (1.0 - fine.b) * 0.3 + mid.r * 0.2;
+    vec3 sx = dFdx(fragWorld), sy = dFdy(fragWorld);
+    vec3 r1 = cross(sy, n), r2 = cross(n, sx);
+    float det = dot(sx, r1);
+    vec3 lean = sign(det) * (dFdx(h) * r1 + dFdy(h) * r2);
+    vec3 nb = mirrored ? n : normalize(abs(det) * n - lean * (0.09 * rough));
+    albedo *= 1.0 - rough * 0.16 * (0.5 - h);
 
     float ndl = dot(n, sunDir);
     float shadow = ndl > 0.0 ? CascadeShadow(fragWorld, n) : 0.0;
-    vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
+    vec3 ambient = mix(groundAmbient, skyAmbient, nb.y * 0.5 + 0.5);
     float diffuse = mix(max(ndl, 0.0), smoothstep(0.0, 0.3, ndl) * 0.92 + max(ndl, 0.0) * 0.08, worldRamp);
-    vec3 light = ambient + sunColor * diffuse * shadow * CloudLight(fragWorld) + Lamp(fragWorld, n);
+    diffuse *= clamp(1.0 + (dot(nb, sunDir) - ndl) * 1.5, 0.5, 1.4);
+    vec3 light = ambient + sunColor * diffuse * shadow * CloudLight(fragWorld) + Lamp(fragWorld, nb);
     finalColor = vec4(ApplyFog(albedo * light, fragWorld), 1.0);
 }";
 
@@ -267,9 +350,13 @@ void main()
     gl_Position = mvp * vec4(vertexPosition, 1.0);
 }";
 
+    // The water (style guide, "Open world", "Water"): its colour by the depth under it, eased from the shallows to the
+    // deep; two layers of ripples from the noise sheet drifting across one another, which bend what it mirrors, catch
+    // the sun and take the sky's colour toward the horizon; foam breaking along the shore
     private const string WaterFragment = @"#version 330
 in vec3 fragWorld;
 in float fragDepth;
+uniform sampler2D texture0;
 uniform sampler2D texture1;
 uniform mat4 mirrorVP;
 uniform vec4 mirror;
@@ -283,95 +370,67 @@ const vec3 deep = vec3(58.0, 118.0, 190.0) / 255.0;
 const vec3 middle = vec3(76.0, 146.0, 214.0) / 255.0;
 const vec3 shallow = vec3(116.0, 184.0, 232.0) / 255.0;
 const vec3 foam = vec3(236.0, 246.0, 255.0) / 255.0;
-const vec3 foamThin = vec3(176.0, 218.0, 248.0) / 255.0;
-const vec3 waveLight = vec3(150.0, 206.0, 246.0) / 255.0;
-const vec3 waveDark = vec3(46.0, 104.0, 186.0) / 255.0;
-const float Texels = 16.0;
+
+float Swell(vec2 p)
+{
+    return texture(texture0, p * 0.085 + vec2(time * 0.011, time * 0.006)).r * 0.6
+         + texture(texture0, p * 0.23 - vec2(time * 0.016, -time * 0.012)).g * 0.4;
+}
 
 void main()
 {
-    vec3 wx = dFdx(fragWorld), wy = dFdy(fragWorld);
-    float dx = dFdx(fragDepth), dy = dFdy(fragDepth);
-    vec2 t = floor(fragWorld.xz * Texels);
-    vec2 centre = (t + 0.5) / Texels;
-
-    // The depth at the texel's middle, so every band is whole texels
     float depth = fragDepth;
-    float det = wx.x * wy.z - wy.x * wx.z;
-    if (abs(det) > 1e-14)
-    {
-        vec2 d = centre - fragWorld.xz;
-        float s = (d.x * wy.z - wy.x * d.y) / det;
-        float u = (wx.x * d.y - d.x * wx.z) / det;
-        depth += s * dx + u * dy;
-    }
     if (depth < 0.0) discard;
+    vec2 p = fragWorld.xz;
 
-    // Depth bands whose edges breathe by a texel
-    float breathe = sin(time * 0.9 + t.x * 0.11 + t.y * 0.17) * 0.04;
-    vec3 color = depth + breathe < 0.3 ? shallow : depth + breathe < 1.0 ? middle : deep;
-    vec3 band = color;
+    // The surface's lean from the swell's height a little to the east and to the south
+    float h = Swell(p);
+    vec3 n = normalize(vec3((h - Swell(p + vec2(0.18, 0.0))) * 2.2, 1.0, (h - Swell(p + vec2(0.0, 0.18))) * 2.2));
+    vec4 grain = texture(texture0, p * 0.31 + vec2(time * 0.02, 0.0));
 
-    // Wave marks: a light dash with dipped ends and a dark line under it, one to a cell, drifting east
-    vec2 p = vec2(t.x - floor(time * 2.0), t.y);
-    vec2 c = floor(p / vec2(22.0, 11.0));
-    vec2 f = p - c * vec2(22.0, 11.0);
-    float h1 = Hash(c), h2 = Hash(c + 17.0), h3 = Hash(c + 43.0);
-    float len = 4.0 + floor(h2 * 5.0);
-    vec2 o = vec2(floor(h1 * (22.0 - len)), 1.0 + floor(h3 * 7.0));
-    if (h2 > 0.3 && fract(h1 + time * 0.09) < 0.72 && depth > 0.5 && f.x >= o.x && f.x < o.x + len)
-    {
-        float dip = (f.x == o.x || f.x == o.x + len - 1.0) ? 1.0 : 0.0;
-        if (f.y == o.y + dip) color = waveLight;
-        else if (f.y == o.y + dip + 1.0) color = waveDark;
-    }
-
-    // Foam: lapping where it is shallowest, and a broken line a little further out
-    float lap = 0.035 + 0.025 * sin(time * 1.3 + (t.x + t.y) * 0.09);
-    float ring = 0.15 + 0.05 * sin(time * 0.8 + (t.x - t.y) * 0.07);
-    if (depth < lap) color = foam;
-    else if (abs(depth - ring) < 0.012 && Hash(floor(t / 3.0) + 5.0) > 0.42) color = foamThin;
+    vec3 color = mix(mix(shallow, middle, smoothstep(0.05, 0.7, depth)), deep, smoothstep(0.6, 2.4, depth));
+    color *= 0.94 + 0.12 * h;
 
     float shadow = CascadeShadow(fragWorld, vec3(0.0, 1.0, 0.0));
     float sun = max(sunDir.y, 0.0) * shadow * CloudLight(fragWorld);
     const vec3 luma = vec3(0.3, 0.5, 0.2);
     float daylight = smoothstep(0.6, 0.95, dot(skyAmbient + sunColor * max(sunDir.y, 0.0), luma));
 
-    // Sparkles: a plus sign that flashes for a moment, where the sun reaches
-    vec2 sc = floor(t / 30.0);
-    vec2 sf = t - sc * 30.0 - (floor(vec2(Hash(sc + 3.0), Hash(sc + 7.0)) * 24.0) + 3.0);
-    float life = fract(time * 0.4 + Hash(sc + 91.0));
-    if (life < 0.2 && depth > 0.3 && sun > 0.3 && daylight > 0.5)
-    {
-        float arm = (life > 0.05 && life < 0.14) ? 2.0 : 1.0;
-        if ((sf.x == 0.0 && abs(sf.y) <= arm) || (sf.y == 0.0 && abs(sf.x) <= arm)) color = vec3(1.0);
-    }
+    // Foam: breaking in and out along the shore, torn by the noise
+    float reach = 0.10 + 0.05 * sin(time * 1.3 + grain.a * 6.0);
+    float shore = (1.0 - smoothstep(reach * 0.4, reach, depth)) * smoothstep(0.25, 0.55, grain.b + grain.r * 0.4);
+    shore = max(shore, (1.0 - smoothstep(0.0, 0.035, depth)) * 0.9);
+    shore += (1.0 - smoothstep(0.0, 0.05, abs(depth - 0.26 - 0.06 * sin(time * 0.8 + h * 5.0)))) * smoothstep(0.55, 0.75, grain.g) * 0.45;
+    color = mix(color, foam, clamp(shore, 0.0, 1.0));
 
-    bool plain = color == band;
+    // After dark the water is darker and greyer, as the field's
     color = mix(mix(vec3(dot(color, luma)), color, 0.55) * 0.62, color, daylight);
     color *= skyAmbient + sunColor * sun + Lamp(fragWorld, vec3(0.0, 1.0, 0.0));
 
-    // What stands over the water, mirrored: in the mid and deep bands of the water at the mirror's height alone, one
-    // colour per texel read at its middle, each row pushed a texel east or west on a slow swell, broken into runs; from
-    // 0.1 m off the mirror's height to 0.25 m its texels thin out by a dither, so a sloping river shows no line where its
-    // mirror ends
+    vec3 toEye = normalize(viewPos - fragWorld);
+    float glance = pow(1.0 - max(dot(n, toEye), 0.0), 4.0);
+    float open = 1.0 - clamp(shore, 0.0, 1.0);
+
+    // What stands over the water, mirrored and bent by the ripples: in the water at the mirror's height alone,
+    // fading out from 0.1 m off it to 0.25 m, so a sloping river shows no line where its mirror ends
     float off = abs(fragWorld.y - mirror.y);
-    if (mirror.x > 0.5 && plain && depth + breathe >= 0.3 && off < 0.25 && Hash(t + 13.0) >= smoothstep(0.1, 0.25, off))
+    if (mirror.x > 0.5)
     {
-        float swell = floor(1.2 * sin(time * 1.5 + t.y * 0.9) + 0.5);
-        float run = floor((t.x - floor(time * 2.0)) / 6.0);
-        if (Hash(vec2(run, t.y) + 71.0) > 0.16)
+        vec3 at = vec3(fragWorld.x + n.x * 1.6, mirror.y, fragWorld.z + n.z * 1.6);
+        vec4 m = mirrorVP * vec4(at, 1.0);
+        vec2 uv = m.xy / m.w * 0.5 + 0.5;
+        if (m.w > 0.0 && uv.x >= 0.0 && uv.y >= 0.0 && uv.x <= 1.0 && uv.y <= 1.0)
         {
-            vec3 at = vec3((t.x + swell + 0.5) / Texels, mirror.y, (t.y + 0.5) / Texels);
-            vec4 m = mirrorVP * vec4(at, 1.0);
-            vec2 uv = m.xy / m.w * 0.5 + 0.5;
-            if (m.w > 0.0 && uv.x >= 0.0 && uv.y >= 0.0 && uv.x <= 1.0 && uv.y <= 1.0)
-            {
-                vec4 seen = texture(texture1, uv);
-                color = mix(color, mix(seen.rgb, color, 0.35) * 0.82, seen.a * 0.7);
-            }
+            vec4 seen = texture(texture1, uv);
+            float much = seen.a * (0.30 + 0.45 * glance) * (1.0 - smoothstep(0.1, 0.25, off)) * smoothstep(0.05, 0.4, depth) * open;
+            color = mix(color, seen.rgb * 0.9, much);
         }
     }
+
+    // The sky's own colour toward the horizon, and the sun caught on the ripples
+    color = mix(color, fogColor, glance * 0.45 * open);
+    vec3 halfway = normalize(sunDir + toEye);
+    color += sunColor * pow(max(dot(n, halfway), 0.0), 220.0) * sun * daylight * open * 0.9;
     finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
 }";
 
@@ -395,6 +454,8 @@ uniform vec3 zenith;
 uniform vec3 middle;
 uniform vec3 horizon;
 uniform vec3 cloudTint;
+uniform vec3 sunDir;
+uniform vec3 sunColor;
 uniform float stars;
 uniform float time;
 out vec4 finalColor;
@@ -435,19 +496,37 @@ void main()
         }
     }
 
-    // Clouds: a layer 600 m up, three octaves of value noise, soft-edged, lit in the cloud tint and shaded
-    // toward the sky's middle underneath, drifting east, thinning to nothing within 4° of the horizon
+    // The sun (after dark, the moon): its disc, the glare close round it and a wide glow in the air toward it
+    float toSun = max(dot(dir, sunDir), 0.0);
+    float bright = max(sunColor.r, max(sunColor.g, sunColor.b));
+    vec3 sunTint = sunColor / max(bright, 0.001);
+    float up = smoothstep(-0.02, 0.05, sunDir.y);
+    color += sunTint * (pow(toSun, 8.0) * 0.10 + pow(toSun, 90.0) * 0.30) * min(bright, 1.0) * up;
+    // (a sun the weather has taken shows no disc)
+    float disc = smoothstep(0.99955, 0.99975, toSun) * up * smoothstep(0.3, 0.7, bright);
+
+    // Clouds: a layer 600 m up, five octaves of value noise pulled about by another, soft-edged, their thick middles
+    // shaded underneath and their edges toward the sun lit, drifting east, thinning into the haze near the horizon
+    float cover = 0.0;
     if (e > 0.005)
     {
         float reach = (600.0 - eye.y) / e;
         vec2 p = eye.xz + dir.xz * reach;
         vec2 q = (p + vec2(time * 4.0, 0.0)) * 0.0018;
-        float n = Noise(q) * 0.55 + Noise(q * 2.03 + 11.0) * 0.3 + Noise(q * 4.1 + 23.0) * 0.15;
-        float cloud = smoothstep(0.52, 0.70, n) * smoothstep(0.0, 0.07, e);
-        vec3 shade = mix(cloudTint, middle, 0.22);
-        vec3 lit = mix(shade, cloudTint, smoothstep(0.55, 0.85, n));
-        color = mix(color, lit, cloud * 0.92);
+        q += (vec2(Noise(q * 1.7 + 5.0), Noise(q * 1.7 + 31.0)) - 0.5) * 0.55;
+        float n = Noise(q) * 0.50 + Noise(q * 2.03 + 11.0) * 0.26 + Noise(q * 4.1 + 23.0) * 0.13
+                + Noise(q * 8.3 + 47.0) * 0.07 + Noise(q * 16.9 + 71.0) * 0.04;
+        // (the same a little toward the sun: where it is thinner there, this side is lit)
+        vec2 s = q + normalize(sunDir.xz + vec2(0.0001, 0.0)) * 0.09;
+        float toward = Noise(s) * 0.50 + Noise(s * 2.03 + 11.0) * 0.26 + Noise(s * 4.1 + 23.0) * 0.13 + 0.055;
+        float cloud = smoothstep(0.50, 0.72, n) * smoothstep(0.0, 0.10, e);
+        float lit = clamp(0.62 + (n - toward) * 3.2, 0.0, 1.0);
+        vec3 shade = mix(cloudTint, middle, 0.45) * 0.86;
+        vec3 body = mix(shade, cloudTint, lit) + sunTint * pow(toSun, 12.0) * 0.18 * (1.0 - smoothstep(0.55, 0.8, n)) * up;
+        cover = cloud * 0.94;
+        color = mix(color, body, cover);
     }
+    color = mix(color, sunTint * 1.6 + 0.2, disc * (1.0 - cover));
     finalColor = vec4(color, 1.0);
 }";
 
@@ -532,6 +611,9 @@ in vec4 fragColor;
 in vec3 fragNormal;
 in vec3 fragWorld;
 uniform sampler2D texture0;
+#ifdef GRAIN
+uniform sampler2D texture1;
+#endif
 uniform vec4 colDiffuse;
 uniform vec3 sunDir;
 uniform vec3 sunColor;
@@ -554,10 +636,31 @@ void main()
     // A building is seen from every side: the underside of an eave, seen from below, is lit as facing down
     if (!gl_FrontFacing) n = -n;
 #endif
+#ifdef GRAIN
+    // A built surface is no flat paint: the grain of its stone, plaster or tiles from the noise sheet laid by the
+    // face's own axes, rain's streaks down a wall, and that grain felt by the light
+    vec3 gw = pow(abs(n), vec3(4.0));
+    gw /= (gw.x + gw.y + gw.z);
+    vec4 grit = texture(texture1, fragWorld.xz * 0.43) * gw.y + texture(texture1, fragWorld.zy * 0.43) * gw.x + texture(texture1, fragWorld.xy * 0.43) * gw.z;
+    vec4 wear = texture(texture1, fragWorld.xz * 0.06) * gw.y + texture(texture1, vec2(fragWorld.z * 0.7, fragWorld.y * 0.045)) * gw.x + texture(texture1, vec2(fragWorld.x * 0.7, fragWorld.y * 0.045)) * gw.z;
+    albedo *= (0.89 + 0.14 * grit.r + 0.07 * (1.0 - grit.b)) * (0.93 + 0.12 * wear.g);
+    albedo = mix(albedo, albedo * vec3(0.72, 0.70, 0.66), smoothstep(0.70, 0.95, wear.a) * (1.0 - gw.y) * 0.22);
+    float gh = grit.r * 0.6 + (1.0 - grit.b) * 0.4;
+    vec3 gsx = dFdx(fragWorld), gsy = dFdy(fragWorld);
+    vec3 gr1 = cross(gsy, n), gr2 = cross(n, gsx);
+    float gdet = dot(gsx, gr1);
+    n = normalize(abs(gdet) * n - sign(gdet) * (dFdx(gh) * gr1 + dFdy(gh) * gr2) * 0.035);
+#endif
     float ndl = dot(n, sunDir);
     float shadow = ndl > 0.0 ? CascadeShadow(fragWorld, n) : 0.0;
     vec3 ambient = mix(groundAmbient, skyAmbient, n.y * 0.5 + 0.5);
     float diffuse = mix(max(ndl, 0.0), smoothstep(0.0, 0.3, ndl) * 0.92 + max(ndl, 0.0) * 0.08, worldRamp);
+#ifdef LEAVES
+    // Leaves and blades let light through and stand among one another: the sun wraps round them, a third of it
+    // comes through whichever way they face, and their own shade on one another is never black
+    diffuse = max(ndl * 0.6 + 0.4, 0.0) * 0.72 + 0.28;
+    shadow = mix(0.42, 1.0, CascadeShadow(fragWorld, n));
+#endif
     vec3 color = albedo * (ambient + sunColor * diffuse * shadow * CloudLight(fragWorld) + Lamp(fragWorld, n));
     if (texel.a < 0.95)
     {
@@ -650,12 +753,18 @@ void main()
         Terrain = Gpu.ShaderFrom(TerrainVertex, Shadowed(TerrainFragment), "shader");
         Water = Gpu.ShaderFrom(WaterVertex, Shadowed(WaterFragment), "shader");
         Sky = Gpu.ShaderFrom(SkyVertex, SkyFragment, "shader");
-        Scenery = Gpu.ShaderFrom(SceneryVertex, Shadowed(SceneryFragment).Replace("#version 330", "#version 330\n#define TWO_SIDED"), "shader");
-        Instanced = Gpu.ShaderFrom(InstancedOf(SceneryVertex), Shadowed(SceneryFragment), "shader");
+        Scenery = Gpu.ShaderFrom(SceneryVertex, Shadowed(SceneryFragment).Replace("#version 330", "#version 330\n#define TWO_SIDED\n#define GRAIN"), "shader");
+        Instanced = Gpu.ShaderFrom(InstancedOf(SceneryVertex), Shadowed(SceneryFragment).Replace("#version 330", "#version 330\n#define LEAVES"), "shader");
         InstancedDepth = Gpu.ShaderFrom(InstancedOf(SceneryVertex), DepthFragment, "shader");
         Impostor = Gpu.ShaderFrom(ImpostorVertex, ImpostorFragment, "shader");
         foreach (var shader in new[] { Terrain, Water, Scenery, Instanced })
             for (int i = 0; i < OpenCascades.Count; i++) SetInt(shader, $"shadow{i}", OpenCascades.Slots[i]);
+        // The covers' colours, which the ground's program keeps (they never change)
+        var (bases, patches, darks, lights) = OpenGroundArt.Palette();
+        SetColours("coverBase", bases);
+        SetColours("coverPatch", patches);
+        SetColours("coverDark", darks);
+        SetColours("coverLight", lights);
         Loaded = true;
     }
 
@@ -777,7 +886,7 @@ void main()
         if (on) SetMatrix(Water, "mirrorVP", mirrorVP);
     }
 
-    public void SetSky(Matrix4x4 inverseViewProjection, Vector2 viewport, Vector3 eye, SkyColors sky, float time)
+    public void SetSky(Matrix4x4 inverseViewProjection, Vector2 viewport, Vector3 eye, SkyColors sky, SceneLighting light, float time)
     {
         SetMatrix(Sky, "invViewProj", inverseViewProjection);
         Set(Sky, "viewport", viewport);
@@ -787,10 +896,18 @@ void main()
         Set(Sky, "horizon", Of(sky.Horizon));
         Set(Sky, "cloudTint", Of(sky.CloudTint));
         Set(Sky, "stars", sky.Stars);
+        Set(Sky, "sunDir", light.SunDirection);
+        Set(Sky, "sunColor", light.SunColor);
         Set(Sky, "time", time);
     }
 
     private static Vector3 Of(Color c) => new(c.R / 255f, c.G / 255f, c.B / 255f);
+
+    private void SetColours(string name, float[] colours)
+    {
+        int loc = FieldShaders.Location(Terrain, name);
+        if (loc >= 0) Raylib.SetShaderValueV(Terrain, loc, colours, ShaderUniformDataType.Vec3, colours.Length / 3);
+    }
 
     private static void Set(Shader shader, string name, float value)
     {

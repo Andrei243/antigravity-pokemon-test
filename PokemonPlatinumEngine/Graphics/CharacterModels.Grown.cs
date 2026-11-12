@@ -125,6 +125,7 @@ internal static partial class CharacterModels
     {
         var s = rig.Style;
         var f = GrownFrameOf(s.Build, s.CurvedFigure());
+        if (ModelledBuilds(rig)) return BuildModelledRig(rig, f);
         rig.Scale = s.Height;
         var wear = new SdfModel("clothes " + rig.Type) { WeightBlend = GrownWeightBlend };
         var held = new SdfModel("held " + rig.Type) { WeightBlend = GrownWeightBlend };

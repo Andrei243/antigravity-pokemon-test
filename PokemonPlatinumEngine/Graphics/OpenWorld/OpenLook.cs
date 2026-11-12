@@ -15,6 +15,9 @@ internal static class OpenLook
     /// <summary>The fog of the open air: from 110 m to 760 m, 78 % at the far edge (the gate's).</summary>
     public const float FogNear = 110f, FogFar = 760f, FogAmount = 0.78f;
 
+    /// <summary>How far the land's light is the battle scenery's two-tone band (its 0.85): a little, so a slope turns from the sun gradually as real ground does.</summary>
+    public const float Ramp = 0.2f;
+
     /// <summary>The light about the player under rock: its colour and strength, how far over the head it hangs and how far it reaches.</summary>
     public static readonly Vector3 LampColour = new Vector3(1.0f, 0.78f, 0.50f) * 1.1f;
     public const float LampAbove = 0.5f, LampReach = 18f;
@@ -32,7 +35,13 @@ internal static class OpenLook
         {
             FogNear = FogNear, FogFar = FogFar, FogAmount = FogAmount,
             // A camera low behind the player is no diorama: no tilt-shift, no wide blur
-            Post = rig.Post with { TiltShift = 0f, Dof = 0f },
+            // and the land is no drawing: its ink lines are a quarter of a battle's (people and Pokémon keep their own
+            // shells), the corners and creases are shaded deeper, and the colours sit a little quieter
+            Post = rig.Post with
+            {
+                TiltShift = 0f, Dof = 0f, OutlineStrength = rig.Post.OutlineStrength * 0.25f,
+                AoStrength = MathF.Max(rig.Post.AoStrength, 0.6f), Saturation = rig.Post.Saturation * 0.94f
+            },
             LampGlow = field.LampGlow, HomeGlow = field.HomeGlow
         };
     }

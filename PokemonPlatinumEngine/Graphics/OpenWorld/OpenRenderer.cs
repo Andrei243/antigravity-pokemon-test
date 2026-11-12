@@ -113,7 +113,7 @@ internal sealed class OpenRenderer
         // The trees' impostors are baked once, before anything of a frame is set (the bake has its own light)
         foliage.BakeImpostors(context, shaders);
         if (resources) return;
-        atlas = OpenCoverArt.Upload();
+        atlas = OpenGroundArt.Upload();
         terrain = RenderContext.MaterialFor(shaders.Terrain, atlas);
         water = RenderContext.MaterialFor(shaders.Water, atlas);
         depth = context.Depth;
@@ -152,6 +152,7 @@ internal sealed class OpenRenderer
         // What stands on the land (plan 32 · OW9): the map's buildings and trees made once a map, the frame's near trees
         // and tufts, and the figures in view, an impostor's look baked where one is wanted (before any of the frame's
         // uniforms: a bake sets its own light)
+        buildings.Grain = atlas;
         buildings.Use(scene.Map, context, shaders);
         foliage.Prepare(scene.Eye, scene.Feet, stream.Ready);
         var figures = scene.Figures ?? Array.Empty<OpenFigure>();
@@ -179,7 +180,7 @@ internal sealed class OpenRenderer
         FrameProfiler.Lap(FrameSection.Shadows);
 
         // The uniforms of the frame, the open programs' and the field's (which the player's rig is drawn with)
-        shaders.SetLight(rig.Light, scene.Eye, view.Forward, ArtLook.BattleRamp);
+        shaders.SetLight(rig.Light, scene.Eye, view.Forward, OpenLook.Ramp);
         shaders.SetFog(rig.FogColor, rig.FogAmount, rig.FogNear, rig.FogFar, rig.CloudShade, (float)(scene.Time % 3600.0));
         var ends = new Vector3(OpenCascades.Ends[0], OpenCascades.Ends[1], OpenCascades.Ends[2]);
         var texelWorld = new Vector3(TexelWorld(0), TexelWorld(1), TexelWorld(2));
@@ -207,7 +208,7 @@ internal sealed class OpenRenderer
         var viewMatrix = Raymath.MatrixLookAt(scene.Eye, scene.Target, Vector3.UnitY);
         var projection = Raymath.MatrixPerspective(Canvas2D.Layout.FovYFor(scene.Lens) * Math.PI / 180, aspect, OrbitCamera.Near, OrbitCamera.Far);
         var inverse = Raymath.MatrixInvert(Raymath.MatrixMultiply(viewMatrix, projection));
-        shaders.SetSky(inverse, new Vector2(context.PartWidth, context.PartHeight), scene.Eye, rig.Sky, (float)(scene.Time % 3600.0));
+        shaders.SetSky(inverse, new Vector2(context.PartWidth, context.PartHeight), scene.Eye, rig.Sky, rig.Light, (float)(scene.Time % 3600.0));
         Raylib.BeginShaderMode(shaders.Sky);
         Raylib.DrawRectangle(0, 0, context.PartWidth, context.PartHeight, Color.White);
         Raylib.EndShaderMode();
