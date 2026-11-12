@@ -269,8 +269,9 @@ public partial class GameEngine
     /// <summary>The field's picture composited into the 2D pass: the open map's or the grid's.</summary>
     private void DrawTheField(SceneRipple ripple = default)
     {
-        if (flow.Open != null && openRenderer != null) openRenderer.DrawToScreen(VirtualWidth, VirtualHeight, ripple);
-        else world.DrawToScreen(VirtualWidth, VirtualHeight, ripple);
+        // Over the whole canvas, where the window is another shape than 16:9 (rulings, "Other shapes of screen")
+        if (flow.Open != null && openRenderer != null) Canvas2D.Draw((w, h) => openRenderer.DrawToScreen(w, h, ripple));
+        else Canvas2D.Draw((w, h) => world.DrawToScreen(w, h, ripple));
     }
 
     /// <summary>Where the player's middle is on the field's picture, in shares of it: the open map's or the grid's.</summary>

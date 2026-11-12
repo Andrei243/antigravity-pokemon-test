@@ -138,7 +138,7 @@ internal static partial class ModernUi
         var feet = new Vector2(r.X + r.Width / 2f, r.Y + r.Height - 44);
         float unit = 1.6f;
         // The pieces stay on the stage
-        Raylib.BeginScissorMode((int)((r.X + 4) * GameEngine.RenderScale), (int)((r.Y + 4) * GameEngine.RenderScale), (int)((r.Width - 8) * GameEngine.RenderScale), (int)((r.Height - 8) * GameEngine.RenderScale));
+        PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)((r.X + 4) * GameEngine.RenderScale), (int)((r.Y + 4) * GameEngine.RenderScale), (int)((r.Width - 8) * GameEngine.RenderScale), (int)((r.Height - 8) * GameEngine.RenderScale));
         UiShapes.Circle(feet + new Vector2(0, 150), 190, new Color(255, 255, 255, 14));
         if (pokemon != null)
         {

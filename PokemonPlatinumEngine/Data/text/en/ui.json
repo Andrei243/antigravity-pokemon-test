@@ -115,6 +115,15 @@
       "value": "{width} × {height}",
       "help": "Size of the game window when it isn't full screen."
     },
+    "resolution": {
+      "label": "Resolution",
+      "value": "{width} × {height}",
+      "native": "Native ({width} × {height})",
+      "help": {
+        "window": "The window's size, in your monitor's own shape ({ratio}).",
+        "fullscreen": "How many pixels the 3D scenes are drawn at in full screen. Native is the sharpest; a smaller one is quicker."
+      }
+    },
     "fullscreen": {
       "label": "Full screen",
       "help": "Fills the whole display (also F11)."

@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Ultrawide (21:9, 32:9) and 4:3 screens are filled instead of shown in black bars: the field, battles and the title show more of the scene to the sides (or above and below), with the menus where they always were. A new RESOLUTION option offers your monitor's own sizes, for the window or, in full screen, for the 3D scenes; the game finds your monitor's resolution as it starts and as it goes full screen.
+
 - Lockwork's story has two new medals (reclaim a locked heart; open thirty), a request in the log for each of its cells, and a clipped march of its own that plays when its agents spot you.
 
 - Your Trainer Card can now be designed: press the item button on the card to choose a background, a frame, a pose and a face for your figure, a title, the six Pokémon it shows, a two-word greeting and your own signature on the back, and to print both sides as a picture. New backgrounds and frames come with Badges, Halls of Fame, medals, diplomas and photo spots.

@@ -11773,3 +11773,50 @@ Colosseum's and XD's snag and purification as a mechanic, with everything in it 
   items and switches) ends it and lowers the gauge. A switch ends it too.
 - **What is not taken**: no Shadow move, Shadow type, Snag Machine, Purify Chamber, Relic Stone, region, villain team or
   name of Colosseum's or XD's; the locked fight with their own moves.
+
+## Other shapes of screen, and the resolution (2026-11-12)
+
+The user plays on a monitor that is not 16:9, and asked for 21:9 and 4:3 (and a rotated 3:4) to be filled rather than
+shown in bars, the monitor's own resolution to be found, and a choice of resolution in the monitor's ratio.
+
+- **A safe area and a canvas** (`Core/AspectLayout.cs`, GPU-free). The interface keeps laying out in 1920 by 1080 units
+  (`GameEngine.VirtualWidth`, `VirtualHeight` are still those constants): that box is the **safe area**. Round it the
+  **canvas** follows the window's shape, still in layout units: as wide as the window asks at 1080 tall where the window
+  is wider than 16:9 (2560×1080 is a canvas of 2560×1080, 3440×1440 of 2580×1080), and 1920 wide and as tall as the window
+  asks where it is narrower (4:3 is 1920×1440, the Deck's 16:10 is 1920×1200). The safe area stands in the canvas's
+  middle. The interface is drawn exactly as before, at the same size on the screen as it was in bars; the scene (the field,
+  a battle, the title's places and an open map), what lies over it (weather, a cave's dark, flashes, a script's fade, the
+  cinema bars) and the ways into a battle are drawn over the whole canvas, where the bars were.
+- **A window within 1 % of 16:9 is 16:9**, to the unit: the full-screen window one row taller than the monitor (1920×1081),
+  1366×768 and the harness's own window are the picture they always were, the same targets and the same pixels. Only a
+  window of another shape changes anything.
+- **Wider than 16:9 sees more to the sides; narrower sees more above and below** (Hor+ and Vert+). The 3D camera keeps the
+  16:9 view inside the safe area exactly, so whatever ties the interface to the scene (the battle's framing of the free
+  part of the picture, the HP boxes beside the Pokémon, the text box over the field) still meets it: wider, the vertical
+  field of view is the same; narrower, it grows so that the safe area's width shows what 16:9's did
+  (`AspectLayout.FovYFor`: `tan(fov'/2) = tan(fov/2) · canvas height / 1080`). The brief's alternative for 4:3, a
+  1440-wide interface scaled to fit, was not taken: it shows the same pixels on the screen and would part the interface
+  from the scene behind it.
+- **Shapes beyond are barred**: the canvas's shape is held between 4:3 and 32:9, and a window outside it shows that much
+  in bars, as every window did before. A monitor turned on its side (3:4, 9:16) is a 4:3 picture with bars above and
+  below: nothing is drawn as tall as 3840×5120, and nothing is laid out for a portrait screen.
+- **Menus that cover the screen** stay in the safe area: nothing of a screen's layout moved. The shared menu backdrop
+  (deep teal and its stripes) and the dim behind a prompt spread over the whole canvas (`Canvas2D.Bled`); a screen with
+  a backdrop of its own shows the black the picture is cleared to beyond the safe area. A split battle's band (plan 45 · BC3) is drawn in
+  the safe area too, with the scene's own view beyond it.
+- **The mouse** is read in the safe area's units (`Viewport` knows where the safe area stands): a click in the canvas
+  outside the safe area is off the picture, as a click on a bar was.
+- **A screenshot** (F12, a report, the developer's shot) is the whole canvas; the Trainer Card's print and the photo book's
+  pictures are cut from the safe area, so they keep the shape they always had.
+- **The monitor's resolution** is asked of the monitor the window stands on whenever full screen is entered and at the start
+  (`AspectLayout.NativeOr`: 1920×1080 where the system answers nothing). The first run's window is the largest size of the
+  **monitor's own ratio** that fits with the taskbar (a 21:9 monitor gets a 21:9 window), and a window saved larger than
+  the monitor it opens on is brought within it.
+- **RESOLUTION** (the options' row, DISPLAY tab, before Help): the sizes offered are the monitor's own ratio at the heights
+  720, 900, 1080, 1200, 1440, 1600, 1800 and 2160 that fit it, and its own size (`AspectLayout.SizesFor`). **In a window**
+  the row is the window's size (only sizes smaller than the monitor), the same setting as WINDOW SIZE, which keeps its
+  old list. **In full screen** the window stays the monitor's size one row taller, as the flicker rule needs, and no
+  display mode is ever changed: the row is the size the 3D scene is drawn at, at most (`GameSettings.FullscreenHeight`).
+  NATIVE (the default, 0) is today's picture, the preset's own; a smaller size caps the scene's share of its target
+  (`RenderContext.ResolutionCap`, taken as the smaller with dynamic resolution's step), and the interface stays at 4K.
+  The harness never sets it.

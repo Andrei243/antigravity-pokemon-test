@@ -136,6 +136,8 @@ public sealed class BattleRenderer
         if (Photo != null) director.Hold(Photo.Shot);
         else if (director.Held != null) director.LetGo();
         camera = director.Update(dt, anim, places, shake, choosing: battle.HUD.MenuState != BattleMenuState.Message);
+        // On a canvas taller than 16:9's the view widens upward and downward, so the safe area shows the 16:9 view (rulings, "Other shapes of screen")
+        camera.FovY = Canvas2D.Layout.FovYFor(camera.FovY);
         // A shot of the player's own side from the front takes a fill from the camera's side (plan 45 · BC5)
         if (director.Kind == ShotKind.OwnFront || (director.Kind == ShotKind.Closing && anim.Closing is { Kind: BattleClosing.Won }))
             rig = ArtLook.FaceFill(rig);
@@ -178,7 +180,9 @@ public sealed class BattleRenderer
         {
             // The scene's own view between the halves while they come in or go out, then each half over its own part
             // of the picture and the band over their edges (plan 45 · BC3)
-            if (!split.Whole) context.Composite(whole);
+            // (The scene's own view over the whole canvas; the halves and their band keep to the safe area: rulings,
+            // "Other shapes of screen")
+            if (!split.Whole) Canvas2D.Draw((w, h) => context.Composite(new Rectangle(0, 0, w, h)));
             float sx = screenWidth / SplitBand.Width, sy = screenHeight / SplitBand.Height;
             if (split.Royal)
             {
@@ -194,9 +198,9 @@ public sealed class BattleRenderer
                 UI.ModernUi.SplitBands(split.In, sx, sy);
             }
         }
-        else context.Composite(whole);
+        else Canvas2D.Draw((w, h) => context.Composite(new Rectangle(0, 0, w, h)));
         if (fx.Flash > 0.004f)
-            Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, new Color(fx.FlashColor.R, fx.FlashColor.G, fx.FlashColor.B, (byte)(255 * fx.Flash)));
+            Canvas2D.Draw((w, h) => Raylib.DrawRectangle(0, 0, w, h, new Color(fx.FlashColor.R, fx.FlashColor.G, fx.FlashColor.B, (byte)(255 * fx.Flash))));
     }
 
     // ------------------------------------------------------------------ places

@@ -115,7 +115,7 @@ internal static partial class ModernUi
             var (above, pixels, bounce) = m.Reel(reel);
             float shift = (pixels + bounce) / SlotMachine.SymbolPixels;
             // What turns past the window's edges is cut off there (a scissor is in the target's own pixels)
-            Raylib.BeginScissorMode((int)(column.X * Core.GameEngine.RenderScale), (int)(column.Y * Core.GameEngine.RenderScale),
+            PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)(column.X * Core.GameEngine.RenderScale), (int)(column.Y * Core.GameEngine.RenderScale),
                 (int)(column.Width * Core.GameEngine.RenderScale), (int)(column.Height * Core.GameEngine.RenderScale));
             for (int k = 0; k <= 4; k++)
             {

@@ -130,7 +130,7 @@ internal static partial class ModernUi
 
         Vector2 CentreOf(float cx, float cy) => new(picture.X + (cx - view.X - shown.X + 0.5f) * cell, picture.Y + (cy - view.Y - shown.Y + 0.5f) * cell);
 
-        Raylib.BeginScissorMode((int)(picture.X * GameEngine.RenderScale), (int)(picture.Y * GameEngine.RenderScale),
+        PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)(picture.X * GameEngine.RenderScale), (int)(picture.Y * GameEngine.RenderScale),
             (int)(picture.Width * GameEngine.RenderScale), (int)(picture.Height * GameEngine.RenderScale));
         float clock = (float)FrameClock.Now;
         float breath = 0.5f + 0.5f * MathF.Sin(clock * 3.2f);
@@ -316,7 +316,7 @@ internal static partial class ModernUi
             // The cursor's own cell, marked by its corners
             float big = Near * RegionMapArt.CellTexels;
             var c = new Vector2(window.X + (screen.CursorX - view.X - near.X + 0.5f) * big, window.Y + (screen.CursorY - view.Y - near.Y + 0.5f) * big);
-            Raylib.BeginScissorMode((int)(window.X * GameEngine.RenderScale), (int)(window.Y * GameEngine.RenderScale),
+            PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)(window.X * GameEngine.RenderScale), (int)(window.Y * GameEngine.RenderScale),
                 (int)(window.Width * GameEngine.RenderScale), (int)(window.Height * GameEngine.RenderScale));
             foreach (var (sx, sy) in new[] { (-1, -1), (1, -1), (-1, 1), (1, 1) })
             {

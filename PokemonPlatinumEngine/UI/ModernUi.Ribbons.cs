@@ -233,7 +233,7 @@ internal static partial class ModernUi
         float Rnd(int i, int salt) => SoftCanvas.Rand(backdrop * 97 + 5, i, salt);
         void Sky(Color top, Color bottom) => UiShapes.Shape(r, 0, top, bottom);
         void Ground(float from, Color top, Color bottom) => UiShapes.Shape(new Rectangle(x, y + h * from, w, h * (1f - from)), 0, top, bottom);
-        Raylib.BeginScissorMode((int)(x * GameEngine.RenderScale), (int)(y * GameEngine.RenderScale), (int)(w * GameEngine.RenderScale), (int)(h * GameEngine.RenderScale));
+        PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)(x * GameEngine.RenderScale), (int)(y * GameEngine.RenderScale), (int)(w * GameEngine.RenderScale), (int)(h * GameEngine.RenderScale));
         switch (SuperContestDatabase.BackdropName(backdrop))
         {
             case "Dress Up":
