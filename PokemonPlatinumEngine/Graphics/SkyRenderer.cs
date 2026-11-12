@@ -26,6 +26,9 @@ internal sealed class SkyRenderer
     /// <summary>The camera's pitch under the horizon at the lowest and highest heights, its distance behind the flier, and the flier's length.</summary>
     public const float PitchLow = 34f, PitchHigh = 52f, Distance = 15f, FlierLength = 3.2f;
 
+    /// <summary>How far the flier leans forward into its flight, in degrees.</summary>
+    public const float Lean = 55f;
+
     /// <summary>The sea past the picture's edge (style guide, "Soaring").</summary>
     public static readonly Color Sea = new(40, 72, 128, 255);
 
@@ -100,7 +103,7 @@ internal sealed class SkyRenderer
                 float x = ((gx * Grid + fx * Grid + drift) % span + span) % span - Grid + view.X;
                 float y = view.Y + gy * Grid + fy * Grid;
                 float alt = AltitudeOf(2f + fs * 2f);
-                sheets.Add(new CloudSheet(x, y, 1.1f + fs * 1.4f, 0.7f + fx * 0.8f, alt));
+                sheets.Add(new CloudSheet(x, y, 0.6f + fs * 0.8f, 0.4f + fx * 0.5f, alt));
             }
         return sheets;
     }
@@ -181,12 +184,13 @@ internal sealed class SkyRenderer
         Rlgl.EnableBackfaceCulling();
         DrawRider(flier, flight, age, bank, CharacterPass.Outline);
         context.UnbindShadowMap();
-        DrawClouds(clouds, camera.Position, rig);
+        DrawClouds(clouds, camera.Position, rig, landTint);
         DrawBeacons(flight, time);
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
         Rlgl.SetClipPlanes(0.01, 1000.0);
-        context.PreparePost(rig.Post, new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height));
+        // No depth of field nor tilt-shift from the sky: the land is far below and wants to be read sharp
+        context.PreparePost(rig.Post with { TiltShift = 0f, Dof = 0f, AoStrength = 0f, OutlineStrength = 0f }, new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height));
     }
 
     /// <summary>Draws the rendered sky through the post passes into the current target, veiled where the flier is in a cloud.</summary>
@@ -282,14 +286,21 @@ internal sealed class SkyRenderer
     }
 
     // The sheets themselves, the farthest first, soft white at two thirds tinted by the sky's cloud colour
-    private void DrawClouds(List<CloudSheet> clouds, Vector3 eye, LightRig rig)
+    private void DrawClouds(List<CloudSheet> clouds, Vector3 eye, LightRig rig, Color light)
     {
         clouds.Sort((a, b) =>
             Vector3.DistanceSquared(new Vector3(b.X * CellSize, b.Altitude, b.Y * CellSize), eye)
                 .CompareTo(Vector3.DistanceSquared(new Vector3(a.X * CellSize, a.Altitude, a.Y * CellSize), eye)));
-        var tint = PixelCanvas.Mix(Cloud, rig.Sky.CloudTint, 0.35f);
+        // The sheets take the hour's light as the land does, so after dark they are dim and the beacons are brightest
+        var tint = Times(PixelCanvas.Mix(Cloud, rig.Sky.CloudTint, 0.35f), light);
         Rlgl.DisableDepthMask();
-        foreach (var c in clouds) FlatQuad(c.X * CellSize, c.Y * CellSize, c.HalfW * CellSize, c.HalfH * CellSize, c.Altitude, tint with { A = 170 });
+        foreach (var c in clouds)
+        {
+            // Two thirds white, fading out as the camera comes near a sheet, so it never hides the flier (the veil does that)
+            float near = Vector3.Distance(new Vector3(c.X * CellSize, c.Altitude, c.Y * CellSize), eye) - c.HalfW * CellSize;
+            byte alpha = (byte)(170 * Math.Clamp((near - 4f) / 16f, 0f, 1f));
+            if (alpha > 0) FlatQuad(c.X * CellSize, c.Y * CellSize, c.HalfW * CellSize, c.HalfH * CellSize, c.Altitude, tint with { A = alpha });
+        }
         Rlgl.DrawRenderBatchActive();
         Rlgl.EnableDepthMask();
     }
@@ -312,8 +323,10 @@ internal sealed class SkyRenderer
         foreach (var (cell, lit, own) in columns)
         {
             var (cx, cy) = cell;
-            float x = (cx + 0.5f) * CellSize, z = (cy + 0.5f) * CellSize, r = CellSize * 0.5f;
+            float x = (cx + 0.5f) * CellSize, z = (cy + 0.5f) * CellSize, r = CellSize * 0.35f;
             var colour = lit ? Color.White : own;
+            // The column under the flier stops short of it, or the camera would look out from inside it
+            float top = lit ? Math.Max(2f, AltitudeOf(flight.Height) - FlierLength) : BeaconTop;
             for (int k = 0; k < 2; k++)
             {
                 float ax = k == 0 ? r : 0f, az = k == 0 ? 0f : r;
@@ -321,8 +334,8 @@ internal sealed class SkyRenderer
                 Rlgl.Color4ub(colour.R, colour.G, colour.B, 200);
                 Rlgl.Vertex3f(x - ax, 0.05f, z - az);
                 Rlgl.Color4ub(colour.R, colour.G, colour.B, 0);
-                Rlgl.Vertex3f(x - ax, BeaconTop, z - az);
-                Rlgl.Vertex3f(x + ax, BeaconTop, z + az);
+                Rlgl.Vertex3f(x - ax, top, z - az);
+                Rlgl.Vertex3f(x + ax, top, z + az);
                 Rlgl.Color4ub(colour.R, colour.G, colour.B, 200);
                 Rlgl.Vertex3f(x + ax, 0.05f, z + az);
                 Rlgl.End();
@@ -346,8 +359,9 @@ internal sealed class SkyRenderer
         float scale = FlierLength / Math.Max(0.001f, modelHeight);
         float yaw = MathF.PI - flight.Heading * MathF.PI / 180f;
         var at = PlaceOf(flight);
-        return Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationZ(-bank * 20f * MathF.PI / 180f)
-            * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(at - Vector3.UnitY * FlierLength * 0.45f);
+        // Leant forward into its flight about its middle, so its back is under the rider and the camera sees it from behind
+        return Matrix4x4.CreateScale(scale) * Matrix4x4.CreateTranslation(0f, -FlierLength * 0.5f, 0f) * Matrix4x4.CreateRotationX(Lean * MathF.PI / 180f)
+            * Matrix4x4.CreateRotationZ(-bank * 20f * MathF.PI / 180f) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(at);
     }
 
     private void DrawRider(Pokemon? flier, Soaring flight, float age, float bank, CharacterPass pass)
@@ -360,7 +374,7 @@ internal sealed class SkyRenderer
         // The player on its back, sitting, the rig's own look in the field
         if (CharacterModels.TryGet(riderLook, context.Shaders) is { } rig)
         {
-            var back = Vector3.Transform(new Vector3(0f, model.Height * 0.72f, -model.Height * 0.05f), root);
+            var back = Vector3.Transform(new Vector3(0f, model.Height * 0.55f, -model.Height * 0.28f), root);
             float yaw = MathF.PI - flight.Heading * MathF.PI / 180f;
             var riderRoot = Matrix4x4.CreateScale(0.9f) * Matrix4x4.CreateRotationZ(-bank * 20f * MathF.PI / 180f)
                 * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(back);

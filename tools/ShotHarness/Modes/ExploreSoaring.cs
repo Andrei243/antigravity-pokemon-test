@@ -41,6 +41,7 @@ partial class Harness
             for (int i = 0; i < 240 && (game.State != GameState.Soaring || game.SoarScreen.Flight == null); i++) Frames(1);
             // The models made behind the fade, then a second of flight
             for (int i = 0; i < 600 && !PokemonPlatinumEngine.Graphics.PokemonModels.TryGet(flier.LookName, out _); i++) Frames(1);
+            for (int i = 0; i < 600 && PokemonPlatinumEngine.Graphics.CharacterModels.TryGet(PlayerIdentity.Character, game.RenderContext.Shaders) == null; i++) Frames(1);
             Frames(60);
             var flight = game.SoarScreen.Flight!;
             void Tell(string shot) => Console.WriteLine($"{shot}: at {flight.X:0.00},{flight.Y:0.00} heading {flight.Heading:0} height {flight.Height:0.0}, beacon under {game.SoarScreen.Under?.Town.Area ?? "none"}, {flight.Beacons.Count()} beacons, in a cloud {game.SoaringInCloud}");
@@ -60,24 +61,24 @@ partial class Harness
             // Over Snowpoint City's beacon, high
             var snowpoint = map.Spots.First(s => s.Town.Area == "snowpoint_city").Spot.Cells[0];
             for (int i = 0; i < 90; i++) game.SoarScreen.Steer(0f, 1f, false, 1f / 30f);
-            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 0f);
+            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 180f);
             Frames(2);
-            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 0f);
+            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 180f);
             Frames(1);
             Shot("ex72_soar_beacon");
             Tell("ex72_soar_beacon");
 
             engine.Settings.TimeOfDay = TimeOfDay.Night; engine.ApplySettings(window: false);
-            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 0f);
+            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 180f);
             Frames(2);
-            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 0f);
+            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 180f);
             Frames(1);
             Shot("ex73_soar_night");
             Tell("ex73_soar_night");
             engine.Settings.TimeOfDay = TimeOfDay.Day; engine.ApplySettings(window: false);
 
             // A lands over the beacon, through Fly's own way
-            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 0f);
+            flight.Place(snowpoint.X + 0.5f, snowpoint.Y + 0.5f, 180f);
             game.SoarScreen.Confirm();
             for (int i = 0; i < 900 && (game.State != GameState.Overworld || engine.ScriptRunning); i++)
             {
