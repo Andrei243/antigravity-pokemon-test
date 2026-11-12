@@ -1,0 +1,289 @@
+{
+  "name": "Hub_Plaza",
+  "displayName": "Pennant Hall",
+  "bgmTrack": "hub/town",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 23,
+  "height": 15,
+  "ground": [
+    "#######################",
+    "#######################",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "###########D###########"
+  ],
+  "solid": [
+    "#######################",
+    "#######################",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "###########.###########"
+  ],
+  "props": [
+    {
+      "type": "Blackboard",
+      "x": 10,
+      "y": 1,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 21,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 21,
+      "y": 13,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 12,
+      "width": 3,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 14,
+      "targetMap": "Hub",
+      "targetX": 22,
+      "targetY": 15,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 10,
+      "y": 1,
+      "text": "The Week's Work",
+      "script": "Board"
+    },
+    {
+      "x": 11,
+      "y": 1,
+      "text": "The Week's Work",
+      "script": "Board"
+    },
+    {
+      "x": 12,
+      "y": 1,
+      "text": "The Week's Work",
+      "script": "Board"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "manager",
+      "name": "Quincy Rowan-Pike",
+      "npcType": "plaza_manager",
+      "x": 13,
+      "y": 12,
+      "facing": "Left",
+      "script": "Manager"
+    },
+    {
+      "id": "keeper_1",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 3,
+      "y": 3,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_1"
+    },
+    {
+      "id": "keeper_2",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_2"
+    },
+    {
+      "id": "keeper_3",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 14,
+      "y": 3,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_3"
+    },
+    {
+      "id": "keeper_4",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 19,
+      "y": 3,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_4"
+    },
+    {
+      "id": "keeper_5",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 3,
+      "y": 9,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_5"
+    },
+    {
+      "id": "keeper_6",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 8,
+      "y": 9,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_6"
+    },
+    {
+      "id": "keeper_7",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 14,
+      "y": 9,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_7"
+    },
+    {
+      "id": "keeper_8",
+      "name": "Stall Keeper",
+      "npcType": "clerk",
+      "x": 19,
+      "y": 9,
+      "facing": "Down",
+      "script": "Keeper",
+      "shownBy": "FLAG_HUB_PLAZA_KEEPER_8"
+    },
+    {
+      "id": "guest_1",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 5,
+      "y": 6,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_1"
+    },
+    {
+      "id": "guest_2",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 16,
+      "y": 6,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_2"
+    },
+    {
+      "id": "guest_3",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 11,
+      "y": 9,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_3"
+    },
+    {
+      "id": "guest_4",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 5,
+      "y": 12,
+      "facing": "Up",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_4"
+    },
+    {
+      "id": "guest_5",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 18,
+      "y": 12,
+      "facing": "Up",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_5"
+    },
+    {
+      "id": "guest_6",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 1,
+      "y": 6,
+      "facing": "Right",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_6"
+    },
+    {
+      "id": "guest_7",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 21,
+      "y": 6,
+      "facing": "Left",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_7"
+    },
+    {
+      "id": "guest_8",
+      "name": "Guest",
+      "npcType": "ace_trainer_m",
+      "x": 11,
+      "y": 4,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_HUB_PLAZA_GUEST_8"
+    }
+  ],
+  "wildEncounters": []
+}

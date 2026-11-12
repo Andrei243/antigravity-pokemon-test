@@ -1195,6 +1195,8 @@ public static class RegionDatabase
                 "Hub",
                 // Plan 41 · EG1: the harbour hall and the Pokémon Center with its floor above and below, hand-made map files (Data/maps)
                 "Hub_HarbourHall", "Hub_PokemonCenter", "Hub_PokemonCenter2F", "Hub_PokemonCenterB1F",
+                // Plan 41 · EG3: Pennant Hall
+                "Hub_Plaza",
             }
         }
     };

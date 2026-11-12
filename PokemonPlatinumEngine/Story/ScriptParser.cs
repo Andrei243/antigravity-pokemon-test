@@ -1392,6 +1392,29 @@ public static class ScriptParser
             case "charm":
                 return new Instruction { Op = Op.Charm, Line = line, Name = r.OneOf("due", "give") };
 
+            // Pennant Hall (plan 41 · EG3): `plaza open`, `rank`, `next`, `coins`, `pitches`, `pitch 2`, `give 10`,
+            // `spend 10`, `guests`, `stall`, `shop`, `greet`, `battle`
+            case "plaza":
+            {
+                string what = r.OneOf("open", "rank", "next", "coins", "pitches", "pitch", "give", "spend", "guests", "stall", "shop", "greet", "battle");
+                if (what is "pitch" or "give" or "spend")
+                {
+                    int n = r.Int(what == "pitch" ? "a pitch's number" : "how many pennants");
+                    if (n < 1) throw r.Error(what == "pitch" ? "the pitches are counted from 1" : "pennants are given or spent one at least");
+                    return new Instruction { Op = Op.Plaza, Line = line, Name = what, Number = n };
+                }
+                return new Instruction { Op = Op.Plaza, Line = line, Name = what };
+            }
+
+            // The Week's Work (plan 41 · EG6): `missions read`, `open`, `begin 4`, `waiting`, `claim`
+            case "missions":
+            {
+                string what = r.OneOf("read", "open", "begin", "waiting", "claim");
+                int n = what == "begin" ? r.Int("a mission's place on the board") : 0;
+                if (what == "begin" && n < 1) throw r.Error("the board's missions are counted from 1");
+                return new Instruction { Op = Op.Missions, Line = line, Name = what, Number = n };
+            }
+
             case "script":
             case "label":
                 throw r.Error($"'{word}' begins a line of its own");

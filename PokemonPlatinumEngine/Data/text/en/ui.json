@@ -4772,6 +4772,61 @@
     "judging": "The judges announce the winners…",
     "yourScore": "Your Pokémon scored {score} points."
   },
+  "hubPlaza": {
+    "pennants": "PENNANTS",
+    "rank": "HALL RANK",
+    "pitch": {
+      "which": "Which stall shall stand at pitch {n}?",
+      "empty": "LEAVE IT EMPTY",
+      "leave": "AS IT IS"
+    },
+    "stall": {
+      "goods": { "name": "GOODS STALL", "keeper": "Goods Keeper" },
+      "lottery": { "name": "LOTTERY CORNER", "keeper": "Lottery Keeper" },
+      "seals": { "name": "SEAL STALL", "keeper": "Seal Merchant" },
+      "poffin": { "name": "POFFIN POT", "keeper": "Poffin Cook" },
+      "relearner": { "name": "MOVE RELEARNER", "keeper": "Move Relearner" },
+      "kurt": { "name": "KURT'S COUNTER", "keeper": "Apricorn Agent" },
+      "blender": { "name": "BERRY BLENDER", "keeper": "Blender Keeper" }
+    }
+  },
+  "hubMissions": {
+    "title": "THE WEEK'S WORK",
+    "hint": { "act": "Claim or begin" },
+    "week": "THE WEEK OF {from} TO {to}",
+    "empty": "Nothing is posted this week. The board posts missions in the regions whose Hall of Fame you have entered.",
+    "state": { "claimed": "CLAIMED", "claim": "CLAIM!", "running": "UNDER WAY", "begin": "BEGIN" },
+    "timed": "A TIMED MISSION",
+    "plain": "A MISSION OF THE WEEK",
+    "progress": "DONE SO FAR",
+    "reward": "REWARD",
+    "andItem": "and a {item}",
+    "clock": "TIME",
+    "clockNote": "The clock runs while you play in the field and its battles in this region, and stands still anywhere else. One timed mission at a time.",
+    "corner": { "done": "MISSION", "left": "TIME LEFT" },
+    "kind": {
+      "CatchType": "Catch {n} {type}-type Pokémon in {region}.",
+      "CatchInArea": "Catch {n} Pokémon in {place}, {region}.",
+      "BeatTrainers": "Beat {n} trainers in {region}.",
+      "WinRematch": "Win {n} rematches in {region}.",
+      "HatchEggs": "Hatch {n} Eggs in {region}.",
+      "Landmark": "Come to {place}, {region}.",
+      "WinFacility": "Win {n} battles at a battle facility of {region}.",
+      "WinContest": "Win a contest in {region}."
+    },
+    "notice": {
+      "past": "Rewards left from past weeks: {n} pennants are yours!",
+      "claimed": "Claimed! {n} pennants went to Pennant Hall.",
+      "claimedItem": "Claimed! {n} pennants went to Pennant Hall, and the {item} into the Bag.",
+      "begun": "Begun! You have {minutes} minutes of play in {region}.",
+      "alreadyClaimed": "That reward has been claimed already.",
+      "oneAtATime": "Only one timed mission can be under way at a time.",
+      "underWay": "That mission is under way. Hurry!",
+      "notDone": "That mission isn't done yet.",
+      "doneInField": "Mission done! {mission} Claim the reward at the board.",
+      "timeUp": "Time's up! The timed mission wasn't done. It can be begun again at the board."
+    }
+  },
   "athlon": {
     "title": "POKÉATHLON",
     "courses": "COURSES",

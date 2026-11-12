@@ -574,6 +574,8 @@ public partial class GameEngine
             {
                 var t = trainers[k];
                 if (t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal)) continue;
+                // A team lifted to a level of the journey (plan 41 · EG3: Pennant Hall's guests) keeps the level it was lifted to
+                if (t.LevelsKept) continue;
                 if ((RematchLevels.For(t.Id, flow.Story, flow.BeganIn) ?? crossed) is not { } levels) continue;
                 trainers[k] = t.Relevelled(levels.Map, grow: true);
                 mapped[k] = true;
@@ -770,6 +772,8 @@ public partial class GameEngine
         {
             flow.Statistics.CountBattle(counted.Result, counted.IsTrainerBattle, counted.CaughtNewSpecies);
             flow.Statistics.Count(Statistics.Levelled, counted.LeveledUp.Count);
+            // ...and the Week's Work hears of a catch and a trainer beaten (plan 41 · EG6)
+            TellTheBoardOfABattle(counted);
         }
         // The Vs. Recorder keeps a league battle now and asks about any other trainer's once the field is back (plan 08 · P10)
         KeepTheRecord(flow.Battle);

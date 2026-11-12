@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, MissionBoard }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -544,6 +544,21 @@ public interface IScriptHost
 
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1); none where a host keeps none, and <c>craft</c> then does nothing.</summary>
     CraftingState? Crafting => null;
+
+    /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3); none where a host keeps none, and <c>plaza</c> then does nothing.</summary>
+    PlazaState? Plaza => null;
+
+    /// <summary>
+    /// The plaza changed as it stands (a stall set out, the day's guests drawn): the game furnishes the hall afresh and
+    /// stands its people (plan 41 · EG3). Nothing where a host draws no hall.
+    /// </summary>
+    void PlazaChanged() { }
+
+    /// <summary>Whether the pennants held stand over the field while a script speaks of them (plan 41 · EG3), as the Battle Points do.</summary>
+    void ShowPennants(bool shown) { }
+
+    /// <summary>The Week's Work, the hub's board of missions (plan 41 · EG6); none where a host keeps none, and <c>missions</c> then does nothing.</summary>
+    MissionBoard? Missions => null;
 
     /// <summary>The timed powers in force (plan 36; plan 39 · CR6's dishes start them); none where a host keeps none, and a meal then starts nothing.</summary>
     PowerState? Powers => null;

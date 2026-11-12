@@ -434,6 +434,10 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // Pennant Hall: a pitch's question, the goods' counter and a guest's battle are the player's; the rest only counts (plan 41 · EG3)
+        Op.Plaza => i.Name is "pitch" or "shop" or "battle",
+        // The Week's Work: the board is a screen the player reads; the rest only counts and pays (plan 41 · EG6)
+        Op.Missions => i.Name == "open",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1609,6 +1613,14 @@ public sealed partial class ScriptRunner
                 CharmCommand(i);
                 break;
 
+            // Pennant Hall and the Week's Work (plan 41 · EG3, EG6)
+            case Op.Plaza:
+                PlazaCommand(i);
+                break;
+            case Op.Missions:
+                MissionsCommand(i);
+                break;
+
             default:
                 throw Wrong(i, $"the runner doesn't know how to carry out '{i.Op}'");
         }
@@ -2719,6 +2731,8 @@ public sealed partial class ScriptRunner
             "taste" => lastTaste,
             // Hoenn's Safari Zone's feeders (plan 21 · H11, part d): the Pokéblock lying on the one before the player
             "feeder" => lastFeeder,
+            // Pennant Hall (plan 41 · EG3): the pennants held
+            "pennants" => (host.Plaza?.Coins ?? 0).ToString("N0"),
             // The Seaside Cycling Road (plan 21 · H12, part k): the last run's and the best's time and collisions
             "cycling" when argument == "TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.LastFrames)),
             "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),

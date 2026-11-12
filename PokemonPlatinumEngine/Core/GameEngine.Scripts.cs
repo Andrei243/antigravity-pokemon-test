@@ -205,6 +205,8 @@ public partial class GameEngine
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // Pennant Hall's stalls, keepers and the day's guests where the plaza has them (plan 41 · EG3)
+        if (flow.Map.Name == Plaza.Map) FurnishPlaza();
         // Kalos's Friend Safari's grass holds the grounds the guide named (plan 23, Kalos finished)
         if (flow.Map.Name == FriendSafariMap) LayFriendSafari();
         // and the Lilycove Museum's paintings where they hang (plan 21 · H11, part f)
@@ -363,6 +365,8 @@ public partial class GameEngine
         }
         // And a landmark come to for the first time is told of on the region's map from then on (plan 01 · M12)
         NoteArrivalOnTheMap();
+        // A place come to counts for the Week's Work's landmarks (plan 41 · EG6)
+        TellTheBoard(MissionEventKind.Arrived, AreaKeyHere());
     }
 
     /// <summary>
@@ -1257,6 +1261,14 @@ public partial class GameEngine
                 case ScriptScreen.Starter:
                     game.flow.State = GameState.StarterSelect;
                     game.flow.StarterSelectScreen.Open(game.Here, Randomizer.For(game.flow.Run));
+                    break;
+                // A stall of Pennant Hall's goods, paid in pennants (plan 41 · EG3)
+                case ScriptScreen.Shop when counter != null && counter.StartsWith(PokemonPlatinumEngine.Story.ScriptRunner.PlazaShopCounter, System.StringComparison.Ordinal):
+                    game.OpenPlazaShop(counter[PokemonPlatinumEngine.Story.ScriptRunner.PlazaShopCounter.Length..]);
+                    break;
+                // The Week's Work (plan 41 · EG6)
+                case ScriptScreen.MissionBoard:
+                    game.OpenMissionBoard();
                     break;
                 case ScriptScreen.Shop:
                     game.flow.State = GameState.Shop;

@@ -142,6 +142,10 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public ApricornBox Apricorns { get; set; } = new();
     public CraftingState? Crafting { get; set; } = new();
 
+    /// <summary>Pennant Hall (plan 41 · EG3) and the Week's Work (EG6), as a game keeps them.</summary>
+    public PlazaState? Plaza { get; set; } = new();
+    public MissionBoard? Missions { get; set; } = new();
+
     /// <summary>The timed powers in force, which a meal starts (plan 39 · CR6).</summary>
     public PowerState? Powers { get; set; } = new();
 

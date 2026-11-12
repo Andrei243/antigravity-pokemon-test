@@ -11,5 +11,7 @@ partial class Harness
         bool Wants(string part) => string.IsNullOrEmpty(from) || string.Equals(from, part, StringComparison.OrdinalIgnoreCase);
         if (Wants("hub")) JourneyHub();
         if (Wants("rematches")) JourneyRematches();
+        if (Wants("plaza")) JourneyPlaza();
+        if (Wants("board")) JourneyBoard();
     }
 }

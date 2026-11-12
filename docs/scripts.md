@@ -1303,6 +1303,44 @@ label Give
   end
 ```
 
+### Pennant Hall and the Week's Work
+
+Plan 41 · EG3 and EG6; `docs/mechanics/rulings.md`, "Pennant Hall, the hub's plaza" and "The Week's Work". `plaza` is
+the hub's plaza (`Models/Plaza.cs`, the host's `Plaza`), `missions` its board (`Models/MissionBoard.cs`, the host's
+`Missions`); a host that keeps neither does nothing and hears 0. `{pennants}` is the pennants held.
+
+| Command | What it does |
+|---|---|
+| `plaza open` | The hall opened to its manager (it is saved from now on); `RESULT` the rank. |
+| `plaza rank`, `plaza next`, `plaza pitches` | `RESULT` and `{number}`: the rank, the pennants still to earn for the next (0 at the top), the pitches at the rank. |
+| `plaza coins` | `RESULT` the pennants held; they stand over the field until the script ends. |
+| `plaza pitch N` | Asks which stall stands at pitch N: the stalls offered, LEAVE IT EMPTY, AS IT IS. `RESULT` 1 changed (the hall furnished afresh), 0 left as it was, 2 for a pitch the rank hasn't; `{thing}` the stall. |
+| `plaza give N`, `plaza spend N` | Pennants paid in or spent; `RESULT` 1, or 0 when there aren't N to spend (nothing is spent). |
+| `plaza guests` | The day's guests drawn on the first coming of a day; `RESULT` and `{number}` how many stand today. |
+| `plaza stall` | Said of a keeper (`keeper_N`): `RESULT` the place in `plaza.json`'s list of the stall at their pitch, 0 for none; `{thing}` its name. |
+| `plaza shop` | Said of a keeper: their stall's goods on the shop's screen at the hall's rank, paid in pennants; waits. |
+| `plaza greet` | Said of a guest (`guest_N`): their first word of the day, `RESULT` and `{number}` the pennants it gave, 0 once greeted today; `{foe}` their name. |
+| `plaza battle` | Said of a guest: their battle of the day, their team lifted to the furthest finished region's post-game level on a copy. `RESULT` 1 won (and paid, `{number}`), 0 lost, 2 already beaten today, 3 for no guest. |
+| `missions read` | The board read: a new week drawn anew from the regions finished; `RESULT` how many missions it posts. |
+| `missions open` | The board read and its screen opened; waits, `RESULT` the pennants it paid out. |
+| `missions begin N` | The board's Nth mission begun where it is timed and no other runs; `RESULT` 1, else 0. |
+| `missions waiting` | `RESULT` and `{number}` how many rewards wait to be claimed. |
+| `missions claim` | Every reward waiting taken: its pennants to Pennant Hall, its items to the bag; `RESULT` and `{number}` the pennants. |
+
+```
+script Guest
+  face self player
+  plaza greet
+  if result == 0 goto Again
+  say "Here, a few pennants for the stalls."
+label Again
+  ask "Fancy a battle?"
+  if no end
+  plaza battle
+  if result == 1 say "What a battle!"
+  end
+```
+
 ### The open world's places
 
 Plan 32 · OW5. An open map (Galar's and Paldea's outdoors, plan 32; the open test world, `tools/OpenWorldBake/worlds/lab`)

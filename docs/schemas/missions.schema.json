@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The Week's Work, the hub's board of missions: its kinds, places and rewards (Data/missions.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "plain": {
+      "type": "integer"
+    },
+    "timedCount": {
+      "type": "integer"
+    },
+    "kinds": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "CatchType",
+              "CatchInArea",
+              "BeatTrainers",
+              "WinRematch",
+              "HatchEggs",
+              "Landmark",
+              "WinFacility",
+              "WinContest"
+            ]
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "least": {
+            "type": "integer"
+          },
+          "most": {
+            "type": "integer"
+          },
+          "perOne": {
+            "type": "integer"
+          },
+          "bonus": {
+            "type": "integer"
+          },
+          "timed": {
+            "type": "boolean"
+          },
+          "minutes": {
+            "type": "integer"
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "required": [
+          "kind",
+          "weight",
+          "least",
+          "most",
+          "perOne"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Normal",
+          "Fire",
+          "Water",
+          "Grass",
+          "Electric",
+          "Ice",
+          "Fighting",
+          "Poison",
+          "Ground",
+          "Flying",
+          "Psychic",
+          "Bug",
+          "Rock",
+          "Ghost",
+          "Dragon",
+          "Steel",
+          "Dark",
+          "Fairy"
+        ]
+      }
+    },
+    "places": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "catch": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "landmarks": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "itemOneIn": {
+      "type": "integer"
+    },
+    "timedBonus": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "plain",
+    "timedCount",
+    "kinds",
+    "types"
+  ],
+  "additionalProperties": false
+}

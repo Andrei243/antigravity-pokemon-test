@@ -96,10 +96,14 @@ internal static partial class ModernUi
     // Whether the shop being drawn is paid in Athlete Points (set by DrawShop as it begins)
     private static bool shopInPoints;
 
+    // ...and whether those points are Pennant Hall's pennants (plan 41 · EG3)
+    private static bool shopInPennants;
+
     /// <summary>A price or a purse: money with its sign, or Athlete Points with PTS after them. Returns its width.</summary>
     private static float ShopAmount(float x, float centerY, int amount, float size, Color color)
     {
         if (!shopInPoints) return Money(x, centerY, amount, size, color);
+        if (shopInPennants) return Pennants(x, centerY, amount, size, color);
         string text = Text.Of("athlon.shop.amount", ("n", amount.ToString("N0")));
         UiFonts.DrawCentered(text, x, centerY, size, color, UiWeight.Black);
         return UiFonts.Measure(text, size, UiWeight.Black);
@@ -110,6 +114,12 @@ internal static partial class ModernUi
         if (!shopInPoints)
         {
             MoneyRight(rightX, centerY, amount, size, color);
+            return;
+        }
+        if (shopInPennants)
+        {
+            string count = amount.ToString("N0");
+            Pennants(rightX - size * 0.95f - UiFonts.Measure(count, size, UiWeight.Black), centerY, amount, size, color);
             return;
         }
         string text = Text.Of("athlon.shop.amount", ("n", amount.ToString("N0")));

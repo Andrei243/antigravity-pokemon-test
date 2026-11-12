@@ -1,0 +1,57 @@
+// Pennant Hall, the hub's plaza (plan 41 · EG3; Models/Plaza.cs; docs/data-files.md, "Pennant Hall"). Ours, written by
+// hand and read strictly (docs/schemas/plaza.schema.json). The hall ranks by the pennants it has earned ("ranks": what
+// each rank asks, the first nothing) and has "pitches" stalls' places at each rank; "places" are the booths' north-west
+// tiles in Hub_Plaza (three tiles by three, pitch 1 first), "spots" where the day's guests stand. A guest is a trainer of
+// a finished region's table whose class is one of "guestClasses", standing in "guestLooks"' look for the class.
+// A stall's words are hubPlaza.stall.<id>.* in ui.json; its service is its keeper's script in Hub_Plaza.txt. A stall opens
+// once its "region"'s Hall of Fame is entered (any, with none) and the plaza is at its "rank"; "goods" are what it sells
+// for pennants, each from a rank of the plaza on. Later plans add their stalls as rows at the end (plan 41's design).
+{
+  "ranks": [ 0, 60, 150, 300, 500, 800 ],
+  "pitches": [ 3, 4, 5, 6, 7, 8 ],
+  "places": [
+    { "x": 2, "y": 2 }, { "x": 7, "y": 2 }, { "x": 13, "y": 2 }, { "x": 18, "y": 2 },
+    { "x": 2, "y": 8 }, { "x": 7, "y": 8 }, { "x": 13, "y": 8 }, { "x": 18, "y": 8 }
+  ],
+  "spots": [
+    { "x": 5, "y": 6, "facing": "Down" }, { "x": 16, "y": 6, "facing": "Down" }, { "x": 11, "y": 9, "facing": "Down" },
+    { "x": 5, "y": 12, "facing": "Up" }, { "x": 18, "y": 12, "facing": "Up" }, { "x": 1, "y": 6, "facing": "Right" },
+    { "x": 21, "y": 6, "facing": "Left" }, { "x": 11, "y": 4, "facing": "Down" }
+  ],
+  "guestClasses": [ "Ace Trainer", "Ace Trainer M", "Ace Trainer F", "Cooltrainer", "Veteran", "Expert", "Gentleman", "Lady" ],
+  "guestLooks": {
+    "Ace Trainer": [ "ace_trainer_m", "ace_trainer_f" ],
+    "Ace Trainer M": [ "ace_trainer_m" ],
+    "Ace Trainer F": [ "ace_trainer_f" ],
+    "Cooltrainer": [ "cooltrainer_m", "cooltrainer_f" ],
+    "Veteran": [ "veteran", "veteran_f" ],
+    "Expert": [ "veteran", "veteran_f" ],
+    "Gentleman": [ "gentleman" ],
+    "Lady": [ "lady" ]
+  },
+  "guestWord": 5,
+  "guestWin": 20,
+  "stalls": [
+    {
+      "id": "goods", "keeper": "clerk", "rank": 1, "awning": "#d65242",
+      "goods": [
+        { "item": "Heart Scale", "price": 12 },
+        { "item": "Honey", "price": 4 },
+        { "item": "Premier Ball", "price": 6 },
+        { "item": "Revive", "price": 10 },
+        { "item": "PP Up", "price": 40, "rank": 2 },
+        { "item": "Rare Candy", "price": 45, "rank": 3 },
+        { "item": "Max Revive", "price": 30, "rank": 3 },
+        { "item": "PP Max", "price": 90, "rank": 4 },
+        { "item": "Ability Capsule", "price": 120, "rank": 5 },
+        { "item": "Bottle Cap", "price": 150, "rank": 6 }
+      ]
+    },
+    { "id": "lottery", "keeper": "lady", "region": "Sinnoh", "rank": 1, "awning": "#3a6cd6" },
+    { "id": "seals", "keeper": "gentleman", "region": "Sinnoh", "rank": 2, "awning": "#e2b84e" },
+    { "id": "poffin", "keeper": "baker", "region": "Sinnoh", "rank": 2, "awning": "#ee7c9c" },
+    { "id": "relearner", "keeper": "veteran", "region": "Johto", "rank": 3, "awning": "#5caa60" },
+    { "id": "kurt", "keeper": "worker", "region": "Johto", "rank": 4, "awning": "#9662aa" },
+    { "id": "blender", "keeper": "parasol_lady", "region": "Hoenn", "rank": 5, "awning": "#2a8a8a" }
+  ]
+}

@@ -66,6 +66,7 @@ public sealed partial class GameFlow
     public ApricornBoxScreen ApricornBoxScreen { get; } = new();
     public CraftingScreen CraftingScreen { get; } = new();
     public PowersScreen PowersScreen { get; } = new();
+    public MissionBoardScreen MissionBoardScreen { get; } = new();
     public TrainingScreen TrainingScreen { get; } = new();
     public PhotoAlbumScreen PhotoAlbumScreen { get; } = new();
     public GlobalLinkScreen GlobalLinkScreen { get; } = new();

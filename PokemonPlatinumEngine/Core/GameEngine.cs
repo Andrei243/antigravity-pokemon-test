@@ -147,7 +147,9 @@ public enum GameState
     /// <summary>The effort drills, opened by a coach's <c>train drill</c> on the Pokémon chosen (plan 36 · TR2).</summary>
     Training,
     /// <summary>The Power Watch's panel, from the bag or the item button (plan 36 · TR8).</summary>
-    Powers
+    Powers,
+    /// <summary>The hub's Week's Work read, a script's <c>missions open</c> waiting on it (plan 41 · EG6).</summary>
+    MissionBoard
 }
 
 public partial class GameEngine
@@ -481,6 +483,8 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Plaza.Clear();
+        flow.Missions.Clear();
         flow.Powers.Clear();
         ForgetWornOff();
         flow.Training.Clear();
@@ -750,6 +754,9 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
+        flow.Plaza.Load(save.Plaza);
+        flow.Missions.Load(save.Missions);
         flow.Powers.Load(save.Powers);
         ForgetWornOff();
         flow.Training.Load(save.Training);
@@ -969,6 +976,8 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            Plaza = flow.Plaza.ToSave(),
+            Missions = flow.Missions.ToSave(),
             Powers = flow.Powers.ToSave(),
             MachinesHad = flow.Bag.MachinesHad.Count > 0 ? flow.Bag.MachinesHad.OrderBy(n => n, StringComparer.Ordinal).ToList() : null,
             Training = flow.Training.ToSave(),
@@ -1352,6 +1361,8 @@ public partial class GameEngine
                 TickPalPark(dt);
                 // The Bug-Catching Contest's minutes, and its end when they run out (plan 15 · E5)
                 TickBugContest(dt);
+                // A timed mission's minutes in its region (plan 41 · EG6)
+                TickMissions(dt);
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt * Pace);
@@ -1378,6 +1389,8 @@ public partial class GameEngine
                     flow.Battle.Update(dt * Pace);
                     // The Bug-Catching Contest's minutes go on in its battles (plan 15 · E5)
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);
+                    // ...and so do a timed mission's (plan 41 · EG6)
+                    TickMissions(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
                     // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
@@ -1551,7 +1564,14 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Shop:
-                if (flow.ShopScreen.InPoints)
+                if (flow.ShopScreen.InPoints && flow.ShopScreen.PointsUnit == ShopScreen.PennantsUnit)
+                {
+                    // A stall of Pennant Hall is paid in pennants (plan 41 · EG3): what the counter takes is spent from the plaza's
+                    int pennants = flow.Plaza.Coins;
+                    flow.ShopScreen.Update(flow.Bag, ref pennants, ShowNotification, dt);
+                    if (pennants < flow.Plaza.Coins) flow.Plaza.Spend(flow.Plaza.Coins - pennants);
+                }
+                else if (flow.ShopScreen.InPoints)
                 {
                     // The Athlete Shop is paid in Athlete Points (plan 15 · E8)
                     int points = flow.Athlon.Points;
@@ -1654,6 +1674,9 @@ public partial class GameEngine
                 break;
             case GameState.Crafting:
                 UpdateCrafting(dt);
+                break;
+            case GameState.MissionBoard:
+                UpdateMissionBoard(dt);
                 break;
             case GameState.Training:
                 UpdateTraining(dt);
@@ -3264,6 +3287,9 @@ public partial class GameEngine
                 DrawParkCount();
                 DrawBattlePoints();
                 DrawCastlePoints();
+                // Pennant Hall's pennants while its people speak of them, and a timed mission's corner (plan 41 · EG3, EG6)
+                DrawPennants();
+                DrawMissionCorner();
                 // A request pinned (plan 12 · Q21), at the top left while the location sign isn't there and no script runs
                 DrawPinnedRequest(shown);
                 // The powers in force, as chips at the left (plan 36 · TR8)
@@ -3317,7 +3343,7 @@ public partial class GameEngine
                 flow.StarterSelectScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Shop:
-                flow.ShopScreen.Draw(VirtualWidth, VirtualHeight, flow.ShopScreen.InPoints ? flow.Athlon.Points : flow.Money, flow.Bag);
+                flow.ShopScreen.Draw(VirtualWidth, VirtualHeight, flow.ShopScreen.InPoints ? (flow.ShopScreen.PointsUnit == ShopScreen.PennantsUnit ? flow.Plaza.Coins : flow.Athlon.Points) : flow.Money, flow.Bag);
                 break;
             case GameState.Wardrobe:
                 flow.WardrobeScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
@@ -3443,6 +3469,9 @@ public partial class GameEngine
                 break;
             case GameState.Powers:
                 flow.PowersScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.MissionBoard:
+                flow.MissionBoardScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Training:
                 flow.TrainingScreen.Draw(VirtualWidth, VirtualHeight);
