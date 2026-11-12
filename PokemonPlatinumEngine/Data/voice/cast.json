@@ -5027,6 +5027,10 @@
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
     },
+    "gordie": {
+      "note": "first spoken at Circhester_StadiumPitch.txt(18)",
+      "provisional": true
+    },
     "grant": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(221)",
       "brief": {
@@ -9126,6 +9130,14 @@
       "note": "first spoken at route_110_trick_house_puzzle_5.txt(179)",
       "provisional": true
     },
+    "mechanic": {
+      "note": "first spoken at galar_route_9.txt(12)",
+      "provisional": true
+    },
+    "melony": {
+      "note": "first spoken at Circhester_StadiumPitch.txt(38)",
+      "provisional": true
+    },
     "member": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(41)",
       "brief": {
@@ -9912,6 +9924,10 @@
     },
     "raffle_clerk": {
       "note": "first spoken at join_avenue.txt(121)",
+      "provisional": true
+    },
+    "raihan": {
+      "note": "first spoken at Hammerlocke_StadiumPitch.txt(8)",
       "provisional": true
     },
     "ralph": {
@@ -11379,6 +11395,7 @@
     "Glacia": "glacia",
     "Gladion": "gladion",
     "Glass Worker": "glass_worker",
+    "Gordie": "gordie",
     "Grant": "grant",
     "Grimsley": "grimsley",
     "Grunt": "look:grunt",
@@ -11521,6 +11538,8 @@
     "Mechadoll 3": "mechadoll_3",
     "Mechadoll 4": "mechadoll_4",
     "Mechadoll 5": "mechadoll_5",
+    "Mechanic": "mechanic",
+    "Melony": "melony",
     "Member": "member",
     "Miguel": "miguel",
     "Miki": "miki",
@@ -11624,6 +11643,7 @@
     "Quiz Lady": "quiz_lady",
     "Quizmaster": "quizmaster",
     "Raffle Clerk": "raffle_clerk",
+    "Raihan": "raihan",
     "Ralph": "ralph",
     "Ramon": "ramon",
     "Ramos": "ramos",

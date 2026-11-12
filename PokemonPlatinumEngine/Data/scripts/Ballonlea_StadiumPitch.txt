@@ -1,6 +1,6 @@
 # Ballonlea Stadium's pitch (plan 33 · GL5, its first session): Opal's battle for the Fairy Badge, the gym challenge's
-# fifth (`givebadge fairy`). She Dynamaxes her last Pokémon. VAR_GALAR_STORY 29 to 30 (postwick.txt's count). Our own
-# lines.
+# fifth (`givebadge fairy`). She Dynamaxes her last Pokémon. VAR_GALAR_STORY 29 to 30 (postwick.txt's count); since
+# GL5's second session her badge also stands Hop and Sonia by Circhester's Hero's Bath. Our own lines.
 
 
 script Opal
@@ -19,7 +19,10 @@ script Opal
   defeat "galar_gym_trainer_posy"
   defeat "galar_gym_trainer_luned"
   setvar VAR_GALAR_STORY 30
-  say "Five badges. The road on runs back through Hammerlocke and west. Off you go, dear. I've a successor to find."
+  say "Five badges. The road on runs back through Hammerlocke and out of its east gate, north to Circhester. Off you go, dear."
+  setflag FLAG_GALAR_HOP_CIRCHESTER
+  setflag FLAG_GALAR_SONIA_CIRCHESTER
+  objective galarCirchester
   endscene
   end
 label Won

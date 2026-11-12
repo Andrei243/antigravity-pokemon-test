@@ -1,0 +1,128 @@
+{
+  "MissionGate1": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "The floor ahead has holes in it, and they move when you aren't looking. Find the solid way across!"
+      ],
+      "text": [
+        "Podeaua din față are găuri, și se mută când nu te uiți. Găsește drumul sigur pe dincolo!"
+      ]
+    },
+    {
+      "en": [
+        "{player} watched the floor shift and stepped only where it stayed still. Across!"
+      ],
+      "text": [
+        "{player} a urmărit podeaua mișcându-se și a călcat doar unde stătea pe loc. Dincolo!"
+      ]
+    },
+    {
+      "en": [
+        "The floor ahead has holes in it, under the ice. Step where the frost is thickest and you'll be fine."
+      ],
+      "text": [
+        "Podeaua din față are găuri, sub gheață. Calcă unde bruma e cea mai groasă și o să fie bine."
+      ]
+    },
+    {
+      "en": [
+        "{player} read the frost and stepped only on the thick of it. Across!"
+      ],
+      "text": [
+        "{player} a citit bruma și a călcat doar unde era groasă. Dincolo!"
+      ]
+    }
+  ],
+  "MissionGate2": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "Deeper pits on this stretch. Fall in and you start the gate again. Off you go!"
+      ],
+      "text": [
+        "Gropi mai adânci pe porțiunea asta. Dacă pici, o iei de la capăt. Hai!"
+      ]
+    },
+    {
+      "en": [
+        "A pit opened right where {player} had been about to step. A jump, a scramble, and across!"
+      ],
+      "text": [
+        "O groapă s-a deschis exact unde {player} voia să calce. Un salt, o cățărare, și dincolo!"
+      ]
+    },
+    {
+      "en": [
+        "The ice is thinner on this stretch. Melony says the cold teaches patience. Take your time."
+      ],
+      "text": [
+        "Gheața e mai subțire pe porțiunea asta. Melony spune că frigul te învață răbdarea. Ia-o încet."
+      ]
+    },
+    {
+      "en": [
+        "{player} took it slow, a step at a time, and the ice held. Across!"
+      ],
+      "text": [
+        "{player} a luat-o încet, pas cu pas, și gheața a ținut. Dincolo!"
+      ]
+    }
+  ],
+  "MissionGate3": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "The last stretch is all pits and no floor to speak of. Gordie runs it in his sleep."
+      ],
+      "text": [
+        "Ultima porțiune e numai gropi și aproape deloc podea. Gordie o face și prin somn."
+      ]
+    },
+    {
+      "en": [
+        "{player} found the one path the pits never touched. The mission is cleared!"
+      ],
+      "text": [
+        "{player} a găsit singurul drum pe care gropile nu-l ating. Misiunea e încheiată!"
+      ]
+    },
+    {
+      "en": [
+        "The last stretch, and the coldest. Melony's waiting on the far side."
+      ],
+      "text": [
+        "Ultima porțiune, și cea mai rece. Melony așteaptă de partea cealaltă."
+      ]
+    },
+    {
+      "en": [
+        "{player} crossed the last of the ice without a crack. The mission is cleared!"
+      ],
+      "text": [
+        "{player} a traversat ultima gheață fără nicio crăpătură. Misiunea e încheiată!"
+      ]
+    }
+  ]
+}

@@ -101,6 +101,8 @@ public partial class GameEngine
         if (pressed && TalkInTheOpen(field)) return;
         if (InputManager.IsActionPressed(GameAction.Mount)) ToggleMount();
         KeepTheMountsPowers(field);
+        // What the story grants the walker (plan 33 · GL5: Galar's bike fitted for the water), derived every frame
+        field.Grants = OpenGrants.Of(flow.Story);
         var stick = InputManager.GetStick();
         bool run = InputManager.IsActionDown(GameAction.Run) != Settings.Autorun;
         var input = new OpenInput(stick.X, stick.Y, run);
