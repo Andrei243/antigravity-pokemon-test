@@ -5321,7 +5321,7 @@ was raised: each place's arrival hides whoever its part of the errand hasn't rea
 - **Celio's last scene.** Given the Sapphire he finishes the machine and it links the islands with Hoenn (6,
   `FLAG_SYS_CAN_LINK_WITH_RS`): Cerulean Cave's guard goes (`FLAG_HIDE_CERULEAN_CAVE_GUARD`), Lorelei goes back to
   the League (`FLAG_HIDE_LORELEI_IN_HER_HOUSE`), and the Elite Four and the Champion battle with FireRed's second
-  teams (`kanto_elite_four_<name>_2`, `kanto_champion_rematch_<starter>`). FireRed's roaming beast is not let loose.
+  teams (`kanto_elite_four_<name>_2`, `kanto_champion_rematch_<starter>`). FireRed's roaming beast was not let loose then; plan 29 · LS9 lets it loose in Pallet Town (below, "What the islands still owe").
 - **The Tanoby Key.** Its seven floor switches are pits (`pits` in the overlay): a boulder come to rest on one sets a
   local flag of ours (`FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1` to `_7`), and the seventh opens the seven chambers for good
   (`FLAG_SYS_UNLOCKED_TANOBY_RUINS` on their doors' `openedBy`). Leaving the room forgets a half-done puzzle, as the
@@ -5385,7 +5385,7 @@ The little the islands still owed, as scripts of ours on FireRed's beats and fla
 What the islands still owe, and why:
 
 - **The roaming beast** is built since plan 29 · LS9: Kanto's Raikou, Entei and Suicune are slots of their own
-  (`Roamers.Slots`, each a region, `Roamer.Region`), set loose in Pallet Town once Oak has given the National Pokédex.
+  (`Roamers.Slots`, each a region, `Roamer.Region`), set loose by the first arrival in Pallet Town of a Champion of Kanto with the National Pokédex (`pallet_town.txt`).
 - **Icefall Cave's thin ice** is built since plan 19's last notes (2026-11-12): 1F is the Sootopolis Gym's rule without its
   stairs (`SootopolisIce.Icefall`, the puzzle `IcefallIce` of 1F's entry in Kanto's `world.json`): a step onto thin ice
   cracks it, a second gives way, and the player falls to the same tile of B1F, every one of which is open ground. The
@@ -5396,7 +5396,7 @@ What the islands still owe, and why:
   Rainbow Pass opens seven islands.
 - **The PCs of Kanto and Hoenn** (plan 19's last notes, 2026-11-12). FireRed and Emerald mark a PC by its tile alone
   (`MB_PC`, read by their field as `EventScript_PC`), which nothing read: every tile of `TileBehavior.Computer` in an open
-  area of a room of the two regions runs the common PC (`World.PcsOnTheirTiles`), where nothing of the place's own (a
+  area of a Pokémon Center of the two regions runs the common PC (`World.PcsOnTheirTiles`; the import gives a lab's machines and an office's computers the same behaviour, so it goes no further), where nothing of the place's own (a
   script, or a sign's words: the neighbours' child's PC in Littleroot Town, Birch's screens, Lanette's) is read there.
   The player's own bedroom PC, which both games mark by a sign event, is read as the PC by its overlay
   (`pallet_town_players_house_2f`, `littleroot_town_brendans_house_2f`), where it had been a line. So the question of

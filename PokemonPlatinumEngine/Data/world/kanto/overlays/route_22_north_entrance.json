@@ -5,6 +5,6 @@
   "bgmTrack": "kanto/viridian_forest",
   "triggers": [ { "trigger": 0, "script": "GuardTrigger" } ],
   "people": {
-    "policeman": { "name": "Guard", "npcType": "Gentleman", "script": "Guard", "still": true }
+    "policeman": { "name": "Guard", "script": "Guard", "still": true }
   }
 }

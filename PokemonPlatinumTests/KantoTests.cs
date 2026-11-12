@@ -291,6 +291,9 @@ public class KantoTests
         foreach (var pcRoom in BuiltMaps.Value.Values.Where(m => m.Name.EndsWith("_PokemonCenter_1F", StringComparison.Ordinal)))
             Assert.Contains(pcRoom.TileScripts, kv => kv.Value == "PC");
         Assert.Contains(BuiltMaps.Value["PalletTown_PlayersHouse_2F"].TileScripts, kv => kv.Value == "PC");
+        // ...and nowhere else: a lab's machines and an office's computers are no PC
+        Assert.All(BuiltMaps.Value.Values.Where(m => m.TileScripts.Values.Contains("PC")),
+            m => Assert.True(m.Interior == InteriorStyle.PokemonCenter || m.Name == "PalletTown_PlayersHouse_2F", m.Name));
         Assert.Contains(PropType.StoreShelf, In("ViridianCity_Mart"));
         Assert.Contains(PropType.Bookshelf, In("PalletTown_ProfessorOaksLab"));
         Assert.Contains(PropType.LabMachine, In("PalletTown_ProfessorOaksLab"));

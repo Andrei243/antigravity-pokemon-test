@@ -227,6 +227,8 @@ public class HoennTests
         // (the player's own bedroom's, by its sign event read as the PC; the neighbours' child's PC is only looked at)
         Assert.Contains(BuiltMaps.Value["LittlerootTown_BrendansHouse_2F"].TileScripts, kv => kv.Value == "PC");
         Assert.DoesNotContain(BuiltMaps.Value["LittlerootTown_MaysHouse_2F"].TileScripts, kv => kv.Value == "PC");
+        Assert.All(BuiltMaps.Value.Values.Where(m => m.TileScripts.Values.Contains("PC")),
+            m => Assert.True(m.Interior == InteriorStyle.PokemonCenter || m.Name == "LittlerootTown_BrendansHouse_2F", m.Name));
     }
 
     [Fact]

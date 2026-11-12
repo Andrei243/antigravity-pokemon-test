@@ -2758,13 +2758,14 @@ public static class WorldMapBuilder
         || string.Equals(region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
-    /// Every PC tile of an open area of a room (<see cref="TileBehavior.Computer"/>) that nothing of the place's own is
-    /// read at (a script, or a sign's words: a neighbour's PC, a lab's screen) runs <c>PC</c>, the common PC unless the place writes its own. A secret base's PC is the base's
-    /// (<c>GameEngine.TryInteractSecretBase</c> answers it first), so its rooms are passed by.
+    /// Every PC tile of an open area of a Pokémon Center (<see cref="TileBehavior.Computer"/>) that nothing of the place's
+    /// own is read at (a script, or a sign's words) runs <c>PC</c>, the common PC unless the place writes its own.
     /// </summary>
     private static void PcsOnTheirTiles(World world, Map map)
     {
-        if (!PcIsATile(world.Index.Region) || Models.SecretBaseLayouts.IsBaseMap(map.Name)) return;
+        // (a Pokémon Center's alone: the import gives a lab's machines and an office's computers the same behaviour as a
+        // PC, and the bedrooms' PCs are sign events their overlays read as the PC)
+        if (!PcIsATile(world.Index.Region) || map.Interior != InteriorStyle.PokemonCenter) return;
         for (int y = 0; y < map.Height; y++)
             for (int x = 0; x < map.Width; x++)
                 if (map.BehaviourAt(x, y) == TileBehavior.Computer && map.AreaAt(x, y) is { Open: true }
