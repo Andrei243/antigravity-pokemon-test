@@ -38,7 +38,7 @@ public sealed partial class GameFlow
     /// <summary>The photo tour's report on a screen of its own (plan 44 · SD6).</summary>
     public TourReportScreen TourReportScreen { get; } = new();
 
-    /// <summary>The photo studio (plan 43 · LF5) and the composition it was last left on (not saved: a studio opens on its last picture of the session).</summary>
+    /// <summary>The photo studio (plan 43 · LF5) and the composition it was last left on (saved as <c>SaveData.LastStudioShot</c>).</summary>
     public StudioScreen StudioScreen { get; } = new();
     public StudioShot? LastStudioShot { get; set; }
 

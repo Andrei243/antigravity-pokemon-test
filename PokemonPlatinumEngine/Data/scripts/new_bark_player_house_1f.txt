@@ -45,6 +45,7 @@ script Mom
   heal
   fanfare heal
   say "There, all better. Take care of each other out there, won't you?"
+  call MomSavings
   end
 label NoPokemon
   say "Professor Elm is waiting for you at his lab. It's the big building up the lane."
@@ -54,4 +55,32 @@ label Badge
   heal
   fanfare heal
   say "There. Go on, then. Johto is a big place, and you've only just started."
+  call MomSavings
   end
+
+# Mom's savings (plan 43 · LF7; Models/MomSavings.cs): asked, she puts a quarter of each prize won in Johto by, gives it
+# back whole when asked, and spends a little of it now and then (phone.txt's MomShops)
+script MomSavings
+  speaker "Mom"
+  if var VAR_JOHTO_MOM_SAVINGS >= 1 goto HasSome
+  if flag FLAG_JOHTO_MOM_SAVING goto Saving
+  ask "Shall I keep a little of your prize money for you? A quarter of each win, safe here at home."
+  if no goto Done
+  setflag FLAG_JOHTO_MOM_SAVING
+  say "Leave it to me! I'll put a little by after every battle you win."
+  return
+label HasSome
+  say "I've put {var:VAR_JOHTO_MOM_SAVINGS} of your prize money by for you."
+  ask "Would you like it back now?"
+  if no goto Saving
+  givemoney VAR_JOHTO_MOM_SAVINGS
+  setvar VAR_JOHTO_MOM_SAVINGS 0
+  say "Here you are, every last bit of it. Spend it wisely, dear!"
+label Saving
+  if not flag FLAG_JOHTO_MOM_SAVING goto Done
+  ask "Shall I go on putting a little of your prize money by?"
+  if yes goto Done
+  clearflag FLAG_JOHTO_MOM_SAVING
+  say "All right. Just say the word if you change your mind."
+label Done
+  return

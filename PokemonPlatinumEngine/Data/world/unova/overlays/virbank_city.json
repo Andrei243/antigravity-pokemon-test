@@ -6,6 +6,10 @@
   // (9, 10, 11). The triggers are on tiles of our own, each with a variable of ours (the rulings' "Unova's first
   // chapter, part b")
   "area": "virbank_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 237, "y": 655, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 237, "z": 655, "script": "PhotoSpot" } ],
   "bgmTrack": "unova/virbank",
   "triggers": [
     { "script": "RoxieAndTheCaptain", "x": 205, "z": 650, "width": 1, "depth": 3, "variable": "VAR_UNOVA_VIRBANK", "value": 0 },

@@ -13,6 +13,12 @@
   // them, and the worker of the shortcut to Twist Mountain (20) is always out. Clay Tunnel's mouth (warp 13) opens once Unova's
   // Hall of Fame is entered (plan 22 · U10, part b)
   "area": "driftveil_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 205, "z": 403, "kind": "YellowCave", "room": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 215, "y": 405, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 215, "z": 405, "script": "PhotoSpot" } ],
   "bgmTrack": "unova/driftveil",
   "architecture": "Storehouse",
   "doors": [ { "warp": 13, "map": "ClayTunnel_1", "x": 16, "y": 59, "facing": "Up", "openedBy": "UnovaHallOfFame" } ],

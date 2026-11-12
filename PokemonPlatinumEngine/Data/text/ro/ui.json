@@ -2283,12 +2283,14 @@
     "card": {
       "Calls": "APELURI",
       "News": "ȘTIRI",
-      "Map": "HARTĂ"
+      "Map": "HARTĂ",
+      "Powers": "PUTERI"
     },
     "hints": {
       "call": "Sună",
       "open": "Deschide harta",
-      "cards": "Cartele"
+      "cards": "Cartele",
+      "powers": "Deschide panoul"
     },
     "calls": {
       "empty": "Niciun număr salvat încă.",
@@ -2303,6 +2305,10 @@
       "heading": "HARTĂ",
       "body": "Deschide harta ca să vezi toată regiunea, oraș cu oraș și rută cu rută.",
       "none": "Locul acesta nu e pe harta telefonului."
+    },
+    "powers": {
+      "heading": "PUTERI LA ÎNDEMÂNĂ",
+      "body": "Deschide panoul Ceasului Puterilor ca să vezi puterile pe care le știi, încărcarea lor și pe cele active acum."
     },
     "registered": "Numărul lui {name} e salvat în telefonul tău!"
   },
@@ -2407,7 +2413,17 @@
       "kalosShauna": "Shauna",
       "kalosTierno": "Tierno",
       "kalosTrevor": "Trevor",
-      "kalosSycamore": "Prof. Sycamore"
+      "kalosSycamore": "Prof. Sycamore",
+      "alolaMom": "Mama",
+      "alolaHau": "{rival}",
+      "alolaLillie": "Lillie",
+      "alolaKukui": "Prof. Kukui",
+      "alolaHala": "Hala",
+      "galarMom": "Mama",
+      "galarHop": "{rival}",
+      "galarSonia": "Sonia",
+      "galarMagnolia": "Prof. Magnolia",
+      "galarLeon": "Leon"
     }
   },
   "pokenav": {
@@ -7438,6 +7454,11 @@
       "pages": "Pagini întoarse",
       "starlit": "Sub stele",
       "sinnoh_snapshot": "Instantanee din Sinnoh",
+      "kanto_snapshot": "Instantanee din Kanto",
+      "johto_snapshot": "Instantanee din Johto",
+      "hoenn_snapshot": "Instantanee din Hoenn",
+      "unova_snapshot": "Instantanee din Unova",
+      "kalos_snapshot": "Instantanee din Kalos",
       "backdrop": "Decor: {name}"
     },
     "frame": {
@@ -7655,7 +7676,32 @@
       "sinnoh_sandgem_lab": "Laboratorul din Sandgem",
       "sinnoh_jubilife_fountain": "Fântâna din Jubilife",
       "sinnoh_oreburgh_museum": "Muzeul din Oreburgh",
-      "sinnoh_floaroma_flowers": "Florile din Floaroma"
+      "sinnoh_floaroma_flowers": "Florile din Floaroma",
+      "kanto_pallet_lane": "Aleea din Pallet Town",
+      "kanto_viridian_square": "Piața din Viridian",
+      "kanto_pewter_stones": "Pietrele cenușii din Pewter",
+      "kanto_cerulean_bridge": "Malul apei din Cerulean",
+      "kanto_vermilion_harbour": "Portul din Vermilion",
+      "johto_new_bark_breeze": "Briza din New Bark",
+      "johto_violet_tower": "Turnul vechi din Violet",
+      "johto_goldenrod_plaza": "Piața din Goldenrod",
+      "johto_ecruteak_lanes": "Ulițele vechi din Ecruteak",
+      "johto_olivine_harbour": "Portul din Olivine",
+      "hoenn_littleroot_green": "Pajiștea din Littleroot",
+      "hoenn_petalburg_pond": "Iazul din Petalburg",
+      "hoenn_rustboro_corner": "Colțul de piatră din Rustboro",
+      "hoenn_slateport_market": "Piața din Slateport",
+      "hoenn_lilycove_seafront": "Faleza din Lilycove",
+      "unova_aspertia_steps": "Treptele din Aspertia",
+      "unova_floccesy_bell": "Clopotul din Floccesy",
+      "unova_virbank_docks": "Docurile din Virbank",
+      "unova_nimbasa_lights": "Luminile din Nimbasa",
+      "unova_driftveil_market": "Piața din Driftveil",
+      "kalos_vaniville_garden": "Grădina din Vaniville",
+      "kalos_aquacorde_river": "Râul din Aquacorde",
+      "kalos_santalune_fountain": "Fântâna din Santalune",
+      "kalos_lumiose_boulevard": "Bulevardul din Lumiose",
+      "kalos_cyllage_cliffs": "Stâncile din Cyllage"
     }
   },
   "hearts": {

@@ -228,3 +228,8 @@ script Man1
 label Badge
   say "Oh, that's a Stone Badge! You beat Roxanne? You'll go far, I'm sure of it."
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "hoenn_rustboro_corner"
+  end

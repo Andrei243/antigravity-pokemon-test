@@ -48,3 +48,8 @@ script Rival
   speaker "{rival}"
   say "The Gym is up the steps, right at the top."
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "kalos_cyllage_cliffs"
+  end

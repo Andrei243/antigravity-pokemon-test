@@ -1900,12 +1900,14 @@
     "card": {
       "Calls": "CALLS",
       "News": "NEWS",
-      "Map": "MAP"
+      "Map": "MAP",
+      "Powers": "POWERS"
     },
     "hints": {
       "call": "Call",
       "open": "Open the map",
-      "cards": "Cards"
+      "cards": "Cards",
+      "powers": "Open the panel"
     },
     "calls": {
       "empty": "No numbers saved yet.",
@@ -1920,6 +1922,10 @@
       "heading": "MAP",
       "body": "Open the map to look over the whole region, town by town and route by route.",
       "none": "This place isn't on the phone's map."
+    },
+    "powers": {
+      "heading": "POWERS IN HAND",
+      "body": "Open the panel of the Power Watch to see the powers you know, their charge and the ones in force now."
     },
     "registered": "{name}'s number is saved in your phone!"
   },
@@ -2024,7 +2030,17 @@
       "kalosShauna": "Shauna",
       "kalosTierno": "Tierno",
       "kalosTrevor": "Trevor",
-      "kalosSycamore": "Prof. Sycamore"
+      "kalosSycamore": "Prof. Sycamore",
+      "alolaMom": "Mom",
+      "alolaHau": "{rival}",
+      "alolaLillie": "Lillie",
+      "alolaKukui": "Prof. Kukui",
+      "alolaHala": "Hala",
+      "galarMom": "Mom",
+      "galarHop": "{rival}",
+      "galarSonia": "Sonia",
+      "galarMagnolia": "Prof. Magnolia",
+      "galarLeon": "Leon"
     }
   },
   "pokenav": {
@@ -7089,6 +7105,11 @@
       "pages": "Turning Pages",
       "starlit": "Starlit",
       "sinnoh_snapshot": "Sinnoh Snapshots",
+      "kanto_snapshot": "Kanto Snapshots",
+      "johto_snapshot": "Johto Snapshots",
+      "hoenn_snapshot": "Hoenn Snapshots",
+      "unova_snapshot": "Unova Snapshots",
+      "kalos_snapshot": "Kalos Snapshots",
       "backdrop": "Backdrop: {name}"
     },
     "frame": {
@@ -7306,7 +7327,32 @@
       "sinnoh_sandgem_lab": "The Lab at Sandgem",
       "sinnoh_jubilife_fountain": "Jubilife's Fountain",
       "sinnoh_oreburgh_museum": "Oreburgh's Museum",
-      "sinnoh_floaroma_flowers": "Floaroma's Flowers"
+      "sinnoh_floaroma_flowers": "Floaroma's Flowers",
+      "kanto_pallet_lane": "Pallet Town's Lane",
+      "kanto_viridian_square": "Viridian's Square",
+      "kanto_pewter_stones": "Pewter's Grey Stones",
+      "kanto_cerulean_bridge": "Cerulean's Waterside",
+      "kanto_vermilion_harbour": "Vermilion's Harbour",
+      "johto_new_bark_breeze": "New Bark's Breeze",
+      "johto_violet_tower": "Violet's Old Tower",
+      "johto_goldenrod_plaza": "Goldenrod's Plaza",
+      "johto_ecruteak_lanes": "Ecruteak's Old Lanes",
+      "johto_olivine_harbour": "Olivine's Harbour",
+      "hoenn_littleroot_green": "Littleroot's Green",
+      "hoenn_petalburg_pond": "Petalburg's Pond",
+      "hoenn_rustboro_corner": "Rustboro's Stone Corner",
+      "hoenn_slateport_market": "Slateport's Market",
+      "hoenn_lilycove_seafront": "Lilycove's Seafront",
+      "unova_aspertia_steps": "Aspertia's Steps",
+      "unova_floccesy_bell": "Floccesy's Bell",
+      "unova_virbank_docks": "Virbank's Docks",
+      "unova_nimbasa_lights": "Nimbasa's Lights",
+      "unova_driftveil_market": "Driftveil's Market",
+      "kalos_vaniville_garden": "Vaniville's Garden",
+      "kalos_aquacorde_river": "Aquacorde's River",
+      "kalos_santalune_fountain": "Santalune's Fountain",
+      "kalos_lumiose_boulevard": "Lumiose's Boulevard",
+      "kalos_cyllage_cliffs": "Cyllage's Cliffs"
     }
   },
   "hearts": {

@@ -248,3 +248,8 @@ script RoxieInTown
 label Back
   say "Dad's back at the helm. Now I can get back to my band!"
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "unova_virbank_docks"
+  end

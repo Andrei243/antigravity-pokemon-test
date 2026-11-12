@@ -79,6 +79,21 @@ public partial class GameEngine
                 GoIntoSecretBase(first: true);
                 return 1;
             }
+            case "move":
+            {
+                // The home's door to this spot, its room and pieces as they were (plan 43 · LF7)
+                if (SpotAhead() is not { } at || flow.SecretBase is not { } home || SecretBaseLayouts.Of(at.Id) == null) return 0;
+                SecretBases.MoveDoor(home, at.Id, flow.Map.Name, at.X, at.Y, flow.Player.GridX, flow.Player.GridY);
+                GoIntoSecretBase(first: false);
+                return 1;
+            }
+            case "movein":
+            {
+                // MOVE IN HERE at the home's PC: the room of the spot the door stands at, laid as it was last left
+                if (flow.Records.Visiting != null || flow.SecretBase is not { } home || !SecretBases.MoveIn(home, flow.Decorations)) return 0;
+                GoIntoSecretBase(first: true);
+                return 1;
+            }
             case "visit":
                 return VisitFriendsBase() ? 1 : 0;
             case "enter":

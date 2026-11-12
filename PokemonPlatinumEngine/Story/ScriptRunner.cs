@@ -697,12 +697,15 @@ public sealed partial class ScriptRunner
                 host.Milestone(AutosaveMoment.Badge);
                 break;
             case Op.GiveMoney:
-                host.Money += i.Number;
+                host.Money += Math.Max(0, i.Other.Length > 0 ? Value(i.Other) : i.Number);
                 break;
             case Op.TakeMoney:
-                Result = host.Money >= i.Number ? 1 : 0;
-                if (Result == 1) host.Money -= i.Number;
+            {
+                int amount = Math.Max(0, i.Other.Length > 0 ? Value(i.Other) : i.Number);
+                Result = host.Money >= amount ? 1 : 0;
+                if (Result == 1) host.Money -= amount;
                 break;
+            }
             case Op.Heal:
                 host.Party.HealAll();
                 host.Milestone(AutosaveMoment.Heal);

@@ -303,7 +303,17 @@ public partial class GameEngine
     /// before a game is loaded. What belongs to a region (its starters, its professor, its spawns) is asked of this,
     /// and handed to the screens, never read from a static.
     /// </summary>
-    public Region Here => (flow.Map != null ? RegionDatabase.RegionOfMap(flow.Map.Name) : null) ?? RegionDatabase.First;
+    public Region Here => (flow.Map != null ? RegionDatabase.RegionOfMap(HomeDoorMap ?? flow.Map.Name) : null) ?? RegionDatabase.First;
+
+    /// <summary>
+    /// Inside a secret base's room (plan 43 · LF7: a home that goes with the player), the map of the spot whose door it
+    /// was come in by, a friend's being visited first: the room is Emerald's, a map of Hoenn, but a home opened from a
+    /// tree in Sinnoh is Sinnoh's while the player stands in it (no crossing, no region entered, Sinnoh's rival and
+    /// Badges). Null anywhere else.
+    /// </summary>
+    private string? HomeDoorMap => flow.Map != null && SecretBaseLayouts.IsBaseMap(flow.Map.Name)
+        ? flow.Records?.Visiting?.Base?.Map is { Length: > 0 } visited ? visited : flow.SecretBase?.Map is { Length: > 0 } own ? own : null
+        : null;
 
     /// <summary>
     /// The region whose rules hold underfoot (plan 41 · EG1): <see cref="Here"/> everywhere but in a side region with none
@@ -1062,6 +1072,7 @@ public partial class GameEngine
             Photos = flow.Photos.ToSave(),
             CardDesign = CardDesignToSave(),
             PhotoBook = flow.PhotoBook.ToSave(),
+            LastStudioShot = flow.LastStudioShot,
             PhotoTour = flow.PhotoTour.ToSave(),
             Delve = flow.DelveRecord.ToSave(),
             Hearts = flow.Hearts.IsEmpty ? null : flow.Hearts,
@@ -1517,7 +1528,13 @@ public partial class GameEngine
                     }
                     else if (flow.Battle.IsBattleOver)
                     {
-                        if (flow.Battle.Result == BattleResult.PlayerVictory && flow.Battle.IsTrainerBattle) flow.Money += flow.Battle.PrizeMoney;
+                        if (flow.Battle.Result == BattleResult.PlayerVictory && flow.Battle.IsTrainerBattle)
+                        {
+                            // Johto's Mom keeps a share when asked to (plan 43 · LF7; Models/MomSavings.cs), drawing nothing
+                            int share = MomSavings.ShareOf(flow.Battle.PrizeMoney, Here.Id, flow.Story);
+                            flow.Money += flow.Battle.PrizeMoney - share;
+                            MomSavings.Keep(flow.Story, share);
+                        }
                         if (flow.Battle.Result == BattleResult.PlayerVictory) flow.Money += flow.Battle.PayDayMoney;
                         flow.Money = Math.Max(0, flow.Money - flow.Battle.MoneyLost);
                         AfterBattle(flow.Battle);
@@ -3416,6 +3433,8 @@ public partial class GameEngine
         // ... and so are a band's portraits (plan 09 · L15): each once, in the first frame of the closing that finds
         // its rig ready, and before the scene, which sets the uniforms it needs after them
         if (shown == GameState.Transition && flow.Closing) band.Render(renderContext);
+        // ... and a travel phone's caller's face while the call goes on (plan 43 · LF6)
+        RenderTheCallersFace();
 
         // The first run's measuring, a frame of it, and the share of the preset this frame's scene is drawn at (plan 16 · T23)
         MeasureAFrame();
@@ -3567,6 +3586,8 @@ public partial class GameEngine
                 DrawPinnedRequest(shown);
                 // The powers in force, as chips at the left (plan 36 · TR8)
                 DrawPowerChips(shown);
+                // A travel phone's caller over the text box (plan 43 · LF6)
+                DrawTheCallersFace();
                 flow.Dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 // The run timer's corner (plan 13 · V10), under the start menu and the skip's pill

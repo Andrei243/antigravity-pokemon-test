@@ -1,7 +1,7 @@
 [
-  { "id": "unova_mom", "type": 1, "class": "Mom", "area": "aspertia_city_2" },
-  { "id": "unova_bianca", "type": 11, "class": "Pokémon Trainer", "area": "aspertia_city" },
-  { "id": "unova_cheren", "type": 12, "class": "Gym Leader", "area": "aspertia_city_gym" },
-  { "id": "unova_hugh", "type": 11, "class": "Pokémon Trainer", "area": "aspertia_city" },
-  { "id": "unova_juniper", "type": 2, "class": "Pokémon Professor", "area": "nuvema_town_lab" }
+  { "id": "unova_mom", "look": "mom", "type": 1, "class": "Mom", "area": "aspertia_city_2" },
+  { "id": "unova_bianca", "look": "bianca", "type": 11, "class": "Pokémon Trainer", "area": "aspertia_city" },
+  { "id": "unova_cheren", "look": "cheren", "type": 12, "class": "Gym Leader", "area": "aspertia_city_gym" },
+  { "id": "unova_hugh", "look": "hugh", "type": 11, "class": "Pokémon Trainer", "area": "aspertia_city" },
+  { "id": "unova_juniper", "look": "prof_juniper", "type": 2, "class": "Pokémon Professor", "area": "nuvema_town_lab" }
 ]

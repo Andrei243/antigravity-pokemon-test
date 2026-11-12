@@ -1,5 +1,7 @@
 {
   "area": "sandgem_town",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 174, "z": 841, "kind": "Tree", "room": 3 } ],
   // The photo spot's plate (plan 43 · LF4), read from the tile before it
   "readAt": [ { "x": 175, "z": 848, "script": "PhotoSpot" } ],
   "props": [ { "type": "PhotoSpot", "x": 175, "y": 848, "width": 1, "depth": 1 } ],

@@ -2,6 +2,8 @@
   // Route 1 (plan 19 · K1). The clerk who hands out a free Potion in the original is plan 19 · K3's, with the shop
   // he works for; until then he only talks
   "area": "route_1",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 63, "z": 236, "kind": "Shrub", "room": 2 } ],
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
     {"id": "route_1.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 66, "y": 233, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}

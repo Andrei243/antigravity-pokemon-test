@@ -249,3 +249,8 @@ label Again
 label Thanks
   say "The painting stays on its wall all night now. My watch has never been so dull. Or so peaceful."
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "kalos_lumiose_boulevard"
+  end

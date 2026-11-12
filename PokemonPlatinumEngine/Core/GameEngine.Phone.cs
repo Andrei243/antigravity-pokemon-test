@@ -17,6 +17,9 @@ public partial class GameEngine
     // Whether the map of the region was opened from the phone, which it goes back to
     private bool townMapFromPhone;
 
+    // Whether the Power Watch's panel was opened from the phone's POWERS card, which it goes back to
+    private bool powersFromPhone;
+
     /// <summary>Whether the travel phone is the player's where they are.</summary>
     private bool HasTravelPhone => TravelPhone.Has(flow.Story, Here.Id);
 
@@ -30,7 +33,7 @@ public partial class GameEngine
         screen.PlayerCell = RegionMapNow is { } region ? RegionCellNow(region) : null;
         screen.PlaceHere = PlaceName();
         screen.News = TravelPhone.News(new FieldHost(this).Broadcast(), (int)flow.Encounters.DailyNumber);
-        screen.Open(TravelPhone.Cards(Here.Id), TravelPhone.Contacts(flow.Story, Here.Id), on);
+        screen.Open(TravelPhone.Cards(Here.Id, HoldsPowerWatch), TravelPhone.Contacts(flow.Story, Here.Id), on);
         flow.State = GameState.Phone;
     }
 
@@ -53,6 +56,11 @@ public partial class GameEngine
                     OpenPhone(PhoneCard.Map);
                 }
                 break;
+            case PhoneRequest.Powers:
+                // The Power Watch's panel, and back to the phone after (plan 36 · TR8)
+                powersFromPhone = true;
+                OpenPowers(fromBag: false);
+                break;
             default:
                 flow.State = GameState.Overworld;
                 break;
@@ -70,6 +78,35 @@ public partial class GameEngine
         if (phoneRinger.TryRing(TravelPhone.Contacts(flow.Story, Here.Id), PlaceKey(), fieldRandom) is not { } caller) return false;
         PlaceCall(caller, incoming: true);
         return true;
+    }
+
+    // The caller's face on a call of the travel phone (plan 43 · LF6)
+    private readonly CallPortrait callFace = new();
+
+    /// <summary>
+    /// A call of the travel phone shows the caller's face, rendered as the bands' busts are; a call of the Pokégear or the
+    /// PokéNav shows none, as it never has. Nothing is made here: the face is rendered in a frame's offscreen phase.
+    /// </summary>
+    private void BeginTheCallersFace(PhoneContact contact)
+    {
+        callFace.End();
+        if (IsHeadless || !TravelPhone.WorksIn(Here.Id) || !PhoneBook.Of(Here.Id).Contains(contact)) return;
+        callFace.Begin(contact.Look is { Length: > 0 } look ? InTheKitHere(look) : null);
+    }
+
+    /// <summary>The offscreen phase of a frame: the caller's face rendered while its call goes on, and let go once it is over.</summary>
+    private void RenderTheCallersFace()
+    {
+        if (!callFace.Active) return;
+        if (!ScriptRunning) callFace.End();
+        else callFace.Render(renderContext);
+    }
+
+    /// <summary>The face over the text box at its left while the call's words are up, its mouth moving with a voice.</summary>
+    private void DrawTheCallersFace()
+    {
+        if (callFace.Picture(flow.Dialogue.Voice.MouthOpen) is { } face && flow.Dialogue.IsActive)
+            ModernUi.CallerFace(face, VirtualHeight, Here.Id);
     }
 
     /// <summary>

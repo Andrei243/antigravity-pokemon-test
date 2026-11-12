@@ -109,3 +109,8 @@ script Shauna
   speaker "Shauna"
   say "Come on, come on! Aquacorde's this way!"
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "kalos_vaniville_garden"
+  end

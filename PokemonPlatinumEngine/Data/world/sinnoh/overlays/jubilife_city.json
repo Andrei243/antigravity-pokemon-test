@@ -1,5 +1,7 @@
 {
   "area": "jubilife_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 162, "z": 765, "kind": "Tree", "room": 4 } ],
   // The photo spot's plate (plan 43 · LF4), read from the tile before it
   "readAt": [ { "x": 174, "z": 760, "script": "PhotoSpot" } ],
   "props": [ { "type": "PhotoSpot", "x": 174, "y": 760, "width": 1, "depth": 1 } ],

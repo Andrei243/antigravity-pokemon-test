@@ -11,6 +11,8 @@
   // roads out of the city wait for later sessions, and the city's own song for a later session of plan 31, so it plays
   // Santalune's
   "area": "lumiose_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 370, "z": 356, "script": "PhotoSpot" } ],
   "bgmTrack": "kalos/lumiose",
   "trees": "Round",
   "architecture": "Lumiose",
@@ -89,7 +91,7 @@
     // Plan 23 · Z4b: the Hall of Fame (VAR_KALOS_LUMIOSE_ROADS 3) opens the last two, east to Lumiose Station's square and
     // south-east down the shore road to Azure Bay, so nothing here turns the player back any more
   ],
-  "props": [
+  "props": [ { "type": "PhotoSpot", "x": 370, "y": 356, "width": 1, "depth": 1 },
     { "type": "PrismTower", "x": 358, "y": 358, "width": 4, "depth": 4 },
     { "type": "Fountain", "x": 358, "y": 312, "width": 3, "depth": 3 },
     { "type": "Fountain", "x": 312, "y": 358, "width": 3, "depth": 3 },

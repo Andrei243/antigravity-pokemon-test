@@ -51,6 +51,13 @@ public sealed class PhoneContact
     public string? RematchDay { get; set; }
     public string? RematchTime { get; set; }
 
+    /// <summary>
+    /// The look the travel phone shows on a call (plan 43 · LF6; <c>characters.json</c>'s name, taken in the region's
+    /// kit): its face, rendered as the bands' busts are. Null for a contact with none (the Pokégear's and the PokéNav's
+    /// show no face).
+    /// </summary>
+    public string? Look { get; set; }
+
     /// <summary>The script of <c>phone.txt</c> a call to or from them plays: their id with its first letter up (<c>Joey</c>).</summary>
     public string Script => Id.Length == 0 ? "" : string.Concat(Id.Split('_').Select(p => p.Length == 0 ? p : char.ToUpperInvariant(p[0]) + p[1..]));
 
@@ -125,6 +132,9 @@ public static class PhoneBook
         if (RegionDatabase.Get(region) is not { File.Phone: true } r) return Array.Empty<PhoneContact>();
         return books.GetOrAdd(r.Id, _ => Read(r.Folder));
     }
+
+    /// <summary>Every contact of every book: Johto's, Hoenn's, then the travel phone's in the regions' order.</summary>
+    public static IEnumerable<PhoneContact> Every => Books().SelectMany(b => b);
 
     // Every book: Johto's and Hoenn's, then the travel phone's
     private static IEnumerable<IReadOnlyList<PhoneContact>> Books()
@@ -270,16 +280,28 @@ public static class PhoneRematch
     public static bool Wants(PhoneContact contact, StoryState story, DateTime day, TimeOfDay time) =>
         contact.Trainer is { } trainer && TrainerDatabase.Get(trainer) is { Rematches.Count: > 0 }
         && story.Has(Pokegear.ContactFlag(contact.Id)) && story.HasDefeated(trainer)
-        // (Hoenn's Gym Leaders, Elite Four and Wally ask only of a Champion of Hoenn; its route trainers once the first of
-        // their rows is open, plan 21 · H12, part i)
-        && (contact.Region != "hoenn" || (IsHoennRouteTrainer(contact)
-            ? UnlockedInHoenn(1, story)
-            : story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag)))
+        && RowOpen(contact, story)
         && !story.Has(WaitingFlag(contact.Id)) && OnItsHour(contact, day, time);
 
-    /// <summary>The trainers of the book waiting for a rematch now.</summary>
+    /// <summary>
+    /// Whether a contact's own row of rematches is open, by the book the contact is in (plan 43 · LF6: a contact's own row
+    /// rather than a branch per device): Johto's Pokégear always (its levels are <see cref="Unlocked"/>'s); Hoenn's Gym
+    /// Leaders, Elite Four and Wally only for a Champion of Hoenn and its route trainers once the first of their rows is
+    /// open (plan 21 · H12, part i); a travel phone's contact once the region's Hall of Fame is entered, where plan 41's
+    /// leaders of the later regions ask again.
+    /// </summary>
+    public static bool RowOpen(PhoneContact contact, StoryState story)
+    {
+        if (string.Equals(contact.Region, "johto", StringComparison.OrdinalIgnoreCase)) return true;
+        if (string.Equals(contact.Region, "hoenn", StringComparison.OrdinalIgnoreCase))
+            return IsHoennRouteTrainer(contact) ? UnlockedInHoenn(1, story) : story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag);
+        var region = RegionDatabase.All.FirstOrDefault(r => string.Equals(r.Folder, contact.Region, StringComparison.OrdinalIgnoreCase));
+        return region?.StoryCompleteFlag is { Length: > 0 } flag && story.Has(flag);
+    }
+
+    /// <summary>The trainers of every book waiting for a rematch now.</summary>
     public static IEnumerable<string> Waiting(StoryState story) =>
-        PhoneBook.All.Concat(PhoneBook.Hoenn).Where(c => c.Trainer != null && story.Has(WaitingFlag(c.Id))).Select(c => c.Trainer!);
+        PhoneBook.Every.Where(c => c.Trainer != null && story.Has(WaitingFlag(c.Id))).Select(c => c.Trainer!);
 
     /// <summary>
     /// What a call is (<see cref="Pokegear.CallVar"/>), decided as it begins: a rematch already waiting, one asked for
