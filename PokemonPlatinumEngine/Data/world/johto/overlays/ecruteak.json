@@ -65,5 +65,18 @@
     "T27_003+1": "Ecruteak Dance Theater",
     "T27_004+1": "Burned Tower\nIt was destroyed by a fire long ago.",
     "T27_016+1": "Bell Tower\nThe way is closed to all but the chosen."
-  }
+  },
+  // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
+  "npcs": [
+    {"id": "ecruteak.Festival_bellfall_1", "name": "Bells", "npcType": "FestivalBells", "x": 372, "y": 158, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BELLFALL"},
+    {"id": "ecruteak.Festival_bellfall_2", "name": "Bells", "npcType": "FestivalBells", "x": 378, "y": 159, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BELLFALL"},
+    {"id": "ecruteak.Festival_bellfall_3", "name": "Bells", "npcType": "FestivalBells", "x": 392, "y": 158, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BELLFALL"},
+    {"id": "ecruteak.Festival_bellfall_4", "name": "Bells", "npcType": "FestivalBells", "x": 403, "y": 167, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BELLFALL"},
+    {"id": "ecruteak.Festival_bellfall_stall", "name": "Stall", "npcType": "FestivalStall", "x": 390, "y": 177, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BELLFALL"},
+    {"id": "ecruteak.Festival_bellfall_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 391, "y": 177, "facing": "Down", "dialog": ["Stall keeper: Bellfall's begun. Listen... the leaves ring when they fall here."], "isPokeMartClerk": true, "mart": "festival_bellfall", "shownBy": "FLAG_FESTIVAL_BELLFALL"},
+    {"id": "ecruteak.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 381, "y": 168, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "ecruteak.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 372, "y": 186, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "ecruteak.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 400, "y": 187, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "ecruteak.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 392, "y": 186, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"}
+  ]
 }

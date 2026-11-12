@@ -62,5 +62,14 @@
     "map_signpost": "Floaroma Town\nBright with colour, sweet with scent.",
     "signboard_flower_shop": "Pick a Peck of Colours\nFlower Shop",
     "signboard_floaroma_meadow": "Floaroma Meadow\nThis way to the flowers, and the honey."
-  }
+  },
+  // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
+  "npcs": [
+    {"id": "floaroma_town.Festival_blossom_1", "name": "Blossom arch", "npcType": "FestivalArch", "x": 166, "y": 656, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BLOSSOM"},
+    {"id": "floaroma_town.Festival_blossom_2", "name": "Blossom arch", "npcType": "FestivalArch", "x": 188, "y": 652, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BLOSSOM"},
+    {"id": "floaroma_town.Festival_blossom_3", "name": "Blossom arch", "npcType": "FestivalArch", "x": 166, "y": 664, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BLOSSOM"},
+    {"id": "floaroma_town.Festival_blossom_4", "name": "Blossom arch", "npcType": "FestivalArch", "x": 188, "y": 668, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BLOSSOM"},
+    {"id": "floaroma_town.Festival_blossom_stall", "name": "Stall", "npcType": "FestivalStall", "x": 180, "y": 668, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BLOSSOM"},
+    {"id": "floaroma_town.Festival_blossom_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 181, "y": 668, "facing": "Down", "dialog": ["Stall keeper: It's the Blossom Days! Every petal in town is out to see you."], "isPokeMartClerk": true, "mart": "festival_blossom", "shownBy": "FLAG_FESTIVAL_BLOSSOM"}
+  ]
 }

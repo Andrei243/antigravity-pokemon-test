@@ -1012,6 +1012,17 @@ public static class ThingCards
             PropType.CratePile => (30, 34, GymArt.PaintCratePile),
             PropType.DeoxysTriangle => (HoennArt.TriangleWidth, HoennArt.TriangleHeight, HoennArt.PaintTriangle),
             PropType.ZygardeCell => (16, 16, OutdoorProps.PaintZygardeCell),
+            PropType.FestivalLanterns => (FestivalArt.LanternsWidth, FestivalArt.LanternsHeight, FestivalArt.PaintLanterns),
+            PropType.FestivalMoonLantern => (24, 48, FestivalArt.PaintMoonLantern),
+            PropType.FestivalPine => (28, 52, c => FestivalArt.PaintPine(c, holiday: false)),
+            PropType.FestivalArch => (32, 46, FestivalArt.PaintArch),
+            PropType.FestivalStall => (32, 40, FestivalArt.PaintStall),
+            PropType.FestivalBells => (32, 46, FestivalArt.PaintBells),
+            PropType.FestivalBunting => (32, 46, FestivalArt.PaintBunting),
+            PropType.HolidayTree => (28, 56, c => FestivalArt.PaintPine(c, holiday: true)),
+            PropType.EggBasket => (20, 16, FestivalArt.PaintEggBasket),
+            PropType.NewYearBanner => (32, 44, FestivalArt.PaintNewYearBanner),
+            PropType.ValentineHeart => (14, 26, FestivalArt.PaintValentineHeart),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);
@@ -1036,4 +1047,12 @@ public static class ThingCards
         PropType.CavePainting or PropType.UnownWall => 26f / 32f,
         _ => 0.5f
     };
+
+    /// <summary>
+    /// Whether a kind is drawn as a card of a wall (the scenery's shader), so that what its art marks as lit glows after
+    /// dark: the festivals' things (plan 40 · GE9; style guide, "Festivals").
+    /// </summary>
+    public static bool PartOfAWall(PropType kind) => kind is PropType.FestivalLanterns or PropType.FestivalMoonLantern
+        or PropType.FestivalPine or PropType.FestivalArch or PropType.FestivalStall or PropType.FestivalBells
+        or PropType.FestivalBunting or PropType.HolidayTree or PropType.EggBasket or PropType.NewYearBanner or PropType.ValentineHeart;
 }

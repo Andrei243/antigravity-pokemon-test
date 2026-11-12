@@ -3,6 +3,8 @@ using System.Linq;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Story;
+using System.Collections.Generic;
+using PokemonPlatinumEngine.Overworld;
 using Xunit;
 
 namespace PokemonPlatinumTests;
@@ -91,5 +93,48 @@ public class FestivalTests
         // ...nor does any gift by date wait on it
         var box = new GiftBox();
         Assert.Empty(box.Due(new GiftFacts { Today = new DateTime(2026, 6, 1) }).Where(g => g.When.Dates != null || g.When.Festival != null));
+    }
+
+    // Every festival thing and stall keeper the overlays stand, by the map they stand on (plan 40 · GE9's things)
+    private static readonly Lazy<List<(Map Map, NPC Npc)>> Placed = new(() =>
+        MapDatabase.MapNames.Select(MapDatabase.Get).Distinct()
+            .SelectMany(m => m.Everyone.Where(n => n.ShownBy?.StartsWith("FLAG_FESTIVAL_", StringComparison.Ordinal) == true).Select(n => (m, n)))
+            .ToList());
+
+    [Fact]
+    public void EveryTownFestivalDressesItsTownAndEveryFestivalTownKeepsTheHolidays()
+    {
+        foreach (var f in Festivals.All.Where(f => f.Town != null))
+        {
+            string flag = Festivals.FlagOf(f.Id);
+            var mine = Placed.Value.Where(p => p.Npc.ShownBy == flag).Select(p => p.Npc).ToList();
+            // Two things or more besides its stall, the stall and its keeper selling the festival's own stock, all in its town
+            Assert.True(mine.Count(n => n.GymThing != null && n.GymThing != PropType.FestivalStall) >= 2, $"{f.Id}: too few things in {f.Town}");
+            Assert.Contains(mine, n => n.GymThing == PropType.FestivalStall);
+            Assert.Contains(mine, n => n.IsPokeMartClerk && n.Mart == f.Stall);
+            Assert.All(mine, n => Assert.StartsWith(f.Town + ".", n.Key ?? ""));
+        }
+        // The holidays: a decorated pine, a basket of eggs, a banner and a heart in each region's festival town (Jubilife City in Sinnoh)
+        string[] towns = { "jubilife_city", "celadon_city", "ecruteak", "slateport_city", "castelia_city_2" };
+        foreach (string holiday in new[] { "christmas", "easter", "new_year", "valentine" })
+            foreach (string town in towns)
+                Assert.Contains(Placed.Value, p => p.Npc.ShownBy == Festivals.FlagOf(holiday) && (p.Npc.Key ?? "").StartsWith(town + ".", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void AFestivalThingStandsOnOpenGroundOffTheWays()
+    {
+        foreach (var (map, npc) in Placed.Value)
+        {
+            int x = npc.GridX, y = npc.GridY;
+            string who = $"{map.Name} {npc.Key} at {x},{y}";
+            Assert.False(map.IsSolid(x, y), who + " stands on a blocked tile");
+            Assert.False(map.IsLedge(x, y), who + " stands on a ledge");
+            Assert.True(map.GetWarpAt(x, y) == null && map.GetWarpAt(x, y - 1) == null, who + " stands on a door or the step out of it");
+            Assert.False(map.Signboards.ContainsKey((x, y)) || map.SignScripts.ContainsKey((x, y)), who + " stands on a sign");
+            Assert.False(map.HiddenItems.ContainsKey((x, y)), who + " stands on a hidden item");
+            Assert.True(!map.TriggersAt(x, y).Any(), who + " stands on a trigger");
+            Assert.True(map.Everyone.Count(n => n.GridX == x && n.GridY == y) == 1, who + " shares its tile");
+        }
     }
 }

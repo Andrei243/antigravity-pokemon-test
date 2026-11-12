@@ -101,5 +101,14 @@
   "signs": {
     "map_signpost": "Snowpoint City\nThe northernmost town in Sinnoh, where the snow never melts.",
     "gym_signpost": "Snowpoint City Pokémon Gym\nLeader: Candice\nHer Ice-type Pokémon never feel the cold!"
-  }
+  },
+  // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
+  "npcs": [
+    {"id": "snowpoint_city.Festival_midwinter_1", "name": "Lit pine", "npcType": "FestivalPine", "x": 356, "y": 219, "facing": "Down", "shownBy": "FLAG_FESTIVAL_MIDWINTER"},
+    {"id": "snowpoint_city.Festival_midwinter_2", "name": "Lit pine", "npcType": "FestivalPine", "x": 354, "y": 223, "facing": "Down", "shownBy": "FLAG_FESTIVAL_MIDWINTER"},
+    {"id": "snowpoint_city.Festival_midwinter_3", "name": "Lit pine", "npcType": "FestivalPine", "x": 377, "y": 219, "facing": "Down", "shownBy": "FLAG_FESTIVAL_MIDWINTER"},
+    {"id": "snowpoint_city.Festival_midwinter_4", "name": "Lit pine", "npcType": "FestivalPine", "x": 379, "y": 223, "facing": "Down", "shownBy": "FLAG_FESTIVAL_MIDWINTER"},
+    {"id": "snowpoint_city.Festival_midwinter_stall", "name": "Stall", "npcType": "FestivalStall", "x": 361, "y": 226, "facing": "Down", "shownBy": "FLAG_FESTIVAL_MIDWINTER"},
+    {"id": "snowpoint_city.Festival_midwinter_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 362, "y": 226, "facing": "Down", "dialog": ["Stall keeper: Midwinter Lights! Warm your hands on something from the stall."], "isPokeMartClerk": true, "mart": "festival_midwinter", "shownBy": "FLAG_FESTIVAL_MIDWINTER"}
+  ]
 }

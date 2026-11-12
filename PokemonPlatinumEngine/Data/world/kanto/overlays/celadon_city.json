@@ -61,5 +61,17 @@
     "CeladonCity_EventScript_TrainerTips1": "Trainer Tips\nX Accuracy makes a move hard to miss. Find it at the department store!",
     "CeladonCity_EventScript_DeptStoreSign": "Find what you need at the Celadon Department Store!",
     "CeladonCity_EventScript_GymSign": "Celadon City Pokémon Gym\nLeader: Erika\nThe Nature-Loving Princess!"
-  }
+  },
+  // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
+  "npcs": [
+    {"id": "celadon_city.Festival_harvest_moon_1", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 191, "y": 141, "facing": "Down", "shownBy": "FLAG_FESTIVAL_HARVEST_MOON"},
+    {"id": "celadon_city.Festival_harvest_moon_2", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 196, "y": 141, "facing": "Down", "shownBy": "FLAG_FESTIVAL_HARVEST_MOON"},
+    {"id": "celadon_city.Festival_harvest_moon_x1", "name": "Moon lantern", "npcType": "FestivalMoonLantern", "x": 208, "y": 140, "facing": "Down", "shownBy": "FLAG_FESTIVAL_HARVEST_MOON"},
+    {"id": "celadon_city.Festival_harvest_moon_stall", "name": "Stall", "npcType": "FestivalStall", "x": 200, "y": 139, "facing": "Down", "shownBy": "FLAG_FESTIVAL_HARVEST_MOON"},
+    {"id": "celadon_city.Festival_harvest_moon_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 201, "y": 139, "facing": "Down", "dialog": ["Stall keeper: The Harvest Moon's up all week. Moon cakes, while they last!"], "isPokeMartClerk": true, "mart": "festival_harvest_moon", "shownBy": "FLAG_FESTIVAL_HARVEST_MOON"},
+    {"id": "celadon_city.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 194, "y": 142, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "celadon_city.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 192, "y": 142, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "celadon_city.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 196, "y": 139, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "celadon_city.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 190, "y": 140, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"}
+  ]
 }

@@ -29,5 +29,18 @@
   },
   "signs": {
     "1": "Castelia City Central Plaza\nThe heart of the city of towers"
-  }
+  },
+  // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
+  "npcs": [
+    {"id": "castelia_city_2.Festival_bridgelight_1", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 6, "y": 8, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BRIDGELIGHT"},
+    {"id": "castelia_city_2.Festival_bridgelight_2", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 25, "y": 8, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BRIDGELIGHT"},
+    {"id": "castelia_city_2.Festival_bridgelight_3", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 6, "y": 18, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BRIDGELIGHT"},
+    {"id": "castelia_city_2.Festival_bridgelight_4", "name": "Lanterns", "npcType": "FestivalLanterns", "x": 25, "y": 18, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BRIDGELIGHT"},
+    {"id": "castelia_city_2.Festival_bridgelight_stall", "name": "Stall", "npcType": "FestivalStall", "x": 20, "y": 18, "facing": "Down", "shownBy": "FLAG_FESTIVAL_BRIDGELIGHT"},
+    {"id": "castelia_city_2.Festival_bridgelight_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 21, "y": 18, "facing": "Down", "dialog": ["Stall keeper: Bridgelight! Every bridge in Unova is lit tonight. Take some warmth home."], "isPokeMartClerk": true, "mart": "festival_bridgelight", "shownBy": "FLAG_FESTIVAL_BRIDGELIGHT"},
+    {"id": "castelia_city_2.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 10, "y": 8, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "castelia_city_2.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 21, "y": 8, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "castelia_city_2.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 10, "y": 18, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "castelia_city_2.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 4, "y": 12, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"}
+  ]
 }
