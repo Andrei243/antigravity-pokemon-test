@@ -24,6 +24,9 @@ public class LegendaryScenesTests
         ["abundant_shrine.Tornadus Tornadus"] = "plan 40 GE3 placed it; its beat is owed to plan 29 LS",
         ["abundant_shrine.Thundurus Thundurus"] = "plan 40 GE3 placed it; its beat is owed to plan 29 LS",
         ["dragonspiral_tower_9.Reshiram Reshiram"] = "plan 40 GE3 placed it; its beat is owed to plan 29 LS",
+        // Plan 33 · GL6's staged battle in the fog of the open Weald, written with no beat of plan 29's
+        ["slumbering_weald.Shadow Zacian"] = "plan 33 GL6's staged shadow in an open map; its beat is owed to plan 29 LS",
+        ["slumbering_weald.Shadow Zamazenta"] = "plan 33 GL6's staged shadow in an open map; its beat is owed to plan 29 LS",
     };
 
     /// <summary>Whether a wild battle's species (or form) is a legendary or a mythical one.</summary>

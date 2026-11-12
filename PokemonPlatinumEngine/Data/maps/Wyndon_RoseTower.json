@@ -92,7 +92,7 @@
       "id": "oleana",
       "name": "Oleana",
       "npcType": "oleana",
-      "x": 5,
+      "x": 6,
       "y": 4,
       "facing": "Down",
       "script": "Oleana",

@@ -125,13 +125,17 @@ public sealed class Habitats
         }
 
         // The hideaways under the Underground, after the overworld's places (plan 38 · EX6); never on a cell's HERE list,
-        // since nothing of them is on the surface over them
+        // since nothing of them is on the surface over them. A way down under a cell the map draws nothing on (Mire Pool's) is shown at the
+        // nearest cell the map draws, or the page would point at nothing.
         foreach (var (name, cells, pool) in hideaways ?? Enumerable.Empty<(string, IReadOnlyList<(int X, int Y)>, IEnumerable<string>)>())
+        {
+            var shown = cells.Select(NearestDrawn).Distinct().ToList();
             foreach (string s in pool)
             {
                 if (!bySpecies.TryGetValue(s, out var list)) bySpecies[s] = list = new List<Habitat>();
-                list.Add(new Habitat(name, cells.ToList(), HabitatWays.Hideaway));
+                list.Add(new Habitat(name, shown, HabitatWays.Hideaway));
             }
+        }
 
         // The Pokémon met in a way of their own, after the tables' places
         foreach (var area in special?.Areas ?? new List<HabitatArea>())
@@ -186,6 +190,18 @@ public sealed class Habitats
     /// a space where there is nothing.
     /// </summary>
     public char LookAt(int x, int y) => y >= 0 && y < Height && x >= 0 && x < map[y].Length ? map[y][x] : ' ';
+
+    /// <summary>The cell itself if the map draws something there, else the nearest that it does (by rings, west to east and north to south in each).</summary>
+    private (int X, int Y) NearestDrawn((int X, int Y) cell)
+    {
+        if (LookAt(cell.X, cell.Y) != ' ') return cell;
+        for (int r = 1; r < Math.Max(Width, Height); r++)
+            for (int dy = -r; dy <= r; dy++)
+                for (int dx = -r; dx <= r; dx++)
+                    if (Math.Max(Math.Abs(dx), Math.Abs(dy)) == r && LookAt(cell.X + dx, cell.Y + dy) != ' ')
+                        return (cell.X + dx, cell.Y + dy);
+        return cell;
+    }
 
     /// <summary>The way of meeting Pokémon in the grass at a time of day: Platinum's evening counts as day, its late night as night.</summary>
     public static HabitatWays GrassAt(TimeOfDay time) => time switch

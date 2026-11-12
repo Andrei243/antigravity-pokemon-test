@@ -1,5 +1,5 @@
 # Rose Tower's lobby (plan 33 · GL6), Macro Cosmos's headquarters in Wyndon: on the Darkest Day the chairman's secretary
-# Oleana stands before the lift up to the Energy Plant, and the lift runs once she is beaten (its warp is there from
+# Oleana stands beside the lift up to the Energy Plant (off the tile its car puts its riders down on), and the lift runs once she is beaten (its warp is there from
 # FLAG_GALAR_OLEANA_BEATEN). VAR_GALAR_STORY 41 to 42 (postwick.txt's count). Our own lines.
 
 

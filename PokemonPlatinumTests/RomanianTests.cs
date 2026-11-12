@@ -191,6 +191,10 @@ public class RomanianTests
         Assert.NotEmpty(named);
         // The Battle Zone is no area but the region the Fight, Survival and Resort Areas lie in, which lines name: its
         // Romanian name is kept here so every line names it alike (plan 17 · N6b, slice 3's decision)
+        // The hideaways under the Underground (plan 38 · EX6) are maps of their own, laid by rule, not areas of a world file:
+        // their names show on the sign as they are come down into and on the Pokédex's area page
+        foreach (var hideaway in PokemonPlatinumEngine.Models.Underground.Hideaways.All)
+            areas.Add(PokemonPlatinumEngine.Models.Trainer.KeyOf(hideaway.Name));
         Assert.Empty(named.Where(n => !areas.Contains(n) && n != "BattleZone").OrderBy(n => n));
         try
         {

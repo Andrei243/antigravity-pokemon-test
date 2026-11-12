@@ -13,16 +13,16 @@
     "2": {"name": "Smasher", "script": "Athlete3"},
     "3": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["Our team trains harder than anyone in Unova! Battle them and see!"]},
     "4": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["I've cheered for this team since before they could win a game!"]},
-    "5": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
-    "6": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
-    "7": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "5": {"name": "Player", "npcType": "Smasher", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "6": {"name": "Player", "npcType": "Smasher", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "7": {"name": "Player", "npcType": "Smasher", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "8": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "9": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "10": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "11": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
     "12": {"name": "Backer", "npcType": "backers_m", "script": "Talk", "dialog": ["I bring a drum to every practice. Nobody has asked me to stop yet."]},
     "13": {"name": "Backer", "npcType": "backers_f", "script": "Talk", "dialog": ["Give it everything! The players love a challenger."]},
-    "14": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
-    "15": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]}
+    "14": {"name": "Player", "npcType": "Smasher", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
+    "15": {"name": "Player", "npcType": "Smasher", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]}
   }
 }

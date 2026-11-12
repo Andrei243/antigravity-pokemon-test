@@ -330,7 +330,8 @@ public class HearthomeTests
     [Fact]
     public void SpiritombIsListedOnRoute209ByTheHallowedTower()
     {
-        var spiritomb = Habitats.Sinnoh!.Of("Spiritomb");
+        // A Ghost type, so Shade Hollow's hideaway (plan 38 · EX6) lists it too: the tower is its one place above ground
+        var spiritomb = Habitats.Sinnoh!.Of("Spiritomb").Where(h => !h.Ways.HasFlag(HabitatWays.Hideaway));
         var place = Assert.Single(spiritomb);
         Assert.Equal("Route 209", place.Name);
         Assert.True(place.Ways.HasFlag(HabitatWays.Special));

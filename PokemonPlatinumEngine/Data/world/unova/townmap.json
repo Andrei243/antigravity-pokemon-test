@@ -64,6 +64,11 @@
   "landmarks": [],
   // Rooms and maps no warp of the overworld leads into (dived, surfed, flown or ridden to, or stepped into by a script) and the cell each is shown at; Castelia City is a map of ours that stands on the two cells of its block
   "places": {
+    "NimbasaCity_GridironField": "12,13",
+    "NimbasaCity_BaseballField": "12,13",
+    "NimbasaCity_FootballField": "12,13",
+    "NimbasaCity_TennisCourt": "12,13",
+    "NimbasaCity_BasketballCourt": "12,13",
     "AbyssalRuins": "25,9",
     "AnvilleTown": "12,13",
     "BattleSubwayTrain": "13,14",
