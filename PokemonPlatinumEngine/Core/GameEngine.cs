@@ -174,13 +174,10 @@ public enum GameState
     Studio,
     /// <summary>A ride of the photo tour, a script's <c>tour ride</c> waiting on it (plan 44 · SD5).</summary>
     PhotoTour,
-<<<<<<< HEAD
     /// <summary>The travel phone over the field (plan 43 · LF6).</summary>
-    Phone
-=======
+    Phone,
     /// <summary>The photo tour's report, a script's <c>tour report</c> waiting on it (plan 44 · SD6).</summary>
     TourReport
->>>>>>> worktree-agent-af309f69094a300d9
 }
 
 public partial class GameEngine
