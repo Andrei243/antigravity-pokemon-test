@@ -5,7 +5,7 @@
         "I guide Champions to the great battle facilities of the regions, and back here whenever they like."
       ],
       "text": [
-        ""
+        "Îi duc pe Campioni la marile facilități de luptă ale regiunilor și înapoi aici oricând vor."
       ]
     },
     {
@@ -17,11 +17,11 @@
         "NOWHERE"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Unde vrei să mergi?",
+        "FRONTIERA SINNOHULUI",
+        "FRONTIERA HOENNULUI",
+        "STAȚIA GEAR",
+        "NICĂIERI"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Sinnoh's Battle Frontier it is. Follow me, and keep close."
       ],
       "text": [
-        ""
+        "Frontiera de Luptă din Sinnoh, deci. Urmează-mă și rămâi aproape."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} followed the guide to Sinnoh's Battle Frontier..."
       ],
       "text": [
-        ""
+        "{player} l-a urmat pe ghid până la Frontiera de Luptă din Sinnoh..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Hoenn's Battle Frontier island it is. Follow me, and keep close."
       ],
       "text": [
-        ""
+        "Insula Frontierei de Luptă din Hoenn, deci. Urmează-mă și rămâi aproape."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "{player} followed the guide to Hoenn's Battle Frontier..."
       ],
       "text": [
-        ""
+        "{player} l-a urmat pe ghid până la Frontiera de Luptă din Hoenn..."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Unova's Gear Station it is. Follow me, and keep close."
       ],
       "text": [
-        ""
+        "Stația Gear din Unova, deci. Urmează-mă și rămâi aproape."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{player} followed the guide to Unova's Gear Station..."
       ],
       "text": [
-        ""
+        "{player} l-a urmat pe ghid până la Stația Gear din Unova..."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame."
       ],
       "text": [
-        ""
+        "Îmi pare rău, pot duce doar Campioni din regiunea aceea. Revino după ce ai intrat în Sala ei a Faimei."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Take your time. I'll be at this desk whenever you'd like to go."
       ],
       "text": [
-        ""
+        "Nu te grăbi. Voi fi la ghișeul acesta oricând vrei să pleci."
       ]
     }
   ]

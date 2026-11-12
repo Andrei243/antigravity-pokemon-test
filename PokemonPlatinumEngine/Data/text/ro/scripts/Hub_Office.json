@@ -5,7 +5,7 @@
         "Looker"
       ],
       "text": [
-        ""
+        "Looker"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Good day. I am a clerk, and I know nothing. Nothing at all. Please come back..."
       ],
       "text": [
-        ""
+        "Bună ziua. Sunt funcționar și nu știu nimic. Absolut nimic. Vă rog, reveniți..."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "...Ah. It is you, {player}! You see through my disguise at once. A fine eye, as always."
       ],
       "text": [
-        ""
+        "...Ah. Ești tu, {player}! Îmi vezi imediat prin deghizare. Ochi de expert, ca întotdeauna."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Yes, it is I, Looker. The Bureau is closed, which is why this is not the Bureau."
       ],
       "text": [
-        ""
+        "Da, eu sunt, Looker. Biroul e închis, de aceea nu e Biroul."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "This is the Open Door Agency. Anyone with a puzzle may walk in, and I take a case in each region whose Champion you are."
       ],
       "text": [
-        ""
+        "Aceasta este Agenția Ușa Deschisă. Oricine are o enigmă poate intra, iar eu preiau câte un caz în fiecare regiune al cărei Campion ești."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player}, you are here! Strange news from the harbour. Boats from every region have been sailing to Grayfall Islet."
       ],
       "text": [
-        ""
+        "{player}, ai ajuns! Vești ciudate din port. Vase din toate regiunile navighează spre Insulița Grayfall."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "On them, the leaders of the old villain teams. Each one heard that their old machine had come back, hidden in the keep out there."
       ],
       "text": [
-        ""
+        "Pe ele, liderii vechilor echipe de răufăcători. Fiecare a auzit că vechea lui mașinărie s-a întors, ascunsă în fortul de acolo."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Somebody gathered them on purpose. I must know who. And I would feel much braver with a Champion beside me."
       ],
       "text": [
-        ""
+        "Cineva i-a adunat intenționat. Trebuie să aflu cine. Și m-aș simți mult mai curajos cu un Campion alături."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "My boat is at the quay. Shall we sail to Grayfall Keep?"
       ],
       "text": [
-        ""
+        "Barca mea e la chei. Navigăm spre Fortul Grayfall?"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "{player} sailed with Looker to Grayfall Islet..."
       ],
       "text": [
-        ""
+        "{player} a navigat cu Looker spre Insulița Grayfall..."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "A case from Sinnoh. Before every party at the Resort Area's villa, food vanishes from its larder."
       ],
       "text": [
-        ""
+        "Un caz din Sinnoh. Înaintea fiecărei petreceri la vila din Resort Area, mâncarea dispare din cămara ei."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "The villa's caretaker blames a young Gible that plays nearby. I do not believe it. A Gible does not read crate labels."
       ],
       "text": [
-        ""
+        "Îngrijitorul vilei dă vina pe un Gible tânăr care se joacă prin apropiere. Eu nu cred. Un Gible nu citește etichetele lăzilor."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Will you take the case of the Villa Larder?"
       ],
       "text": [
-        ""
+        "Preiei cazul Cămării Vilei?"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Excellent! Speak to the caretaker in the Resort Area, and to the girl whose Gible is blamed. The ferry's people at the Fight Area may know something too."
       ],
       "text": [
-        ""
+        "Excelent! Vorbește cu îngrijitorul din Resort Area și cu fata al cărei Gible e învinuit. Oamenii de la feribotul din Fight Area ar putea ști și ei ceva."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Come back when you have found the clues. Then we deduce!"
       ],
       "text": [
-        ""
+        "Revino când ai găsit indiciile. Atunci deducem!"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "You have every clue! Now, we think. First question."
       ],
       "text": [
-        ""
+        "Ai toate indiciile! Acum, gândim. Prima întrebare."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Precisely! Those marks were cut by a crowbar, not a Gible's teeth. The little one is innocent."
       ],
       "text": [
-        ""
+        "Exact! Urmele acelea au fost făcute de un levier, nu de dinții unui Gible. Cel mic e nevinovat."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "Second question, and the important one."
       ],
       "text": [
-        ""
+        "A doua întrebare, cea importantă."
       ]
     },
     {
@@ -149,7 +149,7 @@
         "Yes! Two hours missing from the ferry's log, every party night. Only its captain could sail off his course unwritten."
       ],
       "text": [
-        ""
+        "Da! Două ore lipsă din jurnalul feribotului, în fiecare seară de petrecere. Doar căpitanul lui putea naviga în afara cursului fără să noteze."
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Captain Ferren Dray. He will be on the Fight Area's pier. Go and face him, {player}. I would come, but I am a clerk today."
       ],
       "text": [
-        ""
+        "Căpitanul Ferren Dray. Va fi pe debarcaderul din Fight Area. Du-te și înfruntă-l, {player}. Aș veni și eu, dar azi sunt funcționar."
       ]
     },
     {
@@ -165,7 +165,7 @@
         "Captain Ferren Dray waits on the Fight Area's pier. Go and face him!"
       ],
       "text": [
-        ""
+        "Căpitanul Ferren Dray așteaptă pe debarcaderul din Fight Area. Du-te și înfruntă-l!"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "There are clues still to find. The caretaker and the girl in the Resort Area, the ferry's people on the Fight Area's pier."
       ],
       "text": [
-        ""
+        "Mai sunt indicii de găsit. Îngrijitorul și fata din Resort Area, oamenii feribotului de pe debarcaderul din Fight Area."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "The captain came to my door and owned up to everything. The villa will have its parties, and the Gible its good name."
       ],
       "text": [
-        ""
+        "Căpitanul a venit la ușa mea și a recunoscut totul. Vila va avea petrecerile ei, iar Gible-ul bunul său nume."
       ]
     },
     {
@@ -189,7 +189,7 @@
         "The case of the Villa Larder is closed! Here is the agency's fee, with my thanks."
       ],
       "text": [
-        ""
+        "Cazul Cămării Vilei e închis! Iată onorariul agenției, cu mulțumirile mele."
       ]
     },
     {
@@ -197,7 +197,7 @@
         "When you are Champion of another region, come back. The door is always open."
       ],
       "text": [
-        ""
+        "Când ești Campion al altei regiuni, revino. Ușa e mereu deschisă."
       ]
     },
     {
@@ -205,7 +205,7 @@
         "A case from Kanto. On the ferry to the Sevii Islands, one seat is paid for on every sailing. And on every sailing, it is empty."
       ],
       "text": [
-        ""
+        "Un caz din Kanto. Pe feribotul spre Insulele Sevii, la fiecare cursă e plătit un loc. Și la fiecare cursă, locul rămâne gol."
       ]
     },
     {
@@ -213,7 +213,7 @@
         "The crew say a ghost rides in it. Ghosts do not buy tickets, {player}. Somebody does."
       ],
       "text": [
-        ""
+        "Echipajul zice că în el călătorește o fantomă. Fantomele nu cumpără bilete, {player}. Cineva le cumpără."
       ]
     },
     {
@@ -221,7 +221,7 @@
         "Will you take the case of the Ferry's Extra Passenger?"
       ],
       "text": [
-        ""
+        "Preiei cazul Pasagerului în Plus al Feribotului?"
       ]
     },
     {
@@ -229,7 +229,7 @@
         "Excellent! Speak to the ticket clerk and the old fisherman on Vermilion City's quay. Something was left behind on Two Island too."
       ],
       "text": [
-        ""
+        "Excelent! Vorbește cu casiera de bilete și cu bătrânul pescar de pe chei, în Vermilion City. Ceva a fost lăsat în urmă și pe Two Island."
       ]
     },
     {
@@ -237,7 +237,7 @@
         "Come back when you have found the clues. Then we deduce!"
       ],
       "text": [
-        ""
+        "Revino când ai găsit indiciile. Atunci deducem!"
       ]
     },
     {
@@ -245,7 +245,7 @@
         "You have every clue! Now, we think. First question."
       ],
       "text": [
-        ""
+        "Ai toate indiciile! Acum, gândim. Prima întrebare."
       ]
     },
     {
@@ -253,7 +253,7 @@
         "Precisely! The office tears its stubs on the left. That one was torn on the right. Someone else sells passage on that ferry."
       ],
       "text": [
-        ""
+        "Exact! Oficiul rupe cotoarele pe stânga. Acesta a fost rupt pe dreapta. Altcineva vinde bilete pe feribotul acela."
       ]
     },
     {
@@ -261,7 +261,7 @@
         "Second question, and the important one."
       ],
       "text": [
-        ""
+        "A doua întrebare, cea importantă."
       ]
     },
     {
@@ -269,7 +269,7 @@
         "Yes! A last traveller waved up the cargo ramp after the count. The seat stays empty because the passenger rides in the hold!"
       ],
       "text": [
-        ""
+        "Da! Un ultim călător a fost făcut semn să urce pe rampa de marfă după numărătoare. Locul rămâne gol pentru că pasagerul călătorește în cală!"
       ]
     },
     {
@@ -277,7 +277,7 @@
         "Dov Harlan, the dockhand. He will be on Vermilion City's quay. Go and face him, {player}. I am needed here, filing."
       ],
       "text": [
-        ""
+        "Dov Harlan, docherul. Va fi pe chei, în Vermilion City. Du-te și înfruntă-l, {player}. Eu sunt necesar aici, la clasat acte."
       ]
     },
     {
@@ -285,7 +285,7 @@
         "Dov Harlan the dockhand waits on Vermilion City's quay. Go and face him!"
       ],
       "text": [
-        ""
+        "Docherul Dov Harlan așteaptă pe cheiul din Vermilion City. Du-te și înfruntă-l!"
       ]
     },
     {
@@ -293,7 +293,7 @@
         "There are clues still to find. The ticket clerk and the fisherman on Vermilion's quay, and the harbour on Two Island."
       ],
       "text": [
-        ""
+        "Mai sunt indicii de găsit. Casiera și pescarul de pe cheiul din Vermilion, și portul de pe Two Island."
       ]
     },
     {
@@ -301,7 +301,7 @@
         "Dov came to my door. He paid for that seat at the office every sailing, then sold the passage again on the quay."
       ],
       "text": [
-        ""
+        "Dov a venit la ușa mea. A plătit locul acela la oficiu la fiecare cursă, apoi a vândut din nou călătoria pe chei."
       ]
     },
     {
@@ -309,7 +309,7 @@
         "Twice the money, and a ghost story to keep anyone from looking. The case of the Ferry's Extra Passenger is closed!"
       ],
       "text": [
-        ""
+        "Bani dubli și o poveste cu fantome ca să nu se uite nimeni. Cazul Pasagerului în Plus al Feribotului e închis!"
       ]
     },
     {
@@ -317,7 +317,7 @@
         "Here is the agency's fee, with my thanks. When you are Champion of another region, come back."
       ],
       "text": [
-        ""
+        "Iată onorariul agenției, cu mulțumirile mele. Când ești Campion al altei regiuni, revino."
       ]
     },
     {
@@ -325,7 +325,7 @@
         "A case from Johto. Every morning, the researchers at the Ruins of Alph find chalk marks on the paving."
       ],
       "text": [
-        ""
+        "Un caz din Johto. În fiecare dimineață, cercetătorii de la Ruinele din Alph găsesc urme de cretă pe pavaj."
       ]
     },
     {
@@ -333,7 +333,7 @@
         "Copies of the carvings on the walls, made overnight. Vandals, they say. But vandals do not copy so neatly."
       ],
       "text": [
-        ""
+        "Copii ale sculpturilor de pe pereți, făcute peste noapte. Vandali, spun ei. Dar vandalii nu copiază atât de îngrijit."
       ]
     },
     {
@@ -341,7 +341,7 @@
         "Will you take the case of the Alph Etchings?"
       ],
       "text": [
-        ""
+        "Preiei cazul Gravurilor din Alph?"
       ]
     },
     {
@@ -349,7 +349,7 @@
         "Excellent! Speak to the researcher, the camper and the schoolchild who visit the ruins. Each of them has seen something."
       ],
       "text": [
-        ""
+        "Excelent! Vorbește cu cercetătorul, cu campistul și cu școlarul care vizitează ruinele. Fiecare a văzut ceva."
       ]
     },
     {
@@ -357,7 +357,7 @@
         "Come back when you have found the clues. Then we deduce!"
       ],
       "text": [
-        ""
+        "Revino când ai găsit indiciile. Atunci deducem!"
       ]
     },
     {
@@ -365,7 +365,7 @@
         "You have every clue! Now, we think. First question."
       ],
       "text": [
-        ""
+        "Ai toate indiciile! Acum, gândim. Prima întrebare."
       ]
     },
     {
@@ -373,7 +373,7 @@
         "Precisely! Every copy is labelled, letter by letter, like a blackboard. This is not mischief. It is a lesson!"
       ],
       "text": [
-        ""
+        "Exact! Fiecare copie e etichetată, literă cu literă, ca pe o tablă. Nu e o poznă. E o lecție!"
       ]
     },
     {
@@ -381,7 +381,7 @@
         "Second question, and the important one."
       ],
       "text": [
-        ""
+        "A doua întrebare, cea importantă."
       ]
     },
     {
@@ -389,7 +389,7 @@
         "Yes! Chalk on her sleeves every morning, and a quiz on the Unown. A teacher brings her class to the ruins by night."
       ],
       "text": [
-        ""
+        "Da! Cretă pe mâneci în fiecare dimineață și un test despre Unown. O învățătoare își aduce clasa la ruine noaptea."
       ]
     },
     {
@@ -397,7 +397,7 @@
         "Mirelle Dunn, the schoolteacher. She will be at the ruins. Go and speak to her, {player}. Gently. She means well."
       ],
       "text": [
-        ""
+        "Mirelle Dunn, învățătoarea. Va fi la ruine. Du-te și vorbește cu ea, {player}. Cu blândețe. Are intenții bune."
       ]
     },
     {
@@ -405,7 +405,7 @@
         "Mirelle Dunn the schoolteacher waits at the Ruins of Alph. Go and speak to her!"
       ],
       "text": [
-        ""
+        "Învățătoarea Mirelle Dunn așteaptă la Ruinele din Alph. Du-te și vorbește cu ea!"
       ]
     },
     {
@@ -413,7 +413,7 @@
         "There are clues still to find. The researcher, the camper and the schoolchild at the Ruins of Alph."
       ],
       "text": [
-        ""
+        "Mai sunt indicii de găsit. Cercetătorul, campistul și școlarul de la Ruinele din Alph."
       ]
     },
     {
@@ -421,7 +421,7 @@
         "Miss Dunn and the researchers have made a bargain. Her class may study the ruins by day, and the paving stays clean."
       ],
       "text": [
-        ""
+        "Domnișoara Dunn și cercetătorii au făcut o înțelegere. Clasa ei poate studia ruinele ziua, iar pavajul rămâne curat."
       ]
     },
     {
@@ -429,7 +429,7 @@
         "The case of the Alph Etchings is closed! Here is the agency's fee, with my thanks."
       ],
       "text": [
-        ""
+        "Cazul Gravurilor din Alph e închis! Iată onorariul agenției, cu mulțumirile mele."
       ]
     },
     {
@@ -437,7 +437,7 @@
         "When you are Champion of another region, come back. The door is always open."
       ],
       "text": [
-        ""
+        "Când ești Campion al altei regiuni, revino. Ușa e mereu deschisă."
       ]
     },
     {
@@ -445,7 +445,7 @@
         "A case from Hoenn. Crates marked SALT come in to Dewford Town on a little boat. Salt is heavy. These crates are light as air."
       ],
       "text": [
-        ""
+        "Un caz din Hoenn. Lăzi marcate SARE ajung în Dewford Town cu o bărcuță. Sarea e grea. Lăzile acestea sunt ușoare ca aerul."
       ]
     },
     {
@@ -453,7 +453,7 @@
         "Dewford's customs officer is puzzled, and so am I. What weighs nothing and needs a false name?"
       ],
       "text": [
-        ""
+        "Vameșul din Dewford e nedumerit, la fel și eu. Ce nu cântărește nimic și are nevoie de un nume fals?"
       ]
     },
     {
@@ -461,7 +461,7 @@
         "Will you take the case of the Salt Run?"
       ],
       "text": [
-        ""
+        "Preiei cazul Transportului de Sare?"
       ]
     },
     {
@@ -469,7 +469,7 @@
         "Excellent! Speak to the customs officer, the sailor and the old fisherman in Dewford Town."
       ],
       "text": [
-        ""
+        "Excelent! Vorbește cu vameșul, cu marinarul și cu bătrânul pescar din Dewford Town."
       ]
     },
     {
@@ -477,7 +477,7 @@
         "Come back when you have found the clues. Then we deduce!"
       ],
       "text": [
-        ""
+        "Revino când ai găsit indiciile. Atunci deducem!"
       ]
     },
     {
@@ -485,7 +485,7 @@
         "You have every clue! Now, we think. First question."
       ],
       "text": [
-        ""
+        "Ai toate indiciile! Acum, gândim. Prima întrebare."
       ]
     },
     {
@@ -493,7 +493,7 @@
         "Precisely! A second stamp on a customs seal. The crates were opened after customs, and sealed again."
       ],
       "text": [
-        ""
+        "Exact! O a doua ștampilă pe un sigiliu vamal. Lăzile au fost deschise după vamă și sigilate din nou."
       ]
     },
     {
@@ -501,7 +501,7 @@
         "Second question, and the important one."
       ],
       "text": [
-        ""
+        "A doua întrebare, cea importantă."
       ]
     },
     {
@@ -509,7 +509,7 @@
         "Yes! The crew sing of lamps, not salt. Lamp parts are light, and they pay a far higher duty."
       ],
       "text": [
-        ""
+        "Da! Echipajul cântă despre lămpi, nu despre sare. Piesele de lămpi sunt ușoare și plătesc o taxă mult mai mare."
       ]
     },
     {
@@ -517,7 +517,7 @@
         "Skipper Ottoline Marsh. She will be on Dewford Town's shore. Go and face her, {player}. Mind the spray."
       ],
       "text": [
-        ""
+        "Căpitana Ottoline Marsh. Va fi pe țărmul din Dewford Town. Du-te și înfruntă-o, {player}. Ai grijă la stropi."
       ]
     },
     {
@@ -525,7 +525,7 @@
         "Skipper Ottoline Marsh waits on Dewford Town's shore. Go and face her!"
       ],
       "text": [
-        ""
+        "Căpitana Ottoline Marsh așteaptă pe țărmul din Dewford Town. Du-te și înfruntă-o!"
       ]
     },
     {
@@ -533,7 +533,7 @@
         "There are clues still to find. The customs officer, the sailor and the old fisherman in Dewford Town."
       ],
       "text": [
-        ""
+        "Mai sunt indicii de găsit. Vameșul, marinarul și bătrânul pescar din Dewford Town."
       ]
     },
     {
@@ -541,7 +541,7 @@
         "Skipper Marsh has paid her duty in full, and the lamps went where they were meant to: Dewford's own lighthouse keepers."
       ],
       "text": [
-        ""
+        "Căpitana Marsh și-a plătit taxa integral, iar lămpile au ajuns unde trebuiau: la paznicii farului din Dewford."
       ]
     },
     {
@@ -549,7 +549,7 @@
         "The case of the Salt Run is closed! Here is the agency's fee, with my thanks."
       ],
       "text": [
-        ""
+        "Cazul Transportului de Sare e închis! Iată onorariul agenției, cu mulțumirile mele."
       ]
     },
     {
@@ -557,7 +557,7 @@
         "When you are Champion of another region, come back. The door is always open."
       ],
       "text": [
-        ""
+        "Când ești Campion al altei regiuni, revino. Ușa e mereu deschisă."
       ]
     },
     {
@@ -565,7 +565,7 @@
         "A case from Unova. Two tournaments are booked into the World Tournament for the same afternoon."
       ],
       "text": [
-        ""
+        "Un caz din Unova. Două turnee sunt programate la World Tournament în aceeași după-amiază."
       ]
     },
     {
@@ -573,7 +573,7 @@
         "Both organisers swear they asked first. Both have the papers to prove it. One of them, or both, has been fooled."
       ],
       "text": [
-        ""
+        "Ambii organizatori jură că au cerut primii. Ambii au actele care o dovedesc. Unul dintre ei, sau ambii, a fost păcălit."
       ]
     },
     {
@@ -581,7 +581,7 @@
         "Will you take the case of the Double-Booked Hall?"
       ],
       "text": [
-        ""
+        "Preiei cazul Sălii Rezervate de Două Ori?"
       ]
     },
     {
@@ -589,7 +589,7 @@
         "Excellent! Speak to the two organisers outside the World Tournament, and to the janitor who keeps the keys."
       ],
       "text": [
-        ""
+        "Excelent! Vorbește cu cei doi organizatori din fața World Tournament și cu portarul care ține cheile."
       ]
     },
     {
@@ -597,7 +597,7 @@
         "Come back when you have found the clues. Then we deduce!"
       ],
       "text": [
-        ""
+        "Revino când ai găsit indiciile. Atunci deducem!"
       ]
     },
     {
@@ -605,7 +605,7 @@
         "You have every clue! Now, we think. First question."
       ],
       "text": [
-        ""
+        "Ai toate indiciile! Acum, gândim. Prima întrebare."
       ]
     },
     {
@@ -613,7 +613,7 @@
         "Precisely! A name rubbed out and another written over it. The afternoon was sold, then sold again."
       ],
       "text": [
-        ""
+        "Exact! Un nume șters și altul scris peste el. După-amiaza a fost vândută, apoi vândută din nou."
       ]
     },
     {
@@ -621,7 +621,7 @@
         "Second question, and the important one."
       ],
       "text": [
-        ""
+        "A doua întrebare, cea importantă."
       ]
     },
     {
@@ -629,7 +629,7 @@
         "Yes! The office key, taken out after hours on the very night the second booking was written."
       ],
       "text": [
-        ""
+        "Da! Cheia biroului, scoasă după program chiar în noaptea în care s-a scris a doua rezervare."
       ]
     },
     {
@@ -637,7 +637,7 @@
         "Isidore Calloway, the hall's clerk. He will be at the World Tournament's door. Go and face him, {player}!"
       ],
       "text": [
-        ""
+        "Isidore Calloway, funcționarul sălii. Va fi la ușa World Tournament. Du-te și înfruntă-l, {player}!"
       ]
     },
     {
@@ -645,7 +645,7 @@
         "Isidore Calloway the clerk waits at the World Tournament's door. Go and face him!"
       ],
       "text": [
-        ""
+        "Funcționarul Isidore Calloway așteaptă la ușa World Tournament. Du-te și înfruntă-l!"
       ]
     },
     {
@@ -653,7 +653,7 @@
         "There are clues still to find. The two organisers and the janitor, outside the World Tournament."
       ],
       "text": [
-        ""
+        "Mai sunt indicii de găsit. Cei doi organizatori și portarul, în fața World Tournament."
       ]
     },
     {
@@ -661,7 +661,7 @@
         "Mr. Calloway has returned the second fee, and the two organisers have agreed to share the afternoon. One morning, one evening."
       ],
       "text": [
-        ""
+        "Domnul Calloway a returnat a doua taxă, iar cei doi organizatori au căzut de acord să împartă după-amiaza. Una dimineața, una seara."
       ]
     },
     {
@@ -669,7 +669,7 @@
         "The case of the Double-Booked Hall is closed! Here is the agency's fee, with my thanks."
       ],
       "text": [
-        ""
+        "Cazul Sălii Rezervate de Două Ori e închis! Iată onorariul agenției, cu mulțumirile mele."
       ]
     },
     {
@@ -677,7 +677,7 @@
         "When you are Champion of another region, come back. The door is always open."
       ],
       "text": [
-        ""
+        "Când ești Campion al altei regiuni, revino. Ușa e mereu deschisă."
       ]
     },
     {
@@ -685,7 +685,7 @@
         "A case from Kalos. A painting in Lumiose City's museum leaves its frame every night. By morning, it is back."
       ],
       "text": [
-        ""
+        "Un caz din Kalos. Un tablou din muzeul din Lumiose City părăsește rama în fiecare noapte. Dimineața, e înapoi."
       ]
     },
     {
@@ -693,7 +693,7 @@
         "Nothing is ever missing when the doors open. And yet the night guard swears the frame is empty at midnight."
       ],
       "text": [
-        ""
+        "Nu lipsește nimic când se deschid ușile. Și totuși paznicul de noapte jură că rama e goală la miezul nopții."
       ]
     },
     {
@@ -701,7 +701,7 @@
         "Will you take the case of the Borrowed Masterpiece?"
       ],
       "text": [
-        ""
+        "Preiei cazul Capodoperei Împrumutate?"
       ]
     },
     {
@@ -709,7 +709,7 @@
         "Excellent! Speak to the guard by the museum in Lumiose City, then to the porter and the painter in Kiloude City."
       ],
       "text": [
-        ""
+        "Excelent! Vorbește cu paznicul de lângă muzeul din Lumiose City, apoi cu hamalul și pictorul din Kiloude City."
       ]
     },
     {
@@ -717,7 +717,7 @@
         "Come back when you have found the clues. Then we deduce!"
       ],
       "text": [
-        ""
+        "Revino când ai găsit indiciile. Atunci deducem!"
       ]
     },
     {
@@ -725,7 +725,7 @@
         "You have every clue! Now, we think. First question."
       ],
       "text": [
-        ""
+        "Ai toate indiciile! Acum, gândim. Prima întrebare."
       ]
     },
     {
@@ -733,7 +733,7 @@
         "Precisely! Screws worn bright from turning. The painting is taken out of its frame, and the frame never moves."
       ],
       "text": [
-        ""
+        "Exact! Șuruburi lustruite de atâta învârtit. Tabloul e scos din ramă, iar rama nu se mișcă niciodată."
       ]
     },
     {
@@ -741,7 +741,7 @@
         "Second question, and the important one."
       ],
       "text": [
-        ""
+        "A doua întrebare, cea importantă."
       ]
     },
     {
@@ -749,7 +749,7 @@
         "Yes! A long flat parcel on the last train to Kiloude, and back on the first. Only the museum's restorer has the keys."
       ],
       "text": [
-        ""
+        "Da! Un pachet lung și plat în ultimul tren spre Kiloude și înapoi cu primul. Doar restauratorul muzeului are cheile."
       ]
     },
     {
@@ -757,7 +757,7 @@
         "Odile Ferrand. She will be in Kiloude City's square. Go and face her, {player}!"
       ],
       "text": [
-        ""
+        "Odile Ferrand. Va fi în piața din Kiloude City. Du-te și înfruntă-o, {player}!"
       ]
     },
     {
@@ -765,7 +765,7 @@
         "Odile Ferrand the restorer waits in Kiloude City's square. Go and face her!"
       ],
       "text": [
-        ""
+        "Restauratoarea Odile Ferrand așteaptă în piața din Kiloude City. Du-te și înfruntă-o!"
       ]
     },
     {
@@ -773,7 +773,7 @@
         "There are clues still to find. The guard by Lumiose City's museum, and the porter and the painter in Kiloude City."
       ],
       "text": [
-        ""
+        "Mai sunt indicii de găsit. Paznicul de lângă muzeul din Lumiose City, hamalul și pictorul din Kiloude City."
       ]
     },
     {
@@ -781,7 +781,7 @@
         "Madame Ferrand took the painting to Kiloude so her students could copy it from life. The museum has made her a teacher there."
       ],
       "text": [
-        ""
+        "Doamna Ferrand a dus tabloul la Kiloude ca elevii ei să-l copieze după model. Muzeul a făcut-o profesoară acolo."
       ]
     },
     {
@@ -789,7 +789,7 @@
         "By day, and with the painting on its wall. The case of the Borrowed Masterpiece is closed! Here is the agency's fee."
       ],
       "text": [
-        ""
+        "Ziua, și cu tabloul pe perete. Cazul Capodoperei Împrumutate e închis! Iată onorariul agenției."
       ]
     },
     {
@@ -797,7 +797,7 @@
         "You are a detective as much as a Champion, {player}. When you are Champion of another region, come back."
       ],
       "text": [
-        ""
+        "Ești detectiv tot atât cât ești Campion, {player}. Când ești Campion al altei regiuni, revino."
       ]
     },
     {
@@ -805,7 +805,7 @@
         "Hmm. No, I do not think that is it. Look over your clues and come back to me. A detective is never in a hurry!"
       ],
       "text": [
-        ""
+        "Hmm. Nu, nu cred că asta e. Reia-ți indiciile și revino la mine. Un detectiv nu se grăbește niciodată!"
       ]
     },
     {
@@ -813,7 +813,7 @@
         "As you wish. The door stays open."
       ],
       "text": [
-        ""
+        "Cum dorești. Ușa rămâne deschisă."
       ]
     },
     {
@@ -821,7 +821,7 @@
         "No case waits for you today. When you are Champion of another region, there will be one. There always is."
       ],
       "text": [
-        ""
+        "Azi nu te așteaptă niciun caz. Când ești Campion al altei regiuni, va fi unul. Mereu e unul."
       ]
     }
   ],
@@ -841,7 +841,7 @@
         "Boxes stacked to the ceiling, every one stamped CASE CLOSED. Some of the stamps look very old."
       ],
       "text": [
-        ""
+        "Cutii stivuite până în tavan, fiecare ștampilată CAZ ÎNCHIS. Unele ștampile par foarte vechi."
       ]
     }
   ],
@@ -851,7 +851,7 @@
         "Maps of every region, pinned and scribbled over, with string running from town to town."
       ],
       "text": [
-        ""
+        "Hărți ale tuturor regiunilor, prinse în ace și mâzgălite, cu ață întinsă de la oraș la oraș."
       ]
     }
   ]

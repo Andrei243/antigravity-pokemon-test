@@ -5,7 +5,7 @@
         "Ismene"
       ],
       "text": [
-        ""
+        "Ismene"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Laurel Gallery. I keep its records: every team every region has crowned, and the first of each above all."
       ],
       "text": [
-        ""
+        "Bun venit la Galeria Laurilor. Eu țin evidențele ei: fiecare echipă pe care a încoronat-o fiecare regiune, și prima dintre toate mai ales."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Read a plinth to see its teams. I've read every one of them myself, more times than I care to count."
       ],
       "text": [
-        ""
+        "Citește un soclu ca să-i vezi echipele. Le-am citit pe toate eu însămi, de mai multe ori decât pot număra."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Ah, my star! Tickets for next season are selling nicely. The leaders don't know about the matinees yet."
       ],
       "text": [
-        ""
+        "Ah, vedeta mea! Biletele pentru sezonul viitor se vând bine. Liderii nu știu încă de matinee."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Registrar"
       ],
       "text": [
-        ""
+        "Registratorul"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "This is the Laurel Circuit's desk. A circuit takes you back to every League you've won, to fight its Elite Four and Champion again in their own rooms."
       ],
       "text": [
-        ""
+        "Acesta e ghișeul Circuitului Laurilor. Un circuit te duce înapoi la fiecare Ligă pe care ai câștigat-o, ca să lupți din nou cu Elita sa de Patru și cu Campionul în sălile lor."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Back for another circuit? Every one you win raises the next by five levels."
       ],
       "text": [
-        ""
+        "Te-ai întors pentru un nou circuit? Fiecare circuit câștigat îl ridică pe următorul cu cinci niveluri."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "This circuit's teams would all meet you at level {result}. Each League you win again stamps your card when you enter its Hall of Fame."
       ],
       "text": [
-        ""
+        "Echipele acestui circuit te-ar întâlni toate la nivelul {result}. Fiecare Ligă câștigată din nou îți ștampilează cardul când intri în Sala ei a Faimei."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "With every League stamped, the final opens in the Laurel Court: all the Champions you've beaten, one after another."
       ],
       "text": [
-        ""
+        "Cu fiecare Ligă ștampilată, se deschide finala în Curtea Laurilor: toți Campionii pe care i-ai învins, unul după altul."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Will you begin a circuit?"
       ],
       "text": [
-        ""
+        "Începi un circuit?"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Then your circuit has begun. Good luck out there, Champion."
       ],
       "text": [
-        ""
+        "Atunci circuitul tău a început. Mult noroc, Campionule."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Whenever you're ready. The desk will be here."
       ],
       "text": [
-        ""
+        "Oricând ești gata. Ghișeul va fi aici."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Your circuit is under way. Stamps so far: {result}. Win each League again and enter its Hall of Fame to stamp it."
       ],
       "text": [
-        ""
+        "Circuitul tău e în desfășurare. Ștampile până acum: {result}. Câștigă din nou fiecare Ligă și intră în Sala ei a Faimei ca s-o ștampilezi."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Every League is stamped! The final waits for you in the Laurel Court, across the avenue."
       ],
       "text": [
-        ""
+        "Fiecare Ligă e ștampilată! Finala te așteaptă în Curtea Laurilor, de partea cealaltă a bulevardului."
       ]
     }
   ]
