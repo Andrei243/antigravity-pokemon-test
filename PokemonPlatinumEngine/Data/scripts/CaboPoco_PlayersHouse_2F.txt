@@ -1,0 +1,8 @@
+# The player's room in Cabo Poco (plan 34 · PD1), where a new game in Paldea begins: the wardrobe opens the player's own
+# clothes, as the bedroom's in Twinleaf Town does.
+
+
+script Wardrobe
+  sayown
+  wardrobe
+  end

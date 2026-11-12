@@ -1234,7 +1234,25 @@ public static class RegionDatabase
                 "Wyndon_Airfield",
             }
         },
-        new() { Id = Paldea, Name = "Paldea", Generation = 9 },
+        new()
+        {
+            Id = Paldea, Name = "Paldea", Generation = 9, File = RegionFiles.Load(Paldea),
+            // Paldea on the open world's engine (plan 34 · PD1; plan 32), as Galar is: its outdoors are the open map
+            // "Paldea" (Data/world3d/paldea, Region.OpenMaps), and these its grid rooms behind their doors. A new game begun
+            // there wakes in the player's room in Cabo Poco; a Champion come across from Galar is inside the house's door
+            Start = new MapSpot("CaboPoco_PlayersHouse_2F", 4, 6, Direction.Down),
+            Arrival = new MapSpot("CaboPoco_PlayersHouse_1F", 6, 10, Direction.Up),
+            // Where a return to Paldea lands (plan 18 · W8): inside the door of Los Platos's Pokémon Center, the first
+            // Pokémon Center of the road north; Paldea has no airport of the original's (the rulings' "Paldea's first chapter")
+            Harbour = new MapSpot("LosPlatos_PokemonCenter", 8, 12, Direction.Up),
+            Maps = new[]
+            {
+                // Plan 34 · PD1: the player's house and the president's in Cabo Poco, Inlet Grotto under the cliffs, Los
+                // Platos's Pokémon Center and the academy's entrance hall at the top of Mesagoza's stairs
+                "CaboPoco_PlayersHouse_1F", "CaboPoco_PlayersHouse_2F", "CaboPoco_NemonasHouse", "InletGrotto",
+                "LosPlatos_PokemonCenter", "Mesagoza_AcademyHall",
+            }
+        },
         // Side regions stand after the chain (plan 23 · Z17)
         new()
         {
@@ -1301,7 +1319,7 @@ public static class RegionDatabase
         // stands in Hau'oli City's Pokémon Center once Alola's Hall of Fame is entered, as Lumiose City's does for Kalos
         new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "HauoliCity_PokemonCenter_1F" },
         // From Galar by air (plan 33 · GL7): the airline's attendant in the airfield's lounge by Wyndon's station, shown by
-        // GalarHallOfFame; the plane waits for Paldea to have maps (plan 34)
+        // GalarHallOfFame; the plane lands in Paldea since plan 34 · PD1 gave it maps
         new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "Wyndon_Airfield" },
         // The branches (plan 23 · Z17, decision 3): Hisui off Sinnoh, through the light at the heart of the ancient painting
         // in Celestic Town's ruins once Sinnoh's Hall of Fame is entered (celestic_town_cave.txt's Painting, `travel to`),

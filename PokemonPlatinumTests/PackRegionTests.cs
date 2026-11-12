@@ -8,7 +8,7 @@ namespace PokemonPlatinumTests;
 
 /// <summary>
 /// Plan 16 · T14, the last part: a region a pack adds. The sample pack <c>samples/packs/tidemark-isle</c> adds
-/// Tidemark, a town and one room, after Galar (after Alola until Galar had maps, plan 33 · GL1). Most of it is read by hand with the pack handed over (<c>over</c>,
+/// Tidemark, a town and one room, after Paldea (after Galar until Paldea had maps, plan 34 · PD1; after Alola until Galar had them, plan 33 · GL1). Most of it is read by hand with the pack handed over (<c>over</c>,
 /// <see cref="RegionDatabase.With"/>); where the game reads through the packs in use (its maps, its trainers, its songs)
 /// the pack is put in use and put back, and the class runs alone.
 /// </summary>
@@ -69,21 +69,20 @@ public class PackRegionTests
         Assert.Equal(new[] { "Tidemark", "TidemarkTown_House" }, tidemark.Maps);
         Assert.Same(tidemark, chain.RegionOfMap("TidemarkTown_House"));
 
-        // Right after Galar, the last region with maps, and before the regions nobody has built
+        // Right after Paldea, the last region with maps and the last of the chain
         var ids = chain.Regions.Select(r => r.Id).ToList();
-        Assert.Equal(ids.IndexOf(RegionDatabase.Galar) + 1, ids.IndexOf("Tidemark"));
-        Assert.Equal(RegionDatabase.Paldea, ids[ids.IndexOf("Tidemark") + 1]);
-        // The way from Galar goes to Tidemark by ferry, with its ferryman; Galar's way on to Paldea now leaves from Tidemark
-        var into = chain.LinkFrom(RegionDatabase.Galar)!;
+        Assert.Equal(ids.IndexOf(RegionDatabase.Paldea) + 1, ids.IndexOf("Tidemark"));
+        // The way from Paldea goes to Tidemark by ferry, with its ferryman; Paldea had no way on, so none goes on from Tidemark
+        var into = chain.LinkFrom(RegionDatabase.Paldea)!;
         Assert.Equal("Tidemark", into.To);
         Assert.Equal("ferry", into.VesselWord);
-        Assert.Equal("Wedgehurst_Station", into.DepartureMap);
+        Assert.Equal("LosPlatos_PokemonCenter", into.DepartureMap);
         Assert.True(into.Attendant!.IsTransportAttendant);
-        Assert.Equal(RegionDatabase.Paldea, chain.LinkFrom("Tidemark")!.To);
+        Assert.Null(chain.LinkFrom("Tidemark"));
         Assert.Equal(RegionDatabase.Links.Count + 1, chain.Links.Count);
         // Every game region and link is the very same object as without the pack
         foreach (var region in RegionDatabase.All) Assert.Same(region, chain.Get(region.Id));
-        foreach (var link in RegionDatabase.Links.Where(l => l.From != RegionDatabase.Galar)) Assert.Contains(link, chain.Links);
+        foreach (var link in RegionDatabase.Links) Assert.Contains(link, chain.Links);
     }
 
     [Fact]
@@ -93,17 +92,17 @@ public class PackRegionTests
         try
         {
             // No "after": its maps are its own, nothing sails there
-            string none = CopyOfTheSample(Path.Combine(root, "a"), t => t.Replace("\"after\": \"Galar\",", ""));
+            string none = CopyOfTheSample(Path.Combine(root, "a"), t => t.Replace("\"after\": \"Paldea\",", ""));
             var loose = RegionDatabase.With(new[] { new DataLayer(none, DataLayers.ReadManifest(none)) });
             Assert.Equal("Tidemark", loose.Regions[^1].Id);
             Assert.Null(loose.Links.FirstOrDefault(l => l.To == "Tidemark"));
-            Assert.Equal(RegionDatabase.Paldea, loose.LinkFrom(RegionDatabase.Galar)!.To);
+            Assert.Null(loose.LinkFrom(RegionDatabase.Paldea));
             Assert.Contains(loose.Problems, p => p.Contains("\"after\""));
 
             // After a region that isn't the last with maps
-            string early = CopyOfTheSample(Path.Combine(root, "b"), t => t.Replace("\"after\": \"Galar\"", "\"after\": \"Sinnoh\""));
+            string early = CopyOfTheSample(Path.Combine(root, "b"), t => t.Replace("\"after\": \"Paldea\"", "\"after\": \"Sinnoh\""));
             var wrong = RegionDatabase.With(new[] { new DataLayer(early, DataLayers.ReadManifest(early)) });
-            Assert.Contains(wrong.Problems, p => p.Contains("only after the last with maps") && p.Contains("Galar"));
+            Assert.Contains(wrong.Problems, p => p.Contains("only after the last with maps") && p.Contains("Paldea"));
             Assert.Equal(RegionDatabase.Kanto, wrong.LinkFrom(RegionDatabase.Sinnoh)!.To);
 
             // A region file of a game region's name is the game's file replaced, never a region of its own
@@ -151,7 +150,7 @@ public class PackRegionTests
     }
 
     [Fact]
-    public void InUseThePacksRegionIsBuiltItsWaysStayInItAndTheFerrymanWaitsInGalar()
+    public void InUseThePacksRegionIsBuiltItsWaysStayInItAndTheFerrymanWaitsInPaldea()
     {
         var layer = SampleLayer();
         try
@@ -192,12 +191,12 @@ public class PackRegionTests
             var wade = town.Everyone.Single(n => n.Name == "Wade");
             Assert.Equal("tidemark_fisherman_wade", wade.TrainerData!.Id);
 
-            // And the ferryman stands in Wedgehurst's station hall, where nobody else does
-            var station = maps("Wedgehurst_Station");
+            // And the ferryman stands in Los Platos's Pokémon Center, where nobody else does
+            var station = maps("LosPlatos_PokemonCenter");
             var ferryman = station.Everyone.Single(n => n.IsTransportAttendant);
-            Assert.Equal((2, 4), (ferryman.GridX, ferryman.GridY));
-            Assert.Equal(1, station.Everyone.Count(n => n.GridX == 2 && n.GridY == 4));
-            Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Galar)!, new PokemonPlatinumEngine.Story.StoryState()));
+            Assert.Equal((2, 7), (ferryman.GridX, ferryman.GridY));
+            Assert.Equal(1, station.Everyone.Count(n => n.GridX == 2 && n.GridY == 7));
+            Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Paldea)!, new PokemonPlatinumEngine.Story.StoryState()));
         }
         finally
         {
@@ -205,10 +204,10 @@ public class PackRegionTests
             MusicLibrary.Reload();
             MapDatabase.Initialize();
         }
-        // Without the pack the game is what it was: no Tidemark, nobody new in Galar
+        // Without the pack the game is what it was: no Tidemark, nobody new in Paldea
         Assert.Null(RegionDatabase.Get("Tidemark"));
         Assert.Null(MapDatabase.TryGet("Tidemark"));
-        Assert.DoesNotContain(MapDatabase.Get("Wedgehurst_Station").Everyone, n => n.IsTransportAttendant);
+        Assert.DoesNotContain(MapDatabase.Get("LosPlatos_PokemonCenter").Everyone, n => n.IsTransportAttendant);
     }
 
     [Fact]
@@ -242,11 +241,11 @@ public class PackRegionTests
             Assert.Contains(findings, f => f.Contains("isTransportAttendant"));
             Assert.All(findings.Where(f => f.Contains("regions/")), f => Assert.StartsWith("regions/tidemark.json", f));
 
-            // A way to it that leaves from nowhere of Galar's, and a region that joins after the wrong one
+            // A way to it that leaves from nowhere of Paldea's, and a region that joins after the wrong one
             string again = CopyOfTheSample(Path.Combine(root, "again"), t => t
-                .Replace("\"departureMap\": \"Wedgehurst_Station\"", "\"departureMap\": \"Sinnoh\""));
-            Assert.Contains(PackCheck.Check(again), f => f.Contains("Sinnoh, which is no map of Galar"));
-            string after = CopyOfTheSample(Path.Combine(root, "after"), t => t.Replace("\"after\": \"Galar\"", "\"after\": \"Johto\""));
+                .Replace("\"departureMap\": \"LosPlatos_PokemonCenter\"", "\"departureMap\": \"Sinnoh\""));
+            Assert.Contains(PackCheck.Check(again), f => f.Contains("Sinnoh, which is no map of Paldea"));
+            string after = CopyOfTheSample(Path.Combine(root, "after"), t => t.Replace("\"after\": \"Paldea\"", "\"after\": \"Johto\""));
             Assert.Contains(PackCheck.Check(after), f => f.StartsWith("regions/tidemark.json") && f.Contains("only after the last with maps"));
         }
         finally

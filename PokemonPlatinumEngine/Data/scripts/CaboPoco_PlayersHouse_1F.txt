@@ -1,0 +1,43 @@
+# The player's house in Cabo Poco, downstairs (plan 34 · PD1). The lines are our own, on Scarlet and Violet's beats as
+# they are publicly described (docs/mechanics/rulings.md, "Paldea's first chapter"). VAR_PALDEA_STORY is cabo_poco.txt's
+# count. A Champion who crosses in from Galar lands inside the door with the story at 0, and has the same first morning.
+
+
+# Coming down on the first morning (or in through the door from Galar): Mom, and the academy's director come to call
+script OnEnter
+  if var VAR_PALDEA_STORY == 0 goto Morning
+  end
+label Morning
+  scene "The director comes to call"
+  face mom player
+  speaker "Mom"
+  say "Morning, sweetheart! You'll never guess who's sitting in our kitchen. The director of the academy, in person!"
+  face clavell_home player
+  speaker "Director Clavell"
+  say "Good morning, {player}. Forgive the early visit: I like to welcome every new student myself."
+  say "The president of our student council lives just up the hill from you, and she has something for you. Shall we go up?"
+  say "Her house is the one with the terrace over the sea. I'll meet you there."
+  speaker "Mom"
+  say "A Pokémon of your own, I'd bet! Go on, then. And take your good shoes, there's a lot of Paldea between here and school."
+  setflag FLAG_HAS_RUNNING_SHOES
+  setflag FLAG_PALDEA_HIDE_CLAVELL_HOME
+  clearflag FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  clearflag FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  setvar VAR_PALDEA_STORY 1
+  objective paldeaTerrace
+  endscene
+  end
+
+
+# Mom: a rest whenever the team has one
+script Mom
+  if party > 0 goto Rest
+  speaker "Mom"
+  say "The director is waiting for you up at the president's house. Don't keep him standing there!"
+  end
+label Rest
+  sayown
+  heal
+  fanfare heal
+  call NextHint
+  end

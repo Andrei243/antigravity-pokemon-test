@@ -224,7 +224,7 @@ public class HubRegionTests
         var chain = RegionDatabase.With(new[] { new DataLayer(sample, DataLayers.ReadManifest(sample)) });
         var ids = chain.Regions.Select(r => r.Id).ToList();
         Assert.True(ids.IndexOf("Tidemark") < ids.IndexOf(RegionDatabase.Hub));
-        Assert.Equal(RegionDatabase.Galar, ids[ids.IndexOf("Tidemark") - 1]);
+        Assert.Equal(RegionDatabase.Paldea, ids[ids.IndexOf("Tidemark") - 1]);
     }
 
     [Fact]

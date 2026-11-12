@@ -98,10 +98,10 @@ keep in code said in the file itself:
   "start": { "map": "TidemarkTown_House", "x": 4, "y": 7, "facing": "Up" },
   "arrival": { "map": "Tidemark", "x": 14, "y": 23, "facing": "Up" },
   "maps": [ "Tidemark", "TidemarkTown_House" ],
-  "after": "Galar",
+  "after": "Paldea",
   "link": {
-    "transport": "Boat", "vessel": "ferry", "departureMap": "Wedgehurst_Station",
-    "attendant": { "id": "tidemark_ferryman", "name": "Ferryman", "npcType": "sailor", "x": 2, "y": 4, "facing": "Down", "isTransportAttendant": true }
+    "transport": "Boat", "vessel": "ferry", "departureMap": "LosPlatos_PokemonCenter",
+    "attendant": { "id": "tidemark_ferryman", "name": "Ferryman", "npcType": "sailor", "x": 2, "y": 7, "facing": "Down", "isTransportAttendant": true }
   }
 }
 ```
@@ -162,9 +162,9 @@ and exits with 1 when there is something.
 lines, a script for the cyclist, Veteran Grant's team patched and a short tune of its own. The game never loads it
 unless it is copied into a `packs` folder; the tests check it passes `--validate-packs`.
 
-`samples/packs/tidemark-isle` adds a region of its own, Tidemark, after Galar (after Alola until Galar had maps, plan 33 · GL1): one town drawn by hand (its drawing is
+`samples/packs/tidemark-isle` adds a region of its own, Tidemark, after Paldea (after Galar until Paldea had maps, plan 34 · PD1, and after Alola until Galar had them, plan 33 · GL1): one town drawn by hand (its drawing is
 `tools/MapDraw/tidemark`, written into the pack with `dotnet run --project tools/MapDraw -- tidemark --out
 samples/packs/tidemark-isle/world/tidemark`), one house, a fisherman who battles with a team of the region's own
-`trainers.json`, a Town Map, a tune, and a ferryman laid onto Wedgehurst's station hall who takes a Champion of Galar across. The
-tests load it (its maps built, its ways held to the region, the ferryman in Galar, a save made there), and it passes
+`trainers.json`, a Town Map, a tune, and a ferryman laid onto Los Platos's Pokémon Center who takes a Champion of Paldea across. The
+tests load it (its maps built, its ways held to the region, the ferryman in Paldea, a save made there), and it passes
 `--validate-packs` and adds nothing to the content check.

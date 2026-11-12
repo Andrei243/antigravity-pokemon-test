@@ -215,7 +215,9 @@ public class RegionTests
         progress.CompleteRegion(RegionDatabase.Alola);
         Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Alola)!, progress));
         progress.CompleteRegion(RegionDatabase.Galar);
-        Assert.Equal(TravelCheck.DestinationNotBuilt, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Galar)!, progress));
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Galar)!, progress));
+        // Paldea (plan 34 · PD1) is the last of the chain: no way goes on from it
+        Assert.Null(RegionDatabase.LinkFrom(RegionDatabase.Paldea));
     }
 
     [Fact]

@@ -967,7 +967,15 @@
     "galarLeon": "On to the pitch at Wyndon Stadium for the Champion Match against Leon.",
     "galarWeald": "The fog is back in the Slumbering Weald. Hop is waiting at the altar.",
     "galarLeonTower": "Leon runs the Battle Tower in Rose Tower now. Go and take him on again.",
-    "galarFree": "You are Galar's Champion. The whole region, from Postwick to Wyndon, is yours to explore."
+    "galarFree": "You are Galar's Champion. The whole region, from Postwick to Wyndon, is yours to explore.",
+    "paldeaDownstairs": "Go downstairs. Someone has come to see you.",
+    "paldeaTerrace": "Go up the hill to the president's house and meet the director on its terrace.",
+    "paldeaBeach": "Something cried out under the cliffs. Take the track down from Poco Path to the beach.",
+    "paldeaGrotto": "The cry came from a cave in the foot of the cliffs. Go into Inlet Grotto.",
+    "paldeaLighthouse": "Nemona is waiting at the lighthouse on Poco Path, east of the path.",
+    "paldeaMesagoza": "Head north through Los Platos and the South Province to Mesagoza's south gate.",
+    "paldeaAcademy": "Climb the great stairs to the academy and go in at its doors.",
+    "paldeaFree": "Term begins. The treasure hunt is yours: Paldea's gyms, its Titans and more wait beyond Mesagoza."
   },
 
   "close": {
@@ -4895,6 +4903,7 @@
     "Sailor": "Sailor",
     "SchoolKid": "School Kid",
     "SchoolKidM": "School Kid",
+    "Student": "Student",
     "Scientist": "Scientist",
     "ScientistGs": "Scientist",
     "SisAndBro": "Sis and Bro",
