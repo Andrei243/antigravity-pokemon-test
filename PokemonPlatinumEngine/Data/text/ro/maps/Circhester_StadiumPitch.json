@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Circhester Stadium"
+    ],
+    "text": [
+      "Stadionul Circhester"
+    ]
+  },
+  "people": {
+    "gordie": {
+      "name": {
+        "en": [
+          "Gordie"
+        ],
+        "text": [
+          "Gordie"
+        ]
+      }
+    },
+    "melony": {
+      "name": {
+        "en": [
+          "Melony"
+        ],
+        "text": [
+          "Melony"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

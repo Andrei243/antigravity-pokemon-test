@@ -1,0 +1,128 @@
+{
+  "Gordie": [
+    {
+      "en": [
+        "Gordie"
+      ],
+      "text": [
+        "Gordie"
+      ]
+    },
+    {
+      "en": [
+        "You made it through the pits, then. I'm Gordie. Circhester's Leader, and yes, my mother's the Leader you've heard of."
+      ],
+      "text": [
+        "Ai trecut de gropi, deci. Eu sunt Gordie. Liderul din Circhester, și da, mama mea e Liderul de care ai auzit."
+      ]
+    },
+    {
+      "en": [
+        "I'm not her. I'm the one standing in front of you. Let's see you move a mountain!"
+      ],
+      "text": [
+        "Eu nu sunt ea. Eu sunt cel din fața ta. Hai să te văd mutând un munte!"
+      ]
+    },
+    {
+      "en": [
+        "...Fair's fair. You moved it. Not many do."
+      ],
+      "text": [
+        "...Corect e corect. L-ai mutat. Nu mulți reușesc."
+      ]
+    },
+    {
+      "en": [
+        "The Rock Badge is yours."
+      ],
+      "text": [
+        "Insigna Rocă e a ta."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Rock Badge from Gordie!"
+      ],
+      "text": [
+        "{player} a primit Insigna Rocă de la Gordie!"
+      ]
+    },
+    {
+      "en": [
+        "Rock doesn't move for anyone. Except you, apparently."
+      ],
+      "text": [
+        "Roca nu se mișcă pentru nimeni. În afară de tine, se pare."
+      ]
+    }
+  ],
+  "Melony": [
+    {
+      "en": [
+        "Melony"
+      ],
+      "text": [
+        "Melony"
+      ]
+    },
+    {
+      "en": [
+        "Hello, dear! Out of the cold and onto my pitch. I'm Melony, and Circhester's ice is mine to look after."
+      ],
+      "text": [
+        "Bună, dragă! Ai scăpat de frig și ai ajuns pe terenul meu. Eu sunt Melony, iar gheața din Circhester e în grija mea."
+      ]
+    },
+    {
+      "en": [
+        "I'll warn you now, I've a son who'd like my job. That only makes me battle the harder. Ready?"
+      ],
+      "text": [
+        "Te avertizez de pe acum: am un fiu care mi-ar vrea postul. Asta mă face doar să lupt mai tare. Gata?"
+      ]
+    },
+    {
+      "en": [
+        "My, my. You've thawed my whole team. That doesn't happen often."
+      ],
+      "text": [
+        "Vai, vai. Mi-ai dezghețat toată echipa. Asta nu se întâmplă des."
+      ]
+    },
+    {
+      "en": [
+        "The Ice Badge. Wear it with pride, dear."
+      ],
+      "text": [
+        "Insigna Gheață. Poart-o cu mândrie, dragă."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Ice Badge from Melony!"
+      ],
+      "text": [
+        "{player} a primit Insigna Gheață de la Melony!"
+      ]
+    },
+    {
+      "en": [
+        "Keep warm out there, dear. The bay is bitter this time of year."
+      ],
+      "text": [
+        "Ține-te la căldură acolo, dragă. Golful e aspru în perioada asta a anului."
+      ]
+    }
+  ],
+  "AfterTheBadge": [
+    {
+      "en": [
+        "Six badges. Route 9 runs west of the town, along the shore of Circhester Bay."
+      ],
+      "text": [
+        "Șase insigne. Ruta 9 pornește la vest de oraș, de-a lungul țărmului Golfului Circhester."
+      ]
+    }
+  ]
+}

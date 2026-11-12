@@ -1,0 +1,66 @@
+# Circhester Stadium's pitch (plan 33 · GL5, its second session): the gym challenge's sixth Leader, Gordie in a Sword
+# game (the Rock Badge) and Melony in a Shield one (the Ice Badge, in the same place on the card). Both stand on one spot,
+# the version's shown by FLAG_GALAR_SHIELD_GAME, which the pitch's arrival keeps to VAR_GALAR_VERSION. They Dynamax their
+# last Pokémon. VAR_GALAR_STORY 31 to 32 (postwick.txt's count). Our own lines.
+
+
+script OnEnter
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  clearflag FLAG_GALAR_SHIELD_GAME
+  end
+label Shield
+  setflag FLAG_GALAR_SHIELD_GAME
+  end
+
+
+script Gordie
+  face gordie player
+  speaker "Gordie"
+  if badge rock goto Won
+  scene "Gordie"
+  say "You made it through the pits, then. I'm Gordie. Circhester's Leader, and yes, my mother's the Leader you've heard of."
+  say "I'm not her. I'm the one standing in front of you. Let's see you move a mountain!"
+  battle gordie as "galar_gordie_1"
+  say "...Fair's fair. You moved it. Not many do."
+  say "The Rock Badge is yours."
+  givebadge rock
+  text "{player} received the Rock Badge from Gordie!"
+  call AfterTheBadge
+  endscene
+  end
+label Won
+  say "Rock doesn't move for anyone. Except you, apparently."
+  end
+
+
+script Melony
+  face melony player
+  speaker "Melony"
+  if badge ice goto Won
+  scene "Melony"
+  say "Hello, dear! Out of the cold and onto my pitch. I'm Melony, and Circhester's ice is mine to look after."
+  say "I'll warn you now, I've a son who'd like my job. That only makes me battle the harder. Ready?"
+  battle melony as "galar_melony_1"
+  say "My, my. You've thawed my whole team. That doesn't happen often."
+  say "The Ice Badge. Wear it with pride, dear."
+  givebadge ice
+  text "{player} received the Ice Badge from Melony!"
+  call AfterTheBadge
+  endscene
+  end
+label Won
+  say "Keep warm out there, dear. The bay is bitter this time of year."
+  end
+
+
+# What either Leader's badge leaves: the gym's trainers beaten, Hop and Sonia gone on, and the way west along Route 9
+script AfterTheBadge
+  setflag FLAG_GALAR_DEFEATED_CIRCHESTER_GYM
+  defeat "galar_gym_trainer_carys"
+  defeat "galar_gym_trainer_tomos"
+  clearflag FLAG_GALAR_HOP_CIRCHESTER
+  clearflag FLAG_GALAR_SONIA_CIRCHESTER
+  setvar VAR_GALAR_STORY 32
+  objective galarBike
+  text "Six badges. Route 9 runs west of the town, along the shore of Circhester Bay."
+  return

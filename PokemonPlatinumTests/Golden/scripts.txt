@@ -324,7 +324,7 @@ way 0
   Opal> Hmm. Not bad. Not bad at all. You've plenty of pink in you, though you don't wear it.
   Opal> The Fairy Badge. Take it, and mind you look after it.
   > Lucas received the Fairy Badge from Opal!
-  Opal> Five badges. The road on runs back through Hammerlocke and west. Off you go, dear. I've a successor to find.
+  Opal> Five badges. The road on runs back through Hammerlocke and out of its east gate, north to Circhester. Off you go, dear.
   * scene Ballonlea_StadiumPitch.Opal
   * battle galar_opal_1 Won
   * fanfare FanfareBadge
@@ -332,7 +332,10 @@ way 0
   * defeat galar_gym_trainer_luned
   * endscene
   + FLAG_GALAR_DEFEATED_BALLONLEA_GYM
+  + FLAG_GALAR_HOP_CIRCHESTER
+  + FLAG_GALAR_SONIA_CIRCHESTER
   = VAR_GALAR_STORY 0 -> 30
+  = VAR_OBJECTIVE 0 -> 728
   + beaten galar_gym_trainer_luned
   + beaten galar_gym_trainer_posy
   + beaten galar_opal_1
@@ -2822,6 +2825,85 @@ way -
   Black Belt> Hands or numbers: which sort of watch do you like best?
   Black Belt> Myself, I tell the time by an hourglass.
   * fanfare FanfareKeyItem
+=== Circhester_Stadium.GymGuide
+from Gym Guide at 2,7 of Circhester_Stadium
+way -
+  Gym Guide> Gordie's Rock types are as tough as they come. Water, grass and fighting moves will crack them!
+=== Circhester_Stadium.Receptionist
+from Receptionist at 6,4 of Circhester_Stadium
+way -
+  Receptionist> Welcome to Circhester Stadium! Gordie's gym mission is through the doors behind me. Watch the floor!
+  Receptionist> A gym trainer stands at each of the course's gates. Pass each one's test, then Gordie awaits on the pitch.
+=== Circhester_StadiumMission.MissionGate1
+from Gym Trainer at 6,13 of Circhester_StadiumMission
+way -
+  Gym Trainer> The floor ahead has holes in it, and they move when you aren't looking. Find the solid way across!
+  > Lucas watched the floor shift and stepped only where it stayed still. Across!
+  + FLAG_GALAR_CIRCHESTER_GATE_1
+=== Circhester_StadiumMission.MissionGate2
+from Gym Trainer at 6,9 of Circhester_StadiumMission
+way -
+  Gym Trainer> Deeper pits on this stretch. Fall in and you start the gate again. Off you go!
+  > A pit opened right where Lucas had been about to step. A jump, a scramble, and across!
+  + FLAG_GALAR_CIRCHESTER_GATE_2
+=== Circhester_StadiumMission.MissionGate3
+from Gym Trainer at 6,5 of Circhester_StadiumMission
+way -
+  Gym Trainer> The last stretch is all pits and no floor to speak of. Gordie runs it in his sleep.
+  > Lucas found the one path the pits never touched. The mission is cleared!
+  + FLAG_GALAR_CIRCHESTER_GATE_3
+=== Circhester_StadiumPitch.Gordie
+from Gordie at 7,4 of Circhester_StadiumPitch
+way 0
+  Gordie> You made it through the pits, then. I'm Gordie. Circhester's Leader, and yes, my mother's the Leader you've heard of.
+  Gordie> I'm not her. I'm the one standing in front of you. Let's see you move a mountain!
+  Gordie> ...Fair's fair. You moved it. Not many do.
+  Gordie> The Rock Badge is yours.
+  > Lucas received the Rock Badge from Gordie!
+  > Six badges. Route 9 runs west of the town, along the shore of Circhester Bay.
+  * scene Circhester_StadiumPitch.Gordie
+  * battle galar_gordie_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_carys
+  * defeat galar_gym_trainer_tomos
+  * endscene
+  + FLAG_GALAR_DEFEATED_CIRCHESTER_GYM
+  = VAR_GALAR_STORY 0 -> 32
+  = VAR_OBJECTIVE 0 -> 730
+  + beaten galar_gordie_1
+  + beaten galar_gym_trainer_carys
+  + beaten galar_gym_trainer_tomos
+  = badges Galar 0 -> 100000
+  + seen Circhester_StadiumPitch.Gordie
+way 1, from answer 1
+  * battle galar_gordie_1 Lost
+  * scene over, unseen
+=== Circhester_StadiumPitch.Melony
+from Melony at 7,4 of Circhester_StadiumPitch
+way 0
+  Melony> Hello, dear! Out of the cold and onto my pitch. I'm Melony, and Circhester's ice is mine to look after.
+  Melony> I'll warn you now, I've a son who'd like my job. That only makes me battle the harder. Ready?
+  Melony> My, my. You've thawed my whole team. That doesn't happen often.
+  Melony> The Ice Badge. Wear it with pride, dear.
+  > Lucas received the Ice Badge from Melony!
+  > Six badges. Route 9 runs west of the town, along the shore of Circhester Bay.
+  * scene Circhester_StadiumPitch.Melony
+  * battle galar_melony_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_carys
+  * defeat galar_gym_trainer_tomos
+  * endscene
+  + FLAG_GALAR_DEFEATED_CIRCHESTER_GYM
+  = VAR_GALAR_STORY 0 -> 32
+  = VAR_OBJECTIVE 0 -> 730
+  + beaten galar_gym_trainer_carys
+  + beaten galar_gym_trainer_tomos
+  + beaten galar_melony_1
+  = badges Galar 0 -> 100000
+  + seen Circhester_StadiumPitch.Melony
+way 1, from answer 1
+  * battle galar_melony_1 Lost
+  * scene over, unseen
 === ContestHallLobby.Fantina
 from Fantina at 22,9 of ContestHallLobby
 way -
@@ -4821,6 +4903,58 @@ way -
   * letterbox off
   * endscene
   + seen HainaDesert_RuinsOfAbundance.Tapu Bulu rises
+=== Hammerlocke_Stadium.GymGuide
+from Gym Guide at 2,7 of Hammerlocke_Stadium
+way -
+  Gym Guide> Raihan's Dragons battle in pairs and bring their own weather. Ice, dragon and fairy moves are what you want!
+=== Hammerlocke_Stadium.Receptionist
+from Receptionist at 6,4 of Hammerlocke_Stadium
+way -
+  Receptionist> Welcome to Hammerlocke Stadium, the last gym of the challenge! Raihan's gym mission is through the doors behind me.
+  Receptionist> Every battle here is a double battle. A gym trainer stands at each of the course's gates. Then Raihan awaits.
+=== Hammerlocke_StadiumMission.MissionGate1
+from Gym Trainer at 6,13 of Hammerlocke_StadiumMission
+way -
+  Gym Trainer> Raihan's first rule: two Pokémon, one plan. Which do you send out to lead, the fast one or the strong one?
+  > Lucas answered that it depends on what the other side sends. The gym trainer grinned and stepped aside.
+  + FLAG_GALAR_HAMMERLOCKE_GATE_1
+=== Hammerlocke_StadiumMission.MissionGate2
+from Gym Trainer at 6,9 of Hammerlocke_StadiumMission
+way -
+  Gym Trainer> Raihan's second rule: the weather is a third partner. When the sand blows, who's glad of it?
+  > Lucas named the rock, ground and steel types that shrug the sand off. On through the gate!
+  + FLAG_GALAR_HAMMERLOCKE_GATE_2
+=== Hammerlocke_StadiumMission.MissionGate3
+from Gym Trainer at 6,5 of Hammerlocke_StadiumMission
+way -
+  Gym Trainer> Raihan's last rule: when your partner's in trouble, you cover them. Ready to prove it on his pitch?
+  > Lucas said yes, without stopping to think. The mission is cleared!
+  + FLAG_GALAR_HAMMERLOCKE_GATE_3
+=== Hammerlocke_StadiumPitch.Raihan
+from Raihan at 7,4 of Hammerlocke_StadiumPitch
+way 0
+  Raihan> Seven badges and a straight face. Nice. I'm Raihan, Hammerlocke's Leader, and the one who's going to beat Leon one day.
+  Raihan> Here, everything's two at a time. Two Pokémon each, and the weather on my side. Let's see your plan!
+  Raihan> ...That's a plan. Every gym in Galar beaten. Leon's going to like you, and I'm going to hate that.
+  Raihan> The Dragon Badge. Eight of eight. Go on and show the Champion Cup what you're made of.
+  > Lucas received the Dragon Badge from Raihan!
+  Raihan> The Cup's in Wyndon, up north by train. I'll see you there. In the stands, this time.
+  * scene Hammerlocke_StadiumPitch.Raihan
+  * battle galar_raihan_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_nia
+  * defeat galar_gym_trainer_osian
+  * endscene
+  + FLAG_GALAR_DEFEATED_HAMMERLOCKE_GYM
+  = VAR_GALAR_STORY 0 -> 36
+  + beaten galar_gym_trainer_nia
+  + beaten galar_gym_trainer_osian
+  + beaten galar_raihan_1
+  = badges Galar 0 -> 10000000
+  + seen Hammerlocke_StadiumPitch.Raihan
+way 1, from answer 1
+  * battle galar_raihan_1 Lost
+  * scene over, unseen
 === HauoliCity_ApparelShop.Clerk
 from Clerk at 7,3 of HauoliCity_ApparelShop
 way -

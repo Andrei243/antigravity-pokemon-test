@@ -1,0 +1,51 @@
+{
+  // Spikemuth (plan 33 · GL5, its second session): a dark old town behind its own walls at the west end of Circhester
+  // Bay, one street in from its gate, past the Pokémon Center and Team Yell's two, to the stage at its north end where
+  // Piers plays and battles. Spikemuth has no stadium and no Power Spot, so nobody Dynamaxes here. Our own town at about
+  // half the original's distances. Scripts: Data/scripts/spikemuth.txt
+  "markers": [
+    { "name": "spikemuth_gate", "at": [-114, 26.3, -1469], "yaw": 270 },
+    { "name": "spikemuth_center_door", "at": [-134, 26.3, -1474], "yaw": 90 },
+    { "name": "spikemuth_stage", "at": [-134, 26.3, -1434], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "spikemuth_center_door",
+      "box": { "min": [-138, 25.4, -1475], "max": [-137, 30, -1473] },
+      "room": "Spikemuth_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "spikemuth_center_door"
+    }
+  ],
+  "solids": [
+    { "name": "Spikemuth's Pokémon Center", "min": [-152, 25.4, -1482], "max": [-138, 32, -1466], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "the stage's back wall", "min": [-146, 25.4, -1424], "max": [-122, 34, -1418], "building": { "kind": "hall", "town": "galar", "sign": "SPIKEMUTH" } },
+    { "name": "a house on the street, west", "min": [-154, 25.4, -1460], "max": [-140, 34, -1440], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a house on the street, east", "min": [-128, 25.4, -1462], "max": [-112, 34, -1444], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a shuttered shop", "min": [-150, 25.4, -1526], "max": [-130, 32, -1504], "building": { "kind": "shop", "town": "galar", "sign": "CLOSED" } }
+  ],
+  "people": [
+    {
+      "name": "piers", "at": [-134, 26.3, -1428], "yaw": 0, "look": "piers", "displayName": "Piers",
+      "script": "Piers"
+    },
+    {
+      "name": "marnie_spikemuth", "at": [-128, 26.3, -1436], "yaw": 270, "look": "marnie", "displayName": "Marnie",
+      "lines": ["My brother's up on the stage. He won't go easy on you because you're my rival. Good."],
+      "shownBy": "FLAG_GALAR_MARNIE_SPIKEMUTH"
+    },
+    {
+      "name": "spikemuth_yell_1", "at": [-124, 26.3, -1474], "yaw": 270, "trainer": "galar_yell_grunt_bryn",
+      "lines": ["Spikemuth's gym is the street itself! Get past us first!", "Get past us, then. Off you go."],
+      "sight": { "length": 8, "angle": 50 }
+    },
+    {
+      "name": "spikemuth_yell_2", "at": [-130, 26.3, -1454], "yaw": 180, "trainer": "galar_yell_grunt_eira",
+      "lines": ["Piers is the best Leader in Galar and nobody'll tell me different! Battle!", "...Piers is still the best."],
+      "sight": { "length": 8, "angle": 50 }
+    },
+    {
+      "name": "spikemuth_old_lady", "at": [-120, 26.3, -1500], "yaw": 90, "look": "lady", "displayName": "Old Lady",
+      "lines": ["The town hasn't a Power Spot, so the stadiums passed us by. The young ones stay for Piers's music."]
+    }
+  ]
+}

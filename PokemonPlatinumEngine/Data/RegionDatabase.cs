@@ -1214,6 +1214,11 @@ public static class RegionDatabase
                 "StowOnSide_PokemonCenter", "StowOnSide_Stadium", "StowOnSide_StadiumMission", "StowOnSide_StadiumPitch",
                 "GlimwoodTangle",
                 "Ballonlea_PokemonCenter", "Ballonlea_Stadium", "Ballonlea_StadiumMission", "Ballonlea_StadiumPitch",
+                // Plan 33 · GL5, its second session: Circhester's Pokémon Center, stadium, mission and pitch, Spikemuth's
+                // Pokémon Center, and Hammerlocke's stadium, mission and pitch
+                "Circhester_PokemonCenter", "Circhester_Stadium", "Circhester_StadiumMission", "Circhester_StadiumPitch",
+                "Spikemuth_PokemonCenter",
+                "Hammerlocke_Stadium", "Hammerlocke_StadiumMission", "Hammerlocke_StadiumPitch",
             }
         },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 },

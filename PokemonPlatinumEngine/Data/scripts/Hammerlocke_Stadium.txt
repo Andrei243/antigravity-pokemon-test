@@ -1,0 +1,24 @@
+# Hammerlocke Stadium's lobby (plan 33 · GL5, its second session): the eighth and last gym of the challenge, Raihan's.
+# Its door lets in challengers with seven badges (hammerlocke.txt's StadiumShut). The mission is through the back
+# (Hammerlocke_StadiumMission.txt), and the pitch beyond it (Hammerlocke_StadiumPitch.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge dragon goto Won
+  say "Welcome to Hammerlocke Stadium, the last gym of the challenge! Raihan's gym mission is through the doors behind me."
+  say "Every battle here is a double battle. A gym trainer stands at each of the course's gates. Then Raihan awaits."
+  end
+label Won
+  say "Eight badges! The Champion Cup is in Wyndon. Congratulations, challenger!"
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge dragon goto Won
+  say "Raihan's Dragons battle in pairs and bring their own weather. Ice, dragon and fairy moves are what you want!"
+  end
+label Won
+  say "Eight badges. There's no one left in the gym challenge who can stop you now."
+  end

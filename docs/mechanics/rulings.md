@@ -11355,6 +11355,18 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   plan, Route 7, Route 8, Circhester, Route 9 with the Rotom Bike's water (the bike itself still waits for an open-map
   engine), Spikemuth and the rest of the Wild Area's north half; the shots of every new place.
 
+## Circhester, Route 9, Spikemuth and Hammerlocke's stadium (2026-11-12, plan 33 · GL5, its second session)
+
+
+- **The land grows four rows north** (chunks `[-5, -48, 4, 1]`, 500 chunks), laid side by side across the 320 m width rather than strung out, so the bake grows by a row of ten at a time: Spikemuth in the west, Route 9 on Circhester Bay in the middle, Circhester in the east. Route 7 and Route 8 and the rest of the Wild Area's north half are cut out of the mass that was already baked (east of Hammerlocke and Ballonlea, and either side of Hammerlocke Hills), which costs no chunk. Ballonlea's area polygon now stops at x 104.
+- **The Wild Area's north half** is five parts, not Sword's eight: Hammerlocke Hills (GL5's first session), Dusty Bowl and the Stony Wilderness west of it, the Giant's Cap and the Lake of Outrage east of it. Bridge Field and the Giant's Mirror are folded into these at our half scale. Each has a column of `calendar.json`, taken from a southern part's column a few days later, and its strong Pokémon by the lake are the strongest the challenge meets (50 to 52). No den is placed in the north yet.
+- **The order of the challenge is Sword's**: out of Hammerlocke's east gate with the fifth badge, Route 7, Route 8, Circhester (Gordie's Rock Badge in a Sword game, Melony's Ice Badge in a Shield one, on one spot of the pitch as Bea and Allister are), Route 9, Spikemuth (Piers, the Dark Badge), and back to Hammerlocke for Raihan (the Dragon Badge), whose stadium's door lets in only seven badges. `VAR_GALAR_STORY` runs 30 to 36: 31 Hop and Sonia at the Hero's Bath, 32 the sixth badge, 33 the bike fitted for the water, 34 Marnie at Spikemuth's gate, 35 the Dark Badge, 36 the Dragon Badge. Objectives 728 to 733 (`galarCirchester` to `galarCup`).
+- **The bike over the water is a swim, until the Rotom Bike has an engine.** Circhester Bay is cut wall to wall across Route 9 and deeper than a walker wades, so Spikemuth's shore is come to on the water alone. Route 9's mechanic fits the bike for the water once the sixth badge is won (`FLAG_GALAR_BIKE_WATER`), and the engine hands the walker `MovementGrants.Swim` every frame from it (`OpenWorld/OpenGrants.cs`, set in `GameEngine.OpenWorld.cs` beside the mount's powers; derived, never saved). Without it the capsule stops at the water's edge, as `OpenBody` always did. No bike is ridden or drawn: plan 30's `RotomBike` mode still has no engine, and the player swims as anyone does on deep water. When it has one, the grant moves to the bike.
+- **Spikemuth has no stadium**, so Piers battles on a stage at the end of the town's one street (an open person with a script), and does not Dynamax (his team has no Dynamax Band). Team Yell's two on the street are his gym trainers.
+- **Missions are talks**, as GL5's first session's are: Gordie's shifting pits and Melony's ice, and Raihan's three rules; Raihan's two gym trainers and Raihan himself battle two at a time (`doubleBattle` in their rows).
+- **Hop's slump** is told at the Hero's Bath (Bede beat him in Ballonlea, off screen); the hotel scene of Sword is not built.
+- **Opal's parting line** said the road ran west; it runs east from Hammerlocke, and says so now.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or

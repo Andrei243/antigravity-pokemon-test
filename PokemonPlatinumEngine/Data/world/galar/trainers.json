@@ -1380,5 +1380,533 @@
         "personality": 2462066688
       }
     ]
+  },
+  // Plan 33 · GL5, its second session (ours): the Wild Area's north, Routes 7 to 9, Circhester's and Hammerlocke's gym
+  // trainers, Team Yell in Spikemuth, Gordie, Melony, Piers and Raihan
+  {
+    "id": "galar_hiker_rhodri",
+    "name": "Rhodri",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 120,
+    "party": [
+      {
+        "species": "Hippopotas",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 2815842161
+      },
+      {
+        "species": "Gurdurr",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 3392175181
+      }
+    ]
+  },
+  {
+    "id": "galar_camper_gethin",
+    "name": "Gethin",
+    "class": "Camper",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Rockruff",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 1921936561
+      },
+      {
+        "species": "Boldore",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 1545237661
+      }
+    ]
+  },
+  {
+    "id": "galar_lass_ffion",
+    "name": "Ffion",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Hatenna",
+        "level": 30,
+        "ivScale": 0,
+        "personality": 1135765241
+      },
+      {
+        "species": "Pancham",
+        "level": 31,
+        "ivScale": 0,
+        "personality": 3804588207
+      }
+    ]
+  },
+  {
+    "id": "galar_youngster_gwyn",
+    "name": "Gwyn",
+    "class": "Youngster",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Nickit",
+        "level": 32,
+        "ivScale": 0,
+        "personality": 3049605031
+      },
+      {
+        "species": "Thievul",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 3137638111
+      }
+    ]
+  },
+  {
+    "id": "galar_beauty_seren",
+    "name": "Seren",
+    "class": "Beauty",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 160,
+    "party": [
+      {
+        "species": "Liepard",
+        "level": 33,
+        "ivScale": 0,
+        "personality": 1898974640
+      }
+    ]
+  },
+  {
+    "id": "galar_worker_idris",
+    "name": "Idris",
+    "class": "Worker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 120,
+    "party": [
+      {
+        "species": "Boldore",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 1614842771
+      },
+      {
+        "species": "Throh",
+        "level": 35,
+        "ivScale": 0,
+        "personality": 1466479178
+      }
+    ]
+  },
+  {
+    "id": "galar_hiker_aled",
+    "name": "Aled",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 120,
+    "party": [
+      {
+        "species": "Cubchoo",
+        "level": 35,
+        "ivScale": 0,
+        "personality": 1696303514
+      },
+      {
+        "species": "Snom",
+        "level": 34,
+        "ivScale": 0,
+        "personality": 2435887694
+      },
+      {
+        "species": "Vanillish",
+        "level": 35,
+        "ivScale": 0,
+        "personality": 1751060402
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_carys",
+    "name": "Carys",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 300,
+    "party": [
+      {
+        "species": "Rolycoly",
+        "level": 38,
+        "ivScale": 6,
+        "personality": 3163056038
+      },
+      {
+        "species": "Carkol",
+        "level": 39,
+        "ivScale": 6,
+        "personality": 3219328152
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_tomos",
+    "name": "Tomos",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 300,
+    "party": [
+      {
+        "species": "Boldore",
+        "level": 39,
+        "ivScale": 6,
+        "personality": 276567968
+      },
+      {
+        "species": "Stonjourner",
+        "level": 40,
+        "ivScale": 6,
+        "personality": 3280175716
+      }
+    ]
+  },
+  {
+    "id": "galar_gordie_1",
+    "name": "Gordie",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4200,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Barbaracle",
+        "level": 40,
+        "ivScale": 12,
+        "personality": 3391368163
+      },
+      {
+        "species": "Shuckle",
+        "level": 40,
+        "ivScale": 12,
+        "personality": 2757092783
+      },
+      {
+        "species": "Stonjourner",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 81867327
+      },
+      {
+        "species": "Coalossal",
+        "level": 42,
+        "ivScale": 12,
+        "personality": 1988013804
+      }
+    ]
+  },
+  {
+    "id": "galar_melony_1",
+    "name": "Melony",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4200,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 40,
+        "ivScale": 12,
+        "personality": 3620509853
+      },
+      {
+        "species": "Darmanitan",
+        "form": "Darmanitan-Galar-Standard",
+        "level": 40,
+        "ivScale": 12,
+        "personality": 3745268914
+      },
+      {
+        "species": "Eiscue",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 2733622151
+      },
+      {
+        "species": "Lapras",
+        "level": 42,
+        "ivScale": 12,
+        "personality": 159307720
+      }
+    ]
+  },
+  {
+    "id": "galar_fisherman_dewi",
+    "name": "Dewi",
+    "class": "Fisherman",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 120,
+    "party": [
+      {
+        "species": "Arrokuda",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 2742058859
+      },
+      {
+        "species": "Barraskewda",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 1060400517
+      }
+    ]
+  },
+  {
+    "id": "galar_yell_grunt_rhys",
+    "name": "Rhys",
+    "class": "Team Yell",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 160,
+    "party": [
+      {
+        "species": "Zigzagoon",
+        "form": "Zigzagoon-Galar",
+        "level": 37,
+        "ivScale": 0,
+        "personality": 3793095719
+      },
+      {
+        "species": "Linoone",
+        "form": "Linoone-Galar",
+        "level": 38,
+        "ivScale": 0,
+        "personality": 1372405806
+      }
+    ]
+  },
+  {
+    "id": "galar_yell_grunt_bryn",
+    "name": "Bryn",
+    "class": "Team Yell",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 160,
+    "party": [
+      {
+        "species": "Scraggy",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 3235341706
+      },
+      {
+        "species": "Linoone",
+        "form": "Linoone-Galar",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 2694857881
+      }
+    ]
+  },
+  {
+    "id": "galar_yell_grunt_eira",
+    "name": "Eira",
+    "class": "Team Yell",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 160,
+    "party": [
+      {
+        "species": "Nickit",
+        "level": 40,
+        "ivScale": 0,
+        "personality": 2924814464
+      },
+      {
+        "species": "Liepard",
+        "level": 41,
+        "ivScale": 0,
+        "personality": 1122079202
+      }
+    ]
+  },
+  {
+    "id": "galar_piers_1",
+    "name": "Piers",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4600,
+    "party": [
+      {
+        "species": "Scrafty",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 1801508876
+      },
+      {
+        "species": "Malamar",
+        "level": 45,
+        "ivScale": 12,
+        "personality": 2085447612
+      },
+      {
+        "species": "Skuntank",
+        "level": 45,
+        "ivScale": 12,
+        "personality": 3354096577
+      },
+      {
+        "species": "Obstagoon",
+        "level": 46,
+        "ivScale": 12,
+        "personality": 2616452616
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_nia",
+    "name": "Nia",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 300,
+    "doubleBattle": true,
+    "party": [
+      {
+        "species": "Flygon",
+        "level": 44,
+        "ivScale": 6,
+        "personality": 23078833
+      },
+      {
+        "species": "Gigalith",
+        "level": 44,
+        "ivScale": 6,
+        "personality": 3075910202
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_osian",
+    "name": "Osian",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack"
+    ],
+    "items": [],
+    "prizeMoney": 300,
+    "doubleBattle": true,
+    "party": [
+      {
+        "species": "Sandaconda",
+        "level": 44,
+        "ivScale": 6,
+        "personality": 539671922
+      },
+      {
+        "species": "Torkoal",
+        "level": 44,
+        "ivScale": 6,
+        "personality": 2266763440
+      }
+    ]
+  },
+  {
+    "id": "galar_raihan_1",
+    "name": "Raihan",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4800,
+    "dynamaxBand": true,
+    "doubleBattle": true,
+    "party": [
+      {
+        "species": "Gigalith",
+        "level": 46,
+        "ivScale": 12,
+        "personality": 2756203669
+      },
+      {
+        "species": "Flygon",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 1972296952
+      },
+      {
+        "species": "Sandaconda",
+        "level": 46,
+        "ivScale": 12,
+        "personality": 1814099440
+      },
+      {
+        "species": "Duraludon",
+        "level": 48,
+        "ivScale": 12,
+        "personality": 558324575
+      }
+    ]
   }
 ]
