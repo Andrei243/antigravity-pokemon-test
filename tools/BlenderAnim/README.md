@@ -56,6 +56,23 @@ since an exported sculpt's body is vertex colours and its eyes a texture) and pr
 frames a second, at which every clip of the game's is a whole number of frames. `.claude/skills/blender/SKILL.md` has
 the whole loop and what a round trip keeps and loses.
 
+## Sculpting a species from nothing
+
+`blender/sculptkit.py` builds a new mesh on the skeleton and clips of the game's own export of a species: parts
+(ellipsoids, tubes) fused by a voxel remesh, coloured and weighted by part, painted by rules, with patches laid over
+the surface for eyes and marks. A species is a script in `blender/sculpts/` (Turtwig, Chimchar, Piplup):
+
+```bash
+blender --background --factory-startup --python tools/BlenderAnim/blender/sculpts/piplup.py -- <the export's Piplup.glb> <out.glb>
+```
+
+The result is a draft for `<out dir>/overrides/models`, to be looked at with `turntable.py` and in the game.
+
+`sculpts/hero.py` is a person, whom the game reads from no file yet: the boy hero as a wardrobe of pieces (a body in
+parts, a hair cut, two hats, two tops, two bottoms, shoes, a bag, a scarf) on the chibi kit's joints, each piece's
+colours kept as zones so that any colourway is the same mesh. Its header has the format; `sculpts/hero_outfits.py`
+dresses the file in several outfits on one board.
+
 ## Seeing it in battle
 
 The harness's `clips` mode shoots a species' clips in battle, the player's lead and the foe both the species:
