@@ -851,6 +851,24 @@ public class ScriptTests
           tournament rental
           charm due
           charm give
+          plaza open
+          plaza rank
+          plaza next
+          plaza coins
+          plaza pitches
+          plaza pitch 2
+          plaza give 10
+          plaza spend 5
+          plaza guests
+          plaza stall
+          plaza shop
+          plaza greet
+          plaza battle
+          missions read
+          missions open
+          missions begin 4
+          missions waiting
+          missions claim
           walkto player cavern_east fast
           placeat player tunnel_west
           faceto player cavern_middle

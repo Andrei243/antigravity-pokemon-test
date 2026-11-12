@@ -170,6 +170,12 @@ public partial class GameEngine
         public void OpenApricornBox() => game.OpenApricornBox(fromBag: false);
         public CraftingScreen CraftingScreen => game.flow.CraftingScreen;
         public CraftingState Crafting => game.flow.Crafting;
+        /// <summary>Pennant Hall and the Week's Work (plan 41 · EG3, EG6): their state, the hall furnished afresh, the board's screen.</summary>
+        public PlazaState Plaza => game.flow.Plaza;
+        public MissionBoard Missions => game.flow.Missions;
+        public MissionBoardScreen MissionBoardScreen => game.flow.MissionBoardScreen;
+        public void FurnishPlaza() => game.FurnishPlaza();
+        public void TellTheBoard(MissionEventKind kind, string area = "", Pokemon? caught = null) => game.TellTheBoard(kind, area, caught);
         public PowerState Powers => game.flow.Powers;
         public void OpenCrafting(bool atMaker = false) => game.OpenCrafting(fromBag: false, atMaker: atMaker);
         public void OpenCraftingAt(CraftingPlace place) => game.OpenCrafting(fromBag: false, place);

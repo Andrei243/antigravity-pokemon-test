@@ -4220,6 +4220,139 @@ way 2, from answer 1
 way 1, from answer 1
   Guide> I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame.
   ? Where would you like to go? = HOENN'S FRONTIER
+=== Hub_Plaza.Board
+from the sign at 10,1 of Hub_Plaza
+from the sign at 11,1 of Hub_Plaza
+from the sign at 12,1 of Hub_Plaza
+way -
+  * open MissionBoard
+=== Hub_Plaza.Guest
+from Guest at 1,6 of Hub_Plaza
+from Guest at 11,4 of Hub_Plaza
+from Guest at 11,9 of Hub_Plaza
+from Guest at 16,6 of Hub_Plaza
+from Guest at 18,12 of Hub_Plaza
+from Guest at 21,6 of Hub_Plaza
+from Guest at 5,12 of Hub_Plaza
+from Guest at 5,6 of Hub_Plaza
+way 0
+  Guest> Fancy a battle? I've brought my strongest team.
+  Guest> Enjoy the hall! There's something new at every stall.
+  ? Fancy a battle? I've brought my strongest team. = Yes
+way 1, from answer 1
+  Guest> Enjoy the hall! There's something new at every stall.
+  ? Fancy a battle? I've brought my strongest team. = No
+=== Hub_Plaza.Keeper
+from Stall Keeper at 14,3 of Hub_Plaza
+from Stall Keeper at 14,9 of Hub_Plaza
+from Stall Keeper at 19,3 of Hub_Plaza
+from Stall Keeper at 19,9 of Hub_Plaza
+from Stall Keeper at 3,3 of Hub_Plaza
+from Stall Keeper at 3,9 of Hub_Plaza
+from Stall Keeper at 8,3 of Hub_Plaza
+from Stall Keeper at 8,9 of Hub_Plaza
+way -
+=== Hub_Plaza.Manager
+from Quincy Rowan-Pike at 13,12 of Hub_Plaza
+way 0.0.0
+  Quincy Rowan-Pike> Welcome, welcome, to Pennant Hall! I'm Quincy Rowan-Pike, and this hall and its ledger are in my keeping.
+  Quincy Rowan-Pike> Every stall here hails from a region whose Champion has passed through. You choose which stall stands at each pitch.
+  Quincy Rowan-Pike> Each pennant the hall earns raises its rank, and every rank opens another pitch and finer wares.
+  Quincy Rowan-Pike> Our guests pay their way in pennants, and so does the Week's Work, the board of missions on the wall.
+  Quincy Rowan-Pike> How may the ledger serve you?
+  Quincy Rowan-Pike> The hall has 3 pitches at its rank. The first four stand along the north wall, the rest in the row across the middle.
+  Quincy Rowan-Pike> Which pitch?
+  Quincy Rowan-Pike> Which stall shall stand at pitch 1?
+  Quincy Rowan-Pike> Done! The ledger is updated, and the stall stands ready.
+  ? How may the ledger serve you? = SET A STALL
+  ? Which pitch? = PITCH 1
+  ? Which stall shall stand at pitch 1? = GOODS STALL
+  * scene Hub_Plaza.Pennant Hall's welcome
+  * endscene
+  * sound select
+  + FLAG_HUB_PLAZA_KEEPER_1
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.0.2, from answer 3
+  ? Which stall shall stand at pitch 1? = AS IT IS
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.0.1, from answer 3
+  Quincy Rowan-Pike> Done! The ledger is updated, and the stall stands ready.
+  ? Which stall shall stand at pitch 1? = LEAVE IT EMPTY
+  * sound select
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.5, from answer 2
+  ? Which pitch? = BACK
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.4.0, from answer 2
+  Quincy Rowan-Pike> Which pitch?
+  Quincy Rowan-Pike> That pitch opens at a higher rank. Earn the hall some pennants and it's yours!
+  ? Which pitch? = MIDDLE ROW
+  ? Which pitch? = PITCH 5
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.3, from answer 2
+  Quincy Rowan-Pike> That pitch opens at a higher rank. Earn the hall some pennants and it's yours!
+  ? Which pitch? = PITCH 4
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.2.0, from answer 2
+  Quincy Rowan-Pike> Which stall shall stand at pitch 3?
+  Quincy Rowan-Pike> Done! The ledger is updated, and the stall stands ready.
+  ? Which pitch? = PITCH 3
+  ? Which stall shall stand at pitch 3? = GOODS STALL
+  * sound select
+  + FLAG_HUB_PLAZA_KEEPER_3
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.2.2, from answer 3
+  ? Which stall shall stand at pitch 3? = AS IT IS
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.2.1, from answer 3
+  Quincy Rowan-Pike> Done! The ledger is updated, and the stall stands ready.
+  ? Which stall shall stand at pitch 3? = LEAVE IT EMPTY
+  * sound select
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.1.0, from answer 2
+  Quincy Rowan-Pike> Which stall shall stand at pitch 2?
+  Quincy Rowan-Pike> Done! The ledger is updated, and the stall stands ready.
+  ? Which pitch? = PITCH 2
+  ? Which stall shall stand at pitch 2? = GOODS STALL
+  * sound select
+  + FLAG_HUB_PLAZA_KEEPER_2
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.1.2, from answer 3
+  ? Which stall shall stand at pitch 2? = AS IT IS
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 0.1.1, from answer 3
+  Quincy Rowan-Pike> Done! The ledger is updated, and the stall stands ready.
+  ? Which stall shall stand at pitch 2? = LEAVE IT EMPTY
+  * sound select
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 3, from answer 1
+  Quincy Rowan-Pike> Mind the bunting on your way out. Do come again!
+  ? How may the ledger serve you? = NOTHING
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 2, from answer 1
+  Quincy Rowan-Pike> Not a single guest today, I'm afraid. Perhaps tomorrow!
+  ? How may the ledger serve you? = TODAY'S GUESTS
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
+way 1, from answer 1
+  Quincy Rowan-Pike> You hold 0 pennants, and the hall stands at rank 1.
+  Quincy Rowan-Pike> Earn 60 more and the hall rises a rank.
+  ? How may the ledger serve you? = THE LEDGER
+  + FLAG_HUB_PLAZA_MET
+  + seen Hub_Plaza.Pennant Hall's welcome
 === IronIslandHouse.Byron
 from Byron at 5,5 of IronIslandHouse
 way -
@@ -21573,6 +21706,10 @@ way 0
 way 1, from answer 1
   * battle hoenn_wally_vr_1 Lost
   * scene over, unseen
+=== hub_town.Board
+from the sign at 27,21 of Hub
+way -
+  * open MissionBoard
 === humilau_city.Hugh
 from {rival} at 789,173 of Unova
 way -

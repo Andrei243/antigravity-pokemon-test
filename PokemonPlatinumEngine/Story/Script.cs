@@ -190,6 +190,11 @@ public enum Op
     WalkTo, PlaceAt, FaceTo, WarpTo, LookAt,
     // The later games' battle places (plan 37 · FC2): one command for all of them, `facility <place> <word> [what]`
     Facility,
+    // Pennant Hall, the hub's plaza (plan 41 · EG3): its rank and pennants, a stall set out at a pitch, a keeper's stall and
+    // its goods, the day's guests, their word and their battle
+    Plaza,
+    // The Week's Work, the hub's board of missions (plan 41 · EG6): the board read and opened, a timed mission begun, the rewards claimed
+    Missions,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

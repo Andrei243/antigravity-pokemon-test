@@ -1,0 +1,357 @@
+# Pennant Hall, the hub's plaza (plan 41 · EG3; Models/Plaza.cs, Data/plaza.json). docs/scripts.md describes the
+# language; the people, the stalls and the lines are our own.
+#
+# The manager, Quincy Rowan-Pike, keeps the hall's ledger: he sets a stall out at a pitch (`plaza pitch`), tells the
+# pennants held and the rank, and how many guests came today. Each pitch's keeper (keeper_1 to keeper_8, shown by the
+# game as a stall stands at their pitch) runs the stall's own service: `plaza stall` says which stall it is, by its
+# place in the catalogue (goods, the lottery, Seals, Poffins, the Move Relearner, Kurt's balls, the Berry Blender),
+# each the command the region's own counter uses. The day's guests (guest_1 to guest_8) give a few pennants with their
+# first word of the day and battle once a day at the furthest finished region's post-game level. The board on the back
+# wall is the Week's Work (plan 41 · EG6), the same as the one outside by the avenue.
+
+
+script Manager
+  speaker "Quincy Rowan-Pike"
+  plaza open
+  plaza guests
+  if flag FLAG_HUB_PLAZA_MET goto Menu
+  scene "Pennant Hall's welcome"
+  say "Welcome, welcome, to Pennant Hall! I'm Quincy Rowan-Pike, and this hall and its ledger are in my keeping."
+  say "Every stall here hails from a region whose Champion has passed through. You choose which stall stands at each pitch."
+  say "Each pennant the hall earns raises its rank, and every rank opens another pitch and finer wares."
+  say "Our guests pay their way in pennants, and so does the Week's Work, the board of missions on the wall."
+  setflag FLAG_HUB_PLAZA_MET
+  endscene
+label Menu
+  choose "How may the ledger serve you?" "SET A STALL" "THE LEDGER" "TODAY'S GUESTS" "NOTHING"
+  if result == 0 goto Pitches
+  if result == 1 goto Ledger
+  if result == 2 goto Guests
+  say "Mind the bunting on your way out. Do come again!"
+  end
+label Ledger
+  plaza coins
+  plaza rank
+  say "You hold {pennants} pennants, and the hall stands at rank {number}."
+  plaza next
+  if result == 0 goto Top
+  say "Earn {number} more and the hall rises a rank."
+  end
+label Top
+  say "The hall stands at its very highest rank. The ledger has never looked finer!"
+  end
+label Guests
+  plaza guests
+  if result == 0 goto NoGuests
+  say "{number} guests have come today. Do say hello: the first word of the day costs them a pennant or two."
+  end
+label NoGuests
+  say "Not a single guest today, I'm afraid. Perhaps tomorrow!"
+  end
+label Pitches
+  plaza pitches
+  say "The hall has {number} pitches at its rank. The first four stand along the north wall, the rest in the row across the middle."
+label NorthPitches
+  choose "Which pitch?" "PITCH 1" "PITCH 2" "PITCH 3" "PITCH 4" "MIDDLE ROW" "BACK"
+  if result == 0 goto Pitch1
+  if result == 1 goto Pitch2
+  if result == 2 goto Pitch3
+  if result == 3 goto Pitch4
+  if result == 4 goto SouthPitches
+  end
+label SouthPitches
+  choose "Which pitch?" "PITCH 5" "PITCH 6" "PITCH 7" "PITCH 8" "NORTH WALL" "BACK"
+  if result == 0 goto Pitch5
+  if result == 1 goto Pitch6
+  if result == 2 goto Pitch7
+  if result == 3 goto Pitch8
+  if result == 4 goto NorthPitches
+  end
+label Pitch1
+  plaza pitch 1
+  goto Pitched
+label Pitch2
+  plaza pitch 2
+  goto Pitched
+label Pitch3
+  plaza pitch 3
+  goto Pitched
+label Pitch4
+  plaza pitch 4
+  goto Pitched
+label Pitch5
+  plaza pitch 5
+  goto Pitched
+label Pitch6
+  plaza pitch 6
+  goto Pitched
+label Pitch7
+  plaza pitch 7
+  goto Pitched
+label Pitch8
+  plaza pitch 8
+  goto Pitched
+label Pitched
+  if result == 2 goto NotYet
+  if result == 0 end
+  sound "select"
+  say "Done! The ledger is updated, and the stall stands ready."
+  end
+label NotYet
+  say "That pitch opens at a higher rank. Earn the hall some pennants and it's yours!"
+  end
+
+
+# Whoever keeps the stall at a pitch: its service, by the stall's place in Data/plaza.json
+script Keeper
+  face self player
+  plaza stall
+  if result == 1 goto Goods
+  if result == 2 goto Lottery
+  if result == 3 goto Seals
+  if result == 4 goto Poffins
+  if result == 5 goto Relearner
+  if result == 6 goto Kurt
+  if result == 7 goto Blender
+  end
+label Goods
+  say "Fine wares from every harbour, priced in pennants! The higher the hall's rank, the finer my shelves."
+  plaza shop
+  end
+
+# A branch of Jubilife TV's Lottery Corner: the day's one draw, whichever counter takes it
+label Lottery
+  if flag FLAG_DAILY_CHECKED_LUCKY_NUMBER goto Drawn
+  say "Welcome to the Lottery Corner's Pennant Hall branch! Same lucky number, same prizes as in Jubilife."
+  ask "Shall I check today's number against your Pokémon?"
+  if no goto Later
+  setflag FLAG_DAILY_CHECKED_LUCKY_NUMBER
+  say "Today's lucky number is {ticket}! Let me look through your Pokémon's ID numbers..."
+  lottery draw
+  if result == 5 goto Five
+  if result == 4 goto Four
+  if result == 3 goto Three
+  if result == 2 goto Two
+  if result == 1 goto One
+  say "Not a single digit matched today, I'm afraid. A new number comes up tomorrow!"
+  end
+label One
+  say "The last digit matches {winner}'s ID! That's the fifth prize."
+  give "Ultra Ball"
+  end
+label Two
+  say "The last two digits match {winner}'s ID! That's the fourth prize."
+  give "PP Up"
+  end
+label Three
+  say "The last three digits match {winner}'s ID! That's the third prize."
+  give "Exp. Share"
+  end
+label Four
+  say "Four digits match {winner}'s ID! That's the second prize!"
+  give "Max Revive"
+  end
+label Five
+  say "Every digit matches {winner}'s ID! Incredible! That's the first prize!"
+  give "Master Ball"
+  end
+label Drawn
+  say "Today's draw is done, here or in Jubilife: the number is the same everywhere. Come back tomorrow!"
+  end
+label Later
+  say "Come back any time today. The number won't run away!"
+  end
+
+label Seals
+  if not item "Seal Case" goto NoCase
+  say "Seals for your Ball Capsules! I've the same stock as the market in Sunyshore, day by day."
+  seal shop
+  end
+label NoCase
+  say "Seals for sale! ...But you've no Seal Case to put them in. A house in Solaceon Town gives them away."
+  end
+
+label Poffins
+  say "A pot, a spoon and a Berry: that's all it takes for a Poffin. Shall we stir?"
+  if not item "Poffin Case" goto NoPoffinCase
+  poffin check
+  if result == 1 goto NoBerry
+  if result == 2 goto PoffinsFull
+  wait 0.5
+  poffin cook
+  say "Come back and stir whenever you like!"
+  end
+label NoPoffinCase
+  say "Oh, but you'll need a Poffin Case to keep them in. The Pokémon Fan Club in Hearthome gives them out."
+  end
+label NoBerry
+  say "Not a single Berry in your bag! Bring some along and we'll stir."
+  end
+label PoffinsFull
+  say "Your Poffin Case is full to the brim! Feed a few to your Pokémon first."
+  end
+
+label Relearner
+  say "I remember every move a Pokémon learns as it grows, and I can teach one back for a Heart Scale."
+  if item "Heart Scale" goto Scale
+  say "Bring a Heart Scale and I'll gladly help. The goods stall here sells them for pennants."
+  end
+label Scale
+  ask "Shall I trade your Heart Scale for a move one of your Pokémon has let slip?"
+  if no goto NoMove
+  say "Which Pokémon is it to be?"
+  choosepokemon
+  tutor remember
+  if result == 3 goto EggChosen
+  if result == 2 goto NothingSlipped
+  if result != 1 goto NoMove
+  tutor learn
+  if result == 0 goto NoMove
+  if result == 2 goto NoMove
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  take "Heart Scale"
+  fanfare levelup
+  say "{wearer} remembered {thing}!"
+  end
+label EggChosen
+  say "An Egg hasn't learned a thing yet, let alone forgotten one!"
+  end
+label NothingSlipped
+  say "That one hasn't let a single move slip. A fine memory!"
+  end
+label NoMove
+  say "Come back whenever a Pokémon of yours wants a move back."
+  end
+
+# Kurt's order: the one order he keeps, whether it is taken here or in Azalea Town
+label Kurt
+  say "I take Apricorns for Kurt of Azalea Town. Whatever I take, he makes, and it's ready the day after."
+  apricorn status
+  if result == 2 goto Ready
+  if result == 1 goto Working
+  apricorn held
+  if result == 0 goto NoApricorns
+  ask "Shall I send him every Apricorn of one colour from your Box?"
+  if no goto NotNow
+label Colours
+  choose "Which colour?" "Red" "Blue" "Yellow" "Green" "Other colours" "Never mind"
+  if result == 0 goto Red
+  if result == 1 goto Blue
+  if result == 2 goto Yellow
+  if result == 3 goto Green
+  if result == 4 goto MoreColours
+  goto NotNow
+label MoreColours
+  choose "Which colour?" "Pink" "White" "Black" "Back"
+  if result == 0 goto Pink
+  if result == 1 goto White
+  if result == 2 goto Black
+  goto Colours
+label Red
+  apricorn count red
+  if result == 0 goto NoneOfThat
+  apricorn order red
+  goto Ordered
+label Blue
+  apricorn count blue
+  if result == 0 goto NoneOfThat
+  apricorn order blue
+  goto Ordered
+label Yellow
+  apricorn count yellow
+  if result == 0 goto NoneOfThat
+  apricorn order yellow
+  goto Ordered
+label Green
+  apricorn count green
+  if result == 0 goto NoneOfThat
+  apricorn order green
+  goto Ordered
+label Pink
+  apricorn count pink
+  if result == 0 goto NoneOfThat
+  apricorn order pink
+  goto Ordered
+label White
+  apricorn count white
+  if result == 0 goto NoneOfThat
+  apricorn order white
+  goto Ordered
+label Black
+  apricorn count black
+  if result == 0 goto NoneOfThat
+  apricorn order black
+  goto Ordered
+label NoneOfThat
+  say "You've no {apricorn} in your Box. Try another colour."
+  goto Colours
+label Ordered
+  sound "select"
+  say "Sent! That's {apricorns} × {ball} on their way. Come back tomorrow, here or at Kurt's."
+  end
+label Ready
+  apricorn collect
+  fanfare item
+  say "Kurt's batch came in on the morning boat: {apricorns} × {ball}, all yours."
+  text "{apricorns} × {ball} went into the bag."
+  end
+label Working
+  say "Kurt's still at work on your {ball}: {apricorns} of them, ready tomorrow."
+  end
+label NoApricorns
+  say "Bring Apricorns in your Apricorn Box and I'll send them to Kurt. Each colour makes a ball of its own."
+  end
+label NotNow
+  say "No hurry. Kurt's always glad of Apricorns."
+  end
+
+label Blender
+  say "Berries in, Pokéblocks out! This blender came all the way from Lilycove."
+  if item "Pokéblock Case" >= 1 goto HaveCase
+  say "You'll need a Pokéblock Case to keep what we make. Lilycove's Contest Hall gives them out."
+  end
+label HaveCase
+  pokeblock full
+  if result == 1 goto BlocksFull
+  say "Choose a Berry to blend. The more it stands out from mine, the better the Pokéblock."
+  pokeblock blend 1
+  if result == 1 say "A fine Pokéblock! It's in your Case."
+  end
+label BlocksFull
+  say "Your Pokéblock Case is full. Feed a few to your Pokémon first."
+  end
+
+
+# One of the day's guests: their first word of the day, and a battle a day
+script Guest
+  face self player
+  plaza greet
+  if result == 0 goto Again
+  say "Hello! I've come a long way to see this hall. Here, a few pennants for the stalls."
+  sound "select"
+  text "{player} received {number} pennants!"
+label Again
+  ask "Fancy a battle? I've brought my strongest team."
+  if no goto Later
+  plaza battle
+  if result == 2 goto Beaten
+  if result == 3 goto Later
+  if result == 1 goto Won
+  say "Ha! Good fun. Come back and try me again today if you like."
+  end
+label Won
+  say "What a battle! The hall pays its guests' winners, and today that's you."
+  text "{player} received {number} pennants!"
+  end
+label Beaten
+  say "You beat me fair and square today. Tomorrow I'll be ready!"
+  end
+label Later
+  say "Enjoy the hall! There's something new at every stall."
+  end
+
+
+# The Week's Work on the back wall (plan 41 · EG6): the board, the same as the one by the avenue outside
+script Board
+  missions open
+  end

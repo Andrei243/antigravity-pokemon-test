@@ -10940,3 +10940,57 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
 - **Owed**: the user's judgement of the town's look (shots `eg10` to `eg16`) and its name; songs of plan 31's fuller sound
   once MU1 lands (the town's song, `hub/town`, is in the classic sound); the halls' insides (EG2, EG3, EG4, EG7) and the
   islet (EG9); a small Town Map draws its picture repeated across the window's spare width (`ModernUi.DrawTownMap`).
+
+## Pennant Hall, the hub's plaza (2026-11-12, plan 41 · EG3)
+
+- **What it is.** A covered hall at the hub (`Hub_Plaza`, the plaza's door of the avenue, open since EG3) whose eight
+  pitches the player fills with stalls, ranked by the pennants it earns (the user's names, 2026-11-10: the hall is
+  **Pennant Hall**, its coins are **pennants**, its manager **Quincy Rowan-Pike**; the keepers have plain titles). The
+  rules are `Models/Plaza.cs`; the catalogue and every number are ours, in `Data/plaza.json`, read strictly. Nothing is
+  saved until the manager is first spoken to (`SaveData.Plaza`, null until then), so no save version was raised.
+- **Its rank** is the pennants it has earned, never those held: 0, 60, 150, 300, 500 and 800 for ranks 1 to 6
+  (`Plaza.RankOf`), spending lowers none. A rank has 3, 4, 5, 6, 7 and 8 pitches (`PitchesAt`); a stall widens its goods
+  with the rank (`StockAt`).
+- **The stalls.** A stall is offered once its region's Hall of Fame is entered and the hall is at its rank
+  (`Plaza.Offered`); the manager asks which stands at a pitch with the field's question box (`plaza pitch N`: the stalls
+  offered, LEAVE IT EMPTY, AS IT IS), and a stall stands at one pitch at a time (set elsewhere, it moves). The first seven:
+  **the goods stall** (any region, rank 1: items for pennants, from Heart Scales and Revives to Ability Capsules and a
+  Bottle Cap at the top rank), **the Lottery Corner** (Sinnoh, rank 1: Jubilife's draw, the day's one draw whichever
+  counter takes it, `FLAG_DAILY_CHECKED_LUCKY_NUMBER`), **the Seal stall** (Sinnoh, 2: Sunyshore's day's stock), **the
+  Poffin pot** (Sinnoh, 2), **the Move Relearner** (Johto, 3: a Heart Scale for a move), **Kurt's counter** (Johto, 4:
+  the one order Kurt keeps, taken here or in Azalea Town) and **the Berry Blender** (Hoenn, 5). Each is the region's own
+  command behind a booth with a keeper of ours; later plans add their stalls as rows (plan 41's design).
+- **The day's guests**: the first coming of a day (the manager or the hall come to) draws two more guests than the rank,
+  eight at most, on the chance the game hands it (the field's), of the finished regions' trainers whose class is an Ace
+  Trainer, a Cooltrainer, a Veteran, an Expert, a Gentleman or a Lady, no rematch's team and none twice
+  (`Plaza.DrawGuests`); come to again that day the hall holds the same guests. Each guest's first word of the day gives 5
+  pennants, and each battles once a day (a win pays 20; a battle lost may be fought again that day) at the furthest
+  finished region's post-game level (`LevelLift.PostGameLevel`: the last pair of its `levels`, Kanto 120, Johto 156,
+  Sinnoh's own 75 alone), their team lifted on a copy with its spread kept and its stages grown (`Models/LevelLift.cs`,
+  which EG4's circuit and EG9's gathering use too), battled under an id of the hall's own (`plaza_guest_<id>`), so the
+  trainer of their region is never beaten here. A lifted team is marked (`Trainer.LevelsKept`) and the battle lays no
+  region's levels on it again.
+- **Where pennants come from**: the guests, the Week's Work (EG6) and, as they are built, the circuit (EG4) and the cases
+  (EG7, EG8). They buy only at the hall's stalls and are never under nought (`PlazaState.Spend` refuses).
+
+## The Week's Work, the hub's board of missions (2026-11-12, plan 41 · EG6)
+
+- **What it is.** The hub's notice board, by the avenue's west sign and on Pennant Hall's back wall (the user's name,
+  2026-11-10: **the Week's Work**). The rules are `Models/MissionBoard.cs`; the kinds, places and rewards are ours, in
+  `Data/missions.json`, read strictly. Nothing is saved until the board is first read (`SaveData.Missions`), so no save
+  version was raised.
+- **The week**: five missions, three of the week and two timed, each in a region whose Hall of Fame is entered, drawn by
+  weight from the kinds that fit it (a place's mission needs the region's places; the facility's and the contest's are
+  Sinnoh's and Hoenn's), on `SplitMix` seeded by the week's Monday and the data's version (`MissionWeek.Draw`), never
+  `Dice`: the board is the same however often it is read, the same for anyone that week, and anew each Monday. A week's
+  undone missions go with it; a done mission's reward not claimed waits at the board and is claimed as it is next read.
+- **The kinds**: catch Pokémon of a type, or in a place; beat trainers; win rematches (a team `TrainerDatabase.IsRematchTeam`
+  names); hatch Eggs; come to a landmark; win battles at a battle facility; win a contest. Each counts only what the engine
+  already counts, where the player stands (`GameEngine.TellTheBoard`): a battle of the field's end (a catch, a trainer
+  beaten), a Frontier battle won (not the friends' hall's), an Egg hatched, a place come to, a contest won (a Super
+  Contest's official one, or Hoenn's). A mission counts nothing of another region's, and nothing at the hub.
+- **A timed mission** is begun at the board, one at a time; its progress starts from nought and its minutes run in the
+  field and its battles while the player is in its region, standing still anywhere else (the Funfest's timed missions as a
+  mechanic, the Bug-Catching Contest's corner as its look). Its time running out ends it undone, and it may be begun again.
+- **What it pays**: pennants for each thing asked and a bonus (more for a timed one), and one mission in two an item of the
+  file's list besides; claimed at the board, once, the pennants to Pennant Hall.

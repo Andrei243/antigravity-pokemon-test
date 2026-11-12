@@ -11,9 +11,11 @@
   "architecture": "Crossroads",
   "doors": [
     { "warp": 0, "map": "Hub_PokemonCenter", "x": 8, "y": 12, "facing": "Up" },
-    { "warp": 1, "map": "Hub_HarbourHall", "x": 6, "y": 7, "facing": "Up" }
+    { "warp": 1, "map": "Hub_HarbourHall", "x": 6, "y": 7, "facing": "Up" },
+    // Pennant Hall, the plaza (plan 41 · EG3)
+    { "warp": 2, "map": "Hub_Plaza", "x": 11, "y": 13, "facing": "Up" }
   ],
-  "locked": [ 2, 3, 4, 5 ],
+  "locked": [ 3, 4, 5 ],
   "people": {
     "sailor": {
       "name": "Sailor",
@@ -43,11 +45,13 @@
       "name": "Worker",
       "npcType": "worker",
       "still": true,
-      "dialog": [ "This hall's going to be a covered market, stalls from every region under one roof. It's not ready yet, though." ]
+      "dialog": [ "Pennant Hall's open at last: stalls from every region under one roof. We hung the last pennant this morning!" ]
     }
   },
   "signs": {
     "TownSign": "The Hub\nWhere the ways between the regions meet",
-    "BoardSign": "Notice board\nNothing is posted here yet."
-  }
+    "BoardSign": "The Week's Work\nThis week's missions in the regions you have won"
+  },
+  // The Week's Work, the board of missions (plan 41 · EG6): read, it opens the board (hub_town.txt's Board)
+  "signScripts": { "BoardSign": "Board" }
 }

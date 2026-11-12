@@ -145,13 +145,43 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 - [ ] EG2 Every region's Hall of Fame in one hall (its ribbons built 2026-11-09 with plan 36 · TR4: the four Champion ribbons of Kalos, Alola, Galar and Paldea as rows of ours after Platinum's eighty, added by `tools/DataImporter/Program.cs`, their `ribbonDeeds.*` words and `RibbonRules.Kind`; `RibbonRules.ChampionOf(region)` and `GiveChampion(party, region)`, which `halloffame` hands the host's region, so Hoenn's, Kalos's and Alola's Halls of Fame give their own and the rest Sinnoh's; Galar's and Paldea's wait for their regions; `TrainingHallsTests.EachRegionsHallOfFameHandsItsOwnChampionRibbon`. The entry's region, `Firsts`, the hall of Champions and the screen's tabs are still to come)
 - [x] EG1 The hub: a region of our own, its ways in and its rules (2026-11-09; "EG1 as built", below)
 - [ ] EG2 Every region's Hall of Fame in one hall
-- [ ] EG3 The plaza: stalls the player sets out and ranks up
+- [x] EG3 The plaza: stalls the player sets out and ranks up (2026-11-12; "EG3 and EG6 as built", below)
 - [ ] EG4 The Champions' circuit and its final
 - [x] EG5 The Leaders' rematches where a region has none: Kanto's seven Gyms (teams `kanto_leader_<who>_rematch`, Koga ours, Viridian empty) and Unova's eight (teams of ours, `unova_leader_<who>_rematch`: Black 2's Challenge teams lifted to an ace at 70) fight their Leader again once a day after the region's Hall of Fame (`FLAG_DAILY_<REGION>_<WHO>_REMATCH`), Johto's Four and Lance fight `_2` in their rooms; `RematchParityTests`, `RematchScriptTests`, `journey` mode (`JOURNEY_FROM=rematches`, eg50 to eg52); ruling "The Leaders' rematches in every region"
-- [ ] EG6 The weekly board of missions
+- [x] EG6 The weekly board of missions (2026-11-12; "EG3 and EG6 as built", below)
 - [ ] EG7 The agency and its first case
 - [ ] EG8 Cases in Kanto, Johto, Hoenn and Unova
 - [ ] EG9 The gathering
+
+## EG3 and EG6 as built (2026-11-12)
+
+- **Names** (the user's answers of 2026-11-10, set 1a and 2a, 4a, 50a, 52c, 55a): the plaza is **Pennant Hall** and its
+  coins **pennants**; its manager **Quincy Rowan-Pike** (`plaza_manager`, fedora and claret coat); the keepers have plain
+  titles; the board is **the Week's Work**. The town keeps the word "The Hub" on its sign and region file until the session
+  that renames the hub (Wayhaven, set 1a) takes it.
+- **EG3, the plaza**: `Models/Plaza.cs` (`PlazaStall`, `PlazaFile`, `Plaza.RankOf`, `PitchesAt`, `StockAt`, `Offered`,
+  `DrawGuests`, `KeepFlags`; `PlazaState`, saved as `SaveData.Plaza`, null until the manager is first spoken to),
+  `Models/LevelLift.cs` (`LevelLift.To`, `PostGameLevel`; `Trainer.LevelsKept`, which `StartTrainerBattle` relevels no
+  more), `Data/plaza.json` (ranks 0/60/150/300/500/800, pitches 3 to 8, the first seven stalls, the guests' classes and
+  looks; schema `plaza.schema.json`), `Op.Plaza` (`open`, `rank`, `next`, `coins`, `pitches`, `pitch N`, `give N`,
+  `spend N`, `guests`, `stall`, `shop`, `greet`, `battle`; `{pennants}`), `GameEngine.Plaza.cs` (`FurnishPlaza`: a booth
+  under its stall's awning colour, `Prop.Tint`, `Landmarks.AwningTone`, the counter spoken across, keepers and guests
+  dressed; the pennants over the field; the goods counter as the Athlete Shop's in pennants, `ShopScreen.PennantsUnit`).
+  The hall is `Hub_Plaza` (23 by 15, `interior: Museum`) with eight keepers and eight guests of its own, shown by flags
+  the game sets (`FLAG_HUB_PLAZA_KEEPER_N`, `_GUEST_N`, counted by the content check), and `Hub_Plaza.txt`; the avenue's
+  door 2 is open. Rulings, "Pennant Hall, the hub's plaza".
+- **EG6, the board**: `Models/MissionBoard.cs` (`MissionKind`, `Mission`, `MissionWeek.Draw` on `SplitMix` by the week's
+  Monday and `GameDataFiles.Version`, `MissionBoard`: `Refresh`, `Tell`, `Begin`, `Tick`, `Claim`, `ClaimAll`, saved as
+  `SaveData.Missions`), `Data/missions.json` (schema `missions.schema.json`), `Op.Missions` (`read`, `open`, `begin N`,
+  `waiting`, `claim`), `GameEngine.Missions.cs` (the engine's events told: a battle's catch and trainers beaten in
+  `EndBattle`, a Frontier win, an Egg hatched, a place come to in `NoteArrival`, a contest won; the timed clock in the
+  field and its battles; the corner), `MissionBoardScreen`, `ModernUi.Missions.cs`, `GameState.MissionBoard`. The board
+  is read from the sign by the avenue (`hub_town.txt`, the overlay's `signScripts`) and Pennant Hall's back wall.
+- **Tests**: `PlazaTests` (11) and `MissionBoardTests` (8); `HubRegionTests` knows the plaza is open.
+- **Owed**: the shots (`eg30` to `eg34`, `eg60` to `eg64`: no GPU run was made by this session), the user's look at the
+  hall, its booths and the board's screen; Romanian words (plan 17 · N6's next slice); the rename of the town to Wayhaven
+  (decision 3's set 1a); the circuit's (EG4) and the cases' (EG7, EG8) pennants; the later plans' stalls (35, 37 · FC9,
+  39, 42, 43) as rows of `plaza.json`.
 
 ## EG1 as built (2026-11-09)
 

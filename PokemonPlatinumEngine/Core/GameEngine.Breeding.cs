@@ -57,6 +57,8 @@ public partial class GameEngine
             flow.Pokedex.RegisterCaught(hatched);
             flow.Poketch.Remember(hatched);
             flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.HatchedEgg);
+            // An Egg hatched counts for the Week's Work (plan 41 · EG6)
+            TellTheBoard(MissionEventKind.Hatched);
         }
         StartTransition(GameState.Overworld, PlayFieldMusic);
     }

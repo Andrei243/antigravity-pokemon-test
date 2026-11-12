@@ -293,13 +293,20 @@ public class ShopScreen
     /// The Pokéathlon Dome's Athlete Shop (plan 15 · E8): the counter given the dome's stock at prices in Athlete Points,
     /// opened on its list (nothing is sold to it). Whatever the counter is handed as money is the points then.
     /// </summary>
-    public void OpenForPoints(string name, IEnumerable<(ItemData Item, int Points)> goods)
+    public void OpenForPoints(string name, IEnumerable<(ItemData Item, int Points)> goods, string unit = AthletePointsUnit)
     {
         var list = goods.ToList();
         Open(name, list.Select(g => g.Item), ShopMode.Buying);
         pointPrices = list.ToDictionary(g => g.Item.Name, g => g.Points);
+        PointsUnit = unit;
         Difficulty = Difficulty.Normal;
     }
+
+    /// <summary>What a counter in points is paid in: Athlete Points (the Pokéathlon Dome's) or pennants (Pennant Hall's stalls, plan 41 · EG3).</summary>
+    public const string AthletePointsUnit = "athlete", PennantsUnit = "pennants";
+
+    /// <summary>The points a counter in points is paid in (<see cref="AthletePointsUnit"/> or <see cref="PennantsUnit"/>).</summary>
+    public string PointsUnit { get; private set; } = AthletePointsUnit;
 
     public void Update(Inventory playerInventory, ref int playerMoney, Action<string> onNotification, float dt = 1f / 60f)
     {

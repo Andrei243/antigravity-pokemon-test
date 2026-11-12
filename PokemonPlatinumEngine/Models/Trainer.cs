@@ -75,6 +75,12 @@ public class Trainer
     /// </summary>
     public bool Remixed { get; set; }
 
+    /// <summary>
+    /// A team lifted to a level of the journey on a copy (plan 41 · EG3, <see cref="LevelLift"/>): the battle lays no region's
+    /// levels on it again, as it lays none on a team beyond the League.
+    /// </summary>
+    public bool LevelsKept { get; set; }
+
     /// <summary>Battles two Pokémon at a time (twins, couples), if the player has two that can fight.</summary>
     public bool DoubleBattle { get; set; }
 

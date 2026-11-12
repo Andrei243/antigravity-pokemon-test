@@ -91,7 +91,8 @@ public partial class GameEngine
     private bool ACountStandsTopRight =>
         flow.State is GameState.Overworld or GameState.Dialogue
         && (flow.Safari.Active || (flow.BugContest.Active && !flow.BugContest.Judged && flow.Map.Name == BugContestPark)
-            || (InPalPark && flow.Pastimes.PalPark.Show != null) || (showBattlePoints && ScriptRunning) || (showCastlePoints && ScriptRunning));
+            || (InPalPark && flow.Pastimes.PalPark.Show != null) || (showBattlePoints && ScriptRunning) || (showCastlePoints && ScriptRunning)
+            || (flow.Missions.Running is { } timed && string.Equals(timed.Region, Here.Id, StringComparison.OrdinalIgnoreCase)));
 
     /// <summary>The corner (style guide, "Field menus and notices", "The run timer"): with the row on, over the field and over a battle's commands and lines.</summary>
     private void DrawTheTimer()
