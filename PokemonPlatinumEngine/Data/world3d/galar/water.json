@@ -8,6 +8,12 @@
     { "name": "Lake Miloch", "polygon": [[92, -545], [86, -530], [72, -523], [55, -530], [48, -543], [50, -558], [60, -567], [76, -568], [88, -560], [93, -552]], "level": 1.9 },
     // Hulbury's harbour (plan 33 · GL4, its second session), over the floor terrain/wild_area_north_route5.json cuts:
     // the sea north of the town's quay, to the region's edges
-    { "name": "Hulbury's harbour", "polygon": [[63, -1056], [160, -1056], [160, -1033], [63, -1033]], "level": 24.4 }
+    { "name": "Hulbury's harbour", "polygon": [[63, -1056], [160, -1056], [160, -1033], [63, -1033]], "level": 24.4 },
+    // Plan 33 · GL5, its second session: the Lake of Outrage east of Hammerlocke Hills and the Hero's Bath in Circhester,
+    // each in the bowl terrain/wild_area_north_route7.json lays; Circhester Bay, wall to wall across Route 9 and deeper
+    // than a walker wades, so its far shore is come to on the water alone
+    { "name": "the Lake of Outrage", "polygon": [[146, -1108], [140, -1092], [124, -1086], [108, -1092], [102, -1108], [108, -1124], [124, -1130], [140, -1124]], "level": 25.0 },
+    { "name": "the Hero's Bath", "polygon": [[78, -1470], [96, -1470], [96, -1456], [78, -1456]], "level": 25.9 },
+    { "name": "Circhester Bay", "polygon": [[-72, -1532], [22, -1532], [22, -1412], [-72, -1412]], "level": 25.4 }
   ]
 }

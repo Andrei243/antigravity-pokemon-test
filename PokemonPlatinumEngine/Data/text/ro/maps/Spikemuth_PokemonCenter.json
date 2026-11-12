@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Spikemuth Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon din Spikemuth"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          "Vânzător: Bun venit! În Galar, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
+        ]
+      }
+    },
+    "challenger": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Spikemuth hasn't much, but it has Piers. Half the town would follow him anywhere."
+        ],
+        "text": [
+          "Spikemuth nu are mare lucru, dar îl are pe Piers. Jumătate de oraș l-ar urma oriunde."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

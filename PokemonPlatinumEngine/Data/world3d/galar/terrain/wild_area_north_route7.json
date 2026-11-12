@@ -1,0 +1,56 @@
+{
+  // Plan 33 · GL5, its second session: the rest of the Wild Area's northern half cut into the mass either side of
+  // Hammerlocke Hills (Dusty Bowl and the Stony Wilderness west of the hills, the Giant's Cap and the Lake of Outrage
+  // east of them); Hammerlocke's east gate onto Route 7, which runs north along the east edge past Ballonlea's walls and
+  // becomes Route 8, rising through old ruins into the snow; and four rows north of the mass, side by side across the
+  // land, Circhester in the east at the head of Route 8, Route 9 on Circhester Bay west of it (the bay crossed only on
+  // the water, from shore to shore) and Spikemuth at the bay's west end behind its own walls. Everything walked is at
+  // the hills' level, 26 m; the mass stands at 40. Our own land at about half the original's distances; read after
+  // wild_area_north_route6.json (its name sorts after)
+  "brushes": [
+    { "kind": "plateau", "name": "the mass north of Stow-on-Side and Ballonlea", "polygon": [[-160, -1536], [160, -1536], [160, -1408], [-160, -1408]], "height": 40, "falloff": 0 },
+    // The Wild Area's northern half, west of Hammerlocke Hills: the Stony Wilderness on the hills' side, Dusty Bowl in a
+    // dry hollow west of it; open to the hills along their whole west side
+    { "kind": "plateau", "name": "the Wild Area west of Hammerlocke Hills", "polygon": [[-152, -1150], [-30, -1150], [-30, -1064], [-152, -1064]], "height": 26, "falloff": 3 },
+    { "kind": "crater", "name": "Dusty Bowl's hollow", "at": [-120, -1106], "radius": 24, "depth": 3.0, "rim": 0.4 },
+    { "kind": "dome", "name": "a rock stack in the Stony Wilderness", "at": [-66, -1086], "radius": 7, "rise": 4 },
+    { "kind": "dome", "name": "a rock stack in the Stony Wilderness, south", "at": [-56, -1130], "radius": 6, "rise": 3.5 },
+    // East of the hills: the Giant's Cap, a lone rock standing over the downs, and the Lake of Outrage in its bowl
+    { "kind": "plateau", "name": "the Wild Area east of Hammerlocke Hills", "polygon": [[50, -1150], [152, -1150], [152, -1066], [50, -1066]], "height": 26, "falloff": 3 },
+    { "kind": "dome", "name": "the Giant's Cap", "at": [76, -1110], "radius": 10, "rise": 9 },
+    { "kind": "crater", "name": "the Lake of Outrage's bowl", "at": [124, -1108], "radius": 26, "depth": 4.0, "rim": 0.3 },
+    // Hammerlocke's east gate through the walls south of the stadium, onto Route 7
+    { "kind": "plateau", "name": "Hammerlocke's east gate", "polygon": [[94, -1230], [112, -1230], [112, -1214], [94, -1214]], "height": 26, "falloff": 1 },
+    // Route 7 east of the walls, north along the land's east edge, and Route 8 on from it past Ballonlea's walls: one
+    // long floor with ruins and rock in it, the snow beginning at its north end
+    { "kind": "plateau", "name": "Route 7 and Route 8", "polygon": [[108, -1404], [154, -1404], [154, -1160], [108, -1160]], "height": 26, "falloff": 3 },
+    { "kind": "ridge", "name": "Route 7's rocks", "points": [[150, -1196], [134, -1206], [124, -1196]], "width": 8, "rise": 2.5 },
+    { "kind": "dome", "name": "a fallen ruin on Route 8", "at": [148, -1312], "radius": 6, "rise": 3 },
+    { "kind": "dome", "name": "a fallen ruin on Route 8, north", "at": [114, -1356], "radius": 6, "rise": 3 },
+    // The way north out of Route 8 through the mass into Circhester
+    { "kind": "plateau", "name": "the pass into Circhester", "polygon": [[122, -1420], [140, -1420], [140, -1398], [122, -1398]], "height": 26, "falloff": 2 },
+    // Circhester in the snow, and Route 9's shores west of it, one floor; the bay cut down out of the middle of it, wall
+    // to wall, so the far shore is come to on the water alone
+    { "kind": "plateau", "name": "Circhester and Route 9", "polygon": [[-100, -1530], [154, -1530], [154, -1416], [-100, -1416]], "height": 26, "falloff": 3 },
+    { "kind": "plateau", "name": "Circhester Bay", "polygon": [[-60, -1526], [10, -1526], [10, -1420], [-60, -1420]], "height": 20, "falloff": 10 },
+    // The Hero's Bath, Circhester's hot spring: a shallow pool waded across
+    { "kind": "plateau", "name": "the Hero's Bath", "polygon": [[78, -1470], [96, -1470], [96, -1456], [78, -1456]], "height": 25.3, "falloff": 1.5 },
+    // Spikemuth behind its walls west of the bay, its one gate on Route 9's west shore
+    { "kind": "plateau", "name": "Spikemuth", "polygon": [[-154, -1530], [-108, -1530], [-108, -1416], [-154, -1416]], "height": 26, "falloff": 2 },
+    { "kind": "plateau", "name": "Spikemuth's gate", "polygon": [[-112, -1476], [-96, -1476], [-96, -1462], [-112, -1462]], "height": 26, "falloff": 1 }
+  ],
+  "paint": [
+    // The Wild Area west: the wilderness rock, the bowl sand; east: the downs' long grass round the Giant's Cap
+    { "cover": "Rock", "polygon": [[-90, -1148], [-34, -1148], [-34, -1066], [-90, -1066]] },
+    { "cover": "Sand", "polygon": [[-150, -1148], [-90, -1148], [-90, -1066], [-150, -1066]] },
+    { "cover": "GrassDeep", "polygon": [[56, -1146], [100, -1146], [100, -1130], [56, -1130]] },
+    { "cover": "GrassDeep", "polygon": [[-150, -1086], [-96, -1086], [-96, -1068], [-150, -1068]] },
+    // Route 7's grass, Route 8's old stone, and the snow from Route 8's north end over Circhester and Route 9
+    { "cover": "GrassDeep", "polygon": [[110, -1270], [152, -1270], [152, -1236], [110, -1236]] },
+    { "cover": "Rock", "polygon": [[110, -1340], [152, -1340], [152, -1290], [110, -1290]] },
+    { "cover": "Snow", "polygon": [[110, -1402], [152, -1402], [152, -1340], [110, -1340]] },
+    { "cover": "Snow", "polygon": [[-100, -1530], [154, -1530], [154, -1416], [-100, -1416]] },
+    // Spikemuth's streets are dark stone
+    { "cover": "RockDark", "polygon": [[-154, -1530], [-96, -1530], [-96, -1416], [-154, -1416]] }
+  ]
+}

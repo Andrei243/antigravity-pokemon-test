@@ -1,0 +1,46 @@
+# Circhester Stadium's gym mission (plan 33 · GL5, its second session): a gym trainer at each of the course's three
+# gates, stepping aside once the player has passed their test, and two gym trainers beside the way. A gate passed stays
+# open (its own flag). A Sword game's test is Gordie's pits, a Shield game's Melony's: talks, not the original's puzzle
+# (docs/mechanics/rulings.md, "Circhester, Route 9, Spikemuth and Hammerlocke's stadium"). Our own lines.
+
+
+script MissionGate1
+  speaker "Gym Trainer"
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "The floor ahead has holes in it, and they move when you aren't looking. Find the solid way across!"
+  text "{player} watched the floor shift and stepped only where it stayed still. Across!"
+  setflag FLAG_GALAR_CIRCHESTER_GATE_1
+  end
+label Shield
+  say "The floor ahead has holes in it, under the ice. Step where the frost is thickest and you'll be fine."
+  text "{player} read the frost and stepped only on the thick of it. Across!"
+  setflag FLAG_GALAR_CIRCHESTER_GATE_1
+  end
+
+
+script MissionGate2
+  speaker "Gym Trainer"
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "Deeper pits on this stretch. Fall in and you start the gate again. Off you go!"
+  text "A pit opened right where {player} had been about to step. A jump, a scramble, and across!"
+  setflag FLAG_GALAR_CIRCHESTER_GATE_2
+  end
+label Shield
+  say "The ice is thinner on this stretch. Melony says the cold teaches patience. Take your time."
+  text "{player} took it slow, a step at a time, and the ice held. Across!"
+  setflag FLAG_GALAR_CIRCHESTER_GATE_2
+  end
+
+
+script MissionGate3
+  speaker "Gym Trainer"
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "The last stretch is all pits and no floor to speak of. Gordie runs it in his sleep."
+  text "{player} found the one path the pits never touched. The mission is cleared!"
+  setflag FLAG_GALAR_CIRCHESTER_GATE_3
+  end
+label Shield
+  say "The last stretch, and the coldest. Melony's waiting on the far side."
+  text "{player} crossed the last of the ice without a crack. The mission is cleared!"
+  setflag FLAG_GALAR_CIRCHESTER_GATE_3
+  end

@@ -1,0 +1,95 @@
+{
+  "displayName": {
+    "en": [
+      "Circhester Stadium"
+    ],
+    "text": [
+      "Stadionul Circhester"
+    ]
+  },
+  "people": {
+    "mission_gate_1": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor de Arenă"
+        ]
+      }
+    },
+    "mission_gate_2": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor de Arenă"
+        ]
+      }
+    },
+    "mission_gate_3": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor de Arenă"
+        ]
+      }
+    },
+    "galar_gym_trainer_carys": {
+      "name": {
+        "en": [
+          "Carys"
+        ],
+        "text": [
+          "Carys"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Carys: Down in the pit, the ground's never where you left it. Keep up!"
+        ],
+        "text": [
+          "Antrenoarea arenei Carys: Jos, în groapă, pământul nu mai e niciodată unde l-ai lăsat. Ține pasul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Carys: Climbed right out of that one, didn't you. On you go."
+        ],
+        "text": [
+          "Antrenoarea arenei Carys: Ai ieșit din asta fără grijă, nu-i așa? Mergi mai departe."
+        ]
+      }
+    },
+    "galar_gym_trainer_tomos": {
+      "name": {
+        "en": [
+          "Tomos"
+        ],
+        "text": [
+          "Tomos"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Tomos: The Leader's pitch is colder than the snow outside. Warm up on me!"
+        ],
+        "text": [
+          "Antrenorul arenei Tomos: Terenul Liderului e mai rece decât zăpada de afară. Încălzește-te pe mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Tomos: Warmed up, then. The Leader's waiting."
+        ],
+        "text": [
+          "Antrenorul arenei Tomos: Te-ai încălzit, deci. Liderul te așteaptă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,173 @@
+{
+  "name": "Circhester_StadiumMission",
+  "displayName": "Circhester Stadium",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Rock",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "######D######",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Circhester_Stadium",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 1,
+      "targetMap": "Circhester_StadiumPitch",
+      "targetX": 7,
+      "targetY": 12,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "mission_gate_1",
+      "name": "Gym Trainer",
+      "npcType": "clerk",
+      "x": 6,
+      "y": 13,
+      "facing": "Down",
+      "script": "MissionGate1",
+      "hiddenBy": "FLAG_GALAR_CIRCHESTER_GATE_1"
+    },
+    {
+      "id": "mission_gate_2",
+      "name": "Gym Trainer",
+      "npcType": "clerk",
+      "x": 6,
+      "y": 9,
+      "facing": "Down",
+      "script": "MissionGate2",
+      "hiddenBy": "FLAG_GALAR_CIRCHESTER_GATE_2"
+    },
+    {
+      "id": "mission_gate_3",
+      "name": "Gym Trainer",
+      "npcType": "clerk",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "MissionGate3",
+      "hiddenBy": "FLAG_GALAR_CIRCHESTER_GATE_3"
+    },
+    {
+      "id": "galar_gym_trainer_carys",
+      "name": "Carys",
+      "npcType": "ace_trainer_f",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "galar_gym_trainer_carys",
+        "name": "Carys",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Carys: Down in the pit, the ground's never where you left it. Keep up!",
+        "dialogueAfter": "Gym Trainer Carys: Climbed right out of that one, didn't you. On you go.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "galar_gym_trainer_tomos",
+      "name": "Tomos",
+      "npcType": "ace_trainer_m",
+      "x": 10,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "galar_gym_trainer_tomos",
+        "name": "Tomos",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Tomos: The Leader's pitch is colder than the snow outside. Warm up on me!",
+        "dialogueAfter": "Gym Trainer Tomos: Warmed up, then. The Leader's waiting.",
+        "sightRange": 4
+      }
+    }
+  ],
+  "wildEncounters": []
+}

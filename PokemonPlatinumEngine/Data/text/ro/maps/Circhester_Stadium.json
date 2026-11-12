@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Circhester Stadium"
+    ],
+    "text": [
+      "Stadionul Circhester"
+    ]
+  },
+  "people": {
+    "circhester_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "circhester_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghid de Arenă"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,27 @@
+# Hammerlocke Stadium's pitch (plan 33 · GL5, its second session): Raihan's double battle for the Dragon Badge, the gym
+# challenge's eighth and last (`givebadge dragon`). He Dynamaxes his last Pokémon. VAR_GALAR_STORY 35 to 36 (postwick.txt's
+# count). Our own lines.
+
+
+script Raihan
+  face raihan player
+  speaker "Raihan"
+  if badge dragon goto Won
+  scene "Raihan"
+  say "Seven badges and a straight face. Nice. I'm Raihan, Hammerlocke's Leader, and the one who's going to beat Leon one day."
+  say "Here, everything's two at a time. Two Pokémon each, and the weather on my side. Let's see your plan!"
+  battle raihan as "galar_raihan_1"
+  say "...That's a plan. Every gym in Galar beaten. Leon's going to like you, and I'm going to hate that."
+  say "The Dragon Badge. Eight of eight. Go on and show the Champion Cup what you're made of."
+  givebadge dragon
+  text "{player} received the Dragon Badge from Raihan!"
+  setflag FLAG_GALAR_DEFEATED_HAMMERLOCKE_GYM
+  defeat "galar_gym_trainer_nia"
+  defeat "galar_gym_trainer_osian"
+  setvar VAR_GALAR_STORY 36
+  say "The Cup's in Wyndon, up north by train. I'll see you there. In the stands, this time."
+  endscene
+  end
+label Won
+  say "Next time it's me and Leon. Don't you dare miss it."
+  end

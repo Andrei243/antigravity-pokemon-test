@@ -1094,6 +1094,8 @@ public class SceneSkipTests
         "galar_route_5.Hop on Route 5", "motostoke.Marnie in Motostoke",
         // Plan 33 · GL5, its first session: Leon at Hammerlocke's gate, Hop on Route 6, and the mural above Stow-on-Side
         "hammerlocke.Leon in Hammerlocke", "galar_route_6.Hop on Route 6", "stow_on_side.The mural",
+        // Plan 33 · GL5, its second session: the Hero's Bath, the bike's kit, Marnie at Spikemuth's gate and Piers on his stage
+        "circhester.The Hero's Bath", "galar_route_9.The bike's water kit", "galar_route_9.Marnie at the gate", "spikemuth.Piers",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>
