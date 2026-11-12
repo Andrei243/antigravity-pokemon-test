@@ -1702,7 +1702,7 @@
     },
     "seek": {
       "begin": "Something is hidden in one of the bushes. Two tries!",
-      "found": "Found a {item}! It's kept in the counter until a PC.",
+      "found": "Found {item}! It's kept in the counter until a PC.",
       "nothing": "Nothing there. Whatever it was got away.",
       "tryAgain": "Not that one. One more try!"
     },

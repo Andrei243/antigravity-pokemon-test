@@ -53,7 +53,7 @@ partial class Harness
         Frames(90);
         Shot("bn40_pasture_gate");
         Console.WriteLine($"herd {game.Herd.Count}, workers at work, map {game.Map.Name}");
-        game.Place(game.Map, 18, 5, Direction.Left);
+        game.Place(game.Map, 16, 8, Direction.Up);
         Frames(60);
         Shot("bn41_pasture_from_the_pond");
         game.Place(game.Map, 6, 10, Direction.Up);
