@@ -5,17 +5,26 @@
   "markers": [
     { "name": "weald_entry", "at": [-62, 0.8, 20], "yaw": 270 },
     { "name": "weald_deep", "at": [-80, 0.4, 40], "yaw": 0 },
-    { "name": "wooloo_spot", "at": [-83, 0.7, 46], "yaw": 180 }
+    { "name": "wooloo_spot", "at": [-83, 0.7, 46], "yaw": 180 },
+    // Plan 33 · GL6: Hop at the altar on the Darkest Day
+    { "name": "hop_altar", "at": [-82, 0.7, 44], "yaw": 0 }
   ],
   "triggers": [
     // Deep in the fog after Hop's Wooloo: the shadow
-    { "name": "the_shadow", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Shadow", "var": "VAR_GALAR_STORY", "value": 4 }
+    { "name": "the_shadow", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Shadow", "var": "VAR_GALAR_STORY", "value": 4 },
+    // The altar on the Darkest Day (plan 33 · GL6), deep in where the shadow stood
+    { "name": "the_altar", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Altar", "var": "VAR_GALAR_STORY", "value": 40 }
   ],
   "people": [
     {
       "name": "hop_weald", "at": [-82, 0.7, 44], "yaw": 0, "look": "hop", "displayName": "Hop",
       "lines": ["Wooloo! Where are you? It's so quiet in here..."],
       "hiddenBy": "FLAG_GALAR_HIDE_HOP_WEALD"
+    },
+    {
+      "name": "hop_weald_altar", "at": [-82, 0.7, 44], "yaw": 0, "look": "hop", "displayName": "Hop",
+      "lines": ["The altar's just ahead. The stories all end here."],
+      "shownBy": "FLAG_GALAR_HOP_ALTAR"
     }
   ],
   "groves": [

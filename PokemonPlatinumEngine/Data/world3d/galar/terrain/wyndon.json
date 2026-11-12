@@ -1,0 +1,19 @@
+{
+  // Plan 33 · GL6: Wyndon, the capital at Galar's north end, three rows north of the land GL5 built, behind the mass
+  // (a wall of it between Circhester's and Route 9's floor and the city's), and come to by train from Hammerlocke's
+  // station: Route 10's snowy way north from Circhester is not built (docs/mechanics/rulings.md, "Wyndon, the Champion
+  // Cup and the Darkest Day"), which keeps the bake to three rows of ten chunks. One floor at the land's 26 m: the
+  // station square in the south-west, the avenue east past the Pokémon Center to the hotel, the stadium in the middle
+  // of the north side and Rose Tower east of it. Our own city at about half the original's distances; read after
+  // wild_area_north_route7.json (its name sorts after)
+  "brushes": [
+    { "kind": "plateau", "name": "the mass north of Circhester and Route 9", "polygon": [[-160, -1632], [160, -1632], [160, -1536], [-160, -1536]], "height": 40, "falloff": 0 },
+    { "kind": "plateau", "name": "Wyndon", "polygon": [[-150, -1626], [150, -1626], [150, -1544], [-150, -1544]], "height": 26, "falloff": 3 }
+  ],
+  "paint": [
+    // The avenue's and the square's stone; the city's lawns are the floor's own grass
+    { "cover": "Rock", "polygon": [[-148, -1574], [148, -1574], [148, -1560], [-148, -1560]] },
+    { "cover": "Rock", "polygon": [[-36, -1590], [36, -1590], [36, -1574], [-36, -1574]] },
+    { "cover": "Rock", "polygon": [[84, -1592], [106, -1592], [106, -1574], [84, -1574]] }
+  ]
+}

@@ -334,6 +334,7 @@ internal static class WorldWalk
         // its doors whose markers are come to lead into their rooms; true while that brought a room's tile into the walk
         bool FloodTheOpenMaps()
         {
+            var sentOn = new List<PokemonPlatinumEngine.Story.Instruction>();
             foreach (var (name, entries) in openStarts)
             {
                 if (openDone.TryGetValue(name, out int done) && done == entries.Count) continue;
@@ -349,8 +350,27 @@ internal static class WorldWalk
                         var room = mapOf(door.Room);
                         Visit(room, door.RoomX, door.RoomY, TravelMode.OnFoot, room.HeightAt(door.RoomX, door.RoomY), arrived: true);
                     }
+                // Someone of the open map come to whose script sends the player on is a way there (plan 33 · GL6: the train
+                // from Hammerlocke's station to Wyndon, behind the mass), whoever their flags hide, as a grid map's people are
+                foreach (var person in outside.People)
+                    if (person.Script is { } theirs && walk.Reaches(person.Home))
+                        sentOn.AddRange(WarpsOf(theirs, outside.ScriptFileAt(person.Home)));
             }
-            return queue.Count > 0;
+            foreach (var sent in sentOn)
+            {
+                if (sent.Op == PokemonPlatinumEngine.Story.Op.WarpTo) { Send(sent); continue; }
+                var onto = mapOf(sent.Name);
+                if (onto.InBounds(sent.X, sent.Y) && !onto.IsSolid(sent.X, sent.Y))
+                    Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+            }
+            // (a landing already there counts once: the same marker sent again changes nothing)
+            foreach (var list in openStarts.Values)
+            {
+                var distinct = list.Distinct().ToList();
+                list.Clear();
+                list.AddRange(distinct);
+            }
+            return queue.Count > 0 || openStarts.Any(p => !openDone.TryGetValue(p.Key, out int d) || d != p.Value.Count);
         }
     }
 

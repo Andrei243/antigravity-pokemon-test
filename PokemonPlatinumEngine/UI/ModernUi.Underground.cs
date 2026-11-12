@@ -221,7 +221,7 @@ internal static partial class ModernUi
             if (bare)
             {
                 UndergroundIcon(new Vector2(row.X + 40, row.Y + 35), 26, UndergroundDatabase.IsSphere(id) ? UndergroundRow.SphereIcon(UndergroundDatabase.SphereOf(id)) : UndergroundRow.TreasureIcon(id));
-                string name = UndergroundDatabase.IsSphere(id) ? UndergroundDatabase.SphereName(UndergroundDatabase.SphereOf(id)) : UndergroundDatabase.TreasureName(id);
+                string name = UndergroundDatabase.IsSphere(id) ? UndergroundDatabase.SphereName(UndergroundDatabase.SphereOf(id)) : UndergroundDatabase.IsStatue(id) ? UndergroundDatabase.StatueName(id) : UndergroundDatabase.TreasureName(id);
                 UiFonts.DrawCentered(name, row.X + 82, row.Y + 35, 28, Ink, UiWeight.Black);
             }
             else

@@ -45,7 +45,7 @@ public class KalosFinishedTests
     [Fact]
     public void EveryTypeHasSixSpeciesOfItsOwnTypeUnderTheModernRules()
     {
-        Assert.Equal(Enum.GetValues<PokemonType>().Length, FriendSafari.SpeciesOfType.Count);
+        Assert.Equal(TypeChart.GamesTypes.Count, FriendSafari.SpeciesOfType.Count); // the games' types: Sound has no species
         foreach (var (type, species) in FriendSafari.SpeciesOfType)
         {
             Assert.Equal(6, species.Distinct().Count());

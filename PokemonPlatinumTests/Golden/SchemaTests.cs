@@ -33,6 +33,7 @@ public class SchemaTests
         ("sound-map.schema.json", typeof(SoundMapFile), "The sound map (Data/audio/sound-map.json)"),
         ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
         ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
+        ("statues.schema.json", typeof(StatueFile), "The hideaways' statues (Data/statues.json)"),
         ("recipes.schema.json", typeof(RecipesFile), "The crafting kit's recipes (Data/recipes.json)"),
         ("powers.schema.json", typeof(PowersFile), "The timed powers' strengths (Data/powers.json)"),
         ("training.schema.json", typeof(TrainingFile), "The training club's tables: the drills' prizes (Data/training.json)"),

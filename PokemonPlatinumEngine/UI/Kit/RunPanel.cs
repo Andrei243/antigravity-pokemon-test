@@ -166,9 +166,9 @@ public sealed class RunPanel
             case RunRow.ShinyClause: Rules = r with { ShinyClause = !r.ShinyClause }; break;
             case RunRow.GiftsCount: Rules = r with { GiftsCount = !r.GiftsCount }; break;
             case RunRow.Monotype:
-                // None first, then the eighteen types, wrapping round
+                // None first, then the types some species has, wrapping round
                 var types = new List<PokemonType?> { null };
-                types.AddRange(Enum.GetValues<PokemonType>().Select(t => (PokemonType?)t));
+                types.AddRange(TypeChart.TypesWithSpecies.Select(t => (PokemonType?)t));
                 int at = ((types.IndexOf(r.Monotype) + d) % types.Count + types.Count) % types.Count;
                 Rules = r with { Monotype = types[at] };
                 break;

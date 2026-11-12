@@ -1,0 +1,92 @@
+{
+  "name": "Wyndon_EnergyPlant",
+  "displayName": "Energy Plant",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Steel",
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "Wyndon_RoseTower",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "rose",
+      "name": "Rose",
+      "npcType": "rose",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Rose",
+      "hiddenBy": "FLAG_GALAR_ROSE_BEATEN"
+    },
+    {
+      "id": "leon_plant",
+      "name": "Leon",
+      "npcType": "leon",
+      "x": 5,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "Whatever the chairman's woken, it isn't something any one Trainer can hold back."
+      ],
+      "shownBy": "FLAG_GALAR_DARKEST_DAY"
+    },
+    {
+      "id": "hop_plant",
+      "name": "Hop",
+      "npcType": "hop",
+      "x": 9,
+      "y": 6,
+      "facing": "Up",
+      "dialog": [
+        "We came this far. We're not backing down now!"
+      ],
+      "shownBy": "FLAG_GALAR_DARKEST_DAY"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -243,6 +243,10 @@ public sealed class OpenRegionAreaFile
     public double MaxY { get; set; } = 10000;
     public string? Music { get; set; }
     public string? Weather { get; set; }
+    /// <summary>A light of its own (plan 33 · GL6; style guide, "Open world", "A place's own light"): <c>night</c> or <c>darkestDay</c>.</summary>
+    public string? Light { get; set; }
+    /// <summary>The flag the light holds only while it is set (none: always).</summary>
+    public string? LightWhile { get; set; }
 }
 
 public sealed class OpenRegionMapFile
@@ -348,7 +352,7 @@ public static class OpenPlaceFiles
 
     /// <summary>An area of <c>world.json</c> as the map keeps it.</summary>
     public static OpenArea AreaOf(OpenRegionAreaFile a) =>
-        new(a.Key, a.Name ?? a.Key, a.Polygon.Select(Ground).ToList(), OpenPos.Millimetres(a.MinY), OpenPos.Millimetres(a.MaxY), a.Music, a.Weather);
+        new(a.Key, a.Name ?? a.Key, a.Polygon.Select(Ground).ToList(), OpenPos.Millimetres(a.MinY), OpenPos.Millimetres(a.MaxY), a.Music, a.Weather, a.Light, a.LightWhile);
 
     /// <summary>
     /// A region's open maps from its description folder (plan 32 · OW5): one for each of <c>world.json</c>'s maps, with

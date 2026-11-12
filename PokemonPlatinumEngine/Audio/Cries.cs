@@ -216,6 +216,8 @@ public sealed record CryTimbre(
         PokemonType.Dragon => new(0.90f, 0.20f, 0.10f, 0.40f, 2.0f, 0.0f, 0.30f, 0.2f, 25f, 0.45f, 4.0f, 0.020f, 1f, 0.10f),
         PokemonType.Steel => new(0.20f, 0.30f, 0.50f, 0.30f, 1.41f, 2.5f, 0.05f, 0.8f, 20f, 0.00f, 5.0f, 0.010f, 1f, 0.15f),
         PokemonType.Dark => new(0.40f, 0.40f, 0.20f, 0.35f, 2.0f, 0.0f, 0.20f, 0.0f, 24f, 0.30f, 4.0f, 0.020f, 1f, 0.05f),
+        // Plan 46 · CP2: a clear sung tone, a strong slow vibrato and a hall's echo
+        PokemonType.Sound => new(0.15f, 0.25f, 0.60f, 0.45f, 2.0f, 0.3f, 0.05f, 0.6f, 14f, 0.05f, 5.5f, 0.060f, 1f, 0.30f),
         _ => new(0.10f, 0.10f, 0.80f, 0.50f, 2.0f, 0.8f, 0.05f, 1.0f, 20f, 0.00f, 8.0f, 0.030f, 1f, 0.10f) // Fairy
     };
 }

@@ -36,7 +36,7 @@ public class PhraseTests
         var groups = new PhraseGroups(new[] { "Turtwig", "Starly", "Turtwig", "NoSuchPokemon" }, new[] { "Tackle", "Tackle", "Withdraw" });
         Assert.Equal(new[] { "pokemon:Turtwig", "pokemon:Starly" }, groups.WordsOf(PhraseGroup.Pokemon));
         Assert.Equal(new[] { "moves:Tackle", "moves:Withdraw" }, groups.WordsOf(PhraseGroup.Moves));
-        Assert.Equal(Enum.GetValues<PokemonType>().Length, groups.WordsOf(PhraseGroup.Types).Count);
+        Assert.Equal(TypeChart.TypesWithSpecies.Count, groups.WordsOf(PhraseGroup.Types).Count); // Sound once a species has it (plan 46 · CP2)
         // Our own five groups, every word of each one, each with a word of English's own
         foreach (var group in new[] { PhraseGroup.Feelings, PhraseGroup.People, PhraseGroup.Places, PhraseGroup.Time, PhraseGroup.Small })
         {

@@ -16,7 +16,8 @@ internal sealed record OpenScene(
     Vector3 Eye, Vector3 Target, float Hour, FieldWeather Weather, float CaveShare, double Time,
     bool Swimming = false, float Lens = (float)OrbitCamera.LensDegrees,
     IReadOnlyList<OpenFigure>? Figures = null, IReadOnlyList<Vector3>? Walkers = null,
-    OpenMountDraw? Mount = null, Matrix4x4? RiderRoot = null, IReadOnlyList<DenBeam>? Beams = null);
+    OpenMountDraw? Mount = null, Matrix4x4? RiderRoot = null, IReadOnlyList<DenBeam>? Beams = null,
+    string? Mood = null, float MoodShare = 0f);
 
 /// <summary>
 /// The mount as a frame draws it (plan 30 · FM13; style guide, "Open world", "The mount"): its ride form's model, its
@@ -135,7 +136,8 @@ internal sealed class OpenRenderer
         weather = scene.Weather;
         time = scene.Time;
         CaveShare = scene.CaveShare;
-        var rig = OpenLook.UnderRock(OpenLook.Weathered(OpenLook.Open(scene.Hour), scene.Weather), scene.CaveShare);
+        // A place's own light (plan 33 · GL6: Spikemuth's night, the Darkest Day) over the hour's, before the weather
+        var rig = OpenLook.UnderRock(OpenLook.Weathered(OpenLook.InMood(OpenLook.Open(scene.Hour), scene.Mood, scene.MoodShare), scene.Weather), scene.CaveShare);
         Rig = rig;
         float aspect = (float)context.PartWidth / context.PartHeight;
         var camera = new Camera3D(scene.Eye, scene.Target, Vector3.UnitY, Canvas2D.Layout.FovYFor(scene.Lens), CameraProjection.Perspective);

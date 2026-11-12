@@ -7,9 +7,11 @@ namespace PokemonPlatinumEngine.Data;
 
 /// <summary>
 /// Every species, read from <c>Data/species.json</c> the first time it is used. The file holds the games' National
-/// Pokédex (1 to 1,025) and, after it, the species of our own that evolve past level 100 (plan 03 · D14), numbered from
-/// <see cref="OursFrom"/>. <see cref="Get"/> and <see cref="GetByDex"/> find any of them; <see cref="GetAll"/> is the
-/// games' species alone, and whatever means ours too asks <see cref="Everyone"/> (or <see cref="Ours"/>) on purpose.
+/// Pokédex (1 to 1,025), after it the species of our own that evolve past level 100 (plan 03 · D14), numbered from
+/// <see cref="OursFrom"/>, and last the species made from nothing for Carpathia (plan 46 · CP1), numbered from
+/// <see cref="CarpathiaFrom"/>. <see cref="Get"/> and <see cref="GetByDex"/> find any of them; <see cref="GetAll"/> is the
+/// games' species alone, and whatever means ours too asks <see cref="Everyone"/> (or <see cref="Ours"/>,
+/// <see cref="Carpathia"/>) on purpose.
 /// </summary>
 public static class PokemonDatabase
 {
@@ -18,7 +20,20 @@ public static class PokemonDatabase
     /// <summary>The first number of a species of our own (plan 03 · D14): 2000 + the number of the species it evolves from.</summary>
     public const int OursFrom = 2000;
 
-    private static readonly List<PokemonSpecies> Games = new(), OwnSpecies = new();
+    /// <summary>
+    /// The first number of a species made from nothing (plan 46 · CP1): Carpathia's own, 10000 + its number in the
+    /// Carpathian Pokédex (10001 is its first). Below it, from <see cref="OursFrom"/>, are D14's species past level 100
+    /// and their regional blocks (4000 to about 8025).
+    /// </summary>
+    public const int CarpathiaFrom = 10001;
+
+    /// <summary>
+    /// The block the Carpathian forms of existing species are numbered in (plan 46: 11000 + the species' National
+    /// number), kept apart from <see cref="CarpathiaFrom"/>'s, which a form's 10000 + its number would meet.
+    /// </summary>
+    public const int CarpathianFormsFrom = 11000;
+
+    private static readonly List<PokemonSpecies> Games = new(), OwnSpecies = new(), Carpathian = new();
 
     private static readonly Dictionary<string, PokemonSpecies> SpeciesByName = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Dictionary<int, PokemonSpecies> SpeciesByDex = new();
@@ -38,7 +53,7 @@ public static class PokemonDatabase
     {
         SpeciesByName[species.Name] = species;
         SpeciesByDex[species.DexNumber] = species;
-        (species.IsOurs ? OwnSpecies : Games).Add(species);
+        (species.IsCarpathian ? Carpathian : species.IsPastHundred ? OwnSpecies : Games).Add(species);
         foreach (var form in species.Forms ?? new()) SpeciesByForm[form.Name] = species;
     }
 
@@ -60,11 +75,14 @@ public static class PokemonDatabase
     /// </summary>
     public static IEnumerable<PokemonSpecies> GetAll() => Games;
 
-    /// <summary>The species of our own (plan 03 · D14), in their numbers' order.</summary>
+    /// <summary>The species of our own that evolve past level 100 (plan 03 · D14), in their numbers' order: never Carpathia's.</summary>
     public static IReadOnlyList<PokemonSpecies> Ours() => OwnSpecies;
 
-    /// <summary>Every species of the data, the games' and then ours: for whatever shows, names, teaches or checks any species there is.</summary>
-    public static IEnumerable<PokemonSpecies> Everyone() => Games.Concat(OwnSpecies);
+    /// <summary>The species made from nothing for Carpathia (plan 46 · CP1), in the Carpathian Pokédex's order.</summary>
+    public static IReadOnlyList<PokemonSpecies> Carpathia() => Carpathian;
+
+    /// <summary>Every species of the data, the games', D14's and Carpathia's: for whatever shows, names, teaches or checks any species there is.</summary>
+    public static IEnumerable<PokemonSpecies> Everyone() => Games.Concat(OwnSpecies).Concat(Carpathian);
 
     /// <summary>The species a form belongs to, by the form's name (<c>Rotom-Heat</c>); null if no species has it.</summary>
     public static PokemonSpecies? SpeciesOfForm(string formName)

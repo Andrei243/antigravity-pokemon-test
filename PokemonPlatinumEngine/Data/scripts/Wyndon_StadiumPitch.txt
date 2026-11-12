@@ -1,0 +1,166 @@
+# Wyndon Stadium's pitch (plan 33 · GL6): the Champion Cup, fought in story order on one spot of the pitch, the opponent
+# whose match is due shown by the pitch's arrival (docs/mechanics/rulings.md, "Wyndon, the Champion Cup and the Darkest
+# Day": the Cup's bracket isn't drawn). The Semifinals are Marnie and Hop; the Finals, after the Darkest Day, Bede and
+# Raihan; then the Champion Match with Leon and the Hall of Fame, Galar's story ended (GalarHallOfFame), home to Postwick,
+# the game saved there and the credits. Everyone Dynamaxes their last Pokémon. VAR_GALAR_STORY 37 to 46 (postwick.txt's
+# count). Our own lines.
+
+
+script OnEnter
+  clearflag FLAG_GALAR_CUP_MARNIE
+  clearflag FLAG_GALAR_CUP_HOP
+  clearflag FLAG_GALAR_CUP_BEDE
+  clearflag FLAG_GALAR_CUP_RAIHAN
+  clearflag FLAG_GALAR_CUP_LEON
+  if var VAR_GALAR_STORY == 37 goto MarnieDue
+  if var VAR_GALAR_STORY == 38 goto HopDue
+  if var VAR_GALAR_STORY == 43 goto BedeDue
+  if var VAR_GALAR_STORY == 44 goto RaihanDue
+  if var VAR_GALAR_STORY == 45 goto LeonDue
+  end
+label MarnieDue
+  setflag FLAG_GALAR_CUP_MARNIE
+  end
+label HopDue
+  setflag FLAG_GALAR_CUP_HOP
+  end
+label BedeDue
+  setflag FLAG_GALAR_CUP_BEDE
+  end
+label RaihanDue
+  setflag FLAG_GALAR_CUP_RAIHAN
+  end
+label LeonDue
+  setflag FLAG_GALAR_CUP_LEON
+  end
+
+
+# The first Semifinal: Marnie, for Spikemuth
+script Marnie
+  face marnie player
+  speaker "Marnie"
+  if var VAR_GALAR_STORY >= 38 goto Done
+  scene "The Semifinal with Marnie"
+  say "So it's you and me. I didn't come all this way just to make up the numbers."
+  say "Spikemuth's counting on me. Don't you dare go easy."
+  battle marnie as "galar_marnie_2"
+  say "...Yeah. You were better today. I'll tell my brother you earned it."
+  setvar VAR_GALAR_STORY 38
+  clearflag FLAG_GALAR_CUP_MARNIE
+  setflag FLAG_GALAR_CUP_HOP
+  objective galarHopCup
+  endscene
+  end
+label Done
+  say "Go on. Show them all."
+  end
+
+
+# The second Semifinal: Hop
+script Hop
+  face hop player
+  speaker "Hop"
+  if var VAR_GALAR_STORY >= 39 goto Done
+  scene "The Semifinal with Hop"
+  say "Here we are. You and me, in Wyndon Stadium, with the whole of Galar watching. Just like we said back in Postwick!"
+  say "I've lost to you every time. Not today. Today I'm going to be the one who faces Leon!"
+  if starter "Grookey" goto AgainstGrookey
+  if starter "Scorbunny" goto AgainstScorbunny
+  battle hop as "galar_hop_6c"
+  goto Fought
+label AgainstGrookey
+  battle hop as "galar_hop_6a"
+  goto Fought
+label AgainstScorbunny
+  battle hop as "galar_hop_6b"
+label Fought
+  speaker "Hop"
+  say "...Every single time. I'm not even angry. You're brilliant, {player}. You really are."
+  say "The Finals are tomorrow. Go and rest. And then go and win the whole thing, for both of us!"
+  setvar VAR_GALAR_STORY 39
+  clearflag FLAG_GALAR_CUP_HOP
+  objective galarLobby
+  endscene
+  end
+label Done
+  say "Go and get some rest. Tomorrow's the big one!"
+  end
+
+
+# The first match of the Finals: Bede, back as Opal's heir
+script Bede
+  face bede player
+  speaker "Bede"
+  if var VAR_GALAR_STORY >= 44 goto Done
+  scene "The Final with Bede"
+  say "Surprised? Opal took me on. Ballonlea's gym will be mine one day, so I'm here to see whether you deserve the Finals."
+  say "Pink, she says. Everything must be pink. Well. Let's get this over with."
+  battle bede as "galar_bede_3"
+  say "...Fine. I'll admit it, once. You were the better Trainer. Don't make me say it again."
+  setvar VAR_GALAR_STORY 44
+  clearflag FLAG_GALAR_CUP_BEDE
+  setflag FLAG_GALAR_CUP_RAIHAN
+  objective galarRaihanCup
+  endscene
+  end
+label Done
+  say "Raihan's next. Try not to embarrass me."
+  end
+
+
+# The last match of the Finals: Raihan, one at a time this time
+script Raihan
+  face raihan player
+  speaker "Raihan"
+  if var VAR_GALAR_STORY >= 45 goto Done
+  scene "The Final with Raihan"
+  say "Told you I'd see you in Wyndon. No doubles today: one on one, the way the Finals are fought."
+  say "Whoever wins this faces Leon. I've wanted that match every year of my life. Let's go!"
+  battle raihan as "galar_raihan_2"
+  say "...Beaten twice by the same challenger. Leon had better watch himself. Go on. He's waiting."
+  setvar VAR_GALAR_STORY 45
+  clearflag FLAG_GALAR_CUP_RAIHAN
+  setflag FLAG_GALAR_CUP_LEON
+  objective galarLeon
+  endscene
+  end
+label Done
+  say "Go on. The Champion's waiting for you."
+  end
+
+
+# The Champion Match: Leon, and the Hall of Fame
+script Leon
+  face leon player
+  speaker "Leon"
+  if var VAR_GALAR_STORY >= 46 goto Done
+  scene "The Champion Match"
+  say "{player}. From a bedroom in Postwick to the pitch in Wyndon. I knew the day I gave you that endorsement."
+  say "I've never lost a match since I became Champion. Not one. So let's have a champion time, you and I!"
+  battle leon as "galar_leon_1"
+  say "...So that's what it feels like. I'd forgotten. Well played, {player}. Truly."
+  say "Galar has a new Champion. Come on, let's get your team into the record where it belongs."
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  setflag GalarHallOfFame
+  setvar VAR_GALAR_STORY 46
+  clearflag FLAG_GALAR_CUP_LEON
+  objective galarFree
+  halloffame show
+  heal
+  warp "Postwick_PlayersHouse_2F" 4 6 down
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end
+label Done
+  say "Champion. I like the sound of that for you."
+  end

@@ -65,8 +65,11 @@ label Wait
 # cabin; ours is told in a few beats of our own, over the dark and in the south-west cabins (SSAqua_1F_SouthwestRooms,
 # the tile inside the east cabin's door): the evening at the porthole, the ship's sounds, the team rested as a bed rests
 # it, and the horn in the morning. Nothing in it waits for the player but the lines.
+# The cabin is lit as at nine in the evening and the deck as at seven in the morning, whatever the clock says, until the
+# player next goes somewhere (part w: `lighting`, the picture's alone).
 script Night
   warp "SSAqua_1F_SouthwestRooms" 23 3 down
+  lighting 21
   fade in 0.8
   speaker none
   text "{player} was shown to a small cabin. Through the porthole, the last of the sunset sank into the sea."
@@ -80,5 +83,6 @@ script Night
 script Morning
   text "A long blast of the ship's horn! Morning light poured in through the porthole."
   warp "SSAqua_1F" 24 18 down
+  lighting 7
   fade in 0.8
   return

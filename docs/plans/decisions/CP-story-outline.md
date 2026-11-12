@@ -75,7 +75,7 @@ The **Zmeu's** and the **Vârcolac's** tales are the two the professors will tel
 
 ## What this needs from the engine (small, mostly built)
 
-- **A battle foe whose level shows as `???`, overwhelming** (Furtunaur's first fight): the terms `hidelevel` (and for Galar's Weald, `untouchable` and `passive`): an agent is building them now.
+- **A battle foe whose level shows as `???`, overwhelming** (Furtunaur's first fight): the terms `hidelevel` (and for Galar's Weald, `untouchable` and `passive`), built on 2026-11-12 (`docs/mechanics/rulings.md`, "Staged battles").
 - **Roamers** exist (`Overworld/Roamers.cs`); Solzmeu and Lunacolac join their table after the ridge, with a level above the region's highest and their own flee behaviour.
 - **A scripted loss without white-out** exists (`canlose`).
 - **Tales** and the **Book of Tales** are plan 46's own, with Furtunaur's, Solzmeu's and Lunacolac's tales among the twelve.

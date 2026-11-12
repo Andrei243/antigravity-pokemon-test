@@ -8,7 +8,7 @@
   // reached by the train from Wedgehurst Station and smaller than the plan's scale (docs/mechanics/rulings.md, "The Wild
   // Area"): eight parts of one open stretch of downs and lakes, each with its weather of the day from calendar.json
   "region": "Galar",
-  "chunks": [-5, -48, 4, 1],
+  "chunks": [-5, -51, 4, 1],
   "baseHeight": 0.4,
   "cover": { "shore": 0.6 },
   "areas": [
@@ -57,7 +57,10 @@
     { "key": "galar_route_8", "name": "Route 8", "polygon": [[104, -1282], [160, -1282], [160, -1408], [104, -1408]], "music": "galar/route1" },
     { "key": "circhester", "name": "Circhester", "polygon": [[40, -1408], [160, -1408], [160, -1536], [40, -1536]], "music": "galar/wedgehurst" },
     { "key": "galar_route_9", "name": "Route 9", "polygon": [[-100, -1408], [40, -1408], [40, -1536], [-100, -1536]], "music": "galar/route1" },
-    { "key": "spikemuth", "name": "Spikemuth", "polygon": [[-160, -1408], [-100, -1408], [-100, -1536], [-160, -1536]], "music": "galar/wedgehurst" }
+    { "key": "spikemuth", "name": "Spikemuth", "polygon": [[-160, -1408], [-100, -1408], [-100, -1536], [-160, -1536]], "music": "galar/wedgehurst", "light": "night" },
+    // Plan 33 · GL6: Wyndon, three rows north behind the mass, come to by train from Hammerlocke; under the Darkest Day's
+    // light while its flag is set (Spikemuth, above, is held in the night whatever the hour: style guide, "Open world")
+    { "key": "wyndon", "name": "Wyndon", "polygon": [[-160, -1536], [160, -1536], [160, -1632], [-160, -1632]], "music": "galar/wedgehurst", "light": "darkestDay", "lightWhile": "FLAG_GALAR_DARKEST_DAY" }
   ],
   "maps": [
     { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
@@ -66,6 +69,6 @@
       "motostoke", "galar_route_3", "galar_route_4", "turffield", "galar_route_5", "hulbury",
       "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea",
       "wild_area_dusty_bowl", "wild_area_stony_wilderness", "wild_area_giants_cap", "wild_area_lake_of_outrage",
-      "galar_route_7", "galar_route_8", "circhester", "galar_route_9", "spikemuth"] }
+      "galar_route_7", "galar_route_8", "circhester", "galar_route_9", "spikemuth", "wyndon"] }
   ]
 }

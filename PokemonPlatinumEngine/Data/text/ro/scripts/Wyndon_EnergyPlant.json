@@ -1,0 +1,190 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Chairman Rose"
+      ],
+      "text": [
+        "Președintele Rose"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}. And Hop. You've come all the way up my tower. Then you deserve to hear it from me, in person."
+      ],
+      "text": [
+        "Ah, {player}. Și Hop. Ați urcat până în vârful turnului meu. Atunci meritați să auziți totul de la mine, personal."
+      ]
+    },
+    {
+      "en": [
+        "In a thousand years Galar's energy runs dry. I could not wait for a Champion Match to finish before I did something about it."
+      ],
+      "text": [
+        "Peste o mie de ani energia din Galar se va termina. Nu puteam aștepta să se încheie un meci pentru titlu ca să fac ceva."
+      ]
+    },
+    {
+      "en": [
+        "So I woke what sleeps under Galar, the one that can give us power forever. Leon would not understand. Let me show you."
+      ],
+      "text": [
+        "Așa că am trezit ce doarme sub Galar, pe cel care ne poate da energie pentru totdeauna. Leon n-ar înțelege. Lasă-mă să-ți arăt."
+      ]
+    },
+    {
+      "en": [
+        "...Splendid. Truly splendid. But you are too late, the both of you. Look up."
+      ],
+      "text": [
+        "...Splendid. Cu adevărat splendid. Dar ați întârziat, amândoi. Uitați-vă în sus."
+      ]
+    },
+    {
+      "en": [
+        "The roof shudders. Out of the plant's core something vast uncoils, burning red against the dark sky."
+      ],
+      "text": [
+        "Acoperișul se cutremură. Din miezul centralei se desfășoară ceva uriaș, arzând roșu pe cerul întunecat."
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Stand back, the two of you! This one's mine!"
+      ],
+      "text": [
+        "Înapoi, amândoi! Ăsta e al meu!"
+      ]
+    },
+    {
+      "en": [
+        "Leon's team goes up against it one after another, and falls one after another. The Champion goes down on one knee."
+      ],
+      "text": [
+        "Echipa lui Leon se aruncă asupra lui unul după altul și cade unul după altul. Campionul îngenunchează."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "Leon! {player}, look, it's growing! We have to stop it together, now, before it swallows the whole sky!"
+      ],
+      "text": [
+        "Leon! {player}, uite, crește! Trebuie să-l oprim împreună, acum, până nu înghite tot cerul!"
+      ]
+    },
+    {
+      "en": [
+        "Out of the red, two shapes leap onto the roof: the two from the fog of the Slumbering Weald."
+      ],
+      "text": [
+        "Din roșeață, două siluete sar pe acoperiș: cele două din ceața Pădurii Adormite."
+      ]
+    },
+    {
+      "en": [
+        "They came! They really came! Come on, everyone, all together!"
+      ],
+      "text": [
+        "Au venit! Chiar au venit! Hai, toată lumea, toți odată!"
+      ]
+    },
+    {
+      "en": [
+        "Eternatus sinks back toward the core, its light guttering."
+      ],
+      "text": [
+        "Eternatus se scufundă înapoi spre miez, cu lumina pâlpâind."
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Now, while it's down! Take this, the chairman had it made for exactly this!"
+      ],
+      "text": [
+        "{player}! Acum, cât e la pământ! Ia asta, președintele a pus să fie făcută exact pentru asta!"
+      ]
+    },
+    {
+      "en": [
+        "{player} caught Eternatus!"
+      ],
+      "text": [
+        "{player} l-a prins pe Eternatus!"
+      ]
+    },
+    {
+      "en": [
+        "When the light clears, the two from the Weald are gone, and the sky over Wyndon is blue again."
+      ],
+      "text": [
+        "Când lumina se limpezește, cei doi din Pădure au dispărut, iar cerul de deasupra Wyndonului e iar albastru."
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Galar owes the two of you more than it will ever know. Hop, you were magnificent."
+      ],
+      "text": [
+        "Galarul vă datorează amândurora mai mult decât va ști vreodată. Hop, ai fost magnific."
+      ]
+    },
+    {
+      "en": [
+        "The Finals go on as planned. And I'll be waiting at the end of them, {player}. Don't keep me long."
+      ],
+      "text": [
+        "Finala continuă cum era plănuit. Iar eu o să te aștept la capătul ei, {player}. Nu mă lăsa să aștept mult."
+      ]
+    }
+  ],
+  "Rose": [
+    {
+      "en": [
+        "Chairman Rose"
+      ],
+      "text": [
+        "Președintele Rose"
+      ]
+    },
+    {
+      "en": [
+        "A thousand years from now, they will understand what I tried to do. I hope."
+      ],
+      "text": [
+        "Peste o mie de ani vor înțelege ce am încercat să fac. Sper."
+      ]
+    }
+  ]
+}
