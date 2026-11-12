@@ -74,9 +74,9 @@
       "depth": 1
     },
     {
-      "type": "Rug",
-      "x": 4,
-      "y": 8,
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
       "width": 1,
       "depth": 1
     },
@@ -84,6 +84,20 @@
       "type": "Plant",
       "x": 9,
       "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 6,
+      "y": 3,
       "width": 1,
       "depth": 1
     }

@@ -27,7 +27,7 @@
     "#..##.....#",
     "#..##.....#",
     "#.........#",
-    "#.........#",
+    "##........#",
     "####.######"
   ],
   "props": [
@@ -53,8 +53,15 @@
       "depth": 1
     },
     {
-      "type": "Fridge",
+      "type": "Bookshelf",
       "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 6,
       "y": 3,
       "width": 1,
       "depth": 1
@@ -74,15 +81,15 @@
       "depth": 1
     },
     {
-      "type": "Rug",
-      "x": 4,
+      "type": "Crates",
+      "x": 1,
       "y": 8,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Plant",
-      "x": 9,
+      "type": "Rug",
+      "x": 4,
       "y": 8,
       "width": 1,
       "depth": 1

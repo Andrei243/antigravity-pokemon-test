@@ -35,7 +35,7 @@ internal static partial class BuildingArt
     private static WallKind PorchWall(BuildingStyle s) => s.Pitched && s.Portal > 0 ? WallKind.Plaster : s.Wall;
 
     /// <summary>The height of a porch: an entrance block's under a pitched roof, one storey under a flat one.</summary>
-    public static int PorchHeight(BuildingStyle s) => s.Pitched ? PortalHeight : GroundStorey + TopBand;
+    public static int PorchHeight(BuildingStyle s) => s.Pitched ? PortalHeightOf(s) : GroundStorey + s.GroundLift + TopBand;
 
     // ------------------------------------------------------------------ materials
 
@@ -294,7 +294,7 @@ internal static partial class BuildingArt
             if (b.Doors.Exists(d => Math.Abs(d.X - tile) <= 1) || s.Window is WindowKind.None or WindowKind.Slit) continue;
             int cx = i * Bay + Bay / 2 - shift;
             if (cx - 14 < 2 || cx + 14 > w - 2 || h - top < 44) continue;
-            ShopWindow(c, cx, h - 13, light);
+            ShopWindow(c, cx, h - 13 - s.SillRise, light);
         }
     }
 

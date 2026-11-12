@@ -39,21 +39,21 @@
       "depth": 1
     },
     {
-      "type": "KitchenCounter",
+      "type": "Bookshelf",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Television",
       "x": 7,
       "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Stove",
-      "x": 8,
-      "y": 3,
-      "width": 1,
-      "depth": 1
-    },
-    {
-      "type": "Fridge",
+      "type": "Wardrobe",
       "x": 9,
       "y": 3,
       "width": 1,
@@ -84,6 +84,13 @@
       "type": "Plant",
       "x": 9,
       "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 2,
+      "y": 2,
       "width": 1,
       "depth": 1
     }

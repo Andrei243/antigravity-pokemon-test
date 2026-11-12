@@ -194,7 +194,10 @@ internal static partial class BuildingArt
     private static int PortalFor(string? text, int least = 52) => text == null ? least : Math.Max(least, Pix.TextWidth(text, 2) + 12);
 
     /// <summary>The style of a building: public buildings look the same in every town, houses follow the town.</summary>
-    public static BuildingStyle StyleOf(BuildingInfo b, Architecture mapTown)
+    public static BuildingStyle StyleOf(BuildingInfo b, Architecture mapTown, bool grown = false) =>
+        grown ? BaseStyleOf(b, mapTown) with { Grown = true } : BaseStyleOf(b, mapTown);
+
+    private static BuildingStyle BaseStyleOf(BuildingInfo b, Architecture mapTown)
     {
         var town = b.Town ?? mapTown;
         bool placed = b.Model.Length > 0;

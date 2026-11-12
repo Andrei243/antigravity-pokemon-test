@@ -4,6 +4,11 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Alola's and Galar's houses, shops and Pokémon Centers are built for grown people: taller doors you walk through without stooping, windows at a grown body's height, taller entrance porches.
+- Riding Tauros, Stoutland, Mudsdale or Machamp, you sit where that Pokémon's back is and tuck your legs up on the small ones, so your feet no longer hang to the ground beside them.
+- Six of Alola's houses that were furnished alike now each have their own: the berry farmer's plants, a boy's bookshelves and television, Ilima's tidy room, the malasada shop's stoves, a Heahea family's pictures and the rancher's feed crates.
+- The lei arch of Hau'oli City's Garland Days stands taller, so a grown crowd fits under it.
+- Battles on Hau'oli City's streets and at its marina are fought on a city stage rather than a meadow.
 - The travel phone now shows who is calling: Bianca, Shauna and the rest appear over the text box, their lips moving when a voice plays. It also works in Alola and Galar, with Hau, Lillie, Professor Kukui, Hala, Hop, Sonia, Professor Magnolia and Leon to call, and a POWERS card opens the Power Watch once you have one.
 - The photo studio remembers your last picture between sessions, can be worked with the mouse, and has a second counter in Lumiose City's PR Video Studio.
 - Your secret base can now open at spots outside Hoenn: its door moves to the new spot with everything inside left as it was, and MOVE IN HERE at the base's PC takes the new spot's own room while keeping the old room's layout for later.

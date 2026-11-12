@@ -39,21 +39,21 @@
       "depth": 1
     },
     {
-      "type": "KitchenCounter",
+      "type": "Fridge",
       "x": 7,
       "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Stove",
+      "type": "KitchenCounter",
       "x": 8,
       "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Fridge",
+      "type": "Stove",
       "x": 9,
       "y": 3,
       "width": 1,
@@ -74,15 +74,29 @@
       "depth": 1
     },
     {
-      "type": "Rug",
-      "x": 4,
-      "y": 8,
+      "type": "Painting",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Clock",
+      "x": 7,
+      "y": 2,
       "width": 1,
       "depth": 1
     },
     {
       "type": "Plant",
-      "x": 9,
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
       "y": 8,
       "width": 1,
       "depth": 1
