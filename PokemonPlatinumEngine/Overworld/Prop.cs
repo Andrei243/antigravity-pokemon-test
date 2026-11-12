@@ -389,6 +389,12 @@ public enum PropType
     PosterWall,
     /// <summary>Kalos's Solstice Serenade (plan 40 · GE9): a music stand of wrought iron with a sheet of songs and ribbons; a festival's thing.</summary>
     FestivalMusicStand,
+    /// <summary>Alola's Garland Days (plan 40 · GE9): two bamboo poles with a lei of flowers swung between them and a crystal on each; a festival's thing.</summary>
+    FestivalLeiArch,
+    /// <summary>Galar's Wool Fair (plan 40 · GE9): bales of straw stacked with a prize rosette and a tuft of fleece; a festival's thing.</summary>
+    FestivalHayBales,
+    /// <summary>Hisui's Sheaf Feast (plan 40 · GE9): three sheaves of wheat bound together before a stake with a paper tally; a festival's thing.</summary>
+    FestivalSheaves,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

@@ -24,7 +24,7 @@ internal static class HubArt
     /// <summary>Whose bay of Grayfall Keep a tile's column is (Hub_Keep: six bays of five, one tile between).</summary>
     public static string KeepTeamAt(int x) => (x / 6) switch
     {
-        0 => "galactic", 1 => "rocket", 2 => "hoenn", 3 => "stage", 4 => "plasma", _ => "flare"
+        0 => "galactic", 1 => "rocket", 2 => "hoenn", 3 => "stage", 4 => "plasma", 5 => "flare", _ => "skull"
     };
 
     public static (Color Field, Color Band) BannerColours(string? team) => team?.ToLowerInvariant() switch
@@ -34,6 +34,8 @@ internal static class HubArt
         "hoenn" => (Rgb(176, 58, 46), Rgb(52, 98, 176)),
         "plasma" => (Rgb(208, 212, 222), Rgb(54, 84, 156)),
         "flare" => (Rgb(196, 64, 42), Rgb(34, 34, 42)),
+        // Alola's bay (plan 41 · EG9's owed row): a slate field with a bone-white band
+        "skull" => (Rgb(58, 52, 70), Rgb(226, 224, 232)),
         _ => (Rgb(150, 40, 52), Rgb(232, 196, 84))
     };
 

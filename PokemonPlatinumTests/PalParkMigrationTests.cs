@@ -196,7 +196,7 @@ public class PalParkMigrationTests
     [Fact]
     public void TheDaysVisitorsNeverTakeThePlaceOfSixThatWereBroughtOver()
     {
-        var pool = SpeciesSources.Sinnoh.PalParkPool;
+        var pool = SpeciesSources.Sinnoh.PalParkVisitors;
         var chance = new Random(4);
 
         // Visitors yield to another day's visitors, as they did before the migration

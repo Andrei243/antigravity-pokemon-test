@@ -120,6 +120,16 @@ script Celosia
   hide self
   end
 
+script Plumeria
+  face self player
+  speaker "Plumeria"
+  say "Guzma heard his old crew's hideout was rebuilt in this fort. Dumb rumour. But he came, so I came."
+  battle self as "plumeria_gathering"
+  say "Yeah, yeah. You haven't gone soft. Go on, he's sulking in the back."
+  setflag FLAG_KEEP_PLUMERIA_BEATEN
+  hide self
+  end
+
 
 # ------------------------------------------------------------------ the leaders: once in the gathering, then a battle a day
 
@@ -273,6 +283,31 @@ label Rested
   say "That was today's. Come back tomorrow."
   end
 
+script Guzma
+  face self player
+  speaker "Guzma"
+  if flag FLAG_GATHERING_DONE goto Daily
+  if flag FLAG_KEEP_GUZMA_BEATEN goto Beaten
+  say "Somebody told me there's a whole new house for Team Skull out here. Turns out it's a cold rock full of grown-ups yelling."
+  say "So I'm gonna take it out on you. Guzma's what? Guzma's the one who still shows up!"
+  battle self as "guzma_gathering"
+  say "...Destroyed again. You're the one thing on these islands that never changes."
+  setflag FLAG_KEEP_GUZMA_BEATEN
+  end
+label Beaten
+  say "Whoever planned this knew exactly which buttons to push. Mine are all of them."
+  end
+label Daily
+  if flag FLAG_DAILY_KEEP_GUZMA goto Rested
+  say "Back for more? Good. Guzma's got nothing but time."
+  battle self as "guzma_gathering"
+  setflag FLAG_DAILY_KEEP_GUZMA
+  say "Same time tomorrow. Don't make me wait."
+  end
+label Rested
+  say "One a day. Even I need a nap."
+  end
+
 
 # ------------------------------------------------------------------ the one who gathered them
 
@@ -292,8 +327,11 @@ label Unova
   if not flag UnovaHallOfFame goto Kalos
   if not flag FLAG_KEEP_GHETSIS_BEATEN goto NotYet
 label Kalos
-  if not flag KalosHallOfFame goto Show
+  if not flag KalosHallOfFame goto Alola
   if not flag FLAG_KEEP_LYSANDRE_BEATEN goto NotYet
+label Alola
+  if not flag AlolaHallOfFame goto Show
+  if not flag FLAG_KEEP_GUZMA_BEATEN goto NotYet
 label Show
   scene "TheShow"
   say "Bravo! Bravo! Every act played, every villain beaten, and in front of a full house. Well, a full fort."

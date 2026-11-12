@@ -45,6 +45,32 @@ public class SinnohSpeciesTests
         Assert.Equal(SpeciesSources.HighestInSinnoh, Sinnoh.Ways.Count(w => PokemonDatabase.Get(w.Key)!.DexNumber <= SpeciesSources.HighestInSinnoh) + Sinnoh.PalParkPool.Count);
     }
 
+    /// <summary>
+    /// Who Pal Park's visitors are drawn from (plan 38 · EX6's decision of 2026-11-12): what only Pal Park would give were
+    /// there no hideaways, so the park keeps bringing the older games' species and not only the eighteen legendaries.
+    /// </summary>
+    public static readonly string[] PalParkVisitors =
+    {
+        "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise",
+        "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Ekans", "Arbok", "Sandshrew", "Sandslash",
+        "Vulpix", "Ninetales", "Growlithe", "Arcanine", "Mewtwo", "Mew", "Chikorita", "Bayleef", "Meganium", "Cyndaquil",
+        "Quilava", "Typhlosion", "Totodile", "Croconaw", "Feraligatr", "Pineco", "Forretress", "Shuckle", "Teddiursa",
+        "Ursaring", "Raikou", "Entei", "Suicune", "Lugia", "Ho-Oh", "Celebi", "Treecko", "Grovyle", "Sceptile", "Torchic",
+        "Combusken", "Blaziken", "Mudkip", "Marshtomp", "Swampert", "Lotad", "Lombre", "Ludicolo", "Seedot", "Nuzleaf",
+        "Shiftry", "Sableye", "Mawile", "Zangoose", "Seviper", "Lunatone", "Solrock", "Regirock", "Regice", "Registeel",
+        "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys"
+    };
+
+    [Fact]
+    public void PalParksVisitorsAreWhatOnlyPalParkWouldGiveWithoutTheHideaways()
+    {
+        var visitors = Sinnoh.PalParkVisitors.ToList();
+        Assert.Equal(PalParkVisitors.OrderBy(s => PokemonDatabase.Get(s)!.DexNumber), visitors);
+        // every one of what Pal Park alone gives is among them, and the rest the hideaways give too
+        Assert.Empty(OnlyInPalPark.Except(visitors));
+        Assert.All(visitors.Except(OnlyInPalPark), s => Assert.True(Sinnoh.Has(s), s));
+    }
+
     [Fact]
     public void WhatOnlyPalParkGivesIsTheListAndNothingElse()
     {
@@ -248,7 +274,7 @@ public class SinnohSpeciesTests
     public void PalParksVisitorsGoRoundThePoolSixADay()
     {
         // The user's choice of 2026-10-17: a fixed rotation by the date, no chance in which species come
-        var pool = Sinnoh.PalParkPool;
+        var pool = Sinnoh.PalParkVisitors;
         Assert.True(pool.Count >= 6);
         var day = new DateTime(2026, 10, 17);
 
@@ -282,7 +308,7 @@ public class SinnohSpeciesTests
     [Fact]
     public void AnotherDaysVisitorsMakeWayForTodays()
     {
-        var pool = Sinnoh.PalParkPool;
+        var pool = Sinnoh.PalParkVisitors;
         var park = new PalParkState();
         var day = new DateTime(2026, 10, 17);
         Assert.True(park.Welcome(pool, day, new Random(1)));
@@ -304,7 +330,7 @@ public class SinnohSpeciesTests
         var host = new HeadlessScriptHost { NationalDex = true };
         Run("Worker", "PalParkLobby", host);
         Assert.True(host.Pastimes.PalPark.Stocked);
-        Assert.All(host.Pastimes.PalPark.Waiting, p => Assert.Contains(p.Species.Name, Sinnoh.PalParkPool));
+        Assert.All(host.Pastimes.PalPark.Waiting, p => Assert.Contains(p.Species.Name, Sinnoh.PalParkVisitors));
     }
 
     private static HeadlessScriptHost Run(string script, string place, HeadlessScriptHost host)

@@ -121,6 +121,72 @@
           "Inimă pe un stâlp"
         ]
       }
+    },
+    "wedgehurst.Festival_wool_fair_1": {
+      "name": {
+        "en": [
+          "Hay bales"
+        ],
+        "text": [
+          "Baloți de fân"
+        ]
+      }
+    },
+    "wedgehurst.Festival_wool_fair_2": {
+      "name": {
+        "en": [
+          "Hay bales"
+        ],
+        "text": [
+          "Baloți de fân"
+        ]
+      }
+    },
+    "wedgehurst.Festival_wool_fair_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          "Tarabă"
+        ]
+      }
+    },
+    "wedgehurst.Festival_wool_fair_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          "Negustor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: Rain on the green, so the Wool Fair's come indoors again! Milk from the farm, or a sweet for the road?"
+        ],
+        "text": [
+          "Negustor: Plouă pe pajiște, așa că Târgul Lânii s-a mutat iar înăuntru! Lapte de la fermă sau ceva dulce de drum?"
+        ]
+      }
+    },
+    "wedgehurst.Festival_wool_fair_judge": {
+      "name": {
+        "en": [
+          "Fleece judge"
+        ],
+        "text": [
+          "Arbitrul lânii"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm judging the fleeces this year. The rosette goes to the Wooloo from Postwick again. Nobody's fluffier!"
+        ],
+        "text": [
+          "Anul ăsta jurizez lâna. Rozeta merge iar la Wooloo-ul din Postwick. Nimeni nu e mai pufos!"
+        ]
+      }
     }
   },
   "signs": {}

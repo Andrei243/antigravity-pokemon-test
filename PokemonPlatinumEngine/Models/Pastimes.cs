@@ -197,7 +197,7 @@ public sealed class PalParkState
 
     /// <summary>
     /// The six species that visit on a day (plan 03 · D12a, the user's choice of 2026-10-17: a fixed rotation by the
-    /// day, so the six can be planned for): the pool (<see cref="Data.SpeciesSources.PalParkPool"/>, the species Sinnoh
+    /// day, so the six can be planned for): the pool (<see cref="Data.SpeciesSources.PalParkVisitors"/>, the species Sinnoh
     /// has no other way to, in National order) is read as a ring, and each day takes the next six of it, the day's
     /// six starting at <c>day × 6</c> round the ring. So one date always brings the same six, the next day the six
     /// after them, and the whole pool comes round in turn. No chance is drawn. Where the pool hasn't six, Diamond's,

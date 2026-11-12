@@ -227,6 +227,90 @@
           "Inimă pe un stâlp"
         ]
       }
+    },
+    "hauoli_city.Festival_garland_1": {
+      "name": {
+        "en": [
+          "Lei arch"
+        ],
+        "text": [
+          "Arcadă de ghirlande"
+        ]
+      }
+    },
+    "hauoli_city.Festival_garland_2": {
+      "name": {
+        "en": [
+          "Lei arch"
+        ],
+        "text": [
+          "Arcadă de ghirlande"
+        ]
+      }
+    },
+    "hauoli_city.Festival_garland_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          "Tarabă"
+        ]
+      }
+    },
+    "hauoli_city.Festival_garland_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          "Negustor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: Alola, and happy Garland Days! Malasadas fresh from the fryer, and something cold to wash them down?"
+        ],
+        "text": [
+          "Negustor: Alola și Zile ale Ghirlandelor fericite! Malasade proaspăt prăjite și ceva rece lângă ele?"
+        ]
+      }
+    },
+    "hauoli_city.Festival_garland_dancer": {
+      "name": {
+        "en": [
+          "Dancer"
+        ],
+        "text": [
+          "Dansatoare"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Under the lei arch, every pose is a Z-Move! Arms up, sweep left, and... stamp! You'd make a fine Electric type."
+        ],
+        "text": [
+          "Sub arcada de ghirlande, fiecare poză e o Mișcare Z! Brațele sus, mătură la stânga și... bate din picior! Ai fi un tip Electric pe cinste."
+        ]
+      }
+    },
+    "hauoli_city.Festival_garland_islander": {
+      "name": {
+        "en": [
+          "Islander"
+        ],
+        "text": [
+          "Localnică"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Each island strings its own lei for Garland Days, and on the last night we trade them. Melemele's is pink, of course."
+        ],
+        "text": [
+          "Fiecare insulă își împletește ghirlanda pentru Zilele Ghirlandelor, iar în ultima noapte le schimbăm. A lui Melemele e roz, desigur."
+        ]
+      }
     }
   },
   "signs": {

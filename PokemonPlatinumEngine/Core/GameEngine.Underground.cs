@@ -61,8 +61,58 @@ public partial class GameEngine
     /// <summary>A hideaway under the tunnels stocked with the day's Pokémon as the player comes to it or wakes in it (plan 38 · EX6).</summary>
     private void StockHideaway()
     {
-        if (Hideaways.OfMap(flow.Map?.Name) is { } hideaway)
-            Hideaways.Stock(flow.Map!, hideaway, (int)(flow.Encounters.DailyNumber & 0x7FFFFFFF), flow.Pokedex.NationalUnlocked);
+        if (Hideaways.OfMap(flow.Map?.Name) is not { } hideaway) return;
+        // The statues placed in the base weigh the day's pick (part b); with none it is the plain pick
+        Hideaways.Stock(flow.Map!, hideaway, HideawayDay, flow.Pokedex.NationalUnlocked, Hideaways.Weights(flow.Underground.Base));
+        // and the day's walls that still hold something glint as the player comes near each (HideawayStep)
+        wallsGlinted.Clear();
+        HideawayStep();
+    }
+
+    /// <summary>The walls of the hideaway the player is in that have glinted since they came in.</summary>
+    private readonly HashSet<(int X, int Z)> wallsGlinted = new();
+
+    /// <summary>How near a wall the player must come for it to glint: four tiles each way, a wall in view of the player.</summary>
+    public const int HideawayWallGlintReach = 4;
+
+    /// <summary>
+    /// A hideaway's walls that hold something today glint once each as the player first comes within
+    /// <see cref="HideawayWallGlintReach"/> of them after coming in, gold as the radar's walls do (the radar is the tunnels').
+    /// </summary>
+    private void HideawayStep()
+    {
+        if (Hideaways.OfMap(flow.Map?.Name) is not { } h) return;
+        int px = flow.Player.GridX, pz = flow.Player.GridY;
+        foreach (var (x, z, _) in HideawayWallsLeft(h))
+            if (Math.Abs(x - px) <= HideawayWallGlintReach && Math.Abs(z - pz) <= HideawayWallGlintReach && wallsGlinted.Add((x, z)))
+                world?.Life.Glint(flow.Map!, x, z, new Color(255, 232, 130, 255));
+    }
+
+    private int HideawayDay => (int)(flow.Encounters.DailyNumber & 0x7FFFFFFF);
+
+    /// <summary>The day's walls of a hideaway not yet dug today, with their place in the day's list.</summary>
+    private IEnumerable<(int X, int Z, int Wall)> HideawayWallsLeft(Hideaway h) =>
+        Hideaways.WallsOf(h, HideawayDay).Select((w, k) => (w.X, w.Z, k)).Where(w => !flow.Story.Has(Hideaways.WallFlag(h, w.k)));
+
+    /// <summary>A wall of a hideaway faced (plan 38 · EX6, part b): the Underground's own <c>Wall</c> script, which digs into it.</summary>
+    private bool TryInteractHideaway(int x, int z)
+    {
+        if (Hideaways.OfMap(flow.Map?.Name) is not { } h || !HideawayWallsLeft(h).Any(w => w.X == x && w.Z == z)) return false;
+        return StartScript("Wall", file: "underground");
+    }
+
+    /// <summary>The hideaway's wall ahead dug into: its day's flag set as the game begins, a wall of the hideaway's own table.</summary>
+    private bool StartHideawayMining(Hideaway h)
+    {
+        var (x, z) = AheadBelow();
+        var left = HideawayWallsLeft(h).Where(w => w.X == x && w.Z == z).ToList();
+        if (left.Count == 0) return false;
+        var wall = left[0];
+        flow.Story.Set(Hideaways.WallFlag(h, wall.Wall));
+        var game = new MiningGame(new Rand32((ulong)fieldRandom.NextInt64()), Hideaways.WallTable(h, HideawayDay, flow.Pokedex.NationalUnlocked));
+        flow.State = GameState.Mining;
+        flow.MiningScreen.Open(game, flow.Underground);
+        return true;
     }
     private bool InTheBase => IsUnderground && flow.Player.GridX < SecretBaseRules.Size && flow.Player.GridY < SecretBaseRules.Size;
 
@@ -614,6 +664,7 @@ public partial class GameEngine
     /// <summary>The wall ahead is dug at (<c>Mining_StartGameTask</c>): its place on the map is used up as the game begins.</summary>
     private bool StartMining()
     {
+        if (Hideaways.OfMap(flow.Map?.Name) is { } hideaway) return StartHideawayMining(hideaway);
         var (x, z) = AheadBelow();
         if (!Tunnels.StartMining(x, z)) return false;
         flow.Story.Set(DugForFossilsFlag);
