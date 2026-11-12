@@ -1,0 +1,23 @@
+{
+  // Paldea as plan 34 · PD1 opens it, hand-built at about a third of the original's distances (plan 34 · decision 1)
+  // from public descriptions of Scarlet and Violet and memory of play, nothing traced or taken: Cabo Poco on its cape in
+  // the far south-west, the player's house and the president's on the hill over the sea; Poco Path north along the
+  // cliffs past the lighthouse, with the beach under them and Inlet Grotto in their foot; Los Platos, the crossroads
+  // village; the South Province's first area of fields; and Mesagoza at the head of its rise, the academy on its hill at
+  // the top of the stairs. x runs east, z south, y up, in metres; a chunk is 32 m. The rest of the region grows north and
+  // east of these chunks in later sessions (plan 34 · PD3 on), so nothing here has to move
+  "region": "Paldea",
+  "chunks": [-3, -12, 2, 1],
+  "baseHeight": 1.2,
+  "cover": { "shore": 0.6 },
+  "areas": [
+    { "key": "cabo_poco", "name": "Cabo Poco", "polygon": [[-52, -30], [96, -30], [96, 64], [-52, 64]], "music": "paldea/cabo_poco" },
+    { "key": "poco_path", "name": "Poco Path", "polygon": [[-96, -150], [96, -150], [96, -30], [-52, -30], [-52, 64], [-96, 64]], "music": "paldea/south_province" },
+    { "key": "los_platos", "name": "Los Platos", "polygon": [[-96, -210], [96, -210], [96, -150], [-96, -150]], "music": "paldea/south_province" },
+    { "key": "south_province_area_one", "name": "South Province (Area One)", "polygon": [[-96, -300], [96, -300], [96, -210], [-96, -210]], "music": "paldea/south_province" },
+    { "key": "mesagoza", "name": "Mesagoza", "polygon": [[-96, -400], [96, -400], [96, -300], [-96, -300]], "music": "paldea/mesagoza" }
+  ],
+  "maps": [
+    { "name": "Paldea", "areas": ["cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza"] }
+  ]
+}

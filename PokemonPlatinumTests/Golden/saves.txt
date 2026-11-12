@@ -6,7 +6,7 @@ world 0, story 0, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Turtwig Lv5 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, Absorb 25/25, id 00000000#0
 bag: Potion x5, Poké Ball x10, Revive x2
-upgrade from story 0: 517 changes
+upgrade from story 0: 523 changes
   + FLAG_ALOLA_HIDE_HALA_IKI
   + FLAG_ALOLA_HIDE_HAU_IKI
   + FLAG_ALOLA_HIDE_KUKUI_HOME
@@ -365,6 +365,12 @@ upgrade from story 0: 517 changes
   + FLAG_KALOS_SANTALUNE_BEGUN
   + FLAG_KALOS_STORY_BEGUN
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
+  + FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  + FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  + FLAG_PALDEA_HIDE_NEMONA_GATE
+  + FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  + FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  + FLAG_PALDEA_STORY_BEGUN
   + FLAG_RECEIVED_PARCEL
   + FLAG_RIVAL_LEFT_HOME
   + FLAG_TALKED_TO_MOM
@@ -1773,7 +1779,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #1: Monferno Lv16 "Monferno" Male Hardy, Blaze, holds nothing, HP 49/49, Scratch 35/35, Leer 30/30, Ember 25/25, Mach Punch 30/30, id 00000000#1
 bag: Potion x3, Poké Ball x5
 bag after: Potion x3, Poké Ball x5, HM06 x1
-upgrade from story 0: 518 changes
+upgrade from story 0: 524 changes
   + FLAG_ALOLA_HIDE_HALA_IKI
   + FLAG_ALOLA_HIDE_HAU_IKI
   + FLAG_ALOLA_HIDE_KUKUI_HOME
@@ -2132,6 +2138,12 @@ upgrade from story 0: 518 changes
   + FLAG_KALOS_SANTALUNE_BEGUN
   + FLAG_KALOS_STORY_BEGUN
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
+  + FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  + FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  + FLAG_PALDEA_HIDE_NEMONA_GATE
+  + FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  + FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  + FLAG_PALDEA_STORY_BEGUN
   + FLAG_RECEIVED_HM06
   + FLAG_RECEIVED_PARCEL
   + FLAG_RIVAL_LEFT_HOME

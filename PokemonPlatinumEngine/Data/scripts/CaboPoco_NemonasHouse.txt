@@ -1,0 +1,11 @@
+# The president's house in Cabo Poco (plan 34 · PD1). VAR_PALDEA_STORY is cabo_poco.txt's count.
+
+
+script Housekeeper
+  speaker "Housekeeper"
+  if var VAR_PALDEA_STORY >= 2 goto Battled
+  sayown
+  end
+label Battled
+  say "You battled the young miss already? Then you have a friend for life, and a rival for longer than that."
+  end

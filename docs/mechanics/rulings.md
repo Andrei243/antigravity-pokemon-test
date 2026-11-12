@@ -12662,3 +12662,51 @@ built; what is still owed is listed at the end and in plan 21's last note.
 - **What every type has, Sound has**: its words (`types.Sound`, Romanian *Sunet*), its sign (a note), its colour (teal `64,168,152`), its cry's timbre, its move, Z-Move and Max Move sounds and looks, the trainer AI's chart (the AI reads `TypeChart`), Tera Sound (a Tera type like any, and its Tera Shard), the Sound Gem, the Tuning Fork (a fifth more, as the boosters), the Taci Berry (*a tăcea*, to be silent: halves a super-effective Sound hit, as the resist berries) and the Sonorium Z, and plan 39's two materials of a type (the Hollow Reed and the rarer Echo Crystal). Items 9920 to 9924; moves 3090 and 3091 (3073 to 3089 free; 3101 on is CP10's).
 - **What leaves it out**: Hidden Power (Platinum's sixteen), Arceus's plates and Silvally's memories (decision 13), the Battle Hall's board (Platinum's seventeen), the Legend Plate's Judgment, the Pokétch's Move Tester, and whatever draws or lists the games' types (`TypeChart.GamesTypes`): the randomiser's shuffle (a seed deals what it always dealt), the Friend Safari, the sparring room, Conversion 2 (so no battle's draw moves) and the help's chart (shown eighteen wide until a shot of it nineteen wide is looked at). A choice of a type the player makes (the Monotype run, the Pokédex's search) offers the types some species has (`TypeChart.TypesWithSpecies`), so Sound joins it by itself with the first Sound species.
 - **What must not move**: no species or move of the games has the type, so the golden battles of both rules stand; the Sound items are kept out of the battle corpus's draw (`BattleCorpus`), and the oracle's scenarios never draw Sound (Showdown has no such type).
+
+## Paldea's first chapter, on the open world (2026-11-13, plan 34 · PD1, its first session)
+
+- **The plan's decisions, unanswered, at their recommendations** (plan 34 · "Decisions for the user"): (1) about a third
+  of the original's distances; (2) the version is the player's choice, kept as `VAR_PALDEA_VERSION` (1 Scarlet, 2
+  Violet); (3) to (6) are later sessions' (the gyms' order, sandwiches, battles on the stages of plan 32 · decision 3,
+  the expansions last). Each is open to the user's word.
+- **The version and the mount are one choice.** Plan 34 has the version decide the legendary; plan 30 · decision 14 has
+  the player choose the legendary at the original's beat, both offered once in a scene of ours. They are made one fact:
+  in Inlet Grotto both lie worn out after the Houndour's chase, and the one the player shares the sandwich with sets
+  `VAR_PALDEA_VERSION` and `VAR_PALDEA_MOUNT` together (the red one 1 and Koraidon, the violet one 2 and Miraidon), so
+  the two can never disagree; the other leaves, to come back as its counterpart in a later chapter. A Champion crossing
+  in plays the same scene. Nothing before the grotto is the version's (the introduction is the director's, the tables
+  of PD1's places are both versions').
+- **The mount is had from the grotto on**: `VAR_PALDEA_MOUNT` set is all plan 30 · FM12's rules ask before the trot
+  (`MountRules.WhyNot`), as Scarlet and Violet's legendary carries its rider from the opening chapter; its five powers
+  wait for the Titans' flags (PD4). The original's first ride is a beat of its own; here it is the mount's key.
+- **The introduction's speaker is Director Clavell**, the one person of the opening every game meets: the professor is
+  Sada or Turo by the version, which a new game hasn't chosen when the introduction runs. The region file's `professor`
+  record is his, with lines of ours.
+- **Where Paldea's land comes from.** Hand-built on plan 32's engine as data (`Data/world3d/paldea`), as Galar's is,
+  baked by `dotnet run --project tools/OpenWorldBake -- paldea` into `baked/` (84 chunks, about 9.6 MB, held by
+  `PaldeaTests.TheBakeIsWhatTheDescriptionsGive`). One open map, `Paldea`, of five areas south to north: Cabo Poco on its
+  cape (the player's house, the president's house on its hill with the terrace over the sea), Poco Path with the
+  lighthouse on its knoll and the beach under the cliffs (reached by a track down, its cliffs dropped from), Los Platos,
+  the South Province's first area, and Mesagoza with its plaza and the academy's hill at the head of the great stairs.
+  Its present edges are banks too steep to climb; the sea west and south. Keys: `cabo_poco`, `poco_path`, `los_platos`,
+  `south_province_area_one`, `mesagoza`. **Its chunks' rectangle** is `[-3, -12, 2, 1]`, Cabo Poco near the origin, so
+  the rest of the region grows north and east without moving these places; the whole region at decision 1's scale
+  (about 3 km square, some 8,800 chunks as one rectangle, about a gigabyte of bake) is a question for the user before PD3
+  (see plan 34's "PD1 as built").
+- **Rooms**: six grid map files laid out from rooms of the same shape (the player's house on two floors and Nemona's
+  house from Postwick's, Inlet Grotto from the Galar Mine with one way out, Los Platos's Pokémon Center from
+  Wedgehurst's, the academy's entrance hall from the research lab). A new game (`--region Paldea`) wakes in the bedroom
+  (4, 6); a Champion crossing in from Galar lands inside the house's door (`CaboPoco_PlayersHouse_1F` 6, 10); **a return
+  to Paldea lands inside Los Platos's Pokémon Center** (its `Harbour`: the original has no airport, and the plane's
+  return needs a spot). The plane from Galar's airfield (plan 33 · GL7) lands here now.
+- **The first chapter** (our words on Scarlet and Violet's beats as they are publicly told): `VAR_PALDEA_STORY` 0 to 7
+  (`cabo_poco.txt`'s header): the director at home on the first morning, the three on the president's terrace with the
+  Pokédex and Nemona's first battle (her team the starter strong against the player's), the roar on the beach, the two
+  in Inlet Grotto, Nemona's lesson in catching at the lighthouse (five Poké Balls), Nemona at Mesagoza's south gate, and
+  the director's welcome in the entrance hall with **the Tera Orb, given only to a bag without one**, as Galar's
+  Dynamax Band is. Objectives 800 to 806 and `paldeaFree` 899, English and Romanian. `common.PaldeaNewGame` hides the
+  chapter's people until their scenes. Looks of ours: `nemona`, `clavell`, `paldea_mom`. Trainers of ours in
+  `Data/world/paldea/trainers.json` (Nemona's three, two Students, the class `Student` new to the table).
+- **The sample pack's Tidemark moves after Paldea**, now the last region with maps: its ferryman stands in Los Platos's
+  Pokémon Center (`samples/packs/tidemark-isle`, `docs/packs.md`), and with Paldea at the chain's end nothing goes on
+  from Tidemark.

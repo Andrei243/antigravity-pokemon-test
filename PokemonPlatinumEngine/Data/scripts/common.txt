@@ -4256,6 +4256,19 @@ script GalarNewGame
   return
 
 
+# What a game starts with in Paldea (plan 34 · PD1), run for every new game as each region's <Region>NewGame is: the
+# first chapter's people hidden until their scenes (cabo_poco.txt's header has the count). It may only set flags: it
+# runs with no screen. The director at the player's house is there from the start, for the first morning
+script PaldeaNewGame
+  setflag FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  setflag FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  setflag FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  setflag FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  setflag FLAG_PALDEA_HIDE_NEMONA_GATE
+  setflag FLAG_PALDEA_STORY_BEGUN
+  return
+
+
 # A Max Raid den of Galar's (plan 33 · GL3; docs/scripts.md, "Max Raid dens"), after its place's script has looked into it
 # with `raid den` (RESULT 1 where its beam is lit and its boss not yet felled today): its light's Watts once a day, the
 # raid offered, fought beside three Trainers who answer the den's call, and the felled boss's catch

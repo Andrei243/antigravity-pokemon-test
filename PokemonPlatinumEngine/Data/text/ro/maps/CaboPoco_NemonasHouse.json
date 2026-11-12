@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Nemona's House"
+    ],
+    "text": [
+      "Casa Nemonei"
+    ]
+  },
+  "people": {
+    "housekeeper": {
+      "name": {
+        "en": [
+          "Housekeeper"
+        ],
+        "text": [
+          "Menajeră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The young miss has been battling since she could walk. She'll be delighted there's a new student next door."
+        ],
+        "text": [
+          "Domnișoara se luptă de când a învățat să meargă. O să fie încântată că are o elevă nouă alături."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3,5": {
+      "en": [
+        "A cabinet of battle trophies, every one of them won by Nemona. A whole shelf is still empty."
+      ],
+      "text": [
+        "Un dulap cu trofee de luptă, toate câștigate de Nemona. Un raft întreg e încă gol."
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Inlet Grotto"
+    ],
+    "text": [
+      "Inlet Grotto"
+    ]
+  },
+  "people": {
+    "koraidon_grotto": {
+      "name": {
+        "en": [
+          "Koraidon"
+        ],
+        "text": [
+          "Koraidon"
+        ]
+      }
+    },
+    "miraidon_grotto": {
+      "name": {
+        "en": [
+          "Miraidon"
+        ],
+        "text": [
+          "Miraidon"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

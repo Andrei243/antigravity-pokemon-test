@@ -120,9 +120,9 @@ public class LevelLadderTests
         // Sinnoh's is read from its file too, and has no mapping to cross by
         Assert.Equal(new[] { 14, 22, 26, 32, 37, 41, 44, 50, 62 }, LevelCaps.TableOf(RegionDatabase.Sinnoh));
         Assert.Equal(LevelCaps.TableOf(RegionDatabase.Sinnoh), LevelCaps.TableOf(RegionDatabase.Sinnoh, crossed: true));
-        // A region with no table yet has none either way
-        Assert.Null(LevelCaps.TableOf(RegionDatabase.Paldea));
-        Assert.Null(LevelCaps.TableOf(RegionDatabase.Paldea, crossed: true));
+        // A region with no table has none either way: the hub, which has no levels of its own (plan 41 · EG1)
+        Assert.Null(LevelCaps.TableOf(RegionDatabase.Hub));
+        Assert.Null(LevelCaps.TableOf(RegionDatabase.Hub, crossed: true));
     }
 
     [Fact]

@@ -4447,6 +4447,10 @@
       "note": "first spoken at goldenrod_radio_tower_5f.txt(28)",
       "provisional": true
     },
+    "director_clavell": {
+      "note": "first spoken at CaboPoco_PlayersHouse_1F.txt(16)",
+      "provisional": true
+    },
     "director_wren": {
       "note": "first spoken at JubilifeTV1F.txt(121)",
       "provisional": true
@@ -5206,6 +5210,10 @@
     },
     "hotel_clerk": {
       "note": "first spoken at HeaheaCity_Hotel.txt(7)",
+      "provisional": true
+    },
+    "housekeeper": {
+      "note": "first spoken at CaboPoco_NemonasHouse.txt(5)",
       "provisional": true
     },
     "huey": {
@@ -9442,6 +9450,10 @@
         "accent": "en-us"
       }
     },
+    "nemona": {
+      "note": "first spoken at cabo_poco.txt(27)",
+      "provisional": true
+    },
     "nessa": {
       "note": "first spoken at Hulbury_StadiumPitch.txt(8)",
       "provisional": true
@@ -11375,6 +11387,7 @@
     "Diantha": "diantha",
     "Digging Brother": "digging_brother",
     "Director": "director",
+    "Director Clavell": "director_clavell",
     "Director Wren": "director_wren",
     "Dock": "dock",
     "Dojo Master": "dojo_master",
@@ -11478,6 +11491,7 @@
     "Host": "look:host",
     "Hostess": "hostess",
     "Hotel Clerk": "hotel_clerk",
+    "Housekeeper": "housekeeper",
     "Huey": "huey",
     "Ian": "ian",
     "Ilima": "ilima",
@@ -11624,6 +11638,7 @@
     "Nanu": "nanu",
     "Naoko": "naoko",
     "Neighbour": "neighbour",
+    "Nemona": "nemona",
     "Nessa": "nessa",
     "Nikola": "nikola",
     "Norma": "norma",
