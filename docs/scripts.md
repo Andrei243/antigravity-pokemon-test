@@ -1371,6 +1371,17 @@ Plan 42 · PS1, PS2 (`Models/StageShow/`, `Data/show-props.json`, `Data/stage-sh
 
 The card-flip tables (plan 42 · PS3) are words of `gamecorner`: `gamecorner cards` seats the player at a table (the script waits; the coins come back to the case), `gamecorner prize goldenrod` asks from Goldenrod's list (HeartGold's TMs and held items), and `gamecorner pokemon` asks which of Goldenrod's three Pokémon (`RESULT` 1 to 3, 0 none; `{thing}` and `{price}`), whose price `gamecorner pay` takes (`RESULT` 0 with too few coins).
 
+### The film studio
+
+Plan 42 · PS4 (`Models/Studio/StudioFilms.cs`, `Data/studio-films/`; `docs/mechanics/rulings.md`, "The film studio"). Director Wren's desk in Jubilife TV's lobby (`JubilifeTV1F.txt`'s `StudioDesk`) speaks it until the studios' lot is built.
+
+| Command | What it does |
+|---|---|
+| `studio shoot "emptySeat"` | A take of the film on its own battle (the cast lent, the foe, the fixed rolls, the beats; no EXP, money, bag or Pokédex, and nothing of the player's team): the script waits, and `RESULT` is the take's stars, 1 to 5 (0 with no studio or a film not open yet). The take is kept in the studio's records; a lost take is an ending, never a white-out. |
+| `studio open "gildedHour"` | `RESULT` 1 when the studio's rank opens the film. |
+| `studio stars "emptySeat"` | `RESULT` the film's best stars, 0 never shot. |
+| `studio rank` | `RESULT` the studio's rank, every film's best stars summed. |
+
 ### The Laurel Gallery and the Laurel Circuit
 
 Plan 41 · EG2 and EG4 (`docs/mechanics/rulings.md`, "The Laurel Gallery" and "The Laurel Circuit"; `Models/LaurelGallery.cs`,

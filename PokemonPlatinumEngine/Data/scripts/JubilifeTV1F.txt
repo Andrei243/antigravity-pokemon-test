@@ -110,3 +110,39 @@ label Opened
   say "Have you been to see the Gift Runners? Gifts come to the box from all over, on days and for deeds."
   say "And words, too. Say the right two words to a Runner, and you never know what might turn up."
   end
+
+
+# The film studio's desk (plan 42 · PS4, part a; rulings, "The film studio"): until the studios' lot behind Virbank's
+# gate is built (part b), a director of ours shoots the studio's films in Jubilife TV's lobby. A take is a battle of the
+# film's own: its cast lent, its foe, its beats and lines, and an ending by how it is played. Nothing of the player's
+# own team goes in, and nothing comes out of it but the take's stars.
+script StudioDesk
+  face self player
+  speaker "Director Wren"
+  studio rank
+  if result >= 1 goto Again
+  say "Ah, a new face! I'm Wren, and I direct films for the studio. Every take is a battle, played to a script."
+  say "We lend you the cast. Say the script's lines or your own, and the take ends however you play it."
+  goto Pick
+label Again
+  say "Back for another take? Splendid! The studio keeps your best take of every film."
+label Pick
+  choose "Which film shall we shoot?" "THE EMPTY SEAT" "THE GILDED HOUR" "NOT TODAY"
+  if result == 0 goto EmptySeat
+  if result == 1 goto GildedHour
+  say "Come back whenever you feel like a star!"
+  end
+label EmptySeat
+  studio shoot "emptySeat"
+  goto Wrap
+label GildedHour
+  studio shoot "gildedHour"
+  goto Wrap
+label Wrap
+  speaker "Director Wren"
+  if result >= 4 goto Great
+  say "That's a wrap! Every take you shoot goes into the studio's records."
+  end
+label Great
+  say "Magnificent! That's the take the posters will be painted from!"
+  end
