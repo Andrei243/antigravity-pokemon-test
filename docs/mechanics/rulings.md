@@ -11495,7 +11495,7 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   Tournament's plaza (`pwt`). The eraser smudge shows the afternoon sold twice, the key log puts the clerk in the office
   after hours; the stamped schedule is the decoy. Isidore Calloway waits by the hall's door (200,467;
   `case_unova_isidore`, a Clerk, 76 to 78). Closed: 14,000 and a Nugget.
-- **Kalos's, the Borrowed Masterpiece** (EG8, an outline of ours the user has not approved: plan 41's end): the night
+- **Kalos's, the Borrowed Masterpiece** (EG8, an outline of ours, approved by the user 2026-11-12: plan 41's end): the night
   guard by Lumiose City's museum (368,318), the station's porter (548,351) and a painter (583,352) in Kiloude City. The
   bright screws show the canvas leaves its frame, the train ticket says where it goes; the varnish is the decoy. Odile
   Ferrand, the museum's restorer, waits in Kiloude's square (560,354; `case_kalos_odile`, an Artist, 76 to 79). Closed:
