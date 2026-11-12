@@ -53,5 +53,13 @@
   "signs": {
     "VillageSign": "Jubilife Village\nThe Galaxy Team's home in the land of Hisui",
     "GateSign": "Front Gate\nNorth: the Obsidian Fieldlands\nOnly members of the Galaxy Team may pass."
-  }
+  },
+  // The great days of the year (plan 40 · GE9's note of part D, the user's word: every region): a decorated pine at
+  // Christmas, a basket of eggs at Easter, a banner at New Year and, quietly, a heart on St Valentine's Day
+  "npcs": [
+    {"id": "jubilife_village.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 43, "y": 21, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "jubilife_village.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 51, "y": 21, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "jubilife_village.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 43, "y": 26, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "jubilife_village.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 52, "y": 26, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"}
+  ]
 }

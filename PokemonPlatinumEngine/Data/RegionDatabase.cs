@@ -1214,7 +1214,7 @@ public static class RegionDatabase
         },
         new()
         {
-            Id = Hub, Name = "Hub", Generation = 0, Side = true, File = RegionFiles.Load(Hub),
+            Id = Hub, Name = "Wayhaven", Generation = 0, Side = true, File = RegionFiles.Load(Hub),
             // The hub drawn by hand (plan 41 · EG1; tools/MapDraw/hub). No new game begins here (--region refuses it): the
             // start is its first landing, on the quay before the harbour hall, and every return lands in the hall beside
             // its attendant

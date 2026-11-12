@@ -17,7 +17,7 @@ public sealed partial class ScriptRunner
     /// earn for the next and <c>pitches</c> the pitches at the rank (each RESULT and <c>{number}</c>); <c>coins</c> the
     /// pennants held (RESULT, <c>{pennants}</c>), which stand over the field till the script ends; <c>pitch N</c> asks which
     /// stall stands at pitch N (the stalls offered, then EMPTY and LEAVE IT: RESULT 1 changed, 0 left, 2 for a pitch the
-    /// rank hasn't, <c>{thing}</c> the stall); <c>give N</c> and <c>spend N</c> pay pennants in or out (RESULT 1, 0 when
+    /// rank hasn't, <c>{thing}</c> the stall); <c>give N</c> and <c>spend N</c> pay pennants in or out (give's RESULT 1 once the hall is opened, 0 before; spend's 1, 0 when
     /// there aren't enough to spend); <c>guests</c> draws the day's guests on the first coming of a day (RESULT how many
     /// stand today). Said of a person of the hall: <c>stall</c> is the number in the catalogue of the stall the keeper keeps
     /// (0 for none, <c>{thing}</c> its name); <c>shop</c> opens its goods for pennants at the rank and waits; <c>greet</c>
@@ -53,8 +53,11 @@ public sealed partial class ScriptRunner
                 host.ShowPennants(true);
                 break;
             case "give":
+                bool wasOpen = plaza.Opened;
                 plaza.Give(i.Number);
-                Result = 1;
+                // 1 when the hall had been opened, 0 before: paid all the same (which keeps the plaza from now on), and a
+                // line about it waits for the hall
+                Result = wasOpen ? 1 : 0;
                 break;
             case "spend":
                 Result = plaza.Spend(i.Number) ? 1 : 0;

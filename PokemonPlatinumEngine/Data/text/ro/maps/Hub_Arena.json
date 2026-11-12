@@ -125,6 +125,24 @@
           ""
         ]
       }
+    },
+    "kukui": {
+      "name": {
+        "en": [
+          "Kukui"
+        ],
+        "text": [
+          "Kukui"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Woo! A whole court of Champions under one roof. Alola's going to bring the heat, cousin!"
+        ],
+        "text": [
+          "Uau! O curte întreagă de Campioni sub un singur acoperiș. Alola vine cu tot focul, vere!"
+        ]
+      }
     }
   },
   "signs": {}
