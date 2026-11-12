@@ -329,7 +329,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     {
         Log.Add($"openbase {what}");
         // (what is only asked, check and kind, may be hurried through)
-        if (what is "open" or "enter" or "visit" or "pc" or "packup" or "move" or "movein")
+        if (what is "open" or "enter" or "visit" or "pc" or "packup" or "move" or "movein" or "bedroom")
         {
             NeverInAHurry($"a secret base's '{what}'");
             Waits();

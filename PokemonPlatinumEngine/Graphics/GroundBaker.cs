@@ -114,6 +114,17 @@ internal static class GroundBaker
         return c;
     }
 
+    /// <summary>A secret base's cave floor's three colours (plan 43 · LF7), null for any other room's look.</summary>
+    private static (Color Light, Color Dark, Color Pebble)? Den(InteriorStyle style) => style switch
+    {
+        InteriorStyle.DenRedCave => (Rgb(196, 128, 100), Rgb(184, 116, 90), Rgb(150, 86, 66)),
+        InteriorStyle.DenBrownCave => (Rgb(188, 152, 112), Rgb(176, 140, 102), Rgb(138, 104, 72)),
+        InteriorStyle.DenBlueCave => (Rgb(150, 170, 196), Rgb(138, 158, 186), Rgb(100, 118, 148)),
+        InteriorStyle.DenYellowCave => (Rgb(226, 206, 140), Rgb(214, 194, 128), Rgb(176, 152, 92)),
+        InteriorStyle.DenTree or InteriorStyle.DenShrub => (default, default, default),
+        _ => null
+    };
+
     private static bool HasIce(Map map)
     {
         for (int ty = 0; ty < map.Height; ty++)
@@ -150,6 +161,26 @@ internal static class GroundBaker
             if (across % 8 == 7 || j == 0) return groove;
             uint pick = Hash(board, row, tower ? 611 : 621) % 5;
             return pick == 0 ? light : pick == 1 ? dark : mid;
+        }
+
+        if (Den(style) is { } den)
+        {
+            // A secret base's floor by its kind (plan 43 · LF7): a cave's packed earth, a hollow tree's heartwood, a den's woven grass
+            if (style == InteriorStyle.DenTree)
+            {
+                int col = x / 8, along = y + col * 19 % 48, board = along / 48, j = along % 48;
+                if (x % 8 == 7 || j == 0) return Rgb(120, 84, 52);
+                var wood = Hash(board, col, 661) % 3 == 0 ? Rgb(164, 118, 72) : Rgb(176, 128, 80);
+                return Hash(board, col, 662) % 4 == 0 && j is >= 20 and <= 27 && (x % 8 is 2 or 5 || j is 20 or 27) ? PixelCanvas.Shadow(wood, 0.16f) : wood;
+            }
+            if (style == InteriorStyle.DenShrub)
+            {
+                bool weave = (x / 4 + y / 4) % 2 == 0;
+                if ((weave ? x : y) % 4 == 0 && Hash(x / 2, y / 2, 663) % 3 == 0) return Rgb(108, 138, 66);
+                return weave ? Rgb(150, 180, 96) : Rgb(138, 168, 86);
+            }
+            if (Hash(x / 2, y, 664) % 70 == 0) return den.Pebble;
+            return Hash(x / 8, y / 8, 665) % 3 == 0 ? den.Dark : den.Light;
         }
 
         if (style == InteriorStyle.Tent)
@@ -355,6 +386,15 @@ internal static class GroundBaker
                     if (style == InteriorStyle.Tower)
                         // Paper screens: a lattice of timber two texels wide every sixteen across and fourteen down
                         col = x % 16 is 0 or 1 || my is 0 or 1 ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
+                    else if (style is InteriorStyle.DenRedCave or InteriorStyle.DenBrownCave or InteriorStyle.DenBlueCave or InteriorStyle.DenYellowCave)
+                        // A cave's rock mottled in blocks of four, so no texel stands alone
+                        col = Hash(x / 4, y / 4, 671) % 5 == 0 ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
+                    else if (style == InteriorStyle.DenTree)
+                        // Inner bark in upright streaks two texels wide every twelve
+                        col = x % 12 is 0 or 1 ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
+                    else if (style == InteriorStyle.DenShrub)
+                        // Leaves in blocks of four
+                        col = Hash(x / 4, y / 4, 672) % 4 == 0 ? motif : y == crown ? PixelCanvas.Shadow(paper, 0.14f) : paper;
                     else if (style == InteriorStyle.Tent)
                         // Canvas in upright stripes sixteen texels wide, the paper's cream and the motif's red
                         col = y == crown ? PixelCanvas.Shadow(x / 16 % 2 == 0 ? motif : paper, 0.14f) : x / 16 % 2 == 0 ? motif : paper;
@@ -431,6 +471,13 @@ internal static class GroundBaker
             // The Violet Gym's sky with white clouds over a wainscot of timber
             InteriorStyle.Aerie => (Rgb(196, 222, 244), Rgb(246, 250, 255), Tone.Of(150, 108, 70), Tone.Of(240, 244, 250), Tone.Of(96, 68, 46)),
             // A Battle Tent's canvas: cream and red stripes, a rope-coloured rail over a hem of deep red canvas
+            // A secret base's walls by its kind (plan 43 · LF7): a cave's rock, a hollow tree's inner bark, a den's leaves
+            InteriorStyle.DenRedCave => (Rgb(176, 96, 78), Rgb(140, 72, 60), Tone.Of(150, 80, 64), Tone.Of(204, 130, 104), Tone.Of(100, 52, 44)),
+            InteriorStyle.DenBrownCave => (Rgb(156, 116, 82), Rgb(122, 88, 60), Tone.Of(130, 96, 66), Tone.Of(190, 150, 108), Tone.Of(86, 62, 44)),
+            InteriorStyle.DenBlueCave => (Rgb(106, 128, 168), Rgb(78, 98, 138), Tone.Of(84, 104, 144), Tone.Of(150, 172, 206), Tone.Of(54, 68, 100)),
+            InteriorStyle.DenYellowCave => (Rgb(206, 178, 104), Rgb(170, 140, 74), Tone.Of(180, 150, 82), Tone.Of(232, 210, 140), Tone.Of(120, 96, 52)),
+            InteriorStyle.DenTree => (Rgb(150, 104, 62), Rgb(118, 80, 48), Tone.Of(124, 86, 52), Tone.Of(186, 140, 92), Tone.Of(88, 60, 38)),
+            InteriorStyle.DenShrub => (Rgb(98, 150, 74), Rgb(70, 118, 54), Tone.Of(84, 128, 62), Tone.Of(130, 180, 96), Tone.Of(56, 90, 44)),
             InteriorStyle.Tent => (Rgb(242, 228, 198), Rgb(200, 70, 60), Tone.Of(150, 50, 44), Tone.Of(214, 180, 120), Tone.Of(96, 64, 40)),
             // A sports ground's stands: pale concrete with a grey motif over a padded wall of deep green, a white rail
             InteriorStyle.Field or InteriorStyle.Court => (Rgb(214, 214, 206), Rgb(190, 192, 186), Tone.Of(46, 104, 70), Tone.Of(244, 244, 240), Tone.Of(32, 70, 50)),

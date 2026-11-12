@@ -5659,7 +5659,8 @@
   "places": {
   },
   "secretBase": {
-    "decorating": "DECORATE YOUR SECRET BASE"
+    "decorating": "DECORATE YOUR SECRET BASE",
+    "bedroom": "DECORATE YOUR ROOM"
   },
   "pokeblock": {
     "color": {
@@ -7303,7 +7304,8 @@
     "stickers": { "count": "{count} / {most}" },
     "take": { "action": "TAKE THE PICTURE" },
     "seals": { "heading": "YOUR SEALS" },
-    "hints": { "put": "Put down" },
+    "hints": { "put": "Put down", "size": "Size", "turn": "Turn" },
+    "keys": { "turn": "Q / E" },
     "refusal": {
       "notOwned": "You don't have that Seal.",
       "full": "The picture can't hold any more stickers.",

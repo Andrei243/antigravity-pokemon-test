@@ -10,7 +10,17 @@ namespace PokemonPlatinumEngine.Models;
 public enum StudioPlace { Right, Left }
 
 /// <summary>A sticker placed on a studio photograph: a Seal's number and where its middle lies, as shares of the picture (0 to 1).</summary>
-public sealed record StudioSticker(int Seal, float X, float Y);
+public sealed record StudioSticker(int Seal, float X, float Y, float Size = 1f, int Turn = 0)
+{
+    /// <summary>The sizes a sticker is put on at (plan 43 · LF7's leftover, LF5's owed): small, as it was, large.</summary>
+    public static readonly float[] Sizes = { 0.7f, 1f, 1.4f };
+
+    /// <summary>How many steps a sticker's turn has: fifteen degrees each, a whole turn in twenty-four.</summary>
+    public const int Turns = 24;
+
+    /// <summary>The turn in radians.</summary>
+    public float Angle => Turn * MathF.Tau / Turns;
+}
 
 /// <summary>What <c>Data/photo-studio.json</c> holds (ours, written by hand, read strictly): the studio's backdrops and frames, in the card's own shapes.</summary>
 public sealed record StudioFile
@@ -97,8 +107,8 @@ public sealed record StudioShot
     }
 
     /// <summary>The composition with a sticker added; unchanged where <see cref="WhyNotSticker"/> refuses. A Seal is not used up: the case keeps its count.</summary>
-    public StudioShot WithSticker(int seal, float x, float y, SealCase seals) =>
-        WhyNotSticker(seal, x, y, seals) != null ? this : this with { Stickers = Stickers.Append(new StudioSticker(seal, x, y)).ToList() };
+    public StudioShot WithSticker(int seal, float x, float y, SealCase seals, float size = 1f, int turn = 0) =>
+        WhyNotSticker(seal, x, y, seals) != null ? this : this with { Stickers = Stickers.Append(new StudioSticker(seal, x, y, size, ((turn % StudioSticker.Turns) + StudioSticker.Turns) % StudioSticker.Turns)).ToList() };
 
     /// <summary>The composition without its sticker at <paramref name="index"/>.</summary>
     public StudioShot WithoutSticker(int index) =>

@@ -4,6 +4,11 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Your secret base now looks like the place it was made in: a cave of red, brown, blue or yellow rock, a hollow tree or a den of grass. Where its door stands, an opening is drawn in the tree, rock or bush outside.
+- The computer in your bedroom at home, in every region, now decorates the room from your decoration PC: up to twelve pieces, each region's room its own. A piece in your room stands nowhere else, and nothing can block the stairs.
+- In the photo studio a sticker can be made smaller or larger (C) and turned (Q / E) before it is put down.
+- A caller's face on the travel phone now shows the whole of a hat.
+
 - On the Energy Plant's roof you now battle Eternatus itself, before it swells into Eternamax.
 - After Galar's Hall of Fame the fog returns to the Slumbering Weald: Hop waits at the altar, and the legendary of your version comes out to meet you, to be caught at last.
 - Leon now runs the Battle Tower in Rose Tower and takes you on once a day; he also joins the Laurel Circuit's final for Galar.
