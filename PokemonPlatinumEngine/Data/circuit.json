@@ -9,6 +9,6 @@
     { "region": "Johto", "team": "johto_champion_lance_beyond", "look": "lance", "person": "lance" },
     { "region": "Hoenn", "team": "hoenn_wallace_beyond", "look": "wallace", "person": "wallace" },
     { "region": "Unova", "team": "unova_champion_iris_beyond", "look": "iris", "person": "iris" },
-    { "region": "Kalos", "team": "kalos_diantha_rematch", "look": "diantha", "person": "diantha" }
+    { "region": "Kalos", "team": "kalos_diantha_beyond", "look": "diantha", "person": "diantha" }
   ]
 }

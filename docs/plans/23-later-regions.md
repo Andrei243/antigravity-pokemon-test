@@ -142,9 +142,8 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   style guide's fifth table; `IntoBattleTests.KalosHasItsOwnThirteenBands`. **Romanian** (plan 17 · N6): every Kalos
   script, overlay and room line left untranslated (the castle's tour, the palace's garden and fireworks, the Château's
   guests, the designer, the Borrowed Masterpiece's clue people, and the gift runners of Kalos's Pokémon Centers).
-  **Not built, and why**: the Kalos League's teams beyond (D15-T) can't be built by its rule: the rule wants the rematch
-  teams slot for slot with no species twice in a region's teams, and Kalos's League fields 26 Pokémon against a batch of
-  24 placeable species; it waits for the user's word (repeats allowed, or smaller teams). Shots owed (the GPU is shared):
+  **The Kalos League's teams beyond (D15-T)**: built 2026-11-12 on the user's word (repeats allowed): Kalos's League has 26
+  Pokémon against a batch of 24 placeable species, so two repeats, for this batch only (rulings, "The League's teams beyond"). Shots owed (the GPU is shared):
   a band of each kind (`gyms`-like `kwb_band_viola`, `kwb_band_diantha`), the tournament's Kalos events on its screen, and
   a species of ours met in Kalos's grass.
 ### Alola

@@ -497,5 +497,446 @@
         "personality": 1863919630
       }
     ]
+  },
+  {
+    "id": "galar_hop_4a",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 703717498
+      },
+      {
+        "species": "Corvisquire",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 2740576018
+      },
+      {
+        "species": "Drizzile",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 2398686517
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_4b",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 3292691349
+      },
+      {
+        "species": "Corvisquire",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 2786571547
+      },
+      {
+        "species": "Thwackey",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 3273858608
+      }
+    ]
+  },
+  {
+    "id": "galar_hop_4c",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Wooloo",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 1792171037
+      },
+      {
+        "species": "Corvisquire",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 113291185
+      },
+      {
+        "species": "Raboot",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 1485997305
+      }
+    ]
+  },
+  {
+    "id": "galar_camper_rhys",
+    "name": "Rhys",
+    "class": "Camper",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 64,
+    "party": [
+      {
+        "species": "Electrike",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 2010640750
+      },
+      {
+        "species": "Nincada",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 714763889
+      }
+    ]
+  },
+  {
+    "id": "galar_lass_eden",
+    "name": "Eden",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 64,
+    "party": [
+      {
+        "species": "Wingull",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 3914450576
+      },
+      {
+        "species": "Lotad",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 1953520877
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_marina",
+    "name": "Marina",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 84,
+    "party": [
+      {
+        "species": "Goldeen",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 3484129345
+      },
+      {
+        "species": "Chewtle",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 550445121
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_finn",
+    "name": "Finn",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 88,
+    "party": [
+      {
+        "species": "Shellos",
+        "level": 21,
+        "ivScale": 0,
+        "personality": 3453724094
+      },
+      {
+        "species": "Arrokuda",
+        "level": 22,
+        "ivScale": 0,
+        "personality": 845207467
+      }
+    ]
+  },
+  {
+    "id": "galar_nessa_1",
+    "name": "Nessa",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2400,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Goldeen",
+        "level": 22,
+        "ivScale": 12,
+        "personality": 3666440617
+      },
+      {
+        "species": "Arrokuda",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 3319504273
+      },
+      {
+        "species": "Drednaw",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 2209900701
+      }
+    ]
+  },
+  {
+    "id": "galar_worker_hale",
+    "name": "Hale",
+    "class": "Worker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 76,
+    "party": [
+      {
+        "species": "Rolycoly",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 3977149233
+      },
+      {
+        "species": "Carkol",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 2442001456
+      }
+    ]
+  },
+  {
+    "id": "galar_fisherman_cormac",
+    "name": "Cormac",
+    "class": "Fisherman",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 76,
+    "party": [
+      {
+        "species": "Chewtle",
+        "level": 19,
+        "ivScale": 0,
+        "personality": 1886287380
+      },
+      {
+        "species": "Arrokuda",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 51017571
+      }
+    ]
+  },
+  {
+    "id": "galar_yell_grunt_1",
+    "name": "Grunt",
+    "class": "Team Yell",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 80,
+    "party": [
+      {
+        "species": "Nickit",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 1069147080
+      },
+      {
+        "species": "Purrloin",
+        "level": 20,
+        "ivScale": 0,
+        "personality": 2406563681
+      }
+    ]
+  },
+  {
+    "id": "galar_bede_2",
+    "name": "Bede",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 200,
+    "party": [
+      {
+        "species": "Solosis",
+        "level": 20,
+        "ivScale": 12,
+        "personality": 2624494316
+      },
+      {
+        "species": "Gothita",
+        "level": 20,
+        "ivScale": 12,
+        "personality": 650991794
+      },
+      {
+        "species": "Hatenna",
+        "level": 21,
+        "ivScale": 12,
+        "personality": 3406468922
+      }
+    ]
+  },
+  {
+    "id": "galar_marnie_1",
+    "name": "Marnie",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 200,
+    "party": [
+      {
+        "species": "Croagunk",
+        "level": 22,
+        "ivScale": 12,
+        "personality": 1713949072
+      },
+      {
+        "species": "Scraggy",
+        "level": 22,
+        "ivScale": 12,
+        "personality": 3341708718
+      },
+      {
+        "species": "Morpeko",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 2978790982
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_ash",
+    "name": "Ash",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 96,
+    "party": [
+      {
+        "species": "Vulpix",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 1155221416
+      },
+      {
+        "species": "Sizzlipede",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 3458166588
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_ember",
+    "name": "Ember",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 100,
+    "party": [
+      {
+        "species": "Growlithe",
+        "level": 24,
+        "ivScale": 0,
+        "personality": 2606440379
+      },
+      {
+        "species": "Carkol",
+        "level": 25,
+        "ivScale": 0,
+        "personality": 3362032935
+      }
+    ]
+  },
+  {
+    "id": "galar_kabu_1",
+    "name": "Kabu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2700,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Ninetales",
+        "level": 25,
+        "ivScale": 12,
+        "personality": 1244057058
+      },
+      {
+        "species": "Arcanine",
+        "level": 25,
+        "ivScale": 12,
+        "personality": 1109623789
+      },
+      {
+        "species": "Centiskorch",
+        "level": 27,
+        "ivScale": 12,
+        "personality": 88222762
+      }
+    ]
   }
 ]

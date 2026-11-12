@@ -19,6 +19,8 @@ script Milo
   defeat "galar_gym_trainer_wren"
   defeat "galar_gym_trainer_cole"
   setvar VAR_GALAR_STORY 19
+  setflag FLAG_GALAR_HOP_ROUTE_5
+  objective galarRoute5
   say "Hulbury's gym is next, down Route 5 by the sea. Nessa's Water types will put your team to the test!"
   endscene
   end

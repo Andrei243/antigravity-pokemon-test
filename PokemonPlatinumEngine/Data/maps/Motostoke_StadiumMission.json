@@ -1,0 +1,185 @@
+{
+  "name": "Motostoke_StadiumMission",
+  "displayName": "Motostoke Stadium",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Fire",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "######D######",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Motostoke_Stadium",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 1,
+      "targetMap": "Motostoke_StadiumPitch",
+      "targetX": 7,
+      "targetY": 12,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "mission_vulpix",
+      "name": "Vulpix",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 13,
+      "facing": "Down",
+      "script": "MissionVulpix",
+      "hiddenBy": "FLAG_GALAR_MOTOSTOKE_CAUGHT_1",
+      "species": "Vulpix"
+    },
+    {
+      "id": "mission_growlithe",
+      "name": "Growlithe",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 9,
+      "facing": "Down",
+      "script": "MissionGrowlithe",
+      "hiddenBy": "FLAG_GALAR_MOTOSTOKE_CAUGHT_2",
+      "species": "Growlithe"
+    },
+    {
+      "id": "mission_sizzlipede",
+      "name": "Sizzlipede",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "MissionSizzlipede",
+      "hiddenBy": "FLAG_GALAR_MOTOSTOKE_CAUGHT_3",
+      "species": "Sizzlipede"
+    },
+    {
+      "id": "galar_gym_trainer_ash",
+      "name": "Ash",
+      "npcType": "worker",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "galar_gym_trainer_ash",
+        "name": "Ash",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Ash: Kabu's mission is about catching, but you'll have to beat me to get near the next one!",
+        "dialogueAfter": "Gym Trainer Ash: Burnt out. Off you go.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "galar_gym_trainer_ember",
+      "name": "Ember",
+      "npcType": "lass",
+      "x": 10,
+      "y": 7,
+      "facing": "Left",
+      "trainer": {
+        "id": "galar_gym_trainer_ember",
+        "name": "Ember",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Ember: The fire's hottest at the end of the course. Feel it now!",
+        "dialogueAfter": "Gym Trainer Ember: Kabu's waiting on the pitch.",
+        "sightRange": 4
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "x": 1,
+      "y": 17,
+      "width": 11,
+      "depth": 1,
+      "script": "MissionGate"
+    }
+  ],
+  "wildEncounters": []
+}

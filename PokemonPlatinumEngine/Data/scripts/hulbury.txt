@@ -1,0 +1,12 @@
+# Hulbury (plan 33 · GL4, its second session), the harbour town of Nessa's gym, on the open world's engine: its places
+# are Data/world3d/galar/places/hulbury.json. Our own lines. VAR_GALAR_STORY is postwick.txt's count.
+
+
+# The way into Galar Mine No. 2: open to challengers who hold the Water Badge
+script MineTwoShut
+  if badge water end
+  faceto player mine_2_staffer
+  speaker "League Staff"
+  say "Galar Mine No. 2 leads back to Motostoke and Kabu's gym. Win Nessa's Water Badge first, then it's all yours!"
+  walkto player galar_mine_2_back
+  end

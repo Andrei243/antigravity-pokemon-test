@@ -43,7 +43,9 @@
     { "kind": "plateau", "name": "the moor east of Route 3", "polygon": [[-20, -878], [160, -878], [160, -776], [-20, -776]], "height": 40, "falloff": 4 },
     { "kind": "plateau", "name": "Route 3's west edge", "polygon": [[-160, -960], [-150, -960], [-150, -776], [-160, -776]], "height": 40, "falloff": 4 },
     { "kind": "plateau", "name": "the ridge over the Galar Mine", "polygon": [[-160, -878], [-20, -878], [-20, -860], [-160, -860]], "height": 40, "falloff": 3 },
-    { "kind": "plateau", "name": "the north edge past Turffield", "polygon": [[-160, -960], [160, -960], [160, -950], [-160, -950]], "height": 40, "falloff": 4 },
+    // The north edge past Turffield, with the gap Route 5 leaves by (plan 33 · GL4, its second session)
+    { "kind": "plateau", "name": "the north edge past Turffield, west of Route 5", "polygon": [[-160, -960], [22, -960], [22, -950], [-160, -950]], "height": 40, "falloff": 4 },
+    { "kind": "plateau", "name": "the north edge past Turffield, east of Route 5", "polygon": [[58, -960], [160, -960], [160, -950], [58, -950]], "height": 40, "falloff": 4 },
     { "kind": "plateau", "name": "the east edge past Turffield", "polygon": [[150, -960], [160, -960], [160, -878], [150, -878]], "height": 40, "falloff": 4 },
     { "kind": "plateau", "name": "the stadium's hill at Turffield", "polygon": [[86, -946], [146, -946], [146, -900], [86, -900]], "height": 30, "falloff": 6 }
   ],

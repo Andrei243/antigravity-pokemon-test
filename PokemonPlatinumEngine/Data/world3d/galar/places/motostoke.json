@@ -10,7 +10,11 @@
     { "name": "motostoke_hotel_door", "at": [-48, 16.3, -686], "yaw": 0 },
     { "name": "motostoke_stadium_door", "at": [0, 20.3, -723], "yaw": 0 },
     { "name": "motostoke_west_gate_back", "at": [-90, 20.3, -748], "yaw": 0 },
-    { "name": "motostoke_hop", "at": [4, 16.3, -662], "yaw": 0 }
+    { "name": "motostoke_hop", "at": [4, 16.3, -662], "yaw": 0 },
+    // Plan 33 · GL4, its second session: the way out of Galar Mine No. 2 in the east wall, and where Marnie stands
+    { "name": "galar_mine_2_south", "at": [105, 16.3, -680], "yaw": 270 },
+    { "name": "marnie_spot", "at": [100, 16.3, -680], "yaw": 90 },
+    { "name": "galar_mine_2_back_south", "at": [96, 16.3, -690], "yaw": 270 }
   ],
   "doors": [
     {
@@ -30,13 +34,23 @@
       "box": { "min": [-1, 19.4, -728], "max": [1, 23, -727] },
       "room": "Motostoke_Stadium", "at": [4, 8], "facing": "up",
       "out": "motostoke_stadium_door"
+    },
+    {
+      "name": "galar_mine_2_south",
+      "box": { "min": [108, 15.4, -682], "max": [109.4, 20, -678] },
+      "room": "GalarMine2", "at": [4, 24], "facing": "up",
+      "out": "galar_mine_2_south"
     }
   ],
   "triggers": [
     // Up the steps for the first time: Hop, waiting with the news of the registration
     { "name": "motostoke_arrival", "box": { "min": [-6, 14, -662], "max": [6, 20, -652] }, "script": "HopInMotostoke", "var": "VAR_GALAR_STORY", "value": 13 },
     // The west gate onto Route 3: closed to challengers until the ceremony is over
-    { "name": "motostoke_west_gate", "box": { "min": [-112, 18, -776], "max": [-80, 26, -768] }, "script": "WestGate" }
+    { "name": "motostoke_west_gate", "box": { "min": [-112, 18, -776], "max": [-80, 26, -768] }, "script": "WestGate" },
+    // Out of Galar Mine No. 2 with the Water Badge (plan 33 · GL4, its second session): Marnie, waiting by the east wall
+    { "name": "motostoke_marnie", "box": { "min": [90, 14, -686], "max": [101.5, 20, -674] }, "script": "MarnieInMotostoke", "var": "VAR_GALAR_STORY", "value": 22 },
+    // Galar Mine No. 2 is for challengers who hold the Water Badge, from this end too
+    { "name": "galar_mine_2_shut_south", "box": { "min": [102, 14, -684], "max": [107.5, 20, -676] }, "script": "MineTwoShut" }
   ],
   "solids": [
     { "name": "Motostoke Stadium", "min": [-34, 19.4, -760], "max": [34, 32, -728], "building": { "kind": "hall", "town": "galar", "sign": "MOTOSTOKE STADIUM" } },
@@ -49,6 +63,15 @@
     { "name": "a works by the stadium", "min": [60, 19.4, -756], "max": [96, 28, -730], "building": { "kind": "factory", "town": "galar" } }
   ],
   "people": [
+    {
+      "name": "mine_2_staffer_south", "at": [104, 16.3, -688], "yaw": 0, "look": "clerk", "displayName": "League Staff",
+      "lines": ["Galar Mine No. 2 runs north under the banks to Hulbury. It's open to challengers with the Water Badge."]
+    },
+    {
+      "name": "marnie_motostoke", "at": [96, 16.3, -680], "yaw": 90, "look": "marnie", "displayName": "Marnie",
+      "lines": ["Kabu's waitin' up at the stadium. Don't keep him."],
+      "shownBy": "FLAG_GALAR_MARNIE_IN_MOTOSTOKE"
+    },
     {
       "name": "hop_motostoke", "at": [4, 16.3, -662], "yaw": 180, "look": "hop", "displayName": "Hop",
       "lines": ["The stadium's at the top of the ramp. Let's get registered!"],

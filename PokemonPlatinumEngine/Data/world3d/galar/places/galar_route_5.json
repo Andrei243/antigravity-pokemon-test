@@ -1,0 +1,71 @@
+{
+  // Route 5 (plan 33 · GL4, its second session): out through the gap in Turffield's north bank, round the downs and east
+  // to Hulbury. Hop waits by the gap with a battle the day after the Grass Badge, the Pokémon Nursery stands beside the
+  // path (its door owed), two trainers and the long grass's Pokémon. Our own route at about half the original's
+  // distances. Scripts: Data/scripts/galar_route_5.txt
+  "markers": [
+    { "name": "route5_south", "at": [40, 26.3, -952], "yaw": 180 },
+    { "name": "route5_gap", "at": [40, 26.3, -962], "yaw": 180 }
+  ],
+  "triggers": [
+    // Through the gap the day after the Grass Badge: Hop, wanting a battle before Hulbury
+    { "name": "route5_hop", "box": { "min": [32, 23, -962], "max": [48, 30, -954] }, "script": "HopOnRoute5", "var": "VAR_GALAR_STORY", "value": 19 }
+  ],
+  "zones": [
+    {
+      "name": "route_5_west",
+      "polygon": [[-36, -1034], [0, -1034], [0, -996], [-36, -996]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Electrike", "minLevel": 14, "maxLevel": 17, "weight": 20 },
+        { "species": "Nincada", "minLevel": 14, "maxLevel": 17, "weight": 20 },
+        { "species": "Pancham", "minLevel": 15, "maxLevel": 17, "weight": 15 },
+        { "species": "Lotad", "minLevel": 14, "maxLevel": 17, "weight": 15 },
+        { "species": "Yamper", "minLevel": 14, "maxLevel": 17, "weight": 20 },
+        { "species": "Drifloon", "minLevel": 15, "maxLevel": 17, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "route_5_north",
+      "polygon": [[4, -1036], [44, -1036], [44, -1026], [4, -1026]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Wingull", "minLevel": 15, "maxLevel": 17, "weight": 30 },
+        { "species": "Skwovet", "minLevel": 14, "maxLevel": 16, "weight": 30 },
+        { "species": "Nickit", "minLevel": 14, "maxLevel": 16, "weight": 20 },
+        { "species": "Applin", "minLevel": 16, "maxLevel": 17, "weight": 20 }
+      ],
+      "density": 2, "cap": 4
+    }
+  ],
+  "solids": [
+    { "name": "the Pokémon Nursery", "min": [-30, 25.4, -976], "max": [-16, 32, -964], "building": { "kind": "house", "town": "galar", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "hop_route5", "at": [40, 26.4, -968], "yaw": 0, "look": "hop", "displayName": "Hop",
+      "lines": ["Hulbury's just along the path. Nessa's gym is next!"],
+      "shownBy": "FLAG_GALAR_HOP_ROUTE_5"
+    },
+    {
+      "name": "nursery_keeper", "at": [-23, 26.3, -980], "yaw": 0, "look": "lady", "displayName": "Nursery Keeper",
+      "lines": ["The Pokémon Nursery's closed for a spring clean. Do come back once we're open again!"]
+    },
+    {
+      "name": "camper_rhys", "at": [6, 27.1, -1000], "yaw": 90, "trainer": "galar_camper_rhys",
+      "lines": ["Fresh off a badge, are you? Let's see if it went to your head!", "Didn't go to your head, then. It went to your team."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "lass_eden", "at": [46, 26.3, -1012], "yaw": 180, "trainer": "galar_lass_eden",
+      "lines": ["The sea air out here makes my Pokémon want to battle. Mine too!", "You smell the salt? Hulbury's right there."],
+      "sight": { "length": 8, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-34, -962], "kind": "round", "size": 1.1 },
+    { "at": [30, -1034], "kind": "round" },
+    { "at": [-10, -1036], "kind": "round", "size": 1.2 }
+  ]
+}
