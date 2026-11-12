@@ -572,6 +572,7 @@ and a decoration PC (`StoredDecoration`s, saved). The game starts `common.Secret
 | `openbase packup` | Everything in the base back into the PC, the base given up, and the player out to where its spot is faced from. |
 | `openbase give "Red Brick"` | A decoration into the PC, without a word: `RESULT` 1, or 0 with no room for its kind (ten desks, chairs, plants, posters and cushions, thirty ornaments and mats, forty dolls). `{thing}` names it. |
 | `openbase buy "Red Brick"` | As a decoration shop does: `RESULT` 1 bought (its price taken, the decoration in the PC), 0 short of money, 2 no room for its kind. `{thing}` names it. |
+| `openbase trade "Kiss Poster" 16` | As the Battle Frontier island's decoration clerks do (plan 21's leftovers): for that many Battle Points. `RESULT` 1 traded, 0 short of points, 2 no room for its kind; `{thing}` and `{price}`. |
 | `openbase room "Red Brick"` | `RESULT` 1 while the PC has room for one more of the decoration's kind. |
 
 A decoration is named by `decorations.json`'s name (`Red Brick`) or its constant (`DECOR_RED_BRICK`).
@@ -598,6 +599,7 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `gamecorner buy` | Exchanges coins for the prize chosen: `RESULT` 1, or 0 with too few. |
 | `gamecorner hiddenpower` | Reads the Hidden Power of the Pokémon `RESULT` names (after `choosepokemon`): `RESULT` 0 with none chosen, 1 when it knows the move, 2 when it doesn't, 3 for an Egg; `{thing}` is the type. |
 | `gamecorner wheel 3` | Sits the player at one of Mauville's roulette tables (plan 21 · H12, part o; `Models/RouletteWheel.cs`, `RouletteScreen`, `GameState.RouletteTable`), whose wager is that many Coins a ball (1 the left table, 3 the right): the Coin Case's coins go to the table, the board, the wheel and its ball are played on the table's own screen, and what is left comes back as the player gets up; the script waits. It replaces part k's `gamecorner roulette`, `wager` and `spin`. |
+| `gamecorner wheel 6`, `gamecorner streak` | The right table on its service day (plan 21's leftovers; `RouletteWheel.ServiceDayBet`, every Saturday here): six Coins a ball, so every hit pays twice the usual. `streak` is `RESULT` 1 when the sitting just ended beat the most roulette wins in a row (`VAR_HOENN_ROULETTE_WINS_IN_A_ROW`, written as a sitting ends), told once, and `{number}` the most. |
 | `gamecorner cointrick` | The Coin Case's clown tosses his coin: `RESULT` 0 or 1, the hand it is in. |
 | `villa catalogue` | Asks which piece of what the catalogue lists now: `RESULT` 1 for one to order, 2 for one already in the room, 0 for none. `{thing}` names it and `{price}` is its price. |
 | `villa choose "Table"` | Names a piece without asking, with the same `RESULT`. |
@@ -818,6 +820,7 @@ on the original's script command; all are for the Pokémon `RESULT` names after 
 | `tutor moves "route_212"` | Asks which of the place's moves the Pokémon is to be taught, of those on its species' list that it doesn't know, each with its price in Shards (`ShowMoveTutorMoveSelectionMenu`). `RESULT` 1 one was picked, 0 none, 2 the tutor has nothing for it, 3 an Egg, 4 nobody chosen. The places are `route_212`, `snowpoint_city` and `survival_area`, by the species' Platinum list (`tutorMoves`), and `training_hall` (plan 36 · TR9: a training hall's tutor, the later games' tutors' moves no machine teaches, by its `laterTutorMoves`); any other is told as the file is read. |
 | `tutor afford`, `tutor pay` | `RESULT` 1 when the bag holds the Shards the move picked costs (`CheckCanAffordMove`); `pay` takes them, all or none (`PayShardCost`). |
 | `tutor special dracometeor`, `tutor special ultimate` | The checks of the two tutors of one move each: a Dragon type for Draco Meteor; one of the twelve starters of Kanto to Sinnoh fully grown for Blast Burn, Hydro Cannon or Frenzy Plant, whichever is its own. `RESULT` 0 it may learn, 1 nobody chosen, 2 an Egg, 3 it can't, 4 it knows the move, 5 its friendship is under 255. |
+| `tutor frontier left`, `tutor frontier right`, `tutor spend` | The Battle Frontier island's Lounge 7 tutors (plan 21's leftovers; `MoveTutors.FrontierLounge`): which of the side's ten moves the chosen Pokémon is to be taught, each with its price in Battle Points (`RESULT` as `moves`, and 5 for a move that costs more points than are held; `{price}` its points); `spend` takes the points once the move is learned. |
 | `tutor once "Mega Punch"` | A tutor of Kanto's who teaches one move, free (plan 19 · K5; `MoveTutors.Kanto`, our own table of who may learn it): the answer for the Pokémon `RESULT` names, as `special`'s (0 it may learn, 1 nobody chosen, 2 an Egg, 3 it can't, 4 it knows the move); `learn` then teaches it. The script keeps the tutor to once a game with the move's flag (`FLAG_TUTOR_MEGA_PUNCH`). The table serves every region's tutor of one move: Hoenn's Sleep Talk in Fortree City (plan 21 · H6, part b) keeps Emerald's flag, `FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK`. |
 | `tutor dragons` | `RESULT` 1 when anyone of the team is a Dragon type (Grandma Wilma's first look). |
 | `tutor learn` | Teaches the move settled on by `moves` or `special` (`MoveTeaching.Learn`): at once to a Pokémon with room (`RESULT` 1); one that knows four is asked which is to go (`RESULT` 3 learned in its place, 0 given up, 2 an HM's move was picked, which stays, and nothing is learned). |
@@ -1065,7 +1068,8 @@ Plan 21, part l; `docs/mechanics/rulings.md`, "The Trainer Hill". A climb of Eme
 saved. A floor is laid on the one map `TrainerHillFloor` from those variables by a script's warp to it
 (`GameEngine.MapNamed`); its two trainers are people of the map (`hill_trainer_1`, `hill_trainer_2`) whose script is the
 floor's `Trainer`. `{hill:TIME}` is the climb's time, `{hill:BEST}` the challenge's best and `{hill:BEST_NORMAL}`,
-`{hill:BEST_VARIETY}`, `{hill:BEST_UNIQUE}`, `{hill:BEST_EXPERT}` each challenge's.
+`{hill:BEST_VARIETY}`, `{hill:BEST_UNIQUE}`, `{hill:BEST_EXPERT}` each challenge's; `{hill:MIXED_NORMAL}` and its kin the
+fastest climb of that challenge among the records mixed in from other saves (plan 40 · GE10), with whose it is.
 
 | Command | What it does |
 |---|---|
@@ -1077,6 +1081,7 @@ floor's `Trainer`. `{hill:TIME}` is the climb's time, `{hill:BEST}` the challeng
 | `trainerhill lost`, `trainerhill end` | Marks the climb lost; lets go of it. |
 | `trainerhill climb`, `trainerhill down` | The stairs up (`RESULT` 1 at the roof, where the clock stops); the stairs down (`RESULT` the floor come to, 0 the lobby). |
 | `trainerhill prize`, `trainerhill record` | Hands over Emerald's prize for the time (`RESULT` 0 given, 2 given already); holds the time against the challenge's best (`RESULT` 0 a new record, kept; 1 not; 2 held already). |
+| `trainerhill mixed` | `RESULT` and `{number}`: how many of the records mixed in from other saves have climbed the Hill at all (plan 21's leftovers). |
 
 ### The Hidden Grottoes
 
@@ -1116,6 +1121,7 @@ The tournament lives between the desk and the hall (`BattleDome.txt`, whose arri
 | `bracket won`, `bracket lost` | Decides the player's match and fights every other match of the round headless; `won` is `RESULT` 1 when that was the final. |
 | `bracket finish won`, `bracket finish lost`, `bracket points` | Writes the record (a win lengthens the streak of tournaments, a loss ends it; `RESULT` and `{number}` the streak); hands over the Battle Points a tournament won earns (3, one more for each won in a row before it, up to 10). |
 | `bracket streak`, `bracket best`, `bracket end` | The tournaments won in a row and the most ever (`{number}`); lets go of the tournament. |
+| `bracket brain` | `RESULT` 1 when the one the player meets in this round is the Dome Ace, Tucker, who sits in the other half of a tournament he comes to (after four won in a row, nine and every fifth after) and wins every match but the player's (`EmeraldBrains`). |
 
 ### The Battle Palace and the Battle Arena
 
@@ -1136,6 +1142,8 @@ natures; the Arena's bouts are judged after three turns). The round lives betwee
 | `venue won` | Counts the win: the streak lengthens and the next trainer is to come; `RESULT` 1 when it was the seventh. |
 | `venue finish won`, `venue finish lost`, `venue points` | Writes the venue's record (a round won counts, a loss ends the streak; `RESULT` and `{number}` the streak); hands over the Battle Points a round won earns (3, one more for each round won in a row before it, up to 10). |
 | `venue streak palace`, `venue best arena`, `venue end` | A venue's battles won in a row and the most ever (`{number}`); lets go of the round. |
+| `venue brain` | `RESULT` 1 when the battle to come is the venue's Brain: Spenser, the Palace Maven, at the 21st battle won in a row, the 42nd and every 21st after; Greta, the Arena Tycoon, at the 28th, the 56th and every 28th after (`EmeraldBrains`; the round's seventh). |
+| `venue nature` | The Frontier island's nature girl (plan 21's leftovers): for the Pokémon `RESULT` names after `choosepokemon`, `RESULT` the group of moves it leans to in the Palace with more than half its HP (0 attacking, 1 looking after itself, 2 working on the foe), `{thing}` what it does with half or less (`ui.json`'s `palaceLean`); 3 an Egg, 4 nobody chosen. |
 | `venue tent verdanturf`, `venue tent fallarbor`, `venue tent slateport` | Hoenn's Battle Tents (plan 21 · H3's last part; rulings, "Hoenn's Battle Tents"): a round of three trainers on the Palace's, the Arena's or the Factory's rules (`BattleVenueChallenge.BeginTent`), met at the highest level of the three chosen and never under thirty as the region maps it (Slateport's at thirty, on rentals, with no three chosen); `{number}` the trainers' level. A tent keeps no streak and earns no Battle Points: `won` is 1 on the third win, `finish` writes nothing, `points` is 0. |
 | `venue rent`, `venue trade`, `venue length` | Slateport's six rentals on the Factory's own screen, three to be chosen (`RESULT` 1 once three are rented); after a win, one of the three for one of the trainer just beaten (`RESULT` 1 when one was swapped); the round's length (7, or a tent's 3). |
 

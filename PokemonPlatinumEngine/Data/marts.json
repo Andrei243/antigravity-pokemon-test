@@ -441,6 +441,33 @@
       "Revive",
       "Max Repel"
     ],
+    "trainer_hill": [
+      "Super Potion",
+      "Antidote",
+      "Paralyze Heal",
+      "Awakening",
+      "X Speed",
+      "X Sp. Atk",
+      "X Attack",
+      "X Defense",
+      "Dire Hit",
+      "Guard Spec.",
+      "X Accuracy"
+    ],
+    "trainer_hill_champion": [
+      "Hyper Potion",
+      "Max Potion",
+      "Full Restore",
+      "Full Heal",
+      "Revive",
+      "X Speed",
+      "X Sp. Atk",
+      "X Attack",
+      "X Defense",
+      "Dire Hit",
+      "Guard Spec.",
+      "X Accuracy"
+    ],
     "join_avenue_market": [
       "Poké Ball",
       "Great Ball",

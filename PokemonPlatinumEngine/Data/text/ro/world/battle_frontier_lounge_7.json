@@ -26,14 +26,6 @@
         "text": [
           "Profesoara"
         ]
-      },
-      "dialog": {
-        "en": [
-          "I teach moves to Pokémon, but my lessons aren't open yet. Come back another time, dear."
-        ],
-        "text": [
-          "Învăț Pokémonii mișcări, dar lecțiile mele nu sunt încă deschise. Revino altă dată, dragă."
-        ]
       }
     },
     "expert_f_2": {
@@ -43,14 +35,6 @@
         ],
         "text": [
           "Profesoara"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "My sister and I will teach again when the halls open. Do come back."
-        ],
-        "text": [
-          "Sora mea și cu mine vom preda din nou când se deschid sălile. Să revii."
         ]
       }
     },

@@ -140,6 +140,26 @@ public sealed partial class ScriptRunner
             case "best":
                 Result = lastNumber = BattleVenueChallenge.RecordOf(records, Named()).Best;
                 break;
+            // The Frontier island's nature girl (Emerald's ShowNatureGirlMessage; plan 21's leftovers): how the Pokémon RESULT
+            // names (after choosepokemon) would choose in the Palace. RESULT the group it leans to with more than half its HP
+            // (0 attacking, 1 looking after itself, 2 working on the foe or the field), {thing} what it does with half or less;
+            // 3 for an Egg, 4 with nobody chosen
+            case "nature":
+            {
+                var team = host.Party.Members;
+                var p = Result >= 0 && Result < team.Count ? team[Result] : null;
+                if (p == null) { Result = 4; break; }
+                lastWearer = p.DisplayName;
+                if (p.IsEgg) { Result = 3; break; }
+                Result = (int)Data.PalaceNatures.Leaning(p.Nature, low: false);
+                string lean = Data.PalaceNatures.Leaning(p.Nature, low: true) switch { Data.PalaceGroup.Attack => "attack", Data.PalaceGroup.Defence => "defence", _ => "support" };
+                lastThing = Core.Text.Of($"palaceLean.{lean}");
+                break;
+            }
+            case "brain":
+                // The venue's Brain (EmeraldBrains): RESULT 1 when the battle to come is theirs
+                Result = host.Venue is { BrainNext: true } ? 1 : 0;
+                break;
             case "end":
                 host.Venue = null;
                 venueSlots = Array.Empty<int>();

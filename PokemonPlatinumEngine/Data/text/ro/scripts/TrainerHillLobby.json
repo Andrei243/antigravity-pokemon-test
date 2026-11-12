@@ -223,6 +223,64 @@
       "text": [
         "Unique: {hill:BEST_UNIQUE}. Expert: {hill:BEST_EXPERT}."
       ]
+    },
+    {
+      "en": [
+        "And the best times your other games have brought in from the record desks."
+      ],
+      "text": [
+        "Și cele mai bune timpuri aduse de celelalte jocuri ale tale de la ghișeele de recorduri."
+      ]
+    },
+    {
+      "en": [
+        "Normal: {hill:MIXED_NORMAL}. Variety: {hill:MIXED_VARIETY}."
+      ],
+      "text": [
+        "Normal: {hill:MIXED_NORMAL}. Variat: {hill:MIXED_VARIETY}."
+      ]
+    },
+    {
+      "en": [
+        "Unique: {hill:MIXED_UNIQUE}. Expert: {hill:MIXED_EXPERT}."
+      ],
+      "text": [
+        "Unic: {hill:MIXED_UNIQUE}. Expert: {hill:MIXED_EXPERT}."
+      ]
+    }
+  ],
+  "Clerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Stocking up before the climb? Everything here is picked for the Hill."
+      ],
+      "text": [
+        "Te aprovizionezi înainte de urcare? Totul de aici e ales pentru Hill."
+      ]
+    },
+    {
+      "en": [
+        "Good luck up there!"
+      ],
+      "text": [
+        "Mult noroc acolo sus!"
+      ]
+    },
+    {
+      "en": [
+        "Good luck up there!"
+      ],
+      "text": [
+        "Mult noroc acolo sus!"
+      ]
     }
   ]
 }

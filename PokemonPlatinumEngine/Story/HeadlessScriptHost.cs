@@ -393,6 +393,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             case "wheel":
                 if (SlotsLeave is { } coins) Pastimes.Coins.Set(coins);
                 return 1;
+            // No table is played here: no sitting sets a best
+            case "streak":
+                return 0;
             case "boxroom":
                 return (NationalDex ? Models.PcBoxes.NationalBoxCount : Models.PcBoxes.BoxCount) * Models.PcBoxes.BoxSize - Boxes.Count;
             case "store":

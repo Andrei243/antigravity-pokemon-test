@@ -92,7 +92,7 @@
   "npcs": [
     {
       "id": "attendant",
-      "name": "Palace Maven",
+      "name": "Attendant",
       "npcType": "Gentleman",
       "x": 3,
       "y": 7,

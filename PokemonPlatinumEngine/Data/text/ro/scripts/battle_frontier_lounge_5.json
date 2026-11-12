@@ -1,0 +1,68 @@
+{
+  "NatureGirl": [
+    {
+      "en": [
+        "Little Girl"
+      ],
+      "text": [
+        "Fetița"
+      ]
+    },
+    {
+      "en": [
+        "I can tell what a Pokémon is like just by watching it. Will you show me one of yours?"
+      ],
+      "text": [
+        "Îmi dau seama cum e un Pokémon doar privindu-l. Îmi arăți unul de-al tău?"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} loves to attack! When it's strong it just wants to hit things."
+      ],
+      "text": [
+        "{wearer} adoră să atace! Când e în putere, vrea doar să lovească."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} is careful. When it's strong it likes to keep itself safe."
+      ],
+      "text": [
+        "{wearer} e prudent. Când e în putere, îi place să se ferească."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} is tricky! When it's strong it likes to mess with the other Pokémon."
+      ],
+      "text": [
+        "{wearer} e șiret! Când e în putere, îi place să-l încurce pe celălalt Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "But when it's hurt, it {thing}. I just know it!"
+      ],
+      "text": [
+        "Dar când e rănit, {thing}. Pur și simplu știu!"
+      ]
+    },
+    {
+      "en": [
+        "That's an Egg! It hasn't got a nature I can see yet. Show me again when it hatches."
+      ],
+      "text": [
+        "E un Ou! Încă nu are o fire pe care s-o văd. Arată-mi-l iar când eclozează."
+      ]
+    },
+    {
+      "en": [
+        "Oh, okay. Come show me later!"
+      ],
+      "text": [
+        "A, bine. Vino să-mi arăți mai târziu!"
+      ]
+    }
+  ]
+}

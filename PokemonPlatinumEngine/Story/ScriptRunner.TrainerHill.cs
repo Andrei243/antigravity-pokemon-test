@@ -116,6 +116,10 @@ public sealed partial class ScriptRunner
                 Result = 0;
                 break;
             }
+            case "mixed":
+                // The other games' climbs mixed in at a record desk (RecordMix): RESULT how many of them have climbed at all
+                Result = lastNumber = host.MixedRecords?.Records.Count(r => r.HillBest != null) ?? 0;
+                break;
             case "record":
                 Result = TrainerHill.CheckTime(story);
                 break;
@@ -131,6 +135,11 @@ public sealed partial class ScriptRunner
     {
         var story = host.Story;
         if (argument == "TIME") return TrainerHill.TimeOf(TrainerHill.Frames(story, PlaySeconds));
+        // MIXED_NORMAL and its kin: the fastest climb of the records mixed in, with whose it is (RecordMix.HillBest)
+        if (argument.StartsWith("MIXED_") && Enum.TryParse<TrainerHillMode>(argument["MIXED_".Length..], ignoreCase: true, out var mixedMode))
+            return host.MixedRecords is { } mixed && RecordMix.HillBest(mixed, mixedMode) is { } other
+                ? Text.Of("trainerHill.mixedTime", ("name", other.Name), ("time", TrainerHill.TimeOf(other.Frames)))
+                : Text.Of("trainerHill.none");
         // BEST is the challenge taken; BEST_NORMAL and its kin a challenge by name, as the board downstairs reads them
         var mode = argument.StartsWith("BEST_") && Enum.TryParse<TrainerHillMode>(argument["BEST_".Length..], ignoreCase: true, out var named)
             ? named : TrainerHill.ModeOf(story);

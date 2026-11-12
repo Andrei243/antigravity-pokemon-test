@@ -3,7 +3,8 @@
 #
 # The Frontier's Battle Points are one set (plan 06 · R18), so the island's counters trade the same prizes as the booths
 # on Sinnoh's grounds (battle_frontier.txt): things to hold and vitamins at one, Technical Machines at the other. The two
-# counters of Emerald's dolls and cushions have nothing to offer yet.
+# counters of Emerald's dolls and cushions trade for points too (plan 21's leftovers, 2026-11-12), into the decoration
+# PC (`openbase trade`).
 
 
 script ItemClerk
@@ -22,11 +23,113 @@ script MachineClerk
   call ExchangeTrade
   end
 
-script DecorClerk
+script DecorClerk1
   face self player
   speaker "Clerk"
-  say "This counter will trade Battle Points for dolls and cushions for a secret base. Our stock hasn't arrived yet, I'm afraid."
+  say "Welcome! This counter trades Battle Points for posters, cushions and dolls for a secret base."
+label Page1
+  choose "Which would you like?" "KISS POSTER  16 BP" "KISS CUSHION  32 BP" "SMOOCHUM DOLL  32 BP" "TOGEPI DOLL  48 BP" "MORE" "NO, THANKS"
+  if result == 0 goto Poster
+  if result == 1 goto Cushion
+  if result == 2 goto Smoochum
+  if result == 3 goto Togepi
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "MEOWTH DOLL  48 BP" "CLEFAIRY DOLL  48 BP" "DITTO DOLL  48 BP" "CYNDAQUIL DOLL  80 BP" "MORE" "NO, THANKS"
+  if result == 0 goto Meowth
+  if result == 1 goto Clefairy
+  if result == 2 goto Ditto
+  if result == 3 goto Cyndaquil
+  if result == 4 goto Page3
+  goto Bye
+label Page3
+  choose "Which would you like?" "CHIKORITA DOLL  80 BP" "TOTODILE DOLL  80 BP" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto Chikorita
+  if result == 1 goto Totodile
+  if result == 2 goto Page1
+  goto Bye
+label Poster
+  openbase trade "Kiss Poster" 16
+  goto Traded
+label Cushion
+  openbase trade "Kiss Cushion" 32
+  goto Traded
+label Smoochum
+  openbase trade "Smoochum Doll" 32
+  goto Traded
+label Togepi
+  openbase trade "Togepi Doll" 48
+  goto Traded
+label Meowth
+  openbase trade "Meowth Doll" 48
+  goto Traded
+label Clefairy
+  openbase trade "Clefairy Doll" 48
+  goto Traded
+label Ditto
+  openbase trade "Ditto Doll" 48
+  goto Traded
+label Cyndaquil
+  openbase trade "Cyndaquil Doll" 80
+  goto Traded
+label Chikorita
+  openbase trade "Chikorita Doll" 80
+  goto Traded
+label Totodile
+  openbase trade "Totodile Doll" 80
+label Traded
+  call DecorTraded
   end
+label Bye
+  say "Please come again."
+  end
+
+script DecorClerk2
+  face self player
+  speaker "Clerk"
+  say "Welcome! This counter trades Battle Points for our biggest dolls for a secret base."
+  choose "Which would you like?" "LAPRAS DOLL  128 BP" "SNORLAX DOLL  128 BP" "VENUSAUR DOLL  256 BP" "CHARIZARD DOLL  256 BP" "BLASTOISE DOLL  256 BP" "NO, THANKS"
+  if result == 0 goto Lapras
+  if result == 1 goto Snorlax
+  if result == 2 goto Venusaur
+  if result == 3 goto Charizard
+  if result == 4 goto Blastoise
+  say "Please come again."
+  end
+label Lapras
+  openbase trade "Lapras Doll" 128
+  goto Traded
+label Snorlax
+  openbase trade "Snorlax Doll" 128
+  goto Traded
+label Venusaur
+  openbase trade "Venusaur Doll" 256
+  goto Traded
+label Charizard
+  openbase trade "Charizard Doll" 256
+  goto Traded
+label Blastoise
+  openbase trade "Blastoise Doll" 256
+label Traded
+  call DecorTraded
+  end
+
+# What a trade of a decoration comes to (Emerald's BattleFrontier_ExchangeServiceCorner_EventScript_TryPurchasePrize):
+# sent to the decoration PC, or turned away for too few points or no room left for its kind
+script DecorTraded
+  if result == 0 goto Short
+  if result == 2 goto Full
+  sound "select"
+  text "{player} traded {price} BP for the {thing}."
+  say "We'll send it to the PC in your secret base. Thank you!"
+  return
+label Short
+  say "I'm sorry, you don't have enough Battle Points for that."
+  return
+label Full
+  say "I'm sorry, your PC has no room left for another of those."
+  return
 
 
 # What follows a counter's question: the prize chosen is traded for, if the points are there.

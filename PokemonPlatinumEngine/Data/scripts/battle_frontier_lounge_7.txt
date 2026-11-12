@@ -1,0 +1,82 @@
+# The Battle Frontier island's Lounge 7 (plan 21's leftovers, 2026-11-12). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/BattleFrontier_Lounge7/scripts.inc).
+#
+# Two tutors teach a Pokémon a move for Battle Points, each ten of Emerald's in Emerald's order and at Emerald's prices
+# (Models/MoveTutors.cs, FrontierLounge; `tutor frontier left|right`): the Pokémon is chosen, then the move from those it
+# can learn and doesn't know, each with its price; a Pokémon that knows four moves gives one up. The points are paid once
+# the move is learned. Who may learn which is ours, as the Kanto tutors' table has it.
+
+
+script LeftTutor
+  face self player
+  speaker "Tutor"
+  ask "My moves are hard to come by, and I teach them only for Battle Points. Shall I teach one of your Pokémon?"
+  if no goto Bye
+  call Teach
+  end
+label Bye
+  say "Come back whenever you have points to spare, dear."
+  end
+
+
+script RightTutor
+  face self player
+  speaker "Tutor"
+  ask "My sister teaches the fierce moves. Mine are the clever ones, for Battle Points. Shall I teach one?"
+  if no goto Bye
+  call TeachRight
+  end
+label Bye
+  say "Come back whenever you have points to spare, dear."
+  end
+
+
+# The left tutor's lesson (Emerald's BattleFrontier_Lounge7_EventScript_ChooseLeftTutorMove and its kin)
+script Teach
+  say "Which Pokémon am I to teach?"
+  choosepokemon
+  tutor frontier left
+  call Lesson
+  return
+
+
+# The right tutor's lesson
+script TeachRight
+  say "Which Pokémon am I to teach?"
+  choosepokemon
+  tutor frontier right
+  call Lesson
+  return
+
+
+# What follows the move's choice, the same for both sisters
+script Lesson
+  if result == 3 goto Egg
+  if result == 2 goto Nothing
+  if result == 5 goto Poor
+  if result != 1 goto Bye
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... {wearer} forgot {forgotten}. And..."
+  tutor spend
+  fanfare levelup
+  say "{wearer} learned {thing}! That will be {price} BP. Thank you, dear."
+  return
+label Egg
+  say "An Egg can't learn anything yet. Bring it back once it hatches."
+  return
+label Nothing
+  say "Oh dear. There's nothing of mine this Pokémon could learn."
+  return
+label Poor
+  say "That one is {price} BP, and you haven't quite enough."
+  return
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  return
+label Hm
+  say "{forgotten} can't be given up like that. {wearer} did not learn {thing}."
+  return
+label Bye
+  return

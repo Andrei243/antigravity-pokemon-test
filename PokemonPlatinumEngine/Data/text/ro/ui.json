@@ -1,6 +1,7 @@
 {
   "cyclingRoad": { "seconds": "{time} de secunde", "minute": "un minut sau mai mult", "times": "de {count} ori", "many": "de 99 de ori sau mai mult" },
-  "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp" },
+  "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp", "mixedTime": "{name}, {time}" },
+  "palaceLean": { "attack": "se aruncă în atac", "defence": "are grijă întâi de sine", "support": "lucrează în schimb asupra adversarului" },
   "rouletteTable": {
     "coins": "FISE",
     "balls": "BILE RĂMASE",
@@ -5427,6 +5428,7 @@
     "whichForgotten": "Ce mișcare să uite?",
     "knowsFour": "{pokemon} știe deja patru mișcări. Care face loc pentru {move}?",
     "moveRow": "{move}   {price}",
+    "moveRowPoints": "{move}   {points} BP",
     "tmRow": "{item} {move}",
     "priceBp": "{name}   {price} PL",
     "priceCoins": "{name}   {price} F",

@@ -35,21 +35,165 @@
       ]
     }
   ],
-  "DecorClerk": [
+  "DecorClerk1": [
     {
       "en": [
         "Clerk"
       ],
       "text": [
-        "Vânzătoarea"
+        "Funcționar"
       ]
     },
     {
       "en": [
-        "This counter will trade Battle Points for dolls and cushions for a secret base. Our stock hasn't arrived yet, I'm afraid."
+        "Welcome! This counter trades Battle Points for posters, cushions and dolls for a secret base."
       ],
       "text": [
-        "La tejgheaua asta se schimbă Puncte de Luptă pe păpuși și perne pentru o bază secretă. Din păcate, marfa încă n-a sosit."
+        "Bine ai venit! Ghișeul acesta schimbă Puncte de Luptă pe postere, perne și păpuși pentru o bază secretă."
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "KISS POSTER  16 BP",
+        "KISS CUSHION  32 BP",
+        "SMOOCHUM DOLL  32 BP",
+        "TOGEPI DOLL  48 BP",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Pe care îl dorești?",
+        "KISS POSTER  16 BP",
+        "KISS CUSHION  32 BP",
+        "SMOOCHUM DOLL  32 BP",
+        "TOGEPI DOLL  48 BP",
+        "MAI MULTE",
+        "NU, MULȚUMESC"
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "MEOWTH DOLL  48 BP",
+        "CLEFAIRY DOLL  48 BP",
+        "DITTO DOLL  48 BP",
+        "CYNDAQUIL DOLL  80 BP",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Pe care îl dorești?",
+        "MEOWTH DOLL  48 BP",
+        "CLEFAIRY DOLL  48 BP",
+        "DITTO DOLL  48 BP",
+        "CYNDAQUIL DOLL  80 BP",
+        "MAI MULTE",
+        "NU, MULȚUMESC"
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "CHIKORITA DOLL  80 BP",
+        "TOTODILE DOLL  80 BP",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Pe care îl dorești?",
+        "CHIKORITA DOLL  80 BP",
+        "TOTODILE DOLL  80 BP",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MULȚUMESC"
+      ]
+    },
+    {
+      "en": [
+        "Please come again."
+      ],
+      "text": [
+        "Mai poftiți pe la noi."
+      ]
+    }
+  ],
+  "DecorClerk2": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Funcționar"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! This counter trades Battle Points for our biggest dolls for a secret base."
+      ],
+      "text": [
+        "Bine ai venit! Ghișeul acesta schimbă Puncte de Luptă pe cele mai mari păpuși ale noastre pentru o bază secretă."
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "LAPRAS DOLL  128 BP",
+        "SNORLAX DOLL  128 BP",
+        "VENUSAUR DOLL  256 BP",
+        "CHARIZARD DOLL  256 BP",
+        "BLASTOISE DOLL  256 BP",
+        "NO, THANKS"
+      ],
+      "text": [
+        "Pe care îl dorești?",
+        "LAPRAS DOLL  128 BP",
+        "SNORLAX DOLL  128 BP",
+        "VENUSAUR DOLL  256 BP",
+        "CHARIZARD DOLL  256 BP",
+        "BLASTOISE DOLL  256 BP",
+        "NU, MULȚUMESC"
+      ]
+    },
+    {
+      "en": [
+        "Please come again."
+      ],
+      "text": [
+        "Mai poftiți pe la noi."
+      ]
+    }
+  ],
+  "DecorTraded": [
+    {
+      "en": [
+        "{player} traded {price} BP for the {thing}."
+      ],
+      "text": [
+        "{player} a dat {price} BP pe {thing}."
+      ]
+    },
+    {
+      "en": [
+        "We'll send it to the PC in your secret base. Thank you!"
+      ],
+      "text": [
+        "Îl trimitem la PC-ul din baza ta secretă. Mulțumim!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough Battle Points for that."
+      ],
+      "text": [
+        "Îmi pare rău, nu ai destule Puncte de Luptă pentru asta."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, your PC has no room left for another of those."
+      ],
+      "text": [
+        "Îmi pare rău, PC-ul tău nu mai are loc pentru încă unul de felul ăsta."
       ]
     }
   ],

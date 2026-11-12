@@ -8,6 +8,16 @@
     ]
   },
   "people": {
+    "hill_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
     "hill_attendant": {
       "name": {
         "en": [

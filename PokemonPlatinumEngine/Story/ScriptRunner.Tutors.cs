@@ -13,6 +13,8 @@ public sealed partial class ScriptRunner
 {
     private Pokemon? pupil;
     private TutorMove? tutorPrice;
+    // The Battle Points the Lounge 7 tutor's move picked costs
+    private int tutorPoints;
     private string tutorMove = "", lastForgotten = "";
     private int forgetSlot = -1;
 
@@ -84,6 +86,34 @@ public sealed partial class ScriptRunner
                 };
                 break;
             }
+            // The Battle Frontier island's Lounge 7 tutors (plan 21's leftovers; MoveTutors.FrontierLounge): which of the side's
+            // moves it is to be taught for Battle Points. RESULT 1 one was picked, 0 none, 2 nothing for it, 3 an Egg, 4 nobody
+            // chosen, 5 one was picked that costs more points than are held; {price} its points. `spend` pays them once learned
+            case "frontier":
+            {
+                pupil = Chosen();
+                tutorPrice = null;
+                tutorMove = "";
+                tutorPoints = 0;
+                if (pupil == null) { Result = 4; break; }
+                if (pupil.IsEgg) { Result = 3; break; }
+                var moves = MoveTutors.FrontierTeachable(pupil, i.Other);
+                if (moves.Count == 0) { Result = 2; break; }
+                host.Ask(speakerShown, Text.Of("scriptLines.whichMove", ("pokemon", pupil.DisplayName)),
+                    moves.Select(m => Text.Of("scriptLines.moveRowPoints", ("move", LocalNames.Move(m.Move)), ("points", m.Points))).Append(Text.Of("scriptLines.cancel")).ToList(), cancel: moves.Count);
+                afterBusy = () =>
+                {
+                    if (host.Answer < 0 || host.Answer >= moves.Count) { Result = 0; return; }
+                    lastThing = tutorMove = moves[host.Answer].Move;
+                    lastPrice = tutorPoints = moves[host.Answer].Points;
+                    Result = host.Frontier.BattlePoints >= tutorPoints ? 1 : 5;
+                };
+                break;
+            }
+            case "spend":
+                Result = tutorPoints > 0 && host.Frontier.SpendPoints(tutorPoints) ? 1 : 0;
+                tutorPoints = 0;
+                break;
             // CheckCanAffordMove and PayShardCost
             case "afford":
                 Result = tutorPrice != null && MoveTutors.CanAfford(host.Bag, tutorPrice) ? 1 : 0;
