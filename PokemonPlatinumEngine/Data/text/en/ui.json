@@ -711,6 +711,7 @@
     "bag": "BAG",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
+    "phone": "PHONE",
     "requests": "REQUESTS",
     "save": "SAVE",
     "options": "OPTIONS",
@@ -1833,6 +1834,34 @@
     "holding": "Put the piece down on an empty square.",
     "solved": "The picture is whole again!"
   },
+  "travelPhone": {
+    "title": "PHONE",
+    "card": {
+      "Calls": "CALLS",
+      "News": "NEWS",
+      "Map": "MAP"
+    },
+    "hints": {
+      "call": "Call",
+      "open": "Open the map",
+      "cards": "Cards"
+    },
+    "calls": {
+      "empty": "No numbers saved yet.",
+      "where": "WHERE TO FIND THEM",
+      "waiting": "WAITING FOR YOU"
+    },
+    "news": {
+      "heading": "TODAY'S NEWS",
+      "none": "Nothing on the air today."
+    },
+    "map": {
+      "heading": "MAP",
+      "body": "Open the map to look over the whole region, town by town and route by route.",
+      "none": "This place isn't on the phone's map."
+    },
+    "registered": "{name}'s number is saved in your phone!"
+  },
   "pokegear": {
     "title": "POKéGEAR",
     "clock": "{day} {time}",
@@ -1923,7 +1952,18 @@
       "tateAndLiza": "Tate & Liza",
       "juan": "Juan",
       "roxanne": "Roxanne",
-      "norman": "Norman"
+      "norman": "Norman",
+      "unovaMom": "Mom",
+      "unovaBianca": "Bianca",
+      "unovaCheren": "Cheren",
+      "unovaHugh": "{rival}",
+      "unovaJuniper": "Prof. Juniper",
+      "kalosMom": "Mom",
+      "kalosNeighbour": "{rival}",
+      "kalosShauna": "Shauna",
+      "kalosTierno": "Tierno",
+      "kalosTrevor": "Trevor",
+      "kalosSycamore": "Prof. Sycamore"
     }
   },
   "pokenav": {

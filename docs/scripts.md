@@ -1566,7 +1566,7 @@ Plan 20 · J3. Johto's Pokégear keeps its numbers in the story, a flag of ours 
 
 | Command | What it does |
 |---|---|
-| `addcontact joey` | Registers a contact of the phone book (`Data/world/johto/phone.json`, by its id) in the Pokégear (the original's `RegisterPhoneNumber`): the host plays the jingle and says so over the field (dropped while a scene is skipped). `RESULT` is 1 for a number new to the phone and 0 for one it had. `ScriptLibrary.Problems` names a contact the book doesn't have. |
+| `addcontact joey` | Registers a contact of the phone book (`Data/world/johto/phone.json`, by its id) in the Pokégear (the original's `RegisterPhoneNumber`): the host plays the jingle and says so over the field (dropped while a scene is skipped). `RESULT` is 1 for a number new to the phone and 0 for one it had. `ScriptLibrary.Problems` names a contact the book doesn't have. The travel phone's books (plan 43 · LF6: `Data/world/unova/phone.json`, `kalos/phone.json`, ids carrying the region's name, `unova_bianca`) are registered the same way, and the word over the field says the phone. |
 
 A call is a script of `phone.txt`, the contact's id with each word's first letter up (`prof_elm`: `ProfElm`; one with
 no script of their own plays `Nobody`), started by the game over the field when the player rings from the Pokégear or

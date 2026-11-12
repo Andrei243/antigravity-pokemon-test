@@ -1,0 +1,40 @@
+{
+  "key": "nimbasa_city_10",
+  "index": 86,
+  "name": "Nimbasa City",
+  "matrix": 100,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 25, "to": "nimbasa_city_8", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "smasher", "movement": "none", "x": 8, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0286", "script": "TRAINER_SMASHER_ELENA_4" },
+    { "id": "1", "looks": "smasher", "movement": "none", "x": 12, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0287", "script": "TRAINER_SMASHER_ASPEN_2" },
+    { "id": "2", "looks": "smasher", "movement": "none", "x": 17, "z": 23, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0288", "script": "TRAINER_SMASHER_MARI" },
+    { "id": "3", "looks": "backers_m", "movement": "none", "x": 4, "z": 18, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0289", "script": "TRAINER_BACKERS_JOE_ROSS_3" },
+    { "id": "4", "looks": "backers_f", "movement": "none", "x": 10, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028a", "script": "TRAINER_BACKERS_AI_CIEL" },
+    { "id": "5", "looks": "work_01", "movement": "look_around", "x": 5, "z": 21, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028b", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "6", "looks": "work_02", "movement": "look_west_and_east", "x": 4, "z": 23, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028c", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "7", "looks": "work_03", "movement": "wander_around", "x": 14, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028d", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "8", "looks": "smasher", "movement": "none", "x": 9, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 6, "script": "2" },
+    { "id": "9", "looks": "smasher", "movement": "wander_around", "x": 18, "z": 14, "facing": 3, "rangeX": 1, "rangeZ": 3, "script": "3" },
+    { "id": "10", "looks": "youngster", "movement": "none", "x": 5, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "11", "looks": "youngster", "movement": "none", "x": 26, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "12", "looks": "backers_m", "movement": "none", "x": 4, "z": 19, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0289", "script": "TRAINER_BACKERS_JOE_ROSS_3" },
+    { "id": "13", "looks": "backers_f", "movement": "none", "x": 11, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028a", "script": "TRAINER_BACKERS_AI_CIEL" },
+    { "id": "14", "looks": "306", "movement": "none", "x": 5, "z": 16, "facing": 0, "rangeX": 6, "rangeZ": 6, "script": "6" },
+    { "id": "15", "looks": "306", "movement": "none", "x": 26, "z": 15, "facing": 1, "rangeX": 6, "rangeZ": 6, "script": "7" }
+  ],
+  "signs": [],
+  "triggers": []
+}

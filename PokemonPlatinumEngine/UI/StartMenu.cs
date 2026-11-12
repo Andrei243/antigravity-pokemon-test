@@ -8,7 +8,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What the player picked from the start menu.</summary>
-public enum StartMenuChoice { None, Pokedex, Pokemon, Bag, Trainer, Save, Options, SaveAndQuit, Quit, Pokegear, PokeNav, Boxes, Requests, Camp }
+public enum StartMenuChoice { None, Pokedex, Pokemon, Bag, Trainer, Save, Options, SaveAndQuit, Quit, Pokegear, PokeNav, Boxes, Requests, Camp, Phone }
 
 /// <summary>
 /// The field's start menu, in Platinum's order (Pokédex, Pokémon, Bag, the player's card, Save, Options, then
@@ -16,7 +16,7 @@ public enum StartMenuChoice { None, Pokedex, Pokemon, Bag, Trainer, Save, Option
 /// </summary>
 public class StartMenu
 {
-    private enum Entry { Pokedex, Pokemon, Camp, Boxes, Bag, Pokegear, PokeNav, Trainer, Requests, Save, Options, Close, Quit }
+    private enum Entry { Pokedex, Pokemon, Camp, Boxes, Bag, Pokegear, PokeNav, Phone, Trainer, Requests, Save, Options, Close, Quit }
 
     private static readonly Entry[] Entries = Enum.GetValues<Entry>();
 
@@ -39,11 +39,14 @@ public class StartMenu
     /// <summary>Whether the PokéNav is the player's here: Hoenn's, once Mr. Stone has given it (plan 21 · H2, part b; Emerald's menu has it after the bag).</summary>
     public bool HasPokeNav { get; set; }
 
+    /// <summary>Whether the travel phone is the player's here: a region whose file says it works, once given (plan 43 · LF6; after the PokéNav's place).</summary>
+    public bool HasPhone { get; set; }
+
     /// <summary>Whether the menu has REQUESTS (plan 12 · Q21): the options' row is on and an errand is known (or the area's checklist is on, whose THIS AREA tab is on the page); after the player's card.</summary>
     public bool HasRequests { get; set; }
 
     /// <summary>The entries the menu shows now, in order.</summary>
-    private Entry[] Shown => Entries.Where(e => (e != Entry.Pokedex || HasPokedex) && (e != Entry.Pokemon || HasPokemon) && (e != Entry.Boxes || HasBoxes && HasPokemon) && (e != Entry.Camp || HasCamp && HasPokemon) && (e != Entry.Pokegear || HasPokegear) && (e != Entry.PokeNav || HasPokeNav) && (e != Entry.Requests || HasRequests)).ToArray();
+    private Entry[] Shown => Entries.Where(e => (e != Entry.Pokedex || HasPokedex) && (e != Entry.Pokemon || HasPokemon) && (e != Entry.Boxes || HasBoxes && HasPokemon) && (e != Entry.Camp || HasCamp && HasPokemon) && (e != Entry.Pokegear || HasPokegear) && (e != Entry.PokeNav || HasPokeNav) && (e != Entry.Phone || HasPhone) && (e != Entry.Requests || HasRequests)).ToArray();
 
     /// <summary>The answers to "Quit the game?", in button order; the first (staying) is highlighted when it opens.</summary>
     public static string[] QuitAnswers => new[] { Text.Of("start.quit.keepPlaying"), Text.Of("start.quit.saveAndQuit"), Text.Of("start.quit.quit") };
@@ -135,6 +138,7 @@ public class StartMenu
             case Entry.Bag: return StartMenuChoice.Bag;
             case Entry.Pokegear: return StartMenuChoice.Pokegear;
             case Entry.PokeNav: return StartMenuChoice.PokeNav;
+            case Entry.Phone: return StartMenuChoice.Phone;
             case Entry.Trainer: return StartMenuChoice.Trainer;
             case Entry.Requests: return StartMenuChoice.Requests;
             case Entry.Save: return StartMenuChoice.Save;
@@ -211,6 +215,7 @@ public class StartMenu
         Entry.Bag => (Text.Of("start.bag"), UiIcon.Bag, ModernUi.Gold),
         Entry.Pokegear => (Text.Of("start.pokegear"), UiIcon.Gear, new Color(40, 168, 186, 255)),
         Entry.PokeNav => (Text.Of("start.pokenav"), UiIcon.MapCard, ModernUi.NavOrange),
+        Entry.Phone => (Text.Of("start.phone"), UiIcon.Phone, ModernUi.PhoneColour(null)),
         Entry.Trainer => (PlayerName.ToUpperInvariant(), UiIcon.Trainer, ModernUi.Blue),
         Entry.Requests => (Text.Of("start.requests"), UiIcon.Letter, ModernUi.RequestColour),
         Entry.Save => (Text.Of("start.save"), UiIcon.Save, new Color(126, 110, 222, 255)),

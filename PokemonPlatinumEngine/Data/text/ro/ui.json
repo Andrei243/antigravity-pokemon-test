@@ -733,6 +733,7 @@
     "bag": "RUCSAC",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
+    "phone": "TELEFON",
     "requests": "RUGĂMINȚI",
     "save": "SALVEAZĂ",
     "options": "OPȚIUNI",
@@ -2215,6 +2216,34 @@
     "holding": "Pune bucata pe un pătrat gol.",
     "solved": "Imaginea este din nou întreagă!"
   },
+  "travelPhone": {
+    "title": "TELEFON",
+    "card": {
+      "Calls": "APELURI",
+      "News": "ȘTIRI",
+      "Map": "HARTĂ"
+    },
+    "hints": {
+      "call": "Sună",
+      "open": "Deschide harta",
+      "cards": "Cartele"
+    },
+    "calls": {
+      "empty": "Niciun număr salvat încă.",
+      "where": "UNDE ÎI GĂSEȘTI",
+      "waiting": "TE AȘTEAPTĂ"
+    },
+    "news": {
+      "heading": "ȘTIRILE ZILEI",
+      "none": "Nimic în emisie azi."
+    },
+    "map": {
+      "heading": "HARTĂ",
+      "body": "Deschide harta ca să vezi toată regiunea, oraș cu oraș și rută cu rută.",
+      "none": "Locul acesta nu e pe harta telefonului."
+    },
+    "registered": "Numărul lui {name} e salvat în telefonul tău!"
+  },
   "pokegear": {
     "title": "POKéGEAR",
     "clock": "{day} {time}",
@@ -2305,7 +2334,18 @@
       "tateAndLiza": "Tate și Liza",
       "juan": "Juan",
       "roxanne": "Roxanne",
-      "norman": "Norman"
+      "norman": "Norman",
+      "unovaMom": "Mama",
+      "unovaBianca": "Bianca",
+      "unovaCheren": "Cheren",
+      "unovaHugh": "{rival}",
+      "unovaJuniper": "Prof. Juniper",
+      "kalosMom": "Mama",
+      "kalosNeighbour": "{rival}",
+      "kalosShauna": "Shauna",
+      "kalosTierno": "Tierno",
+      "kalosTrevor": "Trevor",
+      "kalosSycamore": "Prof. Sycamore"
     }
   },
   "pokenav": {

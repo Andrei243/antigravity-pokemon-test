@@ -1,0 +1,73 @@
+# NimbasaCity_BaseballField: Nimbasa City's baseball field (plan 42 · PS5; rulings, "Sports days"). Black 2's place, our words.
+# Its three athletes battle once a day each (FLAG_DAILY_UNOVA_*), with the team the story calls for: the first
+# under five of Unova's Badges, the second from five, the third with all eight, the fourth after the Hall of Fame
+# (SportsDays.TierOf; SportsDayTests hold these scripts to SportsDays).
+
+script Athlete1
+  face self player
+  if flag FLAG_DAILY_UNOVA_BASEBALL_1 goto Done1
+  say "Batter up! My Pokémon swings for the fences!"
+  if flag UnovaHallOfFame goto Fourth1
+  if badges >= 8 goto Third1
+  if badges >= 5 goto Second1
+  battle self as "unova_infielder_alex"
+  goto Won1
+label Second1
+  battle self as "unova_infielder_alex_2"
+  goto Won1
+label Third1
+  battle self as "unova_infielder_alex_3"
+  goto Won1
+label Fourth1
+  battle self as "unova_infielder_alex_4"
+label Won1
+  setflag FLAG_DAILY_UNOVA_BASEBALL_1
+label Done1
+  say "Out at the plate... That's a good game."
+  end
+
+script Athlete2
+  face self player
+  if flag FLAG_DAILY_UNOVA_BASEBALL_2 goto Done2
+  say "I field grounders all day. Your attacks won't get past me!"
+  if flag UnovaHallOfFame goto Fourth2
+  if badges >= 8 goto Third2
+  if badges >= 5 goto Second2
+  battle self as "unova_infielder_connor_3"
+  goto Won2
+label Second2
+  battle self as "unova_infielder_connor_4"
+  goto Won2
+label Third2
+  battle self as "unova_infielder_connor"
+  goto Won2
+label Fourth2
+  battle self as "unova_infielder_connor_2"
+label Won2
+  setflag FLAG_DAILY_UNOVA_BASEBALL_2
+label Done2
+  say "You hit everything I threw. Nice!"
+  end
+
+script Athlete3
+  face self player
+  if flag FLAG_DAILY_UNOVA_BASEBALL_3 goto Done3
+  say "Three strikes and you're out. One battle and you're done!"
+  if flag UnovaHallOfFame goto Fourth3
+  if badges >= 8 goto Third3
+  if badges >= 5 goto Second3
+  battle self as "unova_infielder_todd_2"
+  goto Won3
+label Second3
+  battle self as "unova_infielder_todd_3"
+  goto Won3
+label Third3
+  battle self as "unova_infielder_todd_4"
+  goto Won3
+label Fourth3
+  battle self as "unova_infielder_todd"
+label Won3
+  setflag FLAG_DAILY_UNOVA_BASEBALL_3
+label Done3
+  say "I'll be back at practice tomorrow."
+  end

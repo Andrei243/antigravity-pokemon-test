@@ -125,6 +125,13 @@ public sealed class RegionFile
     public bool HasSeasons { get; set; }
 
     /// <summary>
+    /// Whether the travel phone works here (plan 43 · LF6, <see cref="Models.TravelPhone"/>): Unova's and the regions'
+    /// after it, each with its own book (<c>Data/world/&lt;folder&gt;/phone.json</c>). Johto's Pokégear and Hoenn's
+    /// PokéNav are their own and never this.
+    /// </summary>
+    public bool Phone { get; set; }
+
+    /// <summary>
     /// Whether the region's people get about on roller skates (plan 23 · Z1: Kalos's): once the skates are had
     /// (<see cref="Overworld.SkateRules.Flag"/>) the run button puts them on (<see cref="Overworld.TravelMode.Skating"/>).
     /// </summary>

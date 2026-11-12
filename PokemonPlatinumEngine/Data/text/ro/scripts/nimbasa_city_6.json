@@ -1,0 +1,56 @@
+{
+  "Athlete1": [
+    {
+      "en": [
+        "Batter up! My Pokémon swings for the fences!"
+      ],
+      "text": [
+        "La bătaie! Pokémonul meu lovește până peste gard!"
+      ]
+    },
+    {
+      "en": [
+        "Out at the plate... That's a good game."
+      ],
+      "text": [
+        "Eliminat la bază... A fost un joc frumos."
+      ]
+    }
+  ],
+  "Athlete2": [
+    {
+      "en": [
+        "I field grounders all day. Your attacks won't get past me!"
+      ],
+      "text": [
+        "Prind mingi pe jos toată ziua. Atacurile tale n-o să treacă de mine!"
+      ]
+    },
+    {
+      "en": [
+        "You hit everything I threw. Nice!"
+      ],
+      "text": [
+        "Ai lovit tot ce am aruncat. Bravo!"
+      ]
+    }
+  ],
+  "Athlete3": [
+    {
+      "en": [
+        "Three strikes and you're out. One battle and you're done!"
+      ],
+      "text": [
+        "Trei ratări și ești afară. O luptă și ai terminat!"
+      ]
+    },
+    {
+      "en": [
+        "I'll be back at practice tomorrow."
+      ],
+      "text": [
+        "Mâine mă întorc la antrenament."
+      ]
+    }
+  ]
+}

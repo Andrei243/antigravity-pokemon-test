@@ -2938,5 +2938,275 @@
         "Aici Kurt. {ball} ale tale înaintează. Mai dă-mi până mâine."
       ]
     }
+  ],
+  "UnovaMom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Are you eating properly? Aspertia's view isn't the same without you looking out at it."
+      ],
+      "text": [
+        "{player}! Mănânci cum trebuie? Priveliștea din Aspertia nu mai e la fel fără tine."
+      ]
+    },
+    {
+      "en": [
+        "Call whenever you like. And remember to let your Pokémon rest!"
+      ],
+      "text": [
+        "Sună oricând vrei. Și nu uita să-ți lași Pokémonii să se odihnească!"
+      ]
+    },
+    {
+      "en": [
+        "Hello, dear! The neighbours keep asking about your Badges. I tell them you're doing wonderfully."
+      ],
+      "text": [
+        "Alo, dragul meu! Vecinii tot întreabă de Insignele tale. Le spun că te descurci minunat."
+      ]
+    }
+  ],
+  "UnovaBianca": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        "Bianca"
+      ]
+    },
+    {
+      "en": [
+        "Heeey, {player}! It's Bianca! I'm checking on everyone the professor gave a Pokédex to."
+      ],
+      "text": [
+        "Heeei, {player}! Sunt Bianca! Îi sun pe toți cei cărora profesoara le-a dat un Pokédex."
+      ]
+    },
+    {
+      "en": [
+        "Remember: every new Pokémon you see fills in a page. Even the ones that run away!"
+      ],
+      "text": [
+        "Ține minte: fiecare Pokémon nou pe care îl vezi completează o pagină. Chiar și cei care fug!"
+      ]
+    },
+    {
+      "en": [
+        "Eight Badges?! Wow wow wow! The Pokémon League is waiting for you, {player}. I'm so excited!"
+      ],
+      "text": [
+        "Opt Insigne?! Uau, uau, uau! Liga Pokémon te așteaptă, {player}. Sunt atât de emoționată!"
+      ]
+    }
+  ],
+  "UnovaCheren": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        "Cheren"
+      ]
+    },
+    {
+      "en": [
+        "{player}. You haven't challenged my Gym yet. Take your time, but don't keep me waiting too long."
+      ],
+      "text": [
+        "{player}. Încă nu mi-ai provocat Sala. Ia-ți timp, dar nu mă lăsa să aștept prea mult."
+      ]
+    },
+    {
+      "en": [
+        "How are you and your Pokémon getting on? A Trainer grows by thinking about every battle afterwards."
+      ],
+      "text": [
+        "Cum vă înțelegeți tu și Pokémonii tăi? Un Antrenor crește gândindu-se după aceea la fiecare luptă."
+      ]
+    }
+  ],
+  "UnovaHugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I'm training on the next route. Don't you dare fall behind!"
+      ],
+      "text": [
+        "{player}! Mă antrenez pe ruta următoare. Să nu cumva să rămâi în urmă!"
+      ]
+    },
+    {
+      "en": [
+        "Hey. My sister says hello. ...And I say: get stronger, so our next battle is a real one!"
+      ],
+      "text": [
+        "Hei. Sora mea te salută. ...Iar eu zic: devino mai puternic, ca următoarea noastră luptă să fie una adevărată!"
+      ]
+    }
+  ],
+  "UnovaJuniper": [
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        "Prof. Juniper"
+      ]
+    },
+    {
+      "en": [
+        "{player}! How is the Pokédex? Unova's Pokémon change with the seasons, so look again when the month turns!"
+      ],
+      "text": [
+        "{player}! Cum merge Pokédexul? Pokémonii din Unova se schimbă cu anotimpurile, așa că uită-te iar când se schimbă luna!"
+      ]
+    },
+    {
+      "en": [
+        "That many caught already? Your Pokédex is the best data I've had in years. Thank you!"
+      ],
+      "text": [
+        "Atâția prinși deja? Pokédexul tău îmi dă cele mai bune date de ani de zile. Mulțumesc!"
+      ]
+    }
+  ],
+  "KalosMom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Are you skating carefully? Not through the tall grass, I hope!"
+      ],
+      "text": [
+        "{player}! Patinezi cu grijă? Nu prin iarba înaltă, sper!"
+      ]
+    },
+    {
+      "en": [
+        "I keep your Badges' news on the fridge, dear. Vaniville is very proud of you."
+      ],
+      "text": [
+        "Țin vestea Insignelor tale pe frigider, dragul meu. Vaniville e foarte mândru de tine."
+      ]
+    }
+  ],
+  "KalosNeighbour": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "It's me. I've been training hard. When we meet again, I'll show you exactly how much."
+      ],
+      "text": [
+        "Eu sunt. M-am antrenat din greu. Când ne revedem, o să-ți arăt exact cât."
+      ]
+    }
+  ],
+  "KalosShauna": [
+    {
+      "en": [
+        "Shauna"
+      ],
+      "text": [
+        "Shauna"
+      ]
+    },
+    {
+      "en": [
+        "Hiya, {player}! I just found the cutest café! We should all meet up there. Promise you'll come!"
+      ],
+      "text": [
+        "Salutare, {player}! Tocmai am găsit cea mai drăguță cafenea! Ar trebui să ne întâlnim toți acolo. Promite că vii!"
+      ]
+    }
+  ],
+  "KalosTierno": [
+    {
+      "en": [
+        "Tierno"
+      ],
+      "text": [
+        "Tierno"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! I've been working on a new dance with my Pokémon. You've gotta see it next time!"
+      ],
+      "text": [
+        "Hei, {player}! Am lucrat la un dans nou cu Pokémonul meu. Trebuie să-l vezi data viitoare!"
+      ]
+    }
+  ],
+  "KalosTrevor": [
+    {
+      "en": [
+        "Trevor"
+      ],
+      "text": [
+        "Trevor"
+      ]
+    },
+    {
+      "en": [
+        "Um, hi, {player}. I've seen more Pokémon than you so far. Just so you know."
+      ],
+      "text": [
+        "Ăă, salut, {player}. Am văzut mai mulți Pokémoni decât tine până acum. Doar ca să știi."
+      ]
+    },
+    {
+      "en": [
+        "You've seen more Pokémon than me now?! I need to try harder..."
+      ],
+      "text": [
+        "Acum ai văzut mai mulți Pokémoni decât mine?! Trebuie să mă străduiesc mai mult..."
+      ]
+    }
+  ],
+  "KalosSycamore": [
+    {
+      "en": [
+        "Prof. Sycamore"
+      ],
+      "text": [
+        "Prof. Sycamore"
+      ]
+    },
+    {
+      "en": [
+        "Bonjour, {player}! Every Pokémon you meet tells us something new about Kalos. Enjoy the journey!"
+      ],
+      "text": [
+        "Bonjour, {player}! Fiecare Pokémon pe care îl întâlnești ne spune ceva nou despre Kalos. Bucură-te de călătorie!"
+      ]
+    }
   ]
 }
