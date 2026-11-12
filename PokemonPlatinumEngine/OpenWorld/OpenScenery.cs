@@ -17,11 +17,15 @@ public enum OpenTreeKind
 /// A tree of an open map (plan 32 · OW9; style guide, "Open world", "Trees"): where its foot stands on the ground, in
 /// millimetres (x and z; its height is the ground's there: the highest ground facing up, or, where <see cref="Y"/> is
 /// given, the ground nearest that height), its kind, its size (thousandths of its kind's own), which of its kind's
-/// <see cref="Variants"/> shapes it is, and how it is turned (65,536ths). Scenery only: nothing of the rules reads it,
-/// and the capsule walks through it ("OW9 as built" says why). GPU-free.
+/// <see cref="Variants"/> shapes it is, and how it is turned (65,536ths). Scenery: the capsule walks through it ("OW9 as
+/// built" says why), unless its place gives it a <see cref="Trunk"/> (plan 32, after OW10: a region that wants a forest
+/// one walks round), which <see cref="OpenTrunks"/> makes a pillar of the collision. GPU-free.
 /// </summary>
 public readonly record struct OpenTree(int X, int Z, int? Y, OpenTreeKind Kind, int Size, int Variant, int Yaw)
 {
+    /// <summary>Whether its trunk is solid: the capsule and everyone of the map walk round it (<see cref="OpenTrunks"/>).</summary>
+    public bool Trunk { get; init; }
+
     /// <summary>How many shapes each kind of tree has (each a seed of the soft tree's own).</summary>
     public const int Variants = 3;
 
@@ -38,9 +42,10 @@ public readonly record struct OpenTree(int X, int Z, int? Y, OpenTreeKind Kind, 
 /// border), each cell holding a tree <see cref="Fill"/> thousandths of the time, a pine <see cref="Pines"/> thousandths
 /// of the time and a round tree otherwise, sized between <see cref="MinSize"/> and <see cref="MaxSize"/>. Every choice is
 /// <see cref="SplitMix.Mix"/> of the grove's seed and the cell, so a grove is the same trees on every machine and in
-/// every run, whoever asks first. GPU-free.
+/// every run, whoever asks first. Where <see cref="Trunks"/> holds, each of its trees has a solid trunk. GPU-free.
 /// </summary>
-public sealed record OpenGrove(string Name, IReadOnlyList<(int X, int Z)> Polygon, int Spacing, int Fill, int Pines, int MinSize, int MaxSize, int Seed)
+public sealed record OpenGrove(string Name, IReadOnlyList<(int X, int Z)> Polygon, int Spacing, int Fill, int Pines, int MinSize, int MaxSize, int Seed,
+    bool Trunks = false)
 {
     /// <summary>The grove's trees, row by row from the north-west.</summary>
     public List<OpenTree> Trees()
@@ -65,7 +70,7 @@ public sealed record OpenGrove(string Name, IReadOnlyList<(int X, int Z)> Polygo
                 int size = MinSize + (int)(((g >> 20) & 1023) * (long)(MaxSize - MinSize) / 1023);
                 int variant = (int)((h >> 20) % OpenTree.Variants);
                 int yaw = (int)(SplitMix.Mix(seed ^ 0x27d4eb2du, (uint)c, (uint)r) & 0xFFFF);
-                trees.Add(new OpenTree(x, z, null, kind, size, variant, yaw));
+                trees.Add(new OpenTree(x, z, null, kind, size, variant, yaw) { Trunk = Trunks });
             }
         return trees;
     }
@@ -86,6 +91,44 @@ public sealed record OpenGrove(string Name, IReadOnlyList<(int X, int Z)> Polygo
 /// </summary>
 public sealed record OpenBuilding(OpenBox Box, BuildingKind Kind, Architecture Town, int Storeys, Direction Faces, string? Sign = null);
 
+/// <summary>
+/// Solid trunks (plan 32, after OW10; style guide, "Open world", "Trees"): a tree whose place gives it a trunk is a
+/// pillar of the collision, a square post of four walls and no top (so nothing stands on it and no tree's foot is found
+/// on it), <see cref="HalfWidth"/> either side of its foot at size one, from <see cref="Under"/> under its foot to the
+/// mount's high jump and a body over it, or <see cref="Over"/> times its size where that is more, its foot found as the trees' are drawn (the highest ground facing up, or the
+/// ground nearest its height). The game's collision (<see cref="OpenGround"/>) and the baker's navigation mesh make them
+/// the same way, after the map's own boxes, so a forest of them is walked round by the player, its people and its wild
+/// Pokémon alike. A tree whose foot is on no ground has none. GPU-free.
+/// </summary>
+public static class OpenTrunks
+{
+    /// <summary>Half a trunk's side at size one, in millimetres: the drawn trunk's at the trees' 1.5 times the battle's.</summary>
+    public const int HalfWidth = 220;
+
+    /// <summary>How far the post reaches under the foot, and over it at size one, in millimetres (over even the mount's high jump).</summary>
+    public const int Under = 300, Over = 3000;
+
+    /// <summary>The pillars of the trees that have trunks, in the trees' order, their feet found on <paramref name="ground"/>.</summary>
+    public static List<OpenBox> Pillars(IEnumerable<OpenTree> trees, OpenGround ground)
+    {
+        var pillars = new List<OpenBox>();
+        foreach (var t in trees)
+        {
+            if (!t.Trunk) continue;
+            double x = t.X / (double)OpenPos.PerMetre, z = t.Z / (double)OpenPos.PerMetre;
+            var foot = t.Y is { } y
+                ? ground.Footing(x, z, y / (double)OpenPos.PerMetre + 3, y / (double)OpenPos.PerMetre - 3)
+                : ground.Footing(x, z, 2000, -2000);
+            if (foot is not { } f) continue;
+            int half = Math.Max(60, (int)((long)HalfWidth * t.Size / 1000));
+            int footY = OpenPos.Millimetres(f.Y);
+            int over = Math.Max(OpenPos.Millimetres(OpenBody.HighJumpHeight + OpenBody.Height), (int)((long)Over * t.Size / 1000));
+            pillars.Add(new OpenBox($"trunk@{t.X},{t.Z}", new OpenPos(t.X - half, footY - Under, t.Z - half), new OpenPos(t.X + half, footY + over, t.Z + half)) { Pillar = true });
+        }
+        return pillars;
+    }
+}
+
 /// <summary>An open map's scenery (plan 32 · OW9): its trees and its buildings' looks, in the order laid.</summary>
 public sealed partial class OpenMap
 {
@@ -98,10 +141,19 @@ public sealed partial class OpenMap
     /// <summary>The map's solids that are buildings, with how each is built; a solid not among them is drawn as a block of stone.</summary>
     public IReadOnlyList<OpenBuilding> Buildings => buildings;
 
-    public void Add(OpenTree tree) => trees.Add(tree);
+    /// <summary>Adds a tree (one with a solid trunk makes the ground again the next time it is asked for, as a box does).</summary>
+    public void Add(OpenTree tree)
+    {
+        trees.Add(tree);
+        if (tree.Trunk) ground = null;
+    }
 
     /// <summary>Adds a grove's trees.</summary>
-    public void Add(OpenGrove grove) => trees.AddRange(grove.Trees());
+    public void Add(OpenGrove grove)
+    {
+        trees.AddRange(grove.Trees());
+        if (grove.Trunks) ground = null;
+    }
 
     public void Add(OpenBuilding building) => buildings.Add(building);
 }

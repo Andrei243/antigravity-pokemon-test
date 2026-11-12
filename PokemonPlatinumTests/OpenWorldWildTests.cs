@@ -230,6 +230,46 @@ public class OpenWorldWildTests
     }
 
     [Fact]
+    public void OneThatNoticesThePlayerHasTheExclaimForASecondAndIsToldOnceForItsCry()
+    {
+        var told = new List<OpenWildPokemon>();
+        // A curious Wooloo ten metres south, facing the player: it notices, comes over and cries
+        var (field, wild) = WithOne("Wooloo", 24, 32 - 0.5, OpenYaw.North);
+        Assert.Equal(-1, wild.NoticedAt);
+        int ticks = 0;
+        while (wild.Mood == OpenWildMood.Roaming && ticks < 3 * T) { Tick(field, 1); ticks++; }
+        Assert.NotEqual(OpenWildMood.Roaming, wild.Mood);
+        Assert.Equal(field.Wild.Tick, wild.NoticedAt);
+        Assert.True(field.Wild.Exclaiming(wild));
+        field.Wild.TakeNoticed(told);
+        Assert.Equal(new[] { wild }, told);
+        Assert.True(OpenWildField.CriesOut(wild));
+        field.Wild.TakeNoticed(told);
+        Assert.Empty(told);
+        Tick(field, OpenWildField.ExclaimTicks - 1);
+        Assert.True(field.Wild.Exclaiming(wild));
+        Tick(field, 1);
+        Assert.False(field.Wild.Exclaiming(wild));
+        // A curious one noticing from within its keep turns to watching at once, and cries all the same
+        var (nearField, near) = WithOne("Wooloo", 24, 24.5, OpenYaw.North);
+        Tick(nearField, T);
+        Assert.Equal(OpenWildMood.Watching, near.Mood);
+        nearField.Wild.TakeNoticed(told);
+        Assert.Equal(new[] { near }, told);
+        Assert.True(OpenWildField.CriesOut(near));
+        // A shy one notices and runs off with the "!" but no cry; a calm one never notices
+        var (shyField, shy) = WithOne("Starly", 24, 26, OpenYaw.South);
+        Tick(shyField, T / 2);
+        Assert.True(shyField.Wild.Exclaiming(shy));
+        Assert.False(OpenWildField.CriesOut(shy));
+        var (calmField, calm) = WithOne("Bidoof", 24, 18, OpenYaw.South);
+        Tick(calmField, 3 * T);
+        Assert.Equal(-1, calm.NoticedAt);
+        calmField.Wild.TakeNoticed(told);
+        Assert.Empty(told);
+    }
+
+    [Fact]
     public void AnAggressiveOneChargesAndRunsIntoThePlayer()
     {
         // Staravia: aggressive, sees 16 m. Twelve metres east of the player, facing them

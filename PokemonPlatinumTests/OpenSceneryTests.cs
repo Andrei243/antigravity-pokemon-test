@@ -39,6 +39,34 @@ public class OpenSceneryTests
     // ------------------------------------------------------------------ trees and groves
 
     [Fact]
+    public void ASolidTrunkIsWalkedIntoAndStopsTheCapsuleAndATreeWithoutOneIsWalkedThrough()
+    {
+        // A floor of a box, its top at nought, and a pine 4 m east of the capsule: with its trunk solid the capsule walked
+        // east stops against the post, its middle a radius and the post's half off the tree's foot; without it, it walks on
+        var floor = OpenBox.Metres("floor", -20, -1, -20, 20, 0, 20);
+        double Walked(bool trunk)
+        {
+            var tree = new OpenTree(OpenPos.Millimetres(4), 0, null, OpenTreeKind.Pine, 1000, 0, 0) { Trunk = trunk };
+            var ground = new OpenGround(null, new[] { floor }, null, new[] { tree });
+            Assert.Equal(trunk ? 1 : 0, ground.Trunks.Count);
+            // A tree's foot is found on the floor, never on its own post (which has no top)
+            Assert.Equal(0, ground.Footing(4, 0, 2000, -2000)!.Value.Y, 3);
+            var body = new PokemonPlatinumEngine.OpenWorld.OpenBody(OpenPos.FromMetres(0, 0, 0), OpenYaw.East);
+            for (int i = 0; i < 4 * OpenClock.TicksPerSecond; i++) body.Step(ground, new OpenInput(1, 0));
+            return body.Pos.MetresX;
+        }
+        double stopped = Walked(trunk: true);
+        Assert.InRange(stopped, 4 - OpenTrunks.HalfWidth / 1000.0 - PokemonPlatinumEngine.OpenWorld.OpenBody.Radius - 0.05, 4 - OpenTrunks.HalfWidth / 1000.0 - PokemonPlatinumEngine.OpenWorld.OpenBody.Radius + 0.01);
+        Assert.True(Walked(trunk: false) > 4 + OpenTrunks.HalfWidth / 1000.0 + PokemonPlatinumEngine.OpenWorld.OpenBody.Radius, "a tree of scenery stopped the capsule");
+        // A grove's trunks are its trees', and its file's word reaches them
+        var grove = OpenPlaceFiles.GroveOf(new OpenGroveFile { Name = "wood", Polygon = new[] { new[] { 0.0, 0 }, new[] { 30.0, 0 }, new[] { 30.0, 30 }, new[] { 0.0, 30 } }, Trunks = true });
+        Assert.True(grove.Trunks);
+        Assert.All(grove.Trees(), t => Assert.True(t.Trunk));
+        Assert.True(OpenPlaceFiles.TreeOf(new OpenTreeFile { At = new[] { 1.0, 2 }, Trunk = true }).Trunk);
+        Assert.False(OpenPlaceFiles.TreeOf(new OpenTreeFile { At = new[] { 1.0, 2 } }).Trunk);
+    }
+
+    [Fact]
     public void AGroveIsTheSameTreesEveryTimeEachInsideItAndApart()
     {
         var polygon = new List<(int, int)> { (-30000, -10000), (20000, -14000), (24000, 18000), (-26000, 20000) };

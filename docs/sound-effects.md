@@ -1083,7 +1083,7 @@ Every species and every form has a cry of its own (plan 05 · A4), synthesised b
 
 | Mode | What it does | Heard |
 |---|---|---|
-| `Normal` | As it is. | A wild Pokémon appearing; the party's summary; the starter's question; an evolution, before and after; Giratina at the title. |
+| `Normal` | As it is. | A wild Pokémon appearing; a curious or aggressive wild Pokémon of an open map noticing the player (plan 32, after OW10: panned by its side of the camera's way, the first of a frame's alone); the party's summary; the starter's question; an evolution, before and after; Giratina at the title. |
 | `Pinch` | 1.5 semitones lower. | Sent out with a status condition or with its HP bar not green (24 of its 48 pixels or fewer), unless its HP is full (`Cries.SendOutMode`). |
 | `Faint` | 3.5 semitones lower. | As it faints, before its fall. |
 | `Half`, `PinchHalf` | Twenty frames of sixty, the last ten fading. | Kept for the moments the original uses them. |

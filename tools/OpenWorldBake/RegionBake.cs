@@ -127,6 +127,16 @@ public static class RegionBake
     }
 
     /// <summary>
+    /// The trees of a region's places that have solid trunks (<see cref="OpenTrunks"/>), every map's in the maps' order:
+    /// the navigation mesh is baked round them as the capsule collides with them. None for a region whose trees are all scenery.
+    /// </summary>
+    public static List<OpenTree> TrunksOf(RegionDescription description)
+    {
+        if (!Directory.Exists(Path.Combine(description.Folder, OpenPlaceFiles.Folder))) return new();
+        return OpenPlaceFiles.LoadRegion(description.Folder, withLand: false).SelectMany(m => m.Trees).Where(t => t.Trunk).ToList();
+    }
+
+    /// <summary>
     /// Every file of the bake, by its path under <c>baked/</c> (<c>index.json</c> and <c>&lt;level&gt;/&lt;x&gt;_&lt;z&gt;.chunk</c>),
     /// with its bytes; only the chunks <paramref name="only"/> keeps, if given (the index still lists them all). With
     /// every chunk, the navigation mesh too (<c>navmesh.bin</c>, plan 32 · OW4, with the places' solids and water since
@@ -152,7 +162,7 @@ public static class RegionBake
         if (only == null)
         {
             var (solids, waters) = PlacedOf(description);
-            files[OpenNavMesh.FileName] = NavBake.Build(baked.Select(b => b[0]), solids, waters, report: navReport).Bytes();
+            files[OpenNavMesh.FileName] = NavBake.Build(baked.Select(b => b[0]), solids, waters, report: navReport, trees: TrunksOf(description)).Bytes();
         }
         var index = new BakedIndexFile
         {

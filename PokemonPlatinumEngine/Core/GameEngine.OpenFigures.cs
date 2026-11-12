@@ -60,7 +60,9 @@ public partial class GameEngine
         {
             var feet = Feet(wild.Pos);
             if (Vector3.DistanceSquared(feet, player) > OpenFigures.DrawReach * OpenFigures.DrawReach) continue;
-            openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "wild:" + wild.Id, wild.Species, feet, (float)OpenYaw.Radians(wild.Yaw), Height: HeightOf(wild.Species)));
+            // The "!" over one that has just noticed the player (plan 32, after OW10)
+            openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "wild:" + wild.Id, wild.Species, feet, (float)OpenYaw.Radians(wild.Yaw),
+                field.Wild.Exclaiming(wild), HeightOf(wild.Species)));
         }
         // A tool's figures put in by hand (the harness's crowd, standing about the village)
         if (OpenFiguresByHand is { } byHand) openFigures.AddRange(byHand);

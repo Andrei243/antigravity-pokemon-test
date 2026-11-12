@@ -55,6 +55,13 @@ public sealed class OpenWildPokemon
     public OpenWildKind Kind { get; }
     public OpenWildMood Mood { get; internal set; }
 
+    /// <summary>
+    /// The field's tick (<see cref="OpenWildField.Tick"/>) at which it last noticed the player (a "!" over it for
+    /// <see cref="OpenWildField.ExclaimTicks"/>, and a cry where it comes over or charges), or −1 while it never has.
+    /// Drawing and sound only: nothing of the rules reads it.
+    /// </summary>
+    public long NoticedAt { get; internal set; } = -1;
+
     public OpenBody Body { get; }
     public OpenPos Pos => Body.Pos;
     public int Yaw => Body.Yaw;
@@ -139,7 +146,11 @@ public sealed class OpenWildField
     /// <summary>A pursuer gives up once the player is this many times its sight away (or its scent, where it has no sight).</summary>
     public const int GiveUpFactor = 2;
 
+    /// <summary>How long the "!" stands over one that has noticed the player, in ticks (a second: the grid's trainer's "!" is shown about as long).</summary>
+    public const int ExclaimTicks = OpenClock.TicksPerSecond;
+
     private readonly List<OpenWildPokemon> all = new();
+    private readonly List<OpenWildPokemon> noticed = new();
     private readonly Dictionary<string, int> waits = new(StringComparer.Ordinal);
     private int made, grace;
 
@@ -198,7 +209,10 @@ public sealed class OpenWildField
 
         for (int i = all.Count - 1; i >= 0; i--)
             if (all[i].Pos.GroundDistanceSquared(at) > (long)DespawnReach * DespawnReach)
+            {
+                noticed.Remove(all[i]);
                 all.RemoveAt(i);
+            }
 
         if (mayAct)
             foreach (var zone in map.Zones) Spawn(map, zone, player);
@@ -245,6 +259,7 @@ public sealed class OpenWildField
     public void Met(OpenWildPokemon wild)
     {
         all.Remove(wild);
+        noticed.Remove(wild);
         waits[wild.Zone.Name] = Math.Max(waits.GetValueOrDefault(wild.Zone.Name), RespawnAfterBattle);
     }
 
@@ -255,6 +270,26 @@ public sealed class OpenWildField
         grace = Grace;
     }
 
+    /// <summary>Whether the "!" stands over one now: it noticed the player within the last <see cref="ExclaimTicks"/>.</summary>
+    public bool Exclaiming(OpenWildPokemon wild) => wild.NoticedAt >= 0 && Tick - wild.NoticedAt < ExclaimTicks;
+
+    /// <summary>
+    /// Those that have noticed the player since this was last asked, in the order they did, put into
+    /// <paramref name="into"/> (cleared first): what the engine cries for. Asking forgets them.
+    /// </summary>
+    public void TakeNoticed(List<OpenWildPokemon> into)
+    {
+        into.Clear();
+        into.AddRange(noticed);
+        noticed.Clear();
+    }
+
+    /// <summary>
+    /// Whether one that noticed the player cries out: a curious one or an aggressive one (a shy one runs off quietly, a
+    /// calm one never notices). By its temperament, not its mood, which a curious one near already has turned to watching.
+    /// </summary>
+    public static bool CriesOut(OpenWildPokemon wild) => wild.Kind.Temperament is OpenTemperament.Curious or OpenTemperament.Aggressive;
+
     /// <summary>The grace begun without a battle (the player put down, a scene's end): nothing senses or meets them for a while.</summary>
     public void Calm() => grace = Grace;
 
@@ -262,6 +297,7 @@ public sealed class OpenWildField
     public void Clear()
     {
         all.Clear();
+        noticed.Clear();
         waits.Clear();
         grace = 0;
     }
@@ -363,6 +399,9 @@ public sealed class OpenWildField
             {
                 case OpenWildMood.Roaming when sensed:
                     Notice(map, w, player);
+                    // The "!" and the cry are the picture's and the sound's (plan 32, after OW10): no draw, no rule
+                    w.NoticedAt = Tick;
+                    noticed.Add(w);
                     return;
                 case OpenWildMood.Fleeing when w.Walk == null:
                     // Run on while it still senses the player; rest otherwise
