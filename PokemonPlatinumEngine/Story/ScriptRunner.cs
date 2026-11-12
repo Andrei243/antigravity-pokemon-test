@@ -2774,6 +2774,8 @@ public sealed partial class ScriptRunner
             "cycling" when argument == "BEST_COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.RecordCollisions)),
             // The Trainer Hill (plan 21, part l): the climb's time and the challenge's best
             "hill" when argument is "TIME" or "BEST" or "BEST_NORMAL" or "BEST_VARIETY" or "BEST_UNIQUE" or "BEST_EXPERT" => HillPlaceholder(argument),
+            // The Trainer Tower (plan 37 · FC6): the climb's time and the challenge's best
+            "tower" when argument is "TIME" or "BEST" or "BEST_SINGLE" or "BEST_DOUBLE" or "BEST_KNOCKOUT" or "BEST_MIXED" => TowerPlaceholder(argument),
             _ => match.Value
         };
     }) : text;

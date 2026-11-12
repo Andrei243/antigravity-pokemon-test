@@ -1,0 +1,86 @@
+# The Trainer Tower's lobby on Seven Island (plan 37 · FC6). docs/scripts.md describes the language; the lines are our
+# own, on the beats of FireRed's Trainer Tower (TrainerTower_Lobby), read for the order alone.
+#
+# The lobby is a room of ours (Data/maps/TrainerTowerLobby.json). Its counter opens to Kanto's Champions: a challenge of
+# FireRed's four is chosen, the team is seen to and the clock starts as the player goes up to the first floor. A climb
+# lives in the story's variables (Models/Frontier/TrainerTower.cs, `facility trainertower ...`); coming back down here after
+# a loss or from the roof ends it, and the team is seen to again.
+
+
+script OnEnter
+  facility trainertower climbing
+  if result == 2 goto Lost
+  if result == 3 goto Back
+  end
+label Lost
+  speaker "Attendant"
+  say "Welcome back down. That climb is over, but the tower will be here whenever you're ready to try again."
+  facility trainertower end
+  heal
+  say "Your Pokémon are rested and ready."
+  end
+label Back
+  speaker "Attendant"
+  say "Back from the roof! What a climb. Let me see to your Pokémon."
+  facility trainertower end
+  heal
+  say "There you go. They're rested and ready."
+  end
+
+
+script Counter
+  face self player
+  speaker "Attendant"
+  facility trainertower climbing
+  if result == 1 goto Climbing
+  if not flag KantoHallOfFame goto Closed
+  say "Welcome to the Trainer Tower! Eight floors of trainers stand between you and the owner on the roof."
+  choose "Would you like to take on a challenge?" "YES" "NO" "INFO"
+  if result == 1 goto Bye
+  if result == 2 goto Info
+  choose "Which challenge will you take?" "SINGLE" "DOUBLE" "KNOCKOUT" "MIXED" "CANCEL"
+  if result == 1 goto Double
+  if result == 2 goto Knockout
+  if result == 3 goto Mixed
+  if result == 4 goto Bye
+  facility trainertower challenge single
+  goto Go
+label Double
+  facility trainertower challenge double
+  goto Go
+label Knockout
+  facility trainertower challenge knockout
+  goto Go
+label Mixed
+  facility trainertower challenge mixed
+label Go
+  heal
+  say "Your Pokémon are rested. The clock is running from now on. Good luck up there!"
+  fade out 0.6
+  warp "TrainerTowerFloor" 6 9 up
+  fade in
+  end
+label Climbing
+  say "You're in the middle of a climb! The trainers upstairs are waiting for you."
+  end
+label Closed
+  say "The tower is open to Champions of Kanto. Come back once the League has crowned you."
+  end
+label Info
+  say "Each floor has trainers waiting: one with two Pokémon, a pair with one each, or three in a row with one each."
+  say "Their Pokémon are as strong as your strongest. Your Pokémon aren't healed between floors, so take care."
+  say "Reach the roof, and the owner will tell you your time. The quicker the climb, the better."
+  end
+label Bye
+  say "Come back whenever you feel like a climb."
+  end
+
+
+# The best times of the four challenges
+script Records
+  face self player
+  speaker "Gentleman"
+  say "I keep the tower's records. These are your best times."
+  say "Single: {tower:BEST_SINGLE}. Double: {tower:BEST_DOUBLE}."
+  say "Knockout: {tower:BEST_KNOCKOUT}. Mixed: {tower:BEST_MIXED}."
+  end

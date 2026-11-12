@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Models.Facilities;
 public static class FacilityPlaces
 {
     /// <summary>The places' words, in order; a place's number is its place here.</summary>
-    public static readonly string[] Names = { StreakHouse.Place, BattleTree.Place, TitlesHouse.Place };
+    public static readonly string[] Names = { StreakHouse.Place, BattleTree.Place, TitlesHouse.Place, Story.ScriptRunner.TrainerTowerPlace };
 
     public static bool IsPlace(string word) => Array.IndexOf(Names, word) >= 0;
 
@@ -25,6 +25,8 @@ public static class FacilityPlaces
         BattleTree.Place => BattleTree.Ways,
         // The house of titles has no rooms of a streak (plan 37 · FC4): its words are its own
         TitlesHouse.Place => System.Array.Empty<string>(),
+        // Nor has FireRed's Trainer Tower (plan 37 · FC6), whose climb is its own
+        Story.ScriptRunner.TrainerTowerPlace => System.Array.Empty<string>(),
         _ => throw new ArgumentException($"No later battle place is called {place}", nameof(place))
     };
 

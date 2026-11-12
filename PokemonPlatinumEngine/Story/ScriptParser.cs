@@ -1299,12 +1299,15 @@ public static class ScriptParser
                 string what = r.OneOf("enough", "size", "choose", "check", "way", "hard", "hardopen", "begin", "active", "paused", "resume",
                     "next", "host", "opponent", "partner", "battle", "won", "opened", "trophy", "points", "finish", "pause", "streak", "best", "latest",
                     "board", "end", "scouted", "scout", "pick", "picked", "cast", "partnercast",
-                    "member", "visit", "visitor", "dress", "level");
+                    "member", "visit", "visitor", "dress", "level",
+                    "challenge", "climbing", "floor", "kind", "fight", "cleared", "lost", "climb", "prize", "record");
                 string which = what switch
                 {
                     "way" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.FacilityPlaces.WaysOf(place))),
                     "hard" => r.OneOf("normal", "hard"),
                     "finish" => r.OneOf("won", "lost"),
+                    // The Trainer Tower's four challenges (plan 37 · FC6)
+                    "challenge" => r.OneOf("single", "double", "knockout", "mixed"),
                     _ => ""
                 };
                 // The Battle Tree's scouted partners (plan 23, Alola finished): pick's number, 0 the tree's own and a scouted

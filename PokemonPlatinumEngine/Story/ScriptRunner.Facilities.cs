@@ -55,6 +55,12 @@ public sealed partial class ScriptRunner
             TitlesCommand(i);
             return;
         }
+        // And so are the Trainer Tower's (plan 37 · FC6)
+        if (place == TrainerTowerPlace)
+        {
+            TrainerTowerCommand(i);
+            return;
+        }
         var records = host.Frontier;
         StreakChallenge Challenge() => host.Facility is { } c && c.Room.Place == place ? c : throw Wrong(i, $"'facility {place} {i.Other}' needs a challenge of the {place} under way");
         StreakRoom Chosen() => facilityWay.Length > 0 ? FacilityPlaces.RoomOf(place, facilityWay, facilityHard)

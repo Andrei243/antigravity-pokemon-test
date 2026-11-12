@@ -142,6 +142,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - Tests (`TrainerTowerTests`): every floor's team legal; foes at the party's highest level; a Knockout floor's three; the layouts swapped by the challenge; the prize by time and the best time kept; a climb saved on a floor laid again on loading; the Trainer House's trainer by the day with friends' files and Cal without; the Trainer Hill's tests unchanged.
 - Shots: `fc60_tower_lobby`, `fc61_tower_single_floor`, `fc62_tower_knockout_floor`, `fc63_tower_roof_prize`, `fc64_trainer_house_friend`.
 - **Done when** a Mixed challenge is climbed to the roof in the harness with its time on the board, and the Trainer House battles a friend's file.
+- **FC6 as built** (2026-11-12; rulings, "The Trainer Tower"): `tools/DataImporter -- --trainer-tower` (`TrainerTower.cs`, a part of the Trainer Hill's importer; FireRed's two files fetched one by one at the pinned commit, `Sources.FireRedRaw`, so `GbaFolders` is unchanged) writes `Data/trainer-tower.json` (`TrainerTowerDatabase`: 4 challenges, 32 floors, 53 trainers with names of ours, the three tables of which Pokémon each floor brings). `Models/Frontier/TrainerTower.cs` (`Begin`, `KindOf`, `OpponentsOf`, `Won`, `Climb`, `Frames`, `PrizeOf`, `CheckTime`, the climb in `VAR_KANTO_TRAINER_TOWER_*`) shares the Hill's level, clock and builder; `facility trainertower ...` (`Story/ScriptRunner.TrainerTower.cs`, `{tower:TIME}`, `{tower:BEST}`). Seven Island's door opens into rooms of ours as the Hill's (`TrainerTowerLobby`, `TrainerTowerFloor` laid for each floor, `TrainerTowerRoof`, in Kanto's list), with the counter, the records' gentleman and the owner. `TrainerTowerTests`. **Owed**: FireRed's floor layouts and lift through the GBA reader (the plan's `--game firered --data` part; the rooms of ours stand in, as the Hill's do), the Trainer House's trainer of the day from the friends' files (it still battles Cal), and the shots `fc60` to `fc64`.
 
 ### FC7 · The cups, the Leaders' round and the sparring room (2 sessions)
 - `Data/cups.json`, `Models/Facilities/Cups.cs`, the preview and the pick, rentals, the Leaders' round from `tournaments.json`'s pools, the sparring room, `CupScreen`; the stadium's hall off the annex's lobby; the style guide's "Menu screens" first.
@@ -203,7 +204,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - [x] FC3 The partners' tree (2026-11-12; above, "FC3 as built")
 - [x] FC4 The house of titles (2026-11-12; above, "FC4 as built")
 - [x] FC5 Lumiose's restaurants (2026-11-08, beside plan 23's Kalos session; the shots fc50 to fc55 taken 2026-11-09)
-- [ ] FC6 The Trainer Tower on Seven Island
+- [x] FC6 The Trainer Tower on Seven Island (2026-11-12, its climb in rooms of ours; above, "FC6 as built")
 - [ ] FC7 The cups, the Leaders' round and the sparring room
 - [ ] FC8 The institute's test and the ladder
 - [ ] FC9 The agency of lent Pokémon (optional)

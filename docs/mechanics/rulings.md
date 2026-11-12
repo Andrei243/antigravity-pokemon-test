@@ -10707,6 +10707,32 @@ Kalos's Leaders on their days, in scripts alone; FC4 adds what the plan asked of
 - **Not built**: the manor drawn into Route 7 (plan 23 had already put the house there); its own music; the shots
   (`fc40` to `fc44`).
 
+## The Trainer Tower (2026-11-12, plan 37 · FC6)
+
+- **Where it is**: Seven Island, through the door of FireRed's grounds that plan 19 · K9 left `locked` (the area's warp
+  0, now an overlay `door`). Its lobby, floor and roof are rooms of ours (`TrainerTowerLobby`, `TrainerTowerFloor`,
+  `TrainerTowerRoof`), laid out as the Trainer Hill's are; FireRed's eight floors with their three layouts and its lift
+  are not imported (the plan asked for them through the GBA reader: owed).
+- **FireRed's** (`tools/DataImporter -- --trainer-tower`, `Data/trainer-tower.json`, numbers only): the four challenges
+  (Single, Double, Knockout, Mixed) of eight floors (`gTrainerTowerFloors`, the Mixed one's floors each of one kind); each
+  floor's kind, its trainers' facility classes and six Pokémon (species, item, moves, effort, IVs, ability, personality);
+  which of the six a floor brings by the floors cleared (`sSingleBattleChallengeMonIdxs`, `sDoubleBattleChallengeMonIdxs`,
+  `sKnockoutChallengeMonIdxs`): a single floor's one trainer two, a double floor's two trainers one each as a pair, a
+  knockout floor's three one each, one after another; every Pokémon at the highest level of the player's team, Eggs passed
+  over (`GetPartyMaxLevel`, up to this game's 260); the challenge's prize, its first floor's (`GiveChallengePrize`: one of
+  FireRed's fifteen, an HP Up to an Up-Grade), given once for each challenge and never again (`receivedPrize`, kept in
+  `VAR_KANTO_TRAINER_TOWER_PRIZE_<CHALLENGE>`); the best time of each kept and replaced only by a faster one
+  (`CheckFinalTime`, `VAR_KANTO_TRAINER_TOWER_BEST_<CHALLENGE>`). The counter opens to Kanto's Champions.
+- **Ours**: the trainers' names (FireRed's names and easy-chat speeches are never read) and every line; the battle is a
+  battle of the Frontier's on the player's own team (no EXP, no money, the Bag shut, RUN a forfeit), the team seen to at
+  the counter and again as the climb ends in the lobby, never between floors, as the Trainer Hill's; the clock counts play
+  time in whole seconds up to an hour less a frame; a floor's trainers stand forward as it is come into and are battled by
+  speaking to them, and the stairs up are climbed as soon as the floor is beaten, to the next floor laid again on the same
+  map or to the roof; there is no way down mid-climb (a loss ends it). A game saved on a floor lays it again from the climb's
+  variables as it is come back to.
+- **Not built**: FireRed's floors' layouts and lift (above); the Trainer House's trainer of the day from the friends'
+  files (HeartGold's link records), which still battles Cal; the shots (`fc60` to `fc64`).
+
 ## Peak training and the training tools (2026-11-07, plan 36 · TR3)
 
 Peak training is our name for the later games' hyper training, and its rule is plan 06 · R28b's (`Models/HyperTraining.cs`: level 50 or more, as Scarlet and Violet ask; a stat whose IV is 31, or brought to its peak already, can't be). The coach, the clerks, their lines and every price are ours; no Mr. Hyper is recreated.

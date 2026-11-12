@@ -4925,6 +4925,11 @@
       "note": "first spoken at nimbasa_city.txt(52)",
       "provisional": true
     },
+    "ione": {
+      "note": "Ione Calder, the partners' tree's host (plan 37 · FC3)",
+      "brief": { "register": "woman", "age": "elder", "pitch": "middle", "pace": "slow", "manner": "an old guide who keeps the tree: warm and unhurried, proud of every Trainer who climbs" },
+      "design": { "engine": "kokoro-82m", "blend": "af_sarah:0.6,bf_emma:0.4", "speed": 0.9, "pitch": 0.95, "accent": "en-us" }
+    },
     "iris": {
       "note": "first spoken at CasteliaCity.txt(51)",
       "provisional": true
@@ -5265,6 +5270,10 @@
     },
     "korrina": {
       "note": "first spoken at ShalourCity_Gym.txt(11)",
+      "provisional": true
+    },
+    "kukui": {
+      "note": "first spoken at PoniGauntlet_BattleTreeHall.txt(519)",
       "provisional": true
     },
     "kuni": {
@@ -9954,6 +9963,10 @@
       "note": "first spoken at mossdeep_city_gym.txt(22)",
       "provisional": true
     },
+    "tate_liza": {
+      "note": "first spoken at PoniGauntlet_BattleTreeHall.txt(407)",
+      "provisional": true
+    },
     "teala": {
       "note": "first spoken at BattleTower.txt(288)",
       "brief": {
@@ -10703,6 +10716,7 @@
     "Ilima": "ilima",
     "Ilse": "ilse",
     "Ingo": "ingo",
+    "Ione": "ione",
     "Iris": "iris",
     "Isaac": "isaac",
     "Isabel": "isabel",
@@ -10735,6 +10749,7 @@
     "Koichi": "koichi",
     "Koji": "koji",
     "Korrina": "korrina",
+    "Kukui": "kukui",
     "Kuni": "kuni",
     "Kurt": "kurt",
     "Lady": "look:lady",
@@ -10787,6 +10802,7 @@
     "Maria": "maria",
     "Marius": "marius",
     "Marley": "marley",
+    "Marlon": "marlon",
     "Mars": "mars",
     "Marshal": "marshal",
     "Mary": "mary",
@@ -10975,6 +10991,7 @@
     "Surfer": "surfer",
     "Tabitha": "tabitha",
     "Tate": "tate",
+    "Tate & Liza": "tate_liza",
     "Teala": "teala",
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",

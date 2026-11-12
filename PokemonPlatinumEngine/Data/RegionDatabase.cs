@@ -608,6 +608,8 @@ public static class RegionDatabase
                 "SevenIsland_TanobyRuins_RixyChamber", "SevenIsland_TanobyRuins_ViapoisChamber", "SevenIsland_SevaultCanyon_TanobyKey",
                 "SevenIsland_House_Room1", "SevenIsland_Mart", "SevenIsland_PokemonCenter_1F", "SevenIsland_PokemonCenter_2F",
                 "SevenIsland_Harbor", "SevenIsland_SevaultCanyon_House", "CeruleanCave_1F", "CeruleanCave_2F", "CeruleanCave_B1F",
+                // Plan 37 · FC6: the Trainer Tower's lobby, its floor laid for each of the eight, and its roof (rooms of ours)
+                "TrainerTowerLobby", "TrainerTowerFloor", "TrainerTowerRoof",
             }
         },
         new()
