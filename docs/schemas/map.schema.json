@@ -651,7 +651,8 @@
               "GatherShoreBare",
               "GatherSnow",
               "GatherSnowBare",
-              "PhotoSpot"
+              "PhotoSpot",
+              "PosterWall"
             ]
           },
           "x": {

@@ -470,6 +470,44 @@ public class FreeMovementTests
         }
     }
 
+    [Fact]
+    public void FreeMovementReachesNothingTheGridDoesntOnAlolasIslands()
+    {
+        var region = RegionDatabase.Get(RegionDatabase.Alola)!;
+        // Alola's own file moves freely since the user's switch of 2026-11-12
+        Assert.Equal(MovementDirections.Free, region.Movement.Directions);
+        var alola = World.LoadAll().Single(w => w.Index.Region == "Alola");
+        var maps = alola.BuildMaps().ToDictionary(m => m.Name);
+        var rooms = MapDatabase.Fresh();
+        Map Named(string name) => maps.TryGetValue(name, out var m) ? m : rooms(name);
+        var walked = WorldWalk.From(Named, region.Start!);
+        var random = new Random(31);
+        // From before the new home's door (Route 1) and from Iki Town's square
+        foreach (var (island, nearX, nearY) in new[] { ("Melemele", 238, 160), ("Melemele", 250, 120) })
+        {
+            var overworld = maps[island];
+            var reach = walked.First(p => p.Key.Name == island).Value;
+            var start = reach.Where(t => overworld.IsWalkable(t.X, t.Y) && FreeMovement.Plain(overworld, t.X, t.Y))
+                .OrderBy(t => (t.X - nearX) * (t.X - nearX) + (t.Y - nearY) * (t.Y - nearY)).First();
+            var player = Free(start.X, start.Y);
+            var walk = new Walk();
+            for (int i = 0; i < 300; i++)
+            {
+                double angle = random.Next(16) * Math.PI / 8;
+                walk.Hold(player, overworld, new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle)), random.Next(5, 40), run: random.Next(2) == 0);
+                if (walk.Warps.Count > 0)
+                {
+                    player.SetPosition(start.X, start.Y, Direction.Down);
+                    walk.Warps.Clear();
+                }
+                string where = $"{island} step {i}: {player.GridX},{player.GridY} standing {player.Standing} offset {player.Offset} mode {player.Mode} " +
+                    $"behaviour {overworld.BehaviourAt(player.GridX, player.GridY)} last {string.Join(" ", walk.Tiles.TakeLast(4))}";
+                Assert.True(reach.Contains((player.GridX, player.GridY)), where);
+                Assert.True(reach.Contains(player.Standing), where);
+            }
+        }
+    }
+
     // ------------------------------------------------------------------ the stick's frame and recordings
 
     [Fact]

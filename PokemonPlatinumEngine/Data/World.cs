@@ -1283,16 +1283,19 @@ public static class WorldMapBuilder
         "StarkMountainRoom2" => FieldCamera.StarkMountain,
         "Drawbridge" => FieldCamera.Drawbridge,
         "Kalos" => FieldCamera.Kalos,
+        "Alola" => FieldCamera.Alola,
         _ => FieldCamera.Default
     };
 
     /// <summary>
     /// The camera of an outdoor place of a region (plan 30 · FM6): <see cref="FieldCamera.Kalos"/> in place of the
-    /// default where the region's file says its people are grown (<see cref="Region.Kit"/>), and whatever it was
-    /// everywhere else, so no chibi region's place changes.
+    /// default where the region's file says its people are grown (<see cref="Region.Kit"/>), Alola's own
+    /// <see cref="FieldCamera.Alola"/> there, and whatever it was everywhere else, so no chibi region's place changes.
     /// </summary>
     public static FieldCamera GrownCamera(FieldCamera camera, string region, bool outdoors) =>
-        outdoors && camera == FieldCamera.Default && RegionDatabase.Get(region)?.Kit == CharacterKit.Grown ? FieldCamera.Kalos : camera;
+        outdoors && camera == FieldCamera.Default && RegionDatabase.Get(region)?.Kit == CharacterKit.Grown
+            ? (region == "Alola" ? FieldCamera.Alola : FieldCamera.Kalos)
+            : camera;
 
     /// <summary>How far a cave's rock stands above the floor before it (seen from the south), in tiles.</summary>
     public const float CaveWallRise = 2f;

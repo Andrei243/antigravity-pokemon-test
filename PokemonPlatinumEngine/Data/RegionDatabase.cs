@@ -959,7 +959,7 @@ public static class RegionDatabase
                 // Plan 22 · U5, part b: Virbank City's gate, rooms, ship terminal and club, the gate to Pokéstar Studios
                 // and the Virbank Complex
                 "VirbankGate", "VirbankCity_House1", "VirbankCity_House2", "VirbankCity_House3", "VirbankCity_Terminal",
-                "VirbankCity_Gym", "VirbankCity_GymStage", "VirbankCity_PokemonCenter", "PokestarGate", "PokestarStudios", "PokestarStudios_Building", "PokestarStudios_Theater", "VirbankComplex",
+                "VirbankCity_Gym", "VirbankCity_GymStage", "VirbankCity_PokemonCenter", "PokestarGate", "PokestarStudios", "PokestarStudios_Building", "PokestarStudios_Theater", "NimbasaCity_GridironField", "NimbasaCity_BaseballField", "NimbasaCity_FootballField", "NimbasaCity_TennisCourt", "NimbasaCity_BasketballCourt", "VirbankComplex",
                 // Plan 22 · U5, part c: Castelia City, its avenue a map of ours (Data/maps/CasteliaCity.json, Black 2's
                 // standing on rails), its piers, streets, plaza and rooms the import's, the gate to Route 4 and the sewers
                 // Plan 44 · SD4: Lockwork's head office, a tower of ours off Castelia's avenue

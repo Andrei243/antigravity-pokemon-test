@@ -1,6 +1,8 @@
 {
   "id": "Unova",
   "folder": "unova",
+  // The travel phone works here (plan 43 · LF6), with this region's book (world/unova/phone.json)
+  "phone": true,
   "models": "unova",
   "map": "Unova",
   "dex": "updated-unova",

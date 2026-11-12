@@ -88,4 +88,6 @@ The **Zmeu's** and the **Vârcolac's** tales are the two the professors will tel
 3. **The player may catch both roamers** (never in the same place or hour, so the pair is never together).
 4. **The rival is chosen by the player's look** (Radu or Ilinca).
 5. **The Champion is met before the ridge and, like Cynthia, appears and helps at different moments of the story.**
-6. **The ridge opens at 7 badges** (the eighth gym stays optional; the battle with the legendaries may be had after 7).
+6. **The ridge opens at 7 badges** (the eighth gym is NOT optional for the Elite Four: the League needs all eight badges; the battle with the legendaries may be had after 7).
+
+**Later the same day:** the user said the eighth gym is **not optional for the Elite Four** (the ridge opens at 7 badges; the League asks all eight) and **approved the names** (Doina Lupescu, Ilie Sorescu, Aurelian Zenovie, Mara, Costel, Radu and Ilinca), and asked that the story plan go on.

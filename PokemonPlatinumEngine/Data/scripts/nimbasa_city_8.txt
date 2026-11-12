@@ -1,0 +1,38 @@
+# The Small Court's lobby in Nimbasa City (plan 42 · PS5; rulings, "Sports days"). Black 2's room, our words.
+# As at the Big Stadium: a match is on in the twilight hours, and between matches the receptionist takes visitors
+# down onto the court of the day's sport (SportsDays.On: tennis on Monday, Wednesday, Friday and Sunday, basketball
+# on Tuesday, Thursday and Saturday).
+
+script OnTransition
+  if time twilight goto On
+  clearflag FLAG_UNOVA_GAME_ON
+  end
+label On
+  setflag FLAG_UNOVA_GAME_ON
+  end
+
+script Receptionist
+  face self player
+  if time twilight goto GameOn
+  if weekday tuesday goto Basketball
+  if weekday thursday goto Basketball
+  if weekday saturday goto Basketball
+  say "Welcome to the Small Court! Today is tennis day."
+  ask "The court is open to visitors between matches. Would you like to go down?"
+  if no goto Bye
+  say "Enjoy the court! The players don't mind a battle between rallies."
+  warp "NimbasaCity_TennisCourt" 6 24 up
+  end
+label Basketball
+  say "Welcome to the Small Court! Today is basketball day."
+  ask "The court is open to visitors between matches. Would you like to go down?"
+  if no goto Bye
+  say "Enjoy the court! The players don't mind a battle between drills."
+  warp "NimbasaCity_BasketballCourt" 6 24 up
+  end
+label GameOn
+  say "A match is on right now, so the courts are closed to visitors. Do go up to the stands and cheer!"
+  end
+label Bye
+  say "Come back any time. The courts are open between matches!"
+  end
