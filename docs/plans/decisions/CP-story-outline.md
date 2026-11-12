@@ -66,7 +66,7 @@ The **Zmeu's** and the **Vârcolac's** tales are the two the professors will tel
 4. **The second fight.** Furtunaur is weakened, bound between the two new legendaries' light and night. It is battled with its real level shown and its HP low, and **caught**.
 5. **The roamers.** Solzmeu and Lunacolac, once the storm clears, turn and leave without a look: they have no one to follow. They begin to roam.
 
-**After the Hall of Fame.** The Champion is met before or after the ridge by choice of the player (the story asks the eight badges and the tales, not the order). Then:
+**After the ridge.** The Champion is met before the ridge and, as Cynthia is in Sinnoh, helps the player at different moments of the story (Act I/II scenes, the stronghold assault, the ridge); the Hall of Fame and the League come after. Then:
 - **The empty labs.** Doina's lab and Ilie's observatory stand open; their apprentices Mara and Costel keep them, and each lab keeps a table of unfinished notes the player can read, including the last page each professor wrote about the other.
 - **The roamers.** Solzmeu and Lunacolac roam the region, hard to catch, appearing at the Tale sites the professors showed the player. Their first appearance quotes something one of the professors always said. **When they are caught, their Pokédex entries and cries carry something of them, never explained outright.**
 - **The Dacian sanctuary** of stone circles in the forest: Stindrac the war banner (the mythical) and the post-game Tale of the banner.
@@ -81,11 +81,11 @@ The **Zmeu's** and the **Vârcolac's** tales are the two the professors will tel
 - **Tales** and the **Book of Tales** are plan 46's own, with Furtunaur's, Solzmeu's and Lunacolac's tales among the twelve.
 - **A team of ours for the executives and the ridge** needs `our-trainers.json` rows (no species outside the Carpathian batch).
 
-## Open questions for the user
+## Answers (the user, 2026-11-12)
 
-1. Does Aurelian Zenovie's fate stay unspoken (the lantern left burning), or do you want him found?
-2. Do the professors speak as Pokémon in any form (a phrase in the cry, a Tale Form line) or only through what they left in writing?
-3. May the player catch **both** roamers, or only one? (I recommend both, one in each of two seasons or two hours, so the pair is never together.)
-4. The rival: Radu and Ilinca by the player's look, or a single rival?
-5. Is the Champion before or after the ridge? (I recommend after, so the ridge is the end of the main story and the Champion is the cool-down.)
-6. Gym order and any-order scaling: the ridge asks eight badges. OK?
+1. **Zenovie's fate stays unspoken, but subtly implied** (the lantern, the chain, what the storm left: never stated).
+2. **The professors speak as Pokémon in a very monsterish voice at certain moments, to be creepy**: distorted lines in their cries/Tale Form scenes (a human phrase through a monster's throat), never explained; this needs voice design for each (a heavy pitch-dropped, doubled take of the professor's own phrases, plan 26's tools) and a text style for those lines.
+3. **The player may catch both roamers** (never in the same place or hour, so the pair is never together).
+4. **The rival is chosen by the player's look** (Radu or Ilinca).
+5. **The Champion is met before the ridge and, like Cynthia, appears and helps at different moments of the story.**
+6. **The ridge opens at 7 badges** (the eighth gym stays optional; the battle with the legendaries may be had after 7).
