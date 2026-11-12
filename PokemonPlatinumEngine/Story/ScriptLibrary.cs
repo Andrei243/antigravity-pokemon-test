@@ -186,12 +186,14 @@ public sealed class ScriptLibrary
 
     /// <summary>The flags any script sets or clears.</summary>
     public IReadOnlySet<string> FlagsWritten => All.SelectMany(s => s.Everything())
-        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag or Op.AddContact or Op.Tide && !i.Own)
-        // (a number registered is kept by a flag of its own, plan 20 · J3; Shoal Cave's tide by Emerald's, plan 21 · H8, part d)
+        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag or Op.AddContact or Op.Tide && !i.Own || i is { Op: Op.Craft, Name: "give", Other: "kit" })
+        // (a number registered is kept by a flag of its own, plan 20 · J3; Shoal Cave's tide by Emerald's, plan 21 · H8, part d;
+        // the crafting kit given sets its own, plan 39 · CR1, which the gathering spots and the waiters are shown by, CR2 and CR7)
         .Select(i => i.Op switch
         {
             Op.AddContact => Models.Pokegear.ContactFlag(i.Name),
             Op.Tide => Overworld.ShoalTide.Flag,
+            Op.Craft => Core.GameEngine.CraftingKitFlag,
             _ => i.Name
         }).ToHashSet(StringComparer.Ordinal);
 

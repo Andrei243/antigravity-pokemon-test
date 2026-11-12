@@ -50,10 +50,26 @@
     },
     {
       "en": [
+        "Is that a crafting kit? Then you're the sort who grows things. My sister wanted these to go to someone like you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Plant two Berries side by side in them and watch closely. Sometimes they cross into something rare!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Thanks for helping my sister! We sell mulch for berry soil now. They're 200 each."
       ],
       "text": [
-        "Mersi că ai ajutat-o pe sora mea! Acum vindem mulci pentru solul de boabe. Costă 200 bucata."
+        ""
       ]
     },
     {
@@ -66,12 +82,12 @@
         "No thanks"
       ],
       "text": [
-        "Ce mulci vrei?",
-        "Mulci de Creștere",
-        "Mulci Umed",
-        "Mulci Stabil",
-        "Mulci Lipicios",
-        "Nu, mersi"
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
       ]
     },
     {
@@ -79,7 +95,7 @@
         "Oh dear, you don't have enough money."
       ],
       "text": [
-        "Vai, n-ai destui bani."
+        ""
       ]
     },
     {
@@ -87,7 +103,7 @@
         "Come again! A little care goes a long way with berries."
       ],
       "text": [
-        "Mai treci pe-aici! Cu boabele, puțină grijă face minuni."
+        ""
       ]
     }
   ]

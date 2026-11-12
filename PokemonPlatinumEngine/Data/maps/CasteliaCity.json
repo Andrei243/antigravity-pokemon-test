@@ -967,6 +967,16 @@
       "facing": "Down",
       "script": "LibertySailor",
       "shownBy": "UnovaHallOfFame"
+    },
+    {
+      "id": "meal_stall",
+      "name": "Stall keeper",
+      "npcType": "Clerk",
+      "x": 50,
+      "y": 6,
+      "facing": "Down",
+      "script": "MealStand",
+      "shownBy": "FLAG_GOT_CRAFTING_KIT"
     }
   ],
   "triggers": [

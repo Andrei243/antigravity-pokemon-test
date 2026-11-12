@@ -32,5 +32,73 @@
         "Păcănelele sunt pentru fraieri. Ține minte ce-ți spun!"
       ]
     }
+  ],
+  "MealStand": [
+    {
+      "en": [
+        "Waiter"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The chef's kitchen isn't open yet, but our little pot is! Today's specials are for your whole team, eaten here and now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What will it be?",
+        "Bean Hotpot, 1,600",
+        "Potato Hash, 1,800",
+        "Honey Oat Cakes, 2,000",
+        "The pantry",
+        "Nothing, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Enjoy! Every plate came back clean."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We sell the same goods we cook with. Take what you like for your own pot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, that's a little more than you have on you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're hungry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

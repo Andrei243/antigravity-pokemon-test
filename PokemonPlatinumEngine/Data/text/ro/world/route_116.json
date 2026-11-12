@@ -307,6 +307,16 @@
           "Drumeț Devan: Ne-ai călcat în picioare, nu glumă."
         ]
       }
+    },
+    "route_116.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

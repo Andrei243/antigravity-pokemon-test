@@ -2,6 +2,10 @@
   // Route 19 (plan 22 · U2, U5): Black 2's road down from Aspertia City, our words. Bianca (5) shows how a Pokémon is
   // caught past the gate, and Alder (1) stops the player at the bottom of the hill (unova_route_19.txt)
   "area": "unova_route_19",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "unova_route_19.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 76, "y": 691, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "unova/route19",
   "trees": "Round",
   "triggers": [

@@ -304,6 +304,9 @@ public static class Overlays
             string name = $"npcs: {(npcs[i].Id ?? npcs[i].Name)} at {npcs[i].X},{npcs[i].Y}";
             if (!Inside(npcs[i].X, npcs[i].Y)) Add(Kind.Place, name, "stands outside the area");
             Person(content, flags, found, file, name, npcs[i], key);
+            // A gathering spot (plan 39 · CR2): shown by the kit's flag, on open ground, and faced from an open tile beside it
+            if (GatherSpots.IsSpot(npcs[i].NpcType))
+                foreach (string why in GatherSpots.Why(map, npcs[i].X, npcs[i].Y, npcs[i].ShownBy)) Add(Kind.Place, name, why);
         }
         foreach (var prop in overlay.Props ?? new())
             if (!Inside(prop.X, prop.Y) || !Inside(prop.X + prop.Width - 1, prop.Y + prop.Depth - 1))

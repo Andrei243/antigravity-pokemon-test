@@ -265,6 +265,16 @@
           "Ferma Floccesy e chiar acolo. Proprietarii nu se supără dacă te uiți prin jur."
         ]
       }
+    },
+    "unova_route_20.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -193,6 +193,16 @@
           "Luptătoare Helen: Picioarele mele sunt gata, dar Pokémonii nu. Înapoi la antrenament, toți!"
         ]
       }
+    },
+    "route_207.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

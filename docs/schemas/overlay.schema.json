@@ -1050,7 +1050,17 @@
               "HolidayTree",
               "EggBasket",
               "NewYearBanner",
-              "ValentineHeart"
+              "ValentineHeart",
+              "GatherRock",
+              "GatherRockBare",
+              "GatherWood",
+              "GatherWoodBare",
+              "GatherPlant",
+              "GatherPlantBare",
+              "GatherShore",
+              "GatherShoreBare",
+              "GatherSnow",
+              "GatherSnowBare"
             ]
           },
           "x": {

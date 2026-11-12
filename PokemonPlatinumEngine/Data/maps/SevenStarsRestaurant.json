@@ -633,6 +633,16 @@
         "Welcome to the Seven Stars Restaurant.",
         "Our guests come for the cooking and stay for the battles: two Pokémon against two, at any table you like."
       ]
+    },
+    {
+      "id": "meal_waiter",
+      "name": "Waiter",
+      "npcType": "waiter",
+      "x": 16,
+      "y": 12,
+      "facing": "Up",
+      "script": "MealStand",
+      "shownBy": "FLAG_GOT_CRAFTING_KIT"
     }
   ],
   "wildEncounters": []

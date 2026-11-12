@@ -121,6 +121,8 @@
     }
   },
   "npcs": [
+    // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+    {"id": "unova_route_6.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 142, "y": 379, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"},
     { "id": "grotto_mouth_2", "name": "Hollow", "npcType": "GrottoHollow", "x": 152, "y": 366, "facing": "Down", "script": "GrottoMouth" },
     {
       "id": "cobalion",

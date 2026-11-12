@@ -4720,6 +4720,7 @@
     "Plume Fossil": "Fossile Plume",
     "Jaw Fossil": "Fossile Mâchoire",
     "Sail Fossil": "Fossile Nageoire",
+    "Berry Pots": "Plante-Baies",
     "TM93": "CT93",
     "TM94": "CT94",
     "TM95": "CT95",
@@ -7524,7 +7525,8 @@
       "Cover Fossil": "Peut être ressuscité en un Carapagos.",
       "Plume Fossil": "Peut être ressuscité en un Arkéapti.",
       "Jaw Fossil": "Peut être ressuscité en Ptyranidur.",
-      "Sail Fossil": "Peut être ressuscité en Amagara."
+      "Sail Fossil": "Peut être ressuscité en Amagara.",
+      "Berry Pots": "Permet la culture portable des baies."
     }
   }
 }

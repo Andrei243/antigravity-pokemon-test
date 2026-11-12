@@ -207,6 +207,16 @@
           "M-a dus direct la înfrângere."
         ]
       }
+    },
+    "unova_route_14.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -11,9 +11,9 @@ namespace PokemonPlatinumEngine.UI;
 
 /// <summary>
 /// The kit's tabs (plan 39): the pouch of materials (CR1), the TM maker (CR4, only at a PC), the recipes (CR3) and the
-/// pantry's goods for sale (CR6, only at the workshop's counter). CR5 adds the crosses.
+/// pantry's goods for sale (CR6, only at the workshop's counter) and the berries' crosses (CR5).
 /// </summary>
-public enum CraftingTab { Materials, Machines, Make, Pantry }
+public enum CraftingTab { Materials, Machines, Make, Pantry, Crosses }
 
 /// <summary>Where the kit is opened: anywhere (the bag, the item button), at a PC's TM maker, or at the workshop's pantry counter.</summary>
 public enum CraftingPlace { Anywhere, Maker, Pantry }
@@ -54,9 +54,9 @@ public sealed class CraftingScreen
     /// <summary>The tabs the kit has now, in order: the materials and MAKE everywhere, the TM maker's only at a PC, the pantry's only at its counter.</summary>
     public IReadOnlyList<CraftingTab> Tabs => Place switch
     {
-        CraftingPlace.Maker => new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Machines },
-        CraftingPlace.Pantry => new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Pantry },
-        _ => new[] { CraftingTab.Materials, CraftingTab.Make }
+        CraftingPlace.Maker => new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Machines, CraftingTab.Crosses },
+        CraftingPlace.Pantry => new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Pantry, CraftingTab.Crosses },
+        _ => new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Crosses }
     };
 
     public CraftingTab Tab { get; private set; }
@@ -98,6 +98,16 @@ public sealed class CraftingScreen
     public int PantryFirst { get; private set; }
 
     public MaterialData? SelectedGood => PantryCursor >= 0 && PantryCursor < Pantry.Count ? Pantry[PantryCursor] : null;
+
+    /// <summary>The crossing table's rows (plan 39 · CR5), in the file's order, and the cursor and first row of their list.</summary>
+    public IReadOnlyList<Overworld.CrossRow> Crosses => Overworld.BerryCrossing.Table.Rows;
+    public int CrossCursor { get; private set; }
+    public int CrossFirst { get; private set; }
+
+    public Overworld.CrossRow? SelectedCross => CrossCursor >= 0 && CrossCursor < Crosses.Count ? Crosses[CrossCursor] : null;
+
+    /// <summary>Whether crossing has given a row's berry yet: until it has, the CROSSES page names it only by its recipe.</summary>
+    public bool Found(Overworld.CrossRow row) => state.Crosses.Contains(row.Makes);
 
     /// <summary>"How many?" on MAKE or the pantry: the number asked (one or more), or nought while nothing is being asked.</summary>
     public int HowMany { get; private set; }
@@ -154,6 +164,8 @@ public sealed class CraftingScreen
         RecipeFirst = 0;
         PantryCursor = 0;
         PantryFirst = 0;
+        CrossCursor = 0;
+        CrossFirst = 0;
         HowMany = 0;
         // The cursor goes to the first thing held, where there is one
         int held1 = Entries.ToList().FindIndex(m => from.Pouch.Count(m.Id) > 0);
@@ -276,6 +288,16 @@ public sealed class CraftingScreen
             if (make) { RecipeCursor = moved; RecipeFirst = UiNav.Window(RecipeFirst, moved, count, VisibleRows); }
             else { PantryCursor = moved; PantryFirst = UiNav.Window(PantryFirst, moved, count, VisibleRows); }
             Notice = "";
+            AudioManager.PlaySound("cursor");
+            return;
+        }
+        if (Tab == CraftingTab.Crosses)
+        {
+            if (delta == 0 || Crosses.Count == 0) return;
+            int nextCross = UiNav.Wrap(CrossCursor, Math.Sign(delta), Crosses.Count);
+            if (nextCross == CrossCursor) return;
+            CrossCursor = nextCross;
+            CrossFirst = UiNav.Window(CrossFirst, CrossCursor, Crosses.Count, VisibleRows);
             AudioManager.PlaySound("cursor");
             return;
         }

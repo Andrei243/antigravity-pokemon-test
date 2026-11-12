@@ -141,6 +141,16 @@
           "Puști Allen: Ei, mi-ai arătat tu mie cum se face."
         ]
       }
+    },
+    "route_102.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

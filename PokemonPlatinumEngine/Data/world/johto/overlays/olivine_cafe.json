@@ -1,6 +1,10 @@
 {
   // The Olivine Café (plan 20 · J8), where the sailors eat. The photographer and Jasmine's visit wait for their chapters
   "area": "olivine_cafe",
+  // A meal for the team (plan 39 · CR7; the place's MealStand script), shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "olivine_cafe.meal_stand", "name": "Waiter", "npcType": "waiter", "x": 9, "y": 3, "facing": "Down", "script": "MealStand", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "johto/olivine",
   "people": {
     "t26r0701_gsmiddleman1": { "name": "Cameron", "script": "Cameron", "still": true, "hiddenBy": "", "shownBy": "FLAG_JOHTO_MET_CAMERONS_FATHER" },

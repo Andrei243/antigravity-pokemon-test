@@ -167,6 +167,16 @@
           "Domnișoară Kaitlin: Eu tot merg prin iarbă până sare cel pe care îl vreau."
         ]
       }
+    },
+    "route_203.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

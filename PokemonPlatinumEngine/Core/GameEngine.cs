@@ -1919,6 +1919,7 @@ public partial class GameEngine
         KeepTheClock();
         KeepBerriesInView();
         KeepApricornTreesInView();
+        KeepGatherSpotsInView();
         KeepTheSaltInView();
         SlideBoulders(fieldDt);
         flow.PoketchView.Update(dt);

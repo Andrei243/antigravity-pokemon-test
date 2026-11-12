@@ -155,6 +155,16 @@
           "Campist Jeff: Lt. Surge o să mă mănânce de viu..."
         ]
       }
+    },
+    "route_6.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {
