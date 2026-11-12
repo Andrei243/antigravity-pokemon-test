@@ -10,7 +10,9 @@
     { "name": "wyndon_stadium_door", "at": [0, 26.3, -1589], "yaw": 0 },
     { "name": "rose_tower_door", "at": [96, 26.3, -1593], "yaw": 0 },
     { "name": "rose_tower_back", "at": [96, 26.3, -1586], "yaw": 0 },
-    { "name": "wyndon_avenue_east", "at": [120, 26.3, -1567], "yaw": 270 }
+    { "name": "wyndon_avenue_east", "at": [120, 26.3, -1567], "yaw": 270 },
+    // Plan 33 · GL7: the airfield's lounge in the station's west end, where the plane on to Paldea leaves
+    { "name": "wyndon_airfield_door", "at": [-140, 26.3, -1562], "yaw": 180 }
   ],
   "doors": [
     {
@@ -30,6 +32,12 @@
       "box": { "min": [95, 25.4, -1598], "max": [97, 30, -1597] },
       "room": "Wyndon_RoseTower", "at": [4, 8], "facing": "up",
       "out": "rose_tower_door"
+    },
+    {
+      "name": "wyndon_airfield_door",
+      "box": { "min": [-141, 25.4, -1559], "max": [-139, 30, -1558] },
+      "room": "Wyndon_Airfield", "at": [4, 8], "facing": "up",
+      "out": "wyndon_airfield_door"
     }
   ],
   "triggers": [

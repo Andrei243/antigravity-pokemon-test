@@ -1,0 +1,108 @@
+{
+  "name": "Wyndon_Airfield",
+  "displayName": "Wyndon Airfield",
+  "bgmTrack": "galar/wedgehurst",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Welcome to Wyndon Airfield! The flights south to Paldea aren't running just yet. We'll be boarding as soon as they are!"
+      ],
+      "isTransportAttendant": true,
+      "shownBy": "GalarHallOfFame"
+    },
+    {
+      "id": "airfield_traveller",
+      "name": "Traveller",
+      "npcType": "gentleman",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "The planes from here go south over the sea to Paldea. Or they will, once the route opens. I've been waiting all week."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

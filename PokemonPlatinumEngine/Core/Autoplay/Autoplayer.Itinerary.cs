@@ -37,6 +37,7 @@ internal sealed partial class Autoplayer
     private bool healing;
     private int healingLevel = -1;
     private readonly Dictionary<(string, string), string?> nextMaps = new();
+    private readonly Dictionary<(string Room, int Leg), Warp> exitChoice = new();
     private bool detoured;
     // Free (plan 30 · FM9): the last step of a leg is a glide that lands a few frames after it is steered, so the leg is
     // judged once the body is counted off the tile it set out from (or after a second)
@@ -51,6 +52,7 @@ internal sealed partial class Autoplayer
         var map = game.Map;
         var player = game.Player;
         var leg = it.Current!;
+        openVia = null;
         if (routeLeg != it.Index)
         {
             routeLeg = it.Index;
@@ -106,6 +108,9 @@ internal sealed partial class Autoplayer
                 return ToNurse(it, leg.Map);
             case LegKind.Train:
                 return Train(it, leg);
+            case LegKind.OpenTrigger or LegKind.OpenTalk or LegKind.OpenReach:
+                // A leg of an open map, from a room: out by the room's ways to it (plan 33 · GL6)
+                return Elsewhere(it, leg.Map);
         }
         return ActionFrame.None;
     }
@@ -263,10 +268,45 @@ internal sealed partial class Autoplayer
         return Toward(it, targetMap, (_, _) => false, aim.X, aim.Y, null);
     }
 
-    // Where on a map between the way on toward the target map starts: the first warp of it that leads to the map after it
-    private static (int X, int Y)? OnwardDoor(string between, string targetMap)
+    /// <summary>
+    /// A grid map by its name for the way across maps, or null for an open map's name (plan 33 · GL6): the map database
+    /// answers a name it doesn't know with the map of Sinnoh, whose warps would lay a way through another region.
+    /// </summary>
+    private Map? GridMap(string name) => engine.OpenMapNamed(name) != null ? null : MapDatabase.Get(name);
+
+    /// <summary>
+    /// The first map on the way from a grid room out to an open map by the rooms' own ways (plan 33 · GL6: a room of
+    /// Motostoke to a room of Turffield is a walk across the open map between their doors), or null where none leads out.
+    /// </summary>
+    private string? OpenMapOutOf(string from)
     {
-        if (Itinerary.NextMap(between, targetMap, MapDatabase.Get) is not { } after) return null;
+        var cameFrom = new Dictionary<string, string> { [from] = from };
+        var queue = new Queue<string>();
+        queue.Enqueue(from);
+        while (queue.Count > 0)
+        {
+            string here = queue.Dequeue();
+            if (GridMap(here) is not { } map) continue;
+            foreach (var warp in map.Warps)
+            {
+                string there = warp.TargetMap;
+                if (warp.Shut || string.IsNullOrEmpty(there) || cameFrom.ContainsKey(there)) continue;
+                cameFrom[there] = here;
+                if (engine.OpenMapNamed(there) != null)
+                {
+                    while (cameFrom[there] != from) there = cameFrom[there];
+                    return there;
+                }
+                queue.Enqueue(there);
+            }
+        }
+        return null;
+    }
+
+    // Where on a map between the way on toward the target map starts: the first warp of it that leads to the map after it
+    private (int X, int Y)? OnwardDoor(string between, string targetMap)
+    {
+        if (Itinerary.NextMap(between, targetMap, GridMap) is not { } after) return null;
         return MapDatabase.Get(between).Warps.FirstOrDefault(w => w.TargetMap == after && !w.Shut) is { } door ? (door.SourceX, door.SourceY) : null;
     }
 
@@ -305,7 +345,13 @@ internal sealed partial class Autoplayer
 
         if (map.Name != targetMap)
         {
-            if (!nextMaps.TryGetValue((map.Name, targetMap), out string? next)) nextMaps[(map.Name, targetMap)] = next = Itinerary.NextMap(map.Name, targetMap, MapDatabase.Get);
+            if (!nextMaps.TryGetValue((map.Name, targetMap), out string? next))
+            {
+                next = Itinerary.NextMap(map.Name, targetMap, GridMap);
+                // No way through the rooms: out to an open map the room's ways lead to, whose doors lead on (plan 33 · GL6)
+                next ??= OpenMapOutOf(map.Name);
+                nextMaps[(map.Name, targetMap)] = next;
+            }
             if (next == null) return Failed(it, $"no way from {map.Name} to {targetMap}") ? ActionFrame.None : ActionFrame.None;
             var ways = map.Warps.Where(w => w.TargetMap == next && !w.Shut && (w.SourceX, w.SourceY) != (px, py)).ToList();
             if (ways.Count == 0) return Failed(it, $"no way to {next}") ? ActionFrame.None : ActionFrame.None;
@@ -313,6 +359,23 @@ internal sealed partial class Autoplayer
             // map between (plan 23 · Z4: Victory Road, whose two mouths both open on the map of Kalos, one on Route 21 and
             // one on the League's terrace), the one that comes out nearest the way on from it; or else the nearest
             (int X, int Y)? onward = next == targetMap ? ((tx, ty) != (0, 0) ? (tx, ty) : null) : OnwardDoor(next, targetMap);
+            // Out to an open map (plan 33 · GL6): by the way whose door there stands nearest where the leg goes on to
+            if (engine.OpenMapNamed(next) is { } open && OpenGoalOf(it.Current!, open) is { } goalThere)
+            {
+                // (the way whose door's marker has a way over the open ground to the goal first, else the nearest; chosen
+                // once a leg, since a way over the open ground is a search of the whole navigation mesh)
+                if (!exitChoice.TryGetValue((map.Name, it.Index), out var byDoor) || !ways.Contains(byDoor))
+                {
+                    var grants = OpenWorld.OpenGrants.Of(game.Story);
+                    byDoor = ways.OrderBy(w => open.DoorBackFrom(map.Name, w.SourceX, w.SourceY) is { } d && open.Marker(d.Out) is { } m
+                            ? (Policy.Route(open, m.Pos, goalThere, grants) != null ? 0 : 1) : 2)
+                        .ThenBy(w => open.DoorBackFrom(map.Name, w.SourceX, w.SourceY) is { } d && open.Marker(d.Out) is { } m
+                            ? m.Pos.GroundDistanceSquared(goalThere) : long.MaxValue).First();
+                    exitChoice[(map.Name, it.Index)] = byDoor;
+                }
+                onward = null;
+                ways = new List<Warp> { byDoor };
+            }
             var aim = onward is { } o
                 ? ways.OrderBy(w => Math.Abs(w.TargetX - o.X) + Math.Abs(w.TargetY - o.Y)).First()
                 : ways.OrderBy(w => Math.Abs(w.SourceX - px) + Math.Abs(w.SourceY - py)).First();

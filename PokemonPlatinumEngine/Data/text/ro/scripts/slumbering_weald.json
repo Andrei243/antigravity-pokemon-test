@@ -54,9 +54,6 @@
       ],
       "text": [
         "Vine încoace! Toată lumea, afară, acum! Hai!"
-      ],
-      "was": [
-        "Pokémonii noștri se reped la el! Dar nimic din ce fac nici măcar nu-l atinge..."
       ]
     },
     {
@@ -65,9 +62,6 @@
       ],
       "text": [
         "Hop"
-      ],
-      "was": [
-        "Ceața se închide peste tot."
       ]
     },
     {
@@ -76,9 +70,6 @@
       ],
       "text": [
         "Pokémonii noștri au aruncat cu tot ce aveau în el și nimic nu l-a atins măcar..."
-      ],
-      "was": [
-        "Leon"
       ]
     },
     {
@@ -87,9 +78,6 @@
       ],
       "text": [
         "Ceața se închide peste tot."
-      ],
-      "was": [
-        "{player}! Hop! Aici erați. La ce v-ați gândit, să intrați singuri în pădure?"
       ]
     },
     {
@@ -98,9 +86,6 @@
       ],
       "text": [
         "Leon"
-      ],
-      "was": [
-        "Amândoi, acasă. Acum. Și Wooloo la fel."
       ]
     },
     {
@@ -183,6 +168,96 @@
       ],
       "text": [
         "Când ceața se subțiază, cei doi au dispărut, la fel și sabia și scutul ruginite."
+      ]
+    }
+  ],
+  "Legend": [
+    {
+      "en": [
+        "The fog has rolled back in, as thick as the first day. The altar stands empty, and something waits beyond it in the white."
+      ],
+      "text": [
+        "Ceața s-a întors, la fel de deasă ca în prima zi. Altarul e gol, iar ceva așteaptă dincolo de el, în alb."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Sonia reckons the two of the legend came home to the Weald once the sky cleared. And look, the fog's parting."
+      ],
+      "text": [
+        "{player}! Sonia zice că cei doi din legendă s-au întors acasă, în Pădure, după ce s-a limpezit cerul. Și uite, ceața se dă la o parte."
+      ]
+    },
+    {
+      "en": [
+        "Not for me, though. For you. Go on, Champion. It's waiting for you."
+      ],
+      "text": [
+        "Doar că nu pentru mine. Pentru tine. Hai, Campionule. Te așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "Out of the white steps Zacian, the rusted sword back in its jaws. It lowers its head, ready."
+      ],
+      "text": [
+        "Din albul ceții iese Zacian, cu sabia ruginită din nou între fălci. Își coboară capul, pregătit."
+      ]
+    },
+    {
+      "en": [
+        "Out of the white steps Zamazenta, the rusted shield back on its mane. It lowers its head, ready."
+      ],
+      "text": [
+        "Din albul ceții iese Zamazenta, cu scutul ruginit din nou pe coamă. Își coboară capul, pregătit."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "It's slipped back into the fog... but it hasn't gone far. It wants a Champion. Come back and try again!"
+      ],
+      "text": [
+        "S-a strecurat înapoi în ceață... dar n-a plecat departe. Vrea un Campion. Întoarce-te și încearcă iar!"
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "You did it! The hero's Pokémon, beside Galar's Champion. That's how the old story should have ended all along."
+      ],
+      "text": [
+        "Ai reușit! Pokémonul eroului, alături de Campionul Galarului. Așa ar fi trebuit să se termine povestea veche de la bun început."
+      ]
+    },
+    {
+      "en": [
+        "And the other one stayed with me, if you can believe it. I reckon it thinks I'm worth something too. I'll look after it."
+      ],
+      "text": [
+        "Iar celălalt a rămas cu mine, să nu-ți vină să crezi. Cred că și el zice că valorez ceva. O să am grijă de el."
       ]
     }
   ]

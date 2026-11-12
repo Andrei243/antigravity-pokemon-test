@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Wyndon Airfield"
+    ],
+    "text": [
+      "Aerodromul din Wyndon"
+    ]
+  },
+  "people": {
+    "attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Însoțitoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Wyndon Airfield! The flights south to Paldea aren't running just yet. We'll be boarding as soon as they are!"
+        ],
+        "text": [
+          "Bine ai venit la Aerodromul din Wyndon! Zborurile spre sud, către Paldea, nu pornesc încă. Începem îmbarcarea de îndată ce pornesc!"
+        ]
+      }
+    },
+    "airfield_traveller": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          "Călătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The planes from here go south over the sea to Paldea. Or they will, once the route opens. I've been waiting all week."
+        ],
+        "text": [
+          "Avioanele de aici zboară spre sud, peste mare, până în Paldea. Sau vor zbura, când se deschide ruta. Aștept de o săptămână."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

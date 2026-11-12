@@ -147,7 +147,9 @@ script Leon
   setflag GalarHallOfFame
   setvar VAR_GALAR_STORY 46
   clearflag FLAG_GALAR_CUP_LEON
-  objective galarFree
+  objective galarWeald
+  # (plan 33 · GL7: Hop waits at the Weald's altar for the new Champion)
+  setflag FLAG_GALAR_HOP_ALTAR
   halloffame show
   heal
   warp "Postwick_PlayersHouse_2F" 4 6 down

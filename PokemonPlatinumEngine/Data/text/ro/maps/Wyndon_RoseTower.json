@@ -18,6 +18,16 @@
         ]
       }
     },
+    "leon_tower": {
+      "name": {
+        "en": [
+          "Leon"
+        ],
+        "text": [
+          "Leon"
+        ]
+      }
+    },
     "tower_receptionist": {
       "name": {
         "en": [

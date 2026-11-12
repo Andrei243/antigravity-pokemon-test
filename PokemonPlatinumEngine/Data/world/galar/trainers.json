@@ -2413,5 +2413,58 @@
         "personality": 2271008289
       }
     ]
+  },
+  // Plan 33 · GL7 (ours): Leon's team in the Battle Tower after the Hall of Fame, a rematch past the Cup's levels, and
+  // the team the Laurel Circuit's final meets Galar's Champion on (plan 41)
+  {
+    "id": "galar_leon_rematch",
+    "name": "Leon",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 12000,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Aegislash",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 1170932845
+      },
+      {
+        "species": "Dragapult",
+        "level": 72,
+        "ivScale": 200,
+        "personality": 2984411237
+      },
+      {
+        "species": "Rhyperior",
+        "level": 73,
+        "ivScale": 200,
+        "personality": 608122907
+      },
+      {
+        "species": "Haxorus",
+        "level": 73,
+        "ivScale": 200,
+        "personality": 3555012471
+      },
+      {
+        "species": "Seismitoad",
+        "level": 74,
+        "ivScale": 200,
+        "personality": 2109476650
+      },
+      {
+        "species": "Charizard",
+        "level": 75,
+        "ivScale": 200,
+        "personality": 3876013391
+      }
+    ]
   }
 ]

@@ -10728,6 +10728,23 @@ way -
 from Rose at 7,4 of Wyndon_EnergyPlant
 way -
   Chairman Rose> A thousand years from now, they will understand what I tried to do. I hope.
+=== Wyndon_RoseTower.LeonTower
+from Leon at 7,6 of Wyndon_RoseTower
+way 0.0
+  Leon> Champion! Rose's tower is the Battle Tower now, and I'm the one who runs it.
+  Leon> But the one Trainer I want to battle is you. A rematch, here and now?
+  Leon> Beaten twice! I'll take that as a promise you'll keep coming back. Same time tomorrow, Champion?
+  ? But the one Trainer I want to battle is you. A rematch, here and now? = Yes
+  * battle galar_leon_rematch Won
+  + FLAG_DAILY_GALAR_LEON_TOWER
+  + FLAG_GALAR_LEON_TOWER_WON
+  + beaten galar_leon_rematch
+way 0.1, from answer 2
+  Leon> Ha! The tower's master keeps his crown today. Rest up and come back. I'll be right here.
+  * battle galar_leon_rematch Lost
+way 1, from answer 1
+  Leon> Whenever you're ready. The tower never closes.
+  ? But the one Trainer I want to battle is you. A rematch, here and now? = No
 === Wyndon_RoseTower.Oleana
 from Oleana at 6,4 of Wyndon_RoseTower
 way 0
@@ -10806,9 +10823,10 @@ way 0
   * save
   * sound save
   * open Credits
+  + FLAG_GALAR_HOP_ALTAR
   + GalarHallOfFame
   = VAR_GALAR_STORY 0 -> 46
-  = VAR_OBJECTIVE 0 -> 799
+  = VAR_OBJECTIVE 0 -> 744
   + beaten galar_leon_1
   + seen Wyndon_StadiumPitch.The Champion Match
 way 1, from answer 1

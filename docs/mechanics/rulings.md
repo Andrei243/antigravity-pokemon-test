@@ -11627,12 +11627,13 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   …`, a word of the script's `raid` (`docs/scripts.md`), its three raiders Hop with his starter's last stage and Zacian
   and Zamazenta at 70, each a trainer of ours with a team of one. The boss is Dynamaxed by the raid's own rule though
   Eternatus never Dynamaxes elsewhere (`NeverDynamax`): Eternamax is the giant here. Sword's first battle with Eternatus
-  (level 60, before Eternamax) is not fought: the scene tells of Leon's fall. Leon then hands over a Master Ball and
+  (level 60, before Eternamax) was not fought in GL6; GL7 added it ("After the Hall of Fame in Galar"). Leon then hands over a Master Ball and
   `raid catch` throws it at Eternatus itself (not the form), so the Pokémon caught is Eternatus at 60.
 - **The Slumbering Weald's first meeting is a staged battle** ("Staged battles"): `wildbattle "Zacian" 70 hidelevel
   untouchable passive endafter 3` in a Sword game, Zamazenta in a Shield one, before the fog closes in; a staged battle
   gives the Pokédex nothing and refuses every ball, so it is still `seen` by the script and `SpeciesSources` counts no
-  staged `wildbattle` as a way to a species (Zacian and Zamazenta stay owed to GL7).
+  staged `wildbattle` as a way to a species (Zacian and Zamazenta were owed to GL7, which meets them after the Hall of
+  Fame).
 - **A place's own light** (style guide, "Open world", "A place's own light"): an area of `world.json` may name `light`
   (`night`, `darkestDay`) and `lightWhile` (a flag). Spikemuth is held in the night whatever the hour (GL5's owed fault:
   it was drawn in the day's light), and Wyndon is under the Darkest Day's red while `FLAG_GALAR_DARKEST_DAY` is set. The
@@ -11645,6 +11646,52 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   avenue, 38 Marnie beaten, 39 Hop beaten, 40 the Darkest Day, 41 the altar, 42 Oleana beaten, 43 Eternatus caught and the
   sky clear, 44 Bede beaten, 45 Raihan beaten, 46 the Champion. Objectives 734 to 743, `galarFree` after them. A title
   defended, Leon's rematches and the plane on to Paldea are GL7's.
+
+## After the Hall of Fame in Galar (2026-11-12, plan 33 · GL7, its first part)
+
+- **The bot plays Galar whole** (GL6's "done when"): the playthrough bot's `Itinerary` takes legs of an open map beside
+  the grid's (`Leg.OpenTrigger`, `OpenTalk`, `OpenReach`: a trigger, a person or a marker of the open map by its name),
+  and the bot crosses between them by itself: a leg of a grid room, met in the open map, is gone for through the open
+  map's door into that room (or into a room whose ways lead there), and a leg of the open map, met in a room, by the
+  room's way out. Each open leg is done when its trigger's variable moves on, or when the leg's `Until` holds
+  (`VAR_GALAR_STORY`, a badge, a flag). A leg may vary its answers (`Leg.Vary`: Opal's quiz, where the first answer is
+  wrong for two of the three questions). `Itineraries.GalarWhole` is the four stretches of `Itineraries.Galar.cs`;
+  `PlaythroughGalarTests` plays the first chapter and the whole. As Kalos's run does, five Pokémon of level 80 stand on
+  the team before the first arrives and a Repel lasts the whole way: the story is what is tried. Galar's open land is
+  several parts that only grid rooms (the two mines, Glimwood Tangle) and trains join, so the bot goes through one such
+  room when no way over the ground reaches the leg, leaves a room by the door that has a way on, and keeps out of other
+  doors; the trains are people, so a white-out home would strand it, and the itinerary heals at the town's Pokémon
+  Center before every Leader and every match of the Cup.
+- **Sword's first battle with Eternatus is fought**: after Leon's fall on the Energy Plant's roof, `wildbattle "Eternatus"
+  60 hidelevel canlose`, a staged battle (no ball takes it, nothing reaches the Pokédex but the scene's `seen`), lost or
+  won, before it swells into Eternamax and the raid that can't fail. Its level is shown as ??? because `hidelevel` is
+  the staged word that keeps the balls away without making the foe untouchable or passive; Sword shows level 60.
+- **The version's legendary in the Weald, after the Hall of Fame**: the Leon's scene ends on the objective `galarWeald`
+  (744), and the altar's cylinder in the Slumbering Weald is a third trigger (`the_legend`, `VAR_GALAR_STORY` 46): Hop at
+  the altar, the rusted sword (Zacian, a Sword game) or shield (Zamazenta, a Shield one) carried out of the fog, and a
+  `wildbattle` at level 70 that may be caught. A battle won or run from leaves it in the fog for the next walk in; a
+  catch sets 47, and the other of the two is Hop's, in words only. **Sordward and Shielbert's plot is not built** (the
+  Dynamaxing at the stadiums and their two battles): the Weald's legend comes straight after the Hall of Fame. Zacian and
+  Zamazenta are off `GalarSpeciesTests.Owed`.
+- **Leon in the Battle Tower**: Leon stands in Rose Tower's lobby from `GalarHallOfFame` and battles once a day
+  (`FLAG_DAILY_GALAR_LEON_TOWER`) on a team of ours past the Cup's (`galar_leon_rematch`: Aegislash, Dragapult,
+  Rhyperior, Haxorus, Seismitoad, Charizard, 72 to 75); his first defeat sets `FLAG_GALAR_LEON_TOWER_WON`, the objective
+  `galarLeonTower` (745). **The Battle Tower as a ladder** (plan 33 · decision 5's facility, with its ranks and its
+  trainers) is not built: Leon is its master in words.
+- **The Laurel Circuit's Galar row** (plan 41): Leon on `galar_leon_rematch`, standing at 1,4 of the Laurel Court behind
+  `FLAG_HUB_COURT_LEON`, called after Kukui (Alola's `goto` now lands on Galar's row, which ends on the final won).
+  Galar's row of the gathering (Macro Cosmos's bay at Grayfall Keep) and Galar's case are still owed: the keep would
+  widen by an eighth bay, and the case waits for the user's outline.
+- **The plane on to Paldea** leaves from a room of ours, `Wyndon_Airfield` (a lounge in the station's west end, its
+  door on the station's north face at x -140, `wyndon_airfield_door`), the link's `DepartureMap` and Galar's `Harbour`
+  (6,4, beside her). She stands from `GalarHallOfFame` and is Galar's harbour as plan 18 · W8 has every finished region's:
+  her plane flies back to every region entered, and a return to Galar lands beside her (Galar had no `Harbour` before,
+  so another region's harbour could not have landed a player in Galar). While Paldea has no maps the way on is not
+  offered (in a game begun in Galar she says the destination isn't ready). GL7's "plane lands in Paldea" waits for plan
+  34 · PD1.
+- **Songs written, not wired**: `galar/wyndon.mml` (a civic march in D) and `galar/darkest_day.mml` (strings in D minor
+  under a choir) are ours, rendered for the user's ear; Wyndon still plays `galar/wedgehurst` and the Darkest Day
+  Wyndon's own until the user approves them. The Cup's and Eternatus's songs are owed.
 
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 

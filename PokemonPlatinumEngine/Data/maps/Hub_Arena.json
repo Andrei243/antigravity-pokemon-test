@@ -192,6 +192,18 @@
         "Woo! A whole court of Champions under one roof. Alola's going to bring the heat, cousin!"
       ],
       "shownBy": "FLAG_HUB_COURT_KUKUI"
+    },
+    {
+      "id": "leon",
+      "name": "Leon",
+      "npcType": "leon",
+      "x": 1,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Every Champion there is, on one court! Now that's what I call a champion time."
+      ],
+      "shownBy": "FLAG_HUB_COURT_LEON"
     }
   ],
   "wildEncounters": []

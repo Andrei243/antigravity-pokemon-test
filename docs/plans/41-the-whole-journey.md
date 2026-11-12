@@ -200,8 +200,10 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
   (`HubArt.KeepTeamAt` 6, a slate banner with a bone-white band), Plumeria (`plumeria_gathering`, Poison) before Guzma
   (`guzma_gathering`, Bug), both shown by `AlolaHallOfFame`; Ismene waits for Guzma where Alola is finished; the door
   stays at 18, so the hall is no longer symmetric about it (the statues moved from 30 to 36). `GatheringTests` hold it.
-- **Still owed**: the gathering's rows for Galar and Paldea, and their circuit rows: neither region has a League or a
-  Hall of Fame flag yet (nothing sets `GalarHallOfFame`), so a bay or a row shown by it would never stand; the shots
+- **Galar's circuit row** (2026-11-12, plan 33 · GL7): Leon on `galar_leon_rematch`, standing at 1,4 of the Laurel
+  Court behind `FLAG_HUB_COURT_LEON`, called after Kukui.
+- **Still owed**: the gathering's rows for Galar and Paldea, and Paldea's circuit row (Paldea has no League or Hall of
+  Fame flag yet; Galar's bay would widen Grayfall Keep by an eighth, and Galar's case waits for the user's outline); the shots
   (the keep's seventh bay among them), the songs' MP3s, Romanian words, the voices' designs.
 
 ## EG3 and EG6 as built (2026-11-12)

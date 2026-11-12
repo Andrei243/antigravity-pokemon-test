@@ -143,6 +143,24 @@
           "Uau! O curte întreagă de Campioni sub un singur acoperiș. Alola vine cu tot focul, vere!"
         ]
       }
+    },
+    "leon": {
+      "name": {
+        "en": [
+          "Leon"
+        ],
+        "text": [
+          "Leon"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Champion there is, on one court! Now that's what I call a champion time."
+        ],
+        "text": [
+          "Toți Campionii care există, pe un singur teren! Asta da distracție de campion."
+        ]
+      }
     }
   },
   "signs": {}

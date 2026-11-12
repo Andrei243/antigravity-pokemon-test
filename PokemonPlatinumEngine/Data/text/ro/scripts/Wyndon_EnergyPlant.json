@@ -82,10 +82,26 @@
     },
     {
       "en": [
-        "Leon! {player}, look, it's growing! We have to stop it together, now, before it swallows the whole sky!"
+        "Leon! {player}, it's coming for us now! Send out everyone you've got!"
       ],
       "text": [
-        "Leon! {player}, uite, crește! Trebuie să-l oprim împreună, acum, până nu înghite tot cerul!"
+        "Leon! {player}, vine spre noi acum! Trimite pe toată lumea pe care o ai!"
+      ]
+    },
+    {
+      "en": [
+        "Eternatus reels back over the core... and then the red light pours out of it, and it swells, and swells."
+      ],
+      "text": [
+        "Eternatus se retrage deasupra miezului... apoi lumina roșie se revarsă din el și crește, și tot crește."
+      ]
+    },
+    {
+      "en": [
+        "It's growing! We have to stop it together, now, before it swallows the whole sky!"
+      ],
+      "text": [
+        "Crește! Trebuie să-l oprim împreună, acum, până nu înghite tot cerul!"
       ]
     },
     {
