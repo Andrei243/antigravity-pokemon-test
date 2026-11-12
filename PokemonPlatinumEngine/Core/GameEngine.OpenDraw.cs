@@ -43,6 +43,7 @@ public partial class GameEngine
     {
         openCamera.Reset(yaw);
         openMount.Reset();
+        openMountAsked = 0;
         openViewSettled = false;
         openLastFeet = null;
         openWalked = 0;
@@ -168,7 +169,12 @@ public partial class GameEngine
         if (frame is not { } f) return (null, null);
         if (IsHeadless) return (null, null);
         AskForTheRideForms(which);
-        if (!PokemonModels.TryGet(f.Form, out var model)) return (null, null);
+        // (asked for again on every miss: a battle's or a warp's trim may have let it go since the ride began)
+        if (!PokemonModels.TryGet(f.Form, out var model))
+        {
+            PokemonModels.Request(f.Form);
+            return (null, null);
+        }
         var rig = CharacterModels.TryGet(OpenPlayerLook, renderContext.Shaders);
         float rigScale = rig?.Scale ?? 1f;
         if (f.Seated > 0f)
