@@ -61,7 +61,12 @@ public static class Rifts
     public const int FindCount = 3;
 
     /// <summary>The daily flags of the finds, one each: a find taken stays taken for the day, in every rift of it.</summary>
-    public static string FindFlag(int n) => $"FLAG_DAILY_RIFT_FIND_{n + 1}";
+    public static string FindFlag(int n) => $"{FindFlagStem}{n + 1}";
+
+    private const string FindFlagStem = "FLAG_DAILY_RIFT_FIND_";
+
+    /// <summary>Whether a flag is one of the finds' (what a rift laid, and takes away again).</summary>
+    public static bool IsFindFlag(string flag) => flag.StartsWith(FindFlagStem, StringComparison.Ordinal);
 
     private static readonly Lazy<RiftsFile> file = new(() => System.IO.File.Exists(GameDataFiles.PathOf(RiftsFile.FileName))
         ? GameDataFiles.Load<RiftsFile>(RiftsFile.FileName, strict: true) : new RiftsFile());

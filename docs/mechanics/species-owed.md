@@ -7,7 +7,7 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 | Sinnoh | `extended-sinnoh` | 210 | 210 | 0 |
 | Kanto | `kanto` | 151 | 150 | 1 |
 | Johto | `updated-johto` | 256 | 248 | 8 |
-| Hoenn | `hoenn` | 202 | 200 | 2 |
+| Hoenn | `hoenn` | 202 | 202 | 0 |
 | Unova | `updated-unova` | 301 | 283 | 18 |
 | Kalos | `kalos-central`, `kalos-coastal`, `kalos-mountain` | 457 | 457 | 0 |
 
@@ -24,7 +24,6 @@ Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's Nation
 
 ## Hoenn
 
-- **plan 38 · EX4: Route 119's Feebas**: Feebas, Milotic
 
 ## Unova
 

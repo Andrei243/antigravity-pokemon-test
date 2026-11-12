@@ -46,11 +46,6 @@ public sealed record FieldReport(string Region, IReadOnlyList<ReportedOutbreak> 
     public FieldReport WithRift(Rift? rift, int hour) => this with { Rift = rift, RiftUntil = (hour + 1) % 24 };
 
     /// <summary>A place of a region by the name its area file gives it, as the language shows it; the key where no file has it.</summary>
-    public static string PlaceName(string region, string area)
-    {
-        foreach (var world in World.LoadAll())
-            if (string.Equals(world.Index.Region, region, StringComparison.OrdinalIgnoreCase) && world.Area(area) is { } file)
-                return LocalNames.PlaceShown(null, file.Name);
-        return area;
-    }
+    public static string PlaceName(string region, string area) =>
+        Visitors.AreaName(region, area) is { } name ? LocalNames.PlaceShown(null, name) : area;
 }

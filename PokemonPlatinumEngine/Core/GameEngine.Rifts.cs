@@ -13,6 +13,12 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
+    /// <summary>
+    /// Keeps the hours' rifts shut (plan 38 · EX5): the harness, whose modes from before the plan must draw past a Hall of Fame
+    /// what they drew, with no tear, toast or find opening by the hour. Its <c>explore</c> mode opens them again.
+    /// </summary>
+    public bool RiftsStayShut { get; set; }
+
     // The hour's rift as last worked out, and the key it was worked out for (region, day, hour)
     private (string Region, uint Daily, int Hour)? riftKey;
     private Rift? rift;
@@ -25,7 +31,7 @@ public partial class GameEngine
     /// <summary>The hour's rift in the region the player is in; null where the hour has none, or before the Hall of Fame.</summary>
     internal Rift? RiftNow()
     {
-        if (!Rifts.Open(Here, flow.Story) || Here.OverworldMap is not { } overworld || MapDatabase.TryGet(overworld) is not { } map) return null;
+        if (RiftsStayShut || !Rifts.Open(Here, flow.Story) || Here.OverworldMap is not { } overworld || MapDatabase.TryGet(overworld) is not { } map) return null;
         var key = (Here.Id, flow.Encounters.DailyNumber, Math.Clamp((int)GameClock.Hour, 0, 23));
         if (riftKey != key)
         {
@@ -52,7 +58,7 @@ public partial class GameEngine
             if (riftLaid != null && riftLaidOn != null)
             {
                 foreach (var (x, y, _) in riftLaid.Finds)
-                    if (riftLaidOn.HiddenItems.TryGetValue((x, y), out var hidden) && hidden.Flag.StartsWith("FLAG_DAILY_RIFT_FIND_", StringComparison.Ordinal))
+                    if (riftLaidOn.HiddenItems.TryGetValue((x, y), out var hidden) && Rifts.IsFindFlag(hidden.Flag))
                         riftLaidOn.HiddenItems.Remove((x, y));
                 world.Life.StopEffect(riftLaid.X, riftLaid.Y);
                 if (now == null && !flow.Map.IsIndoors) ShowNotification(Text.Of("riftToast.closed", ("place", FieldReport.PlaceName(riftLaid.Region, riftLaid.Area))));

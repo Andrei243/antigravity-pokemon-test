@@ -45,10 +45,41 @@ public static class Visitors
     /// <summary>How many meetings in a hundred are the visitor's in its place.</summary>
     public static int Share => WorldAreaFile.LandSlotWeights.Skip(FirstSlot).Take(LastSlot - FirstSlot + 1).Sum();
 
-    /// <summary>A region's rows, as its <c>visitors.json</c> has them (none for a region with no file).</summary>
-    public static IReadOnlyList<VisitorRow> RowsOf(string region) =>
-        World.LoadAll().Where(w => string.Equals(w.Index.Region, region, StringComparison.OrdinalIgnoreCase))
-            .SelectMany(w => w.Visitors.Rows).ToList();
+    // What was read, by region: the rows, and the places' names (World.LoadAll reads the files afresh each time)
+    private static readonly Dictionary<string, IReadOnlyList<VisitorRow>> rows = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly Dictionary<(string Region, string Area), string?> names = new();
+    private static readonly object gate = new();
+
+    /// <summary>Forgets what was read, for a tool or a test that has laid other data layers.</summary>
+    public static void Forget()
+    {
+        lock (gate) { rows.Clear(); names.Clear(); }
+    }
+
+    /// <summary>A region's rows, as its <c>visitors.json</c> has them (none for a region with no file); read once.</summary>
+    public static IReadOnlyList<VisitorRow> RowsOf(string region)
+    {
+        lock (gate)
+        {
+            if (rows.TryGetValue(region, out var held)) return held;
+            return rows[region] = World.LoadAll().Where(w => string.Equals(w.Index.Region, region, StringComparison.OrdinalIgnoreCase))
+                .SelectMany(w => w.Visitors.Rows).ToList();
+        }
+    }
+
+    /// <summary>The English name a region's area file gives a place, read once; null where no file has it.</summary>
+    internal static string? AreaName(string region, string area)
+    {
+        lock (gate)
+        {
+            if (names.TryGetValue((region, area), out var held)) return held;
+            string? name = null;
+            foreach (var world in World.LoadAll())
+                if (string.Equals(world.Index.Region, region, StringComparison.OrdinalIgnoreCase) && world.Area(area) is { } file)
+                    name = file.Name;
+            return names[(region, area)] = name;
+        }
+    }
 
     /// <summary>The row of a day of the week in a region; null where it has none.</summary>
     public static VisitorRow? RowFor(string region, DayOfWeek day) =>

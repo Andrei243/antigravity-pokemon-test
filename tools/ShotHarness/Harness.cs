@@ -36,6 +36,8 @@ partial class Harness
         // People who move about of their own accord would stand elsewhere in every shot: they stay put but where a mode
         // shows them moving (plan 02 · S6)
         engine.PeopleStayPut = true;
+        // The hours' rifts stay shut but in the `explore` mode, so a mode past a Hall of Fame draws what it drew (plan 38 · EX5)
+        engine.RiftsStayShut = true;
         // A Pokémon standing in the field waits for its sprite rather than showing a Poké Ball for a few frames (plan 10 · F1)
         FieldSprites.Patient = true;
         // The one Pokémon a menu looks at breathes from the frame after it is asked for, every run (plan 09 · L5)

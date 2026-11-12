@@ -75,6 +75,25 @@ public class RiftTests
     }
 
     [Fact]
+    public void EveryRegionWithATableHasRiftsOnItsOwnGround()
+    {
+        foreach (string region in Regions)
+        {
+            var map = OverworldOf(region);
+            int open = 0;
+            uint daily = 7;
+            for (int day = 0; day < 4; day++, daily = SpecialEncounters.Next(daily))
+                for (int hour = 0; hour < 24; hour++)
+                    if (Rifts.Of(region, daily, hour, map, Outbreaks.Today(region, daily)) is { } rift)
+                    {
+                        open++;
+                        Assert.Equal(rift.Area, map.AreaAt(rift.X, rift.Y)!.Key);
+                    }
+            Assert.True(open >= 10, $"{region}: only {open} rifts in four days");
+        }
+    }
+
+    [Fact]
     public void NoneOpensBeforeTheHallOfFame()
     {
         var sinnoh = RegionDatabase.Get(RegionDatabase.Sinnoh)!;
