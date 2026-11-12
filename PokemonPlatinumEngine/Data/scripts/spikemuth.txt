@@ -14,7 +14,7 @@ script Piers
   say "So you got past the shutter. And past Team Yell. My sister must think you're worth it."
   say "I'm Piers. This town's Leader, for what that's worth. No stadium, no Power Spot, no giants. Just a stage and a battle."
   say "Let's make some noise, then."
-  battle self as "galar_piers_1"
+  battle piers as "galar_piers_1"
   say "...Alright. That was a good gig."
   say "The Dark Badge. Take it out of here and show everyone what Spikemuth thinks of you."
   givebadge dark

@@ -64,5 +64,33 @@
         "Eu merg direct pe Ruta 6! M-am antrenat tot drumul de la Motostoke. Ne vedem pe drum, {player}!"
       ]
     }
+  ],
+  "EastShut": [
+    {
+      "en": [
+        "A League staffer's sign stands in the east gate: Route 7 is for challengers with five badges."
+      ],
+      "text": [
+        "În poarta de est stă un panou al Ligii: Ruta 7 e pentru concurenții cu cinci insigne."
+      ]
+    }
+  ],
+  "StadiumShut": [
+    {
+      "en": [
+        "League Staff"
+      ],
+      "text": [
+        "Personalul Ligii"
+      ]
+    },
+    {
+      "en": [
+        "Sorry! Raihan's gym is the last of the challenge. Come back with seven badges and the door's yours."
+      ],
+      "text": [
+        "Îmi pare rău! Arena lui Raihan e ultima din competiție. Întoarce-te cu șapte insigne și ușa e a ta."
+      ]
+    }
   ]
 }

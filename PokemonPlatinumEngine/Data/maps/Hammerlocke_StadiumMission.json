@@ -147,7 +147,8 @@
         "prizeMoney": 300,
         "dialogueBefore": "Gym Trainer Nia: Raihan battles two at a time, so we do too. Ready for a double?",
         "dialogueAfter": "Gym Trainer Nia: Two down at once. You'll do.",
-        "sightRange": 4
+        "sightRange": 4,
+        "doubleBattle": true
       }
     },
     {
@@ -165,7 +166,8 @@
         "prizeMoney": 300,
         "dialogueBefore": "Gym Trainer Osian: Weather, two partners, no mercy. That's how Raihan's gym battles!",
         "dialogueAfter": "Gym Trainer Osian: No mercy shown, and none needed. Go on up.",
-        "sightRange": 4
+        "sightRange": 4,
+        "doubleBattle": true
       }
     }
   ],

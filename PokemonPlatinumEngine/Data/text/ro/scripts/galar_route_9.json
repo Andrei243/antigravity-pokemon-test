@@ -1,0 +1,118 @@
+{
+  "BikeKit": [
+    {
+      "en": [
+        "Mechanic"
+      ],
+      "text": [
+        "Mecanic"
+      ]
+    },
+    {
+      "en": [
+        "A challenger with six badges, and no way over the bay? Every League bike can take to the water. It only wants the kit."
+      ],
+      "text": [
+        "Un concurent cu șase insigne, și nu poate trece golful? Orice bicicletă a Ligii poate merge pe apă. Îi trebuie doar trusa."
+      ]
+    },
+    {
+      "en": [
+        "Hand it here a minute... a float under each wheel, a turbine on the back... There! Off you go across."
+      ],
+      "text": [
+        "Dă-mi-o un minut... un flotor sub fiecare roată, o turbină în spate... Gata! Poți trece dincolo."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s bike was fitted for the water! Circhester Bay can be crossed now."
+      ],
+      "text": [
+        "Bicicleta lui {player} a fost pregătită pentru apă! Golful Circhester poate fi traversat acum."
+      ]
+    },
+    {
+      "en": [
+        "Water kits for League bikes, fitted while you wait. But only for challengers who've beaten Circhester's gym."
+      ],
+      "text": [
+        "Truse de apă pentru bicicletele Ligii, montate pe loc. Dar numai pentru concurenții care au învins arena din Circhester."
+      ]
+    },
+    {
+      "en": [
+        "The kit's holding up? Spikemuth's straight over the bay. Mind the cold if you fall in."
+      ],
+      "text": [
+        "Trusa ține? Spikemuth e drept peste golf. Ai grijă la frig dacă pici în apă."
+      ]
+    }
+  ],
+  "SpikemuthGate": [
+    {
+      "en": [
+        "The shutter over Spikemuth's gate is down and locked. Team Yell have painted it all over."
+      ],
+      "text": [
+        "Oblonul de la poarta din Spikemuth e coborât și încuiat. Echipa Yell l-a mâzgălit peste tot."
+      ]
+    },
+    {
+      "en": [
+        "The shutter over Spikemuth's gate was down and locked, and Team Yell's paint was all over it."
+      ],
+      "text": [
+        "Oblonul de la poarta din Spikemuth era coborât și încuiat, iar vopseaua Echipei Yell era peste tot pe el."
+      ]
+    },
+    {
+      "en": [
+        "Marnie"
+      ],
+      "text": [
+        "Marnie"
+      ]
+    },
+    {
+      "en": [
+        "Sorry about that. Team Yell shut it so challengers can't get to my brother. They think they're helping."
+      ],
+      "text": [
+        "Îmi pare rău pentru asta. Echipa Yell l-a închis ca să nu ajungă concurenții la fratele meu. Cred că ajută."
+      ]
+    },
+    {
+      "en": [
+        "They're not. Piers wants to battle you as much as anyone. Hang on."
+      ],
+      "text": [
+        "Nu ajută. Piers vrea să lupte cu tine ca oricine altcineva. Stai puțin."
+      ]
+    },
+    {
+      "en": [
+        "Marnie knocked twice on the shutter, and it rattled up into the wall."
+      ],
+      "text": [
+        "Marnie a bătut de două ori în oblon, iar acesta s-a ridicat zăngănind în zid."
+      ]
+    },
+    {
+      "en": [
+        "Marnie"
+      ],
+      "text": [
+        "Marnie"
+      ]
+    },
+    {
+      "en": [
+        "Spikemuth's Leader is up on the stage at the end of the street. Go on. I'll be there."
+      ],
+      "text": [
+        "Liderul din Spikemuth e sus pe scena de la capătul străzii. Du-te. Vin și eu."
+      ]
+    }
+  ]
+}
