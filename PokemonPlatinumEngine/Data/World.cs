@@ -1585,6 +1585,13 @@ public static class WorldMapBuilder
     /// the mountainsides of the open country: the world's own heights say nothing of rock nobody walks on, which
     /// by them would lie as flat as the road beside it.
     /// </summary>
+    /// <summary>
+    /// A cave made from a map file (plan 38 · EX6: <see cref="MapFile.Setting"/>, the hideaways) stood up as a cave of the
+    /// world is: its rock (<see cref="TileType.CaveWall"/>) two tiles above the floor beside it, a lip before a floor.
+    /// </summary>
+    internal static void RaiseCaveRock(Map map) =>
+        RaiseRock(map, (x, z) => map.GetGroundTile(x, z) == TileType.CaveWall && map.IsSolid(x, z));
+
     private static void RaiseRock(Map map, Func<int, int, bool> IsRock)
     {
         int w = map.Width, h = map.Height;

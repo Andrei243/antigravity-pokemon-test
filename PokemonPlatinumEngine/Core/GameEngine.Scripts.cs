@@ -200,12 +200,14 @@ public partial class GameEngine
         ArrivePuzzle();
         // The tunnels are laid out as the player comes to them (plan 06 · R16a)
         if (IsUnderground) ArriveUnderground();
-        // A flag carried and a trap sprung stay below, however the player leaves
+        // A flag carried and a trap sprung stay below, however the player leaves (a hideaway is left them too)
         else if (flow.Underground.HeldFlag != null || flow.Trap != null)
         {
             flow.Underground.HeldFlag = null;
             flow.Trap = null;
         }
+        // A hideaway under them is stocked with the day's Pokémon (plan 38 · EX6)
+        StockHideaway();
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
         // The Laurel Gallery's plinths stand for the regions finished (plan 41 · EG2)

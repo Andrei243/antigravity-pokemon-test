@@ -896,7 +896,8 @@ public class Player
         bool onWater = Mode == TravelMode.Surfing || diving;
         bool where = diving ? underfoot is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing : onWater == TileBehaviors.IsSurfable(underfoot);
         // With wild Pokémon in sight (plan 10 · F5) the tall grass and the water roll nothing: what is seen there is what is met
-        bool seenInstead = WildInSight && !diving && (onWater || InTallGrass);
+        // (and in a place that shows its Pokémon on every floor, a hideaway, every step there: plan 38 · EX6)
+        bool seenInstead = WildInSight && !diving && (onWater || InTallGrass || map.WildVisibleAt(GridX, GridY));
         // Mantine skims the water so lightly that nothing in it notices the rider (plan 23, Mantine Surf)
         if (Mode == TravelMode.Surfing && RidePager.Skims(Steed)) seenInstead = true;
         if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && where && !seenInstead)

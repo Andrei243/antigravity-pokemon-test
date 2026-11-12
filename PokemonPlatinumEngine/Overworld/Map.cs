@@ -19,6 +19,13 @@ public sealed class MapArea
     /// <summary>False for an area that is drawn as scenery but not yet built: nobody can walk into it.</summary>
     public bool Open { get; set; }
 
+    /// <summary>
+    /// A place whose wild Pokémon stand in sight whatever the options' WILD POKéMON row says (plan 38 · EX6, plan 23 ·
+    /// Z22: a place's own rule). Nothing of the world files sets it yet; a map file's <c>wildVisible</c> sets
+    /// <see cref="Map.WildVisible"/>, which a place with no area asks.
+    /// </summary>
+    public bool WildVisible { get; set; }
+
     public TreeStyle? Trees { get; set; }
 
     /// <summary>What falls or hangs in the air here.</summary>
@@ -380,6 +387,12 @@ public class Map
 
     /// <summary>The camera the field is looked at with here, as the area's header in the original names it.</summary>
     public FieldCamera Camera { get; set; } = FieldCamera.Default;
+
+    /// <summary>Whether the map's wild Pokémon stand in sight whatever the options say (plan 38 · EX6: a hideaway; a map file's <c>wildVisible</c>).</summary>
+    public bool WildVisible { get; set; }
+
+    /// <summary>Whether wild Pokémon stand in sight at a tile by the place's own rule: its area's, or the map's where it has none.</summary>
+    public bool WildVisibleAt(int x, int y) => AreaAt(x, y) is { } area ? area.WildVisible : WildVisible;
 
     /// <summary>
     /// A place with no light of its own: nothing shows but a circle round the player until a Pokémon lights it

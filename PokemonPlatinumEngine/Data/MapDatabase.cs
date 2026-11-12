@@ -65,6 +65,14 @@ public static partial class MapDatabase
         if (!loaded.ContainsKey(StartMap))
             throw new InvalidDataException($"No map is called {StartMap}: the world of Sinnoh is missing from {GameDataFiles.PathOf(World.Folder)}.");
 
+        // The hideaways under the Underground (plan 38 · EX6): laid by rule from their seeds, and their ways down in the tunnels
+        if (loaded.TryGetValue(Models.Underground.Hideaways.UndergroundMapName, out var tunnels))
+        {
+            Models.Underground.Hideaways.LayWaysDown(tunnels);
+            foreach (var hideaway in Models.Underground.Hideaways.All)
+                loaded[hideaway.Map] = Models.Underground.Hideaways.ToFile(hideaway).ToMap();
+        }
+
         // A region a pack adds names who takes the player there from the region before it (plan 16 · T14): laid onto
         // the map they leave from, so the pack never copies a file of the game's region to stand them on it
         foreach (var link in RegionDatabase.Links)

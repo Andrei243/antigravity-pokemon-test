@@ -512,7 +512,7 @@ public static class RegionDatabase
                 "WorldTournamentHall",
                 // Plan 14 · B15: the Masters' Hall off the annex's lobby (a map of ours)
                 "MastersHall",
-            }
+            }.Concat(Models.Underground.Hideaways.MapNames).ToArray()
         },
         new()
         {

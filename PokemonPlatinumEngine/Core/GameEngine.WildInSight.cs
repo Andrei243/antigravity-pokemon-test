@@ -20,8 +20,12 @@ public partial class GameEngine
     /// <summary>Those standing in sight now, for a tool (the harness, the tests).</summary>
     internal FieldPokemon WildInSight => wildInSight;
 
-    /// <summary>Whether wild Pokémon stand in sight here: the row is VISIBLE, outdoors or in a cave, never below ground nor in the Bug-Catching Contest's park.</summary>
-    private bool WildSeenHere => Settings.WildInSight && !IsUnderground && !InBugContest && !flow.Map.IsIndoors;
+    /// <summary>
+    /// Whether wild Pokémon stand in sight here: the row is VISIBLE, outdoors or in a cave, never below ground nor in the
+    /// Bug-Catching Contest's park; or the place shows its own whatever the row says (plan 38 · EX6: a hideaway).
+    /// </summary>
+    private bool WildSeenHere => (Settings.WildInSight || flow.Map.WildVisibleAt(flow.Player.GridX, flow.Player.GridY))
+        && !IsUnderground && !InBugContest && !flow.Map.IsIndoors;
 
     /// <summary>
     /// A frame of the field: those in sight come, wander and go, and one that walks into the player, or that the
