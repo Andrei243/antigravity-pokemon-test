@@ -1,4 +1,5 @@
 using System;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Overworld;
@@ -97,4 +98,92 @@ public static class LeadFollower
         }
         return Finds[0].Item;
     }
+
+    // ------------------------------------------------------------------ its mood and its words (plan 35 · BN4)
+
+    /// <summary>How far from calm a mood must be for the follower to speak of it before anything else.</summary>
+    public const int StrongMood = 40;
+
+    /// <summary>Whether a mood is strong enough to be what the follower speaks of.</summary>
+    public static bool IsStrong(int mood) => Math.Abs(mood) >= StrongMood;
+
+    /// <summary>The text key of a strong mood's line (<c>followerTalk.mood.Glum</c> and the rest, with <c>{name}</c>).</summary>
+    public static string MoodKey(CareMood mood) => $"followerTalk.mood.{mood}";
+
+    /// <summary>The bubble a mood shows: dots glum or low, a note cheerful, a heart elated; calm shows the band's.</summary>
+    public static EmoteBubble BubbleOf(CareMood mood, int band) => mood switch
+    {
+        CareMood.Glum or CareMood.Low => EmoteBubble.Dots,
+        CareMood.Cheerful => EmoteBubble.Note,
+        CareMood.Elated => EmoteBubble.Heart,
+        _ => BubbleOf(band)
+    };
+
+    /// <summary>A glum follower turns its back on the player as it is spoken to.</summary>
+    public static bool TurnsItsBack(CareMood mood) => mood == CareMood.Glum;
+
+    /// <summary>What of where it stands the follower may speak of, the first that holds in this order.</summary>
+    public enum Spot { None, Gym, PokemonCenter, Room, Cave, Water, Snow, Sand, TallGrass, Rain, Night, MetHere, Town }
+
+    /// <summary>What the game tells of the place the follower stands in.</summary>
+    public readonly record struct Surroundings(bool Gym, bool PokemonCenter, bool Room, bool Cave, bool ByWater, bool Snow, bool Sand,
+        bool TallGrass, bool Rain, bool Night, bool MetHere, bool Town);
+
+    /// <summary>Whether an area is a town or a city, by its key (<c>twinleaf_town</c>, <c>jubilife_city</c>).</summary>
+    public static bool IsTown(string? areaKey) =>
+        areaKey != null && (areaKey.EndsWith("_town", StringComparison.Ordinal) || areaKey.EndsWith("_city", StringComparison.Ordinal));
+
+    /// <summary>The place's line, the first of the order that holds (<see cref="Spot"/>).</summary>
+    public static Spot PlaceOf(Surroundings at) =>
+        at.Gym ? Spot.Gym : at.PokemonCenter ? Spot.PokemonCenter : at.Room ? Spot.Room : at.Cave ? Spot.Cave
+        : at.ByWater ? Spot.Water : at.Snow ? Spot.Snow : at.Sand ? Spot.Sand : at.TallGrass ? Spot.TallGrass
+        : at.Rain ? Spot.Rain : at.Night ? Spot.Night : at.MetHere ? Spot.MetHere : at.Town ? Spot.Town : Spot.None;
+
+    /// <summary>
+    /// What a type makes of a place (a table of ours): a Water type by water or in rain, a Fire type in rain (it doesn't
+    /// like it), an Ice type in snow, a Ghost type at night, a Grass type in tall grass, a Rock type in a cave, a Ground type
+    /// on sand. The key of its line (<c>followerTalk.likes.*</c>), or null when its type says nothing of the place.
+    /// </summary>
+    public static string? Likes(Pokemon p, Surroundings at)
+    {
+        if (p.HasType(PokemonType.Water) && (at.ByWater || at.Rain)) return "followerTalk.likes.water";
+        if (p.HasType(PokemonType.Fire) && at.Rain) return "followerTalk.likes.fireInRain";
+        if (p.HasType(PokemonType.Ice) && at.Snow) return "followerTalk.likes.ice";
+        if (p.HasType(PokemonType.Ghost) && at.Night) return "followerTalk.likes.ghost";
+        if (p.HasType(PokemonType.Grass) && at.TallGrass) return "followerTalk.likes.grass";
+        if (p.HasType(PokemonType.Rock) && at.Cave) return "followerTalk.likes.rock";
+        if (p.HasType(PokemonType.Ground) && at.Sand) return "followerTalk.likes.ground";
+        return null;
+    }
+
+    /// <summary>
+    /// The line the follower says, as a text key: a strong mood's first; otherwise, one talk in two by a hash of its id, its
+    /// steps and its tile (never a draw, so nothing seeded moves), what its type makes of the place, or the place's own line;
+    /// otherwise its band's (F4).
+    /// </summary>
+    public static string LineFor(Pokemon p, int mood, int band, Surroundings at, int steps, int x, int y)
+    {
+        if (IsStrong(mood)) return MoodKey(CareRules.MoodOf(mood));
+        uint roll = Core.SplitMix.Mix(Core.SplitMix.Fnv(p.Id.ToString()), (uint)steps, (uint)(x * 1024 + y));
+        if ((roll & 1) == 0)
+        {
+            if (Likes(p, at) is { } liked) return liked;
+            if (PlaceOf(at) is var place and not Spot.None) return $"followerTalk.place.{place}";
+        }
+        return LineKey(band);
+    }
+
+    /// <summary>Steps between two bubbles of the follower's own (after a battle, a level, an evolution, a new place, the weather's turn).</summary>
+    public const int OwnBubbleSteps = 24;
+
+    /// <summary>The bubble of its own something brings: a win a note (a heart elated), a loss or a faint dots, a level or an evolution a heart, a new place or the weather a question.</summary>
+    public enum Moment { Won, Lost, Levelled, Evolved, NewPlace, Weather }
+
+    public static EmoteBubble BubbleFor(Moment moment, CareMood mood) => moment switch
+    {
+        Moment.Won => mood == CareMood.Elated ? EmoteBubble.Heart : EmoteBubble.Note,
+        Moment.Lost => EmoteBubble.Dots,
+        Moment.Levelled or Moment.Evolved => EmoteBubble.Heart,
+        _ => mood is CareMood.Glum or CareMood.Low ? EmoteBubble.Dots : EmoteBubble.Question
+    };
 }

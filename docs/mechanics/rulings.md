@@ -11253,3 +11253,13 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   confectioner (`common.TreatCounter`, `shop "treats"`) and the baker (`common.TreatBaker`, `treat can`, `treat bake`) stand
   in Veilstone's Department Store's basement, Goldenrod's and Celadon's Department Stores' ground floors, Lilycove's and on
   Castelia's avenue. A treat is fed at the care close-up's TREAT, which opens the bag on a berry or a treat.
+- **The follower's mood and its words** (plan 35 · BN4; `LeadFollower.LineFor`, `Core/GameEngine.Follower.cs`): spoken to,
+  the lead says a line of its mood when the mood is 40 or more from calm (`followerTalk.mood.*`); otherwise, one talk in
+  two by a hash of its id, its steps and its tile (`SplitMix`, never a draw, so a calm follower's talk draws exactly what
+  F4's did: the find's rolls, and nothing more), what its type makes of the place (a Water type by water or in rain, a Fire
+  type in rain, an Ice type in snow, a Ghost type at night, a Grass type in tall grass, a Rock type in a cave, a Ground type on
+  sand: `followerTalk.likes.*`) or else a line of the place, the first of a Gym, a Pokémon Center, a room, a cave, by water
+  (the player's tile or one beside it), snow, sand, tall grass, rain, night outdoors, where it was met (`Pokemon.MetLocation`
+  is the place's name) and a town or city (`followerTalk.place.*`); otherwise F4's line of its band. The line in its own
+  region is not built (every Pokémon belongs to the region it was met in, so it would be every line). Its bubbles of its own
+  are the style guide's ("The follower"). Nothing of it with the FOLLOWER row off.

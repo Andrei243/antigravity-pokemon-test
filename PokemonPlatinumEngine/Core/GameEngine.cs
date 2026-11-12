@@ -2366,6 +2366,8 @@ public partial class GameEngine
         // (FieldSystem_InitFlagsOnMapChange, not during a Safari Game; plan 06 · R13)
         if (another) ChangePlace();
         if (another && !flow.Safari.Active) Roamers.PlayerWalkedInto(flow.Encounters, area.Key, fieldRandom);
+        // The follower notices a new place (plan 35 · BN4)
+        if (another) NoteForTheLead(LeadFollower.Moment.NewPlace);
         NoteArrival();
         PlayFieldMusic();
         // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
@@ -2464,6 +2466,7 @@ public partial class GameEngine
             {
                 flow.Pokedex.RegisterCaught(evolved);
                 CareEvolved(evolved);
+                NoteForTheLead(LeadFollower.Moment.Evolved);
             }
             else flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
             flow.Statistics.Count(Statistics.Evolutions);

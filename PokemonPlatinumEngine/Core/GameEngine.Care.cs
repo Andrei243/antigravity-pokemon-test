@@ -5,6 +5,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Core;
 
@@ -32,6 +33,8 @@ public partial class GameEngine
         bool won = fought.Result is BattleResult.PlayerVictory or BattleResult.EnemyCaught;
         CareRules.AfterBattle(flow.Care, new CareRules.BattleOutcome(sent, won && !defeat, defeat, levelled,
             fought.Core.Conditions.Terrain, fought.Core.Field.SkyInEffect));
+        // The follower answers it with a bubble of its own (plan 35 · BN4)
+        NoteForTheLead(levelled.Count > 0 && !defeat ? LeadFollower.Moment.Levelled : defeat ? LeadFollower.Moment.Lost : LeadFollower.Moment.Won);
     }
 
     /// <summary>A Pokémon has just hatched: it is glad to be out.</summary>

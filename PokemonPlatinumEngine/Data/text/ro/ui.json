@@ -1351,7 +1351,36 @@
       "3": "{name} fredonează ceva. Îi place să se plimbe cu tine.",
       "4": "{name} te privește cu drag. Te-ar urma oriunde!"
     },
-    "found": "{name} ține ceva în gură. Vrea să ți-l dea!"
+    "found": "{name} ține ceva în gură. Vrea să ți-l dea!",
+    "mood": {
+      "Glum": "{name} nu se uită la tine. Pare îmbufnat.",
+      "Low": "{name} pare cam abătut. Ar avea nevoie de puțină grijă.",
+      "Cheerful": "{name} e plin de voie bună și țopăie lângă tine!",
+      "Elated": "{name} e în culmea fericirii! Abia stă locului."
+    },
+    "place": {
+      "Gym": "{name} cercetează Sala. E gata de luptă!",
+      "PokemonCenter": "{name} pare liniștit în Centrul Pokémon.",
+      "Room": "{name} adulmecă prin cameră, curios.",
+      "Cave": "{name} se uită în întunericul peșterii.",
+      "Water": "{name} privește apa.",
+      "Snow": "{name} tremură puțin în zăpadă.",
+      "Sand": "{name} își scutură nisipul de pe labe.",
+      "TallGrass": "{name} foșnește prin iarba înaltă.",
+      "Rain": "{name} se uită în sus, la ploaie.",
+      "Night": "{name} privește cerul nopții.",
+      "MetHere": "{name} se uită în jur. Pare să-și amintească de {place}!",
+      "Town": "{name} se uită cu plăcere prin {place}."
+    },
+    "likes": {
+      "water": "{name} vrea să se bălăcească. Îi place mult lângă apă!",
+      "fireInRain": "{name} se strânge lângă tine. Nu-i place deloc ploaia.",
+      "ice": "{name} e încântat de zăpadă!",
+      "ghost": "{name} pare mai vioi în întunericul nopții.",
+      "grass": "{name} se bucură de iarba de sub labe.",
+      "rock": "{name} se simte ca acasă printre stânci.",
+      "ground": "{name} sapă bucuros în nisip."
+    }
   },
 
   "marks": {
