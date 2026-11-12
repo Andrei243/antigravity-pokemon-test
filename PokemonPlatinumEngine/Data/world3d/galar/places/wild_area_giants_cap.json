@@ -1,0 +1,42 @@
+{
+  // The Giant's Cap (plan 33 · GL5, its second session): the Wild Area's northern half east of Hammerlocke Hills, downs of
+  // long grass round a lone rock that stands over everything like a hat. Its weather is the calendar's column of the same
+  // name. Our own downs at about half the original's distances.
+  "markers": [
+    { "name": "giants_cap", "at": [64, 26.3, -1084], "yaw": 90 }
+  ],
+  "zones": [
+    {
+      "name": "giants_cap",
+      "polygon": [[56, -1146], [100, -1146], [100, -1070], [56, -1070]],
+      "minY": 20, "maxY": 40,
+      "slots": [
+        { "species": "Bronzor", "minLevel": 28, "maxLevel": 31, "weight": 20 },
+        { "species": "Hatenna", "minLevel": 28, "maxLevel": 30, "weight": 15 },
+        { "species": "Pancham", "minLevel": 28, "maxLevel": 31, "weight": 20 },
+        { "species": "Gurdurr", "minLevel": 29, "maxLevel": 31, "weight": 15 },
+        { "species": "Sneasel", "minLevel": 28, "maxLevel": 30, "weight": 20, "weather": ["Snow", "HeavySnow"] },
+        { "species": "Tranquill", "minLevel": 29, "maxLevel": 31, "weight": 20, "weather": ["Clear", "Cloudy"] },
+        // The strong one, round the rock's foot
+        { "species": "Bronzong", "minLevel": 46, "maxLevel": 48, "weight": 2 }
+      ],
+      "rustle": [
+        { "species": "Pancham", "minLevel": 28, "maxLevel": 31, "weight": 25 },
+        { "species": "Hatenna", "minLevel": 28, "maxLevel": 30, "weight": 25 },
+        { "species": "Galvantula", "minLevel": 31, "maxLevel": 33, "weight": 10, "weather": ["Thunderstorm"] }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "giants_cap_lass", "at": [86, 26.3, -1134], "yaw": 270, "trainer": "galar_lass_ffion",
+      "lines": ["They say a giant left his hat here and never came back for it. Battle me!", "Maybe he'll come back for my Pokémon instead."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [58, -1072], "kind": "round", "size": 1.0 },
+    { "at": [96, -1146], "kind": "round", "size": 1.1 }
+  ]
+}

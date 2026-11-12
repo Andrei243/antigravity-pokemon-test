@@ -1,0 +1,95 @@
+{
+  "displayName": {
+    "en": [
+      "Hammerlocke Stadium"
+    ],
+    "text": [
+      "Stadionul Hammerlocke"
+    ]
+  },
+  "people": {
+    "mission_gate_1": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor de Arenă"
+        ]
+      }
+    },
+    "mission_gate_2": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor de Arenă"
+        ]
+      }
+    },
+    "mission_gate_3": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor de Arenă"
+        ]
+      }
+    },
+    "galar_gym_trainer_nia": {
+      "name": {
+        "en": [
+          "Nia"
+        ],
+        "text": [
+          "Nia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Nia: Raihan battles two at a time, so we do too. Ready for a double?"
+        ],
+        "text": [
+          "Antrenoarea arenei Nia: Raihan luptă câte doi deodată, așa că și noi. Gata de o luptă dublă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Nia: Two down at once. You'll do."
+        ],
+        "text": [
+          "Antrenoarea arenei Nia: Doi doborâți deodată. O să te descurci."
+        ]
+      }
+    },
+    "galar_gym_trainer_osian": {
+      "name": {
+        "en": [
+          "Osian"
+        ],
+        "text": [
+          "Osian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Osian: Weather, two partners, no mercy. That's how Raihan's gym battles!"
+        ],
+        "text": [
+          "Antrenorul arenei Osian: Vremea, doi parteneri, nicio milă. Așa se luptă în arena lui Raihan!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Osian: No mercy shown, and none needed. Go on up."
+        ],
+        "text": [
+          "Antrenorul arenei Osian: Nicio milă arătată și nici nevoie de ea. Urcă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

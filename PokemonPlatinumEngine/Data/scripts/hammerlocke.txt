@@ -23,3 +23,20 @@ script LeonInHammerlocke
   objective galarVault
   endscene
   end
+
+
+# The east gate onto Route 7 (plan 33 · GL5, its second session): open to challengers with the fifth badge
+script EastShut
+  if badge fairy end
+  text "A League staffer's sign stands in the east gate: Route 7 is for challengers with five badges."
+  walkto player hammerlocke_east_back
+  end
+
+
+# Hammerlocke Stadium's door (plan 33 · GL5, its second session): Raihan sees challengers with seven badges and not one fewer
+script StadiumShut
+  if badges >= 7 end
+  speaker "League Staff"
+  say "Sorry! Raihan's gym is the last of the challenge. Come back with seven badges and the door's yours."
+  walkto player hammerlocke_stadium_back
+  end

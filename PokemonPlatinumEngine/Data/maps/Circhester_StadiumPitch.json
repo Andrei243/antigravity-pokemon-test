@@ -1,0 +1,78 @@
+{
+  "name": "Circhester_StadiumPitch",
+  "displayName": "Circhester Stadium",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Rock",
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "Circhester_StadiumMission",
+      "targetX": 6,
+      "targetY": 2,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "gordie",
+      "name": "Gordie",
+      "npcType": "gordie",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Gordie",
+      "hiddenBy": "FLAG_GALAR_SHIELD_GAME"
+    },
+    {
+      "id": "melony",
+      "name": "Melony",
+      "npcType": "melony",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Melony",
+      "shownBy": "FLAG_GALAR_SHIELD_GAME"
+    }
+  ],
+  "wildEncounters": []
+}

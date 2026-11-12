@@ -2,14 +2,18 @@
   // Hammerlocke (plan 33 · GL5, its first session): the old walled city at the heart of Galar, the gym challenge's last
   // stop before the Champion Cup. The high street runs north from the south gate past the Pokémon Center and turns east
   // to the stadium; the vault, the castle's keep where the region's tapestries are kept, stands in the west; the west
-  // gate lets onto Route 6. Raihan's gym waits for seven badges, so the stadium's door is not built yet. Our own city at
+  // gate lets onto Route 6, and since GL5's second session the east gate onto Route 7 (for challengers with five badges).
+  // Raihan's stadium lets in challengers with seven badges, its staffer by the door. Our own city at
   // about half the original's distances, its walls the mass the land is cut from. Scripts: Data/scripts/hammerlocke.txt
   "markers": [
     { "name": "hammerlocke_south_gate", "at": [12, 26.3, -1166], "yaw": 180 },
     { "name": "hammerlocke_south_back", "at": [12, 26.3, -1140], "yaw": 0 },
     { "name": "hammerlocke_center_door", "at": [16, 26.3, -1189], "yaw": 270 },
     { "name": "hammerlocke_vault_door", "at": [-19, 26.3, -1246], "yaw": 0 },
-    { "name": "hammerlocke_west_gate", "at": [-30, 26.3, -1214], "yaw": 90 }
+    { "name": "hammerlocke_west_gate", "at": [-30, 26.3, -1214], "yaw": 90 },
+    { "name": "hammerlocke_east_back", "at": [86, 26.3, -1222], "yaw": 270 },
+    { "name": "hammerlocke_stadium_door", "at": [64, 26.3, -1236], "yaw": 0 },
+    { "name": "hammerlocke_stadium_back", "at": [64, 26.3, -1230], "yaw": 0 }
   ],
   "doors": [
     {
@@ -23,11 +27,21 @@
       "box": { "min": [-20, 25.4, -1250], "max": [-18, 30, -1249] },
       "room": "Hammerlocke_Vault", "at": [4, 8], "facing": "up",
       "out": "hammerlocke_vault_door"
+    },
+    {
+      "name": "hammerlocke_stadium_door",
+      "box": { "min": [63, 25.4, -1240], "max": [65, 30, -1239] },
+      "room": "Hammerlocke_Stadium", "at": [4, 8], "facing": "up",
+      "out": "hammerlocke_stadium_door"
     }
   ],
   "triggers": [
     // Through the south gate with three badges: Leon and Hop, waiting under the walls
-    { "name": "hammerlocke_arrival", "box": { "min": [4, 23, -1174], "max": [20, 30, -1160] }, "script": "LeonInHammerlocke", "var": "VAR_GALAR_STORY", "value": 24 }
+    { "name": "hammerlocke_arrival", "box": { "min": [4, 23, -1174], "max": [20, 30, -1160] }, "script": "LeonInHammerlocke", "var": "VAR_GALAR_STORY", "value": 24 },
+    // The east gate onto Route 7 is for challengers with five badges (plan 33 · GL5, its second session)
+    { "name": "hammerlocke_east_shut", "box": { "min": [94, 23, -1230], "max": [100, 30, -1214] }, "script": "EastShut" },
+    // The stadium's door is for challengers with seven badges
+    { "name": "hammerlocke_stadium_shut", "box": { "min": [60, 23, -1239], "max": [68, 30, -1237] }, "script": "StadiumShut" }
   ],
   "solids": [
     { "name": "Hammerlocke Stadium", "min": [40, 25.4, -1272], "max": [96, 40, -1240], "building": { "kind": "hall", "town": "galar", "sign": "HAMMERLOCKE STADIUM" } },
@@ -49,7 +63,7 @@
       "shownBy": "FLAG_GALAR_HOP_HAMMERLOCKE"
     },
     {
-      "name": "stadium_staffer", "at": [64, 26.3, -1236], "yaw": 0, "look": "clerk", "displayName": "League Staff",
+      "name": "stadium_staffer", "at": [56, 26.3, -1236], "yaw": 0, "look": "clerk", "displayName": "League Staff",
       "lines": ["Hammerlocke Stadium is Raihan's. He takes on challengers who've won seven badges and not one fewer."]
     },
     {

@@ -1,0 +1,83 @@
+{
+  // Route 9 (plan 33 · GL5, its second session): west out of Circhester onto the snowy east shore of Circhester Bay, the
+  // bay wall to wall across the route and too deep to wade, and its west shore under Spikemuth's walls. A mechanic on the
+  // east shore fits the challenge's bike for the water (a swim of the player's own until the Rotom Bike has an engine:
+  // docs/mechanics/rulings.md, "Circhester, Route 9, Spikemuth and Hammerlocke's stadium"). Our own route at about half
+  // the original's distances. Scripts: Data/scripts/galar_route_9.txt
+  "markers": [
+    { "name": "route9_east", "at": [34, 26.3, -1470], "yaw": 270 },
+    { "name": "route9_west", "at": [-84, 26.3, -1469], "yaw": 90 },
+    { "name": "route9_gate_back", "at": [-86, 26.3, -1469], "yaw": 90 }
+  ],
+  "triggers": [
+    // Spikemuth's gate on the west shore: its shutter down until Marnie lifts it, once the bike has crossed the bay
+    { "name": "spikemuth_gate", "box": { "min": [-100, 23, -1476], "max": [-94, 30, -1462] }, "script": "SpikemuthGate" }
+  ],
+  "zones": [
+    {
+      "name": "route_9_east",
+      "polygon": [[24, -1526], [42, -1526], [42, -1420], [24, -1420]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Snom", "minLevel": 36, "maxLevel": 38, "weight": 20 },
+        { "species": "Vanillish", "minLevel": 36, "maxLevel": 38, "weight": 20 },
+        { "species": "Delibird", "minLevel": 36, "maxLevel": 38, "weight": 20 },
+        { "species": "Cubchoo", "minLevel": 36, "maxLevel": 38, "weight": 20 },
+        { "species": "Bergmite", "minLevel": 36, "maxLevel": 38, "weight": 20 }
+      ],
+      "density": 2, "cap": 4
+    },
+    {
+      "name": "route_9_bay",
+      "polygon": [[-66, -1526], [16, -1526], [16, -1420], [-66, -1420]],
+      "minY": 18, "maxY": 30,
+      "slots": [
+        { "species": "Wingull", "minLevel": 36, "maxLevel": 38, "weight": 20 },
+        { "species": "Pelipper", "minLevel": 37, "maxLevel": 39, "weight": 20 },
+        { "species": "Arrokuda", "minLevel": 36, "maxLevel": 38, "weight": 20 },
+        { "species": "Pyukumuku", "minLevel": 36, "maxLevel": 38, "weight": 20 },
+        { "species": "Wailmer", "minLevel": 36, "maxLevel": 38, "weight": 20 }
+      ],
+      "density": 2, "cap": 4
+    },
+    {
+      "name": "route_9_west",
+      "polygon": [[-98, -1526], [-72, -1526], [-72, -1420], [-98, -1420]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Galvantula", "minLevel": 37, "maxLevel": 39, "weight": 20 },
+        { "species": "Clobbopus", "minLevel": 36, "maxLevel": 38, "weight": 25 },
+        { "species": "Binacle", "minLevel": 36, "maxLevel": 38, "weight": 25 },
+        { "species": "Inkay", "minLevel": 36, "maxLevel": 38, "weight": 15, "time": "Night" },
+        { "species": "Mareanie", "minLevel": 36, "maxLevel": 38, "weight": 15 }
+      ],
+      "density": 2, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "bike_mechanic", "at": [30, 26.3, -1478], "yaw": 270, "look": "worker", "displayName": "Mechanic",
+      "script": "BikeKit"
+    },
+    {
+      "name": "route9_fisherman", "at": [28, 26.3, -1440], "yaw": 270, "trainer": "galar_fisherman_dewi",
+      "lines": ["The bay's too cold to swim and too deep to wade. Nobody crosses it on foot. Battle me while you think!", "Think harder next time, I will."],
+      "sight": { "length": 8, "angle": 50 }
+    },
+    {
+      "name": "route9_yell_grunt", "at": [-80, 26.3, -1490], "yaw": 180, "trainer": "galar_yell_grunt_rhys",
+      "lines": ["Oi! Spikemuth's closed to anyone who isn't cheering for Marnie. You're not, are you?", "Fine, fine. Don't tell Marnie."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "marnie_route9", "at": [-90, 26.3, -1462], "yaw": 90, "look": "marnie", "displayName": "Marnie",
+      "lines": ["Spikemuth's through there. My brother's the Leader."],
+      "shownBy": "FLAG_GALAR_MARNIE_ROUTE_9"
+    }
+  ],
+  "trees": [
+    { "at": [40, -1424], "kind": "pine", "size": 1.0 },
+    { "at": [40, -1522], "kind": "pine", "size": 1.1 },
+    { "at": [-96, -1424], "kind": "pine", "size": 0.9 }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  // The Stony Wilderness (plan 33 · GL5, its second session): the Wild Area's northern half west of Hammerlocke Hills,
+  // bare rock and stacks of stone between the hills and Dusty Bowl. Its weather is the calendar's column of the same name.
+  // Our own wilderness at about half the original's distances.
+  "markers": [
+    { "name": "stony_wilderness", "at": [-60, 26.3, -1104], "yaw": 270 }
+  ],
+  "zones": [
+    {
+      "name": "stony_wilderness",
+      "polygon": [[-92, -1146], [-40, -1146], [-40, -1068], [-92, -1068]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Rhyhorn", "minLevel": 28, "maxLevel": 31, "weight": 20 },
+        { "species": "Boldore", "minLevel": 29, "maxLevel": 31, "weight": 20 },
+        { "species": "Rockruff", "minLevel": 28, "maxLevel": 30, "weight": 15 },
+        { "species": "Duskull", "minLevel": 28, "maxLevel": 30, "weight": 15, "time": "Night" },
+        { "species": "Crustle", "minLevel": 30, "maxLevel": 32, "weight": 15 },
+        { "species": "Golett", "minLevel": 28, "maxLevel": 30, "weight": 15, "weather": ["Fog", "Cloudy"] },
+        // The strong one, on the tallest stack
+        { "species": "Rhydon", "minLevel": 46, "maxLevel": 48, "weight": 2 }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "stony_wilderness_camper", "at": [-70, 26.3, -1120], "yaw": 90, "trainer": "galar_camper_gethin",
+      "lines": ["Every stone out here was a Pokémon's bed once. Or still is. Let's battle!", "I'll sleep on that one."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ]
+}

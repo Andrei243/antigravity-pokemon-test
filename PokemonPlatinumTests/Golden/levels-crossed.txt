@@ -1545,11 +1545,17 @@ levels 2 → 224, 65 → 242
 caps 229 230 231 234 234 235 237 237 242 (own 20 24 27 36 38 42 46 48 65)
 galar_allister_1 234 (36) [Mimikyu → Masqueradoll, Gourgeist → Lanternhusk]
 galar_bea_1 234 (36) [Hitmontop → Gyrodrill, Grapploct → Kraketsu]
+galar_beauty_seren 233 (33) [Liepard → Umbrapard]
 galar_bede_1 227 (14) [Solosis → Reuniclus, Hatenna → Hatterene]
 galar_bede_2 229 (21) [Solosis → Reuniclus, Gothita → Gothitelle, Hatenna → Hatterene]
+galar_camper_gethin 232 (31) [Rockruff → Lupinacle, Boldore → Gigalith]
 galar_camper_rhys 228 (16) [Electrike → Fulmenhound, Nincada → Shinobuzz]
 galar_camper_wade 227 (12) [Skwovet → Larderous, Rookidee → Corviknight]
+galar_fisherman_dewi 234 (38) [Arrokuda → Rapierfin, Barraskewda → Rapierfin]
+galar_gordie_1 235 (42) [Barbaracle → Reefcolony, Shuckle → Fermentoise, Stonjourner → Henjourner]
+galar_hiker_aled 233 (35) [Cubchoo → Beartundra, Snom → Frosmoth, Vanillish → Vanilluxe]
 galar_hiker_owain 231 (28) [Onix → Ironwyrm, Rhyhorn → Rhyperior]
+galar_hiker_rhodri 232 (31) [Hippopotas → Behemowdon, Gurdurr → Conkeldurr]
 galar_hop_1a 225 (5) [Sobble → Inteleon]
 galar_hop_1b 225 (5) [Grookey → Rillaboom]
 galar_hop_1c 225 (5) [Scorbunny → Cinderace]
@@ -1567,16 +1573,25 @@ galar_hop_5b 233 (32) [Dubwool → Ramsworth, Corvisquire → Corviknight, Pincu
 galar_hop_5c 233 (32) [Dubwool → Ramsworth, Corvisquire → Corviknight, Pincurchin → Voltechinus, Raboot → Cinderace]
 galar_kabu_1 231 (27) [Ninetales → Kitsunox, Arcanine → Kirinine]
 galar_lass_eden 228 (17) [Wingull → Pelicaptain, Lotad → Ludicolo]
+galar_lass_ffion 232 (31) [Hatenna → Hatterene, Pancham → Bambrawler]
 galar_lass_ivy 227 (14) [Gossifleur → Thistlewisp, Wooloo → Ramsworth]
 galar_lass_poppy 225 (6) [Chewtle → Drednaw]
 galar_marnie_1 230 (24) [Croagunk → Venomsensei, Scraggy → Brawlhood]
+galar_melony_1 235 (42) [Frosmoth → Auroramoth, Darmanitan → Frostruma, Eiscue → Floeguin, Lapras → Ferrisle]
 galar_milo_1 229 (20) [Gossifleur → Thistlewisp, Eldegoss → Thistlewisp]
 galar_nessa_1 230 (24) [Goldeen → Sabrefin, Arrokuda → Rapierfin, Drednaw → Juggernaw]
 galar_opal_1 234 (38) [Mawile → Deceivore, Alcremie → Patisserene]
 galar_picnicker_tamsin 232 (30) [Helioptile → Coronafrill, Dwebble → Crustadel]
+galar_piers_1 237 (46) [Scrafty → Brawlhood, Malamar → Mesmerquid, Skuntank → Mephitarch]
+galar_raihan_1 237 (48) [Sandaconda → Duneconda, Duraludon → Archaludon]
 galar_worker_brann 232 (30) [Silicobra → Duneconda, Drilbur → Excavarch]
 galar_worker_glen 227 (12) [Rolycoly → Coalossal, Roggenrola → Gigalith]
+galar_worker_idris 233 (35) [Boldore → Gigalith, Throh → Throjutsu]
+galar_yell_grunt_bryn 235 (41) [Scraggy → Brawlhood, Linoone → Obstagoon]
+galar_yell_grunt_eira 235 (41) [Nickit → Reynardine, Liepard → Umbrapard]
+galar_yell_grunt_rhys 234 (38) [Zigzagoon → Obstagoon, Linoone → Obstagoon]
 galar_youngster_alfie 225 (6) [Skwovet → Greedent]
+galar_youngster_gwyn 233 (33) [Nickit → Reynardine, Thievul → Reynardine]
 galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
 === region Hisui
 levels 2 → 62, 75 → 104
@@ -1586,6 +1601,9 @@ trainers 2, 197 (own 42-43): kalos_psychic_aurele 197 (43) [Duosion → Reuniclu
 === Ballonlea_StadiumMission
 Ballonlea Stadium, Galar
 trainers 2, 233 (own 33): galar_gym_trainer_luned 233 (33) [Kirlia → Gardevoir, Hattrem → Hatterene], galar_gym_trainer_posy 233 (33) [Clefairy → Clefable, Spritzee → Perfumelle]
+=== Circhester_StadiumMission
+Circhester Stadium, Galar
+trainers 2, 234-235 (own 38-40): galar_gym_trainer_carys 235 (39) [Rolycoly → Coalossal, Carkol → Coalossal], galar_gym_trainer_tomos 235 (40) [Boldore → Gigalith, Stonjourner → Henjourner]
 === CoumarineCity_Gym
 Coumarine Gym, Kalos
 trainers 2, 193 (own 29-30): kalos_gardener_flora 193 (29) [Skiploom → Jumpluff], kalos_hiker_sylvain 193 (30) [Sudowoodo → Mimicedar, Gogoat → Alpicorn]
@@ -1610,6 +1628,9 @@ trainers 4, 199-200 (own 48-50): kalos_bryony_1 200 (50) [Liepard → Umbrapard,
 Glimwood Tangle, Galar
 grass 232-233 (own 30-33)
 trainers 2, 232 (own 31): galar_beauty_rhian 232 (31) [Spritzee → Perfumelle, Swirlix → Soufflair], galar_hiker_dewi 232 (31) [Boldore → Gigalith, Phantump → Sylvanshade]
+=== Hammerlocke_StadiumMission
+Hammerlocke Stadium, Galar
+trainers 2, 236 (own 44): galar_gym_trainer_nia 236 (44), galar_gym_trainer_osian 236 (44) [Sandaconda → Duneconda, Torkoal → Smeltortoise]
 === Hulbury_StadiumMission
 Hulbury Stadium, Galar
 trainers 2, 229-230 (own 21-22): galar_gym_trainer_finn 230 (22) [Shellos → Gastromire, Arrokuda → Rapierfin], galar_gym_trainer_marina 230 (22) [Goldeen → Sabrefin, Chewtle → Juggernaw]

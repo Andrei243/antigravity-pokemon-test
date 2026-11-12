@@ -1,0 +1,28 @@
+# Hammerlocke Stadium's gym mission (plan 33 · GL5, its second session): a gym trainer at each of the course's three
+# gates, stepping aside once the player has passed their test, and two gym trainers beside the way who battle two at a
+# time, as Raihan does. A gate passed stays open (its own flag). The tests are talks, not the original's double battles at
+# the gates (docs/mechanics/rulings.md, "Circhester, Route 9, Spikemuth and Hammerlocke's stadium"). Our own lines.
+
+
+script MissionGate1
+  speaker "Gym Trainer"
+  say "Raihan's first rule: two Pokémon, one plan. Which do you send out to lead, the fast one or the strong one?"
+  text "{player} answered that it depends on what the other side sends. The gym trainer grinned and stepped aside."
+  setflag FLAG_GALAR_HAMMERLOCKE_GATE_1
+  end
+
+
+script MissionGate2
+  speaker "Gym Trainer"
+  say "Raihan's second rule: the weather is a third partner. When the sand blows, who's glad of it?"
+  text "{player} named the rock, ground and steel types that shrug the sand off. On through the gate!"
+  setflag FLAG_GALAR_HAMMERLOCKE_GATE_2
+  end
+
+
+script MissionGate3
+  speaker "Gym Trainer"
+  say "Raihan's last rule: when your partner's in trouble, you cover them. Ready to prove it on his pitch?"
+  text "{player} said yes, without stopping to think. The mission is cleared!"
+  setflag FLAG_GALAR_HAMMERLOCKE_GATE_3
+  end

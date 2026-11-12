@@ -38,7 +38,10 @@ public class GalarTests
         // Route 5 and Hulbury (plan 33 · GL4, its second session)
         "galar_route_5", "hulbury",
         // Hammerlocke Hills, Hammerlocke, Route 6, Stow-on-Side and Ballonlea (plan 33 · GL5, its first session)
-        "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea" };
+        "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea",
+        // The rest of the Wild Area's north, Routes 7 to 9, Circhester and Spikemuth (plan 33 · GL5, its second session)
+        "wild_area_dusty_bowl", "wild_area_stony_wilderness", "wild_area_giants_cap", "wild_area_lake_of_outrage",
+        "galar_route_7", "galar_route_8", "circhester", "galar_route_9", "spikemuth" };
 
     [Fact]
     public void GalarIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -106,7 +109,8 @@ public class GalarTests
         // (but the rooms come to only from another room: upstairs, and a stadium's mission and pitch; the Galar Mine has two)
         var behind = new[] { "Postwick_PlayersHouse_2F", "Motostoke_StadiumPitch", "Turffield_StadiumMission", "Turffield_StadiumPitch",
             "Hulbury_StadiumMission", "Hulbury_StadiumPitch", "Motostoke_StadiumMission",
-            "StowOnSide_StadiumMission", "StowOnSide_StadiumPitch", "Ballonlea_StadiumMission", "Ballonlea_StadiumPitch" };
+            "StowOnSide_StadiumMission", "StowOnSide_StadiumPitch", "Ballonlea_StadiumMission", "Ballonlea_StadiumPitch",
+            "Circhester_StadiumMission", "Circhester_StadiumPitch", "Hammerlocke_StadiumMission", "Hammerlocke_StadiumPitch" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
@@ -196,7 +200,21 @@ public class GalarTests
         Assert.True(walk.Reaches(OpenPos.FromMetres(40, 26, -1340)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(30, 40, -1285)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(-40, 40, -1180)));
-        Assert.False(walk.Reaches(OpenPos.FromMetres(-80, 40, -1120)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-80, 40, -1155)));
+        // Plan 33 · GL5, its second session: the Wild Area's north either side of the hills, out of Hammerlocke's east gate
+        // up Routes 7 and 8 to Circhester, along Route 9's shore and over the bay (the walk swims) to Spikemuth; the walls
+        // between Route 7 and the Wild Area, between Route 8 and Ballonlea, and the mass north of Stow-on-Side never come to
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-120, 23, -1106)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-66, 26, -1110)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(120, 26, -1140)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(130, 26, -1250)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(130, 26, -1380)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(100, 26, -1448)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-84, 26, -1469)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-134, 26, -1450)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(130, 40, -1155)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(103, 40, -1340)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-100, 40, -1406)));
     }
 
     [Fact]
@@ -390,6 +408,54 @@ public class GalarTests
         Assert.Equal(30, story.Var("VAR_GALAR_STORY"));
         Assert.True(story.HasBadge(RegionDatabase.Galar, "Fairy"));
         Assert.Equal(5, story.BadgeCount(RegionDatabase.Galar));
+        // Plan 33 · GL5, its second session: out of Hammerlocke's east gate (shut before the fifth badge, open now), Hop and
+        // Sonia at the Hero's Bath, Gordie's Rock Badge (a Sword game), the bike fitted for the water on Route 9, Marnie at
+        // Spikemuth's shutter, Piers's Dark Badge and Raihan's Dragon Badge, his stadium's door shut before the seventh
+        Assert.Equal("galarCirchester", Next());
+        Assert.True(story.Has("FLAG_GALAR_HOP_CIRCHESTER"));
+        var east = Play("hammerlocke", "EastShut");
+        Assert.False(east.OnMarker.ContainsKey("player"));
+        var stadiumShut = Play("hammerlocke", "StadiumShut");
+        Assert.Equal("hammerlocke_stadium_back", stadiumShut.OnMarker["player"]);
+        Play("circhester", "HerosBath");
+        Assert.Equal(31, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarSixth", Next());
+        Play("galar_route_9", "BikeKit");
+        Assert.False(story.Has("FLAG_GALAR_BIKE_WATER"));
+        var shutter = Play("galar_route_9", "SpikemuthGate");
+        Assert.Equal("route9_gate_back", shutter.OnMarker["player"]);
+        foreach (string gate in new[] { "MissionGate1", "MissionGate2", "MissionGate3" })
+            Play("Circhester_StadiumMission", gate, "Circhester_StadiumMission");
+        Assert.True(story.Has("FLAG_GALAR_CIRCHESTER_GATE_3"));
+        Play("Circhester_StadiumPitch", "OnEnter", "Circhester_StadiumPitch");
+        Play("Circhester_StadiumPitch", "Gordie", "Circhester_StadiumPitch");
+        Assert.Equal(32, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Rock"));
+        Assert.False(story.Has("FLAG_GALAR_HOP_CIRCHESTER"));
+        Assert.Equal("galarBike", Next());
+        Play("galar_route_9", "BikeKit");
+        Assert.Equal(33, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.Has("FLAG_GALAR_BIKE_WATER"));
+        Assert.Equal(MovementGrants.Swim, OpenGrants.Of(story));
+        Assert.Equal("galarSpikemuth", Next());
+        Play("galar_route_9", "SpikemuthGate");
+        Assert.Equal(34, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.Has("FLAG_GALAR_MARNIE_SPIKEMUTH"));
+        Assert.Equal("galarPiers", Next());
+        Play("spikemuth", "Piers");
+        Assert.Equal(35, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Dark"));
+        Assert.Equal("galarRaihan", Next());
+        var raihanDoor = Play("hammerlocke", "StadiumShut");
+        Assert.False(raihanDoor.OnMarker.ContainsKey("player"));
+        foreach (string gate in new[] { "MissionGate1", "MissionGate2", "MissionGate3" })
+            Play("Hammerlocke_StadiumMission", gate, "Hammerlocke_StadiumMission");
+        Play("Hammerlocke_StadiumPitch", "Raihan", "Hammerlocke_StadiumPitch");
+        Assert.Equal(36, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Dragon"));
+        Assert.Equal(8, story.BadgeCount(RegionDatabase.Galar));
+        Assert.True(TrainerDatabase.Get("galar_raihan_1", "galar")!.DoubleBattle);
+        Assert.False(TrainerDatabase.Get("galar_piers_1", "galar")!.DynamaxBand);
         Assert.Equal("galarFree", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }
@@ -410,7 +476,9 @@ public class GalarTests
             // Plan 33 · GL4, its second session: Hop on Route 5, and Marnie by Motostoke's east wall
             ("galar_route_5", "HopOnRoute5", 19), ("motostoke", "MarnieInMotostoke", 22),
             // Plan 33 · GL5, its first session: Leon at Hammerlocke's gate, Hop on Route 6, the mural
-            ("hammerlocke", "LeonInHammerlocke", 24), ("galar_route_6", "HopOnRoute6", 26), ("stow_on_side", "Mural", 28)
+            ("hammerlocke", "LeonInHammerlocke", 24), ("galar_route_6", "HopOnRoute6", 26), ("stow_on_side", "Mural", 28),
+            // Plan 33 · GL5, its second session: the Hero's Bath, the bike's kit, Marnie at the gate, Piers on his stage
+            ("circhester", "HerosBath", 30), ("galar_route_9", "BikeKit", 32), ("galar_route_9", "SpikemuthGate", 33), ("spikemuth", "Piers", 34)
         })
         {
             var ends = new List<string>();
@@ -423,6 +491,10 @@ public class GalarTests
                 // (whoever a scene faces stands where the scene before left them)
                 foreach (string shown in new[] { "FLAG_GALAR_LEON_HAMMERLOCKE", "FLAG_GALAR_HOP_HAMMERLOCKE", "FLAG_GALAR_HOP_ROUTE_6", "FLAG_GALAR_BEDE_AT_MURAL" })
                     if (script is "LeonInHammerlocke" or "HopOnRoute6" or "Mural") host.Story.Set(shown);
+                foreach (string shown in new[] { "FLAG_GALAR_HOP_CIRCHESTER", "FLAG_GALAR_SONIA_CIRCHESTER", "FLAG_GALAR_MARNIE_ROUTE_9", "FLAG_GALAR_MARNIE_SPIKEMUTH" })
+                    if (script is "HerosBath" or "SpikemuthGate" or "Piers") host.Story.Set(shown);
+                // (the bike's kit waits for the sixth badge, Piers's battle for nothing: a story of 32 has it)
+                if (story >= 32) host.Story.GiveBadge(RegionDatabase.Galar, "Rock");
                 host.Party.Add(new Pokemon(PokemonDatabase.Get("Grookey")!, 5, new Random(0)));
                 var runner = new ScriptRunner(ScriptLibrary.Default, host) { Impatient = hurry };
                 runner.Start(ScriptLibrary.Default.Find(script, file)!, null);
@@ -482,5 +554,61 @@ public class GalarTests
         Assert.Equal(new[] { "Grass", "Water", "Fire", "Ghost", "Fairy", "Ice", "Dark", "Dragon" }, Region.BadgeNamesIn(story));
         story.SetVar("VAR_GALAR_VERSION", 1);
         Assert.Equal(Region.BadgeNames, Region.BadgeNamesIn(story));
+    }
+
+    [Fact]
+    public void AShieldGamesSixthBadgeIsMelonysIceBadgeInTheSamePlace()
+    {
+        // Plan 33 · GL5, its second session: Gordie and Melony stand on one spot of Circhester's pitch as Bea and Allister do
+        var story = new StoryState();
+        story.SetVar("VAR_GALAR_VERSION", 2);
+        story.SetVar("VAR_GALAR_STORY", 31);
+        var pitch = Rooms.Value("Circhester_StadiumPitch");
+        void Play(string script)
+        {
+            var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { Region = RegionDatabase.Galar, Map = pitch };
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find(script, "Circhester_StadiumPitch")!, null);
+            runner.RunToEnd();
+            Assert.Empty(host.Problems);
+        }
+        Play("OnEnter");
+        pitch.ApplyPresence(story.Has);
+        Assert.Contains(pitch.NPCs, n => n.Id == "melony");
+        Assert.DoesNotContain(pitch.NPCs, n => n.Id == "gordie");
+        Play("Melony");
+        Assert.Equal(32, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Ice"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Rock"));
+        Assert.Equal("Ice", Region.BadgeNamesIn(story)[5]);
+    }
+
+    [Fact]
+    public void TheBayStopsAWalkerAtItsEdgeAndTheBikesKitTakesThemOver()
+    {
+        // Plan 33 · GL5's done-when: Route 9's bay is crossed with the grant the mechanic's kit gives, and a walker without it
+        // stops at the water's edge (a swim of the player's own until the Rotom Bike has an engine)
+        var map = Open.Value;
+        foreach (bool kit in new[] { false, true })
+        {
+            var story = new StoryState();
+            if (kit) story.Set(OpenGrants.BikeWaterFlag);
+            OpenPos start;
+            lock (OpenRegions.Reading) start = OpenPos.FromMetres(34, map.Ground.Footing(34, -1470, 30, 10, walkableOnly: true)!.Value.Y, -1470);
+            var field = new OpenField(map, start, 270) { Grants = OpenGrants.Of(story) };
+            bool stopped = false;
+            lock (OpenRegions.Reading)
+                for (int i = 0; i < 40000 && field.Player.Pos.MetresX > -78; i++)
+                {
+                    field.Player.Step(field.Map, new OpenInput(-1, 0, Run: true), field.Grants);
+                    stopped |= field.Player.Body.StoppedAtWater;
+                }
+            if (kit) Assert.True(field.Player.Pos.MetresX <= -78, $"the kit took the player only to x {field.Player.Pos.MetresX:0.0}");
+            else
+            {
+                Assert.True(stopped, "a walker without the kit never met the water's edge");
+                Assert.InRange(field.Player.Pos.MetresX, 8, 30);
+            }
+        }
     }
 }

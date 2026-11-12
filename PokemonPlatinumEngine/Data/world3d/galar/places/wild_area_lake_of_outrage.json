@@ -1,0 +1,37 @@
+{
+  // The Lake of Outrage (plan 33 · GL5, its second session): the Wild Area's northern half at its east end, a cold lake
+  // in a bowl under the land's east wall where the strongest Pokémon of the north gather. Its weather is the calendar's
+  // column of the same name. Our own lake at about half the original's distances.
+  "markers": [
+    { "name": "lake_of_outrage", "at": [104, 26.3, -1140], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "lake_of_outrage",
+      "polygon": [[100, -1148], [152, -1148], [152, -1068], [100, -1068]],
+      "minY": 18, "maxY": 34,
+      "slots": [
+        { "species": "Goomy", "minLevel": 30, "maxLevel": 32, "weight": 15, "weather": ["Rain", "Thunderstorm", "Fog"] },
+        { "species": "Axew", "minLevel": 30, "maxLevel": 32, "weight": 15 },
+        { "species": "Bergmite", "minLevel": 30, "maxLevel": 32, "weight": 20, "weather": ["Snow", "HeavySnow"] },
+        { "species": "Pelipper", "minLevel": 30, "maxLevel": 32, "weight": 20 },
+        { "species": "Quagsire", "minLevel": 30, "maxLevel": 32, "weight": 20 },
+        { "species": "Lapras", "minLevel": 32, "maxLevel": 34, "weight": 5, "weather": ["Snow", "HeavySnow", "Fog"] },
+        // The strong ones, by the lake's edge
+        { "species": "Haxorus", "minLevel": 50, "maxLevel": 52, "weight": 2 },
+        { "species": "Goodra", "minLevel": 50, "maxLevel": 52, "weight": 2, "weather": ["Rain", "Thunderstorm"] }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "lake_of_outrage_fisherman", "at": [104, 26.3, -1092], "yaw": 90, "look": "fisherman", "displayName": "Fisherman",
+      "lines": ["Nobody fishes this lake twice. Whatever bites back is always bigger than whatever bit last time."]
+    }
+  ],
+  "trees": [
+    { "at": [150, -1070], "kind": "pine", "size": 1.1 },
+    { "at": [150, -1146], "kind": "pine", "size": 1.0 }
+  ]
+}
