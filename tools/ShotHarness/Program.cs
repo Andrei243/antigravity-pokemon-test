@@ -45,6 +45,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> formats            the formats of the later games (plan 14): an inverse battle from the Fight Area's scientist, his offer refused and taken, the battle's opening line and hints, a resisted hit, an immunity and a weakness turned round, a win, the next day, a loss
 //   dotnet run --project tools/ShotHarness -- <output dir> ways               the ways to play (plan 13): the level cap and the line a battle says when it holds a Pokémon back, Roark under Normal and under Challenge
 //   dotnet run --project tools/ShotHarness -- <output dir> fulldex            the game with every species in it: the start's steps, the National Pokédex walked whole, the boxes full, a save of it all, forty battles, with the memory and what is held after each
+//   dotnet run --project tools/ShotHarness -- <output dir> stage              plan 42 · PS1: props worn on a species of each body plan (sh04_body_<plan>); not part of `all`
 //   dotnet run --project tools/ShotHarness -- <output dir> skips              no shots: four of the story's scenes played and then skipped by the hold (plan 12 · Q20), with what each way left told side by side
 //   dotnet run --project tools/ShotHarness -- <output dir> play [minutes] [seed] [--keys] [--past-opening]   the playthrough bot (plan 16 · T7) from the bedroom, a shot at each first arrival and play.md; --keys the key fuzzer
 //   dotnet run --project tools/ShotHarness -- <output dir> run <file.scn> [...]   scenarios (plan 16 · T17), each a written file of lines played on a game afresh; serve keeps the engine warm and plays every file written into <output dir>/inbox; scenarios plays the kept ones
@@ -146,6 +147,7 @@ if (h.Run("times")) h.TimesMode();
 if (h.Run("pokemon")) h.PokemonMode();
 if (mode == "dex") h.DexMode();
 if (mode == "fulldex") h.FullDexMode();
+if (mode == "stage") h.StageMode();
 if (mode == "versus") h.VersusMode();
 if (mode == "link") h.LinkMode();
 if (mode == "clips") h.ClipsMode();
