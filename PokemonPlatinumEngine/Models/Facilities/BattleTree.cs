@@ -140,6 +140,23 @@ public static class BattleTree
         record.Partner = at >= 0 ? at + 1 : 0;
     }
 
+    /// <summary>
+    /// A famous trainer of the partners' tree beaten in a Super room (plan 37 · FC3) scouted as <see cref="Scout"/> scouts the
+    /// later sets' trainers: kept once, the most recent last, by their own record.
+    /// </summary>
+    public static void ScoutCast(Frontier.FrontierRecords records, TreeCastRecord member)
+    {
+        if (PartnersTree.RecordOf(member) is not { } trainer) return;
+        var record = MultiRecord(records);
+        var list = record.Scouted ??= new List<ScoutedTrainer>();
+        string chosen = record.Partner > 0 && record.Partner <= list.Count ? list[record.Partner - 1].Id + "/" + list[record.Partner - 1].Name : "";
+        list.RemoveAll(s => s.Id == trainer.Id && s.Name == trainer.Name);
+        list.Add(new ScoutedTrainer { Id = trainer.Id, Class = trainer.Class, Name = trainer.Name, Look = member.Look, Cast = member.Trainer });
+        while (list.Count > MostScouted) list.RemoveAt(0);
+        int at = list.FindIndex(s => s.Id + "/" + s.Name == chosen);
+        record.Partner = at >= 0 ? at + 1 : 0;
+    }
+
     /// <summary>How many Super rooms' trophies the story holds.</summary>
     public static int Trophies(Story.StoryState story) => Ways.Count(w => HasHost(w) && story.Var(TrophyVariable(w)) > 0);
 }

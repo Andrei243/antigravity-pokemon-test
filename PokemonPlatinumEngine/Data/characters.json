@@ -697,6 +697,9 @@
     // with a pink bow in her long hair
     "tree_kaimana": { "skin": "#9a6a48", "hairColor": "#1e1a1a", "hair": "Ponytail", "top": "#3e6a3a", "accent": "#e2c254", "bottom": "#2a3a26", "shoes": "#2a2420", "eyes": "#3a2a24", "coat": true, "build": "Adult", "height": 1.14 },
     "tree_leilani": { "skin": "#c89068", "hairColor": "#2a1e1a", "hair": "Long", "hat": "Bow", "hatColor": "#e85a7a", "top": "#4e8a3e", "accent": "#e2c254", "bottom": "#3a6a30", "shoes": "#3a2e28", "eyes": "#3a2a24", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    // Plan 37 · FC3: the partners' tree's host, Ione Calder (the approval sheet's 24), ours: an old guide in a long green
+    // coat with a gold trim, her grey hair in a bun
+    "tree_ione": { "skin": "#d8a882", "hairColor": "#c8ccd4", "hair": "Bun", "top": "#3e6a3a", "accent": "#e2c254", "bottom": "#2a3a26", "shoes": "#2a2420", "eyes": "#4a3a2c", "coat": true, "skirt": true, "lashes": true, "build": "Elder" },
     // Galar's first chapter (plan 33 · GL1; our own designs, on the Adult build as Alola's cast is, drawn in the grown
     // kit in Galar): Hop, the Champion's younger brother and the player's rival, short dark-violet hair, a fawn hoodie
     // over a dark shirt and grey trousers; Leon, the Champion, long dark-violet hair under a cap, a long red cape-coat

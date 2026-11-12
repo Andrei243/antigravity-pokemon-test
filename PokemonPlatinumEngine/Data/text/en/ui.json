@@ -2193,7 +2193,7 @@
   },
   "records": {
     "title": "BATTLE RECORDS",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison", "tree": "Battle Tree" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison", "tree": "Partners' Tree" },
     "row": {
       "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
       "tree": {
@@ -2259,6 +2259,10 @@
     "readNote": "Only your own Pokémon can be read in full. What the others can do, you saw in battle.",
     "level": "Lv. {level}",
     "givingUp": "GIVING UP"
+  },
+  "titlesHouse": {
+    "title": { "0": "Visitor", "1": "Guest", "2": "Regular", "3": "Friend of the House", "4": "Honoured Guest", "5": "Patron", "6": "Steward", "7": "Master of the House" },
+    "card": "House of titles: {title}"
   },
   "hallBoard": {
     "title": "BATTLE HALL",

@@ -1298,7 +1298,8 @@ public static class ScriptParser
                 string place = r.OneOf(Models.Facilities.FacilityPlaces.Names);
                 string what = r.OneOf("enough", "size", "choose", "check", "way", "hard", "hardopen", "begin", "active", "paused", "resume",
                     "next", "host", "opponent", "partner", "battle", "won", "opened", "trophy", "points", "finish", "pause", "streak", "best", "latest",
-                    "board", "end", "scouted", "scout", "pick", "picked");
+                    "board", "end", "scouted", "scout", "pick", "picked", "cast", "partnercast",
+                    "member", "visit", "visitor", "dress", "level");
                 string which = what switch
                 {
                     "way" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.FacilityPlaces.WaysOf(place))),

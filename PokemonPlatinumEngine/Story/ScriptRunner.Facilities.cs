@@ -49,6 +49,12 @@ public sealed partial class ScriptRunner
     private void FacilityCommand(Instruction i)
     {
         string place = i.Name;
+        // The house of titles' words are its own (plan 37 · FC4)
+        if (place == TitlesHouse.Place)
+        {
+            TitlesCommand(i);
+            return;
+        }
         var records = host.Frontier;
         StreakChallenge Challenge() => host.Facility is { } c && c.Room.Place == place ? c : throw Wrong(i, $"'facility {place} {i.Other}' needs a challenge of the {place} under way");
         StreakRoom Chosen() => facilityWay.Length > 0 ? FacilityPlaces.RoomOf(place, facilityWay, facilityHard)
@@ -95,7 +101,7 @@ public sealed partial class ScriptRunner
             }
             case "begin":
                 if (facilitySlots.Count != Chosen().Entered) throw Wrong(i, $"'facility {place} begin' needs those entered to have been chosen ('facility {place} choose')");
-                host.Facility = StreakChallenge.Begin(records, Chosen(), facilitySlots, host.Party, Draw);
+                host.Facility = StreakChallenge.Begin(records, Chosen(), facilitySlots, host.Party, Draw).WithCast(PartnersTree.Eligible(host.Story.Has));
                 records.ChallengesStarted++;
                 Result = lastNumber = host.Facility.StreakBefore;
                 break;
@@ -112,7 +118,7 @@ public sealed partial class ScriptRunner
                 break;
             }
             case "resume":
-                host.Facility = StreakChallenge.Resume(records, Chosen(), host.Party);
+                host.Facility = StreakChallenge.Resume(records, Chosen(), host.Party)?.WithCast(PartnersTree.Eligible(host.Story.Has));
                 Result = host.Facility != null ? 1 : 0;
                 lastNumber = RecordOfChosen()?.Streak ?? 0;
                 break;
@@ -229,6 +235,14 @@ public sealed partial class ScriptRunner
                 Result = record.Partner;
                 break;
             }
+            // The partners' tree's famous trainers (plan 37 · FC3): the number in the cast (from 1, 0 for none) of the trainer of
+            // the battle to come and of the Multi room's partner, which the hall's script turns into their line on arrival
+            case "cast":
+                Result = lastNumber = Challenge().CastFoe;
+                break;
+            case "partnercast":
+                Result = lastNumber = Challenge().CastPartner;
+                break;
             case "picked":
                 Result = lastNumber = records.PeekFacility(place, "multi", false)?.Partner ?? 0;
                 break;

@@ -296,6 +296,16 @@
       "facing": "Down",
       "script": "Guest",
       "shownBy": "FLAG_KALOS_CHATEAU_HAS_WULFRIC"
+    },
+    {
+      "id": "opponent",
+      "name": "Visitor",
+      "npcType": "cynthia",
+      "x": 7,
+      "y": 8,
+      "facing": "Down",
+      "script": "Guest",
+      "shownBy": "FLAG_KALOS_CHATEAU_HAS_VISITOR"
     }
   ],
   "wildEncounters": []

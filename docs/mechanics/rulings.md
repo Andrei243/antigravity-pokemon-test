@@ -10642,6 +10642,71 @@ at the desk) or retires (the streak ends there, kept as the latest).
 - **Not built**: a song of its own (the lobby and the hall play Aquacorde's, as plan 23 left them, until plan 31 writes one; Kalos has no Lumiose song yet), the hosts' grown looks (plan 30's
   kit, once it stands; they are chibi looks of the `Adult` build now), and the hosts' lines in battle.
 
+## The partners' tree (2026-11-12, plan 37 · FC3)
+
+The tree of plan 23 at the head of Poni Gauntlet is plan 37's partners' tree (decision 2's Z8 door: it stands where Z8
+put it, so no Hau'oli room is used). Its words (`facility tree`), maps and records keep their names, so no save changes.
+
+- **Its name and host** (the approval sheet's 24, ★): it is shown as the **Partners' Tree**, on its doors' sign, its rooms'
+  names, the Town Map and the records' board, and its desk is kept by **Ione Calder**, an old guide in a green coat
+  (`tree_ione`). The two Tree Masters of plan 23, Kaimana and Leilani, still stand in the way at a normal room's 20th
+  battle and open its Super room.
+- **The cast** (decision 3 and the sheet's 23, ★): `Data/tree-cast.json`, written by hand, read strictly: 82 of the game's
+  own trainers, each with the trainer of the tables whose team they bring (a rematch team where the region has one), their
+  look, the region whose Hall of Fame (`<Region>HallOfFame`) lets them in, and a role. Sinnoh's thirteen, Kanto's eleven
+  (its Champion is Blue with his Viridian team, since Kanto's Champion of the tables is the player's rival under the
+  player's own name), Johto's twelve (Lance its Champion; Bruno and Lance are not Kanto's twice), Hoenn's, Unova's and
+  Kalos's thirteen, and Alola's seven (Kukui its Champion, the four of its League, Nanu and Hapu). **Not in the cast yet**:
+  the rivals, whose names and teams are the player's choices in every region; Galar's and Paldea's people, until plans 33
+  and 34 finish those regions.
+- **When they come**: only in a Super room. At every tenth battle that is not its host's (10, 20, 30, 40, 60...) a member
+  of the cast who is no Champion stands in the way, drawn on the challenge's own generator (one draw), with three of their
+  own team at 50 (`Tournament.ThreeOf`), thinking and holding what their table gives them. The 50th battle, the Tree
+  Master's in plan 23, is a Champion of the cast drawn from the regions finished, and counts as the host's (the trophy the
+  first time, forty Battle Points). With nobody of the cast to draw (no region finished but Alola has a Champion, so only
+  in a test) the room goes on as it was, with no draw made. The normal and Multi rooms, and every other place, never meet
+  the cast, so their trainers are drawn as before.
+- **Scouted once beaten**: a famous trainer beaten, the 50th's Champion too, is scouted for the Multi room like the later
+  sets' trainers (`BattleTree.ScoutCast`; `ScoutedTrainer.Cast` names them, null for the rest, so no save version was
+  raised). Chosen at the desk, they bring two of their own team at 50, the highest levels first, passing over the
+  species and the held items of the two the player entered and of each other (the Subway's friend's rule).
+- **Their lines** (the sheet's 58, ★): each has a short line of their own, said as they arrive in the hall, as a foe or
+  beside the player (`PoniGauntlet_BattleTreeHall.txt`, `CastLine`, by their number in the file, `facility tree cast` and
+  `partnercast`). No line names a species.
+- **A friend in the partner's place**: with the options' FRIEND AS PARTNER on, a friend chooses for every partner of a
+  Frontier battle (the tree's Multi room, the Battle Tower's and the Subway's), without the question a field battle asks.
+
+## The house of titles (2026-11-12, plan 37 · FC4)
+
+Plan 23 stood the house in Route 7's Battle Château (`KalosRoute7_BattleChateau`) with its guests, its eight titles and
+Kalos's Leaders on their days, in scripts alone; FC4 adds what the plan asked of it (`Models/Facilities/TitlesHouse.cs`,
+`facility titles`). The player's own team battles at its own levels through the field's battle and is paid EXP and money
+(decision 4); a loss costs nothing and the house's staff make the team whole.
+
+- **The members' teams**: Mirabelle, Tristan and Celeste of the west place and Octave, Isaure and Corentin of the east
+  (from the title of a Friend of the House) keep their names and classes of Kalos's table, and bring three of the later sets
+  (`FacilityTrainers.Draw`) at a level over the highest of the player's team (Eggs passed over) by the title: 6 under it as
+  a Visitor, 4 under as a Guest, 2 under as a Regular, level with it as a Friend of the House, then 1, 2, 3 and 5 over
+  (Honoured Guest, Patron, Steward, Master of the House), between 1 and the modern cap. Their tiers are 1 and 2 for the
+  first three titles, 2 and 3 to the Patron, 3 and 4 after, the east place's a step up; their IVs `FacilityTrainers.IvsFor`
+  of the title. The team is marked as kept (`Trainer.LevelsKept`), so no region relevels it.
+- **The same all day**: the hall's daily draw (`FLAG_DAILY_KALOS_CHATEAU_DRAWN`) sets a seed of the day
+  (`VAR_KALOS_CHATEAU_SEED`, a die of 65,536), and each member's team and the day's visitor are drawn on Platinum's
+  generator seeded by it and who is drawn, so they are the same all day and new the next.
+- **Visitors**: once another region's Hall of Fame is set, one of its trainers visits each day by the north wall of the
+  hall, drawn from the partners' tree's cast (`Data/tree-cast.json`) of the regions finished but Kalos: a Leader or a
+  kahuna below the Steward's title, an Elite Four member as Steward, a Champion as Master of the House. They bring their
+  own team of the tables lifted to the journey's post-game level (`LevelLift.PostGameLevel`, or their own if higher), on a
+  copy under an id of the house's own (`titles_visitor_<id>`), so their region's trainer is never beaten by a battle here,
+  once a day (`FLAG_DAILY_KALOS_CHATEAU_BEAT_VISITOR`).
+- **Points** (a win's toward the titles): a west member 1, an east member 2, a Leader of Kalos or a visiting Leader or
+  kahuna 3, a visiting Elite Four member 4, a visiting Champion 5. The titles at 3, 8, 15, 25, 40, 60 and 90 points, as
+  plan 23 set them.
+- **The card**: the title earned stands on Kalos's page of the Trainer Card, under its rule at the right ("House of
+  titles: Patron").
+- **Not built**: the manor drawn into Route 7 (plan 23 had already put the house there); its own music; the shots
+  (`fc40` to `fc44`).
+
 ## Peak training and the training tools (2026-11-07, plan 36 · TR3)
 
 Peak training is our name for the later games' hyper training, and its rule is plan 06 · R28b's (`Models/HyperTraining.cs`: level 50 or more, as Scarlet and Violet ask; a stat whose IV is 31, or brought to its peak already, can't be). The coach, the clerks, their lines and every price are ours; no Mr. Hyper is recreated.

@@ -432,6 +432,13 @@ internal static partial class ModernUi
             Tag(right - UiFonts.Measure(champion, 44 * 0.58f, UiWeight.Black) - 44 * 0.9f, top + 18, champion, Gold, 44);
         }
         UiShapes.Fill(new Rectangle(x, top + 110, right - x, 3), 1.5f, Rule);
+        // The house of titles' title (plan 37 · FC4), under the rule at its right
+        if (region.HouseTitle > 0)
+        {
+            int title = region.HouseTitle;
+            string houseTitle = Text.Of("titlesHouse.card", ("title", Text.Of($"titlesHouse.title.{title}")));
+            UiFonts.Draw(houseTitle, right - UiFonts.Measure(houseTitle, 26, UiWeight.ExtraBold), top + 124, 26, Muted, UiWeight.ExtraBold);
+        }
 
         int n = Math.Min(region.BadgeNames.Count, 8);
         if (n == 0) UiFonts.Draw(Text.Of("card.noBadges"), x, top + 150, 30, Muted, UiWeight.ExtraBold);
