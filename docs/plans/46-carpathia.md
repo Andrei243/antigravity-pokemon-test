@@ -209,10 +209,10 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - The castle on the crag: the Ghost gym's halls and the Vârcolac's tale, Team Zenith's keep and the stronghold's assault with the Champion (II-2), the professors' two calls (I-7), the Stillers' trainers and the four executives' teams.
 
 ### CP25b · The ridge (1 to 2 sessions; added 2026-11-12)
-- The climax (the chapters' III-0 to III-10): the rival at the foot, the two executives on the road, the Champion at the tunnel, the `???` fight, the professors' arrival, the binding and the transformation, the weakened fight and the catch, the roamers' leaving, the Solomonar's tale, the labs. Needs the wild battle terms (`hidelevel`, `untouchable`, `passive`, `canlose` and a starting HP on `wildbattle`), the runs' exceptions, and the beast voice and text (the chapters' engine needs 1, 2, 6, 8 and 9).
+- The climax (the chapters' III-0 to III-10): the rival at the foot, the two executives on the road, the Champion at the tunnel, the `???` fight, the professors' arrival, the binding and the transformation, the weakened fight and the catch, the roamers' leaving, the Solomonar's tale, the labs. Needs the wild battle terms (`hidelevel`, `untouchable`, `passive`, `canlose` and a starting HP on `wildbattle`), the runs' exceptions, and the beast voice and text, and the roamers seen and fleeing on the open map (the chapters' engine needs 1, 2, 5, 6, 8 and 9). None of the wild-battle options exists yet: `wildbattle` takes no `canlose` and no starting HP today, and no roamer has ever been on an open map.
 
 ### CP26 · The League and the crossing (1 session)
-- The League in the capital's palace, the Champion, the Hall of Fame, the credits, Fly and harbours both ways with Paldea. The Champion is Ruxandra Zorescu (proposed), the Elite Four Dark, Fighting, Fairy and Dragon (the chapters' L-1 to L-5).
+- The League in the capital's palace, the Champion, the Hall of Fame, the credits, Fly and harbours both ways with Paldea. The Champion is Ruxandra Zorescu (proposed), the Elite Four Dark, Fighting, Fairy and Ground (the chapters' L-1 to L-5).
 
 ### CP27 · After the Hall of Fame (1 to 2 sessions)
 - The Dacian sanctuary and the draco, the festivals' days in full (the New Year's mask dances, Sânziene, Mărțișor), rematches, the Carpathian diploma.
