@@ -290,6 +290,7 @@ surf 56-58
 old rod 50-55
 good rod 55
 super rod 60
+ours Perfumelle 194-198, Coronafrill 194-198, Mesmerquid 194-198, Salvoclaw 196-200
 trainers 2, 60-61: kalos_beauty_ondine 61, kalos_fisherman_yannick 61
 === bell_tower_10f
 Bell Tower
@@ -778,6 +779,7 @@ ours Glacitusk 112-116, Clamspire 120-124
 === frost_cavern
 Frost Cavern
 grass 38-41
+ours Glacitadel 200-204, Borealosaur 196-200
 trainers 4, 39-42: kalos_ace_trainer_sylvain 42, kalos_hiker_octave 41, kalos_skier_brice 41, kalos_skier_noemie 40
 === fuchsia
 Fuchsia City
@@ -1285,10 +1287,12 @@ trainers 2, 37-38: kalos_hiker_gaspard 38, kalos_lass_neige 38
 === kalos_route_18
 Route 18
 grass 40-42
+ours Coronafrill 194-198, Despotitan 196-200
 trainers 2, 42-43: kalos_black_belt_leon 43, kalos_hiker_firmin 43
 === kalos_route_19
 Route 19
 grass 42-44
+ours Excavabbit 188-192, Soufflair 194-198
 trainers 3, 44-45: kalos_ace_trainer_rosalie 45, kalos_fisherman_eloi 45, kalos_hiker_urbain 45
 === kalos_route_2
 Route 2
@@ -1297,10 +1301,12 @@ trainers 1, 3: kalos_youngster_milo 3
 === kalos_route_20
 Route 20
 grass 44-46
+ours Sylvanshade 198-202, Occulynx 190-194
 trainers 2, 45-46: kalos_hiker_thibaut 46, kalos_lady_honorine 46
 === kalos_route_21
 Route 21
 grass 48-50
+ours Blazemonarch 190-194, Perfumelle 194-198
 trainers 2, 49-51: kalos_sky_trainer_zoe 51, kalos_veteran_germain 50
 === kalos_route_3
 Route 3
@@ -1347,6 +1353,7 @@ surf 50-53
 old rod 10-15
 good rod 45-46
 super rod 50-52
+ours Luchacondor 194-198, Alpicorn 190-194, Reefcolony 194-198, Mesmerquid 194-198
 trainers 3, 55-56: kalos_ace_trainer_camille 56, kalos_ace_trainer_maxime 56, kalos_veteran_clovis 56
 === kanto_victory_road_1f
 Victory Road
@@ -1369,6 +1376,7 @@ surf 56-58
 old rod 50-55
 good rod 55
 super rod 60
+ours Kelpdrake 196-200, Reefcolony 194-198
 === konikoni_city
 Konikoni City
 surf 22-24
@@ -1437,6 +1445,7 @@ super rod 25-45
 === lost_hotel
 Lost Hotel
 grass 36-38
+ours Majesthound 190-194, Signalmus 192-196
 trainers 4, 36-38: kalos_lass_pomme 37, kalos_psychic_lucien 37, kalos_psychic_odile 38, kalos_veteran_ambrose 38
 === lostlorn_forest
 Lostlorn Forest
@@ -2033,6 +2042,7 @@ surf 48-50
 old rod 10-15
 good rod 25
 super rod 35
+ours Faerieon 120-124, Lanternhusk 198-202, Salvoclaw 196-200, Kelpdrake 196-200
 === poni_breakers
 Poni Breakers
 grass 43-45
@@ -3681,6 +3691,7 @@ trainers 3, 31-32: kalos_backpacker_ysolde 32, kalos_black_belt_thibault 32, kal
 === terminus_cave_depths
 Terminus Cave
 grass 60-63
+ours Druzarion 196-200, Bambrawler 192-196
 trainers 3, 61-64: kalos_ace_trainer_solenne 63, kalos_hiker_eloi 62, kalos_veteran_hector 64
 === three_island_berry_forest
 Berry Forest
@@ -3902,6 +3913,7 @@ trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, joh
 === unknown_dungeon
 Unknown Dungeon
 grass 64-66
+ours Sonarwing 203-207, Chatelkey 198-202
 === unova_route_1
 Route 1
 grass 56-59

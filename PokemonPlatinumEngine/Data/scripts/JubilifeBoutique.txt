@@ -30,3 +30,20 @@ script Dyer
   speaker "Dyer"
   say "Hang it to dry in the sun and it'll keep its colour for good."
   end
+
+
+# The photo studio's corner (plan 43 · LF5): a backdrop, a Pokémon beside you, Seals for stickers and a frame; the first visit gives a frame.
+script Photographer
+  speaker "Photographer"
+  if flag FLAG_PHOTO_STUDIO_FRAME_GIVEN goto Welcome
+  say "Oh, a new face! I keep a little studio in this corner: a backdrop, a Pokémon beside you, a few Seals for stickers."
+  say "The first sitting is on the house. Take this frame, a gilt one. It looks lovely on everything."
+  setflag FLAG_PHOTO_STUDIO_FRAME_GIVEN
+  goto Sit
+label Welcome
+  say "Back for another picture? Step onto the stage whenever you're ready."
+label Sit
+  photo studio
+  speaker "Photographer"
+  say "Every print goes into your photo book. Come back any time!"
+  end

@@ -47,5 +47,9 @@
     { "id": "mega_scizorite", "name": "Scizorite", "npcType": "ItemBall", "item": "Scizorite", "x": 55, "y": 25, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_SCIZORITE", "shownBy": "FLAG_KALOS_STONES_GLINT" },
     // Plan 23, Kalos finished: X and Y's Abomasite, which Frost Cavern keeps too
     { "id": "mega_abomasite", "name": "Abomasite", "npcType": "ItemBall", "item": "Abomasite", "x": 12, "y": 12, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_ABOMASITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
-  ]
+  ],
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Glacitadel", 200, 204 ], [ "Borealosaur", 196, 200 ] ]
+  }
 }

@@ -57,6 +57,16 @@
           "Vopsitorul"
         ]
       }
+    },
+    "8,6": {
+      "name": {
+        "en": [
+          "Photographer"
+        ],
+        "text": [
+          "Fotograful"
+        ]
+      }
     }
   },
   "signs": {}

@@ -9537,6 +9537,10 @@
       "note": "first spoken at ever_grande_city_phoebes_room.txt(8)",
       "provisional": true
     },
+    "photographer": {
+      "note": "first spoken at JubilifeBoutique.txt(37)",
+      "provisional": true
+    },
     "piers": {
       "note": "first spoken at Hub_Arena.txt(38)",
       "provisional": true
@@ -11422,6 +11426,7 @@
     "Philibert": "philibert",
     "Philippine": "philippine",
     "Phoebe": "phoebe",
+    "Photographer": "photographer",
     "Piers": "piers",
     "Pikachu": "pikachu",
     "Pilot": "pilot",

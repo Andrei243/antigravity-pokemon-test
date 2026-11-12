@@ -34,5 +34,9 @@
   },
   "signs": {
     "RouteSign": "Route 21\nWest: Victory Road\nEast: the Pokémon Village"
+  },
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Blazemonarch", 190, 194 ], [ "Perfumelle", 194, 198 ] ]
   }
 }

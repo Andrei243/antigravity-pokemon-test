@@ -789,7 +789,7 @@
         "{foe} is visiting the house today."
       ],
       "text": [
-        ""
+        "{foe} este azi în vizită la castel."
       ]
     },
     {
@@ -797,7 +797,7 @@
         "Will you battle {foe}?"
       ],
       "text": [
-        ""
+        "Te lupți cu {foe}?"
       ]
     },
     {
@@ -805,7 +805,7 @@
         "{foe} bows to {player}. The house has seen a fine battle."
       ],
       "text": [
-        ""
+        "{foe} se înclină în fața lui {player}. Casa a văzut o luptă frumoasă."
       ]
     },
     {
@@ -813,7 +813,7 @@
         "{foe} is resting after the battle. They may visit again another day."
       ],
       "text": [
-        ""
+        "{foe} se odihnește după luptă. Poate vine din nou în vizită altă zi."
       ]
     },
     {
@@ -821,7 +821,7 @@
         "{foe} nods and goes back to the tea."
       ],
       "text": [
-        ""
+        "{foe} dă din cap și se întoarce la ceai."
       ]
     },
     {
@@ -829,7 +829,7 @@
         "The house's staff see to {player}'s Pokémon. Nobody leaves the Château hurt."
       ],
       "text": [
-        ""
+        "Personalul casei are grijă de Pokémonii lui {player}. Nimeni nu pleacă rănit de la Castel."
       ]
     }
   ],

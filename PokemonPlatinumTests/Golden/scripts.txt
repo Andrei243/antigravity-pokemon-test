@@ -5464,6 +5464,14 @@ way -
   Dyer> A garment of yours, a berry and a little money, and I'll dye it any colour on my shelf.
   Dyer> Hang it to dry in the sun and it'll keep its colour for good.
   * open Wardrobe dye:jubilife
+=== JubilifeBoutique.Photographer
+from Photographer at 8,6 of JubilifeBoutique
+way -
+  Photographer> Oh, a new face! I keep a little studio in this corner: a backdrop, a Pokémon beside you, a few Seals for stickers.
+  Photographer> The first sitting is on the house. Take this frame, a gilt one. It looks lovely on everything.
+  Photographer> Every print goes into your photo book. Come back any time!
+  * open PhotoStudio
+  + FLAG_PHOTO_STUDIO_FRAME_GIVEN
 === JubilifeBoutique.Stylist
 from Stylist at 1,4 of JubilifeBoutique
 way -

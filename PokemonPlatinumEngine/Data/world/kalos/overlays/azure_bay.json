@@ -31,5 +31,11 @@
   // Plan 23, Kalos finished: X and Y's Ampharosite on the bay's shore, once the Mega Ring is upgraded, at the stones' hour
   "npcs": [
     { "id": "mega_ampharosite", "name": "Ampharosite", "npcType": "ItemBall", "item": "Ampharosite", "x": 449, "y": 447, "facing": "Down", "hiddenBy": "FLAG_KALOS_ITEM_MEGA_AMPHAROSITE", "shownBy": "FLAG_KALOS_STONES_GLINT" }
-  ]
+  ],
+  // Plan 03 · D15, design B: Kalos's batch of species of ours, met after Kalos's Hall of Fame at their own levels
+  "ours": {
+    "land": [ [ "Perfumelle", 194, 198 ], [ "Coronafrill", 194, 198 ] ],
+    "surf": [ [ "Mesmerquid", 194, 198 ] ],
+    "superRod": [ [ "Salvoclaw", 196, 200 ] ]
+  }
 }
