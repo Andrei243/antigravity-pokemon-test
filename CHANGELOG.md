@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Ultrawide (21:9, 32:9) and 4:3 screens are filled instead of shown in black bars: the field, battles and the title show more of the scene to the sides (or above and below), with the menus where they always were. A new RESOLUTION option offers your monitor's own sizes, for the window or, in full screen, for the 3D scenes; the game finds your monitor's resolution as it starts and as it goes full screen.
 - Galar's gym challenge goes on to its third badge. Out of Turffield, Hop is waiting on Route 5 for a battle, and the route runs on to Hulbury, a harbour town with a lighthouse, where Nessa's floodgates stand between you and the Water Badge. Galar Mine No. 2 leads back under the hills to Motostoke, with Bede halfway along it and Team Yell near the end, and Marnie waits for you by the city's east wall before Kabu's course and the Fire Badge.
 - After Kalos's Hall of Fame, the twenty-four species of our own that grow from Kalos's Pokémon can be met in its late places: Routes 18 to 21, the Pokémon Village, Frost Cavern, the Lost Hotel, Victory Road, Terminus Cave's depths, the Unknown Dungeon and Azure Bay's grass, and on the water and the Super Rod in Azure Bay, Kiloude City, Victory Road and the Pokémon Village.
 - Kalos's Gym Leaders, Elite Four and Diantha now open their battles on bands of their own colours, and the World Tournament has two Kalos events (Kalos Leaders and Kalos's League); Diantha joins the World Champions.

@@ -136,6 +136,15 @@
       "value": "{width} × {height}",
       "help": "Mărimea ferestrei jocului când nu e pe tot ecranul."
     },
+    "resolution": {
+      "label": "Rezoluție",
+      "value": "{width} × {height}",
+      "native": "Nativă ({width} × {height})",
+      "help": {
+        "window": "Mărimea ferestrei, în forma monitorului tău ({ratio}).",
+        "fullscreen": "Câți pixeli au scenele 3D pe tot ecranul. Cea nativă e cea mai clară; una mai mică e mai rapidă."
+      }
+    },
     "fullscreen": {
       "label": "Ecran complet",
       "help": "Umple tot ecranul (și cu F11)."

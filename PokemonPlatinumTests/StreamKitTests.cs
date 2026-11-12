@@ -283,8 +283,8 @@ public class StreamKitTests
     {
         var rows = Enum.GetValues<OptionRow>();
         // (FRIEND AS PARTNER, plan 13 · V20, stands between them and HELP)
-        Assert.Equal(OptionRow.StreamFeed, rows[Array.IndexOf(rows, OptionRow.Help) - 6]);
-        Assert.Equal(OptionRow.StreamSafe, rows[Array.IndexOf(rows, OptionRow.Help) - 5]);
+        Assert.Equal(OptionRow.StreamFeed, rows[Array.IndexOf(rows, OptionRow.Help) - 7]);
+        Assert.Equal(OptionRow.StreamSafe, rows[Array.IndexOf(rows, OptionRow.Help) - 6]);
         var fresh = new GameSettings();
         Assert.Equal(StreamFeedMode.Off, fresh.StreamFeed);
         Assert.False(fresh.StreamSafe);

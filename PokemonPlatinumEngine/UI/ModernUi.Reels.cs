@@ -119,7 +119,7 @@ internal static partial class ModernUi
             int px = m.PixelOf(reel) + m.ShockOf(reel);
             float shift = (px % ReelMachine.SymbolHeight) / (float)ReelMachine.SymbolHeight;
             int top = ReelMachine.SymbolsPerReel - px / ReelMachine.SymbolHeight;
-            Raylib.BeginScissorMode((int)(column.X * Core.GameEngine.RenderScale), (int)(column.Y * Core.GameEngine.RenderScale),
+            PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)(column.X * Core.GameEngine.RenderScale), (int)(column.Y * Core.GameEngine.RenderScale),
                 (int)(column.Width * Core.GameEngine.RenderScale), (int)(column.Height * Core.GameEngine.RenderScale));
             for (int k = 0; k <= 4; k++)
             {
@@ -219,7 +219,7 @@ internal static partial class ModernUi
                     // The tape of six numbers, twenty pixels each, turning down
                     float h = face.Height / 3f, s2 = (m.ReelTimePixel % 20) / 20f;
                     int topNum = 6 - m.ReelTimePixel / 20;
-                    Raylib.BeginScissorMode((int)(face.X * Core.GameEngine.RenderScale), (int)(face.Y * Core.GameEngine.RenderScale),
+                    PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)(face.X * Core.GameEngine.RenderScale), (int)(face.Y * Core.GameEngine.RenderScale),
                         (int)(face.Width * Core.GameEngine.RenderScale), (int)(face.Height * Core.GameEngine.RenderScale));
                     for (int k = 0; k <= 4; k++)
                     {

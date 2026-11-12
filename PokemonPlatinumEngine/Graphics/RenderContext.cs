@@ -12,8 +12,32 @@ namespace PokemonPlatinumEngine.Graphics;
 /// </summary>
 public sealed class RenderContext
 {
-    public int Width { get; }
-    public int Height { get; }
+    /// <summary>The canvas's width in layout units (1920 on a 16:9 picture): every target the scene uses takes its shape.</summary>
+    public int Width { get; private set; }
+
+    /// <summary>The canvas's height in layout units (1080 on a 16:9 picture).</summary>
+    public int Height { get; private set; }
+
+    /// <summary>
+    /// The picture's canvas, in layout units (rulings, "Other shapes of screen, and the resolution"): the scene's
+    /// targets are made again at its shape once it changes, as a preset's change makes them; the shaders stay.
+    /// </summary>
+    public void SetCanvas(int width, int height)
+    {
+        if (width == Width && height == Height) return;
+        UnloadTargets();
+        Width = width;
+        Height = height;
+    }
+
+    /// <summary>
+    /// The most of the preset's width and height the scene is drawn at for the full-screen RESOLUTION (rulings, "Other
+    /// shapes of screen, and the resolution"): 1 at NATIVE, and the smaller with <see cref="ResolutionStep"/> wins.
+    /// </summary>
+    public float ResolutionCap { get; set; } = 1f;
+
+    /// <summary>The share of the target the scene is drawn into: dynamic resolution's step or the resolution's cap, whichever is smaller.</summary>
+    private float Share => MathF.Min(ResolutionStep, ResolutionCap);
 
     internal FieldShaders Shaders { get; } = new();
     internal ShadowMap Shadows { get; } = new();
@@ -40,6 +64,12 @@ public sealed class RenderContext
     /// read once per field texel by the water program. Made only on a preset that reflects (<see cref="QualityProfile.Reflections"/>).
     /// </summary>
     internal RenderTexture2D Mirror { get; private set; }
+
+    /// <summary>The mirror's size: <see cref="Reflections.TargetHeight"/> tall in the canvas's shape (1920×1080 on 16:9).</summary>
+    internal int MirrorWidth => (int)((long)Reflections.TargetHeight * Width / Height);
+
+    /// <inheritdoc cref="MirrorWidth"/>
+    internal int MirrorHeight => Reflections.TargetHeight;
 
     /// <summary>Whether <see cref="Mirror"/> is there: the preset reflects and the targets are loaded.</summary>
     internal bool HasMirror => targetsLoaded && Quality.Reflections && Mirror.Id != 0;
@@ -69,10 +99,10 @@ public sealed class RenderContext
     public float ResolutionStep { get; set; } = 1f;
 
     /// <summary>The part of the scene target the scene is drawn into, in pixels: the whole target at a step of 1.</summary>
-    public int PartWidth => ResolutionStep >= 1f ? Target.Texture.Width : Math.Max(1, (int)(Target.Texture.Width * ResolutionStep));
+    public int PartWidth => Share >= 1f ? Target.Texture.Width : Math.Max(1, (int)(Target.Texture.Width * Share));
 
     /// <inheritdoc cref="PartWidth"/>
-    public int PartHeight => ResolutionStep >= 1f ? Target.Texture.Height : Math.Max(1, (int)(Target.Texture.Height * ResolutionStep));
+    public int PartHeight => Share >= 1f ? Target.Texture.Height : Math.Max(1, (int)(Target.Texture.Height * Share));
 
     /// <summary>The part's share of the target, across and down: what the post passes scale their reading by.</summary>
     private Vector2 Part => new((float)PartWidth / Target.Texture.Width, (float)PartHeight / Target.Texture.Height);
@@ -85,7 +115,7 @@ public sealed class RenderContext
     internal void BeginScene()
     {
         Raylib.BeginTextureMode(Target);
-        if (ResolutionStep >= 1f) return;
+        if (Share >= 1f) return;
         Rlgl.Viewport(0, 0, PartWidth, PartHeight);
         Rlgl.MatrixMode(MatrixMode.Projection);
         Rlgl.LoadIdentity();
@@ -143,7 +173,8 @@ public sealed class RenderContext
         if (Quality.Reflections)
         {
             // Read in whole texels of the field, so it is never filtered
-            var mirror = Gpu.Target(Reflections.TargetWidth, Reflections.TargetHeight, "post");
+            // (The canvas's shape at 1080 tall: 1920×1080 on a 16:9 picture)
+            var mirror = Gpu.Target(MirrorWidth, MirrorHeight, "post");
             Raylib.SetTextureFilter(mirror.Texture, TextureFilter.Point);
             Raylib.SetTextureWrap(mirror.Texture, TextureWrap.Clamp);
             Mirror = mirror;
@@ -341,10 +372,10 @@ public sealed class RenderContext
     internal RenderTexture2D SplitTarget(bool foe) => foe ? splitFoe : splitOwn;
 
     /// <summary>A half's target's part (dynamic resolution's step, as the scene's): pixels across and down.</summary>
-    internal int SplitPartWidth => !HasSplit ? 0 : ResolutionStep >= 1f ? splitFoe.Texture.Width : Math.Max(1, (int)(splitFoe.Texture.Width * ResolutionStep));
+    internal int SplitPartWidth => !HasSplit ? 0 : Share >= 1f ? splitFoe.Texture.Width : Math.Max(1, (int)(splitFoe.Texture.Width * Share));
 
     /// <inheritdoc cref="SplitPartWidth"/>
-    internal int SplitPartHeight => !HasSplit ? 0 : ResolutionStep >= 1f ? splitFoe.Texture.Height : Math.Max(1, (int)(splitFoe.Texture.Height * ResolutionStep));
+    internal int SplitPartHeight => !HasSplit ? 0 : Share >= 1f ? splitFoe.Texture.Height : Math.Max(1, (int)(splitFoe.Texture.Height * Share));
 
     /// <summary>
     /// Makes the split's two targets, each the scene target's shape at most 1920×1080, with a depth texture as the
