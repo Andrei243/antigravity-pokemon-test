@@ -55,6 +55,42 @@ public class DifficultyRulesTests
     }
 
     [Fact]
+    public void BlackTwosClassesWithANameAreChiefs()
+    {
+        foreach (string chief in new[] { "Leader Cheren", "Elite Four Shauntal" })
+            Assert.Equal(DifficultyRules.Tier.Chief, DifficultyRules.TierOf(chief));
+        Assert.Equal(DifficultyRules.Tier.Everyone, DifficultyRules.TierOf("Leaderless"));
+    }
+
+    [Fact]
+    public void UnovasLeadersFourAndIrisMeetTheGamesOwnChallengeTeams()
+    {
+        Assert.Equal("unova_leader_cheren_2", DifficultyRules.ChallengeTeamOf("unova_leader_cheren"));
+        Assert.Equal("unova_elite_four_shauntal_3", DifficultyRules.ChallengeTeamOf("unova_elite_four_shauntal"));
+        Assert.Equal("unova_elite_four_shauntal_4", DifficultyRules.ChallengeTeamOf("unova_elite_four_shauntal_2"));
+        Assert.Equal("unova_champion_iris_3", DifficultyRules.ChallengeTeamOf("unova_champion_iris"));
+        Assert.Equal("unova_champion_iris_4", DifficultyRules.ChallengeTeamOf("unova_champion_iris_2"));
+        foreach (string none in new[] { "unova_leader_cheren_2", "unova_leader_cheren_rematch", "unova_elite_four_shauntal_3", "leader_roark", "unova_cheren" })
+            Assert.Null(DifficultyRules.ChallengeTeamOf(none));
+
+        var cheren = Made("unova_leader_cheren");
+        Assert.Same(cheren, DifficultyRules.InChallenge(cheren, RunRules.Normal));
+        var hard = DifficultyRules.InChallenge(cheren, Challenge);
+        // Black 2's Challenge Mode: a Pidove more, the trainer still Cheren of the same id, the map's team untouched
+        Assert.Equal(new[] { "Patrat 11", "Pidove 11", "Lillipup 13" }, Levels(hard));
+        Assert.Equal("unova_leader_cheren", hard.Id);
+        Assert.True(hard.ChallengeTeam);
+        Assert.Equal(2, cheren.Party.Count);
+        // Prepare then raises it as a chief and gives it no member more from the rematch
+        var met = DifficultyRules.Prepare(hard, Challenge);
+        Assert.Equal(3, met.Party.Count);
+        Assert.All(met.Party.Members.Zip(hard.Party.Members), pair => Assert.Equal(pair.Second.Level + 4, pair.First.Level));
+
+        var shauntal = DifficultyRules.InChallenge(Made("unova_elite_four_shauntal"), Challenge);
+        Assert.Contains("Banette 56", Levels(shauntal));
+    }
+
+    [Fact]
     public void RoarkUnderChallengeIsRaisedHasAFourthPokemonAndHoldsItems()
     {
         var roark = Made("leader_roark");

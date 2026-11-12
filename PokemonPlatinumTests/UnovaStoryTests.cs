@@ -3381,4 +3381,55 @@ public class UnovaStoryTests
         Assert.Equal(1, Climb(lost).Frontier.BattlePoints);
         Assert.Equal(1, lost.Story.Var(BlackTower.Vars.Best));
     }
+
+    // ---- Plan 22 · U12 (2026-11-12): Route 23's holes and Striaton's three brothers ------------------------------------------
+
+    [Theory]
+    [InlineData(577, 84, "FillNorth", "FLAG_UNOVA_ROUTE_23_HOLE_NORTH", "11")]
+    [InlineData(587, 84, "FillBend", "FLAG_UNOVA_ROUTE_23_HOLE_BEND", "10")]
+    [InlineData(585, 85, "FillLedge", "FLAG_UNOVA_ROUTE_23_HOLE_LEDGE", "14")]
+    [InlineData(580, 92, "FillWest", "FLAG_UNOVA_ROUTE_23_HOLE_WEST", "13")]
+    [InlineData(588, 92, "FillEast", "FLAG_UNOVA_ROUTE_23_HOLE_EAST", "15")]
+    [InlineData(598, 94, "FillFar", "FLAG_UNOVA_ROUTE_23_HOLE_FAR", "12")]
+    public void EachOfRoute23sHolesIsFilledByABoulderForGood(int x, int y, string script, string flag, string boulderKey)
+    {
+        var game = PastTheChasm();
+        game.Arrive("Unova", 584, 100);
+        // the hole's four tiles are a wall and pits, each running the hole's own script
+        foreach (var (dx, dy) in new[] { (0, 0), (1, 0), (0, 1), (1, 1) })
+        {
+            Assert.True(game.Map.IsSolid(x + dx, y + dy));
+            Assert.Equal(flag, game.Map.FilledHoles[(x + dx, y + dy)]);
+            Assert.Equal(script, game.Map.BoulderPits[(x + dx, y + dy)]);
+        }
+        var boulder = game.Present(boulderKey, "unova_route_23")!;
+        Assert.Equal(PropType.StrengthBoulder, boulder.Obstacle);
+        var fall = game.Play(Scripts.Find(script, "unova_route_23")!, boulder);
+        Assert.Contains(fall.Transcript, l => l.Text.Contains("filled it in"));
+        Assert.True(game.Story.Has(flag));
+        Assert.False(game.Map.IsSolid(x, y));
+        Assert.Null(game.Present(boulderKey, "unova_route_23"));
+        game.Arrive("Unova", 584, 100);
+        Assert.False(game.Map.IsSolid(x + 1, y + 1));
+        Assert.Null(game.Present(boulderKey, "unova_route_23"));
+    }
+
+    [Theory]
+    [InlineData("cilan", "unova_cilan", "FLAG_DAILY_UNOVA_STRIATON_CILAN")]
+    [InlineData("chili", "unova_chili", "FLAG_DAILY_UNOVA_STRIATON_CHILI")]
+    [InlineData("cress", "unova_cress", "FLAG_DAILY_UNOVA_STRIATON_CRESS")]
+    public void StriatonsBrothersBattleAChampionOnceADayInTheirRestaurant(string key, string team, string daily)
+    {
+        var game = PastTheChasm();
+        game.Arrive("StriatonCity_Room2", 10, 18);
+        Assert.Null(game.Present(key, "striaton_city_2"));
+        game.Story.Set("UnovaHallOfFame");
+        game.Arrive("StriatonCity_Room2", 10, 18);
+        Assert.NotNull(game.Present(key, "striaton_city_2"));
+        var first = game.Talk(key, "striaton_city_2");
+        Assert.Contains(first.Log, l => l.StartsWith($"battle {team}"));
+        Assert.True(game.Story.Has(daily));
+        var again = game.Talk(key, "striaton_city_2");
+        Assert.DoesNotContain(again.Log, l => l.StartsWith("battle "));
+    }
 }

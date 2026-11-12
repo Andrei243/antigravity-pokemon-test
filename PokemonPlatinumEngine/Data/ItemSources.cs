@@ -230,10 +230,10 @@ public sealed class ItemSources
                     case Op.Charm when i.Name == "give":
                         foreach (string charm in Charms.Table.Regional.Append(Charms.Table.National)) Add(charm, ItemSourceKind.Given, where);
                         break;
-                    // Join Avenue's shops, at every rank (plan 22 · U11)
+                    // Join Avenue's shops, at every level (plan 22 · U11)
                     case Op.JoinAvenue when i.Name == "shop":
-                        for (int rank = 0; rank <= JoinAvenue.TopRank; rank++)
-                            if (JoinAvenue.StockOf(i.Other ?? "", rank) is { } stock) counters.Add(stock);
+                        for (int level = 1; level <= JoinAvenue.TopLevel; level++)
+                            if (JoinAvenue.StockAt(i.Other ?? "", level) is { } stock) counters.Add(stock);
                         break;
                     // Plan 40 · GE11: what a Pokémon handed over holds, and what a person's trade sends with its Pokémon
                     case Op.GivePokemon when !string.IsNullOrEmpty(i.Other):

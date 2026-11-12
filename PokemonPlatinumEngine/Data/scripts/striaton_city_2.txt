@@ -1,0 +1,62 @@
+# Striaton's restaurant (plan 22 · U12, 2026-11-12). docs/scripts.md describes the language; the lines are our own.
+#
+# The three brothers who cook and serve here, once Gym Leaders of the city, come out of the kitchen once Unova's Hall of
+# Fame has been entered (shown by UnovaHallOfFame) and each battles a Champion once a day with Black 2's own teams of the
+# tournament's hall (unova_cilan, unova_chili, unova_cress), beaten for the day by FLAG_DAILY_UNOVA_STRIATON_<WHO>.
+
+
+script Cilan
+  face self player
+  speaker "Cilan"
+  if flag FLAG_DAILY_UNOVA_STRIATON_CILAN goto Served
+  ask "Welcome! A Champion at our table... Would you care for a battle before the main course? I'll season it with Grass types."
+  if no goto Later
+  say "Splendid. Let me bring out the flavours of my partners!"
+  battle self as "unova_cilan"
+  say "A perfectly balanced battle. Do come back tomorrow for another course."
+  setflag FLAG_DAILY_UNOVA_STRIATON_CILAN
+  end
+label Later
+  say "Of course. The best dishes are never rushed."
+  end
+label Served
+  say "That battle is still on my mind. Fresh again tomorrow, I promise!"
+  end
+
+
+script Chili
+  face self player
+  speaker "Chili"
+  if flag FLAG_DAILY_UNOVA_STRIATON_CHILI goto Served
+  ask "Hey, Champion! The kitchen's hot and so are my Fire types. Battle me?"
+  if no goto Later
+  say "All right! Turn up the heat!"
+  battle self as "unova_chili"
+  say "Phew, you burned me good! Come back tomorrow and I'll be fired up again!"
+  setflag FLAG_DAILY_UNOVA_STRIATON_CHILI
+  end
+label Later
+  say "Aw, cooling off? Fine, the stove stays lit for you."
+  end
+label Served
+  say "I'm still smoking from earlier. Tomorrow, I'll be ready!"
+  end
+
+
+script Cress
+  face self player
+  speaker "Cress"
+  if flag FLAG_DAILY_UNOVA_STRIATON_CRESS goto Served
+  ask "Good day. My Water types and I would be pleased to test a Champion. Shall we?"
+  if no goto Later
+  say "Then let us flow into it."
+  battle self as "unova_cress"
+  say "Graceful work. The water will be calm again by tomorrow, should you return."
+  setflag FLAG_DAILY_UNOVA_STRIATON_CRESS
+  end
+label Later
+  say "Another time, then. Enjoy your meal."
+  end
+label Served
+  say "One battle a day keeps the taste fresh. Until tomorrow."
+  end

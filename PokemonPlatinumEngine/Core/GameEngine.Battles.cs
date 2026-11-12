@@ -547,6 +547,13 @@ public partial class GameEngine
         // nobody in particular (plan 11 · C1), whose rig is built behind the fade
         trainer.Look = trainerNpc.NpcType;
         if (secondNpc?.TrainerData is { } carried) carried.Look = secondNpc.NpcType;
+        // Under Challenge a trainer the game gave a Challenge Mode team of its own meets the player with it (plan 22:
+        // Black 2's Leaders, Four and Iris), on a copy, before anything else is laid on it
+        if (!firstBattle && terms?.Alone == null)
+        {
+            trainers = trainers.Select(t => DifficultyRules.InChallenge(t, flow.Run)).ToList();
+            trainer = trainers[0];
+        }
         // A Remix run's trainers bring Remix's teams, on copies, before anything else is laid on them (plan 13 · V15):
         // the randomiser maps what Remix wrote and the difficulty raises it. The rival's first battle too; a Master
         // Trainer's one species stays

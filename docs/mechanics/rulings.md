@@ -3499,12 +3499,13 @@ for the order alone) on variables of ours. What differs from Black 2, and why:
   reach counts its overlay's exits as ways (`WaysIntoRoom`), so the floors the rails led to are not walls. The door back to the hall
   is shut behind the challenger in every room; once its master is beaten (`VAR_UNOVA_LEAGUE_SHAUNTAL`, `_GRIMSLEY`, `_MARSHAL`,
   `_CAITLIN`) Black 2's own light in the floor's corner carries the player back to the hall. The four battle when spoken to, with
-  Black 2's first teams and, once Unova's Hall of Fame has been entered, the second round's (`_2`); Black 2's Challenge Mode teams
-  (`_3`, `_4`) are plan 13's. The hall has no way back out to the plaza, as Black 2's door is shut; the plaza's arrival puts the four
+  Black 2's first teams and, once Unova's Hall of Fame has been entered, the second round's (`_2`); under Challenge they meet the
+  player with Black 2's Challenge Mode teams (`_3` for the first round, `_4` for the second; "Challenge Mode's teams", below). The hall has no way back out to the plaza, as Black 2's door is shut; the plaza's arrival puts the four
   and the Champion back (every challenge starts there, and a battle lost wakes the player in the plaza's Pokémon Center).
 - **The statue** in the hall's well is read from the floor south of it (Black 2's own background event stands in the well) and,
-  with all four beaten, sinks and carries the challenger down to the great hall below (`pokemon_league_3`), over a fade, where
-  Black 2 plays a lift. The statue there takes them back up if they ask.
+  with all four beaten, sinks and carries the challenger down to the great hall below (`pokemon_league_3`): since 2026-11-12 the
+  lift is played on the statue before the warp's fade (the bars, the camera on the well, light gathering round it, the
+  challenger shaken as it starts to sink, the lift's own sound). The statue there takes them back up if they ask.
 - **Iris** comes down from her dais as the challenger reaches the head of the walk (our trigger) and battles with Black 2's team
   (`unova_champion_iris`, after the Hall of Fame `_2`). Black 2's walk to the Hall of Fame past the Elite Four (`pokemon_league_4`)
   is not played: Iris leads the new Champion straight there over a fade, as Hoenn's Wallace does.
@@ -3867,8 +3868,8 @@ link (plan 06's decision 7), ours grows by days. Every number is ours (`Models/J
 ## Join Avenue's other shops and its visitors (2026-11-03, plan 22 · U11's leftovers)
 
 Black 2's avenue opens the shops of the passers-by who settle there, each with a level of its own; ours has five more shops
-in the street's empty bays, each opening at a rank of the avenue and doing more the higher that rank goes, which stands for
-Black 2's levels of a shop. Every number is ours (`Models/JoinAvenue.cs`), and none of it is a draw but the raffle.
+in the street's empty bays, each opened by a visitor's invitation (below, 2026-11-12) and doing more the higher its own level
+goes, which stands for Black 2's levels of a shop. Every number is ours (`Models/JoinAvenue.cs`), and none of it is a draw but the raffle.
 
 - **The raffle** (from rank 1, the north-west bay): one free ticket a day (`FLAG_DAILY_UNOVA_JOIN_AVENUE_RAFFLE`), drawn on
   the game's own chance, 0 to 99, moved up three a rank: a Potion from 0, a Great Ball from 35, a Super Potion from 60, an
@@ -3887,7 +3888,58 @@ Black 2's levels of a shop. Every number is ours (`Models/JoinAvenue.cs`), and n
   sixteen people of ours, each a name and a greeting (`ui.json`'s `joinAvenue.visitor.N`), of whom three stand in the
   street once the player manages the avenue. Which three is the avenue's visitors so far (`JoinAvenue.VisitorAt`), so they
   change with each day's visitors and never by chance; they only greet. Black 2's visitors who can be invited to open a
-  shop, its shop levels by money spent and its Join Avenue links are not built.
+  shop and its shop levels by money spent are built (below); its Join Avenue links are not.
+- **Shops by invitation and shop levels** (2026-11-12, plan 22 · U11's last pieces; the paragraphs above keep each shop's
+  first numbers, which a shop's level now gives in place of the rank). Black 2's passers-by settle in the avenue and open
+  shops of their own, and each shop grows with what its customers spend. Ours: each of the sixteen visitors would open one
+  of the five shops of the empty bays (the raffle, the dojo, the salon, the nursery, the antique shop; `JoinAvenue.OfferOf`,
+  a table of ours in which no visitor offers the shop they speak of as a customer), and, spoken to, asks the manager whether
+  they may; a yes opens it (`FLAG_UNOVA_JOIN_AVENUE_<SHOP>_OPEN`, set by the visitor's script) and brings its keeper behind
+  the counter, whose bay's sign read "to let" until then. The avenue's rank is the gate on how many: room for one at rank 1
+  and one more a rank, all five from rank 5 (`RoomAt`); a visitor whose shop is open only greets, and one with no room says
+  so. Every shop keeps the money spent in it (`VAR_UNOVA_JOIN_AVENUE_SPENT_<SHOP>`, what the money in hand fell by between
+  coming to the shop and leaving it; a sale adds nothing) and rises a level, 1 to 5: a goods shop at $5,000, $15,000,
+  $30,000 and $60,000, the dojo and the salon at $2,000, $5,000, $10,000 and $20,000. The market sells its second list from
+  level 2 and its third from 4; the flowers and the café their second from 2; the antique shop its second from 3. The dojo
+  gives 4 effort a level (20 at 5), and the salon 10 friendship and five more a level (30 at 5). The raffle, whose ticket is
+  free, rises with what the whole avenue spends ($10,000, $30,000, $60,000, $100,000), each level moving the draw up six.
+  The nursery, also free, still warms by the avenue's rank, and the shop girls' shops still open at ranks 7 and 9. A save
+  whose avenue was managed before invitations keeps, on its next coming, the shops its rank had opened and what the rank
+  gave each (as spending of the level that gives as much; `FLAG_UNOVA_JOIN_AVENUE_INVITATIONS`). Every number is ours,
+  nothing is drawn, and nothing is saved but the story's own flags and variables. Nothing on screen shows a shop's level yet.
+
+## The last of Unova (2026-11-12, plan 22's leftovers)
+
+- **Challenge Mode's teams.** Black 2 gives its Gym Leaders, Elite Four and Champion teams of their own for Challenge Mode,
+  which the import holds: a Leader's `unova_leader_<who>_2`, an Elite Four's `_3` (the first round) and `_4` (the second),
+  Iris's `_3` and `_4`. Under the run's Challenge (plan 13 · V2) a battle with the first team or the second round's is fought
+  with the game's own Challenge team instead (`DifficultyRules.ChallengeTeamOf`, `InChallenge`), on a copy that keeps the
+  trainer's id, name, look and lines, so beating it beats them; it is laid before a region's levels, so a crossed game meets
+  it mapped as it meets the first. Challenge's own rules are then laid on it as on anyone, but it brings its one more itself,
+  so no member is added from the rematch (`Trainer.ChallengeTeam`). Black 2's classes carry the person's name ("Leader
+  Cheren", "Elite Four Shauntal"), which `DifficultyRules.TierOf` had read as nobody in particular: they are chiefs now,
+  our own rematch teams of the eight too. Our own rematch teams have no Challenge teams of the game's and stay as they are.
+- **Route 23's six holes.** Black 2's valley has six holes (the behaviour `StrengthHole`, two tiles by two: 577, 84; 587, 84;
+  585, 85; 580, 92; 588, 92; 598, 94) and six boulders (its objects 10 to 15). Each hole is an overlay `holes` entry with a flag
+  of ours, a wall until a boulder pushed with Strength comes to rest on one of its pits, as Victory Road's are. Each boulder
+  is hidden by the flag of the hole nearest it, which is the one Black 2 lays it beside: a boulder pushed into another hole
+  fills that hole and is back the next time the route is come to until its own hole is filled, so every hole can still be
+  filled. Azelf's place and the two balls by the river stay where the walk finds them.
+- **The League's hall on its plaza.** Black 2 draws the hall into the plaza's own model; a prop of ours, `c09_league`,
+  stands over the plaza's blocked `Building` tiles round the hall's door (x 15 to 44, z 23 to 45 of the plaza's 64 by 64, the
+  door at 31, 45), written into the plaza's first quarter, and the catalogue builds it as Unova's League (style guide,
+  "Kinds of building"). The importer writes the same prop (`Bw2Cover.LeagueBox`), but was not run on it: the pinned
+  decompilation is not in this machine's cache, so the chunk was written by hand to what the importer writes.
+- **Striaton's three brothers.** Black 2's restaurant shows the brothers only in scenes of workers the reader leaves out.
+  Ours come out of the kitchen once Unova's Hall of Fame is entered and stand before the stage, each battling a Champion
+  once a day with Black 2's own tournament teams (`unova_cilan`, `unova_chili`, `unova_cress`;
+  `FLAG_DAILY_UNOVA_STRIATON_<WHO>`), in looks of ours: the same waiter's shirt and waistcoat, told apart by their hair.
+- **The named cast.** The user's go-ahead of 2026-11-12: Drayden, Marlon, Benga and the three brothers are designed in the
+  kit's own style (style guide, "Characters"), nothing of the games' art, under the looks their people already wore
+  (`opelucid_leader`, `humilau_leader`, `tower_boss`, `cafe_brother_a` to `_c`); the rest of Unova's named cast, our own takes
+  since their chapters, are kept as their designs.
+- **Not built, and why.** Black 2's walk to the Hall of Fame past the Four (`pokemon_league_4`) is a map the import never read
+  and the pinned source is not in this machine's cache, so Iris still leads the new Champion straight there over a fade.
 
 ## The Battle Subway's riders, prints and counter (2026-11-03, plan 22 · U11's leftovers)
 
@@ -11138,7 +11190,8 @@ its session adds rows or is named as owing them: Kalos by plan 23 · Z4, Alola b
   scale (Cheren: Patrat 68, Pidove 68, Lillipup 70; Marlon: Wailord 68, Carracosta 68, Mantine 68, Jellicent 70); Unova's
   level mapping then lifts them as it lifts every Unova trainer, and `RematchLevels` once a later region is finished. Black 2's
   moves are kept as the game gave them, not held to `Legality` (whose data is older: Venoshock, Struggle Bug and the like);
-  no move was changed. The Elite Four and Iris already fought their own `_2` to `_4` after Unova's Hall of Fame.
+  no move was changed. The Elite Four and Iris fight their own `_2` after Unova's Hall of Fame, and their `_3` and `_4` under
+  Challenge ("Challenge Mode's teams", below).
 - **Johto's League second round.** The decompilation cache holds HeartGold's data (its trainer numbers: `TRAINER_ELITE_FOUR_WILL_WILL_2`
   702 to `KAREN_2` 705, `TRAINER_CHAMPION_LANCE_2` 701 and `_3` 733) and not its scripts, so the rule that picks the second
   teams could not be read. Ours: once Johto's Hall of Fame is entered (`JohtoHallOfFame`) each of Will, Koga, Bruno and

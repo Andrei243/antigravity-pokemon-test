@@ -684,6 +684,10 @@ public class ScriptTests
           joinavenue nursery
           joinavenue raffle
           joinavenue visitor 2
+          joinavenue invite 1
+          joinavenue till
+          joinavenue tally dojo
+          joinavenue level raffle
           trainerhill begin expert
           trainerhill active
           trainerhill mode

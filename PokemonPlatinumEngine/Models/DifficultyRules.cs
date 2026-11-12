@@ -34,10 +34,51 @@ public static class DifficultyRules
     public static Tier TierOf(string trainerClass) => trainerClass switch
     {
         "Leader" or "Elite Four" or "Champion" => Tier.Chief,
+        // Black 2's classes carry the person's name (plan 22: "Leader Cheren", "Elite Four Shauntal")
+        _ when trainerClass.StartsWith("Leader ", StringComparison.Ordinal)
+            || trainerClass.StartsWith("Elite Four ", StringComparison.Ordinal) => Tier.Chief,
         "Commander" or "Galactic Boss" => Tier.Boss,
         _ when TrainerDatabase.IsRival(trainerClass) => Tier.Boss,
         _ => Tier.Everyone
     };
+
+    /// <summary>
+    /// The game's own Challenge Mode team of a trainer, where the game had one (plan 22; Black 2's Challenge Mode): a Gym
+    /// Leader's first team <c>unova_leader_&lt;who&gt;</c> is met as <c>_2</c>, an Elite Four's first <c>unova_elite_four_&lt;who&gt;</c>
+    /// as <c>_3</c> and its second round's <c>_2</c> as <c>_4</c>, and Iris's <c>unova_champion_iris</c> and <c>_2</c> as
+    /// <c>_3</c> and <c>_4</c>. Null for every other team (our own rematch teams included).
+    /// </summary>
+    public static string? ChallengeTeamOf(string id)
+    {
+        if (string.IsNullOrEmpty(id) || !id.StartsWith("unova_", StringComparison.Ordinal)) return null;
+        string? swap = null;
+        if (id.StartsWith("unova_leader_", StringComparison.Ordinal) && id.IndexOf('_', "unova_leader_".Length) < 0)
+            swap = id + "_2";
+        else if (id.StartsWith("unova_elite_four_", StringComparison.Ordinal) || id.StartsWith("unova_champion_", StringComparison.Ordinal))
+        {
+            string tail = id[(id.StartsWith("unova_elite_four_", StringComparison.Ordinal) ? "unova_elite_four_".Length : "unova_champion_".Length)..];
+            if (!tail.Contains('_')) swap = id + "_3";
+            else if (tail.EndsWith("_2", StringComparison.Ordinal) && tail.IndexOf('_') == tail.Length - 2) swap = id[..^2] + "_4";
+        }
+        return swap != null && TrainerDatabase.Get(swap) != null ? swap : null;
+    }
+
+    /// <summary>
+    /// The trainer under <paramref name="rules"/>' Challenge with the game's own Challenge Mode team in place of its own
+    /// (<see cref="ChallengeTeamOf"/>): a copy that keeps the id, name, class, look and lines, so beating it beats the
+    /// trainer; the trainer itself under any other difficulty or with no such team. Laid before a region's levels are,
+    /// so a crossed game meets it at the region's mapped levels as it meets the first team.
+    /// </summary>
+    public static Trainer InChallenge(Trainer trainer, RunRules? rules)
+    {
+        if (rules?.Difficulty != Difficulty.Challenge || trainer.Remixed || ChallengeTeamOf(trainer.Id) is not { } id
+            || TrainerDatabase.Get(id) is not { } record) return trainer;
+        var copy = trainer.WithParty(TrainerDatabase.PartyOf(record));
+        copy.Items = record.Items.ToList();
+        copy.Ai = AiFlagNames.Parse(record.Ai);
+        copy.ChallengeTeam = true;
+        return copy;
+    }
 
     /// <summary>The levels a tier is raised by under Challenge and lowered by under Easy.</summary>
     public static int LevelsOf(Tier tier) => tier switch
@@ -129,7 +170,8 @@ public static class DifficultyRules
             copy.PrizeMoney = PrizeMoney(copy.PrizeMoney, difficulty);
             return copy;
         }
-        var extra = tier == Tier.Chief ? AddFromTheRematch(copy, trainer.Id) : null;
+        // The game's own Challenge Mode team brings its one more itself (InChallenge)
+        var extra = tier == Tier.Chief && !trainer.ChallengeTeam ? AddFromTheRematch(copy, trainer.Id) : null;
         // In a crossed region the one more takes the stage its level allows, as the rest of the team has (plan 18 · W4b-2)
         if (crossed && extra != null) OursGrowth.GrowTrainers(extra, Ruleset.Platinum.LevelCap);
         if (tier != Tier.Everyone) GiveItems(copy, extra);

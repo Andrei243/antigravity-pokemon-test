@@ -630,7 +630,9 @@ public class UnovaTests
                 // and the old roads from the Skyarrow Bridge to Nuvema Town since plan 22 · U10, part f
                 || m.Name is "c1_build" or "c1_rest" or "c1_school" or "c2_build" or "c2_cafe" or "c2_museum" or "t1_house" or "t1_labo" or "t2_house01" or "t2_build01" or "sodateya"
                 // and Black City and Route 15 since plan 22 · U10, part g
-                || m.Name is "bc_build_s1" or "bc_house_s1" or "bc_shop_s1" or "bc_mugen_s1" or "palpark")
+                || m.Name is "bc_build_s1" or "bc_house_s1" or "bc_shop_s1" or "bc_mugen_s1" or "palpark"
+                // and the League's hall on its plaza since plan 22 · U12's last session
+                || m.Name == "c09_league")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
@@ -731,5 +733,17 @@ public class UnovaTests
         Assert.Contains(bridge.Key.Warps, w => w.TargetMap == "SkyarrowGate_Pinwheel");
         Assert.Contains(MapNamed("SkyarrowGate_Castelia").Warps, w => w.TargetMap == "CasteliaCity" && !w.Shut);
         Assert.Contains(MapNamed("CasteliaCity").Warps, w => w.TargetMap == "SkyarrowGate_Castelia");
+    }
+
+    /// <summary>Plan 22 · U12: the League's hall stands on its plaza as a building of ours, its doors those of the hall.</summary>
+    [Fact]
+    public void TheLeaguesHallStandsOnItsPlazaAsABuildingOfOurs()
+    {
+        var plaza = MapNamed("UnovaPokemonLeague");
+        var hall = Assert.Single(plaza.PlacedBuildings, b => b.Kind == BuildingKind.League && b.X0 <= 31 && b.X1 >= 31 && b.Y1 >= 44);
+        Assert.Equal("c09_league", hall.Model);
+        Assert.Equal("UnovaPokemonLeague_Hall", plaza.GetWarpAt(31, 45)?.TargetMap);
+        // the Pokémon Center's door beside it stays a way in
+        Assert.Equal("UnovaPokemonLeague_PokemonCenter", plaza.GetWarpAt(18, 47)?.TargetMap);
     }
 }

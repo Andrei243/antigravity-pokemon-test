@@ -285,6 +285,9 @@ public static partial class WorldModels
         // League's plaza, the hall's gate and the pad inside it, the Elite Four's lights and the Hall of Fame's monument
         Built("bg_pc", BuildingKind.PokemonCenter, "the Pokémon Center at the foot of Victory Road"),
         Ground("cr_obj", "a mass of rock on Victory Road's summit (the area's blocked tiles hold it)"),
+        // Plan 22 · U12: the League's hall, drawn into the plaza's own model with no prop of its own; a prop of ours stands over
+        // the plaza's blocked tiles round its door (written into the plaza's chunks, Bw2Cover.LeagueProp)
+        Built("c09_league", BuildingKind.League, "the Pokémon League's hall on its plaza, drawn into the plaza's own model (a prop of ours, plan 22 · U12)", Architecture.Plaza, storeys: 3),
         Ground("c09_back", "the mountains and the sky behind the Pokémon League's plaza (no model of its own: the plaza's blocked tiles are its edge)"),
         Ground("c09gate_main", "the gate of the Pokémon League's hall, behind the challenger (the hall's floor ends there)"),
         Ground("outwarp03", "the pad inside the gate of the Pokémon League's hall"),
