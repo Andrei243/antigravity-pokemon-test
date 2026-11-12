@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Once you have entered a region's Hall of Fame, Fly's map offers SOAR: ride your flying Pokémon high over the region's map under the hour's sky, through the clouds, and land at any town whose beacon you fly over, or press back to land at the nearest one.
 - Join Avenue's visitors now ask to open shops in its empty bays: say yes and a raffle, dojo, salon, nursery or antique shop moves in, as many as the avenue's rank has room for. Every shop grows with what you spend there, widening its stock or doing more for your Pokémon.
 - Under Challenge, Unova's Gym Leaders, Elite Four and Iris now bring their own Challenge Mode teams, with an extra Pokémon and better-trained partners.
 - Route 23 has its six holes: push the valley's boulders into them with Strength to cross.

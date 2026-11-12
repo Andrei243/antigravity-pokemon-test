@@ -7334,6 +7334,19 @@
       "noMap": "There is no map of this region to soar over.",
       "hallOfFame": "The skies here open once you have entered this region's Hall of Fame.",
       "noFlier": "No Pokémon on your team can carry you through the sky."
+    },
+    "hint": {
+      "soar": "Soar",
+      "turn": "Turn",
+      "climb": "Climb / dive",
+      "faster": "Faster",
+      "land": "Land"
+    },
+    "place": {
+      "Islet": "Islet of the Day",
+      "Grove": "Grove of the Day",
+      "Hollow": "Hollow of the Day",
+      "Peak": "Peak of the Day"
     }
   }
 }

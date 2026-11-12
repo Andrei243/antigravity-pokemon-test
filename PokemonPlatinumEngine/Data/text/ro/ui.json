@@ -7683,6 +7683,19 @@
       "noMap": "Nu există o hartă a acestei regiuni peste care să zbori.",
       "hallOfFame": "Cerul de aici se deschide după ce intri în Sala Celebrităților a acestei regiuni.",
       "noFlier": "Niciun Pokémon din echipa ta nu te poate purta prin văzduh."
+    },
+    "hint": {
+      "soar": "Zbor",
+      "turn": "Virează",
+      "climb": "Urcă / coboară",
+      "faster": "Mai repede",
+      "land": "Aterizează"
+    },
+    "place": {
+      "Islet": "Insula zilei",
+      "Grove": "Crângul zilei",
+      "Hollow": "Grota zilei",
+      "Peak": "Culmea zilei"
     }
   }
 }

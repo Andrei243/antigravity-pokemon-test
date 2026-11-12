@@ -70,6 +70,8 @@ public sealed class TownMapScreen
         Report = null;
         ReportShown = false;
         scanAsked = false;
+        soarAsked = false;
+        SoarableTab = null;
         Tabs = new[] { state };
         Tab = HomeTab = 0;
         Show(state);
@@ -155,6 +157,37 @@ public sealed class TownMapScreen
     {
         bool asked = scanAsked;
         scanAsked = false;
+        return asked;
+    }
+
+    // ---------------------------------------------------------------- soaring (plan 38 · EX7)
+
+    private bool soarAsked;
+
+    /// <summary>
+    /// Which tabs may be soared over (plan 38 · EX7), as the game tells it as Fly's choice opens: a region whose Hall of
+    /// Fame is set; none before any, and then the item button does nothing in Fly's mode and its hint isn't drawn.
+    /// </summary>
+    public Func<int, bool>? SoarableTab { get; set; }
+
+    /// <summary>Whether SOAR is offered on the tab shown.</summary>
+    public bool CanSoar => Mode == TownMapMode.Fly && SoarableTab?.Invoke(Tab) == true;
+
+    /// <summary>The item button in Fly's mode: SOAR over the region shown, where it may be soared over. Returns whether it was asked.</summary>
+    public bool AskSoar()
+    {
+        if (!IsActive || !CanSoar) return false;
+        soarAsked = true;
+        IsActive = false;
+        AudioManager.PlaySound("select");
+        return true;
+    }
+
+    /// <summary>SOAR was asked for, once.</summary>
+    public bool TakeSoar()
+    {
+        bool asked = soarAsked;
+        soarAsked = false;
         return asked;
     }
 
@@ -344,7 +377,7 @@ public sealed class TownMapScreen
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
         else if (InputManager.IsActionPressed(GameAction.Menu)) ToggleZoom();
-        else if (InputManager.IsActionPressed(GameAction.Item)) ToggleReport();
+        else if (InputManager.IsActionPressed(GameAction.Item)) { if (!AskSoar()) ToggleReport(); }
     }
 
     public void Draw(int sw, int sh)

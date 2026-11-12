@@ -332,6 +332,8 @@ public partial class GameEngine
             // Fly's choice is the map of the region in its own mode (TOWN_MAP_MODE_FLY; plan 01 · M12)
             townMapFromBag = false;
             flow.TownMapScreen.Open(flyChoice.Tabs, flyChoice.Home, TownMapMode.Fly, user);
+            // SOAR over a region whose Hall of Fame is set (plan 38 · EX7)
+            flow.TownMapScreen.SoarableTab = SoarableTab;
             flow.State = GameState.FlyMap;
             return;
         }

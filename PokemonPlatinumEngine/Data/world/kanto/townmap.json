@@ -182,5 +182,12 @@
     { "spawn": 11, "cells": "8,4" },
     { "spawn": 12, "cells": "5,1" },
     { "spawn": 13, "cells": "12,2" }
+  ],
+  "sky": [
+    { "x": 0, "y": 11, "kind": "Islet" },
+    { "x": 5, "y": 0, "kind": "Islet" },
+    { "x": 6, "y": 7, "kind": "Grove" },
+    { "x": 4, "y": 3, "kind": "Hollow" },
+    { "x": 10, "y": 5, "kind": "Peak" }
   ]
 }

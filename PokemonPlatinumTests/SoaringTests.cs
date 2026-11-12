@@ -99,4 +99,85 @@ public class SoaringTests
         Assert.Equal("twinleaf_town", flight.Nearest()!.Town.Area);
         Assert.Null(new Soaring(With()).Nearest());
     }
+
+    private static Pokemon Staraptor => new(PokemonDatabase.Get("Staraptor")!, 40);
+
+    [Fact]
+    public void TheScreenLandsOverABeaconAndSaysNoElsewhere()
+    {
+        var map = With("twinleaf_town", "snowpoint_city");
+        var screen = new PokemonPlatinumEngine.UI.SoarScreen();
+        var flight = new Soaring(map, (5, 5));
+        screen.Open(flight, Staraptor);
+        Assert.True(screen.IsActive);
+        // Over no beacon: A is refused, the flight goes on
+        flight.Place(map.Region.View.X + 0.1f, map.Region.View.Y + 0.1f);
+        screen.Confirm();
+        Assert.True(screen.IsActive);
+        Assert.Null(screen.TakeLanding());
+
+        var snow = Spot(map, "snowpoint_city");
+        flight.Place(snow.Spot.Cells[0].X + 0.5f, snow.Spot.Cells[0].Y + 0.5f);
+        Assert.Equal(snow, screen.Under);
+        screen.Confirm();
+        Assert.False(screen.IsActive);
+        Assert.False(screen.Turned);
+        Assert.Equal(snow, screen.TakeLanding());
+        Assert.Null(screen.TakeLanding());
+    }
+
+    [Fact]
+    public void TheScreensCancelEndsAtTheNearestTownAndItsStepsBankTheFlier()
+    {
+        var map = With("twinleaf_town");
+        var screen = new PokemonPlatinumEngine.UI.SoarScreen();
+        screen.Open(new Soaring(map, (5, 5)), Staraptor);
+        float heading = screen.Flight!.Heading;
+        for (int i = 0; i < 30; i++) screen.Steer(1f, 0f, false, 1f / 30f);
+        Assert.True(screen.Bank > 0.5f);
+        Assert.NotEqual(heading, screen.Flight.Heading);
+        for (int i = 0; i < 60; i++) screen.Steer(0f, 0f, false, 1f / 30f);
+        Assert.True(screen.Bank < 0.1f);
+        screen.Cancel();
+        Assert.True(screen.Turned);
+        Assert.Equal("twinleaf_town", screen.TakeLanding()!.Town.Area);
+    }
+
+    [Fact]
+    public void FlysChoiceOffersSoarOnlyWhereTheGameSaysAndHandsItOverOnce()
+    {
+        var screen = new PokemonPlatinumEngine.UI.TownMapScreen();
+        var map = With("twinleaf_town");
+        screen.Open(map, TownMapMode.Fly, Staraptor);
+        Assert.False(screen.CanSoar);
+        Assert.False(screen.AskSoar());
+        screen.SoarableTab = tab => tab == 0;
+        Assert.True(screen.CanSoar);
+        Assert.True(screen.AskSoar());
+        Assert.False(screen.IsActive);
+        Assert.True(screen.TakeSoar());
+        Assert.False(screen.TakeSoar());
+        // Looking at the map out of the bag offers no soaring, whatever is told
+        screen.Open(map, TownMapMode.Item);
+        screen.SoarableTab = _ => true;
+        Assert.False(screen.CanSoar);
+    }
+
+    [Fact]
+    public void TheSkysCameraRisesWithTheHeightAndTheCloudsAreTheSameForATime()
+    {
+        var flight = new Soaring(With("twinleaf_town"), (10, 10));
+        Assert.Equal(PokemonPlatinumEngine.Graphics.SkyRenderer.PitchLow, PokemonPlatinumEngine.Graphics.SkyRenderer.PitchOf(Soaring.Lowest), 3);
+        Assert.Equal(PokemonPlatinumEngine.Graphics.SkyRenderer.PitchHigh, PokemonPlatinumEngine.Graphics.SkyRenderer.PitchOf(Soaring.Highest), 3);
+        var (eye, target) = PokemonPlatinumEngine.Graphics.SkyRenderer.CameraOf(flight);
+        Assert.True(eye.Y > target.Y);
+        // Facing north, the camera is south of the flier (behind it)
+        Assert.True(eye.Z > PokemonPlatinumEngine.Graphics.SkyRenderer.PlaceOf(flight).Z);
+        var a = PokemonPlatinumEngine.Graphics.SkyRenderer.CloudsOf(Sinnoh, 12.5f);
+        var b = PokemonPlatinumEngine.Graphics.SkyRenderer.CloudsOf(Sinnoh, 12.5f);
+        Assert.Equal(a, b);
+        Assert.NotEmpty(a);
+        Assert.All(a, c => Assert.InRange(c.Altitude, PokemonPlatinumEngine.Graphics.SkyRenderer.AltitudeOf(2f), PokemonPlatinumEngine.Graphics.SkyRenderer.AltitudeOf(4f)));
+        Assert.NotEqual(a, PokemonPlatinumEngine.Graphics.SkyRenderer.CloudsOf(Sinnoh, 40f));
+    }
 }
