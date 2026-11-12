@@ -261,7 +261,7 @@ public class ContentTests
         // many as the slots, where the area has the tables
         using var folder = Sound();
         folder.Write(OverlayFile, SoundOverlay.Replace("\"bgmTrack\": \"sinnoh/twinleaf\",",
-            "\"bgmTrack\": \"sinnoh/twinleaf\", \"ours\": { \"land\": [ [\"Raticate\", 60, 60], [\"Ratchisel\", 100, 104], [\"Nosuchmon\", 105, 105] ], \"superRod\": [ [\"Ratchisel\", 105, 300] ] },"));
+            "\"bgmTrack\": \"sinnoh/twinleaf\", \"ours\": { \"land\": [ [\"Raticate\", 60, 60], [\"Ratchisel\", 100, 104], [\"Nosuchmon\", 105, 105] ], \"superRod\": [ [\"Ratchisel\", 105, 999] ] },"));
         var found = folder.Check();
         Has(found, Kind.Data, OverlayFile, "ours.land", "names 3 species");
         Has(found, Kind.Data, OverlayFile, "ours.land", "no grass table");
@@ -270,7 +270,7 @@ public class ContentTests
         Has(found, Kind.Data, OverlayFile, "ours.land", "Ratchisel, of Kanto region's batch, in test");
         Has(found, Kind.Data, OverlayFile, "ours.land", "Ratchisel at 100 to 104; its levels go from its evolution's, 105");
         Has(found, Kind.Data, OverlayFile, "ours.superRod", "no Super Rod table");
-        Has(found, Kind.Data, OverlayFile, "ours.superRod", "105 to 300");
+        Has(found, Kind.Data, OverlayFile, "ours.superRod", "105 to 999");
         Assert.DoesNotContain(found, f => f.Kind == Kind.UnknownField);
     }
 

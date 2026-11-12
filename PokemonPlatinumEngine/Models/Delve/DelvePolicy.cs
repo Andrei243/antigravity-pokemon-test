@@ -44,8 +44,20 @@ public static class DelvePolicy
             return best >= 0 && power > DelveMoves.StrikePower ? DelveAction.UseMove(best, way) : DelveAction.Strike(way);
         }
 
-        // To the stairs, the shortest way past nobody, or past residents where none is free (and strike the one in the way)
-        var step = PathStep(run, true) ?? PathStep(run, false);
+        // A resident awake and close is met, not walked round: one that comes after the team steps into whichever way
+        // round is free, and the leader would go to and fro for ever (one that flees, low on HP, is let go)
+        var chaser = run.Residents
+            .Where(r => !r.Fainted && !r.Dormant && !(r.Shy && r.Pokemon.CurrentHP * 4 < r.Pokemon.MaxHP) && leader.Reach(r.X, r.Y) <= ChaseReach)
+            .OrderBy(r => leader.Reach(r.X, r.Y)).ThenBy(r => r.Order).FirstOrDefault();
+        if (chaser != null && DelveTurns.StepToward(run, leader, chaser.X, chaser.Y) is { } toward)
+            return DelveAction.Step(toward);
+
+        // To the stairs, the shortest way past nobody, or past residents where none is free or the free one is the longer
+        // by more than a step (and strike the one in the way): a resident that keeps stepping into whichever way round is
+        // free would otherwise send the leader to and fro for ever
+        var free = PathStep(run, true);
+        var any = PathStep(run, false);
+        var step = free is { } f && (any is not { } a || f.Length <= a.Length + DetourSteps) ? f.Way : any?.Way;
         if (step is { } go)
         {
             var (x, y) = DelveTurns.Ahead(leader.X, leader.Y, go);
@@ -54,12 +66,19 @@ public static class DelvePolicy
         return DelveAction.Wait;
     }
 
-    private static Direction? PathStep(DelveRun run, bool pastNobody)
+    /// <summary>How many steps longer the way round a resident may be before the leader goes through it instead.</summary>
+    public const int DetourSteps = 1;
+
+    /// <summary>How near a resident awake must be for the leader to go and meet it.</summary>
+    public const int ChaseReach = 4;
+
+    private static (Direction Way, int Length)? PathStep(DelveRun run, bool pastNobody)
     {
         var leader = run.Leader;
         var start = (leader.X, leader.Y);
         var goal = run.Floor.Stairs;
         var first = new Dictionary<(int, int), Direction> { [start] = Direction.Down };
+        var steps = new Dictionary<(int, int), int> { [start] = 0 };
         var queue = new Queue<(int X, int Y)>();
         queue.Enqueue(start);
         while (queue.Count > 0)
@@ -71,7 +90,8 @@ public static class DelvePolicy
                 if (first.ContainsKey(next) || !run.Floor.Passable(next.X, next.Y, leader.Swims)) continue;
                 if (pastNobody && run.At(next.X, next.Y) is { OnTeam: false }) continue;
                 first[next] = at == start ? way : first[at];
-                if (next == goal) return first[next];
+                steps[next] = steps[at] + 1;
+                if (next == goal) return (first[next], steps[next]);
                 queue.Enqueue(next);
             }
         }

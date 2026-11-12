@@ -6067,7 +6067,7 @@
       "wildWon": "Câștigă o luptă sălbatică", "trainerWon": "Învinge un antrenor", "wildRan": "Fugi de un Pokémon sălbatic",
       "wildFled": "Vezi un Pokémon sălbatic fugind", "trainerLost": "Pierde în fața unui antrenor", "whiteouts": "Leșină și mergi mai departe",
       "caught": "Prinde un Pokémon", "encounters": "Întâlnește un Pokémon sălbatic", "levelled": "Crește un nivel în luptă",
-      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată", "tourFourStars": "Fă o fotografie de patru stele în tur"
+      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată", "tourFourStars": "Fă o fotografie de patru stele în tur", "hollowBrinecave": "Termină Peștera Sării", "hollowRootwood": "Termină Codrul Rădăcinilor", "hollowHeartpeak": "Termină Vârful Inimii", "hollowOldTower": "Termină Turnul Vechi"
     },
     "name": {
       "stepsFoot": "Mergi {count} pași", "stepsSurf": "Fă {count} pași pe apă", "stepsCycle": "Fă {count} pași cu bicicleta", "stepsDive": "Fă {count} pași sub apă",
@@ -7769,6 +7769,7 @@
     "pays": "Răsplată: {prize}",
     "done": "GATA",
     "hint": { "strike": "Lovește", "moves": "Atacuri" },
+    "reach": { "Ahead": "înainte", "Round": "de jur împrejur", "Room": "toată sala", "Self": "pe sine", "Team": "echipa", "Ally": "un prieten", "None": "doar în luptă" },
     "hollow": {
       "brinecave": "Peștera Sării",
       "rootwood": "Codrul Rădăcinilor",

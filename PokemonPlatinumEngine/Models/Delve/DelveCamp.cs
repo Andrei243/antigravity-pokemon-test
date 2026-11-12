@@ -85,6 +85,15 @@ public sealed class DelveRecord
     public int BoardDay { get; set; } = -1;
     public HashSet<int> Done { get; } = new();
 
+    /// <summary>
+    /// The camp's rank the day's board was drawn at: a clear that raises the rank opens another hollow, but today's board
+    /// stays the board its requests were done on until tomorrow (a board drawn again would put DONE on other requests).
+    /// </summary>
+    public int BoardRank { get; set; }
+
+    /// <summary>The rank a day's board is drawn at: the one it was first drawn at that day, or the camp's now.</summary>
+    public int RankOn(int day) => BoardDay == day ? BoardRank : Rank;
+
     /// <summary>Prizes earned and not yet handed over, by the board's prize table.</summary>
     public List<(string Item, int Count)> Due { get; } = new();
 
@@ -107,6 +116,7 @@ public sealed class DelveRecord
         if (BoardDay != day)
         {
             BoardDay = day;
+            BoardRank = Rank;
             Done.Clear();
         }
         if (run.Outcome == DelveOutcome.Cleared) Clears[run.Hollow.Key] = Clears.GetValueOrDefault(run.Hollow.Key) + 1;
@@ -130,6 +140,7 @@ public sealed class DelveRecord
         Runs = Runs,
         RecruitsHome = RecruitsHome,
         BoardDay = BoardDay,
+        BoardRank = BoardRank,
         Done = Done.OrderBy(i => i).ToList(),
         Due = Due.Select(d => new DelveSave.Prize { Item = d.Item, Count = d.Count }).ToList()
     };
@@ -142,6 +153,7 @@ public sealed class DelveRecord
         r.Runs = save.Runs;
         r.RecruitsHome = save.RecruitsHome;
         r.BoardDay = save.BoardDay;
+        r.BoardRank = save.BoardRank;
         foreach (var i in save.Done) r.Done.Add(i);
         foreach (var d in save.Due) r.Due.Add((d.Item, d.Count));
         return r;
@@ -155,6 +167,7 @@ public sealed class DelveSave
     public int Runs { get; set; }
     public int RecruitsHome { get; set; }
     public int BoardDay { get; set; } = -1;
+    public int BoardRank { get; set; }
     public List<int> Done { get; set; } = new();
     public List<Prize> Due { get; set; } = new();
 

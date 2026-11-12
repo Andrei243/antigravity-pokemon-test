@@ -25,7 +25,8 @@ public partial class GameEngine
         CircuitCount = flow.Circuit.Won,
         HeartsReclaimedCount = flow.Hearts.Reclaimed.Count,
         HeartsOpenedCount = flow.Hearts.Opened.Count,
-        TourFourStarCount = flow.PhotoTour.FourStars
+        TourFourStarCount = flow.PhotoTour.FourStars,
+        HollowsCleared = flow.DelveRecord.Clears.Where(c => c.Value > 0).Select(c => c.Key).ToHashSet()
     };
 
     /// <summary>
@@ -37,7 +38,8 @@ public partial class GameEngine
     {
         if (!gameStarted) return;
         long now = (((long)flow.Statistics.Revision << 32) ^ (uint)flow.Story.Revision) * 31
-            + flow.Hearts.Reclaimed.Count * 64 + flow.Hearts.Opened.Count + flow.PhotoTour.FourStars * 4096L;
+            + flow.Hearts.Reclaimed.Count * 64 + flow.Hearts.Opened.Count + flow.PhotoTour.FourStars * 4096L
+            + flow.DelveRecord.Rank * 262144L;
         if (now != medalsLookedAt)
         {
             bool quietly = medalsLookedAt == -1;

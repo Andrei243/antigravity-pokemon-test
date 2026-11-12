@@ -136,6 +136,26 @@ partial class Harness
             Place("snowpoint_temple_b1f", "snowpoint temple");
             At("BattleFrontier", 48, 44, Direction.Up); Frames(40); Profile("battle frontier's plaza");
             Place("underground", "the underground");
+            // The delve (plan 44 · SD8): a floor of the Old Tower in its dark, the leader, its partner and the floor's
+            // residents standing as Pokémon of the map
+            {
+                var delveTeamWas = party.Members.ToList();
+                party.Clear();
+                party.Add(new Pokemon(PokemonDatabase.Get("Garchomp")!, 70));
+                party.Add(new Pokemon(PokemonDatabase.Get("Lucario")!, 70));
+                foreach (var key in new[] { "brinecave", "rootwood", "heartpeak" }) game.DelveRecord.Clears[key] = 1;
+                if (game.OpenDelve("old_tower", 77))
+                {
+                    for (int i = 0; i < 120 && game.State != GameState.Delve; i++) Frames(1);
+                    Frames(60);
+                    Console.WriteLine($"delve floor: {game.Map.NPCs.Count(p => p.IsPokemon) + 1} Pokémon");
+                    Profile("the delve, a floor of the old tower");
+                    LeaveDelve();
+                }
+                game.DelveRecord.Clears.Clear();
+                party.Clear();
+                foreach (var p in delveTeamWas) party.Add(p);
+            }
             // The Gyms and their pieces (M9), and the largest rooms (M11 and the chapters')
             Room("EternaGym", "eterna gym, the flower clock");
             Room("PastoriaGym", "pastoria gym, the water");

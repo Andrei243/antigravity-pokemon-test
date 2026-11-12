@@ -29,7 +29,9 @@
         "Street",
         "Tower",
         "Aerie",
-        "Tent"
+        "Tent",
+        "Field",
+        "Court"
       ]
     },
     "trees": {

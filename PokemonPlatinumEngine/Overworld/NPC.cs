@@ -233,6 +233,12 @@ public class NPC
     /// </summary>
     public float Scale { get; set; } = 1f;
 
+    /// <summary>
+    /// For a Pokémon of the team out of its ball: its heart is locked (plan 44 · SD2), so its field sprite is drawn in the
+    /// lock's grey (style guide, "A locked heart"). <see cref="Follower.Dress"/> sets it and the game keeps it as the lock opens.
+    /// </summary>
+    public bool Locked { get; set; }
+
     public bool IsPokemon => NpcType == PokemonType;
 
     // ---- Obstacles a field move clears (plan 02 · S2)

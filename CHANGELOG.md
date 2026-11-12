@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Lockwork's agents and admins now battle to a song of their own, a ticking D-minor march with its own low-HP alarm and giant arrangement; a locked heart walking behind you is drawn in the lock's grey until its heart opens; the delve's move list says where each move reaches on the floor; and each of the four hollows gives a medal when you first clear it.
 - On the Energy Plant's roof you now battle Eternatus itself, before it swells into Eternamax.
 - After Galar's Hall of Fame the fog returns to the Slumbering Weald: Hop waits at the altar, and the legendary of your version comes out to meet you, to be caught at last.
 - Leon now runs the Battle Tower in Rose Tower and takes you on once a day; he also joins the Laurel Circuit's final for Galar.
