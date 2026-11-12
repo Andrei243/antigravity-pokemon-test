@@ -38,6 +38,9 @@ public sealed class DelveMon
     /// <summary>A recruit, as against the leader and the partner the player chose.</summary>
     public bool Recruit { get; internal set; }
 
+    /// <summary>The hollow's guardian, which keeps the last stairs and never asks to join (SD9).</summary>
+    public bool IsGuardian { get; internal set; }
+
     public int ConfusedTurns { get; internal set; }
     public bool Flinched { get; internal set; }
 

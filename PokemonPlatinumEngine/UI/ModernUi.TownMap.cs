@@ -103,7 +103,12 @@ internal static partial class ModernUi
         var mode = screen.Mode;
         ScreenTitle(Text.Of($"townMap.title.{mode}"));
         string zoom = screen.Zoomed ? "shared.hints.wholeMap" : "shared.hints.zoomIn";
-        if (fly && screen.HasTabs)
+        // SOAR on the item button where the region shown may be soared over (plan 38 · EX7); a map before any Hall of Fame as it was
+        if (fly && screen.CanSoar && screen.HasTabs)
+            Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("shared.keys.c", "soar.hint.soar"), Hint("pokegear.keys.shoulders", "townMap.hintRegion"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (fly && screen.CanSoar)
+            Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("shared.keys.c", "soar.hint.soar"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (fly && screen.HasTabs)
             Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("pokegear.keys.shoulders", "townMap.hintRegion"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
         else if (fly) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
         // The day's report on the item button (plan 38 · EX2): its hint only where the region has one, so a map before the

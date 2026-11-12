@@ -1,0 +1,72 @@
+{
+  "hollows": [
+    {
+      "key": "brinecave",
+      "name": "Brinecave",
+      "theme": "SeaCave",
+      "floors": 4,
+      "level": 30,
+      "residents": [ "Shellos", "Tentacool", "Krabby", "Wingull", "Chinchou", "Corphish", "Clamperl", "Zubat" ],
+      "residentsPerFloor": 4,
+      "finds": [ "Oran Berry", "Oran Berry", "Pecha Berry", "Potion", "Escape Rope", "Revive", "Pearl", "Heart Scale" ],
+      "findsPerFloor": 3,
+      "snaresPerFloor": 2,
+      "guardian": "Lapras",
+      "rank": 0,
+      "song": "sinnoh/cave"
+    },
+    {
+      "key": "rootwood",
+      "name": "the Rootwood",
+      "theme": "Wood",
+      "floors": 5,
+      "level": 40,
+      "residents": [ "Burmy", "Combee", "Cherubi", "Budew", "Shroomish", "Hoothoot", "Pineco", "Paras" ],
+      "residentsPerFloor": 4,
+      "finds": [ "Oran Berry", "Sitrus Berry", "Cheri Berry", "Super Potion", "Escape Rope", "Revive", "Miracle Seed", "Tiny Mushroom" ],
+      "findsPerFloor": 3,
+      "snaresPerFloor": 3,
+      "guardian": "Tangrowth",
+      "rank": 1,
+      "song": "sinnoh/forest"
+    },
+    {
+      "key": "heartpeak",
+      "name": "Heartpeak",
+      "theme": "Cave",
+      "floors": 6,
+      "level": 50,
+      "residents": [ "Geodude", "Onix", "Machoke", "Bronzor", "Meditite", "Snover", "Nosepass", "Golbat" ],
+      "residentsPerFloor": 5,
+      "finds": [ "Sitrus Berry", "Rawst Berry", "Super Potion", "Escape Rope", "Revive", "Hard Stone", "Stardust", "Nugget" ],
+      "findsPerFloor": 3,
+      "snaresPerFloor": 3,
+      "guardian": "Aggron",
+      "rank": 2,
+      "song": "sinnoh/mt_coronet",
+      "dark": true
+    },
+    {
+      "key": "old_tower",
+      "name": "the Old Tower",
+      "theme": "Tower",
+      "floors": 7,
+      "level": 60,
+      "residents": [ "Haunter", "Misdreavus", "Dusclops", "Banette", "Murkrow", "Bronzong", "Drifblim", "Sableye" ],
+      "residentsPerFloor": 5,
+      "finds": [ "Sitrus Berry", "Lum Berry", "Super Potion", "Escape Rope", "Revive", "Spell Tag", "Star Piece", "Nugget" ],
+      "findsPerFloor": 3,
+      "snaresPerFloor": 3,
+      "guardian": "Dusknoir",
+      "rank": 3,
+      "song": "sinnoh/turnback_cave",
+      "dark": true
+    }
+  ],
+  "prizes": [
+    { "kind": "Rescue", "item": "Great Ball", "count": 3 },
+    { "kind": "Find", "item": "Super Potion", "count": 2 },
+    { "kind": "Befriend", "item": "Heart Scale" },
+    { "kind": "Clear", "item": "Rare Candy" }
+  ]
+}

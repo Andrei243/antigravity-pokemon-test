@@ -234,6 +234,9 @@ public static class ScriptParser
             case "givemoney":
             case "takemoney":
             {
+                // A number, or a variable's value as it is now (plan 43 · LF7: Mom's savings in Johto, "givemoney VAR_X")
+                var moneyOp = word == "givemoney" ? Op.GiveMoney : Op.TakeMoney;
+                if (r.PeekVariable) return new Instruction { Op = moneyOp, Line = line, Other = r.Variable(writable: false) };
                 int amount = r.Int("an amount");
                 if (amount < 0) throw r.Error("an amount of money is not negative");
                 return new Instruction { Op = word == "givemoney" ? Op.GiveMoney : Op.TakeMoney, Line = line, Number = amount };
@@ -1116,7 +1119,7 @@ public static class ScriptParser
             // the decoration PC filled
             case "openbase":
             {
-                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade") : "open";
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade", "move", "movein") : "open";
                 if (what is not ("give" or "buy" or "room" or "trade")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
                 string decoration = r.Text("a decoration's name");
                 if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
@@ -1237,6 +1240,14 @@ public static class ScriptParser
             {
                 string tourWord = r.OneOf("ride", "open", "points", "report", "reward");
                 return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord is "ride" or "open" ? r.Text("a course's id") : null };
+            }
+
+            // The delve (plan 44 · SD8, SD9): `delve go "<hollow>"`, `delve open "<hollow>"`, `delve able`, `delve board`,
+            // `delve rank`, `delve reward`
+            case "delve":
+            {
+                string delveWord = r.OneOf("go", "open", "able", "board", "rank", "reward");
+                return new Instruction { Op = Op.Delve, Line = line, Name = delveWord, Other = delveWord is "go" or "open" ? r.Text("a hollow's key") : null };
             }
 
             // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,

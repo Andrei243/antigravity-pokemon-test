@@ -1,0 +1,45 @@
+{
+  "finds": [
+    "Pearl", "Big Pearl", "Stardust", "Star Piece", "Nugget", "PP Up", "Rare Candy", "Heart Scale",
+    "Fire Stone", "Water Stone", "Thunder Stone", "Leaf Stone", "Moon Stone", "Sun Stone",
+    "Red Shard", "Blue Shard", "Yellow Shard", "Green Shard"
+  ],
+  "regions": {
+    "Sinnoh": {
+      "levels": [50, 58],
+      "kinds": {
+        "Islet": ["Ducklett", "Frillish", "Alomomola", "Binacle", "Skrelp", "Clauncher", "Dewpider", "Wimpod", "Pyukumuku", "Mareanie", "Lotad", "Corphish"],
+        "Grove": ["Pansage", "Sewaddle", "Petilil", "Deerling", "Foongus", "Fletchling", "Skiddo", "Pikipek", "Fomantis", "Morelull", "Seedot", "Shroomish"],
+        "Hollow": ["Roggenrola", "Woobat", "Drilbur", "Joltik", "Axew", "Noibat", "Carbink", "Rockruff", "Dwebble", "Larvesta", "Aron", "Sableye"],
+        "Peak": ["Rufflet", "Vullaby", "Mienfoo", "Cubchoo", "Bergmite", "Amaura", "Hawlucha", "Sandile", "Pawniard", "Golett", "Tyrunt", "Spheal"]
+      }
+    },
+    "Kanto": {
+      "levels": [50, 58],
+      "kinds": {
+        "Islet": ["Ducklett", "Frillish", "Alomomola", "Binacle", "Skrelp", "Clauncher", "Dewpider", "Wimpod", "Pyukumuku", "Mareanie", "Wingull", "Corphish"],
+        "Grove": ["Pansage", "Sewaddle", "Petilil", "Deerling", "Foongus", "Fletchling", "Skiddo", "Pikipek", "Fomantis", "Morelull", "Seedot", "Shroomish"],
+        "Hollow": ["Roggenrola", "Woobat", "Drilbur", "Joltik", "Axew", "Noibat", "Carbink", "Rockruff", "Dwebble", "Larvesta", "Aron", "Sableye"],
+        "Peak": ["Rufflet", "Vullaby", "Mienfoo", "Cubchoo", "Bergmite", "Amaura", "Hawlucha", "Sandile", "Pawniard", "Golett", "Swablu", "Spheal"]
+      }
+    },
+    "Johto": {
+      "levels": [48, 56],
+      "kinds": {
+        "Islet": ["Ducklett", "Frillish", "Alomomola", "Binacle", "Skrelp", "Clauncher", "Dewpider", "Wimpod", "Pyukumuku", "Mareanie", "Wingull", "Corphish"],
+        "Grove": ["Pansage", "Sewaddle", "Petilil", "Deerling", "Foongus", "Fletchling", "Skiddo", "Pikipek", "Fomantis", "Morelull", "Seedot", "Shroomish"],
+        "Hollow": ["Roggenrola", "Woobat", "Drilbur", "Joltik", "Axew", "Noibat", "Carbink", "Rockruff", "Dwebble", "Larvesta", "Aron", "Sableye"],
+        "Peak": ["Rufflet", "Vullaby", "Mienfoo", "Cubchoo", "Bergmite", "Amaura", "Hawlucha", "Sandile", "Pawniard", "Golett", "Swablu", "Spheal"]
+      }
+    },
+    "Hoenn": {
+      "levels": [48, 56],
+      "kinds": {
+        "Islet": ["Ducklett", "Frillish", "Alomomola", "Binacle", "Skrelp", "Clauncher", "Dewpider", "Wimpod", "Pyukumuku", "Mareanie", "Shellos", "Finneon"],
+        "Grove": ["Pansage", "Sewaddle", "Petilil", "Deerling", "Foongus", "Fletchling", "Skiddo", "Pikipek", "Fomantis", "Morelull", "Budew", "Cherubi"],
+        "Hollow": ["Roggenrola", "Woobat", "Drilbur", "Joltik", "Axew", "Noibat", "Carbink", "Rockruff", "Dwebble", "Larvesta", "Bronzor", "Gible"],
+        "Peak": ["Rufflet", "Vullaby", "Mienfoo", "Cubchoo", "Bergmite", "Amaura", "Hawlucha", "Sandile", "Pawniard", "Golett", "Snover", "Riolu"]
+      }
+    }
+  }
+}

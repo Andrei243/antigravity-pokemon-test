@@ -43,6 +43,9 @@ internal sealed class OpenBuildingKit
     private OpenMap? map;
     private (int Solids, int Buildings) madeOf;
 
+    /// <summary>The noise sheet (<see cref="OpenGroundArt"/>) the built surfaces' grain is read from: set before <see cref="Use"/>.</summary>
+    public Texture2D Grain { get; set; }
+
     public int Buildings { get; private set; }
     public int Blocks { get; private set; }
     public int Triangles { get; private set; }
@@ -105,14 +108,21 @@ internal sealed class OpenBuildingKit
             var plan = PlanOf(b, next.Doors);
             // Seeds of the art go by where the building stands, so two buildings of a town are never painted alike
             int sx = b.Box.Min.X / OpenPos.PerMetre, sz = b.Box.Min.Z / OpenPos.PerMetre;
+            // A tower stands as tall as its box (the field's camera bounds its stages; an open map's is on the ground)
+            bool tower = b.Kind is BuildingKind.Tower or BuildingKind.Lighthouse;
+            float boxHeight = (b.Box.Max.Y - b.Box.Min.Y) / (float)OpenPos.PerMetre;
             var info = new BuildingInfo
             {
                 X0 = sx, Y0 = sz, X1 = sx + plan.Width - 1, Y1 = sz + plan.Depth - 1, Kind = b.Kind, Town = b.Town,
-                Storeys = b.Storeys, Sign = b.Sign, TownsRoof = true
+                Storeys = b.Storeys, Sign = b.Sign, TownsRoof = true,
+                Height = tower ? boxHeight / MetresPerTile : 0, TallestRows = tower ? 2400 : 0
             };
             if (plan.DoorBay >= 0) info.Doors.Add((sx + plan.DoorBay, "open"));
             var style = BuildingArt.StyleOf(info, b.Town);
             if (b.Storeys > 0) style = style with { Storeys = b.Storeys };
+            // A tall tower's shaft is most of its footprint and has more stages, or it is a needle on a wide plinth
+            if (tower && boxHeight > 20 && style.Shaft <= 96)
+                style = style with { Shaft = Math.Max(97, (int)(plan.Width * BuildingArt.Bay * 0.6f)), StageCount = Math.Max(style.StageCount, 4), StackedWindows = true };
 
             // The ground at the front's middle, just outside it, and the lowest under the walls
             float baseY = HeightAt(ground, plan.FrontMiddle + plan.Out * 0.6f, b) ?? b.Box.Min.Y / (float)OpenPos.PerMetre;
@@ -171,6 +181,8 @@ internal sealed class OpenBuildingKit
             var canvas = art.ToCanvas();
             sheet = canvas.ToTexture(1, "openbuilding");
             Raylib.SetTextureWrap(sheet, TextureWrap.Clamp);
+            // (blended between its texels: a face's edge texels are repeated once round it, so nothing bleeds)
+            Raylib.SetTextureFilter(sheet, TextureFilter.Bilinear);
             sheetLoaded = true;
             Add(solid, sheet, shaders, fs);
         }
@@ -193,7 +205,10 @@ internal sealed class OpenBuildingKit
     {
         if (builder.VertexCount == 0) return;
         var mesh = builder.Upload("openbuilding");
-        parts.Add(new Part(mesh, RenderContext.MaterialFor(shaders.Scenery, texture), RenderContext.MaterialFor(fs.Depth, texture)));
+        var main = RenderContext.MaterialFor(shaders.Scenery, texture);
+        // (the noise sheet its grain is read from, as the program's second texture)
+        Raylib.SetMaterialTexture(ref main, MaterialMapIndex.Metalness, Grain);
+        parts.Add(new Part(mesh, main, RenderContext.MaterialFor(fs.Depth, texture)));
         Triangles += mesh.TriangleCount;
     }
 

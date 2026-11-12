@@ -84,6 +84,18 @@ public sealed class Soaring
         Heading = (heading % 360f + 360f) % 360f;
     }
 
+    /// <summary>
+    /// The places of the day lit over the region (plan 38 · EX7, part b): each a beacon of its own colour, landed on as a
+    /// town is. None unless the game hands them over.
+    /// </summary>
+    public IReadOnlyList<SkyPlace> Places { get; init; } = Array.Empty<SkyPlace>();
+
+    private float DistanceTo(SkyPlace place) => MathF.Sqrt(MathF.Pow(place.X + 0.5f - X, 2) + MathF.Pow(place.Y + 0.5f - Y, 2));
+
+    /// <summary>The place of the day under the flier, within <see cref="BeaconReach"/> of its foot, or null.</summary>
+    public SkyPlace? PlaceUnder =>
+        Places.Select(p => (Place: p, Far: DistanceTo(p))).Where(p => p.Far <= BeaconReach).OrderBy(p => p.Far).Select(p => p.Place).FirstOrDefault();
+
     /// <summary>The places with a beacon: every one of Fly's places that is open.</summary>
     public IEnumerable<TownMapSpot> Beacons => Map.Spots.Where(s => s.Open);
 

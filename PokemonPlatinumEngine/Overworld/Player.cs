@@ -562,6 +562,12 @@ public class Player
     public string? Carrier { get; set; }
 
     /// <summary>
+    /// The Pokémon drawn in the player's place, by the name its model goes by, or null for the player (plan 44 · SD8: the
+    /// delve's leader). Never saved, and let go on every way out of a run.
+    /// </summary>
+    public string? Avatar { get; set; }
+
+    /// <summary>
     /// How far onto the Pokémon's back the player is: 1 while surfing, rising from 0 through the hop onto it
     /// and falling back to 0 through the hop off it.
     /// </summary>

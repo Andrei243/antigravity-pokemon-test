@@ -1900,12 +1900,14 @@
     "card": {
       "Calls": "CALLS",
       "News": "NEWS",
-      "Map": "MAP"
+      "Map": "MAP",
+      "Powers": "POWERS"
     },
     "hints": {
       "call": "Call",
       "open": "Open the map",
-      "cards": "Cards"
+      "cards": "Cards",
+      "powers": "Open the panel"
     },
     "calls": {
       "empty": "No numbers saved yet.",
@@ -1920,6 +1922,10 @@
       "heading": "MAP",
       "body": "Open the map to look over the whole region, town by town and route by route.",
       "none": "This place isn't on the phone's map."
+    },
+    "powers": {
+      "heading": "POWERS IN HAND",
+      "body": "Open the panel of the Power Watch to see the powers you know, their charge and the ones in force now."
     },
     "registered": "{name}'s number is saved in your phone!"
   },
@@ -2024,7 +2030,17 @@
       "kalosShauna": "Shauna",
       "kalosTierno": "Tierno",
       "kalosTrevor": "Trevor",
-      "kalosSycamore": "Prof. Sycamore"
+      "kalosSycamore": "Prof. Sycamore",
+      "alolaMom": "Mom",
+      "alolaHau": "{rival}",
+      "alolaLillie": "Lillie",
+      "alolaKukui": "Prof. Kukui",
+      "alolaHala": "Hala",
+      "galarMom": "Mom",
+      "galarHop": "{rival}",
+      "galarSonia": "Sonia",
+      "galarMagnolia": "Prof. Magnolia",
+      "galarLeon": "Leon"
     }
   },
   "pokenav": {
@@ -7089,6 +7105,11 @@
       "pages": "Turning Pages",
       "starlit": "Starlit",
       "sinnoh_snapshot": "Sinnoh Snapshots",
+      "kanto_snapshot": "Kanto Snapshots",
+      "johto_snapshot": "Johto Snapshots",
+      "hoenn_snapshot": "Hoenn Snapshots",
+      "unova_snapshot": "Unova Snapshots",
+      "kalos_snapshot": "Kalos Snapshots",
       "backdrop": "Backdrop: {name}"
     },
     "frame": {
@@ -7306,7 +7327,32 @@
       "sinnoh_sandgem_lab": "The Lab at Sandgem",
       "sinnoh_jubilife_fountain": "Jubilife's Fountain",
       "sinnoh_oreburgh_museum": "Oreburgh's Museum",
-      "sinnoh_floaroma_flowers": "Floaroma's Flowers"
+      "sinnoh_floaroma_flowers": "Floaroma's Flowers",
+      "kanto_pallet_lane": "Pallet Town's Lane",
+      "kanto_viridian_square": "Viridian's Square",
+      "kanto_pewter_stones": "Pewter's Grey Stones",
+      "kanto_cerulean_bridge": "Cerulean's Waterside",
+      "kanto_vermilion_harbour": "Vermilion's Harbour",
+      "johto_new_bark_breeze": "New Bark's Breeze",
+      "johto_violet_tower": "Violet's Old Tower",
+      "johto_goldenrod_plaza": "Goldenrod's Plaza",
+      "johto_ecruteak_lanes": "Ecruteak's Old Lanes",
+      "johto_olivine_harbour": "Olivine's Harbour",
+      "hoenn_littleroot_green": "Littleroot's Green",
+      "hoenn_petalburg_pond": "Petalburg's Pond",
+      "hoenn_rustboro_corner": "Rustboro's Stone Corner",
+      "hoenn_slateport_market": "Slateport's Market",
+      "hoenn_lilycove_seafront": "Lilycove's Seafront",
+      "unova_aspertia_steps": "Aspertia's Steps",
+      "unova_floccesy_bell": "Floccesy's Bell",
+      "unova_virbank_docks": "Virbank's Docks",
+      "unova_nimbasa_lights": "Nimbasa's Lights",
+      "unova_driftveil_market": "Driftveil's Market",
+      "kalos_vaniville_garden": "Vaniville's Garden",
+      "kalos_aquacorde_river": "Aquacorde's River",
+      "kalos_santalune_fountain": "Santalune's Fountain",
+      "kalos_lumiose_boulevard": "Lumiose's Boulevard",
+      "kalos_cyllage_cliffs": "Cyllage's Cliffs"
     }
   },
   "hearts": {
@@ -7334,6 +7380,109 @@
       "noMap": "There is no map of this region to soar over.",
       "hallOfFame": "The skies here open once you have entered this region's Hall of Fame.",
       "noFlier": "No Pokémon on your team can carry you through the sky."
+    },
+    "hint": {
+      "soar": "Soar",
+      "turn": "Turn",
+      "climb": "Climb / dive",
+      "faster": "Faster",
+      "land": "Land"
+    },
+    "place": {
+      "Islet": "Islet of the Day",
+      "Grove": "Grove of the Day",
+      "Hollow": "Hollow of the Day",
+      "Peak": "Peak of the Day"
+    }
+  },
+  "delve": {
+    "floor": "Floor {n} of {of}",
+    "leader": "LEADER",
+    "partner": "PARTNER",
+    "recruit": "RECRUIT",
+    "level": "Lv. {n}",
+    "hunger": "BELLY",
+    "moves": "MOVES",
+    "pp": "{n}/{of}",
+    "bag": "BAG  {n}/{of}",
+    "bagEmpty": "Nothing found yet",
+    "giveTo": "Give the {item} to...",
+    "asks": "{pokemon} wants to join!",
+    "yes": "WELCOME",
+    "no": "NOT NOW",
+    "flinch": "a flinch",
+    "home": "{pokemon} came home from the hollow!",
+    "board": "THE CAMP'S BOARD",
+    "boardEmpty": "Nothing posted today. Come back tomorrow!",
+    "rank": "Camp rank {n}",
+    "pays": "Pays: {prize}",
+    "done": "DONE",
+    "hint": { "strike": "Strike", "moves": "Moves" },
+    "hollow": {
+      "brinecave": "Brinecave",
+      "rootwood": "The Rootwood",
+      "heartpeak": "Heartpeak",
+      "old_tower": "The Old Tower",
+      "test_hollow": "Test Hollow"
+    },
+    "snare": { "Sleep": "a dozing snare", "Poison": "a stinging snare", "Drop": "a pitfall" },
+    "request": {
+      "Rescue": "A hiker is stuck on floor {floor} of {hollow}. Reach them!",
+      "Find": "Bring a {item} up from {hollow}, please.",
+      "Befriend": "A {species} from {hollow} is looking for a home.",
+      "Clear": "Clear {hollow} from top to bottom."
+    },
+    "refused": {
+      "Egg": "An Egg can't go down.",
+      "Fainted": "It has no strength left.",
+      "Locked": "A locked heart won't go down.",
+      "Same": "Pick two different Pokémon.",
+      "NotNow": "Not now.",
+      "Blocked": "The way is blocked.",
+      "NoMove": "There's no move there.",
+      "NoPP": "That move has no PP left.",
+      "NeedsABattle": "That move only works in a battle.",
+      "NotInTheBag": "That isn't in the bag.",
+      "WouldNotHelp": "That wouldn't help now.",
+      "NobodyAsks": "Nobody is asking."
+    },
+    "event": {
+      "Stepped": "{who} stepped.",
+      "Struck": "{who} lunged!",
+      "UsedMove": "{who} used {what}!",
+      "Missed": "{who} missed!",
+      "Damaged": "{target} took {amount} damage.",
+      "Fainted": "{who} fainted!",
+      "StatusGiven": "{who} is now {what}.",
+      "StatusFailed": "It didn't take hold of {target}.",
+      "Confused": "{who} became confused!",
+      "Snapped": "{who} snapped out of its confusion.",
+      "StatChanged": "{who}'s {what} shifted.",
+      "Healed": "{who} got {amount} HP back.",
+      "Recoil": "{who} was hurt by the recoil.",
+      "Drained": "{who} drained some of {target}'s strength.",
+      "Flinched": "{who} flinched!",
+      "LostTurn": "{who} couldn't move ({what}).",
+      "HurtItself": "{who} hurt itself in its confusion!",
+      "Woke": "{who} woke up!",
+      "Noticed": "{who} noticed the team!",
+      "Fled": "{who} ran off!",
+      "Snare": "{who} stepped on {what}!",
+      "Found": "{who} found a {what}!",
+      "BagFull": "The bag is full. {who} left the {what}.",
+      "Ate": "{who} ate the {what}. Delicious!",
+      "Cured": "{who} feels better.",
+      "Starving": "{who} is starving!",
+      "Descended": "The team went down to floor {amount}.",
+      "AsksToJoin": "{who} wants to join the team!",
+      "Joined": "{who} joined the team!",
+      "Declined": "{who} wandered off.",
+      "Revived": "The Revive brought {who} round!",
+      "Cleared": "The team reached the end of the hollow!",
+      "Fell": "{who} collapsed. The team was carried back to camp...",
+      "Escaped": "The team climbed out with the Escape Rope.",
+      "Bitten": "{who} is hurt by its {what}.",
+      "Guarded": "{target} blocks the way up!"
     }
   }
 }

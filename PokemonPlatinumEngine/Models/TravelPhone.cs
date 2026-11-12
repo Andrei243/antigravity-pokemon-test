@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.Story;
 namespace PokemonPlatinumEngine.Models;
 
 /// <summary>The travel phone's cards (plan 43 · LF6), in their own order.</summary>
-public enum PhoneCard { Calls, News, Map }
+public enum PhoneCard { Calls, News, Map, Powers }
 
 /// <summary>
 /// The travel phone (plan 43 · LF6; decision 4): one phone of ours that works in every region whose file says
@@ -28,10 +28,12 @@ public static class TravelPhone
     public static bool Has(StoryState story, string region) => story.Has(Flag) && WorksIn(region);
 
     /// <summary>The cards: the calls and the news always, the map where the region has a map.</summary>
-    public static IReadOnlyList<PhoneCard> Cards(string region)
+    public static IReadOnlyList<PhoneCard> Cards(string region, bool powers = false)
     {
         var cards = new List<PhoneCard> { PhoneCard.Calls, PhoneCard.News };
         if (RegionMap.Of(region) != null) cards.Add(PhoneCard.Map);
+        // POWERS (plan 36 · TR8's panel), once the Power Watch is in the bag: the phone carries it as the C-Gear did
+        if (powers) cards.Add(PhoneCard.Powers);
         return cards;
     }
 

@@ -332,6 +332,8 @@ public partial class GameEngine
             // Fly's choice is the map of the region in its own mode (TOWN_MAP_MODE_FLY; plan 01 · M12)
             townMapFromBag = false;
             flow.TownMapScreen.Open(flyChoice.Tabs, flyChoice.Home, TownMapMode.Fly, user);
+            // SOAR over a region whose Hall of Fame is set (plan 38 · EX7)
+            flow.TownMapScreen.SoarableTab = SoarableTab;
             flow.State = GameState.FlyMap;
             return;
         }
@@ -1367,6 +1369,14 @@ public partial class GameEngine
                     // A ride on a course (plan 44 · SD5): the script hears its total as it is left
                     game.OpenPhotoTour(counter ?? "");
                     break;
+                case ScriptScreen.Delve:
+                    // A run down a hollow (plan 44 · SD8): the script hears how it ended as the camp comes back
+                    game.OpenDelve(counter ?? "");
+                    break;
+                case ScriptScreen.DelveBoard:
+                    // The camp's board (plan 44 · SD9): the script waits until it is put down
+                    game.OpenDelveBoard();
+                    break;
                 case ScriptScreen.TourReport:
                     // The tour's report (plan 44 · SD6): the script waits until it is left
                     game.OpenTourReport();
@@ -1834,6 +1844,7 @@ public partial class GameEngine
         // The photo book and its spots (plan 43 · LF4)
         public PhotoBook? PhotoBook => game.flow.PhotoBook;
         public TourReport? PhotoTour => game.flow.PhotoTour;
+        public Models.Delve.DelveRecord? DelveRecord => game.flow.DelveRecord;
         public bool PhotoAtSpot(string spot) => game.OpenPhotoAtSpot(spot);
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;

@@ -117,8 +117,10 @@ public class DelveTests
         Assert.Equal(a.Solid, b.Solid);
         Assert.Equal(DelveFloor.MapName, a.Name);
         Assert.NotEqual(a.Ground, DelveFloor.Generate(Hollow, 1, 4243).ToFile().Ground);
-        Assert.Single(a.Triggers!);
-        Assert.Equal('s', a.Ground[a.Triggers![0].Y][a.Triggers[0].X]);
+        // The stairs are the run's own rule (SD9), so no script stands on them
+        Assert.True(a.Triggers == null || a.Triggers.Count == 0);
+        var stairs = DelveFloor.Generate(Hollow, 1, 4242).Stairs;
+        Assert.Equal('s', a.Ground[stairs.Y][stairs.X]);
     }
 
     [Fact]

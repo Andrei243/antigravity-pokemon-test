@@ -34,6 +34,7 @@ public class SchemaTests
         ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
         ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
         ("statues.schema.json", typeof(StatueFile), "The hideaways' statues (Data/statues.json)"),
+        ("skyplaces.schema.json", typeof(PokemonPlatinumEngine.Overworld.SkyPlacesFile), "The places of the day's tables and finds (Data/skyplaces.json, plan 38 · EX7)"),
         ("recipes.schema.json", typeof(RecipesFile), "The crafting kit's recipes (Data/recipes.json)"),
         ("powers.schema.json", typeof(PowersFile), "The timed powers' strengths (Data/powers.json)"),
         ("training.schema.json", typeof(TrainingFile), "The training club's tables: the drills' prizes (Data/training.json)"),
@@ -56,6 +57,7 @@ public class SchemaTests
         ("photo-spots.schema.json", typeof(PhotoSpotsFile), "The photo spots (Data/photo-spots.json, plan 43 · LF4)"),
         ("photo-studio.schema.json", typeof(StudioFile), "The photo studio's backdrops and frames (Data/photo-studio.json, plan 43 · LF5)"),
         ("photo-tour.schema.json", typeof(PhotoTourFile), "The photo tour's courses (Data/photo-tour.json, plan 44 · SD5)"),
+        ("hollows.schema.json", typeof(PokemonPlatinumEngine.Models.Delve.HollowsFile), "The delve's hollows and the camp board's prizes (Data/hollows.json, plan 44 · SD9)"),
         // Plan 40 · GE5: which charm a Pokédex filled earns
         ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)"),
         // Plan 40 · GE7, GE8, GE9: the gift box's gifts, the trade board's made-up trainers and the festivals' days

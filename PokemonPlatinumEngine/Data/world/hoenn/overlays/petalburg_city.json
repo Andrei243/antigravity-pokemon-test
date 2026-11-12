@@ -3,6 +3,10 @@
   // hall and sends them out with Wally, whose catch in the tall grass east of town is petalburg_city.txt's. Wally's
   // father in the street and Scott are later chapters'; the road west to Route 104 isn't open yet
   "area": "petalburg_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 54, "y": 243, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 54, "z": 243, "script": "PhotoSpot" } ],
   "ours": { "superRod": [ ["Crayronin", 148, 152] ] },
   "bgmTrack": "hoenn/petalburg",
   "trees": "Round",

@@ -2283,12 +2283,14 @@
     "card": {
       "Calls": "APELURI",
       "News": "ȘTIRI",
-      "Map": "HARTĂ"
+      "Map": "HARTĂ",
+      "Powers": "PUTERI"
     },
     "hints": {
       "call": "Sună",
       "open": "Deschide harta",
-      "cards": "Cartele"
+      "cards": "Cartele",
+      "powers": "Deschide panoul"
     },
     "calls": {
       "empty": "Niciun număr salvat încă.",
@@ -2303,6 +2305,10 @@
       "heading": "HARTĂ",
       "body": "Deschide harta ca să vezi toată regiunea, oraș cu oraș și rută cu rută.",
       "none": "Locul acesta nu e pe harta telefonului."
+    },
+    "powers": {
+      "heading": "PUTERI LA ÎNDEMÂNĂ",
+      "body": "Deschide panoul Ceasului Puterilor ca să vezi puterile pe care le știi, încărcarea lor și pe cele active acum."
     },
     "registered": "Numărul lui {name} e salvat în telefonul tău!"
   },
@@ -2407,7 +2413,17 @@
       "kalosShauna": "Shauna",
       "kalosTierno": "Tierno",
       "kalosTrevor": "Trevor",
-      "kalosSycamore": "Prof. Sycamore"
+      "kalosSycamore": "Prof. Sycamore",
+      "alolaMom": "Mama",
+      "alolaHau": "{rival}",
+      "alolaLillie": "Lillie",
+      "alolaKukui": "Prof. Kukui",
+      "alolaHala": "Hala",
+      "galarMom": "Mama",
+      "galarHop": "{rival}",
+      "galarSonia": "Sonia",
+      "galarMagnolia": "Prof. Magnolia",
+      "galarLeon": "Leon"
     }
   },
   "pokenav": {
@@ -7438,6 +7454,11 @@
       "pages": "Pagini întoarse",
       "starlit": "Sub stele",
       "sinnoh_snapshot": "Instantanee din Sinnoh",
+      "kanto_snapshot": "Instantanee din Kanto",
+      "johto_snapshot": "Instantanee din Johto",
+      "hoenn_snapshot": "Instantanee din Hoenn",
+      "unova_snapshot": "Instantanee din Unova",
+      "kalos_snapshot": "Instantanee din Kalos",
       "backdrop": "Decor: {name}"
     },
     "frame": {
@@ -7655,7 +7676,32 @@
       "sinnoh_sandgem_lab": "Laboratorul din Sandgem",
       "sinnoh_jubilife_fountain": "Fântâna din Jubilife",
       "sinnoh_oreburgh_museum": "Muzeul din Oreburgh",
-      "sinnoh_floaroma_flowers": "Florile din Floaroma"
+      "sinnoh_floaroma_flowers": "Florile din Floaroma",
+      "kanto_pallet_lane": "Aleea din Pallet Town",
+      "kanto_viridian_square": "Piața din Viridian",
+      "kanto_pewter_stones": "Pietrele cenușii din Pewter",
+      "kanto_cerulean_bridge": "Malul apei din Cerulean",
+      "kanto_vermilion_harbour": "Portul din Vermilion",
+      "johto_new_bark_breeze": "Briza din New Bark",
+      "johto_violet_tower": "Turnul vechi din Violet",
+      "johto_goldenrod_plaza": "Piața din Goldenrod",
+      "johto_ecruteak_lanes": "Ulițele vechi din Ecruteak",
+      "johto_olivine_harbour": "Portul din Olivine",
+      "hoenn_littleroot_green": "Pajiștea din Littleroot",
+      "hoenn_petalburg_pond": "Iazul din Petalburg",
+      "hoenn_rustboro_corner": "Colțul de piatră din Rustboro",
+      "hoenn_slateport_market": "Piața din Slateport",
+      "hoenn_lilycove_seafront": "Faleza din Lilycove",
+      "unova_aspertia_steps": "Treptele din Aspertia",
+      "unova_floccesy_bell": "Clopotul din Floccesy",
+      "unova_virbank_docks": "Docurile din Virbank",
+      "unova_nimbasa_lights": "Luminile din Nimbasa",
+      "unova_driftveil_market": "Piața din Driftveil",
+      "kalos_vaniville_garden": "Grădina din Vaniville",
+      "kalos_aquacorde_river": "Râul din Aquacorde",
+      "kalos_santalune_fountain": "Fântâna din Santalune",
+      "kalos_lumiose_boulevard": "Bulevardul din Lumiose",
+      "kalos_cyllage_cliffs": "Stâncile din Cyllage"
     }
   },
   "hearts": {
@@ -7683,6 +7729,109 @@
       "noMap": "Nu există o hartă a acestei regiuni peste care să zbori.",
       "hallOfFame": "Cerul de aici se deschide după ce intri în Sala Celebrităților a acestei regiuni.",
       "noFlier": "Niciun Pokémon din echipa ta nu te poate purta prin văzduh."
+    },
+    "hint": {
+      "soar": "Zbor",
+      "turn": "Virează",
+      "climb": "Urcă / coboară",
+      "faster": "Mai repede",
+      "land": "Aterizează"
+    },
+    "place": {
+      "Islet": "Insula zilei",
+      "Grove": "Crângul zilei",
+      "Hollow": "Grota zilei",
+      "Peak": "Culmea zilei"
+    }
+  },
+  "delve": {
+    "floor": "Etajul {n} din {of}",
+    "leader": "LIDER",
+    "partner": "PARTENER",
+    "recruit": "RECRUT",
+    "level": "Nv. {n}",
+    "hunger": "BURTICĂ",
+    "moves": "ATACURI",
+    "pp": "{n}/{of}",
+    "bag": "RUCSAC  {n}/{of}",
+    "bagEmpty": "Încă n-ai găsit nimic",
+    "giveTo": "Dă {item} lui...",
+    "asks": "{pokemon} vrea să vină cu voi!",
+    "yes": "BINE AI VENIT",
+    "no": "NU ACUM",
+    "flinch": "o tresărire",
+    "home": "{pokemon} a venit acasă din scorbură!",
+    "board": "AVIZIERUL TABEREI",
+    "boardEmpty": "Nimic afișat azi. Revino mâine!",
+    "rank": "Rangul taberei: {n}",
+    "pays": "Răsplată: {prize}",
+    "done": "GATA",
+    "hint": { "strike": "Lovește", "moves": "Atacuri" },
+    "hollow": {
+      "brinecave": "Peștera Sării",
+      "rootwood": "Codrul Rădăcinilor",
+      "heartpeak": "Vârful Inimii",
+      "old_tower": "Turnul Vechi",
+      "test_hollow": "Scorbura de probă"
+    },
+    "snare": { "Sleep": "o capcană adormitoare", "Poison": "o capcană înțepătoare", "Drop": "o groapă" },
+    "request": {
+      "Rescue": "Un drumeț a rămas blocat la etajul {floor} din {hollow}. Ajunge la el!",
+      "Find": "Adu, te rog, {item} din {hollow}.",
+      "Befriend": "Un {species} din {hollow} își caută un cămin.",
+      "Clear": "Străbate {hollow} de sus până jos."
+    },
+    "refused": {
+      "Egg": "Un Ou nu poate coborî.",
+      "Fainted": "Nu mai are putere.",
+      "Locked": "O inimă încuiată nu coboară.",
+      "Same": "Alege doi Pokémoni diferiți.",
+      "NotNow": "Nu acum.",
+      "Blocked": "Drumul e blocat.",
+      "NoMove": "Nu e niciun atac acolo.",
+      "NoPP": "Atacul nu mai are PP.",
+      "NeedsABattle": "Atacul merge doar într-o luptă.",
+      "NotInTheBag": "Nu e în rucsac.",
+      "WouldNotHelp": "N-ar ajuta acum.",
+      "NobodyAsks": "Nu întreabă nimeni."
+    },
+    "event": {
+      "Stepped": "{who} a făcut un pas.",
+      "Struck": "{who} s-a năpustit!",
+      "UsedMove": "{who} a folosit {what}!",
+      "Missed": "{who} a ratat!",
+      "Damaged": "{target} a pierdut {amount} PV.",
+      "Fainted": "{who} a leșinat!",
+      "StatusGiven": "{who} este acum {what}.",
+      "StatusFailed": "N-a avut efect asupra lui {target}.",
+      "Confused": "{who} s-a zăpăcit!",
+      "Snapped": "{who} și-a revenit din zăpăceală.",
+      "StatChanged": "{what} lui {who} s-a schimbat.",
+      "Healed": "{who} și-a recăpătat {amount} PV.",
+      "Recoil": "{who} s-a rănit din recul.",
+      "Drained": "{who} i-a supt din puteri lui {target}.",
+      "Flinched": "{who} a tresărit!",
+      "LostTurn": "{who} nu s-a putut mișca ({what}).",
+      "HurtItself": "{who} s-a rănit singur de zăpăcit ce era!",
+      "Woke": "{who} s-a trezit!",
+      "Noticed": "{who} a observat echipa!",
+      "Fled": "{who} a fugit!",
+      "Snare": "{who} a călcat pe {what}!",
+      "Found": "{who} a găsit {what}!",
+      "BagFull": "Rucsacul e plin. {who} a lăsat {what} pe loc.",
+      "Ate": "{who} a mâncat {what}. Delicios!",
+      "Cured": "{who} se simte mai bine.",
+      "Starving": "{who} moare de foame!",
+      "Descended": "Echipa a coborât la etajul {amount}.",
+      "AsksToJoin": "{who} vrea să se alăture echipei!",
+      "Joined": "{who} s-a alăturat echipei!",
+      "Declined": "{who} a plecat în treaba lui.",
+      "Revived": "Revive l-a readus în simțiri pe {who}!",
+      "Cleared": "Echipa a ajuns la capătul scorburii!",
+      "Fell": "{who} s-a prăbușit. Echipa a fost dusă înapoi în tabără...",
+      "Escaped": "Echipa a ieșit cu Funia de Scăpare.",
+      "Bitten": "{who} suferă din cauza: {what}.",
+      "Guarded": "{target} păzește drumul în sus!"
     }
   }
 }

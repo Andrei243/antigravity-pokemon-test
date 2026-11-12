@@ -36,7 +36,12 @@ public partial class GameEngine
     {
         flow.PowersScreen.Update(dt);
         if (flow.PowersScreen.IsActive) return;
-        if (powersFromBag)
+        if (powersFromPhone)
+        {
+            powersFromPhone = false;
+            OpenPhone(PhoneCard.Powers);
+        }
+        else if (powersFromBag)
         {
             flow.State = GameState.BagMenu;
             flow.BagScreen.Resume();

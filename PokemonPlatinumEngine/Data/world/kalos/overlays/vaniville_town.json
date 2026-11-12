@@ -3,6 +3,12 @@
   // the neighbour who is the rival and Shauna come to meet the player the first time they step out, and send them on to
   // Aquacorde Town. Both are hidden by flags of ours until then
   "area": "vaniville_town",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 253, "z": 701, "kind": "Tree", "room": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 255, "y": 718, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 255, "z": 718, "script": "PhotoSpot" } ],
   "bgmTrack": "kalos/vaniville",
   "trees": "Round",
   "architecture": "Hamlet",

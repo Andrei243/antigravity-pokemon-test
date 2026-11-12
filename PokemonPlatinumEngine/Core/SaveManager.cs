@@ -420,9 +420,17 @@ public class SaveData
     /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
     public List<Models.PhotoPrint>? PhotoBook { get; set; }
 
+    /// <summary>The photo studio's last composition (plan 43 · LF5's leftover), which the studio opens on; null for a studio never left. A Pokémon or a Seal no longer had falls back as it opens.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.StudioShot? LastStudioShot { get; set; }
+
     /// <summary>The photo tour's report (plan 44 · SD5): each species' best photograph by stars and course, each course's best ride; null while empty.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.TourReportSave? PhotoTour { get; set; }
+
+    /// <summary>The delve's record (plan 44 · SD9): each hollow's clears, the board's requests done today, the prizes waiting; null while empty.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.Delve.DelveSave? Delve { get; set; }
     /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD1); null while empty, so an older save needs nothing.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.HeartsRecord? Hearts { get; set; }
