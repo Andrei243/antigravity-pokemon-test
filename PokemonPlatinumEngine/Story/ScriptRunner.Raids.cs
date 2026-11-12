@@ -72,6 +72,27 @@ public sealed partial class ScriptRunner
                 };
                 break;
             }
+            case "boss":
+            {
+                // A boss the story brings (plan 33 · GL6): the form named at its level beside three trainers of the data,
+                // a raid that can't be lost where the line says so. What `raid catch` throws at afterwards is the
+                // species itself, at the same level and stars, as a den's felled boss is
+                if (NoPokemonToBattle()) break;
+                var boss = Make(i.Other, i.Number, i);
+                var allies = new List<Trainer>();
+                foreach (string id in i.Trainers)
+                {
+                    var record = TrainerDatabase.Get(id, host.Region) ?? throw Wrong(i, $"there is no trainer '{id}'");
+                    var ally = new Trainer { Id = record.Id };
+                    TrainerDatabase.Fill(ally, record);
+                    allies.Add(ally);
+                }
+                raidDen = null;
+                raidToday = new RaidToday(boss.Species.Name, i.Numbers[0], i.Number, true);
+                host.RaidBattle(boss, new RaidTerms(i.Numbers[0], allies, CannotFail: !i.CanLose));
+                afterBusy = () => AfterBattle(mayLose: true);
+                break;
+            }
             case "wish":
             {
                 // A Wishing Piece thrown into the den looked into: RESULT 1 its beam lit for the day (the piece taken from

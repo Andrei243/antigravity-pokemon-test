@@ -37,6 +37,51 @@ internal static class OpenLook
         };
     }
 
+    /// <summary>The lights a place may have of its own (plan 33 · GL6; style guide, "Open world", "A place's own light").</summary>
+    public const string Night = "night", DarkestDay = "darkestDay";
+
+    /// <summary>The hour a place held in the night is drawn at, whatever the clock says (Spikemuth's).</summary>
+    public const float NightHour = 23f;
+
+    /// <summary>The hour the Darkest Day's light is drawn from before its colour is laid over it.</summary>
+    public const float DarkestDayHour = 19.5f;
+
+    /// <summary>Whether a light's name is one the open world draws.</summary>
+    public static bool IsMood(string? mood) => mood is Night or DarkestDay;
+
+    /// <summary>
+    /// A place's own light eased over the rig of the hour by <paramref name="share"/> (smoothed): <see cref="Night"/> is
+    /// the rig of <see cref="NightHour"/>, <see cref="DarkestDay"/> the evening's under a red, low sky with the Dynamax
+    /// energy's colour in its fog. With no light or no share the rig is handed back as it was, to the bit.
+    /// </summary>
+    public static LightRig InMood(LightRig open, string? mood, float share)
+    {
+        share = Math.Clamp(share, 0f, 1f);
+        if (share <= 0f || !IsMood(mood)) return open;
+        float s = share * share * (3f - 2f * share);
+        var target = mood == Night ? Open(NightHour) : DarkestDayRig();
+        return LightRig.Lerp(open, target, s);
+    }
+
+    /// <summary>The Darkest Day's light: the evening's, its sun a dull red, its sky the colour of the energy over Galar.</summary>
+    public static LightRig DarkestDayRig()
+    {
+        var rig = Open(DarkestDayHour);
+        var sky = new SkyColors(new Color(58, 14, 30, 255), new Color(132, 34, 52, 255), new Color(196, 74, 66, 255), new Color(120, 40, 60, 255), 0f);
+        return rig with
+        {
+            Light = rig.Light with
+            {
+                SunColor = rig.Light.SunColor * new Vector3(1.05f, 0.55f, 0.55f),
+                SkyAmbient = rig.Light.SkyAmbient * new Vector3(1.0f, 0.62f, 0.7f),
+                GroundAmbient = rig.Light.GroundAmbient * new Vector3(1.0f, 0.7f, 0.72f)
+            },
+            FogColor = new Vector3(0.52f, 0.16f, 0.2f),
+            FogAmount = MathF.Max(rig.FogAmount, 0.85f),
+            Sky = sky, Background = sky.Horizon, CloudShade = 0f
+        };
+    }
+
     /// <summary>
     /// The rig under a weather (style guide, "Open world", "Weather"): the field's light (<see cref="ArtLook.Weathered"/>)
     /// and the sky toward the weather's grey as a battle's (<see cref="ArtLook.InBattleWeather"/>); a cloudy sky is drawn

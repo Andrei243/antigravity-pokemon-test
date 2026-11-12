@@ -50,9 +50,12 @@
     },
     {
       "en": [
-        "The Cup's in Wyndon, up north by train. I'll see you there. In the stands, this time."
+        "The Cup's in Wyndon, up north by train from the station by the south gate. I'll see you there."
       ],
       "text": [
+        "Cupa e în Wyndon, sus la nord, cu trenul din gara de lângă poarta de sud. Ne vedem acolo."
+      ],
+      "was": [
         "Cupa e în Wyndon, sus în nord, cu trenul. Ne vedem acolo. În tribune, de data asta."
       ]
     },

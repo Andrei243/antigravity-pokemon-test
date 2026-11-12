@@ -8797,6 +8797,10 @@
         "accent": "en-us"
       }
     },
+    "macro_cosmos_staff": {
+      "note": "first spoken at wyndon.txt(43)",
+      "provisional": true
+    },
     "madame_ottilie_fray": {
       "note": "first spoken at JubilifeTV1F.txt(83)",
       "provisional": true
@@ -9492,6 +9496,10 @@
         "pitch": 0.92,
         "accent": "en-us"
       }
+    },
+    "oleana": {
+      "note": "first spoken at Wyndon_RoseTower.txt(8)",
+      "provisional": true
     },
     "olivia": {
       "note": "first spoken at AlolaLeague_OliviaRoom.txt(8)",
@@ -10582,6 +10590,10 @@
       "note": "first spoken at Wedgehurst_Station.txt(7)",
       "provisional": true
     },
+    "station_staff": {
+      "note": "first spoken at hammerlocke.txt(47)",
+      "provisional": true
+    },
     "steven": {},
     "storyteller": {
       "note": "first spoken at lacunosa_town.txt(140)",
@@ -11505,6 +11517,7 @@
     "Lysandre": "lysandre",
     "Machamp": "machamp",
     "Machop": "machop",
+    "Macro Cosmos Staff": "macro_cosmos_staff",
     "Madame Ottilie Fray": "madame_ottilie_fray",
     "Maid": "maid",
     "Maid Belinda": "maid_belinda",
@@ -11586,6 +11599,7 @@
     "Old Lady": "old_lady",
     "Old Man": "look:old_man",
     "Old Woman": "look:old_woman",
+    "Oleana": "oleana",
     "Olivia": "olivia",
     "Olympia": "olympia",
     "Ombeline": "ombeline",
@@ -11716,6 +11730,7 @@
     "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
     "Station Attendant": "station_attendant",
+    "Station Staff": "station_staff",
     "Steven": "steven",
     "Storyteller": "storyteller",
     "Studio Hand": "studio_hand",

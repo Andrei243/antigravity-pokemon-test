@@ -50,10 +50,35 @@
     },
     {
       "en": [
-        "Our Pokémon are going for it! But nothing they do even touches it..."
+        "It's coming this way! Everyone, out, now! Go!"
       ],
       "text": [
+        "Vine încoace! Toată lumea, afară, acum! Hai!"
+      ],
+      "was": [
         "Pokémonii noștri se reped la el! Dar nimic din ce fac nici măcar nu-l atinge..."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ],
+      "was": [
+        "Ceața se închide peste tot."
+      ]
+    },
+    {
+      "en": [
+        "Our Pokémon threw everything at it, and nothing they did even touched it..."
+      ],
+      "text": [
+        "Pokémonii noștri au aruncat cu tot ce aveau în el și nimic nu l-a atins măcar..."
+      ],
+      "was": [
+        "Leon"
       ]
     },
     {
@@ -62,6 +87,9 @@
       ],
       "text": [
         "Ceața se închide peste tot."
+      ],
+      "was": [
+        "{player}! Hop! Aici erați. La ce v-ați gândit, să intrați singuri în pădure?"
       ]
     },
     {
@@ -70,6 +98,9 @@
       ],
       "text": [
         "Leon"
+      ],
+      "was": [
+        "Amândoi, acasă. Acum. Și Wooloo la fel."
       ]
     },
     {
@@ -86,6 +117,72 @@
       ],
       "text": [
         "Amândoi, acasă. Acum. Și Wooloo la fel."
+      ]
+    }
+  ],
+  "Altar": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "This is it, the old altar. The stories say the heroes laid their sword and shield down here when the Darkest Day was over."
+      ],
+      "text": [
+        "Asta e, vechiul altar. Poveștile spun că eroii și-au lăsat aici sabia și scutul după ce s-a terminat Ziua cea mai Întunecată."
+      ]
+    },
+    {
+      "en": [
+        "On the stone lie a sword and a shield, both eaten through with rust."
+      ],
+      "text": [
+        "Pe piatră stau o sabie și un scut, amândouă roase de rugină."
+      ]
+    },
+    {
+      "en": [
+        "They're just... rusty. That's all that's left of them? Then how are we meant to stop what's happening over Wyndon?"
+      ],
+      "text": [
+        "Sunt doar... ruginite. Asta e tot ce a rămas din ele? Atunci cum ar trebui să oprim ce se întâmplă deasupra Wyndonului?"
+      ]
+    },
+    {
+      "en": [
+        "The fog thickens. Two shapes stand in it, one with the eyes of a sword and one with a mane like a shield."
+      ],
+      "text": [
+        "Ceața se îngroașă. Două siluete stau în ea, una cu ochi ca de sabie și una cu o coamă ca un scut."
+      ]
+    },
+    {
+      "en": [
+        "It's them! The two from the fog! They're... they're looking at the sky. Over Wyndon."
+      ],
+      "text": [
+        "Ei sunt! Cei doi din ceață! Se... se uită la cer. Spre Wyndon."
+      ]
+    },
+    {
+      "en": [
+        "They know. They're going to help, I'm sure of it! Come on, {player}, back to Wyndon. The tower!"
+      ],
+      "text": [
+        "Știu. O să ne ajute, sunt sigur! Hai, {player}, înapoi în Wyndon. La turn!"
+      ]
+    },
+    {
+      "en": [
+        "When the fog thins, the two are gone, and so are the rusted sword and shield."
+      ],
+      "text": [
+        "Când ceața se subțiază, cei doi au dispărut, la fel și sabia și scutul ruginite."
       ]
     }
   ]
