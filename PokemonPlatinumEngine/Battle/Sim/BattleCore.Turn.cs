@@ -139,6 +139,8 @@ public sealed partial class BattleCore
 
         // The terrain runs down (plan 06 · R19b; Showdown's onFieldResidual, after the weather)
         if (Field.Terrain is { } terrain && Field.TerrainTurns > 0 && --Field.TerrainTurns == 0) EndTerrain(terrain);
+        // And a tale (plan 46 · CP11)
+        TaleRunsDown();
         return true;
     }
 

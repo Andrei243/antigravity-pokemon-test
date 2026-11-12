@@ -326,6 +326,8 @@ public static partial class DamageCalculator
         {
             if (type == PokemonType.Electric && field.MudSport()) power /= 2;
             if (type == PokemonType.Fire && field.WaterSport()) power /= 2;
+            // The tale over the field (plan 46 · CP11): no tale is told under Platinum's rules, so its numbers never pass here
+            if (BattleCore.TaleBoostPercent(field, type, move.Data.Flags) is var tale and not 100) power = power * tale / 100;
             // The terrains (plan 06 · R19b; Showdown's onBasePower): their own type's moves by a Pokémon on them are
             // 5325/4096 as strong, the quakes against one on Grassy Terrain and Dragon moves against one on Misty
             // Terrain half as strong. Nothing in Platinum's rules lays a terrain, so its numbers never pass here.

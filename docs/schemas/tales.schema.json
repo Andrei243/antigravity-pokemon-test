@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The Tales' rules (Data/tales.json, plan 46 · CP11)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "turns": {
+      "type": "integer"
+    },
+    "tales": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "boost": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "types": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "Normal",
+                    "Fire",
+                    "Water",
+                    "Grass",
+                    "Electric",
+                    "Ice",
+                    "Fighting",
+                    "Poison",
+                    "Ground",
+                    "Flying",
+                    "Psychic",
+                    "Bug",
+                    "Rock",
+                    "Ghost",
+                    "Dragon",
+                    "Steel",
+                    "Dark",
+                    "Fairy",
+                    "Sound"
+                  ]
+                }
+              },
+              "flags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "percent": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "percent"
+            ],
+            "additionalProperties": false
+          },
+          "accuracy": {
+            "type": "integer"
+          },
+          "weather": {
+            "enum": [
+              "None",
+              "Rain",
+              "Sandstorm",
+              "Sun",
+              "Hail",
+              "Fog",
+              "Snow",
+              "HarshSun",
+              "HeavyRain",
+              "StrongWinds",
+              null
+            ]
+          },
+          "noNight": {
+            "type": "boolean"
+          },
+          "sky": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "color": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "amount": {
+                "type": "number"
+              },
+              "grey": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "color",
+              "amount"
+            ],
+            "additionalProperties": false
+          },
+          "songLayer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "forms": {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "species": {
+                  "type": "string"
+                },
+                "form": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "species",
+                "form"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "turns"
+  ],
+  "additionalProperties": false
+}

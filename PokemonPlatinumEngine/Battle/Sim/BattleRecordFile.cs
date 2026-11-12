@@ -128,6 +128,10 @@ public sealed class BattleRecordFile
     public bool MegaMaxBand { get; set; }
     public bool TeraOrb { get; set; }
 
+    /// <summary>The tales the player could tell, with the Book of Tales (plan 46 · CP11); null, as a file without them, for none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? Tales { get; set; }
+
     /// <summary>A Battle Palace's battle and a Battle Arena's bouts (plan 14 · B9): both change how it goes. A file without them is neither.</summary>
     public bool Palace { get; set; }
     public int TurnLimit { get; set; }
@@ -216,6 +220,7 @@ public sealed class BattleRecordFile
             DynamaxBand = setup.DynamaxBand,
             MegaMaxBand = setup.MegaMaxBand,
             TeraOrb = setup.TeraOrb,
+            Tales = setup.Tales?.ToList(),
             Palace = setup.Palace,
             TurnLimit = setup.TurnLimit,
             HideLevel = setup.HideLevel,
@@ -354,6 +359,7 @@ public sealed class BattleRecordFile
             DynamaxBand = DynamaxBand,
             MegaMaxBand = MegaMaxBand,
             TeraOrb = TeraOrb,
+            Tales = Tales,
             Palace = Palace,
             TurnLimit = TurnLimit,
             HideLevel = HideLevel,
@@ -503,6 +509,10 @@ public sealed class RecordedTrainer
     public bool MegaMaxBand { get; set; }
     public bool TeraOrb { get; set; }
 
+    /// <summary>The tales the trainer could tell (plan 46 · CP11); null, as a file without them, for none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? Tales { get; set; }
+
     /// <summary>The look the person who carries them is drawn in, for a replay's screen; the rules never read it.</summary>
     public string? Look { get; set; }
 
@@ -522,6 +532,7 @@ public sealed class RecordedTrainer
         DynamaxBand = t.DynamaxBand,
         MegaMaxBand = t.MegaMaxBand,
         TeraOrb = t.TeraOrb,
+        Tales = t.Tales?.ToList(),
         Look = t.Look,
         Party = t.Party.Members.Select(RecordedPokemon.Of).ToList()
     };
@@ -542,6 +553,7 @@ public sealed class RecordedTrainer
             DynamaxBand = DynamaxBand,
             MegaMaxBand = MegaMaxBand,
             TeraOrb = TeraOrb,
+            Tales = Tales?.ToList(),
             Look = Look
         };
         foreach (var p in Party) trainer.Party.Add(p.ToPokemon(rules));
@@ -606,6 +618,10 @@ public sealed class RecordedChoice
     public bool Dynamax { get; set; }
     public bool Terastallize { get; set; }
 
+    /// <summary>The tale told with the move (plan 46 · CP11); null in every other answer.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Tale { get; set; }
+
     /// <summary>A rotation battle's turn of the turntable with the move (plan 14 · B7); 0 in every other answer.</summary>
     public int Rotation { get; set; }
 
@@ -624,6 +640,7 @@ public sealed class RecordedChoice
         UltraBurst = c.UltraBurst,
         Dynamax = c.Dynamax,
         Terastallize = c.Terastallize,
+        Tale = c.Tale,
         Rotation = c.Rotation
     };
 
@@ -638,6 +655,7 @@ public sealed class RecordedChoice
         UltraBurst = UltraBurst,
         Dynamax = Dynamax,
         Terastallize = Terastallize,
+        Tale = Tale,
         Rotation = Rotation
     };
 }

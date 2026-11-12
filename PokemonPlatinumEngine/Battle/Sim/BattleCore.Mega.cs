@@ -123,6 +123,8 @@ public sealed partial class BattleCore
         ChooseDynamax(chosen);
         // And the Terastallizations (plan 06 · R23)
         ChooseTera(chosen);
+        // And the tales (plan 46 · CP11)
+        ChooseTale(chosen);
     }
 
     /// <summary>

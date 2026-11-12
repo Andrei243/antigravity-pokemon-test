@@ -26,7 +26,9 @@ public static class Prompts
         ("shared.keys.enter", GameAction.Menu, KeyboardKey.Enter),
         ("shared.keys.shift", GameAction.Run, KeyboardKey.LeftShift),
         ("capsules.keyC", GameAction.Item, KeyboardKey.C),
-        ("shared.keys.c", GameAction.Item, KeyboardKey.C)
+        ("shared.keys.c", GameAction.Item, KeyboardKey.C),
+        // The move menu's TALE button (plan 46 · CP11)
+        ("shared.keys.pageRight", GameAction.PageRight, KeyboardKey.E)
     };
 
     private static readonly Regex Placeholder = new(@"\{(key|KEY):(confirm|cancel|menu|item|run)\}", RegexOptions.Compiled);

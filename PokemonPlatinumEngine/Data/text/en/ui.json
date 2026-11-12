@@ -13,7 +13,8 @@
       "arrows": "Arrows",
       "enter": "Enter",
       "x": "X",
-      "c": "C"
+      "c": "C",
+      "pageRight": "E"
     },
     "hints": {
       "here": "Here",
@@ -1523,6 +1524,43 @@
     "id": "ID No.",
     "type": "TYPE",
     "earlier": "EARLIER TEAMS"
+  },
+  "basme": {
+    "zmeu": {
+      "name": "the Zmeu",
+      "told": "The sun stands still over the field!",
+      "rule": "For five turns Fire moves hit harder, and the night can't fall.",
+      "story": "A Zmeu stole the sun and hid it in his tower of brass, and the day would not end. A shepherd climbed the tower with a flute and played until the dragon slept, and the sun stood over the hills a whole year before it learned to set again."
+    },
+    "varcolac": {
+      "name": "the Vârcolac",
+      "told": "The moon is eaten and the field goes dark!",
+      "rule": "For five turns Dark and Ghost moves hit harder, and every move hits less often.",
+      "story": "When a child is born under no blessing, a Vârcolac is born in the sky. It chases the moon and bites it, and the night goes dark. The villagers bang pots and ring bells until it lets go, and the moon comes back with a bite out of its edge."
+    },
+    "solomonar": {
+      "name": "the Solomonar",
+      "told": "Storm clouds gather at the teller's call!",
+      "rule": "For five turns rain falls over the field.",
+      "story": "The Solomonari learn their craft in a school under a lake, and the best of them rides a dragon through the clouds. He asks a village for milk and bread; where he is turned away the hail falls, and where he is fed the rain comes soft and on time."
+    },
+    "dochia": {
+      "name": "Baba Dochia",
+      "told": "The cold comes back over the field!",
+      "rule": "For five turns snow falls over the field.",
+      "story": "Old Dochia drove her sheep up the mountain in March, wearing nine coats. The sun shone, so she took them off one by one. On the ninth day the frost came back, and she froze to stone with her flock on the peak, where she stands to this day."
+    },
+    "ielele": {
+      "name": "the Ielele",
+      "told": "A night dance rings through the field!",
+      "rule": "For five turns Sound-type moves, and every move made of sound, hit harder.",
+      "story": "On summer nights the Ielele dance in a ring in the meadows, and the grass burns where their feet have been. Whoever hears their song dances until dawn. The wise ones stop their ears with wormwood and walk the long way home."
+    }
+  },
+  "bookOfTales": {
+    "title": "Book of Tales",
+    "empty": "No tale is written in the Book yet.",
+    "when": "When it is told"
   },
   "journal": {
     "title": "JOURNAL",
@@ -4175,6 +4213,14 @@
     "cantTerastallize": "{pokemon} can't Terastallize!",
     "teraOnlyOnce": "You can Terastallize only once in a battle!",
     "terastallized": "{pokemon} Terastallized into the {type} type!",
+    "cantTellTale": "That tale can't be told now!",
+    "taleAlreadyTold": "The tale of {tale} has been told already!",
+    "taleOnlyOnce": "You can tell only one tale and give one answer in a battle!",
+    "taleTold": "{trainer} told the tale of {tale}!",
+    "taleAnswered": "{trainer} answered {ended} with the tale of {tale}!",
+    "taleEnded": "The tale of {tale} came to its end.",
+    "taleWoke": "{pokemon} woke to the tale of {tale}!",
+    "taleSlept": "{pokemon} was itself again.",
     "stellarType": "Stellar",
     "teraformZero": "{pokemon}'s {ability} cleared the weather and the terrain away!",
     "theDimensionsBecameDistorted": "The dimensions became distorted!",

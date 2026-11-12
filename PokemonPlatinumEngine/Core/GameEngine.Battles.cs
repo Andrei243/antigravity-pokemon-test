@@ -255,6 +255,7 @@ public partial class GameEngine
                 EmeraldSafari = kind == BattleKind.Safari && Here.Id == RegionDatabase.Hoenn,
                 Pokeblocks = kind == BattleKind.Safari && Here.Id == RegionDatabase.Hoenn ? flow.PokeblockCase : null,
                 MoveHints = MoveHintsOn,
+                Tales = TalesLearned(),
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
                 CrossedExp = CrossedExpHere(),
@@ -688,6 +689,7 @@ public partial class GameEngine
                 // A Battle Royal is fought for its placing alone: no EXP, no prize and nobody whites out (plan 14 · B13)
                 NoRewards = royal,
                 MoveHints = MoveHintsOn,
+                Tales = TalesLearned(),
                 TrainerLines = TrainerLinesOn,
                 // Platinum's two battle options (plan 08 · P1): the core offers only where a single battle allows it
                 OffersSwitch = Settings.BattleStyle == BattleStyle.Shift && !flow.Run.SetStyle,

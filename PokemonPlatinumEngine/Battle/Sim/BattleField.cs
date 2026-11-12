@@ -138,6 +138,13 @@ public sealed class PlaceState
 }
 
 /// <summary>
+/// A tale told over the field (plan 46 · CP11): which (<c>Data/tales.json</c>'s id), the side whose trainer told it, the
+/// turn ends it has left, its rule as the battle's table has it, and whether it brought the weather now over the field
+/// (which goes with it). It holds over both sides alike.
+/// </summary>
+public sealed record TaleState(string Id, BattleSide Teller, int Turns, Data.TaleRule Rule, bool BroughtWeather = false);
+
+/// <summary>
 /// The battlefield beyond the Pokémon on it (plan 06 · R3): the weather, Trick Room, Gravity, each side's screens
 /// and hazards, and what is on its way to each place. Counters count turn ends still to come, as the original's.
 /// </summary>
@@ -193,6 +200,9 @@ public sealed class FieldState
     /// ally's bonus goes by (<see cref="PokemonPlatinumEngine.Overworld.SosChain.Of"/>). Nothing outside the battle keeps it.
     /// </summary>
     public int SosChain { get; internal set; }
+
+    /// <summary>The tale told over the field (plan 46 · CP11), or null: whose it is and the turn ends it has left.</summary>
+    public TaleState? Tale { get; internal set; }
 
     public bool TrickRoom => TrickRoomTurns > 0;
     public bool Gravity => GravityTurns > 0;

@@ -179,6 +179,8 @@
         "Tower",
         "Aerie",
         "Tent",
+        "Field",
+        "Court",
         null
       ]
     },

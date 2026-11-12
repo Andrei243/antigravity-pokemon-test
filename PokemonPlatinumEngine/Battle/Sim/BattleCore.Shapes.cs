@@ -102,6 +102,8 @@ public sealed partial class BattleCore
         Crown(b);
         // Tera Shift and Embody Aspect (plan 06 · R23)
         TeraOnEntry(b);
+        // A Pokémon bound to the tale its side tells wakes as it comes in (plan 46 · CP11)
+        WakeToTheTale(b);
         HpShapes(b);
     }
 
