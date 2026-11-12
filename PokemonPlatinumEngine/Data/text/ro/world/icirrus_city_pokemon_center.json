@@ -1,5 +1,23 @@
 {
   "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bun venit! Cu ce vă pot ajuta?"
+        ]
+      }
+    },
     "2": {
       "name": {
         "en": [
@@ -15,16 +33,6 @@
         ],
         "text": [
           "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
-        ]
-      }
-    },
-    "4": {
-      "name": {
-        "en": [
-          "Nurse"
-        ],
-        "text": [
-          "Asistentă"
         ]
       }
     },
@@ -46,21 +54,13 @@
         ]
       }
     },
-    "1": {
+    "4": {
       "name": {
         "en": [
-          "Clerk"
+          "Nurse"
         ],
         "text": [
-          "Funcționar"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome! How can I help you?"
-        ],
-        "text": [
-          "Bun venit! Cu ce vă pot ajuta?"
+          "Asistentă"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Gift Runner"
         ],
         "text": [
-          ""
+          "Curier de Cadouri"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Gift Runners, at your service!"
         ],
         "text": [
-          ""
+          "Curierii de Cadouri, la dispoziția ta!"
         ]
       }
     }

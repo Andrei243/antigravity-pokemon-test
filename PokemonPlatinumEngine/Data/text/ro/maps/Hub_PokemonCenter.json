@@ -4,7 +4,7 @@
       "Pokémon Center"
     ],
     "text": [
-      ""
+      "Centrul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Nurse Joy"
         ],
         "text": [
-          ""
+          "Asistenta Joy"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "PC Terminal"
         ],
         "text": [
-          ""
+          "Terminal PC"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Globetrotter"
         ],
         "text": [
-          ""
+          "Hoinarul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I keep a Badge case for every region I have been to. The hub is the one place none of them is any use!"
         ],
         "text": [
-          ""
+          "Am o cutie de Insigne pentru fiecare regiune în care am fost. Aici e singurul loc unde niciuna nu-și are rostul!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Old Sailor"
         ],
         "text": [
-          ""
+          "Bătrânul Marinar"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Before the harbours all sailed here, a Trainer had to go round the long way, region after region. Not any more."
         ],
         "text": [
-          ""
+          "Înainte ca porturile să navigheze toate încoace, un Antrenor trebuia să ocolească pe drumul lung, regiune după regiune. Nu și acum."
         ]
       }
     }

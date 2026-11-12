@@ -14,7 +14,7 @@
           "Harbourmaster"
         ],
         "text": [
-          ""
+          "Căpitanul portului"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Traveller"
         ],
         "text": [
-          ""
+          "Călătorul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Every ship in this harbour flies a different flag. I like to guess where each one has come from."
         ],
         "text": [
-          ""
+          "Fiecare navă din portul ăsta are alt steag. Îmi place să ghicesc de unde a venit fiecare."
         ]
       }
     }

@@ -4,7 +4,7 @@
       "Pokémon Center"
     ],
     "text": [
-      ""
+      "Centrul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -23,8 +23,8 @@
           "It is closed, I'm sorry to say. The link to the wider world has gone quiet."
         ],
         "text": [
-          "",
-          ""
+          "Bun venit la ghișeul Wi-Fi Plaza: un bâlci unde Antrenori din toată lumea joacă jocuri împreună.",
+          "E închis, din păcate. Legătura cu lumea largă a amuțit."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -43,8 +43,8 @@
           "Its doors are shut for the time being. The link to the wider world is down."
         ],
         "text": [
-          "",
-          ""
+          "Acesta e Pokémon Wi-Fi Club, pentru lupte și schimburi cu prieteni care locuiesc departe.",
+          "Deocamdată ușile sunt închise. Legătura cu restul lumii nu funcționează."
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -63,8 +63,8 @@
           "There is little to explain while it is closed, though. I do hope you will come back when the link is up again!"
         ],
         "text": [
-          "",
-          ""
+          "Eu sunt aici ca să explic Wi-Fi Club oricui întreabă.",
+          "Dar cât e închis, nu prea e ce explica. Sper să revii când legătura merge din nou!"
         ]
       }
     }
