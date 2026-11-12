@@ -35,9 +35,13 @@ internal static partial class ModernUi
         }
 
         Backdrop(sw, sh);
-        ScreenTitle(Text.Of("boxes.title"));
+        ScreenTitle(Text.Of(pc.PickingBox ? "boxes.pickTitle" : pc.PickingPokemon ? "boxes.pickPokemonTitle" : "boxes.title"));
         var under = pc.Under(party, stored);
-        if (TeamHints(sw, pc) || BoxToolHints(sw, pc)) { }
+        // Opened to pick one of the boxes' Pokémon (the Stroll Counter, plan 35 · BN7)
+        if (pc.PickingPokemon) Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.pick"), Hint("shared.keys.esc", "shared.hints.back"));
+        // Opened to pick a box (the pasture's board, plan 35 · BN5): left and right, and A takes the box shown
+        else if (pc.PickingBox) Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.changeBox"), Hint("shared.keys.z", "shared.hints.pick"), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (TeamHints(sw, pc) || BoxToolHints(sw, pc)) { }
         else if (pc.AskingRelease) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.release"), Hint("shared.keys.esc", "shared.hints.keepIt"));
         else if (pc.Marking != null) Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.mark"), Hint("shared.keys.esc", "shared.hints.back"));
         else if (pc.Menu != null || pc.BoxMenu != null)

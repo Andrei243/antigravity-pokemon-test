@@ -15,6 +15,9 @@ script President
   if not poketchapp LinkSearcher goto LinkSearcher
   if badges < 7 goto SevenBadges
   if not poketchapp MoveTester goto MoveTester
+  # For Sinnoh's Champion, his newest device (plan 35 · BN7; its lines are written last)
+  if flag SinnohHallOfFame goto StrollCounter
+label RadarOrNot
   if item "Poké Radar" goto Radar
   say "People all over Sinnoh dream up apps of their own. Keep your eyes open, and your Pokétch will keep growing!"
   end
@@ -60,4 +63,14 @@ label SevenBadges
   end
 label Radar
   say "A Poké Radar! Hmm... perhaps I should ask people what apps they'd like next. What a thought!"
+  end
+# The Stroll Counter (plan 35 · BN7): the president's newest device, once, for Sinnoh's Champion, under the modern rules.
+label StrollCounter
+  if flag FLAG_GOT_STROLL_COUNTER goto RadarOrNot
+  if not modern goto RadarOrNot
+  say "Sinnoh's Champion, in my shop! Then you're just the person to try my newest device. It doesn't go on the wrist at all!"
+  give "Stroll Counter"
+  setflag FLAG_GOT_STROLL_COUNTER
+  say "It's the Stroll Counter. Put a Pokémon from your PC's boxes in it at any PC, and it comes along on every step you take."
+  say "It seeks out things on the way, and meets wild Pokémon too. Bring it back to a PC, and your Pokémon will have grown!"
   end

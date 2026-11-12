@@ -1,0 +1,44 @@
+# The pasture (plan 35 · BN5's owed song): an unhurried D-major waltz for the meadow where a box of the PC grazes, a
+# flute singing over a nylon guitar's rocking arpeggios like a breeze over the grass, strings under it and a plucked
+# bass keeping the sway; after dark the ocarina and the harp take the tune. Original composition for this game. It
+# waits for the user's ear: the pastures play their region's stand-ins until it is approved.
+title The Pasture
+tempo 104
+meter 3/4
+reverb 0.3
+nighttempo 0.92
+
+track lead flute night=ocarina vol=0.7 pan=0 rev=0.3
+  L o5 f+4 a4 f+8 e8 | o5 d4 e8 f+8 g4 | o5 a4. f+8 d4 | o5 e2. |
+  o5 f+4 a4 b8 a8 | o5 g4 b8 a8 g4 | o5 f+4 e4 c+4 | o5 d2. |
+  o5 f+4 b4 f+4 | o5 g4. f+8 e4 | o5 f+8 e8 d4 a4 | o5 e2. |
+  o5 d4 f+4 b4 | o5 g4 b4 o6 d4 | o6 c+4. o5 b8 a4 | o5 a2 r4 |
+  o5 b4 o6 d4 o5 b4 | o5 a4 o6 c+4 o5 a4 | o5 a4. f+8 c+4 | o5 d4 f+4 b4 |
+  o5 b4. a8 g4 | o5 e4 g4 b4 | o5 a4 g4 e4 | o5 d2. |
+
+track guitar nylonguitar night=harp vol=0.46 pan=-0.3 rev=0.25
+  L o3 d8 a8 o4 d8 f+8 a8 f+8 | o3 g8 o4 d8 g8 b8 o5 d8 o4 b8 | o3 d8 a8 o4 d8 f+8 a8 f+8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 |
+  o3 d8 a8 o4 d8 f+8 a8 f+8 | o3 g8 o4 d8 g8 b8 o5 d8 o4 b8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 | o3 d8 a8 o4 d8 f+8 a8 f+8 |
+  o3 b8 o4 f+8 b8 o5 d8 f+8 d8 | o3 g8 o4 d8 g8 b8 o5 d8 o4 b8 | o3 d8 a8 o4 d8 f+8 a8 f+8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 |
+  o3 b8 o4 f+8 b8 o5 d8 f+8 d8 | o3 e8 b8 o4 e8 g8 b8 g8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 |
+  o3 g8 o4 d8 g8 b8 o5 d8 o4 b8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 | o3 f+8 o4 c+8 f+8 a8 o5 c+8 o4 a8 | o3 b8 o4 f+8 b8 o5 d8 f+8 d8 |
+  o3 g8 o4 d8 g8 b8 o5 d8 o4 b8 | o3 e8 b8 o4 e8 g8 b8 g8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 | o3 d8 a8 o4 d8 f+8 a8 f+8 |
+
+track pad strings vol=0.2 pan=0.25 rev=0.38
+  L o4 (d f+ a)2. | (d g b)2. | (d f+ a)2. | (c+ e a)2. |
+  (d f+ a)2. | (d g b)2. | (c+ e a)2. | (d f+ a)2. |
+  (d f+ b)2. | (d g b)2. | (d f+ a)2. | (c+ e a)2. |
+  (d f+ b)2. | (e g b)2. | (c+ e a)2. | (c+ e a)2. |
+  (d g b)2. | (c+ e a)2. | (c+ f+ a)2. | (d f+ b)2. |
+  (d g b)2. | (e g b)2. | (c+ e a)2. | (d f+ a)2. |
+
+track bass contrabass vol=0.5 rev=0.1
+  L o3 d4 r4 a4 | o3 g4 r4 d4 | o3 d4 r4 a4 | o3 a4 r4 e4 |
+  o3 d4 r4 a4 | o3 g4 r4 d4 | o3 a4 r4 e4 | o3 d4 r4 a4 |
+  o3 b4 r4 f+4 | o3 g4 r4 d4 | o3 d4 r4 a4 | o3 a4 r4 e4 |
+  o3 b4 r4 f+4 | o3 e4 r4 b4 | o3 a4 r4 e4 | o3 a4 r4 e4 |
+  o3 g4 r4 d4 | o3 a4 r4 e4 | o3 f+4 r4 c+4 | o3 b4 r4 f+4 |
+  o3 g4 r4 d4 | o3 e4 r4 b4 | o3 a4 r4 e4 | o3 d4 r4 a4 |
+
+track shaker kit vol=0.2 pan=0.2 rev=0.12
+  L [ v40 k4 v24 k8 k8 v32 k4 | ]24

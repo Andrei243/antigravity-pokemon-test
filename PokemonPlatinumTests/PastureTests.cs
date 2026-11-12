@@ -7,6 +7,7 @@ using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
+using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumTests;
 
@@ -169,6 +170,30 @@ public class PastureTests
             Assert.Empty(game.Herd);
             Assert.Equal(1, game.Pasture("box", -1).Result);
             Assert.Equal(4, game.Herd.Count);
+
+            // The PC's boxes opened to pick one: only the box changes, B leaves the meadow as it was, A takes the box shown
+            Assert.Equal(1, game.Pasture("pick").Result);
+            Assert.Equal(GameState.PCStorage, game.State);
+            Assert.True(game.PcScreen.PickingBox);
+            game.PcScreen.Move(0, 1, game.Party.Count);
+            Assert.Equal(StorageZone.BoxName, game.PcScreen.Zone);
+            game.PcScreen.Move(1, 0, game.Party.Count);
+            Assert.Equal(1, game.PcScreen.Box);
+            game.PcScreen.Close();
+            Frames(engine, 2);
+            Assert.Equal(GameState.Overworld, game.State);
+            Assert.Equal(0, game.Pasture("picked").Result);
+            Assert.Equal(4, game.Herd.Count);
+            Assert.Equal(1, game.Pasture("pick").Result);
+            game.PcScreen.Move(1, 0, game.Party.Count);
+            game.PcScreen.Confirm(game.Party, game.Boxes, _ => { });
+            Frames(engine, 2);
+            Assert.Equal(GameState.Overworld, game.State);
+            Assert.Equal(1, game.Pasture("picked").Result);
+            Assert.Equal(1, game.PastureVisit!.Box);
+            Assert.Equal(1, game.Boxes.CurrentBox);
+            Assert.Empty(game.Herd);
+            game.Pasture("box", -1);
 
             // Nobody flies, teleports or digs out of the meadow
             Assert.False(FieldMoveRules.SpotOf(game.Map, game.Player.GridX, game.Player.GridY, Direction.Up, new Walker(TravelMode.OnFoot, 0)).FlyAllowed);

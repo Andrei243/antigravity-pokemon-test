@@ -66,6 +66,8 @@ public partial class GameEngine
         var held = OwnedPokemon().Select(p => p.Id)
             .Concat(flow.Jobs.Away.Where(j => j.Id is { }).Select(j => j.Id!.Value))
             .Concat(flow.BugContest.Team.Select(p => p.Id))
+            // whoever rides in the Stroll Counter keeps their page (plan 35 · BN7)
+            .Concat(flow.Stroll.Pokemon?.Id is { } strolling ? new[] { strolling } : Array.Empty<Guid>())
             .Where(id => id != Guid.Empty);
         flow.Care.Prune(held);
         return flow.Care.ToSave();

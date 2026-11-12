@@ -881,6 +881,92 @@
         "MERGI LA PĂȘUNE",
         "ÎNCHIDE"
       ]
+    },
+    {
+      "en": [
+        "What should be done?",
+        "USE THE PC",
+        "STROLL COUNTER",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "Ce vrei să faci?",
+        "FOLOSEȘTE PC-UL",
+        "CONTORUL DE PLIMBARE",
+        "ÎNCHIDE"
+      ]
+    },
+    {
+      "en": [
+        "What should be done?",
+        "USE THE PC",
+        "GO TO THE PASTURE",
+        "STROLL COUNTER",
+        "SWITCH OFF"
+      ],
+      "text": [
+        "Ce vrei să faci?",
+        "FOLOSEȘTE PC-UL",
+        "MERGI LA PĂȘUNE",
+        "CONTORUL DE PLIMBARE",
+        "ÎNCHIDE"
+      ]
+    },
+    {
+      "en": [
+        "{thing} came back from its stroll and went into the boxes, grown a little from {number} strides."
+      ],
+      "text": [
+        "{thing} s-a întors de la plimbare și a intrat în cutii, crescut puțin după {number} pași mari."
+      ]
+    },
+    {
+      "en": [
+        "{number} Pokémon met on the way went into the boxes too."
+      ],
+      "text": [
+        "{number} Pokémoni întâlniți pe drum au intrat și ei în cutii."
+      ]
+    },
+    {
+      "en": [
+        "{player} put {number} things found on the way in the Bag."
+      ],
+      "text": [
+        "{player} a pus în Rucsac {number} lucruri găsite pe drum."
+      ]
+    },
+    {
+      "en": [
+        "Put a Pokémon of the boxes in the Stroll Counter?"
+      ],
+      "text": [
+        "Pui un Pokémon din cutii în Contorul de Plimbare?"
+      ]
+    },
+    {
+      "en": [
+        "{thing} hopped into the Stroll Counter!"
+      ],
+      "text": [
+        "{thing} a sărit în Contorul de Plimbare!"
+      ]
+    },
+    {
+      "en": [
+        "That one can't go for a stroll."
+      ],
+      "text": [
+        "Acela nu poate ieși la plimbare."
+      ]
+    },
+    {
+      "en": [
+        "The boxes are full, so {thing} stays in the Stroll Counter for now. Make some room first!"
+      ],
+      "text": [
+        "Cutiile sunt pline, așa că {thing} rămâne deocamdată în Contorul de Plimbare. Fă mai întâi loc!"
+      ]
     }
   ],
   "RibbonSyndicateEntry": [
@@ -4784,6 +4870,7 @@
         "POKé JOBS",
         "NEXT BOX",
         "PREVIOUS BOX",
+        "CHOOSE A BOX",
         "LEAVE IT"
       ],
       "text": [
@@ -4791,7 +4878,16 @@
         "SLUJBE POKé",
         "CUTIA URMĂTOARE",
         "CUTIA DINAINTE",
+        "ALEGE O CUTIE",
         "LASĂ"
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon of {thing} came out into the meadow."
+      ],
+      "text": [
+        "Pokémonii din {thing} au ieșit pe pășune."
       ]
     },
     {

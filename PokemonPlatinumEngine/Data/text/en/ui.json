@@ -1687,8 +1687,56 @@
     "titleNumber": "No. {number}",
     "titleMore": "{first}–{last} of {count}"
   },
+  "stroll": {
+    "title": "STROLL COUNTER",
+    "empty": "Nobody rides in it. Put a Pokémon of the boxes in it at any PC.",
+    "nobody": "Empty",
+    "noCourse": "No course",
+    "counts": "{strides} STRIDES  ·  {sparks} SPARKS",
+    "held": "Met {caught}/{most}  ·  Found {found}/{most}",
+    "row": { "seek": "SEEK", "meet": "MEET", "course": "COURSE", "close": "CLOSE" },
+    "move": { "strike": "STRIKE", "dodge": "DODGE", "catch": "CATCH" },
+    "course": {
+      "sinnoh_meadow": "Sinnoh · Daisy Meadow",
+      "sinnoh_heights": "Sinnoh · Windy Heights",
+      "kanto_meadow": "Kanto · Clover Lane",
+      "kanto_heights": "Kanto · Pine Ridge",
+      "johto_meadow": "Johto · Bamboo Path",
+      "johto_heights": "Johto · Maple Hills",
+      "hoenn_meadow": "Hoenn · Seaside Trail",
+      "hoenn_heights": "Hoenn · Ash Slopes",
+      "unova_meadow": "Unova · Orchard Walk",
+      "unova_heights": "Unova · Bridgeview Bluff"
+    },
+    "seek": {
+      "begin": "Something is hidden in one of the bushes. Two tries!",
+      "found": "Found {item}! It's kept in the counter until a PC.",
+      "nothing": "Nothing there. Whatever it was got away.",
+      "tryAgain": "Not that one. One more try!"
+    },
+    "meet": {
+      "begin": "A wild {name} (Lv. {level}) appeared on the course!",
+      "caught": "Caught the {name}! It waits in the counter until a PC sends it to the boxes.",
+      "struck": "A hit on the {name}!",
+      "missed": "The {name} stepped aside.",
+      "dodged": "Dodged, and ready!",
+      "slipped": "The {name} slipped out!",
+      "hit": "The {name} struck back!",
+      "fled": "The {name} wandered off.",
+      "lost": "Worn out, it hurried back."
+    },
+    "why": {
+      "empty": "Nobody rides in it.",
+      "sparks": "Not enough sparks. Walk a little more!",
+      "full": "It's holding all it can. Empty it at a PC.",
+      "run": "This run won't let it catch anything.",
+      "course": "There's no course to walk yet."
+    }
+  },
   "boxes": {
     "title": "PC BOXES",
+    "pickTitle": "WHICH BOX GRAZES?",
+    "pickPokemonTitle": "WHO GOES FOR A STROLL?",
     "defaultName": "Box {number}",
     "party": "PARTY  {count} / {max}",
     "changeBoxNote": "Left and right change box.",

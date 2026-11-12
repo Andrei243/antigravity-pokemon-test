@@ -2078,8 +2078,56 @@
     "starsNote": "O stea pentru fiecare dintre cinci mari isprăvi.",
     "stamps": "ȘTAMPILE  {count} / {of}"
   },
+  "stroll": {
+    "title": "CONTORUL DE PLIMBARE",
+    "empty": "Nu se plimbă nimeni în el. Pune un Pokémon din cutii în el la orice PC.",
+    "nobody": "Gol",
+    "noCourse": "Niciun traseu",
+    "counts": "{strides} PAȘI MARI  ·  {sparks} SCÂNTEI",
+    "held": "Întâlniți {caught}/{most}  ·  Găsite {found}/{most}",
+    "row": { "seek": "CAUTĂ", "meet": "ÎNTÂLNEȘTE", "course": "TRASEU", "close": "ÎNCHIDE" },
+    "move": { "strike": "LOVEȘTE", "dodge": "FEREȘTE", "catch": "PRINDE" },
+    "course": {
+      "sinnoh_meadow": "Sinnoh · Pajiștea cu Margarete",
+      "sinnoh_heights": "Sinnoh · Culmile Vântoase",
+      "kanto_meadow": "Kanto · Aleea cu Trifoi",
+      "kanto_heights": "Kanto · Creasta cu Pini",
+      "johto_meadow": "Johto · Cărarea de Bambus",
+      "johto_heights": "Johto · Dealurile cu Arțari",
+      "hoenn_meadow": "Hoenn · Poteca de pe Țărm",
+      "hoenn_heights": "Hoenn · Pantele de Cenușă",
+      "unova_meadow": "Unova · Plimbarea prin Livadă",
+      "unova_heights": "Unova · Faleza cu Poduri"
+    },
+    "seek": {
+      "begin": "Ceva e ascuns într-unul dintre tufișuri. Două încercări!",
+      "found": "Ai găsit {item}! Rămâne în contor până la un PC.",
+      "nothing": "Nimic acolo. Ce era a scăpat.",
+      "tryAgain": "Nu acela. Încă o încercare!"
+    },
+    "meet": {
+      "begin": "Un {name} sălbatic (Nv. {level}) a apărut pe traseu!",
+      "caught": "L-ai prins pe {name}! Așteaptă în contor până îl trimite un PC în cutii.",
+      "struck": "O lovitură în {name}!",
+      "missed": "{name} s-a ferit.",
+      "dodged": "Ferit, și gata de acțiune!",
+      "slipped": "{name} a scăpat!",
+      "hit": "{name} a lovit înapoi!",
+      "fled": "{name} a plecat agale.",
+      "lost": "Obosit, s-a grăbit înapoi."
+    },
+    "why": {
+      "empty": "Nu se plimbă nimeni în el.",
+      "sparks": "Nu sunt destule scântei. Mai mergi puțin!",
+      "full": "E plin. Golește-l la un PC.",
+      "run": "Regulile acestei curse nu-l lasă să prindă nimic.",
+      "course": "Nu e încă niciun traseu de străbătut."
+    }
+  },
   "boxes": {
     "title": "CUTIILE PC-ULUI",
+    "pickTitle": "CE CUTIE PAȘTE?",
+    "pickPokemonTitle": "CINE IESE LA PLIMBARE?",
     "defaultName": "Cutia {number}",
     "party": "ECHIPĂ  {count} / {max}",
     "changeBoxNote": "Stânga și dreapta schimbă cutia.",

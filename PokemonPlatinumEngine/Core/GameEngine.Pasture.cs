@@ -135,6 +135,18 @@ public partial class GameEngine
         }
     }
 
+    /// <summary>
+    /// The PC's boxes closed after <c>pasture pick</c>: on a box taken, it is the one that grazes, and the herd is laid
+    /// again; backed out of, the meadow stays as it was.
+    /// </summary>
+    private void KeepThePickedBox()
+    {
+        if (!flow.PCScreen.PickingBox || flow.PCScreen.PickedBox is not { } box || flow.Pasture is not { } visit) return;
+        if (visit.Box == box) return;
+        visit.Box = box;
+        LayHerd();
+    }
+
     /// <summary>The Pokémon of the herd a body stands for; null for anyone else.</summary>
     private Pokemon? HerdOf(NPC? body) => body != null && flow.Herd.TryGetValue(body.Id, out var p) ? p : null;
 
@@ -186,6 +198,21 @@ public partial class GameEngine
                     LayHerd();
                 }
                 return new(visit.Box + 1, flow.Boxes.ShownName(visit.Box));
+            }
+            // The PC's own boxes opened to pick the box that grazes (BN5's owed piece); the script waits for the screen,
+            // and the herd is laid again as it closes on a box taken (KeepThePickedBox)
+            case "pick":
+            {
+                if (flow.Pasture is not { } visit) return new(0);
+                flow.PCScreen.OpenToPickBox(flow.Boxes, visit.Box);
+                flow.State = GameState.PCStorage;
+                return new(1);
+            }
+            // Whether the last pick took a box (1, and its name), or was backed out of (0)
+            case "picked":
+            {
+                if (flow.Pasture is not { } visit || flow.PCScreen.PickedBox == null) return new(0);
+                return new(1, flow.Boxes.ShownName(visit.Box));
             }
             case "count":
                 return new(flow.Herd.Count);

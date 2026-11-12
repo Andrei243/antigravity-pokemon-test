@@ -653,6 +653,12 @@ public interface IScriptHost
     /// </summary>
     PastureAnswer Pasture(string act, int number, NPC? subject, string? item) => new(0);
 
+    /// <summary>
+    /// An act of the Stroll Counter at a PC (plan 35 · BN7; the script's <c>stroll</c>): its Pokémon back and paid, what it met
+    /// and found counted, the PC's boxes opened to pick another, and that one put in. A host with no counter answers 0.
+    /// </summary>
+    StrollAnswer Stroll(string act) => new(0);
+
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3); none where a host keeps none, and <c>plaza</c> then does nothing.</summary>
     PlazaState? Plaza => null;
 

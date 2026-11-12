@@ -15015,6 +15015,20 @@
     }
   },
   {
+    "id": 9611,
+    "name": "Stroll Counter",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A pebble-shaped counter from the Pokétch Company. A Pokémon of the boxes rides in it and walks every step you take.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "StrollCounter"
+  },
+  {
     "id": 9700,
     "name": "Stellar Tera Shard",
     "pocket": "Items",

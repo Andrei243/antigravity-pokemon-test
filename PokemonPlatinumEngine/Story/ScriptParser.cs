@@ -1232,13 +1232,20 @@ public static class ScriptParser
             }
 
             // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,
-            // and of the Pokémon the script belongs to `pasture mood`, `find`, `pet`, `feed` (the item last chosen), `care`, `take`
+            // and of the Pokémon the script belongs to `pasture mood`, `find`, `pet`, `feed` (the item last chosen), `care`, `take`;
+            // `pasture pick` opens the PC's boxes to pick the one that grazes, and `pasture picked` says whether one was taken
             case "pasture":
             {
-                string act = r.OneOf("enter", "leave", "box", "count", "mood", "find", "pet", "feed", "care", "take", "job");
+                string act = r.OneOf("enter", "leave", "box", "count", "mood", "find", "pet", "feed", "care", "take", "job", "pick", "picked");
                 int turn = act == "box" && r.More ? r.Int("-1 or 1") : 0;
                 return new Instruction { Op = Op.Pasture, Line = line, Name = act, Number = turn };
             }
+
+            // The Stroll Counter (plan 35 · BN7): `stroll back` (its Pokémon paid and into the boxes, with what it met and
+            // found), `stroll caught`, `stroll found` (how many of each went with it), `stroll pick` (the PC's boxes opened to
+            // pick a Pokémon) and `stroll put` (the one picked into the counter)
+            case "stroll":
+                return new Instruction { Op = Op.Stroll, Line = line, Name = r.OneOf("back", "caught", "found", "pick", "put") };
 
             case "treat":
             {
