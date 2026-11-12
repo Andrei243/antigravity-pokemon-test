@@ -11553,3 +11553,91 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   is the place's name) and a town or city (`followerTalk.place.*`); otherwise F4's line of its band. The line in its own
   region is not built (every Pokémon belongs to the region it was met in, so it would be every line). Its bubbles of its own
   are the style guide's ("The follower"). Nothing of it with the FOLLOWER row off.
+
+## The card-flip game (2026-11-12, plan 42 · PS3)
+
+HeartGold's card game at Goldenrod's tables, by HeartGold's rules (pret/pokeheartgold at the importer's pinned commit:
+`src/voltorb_flip/voltorb_flip_game.c` for the rules, `voltorb_flip.c` for a round's course), with everything a player
+sees our own: the cards and their faces, the cracked tile that stands for the original's bust, the table and every word.
+Nothing of its art, its board picture, its mascot or its lines is taken, and no name of ours says what the original's card
+is called. `Models/CardFlip.cs` (GPU-free); each function names the original's.
+
+- **The boards** (`CardFlipLevels.Configs`, `sBoardConfigs`): eighty rows of busts, 2s, 3s, the most "free" multipliers in
+  a line and the most in all, copied as they are, the two odd rows (`8, 6, 1, 4, 3` and `8, 3, 3, 4, 3`, whose most in a
+  line is over their most in all) included. A level draws among its own ten rows, ten in a hundred each
+  (`sBoardIdDistribution`, `BoardFor`); levels are kept upside down as the original keeps them (7 is level 1).
+- **Dealing** (`CardFlipBoard.Deal`, `GenerateBoard`): every card a 1, then the busts, the 2s and the 3s each on a card drawn
+  out of 25 that is still a 1, a miss drawn again, and after a hundred misses in a kind's laying the rest of that kind left
+  out (`PlaceCardsOnBoard`); the busts counted along each line; the board drawn again while its free multipliers (a 2 or a
+  3 whose row **or** column hides no bust, counted for its row, its column and the board) reach the most allowed in all or
+  in any line (`RetryBoardGen`: a board holds only when it is under both). After a thousand draws the last is kept as it
+  fell, limits or no. Then the lines' sums, what the board pays (every number multiplied, at most 50,000) and its count of
+  multipliers.
+- **A round** (`CardFlipGame`): the draw out of a hundred comes first, then the level is reckoned and the board dealt
+  (`NewBoard`), and only then the question to play it (`NewRound_Begin`, `SelectMainMenu`). The first number turned sets
+  the round's coins to itself; every one after multiplies them, at most 50,000 (`MultiplyPayoutAndUpdateCardsFlipped`); a
+  bust is not counted among the cards turned and loses the round's coins; the coins reaching what the board pays wins the
+  round (`HasEarnedMaxPayout`); quitting keeps the coins (`QuitRound_Run`); won or quit, the coins go into the case,
+  never past `CoinCase.Most` (`AwardPayoutToPlayer`, `Coins_Add`). A full case deals no round (`InitChecks_Begin`). After a
+  round every card is shown face up, then the round is remembered (`UpdateHistoryAndReset`).
+- **The next level** (`CardFlipLevels.NextLevel`, `CalcNextLevel`, read of the last of five rounds kept in a ring): a win at
+  level 8 stays; from level 5 up, five rounds none lost with eight cards or more turned each reach 8 (rounds not yet played
+  count as none turned, so the first five can't); otherwise level n (7 down to 2) is reached by a round at n or above with
+  n cards turned, or by a win at n − 1; else level 1. A quit is not a loss. `LevelsGained` is the change, shown on the
+  question.
+- **The memo**: four marks on a card face down (a bust, 1, 2, 3; `ToggleCardMemo`'s bits), wiped when it is turned.
+- **What is ours**: the draws are on the generator the sitting is handed (`Func<int, int>` or a `Random`), never `Dice`, as
+  `(u32)MTRandom() % n` is in the original; the original's other draw (an unused `MTRandom` before a risky card's jingle)
+  and its jingles are left out. Sounds are the game's own (`page`, `coin_flip`, `coin_land`, `rock_smash` for a bust, whose
+  rumble is `rock_smash`'s pulse). The screen (`CardFlipScreen`, `ModernUi.DrawCardFlip`) is the style guide's.
+- **Goldenrod's prize counter** (`GameCornerPrizes.Goldenrod`, `GoldenrodPokemon`; `scr_seq_0910_T25SP0101.s`): TM90 2,000,
+  TM75 4,000, TM44 6,000, TM35, TM13 and TM24 10,000 each, the Silk Scarf, Wide Lens, Zoom Lens and Metronome 1,000 each;
+  and HeartGold's three Pokémon (game version 7) at level 15: Abra 200, Ekans 700, Dratini 2,100 (SoulSilver has
+  Sandshrew for Ekans).
+
+## Johto's lucky number draw (2026-11-12, plan 42 · PS3)
+
+HeartGold's draw at the Radio Tower's counter (`scr_seq_0029_D23R0101.s`, `src/scrcmd_lottery.c`, `src/sys_vars.c`) is
+Platinum's: the same LCRNG step on a number of the game with only its high half kept (`Save_LCRNGAdvanceLotoID`, the
+same bug), the same match of digits from the right against the ID numbers of the player's Pokémon, team first and then the
+boxes, Eggs passed over (`LotoId_CountDigitsMatched`, `ScrCmd_LotoIDSearch`), and the same five prizes by digits matched:
+an Ultra Ball, a PP Up, an Exp. Share, a Max Revive and a Master Ball (items 2, 51, 216, 29 and 1).
+
+- **Weekly, ours**: the plan holds a draw once a week, as the Radio Tower's man says. HeartGold's claim is kept by a flag of its own (`FLAG_UNK_AA5`), and where it moves its
+  number on was not traced; the week is ours. `Lottery.WeekOf(day)` counts weeks from Monday (`DateOnly.DayNumber / 7`), and
+  `Lottery.WeeklyTicket(week, gameNumber)` is `TicketOf` on the week's number mixed with a number of the game (so two games
+  draw differently): a pure function, the same all week and another the next, nothing drawn from `Dice`. Whatever clears
+  the week's claim asks `WeekOf`, so the claim and the ticket turn over together.
+- `Lottery.WeeklyPrize` is HeartGold's list, which is `Prize`'s. Jubilife's `TicketOf`, `Matching`, `Check` and `Prize` are
+  unchanged, and `Matching` and `Check` serve both.
+- The radio's three lines (`Lottery.RadioLines`, `luckyDraw.radio.*`) are ours.
+
+## The stage show (2026-11-12, plan 42 · PS1, PS2)
+
+Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and
+Hour of Lanterns, the fans' own lines kept and their gifts Props). Nimbasa's theatre lobby is Black 2's; its owner (person
+11) gives the Prop Trunk at the first word, its desk (the socialite, person 6) opens the dressing room and the stage, and
+its three fans (persons 1, 4 and 18) each wait with a Prop after a show.
+
+- **Props** (`Data/show-props.json`, 40 pieces of 28 shapes): one to a slot, four at most (`Dressing`); nine of a piece at
+  most in the trunk (`PropTrunk`). A slot the body's model lacks is not offered (`PropAnchors.SlotsOf`). Props are worn only
+  in the dressing room and on the stage; nothing of them changes the Pokémon. A Pokémon's last dressing is kept by its id.
+- **The owner's handful** (ours): a black top hat, a pink bow, a yellow scarf, round glasses, a night cape, a folding fan
+  and a tail bell, one of each, so every mood and every slot has a piece.
+- **A show** (`ShowRun`, thirty frames a second, the rivals' draws on the show's own generator from its seed): four on the
+  stage, the player's Pokémon first and the show's three after; each has the spotlight for three cues (`stage-shows.json`).
+  In a cue each beat may take one trick: the player's is a press within 0.1 s of the beat (doubled by a timing assist;
+  Automatic counts as Generous and presses nothing), a rival's a draw out of a hundred under its knack on the beat's own
+  frame. A press off the beat earns nothing.
+- **The crowd's eyes** (ours): a share of a hundred among the four, 25 each at the curtain. A trick on the beat is done with
+  the performer's next piece in turn (slot by slot) and draws 4 eyes, 7 for a piece of the show's mood, 2 with no piece;
+  the same trick as the performer's last draws half, rounded up. Each eye is taken from whoever of the others has most
+  (the first on the bill on a tie), never below nought, so the four always sum to a hundred.
+- **The score** (ours): the eyes at the curtain and 5 for every piece worn of the show's mood. Places by score, then eyes,
+  then the order on the bill.
+- **The fans' gifts** (`ShowFans`, ours, nothing drawn): after the nth show the fans take turns (persons 1, 4, 18, ...),
+  each with a Prop of a band by the score (under 30, 30 to 44, 45 and over) picked by (n − 1 + score) round the band's list.
+  A fan given a Prop the trunk holds nine of goes on waiting.
+- **What is not taken**: no stage, prop, song, performer, judge, mascot or word of Black and White's; the two songs are
+  ours (Sunny Side Revue, a brass shuffle at 128, 32 bars of 4/4; Hour of Lanterns, a music-box waltz at 108, 48 bars of
+  3/4), awaiting the user's ear.

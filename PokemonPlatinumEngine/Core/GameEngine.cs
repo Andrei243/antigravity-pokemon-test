@@ -155,7 +155,13 @@ public enum GameState
     /// <summary>The hub's Week's Work read, a script's <c>missions open</c> waiting on it (plan 41 · EG6).</summary>
     MissionBoard,
     /// <summary>One Pokémon of the camp close up: petted by hand, fed, brushed and cured (plan 35 · BN2).</summary>
-    Care
+    Care,
+    /// <summary>The theatre's dressing room, a script's <c>stageshow dress</c> waiting on it (plan 42 · PS1).</summary>
+    DressingRoom,
+    /// <summary>The theatre's stage, a script's <c>stageshow perform</c> waiting on it (plan 42 · PS2).</summary>
+    StageShow,
+    /// <summary>A card-flip table, a script's <c>gamecorner cards</c> waiting on it (plan 42 · PS3).</summary>
+    CardFlip
 }
 
 public partial class GameEngine
@@ -492,6 +498,7 @@ public partial class GameEngine
         flow.Crafting.Clear();
         flow.Care.Clear();
         flow.Gifts.Clear();
+        flow.StageShow.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
         flow.Missions.Clear();
@@ -768,6 +775,7 @@ public partial class GameEngine
         flow.Crafting.Load(save.Crafting);
         flow.Care.Restore(save.Care);
         flow.Gifts.Load(save.Gifts);
+        flow.StageShow.Load(save.StageShow);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
         flow.Plaza.Load(save.Plaza);
@@ -997,6 +1005,7 @@ public partial class GameEngine
             Crafting = flow.Crafting.ToSave(),
             Care = CareToSave(),
             Gifts = flow.Gifts.ToSave(),
+            StageShow = flow.StageShow.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
             Missions = flow.Missions.ToSave(),
@@ -1720,6 +1729,15 @@ public partial class GameEngine
                 break;
             case GameState.GiftBox:
                 UpdateGiftBox(dt);
+                break;
+            case GameState.DressingRoom:
+                UpdateDressingRoom(dt);
+                break;
+            case GameState.StageShow:
+                UpdateStageShow(dt);
+                break;
+            case GameState.CardFlip:
+                UpdateCardFlip(dt);
                 break;
             case GameState.TradeBoard:
                 UpdateTradeBoard(dt);
@@ -3308,6 +3326,15 @@ public partial class GameEngine
         {
             flow.Credits.Render(renderContext);
         }
+        else if (scene == GameState.DressingRoom)
+        {
+            // The dressing room's Pokémon and the stage's four, rendered as the evolution's figures are (plan 42 · PS1, PS2)
+            flow.DressingRoomScreen.Render(renderContext);
+        }
+        else if (scene == GameState.StageShow)
+        {
+            flow.StageShowScreen.Render(renderContext);
+        }
         else if (scene == GameState.Care)
         {
             // The care close-up's model, a scene of its own as the gallery's (plan 35 · BN2)
@@ -3551,6 +3578,15 @@ public partial class GameEngine
                 break;
             case GameState.GiftBox:
                 flow.GiftBoxScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.DressingRoom:
+                flow.DressingRoomScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.StageShow:
+                flow.StageShowScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.CardFlip:
+                flow.CardFlipScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TradeBoard:
                 flow.TradeBoardScreen.Draw(VirtualWidth, VirtualHeight);

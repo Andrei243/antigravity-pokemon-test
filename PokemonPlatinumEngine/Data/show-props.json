@@ -1,0 +1,53 @@
+{
+  // The stage show's props (plan 42 · PS1; ours, hand-written; docs/data-files.md, "Props"). Each piece has its slot on the
+  // Pokémon's own model, one of four moods of ours, the trick it does in a cue, its two colours (body, trim) and its shape,
+  // which Graphics/ShowPropModels.cs sculpts at a unit size; a shape may be worn in several colourways. A piece's name is
+  // ui.json's stageShow.prop.<id in camel case>.
+  "props": [
+    { "id": "top_hat_black", "slot": "Head", "mood": "Dashing", "trick": "Toss", "colors": [ "#2A2730", "#C8303C" ], "shape": "top_hat" },
+    { "id": "top_hat_white", "slot": "Head", "mood": "Gentle", "trick": "Toss", "colors": [ "#F2EEE6", "#8FC7B8" ], "shape": "top_hat" },
+    { "id": "paper_crown_gold", "slot": "Head", "mood": "Bright", "trick": "Shine", "colors": [ "#F2C84B", "#E8743A" ], "shape": "paper_crown" },
+    { "id": "paper_crown_silver", "slot": "Head", "mood": "Gentle", "trick": "Shine", "colors": [ "#D7DCE4", "#9FB4D8" ], "shape": "paper_crown" },
+    { "id": "flower_crown", "slot": "Head", "mood": "Gentle", "trick": "Wave", "colors": [ "#F4A7C0", "#8BCB86" ], "shape": "flower_crown" },
+    { "id": "pointed_hat", "slot": "Head", "mood": "Eerie", "trick": "Spin", "colors": [ "#4B3A6E", "#6FD3C3" ], "shape": "pointed_hat" },
+    { "id": "beret_red", "slot": "Head", "mood": "Dashing", "trick": "Bounce", "colors": [ "#B8323A", "#2A2730" ], "shape": "beret" },
+    { "id": "beret_yellow", "slot": "Head", "mood": "Bright", "trick": "Bounce", "colors": [ "#F2C84B", "#E8743A" ], "shape": "beret" },
+    { "id": "head_bow_pink", "slot": "Head", "mood": "Gentle", "trick": "Bounce", "colors": [ "#F4A7C0", "#F2EEE6" ], "shape": "head_bow" },
+    { "id": "head_bow_orange", "slot": "Head", "mood": "Bright", "trick": "Bounce", "colors": [ "#F08A3C", "#F2C84B" ], "shape": "head_bow" },
+    { "id": "tiara", "slot": "Head", "mood": "Dashing", "trick": "Shine", "colors": [ "#D7DCE4", "#4FA3E0" ], "shape": "tiara" },
+
+    { "id": "round_glasses", "slot": "Face", "mood": "Gentle", "trick": "Shine", "colors": [ "#3A3440", "#9FB4D8" ], "shape": "round_glasses" },
+    { "id": "star_glasses", "slot": "Face", "mood": "Bright", "trick": "Shine", "colors": [ "#F2C84B", "#F08A3C" ], "shape": "star_glasses" },
+    { "id": "masquerade_mask", "slot": "Face", "mood": "Eerie", "trick": "Wave", "colors": [ "#4B3A6E", "#D7DCE4" ], "shape": "masquerade_mask" },
+    { "id": "monocle", "slot": "Face", "mood": "Dashing", "trick": "Shine", "colors": [ "#C9A24A", "#2A2730" ], "shape": "monocle" },
+
+    { "id": "bow_tie_red", "slot": "Neck", "mood": "Dashing", "trick": "Spin", "colors": [ "#B8323A", "#2A2730" ], "shape": "bow_tie" },
+    { "id": "bow_tie_teal", "slot": "Neck", "mood": "Eerie", "trick": "Spin", "colors": [ "#2E8C8A", "#4B3A6E" ], "shape": "bow_tie" },
+    { "id": "scarf_yellow", "slot": "Neck", "mood": "Bright", "trick": "Wave", "colors": [ "#F2C84B", "#F08A3C" ], "shape": "scarf" },
+    { "id": "scarf_mint", "slot": "Neck", "mood": "Gentle", "trick": "Wave", "colors": [ "#8FC7B8", "#F2EEE6" ], "shape": "scarf" },
+    { "id": "ruff", "slot": "Neck", "mood": "Dashing", "trick": "Bounce", "colors": [ "#F2EEE6", "#B8323A" ], "shape": "ruff" },
+    { "id": "pearl_string", "slot": "Neck", "mood": "Gentle", "trick": "Shine", "colors": [ "#EDE6DA", "#F4A7C0" ], "shape": "pearl_string" },
+    { "id": "bell_collar", "slot": "Neck", "mood": "Bright", "trick": "Ring", "colors": [ "#E85A4F", "#F2C84B" ], "shape": "bell_collar" },
+    { "id": "spirit_beads", "slot": "Neck", "mood": "Eerie", "trick": "Ring", "colors": [ "#6FD3C3", "#4B3A6E" ], "shape": "pearl_string" },
+
+    { "id": "short_cape_red", "slot": "Back", "mood": "Dashing", "trick": "Spin", "colors": [ "#B8323A", "#C9A24A" ], "shape": "short_cape" },
+    { "id": "short_cape_night", "slot": "Back", "mood": "Eerie", "trick": "Spin", "colors": [ "#2B2546", "#6FD3C3" ], "shape": "short_cape" },
+    { "id": "paper_wings", "slot": "Back", "mood": "Bright", "trick": "Wave", "colors": [ "#F2EEE6", "#F2C84B" ], "shape": "paper_wings" },
+    { "id": "back_bow", "slot": "Back", "mood": "Gentle", "trick": "Bounce", "colors": [ "#F4A7C0", "#F2EEE6" ], "shape": "back_bow" },
+    { "id": "paper_lantern_pack", "slot": "Back", "mood": "Eerie", "trick": "Shine", "colors": [ "#E8743A", "#4B3A6E" ], "shape": "lantern" },
+
+    { "id": "folding_fan", "slot": "Hand", "mood": "Gentle", "trick": "Wave", "colors": [ "#F4A7C0", "#C9A24A" ], "shape": "folding_fan" },
+    { "id": "baton", "slot": "Hand", "mood": "Dashing", "trick": "Toss", "colors": [ "#F2EEE6", "#B8323A" ], "shape": "baton" },
+    { "id": "hand_bell", "slot": "Hand", "mood": "Bright", "trick": "Ring", "colors": [ "#F2C84B", "#7A4A2E" ], "shape": "hand_bell" },
+    { "id": "star_wand", "slot": "Hand", "mood": "Bright", "trick": "Spin", "colors": [ "#F2C84B", "#F2EEE6" ], "shape": "star_wand" },
+    { "id": "parasol", "slot": "Hand", "mood": "Gentle", "trick": "Spin", "colors": [ "#9FB4D8", "#F2EEE6" ], "shape": "parasol" },
+    { "id": "hand_lantern", "slot": "Hand", "mood": "Eerie", "trick": "Shine", "colors": [ "#E8743A", "#2B2546" ], "shape": "lantern" },
+    { "id": "cane", "slot": "Hand", "mood": "Dashing", "trick": "Toss", "colors": [ "#2A2730", "#C9A24A" ], "shape": "baton" },
+    { "id": "tambourine", "slot": "Hand", "mood": "Bright", "trick": "Ring", "colors": [ "#E85A4F", "#F2C84B" ], "shape": "tambourine" },
+
+    { "id": "tail_ribbon_pink", "slot": "Tail", "mood": "Gentle", "trick": "Wave", "colors": [ "#F4A7C0", "#F2EEE6" ], "shape": "tail_ribbon" },
+    { "id": "tail_ribbon_blue", "slot": "Tail", "mood": "Dashing", "trick": "Wave", "colors": [ "#2F5FA8", "#F2EEE6" ], "shape": "tail_ribbon" },
+    { "id": "tail_bell", "slot": "Tail", "mood": "Bright", "trick": "Ring", "colors": [ "#F2C84B", "#E85A4F" ], "shape": "tail_bell" },
+    { "id": "tail_charm", "slot": "Tail", "mood": "Eerie", "trick": "Ring", "colors": [ "#6FD3C3", "#2B2546" ], "shape": "tail_bell" }
+  ]
+}

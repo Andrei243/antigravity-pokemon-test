@@ -253,6 +253,14 @@ public class SaveData
     public Models.GiftsSave? Gifts { get; set; }
 
     /// <summary>
+    /// The stage show (plan 42 · PS1, PS2, <see cref="Models.StageShow.ShowRecords"/>): the trunk of props, each Pokémon's
+    /// last dressing, the shows played and won and the fans' gifts owed. Null while nothing is, and in every save from
+    /// before it, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.StageShow.StageShowSave? StageShow { get; set; }
+
+    /// <summary>
     /// Today's trade board (plan 40 · GE8, <see cref="Models.TradeBoard"/>): the requests met and the blind trades made, by
     /// the day they were made on. Null while none is, and in every save from before it, so no save version was raised.
     /// </summary>

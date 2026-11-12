@@ -1,0 +1,100 @@
+# The Goldenrod Game Corner (plan 20 · J5, part b; its tables at work since plan 42 · PS3). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_T25SP0101). Its tables play the card-flip game on
+# HeartGold's own rules (Models/CardFlip.cs; docs/mechanics/rulings.md, "The card-flip game") with pieces of ours, the clerk
+# sells coins and hands a Coin Case to whoever has none, and the prize counter trades HeartGold's TMs, held items and three
+# Pokémon at level 15 for coins (GameCornerPrizes.Goldenrod).
+
+
+# The card-flip tables (the area's signs T25SP0101_001), played by whoever carries a Coin Case
+script Cards
+  speaker none
+  if not item "Coin Case" goto NoCase
+  ask "A card-flip table. Twenty-five cards, and the coins grow with every number found. Play?"
+  if no end
+  fade out 0.3
+  gamecorner cards
+  fade in 0.3
+  end
+label NoCase
+  text "A card-flip table. Without a Coin Case there is nothing to play with."
+  end
+
+
+# T25SP0101_002: the clerk, who sells coins 50 for $1,000 and hands a Coin Case over first
+script Clerk
+  speaker "Clerk"
+  if item "Coin Case" goto Sell
+  say "Welcome to the Goldenrod Game Corner! The tables take coins, and coins need a case to carry them in."
+  say "Here, have one of ours. Every new player gets one."
+  give "Coin Case"
+label Sell
+  ask "We sell coins for the tables: 50 for $1,000. Would you like some?"
+  if no goto Bye
+  gamecorner room 50
+  if result == 0 goto Full
+  if money < 1000 goto Poor
+  takemoney 1000
+  gamecorner add 50
+  text "{player} bought 50 coins."
+label Bye
+  say "Please come again!"
+  end
+label Full
+  say "Your Coin Case is full already!"
+  end
+label Poor
+  say "I'm sorry, you don't have enough money."
+  end
+
+
+# T25SP0101_000: the prize exchange, items or Pokémon for coins
+script Prizes
+  speaker "Clerk"
+  if not item "Coin Case" goto NoCase
+  say "Welcome to the prize exchange! You have {coins} coins."
+  choose "What would you like to look at?" "ITEMS" "POKéMON" "NO THANKS"
+  if result == 0 goto Items
+  if result == 1 goto Pokemon
+  end
+label Items
+  gamecorner prize goldenrod
+  if result == 0 end
+  ask "The {item}, for {price} coins?"
+  if no end
+  gamecorner buy
+  if result == 0 goto Short
+  sound "select"
+  say "Here you are!"
+  text "{player} put the {item} away."
+  end
+label Pokemon
+  gamecorner pokemon
+  if result == 1 goto Abra
+  if result == 2 goto Ekans
+  if result == 3 goto Dratini
+  end
+label Abra
+  gamecorner pay
+  if result == 0 goto Short
+  givepokemon "Abra" 15
+  goto Given
+label Ekans
+  gamecorner pay
+  if result == 0 goto Short
+  givepokemon "Ekans" 15
+  goto Given
+label Dratini
+  gamecorner pay
+  if result == 0 goto Short
+  givepokemon "Dratini" 15
+label Given
+  fanfare pokemon
+  text "{player} received {thing}!"
+  say "Please take good care of it!"
+  end
+label Short
+  say "I'm sorry, you don't have enough coins for that."
+  end
+label NoCase
+  say "The prize exchange trades in coins. You'll need a Coin Case first: the clerk will gladly give you one."
+  end

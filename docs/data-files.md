@@ -775,6 +775,14 @@ A file that can't be read is `Damaged`; `BattleRecordFile.Read` says which of th
 
 `Data/gifts.json` (plan 40 · GE7, `Models/GiftBox.cs`, schema `docs/schemas/gifts.schema.json`; ours, read strictly). `gifts` is a list, each gift with its `id` (its words in `ui.json` are `giftBox.gift.<id in camel case>.sender`, `.title`, `.card`), `when` (every term given must hold: `dates`, days of the year `MM-dd` or windows `MM-dd..MM-dd`; `festival`, a festival's id; `hallOfFame`, a region's id; `caught`, species caught; `hours`, hours played; `anniversary`; `words`, two phrase keys told at a Gift Runner), `yearly` (taken once a year, or once each anniversary, instead of once for good), `picture` (`kind` `pokemon`, `egg`, `item`, `seal`, `backdrop` or `ribbon`, and its `name`) and `script`, a script of `scripts/gifts.txt`. **A pack's `gifts.json` is laid over the game's by id**: a gift of an id the game has replaces it, a new id is added after the game's (with the pack's own `scripts/gifts.txt` and `text/<language>/ui.json` words).
 
+## Props
+
+`Data/show-props.json` (plan 42 · PS1, `Models/StageShow/ShowProps.cs`; ours, read strictly). `props` is a list, each with its `id` (its name in `ui.json` is `stageShow.prop.<id in camel case>`), `slot` (`Head`, `Face`, `Neck`, `Back`, `Hand`, `Tail`), `mood` (`Bright`, `Dashing`, `Gentle`, `Eerie`), `trick` (`Spin`, `Wave`, `Toss`, `Shine`, `Bounce`, `Ring`), `colors` (two, `#RRGGBB`: the body and the trim) and `shape`, the sculpt `Graphics/ShowPropModels.cs` makes of it (several pieces may share a shape in other colours).
+
+## Stage shows
+
+`Data/stage-shows.json` (plan 42 · PS2, `Models/StageShow/ShowRun.cs`; ours, read strictly). `shows` is a list, each with its `id` (its name in `ui.json` is `stageShow.show.<id in camel case>`), `song` (a song of ours, whose `tempo` and meter the show's own `tempo` and `beatsPerBar` equal: `StageShowTests` holds it), `bars`, `mood`, `cast` (three rivals, each a `species`, the `props` it wears and its `knack`, out of a hundred, the chance of a trick on each beat of its cues) and `cues` (each `performer`, 0 the player's Pokémon and 1 to 3 the cast, the `bar` it begins on and its `length` in bars; three to each performer).
+
 ## The trade board
 
 `Data/trade-board.json` (plan 40 · GE8, `Models/TradeBoard.cs`, schema `trade-board.schema.json`; ours, read strictly): the made-up trainers' `names`, their `looks` (of `characters.json`), the `languages` a trainer from abroad speaks and the `items` a Pokémon offered may hold. The board draws from them by the date and the region with `SplitMix`, never `Dice`.

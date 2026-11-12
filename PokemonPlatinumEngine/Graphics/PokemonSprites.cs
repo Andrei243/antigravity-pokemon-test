@@ -151,8 +151,13 @@ internal static class PokemonSprites
     /// draws exactly what was drawn before it was there.
     /// </param>
     /// <param name="zoom">How many times closer than the view's frame, toward its middle (the gallery's zoom); 1 leaves the frame as it is.</param>
+    /// <param name="props">
+    /// The stage show's pieces worn (plan 42 · PS1), each drawn at its slot's anchor on the posed bone
+    /// (<see cref="ShowPropModels.DrawWorn"/>); null or none, as every bake hands it, draws exactly what was drawn before.
+    /// </param>
     public static void Render(RenderContext context, PokeModel model, SpriteView view, PokePose pose, RenderTexture2D target, bool hullOutline = true,
-        (Color Color, float Amount)? flash = null, int stripFrame = -1, float turn = 0f, float zoom = 1f)
+        (Color Color, float Amount)? flash = null, int stripFrame = -1, float turn = 0f, float zoom = 1f,
+        IReadOnlyList<PokemonPlatinumEngine.Models.StageShow.ShowProp>? props = null)
     {
         context.EnsureLoaded();
         int size = target.Texture.Width;
@@ -182,8 +187,12 @@ internal static class PokemonSprites
             model.AnimateStrip(stripFrame, StripFrames, StripStart);
         }
         PokemonRenderer.Draw(context, model, pose, turned, CharacterPass.Color, posed);
+        bool wearing = props is { Count: > 0 };
+        // The body is posed by now (model.Skin): the pieces ride its bones
+        if (wearing) ShowPropModels.DrawWorn(context, model, props!, turned, CharacterPass.Color);
         if (flash != null) shaders.SetFlash(default, 0f);
         if (hullOutline) PokemonRenderer.Draw(context, model, pose, turned, CharacterPass.Outline, posed);
+        if (hullOutline && wearing) ShowPropModels.DrawWorn(context, model, props!, turned, CharacterPass.Outline);
         Rlgl.EnableBackfaceCulling();
 
         Raylib.EndMode3D();

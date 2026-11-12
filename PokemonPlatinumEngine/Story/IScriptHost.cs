@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, GiftBox, TradeBoard, MissionBoard }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, GiftBox, TradeBoard, MissionBoard, DressingRoom, StageShow }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -110,6 +110,13 @@ public interface IScriptHost
     /// <see cref="GiftBoxAnswers.Words"/> for TELL WORDS, 0 backed out of.
     /// </summary>
     GiftBox? Gifts => null;
+
+    /// <summary>
+    /// The stage show's records (plan 42 · PS1, PS2, <c>stageshow</c>): the trunk, the dressings, the shows and the fans'
+    /// gifts; null for a host that has none, where no trunk was given. Its screens are <see cref="ScriptScreen.DressingRoom"/>
+    /// (<see cref="Answer"/> 1 when a dressing was kept) and <see cref="ScriptScreen.StageShow"/> (the place, 1 to 4, or 0).
+    /// </summary>
+    Models.StageShow.ShowRecords? StageShow => null;
 
     /// <summary>What the gifts' terms read of the player now (the day, the Halls of Fame, the counts, the run): nothing held unless a host says.</summary>
     GiftFacts GiftFacts => new();

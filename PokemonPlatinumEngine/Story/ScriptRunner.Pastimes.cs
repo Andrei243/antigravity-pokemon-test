@@ -122,7 +122,7 @@ public sealed partial class ScriptRunner
                 break;
             case "prize":
             {
-                var prizes = i.Other == "mauville" ? GameCornerPrizes.Mauville : GameCornerPrizes.All;
+                var prizes = i.Other == "mauville" ? GameCornerPrizes.Mauville : i.Other == "goldenrod" ? GameCornerPrizes.Goldenrod : GameCornerPrizes.All;
                 // A TM is listed with the move it holds
                 var rows = prizes.Select(p => PrizeRow(p.Item, "scriptLines.priceCoins", "price", p.Coins.ToString("N0")))
                     .Append(Text.Of("scriptLines.noThanks")).ToList();
@@ -146,6 +146,29 @@ public sealed partial class ScriptRunner
                 Result = 1;
                 break;
             }
+            // A card-flip table (plan 42 · PS3; Models/CardFlip.cs): the player sits at it, the script waits
+            case "cards":
+                Result = host.PastimeAct("cards", 0, Subject);
+                break;
+            // Goldenrod's three Pokémon for coins (plan 42 · PS3): which, RESULT 1 to 3 (0 none), {thing} and {price}; "pay" takes the price
+            case "pokemon":
+            {
+                var mons = GameCornerPrizes.GoldenrodPokemon;
+                var rows = mons.Select(p => Text.Of("scriptLines.priceCoins", ("name", LocalNames.Species(p.Species)), ("price", p.Coins.ToString("N0"))))
+                    .Append(Text.Of("scriptLines.noThanks")).ToList();
+                host.Ask(speakerShown, Text.Of("scriptLines.whichPrize"), rows, cancel: mons.Length);
+                afterBusy = () =>
+                {
+                    if (host.Answer < 0 || host.Answer >= mons.Length) { Result = 0; return; }
+                    lastPrice = mons[host.Answer].Coins;
+                    lastThing = LocalNames.Species(mons[host.Answer].Species);
+                    Result = host.Answer + 1;
+                };
+                break;
+            }
+            case "pay":
+                Result = coins.Take(lastPrice) ? 1 : 0;
+                break;
             case "cointrick":
                 // The Coin Case's clown (scripts_veilstone_city_southeast_house.s): GetRandom 2, whatever hand was said
                 Result = host.Chance.Next(2);

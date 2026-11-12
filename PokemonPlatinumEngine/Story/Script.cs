@@ -205,6 +205,8 @@ public enum Op
     Missions,
     // Galar's Max Raid dens (plan 33 · GL3): a den looked into, its light's Watts, its raid fought, its felled boss caught
     Raid,
+    // The stage show (plan 42 · PS1, PS2): the owner's trunk, the dressing room, a show on the stage, a fan's gift
+    StageShow,
     // Treats (plan 35 · BN3): the baker's three berries of a flavour, or one of each, made into a finer treat
     Treat,
 }

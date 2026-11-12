@@ -55,6 +55,10 @@ public partial class GameEngine
             case "wheel":
                 OpenRouletteTable(number);
                 return 1;
+            // A card-flip table (plan 42 · PS3)
+            case "cards":
+                OpenCardFlip();
+                return 1;
             case "furnish":
                 FurnishVilla();
                 // The delivery that leaves the catalogue nothing more to sell (Villa_HasAllFurniture)

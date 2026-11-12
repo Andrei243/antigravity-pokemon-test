@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace PokemonPlatinumEngine.Models;
@@ -67,6 +68,54 @@ public static class Lottery
         }
         return (best, winner);
     }
+
+    // ------------------------------------------------------------------ Johto's lucky number draw (plan 42 · PS3)
+
+    /// <summary>
+    /// The week a day falls in, for Johto's lucky number draw: weeks begin on a Monday and are counted from the first
+    /// Monday of the calendar (<see cref="DateOnly.DayNumber"/> 0 is one). Whatever clears the week's claim clears it on
+    /// the same boundary the ticket turns over on.
+    /// </summary>
+    public static int WeekOf(DateOnly day) => day.DayNumber / 7;
+
+    /// <summary>The week of a moment's day (what <c>GameClock.Today</c> gives).</summary>
+    public static int WeekOf(DateTime day) => WeekOf(DateOnly.FromDateTime(day));
+
+    /// <summary>
+    /// The week's ticket (rulings, "Johto's lucky number draw"): HeartGold's own reckoning of a ticket, the LCRNG step
+    /// <see cref="TicketOf"/> takes with its high half kept (<c>Save_LCRNGAdvanceLotoID</c>, the same bug as
+    /// Platinum's), here on the week's number mixed with the game's own number (<paramref name="gameNumber"/>, the
+    /// trainer's ID or any number kept for the game), so two games draw differently in the same week. A pure function:
+    /// the same all week, another the next, nothing drawn from <c>Dice</c>.
+    /// </summary>
+    public static int WeeklyTicket(int week, uint gameNumber = 0) =>
+        TicketOf(unchecked((uint)week * 2654435761u ^ gameNumber));
+
+    /// <summary>The ticket of the week a day falls in.</summary>
+    public static int WeeklyTicket(DateOnly day, uint gameNumber = 0) => WeeklyTicket(WeekOf(day), gameNumber);
+
+    /// <summary>The ticket of the week a moment's day falls in.</summary>
+    public static int WeeklyTicket(DateTime day, uint gameNumber = 0) => WeeklyTicket(WeekOf(day), gameNumber);
+
+    /// <summary>
+    /// Johto's prize for so many digits: HeartGold's Radio Tower counter (<c>scr_seq_0029_D23R0101.s</c>, items 2, 51,
+    /// 216, 29 and 1 by the digits matched), the same five as Jubilife's; null for none.
+    /// </summary>
+    public static string? WeeklyPrize(int digits) => Prize(digits);
+
+    /// <summary>How a ticket is said and shown: five digits, noughts in front.</summary>
+    public static string TicketText(int ticket) => ticket.ToString("D5");
+
+    /// <summary>
+    /// The lucky number station's lines for a week's ticket (our own words, <c>luckyDraw.radio.*</c>): the host's
+    /// greeting, the number read out, and where to claim a prize.
+    /// </summary>
+    public static IReadOnlyList<string> RadioLines(int ticket) => new[]
+    {
+        Core.Text.Of("luckyDraw.radio.hello"),
+        Core.Text.Of("luckyDraw.radio.number", ("number", TicketText(ticket))),
+        Core.Text.Of("luckyDraw.radio.claim")
+    };
 
     /// <summary>The prize for so many digits (<c>JubilifeTV1F_SetLotteryPrize</c>); null for none.</summary>
     public static string? Prize(int digits) => digits switch

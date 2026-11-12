@@ -2735,6 +2735,137 @@
       "random": "La întâmplare", "swap": "Schimb", "oneBp": "1 PL", "threeBp": "3 PL", "noBattle": "Fără luptă", "noEvent": "Nimic"
     }
   },
+  "cardFlip": {
+    "level": "NIVEL",
+    "coins": "JETOANE",
+    "round": "RUNDA ASTA",
+    "memo": "NOTIȚE",
+    "quit": "IEȘI",
+    "mark": { "bust": "X" },
+    "hint": { "flip": "Întoarce", "memo": "Notează", "quit": "Ieși" },
+    "ask": {
+      "title": "Joci nivelul {level}?",
+      "body": "Întoarce cărțile ca să găsești cifrele 2 și 3. Fiecare număr îți înmulțește jetoanele. O plăcuță crăpată încheie runda.",
+      "up": "Bravo! Tabla următoare plătește mai mult.",
+      "down": "Tabla asta e ceva mai ușoară.",
+      "play": "JOACĂ",
+      "leave": "PLEACĂ"
+    },
+    "quitAsk": {
+      "title": "Ieși din runda asta?",
+      "keep": "Jetoane pe care le păstrezi: {coins}.",
+      "none": "Încă n-ai găsit niciun jeton.",
+      "yes": "IEȘI",
+      "no": "JOC MAI DEPARTE"
+    },
+    "line": {
+      "menu": "Fiecare rând și coloană arată totalul și câte plăcuțe crăpate ascunde.",
+      "level": "Nivelul {level}. Alege o carte.",
+      "first": "Un {coins} ca să începi runda!",
+      "one": "Un 1. Runda asta: {coins}.",
+      "times": "Ori {times}! Runda asta: {coins}.",
+      "bust": "O plăcuță crăpată! Jetoanele rundei s-au pierdut.",
+      "won": "Ai găsit toți de 2 și de 3! În cutie: {coins}.",
+      "kept": "În cutie: {coins}.",
+      "nothing": "Niciun jeton de data asta.",
+      "up": "Urci la nivelul {level}!",
+      "down": "Înapoi la nivelul {level}.",
+      "full": "Cutia de jetoane e plină. Nu mai încap jetoane."
+    }
+  },
+  "luckyDraw": {
+    "radio": {
+      "hello": "E timpul pentru tragerea numărului norocos!",
+      "number": "Numărul norocos al săptămânii este {number}!",
+      "claim": "Dacă se potrivește cu numărul de ID al unuia dintre Pokémonii tăi, vino la Turnul Radio să-ți iei premiul!"
+    }
+  },
+  "stageShow": {
+    "dressing": {
+      "title": "CABINA DE MACHIAJ",
+      "wait": "Se pregătește...",
+      "choose": "CINE VA JUCA?",
+      "nothing": "(nimic)",
+      "trunk": "CUFĂRUL CU RECUZITĂ",
+      "takeOff": "Scoate-l",
+      "moods": "STĂRI PURTATE"
+    },
+    "slot": {
+      "head": "CAP",
+      "face": "FAȚĂ",
+      "neck": "GÂT",
+      "back": "SPATE",
+      "hand": "MÂNĂ",
+      "tail": "COADĂ"
+    },
+    "mood": {
+      "bright": "VESEL",
+      "dashing": "ELEGANT",
+      "gentle": "BLÂND",
+      "eerie": "MISTERIOS"
+    },
+    "hint": {
+      "choose": "Alege",
+      "leave": "Pleacă",
+      "wear": "Poartă",
+      "back": "Înapoi",
+      "bow": "Fă o plecăciune"
+    },
+    "show": {
+      "sunnySideRevue": "Revista Însoritei",
+      "hourOfLanterns": "Ora Felinarelor"
+    },
+    "stage": {
+      "you": "TU",
+      "yourCue": "E RÂNDUL TĂU! APASĂ PE RITM!",
+      "chooseShow": "CE SPECTACOL?",
+      "choosePerformer": "CINE URCĂ PE SCENĂ?",
+      "results": "VERDICTUL PUBLICULUI",
+      "eyes": "{eyes}% din priviri"
+    },
+    "prop": {
+      "topHatBlack": "Joben negru",
+      "topHatWhite": "Joben alb",
+      "paperCrownGold": "Coroană aurie de hârtie",
+      "paperCrownSilver": "Coroană argintie de hârtie",
+      "flowerCrown": "Coroană de flori",
+      "pointedHat": "Pălărie ascuțită",
+      "beretRed": "Beretă roșie",
+      "beretYellow": "Beretă galbenă",
+      "headBowPink": "Fundă roz",
+      "headBowOrange": "Fundă portocalie",
+      "tiara": "Diademă",
+      "roundGlasses": "Ochelari rotunzi",
+      "starGlasses": "Ochelari-stea",
+      "masqueradeMask": "Mască de bal",
+      "monocle": "Monoclu",
+      "bowTieRed": "Papion roșu",
+      "bowTieTeal": "Papion turcoaz",
+      "scarfYellow": "Fular galben",
+      "scarfMint": "Fular verde-mentă",
+      "ruff": "Guler plisat",
+      "pearlString": "Șirag de perle",
+      "bellCollar": "Zgardă cu clopoțel",
+      "spiritBeads": "Mărgele de spirit",
+      "shortCapeRed": "Pelerină roșie",
+      "shortCapeNight": "Pelerină de noapte",
+      "paperWings": "Aripi de hârtie",
+      "backBow": "Fundă mare pe spate",
+      "paperLanternPack": "Lampion de hârtie",
+      "foldingFan": "Evantai",
+      "baton": "Baghetă",
+      "handBell": "Clopoțel de mână",
+      "starWand": "Baghetă cu stea",
+      "parasol": "Umbreluță",
+      "handLantern": "Felinar de mână",
+      "cane": "Baston",
+      "tambourine": "Tamburină",
+      "tailRibbonPink": "Panglică roz de coadă",
+      "tailRibbonBlue": "Panglică albastră de coadă",
+      "tailBell": "Clopoțel de coadă",
+      "tailCharm": "Talisman de coadă"
+    }
+  },
   "slots": {
     "machine": "APARATUL {number}",
     "replay": "DIN NOU",

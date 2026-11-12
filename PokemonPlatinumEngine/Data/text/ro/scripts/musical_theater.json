@@ -24,5 +24,189 @@
         "Cântecul lui Meloetta s-a stins dincolo de ușa scenei..."
       ]
     }
+  ],
+  "Owner": [
+    {
+      "en": [
+        "Ah, a new face! I am the owner of this theater, and every Pokémon deserves a turn in the spotlight."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this trunk. It holds a few Props to start with: hats, glasses, a cape and more."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Prop Trunk and {number} Props!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dress a Pokémon of yours at the desk, then take the stage against our three performers. The crowd decides the rest!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A musical is music, dance and costume all at once. Pokémon shine in all three!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Win the crowd's eyes with tricks on the beat, and wear Props that suit the show's mood."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Desk": [
+    {
+      "en": [
+        "Welcome, darling. What will it be today?",
+        "DRESSING ROOM",
+        "TAKE THE STAGE",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do come back when you feel like shining."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Divine! Your Pokémon will remember that look on stage."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Choose a show and a performer. Press on the beat when the spotlight finds you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a performance! The crowd will be talking about it all evening."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "First place! The whole theater was looking at your Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. The stage will wait for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The dressing room is through there. Only performers and their Pokémon may go in, darling."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Speak to the owner first. He has something for every new performer."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Fan1": [
+    {
+      "en": [
+        "I saw your show! It was wonderful. Please, take this for your next one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Prop: {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Fan4": [
+    {
+      "en": [
+        "You were amazing up there! I made this for your Pokémon. Please wear it on stage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Prop: {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Fan18": [
+    {
+      "en": [
+        "That was a real performance! My Pokémon and I want you to have this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Prop: {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

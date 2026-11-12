@@ -1,29 +1,22 @@
 # The Celadon Game Corner as HeartGold has it three years on (plan 20 · J15, part o). docs/scripts.md describes the
 # language; the lines are our own, on HeartGold's beats (scr_seq_T07SP0101).
 #
-# HeartGold's tables play a card game this one hasn't; here they are plan 06 · R16b's slot machines, as FireRed's
-# Celadon Game Corner and Veilstone's are, played by whoever carries a Coin Case (the rulings' "HeartGold's Kanto,
-# part o"). The clerk sells coins and, to a Champion of Johto who has none, hands a Coin Case over first: in HeartGold
+# HeartGold's tables play the card-flip game, and since plan 42 · PS3 (decision 3) so do ours (Models/CardFlip.cs;
+# the rulings' "The card-flip game"); FireRed's Celadon Game Corner and Veilstone keep their slot machines. The clerk sells coins and, to a Champion of Johto who has none, hands a Coin Case over first: in HeartGold
 # it is Goldenrod's underground that gives it, which this game hasn't built.
 
 
-script Slots
+script Cards
   speaker none
   if not item "Coin Case" goto NoCase
-  ask "A game table set up with a slot machine. Play it?"
+  ask "A card-flip table. Twenty-five cards, and the coins grow with every number found. Play?"
   if no end
-  random 6
   fade out 0.3
-  if result == 0 gamecorner slots 0
-  if result == 1 gamecorner slots 2
-  if result == 2 gamecorner slots 4
-  if result == 3 gamecorner slots 6
-  if result == 4 gamecorner slots 8
-  if result == 5 gamecorner slots 10
+  gamecorner cards
   fade in 0.3
   end
 label NoCase
-  text "A game table set up with a slot machine. Without a Coin Case there is nothing to play with."
+  text "A card-flip table. Without a Coin Case there is nothing to play with."
   end
 
 

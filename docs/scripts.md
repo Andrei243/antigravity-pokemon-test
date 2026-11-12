@@ -1356,6 +1356,20 @@ Plan 40 · GE7 and GE8 (`Models/GiftBox.cs`, `Data/gifts.json`, `scripts/gifts.t
 | `trade board 2`, `trade blind` | The Pokémon `choosepokemon` chose last sent to request 2 (or blind), the one received through the game's own way in, its trade evolution played: `RESULT` 1 done, 0 not the species or level asked, 2 met already, 3 an Egg or the last able to fight, 4 a run that holds its Pokémon, 5 no blind trade left today. |
 
 A gift's script is started by nothing but `gift give`, so `gifts.txt` is the one file besides `common` and `phone` that is no place's. A festival's flag (`FLAG_FESTIVAL_<ID>`, plan 40 · GE9, `Data/festivals.json`) is kept by the clock, never by a script; a script may ask it.
+### The stage show
+
+Plan 42 · PS1, PS2 (`Models/StageShow/`, `Data/show-props.json`, `Data/stage-shows.json`; `docs/mechanics/rulings.md`, "The stage show"). Nimbasa's theatre (`musical_theater.txt`) is where they are used.
+
+| Command | What it does |
+|---|---|
+| `stageshow trunk` | The theatre owner's gift of the Prop Trunk and a first handful of Props (`ShowRecords.FirstHandful`), once: `RESULT` 1 (and `{number}` how many Props), 0 when it was given already. The words and the fanfare are the script's. |
+| `stageshow has` | `RESULT` 1 once the trunk has been given. |
+| `stageshow dress` | The dressing room (`ScriptScreen.DressingRoom`; the script waits): `RESULT` 1 when a dressing was kept, 0 otherwise (and 0 at once with no trunk). |
+| `stageshow perform` | A show on the stage (`ScriptScreen.StageShow`; the script waits): `RESULT` the player's place, 1 to 4, or 0 backed out of. A fan of the lobby waits with a Prop afterwards. |
+| `stageshow fan fan_1` | The Prop that fan (`fan_1`, `fan_4`, `fan_18`, the lobby's persons 1, 4 and 18) waits with goes into the trunk: `RESULT` 1 and `{thing}` its name, 0 when they wait with none, 2 when the trunk holds nine of it already (they go on waiting). |
+
+The card-flip tables (plan 42 · PS3) are words of `gamecorner`: `gamecorner cards` seats the player at a table (the script waits; the coins come back to the case), `gamecorner prize goldenrod` asks from Goldenrod's list (HeartGold's TMs and held items), and `gamecorner pokemon` asks which of Goldenrod's three Pokémon (`RESULT` 1 to 3, 0 none; `{thing}` and `{price}`), whose price `gamecorner pay` takes (`RESULT` 0 with too few coins).
+
 ### The Laurel Gallery and the Laurel Circuit
 
 Plan 41 · EG2 and EG4 (`docs/mechanics/rulings.md`, "The Laurel Gallery" and "The Laurel Circuit"; `Models/LaurelGallery.cs`,

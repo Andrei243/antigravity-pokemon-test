@@ -1,0 +1,51 @@
+{
+  // The stage show's shows (plan 42 · PS2; ours, hand-written; docs/data-files.md, "Stage shows"). Each names its song (a
+  // song of ours whose tempo and meter the show's own are held equal to by StageShowTests), its mood, its bars, its three
+  // rival performers (species, the props they wear, how often they trick on the beat, out of a hundred) and its cues: the
+  // bars in which each performer has the spotlight, three each. Performer 0 is the player's Pokémon, 1 to 3 the cast in
+  // their order. A show's words are ui.json's stageShow.show.<id in camel case>.
+  "shows": [
+    {
+      "id": "sunny_side_revue",
+      "song": "unova/stage_sunny_side",
+      "tempo": 128,
+      "beatsPerBar": 4,
+      "bars": 32,
+      "mood": "Bright",
+      "cast": [
+        { "species": "Marill", "props": [ "head_bow_orange", "bell_collar" ], "knack": 70 },
+        { "species": "Pachirisu", "props": [ "paper_crown_gold", "tail_bell" ], "knack": 62 },
+        { "species": "Skitty", "props": [ "beret_yellow", "scarf_yellow" ], "knack": 66 }
+      ],
+      "cues": [
+        { "performer": 1, "bar": 4, "length": 2 }, { "performer": 0, "bar": 6, "length": 2 },
+        { "performer": 2, "bar": 8, "length": 2 }, { "performer": 3, "bar": 10, "length": 2 },
+        { "performer": 0, "bar": 12, "length": 2 }, { "performer": 1, "bar": 14, "length": 2 },
+        { "performer": 3, "bar": 16, "length": 2 }, { "performer": 2, "bar": 18, "length": 2 },
+        { "performer": 1, "bar": 20, "length": 2 }, { "performer": 3, "bar": 22, "length": 2 },
+        { "performer": 2, "bar": 24, "length": 2 }, { "performer": 0, "bar": 26, "length": 2 }
+      ]
+    },
+    {
+      "id": "hour_of_lanterns",
+      "song": "unova/stage_lanterns",
+      "tempo": 108,
+      "beatsPerBar": 3,
+      "bars": 48,
+      "mood": "Eerie",
+      "cast": [
+        { "species": "Misdreavus", "props": [ "paper_lantern_pack", "spirit_beads" ], "knack": 72 },
+        { "species": "Banette", "props": [ "pointed_hat", "masquerade_mask" ], "knack": 68 },
+        { "species": "Chimecho", "props": [ "tail_charm", "short_cape_night" ], "knack": 74 }
+      ],
+      "cues": [
+        { "performer": 2, "bar": 6, "length": 3 }, { "performer": 0, "bar": 9, "length": 3 },
+        { "performer": 1, "bar": 12, "length": 3 }, { "performer": 3, "bar": 15, "length": 3 },
+        { "performer": 0, "bar": 18, "length": 3 }, { "performer": 2, "bar": 21, "length": 3 },
+        { "performer": 3, "bar": 24, "length": 3 }, { "performer": 1, "bar": 27, "length": 3 },
+        { "performer": 3, "bar": 30, "length": 3 }, { "performer": 2, "bar": 33, "length": 3 },
+        { "performer": 1, "bar": 36, "length": 3 }, { "performer": 0, "bar": 39, "length": 3 }
+      ]
+    }
+  ]
+}
