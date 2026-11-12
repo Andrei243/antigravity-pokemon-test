@@ -45,7 +45,9 @@ public sealed partial class BattleCore
         [PokemonType.Bug] = "Max Flutterby", [PokemonType.Ghost] = "Max Phantasm", [PokemonType.Steel] = "Max Steelspike",
         [PokemonType.Fire] = "Max Flare", [PokemonType.Water] = "Max Geyser", [PokemonType.Grass] = "Max Overgrowth",
         [PokemonType.Electric] = "Max Lightning", [PokemonType.Psychic] = "Max Mindstorm", [PokemonType.Ice] = "Max Hailstorm",
-        [PokemonType.Dragon] = "Max Wyrmwind", [PokemonType.Dark] = "Max Darkness", [PokemonType.Fairy] = "Max Starfall"
+        [PokemonType.Dragon] = "Max Wyrmwind", [PokemonType.Dark] = "Max Darkness", [PokemonType.Fairy] = "Max Starfall",
+        // Plan 46 · CP2: our own type's
+        [PokemonType.Sound] = "Max Chorus"
     };
 
     /// <summary>What every status move becomes under Dynamax.</summary>
@@ -502,6 +504,8 @@ public sealed partial class BattleCore
         {
             case "Max Strike": Theirs(StatType.Speed, -1); break;
             case "Max Flutterby": Theirs(StatType.SpAttack, -1); break;
+            // Plan 46 · CP2: the din drowns the foes' focus, as Max Flutterby's
+            case "Max Chorus": Theirs(StatType.SpAttack, -1); break;
             case "Max Phantasm": Theirs(StatType.Defense, -1); break;
             case "Max Wyrmwind": Theirs(StatType.Attack, -1); break;
             case "Max Darkness": Theirs(StatType.SpDefense, -1); break;

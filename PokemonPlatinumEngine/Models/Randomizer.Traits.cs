@@ -149,7 +149,8 @@ public sealed partial class Randomizer
         {
             if (!shuffles.TryGetValue(lineRoot, out var order))
             {
-                order = Enum.GetValues<PokemonType>();
+                // The games' eighteen: Sound (plan 46 · CP2) joins no shuffle, so a seed deals what it always dealt
+                order = TypeChart.GamesTypes.ToArray();
                 var r = new SplitMix(SplitMix.Mix(seed, (uint)lineRoot, 0x545950u));
                 for (int i = order.Length - 1; i > 0; i--)
                 {

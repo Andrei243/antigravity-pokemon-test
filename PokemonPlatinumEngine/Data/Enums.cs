@@ -19,7 +19,14 @@ public enum PokemonType
     Dragon,
     Steel,
     Dark,
-    Fairy
+    Fairy,
+
+    /// <summary>
+    /// A type of our own (plan 46 · CP2), the nineteenth: no game has it, so no species or move of the games carries it,
+    /// Hidden Power, Arceus's plates, Silvally's memories and the Battle Hall's board leave it out, and every Sound move
+    /// one can learn is a sound move (its data's flags carry <c>Sound</c>: Soundproof, Throat Chop and Punk Rock answer it).
+    /// </summary>
+    Sound
 }
 
 public enum MoveCategory

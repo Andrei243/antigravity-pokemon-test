@@ -1587,7 +1587,7 @@
   "types": {
     "Normal": "Normal", "Fire": "Foc", "Water": "Apă", "Grass": "Iarbă", "Electric": "Electric", "Ice": "Gheață",
     "Fighting": "Luptă", "Poison": "Otravă", "Ground": "Pământ", "Flying": "Zbor", "Psychic": "Psihic", "Bug": "Insectă",
-    "Rock": "Rocă", "Ghost": "Fantomă", "Dragon": "Dragon", "Steel": "Oțel", "Dark": "Întuneric", "Fairy": "Zână"
+    "Rock": "Rocă", "Ghost": "Fantomă", "Dragon": "Dragon", "Steel": "Oțel", "Dark": "Întuneric", "Fairy": "Zână", "Sound": "Sunet"
   },
 
   "natures": {
@@ -1857,8 +1857,8 @@
       "left": "Stânga {n}", "right": "Dreapta {n}", "ready": "Apasă să auzi", "sounding": "Se aude",
       "hint": "Apasă tasta de confirmare ca să schimbi acest strigăt."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "ours": "ALE NOASTRE" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "ours": "Ale noastre" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "national": "NAȚIONAL", "kaloscentral": "CENTRAL", "kaloscoastal": "COSTIER", "kalosmountain": "MUNTE", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "ours": "ALE NOASTRE", "carpathia": "CARPATIA" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "national": "Național", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Costier", "kalosmountain": "Kalos Munte", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "ours": "Ale noastre", "carpathia": "Carpatia" },
     "oursMark": "ALE NOASTRE",
     "found": "GĂSIȚI",
     "order": "ORDINE",
@@ -1929,6 +1929,7 @@
       "hoenn": "POKÉDEX HOENN",
       "updatedunova": "POKÉDEX UNOVA",
       "ours": "POKÉDEXUL NOSTRU",
+      "carpathia": "POKÉDEXUL CARPATIC",
       "national": "POKÉDEX NAȚIONAL",
       "research": "CERCETAREA SINNOH",
       "line": {
@@ -1938,6 +1939,7 @@
         "updatedjohto": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Johto, de la rutele liniștite până la cele mai adânci peșteri.",
         "hoenn": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Hoenn, pe uscat, în mare și pe cer.",
         "updatedunova": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Unova, de la turnurile orașelor până la nisipurile îngropate.",
+        "carpathia": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Carpatic, din stuful deltei până la zăpada de pe creastă.",
         "ours": "a văzut fiecare dintre cei {count} Pokémoni ai noștri, cei pe care niciun Pokédex regional nu îi enumeră. O evidență pe care n-o ține nimeni altcineva.",
         "national": "a prins fiecare Pokémon al Pokédexului Național pe care un antrenor îl poate întâlni. Munca unui adevărat Maestru Pokémon.",
         "kaloscentral": "a văzut fiecare dintre cei {count} Pokémoni ai Pokédexului Kalos Central: grădinile, pădurile și străzile din Lumiose, toate înregistrate.",
@@ -2489,7 +2491,7 @@
     "short": {
       "Normal": "NOR", "Fire": "FOC", "Water": "APĂ", "Grass": "IAR", "Electric": "ELE", "Ice": "GHE",
       "Fighting": "LUP", "Poison": "OTR", "Ground": "PĂM", "Flying": "ZBR", "Psychic": "PSI", "Bug": "INS",
-      "Rock": "ROC", "Ghost": "FAN", "Dragon": "DRA", "Steel": "OȚE", "Dark": "ÎNT", "Fairy": "ZÂN"
+      "Rock": "ROC", "Ghost": "FAN", "Dragon": "DRA", "Steel": "OȚE", "Dark": "ÎNT", "Fairy": "ZÂN", "Sound": "SUN"
     },
     "note": {
       "about": {
@@ -7149,6 +7151,8 @@
         "umbralClaw": "Gheară Umbrală",
         "charmGlitter": "Sclipici Fermecat",
         "moonRibbon": "Panglică Lunară",
+        "hollowReed": "Trestie Goală",
+        "echoCrystal": "Cristal de Ecou",
         "quarryStone": "Piatră de Carieră",
         "rawOre": "Minereu Brut",
         "timber": "Cherestea",
@@ -7199,6 +7203,8 @@
         "umbralClaw": "O gheară neagră ca o noapte fără lună.",
         "charmGlitter": "Sclipici care strălucește fără nicio pricină.",
         "moonRibbon": "O panglică argintie care luminează slab după lăsarea întunericului.",
+        "hollowReed": "O bucată de trestie care fluieră când vântul trece prin ea.",
+        "echoCrystal": "Un cristal limpede care întoarce orice notă cântată lângă el.",
         "quarryStone": "Piatră simplă, spartă dintr-un perete de stâncă.",
         "rawOre": "Un bulgăre de minereu, cu vine de metal în el.",
         "timber": "O bucată de lemn dintr-un copac doborât.",
