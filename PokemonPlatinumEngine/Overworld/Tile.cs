@@ -414,6 +414,17 @@ public enum InteriorStyle
     /// (style guide, "Rooms", "A Battle Tent").
     /// </summary>
     Tent,
+    /// <summary>
+    /// A sports ground under the sky (plan 42 · PS5: Nimbasa City's gridiron, baseball and football fields): turf mown in
+    /// broad stripes of two greens underfoot and walls of padded green over concrete, the stands' rail (style guide,
+    /// "Rooms", "A sports ground").
+    /// </summary>
+    Field,
+    /// <summary>
+    /// A hard court (plan 42 · PS5: Nimbasa City's tennis court): its surface of blue-green in two close tones, the same
+    /// walls as a field's (style guide, "Rooms", "A sports ground").
+    /// </summary>
+    Court,
 }
 
 /// <summary>

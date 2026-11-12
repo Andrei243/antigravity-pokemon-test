@@ -6,6 +6,8 @@
   // comes down. The way back leads to the lobby, before its counter
   "area": "nimbasa_city_10",
   "bgmTrack": "unova/nimbasa",
+  // a hard court, not a house's boards (a shots pass, 2026-11-12)
+  "interior": "Court",
   "doors": [ { "warp": 0, "map": "NimbasaCity_SmallCourt", "x": 11, "y": 10, "facing": "Down" } ],
   "people": {
     "0": {"name": "Smasher", "script": "Athlete1"},

@@ -90,6 +90,12 @@ public sealed class BuildingInfo
     /// <summary>How tall the original's model stands, in tiles; 0 when nothing says.</summary>
     public float Height { get; init; }
 
+    /// <summary>
+    /// How tall a tower's stages may stand together, in the art's rows; nought for the field's own bound (300, a great
+    /// tower 380), which its steep camera needs. An open map's tower, seen from the ground, stands as tall as its box.
+    /// </summary>
+    public int TallestRows { get; init; }
+
     /// <summary>Doors on the front (bottom) row, with the map each one warps to (null for decorative doors).</summary>
     public List<(int X, string? Target)> Doors { get; } = new();
 

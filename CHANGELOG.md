@@ -8,7 +8,7 @@ What changes from one release to the next, for players. Every session's close-ou
 - The photo studio remembers your last picture between sessions, can be worked with the mouse, and has a second counter in Lumiose City's PR Video Studio.
 - Your secret base can now open at spots outside Hoenn: its door moves to the new spot with everything inside left as it was, and MOVE IN HERE at the base's PC takes the new spot's own room while keeping the old room's layout for later.
 - Johto's Mom offers to keep a quarter of your prize money, gives it back whenever you ask, and now and then rings to say what she bought with it.
-
+- Route 23's and the Relic Passage's holes now look like holes until a boulder fills them; Nimbasa City's sports fields are turf and its tennis court a hard court instead of wooden floors; the Seagallop no longer hangs over the dark beside the Sevii Islands' harbour rooms; Galar's Rose Tower and Hammerlocke's vault stand as tall as they should, and Stow-on-Side's mural stands before its hill instead of sinking into it.
 - Join Avenue's visitors now ask to open shops in its empty bays: say yes and a raffle, dojo, salon, nursery or antique shop moves in, as many as the avenue's rank has room for. Every shop grows with what you spend there, widening its stock or doing more for your Pokémon.
 - Under Challenge, Unova's Gym Leaders, Elite Four and Iris now bring their own Challenge Mode teams, with an extra Pokémon and better-trained partners.
 - Route 23 has its six holes: push the valley's boulders into them with Strength to cross.

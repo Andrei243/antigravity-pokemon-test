@@ -6,6 +6,8 @@
   // comes down. The way back leads to the lobby, before its counter
   "area": "nimbasa_city_7",
   "bgmTrack": "unova/nimbasa",
+  // a sports ground's turf, not a house's boards (a shots pass, 2026-11-12)
+  "interior": "Field",
   "doors": [ { "warp": 0, "map": "NimbasaCity_BigStadium", "x": 11, "y": 10, "facing": "Down" } ],
   "people": {
     "0": {"name": "Player", "hiddenBy": "", "shownBy": "FLAG_UNOVA_GAME_ON", "dialog": ["Can't talk now, there's a game on!"]},
