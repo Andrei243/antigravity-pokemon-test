@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Changed
+- A Battle Royal now looks like one: the three other Trainers and their Pokémon each stand on a platform of their own in a ring around the field, all three Trainers appear as it begins, and choosing a target shows the four as they stand in the ring. First place at the Battle Frontier annex's Royal corner earns two Battle Points.
 - The Pastoria Gym is easier to read: the strips you can't walk on (between the walk round the room and the platforms, and between platforms) are now drawn as water instead of looking like more floor, and the bottom of the pool shows as dry floor only when the water is drained and you can walk on it.
 - Voices are louder and have their own volume: spoken lines now play several decibels louder over the music (which dips a little further while someone speaks), and the options' VOICE VOLUME runs from 0 to 200, so the voices can be turned up well past the music, which keeps its own 0 to 100.
 - The training club has come to every region: its head coach, clerk and tutor stand in a corner of the department stores in Celadon City, Goldenrod City and Lilycove City and in Shopping Mall Nine, and Kalos has a training hall of its own in Laverre City. Kanto, Johto and Kalos also have the club's Battle Points clerk. A Bottle Cap lies in each region's post-game ground, and three feathers can be found on the Driftveil Drawbridge every day.
