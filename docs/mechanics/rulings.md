@@ -12260,3 +12260,62 @@ desk of ours. Nothing of it rides on plan 07's online server, and nothing waits 
 - **Not built**: Emerald's other mixed records (the Trainer Hill's times, the Lilycove Lady's and the television's other
   shows, the Battle Tower's partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice), which stay as their
   own rulings have them.
+
+## The delve (2026-11-12, plan 44 · SD7)
+
+Mystery Dungeon's turns on a grid as a mechanic, everything in it ours (decision 5: on the floor's grid, a turn a step;
+the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbers are ours. The rules are
+`Models/Delve/` and play with no window; SD8 draws them.
+
+- **The floors** (`DelveFloor`): four squares by four of eight, laid by `FloorLayout` (the Pyramid's and the hideaways'
+  laying, unchanged) from seven pieces of ours, the way in and the stairs in two different squares, all from the floor's
+  seed (`DelveRun.FloorSeed`: the run's seed and the floor's number). A piece's 'P' cells are pools in a sea cave and rock
+  elsewhere; they never lie on a piece's own floor, so no pool cuts the way from the way in to the stairs, and only a
+  Water type crosses one. A floor then has its residents (never within four tiles of the way in, one in three asleep,
+  one in four shy), its finds and its snares, on ground the way in reaches. The last floor has no drop.
+- **The team**: the leader and the partner go down as copies at the hollow's level (`LevelScaling.At`) holding nothing;
+  an Egg, a fainted Pokémon and a locked heart (`LockedUse.Delve`) stay at the camp. Nothing a run does reaches the
+  player's own Pokémon. Up to two recruits join them: four at most.
+- **A turn**: every action of the leader (a step, the plain strike, a move, an item, waiting) is a turn; then everyone
+  else acts once, the fastest first by its Speed at its stage (halved while paralysed), ties by a draw of the run's each
+  round. A step onto a teammate changes places with it; onto a wall, a pool or a resident is refused and no turn. A refused
+  action changes nothing. A recruit's answer is no turn.
+- **The others**: the partner and the recruits strike a resident beside them (by the four ways) or walk the shortest way
+  to the leader. A resident asleep wakes when the team comes within two tiles or strikes it; awake, it strikes one of the
+  team beside it, or comes the shortest way after the nearest within eight tiles; a shy one under a quarter of its HP steps
+  away instead. A striker uses one of its damaging moves that reach one time in two, else the plain strike.
+- **Moves**: a move reaches by its target: one at a Pokémon the tile ahead; at both foes the eight tiles round; at
+  everyone else every foe within three tiles; at the user the user; at the user and its allies the user and its teammates
+  round it; at an ally the teammate ahead. A move at a side, the foes' side or the field, a damaging move whose power the
+  battle works out (a power of nought), and a status move whose fields say nothing (no condition, confusion, healing or
+  stat's stages) need a battle and are refused (`DelveMoves.WhyNot`). A move hits by `Formulas.HitRate` (a move with no
+  accuracy always), damages by `DamageCalculator.Calculate` under the modern rules on the run's generator with **every
+  ability left out** (`AbilitySuppressed`) and nobody holding anything (decision 5), so its damage is what
+  `CalculateDamage` gives two Pokémon whose ability and item play no part, on the same draws. Then its fields: a
+  condition, confusion, a flinch (the next action lost), a stat's stages, draining and recoil, each by its chance; a status
+  move's always. A Poison or Steel type is never poisoned, a Fire type burned, an Electric type paralysed, an Ice type
+  frozen, and a Pokémon with a condition takes no other.
+- **The plain strike** costs no PP: power 40, physical, `Formulas.ModernBaseDamage` and `ModernFinalDamage` with the
+  user's Attack against the target's Defense at their stages, a roll of sixteen, no same-type bonus, an **effectiveness of
+  one**, so no type is immune to it, halved by a burn; it hits by the hit rate of 100.
+- **Conditions on a floor**: asleep two to four of the Pokémon's own actions (a snare's three), the waking action lost;
+  frozen thaws one time in five; paralysed loses one action in four; confused two to five actions, hurting itself for an
+  eighth of its HP one time in three. Every fifth turn a poison or a burn bites a sixteenth, and a teammate with neither,
+  while the team isn't starving, mends a twentieth.
+- **Hunger**: one for the team, 100 at the start, a point lost every ten turns; at nought the leader loses 1 HP a turn.
+  A berry gives 30 back, and its own: an Oran Berry 10 HP, a Sitrus Berry a quarter, a Pecha, Cheri, Chesto, Rawst or
+  Aspear Berry its cure, a Persim Berry the confusion. A Potion heals 20 and a Super Potion 60. Anything else found is
+  carried home and does nothing below.
+- **The bag** holds sixteen. An Escape Rope leaves with the bag. A run whose leader falls keeps nothing, unless a Revive is
+  in the bag: it is used at once and the leader stands at half its HP. Anyone else of the team who falls is gone from the
+  run.
+- **Snares**: hidden, sprung by the leader alone and once: sleep (three turns), poison, and a drop to the next floor.
+- **Recruits**: a resident knocked out by one of the team asks to join, while the team has room, if a draw of a hundred
+  comes out under its catch rate's share of thirty plus two for each level the leader stands over it (two less for each
+  under), at most fifty; never a legendary or a mythical species. It joins cured at half its HP. Going down the stairs
+  unanswered is a no. A recruit that reaches the last floor's stairs with the team may come home (decision 6; SD9 carries
+  it to the boxes as a gift the Nuzlocke counts, its species asked of the randomiser).
+- **Chance**: a run draws from one generator of its seed (`DelveRandom`, `SplitMix`, never `Dice`), a floor and its
+  residents from the floor's own, so a seed and the actions are the whole run.
+- **What is not taken**: no guild, rank, region, town, partner, mascot, item or move of Mystery Dungeon's; no abilities,
+  held items, type of a tile, belly item, IQ, team skill or wonder orb.
