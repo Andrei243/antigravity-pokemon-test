@@ -99,6 +99,16 @@
       "shownBy": "FLAG_GALAR_DARKEST_DAY"
     },
     {
+      "id": "leon_tower",
+      "name": "Leon",
+      "npcType": "leon",
+      "x": 7,
+      "y": 6,
+      "facing": "Left",
+      "script": "LeonTower",
+      "shownBy": "GalarHallOfFame"
+    },
+    {
       "id": "tower_receptionist",
       "name": "Receptionist",
       "npcType": "receptionist",

@@ -396,6 +396,9 @@ public static class Objectives
         (741, "galarFinals", AtLeast("VAR_GALAR_STORY", 44), true),
         (742, "galarRaihanCup", AtLeast("VAR_GALAR_STORY", 45), true),
         (743, "galarLeon", s => s.Var("VAR_GALAR_STORY") >= 46 || s.Has("GalarHallOfFame"), false),
+        // Plan 33 · GL7: after the Hall of Fame, the version's legendary in the Weald and Leon's rematch in the Battle Tower
+        (744, "galarWeald", AtLeast("VAR_GALAR_STORY", 47), false),
+        (745, "galarLeonTower", s => s.Has("FLAG_GALAR_LEON_TOWER_WON"), false),
         (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

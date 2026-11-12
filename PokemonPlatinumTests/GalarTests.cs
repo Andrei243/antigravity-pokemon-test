@@ -233,10 +233,11 @@ public class GalarTests
         var bag = new Inventory();
         var library = ScriptLibrary.Default;
         var open = OpenRegions.Load(Region).Single();
-        HeadlessScriptHost Play(string file, string script, string? room = null)
+        HeadlessScriptHost Play(string file, string script, string? room = null, Func<PokemonPlatinumEngine.Overworld.NPC?, BattleOutcome>? fight = null)
         {
             var host = new HeadlessScriptHost(story, party, bag)
             {
+                Fight = fight,
                 Map = room != null ? Rooms.Value(room) : null,
                 OpenMap = room == null ? open : null,
                 OpenMapNamed = name => name == open.Name ? open : null,
@@ -514,6 +515,18 @@ public class GalarTests
         Play("Wyndon_StadiumPitch", "Leon", "Wyndon_StadiumPitch");
         Assert.Equal(46, story.Var("VAR_GALAR_STORY"));
         Assert.True(story.IsRegionComplete(RegionDatabase.Galar));
+        // Plan 33 · GL7: after the Hall of Fame, the version's legendary at the Weald's altar (a battle won leaves it in the
+        // fog for the next try; a catch ends the story there), and Leon's rematch in the Battle Tower
+        Assert.Equal("galarWeald", Next());
+        var left = Play("slumbering_weald", "Legend");
+        Assert.Contains(left.Log, l => l.StartsWith("wildbattle Zacian 70 Won", StringComparison.Ordinal));
+        Assert.Equal(46, story.Var("VAR_GALAR_STORY"));
+        Play("slumbering_weald", "Legend", fight: _ => BattleOutcome.Caught);
+        Assert.Equal(47, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarLeonTower", Next());
+        var battleTower = Play("Wyndon_RoseTower", "LeonTower", "Wyndon_RoseTower");
+        Assert.Contains(battleTower.Log, l => l.StartsWith("battle galar_leon_rematch", StringComparison.Ordinal));
+        Assert.True(story.Has("FLAG_GALAR_LEON_TOWER_WON"));
         Assert.Equal("galarFree", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }
@@ -538,13 +551,16 @@ public class GalarTests
             // Plan 33 · GL5, its second session: the Hero's Bath, the bike's kit, Marnie at the gate, Piers on his stage
             ("circhester", "HerosBath", 30), ("galar_route_9", "BikeKit", 32), ("galar_route_9", "SpikemuthGate", 33), ("spikemuth", "Piers", 34),
             // Plan 33 · GL6: Leon and Hop on Wyndon's avenue, the altar in the Weald on the Darkest Day
-            ("wyndon", "WyndonArrival", 36), ("slumbering_weald", "Altar", 40)
+            ("wyndon", "WyndonArrival", 36), ("slumbering_weald", "Altar", 40),
+            // Plan 33 · GL7: the version's legendary at the altar after the Hall of Fame, caught
+            ("slumbering_weald", "Legend", 46)
         })
         {
             var ends = new List<string>();
             foreach (bool hurry in new[] { false, true })
             {
-                var host = new HeadlessScriptHost { Region = RegionDatabase.Galar, OpenMap = Open.Value, OpenMapNamed = n => n == "Galar" ? Open.Value : null };
+                var host = new HeadlessScriptHost { Region = RegionDatabase.Galar, OpenMap = Open.Value, OpenMapNamed = n => n == "Galar" ? Open.Value : null,
+                    Fight = script == "Legend" ? _ => BattleOutcome.Caught : null };
                 StoryMigration.BeginNewGame(host.Story, ScriptLibrary.Default);
                 host.Story.SetVar("VAR_GALAR_STORY", story);
                 host.Story.SetVar("VAR_GALAR_VERSION", 1);
@@ -554,7 +570,7 @@ public class GalarTests
                 foreach (string shown in new[] { "FLAG_GALAR_HOP_CIRCHESTER", "FLAG_GALAR_SONIA_CIRCHESTER", "FLAG_GALAR_MARNIE_ROUTE_9", "FLAG_GALAR_MARNIE_SPIKEMUTH" })
                     if (script is "HerosBath" or "SpikemuthGate" or "Piers") host.Story.Set(shown);
                 foreach (string shown in new[] { "FLAG_GALAR_LEON_WYNDON", "FLAG_GALAR_HOP_WYNDON", "FLAG_GALAR_HOP_ALTAR" })
-                    if (script is "WyndonArrival" or "Altar") host.Story.Set(shown);
+                    if (script is "WyndonArrival" or "Altar" or "Legend") host.Story.Set(shown);
                 // (the bike's kit waits for the sixth badge, Piers's battle for nothing: a story of 32 has it)
                 if (story >= 32) host.Story.GiveBadge(RegionDatabase.Galar, "Rock");
                 host.Party.Add(new Pokemon(PokemonDatabase.Get("Grookey")!, 5, new Random(0)));

@@ -4,6 +4,11 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- On the Energy Plant's roof you now battle Eternatus itself, before it swells into Eternamax.
+- After Galar's Hall of Fame the fog returns to the Slumbering Weald: Hop waits at the altar, and the legendary of your version comes out to meet you, to be caught at last.
+- Leon now runs the Battle Tower in Rose Tower and takes you on once a day; he also joins the Laurel Circuit's final for Galar.
+- Wyndon Station has an airfield lounge where the plane to Paldea will leave.
+
 - Join Avenue's visitors now ask to open shops in its empty bays: say yes and a raffle, dojo, salon, nursery or antique shop moves in, as many as the avenue's rank has room for. Every shop grows with what you spend there, widening its stock or doing more for your Pokémon.
 - Under Challenge, Unova's Gym Leaders, Elite Four and Iris now bring their own Challenge Mode teams, with an extra Pokémon and better-trained partners.
 - Route 23 has its six holes: push the valley's boulders into them with Strength to cross.

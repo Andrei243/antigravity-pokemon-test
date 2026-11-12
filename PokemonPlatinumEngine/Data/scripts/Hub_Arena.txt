@@ -17,6 +17,7 @@ script OnEnter
   clearflag FLAG_HUB_COURT_IRIS
   clearflag FLAG_HUB_COURT_DIANTHA
   clearflag FLAG_HUB_COURT_KUKUI
+  clearflag FLAG_HUB_COURT_LEON
   circuit ready
   if result == 0 end
   circuit final Sinnoh
@@ -33,6 +34,8 @@ script OnEnter
   if result == 1 setflag FLAG_HUB_COURT_DIANTHA
   circuit final Alola
   if result == 1 setflag FLAG_HUB_COURT_KUKUI
+  circuit final Galar
+  if result == 1 setflag FLAG_HUB_COURT_LEON
   end
 
 
@@ -95,7 +98,7 @@ label Kalos
   if lost goto Lost
 label Alola
   circuit final Alola
-  if result == 0 goto Won
+  if result == 0 goto Galar
   speaker "Kukui"
   face kukui player
   say "Alola's League is young, but it's got heart! Let's see what the Champion's made of, yeah?"
@@ -104,13 +107,22 @@ label Alola
   if starter "Litten" goto KukuiLitten
   battle kukui as "alola_kukui_3" canlose
   if lost goto Lost
-  goto Won
+  goto Galar
 label KukuiRowlet
   battle kukui as "alola_kukui_1" canlose
   if lost goto Lost
-  goto Won
+  goto Galar
 label KukuiLitten
   battle kukui as "alola_kukui_2" canlose
+  if lost goto Lost
+label Galar
+  # Galar's row (plan 33 · GL7): Leon on his Battle Tower team
+  circuit final Galar
+  if result == 0 goto Won
+  speaker "Leon"
+  face leon player
+  say "Galar's turn! I've lost my title once already. I don't plan on making a habit of it. Let's have a champion time!"
+  battle leon as "galar_leon_rematch" canlose
   if lost goto Lost
 label Won
   speaker "Piers"

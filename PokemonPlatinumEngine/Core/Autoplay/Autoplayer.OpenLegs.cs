@@ -162,7 +162,48 @@ internal sealed partial class Autoplayer
             openTarget = target;
             openSincePath = 0f;
         }
-        return Steer(feet, PursuitPoint(feet), toGo / OpenPos.PerMetre);
+        return Steer(feet, ClearOfOtherDoors(map, PursuitPoint(feet), feet, into), toGo / OpenPos.PerMetre);
+    }
+
+    /// <summary>
+    /// The point steered for kept out of every door but the leg's own (plan 33 · GL6): the navigation mesh runs along a
+    /// wall's foot, where a door's volume stands, and a body steered through one is taken into a room it wasn't going
+    /// to (Motostoke's stadium, on the way north out of the town). A point within a metre of another door is put out of
+    /// it, on the side the body stands.
+    /// </summary>
+    private static OpenPos ClearOfOtherDoors(OpenMap map, OpenPos aim, OpenPos feet, OpenShape? mine)
+    {
+        const int margin = 1_200;
+        foreach (var door in map.Doors)
+        {
+            var s = door.Shape;
+            if (ReferenceEquals(s, mine) || s == mine) continue;
+            if (aim.X < s.Min.X - margin || aim.X > s.Max.X + margin || aim.Z < s.Min.Z - margin || aim.Z > s.Max.Z + margin) continue;
+            var b = s.Base;
+            double dx = feet.X - b.X, dz = feet.Z - b.Z, length = Math.Sqrt(dx * dx + dz * dz);
+            if (length < 1) { dx = 0; dz = 1; length = 1; }
+            int reach = Math.Max(s.Max.X - s.Min.X, s.Max.Z - s.Min.Z) / 2 + margin + 800;
+            return new OpenPos((int)(b.X + dx / length * reach), aim.Y, (int)(b.Z + dz / length * reach));
+        }
+        return aim;
+    }
+
+    /// <summary>
+    /// Where in an open map a leg goes on to, for choosing a room's way out (plan 33 · GL6: Galar Mine No. 2 opens on
+    /// Hulbury and on Motostoke): its trigger, person or marker there, or the door of the open map into its room (or
+    /// into a room on the way to it); null where the open map has none of them.
+    /// </summary>
+    private OpenPos? OpenGoalOf(Leg leg, OpenMap open)
+    {
+        switch (leg.Kind)
+        {
+            case LegKind.OpenTrigger: return open.Triggers.FirstOrDefault(t => t.Name == leg.What)?.Shape.Base;
+            case LegKind.OpenTalk: return open.Person(leg.What)?.Pos;
+            case LegKind.OpenReach: return open.Marker(leg.What)?.Pos;
+        }
+        var doors = open.Doors.Where(d => d.Open(game.Story.Has) && (d.Room == leg.Map || Itinerary.NextMap(d.Room, leg.Map, GridMap) != null)).ToList();
+        var direct = doors.Where(d => d.Room == leg.Map).ToList();
+        return (direct.Count > 0 ? direct : doors).Select(d => (OpenPos?)d.Shape.Base).FirstOrDefault();
     }
 
     /// <summary>Where a volume stands on the ground: its middle at the highest face up between its heights, else its floor.</summary>

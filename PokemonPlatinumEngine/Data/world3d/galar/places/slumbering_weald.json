@@ -13,7 +13,9 @@
     // Deep in the fog after Hop's Wooloo: the shadow
     { "name": "the_shadow", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Shadow", "var": "VAR_GALAR_STORY", "value": 4 },
     // The altar on the Darkest Day (plan 33 · GL6), deep in where the shadow stood
-    { "name": "the_altar", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Altar", "var": "VAR_GALAR_STORY", "value": 40 }
+    { "name": "the_altar", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Altar", "var": "VAR_GALAR_STORY", "value": 40 },
+    // After the Hall of Fame (plan 33 · GL7): the version's legendary at the altar, met until it is caught
+    { "name": "the_legend", "cylinder": { "at": [-80, 40], "radius": 5, "bottom": -2, "top": 4 }, "script": "Legend", "var": "VAR_GALAR_STORY", "value": 46 }
   ],
   "people": [
     {

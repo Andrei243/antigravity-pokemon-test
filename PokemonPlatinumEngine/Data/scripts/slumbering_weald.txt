@@ -65,3 +65,39 @@ script Altar
   warpto "Galar" rose_tower_back
   endscene
   end
+
+
+# After the Hall of Fame (plan 33 · GL7): the fog back in the Weald, Hop at the altar, and the version's legendary come
+# down to meet the new Champion: Zacian in a Sword game, Zamazenta in a Shield one, at level 70 and to be caught. A battle
+# won or run from leaves it in the fog for the next try; the other of the two stays with Hop. VAR_GALAR_STORY 46 to 47
+script Legend
+  scene "The legend in the fog"
+  faceto player hop_altar
+  text "The fog has rolled back in, as thick as the first day. On the altar the rusted sword and shield lie where they were found."
+  speaker "Hop"
+  say "{player}! Sonia reckons the two of the legend came home to the Weald once the sky cleared. And look, the fog's parting."
+  say "Not for me, though. For you. Go on, Champion. It's waiting for you."
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  seen "Zacian"
+  text "Out of the white steps Zacian, the rusted sword in its jaws. It lowers its head, ready."
+  wildbattle "Zacian" 70
+  goto After
+label Shield
+  seen "Zamazenta"
+  text "Out of the white steps Zamazenta, the rusted shield on its mane. It lowers its head, ready."
+  wildbattle "Zamazenta" 70
+label After
+  if result == 3 goto Caught
+  speaker "Hop"
+  say "It's slipped back into the fog... but it hasn't gone far. It wants a Champion. Come back and try again!"
+  endscene
+  end
+label Caught
+  speaker "Hop"
+  say "You did it! The hero's Pokémon, beside Galar's Champion. That's how the old story should have ended all along."
+  say "And the other one stayed with me, if you can believe it. I reckon it thinks I'm worth something too. I'll look after it."
+  clearflag FLAG_GALAR_HOP_ALTAR
+  setvar VAR_GALAR_STORY 47
+  objective galarLeonTower
+  endscene
+  end

@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1768 | 1705 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13641 | 13067 | 574 | 17 | 36 |
+| People of the hand-made maps (`map:`) | 1771 | 1708 | 63 | 1 | 0 |
+| Scripts (`script:`) | 13654 | 13080 | 574 | 17 | 36 |
 | People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 23795 | 23116 | 679 | 22 | 36 |
+| **All** | 23811 | 23132 | 679 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -26,7 +26,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a sign | 1771 |
 | a thing's words | 81 |
 | the game's own voice (speaker none) | 326 |
-| the game's own voice (text) | 2245 |
+| the game's own voice (text) | 2249 |
 
 ## The cast
 
@@ -49,7 +49,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lass (any)` | 553 | 22 |
 | `look:youngster (any)` | 521 | 32 |
 | `@self` | 412 | 69 |
-| `look:receptionist (any)` | 352 | 40 |
+| `look:receptionist (any)` | 353 | 40 |
 | `look:attendant (any)` | 340 | 15 |
 | `look:scientist (any)` | 329 | 13 |
 | `look:nurse (any)` | 297 | 2 |
@@ -107,13 +107,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:biker (any)` | 68 | 0 |
 | `class:sailor (any)` | 68 | 0 |
 | `lance` | 68 | 0 |
+| `hop` | 67 | 0 |
 | `class:scientist (any)` | 66 | 0 |
 | `class:worker (any)` | 66 | 0 |
 | `archie` | 62 | 3 |
 | `artist` | 62 | 1 |
 | `collector` | 62 | 0 |
 | `underground_man` | 62 | 0 |
-| `hop` | 61 | 0 |
 | `class:battle_girl (any)` | 60 | 0 |
 | `class:beauty (any)` | 60 | 0 |
 | `cheren` | 59 | 1 |
@@ -173,6 +173,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `byron` | 37 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
 | `class:school_kid (any)` | 36 | 0 |
+| `leon` | 36 | 1 |
 | `look:battle_girl (any)` | 36 | 2 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `look:trainer (any)` | 36 | 0 |
@@ -221,7 +222,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:triathlete (any)` | 28 | 0 |
 | `hala` | 28 | 0 |
 | `ione` | 28 | 7 |
-| `leon` | 28 | 1 |
 | `lillie` | 28 | 0 |
 | `blaine` | 27 | 0 |
 | `sailor_eldritch` | 27 | 0 |
@@ -281,6 +281,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `schoolboy` | 22 | 0 |
 | `shauna` | 22 | 1 |
 | `tierno` | 22 | 0 |
+| `traveller` | 22 | 0 |
 | `veyra` | 22 | 0 |
 | `cooltrainer` | 21 | 6 |
 | `cowgirl` | 21 | 0 |
@@ -289,7 +290,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:bug_catcher (any)` | 21 | 0 |
 | `look:pokemon_breeder_m (any)` | 21 | 0 |
 | `manager` | 21 | 0 |
-| `traveller` | 21 | 0 |
 | `bugsy` | 20 | 0 |
 | `chuck` | 20 | 0 |
 | `class:collector (any)` | 20 | 0 |

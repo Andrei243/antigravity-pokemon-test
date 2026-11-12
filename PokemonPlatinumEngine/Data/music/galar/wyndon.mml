@@ -1,0 +1,53 @@
+# Wyndon, Galar's capital at the north end of the line: a grand civic march in D for the city of the Champion Cup,
+# brass over the orchestra's strings, timpani on the downbeats and a snare that keeps the parade's step; at night a
+# horn takes the tune and the band lies back.
+# Original composition for this game (plan 33 · GL7), in the modern sound. Not wired yet: galar/wedgehurst stands in
+# for Wyndon until the user has heard it (rulings, "After the Hall of Fame in Galar").
+title Wyndon
+tempo 116
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+room hall 2.0
+
+track lead brass night=horn vol=0.72 pan=0.05 rev=0.3
+  o5 a2. r4 | L o5 a4 f+8 a8 o6 d4 o5 a4 | o5 b4 o6 d8 f+8 e4 d4 | o5 b4. a8 g4 b4 | o5 a2 e4 c+4 |
+  o5 d4 f+8 a8 o6 d4 f+4 | o6 e4 c+8 o5 a8 f+4 c+4 | o5 d4 g8 b8 o6 d4 o5 b4 | o5 a2 b4 o6 c+4 |
+  o6 d4 o5 b8 f+8 d4 f+4 | o5 g4 b8 o6 d8 g4 d4 | o6 f+4 e8 d8 o5 a4 f+4 | o5 e4 a8 o6 c+8 e4 o5 a4 |
+  o5 g4 b8 o6 d8 g4. f+8 | o6 e2 c+4 o5 a4 | o5 b4 a8 g8 f+4 e4 | o5 d2. r4 |
+  o5 a2. r4 |
+
+track band orchestra night=strings vol=0.28 pan=-0.3 rev=0.32
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | L o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (b > d f+)4 r4 (b > d f+)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (a > c+ e)4 r4 (a > c+ e)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (f+ a > c+)4 r4 (f+ a > c+)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (a > c+ e)4 r4 (a > c+ e)4 |
+  o4 r4 (b > d f+)4 r4 (b > d f+)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (a > c+ e)4 r4 (a > c+ e)4 |
+  o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (a > c+ e)4 r4 (a > c+ e)4 | o4 r4 (b > d f+)4 r4 (a > c+ e)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+
+track pad strings vol=0.25 pan=0.25 rev=0.42
+  o3 (d f+ a)1 | L o3 (d f+ a)1 | o3 (b > d f+)1 | o3 (g b > d)1 | o3 (a > c+ e)1 |
+  o3 (d f+ a)1 | o3 (f+ a > c+)1 | o3 (g b > d)1 | o3 (a > c+ e)1 |
+  o3 (b > d f+)1 | o3 (g b > d)1 | o3 (d f+ a)1 | o3 (a > c+ e)1 |
+  o3 (g b > d)1 | o3 (a > c+ e)1 | o3 (b > d f+)2 (a > c+ e)2 | o3 (d f+ a)1 |
+  o3 (d f+ a)1 |
+
+track bass tuba vol=0.66 rev=0.08
+  o3 d4 a4 d4 a4 | L o3 d4 a4 d4 a4 | o2 b4 o3 f+4 o2 b4 o3 f+4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 a4 o3 e4 o2 a4 o3 e4 |
+  o3 d4 a4 d4 a4 | o3 f+4 c+4 f+4 c+4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 a4 o3 e4 o2 a4 o3 e4 |
+  o2 b4 o3 f+4 o2 b4 o3 f+4 | o2 g4 o3 d4 o2 g4 o3 d4 | o3 d4 a4 d4 a4 | o2 a4 o3 e4 o2 a4 o3 e4 |
+  o2 g4 o3 d4 o2 g4 o3 d4 | o2 a4 o3 e4 o2 a4 o3 e4 | o2 b4 o3 f+4 o2 a4 o3 e4 | o3 d4 a4 d4 a4 |
+  o3 d4 a4 d4 a4 |
+
+track drums kit vol=0.32 rev=0.14
+  v80 b4 s16 s16 s16 s16 s8 s8 s8 s8 | L v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 s16 s16 s8 |
+  v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 s16 s16 s8 |
+  v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 s16 s16 s8 |
+  v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 v56 s8 s8 v74 b4 v56 s8 s8 | v80 b4 s16 s16 s16 s16 s8 s8 s8 s8 |
+  v80 b4 s16 s16 s16 s16 s8 s8 s8 s8 |
+
+track kettle timpani vol=0.36 rev=0.3
+  o3 d2 r2 | L o3 d2 r2 | r1 | r1 | o2 a2 r2 |
+  o3 d2 r2 | r1 | r1 | o2 a2 a4 a4 |
+  r1 | r1 | o3 d2 r2 | o2 a2 r2 |
+  r1 | o2 a2 r2 | r1 | o3 d2 o2 a4 o3 d4 |
+  o3 d2 r2 |
