@@ -44,6 +44,25 @@ public static class Itineraries
     };
 
     /// <summary>
+    /// Alola's first chapter (plan 23 · Z5; played freely with a stick since the user's switch of 2026-11-12): Mom's word
+    /// in the new home, the professor at the door, the kahuna away in Iki Town, the bridge on the Mahalo Trail, the
+    /// kahuna home with the first Pokémon and Hau's battle, the Pokédex in the laboratory, and Hau'oli City's marina.
+    /// </summary>
+    public static IReadOnlyList<Leg> AlolaFirstChapter { get; } = new[]
+    {
+        // (a trigger not yet armed when its map is come to counts as played, so each scene's variable is brought to it by
+        // the leg before: the door's scene as the house is left, Hau'oli City's arrival before the marina)
+        Leg.Trigger("AlolaRoute1_PlayersHouse", "MomCalls"),
+        Leg.Reach("Melemele", 238, 160),
+        Leg.Trigger("Melemele", "KahunaAway", "iki_town"),
+        Leg.Trigger("Melemele", "Bridge", "mahalo_trail"),
+        Leg.Trigger("Melemele", "KahunaHome", "iki_town"),
+        Leg.Talk("AlolaRoute1_KukuiLab", "kukui"),
+        Leg.Reach("Melemele", 290, 167),
+        Leg.Trigger("Melemele", "Marina", "hauoli_city"),
+    };
+
+    /// <summary>
     /// The second chapter (plan 02 · S5) to the Coal Badge: Jubilife City, the Trainers' School, the Pokétch campaign,
     /// the rival on Route 203, Oreburgh Gate's hiker, the boy and the rival at the Gym's door, Roark down the mine, a
     /// stretch of the mine trained in, and the Gym.

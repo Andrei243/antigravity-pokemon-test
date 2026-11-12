@@ -126,6 +126,33 @@ public class AlolaRideTests
     }
 
     [Fact]
+    public void UnderFreeMovementTaurosStillRunsIntoTheCrackedRock()
+    {
+        // Alola moves freely since 2026-11-12: a ride steered by the stick hands the rock's edge to the grid's own step
+        // from the tile's centre (FreeMovement.Classify), so the bump tells the engine what was run into, as on the grid
+        var map = MapNamed("Melemele");
+        var rock = map.Everyone.Single(n => n.Key == "rock_ten_carat");
+        var player = new Player(rock.GridX + 1, rock.GridY) { Facing = Direction.Left, Directions = MovementDirections.Free };
+        Assert.True(player.SetRiding("Tauros"));
+        player.SetOffset(40, -30);
+        (int X, int Y)? ran = null;
+        for (int i = 0; i < 90 && ran == null; i++)
+        {
+            player.SteerFreely(1f / 60f, map, new System.Numerics.Vector2(-1f, 0f), false, null, null);
+            ran = player.TakeRanInto();
+        }
+        Assert.Equal((rock.GridX, rock.GridY), ran);
+        Assert.Equal((rock.GridX + 1, rock.GridY), (player.GridX, player.GridY));
+
+        // Stoutland, which doesn't charge, is stopped by the rock as by a wall and tells nothing
+        var walker = new Player(rock.GridX + 1, rock.GridY) { Facing = Direction.Left, Directions = MovementDirections.Free };
+        Assert.True(walker.SetRiding("Stoutland"));
+        for (int i = 0; i < 60; i++) walker.SteerFreely(1f / 60f, map, new System.Numerics.Vector2(-1f, 0f), false, null, null);
+        Assert.Null(walker.TakeRanInto());
+        Assert.Equal((rock.GridX + 1, rock.GridY), (walker.GridX, walker.GridY));
+    }
+
+    [Fact]
     public void HalaHandsOverTheRidePagerWithTauros()
     {
         var item = ItemDatabase.Get(RidePager.Item)!;
