@@ -1642,6 +1642,8 @@
     "topLevel": "NIVEL MAXIM",
     "toLevel": "PÂNĂ LA Nv {level}",
     "heldAt": "Nu mai primește EXP peste Nv. {level} deocamdată.",
+    "heartLock": "LACĂTUL INIMII · {bars} DIN 5 BARE",
+    "expHeld": "{exp} Puncte EXP ținute până i se deschide inima",
     "stats": "STATISTICI",
     "effort": "EFORT",
     "effortValue": "{ev} / {max}",
@@ -7171,6 +7173,9 @@
   },
   "hearts": {
     "refused": "Inima lui {pokemon} e încuiată. Nu merge până nu i se deschide inima.",
-    "opened": "Inima lui {pokemon} s-a deschis!"
+    "opened": "Inima lui {pokemon} s-a deschis!",
+    "openedScene": "Inima lui {pokemon} s-a deschis! E din nou el însuși!",
+    "openedLevel": "{pokemon} a primit ce câștigase și a crescut la Nv. {level}!",
+    "movesWanted": "{pokemon} vrea să învețe o mișcare nouă. Învaț-o la Reamintitorul de mișcări sau cu REAMINTEȘTE."
   }
 }

@@ -100,7 +100,32 @@ public partial class GameEngine
         return opening;
     }
 
-    /// <summary>The opening shown: a notice for now (plan 44 · SD2 gives it a scene of its own).</summary>
-    private void ShowTheOpening(HeartOpening opening) =>
-        ShowNotification(Text.Of("hearts.opened", ("pokemon", opening.Pokemon.DisplayName)));
+    /// <summary>
+    /// The opening shown (plan 44 · SD2): the field fades into its scene, the Pokémon's model made while it is dark; a game
+    /// with no screen only says so.
+    /// </summary>
+    private void ShowTheOpening(HeartOpening opening)
+    {
+        if (IsHeadless)
+        {
+            ShowNotification(Text.Of("hearts.opened", ("pokemon", opening.Pokemon.DisplayName)));
+            return;
+        }
+        var p = opening.Pokemon;
+        string look = PokemonLook.Of(p.ModelName, p.Gender == Gender.Female, p.IsShiny);
+        flow.WantModel(look);
+        StartTransition(GameState.HeartOpening, () =>
+        {
+            AwaitModels(new[] { look });
+            flow.HeartOpeningScreen.Begin(opening);
+        });
+    }
+
+    /// <summary>The opening's scene is over: the field comes back, and a level's moves are asked as the bag's Rare Candy asks them.</summary>
+    private void FinishHeartOpening()
+    {
+        var opening = flow.HeartOpeningScreen.Opening;
+        StartTransition(GameState.Overworld, PlayFieldMusic);
+        if (opening != null && opening.Wanted.Count > 0) ShowNotification(Text.Of("hearts.movesWanted", ("pokemon", opening.Pokemon.DisplayName)));
+    }
 }

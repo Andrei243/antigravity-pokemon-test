@@ -1174,6 +1174,8 @@
     "topLevel": "TOP LEVEL",
     "toLevel": "TO Lv {level}",
     "heldAt": "Gains no EXP above Lv. {level} for now.",
+    "heartLock": "HEART LOCK · {bars} OF 5 BARS",
+    "expHeld": "{exp} EXP. Points held until its heart opens",
     "stats": "STATS",
     "effort": "EFFORT",
     "effortValue": "{ev} / {max}",
@@ -6827,6 +6829,9 @@
   },
   "hearts": {
     "refused": "{pokemon}'s heart is locked. It won't go until its heart opens.",
-    "opened": "{pokemon}'s heart opened!"
+    "opened": "{pokemon}'s heart opened!",
+    "openedScene": "{pokemon}'s heart opened! It's itself again!",
+    "openedLevel": "{pokemon} took in what it had earned and grew to Lv. {level}!",
+    "movesWanted": "{pokemon} wants to learn a new move. Teach it at the Move Relearner's or with REMEMBER."
   }
 }

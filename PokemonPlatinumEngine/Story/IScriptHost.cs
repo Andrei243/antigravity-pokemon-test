@@ -606,6 +606,16 @@ public interface IScriptHost
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1); none where a host keeps none, and <c>craft</c> then does nothing.</summary>
     CraftingState? Crafting => null;
 
+    /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD2); none where a host keeps none, and <c>heart</c>'s counts then answer 0.</summary>
+    HeartsRecord? Hearts => null;
+
+    /// <summary>A locked heart whose gauge has emptied opens (plan 44 · SD2): the game plays its scene; a host with no screen opens it at once.</summary>
+    void OpenHeart(Pokemon pokemon)
+    {
+        var opening = HeartLock.Open(pokemon);
+        Hearts?.Open(opening.LockId);
+    }
+
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3); none where a host keeps none, and <c>plaza</c> then does nothing.</summary>
     PlazaState? Plaza => null;
 

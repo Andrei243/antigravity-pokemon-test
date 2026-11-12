@@ -902,6 +902,19 @@ trigger of an open place whose script names its den of `Data/world/galar/dens.js
 | `raid fight` | The raid (`BattleFormat.Raid`): the boss at its level beside three raiders who answer the den's call (`Raids.Allies`), and the script waits. A loss goes on (`if won`, `if lost`); a win sets the den quiet for the day (`FLAG_DAILY_GALAR_DEN_<ID>_DONE`). Stops a hurry. |
 | `raid catch "Great Ball"` | A ball of the bag thrown at the felled boss: `RESULT` 1 caught (the Pokémon given, in that ball), 0 it got away (on the host's own die, `Raids.CatchChance`), 2 no such ball in the bag. |
 
+### Locked hearts
+
+Plan 44 · SD2; `docs/mechanics/rulings.md`, "Locked hearts". Lockwork's locked Pokémon, one command, `heart`.
+
+| Command | What it does |
+|---|---|
+| `heart has` | `RESULT` 1 when the Reclaimer is in the bag, else 0. |
+| `heart give` | Puts the Reclaimer in the bag once and sets `FLAG_GOT_RECLAIMER`: `RESULT` 1, or 0 and nothing given when it is held already; `{item}` names it. The text and the fanfare are the script's. |
+| `heart spring` | The spring's rite: every locked heart of the team is lowered by the spring's share, once a day. `RESULT` 1 when it was, 2 when the rite was done today already, 0 with no locked heart in the team. |
+| `heart open` | Opens every heart of the team whose gauge has emptied, its scene played (the game opens them by itself once the field is free; this is for a scene that wants it now). `RESULT` how many. |
+| `heart locked` | `RESULT` how many of the team are locked. |
+| `heart count`, `heart missed`, `heart opened` | `RESULT` how many locks have been reclaimed, missed (knocked out, so the courier carries them) and opened since the game began. |
+
 ### Treats
 
 Plan 35 · BN3; `docs/mechanics/rulings.md`, "Care". The bakers' one command, `treat`; the confectioners sell with `shop "treats"`.

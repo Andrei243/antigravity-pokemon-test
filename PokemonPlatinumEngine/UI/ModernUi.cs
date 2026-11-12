@@ -165,6 +165,8 @@ internal static partial class ModernUi
         }
         // A shiny's star after it (plan 09 · L1)
         if (p.IsShiny) w += ShinyStarAfter(x + w, centerY, size);
+        // A locked heart's padlock after it (plan 44 · SD2)
+        if (p.Lock != null) w += LockAfter(x + w, centerY, size);
         return w;
     }
 

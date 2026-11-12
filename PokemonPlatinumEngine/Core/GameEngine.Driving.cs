@@ -256,6 +256,12 @@ public partial class GameEngine
         public PoffinCaseScreen PoffinCaseScreen => game.flow.PoffinCaseScreen;
         public HatchScreen Hatch => game.flow.HatchScreen;
 
+        // Locked hearts (plan 44 · SD2): the opening's scene, the record, and a heart opened as the game opens one
+        public HeartOpeningScreen HeartOpening => game.flow.HeartOpeningScreen;
+        public HeartsRecord Hearts => game.flow.Hearts;
+        public HeartOpening OpenHeart(Pokemon pokemon) => game.OpenTheHeart(pokemon);
+        public void LowerTheLock(Pokemon pokemon, int by) => game.LowerTheLock(pokemon, by);
+
         /// <summary>The Pokégear (plan 20 · J3): its screen, opened as the start menu opens it (on a card), and what the radio plays.</summary>
         public PokegearScreen PokegearScreen => game.flow.PokegearScreen;
         public void OpenPokegear(PokegearCard? on = null) => game.OpenPokegear(on);
