@@ -168,7 +168,8 @@ partial class Harness
             save.PlayTimeSeconds = 0;
             save.GreetedPeople = new(); // talking to the receptionist and the songs heard are no change worth telling
             save.Heard = new();
-            return SaveManager.Write(save);
+            // The run timer's game time (plan 13 · V10) runs as any clock does, and the checksum is of the whole file
+            return string.Join('\n', SaveManager.Write(save).Split('\n').Where(l => !l.Contains("\"GameSeconds\"") && !l.Contains("\"Checksum\"")));
         }
         // One event entered at the desk and played through the hall to its end
         void PlayEvent(int which, string? stageShot, string? stageWord)

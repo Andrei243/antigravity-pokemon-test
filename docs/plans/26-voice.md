@@ -457,7 +457,7 @@ The goal of this session: the whole of Sinnoh (the story from the bedroom to the
 - **Designs for everyone**: `VoiceTool design [--region <id>]` gives a brief and a Kokoro design to each voice that speaks the catalogue (or the region) and has none, from a table of profiles by archetype or name (`Designs.cs`: register, age, pitch, pace, manner) and pools of Kokoro's own voices; the blend, pace and pitch are drawn by a hash of the voice's id, so the same cast file always makes the same voices, no two voices of the whole cast are alike (`VoiceTests`), and the voices of one archetype differ (a `mixed` archetype alternates man and woman). A voice with a design is never touched, so a voice tuned by ear stays tuned. `status` (`--voices`, `--missing`, `--shown`) says what a pack has of the catalogue voice by voice.
 - **Making the pack**: four `generate` runs side by side (`KOKORO_THREADS=4` each, a pack folder each, merged), the first 650 lines at three takes a line and the rest at one (`generate --takes 1`: the machine was shared and a take every 12 seconds was too slow; a take with findings is reported, none was). 4,350 new lines for Sinnoh in all, 33 more for the hand-written spoken texts below.
 - **Spoken texts written by hand** (`VoiceTool speak <file>`): 31 lines whose text names the player or the rival (Mom, the rival's mother, the guitarist, the assistant at Sandgem, Rowan's questions...) say the line without the name ("your friend", "that boy"); the rest of the 271 lines still shown only are the ones that name a Pokémon, a move, a number, a price or a ribbon (`{wearer}`, `{thing}`, `{number}`, `{lead}`...), which need a take per value and are not voiced.
-- **Finding the pack**: `--voices <folder>` (a `LaunchOptions.VoicePack`, `VoiceLibrary.FoldersFor`) points the game at a pack anywhere and sets VOICES to ALL for the run alone; `docs/voice/playing.md` says what to run. VOICES stays OFF by default (decision 4): no pack ships with the game, and the voices wait for the user's ear.
+- **Finding the pack**: `--voices <folder>` (a `LaunchOptions.VoicePack`, `VoiceLibrary.FoldersFor`) points the game at a pack anywhere and sets VOICES to ALL for the run alone; `docs/voice/playing.md` says what to run. VOICES stayed OFF by default (decision 4) until the user approved the voices: since 2026-11-12 it is ALL unless chosen (their answer 5 of 2026-11-10, "Yes, All"); with no pack beside the game the text shows as it always did and `log.txt` says once that none was found (an info line, no warning on the console).
 - **Checked**: `VoicePackSwitchTests.TheFirstChapterOfANewGameResolvesEveryLineToATake` plays the first chapter with the bot and the real pack (105 lines asked, all with current takes; it passes quietly when there is no pack).
 
 ## Kanto with voice (2026-11-09)
@@ -527,3 +527,21 @@ the music dipped by only 0.6 (-4.4 dB), level with it. Fixed in the voice bus al
 - **VOICE VOLUME runs 0 to 200** (`GameSettings.MaxVoiceVolume`, the bus clamps at `VoiceMaxVolume` 2), its own row with its
   own words; MUSIC stays 0 to 100. 100 is the normal level; the default stays 100 (the lift is in the bus).
 - Tests: `VoicePlaybackTests` (played window, 200 never clips, the row's range, the dip).
+
+## Romanian voices with Gemini (2026-11-12)
+
+The user chose **Gemini TTS** for the Romanian pack (Kokoro has no Romanian; Kokoro stays the English engine).
+`generate --language ro --engine gemini` (`tools/VoiceGen/README.md`, "Other languages: Gemini"):
+- **Text**: each line's Romanian translation, found by the line's key in `Data/text/ro` (`tools/VoiceTool/Translated.cs`);
+  a line with no current translation is left out (144 of Sinnoh's 6,623). The take is stamped with the English hash, so
+  it goes stale with the English.
+- **Voices**: designed, never cloned: one of Gemini's 30 prebuilt voices and a few tags of delivery
+  (`tools/VoiceGen/gemini.json`; thirteen of the main cast chosen by hand, the rest by rule from their `cast.json` brief,
+  `GeminiEngine.ByRule`, which nobody has listened to yet). The tags go in brackets before the line: Gemini follows them
+  and doesn't say them, while a sentence of direction is read aloud. One take a line.
+- **Model** `gemini-3.8-flash-tts`, key `GEMINI_API_KEY`. **The free tier allows 100 requests a day** for the model
+  (quota `GenerateRequestsPerDayPerProjectPerModel`), so Sinnoh's 6,479 lines are some 65 days of the free tier: the
+  engine stops asking once the day's quota is spent (`OutForTheDay`) and the next run picks up the lines still missing.
+  A whole region wants a paid tier on the key (the user's decision).
+- **Made so far**: a trial reel of twelve lines (Rowan, the moms, the rivals) the user approved, and the rival's first
+  68 Sinnoh lines in `voice/ro` (git-ignored, as every pack).

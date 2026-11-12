@@ -50,6 +50,9 @@ public sealed class OpenTreeFile
     [DataRequired] public double[] At { get; set; } = Array.Empty<double>();
     public OpenTreeKind Kind { get; set; } = OpenTreeKind.Pine;
     public double Size { get; set; } = 1;
+
+    /// <summary>Whether its trunk is solid, walked round and never through (<see cref="OpenTrunks"/>); scenery unless it says.</summary>
+    public bool Trunk { get; set; }
 }
 
 /// <summary>
@@ -65,6 +68,9 @@ public sealed class OpenGroveFile
     public double Pines { get; set; } = 0.5;
     public double[] Size { get; set; } = { 0.9, 1.25 };
     public int Seed { get; set; }
+
+    /// <summary>Whether its trees' trunks are solid (<see cref="OpenTrunks"/>): a forest walked round; scenery unless it says.</summary>
+    public bool Trunks { get; set; }
 }
 
 /// <summary>
@@ -292,14 +298,14 @@ public static class OpenPlaceFiles
         // A tree standing by itself takes its shape and its turn from where it stands
         uint h = Core.SplitMix.Mix(0x7e3f1a2bu, (uint)x, (uint)z);
         return new OpenTree(x, z, high ? OpenPos.Millimetres(t.At[1]) : null, t.Kind, (int)Math.Round(t.Size * 1000, MidpointRounding.AwayFromZero),
-            (int)(h % OpenTree.Variants), (int)((h >> 8) & 0xFFFF));
+            (int)(h % OpenTree.Variants), (int)((h >> 8) & 0xFFFF)) { Trunk = t.Trunk };
     }
 
     /// <summary>A grove of a place as the map keeps it (plan 32 · OW9): its numbers in whole millimetres and thousandths.</summary>
     public static OpenGrove GroveOf(OpenGroveFile g) =>
         new(g.Name, g.Polygon.Select(Ground).ToList(), OpenPos.Millimetres(g.Spacing),
             (int)Math.Round(g.Fill * 1000, MidpointRounding.AwayFromZero), (int)Math.Round(g.Pines * 1000, MidpointRounding.AwayFromZero),
-            (int)Math.Round(g.Size[0] * 1000, MidpointRounding.AwayFromZero), (int)Math.Round(g.Size[1] * 1000, MidpointRounding.AwayFromZero), g.Seed);
+            (int)Math.Round(g.Size[0] * 1000, MidpointRounding.AwayFromZero), (int)Math.Round(g.Size[1] * 1000, MidpointRounding.AwayFromZero), g.Seed, g.Trunks);
 
     /// <summary>Someone of a place as the map keeps them (plan 32 · OW6).</summary>
     public static OpenPerson PersonOf(string key, OpenPersonFile p)

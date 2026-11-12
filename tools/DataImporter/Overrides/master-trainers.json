@@ -1,0 +1,7 @@
+{
+  // Sets written by hand for the Master Trainers of plan 14 · B14 (Data/master-trainers.json, written by
+  // tools/DataImporter's MasterTrainers.cs): a species' name to the one to four moves its master knows, in place of
+  // whatever Pokémon Showdown's random-battle sets give it ("Bidoof": ["Hyper Fang", "Return", "Quick Attack", "Swords Dance"]).
+  // Every move must be one the species can learn (Models/Legality.cs) and the engine runs in full, or the import stops
+  // naming it. None yet: the user names the species they care about.
+}

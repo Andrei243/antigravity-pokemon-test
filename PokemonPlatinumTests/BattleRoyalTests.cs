@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
@@ -288,6 +290,41 @@ public class BattleRoyalTests
         Assert.Equal(battle.EnemySlots.Reverse().ToArray(), battle.TargetChoices.ToArray());
         // Nothing from the bag in a Royal
         Assert.True(battle.Core.NoBattleItems);
+
+        // The ring's cards (style guide, "The ring's cards"): the foe across the field alone on top, under it the left
+        // foe, the player's own card and the right foe; the cursor walks the lower row past the player's card and up
+        var layout = battle.TargetLayout;
+        Assert.Equal(3, battle.TargetColumns);
+        Assert.Equal(new[] { null, battle.EnemySlots[1], null, battle.EnemySlots[2], battle.PlayerSlots[0], battle.EnemySlots[0] }, layout.ToArray());
+        int left = battle.TargetChoices.ToList().IndexOf(battle.EnemySlots[2]);
+        battle.HUD.TargetMenuIndex = left;
+        battle.MoveCursor(1, 0);
+        Assert.Equal(battle.EnemySlots[0], battle.TargetChoices[battle.HUD.TargetMenuIndex]);
+        battle.MoveCursor(0, -1);
+        Assert.Equal(battle.EnemySlots[1], battle.TargetChoices[battle.HUD.TargetMenuIndex]);
+    }
+
+    [Fact]
+    public void TheRingStandsTheThreeOthersEachOnAPlatformOfTheirOwn()
+    {
+        // GPU-free (style guide, "A Battle Royal's ring"): the first on the arena's own platform, the second further back
+        // and the third nearer, each on the ring's own, every platform clear of every other
+        Assert.Equal(BattleStage.EnemySpot, BattlePlaces.Spot(BattleSide.Enemy, 0, 3, royal: true));
+        var second = BattlePlaces.Spot(BattleSide.Enemy, 1, 3, royal: true);
+        var third = BattlePlaces.Spot(BattleSide.Enemy, 2, 3, royal: true);
+        Assert.True(second.Z < 0f && third.Z > 0f, "the second stands behind the field, the third in front of it");
+        Assert.True(BattleStage.EnemySpot.X > second.X && second.X > third.X, "left to right from the overview: the third, the second, the first");
+        foreach (var (a, b, room) in new[] { (second, third, 2f * BattlePlaces.RingPlatformRadius), (second, BattleStage.EnemySpot, BattleStage.EnemyPlatformRadius + BattlePlaces.RingPlatformRadius),
+            (third, BattleStage.EnemySpot, BattleStage.EnemyPlatformRadius + BattlePlaces.RingPlatformRadius), (third, BattleStage.PlayerSpot, BattleStage.PlayerPlatformRadius + BattlePlaces.RingPlatformRadius) })
+            Assert.True(Vector3.Distance(a, b) > room, $"{a} and {b} overlap");
+        Assert.Equal(BattlePlaces.RingFit, BattlePlaces.Fit(3, royal: true, BattleSide.Enemy));
+        // The first, where a single's foe stands, isn't turned; the others turn toward the ring's middle
+        Assert.Equal(0f, BattlePlaces.RingTurn(0));
+        Assert.NotEqual(0f, BattlePlaces.RingTurn(2));
+        // Nothing else stands in the ring: a horde's three and the player's side are as they were
+        Assert.Equal(BattlePlaces.Spot(BattleSide.Enemy, 0, 3), BattlePlaces.Spot(BattleSide.Enemy, 0, 3, royal: false));
+        Assert.Equal(BattlePlaces.Spot(BattleSide.Player, 0, 1), BattlePlaces.Spot(BattleSide.Player, 0, 1, royal: true));
+        Assert.Equal(BattlePlaces.Fit(3), BattlePlaces.Fit(3, royal: false, BattleSide.Enemy));
     }
 
     [Fact]

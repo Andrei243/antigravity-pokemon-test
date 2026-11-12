@@ -59,9 +59,6 @@ public static class ChampionsCircuit
     /// <summary>The levels each circuit won adds to the next (decision 4).</summary>
     public const int StepPerCircuit = 5;
 
-    /// <summary>The level where the furthest region finished has no post-game pair of its own (the region a game began in, Sinnoh's levels being Platinum's).</summary>
-    public const int BaseLevel = 80;
-
     /// <summary>How many regions must be finished before a circuit may be begun.</summary>
     public const int RegionsNeeded = 2;
 
@@ -83,7 +80,7 @@ public static class ChampionsCircuit
     /// </summary>
     public static int Level(CircuitState state, StoryState story, Ruleset? rules = null)
     {
-        int top = RematchLevels.Furthest(story)?.Levels is { Points.Count: > 0 } levels ? levels.Points[^1].To : BaseLevel;
+        int top = LevelLift.PostGameLevel(story) is > 0 and var post ? post : LevelLift.SinnohPostGame;
         return Math.Min((rules ?? Ruleset.Current).LevelCap, Math.Max(1, top + StepPerCircuit * state.Won));
     }
 
@@ -154,14 +151,4 @@ public static class ChampionsCircuit
     public static bool Lifts(CircuitState state, string teamId, StoryState story) =>
         state.Running && IsLeagueTeam(teamId) && RematchLevels.RegionOfTeam(teamId) is { Side: false } region && story.Has(region.StoryCompleteFlag);
 
-    /// <summary>
-    /// A team lifted to a level on a copy (the trainer of the map keeps theirs): its highest Pokémon at <paramref name="level"/>,
-    /// the others the same steps below it as they stood (the spread kept), each taking the stages its new level allows.
-    /// </summary>
-    public static Trainer Lift(Trainer trainer, int level)
-    {
-        int top = trainer.Party.Members.Count == 0 ? level : trainer.Party.Members.Max(p => p.Level);
-        int by = level - top;
-        return trainer.Relevelled(l => Math.Clamp(l + by, 1, Ruleset.HighestLevel), grow: true);
-    }
 }

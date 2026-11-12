@@ -110,6 +110,8 @@ public partial class GameEngine
             jump = false;
             return tick;
         }, f => CrossTheVolumes(f) || LookForOpenTrainers(f) || MeetOpenWild(f));
+        // A wild Pokémon that noticed the player in those ticks cries out (plan 32, after OW10)
+        HearTheNoticed(field);
     }
 
     /// <summary>

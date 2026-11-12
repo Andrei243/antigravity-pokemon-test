@@ -287,11 +287,12 @@ public sealed class GameSettings
     public MovementChoice Movement { get; set; } = MovementChoice.AsTheRegion;
 
     /// <summary>
-    /// Whose lines are spoken (plan 26 · V2): nobody's, the named cast's alone (Story only), or everyone's. Off unless
-    /// chosen (plan 26's decision 4: off until the first chapter is voiced), and off gives back the game without voices
-    /// exactly: nothing is looked up, loaded or played.
+    /// Whose lines are spoken (plan 26 · V2): nobody's, the named cast's alone (Story only), or everyone's. Everyone's
+    /// unless chosen (the user's answer of 2026-11-10, once the voices were approved); with no pack beside the game the
+    /// text shows as it always did and the log says so once. Off gives back the game without voices exactly: nothing is
+    /// looked up, loaded or played.
     /// </summary>
-    public VoiceMode Voices { get; set; } = VoiceMode.Off;
+    public VoiceMode Voices { get; set; } = VoiceMode.All;
 
     /// <summary>The most VOICE VOLUME goes to: 200, twice the bus's level (the voices alone may be turned up past the others).</summary>
     public const int MaxVoiceVolume = 200;

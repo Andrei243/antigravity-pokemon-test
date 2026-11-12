@@ -284,6 +284,9 @@ public partial class GameEngine
             BattleResult.PlayerRan => BattleOutcome.Fled,
             _ => BattleOutcome.Lost
         };
+        // A facility's battle won counts for the Week's Work (plan 41 · EG6); the friends' hall's is no facility's
+        if (flow.ScriptOutcome == BattleOutcome.Won && flow.Battle is { IsTrainerBattle: true } && flow.Map.Name != Models.FriendsHall.Room)
+            TellTheBoard(MissionEventKind.FacilityWin);
         // The turns it took, which the Battle Arcade scores a battle by (dto->totalTurnsElapsed)
         flow.ScriptTurns = flow.Battle?.Core.Turn ?? 0;
         flow.BattleMayBeLost = false;

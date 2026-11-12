@@ -85,7 +85,7 @@ public class TrainingHallTests
         Assert.False(new Prop { Type = PropType.TrainingMat }.IsSolid);
         Assert.False(new Prop { Type = PropType.DrillTarget }.IsSolid);
         // and since plan 36 · TR9 the tutor of the later games' moves between them behind the counter
-        Assert.Equal(new[] { "TrainingCoach", "TrainingClerk", "TrainingTutor" }, room.NPCs.Select(n => n.Script).ToArray());
+        Assert.Equal(new[] { "TrainingCoach", "TrainingClerk", "TrainingTutor", "TrainingTeacher", "TeraKeeper" }, room.NPCs.Select(n => n.Script).ToArray());
         // The mat is walked on
         var mat = room.Props.Single(p => p.Type == PropType.TrainingMat);
         Assert.True(room.IsWalkable(mat.X + 1, mat.Y + 1));

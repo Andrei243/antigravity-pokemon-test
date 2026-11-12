@@ -1056,6 +1056,7 @@
     "minted": "{nature} ({mint} mint)",
     "ability": "ABILITY",
     "heldItem": "HELD ITEM",
+    "teraType": "TERA TYPE",
     "marks": "MARKS",
     "none": "None",
     "expPoints": "EXP. POINTS",
@@ -1446,6 +1447,7 @@
       "NoRunning": "No running",
       "SetStyle": "Set battles only",
       "NoLaterMechanics": "No later mechanics",
+      "NoPowers": "No powers",
       "Remix": "Remix",
       "ShinyOdds": "Shiny odds",
       "RandomSpecies": "Randomise Pokémon",
@@ -1473,6 +1475,7 @@
       "NoRunning": "You cannot run from wild battles.",
       "SetStyle": "Battle Style is Set, and the Shift offer is never made.",
       "NoLaterMechanics": "Nobody can Mega Evolve, use a Z-Move, Dynamax or Terastallize: not you, and not the trainers you meet.",
+      "NoPowers": "The Power Watch uses no power and takes no free one. A meal at the camp still gives its own.",
       "Remix": "A second take on Sinnoh, written for this game: the important trainers bring teams of their own and the wild Pokémon change, so far more kinds can be caught before the League. The rules and the story stay the same.",
       "ShinyOdds": "How often a Pokémon is shiny. As the rules say is the game's usual chance.",
       "RandomSpecies": "Wild Pokémon, trainers' teams, gifts, legends and your partner are other species, the same ones every time for a seed. Evolutions stay in their lines.",
@@ -2884,6 +2887,31 @@
         "spicedFlatbread": "Hot flatbread with a smoky edge. Wild Pokémon follow the scent.",
         "potatoHash": "Crisp potatoes fried in butter. Beaten Pokémon leave more behind."
       }
+    }
+  },
+  "powerWatch": {
+    "title": "POWER WATCH",
+    "hintLevel": "Level",
+    "hintUse": "Use",
+    "noneLearned": "No powers learned yet. A training hall's teacher teaches them.",
+    "today": "Today: {power}",
+    "freeLevel": "Lv. {level} FREE",
+    "levelCost": "Lv. {level} · {cost} charge",
+    "levelOf": "Lv. {level} of {most} · {cost} charge",
+    "charge": "CHARGE",
+    "chargeSteps": "{charge} of {most}. A point every {steps} steps.",
+    "inForce": "IN FORCE",
+    "noneInForce": "Nothing is in force.",
+    "inForceRow": "{power} Lv. {level}",
+    "started": "{power} Lv. {level} is in force for ten minutes of play.",
+    "why": {
+      "run": "This run uses no powers.",
+      "learned": "That level isn't learned yet.",
+      "charge": "There isn't enough charge. Walk a little and it fills."
+    },
+    "short": {
+      "exp": "EXP", "effort": "EV", "money": "$", "bargain": "%", "catch": "CAT", "encounter": "ENC", "stealth": "SNK", "hatch": "EGG",
+      "typeEncounter": "TYP", "materials": "MAT"
     }
   },
   "timedPowers": {
@@ -4746,6 +4774,61 @@
     "judging": "The judges announce the winners…",
     "yourScore": "Your Pokémon scored {score} points."
   },
+  "hubPlaza": {
+    "pennants": "PENNANTS",
+    "rank": "HALL RANK",
+    "pitch": {
+      "which": "Which stall shall stand at pitch {n}?",
+      "empty": "LEAVE IT EMPTY",
+      "leave": "AS IT IS"
+    },
+    "stall": {
+      "goods": { "name": "GOODS STALL", "keeper": "Goods Keeper" },
+      "lottery": { "name": "LOTTERY CORNER", "keeper": "Lottery Keeper" },
+      "seals": { "name": "SEAL STALL", "keeper": "Seal Merchant" },
+      "poffin": { "name": "POFFIN POT", "keeper": "Poffin Cook" },
+      "relearner": { "name": "MOVE RELEARNER", "keeper": "Move Relearner" },
+      "kurt": { "name": "KURT'S COUNTER", "keeper": "Apricorn Agent" },
+      "blender": { "name": "BERRY BLENDER", "keeper": "Blender Keeper" }
+    }
+  },
+  "hubMissions": {
+    "title": "THE WEEK'S WORK",
+    "hint": { "act": "Claim or begin" },
+    "week": "THE WEEK OF {from} TO {to}",
+    "empty": "Nothing is posted this week. The board posts missions in the regions whose Hall of Fame you have entered.",
+    "state": { "claimed": "CLAIMED", "claim": "CLAIM!", "running": "UNDER WAY", "begin": "BEGIN" },
+    "timed": "A TIMED MISSION",
+    "plain": "A MISSION OF THE WEEK",
+    "progress": "DONE SO FAR",
+    "reward": "REWARD",
+    "andItem": "and a {item}",
+    "clock": "TIME",
+    "clockNote": "The clock runs while you play in the field and its battles in this region, and stands still anywhere else. One timed mission at a time.",
+    "corner": { "done": "MISSION", "left": "TIME LEFT" },
+    "kind": {
+      "CatchType": "Catch {n} {type}-type Pokémon in {region}.",
+      "CatchInArea": "Catch {n} Pokémon in {place}, {region}.",
+      "BeatTrainers": "Beat {n} trainers in {region}.",
+      "WinRematch": "Win {n} rematches in {region}.",
+      "HatchEggs": "Hatch {n} Eggs in {region}.",
+      "Landmark": "Come to {place}, {region}.",
+      "WinFacility": "Win {n} battles at a battle facility of {region}.",
+      "WinContest": "Win a contest in {region}."
+    },
+    "notice": {
+      "past": "Rewards left from past weeks: {n} pennants are yours!",
+      "claimed": "Claimed! {n} pennants went to Pennant Hall.",
+      "claimedItem": "Claimed! {n} pennants went to Pennant Hall, and the {item} into the Bag.",
+      "begun": "Begun! You have {minutes} minutes of play in {region}.",
+      "alreadyClaimed": "That reward has been claimed already.",
+      "oneAtATime": "Only one timed mission can be under way at a time.",
+      "underWay": "That mission is under way. Hurry!",
+      "notDone": "That mission isn't done yet.",
+      "doneInField": "Mission done! {mission} Claim the reward at the board.",
+      "timeUp": "Time's up! The timed mission wasn't done. It can be begun again at the board."
+    }
+  },
   "athlon": {
     "title": "POKÉATHLON",
     "courses": "COURSES",
@@ -6368,6 +6451,11 @@
       "bronze": "BRONZE",
       "silver": "SILVER",
       "gold": "GOLD"
+    },
+    "tera": {
+      "question": "Which Tera Type shall it take? It is {now} now.",
+      "row": "{type} ({count} shards)",
+      "stellar": "Stellar"
     },
     "peak": {
       "question": "Which stat shall reach its peak?",

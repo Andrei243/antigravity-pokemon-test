@@ -144,6 +144,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     /// <summary>The Laurel Circuit (plan 41 · EG4).</summary>
     public CircuitState? Circuit { get; set; } = new();
+    /// <summary>Pennant Hall (plan 41 · EG3) and the Week's Work (EG6), as a game keeps them.</summary>
+    public PlazaState? Plaza { get; set; } = new();
+    public MissionBoard? Missions { get; set; } = new();
 
     /// <summary>The timed powers in force, which a meal starts (plan 39 · CR6).</summary>
     public PowerState? Powers { get; set; } = new();
@@ -927,7 +930,8 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             if (TrainingGrade is { } grade && EffortDrills.WhyNot(p, TrainingStat) == null)
             {
                 int gained = EffortDrills.Award(p, TrainingStat, grade);
-                Training?.Record(TrainingStat, grade == DrillGrade.Gold ? 200 : grade == DrillGrade.Silver ? 100 : 10, grade);
+                bool orb = ItemDatabase.Get("Tera Orb") is { } teraOrb && Bag.GetQuantity(teraOrb) > 0;
+                Training?.Record(TrainingStat, grade == DrillGrade.Gold ? 200 : grade == DrillGrade.Silver ? 100 : 10, grade, orb ? TeraChange.ShardOf(p.PrimaryType) : null);
                 Answer = (int)grade + 1;
                 Log[^1] = $"open {screen} {p.Species.Name} {TrainingStat} {grade} +{gained}";
             }

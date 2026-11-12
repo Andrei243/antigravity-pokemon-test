@@ -21,6 +21,10 @@
     { "id": "celadon_city_department_store_1f.TrainingTutor", "name": "Tutor Rowe", "npcType": "training_tutor",
       "x": 1, "y": 10, "facing": "Right", "script": "TrainingTutor" },
     { "id": "celadon_city_department_store_1f.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
-      "x": 1, "y": 11, "facing": "Right", "script": "TrainingClerk" }
+      "x": 1, "y": 11, "facing": "Right", "script": "TrainingClerk" },
+    { "id": "celadon_city_department_store_1f.TrainingTeacher", "name": "Teacher Bram", "npcType": "training_teacher",
+      "x": 1, "y": 7, "facing": "Right", "script": "TrainingTeacher" },
+    { "id": "celadon_city_department_store_1f.TeraKeeper", "name": "Tera Keeper", "npcType": "tera_keeper",
+      "x": 1, "y": 12, "facing": "Right", "script": "TeraKeeper" }
   ]
 }

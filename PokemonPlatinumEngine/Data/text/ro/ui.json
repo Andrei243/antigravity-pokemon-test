@@ -795,6 +795,7 @@
       "NoRunning": "Fără fugă",
       "SetStyle": "Doar lupte Fixe",
       "NoLaterMechanics": "Fără mecanici noi",
+      "NoPowers": "Fără puteri",
       "Remix": "Remix",
       "ShinyOdds": "Șansa de shiny",
       "RandomSpecies": "Pokémoni amestecați",
@@ -822,6 +823,7 @@
       "NoRunning": "Nu poți fugi din luptele cu Pokémoni sălbatici.",
       "SetStyle": "Stilul de luptă este Fix, iar schimbarea nu e oferită niciodată.",
       "NoLaterMechanics": "Nimeni nu poate face Mega Evoluție, Mișcare Z, Dynamax sau Terastalizare: nici tu, nici antrenorii pe care îi întâlnești.",
+      "NoPowers": "Ceasul Puterilor nu folosește nicio putere și nu ia nicio putere gratuită. O masă în tabără tot îi dă pe a ei.",
       "Remix": "O a doua versiune a regiunii Sinnoh, scrisă pentru acest joc: antrenorii importanți au echipe noi și Pokémonii sălbatici se schimbă, așa că poți prinde mult mai multe specii înainte de Ligă. Regulile și povestea rămân aceleași.",
       "ShinyOdds": "Cât de des e un Pokémon shiny. „După reguli” este șansa obișnuită a jocului.",
       "RandomSpecies": "Pokémonii sălbatici, echipele antrenorilor, darurile, legendele și partenerul tău sunt alte specii, aceleași de fiecare dată pentru o sămânță. Evoluțiile rămân în liniile lor.",
@@ -1466,6 +1468,7 @@
     "minted": "{nature} (mentă {mint})",
     "ability": "ABILITATE",
     "heldItem": "OBIECT ȚINUT",
+    "teraType": "TIP TERA",
     "marks": "SEMNE",
     "none": "Niciunul",
     "expPoints": "PUNCTE EXP.",
@@ -6477,6 +6480,31 @@
       }
     }
   },
+  "powerWatch": {
+    "title": "CEASUL PUTERILOR",
+    "hintLevel": "Nivel",
+    "hintUse": "Folosește",
+    "noneLearned": "Nicio putere învățată încă. Le predă profesorul unei săli de antrenament.",
+    "today": "Azi: {power}",
+    "freeLevel": "Nv. {level} GRATUIT",
+    "levelCost": "Nv. {level} · {cost} încărcare",
+    "levelOf": "Nv. {level} din {most} · {cost} încărcare",
+    "charge": "ÎNCĂRCARE",
+    "chargeSteps": "{charge} din {most}. Un punct la fiecare {steps} pași.",
+    "inForce": "ÎN VIGOARE",
+    "noneInForce": "Nimic nu e în vigoare.",
+    "inForceRow": "{power} Nv. {level}",
+    "started": "{power} Nv. {level} e în vigoare zece minute de joc.",
+    "why": {
+      "run": "Această tură nu folosește puteri.",
+      "learned": "Nivelul acela nu e învățat încă.",
+      "charge": "Nu e destulă încărcare. Mergi puțin și se umple."
+    },
+    "short": {
+      "exp": "EXP", "effort": "EF", "money": "$", "bargain": "%", "catch": "CAP", "encounter": "ÎNT", "stealth": "DIS", "hatch": "OU",
+      "typeEncounter": "TIP", "materials": "MAT"
+    }
+  },
   "timedPowers": {
     "kind": {
       "exp": "Puterea EXP", "effort": "Puterea Efortului", "money": "Puterea Premiilor", "bargain": "Puterea Reducerilor", "catch": "Puterea Capturii",
@@ -6549,6 +6577,11 @@
       "bronze": "BRONZ",
       "silver": "ARGINT",
       "gold": "AUR"
+    },
+    "tera": {
+      "question": "Ce tip Tera să ia? Acum este {now}.",
+      "row": "{type} ({count} cioburi)",
+      "stellar": "Stelar"
     },
     "peak": {
       "question": "Care statistică să ajungă la vârf?",

@@ -3496,10 +3496,30 @@
     },
     {
       "en": [
+        "Which of our goods?",
+        "TRAINING TOOLS",
+        "TERA SHARDS",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "was": [
+        "{player} a dat {price} PL pentru {item}."
+      ]
+    },
+    {
+      "en": [
         "{player} traded {price} BP for the {item}."
       ],
       "text": [
-        "{player} a dat {price} PL pentru {item}."
+        ""
+      ],
+      "was": [
+        "Mulțumesc! Un Capac de Sticlă ajunge la Antrenorul principal din orice sală de antrenament, dacă asta ai ales."
       ]
     },
     {
@@ -3507,7 +3527,10 @@
         "Thank you! A Bottle Cap goes to the Head Coach of any training hall, if that's what you chose."
       ],
       "text": [
-        "Mulțumesc! Un Capac de Sticlă ajunge la Antrenorul principal din orice sală de antrenament, dacă asta ai ales."
+        ""
+      ],
+      "was": [
+        "Sunt de la clubul de antrenament. Cele mai bune bunuri ale noastre sunt păstrate pentru Campioni, din păcate. Revino după ce ești încoronat!"
       ]
     },
     {
@@ -3515,7 +3538,10 @@
         "I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!"
       ],
       "text": [
-        "Sunt de la clubul de antrenament. Cele mai bune bunuri ale noastre sunt păstrate pentru Campioni, din păcate. Revino după ce ești încoronat!"
+        ""
+      ],
+      "was": [
+        "Vai, nu ai Punctele de Luptă pentru asta."
       ]
     },
     {
@@ -3523,7 +3549,10 @@
         "Oh dear, you don't have the Battle Points for that."
       ],
       "text": [
-        "Vai, nu ai Punctele de Luptă pentru asta."
+        ""
+      ],
+      "was": [
+        "Revino oricând ți se adună punctele!"
       ]
     },
     {
@@ -3531,7 +3560,7 @@
         "Come back whenever your points pile up!"
       ],
       "text": [
-        "Revino oricând ți se adună punctele!"
+        ""
       ]
     }
   ],
@@ -3625,6 +3654,138 @@
       ]
     }
   ],
+  "TeraKeeper": [
+    {
+      "en": [
+        "I can change the type a Pokémon takes when it Terastallizes. It costs fifty Tera Shards of the new type. Shall I?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon's Tera Type shall I change?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Done! It will shine as the {thing} type the next time it Terastallizes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm the club's Tera keeper. With a Tera Orb, fifty Tera Shards of a type can change the type a Pokémon takes when it Terastallizes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You don't seem to have a Tera Orb. Come and see me if you ever get one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one's Tera Type is part of what it is. No shard of mine could change it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You'll need fifty shards of a type it doesn't have yet. Golds in the drills earn them, and the club's clerk trades them for Battle Points."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you'd like a new Tera Type."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TrainingTeacher": [
+    {
+      "en": [
+        "Ah, a Champion! Let me show you a power of this land: {thing}, at level {number}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you'll want somewhere to keep it. Here, take this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {item}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Power Watch holds every power you learn. Use one from it, and it lasts ten minutes of play."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each use costs charge, as many points as its level. Walking fills the charge, a point every two hundred steps."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And once a day the watch offers one power for nothing. Look at it often!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You know all I can teach you for now. Enter another Hall of Fame, and I'll teach you a stronger level."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I teach powers: boosts that last a while, to EXP and the like. But only to Champions. Come back once you've entered a Hall of Fame."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "ZygardeCell": [
     {
       "en": [
@@ -3666,6 +3827,48 @@
       ],
       "text": [
         "O pată verde cu o inimă roșie strălucitoare pulsează pe pământ. Cum o atingi, se scufundă din vedere..."
+      ]
+    }
+  ],
+  "HubGuide": [
+    {
+      "en": [
+        "I guide Trainers between the great battle facilities and the Hub."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I take you back to the Hub?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very good. Follow me, and keep close."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} followed the guide back to the Hub..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you are ready. I will be right here."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

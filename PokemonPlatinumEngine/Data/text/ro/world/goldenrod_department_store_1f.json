@@ -111,6 +111,26 @@
           "Funcționarul clubului"
         ]
       }
+    },
+    "goldenrod_department_store_1f.TrainingTeacher": {
+      "name": {
+        "en": [
+          "Teacher Yuki"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "goldenrod_department_store_1f.TeraKeeper": {
+      "name": {
+        "en": [
+          "Tera Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

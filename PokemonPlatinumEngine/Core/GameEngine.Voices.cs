@@ -23,6 +23,14 @@ public partial class GameEngine
     /// </summary>
     public VoiceLibrary? VoicePackOverride { get; set; }
 
+    /// <summary>
+    /// Whether the engine looks for a voice pack where the game keeps one (beside it, at the repository's root, or where
+    /// <c>--voices</c> says). Only <c>Program.Main</c> sets it: VOICES is ALL unless chosen, and a tool's or a test's engine
+    /// would otherwise find the developer's pack and speak in every harness shot. A tool hands its own with
+    /// <see cref="VoicePackOverride"/>.
+    /// </summary>
+    public static bool LooksForVoicePacks { get; set; }
+
     /// <summary>The pack the game's voices come from now, or null.</summary>
     public VoiceLibrary? VoicePack => flow.Dialogue.Voice.Library;
 
@@ -78,7 +86,7 @@ public partial class GameEngine
             talk.Library = null;
             return;
         }
-        if (VoicePackOverride != null)
+        if (VoicePackOverride != null || !LooksForVoicePacks)
         {
             talk.Library = VoicePackOverride;
             return;
@@ -90,9 +98,10 @@ public partial class GameEngine
         {
             voicePackLanguage = wanted;
             voicePack = VoiceLibrary.Choose(language, Settings.EnglishVoices, VoiceLibrary.Find);
-            // Said once a language, so a pack that isn't found is no silent failure (log.txt, and the console)
+            // Said once a language in log.txt: VOICES is on unless chosen, so a game with no pack is the usual case and
+            // is no warning on the console
             if (voicePack == null)
-                PokemonPlatinumEngine.Core.Diagnostics.Log.Warn($"Voices are on but no '{language}' pack was found. Looked in: {string.Join("; ", VoiceLibrary.FoldersFor(language))}");
+                PokemonPlatinumEngine.Core.Diagnostics.Log.Info($"Voices are on but no '{language}' pack was found. Looked in: {string.Join("; ", VoiceLibrary.FoldersFor(language))}");
             else PokemonPlatinumEngine.Core.Diagnostics.Log.Info($"Voices: the '{language}' pack is in use.");
         }
         talk.Library = voicePack;

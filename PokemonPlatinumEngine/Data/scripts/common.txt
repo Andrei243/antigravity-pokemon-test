@@ -3825,8 +3825,18 @@ script TrainingExchange
   train open
   if result == 0 goto NotYet
   say "Hello! I'm with the training club. Battle Points buy our very best goods here."
+  # With a Tera Orb in the bag, the club's Tera Shards too (plan 36 · TR5: frontier prize tera)
+  if not item "Tera Orb" goto Tools
+  choose "Which of our goods?" "TRAINING TOOLS" "TERA SHARDS" "NOT NOW"
+  if result == 2 goto Bye
+  if result == 0 goto Tools
+  frontier prize tera
+  if result == 0 goto Bye
+  goto Buy
+label Tools
   frontier prize training
   if result == 0 goto Bye
+label Buy
   frontier buy
   if result == 0 goto Short
   sound "select"
@@ -3890,6 +3900,73 @@ label Hm
   goto Bye
 label NotYet
   say "I teach the moves of newer lands, but only to Champions. Come back once you've entered a Hall of Fame."
+  end
+
+# A training hall's Tera keeper (plan 36 · TR5; docs/mechanics/rulings.md, "Tera Shards and the Tera keeper"): for a
+# trainer with a Tera Orb in the bag, fifty Tera Shards of a type turn a Pokémon's Tera Type to that type (train tera,
+# Models/TeraChange.cs), the Stellar shards to Stellar. Ogerpon's and Terapagos's can't be changed. Without the orb she
+# only says what she does. Our own person and lines.
+script TeraKeeper
+  face self player
+  speaker self
+  if not item "Tera Orb" goto NoOrb
+  ask "I can change the type a Pokémon takes when it Terastallizes. It costs fifty Tera Shards of the new type. Shall I?"
+  if no goto Bye
+  say "Which Pokémon's Tera Type shall I change?"
+  choosepokemon
+  if result == 255 goto Bye
+  train tera check
+  if result == 2 goto Forced
+  if result == 3 goto Short
+  if result == 0 goto Bye
+  train tera
+  if result == 0 goto Bye
+  sound "select"
+  say "Done! It will shine as the {thing} type the next time it Terastallizes."
+  end
+label NoOrb
+  say "I'm the club's Tera keeper. With a Tera Orb, fifty Tera Shards of a type can change the type a Pokémon takes when it Terastallizes."
+  say "You don't seem to have a Tera Orb. Come and see me if you ever get one."
+  end
+label Forced
+  say "That one's Tera Type is part of what it is. No shard of mine could change it."
+  end
+label Short
+  say "You'll need fifty shards of a type it doesn't have yet. Golds in the drills earn them, and the club's clerk trades them for Battle Points."
+  end
+label Bye
+  say "Come back whenever you'd like a new Tera Type."
+  end
+
+# A training hall's teacher (plan 36 · TR8; docs/mechanics/rulings.md, "Powers"): once any region's Hall of Fame is
+# entered he teaches the powers of his region (Data/powers.json's teachers: Sinnoh's EXP, Prize, Encounter and Stealth
+# Powers, Kanto's Catching, Johto's Hatching, Hoenn's Bargain, Unova's Effort) at a level by the Halls of Fame entered
+# (power learn: one with one, two with two, three with four), and hands over the Power Watch with the first he teaches.
+# Our own person and lines: no Mr. Bonding is recreated.
+script TrainingTeacher
+  face self player
+  speaker self
+  train open
+  if result == 0 goto NotYet
+  power learn
+  if result == 0 goto Known
+  say "Ah, a Champion! Let me show you a power of this land: {thing}, at level {number}."
+  sound "select"
+  if item "Power Watch" goto Explain
+  say "And you'll want somewhere to keep it. Here, take this."
+  give "Power Watch"
+  fanfare keyitem
+  text "{player} received the {item}!"
+label Explain
+  say "The Power Watch holds every power you learn. Use one from it, and it lasts ten minutes of play."
+  say "Each use costs charge, as many points as its level. Walking fills the charge, a point every two hundred steps."
+  say "And once a day the watch offers one power for nothing. Look at it often!"
+  end
+label Known
+  say "You know all I can teach you for now. Enter another Hall of Fame, and I'll teach you a stronger level."
+  end
+label NotYet
+  say "I teach powers: boosts that last a while, to EXP and the like. But only to Champions. Come back once you've entered a Hall of Fame."
   end
 
 # A Zygarde Cell (plan 23, the rest of the islands; rulings, "The Battle Tree, the power plant, Zygarde's cells and the

@@ -53,3 +53,20 @@ each voice by ear from its reel.
 
 A speech-to-text check (whisper.cpp) is not wanted (the user's ruling of 2026-11-07); the bake's checks (clipping,
 loudness, a length that fits the words) are what holds a take.
+
+## Other languages: Gemini
+
+Kokoro speaks no Romanian, so the packs of other languages are made by Gemini's speech model (`gemini.json`: the
+model, and for each voice one of Gemini's prebuilt voices and a few words of delivery; a voice not listed gets both by
+rule from its brief in `cast.json`). The key is `GEMINI_API_KEY`; nothing to set up.
+
+```bash
+dotnet run --project tools/VoiceTool -- generate rowan mom rival --region sinnoh --language ro --engine gemini   # into voice/ro
+dotnet run --project tools/VoiceTool -- trial rowan mom rival --count 12                                         # then, to compare:
+dotnet run --project tools/VoiceTool -- generate --jobs voice/trial/rowan_mom_rival.json --language ro --engine gemini --pack voice/trial/gemini-ro
+```
+
+With `--language` each line's text is its translation (`Data/text/<tag>/`, found by the line's key, `VoiceTool/Translated.cs`);
+a line with no current translation is left out. The delivery goes in brackets before the line (`[stern, slow] …`),
+which Gemini follows and does not say; a sentence of direction it reads aloud. One take a line unless `--takes` asks
+for more (each costs a request); a 429 is waited out. Voices are still designed, never cloned.

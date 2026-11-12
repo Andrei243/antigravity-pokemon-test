@@ -1199,6 +1199,8 @@ public static class RegionDatabase
                 "Hub_HallOfChampions", "Hub_Arena", "Hub_Office",
                 // Plan 41 · EG9: Grayfall Keep on the islet, reached by Looker's boat
                 "Hub_Keep",
+                // Plan 41 · EG3: Pennant Hall
+                "Hub_Plaza",
             }
         }
     };

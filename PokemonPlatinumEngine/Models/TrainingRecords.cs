@@ -28,6 +28,11 @@ public sealed class DrillPrizes
 {
     public List<FirstGoldPrize> FirstGold { get; set; } = new();
     public List<RepeatingPrize> EveryGolds { get; set; } = new();
+    /// <summary>
+    /// With a Tera Orb in the bag, every so many golds earn a Tera Shard of the trainee's own first type (plan 36 · TR5);
+    /// 0 for never.
+    /// </summary>
+    public int TeraShardEvery { get; set; }
 }
 
 /// <summary>
@@ -38,6 +43,8 @@ public sealed class TrainingFile
 {
     public DrillPrizes DrillPrizes { get; set; } = new();
     public List<FrontierPrizeRecord> BattlePoints { get; set; } = new();
+    /// <summary>The Tera Shards the club's clerk trades for Battle Points once a Tera Orb is held (plan 36 · TR5, <c>frontier prize tera</c>).</summary>
+    public List<FrontierPrizeRecord> TeraShards { get; set; } = new();
 }
 
 /// <summary>The training club's tables (plan 36 · TR2; <c>Data/training.json</c>). No drawing or input.</summary>
@@ -55,6 +62,9 @@ public static class TrainingData
 
     /// <summary>The training club's list for Battle Points (plan 36 · TR3), in the order it is offered.</summary>
     public static IReadOnlyList<FrontierPrizeRecord> BattlePoints => File.BattlePoints;
+
+    /// <summary>The club's Tera Shards for Battle Points (plan 36 · TR5), offered beside its list once a Tera Orb is held.</summary>
+    public static IReadOnlyList<FrontierPrizeRecord> TeraShards => File.TeraShards;
 }
 
 /// <summary>What the training records keep in the save (plan 36 · TR2): plain values; null in <c>SaveData</c> while nothing is kept.</summary>
@@ -70,6 +80,8 @@ public sealed class TrainingSave
     public List<string>? FirstGoldsGiven { get; set; }
     /// <summary>The repeating prizes handed over, how many of each item.</summary>
     public Dictionary<string, int>? Given { get; set; }
+    /// <summary>The Tera Shards golds have earned and the coach hasn't handed over yet, in the order earned (plan 36 · TR5).</summary>
+    public List<string>? ShardsOwed { get; set; }
 }
 
 /// <summary>
@@ -84,11 +96,12 @@ public sealed class TrainingRecords
     private readonly HashSet<StatType> goldStats = new();
     private readonly HashSet<StatType> firstGoldsGiven = new();
     private readonly Dictionary<string, int> given = new(StringComparer.Ordinal);
+    private readonly List<string> shardsOwed = new();
 
     public int Drills { get; private set; }
     public int Golds { get; private set; }
 
-    public bool IsEmpty => Drills == 0 && Golds == 0 && best.Count == 0 && given.Count == 0 && firstGoldsGiven.Count == 0;
+    public bool IsEmpty => Drills == 0 && Golds == 0 && best.Count == 0 && given.Count == 0 && firstGoldsGiven.Count == 0 && shardsOwed.Count == 0;
 
     /// <summary>A stat's best score, 0 before any.</summary>
     public int Best(StatType stat) => best.GetValueOrDefault(stat);
@@ -101,15 +114,19 @@ public sealed class TrainingRecords
 
     /// <summary>
     /// A drill played to its end: counted, its score kept as the stat's best where it beats it, a gold counted. Returns
-    /// whether the score is a new best for the stat (a first score counts as one).
+    /// whether the score is a new best for the stat (a first score counts as one). <paramref name="shard"/> is the Tera Shard
+    /// of the trainee's own first type where a Tera Orb is held (plan 36 · TR5): a gold that brings the golds to a whole
+    /// number of <see cref="DrillPrizes.TeraShardEvery"/> earns one.
     /// </summary>
-    public bool Record(StatType stat, int score, DrillGrade grade)
+    public bool Record(StatType stat, int score, DrillGrade grade, string? shard = null, DrillPrizes? prizes = null)
     {
         Drills++;
         if (grade == DrillGrade.Gold)
         {
             Golds++;
             goldStats.Add(stat);
+            int every = (prizes ?? TrainingData.Prizes).TeraShardEvery;
+            if (shard != null && every > 0 && Golds % every == 0) shardsOwed.Add(shard);
         }
         if (best.TryGetValue(stat, out int was) && was >= score) return false;
         best[stat] = score;
@@ -133,6 +150,7 @@ public sealed class TrainingRecords
             if (every.Golds <= 0 || every.AfterHallOfFame && !hallOfFame) continue;
             for (int n = Golds / every.Golds - GivenCount(every.Item); n > 0; n--) owed.Add(every.Item);
         }
+        owed.AddRange(shardsOwed);
         return owed;
     }
 
@@ -155,6 +173,12 @@ public sealed class TrainingRecords
             given[every.Item] = GivenCount(every.Item) + 1;
             return every.Item;
         }
+        if (shardsOwed.Count > 0)
+        {
+            string shard = shardsOwed[0];
+            shardsOwed.RemoveAt(0);
+            return shard;
+        }
         return null;
     }
 
@@ -164,6 +188,7 @@ public sealed class TrainingRecords
         goldStats.Clear();
         firstGoldsGiven.Clear();
         given.Clear();
+        shardsOwed.Clear();
         Drills = Golds = 0;
     }
 
@@ -174,7 +199,8 @@ public sealed class TrainingRecords
         Drills = Drills,
         Golds = Golds,
         FirstGoldsGiven = firstGoldsGiven.Count > 0 ? DrillKinds.Stats.Where(firstGoldsGiven.Contains).Select(s => s.ToString()).ToList() : null,
-        Given = given.Count > 0 ? new Dictionary<string, int>(given) : null
+        Given = given.Count > 0 ? new Dictionary<string, int>(given) : null,
+        ShardsOwed = shardsOwed.Count > 0 ? new List<string>(shardsOwed) : null
     };
 
     /// <summary>Takes up a save's records (none for null); a stat's name no stat has is passed over.</summary>
@@ -192,5 +218,6 @@ public sealed class TrainingRecords
             if (Enum.TryParse<StatType>(name, out var stat)) firstGoldsGiven.Add(stat);
         foreach (var (item, n) in save.Given ?? new())
             if (n > 0) given[item] = n;
+        shardsOwed.AddRange((save.ShardsOwed ?? new()).Where(s => !string.IsNullOrEmpty(s)));
     }
 }

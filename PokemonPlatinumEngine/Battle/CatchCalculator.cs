@@ -71,6 +71,8 @@ public static partial class CatchCalculator
             speciesRate = HeavyBallRate(ball.Name, wild, speciesRate);
             tenths = LaterBallTenths(ball.Name, wild, turn, conditions, mine);
         }
+        // The Catching Power in force as the battle began (plan 36 · TR7) raises the species' rate, at most to 255
+        if (conditions.Powers?.Catch is > 0 and var power) speciesRate = Math.Min(255, Models.PowerSet.Raise(speciesRate, power));
         int rate = Formulas.CatchRate(speciesRate, tenths, wild.MaxHP, wild.CurrentHP, wild.Status);
 
         // A critical capture is decided before the shakes (plan 40 · GE5)

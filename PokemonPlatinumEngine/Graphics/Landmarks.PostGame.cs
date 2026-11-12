@@ -219,10 +219,13 @@ internal static partial class Landmarks
         var back = kit.Face($"booth.back.{x1 - x0}", x1 - x0, BoothBack, PaintBoothBack);
         var backSide = kit.Face("booth.backside", zBack1 - zBack0, BoothBack, c => Pix.Raised(c, 0, 0, c.Width, c.Height, PaleStone));
         kit.Box(x0, x1, zBack0, zBack1, 0, BoothBack, south: back, west: backSide, east: backSide);
-        // The awning: a sheet over the back wall, reaching a little way out over whoever stands behind the counter
-        var awning = kit.Face($"booth.awning.{w}x38", w, 38, c => PaintAwning(c, top: true));
-        var valance = kit.Face($"booth.valance.{w}", w, 7, c => PaintAwning(c, top: false));
-        var valanceSide = kit.Face("booth.valance.38", 38, 7, c => PaintAwning(c, top: false));
+        // The awning: a sheet over the back wall, reaching a little way out over whoever stands behind the counter; in
+        // the stall's own colour where the prop has one (Pennant Hall's stalls, plan 41 · EG3), the Frontier's blue elsewhere
+        var stripe = AwningTone(prop.Tint);
+        string tinted = prop.Tint.Length > 0 ? "." + prop.Tint.TrimStart('#') : "";
+        var awning = kit.Face($"booth.awning{tinted}.{w}x38", w, 38, c => PaintAwning(c, top: true, stripe));
+        var valance = kit.Face($"booth.valance{tinted}.{w}", w, 7, c => PaintAwning(c, top: false, stripe));
+        var valanceSide = kit.Face($"booth.valance{tinted}.38", 38, 7, c => PaintAwning(c, top: false, stripe));
         kit.Box(0, w, 2, 40, BoothBack, BoothBack + 7, awning, valance, valanceSide, valanceSide);
 
         // The counters: the serving side, the far side and the front
@@ -258,13 +261,24 @@ internal static partial class Landmarks
     }
 
     /// <summary>A booth's awning in broad stripes of blue and white: its top, or the scalloped strip that hangs from its edge.</summary>
-    public static void PaintAwning(PixelCanvas c, bool top)
+    public static void PaintAwning(PixelCanvas c, bool top) => PaintAwning(c, top, AwningBlue);
+
+    /// <summary>The stripe of a booth's awning: the colour <c>#rrggbb</c> a prop names (Pennant Hall's stalls), or the Frontier's blue.</summary>
+    public static Tone AwningTone(string tint)
+    {
+        if (tint.Length != 7 || tint[0] != '#' || !int.TryParse(tint[1..], System.Globalization.NumberStyles.HexNumber, null, out int rgb)) return AwningBlue;
+        var c = new Color((byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb, (byte)255);
+        return Tone.Of(c);
+    }
+
+    /// <summary>A booth's awning in stripes of a colour and white, with its scalloped edge on the valance.</summary>
+    public static void PaintAwning(PixelCanvas c, bool top, Tone stripe)
     {
         int w = c.Width, h = c.Height;
         for (int y = 0; y < h; y++)
             for (int x = 0; x < w; x++)
             {
-                var tone = x / 12 % 2 == 0 ? AwningBlue : AwningWhite;
+                var tone = x / 12 % 2 == 0 ? stripe : AwningWhite;
                 if (top) c.SetRaw(x, y, y < 2 ? tone.Light : y >= h - 3 ? tone.Dark : tone.Base);
                 else if (y >= h - 3 && (x % 12 is 0 or 11 || y == h - 1 && x % 12 is 1 or 10)) continue;   // the scallops
                 else c.SetRaw(x, y, y == 0 ? tone.Dark : tone.Base);

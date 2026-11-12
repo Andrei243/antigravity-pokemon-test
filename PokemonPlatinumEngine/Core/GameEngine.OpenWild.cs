@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
@@ -69,6 +72,40 @@ public partial class GameEngine
         if (flow.Open is not { } field || fought == null) return;
         bool gone = fought.Result is BattleResult.EnemyCaught or BattleResult.PlayerVictory;
         field.Wild.Ended(zone, gone ? OpenWildEnd.CaughtOrFelled : OpenWildEnd.Otherwise);
+    }
+
+    private readonly List<OpenWildPokemon> openNoticed = new();
+
+    /// <summary>
+    /// After the frame's ticks in an open map (plan 32, after OW10): each wild Pokémon that noticed the player in them
+    /// and comes over or charges cries out (the first of the frame's alone, so a herd noticing at once is one cry), its
+    /// species' cry as one met in the field, panned by where it stands about the camera. A shy one runs off quietly. The
+    /// "!" over it is the picture's (<see cref="GatherOpenFigures"/>). Nothing of the rules or the dice is touched.
+    /// </summary>
+    private void HearTheNoticed(OpenField field)
+    {
+        field.Wild.TakeNoticed(openNoticed);
+        foreach (var wild in openNoticed)
+        {
+            if (!OpenWildField.CriesOut(wild)) continue;
+            var species = PokemonDatabase.Get(wild.Species) ?? PokemonDatabase.SpeciesOfForm(wild.Species);
+            if (species == null) continue;
+            string? form = PokemonDatabase.Get(wild.Species) == null ? wild.Species : null;
+            AudioManager.PlayCry(species, form, CryMode.Normal, OpenCryPan(field, wild));
+            break;
+        }
+    }
+
+    /// <summary>A cry's pan for a wild Pokémon of the field: its side of the way the camera looks, up to two thirds of the way over.</summary>
+    private float OpenCryPan(OpenField field, OpenWildPokemon wild)
+    {
+        double dx = (wild.Pos.X - field.Player.Pos.X) / (double)OpenPos.PerMetre, dz = (wild.Pos.Z - field.Player.Pos.Z) / (double)OpenPos.PerMetre;
+        double length = Math.Sqrt(dx * dx + dz * dz);
+        if (length < 0.5) return 0f;
+        // The camera looks along its yaw's way; its right hand is that way turned a quarter clockwise seen from above
+        double yaw = openCamera.Yaw;
+        double rightX = -Math.Cos(yaw), rightZ = Math.Sin(yaw);
+        return (float)Math.Clamp((dx * rightX + dz * rightZ) / length * 0.67, -0.67, 0.67);
     }
 
     /// <summary>The ground a battle begun where the player stands in an open map is fought on (the cover under the capsule).</summary>

@@ -86,7 +86,7 @@ public class ChampionsCircuitTests
         var aaron = new Trainer { Id = record.Id };
         TrainerDatabase.Fill(aaron, record);
         var levels = aaron.Party.Members.Select(p => p.Level).ToList();
-        var lifted = ChampionsCircuit.Lift(aaron, 120);
+        var lifted = LevelLift.To(aaron, 120);
         Assert.Equal(120, lifted.Party.Members.Max(p => p.Level));
         int by = 120 - levels.Max();
         Assert.Equal(levels.Select(l => l + by), lifted.Party.Members.Select(p => p.Level));

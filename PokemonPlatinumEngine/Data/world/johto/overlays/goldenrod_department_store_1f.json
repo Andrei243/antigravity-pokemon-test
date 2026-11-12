@@ -44,6 +44,10 @@
     { "id": "goldenrod_department_store_1f.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
       "x": 7, "y": 10, "facing": "Down", "script": "TrainingClerk" },
     { "id": "goldenrod_department_store_1f.TrainingExchange", "name": "Club Clerk", "npcType": "training_clerk",
-      "x": 8, "y": 10, "facing": "Down", "script": "TrainingExchange" }
+      "x": 8, "y": 10, "facing": "Down", "script": "TrainingExchange" },
+    { "id": "goldenrod_department_store_1f.TrainingTeacher", "name": "Teacher Yuki", "npcType": "training_teacher",
+      "x": 4, "y": 10, "facing": "Down", "script": "TrainingTeacher" },
+    { "id": "goldenrod_department_store_1f.TeraKeeper", "name": "Tera Keeper", "npcType": "tera_keeper",
+      "x": 9, "y": 10, "facing": "Down", "script": "TeraKeeper" }
   ]
 }

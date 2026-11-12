@@ -1,0 +1,48 @@
+// The Week's Work, the hub's board of missions (plan 41 · EG6; Models/MissionBoard.cs; docs/data-files.md, "The Week's
+// Work"). Ours, written by hand and read strictly (docs/schemas/missions.schema.json). Each week posts "plain" missions
+// with no clock and "timedCount" timed ones, drawn from the regions whose Hall of Fame is entered by the week's Monday
+// and the data's version, never by chance. A kind's row says how often it is drawn ("weight"), how much it asks
+// ("least" to "most"; a timed one asks the least), what it pays in pennants ("perOne" for each thing asked, "bonus" on
+// top, and "timedBonus" more for a timed one), whether it may be timed and for how many "minutes" of play in its region,
+// and in which "regions" alone it may be drawn (every finished one where none are named). "places" are each region's
+// places for the kinds that name one, by area key; "items" what a mission may pay beside its pennants, one in "itemOneIn".
+{
+  "plain": 3,
+  "timedCount": 2,
+  "timedBonus": 15,
+  "kinds": [
+    { "kind": "CatchType", "weight": 4, "least": 2, "most": 4, "perOne": 8, "bonus": 6, "timed": true, "minutes": 12 },
+    { "kind": "CatchInArea", "weight": 3, "least": 2, "most": 3, "perOne": 9, "bonus": 6, "timed": true, "minutes": 10 },
+    { "kind": "BeatTrainers", "weight": 4, "least": 3, "most": 6, "perOne": 5, "bonus": 5, "timed": true, "minutes": 15 },
+    { "kind": "WinRematch", "weight": 2, "least": 1, "most": 2, "perOne": 20, "bonus": 5 },
+    { "kind": "HatchEggs", "weight": 2, "least": 1, "most": 3, "perOne": 12, "bonus": 4 },
+    { "kind": "Landmark", "weight": 3, "least": 1, "most": 1, "perOne": 18, "bonus": 0, "timed": true, "minutes": 8 },
+    { "kind": "WinFacility", "weight": 2, "least": 3, "most": 7, "perOne": 6, "bonus": 6, "regions": [ "Sinnoh", "Hoenn" ] },
+    { "kind": "WinContest", "weight": 1, "least": 1, "most": 1, "perOne": 30, "bonus": 0, "regions": [ "Sinnoh", "Hoenn" ] }
+  ],
+  "types": [ "Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy" ],
+  "places": {
+    "Sinnoh": {
+      "catch": [ "route_210_south", "route_212_north", "route_214", "route_218", "route_225", "lake_valor" ],
+      "landmarks": [ "iron_island", "snowpoint_city", "fight_area", "pastoria_city" ]
+    },
+    "Kanto": {
+      "catch": [ "route_1", "route_24", "route_10", "route_13", "route_23" ],
+      "landmarks": [ "cerulean_city", "cinnabar_island", "four_island", "fuchsia_city", "saffron_city" ]
+    },
+    "Johto": {
+      "catch": [ "ilex_forest", "route_29", "route_32", "route_36", "route_42", "route_44" ],
+      "landmarks": [ "lake_of_rage", "ecruteak", "cianwood", "blackthorn" ]
+    },
+    "Hoenn": {
+      "catch": [ "route_101", "route_110", "route_113", "route_119", "route_120" ],
+      "landmarks": [ "fortree_city", "dewford_town", "ever_grande_city", "lilycove_city" ]
+    },
+    "Unova": {
+      "catch": [ "unova_route_6", "unova_route_7", "unova_route_13", "unova_route_14", "unova_route_22" ],
+      "landmarks": [ "lacunosa_town", "humilau_city", "undella_town", "lentimas_town" ]
+    }
+  },
+  "items": [ "Heart Scale", "Rare Candy", "PP Up", "Revive", "Sitrus Berry", "Lum Berry", "Star Piece" ],
+  "itemOneIn": 2
+}

@@ -94,6 +94,7 @@ partial class Harness
         team.Members.RemoveAll(p => PokemonPlatinumEngine.Data.SkyBattles.CanFly(p));
         game.StartTrainerBattle(new NPC { Name = "Gale", NpcType = "Trainer", TrainerData = Gale() });
         Frames(30);
+        if (game.Dialogue.IsActive && !game.Dialogue.IsCurrentLineComplete) { game.Dialogue.FinishLine(); Frames(2); }
         Shot("ft52_sky_none");
         Console.WriteLine($"  with none that fly: state {game.State}");
         for (int i = 0; i < 600 && (game.State == GameState.Dialogue || game.Dialogue.IsActive); i++)
@@ -241,6 +242,25 @@ partial class Harness
                 Quick();
             }
         }
+        // Reads on to the line that says <paramref name="words"/>, whole (a refusal after the explanation)
+        void ToTheLine(string words)
+        {
+            for (int i = 0; i < 1200 && !(box.IsActive && box.IsCurrentLineComplete && box.CurrentLine.Contains(words)); i++)
+            {
+                if (box.IsActive && !box.IsCurrentLineComplete) box.FinishLine();
+                else if (box.IsActive) box.Advance();
+                Quick();
+            }
+        }
+        // Puts the text box away once the script has said its last
+        void Closed()
+        {
+            for (int i = 0; i < 600 && (box.IsActive || engine.ScriptRunning); i++)
+            {
+                if (box.IsActive && !box.IsCurrentLineComplete) box.FinishLine(); else if (box.IsActive) box.Advance();
+                Quick();
+            }
+        }
         void ToTheLastLine()
         {
             for (int i = 0; i < 600 && box.IsActive && !(box.IsCurrentLineComplete && !engine.ScriptRunning); i++)
@@ -299,10 +319,11 @@ partial class Harness
         game.LocationSign.Hide();
         Frames(10);
         game.Interact();
-        ReadOn();
+        ToTheLine("fly or float, I'm afraid");
+        Frames(4);
         Shot("ft53_sky_trainer_grounded");
         Console.WriteLine($"the sky trainer to a Bidoof: {box.CurrentLine}; asked {engine.Choice.IsOpen}");
-        ToTheLastLine();
+        Closed();
         Frames(10);
 
         team.Members.Clear();
@@ -327,6 +348,7 @@ partial class Harness
         }
         else Console.WriteLine("  !! never asked: the sky trainer's offer");
 
+        Closed();
         team.Members.Clear();
         team.Members.Add(Mine("Garchomp", "Dragon Claw", "Earthquake"));
         team.Members.Add(Mine("Staraptor", "Brave Bird", "Close Combat"));

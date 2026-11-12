@@ -367,6 +367,9 @@ public sealed class Prop
     /// <summary>For a prop placed by a model of the world: the model's short name, which picks among looks of one type.</summary>
     public string Model { get; init; } = "";
 
+    /// <summary>A colour a prop is drawn in where its kind takes one (a booth's awning: Pennant Hall's stalls, plan 41 · EG3), as <c>#rrggbb</c>; empty for its own.</summary>
+    public string Tint { get; init; } = "";
+
     /// <summary>Whether it blocks every tile it covers. A conveyor and its gantry stand over open ground: the world says which of their tiles block.</summary>
     // Lumiose City's tower (plan 23 · Z2) is appended past the decorations and blocks all the same: nothing walks through it
     public bool IsSolid => Type < PropType.Rug && Type is not (PropType.Conveyor or PropType.Gantry) || Type == PropType.PrismTower;

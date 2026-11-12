@@ -1,0 +1,10 @@
+# The hub's town (plan 41). docs/scripts.md describes the language; the lines are our own.
+#
+# The notice board by the avenue's west sign is the Week's Work (plan 41 · EG6; Models/MissionBoard.cs): this week's
+# missions in the regions finished, drawn by the week, two of them timed. Reading it opens the board's screen, where a
+# timed mission is begun and a mission's reward is claimed, its pennants to Pennant Hall.
+
+
+script Board
+  missions open
+  end

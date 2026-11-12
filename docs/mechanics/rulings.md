@@ -2178,7 +2178,7 @@ An inverse battle is X and Y's: the type chart is turned round for the whole bat
 | The opening | Nothing is said | A line of our own once everyone is out, before the weather: "Every type matchup is turned upside down!" (`BattleCore.InverseLine`) | The log, a replay and the screen should say what kind of battle it is; the move cards' hints say the rest |
 | Who offers one | X and Y: someone in Kalos, once a day, with a prize by how the battle went | A scientist of our own at the Fight Area's east edge (`fight_area.InverseBattle`), there once the tag battle before the Battle Frontier's gate is over, one battle a day (`FLAG_DAILY_FIGHT_AREA_INVERSE_BATTLE`), won or lost | Plan 14, decision 1: the later formats are met after the Hall of Fame. The prizes are not built: he pays his team's prize money |
 | His team, and the name the battle gives him | — | A trainer of our own since plan 14 · B14, `scientist_ingram` in `Data/our-trainers.json`: Scientist Ingram, with a Magneton at 55 and a Bronzong at 53, each knowing four moves of its own data, and Platinum's prize for a Scientist of his last level | `trainers.json` is Platinum's table and nothing else (the golden `trainers.txt` holds it), and a team written into the overlay would be drawn from the game's chance as the world loads. In B1 he borrowed `scientist_shaun_rematch_3` and was called Scientist Shaun, the name of a trainer of Route 212; B14's file of trainers of ours gave him his own. The Bronzong (Steel and Psychic, Levitate) is a second Pokémon the chart turns round for: what it feared in Platinum (Fire, Ghost and Dark) it resists there, and what it shrugged off (Grass, Psychic, Poison among them) finds it weak |
-| A battle lost to him | — | No white-out: the script goes on (`canlose`) and the day's battle is had. The battle itself still says its usual last lines and takes a loss's money | Every battle a script may lose ends so; the lines after a loss are the battle's, not the script's |
+| A battle lost to him | — | No white-out: the script goes on (`canlose`) and the day's battle is had. The battle itself still says its usual last lines and takes a loss's money, as the original's does ("A battle that may be lost", below) | Every battle a script may lose ends so |
 
 ### Hordes (plan 14 · B3)
 
@@ -2267,8 +2267,8 @@ Sun and Moon's Battle Royal, built when the user answered plan 14's decision 7 "
 - **The end and the placing** (Sun and Moon's, the tie-break ours): the battle ends the moment any camp has nobody left able to fight. Each camp scores a point for each Pokémon it knocked out (the last foe to hit the fallen one with a move, `Volatiles.LastHitBy`, read as it falls) and a point for each of its own still able to fight; they are placed by score, then by the share of HP left, then in camp order (`RoyalStanding`). The lines say who ran out and each camp's place and score, then a `RoyalPlaced` event stands by itself. First place is the player's victory (`Won`, `PlayerVictory`); any other is `BattleResult.Placed` (at the enum's end), which is no loss: a Royal is fought for its placing alone, with no EXP, no prize money and nobody whiting out (`NoRewards`, set by the core for every Royal).
 - **The trainer AI** thinks a Royal through as a double over every other place (`TrainerAi.Doubles`), each a foe, so a trainer may aim at another of its own side; the tag strategy (a double's partner) is never added.
 - **On the screen**: the three others stand on the foe's platform as three of a horde do and are boxed down the left as a horde's are; Tackle's target menu offers the three; the player's box is a single's. Plan 14's ring of four platforms, the camera's ring shots and a four-way target menu are not built (the style guide has no ring yet).
-- **Where one is fought** (2026-11-07, finishing plan 14): a corner of the Battle Frontier's annex, the building of formats of our own, in the smallest honest way: a receptionist at (1, 8) beside the Pike's desk (`BattleFrontierAnnex.txt`, `RoyalDesk`), and the three she pits the player against standing beside her (Brisa, an Ace Trainer; Corin, a Veteran; Dalla, a Battle Girl: `royal_brisa`, `royal_corin`, `royal_dalla` of `our-trainers.json`, three Pokémon each at 55, no prize). None of the three carries a team on the map; the script word `royal a "id" b "id" c "id" [canlose]` (`Op.Royal`, a word of ours) makes each that trainer of the data, as `battle … as` does one, and hands the three to the host's `Royal`, which the game answers with `StartTrainerBattle(…, thirdNpc)` and a headless host writes down. The outcome is `won` for first place and neither won nor lost for any other (`BattleResult.Placed` is no `BattleOutcome`), and the battle gives nothing, so it is offered as often as the player likes, with no daily flag and no record. The player brings the whole team (Sun and Moon's Royal had three a side; ours, as built in B13, is the player's ordinary team, ended the moment any camp runs out).
-- **Not built.** Plan 23 · Z8's Royal Avenue, plan 13 · V12's Versus, the ring of four platforms, a Royal's Battle Points, a Royal of three Pokémon a side.
+- **Where one is fought** (2026-11-07, finishing plan 14): a corner of the Battle Frontier's annex, the building of formats of our own, in the smallest honest way: a receptionist at (1, 8) beside the Pike's desk (`BattleFrontierAnnex.txt`, `RoyalDesk`), and the three she pits the player against standing beside her (Brisa, an Ace Trainer; Corin, a Veteran; Dalla, a Battle Girl: `royal_brisa`, `royal_corin`, `royal_dalla` of `our-trainers.json`, three Pokémon each at 55, no prize). None of the three carries a team on the map; the script word `royal a "id" b "id" c "id" [canlose]` (`Op.Royal`, a word of ours) makes each that trainer of the data, as `battle … as` does one, and hands the three to the host's `Royal`, which the game answers with `StartTrainerBattle(…, thirdNpc)` and a headless host writes down. The outcome is `won` for first place and neither won nor lost for any other (`BattleResult.Placed` is no `BattleOutcome`). The battle itself gives nothing (no EXP, no prize), but **first place earns two Battle Points** at the desk (`frontier give 2`, since 2026-11-12: the Great Rank's of Alola's Battle Royal Dome, whose three are at 55 as the corner's are, plan 23 · Z8; Ultra Sun and Ultra Moon's Royal pays Battle Points by the rank), and it is offered as often as the player likes, with no daily flag and no record, as a Frontier facility's rounds are. The player brings the whole team (Sun and Moon's Royal had three a side; ours, as built in B13, is the player's ordinary team, ended the moment any camp runs out).
+- **Since built** (2026-11-12, finishing plan 14): the ring of four platforms and the ring's four cards (style guide, "A Battle Royal's ring", "The ring's cards"; the quarters of plan 45 · BC7 framed on its places), Battle Points for first place at the annex's corner (above) and at Alola's Battle Royal Dome on Royal Avenue (plan 23 · Z8, "Ultra Space and the Battle Royal Dome"). **Not built**: plan 13 · V12's Versus (that plan's), and a Royal of three Pokémon a side (ours is the player's whole team, a decision of B13 kept).
 
 ### The Battle Dome (plan 14 · B8)
 
@@ -2349,10 +2349,14 @@ Let's Go's Master Trainers: a master for every species, battled one-on-one by on
 - **What may be learnt** (`Models/Legality.cs`, the check plan 14 · B11 and plan 13 · V13 share): the species' own level-up moves at any level, its Egg moves, Platinum's tutors' lists and the TMs and HMs it takes, and all of the same of whatever it evolved from, since a Pokémon keeps what it knew; Grandma Wilma's Draco Meteor for a Dragon type and a fully grown starter's strongest move. Nothing else: an event's move, a later game's tutor the data doesn't list, a Sketch.
 - **One-on-one is the parties.** `choosepokemon "Bidoof"` lets only a Bidoof be chosen (the rest greyed, an Egg too); `master self` fights the master of the chosen Pokémon's species with a `Party` of its own holding that Pokémon, the team's own object (plan 14, decision 9): the EXP and levels it gains, the PP it spends and the hurt and condition it ends with stay with it, as they would in any battle, and the rest of the team takes no part and gains nothing. No master stands in the world (decision 8): plan 14 · B15's hall calls them.
 - **The bag is closed to both sides** (`CoreSetup.NoBattleItems`, `BattleTerms.NoBattleItems`): `WhyNotItem` refuses every item to either side with "No items may be used in this battle!", the trainer AI never reaches for its items, and the BAG command is greyed and says so when chosen. Held items are not the bag's and still work; a master's Pokémon holds none.
-- **Won, the master is beaten** (`StoryState.Defeat("master_bidoof")`), for good, which is the title plan 14 · B15 shows; no prize is paid. **Lost under `canlose`**, the team is healed on the spot and the master may be battled again, but the battle still says its usual last lines and takes a loss's money, as B1's scientist's does: a battle that only the script may lose has no rule of its own for the money yet.
+- **Won, the master is beaten** (`StoryState.Defeat("master_bidoof")`), for good, which is the title plan 14 · B15 shows; no prize is paid. **Lost under `canlose`**, the team is healed on the spot and the master may be battled again; the battle still takes a loss's money, as the original's does ("A battle that may be lost", below).
 - **The Masters' Hall** (plan 14 · B15, decision 8 as recommended): one hall of ours off the Battle Frontier annex's lobby, by a door in its west wall, with a receptionist and one master who stands for every species. Both are shown by `SinnohHallOfFame`, so before the Hall of Fame the room is empty, and the master carries no team on the map. The receptionist's question is answered with a bare `choosepokemon`: any one of the team may be put forward, and `master master canlose` fights the master of its species. Nobody of Sinnoh's 210 stands in the imported world (decision 8's alternative is not built).
 - **A title is a master beaten**, counted from the story's beaten trainers whose ids are masters' (`Models/MasterTitles.cs`): no field of the save is new. Which was won last is the story's variable `VAR_MASTER_TITLE_LATEST`, the species' National Pokédex number, set by `master` on a win, again on a rematch won (so the latest is the last one fought and won, even when it was held already). A master beaten again gives nothing new: the hall says so before the battle (`if titled`), and the count stays.
 - **The Trainer Card** has a page of the titles once one is won (`CardPage.Titles`, after the run's page), by National Pokédex number, and the latest under the player's name on the front.
+
+### A battle that may be lost (2026-11-12, finishing plan 14)
+
+- **The battle takes the money all the same, as Platinum's does.** A trainer battle a script starts with `canlose` (the rival's first, the inverse scientist's, a Master Trainer's, the sky trainer's) goes on in the script after a loss, and the player is carried nowhere; but the battle itself ends as every lost battle does: "X has no Pokémon left that can fight!", the money handed over (`Formulas.MoneyPenalty`) and the white-out's lines. This is the original's: `BattleControllerPlayer_HandleResult` (`src/battle/battle_controller_player.c`) loads `subscript_battle_lost` for every loss, and the subscript (`res/battle/scripts/subscripts/subscript_battle_lost.s`) passes over the money and the lines only in the Battle Frontier and a link battle, with `BtlCmd_PayPrizeMoney` taking `BattleSystem_CalcMoneyPenalty` from the player; the field script's `CheckLostBattle` decides only whether to black out. Read at the pinned commit on 2026-11-12, which settles the question plan 14 · B1 and B14 left owed: nothing changes.
 
 ## The original's set pieces (2026-10-12, plan 09 · L12)
 
@@ -10850,6 +10854,60 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   flag (`FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_WEST`, `_MIDDLE`, `_EAST`) cleared by the new day. Nothing marks them yet:
   plan 38 · EX3's glints will.
 
+## Tera Shards and the Tera keeper (2026-11-12, plan 36 · TR5)
+
+- **The shards**: Scarlet and Violet's eighteen Tera Shards are brought in by name from PokeAPI's items (ids 1678 to
+  1695, the importer's `LaterItemsByName`), the Stellar Tera Shard is a row of ours (id 9700, the first of plan 36's
+  hundred), all in the Items pocket at a price of ours (500) with words of ours. Fifty of a type turn a Pokémon's Tera
+  Type to that type (Scarlet's number), the Stellar ones to Stellar (`Models/TeraChange.cs`): refused for an Egg, for
+  Ogerpon and Terapagos (`TeraType.ForcedFor`), for the type it has already and for too few shards. The type is
+  `Pokemon.TeraType`, saved as it always was, and a battle's Terastallization takes it.
+- **The keeper** (`common.TeraKeeper`, `train tera check`, `train tera`): the training club's Tera keeper stands in every
+  hall built (Sunyshore's, Laverre's, and the four department stores' corners) **always**, rather than appearing once the
+  bag holds a Tera Orb, as decision 6 has it: no flag says the orb is held, and a person shown by the bag would need one.
+  Without the orb she says what she does and changes nothing. Her question lists the types the Pokémon may take, each
+  with the shards held of it.
+- **Where the shards come from before Paldea's raids**: a gold in the drills, every fifth gold with a Tera Orb in the bag,
+  earns a shard of the trainee's own first type, which the coach hands over (`drillPrizes.teraShardEvery`, kept in the
+  records as `ShardsOwed` until handed); the club's clerk at a Battle Points counter trades every shard for two points
+  once the orb is held (`training.json`'s `teraShards`, `frontier prize tera`), so a change of type is a hundred points.
+  Plan 34 · PD7's Tera Raids pay in these shards when they are built.
+- **On INFO**: the Tera Type as a pill while the bag holds a Tera Orb (the orb is a key item, so held once is held
+  always), in the team's and the PC's summaries.
+
+## Powers (2026-11-12, plan 36 · TR7, TR8; the camp's part since 2026-11-09, plan 39 · CR6)
+
+- **The rule** (`Models/Powers.cs`): `PowerKind`'s eight of plan 36 and the camp's two; one of each in force at once, a
+  new one replacing the old, Encounter and Stealth putting each other out; ten minutes of play, counted down from the
+  frames' `dt`, never the wall clock. `Grant` is the one door every source goes through (the watch, today's free power,
+  the camp's dishes, a script's `power grant`).
+- **The numbers** (`Data/powers.json`, ours, from the old games' first ones): EXP +20, +50, +100 hundredths; effort +50,
+  +100, +200 hundredths of each stat's yield; prize money +50, +100, +200; the species' catch rate +10, +25, +50 (to 255
+  at most); prices -10, -25, -50 (never under one); a step's flat chance ±10, 20, 30; 1, 2, 3 more cycles off an Egg.
+- **One reader each**: EXP in `BattleCore.Give`, after affection's fifth and before a crossed region's half (the order of
+  "The charms, critical captures and EXP for a catch"); effort in `EffortRules.Gain`, added to the yield before a Power
+  item, Pokérus and the Macho Brace; money last in `BattleCore.PrizeMoney`; catching on the species' rate in
+  `CatchCalculator.Throw`, after a ball's own changes to it; prices in `ShopScreen.PriceOf`, after Easy's quarter (a
+  counter for points is never changed). **The battle's four ride on `BattleConditions.Powers`** (a `PowerSet` of plain
+  hundredths, fixed as the battle begins and kept by `RecordedConditions`, so a replay and the Vs. Recorder agree), not on
+  `CoreSetup` as well: the battle's conditions already reach the core, the screen and the file together. A power that
+  wears off mid-battle lasts to its end. The run's cap and a crossed region's ceiling come after every factor.
+- **The charge**: ten points at most, a point every 200 steps walked with the Power Watch in the bag (`OnStep`); a power
+  costs its level. Walking before the watch is had banks nothing.
+- **Today's free power**: one of the kinds learned, at level one or two (never past the level learned), worked out from
+  the day's number (`SpecialEncounters.DailyNumber`) by `SplitMix`, never `Dice`, so it is the same all day and moves no
+  draw; taken once a day from the watch (`PowersSave.FreeTaken` keeps the day's number).
+- **Learned from the teachers** (`common.TrainingTeacher`, `power learn`): each region's hall teacher teaches its kinds
+  (`powers.json`'s `teachers`: Sinnoh's EXP, Prize, Encounter and Stealth; Kanto's Catching; Johto's Hatching; Hoenn's
+  Bargain; Unova's Effort) once any Hall of Fame is entered, at level one with one Hall of Fame, two with two or three,
+  three with four or more; going back after another raises what is known. The first lesson hands over the Power Watch.
+  Kalos's hall in Laverre City has no teacher: the plan gives Kalos no kind, and plan 23 places one if it wants.
+- **NO POWERS** (`RunRules.NoPowers`, a row of the run's panel and the script word `nopowers`): the watch refuses every
+  use and offers no free power, and refuses at the watch alone (plan 36's decision): a dish at the camp still grants its
+  own, as a meal is no power used from the watch.
+- **On screen**: the watch's panel (key item, field use `PowerWatch`, registrable), the chips over the field at the left
+  and the toast as one wears off (style guide, "The Power Watch").
+
 ## The later regions' Champion ribbons (2026-11-09, plan 41 · EG2, its ribbons)
 
 - **Four rows of ours after Platinum's eighty** (`RIBBON_KALOS_CHAMPION`, `_ALOLA_`, `_GALAR_`, `_PALDEA_`; names
@@ -10906,7 +10964,23 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   wakes mounted only where the movement in force lists `Mount` and a mount is had; anywhere else on foot.
 - **Owed**: the navigation mesh's links for the jump, the glide and the climb (the baker makes none yet;
   `OpenNavMesh.Allowed` lets the `Climb` and `Glide` flags through once granted), the bot riding, the camera's lead,
-  the picnic, Let's Go from the saddle, and the rig (FM13).
+  the picnic, Let's Go from the saddle, and the rig (FM13: built 2026-11-12, below).
+
+## The mount as a rig (2026-11-12, plan 30 · FM13)
+
+- **The forms ridden** (`MountRules.FormFor`'s third argument is now *ridden*, not *moving*): FM12 drew a standing
+  mount in its limited form, which would have sat the rider on an upright biped's back. Scarlet and Violet keep the
+  running form under a rider wherever it stands, and so does this: ridden, standing, trotting, sprinting and clinging
+  to a face the running form (Koraidon's Sprinting Build, Miraidon's Drive Mode), swimming the swimming form, gliding
+  the gliding form; a jump or a fall keeps the running form (FM12 had a fall glide, which would have flashed a change of
+  form at every hop). The limited form is the mount's off the saddle: coming out of its ball as the player gets on and
+  going back as they get off. Nothing of the rules reads the form.
+- **One size a species**: the forms' heights in the data (3.5 m and 2.8 m, each form the same) would have put a seat
+  two metres up, so the rig draws every form of a species at one scale (Koraidon 2.3 m a model unit, Miraidon 2.4),
+  their backs about 1.15 m up; the style guide's "Open world", "The mount" has every number.
+- **A dismount behind a fade plays nothing**: the key's and a script's dismounts are played (the rider hops down, the
+  mount goes back), but one at a fade's midpoint forgets the mount and puts the camera on foot at once, so no hop is
+  seen after a battle or a door.
 ## The hub: a region of our own between the regions (2026-11-09, plan 41 · EG1)
 
 - **What it is.** A small region of our own, `Hub` (the plan's working word, decision 3: the user names it later), off the
@@ -10967,15 +11041,14 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
 - **Begun at the Laurel Gallery's desk** by choice (`circuit begin`), once two regions of the chain are finished; the desk
   says its level first. `Models/ChampionsCircuit.cs`, saved as `SaveData.Circuit` (null until first begun, so no version).
 - **Its one level** (decision 4): the furthest finished region's post-game level, the last pair of its `levels` (Kanto 120,
-  Johto 156, Hoenn 183, Unova 203...), five more for each circuit won, never past the game's cap; 80 where the furthest
+  Johto 156, Hoenn 183, Unova 203...), five more for each circuit won, never past the game's cap; 75 where the furthest
   region has no pairs (a game begun and finished only in its first region, which can't have two regions finished anyway).
 - **Fought where the Leagues stand** (decision 5): while a circuit runs, `GameEngine.StartTrainerBattle` lifts every team of
   a League's Elite Four or Champion (by class) of a finished region of the chain, on a copy, to the circuit's level: its
   highest Pokémon at the level, the others the same steps below (the spread kept), each taking its stages (`Trainer.Relevelled`
   with `grow`). It takes the place of the region's mapping and `RematchLevels`. Which team is fought is the League's own
   script's: a team beyond (`BeyondTeamOf`) where it is ready, else its rematch team. No League's script changed; nothing
-  changes with no circuit under way. (`LevelLift.To` of plan 41 · EG3 is the same lift; `ChampionsCircuit.Lift` stands until
-  the two are joined.)
+  changes with no circuit under way. The lift is EG3's `LevelLift.To`, the level `LevelLift.PostGameLevel`'s.
 - **A stamp** is a region's Hall of Fame entered while a circuit runs, the region of the chain and finished
   (`ChampionsCircuit.Stamp`, both hosts' `EnterHallOfFame`), once each.
 - **The final** opens in the Laurel Court with every finished region stamped: the herald, Piers Lindqvist (53a), calls
@@ -11057,3 +11130,56 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
 - **The music**: the keep's song (`hub/keep`) and its battle song, the hub's boss-battle role (`hub/battle_galactic_boss`),
   which the leaders' classes and Ismene's (Records Keeper) take there.
 - **Later regions** (Alola, Galar, Paldea) add a bay's people, a banner colour and their teams when they are finished.
+## Pennant Hall, the hub's plaza (2026-11-12, plan 41 · EG3)
+
+- **What it is.** A covered hall at the hub (`Hub_Plaza`, the plaza's door of the avenue, open since EG3) whose eight
+  pitches the player fills with stalls, ranked by the pennants it earns (the user's names, 2026-11-10: the hall is
+  **Pennant Hall**, its coins are **pennants**, its manager **Quincy Rowan-Pike**; the keepers have plain titles). The
+  rules are `Models/Plaza.cs`; the catalogue and every number are ours, in `Data/plaza.json`, read strictly. Nothing is
+  saved until the manager is first spoken to (`SaveData.Plaza`, null until then), so no save version was raised.
+- **Its rank** is the pennants it has earned, never those held: 0, 60, 150, 300, 500 and 800 for ranks 1 to 6
+  (`Plaza.RankOf`), spending lowers none. A rank has 3, 4, 5, 6, 7 and 8 pitches (`PitchesAt`); a stall widens its goods
+  with the rank (`StockAt`).
+- **The stalls.** A stall is offered once its region's Hall of Fame is entered and the hall is at its rank
+  (`Plaza.Offered`); the manager asks which stands at a pitch with the field's question box (`plaza pitch N`: the stalls
+  offered, LEAVE IT EMPTY, AS IT IS), and a stall stands at one pitch at a time (set elsewhere, it moves). The first seven:
+  **the goods stall** (any region, rank 1: items for pennants, from Heart Scales and Revives to Ability Capsules and a
+  Bottle Cap at the top rank), **the Lottery Corner** (Sinnoh, rank 1: Jubilife's draw, the day's one draw whichever
+  counter takes it, `FLAG_DAILY_CHECKED_LUCKY_NUMBER`), **the Seal stall** (Sinnoh, 2: Sunyshore's day's stock), **the
+  Poffin pot** (Sinnoh, 2), **the Move Relearner** (Johto, 3: a Heart Scale for a move), **Kurt's counter** (Johto, 4:
+  the one order Kurt keeps, taken here or in Azalea Town) and **the Berry Blender** (Hoenn, 5). Each is the region's own
+  command behind a booth with a keeper of ours; later plans add their stalls as rows (plan 41's design).
+- **The day's guests**: the first coming of a day (the manager or the hall come to) draws two more guests than the rank,
+  eight at most, on the chance the game hands it (the field's), of the finished regions' trainers whose class is an Ace
+  Trainer, a Cooltrainer, a Veteran, an Expert, a Gentleman or a Lady, no rematch's team and none twice
+  (`Plaza.DrawGuests`); come to again that day the hall holds the same guests. Each guest's first word of the day gives 5
+  pennants, and each battles once a day (a win pays 20; a battle lost may be fought again that day) at the furthest
+  finished region's post-game level (`LevelLift.PostGameLevel`: the last pair of its `levels`, Kanto 120, Johto 156,
+  Sinnoh's own 75 alone), their team lifted on a copy with its spread kept and its stages grown (`Models/LevelLift.cs`,
+  which EG4's circuit and EG9's gathering use too), battled under an id of the hall's own (`plaza_guest_<id>`), so the
+  trainer of their region is never beaten here. A lifted team is marked (`Trainer.LevelsKept`) and the battle lays no
+  region's levels on it again.
+- **Where pennants come from**: the guests, the Week's Work (EG6) and, as they are built, the circuit (EG4) and the cases
+  (EG7, EG8). They buy only at the hall's stalls and are never under nought (`PlazaState.Spend` refuses).
+
+## The Week's Work, the hub's board of missions (2026-11-12, plan 41 · EG6)
+
+- **What it is.** The hub's notice board, by the avenue's west sign and on Pennant Hall's back wall (the user's name,
+  2026-11-10: **the Week's Work**). The rules are `Models/MissionBoard.cs`; the kinds, places and rewards are ours, in
+  `Data/missions.json`, read strictly. Nothing is saved until the board is first read (`SaveData.Missions`), so no save
+  version was raised.
+- **The week**: five missions, three of the week and two timed, each in a region whose Hall of Fame is entered, drawn by
+  weight from the kinds that fit it (a place's mission needs the region's places; the facility's and the contest's are
+  Sinnoh's and Hoenn's), on `SplitMix` seeded by the week's Monday and the data's version (`MissionWeek.Draw`), never
+  `Dice`: the board is the same however often it is read, the same for anyone that week, and anew each Monday. A week's
+  undone missions go with it; a done mission's reward not claimed waits at the board and is claimed as it is next read.
+- **The kinds**: catch Pokémon of a type, or in a place; beat trainers; win rematches (a team `TrainerDatabase.IsRematchTeam`
+  names); hatch Eggs; come to a landmark; win battles at a battle facility; win a contest. Each counts only what the engine
+  already counts, where the player stands (`GameEngine.TellTheBoard`): a battle of the field's end (a catch, a trainer
+  beaten), a Frontier battle won (not the friends' hall's), an Egg hatched, a place come to, a contest won (a Super
+  Contest's official one, or Hoenn's). A mission counts nothing of another region's, and nothing at the hub.
+- **A timed mission** is begun at the board, one at a time; its progress starts from nought and its minutes run in the
+  field and its battles while the player is in its region, standing still anywhere else (the Funfest's timed missions as a
+  mechanic, the Bug-Catching Contest's corner as its look). Its time running out ends it undone, and it may be begun again.
+- **What it pays**: pennants for each thing asked and a bonus (more for a timed one), and one mission in two an item of the
+  file's list besides; claimed at the board, once, the pennants to Pennant Hall.

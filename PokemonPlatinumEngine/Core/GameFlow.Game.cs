@@ -167,6 +167,12 @@ public sealed partial class GameFlow
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1; saved).</summary>
     public CraftingState Crafting { get; } = new();
 
+    /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3; saved once opened).</summary>
+    public PlazaState Plaza { get; } = new();
+
+    /// <summary>The Week's Work, the hub's board of missions (plan 41 · EG6; saved once read).</summary>
+    public MissionBoard Missions { get; } = new();
+
     /// <summary>The timed powers in force (plan 36's powers, granted by plan 39 · CR6's dishes; saved).</summary>
     public PowerState Powers { get; } = new();
 

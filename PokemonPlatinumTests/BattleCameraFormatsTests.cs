@@ -113,7 +113,8 @@ public class BattleCameraFormatsTests
         var places = new FxPlaces();
         for (int slot = 0; slot < 3; slot++)
         {
-            places.Set(BattleSide.Enemy, slot, BattlePlaces.Spot(BattleSide.Enemy, slot, 3) + Vector3.UnitY * BattleStage.PlatformHeight, foeHeight * BattlePlaces.Fit(3));
+            // The ring the renderer stands a Royal's three in (BattlePlaces.RingSpots), so the quarters are framed on the places the game draws
+            places.Set(BattleSide.Enemy, slot, BattlePlaces.Spot(BattleSide.Enemy, slot, 3, royal: true) + Vector3.UnitY * BattleStage.PlatformHeight, foeHeight * BattlePlaces.Fit(3, true, BattleSide.Enemy));
             anim[BattleSide.Enemy, slot].Present = true;
         }
         places.Set(BattleSide.Player, 0, BattlePlaces.Spot(BattleSide.Player, 0, 1) + Vector3.UnitY * BattleStage.PlatformHeight, ownHeight);

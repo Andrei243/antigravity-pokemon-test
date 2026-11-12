@@ -57,6 +57,14 @@ public sealed partial class Importer
         ["oval-charm"] = ItemPocket.KeyItems, ["exp-charm"] = ItemPocket.KeyItems, ["catching-charm"] = ItemPocket.KeyItems, ["mark-charm"] = ItemPocket.KeyItems,
         // HeartGold's Apricorn Box, which holds the Apricorns Kurt makes balls of (plan 20 · J6)
         ["apricorn-box"] = ItemPocket.KeyItems,
+        // Scarlet and Violet's eighteen Tera Shards (plan 36 · TR5, Models/TeraChange.cs): fifty of a type change a
+        // Pokémon's Tera Type at a training hall's Tera keeper; the Stellar one is a row of ours (Overrides/items.json)
+        ["normal-tera-shard"] = ItemPocket.Items, ["fire-tera-shard"] = ItemPocket.Items, ["water-tera-shard"] = ItemPocket.Items,
+        ["electric-tera-shard"] = ItemPocket.Items, ["grass-tera-shard"] = ItemPocket.Items, ["ice-tera-shard"] = ItemPocket.Items,
+        ["fighting-tera-shard"] = ItemPocket.Items, ["poison-tera-shard"] = ItemPocket.Items, ["ground-tera-shard"] = ItemPocket.Items,
+        ["flying-tera-shard"] = ItemPocket.Items, ["psychic-tera-shard"] = ItemPocket.Items, ["bug-tera-shard"] = ItemPocket.Items,
+        ["rock-tera-shard"] = ItemPocket.Items, ["ghost-tera-shard"] = ItemPocket.Items, ["dragon-tera-shard"] = ItemPocket.Items,
+        ["dark-tera-shard"] = ItemPocket.Items, ["steel-tera-shard"] = ItemPocket.Items, ["fairy-tera-shard"] = ItemPocket.Items,
         ["adamant-crystal"] = ItemPocket.Items, ["lustrous-globe"] = ItemPocket.Items, ["griseous-core"] = ItemPocket.Items
     };
 

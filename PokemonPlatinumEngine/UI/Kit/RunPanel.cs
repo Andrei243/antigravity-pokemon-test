@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.UI.Kit;
 public enum RunRow
 {
     Preset, Difficulty, LevelCap, ScaleTrainers, Nuzlocke, DupesClause, ShinyClause, GiftsCount, Monotype, PartyLimit,
-    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, NoLaterMechanics, ShinyOdds, Remix, RandomSpecies, RandomItems, RandomAbilities, RandomMoves, RandomTypes, Seed, Start
+    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, NoLaterMechanics, NoPowers, ShinyOdds, Remix, RandomSpecies, RandomItems, RandomAbilities, RandomMoves, RandomTypes, Seed, Start
 }
 
 /// <summary>
@@ -179,6 +179,7 @@ public sealed class RunPanel
             case RunRow.NoRunning: Rules = r with { NoRunning = !r.NoRunning }; break;
             case RunRow.SetStyle: Rules = r with { SetStyle = !r.SetStyle }; break;
             case RunRow.NoLaterMechanics: Rules = r with { NoLaterMechanics = !r.NoLaterMechanics }; break;
+            case RunRow.NoPowers: Rules = r with { NoPowers = !r.NoPowers }; break;
             // Remix's teams and tables (plan 13 · V15)
             case RunRow.Remix: Rules = r with { Remix = !r.Remix }; break;
             case RunRow.ShinyOdds:
@@ -229,6 +230,7 @@ public sealed class RunPanel
         RunRow.NoRunning => OnOff(Rules.NoRunning),
         RunRow.SetStyle => OnOff(Rules.SetStyle),
         RunRow.NoLaterMechanics => OnOff(Rules.NoLaterMechanics),
+        RunRow.NoPowers => OnOff(Rules.NoPowers),
         RunRow.Remix => OnOff(Rules.Remix),
         RunRow.RandomSpecies => OnOff(Rules.Random?.Species == true),
         RunRow.RandomItems => OnOff(Rules.Random?.Items == true),

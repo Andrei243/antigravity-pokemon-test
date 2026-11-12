@@ -378,7 +378,9 @@ public sealed partial class ScriptRunner
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm" or "pantry",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
-        Op.Train => i.Name == "drill" || i.Name == "peak" && i.Other != "check",
+        Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
+        // A power is learned or granted without a screen (plan 36 · TR8)
+        Op.Power => false,
         // A friend's trainer says their lines and battles; whether they were beaten today is asked with no screen
         Op.Friend => i.Name != "beaten",
         // A grotto's Pokémon is battled and its item is handed over with its lines; what it holds is asked without a screen
@@ -435,6 +437,10 @@ public sealed partial class ScriptRunner
         // The Laurel Circuit only asks and changes its record (plan 41 · EG4); a deduction is a question (EG7)
         Op.Circuit => false,
         Op.Deduce => true,
+        // Pennant Hall: a pitch's question, the goods' counter and a guest's battle are the player's; the rest only counts (plan 41 · EG3)
+        Op.Plaza => i.Name is "pitch" or "shop" or "battle",
+        // The Week's Work: the board is a screen the player reads; the rest only counts and pays (plan 41 · EG6)
+        Op.Missions => i.Name == "open",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1506,6 +1512,10 @@ public sealed partial class ScriptRunner
             case Op.Train:
                 TrainCommand(i);
                 break;
+            // The powers (plan 36 · TR8)
+            case Op.Power:
+                PowerCommand(i);
+                break;
             // A friend's trainer of the friends' hall (plan 13 · V23)
             case Op.Friend:
                 FriendCommand(i);
@@ -1616,6 +1626,14 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Deduce:
                 Deduce(i);
+                break;
+
+            // Pennant Hall and the Week's Work (plan 41 · EG3, EG6)
+            case Op.Plaza:
+                PlazaCommand(i);
+                break;
+            case Op.Missions:
+                MissionsCommand(i);
                 break;
 
             default:
@@ -2728,6 +2746,8 @@ public sealed partial class ScriptRunner
             "taste" => lastTaste,
             // Hoenn's Safari Zone's feeders (plan 21 · H11, part d): the Pokéblock lying on the one before the player
             "feeder" => lastFeeder,
+            // Pennant Hall (plan 41 · EG3): the pennants held
+            "pennants" => (host.Plaza?.Coins ?? 0).ToString("N0"),
             // The Seaside Cycling Road (plan 21 · H12, part k): the last run's and the best's time and collisions
             "cycling" when argument == "TIME" => Models.CyclingRoad.Time(host.Story.Var(Models.CyclingRoad.LastFrames)),
             "cycling" when argument == "COLLISIONS" => Models.CyclingRoad.Collisions(host.Story.Var(Models.CyclingRoad.LastCollisions)),

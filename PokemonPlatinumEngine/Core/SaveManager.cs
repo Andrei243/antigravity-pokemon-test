@@ -335,6 +335,12 @@ public class SaveData
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
     public Models.CraftingSave? Crafting { get; set; }
 
+    /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3). Null in saves from before it, and until its manager is first spoken to.</summary>
+    public Models.PlazaSave? Plaza { get; set; }
+
+    /// <summary>The Week's Work, the hub's board of missions (plan 41 · EG6). Null in saves from before it, and until the board is first read.</summary>
+    public Models.MissionsSave? Missions { get; set; }
+
     /// <summary>The timed powers in force (plan 36; granted by plan 39 · CR6's dishes). Null in saves from before them, and while none is.</summary>
     public Models.PowersSave? Powers { get; set; }
 

@@ -97,6 +97,13 @@ public class TextTests
         ["Core/GameEngine.OpenPeople.cs"] = new[] { "Trainer" },
         // Key prefixes of the open map's figures list (a person's name or a wild one's id), data and no words (plan 32 · OW9)
         ["Core/GameEngine.OpenFigures.cs"] = new[] { "person:", "wild:" },
+        // What the mount's drawing tells a tool (`openMountTold`, the harness's print), never drawn; the reader cuts its nested
+        // interpolation in two (plan 32)
+        ["Core/GameEngine.OpenDraw.cs"] = new[]
+        {
+            "{f.Form}: size {f.Scale:0.000} m a unit, flash {f.Flash:0.00}, the rider {(f.Seated >= 1f ? ",
+            ")}, {f.Stance} (crouch {f.RunBlend:0.00}), seat {seat.Rest.Y * f.Scale:0.00} m up on its line {seat.Rest.Z:0.000}, half width {seat.HalfWidth * f.Scale:0.00} m, astride {pose.Astride:0.000}",
+        },
         // A name of the story's flags, which is data and no word (plan 21 · H12)
         ["Core/GameEngine.Salt.cs"] = new[] { "FLAG_HOENN_ABNORMAL_WEATHER_" },
         // The address of a translated line, which is a key and no word (plan 17 · N4)
@@ -267,6 +274,9 @@ public class TextTests
         ["Core/GameEngine.Apricorns.cs"] = new[] { "Apricorn Box", "kurt" },
         // The crafting kit, the item of ours the kit is (plan 39 · CR1)
         ["Core/GameEngine.Crafting.cs"] = new[] { "Crafting Kit" },
+        // The Power Watch and the Tera Orb by the data's names (plan 36 · TR5, TR8)
+        ["Core/GameEngine.Powers.cs"] = new[] { "Power Watch" },
+        ["Core/GameEngine.Training.cs"] = new[] { "Tera Orb" },
         // The start of the Master Ranks' flags, and the region whose story is asked about
         ["Core/GameEngine.SuperContests.cs"] = new[] { "FLAG_CONTEST_MASTER_", "Sinnoh" },
         // The lobbies' maps
