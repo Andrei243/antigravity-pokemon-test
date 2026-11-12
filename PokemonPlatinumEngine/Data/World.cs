@@ -1084,8 +1084,19 @@ public static class WorldMapBuilder
         foreach (var (x, z) in beyond) map.SetGroundTile(x, z, TileType.Void, isSolid: true);
     }
 
+    /// <summary>A secret base's room by its kind (plan 43 · LF7; style guide, "Secret bases").</summary>
+    public static InteriorStyle DenStyleOf(Models.SecretBaseKind kind) => kind switch
+    {
+        Models.SecretBaseKind.RedCave => InteriorStyle.DenRedCave,
+        Models.SecretBaseKind.BrownCave => InteriorStyle.DenBrownCave,
+        Models.SecretBaseKind.BlueCave => InteriorStyle.DenBlueCave,
+        Models.SecretBaseKind.YellowCave => InteriorStyle.DenYellowCave,
+        Models.SecretBaseKind.Tree => InteriorStyle.DenTree,
+        _ => InteriorStyle.DenShrub
+    };
+
     /// <summary>The look of a room built from a layout, by its map's name (<see cref="MapStructures.KindOfDoor"/>).</summary>
-    public static InteriorStyle RoomStyleOf(string name) => MapStructures.KindOfDoor(name) switch
+    public static InteriorStyle RoomStyleOf(string name) => Models.SecretBaseLayouts.OfMap(name) is { } den ? DenStyleOf(den.Kind) : MapStructures.KindOfDoor(name) switch
     {
         BuildingKind.PokemonCenter => InteriorStyle.PokemonCenter,
         BuildingKind.PokeMart => InteriorStyle.PokeMart,

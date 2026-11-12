@@ -3535,6 +3535,21 @@ script FriendsBasePC
   end
 
 
+# The computer in the player's bedroom at home, in every region (plan 43 · LF7; Emerald's own room is decorated from
+# its PC): once the decoration PC holds anything, the room is decorated from it, twelve pieces at most, each region's
+# room its own. A piece set down here is out of the PC, and so stands in no other room at the same time.
+script BedroomPC
+  speaker none
+  sound "pc_on"
+  text "{player} turned on the computer."
+  ask "Decorate your room with things from your decoration PC?"
+  if no goto Off
+  openbase bedroom
+label Off
+  sound "pc_off"
+  end
+
+
 # An Apricorn tree (plan 20 · J6; Models/Apricorns.cs): it bears one Apricorn a day, in the colour its table gives it,
 # and goes into the Apricorn Box, which the man on Route 30 gives. `apricorn tree` says 0 bare, 1 in fruit, 2 in fruit
 # with the Box full of that colour.
@@ -4253,6 +4268,19 @@ script GalarNewGame
   setflag FLAG_GALAR_HIDE_LEON_LAKE
   setflag FLAG_GALAR_HIDE_HOP_RIVERBANK
   setflag FLAG_GALAR_STORY_BEGUN
+  return
+
+
+# What a game starts with in Paldea (plan 34 · PD1), run for every new game as each region's <Region>NewGame is: the
+# first chapter's people hidden until their scenes (cabo_poco.txt's header has the count). It may only set flags: it
+# runs with no screen. The director at the player's house is there from the start, for the first morning
+script PaldeaNewGame
+  setflag FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  setflag FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  setflag FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  setflag FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  setflag FLAG_PALDEA_HIDE_NEMONA_GATE
+  setflag FLAG_PALDEA_STORY_BEGUN
   return
 
 

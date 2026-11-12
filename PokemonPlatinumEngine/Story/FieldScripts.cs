@@ -54,6 +54,8 @@ public static class FieldScripts
     // A secret base's spot faced, and its PC (Emerald's SecretBase_EventScript_CheckEntrance and the base's PC; plan 21 · H10)
     public const string SecretBaseSpot = "common.SecretBaseSpot";
     public const string SecretBasePc = "common.SecretBasePC";
+    /// <summary>The computer in the player's bedroom at home, once the decoration PC holds anything (plan 43 · LF7).</summary>
+    public const string BedroomPc = "common.BedroomPC";
 
     /// <summary>The PC of a friend's secret base, mixed in at the record desk (plan 40 · GE10): it only tells whose it is.</summary>
     public const string FriendsBasePc = "common.FriendsBasePC";

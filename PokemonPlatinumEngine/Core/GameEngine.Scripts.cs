@@ -222,6 +222,8 @@ public partial class GameEngine
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
         // and out of one, no friend's base is being visited any more (plan 40 · GE10)
         else flow.Records.Visiting = null;
+        // and a bedroom at home with what was set down in it (plan 43 · LF7)
+        LayOutBedroom(flow.Map);
         // The pasture's herd is the box shown, laid as the meadow is come to and taken off as it is left (plan 35 · BN5)
         KeepThePasture();
         // The friends' trainers stand in the friends' hall as it is come to (plan 13 · V23)
@@ -530,6 +532,12 @@ public partial class GameEngine
         if (item.FieldUse == StrollCounter.FieldUse)
         {
             OpenStroll(fromBag: false);
+            return;
+        }
+        // The Book of Tales from the item button (plan 46 · CP11)
+        if (item.FieldUse == BookOfTalesUse)
+        {
+            OpenBookOfTales();
             return;
         }
         // The crafting kit from the item button (plan 39 · CR1)

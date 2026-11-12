@@ -914,6 +914,8 @@ public sealed partial class BattleCore
         }
         if (Field.Gravity) rate = rate * 10 / 6;
         rate = LaterAccuracy(use, target, rate);
+        // The tale over the field (plan 46 · CP11: the Vârcolac's eclipse)
+        rate = TaleAccuracy(rate);
 
         if (rng.Roll(RollKind.Accuracy, 100) >= rate) return false;
         // A Pokémon of the player's devoted to it may dodge what would have hit (plan 10 · F7); rolled only where it can

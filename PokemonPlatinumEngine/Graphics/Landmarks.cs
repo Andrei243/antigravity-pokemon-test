@@ -136,6 +136,10 @@ internal static partial class Landmarks
             case PropType.Billboard:
                 kit.Sprite(kit.Face("billboard", 48, 60, PaintBillboard), w / 2f, d / 2f + 4);
                 return true;
+            case PropType.BaseEntrance:
+                // The way into the player's home at its spot (plan 43 · LF7), its foot on the tile's south edge
+                kit.Sprite(kit.Face($"baseentrance.{prop.Model}", 30, 34, c => PaintBaseEntrance(c, prop.Model)), w / 2f, d - 2);
+                return true;
             case PropType.PhotoSpot:
                 // A photo spot's plate (plan 43 · LF4): a low post with a camera on its face
                 kit.Sprite(kit.Face("photospot", 26, 30, PaintPhotoSpot), w / 2f, d / 2f + 4);
@@ -1262,6 +1266,48 @@ internal static partial class Landmarks
         c.Rect(10, 11, 28, 2, DarkWood.Base);
         c.Rect(10, 16, 22, 2, DarkWood.Base);
         c.Rect(10, 21, 16, 2, DarkWood.Base);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The way into the player's home at its spot (plan 43 · LF7; style guide, "Secret bases", "The way in at a spot"):
+    /// a cave's dark mouth under an arch of its rock, a tree's dark hollow under a fringe of vines, a parting in a bush's
+    /// leaves over the dark. The kind is a <c>SecretBaseKind</c>'s name.
+    /// </summary>
+    public static void PaintBaseEntrance(PixelCanvas c, string kind)
+    {
+        var dark = Rgb(30, 24, 28);
+        Tone rock = kind switch
+        {
+            "RedCave" => Tone.Of(176, 96, 78),
+            "BrownCave" => Tone.Of(156, 116, 82),
+            "BlueCave" => Tone.Of(106, 128, 168),
+            "YellowCave" => Tone.Of(206, 178, 104),
+            "Tree" => Tone.Of(124, 86, 58),
+            _ => Tone.Of(74, 128, 58)
+        };
+        if (kind == "Shrub")
+        {
+            // Leaves parted over the dark: an oval of dark in a ring of leaf blocks
+            c.FlatEllipse(15, 22, 13, 11, rock.Base);
+            c.FlatEllipse(15, 24, 8, 8, dark);
+            for (int i = 0; i < 9; i++) c.Rect(3 + i * 3, 11 + (i % 2) * 2, 3, 3, i % 3 == 0 ? rock.Light : rock.Dark);
+            Pix.Outline(c);
+            return;
+        }
+        // An arch: the rock (or the bark) round a mouth of dark, rounded at its head
+        c.FlatEllipse(15, 18, 14, 15, rock.Base);
+        c.Rect(1, 18, 28, 16, rock.Base);
+        c.FlatEllipse(15, 20, 9, 10, dark);
+        c.Rect(6, 20, 19, 14, dark);
+        c.VLine(2, 18, 16, rock.Light);
+        c.VLine(27, 18, 16, rock.Dark);
+        if (kind == "Tree")
+            // A fringe of vines hanging over the hollow's head
+            for (int x = 7; x < 24; x += 3) c.VLine(x, 10, 6 + x % 4, Rgb(70, 130, 62));
+        else
+            // Two cracks in the rock beside the mouth
+            { c.VLine(4, 22, 4, rock.Dark); c.VLine(25, 12, 5, rock.Dark); }
         Pix.Outline(c);
     }
 

@@ -121,7 +121,7 @@ public class ObjectiveTests
         Assert.Equal(Objectives.Find("candice")!.Id, h.Story.Var(Objectives.Variable));
         // ...which wins over a derived objective behind it, in the region it belongs to and no other
         Assert.Equal("candice", Objectives.Current(h.Story, Sinnoh)?.Name);
-        Assert.Null(Objectives.Current(h.Story, RegionDatabase.Paldea));
+        Assert.Null(Objectives.Current(h.Story, RegionDatabase.Hub));
     }
 
     [Fact]
@@ -143,7 +143,7 @@ public class ObjectiveTests
         Assert.DoesNotContain("{", said);
         Assert.Contains("Go downstairs", Objectives.Line(host.Story, Sinnoh));
         // A region with nothing to say says nothing
-        Assert.Equal("", Objectives.Line(host.Story, RegionDatabase.Paldea));
+        Assert.Equal("", Objectives.Line(host.Story, RegionDatabase.Hub));
     }
 
     [Fact]

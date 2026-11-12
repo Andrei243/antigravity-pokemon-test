@@ -421,7 +421,7 @@ public class ModernMusicTests
     [Fact]
     public void TestPaldeaHasItsSongsAndPlaysThemInTheModernSoundOnceItsRegionNamesIt()
     {
-        // As Galar's: no Paldea region file yet, so the folder names no sound until plan 23's Paldea sessions write it
+        // As Galar's: the region's file names the sound (plan 34 · PD1), and no song names its own
         var ids = MusicLibrary.All.Where(s => s.Id.StartsWith("paldea/")).Select(s => s.Id).ToHashSet();
         foreach (var role in new[] { "battle_wild", "battle_trainer", "battle_gym", "battle_rival", "victory_wild", "victory_trainer",
                      "victory_gym", "eye_boy", "eye_girl", "rival", "pokecenter", "pokemart", "cabo_poco", "south_province",

@@ -1,0 +1,4 @@
+{
+  // The sea west and south of the cape (plan 34 · PD1), over the low land past the beaches
+  "sea": { "level": 0, "polygon": [[-130, -420], [-80, -420], [-80, 44], [130, 44], [130, 100], [-130, 100]] }
+}

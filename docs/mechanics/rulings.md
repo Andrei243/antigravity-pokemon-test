@@ -2620,6 +2620,21 @@ Our own: no game has it and Showdown has no rule for it. The design is `docs/pla
 - **The data**: 63 Mega Dynamax forms after their Megas in `species.json`, written by the importer from `tools/DataImporter/Overrides/mega-dynamax.json` (a Mega form and its height, 20 to 60 m; weight 1000 kg) by `MegaDynamaxForms.cs`; R20b's fifteen rows wait in the table for their Megas. Each has its two written entries. They have no sculpts: a Pokémon in one shows its Mega's model (`Pokemon.ModelName`), grown as every giant is.
 - **Left**: the look (plan 25: the wreath in the Mega's four colours, the growth; the button has a plain mark of the Key Stone in Dynamax's red ring until then); the sculpts (the user's); Sonia's scene, the den and the four later Champions (plan 23).
 
+## The Tales (2026-11-13, plan 46 · CP11)
+
+Our own, Carpathia's primary gimmick (plan 46, "The Tales, the primary gimmick"), on the later mechanics' pattern, behind `Ruleset.Tales` (the modern rules have it, Platinum's don't). Code: `Data/Tales.cs` and `Data/tales.json` (read strictly, `docs/schemas/tales.schema.json`, held by `tools/ContentCheck`'s `TaleFiles`), `Battle/Sim/BattleCore.Tales.cs`, `Battle/BattleEngine.Tales.cs` and `Battle/BattleAnimator.Tales.cs` for the screen, `UI/BookOfTalesScreen.cs`, `Core/GameEngine.Tales.cs`; tests: `TaleTests`.
+
+- **Who may**: a trainer with the Book of Tales and a tale learned: the player while the Book (a key item, id 9930) is in the bag, the tales learned being those whose story flag `FLAG_TALE_<ID>` is set (`TaleTable.FlagOf`; no save field and no version raised: CP12's `tale learn` sets the flag); a trainer by `Trainer.Tales`. With no Book, under Platinum's rules or under the run's "No later mechanics" (`LaterMechanicsBarred`), nothing is offered and a battle is the one it was to the line (`TaleTests`, and the golden battles, which no session's tale moved).
+- **Once a battle, and an answer** (decision 15, as recommended): a trainer tells one tale while none of the other side's is told, and answers one while the other side's is told; an answer ends the first at once and begins its own (`TaleAnswered`). A tale told once in the battle, by either side, is never told again (`taleAlreadyTold`), and a side never tells over its own tale. Two tales of one trainer in one answer are refused. **Both sides on one turn**: the faster trainer's tale is told first and the slower's is an answer to it, as the turn's other later mechanics go by Speed.
+- **When**: after the turn's Mega Evolutions, Dynamaxes and Terastallizations and before its first move, the fastest first, and the moves still to come are put in order again; a tale goes with any move, and with any other later mechanic. "{trainer} told the tale of {tale}!" carries `TaleTold(Teller, Tale, Turns)`, then the tale's own line (`basme.<id>.told`).
+- **How long**: five turn ends from the end of the turn it is told in (`TaleState.Turns` in `FieldState.Tale`, counted after the terrain's), then "The tale of {tale} came to its end." with `TaleEnded`; with the battle it ends unsaid.
+- **What each does** is one effect, read where the field's rules already bite, for both sides alike (decision CP11 · "for both sides"): **the Zmeu's**, Fire moves at 130% (a line of both paths of `DamageCalculator`, in the power's chain under the modern rules beside Helping Hand's); **the Vârcolac's**, Dark and Ghost moves at 130% and every move's chance to hit at 80% (`Hits`, after every other change of accuracy); **the Solomonar's**, rain for the tale's turns through the core's own `SetWeather`; **Baba Dochia's**, hail the same way, which the modern rules make snow; **the Ielele's**, Sound-type moves and every move with the sound flag at 130%. **Settled here, where the plan's first list differs**: Baba Dochia's is the cold come back (the brief), not "each switch-in sheds a layer of its defence"; the Ielele's make Sound moves stronger (the brief), not strike twice; the Solomonar's storm is plain rain, its owner's only by its turns. A weather a tale brought goes with it as it ends or is answered, if it still holds; a weather that was there already is left alone.
+- **No night forms** (the Zmeu's `noNight`) is declared in the data and bites nowhere yet: nothing in a battle has a night form today. CP12 owes its bite (the Dusk Ball, the forms of the region).
+- **Tale Forms** (`FormKind.Tale`): a tale's `forms` bind a species to a form it wakes into while its own side's tale is told, as the tale is told and as it comes in (`ShapeOnEntry`); "{pokemon} woke to the tale of {tale}!" carries `TaleFormChanged(Place, Form, Woke)`. Not a Pokémon transformed, Dynamaxed or in a Mega, primal or Ultra form. It goes back as the tale ends or is answered (a line for one on the field, the event's change alone for one on the bench) and with the battle. Its original is kept apart from the Megas' (`beforeTale`). **No species is bound yet**: CP12 writes the forms (`tools/DataImporter/Overrides/forms.json`) and their sculpts; `TaleTests` binds Rotom to its Heat form in a table of its own (`CoreSetup.TaleTable`), never the game's species.
+- **The trainer AI** (`TrainerAi.TaleNow`, `TaleWorth`), drawing nothing: with no tale told it tells its tale worth most to its side over the foe's (the moves on the field it favours, theirs counted against, a third of a hit each; a rain's or a sun's by the Water and Fire moves; hail's by the Ice types; a Pokémon of its own that would wake), where that is above nothing; with the other side's tale told, it answers only where that tale is worth less than nothing to it.
+- **The record**: the tale is the choice's (`BattleChoice.Tale`, `RecordedChoice.Tale`), and the Vs. Recorder's file keeps the player's tales (`BattleRecordFile.Tales`) and each trainer's (`RecordedTrainer.Tales`), so a recorded battle replays to the same log. **Owed**: `GameDataFiles.Version` hashes the five tables of rules and not `tales.json`, so a recording made before a tale's numbers change replays otherwise afterwards; the session that balances the tales adds the file to the hash.
+- **On screen**: the move menu's TALE button (`PageRight`; style guide, "Battle panels") arms a tale, each press the next that can be told; the sky is the tale's (`StageLights.TaleLight`), taken from the log's events and never from the rules' field (`ArchitectureTests`). The Book of Tales' screen lists the tales learned, a page each (style guide, "Menu screens"). The tale layers of the battle songs are names in the data, written by CP12; a Tale Form's own cue is CP12's too.
+
 ## Terastallization (2026-10-18, plan 06 · R23)
 
 The rules are Pokémon Showdown's at the pinned commit (`sim/battle-actions.ts`' `canTerastallize`, `terastallize`, the power of 60 in `getDamage` and the same-type bonus in `modifyDamage`; `sim/pokemon.ts`' `getTypes` and `runEffectiveness`; `sim/battle-queue.ts`' `terastallize` order; `data/moves.ts`' Tera Blast and Tera Starstorm; `data/abilities.ts`' Tera Shift, Tera Shell, Teraform Zero and Embody Aspect; `data/pokedex.ts`' `forceTeraType`), behind `Ruleset.Terastallization` (the modern rules have it, Platinum's don't). Code: `Battle/Sim/BattleCore.Tera.cs`, `Battle/DamageCalculator.Tera.cs`, `Battle/BattleEngine.Tera.cs` for the screen and `Models/TeraType.cs`; tests: `TerastallizationTests`.
@@ -12666,3 +12681,51 @@ built; what is still owed is listed at the end and in plan 21's last note.
 - **What every type has, Sound has**: its words (`types.Sound`, Romanian *Sunet*), its sign (a note), its colour (teal `64,168,152`), its cry's timbre, its move, Z-Move and Max Move sounds and looks, the trainer AI's chart (the AI reads `TypeChart`), Tera Sound (a Tera type like any, and its Tera Shard), the Sound Gem, the Tuning Fork (a fifth more, as the boosters), the Taci Berry (*a tăcea*, to be silent: halves a super-effective Sound hit, as the resist berries) and the Sonorium Z, and plan 39's two materials of a type (the Hollow Reed and the rarer Echo Crystal). Items 9920 to 9924; moves 3090 and 3091 (3073 to 3089 free; 3101 on is CP10's).
 - **What leaves it out**: Hidden Power (Platinum's sixteen), Arceus's plates and Silvally's memories (decision 13), the Battle Hall's board (Platinum's seventeen), the Legend Plate's Judgment, the Pokétch's Move Tester, and whatever draws or lists the games' types (`TypeChart.GamesTypes`): the randomiser's shuffle (a seed deals what it always dealt), the Friend Safari, the sparring room, Conversion 2 (so no battle's draw moves) and the help's chart (shown eighteen wide until a shot of it nineteen wide is looked at). A choice of a type the player makes (the Monotype run, the Pokédex's search) offers the types some species has (`TypeChart.TypesWithSpecies`), so Sound joins it by itself with the first Sound species.
 - **What must not move**: no species or move of the games has the type, so the golden battles of both rules stand; the Sound items are kept out of the battle corpus's draw (`BattleCorpus`), and the oracle's scenarios never draw Sound (Showdown has no such type).
+
+## Paldea's first chapter, on the open world (2026-11-13, plan 34 · PD1, its first session)
+
+- **The plan's decisions, unanswered, at their recommendations** (plan 34 · "Decisions for the user"): (1) about a third
+  of the original's distances; (2) the version is the player's choice, kept as `VAR_PALDEA_VERSION` (1 Scarlet, 2
+  Violet); (3) to (6) are later sessions' (the gyms' order, sandwiches, battles on the stages of plan 32 · decision 3,
+  the expansions last). Each is open to the user's word.
+- **The version and the mount are one choice.** Plan 34 has the version decide the legendary; plan 30 · decision 14 has
+  the player choose the legendary at the original's beat, both offered once in a scene of ours. They are made one fact:
+  in Inlet Grotto both lie worn out after the Houndour's chase, and the one the player shares the sandwich with sets
+  `VAR_PALDEA_VERSION` and `VAR_PALDEA_MOUNT` together (the red one 1 and Koraidon, the violet one 2 and Miraidon), so
+  the two can never disagree; the other leaves, to come back as its counterpart in a later chapter. A Champion crossing
+  in plays the same scene. Nothing before the grotto is the version's (the introduction is the director's, the tables
+  of PD1's places are both versions').
+- **The mount is had from the grotto on**: `VAR_PALDEA_MOUNT` set is all plan 30 · FM12's rules ask before the trot
+  (`MountRules.WhyNot`), as Scarlet and Violet's legendary carries its rider from the opening chapter; its five powers
+  wait for the Titans' flags (PD4). The original's first ride is a beat of its own; here it is the mount's key.
+- **The introduction's speaker is Director Clavell**, the one person of the opening every game meets: the professor is
+  Sada or Turo by the version, which a new game hasn't chosen when the introduction runs. The region file's `professor`
+  record is his, with lines of ours.
+- **Where Paldea's land comes from.** Hand-built on plan 32's engine as data (`Data/world3d/paldea`), as Galar's is,
+  baked by `dotnet run --project tools/OpenWorldBake -- paldea` into `baked/` (84 chunks, about 9.6 MB, held by
+  `PaldeaTests.TheBakeIsWhatTheDescriptionsGive`). One open map, `Paldea`, of five areas south to north: Cabo Poco on its
+  cape (the player's house, the president's house on its hill with the terrace over the sea), Poco Path with the
+  lighthouse on its knoll and the beach under the cliffs (reached by a track down, its cliffs dropped from), Los Platos,
+  the South Province's first area, and Mesagoza with its plaza and the academy's hill at the head of the great stairs.
+  Its present edges are banks too steep to climb; the sea west and south. Keys: `cabo_poco`, `poco_path`, `los_platos`,
+  `south_province_area_one`, `mesagoza`. **Its chunks' rectangle** is `[-3, -12, 2, 1]`, Cabo Poco near the origin, so
+  the rest of the region grows north and east without moving these places; the whole region at decision 1's scale
+  (about 3 km square, some 8,800 chunks as one rectangle, about a gigabyte of bake) is a question for the user before PD3
+  (see plan 34's "PD1 as built").
+- **Rooms**: six grid map files laid out from rooms of the same shape (the player's house on two floors and Nemona's
+  house from Postwick's, Inlet Grotto from the Galar Mine with one way out, Los Platos's Pokémon Center from
+  Wedgehurst's, the academy's entrance hall from the research lab). A new game (`--region Paldea`) wakes in the bedroom
+  (4, 6); a Champion crossing in from Galar lands inside the house's door (`CaboPoco_PlayersHouse_1F` 6, 10); **a return
+  to Paldea lands inside Los Platos's Pokémon Center** (its `Harbour`: the original has no airport, and the plane's
+  return needs a spot). The plane from Galar's airfield (plan 33 · GL7) lands here now.
+- **The first chapter** (our words on Scarlet and Violet's beats as they are publicly told): `VAR_PALDEA_STORY` 0 to 7
+  (`cabo_poco.txt`'s header): the director at home on the first morning, the three on the president's terrace with the
+  Pokédex and Nemona's first battle (her team the starter strong against the player's), the roar on the beach, the two
+  in Inlet Grotto, Nemona's lesson in catching at the lighthouse (five Poké Balls), Nemona at Mesagoza's south gate, and
+  the director's welcome in the entrance hall with **the Tera Orb, given only to a bag without one**, as Galar's
+  Dynamax Band is. Objectives 800 to 806 and `paldeaFree` 899, English and Romanian. `common.PaldeaNewGame` hides the
+  chapter's people until their scenes. Looks of ours: `nemona`, `clavell`, `paldea_mom`. Trainers of ours in
+  `Data/world/paldea/trainers.json` (Nemona's three, two Students, the class `Student` new to the table).
+- **The sample pack's Tidemark moves after Paldea**, now the last region with maps: its ferryman stands in Los Platos's
+  Pokémon Center (`samples/packs/tidemark-isle`, `docs/packs.md`), and with Paldea at the chain's end nothing goes on
+  from Tidemark.

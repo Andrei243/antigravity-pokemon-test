@@ -2357,6 +2357,25 @@ way 0
 way 1, from answer 1
   * wildbattle Zeraora 60 Lost
   + seen BlushMountain_PowerPlant.Zeraora in the power plant
+=== CaboPoco_NemonasHouse.Housekeeper
+from Housekeeper at 7,6 of CaboPoco_NemonasHouse
+way -
+  Housekeeper> The young miss has been battling since she could walk. She'll be delighted there's a new student next door.
+=== CaboPoco_PlayersHouse_1F.Mom
+from Mom at 7,8 of CaboPoco_PlayersHouse_1F
+way 0
+  Mom> Mom: Back already? Sit down a minute and let your Pokémon have a rest.
+  Mom> Mom: ...There. Everyone's bright-eyed again.
+  Mom> By the way, would you like a reminder of what to do next?
+  Mom> Let me see... Go downstairs. Someone has come to see you.
+  ? By the way, would you like a reminder of what to do next? = Yes
+  * fanfare FanfareHeal
+way 1, from answer 1
+  ? By the way, would you like a reminder of what to do next? = No
+=== CaboPoco_PlayersHouse_2F.Wardrobe
+from the sign at 5,4 of CaboPoco_PlayersHouse_2F
+way -
+  * open Wardrobe
 === CafeCabin.Milk
 from Waitress at 8,4 of CafeCabin
 way 0
@@ -5712,6 +5731,44 @@ way 0
 way 1, from answer 1
   * battle galar_nessa_1 Lost
   * scene over, unseen
+=== InletGrotto.Legends
+from Koraidon at 3,3 of InletGrotto
+from Miraidon at 5,3 of InletGrotto
+way -
+  > It is too worn out to stand. It looks up hungrily.
+=== InletGrotto.TheTwo
+from the trigger at 2,6 of InletGrotto
+way 0
+  > A pack of Houndour bolts past, out of the cave and away along the beach. They had cornered something in here.
+  > Two strange Pokémon lie at the back of the cavern, too tired to stand: one red and armoured, one violet and sleek.
+  > Their stomachs rumble, loudly. They look at the sandwich in Lucas's bag, then at Lucas.
+  > Which of the two do you share your sandwich with?
+  > The red one wolfs the sandwich down, and gets to its feet. It gives a happy roar that shakes the cave.
+  > The violet one watches for a moment, then slips out past them both and is gone.
+  > It nudges Lucas with its head. It seems it means to come along. Nemona will be waiting at the lighthouse.
+  ? Which of the two do you share your sandwich with? = The red one
+  * scene InletGrotto.The two in the grotto
+  * seen Koraidon
+  * endscene
+  + FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  = VAR_OBJECTIVE 0 -> 804
+  = VAR_PALDEA_MOUNT 0 -> 1
+  = VAR_PALDEA_STORY 0 -> 4
+  = VAR_PALDEA_VERSION 0 -> 1
+  + seen InletGrotto.The two in the grotto
+way 1, from answer 1
+  > The violet one eats the sandwich in three neat bites, and gets to its feet with a pleased hum.
+  > The red one watches for a moment, then shoulders past them both and is gone.
+  > It nudges Lucas with its head. It seems it means to come along. Nemona will be waiting at the lighthouse.
+  ? Which of the two do you share your sandwich with? = The violet one
+  * seen Miraidon
+  * endscene
+  + FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  = VAR_OBJECTIVE 0 -> 804
+  = VAR_PALDEA_MOUNT 0 -> 2
+  = VAR_PALDEA_STORY 0 -> 4
+  = VAR_PALDEA_VERSION 0 -> 2
+  + seen InletGrotto.The two in the grotto
 === IronIslandHouse.Byron
 from Byron at 5,5 of IronIslandHouse
 way -
@@ -7273,6 +7330,10 @@ way -
 from Veyra at 5,7 of MegaloTower
 way -
   Veyra> Necrozma has never let anyone this close. It knows you are different.
+=== Mesagoza_AcademyHall.Clavell
+from Director Clavell at 7,4 of Mesagoza_AcademyHall
+way -
+  Director Clavell> Welcome to the academy. Term begins properly tomorrow; tonight, settle in.
 === Motostoke_Hotel.HotelClerk
 from Hotel Clerk at 5,4 of Motostoke_Hotel
 way -
@@ -15399,6 +15460,18 @@ way -
   Anyone> This ship goes to Kanto.
   Anyone> Only trainers who have entered Sinnoh's Hall of Fame may come aboard. Come back when you're Champion!
   * open Travel
+=== common.BedroomPC
+from a trainer with lines of their own
+way 0
+  > Lucas turned on the computer.
+  > Decorate your room with things from your decoration PC?
+  ? Decorate your room with things from your decoration PC? = Yes
+  * sound pc_on
+  * openbase bedroom
+  * sound pc_off
+way 1, from answer 1
+  ? Decorate your room with things from your decoration PC? = No
+  * sound pc_off
 === common.BerryPatch
 from a berry patch at Blooming, Growth mulch, faced Left, a bag of what it takes
 from a berry patch at Blooming, Growth mulch, faced Left, an empty bag
@@ -17352,6 +17425,15 @@ way -
   * anim pc on
   * open Pc
   * anim pc off
+=== common.PaldeaNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  + FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  + FLAG_PALDEA_HIDE_NEMONA_GATE
+  + FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  + FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  + FLAG_PALDEA_STORY_BEGUN
 === common.PastureBoard
 from a trainer with lines of their own
 way 0

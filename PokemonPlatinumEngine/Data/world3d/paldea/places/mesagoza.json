@@ -1,0 +1,54 @@
+{
+  // Mesagoza (plan 34 · PD1): the old city at the head of the rise, its south gate, the avenue to a plaza lined with
+  // shops, and the great stairs up the hill to the academy's door. Scripts: Data/scripts/mesagoza.txt
+  "markers": [
+    { "name": "mesagoza_south", "at": [0, 12.0, -306], "yaw": 180 },
+    { "name": "mesagoza_plaza", "at": [-10, 12.0, -322], "yaw": 180 },
+    { "name": "stairs_foot", "at": [0, 12.0, -324], "yaw": 180 },
+    { "name": "academy_door", "at": [0, 22.0, -355.5], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "academy_door",
+      "box": { "min": [-1, 21.5, -359], "max": [1, 25, -358] },
+      "room": "Mesagoza_AcademyHall", "at": [7, 10], "facing": "up",
+      "out": "academy_door"
+    }
+  ],
+  "triggers": [
+    // In at the south gate after the lesson: Nemona waiting to show the way up to the academy
+    { "name": "nemona_at_the_gate", "box": { "min": [-12, 10, -306], "max": [12, 16, -300] }, "script": "NemonaAtTheGate", "var": "VAR_PALDEA_STORY", "value": 5 }
+  ],
+  "solids": [
+    { "name": "the academy", "min": [-20, 21.5, -376], "max": [20, 34, -359], "building": { "kind": "hall", "town": "paldea", "sign": "ACADEMY", "storeys": 3 } },
+    { "name": "the Pokémon Center by the plaza", "min": [30, 11.5, -342], "max": [44, 18, -328], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the boutique by the plaza", "min": [-44, 11.5, -342], "max": [-30, 18, -328], "building": { "kind": "shop", "town": "paldea" } },
+    { "name": "the house by the west gate", "min": [-44, 11.5, -322], "max": [-32, 17, -310], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the house by the east gate", "min": [32, 11.5, -322], "max": [44, 17, -310], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the café at the stairs' foot", "min": [-28, 11.5, -352], "max": [-14, 17, -344], "building": { "kind": "shop", "town": "paldea" } },
+    { "name": "the bookshop at the stairs' foot", "min": [14, 11.5, -352], "max": [28, 17, -344], "building": { "kind": "shop", "town": "paldea" } }
+  ],
+  "people": [
+    // Nemona inside the south gate, gone ahead after the lesson (hidden once she has shown the way)
+    {
+      "name": "nemona_gate", "at": [4, 12.0, -310], "yaw": 180, "look": "nemona", "displayName": "Nemona",
+      "lines": ["Welcome to Mesagoza! The academy's right at the top of those stairs."],
+      "hiddenBy": "FLAG_PALDEA_HIDE_NEMONA_GATE"
+    },
+    {
+      "name": "mesagoza_student", "at": [-14, 12.0, -330], "yaw": 90, "look": "school_kid_f", "displayName": "Student",
+      "lines": ["Three hundred steps up to the academy, every single morning. I've stopped counting them. Mostly."],
+      "moves": "wander", "radius": 4
+    },
+    {
+      "name": "mesagoza_gentleman", "at": [16, 12.0, -318], "yaw": 270, "look": "gentleman", "displayName": "Gentleman",
+      "lines": ["Mesagoza was a city long before the academy was built on its hill. These streets are older than any of us."]
+    }
+  ],
+  "trees": [
+    { "at": [-22, -312], "kind": "round" },
+    { "at": [22, -312], "kind": "round" },
+    { "at": [-10, -344], "kind": "round", "size": 0.9 },
+    { "at": [10, -344], "kind": "round", "size": 0.9 }
+  ]
+}

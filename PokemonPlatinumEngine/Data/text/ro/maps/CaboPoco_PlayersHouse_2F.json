@@ -1,0 +1,45 @@
+{
+  "displayName": {
+    "en": [
+      "{player}'s Home"
+    ],
+    "text": [
+      "Casa lui {player}"
+    ]
+  },
+  "people": {},
+  "signs": {
+    "1,4": {
+      "en": [
+        "A new desk for a new start. The academy's welcome pack sits on it, still in its envelope."
+      ],
+      "text": [
+        "Un birou nou pentru un început nou. Pachetul de bun venit al academiei stă pe el, încă în plic."
+      ]
+    },
+    "3,4": {
+      "en": [
+        "Books about Paldea: its provinces, its great crater, and an old tale of a hidden treasure."
+      ],
+      "text": [
+        "Cărți despre Paldea: provinciile ei, marele crater și o poveste veche despre o comoară ascunsă."
+      ]
+    },
+    "5,4": {
+      "en": [
+        "It's your wardrobe. Most of it is still packed in boxes from the move."
+      ],
+      "text": [
+        "E garderoba ta. Cea mai mare parte e încă în cutiile de la mutare."
+      ]
+    },
+    "2,4": {
+      "en": [
+        "A map of Paldea pinned over the desk, with Mesagoza circled in the middle."
+      ],
+      "text": [
+        "O hartă a regiunii Paldea prinsă deasupra biroului, cu Mesagoza încercuit la mijloc."
+      ]
+    }
+  }
+}

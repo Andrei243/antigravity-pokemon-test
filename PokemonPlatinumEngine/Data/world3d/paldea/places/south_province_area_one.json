@@ -1,0 +1,61 @@
+{
+  // The South Province's first area (plan 34 · PD1): open fields either side of the road north from Los Platos, rising at
+  // its end to Mesagoza, with its Pokémon about in the long grass and two of the academy's students looking for battles.
+  // Scripts: Data/scripts/south_province_area_one.txt
+  "markers": [
+    { "name": "area_one_south", "at": [10, 8.0, -214], "yaw": 180 },
+    { "name": "area_one_north", "at": [2, 11.4, -290], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "area_one_west",
+      "polygon": [[-60, -290], [-12, -290], [-12, -222], [-60, -222]],
+      "minY": 5, "maxY": 16,
+      "slots": [
+        { "species": "Lechonk", "minLevel": 4, "maxLevel": 6, "weight": 25 },
+        { "species": "Tarountula", "minLevel": 4, "maxLevel": 6, "weight": 20 },
+        { "species": "Skwovet", "minLevel": 4, "maxLevel": 6, "weight": 15 },
+        { "species": "Fletchling", "minLevel": 4, "maxLevel": 6, "weight": 15 },
+        { "species": "Scatterbug", "minLevel": 4, "maxLevel": 6, "weight": 15 },
+        { "species": "Hoothoot", "minLevel": 4, "maxLevel": 6, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "area_one_east",
+      "polygon": [[20, -280], [76, -280], [76, -220], [20, -220]],
+      "minY": 5, "maxY": 16,
+      "slots": [
+        { "species": "Pawmi", "minLevel": 4, "maxLevel": 7, "weight": 25 },
+        { "species": "Nymble", "minLevel": 4, "maxLevel": 6, "weight": 20 },
+        { "species": "Hoppip", "minLevel": 4, "maxLevel": 6, "weight": 15 },
+        { "species": "Buneary", "minLevel": 5, "maxLevel": 7, "weight": 15 },
+        { "species": "Shinx", "minLevel": 5, "maxLevel": 7, "weight": 15 },
+        { "species": "Starly", "minLevel": 4, "maxLevel": 6, "weight": 10 }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "student_lucia", "at": [-14, 8.0, -236], "yaw": 90, "trainer": "paldea_student_lucia",
+      "lines": ["A new face! The treasure hunt hasn't even started and I've found a battle already!", "Okay, okay, you win. I'll find my treasure somewhere else."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "student_mateo", "at": [18, 9.0, -268], "yaw": 270, "trainer": "paldea_student_mateo",
+      "lines": ["I train out here every afternoon before class. Want to see how far I've got?", "Not far enough, clearly. Back to the fields tomorrow."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-6, -228], "kind": "round" },
+    { "at": [36, -232], "kind": "round", "size": 1.2 },
+    { "at": [-30, -266], "kind": "round", "size": 0.95 },
+    { "at": [60, -258], "kind": "pine" },
+    { "at": [14, -288], "kind": "round" }
+  ],
+  "groves": [
+    { "name": "the olive grove by the west heights", "polygon": [[-80, -248], [-66, -248], [-66, -296], [-80, -296]], "spacing": 5, "fill": 0.5, "pines": 0.1, "seed": 343 }
+  ]
+}

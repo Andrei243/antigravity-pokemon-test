@@ -35,7 +35,8 @@
       "arrows": "Săgeți",
       "enter": "Enter",
       "x": "X",
-      "c": "C"
+      "c": "C",
+      "pageRight": "E"
     },
     "hints": {
       "open": "Deschide",
@@ -1389,6 +1390,14 @@
     "galarWeald": "Ceața s-a întors în Pădurea Adormită. Hop te așteaptă la altar.",
     "galarLeonTower": "Leon conduce acum Turnul de Luptă din Turnul Rose. Du-te și înfruntă-l din nou.",
     "galarFree": "Ești Campionul din Galar. Toată regiunea, de la Postwick la Wyndon, îți stă deschisă.",
+    "paldeaDownstairs": "Coboară. A venit cineva să te vadă.",
+    "paldeaTerrace": "Urcă dealul până la casa președintei și întâlnește-l pe director pe terasa ei.",
+    "paldeaBeach": "Ceva a strigat sub stânci. Coboară pe cărarea de pe Poco Path până pe plajă.",
+    "paldeaGrotto": "Strigătul a venit dintr-o peșteră de la poalele stâncilor. Intră în Inlet Grotto.",
+    "paldeaLighthouse": "Nemona te așteaptă la farul de pe Poco Path, la est de potecă.",
+    "paldeaMesagoza": "Mergi spre nord prin Los Platos și South Province, până la poarta de sud a orașului Mesagoza.",
+    "paldeaAcademy": "Urcă scările cele mari până la academie și intră pe ușile ei.",
+    "paldeaFree": "Începe semestrul. Vânătoarea de comori e a ta: arenele, Titanii și multe altele te așteaptă dincolo de Mesagoza.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
     "kalosClemont": "Întoarce-te în Lumiose City și câștigă de la Clemont, în vârful Turnului Prism, Insigna Tensiune.",
@@ -1994,6 +2003,43 @@
     "id": "Nr. ID",
     "type": "TIP",
     "earlier": "ECHIPE MAI VECHI"
+  },
+  "basme": {
+    "zmeu": {
+      "name": "Zmeu",
+      "told": "Soarele stă pe loc deasupra câmpului!",
+      "rule": "Timp de cinci ture, mișcările de Foc lovesc mai tare și noaptea nu poate cădea.",
+      "story": "Un Zmeu a furat soarele și l-a ascuns în turnul lui de aramă, iar ziua nu se mai sfârșea. Un cioban a urcat în turn cu un fluier și a cântat până a adormit balaurul, iar soarele a stat un an întreg deasupra dealurilor până a învățat iar să apună."
+    },
+    "varcolac": {
+      "name": "Vârcolac",
+      "told": "Luna e mâncată și câmpul se întunecă!",
+      "rule": "Timp de cinci ture, mișcările de Întuneric și de Fantomă lovesc mai tare, iar toate mișcările nimeresc mai rar.",
+      "story": "Când un copil se naște fără binecuvântare, pe cer se naște un Vârcolac. El fugărește luna și o mușcă, iar noaptea se întunecă. Sătenii bat în oale și trag clopotele până îi dă drumul, iar luna se întoarce cu o mușcătură pe margine."
+    },
+    "solomonar": {
+      "name": "Solomonar",
+      "told": "Norii de furtună se adună la chemarea povestitorului!",
+      "rule": "Timp de cinci ture plouă peste câmp.",
+      "story": "Solomonarii își învață meșteșugul într-o școală de sub un lac, iar cel mai bun dintre ei călărește un balaur prin nori. Cere unui sat lapte și pâine; unde e alungat cade grindina, iar unde e ospătat ploaia vine blândă și la vreme."
+    },
+    "dochia": {
+      "name": "Baba Dochia",
+      "told": "Frigul se întoarce peste câmp!",
+      "rule": "Timp de cinci ture ninge peste câmp.",
+      "story": "Baba Dochia și-a mânat oile pe munte în martie, purtând nouă cojoace. Soarele strălucea, așa că le-a lepădat unul câte unul. În a noua zi gerul s-a întors și ea a înghețat, prefăcută în stană de piatră cu turma ei pe vârf, unde stă și azi."
+    },
+    "ielele": {
+      "name": "Ielele",
+      "told": "Un joc de noapte răsună peste câmp!",
+      "rule": "Timp de cinci ture, mișcările de tip Sunet și orice mișcare făcută din sunet lovesc mai tare.",
+      "story": "În nopțile de vară Ielele joacă hora pe pajiști, iar iarba arde unde le-au călcat picioarele. Cine le aude cântecul joacă până în zori. Cei înțelepți își astupă urechile cu pelin și o iau pe drumul cel lung spre casă."
+    }
+  },
+  "bookOfTales": {
+    "title": "Cartea Basmelor",
+    "empty": "Încă nu e scris niciun basm în Carte.",
+    "when": "Când e spus"
   },
   "journal": {
     "title": "JURNAL",
@@ -4171,6 +4217,14 @@
     "cantTerastallize": "{pokemon} nu se poate Teracristaliza!",
     "teraOnlyOnce": "Poți folosi Teracristalizarea o singură dată într-o luptă!",
     "terastallized": "{pokemon} s-a Teracristalizat în tipul {type}!",
+    "cantTellTale": "Povestea aceasta nu poate fi spusă acum!",
+    "taleAlreadyTold": "Basmul lui {tale} a fost spus deja!",
+    "taleOnlyOnce": "Poți spune un singur basm și da un singur răspuns într-o luptă!",
+    "taleTold": "{trainer} a spus basmul lui {tale}!",
+    "taleAnswered": "{trainer} a răspuns basmului lui {ended} cu basmul lui {tale}!",
+    "taleEnded": "Basmul lui {tale} s-a sfârșit.",
+    "taleWoke": "{pokemon} s-a trezit la basmul lui {tale}!",
+    "taleSlept": "{pokemon} a redevenit ce era.",
     "stellarType": "Stelar",
     "teraformZero": "{ability} lui {pokemon} a șters vremea și terenul!",
     "theDimensionsBecameDistorted": "Dimensiunile s-au deformat!",
@@ -4891,6 +4945,7 @@
     "Sailor": "Marinar",
     "SchoolKid": "Școlar",
     "SchoolKidM": "Școlar",
+    "Student": "Elev",
     "Scientist": "Om de știință",
     "ScientistGs": "Om de știință",
     "SisAndBro": "Soră și frate",
@@ -5690,7 +5745,8 @@
     "Underwater128": "Sub apă 128"
   },
   "secretBase": {
-    "decorating": "DECOREAZĂ-ȚI BAZA SECRETĂ"
+    "decorating": "DECOREAZĂ-ȚI BAZA SECRETĂ",
+    "bedroom": "DECOREAZĂ-ȚI CAMERA"
   },
   "pokeblock": {
     "color": {
@@ -7652,7 +7708,8 @@
     "stickers": { "count": "{count} / {most}" },
     "take": { "action": "FĂ POZA" },
     "seals": { "heading": "STICKERELE TALE" },
-    "hints": { "put": "Pune jos" },
+    "hints": { "put": "Pune jos", "size": "Mărime", "turn": "Rotește" },
+    "keys": { "turn": "Q / E" },
     "refusal": {
       "notOwned": "Nu ai stickerul ăsta.",
       "full": "Poza nu mai încape alte autocolante.",

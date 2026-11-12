@@ -1100,6 +1100,10 @@ public class SceneSkipTests
         "wyndon.Wyndon", "slumbering_weald.The altar in the Weald",
         // Plan 33 · GL7: the version's legendary at the altar after the Hall of Fame
         "slumbering_weald.The legend in the fog",
+        // Paldea's scenes of its open map (plan 34 · PD1), started by the open places' triggers:
+        // PaldeaTests.EveryOpenSceneOfTheChapterPlayedAndSkippedLeavesTheSame plays each both ways
+        "cabo_poco.The three on the terrace", "poco_path.A roar on the beach", "poco_path.Nemona at the lighthouse",
+        "mesagoza.Nemona at Mesagoza's gate",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

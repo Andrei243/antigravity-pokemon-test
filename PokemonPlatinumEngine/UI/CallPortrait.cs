@@ -42,6 +42,15 @@ internal sealed class CallPortrait
         Active = true;
     }
 
+    /// <summary>
+    /// Room over a chibi caller's head (plan 43 · LF7's leftover, LF6's owed crop): the bands' bust ends just over the
+    /// hair, which cut a hat's crown off (Bianca's); a call's bust reaches a hat's height over it. A grown rig's bust is
+    /// framed by its own head and has room enough.
+    /// </summary>
+    public const float ChibiHatRoom = 0.18f;
+
+    internal static float HeadroomOf(CharacterRig rig) => rig.Style.Kit == PokemonPlatinumEngine.Data.CharacterKit.Grown ? 0f : ChibiHatRoom;
+
     /// <summary>Renders the two pictures once the look's rig is ready. Call outside any texture mode.</summary>
     public void Render(RenderContext context)
     {
@@ -58,8 +67,8 @@ internal sealed class CallPortrait
             Raylib.SetTextureFilter(open.Texture, TextureFilter.Bilinear);
             loaded = true;
         }
-        CharacterStudio.RenderBust(context, rig, shut, new CharacterPose { Expression = Face }, -Turn);
-        CharacterStudio.RenderBust(context, rig, open, new CharacterPose { Expression = Face, MouthOpen = true }, -Turn);
+        CharacterStudio.RenderBust(context, rig, shut, new CharacterPose { Expression = Face }, -Turn, headroom: HeadroomOf(rig));
+        CharacterStudio.RenderBust(context, rig, open, new CharacterPose { Expression = Face, MouthOpen = true }, -Turn, headroom: HeadroomOf(rig));
         rendered = true;
     }
 

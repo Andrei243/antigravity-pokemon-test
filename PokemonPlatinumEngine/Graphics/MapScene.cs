@@ -703,6 +703,10 @@ internal sealed class MapScene
     /// <summary>Whether a tile of the room is void outside its plan (<see cref="OutsideThePlan"/>).</summary>
     private bool Outside(int tx, int ty) => outsideThePlan != null && Map.InBounds(tx, ty) && outsideThePlan[tx, ty];
 
+    /// <summary>A house's room, or a secret base's in its kind's look (plan 43 · LF7), which is built as a house's is.</summary>
+    internal static bool HouseLike(InteriorStyle style) => style is InteriorStyle.House or InteriorStyle.DenRedCave or InteriorStyle.DenBrownCave
+        or InteriorStyle.DenBlueCave or InteriorStyle.DenYellowCave or InteriorStyle.DenTree or InteriorStyle.DenShrub;
+
     /// <summary>
     /// The void tiles of a room that lie outside its plan (style guide, "Rooms": a room whose plan is no rectangle
     /// has nothing where its plan has nothing). In a house every void tile is; in a laboratory's room only a run of
@@ -711,7 +715,7 @@ internal sealed class MapScene
     /// </summary>
     internal static bool[,]? OutsideThePlan(Map map)
     {
-        if (!map.IsIndoors || map.Interior is not (InteriorStyle.House or InteriorStyle.Lab)) return null;
+        if (!map.IsIndoors || !(HouseLike(map.Interior) || map.Interior == InteriorStyle.Lab)) return null;
         bool Void(int x, int y) => map.InBounds(x, y) && map.GetGroundTile(x, y) == TileType.Void;
         bool Floor(int x, int y) => map.InBounds(x, y) && map.GetGroundTile(x, y) is not (TileType.Wall or TileType.Void);
         bool[,]? outside = null;
@@ -731,7 +735,7 @@ internal sealed class MapScene
                         touched |= Floor(nx, ny);
                         if (Void(nx, ny) && !seen[nx, ny]) { seen[nx, ny] = true; run.Add((nx, ny)); }
                     }
-                if (touched && map.Interior != InteriorStyle.House) continue;
+                if (touched && !HouseLike(map.Interior)) continue;
                 outside ??= new bool[map.Width, map.Height];
                 foreach (var (rx, ry) in run) outside[rx, ry] = true;
             }
@@ -1261,7 +1265,7 @@ internal sealed class MapScene
     /// </summary>
     internal static bool BackWallJog(Map map, int x, int y)
     {
-        if (map.Interior != InteriorStyle.House) return false;
+        if (!HouseLike(map.Interior)) return false;
         var (left, back) = map.RoomCorner();
         bool Floor(int fx, int fy) => fx >= left && fx < map.Width - 1 && fy >= back && fy < map.Height - 1 && map.GetGroundTile(fx, fy) != TileType.Wall;
         if (x < left || x >= map.Width - 1 || y < back || y >= map.Height - 1) return false;
@@ -1385,7 +1389,7 @@ internal sealed class MapScene
     private MeshBuilder? HallFace(MeshBatches batches)
     {
         // A house with a floor above its floor (the Old Chateau's gallery, plan 01 · M11) stands it on its own wainscot
-        if (Map.Interior == InteriorStyle.House) return batches.For(SceneTextures.RoomFace);
+        if (HouseLike(Map.Interior)) return batches.For(SceneTextures.RoomFace);
         // A wooden tower's floors and the Violet Gym's walkways stand on posts and braces over the dark (plan 20, wave 77)
         if (Map.Interior is InteriorStyle.Tower or InteriorStyle.Aerie) return batches.For(SceneTextures.TimberFace);
         if (Map.Interior != InteriorStyle.Gym) return null;

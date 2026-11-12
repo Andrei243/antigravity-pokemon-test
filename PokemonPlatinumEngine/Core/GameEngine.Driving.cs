@@ -162,7 +162,15 @@ public partial class GameEngine
         public void OpenBaseDecoration() => game.OpenDecoration();
         /// <summary>Hoenn's secret bases (plan 21 · H10): the player's base, the decoration PC, and the base's decorating opened.</summary>
         public Models.SecretBaseSave? SecretBase => game.flow.SecretBase;
+        /// <summary>The player's base set by hand (a test of the way in at its spot, plan 43 · LF7).</summary>
+        public void SecretBaseSet(Models.SecretBaseSave? home) => game.flow.SecretBase = home;
         public List<Models.StoredDecoration> Decorations => game.flow.Decorations;
+        /// <summary>Each region's bedroom at home as it was decorated (plan 43 · LF7), and its decorating opened at its computer.</summary>
+        public Dictionary<string, List<Models.PlacedDecoration>> Bedrooms => game.flow.Bedrooms;
+        public bool OpenBedroomDecoration() => game.OpenBedroomDecoration();
+        /// <summary>A bedroom laid as it is come to, and the way into the home drawn at its spot (plan 43 · LF7).</summary>
+        public void LayOutBedroom(Overworld.Map room) => game.LayOutBedroom(room);
+        public void KeepTheBaseEntrance() => game.KeepTheBaseEntrance();
         /// <summary>The records mixed in at the record desk, and the friend's base being visited (plan 40 · GE10).</summary>
         public Models.RecordMixState Records => game.flow.Records;
         /// <summary>The player's other saves as the record desk reads them (plan 40 · GE10).</summary>
@@ -246,6 +254,10 @@ public partial class GameEngine
         public PCScreen PcScreen => game.flow.PCScreen;
         public HallOfFameScreen HallOfFameScreen => game.flow.HallOfFameScreen;
         public JournalScreen JournalScreen => game.flow.JournalScreen;
+
+        /// <summary>The Book of Tales (plan 46 · CP11), and opening it as USE on the Book does.</summary>
+        public BookOfTalesScreen BookOfTalesScreen => game.flow.BookOfTalesScreen;
+        public void OpenBookOfTales() => game.OpenBookOfTales();
         public PokedexScreen PokedexScreen => game.flow.PokedexScreen;
         public EvolutionScreen Evolution => game.flow.EvolutionScreen;
         public OptionsScreen Options => game.flow.OptionsScreen;

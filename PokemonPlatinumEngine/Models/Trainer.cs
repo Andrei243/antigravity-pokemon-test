@@ -156,6 +156,9 @@ public class Trainer
     /// <summary>The trainer has a Tera Orb and may Terastallize one Pokémon a battle (plan 06 · R23), under rules that have it. None of Platinum's trainers has one; Paldea's chapter gives its trainers theirs.</summary>
     public bool TeraOrb { get; set; }
 
+    /// <summary>The tales the trainer may tell, with a Book of Tales of their own (plan 46 · CP11), under rules that have them; none of anyone's yet: Carpathia's chapters give its trainers theirs.</summary>
+    public List<string>? Tales { get; set; }
+
     /// <summary>
     /// The team, prize money and mind were taken from Platinum's data (<c>trainers.json</c>), because the map wrote
     /// only the trainer's id: a map written back out leaves them to the data again (<c>MapFile.FromMap</c>).

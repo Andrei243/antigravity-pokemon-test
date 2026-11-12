@@ -1,0 +1,70 @@
+{
+  "id": "Paldea",
+  "folder": "paldea",
+  // Paldea's songs play in the modern sound (plan 31 · MU6), as Galar's do
+  "sound": "modern",
+  // Paldea is built on the open world's engine (plan 32; plan 34 · PD1), as Galar is: its outdoors are open maps
+  // described in Data/world3d/paldea and baked by tools/OpenWorldBake, its rooms grid maps behind their doors. It has no
+  // grid overworld, so it names no "map"
+  "field": "open",
+  // Scarlet and Violet's own Paldea Pokédex; the Kitakami and Blueberry Pokédexes are further ones their sessions add
+  // (plan 34 · PD10, PD11)
+  "dex": "paldea",
+  "nationalUnlock": "HallOfFame",
+  // A new game begun here (--region Paldea) wakes in the player's room in Cabo Poco with nothing, and the academy's
+  // director hands over the first Pokémon on the neighbours' terrace (plan 34 · PD1)
+  "hasStory": true,
+  // How the player moves here (plan 30 · FM1, its region table): free, at the stick's tilt, with the legendary as the
+  // region's own mount (plan 30 · FM12, given by the story in Inlet Grotto); the grown body kit (FM4)
+  "movement": { "directions": "Free", "speed": "Analog", "modes": [ "Mount" ] },
+  "kit": "Grown",
+  "battleCamera": "paldea",
+  // The rival is the student council president from the house up the hill, who has the same name in both versions
+  "rival": "Nemona",
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Sprigatito", "Fuecoco", "Quaxly" ],
+  // Paldea's eight badges in the order the academy suggests (plan 34 · decision 3): Cortondo's Bug, Artazon's Grass,
+  // Levincia's Electric, Cascarrafa's Water, Medali's Normal, Montenevera's Ghost, Alfornada's Psychic and Glaseado's Ice
+  "badges": [ "Bug", "Grass", "Electric", "Water", "Normal", "Ghost", "Psychic", "Ice" ],
+  // Scarlet and Violet ask no badge of anything in the field
+  "gates": {},
+  // The introduction's speaker is the academy's director, the one person of the opening a game meets whatever its version
+  // (the professor is Sada or Turo by the version, which a new game hasn't chosen yet: plan 34 · PD1, the rulings'
+  // "Paldea's first chapter"). The lines are our own
+  "professor": {
+    "name": "Director Clavell",
+    "look": "CLAVELL",
+    "species": "Sprigatito",
+    "lines": {
+      "hello": "Ah, good, you're here. Forgive the formality: I like to meet every new student before term begins.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "I'm Clavell, the director of the academy in Mesagoza. Students of every age come to us to learn, and Pokémon learn alongside them.",
+      "world": "Pokémon live all over Paldea: on its coasts and plains, up its mountains, and deep in the crater at its heart that nobody has fully charted.",
+      "oneOfThem": "This little one is waiting to choose a partner of its own. It may yet choose you.",
+      "liveAlongside": "In Paldea, a student's best lessons are learned out on the road, with Pokémon beside them.",
+      "study": "Every year the academy sends its students out on a treasure hunt: a journey to find something that matters to them.",
+      "enough": "But I'm getting ahead of myself. Let me fill in your enrolment form.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what name shall I write on the form?",
+      "nextDoor": "The student council president lives just up the hill from your new home. She has been asking about you all week.",
+      "neverStill": "She is rather keen on battles.",
+      "fineName": "{name}. Welcome to the academy, {name}.",
+      "ofCourse": "I suspect she will want to battle you before you have unpacked.",
+      "story": "{name}, your journey in Paldea begins in Cabo Poco, a village on the cliffs of the region's far south-west.",
+      "offYouGo": "Go on, then. Paldea, and the academy, are waiting for you!"
+    }
+  },
+  // The heal places of the places built so far: the player's house in Cabo Poco, where a white-out goes before any
+  // Pokémon Center, and Los Platos's Pokémon Center. An open region's spawns name their rooms
+  "spawns": [
+    { "id": 1, "area": "cabo_poco", "x": 0, "y": 0, "room": "CaboPoco_PlayersHouse_1F" },
+    { "id": 2, "area": "los_platos", "x": 0, "y": 0, "room": "LosPlatos_PokemonCenter" }
+  ],
+  // Plan 18 · W4 with plan 03 · D14's Paldea proposals (their question 1) and the level curve study: Scarlet and
+  // Violet's levels for a team that crossed from Galar, from Galar's Champion at 242 the first route stands at 242 to
+  // Geeta's 62, the League's Champion, at 258, two under the cap of 260
+  "levels": [[2, 242], [62, 258]],
+  // Plan 18 · W4b-1: the level cap by badges held, Scarlet and Violet's own levels (each Gym Leader's best in the
+  // academy's suggested order, then the Champion's); mapped by "levels" where the region is crossed into
+  "caps": [15, 17, 24, 30, 36, 42, 45, 48, 62]
+}

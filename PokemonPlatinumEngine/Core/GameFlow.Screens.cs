@@ -41,6 +41,9 @@ public sealed partial class GameFlow
     /// <summary>The screens of the game's other corners (plan 16 · T11g): each made its pictures, if any, only when drawn.</summary>
     public HallOfFameScreen HallOfFameScreen { get; } = new();
     public JournalScreen JournalScreen { get; } = new();
+
+    /// <summary>The Book of Tales (plan 46 · CP11).</summary>
+    public BookOfTalesScreen BookOfTalesScreen { get; } = new();
     public ReplayListScreen ReplayListScreen { get; } = new();
     public MigrateScreen MigrateScreen { get; } = new();
     /// <summary>The title's HOME (plan 12 · Q28, Q29).</summary>
