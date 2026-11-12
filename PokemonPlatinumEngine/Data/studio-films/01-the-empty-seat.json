@@ -1,0 +1,90 @@
+{
+  "id": "emptySeat",
+  "genre": "ghost",
+  "rank": 0,
+  "coStar": "Captain",
+  "coStarLook": "virbank_captain",
+  "battle": {
+    "id": "emptySeat",
+    "goal": "Win",
+    "turns": 8,
+    "player": [
+      { "species": "Houndoom", "level": 60, "nature": "Timid", "ability": "Flash Fire", "moves": ["Dark Pulse", "Flamethrower", "Nasty Plot"] },
+      { "species": "Absol", "level": 60, "nature": "Adamant", "ability": "Super Luck", "moves": ["Night Slash", "Swords Dance"] },
+      { "species": "Umbreon", "level": 60, "nature": "Calm", "ability": "Synchronize", "moves": ["Foul Play", "Moonlight"] }
+    ],
+    "foe": [
+      { "species": "Chandelure", "level": 40, "nature": "Modest", "ability": "Flash Fire", "moves": ["Shadow Ball", "Will-O-Wisp"] },
+      { "species": "Banette", "level": 40, "nature": "Adamant", "ability": "Insomnia", "moves": ["Shadow Claw"] },
+      { "species": "Mismagius", "level": 40, "nature": "Modest", "ability": "Levitate", "moves": ["Shadow Ball"] }
+    ],
+    "foeName": "Usher",
+    "foeClass": "Actor",
+    "foeLook": "gentleman",
+    "foeMoves": ["Shadow Ball"],
+    "rolls": [
+      { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [0] }, { "kind": "Accuracy", "values": [0] },
+      { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+    ],
+    "solution": [ { "move": "Dark Pulse" }, { "move": "Dark Pulse" }, { "move": "Dark Pulse" } ],
+    "decoy": [ { "move": "Nasty Plot" } ]
+  },
+  "beats": [
+    {
+      "id": "seatThirteen",
+      "speaker": "CoStar",
+      "lines": [ "The house is dark, but somebody's sitting in seat thirteen. Every night, the same seat..." ],
+      "choices": [
+        { "id": "showIsOver", "text": "The show is over. Time to go!", "script": true },
+        { "id": "encore", "text": "Stay for an encore, then!" }
+      ]
+    },
+    {
+      "id": "firstDown",
+      "when": { "foeDown": 1 },
+      "speaker": "Foe",
+      "lines": [ "Please remain seated! The second act is about to begin!" ]
+    },
+    {
+      "id": "chill",
+      "when": { "playerHpUnder": 50 },
+      "speaker": "CoStar",
+      "lines": [ "Brr! Did the lights just flicker? Steady now, the camera's still rolling!" ]
+    },
+    {
+      "id": "lastAct",
+      "when": { "foeDown": 2 },
+      "speaker": "CoStar",
+      "lines": [ "One left! The Usher's running out of ghosts to seat!" ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "movedOn",
+      "result": "won",
+      "chosen": [ "showIsOver" ],
+      "speaker": "CoStar",
+      "lines": [ "Seat thirteen is empty at last. Whoever it was, they've gone on to a better show.", "And... cut! A fine ghost story, if I say so myself." ],
+      "stars": 4
+    },
+    {
+      "id": "takesABow",
+      "result": "won",
+      "chosen": [ "encore" ],
+      "speaker": "CoStar",
+      "lines": [ "Look! The ghost is on its feet... and it's taking a bow!", "And... cut! The crowd will be talking about that ending for years!" ],
+      "stars": 5
+    },
+    {
+      "id": "lost",
+      "speaker": "Foe",
+      "lines": [ "The house is full tonight. I'm afraid there's no seat left for you.", "And... cut! We'll get it next take." ],
+      "stars": 1
+    }
+  ],
+  "takes": [
+    { "ending": "movedOn", "answers": [ { "move": "Dark Pulse" }, { "move": "Dark Pulse" }, { "move": "Dark Pulse" } ], "picks": [ "showIsOver" ] },
+    { "ending": "takesABow", "answers": [ { "move": "Dark Pulse" }, { "move": "Dark Pulse" }, { "move": "Dark Pulse" } ], "picks": [ "encore" ] },
+    { "ending": "lost", "answers": [ { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" } ], "picks": [ "showIsOver" ] }
+  ]
+}

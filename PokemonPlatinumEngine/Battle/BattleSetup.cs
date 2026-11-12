@@ -345,6 +345,15 @@ public sealed class BattleSetup
     /// <summary>The victory's song in place of the one the trainers' classes bring (plan 14 · B11: the World Tournament's own); null for theirs.</summary>
     public Audio.MusicRole? VictoryMusic { get; init; }
 
+    /// <summary>
+    /// A film shot on this battle (plan 42 · PS4): its director, asked for the beats due as each menu opens. The face's
+    /// alone; the rules never see it. Null for any other battle.
+    /// </summary>
+    public Models.Studio.StudioDirector? StudioFilm { get; init; }
+
+    /// <summary>The take's number on the title card (the films shot of it so far, and one).</summary>
+    public int StudioTakeNumber { get; init; }
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 
@@ -392,6 +401,7 @@ public sealed class BattleSetup
         Palace = Palace,
         TurnLimit = TurnLimit,
         VictoryMusic = VictoryMusic,
+        // (a film's take is never fought again: its director has been used, and a take is a Frontier battle, which no retry takes)
         FirstTrainerPokemon = first
     };
 }

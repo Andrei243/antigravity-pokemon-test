@@ -1857,7 +1857,8 @@
       "Unown": "A strange signal",
       "TeamRocket": "An unknown broadcast",
       "MahoganySignal": "A strange signal",
-      "Commercials": "A word from our sponsors"
+      "Commercials": "A word from our sponsors",
+      "LuckyNumber": "The Lucky Number Show"
     },
     "song": {
       "March": "POKéMON MARCH",
@@ -2566,6 +2567,18 @@
       "down": "Back to level {level}.",
       "full": "Your Coin Case is full. It can't hold any more coins."
     }
+  },
+  "studio": {
+    "film": {
+      "emptySeat": { "title": "The Empty Seat" },
+      "gildedHour": { "title": "The Gilded Hour" }
+    },
+    "genre": {
+      "ghost": "A ghost story",
+      "heist": "A heist"
+    },
+    "titleCard": "{title}: {genre}, take {take}. Lights, camera... action!",
+    "stars": "That take earned {stars} out of 5 stars!"
   },
   "luckyDraw": {
     "radio": {
@@ -4586,6 +4599,8 @@
     "AceTrainerM": "Ace Trainer",
     "ArcadeStar": "Arcade Star",
     "AromaLady": "Aroma Lady",
+    "Actor": "Actor",
+    "Actress": "Actress",
     "Artist": "Artist",
     "BattleGirl": "Battle Girl",
     "Beauty": "Beauty",

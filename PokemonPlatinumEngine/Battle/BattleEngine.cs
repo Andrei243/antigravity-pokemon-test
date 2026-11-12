@@ -311,6 +311,7 @@ public partial class BattleEngine
         Kind = setup.Kind;
         Partner = setup.Partner;
         victoryMusic = setup.VictoryMusic;
+        StartStudio(setup);
         if (setup.PlayerLook != null) Anim.PlayerTrainer = setup.PlayerLook;
         // The ground fought on, for the looks that go by it (plan 25 · Y6: Secret Power, Camouflage); never the rules'
         terrain = setup.Conditions?.Terrain ?? BattleTerrain.Plain;
@@ -732,7 +733,9 @@ public partial class BattleEngine
         switch (core.Request)
         {
             case ActionRequest:
-                BeginChoosing();
+                // A film's beats come before its menu (plan 42 · PS4)
+                if (studio != null) StudioCue();
+                else BeginChoosing();
                 break;
             case ReplacementRequest replacement:
                 replacing = true;

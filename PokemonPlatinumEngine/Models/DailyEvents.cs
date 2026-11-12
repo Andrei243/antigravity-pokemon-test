@@ -43,9 +43,11 @@ public static class DailyEvents
     /// number moves on once for each.
     /// </summary>
     public static void DaysPass(int days, StoryState story, SpecialEncounters encounters, string? place, Random chance,
-        Underground.UndergroundState? underground = null, Frontier.FrontierRecords? frontier = null)
+        Underground.UndergroundState? underground = null, Frontier.FrontierRecords? frontier = null, DateOnly? today = null)
     {
         if (days <= 0) return;
+        // Ours (plan 42 · PS3): a week's flags go when the days passed cross a week's boundary (Lottery.WeekOf)
+        if (today is { } now && Lottery.WeekOf(now) != Lottery.WeekOf(now.AddDays(-days))) story.ClearWeekly();
         // Underground_HandleDailyEvents comes first: the buried Spheres grow, the day's number of the tunnels moves on
         // (and the hikers' stock with it) and the walls and traps are to be spread anew (plan 06 · R16a)
         underground?.DaysPass(days);

@@ -336,6 +336,18 @@
         "I ask a question or two of everyone who comes through these doors."
       ],
       "script": "Questionnaire"
+    },
+    {
+      "id": "studio_director",
+      "name": "Director Wren",
+      "npcType": "parasol_lady",
+      "x": 3,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Every take is a battle, played to a script."
+      ],
+      "script": "StudioDesk"
     }
   ],
   "wildEncounters": []
