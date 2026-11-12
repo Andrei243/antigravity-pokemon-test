@@ -179,7 +179,66 @@ public static class UndergroundDatabase
     // ------------------------------------------------------------------ goods
 
     public static int GoodCount => Data.Goods.Count;
-    public static GoodRecord? Good(int id) => id >= 1 && id <= Data.Goods.Count ? Data.Goods[id - 1] : null;
+    public static GoodRecord? Good(int id) => id >= 1 && id <= Data.Goods.Count ? Data.Goods[id - 1] : StatueGood(id);
     public static int GoodId(string? idOrName) => idOrName != null && GoodKeys.TryGetValue(idOrName, out int id) ? id : 0;
-    public static string GoodName(int id) => Good(id)?.Name ?? "";
+    public static string GoodName(int id) => IsStatue(id) ? StatueName(id) : Good(id)?.Name ?? "";
+
+    // ------------------------------------------------------------------ statues (plan 38 · EX6, part b)
+
+    /// <summary>The hand-written table of the hideaways' statues (<c>statues.json</c>), read strictly beside the original's.</summary>
+    public const string StatuesFileName = "statues.json";
+
+    /// <summary>
+    /// The first statue's number: statues are goods of ours past the original's numbers, so <see cref="GoodCount"/> and
+    /// everything drawn from the original's goods (a digger's base, a hiker's stock) never meets one. A statue's number is
+    /// this plus its place in <c>statues.json</c>, so the file only ever grows at its end.
+    /// </summary>
+    public const int StatueFirst = 1001;
+
+    private static readonly StatueFile StatueData = GameDataFiles.Load<StatueFile>(StatuesFileName, strict: true);
+    private static readonly Dictionary<string, int> StatueKeys =
+        StatueData.Statues.Select((s, i) => (s.Species, i)).ToDictionary(p => p.Species, p => StatueFirst + p.i, StringComparer.OrdinalIgnoreCase);
+    private static readonly Dictionary<int, GoodRecord> StatueGoods = new();
+
+    public static IReadOnlyList<StatueRecord> Statues => StatueData.Statues;
+
+    public static bool IsStatue(int id) => id >= StatueFirst && id < StatueFirst + StatueData.Statues.Count;
+
+    public static StatueRecord? Statue(int id) => IsStatue(id) ? StatueData.Statues[id - StatueFirst] : null;
+
+    /// <summary>The statue of a species, or 0.</summary>
+    public static int StatueOf(string? species) => species != null && StatueKeys.TryGetValue(species, out int id) ? id : 0;
+
+    /// <summary>A statue's name in the language in force: "Lapras Statue".</summary>
+    public static string StatueName(int id) =>
+        Statue(id) is { } s ? Core.Text.Of("belowGround.statue", ("species", LocalNames.Species(s.Species))) : "";
+
+    /// <summary>A statue as a good: one tile, which it blocks; not for trade, never a gift.</summary>
+    private static GoodRecord? StatueGood(int id)
+    {
+        if (Statue(id) is not { } s) return null;
+        lock (StatueGoods)
+        {
+            if (!StatueGoods.TryGetValue(id, out var good))
+                StatueGoods[id] = good = new GoodRecord
+                {
+                    Id = "STATUE_" + new string(s.Species.ToUpperInvariant().Select(c => char.IsLetterOrDigit(c) ? c : '_').ToArray()),
+                    Width = 1, Depth = 1, Collision = "100000000", Ungiftable = true
+                };
+            good.Name = StatueName(id);
+            return good;
+        }
+    }
+}
+
+/// <summary>A statue of the hideaways (plan 38 · EX6, part b; <c>statues.json</c>): its species and how rare it is in a wall, 1 to 3.</summary>
+public sealed class StatueRecord
+{
+    [DataRequired] public string Species { get; set; } = "";
+    [DataRequired] public int Rarity { get; set; }
+}
+
+public sealed class StatueFile
+{
+    [DataRequired] public List<StatueRecord> Statues { get; set; } = new();
 }

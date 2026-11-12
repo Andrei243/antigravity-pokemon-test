@@ -246,17 +246,19 @@ public static class Hideaways
     /// A day's twelve slots: species of the pool chosen by the hideaway's seed and the day's number (no two alike while the
     /// pool has twelve), with Platinum's grass weights and levels across the band.
     /// </summary>
-    public static IReadOnlyList<WildEncounterEntry> Table(Hideaway h, int day, bool national)
+    public static IReadOnlyList<WildEncounterEntry> Table(Hideaway h, int day, bool national, IReadOnlyDictionary<PokemonType, int>? weights = null)
     {
         var pool = Pool(h, national).ToList();
         var rows = new List<WildEncounterEntry>();
         if (pool.Count == 0) return rows;
         var draws = new SplitMix(SplitMix.Mix(h.Seed, (uint)day, national ? 1u : 0u));
         var left = new List<string>(pool);
+        // With statues in the base the pick is weighted by them (part b); with none it is the plain pick it always was
+        bool weighted = weights is { Count: > 0 };
         for (int slot = 0; slot < SlotWeights.Length; slot++)
         {
             if (left.Count == 0) left.AddRange(pool);
-            int i = draws.Int(left.Count);
+            int i = weighted ? WeightedPick(left, weights!, draws) : draws.Int(left.Count);
             string species = left[i];
             left.RemoveAt(i);
             int min = LowestLevel + slot * 6 / (SlotWeights.Length - 1);
@@ -266,10 +268,116 @@ public static class Hideaways
     }
 
     /// <summary>A hideaway's slots laid for the day on its map, as the player comes in (the map keeps the last day's until then).</summary>
-    public static void Stock(Map map, Hideaway h, int day, bool national)
+    public static void Stock(Map map, Hideaway h, int day, bool national, IReadOnlyDictionary<PokemonType, int>? weights = null)
     {
         map.WildEncounters.Clear();
-        map.WildEncounters.AddRange(Table(h, day, national));
+        map.WildEncounters.AddRange(Table(h, day, national, weights));
+    }
+
+    // ------------------------------------------------------------------ statues (part b)
+
+    /// <summary>A species' weight in the pick: <see cref="StatueBase"/>, and one more for each placed statue of each of its types.</summary>
+    public const int StatueBase = 2;
+
+    /// <summary>The most statues of one type that count (more stand in the base for nothing).</summary>
+    public const int MostStatuesOfAType = 10;
+
+    /// <summary>
+    /// What the base's statues weigh (plan 38 · EX6, part b): each statue placed in the base counts once for each of its
+    /// species' types, up to <see cref="MostStatuesOfAType"/> of a type; a statue in the PC or the bag counts for nothing.
+    /// </summary>
+    public static IReadOnlyDictionary<PokemonType, int> Weights(SavedBase? room)
+    {
+        var counts = new Dictionary<PokemonType, int>();
+        if (room == null) return counts;
+        foreach (var good in room.Goods)
+        {
+            if (UndergroundDatabase.Statue(good.Good) is not { } statue || PokemonDatabase.Get(statue.Species) is not { } species) continue;
+            foreach (var type in TypesOf(species)) counts[type] = Math.Min(MostStatuesOfAType, counts.GetValueOrDefault(type) + 1);
+        }
+        return counts;
+    }
+
+    /// <summary>A species' weight in a weighted pick: <see cref="StatueBase"/> plus the count of each of its types.</summary>
+    public static int PickWeight(PokemonSpecies species, IReadOnlyDictionary<PokemonType, int> weights) =>
+        StatueBase + TypesOf(species).Distinct().Sum(t => weights.GetValueOrDefault(t));
+
+    /// <summary>The share of a hideaway's first pick that falls to species of a type, under the weights (a plain share with none).</summary>
+    public static double PickShare(Hideaway h, bool national, IReadOnlyDictionary<PokemonType, int> weights, PokemonType type)
+    {
+        var pool = Pool(h, national).Select(s => PokemonDatabase.Get(s)!).ToList();
+        if (weights.Count == 0) return pool.Count(s => TypesOf(s).Contains(type)) / (double)pool.Count;
+        double total = pool.Sum(s => PickWeight(s, weights));
+        return pool.Where(s => TypesOf(s).Contains(type)).Sum(s => PickWeight(s, weights)) / total;
+    }
+
+    private static int WeightedPick(List<string> left, IReadOnlyDictionary<PokemonType, int> weights, SplitMix draws)
+    {
+        var each = left.Select(s => PokemonDatabase.Get(s) is { } sp ? PickWeight(sp, weights) : StatueBase).ToList();
+        int roll = draws.Int(each.Sum());
+        for (int i = 0; i < each.Count; i++)
+        {
+            roll -= each[i];
+            if (roll < 0) return i;
+        }
+        return each.Count - 1;
+    }
+
+    /// <summary>The walls a hideaway holds something in on a day: two, by its seed and the day's number.</summary>
+    public const int WallsPerDay = 2;
+
+    /// <summary>
+    /// The day's walls of a hideaway: tiles of its rock with open dry floor south of them (a face the player can stand
+    /// before), chosen by SplitMix from the seed and the day's number, never the way out.
+    /// </summary>
+    public static IReadOnlyList<(int X, int Z)> WallsOf(Hideaway h, int day)
+    {
+        var file = ToFile(h);
+        var faces = new List<(int, int)>();
+        for (int z = 0; z < Height - 1; z++)
+            for (int x = 0; x < Width; x++)
+                if (file.Solid[z][x] == '#' && file.Solid[z + 1][x] == '.' && file.Ground[z + 1][x] != '~' && !(x == OutX && z == OutY))
+                    faces.Add((x, z));
+        var draws = new SplitMix(SplitMix.Mix(h.Seed, (uint)day, 0x57A7u));
+        var chosen = new List<(int X, int Z)>();
+        while (chosen.Count < WallsPerDay && faces.Count > 0)
+        {
+            int i = draws.Int(faces.Count);
+            chosen.Add(faces[i]);
+            faces.RemoveAt(i);
+        }
+        return chosen;
+    }
+
+    /// <summary>The daily flag that says a hideaway's wall has been dug today (a new day clears it).</summary>
+    public static string WallFlag(Hideaway h, int wall) => $"FLAG_DAILY_HIDEAWAY_{h.Number}_WALL_{wall}";
+
+    /// <summary>A statue's shape in the wall: two squares by three.</summary>
+    public static readonly MiningObjectRecord StatueShape = new() { Id = "STATUE", Width = 2, Height = 3 };
+
+    /// <summary>A rarity's weight in a wall: a common statue 12, an uncommon one 6, a rare one 2.</summary>
+    public static int RarityWeight(int rarity) => rarity switch { 1 => 12, 2 => 6, _ => 2 };
+
+    /// <summary>The weight of each of the five small Spheres in a hideaway's wall.</summary>
+    public const int SphereWeight = 8;
+
+    /// <summary>
+    /// What a hideaway's wall holds on a day: the statues of the day's Pokémon there, by their rarity, and the five small
+    /// Spheres, in that order (a <see cref="MiningGame"/> given a table of ours).
+    /// </summary>
+    public static IReadOnlyList<WallItem> WallTable(Hideaway h, int day, bool national)
+    {
+        var items = new List<WallItem>();
+        foreach (string species in Table(h, day, national).Select(r => r.SpeciesName).Distinct())
+            if (UndergroundDatabase.StatueOf(species) is var id and > 0)
+                items.Add(new WallItem(StatueShape, id, RarityWeight(UndergroundDatabase.Statue(id)!.Rarity)));
+        var objects = UndergroundDatabase.Objects;
+        for (int i = 0; i < objects.Count; i++)
+        {
+            int id = UndergroundDatabase.TreasureId(objects[i].Id);
+            if (UndergroundDatabase.IsSphere(id) && !UndergroundDatabase.IsLargeSphere(id)) items.Add(new WallItem(objects[i], id, SphereWeight));
+        }
+        return items;
     }
 
     /// <summary>The cell of the region's map over a tile of the tunnels (<see cref="UndergroundField.Below"/> the other way round), for the Pokédex's area page.</summary>
