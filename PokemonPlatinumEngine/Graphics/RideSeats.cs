@@ -30,7 +30,7 @@ internal static class RideSeats
     {
         // Land: the horns and the head stand over the back, and the small ones fold the rider's legs up
         ["Tauros"] = new(0.80f, 0.5f, 0.75f, 0.24f),
-        ["Stoutland"] = new(0.78f, 0.5f, 0.9f, 0.22f),
+        ["Stoutland"] = new(0.70f, 0.5f, 0.55f, 0.22f),
         ["Mudsdale"] = new(0.74f, 0.55f, 0.1f, 0.30f),
         ["Machamp"] = new(0.84f, 0.5f, 0.6f, 0.26f),
         // (Kalos's Mamoswine keeps the seat its gate was shot and approved with: on the top of its hump)
