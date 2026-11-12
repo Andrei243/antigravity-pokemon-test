@@ -11,8 +11,8 @@ namespace PokemonPlatinumTests;
 /// answers (a corridor, a closed side, a person, deep water), the hand-offs to the grid (a ledge, a door's warp, ice, a
 /// stair, a boulder), the step as a tile entered with its hysteresis and the same count as a cardinal walk, talking ahead
 /// along the yaw, a script's walk and a trainer's hold centring the body, the follower's breadcrumbs, the pace by tilt and
-/// the held tilt's run, determinism, and nothing reached that the grid doesn't reach. Kalos's own file stays
-/// <see cref="MovementDirections.Eight"/> until the plan's gate (Kalos to its second Gym) is judged.
+/// the held tilt's run, determinism, and nothing reached that the grid doesn't reach. Kalos's own file says
+/// <see cref="MovementDirections.Free"/> since the user opened the plan's gate (2026-11-12).
 /// </summary>
 public class FreeMovementTests
 {
@@ -441,8 +441,8 @@ public class FreeMovementTests
     public void FreeMovementReachesNothingTheGridDoesntOnKalossMaps()
     {
         var region = RegionDatabase.Get(RegionDatabase.Kalos)!;
-        // Kalos's own file keeps eight on the grid until the plan's gate (Kalos playable to its second Gym) is judged
-        Assert.Equal(MovementDirections.Eight, region.Movement.Directions);
+        // Kalos's own file moves freely since the user opened the plan's gate (2026-11-12)
+        Assert.Equal(MovementDirections.Free, region.Movement.Directions);
         var kalos = World.LoadAll().Single(w => w.Index.Region == "Kalos");
         var maps = kalos.BuildMaps().ToDictionary(m => m.Name);
         var rooms = MapDatabase.Fresh();
@@ -540,5 +540,60 @@ public class FreeMovementTests
         player.SetOffset(500, -500);
         Assert.Equal((FreeMovement.Half + FreeMovement.Hysteresis - 1, -(FreeMovement.Half + FreeMovement.Hysteresis - 1)), player.Offset);
         Assert.Equal((3, 3), (player.GridX, player.GridY));
+    }
+
+    // ------------------------------------------------------------------ the skates in a free place (plan 30's gate)
+
+    // A lawn with a column of tall grass at x = 7, and a free skater with the skates given
+    private static (Map Map, Player Skater) Skating(int x, int y)
+    {
+        var map = Lawn(14, 14);
+        for (int row = 0; row < 14; row++) map.SetGroundTile(7, row, TileType.TallGrass);
+        var player = Free(x, y, Direction.Right);
+        player.CanSkate = true;
+        return (map, player);
+    }
+
+    [Fact]
+    public void AFreeSkaterSkatesOnTheRunHeldTakesTheSkatesOffForTallGrassAndPutsThemBackPastIt()
+    {
+        var (map, player) = Skating(2, 5);
+        var walk = new Walk();
+        var modes = new List<(int X, TravelMode Mode)>();
+        for (int f = 0; f < 600 && player.GridX < 11; f++)
+        {
+            walk.Hold(player, map, new Vector2(1f, 0f), 1, run: true);
+            modes.Add((player.GridX, player.Mode));
+        }
+        Assert.True(player.GridX >= 11, $"stopped at {player.GridX}");
+        // Skating on the lawn before the grass, on foot in it, and skating again past it
+        Assert.Contains(modes, m => m.X < 7 && m.Mode == TravelMode.Skating);
+        Assert.All(modes.Where(m => m.X == 7), m => Assert.Equal(TravelMode.OnFoot, m.Mode));
+        Assert.Contains(modes, m => m.X > 7 && m.Mode == TravelMode.Skating);
+        // Let go, the skates come off
+        walk.Idle(player, map, 120);
+        Assert.Equal(TravelMode.OnFoot, player.Mode);
+    }
+
+    [Fact]
+    public void AFreeSkaterSlantingIntoTallGrassGoesInOnFootRatherThanSlidingAlongIt()
+    {
+        foreach (float degrees in new[] { 50f, 60f, 70f })
+        {
+            // Mostly south, a little east: the nearest cardinal is south, along the grass, never into it
+            var (map, player) = Skating(5, 1);
+            float a = degrees * MathF.PI / 180f;
+            var stick = new Vector2(MathF.Cos(a), MathF.Sin(a));
+            var walk = new Walk();
+            bool skated = false, inGrass = false;
+            for (int f = 0; f < 600 && player.GridY < 12; f++)
+            {
+                walk.Hold(player, map, stick, 1, run: true);
+                skated |= player.Mode == TravelMode.Skating;
+                if (player.GridX == 7) { inGrass = true; Assert.Equal(TravelMode.OnFoot, player.Mode); }
+            }
+            Assert.True(skated, $"{degrees}°: never skated");
+            Assert.True(inGrass, $"{degrees}°: slid along the grass to {player.GridX},{player.GridY} and never went in");
+        }
     }
 }

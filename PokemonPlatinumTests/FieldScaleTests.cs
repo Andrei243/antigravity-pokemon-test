@@ -98,8 +98,9 @@ public class FieldScaleTests
             Assert.Equal(FieldCamera.Cave, WorldMapBuilder.GrownCamera(FieldCamera.Cave, region.Id, outdoors: true));
             Assert.Equal(FieldCamera.ZoomedIn, WorldMapBuilder.GrownCamera(FieldCamera.ZoomedIn, region.Id, outdoors: true));
         }
-        // The chibi regions of today all keep Platinum's
-        foreach (string chibi in new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova", "Kalos", "Alola" })
+        // The chibi regions of today all keep Platinum's; Kalos (grown since 2026-11-12) takes its own
+        Assert.Equal(FieldCamera.Kalos, WorldMapBuilder.GrownCamera(FieldCamera.Default, "Kalos", outdoors: true));
+        foreach (string chibi in new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova", "Alola" })
             Assert.Equal(FieldCamera.Default, WorldMapBuilder.GrownCamera(FieldCamera.Default, chibi, outdoors: true));
     }
 

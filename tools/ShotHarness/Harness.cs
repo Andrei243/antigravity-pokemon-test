@@ -40,6 +40,8 @@ partial class Harness
         engine.RiftsStayShut = true;
         // A Pokémon standing in the field waits for its sprite rather than showing a Poké Ball for a few frames (plan 10 · F1)
         FieldSprites.Patient = true;
+        // A grown place's people wait for their grown looks and impostors rather than standing as chibi sprites (plan 30's gate)
+        FieldRigs.Patient = true;
         // The one Pokémon a menu looks at breathes from the frame after it is asked for, every run (plan 09 · L5)
         PokemonSprites.PatientStrips = true;
         // An opened entry's footprint is made on the spot, and none is read from an earlier run's cache (plan 09 · L9)

@@ -10,8 +10,7 @@ namespace PokemonPlatinumTests;
 
 /// <summary>
 /// Continuous movement in the whole game with no window (plan 30 · FM7 to FM9): a test region (the engine's
-/// <c>RegionMovementOverride</c>, since Kalos's own file stays <see cref="MovementDirections.Eight"/> until the plan's
-/// gate) walked freely counts every step <c>OnStep</c> counts as a cardinal walk over the same tiles and takes a door
+/// <c>RegionMovementOverride</c>) walked freely counts every step <c>OnStep</c> counts as a cardinal walk over the same tiles and takes a door
 /// from its front; the playthrough bot plays Kalos's opening in <see cref="MovementDirections.Eight"/> and in
 /// <see cref="MovementDirections.Free"/> steering a stick; and the field fuzzer steering a stick finds nothing wrong in
 /// Kalos.
@@ -22,6 +21,8 @@ public class FreeMovementGameTests
     private const float Frame = 1f / 60f;
 
     private static readonly RegionMovement FreeRegion = new() { Directions = MovementDirections.Free, Speed = MovementSpeed.Analog };
+    // Kalos as it was before the gate, for the eight ways' half of the opening's test
+    private static readonly RegionMovement EightRegion = new() { Directions = MovementDirections.Eight, Modes = new List<RegionMode> { RegionMode.Skates } };
 
     private readonly ITestOutputHelper output;
 
@@ -163,7 +164,8 @@ public class FreeMovementGameTests
             Play("Kalos", engine =>
             {
                 var game = engine.Drive;
-                engine.RegionMovementOverride = directions == MovementDirections.Free ? FreeRegion : null;
+                // Kalos's own file is free since the gate (2026-11-12): eight ways are laid over it, free is its own
+                engine.RegionMovementOverride = directions == MovementDirections.Eight ? EightRegion : null;
                 var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.KalosOpening) };
                 for (double t = 0; t < 1500 && !bot.Stopped; t += Frame)
                 {
@@ -190,7 +192,8 @@ public class FreeMovementGameTests
         Play("Kalos", engine =>
         {
             var game = engine.Drive;
-            engine.RegionMovementOverride = FreeRegion;
+            // Kalos's own file (free since the gate), no override
+            Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
             StoryMigration.PastTheOpening(game.Story, ScriptLibrary.Default);
             game.Party.Add(new Pokemon(PokemonDatabase.Get("Froakie")!, 30));
             game.TrainersLookOnArrival = false;

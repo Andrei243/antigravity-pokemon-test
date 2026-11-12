@@ -164,6 +164,13 @@ internal sealed class FieldRigs
     public int Impostors { get; private set; }
     public int Sprites { get; private set; }
     public int Waiting { get; private set; }
+
+    /// <summary>
+    /// A tool's switch (the harness's, as <see cref="FieldSprites.Patient"/>): a grown look not made yet is made on the
+    /// spot, and every far look's impostors are baked in the frame that wants them, so a shot of a grown place is the
+    /// same picture every run, never the chibi stand-ins of a look still being meshed. False in the game.
+    /// </summary>
+    public static bool Patient { get; set; }
     public long Triangles { get; private set; }
     public long ShadowTriangles { get; private set; }
     public int LooksBaked => impostors.Count;
@@ -206,7 +213,7 @@ internal sealed class FieldRigs
             CharacterRig? rig = null;
             if (!f.Sprite)
             {
-                rig = CharacterModels.TryGet(GrownNameOf(f.Rig.Type), context.Shaders);
+                rig = Patient ? CharacterModels.Get(GrownNameOf(f.Rig.Type), context.Shaders) : CharacterModels.TryGet(GrownNameOf(f.Rig.Type), context.Shaders);
                 if (rig == null) Waiting++;
             }
             grown.Add(rig);
@@ -238,7 +245,7 @@ internal sealed class FieldRigs
             if (live.Contains(i)) continue;
             string name = grown[i]!.Type;
             if (impostors.TryGetValue(name, out var have)) { impostors[name] = have with { Used = time }; continue; }
-            if (bakedOne) continue;
+            if (bakedOne && !Patient) continue;
             Bake(context, grown[i]!, time);
             bakedOne = true;
         }
