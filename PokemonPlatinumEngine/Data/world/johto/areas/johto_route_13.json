@@ -68,6 +68,41 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 22, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 22, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 22, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 22, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 22, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 22, "maxLevel": 23 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 24, "maxLevel": 25 },
+      { "species": "Tangela", "level": 24, "maxLevel": 25 },
+      { "species": "Hoothoot", "level": 24, "maxLevel": 25 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 25 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 25 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 25 }
+    ],
+    "trees": [
+      "1346,367 1347,367",
+      "1384,367 1385,367",
+      "1366,367 1367,367",
+      "1353,381 1353,380",
+      "1365,376",
+      "1372,376 1373,376",
+      "1387,376",
+      "1402,367 1403,367",
+      "1429,366 1428,367 1428,366",
+      "1429,360",
+      "1414,367 1415,367",
+      "1414,373 1415,373 1414,372",
+      "1420,363 1421,363",
+      "1428,373 1429,373",
+      "1376,367 1377,367"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

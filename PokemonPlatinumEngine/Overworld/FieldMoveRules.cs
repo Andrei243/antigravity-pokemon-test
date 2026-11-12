@@ -14,7 +14,7 @@ namespace PokemonPlatinumEngine.Overworld;
 /// HeartGold's Whirlpool (plan 20 · J8) comes after Platinum's own, and Emerald's Dive (plan 21 · H5) after it, and its Secret Power
 /// (plan 21 · H10) last.
 /// </summary>
-public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled, Whirlpool, Dive, SecretPower }
+public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled, Whirlpool, Dive, SecretPower, Headbutt }
 
 /// <summary>Why a field move can't be used here and now: the original's <c>FieldMoveError</c>.</summary>
 public enum FieldMoveError
@@ -63,6 +63,9 @@ public sealed record FieldSpot
 
     /// <summary>A secret base's spot in front (a tree, a shrub, an indent in rock: Emerald's, plan 21 · H10), where Secret Power opens a base.</summary>
     public bool SecretBase { get; init; }
+
+    /// <summary>A tree in front that Headbutt shakes (HeartGold's behaviour, plan 38 · EX4).</summary>
+    public bool HeadbuttTree { get; init; }
 
     /// <summary>
     /// The move a puzzle of the place wants worked on the tile the player stands on, if there is one (plan 21 · H12, part a;
@@ -145,6 +148,7 @@ public static class FieldMoveRules
         "Whirlpool" => FieldMove.Whirlpool,
         "Dive" => FieldMove.Dive,
         "Secret Power" => FieldMove.SecretPower,
+        "Headbutt" => FieldMove.Headbutt,
         _ => null
     };
 
@@ -221,6 +225,9 @@ public static class FieldMoveRules
             case FieldMove.SecretPower:
                 if (!spot.SecretBase || spot.Surfing) return FieldMoveError.Location;
                 return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
+            // HeartGold's: a tree in front, on foot, with no Badge asked (plan 38 · EX4)
+            case FieldMove.Headbutt:
+                return spot.HeadbuttTree && !spot.Surfing ? FieldMoveError.None : FieldMoveError.Location;
             case FieldMove.RockClimb:
                 if (!spot.RockFace) return FieldMoveError.Location;
                 return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
@@ -291,6 +298,7 @@ public static class FieldMoveRules
             Dive = FieldMovement.CanDive(map, x, y, walker with { Moves = walker.Moves | FieldMoves.Dive }),
             Surface = walker.Mode == TravelMode.Diving && FieldMovement.CanSurface(map, x, y),
             SecretBase = map.SecretBaseSpots.ContainsKey((nx, ny)),
+            HeadbuttTree = ahead == TileBehavior.HeadbuttTree,
             Braille = map.BrailleSpots.TryGetValue((x, y), out var puzzle) ? puzzle.Move : null,
             Fog = map.WeatherAt(x, y) == FieldWeather.Fog,
             // (Flash is no use where it lifts no dark: the Battle Pyramid's floors, plan 14 · B10)

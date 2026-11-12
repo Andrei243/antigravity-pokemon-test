@@ -528,6 +528,13 @@ public interface IScriptHost
     /// </summary>
     bool SmashEncounter();
 
+    /// <summary>
+    /// The Headbutt tree in front shaken (plan 38 · EX4; <see cref="Overworld.HeadbuttTrees"/>): true when a wild
+    /// Pokémon fell out of it, and its battle starts; false when nothing did, which is always so for a tree no area
+    /// lists and in every region but Johto. The default shakes out nothing.
+    /// </summary>
+    bool Headbutt() => false;
+
     // ------------------------------------------------------------------ autosave (plan 12 · Q3)
 
     /// <summary>

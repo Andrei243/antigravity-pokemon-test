@@ -15853,6 +15853,9 @@ way -
 from a trainer with lines of their own
 way -
   > Oh?
+=== common.HeadbuttTree
+from a trainer with lines of their own
+way -
 === common.Headquarters
 from a trainer with lines of their own
 way -
@@ -19232,6 +19235,13 @@ from an obstacle, with every field move and every badge
 way -
   > Bibarel used Fly!
   * usemove Fly Bibarel on Tree
+=== common.UseHeadbutt
+from an obstacle, with every field move and every badge
+way -
+  > Bibarel used Headbutt!
+  Tree> The tree shook, but nothing came down.
+  * usemove Headbutt Bibarel on Tree
+  * headbutt
 === common.UseHoney
 from a trainer with lines of their own
 way -
@@ -23765,6 +23775,22 @@ way -
   * fade out
   * fade in
   = VAR_FARFETCHD1_PLACE 0 -> 1
+=== ilex_forest.HeadbuttTutor
+from Man at 36,37 of IlexForest
+way 0
+  Man> The trees here are so old and so close together that the sun hardly gets in.
+  Man> Pokémon live up in them, out of sight. Give a trunk a good knock and one might come tumbling down.
+  Man> I can teach one of yours Headbutt, for nothing. Shall I?
+  Man> Good. Which one?
+  Man> Turtwig learned Headbutt!
+  Man> Face a tree that looks lived in and use Headbutt on it. Not every tree has someone home.
+  ? I can teach one of yours Headbutt, for nothing. Shall I? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_TUTOR_HEADBUTT
+way 1, from answer 1
+  Man> Suit yourself. Stay on the path, now.
+  ? I can teach one of yours Headbutt, for nothing. Shall I? = No
 === ilex_forest.Master
 from Charcoal Maker at 11,75 of IlexForest
 way -

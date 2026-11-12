@@ -68,6 +68,41 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Heracross", "level": 39, "maxLevel": 40 },
+      { "species": "Aipom", "level": 39, "maxLevel": 40 },
+      { "species": "Aipom", "level": 39, "maxLevel": 40 },
+      { "species": "Natu", "level": 39, "maxLevel": 40 },
+      { "species": "Natu", "level": 39, "maxLevel": 40 },
+      { "species": "Natu", "level": 39, "maxLevel": 40 }
+    ],
+    "rare": [
+      { "species": "Heracross", "level": 41, "maxLevel": 43 },
+      { "species": "Aipom", "level": 41, "maxLevel": 43 },
+      { "species": "Aipom", "level": 41, "maxLevel": 43 },
+      { "species": "Natu", "level": 41, "maxLevel": 43 },
+      { "species": "Natu", "level": 41, "maxLevel": 43 },
+      { "species": "Natu", "level": 41, "maxLevel": 43 }
+    ],
+    "trees": [
+      "834,264 834,265",
+      "839,265 839,264",
+      "843,277 844,277",
+      "886,276 886,275",
+      "882,264 883,264 883,263",
+      "876,270 877,270",
+      "875,262",
+      "865,261 866,261",
+      "857,273 857,274 856,274",
+      "866,278 866,277",
+      "862,280 863,282 863,281 863,280",
+      "851,281 852,281",
+      "843,270 843,269",
+      "833,275 834,275",
+      "848,272 849,272"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

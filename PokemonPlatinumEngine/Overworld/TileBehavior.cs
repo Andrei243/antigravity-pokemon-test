@@ -430,7 +430,7 @@ public static class TileBehaviors
         // A step onto a panel is a step like any other: what it does comes once the step has ended (plan 02 · S11)
         TileBehavior.WarpPanel => (BehaviourSupport.Plain, "Walked onto; whoever ends a step on it is carried to the panel its warp names and stands there facing as they did, turning on the spot on the way. Arriving is no step, so the far panel carries them back only once they step off it and on again (`WarpPanels`; the floors of Team Galactic's headquarters)."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
-        TileBehavior.HeadbuttTree => (BehaviourSupport.Waiting, "A tree that blocks the way; shaking it with Headbutt is plan 20 · J7's."),
+        TileBehavior.HeadbuttTree => (BehaviourSupport.Ruled, "A tree that blocks the way; in Johto, faced by a team that knows Headbutt and shaken with it, a Pokémon of the tables of the area whose tree it is may fall out (plan 38 · EX4)."),
         TileBehavior.SnowDrift => (BehaviourSupport.Ruled, "Stops anyone on foot, on skates or on a Bicycle; crossed at a walk on a ridden Pokémon's back, Kalos's Mamoswine (FieldMovement.Step; plan 23, the Mamoswine ride). No Bicycles; every step leaves a footprint."),
         TileBehavior.RoughGround => (BehaviourSupport.Ruled, "Stops anyone on foot, on a Bicycle or on any ride but Mudsdale, which gallops over it at a run (FieldMovement.Step; plan 23, Alola's rough ground: Blush Mountain, Poni Coast and Poni Gauntlet)."),
         TileBehavior.Magma => (BehaviourSupport.Ruled, "Lava: walked only on a slab of the Blackthorn Gym's that stands over it (BlackthornPlatforms.Refuses; plan 20 · J11, part c)."),

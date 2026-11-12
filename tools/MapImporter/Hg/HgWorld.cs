@@ -228,6 +228,35 @@ public sealed class HgWorld
     /// <summary>The area's table of wild Pokémon, by its header's bank (<c>R29</c>); null for none.</summary>
     public HgEncounters? EncountersOf(HgHeader header) => header.Encounters == null ? null : Encounters.FirstOrDefault(e => e.Map == header.Encounters);
 
+    /// <summary>
+    /// An area's Headbutt trees (plan 38 · EX4), from <c>headbutt.json</c>'s table of the header's short name: the three
+    /// tables in HeartGold's version and the trees as their tiles. Null where the area has no tree.
+    /// </summary>
+    public AreaHeadbutt? HeadbuttOf(HgHeader header)
+    {
+        var table = Headbutt.FirstOrDefault(h => h.Map == header.Short);
+        if (table == null || table.Trees.Count == 0 && table.SecretTrees.Count == 0) return null;
+        List<AreaEncounter> Slots(List<HgSlot> slots) => slots.Select(s =>
+        {
+            string constant = s.Species(heartGold: true, "day");
+            return new AreaEncounter
+            {
+                Species = GbaNames.Species(constant) ?? Note($"{header.Key}: the Headbutt slot's {constant} is not in the game's data", constant),
+                Level = s.MinLevel.HeartGold,
+                MaxLevel = s.MaxLevel.HeartGold
+            };
+        }).ToList();
+        static string Tiles(List<(int X, int Z)> tree) => string.Join(' ', tree.Select(t => $"{t.X},{t.Z}"));
+        return new AreaHeadbutt
+        {
+            Common = Slots(table.Common),
+            Rare = Slots(table.Rare),
+            Secret = table.SecretTrees.Count > 0 && table.Secret.Count > 0 ? Slots(table.Secret) : null,
+            Trees = table.Trees.Select(Tiles).ToList(),
+            SecretTrees = table.SecretTrees.Count > 0 ? table.SecretTrees.Select(Tiles).ToList() : null
+        };
+    }
+
     /// <summary>A table's slots in one version at one time of day, by the data's names; null for a table with no rate.</summary>
     public List<AreaEncounter>? Slots(HgTable table, string time, string where, bool range)
     {
@@ -420,6 +449,8 @@ public sealed class HgWorld
             SuperRodRate = wild is { SuperRod.Rate: > 0 } ? wild.SuperRod.Rate : null,
             RockSmash = wild == null ? null : Slots(wild.RockSmash, "day", header.Key, range: true),
             RockSmashRate = wild is { RockSmash.Rate: > 0 } ? wild.RockSmash.Rate : null,
+            // The Headbutt trees and their tables (plan 38 · EX4)
+            Headbutt = HeadbuttOf(header),
             // The swarm's species in each way (plan 20 · J13, part c): the grass takes its one in slots 0 and 1, the water in
             // the first slot and the rods in theirs (EncSlots_Update_LandSwarm, _SurfingSwarm, _FishingSwarm)
             Swarm = land == null || SwarmSpecies(wild?.LandSwarm, header.Key) is not { } landSwarm ? null : new List<string> { landSwarm, landSwarm },
@@ -494,21 +525,26 @@ public sealed class HgWorld
         static List<string>? Distinct(List<AreaEncounter>? slots) => slots is { Count: > 0 } ? slots.Select(s => s.Species).Distinct().ToList() : null;
         foreach (var header in Maps.Headers.Values.Where(h => !h.Kanto).OrderBy(h => h.Index))
         {
-            if (header.Id == SafariExterior || EncountersOf(header) is not { } wild) continue;
+            if (header.Id == SafariExterior) continue;
+            var wild = EncountersOf(header);
+            // The Headbutt trees' species, every table's (plan 38 · EX4): an area may have trees and no other table
+            var trees = HeadbuttOf(header);
+            if (wild == null && trees == null) continue;
             var habitat = new HabitatArea
             {
                 Key = header.Key,
                 Name = header.Name,
                 Cells = cells.TryGetValue(header.Key, out var own) ? string.Join(' ', own) : "",
-                Morning = Distinct(Slots(wild.Land, "morn", header.Key, false)),
-                Day = Distinct(Slots(wild.Land, "day", header.Key, false)),
-                Night = Distinct(Slots(wild.Land, "nite", header.Key, false)),
-                Surf = Distinct(Slots(wild.Surf, "day", header.Key, true)),
-                OldRod = Distinct(Slots(wild.OldRod, "day", header.Key, true)),
-                GoodRod = Distinct(Slots(wild.GoodRod, "day", header.Key, true)),
-                SuperRod = Distinct(Slots(wild.SuperRod, "day", header.Key, true))
+                Morning = wild == null ? null : Distinct(Slots(wild.Land, "morn", header.Key, false)),
+                Day = wild == null ? null : Distinct(Slots(wild.Land, "day", header.Key, false)),
+                Night = wild == null ? null : Distinct(Slots(wild.Land, "nite", header.Key, false)),
+                Surf = wild == null ? null : Distinct(Slots(wild.Surf, "day", header.Key, true)),
+                OldRod = wild == null ? null : Distinct(Slots(wild.OldRod, "day", header.Key, true)),
+                GoodRod = wild == null ? null : Distinct(Slots(wild.GoodRod, "day", header.Key, true)),
+                SuperRod = wild == null ? null : Distinct(Slots(wild.SuperRod, "day", header.Key, true)),
+                Headbutt = trees == null ? null : Distinct(trees.Common.Concat(trees.Rare).Concat(trees.Secret ?? new()).ToList())
             };
-            if (habitat.Morning == null && habitat.Surf == null && habitat.OldRod == null && habitat.GoodRod == null && habitat.SuperRod == null) continue;
+            if (habitat.Morning == null && habitat.Surf == null && habitat.OldRod == null && habitat.GoodRod == null && habitat.SuperRod == null && habitat.Headbutt == null) continue;
             file.Areas.Add(habitat);
         }
         // The Safari Zone's twelve areas (plan 20 · J8, part b), shown on the gate's chunks

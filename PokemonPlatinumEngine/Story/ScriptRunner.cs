@@ -343,7 +343,7 @@ public sealed partial class ScriptRunner
         // A trade is made as given; the trade board's screen is the player's to work (plan 40 · GE8)
         Op.Trade => i.Name == "board" && i.Other == "open",
         // A battle is fought
-        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master or Op.Royal => true,
+        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Headbutt or Op.Master or Op.Royal => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Pose or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         // ...and in an open map a walk ends on its marker, a placing and a turn are made, a warp arrives, a look is over (plan 32 · OW5)
@@ -1062,6 +1062,15 @@ public sealed partial class ScriptRunner
                 // A Pokémon may come out from under the rock just smashed (plan 21 · H4), and its battle is waited for
                 Result = 0;
                 if (host.SmashEncounter())
+                {
+                    Result = 1;
+                    afterBusy = () => AfterBattle(mayLose: false);
+                }
+                break;
+            case Op.Headbutt:
+                // The tree in front shaken (plan 38 · EX4): RESULT 1 when a Pokémon fell out, and its battle is waited for
+                Result = 0;
+                if (host.Headbutt())
                 {
                     Result = 1;
                     afterBusy = () => AfterBattle(mayLose: false);

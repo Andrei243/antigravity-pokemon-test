@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Johto's trees can be shaken with Headbutt: face a tree with a Pokémon that knows the move and a Pokémon may fall out of it, such as Hoothoot, Pineco, Exeggcute, Spinarak, Aipom and Heracross. Some trees are richer than others, and which ones depends on your trainer number. The man by Ilex Forest's way in teaches Headbutt once, for nothing, and the Pokédex's area page shows which species live in the trees.
 - Every PC in Sinnoh, Johto and Unova can take you to the pasture, a meadow where one box of your PC walks about. Speak to any of them to pat it, share a berry or a treat, look after it close up or take it along; now and then one turns up holding something it found. The board by the shed changes which box is out, and the gate leads back to the PC.
 - Poké Jobs has two new kinds and room for six at once: the nursery keeps an Egg warm and hatches it as it comes back, and the cave brings back stones, shards and treasures. The orchard sometimes brings a treat too, and Pokémon picking in the orchard or soaking in the hot spring can be seen at work in the pasture.
 - Kalos now plays as its own games do: you move freely in any direction at the stick's tilt (a light tilt walks slowly, a full tilt held runs), still on your skates, and its people, you included, are drawn grown up rather than chibi, under a camera of Kalos's own. The options' MOVEMENT row still puts Kalos back on the four-way grid if you prefer it.

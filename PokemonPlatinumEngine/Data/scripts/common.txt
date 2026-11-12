@@ -1308,6 +1308,23 @@ script UseWhirlpool
   end
 
 
+# A Headbutt tree (HeartGold's, plan 38 · EX4). The field offers it only in Johto, on foot, to a team that knows the
+# move, so no Badge is asked; the tree is shaken whatever it holds, and a Pokémon may fall out (`headbutt`).
+script HeadbuttTree
+  speaker none
+  if not knows "Headbutt" end
+  ask "Something might be living up in this tree. Use Headbutt on it?"
+  if no end
+  call UseHeadbutt
+  end
+
+script UseHeadbutt
+  usemove "Headbutt"
+  headbutt
+  if result == 0 say "The tree shook, but nothing came down."
+  end
+
+
 # Dark water under a surfer where the sea floor lies below it (Emerald's, plan 21 · H5), and the sea floor under a diver.
 # The field offers them only with the region's Badge for Dive (the Mind Badge in Hoenn); Dive goes down to the same spot
 # of the floor, or back up to the same spot of the sea.

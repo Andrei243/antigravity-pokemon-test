@@ -185,6 +185,7 @@ public class ScriptTests
           escape
           sweetscent
           smashencounter
+          headbutt
           poketch on
           poketchapp PartyStatus
           safari start

@@ -1327,6 +1327,19 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>What <c>smashencounter</c> finds under the rock: a species and its level, or null when it hid nothing.</summary>
     public (string Species, int Level)? Smashed { get; set; }
 
+    /// <summary>What <c>headbutt</c> shakes out of the tree in front: a species and its level, or null when nothing falls.</summary>
+    public (string Species, int Level)? Headbutted { get; set; }
+
+    public bool Headbutt()
+    {
+        Shown("a tree shaken");
+        NeverInAHurry("a tree's Pokémon");
+        Log.Add("headbutt");
+        if (Headbutted is not var (species, level)) return false;
+        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
+        return true;
+    }
+
     public bool SmashEncounter()
     {
         Shown("a rock's hiding place");

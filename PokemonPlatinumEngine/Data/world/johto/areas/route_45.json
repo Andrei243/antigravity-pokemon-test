@@ -68,6 +68,29 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 23, "maxLevel": 24 },
+      { "species": "Heracross", "level": 23, "maxLevel": 24 },
+      { "species": "Heracross", "level": 23, "maxLevel": 25 },
+      { "species": "Aipom", "level": 23, "maxLevel": 24 },
+      { "species": "Aipom", "level": 23, "maxLevel": 24 },
+      { "species": "Aipom", "level": 23, "maxLevel": 24 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 26, "maxLevel": 27 },
+      { "species": "Spearow", "level": 26, "maxLevel": 27 },
+      { "species": "Spearow", "level": 26, "maxLevel": 27 },
+      { "species": "Aipom", "level": 26, "maxLevel": 27 },
+      { "species": "Aipom", "level": 26, "maxLevel": 27 },
+      { "species": "Aipom", "level": 26, "maxLevel": 27 }
+    ],
+    "trees": [
+      "648,341 649,341",
+      "662,341 662,340",
+      "657,331 657,330"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

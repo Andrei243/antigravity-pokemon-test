@@ -6,7 +6,7 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 |---|---|---:|---:|---:|
 | Sinnoh | `extended-sinnoh` | 210 | 210 | 0 |
 | Kanto | `kanto` | 151 | 150 | 1 |
-| Johto | `updated-johto` | 256 | 248 | 8 |
+| Johto | `updated-johto` | 256 | 255 | 1 |
 | Hoenn | `hoenn` | 202 | 202 | 0 |
 | Unova | `updated-unova` | 301 | 283 | 18 |
 | Kalos | `kalos-central`, `kalos-coastal`, `kalos-mountain` | 457 | 457 | 0 |
@@ -20,7 +20,6 @@ Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's Nation
 ## Johto
 
 - **had in another region: Hoenn's Faraway Island**: Mew
-- **plan 38 · EX4: headbutt trees**: Pineco, Forretress, Exeggcute, Exeggutor, Heracross, Aipom, Ambipom
 
 ## Hoenn
 

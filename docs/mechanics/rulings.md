@@ -10122,6 +10122,24 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   that shape: the day's six tiles of the route's surfable water (row by row), worked out by `SplitMix` from the day's number (Dewford's
   trend isn't kept); a cast with any rod onto one hooks Feebas **one time in two** (the one draw, made only on those tiles), at levels
   20 to 25, in every slot of the rod's table. `HoennSpeciesTests.Owed` no longer lists Feebas and Milotic.
+- **Headbutt trees** (EX4, 2026-11-12; `Overworld/HeadbuttTrees.cs`, `Map.HeadbuttTreeAt`, `common.HeadbuttTree`). HeartGold's
+  trees and their three tables (common, rare, secret; six slots each with a range of levels) are imported whole by `--game
+  heartgold --data` into each area's `headbutt` (a tree's tiles are in the map's own tiles, the same as the area's objects, and
+  all but a few lie on HeartGold's `HEADBUTT` behaviour: two of Route 35's lie in its grass, where nobody faces them as a tree);
+  **the pinned pokeheartgold holds none of its Headbutt code**, so the rule is
+  ours: a secret tree gives its own table; of the plain trees, a tree is **rich** for a player when the last digit of the 16-bit
+  trainer number plus the tree's number, modulo 5, is under 2 (two trees in five, with no draw: the same tree always gives the same
+  table to the same player), giving the rare table **four times in five**, and the others the common table **half the time**; a slot
+  by Gold and Silver's Headbutt weights (50, 15, 15, 10, 5, 5) and a level in its range, the lead's ability having its say and no
+  Repel keeping it away (`WildEncounterRules.Meet`, as a rock smashed). A tile of the `HEADBUTT` behaviour no area lists is a tree
+  with nobody in it: it shakes and nothing falls. Only the shake draws, on the map's generator, so nothing else moves. The field
+  offers a tree only **in Johto** (decision 6), on foot, to a team that knows the move, and asks no Badge (HeartGold asks none); the
+  party menu lists HEADBUTT only in Johto. Ilex Forest's man by the way in (`d36r0101_gsbigman`; which of HeartGold's people of the
+  forest teaches it was not read, its scripts being outside what the importer fetches) teaches Headbutt once, free (`tutor once`,
+  `MoveTutors.Kanto`'s row: a species that may learn Headbutt or Zen Headbutt, its nearest kin among Platinum's tutors' moves;
+  `FLAG_TUTOR_HEADBUTT`). The Pokédex's area page shows the trees' species as "Headbutt trees" (`HabitatWays.Headbutt`), Johto's
+  areas alone (HeartGold's Kanto routes have trees too, which Johto's world holds and shakes, but Johto's habitats file lists none of
+  Kanto's areas, as before).
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)

@@ -34,6 +34,39 @@
     "Pidgey",
     "Pidgey"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 12, "maxLevel": 14 },
+      { "species": "Pineco", "level": 12, "maxLevel": 14 },
+      { "species": "Pineco", "level": 12, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 12, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 12, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 12, "maxLevel": 14 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 15, "maxLevel": 17 },
+      { "species": "Spinarak", "level": 15, "maxLevel": 17 },
+      { "species": "Spinarak", "level": 15, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 17 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 17 }
+    ],
+    "trees": [
+      "390,210 390,209 390,208 391,208 391,209 391,210",
+      "396,217 397,217",
+      "408,215 408,214",
+      "401,207 401,206 401,205 400,205",
+      "400,217 401,217 401,216",
+      "386,213 387,213 387,214 387,215",
+      "385,201 385,200",
+      "396,201 396,200",
+      "400,193 401,193",
+      "406,199 407,199",
+      "388,195 389,195 389,194",
+      "408,207 408,206",
+      "404,221 405,221"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

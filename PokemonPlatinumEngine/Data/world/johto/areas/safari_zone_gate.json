@@ -14,6 +14,43 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Pineco", "level": 14, "maxLevel": 16 },
+      { "species": "Pineco", "level": 14, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 16 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 17, "maxLevel": 19 },
+      { "species": "Spinarak", "level": 17, "maxLevel": 19 },
+      { "species": "Spinarak", "level": 17, "maxLevel": 19 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 19 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 19 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 19 }
+    ],
+    "trees": [
+      "77,317 78,317",
+      "76,313 76,312",
+      "76,311 76,310",
+      "76,307 76,306",
+      "76,303 76,302",
+      "76,301 76,300",
+      "76,297 76,296",
+      "77,293 78,293",
+      "79,293 80,293",
+      "97,293 98,293",
+      "99,293 100,293",
+      "99,317 100,317",
+      "101,315 101,314",
+      "101,309 101,308",
+      "101,307 101,306",
+      "101,305 101,304",
+      "101,299 101,298"
+    ]
+  },
   "warps": [
     { "x": 88, "z": 293, "to": "safari_zone_entrance_interior", "toWarp": 0 },
     { "x": 89, "z": 293, "to": "safari_zone_entrance_interior", "toWarp": 0 },
