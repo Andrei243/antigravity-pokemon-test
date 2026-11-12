@@ -33,8 +33,9 @@ internal sealed class OpenFoliage
 
     private readonly Mesh[] trees = new Mesh[Rows];
     private readonly int[] treeTriangles = new int[Rows];
-    private readonly Mesh[] tufts = new Mesh[OpenGrass.Variants];
-    private Material instanced, instancedDepth, impostor;
+    private readonly Mesh[] tufts = new Mesh[OpenGrass.Looks];
+    private Material instanced, instancedDepth, impostor, leaves, leavesDepth;
+    private Texture2D sheet;
     private Texture2D atlas;
     private bool loaded, baked;
 
@@ -49,7 +50,7 @@ internal sealed class OpenFoliage
 
     // A frame's near trees and tufts, a list of transforms a shape
     private readonly List<(float D, Matrix4x4 M)>[] near = new List<(float, Matrix4x4)>[Rows];
-    private readonly List<Matrix4x4>[] grass = new List<Matrix4x4>[OpenGrass.Variants];
+    private readonly List<Matrix4x4>[] grass = new List<Matrix4x4>[OpenGrass.Looks];
     private Matrix4x4[] buffer = new Matrix4x4[256];
 
     // What the last frame drew, for the harness
@@ -65,27 +66,34 @@ internal sealed class OpenFoliage
     public OpenFoliage()
     {
         for (int i = 0; i < Rows; i++) near[i] = new();
-        for (int i = 0; i < OpenGrass.Variants; i++) grass[i] = new();
+        for (int i = 0; i < OpenGrass.Looks; i++) grass[i] = new();
     }
 
     /// <summary>The meshes and materials, made the first time (the window's thread).</summary>
     public void Ensure(OpenShaders shaders)
     {
         if (loaded) return;
+        // The trees' sheet: leaves, needles and bark, smooth at any size, what is cut out cut by its alpha
+        sheet = OpenTreeArt.PaintSheet().ToTexture(1, "opentree");
+        Raylib.GenTextureMipmaps(ref sheet);
+        Raylib.SetTextureWrap(sheet, TextureWrap.Clamp);
+        Raylib.SetTextureFilter(sheet, TextureFilter.Trilinear);
         for (int row = 0; row < Rows; row++)
         {
             var b = TreeOf(row);
             treeTriangles[row] = b.VertexCount / 3;
             trees[row] = b.Upload("opentree");
         }
-        for (int v = 0; v < OpenGrass.Variants; v++)
+        for (int v = 0; v < OpenGrass.Looks; v++)
         {
             var b = new MeshBuilder();
-            var (root, tip) = OpenGrass.ColoursOf(v);
-            SoftFoliage.Tuft(b, 0, 0, 0.5f, 0.42f, 11 + v * 7, root, tip);
+            var (root, tip) = OpenGrass.ColoursOf(v % OpenGrass.Variants);
+            OpenTreeArt.Tuft(b, 11 + v * 7, root, tip, flowers: v >= OpenGrass.Variants);
             tufts[v] = b.Upload("opentree");
         }
         instanced = RenderContext.MaterialFor(shaders.Instanced, SceneTextures.White);
+        leaves = RenderContext.MaterialFor(shaders.Instanced, sheet);
+        leavesDepth = RenderContext.MaterialFor(shaders.InstancedDepth, sheet);
         instancedDepth = RenderContext.MaterialFor(shaders.InstancedDepth, SceneTextures.White);
         loaded = true;
     }
@@ -93,13 +101,8 @@ internal sealed class OpenFoliage
     /// <summary>A tree's shape of a row: the soft pine's or round tree's of the row's seed, standing at the origin.</summary>
     private static MeshBuilder TreeOf(int row)
     {
-        var batches = new MeshBatches();
         int variant = row % OpenTree.Variants;
-        if (row < OpenTree.Variants) TreeModels.Pine(batches, 0, 0, 3 + variant * 5, 17 + variant * 3, 1f, soft: true);
-        else TreeModels.Round(batches, 0, 0, 3 + variant * 5, 17 + variant * 3, 1f, soft: true);
-        var all = new MeshBuilder();
-        foreach (var (_, _, _, builder) in batches.All) all.Append(builder, Matrix4x4.Identity);
-        return all;
+        return row < OpenTree.Variants ? OpenTreeArt.Pine(variant) : OpenTreeArt.Broadleaf(variant);
     }
 
     /// <summary>
@@ -115,9 +118,7 @@ internal sealed class OpenFoliage
         for (int row = 0; row < Rows; row++)
         {
             var batches = new MeshBatches();
-            int variant = row % OpenTree.Variants;
-            if (row < OpenTree.Variants) TreeModels.Pine(batches, 0, 0, 3 + variant * 5, 17 + variant * 3, 1f, soft: true);
-            else TreeModels.Round(batches, 0, 0, 3 + variant * 5, 17 + variant * 3, 1f, soft: true);
+            batches.For(sheet).Append(TreeOf(row), Matrix4x4.Identity);
             float top = 0, half = 0;
             foreach (var (_, _, _, b) in batches.All)
             {
@@ -265,35 +266,38 @@ internal sealed class OpenFoliage
     public int DrawDepth(Func<Vector3, Vector3, bool> casts)
     {
         int triangles = 0;
+        Rlgl.DisableBackfaceCulling();
         for (int row = 0; row < Rows; row++)
         {
             int n = 0;
             foreach (var (_, m) in near[row])
             {
                 var at = m.Translation;
-                if (!casts(at - new Vector3(3, 0, 3), at + new Vector3(3, 9, 3))) continue;
+                if (!casts(at - new Vector3(4, 0, 4), at + new Vector3(4, 13, 4))) continue;
                 Put(ref n, m);
             }
             if (n == 0) continue;
-            Raylib.DrawMeshInstanced(trees[row], instancedDepth, buffer, n);
+            Raylib.DrawMeshInstanced(trees[row], leavesDepth, buffer, n);
             triangles += n * treeTriangles[row];
         }
+        Rlgl.EnableBackfaceCulling();
         return triangles;
     }
 
     /// <summary>The near trees and the tufts, in the scene's pass (the scenery's uniforms set): opaque, so the near first saves shading.</summary>
     public void Draw()
     {
+        // Leaves are cards seen from both sides
+        Rlgl.DisableBackfaceCulling();
         for (int row = 0; row < Rows; row++)
         {
             int n = 0;
             foreach (var (_, m) in near[row]) Put(ref n, m);
             if (n == 0) continue;
-            Raylib.DrawMeshInstanced(trees[row], instanced, buffer, n);
+            Raylib.DrawMeshInstanced(trees[row], leaves, buffer, n);
             FrameProfiler.Count(n * treeTriangles[row]);
         }
-        Rlgl.DisableBackfaceCulling();
-        for (int v = 0; v < OpenGrass.Variants; v++)
+        for (int v = 0; v < OpenGrass.Looks; v++)
         {
             int n = 0;
             foreach (var m in grass[v]) Put(ref n, m);
@@ -348,6 +352,9 @@ internal sealed class OpenFoliage
             foreach (var m in tufts) Gpu.Unload(m);
             Raylib.MemFree(instanced.Maps);
             Raylib.MemFree(instancedDepth.Maps);
+            Raylib.MemFree(leaves.Maps);
+            Raylib.MemFree(leavesDepth.Maps);
+            Gpu.Unload(sheet);
         }
         if (baked)
         {

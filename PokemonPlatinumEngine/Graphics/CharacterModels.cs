@@ -121,7 +121,7 @@ internal static class HumanBones
 /// Where a humanoid's face is in the sculpted pose: the point on the surface between the eyes (field sprites
 /// stamp their pixel faces there), the eyes' half spacing, and the square the battle face texture covers.
 /// </summary>
-internal readonly record struct FaceLayout(Vector3 Anchor, float EyeHalfSpacing, Vector3 TextureCenter, float TextureHalfSize);
+internal readonly record struct FaceLayout(Vector3 Anchor, float EyeHalfSpacing, Vector3 TextureCenter, float TextureHalfSize, bool Modelled = false);
 
 /// <summary>
 /// A character sculpted with the SDF kit (<see cref="SdfModel"/>), meshed once into a smooth skinned mesh, and
