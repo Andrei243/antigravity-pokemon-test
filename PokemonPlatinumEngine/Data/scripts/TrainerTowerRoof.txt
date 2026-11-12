@@ -5,7 +5,7 @@
 
 script Owner
   face self player
-  speaker "Owner"
+  speaker trainer_tower_owner "Owner"
   facility trainertower climbing
   if result == 3 goto Climbed
   goto Visit
