@@ -1074,6 +1074,17 @@ public class Player
         // A hand-off under way goes on while the stick still points across its edge
         if (handOff is { } going && Vector2.Dot(way, Unit(going)) < FreeMovement.HandOffCone) handOff = null;
 
+        // The skates in a free place (plan 30's gate, plan 23 · Z1's rule): with the run held and the skates given they
+        // are put on wherever the grid would skate the step ahead, and taken off where it wouldn't (tall grass, stairs),
+        // as TryStep does a step at a time; let go, the idle branch takes them off as ever
+        if (skating && Mode is TravelMode.OnFoot or TravelMode.Skating)
+        {
+            var skater = WalkerOn(map) with { Mode = TravelMode.Skating, Running = false, Height = standing };
+            bool refused = FieldMovement.Step(map, gx, gy, face, skater).Obstacle == Obstacle.Skates;
+            if (!refused && Mode == TravelMode.OnFoot) { Mode = TravelMode.Skating; coasted = false; IsRunning = false; }
+            else if (refused && Mode == TravelMode.Skating) { Mode = TravelMode.OnFoot; IsRunning = HasRunningShoes; }
+        }
+
         var walker = WalkerOn(map) with { Height = standing };
         bool pushes = PushesBoulders && Mode == TravelMode.OnFoot;
         var pace = FreeMovement.PaceFor(tilt, AnalogSpeed, map.BehaviourAt(gx, gy), walker);

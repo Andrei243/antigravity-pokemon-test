@@ -56,6 +56,29 @@ public class KalosGateTests
         }
     }
 
+    // Put down past Kalos's opening on a tile of its arrival town, with whatever the place's arrival starts read through
+    private static (Map Kalos, int X, int Y) Down(GameEngine engine)
+    {
+        var game = engine.Drive;
+        StoryMigration.PastTheOpening(game.Story, ScriptLibrary.Default);
+        if (game.Party.Count == 0) game.Party.Add(new PokemonPlatinumEngine.Models.Pokemon(PokemonDatabase.Get("Froakie")!, 12));
+        game.TrainersLookOnArrival = false;
+        var kalos = MapDatabase.Get("Kalos");
+        var arrival = RegionDatabase.Get(RegionDatabase.Kalos)!.ArrivalSpot!;
+        var (x, y) = OpenLane(kalos, arrival.X, arrival.Y);
+        game.Place(kalos, x, y, Direction.Right);
+        game.ArriveOnMap();
+        for (int f = 0; f < 1200 && (game.ScriptNow != null || game.State != GameState.Overworld); f++)
+        {
+            InputManager.Feed(f % 2 == 0 ? ActionFrame.Press(GameAction.Confirm) : ActionFrame.None);
+            engine.Update(Frame);
+        }
+        Assert.Null(game.ScriptNow);
+        game.Place(kalos, x, y, Direction.Right);
+        Run(engine, 60);
+        return (kalos, x, y);
+    }
+
     // A tile of Kalos's arrival town with three plain walks to the east of it (no grass, no stairs), to skate on
     private static (int X, int Y) OpenLane(Map map, int nearX, int nearY)
     {
@@ -88,13 +111,8 @@ public class KalosGateTests
             Assert.True(engine.MovementHere.Offers(RegionMode.Skates));
             Assert.Equal(CharacterKit.Grown, engine.KitHere);
 
-            var kalos = MapDatabase.Get("Kalos");
-            var arrival = RegionDatabase.Get(RegionDatabase.Kalos)!.ArrivalSpot!;
-            var (x, y) = OpenLane(kalos, arrival.X, arrival.Y);
-            game.Place(kalos, x, y, Direction.Right);
-            game.TrainersLookOnArrival = false;
-            Run(engine, 2);
-            Assert.True(game.Player.MovesFreely(kalos));
+            var (kalos, x, y) = Down(engine);
+            Assert.True(game.Player.MovesFreely(kalos), $"player {game.Player.Directions}, here {engine.MovementHere.Directions} on {game.Map.Name} ({engine.Here.Id}), puzzle {kalos.Puzzle != null}, state {game.State}, at {game.Player.GridX},{game.Player.GridY}");
             Assert.Equal(CameraOf(kalos), FieldCamera.Kalos);
 
             // Pushed a little to the east and let go: the body stands off its tile's centre
@@ -138,12 +156,7 @@ public class KalosGateTests
         Play(engine =>
         {
             var game = engine.Drive;
-            var kalos = MapDatabase.Get("Kalos");
-            var arrival = RegionDatabase.Get(RegionDatabase.Kalos)!.ArrivalSpot!;
-            var (x, y) = OpenLane(kalos, arrival.X, arrival.Y);
-            game.Place(kalos, x, y, Direction.Right);
-            game.TrainersLookOnArrival = false;
-            Run(engine, 2);
+            var (kalos, x, y) = Down(engine);
 
             // Saved between tiles and read back, the body wakes where it stood
             game.Player.SetOffset(-40, 33);
