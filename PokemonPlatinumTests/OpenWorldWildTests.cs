@@ -335,7 +335,7 @@ public class OpenWorldWildTests
     [InlineData("""{ "kinds": { "Calm": {}, "Shy": {}, "Curious": {} } }""", "has no row for Aggressive")]
     [InlineData("""{ "kinds": { "Calm": {}, "Shy": {}, "Curious": {}, "Aggressive": {}, "Sleepy": {} } }""", "'Sleepy' is no temperament")]
     [InlineData("""{ "kinds": { "Calm": {}, "Shy": { "sight": 40 }, "Curious": {}, "Aggressive": {} } }""", "sight and scent are from nought")]
-    [InlineData("""{ "kinds": { "Calm": {}, "Shy": {}, "Curious": {}, "Aggressive": {} }, "types": { "Sound": "Shy" } }""", "no such type")]
+    [InlineData("""{ "kinds": { "Calm": {}, "Shy": {}, "Curious": {}, "Aggressive": {} }, "types": { "Cosmic": "Shy" } }""", "no such type")]
     [InlineData("""{ "kinds": { "Calm": {}, "Shy": {}, "Curious": {}, "Aggressive": {} }, "species": { "Bidoof": "Grumpy" } }""", "'Grumpy' is no temperament")]
     [InlineData("""{ "kinds": { "Calm": {}, "Shy": {}, "Curious": {}, "Aggressive": {} }, "sight": 3 }""", "no such field")]
     public void ATemperamentsFileThatBreaksItsRulesIsRefused(string text, string says)

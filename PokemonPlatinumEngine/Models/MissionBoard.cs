@@ -155,11 +155,13 @@ public static class MissionWeek
         var missions = new List<Mission>();
         if (regions.Count == 0) return missions;
         var rng = new SplitMix(SeedFor(date, version ?? GameDataFiles.Version));
+        // Each mission in a region of its own while there are regions enough, then round again, from a region drawn once
+        // (drawn afresh for each, two regions could take all five)
+        int first = rng.Int(regions.Count);
         for (int n = 0; n < File.Plain + File.TimedCount; n++)
         {
             bool timed = n >= File.Plain;
-            // Each mission in a region of its own while there are regions enough, then round again
-            string region = regions[(rng.Int(regions.Count) + n) % regions.Count];
+            string region = regions[(first + n) % regions.Count];
             var rows = File.Kinds.Where(k => (!timed || k.Timed) && Fits(k, region)).ToList();
             if (rows.Count == 0) continue;
             var row = Weighted(rows, rng);

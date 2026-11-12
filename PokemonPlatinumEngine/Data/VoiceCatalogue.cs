@@ -201,6 +201,14 @@ public static class VoiceCatalogue
                 if (cries > 0) result.Unvoiced["a Pokémon's cry"] = result.Unvoiced.GetValueOrDefault("a Pokémon's cry") + cries;
                 continue;
             }
+            // A thing of the map with a card of its own (the Seagallop at its pier, a League door, an appliance) is
+            // looked at, not spoken to: its words are the game's own, as a sign's are
+            if (IsThing(p.Look))
+            {
+                int words = p.Dialog.Count + (p.Before != null ? 1 : 0) + (p.After != null ? 1 : 0);
+                result.Unvoiced["a thing's words"] = result.Unvoiced.GetValueOrDefault("a thing's words") + words;
+                continue;
+            }
             for (int k = 0; k < p.Dialog.Count; k++)
                 result.Lines.Add(Make(Text.PersonLineKey(p.Kind, p.Place, p.Key, PersonField.Dialog, k), voice, speaker, p.Dialog[k], ValuesFor(region)));
             if (p.Before != null) result.Lines.Add(Make(Text.PersonLineKey(p.Kind, p.Place, p.Key, PersonField.Before, 0), voice, speaker, p.Before, ValuesFor(region)));
@@ -234,6 +242,10 @@ public static class VoiceCatalogue
     }
 
     private const string NPCPokemon = "Pokemon";
+
+    /// <summary>Whether a look is a thing of the map drawn as a card of its own (<see cref="NPC.GymThing"/>), never a person.</summary>
+    private static bool IsThing(string? look) =>
+        !string.IsNullOrEmpty(look) && new Overworld.NPC { NpcType = look! }.GymThing != null;
 
     private static readonly System.Text.RegularExpressions.Regex TrainerTag = new(@"^[A-Z][^:\n]{2,40}: ");
 

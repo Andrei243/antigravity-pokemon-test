@@ -142,16 +142,24 @@ internal static class MoveSightings
     /// <summary>
     /// Platinum's moves, by name, that Y10's first part takes (plan 25 · Y10a): seen after Route 224, the post-game from
     /// the Fuego Ironworks' sea (Canalave City's rod) to Stark Mountain. Camouflage, which Y6 took by its own rule, is
-    /// left out, and so is Flatter (a later place now shows it, but its look and sound were written in Y10b).
+    /// left out, and so are the moves of <see cref="SeenSinceY10b"/>.
     /// </summary>
     public static IReadOnlyList<string> TenthBatchFirstPart
     {
         get
         {
             int from = PlaceRanks.Value[NinthBatchEnds] + 100;
-            return All.Where(s => s.Rank >= from && s.Move != "Camouflage" && s.Move != "Flatter").Select(s => s.Move).ToList();
+            return All.Where(s => s.Rank >= from && s.Move != "Camouflage" && !SeenSinceY10b.Contains(s.Move)).Select(s => s.Move).ToList();
         }
     }
+
+    /// <summary>
+    /// The moves Y10b gave a look and a sound because nothing showed them then, which later places show in the post-game
+    /// now (Flatter; and Me First, Power Trick, Role Play, Sky Attack and Weather Ball since the post-game's later rooms
+    /// and hideaways): they stay Y10b's.
+    /// </summary>
+    public static readonly IReadOnlySet<string> SeenSinceY10b = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        { "Flatter", "Me First", "Power Trick", "Role Play", "Sky Attack", "Weather Ball" };
 
     private static readonly Lazy<Dictionary<string, int>> PlaceRanks =new(() => Ranks().Ranks);
 

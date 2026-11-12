@@ -83,6 +83,7 @@ public class ItemSourcesTests
     private const string PaldeaStones = "plan 34 · PD9: Paldea's Hall of Fame, its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
     private const string TealMask = "plan 34 · PD10 (optional): the Teal Mask";
     private const string IndigoDisk = "plan 34 · PD11 (optional): the Indigo Disk";
+    private const string Carpathia = "plan 46 · CP18: Carpathia's file and first town, where the Sound type's items are first had (CP2 made them)";
 
     /// <summary>
     /// What no region of the game gives yet by a sure way, and who owes it. Each line names a plan and a session; the
@@ -126,7 +127,9 @@ public class ItemSourcesTests
         (Paldea, new[] { "Malicious Armor", "Auspicious Armor", "Punching Glove" }),
         (PaldeaStones, new[] { "Meowscaradite", "Skeledirgite", "Quaquavalite" }),
         (TealMask, new[] { "Syrupy Apple", "Unremarkable Teacup", "Masterpiece Teacup" }),
-        (IndigoDisk, new[] { "Metal Alloy" }));
+        (IndigoDisk, new[] { "Metal Alloy" }),
+        // Carpathia, the region of our own (plan 46): the Sound type's Gem and Z-Crystal
+        (Carpathia, new[] { "Sound Gem", "Sonorium Z" }));
 
     /// <summary>What the rules run that nothing gives and nobody owes, and what is owed that something gives already.</summary>
     public static (List<string> Unaccounted, List<string> Stale) Gaps(ItemSources sources, IEnumerable<string> items, IReadOnlyDictionary<string, string> owed)
@@ -143,9 +146,9 @@ public class ItemSourcesTests
         var run = RulesRun();
         // The kinds the plan names are all here, the numbers of the data's
         Assert.Equal(104, run.Count(r => r.Kind == "a Mega Stone"));
-        Assert.Equal(35, run.Count(r => r.Kind == "a Z-Crystal"));
+        Assert.Equal(36, run.Count(r => r.Kind == "a Z-Crystal")); // the 35 of the games and plan 46 · CP2's Sonorium Z
         Assert.Equal(4, run.Count(r => r.Kind == "one of Genesect's drives"));
-        Assert.Equal(18, run.Count(r => r.Kind == "a Gem"));
+        Assert.Equal(19, run.Count(r => r.Kind == "a Gem")); // the 18 of the games and plan 46 · CP2's Sound Gem
         Assert.Equal(8, run.Count(r => r.Kind == "a key item that changes a form"));
         Assert.Equal(5, run.Count(r => r.Kind == "a later mechanic's key item"));
 
