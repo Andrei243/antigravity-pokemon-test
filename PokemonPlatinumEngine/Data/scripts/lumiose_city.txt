@@ -224,3 +224,28 @@ script SuspectLady
   setflag FLAG_KALOS_STING_LADY
   addvar VAR_KALOS_STING 1
   end
+
+
+# ------------------------------------------------------------------ the Borrowed Masterpiece (plan 41 · EG8, provisional)
+# The Open Door Agency's case in Kalos: the guard by the museum shows the frame's screws worn bright. The porter and the
+# painter are in Kiloude City (kiloude_city.txt).
+
+script CaseKalosGuard
+  face self player
+  if flag FLAG_CASE_KALOS_CLOSED goto Thanks
+  if flag FLAG_CASE_KALOS_TAKEN goto Case
+  say "I guard the museum by night. Nothing ever goes missing on my watch. Well. Nothing that isn't back by morning."
+  end
+label Case
+  if flag FLAG_CASE_KALOS_CLUE_SCREWS goto Again
+  say "The empty frame? It's still on the wall, look. Nobody moves it. But the screws on its back are worn bright."
+  say "Screws only shine like that when they're turned, and turned often. Somebody takes the canvas out every night."
+  setflag FLAG_CASE_KALOS_CLUE_SCREWS
+  text "{player} noted the frame's screws, worn bright from turning."
+  end
+label Again
+  say "Bright screws on an old frame. The canvas comes out, and the frame stays put."
+  end
+label Thanks
+  say "The painting stays on its wall all night now. My watch has never been so dull. Or so peaceful."
+  end

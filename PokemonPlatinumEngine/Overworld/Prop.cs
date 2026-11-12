@@ -338,6 +338,18 @@ public enum PropType
     /// Zygarde Cube when spoken to (<c>common.ZygardeCell</c>).
     /// </summary>
     ZygardeCell,
+    /// <summary>
+    /// A plinth of the Laurel Gallery (plan 41 · EG2, EG4): pale stone with a laurel wreath of a region's colour on its face
+    /// and standing on its slab, our own drawing (<c>HubArt</c>); its region is the prop's <see cref="Prop.Model"/>. The
+    /// gallery is furnished with one for each region finished; the room's own tiles say that it blocks.
+    /// </summary>
+    Plinth,
+    /// <summary>
+    /// A team's banner in Grayfall Keep (plan 41 · EG9): a cloth of the team's colours of ours hung on the back wall over its
+    /// tile, its team the prop's <see cref="Prop.Model"/> (<c>HubArt</c>). It lies on the wall's row as a painting does and
+    /// blocks nothing.
+    /// </summary>
+    Banner,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

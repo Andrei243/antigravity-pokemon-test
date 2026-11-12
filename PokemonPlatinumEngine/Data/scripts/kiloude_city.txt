@@ -93,3 +93,64 @@ label Later
 label Tomorrow
   say "That's enough for one day. Come back tomorrow, and I'll be stronger!"
   end
+
+
+# ------------------------------------------------------------------ the Borrowed Masterpiece (plan 41 · EG8, provisional)
+# The Open Door Agency's case in Kalos: the station's porter sees a long flat parcel on the last train in and the first
+# train back, and a painter smells fresh varnish on her neighbour's canvases. Once Looker has the deductions the
+# museum's restorer, Odile Ferrand, waits in Kiloude City's square (FLAG_CASE_KALOS_ODILE_WAITS).
+
+script CaseKalosPorter
+  face self player
+  if flag FLAG_CASE_KALOS_CLOSED goto Thanks
+  if flag FLAG_CASE_KALOS_TAKEN goto Case
+  say "I carry the bags off the train from Lumiose. Big ones, small ones, ones that bark."
+  end
+label Case
+  if flag FLAG_CASE_KALOS_CLUE_TICKET goto Again
+  say "A regular? There's one lady. Every night, the last train in, with a long flat parcel she won't let me carry."
+  say "And every morning, the first train back to Lumiose, with the same parcel. Here's one of her old tickets."
+  setflag FLAG_CASE_KALOS_CLUE_TICKET
+  text "{player} noted the ticket for the last train in and the first out."
+  end
+label Again
+  say "Last train in, first train out, and a parcel as long as a door. She never misses."
+  end
+label Thanks
+  say "The lady with the parcel comes by day now, and she lets me carry her easel. Progress!"
+  end
+
+script CaseKalosPainter
+  face self player
+  if flag FLAG_CASE_KALOS_CLOSED goto Thanks
+  if flag FLAG_CASE_KALOS_TAKEN goto Case
+  say "Kiloude's light is the best in Kalos. I paint the sea every morning, and every morning it's different."
+  end
+label Case
+  if flag FLAG_CASE_KALOS_CLUE_VARNISH goto Again
+  say "Odd things at night? The house by the shore smells of fresh varnish every morning. Somebody paints there till dawn."
+  say "Students, I think. I heard a teacher saying, look at the brushstrokes, see how the master did it."
+  setflag FLAG_CASE_KALOS_CLUE_VARNISH
+  text "{player} noted the smell of fresh varnish at night."
+  end
+label Again
+  say "Fresh varnish every morning. Whoever they are, they work hard."
+  end
+label Thanks
+  say "There's a painting class in town now, by day. I've joined it! Never too old to learn."
+  end
+
+script CaseKalosOdile
+  face self player
+  speaker "Odile"
+  if flag FLAG_CASE_KALOS_CULPRIT end
+  scene "OdileFaced"
+  say "So Looker has found me out. Yes, I take the painting out of its frame each night. I bring it here, and I bring it back."
+  say "My students can't learn from a postcard. They must see the real brushstrokes! Still, if you insist, we shall duel."
+  battle self as "case_kalos_odile"
+  say "...A masterful stroke. Very well. I'll ask the museum properly. Tell Looker I'll call at his agency."
+  setflag FLAG_CASE_KALOS_CULPRIT
+  clearflag FLAG_CASE_KALOS_ODILE_WAITS
+  hide self
+  endscene
+  end

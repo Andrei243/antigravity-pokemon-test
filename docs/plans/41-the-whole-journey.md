@@ -144,14 +144,44 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 - [ ] EG1 The hub: a region of our own, its ways in and its rules
 - [ ] EG2 Every region's Hall of Fame in one hall (its ribbons built 2026-11-09 with plan 36 · TR4: the four Champion ribbons of Kalos, Alola, Galar and Paldea as rows of ours after Platinum's eighty, added by `tools/DataImporter/Program.cs`, their `ribbonDeeds.*` words and `RibbonRules.Kind`; `RibbonRules.ChampionOf(region)` and `GiveChampion(party, region)`, which `halloffame` hands the host's region, so Hoenn's, Kalos's and Alola's Halls of Fame give their own and the rest Sinnoh's; Galar's and Paldea's wait for their regions; `TrainingHallsTests.EachRegionsHallOfFameHandsItsOwnChampionRibbon`. The entry's region, `Firsts`, the hall of Champions and the screen's tabs are still to come)
 - [x] EG1 The hub: a region of our own, its ways in and its rules (2026-11-09; "EG1 as built", below)
-- [ ] EG2 Every region's Hall of Fame in one hall
+- [x] EG2 Every region's Hall of Fame in one hall (2026-11-12; "EG2, EG4, EG7 to EG9 as built", below)
 - [x] EG3 The plaza: stalls the player sets out and ranks up (2026-11-12; "EG3 and EG6 as built", below)
-- [ ] EG4 The Champions' circuit and its final
+- [x] EG4 The Champions' circuit and its final (2026-11-12; below)
 - [x] EG5 The Leaders' rematches where a region has none: Kanto's seven Gyms (teams `kanto_leader_<who>_rematch`, Koga ours, Viridian empty) and Unova's eight (teams of ours, `unova_leader_<who>_rematch`: Black 2's Challenge teams lifted to an ace at 70) fight their Leader again once a day after the region's Hall of Fame (`FLAG_DAILY_<REGION>_<WHO>_REMATCH`), Johto's Four and Lance fight `_2` in their rooms; `RematchParityTests`, `RematchScriptTests`, `journey` mode (`JOURNEY_FROM=rematches`, eg50 to eg52); ruling "The Leaders' rematches in every region"
 - [x] EG6 The weekly board of missions (2026-11-12; "EG3 and EG6 as built", below)
-- [ ] EG7 The agency and its first case
-- [ ] EG8 Cases in Kanto, Johto, Hoenn and Unova
-- [ ] EG9 The gathering
+- [x] EG7 The agency and its first case (2026-11-12; below)
+- [x] EG8 Cases in Kanto, Johto, Hoenn and Unova, and Kalos's (2026-11-12; below; Kalos's outline provisional)
+- [x] EG9 The gathering (2026-11-12, both parts in one; below)
+
+## EG2, EG4, EG7 to EG9 as built (2026-11-12)
+
+- **Names** (the outline sheet's answers of 2026-11-10): the Laurel Gallery (hall of Champions, `Hub_HallOfChampions`),
+  the Laurel Circuit and its Laurel Court (`Hub_Arena`), the Open Door Agency (`Hub_Office`, 6b: cluttered, Looker as a
+  clerk), Grayfall Keep on Grayfall Islet (`Hub_Keep`). Warps 3, 4 and 5 of `hub_town` are open; 2 (the plaza) stays EG3's.
+  The town itself is still called "The Hub" on its sign and area (renaming it Wayhaven, 1a, is left to whoever next edits
+  the hub's overlay and area, EG3 or EG6, to keep this wave's edits apart).
+- **EG2**: `HallOfFameEntry.Region` and `Number`, `HallOfFame.Firsts`, `Of(region)`, `SaveData.HallOfFameFirsts`;
+  `HallOfFameScreen` tabs (`Tabs`, `ChangeTab`, `Open(tab)`, `OpenOn`); `Models/LaurelGallery.cs` and
+  `GameEngine.FurnishGallery`; `PropType.Plinth` (`Graphics/HubArt.cs`, the laurel colours); `halloffame look <region>`.
+  Tests `HallOfChampionsTests`.
+- **EG4**: `Models/ChampionsCircuit.cs` (`CircuitState`, saved as `SaveData.Circuit`; `Level`, `Begin`, `Stamp`, `Ready`,
+  `FinalOrder`, `WinFinal`, `Lift`), `Data/circuit.json` (Sinnoh to Kalos, Diantha on `kalos_diantha_rematch`), `Op.Circuit`,
+  the lift in `StartTrainerBattle`, the stamp in both hosts' `EnterHallOfFame`, the desk, the court and its herald, the
+  title LAUREL CHAMPION, the medal row `circuits` (1, 3, 5: 123 medals). The lift is EG3's `LevelLift.To`
+  (`ChampionsCircuit.Lift` was folded into it at the merge). Tests `ChampionsCircuitTests`.
+- **EG7, EG8**: `Story/Cases.cs`, `Op.Deduce`, the cases as requests (`case_<region>`), Looker's dispatcher in
+  `Hub_Office.txt`, a case each for Sinnoh (the Villa Larder), Kanto (the Ferry's Extra Passenger), Johto (the Alph
+  Etchings), Hoenn (the Salt Run), Unova (the Double-Booked Hall) and Kalos (the Borrowed Masterpiece, provisional), each
+  with its clue people in the region's post-game places and a culprit of ours (`case_<region>_<name>`). Tests `CaseTests`.
+- **EG9**: Looker's call once a circuit's final is won, his boat to `Hub_Keep` (one keep of six bays under the teams'
+  banners, `PropType.Banner`: Galactic, Rocket, Hoenn's two, the stage, Plasma, Flare), admins who open each bay, the
+  leaders each shown by their region's Hall of Fame, Ismene Quill (the gallery's keeper of records, 12a) who spread the
+  rumour (13b) and ends with a showman's finale (14b), every team ours (`<who>_gathering`, no legendary) lifted to the
+  circuit's level, the leaders' battle a day after (60a), the title SHOWSTOPPER, the songs `hub/keep` and
+  `hub/battle_galactic_boss` (a quick taunting waltz, 16b; the hub's boss-battle role, so every leader there fights to it).
+- **Owed**: the shots (`journey` mode's `eg2*` to `eg9*`, none taken this session), MP3s of the two songs for the user's ear,
+  the plaza's coins as rewards (EG3), Romanian words (N6), the voices' designs for the new speakers (provisional casts), the
+  user's word on Kalos's case outline, the gathering's rows for Alola, Galar and Paldea, and the town's name.
 
 ## EG3 and EG6 as built (2026-11-12)
 
@@ -213,3 +243,7 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 - **Owed**: the user's look at the town (the shots); the halls' insides (EG2, EG3, EG4, EG7) and the islet (EG9); plan 31's
   fuller sound for its song once MU1 lands; the Town Map of a region smaller than the map's window repeats its picture
   across the spare width (a fault of `ModernUi.DrawTownMap` that EG1 found and made safe, not fixed).
+
+### Kalos's case (EG8, provisional outline)
+
+**The Borrowed Masterpiece**, built in EG8 for the user to judge (not yet approved). A painting of Lumiose City's museum leaves its frame every night and is back on the wall by morning; the night guard swears the frame is empty at midnight. Clues: the frame's screws worn bright from turning (the night guard by the museum's door in Lumiose: the canvas comes out, the frame never moves), a ticket for the last train into Kiloude and the first train back, bought every night by a lady with a long flat parcel (the porter by Kiloude's station), and the smell of fresh varnish from a house by Kiloude's shore every morning, where a teacher tells students to study the brushstrokes (a painter on Kiloude's square; the decoy). Deductions: how the painting leaves unseen (the screws), and where it goes each night (the ticket). The culprit is Odile Ferrand, the museum's restorer, who carries the canvas to Kiloude so her students can copy it from life; she waits in Kiloude's square and battles with a team of ours round Kalos's artists' Pokémon (Smeargle, Aromatisse, Florges, Malamar, Aegislash, 76 to 79). Closed, the museum makes her a teacher by day, with the painting on its wall, and Looker pays 15,000 and a Big Pearl.

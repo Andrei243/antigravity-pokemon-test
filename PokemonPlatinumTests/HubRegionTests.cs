@@ -88,10 +88,11 @@ public class HubRegionTests
         Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists("hub/town"));
         Assert.Equal(Architecture.Crossroads, overlay.Architecture);
         Assert.True(Town.PlacedBuildings.Count >= 6, "the halls are found at their doors");
-        // The Pokémon Center, the harbour hall and Pennant Hall (EG3) are open; the hall of Champions, the office and the arena wait
-        foreach (var room in new[] { "Hub_PokemonCenter", "Hub_HarbourHall", "Hub_Plaza" })
+        // Every door of the town is open: the Pokémon Center, the harbour hall, Pennant Hall (EG3), the Laurel Gallery
+        // (EG2), the Open Door Agency (EG7) and the Laurel Court (EG4)
+        foreach (var room in new[] { "Hub_PokemonCenter", "Hub_HarbourHall", "Hub_Plaza", "Hub_HallOfChampions", "Hub_Office", "Hub_Arena" })
             Assert.Contains(Town.Warps, w => w.TargetMap == room && !w.Shut);
-        foreach (var shut in new[] { "Hub_HallOfChampions", "Hub_Office", "Hub_Arena" })
+        foreach (var shut in Array.Empty<string>())
             Assert.DoesNotContain(Town.Warps, w => w.TargetMap == shut && !w.Shut);
         Assert.Contains(MapNamed("Hub_PokemonCenter").Everyone, n => n.IsHealingNurse);
         Assert.Contains(MapNamed("Hub_PokemonCenter2F").Everyone, n => n.Script == "GlobalLink");

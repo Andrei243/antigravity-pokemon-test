@@ -611,7 +611,9 @@
               "Workbench",
               "DrillTarget",
               "TrainingMat",
-              "ZygardeCell"
+              "ZygardeCell",
+              "Plinth",
+              "Banner"
             ]
           },
           "x": {

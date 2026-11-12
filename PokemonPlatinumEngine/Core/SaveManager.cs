@@ -566,6 +566,14 @@ public class SaveData
     public DateTime? HallOfFameDebut { get; set; }
     public List<SavedHallOfFameEntry> HallOfFame { get; set; } = new();
 
+    /// <summary>Each region's first team in its Hall of Fame (plan 41 · EG2), kept beyond the thirty; null while there is none, so no version was raised.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<SavedHallOfFameEntry>? HallOfFameFirsts { get; set; }
+
+    /// <summary>The Champions' circuit (plan 41 · EG4); null until a circuit is first begun, so no version was raised.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.CircuitState? Circuit { get; set; }
+
     /// <summary>The Journal's pages, newest first (plan 06 · R12).</summary>
     public List<JournalPage> Journal { get; set; } = new();
 
@@ -1322,8 +1330,19 @@ public class SavedHallOfFameEntry
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public double? GameSeconds { get; set; }
 
-    public static SavedHallOfFameEntry From(HallOfFameEntry entry) => new() { Date = entry.Date, Team = entry.Team.ToList(), RunSeconds = entry.RunSeconds, GameSeconds = entry.GameSeconds };
-    public HallOfFameEntry ToEntry() => new(Date, Team, RunSeconds, GameSeconds);
+    /// <summary>The region whose Hall of Fame the team entered (plan 41 · EG2); null in a save from before the hall of Champions.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Region { get; set; }
+
+    /// <summary>The number the PC shows the team under (plan 41 · EG2), kept for a region's first team once it has left the thirty; 0 in a save from before.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int Number { get; set; }
+
+    public static SavedHallOfFameEntry From(HallOfFameEntry entry) => new()
+    {
+        Date = entry.Date, Team = entry.Team.ToList(), RunSeconds = entry.RunSeconds, GameSeconds = entry.GameSeconds, Region = entry.Region, Number = entry.Number
+    };
+    public HallOfFameEntry ToEntry() => new(Date, Team, RunSeconds, GameSeconds, Region, Number);
 }
 
 /// <summary>One look of a species the Pokédex has seen, as a save keeps it (plan 08 · P19): the model's name and the gender.</summary>

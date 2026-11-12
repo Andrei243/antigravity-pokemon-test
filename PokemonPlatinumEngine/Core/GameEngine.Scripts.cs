@@ -205,6 +205,8 @@ public partial class GameEngine
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // The Laurel Gallery's plinths stand for the regions finished (plan 41 · EG2)
+        if (flow.Map.Name == LaurelGallery.Map) FurnishGallery();
         // Pennant Hall's stalls, keepers and the day's guests where the plaza has them (plan 41 · EG3)
         if (flow.Map.Name == Plaza.Map) FurnishPlaza();
         // Kalos's Friend Safari's grass holds the grounds the guide named (plan 23, Kalos finished)
@@ -985,6 +987,9 @@ public partial class GameEngine
 
         public StoryState Story => game.flow.Story;
         public string Region => game.Here.Id;
+
+        /// <summary>The Laurel Circuit (plan 41 · EG4).</summary>
+        public CircuitState? Circuit => game.flow.Circuit;
         public IReadOnlyCollection<FieldMove> Granted => game.GrantedMoves;
         public string BeganIn => game.flow.BeganIn;
         public bool ShowsObjectives => game.NextObjectiveOn;
@@ -1288,7 +1293,10 @@ public partial class GameEngine
                     break;
                 case ScriptScreen.HallOfFame:
                     game.flow.State = GameState.HallOfFame;
-                    game.flow.HallOfFameScreen.Open();
+                    // A plinth of the Laurel Gallery opens it on one region's teams, the circuit's on its finals (plan 41 · EG2, EG4)
+                    if (counter == ChampionsCircuit.CircuitRegion)
+                        game.flow.HallOfFameScreen.OpenOn(game.flow.Circuit.Finals.Select(e => e.ToEntry()).Reverse().Select(e => (e.Number, e)).ToList());
+                    else game.flow.HallOfFameScreen.Open(counter);
                     break;
                 case ScriptScreen.ChoosePokemon:
                     game.flow.State = GameState.PartyMenu;
@@ -1456,7 +1464,9 @@ public partial class GameEngine
         public void EnterHallOfFame()
         {
             game.flow.HallOfFame.Enter(game.flow.Party, p => p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (playerName, game.flow.TrainerId), GameClock.Moment,
-                game.TimeForTheHallOfFame());
+                game.TimeForTheHallOfFame(), Region);
+            // The Laurel Circuit stamps the region whose Hall of Fame this is, while one runs (plan 41 · EG4)
+            ChampionsCircuit.Stamp(game.flow.Circuit, Region, game.flow.Story);
             game.flow.TrainerScore = TrainerScore.Add(game.flow.TrainerScore, TrainerScore.HallOfFame);
         }
 

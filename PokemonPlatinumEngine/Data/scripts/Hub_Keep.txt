@@ -1,0 +1,321 @@
+# Grayfall Keep, the old sea fort on Grayfall Islet (plan 41 · EG9, "The gathering"). docs/scripts.md describes the
+# language; the lines are our own.
+#
+# The outline the user chose (2026-11-10, the outline sheet's 12a, 13b, 14b, 15a, 16b, 59a, 60a): Ismene Quill, keeper of
+# the Laurel Gallery's records, spread a rumour to each villain team's leader that their old machine had come back, and
+# every one of them sailed here angry to claim it. A leader stands in their team's bay only where the player finished
+# their region (shownBy its Hall of Fame), behind their admins, whose battles open the way (each hidden once beaten).
+# With every leader there beaten, Ismene puts on her show: her battle, then a showman's finale (curtains, bows, and
+# tickets for next season). Afterwards each leader keeps their bay for a battle a day (FLAG_DAILY_KEEP_<WHO>). Every team
+# here is ours (Data/our-trainers.json, <who>_gathering), lifted to the Laurel Circuit's level by GameEngine.StartTrainerBattle.
+
+
+script Looker
+  face self player
+  speaker "Looker"
+  if flag FLAG_GATHERING_DONE goto After
+  say "Every leader in one fort, each sure their old machine is here. I have never seen so many angry people in one place!"
+  goto Sail
+label After
+  say "What a performance. I may buy a ticket for next season myself. In disguise, naturally."
+label Sail
+  ask "Shall we sail back to the harbour?"
+  if no end
+  fade out 0.8
+  text "{player} sailed back with Looker..."
+  warp "Hub" 40 42 up
+  fade in 0.8
+  end
+
+
+# ------------------------------------------------------------------ the admins: each opens the way into their bay
+
+script Mars
+  face self player
+  speaker "Mars"
+  say "You again! Our boss says his old machine is in this fort, and nobody's getting near it before he does."
+  battle self as "mars_gathering"
+  say "Ugh, fine! Go and argue with him yourself. He's in a mood."
+  setflag FLAG_KEEP_MARS_BEATEN
+  hide self
+  end
+
+script Jupiter
+  face self player
+  speaker "Jupiter"
+  say "A rumour dragged us across the sea, and now a Champion blocks the corridor. What a day."
+  battle self as "jupiter_gathering"
+  say "Hmph. Go on, then. Don't expect him to thank you."
+  setflag FLAG_KEEP_JUPITER_BEATEN
+  hide self
+  end
+
+script Archer
+  face self player
+  speaker "Archer"
+  say "Team Rocket goes where its boss goes, and the boss heard his old machine was here. Step aside, child."
+  battle self as "archer_gathering"
+  say "Unbelievable. Very well. The boss can deal with you."
+  setflag FLAG_KEEP_ARCHER_BEATEN
+  hide self
+  end
+
+script Ariana
+  face self player
+  speaker "Ariana"
+  say "We sailed all night on a rumour. I am in no mood for children."
+  battle self as "ariana_gathering"
+  say "...Go. Before I change my mind."
+  setflag FLAG_KEEP_ARIANA_BEATEN
+  hide self
+  end
+
+script Tabitha
+  face self player
+  speaker "Tabitha"
+  say "Hoo hah! Team Magma and Team Aqua in one room, and both bosses sure the same fort hides their machine!"
+  battle self as "tabitha_gathering"
+  say "Hoo... You're as tough as ever. Go on, then, before they start shouting again."
+  setflag FLAG_KEEP_TABITHA_BEATEN
+  hide self
+  end
+
+script Shelly
+  face self player
+  speaker "Shelly"
+  say "Ahahaha! If the boss's machine is here, Team Aqua takes it home. You won't stop us this time!"
+  battle self as "shelly_gathering"
+  say "Fine, fine! Go and see the bosses. Mind your ears."
+  setflag FLAG_KEEP_SHELLY_BEATEN
+  hide self
+  end
+
+script Zinzolin
+  face self player
+  speaker "Zinzolin"
+  say "A letter told Lord Ghetsis his great machine had been raised from the sea. And here you are. How tiresome."
+  battle self as "zinzolin_gathering"
+  say "Cold, cold, cold... Go, then. He is expecting nobody, least of all you."
+  setflag FLAG_KEEP_ZINZOLIN_BEATEN
+  hide self
+  end
+
+script Xerosic
+  face self player
+  speaker "Xerosic"
+  say "I came to see this machine with my own eyes. Science demands it! And I find a Champion instead."
+  battle self as "xerosic_gathering"
+  say "Fascinating. Still undefeatable. Go on, the boss is just behind me."
+  setflag FLAG_KEEP_XEROSIC_BEATEN
+  hide self
+  end
+
+script Celosia
+  face self player
+  speaker "Celosia"
+  say "The boss believes his weapon is here. I believe it would be rude to let you interrupt him."
+  battle self as "celosia_gathering"
+  say "How unfashionable, to lose. Go, then."
+  setflag FLAG_KEEP_CELOSIA_BEATEN
+  hide self
+  end
+
+
+# ------------------------------------------------------------------ the leaders: once in the gathering, then a battle a day
+
+script Cyrus
+  face self player
+  speaker "Cyrus"
+  if flag FLAG_GATHERING_DONE goto Daily
+  if flag FLAG_KEEP_CYRUS_BEATEN goto Beaten
+  say "I was told the machine I built at the mountain's top had been rebuilt in this fort. I came to see if it was true."
+  say "There is no machine. Only you. Then let us finish what was left unfinished."
+  battle self as "cyrus_gathering"
+  say "...Again. A world without spirit would never have lost to you. Perhaps that is the answer I came for."
+  setflag FLAG_KEEP_CYRUS_BEATEN
+  end
+label Beaten
+  say "Someone lured us all here. Whoever it is, they wanted an audience."
+  end
+label Daily
+  if flag FLAG_DAILY_KEEP_CYRUS goto Rested
+  say "I find I have nowhere else to stand. Battle me, if you wish. Once a day is enough for either of us."
+  battle self as "cyrus_gathering"
+  setflag FLAG_DAILY_KEEP_CYRUS
+  say "Tomorrow, then."
+  end
+label Rested
+  say "Come back tomorrow."
+  end
+
+script Giovanni
+  face self player
+  speaker "Giovanni"
+  if flag FLAG_GATHERING_DONE goto Daily
+  if flag FLAG_KEEP_GIOVANNI_BEATEN goto Beaten
+  say "A note said my old machine had surfaced here, the one that made my Pokémon stronger than any other's. A lie, it seems."
+  say "But you are no lie. Come, then. Show me how far you have climbed."
+  battle self as "giovanni_gathering"
+  say "Ha... I was a fool to come. And a fool to fight you. Twice the fool, then."
+  setflag FLAG_KEEP_GIOVANNI_BEATEN
+  end
+label Beaten
+  say "Find whoever wrote that note. I'd like a word with them myself."
+  end
+label Daily
+  if flag FLAG_DAILY_KEEP_GIOVANNI goto Rested
+  say "I stay for the battles, nothing more. One today. Make it worth my while."
+  battle self as "giovanni_gathering"
+  setflag FLAG_DAILY_KEEP_GIOVANNI
+  say "Hmph. Tomorrow."
+  end
+label Rested
+  say "That was today's. Come back tomorrow."
+  end
+
+script Maxie
+  face self player
+  speaker "Maxie"
+  if flag FLAG_GATHERING_DONE goto Daily
+  if flag FLAG_KEEP_MAXIE_BEATEN goto Beaten
+  say "My machine to widen the land, rebuilt here? I had to see it. And of course Archie had to see his."
+  say "There is no machine. There is only you, again. Fufufu... Very well."
+  battle self as "maxie_gathering"
+  say "I misjudged everything once more. At least I misjudged it in good company."
+  setflag FLAG_KEEP_MAXIE_BEATEN
+  end
+label Beaten
+  say "Archie and I have agreed on one thing today: we were both fooled."
+  end
+label Daily
+  if flag FLAG_DAILY_KEEP_MAXIE goto Rested
+  say "A battle a day keeps my mind off the land. Shall we?"
+  battle self as "maxie_gathering"
+  setflag FLAG_DAILY_KEEP_MAXIE
+  say "Tomorrow, then."
+  end
+label Rested
+  say "Once a day. Come back tomorrow."
+  end
+
+script Archie
+  face self player
+  speaker "Archie"
+  if flag FLAG_GATHERING_DONE goto Daily
+  if flag FLAG_KEEP_ARCHIE_BEATEN goto Beaten
+  say "Bwahaha! Somebody told me my machine to fill the seas was sitting in this fort. And here's Maxie, told the same about his!"
+  say "No machine, eh? Then let's have a battle. I didn't sail all this way for nothing!"
+  battle self as "archie_gathering"
+  say "Bwah! Still the strongest thing in the room. I'll take that over any machine."
+  setflag FLAG_KEEP_ARCHIE_BEATEN
+  end
+label Beaten
+  say "When I find whoever wrote that letter, I'm taking them sailing. A long way out."
+  end
+label Daily
+  if flag FLAG_DAILY_KEEP_ARCHIE goto Rested
+  say "A battle a day, Champion! The sea can wait."
+  battle self as "archie_gathering"
+  setflag FLAG_DAILY_KEEP_ARCHIE
+  say "Bwahaha! Same time tomorrow!"
+  end
+label Rested
+  say "That's today's. Come back tomorrow!"
+  end
+
+script Ghetsis
+  face self player
+  speaker "Ghetsis"
+  if flag FLAG_GATHERING_DONE goto Daily
+  if flag FLAG_KEEP_GHETSIS_BEATEN goto Beaten
+  say "A letter swore my great machine had been raised from the sea floor. I came to claim what is mine."
+  say "And I find you. Every time, it is you! Then I will crush you here, where nobody will see."
+  battle self as "ghetsis_gathering"
+  say "Impossible... Impossible! Whoever lured me here will regret it."
+  setflag FLAG_KEEP_GHETSIS_BEATEN
+  end
+label Beaten
+  say "Leave me. I am composing a very long complaint."
+  end
+label Daily
+  if flag FLAG_DAILY_KEEP_GHETSIS goto Rested
+  say "You return to mock me daily, it seems. Then battle me, and be gone."
+  battle self as "ghetsis_gathering"
+  setflag FLAG_DAILY_KEEP_GHETSIS
+  say "Tomorrow, I will win."
+  end
+label Rested
+  say "Once a day is more than enough of you."
+  end
+
+script Lysandre
+  face self player
+  speaker "Lysandre"
+  if flag FLAG_GATHERING_DONE goto Daily
+  if flag FLAG_KEEP_LYSANDRE_BEATEN goto Beaten
+  say "I was told my ultimate weapon had been raised and brought to this fort. A beautiful lie, and I believed it."
+  say "Since you are here instead, let us see whether the world you chose was worth choosing."
+  battle self as "lysandre_gathering"
+  say "...It was. I suppose that is the answer I came for."
+  setflag FLAG_KEEP_LYSANDRE_BEATEN
+  end
+label Beaten
+  say "Someone wanted us all in one room. I would admire the staging, if I weren't the one staged."
+  end
+label Daily
+  if flag FLAG_DAILY_KEEP_LYSANDRE goto Rested
+  say "A battle a day. A small, beautiful thing. Shall we?"
+  battle self as "lysandre_gathering"
+  setflag FLAG_DAILY_KEEP_LYSANDRE
+  say "Tomorrow, then."
+  end
+label Rested
+  say "That was today's. Come back tomorrow."
+  end
+
+
+# ------------------------------------------------------------------ the one who gathered them
+
+script Ismene
+  face self player
+  speaker "Ismene"
+  if not flag SinnohHallOfFame goto Kanto
+  if not flag FLAG_KEEP_CYRUS_BEATEN goto NotYet
+label Kanto
+  if not flag KantoHallOfFame goto Hoenn
+  if not flag FLAG_KEEP_GIOVANNI_BEATEN goto NotYet
+label Hoenn
+  if not flag HoennHallOfFame goto Unova
+  if not flag FLAG_KEEP_MAXIE_BEATEN goto NotYet
+  if not flag FLAG_KEEP_ARCHIE_BEATEN goto NotYet
+label Unova
+  if not flag UnovaHallOfFame goto Kalos
+  if not flag FLAG_KEEP_GHETSIS_BEATEN goto NotYet
+label Kalos
+  if not flag KalosHallOfFame goto Show
+  if not flag FLAG_KEEP_LYSANDRE_BEATEN goto NotYet
+label Show
+  scene "TheShow"
+  say "Bravo! Bravo! Every act played, every villain beaten, and in front of a full house. Well, a full fort."
+  say "Yes, it was me. I keep the Laurel Gallery's records. I've read every plan those leaders ever made, and every way you foiled them."
+  say "So I wrote each of them a little note: your old machine has come back. And here they all came, cross as cats!"
+  say "I only wanted to see the whole story on one stage. And now, the finale. Mine!"
+  battle self as "ismene_gathering"
+  say "Oh, wonderful! What an ending! Places, everyone, places!"
+  fade out 0.8
+  text "The keep's old curtains swept shut across the stage bay..."
+  text "...and opened on every leader in a row. Somewhat against their will, they bowed."
+  text "Ismene curtsied, and a little sign appeared at the door: TICKETS FOR NEXT SEASON, PLEASE ENQUIRE WITHIN."
+  fade in 0.8
+  say "Thank you, thank you! The leaders have agreed to stay on. Well, they didn't disagree. They'll battle anyone, once a day."
+  say "And you, Champion, have earned a title of your own. Do come back next season!"
+  setflag FLAG_GATHERING_DONE
+  clearflag FLAG_KEEP_ISMENE_AWAY
+  givemoney 50000
+  give "Rare Candy" 3
+  hide self
+  endscene
+  end
+label NotYet
+  say "Not yet, not yet! The show isn't over until every act has played. Go and see the leaders in their bays."
+  end

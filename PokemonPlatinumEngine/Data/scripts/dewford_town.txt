@@ -122,3 +122,84 @@ script TrendyBoy
 label Outdated
   say "You didn't know? Come on! Dewford Hall's the place to hear what's popular. Go and listen in."
   end
+
+
+# ------------------------------------------------------------------ the Salt Run (plan 41 · EG8)
+# The Open Door Agency's case in Hoenn: the customs officer shows the seal with its second stamp, the sailor sings the
+# crew's song of lamps, and the old fisherman knows the boat comes in when the customs hut is shut. Once Looker has the
+# deductions the skipper, Ottoline Marsh, waits on Dewford's shore (FLAG_CASE_HOENN_OTTOLINE_WAITS).
+
+script CaseHoennCustoms
+  face self player
+  if flag FLAG_CASE_HOENN_CLOSED goto Thanks
+  if flag FLAG_CASE_HOENN_TAKEN goto Case
+  say "Customs, Dewford Town. Everything that lands here gets weighed, stamped and written down."
+  end
+label Case
+  if flag FLAG_CASE_HOENN_CLUE_SEAL goto Again
+  say "The salt crates? Here's a seal off one of them. That's my stamp, the wave. But see the little star beside it?"
+  say "That's not mine. Someone opened the crate after I sealed it, and sealed it again with a stamp of their own."
+  setflag FLAG_CASE_HOENN_CLUE_SEAL
+  text "{player} noted the customs seal with a second stamp."
+  end
+label Again
+  say "My wave, and a star that shouldn't be there. Somebody's been at those crates."
+  end
+label Thanks
+  say "Every crate weighed, every seal mine. Customs is dull again, and I like it that way."
+  end
+
+script CaseHoennSailor
+  face self player
+  if flag FLAG_CASE_HOENN_CLOSED goto Thanks
+  if flag FLAG_CASE_HOENN_TAKEN goto Case
+  say "Heave, and haul, and home again! Sorry, I sing when I work. And when I don't."
+  end
+label Case
+  if flag FLAG_CASE_HOENN_CLUE_SONG goto Again
+  say "The salt boat's crew? They taught me their song. Salt on the label, light in the hand, lamps for the dark of the land!"
+  say "Catchy, isn't it? Though I never did work out what lamps have to do with salt."
+  setflag FLAG_CASE_HOENN_CLUE_SONG
+  text "{player} noted the crew's song about lamps."
+  end
+label Again
+  say "Salt on the label, light in the hand, lamps for the dark of the land! It's stuck in my head for good."
+  end
+label Thanks
+  say "The salt boat's crew have a new song now. It's about paying your duty. Not as catchy."
+  end
+
+script CaseHoennFisherman
+  face self player
+  if flag FLAG_CASE_HOENN_CLOSED goto Thanks
+  if flag FLAG_CASE_HOENN_TAKEN goto Case
+  say "I keep a tide table in my pocket. A fisherman who doesn't know the tide goes home with nothing."
+  end
+label Case
+  if flag FLAG_CASE_HOENN_CLUE_TIDE goto Again
+  say "The salt boat? It always comes in at the lowest tide of the evening. Look, I've marked the times in my table."
+  say "Low tide is when the customs hut shuts for supper. Clever, or lucky. I've never seen her come in at any other time."
+  setflag FLAG_CASE_HOENN_CLUE_TIDE
+  text "{player} noted the tide table's low tides."
+  end
+label Again
+  say "Lowest tide, every time, while customs has its supper. You could set your clock by it."
+  end
+label Thanks
+  say "The salt boat comes in at high noon now, right under the customs officer's nose. Takes the fun out of it."
+  end
+
+script CaseHoennOttoline
+  face self player
+  speaker "Ottoline"
+  if flag FLAG_CASE_HOENN_CULPRIT end
+  scene "OttolineFaced"
+  say "Looker's sent a Champion after me? I'm flattered. Yes, there's no salt in those crates. Never was."
+  say "Lamp parts pay a fortune in duty, and the keepers can't afford it. But I'll not hand my boat over without a fight!"
+  battle self as "case_hoenn_ottoline"
+  say "...Run aground. Fair's fair. I'll pay the duty, every coin of it. Tell Looker he'll have it in writing."
+  setflag FLAG_CASE_HOENN_CULPRIT
+  clearflag FLAG_CASE_HOENN_OTTOLINE_WAITS
+  hide self
+  endscene
+  end

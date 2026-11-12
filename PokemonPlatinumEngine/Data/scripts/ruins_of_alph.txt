@@ -1,0 +1,83 @@
+# The Ruins of Alph (plan 41 · EG8). docs/scripts.md describes the language; the lines are our own. The ruins' own people
+# speak through common.txt; this file holds the Open Door Agency's case in Johto.
+
+
+# ------------------------------------------------------------------ the Alph Etchings (plan 41 · EG8)
+# The researcher shows the chalk copies labelled like a blackboard, the camper has seen lanterns walk the ruins in a line
+# after dark, and a schoolchild tells of a teacher with chalk on her sleeves and a quiz on the Unown. Once Looker has the
+# deductions the schoolteacher, Mirelle Dunn, waits in the ruins (FLAG_CASE_JOHTO_MIRELLE_WAITS).
+
+script CaseJohtoResearcher
+  face self player
+  if flag FLAG_CASE_JOHTO_CLOSED goto Thanks
+  if flag FLAG_CASE_JOHTO_TAKEN goto Case
+  say "Every morning, chalk all over the paving. Copies of the carvings! We scrub, and the next morning there are more."
+  end
+label Case
+  if flag FLAG_CASE_JOHTO_CLUE_CHALK goto Again
+  say "You're helping Looker? Then look closely at the chalk. Every copy has its letter written under it. A, B, C, all in order."
+  say "In a neat, round hand, like a blackboard. Vandals don't label their work."
+  setflag FLAG_CASE_JOHTO_CLUE_CHALK
+  text "{player} noted the chalk copies, labelled letter by letter."
+  end
+label Again
+  say "Every copy labelled, in order. Whoever it is, they want somebody to learn the letters."
+  end
+label Thanks
+  say "The class comes by day now, and they clean up after themselves. Some of them read the carvings better than I do!"
+  end
+
+script CaseJohtoCamper
+  face self player
+  if flag FLAG_CASE_JOHTO_CLOSED goto Thanks
+  if flag FLAG_CASE_JOHTO_TAKEN goto Case
+  say "I camp out here for the quiet. The ruins at night are something else. Spooky, but nice."
+  end
+label Case
+  if flag FLAG_CASE_JOHTO_CLUE_LANTERNS goto Again
+  say "Night visitors? I've seen them! Little lanterns, walking through the ruins in a line. Slowly, like a parade."
+  say "And a grown-up voice saying, quietly now, keep together. I thought they were ghosts at first. Ghosts don't say that."
+  setflag FLAG_CASE_JOHTO_CLUE_LANTERNS
+  text "{player} noted the lanterns walking the ruins after dark."
+  end
+label Again
+  say "Lanterns in a line, and somebody keeping everyone together. Not very ghostly."
+  end
+label Thanks
+  say "No more lanterns at night. I almost miss them."
+  end
+
+script CaseJohtoPupil
+  face self player
+  if flag FLAG_CASE_JOHTO_CLOSED goto Thanks
+  if flag FLAG_CASE_JOHTO_TAKEN goto Case
+  say "We came on a school trip! I know all the Unown letters. Well, nearly all of them."
+  end
+label Case
+  if flag FLAG_CASE_JOHTO_CLUE_DUST goto Again
+  say "How do I know the letters? Miss Dunn teaches us. She always has chalk dust all over her sleeves in the morning."
+  say "And every morning she gives us a quiz on the Unown. She says we'll be the best readers of the ruins in Johto!"
+  setflag FLAG_CASE_JOHTO_CLUE_DUST
+  text "{player} noted the teacher's chalky sleeves and her Unown quiz."
+  end
+label Again
+  say "Chalk on her sleeves every single morning. Miss Dunn says it's from the blackboard."
+  end
+label Thanks
+  say "We get to come to the ruins in the daytime now! Miss Dunn says it's much better for our eyes."
+  end
+
+script CaseJohtoMirelle
+  face self player
+  speaker "Mirelle"
+  if flag FLAG_CASE_JOHTO_CULPRIT end
+  scene "MirelleFaced"
+  say "Oh dear. You've worked it out, haven't you? Yes, the chalk is mine. My pupils and I come here at night."
+  say "The ruins teach better than any book. But if you mean to stop us, you'll have to pass my test first!"
+  battle self as "case_johto_mirelle"
+  say "...Top marks. Very well, I'll go and see the researchers myself, and ask properly. Tell Looker, would you?"
+  setflag FLAG_CASE_JOHTO_CULPRIT
+  clearflag FLAG_CASE_JOHTO_MIRELLE_WAITS
+  hide self
+  endscene
+  end

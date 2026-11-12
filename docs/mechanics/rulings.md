@@ -11015,6 +11015,121 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   once MU1 lands (the town's song, `hub/town`, is in the classic sound); the halls' insides (EG2, EG3, EG4, EG7) and the
   islet (EG9); a small Town Map draws its picture repeated across the window's spare width (`ModernUi.DrawTownMap`).
 
+## The Laurel Gallery: every Hall of Fame in one hall (2026-11-12, plan 41 · EG2)
+
+- **Names** are the outline sheet's 1a (the user's answer of 2026-11-10, its default): the hall of Champions is the
+  *Laurel Gallery*, the circuit the *Laurel Circuit* and its arena the *Laurel Court*, Looker's office the *Open Door
+  Agency*; the plinths are laurel wreaths in each region's colour (54a).
+- **An entry keeps its region** (`HallOfFameEntry.Region`, `SavedHallOfFameEntry.Region`, written only when it has one) and
+  its number (`Number`), handed by both hosts' `EnterHallOfFame` from the host's region. A record from before has neither,
+  so a save of the old shape reads and writes the same bytes, and no save version was raised.
+- **Each region's first team outlives the thirty** (`HallOfFame.Firsts`, saved as `SaveData.HallOfFameFirsts`, null while
+  empty): a region's first entry is kept by its region however many enter after it, and `HallOfFame.Of(region)` gives the
+  region's kept teams with its first after them where it has left the thirty.
+- **The record's tabs**: once two regions have teams (or one and the teams from before), `HallOfFameScreen` sorts them by
+  region in the chain's order, with EARLIER TEAMS last (`HallOfFameScreen.EarlierTab`); the PC opens on the newest team's
+  region, the shoulders turn the tabs. A plinth opens it on its own (`halloffame look <region>`, `earlier`, `Circuit`).
+- **The plinths** (`Models/LaurelGallery.cs`, laid out as the player comes in by `GameEngine.FurnishGallery`, the Villa's
+  way): one for each region of the chain finished, in the chain's order on places of their own; EARLIER TEAMS only where
+  teams from before are kept and more than one region is finished (one region finished shows them all on its own plinth's
+  tab-less record); the circuit's once a final is won. Nothing is saved: the story decides them whenever asked.
+- **The Champion ribbons** are as their ruling of 2026-11-09 has them: each region's Hall of Fame hands its own where the
+  data has one, Sinnoh's otherwise.
+
+## The Laurel Circuit (2026-11-12, plan 41 · EG4, decisions 4 and 5)
+
+- **Begun at the Laurel Gallery's desk** by choice (`circuit begin`), once two regions of the chain are finished; the desk
+  says its level first. `Models/ChampionsCircuit.cs`, saved as `SaveData.Circuit` (null until first begun, so no version).
+- **Its one level** (decision 4): the furthest finished region's post-game level, the last pair of its `levels` (Kanto 120,
+  Johto 156, Hoenn 183, Unova 203...), five more for each circuit won, never past the game's cap; 75 where the furthest
+  region has no pairs (a game begun and finished only in its first region, which can't have two regions finished anyway).
+- **Fought where the Leagues stand** (decision 5): while a circuit runs, `GameEngine.StartTrainerBattle` lifts every team of
+  a League's Elite Four or Champion (by class) of a finished region of the chain, on a copy, to the circuit's level: its
+  highest Pokémon at the level, the others the same steps below (the spread kept), each taking its stages (`Trainer.Relevelled`
+  with `grow`). It takes the place of the region's mapping and `RematchLevels`. Which team is fought is the League's own
+  script's: a team beyond (`BeyondTeamOf`) where it is ready, else its rematch team. No League's script changed; nothing
+  changes with no circuit under way. The lift is EG3's `LevelLift.To`, the level `LevelLift.PostGameLevel`'s.
+- **A stamp** is a region's Hall of Fame entered while a circuit runs, the region of the chain and finished
+  (`ChampionsCircuit.Stamp`, both hosts' `EnterHallOfFame`), once each.
+- **The final** opens in the Laurel Court with every finished region stamped: the herald, Piers Lindqvist (53a), calls
+  each finished region's Champion forward in the chain's order (`Data/circuit.json`): Cynthia, Kanto's rival, Lance and
+  Wallace on their teams beyond, Iris on hers, Diantha on her second round's (`kalos_diantha_rematch`, since Kalos has no
+  team beyond); Alola's, Galar's and Paldea's rows come with their regions. No healing between, the bag allowed; each
+  battle opens on its Champion's band where the bands name them. A battle lost ends the final with the circuit still under
+  way (the team healed, as `canlose` does).
+- **The final won** ends the circuit and counts it (`circuit won`): its team on the gallery's circuit plinth (the record
+  opened on `CircuitState.Finals`), the title LAUREL CHAMPION first on the card's TITLES page (numbered by the circuits
+  won), a medal row (`MedalFacts.Circuits`: 1, 3 and 5 circuits), 30,000 in money and a PP Max. The plaza's coins (EG3) are
+  owed to the final once the plaza stands.
+
+## The agency's cases (2026-11-12, plan 41 · EG7)
+
+- **The Open Door Agency** (`Hub_Office`): Looker half-disguised as a clerk in a cluttered office of boxes and maps (6b),
+  his Croagunk asleep on its cushion (59a), his opening line 51a's. He takes a case in each region finished, of our own
+  story (the sheet's 7a, 8a, 9b, 10a, 11a).
+- **A case** (`Story/Cases.cs`) is clues, each a flag set where it is found in the region's post-game places, and
+  deductions, each answered by one clue. It is also a request (`case_<region>`, `Cases.RequestOf`): known once taken
+  (`FLAG_CASE_<ID>_TAKEN`), its steps the clues, the deductions (`VAR_CASE_<ID>_DEDUCED`), the culprit
+  (`FLAG_CASE_<ID>_CULPRIT`) and its close (`FLAG_CASE_<ID>_CLOSED`), so the requests page lists it and pins its next step.
+- **A deduction** (`deduce <case> <n>`) is the field's question with the clues found as its answers and LET ME THINK last:
+  RESULT 1 for the clue that answers, 0 otherwise. Looker asks it only once every clue is found; a wrong answer costs a
+  line and ends the talk, and he asks again the next time, so a case is never lost.
+- **Sinnoh's, the Villa Larder**: the villa's caretaker and the girl whose young Gible is blamed in the Resort Area, the
+  harbour clerk and the deckhand on the Fight Area's pier; the bite marks clear the Gible, the ferry's log names its captain;
+  Ferren Dray waits on the pier once both are deduced (`FLAG_CASE_SINNOH_FERREN_WAITS`), battled with a team of ours at
+  Sinnoh's post-game levels (62 to 64, `case_sinnoh_ferren`). Closed, Looker pays 10,000 and a Heart Scale (49a; the
+  plaza's coins are owed to EG3).
+- **One case at a time** (EG8): Looker's `CaseList` goes down the chain (Sinnoh, Kanto, Johto, Hoenn, Unova, Kalos) and
+  offers the first region whose Hall of Fame is entered and whose case isn't closed, so a game begun in another region
+  meets its own region's case first. Every clue person stands on the map from the start and says a line of their own
+  until the case is taken, and a thank-you once it is closed; each culprit is shown only by `FLAG_CASE_<ID>_<NAME>_WAITS`,
+  set by Looker's second deduction and cleared by the battle. Each region's levels are its own post-game's, nominal
+  (no crossing's relevelling).
+- **Kanto's, the Ferry's Extra Passenger** (EG8): the ticket clerk (290,229) and the old fisherman (299,229) on
+  Vermilion City's quay, the harbour keeper on Two Island (13,46 of its map). The stub torn by no hand of the office's
+  shows passage sold outside it, the fisherman's remark names the dockhand who waves a last traveller up the cargo ramp
+  after the count; the duffel is the decoy. Dov Harlan waits on the quay (293,229; `case_kanto_dov`, a Sailor, 71 to
+  74). Closed: 12,000 and a Big Pearl.
+- **Johto's, the Alph Etchings** (EG8): a researcher (432,268), a camper (436,280) and a schoolchild (429,291) on the
+  Ruins of Alph's paving (`ruins_of_alph.txt`, the area's first script file). The labelled chalk copies show a lesson,
+  the teacher's chalky sleeves name her; the lanterns are the decoy. Mirelle Dunn waits at 433,291
+  (`case_johto_mirelle`, a Teacher, 71 to 74), light-hearted: her class may come by day. Closed: 12,000 and a Heart Scale.
+- **Hoenn's, the Salt Run** (EG8): the customs officer (69,373), a singing sailor (76,373) and an old fisherman with his
+  tide table (63,375) in Dewford Town. The seal's second stamp shows the crates opened after customs, the crew's song of
+  lamps says what they carry; the tide table is the decoy. Skipper Ottoline Marsh waits on the shore (73,374;
+  `case_hoenn_ottoline`, a Sailor, 76 to 78). Closed: 14,000 and a Star Piece.
+- **Unova's, the Double-Booked Hall** (EG8): two organisers (205,458 and 215,459) and the janitor (213,455) on the World
+  Tournament's plaza (`pwt`). The eraser smudge shows the afternoon sold twice, the key log puts the clerk in the office
+  after hours; the stamped schedule is the decoy. Isidore Calloway waits by the hall's door (200,467;
+  `case_unova_isidore`, a Clerk, 76 to 78). Closed: 14,000 and a Nugget.
+- **Kalos's, the Borrowed Masterpiece** (EG8, an outline of ours the user has not approved: plan 41's end): the night
+  guard by Lumiose City's museum (368,318), the station's porter (548,351) and a painter (583,352) in Kiloude City. The
+  bright screws show the canvas leaves its frame, the train ticket says where it goes; the varnish is the decoy. Odile
+  Ferrand, the museum's restorer, waits in Kiloude's square (560,354; `case_kalos_odile`, an Artist, 76 to 79). Closed:
+  15,000 and a Big Pearl.
+
+## The gathering at Grayfall Keep (2026-11-12, plan 41 · EG9, decisions 7 and 8)
+
+- **The outline** is the user's (the sheet's 12a, 13b, 14b, 15a, 16b, 59a, 60a): Ismene Quill, the Laurel Gallery's keeper
+  of records, lures each villain team's leader with a rumour that their old machine has come back; the gathering ends in a
+  showman's finale (curtains, bows, tickets for next season), and the leaders stay for a battle a day.
+- **It begins** at Looker's desk once a Laurel Circuit's final is won (`circuit count`): his news sets
+  `FLAG_GATHERING_CALLED` and takes Ismene from the gallery (`FLAG_KEEP_ISMENE_AWAY`), and his boat sails to the keep
+  whenever asked; Looker in the keep sails back.
+- **The keep** (`Hub_Keep`, a room of ours) is one hall with six bays under banners of our own colours (`PropType.Banner`):
+  Team Galactic (Mars, Jupiter, Cyrus), Team Rocket (Archer, Ariana, Giovanni), Hoenn's two (Tabitha, Shelly, Maxie and
+  Archie), the stage (Ismene), Team Plasma (Zinzolin, Ghetsis) and Team Flare (Xerosic, Celosia, Lysandre). A bay's people
+  stand only where its region's Hall of Fame is entered (`shownBy`); the admins stand in its mouth and each is hidden once
+  beaten (`FLAG_KEEP_<WHO>_BEATEN`), which opens the way. Rocket's bay is Kanto's.
+- **Every team is ours** (decision 7: `<who>_gathering`, round each team's types, no legendary), met at the Laurel
+  Circuit's level whenever fought (`ChampionsCircuit.IsGatheringTeam` in `StartTrainerBattle`).
+- **The show** opens once every leader of a finished region is beaten; Ismene's battle, then the finale sets
+  `FLAG_GATHERING_DONE`, pays 50,000 and three Rare Candies, and writes SHOWSTOPPER on the card's TITLES page. She goes
+  back to the gallery with a line of her own. Afterwards each leader battles once a day in their bay
+  (`FLAG_DAILY_KEEP_<WHO>`).
+- **The music**: the keep's song (`hub/keep`) and its battle song, the hub's boss-battle role (`hub/battle_galactic_boss`),
+  which the leaders' classes and Ismene's (Records Keeper) take there.
+- **Later regions** (Alola, Galar, Paldea) add a bay's people, a banner colour and their teams when they are finished.
 ## Pennant Hall, the hub's plaza (2026-11-12, plan 41 · EG3)
 
 - **What it is.** A covered hall at the hub (`Hub_Plaza`, the plaza's door of the avenue, open since EG3) whose eight

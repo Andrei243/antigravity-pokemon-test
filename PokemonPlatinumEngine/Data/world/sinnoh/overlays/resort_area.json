@@ -66,6 +66,12 @@
       ]
     }
   },
+  // The Open Door Agency's case in Sinnoh, the Villa Larder (plan 41 · EG7): the villa's caretaker and the girl whose
+  // young Gible is blamed, each with a clue once Looker's case is taken
+  "npcs": [
+    { "id": "villa_caretaker", "name": "Caretaker", "npcType": "gentleman", "x": 819, "y": 471, "facing": "Down", "script": "VillaCaretaker" },
+    { "id": "gible_girl", "name": "Lass", "npcType": "lass", "x": 812, "y": 458, "facing": "Down", "script": "GibleGirl" }
+  ],
   "signs": {
     "map_signpost": "Resort Area\nA place of rest for trainers and their Pokémon.",
     "signboard_ribbon_syndicate": "The Ribbon Syndicate\nMembers only.",

@@ -14,7 +14,8 @@ public class MedalTests
     [Fact]
     public void ThereAreAHundredAndTwentyInSixCategoriesEachOnTheCardsPage()
     {
-        Assert.Equal(120, Medals.All.Count);
+        // (and the Laurel Circuit's three, plan 41 · EG4)
+        Assert.Equal(123, Medals.All.Count);
         Assert.Equal(Medals.All.Count, Medals.All.Select(m => m.Id).Distinct().Count());
         foreach (var category in Enum.GetValues<MedalCategory>())
         {
@@ -42,16 +43,17 @@ public class MedalTests
     private static MedalFacts At(string source, long value)
     {
         var counts = new Statistics();
-        int seen = 0, caught = 0, badges = 0, champions = 0;
+        int seen = 0, caught = 0, badges = 0, champions = 0, circuits = 0;
         switch (source)
         {
             case MedalFacts.DexSeen: seen = (int)value; break;
             case MedalFacts.DexCaught: caught = (int)value; break;
             case MedalFacts.Badges: badges = (int)value; break;
             case MedalFacts.Champions: champions = (int)value; break;
+            case MedalFacts.Circuits: circuits = (int)value; break;
             default: counts.Count(source, value); break;
         }
-        return new MedalFacts { Counts = counts, Seen = seen, Caught = caught, BadgeCount = badges, ChampionCount = champions };
+        return new MedalFacts { Counts = counts, Seen = seen, Caught = caught, BadgeCount = badges, ChampionCount = champions, CircuitCount = circuits };
     }
 
     [Fact]

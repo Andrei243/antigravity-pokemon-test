@@ -50,6 +50,8 @@ public class SchemaTests
         ("open-wild.schema.json", typeof(PokemonPlatinumEngine.OpenWorld.OpenWildFile), "The wild Pokémon of an open map: each temperament's senses, and which species has which (Data/open-wild.json)"),
         // Plan 40 · GE5: which charm a Pokédex filled earns
         ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)"),
+        // Plan 41 · EG4: the Laurel Circuit's final, a region's Champion to a row
+        ("circuit.schema.json", typeof(CircuitFile), "The Laurel Circuit's final: each region's Champion and the team they bring (Data/circuit.json)"),
         // Plan 41 · EG3 and EG6: Pennant Hall's catalogue and the Week's Work's tables
         ("plaza.schema.json", typeof(PlazaFile), "Pennant Hall, the hub's plaza: its ranks, pitches, guests and stalls (Data/plaza.json)"),
         ("missions.schema.json", typeof(MissionsFile), "The Week's Work, the hub's board of missions: its kinds, places and rewards (Data/missions.json)")

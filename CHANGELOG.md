@@ -4,6 +4,12 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+### Added
+- The hub's halls are open. The Laurel Gallery keeps every region's Hall of Fame: a plinth for each region you've crowned, each showing that region's first team and every team since. The PC's Hall of Fame now has a tab for each region.
+- The Laurel Circuit: at the Gallery's desk you can go back to every League you've won and fight its Elite Four and Champion again, all at one level, then face every Champion in a row in the Laurel Court. Each circuit you win makes the next one harder and earns a title and a medal.
+- Looker has opened the Open Door Agency in the hub, half in disguise as a clerk. He takes a case in each region you've crowned (Sinnoh, Kanto, Johto, Hoenn, Unova and Kalos): find the clues, tell him what they mean, and face the culprit. The cases show on the requests page.
+- After you win a Laurel Circuit, Looker sails you to Grayfall Keep, where the old leaders of the villain teams have gathered, each lured by a rumour. Beat their admins and leaders, and the one who gathered them puts on a show of her own. The leaders stay on for a battle a day.
+
 ### Changed
 - Voices are on by default (VOICES is ALL unless you change it): with a voice pack beside the game every line that has a take is spoken, and without one the game shows its text as it always did.
 - Every training hall now has a Tera keeper: with a Tera Orb in your bag, fifty Tera Shards of a type change the type a Pokémon takes when it Terastallizes (fifty Stellar Tera Shards make it Stellar). The eighteen Tera Shards and the Stellar one are in the game: every fifth gold in the drills earns a shard of the trainee's own type while you hold the orb, and the club's Battle Points clerk trades them. A Pokémon's summary shows its Tera Type once you have the orb.

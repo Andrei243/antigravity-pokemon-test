@@ -20,5 +20,9 @@
     "TwoIsland_EventScript_IslandSign": "Two Island\nThe village where the waves bring good fortune",
     "TwoIsland_EventScript_JoyfulGameCornerSign": "Joyful Game Corner\nGames and good times for all the family",
     "TwoIsland_EventScript_FastCurrentSign": "Caution! Fast currents around the cape. Swim with care."
-  }
+  },
+  // The Open Door Agency's case in Kanto (plan 41 · EG8, two_island.txt): the harbour keeper with the duffel nobody claimed
+  "npcs": [
+    { "id": "case_kanto_keeper", "name": "Harbour Keeper", "npcType": "middle_aged_woman", "x": 13, "y": 46, "facing": "Down", "script": "CaseKantoKeeper" }
+  ]
 }

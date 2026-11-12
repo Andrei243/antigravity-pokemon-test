@@ -1303,6 +1303,29 @@ label Give
   end
 ```
 
+### The Laurel Gallery and the Laurel Circuit
+
+Plan 41 · EG2 and EG4 (`docs/mechanics/rulings.md`, "The Laurel Gallery" and "The Laurel Circuit"; `Models/LaurelGallery.cs`,
+`Models/ChampionsCircuit.cs`). The gallery's plinths each read `halloffame look <region>`; the circuit's desk and the
+Laurel Court's herald speak `circuit`. A host that keeps no circuit (`IScriptHost.Circuit`) answers 0 to every `circuit`.
+
+| Command | What it does |
+|---|---|
+| `halloffame look Kanto`, `halloffame look earlier`, `halloffame look Circuit` | The Hall of Fame's record opened on one region's teams (its first kept however many came after), on the teams from before a team's region was kept, or on the Laurel Circuit's finals. |
+| `circuit begin` | Begins a circuit where one may be (two regions of the chain finished, none under way): `RESULT` 1, else 0. |
+| `circuit running`, `circuit ready` | `RESULT` 1 while one is under way; 1 once every finished region is stamped. |
+| `circuit level`, `circuit stamps`, `circuit regions`, `circuit count` | `RESULT` is the circuit's one level, the regions stamped, the regions finished, the circuits won. |
+| `circuit final Sinnoh`, `circuit stamped Sinnoh` | `RESULT` 1 when the region's Champion stands in the final under way (`Data/circuit.json`, a finished region's row), or when the region is stamped. |
+| `circuit won` | The final won: the circuit is over and counted, the team kept for the circuit's plinth; `RESULT` is the circuits won. |
+
+### The agency's cases
+
+Plan 41 · EG7 (`docs/mechanics/rulings.md`, "The agency's cases"; `Story/Cases.cs`). A case's clues are flags its places'
+scripts set (`FLAG_CASE_<ID>_CLUE_<KEY>`), its deductions asked at Looker's desk.
+
+| Command | What it does |
+|---|---|
+| `deduce sinnoh 1` | The case's deduction asked as the field's question (`cases.<id>.deduce.<n>` of `ui.json`), the clues found as its answers in the case's order and LET ME THINK last (backing out answers it): `RESULT` 1 for the clue that answers, 0 for any other. |
 ### Pennant Hall and the Week's Work
 
 Plan 41 · EG3 and EG6; `docs/mechanics/rulings.md`, "Pennant Hall, the hub's plaza" and "The Week's Work". `plaza` is

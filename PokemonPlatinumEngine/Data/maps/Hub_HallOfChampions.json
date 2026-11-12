@@ -1,0 +1,135 @@
+{
+  "name": "Hub_HallOfChampions",
+  "displayName": "Laurel Gallery",
+  "bgmTrack": "hub/town",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 19,
+  "height": 13,
+  "ground": [
+    "###################",
+    "###################",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#_________________#",
+    "#########D#########"
+  ],
+  "solid": [
+    "###################",
+    "###################",
+    "#.................#",
+    "#.................#",
+    "#............###..#",
+    "#.................#",
+    "#.................#",
+    "#.................#",
+    "#.................#",
+    "#.................#",
+    "#.................#",
+    "#.................#",
+    "#########.#########"
+  ],
+  "props": [
+    {
+      "type": "Painting",
+      "x": 4,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 14,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 9,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 17,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 8,
+      "y": 5,
+      "width": 3,
+      "depth": 6
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 9,
+      "sourceY": 12,
+      "targetMap": "Hub",
+      "targetX": 40,
+      "targetY": 15,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "keeper",
+      "name": "Ismene Quill",
+      "npcType": "ismene",
+      "x": 5,
+      "y": 3,
+      "facing": "Down",
+      "script": "Keeper",
+      "hiddenBy": "FLAG_KEEP_ISMENE_AWAY"
+    },
+    {
+      "id": "registrar",
+      "name": "Registrar",
+      "npcType": "clerk",
+      "x": 14,
+      "y": 3,
+      "facing": "Down",
+      "script": "CircuitDesk"
+    },
+    {
+      "id": "visitor",
+      "name": "Visitor",
+      "npcType": "gentleman",
+      "x": 10,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Each plinth here keeps the first team a region ever crowned, and every team since. Some names I don't even recognise!"
+      ],
+      "movement": "look_around"
+    }
+  ],
+  "wildEncounters": []
+}

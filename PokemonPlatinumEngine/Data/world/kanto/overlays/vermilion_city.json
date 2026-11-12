@@ -46,6 +46,12 @@
       "y": 230,
       "facing": "Down",
       "isTransportAttendant": true
-    }
+    },
+    // The Open Door Agency's case in Kanto (plan 41 · EG8, vermilion_city.txt): the ferry's ticket clerk and the old
+    // fisherman on the quay, and the dockhand Dov Harlan once Looker has sent the player after him
+    { "id": "case_kanto_clerk", "name": "Ticket Clerk", "npcType": "clerk", "x": 290, "y": 229, "facing": "Down", "script": "CaseKantoClerk" },
+    { "id": "case_kanto_fisherman", "name": "Fisherman", "npcType": "fisherman", "x": 299, "y": 229, "facing": "Down", "script": "CaseKantoFisherman" },
+    { "id": "case_kanto_dov", "name": "Dov Harlan", "npcType": "dov", "x": 293, "y": 229, "facing": "Down", "script": "CaseKantoDov",
+      "shownBy": "FLAG_CASE_KANTO_DOV_WAITS" }
   ]
 }

@@ -19,5 +19,14 @@
     "DewfordTown_EventScript_HallSign": "Dewford Hall\nEveryone's information exchange!",
     "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here."
   },
-  "props": [ { "type": "Boat", "x": 73, "y": 371, "width": 3, "depth": 2 } ]
+  "props": [ { "type": "Boat", "x": 73, "y": 371, "width": 3, "depth": 2 } ],
+  // The Open Door Agency's case in Hoenn (plan 41 · EG8, dewford_town.txt): the customs officer, a singing sailor and an
+  // old fisherman with his tide table, and the skipper Ottoline Marsh once Looker has sent the player after her
+  "npcs": [
+    { "id": "case_hoenn_customs", "name": "Customs Officer", "npcType": "clerk", "x": 69, "y": 373, "facing": "Down", "script": "CaseHoennCustoms" },
+    { "id": "case_hoenn_sailor", "name": "Sailor", "npcType": "sailor", "x": 76, "y": 373, "facing": "Left", "script": "CaseHoennSailor" },
+    { "id": "case_hoenn_fisherman", "name": "Old Fisherman", "npcType": "old_man", "x": 63, "y": 375, "facing": "Right", "script": "CaseHoennFisherman" },
+    { "id": "case_hoenn_ottoline", "name": "Ottoline Marsh", "npcType": "ottoline", "x": 73, "y": 374, "facing": "Up", "script": "CaseHoennOttoline",
+      "shownBy": "FLAG_CASE_HOENN_OTTOLINE_WAITS" }
+  ]
 }

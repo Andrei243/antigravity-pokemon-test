@@ -715,6 +715,8 @@ public class StoryTests
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         // The Battle Pyramid's floor: a wild Pokémon met, its trainers and its finds, on a map laid as the round goes (plan 14 · B10)
         started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.PyramidScripts);
+        // The Laurel Gallery's plinths, each read on a tile the game furnishes as the story stands (plan 41 · EG2)
+        started.UnionWith(PokemonPlatinumEngine.Models.LaurelGallery.EveryPlace().Select(p => Scripts.Find(p.Script, PokemonPlatinumEngine.Models.LaurelGallery.Map)!.FullName));
         // The Trainer Hill's floor: its trainers, on a map laid as the climb goes (plan 21, part l)
         started.Add($"{PokemonPlatinumEngine.Models.Frontier.TrainerHillFloor.MapName}.Trainer");
         // A field move worked at a braille spot, which the party menu starts as the place's own script (plan 21 · H12, part a)

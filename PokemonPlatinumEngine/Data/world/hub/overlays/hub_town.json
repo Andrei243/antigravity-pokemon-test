@@ -13,9 +13,13 @@
     { "warp": 0, "map": "Hub_PokemonCenter", "x": 8, "y": 12, "facing": "Up" },
     { "warp": 1, "map": "Hub_HarbourHall", "x": 6, "y": 7, "facing": "Up" },
     // Pennant Hall, the plaza (plan 41 · EG3)
-    { "warp": 2, "map": "Hub_Plaza", "x": 11, "y": 13, "facing": "Up" }
+    { "warp": 2, "map": "Hub_Plaza", "x": 11, "y": 13, "facing": "Up" },
+    // The Laurel Gallery, the hall of Champions (plan 41 · EG2), the Open Door Agency (EG7) and the Laurel Court, the
+    // circuit's arena (EG4)
+    { "warp": 3, "map": "Hub_HallOfChampions", "x": 9, "y": 11, "facing": "Up" },
+    { "warp": 4, "map": "Hub_Office", "x": 6, "y": 8, "facing": "Up" },
+    { "warp": 5, "map": "Hub_Arena", "x": 7, "y": 14, "facing": "Up" }
   ],
-  "locked": [ 3, 4, 5 ],
   "people": {
     "sailor": {
       "name": "Sailor",

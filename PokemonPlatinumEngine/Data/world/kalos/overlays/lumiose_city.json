@@ -166,7 +166,9 @@
     { "id": "alley_emma", "name": "Emma", "npcType": "emma", "x": 403, "y": 380, "facing": "Up", "script": "AlleyEmma", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
     { "id": "suspect_woman", "name": "Woman in a hood", "npcType": "Lady", "x": 402, "y": 373, "facing": "Down", "script": "SuspectWoman", "shownBy": "FLAG_KALOS_LOOKER_STING", "hiddenBy": "FLAG_KALOS_STING_WOMAN" },
     { "id": "suspect_child", "name": "Child in a cap", "npcType": "school_kid_m", "x": 373, "y": 313, "facing": "Down", "script": "SuspectChild", "shownBy": "FLAG_KALOS_LOOKER_STING", "hiddenBy": "FLAG_KALOS_STING_CHILD" },
-    { "id": "suspect_lady", "name": "Lady in a veil", "npcType": "Lady", "x": 330, "y": 377, "facing": "Down", "script": "SuspectLady", "shownBy": "FLAG_KALOS_LOOKER_STING", "hiddenBy": "FLAG_KALOS_STING_LADY" }
+    { "id": "suspect_lady", "name": "Lady in a veil", "npcType": "Lady", "x": 330, "y": 377, "facing": "Down", "script": "SuspectLady", "shownBy": "FLAG_KALOS_LOOKER_STING", "hiddenBy": "FLAG_KALOS_STING_LADY" },
+    // The Open Door Agency's case in Kalos (plan 41 · EG8, provisional; lumiose_city.txt): the museum's night guard by its door
+    { "id": "case_kalos_guard", "name": "Night Guard", "npcType": "policeman", "x": 368, "y": 318, "facing": "Down", "script": "CaseKalosGuard" }
   ],
   "signs": {
     "CitySign": "Lumiose City\nThe city of light, the heart of Kalos.",

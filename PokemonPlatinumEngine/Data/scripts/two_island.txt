@@ -35,3 +35,27 @@ label Third
   shop "two_island_3"
   say "Thank you! Do come again."
   end
+
+
+# ------------------------------------------------------------------ the Ferry's Extra Passenger (plan 41 · EG8)
+# The Open Door Agency's case in Kanto: the harbour keeper of Two Island shows the duffel nobody claimed off the ferry.
+
+script CaseKantoKeeper
+  face self player
+  if flag FLAG_CASE_KANTO_CLOSED goto Thanks
+  if flag FLAG_CASE_KANTO_TAKEN goto Case
+  say "I keep the harbour tidy. Ropes coiled, nets dried, lost things kept safe until someone comes for them."
+  end
+label Case
+  if flag FLAG_CASE_KANTO_CLUE_DUFFEL goto Again
+  say "Lost things off the ferry? There's this duffel. It came off with the cargo, not the passengers, and nobody's claimed it."
+  say "A change of clothes inside, and a timetable with seat thirteen circled. So somebody rode over, ghost or no ghost."
+  setflag FLAG_CASE_KANTO_CLUE_DUFFEL
+  text "{player} noted the duffel nobody claimed."
+  end
+label Again
+  say "Off with the cargo, not the passengers. Whoever owned that duffel didn't ride with the rest."
+  end
+label Thanks
+  say "The duffel's owner came back for it at last. Rode over in a proper seat this time, they said."
+  end

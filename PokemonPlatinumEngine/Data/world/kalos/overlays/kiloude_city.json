@@ -31,7 +31,13 @@
     // A Bottle Cap of ours in the post-game ground (plan 36 · TR4): peak training's cap, found on the shore west of the
     // pier as well as traded for Battle Points
     { "id": "kiloude_city.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 542, "y": 384, "item": "Bottle Cap",
-      "hiddenBy": "FLAG_OBTAINED_KALOS_KILOUDE_BOTTLE_CAP" }
+      "hiddenBy": "FLAG_OBTAINED_KALOS_KILOUDE_BOTTLE_CAP" },
+    // The Open Door Agency's case in Kalos (plan 41 · EG8, provisional; kiloude_city.txt): the station's porter and a
+    // painter on the square, and the museum's restorer Odile Ferrand once Looker has sent the player after her
+    { "id": "case_kalos_porter", "name": "Porter", "npcType": "depot_agent", "x": 548, "y": 351, "facing": "Down", "script": "CaseKalosPorter" },
+    { "id": "case_kalos_painter", "name": "Painter", "npcType": "artist", "x": 583, "y": 352, "facing": "Down", "script": "CaseKalosPainter" },
+    { "id": "case_kalos_odile", "name": "Odile Ferrand", "npcType": "odile", "x": 560, "y": 354, "facing": "Down", "script": "CaseKalosOdile",
+      "shownBy": "FLAG_CASE_KALOS_ODILE_WAITS" }
   ],
   "signs": {
     "TownSign": "Kiloude City\nThe sea begins at the end of the street."

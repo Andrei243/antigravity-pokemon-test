@@ -880,6 +880,11 @@ public class ScriptTests
           faceto player cavern_middle
           warpto "OpenLab" hill_foot
           camera look cavern_middle nowait
+          halloffame look Kanto
+          circuit begin
+          circuit final Sinnoh
+          circuit won
+          deduce sinnoh 1
         script Other
           end
         """;

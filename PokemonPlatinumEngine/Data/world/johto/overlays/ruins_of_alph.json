@@ -28,5 +28,14 @@
     "D24R0101_001+1": "Ruins of Alph Research Center\nKeep the doors closed: some exhibits are fragile.",
     "D24R0101_002+1": "Ruins of Alph\nNorth Entrance",
     "D24R0101_003+1": "Ruins of Alph\nVisitors are asked to keep to the paths."
-  }
+  },
+  // The Open Door Agency's case in Johto (plan 41 · EG8, ruins_of_alph.txt): a researcher, a camper and a schoolchild on the
+  // ruins' paving, and the schoolteacher Mirelle Dunn once Looker has sent the player after her
+  "npcs": [
+    { "id": "case_johto_researcher", "name": "Researcher", "npcType": "scientist", "x": 432, "y": 268, "facing": "Down", "script": "CaseJohtoResearcher" },
+    { "id": "case_johto_camper", "name": "Camper", "npcType": "camper", "x": 436, "y": 280, "facing": "Left", "script": "CaseJohtoCamper" },
+    { "id": "case_johto_pupil", "name": "School Kid", "npcType": "school_kid_f", "x": 429, "y": 291, "facing": "Right", "script": "CaseJohtoPupil" },
+    { "id": "case_johto_mirelle", "name": "Mirelle Dunn", "npcType": "mirelle", "x": 433, "y": 291, "facing": "Left", "script": "CaseJohtoMirelle",
+      "shownBy": "FLAG_CASE_JOHTO_MIRELLE_WAITS" }
+  ]
 }
