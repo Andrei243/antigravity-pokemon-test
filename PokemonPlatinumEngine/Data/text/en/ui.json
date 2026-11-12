@@ -6976,6 +6976,50 @@
     "dyeQuestion": "Dye it {what}?",
     "answer": { "yes": "YES" }
   },
+  "photoStudio": {
+    "heading": "PHOTO STUDIO",
+    "row": {
+      "Backdrop": "BACKDROP",
+      "Pose": "POSE",
+      "Face": "FACE",
+      "Pokemon": "POKéMON",
+      "Place": "PLACE",
+      "Stickers": "STICKERS",
+      "Frame": "FRAME",
+      "Take": "TAKE"
+    },
+    "backdrop": {
+      "plain": "Plain",
+      "studio_sky": "Open Sky",
+      "studio_meadow": "Meadow",
+      "studio_curtain": "Rose Curtain",
+      "studio_night": "Starry Night",
+      "studio_sunburst": "Sunburst",
+      "studio_tide": "Tide Pools",
+      "studio_peaks": "Snowy Peaks",
+      "studio_laurels": "Laurels"
+    },
+    "frame": {
+      "plain": "Plain",
+      "studio_double": "Double Line",
+      "studio_scallop": "Scallops",
+      "studio_corners": "Corner Marks",
+      "studio_gilt": "Gilt",
+      "studio_ribbon": "Ribbon"
+    },
+    "pokemon": { "none": "No one" },
+    "place": { "Right": "On the right", "Left": "On the left" },
+    "stickers": { "count": "{count} / {most}" },
+    "take": { "action": "TAKE THE PICTURE" },
+    "seals": { "heading": "YOUR SEALS" },
+    "hints": { "put": "Put down" },
+    "refusal": {
+      "notOwned": "You don't have that Seal.",
+      "full": "The picture can't hold any more stickers.",
+      "outside": "That's off the picture.",
+      "noSeals": "You have no Seals to stick on."
+    }
+  },
   "photoBook": {
     "title": "PHOTO BOOK",
     "all": "ALL",
@@ -6988,6 +7032,7 @@
     "kept": "Kept in the photo book.",
     "full": "The photo book is full: throw one away first.",
     "lost": "The picture's file is gone.",
+    "studio": "Photo studio",
     "spot": {
       "sinnoh_twinleaf_pond": "Twinleaf's Pond",
       "sinnoh_sandgem_lab": "The Lab at Sandgem",

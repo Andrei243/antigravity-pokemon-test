@@ -7320,6 +7320,50 @@
     "dyeQuestion": "O vopsești {what}?",
     "answer": { "yes": "DA" }
   },
+  "photoStudio": {
+    "heading": "STUDIO FOTO",
+    "row": {
+      "Backdrop": "FUNDAL",
+      "Pose": "POZĂ",
+      "Face": "EXPRESIE",
+      "Pokemon": "POKéMON",
+      "Place": "LOC",
+      "Stickers": "AUTOCOLANTE",
+      "Frame": "RAMĂ",
+      "Take": "FOTOGRAFIAZĂ"
+    },
+    "backdrop": {
+      "plain": "Simplu",
+      "studio_sky": "Cer senin",
+      "studio_meadow": "Luncă",
+      "studio_curtain": "Perdea roz",
+      "studio_night": "Noapte înstelată",
+      "studio_sunburst": "Soare cu raze",
+      "studio_tide": "Bălți de mare",
+      "studio_peaks": "Vârfuri înzăpezite",
+      "studio_laurels": "Lauri"
+    },
+    "frame": {
+      "plain": "Simplă",
+      "studio_double": "Linie dublă",
+      "studio_scallop": "Festonată",
+      "studio_corners": "Colțuri",
+      "studio_gilt": "Aurită",
+      "studio_ribbon": "Panglică"
+    },
+    "pokemon": { "none": "Nimeni" },
+    "place": { "Right": "În dreapta", "Left": "În stânga" },
+    "stickers": { "count": "{count} / {most}" },
+    "take": { "action": "FĂ POZA" },
+    "seals": { "heading": "STICKERELE TALE" },
+    "hints": { "put": "Pune jos" },
+    "refusal": {
+      "notOwned": "Nu ai stickerul ăsta.",
+      "full": "Poza nu mai încape alte autocolante.",
+      "outside": "Asta e în afara pozei.",
+      "noSeals": "Nu ai stickere de lipit."
+    }
+  },
   "photoBook": {
     "title": "ALBUM FOTO",
     "all": "TOATE",
@@ -7332,6 +7376,7 @@
     "kept": "Păstrată în albumul foto.",
     "full": "Albumul foto e plin: aruncă întâi una.",
     "lost": "Fișierul pozei a dispărut.",
+    "studio": "Studio foto",
     "spot": {
       "sinnoh_twinleaf_pond": "Iazul din Twinleaf",
       "sinnoh_sandgem_lab": "Laboratorul din Sandgem",

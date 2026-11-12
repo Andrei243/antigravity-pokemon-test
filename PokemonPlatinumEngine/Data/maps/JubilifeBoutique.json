@@ -153,6 +153,14 @@
       "y": 4,
       "facing": "Left",
       "script": "Dyer"
+    },
+    {
+      "name": "Photographer",
+      "npcType": "Lady",
+      "x": 8,
+      "y": 6,
+      "facing": "Left",
+      "script": "Photographer"
     }
   ],
   "wildEncounters": []

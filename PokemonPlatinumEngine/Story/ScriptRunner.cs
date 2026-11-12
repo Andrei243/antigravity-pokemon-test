@@ -373,7 +373,7 @@ public sealed partial class ScriptRunner
         // The Apricorn Box is a screen the player looks into; the trees and Kurt are asked and changed without one
         Op.Apricorn => i.Name == "box",
         // Cameron's album is a screen; a photograph taken is the album's, counted with no screen
-        Op.Photo => i.Name == "album",
+        Op.Photo => i.Name is "album" or "book" or "studio",
         // Below ground only what is handed over or counted needs no screen and no tunnel
         Op.Underground => i.Name is not ("give" or "room" or "flags"),
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
@@ -2238,6 +2238,10 @@ public sealed partial class ScriptRunner
                 break;
             case "booked":
                 Result = host.PhotoBook?.Count ?? 0;
+                break;
+            // The photo studio (plan 43 · LF5)
+            case "studio":
+                host.Open(ScriptScreen.PhotoStudio, Subject);
                 break;
             case "spot":
                 if (host.PhotoAtSpot(i.Other ?? "")) afterBusy = () => Result = host.Answer;
