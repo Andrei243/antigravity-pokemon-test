@@ -65,7 +65,7 @@ public class RunRestrictionTests
         {
             Nuzlocke = true, Monotype = PokemonType.Water, PartyLimit = 1, NoBattleItems = true, NoCenter = true, NoCatching = true,
             NoRunning = true, SetStyle = true, ShinyDenominator = 512, Difficulty = Difficulty.Challenge, LevelCap = true,
-            NoLaterMechanics = true, Remix = true
+            NoLaterMechanics = true, NoPowers = true, Remix = true
         };
         Assert.All(RunRules.RuleNames.Where(r => r != "easy"), rule => Assert.True(all.Has(rule), rule));
         Assert.True((all with { Difficulty = Difficulty.Easy }).Has("easy"));
