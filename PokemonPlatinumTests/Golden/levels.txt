@@ -12,6 +12,9 @@ trainers 3, 25: collector_edwin 25, collector_fernando 25, waitress_kati 25
 === CanalaveGym
 Canalave Gym
 trainers 7, 34-40: ace_trainer_breanna 38, ace_trainer_cesar 40, black_belt_david 37, black_belt_ricky 38, worker_gary 37, worker_gerardo 35, worker_jackson 34
+=== Circhester_StadiumMission
+Circhester Stadium
+trainers 2, 38-40: galar_gym_trainer_carys 39, galar_gym_trainer_tomos 40
 === CoumarineCity_Gym
 Coumarine Gym
 trainers 2, 29-30: kalos_gardener_flora 29, kalos_hiker_sylvain 30
@@ -51,6 +54,9 @@ trainers 4, 48-50: kalos_bryony_1 50, kalos_celosia_1 50, kalos_flare_grunt_hq_1
 Glimwood Tangle
 grass 30-33
 trainers 2, 31: galar_beauty_rhian 31, galar_hiker_dewi 31
+=== Hammerlocke_StadiumMission
+Hammerlocke Stadium
+trainers 2, 44: galar_gym_trainer_nia 44, galar_gym_trainer_osian 44
 === HearthomeGymRoom1
 Hearthome Gym
 trainers 2, 20-23: lass_molly 23, youngster_donny 22
