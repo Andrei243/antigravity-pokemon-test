@@ -994,9 +994,12 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys", "ends", "rotom", "fliers");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys", "ends", "rotom", "fliers", "trim");
                 return what switch
                 {
+                    // Plan 23, "Finishing Kalos": Lumiose's groomer, a trim by its word for the Furfrou a variable names
+                    // (`team trim heart VAR_KALOS_GROOM_SLOT`)
+                    "trim" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.OneOf(PokemonPlatinumEngine.Models.FormRules.Trims.Select(t => t.Word).ToArray()), Record = r.Variable(writable: false) },
                     // Plan 20 · J15, part n: Silph Co.'s Rotom room, an appliance by its word (`team rotom heat`)
                     "rotom" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.OneOf(PokemonPlatinumEngine.Models.FormChanges.ApplianceWords.ToArray()) },
                     // Plan 21 · H12, part a: the Sealed Chamber's riddle (CheckRelicanthWailord): the first of the team of one

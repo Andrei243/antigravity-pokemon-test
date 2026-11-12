@@ -32,6 +32,12 @@ partial class Harness
             VenuesTournament(fresh: true);
             return;
         }
+        // The World Tournament's Kalos events and Beyond the League alone (vn40 to vn47; plan 23, "Finishing Kalos")
+        if (Environment.GetEnvironmentVariable("VENUES_FROM") == "kalos")
+        {
+            VenuesTournament(fresh: true, kalos: true);
+            return;
+        }
         // B15's Masters' Hall alone (Modes/VenuesMasters.cs)
         if (Environment.GetEnvironmentVariable("VENUES_FROM") == "masters")
         {

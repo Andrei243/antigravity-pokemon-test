@@ -10,6 +10,9 @@ What changes from one release to the next, for players. Every session's close-ou
 - Unova's Pokémon League now stands as a great hall on its plaza, and the statue in its hall sinks with you as a lift.
 - Once you are Unova's Champion, Striaton's three brothers wait in their restaurant and each battles you once a day.
 - Drayden, Marlon, Benga and the Striaton brothers have looks of their own.
+- Lumiose City's groomer now trims a Furfrou: for 500 dollars it takes one of nine trims, from Heart to Pharaoh, which lasts five days on your team before it grows out.
+- In Kalos and Alola you now turn to face whoever you talk to, even standing diagonally beside them; a fisher holds the rod up over the water; riding a Pokémon, you hold on with your hands on its back; and swimmers, fishers and people lying in bed far off are drawn grown like everyone else rather than as small sprites.
+- Grant's, Ramos's, Valerie's and Wikstrom's bands before their battles set them against cards of their own colour, and a Kalos Leader's name is no longer hidden behind their shoulder.
 - The PCs of Kanto's and Hoenn's Pokémon Centers work, and so does the PC on your bedroom desk in Pallet Town and in Littleroot Town: your boxes, and, as everywhere, the pasture and the Stroll Counter. Kanto and Hoenn each have a pasture of their own.
 - Icefall Cave's thin ice cracks under your first step and gives way under your second, dropping you to the floor below.
 - The Seagallop now waits at each Sevii harbour and on Cinnabar's quay as a ferry, and Celio's network machine stands in One Island's Pokémon Center.

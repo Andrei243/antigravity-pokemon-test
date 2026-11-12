@@ -918,6 +918,10 @@ public class SavedPokemonData
     public int CapsuleId { get; set; }
     public List<string>? Capsule { get; set; }
 
+    /// <summary>The days a Furfrou's trim has left (plan 23, "Finishing Kalos"); left out for anyone untrimmed.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int TrimDays { get; set; }
+
     /// <summary>Its Dynamax Level and the Gigantamax Factor (plan 06 · R22); left out for one with neither.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int DynamaxLevel { get; set; }
@@ -992,6 +996,7 @@ public class SavedPokemonData
             Lock = p.Lock,
             Scale = p.Scale > 1f ? p.Scale : null,
             CapsuleId = p.CapsuleId,
+            TrimDays = p.TrimDays,
             Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
             DynamaxLevel = p.DynamaxLevel,
             GigantamaxFactor = p.GigantamaxFactor,
@@ -1043,6 +1048,7 @@ public class SavedPokemonData
             Ball = Ball,
             OriginalTrainer = OriginalTrainer,
             Pokerus = Pokerus,
+            TrimDays = Math.Clamp(TrimDays, 0, FormRules.TrimLasts),
             Marks = Marks,
             MetLocation = MetLocation,
             Region = Region,

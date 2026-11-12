@@ -601,11 +601,19 @@ internal static class GrownAnimation
                 // The rod out over the water in both hands, the left foot a little ahead; a bite pulls the arms back and up
                 float pull = p.Stance == Overworld.Stance.Tug ? MathF.Floor(p.Time / Overworld.Seats.TugSeconds % 1f * 3f) / 2f : 0f;
                 pose.Turn(HumanBones.Spine, -0.1f * pull);
-                pose.Turn(HumanBones.UpperArmR, -0.85f - 0.5f * pull, 0f, 0.18f);
-                pose.Turn(HumanBones.ForeArmR, -0.5f - 0.3f * pull);
-                pose.Turn(HumanBones.HandR, 1.85f - 0.7f * pull, -0.55f);
-                pose.Turn(HumanBones.UpperArmL, -0.75f - 0.45f * pull, 0f, 0.38f);
-                pose.Turn(HumanBones.ForeArmL, -0.75f - 0.3f * pull, 0f, 0.3f);
+                // (the elbows down and the hands up at the chest, the rod's way kept by the wrist: from the front the arms
+                // read as holding the rod, where reaching out ahead they pointed at the eye, style guide, "Stances")
+                pose.Turn(HumanBones.UpperArmR, -0.45f - 0.5f * pull, 0f, 0.22f);
+                // (the forearm bent past level, so the hand comes up the picture from the front, where a forearm level
+                // toward the eye put it at the waist)
+                pose.Turn(HumanBones.ForeArmR, -1.6f - 0.3f * pull);
+                // (the rod rises some 70° over the water, a bite lifting it further: held lower, from the field's steep
+                // camera, 59° down, a rod toward the eye ran down the picture and read as held low; it must stand steeper
+                // than the camera looks down to rise on the picture. Its sideways turn small, or from the front it lay
+                // out to the side)
+                pose.Turn(HumanBones.HandR, 1.4f - 0.35f * pull, -0.15f);
+                pose.Turn(HumanBones.UpperArmL, -0.4f - 0.45f * pull, 0f, 0.38f);
+                pose.Turn(HumanBones.ForeArmL, -1.1f - 0.3f * pull, 0f, 0.3f);
                 var braced = rest;
                 braced.AnkleL = braced.AnkleL with { Z = braced.AnkleL.Z + 0.14f * legs.Length };
                 braced.AnkleR = braced.AnkleR with { Z = braced.AnkleR.Z - 0.04f * legs.Length };
@@ -779,6 +787,15 @@ internal static class GrownAnimation
                 pose.Turn(HumanBones.Head, -0.45f);
                 pose.Turn(HumanBones.UpperArmL, -0.5f);
                 pose.Turn(HumanBones.UpperArmR, -0.5f);
+                break;
+            case RideStance.Reins:
+                // The grid's ride on land (plan 30, the gate's owed): the upper arms back nearly to hanging and the forearms
+                // forward, the hands down on the ride's back before the hips, under the seat's line, so that facing the
+                // camera no hand rises over the ride's card
+                pose.Turn(HumanBones.UpperArmL, 0.6f, 0f, 0.05f);
+                pose.Turn(HumanBones.UpperArmR, 0.6f, 0f, -0.05f);
+                pose.Turn(HumanBones.ForeArmL, -0.15f);
+                pose.Turn(HumanBones.ForeArmR, -0.15f);
                 break;
         }
     }

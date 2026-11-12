@@ -56,8 +56,11 @@ internal static class FieldRigChoice
             near.Add((d, i));
         }
         near.Sort((a, b) => a.D != b.D ? a.D.CompareTo(b.D) : a.I.CompareTo(b.I));
-        for (int k = 0; k < near.Count && k < MostLive; k++) live.Add(near[k].I);
+        for (int k = 0; k < near.Count && k < (LiveCap ?? MostLive); k++) live.Add(near[k].I);
     }
+
+    /// <summary>A tool's switch (the harness's): how many are drawn live in place of <see cref="MostLive"/>, to show the impostors near. Null in the game.</summary>
+    public static int? LiveCap { get; set; }
 
     /// <summary>
     /// Where a bubble's foot stands over the ground under a person (the "!" and the rest): over a chibi head 1.95, as the
@@ -174,8 +177,8 @@ internal sealed class FieldRigs
     private readonly HashSet<object> liveBefore = new(), liveNow = new();
     private readonly List<Vector3> feet = new();
     private readonly List<object?> who = new();
-    private RenderTexture2D bakeTarget;
-    private bool loaded;
+    // The bake's targets by the frame's width (ImpostorFrame): made as a stance first wants one
+    private readonly Dictionary<int, RenderTexture2D> bakeTargets = new();
     private float vs = 1f, pitchDeg;
     private RenderContext? context;
 
@@ -275,12 +278,49 @@ internal sealed class FieldRigs
 
     /// <summary>
     /// Whether someone far off in a stance is an impostor (plan 30, the gate's owed: a crowd's sitters past the live twelve
-    /// were chibi sprites among the grown): standing, sitting on a seat or on the ground. Anyone else is their sprite.
+    /// were chibi sprites among the grown): every stance the kit draws live (<see cref="FieldRigChoice.LiveIn"/>):
+    /// standing, sitting on a seat or on the ground, and since the gate's last owed treading water, fishing (a tug is
+    /// baked as a fisher) and lying. Anyone else is their sprite.
     /// </summary>
-    public static bool HasImpostor(Overworld.Stance stance) => stance is Overworld.Stance.Stand or Overworld.Stance.Sit or Overworld.Stance.SitGround;
+    public static bool HasImpostor(Overworld.Stance stance) => FieldRigChoice.LiveIn(stance);
 
-    /// <summary>The name a look's impostors are kept under in a stance: the look's own name standing, as it always was.</summary>
-    public static string ImpostorKey(string look, Overworld.Stance stance) => stance == Overworld.Stance.Stand ? look : $"{look}#{stance}";
+    /// <summary>The name a look's impostors are kept under in a stance: the look's own name standing, as it always was; a tug is a fisher's.</summary>
+    public static string ImpostorKey(string look, Overworld.Stance stance) => stance switch
+    {
+        Overworld.Stance.Stand => look,
+        Overworld.Stance.Tug => $"{look}#{Overworld.Stance.Fish}",
+        _ => $"{look}#{stance}"
+    };
+
+    /// <summary>
+    /// An impostor's frame in a stance, in texels (style guide, "Live rigs in the field"): 48 by 64 for a body upright, 80
+    /// by 88 for a fisher (the rod's reach on either side and its tip held up), 112 by 64 for a lier (the body's length on either side).
+    /// </summary>
+    public static (int W, int H) ImpostorFrame(Overworld.Stance stance) => stance switch
+    {
+        Overworld.Stance.Fish or Overworld.Stance.Tug => (80, 88),
+        Overworld.Stance.Lie => (112, ImpostorH),
+        _ => (ImpostorW, ImpostorH)
+    };
+
+    /// <summary>How far a grown body's neck is from its feet, as a share of its crown's height.</summary>
+    public const float LierNeck = 0.84f;
+
+    /// <summary>
+    /// Where a lier's impostor stands (style guide, "Live rigs in the field"), from where their feet lie (<paramref name="feet"/>,
+    /// on the mattress or the floor), the way they face and how far their neck is from their feet along the body, in tiles:
+    /// as the chibi lier's card, it stands at the head's depth and is sunk until the neck, which the impostor's 24° shows
+    /// that far up the card (the back's depth <paramref name="lift"/> and the neck's distance into the picture), is at the
+    /// surface's top; and it is moved along the body so the head lands where it lies.
+    /// </summary>
+    public static Vector3 LierCard(Vector3 feet, float yaw, float neck, float lift, float verticalScale)
+    {
+        float fx = MathF.Sin(yaw), fz = MathF.Cos(yaw);
+        var head = feet - new Vector3(fx * neck, 0f, fz * neck);
+        float view = CharacterSprites.ViewPitchDeg * MathF.PI / 180f;
+        float onCard = lift * MathF.Cos(view) + fz * neck * MathF.Sin(view);
+        return new Vector3(head.X + fx * neck, feet.Y + 0.02f - onCard * verticalScale, head.Z);
+    }
 
     /// <summary>
     /// A grown person's pose, way and feet this frame (plan 30 · FM6): their gait, yaw, lean, step-turn, start and stop
@@ -381,7 +421,14 @@ internal sealed class FieldRigs
                 // An impostor: the facing of eight nearest the way they face, its foot as a sprite's is
                 var (_, yaw, at) = posed[i];
                 var card = views.Views[FieldRigChoice.Facing8(yaw)];
-                CharacterSprites.DrawCard(card, new Vector3(at.X, at.Y - Margin * vs, at.Z + 0.02f), vs, pass);
+                if (f.Pose.Stance == Overworld.Stance.Lie)
+                {
+                    // A lier's card stands at the head, sunk to the neck in what they lie on, as the chibi lier's does
+                    float crown = CharacterModels.GrownFrameOf(rig.Style.Build, rig.Style.CurvedFigure()).Crown * rig.Scale;
+                    var foot = LierCard(at, yaw, LierNeck * crown, GrownAnimation.LieLift * crown, vs);
+                    CharacterSprites.DrawCard(card, new Vector3(foot.X, foot.Y - Margin * vs, foot.Z + 0.02f), vs, pass);
+                }
+                else CharacterSprites.DrawCard(card, new Vector3(at.X, at.Y - Margin * vs, at.Z + 0.02f), vs, pass);
                 if (pass == CharacterPass.Color) { Impostors++; Triangles += 2; }
             }
             else
@@ -428,11 +475,15 @@ internal sealed class FieldRigs
             impostors.Remove(oldest);
         }
         var shaders = context.Shaders;
+        // (a tug is baked as a fisher: one key for both, ImpostorKey)
+        if (stance == Overworld.Stance.Tug) stance = Overworld.Stance.Fish;
+        var (w, h) = ImpostorFrame(stance);
         var views = new CharacterSprites.Card[8];
         for (int k = 0; k < 8; k++)
         {
             var texture = View(context, rig, k, stance);
-            views[k] = new CharacterSprites.Card(texture, RenderContext.MaterialFor(shaders.Sprite, texture), RenderContext.MaterialFor(shaders.Depth, texture), FrameW, FrameH);
+            views[k] = new CharacterSprites.Card(texture, RenderContext.MaterialFor(shaders.Sprite, texture), RenderContext.MaterialFor(shaders.Depth, texture),
+                w / (float)CharacterSprites.TexelsPerUnit, h / (float)CharacterSprites.TexelsPerUnit);
         }
         impostors[ImpostorKey(rig.Type, stance)] = (views, time);
     }
@@ -443,15 +494,16 @@ internal sealed class FieldRigs
     /// </summary>
     private Texture2D View(RenderContext context, CharacterRig rig, int k, Overworld.Stance stance = Overworld.Stance.Stand)
     {
-        if (!loaded)
-        {
-            bakeTarget = Gpu.Target(ImpostorW, ImpostorH, "fieldrig");
-            loaded = true;
-        }
+        var (w, h) = ImpostorFrame(stance);
+        if (!bakeTargets.TryGetValue(w, out var bakeTarget))
+            bakeTargets[w] = bakeTarget = Gpu.Target(w, h, "fieldrig");
         var shaders = context.Shaders;
         float pitch = CharacterSprites.ViewPitchDeg * MathF.PI / 180f;
-        var look = new Vector3(0, FrameH / 2f - Margin, 0);
-        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 20f, look, Vector3.UnitY, FrameH, CameraProjection.Orthographic);
+        // (the orthographic camera's height is the frame's; a wider or taller frame shows more at the same scale, the
+        // feet always the margin over its bottom row)
+        float frameH = h / (float)CharacterSprites.TexelsPerUnit;
+        var look = new Vector3(0, frameH / 2f - Margin, 0);
+        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 20f, look, Vector3.UnitY, frameH, CameraProjection.Orthographic);
         Raylib.BeginTextureMode(bakeTarget);
         Raylib.ClearBackground(new Color(0, 0, 0, 0));
         Rlgl.SetClipPlanes(1.0, 60.0);
@@ -505,8 +557,8 @@ internal sealed class FieldRigs
         impostors.Clear();
         foreach (var (_, texture) in portraits) Gpu.Unload(texture);
         portraits.Clear();
-        if (loaded) Gpu.Unload(bakeTarget);
-        loaded = false;
+        foreach (var (_, target) in bakeTargets) Gpu.Unload(target);
+        bakeTargets.Clear();
         liveBefore.Clear();
         motions.Clear();
         lastTime = double.NaN;

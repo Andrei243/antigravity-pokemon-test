@@ -1,0 +1,80 @@
+# Lumiose City's grooming salon (plan 23, "Finishing Kalos"): the groomer trims a Furfrou of the team into one of the
+# nine trims for 500 dollars, and the trim lasts five days on the team (FormRules.Trim, TrimDaysPass; in a box it grows
+# out at once, plan 06 · R29b). The lines are our own, on X and Y's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Lumiose's groomer and Furfrou's trims"). VAR_KALOS_GROOM_SLOT is ours: the Furfrou's place.
+
+
+script Groomer
+  face self player
+  speaker "Groomer"
+  ask "A trim, a fluff, a little ribbon. Shall I give your Furfrou a new look? It's 500 dollars."
+  if no goto Later
+  say "Which one is the lucky Furfrou?"
+  choosepokemon "Furfrou"
+  if result == 255 goto Later
+  setvar VAR_KALOS_GROOM_SLOT RESULT
+  choose "Which trim would suit it?" "Heart" "Star" "Diamond" "Debutante" "Other trims" "Not today"
+  if result == 0 goto Heart
+  if result == 1 goto Star
+  if result == 2 goto Diamond
+  if result == 3 goto Debutante
+  if result == 5 goto Later
+  choose "And of these?" "Matron" "Dandy" "La Reine" "Kabuki" "Pharaoh" "Not today"
+  if result == 0 goto Matron
+  if result == 1 goto Dandy
+  if result == 2 goto LaReine
+  if result == 3 goto Kabuki
+  if result == 4 goto Pharaoh
+  goto Later
+label Heart
+  call Pay
+  team trim heart VAR_KALOS_GROOM_SLOT
+  goto Done
+label Star
+  call Pay
+  team trim star VAR_KALOS_GROOM_SLOT
+  goto Done
+label Diamond
+  call Pay
+  team trim diamond VAR_KALOS_GROOM_SLOT
+  goto Done
+label Debutante
+  call Pay
+  team trim debutante VAR_KALOS_GROOM_SLOT
+  goto Done
+label Matron
+  call Pay
+  team trim matron VAR_KALOS_GROOM_SLOT
+  goto Done
+label Dandy
+  call Pay
+  team trim dandy VAR_KALOS_GROOM_SLOT
+  goto Done
+label LaReine
+  call Pay
+  team trim lareine VAR_KALOS_GROOM_SLOT
+  goto Done
+label Kabuki
+  call Pay
+  team trim kabuki VAR_KALOS_GROOM_SLOT
+  goto Done
+label Pharaoh
+  call Pay
+  team trim pharaoh VAR_KALOS_GROOM_SLOT
+label Done
+  fade out
+  text "Snip, snip... a brush, a puff, and a ribbon tied just so."
+  fade in
+  say "There! Look at that coat. A trim like this holds for five days, so show it off while it lasts."
+  end
+label Later
+  say "Whenever its coat needs taming, you know where I am."
+  end
+
+script Pay
+  takemoney 500
+  if result == 0 goto Poor
+  return
+label Poor
+  say "Oh dear, you're a little short. A good trim is worth saving up for."
+  end

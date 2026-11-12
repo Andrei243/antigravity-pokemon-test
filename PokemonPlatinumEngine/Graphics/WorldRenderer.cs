@@ -1386,7 +1386,8 @@ public sealed partial class WorldRenderer
         if (player.Mount != null) playerPose.Riding = Riding.Surf;
         // A grown rider of a ride on land sits astride its sprite once it is baked (plan 30, the gate's owed)
         bool grownRide = GrownField && riding && carrier != null;
-        if (grownRide) { playerPose.Riding = Riding.Mount; seat = GrownRideSeat(carrier!); }
+        // (holding the reins, the hands on the ride's back under the seat's line: facing the camera they showed over its card)
+        if (grownRide) { playerPose.Riding = Riding.Mount; playerPose.RideStance = RideStance.Reins; seat = GrownRideSeat(carrier!); }
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
         // (the ride's card stands GrownRideAhead nearer the camera, so the body astride is wholly behind it and only what
         // rises over its back shows: the seat is lowered by as much as that step forward lifts the card's back on the picture)

@@ -371,10 +371,15 @@ public class IntoBattleTests
         Assert.Equal("Viola", SceneTransition.BandFor(With("kalos_viola_1", BattleTerrain.Building, 12, 10))!.Value.Name);
         Assert.Equal("Wulfric", SceneTransition.BandFor(With("kalos_wulfric_rematch", BattleTerrain.Building, 70, 60))!.Value.Name);
         Assert.Equal(Rgb(SceneTransition.KalosBands.Last().Base), Rgb(SceneTransition.BandFor(With("kalos_diantha_1", BattleTerrain.Special, 68, 60))!.Value.Base));
-        // The card behind a portrait is the band's light colour, but Viola's, whose vest and hair sank into it: a soft lilac
-        foreach (var band in SceneTransition.KalosBands.Where(b => b.Name != "Viola"))
-            Assert.Equal(band.Light, band.Backing);
-        Assert.Equal((196, 176, 220), Rgb(SceneTransition.BandOf("Leader", "Viola").Backing));
+        // The card behind a portrait is the band's light colour, but for five whose grown busts sank into it: Viola's soft
+        // lilac, Grant's teal, Ramos's sky, Valerie's mint and Wikstrom's gold (the style guide's fifth table)
+        var cards = new Dictionary<string, (int, int, int)>
+        {
+            ["Viola"] = (196, 176, 220), ["Grant"] = (150, 196, 200), ["Ramos"] = (186, 214, 236), ["Valerie"] = (196, 228, 214), ["Wikstrom"] = (236, 214, 150)
+        };
+        foreach (var band in SceneTransition.KalosBands)
+            if (cards.TryGetValue(band.Name, out var card)) Assert.Equal(card, Rgb(band.Backing));
+            else Assert.Equal(band.Light, band.Backing);
     }
 
     /// <summary>

@@ -44,8 +44,12 @@ public readonly record struct BandBeats(float Opens, float MarkFrom, float MarkT
 public readonly record struct BandLook(bool Shown, float Top, float Bottom, float Open, int Scroll, bool Two, Vector2 Theirs, Vector2 Own,
     bool Lit, int Dim, Vector2 Name, int NameAlpha, Vector2 Mark, float MarkCome, float Flash, float White);
 
-/// <summary>What a band is drawn with: whose it is, and the portraits rendered for it so far (theirs, and the player's in the League's).</summary>
-public readonly record struct BandPicture(BattleBand Band, Texture2D? Theirs, Texture2D? Own);
+/// <summary>
+/// What a band is drawn with: whose it is, and the portraits rendered for it so far (theirs, and the player's in the
+/// League's); <paramref name="NameOver"/> where theirs is a grown bust (plan 30's grown kit), whose shoulders reach over
+/// where a Leader's plate lies under the portrait's edge, so the plate is drawn over the portrait instead.
+/// </summary>
+public readonly record struct BandPicture(BattleBand Band, Texture2D? Theirs, Texture2D? Own, bool NameOver = false);
 
 // The bands of the Gym Leaders, the Elite Four and the Champion (plan 09 · L15; style guide, "Life", "Into battle",
 // "Bands"): our own after the beats of the original's EncounterEffect_GymLeader and EncounterEffect_EliteFourChampion
@@ -188,18 +192,20 @@ public static partial class SceneTransition
     /// </summary>
     public static IReadOnlyList<BattleBand> KalosBands { get; } = new[]
     {
-        // (Her olive vest sank into the band and her pale gold hair into its light colour: her card is a soft lilac)
+        // (Her olive vest sank into the band and her pale gold hair into its light colour: her card is a soft lilac; and
+        // where a grown bust sank into its light colour, a card of its own: Grant's teal, Ramos's sky, Valerie's mint,
+        // Wikstrom's gold, the style guide's fifth table)
         new BattleBand("Leader", "Viola", Rgb(152, 176, 64), Rgb(84, 100, 24), Rgb(220, 232, 150), Rgb(196, 176, 220)),
-        new BattleBand("Leader", "Grant", Rgb(196, 152, 104), Rgb(112, 80, 44), Rgb(240, 216, 180)),
+        new BattleBand("Leader", "Grant", Rgb(196, 152, 104), Rgb(112, 80, 44), Rgb(240, 216, 180), Rgb(150, 196, 200)),
         new BattleBand("Leader", "Korrina", Rgb(232, 112, 56), Rgb(140, 52, 20), Rgb(252, 192, 152)),
-        new BattleBand("Leader", "Ramos", Rgb(104, 148, 72), Rgb(48, 80, 28), Rgb(196, 224, 164)),
+        new BattleBand("Leader", "Ramos", Rgb(104, 148, 72), Rgb(48, 80, 28), Rgb(196, 224, 164), Rgb(186, 214, 236)),
         new BattleBand("Leader", "Clemont", Rgb(244, 184, 48), Rgb(144, 100, 12), Rgb(252, 232, 160)),
-        new BattleBand("Leader", "Valerie", Rgb(228, 152, 196), Rgb(140, 64, 108), Rgb(248, 216, 236)),
+        new BattleBand("Leader", "Valerie", Rgb(228, 152, 196), Rgb(140, 64, 108), Rgb(248, 216, 236), Rgb(196, 228, 214)),
         new BattleBand("Leader", "Olympia", Rgb(152, 104, 196), Rgb(80, 44, 116), Rgb(220, 196, 244)),
         new BattleBand("Leader", "Wulfric", Rgb(120, 184, 208), Rgb(44, 100, 124), Rgb(200, 236, 244)),
         new BattleBand("Elite Four", "Malva", Rgb(208, 64, 48), Rgb(120, 24, 16), Rgb(248, 168, 152)),
         new BattleBand("Elite Four", "Siebold", Rgb(56, 136, 184), Rgb(20, 68, 108), Rgb(160, 212, 240)),
-        new BattleBand("Elite Four", "Wikstrom", Rgb(152, 160, 176), Rgb(72, 80, 96), Rgb(220, 224, 232)),
+        new BattleBand("Elite Four", "Wikstrom", Rgb(152, 160, 176), Rgb(72, 80, 96), Rgb(220, 224, 232), Rgb(236, 214, 150)),
         new BattleBand("Elite Four", "Drasna", Rgb(72, 156, 128), Rgb(28, 84, 64), Rgb(168, 220, 200)),
         new BattleBand("Champion", "Diantha", Rgb(216, 96, 120), Rgb(124, 36, 60), Rgb(248, 192, 204))
     };
@@ -444,9 +450,12 @@ public static partial class SceneTransition
 
         DrawMark(band, look.Mark, look.MarkCome);
         // A Leader's name lies under the edge of the portrait; the League's over the foot of theirs
-        if (!league) DrawName(band, look.Name, false, look.NameAlpha);
+        // (a grown bust's shoulders reach over the plate, which is then drawn over the portrait: picture.NameOver)
+        bool nameOver = picture?.NameOver == true;
+        if (!league && !nameOver) DrawName(band, look.Name, false, look.NameAlpha);
         if (look.Two) DrawPortrait(picture?.Own, look.Own, look.Lit);
         DrawPortrait(picture?.Theirs, look.Theirs, look.Lit);
+        if (!league && nameOver) DrawName(band, look.Name, false, look.NameAlpha);
         // The band's foot is drawn over the portraits' own, so a bust ends in the band's line
         if (league)
         {
