@@ -307,9 +307,12 @@ public static class MusicDirector
     /// </summary>
     public static string? EyeSong(string? trainerClass, string? region, Func<string, bool> exists)
     {
-        if (trainerClass != null && !string.IsNullOrEmpty(region) && SoundMap.EyeSongs.TryGetValue(trainerClass, out var file)
-            && exists($"{region.ToLowerInvariant()}/{file}"))
-            return $"{region.ToLowerInvariant()}/{file}";
+        if (trainerClass != null && !string.IsNullOrEmpty(region) && SoundMap.EyeSongs.TryGetValue(trainerClass, out var file))
+        {
+            if (exists($"{region.ToLowerInvariant()}/{file}")) return $"{region.ToLowerInvariant()}/{file}";
+            // a song of our own that every region shares (Lockwork's march, plan 44 · SD5)
+            if (exists($"common/{file}")) return $"common/{file}";
+        }
         return Resolve(EyeRole(trainerClass), region, exists);
     }
 

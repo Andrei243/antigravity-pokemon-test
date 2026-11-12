@@ -5888,7 +5888,7 @@
       "wildWon": "Câștigă o luptă sălbatică", "trainerWon": "Învinge un antrenor", "wildRan": "Fugi de un Pokémon sălbatic",
       "wildFled": "Vezi un Pokémon sălbatic fugind", "trainerLost": "Pierde în fața unui antrenor", "whiteouts": "Leșină și mergi mai departe",
       "caught": "Prinde un Pokémon", "encounters": "Întâlnește un Pokémon sălbatic", "levelled": "Crește un nivel în luptă",
-      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor"
+      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată"
     },
     "name": {
       "stepsFoot": "Mergi {count} pași", "stepsSurf": "Fă {count} pași pe apă", "stepsCycle": "Fă {count} pași cu bicicleta", "stepsDive": "Fă {count} pași sub apă",
@@ -5897,7 +5897,7 @@
       "caught": "Prinde {count} Pokémoni", "newSpecies": "Prinde {count} specii noi", "encounters": "Întâlnește {count} Pokémoni sălbatici",
       "levelled": "Crește {count} niveluri în luptă", "evolutions": "Vezi {count} evoluții",
       "dexSeen": "Vezi {count} specii", "dexCaught": "Deține {count} specii",
-      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni", "circuits": "Câștigă {count} Circuite ale Laurilor"
+      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni", "circuits": "Câștigă {count} Circuite ale Laurilor", "heartsOpened": "Deschide {count} inimi blocate"
     }
   },
   "sessionReport": {
@@ -6262,6 +6262,44 @@
         "coupon2": "Răspunde la ghicitoarea celui de-al doilea clovn pentru un cupon.",
         "coupon3": "Răspunde la ghicitoarea clovnului de lângă Jubilife TV.",
         "president": "Du-i președintelui cele trei cupoane."
+      }
+    },
+    "lockwork_sinnoh": {
+      "title": "Celula Lockwork din Sinnoh",
+      "giver": "agenții de la Fight Area",
+      "place": "Fight Area",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, jos pe scările de lângă chei." }
+    },
+    "lockwork_kanto": {
+      "title": "Celula Lockwork din Kanto",
+      "giver": "agenții din portul Vermilion",
+      "place": "Orașul Vermilion",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, sub port." }
+    },
+    "lockwork_johto": {
+      "title": "Celula Lockwork din Johto",
+      "giver": "agenții din portul Olivine",
+      "place": "Orașul Olivine",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, sub port." }
+    },
+    "lockwork_hoenn": {
+      "title": "Celula Lockwork din Hoenn",
+      "giver": "agenții din portul Lilycove",
+      "place": "Orașul Lilycove",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, sub port." }
+    },
+    "lockwork_unova": {
+      "title": "Sediul central Lockwork",
+      "giver": "agenții de pe digurile din Castelia",
+      "place": "Orașul Castelia",
+      "reward": "Mașinăria oprită și inimile curierului",
+      "step": {
+        "admin": "Ia înapoi inimile de la administratorul din holul turnului cenușiu.",
+        "head": "Înfruntă-l pe șeful Lockwork sus și oprește mașinăria."
       }
     },
     "case_sinnoh": {
