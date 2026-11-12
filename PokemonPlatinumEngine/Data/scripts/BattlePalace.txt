@@ -15,7 +15,9 @@ script OnEnter
   place player 8 10 up
 label Battle
   venue next
-  speaker "Palace Maven"
+  venue brain
+  if result == 1 goto Maven
+  speaker "Attendant"
   say "Battle {number} of seven! Your Pokémon choose for themselves. Trust their natures."
   venue opponent
   place opponent 8 3 down
@@ -28,11 +30,11 @@ label Battle
   call Leaves
   venue won
   if result == 1 goto RoundWon
-  speaker "Palace Maven"
+  speaker "Attendant"
   say "Well fought! Your three have been made whole again. The next Trainer awaits."
   goto Battle
 label RoundWon
-  speaker "Palace Maven"
+  speaker "Attendant"
   say "Seven in a row! {player}'s Pokémon have shown us who they truly are."
   venue finish won
   venue points
@@ -42,7 +44,7 @@ label RoundWon
 label Lost
   call Leaves
   venue finish lost
-  speaker "Palace Maven"
+  speaker "Attendant"
   say "The round ends here. Even a defeat teaches you your Pokémon's hearts."
 label Home
   venue end
@@ -50,6 +52,25 @@ label Home
   warp "BattleFrontierAnnex" 2 5 left
   fade in
   end
+# The seventh battle of a round whose streak reaches the Palace Maven (plan 21's leftovers, Models/Frontier/EmeraldBrains.cs):
+# Spenser himself comes down to watch the natures of the player's three, his own three choosing by theirs
+label Maven
+  speaker "Attendant"
+  say "Battle {number} of seven, and this one is special. The Palace Maven himself wishes to see your Pokémon."
+  venue opponent
+  place opponent 8 3 down
+  setflag FLAG_BATTLE_PALACE_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  speaker "Spenser"
+  say "A Pokémon's nature is its truest voice. Mine have spoken with me for decades. Let's hear yours."
+  venue fight
+  if result == 0 goto Lost
+  call Leaves
+  speaker "Spenser"
+  say "Ha! Your three heard you without a single order. That bond is the real strength here."
+  venue won
+  goto RoundWon
 
 
 # The opponent goes off the floor again

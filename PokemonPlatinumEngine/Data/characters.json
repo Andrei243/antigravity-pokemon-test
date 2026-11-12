@@ -692,6 +692,13 @@
     // coat with a snake-green trim; Brandon, the Pyramid King, a broad explorer in a khaki shirt and a sand-coloured hat
     "lucy": { "hairColor": "#3a2a4a", "hair": "Long", "top": "#26222e", "accent": "#5ab44a", "bottom": "#26222e", "shoes": "#2a2430", "eyes": "#6a3a7a", "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
     "brandon": { "hairColor": "#4a3022", "hair": "Short", "hat": "Cap", "hatColor": "#c8a868", "hatBand": "#5a4a2a", "top": "#a88a52", "accent": "#e8dcb8", "bottom": "#5a4a32", "shoes": "#3a2a1e", "eyes": "#3a2a22", "bushyBrows": true, "build": "Adult", "height": 1.12 },
+    // The three Brains of Emerald's facilities that had none (plan 21's leftovers, 2026-11-12), our own takes: Spenser, the
+    // Palace Maven, a bald old master with a silver beard in a moss-green robe; Greta, the Arena Tycoon, short
+    // spiky rose hair and a black fighter's jacket with orange trim; Tucker, the Dome Ace, a showman's swept golden hair
+    // under a violet tailcoat with a gold collar
+    "spenser": { "skin": "#c89270", "hairColor": "#a8a8b4", "hair": "Bald", "top": "#4a6a3a", "accent": "#d8c27a", "bottom": "#3a5230", "shoes": "#2a2420", "eyes": "#3a3a2a", "skirt": true, "coat": true, "beard": true, "bushyBrows": true, "build": "Elder" },
+    "greta": { "skin": "#c08a62", "hairColor": "#e05a7a", "hair": "Spiky", "top": "#26222a", "accent": "#f08a2a", "bottom": "#26222a", "shoes": "#f08a2a", "eyes": "#5a2a3a", "shortSleeves": true, "build": "Adult", "lashes": true, "height": 0.98 },
+    "tucker": { "hairColor": "#f0cc5a", "hair": "Swept", "top": "#5a3a8a", "accent": "#f2c84a", "bottom": "#2e2440", "shoes": "#1e1a26", "eyes": "#4a3a6a", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
     // Plan 21 · H12, part p: the Trick House's Mechadolls, our own clockwork dolls: a bald pewter head under a band of
     // orange, a cyan visor for eyes, a pewter body with brass trim on dark boots (never a person's skin tone or hair)
     "mechadoll": { "hairColor": "#9aa2b2", "hair": "Bald", "hat": "Headband", "hatColor": "#e88a3a", "hatBand": "#e8c04a", "skin": "#b8c0cc", "top": "#8a94a8", "accent": "#e8c04a", "bottom": "#6a7286", "shoes": "#2e3240", "eyes": "#2ad0d8", "glasses": "#2ad0d8", "build": "Adult", "height": 0.96 },
@@ -1305,6 +1312,10 @@
     // Plan 14 · B10: the Battle Pike's and the Battle Pyramid's Brains in battle
     "Pike Queen": "lucy",
     "Pyramid King": "brandon",
+    // Plan 21's leftovers: Emerald's three Brains of the Palace, the Arena and the Dome
+    "Palace Maven": "spenser",
+    "Arena Tycoon": "greta",
+    "Dome Ace": "tucker",
     // Plan 37 · FC2: the streak house's hosts, each in their own look
     "House Host": null,
     // Plan 30 · FM10: Kalos's classes of one person each (the professor, the bureau's butler and the sting's three

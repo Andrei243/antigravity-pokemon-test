@@ -59,6 +59,20 @@ public sealed class RouletteWheel
     /// <summary>The two helpers, by their species' names (the data's): a team with either changes the ball's run and where it is put down.</summary>
     public const string ShroomishSpecies = "Shroomish", TaillowSpecies = "Taillow";
 
+    /// <summary>
+    /// The right table's wager on a service day (Emerald's <c>sTableMinBets</c>' fourth, with <c>ROULETTE_SPECIAL_RATE</c>):
+    /// six Coins a ball, so every hit pays twice the usual. Emerald's PokéNews of the Game Corner calls the day; ours is
+    /// every Saturday (<c>docs/mechanics/rulings.md</c>, "The Brains of the Palace, the Arena and the Dome, and the roulette's
+    /// service day").
+    /// </summary>
+    public const int ServiceDayBet = 6;
+
+    /// <summary>The story's variable that keeps the most roulette wins in a row (Emerald's <c>GAME_STAT_CONSECUTIVE_ROULETTE_WINS</c>).</summary>
+    public const string BestRunVariable = "VAR_HOENN_ROULETTE_WINS_IN_A_ROW";
+
+    /// <summary>The table's record as a sitting leaves it: the better of the best before and this sitting's (<c>Task_TryIncrementWins</c>).</summary>
+    public static int BestRun(int before, RouletteWheel? wheel) => Math.Max(before, wheel?.BestWinsInARow ?? 0);
+
     public const int FramesPerSecond = 60, Slots = RouletteRound.Squares, DegreesPerSlot = 360 / Slots;
     private const int SlotMiddle = DegreesPerSlot / 2 - 1, SlideFrames = 32, ShowFrames = 60, ResultDelay = 30;
     /// <summary>Ours: a ball that has rolled this long without coming to rest is laid in the first empty slot (never seen in Emerald's tables).</summary>
@@ -83,14 +97,14 @@ public sealed class RouletteWheel
     private readonly Random chance;
     private readonly List<RouletteCue> cues = new();
 
-    /// <param name="minBet">The table's wager, 1 (the left table) or 3 (the right).</param>
+    /// <param name="minBet">The table's wager, 1 (the left table) or 3 (the right), or the right's <see cref="ServiceDayBet"/> on a service day.</param>
     /// <param name="hour">The hour of the day, which Emerald reads off its clock for the ball's run.</param>
     /// <param name="hasShroomish">Whether a Shroomish is in the team (not an Egg).</param>
     /// <param name="hasTaillow">Whether a Taillow is.</param>
     public RouletteWheel(int minBet, int coins, int hour, bool hasShroomish, bool hasTaillow, Random chance)
     {
         tableId = minBet >= 3 ? 1 : 0;
-        table = Tables[tableId];
+        table = minBet == ServiceDayBet ? Tables[1] with { MinBet = ServiceDayBet } : Tables[tableId];
         this.hour = ((hour % 24) + 24) % 24;
         shroomish = hasShroomish;
         taillow = hasTaillow;
@@ -104,6 +118,8 @@ public sealed class RouletteWheel
     // ------------------------------------------------------------------ what the screen reads
 
     public int MinBet => table.MinBet;
+    /// <summary>The right table at its service day's wager.</summary>
+    public bool ServiceDay => table.MinBet == ServiceDayBet;
     /// <summary>Whether this is the left table (a Coin a ball) or the right (three).</summary>
     public bool RightTable => tableId == 1;
     public int Coins { get; private set; }

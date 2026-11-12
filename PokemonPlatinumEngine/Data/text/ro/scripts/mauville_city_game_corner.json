@@ -357,6 +357,32 @@
       "text": [
         "O roată de ruletă. Fără o Cutie de Fise nu ai ce paria."
       ]
+    },
+    {
+      "en": [
+        "It's service day! A ball here takes 6 Coins today, and every win pays double. Will you play?"
+      ],
+      "text": [
+        "E zi de ofertă! Aici o bilă costă azi 6 fise, și fiecare câștig plătește dublu. Joci?"
+      ]
+    },
+    {
+      "en": [
+        "It's service day: a ball here takes 6 Coins today, and you haven't got enough."
+      ],
+      "text": [
+        "E zi de ofertă: aici o bilă costă azi 6 fise, și nu ai destule."
+      ]
+    }
+  ],
+  "RouletteRecord": [
+    {
+      "en": [
+        "A new record! {player} won {number} times in a row at the roulette."
+      ],
+      "text": [
+        "Un nou record! {player} a câștigat de {number} ori la rând la ruletă."
+      ]
     }
   ]
 }

@@ -234,6 +234,7 @@ script Roulette1
   fade out 0.3
   gamecorner wheel 1
   fade in 0.3
+  call RouletteRecord
   end
 label Short
   text "A roulette table. A ball here takes 1 Coin, and you haven't got one."
@@ -246,12 +247,14 @@ label NoCase
 script Roulette2
   if not item "Coin Case" goto NoCase
   gamecorner coins
+  if weekday saturday goto Service
   if result < 3 goto Short
   ask "A roulette table. A ball here takes 3 Coins. Will you play?"
   if no end
   fade out 0.3
   gamecorner wheel 3
   fade in 0.3
+  call RouletteRecord
   end
 label Short
   text "A roulette table. A ball here takes 3 Coins, and you haven't got enough."
@@ -259,3 +262,26 @@ label Short
 label NoCase
   text "A roulette wheel. Without a Coin Case there's nothing to wager."
   end
+# The right table's service day (Emerald's ROULETTE_SPECIAL_RATE, sTableMinBets' six; the day is every Saturday, ours,
+# where Emerald's PokéNews of the Game Corner calls it): a ball takes six Coins and every hit pays twice as much
+label Service
+  if result < 6 goto ShortService
+  ask "It's service day! A ball here takes 6 Coins today, and every win pays double. Will you play?"
+  if no end
+  fade out 0.3
+  gamecorner wheel 6
+  fade in 0.3
+  call RouletteRecord
+  end
+label ShortService
+  text "It's service day: a ball here takes 6 Coins today, and you haven't got enough."
+  end
+
+
+# After a sitting: a new best of wins in a row is told (Emerald's GAME_STAT_CONSECUTIVE_ROULETTE_WINS, roulette.c's
+# Task_TryIncrementWins; a variable of ours keeps it)
+script RouletteRecord
+  gamecorner streak
+  if result == 0 return
+  text "A new record! {player} won {number} times in a row at the roulette."
+  return

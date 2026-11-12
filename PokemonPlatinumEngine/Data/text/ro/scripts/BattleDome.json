@@ -87,6 +87,38 @@
       "text": [
         "Învins! Turneul lui {player} se încheie aici. Un efort frumos, totuși!"
       ]
+    },
+    {
+      "en": [
+        "Announcer"
+      ],
+      "text": [
+        "Crainicul"
+      ]
+    },
+    {
+      "en": [
+        "The crowd is on its feet! In the other corner, the Dome Ace himself: Tucker!"
+      ],
+      "text": [
+        "Publicul e în picioare! În celălalt colț, însuși Asul Domului: Tucker!"
+      ]
+    },
+    {
+      "en": [
+        "Tucker"
+      ],
+      "text": [
+        "Tucker"
+      ]
+    },
+    {
+      "en": [
+        "Dazzle them or go home, that's the Dome's one rule! Let's give the crowd a final worth the ticket!"
+      ],
+      "text": [
+        "Orbește-i sau pleci acasă, asta e singura regulă a Domului! Să le dăm o finală care să merite biletul!"
+      ]
     }
   ]
 }

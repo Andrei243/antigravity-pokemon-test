@@ -6930,8 +6930,11 @@ and that a warp never crosses regions stands in the way of a plain door.
   tower`, `factory`; the overlay's `read`, `battle_frontier_ranking_hall.txt`); the annex's venues keep no board, so the
   Dome's, Palace's, Arena's, Pike's and Pyramid's say where they are fought. Scott's house still offers his crossing to
   Sinnoh's grounds.
-- **Left out**: Emerald's hall buildings' own lobbies and Brains (Tucker, Spenser, Greta, Noland, Lucy, Brandon, Anabel),
-  whose places are Sinnoh's five Brains and the annex's; the Ranking Hall's link records; Trainer Hill, which is no hall.
+- **Left out**: Emerald's hall buildings' own lobbies, and Anabel and Noland, the Tower's and the Factory's Brains, whose
+  places are Sinnoh's Tower Tycoon and Factory Head; the Ranking Hall's link records; Trainer Hill, which is no hall.
+  Lucy and Brandon have stood in the annex's Pike and Pyramid since plan 14 · B10, and Spenser, Greta and Tucker in its
+  Palace, Arena and Dome since 2026-11-12 ("The Brains of the Palace, the Arena and the Dome, the roulette's service day
+  and the Trainer Hill's clerk").
 
 ## Rayquaza on Sky Pillar and Steven at Meteor Falls (2026-10-26, plan 21 · H12, part c)
 
@@ -9010,8 +9013,8 @@ so does every region of this game before Kalos.
   Emerald's collision under a strip of our own whose middle is walled off, drawn as a Gym's hall; the stairs down from a
   floor lead to the floor below or the lobby with the climb going on; the lift on the roof goes straight to the lobby.
   A game saved on a floor is laid again round the player on loading (`trainerhill laid`), from the climb's variables.
-- **Not built**: the e-Reader's challenges and card, the lobby's clerk and her shop, the board as a screen of its own
-  (the gentleman reads the four best times out), Emerald's floor art and music.
+- **Not built**: the e-Reader's challenges and card, the board as a screen of its own (the gentleman reads the four best
+  times out), Emerald's floor art and music. The lobby's clerk and her shop are built since 2026-11-12.
   `git cat-file`, against what parts h to j said; it is not built.
 
 ## Mauville's slot machines, the two basements and the quiz and contest ladies (2026-11-02, plan 21 · H12, part n)
@@ -10007,7 +10010,7 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
 - **The Safari Fan Club** (Emerald's `TVSHOW_SAFARI_FAN_CLUB`, lines ours): a Safari Game begun in Hoenn sets its counts to nought and takes the last show off the air; each of its battles counts a catch and the Pokéblocks thrown (`BattleEngine.PokeblocksThrown`); its end (`safari end`, the last ball, the steps or the door) puts the show on the air. A television shows it first the once it is new (`FLAG_HOENN_SAFARI_FAN_CLUB_NEW`), then among the programmes a die draws, in Hoenn only, until the next game begins.
 - **The Contest Lady's programme** stands for Emerald's record-mixed show of her: when her Pokémon is ready (five good Pokéblocks, or five of any), the condition it trained for and whether the good ones made it ready go on the air at home (`VAR_HOENN_CONTEST_LADY_SHOW`, `_SHOW_GOOD`), shown first once and then drawn among the rest in Hoenn. Nothing of record mixing is built: a player's own quiz for others, contests and the blender with friends and the link receptionist's records are plan 07's.
 - **The orbs given back** (Emerald's `MtPyre_Summit_EventScript_ArchieMaxieBeginReturnOrbs`, lines ours): as the leaders leave Sootopolis (`sootopolis_city.LeadersLeave`) `VAR_MT_PYRE_STATE` becomes 2 and they stand at Mt. Pyre's summit, Maxie a tile west of Archie (the import stands both on one tile); the area's three triggers on the row below the shrine play the scene, which hides them for good and sets the state to 3; the old woman's word changes after it. A save whose leaders had left before this was written is given state 2 by the summit's arrival.
-- **Left, and decided**: Emerald's service-day roulette rate and its record of roulette wins in a row are not built (no part of the game reads either); everything that needs another player is plan 07's.
+- **Left, and decided**: Emerald's service-day roulette rate and its record of roulette wins in a row are not built (no part of the game reads either); everything that needs another player is plan 07's. *Built since* (2026-11-12, the user's word): both, under "The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk".
 
 ## The last of Unova's old roads: Twist Mountain's winter, Wellspring Cave, the Skyarrow Bridge, the Black Tower, N's Castle, the Cave of Being and the Abyssal Ruins (2026-11-04, plan 22 · U10, the last part)
 
@@ -12326,9 +12329,10 @@ desk of ours. Nothing of it rides on plan 07's online server, and nothing waits 
   (`RecordMixSave.Visiting`). The base PC's REGISTRY names whose bases are registered.
 - **Television**: Street Talk's mixed edition (`Programme.MixedInterviews`, `broadcast mixed`) tells the three newest
   interviews mixed in; it is on only once there is one, so no game's die moves before then.
-- **Not built**: Emerald's other mixed records (the Trainer Hill's times, the Lilycove Lady's and the television's other
-  shows, the Battle Tower's partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice), which stay as their
-  own rulings have them.
+- **Not built**: Emerald's other mixed records (the Lilycove Lady's and the television's other shows, the Battle Tower's
+  partners, the Quiz Lady's quizzes, the Pokémon News, the Apprentice), which stay as their own rulings have them. The
+  Trainer Hill's times are mixed since the same day ("The Brains of the Palace, the Arena and the Dome, the roulette's
+  service day and the Trainer Hill's clerk").
 
 ## The delve (2026-11-12, plan 44 · SD7)
 
@@ -12388,6 +12392,61 @@ the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbe
   residents from the floor's own, so a seed and the actions are the whole run.
 - **What is not taken**: no guild, rank, region, town, partner, mascot, item or move of Mystery Dungeon's; no abilities,
   held items, type of a tile, belly item, IQ, team skill or wonder orb.
+
+## The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk (2026-11-12, plan 21's leftovers)
+
+The user asked for everything left of Hoenn (2026-11-12). These are the parts of plan 21's leftovers that one sitting
+built; what is still owed is listed at the end and in plan 21's last note.
+
+- **Emerald's three Brains that had none here** (`Models/Frontier/EmeraldBrains.cs`): the Battle Palace, the Battle Arena
+  and the Battle Dome were the annex's venues with no Brain (plan 14 · B8 and B9); the Pike and the Pyramid have had
+  theirs since B10. *Emerald's*: when each comes (`sFrontierBrainStreakAppearances`): Spenser the Palace Maven at the 21st
+  battle won in a row with his first team and at the 42nd and every 21st after with his second; Greta the Arena Tycoon at
+  the 28th, and the 56th and every 28th after; Tucker the Dome Ace in the tournament after four won in a row, and after nine
+  and every fifth after. A venue's Brain is the round's seventh trainer (its streak counts battles, so the seventh of the
+  third round is the 21st); the Dome Ace takes the place of the trainer seated first in the half of the bracket the player
+  isn't in (Emerald seats its Brain in the first or second place of its list by the side the player's name is drawn on),
+  and wins every match that isn't the player's without a battle (`DecideRoundWinners`), so he is met in the final if the
+  player gets there. *Ours*: their teams (`our-trainers.json`, `palace_maven_spenser`, `arena_tycoon_greta`,
+  `dome_ace_tucker` and each `_gold`) are three of Emerald's species at level 50 with the moves they learn, as the Pike
+  Queen's and the Pyramid King's are; their looks and every line. **The draws don't move**: a round or a tournament with a
+  Brain draws its trainers exactly as one without, and the Brain is set over the one drawn last, so nothing of a challenge
+  without a Brain changed. The Battle Palace's announcer, who had been called "Palace Maven", is its attendant now, since
+  that is Spenser's title. **No symbols**: the three give no print, as the Pike Queen and the Pyramid King give none
+  (`frontier prints`, which the ferry's tickets hang on, counts only the Tower's and the five facilities' of Sinnoh).
+- **The roulette's service day** (`RouletteWheel.ServiceDayBet`): Emerald's right table takes six Coins a ball on a service
+  day (`sTableMinBets`' fourth, `ROULETTE_SPECIAL_RATE`), so every hit pays twice the usual; the left table is the same
+  every day. *Ours*: Emerald's PokéNews of the Game Corner calls the day, which this game doesn't play, so the service day
+  is every Saturday (the table's script asks `if weekday saturday`; `gamecorner wheel 6`).
+- **The record of roulette wins in a row**: Emerald keeps the most wins in a row of any sitting as a game record
+  (`GAME_STAT_CONSECUTIVE_ROULETTE_WINS`, `Task_TryIncrementWins`); here it is the story's
+  `VAR_HOENN_ROULETTE_WINS_IN_A_ROW`, a variable of ours, written as a sitting ends. *Ours*: a sitting that beats it says
+  so as the player stands up (`gamecorner streak`, `mauville_city_game_corner.RouletteRecord`); Emerald shows the record
+  nowhere but in its own records.
+- **The Trainer Hill's clerk** (`TrainerHillLobby`, `hill_clerk` behind a counter of her own by the west wall): Emerald's
+  two stocks in its order (`TrainerHill_Entrance_Pokemart_Basic`, and `_Expanded` once the game is cleared, here Hoenn's
+  Hall of Fame; `marts.json`'s `trainer_hill` and `trainer_hill_champion`). She sells before the counter opens to
+  Champions, as Emerald's does.
+- **The Trainer Hill's times mixed in** (`RecordMix`, plan 40 · GE10): a record mixed from another save carries that game's
+  four best climbs (`MixedRecord.HillBest`, frames, null where it has climbed none), and the board's gentleman reads out the
+  fastest of each challenge among them with whose it is (`trainerhill mixed`, `{hill:MIXED_NORMAL}` and its kin), after the
+  player's own; Emerald ranks the mixed times on the Hill's own board.
+- **The island's lounges and doll counters**: the Exchange Service Corner's two decoration clerks trade Battle Points for
+  Emerald's posters, cushions and dolls at Emerald's prices (16 to 256), into the decoration PC (`openbase trade`); Lounge
+  7's two tutors teach Emerald's ten moves each at Emerald's prices (16 to 48), the points paid once the move is learned
+  (`tutor frontier left|right`, `tutor spend`; who may learn which is ours, by the Kanto tutors' rule of a move or its
+  nearest kin, `MoveTutors.FrontierLounge`); Lounge 5's little girl reads a Pokémon's nature by the Battle Palace's table
+  (`venue nature`: the group it leans to most with more than half its HP, and with half or less), in words of ours where
+  Emerald has a line for each nature.
+- **Still owed**: Lounge 3's gambler (Emerald's bet of points on a challenge of a facility he names, which no record of a
+  challenge here is tied to); Anabel and Noland, the Tower's and the Factory's Brains of Emerald, for a challenge begun from the
+  island's doors (the Tower and the Factory are Platinum's own facilities, whose Brains and prints the ferry's tickets count;
+  dressing another Brain in by the door the player came through wants the challenge to remember that door, which no
+  record holds); the island's own lobbies (part m's reason stands: a lobby's counter warps on to its corridor and battle
+  rooms, Sinnoh's maps); the e-Reader's floors and card (no data of them in the pinned source); the Hill's own floor art,
+  lift and music, and its board as a screen; Emerald's other mixed records (the Lilycove Lady's and the television's other
+  shows, the Battle Tower's partners, the Quiz Lady's quizzes, which no save sets for others yet, the Pokémon News, the
+  Apprentice, a mechanic of its own).
 
 ## Species made from nothing (2026-11-12, plan 46 · CP1)
 

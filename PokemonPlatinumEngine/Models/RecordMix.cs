@@ -55,6 +55,12 @@ public sealed class MixedRecord
     /// <summary>The two words of its interview, as keys; null with none.</summary>
     public List<string>? Interview { get; set; }
 
+    /// <summary>
+    /// Its Trainer Hill's best times in frames, a challenge each in <see cref="Frontier.TrainerHillMode"/>'s order (0 for none);
+    /// null where it has climbed none (Emerald mixes the Hill's records too).
+    /// </summary>
+    public List<int>? HillBest { get; set; }
+
     /// <summary>The day it was mixed.</summary>
     public DateTime Mixed { get; set; }
 
@@ -150,9 +156,26 @@ public static class RecordMix
             Team = team.Count > 0 ? team : null,
             Base = BaseOf(other),
             Interview = interview,
+            HillBest = HillBestOf(other),
             Mixed = today.Date
         };
     }
+
+    /// <summary>Another save's four best climbs of the Trainer Hill, or null where it has none.</summary>
+    public static List<int>? HillBestOf(SaveData other)
+    {
+        var times = Enum.GetValues<Frontier.TrainerHillMode>()
+            .Select(mode => Math.Max(0, other.StoryVariables.GetValueOrDefault(Frontier.TrainerHill.Vars.Best(mode)))).ToList();
+        return times.Any(t => t > 0) ? times : null;
+    }
+
+    /// <summary>
+    /// The fastest climb of a challenge among the records mixed in, with whose it is (the newest first among equals), or null
+    /// where no record has one (the Trainer Hill's board reads it out).
+    /// </summary>
+    public static (string Name, int Frames)? HillBest(RecordMixState state, Frontier.TrainerHillMode mode) =>
+        state.Records.Where(r => r.HillBest is { } t && (int)mode < t.Count && t[(int)mode] > 0)
+            .Select(r => (r.Name, Frames: r.HillBest![(int)mode])).OrderBy(r => r.Frames).Cast<(string, int)?>().FirstOrDefault();
 
     /// <summary>
     /// A Pokémon of another save as the battle room would build it, or null where it can't battle: an Egg, a species of

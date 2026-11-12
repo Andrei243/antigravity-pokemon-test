@@ -1,12 +1,12 @@
 {
-  // A lounge of the Battle Frontier island (plan 21 · H12, part b): Emerald's two tutors, who teach moves for Battle Points,
-  // wait for a tutor who takes points (plan 21 · H12)
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b): Emerald's two tutors, who teach moves for Battle Points
+  // (plan 21's leftovers, 2026-11-12; battle_frontier_lounge_7.txt)
   "area": "battle_frontier_lounge_7",
   "bgmTrack": "hoenn/lilycove",
   "people": {
     "sailor": { "name": "Sailor", "dialog": [ "The two ladies here teach moves for Battle Points. Only for the very best Trainers, mind." ] },
-    "expert_f": { "name": "Tutor", "dialog": [ "I teach moves to Pokémon, but my lessons aren't open yet. Come back another time, dear." ] },
-    "expert_f_2": { "name": "Tutor", "dialog": [ "My sister and I will teach again when the halls open. Do come back." ] },
+    "expert_f": { "name": "Tutor", "script": "LeftTutor", "still": true },
+    "expert_f_2": { "name": "Tutor", "script": "RightTutor", "still": true },
     "gentleman": { "name": "Gentleman", "dialog": [ "I learned more battling here than in all my years before. Never too old to learn!" ] }
   }
 }

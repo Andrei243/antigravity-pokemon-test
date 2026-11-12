@@ -1,0 +1,35 @@
+# The Battle Frontier island's Lounge 5 (plan 21's leftovers, 2026-11-12). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/BattleFrontier_Lounge5/scripts.inc).
+#
+# The little girl reads a Pokémon's nature as the Battle Palace reads it (Emerald's ShowNatureGirlMessage): which kind of
+# move it reaches for while it has plenty of HP, and which once it is hurt (`venue nature`, Data/palace-natures.json).
+
+
+script NatureGirl
+  face self player
+  speaker "Little Girl"
+  ask "I can tell what a Pokémon is like just by watching it. Will you show me one of yours?"
+  if no goto None
+  choosepokemon
+  if result == 255 goto None
+  venue nature
+  if result == 3 goto Egg
+  if result == 4 goto None
+  if result == 1 goto Defence
+  if result == 2 goto Support
+  say "{wearer} loves to attack! When it's strong it just wants to hit things."
+  goto Hurt
+label Defence
+  say "{wearer} is careful. When it's strong it likes to keep itself safe."
+  goto Hurt
+label Support
+  say "{wearer} is tricky! When it's strong it likes to mess with the other Pokémon."
+label Hurt
+  say "But when it's hurt, it {thing}. I just know it!"
+  end
+label Egg
+  say "That's an Egg! It hasn't got a nature I can see yet. Show me again when it hatches."
+  end
+label None
+  say "Oh, okay. Come show me later!"
+  end

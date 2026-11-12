@@ -65,6 +65,17 @@ public static class PalaceNatures
     public static IReadOnlyCollection<PalaceStyle> All => Table.Values;
 
     /// <summary>
+    /// The group a nature leans to most, with more than half its HP or with half or less (the island's nature girl reads
+    /// it out, plan 21's leftovers): the largest of the three shares, the first in the groups' order among equals.
+    /// </summary>
+    public static PalaceGroup Leaning(Nature nature, bool low)
+    {
+        var style = Of(nature);
+        int attack = low ? style.AttackLow : style.Attack, defence = low ? style.DefenceLow : style.Defence, support = style.Support(low);
+        return attack >= defence && attack >= support ? PalaceGroup.Attack : defence >= support ? PalaceGroup.Defence : PalaceGroup.Support;
+    }
+
+    /// <summary>
     /// The group a move is in (<c>GetBattlePalaceMoveGroup</c>, read by the move's target): aimed at a foe (one, a random
     /// one, both or everyone else, and the user or its ally) it strikes unless it is a status move, which supports; aimed
     /// at the foes' side it supports; aimed at the user or its own side it defends; and anything else falls to the
