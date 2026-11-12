@@ -604,11 +604,14 @@ internal static class GrownAnimation
                 // (the elbows down and the hands up at the chest, the rod's way kept by the wrist: from the front the arms
                 // read as holding the rod, where reaching out ahead they pointed at the eye, style guide, "Stances")
                 pose.Turn(HumanBones.UpperArmR, -0.45f - 0.5f * pull, 0f, 0.22f);
-                pose.Turn(HumanBones.ForeArmR, -1.15f - 0.3f * pull);
+                // (the forearm bent past level, so the hand comes up the picture from the front, where a forearm level
+                // toward the eye put it at the waist)
+                pose.Turn(HumanBones.ForeArmR, -1.6f - 0.3f * pull);
                 // (the rod rises some 70° over the water, a bite lifting it further: held lower, from the field's steep
                 // camera, 59° down, a rod toward the eye ran down the picture and read as held low; it must stand steeper
-                // than the camera looks down to rise on the picture)
-                pose.Turn(HumanBones.HandR, 0.95f - 0.35f * pull, -0.55f);
+                // than the camera looks down to rise on the picture. Its sideways turn small, or from the front it lay
+                // out to the side)
+                pose.Turn(HumanBones.HandR, 1.4f - 0.35f * pull, -0.15f);
                 pose.Turn(HumanBones.UpperArmL, -0.4f - 0.45f * pull, 0f, 0.38f);
                 pose.Turn(HumanBones.ForeArmL, -1.1f - 0.3f * pull, 0f, 0.3f);
                 var braced = rest;

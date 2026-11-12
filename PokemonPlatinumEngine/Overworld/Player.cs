@@ -341,7 +341,9 @@ public class Player
         if (Directions != MovementDirections.Free || IsMoving) return ((GridX + dx, GridY + dy), (GridX + dx, GridY + dy));
         var (sx, sy) = Standing;
         var faced = (sx + dx, sy + dy);
-        var ahead = FreeMovement.AheadTile(SubX, SubY, Yaw);
+        // (a talk's turn is the body's look alone: a press aims where the body was steered)
+        float aim = talkYaw == null ? Yaw : freeYaw is { } free && free.Facing == Facing ? free.Yaw : YawOf(Facing);
+        var ahead = FreeMovement.AheadTile(SubX, SubY, aim);
         return (ahead == Standing ? faced : ahead, faced);
     }
 
@@ -356,13 +358,14 @@ public class Player
         // (aimed from the tile's centre, which a held body eases onto while the talk has the field, StandStill)
         var way = new Vector2(FreeMovement.CentreOf(x) - FreeMovement.CentreOf(GridX), FreeMovement.CentreOf(y) - FreeMovement.CentreOf(GridY));
         if (way.LengthSquared() < 1f) return;
-        way = Vector2.Normalize(way);
-        // (a way exactly between two cardinals keeps the one already faced, so a talk across a corner changes no facing)
-        var (fx, fy) = FieldMovement.Delta(Facing);
-        if (fx * way.X + fy * way.Y < 0.7071f) Facing = FreeMovement.NearestCardinal(way);
-        freeYaw = (FreeMovement.YawOf(way), Facing);
-        Yaw = freeYaw.Value.Yaw;
+        // (the body's look alone: Facing and the stick's way stay as they were, so nothing the rules read, and no next
+        // press, aims elsewhere; the turn holds until the body moves or is turned, Settle)
+        talkYaw = (FreeMovement.YawOf(Vector2.Normalize(way)), Facing);
+        Yaw = talkYaw.Value.Yaw;
     }
+
+    // The way a talk turned the body to (TurnToFace) and the facing it was turned at; null once it moves or turns
+    private (float Yaw, Direction Facing)? talkYaw;
 
     /// <summary>The pace of the step under way, in tiles a second: what someone walking behind keeps up with.</summary>
     public float Stride => stride;
@@ -472,6 +475,7 @@ public class Player
         offX = offY = 0;
         handOff = null;
         freeYaw = null;
+        talkYaw = null;
         standing = float.NaN;
         fullTiltFor = 0f;
         leftTile = null;
@@ -955,7 +959,9 @@ public class Player
     private void Settle(float dt, bool walking)
     {
         WalkBlend += ((walking ? 1f : 0f) - WalkBlend) * Math.Min(1f, dt * 12f);
-        float turn = (freeYaw is { } free && free.Facing == Facing ? free.Yaw : YawOf(Facing)) - Yaw;
+        // (a talk's turn holds while the body stands as it was turned; a step or a turn lets it go)
+        if (talkYaw is { } talk && (IsMoving || talk.Facing != Facing)) talkYaw = null;
+        float turn = (talkYaw is { } held ? held.Yaw : freeYaw is { } free && free.Facing == Facing ? free.Yaw : YawOf(Facing)) - Yaw;
         turn = MathF.IEEERemainder(turn, MathF.Tau);
         Yaw += turn * Math.Min(1f, dt * 18f);
 
@@ -1072,6 +1078,7 @@ public class Player
         var face = FreeMovement.NearestCardinal(way);
         Facing = face;
         freeYaw = (FreeMovement.YawOf(way), face);
+        talkYaw = null;
         if (float.IsNaN(standing)) standing = HeightOn(map);
 
         int sx = SubX, sy = SubY;

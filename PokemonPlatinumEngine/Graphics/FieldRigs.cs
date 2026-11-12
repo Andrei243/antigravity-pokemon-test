@@ -294,11 +294,11 @@ internal sealed class FieldRigs
 
     /// <summary>
     /// An impostor's frame in a stance, in texels (style guide, "Live rigs in the field"): 48 by 64 for a body upright, 80
-    /// by 64 for a fisher (the rod's reach on either side), 112 by 64 for a lier (the body's length on either side).
+    /// by 88 for a fisher (the rod's reach on either side and its tip held up), 112 by 64 for a lier (the body's length on either side).
     /// </summary>
     public static (int W, int H) ImpostorFrame(Overworld.Stance stance) => stance switch
     {
-        Overworld.Stance.Fish or Overworld.Stance.Tug => (80, ImpostorH),
+        Overworld.Stance.Fish or Overworld.Stance.Tug => (80, 88),
         Overworld.Stance.Lie => (112, ImpostorH),
         _ => (ImpostorW, ImpostorH)
     };
@@ -499,9 +499,11 @@ internal sealed class FieldRigs
             bakeTargets[w] = bakeTarget = Gpu.Target(w, h, "fieldrig");
         var shaders = context.Shaders;
         float pitch = CharacterSprites.ViewPitchDeg * MathF.PI / 180f;
-        var look = new Vector3(0, FrameH / 2f - Margin, 0);
-        // (the orthographic camera's height is the frame's; a wider frame shows more on either side at the same scale)
-        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 20f, look, Vector3.UnitY, FrameH, CameraProjection.Orthographic);
+        // (the orthographic camera's height is the frame's; a wider or taller frame shows more at the same scale, the
+        // feet always the margin over its bottom row)
+        float frameH = h / (float)CharacterSprites.TexelsPerUnit;
+        var look = new Vector3(0, frameH / 2f - Margin, 0);
+        var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 20f, look, Vector3.UnitY, frameH, CameraProjection.Orthographic);
         Raylib.BeginTextureMode(bakeTarget);
         Raylib.ClearBackground(new Color(0, 0, 0, 0));
         Rlgl.SetClipPlanes(1.0, 60.0);
