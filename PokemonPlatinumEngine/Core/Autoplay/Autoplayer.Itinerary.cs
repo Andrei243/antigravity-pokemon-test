@@ -106,6 +106,9 @@ internal sealed partial class Autoplayer
                 return ToNurse(it, leg.Map);
             case LegKind.Train:
                 return Train(it, leg);
+            case LegKind.OpenTrigger or LegKind.OpenTalk or LegKind.OpenReach:
+                // A leg of an open map, from a room: out by the room's ways to it (plan 33 · GL6)
+                return Elsewhere(it, leg.Map);
         }
         return ActionFrame.None;
     }
@@ -263,10 +266,16 @@ internal sealed partial class Autoplayer
         return Toward(it, targetMap, (_, _) => false, aim.X, aim.Y, null);
     }
 
+    /// <summary>
+    /// A grid map by its name for the way across maps, or null for an open map's name (plan 33 · GL6): the map database
+    /// answers a name it doesn't know with the map of Sinnoh, whose warps would lay a way through another region.
+    /// </summary>
+    private Map? GridMap(string name) => engine.OpenMapNamed(name) != null ? null : MapDatabase.Get(name);
+
     // Where on a map between the way on toward the target map starts: the first warp of it that leads to the map after it
-    private static (int X, int Y)? OnwardDoor(string between, string targetMap)
+    private (int X, int Y)? OnwardDoor(string between, string targetMap)
     {
-        if (Itinerary.NextMap(between, targetMap, MapDatabase.Get) is not { } after) return null;
+        if (Itinerary.NextMap(between, targetMap, GridMap) is not { } after) return null;
         return MapDatabase.Get(between).Warps.FirstOrDefault(w => w.TargetMap == after && !w.Shut) is { } door ? (door.SourceX, door.SourceY) : null;
     }
 
@@ -305,7 +314,7 @@ internal sealed partial class Autoplayer
 
         if (map.Name != targetMap)
         {
-            if (!nextMaps.TryGetValue((map.Name, targetMap), out string? next)) nextMaps[(map.Name, targetMap)] = next = Itinerary.NextMap(map.Name, targetMap, MapDatabase.Get);
+            if (!nextMaps.TryGetValue((map.Name, targetMap), out string? next)) nextMaps[(map.Name, targetMap)] = next = Itinerary.NextMap(map.Name, targetMap, GridMap);
             if (next == null) return Failed(it, $"no way from {map.Name} to {targetMap}") ? ActionFrame.None : ActionFrame.None;
             var ways = map.Warps.Where(w => w.TargetMap == next && !w.Shut && (w.SourceX, w.SourceY) != (px, py)).ToList();
             if (ways.Count == 0) return Failed(it, $"no way to {next}") ? ActionFrame.None : ActionFrame.None;
