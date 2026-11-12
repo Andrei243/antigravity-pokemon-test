@@ -22,6 +22,7 @@ Everything in it is ours: places, people, species, words, art and music. Real pl
 - **The later-mechanic pattern** (plan 06 · R20 to R23, R30) has been followed five times: a `Ruleset` flag, a key item, a flag on the choice, a `WhyNot`, an event, the AI's use, `RunTerms.NoLaterMechanics`, a field of the Vs. Recorder's file. Its looks (plan 25) and a layer of the battle songs (plan Y · YD5) have a pattern too.
 - **Seasons** exist on the grid only (plan 22 · U3, U4); the open renderer has none.
 - **Crafting** (plan 39 · CR1) has the kit, materials and drops; CR3 to CR5 add making.
+- **The story** (docs, 2026-11-12): [the outline](decisions/CP-story-outline.md) with the user's beats, answers and approved names (Doina Lupescu, Ilie Sorescu, Aurelian Zenovie, Mara, Costel, Radu and Ilinca), and [the chapters](decisions/CP-story-chapters.md), scene by scene from the prologue to the post-game, with the Champion (Ruxandra Zorescu, proposed), Team Zenith's four executives, the eight leaders, the twelve tales' places and Tale Forms, the professors' creepy-voice moments, the roamers and the story's map onto the sessions below. The chapters wait for the user's eight open questions; CP18 to CP27 go ahead on their recommendations.
 
 ## Design
 
@@ -55,6 +56,8 @@ Built as plan 32's data (`Data/world3d/carpathia/`), hand-written terrain, carve
 **Gyms in any order** (decision 8), as Paldea's: the levels of the first three fixed, the later ones scaled to the badges held. Suggested types and places, the region's session to settle them with the user: Water on the coast, Flying in the delta, Rock on the pass, Ice in the ice cave, Grass in the wooden north, Ghost in the castle, Psychic among the stone faces, **Sound in the capital's opera**. Each has a test before the leader, as a grid room's puzzle or a task in the open world: a *căluș* dance, a shepherd's round-up, a sledge run, a painted-egg hunt, a tale told to an old woman.
 
 **The villain** (decision 11) is a team of ours that wants **the sun to stand still**: an endless day, no more winters or nights, by binding the **Zmeu**, who in the tales steals the sun. The tales are how the player undoes it, and the Vârcolac, who eats the moon, is the balance. The story stays with folklore and away from the country's real politics.
+
+*Since 2026-11-12 the story is [the outline](decisions/CP-story-outline.md) and [the chapters](decisions/CP-story-chapters.md)*, which take the place of this paragraph's first sketch: Team Zenith binds **Furtunaur** on the ridge; the two professors, Doina Lupescu and Ilie Sorescu, come on a hunch after the player's lost `???` fight, bind it with the Zmeu's and the Vârcolac's tales and become **Solzmeu** and **Lunacolac**, who roam afterwards; the ridge opens at 7 badges (the plateau's and the castle's among them), the League asks all eight. The gyms' types and places are the chapters' section 4.
 
 **The calendar**: Carpathia keeps Romania's days through plan 40's festivals: **Mărțișor** (1 March, a red-and-white charm, Baba Dochia's days to 9 March), **Dragobete** (24 February), **Sânziene** (24 June, the fairies' night), Easter's painted eggs, the Christmas carollers, and the **New Year's mask dances**, where the masks are won.
 
@@ -149,7 +152,7 @@ Open, each with its recommendation (the session named goes ahead on it unless th
 14. **Existing sound moves** (CP2). *Recommended:* they keep their types; Sound-type moves are new. The alternative retypes a few (Boomburst, Hyper Voice), which moves the golden battles and the oracle.
 15. **One tale and one mask a battle** (CP11, CP13). *Recommended:* each side may tell one tale (and answer once) and mask one Pokémon. The alternative lets a mask be worn only by a Pokémon bound to the tale being told.
 16. **The map's sketch and the towns' names** (CP18). The user judges the sketch, the first town and the names before the rest is built.
-17. **The professor, the rival and the villain team's name** (CP18). Proposed with the starters' file.
+17. **The professor, the rival and the villain team's name** (CP18). Proposed with the starters' file. *Answered 2026-11-12*: two professors, Doina Lupescu and Ilie Sorescu; the rival Radu or Ilinca by the look; Team Zenith under Aurelian Zenovie; the apprentices Mara and Costel ([the outline](decisions/CP-story-outline.md)). The Champion, the executives and the leaders are proposed in [the chapters](decisions/CP-story-chapters.md), with eight questions of their own.
 
 ## Sessions
 
@@ -196,18 +199,24 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 
 ### CP18 · Carpathia's file and the first town (1 session; H, U)
 - The map's sketch, names, professor, rival and villain team agreed with the user; the region's file, the link from Paldea, `--region Carpathia`, the player's home town, the lab, the starters, the first route. The user judges the first town before the rest.
+- Story ([the chapters](decisions/CP-story-chapters.md), section 7): the prologue P1 to P7 (the *șezătoare*, the painted chest, the pony, Doina's lab with the Book of Tales, Ilie's observatory), the crossing's version, the region's phone; Doina's and Ilie's voices designed.
 
 ### CP19 to CP24 · The provinces (6 sessions; H)
 - CP19 the coast and the delta (the boat), CP20 the plateau's towns, CP21 the ridge and its road (the pony, the glide), CP22 the caves (the salt mine, the ice cave), CP23 the wooden north, CP24 the capital; each with its gyms, rooms, people, wild zones, tales to find and its part of the story.
+- Story by session (the chapters' section 7): CP19 Sabina's false dawn (I-6); CP20 the market and the Champion (I-1), the glide (I-3), the endless noon (II-1); CP21 Făt-Frumos' tale (I-2), the rival (I-4), the crest shut by the storm; CP22 Zamfira at the salt mine (II-3); CP23 Teodor's blank wall (I-5); CP24 the second sun (II-4).
 
-### CP25 · The villain team and the sun (1 to 2 sessions)
-- The villain's chapters, the stronghold castle, the Zmeu and the Vârcolac, the Solomonar's storm.
+### CP25 · The villain team and the castle (1 to 2 sessions)
+- The castle on the crag: the Ghost gym's halls and the Vârcolac's tale, Team Zenith's keep and the stronghold's assault with the Champion (II-2), the professors' two calls (I-7), the Stillers' trainers and the four executives' teams.
+
+### CP25b · The ridge (1 to 2 sessions; added 2026-11-12)
+- The climax (the chapters' III-0 to III-10): the rival at the foot, the two executives on the road, the Champion at the tunnel, the `???` fight, the professors' arrival, the binding and the transformation, the weakened fight and the catch, the roamers' leaving, the Solomonar's tale, the labs. Needs the wild battle terms (`hidelevel`, `untouchable`, `passive`, `canlose` and a starting HP on `wildbattle`), the runs' exceptions, and the beast voice and text, and the roamers seen and fleeing on the open map (the chapters' engine needs 1, 2, 5, 6, 8 and 9). None of the wild-battle options exists yet: `wildbattle` takes no `canlose` and no starting HP today, and no roamer has ever been on an open map.
 
 ### CP26 · The League and the crossing (1 session)
-- The League in the capital's palace, the Champion, the Hall of Fame, the credits, Fly and harbours both ways with Paldea.
+- The League in the capital's palace, the Champion, the Hall of Fame, the credits, Fly and harbours both ways with Paldea. The Champion is Ruxandra Zorescu (proposed), the Elite Four Dark, Fighting, Fairy and Ground (the chapters' L-1 to L-5).
 
 ### CP27 · After the Hall of Fame (1 to 2 sessions)
 - The Dacian sanctuary and the draco, the festivals' days in full (the New Year's mask dances, Sânziene, Mărțișor), rematches, the Carpathian diploma.
+- Story (A-1 to A-6): the empty labs and the professors' notes, Solzmeu by day and Lunacolac by night as roamers of the open map (a new kind of roamer), the creepy-voice moments V2 to V6, the rival's verse, the Stillers' remnants.
 
 ## Needs and gives
 
@@ -219,6 +228,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [ ] CP1 Species made from nothing
 - [ ] CP2 The Sound type
 - [ ] CP3 The first proposals approved (starters and legendaries written 2026-11-09, waiting for the user)
+- [x] The story's outline (2026-11-12: the user's beats, answers and names approved) and its chapters (2026-11-12, docs; eight open questions waiting for the user)
 - [ ] CP4 Sculpts I
 - [ ] CP5 Sculpts II
 - [ ] CP6 Sculpts III
@@ -240,6 +250,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [ ] CP22 The caves
 - [ ] CP23 The wooden north
 - [ ] CP24 The capital
-- [ ] CP25 The villain team and the sun
+- [ ] CP25 The villain team and the castle
+- [ ] CP25b The ridge
 - [ ] CP26 The League and the crossing
 - [ ] CP27 After the Hall of Fame
