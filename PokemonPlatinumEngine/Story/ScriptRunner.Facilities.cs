@@ -67,6 +67,12 @@ public sealed partial class ScriptRunner
             StadiumCommand(i);
             return;
         }
+        // And Nimbasa's Battle Institute's test and ladder (plan 37 · FC8)
+        if (place == InstitutePlace)
+        {
+            InstituteCommand(i);
+            return;
+        }
         var records = host.Frontier;
         StreakChallenge Challenge() => host.Facility is { } c && c.Room.Place == place ? c : throw Wrong(i, $"'facility {place} {i.Other}' needs a challenge of the {place} under way");
         StreakRoom Chosen() => facilityWay.Length > 0 ? FacilityPlaces.RoomOf(place, facilityWay, facilityHard)

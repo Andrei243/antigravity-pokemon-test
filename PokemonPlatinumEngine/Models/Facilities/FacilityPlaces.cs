@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Models.Facilities;
 public static class FacilityPlaces
 {
     /// <summary>The places' words, in order; a place's number is its place here.</summary>
-    public static readonly string[] Names = { StreakHouse.Place, BattleTree.Place, TitlesHouse.Place, Story.ScriptRunner.TrainerTowerPlace, SparringRoom.Place, Story.ScriptRunner.StadiumPlace };
+    public static readonly string[] Names = { StreakHouse.Place, BattleTree.Place, TitlesHouse.Place, Story.ScriptRunner.TrainerTowerPlace, SparringRoom.Place, Story.ScriptRunner.StadiumPlace, Story.ScriptRunner.InstitutePlace };
 
     public static bool IsPlace(string word) => Array.IndexOf(Names, word) >= 0;
 
@@ -30,6 +30,7 @@ public static class FacilityPlaces
         // The sparring room's ways are the types (plan 37 · FC7); the stadium's cups and round are its own words
         SparringRoom.Place => SparringRoom.Ways,
         Story.ScriptRunner.StadiumPlace => System.Array.Empty<string>(),
+        Story.ScriptRunner.InstitutePlace => System.Array.Empty<string>(),
         _ => throw new ArgumentException($"No later battle place is called {place}", nameof(place))
     };
 

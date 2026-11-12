@@ -1302,7 +1302,8 @@ public static class ScriptParser
                     "member", "visit", "visitor", "dress", "level",
                     "challenge", "climbing", "floor", "kind", "fight", "cleared", "lost", "climb", "prize", "record",
                     "cup", "cupcheck", "rent", "cupbegin", "cupnext", "cupbattle", "cupwon", "cupprize", "cupend",
-                    "region", "roundbegin", "roundnext", "roundbattle", "roundwon", "roundend");
+                    "region", "roundbegin", "roundnext", "roundbattle", "roundwon", "roundend",
+                    "test", "testbegin", "testnext", "testbattle", "testscore", "testend", "season", "ladderformat", "laddernext", "ladderbattle", "band", "testleft");
                 string which = what switch
                 {
                     "way" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.FacilityPlaces.WaysOf(place))),
@@ -1313,6 +1314,9 @@ public static class ScriptParser
                     // The stadium's cups and the regions with a Leaders' round (plan 37 · FC7)
                     "cup" => r.OneOf(System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(Models.Facilities.Cups.All, c => c.Id))),
                     "region" => r.OneOf(System.Linq.Enumerable.ToArray(Models.Facilities.LeadersRound.Regions)),
+                    // The Battle Institute's test's format, and its ladder's choosing (plan 37 · FC8)
+                    "test" => r.OneOf("single", "double"),
+                    "choose" => r.More ? r.OneOf("ladder") : "",
                     _ => ""
                 };
                 // The Battle Tree's scouted partners (plan 23, Alola finished): pick's number, 0 the tree's own and a scouted

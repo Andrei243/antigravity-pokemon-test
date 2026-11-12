@@ -156,6 +156,7 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - Tests (`InstituteLadderTests`): the score's formula against battles worked by hand; the ranks' thresholds; the best kept per format; the rating up and down by the formula; opponents in the rating's band and the same for a seed; a new month a new season, the rating carried by half and the season's prize given once; a season's rules refusing what it bans.
 - Shots: `fc80_institute_desk`, `fc81_institute_score`, `fc82_institute_board`, `fc83_ladder_card`, `fc84_ladder_new_season`.
 - **Done when** a test is scored and ranked in the harness, and the ladder's rating rises over three wins, falls on a loss and starts a new season on the first of the next month.
+- **FC8 as built** (2026-11-12; rulings, "The institute's test and the ladder"): `Models/Facilities/Ladder.cs` (`InstituteTest`: `Foe`, `ScoreOf`, `HpKept`, `RankOf`, `Board`, `PlaceOf`; `Ladder`: `After` (Elo, factor 32), `OpponentRating`, `Opponent`, `BandOf`, `SeasonOf`, `FormatOf`, `Carried`, `TurnSeason`, `Played`), `Story/ScriptRunner.Institute.cs` (`facility institute ...`), `IScriptHost.Today` (a default member, `GameClock.Today`; the headless host's is settable), and Nimbasa's receptionist's `Desk` (`nimbasa_city_14.txt`), who keeps both. `InstituteLadderTests` (both played headless: a test scored and ranked, the ladder up over three wins, down on a loss, a new season on the first of April). **Owed**: `UI/LadderScreen.cs`, a second counter, a season banning a list, the shots `fc80` to `fc84`.
 
 ### FC9 · The agency of lent Pokémon (optional: a second check judges it low value, since the Battle Factory and the World Tournament's rental event already lend Pokémon)
 - `Models/Facilities/Agency.cs`: the lenders (the cast and every Leader and rival beaten), two picked on `FactoryScreen.OpenToRent` beside one of the player's own, three battles, Battle Points; a row of plan 41's `Data/plaza.json` with its booth, or a counter by the tree until the plaza stands.
@@ -207,6 +208,6 @@ Every session: the rule in GPU-free classes with their tests (every draw on a se
 - [x] FC5 Lumiose's restaurants (2026-11-08, beside plan 23's Kalos session; the shots fc50 to fc55 taken 2026-11-09)
 - [x] FC6 The Trainer Tower on Seven Island (2026-11-12, its climb in rooms of ours; above, "FC6 as built")
 - [x] FC7 The cups, the Leaders' round and the sparring room (2026-11-12, rules and desks; the cup screen owed; above, "FC7 as built")
-- [ ] FC8 The institute's test and the ladder
+- [x] FC8 The institute's test and the ladder (2026-11-12, rules and the receptionist; the ladder's screen owed; above, "FC8 as built")
 - [ ] FC9 The agency of lent Pokémon (optional)
 - [ ] FC10 The apprentice (optional)

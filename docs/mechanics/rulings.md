@@ -10764,6 +10764,31 @@ Every battle is the Frontier's: copies, no EXP or money, the Bag shut, whole aga
   chosen from six; the desk's questions stand in, the foe brings three and the rentals are lent), the cups' board, a hub
   door to the stadium (plan 41's), and the shots (`fc70` to `fc75`).
 
+## The institute's test and the ladder (2026-11-12, plan 37 · FC8)
+
+Nimbasa's Battle Institute (`NimbasaCity_BattleInstitute`, plan 22 · U6's room) is open to Unova's Champions: its
+receptionist (Black 2's object, our words) keeps both the test and the ladder (`nimbasa_city_14.txt`, `facility institute`;
+a second counter of ours was not placed, so she keeps both). Battles are the Frontier's, at 50, on copies.
+
+- **The test** (`Models/Facilities/Ladder.cs`, `InstituteTest`): five battles, single (three entered) or double (four),
+  against trainers of ours with the later sets of tiers rising by the battle (1 and 2, 1 to 3, 2 and 3, 2 to 4, 3 and 4),
+  drawn on a seed of the test's and the battle. Each battle's score, a formula of ours: nothing for a loss (the test goes on);
+  for a win 1,000, and 40 for each turn fewer than ten it took, up to 400 for the HP the team kept (its share in thousandths
+  times 0.4), and 15 for each tier of the foe's sets together; at most 1,980 a battle, so the total stays within 9,999. Ranks of
+  ours by the total: Novice, Bronze at 2,000, Silver at 4,000, Gold at 6,000, Platinum at 8,000, Master at 9,000. The best
+  total of each format is kept (`VAR_UNOVA_INSTITUTE_BEST_SINGLE`, `_DOUBLE`), and the better of the two is placed on a board
+  of ten names and scores of ours (a tie goes above the board's own).
+- **The ladder** (`Ladder`, decision 8): a rating that begins at 1,000 and moves by the Elo with a factor of 32 (the
+  expectation 1 / (1 + 10^((theirs − yours) / 400)), rounded half away from nought, never under nought); an opponent rated
+  within a hundred of the player's either way, drawn on the game's chance, with the later sets of their band's tiers.
+  Bands of ours: Rookie, Challenger from 1,100, Veteran from 1,300, Elite from 1,500, Legend from 1,700. A season is a
+  calendar month of the game's date (`IScriptHost.Today`, `GameClock.Today`, which the harness fixes): single battles in the
+  odd months, double in the even (Flat 50 both); as a new month is first played, the rating is carried half the way back to
+  1,000 and the season gone pays Battle Points by the best band it reached (2, 5, 10, 18, 30), once, and nothing for a
+  season with no game played. All kept in `VAR_UNOVA_LADDER_*`.
+- **Not built**: `UI/LadderScreen.cs` (the season, the rating, the band, the last results and the test's sheet; the
+  receptionist's lines say them), a season that bans a list, a second counter, and the shots (`fc80` to `fc84`).
+
 ## Peak training and the training tools (2026-11-07, plan 36 · TR3)
 
 Peak training is our name for the later games' hyper training, and its rule is plan 06 · R28b's (`Models/HyperTraining.cs`: level 50 or more, as Scarlet and Violet ask; a stat whose IV is 31, or brought to its peak already, can't be). The coach, the clerks, their lines and every price are ours; no Mr. Hyper is recreated.
