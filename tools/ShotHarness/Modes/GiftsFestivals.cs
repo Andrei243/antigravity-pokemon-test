@@ -118,7 +118,7 @@ partial class Harness
         Day(2027, 5, 2, night: false);
         Look("gf8j_wool_fair", "Wedgehurst_PokemonCenter", 8, 10, Direction.Up);
         Day(2026, 9, 23, night: false);
-        Look("gf8k_sheaf_feast", "JubilifeVillage", 69, 38, Direction.Up);
+        Look("gf8k_sheaf_feast", "JubilifeVillage", 69, 33, Direction.Up);
 
         // The harness's day and the day's light back
         GameClock.FixedDate = harnessDay;

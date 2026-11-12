@@ -475,11 +475,11 @@ internal static class FestivalArt
     /// <summary>Alola's lei arch, 64 by 54; Galar's hay bales, 44 by 36; Hisui's sheaves, 36 by 56.</summary>
     public const int LeiWidth = 64, LeiHeight = 54, BalesWidth = 44, BalesHeight = 36, SheavesWidth = 36, SheavesHeight = 56;
 
-    /// <summary>A flower of a lei, a cross of five texels with its heart, centred on (x, y).</summary>
+    /// <summary>A flower of a lei, five texels across: a 3 by 3 middle with a petal out on each side and its heart, centred on (x, y).</summary>
     private static void Flower(PixelCanvas c, int x, int y, int which)
     {
         Color petal = (which % 3) switch { 0 => Rgb(236, 110, 150), 1 => Rgb(246, 236, 200), _ => Rgb(240, 150, 70) };
-        c.Set(x, y - 1, petal); c.Set(x - 1, y, petal); c.Set(x + 1, y, petal); c.Set(x, y + 1, petal);
+        c.Rect(x - 1, y - 1, 3, 3, petal); c.Set(x, y - 2, petal); c.Set(x - 2, y, petal); c.Set(x + 2, y, petal); c.Set(x, y + 2, petal);
         c.Set(x, y, which % 3 == 1 ? Rgb(246, 206, 90) : PixelCanvas.Shadow(petal, 0.25f));
     }
 
@@ -500,18 +500,18 @@ internal static class FestivalArt
             Pole(c, x, top, bamboo, bambooLit);
             for (int y = top + 6; y < c.Height; y += 8) c.HLine(x, y, 3, knot);
         }
-        // The lei swung between the tops: a flower every four texels, a leaf between
+        // The lei swung between the tops: a flower every five texels, a leaf between
         int n = 0;
-        for (int x = 5; x <= right - 2; x += 4, n++)
+        for (int x = 5; x <= right - 2; x += 5, n++)
         {
             int y = Sag(x, 2, right + 2, top + 2, 6f);
             Flower(c, x, y, n);
-            int lx = x + 2;
+            int lx = x + 3;
             if (lx < right - 1) c.Set(lx, Sag(lx, 2, right + 2, top + 2, 6f), leaf);
         }
         // A shorter lei down each pole, to half its height
         foreach (int x in new[] { 2, right + 1 })
-            for (int y = top + 6, k = 1; y < top + 6 + 18; y += 4, k++)
+            for (int y = top + 6, k = 1; y < top + 6 + 18; y += 5, k++)
             {
                 Flower(c, x, y, k);
                 c.Set(x + (x < 10 ? 2 : -2), y + 2, leaf);
