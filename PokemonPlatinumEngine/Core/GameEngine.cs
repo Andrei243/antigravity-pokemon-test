@@ -543,6 +543,7 @@ public partial class GameEngine
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
+        flow.Circuit = new CircuitState();
         flow.Journal = new Journal();
         flow.PokemonIdsIssued = 0;
         flow.LinkBattles = new LinkBattleRecord();
@@ -877,7 +878,8 @@ public partial class GameEngine
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
-        flow.HallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
+        flow.HallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()), save.HallOfFameFirsts?.Select(e => e.ToEntry()));
+        flow.Circuit = save.Circuit ?? new CircuitState();
         flow.Journal = new Journal();
         flow.Journal.Restore(save.Journal);
 
@@ -929,6 +931,8 @@ public partial class GameEngine
             HallOfFameTotal = flow.HallOfFame.Total,
             HallOfFameDebut = flow.HallOfFame.Debut,
             HallOfFame = flow.HallOfFame.Entries.Select(SavedHallOfFameEntry.From).ToList(),
+            HallOfFameFirsts = flow.HallOfFame.Firsts.Count == 0 ? null : flow.HallOfFame.Firsts.Values.Select(SavedHallOfFameEntry.From).ToList(),
+            Circuit = flow.Circuit.IsEmpty ? null : flow.Circuit,
             Journal = flow.Journal.All.ToList(),
             Rules = Ruleset.Current.Preset,
             CurrentMapName = flow.Map.Name,
@@ -2985,7 +2989,11 @@ public partial class GameEngine
             ContestsEntered = flow.ContestRecords.Entered,
             ContestsWon = flow.ContestRecords.Won,
             // The Masters' Hall's titles (plan 14 · B15): the masters beaten, and the one won last
-            Titles = MasterTitles.Won(flow.Story).Select(t => new CardTitle(t.Number, MasterTitles.Title(t.Species))).ToList(),
+            // and first the Laurel Circuit's (plan 41 · EG4), numbered by the circuits won
+            Titles = (flow.Circuit.Won > 0 ? new[] { new CardTitle(flow.Circuit.Won, Text.Of("laurelCircuit.title")) } : Array.Empty<CardTitle>())
+                // and Grayfall Keep's, once the gathering's show is over (plan 41 · EG9)
+                .Concat(flow.Story.Has("FLAG_GATHERING_DONE") ? new[] { new CardTitle(1, Text.Of("laurelCircuit.keepTitle")) } : Array.Empty<CardTitle>())
+                .Concat(MasterTitles.Won(flow.Story).Select(t => new CardTitle(t.Number, MasterTitles.Title(t.Species)))).ToList(),
             TitlesOf = MasterTitles.Total,
             LatestTitle = MasterTitles.Latest(flow.Story) is { } latest ? MasterTitles.Title(latest) : ""
         };

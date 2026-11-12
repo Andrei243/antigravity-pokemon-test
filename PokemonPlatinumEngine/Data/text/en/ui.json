@@ -1364,7 +1364,8 @@
     "levelCaption": "LEVEL",
     "trainer": "ORIGINAL TRAINER",
     "id": "ID No.",
-    "type": "TYPE"
+    "type": "TYPE",
+    "earlier": "EARLIER TEAMS"
   },
   "journal": {
     "title": "JOURNAL",
@@ -4228,6 +4229,7 @@
     "Clown": "Clown",
     "Collector": "Collector",
     "Commander": "Commander",
+    "RecordsKeeper": "Records Keeper",
     "CoolCouple": "Cool Couple",
     "Cooltrainer": "Cooltrainer",
     "Cowgirl": "Cowgirl",
@@ -5339,7 +5341,7 @@
       "wildWon": "Win a wild battle", "trainerWon": "Beat a trainer", "wildRan": "Run from a wild Pokémon",
       "wildFled": "See a wild Pokémon flee", "trainerLost": "Lose to a trainer", "whiteouts": "Black out and carry on",
       "caught": "Catch a Pokémon", "encounters": "Meet a wild Pokémon", "levelled": "Grow a level in battle",
-      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion"
+      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit"
     },
     "name": {
       "stepsFoot": "Walk {count} steps", "stepsSurf": "Surf {count} steps", "stepsCycle": "Cycle {count} steps", "stepsDive": "Dive {count} steps",
@@ -5348,7 +5350,7 @@
       "caught": "Catch {count} Pokémon", "newSpecies": "Catch {count} new species", "encounters": "Meet {count} wild Pokémon",
       "levelled": "Grow {count} levels in battle", "evolutions": "See {count} evolutions",
       "dexSeen": "See {count} species", "dexCaught": "Own {count} species",
-      "badges": "Win {count} Badges", "champions": "Champion of {count} regions"
+      "badges": "Win {count} Badges", "champions": "Champion of {count} regions", "circuits": "Win {count} Laurel Circuits"
     }
   },
   "sessionReport": {
@@ -5714,7 +5716,41 @@
         "coupon3": "Answer the quiz of the clown by Jubilife TV.",
         "president": "Bring the three coupons to the president."
       }
+    },
+    "case_sinnoh": {
+      "title": "The Villa Larder",
+      "giver": "Looker",
+      "place": "the Open Door Agency",
+      "reward": "The agency's fee and a Heart Scale",
+      "step": {
+        "clue_label": "Ask the villa's caretaker in the Resort Area about the larder.",
+        "clue_bite": "Find the girl whose young Gible is blamed, in the Resort Area.",
+        "clue_log": "Ask the harbour clerk on the Fight Area's pier for the ferry's log.",
+        "clue_receipt": "Ask the ferry's deckhand at the Fight Area about the crates.",
+        "deduce": "Tell Looker what the clues show.",
+        "culprit": "Face the culprit on the Fight Area's pier.",
+        "closed": "Report back to Looker at the agency."
+      }
     }
+  },
+  "cases": {
+    "thinkAgain": "LET ME THINK",
+    "sinnoh": {
+      "clue": {
+        "label": "The crate label",
+        "bite": "The bite marks",
+        "log": "The ferry's log",
+        "receipt": "The cheap receipt"
+      },
+      "deduce": {
+        "1": "What shows the young Gible never raided the larder?",
+        "2": "Then when could the food have left the villa unseen?"
+      }
+    }
+  },
+  "laurelCircuit": {
+    "keepTitle": "Showstopper",
+    "title": "Laurel Champion"
   },
   "friends": {
     "title": "Friends' trainers",

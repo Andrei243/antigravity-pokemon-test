@@ -1,0 +1,186 @@
+{
+  "name": "Hub_Arena",
+  "displayName": "Laurel Court",
+  "bgmTrack": "hub/town",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "hall": "Champion",
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#.#.........#.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 12,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 2,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Statue",
+      "x": 12,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 7,
+      "width": 3,
+      "depth": 8
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 15,
+      "targetMap": "Hub",
+      "targetX": 12,
+      "targetY": 29,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "herald",
+      "name": "Piers Lindqvist",
+      "npcType": "piers",
+      "x": 7,
+      "y": 6,
+      "facing": "Down",
+      "script": "Herald"
+    },
+    {
+      "id": "cynthia",
+      "name": "Cynthia",
+      "npcType": "cynthia",
+      "x": 2,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Every region you've crowned, gathered in one hall. I'm honoured to stand among them."
+      ],
+      "shownBy": "FLAG_HUB_COURT_CYNTHIA"
+    },
+    {
+      "id": "rival",
+      "name": "{rival}",
+      "npcType": "blue",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Don't get comfortable. I'm only here to take my title back."
+      ],
+      "shownBy": "FLAG_HUB_COURT_RIVAL"
+    },
+    {
+      "id": "lance",
+      "name": "Lance",
+      "npcType": "lance",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "A Champion of many lands. My dragons have been waiting for this."
+      ],
+      "shownBy": "FLAG_HUB_COURT_LANCE"
+    },
+    {
+      "id": "wallace",
+      "name": "Wallace",
+      "npcType": "wallace",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Such a stage! Let us make our battle as beautiful as the hall."
+      ],
+      "shownBy": "FLAG_HUB_COURT_WALLACE"
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "npcType": "iris",
+      "x": 10,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "I've been practising all week. You're not getting past me this time!"
+      ],
+      "shownBy": "FLAG_HUB_COURT_IRIS"
+    },
+    {
+      "id": "diantha",
+      "name": "Diantha",
+      "npcType": "diantha",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "A final with every Champion on one stage... What a cast!"
+      ],
+      "shownBy": "FLAG_HUB_COURT_DIANTHA"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,120 @@
+# The Open Door Agency, Looker's office at the hub (plan 41 · EG7, EG8). docs/scripts.md describes the language; the
+# lines are our own, Looker's manner as plan 02 wrote it.
+#
+# A cluttered room of boxes and maps (the outline sheet's 6b), Looker behind the desk half-disguised as a clerk, his
+# Croagunk asleep on its cushion. He takes a case in each region finished (Story/Cases.cs; each is a request of its own,
+# case_<region>, so the requests page lists it and pins its next clue): its clues are found where they lie in the
+# region's post-game places, and he asks for two deductions at his desk (`deduce`): a wrong one costs a line, and he asks
+# again next time, so a case is never lost. With both, the culprit waits where the clues pointed, and once they are beaten
+# Looker closes the case and pays.
+
+
+script Looker
+  face self player
+  speaker "Looker"
+  if flag FLAG_AGENCY_MET goto Cases
+  scene "AgencyOpens"
+  say "Good day. I am a clerk, and I know nothing. Nothing at all. Please come back..."
+  say "...Ah. It is you, {player}! You see through my disguise at once. A fine eye, as always."
+  say "Yes, it is I, Looker. The Bureau is closed, which is why this is not the Bureau."
+  say "This is the Open Door Agency. Anyone with a puzzle may walk in, and I take a case in each region whose Champion you are."
+  setflag FLAG_AGENCY_MET
+  endscene
+label Cases
+  # The gathering (plan 41 · EG9): once a Laurel Circuit's final is won, Looker has news, and his boat sails to
+  # Grayfall Keep whenever the player likes
+  if flag FLAG_GATHERING_DONE goto CaseList
+  if flag FLAG_GATHERING_CALLED goto Boat
+  circuit count
+  if result == 0 goto CaseList
+  scene "LookerCalls"
+  say "{player}, you are here! Strange news from the harbour. Boats from every region have been sailing to Grayfall Islet."
+  say "On them, the leaders of the old villain teams. Each one heard that their old machine had come back, hidden in the keep out there."
+  say "Somebody gathered them on purpose. I must know who. And I would feel much braver with a Champion beside me."
+  setflag FLAG_GATHERING_CALLED
+  setflag FLAG_KEEP_ISMENE_AWAY
+  endscene
+label Boat
+  ask "My boat is at the quay. Shall we sail to Grayfall Keep?"
+  if no goto CaseList
+  fade out 0.8
+  text "{player} sailed with Looker to Grayfall Islet..."
+  warp "Hub_Keep" 18 16 up
+  fade in 0.8
+  end
+label CaseList
+  if not flag SinnohHallOfFame goto NoCase
+  if not flag FLAG_CASE_SINNOH_CLOSED goto Sinnoh
+  goto NoCase
+
+
+# ------------------------------------------------------------------ Sinnoh: the Villa Larder (the sheet's 7a)
+
+label Sinnoh
+  if flag FLAG_CASE_SINNOH_CULPRIT goto SinnohClose
+  if flag FLAG_CASE_SINNOH_TAKEN goto SinnohClues
+  say "A case from Sinnoh. Before every party at the Resort Area's villa, food vanishes from its larder."
+  say "The villa's caretaker blames a young Gible that plays nearby. I do not believe it. A Gible does not read crate labels."
+  ask "Will you take the case of the Villa Larder?"
+  if no goto Later
+  setflag FLAG_CASE_SINNOH_TAKEN
+  say "Excellent! Speak to the caretaker in the Resort Area, and to the girl whose Gible is blamed. The ferry's people at the Fight Area may know something too."
+  say "Come back when you have found the clues. Then we deduce!"
+  end
+label SinnohClues
+  if not flag FLAG_CASE_SINNOH_CLUE_LABEL goto SinnohMore
+  if not flag FLAG_CASE_SINNOH_CLUE_BITE goto SinnohMore
+  if not flag FLAG_CASE_SINNOH_CLUE_LOG goto SinnohMore
+  if not flag FLAG_CASE_SINNOH_CLUE_RECEIPT goto SinnohMore
+  if var VAR_CASE_SINNOH_DEDUCED >= 2 goto SinnohPier
+  if var VAR_CASE_SINNOH_DEDUCED == 1 goto SinnohSecond
+  say "You have every clue! Now, we think. First question."
+  deduce sinnoh 1
+  if result == 0 goto Wrong
+  setvar VAR_CASE_SINNOH_DEDUCED 1
+  say "Precisely! Those marks were cut by a crowbar, not a Gible's teeth. The little one is innocent."
+label SinnohSecond
+  say "Second question, and the important one."
+  deduce sinnoh 2
+  if result == 0 goto Wrong
+  setvar VAR_CASE_SINNOH_DEDUCED 2
+  setflag FLAG_CASE_SINNOH_FERREN_WAITS
+  say "Yes! Two hours missing from the ferry's log, every party night. Only its captain could sail off his course unwritten."
+  say "Captain Ferren Dray. He will be on the Fight Area's pier. Go and face him, {player}. I would come, but I am a clerk today."
+  end
+label SinnohPier
+  say "Captain Ferren Dray waits on the Fight Area's pier. Go and face him!"
+  end
+label SinnohMore
+  say "There are clues still to find. The caretaker and the girl in the Resort Area, the ferry's people on the Fight Area's pier."
+  end
+label SinnohClose
+  say "The captain came to my door and owned up to everything. The villa will have its parties, and the Gible its good name."
+  say "The case of the Villa Larder is closed! Here is the agency's fee, with my thanks."
+  setflag FLAG_CASE_SINNOH_CLOSED
+  givemoney 10000
+  give "Heart Scale"
+  say "When you are Champion of another region, come back. The door is always open."
+  end
+
+
+# ------------------------------------------------------------------ what every case shares
+
+label Wrong
+  say "Hmm. No, I do not think that is it. Look over your clues and come back to me. A detective is never in a hurry!"
+  end
+label Later
+  say "As you wish. The door stays open."
+  end
+label NoCase
+  say "No case waits for you today. When you are Champion of another region, there will be one. There always is."
+  end
+
+
+script Crates
+  text "Boxes stacked to the ceiling, every one stamped CASE CLOSED. Some of the stamps look very old."
+  end
+
+script Maps
+  text "Maps of every region, pinned and scribbled over, with string running from town to town."
+  end

@@ -190,6 +190,10 @@ public enum Op
     WalkTo, PlaceAt, FaceTo, WarpTo, LookAt,
     // The later games' battle places (plan 37 · FC2): one command for all of them, `facility <place> <word> [what]`
     Facility,
+    // The Laurel Circuit (plan 41 · EG4): begun at its desk, its stamps, its level, the final's Champions and the final won
+    Circuit,
+    // A case's deduction at Looker's desk (plan 41 · EG7): the field's question over the clues found, RESULT 1 for the one that answers
+    Deduce,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

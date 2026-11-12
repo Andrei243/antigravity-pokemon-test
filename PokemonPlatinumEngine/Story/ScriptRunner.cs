@@ -432,6 +432,9 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // The Laurel Circuit only asks and changes its record (plan 41 · EG4); a deduction is a question (EG7)
+        Op.Circuit => false,
+        Op.Deduce => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1075,6 +1078,12 @@ public sealed partial class ScriptRunner
                     host.Open(ScriptScreen.Ceremony, Subject);
                     break;
                 }
+                // "halloffame look <region>": the record on one region's teams (plan 41 · EG2), from a plinth of the Laurel Gallery
+                if (i.Name == "look")
+                {
+                    host.Open(ScriptScreen.HallOfFame, Subject, i.Other);
+                    break;
+                }
                 // Party_GiveChampionRibbons: everyone who enters the Hall of Fame wears its region's Champion Ribbon (plan 06
                 // · R17b; plan 41 · EG2: Hoenn's, Kalos's and Alola's their own, the rest Sinnoh's)
                 RibbonRules.GiveChampion(host.Party, host.Region);
@@ -1601,6 +1610,12 @@ public sealed partial class ScriptRunner
             // The charms of a Pokédex filled (plan 40 · GE5)
             case Op.Charm:
                 CharmCommand(i);
+                break;
+            case Op.Circuit:
+                CircuitCommand(i);
+                break;
+            case Op.Deduce:
+                Deduce(i);
                 break;
 
             default:

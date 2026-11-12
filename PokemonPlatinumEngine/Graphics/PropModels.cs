@@ -57,6 +57,12 @@ internal static class PropModels
             WorkshopArt.Build(kit, p, map);
             return;
         }
+        // The Laurel Gallery's plinths (plan 41 · EG2)
+        if (HubArt.Builds(p))
+        {
+            HubArt.Build(kit, p, map);
+            return;
+        }
         // The training hall's targets and mats (plan 36 · TR2)
         if (TrainingArt.Builds(p))
         {

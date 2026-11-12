@@ -673,7 +673,16 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Jobs, Line = line };
             case "halloffame":
                 // "halloffame show" is the scene of the team's entry instead of the record (plan 02 · S14)
-                return new Instruction { Op = Op.HallOfFame, Line = line, Name = r.More ? r.OneOf("show") : "" };
+            {
+                // "halloffame look <region>" opens the record on one region's teams (plan 41 · EG2: the Laurel Gallery's
+                // plinths), "earlier" the teams from before a team's region was kept, "Circuit" the circuit's finals
+                string how = r.More ? r.OneOf("show", "look") : "";
+                if (how != "look") return new Instruction { Op = Op.HallOfFame, Line = line, Name = how };
+                string tab = r.Word("a region's id, earlier or Circuit");
+                if (tab != "earlier" && tab != Models.ChampionsCircuit.CircuitRegion && RegionDatabase.Get(tab) == null)
+                    throw r.Error($"there is no region '{tab}'");
+                return new Instruction { Op = Op.HallOfFame, Line = line, Name = how, Other = tab };
+            }
             case "travel":
             {
                 // "travel go" is the crossing itself, over a script's dark (plan 18 · W5: common.Crossing)
@@ -1377,6 +1386,29 @@ public static class ScriptParser
             // The charms of a Pokédex filled (plan 40 · GE5): "charm due" how many are earned and not in the bag, "charm give" the first
             case "charm":
                 return new Instruction { Op = Op.Charm, Line = line, Name = r.OneOf("due", "give") };
+
+            case "circuit":
+            {
+                // The Laurel Circuit (plan 41 · EG4): `circuit begin|running|ready|level|stamps|won|regions`, and
+                // `circuit final <Region>` / `circuit stamped <Region>` about one region
+                string what = r.OneOf("begin", "running", "ready", "level", "stamps", "won", "regions", "final", "stamped", "count");
+                string region = "";
+                if (what is "final" or "stamped")
+                {
+                    region = r.Word("a region's id");
+                    if (RegionDatabase.Get(region) == null) throw r.Error($"there is no region '{region}'");
+                }
+                return new Instruction { Op = Op.Circuit, Line = line, Name = what, Other = region };
+            }
+            case "deduce":
+            {
+                // A case's deduction (plan 41 · EG7): `deduce sinnoh 1`
+                string id = r.Word("a case's id");
+                if (Cases.Find(id) is not { } found) throw r.Error($"there is no case '{id}'");
+                int n = r.Int("the deduction's number");
+                if (n < 1 || n > found.Deductions.Count) throw r.Error($"the case '{id}' has deductions 1 to {found.Deductions.Count}");
+                return new Instruction { Op = Op.Deduce, Line = line, Name = id, Number = n };
+            }
 
             case "script":
             case "label":

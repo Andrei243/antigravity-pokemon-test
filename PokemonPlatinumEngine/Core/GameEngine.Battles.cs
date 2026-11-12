@@ -571,6 +571,15 @@ public partial class GameEngine
             for (int k = 0; k < trainers.Count; k++)
             {
                 var t = trainers[k];
+                // A League's team of a finished region while the Laurel Circuit runs is met at the circuit's one level in
+                // place of any mapping (plan 41 · EG4), lifted on a copy with its spread kept and its stages grown
+                // (and Grayfall Keep's teams, plan 41 · EG9, at the same level whenever they are fought)
+                if (ChampionsCircuit.Lifts(flow.Circuit, t.Id, flow.Story) || ChampionsCircuit.IsGatheringTeam(t.Id))
+                {
+                    trainers[k] = ChampionsCircuit.Lift(t, ChampionsCircuit.Level(flow.Circuit, flow.Story));
+                    mapped[k] = true;
+                    continue;
+                }
                 if (t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal)) continue;
                 if ((RematchLevels.For(t.Id, flow.Story, flow.BeganIn) ?? crossed) is not { } levels) continue;
                 trainers[k] = t.Relevelled(levels.Map, grow: true);

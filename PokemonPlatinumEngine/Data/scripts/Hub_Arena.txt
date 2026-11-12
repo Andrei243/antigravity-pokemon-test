@@ -1,0 +1,115 @@
+# The Laurel Court, the Laurel Circuit's arena (plan 41 · EG4). docs/scripts.md describes the language; the lines are our
+# own.
+#
+# Once every finished region's League is stamped (Models/ChampionsCircuit.cs), the herald, Piers Lindqvist, calls each
+# finished region's Champion forward in the chain's order (Data/circuit.json), each on the team they bring here, met at
+# the circuit's one level (GameEngine.StartTrainerBattle lifts a League's team while a circuit runs). There is no healing
+# between them, and the bag may be used. A battle lost ends the final and leaves the circuit under way, to be tried
+# again; the final won raises the circuit, keeps the team on the Laurel Gallery's circuit plinth and writes the title.
+# The Champions stand along the back of the court only while a final waits (OnEnter, by `circuit final`).
+
+
+script OnEnter
+  clearflag FLAG_HUB_COURT_CYNTHIA
+  clearflag FLAG_HUB_COURT_RIVAL
+  clearflag FLAG_HUB_COURT_LANCE
+  clearflag FLAG_HUB_COURT_WALLACE
+  clearflag FLAG_HUB_COURT_IRIS
+  clearflag FLAG_HUB_COURT_DIANTHA
+  circuit ready
+  if result == 0 end
+  circuit final Sinnoh
+  if result == 1 setflag FLAG_HUB_COURT_CYNTHIA
+  circuit final Kanto
+  if result == 1 setflag FLAG_HUB_COURT_RIVAL
+  circuit final Johto
+  if result == 1 setflag FLAG_HUB_COURT_LANCE
+  circuit final Hoenn
+  if result == 1 setflag FLAG_HUB_COURT_WALLACE
+  circuit final Unova
+  if result == 1 setflag FLAG_HUB_COURT_IRIS
+  circuit final Kalos
+  if result == 1 setflag FLAG_HUB_COURT_DIANTHA
+  end
+
+
+script Herald
+  face self player
+  speaker "Piers"
+  circuit running
+  if result == 0 goto Quiet
+  circuit ready
+  if result == 0 goto NotYet
+  circuit level
+  scene "LaurelFinal"
+  say "Champion {player}, every League you have won is stamped. The final of the Laurel Circuit begins now."
+  say "You will face each Champion in turn, at level {result}, with no rest between. Your bag is your own. Champions, step forward!"
+  circuit final Sinnoh
+  if result == 0 goto Kanto
+  speaker "Cynthia"
+  face cynthia player
+  say "Sinnoh's Champion opens the final. I'll give you nothing less than everything."
+  battle cynthia as "champion_cynthia_beyond" canlose
+  if lost goto Lost
+label Kanto
+  circuit final Kanto
+  if result == 0 goto Johto
+  speaker "{rival}"
+  face rival player
+  say "Kanto's turn. I've been training since the day you took my title. Let's settle it!"
+  battle rival as "kanto_champion_beyond" canlose
+  if lost goto Lost
+label Johto
+  circuit final Johto
+  if result == 0 goto Hoenn
+  speaker "Lance"
+  face lance player
+  say "Johto's dragons answer to me. Let's see if they answer to you."
+  battle lance as "johto_champion_lance_beyond" canlose
+  if lost goto Lost
+label Hoenn
+  circuit final Hoenn
+  if result == 0 goto Unova
+  speaker "Wallace"
+  face wallace player
+  say "Hoenn's Champion, at your service. Shall we make this the most beautiful battle of the day?"
+  battle wallace as "hoenn_wallace_beyond" canlose
+  if lost goto Lost
+label Unova
+  circuit final Unova
+  if result == 0 goto Kalos
+  speaker "Iris"
+  face iris player
+  say "Unova's Champion is up! My dragons and I won't hold back, not even a little."
+  battle iris as "unova_champion_iris_beyond" canlose
+  if lost goto Lost
+label Kalos
+  circuit final Kalos
+  if result == 0 goto Won
+  speaker "Diantha"
+  face diantha player
+  say "Kalos closes the final. Let's give the hall an ending it will remember."
+  battle diantha as "kalos_diantha_rematch" canlose
+  if lost goto Lost
+label Won
+  speaker "Piers"
+  circuit won
+  say "The final is won! Champion of every League you have crowned, and now the Laurel Champion."
+  say "Your team will stand on the circuit's plinth in the Laurel Gallery. Circuits won: {result}."
+  givemoney 30000
+  give "PP Max"
+  say "The next circuit will meet you five levels higher. Rest well, Laurel Champion."
+  endscene
+  end
+label Lost
+  speaker "Piers"
+  say "The final ends here for today. Your circuit stands, and the Champions will wait for you to try again."
+  endscene
+  end
+label NotYet
+  circuit stamps
+  say "The final opens once every League you have won is stamped. Stamps so far: {result}."
+  end
+label Quiet
+  say "This is the Laurel Court, where the Laurel Circuit's final is fought. Begin a circuit at the Laurel Gallery's desk."
+  end

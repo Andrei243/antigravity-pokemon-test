@@ -1,0 +1,39 @@
+# Grayfall Keep (plan 41 · EG9): the old sea fort where the villain teams' leaders were gathered by a rumour. A quick,
+# bright, taunting waltz in D minor (the outline sheet's 16b): a violin's staccato tune over a pizzicato oom-pah-pah and
+# a bowed bass, an accordion answering in the second half. Original composition for this game, in the classic sound.
+title Grayfall Keep
+tempo 168
+meter 3/4
+reverb 0.3
+
+track lead violin vol=0.6 pan=0 rev=0.28
+  o5 d4 f4 a4 |
+  L o5 a4 r8 a8 g8 f8 | o5 e4 d4 r4 | o5 c+8 d8 e8 f8 g4 | o5 a2 r4 |
+  o6 d4 r8 d8 c8 o5 b-8 | o5 a4 f4 r4 | o5 g8 a8 b-8 a8 g8 f8 | o5 e2. |
+  o5 b-4 r8 b-8 a8 g8 | o5 f4 a4 r4 | o5 a8 b-8 o6 c8 o5 b-8 a8 g8 | o5 f2 r4 |
+  o5 g4 b-4 o6 d4 | o5 c+4 e4 a4 | o5 d8 e8 f8 g8 a8 c+8 | o5 d2 r4 |
+
+track answer accordion vol=0.26 pan=0.35 rev=0.32
+  r2. |
+  L r2. | r2. | r2. | r2. |
+  r2. | r2. | r2. | r2. |
+  o4 f2. | o4 f2. | o4 f2. | o4 a2. |
+  o4 b-2. | o4 a2. | o4 a2. | o4 f2. |
+
+track pizz pizzicato vol=0.4 pan=-0.3 rev=0.22
+  r4 o4 (d f a)4 (d f a)4 |
+  L r4 o4 (d f a)4 (d f a)4 | r4 o4 (d f a)4 (d f a)4 | r4 o4 (c+ e g)4 (c+ e g)4 | r4 o4 (c+ e g)4 (c+ e g)4 |
+  r4 o4 (d f a)4 (d f a)4 | r4 o4 (d f a)4 (d f a)4 | r4 o4 (d g b-)4 (d g b-)4 | r4 o4 (c+ e g)4 (c+ e g)4 |
+  r4 o4 (d f b-)4 (d f b-)4 | r4 o4 (d f b-)4 (d f b-)4 | r4 o4 (c f a)4 (c f a)4 | r4 o4 (c f a)4 (c f a)4 |
+  r4 o4 (d g b-)4 (d g b-)4 | r4 o4 (c+ e g)4 (c+ e g)4 | r4 o4 (d f a)4 (d f a)4 | r4 o4 (d f a)4 (d f a)4 |
+
+track bass contrabass vol=0.5 rev=0.1
+  o3 d4 r2 |
+  L o3 d4 r2 | o3 d4 r2 | o2 a4 r2 | o2 a4 r2 |
+  o3 d4 r2 | o3 d4 r2 | o3 g4 r2 | o2 a4 r2 |
+  o2 b-4 r2 | o2 b-4 r2 | o3 f4 r2 | o3 f4 r2 |
+  o3 g4 r2 | o2 a4 r2 | o3 d4 r2 | o3 d4 r2 |
+
+track step kit vol=0.24 pan=0.1 rev=0.12
+  v54 b4 v32 h4 h4 |
+  L [ v54 b4 v32 h4 h4 | ]16

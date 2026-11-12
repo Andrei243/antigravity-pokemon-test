@@ -1195,6 +1195,10 @@ public static class RegionDatabase
                 "Hub",
                 // Plan 41 · EG1: the harbour hall and the Pokémon Center with its floor above and below, hand-made map files (Data/maps)
                 "Hub_HarbourHall", "Hub_PokemonCenter", "Hub_PokemonCenter2F", "Hub_PokemonCenterB1F",
+                // Plan 41 · EG2, EG4, EG7: the Laurel Gallery, the Laurel Court and the Open Door Agency
+                "Hub_HallOfChampions", "Hub_Arena", "Hub_Office",
+                // Plan 41 · EG9: Grayfall Keep on the islet, reached by Looker's boat
+                "Hub_Keep",
             }
         }
     };

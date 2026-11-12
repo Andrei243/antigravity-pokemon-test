@@ -5040,5 +5040,159 @@
         ]
       }
     ]
+  },
+  {
+    "id": "case_sinnoh_ferren",
+    "name": "Ferren",
+    "class": "Sailor",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 6400,
+    "party": [
+      { "species": "Pelipper", "level": 62, "ivScale": 200, "personality": 3170244 },
+      { "species": "Floatzel", "level": 63, "ivScale": 200, "personality": 8812450 },
+      { "species": "Lanturn", "level": 62, "ivScale": 200, "personality": 1934207 },
+      { "species": "Gyarados", "level": 64, "ivScale": 200, "personality": 5528016 }
+    ]
+  },
+  {
+    "id": "mars_gathering", "name": "Mars", "class": "Commander", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Bronzong", "level": 63, "ivScale": 220, "personality": 2411903 },
+      { "species": "Purugly", "level": 63, "ivScale": 220, "personality": 7102846 },
+      { "species": "Golbat", "level": 64, "ivScale": 220, "personality": 3375120 }
+    ]
+  },
+  {
+    "id": "jupiter_gathering", "name": "Jupiter", "class": "Commander", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Bronzor", "level": 63, "ivScale": 220, "personality": 6630217 },
+      { "species": "Skuntank", "level": 64, "ivScale": 220, "personality": 1928374 },
+      { "species": "Golbat", "level": 63, "ivScale": 220, "personality": 4455012 }
+    ]
+  },
+  {
+    "id": "cyrus_gathering", "name": "Cyrus", "class": "Galactic Boss", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 12000,
+    "party": [
+      { "species": "Houndoom", "level": 64, "ivScale": 240, "personality": 8812001 },
+      { "species": "Gyarados", "level": 64, "ivScale": 240, "personality": 1203947 },
+      { "species": "Crobat", "level": 65, "ivScale": 240, "personality": 5520318 },
+      { "species": "Honchkrow", "level": 65, "ivScale": 240, "personality": 2950431 },
+      { "species": "Weavile", "level": 66, "ivScale": 240, "personality": 7744102 }
+    ]
+  },
+  {
+    "id": "archer_gathering", "name": "Archer", "class": "Executive Archer", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Arbok", "level": 63, "ivScale": 220, "personality": 3092215 },
+      { "species": "Houndoom", "level": 63, "ivScale": 220, "personality": 6601738 },
+      { "species": "Crobat", "level": 64, "ivScale": 220, "personality": 1144907 }
+    ]
+  },
+  {
+    "id": "ariana_gathering", "name": "Ariana", "class": "Executive Ariana", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Weezing", "level": 63, "ivScale": 220, "personality": 2208864 },
+      { "species": "Vileplume", "level": 63, "ivScale": 220, "personality": 9013376 },
+      { "species": "Arbok", "level": 64, "ivScale": 220, "personality": 4471125 }
+    ]
+  },
+  {
+    "id": "giovanni_gathering", "name": "Giovanni", "class": "Boss", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 12000,
+    "party": [
+      { "species": "Persian", "level": 64, "ivScale": 240, "personality": 3317702 },
+      { "species": "Dugtrio", "level": 64, "ivScale": 240, "personality": 6650389 },
+      { "species": "Nidoqueen", "level": 65, "ivScale": 240, "personality": 1092734 },
+      { "species": "Nidoking", "level": 65, "ivScale": 240, "personality": 8806615 },
+      { "species": "Rhyperior", "level": 66, "ivScale": 240, "personality": 5503148 }
+    ]
+  },
+  {
+    "id": "tabitha_gathering", "name": "Tabitha", "class": "Magma Admin", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Mightyena", "level": 63, "ivScale": 220, "personality": 7721930 },
+      { "species": "Weezing", "level": 63, "ivScale": 220, "personality": 3051827 },
+      { "species": "Camerupt", "level": 64, "ivScale": 220, "personality": 2264019 }
+    ]
+  },
+  {
+    "id": "shelly_gathering", "name": "Shelly", "class": "Aqua Admin", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Mightyena", "level": 63, "ivScale": 220, "personality": 5018374 },
+      { "species": "Crawdaunt", "level": 63, "ivScale": 220, "personality": 8820417 },
+      { "species": "Sharpedo", "level": 64, "ivScale": 220, "personality": 1637290 }
+    ]
+  },
+  {
+    "id": "maxie_gathering", "name": "Maxie", "class": "Magma Leader", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 12000,
+    "party": [
+      { "species": "Mightyena", "level": 64, "ivScale": 240, "personality": 4409126 },
+      { "species": "Crobat", "level": 64, "ivScale": 240, "personality": 7731840 },
+      { "species": "Torkoal", "level": 65, "ivScale": 240, "personality": 2290578 },
+      { "species": "Camerupt", "level": 66, "ivScale": 240, "personality": 6618023 }
+    ]
+  },
+  {
+    "id": "archie_gathering", "name": "Archie", "class": "Aqua Leader", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 12000,
+    "party": [
+      { "species": "Mightyena", "level": 64, "ivScale": 240, "personality": 9104733 },
+      { "species": "Crobat", "level": 64, "ivScale": 240, "personality": 3360812 },
+      { "species": "Wailord", "level": 65, "ivScale": 240, "personality": 5127704 },
+      { "species": "Sharpedo", "level": 66, "ivScale": 240, "personality": 1849063 }
+    ]
+  },
+  {
+    "id": "zinzolin_gathering", "name": "Zinzolin", "class": "Team Plasma Zinzolin", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Cryogonal", "level": 63, "ivScale": 220, "personality": 2817460 },
+      { "species": "Sneasel", "level": 63, "ivScale": 220, "personality": 6093315 },
+      { "species": "Weavile", "level": 64, "ivScale": 220, "personality": 3748219 }
+    ]
+  },
+  {
+    "id": "ghetsis_gathering", "name": "Ghetsis", "class": "Team Plasma Ghetsis", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 12000,
+    "party": [
+      { "species": "Cofagrigus", "level": 64, "ivScale": 240, "personality": 1150937 },
+      { "species": "Seismitoad", "level": 64, "ivScale": 240, "personality": 7022815 },
+      { "species": "Eelektross", "level": 65, "ivScale": 240, "personality": 3341208 },
+      { "species": "Bisharp", "level": 65, "ivScale": 240, "personality": 8814402 },
+      { "species": "Hydreigon", "level": 66, "ivScale": 240, "personality": 2507719 }
+    ]
+  },
+  {
+    "id": "xerosic_gathering", "name": "Xerosic", "class": "Team Flare Admin", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Electrode", "level": 63, "ivScale": 220, "personality": 4482061 },
+      { "species": "Malamar", "level": 63, "ivScale": 220, "personality": 1095830 },
+      { "species": "Crobat", "level": 64, "ivScale": 220, "personality": 6617224 }
+    ]
+  },
+  {
+    "id": "celosia_gathering", "name": "Celosia", "class": "Team Flare Admin", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 7000,
+    "party": [
+      { "species": "Liepard", "level": 63, "ivScale": 220, "personality": 3304192 },
+      { "species": "Drapion", "level": 63, "ivScale": 220, "personality": 7720584 },
+      { "species": "Manectric", "level": 64, "ivScale": 220, "personality": 2048337 }
+    ]
+  },
+  {
+    "id": "lysandre_gathering", "name": "Lysandre", "class": "Team Flare Boss", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 12000,
+    "party": [
+      { "species": "Mienshao", "level": 64, "ivScale": 240, "personality": 5579012 },
+      { "species": "Honchkrow", "level": 64, "ivScale": 240, "personality": 3019846 },
+      { "species": "Scizor", "level": 65, "ivScale": 240, "personality": 8100326 },
+      { "species": "Pyroar", "level": 65, "ivScale": 240, "personality": 1774509 },
+      { "species": "Gyarados", "level": 66, "ivScale": 240, "personality": 6312088 }
+    ]
+  },
+  {
+    "id": "ismene_gathering", "name": "Ismene", "class": "Records Keeper", "ai": [ "Basic", "EvalAttack", "Expert" ], "prizeMoney": 20000,
+    "party": [
+      { "species": "Mr. Mime", "level": 66, "ivScale": 250, "personality": 2093771 },
+      { "species": "Togekiss", "level": 66, "ivScale": 250, "personality": 5517320 },
+      { "species": "Ampharos", "level": 67, "ivScale": 250, "personality": 8306154 },
+      { "species": "Chandelure", "level": 67, "ivScale": 250, "personality": 1446809 },
+      { "species": "Gardevoir", "level": 68, "ivScale": 250, "personality": 7029513 },
+      { "species": "Alakazam", "level": 68, "ivScale": 250, "personality": 3681247 }
+    ]
   }
 ]

@@ -542,6 +542,9 @@ public interface IScriptHost
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6).</summary>
     ApricornBox Apricorns { get; }
 
+    /// <summary>The Laurel Circuit (plan 41 · EG4); none where a host keeps none, and <c>circuit</c> then answers 0.</summary>
+    CircuitState? Circuit => null;
+
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1); none where a host keeps none, and <c>craft</c> then does nothing.</summary>
     CraftingState? Crafting => null;
 

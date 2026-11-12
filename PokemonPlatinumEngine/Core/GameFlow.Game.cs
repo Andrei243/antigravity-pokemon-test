@@ -80,6 +80,9 @@ public sealed partial class GameFlow
     /// <summary>The teams entered into the Hall of Fame (plan 06 · R12).</summary>
     public HallOfFame HallOfFame { get; set; } = new();
 
+    /// <summary>The Champions' circuit (plan 41 · EG4; saved as <c>SaveData.Circuit</c>, null until first begun).</summary>
+    public CircuitState Circuit { get; set; } = new();
+
     /// <summary>The Journal's pages (plan 06 · R12).</summary>
     public Journal Journal { get; set; } = new();
 

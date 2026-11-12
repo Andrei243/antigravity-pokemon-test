@@ -71,7 +71,8 @@ public static class Requests
             new RequestStep("coupon3", "flag FLAG_RECEIVED_COUPON_3", "clown_3"),
             new RequestStep("president", "flag FLAG_RECEIVED_POKETCH"),
         }),
-    };
+    }.Concat(Cases.All.Select(Cases.RequestOf)).ToArray();
+    // (and the Open Door Agency's cases, plan 41 · EG7: a request each, under case_<region>)
 
     private static readonly Dictionary<string, Request> ById = All.ToDictionary(r => r.Id, StringComparer.Ordinal);
 

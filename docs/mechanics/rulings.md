@@ -10940,3 +10940,69 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
 - **Owed**: the user's judgement of the town's look (shots `eg10` to `eg16`) and its name; songs of plan 31's fuller sound
   once MU1 lands (the town's song, `hub/town`, is in the classic sound); the halls' insides (EG2, EG3, EG4, EG7) and the
   islet (EG9); a small Town Map draws its picture repeated across the window's spare width (`ModernUi.DrawTownMap`).
+
+## The Laurel Gallery: every Hall of Fame in one hall (2026-11-12, plan 41 · EG2)
+
+- **Names** are the outline sheet's 1a (the user's answer of 2026-11-10, its default): the hall of Champions is the
+  *Laurel Gallery*, the circuit the *Laurel Circuit* and its arena the *Laurel Court*, Looker's office the *Open Door
+  Agency*; the plinths are laurel wreaths in each region's colour (54a).
+- **An entry keeps its region** (`HallOfFameEntry.Region`, `SavedHallOfFameEntry.Region`, written only when it has one) and
+  its number (`Number`), handed by both hosts' `EnterHallOfFame` from the host's region. A record from before has neither,
+  so a save of the old shape reads and writes the same bytes, and no save version was raised.
+- **Each region's first team outlives the thirty** (`HallOfFame.Firsts`, saved as `SaveData.HallOfFameFirsts`, null while
+  empty): a region's first entry is kept by its region however many enter after it, and `HallOfFame.Of(region)` gives the
+  region's kept teams with its first after them where it has left the thirty.
+- **The record's tabs**: once two regions have teams (or one and the teams from before), `HallOfFameScreen` sorts them by
+  region in the chain's order, with EARLIER TEAMS last (`HallOfFameScreen.EarlierTab`); the PC opens on the newest team's
+  region, the shoulders turn the tabs. A plinth opens it on its own (`halloffame look <region>`, `earlier`, `Circuit`).
+- **The plinths** (`Models/LaurelGallery.cs`, laid out as the player comes in by `GameEngine.FurnishGallery`, the Villa's
+  way): one for each region of the chain finished, in the chain's order on places of their own; EARLIER TEAMS only where
+  teams from before are kept and more than one region is finished (one region finished shows them all on its own plinth's
+  tab-less record); the circuit's once a final is won. Nothing is saved: the story decides them whenever asked.
+- **The Champion ribbons** are as their ruling of 2026-11-09 has them: each region's Hall of Fame hands its own where the
+  data has one, Sinnoh's otherwise.
+
+## The Laurel Circuit (2026-11-12, plan 41 · EG4, decisions 4 and 5)
+
+- **Begun at the Laurel Gallery's desk** by choice (`circuit begin`), once two regions of the chain are finished; the desk
+  says its level first. `Models/ChampionsCircuit.cs`, saved as `SaveData.Circuit` (null until first begun, so no version).
+- **Its one level** (decision 4): the furthest finished region's post-game level, the last pair of its `levels` (Kanto 120,
+  Johto 156, Hoenn 183, Unova 203...), five more for each circuit won, never past the game's cap; 80 where the furthest
+  region has no pairs (a game begun and finished only in its first region, which can't have two regions finished anyway).
+- **Fought where the Leagues stand** (decision 5): while a circuit runs, `GameEngine.StartTrainerBattle` lifts every team of
+  a League's Elite Four or Champion (by class) of a finished region of the chain, on a copy, to the circuit's level: its
+  highest Pokémon at the level, the others the same steps below (the spread kept), each taking its stages (`Trainer.Relevelled`
+  with `grow`). It takes the place of the region's mapping and `RematchLevels`. Which team is fought is the League's own
+  script's: a team beyond (`BeyondTeamOf`) where it is ready, else its rematch team. No League's script changed; nothing
+  changes with no circuit under way. (`LevelLift.To` of plan 41 · EG3 is the same lift; `ChampionsCircuit.Lift` stands until
+  the two are joined.)
+- **A stamp** is a region's Hall of Fame entered while a circuit runs, the region of the chain and finished
+  (`ChampionsCircuit.Stamp`, both hosts' `EnterHallOfFame`), once each.
+- **The final** opens in the Laurel Court with every finished region stamped: the herald, Piers Lindqvist (53a), calls
+  each finished region's Champion forward in the chain's order (`Data/circuit.json`): Cynthia, Kanto's rival, Lance and
+  Wallace on their teams beyond, Iris on hers, Diantha on her second round's (`kalos_diantha_rematch`, since Kalos has no
+  team beyond); Alola's, Galar's and Paldea's rows come with their regions. No healing between, the bag allowed; each
+  battle opens on its Champion's band where the bands name them. A battle lost ends the final with the circuit still under
+  way (the team healed, as `canlose` does).
+- **The final won** ends the circuit and counts it (`circuit won`): its team on the gallery's circuit plinth (the record
+  opened on `CircuitState.Finals`), the title LAUREL CHAMPION first on the card's TITLES page (numbered by the circuits
+  won), a medal row (`MedalFacts.Circuits`: 1, 3 and 5 circuits), 30,000 in money and a PP Max. The plaza's coins (EG3) are
+  owed to the final once the plaza stands.
+
+## The agency's cases (2026-11-12, plan 41 · EG7)
+
+- **The Open Door Agency** (`Hub_Office`): Looker half-disguised as a clerk in a cluttered office of boxes and maps (6b),
+  his Croagunk asleep on its cushion (59a), his opening line 51a's. He takes a case in each region finished, of our own
+  story (the sheet's 7a, 8a, 9b, 10a, 11a).
+- **A case** (`Story/Cases.cs`) is clues, each a flag set where it is found in the region's post-game places, and
+  deductions, each answered by one clue. It is also a request (`case_<region>`, `Cases.RequestOf`): known once taken
+  (`FLAG_CASE_<ID>_TAKEN`), its steps the clues, the deductions (`VAR_CASE_<ID>_DEDUCED`), the culprit
+  (`FLAG_CASE_<ID>_CULPRIT`) and its close (`FLAG_CASE_<ID>_CLOSED`), so the requests page lists it and pins its next step.
+- **A deduction** (`deduce <case> <n>`) is the field's question with the clues found as its answers and LET ME THINK last:
+  RESULT 1 for the clue that answers, 0 otherwise. Looker asks it only once every clue is found; a wrong answer costs a
+  line and ends the talk, and he asks again the next time, so a case is never lost.
+- **Sinnoh's, the Villa Larder**: the villa's caretaker and the girl whose young Gible is blamed in the Resort Area, the
+  harbour clerk and the deckhand on the Fight Area's pier; the bite marks clear the Gible, the ferry's log names its captain;
+  Ferren Dray waits on the pier once both are deduced (`FLAG_CASE_SINNOH_FERREN_WAITS`), battled with a team of ours at
+  Sinnoh's post-game levels (62 to 64, `case_sinnoh_ferren`). Closed, Looker pays 10,000 and a Heart Scale (49a; the
+  plaza's coins are owed to EG3).

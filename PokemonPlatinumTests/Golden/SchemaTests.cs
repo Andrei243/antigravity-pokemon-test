@@ -49,7 +49,9 @@ public class SchemaTests
         // ...and how its wild Pokémon take the player (plan 32 · OW7)
         ("open-wild.schema.json", typeof(PokemonPlatinumEngine.OpenWorld.OpenWildFile), "The wild Pokémon of an open map: each temperament's senses, and which species has which (Data/open-wild.json)"),
         // Plan 40 · GE5: which charm a Pokédex filled earns
-        ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)")
+        ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)"),
+        // Plan 41 · EG4: the Laurel Circuit's final, a region's Champion to a row
+        ("circuit.schema.json", typeof(CircuitFile), "The Laurel Circuit's final: each region's Champion and the team they bring (Data/circuit.json)")
     };
 
     /// <summary>The importer's patches (tools/DataImporter/Overrides): an object of entries by name, each the entry's fields, none required, and <c>new</c>.</summary>

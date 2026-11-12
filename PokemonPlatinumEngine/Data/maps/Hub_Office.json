@@ -1,0 +1,173 @@
+{
+  "name": "Hub_Office",
+  "displayName": "Open Door Agency",
+  "bgmTrack": "hub/town",
+  "interior": "House",
+  "trees": "Round",
+  "width": 13,
+  "height": 10,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#...........#",
+    "#...........#",
+    "#....###....#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Blackboard",
+      "x": 6,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 9,
+      "y": 1,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 5,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 3,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "BookPile",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Cushion",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 6,
+      "width": 3,
+      "depth": 2
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 9,
+      "targetMap": "Hub",
+      "targetX": 51,
+      "targetY": 15,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "looker",
+      "name": "Looker",
+      "npcType": "looker_clerk",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Looker"
+    },
+    {
+      "id": "croagunk",
+      "name": "Croagunk",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "Croagunk is dozing on its cushion. It opens one eye, croaks once, and shuts it again."
+      ],
+      "species": "Croagunk"
+    },
+    {
+      "id": "crates_west",
+      "name": "Crates",
+      "npcType": "Crate",
+      "x": 1,
+      "y": 2,
+      "facing": "Down",
+      "script": "Crates"
+    },
+    {
+      "id": "crates_west_2",
+      "name": "Crates",
+      "npcType": "Crate",
+      "x": 1,
+      "y": 3,
+      "facing": "Down",
+      "script": "Crates"
+    },
+    {
+      "id": "crates_east",
+      "name": "Crates",
+      "npcType": "Crate",
+      "x": 11,
+      "y": 2,
+      "facing": "Down",
+      "script": "Crates"
+    },
+    {
+      "id": "crates_south",
+      "name": "Crates",
+      "npcType": "Crate",
+      "x": 11,
+      "y": 7,
+      "facing": "Down",
+      "script": "Crates"
+    },
+    {
+      "id": "maps",
+      "name": "Maps",
+      "npcType": "TownMap",
+      "x": 2,
+      "y": 2,
+      "facing": "Down",
+      "script": "Maps"
+    },
+    {
+      "id": "maps_2",
+      "name": "Maps",
+      "npcType": "TownMap",
+      "x": 10,
+      "y": 2,
+      "facing": "Down",
+      "script": "Maps"
+    }
+  ],
+  "wildEncounters": []
+}

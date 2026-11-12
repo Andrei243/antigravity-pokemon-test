@@ -5448,7 +5448,7 @@
       "wildWon": "Câștigă o luptă sălbatică", "trainerWon": "Învinge un antrenor", "wildRan": "Fugi de un Pokémon sălbatic",
       "wildFled": "Vezi un Pokémon sălbatic fugind", "trainerLost": "Pierde în fața unui antrenor", "whiteouts": "Leșină și mergi mai departe",
       "caught": "Prinde un Pokémon", "encounters": "Întâlnește un Pokémon sălbatic", "levelled": "Crește un nivel în luptă",
-      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion"
+      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor"
     },
     "name": {
       "stepsFoot": "Mergi {count} pași", "stepsSurf": "Fă {count} pași pe apă", "stepsCycle": "Fă {count} pași cu bicicleta", "stepsDive": "Fă {count} pași sub apă",
@@ -5457,7 +5457,7 @@
       "caught": "Prinde {count} Pokémoni", "newSpecies": "Prinde {count} specii noi", "encounters": "Întâlnește {count} Pokémoni sălbatici",
       "levelled": "Crește {count} niveluri în luptă", "evolutions": "Vezi {count} evoluții",
       "dexSeen": "Vezi {count} specii", "dexCaught": "Deține {count} specii",
-      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni"
+      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni", "circuits": "Câștigă {count} Circuite ale Laurilor"
     }
   },
   "sessionReport": {

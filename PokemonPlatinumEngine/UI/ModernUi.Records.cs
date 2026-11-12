@@ -30,8 +30,12 @@ internal static partial class ModernUi
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("hallOfFame.title"));
-        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.team"), Hint("shared.keys.upDown", "shared.hints.pokemon"),
-            Hint("shared.keys.z", screen.ShowingMoves ? "shared.hints.profile" : "shared.hints.moves"), Hint("shared.keys.esc", "shared.hints.back"));
+        if (screen.Tabs(records).Count > 0)
+            Hints(sw - Margin, 44, Hint("options.keys.shoulders", "options.hint.tab"), Hint("shared.keys.leftRight", "shared.hints.team"), Hint("shared.keys.upDown", "shared.hints.pokemon"),
+                Hint("shared.keys.z", screen.ShowingMoves ? "shared.hints.profile" : "shared.hints.moves"), Hint("shared.keys.esc", "shared.hints.back"));
+        else
+            Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.team"), Hint("shared.keys.upDown", "shared.hints.pokemon"),
+                Hint("shared.keys.z", screen.ShowingMoves ? "shared.hints.profile" : "shared.hints.moves"), Hint("shared.keys.esc", "shared.hints.back"));
         float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
         var panel = new Rectangle(Margin, ContentTop + rise, sw - Margin * 2, ContentBottom - ContentTop);
         Panel(panel, 40);
@@ -50,8 +54,24 @@ internal static partial class ModernUi
         if (entry.RunSeconds is { } run)
             UiFonts.DrawCentered(Text.Of("hallOfFame.runTime", ("time", RunTimer.Format(run, tenths: false))),
                 hx + tagW + 28 + UiFonts.Measure(day, 40, UiWeight.Black) + 32, panel.Y + 62, 26, Muted, UiWeight.Black);
-        string which = Text.Of("hallOfFame.which", ("entry", screen.Entry + 1), ("count", records.Entries.Count));
-        UiFonts.DrawCentered(which, panel.X + panel.Width - 48 - UiFonts.Measure(which, 24, UiWeight.Black), panel.Y + 62, 24, Muted, UiWeight.Black);
+        string which = Text.Of("hallOfFame.which", ("entry", screen.Entry + 1), ("count", screen.Teams(records).Count));
+        var tabs = screen.Tabs(records);
+        if (tabs.Count == 0)
+            UiFonts.DrawCentered(which, panel.X + panel.Width - 48 - UiFonts.Measure(which, 24, UiWeight.Black), panel.Y + 62, 24, Muted, UiWeight.Black);
+        else
+        {
+            // The regions' tabs (plan 41 · EG2; style guide, "Menu screens", the Hall of Fame): at most five in view round
+            // the one shown, each in its region's laurel colour, with the team's place in the tab under them
+            int at = Math.Max(0, tabs.ToList().IndexOf(screen.Tab ?? tabs[0]));
+            const int inView = 5;
+            int first = Math.Clamp(at - inView / 2, 0, Math.Max(0, tabs.Count - inView));
+            var shownTabs = tabs.Skip(first).Take(inView).Select(t => (
+                t == HallOfFameScreen.EarlierTab ? Text.Of("hallOfFame.earlier") : (RegionDatabase.Get(t)?.Name ?? t).ToUpperInvariant(),
+                UiIcon.Star, Graphics.HubArt.LaurelColour(t))).ToList();
+            float tw = Math.Min(1040, shownTabs.Count * 208f);
+            Tabs(new Rectangle(panel.X + panel.Width - 48 - tw, panel.Y + 26, tw, 64), shownTabs, at - first);
+            UiFonts.DrawCentered(which, panel.X + panel.Width - 48 - tw - 28 - UiFonts.Measure(which, 24, UiWeight.Black), panel.Y + 58, 24, Muted, UiWeight.Black);
+        }
 
         // ---- The team, a card each
         const float gap = 20, cardH = 356;
