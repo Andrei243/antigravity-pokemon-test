@@ -346,7 +346,7 @@ public class OpenWorldWildTests
     }
 
     [Theory]
-    [InlineData("""{ "zones": [ { "name": "z", "polygon": [[0,0],[1,0],[1,1]], "slots": [ { "species": "Bidoof", "minLevel": 2, "maxLevel": 300 } ] } ] }""", "maxLevel")]
+    [InlineData("""{ "zones": [ { "name": "z", "polygon": [[0,0],[1,0],[1,1]], "slots": [ { "species": "Bidoof", "minLevel": 2, "maxLevel": 301 } ] } ] }""", "maxLevel")] // one past Ruleset.HighestLevel (300 since plan 46 · CP15)
     [InlineData("""{ "zones": [ { "name": "z", "polygon": [[0,0],[1,0],[1,1]], "slots": [ { "species": "Bidoof", "minLevel": 2, "maxLevel": 3, "time": "noon" } ] } ] }""", "time")]
     public void AZonesRowThatBreaksItsRulesIsRefused(string text, string says)
     {
