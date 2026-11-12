@@ -18,7 +18,7 @@
       { "species": "Banette", "level": 40, "nature": "Adamant", "ability": "Insomnia", "moves": ["Shadow Claw"] },
       { "species": "Mismagius", "level": 40, "nature": "Modest", "ability": "Levitate", "moves": ["Shadow Ball"] }
     ],
-    "foeName": "The Usher",
+    "foeName": "Usher",
     "foeClass": "Actor",
     "foeLook": "gentleman",
     "foeMoves": ["Shadow Ball"],

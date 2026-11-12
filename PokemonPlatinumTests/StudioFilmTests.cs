@@ -14,6 +14,7 @@ using Xunit;
 namespace PokemonPlatinumTests;
 
 /// <summary>The film studio's films (plan 42 · PS4): their battles, beats, endings and records.</summary>
+[Collection("Shared clocks and dice")]
 public class StudioFilmTests
 {
     [Fact]
@@ -181,7 +182,7 @@ public class StudioFilmTests
         Assert.Contains(seen, s => s.Line.Contains("The Empty Seat") && s.Line.Contains("take 2"));
         Assert.Contains(seen, s => s.Speaker == "Captain" && s.Line.Contains("seat thirteen"));
         Assert.Contains(seen, s => s.Speaker == PlayerIdentity.Name && s.Line == "Stay for an encore, then!");
-        Assert.Contains(seen, s => s.Speaker == "The Usher" && s.Line.Contains("remain seated"));
+        Assert.Contains(seen, s => s.Speaker == "Usher" && s.Line.Contains("remain seated"));
         Assert.Contains(seen, s => s.Line.Contains("taking a bow"));
         Assert.Equal(Text.Of("studio.stars", ("stars", 5)), seen[^1].Line);
         // The title card comes first of the film's own lines, before any beat
@@ -216,6 +217,22 @@ public class StudioFilmTests
             {
                 var rows = TextMetrics.Wrap(PlayerIdentity.Fill(line), ModernUi.MessageBoxWidth - ModernUi.MessageMargin, ModernUi.MessageSize, UiWeight.ExtraBold);
                 if (rows.Count > 2) tooLong.Add($"{film.Id}: {line}");
+            }
+            // The title card at a take of two digits, and the stars, in every language with a table
+            foreach (string language in new[] { "en", "ro" })
+            {
+                Text.Use(language);
+                try
+                {
+                    foreach (string line in new[]
+                    {
+                        Text.Of("studio.titleCard", ("title", Text.Of(film.TitleKey)), ("genre", Text.Of(film.GenreKey)), ("take", 99)),
+                        Text.Of("studio.stars", ("stars", 5))
+                    })
+                        if (TextMetrics.Wrap(line, ModernUi.MessageBoxWidth - ModernUi.MessageMargin, ModernUi.MessageSize, UiWeight.ExtraBold).Count > 2)
+                            tooLong.Add($"{language}: {line}");
+                }
+                finally { Text.Use("en"); }
             }
         }
         Assert.True(tooLong.Count == 0, string.Join("\n", tooLong));

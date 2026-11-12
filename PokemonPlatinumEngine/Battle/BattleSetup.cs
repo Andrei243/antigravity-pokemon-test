@@ -401,8 +401,7 @@ public sealed class BattleSetup
         Palace = Palace,
         TurnLimit = TurnLimit,
         VictoryMusic = VictoryMusic,
-        StudioFilm = StudioFilm,
-        StudioTakeNumber = StudioTakeNumber,
+        // (a film's take is never fought again: its director has been used, and a take is a Frontier battle, which no retry takes)
         FirstTrainerPokemon = first
     };
 }

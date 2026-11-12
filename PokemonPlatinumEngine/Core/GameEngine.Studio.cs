@@ -70,7 +70,9 @@ public partial class GameEngine
     /// </summary>
     private bool KeepTheStudioBattle()
     {
-        if (studioShooting is not { } film || flow.Battle is not { Studio: not null } battle) return false;
+        if (flow.Battle is not { Studio: not null } battle) return false;
+        // Kept already: the battle stays on screen behind the fade, and nothing else of a battle's ending may run on it
+        if (studioShooting is not { } film) return true;
         if (battle.StudioTake == null)
         {
             bool outOfTurns = battle.Result == BattleResult.None && battle.HUD.MenuState == BattleMenuState.Main && battle.Core.Turn >= film.Battle.Turns;

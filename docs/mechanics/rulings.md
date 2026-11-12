@@ -11642,8 +11642,8 @@ Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's).
 - **The records** (`StudioRecords`, saved as `SaveData.Studio`, null until a film is shot: no version raised): each film's
   takes shot, its best stars and best take (a tie keeps the first). The studio's rank is the best stars summed and opens a
   film whose `rank` it reaches; both of part a's open at nought.
-- **Where** (until part b): the studios' lot is Black 2's, imported with `--game black2 --data`, which needs
-  fuddlesworth/pokebw2's cache, not on this machine; so part a's desk is Director Wren of ours in Jubilife TV's lobby
+- **Where** (until part b): the studios' lot is Black 2's, imported with `--game black2 --data` (which fetches
+  fuddlesworth/pokebw2 on its first run, not run in this session: a Unova import goes in a wave of its own); so part a's desk is Director Wren of ours in Jubilife TV's lobby
   (`JubilifeTV1F`, 3, 7), who shoots either film. Part b moves the films to the lot and leaves or retires the desk.
 - **The casts** (ours): The Empty Seat lends Houndoom, Absol and Umbreon at 60 against the Usher's Chandelure, Banette and
   Mismagius at 40, co-starring Virbank's captain; The Gilded Hour lends Infernape, Weavile and Honchkrow at 60 against Mme.
