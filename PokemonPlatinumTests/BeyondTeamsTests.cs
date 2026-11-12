@@ -11,8 +11,8 @@ using Xunit;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// The Leagues' teams beyond (plan 03 · D15, design T; docs/plans/decisions/D15-species-of-ours-in-the-world.md): 26 teams of
-/// species of our own, one for each Elite Four and Champion of the five built regions, each the rematch team it
+/// The Leagues' teams beyond (plan 03 · D15, design T; docs/plans/decisions/D15-species-of-ours-in-the-world.md): 31 teams of
+/// species of our own, one for each Elite Four and Champion of the six built regions, each the rematch team it
 /// replaces slot for slot, found by <see cref="BattleCore.BeyondTeamOf"/> and ready at the region's Hall of Fame with a
 /// Pokémon of the team at the batch's lowest evolution level (question 10's default).
 /// </summary>
@@ -47,14 +47,26 @@ public class BeyondTeamsTests
         ("unova_elite_four_marshal_beyond", "unova_elite_four_marshal_4", RegionDatabase.Unova),
         ("unova_elite_four_caitlin_beyond", "unova_elite_four_caitlin_4", RegionDatabase.Unova),
         ("unova_champion_iris_beyond", "unova_champion_iris_4", RegionDatabase.Unova),
+        ("kalos_malva_beyond", "kalos_malva_rematch", RegionDatabase.Kalos),
+        ("kalos_siebold_beyond", "kalos_siebold_rematch", RegionDatabase.Kalos),
+        ("kalos_wikstrom_beyond", "kalos_wikstrom_rematch", RegionDatabase.Kalos),
+        ("kalos_drasna_beyond", "kalos_drasna_rematch", RegionDatabase.Kalos),
+        ("kalos_diantha_beyond", "kalos_diantha_rematch", RegionDatabase.Kalos),
     };
 
+    /// <summary>
+    /// Kalos's League fields 26 Pokémon and its batch holds 24 placeable species, so by the user's decision of 2026-11-12
+    /// two repeats are allowed in Kalos's teams beyond and no others (rulings, "The League's teams beyond"); every
+    /// other region's teams use each species once.
+    /// </summary>
+    private const int KalosRepeatsAllowed = 2;
+
     [Fact]
-    public void ThereAreTwentySixTeamsOfOneHundredAndFortyFourPokemonOfOurs()
+    public void ThereAreThirtyOneTeamsOfOneHundredAndSeventyPokemonOfOurs()
     {
         var beyond = TrainerDatabase.Ours.Where(t => t.Id.EndsWith(BattleCore.BeyondSuffix, StringComparison.Ordinal)).ToList();
         Assert.Equal(Teams.Select(t => t.Beyond).OrderBy(i => i, StringComparer.Ordinal), beyond.Select(t => t.Id).OrderBy(i => i, StringComparer.Ordinal));
-        Assert.Equal(144, beyond.Sum(t => t.Party.Count));
+        Assert.Equal(170, beyond.Sum(t => t.Party.Count));
         // None of them is Platinum's, and the table the original's trainers go through stays its own
         Assert.DoesNotContain(TrainerDatabase.All, t => t.Id.EndsWith(BattleCore.BeyondSuffix, StringComparison.Ordinal));
     }
@@ -65,6 +77,7 @@ public class BeyondTeamsTests
         foreach (string region in Teams.Select(t => t.Region).Distinct())
         {
             var used = new HashSet<string>();
+            int repeats = 0;
             foreach (var (id, from, _) in Teams.Where(t => t.Region == region))
             {
                 var team = TrainerDatabase.Get(id)!;
@@ -77,7 +90,12 @@ public class BeyondTeamsTests
                     var species = PokemonDatabase.Get(mine.Species)!;
                     Assert.True(OursSlots.Placeable(species), $"{id}: {mine.Species} is no species of ours that may be met");
                     Assert.Equal(region, OursSlots.RegionOf(species));
-                    Assert.True(used.Add(mine.Species), $"{mine.Species} is in two of {region}'s teams");
+                    if (!used.Add(mine.Species))
+                    {
+                        // Only Kalos repeats, and only the two its 26 slots need over its 24 species
+                        Assert.True(region == RegionDatabase.Kalos, $"{mine.Species} is in two of {region}'s teams");
+                        repeats++;
+                    }
                     // Never under its own evolution, never past the highest level
                     Assert.InRange(mine.Level, OursSlots.EvolutionLevel(species), Ruleset.HighestLevel);
                     Assert.Equal((theirs.Personality, theirs.IvScale, theirs.Item), (mine.Personality, mine.IvScale, mine.Item));
@@ -85,6 +103,7 @@ public class BeyondTeamsTests
                 }
                 Assert.Equal(region, BattleCore.RegionOfBeyond(team));
             }
+            Assert.Equal(region == RegionDatabase.Kalos ? KalosRepeatsAllowed : 0, repeats);
         }
     }
 
@@ -97,6 +116,7 @@ public class BeyondTeamsTests
     [InlineData("hoenn_wallace_beyond", 170)]
     [InlineData("hoenn_steven_beyond", 183)]
     [InlineData("unova_champion_iris_beyond", 202)]
+    [InlineData("kalos_diantha_beyond", 207)]
     public void AChampionsBestStandsAtTheTopOfTheBand(string id, int best) =>
         Assert.Equal(best, TrainerDatabase.Get(id)!.Party.Max(p => p.Level));
 
@@ -143,6 +163,12 @@ public class BeyondTeamsTests
     [InlineData("unova_elite_four_marshal_2", "unova_elite_four_marshal_beyond")]
     [InlineData("unova_elite_four_caitlin_2", "unova_elite_four_caitlin_beyond")]
     [InlineData("unova_champion_iris_2", "unova_champion_iris_beyond")]
+    [InlineData("kalos_malva_rematch", "kalos_malva_beyond")]
+    [InlineData("kalos_siebold_rematch", "kalos_siebold_beyond")]
+    [InlineData("kalos_wikstrom_rematch", "kalos_wikstrom_beyond")]
+    [InlineData("kalos_drasna_rematch", "kalos_drasna_beyond")]
+    [InlineData("kalos_diantha_1", "kalos_diantha_beyond")]
+    [InlineData("kalos_diantha_rematch", "kalos_diantha_beyond")]
     public void EveryLeagueIdTheScriptsBattleWithNamesItsTeamBeyond(string id, string beyond)
     {
         Assert.Equal(beyond, BattleCore.BeyondIdOf(id));
@@ -161,6 +187,7 @@ public class BeyondTeamsTests
     [InlineData(RegionDatabase.Johto, 104)]
     [InlineData(RegionDatabase.Hoenn, 140)]
     [InlineData(RegionDatabase.Unova, 165)]
+    [InlineData(RegionDatabase.Kalos, 120)]
     public void ABatchIsReadyAtItsLowestEvolutionLevel(string region, int level) => Assert.Equal(level, BattleCore.ReadyLevel(region));
 
     [Theory]
@@ -169,6 +196,7 @@ public class BeyondTeamsTests
     [InlineData("johto_champion_lance", RegionDatabase.Johto)]
     [InlineData("hoenn_steven", RegionDatabase.Hoenn)]
     [InlineData("unova_elite_four_caitlin_2", RegionDatabase.Unova)]
+    [InlineData("kalos_diantha_rematch", RegionDatabase.Kalos)]
     public void ATeamBeyondWaitsForTheRegionsHallOfFameAndAPokemonAtTheBatchsLevel(string id, string region)
     {
         int ready = BattleCore.ReadyLevel(region);
