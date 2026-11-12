@@ -4,6 +4,10 @@
   // 20 · J9's (scripts/olivine.txt); the photographer and the man the original keeps by the western shore wait for
   // theirs
   "area": "olivine",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 287, "y": 258, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 287, "z": 258, "script": "PhotoSpot" } ],
   "bgmTrack": "johto/olivine",
   "trees": "Round",
   "architecture": "Seaport",

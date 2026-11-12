@@ -245,7 +245,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `givepokemon "Castform" 25 holding "Mystic Water"` | The same with an item in its hand (plan 21 · H6: the Weather Institute's Castform, as Emerald gives it). |
 | `givepokemon "Dratini" 15 knowing "Extreme Speed"` | The same with a move in the place of its first (plan 20 · J11, part c: the Dragon Shrine's Dratini, as HeartGold's `SetMonMove` puts it); `holding` and `knowing` may both be given, in either order. A move the data doesn't have is a problem of the library's. |
 | `givebadge coal` | Gives a badge of the region the player is in, by its name in that region's file (plan 18 · W2), with its fanfare; `givebadge thunder of kanto` gives another region's (plan 20 · J15, part b: HeartGold's Kanto Gyms, Johto's maps, give Kanto's Badges). |
-| `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
+| `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. Either may name a variable in place of the amount (`givemoney VAR_JOHTO_MOM_SAVINGS`, plan 43 · LF7), its value as it is then. |
 | `heal` | The whole team. |
 | `seen "Dialga"` | The Pokédex has the species as seen, without a word and without a battle (plan 02 · S12; the original's `SetSpeciesSeen`, for a Pokémon a scene shows: Dialga and Palkia at Spear Pillar). |
 | `greetings clear` | The count of people spoken to starts again from nought (plan 08 · P12; the original's `ClearSpiritombCounter`). The built-in variable `GREETINGS` is the count: everyone spoken to since, each once (`StoryState.Greeted`, saved). |
@@ -570,6 +570,8 @@ and a decoration PC (`StoredDecoration`s, saved). The game starts `common.Secret
 | `openbase visit` | Into the friend's base at the spot in front (plan 40 · GE10), inside its door: laid out with what stood in it and its owner standing by the PC, a friend's trainer battled as the friends' hall's are, the door leading back to the spot. `RESULT` 0 with none there. |
 | `openbase pc` | Opens the decorating over the base's floor (the shared `DecorationScreen`), and the script waits: `RESULT` 0 outside the player's own base. |
 | `openbase packup` | Everything in the base back into the PC, the base given up, and the player out to where its spot is faced from. |
+| `openbase move` | Plan 43 · LF7: the home's door moved to the spot faced, in any region with spots; the room and everything in it as they were, and the player into it. |
+| `openbase movein` | Plan 43 · LF7, at the home's PC: the home takes the room the spot its door stands at would make, the room left keeping its layout for when it is come back to. `RESULT` 0 where the door's room is the home's own already. |
 | `openbase give "Red Brick"` | A decoration into the PC, without a word: `RESULT` 1, or 0 with no room for its kind (ten desks, chairs, plants, posters and cushions, thirty ornaments and mats, forty dolls). `{thing}` names it. |
 | `openbase buy "Red Brick"` | As a decoration shop does: `RESULT` 1 bought (its price taken, the decoration in the PC), 0 short of money, 2 no room for its kind. `{thing}` names it. |
 | `openbase trade "Kiss Poster" 16` | As the Battle Frontier island's decoration clerks do (plan 21's leftovers): for that many Battle Points. `RESULT` 1 traded, 0 short of points, 2 no room for its kind; `{thing}` and `{price}`. |

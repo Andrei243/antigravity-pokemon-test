@@ -3,6 +3,12 @@
   // the rival at the lab's window until the player has a Pokémon, the friend next door and their Marill in the street,
   // Mom running out with the Running Shoes. The friend by Elm's house door and the cameraman wait for later chapters
   "area": "new_bark",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 692, "z": 391, "kind": "Tree", "room": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 687, "y": 399, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 687, "z": 399, "script": "PhotoSpot" } ],
   "bgmTrack": "johto/new_bark",
   "trees": "Round",
   "architecture": "Breeze",

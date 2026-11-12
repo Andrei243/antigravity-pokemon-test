@@ -2,6 +2,12 @@
   // Pewter City (plan 19 · K3): FireRed's map, our words; it plays Viridian's song, as FireRed plays one song in both.
   // The Gym's guide who stops the player on the road east and Oak's aide with the Running Shoes are pewter_city.txt's
   "area": "pewter_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 59, "z": 61, "kind": "Tree", "room": 3 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 65, "y": 67, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 65, "z": 67, "script": "PhotoSpot" } ],
   "bgmTrack": "kanto/viridian",
   "trees": "Round",
   "architecture": "Granite",

@@ -3419,8 +3419,11 @@ label Friend
   end
 label Elsewhere
   if not knows "Secret Power" goto Cannot
-  ask "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+  ask "You already have a secret base. Open its door here instead? Everything inside stays just where you left it."
   if no end
+  usemove "Secret Power"
+  openbase move
+  end
 label Ask
   openbase kind
   if result == 5 goto AskTree
@@ -3493,10 +3496,20 @@ label Open
 script SecretBasePC
   speaker none
   text "The base's PC hummed into life."
-  choose "What would you like to do?" "DECORATE" "PACK UP" "REGISTRY" "LOG OFF"
+  choose "What would you like to do?" "DECORATE" "PACK UP" "REGISTRY" "MOVE IN HERE" "LOG OFF"
   if result == 0 goto Decorate
   if result == 1 goto PackUp
   if result == 2 goto Registry
+  if result == 3 goto MoveIn
+  end
+label MoveIn
+  ask "Move into the room this spot opens on? This room's layout is kept for when you come back to it."
+  if no end
+  openbase movein
+  if result == 0 goto SameRoom
+  end
+label SameRoom
+  text "Your home is already in the room this spot opens on."
   end
 label Decorate
   openbase pc

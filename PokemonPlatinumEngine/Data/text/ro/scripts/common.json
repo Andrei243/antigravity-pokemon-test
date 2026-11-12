@@ -3110,10 +3110,10 @@
   "SecretBaseSpot": [
     {
       "en": [
-        "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+        "You already have a secret base. Open its door here instead? Everything inside stays just where you left it."
       ],
       "text": [
-        "Ai deja o bază secretă. O muți aici? Tot ce e în cea veche se întoarce în PC-ul tău."
+        "Ai deja o bază secretă. Îi deschizi ușa aici în schimb? Tot ce e înăuntru rămâne exact unde l-ai lăsat."
       ]
     },
     {
@@ -3224,14 +3224,32 @@
         "DECORATE",
         "PACK UP",
         "REGISTRY",
+        "MOVE IN HERE",
         "LOG OFF"
       ],
       "text": [
-        "Ce ai vrea să faci?",
+        "Ce vrei să faci?",
         "DECOREAZĂ",
-        "ÎMPACHETEAZĂ",
+        "STRÂNGE",
         "REGISTRU",
-        "DECONECTARE"
+        "MUTĂ-TE AICI",
+        "IEȘI"
+      ]
+    },
+    {
+      "en": [
+        "Move into the room this spot opens on? This room's layout is kept for when you come back to it."
+      ],
+      "text": [
+        "Te muți în camera pe care o deschide locul acesta? Aranjamentul camerei acesteia se păstrează pentru când revii."
+      ]
+    },
+    {
+      "en": [
+        "Your home is already in the room this spot opens on."
+      ],
+      "text": [
+        "Casa ta e deja în camera pe care o deschide locul acesta."
       ]
     },
     {
@@ -3239,7 +3257,7 @@
         "Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again."
       ],
       "text": [
-        "Împachetezi și pleci? Tot ce e aici se întoarce în PC-ul tău, iar locul redevine un loc obișnuit."
+        "Strângi totul și pleci? Tot ce e aici se întoarce în PC-ul tău, iar locul redevine unul obișnuit."
       ]
     },
     {
@@ -3247,7 +3265,7 @@
         "Registered here: the secret bases of {thing}. Visit them at their spots around Hoenn!"
       ],
       "text": [
-        "Înregistrate aici: bazele secrete ale lui {thing}. Vizitează-le la locurile lor din Hoenn!"
+        "Înregistrate aici: bazele secrete ale lui {thing}. Vizitează-le la locurile lor prin Hoenn!"
       ]
     },
     {
@@ -3255,7 +3273,7 @@
         "No friend's secret base is registered. Mix records at a Pokémon Center's record desk to bring one in."
       ],
       "text": [
-        "Nicio bază secretă a vreunui prieten nu e înregistrată. Amestecă recordurile la ghișeul de recorduri al unui Centru Pokémon ca să aduci una."
+        "Nicio bază secretă a unui prieten nu e înregistrată. Schimbă înregistrări la biroul de înregistrări al unui Centru Pokémon ca să aduci una."
       ]
     }
   ],

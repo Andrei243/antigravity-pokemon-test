@@ -163,6 +163,7 @@ public partial class GameEngine
         if (call == Pokegear.CallRematch) KeepPhoneRematchesWaiting();
         flow.Story.SetVar(Pokegear.CallVar, call);
         AudioManager.PlaySound("phone_ring");
+        BeginTheCallersFace(contact);
         if (!StartScript(contact.Script, file: PhoneScripts)) StartScript(Pokegear.NobodysCall, file: PhoneScripts);
     }
 

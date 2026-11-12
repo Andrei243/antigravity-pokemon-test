@@ -234,6 +234,9 @@ public static class ScriptParser
             case "givemoney":
             case "takemoney":
             {
+                // A number, or a variable's value as it is now (plan 43 · LF7: Mom's savings in Johto, "givemoney VAR_X")
+                var moneyOp = word == "givemoney" ? Op.GiveMoney : Op.TakeMoney;
+                if (r.PeekVariable) return new Instruction { Op = moneyOp, Line = line, Other = r.Variable(writable: false) };
                 int amount = r.Int("an amount");
                 if (amount < 0) throw r.Error("an amount of money is not negative");
                 return new Instruction { Op = word == "givemoney" ? Op.GiveMoney : Op.TakeMoney, Line = line, Number = amount };
@@ -1116,7 +1119,7 @@ public static class ScriptParser
             // the decoration PC filled
             case "openbase":
             {
-                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade") : "open";
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade", "move", "movein") : "open";
                 if (what is not ("give" or "buy" or "room" or "trade")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
                 string decoration = r.Text("a decoration's name");
                 if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");

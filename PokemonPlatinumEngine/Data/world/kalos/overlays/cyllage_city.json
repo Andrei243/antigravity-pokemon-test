@@ -6,6 +6,10 @@
   // is plan 23 · Z3's. Its houses are Cyllage's own (Architecture.Cyllage), and it plays Santalune's song until
   // plan 31 writes it its own
   "area": "cyllage_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 95, "z": 319, "kind": "BlueCave", "room": 3 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 96, "z": 325, "script": "PhotoSpot" } ],
   "bgmTrack": "kalos/seaside",
   "trees": "Round",
   "architecture": "Cyllage",
@@ -20,7 +24,7 @@
   "triggers": [
     { "script": "Neighbour", "x": 102, "z": 358, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 16 }
   ],
-  "props": [
+  "props": [ { "type": "PhotoSpot", "x": 96, "y": 325, "width": 1, "depth": 1 },
     { "type": "LampPost", "x": 101, "y": 351, "width": 1, "depth": 1 },
     { "type": "LampPost", "x": 106, "y": 351, "width": 1, "depth": 1 },
     { "type": "Planter", "x": 101, "y": 314, "width": 1, "depth": 1 },

@@ -10,3 +10,8 @@ script FatMan
 label Won
   say "You beat Falkner? Then the Zephyr Badge is yours. Violet City will be talking about it for weeks!"
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "johto_violet_tower"
+  end

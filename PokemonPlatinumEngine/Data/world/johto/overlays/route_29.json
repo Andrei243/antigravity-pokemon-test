@@ -3,6 +3,8 @@
   // side (Route 46 itself opened with plan 20 · J10, beyond the gate house). The Apricorn tree is J6's, and
   // the girl who is here only on Tuesdays plan 20 · J13's
   "area": "route_29",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 623, "z": 403, "kind": "Shrub", "room": 3 } ],
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
     {"id": "route_29.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 625, "y": 399, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}

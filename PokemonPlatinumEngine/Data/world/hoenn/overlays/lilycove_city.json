@@ -7,6 +7,10 @@
   // lower basement, plan 21 · H7, part b; FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS takes the grunts). Team Aqua's hideout,
   // in the cave of the cove, is open since part b, and the harbour since plan 21 · H9, part b; the Contest Lobby (H11) is open since plan 21 · H11
   "area": "lilycove_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 517, "y": 95, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 517, "z": 95, "script": "PhotoSpot" } ],
   "bgmTrack": "hoenn/lilycove",
   "zones": [
     { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "while": "FLAG_SYS_WEATHER_CTRL" }

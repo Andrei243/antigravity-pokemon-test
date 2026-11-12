@@ -81,3 +81,8 @@ script RunningShoes
   setvar VAR_SCENE_NEW_BARK_TOWN_OW 2
   endscene
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "johto_new_bark_breeze"
+  end

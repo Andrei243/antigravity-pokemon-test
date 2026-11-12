@@ -21,13 +21,33 @@ internal static partial class ModernUi
     {
         RegionDatabase.Kalos => new Color(214, 92, 128, 255),
         RegionDatabase.Unova => new Color(70, 110, 170, 255),
+        RegionDatabase.Alola => new Color(232, 140, 60, 255),
+        RegionDatabase.Galar => new Color(150, 60, 90, 255),
         _ => new Color(60, 150, 140, 255),
     };
+
+    /// <summary>The caller's face's square (plan 43 · LF6): over the text box at its left, 300 units across.</summary>
+    public static Rectangle CallerFaceRect(int sh) =>
+        new(DialogueBox.Side, sh - DialogueBox.Foot - DialogueBox.Height - 316, 300, 300);
+
+    /// <summary>
+    /// The caller's face on a call of the travel phone (style guide, "The travel phone"): a rounded card of the phone's
+    /// colour in the region, the bust over it, and a ring of the phone's colour round it.
+    /// </summary>
+    public static void CallerFace(Texture2D face, int sh, string? region)
+    {
+        var r = CallerFaceRect(sh);
+        var colour = PhoneColour(region);
+        UiShapes.Shadow(r, 36, 18, new Vector2(0, 6), new Color(0, 0, 0, 90));
+        UiShapes.Shape(r, 36, Graphics.PixelCanvas.Mix(colour, Color.White, 0.45f), colour, Color.White, 6f);
+        Raylib.DrawTexturePro(face, new Rectangle(0, 0, face.Width, -face.Height), r, Vector2.Zero, 0f, Color.White);
+    }
 
     private static (string Label, UiIcon Icon, Color Color) PhoneTab(Models.PhoneCard card) => card switch
     {
         Models.PhoneCard.Calls => (Text.Of("travelPhone.card.Calls"), UiIcon.Phone, Green),
         Models.PhoneCard.News => (Text.Of("travelPhone.card.News"), UiIcon.Letter, Gold),
+        Models.PhoneCard.Powers => (Text.Of("travelPhone.card.Powers"), UiIcon.Boost, ResearchPlum),
         _ => (Text.Of("travelPhone.card.Map"), UiIcon.MapCard, Blue)
     };
 
@@ -46,11 +66,13 @@ internal static partial class ModernUi
         {
             case Models.PhoneCard.Calls: PhoneCalls(screen, body); break;
             case Models.PhoneCard.News: PhoneNews(screen, body); break;
+            case Models.PhoneCard.Powers: PhonePowers(body); break;
             default: PhoneMap(screen, body); break;
         }
 
         var hints = new List<HintItem>();
         if (screen.Card == Models.PhoneCard.Map) hints.Add(Hint("shared.keys.z", "travelPhone.hints.open"));
+        if (screen.Card == Models.PhoneCard.Powers) hints.Add(Hint("shared.keys.z", "travelPhone.hints.powers"));
         if (screen.Card == Models.PhoneCard.Calls && screen.Contacts.Count > 0) hints.Add(Hint("shared.keys.z", "travelPhone.hints.call"));
         if (screen.Cards.Count > 1) hints.Add(Hint("shared.keys.leftRight", "travelPhone.hints.cards"));
         hints.Add(Hint("shared.keys.x", "shared.hints.back"));
@@ -118,6 +140,15 @@ internal static partial class ModernUi
             }
             y += 14;
         }
+    }
+
+    // POWERS: what the card opens (the Power Watch's own panel), said on a sheet
+    private static void PhonePowers(Rectangle body)
+    {
+        Panel(body, 32);
+        float x = body.X + 60;
+        UiFonts.Draw(Text.Of("travelPhone.powers.heading"), x, body.Y + 60, 40, Ink, UiWeight.Black);
+        DrawWrapped(Text.Of("travelPhone.powers.body"), x, body.Y + 130, body.Width - 120, 32, Muted, 44, UiWeight.ExtraBold);
     }
 
     private static void PhoneMap(PhoneScreen screen, Rectangle body)

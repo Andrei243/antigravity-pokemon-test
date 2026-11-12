@@ -278,6 +278,13 @@ public partial class GameEngine
         public PhoneRinger PhoneRinger => game.phoneRinger;
         /// <summary>A call as the game makes it: the player ringing a contact, or a contact ringing the player.</summary>
         public void PlaceCall(PhoneContact contact, bool incoming) => game.PlaceCall(contact, incoming);
+
+        /// <summary>The travel phone's caller's face on a call (plan 43 · LF6): the look asked for and whether it is rendered.</summary>
+        /// <summary>The travel phone's screen, opened as the start menu's PHONE opens it, on a card.</summary>
+        public PhoneScreen TravelPhoneScreen => game.flow.PhoneScreen;
+        public void OpenTravelPhone(PhoneCard? on = null) => game.OpenPhone(on);
+        public string? CallFaceLook => game.callFace.Look;
+        public bool CallFaceRendered => game.callFace.Rendered;
         /// <summary>A step's chance of a contact ringing, asked at once.</summary>
         public bool PhoneRingsOnAStep() => game.PhoneRingsOnAStep();
 

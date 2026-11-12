@@ -21,16 +21,44 @@ script Mother
   if result == 2 goto Three
   say "Hello, dear! It's so good to hear from you. Are you eating properly out there?"
   say "Don't push yourself too hard. Come home and rest whenever you need to."
+  call MomShops
   end
 label Two
   say "Oh, {player}! The house is so quiet without you. Professor Elm stops by now and then to ask how you're doing."
+  call MomShops
   end
 label Three
   say "You sound well! Keep your Pokémon close and you'll be fine. I'm proud of you, you know."
+  call MomShops
   end
 label Rang
   say "{player}? It's Mom. I just wanted to hear your voice. Take care of yourself, all right?"
+  call MomShops
   end
+
+# Mom's buys with the savings (plan 43 · LF7): now and then, once she holds enough, a thing for the bag or a piece for
+# the home, and the call says what. Her savings are short by what it cost.
+script MomShops
+  if var VAR_JOHTO_MOM_SAVINGS < 1200 goto Done
+  random 4
+  if result == 1 goto Doll
+  if result == 2 goto Repel
+  if result == 3 goto Done
+  addvar VAR_JOHTO_MOM_SAVINGS -700
+  give "Super Potion"
+  say "Oh, and I used a little of your savings on a Super Potion. I sent it along to you!"
+  return
+label Doll
+  addvar VAR_JOHTO_MOM_SAVINGS -1000
+  openbase give "Pikachu Doll"
+  say "Oh! I saw the sweetest Pikachu Doll and bought it with some of your savings. It's waiting in your decoration PC."
+  return
+label Repel
+  addvar VAR_JOHTO_MOM_SAVINGS -350
+  give "Repel"
+  say "I bought you a Repel with some of your savings. Wild Pokémon can be such a bother!"
+label Done
+  return
 
 
 # Professor Elm: his research, and the Egg
@@ -1393,4 +1421,100 @@ label Ahead
 script KalosSycamore
   speaker "Prof. Sycamore"
   say "Bonjour, {player}! Every Pokémon you meet tells us something new about Kalos. Enjoy the journey!"
+  end
+
+# Mom, at home on Alola's Route 1
+script AlolaMom
+  speaker "Mom"
+  if badges >= 2 goto Far
+  say "Alola, {player}! Meowth's been napping on your bed all afternoon. I think it misses you."
+  say "The sea breeze is lovely today. Don't forget your sun hat out there!"
+  end
+label Far
+  say "You've been to how many islands now? I'll have a big plate of malasada waiting when you come home."
+  end
+
+# Hau, the kahuna's grandson
+script AlolaHau
+  speaker "{rival}"
+  random 2
+  if result == 1 goto Snack
+  say "Alola, {player}! I'm gonna get way stronger before our next battle. You'll see!"
+  end
+label Snack
+  say "Hey, hey! I found a stand that sells malasadas with three kinds of filling. We gotta go together sometime!"
+  end
+
+# Lillie, the professor's assistant
+script AlolaLillie
+  speaker "Lillie"
+  if var CAUGHT >= 30 goto Many
+  say "Um, hello, {player}. I wanted to say... please be careful out there. The tall grass can be surprising."
+  end
+label Many
+  say "You've met so many Pokémon already! I'm writing down everything you tell me in my notebook."
+  end
+
+# Professor Kukui
+script AlolaKukui
+  speaker "Prof. Kukui"
+  if badges >= 4 goto League
+  say "Woo! How are the trials treating you, cousin? Every battle is a lesson, yeah?"
+  end
+label League
+  say "All four islands done! Something big is waiting for you up the mountain. That's all I'm saying for now!"
+  end
+
+# Hala, Melemele's kahuna
+script AlolaHala
+  speaker "Hala"
+  say "Ho ho! {player}, the island is proud of you. Keep your heart open and your Pokémon close."
+  end
+
+# Mom, at home in Postwick
+script GalarMom
+  speaker "Mom"
+  if badges >= 4 goto Far
+  say "Hello, love! The Wooloo got out again this morning. Postwick's as busy as ever."
+  say "Eat something warm and give your Pokémon a good rest tonight."
+  end
+label Far
+  say "Four Badges! I watched your match on the telly. The whole village was cheering!"
+  end
+
+# Hop, the Champion's younger brother
+script GalarHop
+  speaker "{rival}"
+  random 2
+  if result == 1 goto Brother
+  say "Mate! I've been training nonstop. Next time we battle, I'm taking the win!"
+  end
+label Brother
+  say "My brother says the best Trainers learn from every loss. ...I'm trying to believe that one!"
+  end
+
+# Sonia, the professor's granddaughter
+script GalarSonia
+  speaker "Sonia"
+  say "Hiya, {player}! I'm digging through old books about Galar's legends. Tell me if you spot anything odd out there!"
+  end
+
+# Professor Magnolia
+script GalarMagnolia
+  speaker "Prof. Magnolia"
+  if var CAUGHT >= 50 goto Many
+  say "Good day, {player}. Every Pokémon you meet fills in a little more of what we know about Galar."
+  end
+label Many
+  say "Such a fine Pokédex already. Sonia will be delighted to read it, and so am I."
+  end
+
+# Leon, Galar's Champion
+script GalarLeon
+  speaker "Leon"
+  if badges >= 8 goto Ready
+  say "Hey, champ-to-be! Keep battling your hardest. I'll be waiting at the top!"
+  end
+label Ready
+  say "Eight Badges! Then it's time. Let's give everyone a match they'll talk about for years!"
   end

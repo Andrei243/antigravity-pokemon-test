@@ -121,3 +121,8 @@ label GoodLuck
 script MomOutside
   say "Hold the run button to run, {player}. Dad's shoes are a perfect fit!"
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "hoenn_littleroot_green"
+  end

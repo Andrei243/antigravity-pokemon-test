@@ -44,6 +44,8 @@ public partial class GameEngine
     {
         flow.CardDesign = save?.CardDesign?.Copy();
         flow.PhotoBook.Load(save?.PhotoBook);
+        // The studio's last composition (plan 43 · LF5's leftover): what is no longer had falls back as the studio opens
+        flow.LastStudioShot = save?.LastStudioShot;
         // The photo tour's report (plan 44 · SD5)
         flow.PhotoTour.Load(save?.PhotoTour);
         cardFace = null;

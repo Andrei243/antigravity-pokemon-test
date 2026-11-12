@@ -4,6 +4,8 @@
   // skates are had, to show how a Pokémon is caught (kalos_route_2.txt), hidden by a flag of ours until then. Its song
   // is plan 31 · MU3's Route 2
   "area": "kalos_route_2",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 247, "z": 624, "kind": "Shrub", "room": 1 } ],
   "bgmTrack": "kalos/route2",
   "trees": "Round",
   "architecture": "Hamlet",

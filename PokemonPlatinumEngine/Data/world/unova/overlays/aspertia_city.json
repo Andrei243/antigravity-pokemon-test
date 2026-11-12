@@ -6,6 +6,12 @@
   // is won. The people of those scenes are the area's own objects (0 Hugh, 1 Mom, 2 Bianca, 3 Hugh's sister, 7
   // Cheren), each hidden by a flag of ours (the decompilation names theirs by value, which no script can)
   "area": "aspertia_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 44, "z": 739, "kind": "Tree", "room": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 52, "y": 735, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 52, "z": 735, "script": "PhotoSpot" } ],
   "bgmTrack": "unova/aspertia",
   "trees": "Round",
   "architecture": "Hillside",

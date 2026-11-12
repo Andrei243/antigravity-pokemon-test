@@ -39,7 +39,7 @@ public class TravelPhoneTests
     public void EachBooksIdsAreItsOwnAndEveryCallHasItsScript()
     {
         var library = ScriptLibrary.Default;
-        foreach (var region in new[] { RegionDatabase.Unova, RegionDatabase.Kalos })
+        foreach (var region in new[] { RegionDatabase.Unova, RegionDatabase.Kalos, RegionDatabase.Alola, RegionDatabase.Galar })
         {
             var book = PhoneBook.Of(region);
             Assert.NotEmpty(book);
@@ -51,7 +51,7 @@ public class TravelPhoneTests
                 Assert.DoesNotContain("pokegear.people", contact.Name, StringComparison.Ordinal);
             }
         }
-        var ids = PhoneBook.All.Concat(PhoneBook.Hoenn).Concat(PhoneBook.Of(RegionDatabase.Unova)).Concat(PhoneBook.Of(RegionDatabase.Kalos)).Select(c => c.Id).ToList();
+        var ids = PhoneBook.Every.Select(c => c.Id).ToList();
         Assert.Equal(ids.Count, ids.Distinct(StringComparer.OrdinalIgnoreCase).Count());
     }
 
@@ -73,7 +73,7 @@ public class TravelPhoneTests
     public void EveryCallPlaysHeadlessOnEveryWayThrough(int badges)
     {
         var library = ScriptLibrary.Default;
-        foreach (var region in new[] { RegionDatabase.Unova, RegionDatabase.Kalos })
+        foreach (var region in new[] { RegionDatabase.Unova, RegionDatabase.Kalos, RegionDatabase.Alola, RegionDatabase.Galar })
         {
             var names = RegionDatabase.Get(region)!.BadgeNames;
             foreach (var contact in PhoneBook.Of(region))
@@ -208,5 +208,54 @@ public class TravelPhoneTests
         Assert.Equal(PhoneRequest.Call, screen.TakeRequest());
         Assert.Equal(PhoneBook.Of(RegionDatabase.Unova)[1].Id, screen.Called!.Id);
         Assert.False(screen.IsActive);
+    }
+
+    [Fact]
+    public void PowersIsTheLastCardOnceTheWatchIsHeldAndOpensThePanel()
+    {
+        Assert.DoesNotContain(PhoneCard.Powers, TravelPhone.Cards(RegionDatabase.Unova));
+        var cards = TravelPhone.Cards(RegionDatabase.Unova, powers: true);
+        Assert.Equal(PhoneCard.Powers, cards[^1]);
+        var screen = new PhoneScreen();
+        screen.Open(cards, Array.Empty<PhoneContact>(), PhoneCard.Powers);
+        Assert.Equal(PhoneCard.Powers, screen.Card);
+        screen.Confirm();
+        Assert.Equal(PhoneRequest.Powers, screen.TakeRequest());
+        Assert.False(screen.IsActive);
+    }
+
+    [Fact]
+    public void AContactsOwnRowOfRematchesKeepsJohtosAndHoennsAnswersAndOpensALaterRegionsWithItsHallOfFame()
+    {
+        var story = new StoryState();
+        // Johto's book is always open (its levels are the Badges'); Hoenn's leaders wait for its Hall of Fame
+        Assert.All(PhoneBook.All, c => Assert.True(PhoneRematch.RowOpen(c, story), c.Id));
+        foreach (var c in PhoneBook.Hoenn.Where(c => !PhoneRematch.IsHoennRouteTrainer(c))) Assert.False(PhoneRematch.RowOpen(c, story), c.Id);
+        story.Set(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag);
+        foreach (var c in PhoneBook.Hoenn.Where(c => !PhoneRematch.IsHoennRouteTrainer(c))) Assert.True(PhoneRematch.RowOpen(c, story), c.Id);
+        // A travel phone's contact once its region's Hall of Fame is entered
+        var bianca = PhoneBook.Get("unova_bianca")!;
+        Assert.False(PhoneRematch.RowOpen(bianca, story));
+        story.Set(RegionDatabase.Get(RegionDatabase.Unova)!.StoryCompleteFlag);
+        Assert.True(PhoneRematch.RowOpen(bianca, story));
+    }
+
+    [Fact]
+    public void EveryTravelPhoneContactWithAFaceNamesALookOfTheTable()
+    {
+        foreach (var region in new[] { RegionDatabase.Unova, RegionDatabase.Kalos, RegionDatabase.Alola, RegionDatabase.Galar })
+            foreach (var contact in PhoneBook.Of(region).Where(c => c.Look != null))
+                Assert.True(CharacterStyles.Default.Has(contact.Look!), contact.Id + " " + contact.Look);
+        // The Pokégear's and the PokéNav's show no face
+        Assert.All(PhoneBook.All.Concat(PhoneBook.Hoenn), c => Assert.Null(c.Look));
+        // A contact with no look begins no face
+        var face = new CallPortrait();
+        face.Begin(null);
+        Assert.False(face.Active);
+        face.Begin("bianca");
+        Assert.True(face.Active);
+        Assert.Null(face.Picture(false));
+        face.End();
+        Assert.False(face.Active);
     }
 }

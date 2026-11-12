@@ -58,3 +58,8 @@ label Open
 script WallysMom
   say "My boy Wally has always been frail. We're sending him to stay with relatives in Verdanturf, where the air is clean."
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "hoenn_petalburg_pond"
+  end

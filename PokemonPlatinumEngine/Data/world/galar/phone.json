@@ -1,0 +1,7 @@
+[
+  { "id": "galar_mom", "look": "mom", "type": 1, "class": "Mom", "area": "postwick" },
+  { "id": "galar_hop", "look": "hop", "type": 11, "class": "Pokémon Trainer", "area": "postwick" },
+  { "id": "galar_sonia", "look": "sonia", "type": 11, "class": "Assistant", "area": "wedgehurst" },
+  { "id": "galar_magnolia", "look": "magnolia", "type": 2, "class": "Pokémon Professor", "area": "wedgehurst" },
+  { "id": "galar_leon", "look": "leon", "type": 12, "class": "Champion", "area": "postwick" }
+]

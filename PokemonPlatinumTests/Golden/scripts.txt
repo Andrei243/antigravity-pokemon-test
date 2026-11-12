@@ -6924,6 +6924,14 @@ way -
 from the tile read at 3,4 of LumioseCity_Museum
 way -
   > A statue of a Trainer and a Pokémon, carved so long ago that nobody knows which Pokémon it was.
+=== LumioseCity_PrStudio.Photographer
+from Camerawoman at 8,6 of LumioseCity_PrStudio
+way -
+  Camerawoman> A Trainer! Between takes I shoot stills: a backdrop, a Pokémon at your side, Seals for stickers.
+  Camerawoman> Your first sitting is free, and here's a gilt frame to go with it. It suits every picture.
+  Camerawoman> That one's going in your photo book. Lumiose looks good on you!
+  * open PhotoStudio
+  + FLAG_PHOTO_STUDIO_FRAME_GIVEN
 === LumioseCity_PrismTowerGym.Clemont
 from Clemont at 6,4 of LumioseCity_PrismTowerGym
 way 0
@@ -11846,6 +11854,10 @@ way -
 from the trigger at 254,648 of Kalos
 way -
   > There are wild Pokémon in the tall grass ahead. Better not go without a Pokémon of your own!
+=== aquacorde_town.PhotoSpot
+from the tile read at 255,669 of Kalos
+way -
+  * photo spot kalos_aquacorde_river
 === aquacorde_town.Rival
 from {rival} at 251,656 of Kalos
 way -
@@ -11889,6 +11901,10 @@ way -
 from the trigger at 52,711 of Unova
 way -
   > Lucas hasn't found Bianca yet. Better look round Aspertia before heading out of town.
+=== aspertia_city.PhotoSpot
+from the tile read at 52,735 of Unova
+way -
+  * photo spot unova_aspertia_steps
 === aspertia_city.Sister
 from {rival}'s Sister at 45,740 of Unova
 way -
@@ -14402,6 +14418,10 @@ way -
 from Boy at 280,61 of Kanto
 way -
   Boy> If that Slowbro would just move, you could go round to the little tree and cut it down. Then you'd be on Route 5!
+=== cerulean_city.PhotoSpot
+from the tile read at 287,60 of Kanto
+way -
+  * photo spot kanto_cerulean_bridge
 === cerulean_city.Policeman
 from Policeman at 295,52 of Kanto
 way -
@@ -17659,8 +17679,15 @@ way 0
   > What would you like to do?
   ? What would you like to do? = DECORATE
   * openbase pc
-way 3, from answer 1
+way 4, from answer 1
   ? What would you like to do? = LOG OFF
+way 3.0, from answer 1
+  > Move into the room this spot opens on? This room's layout is kept for when you come back to it.
+  ? What would you like to do? = MOVE IN HERE
+  ? Move into the room this spot opens on? This room's layout is kept for when you come back to it. = Yes
+  * openbase movein
+way 3.1, from answer 2
+  ? Move into the room this spot opens on? This room's layout is kept for when you come back to it. = No
 way 2, from answer 1
   > No friend's secret base is registered. Mix records at a Pokémon Center's record desk to bring one in.
   ? What would you like to do? = REGISTRY
@@ -20025,6 +20052,10 @@ way 1, from answer 1
   = VAR_KALOS_STORY 0 -> 17
   = VAR_OBJECTIVE 0 -> 517
   + seen cyllage_city.The neighbour in Cyllage
+=== cyllage_city.PhotoSpot
+from the tile read at 96,325 of Kalos
+way -
+  * photo spot kalos_cyllage_cliffs
 === cyllage_city.Rival
 from {rival} at 104,354 of Kalos
 way -
@@ -20685,6 +20716,10 @@ way -
 from Worker at 212,401 of Unova
 way -
   Worker> Sorry, the boss is in the middle of something right now. Come back a bit later, would you?
+=== driftveil_city.PhotoSpot
+from the tile read at 215,405 of Unova
+way -
+  * photo spot unova_driftveil_market
 === driftveil_city.PlasmaOnTheBridge
 from the trigger at 221,430 of Unova
 way -
@@ -20825,6 +20860,10 @@ way -
   > Lucas put it away in the Medicine pocket.
   * fanfare FanfareItem
   + FLAG_DAILY_UNOVA_DRAWBRIDGE_FEATHER_WEST
+=== ecruteak.PhotoSpot
+from the tile read at 383,159 of Johto
+way -
+  * photo spot johto_ecruteak_lanes
 === ecruteak.RivalBumps
 from the trigger at 397,174 of Johto
 way -
@@ -21980,6 +22019,10 @@ way -
   * endscene
   = VAR_UNOVA_FLOCCESY 0 -> 1
   + seen floccesy_town.Alder in Floccesy Town
+=== floccesy_town.PhotoSpot
+from the tile read at 113,672 of Unova
+way -
+  * photo spot unova_floccesy_bell
 === floccesy_town_2.Alder
 from Alder at 6,3 of FloccesyTown_AldersHouse
 way -
@@ -22930,6 +22973,10 @@ way -
 from Woman at 352,351 of Johto
 way -
   Woman> Did you see that man in black by the Radio Tower? He's dressed up as one of Team Rocket. What a strange costume!
+=== goldenrod.PhotoSpot
+from the tile read at 335,351 of Johto
+way -
+  * photo spot johto_goldenrod_plaza
 === goldenrod.SouthGuard
 from the trigger at 354,376 of Johto
 way -
@@ -25970,6 +26017,10 @@ way -
 from Old Man at 537,87 of Hoenn
 way -
   Old Man> That cove used to be a quiet cavern. Then Team Aqua moved in and dug it out into some kind of base.
+=== lilycove_city.PhotoSpot
+from the tile read at 517,95 of Hoenn
+way -
+  * photo spot hoenn_lilycove_seafront
 === lilycove_city.Rival
 from {rival} at 507,77 of Hoenn
 way 0.0
@@ -26990,6 +27041,10 @@ way -
   Little Girl> Wait! You can't go out there! Wild Pokémon jump out of the tall grass, and you haven't got one of your own!
   Little Girl> If you had a Pokémon, it could keep you safe. But you don't, so stay in town!
   * emote Little Girl Exclaim
+=== littleroot_town.PhotoSpot
+from the tile read at 128,299 of Hoenn
+way -
+  * photo spot hoenn_littleroot_green
 === littleroot_town.RunningShoes
 from the trigger at 128,291 of Hoenn
 from the trigger at 129,291 of Hoenn
@@ -27242,6 +27297,10 @@ way -
 from the trigger at 301,358 of Kalos
 way -
   > The road to Route 5 is closed for repairs. It will open again soon.
+=== lumiose_city.PhotoSpot
+from the tile read at 370,356 of Kalos
+way -
+  * photo spot kalos_lumiose_boulevard
 === lumiose_city.PrismTower
 from Lift Operator at 358,362 of Kalos
 way -
@@ -29170,6 +29229,10 @@ way -
   Dawn> Ha ha, Marill likes you! It doesn't do that for everyone.
   * cry Marill
   * walk Marill onspot right onspot right
+=== new_bark.PhotoSpot
+from the tile read at 687,399 of Johto
+way -
+  * photo spot johto_new_bark_breeze
 === new_bark.Rival
 from ??? at 682,391 of Johto
 way -
@@ -29436,6 +29499,10 @@ way 1, from answer 1
   ? Will you battle the Subway Bosses beside me? = No
   * endscene
   + seen nimbasa_city.The Subway Bosses
+=== nimbasa_city.PhotoSpot
+from the tile read at 412,448 of Unova
+way -
+  * photo spot unova_nimbasa_lights
 === nimbasa_city_10.Athlete1
 from Smasher at 8,21 of NimbasaCity_TennisCourt
 way 0
@@ -29787,6 +29854,10 @@ way -
   * fade out
   * warp LockworkCellJohto 6 8
   * fade in
+=== olivine.PhotoSpot
+from the tile read at 287,258 of Johto
+way -
+  * photo spot johto_olivine_harbour
 === olivine.RivalAtTheGym
 from the trigger at 272,239 of Johto
 way -
@@ -30422,6 +30493,10 @@ way -
   = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 1
   = VAR_OBJECTIVE 0 -> 101
   + seen pallet_town.Oak in the grass
+=== pallet_town.PhotoSpot
+from the tile read at 63,271 of Kanto
+way -
+  * photo spot kanto_pallet_lane
 === pallet_town_oaks_lab.Gift
 from Poké Ball at 7,3 of Pallet_OaksLab
 way 0
@@ -30649,6 +30724,10 @@ way -
 from Boy at 52,247 of Hoenn
 way -
   Boy> The Gym's that big building up the road. Norman's the Leader. Isn't that your dad?
+=== petalburg_city.PhotoSpot
+from the tile read at 54,243 of Hoenn
+way -
+  * photo spot hoenn_petalburg_pond
 === petalburg_city.ShowGym
 from the trigger at 48,242 of Hoenn
 from the trigger at 48,243 of Hoenn
@@ -30851,6 +30930,10 @@ way 0
 way 1, from answer 1
   Man> You haven't? You really must. It's just over there, by the big rocks.
   ? Have you been to the Museum of Science yet? It's full of fossils! = No
+=== pewter_city.PhotoSpot
+from the tile read at 65,67 of Kanto
+way -
+  * photo spot kanto_pewter_stones
 === pewter_city.RunningShoes
 from Aide at 94,80 of Kanto
 from the trigger at 94,81 of Kanto
@@ -35647,6 +35730,10 @@ way -
 from Man at 26,145 of Hoenn
 way -
   Man> The Gym Leader here is a teacher at the school, too. Clever and strong. Quite the combination!
+=== rustboro_city.PhotoSpot
+from the tile read at 27,157 of Hoenn
+way -
+  * photo spot hoenn_rustboro_corner
 === rustboro_city.ReturnGoods
 from the trigger at 30,131 of Hoenn
 from the trigger at 30,133 of Hoenn
@@ -36502,6 +36589,10 @@ way 1, from answer 1
 from the trigger at 356,499 of Kalos
 way -
   > A guard stands at the garden gate: only Trainers with a Badge may take the road to Lumiose City.
+=== santalune_city.PhotoSpot
+from the tile read at 341,528 of Kalos
+way -
+  * photo spot kalos_santalune_fountain
 === santalune_city.Rival
 from {rival} at 324,527 of Kalos
 way -
@@ -37428,6 +37519,10 @@ way 1, from answer 1
   Stall keeper> Mind, it's hot! Your team wolfed it down.
   ? What will it be? = Bean Hotpot, 1,600
   = VAR_TEMP_1 0 -> 1
+=== slateport_city.PhotoSpot
+from the tile read at 219,291 of Hoenn
+way -
+  * photo spot hoenn_slateport_market
 === slateport_city_battle_tent_lobby.Attendant
 from Attendant at 6,5 of SlateportCity_BattleTentLobby
 way 0
@@ -41513,6 +41608,10 @@ way -
   Galactic Grunt> You just don't quit, do you? I'm completely worn out... but I'm still not... battling... you...
   * emote Grunt Exclaim
   + FLAG_TALKED_TO_VALOR_LAKEFRONT_GRUNT_M
+=== vaniville_town.PhotoSpot
+from the tile read at 255,718 of Kalos
+way -
+  * photo spot kalos_vaniville_garden
 === vaniville_town.Rival
 from {rival} at 245,722 of Kalos
 way -
@@ -41966,6 +42065,10 @@ way -
 from Old Man at 281,209 of Kanto
 way -
   Old Man> Did you see the S.S. Anne down in the harbour? What a beauty she is!
+=== vermilion_city.PhotoSpot
+from the tile read at 287,228 of Kanto
+way -
+  * photo spot kanto_vermilion_harbour
 === vermilion_city_gym.Can1
 from the tile read at 1,10 of VermilionCity_Gym
 way -
@@ -42318,6 +42421,10 @@ way -
 from Fat Man at 474,252 of Johto
 way -
   Fat Man> Falkner trains at Sprout Tower now and then. If the monks there can't stop you, maybe he can't either!
+=== violet.PhotoSpot
+from the tile read at 479,258 of Johto
+way -
+  * photo spot johto_violet_tower
 === violet_bellsprout_onyx_trade_house.Trade
 from Boy at 2,5 of Violet_TradeHouse
 way 0
@@ -42425,6 +42532,10 @@ way -
 from {rival} at 238,671 of Unova
 way -
   Barry> Thieves... Every last one of them.
+=== virbank_city.PhotoSpot
+from the tile read at 237,655 of Unova
+way -
+  * photo spot unova_virbank_docks
 === virbank_city.PlasmaAtTheDock
 from the trigger at 237,669 of Unova
 way -
@@ -42620,6 +42731,10 @@ way -
 from Old Man at 69,186 of Kanto
 way -
   Old Man> Grumble... This is private property! No coffee, no passing. Go away!
+=== viridian_city.PhotoSpot
+from the tile read at 63,197 of Kanto
+way -
+  * photo spot kanto_viridian_square
 === viridian_city.RoadBlocked
 from the trigger at 70,191 of Kanto
 way -

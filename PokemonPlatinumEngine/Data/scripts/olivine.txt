@@ -136,3 +136,8 @@ script LockworkDoor
   warp "LockworkCellJohto" 6 8 up
   fade in 0.4
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "johto_olivine_harbour"
+  end

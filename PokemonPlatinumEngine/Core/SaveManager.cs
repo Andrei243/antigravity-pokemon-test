@@ -420,6 +420,10 @@ public class SaveData
     /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
     public List<Models.PhotoPrint>? PhotoBook { get; set; }
 
+    /// <summary>The photo studio's last composition (plan 43 · LF5's leftover), which the studio opens on; null for a studio never left. A Pokémon or a Seal no longer had falls back as it opens.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.StudioShot? LastStudioShot { get; set; }
+
     /// <summary>The photo tour's report (plan 44 · SD5): each species' best photograph by stars and course, each course's best ride; null while empty.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.TourReportSave? PhotoTour { get; set; }

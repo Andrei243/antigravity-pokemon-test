@@ -23,7 +23,7 @@ public class CardDesignTests
     [Fact]
     public void EveryLookIsWellFormedNamedAndInBothLanguages()
     {
-        Assert.Equal(21, CardLooks.Backgrounds.Count);
+        Assert.Equal(26, CardLooks.Backgrounds.Count);
         Assert.Equal(8, CardLooks.Frames.Count);
         Assert.Equal(CardLooks.Backgrounds.Count, CardLooks.Backgrounds.Select(b => b.Id).Distinct().Count());
         Assert.Equal(CardLooks.Frames.Count, CardLooks.Frames.Select(b => b.Id).Distinct().Count());

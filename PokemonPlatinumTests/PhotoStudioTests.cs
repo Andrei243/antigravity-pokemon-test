@@ -153,6 +153,57 @@ public class PhotoStudioTests
     }
 
     [Fact]
+    public void ThePointerChoosesARowASealAndAPointOfTheStage()
+    {
+        int heart = SealDatabase.Seal("HEART_SEAL_A");
+        var screen = new StudioScreen();
+        screen.Open(null, new[] { "plain" }, new[] { "plain" }, Array.Empty<CardCandidate>(), Seals(heart));
+        // A row, from the rectangle it is drawn in
+        var frameRow = ModernUi.StudioRowRect(GameEngine.VirtualWidth, StudioRow.Frame);
+        int? hit = screen.HitTest(new System.Numerics.Vector2(frameRow.X + 10, frameRow.Y + 10));
+        Assert.Equal((int)StudioRow.Frame, hit);
+        screen.PointAt(hit!.Value);
+        Assert.Equal(StudioRow.Frame, screen.Row);
+        Assert.Null(screen.HitTest(new System.Numerics.Vector2(2, 2)));
+        // The case's first Seal
+        screen.PointAt((int)StudioRow.Stickers);
+        screen.Confirm();
+        Assert.Equal(StudioMode.PickSeal, screen.Mode);
+        Assert.Equal(100, screen.HitTest(ModernUi.StudioSealSpot(0)));
+        screen.Confirm();
+        // A point of the stage carries the Seal there, and A puts it down
+        var stage = ModernUi.StudioStage;
+        var at = new System.Numerics.Vector2(stage.X + stage.Width * 0.25f, stage.Y + stage.Height * 0.75f);
+        screen.PointAt(screen.HitTest(at)!.Value);
+        Assert.Equal(0.25f, screen.CursorX, 2);
+        Assert.Equal(0.75f, screen.CursorY, 2);
+        screen.Confirm();
+        var sticker = Assert.Single(screen.Shot.Stickers);
+        Assert.Equal(0.25f, sticker.X, 2);
+    }
+
+    [Fact]
+    public void TheLastCompositionIsSavedAndWhatIsGoneFallsBack()
+    {
+        int heart = SealDatabase.Seal("HEART_SEAL_A");
+        var seals = Seals(heart);
+        var gone = Guid.NewGuid();
+        var shot = new StudioShot { Backdrop = "studio_sky", Frame = "studio_double", PokemonId = gone }.WithSticker(heart, 0.4f, 0.4f, seals);
+        var back = SaveManager.Read(SaveManager.Write(new SaveData { LastStudioShot = shot })!)!;
+        Assert.NotNull(back.LastStudioShot);
+        Assert.Equal("studio_sky", back.LastStudioShot!.Backdrop);
+        Assert.Single(back.LastStudioShot.Stickers);
+        // Opened with the Pokémon gone and the Seal no longer owned: both fall away, the rest stays
+        var screen = new StudioScreen();
+        screen.Open(back.LastStudioShot, new[] { "plain", "studio_sky" }, new[] { "plain", "studio_double" }, Array.Empty<CardCandidate>(), Seals());
+        Assert.Equal("studio_sky", screen.Shot.Backdrop);
+        Assert.Equal(Guid.Empty, screen.Shot.PokemonId);
+        Assert.Empty(screen.Shot.Stickers);
+        // A save that never left the studio writes nothing of it
+        Assert.DoesNotContain("lastStudioShot", SaveManager.Write(new SaveData())!, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void NoSealsMeansTheStickersRowSaysSo()
     {
         var screen = new StudioScreen();
