@@ -4166,7 +4166,13 @@ label Away
   return
 label Quiet
   text "A den of red stone. No light rises from it today."
-  return
+  if not item "Wishing Piece" return
+  ask "Throw a Wishing Piece into the den?"
+  if no return
+  raid wish
+  if result != 1 return
+  text "{player} threw in a Wishing Piece. A column of red light rose out of the den!"
+  goto Look
 
 
 

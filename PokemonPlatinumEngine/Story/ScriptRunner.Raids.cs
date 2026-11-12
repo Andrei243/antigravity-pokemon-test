@@ -19,6 +19,9 @@ public sealed partial class ScriptRunner
     /// <summary>The Watts the player holds (plan 33 · GL2).</summary>
     public const string WattsVariable = "VAR_GALAR_WATTS";
 
+    /// <summary>The item <c>raid wish</c> throws into a den (plan 33 · GL3's second session).</summary>
+    public const string WishingPiece = "Wishing Piece";
+
     private RaidDenFile? raidDen;
     private RaidToday raidToday;
 
@@ -67,6 +70,26 @@ public sealed partial class ScriptRunner
                     AfterBattle(mayLose: true);
                     if (lastOutcome == BattleOutcome.Won) host.Story.Set(DenFlag(den.Id, "DONE"));
                 };
+                break;
+            }
+            case "wish":
+            {
+                // A Wishing Piece thrown into the den looked into: RESULT 1 its beam lit for the day (the piece taken from
+                // the bag, the den looked into again so its variables say what now waits), 0 no piece in the bag, 2 its
+                // beam lit already. The piece's daily flag is what `raid den` reads as wished
+                var den = raidDen ?? throw Wrong(i, "no den has been looked into");
+                if (raidToday.Lit) { Result = 2; break; }
+                var piece = ItemDatabase.Get(WishingPiece);
+                if (piece == null || host.Bag.GetQuantity(piece) <= 0) { Result = 0; break; }
+                host.Bag.RemoveItem(piece, 1);
+                host.Story.Set(DenFlag(den.Id, "WISHED"));
+                int version = Math.Max(1, host.Story.Var("VAR_GALAR_VERSION"));
+                raidToday = Raids.Today(den, host.DayNumber, version, host.Story.BadgeCount(host.Region), wished: true);
+                var species = PokemonDatabase.Get(raidToday.Species) ?? PokemonDatabase.SpeciesOfForm(raidToday.Species);
+                host.Story.SetVar(RaidStarsVariable, raidToday.Stars);
+                host.Story.SetVar(RaidSpeciesVariable, species?.DexNumber ?? 0);
+                host.Story.SetVar(RaidLevelVariable, raidToday.Level);
+                Result = 1;
                 break;
             }
             case "catch":

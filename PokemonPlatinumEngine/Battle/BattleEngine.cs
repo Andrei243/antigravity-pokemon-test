@@ -69,6 +69,9 @@ public partial class BattleEngine
     /// <summary>A triple battle (plan 14 · B6): three places a side, reach by position.</summary>
     public bool IsTriple => Format == BattleFormat.Triple;
 
+    /// <summary>A Max Raid (plan 33 · GL3): the player and three raiders, four places, against one giant boss.</summary>
+    public bool IsRaid => Format == BattleFormat.Raid;
+
     /// <summary>A rotation battle (plan 14 · B7): one place a side, the front of a turntable of three.</summary>
     public bool IsRotation => Format == BattleFormat.Rotation;
 
@@ -517,6 +520,8 @@ public partial class BattleEngine
         }
         Weather = core.Field.Weather;
         Anim.SettleWeather(Weather);
+        // A raid boss's shields (plan 33 · GL3)
+        Anim.RaidShields = core.RaidShields;
         // A Mega whose growth never came is let go, and no field change is a Max Move's any more (plan 25 · YD4)
         Anim.LetGoOfMegaMax();
         maxBlow = null;
@@ -1075,6 +1080,10 @@ public partial class BattleEngine
                 // colour of its Z-Move's type, with its sound; nothing to see with the scene off
                 Sound("z_power", zPower.Place.Side);
                 if (Scene) Anim.ZPower(zPower.Place.Side, zPower.Place.Slot, MoveDatabase.Get(zPower.ZMove)?.Type ?? MoveDatabase.Get(zPower.From)?.Type ?? PokemonType.Normal);
+                break;
+            case RaidBarrier barrier:
+                // A raid boss's barrier (plan 33 · GL3): its pips as the line that tells of them is read
+                Anim.RaidShields = barrier.Shields;
                 break;
             case Judged judged:
                 // The Battle Arena's judge gives its verdict: the card stands over the line (plan 14 · B9)

@@ -39,11 +39,12 @@ script WattTrader
   speaker "Watt Trader"
   say "Welcome! I trade in Watts, the energy the dens' light gives off. You have {var:VAR_GALAR_WATTS} W."
 label Menu
-  choose "What would you like?" "Exp. Candy S: 800 W" "Exp. Candy M: 2,000 W" "Dynamax Candy: 3,000 W" "Bottle Cap: 5,000 W" "Nothing, thanks"
+  choose "What would you like?" "Exp. Candy S: 800 W" "Exp. Candy M: 2,000 W" "Dynamax Candy: 3,000 W" "Bottle Cap: 5,000 W" "Wishing Piece: 3,000 W" "Nothing, thanks"
   if result == 0 goto CandyS
   if result == 1 goto CandyM
   if result == 2 goto Dynamax
   if result == 3 goto Cap
+  if result == 4 goto Wish
   say "Come back with more Watts! Touch a den's beam of light and they're yours."
   end
 label CandyS
@@ -65,6 +66,11 @@ label Cap
   if var VAR_GALAR_WATTS < 5000 goto Short
   addvar VAR_GALAR_WATTS -5000
   give "Bottle Cap"
+  goto Sold
+label Wish
+  if var VAR_GALAR_WATTS < 3000 goto Short
+  addvar VAR_GALAR_WATTS -3000
+  give "Wishing Piece"
 label Sold
   say "A pleasure doing business! You have {var:VAR_GALAR_WATTS} W left."
   goto Menu

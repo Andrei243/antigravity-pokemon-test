@@ -172,4 +172,76 @@ public class GalarRaidTests
         Assert.Contains(again.Transcript, t => t.Text.Contains("No light rises"));
         Assert.Equal(Raids.WattsOf(today.Stars), story.Var(ScriptRunner.WattsVariable));
     }
+
+    [Fact]
+    public void ADensBeamStandsWhereItsScriptSaysItIsLitAndFadesAsItClimbs()
+    {
+        // Every den trigger of the Wild Area names a den of the file
+        var map = OpenRegions.Load(RegionDatabase.Get(RegionDatabase.Galar)!, withLand: false).Single(m => m.Name == "Galar");
+        var dens = map.Triggers.Where(t => t.Name.StartsWith("den_")).ToList();
+        Assert.NotEmpty(dens);
+        Assert.All(dens, t => Assert.NotNull(Raids.DenOfTrigger(t.Name)));
+        Assert.Null(Raids.DenOfTrigger("hop_meetup"));
+
+        // The beam's question is the script's: lit and not felled
+        var den = Raids.Den("rolling_1")!;
+        uint lit = (uint)Enumerable.Range(0, 60).First(d => Raids.Today(den, (uint)d, 1, 0).Lit);
+        uint dark = (uint)Enumerable.Range(0, 60).First(d => !Raids.Today(den, (uint)d, 1, 0).Lit);
+        Assert.True(Raids.BeamStands(den, lit, 1, 0, wished: false, felled: false));
+        Assert.False(Raids.BeamStands(den, lit, 1, 0, wished: false, felled: true));
+        Assert.False(Raids.BeamStands(den, dark, 1, 0, wished: false, felled: false));
+        Assert.True(Raids.BeamStands(den, dark, 1, 0, wished: true, felled: false));
+
+        // Its ribbons: thirty metres high, the strongest at the foot, the same twice, none past its reach
+        var beams = new[] { new PokemonPlatinumEngine.Graphics.OpenWorld.DenBeam(new System.Numerics.Vector3(10, 2, -40), 3) };
+        var a = new List<PokemonPlatinumEngine.Graphics.OpenWorld.WeatherPiece>();
+        var b = new List<PokemonPlatinumEngine.Graphics.OpenWorld.WeatherPiece>();
+        PokemonPlatinumEngine.Graphics.OpenWorld.DenBeams.Pieces(beams, new System.Numerics.Vector3(0, 10, 0), 12.25, a);
+        PokemonPlatinumEngine.Graphics.OpenWorld.DenBeams.Pieces(beams, new System.Numerics.Vector3(0, 10, 0), 12.25, b);
+        Assert.Equal(a, b);
+        Assert.NotEmpty(a);
+        Assert.All(a, p => Assert.InRange(p.Head.Y, 2f, 2f + PokemonPlatinumEngine.Graphics.OpenWorld.DenBeams.Height + 0.01f));
+        var core = a.Where(p => MathF.Abs(p.Width - a[0].Width) < 1e-4f).ToList();
+        for (int i = 1; i < core.Count; i++) Assert.True(core[i].Colour.A <= core[i - 1].Colour.A);
+        PokemonPlatinumEngine.Graphics.OpenWorld.DenBeams.Pieces(beams, new System.Numerics.Vector3(0, 10, 900), 12.25, a);
+        Assert.Empty(a);
+    }
+
+    [Fact]
+    public void AWishingPieceLightsAQuietDenForTheDay()
+    {
+        var den = Raids.Den("rolling_1")!;
+        uint dark = (uint)Enumerable.Range(0, 60).First(d => !Raids.Today(den, (uint)d, 1, 0).Lit);
+        var piece = ItemDatabase.Get(ScriptRunner.WishingPiece)!;
+        Assert.Equal(ItemPocket.Items, piece.Pocket);
+        Assert.Contains("Max Raid den", piece.Description);
+
+        var story = new StoryState();
+        story.SetVar("VAR_GALAR_VERSION", 1);
+        var party = new Party();
+        party.Add(Mon("Grookey", 12, "Scratch"));
+        var bag = new Inventory();
+        bag.AddItem(piece, 1);
+        // Yes to the piece, then no to the raid: the den is lit and its piece spent, its Watts given
+        var host = new HeadlessScriptHost(story, party, bag) { Region = RegionDatabase.Galar, DayNumber = dark };
+        host.Answers.Enqueue(0);
+        host.Answers.Enqueue(1);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("DenRolling1", "wild_area_rolling_fields")!, null);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        Assert.Equal(0, bag.GetQuantity(piece));
+        Assert.True(story.Has(ScriptRunner.DenFlag("rolling_1", "WISHED")));
+        Assert.Contains(host.Transcript, t => t.Text.Contains("column of red light"));
+        Assert.Equal(Raids.Today(den, dark, 1, 0, wished: true).Stars, story.Var(ScriptRunner.RaidStarsVariable));
+
+        // With no piece in the bag a quiet den only says so
+        var other = Raids.Den("ruins_1")!;
+        uint dim = (uint)Enumerable.Range(0, 60).First(d => !Raids.Today(other, (uint)d, 1, 0).Lit);
+        var empty = new HeadlessScriptHost(new StoryState(), party, new Inventory()) { Region = RegionDatabase.Galar, DayNumber = dim };
+        var quiet = new ScriptRunner(ScriptLibrary.Default, empty);
+        quiet.Start(ScriptLibrary.Default.Find("DenRuins1", "wild_area_watchtower_ruins")!, null);
+        quiet.RunToEnd();
+        Assert.Empty(empty.Asked);
+    }
 }

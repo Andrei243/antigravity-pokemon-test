@@ -1704,9 +1704,16 @@ What `openproto` draws, as the gate's look was judged: the same units, scene, ca
 - **A den** is a ring of red stone set in the ground, about three metres across.
 - **Its beam** (lit dens only): a column of soft red light rising from the ring, about two metres wide at the foot and
   fading out at thirty metres, slowly pulsing (a two-second breath); after dark it is the brightest thing in the Wild
-  Area, so it can be seen across the downs. Our own; not drawn yet (GL3's second session).
+  Area, so it can be seen across the downs. Our own. Drawn (`Graphics/OpenWorld/DenBeams.cs`) as camera-facing ribbons
+  added to the scene in six lengths, each in three widths (a core a third of the column, the column, a halo two and a
+  half times it), red `255,92,70` at the foot deepening to `214,36,52` at the top, the strength falling as the square
+  of the height left; hidden behind hills by the scene's depth, drawn within 420 m, a boss of more stars a little
+  brighter. A Wishing Piece thrown in lights the same beam.
 - **A raid's battle** puts the player's four Pokémon on four platforms in an arc on their side and the boss alone,
-  giant, on the other; its barrier's shields show as small pips on its HP box, one to a shield.
+  giant, on the other; its barrier's shields show as small pips on its HP box, one to a shield. The boss's box is a
+  single foe's at the top left, the shields a tray of rounded steel plates rimmed in white hanging under it; the four
+  raiders' small boxes (a triple battle's) stack down the right from 452, the player's own first. The four stand in a
+  row across the player's platform, as a triple's three do.
 
 ## Time of day
 

@@ -901,6 +901,7 @@ trigger of an open place whose script names its den of `Data/world/galar/dens.js
 | `raid watts` | The den's light's Watts, once a day (`FLAG_DAILY_GALAR_DEN_<ID>_WATTS`), added to `VAR_GALAR_WATTS`; `RESULT` is how many, 0 where none are given. |
 | `raid fight` | The raid (`BattleFormat.Raid`): the boss at its level beside three raiders who answer the den's call (`Raids.Allies`), and the script waits. A loss goes on (`if won`, `if lost`); a win sets the den quiet for the day (`FLAG_DAILY_GALAR_DEN_<ID>_DONE`). Stops a hurry. |
 | `raid catch "Great Ball"` | A ball of the bag thrown at the felled boss: `RESULT` 1 caught (the Pokémon given, in that ball), 0 it got away (on the host's own die, `Raids.CatchChance`), 2 no such ball in the bag. |
+| `raid wish` | A Wishing Piece of the bag thrown into the den looked into (plan 33 · GL3, second session): `RESULT` 1 its beam lit for the day (`FLAG_DAILY_GALAR_DEN_<ID>_WISHED`, the piece taken, the den looked into again so its three variables say what now waits), 0 no piece in the bag, 2 its beam lit already. `common.GalarDen` offers it at a quiet den; the Watt trader sells the piece for 3,000 W. |
 
 ### Treats
 

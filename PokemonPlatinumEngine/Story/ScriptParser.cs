@@ -1191,8 +1191,8 @@ public static class ScriptParser
             // CR4's `craft tm`, CR3's apprentice's `craft tradable` and `craft trade`, CR6's `craft pantry` and `craft meal`
             case "raid":
             {
-                // Galar's Max Raid dens (plan 33 · GL3): `raid den "rolling_1"`, `raid watts`, `raid fight`, `raid catch "Poké Ball"`
-                string what = r.OneOf("den", "watts", "fight", "catch");
+                // Galar's Max Raid dens (plan 33 · GL3): `raid den "rolling_1"`, `raid watts`, `raid fight`, `raid catch "Poké Ball"`, and `raid wish`, a Wishing Piece thrown into the den looked into
+                string what = r.OneOf("den", "watts", "fight", "catch", "wish");
                 if (what == "den") return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = r.Text("a den's id") };
                 if (what == "catch")
                 {

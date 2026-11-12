@@ -16,7 +16,7 @@ internal sealed record OpenScene(
     Vector3 Eye, Vector3 Target, float Hour, FieldWeather Weather, float CaveShare, double Time,
     bool Swimming = false, float Lens = (float)OrbitCamera.LensDegrees,
     IReadOnlyList<OpenFigure>? Figures = null, IReadOnlyList<Vector3>? Walkers = null,
-    OpenMountDraw? Mount = null, Matrix4x4? RiderRoot = null);
+    OpenMountDraw? Mount = null, Matrix4x4? RiderRoot = null, IReadOnlyList<DenBeam>? Beams = null);
 
 /// <summary>
 /// The mount as a frame draws it (plan 30 · FM13; style guide, "Open world", "The mount"): its ride form's model, its
@@ -50,6 +50,7 @@ internal sealed class OpenRenderer
     private readonly OpenStream stream = new();
     private readonly OpenRings rings = new();
     private readonly List<WeatherPiece> pieces = new();
+    private readonly List<WeatherPiece> beamPieces = new();
     private readonly OpenFoliage foliage = new();
     private readonly OpenBuildingKit buildings = new();
     private readonly OpenFigureDraw figureDraw = new();
@@ -79,6 +80,9 @@ internal sealed class OpenRenderer
     public int WaterTriangles { get; private set; }
     public int[] ShadowTriangles { get; } = new int[OpenCascades.Count];
     public int WeatherPieces { get; private set; }
+
+    /// <summary>How many ribbons the last frame drew of the dens' beams (plan 33 · GL3), for a tool to print.</summary>
+    public int BeamPieces { get; private set; }
     public bool Mirrored { get; private set; }
     public float MirrorPlane { get; private set; }
     public bool PlayerDrawn { get; private set; }
@@ -233,6 +237,7 @@ internal sealed class OpenRenderer
         // The light the buildings throw on the ground after dark, the "!" over a trainer, then the weather
         buildings.DrawLights(rig);
         figureDraw.DrawBubbles(camera, Paper(rig), scene.Time);
+        DrawBeams(scene);
         DrawWeather(scene, rig);
         // The rules as layers over everything (plan 32 · OW10), only where a tool has turned some on
         DrawLayers(scene, camera);
@@ -603,6 +608,45 @@ internal sealed class OpenRenderer
             Rlgl.Vertex3f(piece.Head.X - side.X, piece.Head.Y - side.Y, piece.Head.Z - side.Z);
             Rlgl.Vertex3f(tail.X - side.X, tail.Y - side.Y, tail.Z - side.Z);
             Rlgl.Vertex3f(tail.X + side.X, tail.Y + side.Y, tail.Z + side.Z);
+            Rlgl.Vertex3f(piece.Head.X + side.X, piece.Head.Y + side.Y, piece.Head.Z + side.Z);
+        }
+        Rlgl.End();
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.EnableDepthMask();
+        Rlgl.EnableBackfaceCulling();
+        Raylib.EndBlendMode();
+    }
+
+    /// <summary>
+    /// The lit dens' beams (plan 33 · GL3; style guide, "Max Raid dens"): light added to the scene, undimmed at every hour
+    /// so that after dark they are the brightest thing on the downs, hidden behind the hills by the depth already drawn
+    /// and writing none of their own.
+    /// </summary>
+    private void DrawBeams(OpenScene scene)
+    {
+        DenBeams.Pieces(scene.Beams ?? Array.Empty<DenBeam>(), scene.Eye, scene.Time, beamPieces);
+        BeamPieces = beamPieces.Count;
+        if (beamPieces.Count == 0) return;
+        Rlgl.DrawRenderBatchActive();
+        Raylib.BeginBlendMode(BlendMode.Additive);
+        Rlgl.DisableDepthMask();
+        Rlgl.DisableBackfaceCulling();
+        Rlgl.SetTexture(Rlgl.GetTextureIdDefault());
+        Rlgl.Begin(DrawMode.Quads);
+        foreach (var piece in beamPieces)
+        {
+            var along = piece.Head - piece.Tail;
+            var toEye = scene.Eye - (piece.Head + piece.Tail) * 0.5f;
+            var side = Vector3.Cross(along, toEye);
+            if (side.LengthSquared() < 1e-10f) continue;
+            side = Vector3.Normalize(side) * (piece.Width * 0.5f);
+            var c = piece.Colour;
+            // Additive: the alpha scales the colour, so a faint halo adds little
+            float a = c.A / 255f;
+            Rlgl.Color4ub((byte)(c.R * a), (byte)(c.G * a), (byte)(c.B * a), 255);
+            Rlgl.Vertex3f(piece.Head.X - side.X, piece.Head.Y - side.Y, piece.Head.Z - side.Z);
+            Rlgl.Vertex3f(piece.Tail.X - side.X, piece.Tail.Y - side.Y, piece.Tail.Z - side.Z);
+            Rlgl.Vertex3f(piece.Tail.X + side.X, piece.Tail.Y + side.Y, piece.Tail.Z + side.Z);
             Rlgl.Vertex3f(piece.Head.X + side.X, piece.Head.Y + side.Y, piece.Head.Z + side.Z);
         }
         Rlgl.End();
