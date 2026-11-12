@@ -2571,9 +2571,12 @@
     "cameDown": "Peretele s-a prăbușit!",
     "sphereFound": "A ieșit un {sphere} de mărimea {size}!",
     "treasureFound": "{treasure} e al tău!",
+    "statueFound": "{statue} e a ta! A intrat printre bunurile tale.",
     "noRoom": "Nu e loc pentru el în rucsac. A rămas în urmă."
   },
   "belowGround": {
+    "statue": "Statuie {species}",
+    "statueBlurb": "O statuie de piatră a lui {species}. Așezată în baza ta, atrage în ascunzișuri Pokémoni de tipurile ei.",
     "title": { "bag": "SUBTERAN", "hiker": "DRUMEȚ", "pc": "PC-UL BAZEI" },
     "tab": {
       "Traps": "CAPCANE", "Spheres": "SFERE", "Goods": "BUNURI", "Treasures": "COMORI", "Surface": "SUPRAFAȚĂ",

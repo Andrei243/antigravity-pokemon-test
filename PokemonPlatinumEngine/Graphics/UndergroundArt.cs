@@ -80,6 +80,7 @@ internal static class UndergroundArt
     public static (Color Colour, string Mark) PlanLook(int good)
     {
         string id = UndergroundDatabase.Good(good)?.Id ?? "";
+        if (UndergroundDatabase.IsStatue(good)) return (Rgb(166, 162, 158), "");
         if (id.StartsWith("UG_GOOD_PC", StringComparison.Ordinal)) return (Rgb(96, 118, 170), "PC");
         if (id == "UG_GOOD_BIG_BOULDER") return (Rgb(112, 104, 116), "");
         var kind = KindOf(good);
@@ -125,6 +126,13 @@ internal static class UndergroundArt
         }
         if (!model.StartsWith("good:", StringComparison.Ordinal) || !int.TryParse(model[5..], out int good)) return;
 
+        // A statue of the hideaways (plan 38 · EX6, part b): its species' figure in stone on a plinth with a plaque
+        if (UndergroundDatabase.Statue(good) is { } statue)
+        {
+            var (shape, plaque) = StatueLook(statue.Species);
+            kit.Sprite(kit.Face($"ug.statue.{good}", 24, 36, c => PaintStatue(c, shape, plaque)), w / 2f, d - 12);
+            return;
+        }
         var colour = ColourOf(good);
         var tone = Tone.Of(colour);
         var kind = KindOf(good);
@@ -215,6 +223,103 @@ internal static class UndergroundArt
                 if (u * u + v * v > 1f) continue;
                 c.Set(x, y, u + v < -0.5f ? tone.Light : u + v > 0.6f ? tone.Dark : tone.Base);
             }
+    }
+
+    /// <summary>The figures a statue may be (style guide, "The Underground", "A statue"): one to a kind of the Pokédex's shapes.</summary>
+    public enum StatueFigure { FourLegs, Upright, Bird, Fish, Coil, Round, Tentacles }
+
+    /// <summary>A statue's figure by its species' Pokédex shape, and its plaque in its first type's colour, darkened a third.</summary>
+    public static (StatueFigure Figure, Color Plaque) StatueLook(string species)
+    {
+        var s = PokemonDatabase.Get(species);
+        var figure = (s?.Shape ?? "").ToLowerInvariant() switch
+        {
+            "quadruped" or "armor" => StatueFigure.FourLegs,
+            "wings" or "bug wings" => StatueFigure.Bird,
+            "fish" => StatueFigure.Fish,
+            "squiggle" => StatueFigure.Coil,
+            "ball" or "blob" or "heads" => StatueFigure.Round,
+            "tentacles" => StatueFigure.Tentacles,
+            _ => StatueFigure.Upright
+        };
+        var type = s != null ? Models.Underground.Hideaways.TypesOf(s)[0] : PokemonType.Normal;
+        var plaque = PixelCanvas.Shadow(Palette.GetTypeColor(type.ToString()), 0.33f);
+        return (figure, plaque);
+    }
+
+    /// <summary>The stone's four greys and the plinth's slate (style guide, "A statue").</summary>
+    private static readonly Tone Stone = new(Rgb(166, 162, 158), Rgb(206, 204, 198), Rgb(120, 116, 120), Rgb(84, 80, 90));
+    private static readonly Color Slate = Rgb(96, 92, 104);
+
+    /// <summary>A statue, 24 by 36: the figure of its shape in stone, standing on a slate plinth with a plaque across its front.</summary>
+    public static void PaintStatue(PixelCanvas c, StatueFigure figure, Color plaque)
+    {
+        // The plinth: rows 27 to 35, two rows of light on its top, the plaque across its front
+        c.Rect(3, 27, 18, 9, Slate);
+        c.Rect(3, 27, 18, 2, PixelCanvas.Light1(Slate, 0.3f));
+        c.Rect(19, 29, 2, 7, PixelCanvas.Shadow(Slate, 0.3f));
+        c.Rect(6, 31, 12, 3, plaque);
+        c.HLine(6, 31, 12, PixelCanvas.Light1(plaque, 0.25f));
+        var t = Stone;
+        switch (figure)
+        {
+            case StatueFigure.FourLegs:
+                Disc(c, 12, 18, 8, 5, t);
+                Disc(c, 18, 11, 4, 4, t);
+                foreach (int x in new[] { 6, 9, 14, 17 }) c.Rect(x, 21, 2, 6, x < 12 ? t.Light : t.Dark);
+                c.Rect(3, 14, 2, 3, t.Base);
+                break;
+            case StatueFigure.Bird:
+                Disc(c, 12, 19, 5, 6, t);
+                Disc(c, 12, 10, 4, 4, t);
+                for (int i = 0; i < 6; i++)
+                {
+                    c.Rect(6 - i, 12 + i, 3, 2, t.Light);
+                    c.Rect(15 + i, 12 + i, 3, 2, t.Dark);
+                }
+                c.Rect(15, 9, 3, 2, t.Dark);
+                c.Rect(10, 24, 2, 3, t.Base);
+                c.Rect(13, 24, 2, 3, t.Dark);
+                break;
+            case StatueFigure.Fish:
+                // arched over the plinth, its tail high
+                for (int x = 3; x < 20; x++)
+                {
+                    float u = (x - 11.5f) / 8.5f;
+                    int top = (int)(14 + 8 * u * u), thick = (int)(7 - 4 * MathF.Abs(u));
+                    c.Rect(x, top, 1, Math.Max(2, thick), x < 10 ? t.Light : x < 15 ? t.Base : t.Dark);
+                }
+                c.Rect(19, 16, 3, 6, t.Dark);
+                c.Rect(5, 16, 2, 2, t.Deep);
+                c.Rect(11, 21, 2, 6, t.Dark);
+                break;
+            case StatueFigure.Coil:
+                Disc(c, 12, 23, 8, 4, t);
+                Disc(c, 12, 18, 6, 3, t);
+                Disc(c, 12, 13, 4, 3, t);
+                Disc(c, 15, 7, 4, 3, t);
+                break;
+            case StatueFigure.Round:
+                Disc(c, 12, 17, 9, 9, t);
+                c.Rect(8, 14, 2, 2, t.Deep);
+                c.Rect(14, 14, 2, 2, t.Deep);
+                break;
+            case StatueFigure.Tentacles:
+                Disc(c, 12, 12, 8, 7, t);
+                foreach (int x in new[] { 5, 9, 13, 17 })
+                    for (int y = 17; y < 27; y++) c.Rect(x + ((y / 3) % 2), y, 2, 1, x < 11 ? t.Light : t.Dark);
+                break;
+            default:
+                // upright: a body, a head, two arms and two legs
+                Disc(c, 12, 18, 5, 6, t);
+                Disc(c, 12, 8, 5, 5, t);
+                c.Rect(5, 15, 3, 6, t.Light);
+                c.Rect(16, 15, 3, 6, t.Dark);
+                c.Rect(9, 23, 2, 4, t.Base);
+                c.Rect(13, 23, 2, 4, t.Dark);
+                break;
+        }
+        Outline(c);
     }
 
     public static void PaintFlag(PixelCanvas c, Color cloth)

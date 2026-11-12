@@ -10219,7 +10219,26 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   mythical Pokémon of the older regions, so the Catching Show's day of six visitors (`PalParkState.VisitorSpecies`, which draws on
   that pool) is six of them: that is the plan's rule followed through, and the user's to keep or change. The pools are the rule by
   type too, so Spiritomb, Rotom, the Sinnoh starters' grown forms, the fossils' and the pseudo-legendaries stand there at 47 to 55.
-  **Not laid yet**: ice that slides and lava (neither has a ground of a map file), and part b's statues.
+  **Not laid yet**: ice that slides and lava (neither has a ground of a map file).
+- **Statues** (EX6, part b, 2026-11-12; `Data/statues.json`, ours; `Hideaways.WallsOf`, `WallTable`, `Weights`). A statue is a good of
+  ours for every species any hideaway's pool may hold (266, in National order), numbered from `UndergroundDatabase.StatueFirst` (1001)
+  past the original's 138 goods, so nothing drawn from the original's goods (a digger's base, a hiker's stock) meets one, and
+  with a rarity of one to three by its base stats (under 420 common, under 500 uncommon, the rest rare). **Dug from the hideaways'
+  walls**: two walls a day in each hideaway (rock with dry open floor before it, chosen by SplitMix from the seed and the day's number,
+  glinting gold once as the player comes in), each dug once a day (a daily flag, `FLAG_DAILY_HIDEAWAY_<n>_WALL_<k>`, so a new day
+  gives two more and nothing new is saved), through the Underground's own `Wall` script and the original's wall game on a table of
+  ours (`MiningGame(Rand32, WallItem[])`: the statues of the day's twelve Pokémon there at weights 12, 6 and 2 by rarity, and the
+  five small Spheres at 8 each, two to four things a wall and the original's dark rocks; the original's own walls draw exactly as
+  before). A statue dug out goes into the bag's goods (it counts among the treasures dug) and is put in the PC and placed in the
+  base like any good, one tile that it blocks, within the base's limit (`SecretBaseRules.GoodsLimit`: ten, twelve or fifteen).
+  **What a statue does**: each statue standing in the base counts once for each of its species' types, up to ten of a type
+  (`Hideaways.Weights`; one in the PC or the bag counts for nothing), and every hideaway's day of twelve is then picked by weight
+  instead of evenly: a species weighs 2 and one more for each counted statue of each of its types (`PickWeight`). Three Water
+  statues therefore take the first pick's Water share in the lake cavern from W/N to 5W/(5W + 2(N − W)) for a pool of N species
+  of which W are Water (`StatueTests` holds it exactly, and over a year of tables). With no statue in the base nothing is weighed and
+  every table, `levels.txt` among them, is what it was. **How a statue looks** is the style guide's "A statue": a stone figure of its
+  species' Pokédex shape on a plinth with its type's plaque, painted by the kit, not the species' field sprite in stone as the plan
+  asked, since a field sprite is baked on the graphics card in later frames and a face painted from it would differ between runs.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)

@@ -2189,9 +2189,12 @@
     "cameDown": "The wall came down!",
     "sphereFound": "A {sphere} of size {size} came out!",
     "treasureFound": "The {treasure} is yours!",
+    "statueFound": "The {statue} is yours! It went in with your goods.",
     "noRoom": "There's no room for it in the bag. It was left behind."
   },
   "belowGround": {
+    "statue": "{species} Statue",
+    "statueBlurb": "A statue of {species} in stone. Placed in your base, it draws Pokémon of its types in the hideaways.",
     "title": { "bag": "UNDERGROUND", "hiker": "HIKER", "pc": "BASE PC" },
     "tab": {
       "Traps": "TRAPS", "Spheres": "SPHERES", "Goods": "GOODS", "Treasures": "TREASURES", "Surface": "SURFACE",

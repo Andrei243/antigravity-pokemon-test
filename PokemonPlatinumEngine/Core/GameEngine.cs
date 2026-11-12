@@ -2769,6 +2769,8 @@ public partial class GameEngine
 
         // Below ground: the wall ahead, a trap or a Sphere in the floor, the base's PC and goods (plan 06 · R16a)
         if (TryInteractUnderground(targetX, targetY)) return;
+        // A hideaway's wall that holds something today (plan 38 · EX6, part b)
+        if (TryInteractHideaway(targetX, targetY)) return;
 
         // A secret base's spot, and in a base its PC (plan 21 · H10)
         if (TryInteractSecretBase(targetX, targetY)) return;
