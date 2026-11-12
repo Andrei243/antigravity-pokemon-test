@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1754 | 1691 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13509 | 12946 | 563 | 17 | 36 |
-| People of the world (`world:`) | 8178 | 8116 | 62 | 4 | 0 |
-| **All** | 23725 | 23034 | 691 | 22 | 36 |
+| People of the hand-made maps (`map:`) | 1764 | 1701 | 63 | 1 | 0 |
+| Scripts (`script:`) | 13518 | 12955 | 563 | 17 | 36 |
+| People of the world (`world:`) | 8183 | 8121 | 62 | 4 | 0 |
+| **All** | 23749 | 23058 | 691 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -45,7 +45,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `rival` | 605 | 20 |
 | `look:clerk (any)` | 601 | 17 |
 | `look:lady (any)` | 574 | 10 |
-| `look:lass (any)` | 553 | 22 |
+| `look:lass (any)` | 554 | 22 |
 | `look:youngster (any)` | 521 | 32 |
 | `@self` | 390 | 64 |
 | `look:receptionist (any)` | 348 | 40 |
@@ -89,26 +89,26 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `steven` | 91 | 1 |
 | `class:bug_catcher (any)` | 90 | 0 |
 | `class:bird_keeper (any)` | 88 | 0 |
+| `gift_runner` | 86 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `class:twins (any)` | 84 | 0 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `beauty` | 82 | 6 |
 | `class:camper (any)` | 82 | 0 |
 | `kanto_rival` | 79 | 0 |
-| `gift_runner` | 78 | 0 |
 | `look:trainer (any)` | 77 | 0 |
 | `class:veteran (any)` | 76 | 0 |
 | `look:girl (any)` | 75 | 0 |
 | `prof_kukui` | 71 | 1 |
 | `class:pokémon_ranger (any)` | 70 | 0 |
 | `prof_juniper` | 69 | 0 |
+| `stall_keeper` | 69 | 12 |
 | `class:backpacker (any)` | 68 | 0 |
 | `class:biker (any)` | 68 | 0 |
 | `class:sailor (any)` | 68 | 0 |
 | `lance` | 68 | 0 |
 | `class:scientist (any)` | 66 | 0 |
 | `class:worker (any)` | 66 | 0 |
-| `stall_keeper` | 66 | 12 |
 | `archie` | 62 | 3 |
 | `artist` | 62 | 1 |
 | `collector` | 62 | 0 |
@@ -231,6 +231,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:lady (any)` | 26 | 0 |
 | `class:preschooler (any)` | 26 | 0 |
 | `look:butler (any)` | 26 | 0 |
+| `look:middle_aged_woman (any)` | 26 | 0 |
 | `lottery_clerk` | 26 | 2 |
 | `n` | 26 | 0 |
 | `shadow_triad` | 26 | 7 |
@@ -238,7 +239,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `day_care_lady` | 25 | 3 |
 | `emma` | 25 | 0 |
 | `ghetsis` | 25 | 0 |
-| `look:middle_aged_woman (any)` | 25 | 0 |
 | `park_attendant` | 25 | 1 |
 | `assistant_2` | 24 | 1 |
 | `class:ace_trainer_f (any)` | 24 | 0 |

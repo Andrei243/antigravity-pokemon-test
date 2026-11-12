@@ -177,6 +177,26 @@
           ""
         ]
       }
+    },
+    "plumeria": {
+      "name": {
+        "en": [
+          "Plumeria"
+        ],
+        "text": [
+          "Plumeria"
+        ]
+      }
+    },
+    "guzma": {
+      "name": {
+        "en": [
+          "Guzma"
+        ],
+        "text": [
+          "Guzma"
+        ]
+      }
     }
   },
   "signs": {}

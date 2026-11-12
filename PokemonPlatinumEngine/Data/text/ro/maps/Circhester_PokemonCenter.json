@@ -63,6 +63,24 @@
           "Fă o baie în Baia Eroului înainte de lupta din arenă. Nimic nu te destinde mai bine."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
     }
   },
   "signs": {}
