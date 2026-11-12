@@ -16,7 +16,6 @@ script Statue
   text "The statue is glowing. All four of the Elite Four have been beaten!"
   ask "Go down to the Champion?"
   if no end
-  scene "The statue's lift"
   letterbox on 0.4
   camera pan 31 43 0.8
   sound "lift"
@@ -26,7 +25,6 @@ script Statue
   effect burst 31 43 0.8 wait
   camera release 0.3
   letterbox off 0.3
-  endscene
   warp "UnovaPokemonLeague_Descent" 31 84 up
   end
 label Waiting

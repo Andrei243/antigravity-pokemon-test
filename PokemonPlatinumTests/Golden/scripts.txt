@@ -24548,11 +24548,11 @@ way -
 === join_avenue.Antiques
 from Antique Dealer at 24,64 of JoinAvenue
 way -
-  Antique Dealer> My shop opens once the avenue draws a better class of visitor. A little busier, and I'll be here!
+  Antique Dealer> My shop isn't open for business yet. Do come back another day!
 === join_avenue.AntiquesSign
 from the tile read at 23,63 of JoinAvenue
 way -
-  > Join Avenue Antiques\nFossils and curios of old.
+  > An empty shopfront.\nTo let: ask the manager!
 === join_avenue.Cafe
 from Waitress at 6,42 of JoinAvenue
 way -
@@ -24565,12 +24565,48 @@ way -
   > Join Avenue Café\nCold drinks all day long.
 === join_avenue.Dojo
 from Dojo Master at 24,35 of JoinAvenue
-way -
-  Dojo Master> The dojo isn't open yet. Once the avenue's busier, I'll have the room to train your Pokémon!
+way 0
+  Dojo Master> Hah! Welcome to the dojo. One session is $1,000, and your Pokémon comes out tougher in the stat you pick.
+  Dojo Master> Which stat shall we train?
+  Dojo Master> Hup! Hah! Turtwig trained hard and came out tougher than it went in!
+  ? Which stat shall we train? = HP
+  * open ChoosePokemon
+  * sound select
+  = VAR_UNOVA_JOIN_AVENUE_SPENT_DOJO 0 -> 1000
+way 5, from answer 1
+  Dojo Master> Hup! Hah! Turtwig trained hard and came out tougher than it went in!
+  ? Which stat shall we train? = SPEED
+  * open ChoosePokemon
+  * sound select
+  = VAR_UNOVA_JOIN_AVENUE_SPENT_DOJO 0 -> 1000
+way 4, from answer 1
+  Dojo Master> Hup! Hah! Turtwig trained hard and came out tougher than it went in!
+  ? Which stat shall we train? = SP. DEF
+  * open ChoosePokemon
+  * sound select
+  = VAR_UNOVA_JOIN_AVENUE_SPENT_DOJO 0 -> 1000
+way 3, from answer 1
+  Dojo Master> Hup! Hah! Turtwig trained hard and came out tougher than it went in!
+  ? Which stat shall we train? = SP. ATK
+  * open ChoosePokemon
+  * sound select
+  = VAR_UNOVA_JOIN_AVENUE_SPENT_DOJO 0 -> 1000
+way 2, from answer 1
+  Dojo Master> Hup! Hah! Turtwig trained hard and came out tougher than it went in!
+  ? Which stat shall we train? = DEFENSE
+  * open ChoosePokemon
+  * sound select
+  = VAR_UNOVA_JOIN_AVENUE_SPENT_DOJO 0 -> 1000
+way 1, from answer 1
+  Dojo Master> Hup! Hah! Turtwig trained hard and came out tougher than it went in!
+  ? Which stat shall we train? = ATTACK
+  * open ChoosePokemon
+  * sound select
+  = VAR_UNOVA_JOIN_AVENUE_SPENT_DOJO 0 -> 1000
 === join_avenue.DojoSign
 from the tile read at 23,34 of JoinAvenue
 way -
-  > Join Avenue Dojo\nTraining for tough Pokémon.
+  > An empty shopfront.\nTo let: ask the manager!
 === join_avenue.Flowers
 from Florist at 24,21 of JoinAvenue
 way -
@@ -24594,11 +24630,12 @@ way -
 === join_avenue.Nursery
 from Nursery Aide at 24,48 of JoinAvenue
 way -
-  Nursery Aide> The nursery isn't ready yet. Once the avenue has more visitors, we'll open our doors!
+  Nursery Aide> This is the avenue's nursery. Eggs love a warm, quiet corner, and ours is the warmest in Unova.
+  Nursery Aide> Bring an Egg along and I'll warm it for you. Once a day, mind. Eggs mustn't be rushed.
 === join_avenue.NurserySign
 from the tile read at 23,47 of JoinAvenue
 way -
-  > Join Avenue Nursery\nA warm corner for Eggs.
+  > An empty shopfront.\nTo let: ask the manager!
 === join_avenue.Owner
 from Owner at 15,70 of JoinAvenue
 way 0
@@ -24607,8 +24644,11 @@ way 0
   Owner> You have the look of a Trainer people follow. Will you be Join Avenue's manager?
   Owner> Splendid! From today the avenue is yours to run.
   Owner> Visitors will come by each day you drop in. The more come, the higher the avenue's rank, and the better its shops!
+  Owner> Some of them may even ask to open a shop in one of our empty bays. Say yes, and the street fills up!
+  Owner> And every shop grows with what its customers spend there. Spend freely, Manager!
   ? You have the look of a Trainer people follow. Will you be Join Avenue's manager? = Yes
   + FLAG_DAILY_UNOVA_JOIN_AVENUE_VISITORS
+  + FLAG_UNOVA_JOIN_AVENUE_INVITATIONS
   + FLAG_UNOVA_JOIN_AVENUE_MANAGER
   = VAR_UNOVA_JOIN_AVENUE_VISITORS 0 -> 3
 way 1, from answer 1
@@ -24630,31 +24670,63 @@ way 1, from answer 1
 === join_avenue.RaffleSign
 from the tile read at 7,12 of JoinAvenue
 way -
-  > Join Avenue Raffle\nOne free ticket a day!
+  > An empty shopfront.\nTo let: ask the manager!
 === join_avenue.Salon
 from Stylist at 6,56 of JoinAvenue
-way -
-  Stylist> The salon isn't open yet. We're waiting for the avenue to bring the customers in!
+way 0
+  Stylist> Welcome to the salon! A grooming is $500, and your Pokémon will love you all the more. Shall we?
+  Stylist> All done! Turtwig looks wonderful, and it knows exactly who to thank for it.
+  ? Welcome to the salon! A grooming is $500, and your Pokémon will love you all the more. Shall we? = Yes
+  * open ChoosePokemon
+  * sound select
+  = VAR_UNOVA_JOIN_AVENUE_SPENT_SALON 0 -> 500
+way 1, from answer 1
+  Stylist> Do come back! A brushed Pokémon is a happy Pokémon.
+  ? Welcome to the salon! A grooming is $500, and your Pokémon will love you all the more. Shall we? = No
 === join_avenue.SalonSign
 from the tile read at 7,55 of JoinAvenue
 way -
-  > Join Avenue Salon\nGrooming for happy Pokémon.
+  > An empty shopfront.\nTo let: ask the manager!
 === join_avenue.Stones
 from Shop Girl at 16,70 of JoinAvenue
 way -
   Shop Girl> Our shop isn't open yet. Come back once the avenue's up and running!
 === join_avenue.Visitor1
 from Visitor at 12,31 of JoinAvenue
-way -
+way 0
   Saskia> I came all the way from Undella Bay just to see this street. It's livelier every time!
+  Saskia> You're the manager? This street needs a raffle, and I'd love to run it. Might I open one in an empty bay here?
+  Saskia> Thank you, Manager! I'll have it ready in no time. Do come and see how it does!
+  ? You're the manager? This street needs a raffle, and I'd love to run it. Might I open one in an empty bay here? = Yes
+  * sound select
+  + FLAG_UNOVA_JOIN_AVENUE_RAFFLE_OPEN
+way 1, from answer 1
+  Saskia> Oh, that's a shame. If you change your mind, you know where to find me.
+  ? You're the manager? This street needs a raffle, and I'd love to run it. Might I open one in an empty bay here? = No
 === join_avenue.Visitor2
 from Visitor at 19,45 of JoinAvenue
-way -
+way 0
   Ronan> My Herdier sniffs out the café from three streets away. We always stop here first.
+  Ronan> You're the manager? I'm a Pokémon groomer by trade. Might I open a salon in an empty bay here?
+  Ronan> Thank you, Manager! I'll have it ready in no time. Do come and see how it does!
+  ? You're the manager? I'm a Pokémon groomer by trade. Might I open a salon in an empty bay here? = Yes
+  * sound select
+  + FLAG_UNOVA_JOIN_AVENUE_SALON_OPEN
+way 1, from answer 1
+  Ronan> Oh, that's a shame. If you change your mind, you know where to find me.
+  ? You're the manager? I'm a Pokémon groomer by trade. Might I open a salon in an empty bay here? = No
 === join_avenue.Visitor3
 from Visitor at 14,59 of JoinAvenue
-way -
+way 0
   Mirela> A friend told me the manager here is a real Trainer. Is that you? Pleased to meet you!
+  Mirela> You're the manager? I've trained Pokémon all my life. Might I open a dojo in an empty bay here?
+  Mirela> Thank you, Manager! I'll have it ready in no time. Do come and see how it does!
+  ? You're the manager? I've trained Pokémon all my life. Might I open a dojo in an empty bay here? = Yes
+  * sound select
+  + FLAG_UNOVA_JOIN_AVENUE_DOJO_OPEN
+way 1, from answer 1
+  Mirela> Oh, that's a shame. If you change your mind, you know where to find me.
+  ? You're the manager? I've trained Pokémon all my life. Might I open a dojo in an empty bay here? = No
 === join_avenue.Vitamins
 from Shop Girl at 14,70 of JoinAvenue
 way -
@@ -38223,6 +38295,51 @@ way -
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
   = VAR_UNOVA_STRANGE 0 -> 2
   + seen strange_house_6.The girl comes back
+=== striaton_city_2.Chili
+from Chili at 10,6 of StriatonCity_Room2
+way 0.0
+  Chili> Hey, Champion! The kitchen's hot and so are my Fire types. Battle me?
+  Chili> All right! Turn up the heat!
+  Chili> Phew, you burned me good! Come back tomorrow and I'll be fired up again!
+  ? Hey, Champion! The kitchen's hot and so are my Fire types. Battle me? = Yes
+  * battle unova_chili Won
+  + FLAG_DAILY_UNOVA_STRIATON_CHILI
+  + beaten unova_chili
+way 0.1, from answer 2
+  * battle unova_chili Lost
+way 1, from answer 1
+  Chili> Aw, cooling off? Fine, the stove stays lit for you.
+  ? Hey, Champion! The kitchen's hot and so are my Fire types. Battle me? = No
+=== striaton_city_2.Cilan
+from Cilan at 9,6 of StriatonCity_Room2
+way 0.0
+  Cilan> Welcome! A Champion at our table... Would you care for a battle before the main course? I'll season it with Grass types.
+  Cilan> Splendid. Let me bring out the flavours of my partners!
+  Cilan> A perfectly balanced battle. Do come back tomorrow for another course.
+  ? Welcome! A Champion at our table... Would you care for a battle before the main course? I'll season it with Grass types. = Yes
+  * battle unova_cilan Won
+  + FLAG_DAILY_UNOVA_STRIATON_CILAN
+  + beaten unova_cilan
+way 0.1, from answer 2
+  * battle unova_cilan Lost
+way 1, from answer 1
+  Cilan> Of course. The best dishes are never rushed.
+  ? Welcome! A Champion at our table... Would you care for a battle before the main course? I'll season it with Grass types. = No
+=== striaton_city_2.Cress
+from Cress at 11,6 of StriatonCity_Room2
+way 0.0
+  Cress> Good day. My Water types and I would be pleased to test a Champion. Shall we?
+  Cress> Then let us flow into it.
+  Cress> Graceful work. The water will be calm again by tomorrow, should you return.
+  ? Good day. My Water types and I would be pleased to test a Champion. Shall we? = Yes
+  * battle unova_cress Won
+  + FLAG_DAILY_UNOVA_STRIATON_CRESS
+  + beaten unova_cress
+way 0.1, from answer 2
+  * battle unova_cress Lost
+way 1, from answer 1
+  Cress> Another time, then. Enjoy your meal.
+  ? Good day. My Water types and I would be pleased to test a Champion. Shall we? = No
 === sunyshore_city.Flint
 from Flint at 845,748 of Sinnoh
 way -
@@ -40379,6 +40496,8 @@ from the tile read at 30,82 of UnovaPokemonLeague_Descent
 way 0
   > Ride the statue back up to the hall?
   ? Ride the statue back up to the hall? = Yes
+  * sound lift
+  * shake player 4
   * warp UnovaPokemonLeague_Hall 31 46
 way 1, from answer 1
   ? Ride the statue back up to the hall? = No
@@ -40695,6 +40814,60 @@ way -
 === unova_route_23.Azelf
 from Azelf at 584,80 of Unova
 way -
+=== unova_route_23.FillBend
+from the pit at 587,84 of Unova
+from the pit at 587,85 of Unova
+from the pit at 588,84 of Unova
+from the pit at 588,85 of Unova
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_ROUTE_23_HOLE_BEND
+=== unova_route_23.FillEast
+from the pit at 588,92 of Unova
+from the pit at 588,93 of Unova
+from the pit at 589,92 of Unova
+from the pit at 589,93 of Unova
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_ROUTE_23_HOLE_EAST
+=== unova_route_23.FillFar
+from the pit at 598,94 of Unova
+from the pit at 598,95 of Unova
+from the pit at 599,94 of Unova
+from the pit at 599,95 of Unova
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_ROUTE_23_HOLE_FAR
+=== unova_route_23.FillLedge
+from the pit at 585,85 of Unova
+from the pit at 585,86 of Unova
+from the pit at 586,85 of Unova
+from the pit at 586,86 of Unova
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_ROUTE_23_HOLE_LEDGE
+=== unova_route_23.FillNorth
+from the pit at 577,84 of Unova
+from the pit at 577,85 of Unova
+from the pit at 578,84 of Unova
+from the pit at 578,85 of Unova
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_ROUTE_23_HOLE_NORTH
+=== unova_route_23.FillWest
+from the pit at 580,92 of Unova
+from the pit at 580,93 of Unova
+from the pit at 581,92 of Unova
+from the pit at 581,93 of Unova
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_ROUTE_23_HOLE_WEST
 === unova_route_4.ColressWaits
 from the trigger at 427,584 of Unova
 way 0
