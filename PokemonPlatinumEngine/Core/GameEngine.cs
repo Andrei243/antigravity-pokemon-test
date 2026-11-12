@@ -3010,7 +3010,7 @@ public partial class GameEngine
                 flow.Pokedex.Enter(Here);
                 flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
                 flow.PokedexScreen.Random = Randomizer.For(flow.Run);
-        flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), Here);
+        flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), Here);
                 flow.PokedexScreen.SetHere(DexNavHereList(), flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
                 break;
             case StartMenuChoice.Pokemon:
@@ -3047,7 +3047,7 @@ public partial class GameEngine
                 flow.State = GameState.TrainerCard;
             {
                 var card = TrainerCardNow();
-                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false });
+                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false });
             }
                 break;
             case StartMenuChoice.Options:

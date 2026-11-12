@@ -209,6 +209,8 @@ if (mode == "johto") h.JohtoMode();
 if (mode == "hoenn") h.HoennMode();
 if (mode == "unova") h.UnovaMode();
 if (mode == "kalos") h.KalosMode();
+// Plan 30: what Kalos's gate left owed, grown and free (not part of all)
+if (mode == "kalosgrown") h.KalosGrownMode();
 if (mode == "alola") h.AlolaMode();
 if (mode == "ulaula") h.UlaulaMode();
 // Plan 23 · Z6: the rest of Akala and a totem's battle

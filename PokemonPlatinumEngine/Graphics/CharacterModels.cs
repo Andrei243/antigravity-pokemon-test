@@ -79,6 +79,15 @@ internal struct CharacterPose
     /// clear it. Nought for the old fixed spread.
     /// </summary>
     public float Astride;
+
+    /// <summary>
+    /// On roller skates (plan 30, the gate's owed clip; style guide, "Grown animation", "Skating"): the gait is a skater's
+    /// pushes, each foot driven out and back to its side in turn, crouched, the arms swinging across. A chibi rig never reads it.
+    /// </summary>
+    public bool Skating;
+
+    /// <summary>Gliding on skates or sliding on ice with no step taken: crouched a little, the feet together, the arms out for balance.</summary>
+    public bool Gliding;
 }
 
 /// <summary>What a grown body is riding (plan 30 · FM5): nothing, a Pokémon it surfs on, a Bicycle, a mount (plan 30 · FM13).</summary>
