@@ -277,7 +277,7 @@
     // over a green top and a pale skirt; Hugh, the friend from Aspertia, dark blue hair standing up and a red jacket
     "prof_juniper": { "hairColor": "#a8784a", "hair": "Bun", "top": "#4e9a6a", "accent": "#f4f4f6", "bottom": "#e6dcc2", "shoes": "#c8463c", "eyes": "#3e5a3a", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.04 },
     "hugh": { "hairColor": "#2a3460", "hair": "Spiky", "top": "#c8383a", "accent": "#26262c", "bottom": "#2a2a36", "shoes": "#3a3a4a", "eyes": "#2a3a5a", "bushyBrows": true },
-    // The first chapter's cast of Aspertia (plan 22 · U5; our own takes, stand-ins until plan 22 · U12 designs them):
+    // The first chapter's cast of Aspertia (plan 22 · U5; our own designs, kept as the cast's by plan 22 · U12):
     // Bianca, the professor's assistant, pale blonde hair under a wide green hat and an orange top over a white skirt;
     // Cheren, the new Gym Leader, black hair swept back, glasses and a dark jacket over a white shirt; Alder, the old
     // Champion, a mane of red hair, a beard and a warm orange poncho; Hugh's little sister, dark blue hair in bunches
@@ -285,20 +285,20 @@
     "cheren": { "hairColor": "#1e1e26", "hair": "Swept", "top": "#2c2e3c", "accent": "#f4f4f6", "bottom": "#2a2a34", "shoes": "#3a2c28", "eyes": "#2a2a3a", "glasses": "#2a2a34", "coat": true, "build": "Adult" },
     "alder": { "hairColor": "#c8402e", "hair": "Spiky", "top": "#d8783a", "accent": "#f0e0b4", "bottom": "#5a4636", "shoes": "#4a3428", "eyes": "#3a2a24", "beard": true, "bushyBrows": true, "build": "Adult", "height": 1.08 },
     "hugh_sister": { "hairColor": "#2a3460", "hair": "Bunches", "top": "#f2a6c0", "accent": "#f6f6fa", "bottom": "#e86a9a", "shoes": "#c84a6a", "eyes": "#2a3a5a", "skirt": true, "lashes": true, "blush": true, "height": 0.86 },
-    // Virbank City's (plan 22 · U5, part b; our own takes, stand-ins until plan 22 · U12): Roxie, the Gym Leader who
+    // Virbank City's (plan 22 · U5, part b; our own designs, kept by plan 22 · U12): Roxie, the Gym Leader who
     // sings in her own band, white hair tied up high, a black and violet striped top over dark shorts; her father the
     // captain, a navy coat and cap with a white beard; and Team Plasma's grunts, hooded in slate blue over grey
     "roxie": { "hairColor": "#eeeef4", "hair": "Ponytail", "hatBand": "#b05ad0", "top": "#3a2a48", "accent": "#b05ad0", "bottom": "#26222e", "shoes": "#5a3a6a", "eyes": "#4a2a5a", "stripes": true, "shorts": true, "lashes": true, "blush": true },
     "virbank_captain": { "hairColor": "#e6e2dc", "hat": "Cap", "hatColor": "#283656", "hatBand": "#f2f2f6", "top": "#283656", "accent": "#e8c45a", "bottom": "#283656", "shoes": "#2a2420", "eyes": "#3a3a4a", "beard": true, "coat": true, "build": "Adult", "height": 1.04 },
     "plasma_grunt": { "hairColor": "#3a3a46", "hat": "Beanie", "hatColor": "#4a5a7a", "hatBand": "#e8e8f0", "top": "#5a6a8a", "accent": "#e8e8f0", "bottom": "#7a8090", "shoes": "#2a2e38", "eyes": "#2a2a3a", "build": "Adult" },
-    // Castelia City's (plan 22 · U5, part c; our own takes, stand-ins until plan 22 · U12): Burgh, the Gym Leader who paints,
+    // Castelia City's (plan 22 · U5, part c; our own designs, kept by plan 22 · U12): Burgh, the Gym Leader who paints,
     // tousled brown hair and a green scarf over a smock spattered with paint; Iris, the girl from the Village of Dragons,
     // a great mane of violet hair, a pink top and white shorts; Colress, the scientist, pale swept hair, square glasses
     // and a long white coat over dark clothes
     "burgh": { "hairColor": "#8a5a3a", "hair": "Curls", "top": "#e8dcc2", "accent": "#5a9a4a", "bottom": "#4a4a58", "shoes": "#3a2e28", "eyes": "#3a4a2a", "coat": true, "build": "Adult", "height": 1.06 },
     "iris": { "hairColor": "#6a3a8a", "hair": "Long", "top": "#f0a0c0", "accent": "#f6f0e0", "bottom": "#f2f2ee", "shoes": "#d86a9a", "eyes": "#5a2a6a", "shorts": true, "lashes": true, "blush": true, "height": 0.92 },
     "colress": { "hairColor": "#e8e0c4", "hair": "Swept", "top": "#f2f4f8", "accent": "#3a3e58", "bottom": "#2e3040", "shoes": "#2a2a30", "eyes": "#4a5a7a", "glasses": "#3a3a46", "coat": true, "build": "Adult", "height": 1.08 },
-    // Nimbasa City's (plan 22 · U6; our own takes, stand-ins until plan 22 · U12): Elesa, the Gym Leader who models, short
+    // Nimbasa City's (plan 22 · U6; our own designs, kept by plan 22 · U12): Elesa, the Gym Leader who models, short
     // pale gold hair and a black and lightning-yellow outfit; Ingo and Emmet, the Subway Bosses, grey-haired twins in long
     // conductor's coats and caps, Ingo in black and Emmet in white; and the young Trainer who battles beside the player
     // there, the hero the player isn't: Rosa, brown hair in bunches under a white visor, a blue top and yellow shorts, and
@@ -308,39 +308,41 @@
     "emmet": { "hairColor": "#c8c8ce", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e8c45a", "top": "#f4f4f6", "accent": "#22222a", "bottom": "#f4f4f6", "shoes": "#2a2420", "eyes": "#5a5a66", "coat": true, "build": "Adult", "height": 1.1 },
     "rosa": { "hairColor": "#6a442c", "hair": "Bunches", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e86a9a", "top": "#3a8ad0", "accent": "#f4f4f6", "bottom": "#f2cc48", "shoes": "#e86a9a", "eyes": "#3a2a2a", "shorts": true, "lashes": true, "blush": true },
     "nate": { "hairColor": "#5a3a26", "hair": "Spiky", "hat": "Cap", "hatColor": "#d83a3a", "hatBand": "#22222a", "top": "#3a62c0", "accent": "#f4f4f6", "bottom": "#26262e", "shoes": "#c83a3a", "eyes": "#3a2a2a" },
-    // Driftveil City's (plan 22 · U6, part b; our own takes, stand-ins until plan 22 · U12): Clay, the Gym Leader who runs
+    // Driftveil City's (plan 22 · U6, part b; our own designs, kept by plan 22 · U12): Clay, the Gym Leader who runs
     // the mines, grey moustache under a brown cowboy hat, a cream shirt and a leather vest; and Rood, the old sage who looks
     // after the former Team Plasma, white-bearded in a long navy robe
     "clay": { "skin": "#e0aa80", "hairColor": "#6a6a6e", "hat": "Cowboy", "hatColor": "#6a4a2a", "hatBand": "#3a2a1a", "top": "#f2ecdc", "accent": "#8a5a32", "bottom": "#4a5a7a", "shoes": "#4a3020", "vest": "#7a5a3a", "mustache": true, "bushyBrows": true, "build": "Adult", "height": 1.12 },
     "rood": { "hairColor": "#d8d8de", "hair": "Bald", "top": "#3a4a6e", "accent": "#e8dcb4", "bottom": "#3a4a6e", "shoes": "#2a2a30", "beard": true, "mustache": true, "coat": true, "skirt": true, "build": "Elder" },
     // Plan 22 · U7, part a: Mistralton City's Gym Leader (our own take, a cheerful young pilot in an orange flight jacket with a white
     // scarf and a visor over her ponytail), the pilots of her Gym and airfield, and N (a tall slim man in a white shirt and black
-    // waistcoat, his long pale-green hair tied back), until plan 22 · U12
+    // waistcoat, his long pale-green hair tied back), kept by plan 22 · U12
     "skyla": { "hairColor": "#6a3e2a", "hair": "Ponytail", "hat": "Visor", "hatColor": "#f4f4f6", "hatBand": "#e8782a", "top": "#e8782a", "accent": "#f4f4f6", "bottom": "#3a5a8a", "shoes": "#4a3024", "eyes": "#3a2a2a", "scarf": true, "lashes": true, "blush": true, "build": "Adult", "height": 1.0 },
     "pilot": { "hairColor": "#3a2e2c", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e8782a", "top": "#3a5a8a", "accent": "#f4f4f6", "bottom": "#2c2e3c", "shoes": "#2a2420", "jacket": true, "build": "Adult" },
     "n": { "hairColor": "#8ab89a", "hair": "Ponytail", "top": "#f2f4f4", "accent": "#26262e", "bottom": "#3a3a46", "shoes": "#2a2a30", "eyes": "#5a7a6a", "vest": "#26262e", "build": "Adult", "height": 1.08 },
-    // The Plasma Frigate's (plan 22 · U6, part c; our own takes, stand-ins until plan 22 · U12): Zinzolin, a sage of Team
+    // The Plasma Frigate's (plan 22 · U6, part c; our own designs, kept by plan 22 · U12): Zinzolin, a sage of Team
     // Plasma, bald with a short grey beard in a deep plum robe banded in gold; and the Shadow Triad, Ghetsis's three
     // shadows, white hair over a black suit with a pale band at the collar
     "zinzolin": { "hairColor": "#b8b8c0", "hair": "Bald", "top": "#5a2a48", "accent": "#d8b44a", "bottom": "#5a2a48", "shoes": "#2a2026", "beard": true, "coat": true, "skirt": true, "build": "Elder", "height": 1.04 },
     "shadow_triad": { "hairColor": "#ececf2", "hair": "Spiky", "top": "#1c1c24", "accent": "#d0d0d8", "bottom": "#1c1c24", "shoes": "#141418", "eyes": "#6a2a2a", "build": "Adult", "height": 1.04 },
-    // Plan 22 · U9, part a: Ghetsis (our own take, a stand-in until plan 22 · U12), very tall, long sage-green hair over a dark violet
+    // Plan 22 · U9, part a: Ghetsis (our own design, kept by plan 22 · U12), very tall, long sage-green hair over a dark violet
     // robe banded in gold, one red eye
     "ghetsis": { "hairColor": "#7aa86a", "hair": "Long", "top": "#3e3050", "accent": "#d8b44a", "bottom": "#3e3050", "shoes": "#2a2026", "eyes": "#a83a3a", "coat": true, "skirt": true, "build": "Adult", "height": 1.16 },
-    // Plan 22 · U9, part c: Unova's Elite Four (our own takes, stand-ins until plan 22 · U12; Caitlin is the Battle Castle's own):
+    // Plan 22 · U9, part c: Unova's Elite Four (our own designs, kept by plan 22 · U12; Caitlin is the Battle Castle's own):
     // Shauntal, who writes ghost stories, a purple bob, glasses and a long plum dress; Marshal, who trains in the mountains, a
     // bald head and a dark gi tied with a brown belt; Grimsley, the gambler, swept dark hair and a black suit with a yellow scarf
-    // Plan 22 · U12, the last of the named cast: looks of our own for the roles (no attempt at the games' designs), on the
-    // kit's parts with nothing new. Opelucid's Gym Leader, an old scholar of dragons: short grey hair, round glasses and a
-    // slate jacket banded in copper; Humilau's, a young man of the beach: sandy hair, a coral and white striped shirt
-    // over navy shorts; the young Boss Trainer of the tournament's hall: a teal cap over brown hair and an olive jacket; and
-    // the three brothers of Striaton's café, alike in a cream shirt and a deep teal apron, told apart by their hair
-    "opelucid_leader": { "hairColor": "#b8b4ac", "hair": "Short", "top": "#3e4a5e", "accent": "#c8783a", "bottom": "#2e3440", "shoes": "#3a2a24", "eyes": "#3a3a4a", "glasses": "#5a4a3a", "jacket": true, "bushyBrows": true, "build": "Adult", "height": 1.06 },
-    "humilau_leader": { "skin": "#d8a074", "hairColor": "#d8b878", "hair": "Swept", "top": "#e8704e", "accent": "#f6f2ea", "bottom": "#2a3a62", "shoes": "#e8d8b8", "eyes": "#2a3a4a", "stripes": true, "shorts": true, "build": "Adult", "height": 1.08 },
-    "tower_boss": { "hairColor": "#5a3a26", "hair": "Short", "hat": "Cap", "hatColor": "#2a8a8a", "hatBand": "#f4f4f6", "top": "#6a7a3a", "accent": "#f4f4f6", "bottom": "#3a3a44", "shoes": "#2a8a8a", "eyes": "#3a2a24", "jacket": true, "height": 0.94 },
-    "cafe_brother_a": { "hairColor": "#5a3a24", "hair": "Short", "top": "#f2ead8", "accent": "#1e5a5a", "bottom": "#2a2a30", "shoes": "#2a2420", "eyes": "#3a2a24", "apron": "#1e5a5a", "build": "Adult", "height": 1.04 },
-    "cafe_brother_b": { "hairColor": "#1e1e24", "hair": "Swept", "top": "#f2ead8", "accent": "#1e5a5a", "bottom": "#2a2a30", "shoes": "#2a2420", "eyes": "#2a2a2a", "apron": "#1e5a5a", "build": "Adult", "height": 1.04 },
-    "cafe_brother_c": { "hairColor": "#b8642e", "hair": "Curls", "top": "#f2ead8", "accent": "#1e5a5a", "bottom": "#2a2a30", "shoes": "#2a2420", "eyes": "#4a3a24", "apron": "#1e5a5a", "build": "Adult", "height": 1.04 },
+    // Plan 22 · U12, the last of the named cast, designed in the kit's own style on 2026-11-12 (the user's go-ahead; our own
+    // looks, nothing of the games' art): Opelucid's Gym Leader and mayor, an old master of dragons, white hair swept back, a
+    // full white beard and moustache, a long deep-green coat banded in gold; Humilau's, a sun-browned man of the waves, spiky
+    // sandy hair, a blue and white striped shirt with short sleeves over navy shorts; the young Boss Trainer at the Black
+    // Tower's top, the old Champion's grandson, his grandfather's spiky red hair, an orange shirt and olive shorts; and the
+    // three brothers of Striaton's restaurant in the same waiter's white shirt and black waistcoat, each told by his hair and
+    // its colour (green and short, blue and swept, red and spiky)
+    "opelucid_leader": { "skin": "#d8a888", "hairColor": "#e8e6e0", "hair": "Swept", "top": "#2e4a48", "accent": "#c8a040", "bottom": "#262a2c", "shoes": "#2a2420", "eyes": "#3a3a3e", "beard": true, "mustache": true, "bushyBrows": true, "coat": true, "build": "Adult", "height": 1.14 },
+    "humilau_leader": { "skin": "#c4875c", "hairColor": "#e0c070", "hair": "Spiky", "top": "#3a7ac8", "accent": "#f6f2ea", "bottom": "#2a3a62", "shoes": "#d8c8a8", "eyes": "#2a3a4a", "stripes": true, "shortSleeves": true, "shorts": true, "build": "Adult", "height": 1.1 },
+    "tower_boss": { "hairColor": "#c8402e", "hair": "Spiky", "top": "#e8903a", "accent": "#f0e0b4", "bottom": "#4a5a3a", "shoes": "#3a3028", "eyes": "#3a2a24", "shorts": true, "bushyBrows": true, "height": 0.92 },
+    "cafe_brother_a": { "hairColor": "#4a8a4a", "hair": "Short", "top": "#f4f4f6", "accent": "#4a8a4a", "bottom": "#26262c", "shoes": "#2a2420", "eyes": "#3a5a2a", "vest": "#26262c", "build": "Adult", "height": 1.04 },
+    "cafe_brother_b": { "hairColor": "#3a5aa8", "hair": "Swept", "top": "#f4f4f6", "accent": "#3a5aa8", "bottom": "#26262c", "shoes": "#2a2420", "eyes": "#2a3a6a", "vest": "#26262c", "build": "Adult", "height": 1.04 },
+    "cafe_brother_c": { "hairColor": "#c8402e", "hair": "Spiky", "top": "#f4f4f6", "accent": "#c8402e", "bottom": "#26262c", "shoes": "#2a2420", "eyes": "#6a2a1e", "vest": "#26262c", "build": "Adult", "height": 1.04 },
     "shauntal": { "hairColor": "#5a3a6e", "hair": "Short", "top": "#4a2a58", "accent": "#d8c8e8", "bottom": "#4a2a58", "shoes": "#2a1e2e", "eyes": "#6a4a8a", "glasses": "#2a2a36", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
     "marshal": { "skin": "#d8a078", "hairColor": "#3a2a24", "hair": "Bald", "top": "#3a3a40", "accent": "#7a5232", "bottom": "#3a3a40", "shoes": "#3a3a40", "eyes": "#2a2420", "bushyBrows": true, "build": "Adult", "height": 1.12 },
     "grimsley": { "hairColor": "#2e2a36", "hair": "Swept", "top": "#22222a", "accent": "#e8c040", "bottom": "#22222a", "shoes": "#1c1c22", "eyes": "#4a3a2a", "scarf": true, "coat": true, "build": "Adult", "height": 1.08 },

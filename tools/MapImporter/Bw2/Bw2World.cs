@@ -366,6 +366,14 @@ public sealed class Bw2World
                 X = Round((x0 + x1 + 1) / 2f), Y = 0f, Z = Round((z0 + z1 + 1) / 2f),
                 BoxX = x0, BoxZ = z0, Width = x1 - x0 + 1, Depth = z1 - z0 + 1, Height = Round(tall)
             });
+        // The League's hall, drawn into the plaza's own model with no prop of its own (plan 22 · U12)
+        if (Bw2Cover.LeagueBox(folder) is var (lx, lz, lw, ld, lh))
+            file.Props.Add(new ChunkProp
+            {
+                Model = -1, Name = Bw2Cover.LeagueProp,
+                X = Round(lx + lw / 2f), Y = 0f, Z = Round(lz + ld / 2f),
+                BoxX = lx, BoxZ = lz, Width = lw, Depth = ld, Height = lh
+            });
         return file;
     }
 

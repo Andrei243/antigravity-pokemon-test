@@ -102,6 +102,21 @@ public static class Bw2Cover
     /// <summary>The name the props of ours that stand for Castelia's towers take in the catalogue (<c>WorldModels.Unova</c>).</summary>
     public const string TowerProp = "c3_tower";
 
+    /// <summary>
+    /// The Pokémon League's hall on its plaza (plan 22 · U12), which Black 2 draws into the plaza's own model with no prop of
+    /// its own: a prop of ours (<see cref="LeagueProp"/>) written into the plaza's first quarter over the blocked tiles of
+    /// <c>Building</c> cover round the hall's door, the box read off the plaza's cover once (x 15 to 44, z 23 to 45 of the 64 × 64
+    /// grid, the door at 31, 45), as tall as eight tiles.
+    /// </summary>
+    public const string LeagueProp = "c09_league";
+
+    /// <summary>The plaza's chunk, read as quarters (<see cref="Bw2Maps.QuarterBigChunks"/>).</summary>
+    public const string LeagueChunk = "pokemon_league_pl_00_00";
+
+    /// <summary>The hall's box in the plaza's first quarter, and its height in tiles; null on every other chunk.</summary>
+    public static (int X, int Z, int Width, int Depth, float Height)? LeagueBox(string folder) =>
+        Bw2Maps.QuarterParts(folder) is (LeagueChunk, 0, 0) ? (15, 23, 30, 23, 8f) : null;
+
     /// <summary>Whether a texture's name is one of the towers'.</summary>
     public static bool IsTower(string? name) => name != null && Tower.IsMatch(name);
 

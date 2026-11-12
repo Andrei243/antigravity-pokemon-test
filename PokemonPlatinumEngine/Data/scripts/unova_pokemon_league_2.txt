@@ -3,7 +3,8 @@
 #
 # The statue in the well at the hall's heart is read from the floor south of it. Until the Elite Four are all beaten in this
 # challenge (VAR_UNOVA_LEAGUE_SHAUNTAL, _GRIMSLEY, _MARSHAL and _CAITLIN all 1) it only says so; then it sinks and carries the
-# challenger down to the way to the Champion's room (Black 2's own lift, played over a fade).
+# challenger down to the way to the Champion's room: Black 2's own lift, played on the statue (plan 22 · U12: the bars, the
+# camera on the well, light gathering round the statue and the challenger shaken as it starts to sink) before the warp's fade.
 
 
 script Statue
@@ -15,7 +16,17 @@ script Statue
   text "The statue is glowing. All four of the Elite Four have been beaten!"
   ask "Go down to the Champion?"
   if no end
+  scene "The statue's lift"
+  letterbox on 0.4
+  camera pan 31 43 0.8
+  sound "lift"
+  effect sparkles 31 43 1.6
+  shake player 6
   text "The statue sank slowly into the ground, carrying {player} with it..."
+  effect burst 31 43 0.8 wait
+  camera release 0.3
+  letterbox off 0.3
+  endscene
   warp "UnovaPokemonLeague_Descent" 31 84 up
   end
 label Waiting

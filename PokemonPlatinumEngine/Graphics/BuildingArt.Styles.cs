@@ -369,6 +369,13 @@ internal static partial class BuildingArt
             },
             // Hoenn's League at the top of Ever Grande City (plan 21 · H9): a hall of pale stone with its Center inside,
             // found at its door, under a deep blue hip roof with its name over the door
+            // Unova's League on its plaza (plan 22 · U12): a hall of pale stone stepped back in two tiers, violet's band and accent,
+            // its name over glass doors (style guide, "Kinds of building")
+            BuildingKind.League when b.Model == "c09_league" => new BuildingStyle
+            {
+                Wall = WallKind.PaleStone, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 3, Window = WindowKind.Arched, GlassDoor = true,
+                Band = true, Sign = SignKind.Text, SignText = "LEAGUE", Portal = 84, Accent = Rgb(98, 74, 150), Tiers = 2
+            },
             BuildingKind.League when town == Architecture.Bloomstone => new BuildingStyle
             {
                 Wall = WallKind.PaleStone, Roof = RoofShape.Hip, RoofColor = Rgb(52, 84, 160), Storeys = 2, Window = WindowKind.Arched,

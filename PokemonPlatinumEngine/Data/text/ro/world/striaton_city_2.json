@@ -71,6 +71,36 @@
           "Meniul pentru copii e cel mai bun din oraș."
         ]
       }
+    },
+    "cilan": {
+      "name": {
+        "en": [
+          "Cilan"
+        ],
+        "text": [
+          "Cilan"
+        ]
+      }
+    },
+    "chili": {
+      "name": {
+        "en": [
+          "Chili"
+        ],
+        "text": [
+          "Chili"
+        ]
+      }
+    },
+    "cress": {
+      "name": {
+        "en": [
+          "Cress"
+        ],
+        "text": [
+          "Cress"
+        ]
+      }
     }
   },
   "signs": {}

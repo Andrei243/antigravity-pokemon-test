@@ -837,8 +837,16 @@
       "note": "first spoken at UlaulaRoute15_AetherHouse.txt(18)",
       "provisional": true
     },
+    "chili": {
+      "note": "first spoken at striaton_city_2.txt(29)",
+      "provisional": true
+    },
     "chuck": {
       "note": "first spoken at cianwood_gym.txt(17)",
+      "provisional": true
+    },
+    "cilan": {
+      "note": "first spoken at striaton_city_2.txt(10)",
       "provisional": true
     },
     "cindy": {
@@ -4184,6 +4192,10 @@
         "pitch": 0.9,
         "accent": "en-us"
       }
+    },
+    "cress": {
+      "note": "first spoken at striaton_city_2.txt(48)",
+      "provisional": true
     },
     "cristin": {
       "note": "first spoken at phone.txt(350)",
@@ -11273,7 +11285,9 @@
     "Cheren": "cheren",
     "Cheryl": "cheryl",
     "Child": "child",
+    "Chili": "chili",
     "Chuck": "chuck",
+    "Cilan": "cilan",
     "Cindy": "cindy",
     "Citizen": "citizen",
     "Clair": "clair",
@@ -11301,6 +11315,7 @@
     "Cozmo's Wife": "cozmos_wife",
     "Craftswoman": "craftswoman",
     "Crasher Wake": "crasher_wake",
+    "Cress": "cress",
     "Cristin": "cristin",
     "Crystal Carver": "crystal_carver",
     "Cup Clerk": "cup_clerk",

@@ -732,4 +732,16 @@ public class UnovaTests
         Assert.Contains(MapNamed("SkyarrowGate_Castelia").Warps, w => w.TargetMap == "CasteliaCity" && !w.Shut);
         Assert.Contains(MapNamed("CasteliaCity").Warps, w => w.TargetMap == "SkyarrowGate_Castelia");
     }
+
+    /// <summary>Plan 22 · U12: the League's hall stands on its plaza as a building of ours, its doors those of the hall.</summary>
+    [Fact]
+    public void TheLeaguesHallStandsOnItsPlazaAsABuildingOfOurs()
+    {
+        var plaza = MapNamed("UnovaPokemonLeague");
+        var hall = Assert.Single(plaza.PlacedBuildings, b => b.Kind == BuildingKind.League && b.X0 <= 31 && b.X1 >= 31 && b.Y1 >= 44);
+        Assert.Equal("c09_league", hall.Model);
+        Assert.Equal("UnovaPokemonLeague_Hall", plaza.GetWarpAt(31, 45)?.TargetMap);
+        // the Pokémon Center's door beside it stays a way in
+        Assert.Equal("UnovaPokemonLeague_PokemonCenter", plaza.GetWarpAt(18, 47)?.TargetMap);
+    }
 }

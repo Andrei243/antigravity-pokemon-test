@@ -6,5 +6,7 @@ script Statue
   speaker none
   ask "Ride the statue back up to the hall?"
   if no end
+  sound "lift"
+  shake player 4
   warp "UnovaPokemonLeague_Hall" 31 46 down
   end

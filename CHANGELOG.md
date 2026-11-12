@@ -4,6 +4,12 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Join Avenue's visitors now ask to open shops in its empty bays: say yes and a raffle, dojo, salon, nursery or antique shop moves in, as many as the avenue's rank has room for. Every shop grows with what you spend there, widening its stock or doing more for your Pokémon.
+- Under Challenge, Unova's Gym Leaders, Elite Four and Iris now bring their own Challenge Mode teams, with an extra Pokémon and better-trained partners.
+- Route 23 has its six holes: push the valley's boulders into them with Strength to cross.
+- Unova's Pokémon League now stands as a great hall on its plaza, and the statue in its hall sinks with you as a lift.
+- Once you are Unova's Champion, Striaton's three brothers wait in their restaurant and each battles you once a day.
+- Drayden, Marlon, Benga and the Striaton brothers have looks of their own.
 - Three more regions keep a festival of their own: Garland Days in Hau'oli City (8 to 10 August), with lei arches, a dancer teaching the Z-Move poses and a stall; the Wool Fair in Wedgehurst's Pokémon Center (1 to 3 May), with hay bales, a fleece judge and a stall; and the Sheaf Feast in Jubilife Village (22 to 24 September), with the first sheaves of the harvest. Each leaves a gift at a Gift Runner, and every Pokémon Center in Galar now has a Gift Runner.
 - Grayfall Keep has a seventh bay: once you are Alola's Champion, Team Skull's Plumeria and Guzma are among the leaders who answered the rumour.
 - Once you are Sinnoh's Champion, twelve hideaways open under the Underground, two in each set of tunnels: a fern grotto, a lake cavern, a crystal hall, an ember hall and more, each home to Pokémon of its own types, standing about where you can see them. Their Pokémon change every day, and with the National Pokédex they include Pokémon from Kanto, Johto and Hoenn, among them the first partners of those regions.
