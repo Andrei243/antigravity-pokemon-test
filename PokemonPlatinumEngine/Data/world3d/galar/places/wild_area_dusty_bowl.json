@@ -1,0 +1,42 @@
+{
+  // Dusty Bowl (plan 33 · GL5, its second session): the Wild Area's northern half at its west end, a dry hollow of sand
+  // where the dust blows most days. Come to over the Stony Wilderness from Hammerlocke Hills. Its weather is the
+  // calendar's column of the same name. Our own hollow at about half the original's distances.
+  "markers": [
+    { "name": "dusty_bowl", "at": [-120, 23.3, -1106], "yaw": 270 }
+  ],
+  "zones": [
+    {
+      "name": "dusty_bowl",
+      "polygon": [[-148, -1140], [-96, -1140], [-96, -1072], [-148, -1072]],
+      "minY": 18, "maxY": 34,
+      "slots": [
+        { "species": "Hippopotas", "minLevel": 28, "maxLevel": 31, "weight": 20 },
+        { "species": "Drilbur", "minLevel": 28, "maxLevel": 31, "weight": 20 },
+        { "species": "Sandaconda", "minLevel": 30, "maxLevel": 32, "weight": 10 },
+        { "species": "Gurdurr", "minLevel": 29, "maxLevel": 31, "weight": 15 },
+        { "species": "Dugtrio", "minLevel": 29, "maxLevel": 31, "weight": 15, "weather": ["Clear", "Cloudy", "Drought"] },
+        { "species": "Trapinch", "minLevel": 28, "maxLevel": 30, "weight": 20, "weather": ["Sandstorm"] },
+        // The strong one, sunk in the middle of the hollow
+        { "species": "Hippowdon", "minLevel": 46, "maxLevel": 48, "weight": 2 }
+      ],
+      "rustle": [
+        { "species": "Drilbur", "minLevel": 28, "maxLevel": 31, "weight": 25 },
+        { "species": "Hippopotas", "minLevel": 28, "maxLevel": 31, "weight": 25 },
+        { "species": "Gurdurr", "minLevel": 29, "maxLevel": 31, "weight": 20 },
+        { "species": "Vibrava", "minLevel": 32, "maxLevel": 34, "weight": 10, "weather": ["Sandstorm"] }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "dusty_bowl_backpacker", "at": [-112, 26.3, -1080], "yaw": 180, "trainer": "galar_hiker_rhodri",
+      "lines": ["When the dust comes up you can't see your own boots. The Pokémon here love it.", "Lost in the dust, that's what I was."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-148, -1068], "kind": "pine", "size": 0.9 }
+  ]
+}

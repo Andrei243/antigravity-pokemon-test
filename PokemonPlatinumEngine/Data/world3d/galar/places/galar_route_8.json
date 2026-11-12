@@ -1,0 +1,56 @@
+{
+  // Route 8 (plan 33 · GL5, its second session): Route 7 goes on north past Ballonlea's walls as Route 8, through the
+  // fallen stones of an old settlement and up into the snow, to the pass into Circhester. Two trainers, the ruins'
+  // Pokémon and the snow's. Our own route at about half the original's distances. Scripts: Data/scripts/galar_route_8.txt
+  "markers": [
+    { "name": "route8_ruins", "at": [128, 26.3, -1320], "yaw": 180 },
+    { "name": "route8_north", "at": [131, 26.3, -1400], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "route_8_ruins",
+      "polygon": [[110, -1340], [152, -1340], [152, -1290], [110, -1290]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Haunter", "minLevel": 33, "maxLevel": 35, "weight": 15, "time": "Night" },
+        { "species": "Boldore", "minLevel": 33, "maxLevel": 35, "weight": 20 },
+        { "species": "Sawk", "minLevel": 33, "maxLevel": 35, "weight": 15 },
+        { "species": "Throh", "minLevel": 33, "maxLevel": 35, "weight": 15 },
+        { "species": "Hattrem", "minLevel": 33, "maxLevel": 35, "weight": 15 },
+        { "species": "Sirfetch'd", "minLevel": 35, "maxLevel": 36, "weight": 5 },
+        { "species": "Corsola-Galar", "minLevel": 33, "maxLevel": 35, "weight": 15 }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "route_8_snow",
+      "polygon": [[110, -1400], [152, -1400], [152, -1344], [110, -1344]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Darumaka-Galar", "minLevel": 34, "maxLevel": 36, "weight": 20 },
+        { "species": "Snom", "minLevel": 34, "maxLevel": 36, "weight": 25 },
+        { "species": "Vanillish", "minLevel": 34, "maxLevel": 36, "weight": 20 },
+        { "species": "Sneasel", "minLevel": 34, "maxLevel": 36, "weight": 20 },
+        { "species": "Cubchoo", "minLevel": 34, "maxLevel": 36, "weight": 15 }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "route8_worker", "at": [146, 26.3, -1300], "yaw": 270, "trainer": "galar_worker_idris",
+      "lines": ["These stones were somebody's houses, a thousand years back. Mind you don't trip!", "Tripped over my own feet, I did."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "route8_hiker", "at": [116, 26.3, -1376], "yaw": 90, "trainer": "galar_hiker_aled",
+      "lines": ["It's all snow from here to Circhester. Warm your hands on a battle first!", "Cold hands, colder loss."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [152, -1384], "kind": "pine", "size": 1.0 },
+    { "at": [110, -1396], "kind": "pine", "size": 1.1 },
+    { "at": [152, -1352], "kind": "pine", "size": 0.9 }
+  ]
+}

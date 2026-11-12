@@ -1,0 +1,80 @@
+{
+  "MissionGate1": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "Raihan's first rule: two Pokémon, one plan. Which do you send out to lead, the fast one or the strong one?"
+      ],
+      "text": [
+        "Prima regulă a lui Raihan: doi Pokémoni, un singur plan. Pe care îl trimiți primul, pe cel rapid sau pe cel puternic?"
+      ]
+    },
+    {
+      "en": [
+        "{player} answered that it depends on what the other side sends. The gym trainer grinned and stepped aside."
+      ],
+      "text": [
+        "{player} a răspuns că depinde de ce trimite cealaltă parte. Antrenorul arenei a zâmbit și s-a dat la o parte."
+      ]
+    }
+  ],
+  "MissionGate2": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "Raihan's second rule: the weather is a third partner. When the sand blows, who's glad of it?"
+      ],
+      "text": [
+        "A doua regulă a lui Raihan: vremea e al treilea partener. Când bate nisipul, cine se bucură?"
+      ]
+    },
+    {
+      "en": [
+        "{player} named the rock, ground and steel types that shrug the sand off. On through the gate!"
+      ],
+      "text": [
+        "{player} a numit tipurile rocă, pământ și oțel, pe care nisipul nu le atinge. Mai departe, prin poartă!"
+      ]
+    }
+  ],
+  "MissionGate3": [
+    {
+      "en": [
+        "Gym Trainer"
+      ],
+      "text": [
+        "Antrenor de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "Raihan's last rule: when your partner's in trouble, you cover them. Ready to prove it on his pitch?"
+      ],
+      "text": [
+        "Ultima regulă a lui Raihan: când partenerul tău e la necaz, îl acoperi. Gata să o dovedești pe terenul lui?"
+      ]
+    },
+    {
+      "en": [
+        "{player} said yes, without stopping to think. The mission is cleared!"
+      ],
+      "text": [
+        "{player} a spus da, fără să stea pe gânduri. Misiunea e încheiată!"
+      ]
+    }
+  ]
+}

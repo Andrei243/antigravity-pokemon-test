@@ -1,0 +1,56 @@
+# Route 9 (plan 33 · GL5, its second session), Circhester Bay's two shores, on the open world's engine: its places are
+# Data/world3d/galar/places/galar_route_9.json. The lines are our own, on Sword and Shield's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Circhester, Route 9, Spikemuth and Hammerlocke's stadium"). VAR_GALAR_STORY is
+# postwick.txt's count: 32 the sixth badge, 33 the bike fitted for the water, 34 Marnie at Spikemuth's gate.
+# FLAG_GALAR_BIKE_WATER is what lets the player onto the bay's deep water (OpenWorld/OpenGrants.cs, handed to the field every frame): a swim of
+# the player's own until the Rotom Bike has an engine of its own.
+
+
+# The mechanic on the east shore: fits the challenge's bike for the water once Circhester's gym is won
+script BikeKit
+  face bike_mechanic player
+  speaker "Mechanic"
+  if flag FLAG_GALAR_BIKE_WATER goto Fitted
+  if var VAR_GALAR_STORY < 32 goto NotYet
+  scene "The bike's water kit"
+  say "A challenger with six badges, and no way over the bay? Every League bike can take to the water. It only wants the kit."
+  say "Hand it here a minute... a float under each wheel, a turbine on the back... There! Off you go across."
+  text "{player}'s bike was fitted for the water! Circhester Bay can be crossed now."
+  setflag FLAG_GALAR_BIKE_WATER
+  setflag FLAG_GALAR_MARNIE_ROUTE_9
+  setvar VAR_GALAR_STORY 33
+  objective galarSpikemuth
+  endscene
+  end
+label NotYet
+  say "Water kits for League bikes, fitted while you wait. But only for challengers who've beaten Circhester's gym."
+  end
+label Fitted
+  say "The kit's holding up? Spikemuth's straight over the bay. Mind the cold if you fall in."
+  end
+
+
+# Spikemuth's gate on the west shore: its shutter down to everyone until Marnie, coming over the bay behind the player,
+# lifts it; then open
+script SpikemuthGate
+  if var VAR_GALAR_STORY >= 34 end
+  if var VAR_GALAR_STORY == 33 goto Marnie
+  text "The shutter over Spikemuth's gate is down and locked. Team Yell have painted it all over."
+  walkto player route9_gate_back
+  end
+label Marnie
+  scene "Marnie at the gate"
+  faceto player marnie_route9
+  text "The shutter over Spikemuth's gate was down and locked, and Team Yell's paint was all over it."
+  speaker "Marnie"
+  say "Sorry about that. Team Yell shut it so challengers can't get to my brother. They think they're helping."
+  say "They're not. Piers wants to battle you as much as anyone. Hang on."
+  text "Marnie knocked twice on the shutter, and it rattled up into the wall."
+  speaker "Marnie"
+  say "Spikemuth's Leader is up on the stage at the end of the street. Go on. I'll be there."
+  clearflag FLAG_GALAR_MARNIE_ROUTE_9
+  setflag FLAG_GALAR_MARNIE_SPIKEMUTH
+  setvar VAR_GALAR_STORY 34
+  objective galarPiers
+  endscene
+  end

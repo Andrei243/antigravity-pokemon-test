@@ -211,6 +211,8 @@ if (mode == "unova") h.UnovaMode();
 if (mode == "kalos") h.KalosMode();
 // Plan 30: what Kalos's gate left owed, grown and free (not part of all)
 if (mode == "kalosgrown") h.KalosGrownMode();
+// Plan 33 · GL5, its second session: Galar's places on the open world, a marker each (not part of all)
+if (mode == "galar") h.GalarMode();
 if (mode == "alola") h.AlolaMode();
 if (mode == "ulaula") h.UlaulaMode();
 // Plan 23 · Z6: the rest of Akala and a totem's battle

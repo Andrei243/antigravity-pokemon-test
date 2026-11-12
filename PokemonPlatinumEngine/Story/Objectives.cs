@@ -377,6 +377,13 @@ public static class Objectives
         (725, "galarStow", AtLeast("VAR_GALAR_STORY", 28), true),
         (726, "galarMural", AtLeast("VAR_GALAR_STORY", 29), true),
         (727, "galarOpal", AtLeast("VAR_GALAR_STORY", 30), true),
+        // Plan 33 · GL5, its second session: Circhester and its badge, the bike's water kit, Spikemuth and Piers, Raihan
+        (728, "galarCirchester", AtLeast("VAR_GALAR_STORY", 31), true),
+        (729, "galarSixth", AtLeast("VAR_GALAR_STORY", 32), true),
+        (730, "galarBike", AtLeast("VAR_GALAR_STORY", 33), true),
+        (731, "galarSpikemuth", AtLeast("VAR_GALAR_STORY", 34), true),
+        (732, "galarPiers", AtLeast("VAR_GALAR_STORY", 35), true),
+        (733, "galarRaihan", AtLeast("VAR_GALAR_STORY", 36), true),
         (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

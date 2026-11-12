@@ -1,0 +1,86 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Circhester Stadium! Gordie's gym mission is through the doors behind me. Watch the floor!"
+      ],
+      "text": [
+        "Bine ai venit la Stadionul Circhester! Misiunea arenei lui Gordie e dincolo de ușile din spatele meu. Ai grijă la podea!"
+      ]
+    },
+    {
+      "en": [
+        "A gym trainer stands at each of the course's gates. Pass each one's test, then Gordie awaits on the pitch."
+      ],
+      "text": [
+        "La fiecare poartă a traseului stă un antrenor al arenei. Treci de proba fiecăruia, apoi Gordie te așteaptă pe teren."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Circhester Stadium! Melony's gym mission is through the doors behind me. Wrap up warm!"
+      ],
+      "text": [
+        "Bine ai venit la Stadionul Circhester! Misiunea arenei lui Melony e dincolo de ușile din spatele meu. Îmbracă-te gros!"
+      ]
+    },
+    {
+      "en": [
+        "A gym trainer stands at each of the course's gates. Pass each one's test, then Melony awaits on the pitch."
+      ],
+      "text": [
+        "La fiecare poartă a traseului stă un antrenor al arenei. Treci de proba fiecăruia, apoi Melony te așteaptă pe teren."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on your sixth badge! Route 9 runs west of town, along the bay."
+      ],
+      "text": [
+        "Felicitări pentru a șasea insignă! Ruta 9 pornește la vest de oraș, de-a lungul golfului."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghid de Arenă"
+      ]
+    },
+    {
+      "en": [
+        "Gordie's Rock types are as tough as they come. Water, grass and fighting moves will crack them!"
+      ],
+      "text": [
+        "Pokémonii de tip Rocă ai lui Gordie sunt cât se poate de duri. Atacurile de apă, iarbă și luptă îi vor crăpa!"
+      ]
+    },
+    {
+      "en": [
+        "Melony's Ice types run cold. Fire, fighting, rock and steel moves will melt them!"
+      ],
+      "text": [
+        "Pokémonii de tip Gheață ai lui Melony sunt reci. Atacurile de foc, luptă, rocă și oțel îi vor topi!"
+      ]
+    },
+    {
+      "en": [
+        "Six badges! The bay west of town is too deep to wade. The mechanic on its shore can help."
+      ],
+      "text": [
+        "Șase insigne! Golful de la vest de oraș e prea adânc ca să-l treci prin apă. Mecanicul de pe mal te poate ajuta."
+      ]
+    }
+  ]
+}

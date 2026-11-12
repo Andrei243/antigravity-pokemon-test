@@ -948,7 +948,13 @@
     "galarStow": "Win the fourth badge at Stow-on-Side Stadium.",
     "galarMural": "Something is happening at the mural on the hill above Stow-on-Side.",
     "galarOpal": "Through Glimwood Tangle to Ballonlea, and win the Fairy Badge from Opal.",
-    "galarFree": "That is as far as the road runs for now. Galar from Postwick to Ballonlea is yours to explore."
+    "galarCirchester": "Out of Hammerlocke's east gate, north along Routes 7 and 8 to Circhester.",
+    "galarSixth": "Win Circhester Stadium's badge, up the street north of the Hero's Bath.",
+    "galarBike": "Find the mechanic on Route 9's shore, west of Circhester, to fit the bike for the water.",
+    "galarSpikemuth": "Cross Circhester Bay to Spikemuth's gate on the far shore.",
+    "galarPiers": "Through Spikemuth's street to the stage, and win the Dark Badge from Piers.",
+    "galarRaihan": "Back to Hammerlocke, and win the Dragon Badge from Raihan in its stadium.",
+    "galarFree": "That is as far as the road runs for now. Galar from Postwick to Spikemuth is yours to explore."
   },
 
   "close": {
