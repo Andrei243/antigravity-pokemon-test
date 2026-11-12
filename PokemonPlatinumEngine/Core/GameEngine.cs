@@ -179,7 +179,9 @@ public enum GameState
     /// <summary>The photo tour's report, a script's <c>tour report</c> waiting on it (plan 44 · SD6).</summary>
     TourReport,
     /// <summary>The Stroll Counter's screen, from the bag or the item button (plan 35 · BN7).</summary>
-    StrollCounter
+    StrollCounter,
+    /// <summary>A flight over the region from Fly's choice (plan 38 · EX7).</summary>
+    Soaring
 }
 
 public partial class GameEngine
@@ -1568,7 +1570,9 @@ public partial class GameEngine
                     ScanForVisitor();
                     flow.TownMapScreen.SetReport(FieldReportNow());
                 }
-                if (flow.TownMapScreen.TakeChoice() is { } town)
+                // SOAR on the item button (plan 38 · EX7): the flight begins, or the map says why not
+                if (flow.TownMapScreen.TakeSoar()) BeginSoaring();
+                else if (flow.TownMapScreen.TakeChoice() is { } town)
                 {
                     flow.FlyTarget = town;
                     flow.State = GameState.Overworld;
@@ -1808,6 +1812,9 @@ public partial class GameEngine
                 break;
             case GameState.StrollCounter:
                 UpdateStroll(dt);
+                break;
+            case GameState.Soaring:
+                UpdateSoaring(dt);
                 break;
             case GameState.MissionBoard:
                 UpdateMissionBoard(dt);
@@ -2376,6 +2383,8 @@ public partial class GameEngine
         if (IsUnderground && UndergroundStep()) return true;
         // A step in a hideaway: a wall that holds something today glints as the player comes near it (plan 38 · EX6, part b)
         HideawayStep();
+        // A step onto a place of the day's beacon lifts the player back into the sky (plan 38 · EX7, part b)
+        if (flow.SkyPlaceMap != null && flow.Map == flow.SkyPlaceMap && SkyBeaconStep()) return true;
         // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
         flow.Pastimes.Steps++;
         flow.Statistics.Count(Statistics.StepKey(flow.Player.Mode));
@@ -3443,6 +3452,11 @@ public partial class GameEngine
         {
             flow.SalonScreen.Render(renderContext);
         }
+        else if (scene == GameState.Soaring)
+        {
+            // The sky a flight is seen in, a scene of its own (plan 38 · EX7)
+            RenderSoaring();
+        }
         else if (scene == GameState.PhotoTour)
         {
             // The photo tour's course, a scene of its own like the battle's (plan 44 · SD5)
@@ -3744,6 +3758,9 @@ public partial class GameEngine
                 break;
             case GameState.StrollCounter:
                 flow.StrollScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Soaring:
+                DrawSoaring();
                 break;
             case GameState.Powers:
                 flow.PowersScreen.Draw(VirtualWidth, VirtualHeight);

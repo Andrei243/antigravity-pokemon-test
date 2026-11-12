@@ -1584,7 +1584,9 @@ public sealed class RegionChain
         Regions.FirstOrDefault(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase));
 
     public Region? RegionOfMap(string mapName) =>
-        Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
+        // A place of the day in the sky is laid on its region's own map as it is landed on (plan 38 · EX7, part b)
+        Overworld.SkyPlaces.RegionOfMap(mapName) is { } sky ? Regions.FirstOrDefault(r => string.Equals(r.Id, sky, StringComparison.OrdinalIgnoreCase))
+            : Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
 
     public RegionLink? LinkFrom(string regionId) =>
         Links.FirstOrDefault(l => l.Kind == LinkKind.Next && string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));

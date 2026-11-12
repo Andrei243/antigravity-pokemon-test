@@ -34,6 +34,7 @@ public class SchemaTests
         ("model-options.schema.json", typeof(ImportOptions), "A model file's options (overrides/models/<model>.json)"),
         ("materials.schema.json", typeof(MaterialsFile), "The crafting kit's materials (Data/materials.json)"),
         ("statues.schema.json", typeof(StatueFile), "The hideaways' statues (Data/statues.json)"),
+        ("skyplaces.schema.json", typeof(PokemonPlatinumEngine.Overworld.SkyPlacesFile), "The places of the day's tables and finds (Data/skyplaces.json, plan 38 · EX7)"),
         ("recipes.schema.json", typeof(RecipesFile), "The crafting kit's recipes (Data/recipes.json)"),
         ("powers.schema.json", typeof(PowersFile), "The timed powers' strengths (Data/powers.json)"),
         ("training.schema.json", typeof(TrainingFile), "The training club's tables: the drills' prizes (Data/training.json)"),

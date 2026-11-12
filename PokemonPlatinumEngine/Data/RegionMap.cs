@@ -51,6 +51,21 @@ public sealed class RegionMapFile
     /// overworld has none.
     /// </summary>
     public Dictionary<string, string> Islands { get; set; } = new();
+
+    /// <summary>
+    /// The region's places of the day in the sky (plan 38 · EX7, part b): cells over sea and mountain, each of a kind
+    /// (<c>Islet</c>, <c>Grove</c>, <c>Hollow</c>, <c>Peak</c>), two or three lit a day by <see cref="Overworld.SkyPlaces.Lit"/>.
+    /// Optional: a region with none has no places of the day.
+    /// </summary>
+    public List<RegionSkyRecord> Sky { get; set; } = new();
+}
+
+/// <summary>A place of the day's cell and kind (plan 38 · EX7, part b).</summary>
+public sealed class RegionSkyRecord
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public string Kind { get; set; } = "";
 }
 
 /// <summary>A place the map leaves out until a variable of the story holds its number.</summary>
@@ -169,6 +184,9 @@ public sealed class RegionMap
     public IReadOnlyList<RegionBlock> Blocks { get; }
     public IReadOnlyList<RegionFlySpot> FlySpots { get; }
 
+    /// <summary>The places of the day in the sky (plan 38 · EX7, part b), numbered in the file's order.</summary>
+    public IReadOnlyList<Overworld.SkyPlace> SkyPlaces { get; }
+
     /// <summary>The marker of an open map Fly lands on for a spawn location (plan 32 · OW10), or null where it lands on the spawn's tile.</summary>
     public string? FlyMarkerOf(int spawn) => FlySpots.FirstOrDefault(f => f.Spawn == spawn)?.Marker;
 
@@ -240,6 +258,9 @@ public sealed class RegionMap
             spots.Add(new RegionFlySpot(f.Spawn, cells, f.Flag, f.Unseen, string.IsNullOrWhiteSpace(f.Marker) ? null : f.Marker));
         }
         FlySpots = spots;
+        SkyPlaces = file.Sky.Select((k, i) => new Overworld.SkyPlace(region, i, k.X, k.Y,
+            Enum.TryParse<Overworld.SkyPlaceKind>(k.Kind, true, out var kind) ? kind
+                : throw new InvalidDataException($"The map of {region}: the sky's place {i} has no kind of place '{k.Kind}'."))).ToList();
 
         foreach (var (name, text) in file.Places)
         {
