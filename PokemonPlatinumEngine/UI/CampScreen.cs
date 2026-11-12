@@ -15,7 +15,9 @@ public enum CampRequest
     None,
     /// <summary>The player chose to feed the Pokémon under the cursor: the bag opens on the berries.</summary>
     Feed,
-    Close
+    Close,
+    /// <summary>The player chose to look after the Pokémon under the cursor close up (plan 35 · BN2).</summary>
+    Care
 }
 
 /// <summary>What the camp's screen shows: the team, the pot's pantry (choosing what goes in), the pot on the fire, the dish served.</summary>
@@ -140,6 +142,20 @@ public sealed class CampScreen
         AudioManager.PlaySound("select");
         AudioManager.PlayCry(p, CryMode.FieldEvent);
         return true;
+    }
+
+    /// <summary>Confirm opens the close-up of the one under the cursor (plan 35 · BN2); an Egg stays warm by the fire.</summary>
+    public void AskToCare()
+    {
+        if (Selected is not { } p) return;
+        if (p.IsEgg)
+        {
+            Note = Text.Of("camp.note.egg");
+            AudioManager.PlaySound("error");
+            return;
+        }
+        request = CampRequest.Care;
+        AudioManager.PlaySound("select");
     }
 
     /// <summary>The player chose to feed the one under the cursor: the engine opens the bag's berries and hands one to <see cref="Feed"/>.</summary>
@@ -433,7 +449,7 @@ public sealed class CampScreen
         }
         int dx = InputManager.Axis(GameAction.Left, GameAction.Right), dy = InputManager.Axis(GameAction.Up, GameAction.Down);
         if (dx != 0 || dy != 0) MoveCursor(dx, dy);
-        else if (InputManager.IsActionPressed(GameAction.Confirm)) Pet();
+        else if (InputManager.IsActionPressed(GameAction.Confirm)) AskToCare();
         else if (InputManager.IsActionPressed(GameAction.Item)) AskToFeed();
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
     }

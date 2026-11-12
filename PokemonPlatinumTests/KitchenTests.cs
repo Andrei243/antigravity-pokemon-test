@@ -306,7 +306,7 @@ public class KitchenTests
     private static GameEngine Headless(bool follower)
     {
         Dice.Seed(41);
-        var engine = new GameEngine(new GameSettings { Muted = true, Follower = follower });
+        var engine = new GameEngine(new GameSettings { Muted = true, Follower = follower, Care = RulesDefault.Off });
         engine.InitializeHeadless();
         engine.PeopleStayPut = true;
         engine.NewGameRegion = "Sinnoh";

@@ -505,6 +505,19 @@
         "on": "Before a battle beside a partner, you are asked whether a friend will choose for them. A second pad answers the friend's turns."
       }
     },
+    "care": {
+      "label": "Team care",
+      "value": {
+        "Off": "Off",
+        "Rules": "By the rules",
+        "On": "On"
+      },
+      "help": {
+        "Off": "CAMP is in the start menu only while a Pokémon walks behind you.",
+        "Rules": "Platinum's rules keep the start menu as it is; the modern rules add CAMP, where you can look after each Pokémon close up.",
+        "On": "The start menu has CAMP, where you can pet, feed, brush and treat each Pokémon of the team close up."
+      }
+    },
     "battleCamera": {
       "label": "Battle camera",
       "value": {
@@ -954,9 +967,67 @@
     }
   },
 
+  "care": {
+    "title": "CARE",
+    "hint": {
+      "hold": "Hold",
+      "tool": "Tool"
+    },
+    "keys": {
+      "tool": "Q / E"
+    },
+    "fullness": "FULL",
+    "mood": "MOOD",
+    "moodWord": {
+      "Glum": "GLUM",
+      "Low": "LOW",
+      "Calm": "CALM",
+      "Cheerful": "CHEERFUL",
+      "Elated": "ELATED"
+    },
+    "tool": {
+      "Hand": "HAND",
+      "Treat": "TREAT",
+      "Brush": "BRUSH",
+      "Cloth": "CLOTH",
+      "Medicine": "MEDICINE",
+      "help": {
+        "Hand": "Hold Z and stroke it. It has a spot it likes best.",
+        "Treat": "Press Z to give it a berry or a treat from the bag.",
+        "Brush": "Hold Z and brush off dust, leaves and snow.",
+        "Cloth": "Hold Z and wipe off mud and wet.",
+        "Medicine": "Press Z on it to treat a condition."
+      }
+    },
+    "note": {
+      "welcome": "{name} looks up at you.",
+      "reach": "Reach out to it first.",
+      "cured": "{name} feels much better!",
+      "nothingToCure": "{name} has nothing that needs treating.",
+      "petted": "{name} leans into your hand, happy.",
+      "pettedAgain": "{name} closes its eyes and enjoys it.",
+      "wrongTool": {
+        "Brush": "The brush won't shift that. Try the cloth.",
+        "Cloth": "The cloth won't shift that. Try the brush."
+      },
+      "cleaned": {
+        "Dust": "The dust is gone from {name}'s coat.",
+        "Mud": "The mud is wiped off {name}.",
+        "Leaves": "The leaves are picked out of {name}'s coat.",
+        "Wet": "{name} is dry again.",
+        "Snow": "The snow is brushed off {name}."
+      },
+      "ate": {
+        "Plain": "{name} ate the {item}.",
+        "Liked": "{name} loved the {item}!",
+        "Disliked": "{name} ate the {item}, but made a face."
+      }
+    }
+  },
+
   "camp": {
     "title": "CAMP",
-    "hint": { "pet": "Pet", "feed": "Feed", "cook": "Cook" },
+    "hint": { "pet": "Look after", "feed": "Feed", "cook": "Cook" },
     "friendship": "FRIENDSHIP",
     "petted": "PETTED",
     "fed": "FED",

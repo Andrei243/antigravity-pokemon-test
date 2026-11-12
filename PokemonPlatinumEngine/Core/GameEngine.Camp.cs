@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI;
@@ -19,7 +20,10 @@ public partial class GameEngine
     /// Whether the start menu offers CAMP now: a Pokémon on the team, and the options' FOLLOWER row on or the crafting kit in
     /// the bag (plan 39 · CR6, whose pot is the camp's: so the start menu is as it was until Sinnoh's Hall of Fame).
     /// </summary>
-    internal bool HasCamp => (Settings.Follower || HasCraftingKit) && flow.Party.Count > 0;
+    internal bool HasCamp => (Settings.Follower || CareOn || HasCraftingKit) && flow.Party.Count > 0;
+
+    /// <summary>The options' TEAM CARE row in force (plan 35 · BN2, decision 1): on unless turned off under the modern rules.</summary>
+    internal bool CareOn => Overworld.FieldHelp.On(Settings.Care, Ruleset.Current.Preset);
 
     /// <summary>Opens the camp with the team: the visit's cure, if a battle came between, is the screen's first line.</summary>
     internal void OpenCamp()
@@ -43,6 +47,9 @@ public partial class GameEngine
                 flow.BagScreen.Registered = flow.RegisteredItem;
                 flow.BagScreen.OpenToPick("berries");
                 return;
+            case CampRequest.Care:
+                OpenCare();
+                return;
             case CampRequest.Close:
                 flow.State = GameState.Overworld;
                 return;
@@ -57,5 +64,60 @@ public partial class GameEngine
         if (berry != null) flow.CampScreen.Feed(berry, flow.Bag);
         else flow.CampScreen.NoBerryChosen();
         flow.State = GameState.Camp;
+    }
+
+    // ------------------------------------------------------------------ the care close-up (plan 35 · BN2)
+
+    // The bag is open to choose a berry or a treat for the Pokémon close up
+    private bool choosingForCare;
+
+    /// <summary>
+    /// Opens the close-up of the Pokémon under the camp's cursor: its model is asked for (never in a headless game, which
+    /// renders nothing), and the still sprite stands in until it is built.
+    /// </summary>
+    internal void OpenCare()
+    {
+        if (flow.CampScreen.Selected is not { } p) return;
+        if (!flow.CareScreen.Open(p, flow.Care, CareDay, GameClock.IsNight)) return;
+        if (!IsHeadless)
+        {
+            PokemonModels.Request(p.LookName);
+            PokemonSprites.Request(p.LookName);
+        }
+        flow.State = GameState.Care;
+    }
+
+    private void UpdateCare(float dt)
+    {
+        flow.CareScreen.Update(dt);
+        switch (flow.CareScreen.TakeRequest())
+        {
+            case CareRequest.Treat:
+                choosingForCare = true;
+                flow.State = GameState.BagMenu;
+                flow.BagScreen.Registered = flow.RegisteredItem;
+                flow.BagScreen.OpenToPick("berries");
+                return;
+            case CareRequest.Close:
+                CloseCare();
+                return;
+        }
+        if (!flow.CareScreen.IsActive) CloseCare();
+    }
+
+    // Back to the camp, its picture let go
+    private void CloseCare()
+    {
+        if (!IsHeadless) flow.CareScreen.Unload();
+        flow.State = GameState.Camp;
+    }
+
+    // The bag put away: what was picked is eaten, and the close-up is back
+    private void PickedForCare(ItemData? item)
+    {
+        choosingForCare = false;
+        if (item != null) flow.CareScreen.Feed(item, flow.Bag);
+        else flow.CareScreen.NothingPicked();
+        flow.State = GameState.Care;
     }
 }

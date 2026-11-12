@@ -153,7 +153,9 @@ public enum GameState
     /// <summary>The Power Watch's panel, from the bag or the item button (plan 36 · TR8).</summary>
     Powers,
     /// <summary>The hub's Week's Work read, a script's <c>missions open</c> waiting on it (plan 41 · EG6).</summary>
-    MissionBoard
+    MissionBoard,
+    /// <summary>One Pokémon of the camp close up: petted by hand, fed, brushed and cured (plan 35 · BN2).</summary>
+    Care
 }
 
 public partial class GameEngine
@@ -1505,6 +1507,7 @@ public partial class GameEngine
                 else if (!flow.BagScreen.IsActive && choosingBerryToCook && flow.BagScreen.TakePick(out var toCook)) BerryChosenToCook(toCook);
                 else if (!flow.BagScreen.IsActive && choosingBerryToBlend && flow.BagScreen.TakePick(out var toBlend)) BerryChosenToBlend(toBlend);
                 else if (!flow.BagScreen.IsActive && choosingBerryForCamp && flow.BagScreen.TakePick(out var toFeed)) BerryChosenForCamp(toFeed);
+                else if (!flow.BagScreen.IsActive && choosingForCare && flow.BagScreen.TakePick(out var toEat)) PickedForCare(toEat);
                 else if (!flow.BagScreen.IsActive && flow.BagScreen.TakePick(out var picked))
                 {
                     // A script that asked for an item hears which (plan 06 · R14a)
@@ -1775,6 +1778,9 @@ public partial class GameEngine
                 break;
             case GameState.Camp:
                 UpdateCamp(dt);
+                break;
+            case GameState.Care:
+                UpdateCare(dt);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Update(dt);
@@ -3278,6 +3284,11 @@ public partial class GameEngine
         {
             flow.Credits.Render(renderContext);
         }
+        else if (scene == GameState.Care)
+        {
+            // The care close-up's model, a scene of its own as the gallery's (plan 35 · BN2)
+            flow.CareScreen.Render(renderContext);
+        }
         else if (scene == GameState.Gallery)
         {
             // The gallery's model, a scene of its own like the evolution's (plan 12 · Q30)
@@ -3416,6 +3427,9 @@ public partial class GameEngine
                 break;
             case GameState.Camp:
                 flow.CampScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Care:
+                flow.CareScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Draw(VirtualWidth, VirtualHeight);

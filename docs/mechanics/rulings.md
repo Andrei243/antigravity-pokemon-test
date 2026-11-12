@@ -11230,3 +11230,14 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   from 70 to 220 in no fewer than seven days (`CareTests`).
 - **Nothing is drawn**: no rule of the book draws from `Dice` or the field's generator, so no wild Pokémon, battle or
   shot moves for it.
+- **The close-up** (plan 35 · BN2; `UI/CareScreen.cs`, `Graphics/CareStage.cs`): the camp's Confirm opens it on the
+  Pokémon under the cursor. The hand held and moved over the body (the box of its silhouette on the picture, a tenth in
+  from each side) strokes it; strokes over the spot its body plan likes (a biped's, a serpent's and a floater's head, a
+  quadruped's back, a bird's neck, a fish's fin; within 0.12 of the picture's width) count double, and 1.2 picture widths
+  of strokes make a pat (`CareRules.Pat`: the mood every time, the friendship once a day). The brush takes dust, leaves
+  and snow and the cloth mud and wet, 0.9 picture widths of strokes over a mark; the wrong tool says so and wears
+  nothing. The medicine, pressed over the body, is the book's cure. TREAT asks the bag's berries (BN3 adds the treats).
+  At night, or glum or low, it is sleepy. **TEAM CARE** (decision 1, `OptionRow.Care`, a `RulesDefault`): CAMP is in the
+  start menu while the FOLLOWER row is on, TEAM CARE is in force (on under the modern rules unless turned off) or the
+  crafting kit is in the bag. The start menu's rows are 74 tall up to ten entries and shorter beyond, so eleven or twelve
+  still fit the screen.

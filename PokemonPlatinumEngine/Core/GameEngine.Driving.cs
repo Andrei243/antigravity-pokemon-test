@@ -455,6 +455,9 @@ public partial class GameEngine
         public CareBook Care => game.flow.Care;
         public int CareDay => game.CareDay;
         public CampCare CampCare => game.flow.CampCare;
+        /// <summary>The care close-up (plan 35 · BN2), and the camp's way into it for the Pokémon under its cursor.</summary>
+        public CareScreen CareCloseUp => game.flow.CareScreen;
+        public void OpenCare() => game.OpenCare();
         public void OpenJobs() => game.OpenJobs();
         /// <summary>The Global Link counter (plan 07 · O5, O7), opened as its attendant's script opens it, on the options' server.</summary>
         public GlobalLinkScreen GlobalLink => game.flow.GlobalLinkScreen;
