@@ -35,6 +35,16 @@
           "Bereturile de aici sunt ultimul răcnet al modei. Nu pot niciodată să aleg o singură culoare!"
         ]
       }
+    },
+    "9,4": {
+      "name": {
+        "en": [
+          "Dyer"
+        ],
+        "text": [
+          "Vopsitorul"
+        ]
+      }
     }
   },
   "signs": {}

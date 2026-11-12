@@ -5331,6 +5331,18 @@ way -
   Clerk> Try on anything you like. Whatever you buy is yours to keep, and you can change into it at home whenever you wish.
   Clerk> Thank you for stopping by! Do come again.
   * open Wardrobe jubilife
+=== JubilifeBoutique.Dyer
+from Dyer at 9,4 of JubilifeBoutique
+way -
+  Dyer> A garment of yours, a berry and a little money, and I'll dye it any colour on my shelf.
+  Dyer> Hang it to dry in the sun and it'll keep its colour for good.
+  * open Wardrobe dye:jubilife
+=== JubilifeBoutique.Stylist
+from Stylist at 1,4 of JubilifeBoutique
+way -
+  Stylist> Welcome to the chair! A new cut, a new colour, new eyes or a new tone: sit down and we'll find your look.
+  Stylist> There! Every mirror in Jubilife will want a second look.
+  * open Wardrobe salon
 === JubilifeCityCondominiums1F.QuickClaw
 from Beauty at 8,6 of JubilifeCityCondominiums1F
 way -
@@ -6192,6 +6204,12 @@ way -
   Clerk> Do try on whatever catches your eye. What you buy is yours to change into at home whenever you wish.
   Clerk> Merci! Do come back when the new season arrives.
   * open Wardrobe lumiose
+=== LumioseCity_Boutique.Dyer
+from Dyer at 9,4 of LumioseCity_Boutique
+way -
+  Dyer> Bonjour! Bring me a garment and the right berry, and I'll steep it in any colour you please.
+  Dyer> Magnifique. Lumiose will notice, I promise.
+  * open Wardrobe dye:lumiose
 === LumioseCity_CafeKizahashi.Kizahashi
 from Owner at 5,4 of LumioseCity_CafeKizahashi
 way -
@@ -20751,6 +20769,10 @@ from Galactic Grunt at 163,641 of Sinnoh
 way -
   Galactic Grunt> Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?
   Galactic Grunt> Quit moaning. Orders are orders. Now look tough, there's a kid watching.
+=== floaroma_town.PhotoSpot
+from the tile read at 182,662 of Sinnoh
+way -
+  * photo spot sinnoh_floaroma_flowers
 === floccesy_ranch_2.ACry
 from the trigger at 41,14 of FloccesyRanch
 from the trigger at 43,12 of FloccesyRanch
@@ -23913,6 +23935,10 @@ from the trigger at 188,757 of Sinnoh
 way -
   Looker> You have business at the Trainers' School first, I think. Your friend is waiting there.
   * emote Looker Exclaim
+=== jubilife_city.PhotoSpot
+from the tile read at 174,760 of Sinnoh
+way -
+  * photo spot sinnoh_jubilife_fountain
 === jubilife_city.PoketchCampaign
 from the trigger at 172,776 of Sinnoh
 way -
@@ -28762,6 +28788,10 @@ way 0
   + beaten unova_veteran_lucius
 way 1, from answer 1
   * battle unova_veteran_lucius Lost
+=== oreburgh_city.PhotoSpot
+from the tile read at 308,753 of Sinnoh
+way -
+  * photo spot sinnoh_oreburgh_museum
 === oreburgh_city.Rival
 from {rival} at 282,757 of Sinnoh
 way -
@@ -34944,6 +34974,10 @@ way -
   + FLAG_HIDE_SANDGEM_TOWN_RIVAL
   = VAR_SANDGEM_TOWN_STATE 0 -> 1
   + seen sandgem_town.The assistant
+=== sandgem_town.PhotoSpot
+from the tile read at 175,848 of Sinnoh
+way -
+  * photo spot sinnoh_sandgem_lab
 === santalune_city.Neighbour
 from the trigger at 319,526 of Kalos
 way 0
@@ -37861,6 +37895,10 @@ way -
   Guitarist> Whoa, hold on! Barry was out here a minute ago, looking all over for you.
   Guitarist> He went back home. Don't you want to know what he wanted?
   * emote Guitarist Exclaim
+=== twinleaf_town.PhotoSpot
+from the tile read at 113,889 of Sinnoh
+way -
+  * photo spot sinnoh_twinleaf_pond
 === twinleaf_town.RivalRunsOut
 from the trigger at 105,876 of Sinnoh
 way -

@@ -220,6 +220,14 @@ public partial class GameEngine
         /// <summary>A photo spot read by a tool, as its plate's script reads it.</summary>
         public bool OpenPhotoAtSpot(string id) => game.OpenPhotoAtSpot(id);
 
+        /// <summary>Photo mode's A pressed by a tool: the next frame is taken, and kept in the book.</summary>
+        public bool TakePhoto()
+        {
+            if (game.photo == null || !game.AskForScreenshot()) return false;
+            game.bookPhotoWanted = true;
+            return true;
+        }
+
         /// <summary>The last photograph the book kept; null before any.</summary>
         public string? LastBookPhoto => game.LastBookPhoto;
     }

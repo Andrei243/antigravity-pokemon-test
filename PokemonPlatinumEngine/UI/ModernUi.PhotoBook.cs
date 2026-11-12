@@ -37,22 +37,22 @@ internal static partial class ModernUi
         Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), tabs.ToArray(), screen.Tab);
 
         var page = screen.PageNow;
-        const float top = ContentTop + 100, cellW = 560, cellH = 380, gap = 32;
+        const float top = ContentTop + 100, cellW = 560, cellH = 392, gap = 32, rowGap = 20;
         float left = (sw - (cellW * PhotoBookScreen.Columns + gap * (PhotoBookScreen.Columns - 1))) / 2f;
         if (page.Count == 0)
             UiFonts.DrawCentered(Text.Of("photoBook.empty"), Margin + 40, top + 200, 34, Color.White, UiWeight.Black);
         for (int i = 0; i < page.Count; i++)
         {
             int at = screen.Page * PhotoBookScreen.PerPage + i;
-            var cell = new Rectangle(left + (i % PhotoBookScreen.Columns) * (cellW + gap), top + (i / PhotoBookScreen.Columns) * (cellH + gap), cellW, cellH);
+            var cell = new Rectangle(left + (i % PhotoBookScreen.Columns) * (cellW + gap), top + (i / PhotoBookScreen.Columns) * (cellH + rowGap), cellW, cellH);
             bool selected = at == screen.Index && !screen.Opened;
             UiShapes.Shape(cell, 18, new Color(252, 248, 238, 255), new Color(240, 234, 220, 255), selected ? Selection : Rule, selected ? 6 : 3);
             var picture = new Rectangle(cell.X + 20, cell.Y + 20, cellW - 40, (cellW - 40) * 9f / 16f);
             PhotoPicture(picture, page[i], pictureOf(page[i].SmallFile));
             string place = PhotoPlace(page[i]);
-            UiFonts.Draw(place, cell.X + 22, picture.Y + picture.Height + 16, 26, Ink, UiWeight.Black);
-            UiFonts.Draw(Words.Date(page[i].Day), cell.X + 22, picture.Y + picture.Height + 50, 20, Muted, UiWeight.Bold);
-            if (page[i].Spot != null) Tag(cell.X + cellW - 22 - UiFonts.Measure(Text.Of("photoBook.spotTag"), 20, UiWeight.Black) - 34, picture.Y + picture.Height + 14, Text.Of("photoBook.spotTag"), Gold, 34);
+            UiFonts.Draw(place, cell.X + 22, picture.Y + picture.Height + 10, 26, Ink, UiWeight.Black);
+            UiFonts.Draw(Words.Date(page[i].Day), cell.X + 22, picture.Y + picture.Height + 44, 20, Muted, UiWeight.Bold);
+            if (page[i].Spot != null) Tag(cell.X + cellW - 22 - UiFonts.Measure(Text.Of("photoBook.spotTag"), 20, UiWeight.Black) - 34, picture.Y + picture.Height + 12, Text.Of("photoBook.spotTag"), Gold, 34);
         }
         string foot = Text.Of("photoBook.foot", ("page", screen.Page + 1), ("pages", screen.Pages), ("count", screen.Total), ("of", PhotoBook.Capacity));
         UiFonts.Draw(foot, sw - Margin - UiFonts.Measure(foot, 24, UiWeight.Black), ContentBottom - 20, 24, new Color(220, 228, 246, 255), UiWeight.Black);

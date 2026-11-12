@@ -110,6 +110,9 @@ public class PhotoModeTests
     {
         var p = Outdoors();
         p.MoveRow(-1);
+        // POSE and FACE stand after FRAME (plan 43 · LF4)
+        Assert.Equal(PhotoRow.Face, p.Row);
+        p.MoveRow(-2);
         Assert.Equal(PhotoRow.Frame, p.Row);
         foreach (var frame in new[] { PhotoFrame.Mat, PhotoFrame.Cinema, PhotoFrame.None })
         {

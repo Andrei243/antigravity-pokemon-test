@@ -4014,8 +4014,20 @@
     },
     "cup_clerk": {
       "note": "the stadium's cup clerk (plan 37 · FC7)",
-      "brief": { "register": "woman", "age": "young", "pitch": "middle", "pace": "brisk", "manner": "a cheerful clerk at the stadium's cups desk, quick and clear" },
-      "design": { "engine": "kokoro-82m", "blend": "af_heart:0.6,af_bella:0.4", "speed": 1.02, "pitch": 1.0, "accent": "en-us" }
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "brisk",
+        "manner": "a cheerful clerk at the stadium's cups desk, quick and clear"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.6,af_bella:0.4",
+        "speed": 1.02,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "curator": {
       "note": "first spoken at lilycove_city_lilycove_museum_1f.txt(9)",
@@ -4316,6 +4328,10 @@
         "pitch": 1.016,
         "accent": "en-us"
       }
+    },
+    "dyer": {
+      "note": "first spoken at JubilifeBoutique.txt(27)",
+      "provisional": true
     },
     "dylan": {
       "note": "first spoken at phone.txt(280)",
@@ -9629,8 +9645,20 @@
     },
     "round_clerk": {
       "note": "the stadium's round clerk (plan 37 · FC7)",
-      "brief": { "register": "man", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a formal clerk who announces each Leader of the round like a referee" },
-      "design": { "engine": "kokoro-82m", "blend": "am_michael:0.6,am_eric:0.4", "speed": 0.98, "pitch": 0.98, "accent": "en-us" }
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a formal clerk who announces each Leader of the round like a referee"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_eric:0.4",
+        "speed": 0.98,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "rowan": {
       "note": "Professor Rowan, also the introduction's professor.",
@@ -9995,8 +10023,20 @@
     },
     "sparring_coach": {
       "note": "the stadium's sparring coach (plan 37 · FC7)",
-      "brief": { "register": "man", "age": "adult", "pitch": "low", "pace": "brisk", "manner": "a hearty martial-arts coach, loud and encouraging" },
-      "design": { "engine": "kokoro-82m", "blend": "am_onyx:0.6,am_adam:0.4", "speed": 1.0, "pitch": 0.94, "accent": "en-us" }
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "brisk",
+        "manner": "a hearty martial-arts coach, loud and encouraging"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,am_adam:0.4",
+        "speed": 1,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
     },
     "stall_keeper": {
       "note": "first spoken at common.txt(2892)",
@@ -10723,6 +10763,7 @@
     "Drayden": "drayden",
     "Dulse": "dulse",
     "Dusty": "dusty",
+    "Dyer": "dyer",
     "Dylan": "dylan",
     "Edwin": "edwin",
     "Elder": "elder",

@@ -40,5 +40,73 @@
         "Mulțumim că ai trecut! Să mai vii."
       ]
     }
+  ],
+  "Stylist": [
+    {
+      "en": [
+        "Stylist"
+      ],
+      "text": [
+        "Stilista"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the chair! A new cut, a new colour, new eyes or a new tone: sit down and we'll find your look."
+      ],
+      "text": [
+        "Bun venit pe scaun! Un tuns nou, o culoare nouă, ochi noi sau o nuanță nouă: ia loc și îți găsim look-ul."
+      ]
+    },
+    {
+      "en": [
+        "Stylist"
+      ],
+      "text": [
+        "Stilista"
+      ]
+    },
+    {
+      "en": [
+        "There! Every mirror in Jubilife will want a second look."
+      ],
+      "text": [
+        "Gata! Fiecare oglindă din Jubilife o să vrea să te mai vadă o dată."
+      ]
+    }
+  ],
+  "Dyer": [
+    {
+      "en": [
+        "Dyer"
+      ],
+      "text": [
+        "Vopsitorul"
+      ]
+    },
+    {
+      "en": [
+        "A garment of yours, a berry and a little money, and I'll dye it any colour on my shelf."
+      ],
+      "text": [
+        "O haină de-a ta, o boabă și ceva bani, și ți-o vopsesc în orice culoare am pe raft."
+      ]
+    },
+    {
+      "en": [
+        "Dyer"
+      ],
+      "text": [
+        "Vopsitorul"
+      ]
+    },
+    {
+      "en": [
+        "Hang it to dry in the sun and it'll keep its colour for good."
+      ],
+      "text": [
+        "Pune-o la uscat în soare și își păstrează culoarea pentru totdeauna."
+      ]
+    }
   ]
 }

@@ -4,6 +4,10 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Your Trainer Card can now be designed: press the item button on the card to choose a background, a frame, a pose and a face for your figure, a title, the six Pokémon it shows, a two-word greeting and your own signature on the back, and to print both sides as a picture. New backgrounds and frames come with Badges, Halls of Fame, medals, diplomas and photo spots.
+- The Jubilife Boutique has a stylist for a new cut, hair colour, eye colour or skin tone, and a dyer (in Lumiose too) who dyes a garment you own in one of fifteen colours for a fee and the right berry.
+- Photo mode can pose you (a wave, a cheer, a bow...) with a face to match, and every picture it takes is kept in a new photo book of a hundred. Five photo spots stand in Sinnoh's towns, each with its own view; photograph all five for a new card background.
+
 ### Added
 - Nimbasa City's theatre has a show at last. Its owner hands you a trunk of Props, and the desk lets you dress a Pokémon of your team in hats, glasses, scarves, capes, fans and tail ribbons, worn on the Pokémon itself, then take the stage in Sunny Side Revue or Hour of Lanterns against three performers. Press on the beat when the spotlight finds you to win the crowd's eyes; Props that suit the show's mood draw them further. After a show, a fan in the lobby waits with a new Prop.
 - Goldenrod's Game Corner is open: its tables play a card-flip game of guessing which cards hide numbers and which a cracked tile, its clerk sells coins, and its prize counter trades TMs, held items, Abra, Ekans and Dratini for them. HeartGold's Celadon Game Corner plays the same cards.

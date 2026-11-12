@@ -6933,7 +6933,7 @@
     "noBerry": "That dye needs a {berry}.",
     "nothingToDye": "Nothing to dye: buy a garment first.",
     "withBerry": "AND A BERRY",
-    "note": "Left and right change what is styled. A change is paid at the chair, and your own is always free to go back to... for the same price.",
+    "note": "Left and right change what is styled. Every change is paid at the chair, going back to your own too.",
     "dyeNote": "Choose a garment you own, then a dye. The dyed one is yours beside the plain one.",
     "question": "{what}: is that the look?",
     "dyeQuestion": "Dye it {what}?",
