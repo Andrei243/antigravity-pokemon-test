@@ -322,7 +322,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     {
         Log.Add($"openbase {what}");
         // (what is only asked, check and kind, may be hurried through)
-        if (what is "open" or "enter" or "pc" or "packup")
+        if (what is "open" or "enter" or "visit" or "pc" or "packup")
         {
             NeverInAHurry($"a secret base's '{what}'");
             Waits();
@@ -1705,6 +1705,19 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         FriendsWon++;
         Log.Add("friendwon");
     }
+
+    // ------------------------------------------------------------------ records mixed (plan 40 · GE10)
+
+    /// <summary>The records this host's game has mixed in; empty unless a test or the record desk fills it.</summary>
+    public RecordMixState? MixedRecords { get; set; } = new();
+
+    /// <summary>The other saves the record desk mixes with, as a test hands them over; none unless it does.</summary>
+    public List<Core.SaveData> Others { get; } = new();
+
+    public IReadOnlyList<Core.SaveData> OtherSaves() => Others;
+
+    /// <summary>The game in play, as a record knows it.</summary>
+    public (int TrainerId, DateTime? Started) OwnGame { get; set; } = (0, null);
 
     // ------------------------------------------------------------------ the Hall of Fame's end (plan 02 · S14)
 

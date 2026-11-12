@@ -734,6 +734,7 @@ public class ScriptTests
           openbase kind
           openbase
           openbase enter
+          openbase visit
           openbase pc
           openbase packup
           openbase give "Red Brick"
@@ -892,6 +893,9 @@ public class ScriptTests
           tournament rental
           charm due
           charm give
+          records mix
+          records count
+          records bases
           gift due
           gift waiting
           gift open

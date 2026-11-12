@@ -53,6 +53,9 @@ public static class FieldScripts
     public const string SecretBaseSpot = "common.SecretBaseSpot";
     public const string SecretBasePc = "common.SecretBasePC";
 
+    /// <summary>The PC of a friend's secret base, mixed in at the record desk (plan 40 · GE10): it only tells whose it is.</summary>
+    public const string FriendsBasePc = "common.FriendsBasePC";
+
     /// <summary>An Escape Rope used from the bag, and the Cycling Road's gate keepers turning back anyone not riding.</summary>
     public const string EscapeRope = "common.EscapeRope";
     public const string CyclistsOnly = "common.CyclistsOnly";

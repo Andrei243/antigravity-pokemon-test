@@ -173,6 +173,9 @@ public sealed partial class GameFlow
     /// <summary>The gift box: what it has handed over and the words told (plan 40 · GE7; saved).</summary>
     public GiftBox Gifts { get; } = new();
 
+    /// <summary>Records mixed with the player's other saves, and the friend's base being visited (plan 40 · GE10).</summary>
+    public RecordMixState Records { get; } = new();
+
     /// <summary>The stage show's trunk, dressings and shows (plan 42 · PS1, PS2; saved).</summary>
     public Models.StageShow.ShowRecords StageShow { get; } = new();
 
