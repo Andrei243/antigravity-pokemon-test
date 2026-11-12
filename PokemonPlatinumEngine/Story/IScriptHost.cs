@@ -131,6 +131,13 @@ public interface IScriptHost
     /// </summary>
     void StudioShoot(Models.Studio.StudioFilm film) { }
 
+    /// <summary>
+    /// A film's best take shown at the premiere (plan 42 · PS4, part b): its Vs. Recorder file watched, the take's lines
+    /// said again, the crowd and the box office, which goes into <see cref="Studio"/>'s <c>LastBoxOffice</c>. False,
+    /// with nothing shown, where there is no take to show; the script waits otherwise.
+    /// </summary>
+    bool StudioPremiere(Models.Studio.StudioFilm film) => false;
+
     /// <summary>What the gifts' terms read of the player now (the day, the Halls of Fame, the counts, the run): nothing held unless a host says.</summary>
     GiftFacts GiftFacts => new();
 

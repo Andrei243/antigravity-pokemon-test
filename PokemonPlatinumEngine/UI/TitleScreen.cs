@@ -768,8 +768,12 @@ public sealed class TitleScreen
                 return;
         }
 
-        context.Composite(new Rectangle(0, 0, sw, sh));
-        DrawMotes(sw, sh);
+        // The void and its motes over the whole canvas; the logo and the menu in the safe area (rulings, "Other shapes of screen")
+        Canvas2D.Draw((w, h) =>
+        {
+            context.Composite(new Rectangle(0, 0, w, h));
+            DrawMotes(w, h);
+        });
 
         float ease = menuBlend * menuBlend * (3f - 2f * menuBlend);
         float logoAlpha = Phase == TitlePhase.Reveal ? Smooth(1.7f, 2.7f, phaseTime) : 1f;
@@ -827,7 +831,11 @@ public sealed class TitleScreen
         Centered(Text.Of("title.disclaimer.original"), sh / 2f + 42, 26, dim, UiWeight.Bold);
     }
 
-    private void DrawJourney(int sw, int sh, WorldRenderer world)
+    private void DrawJourney(int safeWidth, int safeHeight, WorldRenderer world) =>
+        Canvas2D.Draw((sw, sh) => DrawJourneyOn(sw, sh, world));
+
+    /// <summary>The fly-over over the whole canvas (on 16:9 the safe area's own 1920×1080).</summary>
+    private void DrawJourneyOn(int sw, int sh, WorldRenderer world)
     {
         world.DrawToScreen(sw, sh);
 

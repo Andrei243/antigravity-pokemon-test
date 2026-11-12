@@ -53,6 +53,17 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>Which of a film's written takes a shot plays (plan 42 · PS4): the first, the script's own way, unless a test says.</summary>
     public int StudioTakeIndex { get; set; }
 
+    /// <summary>A premiere with no screen: the box office of the film's best take, where one has been shot.</summary>
+    public bool StudioPremiere(Models.Studio.StudioFilm film)
+    {
+        if (Studio is not { } records || records.BestTakeOf(film.Id) is not { } best) return false;
+        Shown("watch a battle");
+        NeverInAHurry("a battle");
+        Waits();
+        records.LastBoxOffice = Models.Studio.StudioFilms.BoxOffice(film, best.Stars);
+        return true;
+    }
+
     /// <summary>A take shot with no screen: the film's written take, kept in <see cref="Studio"/>.</summary>
     public void StudioShoot(Models.Studio.StudioFilm film)
     {

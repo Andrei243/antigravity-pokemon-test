@@ -194,6 +194,7 @@ if (mode == "castle") h.CastleMode();
 if (mode == "legends") h.LegendsMode();
 if (mode == "arcade") h.ArcadeMode();
 if (mode == "townmap") h.RegionMapMode();
+if (mode == "aspect") h.AspectMode();
 if (mode == "explore") h.ExploreMode();
 if (mode == "epilogue") h.EpilogueMode();
 if (mode == "amity") h.AmityMode();
@@ -217,6 +218,7 @@ if (mode == "alolarest") h.AlolaRestMode();
 // Plan 23, the wave after Ultra Space: Poni's last places, Blush Mountain, Route 11 and the rides
 if (mode == "alolaponi") h.AlolaPoniMode();
 if (mode == "alolalast") h.AlolaLastMode();
+if (mode == "melemele") h.MelemeleMode();
 // Plan 23 · Z8: Alola after its Hall of Fame, Ultra Space and the Battle Royal Dome
 if (mode == "ultraspace") h.AlolaUltraSpaceMode();
 // Plan 37 · FC2: the streak house in Kiloude City's Battle Maison

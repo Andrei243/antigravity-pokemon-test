@@ -103,6 +103,14 @@ public sealed class GameSettings
     public int WindowWidth { get; set; } = 1920;
     public int WindowHeight { get; set; } = 1080;
     public bool Fullscreen { get; set; }
+
+    /// <summary>
+    /// The full-screen RESOLUTION's height (rulings, "Other shapes of screen, and the resolution"): nought for NATIVE,
+    /// the preset's own picture; a smaller height of the monitor's ratio caps the 3D scene at that many rows. The window
+    /// itself stays the monitor's size and no display mode is changed.
+    /// </summary>
+    public int FullscreenHeight { get; set; }
+
     public bool VSync { get; set; } = true;
     public bool Muted { get; set; }
 

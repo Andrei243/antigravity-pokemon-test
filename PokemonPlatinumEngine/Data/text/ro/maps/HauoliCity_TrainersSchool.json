@@ -1,0 +1,63 @@
+{
+  "displayName": {
+    "en": [
+      "Trainers' School"
+    ],
+    "text": [
+      "Școala de Antrenori"
+    ]
+  },
+  "people": {
+    "teacher": {
+      "name": {
+        "en": [
+          "Iwalani"
+        ],
+        "text": [
+          "Iwalani"
+        ]
+      }
+    },
+    "keahi": {
+      "name": {
+        "en": [
+          "Keahi"
+        ],
+        "text": [
+          "Keahi"
+        ]
+      }
+    },
+    "pualani": {
+      "name": {
+        "en": [
+          "Pualani"
+        ],
+        "text": [
+          "Pualani"
+        ]
+      }
+    },
+    "aukai": {
+      "name": {
+        "en": [
+          "Aukai"
+        ],
+        "text": [
+          "Aukai"
+        ]
+      }
+    },
+    "kanoe": {
+      "name": {
+        "en": [
+          "Kanoe"
+        ],
+        "text": [
+          "Kanoe"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -53,6 +53,10 @@
     { "name": "VirbankCity_GymStage", "matrix": 120, "area": "virbank_city_gym_2", "trees": "Round", "setting": "Indoors" },
     { "name": "VirbankCity_PokemonCenter", "matrix": 13, "area": "virbank_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
     { "name": "PokestarGate", "matrix": 12, "area": "virbank_gate_gate", "trees": "Round", "setting": "Indoors" },
+    // Plan 42 · PS4, part b: Pokéstar Studios behind the gate's far door, the lot outdoors, its studio building and its theatre
+    { "name": "PokestarStudios", "matrix": 380, "area": "pokestar_studios", "trees": "Round" },
+    { "name": "PokestarStudios_Building", "matrix": 360, "area": "pokestar_studios_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokestarStudios_Theater", "matrix": 362, "area": "pokestar_studios_4", "trees": "Round", "setting": "Indoors" },
     { "name": "VirbankComplex", "matrix": 256, "area": "virbank_complex_2", "trees": "Round" },
     // Plan 22 · U5, part c: Castelia City. Its avenue along the bay and the street across its north stand on Black 2's
     // rails, which the reader leaves out: the avenue is a map of ours (Data/maps/CasteliaCity.json), and each street's
@@ -441,6 +445,9 @@
     // plan 22 · U10, part g: Black City, Route 15 and the Marvelous Bridge
     "black_gate", "black_gate_gate", "black_city", "black_city_2", "black_city_5", "black_city_pokemon_center", "unova_route_15_2", "marvelous_bridge", "bridge_gate_gate_6", "bridge_gate_gate_7", "unova_route_15",
     // plan 22 · U10, part h: the Nature Preserve
-    "nature_preserve"
+    "nature_preserve",
+    // plan 42 · PS4, part b: Pokéstar Studios, the lot, its studio building and its theatre (the stage and the back
+    // rooms behind the building's two inner doors stay shut)
+    "pokestar_studios", "pokestar_studios_3", "pokestar_studios_4"
   ]
 }

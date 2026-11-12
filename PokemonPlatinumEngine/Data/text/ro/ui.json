@@ -131,10 +131,14 @@
       },
       "measured": "Măsurată pe acest calculator la prima pornire: {quality}, {ms} ms pe cadru."
     },
-    "windowSize": {
-      "label": "Mărimea ferestrei",
+    "resolution": {
+      "label": "Rezoluție",
       "value": "{width} × {height}",
-      "help": "Mărimea ferestrei jocului când nu e pe tot ecranul."
+      "native": "Nativă ({width} × {height})",
+      "help": {
+        "window": "Mărimea ferestrei, în forma monitorului tău ({ratio}).",
+        "fullscreen": "Câți pixeli au scenele 3D pe tot ecranul. Cea nativă e cea mai clară; una mai mică e mai rapidă."
+      }
     },
     "fullscreen": {
       "label": "Ecran complet",
@@ -2789,14 +2793,24 @@
   "studio": {
     "film": {
       "emptySeat": { "title": "Locul gol" },
-      "gildedHour": { "title": "Ora aurită" }
+      "gildedHour": { "title": "Ora aurită" },
+      "lettersInTheFog": { "title": "Scrisori în ceață" },
+      "thunderAtMarlowePass": { "title": "Tunet în Trecătoarea Marlowe" }
     },
     "genre": {
       "ghost": "O poveste cu fantome",
-      "heist": "Un jaf"
+      "heist": "Un jaf",
+      "detective": "O poveste polițistă",
+      "race": "O cursă cu furtuna"
     },
     "titleCard": "{title}: {genre}, dubla {take}. Lumini, cameră... motor!",
-    "stars": "Dubla aceasta a primit {stars} din 5 stele!"
+    "stars": "Dubla aceasta a primit {stars} din 5 stele!",
+    "premiere": {
+      "cheers": "Publicul s-a ridicat în picioare! Uralele umplu teatrul!",
+      "claps": "Publicul răsplătește dubla cu aplauze calde.",
+      "murmurs": "Publicul murmură politicos când se aprind luminile.",
+      "boxOffice": "Încasări: {tickets} bilete vândute!"
+    }
   },
   "luckyDraw": {
     "radio": {
@@ -3549,7 +3563,8 @@
       "notSaved": "Lupta n-a putut fi păstrată: în dosarul Vs. Recorder nu se poate scrie.",
       "otherVersion": "Lupta a fost înregistrată cu alte date Pokémon. Nu poate fi redată.",
       "otherFile": "Lupta a fost înregistrată de un joc mai nou. Nu poate fi redată.",
-      "damaged": "Înregistrarea e deteriorată. Nu poate fi redată."
+      "damaged": "Înregistrarea e deteriorată. Nu poate fi redată.",
+      "noSuchFilm": "Dubla a fost filmată pentru un film pe care jocul acesta nu-l are. Nu poate fi redată."
     }
   },
   "tunnels": {

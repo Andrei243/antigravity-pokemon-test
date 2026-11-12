@@ -95,22 +95,6 @@ public class ReleaseBuildTests
     }
 
     [Fact]
-    public void TheOptionsWindowRowStepsThroughEverySizeAndStartsFromTheDefault()
-    {
-        var settings = new GameSettings { WindowWidth = 1000, WindowHeight = 600 };
-        OptionsScreen.Change(settings, OptionRow.WindowSize, +1);
-        // An unlisted size steps on from 1920×1080, as it always did
-        Assert.Equal((2560, 1440), (settings.WindowWidth, settings.WindowHeight));
-        var seen = new System.Collections.Generic.HashSet<(int, int)>();
-        for (int i = 0; i < GameSettings.WindowSizes.Length; i++)
-        {
-            seen.Add((settings.WindowWidth, settings.WindowHeight));
-            OptionsScreen.Change(settings, OptionRow.WindowSize, +1);
-        }
-        Assert.Equal(GameSettings.WindowSizes.Length, seen.Count);
-    }
-
-    [Fact]
     public void ASaveKeepsTheVersionThatWroteItAndAnOlderOneHasNone()
     {
         var save = new SaveData { GameVersion = "0.1.0" };

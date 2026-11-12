@@ -129,7 +129,8 @@ internal sealed class OpenRenderer
     {
         EnsureResources();
         // 1920×1080 on every preset; dynamic resolution steps under it, never over (plan 16 · T23)
-        Step = StepFor(context.Target.Texture.Width) * context.ResolutionStep;
+        // (By the target's height in 16:9's width, so a wider canvas keeps its texels: the same number on 16:9)
+        Step = StepFor((int)(context.Target.Texture.Height * 16L / 9)) * context.ResolutionStep;
         context.ResolutionStep = Step;
         weather = scene.Weather;
         time = scene.Time;
@@ -137,9 +138,9 @@ internal sealed class OpenRenderer
         var rig = OpenLook.UnderRock(OpenLook.Weathered(OpenLook.Open(scene.Hour), scene.Weather), scene.CaveShare);
         Rig = rig;
         float aspect = (float)context.PartWidth / context.PartHeight;
-        var camera = new Camera3D(scene.Eye, scene.Target, Vector3.UnitY, scene.Lens, CameraProjection.Perspective);
+        var camera = new Camera3D(scene.Eye, scene.Target, Vector3.UnitY, Canvas2D.Layout.FovYFor(scene.Lens), CameraProjection.Perspective);
         Camera = camera;
-        var view = new OpenView(scene.Eye, scene.Target, scene.Lens, aspect, (float)OrbitCamera.Near, (float)OrbitCamera.Far);
+        var view = new OpenView(scene.Eye, scene.Target, Canvas2D.Layout.FovYFor(scene.Lens), aspect, (float)OrbitCamera.Near, (float)OrbitCamera.Far);
         var feet = new OpenVec(scene.Feet.X, scene.Feet.Y, scene.Feet.Z);
 
         // The chunks: what the camera sees first, then the rest within reach (another map begins the rings afresh)
@@ -204,7 +205,7 @@ internal sealed class OpenRenderer
         context.BeginScene();
         Raylib.ClearBackground(ToColour(rig.FogColor));
         var viewMatrix = Raymath.MatrixLookAt(scene.Eye, scene.Target, Vector3.UnitY);
-        var projection = Raymath.MatrixPerspective(scene.Lens * Math.PI / 180, aspect, OrbitCamera.Near, OrbitCamera.Far);
+        var projection = Raymath.MatrixPerspective(Canvas2D.Layout.FovYFor(scene.Lens) * Math.PI / 180, aspect, OrbitCamera.Near, OrbitCamera.Far);
         var inverse = Raymath.MatrixInvert(Raymath.MatrixMultiply(viewMatrix, projection));
         shaders.SetSky(inverse, new Vector2(context.PartWidth, context.PartHeight), scene.Eye, rig.Sky, (float)(scene.Time % 3600.0));
         Raylib.BeginShaderMode(shaders.Sky);
@@ -247,9 +248,9 @@ internal sealed class OpenRenderer
         Rlgl.SetClipPlanes(0.01, 1000.0);
         FrameProfiler.Lap(FrameSection.Scene);
 
-        var middle = Raylib.GetWorldToScreenEx(scene.Feet + new Vector3(0, 0.8f, 0), camera, 1920, 1080);
-        PlayerOnPicture = new Vector2(middle.X / 1920f, middle.Y / 1080f);
-        context.PreparePost(rig.Post, new DepthRange((float)OrbitCamera.Near, (float)OrbitCamera.Far, scene.Lens, aspect));
+        var middle = Raylib.GetWorldToScreenEx(scene.Feet + new Vector3(0, 0.8f, 0), camera, context.Width, context.Height);
+        PlayerOnPicture = new Vector2(middle.X / context.Width, middle.Y / context.Height);
+        context.PreparePost(rig.Post, new DepthRange((float)OrbitCamera.Near, (float)OrbitCamera.Far, Canvas2D.Layout.FovYFor(scene.Lens), aspect));
     }
 
     /// <summary>The composite into the current target (the virtual screen's 2D pass), with a storm's lightning over it.</summary>
@@ -308,7 +309,7 @@ internal sealed class OpenRenderer
         {
             // (only what stands before the camera)
             if (Vector3.Dot(label.At - camera.Position, Vector3.Normalize(camera.Target - camera.Position)) <= 0.5f) continue;
-            layerLabels.Add((Raylib.GetWorldToScreenEx(label.At, camera, 1920, 1080), label.Text, label.Colour));
+            layerLabels.Add((Raylib.GetWorldToScreenEx(label.At, camera, context.Width, context.Height), label.Text, label.Colour));
         }
     }
 
@@ -320,7 +321,7 @@ internal sealed class OpenRenderer
         var shadow = new Color(0, 0, 0, 200);
         foreach (var (at, text, colour) in layerLabels)
         {
-            float x = at.X * destWidth / 1920f, y = at.Y * destHeight / 1080f;
+            float x = at.X * destWidth / context.Width, y = at.Y * destHeight / context.Height;
             if (x < -200f || y < -20f || x > destWidth || y > destHeight) continue;
             float w = UI.Kit.UiFonts.Measure(text, size);
             float left = MathF.Round(x - w / 2f), top = MathF.Round(y - size / 2f);
@@ -346,7 +347,7 @@ internal sealed class OpenRenderer
         for (int i = 0; i < OpenCascades.Count; i++)
         {
             float near = i == 0 ? (float)OrbitCamera.Near : OpenCascades.Ends[i - 1] * (1f - OpenCascades.Blend);
-            var (centre, radius) = OpenCascades.Slice(scene.Eye, view.Forward, scene.Lens, aspect, near, OpenCascades.Ends[i]);
+            var (centre, radius) = OpenCascades.Slice(scene.Eye, view.Forward, Canvas2D.Layout.FovYFor(scene.Lens), aspect, near, OpenCascades.Ends[i]);
             int size = cascades.SizeOf(i);
             var (camera, clipNear, clipFar) = OpenCascades.Fit(centre, radius, sun, size);
             sliceRadius[i] = radius;
@@ -433,9 +434,9 @@ internal sealed class OpenRenderer
         MirrorPlane = plane;
         var eye = new Vector3(scene.Eye.X, 2f * plane - scene.Eye.Y, scene.Eye.Z);
         var target = new Vector3(scene.Target.X, 2f * plane - scene.Target.Y, scene.Target.Z);
-        var mirror = new Camera3D(eye, target, Vector3.UnitY, scene.Lens, CameraProjection.Perspective);
-        float aspect = Reflections.TargetWidth / (float)Reflections.TargetHeight;
-        var view = new OpenView(eye, target, scene.Lens, aspect, (float)OrbitCamera.Near, 300f);
+        var mirror = new Camera3D(eye, target, Vector3.UnitY, Canvas2D.Layout.FovYFor(scene.Lens), CameraProjection.Perspective);
+        float aspect = context.MirrorWidth / (float)context.MirrorHeight;
+        var view = new OpenView(eye, target, Canvas2D.Layout.FovYFor(scene.Lens), aspect, (float)OrbitCamera.Near, 300f);
 
         Raylib.BeginTextureMode(context.Mirror);
         Raylib.ClearBackground(new Color(0, 0, 0, 0));

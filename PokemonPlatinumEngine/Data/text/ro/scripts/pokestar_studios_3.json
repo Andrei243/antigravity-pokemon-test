@@ -1,0 +1,120 @@
+{
+  "StudioDesk": [
+    {
+      "en": [
+        "Director Wren"
+      ],
+      "text": [
+        "Regizorul Wren"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the lot! I'm Wren, and I direct films for the studio. Every take is a battle, played to a script."
+      ],
+      "text": [
+        "Bun venit pe platou! Sunt Wren și regizez filme pentru studio. Fiecare dublă e o luptă, jucată după scenariu."
+      ]
+    },
+    {
+      "en": [
+        "We lend you the cast. Say the script's lines or your own, and the take ends however you play it."
+      ],
+      "text": [
+        "Îți împrumutăm distribuția. Spune replicile din scenariu sau pe ale tale, iar dubla se termină cum o joci."
+      ]
+    },
+    {
+      "en": [
+        "Back for another take? Splendid! The studio keeps your best take of every film for its premiere."
+      ],
+      "text": [
+        "Te-ai întors pentru încă o dublă? Splendid! Studioul păstrează cea mai bună dublă a fiecărui film pentru premieră."
+      ]
+    },
+    {
+      "en": [
+        "Which film shall we shoot?",
+        "THE EMPTY SEAT",
+        "THE GILDED HOUR",
+        "LETTERS IN THE FOG",
+        "THUNDER AT MARLOWE PASS",
+        "NOT TODAY"
+      ],
+      "text": [
+        "Ce film filmăm?",
+        "LOCUL GOL",
+        "ORA AURITĂ",
+        "SCRISORI ÎN CEAȚĂ",
+        "TUNET ÎN TRECĂTOAREA MARLOWE",
+        "NU AZI"
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you feel like a star!"
+      ],
+      "text": [
+        "Revino oricând te simți o vedetă!"
+      ]
+    },
+    {
+      "en": [
+        "That script is still in the drawer. Earn the studio a few more stars on the films we have, then ask again!"
+      ],
+      "text": [
+        "Scenariul acela e încă în sertar. Mai câștigă câteva stele studioului cu filmele pe care le avem, apoi întreabă din nou!"
+      ]
+    },
+    {
+      "en": [
+        "Director Wren"
+      ],
+      "text": [
+        "Regizorul Wren"
+      ]
+    },
+    {
+      "en": [
+        "That's a wrap! Your best take of every film goes to the theater across the lot for its premiere."
+      ],
+      "text": [
+        "Gata, am terminat! Cea mai bună dublă a fiecărui film merge la teatrul de peste platou, pentru premieră."
+      ]
+    },
+    {
+      "en": [
+        "Magnificent! That's the take the posters will be painted from. Go and see it at the theater!"
+      ],
+      "text": [
+        "Magnific! După dubla asta se vor picta afișele. Du-te s-o vezi la teatru!"
+      ]
+    }
+  ],
+  "Casting": [
+    {
+      "en": [
+        "Casting Clerk"
+      ],
+      "text": [
+        "Funcționară de casting"
+      ]
+    },
+    {
+      "en": [
+        "The studio's rank is {result} stars. Each film's best take counts toward it."
+      ],
+      "text": [
+        "Rangul studioului e de {result} stele. Cea mai bună dublă a fiecărui film contează."
+      ]
+    },
+    {
+      "en": [
+        "At four stars the detective story opens, and at eight the race against the storm. Good luck!"
+      ],
+      "text": [
+        "La patru stele se deschide povestea polițistă, iar la opt cursa cu furtuna. Baftă!"
+      ]
+    }
+  ]
+}

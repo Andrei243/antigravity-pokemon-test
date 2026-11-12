@@ -2337,7 +2337,7 @@ Black 2's Pokémon World Tournament, Sinnoh's leaders first. Nothing of Black 2'
 - **The songs** are our own: the hall (`common/tournament/hall`, `MusicRole.Tournament`), a match (`BattleTournament`, with its low-HP arrangement) and its victory (`VictoryTournament`), handed to a Frontier battle by `FrontierConditions.Tournament` and `BattleSetup.VictoryMusic`.
 - **The other regions** (plan 14 · B12): Kanto, Johto, Hoenn and Unova each have a Leaders event (open from the start) and a League event (the Champion and the Elite Four always in, two Leaders drawn; opened by the region's Leaders title), each **read only once the region's trainers' table exists** (`TournamentDatabase.HasData`, `Tournament.Offered`) and offered only when seven of its kind can be seated from the trainers there are, so a region's events appear the day its table lands. The teams are each region's strongest rematch: Kanto's Leaders are HeartGold's eight (Janine and Blue among them, from Johto's table), its League FireRed's second Elite Four with Terry's rematch team; Johto's HeartGold's `_2` teams with Lance's; Hoenn's Emerald's fifth rematch of each Leader with the League's rematch teams of ours (`hoenn_*_rematch`); Unova's Black 2's `_2` Leaders and the Elite Four's and Iris's fourth teams. A Leader the cast has no look for stands in a class's (Janine as an Ace Trainer, Drayden as a Dragon Tamer, Marlon as a Swimmer; Tate and Liza as Tate; Terry in Blue's). The other regions' moves are their games' own, so the legality check (written from Platinum's lists and the newest) is held only to Platinum's teams and the teams beyond the League.
 - **A team's three** pass over a Pokémon that would repeat a species or a held item of those already picked (Black 2's teams hold several Sitrus Berries), so every entrant keeps the clauses the player keeps.
-- **The world's events** (all ours): **World Leaders** (seven Leaders drawn from every region; opened by Sinnoh Leaders), **World Champions** (the five Champions always in, two of the Elite Four drawn; opened by the Champion's event), **Beyond the League** (the five Champions' and twenty Elite Four's teams beyond the League, `_beyond`, at 50; opened by World Champions); then, opened by World Leaders, **Double**, **Triple** and **Rotation Battles** (the matches in that format, `FrontierConditions.Format`, under rules that have it), **Mix** (before each match each side hands the other one of its three, which ones by a number drawn as the event begins, the round and the seats: `Tournament.ThreesFor`), **Rental** (everyone, the player too, battles with three sets of the Battle Factory's fourth row at 50, drawn as the Factory draws them, `Tournament.RentalThree`; plan 13 · V14's draw is not built) and eight **type brackets** (Water; Fire and Electric; Ice and Dark; Dragon and Flying; Ghost and Psychic; Fighting and Steel; Rock, Ground and Grass; Bug, Poison and Normal), whose entrants are the Leaders and Elite Four with three of the types, who bring those three, and whose entry asks each of the player's three to be of one of them. Black 2's single types gave seven entrants only for Water, so types are paired. Points: 3 a region's Leaders, 6 its League, 6 World Leaders, 10 World Champions, 12 Beyond the League, 4 the rest.
+- **The world's events** (all ours): **World Leaders** (seven Leaders drawn from every region; opened by Sinnoh Leaders), **World Champions** (the Champions always in, the rest of the eight drawn from the Elite Four; opened by the Champion's event), **Beyond the League** (the six Champions' (Kalos's Diantha since 2026-11-12, always in) and twenty-four Elite Four's teams beyond the League, `_beyond`, at 50, eight seated from them; opened by World Champions); then, opened by World Leaders, **Double**, **Triple** and **Rotation Battles** (the matches in that format, `FrontierConditions.Format`, under rules that have it), **Mix** (before each match each side hands the other one of its three, which ones by a number drawn as the event begins, the round and the seats: `Tournament.ThreesFor`), **Rental** (everyone, the player too, battles with three sets of the Battle Factory's fourth row at 50, drawn as the Factory draws them, `Tournament.RentalThree`; plan 13 · V14's draw is not built) and eight **type brackets** (Water; Fire and Electric; Ice and Dark; Dragon and Flying; Ghost and Psychic; Fighting and Steel; Rock, Ground and Grass; Bug, Poison and Normal), whose entrants are the Leaders and Elite Four with three of the types, who bring those three, and whose entry asks each of the player's three to be of one of them. Black 2's single types gave seven entrants only for Water, so types are paired. Points: 3 a region's Leaders, 6 its League, 6 World Leaders, 10 World Champions, 12 Beyond the League, 4 the rest.
 - **Unova's events of its own** (plan 22 · U11; ours): opened by the Unova Leaders title, three over Unova's eight Leaders (seven drawn), **Unova Triples** and **Unova Rotation** (the matches in that format) and **Unova Rental** (everyone with three of the Factory's rentals, as World Rental), and two **type brackets over Unova's League** (its Leaders, Elite Four and Iris, `from` the Unova League event): **Stone, Steel and Sting** (Normal, Bug, Poison, Electric, Ground, Rock, Steel, Fighting) and **Sky, Sea and Spirit** (Flying, Water, Dragon, Psychic, Ghost, Dark, Ice, Fire, Grass). Unova's thirteen seat seven in no single type or pair, so each bracket is a wide set of types its own trainers bring three of (Cheren, Roxie, Burgh, Elesa, Clay, Grimsley and Marshal in the first; Skyla, Drayden, Marlon, Iris, Shauntal, Grimsley and Caitlin in the second). 4 points each.
 
 ### Master Trainers (plan 14 · B14)
@@ -9914,6 +9914,20 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   place, plan 41 the plaza. *The Island Scan* is built (the rest of the islands). *A friend in the Multi room over a link*
   is plan 07's.
 
+## Hau'oli City's Trainers' School (2026-11-12, plan 23, Melemele's last door)
+
+- **Where it comes from.** Sun and Moon keep a Trainers' School in Hau'oli City, where a newcomer battles its pupils and
+  its teacher (Bulbapedia's and Serebii's descriptions); nothing of its plan, people, teams or lines is taken. Ours is a
+  building at the east end of the city's first street (`hauoli_city.txt`, the door at 309, 165, the area's warp 8) and a
+  classroom of ours (`HauoliCity_TrainersSchool`, 13 by 11: a blackboard, two desks, a bookshelf, the teacher's table).
+- **Its people**: four pupils of ours (Keahi, a Youngster; Pualani, a Lass; Aukai and Kanoe, School Kids), each battled once
+  by speaking to them (`FLAG_ALOLA_SCHOOL_KEAHI`, `_PUALANI`, `_AUKAI`, `_KANOE`), with teams of Melemele's own species at 7 and
+  8, and their teacher Iwalani (a Teacher, Alolan Meowth 9 and Crabrawler 10), who sends the player to the pupils first and
+  battles once all four are beaten (`FLAG_ALOLA_SCHOOL_TEACHER`), giving three Quick Balls. None of them watches the room
+  with a trainer's eyes: Sun and Moon's school is a place a player chooses to visit, and so is ours. Nothing of the story
+  asks for it.
+- **Left**: Sandy Cave (Sun and Moon's small cave on Melemele's beach) is not drawn.
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.
@@ -11777,6 +11791,28 @@ Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's).
   Verity Cask's Klefki, Bronzong and Probopass at 40, co-starring the talent scout. Their classes are ours: Actor and
   Actress, drawn as the person cast (`characters.json`'s `classes`, null).
 
+### Part b (2026-11-12): the later films, the takes kept and the premiere
+
+- **The later films** (the user's 31a and 32a): Letters in the Fog (a detective story; Lucario, Alakazam and Gallade at 60
+  against Lady Octavia Maul's Persian, Liepard and Purugly at 40, co-starring the captain as the inspector; the right
+  suspect, named by the script's line, 5 stars; the wrong one, either ad-lib, 3; a draw, 1) opens at rank 4, and Thunder at
+  Marlowe Pass (a race against the storm, fought in the rain from the first turn; Jolteon, Ampharos and Raichu at 60
+  against Commodore Brisk's Pelipper, Swanna and Gyarados at 40, co-starring the scout as the pilot; won by a mile, by the
+  third turn, 5; by a head, 3; forced back, 1) at rank 8. Both numbers are ours: the first two films' best stars together
+  reach 4 with one good take, 8 with two.
+- **A take kept**: a new best take is written as a Vs. Recorder file of its own (`replays/studio/studio-<id>.json`,
+  written over the film's last best), with `BattleRecordFile.StudioFilm` naming the film and `StudioPicks` the lines
+  chosen; every other battle's file has neither (both null and left out of the text, so older files read as before). A
+  take is fought by the film's foe's moves turn by turn and its fixed rolls, so `ToSetup` takes both from the film, and a
+  file naming a film the data lacks is refused (`ReplayRefusal.NoSuchFilm`). The takes are kept in a folder of their own so
+  the Vs. Recorder's own list never shows them: a take is watched at its premiere, with its film's beats and ending.
+- **The premiere** (`studio premiere "id"`): the best take's file watched through `BattleEngine.ForReplay` with a director
+  handed the take's picks (`StudioDirector(film, picks)`), who says the lines the take chose with nobody asked; a take that
+  ran out of turns, or stopped where nobody answered, ends its reel there (`ReelOver`) instead of breaking off. Then its
+  ending's lines and stars, the crowd (cheers for 4 or 5 stars, applause for 2 or 3, murmurs for 1) and the box office:
+  tickets sold, ours, `stars² × 1,200` plus the genre's draw (ghost 900, detective 1,100, heist 1,500, race 1,800).
+  Nothing of it is kept but the number, which the script reads as `RESULT`.
+
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
 Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and
@@ -11844,3 +11880,50 @@ Colosseum's and XD's snag and purification as a mechanic, with everything in it 
   items and switches) ends it and lowers the gauge. A switch ends it too.
 - **What is not taken**: no Shadow move, Shadow type, Snag Machine, Purify Chamber, Relic Stone, region, villain team or
   name of Colosseum's or XD's; the locked fight with their own moves.
+
+## Other shapes of screen, and the resolution (2026-11-12)
+
+The user plays on a monitor that is not 16:9, and asked for 21:9 and 4:3 (and a rotated 3:4) to be filled rather than
+shown in bars, the monitor's own resolution to be found, and a choice of resolution in the monitor's ratio.
+
+- **A safe area and a canvas** (`Core/AspectLayout.cs`, GPU-free). The interface keeps laying out in 1920 by 1080 units
+  (`GameEngine.VirtualWidth`, `VirtualHeight` are still those constants): that box is the **safe area**. Round it the
+  **canvas** follows the window's shape, still in layout units: as wide as the window asks at 1080 tall where the window
+  is wider than 16:9 (2560×1080 is a canvas of 2560×1080, 3440×1440 of 2580×1080), and 1920 wide and as tall as the window
+  asks where it is narrower (4:3 is 1920×1440, the Deck's 16:10 is 1920×1200). The safe area stands in the canvas's
+  middle. The interface is drawn exactly as before, at the same size on the screen as it was in bars; the scene (the field,
+  a battle, the title's places and an open map), what lies over it (weather, a cave's dark, flashes, a script's fade, the
+  cinema bars) and the ways into a battle are drawn over the whole canvas, where the bars were.
+- **A window within 1 % of 16:9 is 16:9**, to the unit: the full-screen window one row taller than the monitor (1920×1081),
+  1366×768 and the harness's own window are the picture they always were, the same targets and the same pixels. Only a
+  window of another shape changes anything.
+- **Wider than 16:9 sees more to the sides; narrower sees more above and below** (Hor+ and Vert+). The 3D camera keeps the
+  16:9 view inside the safe area exactly, so whatever ties the interface to the scene (the battle's framing of the free
+  part of the picture, the HP boxes beside the Pokémon, the text box over the field) still meets it: wider, the vertical
+  field of view is the same; narrower, it grows so that the safe area's width shows what 16:9's did
+  (`AspectLayout.FovYFor`: `tan(fov'/2) = tan(fov/2) · canvas height / 1080`). The brief's alternative for 4:3, a
+  1440-wide interface scaled to fit, was not taken: it shows the same pixels on the screen and would part the interface
+  from the scene behind it.
+- **Shapes beyond are barred**: the canvas's shape is held between 4:3 and 32:9, and a window outside it shows that much
+  in bars, as every window did before. A monitor turned on its side (3:4, 9:16) is a 4:3 picture with bars above and
+  below: nothing is drawn as tall as 3840×5120, and nothing is laid out for a portrait screen.
+- **Menus that cover the screen** stay in the safe area: nothing of a screen's layout moved. The shared menu backdrop
+  (deep teal and its stripes) and the dim behind a prompt spread over the whole canvas (`Canvas2D.Bled`); a screen with
+  a backdrop of its own shows the black the picture is cleared to beyond the safe area. A split battle's band (plan 45 · BC3) is drawn in
+  the safe area too, with the scene's own view beyond it.
+- **The mouse** is read in the safe area's units (`Viewport` knows where the safe area stands): a click in the canvas
+  outside the safe area is off the picture, as a click on a bar was.
+- **A screenshot** (F12, a report, the developer's shot) is the whole canvas; the Trainer Card's print and the photo book's
+  pictures are cut from the safe area, so they keep the shape they always had.
+- **The monitor's resolution** is asked of the monitor the window stands on whenever full screen is entered and at the start
+  (`AspectLayout.NativeOr`: 1920×1080 where the system answers nothing). The first run's window is the largest size of the
+  **monitor's own ratio** that fits with the taskbar (a 21:9 monitor gets a 21:9 window), and a window saved larger than
+  the monitor it opens on is brought within it.
+- **RESOLUTION** (the options' row, DISPLAY tab, before Help): the sizes offered are the monitor's own ratio at the heights
+  720, 900, 1080, 1200, 1440, 1600, 1800 and 2160 that fit it, and its own size (`AspectLayout.SizesFor`). **In a window**
+  the row is the window's size (only sizes smaller than the monitor), the same setting WINDOW SIZE had (the old row is removed, 2026-11-12;
+  a saved `windowWidth` and `windowHeight` are read as ever, so an old settings file works untouched). **In full screen** the window stays the monitor's size one row taller, as the flicker rule needs, and no
+  display mode is ever changed: the row is the size the 3D scene is drawn at, at most (`GameSettings.FullscreenHeight`).
+  NATIVE (the default, 0) is today's picture, the preset's own; a smaller size caps the scene's share of its target
+  (`RenderContext.ResolutionCap`, taken as the smaller with dynamic resolution's step), and the interface stays at 4K.
+  The harness never sets it.

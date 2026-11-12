@@ -102,7 +102,7 @@ public sealed partial class WorldRenderer
         foreach (var label in picture.Labels)
         {
             var at = Corner(label.X, label.Lift + 0.02f, label.Z);
-            layerLabels.Add((Raylib.GetWorldToScreenEx(at, camera, 1920, 1080), label.Text, label.Colour));
+            layerLabels.Add((Raylib.GetWorldToScreenEx(at, camera, width, height), label.Text, label.Colour));
         }
     }
 
@@ -114,7 +114,7 @@ public sealed partial class WorldRenderer
         var shadow = new Color(0, 0, 0, 200);
         foreach (var (at, text, colour) in layerLabels)
         {
-            float x = at.X * destWidth / 1920f, y = at.Y * destHeight / 1080f;
+            float x = at.X * destWidth / width, y = at.Y * destHeight / height;
             if (x < -200f || y < -20f || x > destWidth || y > destHeight) continue;
             float w = UiFonts.Measure(text, size);
             float left = MathF.Round(x - w / 2f), top = MathF.Round(y - size / 2f);

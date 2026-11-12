@@ -1,5 +1,6 @@
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Core.Diagnostics;
 
 namespace PokemonPlatinumEngine.Core;
 
@@ -48,7 +49,10 @@ public static class WindowSettings
         windowedPosition = Raylib.GetWindowPosition();
         int monitor = Raylib.GetCurrentMonitor();
         var origin = Raylib.GetMonitorPosition(monitor);
-        var (width, height) = FullscreenSize(Raylib.GetMonitorWidth(monitor), Raylib.GetMonitorHeight(monitor));
+        // The monitor's own resolution, asked again as full screen is entered (the window may have moved to another)
+        var native = AspectLayout.NativeOr(Raylib.GetMonitorWidth(monitor), Raylib.GetMonitorHeight(monitor));
+        UI.OptionsScreen.Monitor = native;
+        var (width, height) = FullscreenSize(native.Width, native.Height);
 
         Raylib.SetWindowState(ConfigFlags.UndecoratedWindow);
         Raylib.SetWindowPosition((int)origin.X, (int)origin.Y);
@@ -71,11 +75,20 @@ public static class WindowSettings
     /// </summary>
     public static void FitToMonitor(GameSettings settings)
     {
-        if (!settings.FirstRun) return;
-
         int monitor = Raylib.GetCurrentMonitor();
-        int mw = Raylib.GetMonitorWidth(monitor), mh = Raylib.GetMonitorHeight(monitor);
-        (settings.WindowWidth, settings.WindowHeight) = GameSettings.LargestWindowFor(mw, mh);
+        var (mw, mh) = AspectLayout.NativeOr(Raylib.GetMonitorWidth(monitor), Raylib.GetMonitorHeight(monitor));
+        // The monitor's own resolution, found at every start (rulings, "Other shapes of screen, and the resolution")
+        UI.OptionsScreen.Monitor = (mw, mh);
+        Log.Info($"The monitor: {mw}×{mh} ({AspectLayout.RatioName(mw, mh)}).");
+
+        // A window saved larger than the monitor it opens on is brought within it
+        bool tooLarge = !settings.FirstRun && (settings.WindowWidth > mw || settings.WindowHeight > mh);
+        if (!settings.FirstRun && !tooLarge) return;
+
+        // A monitor of 16:9 keeps the listed sizes; another shape gets a window of its own ratio
+        (settings.WindowWidth, settings.WindowHeight) = AspectLayout.For(mw, mh).IsStandard
+            ? GameSettings.LargestWindowFor(mw, mh)
+            : AspectLayout.LargestWindowFor(mw, mh);
         Raylib.SetWindowSize(settings.WindowWidth, settings.WindowHeight);
 
         var origin = Raylib.GetMonitorPosition(monitor);

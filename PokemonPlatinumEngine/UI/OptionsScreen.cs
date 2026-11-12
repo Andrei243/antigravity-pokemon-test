@@ -13,7 +13,7 @@ namespace PokemonPlatinumEngine.UI;
 /// </summary>
 public enum OptionRow
 {
-    Language, TextSpeed, Quality, WindowSize, Fullscreen, VSync, TimeOfDay,
+    Language, TextSpeed, Quality, Fullscreen, VSync, TimeOfDay,
     Sound, MusicVolume, SoundVolume, CryVolume, AmbienceVolume, Speakers,
     MoveHints, TrainerLines,
     FocusPause, FrameCap,
@@ -52,6 +52,7 @@ public enum OptionRow
     BattleCamera,
     Care,
     ItemGlints,
+    Resolution,
     Help,
     ResetDefaults
 }
@@ -119,8 +120,8 @@ public class OptionsScreen
             or OptionRow.PartyTools or OptionRow.BoxesAnywhere or OptionRow.BoxTools or OptionRow.AreaChecklist or OptionRow.Care or OptionRow.ItemGlints => OptionCategory.Field,
         OptionRow.BattleScene or OptionRow.BattleStyle or OptionRow.MoveHints or OptionRow.TrainerLines or OptionRow.AutoBattle
             or OptionRow.RetryBattles or OptionRow.RecordBattles or OptionRow.Coop or OptionRow.BattleCamera => OptionCategory.Battle,
-        OptionRow.Quality or OptionRow.WindowSize or OptionRow.Fullscreen or OptionRow.VSync or OptionRow.FrameCap
-            or OptionRow.DynamicResolution or OptionRow.FocusPause or OptionRow.Frame => OptionCategory.Display,
+        OptionRow.Quality or OptionRow.Fullscreen or OptionRow.VSync or OptionRow.FrameCap
+            or OptionRow.DynamicResolution or OptionRow.FocusPause or OptionRow.Frame or OptionRow.Resolution => OptionCategory.Display,
         OptionRow.Sound or OptionRow.MusicVolume or OptionRow.SoundVolume or OptionRow.CryVolume or OptionRow.AmbienceVolume
             or OptionRow.Speakers or OptionRow.Voices or OptionRow.VoiceVolume or OptionRow.LetVoicesFinish or OptionRow.EnglishVoices => OptionCategory.Sound,
         OptionRow.ButtonMode or OptionRow.StickDeadZone or OptionRow.Gamepad or OptionRow.Rumble or OptionRow.Controls => OptionCategory.Controls,
@@ -448,16 +449,27 @@ public class OptionsScreen
             case OptionRow.Quality:
                 s.Quality = (GraphicsQuality)Wrap((int)s.Quality + step, 3);
                 break;
-            case OptionRow.WindowSize:
-                var sizes = GameSettings.WindowSizes;
-                int current = Array.FindIndex(sizes, z => z.Width == s.WindowWidth && z.Height == s.WindowHeight);
-                if (current < 0) current = Array.IndexOf(sizes, GameSettings.DefaultWindow);
-                var next = sizes[Wrap(current + step, sizes.Length)];
-                s.WindowWidth = next.Width;
-                s.WindowHeight = next.Height;
-                break;
             case OptionRow.Fullscreen:
                 s.Fullscreen = !s.Fullscreen;
+                break;
+            case OptionRow.Resolution:
+                // In a window its size; in full screen the scene's (rulings, "Other shapes of screen, and the resolution")
+                if (s.Fullscreen)
+                {
+                    var heights = FullscreenChoices();
+                    int pick = Math.Max(0, heights.ToList().IndexOf(s.FullscreenHeight));
+                    s.FullscreenHeight = heights[Wrap(pick + step, heights.Count)];
+                }
+                else
+                {
+                    var choices = WindowChoices();
+                    if (choices.Count == 0) break;
+                    int pick = choices.ToList().FindIndex(z => z.Width == s.WindowWidth && z.Height == s.WindowHeight);
+                    if (pick < 0) pick = step > 0 ? -1 : choices.Count;
+                    var size = choices[Wrap(pick + step, choices.Count)];
+                    s.WindowWidth = size.Width;
+                    s.WindowHeight = size.Height;
+                }
                 break;
             case OptionRow.VSync:
                 s.VSync = !s.VSync;
@@ -698,6 +710,25 @@ public class OptionsScreen
     /// </summary>
     public static bool DynamicResolutionUsable { get; set; } = true;
 
+    /// <summary>
+    /// The monitor the game's window stands on, in pixels (rulings, "Other shapes of screen, and the resolution"):
+    /// what the RESOLUTION row offers sizes of. Only the game's own window tells it (<c>WindowSettings</c>); a screen
+    /// nobody told, the harness's and every test's, has a 1920×1080 monitor.
+    /// </summary>
+    public static (int Width, int Height) Monitor { get; set; } = (1920, 1080);
+
+    /// <summary>The window sizes RESOLUTION offers: the monitor's own ratio, smaller than the monitor.</summary>
+    public static IReadOnlyList<(int Width, int Height)> WindowChoices() =>
+        AspectLayout.SizesFor(Monitor.Width, Monitor.Height).Where(z => z.Width < Monitor.Width && z.Height < Monitor.Height).ToList();
+
+    /// <summary>The full-screen heights RESOLUTION offers: nought (NATIVE) first, then the smaller heights of the monitor's ratio.</summary>
+    public static IReadOnlyList<int> FullscreenChoices() =>
+        new[] { 0 }.Concat(AspectLayout.SizesFor(Monitor.Width, Monitor.Height).Select(z => z.Height).Where(h => h < Monitor.Height)).ToList();
+
+    /// <summary>The width of a full-screen height's size in the monitor's ratio.</summary>
+    public static int FullscreenWidth(int height) =>
+        AspectLayout.SizesFor(Monitor.Width, Monitor.Height).FirstOrDefault(z => z.Height == height) is var (w, h) && h == height ? w : Monitor.Width;
+
     /// <summary>The Quality row's help: the preset's, and what the first run measured on this machine where it measured (plan 16 · T23).</summary>
     private static string QualityHelp(GameSettings s) => s.MeasuredQuality is { } measured
         ? Text.Of($"options.quality.help.{s.Quality}") + " " + Text.Of("options.quality.measured",
@@ -709,7 +740,12 @@ public class OptionsScreen
         OptionRow.Language => (Text.Of("options.language.label"), (Core.Language.Of(s.Language) ?? Text.Language).Name, Text.Of("options.language.help")),
         OptionRow.TextSpeed => (Text.Of("options.textSpeed.label"), Text.Of($"options.textSpeed.value.{s.TextSpeed}"), Text.Of("options.textSpeed.help")),
         OptionRow.Quality => (Text.Of("options.quality.label"), Text.Of($"options.quality.value.{s.Quality}"), QualityHelp(s)),
-        OptionRow.WindowSize => (Text.Of("options.windowSize.label"), Text.Of("options.windowSize.value", ("width", s.WindowWidth), ("height", s.WindowHeight)), Text.Of("options.windowSize.help")),
+        OptionRow.Resolution => s.Fullscreen && s.FullscreenHeight <= 0
+            ? (Text.Of("options.resolution.label"), Text.Of("options.resolution.native", ("width", Monitor.Width), ("height", Monitor.Height)), Text.Of("options.resolution.help.fullscreen"))
+            : s.Fullscreen
+                ? (Text.Of("options.resolution.label"), Text.Of("options.resolution.value", ("width", FullscreenWidth(s.FullscreenHeight)), ("height", s.FullscreenHeight)), Text.Of("options.resolution.help.fullscreen"))
+                : (Text.Of("options.resolution.label"), Text.Of("options.resolution.value", ("width", s.WindowWidth), ("height", s.WindowHeight)),
+                    Text.Of("options.resolution.help.window", ("ratio", AspectLayout.RatioName(Monitor.Width, Monitor.Height)))),
         OptionRow.Fullscreen => (Text.Of("options.fullscreen.label"), OnOff(s.Fullscreen), Text.Of("options.fullscreen.help")),
         OptionRow.VSync => (Text.Of("options.vsync.label"), OnOff(s.VSync), Text.Of("options.vsync.help")),
         OptionRow.TimeOfDay => (Text.Of("options.timeOfDay.label"), s.TimeOfDay is { } time ? Text.Of($"options.timeOfDay.value.{time}") : Text.Of("options.timeOfDay.value.Clock"),

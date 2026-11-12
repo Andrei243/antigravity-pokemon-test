@@ -213,7 +213,8 @@ partial class Harness
     {
         if (!Wanted(name)) return;
         var img = Capture();
-        if (!native4K) Raylib.ImageResize(ref img, GameEngine.VirtualWidth, GameEngine.VirtualHeight);
+        // (Half the virtual screen: 1920×1080 on 16:9, the canvas's own shape on another window)
+        if (!native4K) Raylib.ImageResize(ref img, img.Width / GameEngine.RenderScale, img.Height / GameEngine.RenderScale);
         Save(img, name);
     }
 

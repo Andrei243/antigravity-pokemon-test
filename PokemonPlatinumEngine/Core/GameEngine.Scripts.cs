@@ -929,7 +929,8 @@ public partial class GameEngine
     private void DrawScriptFade()
     {
         if (flow.ScriptFade.Level <= 0f) return;
-        Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)MathF.Round(flow.ScriptFade.Level * 255f)));
+        var dark = new Color(0, 0, 0, (int)MathF.Round(flow.ScriptFade.Level * 255f));
+        Canvas2D.Draw((w, h) => Raylib.DrawRectangle(0, 0, w, h, dark));
     }
 
     /// <summary>
@@ -940,8 +941,12 @@ public partial class GameEngine
     {
         int bar = (int)world.Camera.Bars;
         if (bar <= 0) return;
-        Raylib.DrawRectangle(0, 0, VirtualWidth, bar, Color.Black);
-        Raylib.DrawRectangle(0, VirtualHeight - bar, VirtualWidth, bar, Color.Black);
+        // (Across the whole canvas, at its own top and bottom)
+        Canvas2D.Draw((w, h) =>
+        {
+            Raylib.DrawRectangle(0, 0, w, bar, Color.Black);
+            Raylib.DrawRectangle(0, h - bar, w, bar, Color.Black);
+        });
     }
 
     private void DrawChoice()
@@ -1022,6 +1027,7 @@ public partial class GameEngine
         // The film studio (plan 42 · PS4)
         public Models.Studio.StudioRecords? Studio => game.flow.Studio;
         public void StudioShoot(Models.Studio.StudioFilm film) => game.StartStudioFilm(film);
+        public bool StudioPremiere(Models.Studio.StudioFilm film) => game.StartPremiere(film);
         public GiftFacts GiftFacts => game.GiftFactsNow();
         public TradeBoard? Board => game.flow.Board;
         public IReadOnlyList<string> RegionsEntered => game.RegionsEnteredNow();

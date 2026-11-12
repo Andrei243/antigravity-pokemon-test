@@ -1455,7 +1455,11 @@ public partial class GameEngine
                     // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
                     AudioManager.Giant = flow.Battle.Result == BattleResult.None && flow.Battle.GiantStands;
                     // A recording watched (plan 08 · P11) ends back on the Vs. Recorder's list, and leaves nothing behind
-                    if (flow.Battle.Watching)
+                    if (KeepThePremiere())
+                    {
+                        // A take's premiere (plan 42 · PS4, part b) ends on its ending, its crowd and its box office, back in the theatre
+                    }
+                    else if (flow.Battle.Watching)
                     {
                         if (flow.Battle.WatchOver) EndWatching();
                     }
@@ -3317,6 +3321,8 @@ public partial class GameEngine
         if (IsHeadless) throw new InvalidOperationException("A game with no window draws nothing (InitializeHeadless).");
         FrameProfiler.LapCpu(FrameSection.Update);
         renderContext.OutputWidth = Raylib.GetScreenWidth();
+        // The picture takes the window's shape before anything is rendered (rulings, "Other shapes of screen")
+        FitTheCanvas(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         // Under the close button's question, what was on screen when it was asked (plan 12 · Q1)
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
@@ -3429,7 +3435,8 @@ public partial class GameEngine
         // anything translucent lowered the alpha of what it covered, and the window, which shows the picture over
         // black, showed every translucent panel darker than it is. The clear is the only thing that writes alpha.
         Rlgl.ColorMask(true, true, true, false);
-        Raylib.BeginMode2D(new Camera2D { Zoom = RenderScale });
+        // The interface's safe area, in the canvas's middle (the whole picture on 16:9)
+        Raylib.BeginMode2D(Canvas2D.Safe);
 
         switch (shown)
         {
@@ -3755,10 +3762,11 @@ public partial class GameEngine
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
         // and a band is drawn with whose it is and the portraits rendered for it so far
+        // (over the whole canvas)
         if (shown == GameState.Transition)
-            SceneTransition.Draw(flow.Kind, flow.Closing, flow.Clock, VirtualWidth, VirtualHeight,
-                flow.Closing && showWorld ? FieldPlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
-                flow.Closing ? band.Picture : null);
+            Canvas2D.Draw((w, h) => SceneTransition.Draw(flow.Kind, flow.Closing, flow.Clock, w, h,
+                flow.Closing && showWorld ? FieldPlayerOnPicture * new Vector2(w, h) : null,
+                flow.Closing ? band.Picture : null));
 
         // A battle lost's question over the battle (plan 12 · Q25), and the close button's over all of it, sliding away once answered
         retryPrompt.Draw(VirtualWidth, VirtualHeight);
@@ -3785,13 +3793,11 @@ public partial class GameEngine
         int screenW = Raylib.GetScreenWidth();
         int screenH = Raylib.GetScreenHeight();
 
-        float scale = MathF.Min((float)screenW / VirtualWidth, (float)screenH / VirtualHeight);
-        int destW = (int)(VirtualWidth * scale);
-        int destH = (int)(VirtualHeight * scale);
-        int destX = (screenW - destW) / 2;
-        int destY = (screenH - destH) / 2;
-        // Kept, so the mouse is read in the layout's units (plan 12 · Q6; Viewport.Fit is the same sum)
-        Viewport = new Viewport(destX, destY, scale);
+        // The canvas as large as fits, in the middle: no bars where the canvas has the window's shape
+        var (fitX, fitY, scale, destW, destH) = Canvas2D.Layout.FitIn(screenW, screenH);
+        int destX = (int)fitX, destY = (int)fitY;
+        // Kept, so the mouse is read in the safe area's units (plan 12 · Q6; Viewport.Fit is the same sum on 16:9)
+        Viewport = Canvas2D.Layout.ViewportIn(screenW, screenH);
         InputManager.Viewport = Viewport;
 
         Raylib.BeginDrawing();

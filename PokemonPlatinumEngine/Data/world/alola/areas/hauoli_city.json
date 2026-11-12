@@ -22,7 +22,8 @@
     { "x": 328, "z": 165, "to": "HauoliCity_PoliceStation", "toWarp": 0 },
     { "x": 336, "z": 165, "to": "HauoliCity_MalasadaShop", "toWarp": 0 },
     { "x": 344, "z": 165, "to": "HauoliCity_ApparelShop", "toWarp": 0 },
-    { "x": 355, "z": 165, "to": "HauoliCity_IlimasHouse", "toWarp": 0 }
+    { "x": 355, "z": 165, "to": "HauoliCity_IlimasHouse", "toWarp": 0 },
+    { "x": 309, "z": 165, "to": "HauoliCity_TrainersSchool", "toWarp": 0 }
   ],
   "objects": [
     { "id": "tourist", "looks": "lady", "movement": "wander_around", "x": 292, "z": 170, "facing": 1, "rangeX": 3, "rangeZ": 1, "script": "" },
