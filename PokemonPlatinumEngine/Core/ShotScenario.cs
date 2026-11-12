@@ -72,7 +72,7 @@ public sealed class ShotScenario
         new("read", "read", 0, 0, _ => null),
         new("next", "next", 0, 0, _ => null),
         new("wait", "wait <seconds>", 1, 1, a => SecondsOf(a[0]) != null ? null : $"the wait must be a number of seconds from 0 to 600, not '{a[0]}'"),
-        new("wild", "wild <species or form> <level>", 2, 2, a => DevCommands.Int(a[1], "the level", 1, 260)),
+        new("wild", "wild <species or form> <level>", 2, 2, a => DevCommands.Int(a[1], "the level", 1, Data.Ruleset.HighestLevel)),
         new("trainer", "trainer <id>", 1, 1, _ => null),
         new("menu", "menu", 0, 0, _ => null),
         new("move", "move <n>", 1, 1, a => DevCommands.Int(a[0], "the move (0 is the first)", 0, 3)),

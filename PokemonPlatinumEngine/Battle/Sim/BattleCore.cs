@@ -1528,7 +1528,7 @@ public sealed partial class BattleCore : IBattleContext
     /// player's Pokémon that fought it and are still standing, with the Exp. Share's half for its holders, and the
     /// Lucky Egg's, a trainer battle's and another trainer's Pokémon's bonus on each one's part. Whoever gains EXP
     /// gains the foe's effort too (<see cref="EffortRules.Gain"/>); a Pokémon at the rules' level cap gains neither
-    /// (100 in Platinum; plan 18 · W4's 260 by the modern rules, where effort still comes). By the modern rules the
+    /// (100 in Platinum; 300 by the modern rules since plan 46 · CP15, where effort still comes). By the modern rules the
     /// whole party gains by the scaled formula (<see cref="Formulas.ScaledExp"/>).
     /// </summary>
     private void AwardExp(Battler defeated)
