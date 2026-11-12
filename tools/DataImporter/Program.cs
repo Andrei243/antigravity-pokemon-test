@@ -146,7 +146,14 @@ ribbons.AddRange(new[]
     new RibbonRecord { Id = "RIBBON_ALOLA_CHAMPION", Name = "Alola Champion Ribbon", Art = "alola_champion" },
     new RibbonRecord { Id = "RIBBON_GALAR_CHAMPION", Name = "Galar Champion Ribbon", Art = "galar_champion" },
     new RibbonRecord { Id = "RIBBON_PALDEA_CHAMPION", Name = "Paldea Champion Ribbon", Art = "paldea_champion" },
+    // Plan 40 · GE7: the gift box's event ribbons, ours (names and art names ours; Event, as no game gives them by itself)
+    new RibbonRecord { Id = "RIBBON_CHAMPION_HEARTH", Name = "Champion Hearth Ribbon", Art = "champion_hearth", Event = true },
+    new RibbonRecord { Id = "RIBBON_NATURALIST", Name = "Naturalist's Ribbon", Art = "naturalist", Event = true },
+    new RibbonRecord { Id = "RIBBON_THOUSAND_NAMES", Name = "Thousand Names Ribbon", Art = "thousand_names", Event = true },
+    new RibbonRecord { Id = "RIBBON_GIFT_DAY", Name = "Gift Day Ribbon", Art = "gift_day", Event = true },
 });
+// Plan 40 · GE7 and GE9: the gift box's and the festivals' backdrops, ours, after Platinum's eighteen
+contests.Backdrops.AddRange(new[] { "Midnight Bloom", "Field Notes", "Lantern", "Blossom", "Sea-Burst" });
 var underground = importer.Underground(items.Select(i => i.Name).ToHashSet());
 var frontier = importer.Frontier();
 var migration = importer.Migration(items, moves);

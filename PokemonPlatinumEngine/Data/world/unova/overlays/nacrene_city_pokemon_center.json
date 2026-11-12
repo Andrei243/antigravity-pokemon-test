@@ -12,5 +12,12 @@
     "8": { "name": "Backpacker", "dialog": [ "I always stop here before the forest. It's a long walk to the bridge." ] },
     "9": { "name": "Lass", "dialog": [ "The museum gift shop sells the cutest postcards. I bought ten!" ] },
     "10": { "name": "Little Girl", "npcType": "school_kid_f", "dialog": [ "My mum is painting at the café. I'm waiting for her here." ] }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "clerk", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

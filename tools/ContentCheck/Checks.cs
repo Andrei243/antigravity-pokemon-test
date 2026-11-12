@@ -74,6 +74,8 @@ public static class Checks
             written.UnionWith(PokemonPlatinumEngine.Story.ScriptRunner.BugContestFlags);
             // ...and the flags the clock keeps (plan 23, Kalos's last places: the Mega Stones' evening hour)
             written.UnionWith(PokemonPlatinumEngine.Story.ClockFlags.All.Select(f => f.Flag));
+            // ...and the festivals' flags, which the clock keeps by the calendar (plan 40 · GE9)
+            written.UnionWith(PokemonPlatinumEngine.Models.Festivals.All.Select(f => PokemonPlatinumEngine.Models.Festivals.FlagOf(f.Id)));
         }
 
         public bool IsSet(string flag) => written.Contains(flag);

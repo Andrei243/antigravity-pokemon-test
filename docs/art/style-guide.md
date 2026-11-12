@@ -2165,6 +2165,24 @@ Plan 14 · B11 (`TournamentScreen`, `ModernUi.DrawTournament`): the bracket's lo
 - **A card** is the bracket's card: the trainer's class and name, how far they have come, and their three at level 50.
 - **More events than fit** (plan 14 · B12: every region's Leaders and League, the world's events, the formats and the type brackets): three cards are shown at once (`TournamentScreen.VisibleRows`), the window following the cursor as every list's does, with a thin track 10 wide 28 to the right of the cards and a thumb in the frame's colour, as the lists' scroll bar.
 
+#### The gift box
+
+Plan 40 · GE7 (`GiftBoxScreen`, `ModernUi.DrawGiftBox`). Our own throughout. One screen in the menus' look, titled GIFT BOX, opened by a Gift Runner's `gift open`; its colour is the Gift Runners' scarf, a warm yellow (240, 196, 70), which is a tab's accent, a card's ribbon band and the selection's second border.
+
+- **Three tabs** along the content's top as every menu's tabs: WAITING (the gifts due), CARDS (the album of gifts taken) and TELL WORDS. The tab's count of waiting gifts is a yellow tag beside its word.
+- **A card** is a panel 420 by 300, three to a row on a pitch of 460, the content's width at its middle: a yellow band 48 tall across its top with the sender's name in Black 26, the picture in a well 200 by 150 (a Pokémon's or an Egg's menu sprite at twice its size, an item's icon at three times, a Seal or a ribbon as the capsule and ribbon pages draw them, a backdrop as its swatch), the gift's title in Black 30 and its card's words in muted ExtraBold 22, wrapped to two lines. On CARDS the day it was taken stands in the band's right in Black 22.
+- **The cursor** is the selection's border with a yellow one inside it. With nothing waiting WAITING says so in the middle, in muted ExtraBold 30.
+- **TELL WORDS** is one card of the same size in the middle, its picture a speech bubble in yellow, saying that two words told to a Gift Runner may call a gift up; Confirm on it closes the box and the runner asks for the words on the phrase picker.
+- A **Gift Runner** is a courier of ours in a yellow scarf (the user's 18b), drawn in the field by the look of whoever stood at that desk (a deliveryman, a clerk) with the scarf's colour; there is no new rig.
+
+#### The trade board
+
+Plan 40 · GE8 (`TradeBoardScreen`, `ModernUi.DrawTradeBoard`). Our own. One screen in the menus' look, titled TRADE BOARD with the region's name in a muted tag after it; its colour is a link-desk teal (60, 170, 180).
+
+- **The day's three requests** are cards 560 by 380 side by side on a pitch of 600, at the content's middle: a teal band 52 tall with the trainer's name in Black 28 and, for a trainer from abroad, their language on a white tag; below it two wells 220 by 180 side by side with an arrow between, WANTS (the species' menu sprite at twice its size, its name in Black 26 and "Lv. N or higher" in muted ExtraBold 22; a species not yet seen is the menu sprite's silhouette in the frame's colour and its name "???") and OFFERS (the same, with the held item's icon at its corner). A request met is greyed under a teal MET stamp.
+- **The blind trade** is a row 1720 wide under the cards, 120 tall: a teal "?" in a circle, BLIND TRADE in Black 32, and how many are left today (of five) in Black 28 at its right.
+- **The cursor** is the selection's border with a teal one inside. Confirm hands the choice back to the desk's script, which asks for the Pokémon on the team's own screen.
+
 ### The Pokéathlon
 
 Plan 15 · E6 (`AthlonScreen`, `ModernUi.DrawAthlon`). Our own throughout: nothing of HeartGold's dome, events or

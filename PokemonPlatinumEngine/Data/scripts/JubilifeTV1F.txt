@@ -72,3 +72,41 @@ script Whose
 label Boxed
   say "Oh! The ID number of {winner}, in your PC Boxes, matches!"
   return
+
+# The gift box's questionnaire (plan 40 · GE7; the user's 17b): Madame Ottilie Fray asks two questions answered with the
+# phrase picker, as Platinum's own gift menu was opened by two phrases given to a man on the station's third floor. Her
+# second question has an answer of ours, SPARROW and CLOCKWORK (19b), which opens the box (FLAG_GIFT_BOX_OPEN): the Gift
+# Runners in every region's Pokémon Centers hand out what waits from then on. A Gift Runner who isn't busy yet says both
+# words, so nobody need find them by chance.
+script Questionnaire
+  face self player
+  speaker "Madame Ottilie Fray"
+  if flag FLAG_GIFT_BOX_OPEN goto Opened
+  say "Good day! I am Ottilie Fray, and I ask a question or two of everyone who comes through these doors."
+  ask "Would you answer my questionnaire? Two questions, two words each."
+  if no goto Declined
+  say "The first. What do you like best about travelling with Pokémon? Two words, please."
+  phrase GIFT_QUESTION_ONE
+  speaker "Madame Ottilie Fray"
+  if result == 0 goto Declined
+  say "\"{phrase:GIFT_QUESTION_ONE}\"... Charming. I shall write that down."
+  say "And the second. What sings at the break of day, and what never stops ticking?"
+  phrase GIFT_QUESTION_TWO
+  speaker "Madame Ottilie Fray"
+  if result == 0 goto Declined
+  if phrase GIFT_QUESTION_TWO "small:sparrow" "small:clockwork" goto Right
+  if phrase GIFT_QUESTION_TWO "small:clockwork" "small:sparrow" goto Right
+  say "\"{phrase:GIFT_QUESTION_TWO}\"? Not what I had in mind, I'm afraid. Do try again another time."
+  end
+label Right
+  say "\"{phrase:GIFT_QUESTION_TWO}\"! Exactly so. You've answered the questionnaire, and the gift box is open to you."
+  setflag FLAG_GIFT_BOX_OPEN
+  say "The Gift Runners in their yellow scarves stand in the Pokémon Centers. They'll hand you whatever is waiting."
+  end
+label Declined
+  say "Another time, then. My questions will keep."
+  end
+label Opened
+  say "Have you been to see the Gift Runners? Gifts come to the box from all over, on days and for deeds."
+  say "And words, too. Say the right two words to a Runner, and you never know what might turn up."
+  end

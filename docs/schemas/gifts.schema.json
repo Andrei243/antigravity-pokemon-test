@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The gift box's gifts (Data/gifts.json, and a pack's)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "gifts": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "when": {
+            "type": "object",
+            "properties": {
+              "dates": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "festival": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hallOfFame": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "caught": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "hours": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "anniversary": {
+                "type": "boolean"
+              },
+              "words": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "picture": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "name"
+            ],
+            "additionalProperties": false
+          },
+          "script": {
+            "type": "string"
+          },
+          "yearly": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "when",
+          "picture",
+          "script"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "gifts"
+  ],
+  "additionalProperties": false
+}

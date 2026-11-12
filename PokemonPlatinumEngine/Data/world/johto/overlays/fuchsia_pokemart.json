@@ -7,6 +7,7 @@
     "t08fs0101_delivery"
   ],
   "people": {
+    "t08fs0101_delivery": { "name": "Gift Runner", "script": "Courier" },
     "t08fs0101_shopm1_2": {
       "name": "Clerk",
       "script": "Clerk",

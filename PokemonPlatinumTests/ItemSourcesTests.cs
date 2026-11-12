@@ -83,7 +83,6 @@ public class ItemSourcesTests
     private const string PaldeaStones = "plan 34 · PD9: Paldea's Hall of Fame, its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
     private const string TealMask = "plan 34 · PD10 (optional): the Teal Mask";
     private const string IndigoDisk = "plan 34 · PD11 (optional): the Indigo Disk";
-    private const string Events = "plan 40 · GE7: the gift box; no game gave it but by an event";
 
     /// <summary>
     /// What no region of the game gives yet by a sure way, and who owes it. Each line names a plan and a session; the
@@ -109,7 +108,7 @@ public class ItemSourcesTests
         // (Alola owes nothing since plan 23's last Alola session: the partners' crystals and stones are Kukui's after the Hall
         // of Fame, the species' crystals Heahea's carver's, the sun's and the moon's the Altar keeper's, Necrozma's and its two
         // machines Veyra's, the Marshadium Z Marshadow's, the Meltan Candy the old Megamart's Meltan's)
-        (Events, new[] { "Pikashunium Z", "Fairy Gem" }),
+        // (the gift box gives the Pikashunium Z with the Registry's Pikachu and the Fairy Gem on St Valentine's Day since plan 40 · GE7)
         // What the evolutions of our own species ask for that only chance gives (plan 36 · TR3's sources count no chance):
         // Volcamel's, Gastromire's, Behemowdon's and Furnapede's rocks, Ossugard's club
         // Hisui

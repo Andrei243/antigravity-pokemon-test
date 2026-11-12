@@ -21,11 +21,6 @@
         "I'm sorry, the link to other players is closed for now."
       ]
     },
-    "mg_deliveryman": {
-      "name": "Deliveryman",
-      "dialog": [
-        "Nothing to deliver today, I'm afraid."
-      ]
-    }
+    "mg_deliveryman": { "name": "Gift Runner", "script": "Courier" }
   }
 }

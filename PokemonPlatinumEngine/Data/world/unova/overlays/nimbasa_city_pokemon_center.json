@@ -33,5 +33,12 @@
       "npcType": "Gentleman",
       "dialog": [ "The Gear Station sends trains all over Unova, and the Battle Subway's trains go nowhere at all!" ]
     }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "clerk", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

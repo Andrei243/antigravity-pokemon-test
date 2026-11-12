@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, GiftBox, TradeBoard }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -103,6 +103,39 @@ public interface IScriptHost
     /// <see cref="Charms.Due"/>); null for a host that has none, where nothing is due.
     /// </summary>
     Pokedex? Pokedex => null;
+
+    /// <summary>
+    /// The gift box (plan 40 · GE7, <c>gift</c>): what it has handed over; null for a host that has none, where nothing waits.
+    /// Its screen is <see cref="ScriptScreen.GiftBox"/>: <see cref="Answer"/> the gift chosen of those due (from 1),
+    /// <see cref="GiftBoxAnswers.Words"/> for TELL WORDS, 0 backed out of.
+    /// </summary>
+    GiftBox? Gifts => null;
+
+    /// <summary>What the gifts' terms read of the player now (the day, the Halls of Fame, the counts, the run): nothing held unless a host says.</summary>
+    GiftFacts GiftFacts => new();
+
+    /// <summary>
+    /// The trade board and blind trades (plan 40 · GE8, <c>trade board</c>, <c>trade blind</c>); null for a host that has none.
+    /// Its screen is <see cref="ScriptScreen.TradeBoard"/> (the counter the region's id): <see cref="Answer"/> the request
+    /// chosen, 1 to 3, 4 for a blind trade, 0 backed out of.
+    /// </summary>
+    TradeBoard? Board => null;
+
+    /// <summary>The regions the player has entered, by id: what a blind trade and a request's offer are drawn from. The region the player is in unless a host says.</summary>
+    IReadOnlyList<string> RegionsEntered => new[] { Region };
+
+    /// <summary>Whether the run under way holds its Pokémon, so that none is traded away (plan 13's Nuzlocke and restrictions, as the Home box asks).</summary>
+    bool RunHoldsTrades => false;
+
+    /// <summary>
+    /// A Pokémon received by a trade of the board in the given one's place (plan 40 · GE8): the game's own way in,
+    /// <c>ReceiveTradedPokemon</c>, which plays its trade evolution; a host with none swaps it into the team.
+    /// </summary>
+    void ReceiveTraded(Pokemon received, Pokemon given)
+    {
+        int at = Party.Members.IndexOf(given);
+        if (at >= 0) Party.Members[at] = received;
+    }
     int Money { get; set; }
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }

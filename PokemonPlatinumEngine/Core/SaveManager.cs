@@ -246,6 +246,20 @@ public class SaveData
     public List<Models.SavedFriendBeaten>? FriendsBeaten { get; set; }
 
     /// <summary>
+    /// What the gift box has handed over (plan 40 · GE7, <see cref="Models.GiftBox"/>): each gift's days taken and the words
+    /// told. Null while nothing is, and in every save from before it, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.GiftsSave? Gifts { get; set; }
+
+    /// <summary>
+    /// Today's trade board (plan 40 · GE8, <see cref="Models.TradeBoard"/>): the requests met and the blind trades made, by
+    /// the day they were made on. Null while none is, and in every save from before it, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.TradeBoardSave? TradeBoard { get; set; }
+
+    /// <summary>
     /// The Pokédex's research (plan 15 · E1, <see cref="Models.Research"/>): each species' counts by task key, by National
     /// number. Null while nothing is counted and in every save from before it, which reads as nothing counted, so no
     /// save version was raised.

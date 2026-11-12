@@ -11,5 +11,12 @@
     "5": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
     "8": { "name": "Lady", "npcType": "lady", "dialog": [ "The professor in Nuvema sends all her new Trainers here first." ] },
     "9": { "name": "Lass", "dialog": [ "My first Pokémon came from Nuvema. We've been together ever since." ] }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "clerk", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

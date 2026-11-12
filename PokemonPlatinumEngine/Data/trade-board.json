@@ -1,0 +1,13 @@
+// The trade board's made-up trainers (plan 40 · GE8; Models/TradeBoard.cs; docs/data-files.md, "The trade board"). Ours:
+// the names, the looks (of characters.json), the languages a trainer from abroad speaks (one time in four) and the items a
+// Pokémon offered may hold. The board draws from these by the day and the region, never by chance.
+{
+  "names": [
+    "Ansel", "Brisa", "Corin", "Dalia", "Emrys", "Fenna", "Gideon", "Halle", "Ivo", "Juno", "Kester", "Linnea", "Marek",
+    "Nadia", "Orrin", "Pella", "Quill", "Rosalind", "Silas", "Tamsin", "Ulric", "Vesna", "Wren", "Ximena", "Yorick", "Zelda",
+    "Bramble", "Clementine", "Dashiell", "Elowen", "Finnian", "Greer", "Hollis", "Imogen", "Jasper", "Kit", "Lark", "Marlowe"
+  ],
+  "looks": [ "youngster", "lass", "lady", "clerk", "blackbelt", "sage" ],
+  "languages": [ "French", "German", "Italian", "Spanish", "Japanese", "Korean" ],
+  "items": [ "Oran Berry", "Sitrus Berry", "Leftovers", "Everstone", "Soothe Bell", "Quick Claw", "Lucky Egg", "Amulet Coin", "Nugget", "Pearl" ]
+}

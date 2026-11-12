@@ -34,7 +34,34 @@ script Gts
   say "But a Pokémon that grows only through a trade needn't wait for the link. Here: a Linking Cord does the same for it."
   give "Linking Cord"
   say "Use it on the Pokémon like a stone. Come back for another whenever yours is used up!"
-  end
+  goto TradeBoardOffer
 label Holding
   say "You still have a Linking Cord, I see. Use it on a Pokémon that grows through a trade, and come back for another."
+  goto TradeBoardOffer
+# Plan 40 · GE8: the trade board kept at the same desk (common.TradeDesk)
+label TradeBoardOffer
+  ask "There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it?"
+  if no goto TradeBoardLater
+  call TradeDesk
+label TradeBoardLater
+  say "Very well. The board changes every day, so do look in again!"
+  end
+
+# The backdrop lady (plan 40 · GE8): with the studio upstairs dark she hands out a backdrop for the first trade made on
+# the trade board (TradeBoard.FirstTradeFlag), once.
+script BackdropLady
+  face self player
+  speaker "Breeder"
+  if flag FLAG_GOT_TRADE_BOARD_BACKDROP goto Given
+  if flag FLAG_TRADE_BOARD_FIRST_TRADE goto FirstTrade
+  sayown
+  end
+label FirstTrade
+  say "Oh! You've made a trade on the board downstairs? Your first one! That deserves something for the Fashion Case."
+  gift backdrop "City at Night"
+  setflag FLAG_GOT_TRADE_BOARD_BACKDROP
+  say "There! A Pokémon in its new home should have a fine picture behind it."
+  end
+label Given
+  say "Have you tried that Backdrop yet? Every trade's a new start, and every start deserves a picture."
   end

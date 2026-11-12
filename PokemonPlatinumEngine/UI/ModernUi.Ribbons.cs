@@ -345,6 +345,66 @@ internal static partial class ModernUi
                 Sky(C(70, 140, 236), C(170, 214, 250));
                 for (int i = 0; i < 6; i++) UiShapes.Fill(new Rectangle(x + w * Rnd(i, 1) - 60, y + h * (0.12f + 0.7f * Rnd(i, 2)), w * (0.2f + 0.2f * Rnd(i, 3)), 16 * small), 8 * small, C(255, 255, 255, 170));
                 break;
+            // The gift box's and the festivals' backdrops (plan 40 · GE7, GE9; style guide, "Menu screens", "The gift box")
+            case "Midnight Bloom":
+                // A night sky over a town's roofs, bursts of colour opening over it
+                Sky(C(18, 20, 56), C(54, 40, 96));
+                for (int i = 0; i < 5; i++)
+                {
+                    var at = new Vector2(x + w * (0.12f + 0.19f * i), y + h * (0.2f + 0.22f * Rnd(i, 1)));
+                    var burst = i % 3 == 0 ? C(250, 140, 190) : i % 3 == 1 ? C(250, 220, 110) : C(140, 220, 250);
+                    for (int k = 0; k < 10; k++)
+                    {
+                        float a = k * MathF.Tau / 10f;
+                        UiShapes.Circle(at + new Vector2(MathF.Cos(a), MathF.Sin(a)) * h * 0.09f, 5 * small, burst);
+                    }
+                    UiShapes.Circle(at, 7 * small, C(255, 250, 230));
+                }
+                for (int i = 0; i < 7; i++) UiShapes.Fill(new Rectangle(x + i * w / 7f, y + h * (0.78f + 0.08f * Rnd(i, 2)), w / 7f + 2, h), 0, C(26, 24, 50));
+                break;
+            case "Field Notes":
+                // A naturalist's page: ruled paper, a pressed leaf and a feather
+                Sky(C(244, 236, 214), C(232, 220, 190));
+                for (int i = 1; i < 9; i++) UiShapes.Fill(new Rectangle(x, y + h * i / 9f, w, 2 * small + 1), 0, C(170, 196, 220, 160));
+                UiShapes.Fill(new Rectangle(x + w * 0.08f, y, 3 * small + 1, h), 0, C(220, 120, 120, 170));
+                UiShapes.Turned(new Vector2(x + w * 0.68f, y + h * 0.42f), h * 0.2f, h * 0.08f, h * 0.08f, -30f, C(120, 176, 96));
+                UiShapes.Turned(new Vector2(x + w * 0.32f, y + h * 0.62f), h * 0.22f, h * 0.025f, h * 0.025f, 24f, C(150, 120, 90));
+                break;
+            case "Lantern":
+                // Paper lanterns strung over an evening street
+                Sky(C(70, 40, 90), C(236, 140, 100));
+                UiShapes.Fill(new Rectangle(x, y + h * 0.22f, w, 3 * small + 1), 0, C(60, 40, 40));
+                for (int i = 0; i < 7; i++)
+                {
+                    var at = new Vector2(x + w * (0.08f + i * 0.14f), y + h * (0.3f + 0.04f * (i % 2)));
+                    UiShapes.Circle(at, h * 0.07f, C(255, 150, 70, 90));
+                    UiShapes.Fill(new Rectangle(at.X - h * 0.04f, at.Y - h * 0.05f, h * 0.08f, h * 0.1f), h * 0.03f, i % 2 == 0 ? C(240, 90, 70) : C(250, 190, 80));
+                }
+                Ground(0.82f, C(90, 60, 70), C(60, 40, 50));
+                break;
+            case "Blossom":
+                // Blossom on the boughs and petals in the air
+                Sky(C(200, 226, 250), C(252, 236, 242));
+                UiShapes.Circle(new Vector2(x + w * 0.18f, y + h * 0.18f), h * 0.32f, C(250, 196, 214));
+                UiShapes.Circle(new Vector2(x + w * 0.86f, y + h * 0.1f), h * 0.36f, C(246, 180, 204));
+                for (int i = 0; i < 40; i++) UiShapes.Circle(new Vector2(x + w * Rnd(i, 1), y + h * Rnd(i, 2)), (3 + 3 * Rnd(i, 3)) * small, C(252, 214, 228, 230));
+                Ground(0.86f, C(140, 200, 120), C(110, 176, 100));
+                break;
+            case "Sea-Burst":
+                // Bursts of light over a night sea
+                Sky(C(14, 24, 60), C(30, 60, 110));
+                for (int i = 0; i < 3; i++)
+                {
+                    var at = new Vector2(x + w * (0.22f + 0.28f * i), y + h * (0.24f + 0.1f * Rnd(i, 1)));
+                    for (int k = 0; k < 14; k++)
+                    {
+                        float a = k * MathF.Tau / 14f;
+                        UiShapes.Circle(at + new Vector2(MathF.Cos(a), MathF.Sin(a)) * h * 0.12f, 4 * small, C(255, 230, 150));
+                    }
+                }
+                Ground(0.7f, C(24, 60, 110), C(10, 30, 70));
+                for (int i = 0; i < 12; i++) UiShapes.Fill(new Rectangle(x + w * Rnd(i, 4), y + h * (0.74f + 0.2f * Rnd(i, 5)), w * 0.06f, 3 * small + 1), 0, C(255, 220, 140, 140));
+                break;
             default:
                 // Theater, and any backdrop without a scene of its own: curtains, a stage and a light
                 Sky(C(90, 24, 40), C(60, 16, 30));

@@ -12,16 +12,26 @@ script LinkingCord
   say "But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!"
   give "Linking Cord"
   say "Use it on the Pokémon as you would a stone. Come back for another once yours is used up."
-  end
+  goto TradeBoardOffer
 label Holding
   say "You still have a Linking Cord. Use it on a Pokémon that grows through a trade, then come back for another."
-  end
+  goto TradeBoardOffer
 
 
 # Plan 40 · GE4, ours: Unova's designer, who stands in Castelia City's Pokémon Center where Black 2 keeps its own
 # elsewhere. Like the other regions' designers he hands over the charms a Pokédex filled has earned (charm due, charm
 # give; Models/Charms.cs) and reads the diplomas the Pokédex has handed out (diploma, DIPLOMAS). With nothing to say
 # of either he says his own line (the overlay's).
+# Plan 40 · GE8: the trade board kept at the same desk (common.TradeDesk)
+label TradeBoardOffer
+  ask "There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it?"
+  if no goto TradeBoardLater
+  call TradeDesk
+label TradeBoardLater
+  say "Very well. The board changes every day, so do look in again!"
+  end
+
+
 script Designer
   face self player
   charm due

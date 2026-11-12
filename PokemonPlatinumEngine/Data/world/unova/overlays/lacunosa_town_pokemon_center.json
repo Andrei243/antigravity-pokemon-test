@@ -58,5 +58,12 @@
         "The people of this town sleep early and rise early. I sense a very good habit."
       ]
     }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "clerk", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

@@ -4,6 +4,7 @@
   "area": "lavender_pokemart",
   "bgmTrack": "kanto/lavender",
   "people": {
+    "t05fs0101_delivery": { "name": "Gift Runner", "script": "Courier" },
     "t05fs0101_shopm1_2": {
       "name": "Clerk",
       "script": "Clerk",

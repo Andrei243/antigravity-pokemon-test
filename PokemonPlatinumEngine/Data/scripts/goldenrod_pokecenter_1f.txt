@@ -12,7 +12,15 @@ script LinkingCord
   say "But a Pokémon that grows only through a trade needn't wait for it. A Linking Cord does the same for it. Here!"
   give "Linking Cord"
   say "Use it on the Pokémon as you would a stone. Come back for another once yours is used up."
-  end
+  goto TradeBoardOffer
 label Holding
   say "You still have a Linking Cord. Use it on a Pokémon that grows through a trade, then come back for another."
+  goto TradeBoardOffer
+# Plan 40 · GE8: the trade board kept at the same desk (common.TradeDesk)
+label TradeBoardOffer
+  ask "There's also the trade board, where Trainers far and wide post the trades they'd like. Would you care to see it?"
+  if no goto TradeBoardLater
+  call TradeDesk
+label TradeBoardLater
+  say "Very well. The board changes every day, so do look in again!"
   end

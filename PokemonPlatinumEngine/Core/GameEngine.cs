@@ -145,7 +145,11 @@ public enum GameState
     /// <summary>The crafting kit looked into, from the bag, the item button or a script's <c>craft open</c> (plan 39 · CR1).</summary>
     Crafting,
     /// <summary>The effort drills, opened by a coach's <c>train drill</c> on the Pokémon chosen (plan 36 · TR2).</summary>
-    Training
+    Training,
+    /// <summary>The gift box at a Gift Runner's, opened by a script's <c>gift open</c> (plan 40 · GE7).</summary>
+    GiftBox,
+    /// <summary>The trade board at a link desk, opened by a script's <c>trade board open</c> (plan 40 · GE8).</summary>
+    TradeBoard
 }
 
 public partial class GameEngine
@@ -477,6 +481,8 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Gifts.Clear();
+        flow.Board.Clear();
         flow.Powers.Clear();
         ForgetWornOff();
         flow.Training.Clear();
@@ -746,6 +752,8 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        flow.Gifts.Load(save.Gifts);
+        flow.Board.Load(save.TradeBoard);
         flow.Powers.Load(save.Powers);
         ForgetWornOff();
         flow.Training.Load(save.Training);
@@ -965,6 +973,8 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            Gifts = flow.Gifts.ToSave(),
+            TradeBoard = flow.Board.ToSave(),
             Powers = flow.Powers.ToSave(),
             MachinesHad = flow.Bag.MachinesHad.Count > 0 ? flow.Bag.MachinesHad.OrderBy(n => n, StringComparer.Ordinal).ToList() : null,
             Training = flow.Training.ToSave(),
@@ -1648,6 +1658,12 @@ public partial class GameEngine
                 break;
             case GameState.Training:
                 UpdateTraining(dt);
+                break;
+            case GameState.GiftBox:
+                UpdateGiftBox(dt);
+                break;
+            case GameState.TradeBoard:
+                UpdateTradeBoard(dt);
                 break;
             case GameState.Mining:
                 UpdateMining(dt);
@@ -3430,6 +3446,12 @@ public partial class GameEngine
                 break;
             case GameState.Training:
                 flow.TrainingScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.GiftBox:
+                flow.GiftBoxScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.TradeBoard:
+                flow.TradeBoardScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Mining:
                 flow.MiningScreen.Draw(VirtualWidth, VirtualHeight);

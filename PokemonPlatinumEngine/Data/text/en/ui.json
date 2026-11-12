@@ -2684,6 +2684,53 @@
     "photoContest": "{category} Contest, {rank} Rank",
     "photoBy": "{trainer}  ·  {date}"
   },
+  "giftBox": {
+    "title": "GIFT BOX",
+    "tab": { "waiting": "WAITING ({n})", "cards": "CARDS", "words": "TELL WORDS" },
+    "hint": { "choose": "Take", "words": "Tell words" },
+    "empty": "Nothing is waiting in the box.",
+    "album": { "empty": "No gift has been taken yet." },
+    "words": { "title": "TELL WORDS", "body": "Two words told to a Gift Runner may call a gift up. Choose this, and the Runner will ask for them." },
+    "backdrop": "{name} backdrop",
+    "gift": {
+      "new_year": { "sender": "the Year-Turner Post", "title": "New Year's Day", "card": "May your year open with colour." },
+      "laurel_sinnoh": { "sender": "the Laurel Gallery", "title": "Sinnoh's Hall of Fame", "card": "For the first of the Halls." },
+      "laurel_kanto": { "sender": "the Laurel Gallery", "title": "Kanto's Hall of Fame", "card": "A quiet line for a loud victory." },
+      "laurel_johto": { "sender": "the Laurel Gallery", "title": "Johto's Hall of Fame", "card": "The mountain remembers." },
+      "laurel_hoenn": { "sender": "the Laurel Gallery", "title": "Hoenn's Hall of Fame", "card": "For the long sea road." },
+      "laurel_unova": { "sender": "the Laurel Gallery", "title": "Unova's Hall of Fame", "card": "For the city of bridges." },
+      "registry_100": { "sender": "the Registry", "title": "100 species caught", "card": "A hundred names. Keep going." },
+      "registry_500": { "sender": "the Registry", "title": "500 species caught", "card": "The page is nearly full." },
+      "registry_1000": { "sender": "the Registry", "title": "1,000 species caught", "card": "One of every sort, plus yours." },
+      "hour_keepers": { "sender": "the Hour-Keepers", "title": "50 hours played", "card": "For the hours behind you." },
+      "anniversary": { "sender": "the Year-Turner Post", "title": "Another year", "card": "Another year on the road." },
+      "gift_day": { "sender": "the Gift Desk", "title": "Gift Day", "card": "A little something from nowhere." },
+      "festival_lanterns": { "sender": "Hearthome City", "title": "Night of Lanterns", "card": "Every roof lit for a week. Take a little of it home." },
+      "festival_midwinter": { "sender": "Snowpoint City", "title": "Midwinter Lights", "card": "Lights on every pine, and snowflakes for your Poké Balls." },
+      "festival_blossom": { "sender": "Floaroma Town", "title": "Blossom Days", "card": "The town in flower, from us to you." },
+      "festival_summer": { "sender": "Sunyshore City", "title": "Summer Night", "card": "For the bursts of light over the sea." },
+      "festival_harvest_moon": { "sender": "Celadon City", "title": "Harvest Moon", "card": "Three balls as round as the moon over the rooftops." },
+      "festival_bellfall": { "sender": "Ecruteak City", "title": "Bellfall", "card": "The bells ring the leaves down. Keep this one ringing." },
+      "festival_tide_day": { "sender": "Slateport City", "title": "Tide Day", "card": "A drop of the sea, from the longest day on the docks." },
+      "festival_bridgelight": { "sender": "Castelia City", "title": "Bridgelight", "card": "Every bridge lit up, and a scale that shines like one." },
+      "easter": { "sender": "the Gift Runners", "title": "Easter", "card": "An egg that brings luck, as eggs do this time of year." },
+      "christmas": { "sender": "the Gift Runners", "title": "Christmas", "card": "A star for the top of the tree. Merry Christmas!" },
+      "valentine": { "sender": "someone", "title": "A card with no name", "card": "Thinking of you." }
+    }
+  },
+  "tradeBoard": {
+    "title": "TRADE BOARD",
+    "hint": { "choose": "Choose" },
+    "wants": "WANTS",
+    "offers": "OFFERS",
+    "unknown": "???",
+    "level": "Lv. {n} or higher",
+    "met": "MET",
+    "blind": "BLIND TRADE",
+    "blindLeft": "{n} of {of} left today",
+    "sent": "{trainer} sent {received} over for {given}!",
+    "language": { "French": "FRENCH", "German": "GERMAN", "Italian": "ITALIAN", "Spanish": "SPANISH", "Japanese": "JAPANESE", "Korean": "KOREAN" }
+  },
   "photoAlbum": {
     "title": "PHOTO ALBUM",
     "count": "{n} / {of}",
@@ -2979,6 +3026,10 @@
     "carnival": "A keepsake of a carnival.",
     "classic": "A ribbon given at a classic gathering of Pokémon.",
     "premier": "A ribbon for a day set apart from all the others.",
+    "championHearth": "Sent by the Laurel Gallery to honour a Champion's first steps.",
+    "naturalist": "For a Trainer who has caught five hundred kinds of Pokémon.",
+    "thousandNames": "For a Trainer who has caught a thousand kinds of Pokémon.",
+    "giftDay": "A ribbon from the Gift Desk, for the right two words.",
     "any": "A ribbon.",
     "waitsFor": {
       "hoenn": "a Pokémon brought over from Hoenn",
@@ -4683,7 +4734,9 @@
         "please": "please",
         "thanks": "thanks",
         "hello": "hello",
-        "goodbye": "goodbye"
+        "goodbye": "goodbye",
+        "sparrow": "sparrow",
+        "clockwork": "clockwork"
       }
     }
   },

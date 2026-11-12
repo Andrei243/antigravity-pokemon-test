@@ -315,6 +315,8 @@ public partial class GameEngine
         KeepTheEncounterClock(days);
         // The flags the clock keeps (Kalos's Mega Stones in the evening hour, plan 23)
         ClockFlags.Keep(flow.Story, (int)GameClock.Hour);
+        // The festivals the calendar keeps today (plan 40 · GE9): their flags set and cleared as the day turns
+        Festivals.Keep(flow.Story, today);
         if (FormRules.ShayminNight((int)GameClock.Hour))
             foreach (var p in flow.Party.Members) FormRules.BackToLand(p);
     }

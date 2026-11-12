@@ -10,5 +10,12 @@
     "5": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "6": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "7": { "name": "Backpacker", "dialog": [ "Even the Pokémon Center is open all night here. Black City never stops." ] }
-  }
+  },
+  // Plan 40 · GE7: a Gift Runner (common.Courier)
+  "npcs": [
+    {
+      "id": "gift_runner", "name": "Gift Runner", "npcType": "clerk", "x": 9, "y": 12, "facing": "Down", "script": "Courier",
+      "dialog": [ "Gift Runners, at your service!" ]
+    }
+  ]
 }

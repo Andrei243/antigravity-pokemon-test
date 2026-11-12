@@ -3,6 +3,7 @@
   "area": "olivine_pokemart",
   "bgmTrack": "johto/olivine",
   "people": {
+    "t26fs0101_delivery": { "name": "Gift Runner", "script": "Courier" },
     "t26fs0101_shopm1_2": {
       "name": "Clerk",
       "script": "Clerk",

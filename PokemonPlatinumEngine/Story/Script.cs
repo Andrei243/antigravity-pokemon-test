@@ -190,6 +190,8 @@ public enum Op
     WalkTo, PlaceAt, FaceTo, WarpTo, LookAt,
     // The later games' battle places (plan 37 · FC2): one command for all of them, `facility <place> <word> [what]`
     Facility,
+    // The gift box (plan 40 · GE7): what waits at a Gift Runner, the box opened, a gift handed over, words told, a backdrop given
+    Gift,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -300,6 +302,14 @@ public sealed class Instruction
 
     /// <summary>Who or what the line is about: a flag, a variable, a person, an item, a species, a label, a script, a map, a song.</summary>
     public string Name { get; init; } = "";
+
+    /// <summary>
+    /// An event Pokémon's own (plan 40 · GE7): <c>givepokemon</c>'s and <c>giveegg</c>'s <c>in "&lt;ball&gt;"</c>,
+    /// <c>ribbon &lt;RIBBON&gt;</c> and <c>from "&lt;sender&gt;"</c>; empty for none.
+    /// </summary>
+    public string Ball { get; init; } = "";
+    public string Ribbon { get; init; } = "";
+    public string Sender { get; init; } = "";
 
     /// <summary>A second name: who a person turns to face, the second trainer of a battle against two.</summary>
     public string Other { get; init; } = "";

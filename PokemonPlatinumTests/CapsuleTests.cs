@@ -924,13 +924,13 @@ public class CapsuleTests
     [Fact]
     public void TheFashionCaseKeepsEachBackdropOnceAndComesWithThree()
     {
-        // generated/backdrops.txt: eighteen
-        Assert.Equal(18, SuperContestDatabase.Backdrops.Count);
+        // generated/backdrops.txt: eighteen, and five of ours after them (plan 40 · GE7, GE9)
+        Assert.Equal(23, SuperContestDatabase.Backdrops.Count);
         Assert.Equal((0, 17, -1), (SuperContestDatabase.Backdrop("Dress Up"), SuperContestDatabase.Backdrop("Theater"), SuperContestDatabase.Backdrop("Nowhere")));
         var fashion = new FashionCase();
         Assert.True(fashion.AddBackdrop(4));
         Assert.False(fashion.AddBackdrop(4));
-        Assert.False(fashion.AddBackdrop(18));
+        Assert.False(fashion.AddBackdrop(23));
         Assert.True(fashion.HasBackdrop(4));
 
         // JubilifeCity_GiveFashionCaseAndAccessories: five fluffs, five feathers or moustaches, Dress Up and two

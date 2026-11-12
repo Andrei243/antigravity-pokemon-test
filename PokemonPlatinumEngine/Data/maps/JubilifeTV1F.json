@@ -324,6 +324,18 @@
       ],
       "movement": "wander_around",
       "rangeX": 1
+    },
+    {
+      "id": "gift_questionnaire",
+      "name": "Madame Ottilie Fray",
+      "npcType": "lady",
+      "x": 18,
+      "y": 16,
+      "facing": "Left",
+      "dialog": [
+        "I ask a question or two of everyone who comes through these doors."
+      ],
+      "script": "Questionnaire"
     }
   ],
   "wildEncounters": []
