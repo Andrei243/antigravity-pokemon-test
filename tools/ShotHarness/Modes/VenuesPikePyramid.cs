@@ -64,6 +64,14 @@ partial class Harness
                     fight.SelectMove(Math.Max(0, pick));
                     if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
                 }
+                else if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
+                else if (fight.HUD.MenuState == BattleMenuState.Moves) fight.SelectMove(0);
+                else if (fight.HUD.MenuState == BattleMenuState.SwitchPokemon)
+                {
+                    // A double's fallen one is followed by the next of the three that can still fight
+                    int next = fight.PlayerParty.Members.FindIndex(p => !p.IsFainted && !fight.PlayerSlots.Any(s => s.Pokemon == p));
+                    fight.SelectSwitch(Math.Max(0, next));
+                }
                 else
                 {
                     fight.ConfirmMessage();
@@ -72,7 +80,9 @@ partial class Harness
                 Skip(0.4);
             }
             Console.WriteLine($"  battle in {Here().Name}: {fight.Result} in {fight.Core.Turn} turns against "
-                + $"{string.Join("/", fight.EnemyParty.Members.Select(p => $"{p.Species.Name} {p.CurrentHP}"))}");
+                + $"{string.Join("/", fight.EnemyParty.Members.Select(p => $"{p.Species.Name} {p.CurrentHP}"))}"
+                + (fight.IsBattleOver ? "" : $"  !! never over: menu {fight.HUD.MenuState}, asked {fight.Core.Request?.GetType().Name}, line {fight.CurrentMessage}"));
+            if (!fight.IsBattleOver) throw new InvalidOperationException("a battle of the venues never ended");
             for (int i = 0; i < 1500 && State() is GameState.Battle or GameState.Transition; i++) Tick();
             Frames(6);
         }
