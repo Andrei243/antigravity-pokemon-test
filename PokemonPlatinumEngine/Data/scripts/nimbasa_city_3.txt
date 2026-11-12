@@ -1,0 +1,48 @@
+# The Big Stadium's lobby in Nimbasa City (plan 42 · PS5; rulings, "Sports days"). Black 2's room, our words.
+# A game is on in the twilight hours (17:00 to 19:59, SportsDays.GameOn): the policemen and the stands' crowd are shown
+# by FLAG_UNOVA_GAME_ON, which the room's OnTransition sets or clears behind the door's fade. Between games the
+# receptionist takes visitors down onto the field of the day's sport (SportsDays.On: baseball on Monday, Thursday and
+# Sunday, football on Tuesday and Friday, American football on Wednesday and Saturday).
+
+script OnTransition
+  if time twilight goto On
+  clearflag FLAG_UNOVA_GAME_ON
+  end
+label On
+  setflag FLAG_UNOVA_GAME_ON
+  end
+
+script Receptionist
+  face self player
+  if time twilight goto GameOn
+  if weekday monday goto Baseball
+  if weekday thursday goto Baseball
+  if weekday sunday goto Baseball
+  if weekday tuesday goto Football
+  if weekday friday goto Football
+  say "Welcome to the Big Stadium! Today is American football day."
+  ask "The field is open to visitors between games. Would you like to go down?"
+  if no goto Bye
+  say "Enjoy the field! The players don't mind a battle between drills."
+  warp "NimbasaCity_GridironField" 9 28 up
+  end
+label Baseball
+  say "Welcome to the Big Stadium! Today is baseball day."
+  ask "The field is open to visitors between games. Would you like to go down?"
+  if no goto Bye
+  say "Enjoy the field! The players don't mind a battle between drills."
+  warp "NimbasaCity_BaseballField" 9 60 up
+  end
+label Football
+  say "Welcome to the Big Stadium! Today is football day."
+  ask "The field is open to visitors between games. Would you like to go down?"
+  if no goto Bye
+  say "Enjoy the field! The players don't mind a battle between drills."
+  warp "NimbasaCity_FootballField" 10 28 up
+  end
+label GameOn
+  say "A game is on right now, so the field is closed to visitors. Do go up to the stands and cheer!"
+  end
+label Bye
+  say "Come back any time. The field is open between games!"
+  end

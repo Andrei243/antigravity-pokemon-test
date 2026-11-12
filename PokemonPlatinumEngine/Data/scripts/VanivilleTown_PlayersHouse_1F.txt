@@ -44,6 +44,17 @@ label Letter
   fanfare keyitem
   text "{player} received the roller skates!"
   say "Hold the run button and off you go. Everyone in Kalos skates! Just not through the tall grass, mind, or up stairs."
+  # The travel phone (plan 43 · LF6), with the numbers of the friends of the opening
+  say "And take this phone, too, so you can call home. I've put your friends' numbers in it already."
+  setflag FLAG_GOT_TRAVEL_PHONE
+  addcontact kalos_mom
+  addcontact kalos_neighbour
+  addcontact kalos_shauna
+  addcontact kalos_tierno
+  addcontact kalos_trevor
+  addcontact kalos_sycamore
+  fanfare keyitem
+  text "{player} received the travel phone!"
   say "Come home whenever you're tired. Now go on, your friends will be waiting!"
   setvar VAR_KALOS_STORY 4
   objective kalosRoute2

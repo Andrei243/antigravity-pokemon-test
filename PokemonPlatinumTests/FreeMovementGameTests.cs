@@ -220,6 +220,55 @@ public class FreeMovementGameTests
             Assert.Empty(report.ScriptsGoneWrong);
             Assert.Null(unsettled);
         });
+        TheStickFuzzerIsDeterministic();
+    }
+
+    [Fact]
+    public void TheFieldFuzzerSteeringAStickFindsNothingWrongInAFreeAlola()
+    {
+        // Alola's own file (free and grown since the user's switch of 2026-11-12), no override: spots on all four islands
+        double seconds = double.TryParse(Environment.GetEnvironmentVariable("FIELD_FUZZ_SECONDS"), out double s) ? s : 60;
+        Play(RegionDatabase.Alola, engine =>
+        {
+            var game = engine.Drive;
+            Assert.Null(engine.RegionMovementOverride);
+            Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
+            StoryMigration.PastTheOpening(game.Story, ScriptLibrary.Default);
+            game.Party.Add(new Pokemon(PokemonDatabase.Get("Rowlet")!, 30));
+            game.TrainersLookOnArrival = false;
+            var islands = new[] { "Melemele", "Akala", "Ulaula", "Poni" }.Select(MapDatabase.Get).ToList();
+            int each = Math.Max(1, (int)Math.Ceiling(seconds / 10 / islands.Count));
+            var spots = islands.SelectMany(m => FieldFuzzer.Spots(m, each, 7).Select(t => (Map: m, t.Item1, t.Item2))).ToList();
+            Assert.NotEmpty(spots);
+            Assert.All(islands, m => Assert.Equal("Alola", RegionDatabase.RegionOfMap(m.Name)?.Id));
+            var fuzzer = new Autoplayer(engine, new FieldFuzzer(7, stick: true));
+            string? unsettled = null;
+            foreach (var (map, x, y) in spots)
+            {
+                if (fuzzer.Stopped) break;
+                if (!fuzzer.Settle(60)) { unsettled = $"{game.State} on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}, script {game.ScriptNow}"; break; }
+                foreach (var p in game.Party.Members) p.HealFull();
+                game.Place(map, x, y, Direction.Down);
+                game.ArriveOnMap();
+                Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
+                for (double t = 0; t < 10 && !fuzzer.Stopped; t += Frame) fuzzer.Frame(Frame);
+                // (the player's own record is brought up to the place's by the frames played)
+                Assert.True(game.Player.MovesFreely(game.Map) || game.Map.Puzzle != null || engine.Here.Id != RegionDatabase.Alola,
+                    $"{game.Map.Name} {game.Player.GridX},{game.Player.GridY} on the grid");
+            }
+            fuzzer.Release();
+            var report = fuzzer.Report;
+            output.WriteLine(report.ToMarkdown());
+            Assert.Empty(report.Exceptions);
+            Assert.Empty(report.Softlocks);
+            Assert.Empty(report.OutOfRange);
+            Assert.Empty(report.ScriptsGoneWrong);
+            Assert.Null(unsettled);
+        });
+    }
+
+    private static void TheStickFuzzerIsDeterministic()
+    {
         // The stick's fuzzer is a fuzzer of the same seed, frame for frame
         var a = new FieldFuzzer(9, stick: true);
         var b = new FieldFuzzer(9, stick: true);

@@ -1,0 +1,37 @@
+{
+  "key": "nimbasa_city_11",
+  "index": 87,
+  "name": "Nimbasa City",
+  "matrix": 220,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 25, "to": "nimbasa_city_8", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "hoopster", "movement": "none", "x": 8, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0286", "script": "TRAINER_HOOPSTER_BOBBY_4" },
+    { "id": "1", "looks": "hoopster", "movement": "none", "x": 13, "z": 16, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0287", "script": "TRAINER_HOOPSTER_JOHN_2" },
+    { "id": "2", "looks": "hoopster", "movement": "none", "x": 8, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0288", "script": "TRAINER_HOOPSTER_LAMARCUS" },
+    { "id": "3", "looks": "backers_m", "movement": "none", "x": 11, "z": 20, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0289", "script": "TRAINER_BACKERS_MASA_YAS_3" },
+    { "id": "4", "looks": "backers_f", "movement": "none", "x": 8, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028a", "script": "TRAINER_BACKERS_KAT_PHAE" },
+    { "id": "5", "looks": "work_01", "movement": "wander_around", "x": 13, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028b", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "6", "looks": "work_02", "movement": "wander_around", "x": 11, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028c", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "7", "looks": "work_03", "movement": "look_around", "x": 7, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028d", "script": "TRAINER_WAITER_CLINT" },
+    { "id": "8", "looks": "hoopster", "movement": "look_south_and_east", "x": 19, "z": 16, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "9", "looks": "hoopster", "movement": "wander_around", "x": 23, "z": 14, "facing": 1, "rangeX": 2, "rangeZ": 4, "script": "3" },
+    { "id": "10", "looks": "backers_m", "movement": "none", "x": 11, "z": 21, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x0289", "script": "TRAINER_BACKERS_MASA_YAS_3" },
+    { "id": "11", "looks": "backers_f", "movement": "none", "x": 9, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "hiddenBy": "FLAG_UNOVA_0x028a", "script": "TRAINER_BACKERS_KAT_PHAE" },
+    { "id": "12", "looks": "314", "movement": "none", "x": 21, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 5, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

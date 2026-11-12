@@ -1,0 +1,27 @@
+# The Small Court's stands (plan 42 · PS5; rulings, "Sports days"). Black 2's room, our words. While a match is on
+# (the twilight hours) the crowd fills the seats round the courts (FLAG_UNOVA_GAME_ON, set behind the door's fade) and
+# coming up the stairs plays the match's scene from the rail, once for each time the stands are come to.
+
+script OnTransition
+  if time twilight goto On
+  clearflag FLAG_UNOVA_GAME_ON
+  end
+label On
+  setflag FLAG_UNOVA_GAME_ON
+  end
+
+script OnEnter
+  if not flag FLAG_UNOVA_GAME_ON goto Quiet
+  scene "CourtMatch"
+  letterbox on 0.4
+  camera path 16 22 9 20 23 20 16 22 2
+  sound "contest_cheer"
+  text "The crowd is on its feet! A long rally runs on and on..."
+  emote player exclaim 0.9
+  text "A winning shot! The stands roar, and the scoreboard flickers with the new numbers."
+  sound "contest_cheer"
+  text "That's the match! The players shake hands and wave to the crowd."
+  camera release 0.6
+  endscene
+label Quiet
+  end

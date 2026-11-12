@@ -49,9 +49,10 @@ label Short
   text "There isn't enough money for that..."
   end
 
-# The photo tour (plan 44 · SD5; the user's answers 47a and 64a): its guide, Maribel Orr, stands by the binoculars once
-# the National Pokédex is had (decision 7), and takes the player out along the Reed River's rail. A ride's photographs
-# are judged into the report as it ends, the script hearing the ride's total.
+# The photo tour (plan 44 · SD5, SD6; the user's answers 47a and 64a): its guide, Maribel Orr, stands by the binoculars
+# once the National Pokédex is had (decision 7). She takes the player out along one of her six courses (each opened by
+# the report's total), shows the report, and hands over her rewards as the report fills. A ride's photographs are judged
+# into the report as it ends, the script hearing the ride's total.
 
 script TourGuide
   if nationaldex goto Open
@@ -61,15 +62,68 @@ script TourGuide
 label Open
   say "Welcome to the photo tour! I'm Maribel Orr, and I judge every photograph that comes back from the rail."
   say "Aim as the cart rolls along, toss fruit to draw them close, and blow the whistle to turn their heads."
-  ask "Shall we ride the Reed River?"
-  if no goto Later
+  choose "What would you like to do?" "RIDE A COURSE" "SEE THE REPORT" "NOTHING"
+  if result == 1 goto Report
+  if result == 2 goto Later
+  choose "Which course shall we ride?" "REED RIVER" "DEEP WOOD" "REEF SHORE" "FURTHER AFIELD" "NOT TODAY"
+  if result == 0 goto Reed
+  if result == 1 goto Wood
+  if result == 2 goto Reef
+  if result == 4 goto Later
+  choose "Further afield, then. Which one?" "CAVERN" "HIGH PASS" "NIGHT GARDEN" "NOT TODAY"
+  if result == 0 goto Cavern
+  if result == 1 goto Pass
+  if result == 2 goto Garden
+  goto Later
+label Reed
   tour ride "reed_river"
+  goto Rode
+label Wood
+  tour open "deep_wood"
+  if result == 0 goto Shut
+  tour ride "deep_wood"
+  goto Rode
+label Reef
+  tour open "reef_shore"
+  if result == 0 goto Shut
+  tour ride "reef_shore"
+  goto Rode
+label Cavern
+  tour open "cavern"
+  if result == 0 goto Shut
+  tour ride "cavern"
+  goto Rode
+label Pass
+  tour open "high_pass"
+  if result == 0 goto Shut
+  tour ride "high_pass"
+  goto Rode
+label Garden
+  tour open "night_garden"
+  if result == 0 goto Shut
+  say "The garden is at its best after dark, so we'll go out once the lamps are lit."
+  tour ride "night_garden"
+  goto Rode
+label Rode
   if result == 0 goto Nothing
   say "Back already! I've judged your film: {result} points all told."
-  say "Every best photograph goes into my report. Rain and the hour change what the river's residents get up to, so ride again!"
-  end
+  say "Every best photograph goes into my report. Rain and the hour change what the residents get up to, so ride again!"
+  goto Rewards
 label Nothing
   say "Not a single photograph I could score... Never mind. Get them big, in the middle and facing you next time."
+  end
+label Rewards
+  tour reward
+  if result == 1 goto Rewards
+  tour points
+  say "My report stands at {result} points. Bring me more and there'll be more thanks in it for you."
+  end
+label Report
+  tour report
+  say "Every page is yours to fill. A rare moment, caught just right, is worth four stars!"
+  end
+label Shut
+  say "That course opens once my report has more points in it. Bring me good photographs from the courses that are open!"
   end
 label Later
   say "The cart waits whenever you do."

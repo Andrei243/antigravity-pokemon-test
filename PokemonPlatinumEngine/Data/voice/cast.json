@@ -10739,6 +10739,10 @@
       "note": "first spoken at aquacorde_town.txt(41)",
       "provisional": true
     },
+    "trevor_2": {
+      "note": "first spoken at phone.txt(1384)",
+      "provisional": true
+    },
     "trick_master": {
       "note": "first spoken at route_110_trick_house_end.txt(19)",
       "provisional": true
@@ -11735,6 +11739,7 @@
     "Trade Receptionist": "trade_receptionist",
     "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
+    "Trevor": "trevor_2",
     "Trick Master": "trick_master",
     "Tristan": "tristan",
     "Tuscany": "tuscany",

@@ -733,6 +733,7 @@
     "bag": "RUCSAC",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
+    "phone": "TELEFON",
     "requests": "RUGĂMINȚI",
     "save": "SALVEAZĂ",
     "options": "OPȚIUNI",
@@ -2215,6 +2216,34 @@
     "holding": "Pune bucata pe un pătrat gol.",
     "solved": "Imaginea este din nou întreagă!"
   },
+  "travelPhone": {
+    "title": "TELEFON",
+    "card": {
+      "Calls": "APELURI",
+      "News": "ȘTIRI",
+      "Map": "HARTĂ"
+    },
+    "hints": {
+      "call": "Sună",
+      "open": "Deschide harta",
+      "cards": "Cartele"
+    },
+    "calls": {
+      "empty": "Niciun număr salvat încă.",
+      "where": "UNDE ÎI GĂSEȘTI",
+      "waiting": "TE AȘTEAPTĂ"
+    },
+    "news": {
+      "heading": "ȘTIRILE ZILEI",
+      "none": "Nimic în emisie azi."
+    },
+    "map": {
+      "heading": "HARTĂ",
+      "body": "Deschide harta ca să vezi toată regiunea, oraș cu oraș și rută cu rută.",
+      "none": "Locul acesta nu e pe harta telefonului."
+    },
+    "registered": "Numărul lui {name} e salvat în telefonul tău!"
+  },
   "pokegear": {
     "title": "POKéGEAR",
     "clock": "{day} {time}",
@@ -2305,7 +2334,18 @@
       "tateAndLiza": "Tate și Liza",
       "juan": "Juan",
       "roxanne": "Roxanne",
-      "norman": "Norman"
+      "norman": "Norman",
+      "unovaMom": "Mama",
+      "unovaBianca": "Bianca",
+      "unovaCheren": "Cheren",
+      "unovaHugh": "{rival}",
+      "unovaJuniper": "Prof. Juniper",
+      "kalosMom": "Mama",
+      "kalosNeighbour": "{rival}",
+      "kalosShauna": "Shauna",
+      "kalosTierno": "Tierno",
+      "kalosTrevor": "Trevor",
+      "kalosSycamore": "Prof. Sycamore"
     }
   },
   "pokenav": {
@@ -5930,7 +5970,7 @@
       "wildWon": "Câștigă o luptă sălbatică", "trainerWon": "Învinge un antrenor", "wildRan": "Fugi de un Pokémon sălbatic",
       "wildFled": "Vezi un Pokémon sălbatic fugind", "trainerLost": "Pierde în fața unui antrenor", "whiteouts": "Leșină și mergi mai departe",
       "caught": "Prinde un Pokémon", "encounters": "Întâlnește un Pokémon sălbatic", "levelled": "Crește un nivel în luptă",
-      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată"
+      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată", "tourFourStars": "Fă o fotografie de patru stele în tur"
     },
     "name": {
       "stepsFoot": "Mergi {count} pași", "stepsSurf": "Fă {count} pași pe apă", "stepsCycle": "Fă {count} pași cu bicicleta", "stepsDive": "Fă {count} pași sub apă",
@@ -5939,7 +5979,7 @@
       "caught": "Prinde {count} Pokémoni", "newSpecies": "Prinde {count} specii noi", "encounters": "Întâlnește {count} Pokémoni sălbatici",
       "levelled": "Crește {count} niveluri în luptă", "evolutions": "Vezi {count} evoluții",
       "dexSeen": "Vezi {count} specii", "dexCaught": "Deține {count} specii",
-      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni", "circuits": "Câștigă {count} Circuite ale Laurilor", "heartsOpened": "Deschide {count} inimi blocate"
+      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni", "circuits": "Câștigă {count} Circuite ale Laurilor", "heartsOpened": "Deschide {count} inimi blocate", "tourFourStars": "Fă {count} fotografii de patru stele în tur"
     }
   },
   "sessionReport": {
@@ -7414,7 +7454,60 @@
     "none": "De data asta nu s-a punctat nicio fotografie.",
     "hints": {
       "keep": "Păstrează",
-      "leave": "Gata"
+      "leave": "Gata",
+      "course": "Traseu",
+      "back": "Înapoi"
+    },
+    "course": {
+      "reed_river": "Râul cu Trestii",
+      "deep_wood": "Codrul Adânc",
+      "reef_shore": "Țărmul cu Recife",
+      "cavern": "Peștera",
+      "high_pass": "Trecătoarea Înaltă",
+      "night_garden": "Grădina de Noapte"
+    },
+    "rare": {
+      "glow": "O lumină în întuneric!",
+      "dance": "Un dans în ploaie!",
+      "dam": "Construiește un baraj!",
+      "takeoff": "Își ia zborul!",
+      "spark": "Sar scântei!",
+      "watch": "Stă de veghe!",
+      "lift": "O ridicare uriașă!",
+      "mimic": "Se preface că e copac!",
+      "glide": "Plutește pe vânt!",
+      "song": "Un cântec peste valuri!",
+      "leap": "Un salt din mare!",
+      "dive": "Un plonjon de sus!",
+      "gems": "Pietrele strălucesc!",
+      "spin": "Se rotește în lumină!",
+      "flutter": "Iese în zbor la amurg!",
+      "shine": "O strălucire orbitoare!",
+      "snowfall": "Cheamă zăpada!",
+      "aura": "I se vede aura!",
+      "flame": "O flacără în ploaie!",
+      "rings": "Inelele i se aprind!",
+      "flicker": "O sclipire de fulger!",
+      "wisps": "Flăcărui la miezul nopții!",
+      "sundance": "Un dans în soare!",
+      "moondance": "Un dans în lumina lunii!"
+    },
+    "report": {
+      "heading": "RAPORTUL TURULUI",
+      "shut": "Se deschide când raportul ajunge la {points} puncte.",
+      "empty": "Încă nicio fotografie de pe acest traseu.",
+      "developing": "Se developează...",
+      "total": "Raport: {points} puncte",
+      "course": "Traseul acesta: {points} puncte",
+      "ride": "Cea mai bună plimbare: {points} puncte",
+      "word": {
+        "0": "Maribel: „Orice album începe cu o pagină goală!”",
+        "1": "Maribel: „Începi să prinzi ritmul căruciorului.”",
+        "2": "Maribel: „Uite, astea sunt fotografii de păstrat!”",
+        "3": "Maribel: „Ai un ochi bun pentru un moment.”",
+        "4": "Maribel: „Locuitorii pozează pentru tine acum, sunt sigură.”",
+        "5": "Maribel: „Nu mai am ce să te învăț. Zău!”"
+      }
     }
   },
   "photoStudio": {

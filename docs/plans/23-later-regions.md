@@ -589,6 +589,12 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   `City` background); a surfer still meets the woods where the drawn chunks end (z 192 below Melemele, x 127 and 480 at
   its sides, z 288 and 352 on Akala), which only new chunk rows (every later chunk renumbered) or an engine rule for an
   island's undrawn edge would change. Each is a look for the user, not a fault of the rules.
+- **Flipped on 2026-11-12, later** (the user's decision; plan 30, "Alola free and grown"; rulings, "Alola free and
+  grown"): `alola.json` says `"directions": "Free", "speed": "Analog"`, `"modes": [ "Ride" ]` and `"kit": "Grown"`;
+  Alola's outdoors take a camera of their own, `FieldCamera.Alola` (46°, 22°, 500 units; style guide, "Alola's
+  camera"); the 41 looks below have grown twins (`AlolaCastGrownTests`); a Tauros steered freely into the cracked rock
+  hands the edge to the grid's step (`FreeMovement.Classify`), so its charge breaks it as on the grid; the player rides
+  astride live in the grown kit. What was written before the flip follows, as it stood:
 - **What flipping Alola to Free and grown would need** (looked at, not done; the user decides; plan 30, "The gate
   opened"): `Data/regions/alola.json`'s `movement` to `"directions": "Free", "speed": "Analog"` (keeping `"modes": [
   "Ride" ]`) and `"kit": "Grown"`, as Kalos's two words; `WorldMapBuilder.GrownCamera` would then give Alola Kalos's

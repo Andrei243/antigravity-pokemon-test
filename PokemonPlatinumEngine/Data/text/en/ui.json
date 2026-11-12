@@ -711,6 +711,7 @@
     "bag": "BAG",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
+    "phone": "PHONE",
     "requests": "REQUESTS",
     "save": "SAVE",
     "options": "OPTIONS",
@@ -1833,6 +1834,34 @@
     "holding": "Put the piece down on an empty square.",
     "solved": "The picture is whole again!"
   },
+  "travelPhone": {
+    "title": "PHONE",
+    "card": {
+      "Calls": "CALLS",
+      "News": "NEWS",
+      "Map": "MAP"
+    },
+    "hints": {
+      "call": "Call",
+      "open": "Open the map",
+      "cards": "Cards"
+    },
+    "calls": {
+      "empty": "No numbers saved yet.",
+      "where": "WHERE TO FIND THEM",
+      "waiting": "WAITING FOR YOU"
+    },
+    "news": {
+      "heading": "TODAY'S NEWS",
+      "none": "Nothing on the air today."
+    },
+    "map": {
+      "heading": "MAP",
+      "body": "Open the map to look over the whole region, town by town and route by route.",
+      "none": "This place isn't on the phone's map."
+    },
+    "registered": "{name}'s number is saved in your phone!"
+  },
   "pokegear": {
     "title": "POKéGEAR",
     "clock": "{day} {time}",
@@ -1923,7 +1952,18 @@
       "tateAndLiza": "Tate & Liza",
       "juan": "Juan",
       "roxanne": "Roxanne",
-      "norman": "Norman"
+      "norman": "Norman",
+      "unovaMom": "Mom",
+      "unovaBianca": "Bianca",
+      "unovaCheren": "Cheren",
+      "unovaHugh": "{rival}",
+      "unovaJuniper": "Prof. Juniper",
+      "kalosMom": "Mom",
+      "kalosNeighbour": "{rival}",
+      "kalosShauna": "Shauna",
+      "kalosTierno": "Tierno",
+      "kalosTrevor": "Trevor",
+      "kalosSycamore": "Prof. Sycamore"
     }
   },
   "pokenav": {
@@ -5854,7 +5894,7 @@
       "wildWon": "Win a wild battle", "trainerWon": "Beat a trainer", "wildRan": "Run from a wild Pokémon",
       "wildFled": "See a wild Pokémon flee", "trainerLost": "Lose to a trainer", "whiteouts": "Black out and carry on",
       "caught": "Catch a Pokémon", "encounters": "Meet a wild Pokémon", "levelled": "Grow a level in battle",
-      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit", "heartsReclaimed": "Reclaim a locked heart"
+      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit", "heartsReclaimed": "Reclaim a locked heart", "tourFourStars": "Take a four-star tour photograph"
     },
     "name": {
       "stepsFoot": "Walk {count} steps", "stepsSurf": "Surf {count} steps", "stepsCycle": "Cycle {count} steps", "stepsDive": "Dive {count} steps",
@@ -5863,7 +5903,7 @@
       "caught": "Catch {count} Pokémon", "newSpecies": "Catch {count} new species", "encounters": "Meet {count} wild Pokémon",
       "levelled": "Grow {count} levels in battle", "evolutions": "See {count} evolutions",
       "dexSeen": "See {count} species", "dexCaught": "Own {count} species",
-      "badges": "Win {count} Badges", "champions": "Champion of {count} regions", "circuits": "Win {count} Laurel Circuits", "heartsOpened": "Open {count} locked hearts"
+      "badges": "Win {count} Badges", "champions": "Champion of {count} regions", "circuits": "Win {count} Laurel Circuits", "heartsOpened": "Open {count} locked hearts", "tourFourStars": "Take {count} four-star tour photographs"
     }
   },
   "sessionReport": {
@@ -7070,7 +7110,60 @@
     "none": "Not one photograph counted this time.",
     "hints": {
       "keep": "Keep",
-      "leave": "Done"
+      "leave": "Done",
+      "course": "Course",
+      "back": "Back"
+    },
+    "course": {
+      "reed_river": "Reed River",
+      "deep_wood": "Deep Wood",
+      "reef_shore": "Reef Shore",
+      "cavern": "Cavern",
+      "high_pass": "High Pass",
+      "night_garden": "Night Garden"
+    },
+    "rare": {
+      "glow": "A glow in the dark!",
+      "dance": "A dance in the rain!",
+      "dam": "Building a dam!",
+      "takeoff": "Taking off!",
+      "spark": "Sparks flying!",
+      "watch": "Keeping watch!",
+      "lift": "A mighty lift!",
+      "mimic": "Pretending to be a tree!",
+      "glide": "Gliding on the wind!",
+      "song": "A song over the waves!",
+      "leap": "A leap from the sea!",
+      "dive": "A dive from on high!",
+      "gems": "Gems agleam!",
+      "spin": "A spin in the light!",
+      "flutter": "Fluttering out at dusk!",
+      "shine": "A dazzling shine!",
+      "snowfall": "Calling the snow!",
+      "aura": "Its aura shows!",
+      "flame": "A flame in the rain!",
+      "rings": "Its rings alight!",
+      "flicker": "A flicker of lightning!",
+      "wisps": "Wisps at midnight!",
+      "sundance": "A dance in the sun!",
+      "moondance": "A dance by moonlight!"
+    },
+    "report": {
+      "heading": "TOUR REPORT",
+      "shut": "Opens once the report reaches {points} points.",
+      "empty": "No photographs from this course yet.",
+      "developing": "Developing...",
+      "total": "Report: {points} points",
+      "course": "This course: {points} points",
+      "ride": "Best ride: {points} points",
+      "word": {
+        "0": "Maribel: \"Every album starts with an empty page!\"",
+        "1": "Maribel: \"You're getting a feel for the cart.\"",
+        "2": "Maribel: \"Now these are photographs worth keeping!\"",
+        "3": "Maribel: \"You have a real eye for a moment.\"",
+        "4": "Maribel: \"The residents pose for you now, I'm sure of it.\"",
+        "5": "Maribel: \"I've nothing left to teach you. Truly!\""
+      }
     }
   },
   "photoStudio": {

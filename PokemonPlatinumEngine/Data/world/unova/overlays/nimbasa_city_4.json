@@ -1,6 +1,7 @@
 {
-  // The Big Stadium's hall over the stands (plan 22 · U6, part b): Black 2's room, our words. The crowd of a game day is
-  // left out with the games
+  // The Big Stadium's hall over the stands (plan 22 · U6, part b; plan 42 · PS5): Black 2's room, our words. Its crowd
+  // fills it while a game is on (FLAG_UNOVA_GAME_ON, set by the room's OnTransition), and the game's scene plays from
+  // the rail as the stands are come to (nimbasa_city_4.txt's OnEnter)
   "area": "nimbasa_city_4",
   "bgmTrack": "unova/nimbasa",
   "people": {
@@ -8,6 +9,13 @@
       "name": "Lady",
       "npcType": "lady",
       "dialog": [ "I come for the view, not the sport. From up here the whole field looks like a garden." ]
+    },
+    "1": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Did you see that? I'm going to be a pro someday. Or at least the mascot." ]
     },
     "2": {
       "name": "Nursery Aide",
@@ -18,6 +26,33 @@
       "name": "Hiker",
       "npcType": "hiker",
       "dialog": [ "Climbed all the way up these stairs for a better seat. Feels like home, this does!" ]
+    },
+    "4": {
+      "name": "Backer",
+      "npcType": "backers_f",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Go, go, go! I've lost my voice and I don't even mind!" ]
+    },
+    "5": {
+      "name": "Backer",
+      "npcType": "backers_m",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Our side's got this! I can feel it in my foam finger!" ]
+    },
+    "6": {
+      "name": "Fan",
+      "npcType": "pokefan_m",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "I never miss a home game. Not since I was smaller than a Patrat." ]
+    },
+    "7": {
+      "name": "Dancer",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "When our side scores I dance. When they don't, I dance anyway!" ]
     }
   }
 }

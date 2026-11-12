@@ -1,0 +1,28 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The crowd is on its feet! A long rally runs on and on..."
+      ],
+      "text": [
+        "Mulțimea e în picioare! Un schimb lung tot continuă..."
+      ]
+    },
+    {
+      "en": [
+        "A winning shot! The stands roar, and the scoreboard flickers with the new numbers."
+      ],
+      "text": [
+        "O lovitură câștigătoare! Tribunele vuiesc, iar tabela clipește cu noul scor."
+      ]
+    },
+    {
+      "en": [
+        "That's the match! The players shake hands and wave to the crowd."
+      ],
+      "text": [
+        "Meciul s-a încheiat! Jucătorii își strâng mâinile și fac cu mâna mulțimii."
+      ]
+    }
+  ]
+}

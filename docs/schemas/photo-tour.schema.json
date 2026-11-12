@@ -38,7 +38,8 @@
             "items": {
               "enum": [
                 "Clear",
-                "Rain"
+                "Rain",
+                "Snow"
               ]
             }
           },
@@ -53,6 +54,25 @@
               "string",
               "null"
             ]
+          },
+          "habitats": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "Grassland",
+                "Forest",
+                "WatersEdge",
+                "Sea",
+                "Cave",
+                "Mountain",
+                "RoughTerrain",
+                "Urban",
+                "Rare"
+              ]
+            }
+          },
+          "night": {
+            "type": "boolean"
           },
           "residents": {
             "type": "array",
@@ -160,6 +180,7 @@
                       "enum": [
                         "Clear",
                         "Rain",
+                        "Snow",
                         null
                       ]
                     },
@@ -217,6 +238,31 @@
         "required": [
           "id",
           "rail"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "rewards": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "at": {
+            "type": "integer"
+          },
+          "item": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "at",
+          "item"
         ],
         "additionalProperties": false
       }

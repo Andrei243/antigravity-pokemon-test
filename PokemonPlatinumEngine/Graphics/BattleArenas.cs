@@ -161,7 +161,7 @@ internal static class BattleArenas
     private static MeshBuilder Backdrop(MeshBatches batches) => batches.For(SceneTextures.White, MeshPass.Ground);
 
     /// <summary>A flat quad of added light (halos, glowing rings), drawn by the stage's light pass.</summary>
-    private static void Halo(MeshBatches batches, Texture2D tex, Vector3 center, float size, Color color, bool flat = false)
+    internal static void Halo(MeshBatches batches, Texture2D tex, Vector3 center, float size, Color color, bool flat = false)
     {
         var b = batches.For(tex, MeshPass.Light);
         if (flat)
@@ -354,7 +354,7 @@ internal static class BattleArenas
     }
 
     /// <summary>A rounded bush: a few overlapping blobs, dark underneath and light on top.</summary>
-    private static void Bush(MeshBuilder b, Vector3 at, float size, int seed)
+    internal static void Bush(MeshBuilder b, Vector3 at, float size, int seed)
     {
         var dark = Rgb(46, 104, 60);
         var light = Rgb(110, 172, 92);
@@ -367,7 +367,7 @@ internal static class BattleArenas
     }
 
     /// <summary>A fallen log lying on its side, turned <paramref name="yaw"/> radians, with mossy ends.</summary>
-    private static void Log(MeshBuilder b, Vector3 at, float length, float radius, float yaw)
+    internal static void Log(MeshBuilder b, Vector3 at, float length, float radius, float yaw)
     {
         var log = new MeshBuilder();
         log.Cylinder(new Vector3(0, -length / 2f, 0), radius, radius * 0.92f, length, 14, Rgb(116, 84, 60), cap: true, capColor: Rgb(176, 140, 96));
@@ -376,7 +376,7 @@ internal static class BattleArenas
         b.Ellipsoid(at + new Vector3(0, radius * 1.7f, 0), new Vector3(length * 0.3f, 0.06f, radius * 0.6f), Rgb(96, 150, 70), 12, 4);
     }
 
-    private static void Mushroom(MeshBuilder b, Vector3 at, float size)
+    internal static void Mushroom(MeshBuilder b, Vector3 at, float size)
     {
         b.Cylinder(at, 0.08f * size, 0.07f * size, 0.5f * size, 8, Rgb(236, 226, 206));
         b.Ellipsoid(at + new Vector3(0, 0.5f * size, 0), new Vector3(0.32f, 0.2f, 0.32f) * size, ring => ring < 5 ? Rgb(230, 220, 200) : Rgb(214, 72, 60), 12, 8);
@@ -439,7 +439,7 @@ internal static class BattleArenas
     }
 
     /// <summary>A lumpy mass of rock: a few overlapping blobs, dark at the foot and lit on top.</summary>
-    private static void RockMass(MeshBuilder b, Vector3 at, Vector3 size, Color foot, Color mid, Color lit, int seed)
+    internal static void RockMass(MeshBuilder b, Vector3 at, Vector3 size, Color foot, Color mid, Color lit, int seed)
     {
         for (int k = 0; k < 3; k++)
         {
@@ -449,14 +449,14 @@ internal static class BattleArenas
         }
     }
 
-    private static void Stalagmite(MeshBuilder b, Vector3 at, float r, float h)
+    internal static void Stalagmite(MeshBuilder b, Vector3 at, float r, float h)
     {
         b.Lathe(at, new[] { new Vector2(r, -0.1f), new Vector2(r * 0.8f, h * 0.3f), new Vector2(r * 0.4f, h * 0.75f), new Vector2(0.02f, h) }, 12,
             i => Mix(Rgb(84, 74, 70), Rgb(150, 136, 124), i / 3f));
     }
 
     /// <summary>A cluster of six-sided crystals leaning out from a point, with a glow round them.</summary>
-    private static void Crystals(MeshBatches batches, Vector3 at, float size, Color color, int seed)
+    internal static void Crystals(MeshBatches batches, Vector3 at, float size, Color color, int seed)
     {
         var b = batches.For(SceneTextures.White);
         for (int k = 0; k < 5; k++)
@@ -523,7 +523,7 @@ internal static class BattleArenas
     }
 
     /// <summary>A ring of foam on the water round something standing in it (the water shader whitens by vertex red).</summary>
-    private static void Foam(MeshBuilder water, Vector3 center, float inner, float outer)
+    internal static void Foam(MeshBuilder water, Vector3 center, float inner, float outer)
     {
         const int segments = 40;
         var white = new Color(255, 0, 0, 255);
@@ -707,7 +707,7 @@ internal static class BattleArenas
     }
 
     /// <summary>A pine under snow: dark tiers, white on their upper faces.</summary>
-    private static void SnowPine(MeshBuilder white, float cx, float cz, int seed, float scale)
+    internal static void SnowPine(MeshBuilder white, float cx, float cz, int seed, float scale)
     {
         float s = (0.92f + Rand(seed, 0, 3) * 0.16f) * scale;
         white.Cylinder(new(cx, 0, cz), 0.12f * scale, 0.08f * scale, 1.1f * s, 10, Rgb(104, 80, 66), cap: false);

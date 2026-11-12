@@ -84,6 +84,11 @@ public class FieldScaleTests
         // The straightening holds at any pitch: the vertical scale follows it
         Assert.Equal(1f / MathF.Cos(50f * MathF.PI / 180f), MapScene.VerticalScaleOf(map), 5);
         Assert.Equal(FieldCamera.Kalos, WorldMapBuilder.CameraOf("Kalos"));
+        // Alola's own row (style guide, "Alola's camera")
+        map.Camera = FieldCamera.Alola;
+        Assert.Equal(new FieldView(46f, 22f, 500f / 16f), MapScene.ViewOf(map));
+        Assert.Equal(1f / MathF.Cos(46f * MathF.PI / 180f), MapScene.VerticalScaleOf(map), 5);
+        Assert.Equal(FieldCamera.Alola, WorldMapBuilder.CameraOf("Alola"));
     }
 
     [Fact]
@@ -92,15 +97,17 @@ public class FieldScaleTests
         foreach (var region in RegionDatabase.All)
         {
             var camera = WorldMapBuilder.GrownCamera(FieldCamera.Default, region.Id, outdoors: true);
-            Assert.Equal(region.Kit == CharacterKit.Grown ? FieldCamera.Kalos : FieldCamera.Default, camera);
+            var grown = region.Id == "Alola" ? FieldCamera.Alola : FieldCamera.Kalos;
+            Assert.Equal(region.Kit == CharacterKit.Grown ? grown : FieldCamera.Default, camera);
             // A room, a cave and a camera of the place's own keep theirs, grown or not
             Assert.Equal(FieldCamera.Default, WorldMapBuilder.GrownCamera(FieldCamera.Default, region.Id, outdoors: false));
             Assert.Equal(FieldCamera.Cave, WorldMapBuilder.GrownCamera(FieldCamera.Cave, region.Id, outdoors: true));
             Assert.Equal(FieldCamera.ZoomedIn, WorldMapBuilder.GrownCamera(FieldCamera.ZoomedIn, region.Id, outdoors: true));
         }
-        // The chibi regions of today all keep Platinum's; Kalos (grown since 2026-11-12) takes its own
+        // The chibi regions of today all keep Platinum's; Kalos and Alola (grown since 2026-11-12) take their own
         Assert.Equal(FieldCamera.Kalos, WorldMapBuilder.GrownCamera(FieldCamera.Default, "Kalos", outdoors: true));
-        foreach (string chibi in new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova", "Alola" })
+        Assert.Equal(FieldCamera.Alola, WorldMapBuilder.GrownCamera(FieldCamera.Default, "Alola", outdoors: true));
+        foreach (string chibi in new[] { "Sinnoh", "Kanto", "Johto", "Hoenn", "Unova" })
             Assert.Equal(FieldCamera.Default, WorldMapBuilder.GrownCamera(FieldCamera.Default, chibi, outdoors: true));
     }
 

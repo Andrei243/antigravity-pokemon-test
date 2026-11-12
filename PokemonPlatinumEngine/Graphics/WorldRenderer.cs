@@ -1368,12 +1368,14 @@ public sealed partial class WorldRenderer
             FieldSprites.Prepare(context, steed, facing, ref fieldBakes);
             carrier = FieldSprites.Get(steed, facing);
             saddle = carrier != null ? 1f : 0f;
+            // A grown rider sits astride live, the saddle on the back (the chibi kit reads none of it)
+            if (carrier != null && GrownField) playerPose.Riding = Riding.Mount;
             bob = carrier != null && player.IsMoving && MathF.Floor(time * 8f) % 2f == 0f ? Rows(1f) : 0f;
             playerPose.Walk = 0f;
             playerPose.WalkBlend = 0f;
             playerPose.Running = false;
         }
-        float seat = carrier != null ? (riding ? RideSeat(carrier) : CarrierSeat(carrier)) : SurfMount.Seat;
+        float seat = carrier != null ? (riding ? (GrownField ? GrownRideSeat(carrier) : RideSeat(carrier)) : CarrierSeat(carrier)) : SurfMount.Seat;
         // A grown surfer kneels on the Pokémon's back (the grown kit's alone; a chibi rig never reads it)
         if (player.Mount != null) playerPose.Riding = Riding.Surf;
         // A grown rider of a ride on land sits astride its sprite once it is baked (plan 30, the gate's owed)

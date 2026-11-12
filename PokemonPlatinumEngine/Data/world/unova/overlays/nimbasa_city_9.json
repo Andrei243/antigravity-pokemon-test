@@ -1,18 +1,60 @@
 {
-  // The Small Court's hall over the courts (plan 22 · U6, part b): Black 2's room, our words. The match-day crowd is left
-  // out with the matches
+  // The Small Court's hall over the courts (plan 22 · U6, part b; plan 42 · PS5): Black 2's room, our words. Its crowd
+  // fills it while a match is on, and the match's scene plays from the rail as the stands are come to
   "area": "nimbasa_city_9",
   "bgmTrack": "unova/nimbasa",
   "people": {
+    "0": {
+      "name": "Roughneck",
+      "npcType": "roughneck",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Every point goes to the wire in here. My heart can't take it. I keep coming back." ]
+    },
+    "1": {
+      "name": "Backer",
+      "npcType": "backers_f",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Our player's serve is faster than a Zebstrika! Well, nearly." ]
+    },
     "2": {
       "name": "Gentleman",
       "npcType": "gentleman",
       "dialog": [ "A basketball player and his Pokémon passing the ball between them... Now that is teamwork." ]
     },
+    "3": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "I'm keeping score in my notebook. I'm three points behind the board." ]
+    },
+    "4": {
+      "name": "Battle Girl",
+      "npcType": "battle_girl",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Footwork! It's all footwork! Same as a battle, really." ]
+    },
+    "5": {
+      "name": "Fan",
+      "npcType": "pokefan_m",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "Courtside seats sold out, so here I am. The view's better from up here anyway." ]
+    },
+    "6": {
+      "name": "Lass",
+      "npcType": "lass",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "I came to cheer, but I'm learning so much about timing." ]
+    },
     "7": {
       "name": "Girl",
       "npcType": "lass",
-      "dialog": [ "I'm saving this seat for my brother. He's playing tennis today! Well, he will be." ]
+      "dialog": [ "I'm saving this seat for my brother. He plays here on his day. Today, maybe!" ]
     }
   }
 }

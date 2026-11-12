@@ -1,18 +1,40 @@
 {
-  // The Small Court's lobby in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. As at the Big Stadium,
-  // the way onto the courts and the matches played there are left out (Black 2's 0x400f), and their crowd with them
+  // The Small Court's lobby in Nimbasa City (plan 22 · U6, part b; plan 42 · PS5): Black 2's room, our words. As at the
+  // Big Stadium, the receptionist (7) takes visitors down onto the day's court between matches (nimbasa_city_8.txt), and
+  // while a match is on the policemen stand across the way and the stairs lead up to the stands
   "area": "nimbasa_city_8",
   "bgmTrack": "unova/nimbasa",
   "people": {
     "2": {
       "name": "Gentleman",
       "npcType": "gentleman",
-      "dialog": [ "Tennis in the morning, basketball after lunch. The Small Court never sits still, and neither do I!" ]
+      "dialog": [ "Tennis and basketball take turns on the courts. The Small Court never sits still, and neither do I!" ]
+    },
+    "4": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "A match is on. Please keep off the court until it's over." ]
+    },
+    "5": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "The stands are up the stairs. You can hear the crowd from here!" ]
+    },
+    "6": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "hiddenBy": "",
+      "shownBy": "FLAG_UNOVA_GAME_ON",
+      "dialog": [ "No running onto the court. Not even with a very fast Pokémon." ]
     },
     "7": {
       "name": "Receptionist",
       "npcType": "receptionist",
-      "dialog": [ "Welcome to the Small Court! The courts are being swept just now. Matches will start again soon!" ]
+      "script": "Receptionist"
     }
   }
 }
