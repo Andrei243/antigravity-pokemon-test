@@ -11,8 +11,8 @@ namespace PokemonPlatinumTests;
 /// answers (a corridor, a closed side, a person, deep water), the hand-offs to the grid (a ledge, a door's warp, ice, a
 /// stair, a boulder), the step as a tile entered with its hysteresis and the same count as a cardinal walk, talking ahead
 /// along the yaw, a script's walk and a trainer's hold centring the body, the follower's breadcrumbs, the pace by tilt and
-/// the held tilt's run, determinism, and nothing reached that the grid doesn't reach. Kalos's own file stays
-/// <see cref="MovementDirections.Eight"/> until the plan's gate (Kalos to its second Gym) is judged.
+/// the held tilt's run, determinism, and nothing reached that the grid doesn't reach. Kalos's own file says
+/// <see cref="MovementDirections.Free"/> since the user opened the plan's gate (2026-11-12).
 /// </summary>
 public class FreeMovementTests
 {
@@ -441,8 +441,8 @@ public class FreeMovementTests
     public void FreeMovementReachesNothingTheGridDoesntOnKalossMaps()
     {
         var region = RegionDatabase.Get(RegionDatabase.Kalos)!;
-        // Kalos's own file keeps eight on the grid until the plan's gate (Kalos playable to its second Gym) is judged
-        Assert.Equal(MovementDirections.Eight, region.Movement.Directions);
+        // Kalos's own file moves freely since the user opened the plan's gate (2026-11-12)
+        Assert.Equal(MovementDirections.Free, region.Movement.Directions);
         var kalos = World.LoadAll().Single(w => w.Index.Region == "Kalos");
         var maps = kalos.BuildMaps().ToDictionary(m => m.Name);
         var rooms = MapDatabase.Fresh();

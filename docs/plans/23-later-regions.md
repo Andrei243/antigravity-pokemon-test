@@ -42,6 +42,12 @@ nothing drawn here is redrawn for it. Z1 paints no new person at chibi scale whe
 existing kit's `Adult` build at a height of 1.0 or more, and the style guide's "Characters" ("From Kalos on, not chibi")
 lists what a figure that isn't chibi needs, which plan 30 builds (the kit is not rebuilt here).
 
+**The gate opened (the user's decision of 2026-11-12)**: Kalos's file now says `"movement": { "directions": "Free",
+"speed": "Analog", "modes": [ "Skates" ] }` and `"kit": "Grown"` (plan 30, "The gate opened"; rulings, "The gate opened:
+Kalos free and grown"). The tile layouts drawn here are walked freely as they stand; the Gyms whose rooms name a puzzle
+keep the grid's steps; the cast is FM10's grown twins and the outdoor camera `FieldCamera.Kalos`. Alola stays `Eight` and
+chibi for now.
+
 Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fast`, a slide of one tile on stopping like ice's `Carries`, refused on stairs and grass, taken with a key as the Bicycle's gear is); Lumiose's ring as a grid octagon with its plazas where they stand; the Central, Coastal and Mountain dexes as three listings of plan 18 · W3's `Pokedex.Dexes`; Mega Evolution at home in Shalour's Tower of Mastery as plan 06 · R20 builds it (the Key Stone only to a bag without one, the Tower's own gift of a Lucario and its stone beside it); sky battles and hordes placed from plan 14 · B2 to B4 (the sky battles only if plan 14's decision 7 keeps B2); the boutiques as plan 11 · C10's `WardrobeScreen` with Lumiose's stock; Pokémon-Amie is the camp (plan 10 · F6, F7; rulings.md folds affection into friendship); the Friend Safari is optional, its species drawn from plan 07 · O7's friend list, or from the player's own trainer id without it. Kalos's first 36 species, Chespin to Slurpuff, are hand-built since plan 03's first Kalos batch; the other 36 are generated until the batches reach them.
 
 - **Kalos's other four Gyms, its port and its HMs** (2026-11-08, a session after Kalos's last places; rulings, "Kalos's

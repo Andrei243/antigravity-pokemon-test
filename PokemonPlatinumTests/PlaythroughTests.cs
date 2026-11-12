@@ -82,6 +82,7 @@ public class PlaythroughTests
             game.Flow.EncounterAids.RepelSteps = 1_000_000;
             game.Place(MapDatabase.Get("Kalos"), 243, 474, Direction.Down);
             game.State = GameState.Overworld;
+            Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
             var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.KalosLastChapters) };
             Run(bot, 6 * 3600);
             var report = bot.Report;
@@ -106,6 +107,8 @@ public class PlaythroughTests
                 game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
             game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
             game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            // Kalos moves freely since plan 30's gate (2026-11-12), so the bot steers a stick the whole way
+            Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
             var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.KalosWhole) };
             Run(bot, 10 * 3600);
             var report = bot.Report;

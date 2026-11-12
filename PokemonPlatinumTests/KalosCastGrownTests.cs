@@ -82,11 +82,12 @@ public class KalosCastGrownTests
     }
 
     [Fact]
-    public void KalosStaysChibiUntilTheUsersWord()
+    public void KalosIsGrownThroughItsKitAndItsLooksStayTwins()
     {
-        // The gate (plan 30 · FM10, "Done when"): Kalos's file keeps the chibi kit, and every look of Kalos asked for plainly
-        // is the chibi look it was, so nothing of the grown cast reaches a game of today
-        Assert.Equal(CharacterKit.Chibi, RegionDatabase.Get("Kalos")!.Kit);
+        // The gate (plan 30 · FM10, "Done when"), opened by the user on 2026-11-12: Kalos's file says the grown kit, and
+        // every look of Kalos asked for plainly is still the chibi look it was (a twin is reached through the region's
+        // kit alone, `CharacterStyle.InKit`), so the grown cast shows only where the place's kit is grown
+        Assert.Equal(CharacterKit.Grown, RegionDatabase.Get("Kalos")!.Kit);
         foreach (string look in KalosLooks().Keys.Where(Table.Has))
         {
             Assert.Equal(CharacterKit.Chibi, Table.Get(look).Kit);
