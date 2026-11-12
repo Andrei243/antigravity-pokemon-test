@@ -6,6 +6,10 @@
   "markers": [
     { "name": "stone_arch", "at": [-44, 4.2, -528], "yaw": 90 }
   ],
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_seat_1", "cylinder": { "at": [-112, -530], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenSeat1" }
+  ],
   "zones": [
     {
       "name": "giants_seat",

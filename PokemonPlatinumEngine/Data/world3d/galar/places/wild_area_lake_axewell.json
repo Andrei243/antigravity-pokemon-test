@@ -1,6 +1,10 @@
 {
   // Lake Axewell (plan 33 · GL2): the Wild Area's middle, a lake in its bowl with grass all round, Wingull over it in the
   // rain, and a Haxorus far stronger than anything near it prowling the south shore.
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_axewell_1", "cylinder": { "at": [92, -430], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenAxewell1" }
+  ],
   "zones": [
     {
       "name": "lake_axewell",

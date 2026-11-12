@@ -45,3 +45,15 @@ label Short
 label Bye
   say "Suit yourself! The ground's not going anywhere."
   end
+
+
+script DenRolling1
+  raid den "rolling_1"
+  call GalarDen
+  end
+
+
+script DenRolling2
+  raid den "rolling_2"
+  call GalarDen
+  end

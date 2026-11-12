@@ -203,6 +203,8 @@ public enum Op
     Plaza,
     // The Week's Work, the hub's board of missions (plan 41 · EG6): the board read and opened, a timed mission begun, the rewards claimed
     Missions,
+    // Galar's Max Raid dens (plan 33 · GL3): a den looked into, its light's Watts, its raid fought, its felled boss caught
+    Raid,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

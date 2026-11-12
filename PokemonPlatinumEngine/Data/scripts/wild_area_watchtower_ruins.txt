@@ -1,0 +1,8 @@
+# The Watchtower Ruins (plan 33 · GL2, GL3): its Max Raid den. A den is looked into by
+# `raid den`, and common.GalarDen does the rest (docs/scripts.md, "Max Raid dens").
+
+
+script DenRuins1
+  raid den "ruins_1"
+  call GalarDen
+  end

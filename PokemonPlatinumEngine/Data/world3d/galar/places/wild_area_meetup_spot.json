@@ -6,6 +6,10 @@
     { "name": "wild_area_station", "at": [0, 2.8, -318], "yaw": 180 },
     { "name": "wild_area_meetup", "at": [0, 2.8, -336], "yaw": 180 }
   ],
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_meetup_1", "cylinder": { "at": [24, -346], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenMeetup1" }
+  ],
   "zones": [
     {
       "name": "meetup_spot",

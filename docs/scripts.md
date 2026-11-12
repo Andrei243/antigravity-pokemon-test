@@ -888,6 +888,18 @@ was started with; anyone else is no friend's trainer and has nothing to battle.
 | `friend before`, `friend after` | Says the line their file chose to say before the battle, or after it (`friends.line.N` of the table), under their name. |
 | `friend battle` | The battle at level 50: copies of the player's team but its Eggs, and of the friend's own team made from their file, under the Frontier's battle rules (nothing won, paid, learnt or used up) and every routine of the trainer AI. `RESULT` 1 won, 0 lost; a win beats them for the day and counts as a trainer beaten. |
 
+### Max Raid dens
+
+Plan 33 · GL3 (`Story/ScriptRunner.Raids.cs`, `Models/Raids.cs`; `docs/mechanics/rulings.md`, "Max Raid dens"). A den is a
+trigger of an open place whose script names its den of `Data/world/galar/dens.json` and calls `common.GalarDen`.
+
+| Command | What it does |
+|---|---|
+| `raid den "rolling_1"` | Looks into the den: what it holds today (`Raids.Today`, drawn by the day's number, the den's id and `VAR_GALAR_VERSION`, among the rows Galar's badges allow) is written into `VAR_GALAR_RAID_STARS`, `VAR_GALAR_RAID_SPECIES` (its National number, said by `{species:…}`) and `VAR_GALAR_RAID_LEVEL`; `RESULT` is 1 where its beam is lit and its boss isn't felled today, else 0. Nothing is drawn from the dice. |
+| `raid watts` | The den's light's Watts, once a day (`FLAG_DAILY_GALAR_DEN_<ID>_WATTS`), added to `VAR_GALAR_WATTS`; `RESULT` is how many, 0 where none are given. |
+| `raid fight` | The raid (`BattleFormat.Raid`): the boss at its level beside three raiders who answer the den's call (`Raids.Allies`), and the script waits. A loss goes on (`if won`, `if lost`); a win sets the den quiet for the day (`FLAG_DAILY_GALAR_DEN_<ID>_DONE`). Stops a hurry. |
+| `raid catch "Great Ball"` | A ball of the bag thrown at the felled boss: `RESULT` 1 caught (the Pokémon given, in that ball), 0 it got away (on the host's own die, `Raids.CatchChance`), 2 no such ball in the bag. |
+
 ### The crafting kit
 
 Plan 39 · CR1; `docs/mechanics/rulings.md`, "Materials, crafting and cooking". The kit is a key item of ours (`Crafting Kit`,

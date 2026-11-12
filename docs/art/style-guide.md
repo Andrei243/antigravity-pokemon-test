@@ -1694,6 +1694,15 @@ What `openproto` draws, as the gate's look was judged: the same units, scene, ca
 - **The Wild Area's station** is a building of the Galar kit (`terminal`, its sign WILD AREA STATION); the watchtower
   is a `tower` on its knoll.
 
+### Max Raid dens (plan 33 · GL3)
+
+- **A den** is a ring of red stone set in the ground, about three metres across.
+- **Its beam** (lit dens only): a column of soft red light rising from the ring, about two metres wide at the foot and
+  fading out at thirty metres, slowly pulsing (a two-second breath); after dark it is the brightest thing in the Wild
+  Area, so it can be seen across the downs. Our own; not drawn yet (GL3's second session).
+- **A raid's battle** puts the player's four Pokémon on four platforms in an arc on their side and the boss alone,
+  giant, on the other; its barrier's shields show as small pips on its HP box, one to a shield.
+
 ## Time of day
 
 The world follows the computer's clock, like the DS's real-time clock, with Platinum's five light states (pret/pokeplatinum, `src/rtc.c`). The options screen can fix a time. Each state has a light rig for the field and one for battles (`ArtLook.FieldRigFor`, `BattleRigFor`); within half an hour of a change the two rigs blend.

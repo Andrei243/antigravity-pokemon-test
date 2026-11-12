@@ -1270,6 +1270,20 @@ public partial class GameEngine
             game.MeetWildPokemon(wild, BattleKind.Normal, cannotFlee: true, sos: true, totem: aura);
         }
 
+        /// <summary>A Max Raid den's battle (plan 33 · GL3): the boss at the region's levels, the three raiders beside the player, nothing to catch in the battle.</summary>
+        public void RaidBattle(Pokemon boss, Battle.Sim.RaidTerms raid)
+        {
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = true;
+            boss.Relevel(game.LevelHere(boss.Level));
+            foreach (var ally in raid.Allies)
+                foreach (var p in ally.Party.Members) p.Relevel(game.LevelHere(p.Level));
+            game.MeetWildPokemon(boss, BattleKind.Normal, raid: raid);
+        }
+
+        /// <summary>The day's number a den's day is drawn from.</summary>
+        public uint DayNumber => game.flow.Encounters.DailyNumber;
+
         public BattleOutcome Outcome => game.flow.ScriptOutcome;
 
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null)

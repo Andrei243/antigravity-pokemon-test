@@ -14639,6 +14639,10 @@ way -
 === common.GabbyAndTyUpdateLocation
 from a trainer with lines of their own
 way -
+=== common.GalarDen
+from a trainer with lines of their own
+way -
+  > A den of red stone. No light rises from it today.
 === common.GalarNewGame
 from a trainer with lines of their own
 way -

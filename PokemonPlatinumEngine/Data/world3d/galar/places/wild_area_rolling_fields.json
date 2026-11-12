@@ -2,6 +2,11 @@
   // The Rolling Fields (plan 33 · GL2): grassy swells west of the station, where the Wild Area's most ordinary Pokémon
   // graze, its grass rustles, and a huge Onix far beyond the Poké Balls of a Trainer with no badges sleeps in the open.
   // The Digging Duo dig by the track for Watts. Scripts: Data/scripts/wild_area_rolling_fields.txt
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_rolling_1", "cylinder": { "at": [-100, -330], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenRolling1" },
+    { "name": "den_rolling_2", "cylinder": { "at": [-120, -362], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenRolling2" }
+  ],
   "zones": [
     {
       "name": "rolling_fields",

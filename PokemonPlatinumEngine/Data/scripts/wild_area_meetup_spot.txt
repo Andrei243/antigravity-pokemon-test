@@ -105,3 +105,9 @@ label Net
 label Tomorrow
   say "Come back tomorrow! I'll have a new favourite by then. I always do."
   end
+
+
+script DenMeetup1
+  raid den "meetup_1"
+  call GalarDen
+  end

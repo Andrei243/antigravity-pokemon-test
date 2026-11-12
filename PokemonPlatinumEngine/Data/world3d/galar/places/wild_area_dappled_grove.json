@@ -1,6 +1,10 @@
 {
   // The Dappled Grove (plan 33 · GL2): the wood east of the station, damp and half in shade, with its own grass among the
   // trees. Bugs and grass by day, ghosts after dark, Joltik when the thunder comes.
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_grove_1", "cylinder": { "at": [100, -362], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenGrove1" }
+  ],
   "zones": [
     {
       "name": "dappled_grove",

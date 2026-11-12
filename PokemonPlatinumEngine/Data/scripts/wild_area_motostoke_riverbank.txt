@@ -11,3 +11,9 @@ script MotostokeSteps
   say "You'll hear when they open. The Wild Area's all yours until then!"
   walkto player motostoke_steps_back
   end
+
+
+script DenRiverbank1
+  raid den "riverbank_1"
+  call GalarDen
+  end

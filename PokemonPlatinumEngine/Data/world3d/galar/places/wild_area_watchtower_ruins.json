@@ -1,6 +1,10 @@
 {
   // The Watchtower Ruins (plan 33 · GL2): a broken stone tower on a knoll west of Lake Axewell, from the days when Galar's
   // giants were watched for. Ghosts in the fog round it, and a strong Gengar there on foggy days.
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_ruins_1", "cylinder": { "at": [-122, -470], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenRuins1" }
+  ],
   "zones": [
     {
       "name": "watchtower_ruins",

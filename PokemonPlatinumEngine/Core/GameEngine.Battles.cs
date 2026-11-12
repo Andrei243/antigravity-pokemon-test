@@ -161,7 +161,7 @@ public partial class GameEngine
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
         Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null, bool sos = false,
-        Battle.Sim.TotemAura? totem = null)
+        Battle.Sim.TotemAura? totem = null, Battle.Sim.RaidTerms? raid = null)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second);
         // A horde's others are seen with the first (plan 14 · B3)
@@ -203,7 +203,9 @@ public partial class GameEngine
         // What wild Pokémon hold, and the Poké Radar's chain, which only a Pokémon of the field's own lets go on (plan 06 · R13)
         GiveWildItems(wilds, kind);
         if (!flow.FieldEncounter) EndRadarChain();
-        var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
+        // A raid's three raiders' Pokémon are made ready behind the fade too (plan 33 · GL3)
+        var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>())
+            .Concat(raid?.Allies.SelectMany(a => a.Party.Members) ?? Enumerable.Empty<Pokemon>()));
         // Every ally an SOS battle's Pokémon may call is made ready behind the fade too, so none comes in waiting for its model (plan 14 · B5)
         if (sos) shown.AddRange(SosAllyLooks(wildPkmn).Where(name => !shown.Contains(name)).Select(name => { flow.WantModel(name); return name; }).ToList());
         // And a totem's own ally where its aura names one (plan 23 · Z6)
@@ -232,7 +234,8 @@ public partial class GameEngine
                 PcStorage = flow.Boxes,
                 Place = PlaceName(),
                 WildPokemon = wilds,
-                Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
+                Format = raid != null ? BattleFormat.Raid : horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
+                Raid = raid,
                 Partner = beside,
                 Conditions = BattleConditionsHere(totem: totem),
                 // When, under what sky and how it was met, for a catch's mark (plan 10 · F9), and the Mark Charm's three tries (plan 40 · GE5)

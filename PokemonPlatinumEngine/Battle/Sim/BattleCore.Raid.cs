@@ -28,8 +28,8 @@ public static class RaidRules
     /// <summary>The raiders' side is blown out of the den at its fourth fall (Sword's), unless the raid can't be lost.</summary>
     public const int MostFalls = 4;
 
-    /// <summary>A boss's HP past its Dynamax, in halves: one star, as it Dynamaxed; then a half more a star.</summary>
-    public static int HpHalves(int stars) => 2 + Math.Clamp(stars, RaidTerms.FewestStars, RaidTerms.MostStars) - 1;
+    /// <summary>A boss's HP past its Dynamax, in halves: as it Dynamaxed at one star, then once more for every star past it (five stars, five times).</summary>
+    public static int HpHalves(int stars) => 2 * Math.Clamp(stars, RaidTerms.FewestStars, RaidTerms.MostStars);
 
     /// <summary>The hits its barrier takes once its HP has fallen to half: none for one or two stars, then one less than its stars.</summary>
     public static int Shields(int stars) => stars >= 3 ? stars - 1 : 0;
@@ -50,7 +50,7 @@ public static class RaidRules
 /// opens and kept so for the whole battle, its HP raised by its stars. Nobody switches, nothing is used from the bag,
 /// and a raider who falls is back on its feet at the turn's end; the raiders' fourth fall blows them out of the den and
 /// the raid is lost. Past half its HP the boss puts up a barrier that takes a hit to break a shield (two for a Max Move)
-/// and lets a quarter of the damage through; at four and five stars it acts twice in a turn. Felled, it is the
+/// and lets a quarter of the damage through, never its last HP; at four and five stars it acts twice in a turn. Felled, it is the
 /// raiders' victory, and the den's catch is the script's (<see cref="Models.Raids.CatchChance"/>). Every draw is on the
 /// battle's own generator.
 /// </summary>
@@ -121,7 +121,8 @@ public sealed partial class BattleCore
         if (RaidShields > 0)
         {
             RaidShields = Math.Max(0, RaidShields - RaidRules.BreaksOf(maxMove));
-            int through = Math.Max(1, damage / RaidRules.ThroughTheBarrier);
+            // (and never the last of its HP: the barrier must fall before the boss can)
+            int through = Math.Min(Math.Max(1, damage / RaidRules.ThroughTheBarrier), p.CurrentHP - 1);
             var line = RaidShields > 0
                 ? Say(Text.Of("battle.raidShieldBroke", ("pokemon", t.Name), ("n", RaidShields)))
                 : Say(Text.Of("battle.raidShieldDown", ("pokemon", t.Name)));

@@ -137,6 +137,10 @@ public sealed class SpeciesSources
                 }
                 foreach (var list in map.Sites.Values) openSites.AddRange(list);
             }
+            // Galar's Max Raid dens, whose felled bosses are caught (plan 33 · GL3)
+            if (string.Equals(region, RegionDatabase.Galar, StringComparison.OrdinalIgnoreCase))
+                foreach (var den in Models.Raids.Galar.Dens)
+                    foreach (var row in den.Rows) inTheField.Add((row.Species, $"{den.Area}: the den {den.Id}"));
             if (world != null || open.Count > 0)
             {
                 if (world != null)
@@ -178,7 +182,9 @@ public sealed class SpeciesSources
                 var given = RegionDatabase.All.SelectMany(r => r.Starters.Select(s => (s, $"{r.Id}'s professor's three")))
                     // and the open regions' zones, whose Pokémon are met in the field (plan 33 · GL1), with their rustling
                     // grass's (GL2)
-                    .Concat(openMaps.SelectMany(m => m.Zones.SelectMany(z => z.Slots.Concat(z.Rustle).Select(s => (s.Species, $"{z.Place}: {z.Name}, in the field")))));
+                    .Concat(openMaps.SelectMany(m => m.Zones.SelectMany(z => z.Slots.Concat(z.Rustle).Select(s => (s.Species, $"{z.Place}: {z.Name}, in the field")))))
+                    // and Galar's Max Raid dens (plan 33 · GL3)
+                    .Concat(Models.Raids.Galar.Dens.SelectMany(d => d.Rows.Select(r => (r.Species, $"{d.Area}: the den {d.Id}"))));
                 var found = Gather(worlds, sinnohWorld, ScriptLibrary.Default, Rooms().ToList(), _ => true, given, ownCounters: false,
                     openMaps.SelectMany(m => m.Sites.Values.SelectMany(v => v)));
                 return everywhere = Make(found, PokemonDatabase.GetAll().Max(s => s.DexNumber));

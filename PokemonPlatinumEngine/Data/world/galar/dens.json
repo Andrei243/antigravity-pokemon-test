@@ -1,0 +1,56 @@
+{
+  // Galar's Max Raid dens (plan 33 · GL3; docs/mechanics/rulings.md, "Max Raid dens"): each den's id (what its script
+  // names it by), the area it is in and its table, every row a species or form, its stars (one to five), how often it
+  // waits there and its version (0 both, 1 Sword, 2 Shield). Which row a den holds on a day is drawn by the day's number
+  // and the den's id (Models/Raids.cs), among the rows the region's badges allow (Raids.MostStars). And the Trainers who
+  // answer a den's call, three to a raid. Our own tables and names (plan 33 · decision 4)
+  "dens": [
+    { "id": "meetup_1", "area": "wild_area_meetup_spot", "rows": [
+      { "species": "Wooloo", "stars": 1, "weight": 30 }, { "species": "Skwovet", "stars": 1, "weight": 30 },
+      { "species": "Rookidee", "stars": 2, "weight": 20 }, { "species": "Dubwool", "stars": 3, "weight": 10 },
+      { "species": "Corviknight", "stars": 4, "weight": 6 }, { "species": "Corviknight", "stars": 5, "weight": 4 } ] },
+    { "id": "rolling_1", "area": "wild_area_rolling_fields", "rows": [
+      { "species": "Nickit", "stars": 1, "weight": 25 }, { "species": "Bunnelby", "stars": 1, "weight": 25 },
+      { "species": "Vulpix", "stars": 2, "weight": 20 }, { "species": "Ninetales", "stars": 3, "weight": 10 },
+      { "species": "Onix", "stars": 3, "weight": 10 }, { "species": "Steelix", "stars": 4, "weight": 6 },
+      { "species": "Diggersby", "stars": 5, "weight": 4 } ] },
+    { "id": "rolling_2", "area": "wild_area_rolling_fields", "rows": [
+      { "species": "Hatenna", "stars": 1, "weight": 25 }, { "species": "Impidimp", "stars": 1, "weight": 25 },
+      { "species": "Ralts", "stars": 2, "weight": 20 }, { "species": "Kirlia", "stars": 3, "weight": 10 },
+      { "species": "Gardevoir", "stars": 4, "weight": 6, "version": 2 }, { "species": "Gallade", "stars": 4, "weight": 6, "version": 1 },
+      { "species": "Hatterene", "stars": 5, "weight": 4, "version": 2 }, { "species": "Grimmsnarl", "stars": 5, "weight": 4, "version": 1 } ] },
+    { "id": "grove_1", "area": "wild_area_dappled_grove", "rows": [
+      { "species": "Blipbug", "stars": 1, "weight": 25 }, { "species": "Gossifleur", "stars": 1, "weight": 25 },
+      { "species": "Joltik", "stars": 2, "weight": 20 }, { "species": "Eldegoss", "stars": 3, "weight": 10 },
+      { "species": "Galvantula", "stars": 4, "weight": 6 }, { "species": "Orbeetle", "stars": 5, "weight": 4 } ] },
+    { "id": "ruins_1", "area": "wild_area_watchtower_ruins", "rows": [
+      { "species": "Gastly", "stars": 1, "weight": 25 }, { "species": "Roggenrola", "stars": 1, "weight": 25 },
+      { "species": "Duskull", "stars": 2, "weight": 20 }, { "species": "Haunter", "stars": 3, "weight": 10 },
+      { "species": "Gengar", "stars": 4, "weight": 6 }, { "species": "Dusknoir", "stars": 5, "weight": 4 } ] },
+    { "id": "axewell_1", "area": "wild_area_lake_axewell", "rows": [
+      { "species": "Chewtle", "stars": 1, "weight": 25 }, { "species": "Wingull", "stars": 1, "weight": 25 },
+      { "species": "Yamper", "stars": 2, "weight": 20 }, { "species": "Axew", "stars": 3, "weight": 10 },
+      { "species": "Drednaw", "stars": 4, "weight": 6 }, { "species": "Haxorus", "stars": 5, "weight": 4 } ] },
+    { "id": "seat_1", "area": "wild_area_giants_seat", "rows": [
+      { "species": "Rolycoly", "stars": 1, "weight": 25 }, { "species": "Silicobra", "stars": 1, "weight": 25 },
+      { "species": "Yamask-Galar", "stars": 2, "weight": 20 }, { "species": "Carkol", "stars": 3, "weight": 10 },
+      { "species": "Sandaconda", "stars": 4, "weight": 6 }, { "species": "Coalossal", "stars": 5, "weight": 4 } ] },
+    { "id": "miloch_1", "area": "wild_area_lake_miloch", "rows": [
+      { "species": "Lotad", "stars": 1, "weight": 25 }, { "species": "Wooper", "stars": 1, "weight": 25 },
+      { "species": "Lombre", "stars": 2, "weight": 20 }, { "species": "Quagsire", "stars": 3, "weight": 10 },
+      { "species": "Ludicolo", "stars": 4, "weight": 6 }, { "species": "Toxtricity", "stars": 5, "weight": 4 } ] },
+    { "id": "riverbank_1", "area": "wild_area_motostoke_riverbank", "rows": [
+      { "species": "Dottler", "stars": 1, "weight": 25 }, { "species": "Klink", "stars": 1, "weight": 25 },
+      { "species": "Pancham", "stars": 2, "weight": 20 }, { "species": "Klang", "stars": 3, "weight": 10 },
+      { "species": "Pangoro", "stars": 4, "weight": 6 }, { "species": "Klinklang", "stars": 5, "weight": 4 } ] }
+  ],
+  "raiders": [
+    { "name": "Ada", "look": "lass", "species": ["Eldegoss", "Dubwool", "Toxtricity"] },
+    { "name": "Bram", "look": "worker", "species": ["Coalossal", "Drednaw", "Corviknight"] },
+    { "name": "Cora", "look": "lady", "species": ["Hatterene", "Gardevoir", "Ninetales"] },
+    { "name": "Dev", "look": "youngster", "species": ["Boltund", "Thievul", "Cinccino"] },
+    { "name": "Ellis", "look": "gentleman", "species": ["Copperajah", "Steelix", "Sandaconda"] },
+    { "name": "Fenna", "look": "clerk", "species": ["Frosmoth", "Lapras", "Centiskorch"] },
+    { "name": "Gus", "look": "man", "species": ["Grimmsnarl", "Obstagoon", "Orbeetle"] }
+  ]
+}

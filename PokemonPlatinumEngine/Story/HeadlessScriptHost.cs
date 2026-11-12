@@ -872,6 +872,21 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 
+    /// <summary>A Max Raid den's battle (plan 33 · GL3): fought as a wild battle, the boss never caught in it, its stars and raiders written down.</summary>
+    public void RaidBattle(Pokemon boss, Battle.Sim.RaidTerms raid)
+    {
+        Shown("start a battle");
+        NeverInAHurry("a battle");
+        Waits();
+        Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
+        if (Outcome == BattleOutcome.Caught) Outcome = BattleOutcome.Won;
+        Log.Add($"raidbattle {boss.Species.Name} {boss.Level} {raid.Stars} stars with {string.Join(",", raid.Allies.Select(a => a.Name + ":" + a.Party.Members[0].Species.Name))} {Outcome}");
+        if (Outcome == BattleOutcome.Lost) Party.HealAll();
+    }
+
+    /// <summary>The day's number a den's day is drawn from (a test's; nought unless told).</summary>
+    public uint DayNumber { get; set; }
+
     public BattleOutcome Outcome { get; private set; }
 
     /// <summary>

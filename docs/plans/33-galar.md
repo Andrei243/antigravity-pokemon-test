@@ -106,7 +106,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 
 - [x] GL1 Galar's file, Postwick, Wedgehurst and Routes 1 and 2 (2026-11-09, its first session: the file, the open map of five areas described and baked, eight rooms, the chapter to the train headless, the walk of the region, the species check; "GL1 as built", below. **Waits for the user**: the look of Postwick and Wedgehurst, judged from the shots its second session owes, as the done-when has it; and the bot's walk to the train in `PlaythroughTests`, which waits for plan 32 · OW10's bot)
 - [x] GL2 The Wild Area (2026-11-12, its first session: the southern half at a smaller footprint than decision 1's, eight parts with weather by part and day, rustling grass, strong Pokémon, the train, the traders, the Stone Arch; "GL2 as built", below. **Waits for the user**: the footprint, and the look of the Wild Area from the shots owed; **owed**: the Rotom Bike, camping placed in the Wild Area, the harness's shots and `profile` with twelve field Pokémon in rain)
-- [ ] GL3 Max Raid dens
+- [x] GL3 Max Raid dens (2026-11-12, its first session: `BattleFormat.Raid` and its rules, the dens and their days, the script and its catch, the Vs. Recorder's file; "GL3 as built", below. **Owed** to its second: the beam drawn, the raid's screen, the Wishing Piece, `MegaMaxDen`'s den, the shots)
 - [ ] GL4 Motostoke, the opening ceremony and the first three gyms
 - [ ] GL5 Stow-on-Side to Hammerlocke
 - [ ] GL6 The Champion Cup, the Darkest Day and Leon
@@ -144,3 +144,13 @@ One session, by an agent beside others on plans 35, 37, 38, 39 and 42, so **no h
 - **Tests**: `GalarWildAreaTests` (the parts, the calendar the same twice and read alike, Pokémon by weather in the field, rustling grass met and the same twice, the catch ceiling, Runerigus under the arch, the train, the Watt trader), `GalarTests` (areas, the walk to every new marker and person, the north bank never come to, the chapter to the Wild Area), `GalarSpeciesTests` (73 species off the owed list). Goldens moved: `scripts.txt`, `saves.txt` (`FLAG_GALAR_HIDE_HOP_RIVERBANK` in `GalarNewGame`), the open place's schema, `species-owed.md`.
 
 **Owed**: the Rotom Bike (`RegionMode.RotomBike` has no engine code yet), camping and curry placed in the Wild Area, the shots (`ga60` on, the Wild Area's parts by day and night and in four weathers, a rustle, the arch, the station) and `profile` with twelve field Pokémon in rain, the northern half (GL5), Runerigus counted by the species check (it reads no regional form's evolution).
+
+## GL3 as built (2026-11-12)
+
+One session beside GL2, with no harness shot. The rulings' "Max Raid dens" has each decision.
+
+- **The rules**: `BattleFormat.Raid` (`Ruleset.Raids`; four places against one), `Battle/Sim/BattleCore.Raid.cs` (`RaidTerms`, `RaidRules`: the boss Dynamaxed for the whole battle with its HP raised by its stars, the barrier past half, two actions at four and five stars, raiders back on their feet at the turn's end, the fourth fall losing it, `RaidBarrier` on its lines), kept by the Vs. Recorder's file (`RaidStars`, `RaidAllies`, `RaidCannotFail`).
+- **The dens**: `Models/Raids.cs` and `Data/world/galar/dens.json` (nine dens, seven raiders, ours), a day's den drawn by the day's number, the den's id and the version among the stars the badges allow, a third lit; a den is a trigger of its place calling `common.GalarDen` (Watts, the raid, the catch); the script's `raid den|watts|fight|catch` (`Story/ScriptRunner.Raids.cs`); the game's host meets the boss through `MeetWildPokemon(raid:)`, a loss going on as a script allows. `SpeciesSources` counts the dens' species.
+- **Tests**: `GalarRaidTests` (four places and a Dynamax that never runs down, the barrier and its shields, two actions and the fourth fall, the replay and Platinum's single, a den's day and its script to the catch), `ScriptTests.EveryCommand`.
+
+**Owed**: the beam drawn in the open map (the style guide's row is written), the raid's screen (four platforms, the shields' pips), the Wishing Piece as an item (its daily flag already lights a den), `CoreSetup.MegaMaxDen`'s den after the Hall of Fame (GL7), the shots `ft70_raid_four`, `ft71_raid_catch` and the beam by day and night.

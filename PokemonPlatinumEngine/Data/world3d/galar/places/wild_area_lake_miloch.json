@@ -1,6 +1,10 @@
 {
   // Lake Miloch (plan 33 · GL2): the northern lake under the Giant's Seat's east side, reeds and long grass round it,
   // Pokémon of the water's edge and a Gyarados's younger kin splashing in its shallows after rain.
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_miloch_1", "cylinder": { "at": [122, -570], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenMiloch1" }
+  ],
   "zones": [
     {
       "name": "lake_miloch",
