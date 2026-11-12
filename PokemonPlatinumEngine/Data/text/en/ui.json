@@ -2398,7 +2398,7 @@
     },
     "quitAsk": {
       "title": "Quit this round?",
-      "keep": "You will keep {coins} coins.",
+      "keep": "Coins you will keep: {coins}.",
       "none": "You have found no coins yet.",
       "yes": "QUIT",
       "no": "KEEP PLAYING"
@@ -2406,12 +2406,12 @@
     "line": {
       "menu": "Each row and column shows its total and how many cracked tiles it hides.",
       "level": "Level {level}. Choose a card.",
-      "first": "A {coins}! You have {coins} coins this round.",
-      "one": "A 1. Still {coins} coins.",
-      "times": "Times {times}! Now {coins} coins.",
+      "first": "A {coins} to start the round!",
+      "one": "A 1. This round: {coins}.",
+      "times": "Times {times}! This round: {coins}.",
       "bust": "A cracked tile! The round's coins are lost.",
-      "won": "Every 2 and 3 found! {coins} coins go into your case.",
-      "kept": "You keep {coins} coins.",
+      "won": "Every 2 and 3 found! Into your case: {coins}.",
+      "kept": "Into your case: {coins}.",
       "nothing": "No coins this time.",
       "up": "You move up to level {level}!",
       "down": "Back to level {level}.",

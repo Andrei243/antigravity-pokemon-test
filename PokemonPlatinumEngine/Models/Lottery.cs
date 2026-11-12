@@ -78,6 +78,9 @@ public static class Lottery
     /// </summary>
     public static int WeekOf(DateOnly day) => day.DayNumber / 7;
 
+    /// <summary>The week of a moment's day (what <c>GameClock.Today</c> gives).</summary>
+    public static int WeekOf(DateTime day) => WeekOf(DateOnly.FromDateTime(day));
+
     /// <summary>
     /// The week's ticket (rulings, "Johto's lucky number draw"): HeartGold's own reckoning of a ticket, the LCRNG step
     /// <see cref="TicketOf"/> takes with its high half kept (<c>Save_LCRNGAdvanceLotoID</c>, the same bug as
@@ -90,6 +93,9 @@ public static class Lottery
 
     /// <summary>The ticket of the week a day falls in.</summary>
     public static int WeeklyTicket(DateOnly day, uint gameNumber = 0) => WeeklyTicket(WeekOf(day), gameNumber);
+
+    /// <summary>The ticket of the week a moment's day falls in.</summary>
+    public static int WeeklyTicket(DateTime day, uint gameNumber = 0) => WeeklyTicket(WeekOf(day), gameNumber);
 
     /// <summary>
     /// Johto's prize for so many digits: HeartGold's Radio Tower counter (<c>scr_seq_0029_D23R0101.s</c>, items 2, 51,

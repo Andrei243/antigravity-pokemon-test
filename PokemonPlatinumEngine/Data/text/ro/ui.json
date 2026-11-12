@@ -2547,7 +2547,7 @@
     },
     "quitAsk": {
       "title": "Ieși din runda asta?",
-      "keep": "Vei păstra {coins} jetoane.",
+      "keep": "Jetoane pe care le păstrezi: {coins}.",
       "none": "Încă n-ai găsit niciun jeton.",
       "yes": "IEȘI",
       "no": "JOC MAI DEPARTE"
@@ -2555,12 +2555,12 @@
     "line": {
       "menu": "Fiecare rând și coloană arată totalul și câte plăcuțe crăpate ascunde.",
       "level": "Nivelul {level}. Alege o carte.",
-      "first": "Un {coins}! Ai {coins} jetoane în runda asta.",
-      "one": "Un 1. Tot {coins} jetoane.",
-      "times": "Ori {times}! Acum {coins} jetoane.",
+      "first": "Un {coins} ca să începi runda!",
+      "one": "Un 1. Runda asta: {coins}.",
+      "times": "Ori {times}! Runda asta: {coins}.",
       "bust": "O plăcuță crăpată! Jetoanele rundei s-au pierdut.",
-      "won": "Ai găsit toți de 2 și de 3! {coins} jetoane intră în cutie.",
-      "kept": "Păstrezi {coins} jetoane.",
+      "won": "Ai găsit toți de 2 și de 3! În cutie: {coins}.",
+      "kept": "În cutie: {coins}.",
       "nothing": "Niciun jeton de data asta.",
       "up": "Urci la nivelul {level}!",
       "down": "Înapoi la nivelul {level}.",

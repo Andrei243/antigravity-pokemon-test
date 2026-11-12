@@ -236,6 +236,8 @@ public sealed class CardFlipScreen : IPointable
         var board = Game!.Board!;
         for (int i = 0; i < CardFlipBoard.Cards; i++) UpBefore[i] = board.IsFlipped(i);
         Game.Reveal();
+        // The rest turn over together (a bust's or a win's own card turned already)
+        FlipAge = 0f;
         Phase = CardFlipPhase.Reveal;
         Choice = 0;
     }

@@ -6,7 +6,11 @@ using Xunit;
 
 namespace PokemonPlatinumTests;
 
-/// <summary>The card-flip game (plan 42 · PS3): HeartGold's rules, held to voltorb_flip_game.c.</summary>
+/// <summary>
+/// The card-flip game (plan 42 · PS3): HeartGold's rules, held to voltorb_flip_game.c. In the shared collection, since the
+/// screen's tests play sounds and a bust's pulse, which a test listening elsewhere would hear.
+/// </summary>
+[Collection("Shared clocks and dice")]
 public class CardFlipTests
 {
     // The Payout column the original writes beside each row of sBoardConfigs, copied to catch a mistyped row
@@ -292,6 +296,28 @@ public class CardFlipTests
         Assert.True(screen.Outcome >= 0);
         screen.Quit(); // LEAVE
         Assert.False(screen.IsActive);
+    }
+
+    [Fact]
+    public void QuittingThroughTheScreenKeepsTheRoundsCoins()
+    {
+        var screen = new PokemonPlatinumEngine.UI.CardFlipScreen();
+        screen.Open(100, new Random(8).Next);
+        screen.Flip(); // PLAY
+        var board = screen.Game!.Board!;
+        int card = Enumerable.Range(0, 25).First(i => CardFlipBoard.IsMultiplier(board.Face(i)));
+        screen.PointAt(card);
+        screen.Flip();
+        int payout = screen.Game.Payout;
+        Assert.Equal(PokemonPlatinumEngine.UI.CardFlipPhase.Board, screen.Phase);
+        screen.Quit();
+        Assert.Equal(PokemonPlatinumEngine.UI.CardFlipPhase.ConfirmQuit, screen.Phase);
+        Assert.Equal(1, screen.Choice); // the question opens on NO
+        screen.Move(1, 0);
+        screen.Flip();
+        Assert.Equal(PokemonPlatinumEngine.UI.CardFlipPhase.Reveal, screen.Phase);
+        Assert.Equal(payout, screen.Outcome);
+        Assert.Equal(100 + payout, screen.Coins);
     }
 
     [Fact]
