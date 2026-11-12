@@ -1080,7 +1080,21 @@ public class Player
         if (skating && Mode is TravelMode.OnFoot or TravelMode.Skating)
         {
             var skater = WalkerOn(map) with { Mode = TravelMode.Skating, Running = false, Height = standing };
-            bool refused = FieldMovement.Step(map, gx, gy, face, skater).Obstacle == Obstacle.Skates;
+            // (no skates in tall grass: the grid's step is a walker's all the way into it, so the body in it walks)
+            bool refused = map.IsTallGrass(gx, gy) || FieldMovement.Step(map, gx, gy, face, skater).Obstacle == Obstacle.Skates;
+            // ...and on either axis the stick pushes along, at an edge the body touches: a skater slanting into tall grass
+            // takes the skates off and goes in on foot, as the grid's refused diagonal does, never sliding along it
+            foreach (var (part, component, along) in new[]
+                     {
+                         (way.X < 0 ? Direction.Left : Direction.Right, MathF.Abs(way.X), sx),
+                         (way.Y < 0 ? Direction.Up : Direction.Down, MathF.Abs(way.Y), sy)
+                     })
+            {
+                if (refused || component < 0.2f) continue;
+                int sign = part is Direction.Right or Direction.Down ? 1 : -1;
+                int gap = (FreeMovement.CentreOf(FreeMovement.TileOf(along)) + sign * FreeMovement.Half - along) * sign - FreeMovement.Radius;
+                if (gap <= FreeMovement.SubTile / 32) refused = FieldMovement.Step(map, gx, gy, part, skater).Obstacle == Obstacle.Skates;
+            }
             if (!refused && Mode == TravelMode.OnFoot) { Mode = TravelMode.Skating; coasted = false; IsRunning = false; }
             else if (refused && Mode == TravelMode.Skating) { Mode = TravelMode.OnFoot; IsRunning = HasRunningShoes; }
         }
