@@ -42,6 +42,7 @@ public partial class GameEngine
     private void BeginTheOpenCamera(int yaw)
     {
         openCamera.Reset(yaw);
+        openMount.Reset();
         openViewSettled = false;
         openLastFeet = null;
         openWalked = 0;
@@ -79,6 +80,8 @@ public partial class GameEngine
             openWalked += moved;
         }
         openLastFeet = feet;
+        // Over the mount while it is ridden (plan 30 · FM13): nothing of it reaches the camera on foot
+        openCamera.Ride(open.Player.Body.Mounted, open.Player.Body.Stance, speed, dt);
         openCamera.Advance(dt, open.Player.Yaw, speed);
         if (openScriptWasRunning && !ScriptRunning) openCamera.Home();
         openScriptWasRunning = ScriptRunning;
@@ -135,10 +138,68 @@ public partial class GameEngine
         }
         // Who and what stands there beside the player, and whom the grass parts round (plan 32 · OW9)
         var figures = GatherOpenFigures(open);
-        // A script's zoom (`camera zoom`) is the grid's rig's, which runs beside the orbit camera: its lens, not its arm
+        // The mount and the rider on it (plan 30 · FM13): nothing of it on foot once a dismount is over
+        var (mount, riderRoot) = OpenMountNow(open, drawn, yaw, ref pose);
+        // A script's zoom (`camera zoom`) is the grid's rig's, which runs beside the orbit camera: its lens, not its arm;
+        // riding widens it by the mount's share (nothing of it on foot)
         return new OpenScene(open.Map, V(feet), yaw, pose, OpenPlayerLook,
             V(eye), V(target), GameClock.Hour, OpenWeatherHere(open), (float)openUnderRock.Share, FrameClock.Now,
-            body.Stance == OpenStance.Swimming, (float)OrbitCamera.LensFor(world.Camera.Lens), figures, OpenWalkersOf(open, figures));
+            body.Stance == OpenStance.Swimming, (float)openCamera.RideLens(OrbitCamera.LensFor(world.Camera.Lens)), figures, OpenWalkersOf(open, figures),
+            mount, riderRoot);
+    }
+
+    // ------------------------------------------------------------------ the mount as a rig (plan 30 · FM13)
+
+    private readonly MountRig openMount = new();
+
+    /// <summary>
+    /// The mount's frame and the rider placed on it (plan 30 · FM13; style guide, "Open world", "The mount"): the rig
+    /// stepped by the frame's time with the body's stance, the ride form's model asked for (and its fellows ahead, so a
+    /// change of form never waits), the rider's pose made a rider's and their root the seat's. Null and null on foot, and
+    /// while the form's model is still being made (the rider is drawn standing at the feet meanwhile).
+    /// </summary>
+    private (OpenMountDraw? Mount, Matrix4x4? RiderRoot) OpenMountNow(OpenField open, Vector3 feet, float yaw, ref CharacterPose pose)
+    {
+        var body = open.Player.Body;
+        int which = flow.Story.Var(MountRules.MountVariable);
+        var cling = body.Cling;
+        float dt = openViewSettled ? openFrameSeconds : 0f;
+        var frame = openMount.Step(dt, new MountInput(body.Mounted, which, body.Stance, feet, yaw, ((float)cling.X, (float)cling.Z), FrameClock.Now));
+        if (frame is not { } f) return (null, null);
+        if (IsHeadless) return (null, null);
+        AskForTheRideForms(which);
+        if (!PokemonModels.TryGet(f.Form, out var model)) return (null, null);
+        var rig = CharacterModels.TryGet(OpenPlayerLook, renderContext.Shaders);
+        float rigScale = rig?.Scale ?? 1f;
+        if (f.Seated > 0f)
+        {
+            pose.Riding = Riding.Mount;
+            pose.RideStance = f.Stance;
+            pose.RunBlend = f.RunBlend;
+            pose.Running = false;
+            pose.Astride = MountLooks.HalfWidth(model, f) / rigScale;
+            // (the walk's own fields stand as the motion filled them: the rock of the ride is the mount's stride)
+            pose.Walk = f.Pose.Walk;
+            pose.WalkBlend = f.Pose.Moving;
+        }
+        float saddle = rig != null ? GrownAnimation.SaddleOf(rig.Skeleton) * rigScale : 0.8f;
+        var riderRoot = MountLooks.RiderRoot(model, f, saddle);
+        var seat = MountLooks.SeatOf(model);
+        openMountTold = $"{f.Form}: size {f.Scale:0.000} m a unit, flash {f.Flash:0.00}, the rider {(f.Seated >= 1f ? "seated" : $"{f.Seated:0.00} of the way to the seat")}, {f.Stance} (crouch {f.RunBlend:0.00}), seat {seat.Rest.Y * f.Scale:0.00} m up on its line {seat.Rest.Z:0.000}, half width {seat.HalfWidth * f.Scale:0.00} m, astride {pose.Astride:0.000}";
+        return (new OpenMountDraw(model, MountLooks.Place(f, seat), f.Pose, f.Flash), riderRoot);
+    }
+
+    private int openMountAsked;
+    private string? openMountTold;
+
+    /// <summary>The mount's eight forms asked for once a mount is ridden, so the next form is made before it is wanted.</summary>
+    private void AskForTheRideForms(int which)
+    {
+        if (openMountAsked == which) return;
+        openMountAsked = which;
+        foreach (var stance in new[] { OpenStance.Standing, OpenStance.Swimming, OpenStance.Gliding })
+            foreach (bool ridden in new[] { false, true })
+                if (MountRules.FormFor(which, stance, ridden) is { } form) PokemonModels.Request(form);
     }
 
     private static Vector3 V(OpenVec v) => new((float)v.X, (float)v.Y, (float)v.Z);
@@ -198,6 +259,12 @@ public partial class GameEngine
 
         /// <summary>The open map's weather where the player stands, as the renderer takes it.</summary>
         public FieldWeather OpenWeatherHere => game.flow.Open is { } open ? game.OpenWeatherHere(open) : FieldWeather.Clear;
+
+        /// <summary>What the last frame drew of the mount and its rider (plan 30 · FM13), or null on foot.</summary>
+        public string? MountTold => game.openMount.Target == null ? null : game.openMountTold;
+
+        /// <summary>The form the mount's rig wants now, or null.</summary>
+        public string? MountForm => game.openMount.Target;
 
         /// <summary>The player's look in the open world (the grown kit).</summary>
         public string OpenPlayerLook => GameEngine.OpenPlayerLook;

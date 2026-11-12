@@ -70,10 +70,22 @@ internal struct CharacterPose
 
     /// <summary>What a grown body rides on: kneeling on a Surfer's back, on a Bicycle, astride a mount.</summary>
     public Riding Riding;
+
+    /// <summary>How a rider sits the mount (plan 30 · FM13): seated at the trot, crouched in a dash, low swimming, wide gliding, flat climbing.</summary>
+    public RideStance RideStance;
+
+    /// <summary>
+    /// Half the mount's width where the rider sits, in the rider's model units (plan 30 · FM13): the thighs spread to
+    /// clear it. Nought for the old fixed spread.
+    /// </summary>
+    public float Astride;
 }
 
 /// <summary>What a grown body is riding (plan 30 · FM5): nothing, a Pokémon it surfs on, a Bicycle, a mount (plan 30 · FM13).</summary>
 internal enum Riding { None, Surf, Bicycle, Mount }
+
+/// <summary>How a rider sits the mount (plan 30 · FM13; style guide, "Open world", "The mount"), by what the mount is doing.</summary>
+internal enum RideStance { Seated, Dash, Swim, Glide, Climb }
 
 /// <summary>
 /// Bone numbers of every humanoid skeleton (L is the character's left, +X). The chibi kit's are the first
