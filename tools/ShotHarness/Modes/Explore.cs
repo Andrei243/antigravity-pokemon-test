@@ -19,6 +19,7 @@ partial class Harness
         string part = Environment.GetEnvironmentVariable("EXPLORE_PART") ?? "";
         if (part.Length == 0 || part == "unova") ExploreUnovaMap();
         if (part.Length == 0 || part == "outbreaks") ExploreOutbreaks();
+        if (part.Length == 0 || part == "report") ExploreReport();
     }
 
     private void ExploreUnovaMap()

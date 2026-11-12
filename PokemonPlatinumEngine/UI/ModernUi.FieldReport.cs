@@ -19,9 +19,21 @@ namespace PokemonPlatinumEngine.UI;
 /// </summary>
 internal static partial class ModernUi
 {
-    /// <summary>The cells of a region's map an area's blocks stand on.</summary>
-    private static List<(int X, int Y)> CellsOf(TownMapState state, string area) =>
-        state.Region.Blocks.Where(b => b.Area.Key == area && state.BlockAt(b.X, b.Y) != null).Select(b => (b.X, b.Y)).ToList();
+    /// <summary>
+    /// The cells of a region's map a world area is shown on: the blocks of its own key, or, where the map names the place
+    /// otherwise (a route of two halves, <c>route_204_south</c>), the shown cells its tiles lie in on the overworld.
+    /// </summary>
+    private static List<(int X, int Y)> CellsOf(TownMapState state, string area)
+    {
+        var own = state.Region.Blocks.Where(b => b.Area.Key == area && state.BlockAt(b.X, b.Y) != null).Select(b => (b.X, b.Y)).ToList();
+        if (own.Count > 0 || MapDatabase.TryGet(state.Region.Map) is not { } map || map.AreaBounds(area) is not { } b) return own;
+        var cells = new HashSet<(int X, int Y)>();
+        for (int y = b.Y; y < b.Y + b.Height; y += 8)
+            for (int x = b.X; x < b.X + b.Width; x += 8)
+                if (map.AreaAt(x, y)?.Key == area && state.Region.CellOn(map.Name, x, y) is var cell && state.BlockAt(cell.X, cell.Y) != null)
+                    cells.Add(cell);
+        return cells.OrderBy(c => c.Y).ThenBy(c => c.X).ToList();
+    }
 
     /// <summary>The marks of the day's report over the map (drawn inside the map's scissor).</summary>
     private static void ReportMarks(TownMapState state, FieldReport report, Func<float, float, Vector2> centreOf, float cell, float breath)
