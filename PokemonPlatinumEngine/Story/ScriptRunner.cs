@@ -390,6 +390,8 @@ public sealed partial class ScriptRunner
         Op.Pasture => i.Name == "care",
         // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
         Op.Heart => i.Name == "open",
+        // A ride is a screen the player plays; the rest is asked without one (plan 44 · SD5)
+        Op.Tour => i.Name == "ride",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
         // A power is learned or granted without a screen (plan 36 · TR8)
@@ -1561,6 +1563,10 @@ public sealed partial class ScriptRunner
             case Op.Heart:
                 HeartCommand(i);
                 break;
+            // The photo tour (plan 44 · SD5)
+            case Op.Tour:
+                TourCommand(i);
+                break;
             // The training hall (plan 36 · TR2)
             case Op.Train:
                 TrainCommand(i);
@@ -2257,6 +2263,30 @@ public sealed partial class ScriptRunner
             case "spot":
                 if (host.PhotoAtSpot(i.Other ?? "")) afterBusy = () => Result = host.Answer;
                 else Result = 0;
+                break;
+        }
+    }
+
+    /// <summary>
+    /// The photo tour (plan 44 · SD5): <c>tour ride "&lt;course&gt;"</c> opens a ride on the course, the script waiting
+    /// until it is left and hearing the ride's total (0 where the course isn't open); <c>tour open</c> is 1 when the
+    /// report has opened the course; <c>tour points</c> is the report's total.
+    /// </summary>
+    private void TourCommand(Instruction i)
+    {
+        var course = PhotoTourCourses.Get(i.Other);
+        switch (i.Name)
+        {
+            case "ride":
+                if (course == null || host.PhotoTour is not { } report || !report.IsOpen(course)) { Result = 0; break; }
+                host.Open(ScriptScreen.PhotoTour, Subject, course.Id);
+                afterBusy = () => Result = host.Answer;
+                break;
+            case "open":
+                Result = course != null && host.PhotoTour?.IsOpen(course) == true ? 1 : 0;
+                break;
+            case "points":
+                Result = host.PhotoTour?.Total ?? 0;
                 break;
         }
     }

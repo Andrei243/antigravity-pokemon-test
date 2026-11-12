@@ -14,8 +14,8 @@
   ],
   "landmarks": [],
   "blocks": [
-    { "x": 0, "y": 0, "kind": "Town", "name": "The Hub", "area": "hub_town" },
-    { "x": 1, "y": 0, "kind": "Town", "name": "The Hub", "area": "hub_town" }
+    { "x": 0, "y": 0, "kind": "Town", "name": "Wayhaven", "area": "hub_town" },
+    { "x": 1, "y": 0, "kind": "Town", "name": "Wayhaven", "area": "hub_town" }
   ],
   "fly": [
     { "spawn": 1, "cells": "0,0 1,0" }

@@ -4378,12 +4378,12 @@ label Next40
 # crosses the player back to the hub's harbour hall (`travel to`, GameEngine.CrossTo), beside the guide there.
 script HubGuide
   face self player
-  say "I guide Trainers between the great battle facilities and the Hub."
-  ask "Shall I take you back to the Hub?"
+  say "I guide Trainers between the great battle facilities and Wayhaven."
+  ask "Shall I take you back to Wayhaven?"
   if no goto HubGuideStay
   say "Very good. Follow me, and keep close."
   fade out 0.8
-  text "{player} followed the guide back to the Hub..."
+  text "{player} followed the guide back to Wayhaven..."
   travel to "Hub_HarbourHall" 9 4 up
   fade in 0.8
   end

@@ -114,8 +114,10 @@ public class FestivalTests
             Assert.Contains(mine, n => n.IsPokeMartClerk && n.Mart == f.Stall);
             Assert.All(mine, n => Assert.StartsWith(f.Town + ".", n.Key ?? ""));
         }
-        // The holidays: a decorated pine, a basket of eggs, a banner and a heart in each region's festival town (Jubilife City in Sinnoh)
-        string[] towns = { "jubilife_city", "celadon_city", "ecruteak", "slateport_city", "castelia_city_2" };
+        // The holidays: a decorated pine, a basket of eggs, a banner and a heart in each region's festival town (Jubilife City in
+        // Sinnoh), and in the regions with no festival of their own: Lumiose, Hau'oli, Jubilife Village, Wayhaven and,
+        // Galar's towns being open maps, inside Wedgehurst's Pokémon Center
+        string[] towns = { "jubilife_city", "celadon_city", "ecruteak", "slateport_city", "castelia_city_2", "lumiose_city", "hauoli_city", "jubilife_village", "hub_town", "wedgehurst" };
         foreach (string holiday in new[] { "christmas", "easter", "new_year", "valentine" })
             foreach (string town in towns)
                 Assert.Contains(Placed.Value, p => p.Npc.ShownBy == Festivals.FlagOf(holiday) && (p.Npc.Key ?? "").StartsWith(town + ".", StringComparison.Ordinal));

@@ -271,6 +271,9 @@ public class ScriptTests
           heart missed
           heart opened
           heart courier
+          tour ride "reed_river"
+          tour open "reed_river"
+          tour points
           train open
           train drill
           train reset all

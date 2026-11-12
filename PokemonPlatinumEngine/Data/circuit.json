@@ -9,6 +9,8 @@
     { "region": "Johto", "team": "johto_champion_lance_beyond", "look": "lance", "person": "lance" },
     { "region": "Hoenn", "team": "hoenn_wallace_beyond", "look": "wallace", "person": "wallace" },
     { "region": "Unova", "team": "unova_champion_iris_beyond", "look": "iris", "person": "iris" },
-    { "region": "Kalos", "team": "kalos_diantha_beyond", "look": "diantha", "person": "diantha" }
+    { "region": "Kalos", "team": "kalos_diantha_beyond", "look": "diantha", "person": "diantha" },
+    // Alola (plan 41's owed row): Kukui, the League's founder, who meets the new Champion in his room, on his last team
+    { "region": "Alola", "team": "alola_kukui_3", "look": "kukui", "person": "kukui" }
   ]
 }

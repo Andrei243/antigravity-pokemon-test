@@ -4250,18 +4250,18 @@
   "HubGuide": [
     {
       "en": [
-        "I guide Trainers between the great battle facilities and the Hub."
+        "I guide Trainers between the great battle facilities and Wayhaven."
       ],
       "text": [
-        ""
+        "Îi călăuzesc pe Antrenori între marile clădiri de luptă și Wayhaven."
       ]
     },
     {
       "en": [
-        "Shall I take you back to the Hub?"
+        "Shall I take you back to Wayhaven?"
       ],
       "text": [
-        ""
+        "Să te duc înapoi în Wayhaven?"
       ]
     },
     {
@@ -4274,10 +4274,10 @@
     },
     {
       "en": [
-        "{player} followed the guide back to the Hub..."
+        "{player} followed the guide back to Wayhaven..."
       ],
       "text": [
-        ""
+        "{player} l-a urmat pe ghid înapoi în Wayhaven..."
       ]
     },
     {
@@ -4295,7 +4295,7 @@
         "Gift Runner"
       ],
       "text": [
-        ""
+        "Curier de daruri"
       ]
     },
     {
@@ -4343,7 +4343,7 @@
         "Gift Runner"
       ],
       "text": [
-        ""
+        "Curier de daruri"
       ]
     },
     {

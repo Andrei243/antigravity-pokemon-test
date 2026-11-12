@@ -147,6 +147,46 @@
           "Cei mai mulți dintre noi am trecut marea ca să ajungem aici. Unii încă își încuie ușa când trece un Pokémon pe lângă casă."
         ]
       }
+    },
+    "jubilife_village.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          "Brad împodobit"
+        ]
+      }
+    },
+    "jubilife_village.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          "Coș cu ouă"
+        ]
+      }
+    },
+    "jubilife_village.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          "Steag de Anul Nou"
+        ]
+      }
+    },
+    "jubilife_village.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          "Inimă pe un stâlp"
+        ]
+      }
     }
   },
   "signs": {

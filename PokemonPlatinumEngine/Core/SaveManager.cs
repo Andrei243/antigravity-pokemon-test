@@ -413,6 +413,10 @@ public class SaveData
 
     /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
     public List<Models.PhotoPrint>? PhotoBook { get; set; }
+
+    /// <summary>The photo tour's report (plan 44 · SD5): each species' best photograph by stars and course, each course's best ride; null while empty.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.TourReportSave? PhotoTour { get; set; }
     /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD1); null while empty, so an older save needs nothing.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.HeartsRecord? Hearts { get; set; }

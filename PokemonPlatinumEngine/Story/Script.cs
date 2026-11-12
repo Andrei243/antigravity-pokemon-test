@@ -218,6 +218,8 @@ public enum Op
     Pasture,
     // Records mixed between one's own saves (plan 40 · GE10): mixed at the record desk, the mixed bases counted and named
     Records,
+    // The photo tour (plan 44 · SD5): a ride on a course, whether a course is open, the report's total
+    Tour,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
