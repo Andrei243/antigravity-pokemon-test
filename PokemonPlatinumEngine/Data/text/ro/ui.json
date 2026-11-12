@@ -7385,6 +7385,19 @@
     "dyeQuestion": "O vopsești {what}?",
     "answer": { "yes": "DA" }
   },
+  "photoTour": {
+    "heading": "TUR FOTO",
+    "film": "FILM {count}",
+    "fruit": "FRUCTE {count}",
+    "zoom": "×{zoom}",
+    "points": "{points} p",
+    "total": "Plimbarea aceasta: {points} puncte",
+    "none": "De data asta nu s-a punctat nicio fotografie.",
+    "hints": {
+      "keep": "Păstrează",
+      "leave": "Gata"
+    }
+  },
   "photoStudio": {
     "heading": "STUDIO FOTO",
     "row": {

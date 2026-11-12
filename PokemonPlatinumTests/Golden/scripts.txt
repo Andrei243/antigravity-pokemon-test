@@ -7322,6 +7322,11 @@ way 0
   * fade in
 way 1, from answer 1
   ? A pair of binoculars, pointed out over the Great Marsh. Put $100 in? = No
+=== PastoriaCityObservatoryGate2F.TourGuide
+from Maribel Orr at 11,5 of PastoriaCityObservatoryGate2F
+way -
+  Maribel Orr> I take trainers out along a river in a little cart, camera in hand, to photograph Pokémon going about their day.
+  Maribel Orr> The tour is only for those with a National Pokédex, though. Come back once yours has grown.
 === PastoriaCitySouthwestHouse.Berry
 from Pokémon Breeder at 5,5 of PastoriaCitySouthwestHouse
 way -

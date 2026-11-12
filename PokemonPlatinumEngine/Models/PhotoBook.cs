@@ -7,7 +7,7 @@ using PokemonPlatinumEngine.Data;
 namespace PokemonPlatinumEngine.Models;
 
 /// <summary>How a photograph of the book was taken (plan 43 · LF4).</summary>
-public enum PhotoTaken { PhotoMode, Spot, Studio }
+public enum PhotoTaken { PhotoMode, Spot, Studio, Tour }
 
 /// <summary>
 /// A photograph of the book (plan 43 · LF4): its picture's file in <c>photos/</c> (its small copy beside it), where and

@@ -168,6 +168,15 @@
   ],
   "npcs": [
     {
+      "id": "tour_guide",
+      "name": "Maribel Orr",
+      "npcType": "Reporter",
+      "x": 11,
+      "y": 5,
+      "facing": "Left",
+      "script": "TourGuide"
+    },
+    {
       "id": "ace_trainer_f",
       "name": "Trainer",
       "npcType": "Lass",
