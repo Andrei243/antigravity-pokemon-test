@@ -10221,11 +10221,11 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   type too, so Spiritomb, Rotom, the Sinnoh starters' grown forms, the fossils' and the pseudo-legendaries stand there at 47 to 55.
   **Not laid yet**: ice that slides and lava (neither has a ground of a map file).
 - **Statues** (EX6, part b, 2026-11-12; `Data/statues.json`, ours; `Hideaways.WallsOf`, `WallTable`, `Weights`). A statue is a good of
-  ours for every species any hideaway's pool may hold (266, in National order), numbered from `UndergroundDatabase.StatueFirst` (1001)
+  ours for every species any hideaway's pool may hold (266, in National order as first written, later ones appended), numbered from `UndergroundDatabase.StatueFirst` (1001)
   past the original's 138 goods, so nothing drawn from the original's goods (a digger's base, a hiker's stock) meets one, and
   with a rarity of one to three by its base stats (under 420 common, under 500 uncommon, the rest rare). **Dug from the hideaways'
   walls**: two walls a day in each hideaway (rock with dry open floor before it, chosen by SplitMix from the seed and the day's number,
-  glinting gold once as the player comes in), each dug once a day (a daily flag, `FLAG_DAILY_HIDEAWAY_<n>_WALL_<k>`, so a new day
+  glinting gold once as the player first comes within four tiles of it), each dug once a day (a daily flag, `FLAG_DAILY_HIDEAWAY_<n>_WALL_<k>`, so a new day
   gives two more and nothing new is saved), through the Underground's own `Wall` script and the original's wall game on a table of
   ours (`MiningGame(Rand32, WallItem[])`: the statues of the day's twelve Pokémon there at weights 12, 6 and 2 by rarity, and the
   five small Spheres at 8 each, two to four things a wall and the original's dark rocks; the original's own walls draw exactly as

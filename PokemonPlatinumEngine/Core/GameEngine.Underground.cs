@@ -64,9 +64,28 @@ public partial class GameEngine
         if (Hideaways.OfMap(flow.Map?.Name) is not { } hideaway) return;
         // The statues placed in the base weigh the day's pick (part b); with none it is the plain pick
         Hideaways.Stock(flow.Map!, hideaway, HideawayDay, flow.Pokedex.NationalUnlocked, Hideaways.Weights(flow.Underground.Base));
-        // and the day's walls that still hold something glint once as the player comes in
-        if (world != null)
-            foreach (var (x, z, k) in HideawayWallsLeft(hideaway)) world.Life.Glint(flow.Map!, x, z, new Color(255, 232, 130, 255));
+        // and the day's walls that still hold something glint as the player comes near each (HideawayStep)
+        wallsGlinted.Clear();
+        HideawayStep();
+    }
+
+    /// <summary>The walls of the hideaway the player is in that have glinted since they came in.</summary>
+    private readonly HashSet<(int X, int Z)> wallsGlinted = new();
+
+    /// <summary>How near a wall the player must come for it to glint: four tiles each way, a wall in view of the player.</summary>
+    public const int HideawayWallGlintReach = 4;
+
+    /// <summary>
+    /// A hideaway's walls that hold something today glint once each as the player first comes within
+    /// <see cref="HideawayWallGlintReach"/> of them after coming in, gold as the radar's walls do (the radar is the tunnels').
+    /// </summary>
+    private void HideawayStep()
+    {
+        if (Hideaways.OfMap(flow.Map?.Name) is not { } h) return;
+        int px = flow.Player.GridX, pz = flow.Player.GridY;
+        foreach (var (x, z, _) in HideawayWallsLeft(h))
+            if (Math.Abs(x - px) <= HideawayWallGlintReach && Math.Abs(z - pz) <= HideawayWallGlintReach && wallsGlinted.Add((x, z)))
+                world?.Life.Glint(flow.Map!, x, z, new Color(255, 232, 130, 255));
     }
 
     private int HideawayDay => (int)(flow.Encounters.DailyNumber & 0x7FFFFFFF);

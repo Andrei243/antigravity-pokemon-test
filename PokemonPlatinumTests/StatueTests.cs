@@ -17,16 +17,28 @@ public class StatueTests
     private static Hideaway Lake => Hideaways.All.First(h => h.Map == "HideawayLakeCavern");
 
     [Fact]
-    public void EverySpeciesOfTheHideawaysPoolsHasAStatueAndNoOtherHasOne()
+    public void EverySpeciesOfTheHideawaysPoolsHasAStatue()
     {
+        // (A statue's number is its place in the file, which a save keeps: the list only grows at its end, so a statue
+        // whose species left the pools stays, and a species new to them is appended, wherever it falls in National order)
         var pools = Hideaways.All.SelectMany(h => Hideaways.Pool(h, national: true)).ToHashSet(StringComparer.Ordinal);
         var statues = UndergroundDatabase.Statues.Select(s => s.Species).ToList();
         Assert.Equal(statues.Count, statues.Distinct().Count());
         Assert.Empty(pools.Except(statues));
-        Assert.Empty(statues.Except(pools));
-        // In National order, each with a rarity of one to three
-        Assert.Equal(statues, statues.OrderBy(s => PokemonDatabase.Get(s)!.DexNumber).ToList());
+        Assert.All(statues, s => Assert.NotNull(PokemonDatabase.Get(s)));
         Assert.All(UndergroundDatabase.Statues, s => Assert.InRange(s.Rarity, 1, 3));
+    }
+
+    [Fact]
+    public void AStatueIsNoHikersTradeAndItsWallsComeBackWithADay()
+    {
+        int id = UndergroundDatabase.StatueOf("Golduck");
+        for (int vendor = 0; vendor < UndergroundDatabase.Vendors.Count; vendor++)
+            Assert.Null(UndergroundVendors.Worth(12345, vendor, id));
+        var story = new PokemonPlatinumEngine.Story.StoryState();
+        story.Set(Hideaways.WallFlag(Lake, 1));
+        story.ClearDaily();
+        Assert.False(story.Has(Hideaways.WallFlag(Lake, 1)));
     }
 
     [Fact]
@@ -60,6 +72,7 @@ public class StatueTests
         var session = SecretBaseRules.Decorating(state);
         Assert.Equal(SecretBaseRules.GoodsLimit(0), session.Room.Limit);
         Assert.Equal(10, session.Room.Limit);
+        Assert.Equal(12, session.Store.Count(s => s.Kind == statue));
     }
 
     [Fact]

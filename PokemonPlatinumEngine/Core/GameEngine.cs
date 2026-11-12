@@ -2372,6 +2372,8 @@ public partial class GameEngine
         if (charactersReadyAt != (flow.Map.Name, flow.Player.GridX >> 5, flow.Player.GridY >> 5)) KeepCharactersNear(trim: false);
         // A step below ground: a base's way in or out, a trap (plan 06 · R16a)
         if (IsUnderground && UndergroundStep()) return true;
+        // A step in a hideaway: a wall that holds something today glints as the player comes near it (plan 38 · EX6, part b)
+        HideawayStep();
         // The steps the game has counted (RECORD_STEPS), and a step of Pal Park's Catching Show (plan 06 · R16b)
         flow.Pastimes.Steps++;
         flow.Statistics.Count(Statistics.StepKey(flow.Player.Mode));
