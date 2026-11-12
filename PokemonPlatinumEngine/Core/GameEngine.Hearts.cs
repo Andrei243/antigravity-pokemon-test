@@ -32,6 +32,8 @@ public partial class GameEngine
     private void HeartsAfterBattle(BattleEngine battle)
     {
         foreach (var p in battle.Reclaimed) TakeInTheReclaimed(p);
+        // Missed only on a win: a lost battle leaves the agent undefeated, with his team to be met again
+        if (battle.Result == BattleResult.PlayerVictory)
         foreach (var trainer in battle.Trainers)
             foreach (var member in trainer.Party.Members)
                 if (member.Lock is { } missed && member.IsFainted && !battle.Reclaimed.Contains(member)) flow.Hearts.Miss(missed.Id);

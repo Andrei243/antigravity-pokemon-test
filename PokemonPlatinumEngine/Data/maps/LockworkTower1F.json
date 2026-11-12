@@ -80,7 +80,8 @@
       "x": 6,
       "y": 4,
       "facing": "Down",
-      "script": "Admin"
+      "script": "Admin",
+      "shownBy": "UnovaHallOfFame"
     },
     {
       "id": "lockwork_courier",

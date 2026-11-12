@@ -104,13 +104,25 @@ public class HeartsStoryTests
             Assert.Equal(agents, people.Count);
             Assert.All(people, p => Assert.Equal(flag, p.ShownBy));
         }
-        foreach (var (map, room) in new[] { ("Sinnoh", "LockworkCellSinnoh"), ("Kanto", "LockworkCellKanto"), ("Johto", "LockworkCellJohto"), ("Hoenn", "LockworkCellHoenn") })
+        // The way down to each cell's admin is its doorman's (a script's warp), out with the cell; the room's way out lands
+        // before him
+        foreach (var (map, room, flag) in new[] { ("Sinnoh", "LockworkCellSinnoh", "SinnohHallOfFame"), ("Kanto", "LockworkCellKanto", "KantoHallOfFame"),
+                     ("Johto", "LockworkCellJohto", "JohtoHallOfFame"), ("Hoenn", "LockworkCellHoenn", "HoennHallOfFame") })
         {
-            var door = MapDatabase.Get(map).Warps.Single(w => w.TargetMap == room);
-            Assert.NotNull(door.OpenedBy);
+            var doorman = MapDatabase.Get(map).Everyone.Single(n => n.Id == "lockwork_doorman");
+            Assert.Equal(flag, doorman.ShownBy);
+            var back = MapDatabase.Get(room).Warps.Single();
+            Assert.Equal((doorman.GridX, doorman.GridY + 1), (back.TargetX, back.TargetY));
+            Assert.True(MapDatabase.Get(map).IsWalkable(back.TargetX, back.TargetY));
             Assert.Single(MapDatabase.Get(room).Everyone, n => n.Id == "lockwork_admin");
         }
-        Assert.Contains(MapDatabase.Get("CasteliaCity").Warps, w => w.TargetMap == "LockworkTower1F");
+        // The tower's door is there only from Unova's Hall of Fame, and so are its people
+        Assert.Equal("UnovaHallOfFame", MapDatabase.Get("CasteliaCity").Warps.Single(w => w.TargetMap == "LockworkTower1F").From);
+        Assert.Equal("UnovaHallOfFame", MapDatabase.Get("LockworkTower1F").Everyone.Single(n => n.Id == "lockwork_admin").ShownBy);
+        // Looker's last scene stands clear of the tile the head is spoken to from
+        var head = MapDatabase.Get("LockworkTower2F").Everyone.Single(n => n.Id == "lockwork_head");
+        var looker = MapDatabase.Get("LockworkTower2F").Everyone.Single(n => n.Id == "lockwork_looker");
+        Assert.True(System.Math.Abs(looker.GridX - head.GridX) + System.Math.Abs(looker.GridY - head.GridY) > 2);
         Assert.Single(MapDatabase.Get("Sinnoh").Everyone, n => n.Id == "lockwork_looker");
     }
 

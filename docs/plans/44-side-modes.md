@@ -184,7 +184,7 @@ Every session: the style guide first for what it draws and the rulings for what 
 - [x] SD1 Locked hearts: the lock and the battle (2026-11-12, as built below)
 - [x] SD2 Locked hearts on screen (2026-11-12, as built below)
 - [x] SD3 The syndicate: Sinnoh, Kanto and Johto (2026-11-12, as built below; what it owes is listed there)
-- [x] SD4 The syndicate: Hoenn, Unova and the head office (2026-11-12, as built below; the courier and the medals owed)
+- [x] SD4 The syndicate: Hoenn, Unova and the head office (2026-11-12, as built below; the medals owed)
 - [ ] SD5 The photo tour: the ride, the judge and the first course
 - [ ] SD6 The photo tour: the courses and the report
 - [ ] SD7 The delve's rules
@@ -222,16 +222,20 @@ owed, below). The rulings' "Locked hearts" has the numbers.
 - **SD3 and SD4** (one pass): twenty-six trainers of ours in `our-trainers.json` (four agents and an admin a cell, the
   head), each locked member marked `"lock"`; the agents stand as overlay people of their port (shown by the region's Hall
   of Fame flag), Unova's on the hand-made `CasteliaCity`; each admin in a room of ours (`LockworkCellSinnoh`, `Kanto`,
-  `Johto`, `Hoenn`, behind an overlay exit opened by the Hall of Fame flag; the Sinnoh cell's at the Fight Area's south
-  quay), Unova's in the tower's lobby (`LockworkTower1F`, a door at 54, 5 of Castelia's avenue) and the head on its second
-  floor (`LockworkTower2F`), whose battle stops the machine (`FLAG_LOCKWORK_MACHINE_STOPPED`) and brings Looker's last
-  scene. Looker gives the Reclaimer in the Survival Area; the spring's rite is read at Sendoff Spring's water (30, 31). The
+  `Johto`, `Hoenn`), reached by the cell's doorman (a person of the port who shows the way down by a script's warp, so no
+  door stands in a street; the room's way out lands before him), Unova's in the tower's lobby (`LockworkTower1F`, a door at
+  54, 5 of Castelia's avenue there only `from` Unova's Hall of Fame) and the head on its second floor (`LockworkTower2F`),
+  whose battle stops the machine (`FLAG_LOCKWORK_MACHINE_STOPPED`) and brings Looker's last scene. The courier stands in the
+  lobby once it has stopped: `heart courier` builds his team from the first six locks missed (`HeartLock.CourierTeam`), and
+  a lock is noted missed only when the battle it fell in was won. Looker gives the Reclaimer in the Survival Area; the spring's rite is read at Sendoff Spring's water (30, 31). The
   looks (`lockwork_agent_m`, `_f` and one each for the admins and the head) and the classes Lockwork Agent, Admin and Head
   are in `characters.json`, `classes.*` in English and Romanian, the admins' and the head's lines in `trainer-lines.json`.
   `HeartsStoryTests` hold the thirty and the head's, every lock reclaimed in its trainer's battle, who waits for which Hall
   of Fame, Looker's gift once, the rite once a day and the head waiting on the admin.
-- **Owed** (each with its session): the courier in the tower's lobby with the missed (a battle whose team is built from
-  `HeartsRecord.Missed`, which needs a host hook of its own); the medals of plan 13 · V9 for the first reclaim and the
+- **Tests**: `HeartsGameTests` plays the game with no window: a Sinnoh agent's battle through `StartTrainerBattle` with the
+  Reclaimer, his Stunky reclaimed into the team as the battle ends (its id, the Pokédex, `Hearts.Reclaimed`), and without
+  it knocked out and missed, carried by the courier.
+- **Owed** (each with its session): the medals of plan 13 · V9 for the first reclaim and the
   thirtieth heart; the requests of plan 12 · Q21 for each cell; the class's own eye and battle songs (65a, a clipped
   march: the class plays Team Galactic's for now, `sound-map.json`); the follower's field sprite tinted while locked;
   `lh10` to `lh49`'s shots of the cells and the tower; a headless game walked to each cell (the tests play the scripts and

@@ -125,3 +125,14 @@ script LockworkAgent4
 label Beaten
   say "Lockwork pays well. I'd still rather not face you twice."
   end
+
+
+# Plan 44 · SD3: the doorman of Lockwork's cell, who shows the way down to its admin once the cell is out
+script LockworkDoor
+  face self player
+  speaker self
+  say "Down there's the admin's office. Go on, then. You'll come back up quicker than you went in."
+  fade out 0.4
+  warp "LockworkCellJohto" 6 8 up
+  fade in 0.4
+  end

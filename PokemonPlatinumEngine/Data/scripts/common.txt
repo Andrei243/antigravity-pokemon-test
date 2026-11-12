@@ -1665,9 +1665,6 @@ label ComeAgain
 label MerelyAnEgg
   say "Now, now. That's only an Egg, dear!"
   end
-label ShutHeart
-  say "Oh, dear. That one's heart is shut tight. It wouldn't settle with us until it opens to you."
-  end
 label NothingToBattle
   say "If you leave that one with me, what would you battle with? Come back another time."
   end
@@ -1728,6 +1725,10 @@ label TeamFull
   end
 
 # How far each of the two has grown by level since it was left (BufferDaycareGainedLevelsBySlot): said only when it has.
+label ShutHeart
+  say "Oh, dear. That one's heart is shut tight. It wouldn't settle with us until it opens to you."
+  end
+
 script Grown0
   daycare grown 0
   if result > 0 say "By my reckoning, your {daycare:0} has grown by about {grown:0} levels."

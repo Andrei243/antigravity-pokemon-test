@@ -44,6 +44,8 @@
   // FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
   "npcs": [
     // Plan 44 · SD3: Lockwork's agents of Hoenn's cell, out once Hoenn's Hall of Fame is entered
+    // (and the doorman who shows the way down to the cell's admin, a room of ours: a script's warp, so no door stands in the street)
+    {"id": "lockwork_doorman", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 513, "y": 104, "facing": "Down", "script": "LockworkDoor", "shownBy": "HoennHallOfFame"},
     {"id": "lockwork_agent_1", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 510, "y": 99, "facing": "Down", "script": "LockworkAgent1", "shownBy": "HoennHallOfFame"},
     {"id": "lockwork_agent_2", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 518, "y": 97, "facing": "Down", "script": "LockworkAgent2", "shownBy": "HoennHallOfFame"},
     {"id": "lockwork_agent_3", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 509, "y": 95, "facing": "Down", "script": "LockworkAgent3", "shownBy": "HoennHallOfFame"},
@@ -71,9 +73,5 @@
     "LilycoveCity_EventScript_TrainerFanClubSign": "Pokémon Trainer Fan Club\nWe cheer on the strongest trainers in Hoenn!",
     "LilycoveCity_EventScript_MoveDeletersHouseSign": "Move Deleter's House\nUnwanted moves forgotten here",
     "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here."
-  },
-  // Plan 44 · SD3: the way into Lockwork's cell, a room of ours, open once Hoenn's Hall of Fame is entered
-  "exits": [
-    {"x": 513, "z": 104, "map": "LockworkCellHoenn", "toX": 6, "toY": 8, "facing": "Up", "openedBy": "HoennHallOfFame"}
-  ]
+  }
 }

@@ -287,6 +287,7 @@ public class HeartLockTests
         trainer.Party.Add(Locked("Gible", 20, "lock_test"));
         var grown = trainer.Relevelled(level => level + 40, grow: true);
         Assert.Equal("Gible", grown.Party.Members[0].Species.Name);
+        Assert.Equal(60, grown.Party.Members[0].Level);
         Assert.NotNull(grown.Party.Members[0].Lock);
         var mapped = trainer.WithTeamOf(p => Of(Gender.Male, "Bidoof", p.Level));
         Assert.Equal("lock_test", mapped.Party.Members[0].Lock!.Id);

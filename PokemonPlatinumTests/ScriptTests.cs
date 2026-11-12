@@ -262,6 +262,7 @@ public class ScriptTests
           heart count
           heart missed
           heart opened
+          heart courier
           train open
           train drill
           train reset all

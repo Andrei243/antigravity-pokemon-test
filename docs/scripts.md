@@ -915,6 +915,7 @@ Plan 44 · SD2; `docs/mechanics/rulings.md`, "Locked hearts". Lockwork's locked 
 | `heart open` | Opens every heart of the team whose gauge has emptied, its scene played (the game opens them by itself once the field is free; this is for a scene that wants it now). `RESULT` how many. |
 | `heart locked` | `RESULT` how many of the team are locked. |
 | `heart count`, `heart missed`, `heart opened` | `RESULT` how many locks have been reclaimed, missed (knocked out, so the courier carries them) and opened since the game began. |
+| `heart courier` | Plan 44 · SD4, the courier in Lockwork's tower: builds the team of the person spoken to from the first six locks missed (each as the trainer of ours whose team it was in has it), for the script's `battle self` after it. `RESULT` how many he carries, 0 with none missed. |
 
 ### Treats
 

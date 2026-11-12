@@ -79,8 +79,8 @@
       "id": "lockwork_looker",
       "name": "Looker",
       "npcType": "looker",
-      "x": 6,
-      "y": 4,
+      "x": 9,
+      "y": 6,
       "facing": "Down",
       "script": "LookerLast",
       "shownBy": "FLAG_LOCKWORK_MACHINE_STOPPED"

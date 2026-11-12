@@ -866,7 +866,8 @@
       "targetMap": "LockworkTower1F",
       "targetX": 6,
       "targetY": 8,
-      "targetFacing": "Up"
+      "targetFacing": "Up",
+      "from": "UnovaHallOfFame"
     }
   ],
   "signboards": [

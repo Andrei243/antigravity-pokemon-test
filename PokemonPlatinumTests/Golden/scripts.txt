@@ -2642,6 +2642,46 @@ way 0
 way 1, from answer 1
   Sailor> The pier's always here. Come back whenever you like.
   ? Shall we sail across the bay to the Liberty Garden? = No
+=== CasteliaCity.LockworkAgent1
+from Lockwork Agent at 16,7 of CasteliaCity
+way 0
+  Lockwork Agent> Lockwork moves its cargo quietly. You've seen too much of it already.
+  Lockwork Agent> That one's heart is locked tight. It'll fight for me without a second thought.
+  Lockwork Agent> Tch. Doesn't matter. The cargo's already on its way.
+  * battle lockwork_unova_agent_1 Won
+  + beaten lockwork_unova_agent_1
+way 1, from answer 1
+  * battle lockwork_unova_agent_1 Lost
+=== CasteliaCity.LockworkAgent2
+from Lockwork Agent at 33,8 of CasteliaCity
+way 0
+  Lockwork Agent> You're on the dock without a docket. Lockwork doesn't like that.
+  Lockwork Agent> My partner here was locked at the works. It obeys. That's all it needs to do.
+  Lockwork Agent> You knocked the numbers right out of my ledger.
+  * battle lockwork_unova_agent_2 Won
+  + beaten lockwork_unova_agent_2
+way 1, from answer 1
+  * battle lockwork_unova_agent_2 Lost
+=== CasteliaCity.LockworkAgent3
+from Lockwork Agent at 60,8 of CasteliaCity
+way 0
+  Lockwork Agent> Nobody asked you to look in the crates.
+  Lockwork Agent> A locked heart never hesitates. Let me show you.
+  Lockwork Agent> So hesitation isn't everything after all.
+  * battle lockwork_unova_agent_3 Won
+  + beaten lockwork_unova_agent_3
+way 1, from answer 1
+  * battle lockwork_unova_agent_3 Lost
+=== CasteliaCity.LockworkAgent4
+from Lockwork Agent at 71,9 of CasteliaCity
+way 0
+  Lockwork Agent> This stretch of the harbour is Lockwork's for the evening.
+  Lockwork Agent> We seal their hearts so nothing ever comes between us. Efficient, isn't it?
+  Lockwork Agent> Efficient. And beaten. Wonderful.
+  * battle lockwork_unova_agent_4 Won
+  + beaten lockwork_unova_agent_4
+way 1, from answer 1
+  * battle lockwork_unova_agent_4 Lost
 === CasteliaCity.MealStand
 from Stall keeper at 50,6 of CasteliaCity
 way 0
@@ -6092,6 +6132,75 @@ way -
 from Worker at 17,13 of LaverreCity_PokeBallFactory
 way -
   Worker> They switched off half the lines and told us to make only their balls. Red ones, with an F. Hideous things.
+=== LockworkCellHoenn.Admin
+from Rafe at 6,4 of LockworkCellHoenn
+way 0
+  Rafe> So you're the one taking our cargo back, one ball at a time.
+  Rafe> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Rafe> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  * battle lockwork_hoenn_admin Won
+  + FLAG_LOCKWORK_HOENN_ADMIN_BEATEN
+  + beaten lockwork_hoenn_admin
+way 1, from answer 1
+  * battle lockwork_hoenn_admin Lost
+=== LockworkCellJohto.Admin
+from Elspeth at 6,4 of LockworkCellJohto
+way 0
+  Elspeth> So you're the one taking our cargo back, one ball at a time.
+  Elspeth> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Elspeth> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  * battle lockwork_johto_admin Won
+  + FLAG_LOCKWORK_JOHTO_ADMIN_BEATEN
+  + beaten lockwork_johto_admin
+way 1, from answer 1
+  * battle lockwork_johto_admin Lost
+=== LockworkCellKanto.Admin
+from Dov at 6,4 of LockworkCellKanto
+way 0
+  Dov> So you're the one taking our cargo back, one ball at a time.
+  Dov> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Dov> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  * battle lockwork_kanto_admin Won
+  + FLAG_LOCKWORK_KANTO_ADMIN_BEATEN
+  + beaten lockwork_kanto_admin
+way 1, from answer 1
+  * battle lockwork_kanto_admin Lost
+=== LockworkCellSinnoh.Admin
+from Tamsin at 6,4 of LockworkCellSinnoh
+way 0
+  Tamsin> So you're the one taking our cargo back, one ball at a time.
+  Tamsin> Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?
+  Tamsin> Keep them, then. The head office in Castelia will still be ticking long after you've gone.
+  * battle lockwork_sinnoh_admin Won
+  + FLAG_LOCKWORK_SINNOH_ADMIN_BEATEN
+  + beaten lockwork_sinnoh_admin
+way 1, from answer 1
+  * battle lockwork_sinnoh_admin Lost
+=== LockworkTower1F.Admin
+from Juno at 6,4 of LockworkTower1F
+way 0
+  Juno> Welcome to Lockwork's head office. Every crate that left a port in five regions was signed for on this floor.
+  Juno> You've undone four cells. You won't undo the fifth.
+  Juno> Fine. Go up. Keld will want to see the one who's been unpicking her locks.
+  * battle lockwork_unova_admin Won
+  + FLAG_LOCKWORK_UNOVA_ADMIN_BEATEN
+  + beaten lockwork_unova_admin
+way 1, from answer 1
+  * battle lockwork_unova_admin Lost
+=== LockworkTower1F.Courier
+from Courier at 3,6 of LockworkTower1F
+way -
+  Courier> The van's empty. Every crate that came back has gone home with you. Good riddance to the lot.
+=== LockworkTower2F.Head
+from Orsolya Keld at 6,3 of LockworkTower2F
+way -
+  Orsolya Keld> Juno is still on the floor below. Nobody comes up these stairs without her say.
+=== LockworkTower2F.LookerLast
+from Looker at 6,4 of LockworkTower2F
+way -
+  Looker> The machine is quiet. Keld came quietly too, in the end. My bureau will see to the rest.
+  Looker> Every heart you took back will open in time, beside you. That is the one thing no machine can do.
+  Looker> If any of them were sent back to Lockwork's crates before you could reach them, they will turn up again. Looker is sure of it.
 === LostTower5F.OldWoman1
 from Old Woman at 7,9 of LostTower5F
 way -
@@ -20542,6 +20651,26 @@ way 1, from answer 1
   Scientist> No? A pity. The offer stands, should you ever feel like unlearning everything you know.
   ? One inverse battle a day is all my notes can keep up with. Will you fight today's, for science? = No
   + FLAG_FIGHT_AREA_INVERSE_EXPLAINED
+=== fight_area.LockworkAgent3
+from Lockwork Agent at 618,434 of Sinnoh
+way 0
+  Lockwork Agent> Nobody asked you to look in the crates.
+  Lockwork Agent> A locked heart never hesitates. Let me show you.
+  Lockwork Agent> So hesitation isn't everything after all.
+  * battle lockwork_sinnoh_agent_3 Won
+  + beaten lockwork_sinnoh_agent_3
+way 1, from answer 1
+  * battle lockwork_sinnoh_agent_3 Lost
+=== fight_area.LockworkAgent4
+from Lockwork Agent at 645,435 of Sinnoh
+way 0
+  Lockwork Agent> This stretch of the harbour is Lockwork's for the evening.
+  Lockwork Agent> We seal their hearts so nothing ever comes between us. Efficient, isn't it?
+  Lockwork Agent> Efficient. And beaten. Wonderful.
+  * battle lockwork_sinnoh_agent_4 Won
+  + beaten lockwork_sinnoh_agent_4
+way 1, from answer 1
+  * battle lockwork_sinnoh_agent_4 Lost
 === fight_area.Rival
 from {rival} at 628,434 of Sinnoh
 way 0.0
@@ -24770,6 +24899,46 @@ way -
 from Girl at 495,88 of Hoenn
 way -
   Girl> There's a strange cave over in the cove. People in blue and white keep going in and out of it.
+=== lilycove_city.LockworkAgent1
+from Lockwork Agent at 510,99 of Hoenn
+way 0
+  Lockwork Agent> Lockwork moves its cargo quietly. You've seen too much of it already.
+  Lockwork Agent> That one's heart is locked tight. It'll fight for me without a second thought.
+  Lockwork Agent> Tch. Doesn't matter. The cargo's already on its way.
+  * battle lockwork_hoenn_agent_1 Won
+  + beaten lockwork_hoenn_agent_1
+way 1, from answer 1
+  * battle lockwork_hoenn_agent_1 Lost
+=== lilycove_city.LockworkAgent2
+from Lockwork Agent at 518,97 of Hoenn
+way 0
+  Lockwork Agent> You're on the dock without a docket. Lockwork doesn't like that.
+  Lockwork Agent> My partner here was locked at the works. It obeys. That's all it needs to do.
+  Lockwork Agent> You knocked the numbers right out of my ledger.
+  * battle lockwork_hoenn_agent_2 Won
+  + beaten lockwork_hoenn_agent_2
+way 1, from answer 1
+  * battle lockwork_hoenn_agent_2 Lost
+=== lilycove_city.LockworkAgent3
+from Lockwork Agent at 509,95 of Hoenn
+way 0
+  Lockwork Agent> Nobody asked you to look in the crates.
+  Lockwork Agent> A locked heart never hesitates. Let me show you.
+  Lockwork Agent> So hesitation isn't everything after all.
+  * battle lockwork_hoenn_agent_3 Won
+  + beaten lockwork_hoenn_agent_3
+way 1, from answer 1
+  * battle lockwork_hoenn_agent_3 Lost
+=== lilycove_city.LockworkAgent4
+from Lockwork Agent at 494,96 of Hoenn
+way 0
+  Lockwork Agent> This stretch of the harbour is Lockwork's for the evening.
+  Lockwork Agent> We seal their hearts so nothing ever comes between us. Efficient, isn't it?
+  Lockwork Agent> Efficient. And beaten. Wonderful.
+  * battle lockwork_hoenn_agent_4 Won
+  + beaten lockwork_hoenn_agent_4
+way 1, from answer 1
+  * battle lockwork_hoenn_agent_4 Lost
 === lilycove_city.OldManCove
 from Old Man at 537,87 of Hoenn
 way -
@@ -28372,6 +28541,46 @@ way -
   Barry> Lucas! I'm going on ahead to the lab. Dad's waiting for us both. Don't dawdle!
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   = VAR_OLDALE_RIVAL_STATE 0 -> 2
+=== olivine.LockworkAgent1
+from Lockwork Agent at 278,252 of Johto
+way 0
+  Lockwork Agent> Lockwork moves its cargo quietly. You've seen too much of it already.
+  Lockwork Agent> That one's heart is locked tight. It'll fight for me without a second thought.
+  Lockwork Agent> Tch. Doesn't matter. The cargo's already on its way.
+  * battle lockwork_johto_agent_1 Won
+  + beaten lockwork_johto_agent_1
+way 1, from answer 1
+  * battle lockwork_johto_agent_1 Lost
+=== olivine.LockworkAgent2
+from Lockwork Agent at 291,255 of Johto
+way 0
+  Lockwork Agent> You're on the dock without a docket. Lockwork doesn't like that.
+  Lockwork Agent> My partner here was locked at the works. It obeys. That's all it needs to do.
+  Lockwork Agent> You knocked the numbers right out of my ledger.
+  * battle lockwork_johto_agent_2 Won
+  + beaten lockwork_johto_agent_2
+way 1, from answer 1
+  * battle lockwork_johto_agent_2 Lost
+=== olivine.LockworkAgent3
+from Lockwork Agent at 276,258 of Johto
+way 0
+  Lockwork Agent> Nobody asked you to look in the crates.
+  Lockwork Agent> A locked heart never hesitates. Let me show you.
+  Lockwork Agent> So hesitation isn't everything after all.
+  * battle lockwork_johto_agent_3 Won
+  + beaten lockwork_johto_agent_3
+way 1, from answer 1
+  * battle lockwork_johto_agent_3 Lost
+=== olivine.LockworkAgent4
+from Lockwork Agent at 291,259 of Johto
+way 0
+  Lockwork Agent> This stretch of the harbour is Lockwork's for the evening.
+  Lockwork Agent> We seal their hearts so nothing ever comes between us. Efficient, isn't it?
+  Lockwork Agent> Efficient. And beaten. Wonderful.
+  * battle lockwork_johto_agent_4 Won
+  + beaten lockwork_johto_agent_4
+way 1, from answer 1
+  * battle lockwork_johto_agent_4 Lost
 === olivine.RivalAtTheGym
 from the trigger at 272,239 of Johto
 way -
@@ -33311,6 +33520,27 @@ from the tile read at 908,491 of Sinnoh
 way -
   > A great white rock, worn smooth by the sea wind.
   > Its face is unmarked.
+=== route_225.LockworkAgent1
+from Lockwork Agent at 626,342 of Sinnoh
+way 0
+  Lockwork Agent> Lockwork moves its cargo quietly. You've seen too much of it already.
+  Lockwork Agent> A man in a long coat has been asking about our shipments in the Survival Area. Let him ask.
+  Lockwork Agent> That one's heart is locked tight. It'll fight for me without a second thought.
+  Lockwork Agent> Tch. Doesn't matter. The cargo's already on its way.
+  * battle lockwork_sinnoh_agent_1 Won
+  + beaten lockwork_sinnoh_agent_1
+way 1, from answer 1
+  * battle lockwork_sinnoh_agent_1 Lost
+=== route_226.LockworkAgent2
+from Lockwork Agent at 700,329 of Sinnoh
+way 0
+  Lockwork Agent> You're on the dock without a docket. Lockwork doesn't like that.
+  Lockwork Agent> My partner here was locked at the works. It obeys. That's all it needs to do.
+  Lockwork Agent> You knocked the numbers right out of my ledger.
+  * battle lockwork_sinnoh_agent_2 Won
+  + beaten lockwork_sinnoh_agent_2
+way 1, from answer 1
+  * battle lockwork_sinnoh_agent_2 Lost
 === route_227.Buck
 from Buck at 758,275 of Sinnoh
 way -
@@ -35332,6 +35562,10 @@ way -
 from Cynthia at 31,17 of SendoffSpring
 way -
   Cynthia> Go on. Tell Professor Rowan what you saw. I'd like to stay here a while and think about it.
+=== sendoff_spring.SpringRite
+from the tile read at 30,31 of SendoffSpring
+way -
+  > The spring water is cold and very clear.
 === seven_island.Tutor
 from Cool Trainer at 55,58 of SevenIsland
 way 0
@@ -37096,6 +37330,18 @@ from Cameraman at 651,348 of Sinnoh
 way -
   Cameraman> I once filmed a red Gyarados! Biggest scoop of my life, and I've been after the next one ever since.
   Cameraman> They say something stirs inside the volcano up north. If it shows itself, my camera will be rolling.
+=== survival_area.LookerReclaimer
+from Looker at 646,328 of Sinnoh
+way -
+  Looker> Ah, it is you! Looker is here on a matter of shipments. Crates that go out on the ferries and never quite arrive.
+  Looker> A syndicate called Lockwork. They put a machine to a Pokémon's heart and lock it shut. It obeys, but it feels nothing for its trainer.
+  Looker> My bureau took a part of that machine from a crate at the Fight Area's quay. From it the technicians made this.
+  > Lucas received the Reclaimer!
+  Looker> Wear it on your throwing arm. With it a ball can reach a locked Pokémon a trainer sends out. Take them back!
+  Looker> A locked heart opens in time beside a trainer who cares for it. At Sendoff Spring, the water itself helps.
+  Looker> Their cell here hides behind the quay's containers. Every port the ferries reach has one. Be careful, my friend.
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_RECLAIMER
 === survival_area.Rival
 from {rival} at 651,339 of Sinnoh
 way -
@@ -40281,6 +40527,46 @@ way -
 from Sailor at 288,233 of Kanto
 way -
   Sailor> Welcome to the S.S. Anne! Have your ticket ready at the gangway, please.
+=== vermilion_city.LockworkAgent1
+from Lockwork Agent at 297,207 of Kanto
+way 0
+  Lockwork Agent> Lockwork moves its cargo quietly. You've seen too much of it already.
+  Lockwork Agent> That one's heart is locked tight. It'll fight for me without a second thought.
+  Lockwork Agent> Tch. Doesn't matter. The cargo's already on its way.
+  * battle lockwork_kanto_agent_1 Won
+  + beaten lockwork_kanto_agent_1
+way 1, from answer 1
+  * battle lockwork_kanto_agent_1 Lost
+=== vermilion_city.LockworkAgent2
+from Lockwork Agent at 302,215 of Kanto
+way 0
+  Lockwork Agent> You're on the dock without a docket. Lockwork doesn't like that.
+  Lockwork Agent> My partner here was locked at the works. It obeys. That's all it needs to do.
+  Lockwork Agent> You knocked the numbers right out of my ledger.
+  * battle lockwork_kanto_agent_2 Won
+  + beaten lockwork_kanto_agent_2
+way 1, from answer 1
+  * battle lockwork_kanto_agent_2 Lost
+=== vermilion_city.LockworkAgent3
+from Lockwork Agent at 285,220 of Kanto
+way 0
+  Lockwork Agent> Nobody asked you to look in the crates.
+  Lockwork Agent> A locked heart never hesitates. Let me show you.
+  Lockwork Agent> So hesitation isn't everything after all.
+  * battle lockwork_kanto_agent_3 Won
+  + beaten lockwork_kanto_agent_3
+way 1, from answer 1
+  * battle lockwork_kanto_agent_3 Lost
+=== vermilion_city.LockworkAgent4
+from Lockwork Agent at 300,228 of Kanto
+way 0
+  Lockwork Agent> This stretch of the harbour is Lockwork's for the evening.
+  Lockwork Agent> We seal their hearts so nothing ever comes between us. Efficient, isn't it?
+  Lockwork Agent> Efficient. And beaten. Wonderful.
+  * battle lockwork_kanto_agent_4 Won
+  + beaten lockwork_kanto_agent_4
+way 1, from answer 1
+  * battle lockwork_kanto_agent_4 Lost
 === vermilion_city.Machop
 from Machop at 299,211 of Kanto
 way -

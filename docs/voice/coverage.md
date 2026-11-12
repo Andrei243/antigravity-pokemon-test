@@ -8,12 +8,12 @@ A **line** is one string a character says in a text box (a script's `say` and th
 
 | Kind | Lines | Spoken | Shown only | With variants | Written by hand |
 |---|---|---|---|---|---|
-| battle | 122 | 119 | 3 | 0 | 0 |
+| battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1675 | 1612 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12968 | 12434 | 534 | 17 | 36 |
+| Scripts (`script:`) | 13092 | 12558 | 534 | 17 | 36 |
 | People of the world (`world:`) | 8059 | 7997 | 62 | 4 | 0 |
-| **All** | 22968 | 22306 | 662 | 22 | 36 |
+| **All** | 23110 | 22448 | 662 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -24,14 +24,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a Pokémon's cry | 260 |
 | a question's answers | 1066 |
 | a sign | 1768 |
-| the game's own voice (speaker none) | 321 |
-| the game's own voice (text) | 2150 |
+| the game's own voice (speaker none) | 325 |
+| the game's own voice (text) | 2151 |
 
 ## The cast
 
 - Named characters: 925 voices (358 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 562 voices.
-- Archetypes in use: 246, with 743 voices to cast (V5).
+- Archetypes in use: 255, with 770 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 353.
 
 ## Lines by voice
@@ -52,7 +52,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:scientist (any)` | 329 | 13 |
 | `look:receptionist (any)` | 302 | 40 |
 | `look:nurse (any)` | 297 | 2 |
-| `looker` | 237 | 1 |
+| `looker` | 248 | 1 |
 | `look:gym_guide (any)` | 236 | 1 |
 | `class:ace_trainer (any)` | 210 | 0 |
 | `class:hiker (any)` | 198 | 0 |
@@ -137,6 +137,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `buck` | 46 | 1 |
 | `jasmine` | 46 | 0 |
 | `maylene` | 46 | 1 |
+| `look:lockwork_agent_m (any)` | 45 | 0 |
 | `roark` | 45 | 0 |
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
@@ -158,6 +159,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `iris` | 40 | 0 |
 | `jupiter` | 40 | 0 |
 | `look:host (any)` | 40 | 16 |
+| `look:lockwork_agent_f (any)` | 40 | 0 |
 | `look:pokefan_f (any)` | 40 | 0 |
 | `look:twin (any)` | 40 | 0 |
 | `colress` | 39 | 1 |
@@ -230,6 +232,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `shadow_triad` | 26 | 7 |
 | `waitress` | 26 | 0 |
 | `captain_stern` | 25 | 0 |
+| `day_care_lady` | 25 | 3 |
 | `emma` | 25 | 0 |
 | `ghetsis` | 25 | 0 |
 | `hop` | 25 | 0 |
@@ -243,7 +246,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:psychic_m (any)` | 24 | 0 |
 | `class:team_plasma_grunt (any)` | 24 | 0 |
 | `cook` | 24 | 0 |
-| `day_care_lady` | 24 | 3 |
 | `korrina` | 24 | 0 |
 | `look:camper (any)` | 24 | 0 |
 | `lysandre` | 24 | 1 |
