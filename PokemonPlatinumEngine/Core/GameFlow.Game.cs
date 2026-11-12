@@ -187,8 +187,15 @@ public sealed partial class GameFlow
     /// <summary>The DexNav's state (plan 10 · F11, F12).</summary>
     public Overworld.DexNavState DexNav { get; set; } = new();
 
-    /// <summary>What the camp remembers between visits (plan 10 · F6): a battle since it last cured the team.</summary>
-    public CampCare CampCare { get; } = new();
+    /// <summary>The care book (plan 35 · BN1): a page for each Pokémon of the player's, by its id; saved as <c>SaveData.Care</c>.</summary>
+    public CareBook Care { get; } = new();
+
+    /// <summary>
+    /// The camp (plan 10 · F6), a view over the care book since plan 35 · BN1: each Pokémon's cure and the day's pats and
+    /// meals are its page's, on the game's own day.
+    /// </summary>
+    public CampCare CampCare => campCare ??= new CampCare(Care, () => CareRules.DayOf(GameClock.Today));
+    private CampCare? campCare;
 
     /// <summary>Cameron's photo album (plan 20, part q).</summary>
     public PhotoAlbum Photos { get; } = new();

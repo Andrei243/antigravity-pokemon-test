@@ -349,6 +349,12 @@ public class SaveData
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
     public Models.CraftingSave? Crafting { get; set; }
 
+    /// <summary>
+    /// The care book (plan 35 · BN1): each Pokémon's marks, meals, pats, grooming, mood and owed cure, by its id, pruned to
+    /// the Pokémon the save holds. Null in saves from before it, and while nothing is written.
+    /// </summary>
+    public Models.CareSave? Care { get; set; }
+
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3). Null in saves from before it, and until its manager is first spoken to.</summary>
     public Models.PlazaSave? Plaza { get; set; }
 

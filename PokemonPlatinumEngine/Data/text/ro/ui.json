@@ -1374,7 +1374,8 @@
       "fed": "{name} a mâncat {berry} cu poftă!",
       "egg": "Oul stă la căldură lângă foc.",
       "already": "{name} a primit destul la popasul ăsta.",
-      "noBerry": "Nu ai nicio boabă în rucsac."
+      "noBerry": "Nu ai nicio boabă în rucsac.",
+      "full": "{name} s-a săturat pentru azi."
     }
   },
 

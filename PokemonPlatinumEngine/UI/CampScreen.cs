@@ -75,7 +75,7 @@ public sealed class CampScreen
     public void Open(Party party, CampCare care, CampKitchen? kitchen = null)
     {
         Party = party;
-        Visit = new CampVisit();
+        Visit = care.NewVisit();
         Cursor = 0;
         request = CampRequest.None;
         Supplies = kitchen;
@@ -148,7 +148,7 @@ public sealed class CampScreen
         if (Selected is not { } p) return;
         // What can be said without the bag is said here: an Egg, or a meal had already
         var why = Visit.WhyNotFeed(p, null, new Inventory());
-        if (why is CampRefusal.Egg or CampRefusal.AlreadyThisVisit)
+        if (why is CampRefusal.Egg or CampRefusal.AlreadyThisVisit or CampRefusal.Full)
         {
             Note = Refusal(why, p);
             AudioManager.PlaySound("error");
@@ -182,6 +182,7 @@ public sealed class CampScreen
         CampRefusal.Egg => Text.Of("camp.note.egg"),
         CampRefusal.AlreadyThisVisit => Text.Of("camp.note.already", ("name", p.DisplayName)),
         CampRefusal.NoBerry => Text.Of("camp.note.noBerry"),
+        CampRefusal.Full => Text.Of("camp.note.full", ("name", p.DisplayName)),
         _ => ""
     };
 

@@ -487,6 +487,7 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Care.Clear();
         flow.Gifts.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
@@ -761,6 +762,7 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        flow.Care.Restore(save.Care);
         flow.Gifts.Load(save.Gifts);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
@@ -988,6 +990,7 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            Care = CareToSave(),
             Gifts = flow.Gifts.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
@@ -2254,6 +2257,8 @@ public partial class GameEngine
                 if (!p.IsEgg && before < FriendshipRules.EvolveAt && p.Friendship >= FriendshipRules.EvolveAt)
                     flow.Pokedex.Research.Tell(p.Species, ResearchKind.Befriended);
             }
+            // The care book's walk cycle: moods settle, and a coat left soiled lowers one (plan 35 · BN1)
+            CareRules.WalkCycle(flow.Care, flow.Party.Members);
         }
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
         flow.Poketch.Step();
@@ -2449,7 +2454,11 @@ public partial class GameEngine
     {
         if (flow.EvolutionScreen.Outcome is { } outcome)
         {
-            if (flow.EvolutionScreen.Pokemon is { } evolved) flow.Pokedex.RegisterCaught(evolved);
+            if (flow.EvolutionScreen.Pokemon is { } evolved)
+            {
+                flow.Pokedex.RegisterCaught(evolved);
+                CareEvolved(evolved);
+            }
             else flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
             flow.Statistics.Count(Statistics.Evolutions);
             // An evolution out of a species, for its research (plan 15 · E1)

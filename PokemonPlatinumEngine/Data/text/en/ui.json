@@ -967,7 +967,8 @@
       "fed": "{name} ate the {berry} up!",
       "egg": "The Egg sits warm by the fire.",
       "already": "{name} has had its share for this visit.",
-      "noBerry": "There are no berries in the bag."
+      "noBerry": "There are no berries in the bag.",
+      "full": "{name} is full for today."
     }
   },
 

@@ -796,6 +796,8 @@ public partial class GameEngine
         OpenWildAfterBattle(flow.Battle);
         // Wild Pokémon felled or caught leave materials in the kit's pouch, if the kit is in the bag (plan 39 · CR1)
         if (flow.Battle != null) MaterialsAfterBattle(flow.Battle, isDefeat);
+        // The care book hears how it went: the marks of where it was fought, and the mood (plan 35 · BN1)
+        if (flow.Battle != null) CareAfterBattle(flow.Battle, isDefeat);
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
         bool goesOn = isDefeat && flow.Runner.IsRunning && flow.BattleMayBeLost;
         flow.BattleMayBeLost = false;

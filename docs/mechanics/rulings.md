@@ -9112,6 +9112,11 @@ The rules of plan 10's companions that need no picture; what they draw waits (pl
   opened by the START menu's CAMP, after POKéMON, while the options' FOLLOWER row is on and there is a Pokémon (no
   row of its own: with FOLLOWER off the menu is Platinum's). *Ours*: the team stands as its menu sprites on a clearing
   of our own, not as models on a stage, and a meal is chosen from the bag's berries with the item button.
+  **Since plan 35 · BN1 the camp is a view over the care book** ("Care", below): in the game a pat counts for friendship
+  once a day rather than once a visit (a second visit still pets, for the mood), a Pokémon eats until it is full for the
+  day (five pips) however many visits that takes, a dish of the pot fills a pip as a berry does, and the cure as the camp
+  opens is each Pokémon's own, once for each battle it fought since its last cure. `new CampCare()` with no book (what
+  tests make) keeps F6's once-a-visit rules.
 - **The DexNav** (`Overworld/DexNav.cs`, `Core/GameEngine.DexNav.cs`; decision 6's recommendation, a key item): its HERE
   list is the species of the place the player stands in met now (the grass at this hour, the water and the rods),
   from `Habitats.At`, the region's habitats by cell, with what the Pokédex knows and each species' search level. Switched
@@ -11193,3 +11198,35 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   mechanic, the Bug-Catching Contest's corner as its look). Its time running out ends it undone, and it may be begun again.
 - **What it pays**: pennants for each thing asked and a bonus (more for a timed one), and one mission in two an item of the
   file's list besides; claimed at the board, once, the pennants to Pennant Hall.
+
+## Care (2026-11-12, plan 35 · BN1; the camp's paragraph above)
+
+- **The book** (`Models/Care.cs`, `CareBook`, `CareRecord`, `CareRules`; `Core/GameEngine.Care.cs`): a page for each
+  Pokémon of the player's, kept by its own id (`Pokemon.Id`), so the Pokémon carries nothing of it: a battle's copy, a
+  trade and the Home box move nothing, and the battle's rules read none of it (plan 35's decision 3), so the golden
+  battles hold. A Pokémon with no id yet has a loose page until it is given one, never saved. The save keeps it as
+  `SaveData.Care` (null while nothing is written; no version raised), pruned as the save is built to the Pokémon the save
+  holds: the team, the boxes, the Day Care, those away on a job and the team set aside for the Bug-Catching Contest. A
+  day is the calendar day of `GameClock.Today`, counted as the Apricorn Box counts it.
+- **Soil** (ours): each Pokémon of the player's a battle sent out (`BattleCore.SentOut`, the original's participant mask)
+  takes the mark of where it fought: the weather first (a sandstorm's dust, rain's or a downpour's wet, hail's or snow's
+  snow), then the ground (sand's dust, the Great Marsh's or a puddle's mud, grass's leaves, water's wet, snow's or ice's
+  snow), nothing on a plain, a mountain, in a cave or a building, on a bridge or somewhere special. Two marks at most, the
+  newest kept (a mark it has is made the newest). Not the catching lesson's battle nor one of the Battle Frontier's copies.
+  The brush takes dust, leaves and snow off, the cloth mud and wet (plan 35 · BN2's close-up).
+- **Meals**: five pips of fullness a day; a berry fills one (and a dish of the camp's pot one), a treat its grade (BN3);
+  a full Pokémon refuses. A berry's friendship is `Fed` (5/3/2) every meal; its taste is its strongest flavour (the first
+  of the five on a tie) against the nature's liked and disliked flavours (`Poffins.TasteOf`).
+- **Pats and grooming**: a pat lifts the mood every time and counts for friendship (`Petted`, 3/2/1) once a day; a mark
+  cleaned lifts the mood and counts (`FriendshipEvent.Groomed`, ours, appended: 2/1/1) once a day.
+- **Cures**: a status (not fainting) is cured once for each battle the Pokémon fought since its last cure; a page begun
+  counts as after a battle, as a game loaded did for F6's camp.
+- **Mood**, −100 to 100, read as five faces: glum to −60, low to −20, calm under 20, cheerful under 60, elated from 60.
+  A win +8 and a loss −10 for each Pokémon sent out, a faint −15 more, a level +6, an evolution +20, a hatching +30, a
+  heal by a script's `heal` +5 for the team, a pat +4, a meal +8 liked, +4 plain, −4 disliked, a grooming +5, a cure +6,
+  poison's bite in the field −1 for each still poisoned, and a walk cycle (128 steps) with a mark left on −1. A walk cycle
+  settles the team's moods 2 toward calm (before a soiled coat's −1); a day settles every other page 10.
+- **How fast it climbs** (the plan's risk): care alone (a pat, five berries and a grooming every day) takes a Pokémon
+  from 70 to 220 in no fewer than seven days (`CareTests`).
+- **Nothing is drawn**: no rule of the book draws from `Dice` or the field's generator, so no wild Pokémon, battle or
+  shot moves for it.

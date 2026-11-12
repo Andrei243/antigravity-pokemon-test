@@ -159,7 +159,7 @@ Each session writes the style guide first for anything drawn; keeps its rules GP
 
 ## Status
 
-- [ ] BN1 The care book
+- [x] BN1 The care book (2026-11-12, as built: `Models/Care.cs`, `Core/GameEngine.Care.cs`, `SaveData.Care`, `FriendshipEvent.Groomed`, `CampVisit` and `CampCare` over the book, `BattleEngine.SentOutShown`; the rulings' "Care" with every number; `CareTests`)
 - [ ] BN2 The care close-up
 - [ ] BN3 Treats
 - [ ] BN4 The follower's mood and its words

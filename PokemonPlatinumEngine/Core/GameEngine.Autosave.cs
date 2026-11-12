@@ -118,6 +118,11 @@ public partial class GameEngine
 
     private sealed partial class FieldHost
     {
-        public void Milestone(AutosaveMoment moment) => game.AutosaveSoon(moment);
+        public void Milestone(AutosaveMoment moment)
+        {
+            // A heal is the care book's too: the team is glad of the rest (plan 35 · BN1)
+            if (moment == AutosaveMoment.Heal) game.CareHealed();
+            game.AutosaveSoon(moment);
+        }
     }
 }

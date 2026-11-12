@@ -451,6 +451,10 @@ public partial class GameEngine
         /// <summary>Whether the start menu offers CAMP now.</summary>
         public bool HasCamp => game.HasCamp;
         public JobBoard JobBoard => game.flow.Jobs;
+        /// <summary>The care book (plan 35 · BN1) and the day it counts by.</summary>
+        public CareBook Care => game.flow.Care;
+        public int CareDay => game.CareDay;
+        public CampCare CampCare => game.flow.CampCare;
         public void OpenJobs() => game.OpenJobs();
         /// <summary>The Global Link counter (plan 07 · O5, O7), opened as its attendant's script opens it, on the options' server.</summary>
         public GlobalLinkScreen GlobalLink => game.flow.GlobalLinkScreen;
