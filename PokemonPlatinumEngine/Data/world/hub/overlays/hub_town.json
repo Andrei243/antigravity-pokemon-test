@@ -53,9 +53,17 @@
     }
   },
   "signs": {
-    "TownSign": "The Hub\nWhere the ways between the regions meet",
+    "TownSign": "Wayhaven\nWhere the ways between the regions meet",
     "BoardSign": "The Week's Work\nThis week's missions in the regions you have won"
   },
   // The Week's Work, the board of missions (plan 41 · EG6): read, it opens the board (hub_town.txt's Board)
-  "signScripts": { "BoardSign": "Board" }
+  "signScripts": { "BoardSign": "Board" },
+  // The great days of the year (plan 40 · GE9's note of part D, the user's word: every region): a decorated pine at
+  // Christmas, a basket of eggs at Easter, a banner at New Year and, quietly, a heart on St Valentine's Day
+  "npcs": [
+    {"id": "hub_town.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 7, "y": 10, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "hub_town.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 15, "y": 10, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "hub_town.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 7, "y": 13, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "hub_town.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 15, "y": 13, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"}
+  ]
 }

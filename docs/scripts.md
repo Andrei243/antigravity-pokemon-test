@@ -1462,7 +1462,7 @@ the hub's plaza (`Models/Plaza.cs`, the host's `Plaza`), `missions` its board (`
 | `plaza rank`, `plaza next`, `plaza pitches` | `RESULT` and `{number}`: the rank, the pennants still to earn for the next (0 at the top), the pitches at the rank. |
 | `plaza coins` | `RESULT` the pennants held; they stand over the field until the script ends. |
 | `plaza pitch N` | Asks which stall stands at pitch N: the stalls offered, LEAVE IT EMPTY, AS IT IS. `RESULT` 1 changed (the hall furnished afresh), 0 left as it was, 2 for a pitch the rank hasn't; `{thing}` the stall. |
-| `plaza give N`, `plaza spend N` | Pennants paid in or spent; `RESULT` 1, or 0 when there aren't N to spend (nothing is spent). |
+| `plaza give N`, `plaza spend N` | Pennants paid in or spent; `give`'s `RESULT` is 1 when the hall had been opened (by its manager or by pennants paid before) and 0 the first time (the pennants are paid all the same, and keep the hall from then on), `spend`'s 1, or 0 when there aren't N to spend (nothing is spent). |
 | `plaza guests` | The day's guests drawn on the first coming of a day; `RESULT` and `{number}` how many stand today. |
 | `plaza stall` | Said of a keeper (`keeper_N`): `RESULT` the place in `plaza.json`'s list of the stall at their pitch, 0 for none; `{thing}` its name. |
 | `plaza shop` | Said of a keeper: their stall's goods on the shop's screen at the hall's rank, paid in pennants; waits. |

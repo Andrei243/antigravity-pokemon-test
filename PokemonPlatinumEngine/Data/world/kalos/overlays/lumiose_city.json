@@ -159,6 +159,10 @@
   // of the bureau and Emma among them (the second chapter), and the three suspects of the sting (the fourth) in the bureau's
   // alley, the museum's alley and the street west of the restaurant
   "npcs": [
+    {"id": "lumiose_city.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 353, "y": 403, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
+    {"id": "lumiose_city.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 353, "y": 406, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
+    {"id": "lumiose_city.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 356, "y": 404, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
+    {"id": "lumiose_city.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 345, "y": 408, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"},
     { "id": "alley_nanette", "name": "Nanette", "npcType": "preschooler_f", "x": 387, "y": 380, "facing": "Up", "script": "AlleyNanette", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
     { "id": "alley_lou", "name": "Lou", "npcType": "preschooler_m", "x": 391, "y": 380, "facing": "Up", "script": "AlleyLou", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
     { "id": "alley_cerise", "name": "Cerise", "npcType": "school_kid_f", "x": 395, "y": 380, "facing": "Up", "script": "AlleyCerise", "shownBy": "FLAG_KALOS_LOOKER_ALLEY", "hiddenBy": "FLAG_KALOS_LOOKER_ALLEY_DONE" },
