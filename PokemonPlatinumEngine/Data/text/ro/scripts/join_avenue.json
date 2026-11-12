@@ -50,6 +50,22 @@
     },
     {
       "en": [
+        "Some of them may even ask to open a shop in one of our empty bays. Say yes, and the street fills up!"
+      ],
+      "text": [
+        "Unii dintre ei s-ar putea chiar să ceară să deschidă o prăvălie într-unul dintre spațiile noastre goale. Spune da, și strada se umple!"
+      ]
+    },
+    {
+      "en": [
+        "And every shop grows with what its customers spend there. Spend freely, Manager!"
+      ],
+      "text": [
+        "Și fiecare prăvălie crește cu ce cheltuiesc clienții în ea. Cheltuiește fără grijă, domnule administrator!"
+      ]
+    },
+    {
+      "en": [
         "No? Well, the offer stands. Come and see me if you change your mind."
       ],
       "text": [
@@ -367,14 +383,6 @@
       "text": [
         "Revino când ești gata să transpiri!"
       ]
-    },
-    {
-      "en": [
-        "The dojo isn't open yet. Once the avenue's busier, I'll have the room to train your Pokémon!"
-      ],
-      "text": [
-        "Dojo-ul nu e încă deschis. Când bulevardul va fi mai aglomerat, voi avea loc să-ți antrenez Pokémonii!"
-      ]
     }
   ],
   "Salon": [
@@ -433,14 +441,6 @@
       "text": [
         "Să revii! Un Pokémon periat e un Pokémon fericit."
       ]
-    },
-    {
-      "en": [
-        "The salon isn't open yet. We're waiting for the avenue to bring the customers in!"
-      ],
-      "text": [
-        "Salonul nu e încă deschis. Așteptăm ca bulevardul să aducă clienții!"
-      ]
     }
   ],
   "Nursery": [
@@ -475,14 +475,6 @@
       "text": [
         "Adu un Ou și ți-l încălzesc. O dată pe zi, atenție. Ouăle nu trebuie grăbite."
       ]
-    },
-    {
-      "en": [
-        "The nursery isn't ready yet. Once the avenue has more visitors, we'll open our doors!"
-      ],
-      "text": [
-        "Creșa nu e încă gata. Când bulevardul va avea mai mulți vizitatori, ne vom deschide ușile!"
-      ]
     }
   ],
   "Antiques": [
@@ -512,10 +504,10 @@
     },
     {
       "en": [
-        "My shop opens once the avenue draws a better class of visitor. A little busier, and I'll be here!"
+        "My shop isn't open for business yet. Do come back another day!"
       ],
       "text": [
-        "Prăvălia mea se deschide când bulevardul atrage vizitatori mai aleși. Încă puțină agitație și voi fi aici!"
+        "Prăvălia mea nu e încă deschisă. Mai treci pe aici altă dată!"
       ]
     }
   ],
@@ -527,6 +519,14 @@
       "text": [
         "Tombola Join Avenue\nUn bilet gratuit pe zi!"
       ]
+    },
+    {
+      "en": [
+        "An empty shopfront.\nTo let: ask the manager!"
+      ],
+      "text": [
+        "Un spațiu comercial gol.\nDe închiriat: întreabă administratorul!"
+      ]
     }
   ],
   "DojoSign": [
@@ -536,6 +536,14 @@
       ],
       "text": [
         "Dojo-ul Join Avenue\nAntrenament pentru Pokémoni puternici."
+      ]
+    },
+    {
+      "en": [
+        "An empty shopfront.\nTo let: ask the manager!"
+      ],
+      "text": [
+        "Un spațiu comercial gol.\nDe închiriat: întreabă administratorul!"
       ]
     }
   ],
@@ -547,6 +555,14 @@
       "text": [
         "Salonul Join Avenue\nÎngrijire pentru Pokémoni fericiți."
       ]
+    },
+    {
+      "en": [
+        "An empty shopfront.\nTo let: ask the manager!"
+      ],
+      "text": [
+        "Un spațiu comercial gol.\nDe închiriat: întreabă administratorul!"
+      ]
     }
   ],
   "NurserySign": [
@@ -557,6 +573,14 @@
       "text": [
         "Creșa Join Avenue\nUn colț cald pentru Ouă."
       ]
+    },
+    {
+      "en": [
+        "An empty shopfront.\nTo let: ask the manager!"
+      ],
+      "text": [
+        "Un spațiu comercial gol.\nDe închiriat: întreabă administratorul!"
+      ]
     }
   ],
   "AntiquesSign": [
@@ -566,6 +590,80 @@
       ],
       "text": [
         "Anticariatul Join Avenue\nFosile și curiozități de altădată."
+      ]
+    },
+    {
+      "en": [
+        "An empty shopfront.\nTo let: ask the manager!"
+      ],
+      "text": [
+        "Un spațiu comercial gol.\nDe închiriat: întreabă administratorul!"
+      ]
+    }
+  ],
+  "Invite": [
+    {
+      "en": [
+        "You're the manager? I've always dreamt of running an antique shop. Might I open one in an empty bay here?"
+      ],
+      "text": [
+        "Tu ești administratorul? Mereu am visat să țin un anticariat. Pot să deschid unul într-un spațiu gol de aici?"
+      ]
+    },
+    {
+      "en": [
+        "You're the manager? This street needs a raffle, and I'd love to run it. Might I open one in an empty bay here?"
+      ],
+      "text": [
+        "Tu ești administratorul? Strada asta are nevoie de o tombolă, și mi-ar plăcea s-o țin eu. Pot s-o deschid într-un spațiu gol de aici?"
+      ]
+    },
+    {
+      "en": [
+        "You're the manager? I've trained Pokémon all my life. Might I open a dojo in an empty bay here?"
+      ],
+      "text": [
+        "Tu ești administratorul? Am antrenat Pokémoni toată viața. Pot să deschid un dojo într-un spațiu gol de aici?"
+      ]
+    },
+    {
+      "en": [
+        "You're the manager? I'm a Pokémon groomer by trade. Might I open a salon in an empty bay here?"
+      ],
+      "text": [
+        "Tu ești administratorul? Sunt îngrijitor de Pokémoni de meserie. Pot să deschid un salon într-un spațiu gol de aici?"
+      ]
+    },
+    {
+      "en": [
+        "You're the manager? I've looked after Eggs for years. Might I open a nursery in an empty bay here?"
+      ],
+      "text": [
+        "Tu ești administratorul? Am avut grijă de Ouă ani de zile. Pot să deschid o creșă într-un spațiu gol de aici?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you, Manager! I'll have it ready in no time. Do come and see how it does!"
+      ],
+      "text": [
+        "Mulțumesc, domnule administrator! O pregătesc cât ai clipi. Vino să vezi cum merge!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, that's a shame. If you change your mind, you know where to find me."
+      ],
+      "text": [
+        "Ah, păcat. Dacă te răzgândești, știi unde să mă găsești."
+      ]
+    },
+    {
+      "en": [
+        "I'd love to open a shop here one day, but the avenue isn't busy enough for another yet. Bring in more visitors!"
+      ],
+      "text": [
+        "Mi-ar plăcea să deschid o prăvălie aici într-o zi, dar bulevardul nu e încă destul de aglomerat pentru încă una. Adu mai mulți vizitatori!"
       ]
     }
   ]

@@ -427,10 +427,10 @@ public sealed class SpeciesSources
                     case Op.Frontier when i.Name == "prize" && i.Other != null && Models.Facilities.FacilityPrizes.Places.Contains(i.Other):
                         foreach (var p in Models.Facilities.FacilityPrizes.Of(i.Other)) f.Item(p.Item, $"{where}: the prize counter");
                         break;
-                    // Join Avenue's shops, at every rank (plan 22 · U11)
+                    // Join Avenue's shops, at every level (plan 22 · U11)
                     case Op.JoinAvenue when i.Name == "shop":
-                        for (int rank = 0; rank <= JoinAvenue.TopRank; rank++)
-                            if (JoinAvenue.StockOf(i.Other ?? "", rank) is { } stock) counters.Add(stock);
+                        for (int level = 1; level <= JoinAvenue.TopLevel; level++)
+                            if (JoinAvenue.StockAt(i.Other ?? "", level) is { } stock) counters.Add(stock);
                         break;
                     // The Bug-Catching Contest's catch is kept (plan 15 · E5), every day's table, where its park is open
                     // (the desk is a script of the shared file, which Sinnoh's own game reads whole)

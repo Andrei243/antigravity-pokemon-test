@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1764 | 1701 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13504 | 12943 | 561 | 17 | 36 |
+| Scripts (`script:`) | 13511 | 12950 | 561 | 17 | 36 |
 | People of the world (`world:`) | 8183 | 8121 | 62 | 4 | 0 |
-| **All** | 23735 | 23046 | 689 | 22 | 36 |
+| **All** | 23742 | 23053 | 689 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -25,14 +25,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 1122 |
 | a sign | 1771 |
 | the game's own voice (speaker none) | 326 |
-| the game's own voice (text) | 2222 |
+| the game's own voice (text) | 2227 |
 
 ## The cast
 
 - Named characters: 976 voices (381 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 590 voices.
 - Archetypes in use: 254, with 767 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 390.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 398.
 
 ## Lines by voice
 
@@ -47,7 +47,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lady (any)` | 574 | 10 |
 | `look:lass (any)` | 554 | 22 |
 | `look:youngster (any)` | 521 | 32 |
-| `@self` | 390 | 64 |
+| `@self` | 398 | 64 |
 | `look:receptionist (any)` | 348 | 40 |
 | `look:attendant (any)` | 335 | 12 |
 | `look:scientist (any)` | 329 | 13 |
@@ -123,7 +123,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `maxie` | 55 | 1 |
 | `school_kid` | 54 | 0 |
 | `bill` | 53 | 0 |
-| `owner` | 51 | 5 |
+| `owner` | 53 | 5 |
 | `class:gentleman (any)` | 50 | 0 |
 | `class:young_couple (any)` | 50 | 0 |
 | `drayden` | 50 | 0 |
@@ -263,7 +263,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:gymstatue (any)` | 23 | 0 |
 | `look:plasma_grunt (any)` | 23 | 0 |
 | `mira` | 23 | 5 |
-| `nursery_aide` | 23 | 0 |
 | `prof_magnolia` | 23 | 0 |
 | `quiz_lady` | 23 | 0 |
 | `skyla` | 23 | 1 |
@@ -276,6 +275,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:linebacker (any)` | 22 | 0 |
 | `look:ninja_boy (any)` | 22 | 0 |
 | `look:pokemon_breeder_f (any)` | 22 | 0 |
+| `nursery_aide` | 22 | 0 |
 | `schoolboy` | 22 | 0 |
 | `shauna` | 22 | 1 |
 | `tierno` | 22 | 0 |

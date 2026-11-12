@@ -6,8 +6,9 @@
 #
 # Its growth (Models/JoinAvenue.cs; the rulings, "Join Avenue's growth"): the owner asks the player to manage the
 # avenue, and from then on the first coming of each day brings visitors (two more than the avenue's rank), and every ten
-# visitors raise its rank, up to 10. The three shops widen their stock at ranks 3 and 6 (the market), 4 (the flowers)
-# and 5 (the café), and the two shop girls open shops of their own at ranks 7 (evolution stones) and 9 (vitamins).
+# visitors raise its rank, up to 10. Since U11's last pieces the shops widen their stock at levels of their own, by the
+# money spent in each (the market at levels 2 and 4, the flowers and the café at 2), and the two shop girls open shops of
+# their own at ranks 7 (evolution stones) and 9 (vitamins).
 # Black 2's avenue grows with the passers-by met over the console's wireless; ours grows by days, its numbers ours.
 
 
@@ -24,10 +25,13 @@ script Owner
   say "What it needs is a manager: someone to bring the visitors in, so the shops can grow with them."
   ask "You have the look of a Trainer people follow. Will you be Join Avenue's manager?"
   if no goto Later
+  setflag FLAG_UNOVA_JOIN_AVENUE_INVITATIONS
   setflag FLAG_UNOVA_JOIN_AVENUE_MANAGER
   joinavenue visit
   say "Splendid! From today the avenue is yours to run."
   say "Visitors will come by each day you drop in. The more come, the higher the avenue's rank, and the better its shops!"
+  say "Some of them may even ask to open a shop in one of our empty bays. Say yes, and the street fills up!"
+  say "And every shop grows with what its customers spend there. Spend freely, Manager!"
   end
 label Later
   say "No? Well, the offer stands. Come and see me if you change your mind."
@@ -50,6 +54,7 @@ script Market
   speaker "Shopkeeper"
   say "Welcome to the avenue's market! Balls, medicine, everything a Trainer needs for the road ahead."
   joinavenue shop market
+  joinavenue tally market
   say "Thanks for shopping on Join Avenue! Tell your friends!"
   end
 
@@ -58,6 +63,7 @@ script Flowers
   speaker "Florist"
   say "Hello there! Mulch for your berries, and sweet honey for the Pokémon who love it. Have a look!"
   joinavenue shop flowers
+  joinavenue tally flowers
   say "Grow something lovely! Come back and tell me how it turned out."
   end
 
@@ -66,6 +72,7 @@ script Cafe
   speaker "Waitress"
   say "Welcome to the café! Something cold to drink before you head into Nimbasa?"
   joinavenue shop cafe
+  joinavenue tally cafe
   say "Enjoy! And mind the crowds on the way into the city."
   end
 
@@ -76,6 +83,7 @@ script Stones
   speaker "Shop Girl"
   joinavenue shop stones
   if result == 0 goto Closed
+  joinavenue tally stones
   say "Thank you! Every stone of Unova's, and they all shine just as they should."
   end
 label Closed
@@ -88,6 +96,7 @@ script Vitamins
   speaker "Shop Girl"
   joinavenue shop vitamins
   if result == 0 goto Closed
+  joinavenue tally vitamins
   say "Thank you! Your Pokémon will feel the difference, I promise."
   end
 label Closed
@@ -114,8 +123,11 @@ script CafeSign
 
 
 # The avenue's other shops (plan 22 · U11's leftovers; rulings, "Join Avenue's other shops"): Black 2's raffle, dojo, salon,
-# nursery and antique shop, each in a bay of the street with its keeper behind a counter, open from their ranks and doing more
-# the higher the avenue's rank (Models/JoinAvenue.cs; every number ours). The raffle draws on the game's own chance once a day.
+# nursery and antique shop, each in a bay of the street with its keeper behind a counter (Models/JoinAvenue.cs; every number
+# ours). Since U11's last pieces each opens when a visitor the player invites sets it up (the visitors' Invite, below; its
+# keeper is shown by the shop's FLAG_UNOVA_JOIN_AVENUE_<SHOP>_OPEN), and every shop rises a level with the money spent in it
+# (joinavenue till, tally): its stock, the dojo's effort, the salon's friendship and the raffle's prizes go by the level. The
+# raffle draws on the game's own chance once a day.
 script Raffle
   face self player
   speaker "Raffle Clerk"
@@ -136,8 +148,6 @@ label Bye
 script Dojo
   face self player
   speaker "Dojo Master"
-  joinavenue open dojo
-  if result == 0 goto Closed
   say "Hah! Welcome to the dojo. One session is $1,000, and your Pokémon comes out tougher in the stat you pick."
   if money < 1000 goto Poor
   choose "Which stat shall we train?" "HP" "ATTACK" "DEFENSE" "SP. ATK" "SP. DEF" "SPEED"
@@ -180,7 +190,9 @@ label Speed
 label Trained
   if result >= 254 goto Egg
   if result == 0 goto Full
+  joinavenue till
   takemoney 1000
+  joinavenue tally dojo
   sound "select"
   say "Hup! Hah! {wearer} trained hard and came out tougher than it went in!"
   end
@@ -196,16 +208,11 @@ label Poor
 label Bye
   say "Come back when you're ready to sweat!"
   end
-label Closed
-  say "The dojo isn't open yet. Once the avenue's busier, I'll have the room to train your Pokémon!"
-  end
 
 
 script Salon
   face self player
   speaker "Stylist"
-  joinavenue open salon
-  if result == 0 goto Closed
   ask "Welcome to the salon! A grooming is $500, and your Pokémon will love you all the more. Shall we?"
   if no goto Bye
   if money < 500 goto Poor
@@ -214,7 +221,9 @@ script Salon
   joinavenue salon
   if result >= 254 goto Egg
   if result == 0 goto Full
+  joinavenue till
   takemoney 500
+  joinavenue tally salon
   sound "select"
   say "All done! {wearer} looks wonderful, and it knows exactly who to thank for it."
   end
@@ -230,16 +239,11 @@ label Poor
 label Bye
   say "Do come back! A brushed Pokémon is a happy Pokémon."
   end
-label Closed
-  say "The salon isn't open yet. We're waiting for the avenue to bring the customers in!"
-  end
 
 
 script Nursery
   face self player
   speaker "Nursery Aide"
-  joinavenue open nursery
-  if result == 0 goto Closed
   say "This is the avenue's nursery. Eggs love a warm, quiet corner, and ours is the warmest in Unova."
   joinavenue nursery
   if result == 0 goto Nothing
@@ -247,9 +251,6 @@ script Nursery
   end
 label Nothing
   say "Bring an Egg along and I'll warm it for you. Once a day, mind. Eggs mustn't be rushed."
-  end
-label Closed
-  say "The nursery isn't ready yet. Once the avenue has more visitors, we'll open our doors!"
   end
 
 
@@ -260,59 +261,133 @@ script Antiques
   if result == 0 goto Closed
   say "Welcome, welcome. Fossils, pearls, old curios... Do mind how you handle them."
   joinavenue shop antiques
+  joinavenue tally antiques
   say "A fine choice. Old things are precious things."
   end
 label Closed
-  say "My shop opens once the avenue draws a better class of visitor. A little busier, and I'll be here!"
+  say "My shop isn't open for business yet. Do come back another day!"
   end
 
 
+
+# A bay's sign tells its shop once a visitor has opened it, and an empty shopfront before
 script RaffleSign
   speaker none
+  if not flag FLAG_UNOVA_JOIN_AVENUE_RAFFLE_OPEN goto Empty
   text "Join Avenue Raffle\nOne free ticket a day!"
+  end
+label Empty
+  text "An empty shopfront.\nTo let: ask the manager!"
   end
 
 
 script DojoSign
   speaker none
+  if not flag FLAG_UNOVA_JOIN_AVENUE_DOJO_OPEN goto Empty
   text "Join Avenue Dojo\nTraining for tough Pokémon."
+  end
+label Empty
+  text "An empty shopfront.\nTo let: ask the manager!"
   end
 
 
 script SalonSign
   speaker none
+  if not flag FLAG_UNOVA_JOIN_AVENUE_SALON_OPEN goto Empty
   text "Join Avenue Salon\nGrooming for happy Pokémon."
+  end
+label Empty
+  text "An empty shopfront.\nTo let: ask the manager!"
   end
 
 
 script NurserySign
   speaker none
+  if not flag FLAG_UNOVA_JOIN_AVENUE_NURSERY_OPEN goto Empty
   text "Join Avenue Nursery\nA warm corner for Eggs."
+  end
+label Empty
+  text "An empty shopfront.\nTo let: ask the manager!"
   end
 
 
 script AntiquesSign
   speaker none
+  if not flag FLAG_UNOVA_JOIN_AVENUE_ANTIQUES_OPEN goto Empty
   text "Join Avenue Antiques\nFossils and curios of old."
+  end
+label Empty
+  text "An empty shopfront.\nTo let: ask the manager!"
   end
 
 
 # The visitors (plan 22 · U11's leftovers): three of the passers-by of ours stand in the street once the avenue is managed,
 # picked by its visitors so far, standing in for those met over the console's wireless. Each greets the player in their
-# own words (ui.json's joinAvenue.visitor.N).
+# own words (ui.json's joinAvenue.visitor.N). Since U11's last pieces each would open a shop of their own in an empty bay
+# (JoinAvenue.Offer): asked, and let, they open it, as many as the avenue's rank has room for.
 script Visitor1
   face self player
   joinavenue visitor 1
+  joinavenue invite 1
+  call Invite
   end
 
 
 script Visitor2
   face self player
   joinavenue visitor 2
+  joinavenue invite 2
+  call Invite
   end
 
 
 script Visitor3
   face self player
   joinavenue visitor 3
+  joinavenue invite 3
+  call Invite
   end
+
+
+# What a visitor's offer comes to (RESULT of joinavenue invite): 0 their shop is open, 9 no room, 1 to 5 the shop
+script Invite
+  if result == 0 return
+  if result == 9 goto NoRoom
+  if result == 1 goto Raffle
+  if result == 2 goto Dojo
+  if result == 3 goto Salon
+  if result == 4 goto Nursery
+  ask "You're the manager? I've always dreamt of running an antique shop. Might I open one in an empty bay here?"
+  if no goto Declined
+  setflag FLAG_UNOVA_JOIN_AVENUE_ANTIQUES_OPEN
+  goto Opened
+label Raffle
+  ask "You're the manager? This street needs a raffle, and I'd love to run it. Might I open one in an empty bay here?"
+  if no goto Declined
+  setflag FLAG_UNOVA_JOIN_AVENUE_RAFFLE_OPEN
+  goto Opened
+label Dojo
+  ask "You're the manager? I've trained Pokémon all my life. Might I open a dojo in an empty bay here?"
+  if no goto Declined
+  setflag FLAG_UNOVA_JOIN_AVENUE_DOJO_OPEN
+  goto Opened
+label Salon
+  ask "You're the manager? I'm a Pokémon groomer by trade. Might I open a salon in an empty bay here?"
+  if no goto Declined
+  setflag FLAG_UNOVA_JOIN_AVENUE_SALON_OPEN
+  goto Opened
+label Nursery
+  ask "You're the manager? I've looked after Eggs for years. Might I open a nursery in an empty bay here?"
+  if no goto Declined
+  setflag FLAG_UNOVA_JOIN_AVENUE_NURSERY_OPEN
+  goto Opened
+label Opened
+  sound "select"
+  say "Thank you, Manager! I'll have it ready in no time. Do come and see how it does!"
+  return
+label Declined
+  say "Oh, that's a shame. If you change your mind, you know where to find me."
+  return
+label NoRoom
+  say "I'd love to open a shop here one day, but the avenue isn't busy enough for another yet. Bring in more visitors!"
+  return

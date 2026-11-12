@@ -1342,13 +1342,16 @@ public static class ScriptParser
             // Join Avenue's growth (plan 22 · U11): the day's visitors, the rank, a shop's stock by the rank
             case "joinavenue":
             {
-                string what = r.OneOf("visit", "rank", "visitors", "next", "shop", "open", "dojo", "salon", "nursery", "raffle", "visitor");
+                string what = r.OneOf("visit", "rank", "visitors", "next", "shop", "open", "dojo", "salon", "nursery", "raffle", "visitor",
+                    "invite", "till", "tally", "level");
                 string which = what switch
                 {
                     "shop" => r.OneOf("market", "flowers", "cafe", "stones", "vitamins", "antiques"),
                     "open" => r.OneOf("raffle", "dojo", "salon", "nursery", "antiques", "stones", "vitamins"),
                     "dojo" => r.OneOf("hp", "attack", "defense", "speed", "spatk", "spdef"),
-                    "visitor" => r.OneOf("1", "2", "3"),
+                    "visitor" or "invite" => r.OneOf("1", "2", "3"),
+                    "tally" => r.OneOf("market", "flowers", "cafe", "stones", "vitamins", "antiques", "dojo", "salon"),
+                    "level" => r.OneOf("market", "flowers", "cafe", "stones", "vitamins", "antiques", "dojo", "salon", "raffle"),
                     _ => ""
                 };
                 return new Instruction { Op = Op.JoinAvenue, Line = line, Name = what, Other = which };
