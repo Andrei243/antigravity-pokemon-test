@@ -46,6 +46,12 @@ public class Pokedex
     /// </summary>
     public const string Ours = "ours";
 
+    /// <summary>
+    /// The Carpathian Pokédex (plan 46 · CP1): the species made from nothing, numbered in it as they carry it in
+    /// <see cref="PokemonSpecies.DexNumbers"/>. A regional Pokédex like any, with its diploma; the region's file names it.
+    /// </summary>
+    public const string Carpathia = "carpathia";
+
     /// <summary>Kalos's three regional Pokédexes (plan 23 · Z4), PokeAPI's identifiers.</summary>
     public const string KalosCentral = "kalos-central", KalosCoastal = "kalos-coastal", KalosMountain = "kalos-mountain";
 
@@ -188,7 +194,8 @@ public class Pokedex
 
     /// <summary>
     /// The species of a Pokédex in its own order, each with the number it shows there (empty for an identifier no species
-    /// is numbered in). The National one lists the species of our own after the 1,025 (plan 03 · D14), which its
+    /// is numbered in). The National one lists the species of our own after the 1,025 (plan 03 · D14, and Carpathia's
+    /// after those, plan 46 · CP1), which its
     /// totals and its diploma leave out (<see cref="Goal"/>, <see cref="SeenCount"/>); no regional one lists them.
     /// </summary>
     public static IReadOnlyList<PokedexEntry> Entries(string dex) => lists.GetOrAdd(dex, id => id == National
@@ -196,7 +203,8 @@ public class Pokedex
         : id == Ours
             // The Pokédex of ours (plan 40 · GE4): the species of ours in National order, numbered from 1
             ? PokemonDatabase.Ours().OrderBy(s => s.DexNumber).Select((s, i) => new PokedexEntry(i + 1, s)).ToList()
-            : PokemonDatabase.GetAll().Where(s => s.DexNumbers.ContainsKey(id)).OrderBy(s => s.DexNumbers[id]).ThenBy(s => s.DexNumber)
+            // A regional one: the games' species and Carpathia's (plan 46 · CP1) carry their numbers; D14's carry none
+            : PokemonDatabase.Everyone().Where(s => s.DexNumbers.ContainsKey(id)).OrderBy(s => s.DexNumbers[id]).ThenBy(s => s.DexNumber)
                 .Select(s => new PokedexEntry(s.DexNumbers[id], s)).ToList());
 
     /// <summary>The key the text table names a Pokédex by (<c>pokedex.mode.sinnoh</c>): its identifier, but for Sinnoh's, which is the region's name.</summary>
@@ -228,7 +236,7 @@ public class Pokedex
     /// Whether the Pokédex of our own is offered (plan 40 · GE4, decision 6): after the National one, once that is open and
     /// the player has seen one species of ours. Seen species stay seen, so it stays open.
     /// </summary>
-    public bool OursOpen => NationalUnlocked && SeenSpecies.Any(n => n >= PokemonDatabase.OursFrom);
+    public bool OursOpen => NationalUnlocked && SeenSpecies.Any(n => n >= PokemonDatabase.OursFrom && n < PokemonDatabase.CarpathiaFrom);
 
     public int SeenIn(string dex) => dex == National ? SeenCount : Entries(dex).Count(e => IsSeen(e.Species.DexNumber));
     public int CaughtIn(string dex) => dex == National ? CaughtCount : Entries(dex).Count(e => IsCaught(e.Species.DexNumber));

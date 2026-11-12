@@ -112,11 +112,11 @@ public static class Overlays
                         Add(Kind.Data, name, $"names '{slot.Species}', which is no species of the data");
                         continue;
                     }
-                    if (!species.IsOurs) Add(Kind.Data, name, $"names {slot.Species}, which is a species of the games, not one of ours");
+                    if (!species.IsPastHundred) Add(Kind.Data, name, $"names {slot.Species}, which is a species of the games or of Carpathia, not one of ours past level 100");
                     else if (!OursSlots.Placeable(species)) Add(Kind.Data, name, $"names {slot.Species}, the end of a legendary set, which is never wild");
                     else if (!string.Equals(OursSlots.RegionOf(species), regionId, StringComparison.OrdinalIgnoreCase))
                         Add(Kind.Data, name, $"names {slot.Species}, of {OursSlots.RegionOf(species) ?? "no"} region's batch, in {regionId}");
-                    int from = species.IsOurs ? OursSlots.EvolutionLevel(species) : 1;
+                    int from = species.IsPastHundred ? OursSlots.EvolutionLevel(species) : 1;
                     if (slot.MinLevel > slot.MaxLevel || slot.MinLevel < from || slot.MaxLevel > Ruleset.HighestLevel)
                         Add(Kind.Data, name, $"meets {slot.Species} at {slot.MinLevel} to {slot.MaxLevel}; its levels go from its evolution's, {from}, to {Ruleset.HighestLevel}");
                 }
