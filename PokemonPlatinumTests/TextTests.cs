@@ -336,7 +336,7 @@ public class TextTests
 
     // A key as a pattern: whatever an interpolation puts in is one segment of letters and digits
     private static Regex PatternOf(string key) =>
-        new("^" + string.Concat(Regex.Split(key, @"(\{[^}]*\})").Select(part => part.StartsWith('{') ? "[A-Za-z0-9]+" : Regex.Escape(part))) + "$");
+        new("^" + string.Concat(Regex.Split(key, @"(\{[^}]*\})").Select(part => part.StartsWith('{') ? "[A-Za-z0-9_]+" : Regex.Escape(part))) + "$");
 
     /// <summary>Every key the engine's code asks for, as written: a literal, or an interpolation of one.</summary>
     private static List<(string Key, string File)> KeysAskedFor()

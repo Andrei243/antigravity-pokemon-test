@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The Laurel Circuit's final: each region's Champion and the team they bring (Data/circuit.json)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "region": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "look": {
+            "type": "string"
+          },
+          "person": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "region",
+          "team",
+          "look",
+          "person"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "rows"
+  ],
+  "additionalProperties": false
+}

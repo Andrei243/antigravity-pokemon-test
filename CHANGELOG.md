@@ -4,6 +4,12 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+### Added
+- The hub's halls are open. The Laurel Gallery keeps every region's Hall of Fame: a plinth for each region you've crowned, each showing that region's first team and every team since. The PC's Hall of Fame now has a tab for each region.
+- The Laurel Circuit: at the Gallery's desk you can go back to every League you've won and fight its Elite Four and Champion again, all at one level, then face every Champion in a row in the Laurel Court. Each circuit you win makes the next one harder and earns a title and a medal.
+- Looker has opened the Open Door Agency in the hub, half in disguise as a clerk. He takes a case in each region you've crowned (Sinnoh, Kanto, Johto, Hoenn, Unova and Kalos): find the clues, tell him what they mean, and face the culprit. The cases show on the requests page.
+- After you win a Laurel Circuit, Looker sails you to Grayfall Keep, where the old leaders of the villain teams have gathered, each lured by a rumour. Beat their admins and leaders, and the one who gathered them puts on a show of her own. The leaders stay on for a battle a day.
+
 ### Changed
 - The Pastoria Gym is easier to read: the strips you can't walk on (between the walk round the room and the platforms, and between platforms) are now drawn as water instead of looking like more floor, and the bottom of the pool shows as dry floor only when the water is drained and you can walk on it.
 - Voices are louder and have their own volume: spoken lines now play several decibels louder over the music (which dips a little further while someone speaks), and the options' VOICE VOLUME runs from 0 to 200, so the voices can be turned up well past the music, which keeps its own 0 to 100.

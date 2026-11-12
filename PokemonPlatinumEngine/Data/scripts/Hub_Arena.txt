@@ -41,7 +41,6 @@ script Herald
   circuit ready
   if result == 0 goto NotYet
   circuit level
-  scene "LaurelFinal"
   say "Champion {player}, every League you have won is stamped. The final of the Laurel Circuit begins now."
   say "You will face each Champion in turn, at level {result}, with no rest between. Your bag is your own. Champions, step forward!"
   circuit final Sinnoh
@@ -99,12 +98,10 @@ label Won
   givemoney 30000
   give "PP Max"
   say "The next circuit will meet you five levels higher. Rest well, Laurel Champion."
-  endscene
   end
 label Lost
   speaker "Piers"
   say "The final ends here for today. Your circuit stands, and the Champions will wait for you to try again."
-  endscene
   end
 label NotYet
   circuit stamps

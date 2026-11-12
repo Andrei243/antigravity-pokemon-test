@@ -5042,6 +5042,75 @@
     ]
   },
   {
+    "id": "case_kanto_dov",
+    "name": "Dov",
+    "class": "Sailor",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 7200,
+    "party": [
+      { "species": "Tentacruel", "level": 71, "ivScale": 200, "personality": 4410273 },
+      { "species": "Kingler", "level": 72, "ivScale": 200, "personality": 7720931 },
+      { "species": "Machamp", "level": 73, "ivScale": 200, "personality": 2093384 },
+      { "species": "Lapras", "level": 74, "ivScale": 200, "personality": 6182557 }
+    ]
+  },
+  {
+    "id": "case_johto_mirelle",
+    "name": "Mirelle",
+    "class": "Teacher",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 7200,
+    "party": [
+      { "species": "Xatu", "level": 71, "ivScale": 200, "personality": 3381920 },
+      { "species": "Girafarig", "level": 72, "ivScale": 200, "personality": 9120447 },
+      { "species": "Ampharos", "level": 72, "ivScale": 200, "personality": 1772804 },
+      { "species": "Bellossom", "level": 73, "ivScale": 200, "personality": 5048213 },
+      { "species": "Espeon", "level": 74, "ivScale": 200, "personality": 8263019 }
+    ]
+  },
+  {
+    "id": "case_hoenn_ottoline",
+    "name": "Ottoline",
+    "class": "Sailor",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 7800,
+    "party": [
+      { "species": "Pelipper", "level": 76, "ivScale": 210, "personality": 6650912 },
+      { "species": "Wailord", "level": 76, "ivScale": 210, "personality": 2210375 },
+      { "species": "Crawdaunt", "level": 77, "ivScale": 210, "personality": 8830166 },
+      { "species": "Sharpedo", "level": 77, "ivScale": 210, "personality": 1459082 },
+      { "species": "Walrein", "level": 78, "ivScale": 210, "personality": 4927351 }
+    ]
+  },
+  {
+    "id": "case_unova_isidore",
+    "name": "Isidore",
+    "class": "Clerk",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 7800,
+    "party": [
+      { "species": "Stoutland", "level": 76, "ivScale": 210, "personality": 3092847 },
+      { "species": "Klinklang", "level": 76, "ivScale": 210, "personality": 7718203 },
+      { "species": "Chandelure", "level": 77, "ivScale": 210, "personality": 5501946 },
+      { "species": "Bisharp", "level": 77, "ivScale": 210, "personality": 2264019 },
+      { "species": "Excadrill", "level": 78, "ivScale": 210, "personality": 9046622 }
+    ]
+  },
+  {
+    "id": "case_kalos_odile",
+    "name": "Odile",
+    "class": "Artist",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 8000,
+    "party": [
+      { "species": "Smeargle", "level": 76, "ivScale": 210, "personality": 4482019 },
+      { "species": "Aromatisse", "level": 76, "ivScale": 210, "personality": 1180374 },
+      { "species": "Florges", "level": 77, "ivScale": 210, "personality": 6603921 },
+      { "species": "Malamar", "level": 77, "ivScale": 210, "personality": 3317480 },
+      { "species": "Aegislash", "level": 79, "ivScale": 210, "personality": 8820135 }
+    ]
+  },
+  {
     "id": "case_sinnoh_ferren",
     "name": "Ferren",
     "class": "Sailor",

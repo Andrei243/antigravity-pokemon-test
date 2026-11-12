@@ -355,7 +355,7 @@ public sealed partial class ScriptRunner
         Op.Music or Op.Fanfare or Op.Sound or Op.Cry => false,
         // The screens
         Op.Starter or Op.Shop or Op.Pc or Op.Travel or Op.Wardrobe or Op.ChoosePokemon or Op.ChooseItem or Op.Credits or Op.Hatch => true,
-        Op.HallOfFame => i.Name == "show",
+        Op.HallOfFame => i.Name is "show" or "look",
         // The game written to its save is the player's to see
         Op.Save => true,
         // Wild Pokémon, the day's events, the berries, the team: asked and changed without a screen, but a tree's battle

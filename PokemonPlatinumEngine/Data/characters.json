@@ -23,6 +23,16 @@
     "looker_clerk": { "hairColor": "#3a2e2c", "hair": "Swept", "hat": "Visor", "hatColor": "#3c5a8c", "hatBand": "#3c5a8c", "top": "#e8e4d8", "accent": "#544640", "bottom": "#46424a", "shoes": "#342a28", "glasses": "#2a2a34", "vest": "#3c5a8c", "build": "Adult", "height": 1.04 },
     "ismene": { "hairColor": "#8a8a9a", "hair": "Bun", "top": "#5a3a5e", "accent": "#e8dcc4", "bottom": "#5a3a5e", "shoes": "#2a2230", "eyes": "#5a4a6a", "glasses": "#c8a040", "robe": true, "lashes": true, "build": "Adult", "height": 1.0 },
     "ferren": { "hairColor": "#6a4a2a", "hair": "Short", "hat": "Cap", "hatColor": "#2a3a5a", "hatBand": "#e8c040", "top": "#2a3a5a", "accent": "#e8c040", "bottom": "#2a2e3a", "shoes": "#2a2420", "mustache": true, "coat": true, "buttoned": true, "build": "Adult", "height": 1.06 },
+    // The culprits of the agency's cases in the other regions (plan 41 · EG8), our own: Dov Harlan, Vermilion's dockhand,
+    // in a knitted cap and a work vest; Mirelle Dunn, a Johto schoolteacher, hair in a bun and spectacles over a green
+    // cardigan and a skirt; Ottoline Marsh, a Hoenn skipper, long sun-pale hair under a navy cap and a white reefer
+    // coat; Isidore Calloway, the World Tournament's clerk, slick dark hair, spectacles and a waistcoat over a white
+    // shirt; Odile Ferrand, the Lumiose museum's restorer, hair in a bun and a scarf over a rust-coloured smock coat
+    "dov": { "hairColor": "#3a2a1e", "hair": "Short", "hat": "Cap", "hatColor": "#8a3a2a", "hatBand": "#e8d8b0", "top": "#4a6a8a", "accent": "#e8e0c8", "bottom": "#3a3a40", "shoes": "#2a2420", "vest": "#8a5a2a", "build": "Adult", "height": 1.04 },
+    "mirelle": { "hairColor": "#8a4a2a", "hair": "Bun", "top": "#3a6a5a", "accent": "#f0e8d0", "bottom": "#5a4a3a", "shoes": "#3a2a20", "glasses": "#6a4a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    "ottoline": { "hairColor": "#d8ccb0", "hair": "Long", "hat": "Cap", "hatColor": "#2a4a6a", "hatBand": "#e8e8f0", "top": "#ece8e0", "accent": "#2a4a6a", "bottom": "#2a4a6a", "shoes": "#3a2a20", "coat": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "isidore": { "hairColor": "#2a2a30", "hair": "Swept", "top": "#f0f0f4", "accent": "#7a2a3a", "bottom": "#3a3a48", "shoes": "#1e1e24", "glasses": "#2a2a34", "vest": "#3a3a48", "build": "Adult", "height": 1.06 },
+    "odile": { "hairColor": "#2a1e1a", "hair": "Bun", "top": "#c86a3a", "accent": "#f4ead8", "bottom": "#3a3040", "shoes": "#2a2230", "coat": true, "scarf": true, "lashes": true, "build": "Adult", "height": 1.0 },
     // Celosia of Team Flare (plan 41 · EG9, Grayfall Keep), our own take: long orange hair, the team's white suit with its
     // red trousers and tinted red glasses
     "celosia": { "hairColor": "#e8902a", "hair": "Long", "top": "#f4f4f6", "accent": "#c8402a", "bottom": "#c8402a", "shoes": "#22222a", "eyes": "#3a3a4a", "glasses": "#d8402a", "coat": true, "lashes": true, "build": "Adult" },

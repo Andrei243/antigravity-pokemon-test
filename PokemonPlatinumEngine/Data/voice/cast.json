@@ -706,6 +706,10 @@
         "accent": "en-us"
       }
     },
+    "celosia": {
+      "note": "first spoken at Hub_Keep.txt(115)",
+      "provisional": true
+    },
     "cerise": {
       "note": "first spoken at lumiose_city.txt(129)",
       "provisional": true
@@ -4225,6 +4229,10 @@
       "note": "first spoken at pokeathlon_dome.txt(13)",
       "provisional": true
     },
+    "dov": {
+      "note": "first spoken at vermilion_city.txt(165)",
+      "provisional": true
+    },
     "dragon_tamer": {
       "note": "first spoken at blackthorn_move_tutor_house.txt(40)",
       "provisional": true
@@ -4519,6 +4527,10 @@
     },
     "ferdinand": {
       "note": "first spoken at LumioseCity_Carrousel.txt(26)",
+      "provisional": true
+    },
+    "ferren": {
+      "note": "first spoken at fight_area.txt(361)",
       "provisional": true
     },
     "fishing_guru": {
@@ -4940,6 +4952,14 @@
     },
     "isaure": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(164)",
+      "provisional": true
+    },
+    "isidore": {
+      "note": "first spoken at pwt.txt(173)",
+      "provisional": true
+    },
+    "ismene": {
+      "note": "first spoken at Hub_HallOfChampions.txt(58)",
       "provisional": true
     },
     "jackson": {
@@ -8636,6 +8656,10 @@
       "note": "first spoken at KalosRoute7_BattleChateau.txt(88)",
       "provisional": true
     },
+    "mirelle": {
+      "note": "first spoken at ruins_of_alph.txt(72)",
+      "provisional": true
+    },
     "misty": {
       "note": "first spoken at cerulean_city_gym.txt(10)",
       "brief": {
@@ -8945,6 +8969,10 @@
       "note": "first spoken at AlolaRoute1_PlayersHouse.txt(54)",
       "provisional": true
     },
+    "ottoline": {
+      "note": "first spoken at dewford_town.txt(194)",
+      "provisional": true
+    },
     "owner": {
       "note": "first spoken at goldenrod_bike_shop.txt(8)",
       "provisional": true
@@ -9068,6 +9096,10 @@
     },
     "phoebe": {
       "note": "first spoken at ever_grande_city_phoebes_room.txt(8)",
+      "provisional": true
+    },
+    "piers": {
+      "note": "first spoken at Hub_Arena.txt(38)",
       "provisional": true
     },
     "pikachu": {
@@ -9333,6 +9365,10 @@
         "pitch": 0.98,
         "accent": "en-us"
       }
+    },
+    "registrar": {
+      "note": "first spoken at Hub_HallOfChampions.txt(72)",
+      "provisional": true
     },
     "restorer": {
       "note": "first spoken at AkalaRoute8_FossilCenter.txt(7)",
@@ -10494,6 +10530,7 @@
     "Celebrity": "celebrity",
     "Celeste": "celeste",
     "Celio": "celio",
+    "Celosia": "celosia",
     "Cerise": "cerise",
     "Chairman": "chairman",
     "Charcoal Maker": "charcoal_maker",
@@ -10552,6 +10589,7 @@
     "Dock": "dock",
     "Dojo Master": "dojo_master",
     "Dome Owner": "dome_owner",
+    "Dov": "dov",
     "Dragon Tamer": "dragon_tamer",
     "Drake": "drake",
     "Drasna": "drasna",
@@ -10584,6 +10622,7 @@
     "Farmer's Wife": "farmers_wife",
     "Fauve": "fauve",
     "Ferdinand": "ferdinand",
+    "Ferren": "ferren",
     "Fisherman": "look:fisherman",
     "Fishing Guru": "fishing_guru",
     "Flannery": "flannery",
@@ -10652,6 +10691,8 @@
     "Isabel": "isabel",
     "Isaiah": "isaiah",
     "Isaure": "isaure",
+    "Isidore": "isidore",
+    "Ismene": "ismene",
     "Jackson": "jackson",
     "Janine": "janine",
     "Jasmine": "jasmine",
@@ -10747,6 +10788,7 @@
     "Milliner": "milliner",
     "Mira": "mira",
     "Mirabelle": "mirabelle",
+    "Mirelle": "mirelle",
     "Misty": "misty",
     "Mom": "mom",
     "Monica": "monica",
@@ -10788,6 +10830,7 @@
     "Olympia": "olympia",
     "Ombeline": "ombeline",
     "Oskin": "oskin",
+    "Ottoline": "ottoline",
     "Owner": "owner",
     "Pablo": "pablo",
     "Palace Maven": "palace_maven",
@@ -10803,6 +10846,7 @@
     "Philibert": "philibert",
     "Philippine": "philippine",
     "Phoebe": "phoebe",
+    "Piers": "piers",
     "Pikachu": "pikachu",
     "Pilot": "pilot",
     "Pip": "pip",
@@ -10843,6 +10887,7 @@
     "Receptionist": "look:receptionist",
     "Red": "red",
     "Referee": "referee",
+    "Registrar": "registrar",
     "Researcher": "look:scientist",
     "Restorer": "restorer",
     "Rhona": "rhona",

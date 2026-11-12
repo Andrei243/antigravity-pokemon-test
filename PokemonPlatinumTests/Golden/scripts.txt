@@ -4204,6 +4204,27 @@ way -
 from Togedemaru at 7,4 of HokulaniObservatory
 way -
   > The Togedemaru hasn't come out yet. Perhaps the Charjabug in the room come first.
+=== Hub_Arena.Herald
+from Piers Lindqvist at 7,6 of Hub_Arena
+way -
+  Piers> This is the Laurel Court, where the Laurel Circuit's final is fought. Begin a circuit at the Laurel Gallery's desk.
+=== Hub_HallOfChampions.CircuitDesk
+from Registrar at 14,3 of Hub_HallOfChampions
+way 0
+  Registrar> This is the Laurel Circuit's desk. A circuit takes you back to every League you've won, to fight its Elite Four and Champion again in their own rooms.
+  Registrar> This circuit's teams would all meet you at level 80. Each League you win again stamps your card when you enter its Hall of Fame.
+  Registrar> With every League stamped, the final opens in the Laurel Court: all the Champions you've beaten, one after another.
+  Registrar> Will you begin a circuit?
+  Registrar> Then your circuit has begun. Good luck out there, Champion.
+  ? Will you begin a circuit? = Yes
+way 1, from answer 1
+  Registrar> Whenever you're ready. The desk will be here.
+  ? Will you begin a circuit? = No
+=== Hub_HallOfChampions.Keeper
+from Ismene Quill at 5,3 of Hub_HallOfChampions
+way -
+  Ismene> Welcome to the Laurel Gallery. I keep its records: every team every region has crowned, and the first of each above all.
+  Ismene> Read a plinth to see its teams. I've read every one of them myself, more times than I care to count.
 === Hub_HarbourHall.FacilityGuide
 from Guide at 9,3 of Hub_HarbourHall
 way 0
@@ -4220,6 +4241,225 @@ way 2, from answer 1
 way 1, from answer 1
   Guide> I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame.
   ? Where would you like to go? = HOENN'S FRONTIER
+=== Hub_Keep.Archer
+from Archer at 9,6 of Hub_Keep
+way 0
+  Archer> Team Rocket goes where its boss goes, and the boss heard his old machine was here. Step aside, child.
+  Archer> Unbelievable. Very well. The boss can deal with you.
+  * battle archer_gathering Won
+  + FLAG_KEEP_ARCHER_BEATEN
+  + beaten archer_gathering
+way 1, from answer 1
+  * battle archer_gathering Lost
+=== Hub_Keep.Archie
+from Archie at 16,3 of Hub_Keep
+way 0
+  Archie> Bwahaha! Somebody told me my machine to fill the seas was sitting in this fort. And here's Maxie, told the same about his!
+  Archie> No machine, eh? Then let's have a battle. I didn't sail all this way for nothing!
+  Archie> Bwah! Still the strongest thing in the room. I'll take that over any machine.
+  * battle archie_gathering Won
+  + FLAG_KEEP_ARCHIE_BEATEN
+  + beaten archie_gathering
+way 1, from answer 1
+  * battle archie_gathering Lost
+=== Hub_Keep.Ariana
+from Ariana at 9,5 of Hub_Keep
+way 0
+  Ariana> We sailed all night on a rumour. I am in no mood for children.
+  Ariana> ...Go. Before I change my mind.
+  * battle ariana_gathering Won
+  + FLAG_KEEP_ARIANA_BEATEN
+  + beaten ariana_gathering
+way 1, from answer 1
+  * battle ariana_gathering Lost
+=== Hub_Keep.Celosia
+from Celosia at 33,5 of Hub_Keep
+way 0
+  Celosia> The boss believes his weapon is here. I believe it would be rude to let you interrupt him.
+  Celosia> How unfashionable, to lose. Go, then.
+  * battle celosia_gathering Won
+  + FLAG_KEEP_CELOSIA_BEATEN
+  + beaten celosia_gathering
+way 1, from answer 1
+  * battle celosia_gathering Lost
+=== Hub_Keep.Cyrus
+from Cyrus at 3,3 of Hub_Keep
+way 0
+  Cyrus> I was told the machine I built at the mountain's top had been rebuilt in this fort. I came to see if it was true.
+  Cyrus> There is no machine. Only you. Then let us finish what was left unfinished.
+  Cyrus> ...Again. A world without spirit would never have lost to you. Perhaps that is the answer I came for.
+  * battle cyrus_gathering Won
+  + FLAG_KEEP_CYRUS_BEATEN
+  + beaten cyrus_gathering
+way 1, from answer 1
+  * battle cyrus_gathering Lost
+=== Hub_Keep.Ghetsis
+from Ghetsis at 27,3 of Hub_Keep
+way 0
+  Ghetsis> A letter swore my great machine had been raised from the sea floor. I came to claim what is mine.
+  Ghetsis> And I find you. Every time, it is you! Then I will crush you here, where nobody will see.
+  Ghetsis> Impossible... Impossible! Whoever lured me here will regret it.
+  * battle ghetsis_gathering Won
+  + FLAG_KEEP_GHETSIS_BEATEN
+  + beaten ghetsis_gathering
+way 1, from answer 1
+  * battle ghetsis_gathering Lost
+=== Hub_Keep.Giovanni
+from Giovanni at 9,3 of Hub_Keep
+way 0
+  Giovanni> A note said my old machine had surfaced here, the one that made my Pokémon stronger than any other's. A lie, it seems.
+  Giovanni> But you are no lie. Come, then. Show me how far you have climbed.
+  Giovanni> Ha... I was a fool to come. And a fool to fight you. Twice the fool, then.
+  * battle giovanni_gathering Won
+  + FLAG_KEEP_GIOVANNI_BEATEN
+  + beaten giovanni_gathering
+way 1, from answer 1
+  * battle giovanni_gathering Lost
+=== Hub_Keep.Ismene
+from Ismene Quill at 21,3 of Hub_Keep
+way 0
+  Ismene> Bravo! Bravo! Every act played, every villain beaten, and in front of a full house. Well, a full fort.
+  Ismene> Yes, it was me. I keep the Laurel Gallery's records. I've read every plan those leaders ever made, and every way you foiled them.
+  Ismene> So I wrote each of them a little note: your old machine has come back. And here they all came, cross as cats!
+  Ismene> I only wanted to see the whole story on one stage. And now, the finale. Mine!
+  Ismene> Oh, wonderful! What an ending! Places, everyone, places!
+  > The keep's old curtains swept shut across the stage bay...
+  > ...and opened on every leader in a row. Somewhat against their will, they bowed.
+  > Ismene curtsied, and a little sign appeared at the door: TICKETS FOR NEXT SEASON, PLEASE ENQUIRE WITHIN.
+  Ismene> Thank you, thank you! The leaders have agreed to stay on. Well, they didn't disagree. They'll battle anyone, once a day.
+  Ismene> And you, Champion, have earned a title of your own. Do come back next season!
+  > Lucas received 3 × Rare Candy!
+  > Lucas put them away in the Medicine pocket.
+  * scene Hub_Keep.TheShow
+  * battle ismene_gathering Won
+  * fade out
+  * fade in
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_GATHERING_DONE
+  + beaten ismene_gathering
+  + seen Hub_Keep.TheShow
+way 1, from answer 1
+  * battle ismene_gathering Lost
+  * scene over, unseen
+=== Hub_Keep.Jupiter
+from Jupiter at 3,5 of Hub_Keep
+way 0
+  Jupiter> A rumour dragged us across the sea, and now a Champion blocks the corridor. What a day.
+  Jupiter> Hmph. Go on, then. Don't expect him to thank you.
+  * battle jupiter_gathering Won
+  + FLAG_KEEP_JUPITER_BEATEN
+  + beaten jupiter_gathering
+way 1, from answer 1
+  * battle jupiter_gathering Lost
+=== Hub_Keep.Looker
+from Looker at 16,15 of Hub_Keep
+way 0
+  Looker> Every leader in one fort, each sure their old machine is here. I have never seen so many angry people in one place!
+  Looker> Shall we sail back to the harbour?
+  > Lucas sailed back with Looker...
+  ? Shall we sail back to the harbour? = Yes
+  * fade out
+  * warp Hub 40 42
+  * fade in
+way 1, from answer 1
+  ? Shall we sail back to the harbour? = No
+=== Hub_Keep.Lysandre
+from Lysandre at 33,3 of Hub_Keep
+way 0
+  Lysandre> I was told my ultimate weapon had been raised and brought to this fort. A beautiful lie, and I believed it.
+  Lysandre> Since you are here instead, let us see whether the world you chose was worth choosing.
+  Lysandre> ...It was. I suppose that is the answer I came for.
+  * battle lysandre_gathering Won
+  + FLAG_KEEP_LYSANDRE_BEATEN
+  + beaten lysandre_gathering
+way 1, from answer 1
+  * battle lysandre_gathering Lost
+=== Hub_Keep.Mars
+from Mars at 3,6 of Hub_Keep
+way 0
+  Mars> You again! Our boss says his old machine is in this fort, and nobody's getting near it before he does.
+  Mars> Ugh, fine! Go and argue with him yourself. He's in a mood.
+  * battle mars_gathering Won
+  + FLAG_KEEP_MARS_BEATEN
+  + beaten mars_gathering
+way 1, from answer 1
+  * battle mars_gathering Lost
+=== Hub_Keep.Maxie
+from Maxie at 14,3 of Hub_Keep
+way 0
+  Maxie> My machine to widen the land, rebuilt here? I had to see it. And of course Archie had to see his.
+  Maxie> There is no machine. There is only you, again. Fufufu... Very well.
+  Maxie> I misjudged everything once more. At least I misjudged it in good company.
+  * battle maxie_gathering Won
+  + FLAG_KEEP_MAXIE_BEATEN
+  + beaten maxie_gathering
+way 1, from answer 1
+  * battle maxie_gathering Lost
+=== Hub_Keep.Shelly
+from Shelly at 15,5 of Hub_Keep
+way 0
+  Shelly> Ahahaha! If the boss's machine is here, Team Aqua takes it home. You won't stop us this time!
+  Shelly> Fine, fine! Go and see the bosses. Mind your ears.
+  * battle shelly_gathering Won
+  + FLAG_KEEP_SHELLY_BEATEN
+  + beaten shelly_gathering
+way 1, from answer 1
+  * battle shelly_gathering Lost
+=== Hub_Keep.Tabitha
+from Tabitha at 15,6 of Hub_Keep
+way 0
+  Tabitha> Hoo hah! Team Magma and Team Aqua in one room, and both bosses sure the same fort hides their machine!
+  Tabitha> Hoo... You're as tough as ever. Go on, then, before they start shouting again.
+  * battle tabitha_gathering Won
+  + FLAG_KEEP_TABITHA_BEATEN
+  + beaten tabitha_gathering
+way 1, from answer 1
+  * battle tabitha_gathering Lost
+=== Hub_Keep.Xerosic
+from Xerosic at 33,6 of Hub_Keep
+way 0
+  Xerosic> I came to see this machine with my own eyes. Science demands it! And I find a Champion instead.
+  Xerosic> Fascinating. Still undefeatable. Go on, the boss is just behind me.
+  * battle xerosic_gathering Won
+  + FLAG_KEEP_XEROSIC_BEATEN
+  + beaten xerosic_gathering
+way 1, from answer 1
+  * battle xerosic_gathering Lost
+=== Hub_Keep.Zinzolin
+from Zinzolin at 27,6 of Hub_Keep
+way 0
+  Zinzolin> A letter told Lord Ghetsis his great machine had been raised from the sea. And here you are. How tiresome.
+  Zinzolin> Cold, cold, cold... Go, then. He is expecting nobody, least of all you.
+  * battle zinzolin_gathering Won
+  + FLAG_KEEP_ZINZOLIN_BEATEN
+  + beaten zinzolin_gathering
+way 1, from answer 1
+  * battle zinzolin_gathering Lost
+=== Hub_Office.Crates
+from Crates at 1,2 of Hub_Office
+from Crates at 1,3 of Hub_Office
+from Crates at 11,2 of Hub_Office
+from Crates at 11,7 of Hub_Office
+way -
+  > Boxes stacked to the ceiling, every one stamped CASE CLOSED. Some of the stamps look very old.
+=== Hub_Office.Looker
+from Looker at 6,3 of Hub_Office
+way -
+  Looker> Good day. I am a clerk, and I know nothing. Nothing at all. Please come back...
+  Looker> ...Ah. It is you, Lucas! You see through my disguise at once. A fine eye, as always.
+  Looker> Yes, it is I, Looker. The Bureau is closed, which is why this is not the Bureau.
+  Looker> This is the Open Door Agency. Anyone with a puzzle may walk in, and I take a case in each region whose Champion you are.
+  Looker> No case waits for you today. When you are Champion of another region, there will be one. There always is.
+  * scene Hub_Office.AgencyOpens
+  * endscene
+  + FLAG_AGENCY_MET
+  + seen Hub_Office.AgencyOpens
+=== Hub_Office.Maps
+from Maps at 10,2 of Hub_Office
+from Maps at 2,2 of Hub_Office
+way -
+  > Maps of every region, pinned and scribbled over, with string running from town to town.
 === IronIslandHouse.Byron
 from Byron at 5,5 of IronIslandHouse
 way -
@@ -17811,6 +18051,33 @@ way 0
 way 1, from answer 1
   Mr. Briney> Go on and deliver your letter, then. I'll wait right here.
   ? Ahoy! Shall we sail back to my cottage on Route 104? = No
+=== dewford_town.CaseHoennCustoms
+from Customs Officer at 69,373 of Hoenn
+way -
+  Customs Officer> Customs, Dewford Town. Everything that lands here gets weighed, stamped and written down.
+=== dewford_town.CaseHoennFisherman
+from Old Fisherman at 63,375 of Hoenn
+way -
+  Old Fisherman> I keep a tide table in my pocket. A fisherman who doesn't know the tide goes home with nothing.
+=== dewford_town.CaseHoennOttoline
+from Ottoline Marsh at 73,374 of Hoenn
+way 0
+  Ottoline> Looker's sent a Champion after me? I'm flattered. Yes, there's no salt in those crates. Never was.
+  Ottoline> Lamp parts pay a fortune in duty, and the keepers can't afford it. But I'll not hand my boat over without a fight!
+  Ottoline> ...Run aground. Fair's fair. I'll pay the duty, every coin of it. Tell Looker he'll have it in writing.
+  * scene dewford_town.OttolineFaced
+  * battle case_hoenn_ottoline Won
+  * endscene
+  + FLAG_CASE_HOENN_CULPRIT
+  + beaten case_hoenn_ottoline
+  + seen dewford_town.OttolineFaced
+way 1, from answer 1
+  * battle case_hoenn_ottoline Lost
+  * scene over, unseen
+=== dewford_town.CaseHoennSailor
+from Sailor at 76,373 of Hoenn
+way -
+  Sailor> Heave, and haul, and home again! Sorry, I sing when I work. And when I don't.
 === dewford_town.OldRodFisherman
 from Fisherman at 72,376 of Hoenn
 way 0
@@ -19175,6 +19442,25 @@ way 1, from answer 1
 from Buck at 657,426 of Sinnoh
 way -
   Buck> Who are those two? Everybody who goes up against them comes back down again. I can't take my eyes off it!
+=== fight_area.Deckhand
+from Deckhand at 633,435 of Sinnoh
+way -
+  Deckhand> Hauling crates all day. My arms will be twice as long by the end of the season.
+=== fight_area.Ferren
+from Ferren Dray at 622,434 of Sinnoh
+way 0
+  Ferren> Looker's helper, eh? So somebody found the gap in my log.
+  Ferren> Who'd doubt a ferry captain over a hungry Gible? Nobody, until you. Fine. Let's settle it on the pier!
+  Ferren> ...Shipwrecked. All right, all right. I'll own up at the villa and pay for every crate. Tell Looker I'll be at his door.
+  * scene fight_area.FerrenFaced
+  * battle case_sinnoh_ferren Won
+  * endscene
+  + FLAG_CASE_SINNOH_CULPRIT
+  + beaten case_sinnoh_ferren
+  + seen fight_area.FerrenFaced
+way 1, from answer 1
+  * battle case_sinnoh_ferren Lost
+  * scene over, unseen
 === fight_area.Ferry
 from Sailor at 619,435 of Sinnoh
 way 0
@@ -19204,6 +19490,10 @@ way 1, from answer 1
 from Flint at 654,424 of Sinnoh
 way -
   Flint> You there! Think you're up to it? Find yourself a partner and we'll see how hot you burn!
+=== fight_area.HarbourClerk
+from Harbour Clerk at 626,433 of Sinnoh
+way -
+  Harbour Clerk> Every ferry that comes and goes is written in my log. Every one, to the minute.
 === fight_area.InverseBattle
 from Scientist at 662,432 of Sinnoh
 way 0.0
@@ -22950,6 +23240,29 @@ way 0
 way 1, from answer 1
   * battle kalos_az_1 Lost
   * scene over, unseen
+=== kiloude_city.CaseKalosOdile
+from Odile Ferrand at 560,354 of Kalos
+way 0
+  Odile> So Looker has found me out. Yes, I take the painting out of its frame each night. I bring it here, and I bring it back.
+  Odile> My students can't learn from a postcard. They must see the real brushstrokes! Still, if you insist, we shall duel.
+  Odile> ...A masterful stroke. Very well. I'll ask the museum properly. Tell Looker I'll call at his agency.
+  * scene kiloude_city.OdileFaced
+  * battle case_kalos_odile Won
+  * endscene
+  + FLAG_CASE_KALOS_CULPRIT
+  + beaten case_kalos_odile
+  + seen kiloude_city.OdileFaced
+way 1, from answer 1
+  * battle case_kalos_odile Lost
+  * scene over, unseen
+=== kiloude_city.CaseKalosPainter
+from Painter at 583,352 of Kalos
+way -
+  Painter> Kiloude's light is the best in Kalos. I paint the sea every morning, and every morning it's different.
+=== kiloude_city.CaseKalosPorter
+from Porter at 548,351 of Kalos
+way -
+  Porter> I carry the bags off the train from Lumiose. Big ones, small ones, ones that bark.
 === kiloude_city.RivalKiloude
 from {rival} at 565,336 of Kalos
 way 0
@@ -24625,6 +24938,10 @@ way -
   = VAR_KALOS_STORY 0 -> 10
   = VAR_OBJECTIVE 0 -> 510
   + seen lumiose_city.The professor's assistants
+=== lumiose_city.CaseKalosGuard
+from Night Guard at 368,318 of Kalos
+way -
+  Night Guard> I guard the museum by night. Nothing ever goes missing on my watch. Well. Nothing that isn't back by morning.
 === lumiose_city.Dexio
 from Dexio at 360,409 of Kalos
 way -
@@ -29065,6 +29382,33 @@ way -
 from the tile read at 48,76 of JubilifeVillage
 way -
   > A smooth grey stone, warm to the touch. The air above it shimmers faintly.
+=== pwt.CaseUnovaIsidore
+from Isidore Calloway at 200,467 of Unova
+way 0
+  Isidore> Ah. Looker's investigator. You'll have seen my little smudge, then. One afternoon, two fees. It seemed so tidy.
+  Isidore> Well, this is the World Tournament. Disputes here are settled one way. Shall we?
+  Isidore> ...Eliminated in the first round. Very well. I'll refund the second fee and resign the stamp. Tell Looker, please.
+  * scene pwt.IsidoreFaced
+  * battle case_unova_isidore Won
+  * endscene
+  + FLAG_CASE_UNOVA_CULPRIT
+  + beaten case_unova_isidore
+  + seen pwt.IsidoreFaced
+way 1, from answer 1
+  * battle case_unova_isidore Lost
+  * scene over, unseen
+=== pwt.CaseUnovaJanitor
+from Janitor at 213,455 of Unova
+way -
+  Janitor> I keep the keys to every door in the World Tournament. And I write down who borrows them. Every time.
+=== pwt.CaseUnovaOrganiser
+from Organiser at 205,458 of Unova
+way -
+  Organiser> I've booked the hall for my club's tournament. I asked months ago! The papers are all in order.
+=== pwt.CaseUnovaRival
+from Organiser at 215,459 of Unova
+way -
+  Organiser> Somebody else says they've booked the hall on my afternoon. Nonsense! I booked it myself.
 === pwt.PlasmaAtThePier
 from the trigger at 196,476 of Unova
 way -
@@ -29183,6 +29527,10 @@ way 0
 way 1, from answer 1
   Gardenia> Oh. Next time, then! I'll be in the garden.
   ? Lucas! What a pretty house. May I come in? I promise not to rearrange your plants. = No
+=== resort_area.GibleGirl
+from Lass at 812,458 of Sinnoh
+way -
+  Lass> My Gible gets the blame for everything around here. It only ever chews on its own tail!
 === resort_area.GiveVilla
 from the trigger at 815,472 of Sinnoh
 way 0
@@ -29240,6 +29588,10 @@ way 1, from answer 1
 from Boy at 816,473 of Sinnoh
 way -
   Boy> A Villa, going free! Walk up the path to me and it's yours.
+=== resort_area.VillaCaretaker
+from Caretaker at 819,471 of Sinnoh
+way -
+  Caretaker> Someone keeps raiding the villa's larder before every party. Everyone blames that little Gible down the road.
 === reversal_mountain_2.BiancaOffersToPart
 from the trigger at 24,26 of ReversalMountain_1
 way -
@@ -32498,6 +32850,33 @@ way -
 === royal_avenue.RoyalScene
 from the trigger at 238,216 of Akala
 way -
+=== ruins_of_alph.CaseJohtoCamper
+from Camper at 436,280 of Johto
+way -
+  Camper> I camp out here for the quiet. The ruins at night are something else. Spooky, but nice.
+=== ruins_of_alph.CaseJohtoMirelle
+from Mirelle Dunn at 433,291 of Johto
+way 0
+  Mirelle> Oh dear. You've worked it out, haven't you? Yes, the chalk is mine. My pupils and I come here at night.
+  Mirelle> The ruins teach better than any book. But if you mean to stop us, you'll have to pass my test first!
+  Mirelle> ...Top marks. Very well, I'll go and see the researchers myself, and ask properly. Tell Looker, would you?
+  * scene ruins_of_alph.MirelleFaced
+  * battle case_johto_mirelle Won
+  * endscene
+  + FLAG_CASE_JOHTO_CULPRIT
+  + beaten case_johto_mirelle
+  + seen ruins_of_alph.MirelleFaced
+way 1, from answer 1
+  * battle case_johto_mirelle Lost
+  * scene over, unseen
+=== ruins_of_alph.CaseJohtoPupil
+from School Kid at 429,291 of Johto
+way -
+  School Kid> We came on a school trip! I know all the Unown letters. Well, nearly all of them.
+=== ruins_of_alph.CaseJohtoResearcher
+from Researcher at 432,268 of Johto
+way -
+  Researcher> Every morning, chalk all over the paving. Copies of the carvings! We scrub, and the next morning there are more.
 === ruins_of_alph_northeast_entrance_first_room.Panel
 from the tile read at 6,6 of RuinsOfAlph_NortheastChamber
 way 0
@@ -36394,6 +36773,10 @@ way -
 from Regigigas at 14,5 of TwistMountain_Chamber
 way -
   > A colossus of stone sleeps here, unmoving.\nIt seems to be waiting for something.
+=== two_island.CaseKantoKeeper
+from Harbour Keeper at 13,46 of TwoIsland
+way -
+  Harbour Keeper> I keep the harbour tidy. Ropes coiled, nets dried, lost things kept safe until someone comes for them.
 === two_island.Clerk
 from Clerk at 28,44 of TwoIsland
 way -
@@ -38713,6 +39096,29 @@ from Suicune at 1330,328 of Johto
 from the trigger at 1323,331 of Johto
 from the trigger at 1334,326 of Johto
 way -
+=== vermilion_city.CaseKantoClerk
+from Ticket Clerk at 290,229 of Kanto
+way -
+  Ticket Clerk> Tickets for the Sevii ferry! Every seat counted, every stub torn. That's my job.
+=== vermilion_city.CaseKantoDov
+from Dov Harlan at 293,229 of Kanto
+way 0
+  Dov> Looker's friend, eh? So somebody found my stub. Thought a ghost story would keep folk from asking.
+  Dov> Fine. If I'm to be caught, I'll be caught fighting. Right here on the quay!
+  Dov> ...Sunk. All right. I'll pay back every fare I took twice. Tell Looker I'll be at his door, ghost and all.
+  * scene vermilion_city.DovFaced
+  * battle case_kanto_dov Won
+  * endscene
+  + FLAG_CASE_KANTO_CULPRIT
+  + beaten case_kanto_dov
+  + seen vermilion_city.DovFaced
+way 1, from answer 1
+  * battle case_kanto_dov Lost
+  * scene over, unseen
+=== vermilion_city.CaseKantoFisherman
+from Fisherman at 299,229 of Kanto
+way -
+  Fisherman> I fish off this quay every evening. The ferry comes and goes, and the fish don't mind it a bit.
 === vermilion_city.CheckTicket
 from the trigger at 286,233 of Kanto
 from the trigger at 287,233 of Kanto

@@ -27,13 +27,11 @@ label Cases
   if flag FLAG_GATHERING_CALLED goto Boat
   circuit count
   if result == 0 goto CaseList
-  scene "LookerCalls"
   say "{player}, you are here! Strange news from the harbour. Boats from every region have been sailing to Grayfall Islet."
   say "On them, the leaders of the old villain teams. Each one heard that their old machine had come back, hidden in the keep out there."
   say "Somebody gathered them on purpose. I must know who. And I would feel much braver with a Champion beside me."
   setflag FLAG_GATHERING_CALLED
   setflag FLAG_KEEP_ISMENE_AWAY
-  endscene
 label Boat
   ask "My boat is at the quay. Shall we sail to Grayfall Keep?"
   if no goto CaseList
@@ -43,8 +41,24 @@ label Boat
   fade in 0.8
   end
 label CaseList
-  if not flag SinnohHallOfFame goto NoCase
+  # One open case at a time, in the chain's order: the first region finished whose case isn't closed
+  if not flag SinnohHallOfFame goto AfterSinnoh
   if not flag FLAG_CASE_SINNOH_CLOSED goto Sinnoh
+label AfterSinnoh
+  if not flag KantoHallOfFame goto AfterKanto
+  if not flag FLAG_CASE_KANTO_CLOSED goto Kanto
+label AfterKanto
+  if not flag JohtoHallOfFame goto AfterJohto
+  if not flag FLAG_CASE_JOHTO_CLOSED goto Johto
+label AfterJohto
+  if not flag HoennHallOfFame goto AfterHoenn
+  if not flag FLAG_CASE_HOENN_CLOSED goto Hoenn
+label AfterHoenn
+  if not flag UnovaHallOfFame goto AfterUnova
+  if not flag FLAG_CASE_UNOVA_CLOSED goto Unova
+label AfterUnova
+  if not flag KalosHallOfFame goto NoCase
+  if not flag FLAG_CASE_KALOS_CLOSED goto Kalos
   goto NoCase
 
 
@@ -95,6 +109,251 @@ label SinnohClose
   givemoney 10000
   give "Heart Scale"
   say "When you are Champion of another region, come back. The door is always open."
+  end
+
+
+# ------------------------------------------------------------------ Kanto: the Ferry's Extra Passenger (plan 41 · EG8)
+
+label Kanto
+  if flag FLAG_CASE_KANTO_CULPRIT goto KantoClose
+  if flag FLAG_CASE_KANTO_TAKEN goto KantoClues
+  say "A case from Kanto. On the ferry to the Sevii Islands, one seat is paid for on every sailing. And on every sailing, it is empty."
+  say "The crew say a ghost rides in it. Ghosts do not buy tickets, {player}. Somebody does."
+  ask "Will you take the case of the Ferry's Extra Passenger?"
+  if no goto Later
+  setflag FLAG_CASE_KANTO_TAKEN
+  say "Excellent! Speak to the ticket clerk and the old fisherman on Vermilion City's quay. Something was left behind on Two Island too."
+  say "Come back when you have found the clues. Then we deduce!"
+  end
+label KantoClues
+  if not flag FLAG_CASE_KANTO_CLUE_STUB goto KantoMore
+  if not flag FLAG_CASE_KANTO_CLUE_DUFFEL goto KantoMore
+  if not flag FLAG_CASE_KANTO_CLUE_REMARK goto KantoMore
+  if var VAR_CASE_KANTO_DEDUCED >= 2 goto KantoQuay
+  if var VAR_CASE_KANTO_DEDUCED == 1 goto KantoSecond
+  say "You have every clue! Now, we think. First question."
+  deduce kanto 1
+  if result == 0 goto Wrong
+  setvar VAR_CASE_KANTO_DEDUCED 1
+  say "Precisely! The office tears its stubs on the left. That one was torn on the right. Someone else sells passage on that ferry."
+label KantoSecond
+  say "Second question, and the important one."
+  deduce kanto 2
+  if result == 0 goto Wrong
+  setvar VAR_CASE_KANTO_DEDUCED 2
+  setflag FLAG_CASE_KANTO_DOV_WAITS
+  say "Yes! A last traveller waved up the cargo ramp after the count. The seat stays empty because the passenger rides in the hold!"
+  say "Dov Harlan, the dockhand. He will be on Vermilion City's quay. Go and face him, {player}. I am needed here, filing."
+  end
+label KantoQuay
+  say "Dov Harlan the dockhand waits on Vermilion City's quay. Go and face him!"
+  end
+label KantoMore
+  say "There are clues still to find. The ticket clerk and the fisherman on Vermilion's quay, and the harbour on Two Island."
+  end
+label KantoClose
+  say "Dov came to my door. He paid for that seat at the office every sailing, then sold the passage again on the quay."
+  say "Twice the money, and a ghost story to keep anyone from looking. The case of the Ferry's Extra Passenger is closed!"
+  setflag FLAG_CASE_KANTO_CLOSED
+  givemoney 12000
+  give "Big Pearl"
+  say "Here is the agency's fee, with my thanks. When you are Champion of another region, come back."
+  end
+
+
+# ------------------------------------------------------------------ Johto: the Alph Etchings (plan 41 · EG8)
+
+label Johto
+  if flag FLAG_CASE_JOHTO_CULPRIT goto JohtoClose
+  if flag FLAG_CASE_JOHTO_TAKEN goto JohtoClues
+  say "A case from Johto. Every morning, the researchers at the Ruins of Alph find chalk marks on the paving."
+  say "Copies of the carvings on the walls, made overnight. Vandals, they say. But vandals do not copy so neatly."
+  ask "Will you take the case of the Alph Etchings?"
+  if no goto Later
+  setflag FLAG_CASE_JOHTO_TAKEN
+  say "Excellent! Speak to the researcher, the camper and the schoolchild who visit the ruins. Each of them has seen something."
+  say "Come back when you have found the clues. Then we deduce!"
+  end
+label JohtoClues
+  if not flag FLAG_CASE_JOHTO_CLUE_CHALK goto JohtoMore
+  if not flag FLAG_CASE_JOHTO_CLUE_LANTERNS goto JohtoMore
+  if not flag FLAG_CASE_JOHTO_CLUE_DUST goto JohtoMore
+  if var VAR_CASE_JOHTO_DEDUCED >= 2 goto JohtoRuins
+  if var VAR_CASE_JOHTO_DEDUCED == 1 goto JohtoSecond
+  say "You have every clue! Now, we think. First question."
+  deduce johto 1
+  if result == 0 goto Wrong
+  setvar VAR_CASE_JOHTO_DEDUCED 1
+  say "Precisely! Every copy is labelled, letter by letter, like a blackboard. This is not mischief. It is a lesson!"
+label JohtoSecond
+  say "Second question, and the important one."
+  deduce johto 2
+  if result == 0 goto Wrong
+  setvar VAR_CASE_JOHTO_DEDUCED 2
+  setflag FLAG_CASE_JOHTO_MIRELLE_WAITS
+  say "Yes! Chalk on her sleeves every morning, and a quiz on the Unown. A teacher brings her class to the ruins by night."
+  say "Mirelle Dunn, the schoolteacher. She will be at the ruins. Go and speak to her, {player}. Gently. She means well."
+  end
+label JohtoRuins
+  say "Mirelle Dunn the schoolteacher waits at the Ruins of Alph. Go and speak to her!"
+  end
+label JohtoMore
+  say "There are clues still to find. The researcher, the camper and the schoolchild at the Ruins of Alph."
+  end
+label JohtoClose
+  say "Miss Dunn and the researchers have made a bargain. Her class may study the ruins by day, and the paving stays clean."
+  say "The case of the Alph Etchings is closed! Here is the agency's fee, with my thanks."
+  setflag FLAG_CASE_JOHTO_CLOSED
+  givemoney 12000
+  give "Heart Scale"
+  say "When you are Champion of another region, come back. The door is always open."
+  end
+
+
+# ------------------------------------------------------------------ Hoenn: the Salt Run (plan 41 · EG8)
+
+label Hoenn
+  if flag FLAG_CASE_HOENN_CULPRIT goto HoennClose
+  if flag FLAG_CASE_HOENN_TAKEN goto HoennClues
+  say "A case from Hoenn. Crates marked SALT come in to Dewford Town on a little boat. Salt is heavy. These crates are light as air."
+  say "Dewford's customs officer is puzzled, and so am I. What weighs nothing and needs a false name?"
+  ask "Will you take the case of the Salt Run?"
+  if no goto Later
+  setflag FLAG_CASE_HOENN_TAKEN
+  say "Excellent! Speak to the customs officer, the sailor and the old fisherman in Dewford Town."
+  say "Come back when you have found the clues. Then we deduce!"
+  end
+label HoennClues
+  if not flag FLAG_CASE_HOENN_CLUE_SEAL goto HoennMore
+  if not flag FLAG_CASE_HOENN_CLUE_SONG goto HoennMore
+  if not flag FLAG_CASE_HOENN_CLUE_TIDE goto HoennMore
+  if var VAR_CASE_HOENN_DEDUCED >= 2 goto HoennJetty
+  if var VAR_CASE_HOENN_DEDUCED == 1 goto HoennSecond
+  say "You have every clue! Now, we think. First question."
+  deduce hoenn 1
+  if result == 0 goto Wrong
+  setvar VAR_CASE_HOENN_DEDUCED 1
+  say "Precisely! A second stamp on a customs seal. The crates were opened after customs, and sealed again."
+label HoennSecond
+  say "Second question, and the important one."
+  deduce hoenn 2
+  if result == 0 goto Wrong
+  setvar VAR_CASE_HOENN_DEDUCED 2
+  setflag FLAG_CASE_HOENN_OTTOLINE_WAITS
+  say "Yes! The crew sing of lamps, not salt. Lamp parts are light, and they pay a far higher duty."
+  say "Skipper Ottoline Marsh. She will be on Dewford Town's shore. Go and face her, {player}. Mind the spray."
+  end
+label HoennJetty
+  say "Skipper Ottoline Marsh waits on Dewford Town's shore. Go and face her!"
+  end
+label HoennMore
+  say "There are clues still to find. The customs officer, the sailor and the old fisherman in Dewford Town."
+  end
+label HoennClose
+  say "Skipper Marsh has paid her duty in full, and the lamps went where they were meant to: Dewford's own lighthouse keepers."
+  say "The case of the Salt Run is closed! Here is the agency's fee, with my thanks."
+  setflag FLAG_CASE_HOENN_CLOSED
+  givemoney 14000
+  give "Star Piece"
+  say "When you are Champion of another region, come back. The door is always open."
+  end
+
+
+# ------------------------------------------------------------------ Unova: the Double-Booked Hall (plan 41 · EG8)
+
+label Unova
+  if flag FLAG_CASE_UNOVA_CULPRIT goto UnovaClose
+  if flag FLAG_CASE_UNOVA_TAKEN goto UnovaClues
+  say "A case from Unova. Two tournaments are booked into the World Tournament for the same afternoon."
+  say "Both organisers swear they asked first. Both have the papers to prove it. One of them, or both, has been fooled."
+  ask "Will you take the case of the Double-Booked Hall?"
+  if no goto Later
+  setflag FLAG_CASE_UNOVA_TAKEN
+  say "Excellent! Speak to the two organisers outside the World Tournament, and to the janitor who keeps the keys."
+  say "Come back when you have found the clues. Then we deduce!"
+  end
+label UnovaClues
+  if not flag FLAG_CASE_UNOVA_CLUE_SCHEDULE goto UnovaMore
+  if not flag FLAG_CASE_UNOVA_CLUE_SMUDGE goto UnovaMore
+  if not flag FLAG_CASE_UNOVA_CLUE_KEYS goto UnovaMore
+  if var VAR_CASE_UNOVA_DEDUCED >= 2 goto UnovaHall
+  if var VAR_CASE_UNOVA_DEDUCED == 1 goto UnovaSecond
+  say "You have every clue! Now, we think. First question."
+  deduce unova 1
+  if result == 0 goto Wrong
+  setvar VAR_CASE_UNOVA_DEDUCED 1
+  say "Precisely! A name rubbed out and another written over it. The afternoon was sold, then sold again."
+label UnovaSecond
+  say "Second question, and the important one."
+  deduce unova 2
+  if result == 0 goto Wrong
+  setvar VAR_CASE_UNOVA_DEDUCED 2
+  setflag FLAG_CASE_UNOVA_ISIDORE_WAITS
+  say "Yes! The office key, taken out after hours on the very night the second booking was written."
+  say "Isidore Calloway, the hall's clerk. He will be at the World Tournament's door. Go and face him, {player}!"
+  end
+label UnovaHall
+  say "Isidore Calloway the clerk waits at the World Tournament's door. Go and face him!"
+  end
+label UnovaMore
+  say "There are clues still to find. The two organisers and the janitor, outside the World Tournament."
+  end
+label UnovaClose
+  say "Mr. Calloway has returned the second fee, and the two organisers have agreed to share the afternoon. One morning, one evening."
+  say "The case of the Double-Booked Hall is closed! Here is the agency's fee, with my thanks."
+  setflag FLAG_CASE_UNOVA_CLOSED
+  givemoney 14000
+  give "Nugget"
+  say "When you are Champion of another region, come back. The door is always open."
+  end
+
+
+# ------------------------------------------------------------------ Kalos: the Borrowed Masterpiece (plan 41 · EG8, provisional)
+
+label Kalos
+  if flag FLAG_CASE_KALOS_CULPRIT goto KalosClose
+  if flag FLAG_CASE_KALOS_TAKEN goto KalosClues
+  say "A case from Kalos. A painting in Lumiose City's museum leaves its frame every night. By morning, it is back."
+  say "Nothing is ever missing when the doors open. And yet the night guard swears the frame is empty at midnight."
+  ask "Will you take the case of the Borrowed Masterpiece?"
+  if no goto Later
+  setflag FLAG_CASE_KALOS_TAKEN
+  say "Excellent! Speak to the guard by the museum in Lumiose City, then to the porter and the painter in Kiloude City."
+  say "Come back when you have found the clues. Then we deduce!"
+  end
+label KalosClues
+  if not flag FLAG_CASE_KALOS_CLUE_SCREWS goto KalosMore
+  if not flag FLAG_CASE_KALOS_CLUE_TICKET goto KalosMore
+  if not flag FLAG_CASE_KALOS_CLUE_VARNISH goto KalosMore
+  if var VAR_CASE_KALOS_DEDUCED >= 2 goto KalosStreet
+  if var VAR_CASE_KALOS_DEDUCED == 1 goto KalosSecond
+  say "You have every clue! Now, we think. First question."
+  deduce kalos 1
+  if result == 0 goto Wrong
+  setvar VAR_CASE_KALOS_DEDUCED 1
+  say "Precisely! Screws worn bright from turning. The painting is taken out of its frame, and the frame never moves."
+label KalosSecond
+  say "Second question, and the important one."
+  deduce kalos 2
+  if result == 0 goto Wrong
+  setvar VAR_CASE_KALOS_DEDUCED 2
+  setflag FLAG_CASE_KALOS_ODILE_WAITS
+  say "Yes! A long flat parcel on the last train to Kiloude, and back on the first. Only the museum's restorer has the keys."
+  say "Odile Ferrand. She will be in Kiloude City's square. Go and face her, {player}!"
+  end
+label KalosStreet
+  say "Odile Ferrand the restorer waits in Kiloude City's square. Go and face her!"
+  end
+label KalosMore
+  say "There are clues still to find. The guard by Lumiose City's museum, and the porter and the painter in Kiloude City."
+  end
+label KalosClose
+  say "Madame Ferrand took the painting to Kiloude so her students could copy it from life. The museum has made her a teacher there."
+  say "By day, and with the painting on its wall. The case of the Borrowed Masterpiece is closed! Here is the agency's fee."
+  setflag FLAG_CASE_KALOS_CLOSED
+  givemoney 15000
+  give "Big Pearl"
+  say "You are a detective as much as a Champion, {player}. When you are Champion of another region, come back."
   end
 
 

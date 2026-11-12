@@ -91,7 +91,10 @@ public class HubRegionTests
         // The Pokémon Center and the harbour hall are open; the plaza, the hall of Champions, the office and the arena wait
         foreach (var room in new[] { "Hub_PokemonCenter", "Hub_HarbourHall" })
             Assert.Contains(Town.Warps, w => w.TargetMap == room);
-        foreach (var shut in new[] { "Hub_Plaza", "Hub_HallOfChampions", "Hub_Office", "Hub_Arena" })
+        // (the hall of Champions, the office and the arena opened with plan 41 · EG2, EG4 and EG7)
+        foreach (var open in new[] { "Hub_HallOfChampions", "Hub_Office", "Hub_Arena" })
+            Assert.Contains(Town.Warps, w => w.TargetMap == open && !w.Shut);
+        foreach (var shut in new[] { "Hub_Plaza" })
             Assert.DoesNotContain(Town.Warps, w => w.TargetMap == shut && !w.Shut);
         Assert.Contains(MapNamed("Hub_PokemonCenter").Everyone, n => n.IsHealingNurse);
         Assert.Contains(MapNamed("Hub_PokemonCenter2F").Everyone, n => n.Script == "GlobalLink");

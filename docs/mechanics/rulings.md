@@ -11006,3 +11006,54 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   Ferren Dray waits on the pier once both are deduced (`FLAG_CASE_SINNOH_FERREN_WAITS`), battled with a team of ours at
   Sinnoh's post-game levels (62 to 64, `case_sinnoh_ferren`). Closed, Looker pays 10,000 and a Heart Scale (49a; the
   plaza's coins are owed to EG3).
+- **One case at a time** (EG8): Looker's `CaseList` goes down the chain (Sinnoh, Kanto, Johto, Hoenn, Unova, Kalos) and
+  offers the first region whose Hall of Fame is entered and whose case isn't closed, so a game begun in another region
+  meets its own region's case first. Every clue person stands on the map from the start and says a line of their own
+  until the case is taken, and a thank-you once it is closed; each culprit is shown only by `FLAG_CASE_<ID>_<NAME>_WAITS`,
+  set by Looker's second deduction and cleared by the battle. Each region's levels are its own post-game's, nominal
+  (no crossing's relevelling).
+- **Kanto's, the Ferry's Extra Passenger** (EG8): the ticket clerk (290,229) and the old fisherman (299,229) on
+  Vermilion City's quay, the harbour keeper on Two Island (13,46 of its map). The stub torn by no hand of the office's
+  shows passage sold outside it, the fisherman's remark names the dockhand who waves a last traveller up the cargo ramp
+  after the count; the duffel is the decoy. Dov Harlan waits on the quay (293,229; `case_kanto_dov`, a Sailor, 71 to
+  74). Closed: 12,000 and a Big Pearl.
+- **Johto's, the Alph Etchings** (EG8): a researcher (432,268), a camper (436,280) and a schoolchild (429,291) on the
+  Ruins of Alph's paving (`ruins_of_alph.txt`, the area's first script file). The labelled chalk copies show a lesson,
+  the teacher's chalky sleeves name her; the lanterns are the decoy. Mirelle Dunn waits at 433,291
+  (`case_johto_mirelle`, a Teacher, 71 to 74), light-hearted: her class may come by day. Closed: 12,000 and a Heart Scale.
+- **Hoenn's, the Salt Run** (EG8): the customs officer (69,373), a singing sailor (76,373) and an old fisherman with his
+  tide table (63,375) in Dewford Town. The seal's second stamp shows the crates opened after customs, the crew's song of
+  lamps says what they carry; the tide table is the decoy. Skipper Ottoline Marsh waits on the shore (73,374;
+  `case_hoenn_ottoline`, a Sailor, 76 to 78). Closed: 14,000 and a Star Piece.
+- **Unova's, the Double-Booked Hall** (EG8): two organisers (205,458 and 215,459) and the janitor (213,455) on the World
+  Tournament's plaza (`pwt`). The eraser smudge shows the afternoon sold twice, the key log puts the clerk in the office
+  after hours; the stamped schedule is the decoy. Isidore Calloway waits by the hall's door (200,467;
+  `case_unova_isidore`, a Clerk, 76 to 78). Closed: 14,000 and a Nugget.
+- **Kalos's, the Borrowed Masterpiece** (EG8, an outline of ours the user has not approved: plan 41's end): the night
+  guard by Lumiose City's museum (368,318), the station's porter (548,351) and a painter (583,352) in Kiloude City. The
+  bright screws show the canvas leaves its frame, the train ticket says where it goes; the varnish is the decoy. Odile
+  Ferrand, the museum's restorer, waits in Kiloude's square (560,354; `case_kalos_odile`, an Artist, 76 to 79). Closed:
+  15,000 and a Big Pearl.
+
+## The gathering at Grayfall Keep (2026-11-12, plan 41 · EG9, decisions 7 and 8)
+
+- **The outline** is the user's (the sheet's 12a, 13b, 14b, 15a, 16b, 59a, 60a): Ismene Quill, the Laurel Gallery's keeper
+  of records, lures each villain team's leader with a rumour that their old machine has come back; the gathering ends in a
+  showman's finale (curtains, bows, tickets for next season), and the leaders stay for a battle a day.
+- **It begins** at Looker's desk once a Laurel Circuit's final is won (`circuit count`): his news sets
+  `FLAG_GATHERING_CALLED` and takes Ismene from the gallery (`FLAG_KEEP_ISMENE_AWAY`), and his boat sails to the keep
+  whenever asked; Looker in the keep sails back.
+- **The keep** (`Hub_Keep`, a room of ours) is one hall with six bays under banners of our own colours (`PropType.Banner`):
+  Team Galactic (Mars, Jupiter, Cyrus), Team Rocket (Archer, Ariana, Giovanni), Hoenn's two (Tabitha, Shelly, Maxie and
+  Archie), the stage (Ismene), Team Plasma (Zinzolin, Ghetsis) and Team Flare (Xerosic, Celosia, Lysandre). A bay's people
+  stand only where its region's Hall of Fame is entered (`shownBy`); the admins stand in its mouth and each is hidden once
+  beaten (`FLAG_KEEP_<WHO>_BEATEN`), which opens the way. Rocket's bay is Kanto's.
+- **Every team is ours** (decision 7: `<who>_gathering`, round each team's types, no legendary), met at the Laurel
+  Circuit's level whenever fought (`ChampionsCircuit.IsGatheringTeam` in `StartTrainerBattle`).
+- **The show** opens once every leader of a finished region is beaten; Ismene's battle, then the finale sets
+  `FLAG_GATHERING_DONE`, pays 50,000 and three Rare Candies, and writes SHOWSTOPPER on the card's TITLES page. She goes
+  back to the gallery with a line of her own. Afterwards each leader battles once a day in their bay
+  (`FLAG_DAILY_KEEP_<WHO>`).
+- **The music**: the keep's song (`hub/keep`) and its battle song, the hub's boss-battle role (`hub/battle_galactic_boss`),
+  which the leaders' classes and Ismene's (Records Keeper) take there.
+- **Later regions** (Alola, Galar, Paldea) add a bay's people, a banner colour and their teams when they are finished.

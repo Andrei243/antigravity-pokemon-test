@@ -113,3 +113,64 @@ script OaksAide
   say "Hello, {player}! The Professor asked me to pass on a message."
   say "One of his aides is waiting for you in the building on Route 2. He has something for you, once you've caught a few Pokémon."
   end
+
+
+# ------------------------------------------------------------------ the Ferry's Extra Passenger (plan 41 · EG8)
+# The Open Door Agency's case in Kanto: the ticket clerk on the quay finds a stub under the empty seat torn by no hand of
+# the office's, the old fisherman sees the dockhand wave one last traveller up the cargo ramp after the count, and once
+# Looker has the deductions the dockhand, Dov Harlan, waits on the quay (FLAG_CASE_KANTO_DOV_WAITS) to be faced.
+
+script CaseKantoClerk
+  face self player
+  if flag FLAG_CASE_KANTO_CLOSED goto Thanks
+  if flag FLAG_CASE_KANTO_TAKEN goto Case
+  say "Tickets for the Sevii ferry! Every seat counted, every stub torn. That's my job."
+  end
+label Case
+  if flag FLAG_CASE_KANTO_CLUE_STUB goto Again
+  say "Seat thirteen, the ghost's seat? Paid for every sailing, empty every sailing. I found this stub under it last night."
+  say "Look at the tear, though. I tear every stub on the left. This one's torn on the right. It isn't one of mine."
+  setflag FLAG_CASE_KANTO_CLUE_STUB
+  text "{player} noted the ticket stub torn by someone else's hand."
+  end
+label Again
+  say "Torn on the right. Whoever sold that ticket, it wasn't this office."
+  end
+label Thanks
+  say "No more ghost on the ferry. Seat thirteen has a real passenger now, with a real ticket. One of mine!"
+  end
+
+script CaseKantoFisherman
+  face self player
+  if flag FLAG_CASE_KANTO_CLOSED goto Thanks
+  if flag FLAG_CASE_KANTO_TAKEN goto Case
+  say "I fish off this quay every evening. The ferry comes and goes, and the fish don't mind it a bit."
+  end
+label Case
+  if flag FLAG_CASE_KANTO_CLUE_REMARK goto Again
+  say "The ferry? Funny thing. Every evening, after the crew have counted heads, Dov the dockhand waves one more traveller aboard."
+  say "Not up the gangway, mind. Up the cargo ramp, with the crates. And he pockets something as they pass."
+  setflag FLAG_CASE_KANTO_CLUE_REMARK
+  text "{player} noted the fisherman's remark about the cargo ramp."
+  end
+label Again
+  say "One more up the cargo ramp, after the count. Every evening, regular as the tide."
+  end
+label Thanks
+  say "Dov's on the gangway now, checking tickets like a proper sailor. The fish miss him, I expect."
+  end
+
+script CaseKantoDov
+  face self player
+  speaker "Dov"
+  if flag FLAG_CASE_KANTO_CULPRIT end
+  scene "DovFaced"
+  say "Looker's friend, eh? So somebody found my stub. Thought a ghost story would keep folk from asking."
+  say "Fine. If I'm to be caught, I'll be caught fighting. Right here on the quay!"
+  battle self as "case_kanto_dov"
+  say "...Sunk. All right. I'll pay back every fare I took twice. Tell Looker I'll be at his door, ghost and all."
+  setflag FLAG_CASE_KANTO_CULPRIT
+  clearflag FLAG_CASE_KANTO_DOV_WAITS
+  hide self
+  endscene
+  end

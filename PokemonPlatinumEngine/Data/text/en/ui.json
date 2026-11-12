@@ -5731,6 +5731,76 @@
         "culprit": "Face the culprit on the Fight Area's pier.",
         "closed": "Report back to Looker at the agency."
       }
+    },
+    "case_kanto": {
+      "title": "The Ferry's Extra Passenger",
+      "giver": "Looker",
+      "place": "the Open Door Agency",
+      "reward": "The agency's fee and a Big Pearl",
+      "step": {
+        "clue_stub": "Ask the ticket clerk on Vermilion City's quay about the empty seat.",
+        "clue_duffel": "Ask the harbour keeper on Two Island about what was left behind.",
+        "clue_remark": "Ask the old fisherman on Vermilion City's quay about the ferry.",
+        "deduce": "Tell Looker what the clues show.",
+        "culprit": "Face the culprit on Vermilion City's quay.",
+        "closed": "Report back to Looker at the agency."
+      }
+    },
+    "case_johto": {
+      "title": "The Alph Etchings",
+      "giver": "Looker",
+      "place": "the Open Door Agency",
+      "reward": "The agency's fee and a Heart Scale",
+      "step": {
+        "clue_chalk": "Ask the researcher at the Ruins of Alph about the chalk marks.",
+        "clue_lanterns": "Ask the camper at the Ruins of Alph about the nights.",
+        "clue_dust": "Ask the schoolchild at the Ruins of Alph about the Unown letters.",
+        "deduce": "Tell Looker what the clues show.",
+        "culprit": "Find the one behind the chalk at the Ruins of Alph.",
+        "closed": "Report back to Looker at the agency."
+      }
+    },
+    "case_hoenn": {
+      "title": "The Salt Run",
+      "giver": "Looker",
+      "place": "the Open Door Agency",
+      "reward": "The agency's fee and a Star Piece",
+      "step": {
+        "clue_seal": "Ask the customs officer in Dewford Town about the salt crates.",
+        "clue_song": "Ask the singing sailor in Dewford Town about the salt boat's crew.",
+        "clue_tide": "Ask the old fisherman in Dewford Town about the salt boat.",
+        "deduce": "Tell Looker what the clues show.",
+        "culprit": "Face the culprit on Dewford Town's shore.",
+        "closed": "Report back to Looker at the agency."
+      }
+    },
+    "case_unova": {
+      "title": "The Double-Booked Hall",
+      "giver": "Looker",
+      "place": "the Open Door Agency",
+      "reward": "The agency's fee and a Nugget",
+      "step": {
+        "clue_schedule": "Ask the organiser in the World Tournament's plaza about the booking.",
+        "clue_smudge": "Ask the other organiser in the World Tournament's plaza.",
+        "clue_keys": "Ask the World Tournament's janitor about the keys.",
+        "deduce": "Tell Looker what the clues show.",
+        "culprit": "Face the culprit at the World Tournament's door.",
+        "closed": "Report back to Looker at the agency."
+      }
+    },
+    "case_kalos": {
+      "title": "The Borrowed Masterpiece",
+      "giver": "Looker",
+      "place": "the Open Door Agency",
+      "reward": "The agency's fee and a Big Pearl",
+      "step": {
+        "clue_screws": "Ask the night guard by Lumiose City's museum about the frame.",
+        "clue_ticket": "Ask the porter by Kiloude City's station about the trains.",
+        "clue_varnish": "Ask the painter in Kiloude City about the nights.",
+        "deduce": "Tell Looker what the clues show.",
+        "culprit": "Face the culprit in Kiloude City's square.",
+        "closed": "Report back to Looker at the agency."
+      }
     }
   },
   "cases": {
@@ -5745,6 +5815,61 @@
       "deduce": {
         "1": "What shows the young Gible never raided the larder?",
         "2": "Then when could the food have left the villa unseen?"
+      }
+    },
+    "kanto": {
+      "clue": {
+        "stub": "The ticket stub",
+        "duffel": "The duffel",
+        "remark": "The fisherman's remark"
+      },
+      "deduce": {
+        "1": "What shows somebody besides the office sells passage?",
+        "2": "Then who lets the extra traveller aboard after the count?"
+      }
+    },
+    "johto": {
+      "clue": {
+        "chalk": "The chalk copies",
+        "lanterns": "The lanterns",
+        "dust": "The chalky sleeves"
+      },
+      "deduce": {
+        "1": "What shows the marks are a lesson, not mischief?",
+        "2": "Then who brings a class to the ruins by night?"
+      }
+    },
+    "hoenn": {
+      "clue": {
+        "seal": "The customs seal",
+        "song": "The sailor's song",
+        "tide": "The tide table"
+      },
+      "deduce": {
+        "1": "What shows the crates were opened after customs?",
+        "2": "Then what do the crates really carry?"
+      }
+    },
+    "unova": {
+      "clue": {
+        "schedule": "The stamped schedule",
+        "smudge": "The eraser smudge",
+        "keys": "The key log"
+      },
+      "deduce": {
+        "1": "What shows the afternoon was sold twice?",
+        "2": "Then who changed the register after hours?"
+      }
+    },
+    "kalos": {
+      "clue": {
+        "screws": "The bright screws",
+        "ticket": "The train ticket",
+        "varnish": "The fresh varnish"
+      },
+      "deduce": {
+        "1": "How does the painting leave the museum unseen?",
+        "2": "Then where does it go each night?"
       }
     }
   },
