@@ -70,10 +70,26 @@ public sealed class SpeciesSources
                     if (region == null || string.Equals(region.Id, "Sinnoh", StringComparison.OrdinalIgnoreCase)) rooms.Add(room);
                     else elsewhere.Add(room.Name);
                 }
-                return sinnoh = Of(home, ScriptLibrary.Default, rooms, HighestInSinnoh, file => !elsewhere.Contains(file));
+                sinnoh = Of(home, ScriptLibrary.Default, rooms, HighestInSinnoh, file => !elsewhere.Contains(file));
+                // Pal Park's visitors are what nothing but Pal Park would give were there no hideaways (plan 38 · EX6, the
+                // decision of 2026-11-12): read the same way with the hideaways left out, once, when the park first asks
+                sinnoh.visitors = new Lazy<IReadOnlyList<string>>(() =>
+                    Of(home, ScriptLibrary.Default, rooms, HighestInSinnoh, file => !elsewhere.Contains(file), hideaways: false).PalParkPool);
+                return sinnoh;
             }
         }
     }
+
+    private Lazy<IReadOnlyList<string>>? visitors;
+
+    /// <summary>
+    /// Who Pal Park's Catching Show's visitors come from (plan 38 · EX6's decision, the rulings' "Hideaways under the
+    /// Underground"): the species no way but Pal Park would give if the hideaways weren't there, in National order. The
+    /// hideaways gave the dual slot's species and the older first partners a way of their own, which left only the eighteen
+    /// legendaries in <see cref="PalParkPool"/>; the park keeps receiving the older games' species from far away as it did.
+    /// For a region other than Sinnoh it is the pool itself.
+    /// </summary>
+    public IReadOnlyList<string> PalParkVisitors => visitors?.Value ?? PalParkPool;
 
     /// <summary>The species Hoenn must hold: Ruby's, Sapphire's and Emerald's National Pokédex, 1 to 386.</summary>
     public const int HighestInHoenn = 386;
@@ -248,11 +264,11 @@ public sealed class SpeciesSources
 
     /// <summary>What a world, its scripts and the rooms give, for the species numbered up to <paramref name="highest"/>.</summary>
     public static SpeciesSources Of(World world, ScriptLibrary scripts, IEnumerable<MapFile> rooms, int highest = HighestInSinnoh,
-        Func<string, bool>? scriptFile = null, IEnumerable<(string Species, string Way)>? given = null, bool noAreaTables = false)
+        Func<string, bool>? scriptFile = null, IEnumerable<(string Species, string Way)>? given = null, bool noAreaTables = false, bool hideaways = true)
     {
         var file = scriptFile ?? (_ => true);
         var found = Gather(new List<World> { world }, noAreaTables ? null : world, scripts, rooms.ToList(), s => file(s.File), given,
-            ownCounters: false);
+            ownCounters: false, hideaways: hideaways);
         return Make(found, highest);
     }
 
@@ -298,7 +314,7 @@ public sealed class SpeciesSources
     /// Points' exchange, which is Sinnoh's Battle Frontier), where false counts every counter of <c>marts.json</c>.
     /// </summary>
     private static Found Gather(IReadOnlyList<World> worlds, World? tablesOf, ScriptLibrary scripts, List<MapFile> rooms,
-        Func<Script, bool> scriptOf, IEnumerable<(string Species, string Way)>? given, bool ownCounters, IEnumerable<string>? sites = null)
+        Func<Script, bool> scriptOf, IEnumerable<(string Species, string Way)>? given, bool ownCounters, IEnumerable<string>? sites = null, bool hideaways = true)
     {
         var f = new Found();
         // The evolution sites an open region's places name (plan 33 · GL2: the Wild Area's Stone Arch)
@@ -399,7 +415,7 @@ public sealed class SpeciesSources
             foreach (string s in tables.TrophyGarden) f.Species(s, "the Trophy Garden", true);
             f.Species(tables.Feebas.Species, "Feebas's tiles", true);
             // The hideaways under the Underground, after Sinnoh's Hall of Fame (plan 38 · EX6): each day's twelve are of its pool
-            foreach (var h in Models.Underground.Hideaways.All)
+            foreach (var h in hideaways ? Models.Underground.Hideaways.All : Array.Empty<Models.Underground.Hideaway>())
             {
                 foreach (string s in Models.Underground.Hideaways.Pool(h, national: false)) f.Species(s, $"{h.Name}: a hideaway", true);
                 foreach (string s in Models.Underground.Hideaways.Pool(h, national: true)) f.Species(s, $"{h.Name}: a hideaway (National Pokédex)", true);
