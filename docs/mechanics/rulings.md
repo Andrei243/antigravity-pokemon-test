@@ -2538,7 +2538,7 @@ The user's decision 4 (2026-10-12): a region holds every species of its own game
 | The other two starters | Not in Diamond, Pearl or Platinum | The professor's gift with the National Pokédex, at level 5, so they are raised and evolved as the player's own (the user's choice) |
 | Cranidos or Shieldon by the trainer's number | The Underground digs one kind of fossil for an odd number and the other for an even one | The museum's collector gives one of each, once, with the National Pokédex |
 | Leafeon at the Moss Rock | Eterna Forest | Eterna Forest's overlay names the Moss Rock (it was missing) |
-| A second game in the console's species (the dual slots), the other regions' first partners, the older regions' legendaries | Migrated from the GBA games to Pal Park, or an event | Pal Park, where the original brought the GBA games' species over (the user kept it): its Catching Show brings six visitors from the species nothing else gives, by a fixed rotation by the date (`PalParkState.VisitorSpecies`: the pool in National order read as a ring, each day the next six, so one date always brings the same six and the whole pool comes round in turn; no chance decides who comes), at levels 47 to 55. Another day's six that still wait make way for today's whenever no show is under way (`PalParkState.Welcome`) |
+| A second game in the console's species (the dual slots), the other regions' first partners, the older regions' legendaries | Migrated from the GBA games to Pal Park, or an event | Pal Park, where the original brought the GBA games' species over (the user kept it): its Catching Show brings six visitors from the species nothing else gives, by a fixed rotation by the date (`PalParkState.VisitorSpecies`: the pool in National order read as a ring, each day the next six, so one date always brings the same six and the whole pool comes round in turn; no chance decides who comes), at levels 47 to 55. Another day's six that still wait make way for today's whenever no show is under way (`PalParkState.Welcome`) (since plan 38 · EX6 the dual slots' species and the first partners stand in the hideaways too, and the visitors are still drawn from all of them: `SpeciesSources.PalParkVisitors`) |
 | Rotom's appliances, Shaymin's Sky Forme, the event legendaries' places | The Secret Key, the Gracidea, the Member Card, the Azure Flute, the Oak's Letter | Rotom's appliances: plan 03 · D12c. The rest: plan 29 · LS11a ("Sinnoh's event Pokémon, by ways of our own") |
 | Unown's ! and ? | The room past Maniac Tunnel | Plan 08 · P19 |
 
@@ -10217,9 +10217,36 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   way out either: the way out is its mouth. A flag carried below and a trap sprung are left in the tunnels, as on any way up. **What
   it costs Pal Park**: with the dual slot's species and the first partners given, `OnlyInPalPark` is the eighteen legendary and
   mythical Pokémon of the older regions, so the Catching Show's day of six visitors (`PalParkState.VisitorSpecies`, which draws on
-  that pool) is six of them: that is the plan's rule followed through, and the user's to keep or change. The pools are the rule by
+  that pool) would have been six of them. **Decided in part b (2026-11-12)**: the plan's rule stays (`OnlyInPalPark` is what only the park gives), and the visitors are drawn from a pool of their own, `SpeciesSources.PalParkVisitors`: what only the park would give were there no hideaways, read the same way with the hideaways left out (76 species, the list it was before EX6), so the park keeps bringing the older games' species from far away beside the legendaries. The pools are the rule by
   type too, so Spiritomb, Rotom, the Sinnoh starters' grown forms, the fossils' and the pseudo-legendaries stand there at 47 to 55.
-  **Not laid yet**: ice that slides and lava (neither has a ground of a map file), and part b's statues.
+  **Not laid yet**: ice that slides and lava (neither has a ground of a map file).
+- **Statues** (EX6, part b, 2026-11-12; `Data/statues.json`, ours; `Hideaways.WallsOf`, `WallTable`, `Weights`). A statue is a good of
+  ours for every species any hideaway's pool may hold (266, in National order as first written, later ones appended), numbered from `UndergroundDatabase.StatueFirst` (1001)
+  past the original's 138 goods, so nothing drawn from the original's goods (a digger's base, a hiker's stock) meets one, and
+  with a rarity of one to three by its base stats (under 420 common, under 500 uncommon, the rest rare). **Dug from the hideaways'
+  walls**: two walls a day in each hideaway (rock with dry open floor before it, chosen by SplitMix from the seed and the day's number,
+  glinting gold once as the player first comes within four tiles of it), each dug once a day (a daily flag, `FLAG_DAILY_HIDEAWAY_<n>_WALL_<k>`, so a new day
+  gives two more and nothing new is saved), through the Underground's own `Wall` script and the original's wall game on a table of
+  ours (`MiningGame(Rand32, WallItem[])`: the statues of the day's twelve Pokémon there at weights 12, 6 and 2 by rarity, and the
+  five small Spheres at 8 each, two to four things a wall and the original's dark rocks; the original's own walls draw exactly as
+  before). A statue dug out goes into the bag's goods (it counts among the treasures dug) and is put in the PC and placed in the
+  base like any good, one tile that it blocks, within the base's limit (`SecretBaseRules.GoodsLimit`: ten, twelve or fifteen).
+  **What a statue does**: each statue standing in the base counts once for each of its species' types, up to ten of a type
+  (`Hideaways.Weights`; one in the PC or the bag counts for nothing), and every hideaway's day of twelve is then picked by weight
+  instead of evenly: a species weighs 2 and one more for each counted statue of each of its types (`PickWeight`). Three Water
+  statues therefore take the first pick's Water share in the lake cavern from W/N to 5W/(5W + 2(N − W)) for a pool of N species
+  of which W are Water (`StatueTests` holds it exactly, and over a year of tables). With no statue in the base nothing is weighed and
+  every table, `levels.txt` among them, is what it was. **How a statue looks** is the style guide's "A statue": a stone figure of its
+  species' Pokédex shape on a plinth with its type's plaque, painted by the kit, not the species' field sprite in stone as the plan
+  asked, since a field sprite is baked on the graphics card in later frames and a face painted from it would differ between runs.
+- **Soaring** (EX7, part a, begun 2026-11-12; `Overworld/Soaring.cs`, ours; decision 8 at its recommendation: the team's flier, or the
+  helper the field lends). A flight is a place in the region map's own cells, a heading and a height of one to five (starting at
+  three); it cruises at 2.5 cells a second and at 5 with Run, turns at 110° a second and climbs or dives a height in two thirds of
+  a second, and it stays within the map's view, sliding along its edge. A beacon stands over every one of Fly's places that is
+  open, no other; Confirm lands at the one whose cell's middle is within three quarters of a cell of the flier, and Cancel at the
+  open place nearest it (by its nearest cell; the lower spawn number where two are as near). It is refused before the region's
+  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. The screen,
+  the sky and the landing through Fly's own way are not built yet.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
