@@ -191,6 +191,16 @@
           "Artist William: Acum va trebui să te pictez în tablou: un antrenor, victorios, pe Ruta 208."
         ]
       }
+    },
+    "route_208.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

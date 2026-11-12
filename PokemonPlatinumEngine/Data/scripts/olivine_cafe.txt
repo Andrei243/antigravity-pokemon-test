@@ -25,3 +25,34 @@ script MeetJasmine
 label Two
   say "Amphy's light keeps the ships safe while I eat. I'm grateful to it."
   end
+
+
+# A meal for the team (plan 39 · CR7): three dishes of ours from recipes.json's `stands`, each eaten there and then
+# (`craft meal`), its price taken first; and the pantry's goods for the camp's pot. Shown once the crafting kit is in
+# the bag (FLAG_GOT_CRAFTING_KIT).
+script MealStand
+  face self player
+  speaker "Waiter"
+  say "Hello there! Sailors swear by our cooking. Your team can have a proper meal, here and now."
+  choose "What will it be?" "Honey Oat Cakes, 2,000" "Quiet Broth, 1,800" "Berry Pilaf, 2,200" "The pantry" "Nothing, thanks"
+  if result == 4 goto Bye
+  if result == 3 goto Pantry
+  setvar VAR_TEMP_1 RESULT
+  if var VAR_TEMP_1 == 0 takemoney 2000
+  if var VAR_TEMP_1 == 1 takemoney 1800
+  if var VAR_TEMP_1 == 2 takemoney 2200
+  if result == 0 goto Short
+  if var VAR_TEMP_1 == 0 craft meal "honeyOatCakes"
+  if var VAR_TEMP_1 == 1 craft meal "quietBroth"
+  if var VAR_TEMP_1 == 2 craft meal "berryPilaf"
+  say "There you go! A sailor's meal for every one of them."
+  end
+label Pantry
+  say "We sell the same goods we cook with. Take what you like for your own pot."
+  craft pantry
+  end
+label Short
+  say "Oh dear, that's a little more than you have on you."
+label Bye
+  say "Come back when you're hungry!"
+  end

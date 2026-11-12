@@ -711,7 +711,7 @@ public static class ScriptParser
             case "lottery":
                 return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed") };
             case "berry":
-                return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches") };
+                return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches", "pot", "crossed") };
             // Apricorn trees, the Apricorn Box and Kurt's balls (plan 20 · J6)
             case "apricorn":
             {
@@ -1181,7 +1181,7 @@ public static class ScriptParser
             // CR4's `craft tm`, CR3's apprentice's `craft tradable` and `craft trade`, CR6's `craft pantry` and `craft meal`
             case "craft":
             {
-                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal");
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared");
                 // A dish eaten there and then (plan 39 · CR6): `craft meal "beanHotpot"`, or with its grade, `craft meal "beanHotpot" superb`
                 if (what == "meal")
                 {
@@ -1190,6 +1190,9 @@ public static class ScriptParser
                     string grade = r.More ? r.OneOf("plain", "good", "great", "superb") : "great";
                     return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = dish, Number = (int)System.Enum.Parse<Models.DishGrade>(grade, ignoreCase: true) };
                 }
+                // What a tree cut or a rock smashed leaves (plan 39 · CR2): `craft cleared tree`, `craft cleared rock`
+                if (what == "cleared")
+                    return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = r.OneOf("tree", "rock") };
                 if (what == "give" && r.PeekWord("kit"))
                 {
                     r.Next();

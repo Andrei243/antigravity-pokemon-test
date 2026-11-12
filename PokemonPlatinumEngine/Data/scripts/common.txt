@@ -574,9 +574,87 @@ label Fruit
   berry pick
   fanfare item
   say "{player} picked {yield} × {berry}!" "{player} put them away in the Berries pocket."
+  # A cross noted with the crafting kit (plan 39 · CR5): one of the fruit may be the berry the pair crosses into
+  berry crossed
+  if result == 0 end
+  say "One of them had crossed into a {crossed}!"
   end
 label LeaveFruit
   say "{player} left the {berry} on the plant."
+  end
+
+
+# A gathering spot of the field (plan 39 · CR2; Models/Gathering.cs): a rock, a fallen log, a herb bush, a heap on the
+# shore or a drift of snow, shown once the crafting kit is in the bag. Each gives one of its kind's finds once a
+# calendar day, into the kit's pouch.
+script Gather
+  speaker none
+  craft gather
+  if result == 0 goto Bare
+  sound "select"
+  say "{player} gathered {materials} × {material}. Into the kit it went!"
+  end
+label Bare
+  say "Nothing more to gather here today. Come back tomorrow."
+  end
+
+
+# Johto's Berry Pots (plan 39 · CR5; plan 39's rulings): four pots in a row carried in the bag, used from the bag
+# wherever the player is. A berry planted in a pot crosses with the one in the pot beside it as soils do. The pots
+# carry their own watering can.
+script BerryPots
+  speaker none
+  choose "Which pot?" "First pot" "Second pot" "Third pot" "Fourth pot" "Put them away"
+  if result == 4 end
+  berry pot
+  berry status
+  if result == 0 goto Bare
+  if result == 5 goto Fruit
+  if result == 1 say "One {berry} was planted in this pot."
+  if result == 2 say "A little {berry} plant has pushed up in this pot."
+  if result == 3 say "The {berry} plant in this pot is growing taller."
+  if result == 4 say "The {berry} plant in this pot has burst into flower!"
+  ask "Give it some water?"
+  if no end
+  berry water
+  say "There you go. It looks pleased."
+  end
+label Bare
+  berry berries
+  if result == 0 goto Empty
+  berry mulched
+  if result == 1 goto Plant
+  berry mulches
+  if result == 0 goto Plant
+  choose "The pot is empty. What would you like to do?" "Spread mulch" "Plant a Berry" "Leave it"
+  if result == 0 goto Mulch
+  if result == 1 goto Plant
+  end
+label Mulch
+  chooseitem mulch
+  if result == 0 end
+  berry mulch
+  say "{player} spread the {mulch} over the pot's soil."
+label Plant
+  ask "Plant a Berry in this pot?"
+  if no end
+  chooseitem berries
+  if result == 0 end
+  berry plant
+  say "{player} pressed one {berry} into the pot's soil."
+  end
+label Empty
+  say "The pot is empty. A Berry could be planted in it."
+  end
+label Fruit
+  ask "There are {yield} × {berry} in this pot. Pick them?"
+  if no end
+  berry pick
+  fanfare item
+  say "{player} picked {yield} × {berry}!" "{player} put them away in the Berries pocket."
+  berry crossed
+  if result == 0 end
+  say "One of them had crossed into a {crossed}!"
   end
 
 
@@ -953,6 +1031,9 @@ label Able
   if no end
   usemove "Cut"
   setflag own
+  # With the crafting kit in the bag a tree cut may leave wood (plan 39 · CR2)
+  craft cleared tree
+  if result == 1 say "Among the cut branches lay {materials} × {material}. Into the kit it went!"
   end
 label Cannot
   tip cutTree
@@ -962,6 +1043,9 @@ label Cannot
 script UseCut
   usemove "Cut"
   setflag own
+  # With the crafting kit in the bag a tree cut may leave wood (plan 39 · CR2)
+  craft cleared tree
+  if result == 1 say "Among the cut branches lay {materials} × {material}. Into the kit it went!"
   end
 
 
@@ -979,6 +1063,9 @@ label Able
   if no end
   usemove "Rock Smash"
   setflag own
+  # With the crafting kit in the bag a rock smashed may leave stone (plan 39 · CR2)
+  craft cleared rock
+  if result == 1 say "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
   # Where the place keeps Pokémon under its rocks (Hoenn: Emerald's RockSmashWildEncounter), one may come out
   smashencounter
   end
@@ -1002,6 +1089,9 @@ label Early
 script UseRockSmash
   usemove "Rock Smash"
   setflag own
+  # With the crafting kit in the bag a rock smashed may leave stone (plan 39 · CR2)
+  craft cleared rock
+  if result == 1 say "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
   smashencounter
   end
 
@@ -1128,6 +1218,9 @@ script TaurosCharge
 label Able
   usemove "Rock Smash"
   setflag own
+  # With the crafting kit in the bag a rock smashed may leave stone (plan 39 · CR2)
+  craft cleared rock
+  if result == 1 say "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
   smashencounter
   end
 

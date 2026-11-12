@@ -42,6 +42,24 @@ public sealed class RecipesFile
 
     /// <summary>The camp's pot (plan 39 · CR6): its dishes and what a grade gives.</summary>
     public KitchenRecipes Kitchen { get; set; } = new();
+
+    /// <summary>Crossing berries (plan 39 · CR5): which pairs cross into which berry, and how often a harvest holds one.</summary>
+    public Overworld.CrossRecipes Crosses { get; set; } = new();
+
+    /// <summary>The waiters' and stalls' menus (plan 39 · CR7): a row to a dish served somewhere, with its price.</summary>
+    public List<MealStand> Stands { get; set; } = new();
+}
+
+/// <summary>
+/// One dish a waiter or a stall serves (plan 39 · CR7; <c>recipes.json</c>'s <c>stands</c>): the stand, by the script file
+/// it is played in (<see cref="Place"/>), the dish of the kitchen's table and its price. The dish's power is the
+/// kitchen's own row, served at a great grade.
+/// </summary>
+public sealed class MealStand
+{
+    [DataRequired] public string Place { get; set; } = "";
+    [DataRequired] public string Dish { get; set; } = "";
+    [DataRequired] public int Price { get; set; }
 }
 
 /// <summary>The tables of the recipes (plan 39; <c>Data/recipes.json</c>). No drawing or input.</summary>
@@ -60,4 +78,7 @@ public static class RecipeTable
 
     /// <summary>The camp's dishes and grades (plan 39 · CR6).</summary>
     public static KitchenRecipes Kitchen => File.Kitchen;
+
+    /// <summary>The dishes served at a stand (plan 39 · CR7), by the stand's script file, in the file's order.</summary>
+    public static IReadOnlyList<MealStand> StandAt(string place) => File.Stands.Where(s => s.Place == place).ToList();
 }

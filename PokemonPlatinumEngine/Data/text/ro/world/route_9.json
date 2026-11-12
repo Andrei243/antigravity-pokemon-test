@@ -233,6 +233,16 @@
           "Campist Drew: Nu-i rău. Chiar te pricepi."
         ]
       }
+    },
+    "route_9.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

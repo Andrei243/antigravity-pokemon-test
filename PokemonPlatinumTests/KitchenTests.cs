@@ -442,7 +442,7 @@ public class KitchenTests
             game.OpenCraftingAt(CraftingPlace.Pantry);
             var screen = game.CraftingScreen;
             Assert.Equal(CraftingTab.Pantry, screen.Tab);
-            Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Pantry }, screen.Tabs);
+            Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Pantry, CraftingTab.Crosses }, screen.Tabs);
             var good = screen.SelectedGood!;
             screen.Confirm();
             screen.ChangeAmount(2);

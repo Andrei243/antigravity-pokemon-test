@@ -472,6 +472,12 @@ public partial class GameEngine
             flow.JournalScreen.Open();
             return;
         }
+        // Johto's Berry Pots, tended wherever the player is (plan 39 · CR5)
+        if (item.FieldUse == BerryPotsUse)
+        {
+            StartScript(FieldScripts.BerryPots);
+            return;
+        }
         // The Vs. Recorder's battles off the item button, and back to the field (plan 08 · P11)
         if (item.FieldUse == "VsRecorder")
         {
@@ -1717,6 +1723,7 @@ public partial class GameEngine
         }
 
         public BerryPatches Berries => game.flow.Berries;
+        public IEnumerable<int> PatchesBeside(NPC soil) => BerryCrossing.Beside(game.flow.Map, soil).ToList();
         public ApricornBox Apricorns => game.flow.Apricorns;
         public CraftingState Crafting => game.flow.Crafting;
         public PowerState Powers => game.flow.Powers;

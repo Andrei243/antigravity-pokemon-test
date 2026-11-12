@@ -62,6 +62,8 @@
   },
   // The festivals' things and their stall keeper (plan 40 · GE9; style guide, "Life", "Festivals"), shown by FLAG_FESTIVAL_<ID>
   "npcs": [
+    // A meal for the team (plan 39 · CR7; the place's MealStand script), shown once the crafting kit is in the bag
+    {"id": "slateport_city.meal_stand", "name": "Stall keeper", "npcType": "Clerk", "x": 210, "y": 305, "facing": "Down", "script": "MealStand", "shownBy": "FLAG_GOT_CRAFTING_KIT"},
     {"id": "slateport_city.Festival_tide_day_1", "name": "Bunting", "npcType": "FestivalBunting", "x": 221, "y": 300, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
     {"id": "slateport_city.Festival_tide_day_2", "name": "Bunting", "npcType": "FestivalBunting", "x": 229, "y": 300, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},
     {"id": "slateport_city.Festival_tide_day_3", "name": "Bunting", "npcType": "FestivalBunting", "x": 224, "y": 312, "facing": "Down", "shownBy": "FLAG_FESTIVAL_TIDE_DAY"},

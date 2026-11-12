@@ -165,6 +165,16 @@
           "Campist Shane: Chiar ești tare. Nu-i de mirare că ai câștigat premiul."
         ]
       }
+    },
+    "route_24.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

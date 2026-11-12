@@ -139,6 +139,16 @@
           "Frumoasă Kassandra: Callie, m-a bătut și pe mine!"
         ]
       }
+    },
+    "route_37.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -81,6 +81,16 @@
           "Psst... Am auzit că se întâmplă ceva ciudat în camera din spate a Game Corner."
         ]
       }
+    },
+    "celadon_city_restaurant.meal_stand": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

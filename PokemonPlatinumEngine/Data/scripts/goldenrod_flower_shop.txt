@@ -23,6 +23,15 @@ label NoBadge
   say "I'd lend my SquirtBottle to someone strong enough to handle it. Someone with a Gym Badge from Whitney, say."
   end
 label Mulch
+  # Plan 39 · CR5: to a player with the crafting kit, once, her sister's Berry Pots (HeartGold's, which plan 20 · J7 left out)
+  if flag FLAG_JOHTO_GOT_BERRY_POTS goto MulchMenu
+  craft has
+  if result == 0 goto MulchMenu
+  say "Is that a crafting kit? Then you're the sort who grows things. My sister wanted these to go to someone like you."
+  give "Berry Pots"
+  setflag FLAG_JOHTO_GOT_BERRY_POTS
+  say "Plant two Berries side by side in them and watch closely. Sometimes they cross into something rare!"
+label MulchMenu
   say "Thanks for helping my sister! We sell mulch for berry soil now. They're 200 each."
   choose "Which mulch would you like?" "Growth Mulch" "Damp Mulch" "Stable Mulch" "Gooey Mulch" "No thanks"
   if result == 4 goto Bye

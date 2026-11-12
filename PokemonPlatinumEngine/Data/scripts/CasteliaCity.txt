@@ -87,3 +87,34 @@ label Sail
 label Stay
   say "The pier's always here. Come back whenever you like."
   end
+
+
+# A meal for the team (plan 39 · CR7): three dishes of ours from recipes.json's `stands`, each eaten there and then
+# (`craft meal`), its price taken first; and the pantry's goods for the camp's pot. Shown once the crafting kit is in
+# the bag (FLAG_GOT_CRAFTING_KIT).
+script MealStand
+  face self player
+  speaker "Stall keeper"
+  say "Lunch for the busy Trainer! A meal for the whole team, eaten right here on the avenue."
+  choose "What will it be?" "Mushroom Bake, 2,400" "Spiced Flatbread, 1,500" "Berry Pilaf, 2,200" "The pantry" "Nothing, thanks"
+  if result == 4 goto Bye
+  if result == 3 goto Pantry
+  setvar VAR_TEMP_1 RESULT
+  if var VAR_TEMP_1 == 0 takemoney 2400
+  if var VAR_TEMP_1 == 1 takemoney 1500
+  if var VAR_TEMP_1 == 2 takemoney 2200
+  if result == 0 goto Short
+  if var VAR_TEMP_1 == 0 craft meal "mushroomBake"
+  if var VAR_TEMP_1 == 1 craft meal "spicedFlatbread"
+  if var VAR_TEMP_1 == 2 craft meal "berryPilaf"
+  say "That's the avenue's best! Your team is fed and raring to go."
+  end
+label Pantry
+  say "We sell the same goods we cook with. Take what you like for your own pot."
+  craft pantry
+  end
+label Short
+  say "Oh dear, that's a little more than you have on you."
+label Bye
+  say "Come back when you're hungry!"
+  end

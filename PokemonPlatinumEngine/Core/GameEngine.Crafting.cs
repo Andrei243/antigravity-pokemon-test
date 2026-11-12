@@ -4,6 +4,7 @@ using System.Linq;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumEngine.Core;
@@ -22,6 +23,10 @@ public partial class GameEngine
 
     /// <summary>The kit's <c>fieldUse</c> in the item table.</summary>
     internal const string CraftingKitUse = "CraftingKit";
+
+    /// <summary>Johto's Berry Pots (plan 39 · CR5): a key item of ours whose <c>fieldUse</c> starts <c>common.BerryPots</c>.</summary>
+    public const string BerryPotsItem = "Berry Pots";
+    internal const string BerryPotsUse = "BerryPots";
 
     /// <summary>The flag the craftswoman's script sets as she gives the kit (ours): the field's spots (CR2) and the PC's maker (CR4) wait for it.</summary>
     public const string CraftingKitFlag = "FLAG_GOT_CRAFTING_KIT";
@@ -117,4 +122,27 @@ public partial class GameEngine
 
     /// <summary>Forgets what was waiting to be told (a game begun or loaded).</summary>
     private void ForgetWhatWasLeft() => leftBehindToTell = null;
+
+    // What the gathering spots on the map were last told: the kit's revision, the day, and the map (plan 39 · CR2)
+    private int gatherRevision = -1, gatherDay = -1;
+    private Map? gatherMap;
+
+    /// <summary>Every frame of the field: once the kit's spots, the day or the map has changed, every spot on the map is told whether it bears.</summary>
+    private void KeepGatherSpotsInView()
+    {
+        int day = ApricornBox.DayOf(GameClock.Today);
+        if (flow.Crafting.Revision == gatherRevision && gatherDay == day && gatherMap == flow.Map) return;
+        gatherRevision = flow.Crafting.Revision;
+        gatherDay = day;
+        gatherMap = flow.Map;
+        ShowGatherSpots(flow.Map, flow.Crafting, day);
+    }
+
+    /// <summary>Tells every gathering spot of a map whether it has something on it to take on a day (plan 39 · CR2).</summary>
+    internal static void ShowGatherSpots(Map map, CraftingState state, int day)
+    {
+        foreach (var npc in map.Everyone)
+            if (npc.IsGatherSpot)
+                npc.GatherBearing = Gathering.Bears(state, Gathering.KeyOf(npc.ScriptFile ?? "", npc.Key ?? npc.Name), day);
+    }
 }

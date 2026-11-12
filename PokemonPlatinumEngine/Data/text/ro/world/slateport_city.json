@@ -564,6 +564,16 @@
         ]
       }
     },
+    "slateport_city.meal_stand": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "slateport_city.Festival_tide_day_1": {
       "name": {
         "en": [

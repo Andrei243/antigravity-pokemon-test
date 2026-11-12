@@ -1,5 +1,9 @@
 {
   "area": "route_207",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_207.gather", "name": "Rock", "npcType": "GatherRock", "x": 314, "y": 715, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route206",
   "trees": "Pine",
   // The ledges over the route's east end, with the Iron and the Timer Ball, are reached from Mt. Coronet's second

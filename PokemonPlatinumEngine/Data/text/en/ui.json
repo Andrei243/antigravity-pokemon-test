@@ -2760,8 +2760,17 @@
     "orderReady": "{count} × {ball}, ready at his house."
   },
   "crafting": {
+    "cross": {
+      "unknown": "?????",
+      "found": "FOUND",
+      "count": "{n} / {of}",
+      "pair": "Two different Berries whose strongest flavour is {flavour}, planted side by side.",
+      "beside": "A {berry} planted beside a Berry whose strongest flavour is {flavour}.",
+      "how": "With the kit in your bag, plant them in soils or pots that touch. Now and then a harvest holds one."
+    },
+    "flavour": { "spicy": "spicy", "dry": "dry", "sweet": "sweet", "bitter": "bitter", "sour": "sour" },
     "title": "CRAFTING KIT",
-    "tab": { "materials": "MATERIALS", "machines": "TMS", "make": "MAKE", "pantry": "PANTRY" },
+    "tab": { "materials": "MATERIALS", "machines": "TMS", "make": "MAKE", "pantry": "PANTRY", "crosses": "CROSSES" },
     "hint": { "make": "Make", "tab": "Tab", "howMany": "How many", "buy": "Buy" },
     "make": {
       "empty": "The kit has no recipes.",

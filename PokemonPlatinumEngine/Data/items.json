@@ -14867,6 +14867,20 @@
     "fieldUse": "CraftingKit"
   },
   {
+    "id": 9901,
+    "name": "Berry Pots",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Four little pots of soil in a row, with a watering can. Berries can be grown in them wherever you go.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "BerryPots"
+  },
+  {
     "id": 10000,
     "name": "TM93",
     "pocket": "TMsAndHMs",

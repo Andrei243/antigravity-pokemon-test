@@ -225,6 +225,16 @@
           "Puști Ben: Măcar pantalonii scurți tot comozi sunt."
         ]
       }
+    },
+    "route_3.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -56,6 +56,12 @@ public sealed class MaterialsFile
     [DataRequired] public int PouchLimit { get; set; } = 999;
     public MaterialDropRules Drops { get; set; } = new();
     public List<MaterialData> Materials { get; set; } = new();
+
+    /// <summary>What each kind of gathering spot gives (plan 39 · CR2).</summary>
+    public List<GatherTable> Gather { get; set; } = new();
+
+    /// <summary>What a tree cut and a rock smashed leave with the kit in the bag (plan 39 · CR2).</summary>
+    public ClearedFinds Cleared { get; set; } = new();
 }
 
 /// <summary>
@@ -104,6 +110,12 @@ public static class MaterialTable
 public sealed class CraftingSave
 {
     public Dictionary<string, int>? Pouch { get; set; }
+
+    /// <summary>The gathering spots picked (plan 39 · CR2): each spot's key and the calendar day it was last picked.</summary>
+    public Dictionary<string, int>? Picked { get; set; }
+
+    /// <summary>The berries crossing has given (plan 39 · CR5), for the kit's CROSSES page.</summary>
+    public List<string>? Crosses { get; set; }
 }
 
 /// <summary>
@@ -180,9 +192,51 @@ public sealed class CraftingState
 {
     public MaterialPouch Pouch { get; } = new();
 
+    /// <summary>Each gathering spot picked (plan 39 · CR2), by its key, and the calendar day it was last picked (<see cref="ApricornBox.DayOf"/>).</summary>
+    public Dictionary<string, int> Picked { get; } = new(StringComparer.Ordinal);
+
+    /// <summary>The berries crossing has given (plan 39 · CR5), in the order found.</summary>
+    public List<string> Crosses { get; } = new();
+
+    /// <summary>Counts every change of the spots and the crosses, so whoever shows them knows to look again. Not saved.</summary>
+    public int Revision { get; private set; }
+
+    /// <summary>A berry crossing has given, noted once for the CROSSES page.</summary>
+    public void FoundCross(string berry)
+    {
+        if (Crosses.Contains(berry)) return;
+        Crosses.Add(berry);
+        Revision++;
+    }
+
+    /// <summary>A gathering spot picked on a day.</summary>
+    public void PickedOn(string spot, int day)
+    {
+        Picked[spot] = day;
+        Revision++;
+    }
+
     public void Clear() => Load(null);
 
-    public void Load(CraftingSave? save) => Pouch.Load(save?.Pouch);
+    public void Load(CraftingSave? save)
+    {
+        Pouch.Load(save?.Pouch);
+        Picked.Clear();
+        foreach (var (spot, day) in save?.Picked ?? new()) Picked[spot] = day;
+        Crosses.Clear();
+        Crosses.AddRange((save?.Crosses ?? new()).Distinct());
+        Revision++;
+    }
 
-    public CraftingSave? ToSave() => Pouch.ToSave() is { } pouch ? new CraftingSave { Pouch = pouch } : null;
+    public CraftingSave? ToSave()
+    {
+        var pouch = Pouch.ToSave();
+        if (pouch == null && Picked.Count == 0 && Crosses.Count == 0) return null;
+        return new CraftingSave
+        {
+            Pouch = pouch,
+            Picked = Picked.Count == 0 ? null : Picked.OrderBy(p => p.Key, StringComparer.Ordinal).ToDictionary(p => p.Key, p => p.Value),
+            Crosses = Crosses.Count == 0 ? null : Crosses.ToList()
+        };
+    }
 }
