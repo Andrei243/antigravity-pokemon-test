@@ -1,0 +1,68 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Welcome to the Small Court! Today is tennis day."
+      ],
+      "text": [
+        "Bun venit la Small Court! Azi e ziua de tenis."
+      ]
+    },
+    {
+      "en": [
+        "The court is open to visitors between matches. Would you like to go down?"
+      ],
+      "text": [
+        "Terenul e deschis vizitatorilor între meciuri. Vrei să cobori?"
+      ]
+    },
+    {
+      "en": [
+        "Enjoy the court! The players don't mind a battle between rallies."
+      ],
+      "text": [
+        "Distracție plăcută pe teren! Jucătorii nu se supără pe o luptă între schimburi."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Small Court! Today is basketball day."
+      ],
+      "text": [
+        "Bun venit la Small Court! Azi e ziua de baschet."
+      ]
+    },
+    {
+      "en": [
+        "The court is open to visitors between matches. Would you like to go down?"
+      ],
+      "text": [
+        "Terenul e deschis vizitatorilor între meciuri. Vrei să cobori?"
+      ]
+    },
+    {
+      "en": [
+        "Enjoy the court! The players don't mind a battle between drills."
+      ],
+      "text": [
+        "Distracție plăcută pe teren! Jucătorii nu se supără pe o luptă între antrenamente."
+      ]
+    },
+    {
+      "en": [
+        "A match is on right now, so the courts are closed to visitors. Do go up to the stands and cheer!"
+      ],
+      "text": [
+        "Acum se joacă un meci, așa că terenurile sunt închise vizitatorilor. Urcă în tribune și încurajează!"
+      ]
+    },
+    {
+      "en": [
+        "Come back any time. The courts are open between matches!"
+      ],
+      "text": [
+        "Revino oricând. Terenurile sunt deschise între meciuri!"
+      ]
+    }
+  ]
+}

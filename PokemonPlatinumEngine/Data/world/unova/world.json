@@ -379,7 +379,15 @@
     { "name": "MarvelousBridgeGate_West", "matrix": 131, "area": "bridge_gate_gate_6", "trees": "Round", "setting": "Indoors" },
     { "name": "MarvelousBridgeGate_East", "matrix": 130, "area": "bridge_gate_gate_7", "trees": "Round", "setting": "Indoors" },
     // Plan 22 · U10, part h: the Nature Preserve, reached only by the Cargo Service's plane from Mistralton
-    { "name": "NaturePreserve", "matrix": 372, "area": "nature_preserve", "trees": "Round" }
+    { "name": "NaturePreserve", "matrix": 372, "area": "nature_preserve", "trees": "Round" },
+    // Plan 42 · PS5: Nimbasa City's five fields, each reached from its stadium's lobby by the receptionist's script on
+    // the day of its sport (the Big Stadium's American football, baseball and football; the Small Court's tennis and
+    // basketball), and left by the field's own way back to the lobby
+    { "name": "NimbasaCity_GridironField", "matrix": 105, "area": "nimbasa_city_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "NimbasaCity_BaseballField", "matrix": 222, "area": "nimbasa_city_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "NimbasaCity_FootballField", "matrix": 176, "area": "nimbasa_city_7", "trees": "Round", "setting": "Indoors" },
+    { "name": "NimbasaCity_TennisCourt", "matrix": 100, "area": "nimbasa_city_10", "trees": "Round", "setting": "Indoors" },
+    { "name": "NimbasaCity_BasketballCourt", "matrix": 220, "area": "nimbasa_city_11", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -448,6 +456,8 @@
     "nature_preserve",
     // plan 42 · PS4, part b: Pokéstar Studios, the lot, its studio building and its theatre (the stage and the back
     // rooms behind the building's two inner doors stay shut)
-    "pokestar_studios", "pokestar_studios_3", "pokestar_studios_4"
+    "pokestar_studios", "pokestar_studios_3", "pokestar_studios_4",
+    // plan 42 · PS5: Nimbasa City's five fields
+    "nimbasa_city_5", "nimbasa_city_6", "nimbasa_city_7", "nimbasa_city_10", "nimbasa_city_11"
   ]
 }

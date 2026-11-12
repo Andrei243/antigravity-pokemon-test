@@ -1,0 +1,557 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Suporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our team trains harder than anyone in Unova! Battle them and see!"
+        ],
+        "text": [
+          "Echipa noastră se antrenează mai mult decât oricine din Unova! Luptă cu ei și vei vedea!"
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Suporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've cheered for this team since before they could win a game!"
+        ],
+        "text": [
+          "Țin cu echipa asta de dinainte să poată câștiga un meci!"
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Linebacker"
+        ],
+        "text": [
+          "Fundaș"
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Linebacker"
+        ],
+        "text": [
+          "Fundaș"
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Linebacker"
+        ],
+        "text": [
+          "Fundaș"
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "19": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "20": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "21": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "22": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Suporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I bring a drum to every practice. Nobody has asked me to stop yet."
+        ],
+        "text": [
+          "Aduc o tobă la fiecare antrenament. Încă nu mi-a cerut nimeni să mă opresc."
+        ]
+      }
+    },
+    "24": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          "Suporterul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Give it everything! The players love a challenger."
+        ],
+        "text": [
+          "Dă tot ce ai! Jucătorilor le plac provocatorii."
+        ]
+      }
+    },
+    "25": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "26": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "27": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "28": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "29": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "30": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    },
+    "31": {
+      "name": {
+        "en": [
+          "Player"
+        ],
+        "text": [
+          "Jucătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Can't talk now, there's a game on!"
+        ],
+        "text": [
+          "Nu pot vorbi acum, e meci!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

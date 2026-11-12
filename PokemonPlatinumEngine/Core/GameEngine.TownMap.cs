@@ -113,6 +113,12 @@ public partial class GameEngine
             townMapFromPokegear = false;
             OpenPokegear(PokegearCard.Map);
         }
+        else if (townMapFromPhone)
+        {
+            // The phone's map card goes back to the phone, on its own card (plan 43 · LF6)
+            townMapFromPhone = false;
+            OpenPhone(PhoneCard.Map);
+        }
         else if (townMapFromPokeNav)
         {
             // The map page goes back to the PokéNav, on its own page (plan 21 · H2, part b)

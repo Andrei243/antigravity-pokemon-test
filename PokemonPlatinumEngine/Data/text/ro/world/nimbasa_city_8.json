@@ -11,10 +11,64 @@
       },
       "dialog": {
         "en": [
-          "Tennis in the morning, basketball after lunch. The Small Court never sits still, and neither do I!"
+          "Tennis and basketball take turns on the courts. The Small Court never sits still, and neither do I!"
         ],
         "text": [
-          "Tenis dimineața, baschet după-amiaza. Small Court nu stă locului niciodată, și nici eu!"
+          "Tenisul și baschetul se schimbă pe terenuri. Small Court nu stă niciodată locului, și nici eu!"
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A match is on. Please keep off the court until it's over."
+        ],
+        "text": [
+          "Se joacă un meci. Vă rog să nu intrați pe teren până se termină."
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The stands are up the stairs. You can hear the crowd from here!"
+        ],
+        "text": [
+          "Tribunele sunt sus pe scări. Se aude mulțimea de aici!"
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No running onto the court. Not even with a very fast Pokémon."
+        ],
+        "text": [
+          "Nu se aleargă pe teren. Nici măcar cu un Pokémon foarte rapid."
         ]
       }
     },
@@ -25,14 +79,6 @@
         ],
         "text": [
           "Recepționera"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to the Small Court! The courts are being swept just now. Matches will start again soon!"
-        ],
-        "text": [
-          "Bun venit la Small Court! Terenurile sunt măturate chiar acum. Meciurile reîncep în curând!"
         ]
       }
     }

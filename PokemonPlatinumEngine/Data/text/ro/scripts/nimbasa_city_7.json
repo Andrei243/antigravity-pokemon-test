@@ -1,0 +1,56 @@
+{
+  "Athlete1": [
+    {
+      "en": [
+        "I've been working on my footwork. Let's see if it works in battle!"
+      ],
+      "text": [
+        "Am lucrat la jocul de picioare. Să vedem dacă merge și în luptă!"
+      ]
+    },
+    {
+      "en": [
+        "You got that one past the keeper. Well played."
+      ],
+      "text": [
+        "Ai trecut-o de portar. Bine jucat."
+      ]
+    }
+  ],
+  "Athlete2": [
+    {
+      "en": [
+        "Goal! Well, it will be. Battle me!"
+      ],
+      "text": [
+        "Gol! Mă rog, o să fie. Luptă cu mine!"
+      ]
+    },
+    {
+      "en": [
+        "My legs are jelly. Good game!"
+      ],
+      "text": [
+        "Mi s-au înmuiat picioarele. Joc frumos!"
+      ]
+    }
+  ],
+  "Athlete3": [
+    {
+      "en": [
+        "My Pokémon and I pass like a dream. Watch!"
+      ],
+      "text": [
+        "Eu și Pokémonul meu ne pasăm ca în vis. Uită-te!"
+      ]
+    },
+    {
+      "en": [
+        "Tomorrow's another match!"
+      ],
+      "text": [
+        "Mâine e alt meci!"
+      ]
+    }
+  ]
+}

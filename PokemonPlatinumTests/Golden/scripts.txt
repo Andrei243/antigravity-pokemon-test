@@ -29108,6 +29108,66 @@ way 1, from answer 1
   ? Will you battle the Subway Bosses beside me? = No
   * endscene
   + seen nimbasa_city.The Subway Bosses
+=== nimbasa_city_10.Athlete1
+from Smasher at 8,21 of NimbasaCity_TennisCourt
+way 0
+  Smasher> Love, fifteen, thirty... Let's battle and keep score!
+  Smasher> Match point to you. Good game!
+  * battle unova_smasher_elena Won
+  + FLAG_DAILY_UNOVA_TENNIS_1
+  + beaten unova_smasher_elena
+way 1, from answer 1
+  * battle unova_smasher_elena Lost
+=== nimbasa_city_10.Athlete2
+from Smasher at 12,21 of NimbasaCity_TennisCourt
+way 0
+  Smasher> My serve is fast. My Pokémon is faster!
+  Smasher> I'll need to work on my backhand.
+  * battle unova_smasher_aspen_3 Won
+  + FLAG_DAILY_UNOVA_TENNIS_2
+  + beaten unova_smasher_aspen_3
+way 1, from answer 1
+  * battle unova_smasher_aspen_3 Lost
+=== nimbasa_city_10.Athlete3
+from Smasher at 17,23 of NimbasaCity_TennisCourt
+way 0
+  Smasher> Game, set, battle!
+  Smasher> Thanks for the rally! Same time tomorrow?
+  * battle unova_smasher_mari_2 Won
+  + FLAG_DAILY_UNOVA_TENNIS_3
+  + beaten unova_smasher_mari_2
+way 1, from answer 1
+  * battle unova_smasher_mari_2 Lost
+=== nimbasa_city_11.Athlete1
+from Hoopster at 8,20 of NimbasaCity_BasketballCourt
+way 0
+  Hoopster> Nothing but net! And nothing but wins!
+  Hoopster> You blocked every shot! Good game.
+  * battle unova_hoopster_bobby Won
+  + FLAG_DAILY_UNOVA_BASKETBALL_1
+  + beaten unova_hoopster_bobby
+way 1, from answer 1
+  * battle unova_hoopster_bobby Lost
+=== nimbasa_city_11.Athlete2
+from Hoopster at 13,16 of NimbasaCity_BasketballCourt
+way 0
+  Hoopster> We run plays here. Here's a play: battle!
+  Hoopster> Time-out for me. You're good!
+  * battle unova_hoopster_john_3 Won
+  + FLAG_DAILY_UNOVA_BASKETBALL_2
+  + beaten unova_hoopster_john_3
+way 1, from answer 1
+  * battle unova_hoopster_john_3 Lost
+=== nimbasa_city_11.Athlete3
+from Hoopster at 8,12 of NimbasaCity_BasketballCourt
+way 0
+  Hoopster> My Pokémon can jump higher than the hoop!
+  Hoopster> Practice again tomorrow, then.
+  * battle unova_hoopster_lamarcus_2 Won
+  + FLAG_DAILY_UNOVA_BASKETBALL_3
+  + beaten unova_hoopster_lamarcus_2
+way 1, from answer 1
+  * battle unova_hoopster_lamarcus_2 Lost
 === nimbasa_city_14.Desk
 from Receptionist at 7,8 of NimbasaCity_BattleInstitute
 way -
@@ -29131,6 +29191,118 @@ way 0
 way 1, from answer 1
   Attendant> No hurry! The wheel turns all day and all night.
   ? Would you like a ride? = No
+=== nimbasa_city_3.Receptionist
+from Receptionist at 11,14 of NimbasaCity_BigStadium
+way 0
+  Receptionist> Welcome to the Big Stadium! Today is baseball day.
+  Receptionist> The field is open to visitors between games. Would you like to go down?
+  Receptionist> Enjoy the field! The players don't mind a battle between drills.
+  ? The field is open to visitors between games. Would you like to go down? = Yes
+  * warp NimbasaCity_BaseballField 9 60
+way 1, from answer 1
+  Receptionist> Come back any time. The field is open between games!
+  ? The field is open to visitors between games. Would you like to go down? = No
+=== nimbasa_city_5.Athlete1
+from Linebacker at 8,24 of NimbasaCity_GridironField
+way 0
+  Linebacker> Off-season training! Want to block for me? I mean, battle!
+  Linebacker> You broke right through my line! Good game.
+  * battle unova_linebacker_dan Won
+  + FLAG_DAILY_UNOVA_GRIDIRON_1
+  + beaten unova_linebacker_dan
+way 1, from answer 1
+  * battle unova_linebacker_dan Lost
+=== nimbasa_city_5.Athlete2
+from Linebacker at 10,24 of NimbasaCity_GridironField
+way 0
+  Linebacker> Hut, hut... BATTLE!
+  Linebacker> Tackled, fair and square.
+  * battle unova_linebacker_bob_3 Won
+  + FLAG_DAILY_UNOVA_GRIDIRON_2
+  + beaten unova_linebacker_bob_3
+way 1, from answer 1
+  * battle unova_linebacker_bob_3 Lost
+=== nimbasa_city_5.Athlete3
+from Linebacker at 13,24 of NimbasaCity_GridironField
+way 0
+  Linebacker> My Pokémon hits harder than any tackle. Ready?
+  Linebacker> Back to the drills for me. Come again tomorrow!
+  * battle unova_linebacker_jonah_2 Won
+  + FLAG_DAILY_UNOVA_GRIDIRON_3
+  + beaten unova_linebacker_jonah_2
+way 1, from answer 1
+  * battle unova_linebacker_jonah_2 Lost
+=== nimbasa_city_6.Athlete1
+from Infielder at 13,56 of NimbasaCity_BaseballField
+way 0
+  Infielder> Batter up! My Pokémon swings for the fences!
+  Infielder> Out at the plate... That's a good game.
+  * battle unova_infielder_alex Won
+  + FLAG_DAILY_UNOVA_BASEBALL_1
+  + beaten unova_infielder_alex
+way 1, from answer 1
+  * battle unova_infielder_alex Lost
+=== nimbasa_city_6.Athlete2
+from Infielder at 16,56 of NimbasaCity_BaseballField
+way 0
+  Infielder> I field grounders all day. Your attacks won't get past me!
+  Infielder> You hit everything I threw. Nice!
+  * battle unova_infielder_connor_3 Won
+  + FLAG_DAILY_UNOVA_BASEBALL_2
+  + beaten unova_infielder_connor_3
+way 1, from answer 1
+  * battle unova_infielder_connor_3 Lost
+=== nimbasa_city_6.Athlete3
+from Infielder at 22,57 of NimbasaCity_BaseballField
+way 0
+  Infielder> Three strikes and you're out. One battle and you're done!
+  Infielder> I'll be back at practice tomorrow.
+  * battle unova_infielder_todd_2 Won
+  + FLAG_DAILY_UNOVA_BASEBALL_3
+  + beaten unova_infielder_todd_2
+way 1, from answer 1
+  * battle unova_infielder_todd_2 Lost
+=== nimbasa_city_7.Athlete1
+from Striker at 8,24 of NimbasaCity_FootballField
+way 0
+  Striker> I've been working on my footwork. Let's see if it works in battle!
+  Striker> You got that one past the keeper. Well played.
+  * battle unova_striker_tony Won
+  + FLAG_DAILY_UNOVA_FOOTBALL_1
+  + beaten unova_striker_tony
+way 1, from answer 1
+  * battle unova_striker_tony Lost
+=== nimbasa_city_7.Athlete2
+from Striker at 5,21 of NimbasaCity_FootballField
+way 0
+  Striker> Goal! Well, it will be. Battle me!
+  Striker> My legs are jelly. Good game!
+  * battle unova_striker_roberto_3 Won
+  + FLAG_DAILY_UNOVA_FOOTBALL_2
+  + beaten unova_striker_roberto_3
+way 1, from answer 1
+  * battle unova_striker_roberto_3 Lost
+=== nimbasa_city_7.Athlete3
+from Striker at 14,25 of NimbasaCity_FootballField
+way 0
+  Striker> My Pokémon and I pass like a dream. Watch!
+  Striker> Tomorrow's another match!
+  * battle unova_striker_marco_2 Won
+  + FLAG_DAILY_UNOVA_FOOTBALL_3
+  + beaten unova_striker_marco_2
+way 1, from answer 1
+  * battle unova_striker_marco_2 Lost
+=== nimbasa_city_8.Receptionist
+from Receptionist at 11,14 of NimbasaCity_SmallCourt
+way 0
+  Receptionist> Welcome to the Small Court! Today is tennis day.
+  Receptionist> The court is open to visitors between matches. Would you like to go down?
+  Receptionist> Enjoy the court! The players don't mind a battle between rallies.
+  ? The court is open to visitors between matches. Would you like to go down? = Yes
+  * warp NimbasaCity_TennisCourt 6 24
+way 1, from answer 1
+  Receptionist> Come back any time. The courts are open between matches!
+  ? The court is open to visitors between matches. Would you like to go down? = No
 === nimbasa_city_gym.Ampere
 from the trigger at 14,24 of NimbasaCity_Gym
 way 0
@@ -31104,8 +31276,11 @@ from Old Woman at 690,130 of Kalos
 way -
   Old Woman> The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle.
 === pokestar_studios.PosterWall
+from the tile read at 22,21 of PokestarStudios
 from the tile read at 23,20 of PokestarStudios
+from the tile read at 23,21 of PokestarStudios
 from the tile read at 24,20 of PokestarStudios
+from the tile read at 24,21 of PokestarStudios
 way -
   > The studio's poster wall. Painted posters in warm reds hang in a long row.
   > The frames for the studio's own films are still empty.

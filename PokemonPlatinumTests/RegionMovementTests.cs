@@ -39,10 +39,13 @@ public class RegionMovementTests
         Assert.Equal(MovementSpeed.Analog, kalos.Movement.Speed);
         Assert.True(kalos.Movement.Offers(RegionMode.Skates));
         Assert.Equal(CharacterKit.Grown, kalos.Kit);
-        // Alola keeps eight ways on the grid and the chibi kit for now
+        // Alola too, since the user's switch later on 2026-11-12: free, its rides kept, the grown kit
         var alola = RegionDatabase.Get("Alola")!;
-        Assert.Equal(MovementDirections.Eight, alola.Movement.Directions);
-        Assert.Equal(CharacterKit.Chibi, alola.Kit);
+        Assert.Equal(MovementDirections.Free, alola.Movement.Directions);
+        Assert.Equal(MovementSpeed.Analog, alola.Movement.Speed);
+        Assert.True(alola.Movement.Offers(RegionMode.Ride));
+        Assert.False(alola.Movement.Offers(RegionMode.Skates));
+        Assert.Equal(CharacterKit.Grown, alola.Kit);
     }
 
     [Fact]

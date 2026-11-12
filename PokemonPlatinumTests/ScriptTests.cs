@@ -283,6 +283,8 @@ public class ScriptTests
           tour ride "reed_river"
           tour open "reed_river"
           tour points
+          tour report
+          tour reward
           train open
           train drill
           train reset all

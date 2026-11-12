@@ -9253,10 +9253,19 @@ Stage 2 of plan 30, built and proven on test regions (Kalos's file says `Free` s
 
 The user opened plan 30's gate (decision 10) on 2026-11-12, without waiting for Kalos's second Gym to be judged first: **Kalos's file says `"movement": { "directions": "Free", "speed": "Analog", "modes": [ "Skates" ] }` and `"kit": "Grown"`.** Nothing else was flipped by hand; what follows the two words follows by itself, as plan 30 built it:
 
-- **Movement**: every place of Kalos, rooms and caves included, moves freely, but a Gym whose map names a `puzzle` (`Player.MovesFreely` asks `map.Puzzle == null`: Santalune, Cyllage, Shalour, Coumarine and Snowbelle), which keeps the grid's steps. The skates are put on as on the grid (the run held with the skates given), in a free place wherever the grid would skate the step ahead (`Player.Glide`, fixed with the flip: before it free movement never put them on), and taken off where the grid refuses them (tall grass, stairs). The options' MOVEMENT row (`Four ways`) still puts Kalos on the grid's four ways. A crossing out of Kalos stands the body on its tile's centre (`Player.SetPosition`), and Alola keeps `Eight` and the chibi kit for now.
+- **Movement**: every place of Kalos, rooms and caves included, moves freely, but a Gym whose map names a `puzzle` (`Player.MovesFreely` asks `map.Puzzle == null`: Santalune, Cyllage, Shalour, Coumarine and Snowbelle), which keeps the grid's steps. The skates are put on as on the grid (the run held with the skates given), in a free place wherever the grid would skate the step ahead (`Player.Glide`, fixed with the flip: before it free movement never put them on), and taken off where the grid refuses them (tall grass, stairs). The options' MOVEMENT row (`Four ways`) still puts Kalos on the grid's four ways. A crossing out of Kalos stands the body on its tile's centre (`Player.SetPosition`), and Alola kept `Eight` and the chibi kit until the user switched it later the same day ("Alola free and grown", below).
 - **The kit**: `GameEngine.KitHere` is `Grown` in Kalos, so its people and the player are drawn as their grown twins (`CharacterStyle.InKit`; FM10's 81) as live rigs and impostors, its Pokémon in the field at `0.85 ×` their height, its trainers in battle and on the bands in the grown kit; the looks of `characters.json` stay chibi when asked for plainly, so nothing of Kalos's people reaches another region.
 - **The camera**: every outdoor map of Kalos whose place names no camera of its own is built with `FieldCamera.Kalos` (`WorldMapBuilder.GrownCamera`); rooms and caves keep theirs.
 - **Still owed, unchanged by the flip**: the Trainer Card's grown portrait (the card's portrait is the chibi sprite; the card designer's figure and the photo studio render the grown look in the chibi kit's frame, not looked at), a grown rig under a bridge's deck, lying, swimming, fishing, surfing and riding drawn as the chibi sprite, and whether twelve live grown rigs hold 8 ms on High (the user's `profile` on the Windows machine).
+
+### Alola free and grown (2026-11-12, later)
+
+The user switched Alola as Kalos was switched: **`alola.json` says `"movement": { "directions": "Free", "speed": "Analog", "modes": [ "Ride" ] }` and `"kit": "Grown"`.**
+
+- **Movement**: every place of Alola moves freely (a place whose map names a `puzzle` keeps the grid's steps, as in Kalos). The rides' rules are still the grid's own step: Mudsdale's gallop over rough ground, a Lapras's rider carried back out by a current, Sharpedo stemming one, Machamp's Strength, the Mantine course and the gates are all `FieldMovement.Step`'s, which free movement only asks. **One rule needed a hand**: a charging Tauros run into a cracked rock was only told to the engine by the grid's bump (`Player.TryStep`'s `ranInto`), and free movement met the rock as a wall. `FreeMovement.Classify` now makes a cracked rock in a charging ride's way (`RidePager.Charges`) a hand-off, as a boulder under Strength is: the body eases onto its tile's centre and the grid's own step bumps the rock, so `GameEngine.ChargeThroughRock` breaks it as before. Nothing of `FieldMovement.Step` changed; a ride that doesn't charge (Stoutland) is stopped by the rock as by any wall.
+- **The camera** is Alola's own, `FieldCamera.Alola`: 46° down, 22° of view, 500 units away, lower and nearer than Kalos's, for the islands' sea and far shore (style guide, "Alola's camera"). Every outdoor place of Alola whose own header names no camera has it (`WorldMapBuilder.GrownCamera`); rooms and caves keep theirs.
+- **The kit**: Alola's people are drawn as their grown twins; the 41 looks Kalos's twins didn't cover were given theirs (style guide, "Alola's cast"). A rider of a ride on land is now drawn live, astride, in the grown kit (Kalos's lent Mamoswine too), on the ride's sprite at the grown field's size; in a chibi region nothing of it changed.
+- **A crossing** between Kalos and Alola, either way, stands the body on its tile's centre and keeps both free and grown; the skates are Kalos's alone and are off on arrival in Alola.
 
 ## A friend in the partner's place; the friends' hall (2026-11-03, plan 13 · V20, V23)
 
@@ -11989,6 +11998,42 @@ Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's).
   ending's lines and stars, the crowd (cheers for 4 or 5 stars, applause for 2 or 3, murmurs for 1) and the box office:
   tickets sold, ours, `stars² × 1,200` plus the genre's draw (ghost 900, detective 1,100, heist 1,500, race 1,800).
   Nothing of it is kept but the number, which the script reads as `RESULT`.
+- **The posters** (the user's 33a, owed from part b and painted the same day): a poster wall of ours
+  (`PropType.PosterWall`, `Landmarks.PaintPosterWall`) beside the studio building's door, the studio's four films painted
+  on it in warm reds as the style guide's "The posters" has them; it stands on the lot's open ground before the building's front, east of its
+  door, over the tiles the original's sign is read from, blocks them, and is read on them itself (the overlay's `readAt`,
+  `PosterWall`, as the sign still is).
+
+## Sports days (2026-11-12, plan 42 · PS5)
+
+Black and White's sports days in Nimbasa City's stadiums, on Black 2's fields and athletes, everything said ours.
+
+- **The days** (`Models/SportsDays.cs`): Black and White's table. The Big Stadium plays baseball on Monday, Thursday and
+  Sunday, football on Tuesday and Friday and American football on Wednesday and Saturday; the Small Court tennis on
+  Monday, Wednesday, Friday and Sunday and basketball on Tuesday, Thursday and Saturday. Black 2's lobby scripts, which
+  would say the same, are not in the decompilation (its `res/field/scripts` holds only the two global files), so the
+  table stands as Black and White have it.
+- **The fields** are Black 2's zones `nimbasa_city_5` (American football, `NimbasaCity_GridironField`), `_6` (baseball),
+  `_7` (football), `_10` (tennis) and `_11` (basketball), imported with `--game black2 --data` as rooms (`Indoors`). Black 2
+  leads onto them by a warp to nowhere (`0xFFFF`) the receptionist's script fills; here the receptionist asks and warps
+  (`nimbasa_city_3.txt`, `_8.txt`), and each field's way back is an overlay `door` to the lobby's tile before its counter
+  (11, 10), since the warp it names in the lobby leads nowhere.
+- **The athletes**: each field's three objects of Black 2's flags 0x286 to 0x288, the sport's class (Linebacker, Infielder,
+  Striker, Smasher, Hoopster). Each athlete has four teams in Unova's table (the import numbers same-named trainers in
+  the ROM's order, `_2` to `_4`, not by strength), which `SportsDays.TeamsOf` orders by level (about 25, 33, 47 and 62).
+  Which the story calls for is ours, since Black 2's rule lies in the same missing scripts: the first under five of
+  Unova's Badges, the second from five, the third with all eight, the fourth once Unova's Hall of Fame is entered
+  (`SportsDays.TierOf`). Each is battled once a day (`FLAG_DAILY_UNOVA_<SPORT>_<n>`, cleared with the day's others) with
+  `battle self as`; the field's script and `SportsDays` are held to each other by `SportsDayTests`.
+- **The backers** on each field (Black 2's two pairs, trainers there) only cheer here: battling them is left out, since
+  Black 2 pairs them by a rule nobody can read and the plan's sports days are the athletes'.
+- **A game on** (ours: the twilight hours, 17:00 to 19:59, under the lights; `SportsDays.GameOn`): the lobbies' and the
+  stands' `OnTransition` set `FLAG_UNOVA_GAME_ON` (cleared at any other hour), which shows Black 2's three policemen
+  across the way to the field and the stands' crowd (the objects of Black 2's flag 0x028f, shown by ours instead) and the
+  game's own players on the field (Black 2's work objects and the unflagged players), whom nobody sees, since the
+  receptionist takes nobody down while a game is on. Coming up to the stands then plays a scene of ours from the rail
+  (`nimbasa_city_4.txt`'s and `_9.txt`'s `OnEnter`, marked as a scene): the bars, the camera's path over the rail, the
+  crowd's cheer and the announcer's lines. A crowd's bed in the ambience is owed.
 
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 

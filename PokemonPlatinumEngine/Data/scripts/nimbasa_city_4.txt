@@ -1,0 +1,27 @@
+# The Big Stadium's stands (plan 42 · PS5; rulings, "Sports days"). Black 2's room, our words. While a game is on (the
+# twilight hours) the crowd fills the seats (FLAG_UNOVA_GAME_ON, set behind the door's fade) and coming up the stairs
+# plays the game's scene from the rail, once for each time the stands are come to.
+
+script OnTransition
+  if time twilight goto On
+  clearflag FLAG_UNOVA_GAME_ON
+  end
+label On
+  setflag FLAG_UNOVA_GAME_ON
+  end
+
+script OnEnter
+  if not flag FLAG_UNOVA_GAME_ON goto Quiet
+  scene "StadiumGame"
+  letterbox on 0.4
+  camera path 16 22 9 20 23 20 16 22 2
+  sound "contest_cheer"
+  text "The crowd is on its feet! The home side breaks down the field..."
+  emote player exclaim 0.9
+  text "And they score! The stands roar, and the scoreboard flickers with the new numbers."
+  sound "contest_cheer"
+  text "There's the final whistle! The players shake hands and wave to the crowd."
+  camera release 0.6
+  endscene
+label Quiet
+  end

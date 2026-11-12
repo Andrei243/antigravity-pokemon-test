@@ -66,16 +66,19 @@ internal static partial class ModernUi
         Hints(sw - Margin, 44, Hint("shared.keys.c", "photoTour.hints.keep"), Hint("shared.keys.z", "photoTour.hints.leave"));
         var panel = new Rectangle(Margin, ContentTop + 8, sw - 2 * Margin, 760);
         Panel(panel, 34);
-        int rows = Math.Min(screen.Shown.Count, 8);
-        for (int i = 0; i < rows; i++)
+        // Eight rows at once; past eight the list scrolls with the cursor (plan 44 · SD6)
+        int rows = Math.Min(screen.Shown.Count - screen.FirstShown, PhotoTourScreen.RowsShown);
+        for (int k = 0; k < rows; k++)
         {
+            int i = screen.FirstShown + k;
             var best = screen.Shown[i];
-            var r = new Rectangle(panel.X + 24, panel.Y + 24 + i * 92, panel.Width - 48, 84);
-            var ink = ListRow(r, false, LocalNames.Species(best.Species), nameX: 30, size: 34);
+            var r = new Rectangle(panel.X + 24, panel.Y + 24 + k * 92, panel.Width - 72, 84);
+            var ink = ListRow(r, i == screen.Cursor, LocalNames.Species(best.Species), nameX: 30, size: 34);
             for (int s = 0; s < best.Stars; s++) Star(new Vector2(r.X + 560 + s * 44, r.Y + r.Height / 2f), 18, Gold);
             string points = Text.Of("photoTour.points", ("points", best.Points));
             UiFonts.DrawCentered(points, r.X + r.Width - 30 - UiFonts.Measure(points, 34, UiWeight.Black), r.Y + r.Height / 2f, 34, ink, UiWeight.Black);
         }
+        ScrollBar(panel, screen.FirstShown, PhotoTourScreen.RowsShown, screen.Shown.Count);
         if (screen.Shown.Count == 0)
             UiFonts.Draw(Text.Of("photoTour.none"), panel.X + 40, panel.Y + 40, 34, Muted, UiWeight.Black);
         string total = Text.Of("photoTour.total", ("points", screen.Total));
