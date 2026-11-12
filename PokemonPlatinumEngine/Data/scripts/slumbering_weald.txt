@@ -2,7 +2,7 @@
 # in it. The lines are our own; VAR_GALAR_STORY is postwick.txt's count. The shadow is the version's legendary
 # (VAR_GALAR_VERSION: Zacian's in Sword, Zamazenta's in Shield), met in a staged battle (plan 33 · GL6; docs/mechanics/
 # rulings.md, "Staged battles"): its level hidden, nothing the team does touches it, it does nothing, and after three
-# turns it is gone. Its true battle is GL7's. And the second visit (GL6): the altar on the Darkest Day.
+# turns it is gone. Its true battle comes after the Hall of Fame (GL7, Legend below). And the second visit (GL6): the altar on the Darkest Day.
 
 
 script Shadow
@@ -73,18 +73,18 @@ script Altar
 script Legend
   scene "The legend in the fog"
   faceto player hop_altar
-  text "The fog has rolled back in, as thick as the first day. On the altar the rusted sword and shield lie where they were found."
+  text "The fog has rolled back in, as thick as the first day. The altar stands empty, and something waits beyond it in the white."
   speaker "Hop"
   say "{player}! Sonia reckons the two of the legend came home to the Weald once the sky cleared. And look, the fog's parting."
   say "Not for me, though. For you. Go on, Champion. It's waiting for you."
   if var VAR_GALAR_VERSION == 2 goto Shield
   seen "Zacian"
-  text "Out of the white steps Zacian, the rusted sword in its jaws. It lowers its head, ready."
+  text "Out of the white steps Zacian, the rusted sword back in its jaws. It lowers its head, ready."
   wildbattle "Zacian" 70
   goto After
 label Shield
   seen "Zamazenta"
-  text "Out of the white steps Zamazenta, the rusted shield on its mane. It lowers its head, ready."
+  text "Out of the white steps Zamazenta, the rusted shield back on its mane. It lowers its head, ready."
   wildbattle "Zamazenta" 70
 label After
   if result == 3 goto Caught

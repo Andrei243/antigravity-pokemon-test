@@ -1,7 +1,7 @@
 {
   // The Slumbering Weald (plan 33 · GL1): the old wood beyond the hedge on Postwick's west side, low and always in fog
   // (world.json gives the area its weather). The first visit only: Hop's Wooloo found deep in, and the shadow in the
-  // fog. Nothing lives here for the player to meet yet; the Weald's own Pokémon and its legend are GL7's
+  // fog. Nothing lives here for the player to meet yet; the Weald's own Pokémon are owed; its legend is met at the altar after the Hall of Fame (GL7)
   "markers": [
     { "name": "weald_entry", "at": [-62, 0.8, 20], "yaw": 270 },
     { "name": "weald_deep", "at": [-80, 0.4, 40], "yaw": 0 },

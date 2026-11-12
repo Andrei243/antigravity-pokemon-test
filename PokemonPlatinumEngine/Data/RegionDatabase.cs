@@ -1197,6 +1197,9 @@ public static class RegionDatabase
             // there wakes in the player's room in Postwick; a Champion come across from Alola is inside the house's door
             Start = new MapSpot("Postwick_PlayersHouse_2F", 4, 6, Direction.Down),
             Arrival = new MapSpot("Postwick_PlayersHouse_1F", 6, 10, Direction.Up),
+            // Where a return to Galar lands (plan 33 · GL7): beside the airline's attendant in Wyndon Airfield's lounge,
+            // whose plane flies back to every region entered once Galar's Hall of Fame is set (plan 18 · W8)
+            Harbour = new MapSpot("Wyndon_Airfield", 6, 4, Direction.Right),
             Maps = new[]
             {
                 // Plan 33 · GL1: Postwick's two houses, Wedgehurst's station, Pokémon Center, research lab and house, and

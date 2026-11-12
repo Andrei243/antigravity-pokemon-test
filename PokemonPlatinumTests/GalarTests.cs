@@ -501,6 +501,8 @@ public class GalarTests
         Assert.Equal("galarEnergyPlant", Next());
         var plant = Play("Wyndon_EnergyPlant", "OnEnter", "Wyndon_EnergyPlant");
         Assert.Equal(43, story.Var("VAR_GALAR_STORY"));
+        // (Sword's first battle with Eternatus, plan 33 · GL7: a staged battle at 60 before the raid)
+        Assert.Contains(plant.Log, l => l.StartsWith("wildbattle Eternatus 60 nofleeing hidelevel canlose", StringComparison.Ordinal));
         Assert.Contains(plant.Log, l => l.StartsWith("raidbattle Eternatus 60 5 stars", StringComparison.Ordinal));
         Assert.Contains(party.Members, p => p.Species.Name == "Eternatus");
         Assert.False(story.Has("FLAG_GALAR_DARKEST_DAY"));
@@ -583,6 +585,30 @@ public class GalarTests
                     + "|" + host.Bag.GetQuantity(ItemDatabase.Get("Dynamax Band")!) + "|" + string.Join(",", host.OnMarker.OrderBy(m => m.Key).Select(m => m.Key + "=" + m.Value)));
             }
             Assert.True(ends[0] == ends[1], $"{file}.{script} skipped leaves otherwise than played:\n{ends[0]}\n{ends[1]}");
+        }
+    }
+
+    [Fact]
+    public void WyndonAirfieldsAttendantFliesBackToTheRegionsEnteredAndNotYetToPaldea()
+    {
+        // Plan 33 · GL7: Galar's harbour in the airfield's lounge. A game begun in Galar has nowhere to fly yet; one that
+        // came across from Alola flies back there, and a return to Galar lands beside her
+        Assert.Equal("Wyndon_Airfield", RegionDatabase.HarbourLinkOf(RegionDatabase.Galar)!.DepartureMap);
+        Assert.Equal("Wyndon_Airfield", Region.HarbourSpot!.Map);
+        foreach (bool fromAlola in new[] { false, true })
+        {
+            var story = new StoryState();
+            story.Set("GalarHallOfFame");
+            if (fromAlola) story.EnterRegion(RegionDatabase.Alola);
+            var room = Rooms.Value("Wyndon_Airfield");
+            var attendant = room.Everyone.Single(n => n.IsTransportAttendant);
+            var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { Map = room, Region = RegionDatabase.Galar };
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find(FieldScripts.For(attendant)!, room.Name)!, attendant);
+            runner.RunToEnd();
+            Assert.Empty(host.Problems);
+            if (fromAlola) Assert.Equal(new[] { RegionDatabase.Alola }, host.Crossings);
+            else Assert.Empty(host.Crossings);
         }
     }
 

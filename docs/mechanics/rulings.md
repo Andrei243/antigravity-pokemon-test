@@ -11627,12 +11627,13 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   …`, a word of the script's `raid` (`docs/scripts.md`), its three raiders Hop with his starter's last stage and Zacian
   and Zamazenta at 70, each a trainer of ours with a team of one. The boss is Dynamaxed by the raid's own rule though
   Eternatus never Dynamaxes elsewhere (`NeverDynamax`): Eternamax is the giant here. Sword's first battle with Eternatus
-  (level 60, before Eternamax) is not fought: the scene tells of Leon's fall. Leon then hands over a Master Ball and
+  (level 60, before Eternamax) was not fought in GL6; GL7 added it ("After the Hall of Fame in Galar"). Leon then hands over a Master Ball and
   `raid catch` throws it at Eternatus itself (not the form), so the Pokémon caught is Eternatus at 60.
 - **The Slumbering Weald's first meeting is a staged battle** ("Staged battles"): `wildbattle "Zacian" 70 hidelevel
   untouchable passive endafter 3` in a Sword game, Zamazenta in a Shield one, before the fog closes in; a staged battle
   gives the Pokédex nothing and refuses every ball, so it is still `seen` by the script and `SpeciesSources` counts no
-  staged `wildbattle` as a way to a species (Zacian and Zamazenta stay owed to GL7).
+  staged `wildbattle` as a way to a species (Zacian and Zamazenta were owed to GL7, which meets them after the Hall of
+  Fame).
 - **A place's own light** (style guide, "Open world", "A place's own light"): an area of `world.json` may name `light`
   (`night`, `darkestDay`) and `lightWhile` (a flag). Spikemuth is held in the night whatever the hour (GL5's owed fault:
   it was drawn in the day's light), and Wyndon is under the Darkest Day's red while `FLAG_GALAR_DARKEST_DAY` is set. The
@@ -11682,9 +11683,12 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   Galar's row of the gathering (Macro Cosmos's bay at Grayfall Keep) and Galar's case are still owed: the keep would
   widen by an eighth bay, and the case waits for the user's outline.
 - **The plane on to Paldea** leaves from a room of ours, `Wyndon_Airfield` (a lounge in the station's west end, its
-  door on the station's north face at x -140, `wyndon_airfield_door`), the link's `DepartureMap`; its attendant stands
-  from `GalarHallOfFame` and, while Paldea has no maps, says so (`travel` answers 0, her own line). GL7's "plane lands in
-  Paldea" waits for plan 34 · PD1.
+  door on the station's north face at x -140, `wyndon_airfield_door`), the link's `DepartureMap` and Galar's `Harbour`
+  (6,4, beside her). She stands from `GalarHallOfFame` and is Galar's harbour as plan 18 · W8 has every finished region's:
+  her plane flies back to every region entered, and a return to Galar lands beside her (Galar had no `Harbour` before,
+  so another region's harbour could not have landed a player in Galar). While Paldea has no maps the way on is not
+  offered (in a game begun in Galar she says the destination isn't ready). GL7's "plane lands in Paldea" waits for plan
+  34 · PD1.
 - **Songs written, not wired**: `galar/wyndon.mml` (a civic march in D) and `galar/darkest_day.mml` (strings in D minor
   under a choir) are ours, rendered for the user's ear; Wyndon still plays `galar/wedgehurst` and the Darkest Day
   Wyndon's own until the user approves them. The Cup's and Eternatus's songs are owed.

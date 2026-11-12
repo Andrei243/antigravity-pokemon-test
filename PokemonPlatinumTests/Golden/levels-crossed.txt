@@ -1581,6 +1581,7 @@ galar_lass_ffion 232 (31) [Hatenna → Hatterene, Pancham → Bambrawler]
 galar_lass_ivy 227 (14) [Gossifleur → Thistlewisp, Wooloo → Ramsworth]
 galar_lass_poppy 225 (6) [Chewtle → Drednaw]
 galar_leon_1 242 (65)
+galar_leon_rematch 245 (75)
 galar_marnie_1 230 (24) [Croagunk → Venomsensei, Scraggy → Brawlhood]
 galar_marnie_2 237 (49) [Liepard → Umbrapard, Toxicroak → Venomsensei, Scrafty → Brawlhood, Morpeko → Gorgehog]
 galar_melony_1 235 (42) [Frosmoth → Auroramoth, Darmanitan → Frostruma, Eiscue → Floeguin, Lapras → Ferrisle]
