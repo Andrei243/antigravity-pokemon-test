@@ -1,0 +1,15 @@
+{
+  // Pokéstar Studios' theater (plan 42 · PS4, part b): Black 2's room, our people and our words. The usher (person 23, by
+  // the doors) shows the premiere of a film's best take; a regular (24) waits for the next one
+  "area": "pokestar_studios_4",
+  "name": "Pokéstar Studios",
+  "bgmTrack": "unova/pokestar_studios",
+  "people": {
+    "23": { "name": "Usher", "npcType": "janitor", "script": "Premiere", "still": true },
+    "24": {
+      "name": "Lass",
+      "npcType": "lass",
+      "dialog": [ "I always sit in the front row. When the foe's last Pokémon goes down, the whole theater cheers!" ]
+    }
+  }
+}

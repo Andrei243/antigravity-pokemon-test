@@ -948,7 +948,7 @@ public static class RegionDatabase
                 // Plan 22 · U5, part b: Virbank City's gate, rooms, ship terminal and club, the gate to Pokéstar Studios
                 // and the Virbank Complex
                 "VirbankGate", "VirbankCity_House1", "VirbankCity_House2", "VirbankCity_House3", "VirbankCity_Terminal",
-                "VirbankCity_Gym", "VirbankCity_GymStage", "VirbankCity_PokemonCenter", "PokestarGate", "VirbankComplex",
+                "VirbankCity_Gym", "VirbankCity_GymStage", "VirbankCity_PokemonCenter", "PokestarGate", "PokestarStudios", "PokestarStudios_Building", "PokestarStudios_Theater", "VirbankComplex",
                 // Plan 22 · U5, part c: Castelia City, its avenue a map of ours (Data/maps/CasteliaCity.json, Black 2's
                 // standing on rails), its piers, streets, plaza and rooms the import's, the gate to Route 4 and the sewers
                 // Plan 44 · SD4: Lockwork's head office, a tower of ours off Castelia's avenue
@@ -1153,6 +1153,8 @@ public static class RegionDatabase
                 "KonikoniCity_Restaurant", "PaniolaRanch_Nursery", "PaniolaTown_KiawesHouse", "RoyalAvenue_Megamart",
                 "RoyalAvenue_Shop", "AkalaRoute8_Motel", "AkalaRoute8_FossilCenter", "AkalaRoute9_PoliceStation",
                 "UlaulaRoute15_AetherHouse", "UlaulaRoute17_PoliceStation", "HainaDesert_RuinsOfAbundance",
+                // Plan 23, Melemele's last door: Hau'oli City's Trainers' School
+                "HauoliCity_TrainersSchool",
                 // Plan 23 · Z8: Ultra Space's worlds (maps of the drawn kind, behind the Altar's wormhole), Megalo Tower's
                 // top and the Battle Royal Dome
                 "UltraDeepSea", "UltraJungle", "UltraDesert", "UltraPlant", "UltraCrater", "UltraForest", "UltraRuin",

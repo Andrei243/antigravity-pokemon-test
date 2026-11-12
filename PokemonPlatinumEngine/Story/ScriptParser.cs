@@ -1517,7 +1517,7 @@ public static class ScriptParser
             case "studio":
             {
                 // The film studio (plan 42 · PS4): "studio shoot "emptySeat"", "studio open|stars "id"", "studio rank"
-                string what = r.OneOf("shoot", "open", "stars", "rank");
+                string what = r.OneOf("shoot", "open", "stars", "rank", "premiere");
                 if (what == "rank") return new Instruction { Op = Op.Studio, Line = line, Name = what };
                 string film = r.Text("a film's id");
                 if (Models.Studio.StudioFilms.Get(film) == null) throw r.Error($"'{film}' is no film of the studio's");

@@ -59,14 +59,37 @@ public partial class BattleEngine
         var beat = core.Turn >= film.Battle.Turns ? null : studio.Next(core);
         if (beat == null)
         {
-            if (interlude.Count > 0) interlude.Enqueue(new Happening(BeginChoosing));
-            else BeginChoosing();
+            // At the premiere the record answers where the player chose (plan 42 · PS4, part b), and a take that ran out
+            // of turns has no answer left: the reel is over and the game wraps it up
+            Action next = !Watching ? BeginChoosing : AnswersFed >= Watched!.Answers.Count ? () => reelSpent = true : FeedTheRecord;
+            if (interlude.Count > 0) interlude.Enqueue(new Happening(next));
+            else next();
             return;
         }
         string speaker = PlayerIdentity.Fill(film.NameOf(beat.Speaker));
         foreach (string line in beat.Lines) interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(line)), null, speaker));
-        interlude.Enqueue(new Happening(beat.Choices.Count > 0 ? () => AskTheLine(beat) : StudioCue));
+        if (beat.Choices.Count > 0 && studio.Premiere) interlude.Enqueue(new Happening(() => SayTheLineAgain(beat)));
+        else interlude.Enqueue(new Happening(beat.Choices.Count > 0 ? () => AskTheLine(beat) : StudioCue));
     }
+
+    /// <summary>At the premiere the take's own line is said again, with nobody asked, and the film goes on.</summary>
+    private void SayTheLineAgain(StudioBeat beat)
+    {
+        var choice = studio!.PickAgain(beat);
+        interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(choice.Text)), null, PlayerIdentity.Name));
+        interlude.Enqueue(new Happening(StudioCue));
+    }
+
+    // A premiere's take ran out of turns with every answer fed
+    private bool reelSpent;
+
+    /// <summary>
+    /// The premiere's reel has played to the take's end (plan 42 · PS4, part b): the battle shown to its end, or every
+    /// answer of a take that ran out of turns fed and shown. The game then wraps it up (<see cref="WrapUpStudio"/>).
+    /// </summary>
+    public bool ReelOver => Watching && studio != null && StudioTake == null && !WatchLeft
+        && (IsBattleOver || reelSpent && !waitingForMessageConfirm && steps.Count == 0 && interlude.Count == 0);
+
 
     /// <summary>A beat's lines to choose come up beside the box, the last line read still in it.</summary>
     private void AskTheLine(StudioBeat beat)
@@ -104,6 +127,12 @@ public partial class BattleEngine
         string speaker = PlayerIdentity.Fill(studio.Film.NameOf(ending.Speaker));
         foreach (string line in ending.Lines) interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(line)), null, speaker));
         interlude.Enqueue(new Line(Text.Of("studio.stars", ("stars", take.Stars)), null));
+        // The premiere's crowd and its box office (plan 42 · PS4, part b)
+        if (studio.Premiere)
+        {
+            interlude.Enqueue(new Line(Text.Of(take.Stars >= 4 ? "studio.premiere.cheers" : take.Stars >= 2 ? "studio.premiere.claps" : "studio.premiere.murmurs"), null));
+            interlude.Enqueue(new Line(Text.Of("studio.premiere.boxOffice", ("tickets", StudioFilms.BoxOffice(studio.Film, take.Stars).ToString("N0", System.Globalization.CultureInfo.InvariantCulture))), null));
+        }
         HUD.MenuState = BattleMenuState.Message;
         Pump();
     }

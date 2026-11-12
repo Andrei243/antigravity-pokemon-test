@@ -902,6 +902,7 @@ public class ScriptTests
           studio open "gildedHour"
           studio stars "emptySeat"
           studio rank
+          studio premiere "emptySeat"
           lottery weekly
           gift words GIFT_WORDS
           gift backdrop "Lantern"

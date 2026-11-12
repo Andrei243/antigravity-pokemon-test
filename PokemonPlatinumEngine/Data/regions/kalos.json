@@ -18,10 +18,11 @@
   "hasStory": true,
   // Kalos's people get about on roller skates (plan 23 · Z1: TravelMode.Skating, once the story gives them)
   "skates": true,
-  // How the player moves here (plan 30 · FM1): eight ways on the grid (stage 1, FM2 builds the diagonal step), then
-  // free once stage 2 is built (FM7 to FM9). The skates are the region's own mode. The body kit stays chibi until
-  // plan 30 · FM3 and FM4 build the grown one
-  "movement": { "directions": "Eight", "speed": "Paces", "modes": [ "Skates" ] },
+  // How the player moves here (plan 30 · FM1, its region table): free over the grid at the stick's tilt (stage 2,
+  // FM7 to FM9), the skates the region's own mode; the grown body kit (FM4, FM10's cast). The gate of decision 10 was
+  // opened by the user on 2026-11-12
+  "movement": { "directions": "Free", "speed": "Analog", "modes": [ "Skates" ] },
+  "kit": "Grown",
   // The rival is the hero the player isn't, who lives next door (X and Y's neighbour): Serena beside the boy, Calem
   // beside the girl
   "rivals": { "boy": "Serena", "girl": "Calem" },

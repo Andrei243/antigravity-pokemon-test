@@ -4773,6 +4773,51 @@ from Officer at 3,3 of HauoliCity_PoliceStation
 way -
   Officer> Team Skull? They're more of a nuisance than a menace. Mostly they shout and pull faces at people.
   Officer> If they bother you, battle them. That tends to quiet them down faster than we can.
+=== HauoliCity_TrainersSchool.Aukai
+from Aukai at 2,4 of HauoliCity_TrainersSchool
+way 0
+  Aukai> I sit by the window so I can watch the seabirds. Today I'll watch you lose instead!
+  Aukai> Hmm. The seabirds saw that too, didn't they.
+  * battle alola_school_kid_aukai Won
+  + FLAG_ALOLA_SCHOOL_AUKAI
+  + beaten alola_school_kid_aukai
+way 1, from answer 1
+  * battle alola_school_kid_aukai Lost
+=== HauoliCity_TrainersSchool.Kanoe
+from Kanoe at 10,5 of HauoliCity_TrainersSchool
+way 0
+  Kanoe> I've read every book on that shelf twice. Now I want to test what I've learned on a real Trainer!
+  Kanoe> Books don't tell you how fast a real battle moves. I'll write that down.
+  * battle alola_school_kid_kanoe Won
+  + FLAG_ALOLA_SCHOOL_KANOE
+  + beaten alola_school_kid_kanoe
+way 1, from answer 1
+  * battle alola_school_kid_kanoe Lost
+=== HauoliCity_TrainersSchool.Keahi
+from Keahi at 2,7 of HauoliCity_TrainersSchool
+way 0
+  Keahi> Today's lesson is type matchups. I learn better by battling, so you're my homework!
+  Keahi> I got the matchups right and still lost. Maybe the lesson is about speed too.
+  * battle alola_youngster_keahi Won
+  + FLAG_ALOLA_SCHOOL_KEAHI
+  + beaten alola_youngster_keahi
+way 1, from answer 1
+  * battle alola_youngster_keahi Lost
+=== HauoliCity_TrainersSchool.Pualani
+from Pualani at 10,7 of HauoliCity_TrainersSchool
+way 0
+  Pualani> My partner can tell how strong you are by your aura. It's buzzing like mad. Let's see if it's right!
+  Pualani> It was right. It's always right. I should have listened to it.
+  * battle alola_lass_pualani Won
+  + FLAG_ALOLA_SCHOOL_PUALANI
+  + beaten alola_lass_pualani
+way 1, from answer 1
+  * battle alola_lass_pualani Lost
+=== HauoliCity_TrainersSchool.Teacher
+from Iwalani at 6,4 of HauoliCity_TrainersSchool
+way -
+  Iwalani> Welcome to the Trainers' School! My pupils are itching to battle someone new.
+  Iwalani> Battle all four of them, and then come and see me for the final exam.
 === HeaheaCity_Hotel.Desk
 from Hotel Clerk at 7,3 of HeaheaCity_Hotel
 way -
@@ -30698,6 +30743,58 @@ way -
 from Old Woman at 690,130 of Kalos
 way -
   Old Woman> The Pokémon here were left behind by people, or ran from them. They live as they please now. Be gentle.
+=== pokestar_studios.PosterWall
+from the tile read at 23,20 of PokestarStudios
+from the tile read at 24,20 of PokestarStudios
+way -
+  > The studio's poster wall. Painted posters in warm reds hang in a long row.
+  > The frames for the studio's own films are still empty.
+=== pokestar_studios_3.Casting
+from Casting Clerk at 17,19 of PokestarStudios_Building
+way -
+  Casting Clerk> The studio's rank is 0 stars. Each film's best take counts toward it.
+  Casting Clerk> At four stars the detective story opens, and at eight the race against the storm. Good luck!
+=== pokestar_studios_3.StudioDesk
+from Director Wren at 13,12 of PokestarStudios_Building
+way 0
+  Director Wren> Welcome to the lot! I'm Wren, and I direct films for the studio. Every take is a battle, played to a script.
+  Director Wren> We lend you the cast. Say the script's lines or your own, and the take ends however you play it.
+  Director Wren> Which film shall we shoot?
+  Director Wren> Magnificent! That's the take the posters will be painted from. Go and see it at the theater!
+  ? Which film shall we shoot? = THE EMPTY SEAT
+  * studio emptySeat movedOn 4
+way 4, from answer 1
+  Director Wren> Come back whenever you feel like a star!
+  ? Which film shall we shoot? = NOT TODAY
+way 3, from answer 1
+  Director Wren> That script is still in the drawer. Earn the studio a few more stars on the films we have, then ask again!
+  ? Which film shall we shoot? = THUNDER AT MARLOWE PASS
+way 2, from answer 1
+  Director Wren> That script is still in the drawer. Earn the studio a few more stars on the films we have, then ask again!
+  ? Which film shall we shoot? = LETTERS IN THE FOG
+way 1, from answer 1
+  Director Wren> Magnificent! That's the take the posters will be painted from. Go and see it at the theater!
+  ? Which film shall we shoot? = THE GILDED HOUR
+  * studio gildedHour clean 5
+=== pokestar_studios_4.Premiere
+from Usher at 8,24 of PokestarStudios_Theater
+way 0
+  Usher> Welcome to the studio's theater! Tonight we screen the best take of any film you've shot.
+  Usher> Which premiere would you like to see?
+  Usher> Hm, we have no take of that film to show. Shoot one at the studio building first!
+  ? Which premiere would you like to see? = THE EMPTY SEAT
+way 4, from answer 1
+  Usher> The house is open whenever you are. Enjoy the lot!
+  ? Which premiere would you like to see? = NOT TONIGHT
+way 3, from answer 1
+  Usher> Hm, we have no take of that film to show. Shoot one at the studio building first!
+  ? Which premiere would you like to see? = THUNDER AT MARLOWE PASS
+way 2, from answer 1
+  Usher> Hm, we have no take of that film to show. Shoot one at the studio building first!
+  ? Which premiere would you like to see? = LETTERS IN THE FOG
+way 1, from answer 1
+  Usher> Hm, we have no take of that film to show. Shoot one at the studio building first!
+  ? Which premiere would you like to see? = THE GILDED HOUR
 === poni_altar.Keeper
 from Altar Keeper at 44,30 of PoniAltar
 way -

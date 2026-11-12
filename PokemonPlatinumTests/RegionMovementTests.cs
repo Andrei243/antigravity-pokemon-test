@@ -30,14 +30,19 @@ public class RegionMovementTests
     }
 
     [Fact]
-    public void KalosMovesEightWaysOnItsSkates()
+    public void KalosMovesFreelyOnItsSkatesInTheGrownKit()
     {
+        // The gate of plan 30's decision 10, opened by the user on 2026-11-12: free at the stick's tilt, the skates kept,
+        // the grown kit
         var kalos = RegionDatabase.Get("Kalos")!;
-        Assert.Equal(MovementDirections.Eight, kalos.Movement.Directions);
-        Assert.Equal(MovementSpeed.Paces, kalos.Movement.Speed);
+        Assert.Equal(MovementDirections.Free, kalos.Movement.Directions);
+        Assert.Equal(MovementSpeed.Analog, kalos.Movement.Speed);
         Assert.True(kalos.Movement.Offers(RegionMode.Skates));
-        // The grown kit waits for FM3 and FM4
-        Assert.Equal(CharacterKit.Chibi, kalos.Kit);
+        Assert.Equal(CharacterKit.Grown, kalos.Kit);
+        // Alola keeps eight ways on the grid and the chibi kit for now
+        var alola = RegionDatabase.Get("Alola")!;
+        Assert.Equal(MovementDirections.Eight, alola.Movement.Directions);
+        Assert.Equal(CharacterKit.Chibi, alola.Kit);
     }
 
     [Fact]

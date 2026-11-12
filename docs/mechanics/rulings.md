@@ -2337,7 +2337,7 @@ Black 2's Pokémon World Tournament, Sinnoh's leaders first. Nothing of Black 2'
 - **The songs** are our own: the hall (`common/tournament/hall`, `MusicRole.Tournament`), a match (`BattleTournament`, with its low-HP arrangement) and its victory (`VictoryTournament`), handed to a Frontier battle by `FrontierConditions.Tournament` and `BattleSetup.VictoryMusic`.
 - **The other regions** (plan 14 · B12): Kanto, Johto, Hoenn and Unova each have a Leaders event (open from the start) and a League event (the Champion and the Elite Four always in, two Leaders drawn; opened by the region's Leaders title), each **read only once the region's trainers' table exists** (`TournamentDatabase.HasData`, `Tournament.Offered`) and offered only when seven of its kind can be seated from the trainers there are, so a region's events appear the day its table lands. The teams are each region's strongest rematch: Kanto's Leaders are HeartGold's eight (Janine and Blue among them, from Johto's table), its League FireRed's second Elite Four with Terry's rematch team; Johto's HeartGold's `_2` teams with Lance's; Hoenn's Emerald's fifth rematch of each Leader with the League's rematch teams of ours (`hoenn_*_rematch`); Unova's Black 2's `_2` Leaders and the Elite Four's and Iris's fourth teams. A Leader the cast has no look for stands in a class's (Janine as an Ace Trainer, Drayden as a Dragon Tamer, Marlon as a Swimmer; Tate and Liza as Tate; Terry in Blue's). The other regions' moves are their games' own, so the legality check (written from Platinum's lists and the newest) is held only to Platinum's teams and the teams beyond the League.
 - **A team's three** pass over a Pokémon that would repeat a species or a held item of those already picked (Black 2's teams hold several Sitrus Berries), so every entrant keeps the clauses the player keeps.
-- **The world's events** (all ours): **World Leaders** (seven Leaders drawn from every region; opened by Sinnoh Leaders), **World Champions** (the five Champions always in, two of the Elite Four drawn; opened by the Champion's event), **Beyond the League** (the five Champions' and twenty Elite Four's teams beyond the League, `_beyond`, at 50; opened by World Champions); then, opened by World Leaders, **Double**, **Triple** and **Rotation Battles** (the matches in that format, `FrontierConditions.Format`, under rules that have it), **Mix** (before each match each side hands the other one of its three, which ones by a number drawn as the event begins, the round and the seats: `Tournament.ThreesFor`), **Rental** (everyone, the player too, battles with three sets of the Battle Factory's fourth row at 50, drawn as the Factory draws them, `Tournament.RentalThree`; plan 13 · V14's draw is not built) and eight **type brackets** (Water; Fire and Electric; Ice and Dark; Dragon and Flying; Ghost and Psychic; Fighting and Steel; Rock, Ground and Grass; Bug, Poison and Normal), whose entrants are the Leaders and Elite Four with three of the types, who bring those three, and whose entry asks each of the player's three to be of one of them. Black 2's single types gave seven entrants only for Water, so types are paired. Points: 3 a region's Leaders, 6 its League, 6 World Leaders, 10 World Champions, 12 Beyond the League, 4 the rest.
+- **The world's events** (all ours): **World Leaders** (seven Leaders drawn from every region; opened by Sinnoh Leaders), **World Champions** (the Champions always in, the rest of the eight drawn from the Elite Four; opened by the Champion's event), **Beyond the League** (the six Champions' (Kalos's Diantha since 2026-11-12, always in) and twenty-four Elite Four's teams beyond the League, `_beyond`, at 50, eight seated from them; opened by World Champions); then, opened by World Leaders, **Double**, **Triple** and **Rotation Battles** (the matches in that format, `FrontierConditions.Format`, under rules that have it), **Mix** (before each match each side hands the other one of its three, which ones by a number drawn as the event begins, the round and the seats: `Tournament.ThreesFor`), **Rental** (everyone, the player too, battles with three sets of the Battle Factory's fourth row at 50, drawn as the Factory draws them, `Tournament.RentalThree`; plan 13 · V14's draw is not built) and eight **type brackets** (Water; Fire and Electric; Ice and Dark; Dragon and Flying; Ghost and Psychic; Fighting and Steel; Rock, Ground and Grass; Bug, Poison and Normal), whose entrants are the Leaders and Elite Four with three of the types, who bring those three, and whose entry asks each of the player's three to be of one of them. Black 2's single types gave seven entrants only for Water, so types are paired. Points: 3 a region's Leaders, 6 its League, 6 World Leaders, 10 World Champions, 12 Beyond the League, 4 the rest.
 - **Unova's events of its own** (plan 22 · U11; ours): opened by the Unova Leaders title, three over Unova's eight Leaders (seven drawn), **Unova Triples** and **Unova Rotation** (the matches in that format) and **Unova Rental** (everyone with three of the Factory's rentals, as World Rental), and two **type brackets over Unova's League** (its Leaders, Elite Four and Iris, `from` the Unova League event): **Stone, Steel and Sting** (Normal, Bug, Poison, Electric, Ground, Rock, Steel, Fighting) and **Sky, Sea and Spirit** (Flying, Water, Dragon, Psychic, Ghost, Dark, Ice, Fire, Grass). Unova's thirteen seat seven in no single type or pair, so each bracket is a wide set of types its own trainers bring three of (Cheren, Roxie, Burgh, Elesa, Clay, Grimsley and Marshal in the first; Skyla, Drayden, Marlon, Iris, Shauntal, Grimsley and Caitlin in the second). 4 points each.
 
 ### Master Trainers (plan 14 · B14)
@@ -9236,7 +9236,7 @@ Our own: Platinum has neither. `Models/ShowdownPaste.cs`, `Models/TrainerFile.cs
 - **Left**: the friends' hall (V23) and VERSUS's friend opponent in the V12 sense; export from the PC and the builder's own team page; a look, class and lines chosen for an exported trainer; live splitting over a socket; a section in the feed for the Dynamax and triples side by side (the feed lists every place on the field).
 ## Free movement over the grid (2026-11-03, plan 30 · FM7 to FM9)
 
-Stage 2 of plan 30, built and proven on test regions; **no region's own file says `Free` yet**. Kalos's stays `Eight` until the plan's gate (Kalos playable to its second Gym) is judged by the user, and Sinnoh to Unova are four-way and unchanged to the bit. A test or a tool walks a region freely through the engine's `RegionMovementOverride` (null in the game). Where a decision was open, the plan's recommended option was taken.
+Stage 2 of plan 30, built and proven on test regions (Kalos's file says `Free` since 2026-11-12: "The gate opened", below). Kalos's stayed `Eight` then, until the user opened the plan's gate, and Sinnoh to Unova are four-way and unchanged to the bit. A test or a tool walks a region freely through the engine's `RegionMovementOverride` (null in the game). Where a decision was open, the plan's recommended option was taken.
 
 - **One rule of collision.** The body is a circle of radius 0.3 of a tile (`FreeMovement.Radius`, 77 256ths) whose centre is kept in whole 256ths (`Player.SubX`, `SubY`; `Player.Offset` the centre's offset from the counted tile's centre). Whether an edge is a wall is asked of `FieldMovement.Step` from the tile the centre is in (`FreeMovement.Classify`): a plain walk on the same level in the same way of travelling on two plain tiles (no `RefusesDiagonal` behaviour, no slope, no Gym puzzle on the map, no warp beyond) is open; a refusal is a wall; anything else is the grid's. The circle moves a quarter of a tile at a time, each axis stopped against an edge that is not open, then the sides of the new tile and the corners round it pushed out of where FM2's diagonal would be refused. So free movement reaches nothing the grid doesn't (a test walks Kalos's map at random and holds every tile to `WorldWalk`).
 - **Hand-offs.** A push across an edge the grid plays (a ledge, a door's warp, ice, a moving floor, a stair or slope, a deck's end, water's edge, a boulder with Strength, a block of ice, skates refused), within 35° of its normal and with the circle touching it, eases the body onto its tile's centre at the pace walked and plays the grid's own step from there (`Player.Glide`, `TryStep`). On a tile the grid keeps, the stick is the grid's four ways until the body is on a plain tile again. A step of the grid begun off the centre (a surf, a climb) sets out from where the body stands (`Player.startPixelX`), which on the grid is the tile's corner as before.
@@ -9247,6 +9247,15 @@ Stage 2 of plan 30, built and proven on test regions; **no region's own file say
 - **Pace** (FM9): where the region's speed is `Analog`, a tilt under half walks slowly (`Pace.Slow`), a full tilt walks, and the run button or a full tilt held a second runs (`FreeMovement.PaceFor`, `FullTilt`, `RunAfterSeconds`); Autorun turns the button round as before. Where the speed is `Paces`, any tilt walks at the grid's pace. Discrete paces, not a continuous speed, so the legs' stride stays a step's.
 - **The save** keeps the offset (`SaveData.PlayerSubX`, `PlayerSubY`, left out when nought; `SaveData.FreePositions` = `SaveVersion` 2, whose `SaveMigration` step stands an older save on its tile's centre). A save moved by `PlaceOn` drops its offset.
 - **Tools.** The playthrough bot steers a stick at the next tile's centre in a free place (`Autoplayer.Walk`, `GameEngine.Stick`), and judges a leg's last step once the body is counted off the tile it set out from; it plays `Itineraries.KalosOpening` in `Eight` and in `Free`. `new FieldFuzzer(seed, stick: true)` draws angles and tilts; without it the fuzzer is the grid's, draw for draw.
+
+### The gate opened: Kalos free and grown (2026-11-12)
+
+The user opened plan 30's gate (decision 10) on 2026-11-12, without waiting for Kalos's second Gym to be judged first: **Kalos's file says `"movement": { "directions": "Free", "speed": "Analog", "modes": [ "Skates" ] }` and `"kit": "Grown"`.** Nothing else was flipped by hand; what follows the two words follows by itself, as plan 30 built it:
+
+- **Movement**: every place of Kalos, rooms and caves included, moves freely, but a Gym whose map names a `puzzle` (`Player.MovesFreely` asks `map.Puzzle == null`: Santalune, Cyllage, Shalour, Coumarine and Snowbelle), which keeps the grid's steps. The skates are put on as on the grid (the run held with the skates given), in a free place wherever the grid would skate the step ahead (`Player.Glide`, fixed with the flip: before it free movement never put them on), and taken off where the grid refuses them (tall grass, stairs). The options' MOVEMENT row (`Four ways`) still puts Kalos on the grid's four ways. A crossing out of Kalos stands the body on its tile's centre (`Player.SetPosition`), and Alola keeps `Eight` and the chibi kit for now.
+- **The kit**: `GameEngine.KitHere` is `Grown` in Kalos, so its people and the player are drawn as their grown twins (`CharacterStyle.InKit`; FM10's 81) as live rigs and impostors, its Pokémon in the field at `0.85 ×` their height, its trainers in battle and on the bands in the grown kit; the looks of `characters.json` stay chibi when asked for plainly, so nothing of Kalos's people reaches another region.
+- **The camera**: every outdoor map of Kalos whose place names no camera of its own is built with `FieldCamera.Kalos` (`WorldMapBuilder.GrownCamera`); rooms and caves keep theirs.
+- **Still owed, unchanged by the flip**: the Trainer Card's grown portrait (the card's portrait is the chibi sprite; the card designer's figure and the photo studio render the grown look in the chibi kit's frame, not looked at), a grown rig under a bridge's deck, lying, swimming, fishing, surfing and riding drawn as the chibi sprite, and whether twelve live grown rigs hold 8 ms on High (the user's `profile` on the Windows machine).
 
 ## A friend in the partner's place; the friends' hall (2026-11-03, plan 13 · V20, V23)
 
@@ -9904,6 +9913,20 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   Festival Plaza* were left out by plan 23's Alola decisions; plan 35 (bonding) holds the care and the pasture in their
   place, plan 41 the plaza. *The Island Scan* is built (the rest of the islands). *A friend in the Multi room over a link*
   is plan 07's.
+
+## Hau'oli City's Trainers' School (2026-11-12, plan 23, Melemele's last door)
+
+- **Where it comes from.** Sun and Moon keep a Trainers' School in Hau'oli City, where a newcomer battles its pupils and
+  its teacher (Bulbapedia's and Serebii's descriptions); nothing of its plan, people, teams or lines is taken. Ours is a
+  building at the east end of the city's first street (`hauoli_city.txt`, the door at 309, 165, the area's warp 8) and a
+  classroom of ours (`HauoliCity_TrainersSchool`, 13 by 11: a blackboard, two desks, a bookshelf, the teacher's table).
+- **Its people**: four pupils of ours (Keahi, a Youngster; Pualani, a Lass; Aukai and Kanoe, School Kids), each battled once
+  by speaking to them (`FLAG_ALOLA_SCHOOL_KEAHI`, `_PUALANI`, `_AUKAI`, `_KANOE`), with teams of Melemele's own species at 7 and
+  8, and their teacher Iwalani (a Teacher, Alolan Meowth 9 and Crabrawler 10), who sends the player to the pupils first and
+  battles once all four are beaten (`FLAG_ALOLA_SCHOOL_TEACHER`), giving three Quick Balls. None of them watches the room
+  with a trainer's eyes: Sun and Moon's school is a place a player chooses to visit, and so is ours. Nothing of the story
+  asks for it.
+- **Left**: Sandy Cave (Sun and Moon's small cave on Melemele's beach) is not drawn.
 
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
@@ -11803,6 +11826,28 @@ Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's).
   Verity Cask's Klefki, Bronzong and Probopass at 40, co-starring the talent scout. Their classes are ours: Actor and
   Actress, drawn as the person cast (`characters.json`'s `classes`, null).
 
+### Part b (2026-11-12): the later films, the takes kept and the premiere
+
+- **The later films** (the user's 31a and 32a): Letters in the Fog (a detective story; Lucario, Alakazam and Gallade at 60
+  against Lady Octavia Maul's Persian, Liepard and Purugly at 40, co-starring the captain as the inspector; the right
+  suspect, named by the script's line, 5 stars; the wrong one, either ad-lib, 3; a draw, 1) opens at rank 4, and Thunder at
+  Marlowe Pass (a race against the storm, fought in the rain from the first turn; Jolteon, Ampharos and Raichu at 60
+  against Commodore Brisk's Pelipper, Swanna and Gyarados at 40, co-starring the scout as the pilot; won by a mile, by the
+  third turn, 5; by a head, 3; forced back, 1) at rank 8. Both numbers are ours: the first two films' best stars together
+  reach 4 with one good take, 8 with two.
+- **A take kept**: a new best take is written as a Vs. Recorder file of its own (`replays/studio/studio-<id>.json`,
+  written over the film's last best), with `BattleRecordFile.StudioFilm` naming the film and `StudioPicks` the lines
+  chosen; every other battle's file has neither (both null and left out of the text, so older files read as before). A
+  take is fought by the film's foe's moves turn by turn and its fixed rolls, so `ToSetup` takes both from the film, and a
+  file naming a film the data lacks is refused (`ReplayRefusal.NoSuchFilm`). The takes are kept in a folder of their own so
+  the Vs. Recorder's own list never shows them: a take is watched at its premiere, with its film's beats and ending.
+- **The premiere** (`studio premiere "id"`): the best take's file watched through `BattleEngine.ForReplay` with a director
+  handed the take's picks (`StudioDirector(film, picks)`), who says the lines the take chose with nobody asked; a take that
+  ran out of turns, or stopped where nobody answered, ends its reel there (`ReelOver`) instead of breaking off. Then its
+  ending's lines and stars, the crowd (cheers for 4 or 5 stars, applause for 2 or 3, murmurs for 1) and the box office:
+  tickets sold, ours, `stars² × 1,200` plus the genre's draw (ghost 900, detective 1,100, heist 1,500, race 1,800).
+  Nothing of it is kept but the number, which the script reads as `RESULT`.
+
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
 Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and
@@ -11911,8 +11956,8 @@ shown in bars, the monitor's own resolution to be found, and a choice of resolut
   the monitor it opens on is brought within it.
 - **RESOLUTION** (the options' row, DISPLAY tab, before Help): the sizes offered are the monitor's own ratio at the heights
   720, 900, 1080, 1200, 1440, 1600, 1800 and 2160 that fit it, and its own size (`AspectLayout.SizesFor`). **In a window**
-  the row is the window's size (only sizes smaller than the monitor), the same setting as WINDOW SIZE, which keeps its
-  old list. **In full screen** the window stays the monitor's size one row taller, as the flicker rule needs, and no
+  the row is the window's size (only sizes smaller than the monitor), the same setting WINDOW SIZE had (the old row is removed, 2026-11-12;
+  a saved `windowWidth` and `windowHeight` are read as ever, so an old settings file works untouched). **In full screen** the window stays the monitor's size one row taller, as the flicker rule needs, and no
   display mode is ever changed: the row is the size the 3D scene is drawn at, at most (`GameSettings.FullscreenHeight`).
   NATIVE (the default, 0) is today's picture, the preset's own; a smaller size caps the scene's share of its target
   (`RenderContext.ResolutionCap`, taken as the smaller with dynamic resolution's step), and the interface stays at 4K.

@@ -6,7 +6,8 @@ namespace PokemonPlatinumEngine.Story;
 /// The film studio's command (plan 42 · PS4; <c>docs/scripts.md</c>, "The film studio"): <c>studio shoot "id"</c> shoots
 /// a take of a film on its own battle and waits for it, <c>RESULT</c> the take's stars (0 where the host has no studio
 /// or the film isn't open); <c>studio open "id"</c> 1 where the studio's rank opens the film; <c>studio stars "id"</c>
-/// the film's best stars; <c>studio rank</c> the studio's rank, the best stars summed.
+/// the film's best stars; <c>studio rank</c> the studio's rank, the best stars summed; <c>studio premiere "id"</c> shows
+/// the film's best take again in the lot's theatre and waits, <c>RESULT</c> its box office (0 with no take to show).
 /// </summary>
 public sealed partial class ScriptRunner
 {
@@ -33,6 +34,14 @@ public sealed partial class ScriptRunner
                 }
                 host.StudioShoot(film);
                 afterBusy = () => Result = host.Studio?.LastTake?.Stars ?? 0;
+                break;
+            case "premiere":
+                if (records == null || film == null || !host.StudioPremiere(film))
+                {
+                    Result = 0;
+                    break;
+                }
+                afterBusy = () => Result = host.Studio?.LastBoxOffice ?? 0;
                 break;
         }
     }
