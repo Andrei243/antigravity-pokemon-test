@@ -34,6 +34,50 @@
     "Kricketot",
     "Kricketot"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 3, "maxLevel": 4 },
+      { "species": "Seedot", "level": 3, "maxLevel": 4 },
+      { "species": "Seedot", "level": 3, "maxLevel": 4 },
+      { "species": "Spinarak", "level": 3, "maxLevel": 4 },
+      { "species": "Hoothoot", "level": 3, "maxLevel": 4 },
+      { "species": "Shroomish", "level": 3, "maxLevel": 4 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 5, "maxLevel": 7 },
+      { "species": "Seedot", "level": 5, "maxLevel": 7 },
+      { "species": "Seedot", "level": 5, "maxLevel": 7 },
+      { "species": "Ariados", "level": 5, "maxLevel": 7 },
+      { "species": "Noctowl", "level": 5, "maxLevel": 7 },
+      { "species": "Shroomish", "level": 5, "maxLevel": 7 }
+    ],
+    "trees": [
+      "51,73 52,73",
+      "49,67 50,67 50,66",
+      "44,62 44,61 44,60 43,60 43,61 43,62",
+      "40,57 41,57 41,56",
+      "39,58",
+      "39,63 39,62",
+      "36,65 37,65 36,64",
+      "26,65 27,65",
+      "24,65 25,65",
+      "22,63 22,62 22,61 23,61",
+      "24,53 24,52",
+      "10,69 10,68",
+      "40,48 40,47",
+      "40,46 40,45",
+      "40,44 40,43",
+      "40,40 40,39",
+      "45,40 45,39 45,38 46,40 46,39 46,38",
+      "45,46 45,45 46,46 46,45",
+      "37,28 38,28",
+      "29,27 29,26 28,27 28,26",
+      "23,27 23,26 22,27 22,26",
+      "23,25 23,24 22,25 22,24",
+      "23,23 23,22 22,23 22,22",
+      "17,23 17,22 16,23 16,22"
+    ]
+  },
   "hoennSounds": [
     "Spoink",
     "Numel"

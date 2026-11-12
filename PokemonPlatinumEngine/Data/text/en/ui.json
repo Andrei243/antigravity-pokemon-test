@@ -1425,7 +1425,8 @@
         "one": "{rods} Rod",
         "other": "{rods} Rods"
       },
-      "ours": "Rarely, after the Hall of Fame"
+      "ours": "Rarely, after the Hall of Fame",
+      "headbutt": "Headbutt trees"
     },
     "search": {
       "title": "Search the Pokédex",

@@ -1293,6 +1293,26 @@
       ]
     }
   ],
+  "HeadbuttTree": [
+    {
+      "en": [
+        "Something might be living up in this tree. Use Headbutt on it?"
+      ],
+      "text": [
+        "S-ar putea să locuiască cineva sus în copacul ăsta. Folosești Headbutt pe el?"
+      ]
+    }
+  ],
+  "UseHeadbutt": [
+    {
+      "en": [
+        "The tree shook, but nothing came down."
+      ],
+      "text": [
+        "Copacul s-a zguduit, dar n-a căzut nimic."
+      ]
+    }
+  ],
   "Dive": [
     {
       "en": [

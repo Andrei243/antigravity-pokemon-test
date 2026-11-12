@@ -1725,6 +1725,26 @@ public partial class GameEngine
             return true;
         }
 
+        public bool Headbutt()
+        {
+            var map = game.flow.Map;
+            var player = game.flow.Player;
+            var (dx, dy) = FieldMovement.Delta(player.Facing);
+            int x = player.GridX + dx, y = player.GridY + dy;
+            // The tree shakes whatever it holds (leaves shaken loose from its crown, as a honey tree's)
+            if (!Skipping)
+            {
+                game.world.Life.ShakeTree(map, x, y, 56f / 32f * Graphics.MapScene.VerticalScaleOf(map), 2);
+                AudioManager.PlaySound("use_headbutt");
+            }
+            if (map.ShakeHeadbuttTree(x, y, PlayerIdentity.Number, player.Lead) is not { } wild) return false;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
+            game.flow.Player.Encounters.Reset();
+            game.StartWildBattle(wild);
+            return true;
+        }
+
         // ---- sound
 
         public void Music(string? song)

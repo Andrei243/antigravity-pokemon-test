@@ -34,6 +34,30 @@
     "Pidgey",
     "Pidgey"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 11, "maxLevel": 13 },
+      { "species": "Pineco", "level": 11, "maxLevel": 13 },
+      { "species": "Pineco", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 }
+    ],
+    "trees": [
+      "1310,185 1310,184",
+      "1296,164 1296,163",
+      "1303,161 1303,162",
+      "1304,189 1305,189"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

@@ -606,6 +606,9 @@ public static class ScriptParser
             case "rocksmash":
             case "smashencounter":
                 return new Instruction { Op = Op.SmashEncounter, Line = line };
+            case "headbutt":
+                // The tree in front shaken (plan 38 · EX4), and what falls out of it battled
+                return new Instruction { Op = Op.Headbutt, Line = line };
             case "poketch":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Poketch, Line = line };

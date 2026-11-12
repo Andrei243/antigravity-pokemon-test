@@ -49,6 +49,43 @@
     { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Wurmple", "level": 2, "maxLevel": 3 },
+      { "species": "Wurmple", "level": 2, "maxLevel": 3 },
+      { "species": "Wurmple", "level": 2, "maxLevel": 3 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 5, "maxLevel": 6 },
+      { "species": "Spinarak", "level": 5, "maxLevel": 6 },
+      { "species": "Spinarak", "level": 5, "maxLevel": 6 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 6 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 6 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 6 }
+    ],
+    "trees": [
+      "1028,355 1029,355",
+      "1030,355 1031,355",
+      "1034,355 1035,355",
+      "1048,355 1049,355",
+      "1030,377 1031,377",
+      "1027,375 1027,374",
+      "1027,369 1027,368",
+      "1027,365 1027,364",
+      "1027,363 1027,362",
+      "1050,355 1051,355",
+      "1048,381 1049,381",
+      "1050,381 1051,381",
+      "1052,377 1052,376",
+      "1052,371 1052,370",
+      "1052,367 1052,366",
+      "1052,365 1052,364",
+      "1052,361 1052,369"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1033, "z": 363, "to": "pallet_town_reds_house_1f", "toWarp": 0 },

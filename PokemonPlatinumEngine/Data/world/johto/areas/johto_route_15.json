@@ -34,6 +34,45 @@
     "Nidorina",
     "Nidorina"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 21, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 21, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 21, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 21, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 21, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 21, "maxLevel": 23 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 24, "maxLevel": 26 },
+      { "species": "Tangela", "level": 24, "maxLevel": 26 },
+      { "species": "Hoothoot", "level": 24, "maxLevel": 26 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 26 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 26 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 26 }
+    ],
+    "trees": [
+      "1248,419 1249,419",
+      "1262,419 1263,419",
+      "1274,426 1275,426 1274,427 1274,428",
+      "1280,430 1281,430",
+      "1282,419 1283,419",
+      "1296,426 1297,426",
+      "1300,419 1301,419",
+      "1316,419 1317,419",
+      "1316,426 1317,426 1316,427 1316,428 1317,428 1317,427",
+      "1329,429 1329,428",
+      "1328,419 1329,419",
+      "1338,419 1339,419",
+      "1342,425 1342,424",
+      "1309,426 1310,426 1309,428 1310,428",
+      "1338,429 1339,429 1339,428",
+      "1286,426 1287,426 1287,428 1287,427",
+      "1272,419 1273,419",
+      "1252,425 1253,425",
+      "1290,419 1291,419"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

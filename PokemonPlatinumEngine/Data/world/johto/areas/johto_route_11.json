@@ -34,6 +34,37 @@
     "Drowzee",
     "Drowzee"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 13, "maxLevel": 14 },
+      { "species": "Heracross", "level": 13, "maxLevel": 14 },
+      { "species": "Heracross", "level": 13, "maxLevel": 14 },
+      { "species": "Combee", "level": 13, "maxLevel": 14 },
+      { "species": "Combee", "level": 13, "maxLevel": 14 },
+      { "species": "Combee", "level": 13, "maxLevel": 14 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 15, "maxLevel": 16 },
+      { "species": "Spearow", "level": 15, "maxLevel": 16 },
+      { "species": "Spearow", "level": 15, "maxLevel": 16 },
+      { "species": "Combee", "level": 15, "maxLevel": 16 },
+      { "species": "Combee", "level": 15, "maxLevel": 16 },
+      { "species": "Combee", "level": 15, "maxLevel": 16 }
+    ],
+    "trees": [
+      "1392,291 1393,291",
+      "1378,291 1379,291",
+      "1380,291 1381,291",
+      "1382,291",
+      "1364,291 1365,291",
+      "1370,311 1371,311",
+      "1372,311 1373,311",
+      "1374,311 1375,311",
+      "1376,311",
+      "1379,311",
+      "1382,311 1383,311"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

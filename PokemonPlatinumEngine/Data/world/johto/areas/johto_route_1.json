@@ -34,6 +34,46 @@
     "Poochyena",
     "Poochyena"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Wurmple", "level": 2, "maxLevel": 3 },
+      { "species": "Wurmple", "level": 2, "maxLevel": 3 },
+      { "species": "Wurmple", "level": 2, "maxLevel": 3 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 5, "maxLevel": 6 },
+      { "species": "Spinarak", "level": 5, "maxLevel": 6 },
+      { "species": "Spinarak", "level": 5, "maxLevel": 6 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 6 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 6 },
+      { "species": "Wurmple", "level": 5, "maxLevel": 6 }
+    ],
+    "trees": [
+      "1033,300 1033,301 1034,300 1034,301",
+      "1034,307 1034,308 1035,308",
+      "1037,306 1037,305",
+      "1028,312 1028,311",
+      "1040,314 1041,314 1040,312 1041,312",
+      "1048,291 1049,291",
+      "1050,302 1050,303",
+      "1049,315 1049,316 1050,316",
+      "1046,345 1047,345",
+      "1027,340 1027,341",
+      "1036,335 1037,334 1037,335",
+      "1028,327 1029,327",
+      "1030,345 1031,345",
+      "1052,330 1052,331",
+      "1052,339",
+      "1027,322 1027,323",
+      "1049,305 1049,306",
+      "1040,329 1041,329",
+      "1037,349 1037,348",
+      "1029,292 1029,293 1028,293"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

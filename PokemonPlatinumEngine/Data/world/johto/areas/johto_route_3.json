@@ -34,6 +34,30 @@
     "Baltoy",
     "Baltoy"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 6, "maxLevel": 7 },
+      { "species": "Pineco", "level": 6, "maxLevel": 7 },
+      { "species": "Pineco", "level": 6, "maxLevel": 7 },
+      { "species": "Wurmple", "level": 6, "maxLevel": 7 },
+      { "species": "Wurmple", "level": 6, "maxLevel": 7 },
+      { "species": "Wurmple", "level": 6, "maxLevel": 7 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 9, "maxLevel": 10 },
+      { "species": "Hoothoot", "level": 9, "maxLevel": 10 },
+      { "species": "Hoothoot", "level": 9, "maxLevel": 10 },
+      { "species": "Wurmple", "level": 9, "maxLevel": 10 },
+      { "species": "Wurmple", "level": 9, "maxLevel": 10 },
+      { "species": "Wurmple", "level": 9, "maxLevel": 10 }
+    ],
+    "trees": [
+      "1096,98 1096,99",
+      "1105,104 1105,103 1104,104 1104,103",
+      "1121,117 1122,117",
+      "1113,110 1113,109 1114,109 1114,110"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

@@ -14,6 +14,41 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 3, "maxLevel": 5 },
+      { "species": "Heracross", "level": 3, "maxLevel": 5 },
+      { "species": "Heracross", "level": 3, "maxLevel": 5 },
+      { "species": "Aipom", "level": 3, "maxLevel": 5 },
+      { "species": "Aipom", "level": 3, "maxLevel": 5 },
+      { "species": "Aipom", "level": 3, "maxLevel": 5 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 6, "maxLevel": 8 },
+      { "species": "Spearow", "level": 6, "maxLevel": 8 },
+      { "species": "Spearow", "level": 6, "maxLevel": 8 },
+      { "species": "Aipom", "level": 6, "maxLevel": 8 },
+      { "species": "Aipom", "level": 6, "maxLevel": 8 },
+      { "species": "Aipom", "level": 6, "maxLevel": 8 }
+    ],
+    "trees": [
+      "426,465 427,465",
+      "424,459 425,459",
+      "414,455 415,455",
+      "406,455 407,455",
+      "396,449 397,449",
+      "393,452 393,453",
+      "394,467 395,467 395,468 395,469",
+      "395,470 395,471",
+      "395,472 395,473",
+      "398,477 399,477",
+      "400,477 401,477",
+      "402,477 403,477",
+      "404,477 405,477",
+      "410,477 411,477",
+      "412,477 413,477"
+    ]
+  },
   "warps": [
     { "x": 392, "z": 462, "to": "azalea_ilex_forest_gatehouse", "toWarp": 0 },
     { "x": 392, "z": 463, "to": "azalea_ilex_forest_gatehouse", "toWarp": 0 },

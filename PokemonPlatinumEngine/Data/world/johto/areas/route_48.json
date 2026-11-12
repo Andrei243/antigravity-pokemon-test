@@ -34,6 +34,32 @@
     "Tauros",
     "Tauros"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 15, "maxLevel": 16 },
+      { "species": "Pineco", "level": 15, "maxLevel": 16 },
+      { "species": "Pineco", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 15, "maxLevel": 16 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 17, "maxLevel": 18 },
+      { "species": "Spinarak", "level": 17, "maxLevel": 18 },
+      { "species": "Spinarak", "level": 17, "maxLevel": 18 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 18 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 18 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 18 }
+    ],
+    "trees": [
+      "82,325 82,324",
+      "75,335 76,335",
+      "82,339 82,338",
+      "106,335",
+      "106,347 106,346",
+      "82,335 82,334 82,333"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

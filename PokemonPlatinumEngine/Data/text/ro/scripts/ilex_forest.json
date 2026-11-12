@@ -240,5 +240,105 @@
         "Celebi plutește în fața altarului, cu ochii pe {player}."
       ]
     }
+  ],
+  "HeadbuttTutor": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        "Bărbat"
+      ]
+    },
+    {
+      "en": [
+        "The trees here are so old and so close together that the sun hardly gets in.",
+        "Pokémon live up in them, out of sight. Give a trunk a good knock and one might come tumbling down."
+      ],
+      "text": [
+        "Copacii de aici sunt atât de bătrâni și de deși că soarele abia pătrunde.",
+        "Sus în ei trăiesc Pokémoni, ascunși privirii. Dă o lovitură bună unui trunchi și s-ar putea să cadă vreunul."
+      ]
+    },
+    {
+      "en": [
+        "I can teach one of yours Headbutt, for nothing. Shall I?"
+      ],
+      "text": [
+        "Pot să-l învăț pe unul dintre ai tăi Headbutt, pe gratis. Vrei?"
+      ]
+    },
+    {
+      "en": [
+        "Good. Which one?"
+      ],
+      "text": [
+        "Bine. Pe care?"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "{wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Face a tree that looks lived in and use Headbutt on it. Not every tree has someone home."
+      ],
+      "text": [
+        "Stai în fața unui copac care pare locuit și folosește Headbutt pe el. Nu în fiecare copac e cineva acasă."
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself. Stay on the path, now."
+      ],
+      "text": [
+        "Cum vrei. Acum nu te abate de la cărare."
+      ]
+    },
+    {
+      "en": [
+        "An Egg? It'll have to hatch before it can learn anything."
+      ],
+      "text": [
+        "Un Ou? Trebuie să clocească înainte să poată învăța ceva."
+      ]
+    },
+    {
+      "en": [
+        "Hm, that one can't learn Headbutt."
+      ],
+      "text": [
+        "Hm, acela nu poate învăța Headbutt."
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}."
+      ],
+      "text": [
+        "Acela știe deja {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
+      ]
+    }
   ]
 }

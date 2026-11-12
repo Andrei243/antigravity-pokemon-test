@@ -2786,6 +2786,10 @@ public partial class GameEngine
         else if ((spot.Dive || spot.Surface) && FieldMoveRules.Check(FieldMove.Dive, spot, flow.Story) == FieldMoveError.None)
             StartScript(spot.Surface ? FieldScripts.Surface : FieldScripts.Dive);
         else if (spot.RockFace && flow.Player.Mode == TravelMode.OnFoot) StartScript(FieldScripts.RockFace);
+        // (and a Headbutt tree, HeartGold's, plan 38 · EX4: offered only in Johto, on foot, to a team that knows the move,
+        // so the woods' edges say nothing to anyone else)
+        else if (spot.HeadbuttTree && flow.Player.Mode == TravelMode.OnFoot && string.Equals(Here.Id, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase)
+                 && FieldMoveRules.Knower(flow.Party, FieldMove.Headbutt) != null) StartScript(FieldScripts.HeadbuttTree);
         else if (spot.Water && FieldHelp.CanUse(FieldMove.Surf, flow.Party, GrantedMoves)
                  && FieldMoveRules.Check(FieldMove.Surf, spot, flow.Story) == FieldMoveError.None) StartScript(FieldScripts.Water);
     }

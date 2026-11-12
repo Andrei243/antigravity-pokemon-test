@@ -54,6 +54,36 @@
     { "species": "Shuckle", "level": 32, "maxLevel": 35 }
   ],
   "rockSmashRate": 40,
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 11, "maxLevel": 13 },
+      { "species": "Heracross", "level": 11, "maxLevel": 13 },
+      { "species": "Heracross", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 },
+      { "species": "Combee", "level": 11, "maxLevel": 13 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 14, "maxLevel": 16 },
+      { "species": "Spearow", "level": 14, "maxLevel": 16 },
+      { "species": "Spearow", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 },
+      { "species": "Combee", "level": 14, "maxLevel": 16 }
+    ],
+    "trees": [
+      "1341,313 1342,313",
+      "1340,315 1340,314",
+      "1340,325 1341,325 1341,324",
+      "1341,323 1341,322",
+      "1338,325 1339,325",
+      "1336,325 1337,325",
+      "1336,329 1337,329",
+      "1338,328 1338,327 1339,327",
+      "1340,327 1341,327",
+      "1342,327 1343,327"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1292, "z": 294, "to": "vermilion_fishing_dude_house", "toWarp": 0 },

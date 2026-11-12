@@ -315,9 +315,12 @@ public class PartyScreen
         bool dives = RegionDatabase.Get(region ?? RegionDatabase.Sinnoh)?.Gates.ContainsKey(nameof(FieldMove.Dive)) == true;
         // Secret Power only where there are secret bases, Emerald's Hoenn (plan 21 · H10): Platinum's is a move of battle alone
         bool bases = string.Equals(region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase);
+        // Headbutt only where its trees grow, HeartGold's Johto (plan 38 · EX4, decision 6): elsewhere a move of battle alone
+        bool trees = string.Equals(region, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase);
         // An Egg knows no field moves it could use (plan 06 · R15)
         if (!pokemon.IsEgg)
-            actions.AddRange(FieldMoveRules.Known(pokemon).Distinct().Where(m => (m != FieldMove.Dive || dives) && (m != FieldMove.SecretPower || bases))
+            actions.AddRange(FieldMoveRules.Known(pokemon).Distinct()
+                .Where(m => (m != FieldMove.Dive || dives) && (m != FieldMove.SecretPower || bases) && (m != FieldMove.Headbutt || trees))
                 .Select(m => new PartyAction(PartyActionKind.FieldMove, m)));
         // REMEMBER and RENAME while the options' PARTY TOOLS row is on (plan 12 · Q19): none for an Egg, RENAME only for the player's own
         if (tools && !pokemon.IsEgg)

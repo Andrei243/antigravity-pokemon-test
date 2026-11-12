@@ -68,6 +68,40 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 10, "maxLevel": 11 },
+      { "species": "Pineco", "level": 10, "maxLevel": 11 },
+      { "species": "Pineco", "level": 10, "maxLevel": 11 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 11 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 11 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 11 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 13, "maxLevel": 14 },
+      { "species": "Spinarak", "level": 13, "maxLevel": 14 },
+      { "species": "Spinarak", "level": 13, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 14 },
+      { "species": "Exeggcute", "level": 13, "maxLevel": 14 }
+    ],
+    "trees": [
+      "377,258 377,259",
+      "378,266 379,266 379,264 379,263 379,262 378,262",
+      "370,282 371,282 370,281 370,280 371,280",
+      "374,276 375,276",
+      "355,276 355,277",
+      "356,295 357,295",
+      "377,319 377,318",
+      "355,315 355,314",
+      "378,313 379,313 378,311 379,311",
+      "366,317 366,316 366,315 367,315",
+      "359,301 359,300",
+      "359,269 359,268",
+      "355,287 355,286",
+      "368,265 369,265"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

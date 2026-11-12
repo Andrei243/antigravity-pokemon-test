@@ -209,6 +209,9 @@ public static class MoveTutors
         // The man in Pacifidlog Town's Pokémon Center (Emerald's PacifidlogTown_PokemonCenter_1F_EventScript_
         // ExplosionTutor; plan 21 · H8, part d), whose move is TM64's
         ["Explosion"] = "Explosion",
+        // The man in Ilex Forest (HeartGold's D36R0101 tutor of Headbutt; plan 38 · EX4). Headbutt is no machine of
+        // Platinum's, and its nearest kin among its tutors' moves is Zen Headbutt, the other blow of the head
+        ["Headbutt"] = "Zen Headbutt",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

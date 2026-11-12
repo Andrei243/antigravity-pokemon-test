@@ -34,6 +34,29 @@
     "Grimer",
     "Grimer"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 26, "maxLevel": 27 },
+      { "species": "Spinarak", "level": 26, "maxLevel": 27 },
+      { "species": "Spinarak", "level": 26, "maxLevel": 27 },
+      { "species": "Wurmple", "level": 26, "maxLevel": 27 },
+      { "species": "Wurmple", "level": 26, "maxLevel": 27 },
+      { "species": "Wurmple", "level": 26, "maxLevel": 27 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 29, "maxLevel": 30 },
+      { "species": "Tangela", "level": 29, "maxLevel": 30 },
+      { "species": "Hoothoot", "level": 29, "maxLevel": 30 },
+      { "species": "Wurmple", "level": 29, "maxLevel": 30 },
+      { "species": "Wurmple", "level": 29, "maxLevel": 30 },
+      { "species": "Wurmple", "level": 29, "maxLevel": 30 }
+    ],
+    "trees": [
+      "1170,435 1170,434",
+      "1178,429 1179,429",
+      "1172,429 1173,429"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

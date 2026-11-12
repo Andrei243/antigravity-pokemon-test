@@ -34,6 +34,52 @@
     "Nidoran♂",
     "Nidoran♂"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 4, "maxLevel": 5 },
+      { "species": "Pineco", "level": 4, "maxLevel": 5 },
+      { "species": "Pineco", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 6, "maxLevel": 7 },
+      { "species": "Spinarak", "level": 6, "maxLevel": 7 },
+      { "species": "Spinarak", "level": 6, "maxLevel": 7 },
+      { "species": "Exeggcute", "level": 6, "maxLevel": 7 },
+      { "species": "Exeggcute", "level": 6, "maxLevel": 7 },
+      { "species": "Exeggcute", "level": 6, "maxLevel": 7 }
+    ],
+    "trees": [
+      "380,231 381,231",
+      "376,241 377,241",
+      "377,253 377,252",
+      "398,245 398,244",
+      "403,234 404,234 404,233 404,232 403,232 403,233",
+      "392,232 392,231",
+      "414,245 414,244 414,243 413,243",
+      "391,251 392,251",
+      "384,245 384,244",
+      "405,253",
+      "422,249 423,249",
+      "428,241 429,241",
+      "402,227 403,227 402,226",
+      "444,249 445,249",
+      "444,241 445,241",
+      "436,241 437,241",
+      "421,243 421,242",
+      "414,251 415,251",
+      "387,243 388,243",
+      "377,249 377,248",
+      "394,238 395,238",
+      "399,251 400,251",
+      "405,247 406,247",
+      "410,241 411,241",
+      "394,228 395,228",
+      "434,252 434,251 435,251"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"
