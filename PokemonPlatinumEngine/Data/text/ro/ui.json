@@ -3348,6 +3348,9 @@
       "festivalTideDay": { "sender": "Orașul Slateport", "title": "Ziua Mareei", "card": "O picătură de mare, din cea mai lungă zi de pe docuri." },
       "festivalBridgelight": { "sender": "Orașul Castelia", "title": "Lumina Podurilor", "card": "Fiecare pod luminat și un solz care strălucește ca ele." },
       "festivalSerenade": { "sender": "Orașul Lumiose", "title": "Serenada Solstițiului", "card": "Cea mai lungă zi cântată de la un capăt la altul și ceva pentru gâtul cântărețului." },
+      "festivalGarland": { "sender": "Orașul Hau'oli", "title": "Zilele Ghirlandelor", "card": "O perlă pentru ghirlanda pe care o împletești la anul. Dansează o poză pentru noi!" },
+      "festivalWoolFair": { "sender": "Wedgehurst", "title": "Târgul Lânii", "card": "Din fântâna dorințelor de la târg: o monedă care s-a întors strălucind." },
+      "festivalSheafFeast": { "sender": "Satul Jubilife", "title": "Ospățul Snopilor", "card": "Prima sămânță din snopii de anul acesta, păstrată pentru câmpul de la anul." },
       "easter": { "sender": "Curierii de Cadouri", "title": "Paștele", "card": "Un ou care aduce noroc, cum fac ouăle în vremea asta a anului." },
       "christmas": { "sender": "Curierii de Cadouri", "title": "Crăciunul", "card": "O stea pentru vârful bradului. Crăciun fericit!" },
       "valentine": { "sender": "cineva", "title": "O felicitare fără nume", "card": "Mă gândesc la tine." }

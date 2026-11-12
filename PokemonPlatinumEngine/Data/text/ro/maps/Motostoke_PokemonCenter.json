@@ -63,6 +63,24 @@
           "Fiecare concurent din Galar trece prin Motostoke. Jumătate dintre ei se ceartă deja cine îl va învinge pe Leon."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
     }
   },
   "signs": {}

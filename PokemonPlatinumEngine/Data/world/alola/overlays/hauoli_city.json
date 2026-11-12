@@ -85,6 +85,14 @@
     {"id": "hauoli_city.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 284, "y": 162, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
     {"id": "hauoli_city.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 284, "y": 165, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
     {"id": "hauoli_city.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 277, "y": 161, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},
-    {"id": "hauoli_city.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 278, "y": 166, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"}
+    {"id": "hauoli_city.Festival_valentine", "name": "Heart on a post", "npcType": "FestivalValentineHeart", "x": 278, "y": 166, "facing": "Down", "shownBy": "FLAG_FESTIVAL_VALENTINE"},
+    // Alola's own festival (plan 40 · GE9): Garland Days, 8 to 10 August, in the plaza before the Pokémon Center: two lei
+    // arches, a dancer who teaches the Z-Move poses, an islander stringing leis and the stall
+    {"id": "hauoli_city.Festival_garland_1", "name": "Lei arch", "npcType": "FestivalLeiArch", "x": 280, "y": 168, "facing": "Down", "shownBy": "FLAG_FESTIVAL_GARLAND"},
+    {"id": "hauoli_city.Festival_garland_2", "name": "Lei arch", "npcType": "FestivalLeiArch", "x": 293, "y": 168, "facing": "Down", "shownBy": "FLAG_FESTIVAL_GARLAND"},
+    {"id": "hauoli_city.Festival_garland_stall", "name": "Stall", "npcType": "FestivalStall", "x": 287, "y": 171, "facing": "Down", "shownBy": "FLAG_FESTIVAL_GARLAND"},
+    {"id": "hauoli_city.Festival_garland_keeper", "name": "Stall keeper", "npcType": "Clerk", "x": 288, "y": 171, "facing": "Down", "dialog": ["Stall keeper: Alola, and happy Garland Days! Malasadas fresh from the fryer, and something cold to wash them down?"], "isPokeMartClerk": true, "mart": "festival_garland", "shownBy": "FLAG_FESTIVAL_GARLAND"},
+    {"id": "hauoli_city.Festival_garland_dancer", "name": "Dancer", "npcType": "Lass", "x": 282, "y": 171, "facing": "Down", "dialog": ["Under the lei arch, every pose is a Z-Move! Arms up, sweep left, and... stamp! You'd make a fine Electric type."], "shownBy": "FLAG_FESTIVAL_GARLAND"},
+    {"id": "hauoli_city.Festival_garland_islander", "name": "Islander", "npcType": "middle_aged_woman", "x": 290, "y": 168, "facing": "Down", "dialog": ["Each island strings its own lei for Garland Days, and on the last night we trade them. Melemele's is pink, of course."], "shownBy": "FLAG_FESTIVAL_GARLAND"}
   ]
 }

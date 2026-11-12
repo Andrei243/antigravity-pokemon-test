@@ -653,7 +653,10 @@
               "GatherSnowBare",
               "PhotoSpot",
               "PosterWall",
-              "FestivalMusicStand"
+              "FestivalMusicStand",
+              "FestivalLeiArch",
+              "FestivalHayBales",
+              "FestivalSheaves"
             ]
           },
           "x": {

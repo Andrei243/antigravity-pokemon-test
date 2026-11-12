@@ -252,6 +252,18 @@
       "dialog": [
         "Hammerlocke's station runs trains all over Galar, but the gym challenge goes on foot. West out of the gate is Route 6."
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 15,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

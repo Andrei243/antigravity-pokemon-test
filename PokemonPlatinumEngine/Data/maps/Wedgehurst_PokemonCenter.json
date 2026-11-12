@@ -300,6 +300,59 @@
       "y": 6,
       "facing": "Down",
       "shownBy": "FLAG_FESTIVAL_VALENTINE"
+    },
+    {
+      "id": "wedgehurst.Festival_wool_fair_1",
+      "name": "Hay bales",
+      "npcType": "FestivalHayBales",
+      "x": 2,
+      "y": 7,
+      "facing": "Down",
+      "shownBy": "FLAG_FESTIVAL_WOOL_FAIR"
+    },
+    {
+      "id": "wedgehurst.Festival_wool_fair_2",
+      "name": "Hay bales",
+      "npcType": "FestivalHayBales",
+      "x": 14,
+      "y": 7,
+      "facing": "Down",
+      "shownBy": "FLAG_FESTIVAL_WOOL_FAIR"
+    },
+    {
+      "id": "wedgehurst.Festival_wool_fair_stall",
+      "name": "Stall",
+      "npcType": "FestivalStall",
+      "x": 4,
+      "y": 8,
+      "facing": "Down",
+      "shownBy": "FLAG_FESTIVAL_WOOL_FAIR"
+    },
+    {
+      "id": "wedgehurst.Festival_wool_fair_keeper",
+      "name": "Stall keeper",
+      "npcType": "old_woman",
+      "x": 5,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Stall keeper: Rain on the green, so the Wool Fair's come indoors again! Milk from the farm, or a sweet for the road?"
+      ],
+      "isPokeMartClerk": true,
+      "mart": "festival_wool_fair",
+      "shownBy": "FLAG_FESTIVAL_WOOL_FAIR"
+    },
+    {
+      "id": "wedgehurst.Festival_wool_fair_judge",
+      "name": "Fleece judge",
+      "npcType": "lass",
+      "x": 11,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "I'm judging the fleeces this year. The rosette goes to the Wooloo from Postwick again. Nobody's fluffier!"
+      ],
+      "shownBy": "FLAG_FESTIVAL_WOOL_FAIR"
     }
   ],
   "wildEncounters": []

@@ -196,8 +196,13 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 - **Alola's row of the circuit**: Kukui on his room's team by the player's Alola starter (`alola_kukui_1` to `_3`, the court's script branching as his room does; the row names `_3`; Alola has no team beyond),
   standing at 13,4 of the court behind `FLAG_HUB_COURT_KUKUI`, called after Diantha, whose line no longer says Kalos closes
   the final.
-- **Still owed**: the gathering's rows for Alola, Galar and Paldea (a team of ours each and a bay of the keep), Galar's and
-  Paldea's circuit rows once their Leagues stand, the shots, the songs' MP3s, Romanian words, the voices' designs.
+- **Alola's row of the gathering** (2026-11-12, later): Grayfall Keep widened to 43 tiles by a seventh bay, Team Skull's
+  (`HubArt.KeepTeamAt` 6, a slate banner with a bone-white band), Plumeria (`plumeria_gathering`, Poison) before Guzma
+  (`guzma_gathering`, Bug), both shown by `AlolaHallOfFame`; Ismene waits for Guzma where Alola is finished; the door
+  stays at 18, so the hall is no longer symmetric about it (the statues moved from 30 to 36). `GatheringTests` hold it.
+- **Still owed**: the gathering's rows for Galar and Paldea, and their circuit rows: neither region has a League or a
+  Hall of Fame flag yet (nothing sets `GalarHallOfFame`), so a bay or a row shown by it would never stand; the shots
+  (the keep's seventh bay among them), the songs' MP3s, Romanian words, the voices' designs.
 
 ## EG3 and EG6 as built (2026-11-12)
 
