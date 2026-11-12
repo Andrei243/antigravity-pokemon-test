@@ -8,14 +8,6 @@
         "text": [
           "Vânzătoarea"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to the Game Corner! I'm afraid the prize counter is closed for now."
-        ],
-        "text": [
-          "Bun venit la Game Corner! Din păcate, ghișeul de premii e închis deocamdată."
-        ]
       }
     },
     "t25sp0101_gsgentleman": {
@@ -47,30 +39,16 @@
       },
       "dialog": {
         "en": [
-          "They say the prizes here include rare Pokémon. If only the counter were open!"
+          "They say the prizes here include rare Pokémon. A Dratini for coins! Imagine that."
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Se zice că printre premiile de aici sunt Pokémoni rari. Dacă ar fi deschis ghișeul!"
         ]
       }
     }
   },
-  "signs": {
-    "T25SP0101_000+1": {
-      "en": [
-        "Prize Exchange\nClosed for now."
-      ],
-      "text": [
-        "Schimbul de Premii\nÎnchis deocamdată."
-      ]
-    },
-    "T25SP0101_001+1": {
-      "en": [
-        "A list of prizes. Every one of them is marked sold out."
-      ],
-      "text": [
-        "O listă de premii. Toate sunt marcate ca epuizate."
-      ]
-    }
-  }
+  "signs": {}
 }

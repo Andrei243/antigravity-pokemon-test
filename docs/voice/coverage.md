@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1674 | 1611 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12665 | 12159 | 506 | 17 | 36 |
-| People of the world (`world:`) | 8062 | 8000 | 62 | 4 | 0 |
-| **All** | 22667 | 22033 | 634 | 22 | 36 |
+| Scripts (`script:`) | 12695 | 12187 | 508 | 17 | 36 |
+| People of the world (`world:`) | 8061 | 7999 | 62 | 4 | 0 |
+| **All** | 22696 | 22060 | 636 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,10 +22,10 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 958 |
-| a sign | 1770 |
-| the game's own voice (speaker none) | 297 |
-| the game's own voice (text) | 2115 |
+| a question's answers | 964 |
+| a sign | 1768 |
+| the game's own voice (speaker none) | 298 |
+| the game's own voice (text) | 2123 |
 
 ## The cast
 
@@ -40,12 +40,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `look:gentleman (any)` | 1210 | 50 |
+| `look:gentleman (any)` | 1214 | 50 |
 | `look:grunt (any)` | 612 | 0 |
 | `rival` | 602 | 20 |
+| `look:clerk (any)` | 582 | 15 |
 | `look:lady (any)` | 574 | 10 |
-| `look:clerk (any)` | 569 | 13 |
-| `look:lass (any)` | 549 | 22 |
+| `look:lass (any)` | 550 | 22 |
 | `look:youngster (any)` | 516 | 32 |
 | `@self` | 347 | 40 |
 | `look:scientist (any)` | 330 | 13 |
@@ -172,15 +172,16 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:magma_grunt (any)` | 36 | 0 |
 | `mars` | 36 | 0 |
 | `kurt` | 35 | 6 |
+| `look:battle_girl (any)` | 35 | 2 |
 | `move_deleter` | 35 | 5 |
 | `class:super_nerd (any)` | 34 | 0 |
-| `look:battle_girl (any)` | 34 | 2 |
 | `mr_briney` | 34 | 1 |
 | `policeman` | 34 | 0 |
 | `psychic` | 34 | 1 |
 | `saturn` | 34 | 0 |
 | `clay` | 33 | 3 |
 | `president` | 33 | 0 |
+| `socialite` | 33 | 0 |
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |
@@ -242,7 +243,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `day_care_lady` | 24 | 3 |
 | `look:camper (any)` | 24 | 0 |
 | `lysandre` | 24 | 1 |
-| `socialite` | 24 | 0 |
 | `veteran` | 24 | 0 |
 | `curator` | 23 | 0 |
 | `eusine` | 23 | 0 |

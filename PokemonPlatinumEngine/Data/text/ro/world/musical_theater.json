@@ -266,9 +266,12 @@
   "signs": {
     "12": {
       "en": [
-        "Pokémon Musical\nToday's show: closed for rehearsals"
+        "Pokémon Musical\nToday's shows: Sunny Side Revue and Hour of Lanterns"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Pokémon Musical\nSpectacolul de azi: închis pentru repetiții"
       ]
     },

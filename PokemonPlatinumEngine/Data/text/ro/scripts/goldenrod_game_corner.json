@@ -1,0 +1,174 @@
+{
+  "Cards": [
+    {
+      "en": [
+        "A card-flip table. Twenty-five cards, and the coins grow with every number found. Play?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A card-flip table. Without a Coin Case there is nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Clerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Goldenrod Game Corner! The tables take coins, and coins need a case to carry them in."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, have one of ours. Every new player gets one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We sell coins for the tables: 50 for $1,000. Would you like some?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} bought 50 coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Coin Case is full already!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Prizes": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the prize exchange! You have {coins} coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like to look at?",
+        "ITEMS",
+        "POKéMON",
+        "NO THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The {item}, for {price} coins?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here you are!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} put the {item} away."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please take good care of it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough coins for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The prize exchange trades in coins. You'll need a Coin Case first: the clerk will gladly give you one."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
