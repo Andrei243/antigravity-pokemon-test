@@ -1,0 +1,18 @@
+# The Galar Mine (plan 33 · GL4): the seam under the ridge between Route 3 and Route 4, and Bede at its far end the
+# day of the ceremony. VAR_GALAR_STORY 17 to 18 (postwick.txt's count). Our own lines.
+
+
+script BedeInTheMine
+  scene "Bede in the Galar Mine"
+  face bede_mine player
+  speaker "Bede"
+  say "You again. Chairman Rose has asked me to help with some research, you know. Something you could never do."
+  say "I'll show you the difference between a chairman's choice and a champion's charity."
+  battle bede_mine as "galar_bede_1"
+  speaker "Bede"
+  say "Hmph. You were lucky. I have more important things to do than waste time on a mine."
+  clearflag FLAG_GALAR_BEDE_IN_MINE
+  setvar VAR_GALAR_STORY 18
+  objective galarMilo
+  endscene
+  end

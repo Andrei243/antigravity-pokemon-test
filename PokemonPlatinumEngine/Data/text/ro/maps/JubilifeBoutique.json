@@ -37,6 +37,26 @@
           "Poate le iau pe amândouă. Un Antrenor trebuie să arate cum trebuie!"
         ]
       }
+    },
+    "1,4": {
+      "name": {
+        "en": [
+          "Stylist"
+        ],
+        "text": [
+          "Stilista"
+        ]
+      }
+    },
+    "9,4": {
+      "name": {
+        "en": [
+          "Dyer"
+        ],
+        "text": [
+          "Vopsitorul"
+        ]
+      }
     }
   },
   "signs": {}

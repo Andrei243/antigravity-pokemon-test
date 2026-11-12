@@ -219,6 +219,8 @@ public class ScriptTests
           starter
           shop
           wardrobe "jubilife"
+          wardrobe salon
+          wardrobe dye "jubilife"
           pc
           travel
           honeytree status
@@ -250,6 +252,7 @@ public class ScriptTests
           raid watts
           raid fight
           raid catch "Poké Ball"
+          raid wish
           treat can
           treat can mixed
           treat bake spicy
@@ -277,6 +280,9 @@ public class ScriptTests
           power grant exp 2 10
           photo take
           photo count
+          photo book
+          photo booked
+          photo spot "sinnoh_twinleaf_pond"
           globallink check
           globallink
           poffin check

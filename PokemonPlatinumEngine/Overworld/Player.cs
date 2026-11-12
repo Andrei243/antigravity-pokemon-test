@@ -393,6 +393,17 @@ public class Player
     /// <summary>Runs the gesture's clock, as <see cref="TickBubble"/> runs the bubble's.</summary>
     public void TickGesture(float dt) => Gesture = Acting.Tick(Gesture, ref gestureAge, GestureTimes, dt);
 
+    /// <summary>
+    /// A gesture held at <paramref name="share"/> of its round for a photograph (plan 43 · LF4): photo mode runs no
+    /// field, so its clock stands where it is put. Null lets go.
+    /// </summary>
+    public void HoldGesture(Gesture? gesture, float share)
+    {
+        Gesture = gesture;
+        GestureTimes = 1;
+        gestureAge = gesture is { } g ? share * Acting.Length(g) : 0f;
+    }
+
     /// <summary>Ends any gesture and lets the face go: the place has been come to again.</summary>
     /// <summary>The stance a script's <c>pose</c> set the player in (plan 11 · C7), until they come to another place; null standing.</summary>
     public Stance? Posed { get; set; }

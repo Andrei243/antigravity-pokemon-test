@@ -24,8 +24,25 @@ public sealed record Outfit(string? Hat = null, string? Top = null, string? Bott
     /// <summary>Stands for the look's own garment in <see cref="Key"/>.</summary>
     public const string OwnMark = "-";
 
+    /// <summary>
+    /// The salon's parts (plan 43 · LF3): a cut of <c>HairCut</c> by name, the hair's colour, the eyes' colour and a skin
+    /// tone, each an id of <c>clothes.json</c>'s salon lists; null for the look's own.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Hair { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? HairColour { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Eyes { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Skin { get; init; }
+
+    /// <summary>Whether the salon changed anything.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
-    public bool IsOwn => Slots.All(s => this[s] == null);
+    public bool IsRestyled => Hair != null || HairColour != null || Eyes != null || Skin != null;
+
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool IsOwn => Slots.All(s => this[s] == null) && !IsRestyled;
 
     public string? this[ClothingSlot slot] => slot switch
     {
@@ -46,9 +63,14 @@ public sealed record Outfit(string? Hat = null, string? Top = null, string? Bott
         _ => this with { Bag = garment }
     };
 
-    /// <summary>The garments in slot order, a dash for the look's own: <c>cap_red.-.-.-.-</c>.</summary>
+    /// <summary>
+    /// The garments in slot order, a dash for the look's own: <c>cap_red.-.-.-.-</c>. Only once the salon has changed
+    /// something does a sixth part follow, the cut, the hair's colour, the eyes and the skin with commas between
+    /// (<c>-.-.-.-.-.Bun,copper,-,-</c>), so every outfit worn before plan 43 · LF3 keeps its name.
+    /// </summary>
     [System.Text.Json.Serialization.JsonIgnore]
-    public string Key => string.Join('.', Slots.Select(s => this[s] ?? OwnMark));
+    public string Key => string.Join('.', Slots.Select(s => this[s] ?? OwnMark))
+        + (IsRestyled ? "." + string.Join(',', new[] { Hair, HairColour, Eyes, Skin }.Select(p => p ?? OwnMark)) : "");
 
     /// <summary>Reads a <see cref="Key"/> back; a part missing or a dash is the look's own.</summary>
     public static Outfit FromKey(string key)
@@ -57,6 +79,12 @@ public sealed record Outfit(string? Hat = null, string? Top = null, string? Bott
         var outfit = Own;
         for (int i = 0; i < Slots.Length && i < parts.Length; i++)
             if (parts[i].Length > 0 && parts[i] != OwnMark) outfit = outfit.With(Slots[i], parts[i]);
+        if (parts.Length > Slots.Length)
+        {
+            var salon = parts[Slots.Length].Split(',');
+            string? Part(int i) => i < salon.Length && salon[i].Length > 0 && salon[i] != OwnMark ? salon[i] : null;
+            outfit = outfit with { Hair = Part(0), HairColour = Part(1), Eyes = Part(2), Skin = Part(3) };
+        }
         return outfit;
     }
 

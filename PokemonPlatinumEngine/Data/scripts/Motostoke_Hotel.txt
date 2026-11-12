@@ -1,0 +1,39 @@
+# Motostoke's hotel (plan 33 · GL4): Team Yell crowding the counter on the night before the ceremony, sent off by
+# Chairman Rose, and a night's rest. VAR_GALAR_STORY 15 to 16 (postwick.txt's count). Our own lines.
+
+
+script OnEnter
+  if var VAR_GALAR_STORY != 15 end
+  scene "Team Yell at the hotel"
+  setflag FLAG_GALAR_YELL_AT_HOTEL
+  speaker "Team Yell Grunt"
+  say "Oi! Another challenger? Team Yell's backing Marnie, and Marnie only. You'd best go home!"
+  say "We're not moving from this counter till every room's ours. Yell, yell, yell!"
+  setflag FLAG_GALAR_ROSE_AT_HOTEL
+  speaker "Chairman Rose"
+  say "Now then! The gym challenge is a celebration. I won't have challengers kept from their rest by shouting."
+  speaker "Team Yell Grunt"
+  say "The chairman? Right, we're off. This isn't over!"
+  clearflag FLAG_GALAR_YELL_AT_HOTEL
+  face rose_hotel player
+  speaker "Chairman Rose"
+  say "My apologies for that. Rose, chairman of the Pokémon League. And you must be one of Leon's endorsed challengers."
+  say "Rest well. Tomorrow the whole of Galar will be watching you. I look forward to the show!"
+  clearflag FLAG_GALAR_ROSE_AT_HOTEL
+  fade out
+  text "{player} checked in and slept soundly. The morning of the opening ceremony came bright and loud."
+  setvar VAR_GALAR_STORY 16
+  objective galarCeremony
+  fade in
+  endscene
+  end
+
+
+script HotelClerk
+  speaker "Hotel Clerk"
+  if var VAR_GALAR_STORY < 16 goto Before
+  say "Good luck in the challenge! We keep a room for every challenger, the night before the ceremony."
+  end
+label Before
+  say "Welcome to the hotel. Challengers for the gym challenge have a room waiting."
+  end

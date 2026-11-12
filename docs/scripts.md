@@ -428,6 +428,11 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `photo take` | Cameron's photograph (plan 20, part q; `Models/PhotoAlbum.cs`, `common.Cameron`): puts a photograph of the player and the team's first Pokémon that is no Egg, at the area of the person the script belongs to and today, at the album's end. `RESULT` 1, or 0 with the album full (36) or a host that keeps no album. |
 | `photo album` | Opens the photo album (`UI/PhotoAlbumScreen.cs`, Cianwood City's studio) and waits for it to be put away. |
 | `photo count` | `RESULT` is how many photographs the album holds. |
+| `photo book` | Opens the player's photo book (plan 43 · LF4; `UI/PhotoBookScreen.cs`, `Models/PhotoBook.cs`) and waits for it to be put away. |
+| `photo booked` | `RESULT` is how many photographs the photo book holds. |
+| `photo spot "<id>"` | A photo spot's plate read (plan 43 · LF4; `Data/photo-spots.json`): photo mode opens on the spot's view with POSE and FACE alone and the script waits; `RESULT` 1 once a photograph is taken (kept in the photo book), 0 if left without one or nothing opened (a full book). With no window a record with no picture is kept at once. |
+| `wardrobe salon` | The salon's chair (plan 43 · LF3; `UI/SalonScreen.cs`): the cut, the hair's colour, the eyes and the skin, each paid at the chair; waits until it is left. |
+| `wardrobe dye "<boutique>"` | A boutique's dye house (plan 43 · LF3): a garment owned, a dye of `clothes.json`, the fee and the dye's berry from the bag; waits until it is left. |
 | `globallink check` | The Global Link counter (plan 07 · O7): `RESULT` 1 when the options name an online server (`OnlineServer` in `settings.json`), else 0. The headless host says 0 unless a test sets `OnlineServerSet`. |
 | `globallink` | Opens the Global Link counter (`UI/GlobalLinkScreen.cs` over `Online/GlobalLinkSession.cs`, plan 07 · O5): the friend code, a link code made or typed, and a trade room whose trades are written into the slot before the server is told. Waits for it to be left. |
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
@@ -902,6 +907,7 @@ trigger of an open place whose script names its den of `Data/world/galar/dens.js
 | `raid watts` | The den's light's Watts, once a day (`FLAG_DAILY_GALAR_DEN_<ID>_WATTS`), added to `VAR_GALAR_WATTS`; `RESULT` is how many, 0 where none are given. |
 | `raid fight` | The raid (`BattleFormat.Raid`): the boss at its level beside three raiders who answer the den's call (`Raids.Allies`), and the script waits. A loss goes on (`if won`, `if lost`); a win sets the den quiet for the day (`FLAG_DAILY_GALAR_DEN_<ID>_DONE`). Stops a hurry. |
 | `raid catch "Great Ball"` | A ball of the bag thrown at the felled boss: `RESULT` 1 caught (the Pokémon given, in that ball), 0 it got away (on the host's own die, `Raids.CatchChance`), 2 no such ball in the bag. |
+| `raid wish` | A Wishing Piece of the bag thrown into the den looked into (plan 33 · GL3, second session): `RESULT` 1 its beam lit for the day (`FLAG_DAILY_GALAR_DEN_<ID>_WISHED`, the piece taken, the den looked into again so its three variables say what now waits), 0 no piece in the bag, 2 its beam lit already. `common.GalarDen` offers it at a quiet den; the Watt trader sells the piece for 3,000 W. |
 
 ### Locked hearts
 

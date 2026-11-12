@@ -928,6 +928,11 @@
     "galarLake": "Go down to the lakeside with Hop now the night has come.",
     "galarTrain": "Board the train at Wedgehurst Station.",
     "galarWildArea": "The train stopped short of Motostoke. Cross the Wild Area north to the steps under the city.",
+    "galarRegister": "Motostoke at last! Go up the ramp to the stadium and register for the gym challenge.",
+    "galarHotel": "Registered! Rest at the hotel on Motostoke's lower terrace before the opening ceremony.",
+    "galarCeremony": "The morning of the opening ceremony. Go to Motostoke Stadium.",
+    "galarTurffield": "The gym challenge is open. Take the west gate onto Route 3, through the Galar Mine to Turffield.",
+    "galarMilo": "Turffield at last. Win the Grass Badge at the stadium on the hill.",
     "galarFree": "That is as far as the line runs for now. Galar's south is yours to explore."
   },
 
@@ -4699,6 +4704,8 @@
     "PokemonBreeder": "Pokémon Breeder",
     "PokemonRanger": "Pokémon Ranger",
     "TeamSkullGrunt": "Team Skull Grunt",
+    "TeamYell": "Team Yell",
+    "GymTrainer": "Gym Trainer",
     "TrialCaptain": "Trial Captain",
     "IslandKahuna": "Island Kahuna",
     "PokemonProfessor": "Pokémon Professor",
@@ -5851,9 +5858,9 @@
   },
   "photo": {
     "title": "PHOTO",
-    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame", "Pose": "Pose" },
+    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame", "Pose": "Pose", "Face": "Face" },
     "zoom": "×{zoom}",
-    "pose": { "still": "As it is", "step": "+{seconds} s" },
+    "pose": { "none": "None", "still": "As it is", "step": "+{seconds} s" },
     "time": { "now": "Now", "Morning": "Morning", "Day": "Day", "Twilight": "Evening", "Night": "Night", "LateNight": "Late night" },
     "weather": { "Now": "As it is", "Clear": "Clear", "Rain": "Rain", "Snow": "Snow", "Fog": "Fog" },
     "notHere": "Not here",
@@ -6843,6 +6850,150 @@
       "row": "{stat}: {word}",
       "all": "ALL SIX ({item})",
       "never": "NEVER MIND"
+    }
+  },
+  "cardDesign": {
+    "heading": "CARD DESIGNER",
+    "row": {
+      "Background": "BACKGROUND",
+      "Frame": "FRAME",
+      "Pose": "POSE",
+      "Face": "FACE",
+      "Title": "TITLE",
+      "Shown": "SHOWN",
+      "Greeting": "GREETING",
+      "Signature": "SIGNATURE",
+      "Print": "PRINT"
+    },
+    "background": {
+      "plain": "Plain Cream",
+      "meadow": "Meadow",
+      "sea_breeze": "Sea Breeze",
+      "dusk": "Dusk",
+      "sinnoh_peaks": "Sinnoh Peaks",
+      "kanto_sunset": "Kanto Sunset",
+      "johto_maple": "Johto Maple",
+      "hoenn_tide": "Hoenn Tide",
+      "unova_lights": "Unova Lights",
+      "kalos_rose": "Kalos Rose",
+      "sinnoh_aurora": "Sinnoh Aurora",
+      "kanto_laurel": "Kanto Laurel",
+      "johto_bells": "Johto Bells",
+      "hoenn_coral": "Hoenn Coral",
+      "unova_steel": "Unova Steel",
+      "long_road": "The Long Road",
+      "flare": "Flare",
+      "net_and_reeds": "Net and Reeds",
+      "pages": "Turning Pages",
+      "starlit": "Starlit",
+      "sinnoh_snapshot": "Sinnoh Snapshots",
+      "backdrop": "Backdrop: {name}"
+    },
+    "frame": {
+      "plain": "Plain",
+      "double_line": "Double Line",
+      "scallop": "Scallop",
+      "corners": "Corners",
+      "beads": "Beads",
+      "ribbon": "Ribbon",
+      "laurel": "Laurel",
+      "gilt": "Gilt"
+    },
+    "pose": {
+      "Standing": "Standing",
+      "Sitting": "Sitting Down",
+      "Wave": "Waving",
+      "Nod": "Nodding",
+      "Cheer": "Cheering",
+      "Surprised": "Startled",
+      "Bow": "Bowing",
+      "Shrug": "Shrugging",
+      "Point": "Pointing",
+      "Laugh": "Laughing",
+      "Jump": "Jumping"
+    },
+    "face": {
+      "Neutral": "Calm",
+      "Happy": "Smiling",
+      "Surprised": "Wide-Eyed",
+      "Sad": "Wistful",
+      "Angry": "Fierce"
+    },
+    "title": {
+      "none": "None",
+      "champion": "Champion of {region}"
+    },
+    "shown": {
+      "team": "The Team",
+      "chosen": "{count} Chosen",
+      "heading": "THE SIX SHOWN",
+      "note": "A to put one in or take it out. Six at most."
+    },
+    "greeting": {
+      "none": "Not Given"
+    },
+    "signature": {
+      "none": "Not Signed",
+      "signed": "Signed",
+      "heading": "SIGN YOUR CARD",
+      "pen": "PEN",
+      "eraser": "ERASER",
+      "down": "WRITING",
+      "up": "LIFTED"
+    },
+    "print": {
+      "action": "Both Sides",
+      "done": "Card printed: {file}",
+      "notDone": "The card couldn't be printed: {why}"
+    },
+    "hints": {
+      "pen": "Pen",
+      "eraser": "Eraser",
+      "clear": "Clear"
+    },
+    "keyQ": "Q"
+  },
+  "salon": {
+    "title": "SALON",
+    "dyeHouse": "DYE HOUSE",
+    "tab": { "Cut": "CUT", "Colour": "COLOUR", "Eyes": "EYES", "Skin": "SKIN" },
+    "step": { "Garment": "GARMENT", "Dye": "DYE" },
+    "own": "Your Own",
+    "cut": { "Short": "Short Crop", "Spiky": "Spiky", "Long": "Long and Loose", "Swept": "Swept Fringe", "Afro": "Full Curls", "Bun": "Top Bun", "Braids": "Braids", "Bunches": "Bunches", "Bowl": "Bowl Cut", "Ponytail": "Ponytail", "Curls": "Soft Curls", "Bald": "Shaved" },
+    "hairColour": { "black": "Black", "brown": "Brown", "chestnut": "Chestnut", "blond": "Blond", "copper": "Copper", "ash": "Ash", "plum": "Plum", "teal": "Teal" },
+    "eyeColour": { "dark": "Dark", "brown": "Brown", "hazel": "Hazel", "green": "Green", "blue": "Blue", "grey": "Grey" },
+    "skinTone": { "fair": "Fair", "light": "Light", "warm": "Warm", "tan": "Tan", "brown": "Brown", "deep": "Deep" },
+    "dye": { "cherry": "Cherry", "coral": "Coral", "peach": "Peach", "sunflower": "Sunflower", "lemon": "Lemon", "leaf": "Leaf", "mint": "Mint", "teal": "Teal", "sky": "Sky", "navy": "Navy", "violet": "Violet", "plum": "Plum", "rose": "Rose", "cream": "Cream", "charcoal": "Charcoal", "snow": "Snow" },
+    "dyedName": "{garment} ({dye})",
+    "done": "A new look! It suits you.",
+    "dyed": "{garment} is dyed and on!",
+    "noBerry": "That dye needs a {berry}.",
+    "nothingToDye": "Nothing to dye: buy a garment first.",
+    "withBerry": "AND A BERRY",
+    "note": "Left and right change what is styled. Every change is paid at the chair, going back to your own too.",
+    "dyeNote": "Choose a garment you own, then a dye. The dyed one is yours beside the plain one.",
+    "question": "{what}: is that the look?",
+    "dyeQuestion": "Dye it {what}?",
+    "answer": { "yes": "YES" }
+  },
+  "photoBook": {
+    "title": "PHOTO BOOK",
+    "all": "ALL",
+    "empty": "No photographs yet. Take one in photo mode, or at a photo spot.",
+    "foot": "PAGE {page} / {pages}    {count} / {of}",
+    "spotTag": "PHOTO SPOT",
+    "throwHint": "Throw away",
+    "throwQuestion": "Throw this photograph away?",
+    "throwYes": "THROW AWAY",
+    "kept": "Kept in the photo book.",
+    "full": "The photo book is full: throw one away first.",
+    "lost": "The picture's file is gone.",
+    "spot": {
+      "sinnoh_twinleaf_pond": "Twinleaf's Pond",
+      "sinnoh_sandgem_lab": "The Lab at Sandgem",
+      "sinnoh_jubilife_fountain": "Jubilife's Fountain",
+      "sinnoh_oreburgh_museum": "Oreburgh's Museum",
+      "sinnoh_floaroma_flowers": "Floaroma's Flowers"
     }
   },
   "hearts": {

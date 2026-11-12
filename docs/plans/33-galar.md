@@ -106,8 +106,8 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 
 - [x] GL1 Galar's file, Postwick, Wedgehurst and Routes 1 and 2 (2026-11-09, its first session: the file, the open map of five areas described and baked, eight rooms, the chapter to the train headless, the walk of the region, the species check; "GL1 as built", below. **Waits for the user**: the look of Postwick and Wedgehurst, judged from the shots its second session owes, as the done-when has it; and the bot's walk to the train in `PlaythroughTests`, which waits for plan 32 · OW10's bot)
 - [x] GL2 The Wild Area (2026-11-12, its first session: the southern half at a smaller footprint than decision 1's, eight parts with weather by part and day, rustling grass, strong Pokémon, the train, the traders, the Stone Arch; "GL2 as built", below. **Waits for the user**: the footprint, and the look of the Wild Area from the shots owed; **owed**: the Rotom Bike, camping placed in the Wild Area, the harness's shots and `profile` with twelve field Pokémon in rain)
-- [x] GL3 Max Raid dens (2026-11-12, its first session: `BattleFormat.Raid` and its rules, the dens and their days, the script and its catch, the Vs. Recorder's file; "GL3 as built", below. **Owed** to its second: the beam drawn, the raid's screen, the Wishing Piece, `MegaMaxDen`'s den, the shots)
-- [ ] GL4 Motostoke, the opening ceremony and the first three gyms
+- [x] GL3 Max Raid dens (2026-11-12, its first session: `BattleFormat.Raid` and its rules, the dens and their days, the script and its catch, the Vs. Recorder's file; "GL3 as built", below. its second session, 2026-11-12: the Wishing Piece, the beam drawn, the raid's boxes and shield pips; **owed**: `MegaMaxDen`'s den (GL7), the shots)
+- [ ] GL4 Motostoke, the opening ceremony and the first three gyms (2026-11-12, its first session: the land ten rows north, Motostoke on its terraces, the registration, the hotel, the ceremony, Route 3, the Galar Mine as a grid map, Route 4, Turffield and Milo's Grass Badge; "GL4 as built", below. **Owed** to its second: Route 5 and Hulbury with Nessa, Galar Mine No. 2, Kabu, Hop's and Marnie's battles, the shots of Motostoke for the user to judge and three badges in the harness)
 - [ ] GL5 Stow-on-Side to Hammerlocke
 - [ ] GL6 The Champion Cup, the Darkest Day and Leon
 - [ ] GL7 After the Hall of Fame
@@ -154,3 +154,22 @@ One session beside GL2, with no harness shot. The rulings' "Max Raid dens" has e
 - **Tests**: `GalarRaidTests` (four places and a Dynamax that never runs down, the barrier and its shields, two actions and the fourth fall, the replay and Platinum's single, a den's day and its script to the catch), `ScriptTests.EveryCommand`.
 
 **Owed**: the beam drawn in the open map (the style guide's row is written), the raid's screen (four platforms, the shields' pips), the Wishing Piece as an item (its daily flag already lights a den), `CoreSetup.MegaMaxDen`'s den after the Hall of Fame (GL7), the shots `ft70_raid_four`, `ft71_raid_catch` and the beam by day and night.
+
+## GL3, its second session, and GL2's owed pieces (2026-11-12)
+
+One session beside agents on plans 43, 44 and 42, so **no harness shot was taken**. The rulings' "Max Raid dens, their second session" has each decision.
+
+- **The Wishing Piece**: brought in by name from PokeAPI's items (`LaterItemsByName`, its description and Romanian ours), `raid wish` in `common.GalarDen` at a quiet den, sold by the Watt trader for 3,000 W.
+- **The beam**: `Graphics/OpenWorld/DenBeams.cs` (GPU-free ribbons) drawn by `OpenRenderer.DrawBeams`, additive and undimmed, over every den the script would call lit (`Raids.DenOfTrigger`, `Raids.BeamStands`, `GameEngine.OpenBeamsNow`).
+- **The raid's screen**: the boss's box and its shield pips (`BattleAnimator.RaidShields`, `ModernUi.RaidShieldPips`), the four raiders' boxes (`RaidBoxAt`); `RaidBarrier` given its wire name.
+- **Camping**: needs nothing placed (the rulings say why). **Still owed**: the Rotom Bike (plan 30's `RotomBike` mode has no engine), the shots and `profile` with twelve field Pokémon in rain.
+
+## GL4 as built (2026-11-12, its first session)
+
+One session, no harness shot; the land was looked at with `OpenWorldBake galar --plan motostoke` and `--walk` from the riverbank up the steps, the ramp and Route 3. The rulings' "Motostoke, the opening ceremony and Turffield" has each decision.
+
+- **The land**: chunks `[-5, -30, 4, 1]` (320 chunks, 39 MB of bake, from 26 MB), `terrain/wild_area_north.json`, the steps, the high street, the ramp and the routes' paths in `roads.json`; four areas, `motostoke`, `galar_route_3`, `galar_route_4`, `turffield`, each a place's file.
+- **Rooms**: `Motostoke_PokemonCenter`, `_Hotel`, `_Stadium`, `_StadiumPitch`, `GalarMine` (a hand-made cave with its trainers and Pokémon), `Turffield_PokemonCenter`, `_Stadium`, `_StadiumMission`, `_StadiumPitch`.
+- **The chapter**: `VAR_GALAR_STORY` 12 to 19 (postwick.txt's header), scripts `motostoke`, the rooms' and the riverbank's steps; objectives 712 to 716 in English and Romanian; trainers of ours in `Data/world/galar/trainers.json` (Route 3, the mine, Route 4, the gym trainers, Bede, Milo with the Dynamax Band); classes `Team Yell` and `Gym Trainer`; looks `bede`, `milo`, `rose`, `yell_grunt`.
+- **Tests**: `GalarTests` (the areas, the walk now up the steps and through the mine with the moor and the ridge never come to, the chapter headless to the Grass Badge, the two new open scenes both ways), `SceneSkipTests.BeyondTheWalk`.
+- **Owed**: what the status line says, and the voices of the new cast designed by ear.

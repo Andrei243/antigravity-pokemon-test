@@ -117,6 +117,27 @@ internal static partial class ModernUi
             float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
             if (playerSlide >= 0f && !boxCovered) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
         }
+        else if (battle.IsRaid)
+        {
+            // A Max Raid (plan 33 · GL3; style guide, "Max Raid dens"): the boss's box at the top left as a single foe's,
+            // its barrier's shields as pips under it, and the four raiders' small boxes stacked down the right, the
+            // player's own first and lit while its move is chosen
+            float bossSlide = BattleHUD.BoxSlide(anim, anim.Enemy);
+            if (bossSlide >= 0f)
+            {
+                EnemyBox(56 - 720 * bossSlide, 52, anim.Enemy, null, battle.ShowsCaughtMark(anim.Enemy.Shown!));
+                RaidShieldPips(56 - 720 * bossSlide, 52 + 120, anim.RaidShields);
+            }
+            if (!boxCovered && hud.MenuState != BattleMenuState.Info)
+                for (int slot = 0; slot < anim.SlotsOf(BattleSide.Player); slot++)
+                {
+                    var mine = anim[BattleSide.Player, slot];
+                    if (mine.Shown == null) continue;
+                    float slide = BattleHUD.BoxSlide(anim, mine);
+                    var at = RaidBoxAt(slot);
+                    if (slide >= 0f) TripleBox(at.X + 640 * slide, at.Y, mine, choosing && battle.MenuBattler.Slot == slot);
+                }
+        }
         else if (battle.IsDouble)
         {
             // Two compact boxes a side: the foes' stacked at the top left, the player's above the menu on the right
@@ -391,6 +412,33 @@ internal static partial class ModernUi
     /// The player's own small box in a triple battle: a horde's box with the HP's numbers after its bar, leaning the
     /// player's way, and lit for the Pokémon whose action is being chosen.
     /// </summary>
+    /// <summary>Where a raider's small box stands (plan 33 · GL3): four stacked down the right, clear of the commands.</summary>
+    public static Vector2 RaidBoxAt(int slot) => new(1384 - slot * 12, 452 + slot * 96);
+
+    /// <summary>The most shields a raid boss's barrier shows (five stars, four shields; the rules' <c>RaidRules.Shields</c>).</summary>
+    public const int MostRaidShields = 4;
+
+    /// <summary>
+    /// A raid boss's barrier (plan 33 · GL3; style guide, "Max Raid dens"): a small tray hanging under its box at
+    /// <paramref name="foot"/> with a pip to each shield standing, a steel hexagon rimmed in white. Nothing with none.
+    /// </summary>
+    private static void RaidShieldPips(float x, float foot, int shields)
+    {
+        shields = Math.Clamp(shields, 0, MostRaidShields);
+        if (shields == 0) return;
+        var tray = new Rectangle(x + 30, foot - 14, shields * 40 + 22, 56);
+        UiShapes.Shadow(tray, 20, 12, new Vector2(0, 5), ShadowColor, -0.2f);
+        UiShapes.Shape(tray, 20, Lighter(Frame, 0.08f), Frame, Darker(Frame, 0.3f), 3, -0.2f);
+        var steel = new Color(150, 170, 200, 255);
+        for (int i = 0; i < shields; i++)
+        {
+            // A rounded steel plate rimmed in white, a gleam across its top
+            var pip = new Rectangle(tray.X + 16 + i * 40, tray.Y + 18, 28, 28);
+            UiShapes.Shape(pip, 9, Lighter(steel, 0.1f), Darker(steel, 0.1f), Color.White, 2.5f);
+            UiShapes.Line(new Vector2(pip.X + 8, pip.Y + 8), new Vector2(pip.X + pip.Width - 8, pip.Y + 8), 2f, Color.White with { A = 180 });
+        }
+    }
+
     private static void TripleBox(float x, float y, CombatantView view, bool turn)
     {
         var p = view.Shown!;

@@ -1538,6 +1538,8 @@ alola_worker_kanoa 215 (31) [Magnemite → Magnezone, Charjabug → Vikavolt, Ma
 === region Galar
 levels 2 → 224, 65 → 242
 caps 229 230 231 234 234 235 237 237 242 (own 20 24 27 36 38 42 46 48 65)
+galar_bede_1 227 (14) [Solosis → Reuniclus, Hatenna → Hatterene]
+galar_camper_wade 227 (12) [Skwovet → Larderous, Rookidee → Corviknight]
 galar_hop_1a 225 (5) [Sobble → Inteleon]
 galar_hop_1b 225 (5) [Grookey → Rillaboom]
 galar_hop_1c 225 (5) [Scorbunny → Cinderace]
@@ -1547,7 +1549,10 @@ galar_hop_2c 225 (6) [Wooloo → Dubwool, Scorbunny → Cinderace]
 galar_hop_3a 226 (8) [Wooloo → Dubwool, Rookidee → Corviknight, Sobble → Inteleon]
 galar_hop_3b 226 (8) [Wooloo → Dubwool, Rookidee → Corviknight, Grookey → Rillaboom]
 galar_hop_3c 226 (8) [Wooloo → Dubwool, Rookidee → Corviknight, Scorbunny → Cinderace]
+galar_lass_ivy 227 (14) [Gossifleur → Thistlewisp, Wooloo → Ramsworth]
 galar_lass_poppy 225 (6) [Chewtle → Drednaw]
+galar_milo_1 229 (20) [Gossifleur → Thistlewisp, Eldegoss → Thistlewisp]
+galar_worker_glen 227 (12) [Rolycoly → Coalossal, Roggenrola → Gigalith]
 galar_youngster_alfie 225 (6) [Skwovet → Greedent]
 galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
 === region Hisui
@@ -1564,6 +1569,10 @@ trainers 2, 190 (own 19-20): kalos_hiker_armand 190 (19) [Roggenrola → Gigalit
 === DriftveilCity_Gym
 Driftveil City, Unova
 trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31) [Sandile → Krookodile], unova_worker_maynard 174 (31) [Drilbur → Excadrill], unova_worker_niel 173 (30) [Baltoy → Dogunarch, Sandile → Krookodile], unova_worker_noel 174 (31) [Baltoy → Dogunarch], unova_worker_pasqual 173 (30) [Drilbur → Excadrill, Baltoy → Dogunarch], unova_worker_tavarius 173 (29) [Drilbur → Excadrill, Sandile → Krookodile, Baltoy → Dogunarch], unova_worker_tibor 173 (30) [Sandile → Krookodile, Drilbur → Excadrill]
+=== GalarMine
+Galar Mine, Galar
+grass 226-227 (own 10-13)
+trainers 2, 227 (own 13-14): galar_hiker_ives 227 (14) [Roggenrola → Gigalith, Diglett → Molemount], galar_worker_morris 227 (13) [Rolycoly → Coalossal, Drilbur → Excavarch]
 === GeosengeTown_FlareHQ
 Team Flare Secret HQ, Kalos
 trainers 4, 199-200 (own 48-50): kalos_bryony_1 200 (50) [Liepard → Umbrapard, Bisharp → Kingambit], kalos_celosia_1 200 (50) [Manectric → Fulmenhound, Drapion → Dreadpion], kalos_flare_grunt_hq_1 199 (48) [Liepard → Umbrapard, Manectric → Fulmenhound], kalos_flare_grunt_hq_2 199 (49) [Houndoom → Cerberhound, Golbat → Crobat]
@@ -1591,6 +1600,9 @@ trainers 2, 192-193 (own 26-27): kalos_battle_girl_ines 193 (27) [Meditite → A
 === SnowbelleCity_Gym
 Snowbelle Gym, Kalos
 trainers 2, 200 (own 52-53): kalos_skier_agathe 200 (53) [Vanillish → Vanilluxe, Beartic → Beartundra], kalos_skier_basile 200 (53) [Abomasnow → Glaciarbor, Weavile → Rimeripper]
+=== Turffield_StadiumMission
+Turffield Stadium, Galar
+trainers 2, 228 (own 16-17): galar_gym_trainer_cole 228 (17) [Bounsweet → Tsareena, Phantump → Sylvanshade], galar_gym_trainer_wren 228 (16) [Gossifleur → Thistlewisp, Budew → Roserade]
 === abandoned_ship_corridors_1f
 Abandoned Ship, Hoenn
 trainers 1, 147 (own 26): hoenn_charlie 147 (26) [Marill → Azumarill]

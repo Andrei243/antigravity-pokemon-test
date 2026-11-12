@@ -175,6 +175,10 @@ public sealed class SavePaths
     public string LogFile => Path.Combine(Folder, Log.FileName);
     public string Autosave => Path.Combine(Folder, AutosaveName);
     public string Screenshots => Path.Combine(Folder, ScreenshotsName);
+
+    /// <summary>The photo book's pictures and their small copies (plan 43 · LF4), beside the screenshots.</summary>
+    public const string PhotosName = "photos";
+    public string Photos => Path.Combine(Folder, PhotosName);
     public string Replays => Path.Combine(Folder, ReplaysName);
     public string Migrate => Path.Combine(Folder, MigrateName);
     public string Splits => Path.Combine(Folder, SplitsName);

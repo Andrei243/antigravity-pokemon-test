@@ -108,3 +108,9 @@ script Worker2
 label Done
   say "Seeing a young Trainer about puts a smile on my face. Keep at it!"
   end
+
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "sinnoh_oreburgh_museum"
+  end

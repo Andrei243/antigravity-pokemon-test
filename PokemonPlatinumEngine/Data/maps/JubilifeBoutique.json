@@ -137,6 +137,22 @@
         "Lass: I can never decide between the caps and the berets.",
         "Maybe I'll just get both. A Trainer has to look the part!"
       ]
+    },
+    {
+      "name": "Stylist",
+      "npcType": "Lady",
+      "x": 1,
+      "y": 4,
+      "facing": "Right",
+      "script": "Stylist"
+    },
+    {
+      "name": "Dyer",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 4,
+      "facing": "Left",
+      "script": "Dyer"
     }
   ],
   "wildEncounters": []

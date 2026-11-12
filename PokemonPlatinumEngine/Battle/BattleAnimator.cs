@@ -702,6 +702,13 @@ public sealed partial class BattleAnimator
         internal set => SetSlots(value, value);
     }
 
+    /// <summary>
+    /// A raid boss's barrier as the screen has it (plan 33 · GL3; style guide, "Max Raid dens"): the shields standing,
+    /// a pip each on its box, set by the log's <c>RaidBarrier</c> as its line is read and never read from the rules, which
+    /// are a turn ahead; brought level with them as a menu opens.
+    /// </summary>
+    public int RaidShields { get; internal set; }
+
     /// <summary>How many places a side has (plan 14 · B4): a horde's wild side five, or as many as came.</summary>
     public int SlotsOf(BattleSide side) => slotCounts[(int)side];
 

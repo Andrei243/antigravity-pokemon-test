@@ -231,6 +231,11 @@ internal sealed class CharacterStyle
                     break;
             }
         }
+        // The salon's work (plan 43 · LF3): the cut, the hair's colour, the eyes and the skin, each over the look's own
+        if (outfit.Hair != null && Enum.TryParse<HairCut>(outfit.Hair, true, out var cut) && Enum.IsDefined(cut)) s.Hair = cut;
+        if (Data.ClothingDatabase.HairColourOf(outfit.HairColour) is { } hair) s.HairColor = ColorOf(hair.Color);
+        if (Data.ClothingDatabase.EyeColourOf(outfit.Eyes) is { } eyes) s.Eyes = ColorOf(eyes.Color);
+        if (Data.ClothingDatabase.SkinToneOf(outfit.Skin) is { } skin) s.Skin = ColorOf(skin.Color);
         return s;
     }
 

@@ -65,7 +65,9 @@ public sealed partial class Importer
         ["flying-tera-shard"] = ItemPocket.Items, ["psychic-tera-shard"] = ItemPocket.Items, ["bug-tera-shard"] = ItemPocket.Items,
         ["rock-tera-shard"] = ItemPocket.Items, ["ghost-tera-shard"] = ItemPocket.Items, ["dragon-tera-shard"] = ItemPocket.Items,
         ["dark-tera-shard"] = ItemPocket.Items, ["steel-tera-shard"] = ItemPocket.Items, ["fairy-tera-shard"] = ItemPocket.Items,
-        ["adamant-crystal"] = ItemPocket.Items, ["lustrous-globe"] = ItemPocket.Items, ["griseous-core"] = ItemPocket.Items
+        ["adamant-crystal"] = ItemPocket.Items, ["lustrous-globe"] = ItemPocket.Items, ["griseous-core"] = ItemPocket.Items,
+        // Sword and Shield's Wishing Piece, thrown into a Max Raid den to light its beam (plan 33 · GL3; Models/Raids.cs)
+        ["wishing-piece"] = ItemPocket.Items
     };
 
     private readonly Decomp decomp;

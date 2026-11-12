@@ -215,6 +215,17 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public DrillGrade? TrainingGrade { get; set; } = DrillGrade.Gold;
     public PhotoAlbum? Photos { get; set; } = new();
 
+    /// <summary>The photo book (plan 43 · LF4): a spot's photograph is kept as a record with no picture.</summary>
+    public PhotoBook? PhotoBook { get; set; } = new();
+
+    public bool PhotoAtSpot(string spot)
+    {
+        if (PhotoSpots.Get(spot) is not { } s || PhotoBook is not { } book) return false;
+        Answer = book.Add(new PhotoPrint { Spot = s.Id, Region = s.Region, Place = s.Map, Day = GameClock.Today, How = PhotoTaken.Spot }) ? 1 : 0;
+        Log.Add($"photo spot {s.Id}");
+        return true;
+    }
+
     /// <summary>
     /// What the bag chooses when a script asks (<c>chooseitem</c>): the item named, or the first in the bag that fits;
     /// an empty name backs out.

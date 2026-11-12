@@ -1,0 +1,48 @@
+# Motostoke Stadium's lobby (plan 33 · GL4): the registration for the gym challenge with Hop and Bede, and the way
+# through to the pitch on the morning of the opening ceremony. VAR_GALAR_STORY is postwick.txt's count. Kabu's gym
+# mission is through here too, and owed to GL4's second session.
+
+
+script OnEnter
+  if var VAR_GALAR_STORY == 14 goto Register
+  if var VAR_GALAR_STORY == 16 goto Ceremony
+  end
+label Register
+  scene "The registration"
+  speaker "Receptionist"
+  say "Welcome to Motostoke Stadium! Here to register for the gym challenge? Your endorsement, please."
+  text "{player} handed over the Champion's letter of endorsement."
+  say "From Leon himself! Wonderful. You're registered. Welcome to the challenge!"
+  face hop_lobby player
+  speaker "Hop"
+  say "And me too! Same letter, same brother. We're real challengers now!"
+  face bede_lobby player
+  speaker "Bede"
+  say "Endorsed by the Champion, are you? I was endorsed by Chairman Rose himself."
+  say "A challenger chosen by the chairman needs no luck. Try not to get in my way. It would be embarrassing for you."
+  speaker "Hop"
+  say "What's his problem? Never mind. The ceremony's tomorrow, so we've a room at the hotel on the lower terrace. Come on!"
+  clearflag FLAG_GALAR_HOP_IN_LOBBY
+  clearflag FLAG_GALAR_BEDE_IN_LOBBY
+  setvar VAR_GALAR_STORY 15
+  objective galarHotel
+  endscene
+  end
+label Ceremony
+  scene "Into the stadium"
+  speaker "Receptionist"
+  say "Challengers, this way! The ceremony is about to begin. Through the tunnel and out onto the pitch!"
+  endscene
+  fade out
+  warp "Motostoke_StadiumPitch" 7 11
+  end
+
+
+script Receptionist
+  speaker "Receptionist"
+  if var VAR_GALAR_STORY < 17 goto Before
+  say "Kabu's gym mission is the third of the challenge. Come back with the Grass and Water Badges and he'll test you!"
+  end
+label Before
+  say "Welcome to Motostoke Stadium, home of Kabu's gym and of the opening ceremony!"
+  end

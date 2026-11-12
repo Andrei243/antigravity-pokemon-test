@@ -721,7 +721,15 @@
     "magnolia": { "skin": "#e8c4a8", "hairColor": "#ecece8", "hair": "Bun", "top": "#2e5a46", "accent": "#e8e0c8", "bottom": "#2e5a46", "shoes": "#3a302a", "eyes": "#3a4a3a", "glasses": "#8a7a5a", "coat": true, "skirt": true, "build": "Adult", "height": 1.0 },
     "sonia": { "skin": "#ecc8ac", "hairColor": "#c86a3a", "hair": "Ponytail", "top": "#3a9a9a", "accent": "#f2ece0", "bottom": "#e8c8a8", "shoes": "#c86a3a", "eyes": "#3a6a5a", "coat": true, "lashes": true, "build": "Adult", "height": 1.04 },
     "galar_mum": { "skin": "#e8c4a8", "hairColor": "#6a4a2e", "hair": "Bun", "top": "#c89a6a", "accent": "#f2ece0", "bottom": "#5a6a8a", "shoes": "#3a302a", "eyes": "#4a3a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
-    "hops_mum": { "skin": "#b8845e", "hairColor": "#3a2a52", "hair": "Long", "top": "#8a5a9a", "accent": "#f2ece0", "bottom": "#4a3a5a", "shoes": "#3a302a", "eyes": "#c8a83a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 }
+    "hops_mum": { "skin": "#b8845e", "hairColor": "#3a2a52", "hair": "Long", "top": "#8a5a9a", "accent": "#f2ece0", "bottom": "#4a3a5a", "shoes": "#3a302a", "eyes": "#c8a83a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    // Galar's gym challenge (plan 33 · GL4; our own designs on the Adult build): Bede, a rival from the chairman's own
+    // endorsement, spiky pale hair and a long dark coat over a white shirt; Milo, the Turffield Leader, a big farmer
+    // with short wheat-coloured hair in a green work shirt and brown trousers; Chairman Rose, the League's chairman,
+    // grey hair, a dark suit and a red tie; a Team Yell grunt, black and pink, with a cap
+    "bede": { "skin": "#ecd0b8", "hairColor": "#e8e2d0", "hair": "Spiky", "top": "#f2f0ec", "accent": "#6a3a8a", "bottom": "#2a2434", "shoes": "#2a2420", "eyes": "#6a4a8a", "coat": true, "build": "Adult", "height": 1.0 },
+    "milo": { "skin": "#e0b890", "hairColor": "#d8c070", "hair": "Spiky", "top": "#4a8a3a", "accent": "#f2ece0", "bottom": "#7a5a3a", "shoes": "#4a3a2a", "eyes": "#4a6a3a", "build": "Adult", "height": 1.14 },
+    "rose": { "skin": "#e8c4a8", "hairColor": "#9a9aa2", "hair": "Spiky", "top": "#2a2e3a", "accent": "#c8302a", "bottom": "#2a2e3a", "shoes": "#1e1c20", "eyes": "#3a4a6a", "coat": true, "build": "Adult", "height": 1.1 },
+    "yell_grunt": { "skin": "#ecc8ac", "hairColor": "#2a2428", "hair": "Spiky", "hat": "Cap", "hatColor": "#1e1c22", "hatBand": "#e0508a", "top": "#1e1c22", "accent": "#e0508a", "bottom": "#2a2830", "shoes": "#e0508a", "eyes": "#3a2a2a", "jacket": true, "build": "Adult", "height": 1.0 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit
@@ -1158,6 +1166,9 @@
     // Plan 23 · Z5, second part: Alola's own classes. A trial captain and a kahuna are drawn as the person they are, as
     // "Leader" is; Team Skull's grunts in their black
     "Team Skull Grunt": "skull_grunt",
+    // Plan 33 · GL4: Galar's Team Yell in its black and pink, and a gym's trainers drawn as the person they are
+    "Team Yell": "yell_grunt",
+    "Gym Trainer": null,
     "Trial Captain": null,
     "Island Kahuna": null,
     // Plan 23 · Z7: Team Skull's admin and boss and the Aether Foundation's president, each as the person they are

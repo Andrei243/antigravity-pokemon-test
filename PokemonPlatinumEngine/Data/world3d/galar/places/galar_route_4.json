@@ -1,0 +1,42 @@
+{
+  // Route 4 (plan 33 · GL4): out of the Galar Mine's north mouth and east along the ridge's foot through farmland to
+  // Turffield. One trainer and the long grass's Pokémon. Scripts: Data/scripts/galar_route_4.txt
+  "markers": [
+    { "name": "galar_mine_north", "at": [-90, 24.4, -888], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "galar_mine_north",
+      "box": { "min": [-92, 20, -884], "max": [-88, 30, -881] },
+      "room": "GalarMine", "at": [3, 1], "facing": "down",
+      "out": "galar_mine_north"
+    }
+  ],
+  "zones": [
+    {
+      "name": "route_4",
+      "polygon": [[-146, -946], [-60, -946], [-60, -912], [-146, -912]],
+      "minY": 18, "maxY": 34,
+      "slots": [
+        { "species": "Wooloo", "minLevel": 12, "maxLevel": 15, "weight": 25 },
+        { "species": "Yamper", "minLevel": 12, "maxLevel": 15, "weight": 20 },
+        { "species": "Meowth", "minLevel": 12, "maxLevel": 15, "weight": 15 },
+        { "species": "Hoothoot", "minLevel": 12, "maxLevel": 15, "weight": 15, "time": "Night" },
+        { "species": "Pumpkaboo", "minLevel": 13, "maxLevel": 15, "weight": 10 },
+        { "species": "Bounsweet", "minLevel": 12, "maxLevel": 15, "weight": 15 }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "lass_ivy", "at": [-60, 24.6, -900], "yaw": 270, "trainer": "galar_lass_ivy",
+      "lines": ["You came out of the mine? You must be on the gym challenge. Show me how it's done!", "So that's how it's done. Turffield's just ahead."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-120, -896], "kind": "round", "size": 1.1 },
+    { "at": [-80, -940], "kind": "round" }
+  ]
+}

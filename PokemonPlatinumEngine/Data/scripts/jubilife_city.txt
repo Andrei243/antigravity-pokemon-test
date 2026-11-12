@@ -373,3 +373,9 @@ script Cameraman
   speaker self
   say "Don't look at me, look at the reporter! I'm only the one holding the camera."
   end
+
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "sinnoh_jubilife_fountain"
+  end

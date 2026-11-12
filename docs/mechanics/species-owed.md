@@ -39,7 +39,6 @@ Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's Nation
 
 Generations 1 to 5, had nowhere in the game yet:
 
-- **plan 38 · EX11: Unova's dust clouds**: Drilbur, Excadrill
 
 The later generations, owed by their regions' plans until each plan's last session runs `SpeciesSources.Of` for its region:
 

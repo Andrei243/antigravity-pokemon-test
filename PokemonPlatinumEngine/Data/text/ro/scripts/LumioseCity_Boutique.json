@@ -40,5 +40,39 @@
         "Merci! Reveniți când sosește noul sezon."
       ]
     }
+  ],
+  "Dyer": [
+    {
+      "en": [
+        "Dyer"
+      ],
+      "text": [
+        "Vopsitorul"
+      ]
+    },
+    {
+      "en": [
+        "Bonjour! Bring me a garment and the right berry, and I'll steep it in any colour you please."
+      ],
+      "text": [
+        "Bonjour! Adu-mi o haină și boaba potrivită, și o înmoi în ce culoare îți dorești."
+      ]
+    },
+    {
+      "en": [
+        "Dyer"
+      ],
+      "text": [
+        "Vopsitorul"
+      ]
+    },
+    {
+      "en": [
+        "Magnifique. Lumiose will notice, I promise."
+      ],
+      "text": [
+        "Magnifique. Lumiose o să observe, promit."
+      ]
+    }
   ]
 }

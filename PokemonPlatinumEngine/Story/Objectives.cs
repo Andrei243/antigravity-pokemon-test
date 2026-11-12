@@ -358,6 +358,12 @@ public static class Objectives
         (710, "galarTrain", AtLeast("VAR_GALAR_STORY", 11), true),
         // Plan 33 · GL2: off the train at the Wild Area, north on foot to Motostoke's steps (GL4 sets 13 there)
         (711, "galarWildArea", AtLeast("VAR_GALAR_STORY", 13), true),
+        // Plan 33 · GL4: Motostoke, the registration, the hotel, the ceremony, Route 3 and the Galar Mine, and Milo's badge
+        (712, "galarRegister", AtLeast("VAR_GALAR_STORY", 15), true),
+        (713, "galarHotel", AtLeast("VAR_GALAR_STORY", 16), true),
+        (714, "galarCeremony", AtLeast("VAR_GALAR_STORY", 17), true),
+        (715, "galarTurffield", AtLeast("VAR_GALAR_STORY", 18), true),
+        (716, "galarMilo", AtLeast("VAR_GALAR_STORY", 19), true),
         (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

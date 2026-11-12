@@ -898,6 +898,8 @@
   "Dark Tera Shard": { "price": 500, "description": "A shard that swallows the light. Fifty of them can turn a Pokémon's Tera Type to Dark." },
   "Steel Tera Shard": { "price": 500, "description": "A shard with a cold, metal gleam. Fifty of them can turn a Pokémon's Tera Type to Steel." },
   "Fairy Tera Shard": { "price": 500, "description": "A shard that sparkles softly. Fifty of them can turn a Pokémon's Tera Type to Fairy." },
+  // Plan 33 · GL3: the Wishing Piece, brought in by name from PokeAPI's items; what it says of itself is ours
+  "Wishing Piece": { "description": "A stone that glows red. Thrown into a Max Raid den, it lights the den's beam for a day." },
   "Stellar Tera Shard": {
     "new": true,
     "id": 9700,

@@ -11,3 +11,13 @@ script Clerk
   speaker "Clerk"
   say "Merci! Do come back when the new season arrives."
   end
+
+
+# The dye house's counter (plan 43 · LF3): a garment owned, a dye, the fee and the dye's berry.
+script Dyer
+  speaker "Dyer"
+  say "Bonjour! Bring me a garment and the right berry, and I'll steep it in any colour you please."
+  wardrobe dye "lumiose"
+  speaker "Dyer"
+  say "Magnifique. Lumiose will notice, I promise."
+  end

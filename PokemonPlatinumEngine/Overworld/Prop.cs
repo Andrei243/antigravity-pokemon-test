@@ -383,6 +383,8 @@ public enum PropType
     GatherShoreBare,
     GatherSnow,
     GatherSnowBare,
+    /// <summary>A photo spot's plate (plan 43 · LF4): a low post with a camera on its face, read from the tile before it; blocks nothing.</summary>
+    PhotoSpot,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

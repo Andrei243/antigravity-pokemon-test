@@ -1,0 +1,37 @@
+# Motostoke Stadium's pitch (plan 33 · GL4): the opening ceremony of the gym challenge. The chairman's welcome, the
+# gym Leaders, Leon, and the challenge declared open. VAR_GALAR_STORY 16 to 17 (postwick.txt's count). Our own lines.
+
+
+script OnEnter
+  if var VAR_GALAR_STORY != 16 end
+  scene "The opening ceremony"
+  setflag FLAG_GALAR_AT_THE_CEREMONY
+  fade in
+  text "The roar of the crowd filled the stadium as the challengers walked out onto the pitch."
+  speaker "Chairman Rose"
+  say "Welcome, one and all, to the opening ceremony of this year's gym challenge!"
+  say "Eight gyms. Eight Leaders. Eight badges between each of you and the Champion Cup, and a chance to face Leon himself."
+  say "Our Leaders have come to greet you. First, from Turffield: Milo, the gentle giant of the Grass type!"
+  speaker "Milo"
+  say "Hello there! The first badge is mine to give. Come to Turffield and we'll see how you get on with my Wooloo."
+  speaker "Chairman Rose"
+  say "And now, the man who needs no introduction. Your Champion, Leon!"
+  speaker "Leon"
+  say "Challengers! Every one of you could stand where I stand. Give it everything you've got. Have a champion time!"
+  speaker "Chairman Rose"
+  say "I declare the gym challenge open!"
+  face hop_pitch player
+  speaker "Hop"
+  say "That was amazing! I'm off to Turffield right now. Route 3 is through Motostoke's west gate, past the Galar Mine. See you there!"
+  face bede_pitch player
+  speaker "Bede"
+  say "Turffield? How quaint. I'll have the badge before you've found your way out of the mine."
+  clearflag FLAG_GALAR_AT_THE_CEREMONY
+  setflag FLAG_GALAR_BEDE_IN_MINE
+  setvar VAR_GALAR_STORY 17
+  objective galarTurffield
+  endscene
+  fade out
+  warpto "Galar" motostoke_stadium_door
+  fade in
+  end

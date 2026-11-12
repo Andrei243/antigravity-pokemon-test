@@ -1,0 +1,110 @@
+{
+  "name": "Turffield_Stadium",
+  "displayName": "Turffield Stadium",
+  "bgmTrack": "galar/stadium",
+  "interior": "Gym",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.........#",
+    "#.........#",
+    "#..#####..#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 3,
+      "targetMap": "Turffield_StadiumMission",
+      "targetX": 6,
+      "targetY": 18,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "turffield_receptionist",
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Receptionist"
+    },
+    {
+      "id": "turffield_guide",
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "x": 2,
+      "y": 7,
+      "facing": "Right",
+      "script": "GymGuide"
+    }
+  ],
+  "wildEncounters": []
+}

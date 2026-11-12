@@ -1326,6 +1326,13 @@ public partial class GameEngine
                     // And the Bargain Power in force as it opens (plan 36 · TR7)
                     game.flow.ShopScreen.Bargain = game.flow.Powers.Strength(PowerKind.Bargain);
                     break;
+                case ScriptScreen.PhotoBook:
+                    game.OpenPhotoBook();
+                    break;
+                case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
+                    // The salon's chair and a boutique's dye house (plan 43 · LF3)
+                    game.OpenSalon(dye: counter != Instruction.SalonCounter);
+                    break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name
                     game.flow.State = GameState.Wardrobe;
@@ -1761,6 +1768,10 @@ public partial class GameEngine
         public PowerState Powers => game.flow.Powers;
         public TrainingRecords Training => game.flow.Training;
         public PhotoAlbum? Photos => game.flow.Photos;
+
+        // The photo book and its spots (plan 43 · LF4)
+        public PhotoBook? PhotoBook => game.flow.PhotoBook;
+        public bool PhotoAtSpot(string spot) => game.OpenPhotoAtSpot(spot);
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;
 

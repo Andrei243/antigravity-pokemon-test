@@ -33,6 +33,10 @@ trainers 4, 38-41: galactic_grunt_galactic_hq_3f_1 41, galactic_grunt_galactic_h
 === GalacticHQB2F
 Galactic HQ
 trainers 2, 38-41: galactic_grunt_galactic_hq_b2f_1 41, galactic_grunt_galactic_hq_b2f_2 40
+=== GalarMine
+Galar Mine
+grass 10-13
+trainers 2, 13-14: galar_hiker_ives 14, galar_worker_morris 13
 === GeosengeTown_FlareHQ
 Team Flare Secret HQ
 trainers 4, 48-50: kalos_bryony_1 50, kalos_celosia_1 50, kalos_flare_grunt_hq_1 48, kalos_flare_grunt_hq_2 49
@@ -150,6 +154,9 @@ trainers 2, 19: galactic_grunt_team_galactic_eterna_building_2f_1 19, galactic_g
 === TeamGalacticEternaBuilding3F
 Team Galactic Eterna Building
 trainers 2, 16-20: galactic_grunt_team_galactic_eterna_building_3f 16, scientist_travon 20
+=== Turffield_StadiumMission
+Turffield Stadium
+trainers 2, 16-17: galar_gym_trainer_cole 17, galar_gym_trainer_wren 16
 === ValleyWindworksBuilding
 Valley Windworks
 trainers 2, 11-13: galactic_grunt_valley_windworks_2 13, galactic_grunt_valley_windworks_3 11

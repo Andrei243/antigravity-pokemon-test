@@ -255,6 +255,7 @@ if (mode == "crafting") h.CraftingMode();
 if (mode == "hearts") h.HeartsMode();
 if (mode == "bonding") h.BondingMode();
 if (mode == "gifts") h.GiftsMode();
+if (mode == "lifestyle") h.LifestyleMode();
 
 h.Close();
 Raylib.CloseWindow();

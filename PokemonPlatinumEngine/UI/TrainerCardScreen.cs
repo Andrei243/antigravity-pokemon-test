@@ -91,7 +91,19 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
 
     /// <summary>The title won last, as the class is named ("Bidoof Master"), under the player's name on the front; empty for none.</summary>
     public string LatestTitle { get; init; } = "";
+
+    /// <summary>The card as the player designed it (plan 43 · LF1); null for a card never designed, whose front is today's.</summary>
+    public TrainerCardFace? Design { get; init; }
 }
+
+/// <summary>
+/// The face of a designed card (plan 43 · LF1), as the engine resolves it once when the card or the designer opens: the
+/// background (one of the file's, or a Fashion Case backdrop's number), the frame, the posed figure's picture (none
+/// with no window or while it is made), the Pokémon shown, the greeting's words, the title under the name and the
+/// signature (null for none).
+/// </summary>
+public sealed record TrainerCardFace(Models.CardBackground? Background, int? Backdrop, Models.CardFrame? Frame, Texture2D? Figure,
+    IReadOnlyList<Pokemon> Shown, string Greeting, string Title, Models.SignaturePad? Signature);
 
 /// <summary>A title of the Masters' Hall as the card lists it (plan 14 · B15): its species' National Pokédex number and the title, in the language chosen.</summary>
 public sealed record CardTitle(int Number, string Title);
@@ -125,6 +137,23 @@ public class TrainerCardScreen
     private int page, from;
 
     public bool IsActive { get; set; }
+
+    // The item button asked for the designer (plan 43 · LF1)
+    private bool designWanted;
+
+    /// <summary>True once, after the item button on the card: the engine opens the card designer (plan 43 · LF1).</summary>
+    public bool TakeDesignRequest()
+    {
+        bool wanted = designWanted;
+        designWanted = false;
+        return wanted;
+    }
+
+    /// <summary>A tool's or a test's press of the item button on the card: the designer is asked for.</summary>
+    public void AskForDesigner()
+    {
+        if (IsActive) designWanted = true;
+    }
 
     /// <summary>How many regions' pages the card has (none with only one region: <see cref="TrainerCardInfo.RegionPages"/>).</summary>
     public int RegionPages { get; private set; }
@@ -282,6 +311,8 @@ public class TrainerCardScreen
         flipAge += dt;
 
         if (InputManager.IsActionPressed(GameAction.Confirm)) Flip();
+        else if (InputManager.IsActionPressed(GameAction.Item)) AskForDesigner();
+        else if (InputManager.IsActionPressed(GameAction.Item)) AskForDesigner();
         else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Menu))
         {
             Close();

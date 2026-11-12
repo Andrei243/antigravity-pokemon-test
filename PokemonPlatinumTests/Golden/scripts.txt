@@ -4346,6 +4346,22 @@ from the sign at 26,9 of GalacticHQLaboratory
 from the sign at 29,9 of GalacticHQLaboratory
 from the sign at 30,9 of GalacticHQLaboratory
 way -
+=== GalarMine.BedeInTheMine
+from the trigger at 2,3 of GalarMine
+way 0
+  Bede> You again. Chairman Rose has asked me to help with some research, you know. Something you could never do.
+  Bede> I'll show you the difference between a chairman's choice and a champion's charity.
+  Bede> Hmph. You were lucky. I have more important things to do than waste time on a mine.
+  * scene GalarMine.Bede in the Galar Mine
+  * battle galar_bede_1 Won
+  * endscene
+  = VAR_GALAR_STORY 0 -> 18
+  = VAR_OBJECTIVE 0 -> 716
+  + beaten galar_bede_1
+  + seen GalarMine.Bede in the Galar Mine
+way 1, from answer 1
+  * battle galar_bede_1 Lost
+  * scene over, unseen
 === GearStation.AnvilleLine
 from Station Agent at 17,3 of GearStation
 way 0
@@ -5371,6 +5387,18 @@ way -
   Clerk> Try on anything you like. Whatever you buy is yours to keep, and you can change into it at home whenever you wish.
   Clerk> Thank you for stopping by! Do come again.
   * open Wardrobe jubilife
+=== JubilifeBoutique.Dyer
+from Dyer at 9,4 of JubilifeBoutique
+way -
+  Dyer> A garment of yours, a berry and a little money, and I'll dye it any colour on my shelf.
+  Dyer> Hang it to dry in the sun and it'll keep its colour for good.
+  * open Wardrobe dye:jubilife
+=== JubilifeBoutique.Stylist
+from Stylist at 1,4 of JubilifeBoutique
+way -
+  Stylist> Welcome to the chair! A new cut, a new colour, new eyes or a new tone: sit down and we'll find your look.
+  Stylist> There! Every mirror in Jubilife will want a second look.
+  * open Wardrobe salon
 === JubilifeCityCondominiums1F.QuickClaw
 from Beauty at 8,6 of JubilifeCityCondominiums1F
 way -
@@ -6317,6 +6345,12 @@ way -
   Clerk> Do try on whatever catches your eye. What you buy is yours to change into at home whenever you wish.
   Clerk> Merci! Do come back when the new season arrives.
   * open Wardrobe lumiose
+=== LumioseCity_Boutique.Dyer
+from Dyer at 9,4 of LumioseCity_Boutique
+way -
+  Dyer> Bonjour! Bring me a garment and the right berry, and I'll steep it in any colour you please.
+  Dyer> Magnifique. Lumiose will notice, I promise.
+  * open Wardrobe dye:lumiose
 === LumioseCity_CafeKizahashi.Kizahashi
 from Owner at 5,4 of LumioseCity_CafeKizahashi
 way -
@@ -6865,6 +6899,14 @@ way -
 from Veyra at 5,7 of MegaloTower
 way -
   Veyra> Necrozma has never let anyone this close. It knows you are different.
+=== Motostoke_Hotel.HotelClerk
+from Hotel Clerk at 5,4 of Motostoke_Hotel
+way -
+  Hotel Clerk> Welcome to the hotel. Challengers for the gym challenge have a room waiting.
+=== Motostoke_Stadium.Receptionist
+from Receptionist at 5,4 of Motostoke_Stadium
+way -
+  Receptionist> Welcome to Motostoke Stadium, home of Kabu's gym and of the opening ceremony!
 === OldChateauBackMiddleWestRoom.TV
 from the sign at 11,3 of OldChateauBackMiddleWestRoom
 from the sign at 12,3 of OldChateauBackMiddleWestRoom
@@ -9300,6 +9342,58 @@ way 1, from answer 1
 from {rival} at 6,3 of TrainersSchool
 way -
   Barry> This lesson's about status conditions. I knew all of it already. Obviously.
+=== Turffield_Stadium.GymGuide
+from Gym Guide at 2,7 of Turffield_Stadium
+way -
+  Gym Guide> Milo's Grass types shrug off water and ground, but fire and flying moves give them a hard time!
+=== Turffield_Stadium.Receptionist
+from Receptionist at 6,4 of Turffield_Stadium
+way -
+  Receptionist> Welcome to Turffield Stadium! Milo's gym mission is through the doors behind me: herd the Wooloo into their pens.
+  Receptionist> Walk into a Wooloo and it trots along ahead of you. Clear the way, and Milo will be waiting on the pitch.
+=== Turffield_StadiumMission.MissionWooloo1
+from Wooloo at 6,13 of Turffield_StadiumMission
+way -
+  > The Wooloo bleated and wouldn't budge. Lucas gave it a gentle nudge...
+  > It trotted off through the gate and into its pen!
+  + FLAG_GALAR_TURFFIELD_WOOLOO_1
+=== Turffield_StadiumMission.MissionWooloo2
+from Wooloo at 6,9 of Turffield_StadiumMission
+way -
+  > This Wooloo was fast asleep in the gateway. Lucas gave it a gentle nudge...
+  > It rolled off into its pen without waking up!
+  + FLAG_GALAR_TURFFIELD_WOOLOO_2
+=== Turffield_StadiumMission.MissionWooloo3
+from Wooloo at 6,5 of Turffield_StadiumMission
+way -
+  > The last Wooloo stood its ground. Lucas gave it a gentle nudge...
+  > It bounced away into the last pen. The mission is cleared!
+  + FLAG_GALAR_TURFFIELD_WOOLOO_3
+=== Turffield_StadiumPitch.Milo
+from Milo at 7,4 of Turffield_StadiumPitch
+way 0
+  Milo> Well, look at you, through all my Wooloo! I'm Milo, Turffield's gym Leader.
+  Milo> My Grass types grow strong and steady, like a good crop. Let's see if your team can weather the harvest!
+  Milo> Oh my! Your team's grown up strong, hasn't it? That was a smashing battle.
+  Milo> Here you are: the Grass Badge, the first of the challenge.
+  > Lucas received the Grass Badge from Milo!
+  Milo> Hulbury's gym is next, down Route 5 by the sea. Nessa's Water types will put your team to the test!
+  * scene Turffield_StadiumPitch.Milo
+  * battle galar_milo_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_wren
+  * defeat galar_gym_trainer_cole
+  * endscene
+  + FLAG_GALAR_DEFEATED_TURFFIELD_GYM
+  = VAR_GALAR_STORY 0 -> 19
+  + beaten galar_gym_trainer_cole
+  + beaten galar_gym_trainer_wren
+  + beaten galar_milo_1
+  = badges Galar 0 -> 1
+  + seen Turffield_StadiumPitch.Milo
+way 1, from answer 1
+  * battle galar_milo_1 Lost
+  * scene over, unseen
 === TwinleafTownNortheastHouse.Guitarist
 from Guitarist at 8,6 of TwinleafTownNortheastHouse
 way -
@@ -20896,6 +20990,10 @@ from Galactic Grunt at 163,641 of Sinnoh
 way -
   Galactic Grunt> Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?
   Galactic Grunt> Quit moaning. Orders are orders. Now look tough, there's a kid watching.
+=== floaroma_town.PhotoSpot
+from the tile read at 182,662 of Sinnoh
+way -
+  * photo spot sinnoh_floaroma_flowers
 === floccesy_ranch_2.ACry
 from the trigger at 41,14 of FloccesyRanch
 from the trigger at 43,12 of FloccesyRanch
@@ -24071,6 +24169,10 @@ from the trigger at 188,757 of Sinnoh
 way -
   Looker> You have business at the Trainers' School first, I think. Your friend is waiting there.
   * emote Looker Exclaim
+=== jubilife_city.PhotoSpot
+from the tile read at 174,760 of Sinnoh
+way -
+  * photo spot sinnoh_jubilife_fountain
 === jubilife_city.PoketchCampaign
 from the trigger at 172,776 of Sinnoh
 way -
@@ -29000,6 +29102,10 @@ way 0
   + beaten unova_veteran_lucius
 way 1, from answer 1
   * battle unova_veteran_lucius Lost
+=== oreburgh_city.PhotoSpot
+from the tile read at 308,753 of Sinnoh
+way -
+  * photo spot sinnoh_oreburgh_museum
 === oreburgh_city.Rival
 from {rival} at 282,757 of Sinnoh
 way -
@@ -35203,6 +35309,10 @@ way -
   + FLAG_HIDE_SANDGEM_TOWN_RIVAL
   = VAR_SANDGEM_TOWN_STATE 0 -> 1
   + seen sandgem_town.The assistant
+=== sandgem_town.PhotoSpot
+from the tile read at 175,848 of Sinnoh
+way -
+  * photo spot sinnoh_sandgem_lab
 === santalune_city.Neighbour
 from the trigger at 319,526 of Kalos
 way 0
@@ -38136,6 +38246,10 @@ way -
   Guitarist> Whoa, hold on! Barry was out here a minute ago, looking all over for you.
   Guitarist> He went back home. Don't you want to know what he wanted?
   * emote Guitarist Exclaim
+=== twinleaf_town.PhotoSpot
+from the tile read at 113,889 of Sinnoh
+way -
+  * photo spot sinnoh_twinleaf_pond
 === twinleaf_town.RivalRunsOut
 from the trigger at 105,876 of Sinnoh
 way -
