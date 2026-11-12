@@ -274,8 +274,8 @@ public class TextTests
         ["Core/GameEngine.Capsules.cs"] = new[] { "Fashion Case" },
         // The key item the Apricorn Box is, and Kurt's id in the phone book (plan 20 · J6)
         ["Core/GameEngine.Apricorns.cs"] = new[] { "Apricorn Box", "kurt" },
-        // The crafting kit, the item of ours the kit is (plan 39 · CR1)
-        ["Core/GameEngine.Crafting.cs"] = new[] { "Crafting Kit" },
+        // The crafting kit and the Berry Pots, items of ours by the data's names (plan 39 · CR1, CR5)
+        ["Core/GameEngine.Crafting.cs"] = new[] { "Crafting Kit", "Berry Pots" },
         // The Power Watch and the Tera Orb by the data's names (plan 36 · TR5, TR8)
         ["Core/GameEngine.Powers.cs"] = new[] { "Power Watch" },
         ["Core/GameEngine.Training.cs"] = new[] { "Tera Orb" },
