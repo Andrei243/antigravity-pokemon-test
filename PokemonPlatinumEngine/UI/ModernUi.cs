@@ -199,6 +199,44 @@ internal static partial class ModernUi
         return w;
     }
 
+    /// <summary>
+    /// A Tera Type on a pill (plan 36 · TR5; the style guide's "Summary"): a gem, a diamond in the type's colour, then the
+    /// type's own pill; for Stellar the gem is white and the pill banded in five colours. Returns the width both take.
+    /// </summary>
+    public static float TeraPill(float x, float y, TeraType tera, float height = 34f)
+    {
+        var colour = tera.IsStellar ? new Color(80, 150, 232, 255) : Palette.GetTypeColor(tera.Type.ToString());
+        var gem = new Vector2(x + height * 0.4f, y + height / 2f);
+        float r = height * 0.42f;
+        Vector2 top = new(gem.X, gem.Y - r), left = new(gem.X - r * 0.8f, gem.Y), right = new(gem.X + r * 0.8f, gem.Y), bottom = new(gem.X, gem.Y + r);
+        UiShapes.Triangle(top, left, right, tera.IsStellar ? Color.White : Lighter(colour, 0.25f));
+        UiShapes.Triangle(left, bottom, right, tera.IsStellar ? new Color(214, 222, 236, 255) : Darker(colour, 0.15f));
+        float px = x + height * 0.95f, w;
+        if (tera.IsStellar)
+        {
+            string name = Text.Of("training.tera.stellar").ToUpperInvariant();
+            float size = height * 0.6f;
+            w = UiFonts.Measure(name, size, UiWeight.Black) + height * 1.05f;
+            var bands = new[] { new Color(226, 92, 92, 255), new Color(226, 170, 60, 255), new Color(80, 176, 104, 255), new Color(70, 136, 220, 255), new Color(150, 96, 206, 255) };
+            UiShapes.Fill(new Rectangle(px, y, w, height), height / 2f, bands[0]);
+            float band = (w - height) / bands.Length;
+            for (int b = 0; b < bands.Length; b++)
+                UiShapes.Fill(new Rectangle(px + height / 2f + b * band, y, band + 1, height), 0, bands[b]);
+            UiShapes.Fill(new Rectangle(px + w - height, y, height, height), height / 2f, bands[^1]);
+            UiFonts.DrawCentered(name, px + height * 0.525f, y + height / 2f, size, Color.White, UiWeight.Black);
+        }
+        else w = TypePill(px, y, tera.Type, height);
+        return px - x + w;
+    }
+
+    /// <summary>How wide <see cref="TeraPill"/> draws a Tera Type, gem and pill.</summary>
+    public static float TeraPillWidth(TeraType tera, float height = 34f)
+    {
+        string name = tera.IsStellar ? Text.Of("training.tera.stellar").ToUpperInvariant() : Words.Type(tera.Type).ToUpperInvariant();
+        float signW = !tera.IsStellar && Seeing.Signs ? height * 0.8f : 0f;
+        return height * 0.95f + UiFonts.Measure(name, height * 0.6f, UiWeight.Black) + height * 1.05f + signW;
+    }
+
     public static IEnumerable<PokemonType> TypesOf(Pokemon p)
     {
         yield return p.PrimaryType;

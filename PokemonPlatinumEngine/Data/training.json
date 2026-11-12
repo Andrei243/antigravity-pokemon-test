@@ -14,7 +14,9 @@
     "everyGolds": [
       { "golds": 10, "item": "Bottle Cap", "afterHallOfFame": true },
       { "golds": 50, "item": "Gold Bottle Cap", "afterHallOfFame": true }
-    ]
+    ],
+    // With a Tera Orb in the bag (plan 36 · TR5), every fifth gold earns a Tera Shard of the trainee's own first type
+    "teraShardEvery": 5
   },
   // What the training club's clerk at a Battle Points counter trades (plan 36 · TR3): a third list beside the Exchange Service
   // Corner's two (frontier prize training), on the Frontier's one set of points, at prices of ours on Platinum's scale
@@ -45,5 +47,28 @@
     { "item": "Jolly Mint", "price": 32 },
     { "item": "Naive Mint", "price": 32 },
     { "item": "Serious Mint", "price": 32 }
+  ],
+  // The Tera Shards (plan 36 · TR5) the club's clerk trades once a Tera Orb is held (frontier prize tera): two points a
+  // shard, so a change of Tera Type, fifty shards, is a hundred points
+  "teraShards": [
+    { "item": "Normal Tera Shard", "price": 2 },
+    { "item": "Fire Tera Shard", "price": 2 },
+    { "item": "Water Tera Shard", "price": 2 },
+    { "item": "Electric Tera Shard", "price": 2 },
+    { "item": "Grass Tera Shard", "price": 2 },
+    { "item": "Ice Tera Shard", "price": 2 },
+    { "item": "Fighting Tera Shard", "price": 2 },
+    { "item": "Poison Tera Shard", "price": 2 },
+    { "item": "Ground Tera Shard", "price": 2 },
+    { "item": "Flying Tera Shard", "price": 2 },
+    { "item": "Psychic Tera Shard", "price": 2 },
+    { "item": "Bug Tera Shard", "price": 2 },
+    { "item": "Rock Tera Shard", "price": 2 },
+    { "item": "Ghost Tera Shard", "price": 2 },
+    { "item": "Dragon Tera Shard", "price": 2 },
+    { "item": "Dark Tera Shard", "price": 2 },
+    { "item": "Steel Tera Shard", "price": 2 },
+    { "item": "Fairy Tera Shard", "price": 2 },
+    { "item": "Stellar Tera Shard", "price": 2 }
   ]
 }

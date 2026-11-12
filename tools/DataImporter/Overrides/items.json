@@ -844,5 +844,54 @@
   "Oval Charm": { "description": "A smooth oval charm. While it is in the Bag, two Pokémon left at a Day Care find an Egg more often." },
   "Exp. Charm": { "description": "A charm that makes every battle count for more. While it is in the Bag, Pokémon gain half as much Exp. again." },
   "Catching Charm": { "description": "A charm that steadies a thrown ball. While it is in the Bag, critical captures come twice as often." },
-  "Mark Charm": { "description": "A charm that draws out a Pokémon's character. While it is in the Bag, wild Pokémon carry a mark more often." }
+  "Mark Charm": { "description": "A charm that draws out a Pokémon's character. While it is in the Bag, wild Pokémon carry a mark more often." },
+  // Plan 36 · TR5: the eighteen Tera Shards, brought in by name from PokeAPI's items, and the Stellar one, a row of ours
+  // (id 9700, the first of plan 36's hundred). Fifty of a type change a Pokémon's Tera Type at a training hall's Tera
+  // keeper (Models/TeraChange.cs). What each says of itself is ours, and so is the price
+  "Normal Tera Shard": { "price": 500, "description": "A plain, shining shard. Fifty of them can turn a Pokémon's Tera Type to Normal." },
+  "Fire Tera Shard": { "price": 500, "description": "A shard that glows like an ember. Fifty of them can turn a Pokémon's Tera Type to Fire." },
+  "Water Tera Shard": { "price": 500, "description": "A shard as clear as a tide pool. Fifty of them can turn a Pokémon's Tera Type to Water." },
+  "Electric Tera Shard": { "price": 500, "description": "A shard that crackles at the edges. Fifty of them can turn a Pokémon's Tera Type to Electric." },
+  "Grass Tera Shard": { "price": 500, "description": "A shard the colour of new leaves. Fifty of them can turn a Pokémon's Tera Type to Grass." },
+  "Ice Tera Shard": { "price": 500, "description": "A shard cold to the touch. Fifty of them can turn a Pokémon's Tera Type to Ice." },
+  "Fighting Tera Shard": { "price": 500, "description": "A shard with a hard, sure weight. Fifty of them can turn a Pokémon's Tera Type to Fighting." },
+  "Poison Tera Shard": { "price": 500, "description": "A shard of a deep violet. Fifty of them can turn a Pokémon's Tera Type to Poison." },
+  "Ground Tera Shard": { "price": 500, "description": "A shard the colour of dry earth. Fifty of them can turn a Pokémon's Tera Type to Ground." },
+  "Flying Tera Shard": { "price": 500, "description": "A shard so light it seems to drift. Fifty of them can turn a Pokémon's Tera Type to Flying." },
+  "Psychic Tera Shard": { "price": 500, "description": "A shard that seems to look back. Fifty of them can turn a Pokémon's Tera Type to Psychic." },
+  "Bug Tera Shard": { "price": 500, "description": "A shard with a green sheen like a wing case. Fifty of them can turn a Pokémon's Tera Type to Bug." },
+  "Rock Tera Shard": { "price": 500, "description": "A rough, heavy shard. Fifty of them can turn a Pokémon's Tera Type to Rock." },
+  "Ghost Tera Shard": { "price": 500, "description": "A shard that fades in dim light. Fifty of them can turn a Pokémon's Tera Type to Ghost." },
+  "Dragon Tera Shard": { "price": 500, "description": "A shard with a fierce inner fire. Fifty of them can turn a Pokémon's Tera Type to Dragon." },
+  "Dark Tera Shard": { "price": 500, "description": "A shard that swallows the light. Fifty of them can turn a Pokémon's Tera Type to Dark." },
+  "Steel Tera Shard": { "price": 500, "description": "A shard with a cold, metal gleam. Fifty of them can turn a Pokémon's Tera Type to Steel." },
+  "Fairy Tera Shard": { "price": 500, "description": "A shard that sparkles softly. Fifty of them can turn a Pokémon's Tera Type to Fairy." },
+  "Stellar Tera Shard": {
+    "new": true,
+    "id": 9700,
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 500,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A shard that shines in every colour at once. Fifty of them can turn a Pokémon's Tera Type to Stellar."
+  },
+  // Plan 36 · TR8, our own: the watch the training halls' teachers give with the first power they teach. USE (or the item
+  // button) opens the powers' panel: the powers learned, the charge that walking fills, today's free one and what is in
+  // force (Models/Powers.cs). Id 9710, after the Stellar Tera Shard in plan 36's hundred
+  "Power Watch": {
+    "new": true,
+    "id": 9710,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A watch from the training club. It holds the powers you have learned and the charge your walking builds up.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "PowerWatch"
+  }
 }

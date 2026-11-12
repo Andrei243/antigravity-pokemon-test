@@ -1056,6 +1056,7 @@
     "minted": "{nature} ({mint} mint)",
     "ability": "ABILITY",
     "heldItem": "HELD ITEM",
+    "teraType": "TERA TYPE",
     "marks": "MARKS",
     "none": "None",
     "expPoints": "EXP. POINTS",
@@ -1445,6 +1446,7 @@
       "NoRunning": "No running",
       "SetStyle": "Set battles only",
       "NoLaterMechanics": "No later mechanics",
+      "NoPowers": "No powers",
       "Remix": "Remix",
       "ShinyOdds": "Shiny odds",
       "RandomSpecies": "Randomise Pokémon",
@@ -1472,6 +1474,7 @@
       "NoRunning": "You cannot run from wild battles.",
       "SetStyle": "Battle Style is Set, and the Shift offer is never made.",
       "NoLaterMechanics": "Nobody can Mega Evolve, use a Z-Move, Dynamax or Terastallize: not you, and not the trainers you meet.",
+      "NoPowers": "The Power Watch uses no power and takes no free one. A meal at the camp still gives its own.",
       "Remix": "A second take on Sinnoh, written for this game: the important trainers bring teams of their own and the wild Pokémon change, so far more kinds can be caught before the League. The rules and the story stay the same.",
       "ShinyOdds": "How often a Pokémon is shiny. As the rules say is the game's usual chance.",
       "RandomSpecies": "Wild Pokémon, trainers' teams, gifts, legends and your partner are other species, the same ones every time for a seed. Evolutions stay in their lines.",
@@ -2883,6 +2886,31 @@
         "spicedFlatbread": "Hot flatbread with a smoky edge. Wild Pokémon follow the scent.",
         "potatoHash": "Crisp potatoes fried in butter. Beaten Pokémon leave more behind."
       }
+    }
+  },
+  "powerWatch": {
+    "title": "POWER WATCH",
+    "hintLevel": "Level",
+    "hintUse": "Use",
+    "noneLearned": "No powers learned yet. A training hall's teacher teaches them.",
+    "today": "Today: {power}",
+    "freeLevel": "Lv. {level} FREE",
+    "levelCost": "Lv. {level} · {cost} charge",
+    "levelOf": "Lv. {level} of {most} · {cost} charge",
+    "charge": "CHARGE",
+    "chargeSteps": "{charge} of {most}. A point every {steps} steps.",
+    "inForce": "IN FORCE",
+    "noneInForce": "Nothing is in force.",
+    "inForceRow": "{power} Lv. {level}",
+    "started": "{power} Lv. {level} is in force for ten minutes of play.",
+    "why": {
+      "run": "This run uses no powers.",
+      "learned": "That level isn't learned yet.",
+      "charge": "There isn't enough charge. Walk a little and it fills."
+    },
+    "short": {
+      "exp": "EXP", "effort": "EV", "money": "$", "bargain": "%", "catch": "CAT", "encounter": "ENC", "stealth": "SNK", "hatch": "EGG",
+      "typeEncounter": "TYP", "materials": "MAT"
     }
   },
   "timedPowers": {
@@ -6207,6 +6235,11 @@
       "bronze": "BRONZE",
       "silver": "SILVER",
       "gold": "GOLD"
+    },
+    "tera": {
+      "question": "Which Tera Type shall it take? It is {now} now.",
+      "row": "{type} ({count} shards)",
+      "stellar": "Stellar"
     },
     "peak": {
       "question": "Which stat shall reach its peak?",

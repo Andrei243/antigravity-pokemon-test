@@ -168,6 +168,15 @@
       "y": 3,
       "facing": "Down",
       "script": "TrainingTutor"
+    },
+    {
+      "id": "tera_keeper",
+      "name": "Tera Keeper",
+      "npcType": "tera_keeper",
+      "x": 3,
+      "y": 8,
+      "facing": "Right",
+      "script": "TeraKeeper"
     }
   ],
   "wildEncounters": []

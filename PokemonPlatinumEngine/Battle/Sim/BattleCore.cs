@@ -1474,7 +1474,7 @@ public sealed partial class BattleCore : IBattleContext
                 bool traded = Obedience.IsOutsider(p, Conditions.Player);
                 if (p.Level >= Rules.LevelCap)
                 {
-                    if (Rules.EvsAtTheCap) EffortRules.Gain(p, foe.EvYield, Rules);
+                    if (Rules.EvsAtTheCap) EffortRules.Gain(p, foe.EvYield, Rules, Conditions.Powers?.Effort ?? 0);
                     continue;
                 }
                 bool past = p.Species.LevelEvolution is { } next && p.Level >= next.Level;
@@ -1506,11 +1506,12 @@ public sealed partial class BattleCore : IBattleContext
     private void Give(Pokemon p, int exp, bool boosted, Pokemon foe, bool fought = true)
     {
         // What comes after the formula, in this order (plan 40 · GE5; docs/mechanics/rulings.md, "The charms, critical
-        // captures and EXP for a catch"), each step rounded down: affection's fifth, plan 36 · TR7's EXP power (not built
-        // yet: it goes before the crossed region's half), a crossed region's half, the Exp. Charm's half, Easy's three
-        // halves, and last the run's level cap
+        // captures and EXP for a catch"), each step rounded down: affection's fifth, plan 36 · TR7's EXP power, a crossed
+        // region's half, the Exp. Charm's half, Easy's three halves, and last the run's level cap
         // A Pokémon of the player's that loves it gains a fifth more (plan 10 · F7), before everything after the formula
         exp = WithAffection(p, exp);
+        // The EXP Power in force as the battle began (plan 36 · TR7), after affection and before a crossed region's half
+        exp = PowerSet.Raise(exp, Conditions.Powers?.Exp ?? 0);
         // A crossed region's foes give half as much again (plan 18 · W4b-3), after the formula and before Easy's three halves
         if (CrossedExp) exp = LevelCaps.CrossedExp(exp);
         // The Exp. Charm in the bag gives half as much again (plan 40 · GE5, the Lucky Egg's share), after a crossed region's half
@@ -1522,7 +1523,8 @@ public sealed partial class BattleCore : IBattleContext
         exp = LevelCaps.Allowed(p, exp, RunLevelCap);
         bool stopped = exp < wantedExp;
         if (exp > 0 || !stopped) Say(boosted ? Text.Of("battle.gainedABoostedExp", ("pokemon", p.DisplayName), ("exp", exp)) : Text.Of("battle.gainedExpPoints", ("pokemon", p.DisplayName), ("exp", exp)));
-        EffortRules.Gain(p, foe.EvYield, Rules);
+        // The Effort Power in force (plan 36 · TR7) adds its share of each stat's yield
+        EffortRules.Gain(p, foe.EvYield, Rules, Conditions.Powers?.Effort ?? 0);
         // The stats it had, for the level-up panel (plan 08 · P5): effort changes none of them until a level reckons them again
         var before = p.Stats();
         bool rose = p.GainExp(exp, out var learned, out var wanted, Rules.LevelCap);

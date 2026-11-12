@@ -73,7 +73,11 @@ public static class Coverage
     // and the Tera Orb that let a trainer use them, and the two orbs of Primal Reversion
     private static readonly HashSet<string> RunByTheirMechanic = new() { "Key Stone", "Z-Ring", "Dynamax Band", "Mega Max Band", "Tera Orb", "Red Orb", "Blue Orb", "Shiny Charm",
         // The charms of a Pokédex filled (plan 40 · GE5, Models/Charms.cs)
-        "Oval Charm", "Exp. Charm", "Catching Charm", "Mark Charm" };
+        "Oval Charm", "Exp. Charm", "Catching Charm", "Mark Charm",
+        // The Tera Shards, spent fifty at a time at a training hall's Tera keeper (plan 36 · TR5, Models/TeraChange.cs)
+        "Normal Tera Shard", "Fire Tera Shard", "Water Tera Shard", "Electric Tera Shard", "Grass Tera Shard", "Ice Tera Shard",
+        "Fighting Tera Shard", "Poison Tera Shard", "Ground Tera Shard", "Flying Tera Shard", "Psychic Tera Shard", "Bug Tera Shard",
+        "Rock Tera Shard", "Ghost Tera Shard", "Dragon Tera Shard", "Dark Tera Shard", "Steel Tera Shard", "Fairy Tera Shard" };
 
     // The later items only there to be had (plan 06 · R28b): Unova's Pass Orbs, which bought the Entralink's powers, of a
     // link this game has none of. docs/mechanics/where-items-are-found.md says where each later item comes from

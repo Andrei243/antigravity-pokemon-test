@@ -81,6 +81,9 @@ public sealed class TrainingScreen
     /// <summary>The rules the effort is held to (the game's in force unless a tool says).</summary>
     public Ruleset? Rules { get; set; }
 
+    /// <summary>Whether the bag holds a Tera Orb (plan 36 · TR5): every fifth gold then earns a Tera Shard of the trainee's first type. Set as the screen opens.</summary>
+    public bool HoldsTeraOrb { get; set; }
+
     /// <summary>Opens the screen on one Pokémon of the team, at the stat choice.</summary>
     public void Open(Pokemon pokemon, TrainingRecords records, Random random)
     {
@@ -233,7 +236,7 @@ public sealed class TrainingScreen
         }
         var grade = drill.Grade;
         Gained = EffortDrills.Award(p, drill.Stat, grade, Rules);
-        NewBest = Records.Record(drill.Stat, drill.Score, grade);
+        NewBest = Records.Record(drill.Stat, drill.Score, grade, HoldsTeraOrb ? TeraChange.ShardOf(p.PrimaryType) : null);
         for (int i = 0; i < 6; i++)
         {
             EffortAfter[i] = EffortRules.Get(p, DrillKinds.Stats[i]);

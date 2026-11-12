@@ -145,7 +145,9 @@ public enum GameState
     /// <summary>The crafting kit looked into, from the bag, the item button or a script's <c>craft open</c> (plan 39 · CR1).</summary>
     Crafting,
     /// <summary>The effort drills, opened by a coach's <c>train drill</c> on the Pokémon chosen (plan 36 · TR2).</summary>
-    Training
+    Training,
+    /// <summary>The Power Watch's panel, from the bag or the item button (plan 36 · TR8).</summary>
+    Powers
 }
 
 public partial class GameEngine
@@ -249,6 +251,8 @@ public partial class GameEngine
         flow.BagScreen.CubeMoves = FormChanges.CubeMovesFor(flow.Story.Has);
         flow.BagScreen.NoRevives = flow.Run.Nuzlocke;
         flow.PartyScreen.RunCap = flow.DayCare.LevelCap = flow.BagScreen.RunCap;
+        // The summary's Tera Type, while a Tera Orb is in the bag (plan 36 · TR5)
+        flow.PartyScreen.View.ShowsTera = flow.PCScreen.View.ShowsTera = HoldsTeraOrb;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
@@ -1495,6 +1499,8 @@ public partial class GameEngine
                         else if (usedHere.FieldUse == "ApricornBox") OpenApricornBox(fromBag: true);
                         // The crafting kit is looked into and closes back onto the bag (plan 39 · CR1)
                         else if (usedHere.FieldUse == CraftingKitUse) OpenCrafting(fromBag: true);
+                        // The Power Watch's panel, and back to the bag (plan 36 · TR8)
+                        else if (usedHere.FieldUse == PowerWatchUse) OpenPowers(fromBag: true);
                         // The Vs. Recorder's battles, and back to the bag (plan 08 · P11)
                         else if (usedHere.FieldUse == "VsRecorder") OpenReplays(fromBag: true);
                         else UseFieldItem(usedHere);
@@ -1642,6 +1648,9 @@ public partial class GameEngine
                 break;
             case GameState.ApricornBox:
                 UpdateApricornBox(dt);
+                break;
+            case GameState.Powers:
+                UpdatePowers(dt);
                 break;
             case GameState.Crafting:
                 UpdateCrafting(dt);
@@ -2240,6 +2249,8 @@ public partial class GameEngine
         if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
         if (flow.Safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
+        // The Power Watch's charge fills a point every 200 steps (plan 36 · TR7), while the watch is in the bag
+        if (HoldsPowerWatch) flow.Powers.Walk();
         // The Day Care's couple walk the step too, and an Egg of the team may hatch (Field_UpdateDaycare, plan 06 · R15)
         if (DayCareStep()) return true;
         // The DexNav's find in the grass stays, flees or is met, or one is found (plan 10 · F12)
@@ -3255,6 +3266,8 @@ public partial class GameEngine
                 DrawCastlePoints();
                 // A request pinned (plan 12 · Q21), at the top left while the location sign isn't there and no script runs
                 DrawPinnedRequest(shown);
+                // The powers in force, as chips at the left (plan 36 · TR8)
+                DrawPowerChips(shown);
                 flow.Dialogue.Draw(VirtualWidth, VirtualHeight);
                 DrawChoice();
                 // The run timer's corner (plan 13 · V10), under the start menu and the skip's pill
@@ -3427,6 +3440,9 @@ public partial class GameEngine
                 break;
             case GameState.Crafting:
                 flow.CraftingScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Powers:
+                flow.PowersScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Training:
                 flow.TrainingScreen.Draw(VirtualWidth, VirtualHeight);

@@ -68,7 +68,9 @@ public static class EffortRules
     /// once the total reaches 510 the rest is skipped. Its stats are not reckoned again: as in the original, the
     /// effort shows at its next level (or whenever its stats are next worked out).
     /// </summary>
-    public static void Gain(Pokemon p, StatSpread? yield, Ruleset? rules = null)
+    /// <param name="power">The Effort Power in force (plan 36 · TR7, <see cref="PowerSet.Effort"/>): the yield's share added to
+    /// it in hundredths, rounded down, before a Power item; nought adds nothing.</param>
+    public static void Gain(Pokemon p, StatSpread? yield, Ruleset? rules = null, int power = 0)
     {
         int statCap = (rules ?? Ruleset.Current).EvStatCap;
         string? hold = p.HeldItem?.HoldEffect;
@@ -78,6 +80,7 @@ public static class EffortRules
         {
             if (total >= MaxTotal) break;
             int gain = YieldOf(yield, stat);
+            if (power > 0) gain += gain * power / 100;
             if (hold == PowerItemFor(stat)) gain += param;
             if (p.Pokerus != 0) gain *= 2;
             if (hold == MachoBrace) gain *= 2;

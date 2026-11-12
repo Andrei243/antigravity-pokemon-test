@@ -1027,7 +1027,7 @@ public partial class PCScreen
         {
             var (index, count) = SummaryPlace(party, pc);
             ModernUi.DrawSummary(screenWidth, screenHeight, shown, index, count, Math.Clamp(summaryAge / 0.25f, 0f, 1f), (int)View.Page,
-                View.RibbonCursor, View.MarkCursor, View.MoveSelection);
+                View.RibbonCursor, View.MarkCursor, View.MoveSelection, tera: View.ShowsTera);
             return;
         }
         ModernUi.DrawStorage(screenWidth, screenHeight, this, party, pc, Math.Clamp(openAge / AppearTime, 0f, 1f));

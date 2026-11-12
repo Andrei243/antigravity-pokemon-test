@@ -250,8 +250,11 @@ public sealed partial class BattleCore
 
     private int prizeMoneyMul = 1;
 
-    /// <summary>What a trainer battle won pays: the trainers' prize money, doubled once anyone on the field has held an Amulet Coin or a Luck Incense.</summary>
-    public int PrizeMoney => IsTrainerBattle ? Trainers.Sum(t => t.PrizeMoney) * prizeMoneyMul * (happyHour ? 2 : 1) : 0;
+    /// <summary>
+    /// What a trainer battle won pays: the trainers' prize money, doubled once anyone on the field has held an Amulet Coin
+    /// or a Luck Incense, and last the Prize Power in force as the battle began (plan 36 · TR7) adding its share.
+    /// </summary>
+    public int PrizeMoney => IsTrainerBattle ? PowerSet.Raise(Trainers.Sum(t => t.PrizeMoney) * prizeMoneyMul * (happyHour ? 2 : 1), Conditions.Powers?.Money ?? 0) : 0;
 
     /// <summary><c>SWITCH_IN_CHECK_STATE_AMULET_COIN</c>: the item itself is read, on either side, and the prize is doubled for the battle.</summary>
     private void CheckAmuletCoin()

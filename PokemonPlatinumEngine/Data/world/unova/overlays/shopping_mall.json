@@ -137,6 +137,10 @@
     { "id": "shopping_mall.TrainingTutor", "name": "Tutor Petra", "npcType": "training_tutor",
       "x": 7, "y": 18, "facing": "Down", "script": "TrainingTutor" },
     { "id": "shopping_mall.TrainingClerk", "name": "Clerk", "npcType": "training_clerk",
-      "x": 8, "y": 18, "facing": "Down", "script": "TrainingClerk" }
+      "x": 8, "y": 18, "facing": "Down", "script": "TrainingClerk" },
+    { "id": "shopping_mall.TrainingTeacher", "name": "Teacher Lenz", "npcType": "training_teacher",
+      "x": 5, "y": 18, "facing": "Down", "script": "TrainingTeacher" },
+    { "id": "shopping_mall.TeraKeeper", "name": "Tera Keeper", "npcType": "tera_keeper",
+      "x": 9, "y": 18, "facing": "Down", "script": "TeraKeeper" }
   ]
 }

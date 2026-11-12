@@ -47,6 +47,16 @@
           "Meditatoarea Odile"
         ]
       }
+    },
+    "tera_keeper": {
+      "name": {
+        "en": [
+          "Tera Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

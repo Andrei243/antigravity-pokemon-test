@@ -72,7 +72,51 @@ public sealed partial class ScriptRunner
             case "peak":
                 PeakQuestion();
                 return;
+
+            case "tera" when i.Other == "check":
+                Result = TeraChange.WhyNotAny(chosenMember, host.Bag) switch
+                {
+                    TeraRefusal.None => 1,
+                    TeraRefusal.Forced => 2,
+                    TeraRefusal.TooFewShards => 3,
+                    _ => 0
+                };
+                return;
+
+            case "tera":
+                TeraQuestion();
+                return;
         }
+    }
+
+    /// <summary>A Tera Type as the screen says it: the type's word, or Stellar.</summary>
+    internal static string TeraWord(TeraType type) =>
+        type.IsStellar ? Core.Text.Of("training.tera.stellar") : Core.Words.Type(type.Type);
+
+    /// <summary>
+    /// <c>train tera</c> (plan 36 · TR5, <see cref="TeraChange"/>): asks which Tera Type the chosen Pokémon shall take, each
+    /// type it may with the shards held of it; the answer takes fifty shards and changes it. <c>RESULT</c> 1 when it was
+    /// changed (<c>{thing}</c> names the type, <c>{item}</c> the shard), 0 when nothing was.
+    /// </summary>
+    private void TeraQuestion()
+    {
+        Result = 0;
+        var member = chosenMember;
+        if (member == null || TeraChange.WhyNotAny(member, host.Bag) != TeraRefusal.None) return;
+        var open = TeraChange.Open(member, host.Bag);
+        var rows = open.Select(t => Core.Text.Of("training.tera.row", ("type", TeraWord(t)), ("count", TeraChange.Held(host.Bag, t).ToString())))
+            .Append(Core.Text.Of("training.peak.never")).ToList();
+        host.Ask(speakerShown, Core.Text.Of("training.tera.question", ("now", TeraWord(member.TeraType))), rows, cancel: open.Count);
+        afterBusy = () =>
+        {
+            Result = 0;
+            if (host.Answer < 0 || host.Answer >= open.Count) return;
+            var type = open[host.Answer];
+            if (!TeraChange.Change(member, type, host.Bag)) return;
+            lastItem = TeraChange.ShardOf(type);
+            lastThing = TeraWord(type);
+            Result = 1;
+        };
     }
 
     /// <summary>What <c>train peak check</c> answers (plan 36 · TR3), in the order it is asked.</summary>

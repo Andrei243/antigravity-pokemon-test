@@ -169,7 +169,7 @@ internal static partial class ModernUi
     /// <param name="rental">A rental Pokémon of the Battle Factory (plan 06 · R18b): its ability and what it holds stand where a Pokémon of one's own shows its experience.</param>
     /// <param name="heldAt">The level the player's Pokémon are held to where the player stands (plan 18 · W4b-3), null for none: one at it or over it says so under its EXP bar.</param>
     /// <param name="title">The screen's title where it is neither the team's nor a rental's (the Battle Castle's counters, plan 06 · R18c).</param>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, int markCursor = -1, int moveCursor = -1, bool rental = false, string? title = null, bool canMark = true, int? heldAt = null)
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, int markCursor = -1, int moveCursor = -1, bool rental = false, string? title = null, bool canMark = true, int? heldAt = null, bool tera = false)
     {
         Backdrop(sw, sh);
         ScreenTitle(title ?? Text.Of(rental ? "summary.rental" : "summary.title"));
@@ -302,6 +302,14 @@ internal static partial class ModernUi
             Panel(item, 34);
             Label(Text.Of("summary.heldItem"), item.X + 44, item.Y + 30);
             UiFonts.Draw(p.HeldItem?.DisplayName ?? Text.Of("summary.none"), item.X + 44, item.Y + 62, 40, Ink, UiWeight.Black);
+            // The Tera Type (plan 36 · TR5), once the bag holds a Tera Orb: its pill at the panel's top right
+            if (tera)
+            {
+                string teraLabel = Text.Of("summary.teraType");
+                float right = item.X + item.Width - 44;
+                Label(teraLabel, right - UiFonts.Measure(teraLabel, 20, UiWeight.Black), item.Y + 30);
+                TeraPill(right - TeraPillWidth(p.TeraType, 42), item.Y + 58, p.TeraType, 42);
+            }
             if (p.HeldItem is { } held) DrawWrapped(held.DisplayDescription, item.X + 44, item.Y + 118, item.Width - 88, 30, Muted, 40, UiWeight.Bold);
 
             var marks = new Rectangle(696 + slide, 556, 1160, 476);

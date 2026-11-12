@@ -1853,6 +1853,8 @@ One Pokémon on three panels: on the left its number, level, the 128-px sprite a
 
 **Effort on SKILLS** (plan 36 · TR1, `ModernUi.StatRows` with `effort`): each of the six stat rows gains, under its base-stat bar, a thin second bar for that stat's effort (the same track, 8 tall, its middle 18 below the row's middle), measured against the cap the rules in force give a stat (252 under the modern rules, Platinum's 255): Selection while it is under the cap and Gold once it reaches it, with `n / 252` in Black 20, Muted, right-aligned in the value's column under the stat's value. Under the six rows, 60 below the last row's middle, EFFORT in the Label style, the total out of 510 in Black 26 (Ink) and a thin bar across the track's width (Selection, Gold at 510); the rule and ABILITY under it keep their places. A stat brought to its peak (hyper training, plan 36 · TR3) shows a small PEAK tag, a Gold pill 70 × 26 with white Black 18 text, at the right end of its row's effort bar, and the same pill stands on that stat's row of the PC's judge (`ModernUi.Teams.cs`), 12 left of the word's pill and centred on its row; on SKILLS the tag's top is 12 under the row's middle, just clear of the base-stat bar (`ModernUi.PeakTag`, drawn since TR3). The rental summary and the one-page summary draw no effort, and the base-stat bar stays what it was whatever the effort.
 
+**The Tera Type on INFO** (plan 36 · TR5, `ModernUi.TeraPill`): while the bag holds a Tera Orb, the held item's panel shows TERA TYPE in the Label style at its top right, 44 in from the panel's edge, and under it, right-aligned, the Pokémon's Tera Type as a gem and a pill, 42 high: the gem a diamond 0.84 of the height tall and 0.67 wide, its upper half the type's colour lightened by a quarter and its lower half darkened by 0.15, then 0.95 of the height on from the gem's left the type's own pill (`TypePill`). Stellar's gem is white over a pale steel lower half, and its pill five bands across (red 226 92 92, amber 226 170 60, green 80 176 104, blue 70 136 220, violet 150 96 206) with STELLAR in white Black. Without a Tera Orb nothing is drawn and the panel is as it was. The team's summary and the PC's show it; a rental's and a battle's don't.
+
 **Marks and titles** (plan 10 · F9, `ModernUi.Marks.cs`): a mark of the moment a Pokémon was met is our own badge, never the games' pictures: a disc in the colour of its kind (rare gold 232 176 40, a personality violet 150 96 206, a time of day blue 70 120 222, a weather teal 28 156 164, the rod sea green 40 140 110, an alpha red 214 64 64) with a darker rim and two short tails under it, a white ring inside, and a white star in its middle for the rare mark or a white dot for any other (`MarkBadge`). On INFO, a Pokémon met with a mark has its six markings raised to the panel's upper half and, under a rule, MET WITH and each of its marks as a cell (the badge at radius 30, the mark's name in Black 30, and a Gold TITLE tag after the one chosen), then TITLE and the line it is sent out under ("Sent out as Starly the Sleepy") or, in Muted, that none is chosen. The marks' cursor goes on from the six markings into these cells (a Selection rim and pale fill round the cell); the button there makes the mark the title, or takes it away when it is the title already. A Pokémon met with none shows the six markings where they always stood. On its party card (at its upper right, radius 20) and beside its sprite in the PC's detail panel (radius 22) a Pokémon shows the badge of its title, or of its first mark when none is chosen; nothing for one met with none, nor for an Egg.
 
 **The trainer memo** (plan 08 · P3, `ModernUi.MemoPanel`) is the page after the first: left and right turn to it, the left side staying as it is. One panel as tall as the two: the trainer's name (Black 40) and ID No. (five digits) at the top, a rule, MET ON with the day (Black 34) and under it, in ExtraBold 30, where and at what level the Pokémon was met ("Hatched at…" for a level of nought, a plain "met somewhere" when the place is unknown) and its nature; a rule, CHARACTERISTIC with its line in Black 34 (`Characteristics`: the stat of the highest IV, five lines to a stat, our own words); a rule, ABILITY with its name in Black 36 and its description in Bold 30 Muted. A Pokémon without a trainer's mark is the player's own and shows the player's name and number.
@@ -2296,6 +2298,30 @@ are drawn in layout units where a field sprite would want the field's renderer.
   orange), a bar 520 by 16 with the effort before in Selection and what the drill added in the club's orange, `n / 252`
   and, where it changed, a drawn arrow and the new number, and at the right the stat's value ("71 to 74" where it rose);
   the total out of 510 at the foot.
+
+### The Power Watch
+
+Plan 36 · TR8 (`PowersScreen`, `ModernUi.DrawPowers`, `ModernUi.PowerChips`). Our own: powers are named plainly by what
+they do, with icons of ours, and nothing of the O-Powers' or Roto Powers' pictures is drawn. A kind's **icon** is a disc
+in its own colour (EXP blue 70 136 232, Effort the club's orange 232 112 64, Prize gold 214 160 40, Bargain green 56 168
+120, Catching red 226 72 84, Encounter grass 96 176 64, Stealth violet 110 100 168, Hatching pink 230 130 170, Type teal
+60 160 176, Gathering brown 150 120 90) with a 3-wide rim darkened by a fifth and its short mark (`powerWatch.short.*`, EXP,
+EV, $, %, CAT, ENC, SNK, EGG...) in white Black, 0.74 of the radius (0.62 for a mark of four letters).
+
+- **The panel**: one screen in the menus' look, titled POWER WATCH. At the left a list 1060 wide of rows 24 from the
+  top: today's free power first where there is one ("Today: EXP Power", its value "Lv. 1 FREE"), then each kind learned
+  (`ListRow`, the icon at radius 30, 70 in; its value "Lv. 2 · 2 charge", or "Lv. 1 of 3 · 1 charge" where more than one
+  level is learned, Left and Right moving it). A row the charge or the run refuses is drawn as a row that can't be
+  chosen, its icon at 150 alpha. Under the rows, 96 above the panel's foot, the last confirm's line in ExtraBold 30: Red
+  for a refusal, Ink for a power put in force. At the right a panel with CHARGE in the Label style, ten pips 34 high (Gold
+  for each point held, Rule for the rest, rounded 8) and "4 of 10. A point every 200 steps." in ExtraBold 24 Muted; under
+  a rule, IN FORCE and each power in force a line 72 apart (its icon at radius 26, its name and level in Black 28 and the
+  minutes left, "9:42", right-aligned), or "Nothing is in force." in Muted.
+- **Chips over the field**: while the field is the player's (no script, menu or text over it) each power in force is a
+  chip 156 by 48 at the left, 32 in, the first 176 from the top and each next 58 under it: a white pill with a 3-wide
+  Frame rim, the kind's icon filling its left end and the minutes left in Black 26 Ink. They stand clear of the pinned
+  request and the location sign above them, the Safari Game's count and the run timer at the right, the text box below
+  and the autosave disc in the bottom left. A power that wears off is told once on the toast ("Your EXP Power wore off.").
 
 ### Badges
 

@@ -495,6 +495,12 @@ public partial class GameEngine
             OpenApricornBox(fromBag: false);
             return;
         }
+        // The Power Watch from the item button (plan 36 · TR8)
+        if (item.FieldUse == PowerWatchUse)
+        {
+            OpenPowers(fromBag: false);
+            return;
+        }
         // The crafting kit from the item button (plan 39 · CR1)
         if (item.FieldUse == CraftingKitUse)
         {
@@ -1259,6 +1265,8 @@ public partial class GameEngine
                         MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount(game.RulesHere.Id)));
                     // Easy takes a quarter off what a counter asks (plan 13 · V2)
                     game.flow.ShopScreen.Difficulty = game.flow.Run.Difficulty;
+                    // And the Bargain Power in force as it opens (plan 36 · TR7)
+                    game.flow.ShopScreen.Bargain = game.flow.Powers.Strength(PowerKind.Bargain);
                     break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name

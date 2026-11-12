@@ -37,6 +37,26 @@
           "Meditatorul Hale"
         ]
       }
+    },
+    "training_teacher": {
+      "name": {
+        "en": [
+          "Teacher Oren"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tera_keeper": {
+      "name": {
+        "en": [
+          "Tera Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}
