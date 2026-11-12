@@ -1,0 +1,28 @@
+{
+  // The Watchtower Ruins (plan 33 · GL2): a broken stone tower on a knoll west of Lake Axewell, from the days when Galar's
+  // giants were watched for. Ghosts in the fog round it, and a strong Gengar there on foggy days.
+  "zones": [
+    {
+      "name": "watchtower_ruins",
+      "polygon": [[-146, -496], [-66, -496], [-66, -386], [-146, -386]],
+      "minY": -1, "maxY": 16,
+      "slots": [
+        { "species": "Rookidee", "minLevel": 10, "maxLevel": 14, "weight": 20 },
+        { "species": "Roggenrola", "minLevel": 10, "maxLevel": 14, "weight": 20 },
+        { "species": "Purrloin", "minLevel": 10, "maxLevel": 13, "weight": 15, "time": "Night" },
+        { "species": "Gastly", "minLevel": 11, "maxLevel": 14, "weight": 25, "weather": ["Fog", "Cloudy"] },
+        { "species": "Vanillite", "minLevel": 11, "maxLevel": 14, "weight": 20, "weather": ["Snow", "HeavySnow"] },
+        // The strong one, on a foggy day
+        { "species": "Gengar", "minLevel": 32, "maxLevel": 34, "weight": 3, "weather": ["Fog"] }
+      ],
+      "rustle": [
+        { "species": "Duskull", "minLevel": 10, "maxLevel": 14, "weight": 20 },
+        { "species": "Roggenrola", "minLevel": 10, "maxLevel": 13, "weight": 15 }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "solids": [
+    { "name": "the watchtower", "min": [-106, 5, -452], "max": [-96, 16, -442], "building": { "kind": "tower", "town": "galar", "storeys": 3 } }
+  ]
+}

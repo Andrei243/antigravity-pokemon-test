@@ -289,6 +289,8 @@ public partial class GameEngine
         Player = PlayerMark,
         // The Bug-Catching Contest throws its Sport Balls and nothing else (plan 15 · E5)
         OnlyBall = InBugContest ? Battle.Sim.BattleCore.BugContestBall : null,
+        // Galar's strong wild Pokémon, out of reach of a ball until the badges say (plan 33 · GL2)
+        CatchCeiling = Models.CatchLimits.CeilingFor(RulesHere.Id, flow.Story.BadgeCount(RulesHere.Id)),
         // A wild Pokémon seen in the field and walked into from behind (plan 10 · F5)
         Surprised = wildSurprised,
         // What a critical capture's chance is read by, and the two charms a battle reads (plan 40 · GE5)

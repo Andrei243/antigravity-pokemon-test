@@ -537,8 +537,10 @@ public sealed partial class BattleCore
                 SentOutTheLast(place, sent);
             }
 
+            // A raid's fallen raiders stand again, each with their own (plan 33 · GL3)
+            if (round == 0) TheRaidersStandAgain(entered);
             // Then each empty place of the player's side (the partner's too), while there is anyone left to send
-            foreach (var place in PlayerSlots.Where(b => !b.IsActive))
+            foreach (var place in PlayerSlots.Where(b => !b.IsActive && !IsRaid))
             {
                 foreach (var request in PickReplacement(place)) yield return request;
                 if (picked == null) continue;

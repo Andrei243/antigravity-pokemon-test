@@ -1682,6 +1682,18 @@ The covers' tiles: 32 texels square, repeating every 2 m (`OpenCoverArt`), each 
 
 What `openproto` draws, as the gate's look was judged: the same units, scene, camera and fog; per-vertex cover in the table's base colours under one grey grain, box-mapped by each face's axis; levels by the camera's distance (0.5 m cells to 70 m, 2 m to 230 m, 4 m beyond, a chunk with a carve kept fine to 260 m); the battle's soft trees as meshes within 120 m and as impostors of eight views beyond; one shadow map 70 m across round the player; the battle's tilt-shift; plan 30 · FM0's grown stand-in for the player (1.6 m) and a person (1.65 m); a Pokémon as its battle model at its species' height in metres.
 
+### The Wild Area (plan 33 · GL2)
+
+- **Weather by part**: each part of the Wild Area has its own weather of the day, and the picture takes the weather of
+  the part the player stands in, as an area's weather on the grid does; crossing into another part changes the sky and
+  what falls with it.
+- **Rustling grass**: no art of its own. The tufts over the patch part as round a walker, and the walker goes round a
+  circle of 0.35 m three times a second, so the grass leans this way and that; one or two patches at most are drawn
+  (the shader's eight walkers keep the player and the nearest figures first), and only within the grass's reach (22 m).
+- **The Stone Arch** is the land's rock (two legs and a lintel, carved as additions), shaded and covered as rock is.
+- **The Wild Area's station** is a building of the Galar kit (`terminal`, its sign WILD AREA STATION); the watchtower
+  is a `tower` on its knoll.
+
 ## Time of day
 
 The world follows the computer's clock, like the DS's real-time clock, with Platinum's five light states (pret/pokeplatinum, `src/rtc.c`). The options screen can fix a time. Each state has a light rig for the field and one for battles (`ArtLook.FieldRigFor`, `BattleRigFor`); within half an hour of a change the two rigs blend.

@@ -4,9 +4,11 @@
   // the far south with the player's house, Hop's house and the Wooloo's paddock; the Slumbering Weald beyond the hedge
   // on its west side, low and foggy; Route 1 north to Wedgehurst, a small town of the station, the Pokémon Center and
   // the research lab; and Route 2 east and north of it to Professor Magnolia's house by her lake. x runs east, z south,
-  // y up, in metres; a chunk is 32 m. Nothing is drawn of the railway beyond the station, which is plan 33 · GL2's
+  // y up, in metres; a chunk is 32 m. North of the railway's bank lies the Wild Area's southern half (plan 33 · GL2),
+  // reached by the train from Wedgehurst Station and smaller than the plan's scale (docs/mechanics/rulings.md, "The Wild
+  // Area"): eight parts of one open stretch of downs and lakes, each with its weather of the day from calendar.json
   "region": "Galar",
-  "chunks": [-3, -9, 2, 1],
+  "chunks": [-5, -20, 4, 1],
   "baseHeight": 0.4,
   "cover": { "shore": 0.6 },
   "areas": [
@@ -14,9 +16,20 @@
     { "key": "slumbering_weald", "name": "Slumbering Weald", "polygon": [[-93, -16], [-55, -16], [-55, 58], [-93, 58]], "music": "galar/route1", "weather": "Fog" },
     { "key": "galar_route_1", "name": "Route 1", "polygon": [[-60, -112], [48, -112], [48, -24], [-60, -24]], "music": "galar/route1" },
     { "key": "wedgehurst", "name": "Wedgehurst", "polygon": [[-60, -199], [56, -199], [56, -112], [-60, -112]], "music": "galar/wedgehurst" },
-    { "key": "galar_route_2", "name": "Route 2", "polygon": [[56, -112], [93, -112], [93, -285], [4, -285], [4, -199], [56, -199]], "music": "galar/route1" }
+    { "key": "galar_route_2", "name": "Route 2", "polygon": [[56, -112], [93, -112], [93, -285], [4, -285], [4, -199], [56, -199]], "music": "galar/route1" },
+    // The Wild Area (plan 33 · GL2), south to north; each part's weather is its column of calendar.json for the day
+    { "key": "wild_area_meetup_spot", "name": "Meetup Spot", "polygon": [[-40, -360], [40, -360], [40, -300], [-40, -300]], "music": "galar/wild_area" },
+    { "key": "wild_area_rolling_fields", "name": "Rolling Fields", "polygon": [[-150, -380], [-40, -380], [-40, -300], [-150, -300]], "music": "galar/wild_area" },
+    { "key": "wild_area_dappled_grove", "name": "Dappled Grove", "polygon": [[40, -400], [150, -400], [150, -300], [40, -300]], "music": "galar/wild_area" },
+    { "key": "wild_area_watchtower_ruins", "name": "Watchtower Ruins", "polygon": [[-150, -500], [-60, -500], [-60, -380], [-150, -380]], "music": "galar/wild_area" },
+    { "key": "wild_area_lake_axewell", "name": "Lake Axewell", "polygon": [[-40, -360], [40, -360], [40, -400], [150, -400], [150, -500], [-60, -500], [-60, -380], [-40, -380]], "music": "galar/wild_area" },
+    { "key": "wild_area_giants_seat", "name": "Giant's Seat", "polygon": [[-150, -590], [-20, -590], [-20, -500], [-150, -500]], "music": "galar/wild_area" },
+    { "key": "wild_area_lake_miloch", "name": "Lake Miloch", "polygon": [[-20, -590], [150, -590], [150, -500], [-20, -500]], "music": "galar/wild_area" },
+    { "key": "wild_area_motostoke_riverbank", "name": "Motostoke Riverbank", "polygon": [[-150, -628], [150, -628], [150, -590], [-150, -590]], "music": "galar/wild_area" }
   ],
   "maps": [
-    { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2"] }
+    { "name": "Galar", "areas": ["postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
+      "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins", "wild_area_lake_axewell",
+      "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank"] }
   ]
 }

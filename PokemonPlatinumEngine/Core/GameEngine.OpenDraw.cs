@@ -96,12 +96,12 @@ public partial class GameEngine
         return before + (now - before) * open.Clock.Between;
     }
 
-    /// <summary>The weather where the player stands: the tool's, else the area's by its name (a <see cref="FieldWeather"/>, or a header's of Platinum's).</summary>
+    /// <summary>The weather where the player stands: the tool's, else the area's of the day (<see cref="OpenWeather"/>).</summary>
     private FieldWeather OpenWeatherHere(OpenField open)
     {
         if (OpenWeatherOverride is { } forced) return forced;
-        if (open.Map.AreaAt(open.Player.Pos)?.Weather is not { Length: > 0 } name) return FieldWeather.Clear;
-        return Enum.TryParse<FieldWeather>(name, ignoreCase: true, out var weather) ? weather : Weathers.Of(name);
+        // The area's by the region's calendar for today where it keeps one (plan 33 · GL2), its own otherwise
+        return OpenWeather.At(open.Map, open.Player.Pos, GameClock.Today);
     }
 
     /// <summary>The open frame's scene: the camera placed by its arm, the cave's share, the hour, the weather and the player's pose.</summary>

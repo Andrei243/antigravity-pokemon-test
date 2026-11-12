@@ -2375,8 +2375,9 @@ public partial class GameEngine
         Bag = flow.Bag,
         IsNight = GameClock.IsNight,
         IsDusk = GameClock.Now == TimeOfDay.Twilight,
-        IsRaining = Weathers.IsRain(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),
-        Sites = flow.Map.EvolutionSitesAt(flow.Player.GridX, flow.Player.GridY),
+        // (in an open map, its area's weather of the day and the sites its place names: plan 33 · GL2, the Stone Arch)
+        IsRaining = Weathers.IsRain(FieldWeatherHere()),
+        Sites = flow.Open is { } open ? open.Map.SitesAt(open.Player.Pos) : flow.Map.EvolutionSitesAt(flow.Player.GridX, flow.Player.GridY),
         Region = RegionDatabase.RegionOfMap(flow.Map.Name)?.Name,
         // The spin just ended, for Alcremie's cream (plan 06 · R29)
         Spin = flow.Spin.Last

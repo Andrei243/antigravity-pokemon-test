@@ -105,7 +105,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 ## Status
 
 - [x] GL1 Galar's file, Postwick, Wedgehurst and Routes 1 and 2 (2026-11-09, its first session: the file, the open map of five areas described and baked, eight rooms, the chapter to the train headless, the walk of the region, the species check; "GL1 as built", below. **Waits for the user**: the look of Postwick and Wedgehurst, judged from the shots its second session owes, as the done-when has it; and the bot's walk to the train in `PlaythroughTests`, which waits for plan 32 · OW10's bot)
-- [ ] GL2 The Wild Area
+- [x] GL2 The Wild Area (2026-11-12, its first session: the southern half at a smaller footprint than decision 1's, eight parts with weather by part and day, rustling grass, strong Pokémon, the train, the traders, the Stone Arch; "GL2 as built", below. **Waits for the user**: the footprint, and the look of the Wild Area from the shots owed; **owed**: the Rotom Bike, camping placed in the Wild Area, the harness's shots and `profile` with twelve field Pokémon in rain)
 - [ ] GL3 Max Raid dens
 - [ ] GL4 Motostoke, the opening ceremony and the first three gyms
 - [ ] GL5 Stow-on-Side to Hammerlocke
@@ -129,3 +129,18 @@ One session (the first of GL1's two), by an agent beside three GPU sessions (the
 **Shots owed** (the harness's `galar` mode isn't written yet; GL1's second session writes it and takes them): `ga00` to `ga09` Postwick by day from four yaws, the player's door, Hop's garden, the paddock and the Weald's gate; `ga10` to `ga12` the Weald in its fog; `ga20` to `ga22` Route 1 with its Pokémon about; `ga30` to `ga36` Wedgehurst, its station square, the Pokémon Center, the lab; `ga40` to `ga44` Route 2, its trainers, the garden and the lake by night; `ga50` on the eight rooms; `ga*n` the towns after dark; and the chapter's scenes `gas00` to `gas20` (Mum's question, Hop at the door, Leon at the station, the three, the shadow, the Wishing Stars, the train). `profile`'s busiest Galar scene (Wedgehurst's square with its people) is owed with them.
 
 **What GL1's second session does**: shows the user Postwick and Wedgehurst and changes them by their word (the done-when); writes the harness's `galar` mode and the itinerary to the train once plan 32 · OW10's bot can steer the open map; the Pokédex's area page and the Town Map for an open region (OW10's `RegionMapArt` half); Escape Rope, Dig and Teleport in an open map (they note a grid place today); the voices of Galar's cast designed by ear (provisional ones were added by the catalogue).
+
+## GL2 as built (2026-11-12)
+
+One session, by an agent beside others on plans 35, 37, 38, 39 and 42, so **no harness shot was taken**: the land was looked at with `OpenWorldBake galar --plan` and the content check. The rulings' "The Wild Area" has each decision.
+
+**What there is**
+- **The land**: the region's chunks widened to `[-5, -20, 4, 1]` (220 chunks, 26 MB of bake) for the Wild Area's southern half north of the railway's bank, 300 m by 330 m (decision 1 asked for more; the user judges the footprint), with its own control grid, banks on every side, two lake bowls, the Giant's Seat's dome, the watchtower's knoll and the Stone Arch carved as rock (`terrain/wild_area.json`, `carve/wild_area.json`, `water.json`, `roads.json`). Eight areas keyed `wild_area_*`, each a place's file with its zone.
+- **Weather by part and day**: `calendar.json` (a table of ours) read by `OpenWorld/OpenWeather.cs` for the picture, the zones' tables, a battle's weather and evolution; slots may name their weathers.
+- **Rustling grass**: a zone's `rustle` table, its patches drawn on the zone's seed and the field's tick (`OpenWildField.Rustles`), met by touch; drawn as grass parting round an unseen walker.
+- **Strong Pokémon**: `Models/CatchLimits.cs`, `BattleConditions.CatchCeiling` (recorded), `battle.tooStrongToCatch`.
+- **The train** north from Wedgehurst and back; Hop's scene at the Meetup Spot (`VAR_GALAR_STORY` 12, objective `galarWildArea`, 711); the steps under Motostoke closed by a steward; the Watt trader, Ball Guy and Digging Duo (`VAR_GALAR_WATTS`); the Stone Arch in the Giant's Seat's `evolutionSites`, which an open map's evolution context now reads.
+- **The engine**: `WorldWalk` follows a script's `warpto`; `SpeciesSources` counts rustling tables and open places' sites; the open map's evolution context reads its own place's weather and sites.
+- **Tests**: `GalarWildAreaTests` (the parts, the calendar the same twice and read alike, Pokémon by weather in the field, rustling grass met and the same twice, the catch ceiling, Runerigus under the arch, the train, the Watt trader), `GalarTests` (areas, the walk to every new marker and person, the north bank never come to, the chapter to the Wild Area), `GalarSpeciesTests` (73 species off the owed list). Goldens moved: `scripts.txt`, `saves.txt` (`FLAG_GALAR_HIDE_HOP_RIVERBANK` in `GalarNewGame`), the open place's schema, `species-owed.md`.
+
+**Owed**: the Rotom Bike (`RegionMode.RotomBike` has no engine code yet), camping and curry placed in the Wild Area, the shots (`ga60` on, the Wild Area's parts by day and night and in four weathers, a rustle, the arch, the station) and `profile` with twelve field Pokémon in rain, the northern half (GL5), Runerigus counted by the species check (it reads no regional form's evolution).

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.OpenWorld;
 
@@ -90,8 +91,18 @@ public sealed class OpenWildPokemon
         Draws = new SplitMix(seed);
     }
 
+    /// <summary>Whether it came out of a patch of rustling grass as the player touched it (plan 33 · GL2): never seen walking about.</summary>
+    public bool FromRustle { get; internal init; }
+
     public override string ToString() => $"{Species} {Level} in {Zone.Name} at {Pos} ({Mood})";
 }
+
+/// <summary>
+/// A patch of a zone's grass shaking now (plan 33 · GL2; Sword and Shield's rustling grass): where it is, the tick it
+/// began, and the seed its meeting is drawn from. Touched, it meets one of the zone's <see cref="OpenZone.Rustle"/>
+/// table (<see cref="OpenWildField.Touching"/>); otherwise it stills after <see cref="OpenWildField.RustleFor"/>.
+/// </summary>
+public sealed record OpenRustle(OpenZone Zone, OpenPos At, long Began, uint Seed);
 
 /// <summary>
 /// The wild Pokémon of an open map (plan 32 · OW7; plan 32, "Encounters"): every one is seen, standing in its zone,
@@ -150,6 +161,23 @@ public sealed class OpenWildField
     public const int ExclaimTicks = OpenClock.TicksPerSecond;
 
     private readonly List<OpenWildPokemon> all = new();
+    private readonly List<OpenRustle> rustles = new();
+
+    /// <summary>
+    /// How often a zone with rustling grass may start a patch shaking, how long one shakes, how near and how far from the
+    /// player it may be (in view or not: a rustle is there to be seen), and how near the player's feet must come to touch
+    /// it (plan 33 · GL2).
+    /// </summary>
+    public const int RustleEvery = 3 * OpenClock.TicksPerSecond, RustleFor = 8 * OpenClock.TicksPerSecond, RustleNear = 6_000, RustleFar = 28_000, RustleReach = 1_400;
+
+    /// <summary>The patches shaking now, in the order they began (the picture parts the grass over each).</summary>
+    public IReadOnlyList<OpenRustle> Rustles => rustles;
+
+    /// <summary>
+    /// The weather a zone's table is read under (the engine's: its area's weather of the day, <see cref="OpenWeather"/>);
+    /// clear for every zone unless told. A row that names no weather is met under any (plan 33 · GL2).
+    /// </summary>
+    public Func<OpenZone, FieldWeather>? WeatherOf { get; set; }
     private readonly List<OpenWildPokemon> noticed = new();
     private readonly Dictionary<string, int> waits = new(StringComparer.Ordinal);
     private int made, grace;
@@ -190,6 +218,10 @@ public sealed class OpenWildField
         _ => true
     };
 
+    /// <summary>Whether a row is met at a time of day under a weather (plan 33 · GL2): its time's rule, and one of its weathers where it names any.</summary>
+    public static bool MetAt(OpenSlot slot, TimeOfDay now, FieldWeather weather) =>
+        MetAt(slot, now) && (slot.Weather == null || slot.Weather.Contains(weather));
+
     /// <summary>A zone's own seed: the FNV-1a of the map's name and the zone's (a string's own hash changes from run to run).</summary>
     public static uint Seed(string map, string zone) => SplitMix.Fnv(map + "/" + zone);
 
@@ -216,6 +248,14 @@ public sealed class OpenWildField
 
         if (mayAct)
             foreach (var zone in map.Zones) Spawn(map, zone, player);
+        // The rustling grass (plan 33 · GL2): a patch stilled once its time is up or the player is far, and a zone that has
+        // none shaking may start one
+        for (int i = rustles.Count - 1; i >= 0; i--)
+            if (Tick - rustles[i].Began >= RustleFor || rustles[i].At.GroundDistanceSquared(at) > (long)DespawnReach * DespawnReach)
+                rustles.RemoveAt(i);
+        if (mayAct)
+            foreach (var zone in map.Zones)
+                if (zone.Rustle.Count > 0) Rustling(map, zone, player);
 
         // Whether the player runs this tick: farther than a walk's stride between their last two ticks
         long stride = (long)(OpenBody.WalkSpeed * 1.2 * OpenPos.PerMetre / OpenClock.TicksPerSecond);
@@ -239,6 +279,15 @@ public sealed class OpenWildField
     public OpenWildPokemon? Touching(OpenPos player)
     {
         if (grace > 0) return null;
+        // A patch of rustling grass under the player's feet meets one of its zone's other table (plan 33 · GL2)
+        for (int i = 0; i < rustles.Count; i++)
+        {
+            var r = rustles[i];
+            if (r.At.GroundDistanceSquared(player) > (long)RustleReach * RustleReach || Math.Abs(r.At.Y - player.Y) > TouchHeight) continue;
+            rustles.RemoveAt(i);
+            if (FromTheRustle(r) is { } found) return found;
+            break;
+        }
         foreach (var w in all)
             if (w.Pos.GroundDistanceSquared(player) <= (long)TouchReach * TouchReach && Math.Abs(w.Pos.Y - player.Y) <= TouchHeight)
                 return w;
@@ -297,6 +346,7 @@ public sealed class OpenWildField
     public void Clear()
     {
         all.Clear();
+        rustles.Clear();
         noticed.Clear();
         waits.Clear();
         grace = 0;
@@ -336,7 +386,8 @@ public sealed class OpenWildField
         if (standing >= TargetOf(zone)) return;
         // The rows met at this time of day, and their weights
         int total = 0;
-        foreach (var slot in zone.Slots) if (MetAt(slot, Now)) total += slot.Weight;
+        var weather = WeatherOf?.Invoke(zone) ?? FieldWeather.Clear;
+        foreach (var slot in zone.Slots) if (MetAt(slot, Now, weather)) total += slot.Weight;
         if (total == 0) return;
 
         int minX = int.MaxValue, minZ = int.MaxValue, maxX = int.MinValue, maxZ = int.MinValue;
@@ -367,7 +418,7 @@ public sealed class OpenWildField
             OpenSlot? row = null;
             foreach (var slot in zone.Slots)
             {
-                if (!MetAt(slot, Now)) continue;
+                if (!MetAt(slot, Now, weather)) continue;
                 if ((pick -= slot.Weight) < 0) { row = slot; break; }
             }
             if (row == null) return;
@@ -381,6 +432,72 @@ public sealed class OpenWildField
             all.Add(w);
             return;
         }
+    }
+
+    // ------------------------------------------------------------------ rustling grass
+
+    /// <summary>
+    /// A zone's grass perhaps starting to rustle (plan 33 · GL2): every <see cref="RustleEvery"/>, where none of its own
+    /// shakes and a row of its rustling table is met now, a patch on walkable ground of the zone between
+    /// <see cref="RustleNear"/> and <see cref="RustleFar"/> of the player, drawn from the zone's seed and the tick.
+    /// </summary>
+    private void Rustling(OpenMap map, OpenZone zone, OpenPlayer player)
+    {
+        if (Tick % RustleEvery != 0) return;
+        foreach (var r in rustles) if (r.Zone == zone) return;
+        var weather = WeatherOf?.Invoke(zone) ?? FieldWeather.Clear;
+        bool any = false;
+        foreach (var slot in zone.Rustle) if (MetAt(slot, Now, weather)) { any = true; break; }
+        if (!any) return;
+        int minX = int.MaxValue, minZ = int.MaxValue, maxX = int.MinValue, maxZ = int.MinValue;
+        foreach (var (x, z) in zone.Polygon) { minX = Math.Min(minX, x); maxX = Math.Max(maxX, x); minZ = Math.Min(minZ, z); maxZ = Math.Max(maxZ, z); }
+        var at = player.Pos;
+        long nearestX = Math.Max(0, Math.Max(minX - (long)at.X, (long)at.X - maxX)), nearestZ = Math.Max(0, Math.Max(minZ - (long)at.Z, (long)at.Z - maxZ));
+        if (nearestX * nearestX + nearestZ * nearestZ > (long)RustleFar * RustleFar) return;
+        uint seed = Seed(map.Name, zone.Name);
+        for (int attempt = 0; attempt < TriesPerSpawn; attempt++)
+        {
+            var draws = new SplitMix(SplitMix.Mix(seed, (uint)Tick, 0x5157u + (uint)attempt));
+            int x = minX + (int)(draws.Next() % (uint)Math.Max(1, maxX - minX));
+            int z = minZ + (int)(draws.Next() % (uint)Math.Max(1, maxZ - minZ));
+            if (!OpenPolygons.Holds(zone.Polygon, x, z)) continue;
+            long dx = x - (long)at.X, dz = z - (long)at.Z, d2 = dx * dx + dz * dz;
+            if (d2 < (long)RustleNear * RustleNear || d2 > (long)RustleFar * RustleFar) continue;
+            if (map.Ground.Footing(x / 1000.0, z / 1000.0, zone.MaxY / 1000.0, zone.MinY / 1000.0, walkableOnly: true) is not { } ground) continue;
+            var pos = new OpenPos(x, OpenPos.Millimetres(ground.Y), z);
+            if (!zone.Contains(pos)) continue;
+            if (map.Land?.Nav is { } mesh && (mesh.PolygonAt(pos) is not { } polygon || mesh.Polygons[polygon].Swim)) continue;
+            if (map.Ground.WaterAt(pos.MetresX, pos.MetresZ) is { } water && water > ground.Y + 0.1) continue;
+            rustles.Add(new OpenRustle(zone, pos, Tick, SplitMix.Mix(seed, (uint)Tick, 0x2B5u)));
+            return;
+        }
+    }
+
+    /// <summary>The Pokémon a touched patch meets: a row of its zone's rustling table met now, by weight, at a level within it; null where none is.</summary>
+    private OpenWildPokemon? FromTheRustle(OpenRustle r)
+    {
+        var weather = WeatherOf?.Invoke(r.Zone) ?? FieldWeather.Clear;
+        int total = 0;
+        foreach (var slot in r.Zone.Rustle) if (MetAt(slot, Now, weather)) total += slot.Weight;
+        if (total == 0) return null;
+        var draws = new SplitMix(r.Seed);
+        int pick = draws.Int(total);
+        OpenSlot? row = null;
+        foreach (var slot in r.Zone.Rustle)
+        {
+            if (!MetAt(slot, Now, weather)) continue;
+            if ((pick -= slot.Weight) < 0) { row = slot; break; }
+        }
+        if (row == null) return null;
+        int level = row.MinLevel + draws.Int(row.MaxLevel - row.MinLevel + 1);
+        int yaw = (int)(draws.Next() & (OpenYaw.Turn - 1));
+        var w = new OpenWildPokemon(made, r.Zone, row, level, (Kinds ?? OpenWildKinds.Game).For(row.Species), r.At, yaw, SplitMix.Mix(r.Seed, (uint)made, 0x5EED))
+        {
+            FromRustle = true
+        };
+        made++;
+        all.Add(w);
+        return w;
     }
 
     // ------------------------------------------------------------------ what each does

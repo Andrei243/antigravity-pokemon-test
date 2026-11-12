@@ -87,7 +87,14 @@ public sealed record OpenDoor(string Name, string Place, OpenShape Shape, string
 public enum OpenSlotTime { Any, Morning, Day, Night }
 
 /// <summary>A row of an encounter zone's table (plan 32 · OW5; OW7 spawns from it): a species, its levels, how often it comes and when in the day.</summary>
-public sealed record OpenSlot(string Species, int MinLevel, int MaxLevel, int Weight, OpenSlotTime Time = OpenSlotTime.Any);
+public sealed record OpenSlot(string Species, int MinLevel, int MaxLevel, int Weight, OpenSlotTime Time = OpenSlotTime.Any)
+{
+    /// <summary>
+    /// The weathers the row is met under (plan 33 · GL2, the Wild Area's tables by its weather of the day), or null for
+    /// any: a row that names some is passed over while its zone's area has another (<see cref="OpenWildField.MetAt(OpenSlot, Core.TimeOfDay, Overworld.FieldWeather)"/>).
+    /// </summary>
+    public IReadOnlyList<Overworld.FieldWeather>? Weather { get; init; }
+}
 
 /// <summary>
 /// An encounter zone (plan 32, "Volumes"; OW5 lays it, OW7 spawns its Pokémon): a polygon on the ground between two
@@ -98,6 +105,13 @@ public sealed record OpenZone(string Name, string Place, IReadOnlyList<(int X, i
 {
     /// <summary>Whether a place is inside: within the polygon (by the even-odd rule) and between its heights.</summary>
     public bool Contains(OpenPos p) => p.Y >= MinY && p.Y < MaxY && OpenPolygons.Holds(Polygon, p.X, p.Z);
+
+    /// <summary>
+    /// The zone's rustling grass (plan 33 · GL2; Sword and Shield's): the table met by touching a patch of its grass that
+    /// shakes now and then (<see cref="OpenWildField.Rustles"/>), as the originals meet half their Pokémon; empty where the
+    /// zone's grass never rustles.
+    /// </summary>
+    public IReadOnlyList<OpenSlot> Rustle { get; init; } = Array.Empty<OpenSlot>();
 }
 
 /// <summary>

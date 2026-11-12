@@ -350,6 +350,13 @@ public sealed class BattleConditions
     public string? OnlyBall { get; init; }
 
     /// <summary>
+    /// The highest level a wild Pokémon may be caught at now (plan 33 · GL2; Sword and Shield's rule for the Wild Area's
+    /// strong Pokémon): Galar's row of <see cref="Models.CatchLimits"/> by the region's badges held, nought for none, which
+    /// is every battle outside Galar. A ball is refused for a wild Pokémon above it (<c>BattleCore.WhyNotItem</c>).
+    /// </summary>
+    public int CatchCeiling { get; init; }
+
+    /// <summary>
     /// The wild Pokémon was met from behind (plan 10 · F5: one seen in the grass, walked into while it faced away).
     /// Under rules with <see cref="Ruleset.BackStrikes"/> it loses its first turn (Legends: Arceus); Platinum's never read it.
     /// </summary>

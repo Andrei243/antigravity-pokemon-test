@@ -124,12 +124,18 @@ public sealed class SpeciesSources
             var open = RegionDatabase.Get(region) is { Field: FieldKind.Open } openRegion
                 ? OpenWorld.OpenRegions.Load(openRegion, withLand: false) : new List<OpenWorld.OpenMap>();
             var inTheField = new List<(string Species, string Way)>();
+            var openSites = new List<string>();
             foreach (var map in open)
             {
                 own.Add(map.Name);
                 own.UnionWith(map.Areas.Select(a => a.Key));
                 foreach (var zone in map.Zones)
+                {
                     foreach (var slot in zone.Slots) inTheField.Add((slot.Species, $"{zone.Place}: {zone.Name}, in the field"));
+                    // and its rustling grass's (plan 33 · GL2)
+                    foreach (var slot in zone.Rustle) inTheField.Add((slot.Species, $"{zone.Place}: {zone.Name}, in its rustling grass"));
+                }
+                foreach (var list in map.Sites.Values) openSites.AddRange(list);
             }
             if (world != null || open.Count > 0)
             {
@@ -149,7 +155,7 @@ public sealed class SpeciesSources
             var library = ScriptLibrary.Default;
             var scripts = Reached(library, library.All.Where(s => own.Contains(s.File) || OwnCommon(s, region)));
             var found = Gather(world == null ? new List<World>() : new List<World> { world }, null, library, rooms,
-                scripts.Contains, starters.Select(s => (s, "the professor's three")).Concat(inTheField), ownCounters: true);
+                scripts.Contains, starters.Select(s => (s, "the professor's three")).Concat(inTheField), ownCounters: true, openSites);
             return regions[region] = Make(found, HighestOf(region));
         }
     }
@@ -167,12 +173,14 @@ public sealed class SpeciesSources
                 if (everywhere != null) return everywhere;
                 var worlds = Worlds;
                 var sinnohWorld = worlds.FirstOrDefault(w => string.Equals(w.Index.Region, RegionDatabase.Sinnoh, StringComparison.OrdinalIgnoreCase));
+                var openMaps = RegionDatabase.All.Where(r => r.Field == FieldKind.Open)
+                    .SelectMany(r => OpenWorld.OpenRegions.Load(r, withLand: false)).ToList();
                 var given = RegionDatabase.All.SelectMany(r => r.Starters.Select(s => (s, $"{r.Id}'s professor's three")))
-                    // and the open regions' zones, whose Pokémon are met in the field (plan 33 · GL1)
-                    .Concat(RegionDatabase.All.Where(r => r.Field == FieldKind.Open)
-                        .SelectMany(r => OpenWorld.OpenRegions.Load(r, withLand: false))
-                        .SelectMany(m => m.Zones.SelectMany(z => z.Slots.Select(s => (s.Species, $"{z.Place}: {z.Name}, in the field")))));
-                var found = Gather(worlds, sinnohWorld, ScriptLibrary.Default, Rooms().ToList(), _ => true, given, ownCounters: false);
+                    // and the open regions' zones, whose Pokémon are met in the field (plan 33 · GL1), with their rustling
+                    // grass's (GL2)
+                    .Concat(openMaps.SelectMany(m => m.Zones.SelectMany(z => z.Slots.Concat(z.Rustle).Select(s => (s.Species, $"{z.Place}: {z.Name}, in the field")))));
+                var found = Gather(worlds, sinnohWorld, ScriptLibrary.Default, Rooms().ToList(), _ => true, given, ownCounters: false,
+                    openMaps.SelectMany(m => m.Sites.Values.SelectMany(v => v)));
                 return everywhere = Make(found, PokemonDatabase.GetAll().Max(s => s.DexNumber));
             }
         }
@@ -284,9 +292,11 @@ public sealed class SpeciesSources
     /// Points' exchange, which is Sinnoh's Battle Frontier), where false counts every counter of <c>marts.json</c>.
     /// </summary>
     private static Found Gather(IReadOnlyList<World> worlds, World? tablesOf, ScriptLibrary scripts, List<MapFile> rooms,
-        Func<Script, bool> scriptOf, IEnumerable<(string Species, string Way)>? given, bool ownCounters)
+        Func<Script, bool> scriptOf, IEnumerable<(string Species, string Way)>? given, bool ownCounters, IEnumerable<string>? sites = null)
     {
         var f = new Found();
+        // The evolution sites an open region's places name (plan 33 · GL2: the Wild Area's Stone Arch)
+        foreach (string site in sites ?? Array.Empty<string>()) f.sites.Add(site);
         // What the region hands over by no script (its briefcase of three)
         foreach (var (species, way) in given ?? Array.Empty<(string, string)>()) f.Species(species, way);
 

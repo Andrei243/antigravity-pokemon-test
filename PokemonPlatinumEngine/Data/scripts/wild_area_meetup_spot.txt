@@ -1,0 +1,107 @@
+# The Wild Area's Meetup Spot (plan 33 · GL2): the train from Wedgehurst stops here short of Motostoke, and Galar's
+# first chapter goes on on foot. VAR_GALAR_STORY is postwick.txt's count: 11 aboard the train, 12 in the Wild Area
+# (Motostoke's steps open at 13, plan 33 · GL4). VAR_GALAR_WATTS is the Watts the player holds (docs/mechanics/rulings.md,
+# "The Wild Area": a story variable, as the Battle Subway keeps its run), earned at the dens of plan 33 · GL3.
+
+
+# Off the train at the station: the line ahead is blocked, so Hop and the player walk the rest of the way
+script OnEnter
+  if var VAR_GALAR_STORY != 11 end
+  scene "The train stops short"
+  faceto player hop_wildarea
+  speaker "Hop"
+  say "Wooloo on the line again! The driver says we could be sat here till teatime."
+  say "Motostoke's only on the far side of the Wild Area, though. We'll walk it! There's no better way to meet strong Pokémon."
+  say "See you at the steps under the city, {player}. Last one there buys the curry!"
+  setflag FLAG_GALAR_HIDE_HOP_WILDAREA
+  clearflag FLAG_GALAR_HIDE_HOP_RIVERBANK
+  setvar VAR_GALAR_STORY 12
+  objective galarWildArea
+  endscene
+  end
+
+
+# The station's attendant: the train back to Wedgehurst, and north again from there
+script Attendant
+  speaker "Station Attendant"
+  say "The line north is blocked by Wooloo, I'm afraid. Trains still run back south to Wedgehurst, though."
+  ask "Take the train to Wedgehurst?"
+  if no goto Stay
+  warp "Wedgehurst_Station" 4 3
+  end
+label Stay
+  say "Enjoy the Wild Area! Do keep an eye on the weather. It changes the Pokémon about as much as the scenery."
+  end
+
+
+# The Watt trader: the Watts the dens' light gives for things a Trainer can use
+script WattTrader
+  speaker "Watt Trader"
+  say "Welcome! I trade in Watts, the energy the dens' light gives off. You have {var:VAR_GALAR_WATTS} W."
+label Menu
+  choose "What would you like?" "Exp. Candy S: 800 W" "Exp. Candy M: 2,000 W" "Dynamax Candy: 3,000 W" "Bottle Cap: 5,000 W" "Nothing, thanks"
+  if result == 0 goto CandyS
+  if result == 1 goto CandyM
+  if result == 2 goto Dynamax
+  if result == 3 goto Cap
+  say "Come back with more Watts! Touch a den's beam of light and they're yours."
+  end
+label CandyS
+  if var VAR_GALAR_WATTS < 800 goto Short
+  addvar VAR_GALAR_WATTS -800
+  give "Exp. Candy S"
+  goto Sold
+label CandyM
+  if var VAR_GALAR_WATTS < 2000 goto Short
+  addvar VAR_GALAR_WATTS -2000
+  give "Exp. Candy M"
+  goto Sold
+label Dynamax
+  if var VAR_GALAR_WATTS < 3000 goto Short
+  addvar VAR_GALAR_WATTS -3000
+  give "Dynamax Candy"
+  goto Sold
+label Cap
+  if var VAR_GALAR_WATTS < 5000 goto Short
+  addvar VAR_GALAR_WATTS -5000
+  give "Bottle Cap"
+label Sold
+  say "A pleasure doing business! You have {var:VAR_GALAR_WATTS} W left."
+  goto Menu
+label Short
+  say "Not quite enough Watts for that one, I'm afraid."
+  goto Menu
+
+
+# The Ball Guy: a Poké Ball of some kind for every Trainer, once a day
+script BallGuy
+  speaker "Ball Guy"
+  if flag FLAG_DAILY_GALAR_BALL_GUY goto Tomorrow
+  say "Balls! I love Poké Balls! Every shape, every colour. Here, have one of today's favourites!"
+  setflag FLAG_DAILY_GALAR_BALL_GUY
+  random 6
+  if result == 0 goto Great
+  if result == 1 goto Quick
+  if result == 2 goto Dusk
+  if result == 3 goto Heal
+  if result == 4 goto Net
+  give "Repeat Ball"
+  end
+label Great
+  give "Great Ball"
+  end
+label Quick
+  give "Quick Ball"
+  end
+label Dusk
+  give "Dusk Ball"
+  end
+label Heal
+  give "Heal Ball"
+  end
+label Net
+  give "Net Ball"
+  end
+label Tomorrow
+  say "Come back tomorrow! I'll have a new favourite by then. I always do."
+  end

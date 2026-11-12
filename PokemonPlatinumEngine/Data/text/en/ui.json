@@ -905,6 +905,7 @@
     "galarGarden": "Hop wants a battle in the professor's garden.",
     "galarLake": "Go down to the lakeside with Hop now the night has come.",
     "galarTrain": "Board the train at Wedgehurst Station.",
+    "galarWildArea": "The train stopped short of Motostoke. Cross the Wild Area north to the steps under the city.",
     "galarFree": "That is as far as the line runs for now. Galar's south is yours to explore."
   },
 
@@ -3490,6 +3491,15 @@
     "youHaveNoBalls": "You have no balls left!",
     "safariBallsAreFor": "Safari Balls are for the Great Marsh.",
     "sportBallsAreFor": "Sport Balls are for the Bug-Catching Contest.",
+    "raidBegins": "The den's energy surges! {pokemon} grew to a giant's size!",
+    "raidShieldUp": "{pokemon} is wrapped in a barrier of Dynamax energy!",
+    "raidShieldBroke": "A shield of {pokemon}'s barrier broke! {n} still stand.",
+    "raidShieldDown": "{pokemon}'s barrier fell!",
+    "raidBackOnItsFeet": "{pokemon} is back on its feet!",
+    "raidBlownOut": "The storm of Dynamax energy blew everyone out of the den!",
+    "raidActsAgain": "{pokemon} is still raging!",
+    "raidNoSwitch": "Each raider fights with the Pokémon they came with!",
+    "tooStrongToCatch": "It's too strong to be caught yet! Win more badges first.",
     "theTrainerBlockedThe": "The Trainer blocked the Ball! Don't be a thief!",
     "thereAreTwoPokemon": "There are two Pokémon out! The Ball can't be aimed!",
     "thereATimeAnd": "There's a time and place for everything, but not now.",

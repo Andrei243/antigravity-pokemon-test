@@ -270,6 +270,30 @@
                     "Day",
                     "Night"
                   ]
+                },
+                "weather": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "enum": [
+                      "Clear",
+                      "Cloudy",
+                      "Rain",
+                      "HeavyRain",
+                      "Thunderstorm",
+                      "Snow",
+                      "HeavySnow",
+                      "Blizzard",
+                      "Hail",
+                      "Fog",
+                      "Sandstorm",
+                      "Ash",
+                      "Drought",
+                      "Abnormal"
+                    ]
+                  }
                 }
               },
               "required": [
@@ -285,6 +309,15 @@
           },
           "cap": {
             "type": "integer"
+          },
+          "rustle": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/properties/zones/items/properties/slots/items"
+            }
           }
         },
         "required": [
@@ -690,6 +723,15 @@
           "polygon"
         ],
         "additionalProperties": false
+      }
+    },
+    "evolutionSites": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
       }
     }
   },

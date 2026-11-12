@@ -1,0 +1,50 @@
+{
+  // The Wild Area's Meetup Spot (plan 33 · GL2): the station at the foot of the railway's bank where the train north
+  // stops, with its attendant, the Watt trader, the Ball Guy and Hop when the train first stops short. A little grass of
+  // the gentlest Pokémon of the Wild Area round it. Scripts: Data/scripts/wild_area_meetup_spot.txt
+  "markers": [
+    { "name": "wild_area_station", "at": [0, 2.8, -318], "yaw": 180 },
+    { "name": "wild_area_meetup", "at": [0, 2.8, -336], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "meetup_spot",
+      "polygon": [[-36, -356], [-14, -356], [-14, -326], [-36, -326]],
+      "minY": -1, "maxY": 12,
+      "slots": [
+        { "species": "Skwovet", "minLevel": 6, "maxLevel": 9, "weight": 30 },
+        { "species": "Rookidee", "minLevel": 6, "maxLevel": 9, "weight": 25 },
+        { "species": "Wooloo", "minLevel": 7, "maxLevel": 10, "weight": 25 },
+        { "species": "Nickit", "minLevel": 6, "maxLevel": 9, "weight": 20, "time": "Night" },
+        { "species": "Chewtle", "minLevel": 7, "maxLevel": 10, "weight": 20, "weather": ["Rain", "Thunderstorm"] }
+      ],
+      "density": 3, "cap": 3
+    }
+  ],
+  "solids": [
+    { "name": "the Wild Area's station", "min": [-12, 2, -312], "max": [12, 8, -304], "building": { "kind": "terminal", "town": "galar", "sign": "WILD AREA STATION" } }
+  ],
+  "people": [
+    {
+      "name": "wild_area_attendant", "at": [16, 2.9, -316], "yaw": 180, "look": "clerk", "displayName": "Station Attendant",
+      "script": "Attendant"
+    },
+    {
+      "name": "hop_wildarea", "at": [4, 2.8, -324], "yaw": 0, "look": "hop", "displayName": "Hop",
+      "lines": ["Motostoke's straight north, past both lakes. Mind the strong ones: if a Pokémon looks too big for your Poké Balls, it is!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_WILDAREA"
+    },
+    {
+      "name": "watt_trader", "at": [-20, 3.0, -322], "yaw": 90, "look": "clerk", "displayName": "Watt Trader",
+      "script": "WattTrader"
+    },
+    {
+      "name": "ball_guy", "at": [22, 2.9, -330], "yaw": 270, "look": "man", "displayName": "Ball Guy",
+      "script": "BallGuy"
+    }
+  ],
+  "trees": [
+    { "at": [-30, -312], "kind": "round" },
+    { "at": [32, -314], "kind": "round", "size": 1.1 }
+  ]
+}

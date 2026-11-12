@@ -1,0 +1,27 @@
+{
+  // Lake Miloch (plan 33 · GL2): the northern lake under the Giant's Seat's east side, reeds and long grass round it,
+  // Pokémon of the water's edge and a Gyarados's younger kin splashing in its shallows after rain.
+  "zones": [
+    {
+      "name": "lake_miloch",
+      "polygon": [[-16, -588], [146, -588], [146, -504], [-16, -504]],
+      "minY": -1, "maxY": 14,
+      "slots": [
+        { "species": "Chewtle", "minLevel": 12, "maxLevel": 16, "weight": 20 },
+        { "species": "Corvisquire", "minLevel": 14, "maxLevel": 16, "weight": 10 },
+        { "species": "Eldegoss", "minLevel": 14, "maxLevel": 16, "weight": 10 },
+        { "species": "Lombre", "minLevel": 14, "maxLevel": 16, "weight": 20, "weather": ["Rain", "Thunderstorm"] },
+        { "species": "Lotad", "minLevel": 12, "maxLevel": 15, "weight": 15, "weather": ["Rain"] },
+        { "species": "Ralts", "minLevel": 12, "maxLevel": 15, "weight": 15, "weather": ["Fog"] },
+        { "species": "Charjabug", "minLevel": 15, "maxLevel": 16, "weight": 15, "weather": ["Thunderstorm"] },
+        { "species": "Thievul", "minLevel": 15, "maxLevel": 16, "weight": 10, "time": "Night" }
+      ],
+      "rustle": [
+        { "species": "Wooper", "minLevel": 12, "maxLevel": 15, "weight": 20 },
+        { "species": "Tyrogue", "minLevel": 13, "maxLevel": 16, "weight": 10 },
+        { "species": "Pikachu", "minLevel": 12, "maxLevel": 15, "weight": 10, "weather": ["Thunderstorm"] }
+      ],
+      "density": 3, "cap": 6
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  // The Giant's Seat (plan 33 · GL2): a dome of rock and thin turf north-west of the lakes, sandstorms and hard sun on its
+  // top, and the Stone Arch at its eastern foot (terrain's carve/wild_area.json), under which a Galarian Yamask that has
+  // taken enough hits becomes Runerigus as it next grows a level.
+  "evolutionSites": ["Stone Arch"],
+  "markers": [
+    { "name": "stone_arch", "at": [-44, 4.2, -528], "yaw": 90 }
+  ],
+  "zones": [
+    {
+      "name": "giants_seat",
+      "polygon": [[-146, -588], [-24, -588], [-24, -504], [-146, -504]],
+      "minY": -1, "maxY": 20,
+      "slots": [
+        { "species": "Roggenrola", "minLevel": 12, "maxLevel": 16, "weight": 20 },
+        { "species": "Rolycoly", "minLevel": 12, "maxLevel": 16, "weight": 20 },
+        { "species": "Yamask-Galar", "minLevel": 13, "maxLevel": 16, "weight": 15 },
+        { "species": "Silicobra", "minLevel": 13, "maxLevel": 16, "weight": 25, "weather": ["Sandstorm"] },
+        { "species": "Baltoy", "minLevel": 13, "maxLevel": 16, "weight": 15, "weather": ["Sandstorm", "Drought"] },
+        { "species": "Sizzlipede", "minLevel": 13, "maxLevel": 16, "weight": 20, "weather": ["Drought"] },
+        { "species": "Delibird", "minLevel": 13, "maxLevel": 16, "weight": 20, "weather": ["Snow", "HeavySnow"] },
+        // The strong one, coiled on the top
+        { "species": "Steelix", "minLevel": 40, "maxLevel": 42, "weight": 2 }
+      ],
+      "rustle": [
+        { "species": "Yamask-Galar", "minLevel": 13, "maxLevel": 16, "weight": 20 },
+        { "species": "Stonjourner", "minLevel": 14, "maxLevel": 16, "weight": 5 },
+        { "species": "Diglett", "minLevel": 12, "maxLevel": 15, "weight": 20 }
+      ],
+      "density": 3, "cap": 6
+    }
+  ]
+}

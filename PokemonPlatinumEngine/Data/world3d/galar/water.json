@@ -1,6 +1,10 @@
 {
   // The professor's lake at the north end of Route 2 (plan 33 · GL1), in the bowl terrain/shape.json lays
   "lakes": [
-    { "name": "the lake", "polygon": [[34, -274], [50, -268], [58, -252], [52, -234], [36, -228], [20, -234], [12, -250], [18, -266]], "level": 1.6 }
+    { "name": "the lake", "polygon": [[34, -274], [50, -268], [58, -252], [52, -234], [36, -228], [20, -234], [12, -250], [18, -266]], "level": 1.6 },
+    // The Wild Area's two lakes (plan 33 · GL2), in the bowls terrain/wild_area.json lays: Lake Axewell in its middle and
+    // Lake Miloch further north, under the Giant's Seat's east side
+    { "name": "Lake Axewell", "polygon": [[64, -450], [58, -432], [44, -425], [26, -434], [18, -446], [20, -462], [30, -472], [46, -474], [60, -466], [66, -458]], "level": 1.4 },
+    { "name": "Lake Miloch", "polygon": [[92, -545], [86, -530], [72, -523], [55, -530], [48, -543], [50, -558], [60, -567], [76, -568], [88, -560], [93, -552]], "level": 1.9 }
   ]
 }

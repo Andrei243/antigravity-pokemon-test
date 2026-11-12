@@ -386,7 +386,7 @@ public sealed partial class BattleCore
     {
         if (Result != BattleResult.None) return;
         var ending = new List<Battler>();
-        foreach (var b in AllBattlers.Where(b => b.IsActive && b.Volatile.Dynamaxed))
+        foreach (var b in AllBattlers.Where(b => b.IsActive && b.Volatile.Dynamaxed && !KeepsItsDynamax(b)))
             if (++b.Volatile.DynamaxTurns >= 3) ending.Add(b);
         // (BySpeed may toss a coin between equals: asked only when someone's Dynamax ends, so nothing else draws for it)
         if (ending.Count == 0) return;

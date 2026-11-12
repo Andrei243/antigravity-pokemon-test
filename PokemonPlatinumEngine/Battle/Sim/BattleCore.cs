@@ -98,6 +98,9 @@ public sealed class CoreSetup
     /// <summary>A den's Mega Dynamax boss (plan 06 · R20c): the wild side has a Key Stone and a Mega Max Band.</summary>
     public bool MegaMaxDen { get; init; }
 
+    /// <summary>A Max Raid den's battle (plan 33 · GL3): its stars and the three raiders; null for any other.</summary>
+    public RaidTerms? Raid { get; init; }
+
     /// <summary>
     /// The difficulty chosen at NEW GAME (plan 13 · V2): under Easy a battle gives three halves of the EXP
     /// (<see cref="DifficultyRules.ScaleExp"/>). Normal unless given, which changes nothing; a record of the battle keeps it.
@@ -386,6 +389,8 @@ public sealed partial class BattleCore : IBattleContext
             NoRewards = true;
             NoBattleItems = true;
         }
+        // Nothing is used from the bag in a raid (plan 33 · GL3); its catch is the den's, after the battle
+        if (IsRaid) NoBattleItems = true;
         int slots = Format.PlacesOf(BattleSide.Player);
         // A horde of fewer than five is fought with as many places as it has Pokémon
         int foeSlots = IsHorde ? Math.Min(Format.PlacesOf(BattleSide.Enemy), WildPokemon.Count) : Format.PlacesOf(BattleSide.Enemy);
@@ -408,7 +413,7 @@ public sealed partial class BattleCore : IBattleContext
         Field.Battlers = () => AllBattlers;
 
         // The first Pokémon in: the first ones able to fight (a partner sends its own first)
-        var leads = PlayerParty.Members.Where(p => !p.IsFainted).Take(Partner != null ? 1 : slots).ToList();
+        var leads = PlayerParty.Members.Where(p => !p.IsFainted).Take(Partner != null || IsRaid ? 1 : slots).ToList();
         if (leads.Count == 0) leads.Add(PlayerParty.Members.First());
         if (Partner != null) leads.Add(Partner.Party.Members.First(p => !p.IsFainted));
         for (int i = 0; i < leads.Count; i++) PlayerSlots[i].Pokemon = leads[i];
@@ -436,6 +441,8 @@ public sealed partial class BattleCore : IBattleContext
         SetUpTheTurntables();
         // A sky battle's teams can all fly (plan 14 · B2)
         CheckTheSky();
+        // A raid's three raiders beside the player (plan 33 · GL3)
+        SetUpTheRaid(setup.Raid);
     }
 
     // ---------------------------------------------------------------- asking and answering
@@ -564,7 +571,8 @@ public sealed partial class BattleCore : IBattleContext
     private IBattleController? ControllerOf(Battler b)
     {
         if (!b.IsPlayerSide) return enemyController;
-        if (b.Trainer != null) return partnerController;
+        // (a raider beside the player is thought for as a partner is: plan 33 · GL3)
+        if (b.Trainer != null) return partnerController ?? (IsRaid ? TrainerAi.Instance : null);
         if (Kind == BattleKind.CatchingLesson) return TrainerAi.Instance;
         return playerController;
     }
@@ -769,6 +777,8 @@ public sealed partial class BattleCore : IBattleContext
         AnnounceFormat();
         // A trial's totem is wrapped in its aura (plan 23 · Z6)
         RaiseTheTotemsAura();
+        // A raid's boss Dynamaxes for the whole battle (plan 33 · GL3)
+        BeginTheRaid();
         OpenUnderTheSky();
         SwitchInChecks();
     }
@@ -895,6 +905,9 @@ public sealed partial class BattleCore : IBattleContext
             yield break;
         }
 
+        // A raid's boss of four or five stars acts again before the turn's end (plan 33 · GL3)
+        foreach (var request in TheBossActsAgain()) yield return request;
+        if (Result != BattleResult.None) yield break;
         EndOfTurn();
         if (Result != BattleResult.None) yield break;
         WatchTheRed();
@@ -1277,6 +1290,7 @@ public sealed partial class BattleCore : IBattleContext
         NoteFaint(down);
         faintedOnTurn[down.Side] = Turn;
         CountTheFallen(down);
+        CountTheRaidFall(down);
         var fell = Say(Text.Of("battle.fainted", ("pokemon", down.Name))).With(new Fainted(down.Place));
         // Whoever loved it no longer does, from the line that tells of its fall (plan 09 · L2)
         foreach (var told in letGo) fell.With(told);
@@ -1323,9 +1337,11 @@ public sealed partial class BattleCore : IBattleContext
             EndTheRoyal();
             return;
         }
+        // A raid ends at the raiders' fourth fall, or as the boss falls, and never because the raiders are all down at once (plan 33 · GL3)
+        if (EndTheRaid()) return;
         // Beside a partner the player is beaten once their own party is down, whatever the partner has left
         // (BattleControllerPlayer_CheckBattleOver, for a battle with an AI partner)
-        bool beaten = Partner != null ? !PlayerParty.Members.Any(p => !p.IsFainted) : SideDefeated(PlayerSlots);
+        bool beaten = !IsRaid && (Partner != null ? !PlayerParty.Members.Any(p => !p.IsFainted) : SideDefeated(PlayerSlots));
         if (beaten)
         {
             // subscript_battle_lost: a share of the money, by the team's highest level and the badges

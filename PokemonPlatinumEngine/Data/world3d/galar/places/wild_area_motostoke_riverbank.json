@@ -1,0 +1,62 @@
+{
+  // Motostoke Riverbank (plan 33 · GL2): the Wild Area's northern edge under the city's bank, where the steps go up to
+  // Motostoke. They are closed while the city readies the opening ceremony (plan 33 · GL4 opens them), and a League
+  // steward turns Trainers back. Scripts: Data/scripts/wild_area_motostoke_riverbank.txt
+  "markers": [
+    { "name": "motostoke_steps", "at": [0, 4.6, -622], "yaw": 180 },
+    { "name": "motostoke_steps_back", "at": [0, 4.5, -606], "yaw": 0 }
+  ],
+  "triggers": [
+    // The foot of the steps up to Motostoke: closed until the ceremony
+    { "name": "motostoke_steps", "box": { "min": [-6, 2, -626], "max": [6, 10, -616] }, "script": "MotostokeSteps" }
+  ],
+  "zones": [
+    {
+      "name": "motostoke_riverbank",
+      "polygon": [[-146, -624], [-12, -624], [-12, -594], [-146, -594]],
+      "minY": -1, "maxY": 16,
+      "slots": [
+        { "species": "Rookidee", "minLevel": 11, "maxLevel": 14, "weight": 20 },
+        { "species": "Nickit", "minLevel": 11, "maxLevel": 14, "weight": 15 },
+        { "species": "Dottler", "minLevel": 12, "maxLevel": 14, "weight": 15 },
+        { "species": "Yamper", "minLevel": 11, "maxLevel": 14, "weight": 20, "weather": ["Thunderstorm"] },
+        { "species": "Snom", "minLevel": 11, "maxLevel": 14, "weight": 20, "weather": ["Snow"] },
+        { "species": "Wingull", "minLevel": 11, "maxLevel": 14, "weight": 20, "weather": ["Rain"] }
+      ],
+      "rustle": [
+        { "species": "Pancham", "minLevel": 11, "maxLevel": 14, "weight": 15 },
+        { "species": "Klink", "minLevel": 12, "maxLevel": 14, "weight": 15 }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "motostoke_riverbank_east",
+      "polygon": [[12, -624], [146, -624], [146, -594], [12, -594]],
+      "minY": -1, "maxY": 16,
+      "slots": [
+        { "species": "Skwovet", "minLevel": 11, "maxLevel": 14, "weight": 20 },
+        { "species": "Bunnelby", "minLevel": 11, "maxLevel": 14, "weight": 20 },
+        { "species": "Corvisquire", "minLevel": 14, "maxLevel": 16, "weight": 10 },
+        { "species": "Vulpix", "minLevel": 12, "maxLevel": 14, "weight": 15, "weather": ["Drought"] }
+      ],
+      "density": 3, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "hop_riverbank", "at": [-6, 4.5, -610], "yaw": 0, "look": "hop", "displayName": "Hop",
+      "lines": ["Shut! Can you believe it? They're getting the city ready for the opening ceremony. Still, more time to catch Pokémon!"],
+      "hiddenBy": "FLAG_GALAR_HIDE_HOP_RIVERBANK"
+    },
+    {
+      "name": "league_steward", "at": [5, 4.6, -612], "yaw": 0, "look": "clerk", "displayName": "League Steward",
+      "lines": ["The steps up to Motostoke are closed while the city gets ready for the opening ceremony. Enjoy the Wild Area meanwhile!"]
+    }
+  ],
+  "trees": [
+    { "at": [-24, -604], "kind": "round" },
+    { "at": [24, -606], "kind": "round", "size": 1.1 },
+    { "at": [-80, -618], "kind": "pine" },
+    { "at": [96, -616], "kind": "pine", "size": 1.1 }
+  ]
+}
