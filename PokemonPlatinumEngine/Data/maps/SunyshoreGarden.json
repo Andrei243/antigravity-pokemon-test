@@ -52,8 +52,8 @@
       "id": "garden_keeper",
       "name": "Garden Keeper",
       "npcType": "aroma_lady",
-      "x": 6,
-      "y": 10,
+      "x": 5,
+      "y": 9,
       "facing": "Right",
       "script": "GardenKeeper"
     },

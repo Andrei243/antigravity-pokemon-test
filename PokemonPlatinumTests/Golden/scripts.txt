@@ -9146,7 +9146,7 @@ way -
   + FLAG_DAILY_VISIT_TOMORROW_SUNYSHORE_CITY_NORTHEAST_HOUSE
   + FLAG_TALKED_TO_JULIA_SUNYSHORE_CITY_NORTHEAST_HOUSE
 === SunyshoreGarden.GardenKeeper
-from Garden Keeper at 6,10 of SunyshoreGarden
+from Garden Keeper at 5,9 of SunyshoreGarden
 way 0
   Garden Keeper> Welcome to the garden! The craftswoman lets me keep it, and I let anyone plant in it.
   Garden Keeper> What would you like?
