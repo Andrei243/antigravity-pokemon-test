@@ -96,7 +96,7 @@ public partial class GameEngine
                 choosingForCare = true;
                 flow.State = GameState.BagMenu;
                 flow.BagScreen.Registered = flow.RegisteredItem;
-                flow.BagScreen.OpenToPick("berries");
+                flow.BagScreen.OpenToPick("meal");
                 return;
             case CareRequest.Close:
                 CloseCare();

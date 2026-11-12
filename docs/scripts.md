@@ -888,6 +888,17 @@ was started with; anyone else is no friend's trainer and has nothing to battle.
 | `friend before`, `friend after` | Says the line their file chose to say before the battle, or after it (`friends.line.N` of the table), under their name. |
 | `friend battle` | The battle at level 50: copies of the player's team but its Eggs, and of the friend's own team made from their file, under the Frontier's battle rules (nothing won, paid, learnt or used up) and every routine of the trainer AI. `RESULT` 1 won, 0 lost; a win beats them for the day and counts as a trainer beaten. |
 
+### Treats
+
+Plan 35 · BN3; `docs/mechanics/rulings.md`, "Care". The bakers' one command, `treat`; the confectioners sell with `shop "treats"`.
+A flavour is `spicy`, `dry`, `sweet`, `bitter` or `sour`, a berry's flavour its strongest; `most` (or nothing) is the flavour
+the bag has most berries of, three at least.
+
+| Command | What it does |
+|---|---|
+| `treat can [most\|spicy\|dry\|sweet\|bitter\|sour\|mixed]` | `RESULT` 1 when a bake could be made: three berries of the flavour, or for `mixed` one of each of the five; else 0. |
+| `treat bake [most\|spicy\|dry\|sweet\|bitter\|sour\|mixed]` | Takes the berries (the most plentiful kind first) and puts the treat in the bag: a grade-2 treat of the flavour, or the Rainbow Loaf for `mixed`. `RESULT` 1 and `{item}` naming it, or 0 and nothing taken. |
+
 ### The crafting kit
 
 Plan 39 · CR1; `docs/mechanics/rulings.md`, "Materials, crafting and cooking". The kit is a key item of ours (`Crafting Kit`,

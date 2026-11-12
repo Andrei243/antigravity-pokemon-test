@@ -161,7 +161,7 @@ Each session writes the style guide first for anything drawn; keeps its rules GP
 
 - [x] BN1 The care book (2026-11-12, as built: `Models/Care.cs`, `Core/GameEngine.Care.cs`, `SaveData.Care`, `FriendshipEvent.Groomed`, `CampVisit` and `CampCare` over the book, `BattleEngine.SentOutShown`; the rulings' "Care" with every number; `CareTests`)
 - [x] BN2 The care close-up (2026-11-12, as built: `UI/CareScreen.cs`, `Graphics/CareStage.cs`, `UI/ModernUi.Care.cs`, `GameState.Care`, `PokePose.Happy`, `Sleepy`, `LookAt`, `Eating`, `OptionRow.Care` (TEAM CARE), the start menu's rows shrinking past ten; `CareScreenTests`; the harness's `bonding` mode, shots bn01 to bn10 looked at. Owed: the pointer for the hand (plan 12 · Q6, `IPointable`), the five moods side by side and `profile` with the close-up open)
-- [ ] BN3 Treats
+- [x] BN3 Treats (2026-11-12, as built: `ItemData.Treat`, items 9600 to 9610, `Models/Treats.cs`, `marts.json`'s `treats`, `common.TreatCounter` and `common.TreatBaker`, `Op.Treat` (`treat can`, `treat bake`), the two people in Veilstone's store, Goldenrod's, Celadon's (Kanto's) and Lilycove's stores and on Castelia's avenue, the close-up's TREAT on berries and treats; `TreatTests`. Owed: the treats' own icons (they show the bag's plain icon), the bag's USE of a treat on a Pokémon of the team, and shots bn20 to bn29)
 - [ ] BN4 The follower's mood and its words
 - [ ] BN5 The pasture
 - [ ] BN6 The jobs at the pasture

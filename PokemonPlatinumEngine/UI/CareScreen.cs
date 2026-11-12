@@ -199,15 +199,16 @@ public sealed class CareScreen
     public bool Feed(ItemData item, Inventory bag)
     {
         if (Pokemon is not { } p || Page is not { } page || bag.GetQuantity(item) == 0) return false;
-        bool ate = item.Berry != null && CareRules.FeedBerry(page, p, Day, item);
+        bool food = item.Berry != null || item.Treat != null;
+        bool ate = item.Treat != null ? Treats.Feed(page, p, Day, item) : item.Berry != null && CareRules.FeedBerry(page, p, Day, item);
         if (!ate)
         {
-            Refuse(item.Berry == null ? Text.Of("camp.note.noBerry") : Text.Of("camp.note.full", ("name", p.DisplayName)));
+            Refuse(!food ? Text.Of("camp.note.noBerry") : Text.Of("camp.note.full", ("name", p.DisplayName)));
             return false;
         }
         bag.RemoveItem(item);
         eatingFor = 0f;
-        var taste = CareRules.TasteOf(CareRules.StrongestFlavour(item), p.Nature);
+        var taste = Treats.TasteOf(item, p.Nature);
         Note = Text.Of($"care.note.ate.{taste}", ("name", p.DisplayName), ("item", item.DisplayName));
         AudioManager.PlayCry(p, CryMode.FieldEvent);
         return true;

@@ -11241,3 +11241,15 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   start menu while the FOLLOWER row is on, TEAM CARE is in force (on under the modern rules unless turned off) or the
   crafting kit is in the bag. The start menu's rows are 74 tall up to ten entries and shorter beyond, so eleven or twelve
   still fit the screen.
+- **Treats** (plan 35 · BN3; `Models/Treats.cs`, `ItemData.Treat`, items 9600 to 9610 of `tools/DataImporter/Overrides/items.json`;
+  the names are ours): five sold at 200 (grade 1: the Pepper Bite spicy, the Crisp Wafer dry, the Honey Drop sweet, the Cocoa
+  Nib bitter, the Tart Chew sour), five a baker makes for nothing from three berries whose strongest flavour is theirs (grade
+  2: the Pepper Cake, the Toasted Rusk, the Honey Cake, the Cocoa Torte, the Citrus Tart) and the Rainbow Loaf from one berry of
+  each of the five (grade 3). A treat fills its grade's pips; its friendship is its grade's (grade 1: 4/3/2, grade 2: 6/4/3,
+  grade 3: 8/6/4, by the three bands of friendship) doubled for the flavour the nature likes and halved (rounded down) for the
+  one it dislikes; the loaf counts as liked by every nature with a taste, and plain for the five with none. Its mood is the
+  meal's by the same taste. The baker takes the most plentiful berries of the flavour first, and with no flavour named bakes
+  the one the bag has most berries of (three at least, the first of spicy, dry, sweet, bitter and sour on a tie). The
+  confectioner (`common.TreatCounter`, `shop "treats"`) and the baker (`common.TreatBaker`, `treat can`, `treat bake`) stand
+  in Veilstone's Department Store's basement, Goldenrod's and Celadon's Department Stores' ground floors, Lilycove's and on
+  Castelia's avenue. A treat is fed at the care close-up's TREAT, which opens the bag on a berry or a treat.

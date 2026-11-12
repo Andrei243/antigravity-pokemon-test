@@ -98,6 +98,9 @@ public class ItemData
     /// <summary>A berry's growing and its taste (plan 06 · R14a), from the original's <c>berryData</c>; null for anything else.</summary>
     public BerryData? Berry { get; set; }
 
+    /// <summary>A treat of ours (plan 35 · BN3): its flavour (none for the mixed one, which every nature likes) and its grade, 1 to 3; null for anything else.</summary>
+    public TreatData? Treat { get; set; }
+
     // ---- The later mechanics' items
 
     /// <summary>A Mega Stone: the species it belongs to and the form it brings out.</summary>
@@ -160,4 +163,14 @@ public class ItemStack
         Data = data;
         Quantity = quantity;
     }
+}
+
+/// <summary>
+/// A treat (plan 35 · BN3; docs/mechanics/rulings.md, "Care"): its flavour by name (Spicy, Dry, Sweet, Bitter, Sour) or null
+/// for the mixed one, and its grade from 1 (sold) to 3 (the mixed), which is the pips of fullness it fills and its friendship.
+/// </summary>
+public sealed class TreatData
+{
+    public string? Flavor { get; set; }
+    public int Grade { get; set; } = 1;
 }

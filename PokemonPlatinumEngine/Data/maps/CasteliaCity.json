@@ -890,6 +890,24 @@
   ],
   "npcs": [
     {
+      "id": "treat_confectioner",
+      "name": "Confectioner",
+      "npcType": "Clerk",
+      "x": 10,
+      "y": 6,
+      "facing": "Down",
+      "script": "TreatCounter"
+    },
+    {
+      "id": "treat_baker",
+      "name": "Baker",
+      "npcType": "Clerk",
+      "x": 12,
+      "y": 6,
+      "facing": "Down",
+      "script": "TreatBaker"
+    },
+    {
       "id": "harlequin",
       "name": "Harlequin",
       "npcType": "harlequin",

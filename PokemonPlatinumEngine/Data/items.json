@@ -14828,6 +14828,170 @@
     "flingPower": 100
   },
   {
+    "id": 9600,
+    "name": "Pepper Bite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 200,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A little cake with a warm kick of pepper. Pokémon that like spicy food love it.",
+    "treat": {
+      "flavor": "Spicy",
+      "grade": 1
+    }
+  },
+  {
+    "id": 9601,
+    "name": "Crisp Wafer",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 200,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A thin, crunchy wafer, not sweet at all. Pokémon that like dry food love it.",
+    "treat": {
+      "flavor": "Dry",
+      "grade": 1
+    }
+  },
+  {
+    "id": 9602,
+    "name": "Honey Drop",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 200,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A soft drop of honey cake. Pokémon that like sweet food love it.",
+    "treat": {
+      "flavor": "Sweet",
+      "grade": 1
+    }
+  },
+  {
+    "id": 9603,
+    "name": "Cocoa Nib",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 200,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A dark little bite with a bitter edge. Pokémon that like bitter food love it.",
+    "treat": {
+      "flavor": "Bitter",
+      "grade": 1
+    }
+  },
+  {
+    "id": 9604,
+    "name": "Tart Chew",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 200,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A chewy sweet that makes the mouth pucker. Pokémon that like sour food love it.",
+    "treat": {
+      "flavor": "Sour",
+      "grade": 1
+    }
+  },
+  {
+    "id": 9605,
+    "name": "Pepper Cake",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A baker's cake made from three spicy berries. It fills a Pokémon up well.",
+    "treat": {
+      "flavor": "Spicy",
+      "grade": 2
+    }
+  },
+  {
+    "id": 9606,
+    "name": "Toasted Rusk",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A baker's rusk made from three dry berries. It fills a Pokémon up well.",
+    "treat": {
+      "flavor": "Dry",
+      "grade": 2
+    }
+  },
+  {
+    "id": 9607,
+    "name": "Honey Cake",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A baker's cake made from three sweet berries. It fills a Pokémon up well.",
+    "treat": {
+      "flavor": "Sweet",
+      "grade": 2
+    }
+  },
+  {
+    "id": 9608,
+    "name": "Cocoa Torte",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A baker's torte made from three bitter berries. It fills a Pokémon up well.",
+    "treat": {
+      "flavor": "Bitter",
+      "grade": 2
+    }
+  },
+  {
+    "id": 9609,
+    "name": "Citrus Tart",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A baker's tart made from three sour berries. It fills a Pokémon up well.",
+    "treat": {
+      "flavor": "Sour",
+      "grade": 2
+    }
+  },
+  {
+    "id": 9610,
+    "name": "Rainbow Loaf",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A baker's loaf made from one berry of every flavour. Every Pokémon with a taste loves it.",
+    "treat": {
+      "grade": 3
+    }
+  },
+  {
     "id": 9700,
     "name": "Stellar Tera Shard",
     "pocket": "Items",
