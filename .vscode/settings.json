@@ -15,6 +15,7 @@
     { "fileMatch": ["PokemonPlatinumEngine/Data/materials.json"], "url": "./docs/schemas/materials.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/card-looks.json"], "url": "./docs/schemas/card-looks.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/photo-spots.json"], "url": "./docs/schemas/photo-spots.schema.json" },
+    { "fileMatch": ["PokemonPlatinumEngine/Data/photo-tour.json"], "url": "./docs/schemas/photo-tour.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/recipes.json"], "url": "./docs/schemas/recipes.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/powers.json"], "url": "./docs/schemas/powers.schema.json" },
     { "fileMatch": ["PokemonPlatinumEngine/Data/training.json"], "url": "./docs/schemas/training.schema.json" },

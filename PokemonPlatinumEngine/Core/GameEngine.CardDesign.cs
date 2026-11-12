@@ -44,6 +44,8 @@ public partial class GameEngine
     {
         flow.CardDesign = save?.CardDesign?.Copy();
         flow.PhotoBook.Load(save?.PhotoBook);
+        // The photo tour's report (plan 44 · SD5)
+        flow.PhotoTour.Load(save?.PhotoTour);
         cardFace = null;
         cardFaceKey = null;
         cardOwned = null;

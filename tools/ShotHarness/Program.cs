@@ -260,6 +260,7 @@ if (mode == "hearts") h.HeartsMode();
 if (mode == "bonding") h.BondingMode();
 if (mode == "gifts") h.GiftsMode();
 if (mode == "lifestyle") h.LifestyleMode();
+if (mode == "tour") h.TourMode();
 
 h.Close();
 Raylib.CloseWindow();

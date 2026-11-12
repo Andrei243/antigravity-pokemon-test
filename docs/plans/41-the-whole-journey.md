@@ -141,8 +141,9 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 
 ## Status
 
-- [ ] EG1 The hub: a region of our own, its ways in and its rules
-- [ ] EG2 Every region's Hall of Fame in one hall (its ribbons built 2026-11-09 with plan 36 · TR4: the four Champion ribbons of Kalos, Alola, Galar and Paldea as rows of ours after Platinum's eighty, added by `tools/DataImporter/Program.cs`, their `ribbonDeeds.*` words and `RibbonRules.Kind`; `RibbonRules.ChampionOf(region)` and `GiveChampion(party, region)`, which `halloffame` hands the host's region, so Hoenn's, Kalos's and Alola's Halls of Fame give their own and the rest Sinnoh's; Galar's and Paldea's wait for their regions; `TrainingHallsTests.EachRegionsHallOfFameHandsItsOwnChampionRibbon`. The entry's region, `Firsts`, the hall of Champions and the screen's tabs are still to come)
+(Two stale unticked lines of EG1 and EG2 stood here until 2026-11-12; the ribbons' note of EG2 is kept below.)
+
+- EG2's ribbons (built 2026-11-09 with plan 36 · TR4: the four Champion ribbons of Kalos, Alola, Galar and Paldea as rows of ours after Platinum's eighty, added by `tools/DataImporter/Program.cs`, their `ribbonDeeds.*` words and `RibbonRules.Kind`; `RibbonRules.ChampionOf(region)` and `GiveChampion(party, region)`, which `halloffame` hands the host's region, so Hoenn's, Kalos's and Alola's Halls of Fame give their own and the rest Sinnoh's; Galar's and Paldea's wait for their regions; `TrainingHallsTests.EachRegionsHallOfFameHandsItsOwnChampionRibbon`. The entry's region, `Firsts`, the hall of Champions and the screen's tabs came with EG2 on 2026-11-12)
 - [x] EG1 The hub: a region of our own, its ways in and its rules (2026-11-09; "EG1 as built", below)
 - [x] EG2 Every region's Hall of Fame in one hall (2026-11-12; "EG2, EG4, EG7 to EG9 as built", below)
 - [x] EG3 The plaza: stalls the player sets out and ranks up (2026-11-12; "EG3 and EG6 as built", below)
@@ -182,6 +183,21 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
 - **Owed**: the shots (`journey` mode's `eg2*` to `eg9*`, none taken this session), MP3s of the two songs for the user's ear,
   the plaza's coins as rewards (EG3), Romanian words (N6), the voices' designs for the new speakers (provisional casts), the
   user's word on Kalos's case outline, the gathering's rows for Alola, Galar and Paldea, and the town's name.
+
+## Leftovers settled (2026-11-12, after EG9)
+
+- **The town's name**: Wayhaven (decision 3's set 1a, the user's answer of 2026-11-10) on its area, its sign, its Town Map
+  places, the facility guide's lines and the harbour's welcome. The region's id stays `Hub` (the sheet says so), and so do
+  the rooms' map names (`Hub_*`) and the Fly tab's word, which is the region's id until regions have display words.
+- **Pennants from the circuit and the cases** (decision 10, EG3's owed line): the final won pays 100 pennants and a case
+  closed 40 (`Hub_Arena.txt`'s `Won`, `Hub_Office.txt`'s `CasePennants`, `plaza give`), told only when the hall had been
+  opened already (`plaza give` answers 0 the first time, before the manager or any pennants opened it, and nothing is
+  said then; `PlazaState.Give` opens the hall, so a later payment is told).
+- **Alola's row of the circuit**: Kukui on his room's team by the player's Alola starter (`alola_kukui_1` to `_3`, the court's script branching as his room does; the row names `_3`; Alola has no team beyond),
+  standing at 13,4 of the court behind `FLAG_HUB_COURT_KUKUI`, called after Diantha, whose line no longer says Kalos closes
+  the final.
+- **Still owed**: the gathering's rows for Alola, Galar and Paldea (a team of ours each and a bay of the keep), Galar's and
+  Paldea's circuit rows once their Leagues stand, the shots, the songs' MP3s, Romanian words, the voices' designs.
 
 ## EG3 and EG6 as built (2026-11-12)
 

@@ -91,15 +91,55 @@
           ""
         ]
       }
+    },
+    "hub_town.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          "Brad împodobit"
+        ]
+      }
+    },
+    "hub_town.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          "Coș cu ouă"
+        ]
+      }
+    },
+    "hub_town.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          "Steag de Anul Nou"
+        ]
+      }
+    },
+    "hub_town.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          "Inimă pe un stâlp"
+        ]
+      }
     }
   },
   "signs": {
     "TownSign": {
       "en": [
-        "The Hub\nWhere the ways between the regions meet"
+        "Wayhaven\nWhere the ways between the regions meet"
       ],
       "text": [
-        ""
+        "Wayhaven\nAici se întâlnesc drumurile dintre regiuni"
       ]
     },
     "BoardSign": {

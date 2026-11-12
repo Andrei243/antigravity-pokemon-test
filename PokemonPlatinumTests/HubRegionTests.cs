@@ -258,10 +258,10 @@ public class HubRegionTests
         }
         var team = host.Party.Members.ToList();
 
-        // Canalave's captain asks where: Kanto, the Hub, STAY. The Hub's first landing is its quay
+        // Canalave's captain asks where: Kanto, Wayhaven, STAY. Wayhaven's first landing is its quay
         host.Answers.Enqueue(1);
         Play(host, ScriptLibrary.Default.Find(FieldScripts.Attendant)!, captain);
-        Assert.Equal("Hub", host.Asked.Last().Answer);
+        Assert.Equal("Wayhaven", host.Asked.Last().Answer);
         Assert.Equal(new[] { RegionDatabase.Hub }, host.Crossings);
         Assert.Equal(Hub.ArrivalSpot!.Map, host.Map!.Name);
         Assert.Equal((Hub.ArrivalSpot.X, Hub.ArrivalSpot.Y), host.PlayerTile);

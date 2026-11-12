@@ -16,6 +16,7 @@ script OnEnter
   clearflag FLAG_HUB_COURT_WALLACE
   clearflag FLAG_HUB_COURT_IRIS
   clearflag FLAG_HUB_COURT_DIANTHA
+  clearflag FLAG_HUB_COURT_KUKUI
   circuit ready
   if result == 0 end
   circuit final Sinnoh
@@ -30,6 +31,8 @@ script OnEnter
   if result == 1 setflag FLAG_HUB_COURT_IRIS
   circuit final Kalos
   if result == 1 setflag FLAG_HUB_COURT_DIANTHA
+  circuit final Alola
+  if result == 1 setflag FLAG_HUB_COURT_KUKUI
   end
 
 
@@ -84,11 +87,30 @@ label Unova
   if lost goto Lost
 label Kalos
   circuit final Kalos
-  if result == 0 goto Won
+  if result == 0 goto Alola
   speaker "Diantha"
   face diantha player
-  say "Kalos closes the final. Let's give the hall an ending it will remember."
+  say "Kalos takes the stage. Let's give the hall a battle it will remember."
   battle diantha as "kalos_diantha_rematch" canlose
+  if lost goto Lost
+label Alola
+  circuit final Alola
+  if result == 0 goto Won
+  speaker "Kukui"
+  face kukui player
+  say "Alola's League is young, but it's got heart! Let's see what the Champion's made of, yeah?"
+  # His team as his room has it, by the starter Alola's player chose
+  if starter "Rowlet" goto KukuiRowlet
+  if starter "Litten" goto KukuiLitten
+  battle kukui as "alola_kukui_3" canlose
+  if lost goto Lost
+  goto Won
+label KukuiRowlet
+  battle kukui as "alola_kukui_1" canlose
+  if lost goto Lost
+  goto Won
+label KukuiLitten
+  battle kukui as "alola_kukui_2" canlose
   if lost goto Lost
 label Won
   speaker "Piers"
@@ -98,6 +120,10 @@ label Won
   givemoney 30000
   give "PP Max"
   say "The next circuit will meet you five levels higher. Rest well, Laurel Champion."
+  # Pennant Hall's share (plan 41 · EG3's owed line): pennants for a final won, once the hall has been opened to its manager
+  plaza give 100
+  if result == 0 end
+  say "And Pennant Hall sends 100 pennants with its compliments. Spend them well!"
   end
 label Lost
   speaker "Piers"
