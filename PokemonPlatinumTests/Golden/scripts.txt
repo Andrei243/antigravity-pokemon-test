@@ -9145,6 +9145,27 @@ way -
   Julia> Not today, I'm all out of sorts today. Tomorrow! Do come tomorrow.
   + FLAG_DAILY_VISIT_TOMORROW_SUNYSHORE_CITY_NORTHEAST_HOUSE
   + FLAG_TALKED_TO_JULIA_SUNYSHORE_CITY_NORTHEAST_HOUSE
+=== SunyshoreGarden.GardenKeeper
+from Garden Keeper at 6,10 of SunyshoreGarden
+way 0
+  Garden Keeper> Welcome to the garden! The craftswoman lets me keep it, and I let anyone plant in it.
+  Garden Keeper> What would you like?
+  Garden Keeper> Spread it before you plant. Each kind changes how a Berry grows.
+  Garden Keeper> Happy growing! Remember, mulch goes down before the seed.
+  ? What would you like? = MULCH
+  * open Shop workshop_garden
+way 3, from answer 1
+  Garden Keeper> Then take your time. The soil isn't going anywhere.
+  ? What would you like? = NOTHING
+way 2, from answer 1
+  Garden Keeper> Each soil here is yours to plant, just like the soft soil out on the routes. Face it from the path below.
+  Garden Keeper> Plant two different Berries next to each other in a row. With the kit in your bag, they may cross when you pick them.
+  Garden Keeper> Keep them watered and come back in a day or so. The rows on either side don't touch, so plan each row on its own.
+  ? What would you like? = HOW IT GROWS
+way 1, from answer 1
+  Garden Keeper> Crosses? You'd want the craftswoman's kit for that. Without it you'd never see which Berries took to each other.
+  Garden Keeper> Ask her inside. She gives one to anyone who has stood in the Hall of Fame.
+  ? What would you like? = CROSSES
 === SunyshoreGym.Button
 from the trigger at 13,8 of SunyshoreGym
 from the trigger at 3,8 of SunyshoreGym

@@ -1,0 +1,278 @@
+{
+  "name": "SunyshoreGarden",
+  "displayName": "Workshop Garden",
+  "bgmTrack": "sinnoh/sunyshore",
+  "interior": "None",
+  "trees": "Round",
+  "noBoxLink": true,
+  "width": 18,
+  "height": 12,
+  "ground": [
+    "TTTTTTTTTTTTTTTTTT",
+    "T**............**T",
+    "T................T",
+    "T................T",
+    "T..;;;;;;;;;;;;..T",
+    "T.::::::::::::::.T",
+    "T................T",
+    "T..;;;;;;;;;;;;..T",
+    "T.::::::::::::::.T",
+    "T.......:........T",
+    "T.......:........T",
+    "TTTTTTTT:TTTTTTTTT"
+  ],
+  "solid": [
+    "##################",
+    "#................#",
+    "#................#",
+    "#................#",
+    "#................#",
+    "#................#",
+    "#................#",
+    "#................#",
+    "#................#",
+    "#................#",
+    "#................#",
+    "########.#########"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 11,
+      "targetMap": "SunyshoreWorkshop",
+      "targetX": 8,
+      "targetY": 2,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "garden_keeper",
+      "name": "Garden Keeper",
+      "npcType": "aroma_lady",
+      "x": 6,
+      "y": 10,
+      "facing": "Right",
+      "script": "GardenKeeper"
+    },
+    {
+      "id": "garden_soil_1",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "patch": 220
+    },
+    {
+      "id": "garden_soil_2",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "patch": 221
+    },
+    {
+      "id": "garden_soil_3",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 5,
+      "y": 4,
+      "facing": "Down",
+      "patch": 222
+    },
+    {
+      "id": "garden_soil_4",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "patch": 223
+    },
+    {
+      "id": "garden_soil_5",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "patch": 224
+    },
+    {
+      "id": "garden_soil_6",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "patch": 225
+    },
+    {
+      "id": "garden_soil_7",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "patch": 226
+    },
+    {
+      "id": "garden_soil_8",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 10,
+      "y": 4,
+      "facing": "Down",
+      "patch": 227
+    },
+    {
+      "id": "garden_soil_9",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 11,
+      "y": 4,
+      "facing": "Down",
+      "patch": 228
+    },
+    {
+      "id": "garden_soil_10",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 12,
+      "y": 4,
+      "facing": "Down",
+      "patch": 229
+    },
+    {
+      "id": "garden_soil_11",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 13,
+      "y": 4,
+      "facing": "Down",
+      "patch": 230
+    },
+    {
+      "id": "garden_soil_12",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 14,
+      "y": 4,
+      "facing": "Down",
+      "patch": 231
+    },
+    {
+      "id": "garden_soil_13",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 3,
+      "y": 7,
+      "facing": "Down",
+      "patch": 232
+    },
+    {
+      "id": "garden_soil_14",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 4,
+      "y": 7,
+      "facing": "Down",
+      "patch": 233
+    },
+    {
+      "id": "garden_soil_15",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 5,
+      "y": 7,
+      "facing": "Down",
+      "patch": 234
+    },
+    {
+      "id": "garden_soil_16",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 6,
+      "y": 7,
+      "facing": "Down",
+      "patch": 235
+    },
+    {
+      "id": "garden_soil_17",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 7,
+      "y": 7,
+      "facing": "Down",
+      "patch": 236
+    },
+    {
+      "id": "garden_soil_18",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 8,
+      "y": 7,
+      "facing": "Down",
+      "patch": 237
+    },
+    {
+      "id": "garden_soil_19",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 9,
+      "y": 7,
+      "facing": "Down",
+      "patch": 238
+    },
+    {
+      "id": "garden_soil_20",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 10,
+      "y": 7,
+      "facing": "Down",
+      "patch": 239
+    },
+    {
+      "id": "garden_soil_21",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 11,
+      "y": 7,
+      "facing": "Down",
+      "patch": 240
+    },
+    {
+      "id": "garden_soil_22",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 12,
+      "y": 7,
+      "facing": "Down",
+      "patch": 241
+    },
+    {
+      "id": "garden_soil_23",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 13,
+      "y": 7,
+      "facing": "Down",
+      "patch": 242
+    },
+    {
+      "id": "garden_soil_24",
+      "name": "Soft soil",
+      "npcType": "BerrySoil",
+      "x": 14,
+      "y": 7,
+      "facing": "Down",
+      "patch": 243
+    }
+  ],
+  "wildEncounters": []
+}

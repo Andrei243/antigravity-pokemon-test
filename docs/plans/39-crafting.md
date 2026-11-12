@@ -152,10 +152,16 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - **Deviation**: the stands serve the kitchen's own dishes, not dishes of their own.
 - **Owed**: the shots `cr60` to `cr62`.
 
-### CR8 · A berry garden of our own (optional: crossing already works on Sinnoh's and Hoenn's soils, so a garden adds only a place and a keeper)
+### CR8 · A berry garden of our own (optional when written; the user asked for it on 2026-11-12, decision 5)
 - A garden behind the workshop's back door (a map of ours, two rows of twelve soils numbered past Hoenn's, `BerryPatches.Count` grown and `Grown` giving an older save the new ones as it gave Hoenn's), its keeper selling mulch and telling the crosses.
 - Tests (`BerryGardenTests`): the soils grow and cross; an older save is given them. Shots: `cr70_garden`, `cr71_keeper`.
 - **Done when** the garden's soils grow, cross and come to an older save.
+
+**CR8 outcome (2026-11-12)**
+
+- **Built** at the plan's design, at the user's word of 2026-11-12 (decision 5 had left the garden optional; soils still cross everywhere they touch): `SunyshoreGarden`, an outdoor map of ours behind a doorway in the workshop's back wall (8, 1; the street's door stays the room's first way out), two rows of twelve soils two tiles apart, so each crosses only along its row (eleven pairs a row), tended from the path south of each through `common.BerryPatch`; the soils are the save's patches 220 to 243 (`BerryPatches.GardenFirst`, after Johto's four pots, which the plan's "numbered past Hoenn's" predated), and `Grown` gives an older save them bare with every patch it had keeping its number (no save version raised). A map file's person can now be a soil (`npcType` `BerrySoil` with `patch`: `MapFile.NpcRecord.Patch`, read, checked and written back). The keeper (`SunyshoreGarden.txt`'s `GardenKeeper`) sells the four mulches (`marts.json`'s `workshop_garden`, from `Overrides/marts.json`) and shows the kit's CROSSES page through a new word of the one command, `craft crosses` (`CraftingPlace.Crosses`; no new `Op`). The rulings, `docs/scripts.md`, `docs/data-files.md`, the Romanian of the map and the script, the voice catalogue, and `BerryGardenTests`.
+- **Deviation**: the garden is open whenever the workshop is (the Hall of Fame), with no wait on the kit; only crossing waits for it, as on every other soil. `marts.json` was written by hand beside its override, the importer not having been run.
+- **Owed**: the shots `cr70_garden` and `cr71_keeper`; a run of the data importer to confirm `marts.json`'s new counter comes out as written.
 
 ## Risks
 
@@ -181,7 +187,7 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 2. **When and where it opens.** *Recommended:* with Sinnoh's Hall of Fame, in a workshop of ours behind Sunyshore City's unused door 8 (door 7 is plan 36's training hall), as plan 10 · F8 and plan 15 placed the later games' pastimes, so Sinnoh's story stays Platinum's. The alternative opens the workshop from the start and gives the kit with the Coal Badge, so the whole journey crafts and Sinnoh's middle has something Platinum never had.
 3. **Where materials are kept.** *Recommended:* counts in the kit, as the Apricorn Box keeps Apricorns: the bag's eight pockets, its tabs and every bag shot stay, and nothing asks the randomiser or the shops about them. The alternative is a ninth pocket of the bag with each material an item of ours, sold, sorted and tossed as items are.
 4. **TMs.** *Recommended:* used up in every game, as the code has them (and as Scarlet and Violet do), with the TM maker to make again those had; the rulings' row that says "kept" for the modern rules is rewritten. The alternative keeps TMs under the modern rules as that row says (generations 5 to 8) and drops CR4, since a kept TM never needs making again.
-5. **Where berries cross.** *Recommended:* on every soil that touches another (81 pairs in Sinnoh, 56 in Hoenn), CR8's garden left optional. The alternative crosses them only in a garden of our own, which makes CR8 a session to do.
+5. **Where berries cross.** *Recommended:* on every soil that touches another (81 pairs in Sinnoh, 56 in Hoenn), CR8's garden left optional. The alternative crosses them only in a garden of our own, which makes CR8 a session to do. *Taken (2026-11-12, the user):* the recommendation stands (berries cross on every soil that touches another), and the garden is built as well: the user wants CR8.
 6. **The shiny odds from a meal.** *Recommended:* no dish moves them: meals give a type's encounters, catching, EXP, hatching and more materials, and the shiny odds stay the Shiny Charm's and whatever plan 36 decides. The alternative gives one dish of the post-game, made from rare materials, plan 36's shiny power at its weakest.
 
 ## Status
@@ -193,4 +199,4 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - [x] CR5 Crossing berries (with Johto's Berry Pots) (2026-11-12; the outcome above; shots owed)
 - [x] CR6 Cooking at the camp (plan 10 · F8, taken over; 2026-11-09, with plan 36 · TR7's frame of powers and five readers; the outcome above; shots looked at 2026-11-09)
 - [x] CR7 Restaurants and stalls (2026-11-12; the outcome above; shots owed)
-- [ ] CR8 A berry garden of our own (optional)
+- [x] CR8 A berry garden of our own (2026-11-12, at the user's word; the outcome above; shots owed)

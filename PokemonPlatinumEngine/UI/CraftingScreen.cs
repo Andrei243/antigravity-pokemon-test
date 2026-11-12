@@ -15,8 +15,8 @@ namespace PokemonPlatinumEngine.UI;
 /// </summary>
 public enum CraftingTab { Materials, Machines, Make, Pantry, Crosses }
 
-/// <summary>Where the kit is opened: anywhere (the bag, the item button), at a PC's TM maker, or at the workshop's pantry counter.</summary>
-public enum CraftingPlace { Anywhere, Maker, Pantry }
+/// <summary>Where the kit is opened: anywhere (the bag, the item button), at a PC's TM maker, at the workshop's pantry counter, or by the workshop garden's keeper (plan 39 · CR8: the tabs of anywhere, opened on CROSSES).</summary>
+public enum CraftingPlace { Anywhere, Maker, Pantry, Crosses }
 
 /// <summary>
 /// The crafting kit looked into (plan 39 · CR1; style guide, "Menu screens (G10)", "The kit"): a strip of tabs, and under
@@ -156,7 +156,7 @@ public sealed class CraftingScreen
         Notice = "";
         LastMade = false;
         IsActive = true;
-        Tab = place switch { CraftingPlace.Maker => CraftingTab.Machines, CraftingPlace.Pantry => CraftingTab.Pantry, _ => CraftingTab.Materials };
+        Tab = place switch { CraftingPlace.Maker => CraftingTab.Machines, CraftingPlace.Pantry => CraftingTab.Pantry, CraftingPlace.Crosses => CraftingTab.Crosses, _ => CraftingTab.Materials };
         Machines = AtMaker ? TmMaker.Known(into) : Array.Empty<ItemData>();
         MachineCursor = 0;
         MachineFirst = 0;

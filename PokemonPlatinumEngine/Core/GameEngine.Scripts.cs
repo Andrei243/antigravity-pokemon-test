@@ -1386,7 +1386,7 @@ public partial class GameEngine
                     break;
                 // The crafting kit looked into (plan 39 · CR1)
                 case ScriptScreen.Crafting:
-                    game.OpenCrafting(fromBag: false, counter switch { "tm" => CraftingPlace.Maker, "pantry" => CraftingPlace.Pantry, _ => CraftingPlace.Anywhere });
+                    game.OpenCrafting(fromBag: false, counter switch { "tm" => CraftingPlace.Maker, "pantry" => CraftingPlace.Pantry, "crosses" => CraftingPlace.Crosses, _ => CraftingPlace.Anywhere });
                     break;
                 // A drill on the Pokémon the coach's script chose (plan 36 · TR2)
                 case ScriptScreen.Training when int.TryParse(counter, out int trainee):

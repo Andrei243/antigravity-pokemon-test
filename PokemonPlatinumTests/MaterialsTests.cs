@@ -333,7 +333,7 @@ public class MaterialsTests
         Assert.Equal(StepKind.Blocked, FieldMovement.Step(sinnoh, from.X, from.Y, Direction.Right, new Walker(Height: sinnoh.HeightAt(from.X, from.Y))).Kind);
 
         var room = MapDatabase.Get("SunyshoreWorkshop");
-        var back = room.Warps.Single();
+        var back = room.Warps.Single(w => w.TargetMap == "Sinnoh");
         Assert.Equal("Sinnoh", back.TargetMap);
         Assert.Equal((door.SourceX - 1, door.SourceY), (back.TargetX, back.TargetY));
         Assert.True(room.IsWalkable(door.TargetX, door.TargetY));

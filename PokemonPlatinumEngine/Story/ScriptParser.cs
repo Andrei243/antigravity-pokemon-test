@@ -1234,7 +1234,7 @@ public static class ScriptParser
 
             case "craft":
             {
-                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared");
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared", "crosses");
                 // A dish eaten there and then (plan 39 · CR6): `craft meal "beanHotpot"`, or with its grade, `craft meal "beanHotpot" superb`
                 if (what == "meal")
                 {

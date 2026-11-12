@@ -13,7 +13,7 @@ namespace PokemonPlatinumEngine.Story;
 /// PC) looks into it on the TM maker's tab (<c>RESULT</c> 1, or 0 and nothing opened without the kit). Plan 39 · CR3's
 /// apprentice asks <c>tradable</c> (<c>RESULT</c> 1 with three of some type's common material held, <c>{material}</c> naming
 /// it) and <c>trade</c> (three of it for one of its type's rare, <c>{material}</c> naming the rare). CR6's <c>pantry</c> opens
-/// the kit on the pantry's goods for sale, and <c>meal "&lt;dish&gt;" [grade]</c> serves a dish to the team there and then
+/// the kit on the pantry's goods for sale, CR8's <c>crosses</c> (the workshop garden's keeper) on its table of crosses, and <c>meal "&lt;dish&gt;" [grade]</c> serves a dish to the team there and then
 /// (<c>RESULT</c> 1 when it started its power). A material is named by its
 /// id or its English name; <c>{material}</c> says the last one named in the chosen language and <c>{materials}</c> the
 /// number. A host that keeps no pouch does nothing and answers 0.
@@ -86,6 +86,13 @@ public sealed partial class ScriptRunner
         {
             Result = held && pouch != null ? 1 : 0;
             if (Result == 1) host.Open(ScriptScreen.Crafting, Subject, "pantry");
+            return;
+        }
+        // The workshop garden's keeper (plan 39 · CR8): the kit's screen on its CROSSES tab, the table of what crosses
+        if (i.Name == "crosses")
+        {
+            Result = held && pouch != null ? 1 : 0;
+            if (Result == 1) host.Open(ScriptScreen.Crafting, Subject, "crosses");
             return;
         }
         // A dish eaten there and then (plan 39 · CR6; CR7's waiters): the team heals and is cured by the grade, and the
