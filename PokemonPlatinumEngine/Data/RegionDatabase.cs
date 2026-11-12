@@ -487,6 +487,8 @@ public static class RegionDatabase
                 "PoketchCompany2F", "PoketchCompany3F",
                 // Plan 14 · B8: the Battle Frontier's annex, its lobby and the Battle Dome's hall (maps of ours)
                 "BattleFrontierAnnex", "BattleDome",
+                // Plan 37 · FC7: the cups' stadium off the annex's lobby (a map of ours)
+                "BattleFrontierStadium",
                 // Plan 14 · B9: the Battle Palace's and the Battle Arena's halls in the annex (maps of ours)
                 "BattlePalace", "BattleArena",
                 // Plan 14 · B10: the Battle Pike's hall of doors and its room, and the Battle Pyramid's floor (maps of ours)
@@ -608,6 +610,8 @@ public static class RegionDatabase
                 "SevenIsland_TanobyRuins_RixyChamber", "SevenIsland_TanobyRuins_ViapoisChamber", "SevenIsland_SevaultCanyon_TanobyKey",
                 "SevenIsland_House_Room1", "SevenIsland_Mart", "SevenIsland_PokemonCenter_1F", "SevenIsland_PokemonCenter_2F",
                 "SevenIsland_Harbor", "SevenIsland_SevaultCanyon_House", "CeruleanCave_1F", "CeruleanCave_2F", "CeruleanCave_B1F",
+                // Plan 37 · FC6: the Trainer Tower's lobby, its floor laid for each of the eight, and its roof (rooms of ours)
+                "TrainerTowerLobby", "TrainerTowerFloor", "TrainerTowerRoof",
             }
         },
         new()

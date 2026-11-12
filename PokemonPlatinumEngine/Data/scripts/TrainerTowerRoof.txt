@@ -1,0 +1,27 @@
+# The Trainer Tower's roof (plan 37 · FC6). docs/scripts.md describes the language; the lines are our own, on the beats of
+# FireRed's Trainer Tower (TrainerTower_Roof), read for the order alone. The owner tells the climb's time, gives the
+# challenge's prize once (its first floor's, FireRed's GiveChallengePrize) and holds the time against the best.
+
+
+script Owner
+  face self player
+  speaker "Owner"
+  facility trainertower climbing
+  if result == 3 goto Climbed
+  goto Visit
+label Climbed
+  say "You made it to the roof! All eight floors in {tower:TIME}."
+  facility trainertower prize
+  facility trainertower record
+  if result == 0 goto Record
+  if result == 2 goto Done
+  say "A fine climb, though your best for this challenge still stands at {tower:BEST}."
+  goto Done
+label Record
+  say "That's a new best for this challenge! I'll write it in the records downstairs."
+label Done
+  say "Take the stairs down when you're ready. The attendant will see to your Pokémon."
+  end
+label Visit
+  say "The wind up here does a climber good. Come and see me after a climb!"
+  end

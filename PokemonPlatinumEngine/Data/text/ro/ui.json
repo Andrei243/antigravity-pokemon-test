@@ -2543,7 +2543,7 @@
   },
   "records": {
     "title": "RECORDURI DE LUPTĂ",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison", "tree": "Battle Tree" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison", "tree": "Arborele Partenerilor" },
     "row": {
       "single": "Luptă simplă", "double": "Luptă dublă", "multi": "Luptă multiplă",
       "tree": {
@@ -2609,6 +2609,10 @@
     "readNote": "Doar Pokémonii tăi pot fi văzuți în întregime. Ce pot face ceilalți ai văzut în luptă.",
     "level": "Nv. {level}",
     "givingUp": "RENUNȚI"
+  },
+  "titlesHouse": {
+    "title": { "0": "Vizitator", "1": "Oaspete", "2": "Obișnuit", "3": "Prieten al Casei", "4": "Oaspete de Onoare", "5": "Patron", "6": "Intendent", "7": "Stăpânul Casei" },
+    "card": "Casa titlurilor: {title}"
   },
   "hallBoard": {
     "title": "BATTLE HALL",

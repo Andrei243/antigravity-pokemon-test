@@ -935,6 +935,684 @@ way 0
 way 1, from answer 1
   Attendant> We hope you'll try the Battle Tower!
   ? This desk answers for the Battle Tower. Shall I tell you about it? = No
+=== BattleFrontierStadium.Cups
+from Cup Clerk at 4,4 of BattleFrontierStadium
+way 0.0.0
+  Cup Clerk> Welcome to the cups! Eight battles in a row under a cup's rules, and a prize the first time you win it.
+  Cup Clerk> Would you like to enter a cup?
+  Cup Clerk> Which cup will you enter?
+  Cup Clerk> The Crest Cup: three Pokémon of levels 50 to 55, no more than 155 levels together.
+  Cup Clerk> Will you bring your own Pokémon, or borrow ours?
+  Cup Clerk> Please choose the three you'll enter.
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Would you like to enter a cup? = Enter
+  ? Which cup will you enter? = Crest Cup
+  ? Will you bring your own Pokémon, or borrow ours? = My own
+  * frontier enter 3
+  = VAR_ANNEX_CUP 0 -> 1
+way 0.0.2, from answer 3
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Will you bring your own Pokémon, or borrow ours? = Cancel
+  = VAR_ANNEX_CUP 0 -> 1
+way 0.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0, from answer 3
+  Cup Clerk> Here are three of ours, ready for this cup. Look after them!
+  Cup Clerk> Your first opponent is waiting on the field. Good luck!
+  > Battle 1: Ace Trainer Adeline takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 2: Ace Trainer Hadrian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 3: Scientist Gustav takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 4: Ace Trainer Florian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 5: Scientist Egon takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 6: Pokémon Ranger Deirdre takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 7: Scientist Caspar takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 8: Pokémon Ranger Bryony takes the field!
+  Cup Clerk> Eight in a row! You've won the cup!
+  > Lucas received 10 BP!
+  > Lucas received the PP Max for winning the cup for the first time!
+  Cup Clerk> Congratulations. Your name is on the stadium's board.
+  ? Will you bring your own Pokémon, or borrow ours? = Rentals
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_adeline Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_hadrian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_gustav Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_florian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_egon Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_deirdre Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_caspar Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_bryony Won
+  * frontier points 1
+  * fanfare FanfareItem
+  = VAR_ANNEX_CUP_PRIZE_CREST 0 -> 1
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 18
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_bryony Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 16
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_caspar Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.0.0.0.0.0.0.0.0.0.1, from answer 14
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_deirdre Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.0.0.0.0.0.0.0.1, from answer 12
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_egon Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.0.0.0.0.0.1, from answer 10
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_florian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.0.0.0.1, from answer 8
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_gustav Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.0.1, from answer 6
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_hadrian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.0.1, from answer 5
+  Cup Clerk> You retire from the cup. Come back and try it from the start whenever you like.
+  ? Your Pokémon are whole again. Ready for the next battle? = Retire
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.0.1.1, from answer 4
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_adeline Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.5, from answer 2
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Which cup will you enter? = Cancel
+way 0.4.0, from answer 2
+  Cup Clerk> The Summit Cup: three Pokémon of any level. Anything goes, but the strongest of the Frontier's rules.
+  Cup Clerk> Will you bring your own Pokémon, or borrow ours?
+  Cup Clerk> Please choose the three you'll enter.
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Which cup will you enter? = Summit Cup
+  ? Will you bring your own Pokémon, or borrow ours? = My own
+  * frontier enter 3
+  = VAR_ANNEX_CUP 0 -> 5
+way 0.4.2, from answer 3
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Will you bring your own Pokémon, or borrow ours? = Cancel
+  = VAR_ANNEX_CUP 0 -> 5
+way 0.4.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0, from answer 3
+  Cup Clerk> Here are three of ours, ready for this cup. Look after them!
+  Cup Clerk> Your first opponent is waiting on the field. Good luck!
+  > Battle 1: Ace Trainer Adeline takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 2: Ace Trainer Hadrian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 3: Scientist Gustav takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 4: Ace Trainer Florian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 5: Scientist Egon takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 6: Pokémon Ranger Deirdre takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 7: Scientist Caspar takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 8: Pokémon Ranger Bryony takes the field!
+  Cup Clerk> Eight in a row! You've won the cup!
+  > Lucas received 12 BP!
+  > Lucas received the Life Orb for winning the cup for the first time!
+  Cup Clerk> Congratulations. Your name is on the stadium's board.
+  ? Will you bring your own Pokémon, or borrow ours? = Rentals
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_adeline Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_hadrian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_gustav Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_florian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_egon Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_deirdre Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_caspar Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_bryony Won
+  * frontier points 1
+  * fanfare FanfareItem
+  = VAR_ANNEX_CUP_PRIZE_SUMMIT 0 -> 1
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 18
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_bryony Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 16
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_caspar Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.0.0.0.0.0.0.0.0.0.1, from answer 14
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_deirdre Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.0.0.0.0.0.0.0.1, from answer 12
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_egon Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.0.0.0.0.0.1, from answer 10
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_florian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.0.0.0.1, from answer 8
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_gustav Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.0.1, from answer 6
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_hadrian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.0.1, from answer 5
+  Cup Clerk> You retire from the cup. Come back and try it from the start whenever you like.
+  ? Your Pokémon are whole again. Ready for the next battle? = Retire
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.4.1.1, from answer 4
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_adeline Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.0, from answer 2
+  Cup Clerk> The Pebble Cup: three Pokémon of levels 25 to 30, no taller than 2 m and no heavier than 20 kg, no more than 80 levels together.
+  Cup Clerk> Will you bring your own Pokémon, or borrow ours?
+  Cup Clerk> Please choose the three you'll enter.
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Which cup will you enter? = Pebble Cup
+  ? Will you bring your own Pokémon, or borrow ours? = My own
+  * frontier enter 3
+  = VAR_ANNEX_CUP 0 -> 4
+way 0.3.2, from answer 3
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Will you bring your own Pokémon, or borrow ours? = Cancel
+  = VAR_ANNEX_CUP 0 -> 4
+way 0.3.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0, from answer 3
+  Cup Clerk> Here are three of ours, ready for this cup. Look after them!
+  Cup Clerk> Your first opponent is waiting on the field. Good luck!
+  > Battle 1: Ace Trainer Adeline takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 2: Ace Trainer Hadrian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 3: Scientist Gustav takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 4: Ace Trainer Florian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 5: Scientist Egon takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 6: Pokémon Ranger Deirdre takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 7: Scientist Caspar takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 8: Pokémon Ranger Bryony takes the field!
+  Cup Clerk> Eight in a row! You've won the cup!
+  > Lucas received 8 BP!
+  > Lucas received the Eviolite for winning the cup for the first time!
+  Cup Clerk> Congratulations. Your name is on the stadium's board.
+  ? Will you bring your own Pokémon, or borrow ours? = Rentals
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_adeline Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_hadrian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_gustav Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_florian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_egon Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_deirdre Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_caspar Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_bryony Won
+  * frontier points 1
+  * fanfare FanfareItem
+  = VAR_ANNEX_CUP_PRIZE_PEBBLE 0 -> 1
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 18
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_bryony Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 16
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_caspar Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.0.0.0.0.0.0.0.0.0.1, from answer 14
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_deirdre Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.0.0.0.0.0.0.0.1, from answer 12
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_egon Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.0.0.0.0.0.1, from answer 10
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_florian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.0.0.0.1, from answer 8
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_gustav Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.0.1, from answer 6
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_hadrian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.0.1, from answer 5
+  Cup Clerk> You retire from the cup. Come back and try it from the start whenever you like.
+  ? Your Pokémon are whole again. Ready for the next battle? = Retire
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.3.1.1, from answer 4
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_adeline Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.0, from answer 2
+  Cup Clerk> The Spark Cup: three Pokémon of levels 15 to 20, no more than 50 levels together.
+  Cup Clerk> Will you bring your own Pokémon, or borrow ours?
+  Cup Clerk> Please choose the three you'll enter.
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Which cup will you enter? = Spark Cup
+  ? Will you bring your own Pokémon, or borrow ours? = My own
+  * frontier enter 3
+  = VAR_ANNEX_CUP 0 -> 3
+way 0.2.2, from answer 3
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Will you bring your own Pokémon, or borrow ours? = Cancel
+  = VAR_ANNEX_CUP 0 -> 3
+way 0.2.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0, from answer 3
+  Cup Clerk> Here are three of ours, ready for this cup. Look after them!
+  Cup Clerk> Your first opponent is waiting on the field. Good luck!
+  > Battle 1: Ace Trainer Adeline takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 2: Ace Trainer Hadrian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 3: Scientist Gustav takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 4: Ace Trainer Florian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 5: Scientist Egon takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 6: Pokémon Ranger Deirdre takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 7: Scientist Caspar takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 8: Pokémon Ranger Bryony takes the field!
+  Cup Clerk> Eight in a row! You've won the cup!
+  > Lucas received 8 BP!
+  > Lucas received the Light Ball for winning the cup for the first time!
+  Cup Clerk> Congratulations. Your name is on the stadium's board.
+  ? Will you bring your own Pokémon, or borrow ours? = Rentals
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_adeline Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_hadrian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_gustav Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_florian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_egon Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_deirdre Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_caspar Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_bryony Won
+  * frontier points 1
+  * fanfare FanfareItem
+  = VAR_ANNEX_CUP_PRIZE_SPARK 0 -> 1
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 18
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_bryony Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 16
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_caspar Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.0.0.0.0.0.0.0.0.0.1, from answer 14
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_deirdre Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.0.0.0.0.0.0.0.1, from answer 12
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_egon Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.0.0.0.0.0.1, from answer 10
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_florian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.0.0.0.1, from answer 8
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_gustav Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.0.1, from answer 6
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_hadrian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.0.1, from answer 5
+  Cup Clerk> You retire from the cup. Come back and try it from the start whenever you like.
+  ? Your Pokémon are whole again. Ready for the next battle? = Retire
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.2.1.1, from answer 4
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_adeline Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.0, from answer 2
+  Cup Clerk> The Sprout Cup: three Pokémon at level 5 that are the first of their line and can still evolve.
+  Cup Clerk> Will you bring your own Pokémon, or borrow ours?
+  Cup Clerk> Please choose the three you'll enter.
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Which cup will you enter? = Sprout Cup
+  ? Will you bring your own Pokémon, or borrow ours? = My own
+  * frontier enter 3
+  = VAR_ANNEX_CUP 0 -> 2
+way 0.1.2, from answer 3
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Will you bring your own Pokémon, or borrow ours? = Cancel
+  = VAR_ANNEX_CUP 0 -> 2
+way 0.1.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0, from answer 3
+  Cup Clerk> Here are three of ours, ready for this cup. Look after them!
+  Cup Clerk> Your first opponent is waiting on the field. Good luck!
+  > Battle 1: Ace Trainer Adeline takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 2: Ace Trainer Hadrian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 3: Scientist Gustav takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 4: Ace Trainer Florian takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 5: Scientist Egon takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 6: Pokémon Ranger Deirdre takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 7: Scientist Caspar takes the field!
+  Cup Clerk> Your Pokémon are whole again. Ready for the next battle?
+  > Battle 8: Pokémon Ranger Bryony takes the field!
+  Cup Clerk> Eight in a row! You've won the cup!
+  > Lucas received 8 BP!
+  > Lucas received the Lucky Egg for winning the cup for the first time!
+  Cup Clerk> Congratulations. Your name is on the stadium's board.
+  ? Will you bring your own Pokémon, or borrow ours? = Rentals
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  ? Your Pokémon are whole again. Ready for the next battle? = Next battle
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_adeline Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_hadrian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_gustav Won
+  * frontier opponents 0
+  * frontierbattle facility_ace_trainer_florian Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_egon Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_deirdre Won
+  * frontier opponents 0
+  * frontierbattle facility_scientist_caspar Won
+  * frontier opponents 0
+  * frontierbattle facility_pokemon_ranger_bryony Won
+  * frontier points 1
+  * fanfare FanfareItem
+  = VAR_ANNEX_CUP_PRIZE_SPROUT 0 -> 1
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 18
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_bryony Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.0.0.0.0.0.0.0.0.0.0.0.1, from answer 16
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_caspar Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.0.0.0.0.0.0.0.0.0.1, from answer 14
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_pokemon_ranger_deirdre Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.0.0.0.0.0.0.0.1, from answer 12
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_egon Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.0.0.0.0.0.1, from answer 10
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_florian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.0.0.0.1, from answer 8
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_scientist_gustav Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.0.1, from answer 6
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_hadrian Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.0.1, from answer 5
+  Cup Clerk> You retire from the cup. Come back and try it from the start whenever you like.
+  ? Your Pokémon are whole again. Ready for the next battle? = Retire
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 0.1.1.1, from answer 4
+  Cup Clerk> That's the end of your cup. Every Trainer loses one sometimes. Try again!
+  * frontierbattle facility_ace_trainer_adeline Lost
+  = VAR_ANNEX_CUP_SEED 0 -> 53564
+way 2, from answer 1
+  Cup Clerk> The cups are always open. Come back whenever you're ready.
+  ? Would you like to enter a cup? = No
+way 1, from answer 1
+  Cup Clerk> Each cup has its own rules: how high your Pokémon's levels may be, their total, their size or how far they've evolved.
+  Cup Clerk> Your own Pokémon battle as they are, at their own levels. Rentals come at the cup's highest level.
+  Cup Clerk> Win eight battles in a row to win the cup. Lose once, and the cup starts over.
+  ? Would you like to enter a cup? = The rules
+=== BattleFrontierStadium.Round
+from Round Clerk at 10,4 of BattleFrontierStadium
+way 0
+  Round Clerk> This is the Leaders' round: every Gym Leader of a region, then its Elite Four and its Champion, one after another.
+  Round Clerk> Everyone battles at level 100, your three and theirs.
+  Round Clerk> Which region's round will you take on?
+  Round Clerk> That region's round opens once you've entered its Hall of Fame.
+  ? Which region's round will you take on? = Sinnoh
+  = VAR_ANNEX_ROUND 0 -> 1
+way 5, from answer 1
+  Round Clerk> The Leaders will be here. Come back whenever you're ready.
+  ? Which region's round will you take on? = No
+way 4, from answer 1
+  Round Clerk> That region's round opens once you've entered its Hall of Fame.
+  ? Which region's round will you take on? = Unova
+  = VAR_ANNEX_ROUND 0 -> 5
+way 3, from answer 1
+  Round Clerk> That region's round opens once you've entered its Hall of Fame.
+  ? Which region's round will you take on? = Hoenn
+  = VAR_ANNEX_ROUND 0 -> 4
+way 2, from answer 1
+  Round Clerk> That region's round opens once you've entered its Hall of Fame.
+  ? Which region's round will you take on? = Johto
+  = VAR_ANNEX_ROUND 0 -> 3
+way 1, from answer 1
+  Round Clerk> That region's round opens once you've entered its Hall of Fame.
+  ? Which region's round will you take on? = Kanto
+  = VAR_ANNEX_ROUND 0 -> 2
+=== BattleFrontierStadium.Sparring
+from Sparring Coach at 12,7 of BattleFrontierStadium
+way 0
+  Sparring Coach> The sparring room! Choose a type, enter three of it, and spar against Trainers who use it too, as long as you can.
+  Sparring Coach> Which type will you spar with?
+  Sparring Coach> Your best in this room is 0 in a row.
+  Sparring Coach> You need three Pokémon that can take part, of different species and holding different items.
+  ? Which type will you spar with? = Normal
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 5.0, from answer 1
+  Sparring Coach> Which type will you spar with?
+  Sparring Coach> Your best in this room is 0 in a row.
+  Sparring Coach> You need three Pokémon that can take part, of different species and holding different items.
+  ? Which type will you spar with? = More
+  ? Which type will you spar with? = Ice
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 4, from answer 1
+  Sparring Coach> Your best in this room is 0 in a row.
+  Sparring Coach> You need three Pokémon that can take part, of different species and holding different items.
+  ? Which type will you spar with? = Electric
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 3, from answer 1
+  Sparring Coach> Your best in this room is 0 in a row.
+  Sparring Coach> You need three Pokémon that can take part, of different species and holding different items.
+  ? Which type will you spar with? = Grass
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Sparring Coach> Your best in this room is 0 in a row.
+  Sparring Coach> You need three Pokémon that can take part, of different species and holding different items.
+  ? Which type will you spar with? = Water
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 1, from answer 1
+  Sparring Coach> Your best in this room is 0 in a row.
+  Sparring Coach> You need three Pokémon that can take part, of different species and holding different items.
+  ? Which type will you spar with? = Fire
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
 === BattleHall.BugCatcher
 from Bug Catcher at 25,4 of BattleHall
 way -
@@ -5100,6 +5778,8 @@ way 0.1, from answer 2
 way 1, from answer 1
   Viola> Another day, then. I am here every week.
   ? Will you battle Viola? = No
+from Visitor at 7,8 of KalosRoute7_BattleChateau
+way -
 from Wulfric at 11,8 of KalosRoute7_BattleChateau
 way 0.0
   Wulfric> Ha! Snowbelle is cold this time of year. The hall is warm, and so is a good battle!
@@ -6840,14 +7520,14 @@ from Hiker at 13,8 of PoniGauntlet_BattleTree
 way -
   Hiker> I came all the way up the Gauntlet just to sit here and watch. My knees say it was worth it.
 === PoniGauntlet_BattleTree.Desk
-from Receptionist at 4,4 of PoniGauntlet_BattleTree
+from Ione Calder at 4,4 of PoniGauntlet_BattleTree
 way 0.0
-  Receptionist> Welcome to the Battle Tree! The strongest Trainers who ever climbed Poni Gauntlet gather in its branches.
-  Receptionist> Would you like to take on the Battle Tree?
-  Receptionist> Which battles will you take on?
-  Receptionist> You need 3 Pokémon that can take part, all of different species and holding different items.
-  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
-  ? Would you like to take on the Battle Tree? = Enter
+  Ione> Welcome to the Partners' Tree! I'm Ione Calder, and I keep its branches. The strongest Trainers of every land gather here.
+  Ione> Would you like to take on the Partners' Tree?
+  Ione> Which battles will you take on?
+  Ione> You need 3 Pokémon that can take part, all of different species and holding different items.
+  Ione> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take on the Partners' Tree? = Enter
   ? Which battles will you take on? = Single
   * frontier seen 150
   * frontier seen 151
@@ -6868,11 +7548,11 @@ way 0.0
   * frontier seen 492
   * frontier seen 493
 way 0.3, from answer 2
-  Receptionist> The tree isn't going anywhere. Come back whenever you like.
+  Ione> The tree isn't going anywhere, and neither am I. Come back whenever you like.
   ? Which battles will you take on? = Cancel
 way 0.2, from answer 2
-  Receptionist> You need 2 Pokémon that can take part, all of different species and holding different items.
-  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  Ione> You need 2 Pokémon that can take part, all of different species and holding different items.
+  Ione> An Egg can't take part, and nor can certain rare Pokémon.
   ? Which battles will you take on? = Multi
   * frontier seen 150
   * frontier seen 151
@@ -6893,8 +7573,8 @@ way 0.2, from answer 2
   * frontier seen 492
   * frontier seen 493
 way 0.1, from answer 2
-  Receptionist> You need 4 Pokémon that can take part, all of different species and holding different items.
-  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  Ione> You need 4 Pokémon that can take part, all of different species and holding different items.
+  Ione> An Egg can't take part, and nor can certain rare Pokémon.
   ? Which battles will you take on? = Double
   * frontier seen 150
   * frontier seen 151
@@ -6915,20 +7595,22 @@ way 0.1, from answer 2
   * frontier seen 492
   * frontier seen 493
 way 3, from answer 1
-  Receptionist> The tree isn't going anywhere. Come back whenever you like.
-  ? Would you like to take on the Battle Tree? = No
+  Ione> The tree isn't going anywhere, and neither am I. Come back whenever you like.
+  ? Would you like to take on the Partners' Tree? = No
 way 2, from answer 1
-  Receptionist> Every streak is carved into the records. The tree remembers.
-  ? Would you like to take on the Battle Tree? = The records
+  Ione> Every streak is carved into the records. The tree remembers.
+  ? Would you like to take on the Partners' Tree? = The records
   * frontier facilityboard 1
 way 1, from answer 1
-  Receptionist> Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
-  Receptionist> Three go into single battles, and four into double battles.
-  Receptionist> In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time.
-  Receptionist> Trainers you beat in the single and double rooms may offer to be that partner. You can choose one of them at this desk.
-  Receptionist> Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over.
-  Receptionist> The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you.
-  ? Would you like to take on the Battle Tree? = The rules
+  Ione> Your Pokémon battle at Level 50, or at their own level if it's lower. They are made whole after every battle.
+  Ione> Three go into single battles, and four into double battles.
+  Ione> In the Multi room you enter two Pokémon. A partner we pick for you enters two more, and the pair of you meet two Trainers at a time.
+  Ione> Trainers you beat in the single and double rooms may offer to be that partner. You can choose one of them at this desk.
+  Ione> Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over.
+  Ione> The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you.
+  Ione> In the Super rooms, the famous Trainers of every land you have finished come down to battle now and then, and a Champion waits at the fiftieth.
+  Ione> Beat one of them, and they may offer to partner you in the Multi room.
+  ? Would you like to take on the Partners' Tree? = The rules
 === PoniGauntlet_BattleTree.Prizes
 from Clerk at 12,4 of PoniGauntlet_BattleTree
 way 0
@@ -8429,6 +9111,24 @@ way -
 from Owner at 6,4 of TrainerHillRoof
 way -
   Owner> Quite a view from up here, isn't it? Climb all four floors and you'll find me waiting with a prize.
+=== TrainerTowerFloor.Trainer
+from Trainer at 6,4 of TrainerTowerFloor
+from Trainer at 7,4 of TrainerTowerFloor
+way -
+=== TrainerTowerLobby.Counter
+from Attendant at 7,4 of TrainerTowerLobby
+way -
+  Attendant> The tower is open to Champions of Kanto. Come back once the League has crowned you.
+=== TrainerTowerLobby.Records
+from Gentleman at 3,6 of TrainerTowerLobby
+way -
+  Gentleman> I keep the tower's records. These are your best times.
+  Gentleman> Single: no time yet. Double: no time yet.
+  Gentleman> Knockout: no time yet. Mixed: no time yet.
+=== TrainerTowerRoof.Owner
+from Owner at 6,4 of TrainerTowerRoof
+way -
+  Owner> The wind up here does a climber good. Come and see me after a climb!
 === TrainersSchool.Blackboard
 from the sign at 5,2 of TrainersSchool
 from the sign at 6,2 of TrainersSchool
@@ -27455,6 +28155,10 @@ way 1, from answer 1
   ? Will you battle the Subway Bosses beside me? = No
   * endscene
   + seen nimbasa_city.The Subway Bosses
+=== nimbasa_city_14.Desk
+from Receptionist at 7,8 of NimbasaCity_BattleInstitute
+way -
+  Receptionist> Welcome to the Battle Institute! Our tests are open to Champions of Unova. Come back once the League has crowned you.
 === nimbasa_city_2.FerrisWheel
 from Attendant at 57,15 of NimbasaCity_AmusementPark
 way 0

@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Frontier Annex"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "cups_clerk": {
+      "name": {
+        "en": [
+          "Cup Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "round_clerk": {
+      "name": {
+        "en": [
+          "Round Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sparring_coach": {
+      "name": {
+        "en": [
+          "Sparring Coach"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

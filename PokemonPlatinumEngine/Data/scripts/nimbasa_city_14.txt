@@ -1,0 +1,109 @@
+# Nimbasa City's Battle Institute (plan 22 · U6, part b: Black 2's room; plan 37 · FC8: its test and its ladder). The lines
+# are our own. The receptionist (Black 2's object, our words) keeps both once Unova's Hall of Fame is set: the test, five
+# battles at 50 against trainers of the later sets rising by the battle, each scored (Models/Facilities/Ladder.cs,
+# InstituteTest) to a total out of 9,999 and a rank, the best of each format kept on a board of names of ours; and the
+# ladder, a rating of ours that a win raises and a loss lowers, a season to each month of the game's date, the rating
+# carried on by half and Battle Points by the best band a season reached (`facility institute ...`).
+
+
+script Desk
+  face self player
+  speaker "Receptionist"
+  if not flag UnovaHallOfFame goto Closed
+  say "Welcome to the Battle Institute, where Trainers are tested and ranked!"
+  choose "What would you like to do?" "The test" "The ladder" "No"
+  if result == 0 goto Test
+  if result == 1 goto Ladder
+  goto Later
+label Closed
+  say "Welcome to the Battle Institute! Our tests are open to Champions of Unova. Come back once the League has crowned you."
+  end
+label Later
+  say "Come back whenever you'd like to be tested."
+  end
+
+label Test
+  choose "Which test will you take?" "Single battles" "Double battles" "Cancel"
+  if result == 0 goto Single
+  if result == 1 goto Double
+  goto Later
+label Single
+  facility institute test single
+  say "Five single battles at level 50. Please choose the three you'll enter."
+  goto TestChoose
+label Double
+  facility institute test double
+  say "Five double battles at level 50. Please choose the four you'll enter."
+label TestChoose
+  facility institute choose
+  if result == 0 goto Later
+  facility institute testbegin
+  say "Each battle is scored by how quickly you win, how much HP you keep, and how strong your opponent was. Good luck!"
+label TestNext
+  facility institute testnext
+  text "Test battle {number}: {foe} steps up!"
+  facility institute testbattle
+  if result == 0 goto TestLost
+  speaker "Receptionist"
+  say "A win! That battle scored {number}."
+  facility institute testleft
+  if result == 0 goto TestDone
+  goto TestNext
+label TestLost
+  speaker "Receptionist"
+  say "A loss scores nothing, but the test goes on."
+  facility institute testleft
+  if result == 0 goto TestDone
+  goto TestNext
+label TestDone
+  facility institute testscore
+  speaker "Receptionist"
+  say "The test is over. Your total is {number} out of 9,999."
+  if result == 5 say "That's the rank of Master! Extraordinary."
+  if result == 4 say "That's the rank of Platinum. Very fine work."
+  if result == 3 say "That's the rank of Gold. Well done."
+  if result == 2 say "That's the rank of Silver. A good showing."
+  if result == 1 say "That's the rank of Bronze. Keep at it."
+  if result == 0 say "That's the rank of Novice. Everyone starts somewhere!"
+  facility institute testend
+  if result == 0 goto Board
+  say "That's a new best for this test!"
+label Board
+  say "Your best puts you at number {number} on the institute's board."
+  end
+
+label Ladder
+  facility institute season
+  if result == 0 goto LadderOn
+  say "A new month means a new season! Your last season's best band has earned you Battle Points, and your rating carries on as {number}."
+label LadderOn
+  facility institute band
+  if result == 4 say "Your rating is {number}: the band of Legend."
+  if result == 3 say "Your rating is {number}: the band of Elite."
+  if result == 2 say "Your rating is {number}: the band of Veteran."
+  if result == 1 say "Your rating is {number}: the band of Challenger."
+  if result == 0 say "Your rating is {number}: the band of Rookie."
+  facility institute ladderformat
+  if result == 2 goto LadderDouble
+  say "This season's ladder is single battles at level 50. Please choose the three you'll enter."
+  goto LadderChoose
+label LadderDouble
+  say "This season's ladder is double battles at level 50. Please choose the four you'll enter."
+label LadderChoose
+  facility institute choose ladder
+  if result == 0 goto Later
+label LadderNext
+  facility institute laddernext
+  text "{foe}, rated {number}, accepts your challenge!"
+  facility institute ladderbattle
+  speaker "Receptionist"
+  if result == 0 goto LadderLost
+  say "A win! Your rating rises to {number}."
+  goto LadderAgain
+label LadderLost
+  say "A loss. Your rating falls to {number}."
+label LadderAgain
+  choose "Another ladder battle?" "Yes" "No"
+  if result == 0 goto LadderNext
+  say "Your rating is saved. The season runs until the end of the month."
+  end

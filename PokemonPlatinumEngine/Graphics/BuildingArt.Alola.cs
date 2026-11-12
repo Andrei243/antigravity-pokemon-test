@@ -58,7 +58,7 @@ internal static partial class BuildingArt
 
     /// <summary>
     /// The trunk's front: bark, with the door as an arch cut into it at the foot of the face's middle (a pair of
-    /// wooden doors under a lit fanlight), a board reading BATTLE TREE over the arch and a lantern either side.
+    /// wooden doors under a lit fanlight), a board reading PARTNERS TREE over the arch (plan 37 · FC3: the approval sheet's 24) and a lantern either side.
     /// </summary>
     public static void PaintTrunkFront(PixelCanvas c, int seed)
     {
@@ -95,7 +95,7 @@ internal static partial class BuildingArt
         Glass(c, cx - 8, doorTop - 9, 16, 6, ArtSheet.PublicLight);
 
         // The board over the arch, its name in cream
-        const string name = "BATTLE TREE";
+        const string name = "PARTNERS TREE";
         int bw = Pix.TextWidth(name) + 10, by = top - 3 - 16;
         if (by > 2)
         {

@@ -78,4 +78,10 @@ public sealed class ScoutedTrainer
     public List<string> Sets { get; set; } = new();
     public uint OtId { get; set; }
     public List<uint> Personalities { get; set; } = new();
+
+    /// <summary>
+    /// A famous trainer of the partners' tree (plan 37 · FC3): the trainer id of their row of <c>tree-cast.json</c>, whose own
+    /// team they bring (<see cref="PartnersTree.Partner"/>); null for a trainer of the later sets.
+    /// </summary>
+    public string? Cast { get; set; }
 }

@@ -4312,5 +4312,103 @@
         ""
       ]
     }
+  ],
+  "TreatCounter": [
+    {
+      "en": [
+        "Confectioner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the treat counter! Every treat here is baked with one flavour, for Pokémon who like it best."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Give one to a Pokémon at your camp. A treat in a flavour it loves makes it twice as happy!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TreatBaker": [
+    {
+      "en": [
+        "Baker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I bake finer treats from the berries you bring me, and I don't charge a thing for the work."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What shall I bake?",
+        "A CAKE OF ONE FLAVOUR",
+        "A LOAF OF EVERY FLAVOUR",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! Three of your berries made a {item}. It's yours!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I need three berries of one flavour for a cake. Come back when your bag has them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One berry of every flavour, and here's your {item}! Every Pokémon with a taste loves it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A loaf takes one berry of each flavour: spicy, dry, sweet, bitter and sour. You're short of one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back with your berries any time."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

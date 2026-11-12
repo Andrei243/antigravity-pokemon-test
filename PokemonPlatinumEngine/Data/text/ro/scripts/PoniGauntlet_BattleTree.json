@@ -2,34 +2,34 @@
   "Desk": [
     {
       "en": [
-        "Receptionist"
+        "Ione"
       ],
       "text": [
-        "Recepționeră"
+        ""
       ]
     },
     {
       "en": [
-        "Welcome to the Battle Tree! The strongest Trainers who ever climbed Poni Gauntlet gather in its branches."
+        "Welcome to the Partners' Tree! I'm Ione Calder, and I keep its branches. The strongest Trainers of every land gather here."
       ],
       "text": [
-        "Bun venit la Battle Tree! Cei mai puternici Antrenori care au urcat vreodată Poni Gauntlet se adună în ramurile lui."
+        ""
       ]
     },
     {
       "en": [
-        "Would you like to take on the Battle Tree?",
+        "Would you like to take on the Partners' Tree?",
         "Enter",
         "The rules",
         "The records",
         "No"
       ],
       "text": [
-        "Vrei să înfrunți Battle Tree?",
-        "Intră",
-        "Regulile",
-        "Recordurile",
-        "Nu"
+        "",
+        "",
+        "",
+        "",
+        ""
       ]
     },
     {
@@ -174,10 +174,10 @@
     },
     {
       "en": [
-        "The tree isn't going anywhere. Come back whenever you like."
+        "The tree isn't going anywhere, and neither am I. Come back whenever you like."
       ],
       "text": [
-        "Copacul nu pleacă nicăieri. Revino oricând vrei."
+        ""
       ]
     },
     {
@@ -234,6 +234,22 @@
       ],
       "text": [
         "Cu cât seria e mai lungă, cu atât Antrenorii sunt mai puternici. Ajungi la a douăzecea luptă și te întâlnește un Maestru al Copacului."
+      ]
+    },
+    {
+      "en": [
+        "In the Super rooms, the famous Trainers of every land you have finished come down to battle now and then, and a Champion waits at the fiftieth."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beat one of them, and they may offer to partner you in the Multi room."
+      ],
+      "text": [
+        ""
       ]
     }
   ],

@@ -546,6 +546,9 @@ public interface IScriptHost
     /// <summary>The day of the week today (<see cref="GameClock.Today"/>).</summary>
     System.DayOfWeek Weekday { get; }
 
+    /// <summary>The game's date today (<see cref="GameClock.Today"/>): what the Battle Institute's ladder's seasons go by (plan 37 · FC8).</summary>
+    System.DateTime Today => GameClock.Today;
+
     /// <summary>The hour of the day now, 0 to 23 (<see cref="GameClock.Hour"/>): what Shoal Cave's <c>tide</c> reads (plan 21 · H8, part d).</summary>
     int Hour { get; }
 

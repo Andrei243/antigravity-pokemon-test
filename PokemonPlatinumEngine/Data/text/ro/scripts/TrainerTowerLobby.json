@@ -1,0 +1,192 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome back down. That climb is over, but the tower will be here whenever you're ready to try again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are rested and ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Back from the roof! What a climb. Let me see to your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you go. They're rested and ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Counter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Trainer Tower! Eight floors of trainers stand between you and the owner on the roof."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take on a challenge?",
+        "YES",
+        "NO",
+        "INFO"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which challenge will you take?",
+        "SINGLE",
+        "DOUBLE",
+        "KNOCKOUT",
+        "MIXED",
+        "CANCEL"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon are rested. The clock is running from now on. Good luck up there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're in the middle of a climb! The trainers upstairs are waiting for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The tower is open to Champions of Kanto. Come back once the League has crowned you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each floor has trainers waiting: one with two Pokémon, a pair with one each, or three in a row with one each."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Their Pokémon are as strong as your strongest. Your Pokémon aren't healed between floors, so take care."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Reach the roof, and the owner will tell you your time. The quicker the climb, the better."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you feel like a climb."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Records": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I keep the tower's records. These are your best times."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Single: {tower:BEST_SINGLE}. Double: {tower:BEST_DOUBLE}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Knockout: {tower:BEST_KNOCKOUT}. Mixed: {tower:BEST_MIXED}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
-# The Battle Tree's lobby at the head of Poni Gauntlet (plan 23, the Battle Tree's inside; plan 37 · FC2's frame). The
+# The partners' tree's lobby at the head of Poni Gauntlet (plan 23, the Battle Tree's inside; plan 37 · FC2's frame and
+# FC3's famous trainers, its host Ione Calder by the approval sheet's 24). The
 # lines are our own, and so are the people: neither of Sun and Moon's Battle Legends is here. Two rooms, Sun and Moon's
 # counts: single battles (three entered) and double battles (four), each an endless streak a battle at a time against
 # trainers of the later sets (Data/facility-sets.json) who grow stronger with the streak, the entered going in as copies
@@ -12,12 +13,12 @@
 
 script Desk
   face self player
-  speaker "Receptionist"
-  say "Welcome to the Battle Tree! The strongest Trainers who ever climbed Poni Gauntlet gather in its branches."
+  speaker "Ione"
+  say "Welcome to the Partners' Tree! I'm Ione Calder, and I keep its branches. The strongest Trainers of every land gather here."
   facility tree paused
   if result == 1 goto Resume
 label Ask
-  choose "Would you like to take on the Battle Tree?" "Enter" "The rules" "The records" "No"
+  choose "Would you like to take on the Partners' Tree?" "Enter" "The rules" "The records" "No"
   if result == 1 goto Rules
   if result == 2 goto Records
   if result == 3 goto Later
@@ -98,7 +99,7 @@ label SameSpecies
 label SameItem
   say "I'm sorry. No two of those entered may hold the same item."
 label Later
-  say "The tree isn't going anywhere. Come back whenever you like."
+  say "The tree isn't going anywhere, and neither am I. Come back whenever you like."
   end
 label Records
   facility tree board
@@ -111,6 +112,8 @@ label Rules
   say "Trainers you beat in the single and double rooms may offer to be that partner. You can choose one of them at this desk."
   say "Win, and you may go on, rest and come back later, or retire. Lose once, and your streak is over."
   say "The longer your streak, the stronger the Trainers. Reach the twentieth battle and a Tree Master will meet you."
+  say "In the Super rooms, the famous Trainers of every land you have finished come down to battle now and then, and a Champion waits at the fiftieth."
+  say "Beat one of them, and they may offer to partner you in the Multi room."
   end
 
 

@@ -7,6 +7,7 @@
 //   dotnet run --project tools/DataImporter -- --decomp <dir> --pokeapi <dir/data/v2/csv>   use existing checkouts
 //   dotnet run --project tools/DataImporter -- --last-species 493   stop after Platinum's National Pokédex
 //   dotnet run --project tools/DataImporter -- --check-entries      the written Pokédex entries against the games' own (plan 08 · P13)
+//   dotnet run --project tools/DataImporter -- --trainer-tower      FireRed's Trainer Tower alone into trainer-tower.json (plan 37 · FC6)
 //   dotnet run --project tools/DataImporter -- --trainer-hill       Emerald's Trainer Hill alone into trainer-hill.json (plan 21, part l)
 //   dotnet run --project tools/DataImporter -- --facility-sets      the later sets alone into facility-sets.json, from the data as it stands (plan 37 · FC1)
 
@@ -58,6 +59,13 @@ if (args.Contains("--facility-sets"))
         FrontierDatabase.Banned, Path.Combine(repo, "tools", "DataImporter", "Overrides", FacilitySets.OverridesFile));
     ReportFacilitySets(sets);
     Write(Path.Combine(outDir, FacilitySetDatabase.FileName), GameDataFiles.Serialize(sets.Data));
+    return 0;
+}
+
+if (args.Contains("--trainer-tower"))
+{
+    // FireRed's Trainer Tower alone (plan 37 · FC6): trainer-tower.json, from its sets and its source
+    Write(Path.Combine(outDir, TrainerTowerDatabase.FileName), GameDataFiles.Serialize(TrainerHillImport.BuildTower(repo, cache)));
     return 0;
 }
 

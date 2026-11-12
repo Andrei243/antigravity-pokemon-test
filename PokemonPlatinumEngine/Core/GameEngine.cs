@@ -3042,7 +3042,9 @@ public partial class GameEngine
                 // A region with several Pokédexes (Kalos's three) counts each species once, whichever list names it
                 Pokedex = r.Dexes.Where(flow.Pokedex.Regional.Contains).ToList() is { Count: > 0 } own
                     ? OwnDexCounts(own) : null,
-                Stamps = r.File?.Stamps == true
+                Stamps = r.File?.Stamps == true,
+                // The house of titles on Route 7 (plan 37 · FC4): its title on Kalos's page
+                HouseTitle = r.Id == RegionDatabase.Kalos ? Math.Clamp(flow.Story.Var(Models.Facilities.TitlesHouse.TitleVariable), 0, Models.Facilities.TitlesHouse.HighestTitle) : 0
             })
             .ToList();
     }

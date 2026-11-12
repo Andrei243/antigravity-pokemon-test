@@ -8,6 +8,26 @@
     ]
   },
   "people": {
+    "treat_confectioner": {
+      "name": {
+        "en": [
+          "Confectioner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "treat_baker": {
+      "name": {
+        "en": [
+          "Baker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "receptionist_1": {
       "name": {
         "en": [

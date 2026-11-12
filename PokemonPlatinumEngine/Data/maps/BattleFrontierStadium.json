@@ -1,0 +1,113 @@
+{
+  "name": "BattleFrontierStadium",
+  "displayName": "Battle Frontier Annex",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 15,
+  "height": 11,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "D_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "###############"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "##.###...###.##",
+    "#.............#",
+    "#.............#",
+    "..............#",
+    "#.............#",
+    "#.............#",
+    "##...........##",
+    "###############"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 3,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 5,
+      "width": 3,
+      "depth": 4
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 0,
+      "sourceY": 6,
+      "targetMap": "BattleFrontierAnnex",
+      "targetX": 13,
+      "targetY": 6,
+      "targetFacing": "Left"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "cups_clerk",
+      "name": "Cup Clerk",
+      "npcType": "receptionist",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "script": "Cups"
+    },
+    {
+      "id": "round_clerk",
+      "name": "Round Clerk",
+      "npcType": "frontier_single_attendant",
+      "x": 10,
+      "y": 4,
+      "facing": "Down",
+      "script": "Round"
+    },
+    {
+      "id": "sparring_coach",
+      "name": "Sparring Coach",
+      "npcType": "blackbelt",
+      "x": 12,
+      "y": 7,
+      "facing": "Left",
+      "script": "Sparring"
+    }
+  ],
+  "wildEncounters": []
+}

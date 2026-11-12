@@ -1,0 +1,113 @@
+{
+  "name": "TrainerTowerLobby",
+  "displayName": "Trainer Tower",
+  "bgmTrack": "kanto/sevii_route",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "##..#######..##",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "##...........##",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 5,
+      "width": 3,
+      "depth": 5
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "SevenIsland",
+      "targetX": 58,
+      "targetY": 8,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "tower_attendant",
+      "name": "Attendant",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Counter"
+    },
+    {
+      "id": "tower_records",
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "script": "Records"
+    }
+  ],
+  "wildEncounters": []
+}

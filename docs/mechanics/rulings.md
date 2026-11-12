@@ -10712,6 +10712,153 @@ at the desk) or retires (the streak ends there, kept as the latest).
 - **Not built**: a song of its own (the lobby and the hall play Aquacorde's, as plan 23 left them, until plan 31 writes one; Kalos has no Lumiose song yet), the hosts' grown looks (plan 30's
   kit, once it stands; they are chibi looks of the `Adult` build now), and the hosts' lines in battle.
 
+## The partners' tree (2026-11-12, plan 37 · FC3)
+
+The tree of plan 23 at the head of Poni Gauntlet is plan 37's partners' tree (decision 2's Z8 door: it stands where Z8
+put it, so no Hau'oli room is used). Its words (`facility tree`), maps and records keep their names, so no save changes.
+
+- **Its name and host** (the approval sheet's 24, ★): it is shown as the **Partners' Tree**, on its doors' sign, its rooms'
+  names, the Town Map and the records' board, and its desk is kept by **Ione Calder**, an old guide in a green coat
+  (`tree_ione`). The two Tree Masters of plan 23, Kaimana and Leilani, still stand in the way at a normal room's 20th
+  battle and open its Super room.
+- **The cast** (decision 3 and the sheet's 23, ★): `Data/tree-cast.json`, written by hand, read strictly: 82 of the game's
+  own trainers, each with the trainer of the tables whose team they bring (a rematch team where the region has one), their
+  look, the region whose Hall of Fame (`<Region>HallOfFame`) lets them in, and a role. Sinnoh's thirteen, Kanto's eleven
+  (its Champion is Blue with his Viridian team, since Kanto's Champion of the tables is the player's rival under the
+  player's own name), Johto's twelve (Lance its Champion; Bruno and Lance are not Kanto's twice), Hoenn's, Unova's and
+  Kalos's thirteen, and Alola's seven (Kukui its Champion, the four of its League, Nanu and Hapu). **Not in the cast yet**:
+  the rivals, whose names and teams are the player's choices in every region; Galar's and Paldea's people, until plans 33
+  and 34 finish those regions.
+- **When they come**: only in a Super room. At every tenth battle that is not its host's (10, 20, 30, 40, 60...) a member
+  of the cast who is no Champion stands in the way, drawn on the challenge's own generator (one draw), with three of their
+  own team at 50 (`Tournament.ThreeOf`), thinking and holding what their table gives them. The 50th battle, the Tree
+  Master's in plan 23, is a Champion of the cast drawn from the regions finished, and counts as the host's (the trophy the
+  first time, forty Battle Points). With nobody of the cast to draw (no region finished but Alola has a Champion, so only
+  in a test) the room goes on as it was, with no draw made. The normal and Multi rooms, and every other place, never meet
+  the cast, so their trainers are drawn as before.
+- **Scouted once beaten**: a famous trainer beaten, the 50th's Champion too, is scouted for the Multi room like the later
+  sets' trainers (`BattleTree.ScoutCast`; `ScoutedTrainer.Cast` names them, null for the rest, so no save version was
+  raised). Chosen at the desk, they bring two of their own team at 50, the highest levels first, passing over the
+  species and the held items of the two the player entered and of each other (the Subway's friend's rule).
+- **Their lines** (the sheet's 58, ★): each has a short line of their own, said as they arrive in the hall, as a foe or
+  beside the player (`PoniGauntlet_BattleTreeHall.txt`, `CastLine`, by their number in the file, `facility tree cast` and
+  `partnercast`). No line names a species.
+- **A friend in the partner's place**: with the options' FRIEND AS PARTNER on, a friend chooses for every partner of a
+  Frontier battle (the tree's Multi room, the Battle Tower's and the Subway's), without the question a field battle asks.
+
+## The house of titles (2026-11-12, plan 37 · FC4)
+
+Plan 23 stood the house in Route 7's Battle Château (`KalosRoute7_BattleChateau`) with its guests, its eight titles and
+Kalos's Leaders on their days, in scripts alone; FC4 adds what the plan asked of it (`Models/Facilities/TitlesHouse.cs`,
+`facility titles`). The player's own team battles at its own levels through the field's battle and is paid EXP and money
+(decision 4); a loss costs nothing and the house's staff make the team whole.
+
+- **The members' teams**: Mirabelle, Tristan and Celeste of the west place and Octave, Isaure and Corentin of the east
+  (from the title of a Friend of the House) keep their names and classes of Kalos's table, and bring three of the later sets
+  (`FacilityTrainers.Draw`) at a level over the highest of the player's team (Eggs passed over) by the title: 6 under it as
+  a Visitor, 4 under as a Guest, 2 under as a Regular, level with it as a Friend of the House, then 1, 2, 3 and 5 over
+  (Honoured Guest, Patron, Steward, Master of the House), between 1 and the modern cap. Their tiers are 1 and 2 for the
+  first three titles, 2 and 3 to the Patron, 3 and 4 after, the east place's a step up; their IVs `FacilityTrainers.IvsFor`
+  of the title. The team is marked as kept (`Trainer.LevelsKept`), so no region relevels it.
+- **The same all day**: the hall's daily draw (`FLAG_DAILY_KALOS_CHATEAU_DRAWN`) sets a seed of the day
+  (`VAR_KALOS_CHATEAU_SEED`, a die of 65,536), and each member's team and the day's visitor are drawn on Platinum's
+  generator seeded by it and who is drawn, so they are the same all day and new the next.
+- **Visitors**: once another region's Hall of Fame is set, one of its trainers visits each day by the north wall of the
+  hall, drawn from the partners' tree's cast (`Data/tree-cast.json`) of the regions finished but Kalos: a Leader or a
+  kahuna below the Steward's title, an Elite Four member as Steward, a Champion as Master of the House. They bring their
+  own team of the tables lifted to the journey's post-game level (`LevelLift.PostGameLevel`, or their own if higher), on a
+  copy under an id of the house's own (`titles_visitor_<id>`), so their region's trainer is never beaten by a battle here,
+  once a day (`FLAG_DAILY_KALOS_CHATEAU_BEAT_VISITOR`).
+- **Points** (a win's toward the titles): a west member 1, an east member 2, a Leader of Kalos or a visiting Leader or
+  kahuna 3, a visiting Elite Four member 4, a visiting Champion 5. The titles at 3, 8, 15, 25, 40, 60 and 90 points, as
+  plan 23 set them.
+- **The card**: the title earned stands on Kalos's page of the Trainer Card, under its rule at the right ("House of
+  titles: Patron").
+- **Not built**: the manor drawn into Route 7 (plan 23 had already put the house there); its own music; the shots
+  (`fc40` to `fc44`).
+
+## The Trainer Tower (2026-11-12, plan 37 · FC6)
+
+- **Where it is**: Seven Island, through the door of FireRed's grounds that plan 19 · K9 left `locked` (the area's warp
+  0, now an overlay `door`). Its lobby, floor and roof are rooms of ours (`TrainerTowerLobby`, `TrainerTowerFloor`,
+  `TrainerTowerRoof`), laid out as the Trainer Hill's are; FireRed's eight floors with their three layouts and its lift
+  are not imported (the plan asked for them through the GBA reader: owed).
+- **FireRed's** (`tools/DataImporter -- --trainer-tower`, `Data/trainer-tower.json`, numbers only): the four challenges
+  (Single, Double, Knockout, Mixed) of eight floors (`gTrainerTowerFloors`, the Mixed one's floors each of one kind); each
+  floor's kind, its trainers' facility classes and six Pokémon (species, item, moves, effort, IVs, ability, personality);
+  which of the six a floor brings by the floors cleared (`sSingleBattleChallengeMonIdxs`, `sDoubleBattleChallengeMonIdxs`,
+  `sKnockoutChallengeMonIdxs`): a single floor's one trainer two, a double floor's two trainers one each as a pair, a
+  knockout floor's three one each, one after another; every Pokémon at the highest level of the player's team, Eggs passed
+  over (`GetPartyMaxLevel`, up to this game's 260); the challenge's prize, its first floor's (`GiveChallengePrize`: one of
+  FireRed's fifteen, an HP Up to an Up-Grade), given once for each challenge and never again (`receivedPrize`, kept in
+  `VAR_KANTO_TRAINER_TOWER_PRIZE_<CHALLENGE>`); the best time of each kept and replaced only by a faster one
+  (`CheckFinalTime`, `VAR_KANTO_TRAINER_TOWER_BEST_<CHALLENGE>`). The counter opens to Kanto's Champions.
+- **Ours**: the trainers' names (FireRed's names and easy-chat speeches are never read) and every line; the battle is a
+  battle of the Frontier's on the player's own team (no EXP, no money, the Bag shut, RUN a forfeit), the team seen to at
+  the counter and again as the climb ends in the lobby, never between floors, as the Trainer Hill's; the clock counts play
+  time in whole seconds up to an hour less a frame; a floor's trainers stand forward as it is come into and are battled by
+  speaking to them, and the stairs up are climbed as soon as the floor is beaten, to the next floor laid again on the same
+  map or to the roof; there is no way down mid-climb (a loss ends it). A game saved on a floor lays it again from the climb's
+  variables as it is come back to.
+- **Not built**: FireRed's floors' layouts and lift (above); the Trainer House's trainer of the day from the friends'
+  files (HeartGold's link records), which still battles Cal; the shots (`fc60` to `fc64`).
+
+## The cups, the Leaders' round and the sparring room (2026-11-12, plan 37 · FC7)
+
+They stand in a stadium of ours off the Battle Frontier annex's lobby (`BattleFrontierStadium`, through the lobby's east
+door; decision 5), three desks, each run played at its desk a battle at a time (`facility stadium`, `facility sparring`).
+Every battle is the Frontier's: copies, no EXP or money, the Bag shut, whole again before each battle.
+
+- **The cups** (`Data/cups.json`, hand-written, read strictly; `Models/Facilities/Cups.cs`): the Stadium games' numbers with
+  names and prizes of ours. The **Crest Cup** (the Poké Cup: levels 50 to 55, no more than 155 together), the **Sprout Cup**
+  (the Little Cup: level 5, the first of a line that can still evolve into a species of the games), the **Spark Cup** (the
+  Pika Cup: 15 to 20, no more than 50), the **Pebble Cup** (the Petit Cup: 25 to 30, no more than 80, no taller than 2 m nor
+  heavier than 20 kg) and the **Summit Cup** (the Prime Cup: 1 to 100). Three entered, never the Frontier's banned, an Egg,
+  two of a species or two holding the same item (`Cups.WhyNot`, the first reason). Eight battles in a row against trainers of
+  ours with three of the later sets that meet the cup, of tiers rising with the battle, at the cup's foes' level (its highest,
+  or the total split three ways where lower: the Crest Cup's 51, the Spark Cup's 16, the Pebble Cup's 26), drawn on a seed of
+  the run's and the battle, so a battle drawn again is the same. The player's own three battle as copies at their own levels;
+  **rentals** are three of the later sets that meet the cup at the foes' level, lent for the run. A win of the eighth hands
+  over the cup's Battle Points every time and its prize the first time (PP Max, Lucky Egg, Light Ball, Eviolite, Life Orb;
+  `VAR_ANNEX_CUP_PRIZE_<CUP>`); a loss ends the run. A run lives in `VAR_ANNEX_CUP*` and the desk's one script.
+- **The Leaders' round** (`LeadersRound`): a region's eight Leaders in their own order, then its Elite Four, then its
+  Champion, from `tournaments.json`'s pools (no id twice), each with three of their team as the World Tournament picks them
+  (`Tournament.ThreeOf`), every Pokémon on both sides at level 100 (`LevelScaling.At`), the player's three as copies. Open
+  with the region's Hall of Fame; the regions are those the file has Leaders and a League for (Sinnoh, Kanto, Johto, Hoenn,
+  Unova). Cleared, it is kept in `VAR_ANNEX_ROUND_CLEARED_<REGION>`; it pays nothing but the record.
+- **The sparring room** (`SparringRoom`, a place of the later places' frame with the eighteen types for its ways): three
+  entered, all of the type (`check` 3 otherwise), an endless streak of trainers of ours whose three are later sets of that
+  type at 50 (tiers 1 and 2 to the tenth, 2 and 3 to the 25th, 3 and 4 after; one Battle Point a win to the tenth, two to
+  the 25th, three after), a record per type, rested and taken up as the house's are. No host.
+- **Not built**: `UI/CupScreen.cs` (the cups listed with their rules, the foe's six previewed and three picked, rentals
+  chosen from six; the desk's questions stand in, the foe brings three and the rentals are lent), the cups' board, a hub
+  door to the stadium (plan 41's), and the shots (`fc70` to `fc75`).
+
+## The institute's test and the ladder (2026-11-12, plan 37 · FC8)
+
+Nimbasa's Battle Institute (`NimbasaCity_BattleInstitute`, plan 22 · U6's room) is open to Unova's Champions: its
+receptionist (Black 2's object, our words) keeps both the test and the ladder (`nimbasa_city_14.txt`, `facility institute`;
+a second counter of ours was not placed, so she keeps both). Battles are the Frontier's, at 50, on copies.
+
+- **The test** (`Models/Facilities/Ladder.cs`, `InstituteTest`): five battles, single (three entered) or double (four),
+  against trainers of ours with the later sets of tiers rising by the battle (1 and 2, 1 to 3, 2 and 3, 2 to 4, 3 and 4),
+  drawn on a seed of the test's and the battle. Each battle's score, a formula of ours: nothing for a loss (the test goes on);
+  for a win 1,000, and 40 for each turn fewer than ten it took, up to 400 for the HP the team kept (its share in thousandths
+  times 0.4), and 15 for each tier of the foe's sets together; at most 1,980 a battle, so the total stays within 9,999. Ranks of
+  ours by the total: Novice, Bronze at 2,000, Silver at 4,000, Gold at 6,000, Platinum at 8,000, Master at 9,000. The best
+  total of each format is kept (`VAR_UNOVA_INSTITUTE_BEST_SINGLE`, `_DOUBLE`), and the better of the two is placed on a board
+  of ten names and scores of ours (a tie goes above the board's own).
+- **The ladder** (`Ladder`, decision 8): a rating that begins at 1,000 and moves by the Elo with a factor of 32 (the
+  expectation 1 / (1 + 10^((theirs − yours) / 400)), rounded half away from nought, never under nought); an opponent rated
+  within a hundred of the player's either way, drawn on the game's chance, with the later sets of their band's tiers.
+  Bands of ours: Rookie, Challenger from 1,100, Veteran from 1,300, Elite from 1,500, Legend from 1,700. A season is a
+  calendar month of the game's date (`IScriptHost.Today`, `GameClock.Today`, which the harness fixes): single battles in the
+  odd months, double in the even (Flat 50 both); as a new month is first played, the rating is carried half the way back to
+  1,000 and the season gone pays Battle Points by the best band it reached (2, 5, 10, 18, 30), once, and nothing for a
+  season with no game played. All kept in `VAR_UNOVA_LADDER_*`.
+- **Not built**: `UI/LadderScreen.cs` (the season, the rating, the band, the last results and the test's sheet; the
+  receptionist's lines say them), a season that bans a list, a second counter, and the shots (`fc80` to `fc84`).
+
 ## Peak training and the training tools (2026-11-07, plan 36 · TR3)
 
 Peak training is our name for the later games' hyper training, and its rule is plan 06 · R28b's (`Models/HyperTraining.cs`: level 50 or more, as Scarlet and Violet ask; a stat whose IV is 31, or brought to its peak already, can't be). The coach, the clerks, their lines and every price are ours; no Mr. Hyper is recreated.

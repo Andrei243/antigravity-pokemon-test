@@ -42,6 +42,9 @@ public static class Sources
     /// </summary>
     public const string FireRedRepo = "https://github.com/pret/pokefirered.git";
     public const string FireRedCommit = "037335f4c725d7c9aecdac87066f2002b4bd7e14";
+
+    /// <summary>pret/pokefirered's files fetched one by one at the same commit (plan 37 · FC6: the Trainer Tower's sets).</summary>
+    public const string FireRedRaw = "https://raw.githubusercontent.com/pret/pokefirered";
     public const string EmeraldRepo = "https://github.com/pret/pokeemerald.git";
     public const string EmeraldCommit = "731ad5bfd6e6f265508d0efcca0ba42f9dcf5881";
 

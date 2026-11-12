@@ -46,6 +46,13 @@ public sealed class StreakChallenge
     private int partnerChoice;
     private IReadOnlyList<ScoutedTrainer> scouted = Array.Empty<ScoutedTrainer>();
 
+    // The partners' tree's famous trainers who may come (plan 37 · FC3), handed over by whoever begins the challenge, the
+    // famous trainer of the battle to come and their record, and the items those entered hold (a famous partner keeps clear)
+    private IReadOnlyList<TreeCastRecord> cast = Array.Empty<TreeCastRecord>();
+    private TreeCastRecord? castFoe, castPartner;
+    private TrainerRecord? foeRecord;
+    private IReadOnlyList<string> enteredItems = Array.Empty<string>();
+
     /// <summary>Their species, in the same order.</summary>
     public IReadOnlyList<string> Species { get; }
 
@@ -78,8 +85,30 @@ public sealed class StreakChallenge
         uint seed = ((uint)next16() & 0xFFFF) | ((uint)next16() & 0xFFFF) << 16;
         return new StreakChallenge(room, slots.ToList(), IdsOf(party, slots),
             slots.Select(s => s >= 0 && s < party.Count ? party.Members[s].Species.Name : "").ToList(), new BattleRandom(seed), record.Streak)
-            .WithPartnerChosen(records);
+            .WithPartnerChosen(records).WithItemsOf(party);
     }
+
+    private StreakChallenge WithItemsOf(Party party)
+    {
+        enteredItems = Slots.Where(s => s >= 0 && s < party.Count && party.Members[s].HeldItem != null).Select(s => party.Members[s].HeldItem!.Name).ToList();
+        return this;
+    }
+
+    /// <summary>
+    /// The partners' tree's famous trainers who may come in this challenge (plan 37 · FC3: those whose region's Hall of Fame is
+    /// set, <see cref="PartnersTree.Eligible"/>), handed over as it begins or is taken up again; nothing changes in any other place.
+    /// </summary>
+    public StreakChallenge WithCast(IReadOnlyList<TreeCastRecord> eligible)
+    {
+        cast = Room.Place == BattleTree.Place ? eligible.ToList() : Array.Empty<TreeCastRecord>();
+        return this;
+    }
+
+    /// <summary>The famous trainer of the battle to come, their number in the cast from 1 (0 for any other trainer).</summary>
+    public int CastFoe => castFoe is { } m ? PartnersTree.NumberOf(m.Trainer) : 0;
+
+    /// <summary>The Multi room's partner as a famous trainer, their number in the cast from 1 (0 for any other partner).</summary>
+    public int CastPartner => Partner != null && castPartner is { } m ? PartnersTree.NumberOf(m.Trainer) : 0;
 
     private static List<Guid> IdsOf(Party party, IReadOnlyList<int> slots) =>
         slots.Select(s => s >= 0 && s < party.Count ? party.Members[s].Id : Guid.Empty).ToList();
@@ -108,7 +137,7 @@ public sealed class StreakChallenge
         }
         record.InProgress = true;
         return new StreakChallenge(room, pause.Slots.ToList(), pause.Ids.ToList(), pause.Species.ToList(), BattleRandom.Resume(pause.Seed, pause.State, pause.Drawn), record.Streak)
-            .WithPartnerChosen(records);
+            .WithPartnerChosen(records).WithItemsOf(party);
     }
 
     private FacilityRecord Record(FrontierRecords records) => records.Facility(Room.Place, Room.Way, Room.Hard);
@@ -150,6 +179,23 @@ public sealed class StreakChallenge
             opponentIsHost = false;
             return opponent;
         }
+        // The partners' tree's hard rooms (plan 37 · FC3): a Champion of the cast at the host's battle, another of the cast at
+        // every tenth; with nobody of the cast to draw, the room goes on as it was (no draw is made)
+        if (Room.Place == BattleTree.Place && Room.Hard && cast.Count > 0)
+        {
+            int battle = streak + 1;
+            TreeCastRecord? member = null;
+            if (HostComes(records)) member = PartnersTree.Draw(cast.Where(c => c.Role == "champion").ToList(), rng.Next16);
+            else if (PartnersTree.FamousComes(battle, Room.HostAt)) member = PartnersTree.Draw(cast.Where(c => c.Role != "champion").ToList(), rng.Next16);
+            if (member != null)
+            {
+                castFoe = member;
+                foeRecord = PartnersTree.RecordOf(member);
+                opponent = PartnersTree.Foe(member);
+                opponentIsHost = HostComes(records);
+                return opponent;
+            }
+        }
         if (HostComes(records))
         {
             var record = TrainerDatabase.Get(Room.HostTrainer) ?? throw new InvalidOperationException($"No trainer {Room.HostTrainer} for the {Room.Way} room's host");
@@ -163,7 +209,7 @@ public sealed class StreakChallenge
             return opponent;
         }
         var (low, high) = Room.Tiers(streak);
-        var drawn = FacilityTrainers.Draw(Room.Entered, low, high, Room.Ivs(streak), rng.Next16, Room.Level);
+        var drawn = FacilityTrainers.Draw(Room.Entered, low, high, Room.Ivs(streak), rng.Next16, Room.Level, only: Room.Only);
         lastDrawn = drawn;
         opponent = new FrontierOpponent
         {
@@ -218,6 +264,13 @@ public sealed class StreakChallenge
             if (partnerChoice > 0 && partnerChoice <= scouted.Count)
             {
                 var kept = scouted[partnerChoice - 1];
+                // A famous trainer of the partners' tree brings two of their own team, clear of the player's (plan 37 · FC3)
+                if (kept.Cast is { } trainer && PartnersTree.NumberOf(trainer) is var number and > 0)
+                {
+                    castPartner = PartnersTree.Cast[number - 1];
+                    partner = PartnersTree.Partner(castPartner, Species.Where(s => s.Length > 0).ToList(), enteredItems);
+                    return partner;
+                }
                 var two = new FacilityOpponent
                 {
                     Id = kept.Id, Class = kept.Class, Name = kept.Name, Look = kept.Look, Sets = kept.Sets.Take(Room.Entered).ToList(),
@@ -246,7 +299,7 @@ public sealed class StreakChallenge
         var o = Opponent(records);
         var party = new Party();
         foreach (var p in o.Pokemon) party.Add(FrontierRules.ForBattle(p, Room.Level));
-        var record = opponentIsHost ? TrainerDatabase.Get(Room.HostTrainer) : null;
+        var record = foeRecord ?? (opponentIsHost ? TrainerDatabase.Get(Room.HostTrainer) : null);
         return new Trainer
         {
             Id = o.Dress?.Id ?? "facility", Name = o.ShownName, TrainerClass = o.ShownClass, PrizeMoney = 0,
@@ -286,7 +339,11 @@ public sealed class StreakChallenge
         if (host && Room.Hard && Room.TrophyVariable != null && !trophyHeld) trophy = true;
         // The Battle Tree's scouting: a trainer of the sets beaten in a room of one's own may partner the Multi room
         if (!host && !Room.Multi && Room.Place == BattleTree.Place && lastDrawn != null) BattleTree.Scout(records, lastDrawn);
+        // A famous trainer of the partners' tree beaten, the Champion of the 50th too, may be asked to partner it (plan 37 · FC3)
+        if (castFoe != null) BattleTree.ScoutCast(records, castFoe);
         lastDrawn = null;
+        castFoe = null;
+        foeRecord = null;
         int points = Room.Points(record.Streak);
         opponent = null;
         secondOpponent = null;

@@ -1,4 +1,4 @@
-# The Battle Tree's battle hall (plan 23, the Battle Tree's inside; plan 37 · FC2's frame). The lines are our own. A
+# The partners' tree's battle hall (plan 23, the Battle Tree's inside; plan 37 · FC2's frame, FC3's famous trainers). The lines are our own. A
 # whole challenge is this one arrival script, which loops a battle at a time (Models/Facilities/StreakChallenge.cs;
 # `facility tree ...`), as the Battle Maison's hall does: the challenge lives between the desk and the hall as the host's
 # Facility, and a challenge rested is put down in the records and saved, and the desk takes it up again. In the Multi room
@@ -20,14 +20,25 @@ script OnEnter
   show partner
   speaker "Referee"
   say "{partner} will battle beside you, and the two of you will meet pairs of Trainers. Good luck!"
+  facility tree partnercast
+  setvar VAR_ALOLA_TREE_CAST RESULT
+  call CastLine
 label Battle
   facility tree next
   speaker "Referee"
   say "Battle {number}! Your opponent is climbing up to meet you."
+  facility tree opponent
+  facility tree cast
+  setvar VAR_ALOLA_TREE_CAST RESULT
   facility tree host
   if result == 0 goto Drawn
+  if var VAR_ALOLA_TREE_CAST > 0 goto Champion
   speaker "Referee"
   say "Hold on... a Tree Master is coming down from the highest branch to battle you!"
+  goto Drawn
+label Champion
+  speaker "Referee"
+  say "Hold on... the leaves are rustling at the very top. A Champion is coming down to battle you!"
 label Drawn
   facility tree opponent
   if result == 2 goto Pair
@@ -36,6 +47,8 @@ label Drawn
   show opponent
   walk opponent down 2
   text "{foe} steps forward!"
+  if var VAR_ALOLA_TREE_CAST == 0 goto Fight
+  call CastLine
   goto Fight
 label Pair
   place opponent 7 3 down
@@ -59,7 +72,7 @@ label Fight
   facility tree trophy
   if result == 0 goto Next
   fanfare item
-  text "{player} received this room's trophy! It will hang in the Battle Tree's branches for good."
+  text "{player} received this room's trophy! It will hang in the Partners' Tree's branches for good."
   goto Next
 label Opened
   speaker "Referee"
@@ -114,3 +127,419 @@ script Referee
   speaker "Referee"
   say "No challenge is under way. The receptionist in the lobby takes your entries."
   end
+
+
+# A famous trainer's line as they arrive, as a foe or beside the player (plan 37 · FC3, the approval sheet's 58: each
+# a short line in their own voice), by their number in the cast (Data/tree-cast.json) in VAR_ALOLA_TREE_CAST
+script CastLine
+  if var VAR_ALOLA_TREE_CAST == 1 goto Cast1
+  if var VAR_ALOLA_TREE_CAST == 2 goto Cast2
+  if var VAR_ALOLA_TREE_CAST == 3 goto Cast3
+  if var VAR_ALOLA_TREE_CAST == 4 goto Cast4
+  if var VAR_ALOLA_TREE_CAST == 5 goto Cast5
+  if var VAR_ALOLA_TREE_CAST == 6 goto Cast6
+  if var VAR_ALOLA_TREE_CAST == 7 goto Cast7
+  if var VAR_ALOLA_TREE_CAST == 8 goto Cast8
+  if var VAR_ALOLA_TREE_CAST == 9 goto Cast9
+  if var VAR_ALOLA_TREE_CAST == 10 goto Cast10
+  if var VAR_ALOLA_TREE_CAST == 11 goto Cast11
+  if var VAR_ALOLA_TREE_CAST == 12 goto Cast12
+  if var VAR_ALOLA_TREE_CAST == 13 goto Cast13
+  if var VAR_ALOLA_TREE_CAST == 14 goto Cast14
+  if var VAR_ALOLA_TREE_CAST == 15 goto Cast15
+  if var VAR_ALOLA_TREE_CAST == 16 goto Cast16
+  if var VAR_ALOLA_TREE_CAST == 17 goto Cast17
+  if var VAR_ALOLA_TREE_CAST == 18 goto Cast18
+  if var VAR_ALOLA_TREE_CAST == 19 goto Cast19
+  if var VAR_ALOLA_TREE_CAST == 20 goto Cast20
+  if var VAR_ALOLA_TREE_CAST == 21 goto Cast21
+  if var VAR_ALOLA_TREE_CAST == 22 goto Cast22
+  if var VAR_ALOLA_TREE_CAST == 23 goto Cast23
+  if var VAR_ALOLA_TREE_CAST == 24 goto Cast24
+  if var VAR_ALOLA_TREE_CAST == 25 goto Cast25
+  if var VAR_ALOLA_TREE_CAST == 26 goto Cast26
+  if var VAR_ALOLA_TREE_CAST == 27 goto Cast27
+  if var VAR_ALOLA_TREE_CAST == 28 goto Cast28
+  if var VAR_ALOLA_TREE_CAST == 29 goto Cast29
+  if var VAR_ALOLA_TREE_CAST == 30 goto Cast30
+  if var VAR_ALOLA_TREE_CAST == 31 goto Cast31
+  if var VAR_ALOLA_TREE_CAST == 32 goto Cast32
+  if var VAR_ALOLA_TREE_CAST == 33 goto Cast33
+  if var VAR_ALOLA_TREE_CAST == 34 goto Cast34
+  if var VAR_ALOLA_TREE_CAST == 35 goto Cast35
+  if var VAR_ALOLA_TREE_CAST == 36 goto Cast36
+  if var VAR_ALOLA_TREE_CAST == 37 goto Cast37
+  if var VAR_ALOLA_TREE_CAST == 38 goto Cast38
+  if var VAR_ALOLA_TREE_CAST == 39 goto Cast39
+  if var VAR_ALOLA_TREE_CAST == 40 goto Cast40
+  if var VAR_ALOLA_TREE_CAST == 41 goto Cast41
+  if var VAR_ALOLA_TREE_CAST == 42 goto Cast42
+  if var VAR_ALOLA_TREE_CAST == 43 goto Cast43
+  if var VAR_ALOLA_TREE_CAST == 44 goto Cast44
+  if var VAR_ALOLA_TREE_CAST == 45 goto Cast45
+  if var VAR_ALOLA_TREE_CAST == 46 goto Cast46
+  if var VAR_ALOLA_TREE_CAST == 47 goto Cast47
+  if var VAR_ALOLA_TREE_CAST == 48 goto Cast48
+  if var VAR_ALOLA_TREE_CAST == 49 goto Cast49
+  if var VAR_ALOLA_TREE_CAST == 50 goto Cast50
+  if var VAR_ALOLA_TREE_CAST == 51 goto Cast51
+  if var VAR_ALOLA_TREE_CAST == 52 goto Cast52
+  if var VAR_ALOLA_TREE_CAST == 53 goto Cast53
+  if var VAR_ALOLA_TREE_CAST == 54 goto Cast54
+  if var VAR_ALOLA_TREE_CAST == 55 goto Cast55
+  if var VAR_ALOLA_TREE_CAST == 56 goto Cast56
+  if var VAR_ALOLA_TREE_CAST == 57 goto Cast57
+  if var VAR_ALOLA_TREE_CAST == 58 goto Cast58
+  if var VAR_ALOLA_TREE_CAST == 59 goto Cast59
+  if var VAR_ALOLA_TREE_CAST == 60 goto Cast60
+  if var VAR_ALOLA_TREE_CAST == 61 goto Cast61
+  if var VAR_ALOLA_TREE_CAST == 62 goto Cast62
+  if var VAR_ALOLA_TREE_CAST == 63 goto Cast63
+  if var VAR_ALOLA_TREE_CAST == 64 goto Cast64
+  if var VAR_ALOLA_TREE_CAST == 65 goto Cast65
+  if var VAR_ALOLA_TREE_CAST == 66 goto Cast66
+  if var VAR_ALOLA_TREE_CAST == 67 goto Cast67
+  if var VAR_ALOLA_TREE_CAST == 68 goto Cast68
+  if var VAR_ALOLA_TREE_CAST == 69 goto Cast69
+  if var VAR_ALOLA_TREE_CAST == 70 goto Cast70
+  if var VAR_ALOLA_TREE_CAST == 71 goto Cast71
+  if var VAR_ALOLA_TREE_CAST == 72 goto Cast72
+  if var VAR_ALOLA_TREE_CAST == 73 goto Cast73
+  if var VAR_ALOLA_TREE_CAST == 74 goto Cast74
+  if var VAR_ALOLA_TREE_CAST == 75 goto Cast75
+  if var VAR_ALOLA_TREE_CAST == 76 goto Cast76
+  if var VAR_ALOLA_TREE_CAST == 77 goto Cast77
+  if var VAR_ALOLA_TREE_CAST == 78 goto Cast78
+  if var VAR_ALOLA_TREE_CAST == 79 goto Cast79
+  if var VAR_ALOLA_TREE_CAST == 80 goto Cast80
+  if var VAR_ALOLA_TREE_CAST == 81 goto Cast81
+  if var VAR_ALOLA_TREE_CAST == 82 goto Cast82
+  return
+label Cast1
+  speaker "Cynthia"
+  say "A tree that remembers every Trainer who climbs it. I had to see it for myself."
+  return
+label Cast2
+  speaker "Aaron"
+  say "I came all this way to learn something new. Let's see if you can teach me!"
+  return
+label Cast3
+  speaker "Bertha"
+  say "My, what a climb! These old knees are glad of a good battle at the top."
+  return
+label Cast4
+  speaker "Flint"
+  say "The air up here's thin, but my fire's burning as hot as ever!"
+  return
+label Cast5
+  speaker "Lucian"
+  say "I left a book half read for this. Make it worth the lost chapter."
+  return
+label Cast6
+  speaker "Roark"
+  say "There's no rock up here, but a good battle's a good battle anywhere!"
+  return
+label Cast7
+  speaker "Gardenia"
+  say "So many leaves! I could happily live in a tree like this."
+  return
+label Cast8
+  speaker "Maylene"
+  say "I trained the whole way up the Gauntlet. My legs are warm and ready!"
+  return
+label Cast9
+  speaker "Wake"
+  say "HA HA! A tree full of Trainers! Crasher Wake has arrived!"
+  return
+label Cast10
+  speaker "Fantina"
+  say "Ah, the branches, they sway like a dance! Let us dance too, non?"
+  return
+label Cast11
+  speaker "Byron"
+  say "Hm! Sturdy timber, this. Let's see if you're as sturdy, eh?"
+  return
+label Cast12
+  speaker "Candice"
+  say "It's not snowing here, but I've brought my focus all the same!"
+  return
+label Cast13
+  speaker "Volkner"
+  say "It's been a while since anyone gave me a real spark. Maybe today."
+  return
+label Cast14
+  speaker "Blue"
+  say "I was the best in Kanto once. Up here I'll prove it all over again."
+  return
+label Cast15
+  speaker "Lorelei"
+  say "The sea breeze up here is pleasant. My battles are colder, I warn you."
+  return
+label Cast16
+  speaker "Bruno"
+  say "I climbed the Gauntlet twice to warm up. Now I am ready!"
+  return
+label Cast17
+  speaker "Agatha"
+  say "Heh heh. Young people climbing trees. In my day we battled on the ground!"
+  return
+label Cast18
+  speaker "Brock"
+  say "A tree that grows Trainers? I'll stand firm all the same."
+  return
+label Cast19
+  speaker "Misty"
+  say "I hope there's water at the top of this thing. No? Then let's battle!"
+  return
+label Cast20
+  speaker "Lt. Surge"
+  say "Ten-hut! A soldier never turns down a fight, kid!"
+  return
+label Cast21
+  speaker "Erika"
+  say "Such a peaceful tree. Forgive me if I doze off between turns."
+  return
+label Cast22
+  speaker "Janine"
+  say "I slipped in without anyone seeing me. Did you see me? No? Good!"
+  return
+label Cast23
+  speaker "Sabrina"
+  say "I knew you would be here. I knew how this would start, at least."
+  return
+label Cast24
+  speaker "Blaine"
+  say "Hah! I've got a riddle for you: what burns hotter than a volcano? Me!"
+  return
+label Cast25
+  speaker "Lance"
+  say "Every Trainer here earned their place. Show me how you earned yours."
+  return
+label Cast26
+  speaker "Will"
+  say "I trained my mind on the long way here. I hope you did too."
+  return
+label Cast27
+  speaker "Koga"
+  say "A ninja waits in the branches. You may not see the strike coming."
+  return
+label Cast28
+  speaker "Karen"
+  say "Strong Pokémon, weak Pokémon... I only care about how you battle."
+  return
+label Cast29
+  speaker "Falkner"
+  say "A tree this tall? My birds and I feel right at home up here!"
+  return
+label Cast30
+  speaker "Bugsy"
+  say "This tree must be full of interesting things. After the battle, I'm exploring!"
+  return
+label Cast31
+  speaker "Whitney"
+  say "I came all this way, so I'm not losing! Not even a little!"
+  return
+label Cast32
+  speaker "Morty"
+  say "I saw this moment in a vision once. Let's find out how it ends."
+  return
+label Cast33
+  speaker "Pryce"
+  say "Hmph. The years have taught me patience. They have not slowed me down."
+  return
+label Cast34
+  speaker "Jasmine"
+  say "Um... I'm a little nervous so high up. But I will do my very best!"
+  return
+label Cast35
+  speaker "Chuck"
+  say "WAHAHA! A tree to climb and a Trainer to beat! What a day!"
+  return
+label Cast36
+  speaker "Clair"
+  say "I don't climb trees for anyone. I came up here to win, nothing less."
+  return
+label Cast37
+  speaker "Wallace"
+  say "What elegance! A battle among the branches is a performance in itself."
+  return
+label Cast38
+  speaker "Sidney"
+  say "Heh. You look tough. That just means I'll enjoy this more."
+  return
+label Cast39
+  speaker "Phoebe"
+  say "The spirits up here are so friendly! I think they're cheering for us."
+  return
+label Cast40
+  speaker "Glacia"
+  say "I travelled far to find a battle worth the trip. Let us see."
+  return
+label Cast41
+  speaker "Drake"
+  say "Climbing a tree is like sailing a storm. You grip hard and keep going!"
+  return
+label Cast42
+  speaker "Roxanne"
+  say "I've studied this tree's records. Now for the practical lesson."
+  return
+label Cast43
+  speaker "Brawly"
+  say "Riding the big wave of a battle! Let's go, let's go!"
+  return
+label Cast44
+  speaker "Wattson"
+  say "Wahahahah! I'm all charged up and raring to go!"
+  return
+label Cast45
+  speaker "Flannery"
+  say "I-I'm not nervous at all! I'm just... very fired up!"
+  return
+label Cast46
+  speaker "Norman"
+  say "A good battle tells you more about a Trainer than any words."
+  return
+label Cast47
+  speaker "Winona"
+  say "The winds are kind up here. Let's both fly as high as we can."
+  return
+label Cast48
+  speaker "Tate & Liza"
+  say "We climbed up here together. We'll battle together too!"
+  return
+label Cast49
+  speaker "Juan"
+  say "Ah, a fitting stage for a battle of true beauty. Shall we begin?"
+  return
+label Cast50
+  speaker "Iris"
+  say "Wow, this tree is the best! I wanna climb it all the way up!"
+  return
+label Cast51
+  speaker "Shauntal"
+  say "Oh, the story I'll write about this! Battle well, so the ending is good."
+  return
+label Cast52
+  speaker "Grimsley"
+  say "Win or lose, it all comes down to how the cards fall. Shall we deal?"
+  return
+label Cast53
+  speaker "Marshal"
+  say "My master taught me to seek out strong opponents. You will do."
+  return
+label Cast54
+  speaker "Caitlin"
+  say "I would normally be asleep. For a battle like this, I'll stay awake."
+  return
+label Cast55
+  speaker "Cheren"
+  say "I came to see how far you've come. Show me everything."
+  return
+label Cast56
+  speaker "Roxie"
+  say "Yeah! Let's make this tree shake! Turn it up!"
+  return
+label Cast57
+  speaker "Burgh"
+  say "What an inspiring place! I feel a new masterpiece coming on."
+  return
+label Cast58
+  speaker "Elesa"
+  say "The stage is small, but the spotlight's on us. Let's dazzle them."
+  return
+label Cast59
+  speaker "Clay"
+  say "Hah! A Trainer in a tree! Let's see if you're worth the climb."
+  return
+label Cast60
+  speaker "Skyla"
+  say "It's almost like flying up here! Ready for takeoff?"
+  return
+label Cast61
+  speaker "Drayden"
+  say "I have trained many Trainers. Let me see what you are made of."
+  return
+label Cast62
+  speaker "Marlon"
+  say "Chill out, it's just a battle! A really, really big one!"
+  return
+label Cast63
+  speaker "Diantha"
+  say "This tree is like a theatre. Let's give the audience a show."
+  return
+label Cast64
+  speaker "Malva"
+  say "I'll report on this battle personally. Don't make it a boring story."
+  return
+label Cast65
+  speaker "Siebold"
+  say "A fine battle is like a fine meal. I hope you've brought something good."
+  return
+label Cast66
+  speaker "Wikstrom"
+  say "En garde! A knight never refuses a duel among noble branches!"
+  return
+label Cast67
+  speaker "Drasna"
+  say "Oh my, what a lovely tree. And what a lovely battle this will be."
+  return
+label Cast68
+  speaker "Viola"
+  say "Smile! Every battle up here deserves a good photograph."
+  return
+label Cast69
+  speaker "Grant"
+  say "Every climb has a route to the top. Let's find ours."
+  return
+label Cast70
+  speaker "Korrina"
+  say "Roller skates don't work in trees, but my fists still do!"
+  return
+label Cast71
+  speaker "Ramos"
+  say "Hohoho! A great old tree. It makes an old gardener smile."
+  return
+label Cast72
+  speaker "Clemont"
+  say "My calculations predicted a battle here! The future is now!"
+  return
+label Cast73
+  speaker "Valerie"
+  say "How strange and lovely to be up here. Let us battle gently, then fiercely."
+  return
+label Cast74
+  speaker "Olympia"
+  say "The stars said I would come to this tree. They are rarely wrong."
+  return
+label Cast75
+  speaker "Wulfric"
+  say "Har har! A battle in the treetops! I wouldn't miss this!"
+  return
+label Cast76
+  speaker "Kukui"
+  say "Woo! A battle up here gets the blood pumping! Let's go!"
+  return
+label Cast77
+  speaker "Hala"
+  say "The wind through these branches sounds like a drum. A fine battle awaits!"
+  return
+label Cast78
+  speaker "Olivia"
+  say "This tree's bark looks like it could make some lovely jewellery."
+  return
+label Cast79
+  speaker "Acerola"
+  say "Hee hee! Tree spirits are watching. Let's put on a good show for them!"
+  return
+label Cast80
+  speaker "Kahili"
+  say "The view from up here reminds me of a long drive down the fairway."
+  return
+label Cast81
+  speaker "Nanu"
+  say "Ugh, too many stairs. Let's get this over with, kid."
+  return
+label Cast82
+  speaker "Hapu"
+  say "The island sent me here to battle you. I won't disappoint it."
+  return

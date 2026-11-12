@@ -1,0 +1,301 @@
+# The cups' stadium off the Battle Frontier annex's lobby (plan 37 · FC7, decision 5; rulings, "The cups, the Leaders'
+# round and the sparring room"). The lines are our own, and so are the people. Three desks: the cups (Data/cups.json, the
+# Stadium games' rules with names and prizes of ours: eight battles in a row against trainers of the later sets that meet
+# the cup, with three of the player's own or three rentals), the Leaders' round (a finished region's Leaders, Elite Four
+# and Champion one after another, everyone at level 100) and the sparring room (a type chosen, three of it entered, an
+# endless streak of trainers of that type at 50). Each run is played at its desk, a battle at a time
+# (Models/Facilities/Cups.cs, `facility stadium ...` and `facility sparring ...`).
+
+
+script Cups
+  face self player
+  speaker "Cup Clerk"
+  say "Welcome to the cups! Eight battles in a row under a cup's rules, and a prize the first time you win it."
+  choose "Would you like to enter a cup?" "Enter" "The rules" "No"
+  if result == 1 goto CupRules
+  if result == 2 goto Later
+  choose "Which cup will you enter?" "Crest Cup" "Sprout Cup" "Spark Cup" "Pebble Cup" "Summit Cup" "Cancel"
+  if result == 0 goto Crest
+  if result == 1 goto Sprout
+  if result == 2 goto Spark
+  if result == 3 goto Pebble
+  if result == 4 goto Summit
+  goto Later
+label Crest
+  facility stadium cup crest
+  say "The Crest Cup: three Pokémon of levels 50 to 55, no more than 155 levels together."
+  goto Team
+label Sprout
+  facility stadium cup sprout
+  say "The Sprout Cup: three Pokémon at level 5 that are the first of their line and can still evolve."
+  goto Team
+label Spark
+  facility stadium cup spark
+  say "The Spark Cup: three Pokémon of levels 15 to 20, no more than 50 levels together."
+  goto Team
+label Pebble
+  facility stadium cup pebble
+  say "The Pebble Cup: three Pokémon of levels 25 to 30, no taller than 2 m and no heavier than 20 kg, no more than 80 levels together."
+  goto Team
+label Summit
+  facility stadium cup summit
+  say "The Summit Cup: three Pokémon of any level. Anything goes, but the strongest of the Frontier's rules."
+label Team
+  choose "Will you bring your own Pokémon, or borrow ours?" "My own" "Rentals" "Cancel"
+  if result == 1 goto Rent
+  if result == 2 goto Later
+  say "Please choose the three you'll enter."
+  facility stadium choose
+  if result == 0 goto Later
+  facility stadium cupcheck
+  if result != 0 goto Refused
+  goto Begin
+label Rent
+  facility stadium rent
+  say "Here are three of ours, ready for this cup. Look after them!"
+label Begin
+  facility stadium cupbegin
+  say "Your first opponent is waiting on the field. Good luck!"
+label Next
+  facility stadium cupnext
+  text "Battle {number}: {foe} takes the field!"
+  facility stadium cupbattle
+  if result == 0 goto CupLost
+  facility stadium cupwon
+  if result == 1 goto CupWon
+  speaker "Cup Clerk"
+  choose "Your Pokémon are whole again. Ready for the next battle?" "Next battle" "Retire"
+  if result == 0 goto Next
+  facility stadium cupend
+  say "You retire from the cup. Come back and try it from the start whenever you like."
+  end
+label CupWon
+  speaker "Cup Clerk"
+  say "Eight in a row! You've won the cup!"
+  facility stadium cupprize
+  text "{player} received {number} BP!"
+  if result == 0 goto CupDone
+  fanfare item
+  text "{player} received the {item} for winning the cup for the first time!"
+label CupDone
+  facility stadium cupend
+  say "Congratulations. Your name is on the stadium's board."
+  end
+label CupLost
+  facility stadium cupend
+  speaker "Cup Clerk"
+  say "That's the end of your cup. Every Trainer loses one sometimes. Try again!"
+  end
+label Refused
+  say "I'm sorry, those three don't meet the cup's rules: their levels, their total, their size or their line."
+  say "They must also be of three different species, holding different items."
+  facility stadium cupend
+  end
+label CupRules
+  say "Each cup has its own rules: how high your Pokémon's levels may be, their total, their size or how far they've evolved."
+  say "Your own Pokémon battle as they are, at their own levels. Rentals come at the cup's highest level."
+  say "Win eight battles in a row to win the cup. Lose once, and the cup starts over."
+  end
+label Later
+  say "The cups are always open. Come back whenever you're ready."
+  end
+
+
+script Round
+  face self player
+  speaker "Round Clerk"
+  say "This is the Leaders' round: every Gym Leader of a region, then its Elite Four and its Champion, one after another."
+  say "Everyone battles at level 100, your three and theirs."
+  choose "Which region's round will you take on?" "Sinnoh" "Kanto" "Johto" "Hoenn" "Unova" "No"
+  if result == 0 goto Sinnoh
+  if result == 1 goto Kanto
+  if result == 2 goto Johto
+  if result == 3 goto Hoenn
+  if result == 4 goto Unova
+  goto RoundLater
+label Sinnoh
+  facility stadium region Sinnoh
+  goto Open
+label Kanto
+  facility stadium region Kanto
+  goto Open
+label Johto
+  facility stadium region Johto
+  goto Open
+label Hoenn
+  facility stadium region Hoenn
+  goto Open
+label Unova
+  facility stadium region Unova
+label Open
+  if result == 1 goto RoundTeam
+  say "That region's round opens once you've entered its Hall of Fame."
+  end
+label RoundTeam
+  say "Please choose the three you'll enter. They'll battle at level 100 for the round."
+  facility stadium choose
+  if result == 0 goto RoundLater
+  facility stadium roundbegin
+label RoundNext
+  facility stadium roundnext
+  text "Match {number}: {foe} steps up!"
+  facility stadium roundbattle
+  if result == 0 goto RoundLost
+  facility stadium roundwon
+  if result == 1 goto RoundCleared
+  speaker "Round Clerk"
+  choose "Your Pokémon are whole again. On to the next match?" "Next match" "Retire"
+  if result == 0 goto RoundNext
+  facility stadium roundend
+  say "You retire from the round. Come back and start it again whenever you like."
+  end
+label RoundCleared
+  facility stadium roundend
+  speaker "Round Clerk"
+  say "You've beaten the whole round! Every Leader, the Elite Four and the Champion. What a run!"
+  end
+label RoundLost
+  facility stadium roundend
+  speaker "Round Clerk"
+  say "The round ends here. Rest up, and take it on again from the first Leader."
+  end
+label RoundLater
+  say "The Leaders will be here. Come back whenever you're ready."
+  end
+
+
+script Sparring
+  face self player
+  speaker "Sparring Coach"
+  say "The sparring room! Choose a type, enter three of it, and spar against Trainers who use it too, as long as you can."
+  choose "Which type will you spar with?" "Normal" "Fire" "Water" "Grass" "Electric" "More"
+  if result == 0 goto Normal
+  if result == 1 goto Fire
+  if result == 2 goto Water
+  if result == 3 goto Grass
+  if result == 4 goto Electric
+  if result == 5 goto Page2
+  goto SparLater
+label Page2
+  choose "Which type will you spar with?" "Ice" "Fighting" "Poison" "Ground" "Flying" "More"
+  if result == 0 goto Ice
+  if result == 1 goto Fighting
+  if result == 2 goto Poison
+  if result == 3 goto Ground
+  if result == 4 goto Flying
+  if result == 5 goto Page3
+  goto SparLater
+label Page3
+  choose "Which type will you spar with?" "Psychic" "Bug" "Rock" "Ghost" "Dragon" "More"
+  if result == 0 goto Psychic
+  if result == 1 goto Bug
+  if result == 2 goto Rock
+  if result == 3 goto Ghost
+  if result == 4 goto Dragon
+  if result == 5 goto Page4
+  goto SparLater
+label Page4
+  choose "Which type will you spar with?" "Dark" "Steel" "Fairy" "No"
+  if result == 0 goto Dark
+  if result == 1 goto Steel
+  if result == 2 goto Fairy
+  goto SparLater
+label Normal
+  facility sparring way normal
+  goto Spar
+label Fire
+  facility sparring way fire
+  goto Spar
+label Water
+  facility sparring way water
+  goto Spar
+label Grass
+  facility sparring way grass
+  goto Spar
+label Electric
+  facility sparring way electric
+  goto Spar
+label Ice
+  facility sparring way ice
+  goto Spar
+label Fighting
+  facility sparring way fighting
+  goto Spar
+label Poison
+  facility sparring way poison
+  goto Spar
+label Ground
+  facility sparring way ground
+  goto Spar
+label Flying
+  facility sparring way flying
+  goto Spar
+label Psychic
+  facility sparring way psychic
+  goto Spar
+label Bug
+  facility sparring way bug
+  goto Spar
+label Rock
+  facility sparring way rock
+  goto Spar
+label Ghost
+  facility sparring way ghost
+  goto Spar
+label Dragon
+  facility sparring way dragon
+  goto Spar
+label Dark
+  facility sparring way dark
+  goto Spar
+label Steel
+  facility sparring way steel
+  goto Spar
+label Fairy
+  facility sparring way fairy
+label Spar
+  facility sparring best
+  say "Your best in this room is {number} in a row."
+  facility sparring enough
+  if result == 1 goto SparChoose
+  say "You need three Pokémon that can take part, of different species and holding different items."
+  end
+label SparChoose
+  say "Please choose the three you'll enter. All three must be of the room's type."
+  facility sparring choose
+  if result == 0 goto SparLater
+  facility sparring check
+  if result == 3 goto NotOfType
+  if result != 0 goto SparRefused
+  facility sparring begin
+label SparNext
+  facility sparring next
+  facility sparring opponent
+  text "Sparring match {number}: {foe} steps up!"
+  facility sparring battle
+  if result == 0 goto SparLost
+  facility sparring won
+  facility sparring points
+  text "{player} received {number} BP!"
+  speaker "Sparring Coach"
+  choose "Your Pokémon are whole again. Keep going?" "Next match" "Retire"
+  if result == 0 goto SparNext
+  facility sparring finish won
+  say "A fine streak. It's on the room's record."
+  facility sparring end
+  end
+label SparLost
+  facility sparring finish lost
+  speaker "Sparring Coach"
+  say "That's the streak over. Train hard and come back!"
+  facility sparring end
+  end
+label NotOfType
+  say "All three must be of the room's type. Choose again when you have three."
+  end
+label SparRefused
+  say "Those three must be of different species, holding different items."
+  end
+label SparLater
+  say "Come back when you feel like a workout."
+  end

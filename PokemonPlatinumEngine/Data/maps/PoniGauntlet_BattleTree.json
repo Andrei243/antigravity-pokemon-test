@@ -1,6 +1,6 @@
 {
   "name": "PoniGauntlet_BattleTree",
-  "displayName": "Battle Tree",
+  "displayName": "Partners' Tree",
   "bgmTrack": "alola/tree",
   "interior": "Museum",
   "trees": "Round",
@@ -124,8 +124,8 @@
   "npcs": [
     {
       "id": "desk",
-      "name": "Receptionist",
-      "npcType": "receptionist",
+      "name": "Ione Calder",
+      "npcType": "tree_ione",
       "x": 4,
       "y": 4,
       "facing": "Down",
