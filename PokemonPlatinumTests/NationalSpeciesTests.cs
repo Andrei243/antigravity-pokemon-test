@@ -25,8 +25,7 @@ public class NationalSpeciesTests
     /// <summary>What Generations 1 to 5 have that nothing anywhere in the game gives yet, and who owes it.</summary>
     public static readonly Dictionary<string, string> Owed = new()
     {
-        ["Drilbur"] = "plan 38 · EX11: Unova's dust clouds", ["Excadrill"] = "plan 38 · EX11: Unova's dust clouds",
-        // (Plan 40 · GE3 gave Nacrene's fossils, Reshiram, Tornadus and Thundurus; Kalos's water, plan 23, Alomomola)
+        // (Plan 33 · GL4's Galar Mine gave Drilbur and Excadrill; plan 40 · GE3 gave Nacrene's fossils, Reshiram, Tornadus and Thundurus; Kalos's water, plan 23, Alomomola)
     };
 
     /// <summary>The plan that owes a species of a later generation its ways, by its National number.</summary>

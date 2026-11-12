@@ -1,0 +1,181 @@
+{
+  "name": "GalarMine",
+  "displayName": "Galar Mine",
+  "bgmTrack": "galar/route1",
+  "interior": "None",
+  "trees": "Round",
+  "encounterRate": 10,
+  "width": 9,
+  "height": 24,
+  "ground": [
+    "XXXMXXXXX",
+    "XXXcXXXXX",
+    "XXccccXXX",
+    "XXccccccX",
+    "XccccccXX",
+    "XXXXXccXX",
+    "XXXccccXX",
+    "XXccccXXX",
+    "XccccXXXX",
+    "XccXXXXXX",
+    "XcccccXXX",
+    "XXcccccXX",
+    "XXXXXccXX",
+    "XXXXcccXX",
+    "XXcccccXX",
+    "XXccccXXX",
+    "XXccccccX",
+    "XXXXXccXX",
+    "XXXcccccX",
+    "XXcccccXX",
+    "XXccXXXXX",
+    "XXcccXXXX",
+    "XXXcXXXXX",
+    "XXXMXXXXX"
+  ],
+  "solid": [
+    "###.#####",
+    "###.#####",
+    "##....###",
+    "##......#",
+    "#......##",
+    "#####..##",
+    "###....##",
+    "##....###",
+    "#....####",
+    "#..######",
+    "#.....###",
+    "##.....##",
+    "#####..##",
+    "####...##",
+    "##.....##",
+    "##....###",
+    "##......#",
+    "#####..##",
+    "###.....#",
+    "##.....##",
+    "##..#####",
+    "##...####",
+    "###.#####",
+    "###.#####"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 3,
+      "sourceY": 23,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 3,
+      "sourceY": 0,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "galar_worker_morris",
+      "name": "Morris",
+      "npcType": "worker",
+      "x": 6,
+      "y": 16,
+      "facing": "Left",
+      "trainer": {
+        "id": "galar_worker_morris",
+        "name": "Morris",
+        "trainerClass": "Worker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Worker Morris: Mind the carts! And mind me, while you're at it!",
+        "dialogueAfter": "Worker Morris: Off you go. The far end comes out on Route 4.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "galar_hiker_ives",
+      "name": "Ives",
+      "npcType": "hiker",
+      "x": 1,
+      "y": 10,
+      "facing": "Right",
+      "trainer": {
+        "id": "galar_hiker_ives",
+        "name": "Ives",
+        "trainerClass": "Hiker",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Hiker Ives: The coal in this seam has warmed Motostoke for a hundred years. Let's warm up too!",
+        "dialogueAfter": "Hiker Ives: Phew! You've got a hot streak going.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "bede_mine",
+      "name": "Bede",
+      "npcType": "bede",
+      "x": 4,
+      "y": 2,
+      "facing": "Down",
+      "dialog": [
+        "Hmph."
+      ],
+      "shownBy": "FLAG_GALAR_BEDE_IN_MINE"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 2,
+      "y": 3,
+      "width": 6,
+      "depth": 1,
+      "script": "BedeInTheMine",
+      "variable": "VAR_GALAR_STORY",
+      "value": 17
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Rolycoly",
+      "minLevel": 10,
+      "maxLevel": 13,
+      "weight": 30
+    },
+    {
+      "speciesName": "Roggenrola",
+      "minLevel": 10,
+      "maxLevel": 13,
+      "weight": 25
+    },
+    {
+      "speciesName": "Diglett",
+      "minLevel": 11,
+      "maxLevel": 13,
+      "weight": 15
+    },
+    {
+      "speciesName": "Woobat",
+      "minLevel": 10,
+      "maxLevel": 13,
+      "weight": 15
+    },
+    {
+      "speciesName": "Drilbur",
+      "minLevel": 11,
+      "maxLevel": 13,
+      "weight": 10
+    },
+    {
+      "speciesName": "Timburr",
+      "minLevel": 11,
+      "maxLevel": 13,
+      "weight": 5
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  // Motostoke (plan 33 · GL4): the city of the opening ceremony, on two terraces over the Wild Area's riverbank. The steps
+  // come up the bank into the lower terrace, where the Pokémon Center, the hotel and the city's houses stand along a
+  // stone street; the ramp climbs to the upper terrace and the stadium, whose doors face the city. The west gate at the
+  // upper terrace's far end lets onto Route 3 once the ceremony is over. Our own city at about half the original's
+  // distances, its sense of height kept in the terraces and its walls. Scripts: Data/scripts/motostoke.txt
+  "markers": [
+    { "name": "motostoke_top_of_steps", "at": [0, 16.3, -654], "yaw": 180 },
+    { "name": "motostoke_center_door", "at": [37, 16.3, -686], "yaw": 0 },
+    { "name": "motostoke_hotel_door", "at": [-48, 16.3, -686], "yaw": 0 },
+    { "name": "motostoke_stadium_door", "at": [0, 20.3, -723], "yaw": 0 },
+    { "name": "motostoke_west_gate_back", "at": [-90, 20.3, -748], "yaw": 0 },
+    { "name": "motostoke_hop", "at": [4, 16.3, -662], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "motostoke_center_door",
+      "box": { "min": [36, 15.4, -690], "max": [38, 19, -689] },
+      "room": "Motostoke_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "motostoke_center_door"
+    },
+    {
+      "name": "motostoke_hotel_door",
+      "box": { "min": [-49, 15.4, -690], "max": [-47, 19, -689] },
+      "room": "Motostoke_Hotel", "at": [4, 8], "facing": "up",
+      "out": "motostoke_hotel_door"
+    },
+    {
+      "name": "motostoke_stadium_door",
+      "box": { "min": [-1, 19.4, -728], "max": [1, 23, -727] },
+      "room": "Motostoke_Stadium", "at": [4, 8], "facing": "up",
+      "out": "motostoke_stadium_door"
+    }
+  ],
+  "triggers": [
+    // Up the steps for the first time: Hop, waiting with the news of the registration
+    { "name": "motostoke_arrival", "box": { "min": [-6, 14, -662], "max": [6, 20, -652] }, "script": "HopInMotostoke", "var": "VAR_GALAR_STORY", "value": 13 },
+    // The west gate onto Route 3: closed to challengers until the ceremony is over
+    { "name": "motostoke_west_gate", "box": { "min": [-112, 18, -776], "max": [-80, 26, -768] }, "script": "WestGate" }
+  ],
+  "solids": [
+    { "name": "Motostoke Stadium", "min": [-34, 19.4, -760], "max": [34, 32, -728], "building": { "kind": "hall", "town": "galar", "sign": "MOTOSTOKE STADIUM" } },
+    { "name": "Motostoke's Pokémon Center", "min": [30, 15.4, -700], "max": [44, 22, -690], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "the hotel", "min": [-60, 15.4, -702], "max": [-36, 25, -690], "building": { "kind": "hotel", "town": "galar", "sign": "HOTEL" } },
+    { "name": "a house by the steps, west", "min": [-90, 15.4, -668], "max": [-74, 23, -656], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a house by the steps, east", "min": [60, 15.4, -670], "max": [76, 23, -658], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "the boutique", "min": [70, 15.4, -702], "max": [94, 23, -690], "building": { "kind": "shop", "town": "galar", "sign": "BOUTIQUE" } },
+    { "name": "a works by the west gate", "min": [-100, 19.4, -740], "max": [-70, 27, -724], "building": { "kind": "factory", "town": "galar" } },
+    { "name": "a works by the stadium", "min": [60, 19.4, -756], "max": [96, 28, -730], "building": { "kind": "factory", "town": "galar" } }
+  ],
+  "people": [
+    {
+      "name": "hop_motostoke", "at": [4, 16.3, -662], "yaw": 180, "look": "hop", "displayName": "Hop",
+      "lines": ["The stadium's at the top of the ramp. Let's get registered!"],
+      "shownBy": "FLAG_GALAR_HOP_IN_MOTOSTOKE"
+    },
+    {
+      "name": "west_gate_staffer", "at": [-88, 20.3, -762], "yaw": 0, "look": "clerk", "displayName": "League Staff",
+      "lines": ["Route 3 is through this gate. The gym challenge starts with the Turffield Gym, past the Galar Mine."]
+    },
+    {
+      "name": "motostoke_worker", "at": [-30, 16.3, -676], "yaw": 90, "look": "worker", "displayName": "Worker",
+      "lines": ["The whole city runs on steam and gears. You can hear it hum at night, if you listen."],
+      "moves": "wander", "radius": 4
+    },
+    {
+      "name": "motostoke_fan", "at": [22, 16.3, -668], "yaw": 270, "look": "lady", "displayName": "Fan",
+      "lines": ["The opening ceremony! Every year I say I'll get a seat, and every year it's sold out the day the tickets go up."]
+    },
+    {
+      "name": "motostoke_gentleman", "at": [28, 20.3, -726], "yaw": 180, "look": "man", "displayName": "Gentleman",
+      "lines": ["Kabu, the Leader here, has kept his gym the hardest of the first three for years. Mind he doesn't burn you out."]
+    }
+  ],
+  "trees": [
+    { "at": [-20, -648], "kind": "round", "size": 0.9 },
+    { "at": [20, -648], "kind": "round", "size": 0.9 },
+    { "at": [-20, -704], "kind": "round", "size": 0.9 },
+    { "at": [20, -704], "kind": "round", "size": 0.9 }
+  ]
+}

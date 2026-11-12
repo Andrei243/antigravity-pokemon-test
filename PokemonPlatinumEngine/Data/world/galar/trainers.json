@@ -274,5 +274,228 @@
         "personality": 1638213120
       }
     ]
+  },
+  {
+    "id": "galar_camper_wade",
+    "name": "Wade",
+    "class": "Camper",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 22,
+    "party": [
+      {
+        "species": "Skwovet",
+        "level": 11,
+        "ivScale": 0,
+        "personality": 464981145
+      },
+      {
+        "species": "Rookidee",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 706554718
+      }
+    ]
+  },
+  {
+    "id": "galar_worker_glen",
+    "name": "Glen",
+    "class": "Worker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 24,
+    "party": [
+      {
+        "species": "Rolycoly",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 978733887
+      },
+      {
+        "species": "Roggenrola",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 1399155724
+      }
+    ]
+  },
+  {
+    "id": "galar_worker_morris",
+    "name": "Morris",
+    "class": "Worker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 26,
+    "party": [
+      {
+        "species": "Rolycoly",
+        "level": 13,
+        "ivScale": 0,
+        "personality": 107141461
+      },
+      {
+        "species": "Drilbur",
+        "level": 13,
+        "ivScale": 0,
+        "personality": 2198642538
+      }
+    ]
+  },
+  {
+    "id": "galar_hiker_ives",
+    "name": "Ives",
+    "class": "Hiker",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 28,
+    "party": [
+      {
+        "species": "Roggenrola",
+        "level": 13,
+        "ivScale": 0,
+        "personality": 3673054299
+      },
+      {
+        "species": "Diglett",
+        "level": 14,
+        "ivScale": 0,
+        "personality": 1627602168
+      }
+    ]
+  },
+  {
+    "id": "galar_bede_1",
+    "name": "Bede",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 160,
+    "party": [
+      {
+        "species": "Solosis",
+        "level": 13,
+        "ivScale": 12,
+        "personality": 1791276497
+      },
+      {
+        "species": "Hatenna",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 365774902
+      }
+    ]
+  },
+  {
+    "id": "galar_lass_ivy",
+    "name": "Ivy",
+    "class": "Lass",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 28,
+    "party": [
+      {
+        "species": "Gossifleur",
+        "level": 14,
+        "ivScale": 0,
+        "personality": 1680630583
+      },
+      {
+        "species": "Wooloo",
+        "level": 14,
+        "ivScale": 0,
+        "personality": 3769315492
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_wren",
+    "name": "Wren",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 64,
+    "party": [
+      {
+        "species": "Gossifleur",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 344841741
+      },
+      {
+        "species": "Budew",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 85832130
+      }
+    ]
+  },
+  {
+    "id": "galar_gym_trainer_cole",
+    "name": "Cole",
+    "class": "Gym Trainer",
+    "ai": [
+      "Basic",
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 68,
+    "party": [
+      {
+        "species": "Bounsweet",
+        "level": 16,
+        "ivScale": 0,
+        "personality": 4158258131
+      },
+      {
+        "species": "Phantump",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 1253880592
+      }
+    ]
+  },
+  {
+    "id": "galar_milo_1",
+    "name": "Milo",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1600,
+    "dynamaxBand": true,
+    "party": [
+      {
+        "species": "Gossifleur",
+        "level": 19,
+        "ivScale": 12,
+        "personality": 3745992201
+      },
+      {
+        "species": "Eldegoss",
+        "level": 20,
+        "ivScale": 12,
+        "personality": 1863919630
+      }
+    ]
   }
 ]

@@ -9,6 +9,9 @@
 #   3 Leon home, the three, Hop's battle   9 Hop's third battle in the garden; night falls
 #   4 into the Weald after Hop's Wooloo   10 the Wishing Stars, the Dynamax Band and Leon's endorsement
 #   5 the shadow in the fog; home again   11 aboard the train at Wedgehurst Station
+# and on (plan 33 · GL2, GL4): 12 off the train in the Wild Area, 13 up the steps into Motostoke, 14 off to register,
+# 15 registered, 16 the morning of the opening ceremony, 17 the challenge open, 18 Bede beaten in the Galar Mine,
+# 19 the Grass Badge
 # VAR_GALAR_VERSION is the version the game is (plan 33 · decision 2): 1 Sword, 2 Shield, asked by Mum on the first
 # morning (Postwick_PlayersHouse_1F.txt).
 

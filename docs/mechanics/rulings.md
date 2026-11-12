@@ -11122,6 +11122,62 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   boss's box), the Wishing Piece (an item the importer must add; `FLAG_DAILY_GALAR_DEN_<ID>_WISHED` already lights a den),
   `CoreSetup.MegaMaxDen`'s post-game den (GL7), the shots `ft70_raid_four`, `ft71_raid_catch` and the beam by day and night.
 
+## Max Raid dens, their second session (2026-11-12, plan 33 · GL3)
+
+- **The Wishing Piece** is Sword's item brought in by name from PokeAPI's items (the importer's `LaterItemsByName`, id
+  2310, the Items pocket, a price of 20 the importer keeps), its description and its Romanian words ours. A quiet den's
+  script offers to throw one in (`raid wish`): the den's beam is lit for the day as its daily flag
+  `FLAG_DAILY_GALAR_DEN_<ID>_WISHED` already let it be, the piece is spent, and the den is looked into again so the raid
+  offered is the lit day's. The Watt trader at the Meetup Spot sells it for 3,000 W (Sword's price), its one source.
+- **The beam** is drawn now (`Graphics/OpenWorld/DenBeams.cs`; style guide, "Max Raid dens"): over every den trigger of the
+  open map (`den_<id>`, `Raids.DenOfTrigger`) whose den the same question as its script calls lit (`Raids.BeamStands`: the
+  day's draw or a Wishing Piece, and its boss not felled today), worked out again only when the map, the day or the
+  story moves, so the picture never shows a beam the den calls quiet. Nothing of it reaches the rules.
+- **The raid's screen**: the boss's box is a single foe's at the top left with its barrier's shields as a tray of pips
+  under it, read from the log's `RaidBarrier` as its line is read (`BattleAnimator.RaidShields`) and brought level with
+  the rules as a menu opens; the four raiders' boxes are a triple battle's, stacked down the right. `RaidBarrier` has its
+  wire name now (plan 28's `BattleWire.EventTypes`), which GL3 left out.
+- **Camping in the Wild Area** needs nothing placed: the camp opens from the start menu anywhere a Pokémon is on the team
+  while care is on (plan 35 · BN2, on by default under the modern rules), the Wild Area and Galar's routes among them,
+  and its pot cooks curry's part (plan 39 · CR6). GL2's "camping placed in the Wild Area" is that.
+- **Left owed**: the Rotom Bike (plan 30's `RegionMode.RotomBike` has no engine code; the Bicycle is not offered in an open
+  map, and plan 30's mount is a Pokémon's), `CoreSetup.MegaMaxDen`'s den (GL7), and the shots.
+
+## Motostoke, the opening ceremony and Turffield (2026-11-12, plan 33 · GL4, its first session)
+
+- **The land grows north, not wider** (plan 33 · decision 1 still unanswered, the Wild Area's footprint untouched): the
+  region's rectangle of chunks was `[-5, -20, 4, 1]` (220 chunks, 26 MB of bake) and is `[-5, -30, 4, 1]` now (320 chunks,
+  39 MB), ten rows north of the riverbank and no column wider. The new ground is `terrain/wild_area_north.json`, read
+  after `wild_area.json` (its name sorts after it) so its brushes lay the city over the Wild Area's north bank. Rooms take
+  the distance the land doesn't: the Galar Mine is a grid map of its own between Route 3 and Route 4, and every stadium's
+  lobby, mission and pitch are grid rooms, so Kabu's and Nessa's gyms can be added without baking again.
+- **Motostoke** stands on two terraces: the lower, level with the bank's top at 16 m, with the Pokémon Center, the hotel,
+  houses and a boutique; the upper, four metres higher up a ramp, with the stadium and two works. Walls too steep to climb
+  hem it east, west and north but for the west gate onto Route 3. The steps up the bank from the riverbank are a road cut
+  at its own heights (`roads.json`'s points of three numbers). Its lifts, its gears in the streets and its river are not
+  built; the user judges the city from the shots owed (plan 33 · GL4's done-when).
+- **The stadium is a `Hall`** (`BuildingKind.Hall`, a large public hall) until plan 33 decides the stadium's own look
+  (`BuildingKind.Stadium` and `BattleArena.Stadium` with its crowd's ring, the style guide's "Arenas (G8)" first); the
+  pitch is a gym room fought on the `Gym` stage with the Leader's type.
+- **The chapter goes on from the steps** (`VAR_GALAR_STORY`, postwick.txt's count): the steward lets an endorsed challenger
+  up the steps (13), Hop waits at the top (14), the registration at the stadium with Hop and Bede (15), Team Yell at the
+  hotel's counter sent off by Chairman Rose and a night's rest (16), the opening ceremony on the pitch (Rose, Milo, Leon,
+  the challenge declared open; 17), Bede in the Galar Mine (18) and Milo's Grass Badge (19). Our lines on Sword's beats as
+  publicly told; Bede is battled in the mine as Sword has it, and Hop goes on ahead with no battle in this part. The
+  people of each scene are shown by flags of ours (`shownBy`), so a new game needs nothing set and no story version moves.
+  The objectives are 712 to 716.
+- **Milo's mission** is three Wooloo standing in the field's three gates, each nudged into its pen by talking to it (a
+  flag each, so a Wooloo herded stays penned), and two gym trainers beside the way: a nudge, not Sword's herding puzzle,
+  which a later session may build as a grid room's puzzle. Milo battles with the Dynamax Band (`dynamaxBand`, plan 06 ·
+  R30's AI Dynamaxes his last), and his band is `PlainBand` until Galar's Leaders have bands of their own.
+- **Ours**: Route 3's, the Galar Mine's and Route 4's trainers and tables (the species Sword shows there, our levels and
+  weights; no Galarian form in a zone's row yet, since an open zone's rows name species), Bede's team, the gym trainers',
+  Milo's (two Pokémon at 19 and 20), Team Yell's and the gym trainers' classes (`Team Yell`, `Gym Trainer`), and four
+  looks (`bede`, `milo`, `rose`, `yell_grunt`, chibi-kit stand-ins as Galar's first cast are).
+- **Left owed to GL4's second session**: Route 5 and Hulbury with Nessa's mission (the land north and east of Turffield
+  must grow again, a bake), Galar Mine No. 2, Kabu's mission and battle in Motostoke's stadium (its lobby and pitch are
+  built), Hop's and Marnie's battles, the shots of Motostoke for the user to judge and the three badges won in the harness.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or

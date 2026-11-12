@@ -5,11 +5,25 @@
 # The foot of the steps: the League's steward turns a Trainer back
 script MotostokeSteps
   if var VAR_GALAR_STORY >= 13 end
+  if var VAR_GALAR_STORY == 12 goto Endorsed
   faceto player league_steward
   speaker "League Steward"
   say "Sorry, the steps are closed! Motostoke is busy getting ready for the opening ceremony of the gym challenge."
   say "You'll hear when they open. The Wild Area's all yours until then!"
   walkto player motostoke_steps_back
+  end
+# Plan 33 · GL4: an endorsed challenger, come across the Wild Area on foot as Hop did, is let up the steps
+label Endorsed
+  scene "Up the steps to Motostoke"
+  faceto player league_steward
+  speaker "League Steward"
+  say "Hold on, is that a letter from the Champion? You're one of the endorsed challengers! Up you go."
+  say "Your friend went up ahead of you. Registration's at the stadium, right at the top of the city."
+  setflag FLAG_GALAR_HIDE_HOP_RIVERBANK
+  setflag FLAG_GALAR_HOP_IN_MOTOSTOKE
+  setvar VAR_GALAR_STORY 13
+  objective galarRegister
+  endscene
   end
 
 

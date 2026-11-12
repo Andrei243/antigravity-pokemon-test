@@ -1,0 +1,46 @@
+{
+  // Turffield (plan 33 · GL4): a farming village on the slope that rises east to the stadium on its hill, the home of
+  // Milo, the gym challenge's first Leader. A Pokémon Center by the path, its farmhouses and fields, and the stadium's
+  // doors at the top of the way up. Our own village. Scripts: Data/scripts/turffield.txt
+  "markers": [
+    { "name": "turffield_west", "at": [-30, 24.8, -906], "yaw": 90 },
+    { "name": "turffield_center_door", "at": [26, 25.9, -886], "yaw": 0 },
+    { "name": "turffield_stadium_door", "at": [115, 30.3, -911], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "turffield_center_door",
+      "box": { "min": [25, 24.5, -890], "max": [27, 29, -889] },
+      "room": "Turffield_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "turffield_center_door"
+    },
+    {
+      "name": "turffield_stadium_door",
+      "box": { "min": [114, 28, -916], "max": [116, 34, -915] },
+      "room": "Turffield_Stadium", "at": [4, 8], "facing": "up",
+      "out": "turffield_stadium_door"
+    }
+  ],
+  "solids": [
+    { "name": "Turffield Stadium", "min": [90, 29.4, -946], "max": [140, 40, -916], "building": { "kind": "hall", "town": "galar", "sign": "TURFFIELD STADIUM" } },
+    { "name": "Turffield's Pokémon Center", "min": [20, 24, -900], "max": [32, 31, -890], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "a farmhouse", "min": [-20, 23.6, -940], "max": [-6, 30, -928], "building": { "kind": "house", "town": "galar", "storeys": 2 } },
+    { "name": "a farmhouse by the fields", "min": [44, 25.4, -944], "max": [58, 32, -932], "building": { "kind": "house", "town": "galar", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "turffield_farmer", "at": [10, 25.4, -922], "yaw": 180, "look": "man", "displayName": "Farmer",
+      "lines": ["Milo grows the best vegetables in Galar, and his Pokémon help with every harvest."]
+    },
+    {
+      "name": "turffield_girl", "at": [64, 26.5, -912], "yaw": 270, "look": "lady", "displayName": "Girl",
+      "lines": ["The gym mission here is herding Wooloo. Sounds easy, doesn't it? It isn't!"],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [0, -950], "kind": "round", "size": 1.2 },
+    { "at": [72, -946], "kind": "round" },
+    { "at": [-34, -890], "kind": "round" }
+  ]
+}

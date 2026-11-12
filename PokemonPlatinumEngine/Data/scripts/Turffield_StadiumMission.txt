@@ -1,0 +1,24 @@
+# Milo's gym mission (plan 33 · GL4): three Wooloo in the way of the field's three gates, each nudged along into its
+# pen, and two gym trainers who battle whoever comes near. A Wooloo herded stays penned (its own flag). Our own lines,
+# on Sword and Shield's beat of herding Wooloo; the herding is a nudge, not a puzzle (docs/mechanics/rulings.md).
+
+
+script MissionWooloo1
+  text "The Wooloo bleated and wouldn't budge. {player} gave it a gentle nudge..."
+  text "It trotted off through the gate and into its pen!"
+  setflag FLAG_GALAR_TURFFIELD_WOOLOO_1
+  end
+
+
+script MissionWooloo2
+  text "This Wooloo was fast asleep in the gateway. {player} gave it a gentle nudge..."
+  text "It rolled off into its pen without waking up!"
+  setflag FLAG_GALAR_TURFFIELD_WOOLOO_2
+  end
+
+
+script MissionWooloo3
+  text "The last Wooloo stood its ground. {player} gave it a gentle nudge..."
+  text "It bounced away into the last pen. The mission is cleared!"
+  setflag FLAG_GALAR_TURFFIELD_WOOLOO_3
+  end

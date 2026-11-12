@@ -32,7 +32,9 @@ public class GalarTests
     private static readonly string[] Areas = { "postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
         // The Wild Area's southern half (plan 33 · GL2; GalarWildAreaTests)
         "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins", "wild_area_lake_axewell",
-        "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank" };
+        "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank",
+        // Motostoke, Route 3, Route 4 and Turffield (plan 33 · GL4)
+        "motostoke", "galar_route_3", "galar_route_4", "turffield" };
 
     [Fact]
     public void GalarIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -97,19 +99,20 @@ public class GalarTests
         Assert.NotNull(map.Land);
         Assert.NotNull(map.Land!.Nav);
         // A door to each room, and each room's way out leads back through it to its marker
-        Assert.Equal(Region.Maps.Where(m => m != "Postwick_PlayersHouse_2F").OrderBy(m => m), map.Doors.Select(d => d.Room).OrderBy(m => m));
+        // (but the rooms come to only from another room: upstairs, and a stadium's mission and pitch; the Galar Mine has two)
+        var behind = new[] { "Postwick_PlayersHouse_2F", "Motostoke_StadiumPitch", "Turffield_StadiumMission", "Turffield_StadiumPitch" };
+        Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
             Assert.NotNull(map.Marker(door.Out));
             var room = Rooms.Value(door.Room);
             Assert.True(room.IsWalkable(door.RoomX, door.RoomY), $"{door.Name} lands on a blocked tile of {door.Room}");
-            var way = room.Warps.Single(w => w.TargetMap == "Galar");
-            Assert.Equal(door, map.DoorBackFrom(room.Name, way.SourceX, way.SourceY));
+            Assert.Contains(room.Warps.Where(w => w.TargetMap == "Galar"), way => Equals(door, map.DoorBackFrom(room.Name, way.SourceX, way.SourceY)));
         }
         // Wild Pokémon live in the grass of the two routes and the Wild Area, every row a species of the data, the routes'
         // at their first levels (the Wild Area's are GalarWildAreaTests')
-        Assert.Equal(new[] { "route1_west", "route1_east", "route2_south", "route2_north" }, map.Zones.Where(z => z.Place.StartsWith("galar_route")).Select(z => z.Name));
-        foreach (var slot in map.Zones.Where(z => z.Place.StartsWith("galar_route")).SelectMany(z => z.Slots))
+        Assert.Equal(new[] { "route1_west", "route1_east", "route2_south", "route2_north" }, map.Zones.Where(z => z.Place is "galar_route_1" or "galar_route_2").Select(z => z.Name));
+        foreach (var slot in map.Zones.Where(z => z.Place is "galar_route_1" or "galar_route_2").SelectMany(z => z.Slots))
         {
             Assert.True(PokemonDatabase.Get(slot.Species) != null || PokemonDatabase.SpeciesOfForm(slot.Species) != null, slot.Species);
             Assert.InRange(slot.MinLevel, 2, 7);
@@ -166,8 +169,11 @@ public class GalarTests
             Assert.True(walk.Reaches(person.Home), $"{person.Key} stands where nobody can come");
         // And the open map isn't one piece with the banks round it: their tops are never come to
         Assert.False(walk.Reaches(OpenPos.FromMetres(-80, 9, -150)));
-        // nor the Wild Area's north bank under Motostoke, until plan 33 · GL4 opens its steps
-        Assert.False(walk.Reaches(OpenPos.FromMetres(0, 16, -650)));
+        // The steps open into Motostoke (plan 33 · GL4), but the moor east of Route 3 and the ridge over the Galar Mine are
+        // banks nobody walks: Turffield is come to through the mine alone
+        Assert.True(walk.Reaches(OpenPos.FromMetres(0, 16, -660)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(60, 40, -820)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-90, 40, -869)));
     }
 
     [Fact]
@@ -251,6 +257,41 @@ public class GalarTests
         Play("wild_area_meetup_spot", "OnEnter");
         Assert.Equal(12, story.Var("VAR_GALAR_STORY"));
         Assert.Equal("galarWildArea", Next());
+        // Plan 33 · GL4: up the steps, Hop in Motostoke, the registration, the hotel, the ceremony, Bede in the mine, the
+        // Turffield mission and Milo's Grass Badge
+        Play("wild_area_motostoke_riverbank", "MotostokeSteps");
+        Assert.Equal(13, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarRegister", Next());
+        Play("motostoke", "HopInMotostoke");
+        Assert.Equal(14, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.Has("FLAG_GALAR_BEDE_IN_LOBBY"));
+        var shut = Play("motostoke", "WestGate");
+        Assert.Equal("motostoke_west_gate_back", shut.OnMarker["player"]);
+        Play("Motostoke_Stadium", "OnEnter", "Motostoke_Stadium");
+        Assert.Equal(15, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarHotel", Next());
+        Play("Motostoke_Hotel", "OnEnter", "Motostoke_Hotel");
+        Assert.Equal(16, story.Var("VAR_GALAR_STORY"));
+        Assert.False(story.Has("FLAG_GALAR_YELL_AT_HOTEL"));
+        Assert.Equal("galarCeremony", Next());
+        Play("Motostoke_Stadium", "OnEnter", "Motostoke_Stadium");
+        Assert.Equal(16, story.Var("VAR_GALAR_STORY"));
+        var ceremony = Play("Motostoke_StadiumPitch", "OnEnter", "Motostoke_StadiumPitch");
+        Assert.Equal(17, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("motostoke_stadium_door", ceremony.OnMarker["player"]);
+        Assert.True(story.Has("FLAG_GALAR_BEDE_IN_MINE"));
+        Assert.Equal("galarTurffield", Next());
+        Play("GalarMine", "BedeInTheMine", "GalarMine");
+        Assert.Equal(18, story.Var("VAR_GALAR_STORY"));
+        Assert.False(story.Has("FLAG_GALAR_BEDE_IN_MINE"));
+        Assert.Equal("galarMilo", Next());
+        foreach (string wooloo in new[] { "MissionWooloo1", "MissionWooloo2", "MissionWooloo3" })
+            Play("Turffield_StadiumMission", wooloo, "Turffield_StadiumMission");
+        Assert.True(story.Has("FLAG_GALAR_TURFFIELD_WOOLOO_3"));
+        Play("Turffield_StadiumPitch", "Milo", "Turffield_StadiumPitch");
+        Assert.Equal(19, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Grass"));
+        Assert.Equal("galarFree", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }
 
@@ -264,7 +305,9 @@ public class GalarTests
         {
             ("postwick", "HopAtTheDoor", 1), ("postwick", "WealdGate", 3), ("slumbering_weald", "Shadow", 4),
             ("wedgehurst", "LeonArrives", 2), ("wedgehurst", "HopWaits", 6), ("galar_route_2", "HopsBattle", 8),
-            ("galar_route_2", "WishingStars", 9), ("wild_area_meetup_spot", "OnEnter", 11)
+            ("galar_route_2", "WishingStars", 9), ("wild_area_meetup_spot", "OnEnter", 11),
+            // Plan 33 · GL4's open scenes: up the steps, and Hop at the top of them
+            ("wild_area_motostoke_riverbank", "MotostokeSteps", 12), ("motostoke", "HopInMotostoke", 13)
         })
         {
             var ends = new List<string>();

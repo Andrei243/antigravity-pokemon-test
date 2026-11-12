@@ -333,6 +333,10 @@
         "accent": "en-us"
       }
     },
+    "bede": {
+      "note": "first spoken at GalarMine.txt(8)",
+      "provisional": true
+    },
     "ben": {
       "note": "first spoken at goldenrod_radio_tower_4f.txt(52)",
       "provisional": true
@@ -738,6 +742,10 @@
         "pitch": 0.884,
         "accent": "en-us"
       }
+    },
+    "chairman_rose": {
+      "note": "first spoken at Motostoke_Hotel.txt(13)",
+      "provisional": true
     },
     "charcoal_maker": {
       "note": "first spoken at ilex_forest.txt(141)",
@@ -4014,8 +4022,20 @@
     },
     "cup_clerk": {
       "note": "the stadium's cup clerk (plan 37 · FC7)",
-      "brief": { "register": "woman", "age": "young", "pitch": "middle", "pace": "brisk", "manner": "a cheerful clerk at the stadium's cups desk, quick and clear" },
-      "design": { "engine": "kokoro-82m", "blend": "af_heart:0.6,af_bella:0.4", "speed": 1.02, "pitch": 1.0, "accent": "en-us" }
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "brisk",
+        "manner": "a cheerful clerk at the stadium's cups desk, quick and clear"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.6,af_bella:0.4",
+        "speed": 1.02,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "curator": {
       "note": "first spoken at lilycove_city_lilycove_museum_1f.txt(9)",
@@ -5391,6 +5411,10 @@
     },
     "lanette": {
       "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
+      "provisional": true
+    },
+    "league_staff": {
+      "note": "first spoken at motostoke.txt(27)",
       "provisional": true
     },
     "league_steward": {
@@ -8718,6 +8742,10 @@
       "note": "first spoken at LumioseCity_HatShop.txt(7)",
       "provisional": true
     },
+    "milo": {
+      "note": "first spoken at Motostoke_StadiumPitch.txt(15)",
+      "provisional": true
+    },
     "mira": {
       "note": "first spoken at Battleground.txt(821)",
       "brief": {
@@ -9629,8 +9657,20 @@
     },
     "round_clerk": {
       "note": "the stadium's round clerk (plan 37 · FC7)",
-      "brief": { "register": "man", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a formal clerk who announces each Leader of the round like a referee" },
-      "design": { "engine": "kokoro-82m", "blend": "am_michael:0.6,am_eric:0.4", "speed": 0.98, "pitch": 0.98, "accent": "en-us" }
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a formal clerk who announces each Leader of the round like a referee"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_eric:0.4",
+        "speed": 0.98,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "rowan": {
       "note": "Professor Rowan, also the introduction's professor.",
@@ -9995,8 +10035,20 @@
     },
     "sparring_coach": {
       "note": "the stadium's sparring coach (plan 37 · FC7)",
-      "brief": { "register": "man", "age": "adult", "pitch": "low", "pace": "brisk", "manner": "a hearty martial-arts coach, loud and encouraging" },
-      "design": { "engine": "kokoro-82m", "blend": "am_onyx:0.6,am_adam:0.4", "speed": 1.0, "pitch": 0.94, "accent": "en-us" }
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "brisk",
+        "manner": "a hearty martial-arts coach, loud and encouraging"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,am_adam:0.4",
+        "speed": 1,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
     },
     "stall_keeper": {
       "note": "first spoken at common.txt(2892)",
@@ -10072,6 +10124,10 @@
         "pitch": 1.01,
         "accent": "en-us"
       }
+    },
+    "team_yell_grunt": {
+      "note": "first spoken at Motostoke_Hotel.txt(9)",
+      "provisional": true
     },
     "temple_guard": {
       "note": "first spoken at snowpoint_city.txt(36)",
@@ -10609,6 +10665,7 @@
     "Bastien": "bastien",
     "Battle Fan": "battle_fan",
     "Beauty": "beauty",
+    "Bede": "bede",
     "Ben": "ben",
     "Benga": "benga",
     "Beni": "beni",
@@ -10657,6 +10714,7 @@
     "Celosia": "celosia",
     "Cerise": "cerise",
     "Chairman": "chairman",
+    "Chairman Rose": "chairman_rose",
     "Charcoal Maker": "charcoal_maker",
     "Charon": "charon",
     "Chef": "chef",
@@ -10858,6 +10916,7 @@
     "Lance": "lance",
     "Lanette": "lanette",
     "Lass": "look:lass",
+    "League Staff": "league_staff",
     "League Steward": "league_steward",
     "Leon": "leon",
     "Librarian": "librarian",
@@ -10919,6 +10978,7 @@
     "Miguel": "miguel",
     "Miki": "miki",
     "Milliner": "milliner",
+    "Milo": "milo",
     "Mira": "mira",
     "Mirabelle": "mirabelle",
     "Mirelle": "mirelle",
@@ -11096,6 +11156,7 @@
     "Teala": "teala",
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",
+    "Team Yell Grunt": "team_yell_grunt",
     "Temple Guard": "temple_guard",
     "Thalia": "thalia",
     "Thorton": "thorton",

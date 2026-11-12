@@ -928,6 +928,11 @@
     "galarLake": "Go down to the lakeside with Hop now the night has come.",
     "galarTrain": "Board the train at Wedgehurst Station.",
     "galarWildArea": "The train stopped short of Motostoke. Cross the Wild Area north to the steps under the city.",
+    "galarRegister": "Motostoke at last! Go up the ramp to the stadium and register for the gym challenge.",
+    "galarHotel": "Registered! Rest at the hotel on Motostoke's lower terrace before the opening ceremony.",
+    "galarCeremony": "The morning of the opening ceremony. Go to Motostoke Stadium.",
+    "galarTurffield": "The gym challenge is open. Take the west gate onto Route 3, through the Galar Mine to Turffield.",
+    "galarMilo": "Turffield at last. Win the Grass Badge at the stadium on the hill.",
     "galarFree": "That is as far as the line runs for now. Galar's south is yours to explore."
   },
 
@@ -4669,6 +4674,8 @@
     "PokemonBreeder": "Pokémon Breeder",
     "PokemonRanger": "Pokémon Ranger",
     "TeamSkullGrunt": "Team Skull Grunt",
+    "TeamYell": "Team Yell",
+    "GymTrainer": "Gym Trainer",
     "TrialCaptain": "Trial Captain",
     "IslandKahuna": "Island Kahuna",
     "PokemonProfessor": "Pokémon Professor",

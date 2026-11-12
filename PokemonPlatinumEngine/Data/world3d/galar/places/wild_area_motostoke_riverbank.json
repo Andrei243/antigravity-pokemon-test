@@ -3,14 +3,14 @@
   // Motostoke. They are closed while the city readies the opening ceremony (plan 33 · GL4 opens them), and a League
   // steward turns Trainers back. Scripts: Data/scripts/wild_area_motostoke_riverbank.txt
   "markers": [
-    { "name": "motostoke_steps", "at": [0, 4.6, -622], "yaw": 180 },
-    { "name": "motostoke_steps_back", "at": [0, 4.5, -606], "yaw": 0 }
+    { "name": "motostoke_steps", "at": [0, 4.8, -612], "yaw": 180 },
+    { "name": "motostoke_steps_back", "at": [0, 4.6, -600], "yaw": 0 }
   ],
   "triggers": [
     // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
     { "name": "den_riverbank_1", "cylinder": { "at": [-60, -608], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenRiverbank1" },
     // The foot of the steps up to Motostoke: closed until the ceremony
-    { "name": "motostoke_steps", "box": { "min": [-6, 2, -626], "max": [6, 10, -616] }, "script": "MotostokeSteps" }
+    { "name": "motostoke_steps", "box": { "min": [-6, 2, -618], "max": [6, 10, -608] }, "script": "MotostokeSteps" }
   ],
   "zones": [
     {
