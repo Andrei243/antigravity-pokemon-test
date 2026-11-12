@@ -52,6 +52,7 @@ public class SchemaTests
         ("open-wild.schema.json", typeof(PokemonPlatinumEngine.OpenWorld.OpenWildFile), "The wild Pokémon of an open map: each temperament's senses, and which species has which (Data/open-wild.json)"),
         // Plan 43 · LF1: the card's backgrounds and frames
         ("card-looks.schema.json", typeof(CardLooksFile), "The Trainer Card's backgrounds and frames (Data/card-looks.json)"),
+        ("photo-spots.schema.json", typeof(PhotoSpotsFile), "The photo spots (Data/photo-spots.json, plan 43 · LF4)"),
         // Plan 40 · GE5: which charm a Pokédex filled earns
         ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)"),
         // Plan 40 · GE7, GE8, GE9: the gift box's gifts, the trade board's made-up trainers and the festivals' days

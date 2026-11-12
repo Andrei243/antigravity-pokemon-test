@@ -572,6 +572,10 @@ What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each 
 
 `Data/card-looks.json` (`Models/CardDesign.cs`, `CardLooks`; plan 43 · LF1) is ours, written by hand and read strictly: `backgrounds` (`id`, `top` and `bottom` tones, `pattern` of `CardPattern`, its `ink`, and `unlock`) and `frames` (`id`, `color`, `accent`, `style` of `CardFrameStyle`, `unlock`). An `unlock` is `start`, `badges:<region>`, `champion:<region>`, `medals:<MedalCategory>`, `diploma:<key>` or `spots:<region>`; each look is named in `ui.json`'s `cardDesign.background` and `cardDesign.frame`. The first of each is the start's. Its schema is `docs/schemas/card-looks.schema.json`.
 
+## Photo spots
+
+`Data/photo-spots.json` (`Models/PhotoBook.cs`, `PhotoSpots`; plan 43 · LF4) is ours, written by hand and read strictly: `spots`, each `{ "id", "region", "map", "x", "z", "lookX", "lookZ", "zoom" }`: the tile its plate stands on, the tile the camera looks at and the lens's factor (0.75 to 2.5). Each spot needs its plate as a `PhotoSpot` prop of the area's overlay, a `readAt` on the plate's tile naming `PhotoSpot`, a `script PhotoSpot` in the area's file saying `photo spot "<id>"`, and its name as `ui.json`'s `photoBook.spot.<id>` in English and Romanian (`PhotoBookTests` holds all four). A region's every spot photographed unlocks the card's background whose `unlock` is `spots:<region>`. The photo book's pictures are the player's own files in `photos/` beside the saves (`SavePaths.Photos`): `photo-<time>-NN.png` at 1920 × 1080 and `-small` at 480 × 270, never written over; the save keeps their records (`SaveData.PhotoBook`). Its schema is `docs/schemas/photo-spots.schema.json`.
+
 
 ## Pokédex entries
 

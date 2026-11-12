@@ -1,5 +1,8 @@
 {
   "area": "floaroma_town",
+  // The photo spot's plate (plan 43 · LF4), read from the tile before it
+  "readAt": [ { "x": 182, "z": 662, "script": "PhotoSpot" } ],
+  "props": [ { "type": "PhotoSpot", "x": 182, "y": 662, "width": 1, "depth": 1 } ],
   "bgmTrack": "sinnoh/floaroma",
   "trees": "Round",
   "architecture": "Cottage",

@@ -5821,9 +5821,9 @@
   },
   "photo": {
     "title": "PHOTO",
-    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame", "Pose": "Pose" },
+    "row": { "Zoom": "Zoom", "Time": "Time", "Weather": "Weather", "Filter": "Filter", "Frame": "Frame", "Pose": "Pose", "Face": "Face" },
     "zoom": "×{zoom}",
-    "pose": { "still": "As it is", "step": "+{seconds} s" },
+    "pose": { "none": "None", "still": "As it is", "step": "+{seconds} s" },
     "time": { "now": "Now", "Morning": "Morning", "Day": "Day", "Twilight": "Evening", "Night": "Night", "LateNight": "Late night" },
     "weather": { "Now": "As it is", "Clear": "Clear", "Rain": "Rain", "Snow": "Snow", "Fog": "Fog" },
     "notHere": "Not here",
@@ -6849,6 +6849,7 @@
       "net_and_reeds": "Net and Reeds",
       "pages": "Turning Pages",
       "starlit": "Starlit",
+      "sinnoh_snapshot": "Sinnoh Snapshots",
       "backdrop": "Backdrop: {name}"
     },
     "frame": {
@@ -6937,5 +6938,25 @@
     "question": "{what}: is that the look?",
     "dyeQuestion": "Dye it {what}?",
     "answer": { "yes": "YES" }
+  },
+  "photoBook": {
+    "title": "PHOTO BOOK",
+    "all": "ALL",
+    "empty": "No photographs yet. Take one in photo mode, or at a photo spot.",
+    "foot": "PAGE {page} / {pages}    {count} / {of}",
+    "spotTag": "PHOTO SPOT",
+    "throwHint": "Throw away",
+    "throwQuestion": "Throw this photograph away?",
+    "throwYes": "THROW AWAY",
+    "kept": "Kept in the photo book.",
+    "full": "The photo book is full: throw one away first.",
+    "lost": "The picture's file is gone.",
+    "spot": {
+      "sinnoh_twinleaf_pond": "Twinleaf's Pond",
+      "sinnoh_sandgem_lab": "The Lab at Sandgem",
+      "sinnoh_jubilife_fountain": "Jubilife's Fountain",
+      "sinnoh_oreburgh_museum": "Oreburgh's Museum",
+      "sinnoh_floaroma_flowers": "Floaroma's Flowers"
+    }
   }
 }

@@ -18,6 +18,10 @@ public sealed partial class GameFlow
     /// <summary>The salon's chair and the dye house's counter (plan 43 · LF3).</summary>
     public SalonScreen SalonScreen { get; } = new();
 
+    /// <summary>The player's photo book and its screen (plan 43 · LF4).</summary>
+    public PhotoBook PhotoBook { get; } = new();
+    public PhotoBookScreen PhotoBookScreen { get; } = new();
+
     /// <summary>
     /// Where the phrase picker goes back to (plan 43 · LF1): the field, as a script's <c>phrase</c> has it, or the card
     /// designer, whose greeting it is, which hears no answer.

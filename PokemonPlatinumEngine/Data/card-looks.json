@@ -19,7 +19,8 @@
     { "id": "flare", "top": "#fde3d4", "bottom": "#f19a78", "pattern": "Rays", "ink": "#e4774f", "unlock": "medals:Battles" },
     { "id": "net_and_reeds", "top": "#e6f3e4", "bottom": "#a9d2b0", "pattern": "Checks", "ink": "#7db58a", "unlock": "medals:Catching" },
     { "id": "pages", "top": "#fdfaf0", "bottom": "#e6dcc0", "pattern": "Stripes", "ink": "#cbbd95", "unlock": "diploma:National" },
-    { "id": "starlit", "top": "#d6d9ef", "bottom": "#8f95c8", "pattern": "Stars", "ink": "#6c72b0", "unlock": "medals:League" }
+    { "id": "starlit", "top": "#d6d9ef", "bottom": "#8f95c8", "pattern": "Stars", "ink": "#6c72b0", "unlock": "medals:League" },
+    { "id": "sinnoh_snapshot", "top": "#eef3f8", "bottom": "#c9d6e6", "pattern": "Checks", "ink": "#a9bad2", "unlock": "spots:Sinnoh" }
   ],
   "frames": [
     { "id": "plain", "color": "#ffffff", "accent": "#d8d0bc", "style": "Plain", "unlock": "start" },

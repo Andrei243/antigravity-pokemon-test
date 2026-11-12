@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Numerics;
 using PokemonPlatinumEngine.Core;
 
@@ -14,7 +15,7 @@ public enum PhotoFrame { None, Mat, Cinema }
 public enum PhotoWeather { Now, Clear, Rain, Snow, Fog }
 
 /// <summary>The rows of photo mode's panel, in their order.</summary>
-public enum PhotoRow { Zoom, Time, Weather, Filter, Frame }
+public enum PhotoRow { Zoom, Time, Weather, Filter, Frame, Pose, Face }
 
 /// <summary>
 /// Photo mode in the field (plan 12 · Q16; style guide, "Field menus and notices", "Photo mode"): where the camera has
@@ -62,6 +63,24 @@ public sealed class PhotoView
     public PhotoFilter Filter { get; private set; }
 
     public PhotoFrame Frame { get; private set; }
+
+    /// <summary>The player's gesture held at its height for the picture (plan 43 · LF4); null for none.</summary>
+    public Gesture? Pose { get; private set; }
+
+    /// <summary>The player's face for the picture (plan 43 · LF4).</summary>
+    public Mood Face { get; private set; }
+
+    /// <summary>
+    /// A photo spot's view (plan 43 · LF4): the camera stands where the spot puts it and only POSE and FACE change;
+    /// null for photo mode's own.
+    /// </summary>
+    public string? SpotId { get; init; }
+
+    /// <summary>How far through its round a pose's gesture is held: its height.</summary>
+    public const float PoseHeldAt = 0.45f;
+
+    /// <summary>The rows offered: every row, or POSE and FACE alone at a spot.</summary>
+    public PhotoRow[] Rows => SpotId != null ? new[] { PhotoRow.Pose, PhotoRow.Face } : Enum.GetValues<PhotoRow>();
 
     /// <summary>Whether the panel is open (its rows chosen and changed) or shut (the arrows move the camera).</summary>
     public bool PanelOpen { get; set; }
@@ -112,11 +131,15 @@ public sealed class PhotoView
         Zoom = Math.Clamp(MathF.Round(next * 100f) / 100f, WidestZoom, TightestZoom);
     }
 
+    /// <summary>The lens's factor put straight (a photo spot's, plan 43 · LF4), within the bounds.</summary>
+    public void SetZoom(float zoom) => Zoom = Math.Clamp(zoom, WidestZoom, TightestZoom);
+
     /// <summary>Moves the panel's cursor a row up (negative) or down, wrapping.</summary>
     public void MoveRow(int by)
     {
-        int count = Enum.GetValues<PhotoRow>().Length;
-        Row = (PhotoRow)((((int)Row + by) % count + count) % count);
+        var rows = Rows;
+        int at = Math.Max(0, Array.IndexOf(rows, Row));
+        Row = rows[((at + by) % rows.Length + rows.Length) % rows.Length];
     }
 
     /// <summary>Changes the row under the cursor a value on (positive) or back. Returns false where nothing changed (a weather not here).</summary>
@@ -139,6 +162,16 @@ public sealed class PhotoView
                 return true;
             case PhotoRow.Filter:
                 Filter = Cycle(Filter, by);
+                return true;
+            case PhotoRow.Pose:
+            {
+                // None, then each gesture in its order
+                var poses = new Gesture?[] { null }.Concat(Enum.GetValues<Gesture>().Select(g => (Gesture?)g)).ToArray();
+                Pose = poses[Step(Array.IndexOf(poses, Pose), by, poses.Length)];
+                return true;
+            }
+            case PhotoRow.Face:
+                Face = Cycle(Face, by);
                 return true;
             default:
                 Frame = Cycle(Frame, by);

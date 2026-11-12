@@ -5897,9 +5897,9 @@
   },
   "photo": {
     "title": "FOTO",
-    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă", "Pose": "Ipostaza" },
+    "row": { "Zoom": "Zoom", "Time": "Ora", "Weather": "Vremea", "Filter": "Filtru", "Frame": "Ramă", "Pose": "Ipostaza", "Face": "Chipul" },
     "zoom": "×{zoom}",
-    "pose": { "still": "Cum e", "step": "+{seconds} s" },
+    "pose": { "none": "Niciuna", "still": "Cum e", "step": "+{seconds} s" },
     "time": { "now": "Acum", "Morning": "Dimineața", "Day": "Ziua", "Twilight": "Seara", "Night": "Noaptea", "LateNight": "Târziu în noapte" },
     "weather": { "Now": "Cum e", "Clear": "Senin", "Rain": "Ploaie", "Snow": "Ninsoare", "Fog": "Ceață" },
     "notHere": "Nu aici",
@@ -7193,6 +7193,7 @@
       "net_and_reeds": "Plasă și trestii",
       "pages": "Pagini întoarse",
       "starlit": "Sub stele",
+      "sinnoh_snapshot": "Instantanee din Sinnoh",
       "backdrop": "Decor: {name}"
     },
     "frame": {
@@ -7281,5 +7282,25 @@
     "question": "{what}: acesta e look-ul?",
     "dyeQuestion": "O vopsești {what}?",
     "answer": { "yes": "DA" }
+  },
+  "photoBook": {
+    "title": "ALBUM FOTO",
+    "all": "TOATE",
+    "empty": "Nicio fotografie încă. Fă una în modul foto sau la un loc de fotografiat.",
+    "foot": "PAGINA {page} / {pages}    {count} / {of}",
+    "spotTag": "LOC DE POZAT",
+    "throwHint": "Aruncă",
+    "throwQuestion": "Arunci fotografia asta?",
+    "throwYes": "ARUNCĂ",
+    "kept": "Păstrată în albumul foto.",
+    "full": "Albumul foto e plin: aruncă întâi una.",
+    "lost": "Fișierul pozei a dispărut.",
+    "spot": {
+      "sinnoh_twinleaf_pond": "Iazul din Twinleaf",
+      "sinnoh_sandgem_lab": "Laboratorul din Sandgem",
+      "sinnoh_jubilife_fountain": "Fântâna din Jubilife",
+      "sinnoh_oreburgh_museum": "Muzeul din Oreburgh",
+      "sinnoh_floaroma_flowers": "Florile din Floaroma"
+    }
   }
 }

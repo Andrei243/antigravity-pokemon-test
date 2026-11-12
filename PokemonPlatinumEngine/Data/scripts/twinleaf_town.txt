@@ -53,3 +53,9 @@ script Guitarist
 label Gone
   sayown
   end
+
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "sinnoh_twinleaf_pond"
+  end

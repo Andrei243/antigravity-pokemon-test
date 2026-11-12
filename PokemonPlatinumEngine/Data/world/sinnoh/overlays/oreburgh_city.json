@@ -1,5 +1,8 @@
 {
   "area": "oreburgh_city",
+  // The photo spot's plate (plan 43 · LF4), read from the tile before it
+  "readAt": [ { "x": 308, "z": 753, "script": "PhotoSpot" } ],
+  "props": [ { "type": "PhotoSpot", "x": 308, "y": 753, "width": 1, "depth": 1 } ],
   "bgmTrack": "sinnoh/oreburgh",
   "trees": "Pine",
   "architecture": "Brick",

@@ -13,3 +13,9 @@ script Grunts
   face grunt_m_east left
   say "Quit moaning. Orders are orders. Now look tough, there's a kid watching."
   end
+
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "sinnoh_floaroma_flowers"
+  end

@@ -1,0 +1,14 @@
+{
+  // The photo spots (plan 43 · LF4; Models/PhotoBook.cs, PhotoSpots; docs/data-files.md, "Photo spots"): ours, five to
+  // a built region. A spot is the tile its plate stands on (a little post the player reads from the tile before it,
+  // facing it), the tile the camera looks at and the lens's factor. Its name is ui.json's photoBook.spot.<id>; its
+  // plate is a prop of the area's overlay, and its script the area's own (photo spot "<id>"). Sinnoh's five are built;
+  // the other regions' are owed to the sessions that write their rows (plan 43, "Writing in every region")
+  "spots": [
+    { "id": "sinnoh_twinleaf_pond", "region": "Sinnoh", "map": "Sinnoh", "x": 113, "z": 889, "lookX": 112, "lookZ": 891, "zoom": 1.25 },
+    { "id": "sinnoh_sandgem_lab", "region": "Sinnoh", "map": "Sinnoh", "x": 175, "z": 848, "lookX": 170, "lookZ": 841, "zoom": 1 },
+    { "id": "sinnoh_jubilife_fountain", "region": "Sinnoh", "map": "Sinnoh", "x": 174, "z": 760, "lookX": 166, "lookZ": 763, "zoom": 1 },
+    { "id": "sinnoh_oreburgh_museum", "region": "Sinnoh", "map": "Sinnoh", "x": 308, "z": 753, "lookX": 311, "lookZ": 750, "zoom": 1.25 },
+    { "id": "sinnoh_floaroma_flowers", "region": "Sinnoh", "map": "Sinnoh", "x": 182, "z": 662, "lookX": 176, "lookZ": 668, "zoom": 0.8 }
+  ]
+}

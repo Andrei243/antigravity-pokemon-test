@@ -165,7 +165,9 @@ public enum GameState
     /// <summary>The card designer, opened from the Trainer Card (plan 43 · LF1).</summary>
     CardDesign,
     /// <summary>The salon's chair and the dye house's counter, a script's <c>wardrobe salon</c> or <c>wardrobe dye</c> waiting on it (plan 43 · LF3).</summary>
-    Salon
+    Salon,
+    /// <summary>The photo book, a script's <c>photo book</c> waiting on it (plan 43 · LF4).</summary>
+    PhotoBook
 }
 
 public partial class GameEngine
@@ -1021,6 +1023,7 @@ public partial class GameEngine
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             CardDesign = CardDesignToSave(),
+            PhotoBook = flow.PhotoBook.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
             Pokeblocks = flow.PokeblockCase.Count > 0 ? flow.PokeblockCase.ToSaved() : null,
@@ -1697,6 +1700,9 @@ public partial class GameEngine
                 break;
             case GameState.Salon:
                 UpdateSalon(dt);
+                break;
+            case GameState.PhotoBook:
+                UpdatePhotoBook(dt);
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -3334,6 +3340,11 @@ public partial class GameEngine
         {
             flow.IntroScreen.Render(renderContext);
         }
+        else if (scene == GameState.PhotoBook)
+        {
+            // The page's pictures loaded, the rest let go (plan 43 · LF4)
+            KeepThePageLoaded();
+        }
         else if (scene == GameState.Salon)
         {
             flow.SalonScreen.Render(renderContext);
@@ -3460,6 +3471,9 @@ public partial class GameEngine
                 break;
             case GameState.Salon:
                 flow.SalonScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
+                break;
+            case GameState.PhotoBook:
+                ModernUi.DrawPhotoBook(VirtualWidth, VirtualHeight, flow.PhotoBookScreen, BookPicture);
                 break;
             case GameState.CardDesign:
                 if (PrintingCard) DrawCardForPrint();
@@ -3721,6 +3735,7 @@ public partial class GameEngine
         TakeReportScreen();
         TakeScreenshot();
         TakeCardPrint();
+        TakeBookPhoto();
         FrameProfiler.Lap(FrameSection.Interface);
         SampleTheFrame();
 

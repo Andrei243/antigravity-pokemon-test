@@ -390,6 +390,9 @@ public class SaveData
     /// <summary>The Trainer Card as the player designed it (plan 43 · LF1); null for a card never designed, which is today's front.</summary>
     public Models.CardDesign? CardDesign { get; set; }
 
+    /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
+    public List<Models.PhotoPrint>? PhotoBook { get; set; }
+
     /// <summary>
     /// The moves of Pokémon between this game's saves that have been begun here and not closed (plan 08 · P22,
     /// <see cref="SlotMoves"/>): a receipt in each of the two saves until the move is over, so that a crash at any step

@@ -732,7 +732,11 @@ public static class ScriptParser
             }
             // Cameron's photographs (plan 20, part q)
             case "photo":
-                return new Instruction { Op = Op.Photo, Line = line, Name = r.OneOf("take", "album", "count") };
+            {
+                // The photo book and its spots (plan 43 · LF4): `photo book`, `photo spot "<id>"`, `photo booked`, how many it holds
+                string photoWord = r.OneOf("take", "album", "count", "book", "spot", "booked");
+                return new Instruction { Op = Op.Photo, Line = line, Name = photoWord, Other = photoWord == "spot" ? r.Text("a photo spot's id") : null };
+            }
             case "chooseitem":
                 return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch", "gift") };
             case "swarms":

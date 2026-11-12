@@ -43,6 +43,7 @@ public partial class GameEngine
     private void LoadTheLife(SaveData? save)
     {
         flow.CardDesign = save?.CardDesign?.Copy();
+        flow.PhotoBook.Load(save?.PhotoBook);
         cardFace = null;
         cardFaceKey = null;
         cardOwned = null;
@@ -179,7 +180,7 @@ public partial class GameEngine
     }
 
     /// <summary>The regions whose five photo spots are all taken (plan 43 · LF4).</summary>
-    private IEnumerable<string> PhotoSpotsWhole() => Array.Empty<string>();
+    private IEnumerable<string> PhotoSpotsWhole() => flow.PhotoBook.RegionsWhole();
 
     private Texture2D? FigureNow() => cardFigureLoaded && cardFigureDrawn ? cardFigure.Texture : null;
 
