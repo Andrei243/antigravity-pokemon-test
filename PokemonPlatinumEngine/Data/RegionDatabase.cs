@@ -526,6 +526,8 @@ public static class RegionDatabase
             Harbour = new MapSpot("Kanto", 301, 229, Direction.Down),
             Maps = new[]
             {
+                // Plan 35 · BN5: the pasture every PC of the region leads to (a copy of one plan)
+                "KantoPasture",
                 "Kanto",
                 // Plan 44 · SD3: Lockwork's cell at Vermilion City's harbour, a room of ours
                 "LockworkCellKanto",
@@ -787,6 +789,8 @@ public static class RegionDatabase
             Harbour = new MapSpot("LilycoveCity_Harbor", 7, 11, Direction.Up),
             Maps = new[]
             {
+                // Plan 35 · BN5: the pasture every PC of the region leads to (a copy of one plan)
+                "HoennPasture",
                 "Hoenn",
                 // Plan 44 · SD4: Lockwork's cell at Lilycove City's harbour, a room of ours
                 "LockworkCellHoenn",

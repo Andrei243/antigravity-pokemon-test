@@ -369,7 +369,7 @@ public static class TileBehaviors
         TileBehavior.BumpySlope
             => (BehaviourSupport.Ruled, "Hopped up only on the Acro Bike (plan 21 · H3); anyone goes down it."),
         TileBehavior.ThinIce
-            => (BehaviourSupport.Ruled, "In the Sootopolis Gym (its puzzle, SootopolisIce; plan 21 · H8, part c) it cracks under a first step and gives way under a second, dropping the walker to the floor below, and a field crossed tile by tile clears the glazed stairs above it; walked like plain ground anywhere else."),
+            => (BehaviourSupport.Ruled, "In the Sootopolis Gym (its puzzle, SootopolisIce; plan 21 · H8, part c) it cracks under a first step and gives way under a second, dropping the walker to the floor below, and a field crossed tile by tile clears the glazed stairs above it; on Icefall Cave's 1F (the same puzzle, IcefallIce, no stairs) it cracks and gives way to B1F; walked like plain ground anywhere else."),
         TileBehavior.CrackedFloor
             => (BehaviourSupport.Ruled, "Gives way under a walker where its area names the floor below, dropping them onto the same tile there (Map.HoleTargetAt, Emerald's setholewarp: Sky Pillar; plan 21 · H8, part c); ridden over on the Bicycle, and walked like plain ground anywhere else."),
         TileBehavior.SecretBaseSpot

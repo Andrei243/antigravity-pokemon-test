@@ -22,7 +22,7 @@ public sealed class DomeEntrant
     public bool IsPlayer => Trainer < 0;
 
     /// <summary>The class and the name, as the bracket and the card show them ("Ace Trainer Grace"); empty for the player.</summary>
-    public string Title => Opponent is { } o ? $"{o.Record.Class} {o.Record.Name}" : "";
+    public string Title => Opponent is { } o ? $"{o.ShownClass} {o.ShownName}" : "";
 }
 
 /// <summary>
@@ -112,8 +112,23 @@ public sealed class BattleDomeChallenge
             var made = FrontierTrainers.ForTrainers(TeamSize, trainer, trainer, false, next16)[0];
             field.Add(new DomeEntrant { Trainer = trainer, Opponent = made });
         }
-        return new BattleDomeChallenge(slots.ToList(), field, Bracket.Draw(Entrants, next16), dome.Streak);
+        var bracket = Bracket.Draw(Entrants, next16);
+        // The Dome Ace (EmeraldBrains; Emerald puts its Frontier Brain in the first or second place of its list): he takes
+        // the place of the trainer seated first in the half of the bracket the player isn't in, so he is met in the final if
+        // at all; the fifteen are drawn all the same, so a tournament without him draws as ever
+        int due = EmeraldBrains.DomeDue(dome.Streak);
+        if (due > 0)
+        {
+            int playerSeat = bracket.Seats.IndexOf(Player);
+            int seat = playerSeat < Entrants / 2 ? Entrants / 2 : 0;
+            int entrant = bracket.Seats[seat];
+            field[entrant] = new DomeEntrant { Trainer = field[entrant].Trainer, Opponent = EmeraldBrains.OfDome(due) };
+        }
+        return new BattleDomeChallenge(slots.ToList(), field, bracket, dome.Streak) { BrainDue = due };
     }
+
+    /// <summary>Which of his two teams the Dome Ace brings to this tournament: 0 he isn't in it, 1 silver, 2 gold.</summary>
+    public int BrainDue { get; private init; }
 
     // ------------------------------------------------------------------ the round
 
@@ -183,8 +198,8 @@ public sealed class BattleDomeChallenge
         foreach (var p in ChooseTwo(o.Pokemon, against)) party.Add(FrontierRules.ForBattle(p));
         return new Trainer
         {
-            Id = "frontier_" + o.Record.Id, Name = o.Record.Name, TrainerClass = o.Record.Class, PrizeMoney = 0,
-            Ai = FrontierTrainers.Mind, Look = FrontierTrainers.LookOf(o.Record), Party = party
+            Id = o.Dress?.Id ?? "frontier_" + o.Record.Id, Name = o.ShownName, TrainerClass = o.ShownClass, PrizeMoney = 0,
+            Ai = FrontierTrainers.Mind, Look = o.ShownLook, Party = party
         };
     }
 
@@ -221,6 +236,9 @@ public sealed class BattleDomeChallenge
     /// </summary>
     public int FightHeadless(int a, int b, Party party, Func<int> next16)
     {
+        // The Dome Ace always goes on (Emerald's DecideRoundWinners: its Frontier Brain always wins), with no draw
+        if (EmeraldBrains.IsBrain(Field[a].Opponent)) return a;
+        if (EmeraldBrains.IsBrain(Field[b].Opponent)) return b;
         bool aHome = (next16() & 1) == 0;
         uint seed = (uint)(next16() & 0xFFFF) | (uint)(next16() & 0xFFFF) << 16;
         int home = aHome ? a : b, away = aHome ? b : a;
@@ -236,7 +254,7 @@ public sealed class BattleDomeChallenge
             Rules = Ruleset.Current,
             PlayerController = TrainerAi.Instance,
             Frontier = true,
-            PlayerName = Field[home].Opponent?.Record.Name ?? "Player"
+            PlayerName = Field[home].Opponent?.ShownName ?? "Player"
         });
         core.Start();
         int winner = core.Result switch

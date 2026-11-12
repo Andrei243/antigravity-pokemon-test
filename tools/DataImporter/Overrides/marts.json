@@ -45,6 +45,10 @@
     // The Pokémon League's counter at the top of Ever Grande City (plan 21 · H9), in Emerald's order
     // (EverGrandeCity_PokemonLeague_1F_Pokemart)
     "ever_grande_league": [ "Ultra Ball", "Hyper Potion", "Max Potion", "Full Restore", "Full Heal", "Revive", "Max Repel" ],
+    // The Trainer Hill's clerk on Route 111 (plan 21's leftovers, 2026-11-12), in Emerald's order (TrainerHill_Entrance_Pokemart_Basic,
+    // and _Expanded once Hoenn's Hall of Fame is entered)
+    "trainer_hill": [ "Super Potion", "Antidote", "Paralyze Heal", "Awakening", "X Speed", "X Sp. Atk", "X Attack", "X Defense", "Dire Hit", "Guard Spec.", "X Accuracy" ],
+    "trainer_hill_champion": [ "Hyper Potion", "Max Potion", "Full Restore", "Full Heal", "Revive", "X Speed", "X Sp. Atk", "X Attack", "X Defense", "Dire Hit", "Guard Spec.", "X Accuracy" ],
     // Join Avenue's three shops (plan 22 · U6, part c), our own stock where Black 2's shops grow with the avenue's
     // visitors: the market, the flower shop's mulches and the café's drinks
     "join_avenue_market": [ "Poké Ball", "Great Ball", "Potion", "Super Potion", "Antidote", "Paralyze Heal", "Awakening", "Burn Heal", "Ice Heal", "Escape Rope", "Repel" ],

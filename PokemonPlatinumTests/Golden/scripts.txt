@@ -9786,6 +9786,12 @@ way -
 === TrainerHillFloor.Stairs
 from the trigger at 13,3 of TrainerHillFloor
 way -
+=== TrainerHillLobby.Clerk
+from Clerk at 3,4 of TrainerHillLobby
+way -
+  Clerk> Stocking up before the climb? Everything here is picked for the Hill.
+  Clerk> Good luck up there!
+  * open Shop trainer_hill
 === TrainerHillLobby.Counter
 from Attendant at 7,4 of TrainerHillLobby
 way -
@@ -12477,11 +12483,52 @@ from the tile read at 47,48 of BattleFrontier
 from the tile read at 47,49 of BattleFrontier
 way -
   > A statue of a trainer holding a Poké Ball high, with a Pokémon just caught inside it.
-=== battle_frontier_exchange_service_corner.DecorClerk
+=== battle_frontier_exchange_service_corner.DecorClerk1
 from Clerk at 4,4 of BattleFrontier_ExchangeServiceCorner
+way 0
+  Clerk> Welcome! This counter trades Battle Points for posters, cushions and dolls for a secret base.
+  Clerk> Which would you like?
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = KISS POSTER  16 BP
+way 5, from answer 1
+  Clerk> Please come again.
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = MORE
+  ? Which would you like? = MEOWTH DOLL  48 BP
+way 3, from answer 1
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = TOGEPI DOLL  48 BP
+way 2, from answer 1
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = SMOOCHUM DOLL  32 BP
+way 1, from answer 1
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = KISS CUSHION  32 BP
+=== battle_frontier_exchange_service_corner.DecorClerk2
 from Clerk at 5,5 of BattleFrontier_ExchangeServiceCorner
-way -
-  Clerk> This counter will trade Battle Points for dolls and cushions for a secret base. Our stock hasn't arrived yet, I'm afraid.
+way 0
+  Clerk> Welcome! This counter trades Battle Points for our biggest dolls for a secret base.
+  Clerk> Which would you like?
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = LAPRAS DOLL  128 BP
+way 5, from answer 1
+  Clerk> Please come again.
+  ? Which would you like? = NO, THANKS
+way 4, from answer 1
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = BLASTOISE DOLL  256 BP
+way 3, from answer 1
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = CHARIZARD DOLL  256 BP
+way 2, from answer 1
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = VENUSAUR DOLL  256 BP
+way 1, from answer 1
+  Clerk> I'm sorry, you don't have enough Battle Points for that.
+  ? Which would you like? = SNORLAX DOLL  128 BP
 === battle_frontier_exchange_service_corner.ItemClerk
 from Clerk at 9,5 of BattleFrontier_ExchangeServiceCorner
 way 0
@@ -12628,6 +12675,17 @@ way -
   Breeder> Turtwig is an ordinary sort. Love it all the same, and it'll serve you well.
   Breeder> Its greatest gift is its HP.
   * open ChoosePokemon
+=== battle_frontier_lounge_5.NatureGirl
+from Little Girl at 12,4 of BattleFrontier_Lounge5
+way 0
+  Little Girl> I can tell what a Pokémon is like just by watching it. Will you show me one of yours?
+  Little Girl> Turtwig loves to attack! When it's strong it just wants to hit things.
+  Little Girl> But when it's hurt, it throws itself into attacking. I just know it!
+  ? I can tell what a Pokémon is like just by watching it. Will you show me one of yours? = Yes
+  * open ChoosePokemon
+way 1, from answer 1
+  Little Girl> Oh, okay. Come show me later!
+  ? I can tell what a Pokémon is like just by watching it. Will you show me one of yours? = No
 === battle_frontier_lounge_6.Trade
 from Beauty at 2,4 of BattleFrontier_Lounge6
 way 0
@@ -12639,6 +12697,45 @@ way 0
 way 1, from answer 1
   Beauty> Oh. If you find a Skitty, please remember me.
   ? I'd love a Skitty. I'd swap my Meowth for one. Would you? = No
+=== battle_frontier_lounge_7.LeftTutor
+from Tutor at 2,5 of BattleFrontier_Lounge7
+way 0.0
+  Tutor> My moves are hard to come by, and I teach them only for Battle Points. Shall I teach one of your Pokémon?
+  Tutor> Which Pokémon am I to teach?
+  Tutor> Which move should Turtwig be taught?
+  Tutor> That one is 48 BP, and you haven't quite enough.
+  ? My moves are hard to come by, and I teach them only for Battle Points. Shall I teach one of your Pokémon? = Yes
+  ? Which move should Turtwig be taught? = Body Slam   48 BP
+  * open ChoosePokemon
+way 0.2, from answer 2
+  ? Which move should Turtwig be taught? = Cancel
+way 0.1, from answer 2
+  Tutor> That one is 48 BP, and you haven't quite enough.
+  ? Which move should Turtwig be taught? = Swords Dance   48 BP
+way 1, from answer 1
+  Tutor> Come back whenever you have points to spare, dear.
+  ? My moves are hard to come by, and I teach them only for Battle Points. Shall I teach one of your Pokémon? = No
+=== battle_frontier_lounge_7.RightTutor
+from Tutor at 6,5 of BattleFrontier_Lounge7
+way 0.0
+  Tutor> My sister teaches the fierce moves. Mine are the clever ones, for Battle Points. Shall I teach one?
+  Tutor> Which Pokémon am I to teach?
+  Tutor> Which move should Turtwig be taught?
+  Tutor> That one is 24 BP, and you haven't quite enough.
+  ? My sister teaches the fierce moves. Mine are the clever ones, for Battle Points. Shall I teach one? = Yes
+  ? Which move should Turtwig be taught? = Snore   24 BP
+  * open ChoosePokemon
+way 0.3, from answer 2
+  ? Which move should Turtwig be taught? = Cancel
+way 0.2, from answer 2
+  Tutor> That one is 48 BP, and you haven't quite enough.
+  ? Which move should Turtwig be taught? = Endure   48 BP
+way 0.1, from answer 2
+  Tutor> That one is 24 BP, and you haven't quite enough.
+  ? Which move should Turtwig be taught? = Mud-Slap   24 BP
+way 1, from answer 1
+  Tutor> Come back whenever you have points to spare, dear.
+  ? My sister teaches the fierce moves. Mine are the clever ones, for Battle Points. Shall I teach one? = No
 === battle_frontier_mart.FrontierClerk
 from Clerk at 1,3 of BattleFrontier_Mart
 way -

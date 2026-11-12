@@ -2,10 +2,10 @@
   "OnEnter": [
     {
       "en": [
-        "Palace Maven"
+        "Attendant"
       ],
       "text": [
-        "Maestrul Palatului"
+        "Însoțitorul"
       ]
     },
     {
@@ -26,10 +26,10 @@
     },
     {
       "en": [
-        "Palace Maven"
+        "Attendant"
       ],
       "text": [
-        "Maestrul Palatului"
+        "Însoțitorul"
       ]
     },
     {
@@ -42,10 +42,10 @@
     },
     {
       "en": [
-        "Palace Maven"
+        "Attendant"
       ],
       "text": [
-        "Maestrul Palatului"
+        "Însoțitorul"
       ]
     },
     {
@@ -66,10 +66,10 @@
     },
     {
       "en": [
-        "Palace Maven"
+        "Attendant"
       ],
       "text": [
-        "Maestrul Palatului"
+        "Însoțitorul"
       ]
     },
     {
@@ -78,6 +78,54 @@
       ],
       "text": [
         "Runda se încheie aici. Chiar și o înfrângere te învață ce au Pokémonii tăi în suflet."
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Însoțitorul"
+      ]
+    },
+    {
+      "en": [
+        "Battle {number} of seven, and this one is special. The Palace Maven himself wishes to see your Pokémon."
+      ],
+      "text": [
+        "Lupta {number} din șapte, și aceasta e deosebită. Însuși Maestrul Palatului vrea să-ți vadă Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Spenser"
+      ],
+      "text": [
+        "Spenser"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon's nature is its truest voice. Mine have spoken with me for decades. Let's hear yours."
+      ],
+      "text": [
+        "Firea unui Pokémon e vocea lui cea mai sinceră. Ai mei îmi vorbesc de zeci de ani. Să-i auzim pe ai tăi."
+      ]
+    },
+    {
+      "en": [
+        "Spenser"
+      ],
+      "text": [
+        "Spenser"
+      ]
+    },
+    {
+      "en": [
+        "Ha! Your three heard you without a single order. That bond is the real strength here."
+      ],
+      "text": [
+        "Ha! Cei trei ai tăi te-au auzit fără niciun ordin. Legătura asta e adevărata putere aici."
       ]
     }
   ]

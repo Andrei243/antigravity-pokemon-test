@@ -17,6 +17,7 @@
   ],
   "people": {
     "cinnabar_bill": { "name": "Bill", "still": true, "dialog": [ "My pal's ferry should be along any minute now." ] },
+    "cinnabar_seagallop": { "name": "Seagallop", "npcType": "Seagallop", "still": true, "dialog": [ "The Seagallop rocks gently at the pier." ] },
     "woman_2": { "name": "Woman", "dialog": [ "Blaine lived on this island long before the Lab was built. He knows every stone of the volcano." ] },
     "old_man_1": { "name": "Old Man", "dialog": [ "They did strange experiments in that burned-out mansion, long ago.", "Some say one of the Pokémon they made there broke loose. Brr..." ] }
   },

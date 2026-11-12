@@ -407,6 +407,14 @@ public class NPC
     public const string ZygardeCellType = "ZygardeCell";
 
     /// <summary>
+    /// The Sevii Islands' fast ferry at its harbour, and Celio's network machine in One Island's Pokémon Center (plan 19's
+    /// last notes; FireRed's <c>OBJ_EVENT_GFX_SEAGALLOP</c>, and the machine FireRed draws into its tiles): things of the
+    /// map, in the way like a person, saying nothing (the ferry's sailor and the machine's sign events speak). Drawn as
+    /// cards of our own (<c>SeviiArt</c>).
+    /// </summary>
+    public const string SeagallopType = "Seagallop", NetworkMachineType = "NetworkMachine";
+
+    /// <summary>
     /// The festivals' things (plan 40 · GE9; style guide, "Life", "Festivals"): things of the map an overlay stands in a
     /// festival's town, shown by <c>FLAG_FESTIVAL_&lt;ID&gt;</c>, in the way like a person and saying nothing. Drawn as cards of
     /// our own (<c>FestivalArt</c>). <see cref="FestivalType"/> is what every one of their names begins with.
@@ -452,6 +460,8 @@ public class NPC
         LawnmowerType => PropType.Lawnmower,
         DeoxysTriangleType => PropType.DeoxysTriangle,
         ZygardeCellType => PropType.ZygardeCell,
+        SeagallopType => PropType.Seagallop,
+        NetworkMachineType => PropType.NetworkMachine,
         FestivalLanternsType => PropType.FestivalLanterns,
         FestivalMoonLanternType => PropType.FestivalMoonLantern,
         FestivalPineType => PropType.FestivalPine,

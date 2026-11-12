@@ -657,7 +657,9 @@
               "FestivalMusicStand",
               "FestivalLeiArch",
               "FestivalHayBales",
-              "FestivalSheaves"
+              "FestivalSheaves",
+              "Seagallop",
+              "NetworkMachine"
             ]
           },
           "x": {

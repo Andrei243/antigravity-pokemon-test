@@ -237,6 +237,7 @@ A cave nothing leads into names the tiles it is come to by (plan 06 · R16a: the
   "climate": "Volcanic",             // optional: air of its own, Volcanic or Frozen (style guide, "Climates")
   "callsForHelp": true,               // optional: its wild Pokémon met alone may call for help (plan 14 · B5, SOS battles); no area of Sinnoh's
   "interior": "Street",               // optional: a room built from a layout whose look its name doesn't say (Join Avenue's covered street)
+  "hall": "Champion",                 // optional: a room built from a layout that is a hall of the League with no type (Champion, HallOfFame, League), fought in on the League's stage (plan 19's last notes)
   "overTheDark": true,                // optional: a Gym's hall whose walks stand over the dark: what no way reaches is void, not wall
   "evolutionSites": [ "Moss Rock" ],  // optional, as in a map file
   "doors": [ { "warp": 1, "map": "PlayerHouse", "x": 6, "y": 10, "facing": "Up" } ],   // "openedBy": a flag it waits for

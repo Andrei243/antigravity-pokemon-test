@@ -87,8 +87,8 @@ internal static partial class ModernUi
             Color? accent = entrant == BattleDomeChallenge.Player ? Blue : entrant == opponent ? Gold : null;
             Card(r, 22, under || accent != null, under ? null : accent);
             var who = dome.Field[entrant];
-            string name = who.IsPlayer ? PlayerIdentity.Name : who.Opponent!.Record.Name;
-            string title = who.IsPlayer ? Text.Of("bracketScreen.you") : who.Opponent!.Record.Class;
+            string name = who.IsPlayer ? PlayerIdentity.Name : who.Opponent!.ShownName;
+            string title = who.IsPlayer ? Text.Of("bracketScreen.you") : who.Opponent!.ShownClass;
             UiFonts.DrawCentered(name, r.X + 24, r.Y + 28, 30, Ink, UiWeight.Black);
             UiFonts.DrawCentered(title.ToUpperInvariant(), r.X + 24, r.Y + 56, 18, Muted, UiWeight.Black);
             if (entrant == opponent && dome.PlayerStillIn && !bracket.IsOver)
@@ -101,7 +101,7 @@ internal static partial class ModernUi
         var crown = new Rectangle(final.X - 130, final.Y - 46, 260, 92);
         Panel(crown, 26, frame: bracket.IsOver ? Gold : null);
         string middle = bracket.IsOver
-            ? (dome.Field[bracket.Champion].IsPlayer ? PlayerIdentity.Name : dome.Field[bracket.Champion].Opponent!.Record.Name)
+            ? (dome.Field[bracket.Champion].IsPlayer ? PlayerIdentity.Name : dome.Field[bracket.Champion].Opponent!.ShownName)
             : Text.Of("bracketScreen.round.3");
         UiFonts.DrawCentered(middle, crown.X + crown.Width / 2f - UiFonts.Measure(middle, 30, UiWeight.Black) / 2f, crown.Y + 36, 30, Ink, UiWeight.Black);
         if (bracket.IsOver)
