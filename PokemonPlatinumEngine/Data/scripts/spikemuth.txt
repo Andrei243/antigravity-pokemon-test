@@ -1,0 +1,33 @@
+# Spikemuth (plan 33 · GL5, its second session), the old town behind its walls at Circhester Bay's west end, on the open
+# world's engine: its places are Data/world3d/galar/places/spikemuth.json. Spikemuth has no stadium: its gym is the street,
+# Team Yell's two on it, and Piers on the stage at its end, who never Dynamaxes. The lines are our own, on Sword and
+# Shield's beats as they are publicly described (docs/mechanics/rulings.md, "Circhester, Route 9, Spikemuth and
+# Hammerlocke's stadium"). VAR_GALAR_STORY is postwick.txt's count: 34 through the gate, 35 the Dark Badge.
+
+
+# Piers on the stage: the seventh badge, and his word about his sister
+script Piers
+  face piers player
+  speaker "Piers"
+  if badge dark goto Won
+  scene "Piers"
+  say "So you got past the shutter. And past Team Yell. My sister must think you're worth it."
+  say "I'm Piers. This town's Leader, for what that's worth. No stadium, no Power Spot, no giants. Just a stage and a battle."
+  say "Let's make some noise, then."
+  battle self as "galar_piers_1"
+  say "...Alright. That was a good gig."
+  say "The Dark Badge. Take it out of here and show everyone what Spikemuth thinks of you."
+  givebadge dark
+  text "{player} received the Dark Badge from Piers!"
+  setflag FLAG_GALAR_DEFEATED_SPIKEMUTH_GYM
+  defeat "galar_yell_grunt_bryn"
+  defeat "galar_yell_grunt_eira"
+  clearflag FLAG_GALAR_MARNIE_SPIKEMUTH
+  setvar VAR_GALAR_STORY 35
+  say "Seven. Raihan's in Hammerlocke, back the way you came. Tell him I said he won't get an easy one."
+  objective galarRaihan
+  endscene
+  end
+label Won
+  say "Look after Marnie on the road, eh? She won't ask you to."
+  end
