@@ -23,7 +23,9 @@ public enum LockedUse
     /// <summary>Given a Rare Candy, or anything else that raises a level outside a battle.</summary>
     RareCandy,
     /// <summary>Evolved.</summary>
-    Evolve
+    Evolve,
+    /// <summary>Sent down a hollow (plan 44 · SD7).</summary>
+    Delve
 }
 
 /// <summary>
