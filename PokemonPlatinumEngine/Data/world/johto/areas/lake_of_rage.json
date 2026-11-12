@@ -49,6 +49,48 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 14, "maxLevel": 16 },
+      { "species": "Pineco", "level": 14, "maxLevel": 16 },
+      { "species": "Pineco", "level": 14, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 16 },
+      { "species": "Exeggcute", "level": 14, "maxLevel": 16 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 17, "maxLevel": 19 },
+      { "species": "Venonat", "level": 17, "maxLevel": 19 },
+      { "species": "Hoothoot", "level": 17, "maxLevel": 19 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 19 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 19 },
+      { "species": "Exeggcute", "level": 17, "maxLevel": 19 }
+    ],
+    "trees": [
+      "552,52 552,53 553,53",
+      "552,62 553,62 553,61",
+      "556,63 556,62",
+      "556,61 556,60",
+      "546,68 547,68",
+      "548,68 549,68",
+      "543,80 543,79 544,79",
+      "523,89 523,88",
+      "512,91 513,91",
+      "508,91 509,91",
+      "506,91 507,91",
+      "500,85 501,85 501,84 500,83 501,83",
+      "494,81 495,81",
+      "488,75 489,75",
+      "487,74",
+      "487,73 487,72",
+      "488,71 489,71",
+      "504,33 505,33",
+      "506,33 507,33",
+      "538,35 539,35",
+      "540,35 541,35",
+      "542,35 543,35"
+    ]
+  },
   "warps": [
     { "x": 497, "z": 42, "to": "lake_of_rage_hidden_power_house", "toWarp": 0 },
     { "x": 536, "z": 89, "to": "lake_of_rage_fishing_guru_house", "toWarp": 0 }

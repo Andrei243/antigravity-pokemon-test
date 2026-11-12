@@ -32,7 +32,9 @@ public class GalarWildAreaTests
     private static readonly string[] WildArea =
     {
         "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins",
-        "wild_area_lake_axewell", "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank"
+        "wild_area_lake_axewell", "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank",
+        // The northern half begun (plan 33 · GL5)
+        "wild_area_hammerlocke_hills"
     };
 
     private static OpenPos On(OpenMap map, double x, double z)

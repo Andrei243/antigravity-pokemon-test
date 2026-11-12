@@ -163,6 +163,12 @@ public partial class GameEngine
         /// <summary>Hoenn's secret bases (plan 21 · H10): the player's base, the decoration PC, and the base's decorating opened.</summary>
         public Models.SecretBaseSave? SecretBase => game.flow.SecretBase;
         public List<Models.StoredDecoration> Decorations => game.flow.Decorations;
+        /// <summary>The records mixed in at the record desk, and the friend's base being visited (plan 40 · GE10).</summary>
+        public Models.RecordMixState Records => game.flow.Records;
+        /// <summary>The player's other saves as the record desk reads them (plan 40 · GE10).</summary>
+        public IReadOnlyList<SaveData> OtherSaves() => game.OtherSaves();
+        /// <summary>Sets the player's secret base outright, as Secret Power would (a tool's or a test's).</summary>
+        public void SetSecretBase(Models.SecretBaseSave? save) => game.flow.SecretBase = save;
         public void OpenSecretBaseDecoration() => game.OpenSecretBaseDecoration();
         public void UseDiggerDrill(int slot) => game.UseDiggerDrill(slot);
         public SealShopScreen SealShop => game.flow.SealShopScreen;

@@ -1,4 +1,62 @@
 {
+  "RecordDesk": [
+    {
+      "en": [
+        "Welcome to the record desk! Here your records are mixed with those of your other adventures."
+      ],
+      "text": [
+        "Bun venit la ghișeul de recorduri! Aici recordurile tale se amestecă cu cele ale celorlalte aventuri ale tale."
+      ]
+    },
+    {
+      "en": [
+        "Shall I mix your records?"
+      ],
+      "text": [
+        "Să-ți amestec recordurile?"
+      ]
+    },
+    {
+      "en": [
+        "All done! Your records are mixed with those of {thing}."
+      ],
+      "text": [
+        "Gata! Recordurile tale s-au amestecat cu cele ale lui {thing}."
+      ]
+    },
+    {
+      "en": [
+        "Look for them upstairs in Jubilife City's Pokémon Center, at Hoenn's secret base spots and on television!"
+      ],
+      "text": [
+        "Caută-le la etajul Centrului Pokémon din Jubilife City, la locurile bazelor secrete din Hoenn și la televizor!"
+      ]
+    },
+    {
+      "en": [
+        "There's no other adventure to mix with, I'm afraid. Each save slot holds an adventure of its own."
+      ],
+      "text": [
+        "Mă tem că nu e nicio altă aventură cu care să le amestec. Fiecare loc de salvare ține o aventură a sa."
+      ]
+    },
+    {
+      "en": [
+        "Do come back once you've begun another!"
+      ],
+      "text": [
+        "Mai treci pe aici după ce începi alta!"
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Te mai așteptăm!"
+      ]
+    }
+  ],
   "GlobalLink": [
     {
       "en": [
@@ -1232,6 +1290,26 @@
       ],
       "text": [
         "Apa se tot învârte în cerc. E prea puternică pentru a fi traversată."
+      ]
+    }
+  ],
+  "HeadbuttTree": [
+    {
+      "en": [
+        "Something might be living up in this tree. Use Headbutt on it?"
+      ],
+      "text": [
+        "S-ar putea să locuiască cineva sus în copacul ăsta. Folosești Headbutt pe el?"
+      ]
+    }
+  ],
+  "UseHeadbutt": [
+    {
+      "en": [
+        "The tree shook, but nothing came down."
+      ],
+      "text": [
+        "Copacul s-a zguduit, dar n-a căzut nimic."
       ]
     }
   ],
@@ -3009,6 +3087,14 @@
       "text": [
         "Ai deja o bază secretă. O muți aici? Tot ce e în cea veche se întoarce în PC-ul tău."
       ]
+    },
+    {
+      "en": [
+        "A friend's secret base is already here. There's no room to make another."
+      ],
+      "text": [
+        "Aici e deja baza secretă a unui prieten. Nu mai e loc pentru încă una."
+      ]
     }
   ],
   "SecretBaseMake": [
@@ -3072,10 +3158,28 @@
     },
     {
       "en": [
-        "No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked."
+        "Registered here: the secret bases of {thing}. Visit them at their spots around Hoenn!"
       ],
       "text": [
-        "Nicio bază secretă a vreunui prieten nu e înregistrată. Baza unui prieten se obține prin conectare, iar acum nu e nimic conectat."
+        "Înregistrate aici: bazele secrete ale lui {thing}. Vizitează-le la locurile lor din Hoenn!"
+      ]
+    },
+    {
+      "en": [
+        "No friend's secret base is registered. Mix records at a Pokémon Center's record desk to bring one in."
+      ],
+      "text": [
+        "Nicio bază secretă a vreunui prieten nu e înregistrată. Amestecă recordurile la ghișeul de recorduri al unui Centru Pokémon ca să aduci una."
+      ]
+    }
+  ],
+  "FriendsBasePC": [
+    {
+      "en": [
+        "It's your friend's PC. Better leave it be!"
+      ],
+      "text": [
+        "E PC-ul prietenului tău. Mai bine nu-l atingi!"
       ]
     }
   ],
@@ -4166,18 +4270,18 @@
   "HubGuide": [
     {
       "en": [
-        "I guide Trainers between the great battle facilities and the Hub."
+        "I guide Trainers between the great battle facilities and Wayhaven."
       ],
       "text": [
-        ""
+        "Îi călăuzesc pe Antrenori între marile clădiri de luptă și Wayhaven."
       ]
     },
     {
       "en": [
-        "Shall I take you back to the Hub?"
+        "Shall I take you back to Wayhaven?"
       ],
       "text": [
-        ""
+        "Să te duc înapoi în Wayhaven?"
       ]
     },
     {
@@ -4190,10 +4294,10 @@
     },
     {
       "en": [
-        "{player} followed the guide back to the Hub..."
+        "{player} followed the guide back to Wayhaven..."
       ],
       "text": [
-        ""
+        "{player} l-a urmat pe ghid înapoi în Wayhaven..."
       ]
     },
     {
@@ -4211,7 +4315,7 @@
         "Gift Runner"
       ],
       "text": [
-        ""
+        "Curier de daruri"
       ]
     },
     {
@@ -4259,7 +4363,7 @@
         "Gift Runner"
       ],
       "text": [
-        ""
+        "Curier de daruri"
       ]
     },
     {

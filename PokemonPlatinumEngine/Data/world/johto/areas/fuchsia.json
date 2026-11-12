@@ -49,6 +49,44 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 21, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 21, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 21, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 21, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 21, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 21, "maxLevel": 23 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 26, "maxLevel": 34 },
+      { "species": "Tangela", "level": 26, "maxLevel": 34 },
+      { "species": "Hoothoot", "level": 26, "maxLevel": 34 },
+      { "species": "Wurmple", "level": 26, "maxLevel": 34 },
+      { "species": "Wurmple", "level": 26, "maxLevel": 34 },
+      { "species": "Wurmple", "level": 26, "maxLevel": 34 }
+    ],
+    "trees": [
+      "1193,417 1193,416",
+      "1193,415 1193,414",
+      "1193,409 1193,408",
+      "1193,407 1193,406",
+      "1195,403",
+      "1198,403 1199,403",
+      "1200,403 1201,403",
+      "1204,403 1205,403",
+      "1208,403 1209,403",
+      "1210,403 1211,403",
+      "1220,403 1221,403",
+      "1226,403 1227,403",
+      "1228,403 1229,403",
+      "1230,403 1231,403",
+      "1234,403",
+      "1236,405",
+      "1236,413 1236,412",
+      "1236,409 1236,408"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1241, "z": 422, "to": "route_15_fuchsia_gatehouse", "toWarp": 0 },

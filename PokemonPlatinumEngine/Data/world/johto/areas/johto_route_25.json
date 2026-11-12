@@ -68,6 +68,51 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 10, "maxLevel": 11 },
+      { "species": "Pineco", "level": 10, "maxLevel": 11 },
+      { "species": "Pineco", "level": 10, "maxLevel": 11 },
+      { "species": "Combee", "level": 10, "maxLevel": 11 },
+      { "species": "Combee", "level": 10, "maxLevel": 11 },
+      { "species": "Combee", "level": 10, "maxLevel": 11 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 13, "maxLevel": 14 },
+      { "species": "Hoothoot", "level": 13, "maxLevel": 14 },
+      { "species": "Hoothoot", "level": 13, "maxLevel": 14 },
+      { "species": "Combee", "level": 13, "maxLevel": 14 },
+      { "species": "Combee", "level": 13, "maxLevel": 14 },
+      { "species": "Combee", "level": 13, "maxLevel": 14 }
+    ],
+    "secret": [
+      { "species": "Combee", "level": 10, "maxLevel": 14 },
+      { "species": "Combee", "level": 10, "maxLevel": 14 },
+      { "species": "Slakoth", "level": 10, "maxLevel": 14 },
+      { "species": "Slakoth", "level": 10, "maxLevel": 14 },
+      { "species": "Slakoth", "level": 10, "maxLevel": 14 },
+      { "species": "Slakoth", "level": 15, "maxLevel": 18 }
+    ],
+    "trees": [
+      "1388,47 1388,48 1388,49 1387,47",
+      "1385,43 1386,43 1385,42 1385,41 1386,41",
+      "1371,37 1372,37 1371,36",
+      "1368,43 1369,43 1368,41 1369,41 1369,42 1368,42",
+      "1353,45 1354,45 1354,44 1353,43 1354,43",
+      "1363,45 1364,45",
+      "1370,47 1370,46 1371,47 1371,46",
+      "1371,41 1372,41 1371,40 1371,39 1372,39",
+      "1358,49 1358,48 1359,49 1359,48",
+      "1377,41 1377,40 1378,41",
+      "1379,47 1379,48 1379,49 1380,47"
+    ],
+    "secretTrees": [
+      "1315,41 1316,41",
+      "1317,41 1318,41",
+      "1319,41 1320,41",
+      "1321,41 1322,41 1322,40"
+    ]
+  },
   "hoennSounds": [
     "Whismur",
     "Linoone"

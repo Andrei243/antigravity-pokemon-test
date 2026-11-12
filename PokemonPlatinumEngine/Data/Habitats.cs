@@ -23,6 +23,8 @@ public enum HabitatWays
     Special = 128,
     /// <summary>One of our own species past level 100, in a rare slot of its own after the Hall of Fame (plan 03 · D15).</summary>
     Ours = 256,
+    /// <summary>Shaken out of a tree with Headbutt (plan 38 · EX4; HeartGold's trees).</summary>
+    Headbutt = 512,
     Grass = Morning | Day | Night,
     Fishing = OldRod | GoodRod | SuperRod
 }
@@ -84,6 +86,7 @@ public sealed class Habitats
             Add(area.OldRod, HabitatWays.OldRod);
             Add(area.GoodRod, HabitatWays.GoodRod);
             Add(area.SuperRod, HabitatWays.SuperRod);
+            Add(area.Headbutt, HabitatWays.Headbutt);
         }
         // Our own species past level 100, a way of their own in the areas their overlays name (plan 03 · D15)
         var byKey = file.Areas.GroupBy(a => a.Key, StringComparer.OrdinalIgnoreCase).ToDictionary(g => g.Key, g => g.First(), StringComparer.OrdinalIgnoreCase);

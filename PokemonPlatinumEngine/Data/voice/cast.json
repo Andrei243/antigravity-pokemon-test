@@ -113,6 +113,10 @@
       "note": "first spoken at fuchsia_gym.txt(79)",
       "provisional": true
     },
+    "allister": {
+      "note": "first spoken at StowOnSide_StadiumPitch.txt(38)",
+      "provisional": true
+    },
     "altar_keeper": {
       "note": "first spoken at poni_altar.txt(167)",
       "provisional": true
@@ -331,6 +335,10 @@
     },
     "battle_fan": {
       "note": "first spoken at RoyalAvenue_BattleRoyalDome.txt(227)",
+      "provisional": true
+    },
+    "bea": {
+      "note": "first spoken at StowOnSide_StadiumPitch.txt(18)",
       "provisional": true
     },
     "beauty": {
@@ -4899,6 +4907,10 @@
         "accent": "en-us"
       }
     },
+    "garden_keeper": {
+      "note": "first spoken at SunyshoreGarden.txt(12)",
+      "provisional": true
+    },
     "gardener": {
       "note": "first spoken at malie_garden.txt(6)",
       "provisional": true
@@ -8785,6 +8797,23 @@
       "note": "first spoken at JubilifeTV1F.txt(83)",
       "provisional": true
     },
+    "maribel_orr": {
+      "note": "first spoken at PastoriaCityObservatoryGate2F.txt; the photo tour's guide (plan 44 · SD5)",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "brisk",
+        "manner": "a nature photographer and judge: warm, bright and exacting about a good shot"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.5,bf_lily:0.5",
+        "speed": 1.04,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
+    },
     "maid": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(463)",
       "brief": {
@@ -9073,7 +9102,7 @@
         "engine": "kokoro-82m",
         "blend": "am_michael:0.6,am_eric:0.4",
         "speed": 0.98,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -9477,6 +9506,10 @@
       "note": "first spoken at LumioseCity_BattleInstitute.txt(21)",
       "provisional": true
     },
+    "opal": {
+      "note": "first spoken at Ballonlea_StadiumPitch.txt(8)",
+      "provisional": true
+    },
     "orsolya_keld": {
       "brief": {
         "register": "woman",
@@ -9855,6 +9888,10 @@
     },
     "quiz_lady": {
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(95)",
+      "provisional": true
+    },
+    "quizmaster": {
+      "note": "first spoken at Ballonlea_StadiumMission.txt(8)",
       "provisional": true
     },
     "rafe_ottoline": {
@@ -11127,6 +11164,7 @@
     "Alder": "alder",
     "Aliana": "aliana",
     "Alice": "alice",
+    "Allister": "allister",
     "Altar Keeper": "altar_keeper",
     "Ampère": "ampere",
     "Anatole": "anatole",
@@ -11156,6 +11194,7 @@
     "Barry": "barry",
     "Bastien": "bastien",
     "Battle Fan": "battle_fan",
+    "Bea": "bea",
     "Beauty": "beauty",
     "Bede": "bede",
     "Ben": "ben",
@@ -11319,6 +11358,7 @@
     "Gabby": "gabby",
     "Galactic Grunt": "look:grunt",
     "Galactic Grunts": "galactic_grunts",
+    "Garden Keeper": "garden_keeper",
     "Gardener": "gardener",
     "Gardenia": "gardenia",
     "Garett": "garett",
@@ -11445,6 +11485,7 @@
     "Machamp": "machamp",
     "Machop": "machop",
     "Madame Ottilie Fray": "madame_ottilie_fray",
+    "Maribel Orr": "maribel_orr",
     "Maid": "maid",
     "Maid Belinda": "maid_belinda",
     "Maid Clare": "maid_clare",
@@ -11525,6 +11566,7 @@
     "Olivia": "olivia",
     "Olympia": "olympia",
     "Ombeline": "ombeline",
+    "Opal": "opal",
     "Oskin": "oskin",
     "Ottoline": "ottoline",
     "Owner": "owner",
@@ -11576,6 +11618,7 @@
     "Quinn": "quinn",
     "Quiz Host": "quiz_host",
     "Quiz Lady": "quiz_lady",
+    "Quizmaster": "quizmaster",
     "Raffle Clerk": "raffle_clerk",
     "Ralph": "ralph",
     "Ramon": "ramon",

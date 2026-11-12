@@ -1,0 +1,40 @@
+# Opal's gym mission (plan 33 · GL5, its first session): a quizmaster at each of the course's three gates, stepping aside
+# for a right answer, and two gym trainers beside the way. A gate passed stays open (its own flag); a wrong answer only
+# asks again next time. Our own questions, on Sword and Shield's beat of Opal's quiz; the quiz changes nothing in the
+# battle (docs/mechanics/rulings.md, "Hammerlocke, Route 6, Stow-on-Side and Ballonlea"). Our own lines.
+
+
+script MissionQuiz1
+  speaker "Quizmaster"
+  choose "Question one! Which type has no effect on a Fairy type at all?" "Dragon" "Fighting" "Dark"
+  if result == 0 goto Right
+  say "Oh dear, not quite! Have a think and come back to me."
+  end
+label Right
+  say "Quite right! Dragon moves can't touch a fairy. On you go!"
+  setflag FLAG_GALAR_BALLONLEA_QUIZ_1
+  end
+
+
+script MissionQuiz2
+  speaker "Quizmaster"
+  choose "Question two! What is the name of the town where you won your first badge?" "Hulbury" "Turffield" "Motostoke"
+  if result == 1 goto Right
+  say "Oh dear, not quite! Have a think and come back to me."
+  end
+label Right
+  say "Quite right! Milo's town, and all those Wooloo. On you go!"
+  setflag FLAG_GALAR_BALLONLEA_QUIZ_2
+  end
+
+
+script MissionQuiz3
+  speaker "Quizmaster"
+  choose "Last question! What is Opal's favourite colour?" "Blue" "Green" "Pink"
+  if result == 2 goto Right
+  say "Oh dear, not quite! Look around you, dear, and come back to me."
+  end
+label Right
+  say "Quite right! Pink, pink and more pink. The mission is cleared!"
+  setflag FLAG_GALAR_BALLONLEA_QUIZ_3
+  end

@@ -735,7 +735,14 @@
     // top and white shorts; Kabu, Motostoke's Leader, short grey hair, a white sport top with a fire's red and black shorts
     "marnie": { "skin": "#f0d4c0", "hairColor": "#2a2630", "hair": "Short", "top": "#1e1c22", "accent": "#e0608a", "bottom": "#c84a78", "shoes": "#2a2428", "eyes": "#3a5a4a", "jacket": true, "skirt": true, "lashes": true, "build": "Adult", "height": 0.98 },
     "nessa": { "skin": "#8a5a3e", "hairColor": "#1e1a24", "hair": "Ponytail", "top": "#2a6ac8", "accent": "#f2f2ee", "bottom": "#f2f2ee", "shoes": "#2a6ac8", "eyes": "#3a7aa8", "shorts": true, "shortSleeves": true, "lashes": true, "build": "Adult", "height": 1.1 },
-    "kabu": { "skin": "#d8b494", "hairColor": "#b8b8bc", "hair": "Spiky", "top": "#f2f0ec", "accent": "#d83a2a", "bottom": "#1e1c22", "shoes": "#1e1c22", "eyes": "#4a3a2a", "shorts": true, "build": "Adult", "height": 1.0 }
+    "kabu": { "skin": "#d8b494", "hairColor": "#b8b8bc", "hair": "Spiky", "top": "#f2f0ec", "accent": "#d83a2a", "bottom": "#1e1c22", "shoes": "#1e1c22", "eyes": "#4a3a2a", "shorts": true, "build": "Adult", "height": 1.0 },
+    // Plan 33 · GL5, its first session (our own designs): Bea, Stow-on-Side's Leader in a Sword game, short pale hair
+    // and a grey and black sport top over dark shorts; Allister, its Leader in a Shield game, a slight boy with dark
+    // hair and a long grey coat; Opal, Ballonlea's Leader, an old lady with white hair in
+    // a bun under a pink cap, and a violet coat
+    "bea": { "skin": "#a8744e", "hairColor": "#e8e2d8", "hair": "Short", "top": "#4a4a50", "accent": "#1e1c22", "bottom": "#1e1c22", "shoes": "#2a2428", "eyes": "#5a6a8a", "shorts": true, "shortSleeves": true, "build": "Adult", "height": 1.0 },
+    "allister": { "skin": "#ecd8c8", "hairColor": "#3a3448", "hair": "Short", "top": "#6a6a74", "accent": "#e8e4dc", "bottom": "#3a3a44", "shoes": "#2a2830", "eyes": "#6a4a8a", "coat": true, "build": "Adult", "height": 0.86 },
+    "opal": { "skin": "#ecd0bc", "hairColor": "#f2f0ec", "hair": "Bun", "hat": "Cap", "hatColor": "#d86aa8", "hatBand": "#7a4a9a", "top": "#7a4a9a", "accent": "#d86aa8", "bottom": "#7a4a9a", "shoes": "#3a2a3a", "eyes": "#6a4a6a", "coat": true, "lashes": true, "build": "Elder", "height": 0.92 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

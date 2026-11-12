@@ -14,6 +14,28 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "headbutt": {
+    "common": [
+      { "species": "Spearow", "level": 26, "maxLevel": 27 },
+      { "species": "Heracross", "level": 26, "maxLevel": 27 },
+      { "species": "Heracross", "level": 26, "maxLevel": 27 },
+      { "species": "Combee", "level": 26, "maxLevel": 27 },
+      { "species": "Combee", "level": 26, "maxLevel": 27 },
+      { "species": "Combee", "level": 26, "maxLevel": 27 }
+    ],
+    "rare": [
+      { "species": "Spearow", "level": 29, "maxLevel": 30 },
+      { "species": "Spearow", "level": 29, "maxLevel": 30 },
+      { "species": "Spearow", "level": 29, "maxLevel": 30 },
+      { "species": "Combee", "level": 29, "maxLevel": 30 },
+      { "species": "Combee", "level": 29, "maxLevel": 30 },
+      { "species": "Combee", "level": 29, "maxLevel": 30 }
+    ],
+    "trees": [
+      "1141,283 1142,283 1141,284 1141,285",
+      "1149,279 1150,279"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1151, "z": 276, "to": "route_16_gatehouse", "toWarp": 1 },

@@ -34,6 +34,29 @@
     "Golbat",
     "Golbat"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Heracross", "level": 42, "maxLevel": 44 },
+      { "species": "Aipom", "level": 42, "maxLevel": 44 },
+      { "species": "Aipom", "level": 42, "maxLevel": 44 },
+      { "species": "Natu", "level": 42, "maxLevel": 44 },
+      { "species": "Natu", "level": 42, "maxLevel": 44 },
+      { "species": "Natu", "level": 42, "maxLevel": 44 }
+    ],
+    "rare": [
+      { "species": "Heracross", "level": 45, "maxLevel": 48 },
+      { "species": "Aipom", "level": 45, "maxLevel": 48 },
+      { "species": "Aipom", "level": 45, "maxLevel": 48 },
+      { "species": "Natu", "level": 45, "maxLevel": 48 },
+      { "species": "Natu", "level": 45, "maxLevel": 48 },
+      { "species": "Natu", "level": 45, "maxLevel": 48 }
+    ],
+    "trees": [
+      "23,32 24,32",
+      "15,47 16,47",
+      "15,13 16,13"
+    ]
+  },
   "hoennSounds": [
     "Absol",
     "Makuhita"

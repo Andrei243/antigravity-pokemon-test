@@ -1,0 +1,53 @@
+{
+  // Hammerlocke Hills (plan 33 · GL5, its first session): the first part of the Wild Area's northern half, rolling downs
+  // between the gap in Route 5's north bank and Hammerlocke's south gate. Its weather is the calendar's column of the
+  // same name. Our own downs at about half the original's distances. Scripts: Data/scripts/wild_area_hammerlocke_hills.txt
+  "markers": [
+    { "name": "hills_south", "at": [38, 26.3, -1060], "yaw": 180 },
+    { "name": "hills_north", "at": [12, 26.3, -1144], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "hammerlocke_hills_east",
+      "polygon": [[20, -1140], [52, -1140], [52, -1090], [20, -1090]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Rhyhorn", "minLevel": 26, "maxLevel": 29, "weight": 20 },
+        { "species": "Onix", "minLevel": 26, "maxLevel": 29, "weight": 15 },
+        { "species": "Koffing", "minLevel": 26, "maxLevel": 28, "weight": 20 },
+        { "species": "Eevee", "minLevel": 26, "maxLevel": 28, "weight": 10 },
+        { "species": "Nuzleaf", "minLevel": 27, "maxLevel": 29, "weight": 15, "weather": ["Clear", "Cloudy"] },
+        { "species": "Croagunk", "minLevel": 26, "maxLevel": 28, "weight": 20, "weather": ["Rain", "Thunderstorm"] }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "hammerlocke_hills_west",
+      "polygon": [[-32, -1086], [-2, -1086], [-2, -1066], [-32, -1066]],
+      "minY": 20, "maxY": 34,
+      "slots": [
+        { "species": "Nuzleaf", "minLevel": 26, "maxLevel": 28, "weight": 30 },
+        { "species": "Eevee", "minLevel": 26, "maxLevel": 28, "weight": 20 },
+        { "species": "Koffing", "minLevel": 26, "maxLevel": 28, "weight": 30 },
+        { "species": "Gastly", "minLevel": 26, "maxLevel": 28, "weight": 20, "time": "Night" }
+      ],
+      "density": 2, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "hills_hiker", "at": [2, 26.3, -1120], "yaw": 90, "trainer": "galar_hiker_owain",
+      "lines": ["The hills look gentle, but the Pokémon up here are a cut above the south's. Mind yourself!", "A cut above, I said. I didn't mean you."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "hills_watt_trader", "at": [26, 26.3, -1150], "yaw": 0, "look": "clerk", "displayName": "Camper",
+      "lines": ["Hammerlocke's the heart of Galar. Every train in the region runs through its station, and the Champion's office is in the vault."]
+    }
+  ],
+  "trees": [
+    { "at": [-26, -1124], "kind": "round", "size": 1.1 },
+    { "at": [-20, -1140], "kind": "round" },
+    { "at": [50, -1072], "kind": "round", "size": 0.9 }
+  ]
+}

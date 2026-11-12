@@ -23,7 +23,7 @@ public enum Op
     // People and the field
     Face, Walk, Move, WaitMoves, Emote, Show, Hide, Place, Warp, Fade, Wait, Camera,
     // Field moves (plan 02 · S2)
-    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent, SmashEncounter,
+    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent, SmashEncounter, Headbutt,
     // The Pokétch (plan 02 · S2)
     Poketch, PoketchApp,
     // The Great Marsh's Safari Game (plan 01 · M7)
@@ -216,6 +216,10 @@ public enum Op
     // The pasture (plan 35 · BN5): in at its gate from a PC and back, the box shown, and a Pokémon of the meadow petted,
     // fed, cared for, found holding something or taken along
     Pasture,
+    // Records mixed between one's own saves (plan 40 · GE10): mixed at the record desk, the mixed bases counted and named
+    Records,
+    // The photo tour (plan 44 · SD5): a ride on a course, whether a course is open, the report's total
+    Tour,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

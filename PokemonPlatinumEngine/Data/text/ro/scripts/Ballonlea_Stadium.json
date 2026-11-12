@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Ballonlea Stadium! Opal's gym mission is through the doors behind me: a quiz, no less."
+      ],
+      "text": [
+        "Bine ai venit la Stadionul Ballonlea! Misiunea arenei lui Opal e dincolo de ușile din spatele meu: un test de întrebări, nici mai mult, nici mai puțin."
+      ]
+    },
+    {
+      "en": [
+        "Three quizmasters stand at the course's gates. Answer each one rightly and they'll let you by. Then Opal awaits."
+      ],
+      "text": [
+        "La porțile traseului stau trei examinatori. Răspunde corect fiecăruia și te vor lăsa să treci. Apoi te așteaptă Opal."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on the Fairy Badge! The road on runs back through Hammerlocke, west to Route 7."
+      ],
+      "text": [
+        "Felicitări pentru Insigna Zână! Drumul mai departe trece înapoi prin Hammerlocke, spre vest, la Ruta 7."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul arenei"
+      ]
+    },
+    {
+      "en": [
+        "Opal's Fairy types shrug off dragons and bully dark and fighting types. Steel and poison moves are the answer!"
+      ],
+      "text": [
+        "Pokémonii de tip Zână ai lui Opal nu se tem de dragoni și îi chinuie pe cei de tip Întuneric și Luptă. Atacurile de Oțel și Otravă sunt răspunsul!"
+      ]
+    },
+    {
+      "en": [
+        "Five badges! Opal's been looking for someone to take on her gym one day. I wonder who it'll be."
+      ],
+      "text": [
+        "Cinci insigne! Opal caută de mult pe cineva care să-i preia arena într-o zi. Mă întreb cine va fi."
+      ]
+    }
+  ]
+}

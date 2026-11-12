@@ -59,6 +59,12 @@
       "night": [
         "Hoothoot",
         "Rattata"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -95,6 +101,12 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -134,6 +146,12 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -178,6 +196,11 @@
         "Tentacool",
         "Magikarp",
         "Qwilfish"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute"
       ]
     },
     {
@@ -198,6 +221,11 @@
       "night": [
         "Zubat",
         "Rattata"
+      ],
+      "headbutt": [
+        "Spearow",
+        "Heracross",
+        "Aipom"
       ]
     },
     {
@@ -239,6 +267,12 @@
         "Krabby",
         "Corsola",
         "Kingler"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -287,6 +321,12 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -313,6 +353,12 @@
         "Hoothoot",
         "Growlithe",
         "Stantler"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -335,6 +381,12 @@
         "Stantler",
         "Hoothoot",
         "Growlithe"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -366,6 +418,13 @@
         "Miltank",
         "Tauros",
         "Snubbull"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak",
+        "Burmy"
       ]
     },
     {
@@ -394,6 +453,12 @@
         "Magnemite",
         "Miltank",
         "Tauros"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -434,6 +499,11 @@
         "Goldeen",
         "Magikarp",
         "Seaking"
+      ],
+      "headbutt": [
+        "Spearow",
+        "Heracross",
+        "Aipom"
       ]
     },
     {
@@ -474,6 +544,12 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Venonat"
       ]
     },
     {
@@ -515,6 +591,11 @@
         "Poliwag",
         "Magikarp",
         "Remoraid"
+      ],
+      "headbutt": [
+        "Spearow",
+        "Heracross",
+        "Aipom"
       ]
     },
     {
@@ -553,6 +634,11 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Spearow",
+        "Heracross",
+        "Aipom"
       ]
     },
     {
@@ -572,6 +658,11 @@
       "night": [
         "Geodude",
         "Rattata"
+      ],
+      "headbutt": [
+        "Spearow",
+        "Heracross",
+        "Aipom"
       ]
     },
     {
@@ -597,6 +688,12 @@
         "Shellder",
         "Tentacruel",
         "Lanturn"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -620,6 +717,13 @@
         "Krabby",
         "Corsola",
         "Kingler"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak",
+        "Taillow"
       ]
     },
     {
@@ -641,6 +745,21 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute"
+      ]
+    },
+    {
+      "key": "azalea",
+      "name": "Azalea Town",
+      "cells": "12,14 13,14",
+      "headbutt": [
+        "Spearow",
+        "Heracross",
+        "Aipom"
       ]
     },
     {
@@ -708,6 +827,12 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -728,6 +853,12 @@
       "superRod": [
         "Magikarp",
         "Gyarados"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Venonat"
       ]
     },
     {
@@ -792,6 +923,11 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Heracross",
+        "Aipom",
+        "Natu"
       ]
     },
     {
@@ -860,6 +996,13 @@
       ],
       "night": [
         "Hoothoot"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak",
+        "Cherubi"
       ]
     },
     {
@@ -974,6 +1117,14 @@
       "superRod": [
         "Poliwag",
         "Magikarp"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Caterpie",
+        "Metapod",
+        "Pineco",
+        "Noctowl",
+        "Butterfree"
       ]
     },
     {
@@ -1224,6 +1375,15 @@
         "Shellder",
         "Tentacruel",
         "Lanturn"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak",
+        "Metapod",
+        "Butterfree",
+        "Heracross"
       ]
     },
     {
@@ -1258,6 +1418,12 @@
         "Gloom",
         "Girafarig",
         "Diglett"
+      ],
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -1379,6 +1545,17 @@
       "night": [
         "Gastly",
         "Rattata"
+      ]
+    },
+    {
+      "key": "safari_zone_gate",
+      "name": "Safari Zone Gate",
+      "cells": "2,8 3,8 2,9 3,9",
+      "headbutt": [
+        "Hoothoot",
+        "Pineco",
+        "Exeggcute",
+        "Spinarak"
       ]
     },
     {
@@ -2064,6 +2241,11 @@
         "Donphan",
         "Golduck",
         "Larvitar"
+      ],
+      "headbutt": [
+        "Heracross",
+        "Aipom",
+        "Natu"
       ]
     },
     {

@@ -100,6 +100,7 @@ partial class Harness
         CraftingMakePart(Until);
         CraftingTmMakerPart(Until);
         CraftingKitchenPart(Until);
+        CraftingGardenPart(Until);
     }
 
     // Reads a script's talk through the game's own box: choice answered by its index (a number in `answers`, in the order

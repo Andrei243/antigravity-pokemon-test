@@ -49,6 +49,37 @@
     { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 2, "maxLevel": 3 },
+      { "species": "Exeggcute", "level": 2, "maxLevel": 3 },
+      { "species": "Exeggcute", "level": 2, "maxLevel": 3 },
+      { "species": "Exeggcute", "level": 2, "maxLevel": 3 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 4, "maxLevel": 5 },
+      { "species": "Spinarak", "level": 4, "maxLevel": 5 },
+      { "species": "Spinarak", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 },
+      { "species": "Exeggcute", "level": 4, "maxLevel": 5 }
+    ],
+    "trees": [
+      "698,403 698,404 698,405 699,403",
+      "698,406 698,407",
+      "698,411 698,412",
+      "692,413 693,413",
+      "690,413 691,413",
+      "686,413 687,413",
+      "680,411 681,411 681,412",
+      "678,411 679,411",
+      "674,407 675,407",
+      "692,390 692,391 693,391",
+      "676,395 677,395"
+    ]
+  },
   "warps": [
     { "x": 684, "z": 393, "to": "new_bark_elms_lab_1f", "toWarp": 0 },
     { "x": 695, "z": 396, "to": "new_bark_player_house_1f", "toWarp": 0 },

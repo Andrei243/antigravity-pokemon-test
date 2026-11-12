@@ -34,6 +34,31 @@
     "Pidgeotto",
     "Pidgeotto"
   ],
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 16, "maxLevel": 17 },
+      { "species": "Pineco", "level": 16, "maxLevel": 17 },
+      { "species": "Pineco", "level": 16, "maxLevel": 17 },
+      { "species": "Combee", "level": 16, "maxLevel": 17 },
+      { "species": "Combee", "level": 16, "maxLevel": 17 },
+      { "species": "Combee", "level": 16, "maxLevel": 17 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 18, "maxLevel": 19 },
+      { "species": "Hoothoot", "level": 18, "maxLevel": 19 },
+      { "species": "Hoothoot", "level": 18, "maxLevel": 19 },
+      { "species": "Combee", "level": 18, "maxLevel": 19 },
+      { "species": "Combee", "level": 18, "maxLevel": 19 },
+      { "species": "Combee", "level": 18, "maxLevel": 19 }
+    ],
+    "trees": [
+      "1376,231 1376,232 1377,232",
+      "1401,234 1401,233",
+      "1397,242 1397,241",
+      "1393,233 1392,233 1392,234",
+      "1392,244 1392,243 1393,244"
+    ]
+  },
   "hoennSounds": [
     "Plusle",
     "Minun"

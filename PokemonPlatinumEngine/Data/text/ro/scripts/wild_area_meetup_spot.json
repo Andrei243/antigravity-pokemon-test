@@ -5,7 +5,7 @@
         "Hop"
       ],
       "text": [
-        ""
+        "Hop"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Wooloo on the line again! The driver says we could be sat here till teatime."
       ],
       "text": [
-        ""
+        "Iar Wooloo pe linie! Mecanicul zice că s-ar putea să stăm aici până la ora ceaiului."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Motostoke's only on the far side of the Wild Area, though. We'll walk it! There's no better way to meet strong Pokémon."
       ],
       "text": [
-        ""
+        "Dar Motostoke e chiar de partea cealaltă a Zonei Sălbatice. O luăm pe jos! Nu-i cale mai bună să întâlnești Pokémoni puternici."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "See you at the steps under the city, {player}. Last one there buys the curry!"
       ],
       "text": [
-        ""
+        "Ne vedem la treptele de sub oraș, {player}. Ultimul care ajunge face cinste cu curry!"
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Station Attendant"
       ],
       "text": [
-        ""
+        "Însoțitorul gării"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "The line north is blocked by Wooloo, I'm afraid. Trains still run back south to Wedgehurst, though."
       ],
       "text": [
-        ""
+        "Linia spre nord e blocată de Wooloo, din păcate. Dar trenurile tot merg înapoi spre sud, la Wedgehurst."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Take the train to Wedgehurst?"
       ],
       "text": [
-        ""
+        "Iei trenul spre Wedgehurst?"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Enjoy the Wild Area! Do keep an eye on the weather. It changes the Pokémon about as much as the scenery."
       ],
       "text": [
-        ""
+        "Distracție plăcută în Zona Sălbatică! Fii atent la vreme. Schimbă Pokémonii cam tot atât cât schimbă peisajul."
       ]
     }
   ],
@@ -73,7 +73,7 @@
         "Watt Trader"
       ],
       "text": [
-        ""
+        "Negustorul de Watt"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Welcome! I trade in Watts, the energy the dens' light gives off. You have {var:VAR_GALAR_WATTS} W."
       ],
       "text": [
-        ""
+        "Bine ai venit! Fac negoț cu Watt, energia pe care o degajă lumina vizuinelor. Ai {var:VAR_GALAR_WATTS} W."
       ]
     },
     {
@@ -95,13 +95,13 @@
         "Nothing, thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce-ți dorești?",
+        "Bomboană Exp. S: 800 W",
+        "Bomboană Exp. M: 2.000 W",
+        "Bomboană Dynamax: 3.000 W",
+        "Capac de sticlă: 5.000 W",
+        "Piatra dorințelor: 3.000 W",
+        "Nimic, mulțumesc"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Come back with more Watts! Touch a den's beam of light and they're yours."
       ],
       "text": [
-        ""
+        "Revino cu mai mulți Watt! Atinge raza de lumină a unei vizuini și sunt ai tăi."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "A pleasure doing business! You have {var:VAR_GALAR_WATTS} W left."
       ],
       "text": [
-        ""
+        "Plăcerea a fost de partea mea! Ți-au rămas {var:VAR_GALAR_WATTS} W."
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Not quite enough Watts for that one, I'm afraid."
       ],
       "text": [
-        ""
+        "Nu ai chiar destui Watt pentru asta, din păcate."
       ]
     }
   ],
@@ -135,7 +135,7 @@
         "Ball Guy"
       ],
       "text": [
-        ""
+        "Omul cu Mingi"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "Balls! I love Poké Balls! Every shape, every colour. Here, have one of today's favourites!"
       ],
       "text": [
-        ""
+        "Mingi! Ador Poké Ball-urile! Orice formă, orice culoare. Poftim, ia una dintre preferatele de azi!"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Come back tomorrow! I'll have a new favourite by then. I always do."
       ],
       "text": [
-        ""
+        "Revino mâine! Până atunci o să am alta preferată. Mereu am."
       ]
     }
   ]

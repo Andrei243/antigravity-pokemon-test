@@ -49,6 +49,53 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 2, "maxLevel": 3 },
+      { "species": "Pineco", "level": 10, "maxLevel": 10 },
+      { "species": "Pineco", "level": 10, "maxLevel": 10 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 10 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 10 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 10 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 4, "maxLevel": 5 },
+      { "species": "Hoothoot", "level": 10, "maxLevel": 10 },
+      { "species": "Hoothoot", "level": 10, "maxLevel": 10 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 10 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 10 },
+      { "species": "Exeggcute", "level": 10, "maxLevel": 10 }
+    ],
+    "trees": [
+      "510,276 510,277",
+      "506,265 507,265",
+      "504,265 505,265",
+      "500,279 501,279",
+      "496,279 496,280 496,281 497,279",
+      "490,283 491,283",
+      "481,281 481,280",
+      "487,273 487,272",
+      "484,265 485,265",
+      "470,272 470,273 471,273",
+      "468,279 469,279 469,280 469,281",
+      "465,274 465,275",
+      "465,272 465,273",
+      "462,265 463,265",
+      "460,261 461,261 461,262 461,263",
+      "468,250 468,251",
+      "468,246 468,247",
+      "466,243 467,243",
+      "504,235 505,235",
+      "506,236",
+      "506,237 506,238",
+      "506,239 506,240",
+      "457,230",
+      "457,228 457,229",
+      "458,227",
+      "459,227 460,227",
+      "461,227 462,227"
+    ]
+  },
   "warps": [
     { "x": 511, "z": 269, "to": "route_31_violet_gatehouse", "toWarp": 0 },
     { "x": 511, "z": 270, "to": "route_31_violet_gatehouse", "toWarp": 0 },

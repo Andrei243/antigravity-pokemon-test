@@ -210,6 +210,12 @@ public sealed class MapFile
         /// name (<c>Machop</c>, <c>Rotom-Wash</c>).
         /// </summary>
         public string? Species { get; set; }
+
+        /// <summary>
+        /// For a patch of soft soil (<c>npcType</c> "BerrySoil", plan 39 · CR8: the workshop's garden): the save's berry
+        /// patch it is (<see cref="BerryPatches"/>), as an area file's object names one.
+        /// </summary>
+        public int? Patch { get; set; }
         public TrainerRecord? Trainer { get; set; }
 
         /// <summary>
@@ -459,6 +465,7 @@ public sealed class MapFile
             Item = n.Item,
             ItemCount = n.Count ?? 1,
             Species = n.Species,
+            BerryPatch = n.Patch,
             Level = n.Level,
             Stance = n.Stance
         };
@@ -476,6 +483,13 @@ public sealed class MapFile
             if (!npc.IsPokemon) throw new InvalidDataException($"Map {mapName}: {n.Name} names a species and is no Pokémon (npcType \"{NPC.PokemonType}\").");
             if (npc.Species == null || (PokemonDatabase.Get(npc.Species) == null && PokemonDatabase.SpeciesOfForm(npc.Species) == null))
                 throw new InvalidDataException($"Map {mapName}: the Pokémon at {n.X},{n.Y} is '{npc.Species}', which is no species or form.");
+        }
+
+        if (npc.IsBerrySoil || n.Patch != null)
+        {
+            if (!npc.IsBerrySoil) throw new InvalidDataException($"Map {mapName}: {n.Name} names a berry patch and is no soil (npcType \"{NPC.BerrySoilType}\").");
+            if (n.Patch is not { } patch || patch < 0 || patch >= BerryPatches.Count)
+                throw new InvalidDataException($"Map {mapName}: the soil at {n.X},{n.Y} is patch '{n.Patch}', which the save has no place for.");
         }
 
         if (n.Trainer is { } t)
@@ -627,6 +641,7 @@ public sealed class MapFile
         Item = npc.Item,
         Count = npc.Item != null && npc.ItemCount > 1 ? npc.ItemCount : null,
         Species = npc.Species,
+        Patch = npc.BerryPatch,
         Movement = npc.Movement?.Source is { Length: > 0 } moves ? moves : null,
         RangeX = npc.Movement is { RangeX: > 0 } mx ? mx.RangeX : null,
         RangeZ = npc.Movement is { RangeZ: > 0 } mz ? mz.RangeZ : null,

@@ -4,7 +4,7 @@
       "Motostoke Hotel"
     ],
     "text": [
-      ""
+      "Hotelul din Motostoke"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Hotel Clerk"
         ],
         "text": [
-          ""
+          "Recepționerul hotelului"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Team Yell Grunt"
         ],
         "text": [
-          ""
+          "Membru al Echipei Yell"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Team Yell's here for Marnie! Ain't nobody getting past us!"
         ],
         "text": [
-          ""
+          "Echipa Yell e aici pentru Marnie! Nimeni nu trece de noi!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Team Yell Grunt"
         ],
         "text": [
-          ""
+          "Membru al Echipei Yell"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Ugh, the chairman himself? Let's scarper!"
         ],
         "text": [
-          ""
+          "Ah, chiar președintele? Hai s-o ștergem!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Chairman Rose"
         ],
         "text": [
-          ""
+          "Președintele Rose"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "A good night's rest is the first step of any challenge."
         ],
         "text": [
-          ""
+          "Un somn bun e primul pas al oricărei provocări."
         ]
       }
     }

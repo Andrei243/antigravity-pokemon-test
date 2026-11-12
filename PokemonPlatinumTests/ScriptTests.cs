@@ -185,6 +185,7 @@ public class ScriptTests
           escape
           sweetscent
           smashencounter
+          headbutt
           poketch on
           poketchapp PartyStatus
           safari start
@@ -246,6 +247,7 @@ public class ScriptTests
           craft tradable
           craft trade
           craft pantry
+          craft crosses
           craft meal "beanHotpot"
           craft meal "campStew" superb
           raid den "rolling_1"
@@ -271,6 +273,9 @@ public class ScriptTests
           heart missed
           heart opened
           heart courier
+          tour ride "reed_river"
+          tour open "reed_river"
+          tour points
           train open
           train drill
           train reset all
@@ -731,6 +736,7 @@ public class ScriptTests
           openbase kind
           openbase
           openbase enter
+          openbase visit
           openbase pc
           openbase packup
           openbase give "Red Brick"
@@ -889,6 +895,9 @@ public class ScriptTests
           tournament rental
           charm due
           charm give
+          records mix
+          records count
+          records bases
           gift due
           gift waiting
           gift open

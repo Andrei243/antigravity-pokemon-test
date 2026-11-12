@@ -44,6 +44,8 @@ public partial class GameEngine
     {
         flow.CardDesign = save?.CardDesign?.Copy();
         flow.PhotoBook.Load(save?.PhotoBook);
+        // The photo tour's report (plan 44 · SD5)
+        flow.PhotoTour.Load(save?.PhotoTour);
         cardFace = null;
         cardFaceKey = null;
         cardOwned = null;
@@ -199,7 +201,9 @@ public partial class GameEngine
             cardFigureLoaded = true;
         }
         string look = InTheKitHere(PlayerIdentity.Character);
-        if (CharacterModels.TryGet(look, renderContext.Shaders) == null) return;
+        if (CharacterModels.TryGet(look, renderContext.Shaders) is not { } rig) return;
+        // (a grown look framed by its own height, plan 30; a chibi one as it always was)
+        var (viewHeight, lookY) = CharacterStudio.FigureOf(rig);
         var pose = new CharacterPose { Time = 0.5f, Expression = CharacterAnimation.ExpressionOf(design.Mood) };
         if (design.Pose == CardPoseKind.Sitting) pose.Stance = Overworld.Stance.SitGround;
         else if (design.Pose == CardPoseKind.Gesture && design.Gesture is { } gesture)
@@ -207,7 +211,7 @@ public partial class GameEngine
             pose.Emote = CharacterAnimation.EmoteOf(gesture);
             pose.EmoteTime = CardDesign.HeldAt * CharacterAnimation.Duration(pose.Emote);
         }
-        CharacterStudio.Render(renderContext, look, cardFigure, pose, yaw: 0.3f, viewHeight: 1.9f, lookY: 0.78f);
+        CharacterStudio.Render(renderContext, look, cardFigure, pose, yaw: 0.3f, viewHeight: viewHeight, lookY: lookY);
         cardFigureDrawn = true;
     }
 

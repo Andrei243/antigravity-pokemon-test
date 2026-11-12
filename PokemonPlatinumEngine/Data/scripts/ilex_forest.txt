@@ -245,3 +245,46 @@ script Celebi
   speaker none
   text "Celebi hovers before the shrine, its eyes on {player}."
   end
+
+
+# The man by the forest's way in teaches Headbutt to one Pokémon, once in a game, for nothing (plan 38 · EX4; `tutor
+# once`, Models/MoveTutors.cs). FLAG_TUTOR_HEADBUTT: he has taught it. Which of HeartGold's people of the forest he is
+# was not read (its scripts are outside what the importer fetches): docs/mechanics/rulings.md, "Headbutt trees".
+script HeadbuttTutor
+  speaker "Man"
+  if flag FLAG_TUTOR_HEADBUTT goto Taught
+  say "The trees here are so old and so close together that the sun hardly gets in." "Pokémon live up in them, out of sight. Give a trunk a good knock and one might come tumbling down."
+  ask "I can teach one of yours Headbutt, for nothing. Shall I?"
+  if no goto Later
+  say "Good. Which one?"
+  choosepokemon
+  tutor once "Headbutt"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_TUTOR_HEADBUTT
+label Taught
+  say "Face a tree that looks lived in and use Headbutt on it. Not every tree has someone home."
+  end
+label Later
+  say "Suit yourself. Stay on the path, now."
+  end
+label Egg
+  say "An Egg? It'll have to hatch before it can learn anything."
+  end
+label Cannot
+  say "Hm, that one can't learn Headbutt."
+  end
+label Knows
+  say "That one already knows {thing}."
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later

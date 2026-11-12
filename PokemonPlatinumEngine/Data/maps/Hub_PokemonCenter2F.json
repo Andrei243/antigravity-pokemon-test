@@ -204,7 +204,8 @@
       "dialog": [
         "At this desk Trainers mix their records and sign one another's Trainer Cards.",
         "With the link down there is nobody to mix them with. Do ask again another day!"
-      ]
+      ],
+      "script": "RecordDesk"
     }
   ],
   "wildEncounters": []

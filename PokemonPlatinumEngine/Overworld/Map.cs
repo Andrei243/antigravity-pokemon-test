@@ -181,6 +181,9 @@ public sealed class MapArea
     public List<WildEncounterEntry> RockSmashEncounters { get; } = new();
     public int RockSmashRate { get; set; }
 
+    /// <summary>The area's Headbutt trees and their tables (plan 38 · EX4; HeartGold's); null where it has none.</summary>
+    public AreaHeadbuttTrees? Headbutt { get; set; }
+
     /// <summary>
     /// Black 2's tables beside the grass's and the water's (plan 22 · U4; <c>WorldAreaFile.DarkGrass</c> and its
     /// kin): the dark grass's, the grass that shakes, the water that ripples and a rod cast into it. Empty in every
@@ -1700,7 +1703,31 @@ public class Map
     /// rate in a hundred, then one of its slots by weight, as the land's are met (the lead's ability has its say, never
     /// a Repel). Null where nothing comes, and always in Sinnoh, whose areas have no such table.
     /// </summary>
-    public WildEncounterEntry? SmashRock(int x, int y, WildLead? lead = null, Random? random = null)
+    public WildEncounterEntry? SmashRock(int x, int y, WildLead? lead = null, Random? random = null) => SmashRockOn(x, y, lead, random);
+
+    /// <summary>
+    /// The Headbutt tree a tile is part of (plan 38 · EX4): the area whose list names the tile, the tree's number and
+    /// whether it is a secret one; null where no area's trees take in the tile (a tree of the woods that holds nothing).
+    /// The trees sit on areas' borders, so every area of the map is asked, the tile's own first.
+    /// </summary>
+    public (MapArea Area, int Tree, bool Secret)? HeadbuttTreeAt(int x, int y)
+    {
+        if (AreaAt(x, y) is { Headbutt: { } own } here && own.Tiles.TryGetValue((x, y), out var mine)) return (here, mine.Tree, mine.Secret);
+        foreach (var area in areas)
+            if (area.Headbutt is { } trees && trees.Tiles.TryGetValue((x, y), out var found)) return (area, found.Tree, found.Secret);
+        return null;
+    }
+
+    /// <summary>
+    /// What a Headbutt tree at a tile shakes out (plan 38 · EX4; <see cref="HeadbuttTrees.Shake"/>): null where the tile
+    /// is part of no listed tree, or nothing falls. Draws only where a tree is.
+    /// </summary>
+    public WildEncounterEntry? ShakeHeadbuttTree(int x, int y, uint trainerNumber, WildLead? lead = null, Random? random = null) =>
+        HeadbuttTreeAt(x, y) is var (area, tree, secret)
+            ? HeadbuttTrees.Shake(area.Headbutt!, tree, secret, trainerNumber, random ?? rng, lead)
+            : null;
+
+    private WildEncounterEntry? SmashRockOn(int x, int y, WildLead? lead, Random? random)
     {
         if (AreaAt(x, y) is not { } area) return null;
         var roll = random ?? rng;

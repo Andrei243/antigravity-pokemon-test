@@ -343,7 +343,7 @@ public sealed partial class ScriptRunner
         // A trade is made as given; the trade board's screen is the player's to work (plan 40 · GE8)
         Op.Trade => i.Name == "board" && i.Other == "open",
         // A battle is fought
-        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master or Op.Royal => true,
+        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Headbutt or Op.Master or Op.Royal => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Pose or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         // ...and in an open map a walk ends on its marker, a placing and a turn are made, a warp arrives, a look is over (plan 32 · OW5)
@@ -390,6 +390,8 @@ public sealed partial class ScriptRunner
         Op.Pasture => i.Name == "care",
         // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
         Op.Heart => i.Name == "open",
+        // A ride is a screen the player plays; the rest is asked without one (plan 44 · SD5)
+        Op.Tour => i.Name == "ride",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
         // A power is learned or granted without a screen (plan 36 · TR8)
@@ -447,6 +449,8 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // Records are mixed and asked about at once: nothing to see through (plan 40 · GE10)
+        Op.Records => false,
         // The gift box's screen is the player's to work; a gift handed over, words told and a backdrop given are as items given (plan 40 · GE7)
         Op.Gift => i.Name == "open",
         // The Laurel Circuit only asks and changes its record (plan 41 · EG4); a deduction is a question (EG7)
@@ -1067,6 +1071,15 @@ public sealed partial class ScriptRunner
                     afterBusy = () => AfterBattle(mayLose: false);
                 }
                 break;
+            case Op.Headbutt:
+                // The tree in front shaken (plan 38 · EX4): RESULT 1 when a Pokémon fell out, and its battle is waited for
+                Result = 0;
+                if (host.Headbutt())
+                {
+                    Result = 1;
+                    afterBusy = () => AfterBattle(mayLose: false);
+                }
+                break;
 
             case Op.Music:
                 host.Music(i.Option ? null : i.Name);
@@ -1559,6 +1572,10 @@ public sealed partial class ScriptRunner
             case Op.Heart:
                 HeartCommand(i);
                 break;
+            // The photo tour (plan 44 · SD5)
+            case Op.Tour:
+                TourCommand(i);
+                break;
             // The training hall (plan 36 · TR2)
             case Op.Train:
                 TrainCommand(i);
@@ -1671,6 +1688,9 @@ public sealed partial class ScriptRunner
             // The charms of a Pokédex filled (plan 40 · GE5)
             case Op.Charm:
                 CharmCommand(i);
+                break;
+            case Op.Records:
+                RecordsCommand(i);
                 break;
             case Op.Circuit:
                 CircuitCommand(i);
@@ -2252,6 +2272,30 @@ public sealed partial class ScriptRunner
             case "spot":
                 if (host.PhotoAtSpot(i.Other ?? "")) afterBusy = () => Result = host.Answer;
                 else Result = 0;
+                break;
+        }
+    }
+
+    /// <summary>
+    /// The photo tour (plan 44 · SD5): <c>tour ride "&lt;course&gt;"</c> opens a ride on the course, the script waiting
+    /// until it is left and hearing the ride's total (0 where the course isn't open); <c>tour open</c> is 1 when the
+    /// report has opened the course; <c>tour points</c> is the report's total.
+    /// </summary>
+    private void TourCommand(Instruction i)
+    {
+        var course = PhotoTourCourses.Get(i.Other);
+        switch (i.Name)
+        {
+            case "ride":
+                if (course == null || host.PhotoTour is not { } report || !report.IsOpen(course)) { Result = 0; break; }
+                host.Open(ScriptScreen.PhotoTour, Subject, course.Id);
+                afterBusy = () => Result = host.Answer;
+                break;
+            case "open":
+                Result = course != null && host.PhotoTour?.IsOpen(course) == true ? 1 : 0;
+                break;
+            case "points":
+                Result = host.PhotoTour?.Total ?? 0;
                 break;
         }
     }

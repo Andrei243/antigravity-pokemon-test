@@ -49,6 +49,36 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "headbutt": {
+    "common": [
+      { "species": "Hoothoot", "level": 22, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 22, "maxLevel": 23 },
+      { "species": "Spinarak", "level": 22, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 22, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 22, "maxLevel": 23 },
+      { "species": "Wurmple", "level": 22, "maxLevel": 23 }
+    ],
+    "rare": [
+      { "species": "Hoothoot", "level": 24, "maxLevel": 25 },
+      { "species": "Tangela", "level": 24, "maxLevel": 25 },
+      { "species": "Hoothoot", "level": 24, "maxLevel": 25 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 25 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 25 },
+      { "species": "Wurmple", "level": 24, "maxLevel": 25 }
+    ],
+    "trees": [
+      "1417,281 1417,280",
+      "1417,299 1417,298",
+      "1409,334",
+      "1409,348",
+      "1414,337 1415,337",
+      "1414,347 1415,347",
+      "1417,311 1417,310 1417,309 1416,309",
+      "1417,325 1417,324",
+      "1417,327 1417,326",
+      "1417,287 1417,286"
+    ]
+  },
   "homeRegion": "Kanto",
   "warps": [
     { "x": 1408, "z": 305, "to": "route_19_route_12_gatehouse", "toWarp": 1 },

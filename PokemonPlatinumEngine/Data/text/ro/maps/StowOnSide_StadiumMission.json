@@ -1,0 +1,95 @@
+{
+  "displayName": {
+    "en": [
+      "Stow-on-Side Stadium"
+    ],
+    "text": [
+      "Stadionul Stow-on-Side"
+    ]
+  },
+  "people": {
+    "mission_gate_1": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor al arenei"
+        ]
+      }
+    },
+    "mission_gate_2": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor al arenei"
+        ]
+      }
+    },
+    "mission_gate_3": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          "Antrenor al arenei"
+        ]
+      }
+    },
+    "galar_gym_trainer_cerys": {
+      "name": {
+        "en": [
+          "Cerys"
+        ],
+        "text": [
+          "Cerys"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Cerys: Our Leader trains harder than anyone in Galar. So do I. Let's go!"
+        ],
+        "text": [
+          "Antrenoarea arenei Cerys: Liderul nostru se antrenează mai mult decât oricine din Galar. Și eu la fel. Hai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Cerys: Hard training, harder losing. On you go."
+        ],
+        "text": [
+          "Antrenoarea arenei Cerys: Antrenament greu, înfrângere și mai grea. Mergi mai departe."
+        ]
+      }
+    },
+    "galar_gym_trainer_dai": {
+      "name": {
+        "en": [
+          "Dai"
+        ],
+        "text": [
+          "Dai"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Dai: You won't get past this gate on luck. Show me what you've really got!"
+        ],
+        "text": [
+          "Antrenorul arenei Dai: Nu treci de poarta asta din noroc. Arată-mi ce poți cu adevărat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Dai: That wasn't luck. The Leader's just ahead."
+        ],
+        "text": [
+          "Antrenorul arenei Dai: N-a fost noroc. Liderul e chiar înainte."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

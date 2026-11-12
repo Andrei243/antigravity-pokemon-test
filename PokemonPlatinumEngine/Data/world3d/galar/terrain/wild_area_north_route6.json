@@ -1,0 +1,42 @@
+{
+  // North of Route 5 (plan 33 · GL5, its first session): out through a gap in Route 5's north bank onto Hammerlocke
+  // Hills, the first part of the Wild Area's northern half; Hammerlocke behind its walls north of the hills, with a gate
+  // south and a gate west; Route 6 west of the city, a dry stretch of rock and sand climbing north; Stow-on-Side on its
+  // hillside at the route's head, the old mural on its hill behind the market; and Ballonlea north of Hammerlocke, a
+  // glade come to through Glimwood Tangle (a grid map, so no ground is baked for it). No grid of control points reaches
+  // these rows, so the land is plateaus alone: the whole of it a mass too steep to climb first, then the floors cut into
+  // it. Our own land at about half the original's distances; read after wild_area_north_route5.json (its name sorts after)
+  "brushes": [
+    { "kind": "plateau", "name": "the mass north of Route 5", "polygon": [[-160, -1408], [160, -1408], [160, -1057], [-160, -1057]], "height": 40, "falloff": 0 },
+    // The gap in Route 5's north bank, east of the bank's middle
+    { "kind": "plateau", "name": "the gap in Route 5's north bank", "polygon": [[30, -1066], [46, -1066], [46, -1036], [30, -1036]], "height": 26, "falloff": 2 },
+    // Hammerlocke Hills: rolling downs under the city's south wall
+    { "kind": "plateau", "name": "Hammerlocke Hills", "polygon": [[-36, -1150], [56, -1150], [56, -1062], [-36, -1062]], "height": 26, "falloff": 3 },
+    { "kind": "dome", "name": "a down in Hammerlocke Hills, west", "at": [-14, -1100], "radius": 16, "rise": 2.5 },
+    { "kind": "dome", "name": "a down in Hammerlocke Hills, east", "at": [40, -1126], "radius": 11, "rise": 1.8 },
+    // Hammerlocke behind its walls (the mass round it is the walls), its south gate onto the hills and its west gate
+    // onto Route 6
+    { "kind": "plateau", "name": "Hammerlocke", "polygon": [[-36, -1278], [100, -1278], [100, -1158], [-36, -1158]], "height": 26, "falloff": 2 },
+    { "kind": "plateau", "name": "Hammerlocke's south gate", "polygon": [[4, -1162], [20, -1162], [20, -1146], [4, -1146]], "height": 26, "falloff": 1 },
+    { "kind": "plateau", "name": "Hammerlocke's west gate", "polygon": [[-48, -1222], [-30, -1222], [-30, -1206], [-48, -1206]], "height": 26, "falloff": 1 },
+    // Route 6: west of the city and north to Stow-on-Side; rock knolls and a long low ridge stand in it
+    { "kind": "plateau", "name": "Route 6", "polygon": [[-150, -1300], [-44, -1300], [-44, -1160], [-150, -1160]], "height": 26, "falloff": 3 },
+    { "kind": "ridge", "name": "Route 6's low ridge", "points": [[-140, -1196], [-110, -1206], [-86, -1196]], "width": 10, "rise": 3 },
+    { "kind": "dome", "name": "a rock knoll on Route 6", "at": [-70, -1250], "radius": 9, "rise": 3 },
+    // Stow-on-Side at the route's head, on the same level; its north-west corner is the hill the mural is cut into
+    { "kind": "plateau", "name": "Stow-on-Side", "polygon": [[-150, -1400], [-44, -1400], [-44, -1300], [-150, -1300]], "height": 26, "falloff": 3 },
+    { "kind": "plateau", "name": "the mural's hill", "polygon": [[-150, -1400], [-118, -1400], [-118, -1384], [-150, -1384]], "height": 36, "falloff": 4 },
+    // Ballonlea north of Hammerlocke's walls, in its glade (Glimwood Tangle, a grid map, joins it to Stow-on-Side)
+    { "kind": "plateau", "name": "Ballonlea", "polygon": [[-32, -1400], [100, -1400], [100, -1292], [-32, -1292]], "height": 26, "falloff": 2 }
+  ],
+  "paint": [
+    // Hammerlocke's streets are stone; Route 6 is sand and rock; Stow-on-Side's market and streets are stone; the
+    // hills' long grass lies east of the track
+    { "cover": "RockDark", "polygon": [[-34, -1276], [98, -1276], [98, -1160], [-34, -1160]] },
+    { "cover": "Sand", "polygon": [[-148, -1298], [-46, -1298], [-46, -1162], [-148, -1162]] },
+    { "cover": "Rock", "polygon": [[-148, -1398], [-46, -1398], [-46, -1302], [-148, -1302]] },
+    { "cover": "GrassDeep", "polygon": [[20, -1140], [52, -1140], [52, -1090], [20, -1090]] },
+    { "cover": "GrassDeep", "polygon": [[-32, -1086], [-2, -1086], [-2, -1066], [-32, -1066]] },
+    { "cover": "GrassDeep", "polygon": [[-110, -1290], [-60, -1290], [-60, -1262], [-110, -1262]] }
+  ]
+}

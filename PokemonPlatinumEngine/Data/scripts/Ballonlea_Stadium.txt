@@ -1,0 +1,23 @@
+# Ballonlea Stadium's lobby (plan 33 · GL5, its first session): the fifth gym of the challenge, Opal's. The mission is
+# through the back (Ballonlea_StadiumMission.txt), and the pitch beyond it (Ballonlea_StadiumPitch.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge fairy goto Won
+  say "Welcome to Ballonlea Stadium! Opal's gym mission is through the doors behind me: a quiz, no less."
+  say "Three quizmasters stand at the course's gates. Answer each one rightly and they'll let you by. Then Opal awaits."
+  end
+label Won
+  say "Congratulations on the Fairy Badge! The road on runs back through Hammerlocke, west to Route 7."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge fairy goto Won
+  say "Opal's Fairy types shrug off dragons and bully dark and fighting types. Steel and poison moves are the answer!"
+  end
+label Won
+  say "Five badges! Opal's been looking for someone to take on her gym one day. I wonder who it'll be."
+  end

@@ -252,6 +252,54 @@
       "dialog": [
         "The trains from here run north to the Wild Area. Mind you, they stop for nothing but Wooloo."
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 15,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
+    },
+    {
+      "id": "wedgehurst.Festival_christmas",
+      "name": "Decorated pine",
+      "npcType": "FestivalHolidayTree",
+      "x": 1,
+      "y": 8,
+      "facing": "Down",
+      "shownBy": "FLAG_FESTIVAL_CHRISTMAS"
+    },
+    {
+      "id": "wedgehurst.Festival_easter",
+      "name": "Basket of eggs",
+      "npcType": "FestivalEggBasket",
+      "x": 13,
+      "y": 6,
+      "facing": "Down",
+      "shownBy": "FLAG_FESTIVAL_EASTER"
+    },
+    {
+      "id": "wedgehurst.Festival_new_year",
+      "name": "New Year's banner",
+      "npcType": "FestivalNewYearBanner",
+      "x": 15,
+      "y": 8,
+      "facing": "Down",
+      "shownBy": "FLAG_FESTIVAL_NEW_YEAR"
+    },
+    {
+      "id": "wedgehurst.Festival_valentine",
+      "name": "Heart on a post",
+      "npcType": "FestivalValentineHeart",
+      "x": 2,
+      "y": 6,
+      "facing": "Down",
+      "shownBy": "FLAG_FESTIVAL_VALENTINE"
     }
   ],
   "wildEncounters": []

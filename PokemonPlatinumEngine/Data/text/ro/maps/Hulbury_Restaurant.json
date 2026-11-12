@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Hulbury"
+    ],
+    "text": [
+      "Hulbury"
+    ]
+  },
+  "people": {
+    "restaurant_chef": {
+      "name": {
+        "en": [
+          "Chef"
+        ],
+        "text": [
+          "Bucătarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Today's catch is on the board. Everything on it was swimming in the harbour this morning."
+        ],
+        "text": [
+          "Captura zilei e scrisă pe tablă. Tot ce e pe ea înota în port azi-dimineață."
+        ]
+      }
+    },
+    "restaurant_diner": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Domnul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come all the way from Hammerlocke for the fish here. Nessa eats at that table by the window, you know."
+        ],
+        "text": [
+          "Vin tocmai din Hammerlocke pentru peștele de aici. Nessa mănâncă la masa de lângă fereastră, să știi."
+        ]
+      }
+    },
+    "restaurant_waitress": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          "Ospătărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sorry, every table's taken tonight! Come back after your next badge and we'll find you a seat."
+        ],
+        "text": [
+          "Scuze, toate mesele sunt ocupate în seara asta! Revino după următoarea insignă și îți găsim un loc."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

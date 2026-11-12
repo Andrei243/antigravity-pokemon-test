@@ -1,0 +1,38 @@
+# The workshop's berry garden in Sunyshore City (plan 39 · CR8): a map of ours behind the workshop's back door, two rows
+# of twelve soils (the save's patches from BerryPatches.GardenFirst), each tended through common.BerryPatch as any soil
+# of Sinnoh's is, and crossing with the soils beside it along its row (Overworld/BerryCrossing.cs) while the crafting
+# kit is in the bag. docs/scripts.md describes the language; the lines are our own, since nothing of this is the
+# original's.
+#
+# Her keeper sells the four mulches (`shop "workshop_garden"`, marts.json) and shows the kit's table of crosses
+# (`craft crosses`, the kit's CROSSES tab), or says how the garden goes. Every answer ends the talk.
+
+
+script GardenKeeper
+  speaker "Garden Keeper"
+  say "Welcome to the garden! The craftswoman lets me keep it, and I let anyone plant in it."
+  choose "What would you like?" "MULCH" "CROSSES" "HOW IT GROWS" "NOTHING"
+  if result == 0 goto Mulch
+  if result == 1 goto Crosses
+  if result == 2 goto How
+  say "Then take your time. The soil isn't going anywhere."
+  end
+label Mulch
+  say "Spread it before you plant. Each kind changes how a Berry grows."
+  shop "workshop_garden"
+  say "Happy growing! Remember, mulch goes down before the seed."
+  end
+label Crosses
+  craft crosses
+  if result == 0 goto NoKit
+  say "Two different Berries side by side, and now and then one of the fruit comes up as something new."
+  end
+label NoKit
+  say "Crosses? You'd want the craftswoman's kit for that. Without it you'd never see which Berries took to each other."
+  say "Ask her inside. She gives one to anyone who has stood in the Hall of Fame."
+  end
+label How
+  say "Each soil here is yours to plant, just like the soft soil out on the routes. Face it from the path below."
+  say "Plant two different Berries next to each other in a row. With the kit in your bag, they may cross when you pick them."
+  say "Keep them watered and come back in a day or so. The rows on either side don't touch, so plan each row on its own."
+  end
