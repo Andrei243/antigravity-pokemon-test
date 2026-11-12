@@ -2774,6 +2774,18 @@
       "full": "Cutia de jetoane e plină. Nu mai încap jetoane."
     }
   },
+  "studio": {
+    "film": {
+      "emptySeat": { "title": "Locul gol" },
+      "gildedHour": { "title": "Ora aurită" }
+    },
+    "genre": {
+      "ghost": "O poveste cu fantome",
+      "heist": "Un jaf"
+    },
+    "titleCard": "{title}: {genre}, dubla {take}. Lumini, cameră... motor!",
+    "stars": "Dubla aceasta a primit {stars} din 5 stele!"
+  },
   "luckyDraw": {
     "radio": {
       "hello": "E timpul pentru tragerea numărului norocos!",
@@ -4585,6 +4597,8 @@
     "AceTrainerM": "Antrenor As",
     "ArcadeStar": "Vedeta Arcade",
     "AromaLady": "Doamna Aromelor",
+    "Actor": "Actor",
+    "Actress": "Actriță",
     "Artist": "Artist",
     "BattleGirl": "Luptătoare",
     "Beauty": "Frumoasă",

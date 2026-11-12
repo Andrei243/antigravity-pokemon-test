@@ -2568,6 +2568,18 @@
       "full": "Your Coin Case is full. It can't hold any more coins."
     }
   },
+  "studio": {
+    "film": {
+      "emptySeat": { "title": "The Empty Seat" },
+      "gildedHour": { "title": "The Gilded Hour" }
+    },
+    "genre": {
+      "ghost": "A ghost story",
+      "heist": "A heist"
+    },
+    "titleCard": "{title}: {genre}, take {take}. Lights, camera... action!",
+    "stars": "That take earned {stars} out of 5 stars!"
+  },
   "luckyDraw": {
     "radio": {
       "hello": "It's time for the lucky number draw!",
@@ -4587,6 +4599,8 @@
     "AceTrainerM": "Ace Trainer",
     "ArcadeStar": "Arcade Star",
     "AromaLady": "Aroma Lady",
+    "Actor": "Actor",
+    "Actress": "Actress",
     "Artist": "Artist",
     "BattleGirl": "Battle Girl",
     "Beauty": "Beauty",

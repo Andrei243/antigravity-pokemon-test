@@ -1211,6 +1211,9 @@
     // suspects, whom scripts battle as themselves), each drawn as the person
     "Pokémon Professor": null,
     "Butler": null,
-    "Suspect": null
+    "Suspect": null,
+    // Plan 42 · PS4: the film studio's foes, each drawn as the person the film casts
+    "Actor": null,
+    "Actress": null
   }
 }

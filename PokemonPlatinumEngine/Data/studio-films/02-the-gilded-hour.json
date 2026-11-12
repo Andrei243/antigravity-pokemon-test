@@ -1,0 +1,89 @@
+{
+  "id": "gildedHour",
+  "genre": "heist",
+  "rank": 0,
+  "coStar": "Scout",
+  "coStarLook": "gentleman",
+  "battle": {
+    "id": "gildedHour",
+    "goal": "Win",
+    "turns": 10,
+    "player": [
+      { "species": "Infernape", "level": 60, "nature": "Timid", "ability": "Blaze", "moves": ["Flamethrower", "Nasty Plot", "Mach Punch"] },
+      { "species": "Weavile", "level": 60, "nature": "Jolly", "ability": "Pressure", "moves": ["Night Slash", "Ice Shard"] },
+      { "species": "Honchkrow", "level": 60, "nature": "Adamant", "ability": "Insomnia", "moves": ["Night Slash", "Sucker Punch"] }
+    ],
+    "foe": [
+      { "species": "Klefki", "level": 40, "nature": "Bold", "ability": "Prankster", "moves": ["Flash Cannon"] },
+      { "species": "Bronzong", "level": 40, "nature": "Relaxed", "ability": "Levitate", "moves": ["Gyro Ball", "Extrasensory"] },
+      { "species": "Probopass", "level": 40, "nature": "Modest", "ability": "Magnet Pull", "moves": ["Power Gem", "Flash Cannon"] }
+    ],
+    "foeName": "Mme. Verity Cask",
+    "foeClass": "Actress",
+    "foeLook": "socialite",
+    "foeMoves": ["Flash Cannon"],
+    "rolls": [
+      { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [0] }, { "kind": "Accuracy", "values": [0] },
+      { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+    ],
+    "solution": [ { "move": "Flamethrower" }, { "move": "Flamethrower" }, { "move": "Mach Punch" } ],
+    "decoy": [ { "move": "Nasty Plot" } ]
+  },
+  "beats": [
+    {
+      "id": "plan",
+      "speaker": "CoStar",
+      "lines": [ "The clock strikes the hour in three turns. We take it before then, or not at all." ],
+      "choices": [
+        { "id": "quietly", "text": "In and out. Nobody hears a thing.", "script": true },
+        { "id": "flourish", "text": "Let's give them a show first!" }
+      ]
+    },
+    {
+      "id": "firstLock",
+      "when": { "foeDown": 1 },
+      "speaker": "Foe",
+      "lines": [ "My locks have never been picked! Never!" ]
+    },
+    {
+      "id": "strikes",
+      "when": { "turn": 3 },
+      "speaker": "CoStar",
+      "lines": [ "Bong! There goes the hour. That's the whole house awake now. Hurry!" ]
+    },
+    {
+      "id": "alarm",
+      "when": { "turn": 4 },
+      "speaker": "Foe",
+      "lines": [ "Guards! Guards! Somebody is after my gilded clock!" ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "clean",
+      "result": "won",
+      "byTurn": 3,
+      "speaker": "CoStar",
+      "lines": [ "Not a sound. The clock's in the van, and the hour hasn't even struck. Go, go!", "And... cut! The smoothest getaway I've ever filmed." ],
+      "stars": 5
+    },
+    {
+      "id": "noisy",
+      "result": "won",
+      "speaker": "CoStar",
+      "lines": [ "Bells, guards, the works! But the clock's ours. Hold on tight!", "And... cut! Loud, but the audience will love it." ],
+      "stars": 3
+    },
+    {
+      "id": "caught",
+      "speaker": "Foe",
+      "lines": [ "Caught with your hands on my clock! The constable will hear of this.", "And... cut! Let's set up for another take." ],
+      "stars": 1
+    }
+  ],
+  "takes": [
+    { "ending": "clean", "answers": [ { "move": "Flamethrower" }, { "move": "Flamethrower" }, { "move": "Mach Punch" } ], "picks": [ "quietly" ] },
+    { "ending": "noisy", "answers": [ { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Flamethrower" }, { "move": "Flamethrower" }, { "move": "Mach Punch" } ], "picks": [ "flourish" ] },
+    { "ending": "caught", "answers": [ { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" } ], "picks": [ "quietly" ] }
+  ]
+}
