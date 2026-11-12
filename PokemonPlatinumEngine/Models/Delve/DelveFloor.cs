@@ -140,8 +140,9 @@ public sealed class DelveFloor
     };
 
     /// <summary>
-    /// The floor as a hand-made map's file (SD8 draws it): the cave's floor, the hollow's walls, its pools, the stairs a
-    /// trigger of the floor's script (<c>Stairs</c>). Its residents and finds are the run's, laid on it as it is drawn.
+    /// The floor as a hand-made map's file (SD8 draws it): the cave's floor, the hollow's walls, its pools, the stairs
+    /// (which the run's own rules take, so no script stands on them). Its residents and finds are the run's, laid on it
+    /// as it is drawn.
     /// </summary>
     public MapFile ToFile()
     {
@@ -171,8 +172,8 @@ public sealed class DelveFloor
             Width = Width,
             Height = Height,
             Ground = ground,
-            Solid = solid,
-            Triggers = new List<MapFile.TriggerRecord> { new() { X = Stairs.X, Y = Stairs.Y, Script = "Stairs" } }
+            BgmTrack = Hollow.Song ?? "sinnoh/cave",
+            Solid = solid
         };
     }
 }

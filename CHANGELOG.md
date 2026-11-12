@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- The delve: once you are Sinnoh's Champion, Brigid Stoat keeps a camp in the Survival Area and sends the first two Pokémon of your team down one of four hollows: Brinecave, the Rootwood, Heartpeak and the Old Tower. Below, every step is a turn on the floor's grid: strike or use moves on whatever lives there, pick up berries and items, watch your team's belly, and take the stairs down. Knocked-out residents may ask to join you, and any that reach the bottom come home to your team or PC. Each hollow ends with a guardian by the last stairs, and clearing one opens the next. Brigid's board posts three requests a day, rescues, finds, friends and clears, each with a prize.
 - Join Avenue's visitors now ask to open shops in its empty bays: say yes and a raffle, dojo, salon, nursery or antique shop moves in, as many as the avenue's rank has room for. Every shop grows with what you spend there, widening its stock or doing more for your Pokémon.
 - Under Challenge, Unova's Gym Leaders, Elite Four and Iris now bring their own Challenge Mode teams, with an extra Pokémon and better-trained partners.
 - Route 23 has its six holes: push the valley's boulders into them with Strength to cross.

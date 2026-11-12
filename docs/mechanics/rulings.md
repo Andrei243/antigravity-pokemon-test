@@ -12482,6 +12482,28 @@ the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbe
   residents from the floor's own, so a seed and the actions are the whole run.
 - **What is not taken**: no guild, rank, region, town, partner, mascot, item or move of Mystery Dungeon's; no abilities,
   held items, type of a tile, belly item, IQ, team skill or wonder orb.
+- **On screen** (SD8): a run is begun by a script's `delve go "<hollow>"`, which sends the team's **first two** who may go
+  down (`DelveHome.PairOf`; no choosing screen, ours: a player puts the two they want at the head of the team first). The
+  floor is the map `DelveFloor`, laid afresh behind a fade on every floor; the leader never takes the field's own steps,
+  so no wild Pokémon, warp, trigger, autosave or arrival script is met below. The stairs are the rules' (the map has no
+  script on them). A run is not saved: the window's close button and a crash leave it as if never begun, the team's own
+  Pokémon untouched.
+- **The hollows** (SD9, the user's answer 48a; `Data/hollows.json`, ours): Brinecave (a sea cave, four floors at 30,
+  Lapras its guardian), the Rootwood (a wood, five at 40, Tangrowth), Heartpeak (a dark cave, six at 50, Aggron) and the Old
+  Tower (dark, seven at 60, Dusknoir). **A hollow opens at the camp's rank**, which is the number of hollows cleared, so
+  each opens the next. **The guardian** stands on the open tile nearest the last floor's stairs at three levels over the
+  hollow's, wakeful and never shy; the stairs end the run only once it is knocked out (the event `Guarded` otherwise), and
+  it never asks to join.
+- **The board** (SD9, answer 62a's brisk and kind words): three requests a day, drawn by `SplitMix` from the day's number
+  (`SpecialEncounters.DailyNumber`) over the open hollows: a rescue (reach floor N and come back without falling), a find
+  (bring an item of the hollow's up), a friend (bring a recruit of a species home) or a clear. A run's end marks every one
+  of today's it does and puts its prize at the camp (`hollows.json`'s `prizes`: three Great Balls, two Super Potions, a
+  Heart Scale, a Rare Candy), handed over by the keeper (`delve reward`).
+- **Coming home** (SD9): what the bag found is put in the player's bag on a clear or a rope, nothing on a fall. A recruit
+  at a clear's end comes home whole, holding nothing, met in the hollow at its level, seen and caught, as a gift the
+  Nuzlocke's gifts clause counts (`Nuzlocke.Gift` on the camp's place), onto the team or into the PC, with its id
+  (`GiveIds`); a run with no catching or a Monotype it breaks leaves it in the hollow. **A resident's species is the
+  randomiser's** where the run randomises species (mapped as it is made, so the recruit is the species met).
 
 ## The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk (2026-11-12, plan 21's leftovers)
 

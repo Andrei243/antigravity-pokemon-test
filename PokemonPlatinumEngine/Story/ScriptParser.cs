@@ -1239,6 +1239,14 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord is "ride" or "open" ? r.Text("a course's id") : null };
             }
 
+            // The delve (plan 44 · SD8, SD9): `delve go "<hollow>"`, `delve open "<hollow>"`, `delve able`, `delve board`,
+            // `delve rank`, `delve reward`
+            case "delve":
+            {
+                string delveWord = r.OneOf("go", "open", "able", "board", "rank", "reward");
+                return new Instruction { Op = Op.Delve, Line = line, Name = delveWord, Other = delveWord is "go" or "open" ? r.Text("a hollow's key") : null };
+            }
+
             // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,
             // and of the Pokémon the script belongs to `pasture mood`, `find`, `pet`, `feed` (the item last chosen), `care`, `take`;
             // `pasture pick` opens the PC's boxes to pick the one that grazes, and `pasture picked` says whether one was taken

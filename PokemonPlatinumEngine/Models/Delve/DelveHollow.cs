@@ -29,9 +29,18 @@ public enum DelveTheme
 /// <param name="Finds">The items a floor's finds are drawn from, each equally.</param>
 /// <param name="FindsPerFloor">How many finds a floor has.</param>
 /// <param name="SnaresPerFloor">How many snares a floor has.</param>
+/// <param name="Guardian">The species that stands by the last floor's stairs and is knocked out before they may be taken (SD9), or none.</param>
+/// <param name="Rank">The camp's rank the hollow opens at (SD9): nought is open from the first.</param>
+/// <param name="Song">The song its floors play, or the floor map's own.</param>
+/// <param name="Dark">Whether its floors are dark round the team (SD8).</param>
+/// <param name="Name">Its name in English, as a met place is kept (the screen says <c>delve.hollow.&lt;key&gt;</c>).</param>
 public sealed record DelveHollow(string Key, DelveTheme Theme, int Floors, int Level, IReadOnlyList<string> Residents,
-    int ResidentsPerFloor, IReadOnlyList<string> Finds, int FindsPerFloor, int SnaresPerFloor)
+    int ResidentsPerFloor, IReadOnlyList<string> Finds, int FindsPerFloor, int SnaresPerFloor,
+    string? Guardian = null, int Rank = 0, string? Song = null, bool Dark = false, string? Name = null)
 {
+    /// <summary>How many levels over the hollow's the guardian stands.</summary>
+    public const int GuardianOver = 3;
+
     /// <summary>The test hollow: a sea cave of three floors at level 12, its residents of the shore and the rock.</summary>
     public static DelveHollow Test { get; } = new(
         "test_hollow", DelveTheme.SeaCave, 3, 12,

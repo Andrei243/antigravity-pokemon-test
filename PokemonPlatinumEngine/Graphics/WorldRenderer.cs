@@ -1336,6 +1336,15 @@ public sealed partial class WorldRenderer
         // The player too may be shaken or flicker (nobody stands for them)
         if (player == null || !Seen(null)) return;
 
+        // A Pokémon drawn in the player's place (plan 44 · SD8: the delve's leader), standing as a Pokémon of the map stands
+        if (player.Avatar is { } avatar)
+        {
+            string shown = GrownField ? FieldSprites.GrownName(avatar) : avatar;
+            int avatarFacing = CharacterSprites.FacingIndex(player.Yaw);
+            pokemon.Add((new Vector3(px + NudgeOf(null), groundY + lift - SinkAt(map, px, pz), pz), shown, avatarFacing, FieldSprites.FrameAt(time), false, 1f));
+            return;
+        }
+
         var playerPose = new CharacterPose
         {
             Walk = player.WalkCycle,

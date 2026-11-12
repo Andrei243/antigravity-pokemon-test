@@ -225,6 +225,8 @@ public enum Op
     // The field's light held at an hour for a scene, or given back to the clock (plan 20, part w: the night aboard the
     // S.S. Aqua); the picture's alone, never the hour the rules read
     Lighting,
+    // The delve (plan 44 · SD8, SD9): a run down a hollow, whether a hollow is open, the camp's board, rank and prizes
+    Delve,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
