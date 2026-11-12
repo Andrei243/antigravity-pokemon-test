@@ -43,6 +43,9 @@ internal sealed class OpenBuildingKit
     private OpenMap? map;
     private (int Solids, int Buildings) madeOf;
 
+    /// <summary>The noise sheet (<see cref="OpenGroundArt"/>) the built surfaces' grain is read from: set before <see cref="Use"/>.</summary>
+    public Texture2D Grain { get; set; }
+
     public int Buildings { get; private set; }
     public int Blocks { get; private set; }
     public int Triangles { get; private set; }
@@ -178,6 +181,8 @@ internal sealed class OpenBuildingKit
             var canvas = art.ToCanvas();
             sheet = canvas.ToTexture(1, "openbuilding");
             Raylib.SetTextureWrap(sheet, TextureWrap.Clamp);
+            // (blended between its texels: a face's edge texels are repeated once round it, so nothing bleeds)
+            Raylib.SetTextureFilter(sheet, TextureFilter.Bilinear);
             sheetLoaded = true;
             Add(solid, sheet, shaders, fs);
         }
@@ -200,7 +205,10 @@ internal sealed class OpenBuildingKit
     {
         if (builder.VertexCount == 0) return;
         var mesh = builder.Upload("openbuilding");
-        parts.Add(new Part(mesh, RenderContext.MaterialFor(shaders.Scenery, texture), RenderContext.MaterialFor(fs.Depth, texture)));
+        var main = RenderContext.MaterialFor(shaders.Scenery, texture);
+        // (the noise sheet its grain is read from, as the program's second texture)
+        Raylib.SetMaterialTexture(ref main, MaterialMapIndex.Metalness, Grain);
+        parts.Add(new Part(mesh, main, RenderContext.MaterialFor(fs.Depth, texture)));
         Triangles += mesh.TriangleCount;
     }
 

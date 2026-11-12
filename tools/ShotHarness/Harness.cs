@@ -69,6 +69,8 @@ partial class Harness
         // SHOTS_LAYERS=solid,sight,... draws the field's rules over every field shot (plan 16 · T18); none unless named
         ShotLayers = DebugLayers.Parse(Environment.GetEnvironmentVariable("SHOTS_LAYERS") ?? "", out var unknownLayer)
             ?? throw new ArgumentException($"SHOTS_LAYERS names '{unknownLayer}', which is no layer");
+        // SHOTS_MODELLED=1 builds the looks the modelled kit knows with it (style guide, "Modelled characters")
+        CharacterModels.Modelled = Environment.GetEnvironmentVariable("SHOTS_MODELLED") == "1";
         game.World.Layers = ShotLayers;
 
         // The game opens on its title screen; everything but the "title" mode wants a game in progress
