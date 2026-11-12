@@ -131,11 +131,6 @@
       },
       "measured": "Măsurată pe acest calculator la prima pornire: {quality}, {ms} ms pe cadru."
     },
-    "windowSize": {
-      "label": "Mărimea ferestrei",
-      "value": "{width} × {height}",
-      "help": "Mărimea ferestrei jocului când nu e pe tot ecranul."
-    },
     "resolution": {
       "label": "Rezoluție",
       "value": "{width} × {height}",

@@ -423,7 +423,7 @@ public class TextTests
         Assert.Equal("It will be saved in slot 3. The saves you have are kept as they are.", TitleScreen.NewGameBlurb(3, 2));
         Assert.Equal("It will be saved in slot 3. The saves you have are kept as they are.", TitleScreen.NewGameBlurb(3, 0));
         Assert.Equal(new[] { "KEEP PLAYING", "SAVE AND QUIT", "QUIT" }, StartMenu.QuitAnswers);
-        Assert.Equal("1280 × 720", Text.Of("options.windowSize.value", ("width", 1280), ("height", 720)));
+        Assert.Equal("1280 × 720", Text.Of("options.resolution.value", ("width", 1280), ("height", 720)));
         // N1b: the bag, the shop, the party and the names of the game's enums
         Assert.Equal(new[] { "BUY", "SELL", "SEE YA!" }, ShopScreen.Choices);
         Assert.Equal("Sold a Potion for 150.", Text.Of("shop.sold", ("n", 1), ("item", "Potion"), ("money", 150)));

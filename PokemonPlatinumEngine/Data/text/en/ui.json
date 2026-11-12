@@ -110,11 +110,6 @@
       },
       "measured": "Measured on this computer at the first start: {quality}, {ms} ms a frame."
     },
-    "windowSize": {
-      "label": "Window size",
-      "value": "{width} × {height}",
-      "help": "Size of the game window when it isn't full screen."
-    },
     "resolution": {
       "label": "Resolution",
       "value": "{width} × {height}",
