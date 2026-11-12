@@ -178,8 +178,9 @@ Every session writes its rules in GPU-free classes with tests that drive them wi
   field and its battles; the corner), `MissionBoardScreen`, `ModernUi.Missions.cs`, `GameState.MissionBoard`. The board
   is read from the sign by the avenue (`hub_town.txt`, the overlay's `signScripts`) and Pennant Hall's back wall.
 - **Tests**: `PlazaTests` (11) and `MissionBoardTests` (8); `HubRegionTests` knows the plaza is open.
-- **Owed**: the shots (`eg30` to `eg34`, `eg60` to `eg64`: no GPU run was made by this session), the user's look at the
-  hall, its booths and the board's screen; Romanian words (plan 17 · N6's next slice); the rename of the town to Wayhaven
+- **Shots**: the `journey` mode's `JOURNEY_FROM=plaza` (`eg30` to `eg34`) and `JOURNEY_FROM=board` (`eg60` to `eg64`),
+  `Modes/JourneyPlaza.cs`. A guest of a game with Hoenn finished is met at 183, Hoenn's post-game level, by the plan's rule.
+- **Owed**: the user's look at the hall, its booths and the board's screen; Romanian words (plan 17 · N6's next slice); the rename of the town to Wayhaven
   (decision 3's set 1a); the circuit's (EG4) and the cases' (EG7, EG8) pennants; the later plans' stalls (35, 37 · FC9,
   39, 42, 43) as rows of `plaza.json`.
 

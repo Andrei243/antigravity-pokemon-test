@@ -132,6 +132,11 @@ partial class Harness
         foreach (var m in game.Missions.Missions) Console.WriteLine($"  {m.Kind} {m.Region} {m.Area} {m.Type} {m.Goal} for {m.Reward}{(m.Item != null ? " and " + m.Item : "")}{(m.IsTimed ? $", {m.Minutes} minutes" : "")}");
         var screen = game.MissionBoardScreen;
         int timed = game.Missions.Missions.FindIndex(m => m.IsTimed);
+        if (game.State != GameState.MissionBoard || timed < 0)
+        {
+            Console.WriteLine("  !! the board never opened");
+            return;
+        }
         while (screen.Cursor != timed) screen.Move(1);
         screen.Confirm();
         Frames(20);
@@ -186,9 +191,18 @@ partial class Harness
     {
         engine.NewGameRegion = RegionDatabase.Sinnoh;
         engine.StartNewGame();
+        // Past the first chapter, as the other modes begin, so the bedroom's television says nothing
+        PastTheOpening();
         game.State = GameState.Overworld;
         game.SaveSlot = 1;
         game.LocationSign.Hide();
+        Frames(30);
+        for (int i = 0; i < 2400 && (game.Dialogue.IsActive || engine.Choice.IsOpen || game.State != GameState.Overworld); i++)
+        {
+            if (engine.Choice.IsOpen) { engine.Choice.Confirm(); Frames(4); }
+            else if (game.Dialogue.IsActive && game.Dialogue.IsCurrentLineComplete && !game.Dialogue.IsQuestion) { game.Dialogue.Advance(); Frames(2); }
+            else Frames(1);
+        }
         Frames(30);
         game.Party.Members.Clear();
         foreach (string species in new[] { "Garchomp", "Staraptor", "Infernape" })
