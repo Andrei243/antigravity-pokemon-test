@@ -136,5 +136,71 @@
         ""
       ]
     }
+  ],
+  "Kabu": [
+    {
+      "en": [
+        "Kabu"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You rounded up every one of them. Good. I am Kabu, the Leader of Motostoke's gym."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Many challengers fall here. The fire doesn't forgive carelessness. Show me that you've trained for this moment!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hah! You turned the heat back on me. I haven't been burned like that in years."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take the Fire Badge. You've earned the right to carry it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Fire Badge from Kabu!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Three badges. Keep that fire burning on the road ahead, and train every single day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Train hard, every day. That's all there is to it, at my age or yours."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

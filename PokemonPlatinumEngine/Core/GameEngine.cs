@@ -169,7 +169,9 @@ public enum GameState
     /// <summary>The photo book, a script's <c>photo book</c> waiting on it (plan 43 · LF4).</summary>
     PhotoBook,
     /// <summary>A locked heart opening, its scene and its level panel (plan 44 · SD2).</summary>
-    HeartOpening
+    HeartOpening,
+    /// <summary>The photo studio, a script's <c>photo studio</c> waiting on it (plan 43 · LF5).</summary>
+    Studio
 }
 
 public partial class GameEngine
@@ -1722,6 +1724,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoBook:
                 UpdatePhotoBook(dt);
+                break;
+            case GameState.Studio:
+                UpdateStudio(dt);
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -3315,6 +3320,8 @@ public partial class GameEngine
         if (IsHeadless) throw new InvalidOperationException("A game with no window draws nothing (InitializeHeadless).");
         FrameProfiler.LapCpu(FrameSection.Update);
         renderContext.OutputWidth = Raylib.GetScreenWidth();
+        // The picture takes the window's shape before anything is rendered (rulings, "Other shapes of screen")
+        FitTheCanvas(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         // Under the close button's question, what was on screen when it was asked (plan 12 · Q1)
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
@@ -3376,6 +3383,11 @@ public partial class GameEngine
         {
             flow.SalonScreen.Render(renderContext);
         }
+        else if (scene == GameState.Studio)
+        {
+            // The player's figure on the stage, rendered offscreen (plan 43 · LF5)
+            RenderStudioFigure();
+        }
         else if (scene is GameState.TrainerCard or GameState.CardDesign)
         {
             // The designed card's posed figure (plan 43 · LF1); nothing for a card never designed
@@ -3422,7 +3434,8 @@ public partial class GameEngine
         // anything translucent lowered the alpha of what it covered, and the window, which shows the picture over
         // black, showed every translucent panel darker than it is. The clear is the only thing that writes alpha.
         Rlgl.ColorMask(true, true, true, false);
-        Raylib.BeginMode2D(new Camera2D { Zoom = RenderScale });
+        // The interface's safe area, in the canvas's middle (the whole picture on 16:9)
+        Raylib.BeginMode2D(Canvas2D.Safe);
 
         switch (shown)
         {
@@ -3504,6 +3517,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoBook:
                 ModernUi.DrawPhotoBook(VirtualWidth, VirtualHeight, flow.PhotoBookScreen, BookPicture);
+                break;
+            case GameState.Studio:
+                ModernUi.DrawStudio(VirtualWidth, VirtualHeight, flow.StudioScreen, StudioFigureNow(), StudioPokemonNow());
                 break;
             case GameState.CardDesign:
                 if (PrintingCard) DrawCardForPrint();
@@ -3745,10 +3761,11 @@ public partial class GameEngine
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
         // and a band is drawn with whose it is and the portraits rendered for it so far
+        // (over the whole canvas)
         if (shown == GameState.Transition)
-            SceneTransition.Draw(flow.Kind, flow.Closing, flow.Clock, VirtualWidth, VirtualHeight,
-                flow.Closing && showWorld ? FieldPlayerOnPicture * new Vector2(VirtualWidth, VirtualHeight) : null,
-                flow.Closing ? band.Picture : null);
+            Canvas2D.Draw((w, h) => SceneTransition.Draw(flow.Kind, flow.Closing, flow.Clock, w, h,
+                flow.Closing && showWorld ? FieldPlayerOnPicture * new Vector2(w, h) : null,
+                flow.Closing ? band.Picture : null));
 
         // A battle lost's question over the battle (plan 12 · Q25), and the close button's over all of it, sliding away once answered
         retryPrompt.Draw(VirtualWidth, VirtualHeight);
@@ -3767,6 +3784,7 @@ public partial class GameEngine
         TakeScreenshot();
         TakeCardPrint();
         TakeBookPhoto();
+        TakeStudioPhoto();
         FrameProfiler.Lap(FrameSection.Interface);
         SampleTheFrame();
 
@@ -3774,13 +3792,11 @@ public partial class GameEngine
         int screenW = Raylib.GetScreenWidth();
         int screenH = Raylib.GetScreenHeight();
 
-        float scale = MathF.Min((float)screenW / VirtualWidth, (float)screenH / VirtualHeight);
-        int destW = (int)(VirtualWidth * scale);
-        int destH = (int)(VirtualHeight * scale);
-        int destX = (screenW - destW) / 2;
-        int destY = (screenH - destH) / 2;
-        // Kept, so the mouse is read in the layout's units (plan 12 · Q6; Viewport.Fit is the same sum)
-        Viewport = new Viewport(destX, destY, scale);
+        // The canvas as large as fits, in the middle: no bars where the canvas has the window's shape
+        var (fitX, fitY, scale, destW, destH) = Canvas2D.Layout.FitIn(screenW, screenH);
+        int destX = (int)fitX, destY = (int)fitY;
+        // Kept, so the mouse is read in the safe area's units (plan 12 · Q6; Viewport.Fit is the same sum on 16:9)
+        Viewport = Canvas2D.Layout.ViewportIn(screenW, screenH);
         InputManager.Viewport = Viewport;
 
         Raylib.BeginDrawing();

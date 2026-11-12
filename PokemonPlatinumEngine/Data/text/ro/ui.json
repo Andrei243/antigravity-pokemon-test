@@ -136,6 +136,15 @@
       "value": "{width} × {height}",
       "help": "Mărimea ferestrei jocului când nu e pe tot ecranul."
     },
+    "resolution": {
+      "label": "Rezoluție",
+      "value": "{width} × {height}",
+      "native": "Nativă ({width} × {height})",
+      "help": {
+        "window": "Mărimea ferestrei, în forma monitorului tău ({ratio}).",
+        "fullscreen": "Câți pixeli au scenele 3D pe tot ecranul. Cea nativă e cea mai clară; una mai mică e mai rapidă."
+      }
+    },
     "fullscreen": {
       "label": "Ecran complet",
       "help": "Umple tot ecranul (și cu F11)."
@@ -1353,6 +1362,11 @@
     "galarCeremony": "E dimineața ceremoniei de deschidere. Mergi la Stadionul Motostoke.",
     "galarTurffield": "Provocarea sălilor a început. Ieși pe poarta de vest pe Drumul 3 și treci prin Mina Galar până la Turffield.",
     "galarMilo": "În sfârșit, Turffield. Câștigă Insigna Iarbă la stadionul de pe deal.",
+    "galarRoute5": "Urmează sala din Hulbury. Ieși spre nord din Turffield pe Drumul 5, unde te așteaptă Hop.",
+    "galarNessa": "Mai departe, la Hulbury, lângă mare. Câștigă Insigna Apă la Stadionul Hulbury.",
+    "galarMineTwo": "Sala lui Kabu e înapoi în Motostoke. Ia-o spre sud din Hulbury prin Mina Galar nr. 2.",
+    "galarMarnie": "Ai ieșit din mină în Motostoke. Cineva te așteaptă lângă zidul de est.",
+    "galarKabu": "Câștigă Insigna Foc la Stadionul Motostoke, trecând prin misiunea lui Kabu.",
     "galarFree": "Până aici merge linia deocamdată. Sudul regiunii Galar îți stă deschis.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
@@ -4100,7 +4114,7 @@
     "reclaimed": "Gata! {foe} a fost recuperat de la antrenorul lui!",
     "brokeLoose": "Inima încuiată a lui {user} a izbucnit! S-a dezlănțuit!",
     "looseIgnores": "{user} e dezlănțuit și a ignorat ordinul!",
-    "calmedDown": "{pokemon} s-a liniștit. Lacătul i-a slăbit puțin.",
+    "calmedDownLock": "{pokemon} s-a liniștit. Lacătul i-a slăbit puțin.",
     "nothingToCalm": "{pokemon} nu e dezlănțuit. Nu e nimic de liniștit.",
     "looseHurts": "{pokemon} se rănește în propria zbatere!",
     "expHeld": "Lacătul lui {pokemon} a ținut {exp} Puncte EXP.",
@@ -5800,6 +5814,7 @@
       "johtoLeaders": "LIDERII DIN JOHTO", "johtoChampion": "LIGA DIN JOHTO",
       "hoennLeaders": "LIDERII DIN HOENN", "hoennChampion": "LIGA DIN HOENN",
       "unovaLeaders": "LIDERII DIN UNOVA", "unovaChampion": "LIGA DIN UNOVA",
+      "kalosLeaders": "LIDERII DIN KALOS", "kalosChampion": "LIGA DIN KALOS",
       "unovaTriples": "TRIPLE DIN UNOVA", "unovaRotation": "ROTATIVE DIN UNOVA", "unovaRental": "ÎNCHIRIERE DIN UNOVA",
       "unovaTypeStoneSteelSting": "PIATRĂ, OȚEL ȘI AC", "unovaTypeSkySeaSpirit": "CER, MARE ȘI SPIRIT",
       "worldLeaders": "LIDERII LUMII", "worldChampions": "CAMPIONII LUMII", "worldBeyond": "DINCOLO DE LIGĂ",
@@ -5820,13 +5835,15 @@
       "hoennChampion": "Wallace și Elita celor Patru din Hoenn, cu doi Lideri de Sală trași la sorți ca să fie șapte.",
       "unovaLeaders": "Cei opt Lideri de Sală din Unova, cu echipele pe care le aduc la revanșă.",
       "unovaChampion": "Iris și Elita celor Patru din Unova, cu doi Lideri de Sală trași la sorți ca să fie șapte.",
+      "kalosLeaders": "Cei opt Lideri de Sală din Kalos, cu echipele pe care le aduc la revanșă.",
+      "kalosChampion": "Diantha și Elita celor Patru din Kalos, cu doi Lideri de Sală trași la sorți ca să fie șapte.",
       "unovaTriples": "Liderii de Sală din Unova, cu trei Pokémoni în luptă de fiecare parte.",
       "unovaRotation": "Liderii de Sală din Unova, fiecare cu trei Pokémoni pe o platformă rotativă.",
       "unovaRental": "Liderii de Sală din Unova, și tu la fel, luptă cu trei Pokémoni împrumutați la recepție.",
       "unovaTypeStoneSteelSting": "Liga din Unova cu tipurile Normal, Insectă, Otravă, Electric, Pământ, Rocă, Oțel și Luptă.",
       "unovaTypeSkySeaSpirit": "Liga din Unova cu tipurile Zbor, Apă, Dragon, Psihic, Fantomă, Întuneric, Gheață, Foc și Iarbă.",
       "worldLeaders": "Lideri de Sală din toate regiunile. Șapte dintre ei sunt trași la sorți să te înfrunte.",
-      "worldChampions": "Campionul fiecărei regiuni, cu doi din Elita celor Patru trași la sorți ca să fie șapte.",
+      "worldChampions": "Campionul fiecărei regiuni, cu unul din Elita celor Patru tras la sorți ca să fie șapte.",
       "worldBeyond": "Campionii și Elita celor Patru, cu echipele pe care le păstrează pentru cei care se întorc.",
       "worldDoubles": "Lideri de Sală din toate regiunile, cu doi Pokémoni pe teren de fiecare parte.",
       "worldTriples": "Lideri de Sală din toate regiunile, cu trei Pokémoni pe teren de fiecare parte.",
@@ -5888,7 +5905,7 @@
       "wildWon": "Câștigă o luptă sălbatică", "trainerWon": "Învinge un antrenor", "wildRan": "Fugi de un Pokémon sălbatic",
       "wildFled": "Vezi un Pokémon sălbatic fugind", "trainerLost": "Pierde în fața unui antrenor", "whiteouts": "Leșină și mergi mai departe",
       "caught": "Prinde un Pokémon", "encounters": "Întâlnește un Pokémon sălbatic", "levelled": "Crește un nivel în luptă",
-      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor"
+      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată"
     },
     "name": {
       "stepsFoot": "Mergi {count} pași", "stepsSurf": "Fă {count} pași pe apă", "stepsCycle": "Fă {count} pași cu bicicleta", "stepsDive": "Fă {count} pași sub apă",
@@ -5897,7 +5914,7 @@
       "caught": "Prinde {count} Pokémoni", "newSpecies": "Prinde {count} specii noi", "encounters": "Întâlnește {count} Pokémoni sălbatici",
       "levelled": "Crește {count} niveluri în luptă", "evolutions": "Vezi {count} evoluții",
       "dexSeen": "Vezi {count} specii", "dexCaught": "Deține {count} specii",
-      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni", "circuits": "Câștigă {count} Circuite ale Laurilor"
+      "badges": "Câștigă {count} Insigne", "champions": "Campion în {count} regiuni", "circuits": "Câștigă {count} Circuite ale Laurilor", "heartsOpened": "Deschide {count} inimi blocate"
     }
   },
   "sessionReport": {
@@ -6266,6 +6283,44 @@
         "coupon2": "Răspunde la ghicitoarea celui de-al doilea clovn pentru un cupon.",
         "coupon3": "Răspunde la ghicitoarea clovnului de lângă Jubilife TV.",
         "president": "Du-i președintelui cele trei cupoane."
+      }
+    },
+    "lockwork_sinnoh": {
+      "title": "Celula Lockwork din Sinnoh",
+      "giver": "agenții de la Fight Area",
+      "place": "Fight Area",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, jos pe scările de lângă chei." }
+    },
+    "lockwork_kanto": {
+      "title": "Celula Lockwork din Kanto",
+      "giver": "agenții din portul Vermilion",
+      "place": "Orașul Vermilion",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, sub port." }
+    },
+    "lockwork_johto": {
+      "title": "Celula Lockwork din Johto",
+      "giver": "agenții din portul Olivine",
+      "place": "Orașul Olivine",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, sub port." }
+    },
+    "lockwork_hoenn": {
+      "title": "Celula Lockwork din Hoenn",
+      "giver": "agenții din portul Lilycove",
+      "place": "Orașul Lilycove",
+      "reward": "Inimi deschise și înapoiate",
+      "step": { "admin": "Ia înapoi inimile celulei de la administratorul ei, sub port." }
+    },
+    "lockwork_unova": {
+      "title": "Sediul central Lockwork",
+      "giver": "agenții de pe digurile din Castelia",
+      "place": "Orașul Castelia",
+      "reward": "Mașinăria oprită și inimile curierului",
+      "step": {
+        "admin": "Ia înapoi inimile de la administratorul din holul turnului cenușiu.",
+        "head": "Înfruntă-l pe șeful Lockwork sus și oprește mașinăria."
       }
     },
     "case_sinnoh": {
@@ -7324,6 +7379,50 @@
     "dyeQuestion": "O vopsești {what}?",
     "answer": { "yes": "DA" }
   },
+  "photoStudio": {
+    "heading": "STUDIO FOTO",
+    "row": {
+      "Backdrop": "FUNDAL",
+      "Pose": "POZĂ",
+      "Face": "EXPRESIE",
+      "Pokemon": "POKéMON",
+      "Place": "LOC",
+      "Stickers": "AUTOCOLANTE",
+      "Frame": "RAMĂ",
+      "Take": "FOTOGRAFIAZĂ"
+    },
+    "backdrop": {
+      "plain": "Simplu",
+      "studio_sky": "Cer senin",
+      "studio_meadow": "Luncă",
+      "studio_curtain": "Perdea roz",
+      "studio_night": "Noapte înstelată",
+      "studio_sunburst": "Soare cu raze",
+      "studio_tide": "Bălți de mare",
+      "studio_peaks": "Vârfuri înzăpezite",
+      "studio_laurels": "Lauri"
+    },
+    "frame": {
+      "plain": "Simplă",
+      "studio_double": "Linie dublă",
+      "studio_scallop": "Festonată",
+      "studio_corners": "Colțuri",
+      "studio_gilt": "Aurită",
+      "studio_ribbon": "Panglică"
+    },
+    "pokemon": { "none": "Nimeni" },
+    "place": { "Right": "În dreapta", "Left": "În stânga" },
+    "stickers": { "count": "{count} / {most}" },
+    "take": { "action": "FĂ POZA" },
+    "seals": { "heading": "STICKERELE TALE" },
+    "hints": { "put": "Pune jos" },
+    "refusal": {
+      "notOwned": "Nu ai stickerul ăsta.",
+      "full": "Poza nu mai încape alte autocolante.",
+      "outside": "Asta e în afara pozei.",
+      "noSeals": "Nu ai stickere de lipit."
+    }
+  },
   "photoBook": {
     "title": "ALBUM FOTO",
     "all": "TOATE",
@@ -7336,6 +7435,7 @@
     "kept": "Păstrată în albumul foto.",
     "full": "Albumul foto e plin: aruncă întâi una.",
     "lost": "Fișierul pozei a dispărut.",
+    "studio": "Studio foto",
     "spot": {
       "sinnoh_twinleaf_pond": "Iazul din Twinleaf",
       "sinnoh_sandgem_lab": "Laboratorul din Sandgem",

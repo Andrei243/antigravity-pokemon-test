@@ -179,7 +179,7 @@ public partial class GameEngine
         if (poisonFlash <= 0f) return;
         // (a quarter at most under the options' REDUCE FLASHES, plan 12 · Q9)
         byte alpha = (byte)MathF.Round(255f * Accessibility.Flash((poisonFlash > PoisonFlashSeconds / 2f ? 110f : 55f) / 255f));
-        Raylib_cs.Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Raylib_cs.Color((byte)150, (byte)60, (byte)190, alpha));
+        Graphics.Canvas2D.Draw((w, h) => Raylib_cs.Raylib.DrawRectangle(0, 0, w, h, new Raylib_cs.Color((byte)150, (byte)60, (byte)190, alpha)));
     }
 
     /// <summary>The roamer of a slot, met in the field: as the save keeps it, in a battle it runs from (plan 06 · R13).</summary>

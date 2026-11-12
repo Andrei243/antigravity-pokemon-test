@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The photo studio's backdrops and frames (Data/photo-studio.json, plan 43 · LF5)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "backdrops": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "top": {
+            "type": "string"
+          },
+          "bottom": {
+            "type": "string"
+          },
+          "pattern": {
+            "enum": [
+              "None",
+              "Stripes",
+              "Dots",
+              "Waves",
+              "Checks",
+              "Rays",
+              "Stars",
+              "Leaves",
+              "Hills"
+            ]
+          },
+          "ink": {
+            "type": "string"
+          },
+          "unlock": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "top",
+          "bottom",
+          "ink",
+          "unlock"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "frames": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "accent": {
+            "type": "string"
+          },
+          "style": {
+            "enum": [
+              "Plain",
+              "Double",
+              "Scallop",
+              "Corners",
+              "Beads",
+              "Ribbon",
+              "Laurel",
+              "Gilt"
+            ]
+          },
+          "unlock": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "color",
+          "accent",
+          "unlock"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

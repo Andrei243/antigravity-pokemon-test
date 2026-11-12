@@ -240,3 +240,10 @@ owed, below). The rulings' "Locked hearts" has the numbers.
   march: the class plays Team Galactic's for now, `sound-map.json`); the follower's field sprite tinted while locked;
   `lh10` to `lh49`'s shots of the cells and the tower; a headless game walked to each cell (the tests play the scripts and
   the battles on their own). The cells' trainers are spoken to, not walked up to by sight.
+
+### The extras SD3 and SD4 owed, done in SD5's session (2026-11-12)
+
+- **Medals**: two facts (`MedalFacts.HeartsReclaimed`, `HeartsOpened`, from `HeartsRecord`) and two medals in the League tab (reclaim a locked heart, open 30), judged when the hearts' counts move (`GameEngine.KeepTheMedals`); 125 medals now.
+- **Requests**: `Requests.LockworkCells` gives each cell a request (`lockwork_<region>`, known at the region's Hall of Fame, done when its admin is beaten; Unova's adds the head and the stopped machine), words in `ui.json` in English and Romanian.
+- **The march**: `Data/music/common/eye_lockwork.mml`, a clipped D-minor march, named for the three classes in `eyeSongs`; `MusicDirector.EyeSong` falls back to `common/` when a region's own folder lacks the file. Rendered for the user's ear: owed (`MusicRender`). The class's battle song stays Galactic's (a `MusicRole` is still to add).
+- **Still owed**: the follower's tint while locked; the shots `lh10` to `lh49`; a headless walk to each cell. **SD5's photo tour is not started.**

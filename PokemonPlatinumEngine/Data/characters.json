@@ -729,7 +729,13 @@
     "bede": { "skin": "#ecd0b8", "hairColor": "#e8e2d0", "hair": "Spiky", "top": "#f2f0ec", "accent": "#6a3a8a", "bottom": "#2a2434", "shoes": "#2a2420", "eyes": "#6a4a8a", "coat": true, "build": "Adult", "height": 1.0 },
     "milo": { "skin": "#e0b890", "hairColor": "#d8c070", "hair": "Spiky", "top": "#4a8a3a", "accent": "#f2ece0", "bottom": "#7a5a3a", "shoes": "#4a3a2a", "eyes": "#4a6a3a", "build": "Adult", "height": 1.14 },
     "rose": { "skin": "#e8c4a8", "hairColor": "#9a9aa2", "hair": "Spiky", "top": "#2a2e3a", "accent": "#c8302a", "bottom": "#2a2e3a", "shoes": "#1e1c20", "eyes": "#3a4a6a", "coat": true, "build": "Adult", "height": 1.1 },
-    "yell_grunt": { "skin": "#ecc8ac", "hairColor": "#2a2428", "hair": "Spiky", "hat": "Cap", "hatColor": "#1e1c22", "hatBand": "#e0508a", "top": "#1e1c22", "accent": "#e0508a", "bottom": "#2a2830", "shoes": "#e0508a", "eyes": "#3a2a2a", "jacket": true, "build": "Adult", "height": 1.0 }
+    "yell_grunt": { "skin": "#ecc8ac", "hairColor": "#2a2428", "hair": "Spiky", "hat": "Cap", "hatColor": "#1e1c22", "hatBand": "#e0508a", "top": "#1e1c22", "accent": "#e0508a", "bottom": "#2a2830", "shoes": "#e0508a", "eyes": "#3a2a2a", "jacket": true, "build": "Adult", "height": 1.0 },
+    // Plan 33 · GL4, its second session (our own designs): Marnie, a rival backed by Team Yell, dark hair to the jaw, a
+    // black jacket over a pink dress; Nessa, Hulbury's Leader, long dark hair in a high tail, a blue and white sport
+    // top and white shorts; Kabu, Motostoke's Leader, short grey hair, a white sport top with a fire's red and black shorts
+    "marnie": { "skin": "#f0d4c0", "hairColor": "#2a2630", "hair": "Short", "top": "#1e1c22", "accent": "#e0608a", "bottom": "#c84a78", "shoes": "#2a2428", "eyes": "#3a5a4a", "jacket": true, "skirt": true, "lashes": true, "build": "Adult", "height": 0.98 },
+    "nessa": { "skin": "#8a5a3e", "hairColor": "#1e1a24", "hair": "Ponytail", "top": "#2a6ac8", "accent": "#f2f2ee", "bottom": "#f2f2ee", "shoes": "#2a6ac8", "eyes": "#3a7aa8", "shorts": true, "shortSleeves": true, "lashes": true, "build": "Adult", "height": 1.1 },
+    "kabu": { "skin": "#d8b494", "hairColor": "#b8b8bc", "hair": "Spiky", "top": "#f2f0ec", "accent": "#d83a2a", "bottom": "#1e1c22", "shoes": "#1e1c22", "eyes": "#4a3a2a", "shorts": true, "build": "Adult", "height": 1.0 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

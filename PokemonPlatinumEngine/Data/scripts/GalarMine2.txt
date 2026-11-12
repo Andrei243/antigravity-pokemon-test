@@ -1,0 +1,20 @@
+# Galar Mine No. 2 (plan 33 · GL4, its second session): the wet seam south from Hulbury under the banks to Motostoke's
+# east wall, Bede halfway along it after the Water Badge, and Team Yell near the Motostoke end. VAR_GALAR_STORY 21 to 22
+# (postwick.txt's count). Our own lines.
+
+
+script BedeInMineTwo
+  scene "Bede in the second mine"
+  face bede_mine_2 player
+  speaker "Bede"
+  say "You again. The chairman sent me to look for wishing stars down here, while you play at herding Wooloo and pulling levers."
+  say "Two badges, is it? Let me show you what a real challenger does with his time."
+  battle bede_mine_2 as "galar_bede_2"
+  speaker "Bede"
+  say "...This proves nothing. I'll be the one Chairman Rose is proud of. Remember that."
+  clearflag FLAG_GALAR_BEDE_IN_MINE_2
+  setflag FLAG_GALAR_MARNIE_IN_MOTOSTOKE
+  setvar VAR_GALAR_STORY 22
+  objective galarMarnie
+  endscene
+  end

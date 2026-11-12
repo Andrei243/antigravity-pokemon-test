@@ -43,7 +43,7 @@ internal sealed class TitleScene
         float sway = MathF.Sin(time * 0.22f) * 0.1f;
         var target = new Vector3(offset, 2.23f, 0);
         var camera = new Camera3D(target + new Vector3(MathF.Sin(sway) * 11.5f, -0.9f, MathF.Cos(sway) * 11.5f), target, Vector3.UnitY,
-            FovY, CameraProjection.Perspective);
+            Canvas2D.Layout.FovYFor(FovY), CameraProjection.Perspective);
 
         shaders.SetTime(time);
         shaders.SetWind(0f);
@@ -85,7 +85,7 @@ internal sealed class TitleScene
         Raylib.EndMode3D();
         Raylib.EndTextureMode();
         Rlgl.SetClipPlanes(0.01, 1000.0);
-        context.PreparePost(Post, new DepthRange(Near, Far, FovY, (float)context.Width / context.Height), aoRadius: 0.5f);
+        context.PreparePost(Post, new DepthRange(Near, Far, Canvas2D.Layout.FovYFor(FovY), (float)context.Width / context.Height), aoRadius: 0.5f);
     }
 
     /// <summary>The void: near-black violet deepening to a dull crimson below, with slow glows behind Giratina.</summary>

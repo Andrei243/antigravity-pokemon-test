@@ -45,9 +45,9 @@
     {
       "sourceX": 7,
       "sourceY": 13,
-      "targetMap": "Motostoke_Stadium",
-      "targetX": 4,
-      "targetY": 7,
+      "targetMap": "Motostoke_StadiumMission",
+      "targetX": 6,
+      "targetY": 2,
       "targetFacing": "Down"
     }
   ],
@@ -112,6 +112,16 @@
         "Hmph."
       ],
       "shownBy": "FLAG_GALAR_AT_THE_CEREMONY"
+    },
+    {
+      "id": "kabu",
+      "name": "Kabu",
+      "npcType": "kabu",
+      "x": 7,
+      "y": 4,
+      "facing": "Down",
+      "script": "Kabu",
+      "hiddenBy": "FLAG_GALAR_AT_THE_CEREMONY"
     }
   ],
   "wildEncounters": []

@@ -243,7 +243,10 @@ public class TextTests
             "Roxanne", "Brawly", "Wattson", "Flannery", "Norman", "Winona", "Tate & Liza", "Juan", "Sidney", "Phoebe", "Glacia",
             "Drake", "Wallace",
             // Johto's (plan 20 · J14): its Leaders, Will, Karen and the Champion by name
-            "Falkner", "Bugsy", "Whitney", "Morty", "Chuck", "Jasmine", "Pryce", "Clair", "Will", "Karen"
+            "Falkner", "Bugsy", "Whitney", "Morty", "Chuck", "Jasmine", "Pryce", "Clair", "Will", "Karen",
+            // Kalos's (plan 23, Kalos's rows of the other plans' tables): its Leaders, the Elite Four and Diantha by name
+            "Viola", "Grant", "Korrina", "Ramos", "Clemont", "Valerie", "Olympia", "Wulfric", "Malva", "Siebold", "Wikstrom",
+            "Drasna", "Diantha"
         },
         // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, the move Surf and the bicycles
         ["Core/GameEngine.Scripts.cs"] = new[]

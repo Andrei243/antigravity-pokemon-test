@@ -1187,6 +1187,10 @@ public static class RegionDatabase
                 // Pokémon Center, stadium, mission field and pitch
                 "Motostoke_PokemonCenter", "Motostoke_Hotel", "Motostoke_Stadium", "Motostoke_StadiumPitch", "GalarMine",
                 "Turffield_PokemonCenter", "Turffield_Stadium", "Turffield_StadiumMission", "Turffield_StadiumPitch",
+                // Plan 33 · GL4, its second session: Hulbury's Pokémon Center, stadium, mission and pitch, Galar Mine
+                // No. 2, and Kabu's mission in Motostoke's stadium
+                "Hulbury_PokemonCenter", "Hulbury_Stadium", "Hulbury_StadiumMission", "Hulbury_StadiumPitch", "GalarMine2",
+                "Motostoke_StadiumMission",
             }
         },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 },

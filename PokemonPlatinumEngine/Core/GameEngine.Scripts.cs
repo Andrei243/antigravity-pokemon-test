@@ -931,7 +931,8 @@ public partial class GameEngine
     private void DrawScriptFade()
     {
         if (flow.ScriptFade.Level <= 0f) return;
-        Raylib.DrawRectangle(0, 0, VirtualWidth, VirtualHeight, new Color(0, 0, 0, (int)MathF.Round(flow.ScriptFade.Level * 255f)));
+        var dark = new Color(0, 0, 0, (int)MathF.Round(flow.ScriptFade.Level * 255f));
+        Canvas2D.Draw((w, h) => Raylib.DrawRectangle(0, 0, w, h, dark));
     }
 
     /// <summary>
@@ -942,8 +943,12 @@ public partial class GameEngine
     {
         int bar = (int)world.Camera.Bars;
         if (bar <= 0) return;
-        Raylib.DrawRectangle(0, 0, VirtualWidth, bar, Color.Black);
-        Raylib.DrawRectangle(0, VirtualHeight - bar, VirtualWidth, bar, Color.Black);
+        // (Across the whole canvas, at its own top and bottom)
+        Canvas2D.Draw((w, h) =>
+        {
+            Raylib.DrawRectangle(0, 0, w, bar, Color.Black);
+            Raylib.DrawRectangle(0, h - bar, w, bar, Color.Black);
+        });
     }
 
     private void DrawChoice()
@@ -1330,6 +1335,9 @@ public partial class GameEngine
                     break;
                 case ScriptScreen.PhotoBook:
                     game.OpenPhotoBook();
+                    break;
+                case ScriptScreen.PhotoStudio:
+                    game.OpenStudio();
                     break;
                 case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
                     // The salon's chair and a boutique's dye house (plan 43 · LF3)

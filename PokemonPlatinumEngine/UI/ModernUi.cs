@@ -342,15 +342,22 @@ internal static partial class ModernUi
     /// <summary>Full-screen menu backdrop: deep teal with faint diagonal stripes.</summary>
     public static void Backdrop(int sw, int sh)
     {
-        Raylib.DrawRectangleGradientV(0, 0, sw, sh, new Color(44, 112, 146, 255), new Color(24, 60, 98, 255));
-        for (int i = -10; i < 40; i++)
-            Raylib.DrawRectanglePro(new Rectangle(i * 90, -200, 34, 1600), Vector2.Zero, 28f, new Color(255, 255, 255, 12));
+        // (over the whole canvas on a screen of another shape: rulings, "Other shapes of screen"; the stripes stay where they were)
+        var (x, y, w, h) = Graphics.Canvas2D.Bled(sw, sh);
+        Raylib.DrawRectangleGradientV(x, y, w, h, new Color(44, 112, 146, 255), new Color(24, 60, 98, 255));
+        int more = (-x + 89) / 90 + (-y + 89) / 90;
+        for (int i = -10 - more; i < 40 + more + (w - sw) / 90; i++)
+            Raylib.DrawRectanglePro(new Rectangle(i * 90, -200 + y, 34, 1600 - 2 * y), Vector2.Zero, 28f, new Color(255, 255, 255, 12));
     }
 
     public static void ScreenTitle(string title) => UiFonts.Draw(title, 64, 36, 52, Color.White, UiWeight.Black);
 
     /// <summary>Darkens what is behind a prompt or a panel that needs the player's attention.</summary>
-    public static void Dim(int sw, int sh, int alpha) => Raylib.DrawRectangle(0, 0, sw, sh, new Color(8, 12, 30, alpha));
+    public static void Dim(int sw, int sh, int alpha)
+    {
+        var (x, y, w, h) = Graphics.Canvas2D.Bled(sw, sh);
+        Raylib.DrawRectangle(x, y, w, h, new Color(8, 12, 30, alpha));
+    }
 
     /// <summary>A key cap and what it does; returns its width.</summary>
     public static float HintPill(float x, float y, string key, string label) => HintPill(x, y, new HintItem(key, label));

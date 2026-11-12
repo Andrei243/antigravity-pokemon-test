@@ -65,7 +65,7 @@ internal static partial class ModernUi
         var inner = new Rectangle(stage.X + 8, stage.Y + 8, stage.Width - 16, stage.Height - 16);
         var c = new Vector2(inner.X + inner.Width / 2f, inner.Y + inner.Height / 2f + 10);
         Rlgl.DrawRenderBatchActive();
-        Raylib.BeginScissorMode((int)(inner.X * GameEngine.RenderScale), (int)(inner.Y * GameEngine.RenderScale),
+        PokemonPlatinumEngine.Graphics.Canvas2D.Scissor((int)(inner.X * GameEngine.RenderScale), (int)(inner.Y * GameEngine.RenderScale),
             (int)(inner.Width * GameEngine.RenderScale), (int)(inner.Height * GameEngine.RenderScale));
         EvolutionStage(sw, sh, c - new Vector2(0, 40), (float)FrameClock.Now, 0.12f);
 
