@@ -408,6 +408,9 @@ public sealed class ScriptLibrary
                     case Op.Shop when i.Name.Length > 0 && !MartDatabase.Specialties.ContainsKey(i.Name):
                         Wrong(i, $"there is no counter '{i.Name}'");
                         break;
+                    case Op.Tour when i.Other != null && Models.PhotoTourCourses.Get(i.Other) == null:
+                        Wrong(i, $"there is no photo tour course '{i.Other}'");
+                        break;
                     case Op.Photo when i.Name == "spot" && Models.PhotoSpots.Get(i.Other) == null:
                         Wrong(i, $"there is no photo spot '{i.Other}'");
                         break;

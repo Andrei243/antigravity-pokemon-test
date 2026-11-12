@@ -63,6 +63,64 @@
           "Trenurile de aici merg spre nord, spre Zona Sălbatică. Doar că se opresc numai pentru Wooloo."
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de daruri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de daruri, la dispoziția ta!"
+        ]
+      }
+    },
+    "wedgehurst.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          "Brad împodobit"
+        ]
+      }
+    },
+    "wedgehurst.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          "Coș cu ouă"
+        ]
+      }
+    },
+    "wedgehurst.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          "Steag de Anul Nou"
+        ]
+      }
+    },
+    "wedgehurst.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          "Inimă pe un stâlp"
+        ]
+      }
     }
   },
   "signs": {}

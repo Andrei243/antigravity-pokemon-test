@@ -187,6 +187,46 @@
           "Căpitanul Ilima locuiește chiar mai jos pe stradă. E atât de politicos și n-a pierdut niciodată o luptă cu cineva de la școală!"
         ]
       }
+    },
+    "hauoli_city.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          "Brad împodobit"
+        ]
+      }
+    },
+    "hauoli_city.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          "Coș cu ouă"
+        ]
+      }
+    },
+    "hauoli_city.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          "Steag de Anul Nou"
+        ]
+      }
+    },
+    "hauoli_city.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          "Inimă pe un stâlp"
+        ]
+      }
     }
   },
   "signs": {

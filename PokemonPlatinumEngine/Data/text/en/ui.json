@@ -5164,7 +5164,7 @@
     "ready": "Congratulations, Champion of {from}! The {vessel} to {to} is ready.",
     "welcome": "Your Pokémon are welcome aboard, every one of them. All aboard!",
     "harbour": "Welcome, Champion of {from}! Our {vessel} sails on, and back to every region you've been to.",
-    "hubHarbour": "Welcome to the Hub! Our {vessel} sails to every region you've been to.",
+    "hubHarbour": "Welcome to Wayhaven! Our {vessel} sails to every region you've been to.",
     "whereTo": "Where would you like to go?",
     "otherRegions": "OTHER REGIONS",
     "stay": "STAY"
@@ -7046,6 +7046,19 @@
     "question": "{what}: is that the look?",
     "dyeQuestion": "Dye it {what}?",
     "answer": { "yes": "YES" }
+  },
+  "photoTour": {
+    "heading": "PHOTO TOUR",
+    "film": "FILM {count}",
+    "fruit": "FRUIT {count}",
+    "zoom": "×{zoom}",
+    "points": "{points} pts",
+    "total": "This ride: {points} points",
+    "none": "Not one photograph counted this time.",
+    "hints": {
+      "keep": "Keep",
+      "leave": "Done"
+    }
   },
   "photoStudio": {
     "heading": "PHOTO STUDIO",

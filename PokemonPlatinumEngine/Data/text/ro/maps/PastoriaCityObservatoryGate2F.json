@@ -8,6 +8,16 @@
     ]
   },
   "people": {
+    "tour_guide": {
+      "name": {
+        "en": [
+          "Maribel Orr"
+        ],
+        "text": [
+          "Maribel Orr"
+        ]
+      }
+    },
     "ace_trainer_f": {
       "name": {
         "en": [

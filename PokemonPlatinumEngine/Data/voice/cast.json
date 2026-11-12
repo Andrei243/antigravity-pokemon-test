@@ -8793,6 +8793,23 @@
       "note": "first spoken at JubilifeTV1F.txt(83)",
       "provisional": true
     },
+    "maribel_orr": {
+      "note": "first spoken at PastoriaCityObservatoryGate2F.txt; the photo tour's guide (plan 44 · SD5)",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "brisk",
+        "manner": "a nature photographer and judge: warm, bright and exacting about a good shot"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.5,bf_lily:0.5",
+        "speed": 1.04,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
+    },
     "maid": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(463)",
       "brief": {
@@ -11463,6 +11480,7 @@
     "Machamp": "machamp",
     "Machop": "machop",
     "Madame Ottilie Fray": "madame_ottilie_fray",
+    "Maribel Orr": "maribel_orr",
     "Maid": "maid",
     "Maid Belinda": "maid_belinda",
     "Maid Clare": "maid_clare",

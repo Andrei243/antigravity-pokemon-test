@@ -174,7 +174,7 @@ public class HeartLockTests
         core.Submit(BattleChoice.Calm(Mine), BattleChoice.Fight(Foe, 0));
         var calmed = core.TakeLog();
         Assert.Contains(All(calmed), e => e is Calmed);
-        Assert.Contains(Text.Of("battle.calmedDown", ("pokemon", "Gible")), Lines(calmed));
+        Assert.Contains(Text.Of("battle.calmedDownLock",("pokemon", "Gible")), Lines(calmed));
         Assert.Equal(gauge - HeartLock.Fall.Calm, core.At(Mine).Pokemon!.Lock!.Gauge);
         Assert.Equal(Text.Of("battle.nothingToCalm", ("pokemon", "Gible")), core.WhyNot(BattleChoice.Calm(Mine)));
     }
