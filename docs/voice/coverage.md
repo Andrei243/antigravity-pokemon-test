@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1674 | 1611 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12893 | 12367 | 526 | 17 | 36 |
+| Scripts (`script:`) | 12916 | 12387 | 529 | 17 | 36 |
 | People of the world (`world:`) | 8061 | 7999 | 62 | 4 | 0 |
-| **All** | 22894 | 22240 | 654 | 22 | 36 |
+| **All** | 22917 | 22260 | 657 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,17 +22,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1048 |
+| a question's answers | 1057 |
 | a sign | 1770 |
 | the game's own voice (speaker none) | 320 |
-| the game's own voice (text) | 2132 |
+| the game's own voice (text) | 2142 |
 
 ## The cast
 
-- Named characters: 919 voices (353 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 923 voices (357 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 561 voices.
 - Archetypes in use: 246, with 743 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 349.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 351.
 
 ## Lines by voice
 
@@ -47,7 +47,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:clerk (any)` | 569 | 13 |
 | `look:lass (any)` | 549 | 22 |
 | `look:youngster (any)` | 516 | 32 |
-| `@self` | 349 | 42 |
+| `@self` | 351 | 42 |
 | `look:attendant (any)` | 335 | 12 |
 | `look:scientist (any)` | 329 | 13 |
 | `look:receptionist (any)` | 302 | 40 |
@@ -231,6 +231,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `captain_stern` | 25 | 0 |
 | `emma` | 25 | 0 |
 | `ghetsis` | 25 | 0 |
+| `hop` | 25 | 0 |
 | `look:middle_aged_woman (any)` | 25 | 0 |
 | `park_attendant` | 25 | 1 |
 | `assistant_2` | 24 | 1 |
@@ -267,7 +268,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:poke_maniac (any)` | 22 | 0 |
 | `class:pokemaniac (any)` | 22 | 0 |
 | `class:sis_and_bro (any)` | 22 | 0 |
-| `hop` | 22 | 0 |
 | `look:ninja_boy (any)` | 22 | 0 |
 | `look:pokemon_breeder_f (any)` | 22 | 0 |
 | `schoolboy` | 22 | 0 |
