@@ -550,9 +550,43 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   later look at the drawing should widen; the rest of `wm01` to `wm30` are owed); Z5's story shots (`was30` on: the marina's grunts, the festival, the
   totem Gumshoos, Hala's grand trial, the boat, Lapras across Brooklet Hill, the totem Wishiwashi), which the chapter's
   headless tests stand for and `wz29` to `wz35` and `wl10` to `wl17` partly show; the profile's line for Hau'oli (timed
-  only on a quiet machine); Sandy Cave on Melemele (Sun and Moon's small beach cave, not drawn); and a Mantine that does
-  tricks (plan 42 · PS7). The Ride Pager was built as story flags (`Overworld/RidePager.cs`) rather than the plan's
+  only on a quiet machine); Sandy Cave on Melemele (Sun and Moon's small beach cave, not drawn; drawn since, below); and a
+  Mantine that does tricks (plan 42 · PS7). The Ride Pager was built as story flags (`Overworld/RidePager.cs`) rather than the plan's
   `StoryState.Grants` and `SaveData.FieldGrants`: the same rule with no save field, which the rulings record.
+
+### Sandy Cave, the islands' sea and Z5's story shots (2026-11-12, the session after)
+- **Built** (rulings, "Sandy Cave and Melemele's sea"): **Sandy Cave** (`tools/MapDraw/alola/sandy_cave.txt`, matrix 41,
+  `SandyCave`), its mouth on a rock off Big Wave Beach's south-west end reached by sea, Zubat and Psyduck, TM24 behind a
+  Strength boulder and a Pearl; **the sea** below Melemele's south coast and Kala'e Bay (`melemele_sea.txt`) and off
+  Heahea City's pier and Hano's and Konikoni's beaches (`akala_sea.txt`, `akala_sea_south.txt`), where the island's woods
+  had filled the coast's chunks a few rows off the shore (`wm02`; Heahea's pier ended in woods, `wm11`), inside chunks
+  already drawn so no chunk was renumbered; the areas' rectangles reach over their new water. **Z5's story shots**, the
+  `alolastory` mode (`Modes/AlolaStory.cs`, not part of `all`): `was30` to `was42` from the marina to the totem
+  Wishiwashi, each scene started by its own trigger or person; the totem Gumshoos stays `akala`'s `wz29` on. Looking at
+  them found four things, fixed: the Team Skull grunts named "Grunt" read "Team Skull Grunt Grunt wants to battle!" (ten
+  of Alola's trainers given names of ours), and the festival, the grand trial, Hau in Paniola, Mallow, Gladion and Lillie
+  spoke from five to eleven tiles off the picture (each scene now walks the player up to them first). The `melemele`
+  mode has `wm31` to `wm34` (the cave's mouth, Hau'oli's beach, the cave inside and its boulder). Tests:
+  `AlolaLastIslandsTests.SandyCave…`, `MelemelesSouthCoast…`.
+- **Seen and left**: the six houses of Z5's second part (Route 2's berry house, Hau'oli's east house, Ilima's house, the
+  malasada shop, Heahea's and Paniola's houses) are one plan furnished alike, a kitchen and a table each; Brooklet Hill's
+  battles from its beaches are fought on the sand stage, the engine's rule for a beach's tile (`BattleArena.Sand`), so the
+  splashing Wishiwashi and the totem are met on dunes; Sandy Cave's mouth stands in a flat shelf of rock rather than a
+  cliff. Each is a look for the user, not a fault of the rules.
+- **What flipping Alola to Free and grown would need** (looked at, not done; the user decides; plan 30, "The gate
+  opened"): `Data/regions/alola.json`'s `movement` to `"directions": "Free", "speed": "Analog"` (keeping `"modes": [
+  "Ride" ]`) and `"kit": "Grown"`, as Kalos's two words; `WorldMapBuilder.GrownCamera` would then give Alola Kalos's
+  camera, where "The engine for Alola" asks a row of its own. **No Alola look has a grown twin** in `characters.json`'s
+  `grown` block: Hau, Kukui, Hala, Lillie, Ilima, Mallow, Lana, Kiawe, Sophocles, Acerola, Olivia, Nanu, Hapu, Kahili,
+  Gladion, Plumeria, Guzma, Lusamine, Wicke, Dulse, the Skull grunt, Veyra, Oskin and the masked royal, and the generic
+  looks Alola uses that Kalos didn't (swimmers, ranchers, the cowgirl, breeders, the middle-aged pair, dragon tamer,
+  ruin maniac, ranger, collector, teacher, expert, gym guide); an `AlolaCastGrownTests` on `KalosCastGrownTests`' pattern
+  would list them mechanically, and `RegionMovementTests`, `KalosGateTests` (its crossing into Alola) and
+  `FieldScaleTests` assert Alola is the grid's today. **One rule breaks under free movement**: a Tauros charging the
+  cracked rock before Ten Carat Hill sets `ranInto` only in the grid's `TryStep`, and free movement treats the rock as a
+  solid edge (`FreeMovement.Classify`), so `ChargeThroughRock` never fires; the rough ground, the currents, the Mantine
+  course's gates, Lapras and Machamp go through `FieldMovement.Step` and should hold. A grown rider (Alola's own mode)
+  is still the chibi sprite, plan 30's owed visual.
 
 ### Galar and Paldea
 

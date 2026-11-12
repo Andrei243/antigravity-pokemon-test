@@ -3197,6 +3197,10 @@ trainers 7, 31-38: kanto_channeler_amanda 34, kanto_channeler_stacy 38, kanto_ch
 === saffron_gym
 Saffron City
 trainers 4, 42-47: johto_medium_darcy 46, johto_medium_rebecca 45, johto_psychic_m_franklin 47, johto_psychic_m_jared 45
+=== sandy_cave
+Sandy Cave
+grass 10-13
+surf 11-14
 === santalune_forest
 Santalune Forest
 grass 3-5

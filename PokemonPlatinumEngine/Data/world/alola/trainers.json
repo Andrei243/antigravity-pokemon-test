@@ -2090,7 +2090,7 @@
   },
   {
     "id": "alola_grunt_marina",
-    "name": "Grunt",
+    "name": "Laka",
     "class": "Team Skull Grunt",
     "ai": [
       "CheckHp"
@@ -2215,7 +2215,7 @@
   },
   {
     "id": "alola_team_skull_grunt_berry",
-    "name": "Grunt",
+    "name": "Lono",
     "class": "Team Skull Grunt",
     "ai": [
       "CheckHp"
@@ -2233,7 +2233,7 @@
   },
   {
     "id": "alola_team_skull_grunt_verdant",
-    "name": "Grunt",
+    "name": "Mana",
     "class": "Team Skull Grunt",
     "ai": [
       "CheckHp"
@@ -2769,7 +2769,7 @@
   { "id": "alola_hau_royal_3", "name": "Hau", "class": "Pokémon Trainer", "ai": [ "Basic", "EvalAttack", "Expert" ], "items": [], "prizeMoney": 840, "zRing": true,
     "party": [ { "species": "Pikachu", "level": 19, "ivScale": 0, "personality": 14677450 }, { "species": "Eevee", "level": 19, "ivScale": 0, "personality": 7720115 },
       { "species": "Dartrix", "level": 21, "ivScale": 0, "personality": 6610934, "item": "Normalium Z" } ] },
-  { "id": "alola_team_skull_grunt_motel", "name": "Grunt", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 360,
+  { "id": "alola_team_skull_grunt_motel", "name": "Ulu", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 360,
     "party": [ { "species": "Zubat", "level": 17, "ivScale": 0, "personality": 2290417 }, { "species": "Salandit", "level": 18, "ivScale": 0, "personality": 8812035 } ] },
   { "id": "alola_fisherman_kanoa", "name": "Kanoa", "class": "Fisherman", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 720,
     "party": [ { "species": "Magikarp", "level": 17, "ivScale": 0, "personality": 1209933 }, { "species": "Wishiwashi", "level": 18, "ivScale": 0, "personality": 6003318 } ] },
@@ -2783,13 +2783,13 @@
     "party": [ { "species": "Bounsweet", "level": 20, "ivScale": 0, "personality": 6650213 }, { "species": "Fomantis", "level": 21, "ivScale": 0, "personality": 1180436 } ] },
   { "id": "alola_pokemon_breeder_ululani", "name": "Ululani", "class": "Pokémon Breeder", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 840,
     "party": [ { "species": "Morelull", "level": 21, "ivScale": 0, "personality": 3360774 } ] },
-  { "id": "alola_team_skull_grunt_tunnel_1", "name": "Grunt", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 420,
+  { "id": "alola_team_skull_grunt_tunnel_1", "name": "Moku", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 420,
     "party": [ { "species": "Zubat", "level": 20, "ivScale": 0, "personality": 2290499 }, { "species": "Salandit", "level": 21, "ivScale": 0, "personality": 8812201 } ] },
-  { "id": "alola_team_skull_grunt_tunnel_2", "name": "Grunt", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 440,
+  { "id": "alola_team_skull_grunt_tunnel_2", "name": "Malu", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 440,
     "party": [ { "species": "Mareanie", "level": 21, "ivScale": 0, "personality": 5601932 }, { "species": "Golbat", "level": 22, "ivScale": 0, "personality": 7702184 } ] },
-  { "id": "alola_team_skull_grunt_hill_1", "name": "Grunt", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 440,
+  { "id": "alola_team_skull_grunt_hill_1", "name": "Hiapo", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 440,
     "party": [ { "species": "Zubat", "level": 22, "ivScale": 0, "personality": 2290877 }, { "species": "Mareanie", "level": 22, "ivScale": 0, "personality": 5602011 } ] },
-  { "id": "alola_team_skull_grunt_hill_2", "name": "Grunt", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 460,
+  { "id": "alola_team_skull_grunt_hill_2", "name": "Kawe", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 460,
     "party": [ { "species": "Salandit", "level": 23, "ivScale": 0, "personality": 8813340 } ] },
   { "id": "alola_gentleman_makoa", "name": "Makoa", "class": "Gentleman", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 1840,
     "party": [ { "species": "Persian", "level": 23, "ivScale": 0, "personality": 4420019 } ] },
@@ -2824,9 +2824,9 @@
     "party": [ { "species": "Oricorio", "level": 30, "ivScale": 0, "personality": 2018254184 }, { "species": "Ribombee", "level": 30, "ivScale": 0, "personality": 1302293345 }, { "species": "Whimsicott", "level": 31, "ivScale": 0, "personality": 1971432624 } ] },
   { "id": "alola_youngster_liko", "name": "Liko", "class": "Youngster", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 464,
     "party": [ { "species": "Cutiefly", "level": 28, "ivScale": 0, "personality": 123092296 }, { "species": "Comfey", "level": 29, "ivScale": 0, "personality": 400122084 } ] },
-  { "id": "alola_team_skull_grunt_route_17a", "name": "Grunt", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 600,
+  { "id": "alola_team_skull_grunt_route_17a", "name": "Pilipo", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 600,
     "party": [ { "species": "Raticate", "form": "Raticate-Alola", "level": 30, "ivScale": 0, "personality": 1135427410 }, { "species": "Golbat", "level": 30, "ivScale": 0, "personality": 138540445 } ] },
-  { "id": "alola_team_skull_grunt_route_17b", "name": "Grunt", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 600,
+  { "id": "alola_team_skull_grunt_route_17b", "name": "Nakoa", "class": "Team Skull Grunt", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 600,
     "party": [ { "species": "Pancham", "level": 30, "ivScale": 0, "personality": 1972888560 }, { "species": "Trubbish", "level": 30, "ivScale": 0, "personality": 1361882561 } ] },
   { "id": "alola_veteran_kona", "name": "Kona", "class": "Veteran", "ai": [ "Basic", "EvalAttack" ], "items": [], "prizeMoney": 2560,
     "party": [ { "species": "Absol", "level": 31, "ivScale": 0, "personality": 989031445 }, { "species": "Pangoro", "level": 32, "ivScale": 0, "personality": 1344048268 } ] },

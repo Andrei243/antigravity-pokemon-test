@@ -12,6 +12,10 @@
   "width": 16,
   "height": 16,
   "pieces": [
+    // The sea off Melemele's south coast and west of Big Wave Beach, laid first so every place drawn after it stands on it:
+    // the coast's chunks had been drawn to three rows of water and filled with woods below them. Sandy Cave's rock stands
+    // in it off the beach's south-west end, its mouth behind a spit of sand that only a surfer reaches
+    { "file": "melemele_sea.txt", "x": 128, "z": 128 },
     { "file": "mahalo_trail.txt", "x": 236, "z": 72 },
     { "file": "iki_town.txt", "x": 230, "z": 112 },
     { "file": "alola_route_1.txt", "x": 228, "z": 139 },
@@ -47,6 +51,10 @@
     {
       "matrix": 3, "area": "heahea_city", "width": 12, "height": 12, "fill": "T", "island": "17,12",
       "pieces": [
+        // The sea off Heahea City's pier and the beaches of Hano and Konikoni, laid first so the places stand on it: their
+        // chunks had been filled with woods a few rows off the shore
+        { "file": "akala_sea.txt", "x": 96, "z": 327 },
+        { "file": "akala_sea_south.txt", "x": 224, "z": 280 },
         { "file": "heahea_city.txt", "x": 120, "z": 300 },
         { "file": "akala_route_4.txt", "x": 128, "z": 240 },
         { "file": "paniola_town.txt", "x": 124, "z": 204 },
@@ -71,7 +79,7 @@
         { "file": "hano_beach.txt", "x": 236, "z": 244 }
       ],
       "areas": [
-        { "key": "heahea_city", "x": 120, "z": 300, "width": 60, "depth": 40 },
+        { "key": "heahea_city", "x": 96, "z": 300, "width": 96, "depth": 52 },
         { "key": "akala_route_4", "x": 128, "z": 240, "width": 48, "depth": 60 },
         { "key": "paniola_town", "x": 124, "z": 204, "width": 56, "depth": 36 },
         { "key": "paniola_ranch", "x": 116, "z": 152, "width": 72, "depth": 52 },
@@ -84,10 +92,10 @@
         { "key": "akala_route_7", "x": 300, "z": 100, "width": 40, "depth": 32 },
         { "key": "wela_volcano_park", "x": 300, "z": 36, "width": 64, "depth": 64 },
         { "key": "akala_route_9", "x": 300, "z": 196, "width": 48, "depth": 40 },
-        { "key": "konikoni_city", "x": 300, "z": 236, "width": 60, "depth": 44 },
+        { "key": "konikoni_city", "x": 300, "z": 236, "width": 60, "depth": 52 },
         { "key": "memorial_hill", "x": 348, "z": 196, "width": 36, "depth": 40 },
         { "key": "akala_outskirts", "x": 340, "z": 140, "width": 44, "depth": 56 },
-        { "key": "hano_beach", "x": 236, "z": 244, "width": 60, "depth": 40 }
+        { "key": "hano_beach", "x": 224, "z": 244, "width": 72, "depth": 44 }
       ]
     },
     // Plan 23 · Z7: Ula'ula Island (matrix 10), 12 chunks by 12: Malie City in the south-west, up Route 10 and Mount Hokulani, east along Route 12 to
@@ -236,18 +244,21 @@
     { "matrix": 71, "area": "ultra_wilds_water", "width": 2, "height": 2, "fill": "r", "pieces": [ { "file": "ultra_wilds_water.txt", "x": 0, "z": 0 } ] },
     { "matrix": 72, "area": "ultra_wilds_field", "width": 2, "height": 2, "fill": "T", "pieces": [ { "file": "ultra_wilds_field.txt", "x": 0, "z": 0 } ] },
     { "matrix": 73, "area": "ultra_wilds_cliff", "width": 2, "height": 2, "fill": "r", "pieces": [ { "file": "ultra_wilds_cliff.txt", "x": 0, "z": 0 } ] },
-    { "matrix": 74, "area": "ultra_wilds_cave", "width": 2, "height": 2, "fill": "r", "pieces": [ { "file": "ultra_wilds_cave.txt", "x": 0, "z": 0 } ] }
+    { "matrix": 74, "area": "ultra_wilds_cave", "width": 2, "height": 2, "fill": "r", "pieces": [ { "file": "ultra_wilds_cave.txt", "x": 0, "z": 0 } ] },
+    // Sandy Cave (Ultra Sun and Ultra Moon's), a small cave of sand round a pool in the rock off Big Wave Beach's south-west
+    // end, its one way out in its north wall; last, so no other map's chunk moves
+    { "matrix": 41, "area": "sandy_cave", "width": 2, "height": 2, "cell": "4,5", "pieces": [ { "file": "sandy_cave.txt", "x": 4, "z": 4 } ] }
   ],
   "areas": [
-    { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 42 },
+    { "key": "alola_route_1", "x": 196, "z": 139, "width": 76, "depth": 53 },
     { "key": "iki_town", "x": 230, "z": 112, "width": 40, "depth": 27 },
     { "key": "mahalo_trail", "x": 236, "z": 62, "width": 28, "depth": 50 },
-    { "key": "hauoli_city", "x": 272, "z": 160, "width": 96, "depth": 21 },
+    { "key": "hauoli_city", "x": 272, "z": 160, "width": 112, "depth": 32 },
     { "key": "alola_route_2", "x": 276, "z": 88, "width": 60, "depth": 72 },
     { "key": "alola_route_3", "x": 276, "z": 40, "width": 96, "depth": 48 },
     { "key": "melemele_meadow", "x": 372, "z": 40, "width": 44, "depth": 44 },
-    { "key": "kalae_bay", "x": 424, "z": 88, "width": 56, "depth": 48 },
+    { "key": "kalae_bay", "x": 416, "z": 88, "width": 64, "depth": 72 },
     { "key": "hauoli_cemetery", "x": 336, "z": 112, "width": 36, "depth": 32 },
-    { "key": "big_wave_beach", "x": 152, "z": 140, "width": 44, "depth": 40 }
+    { "key": "big_wave_beach", "x": 128, "z": 128, "width": 68, "depth": 64 }
   ]
 }

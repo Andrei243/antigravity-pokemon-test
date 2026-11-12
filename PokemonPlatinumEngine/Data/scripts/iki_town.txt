@@ -120,6 +120,7 @@ script Hau
 # festival on the first evening, before Hau'oli City)
 script Festival
   scene "The festival"
+  walk player up 12
   face player up
   speaker "Hala"
   say "Ah, there you are! Tonight we hold the festival for Tapu Koko, the guardian of Melemele."
@@ -166,6 +167,7 @@ label Blessing
 # and Tauros registered in the Ride Pager (plan 23 · Z5, second part; Overworld/RidePager.cs)
 script GrandTrial
   scene "Hala's grand trial"
+  walk player up 12
   face player up
   speaker "Hala"
   say "Ho ho! Ilima's crystal, and the look of a Trainer who has walked every road of Melemele. Then the time has come."

@@ -1,0 +1,141 @@
+{
+  "key": "sandy_cave",
+  "index": 547,
+  "name": "Sandy Cave",
+  "matrix": 41,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "SANDY_CAVE",
+  "nightMusic": "SANDY_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    {
+      "x": 22,
+      "z": 5,
+      "to": "big_wave_beach",
+      "toWarp": 0
+    }
+  ],
+  "objects": [
+    {
+      "id": "boulder",
+      "looks": "strength_boulder",
+      "movement": "look_around",
+      "x": 39,
+      "z": 9,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_MAP_LOCAL_SANDY_CAVE_BOULDER",
+      "script": ""
+    },
+    {
+      "id": "item_ball",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 41,
+      "z": 6,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_SANDY_CAVE_TM24",
+      "item": "TM24",
+      "script": ""
+    },
+    {
+      "id": "item_ball_2",
+      "looks": "item_ball",
+      "movement": "look_south",
+      "x": 12,
+      "z": 19,
+      "facing": 1,
+      "rangeX": 0,
+      "rangeZ": 0,
+      "hiddenBy": "FLAG_ALOLA_ITEM_SANDY_CAVE_PEARL",
+      "item": "Pearl",
+      "script": ""
+    }
+  ],
+  "signs": [],
+  "triggers": [],
+  "land": [
+    {
+      "species": "Zubat",
+      "level": 10
+    },
+    {
+      "species": "Zubat",
+      "level": 11
+    },
+    {
+      "species": "Zubat",
+      "level": 12
+    },
+    {
+      "species": "Psyduck",
+      "level": 10
+    },
+    {
+      "species": "Psyduck",
+      "level": 11
+    },
+    {
+      "species": "Zubat",
+      "level": 11
+    },
+    {
+      "species": "Psyduck",
+      "level": 12
+    },
+    {
+      "species": "Zubat",
+      "level": 12
+    },
+    {
+      "species": "Psyduck",
+      "level": 11
+    },
+    {
+      "species": "Zubat",
+      "level": 13
+    },
+    {
+      "species": "Zubat",
+      "level": 10
+    },
+    {
+      "species": "Psyduck",
+      "level": 13
+    }
+  ],
+  "landRate": 10,
+  "water": [
+    {
+      "species": "Psyduck",
+      "level": 11
+    },
+    {
+      "species": "Psyduck",
+      "level": 12
+    },
+    {
+      "species": "Zubat",
+      "level": 11
+    },
+    {
+      "species": "Psyduck",
+      "level": 13
+    },
+    {
+      "species": "Psyduck",
+      "level": 14
+    }
+  ],
+  "waterRate": 20
+}

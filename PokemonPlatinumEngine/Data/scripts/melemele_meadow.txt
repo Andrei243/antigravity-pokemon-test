@@ -8,6 +8,7 @@
 
 script Nebby
   scene "Lillie in the meadow"
+  walk player right 3 up 6
   face player right
   speaker "Lillie"
   say "Oh! It's you again. Nebby, my little one, slipped out of my bag again and squeezed into a gap in the rocks over there."
