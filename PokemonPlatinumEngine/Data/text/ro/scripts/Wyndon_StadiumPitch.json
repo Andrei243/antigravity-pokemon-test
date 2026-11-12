@@ -1,0 +1,252 @@
+{
+  "Marnie": [
+    {
+      "en": [
+        "Marnie"
+      ],
+      "text": [
+        "Marnie"
+      ]
+    },
+    {
+      "en": [
+        "So it's you and me. I didn't come all this way just to make up the numbers."
+      ],
+      "text": [
+        "Deci suntem tu și eu. N-am venit până aici doar ca să fac număr."
+      ]
+    },
+    {
+      "en": [
+        "Spikemuth's counting on me. Don't you dare go easy."
+      ],
+      "text": [
+        "Spikemuth se bazează pe mine. Să nu cumva să mă menajezi."
+      ]
+    },
+    {
+      "en": [
+        "...Yeah. You were better today. I'll tell my brother you earned it."
+      ],
+      "text": [
+        "...Da. Ai fost mai bun azi. O să-i spun fratelui meu că ai meritat."
+      ]
+    },
+    {
+      "en": [
+        "Go on. Show them all."
+      ],
+      "text": [
+        "Hai. Arată-le tuturor."
+      ]
+    }
+  ],
+  "Hop": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "Here we are. You and me, in Wyndon Stadium, with the whole of Galar watching. Just like we said back in Postwick!"
+      ],
+      "text": [
+        "Iată-ne. Tu și eu, pe Stadionul din Wyndon, cu tot Galarul privind. Exact cum ziceam acasă în Postwick!"
+      ]
+    },
+    {
+      "en": [
+        "I've lost to you every time. Not today. Today I'm going to be the one who faces Leon!"
+      ],
+      "text": [
+        "Am pierdut în fața ta de fiecare dată. Nu și azi. Azi eu o să fiu cel care dă de Leon!"
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "...Every single time. I'm not even angry. You're brilliant, {player}. You really are."
+      ],
+      "text": [
+        "...De fiecare dată. Nici măcar nu sunt supărat. Ești genial, {player}. Chiar ești."
+      ]
+    },
+    {
+      "en": [
+        "The Finals are tomorrow. Go and rest. And then go and win the whole thing, for both of us!"
+      ],
+      "text": [
+        "Finala e mâine. Du-te și odihnește-te. Și apoi câștigă tot, pentru amândoi!"
+      ]
+    },
+    {
+      "en": [
+        "Go and get some rest. Tomorrow's the big one!"
+      ],
+      "text": [
+        "Du-te și odihnește-te. Mâine e marea zi!"
+      ]
+    }
+  ],
+  "Bede": [
+    {
+      "en": [
+        "Bede"
+      ],
+      "text": [
+        "Bede"
+      ]
+    },
+    {
+      "en": [
+        "Surprised? Opal took me on. Ballonlea's gym will be mine one day, so I'm here to see whether you deserve the Finals."
+      ],
+      "text": [
+        "Surprins? Opal m-a luat sub aripa ei. Arena din Ballonlea va fi a mea într-o zi, așa că am venit să văd dacă meriți finala."
+      ]
+    },
+    {
+      "en": [
+        "Pink, she says. Everything must be pink. Well. Let's get this over with."
+      ],
+      "text": [
+        "Roz, zice ea. Totul trebuie să fie roz. Ei bine. Hai să terminăm odată."
+      ]
+    },
+    {
+      "en": [
+        "...Fine. I'll admit it, once. You were the better Trainer. Don't make me say it again."
+      ],
+      "text": [
+        "...Bine. Recunosc, o singură dată. Ai fost Antrenorul mai bun. Nu mă pune să o mai zic."
+      ]
+    },
+    {
+      "en": [
+        "Raihan's next. Try not to embarrass me."
+      ],
+      "text": [
+        "Urmează Raihan. Încearcă să nu mă faci de râs."
+      ]
+    }
+  ],
+  "Raihan": [
+    {
+      "en": [
+        "Raihan"
+      ],
+      "text": [
+        "Raihan"
+      ]
+    },
+    {
+      "en": [
+        "Told you I'd see you in Wyndon. No doubles today: one on one, the way the Finals are fought."
+      ],
+      "text": [
+        "Ți-am zis că ne vedem în Wyndon. Azi fără duble: unu la unu, cum se joacă finala."
+      ]
+    },
+    {
+      "en": [
+        "Whoever wins this faces Leon. I've wanted that match every year of my life. Let's go!"
+      ],
+      "text": [
+        "Cine câștigă asta dă de Leon. Mi-am dorit meciul ăla în fiecare an al vieții mele. Hai!"
+      ]
+    },
+    {
+      "en": [
+        "...Beaten twice by the same challenger. Leon had better watch himself. Go on. He's waiting."
+      ],
+      "text": [
+        "...Bătut de două ori de același concurent. Leon ar face bine să fie atent. Hai. Te așteaptă."
+      ]
+    },
+    {
+      "en": [
+        "Go on. The Champion's waiting for you."
+      ],
+      "text": [
+        "Hai. Campionul te așteaptă."
+      ]
+    }
+  ],
+  "Leon": [
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "{player}. From a bedroom in Postwick to the pitch in Wyndon. I knew the day I gave you that endorsement."
+      ],
+      "text": [
+        "{player}. Dintr-un dormitor din Postwick până pe terenul din Wyndon. Am știut din ziua în care ți-am dat recomandarea."
+      ]
+    },
+    {
+      "en": [
+        "I've never lost a match since I became Champion. Not one. So let's have a champion time, you and I!"
+      ],
+      "text": [
+        "N-am pierdut niciun meci de când sunt Campion. Niciunul. Așa că hai să ne distrăm ca niște campioni, tu și cu mine!"
+      ]
+    },
+    {
+      "en": [
+        "...So that's what it feels like. I'd forgotten. Well played, {player}. Truly."
+      ],
+      "text": [
+        "...Deci așa se simte. Uitasem. Bine jucat, {player}. Sincer."
+      ]
+    },
+    {
+      "en": [
+        "Galar has a new Champion. Come on, let's get your team into the record where it belongs."
+      ],
+      "text": [
+        "Galar are un nou Campion. Hai, să trecem echipa ta în registru, unde îi e locul."
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        "{player} a salvat jocul."
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        "Jocul nu a putut fi salvat."
+      ]
+    },
+    {
+      "en": [
+        "Champion. I like the sound of that for you."
+      ],
+      "text": [
+        "Campion. Îmi place cum sună asta pentru tine."
+      ]
+    }
+  ]
+}

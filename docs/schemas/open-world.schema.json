@@ -95,6 +95,18 @@
               "string",
               "null"
             ]
+          },
+          "light": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lightWhile": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [

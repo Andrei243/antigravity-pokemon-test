@@ -750,7 +750,10 @@
     "gordie": { "skin": "#a8744e", "hairColor": "#2a2226", "hair": "Spiky", "top": "#6a6a70", "accent": "#e07a2a", "bottom": "#2a2a30", "shoes": "#e07a2a", "eyes": "#2a2a2a", "shortSleeves": true, "build": "Adult", "height": 1.12 },
     "melony": { "skin": "#f0dcd0", "hairColor": "#e8e8f0", "hair": "Short", "top": "#f2f2f6", "accent": "#8ab8e0", "bottom": "#8ab8e0", "shoes": "#f2f2f6", "eyes": "#4a7aa8", "coat": true, "skirt": true, "lashes": true, "build": "Adult", "height": 1.0 },
     "piers": { "skin": "#ece0d8", "hairColor": "#1e1c22", "hair": "Long", "top": "#1e1c22", "accent": "#f2f0ec", "bottom": "#1e1c22", "shoes": "#2a2428", "eyes": "#4a8a6a", "jacket": true, "build": "Adult", "height": 1.06 },
-    "raihan": { "skin": "#8a5a3e", "hairColor": "#1e1a20", "hair": "Spiky", "hat": "Cap", "hatColor": "#e07a2a", "hatBand": "#e07a2a", "top": "#2a3040", "accent": "#e07a2a", "bottom": "#2a3040", "shoes": "#f2f0ec", "eyes": "#3a6a8a", "jacket": true, "build": "Adult", "height": 1.16 }
+    "raihan": { "skin": "#8a5a3e", "hairColor": "#1e1a20", "hair": "Spiky", "hat": "Cap", "hatColor": "#e07a2a", "hatBand": "#e07a2a", "top": "#2a3040", "accent": "#e07a2a", "bottom": "#2a3040", "shoes": "#f2f0ec", "eyes": "#3a6a8a", "jacket": true, "build": "Adult", "height": 1.16 },
+    // Plan 33 · GL6 (our own design): Oleana, Chairman Rose's secretary, pale hair in a long side tail, a white coat over a
+    // black dress and a red scarf
+    "oleana": { "skin": "#f0dcd0", "hairColor": "#ece6dc", "hair": "Ponytail", "top": "#f2f0ec", "accent": "#c8302a", "bottom": "#1e1c22", "shoes": "#1e1c22", "eyes": "#5a6a7a", "coat": true, "scarf": true, "lashes": true, "build": "Adult", "height": 1.1 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

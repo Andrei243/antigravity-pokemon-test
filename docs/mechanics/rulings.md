@@ -11462,6 +11462,58 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
 - **Hop's slump** is told at the Hero's Bath (Bede beat him in Ballonlea, off screen); the hotel scene of Sword is not built.
 - **Opal's parting line** said the road ran west; it runs east from Hammerlocke, and says so now.
 
+## Wyndon, the Champion Cup and the Darkest Day (2026-11-12, plan 33 · GL6)
+
+- **Wyndon is three rows north of the land GL5 built, behind the mass, and come to by train** (plan 33 · decision 1 still
+  unanswered): the region's chunks are `[-5, -51, 4, 1]` (530 chunks, about 75 MB of bake, from about 71). Sword reaches
+  Wyndon up Route 10's snowfields from Circhester; **Route 10 is not built**, so the land grows by three rows of ten and
+  not by the six a route and a city would want. The train from Hammerlocke's station by the south gate (`TrainToWyndon`,
+  eight badges) lands on Wyndon Station's square and the station's staff send the player back; the wall of mass between
+  Wyndon and Circhester is never come to. Route 10 is owed, with its snow and its station.
+- **Wyndon** is one floor at 26 m: the station in the south-west, the avenue east past the Pokémon Center and a boutique
+  to the hotel, Wyndon Stadium in the middle of the north side and Rose Tower (a `tower`, 46 m) east of it. Its rooms:
+  `Wyndon_PokemonCenter`, `Wyndon_Stadium` (the lobby), `Wyndon_StadiumPitch`, `Wyndon_RoseTower` (the lobby, its lift's
+  warp there from `FLAG_GALAR_OLEANA_BEATEN`) and `Wyndon_EnergyPlant` (the tower's top), each of a shape already built
+  (a Pokémon Center's, a stadium lobby's, a pitch's).
+- **The Champion Cup is fought in story order, its bracket not drawn**: plan 33 asked for plan 14 · B8's `Bracket`, but
+  the `tournament` and `bracket` words seat their entrants at level 50 as copies and pay Battle Points, which is not a
+  story's Cup at the challenge's levels. So the pitch's arrival shows the opponent whose match is due on one spot of the
+  pitch, and each is a `battle … as` of ours: the Semifinals Marnie (`galar_marnie_2`) and Hop (`galar_hop_6a`/`b`/`c`
+  by the starter), the Finals after the Darkest Day Bede, back as Opal's heir (`galar_bede_3`), and Raihan one on one
+  (`galar_raihan_2`), then the Champion Match with Leon (`galar_leon_1`, Charizard last at 65, Sword's cap). Everyone
+  Dynamaxes their last Pokémon. Sword's Finals bracket (Nessa, the version's Leader, Raihan) is not followed: Bede was the
+  plan's entrant, and the version's Leader would have wanted two teams. **The bracket screen is owed** (B8's
+  `BracketScreen` with Galar's eight, the other matches fought headless).
+- **The Darkest Day comes after the Semifinals**, as the player walks back through the stadium's lobby (`Wyndon_Stadium`'s
+  `OnEnter` at 39): the sky turns, Leon is missing, and Hop takes the player south to the Slumbering Weald's altar, where
+  the rusted sword and shield lie and the two of the legend are seen (`seen` both; nothing is given: the rusted sword and
+  shield are GL7's), and back to Rose Tower, open from then on. Sword's order (the Darkest Day on the Finals' morning,
+  with Leon's meeting the night before) is kept in its beats, not its days: nobody sleeps in a hotel. Oleana stands in
+  the tower's lobby while the Darkest Day lasts (her class `Secretary`, a look of ours); Chairman Rose battles on the
+  Energy Plant's roof (`Chairman`).
+- **Eternatus is a raid that can't fail** (plan 33's design): `raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with
+  …`, a word of the script's `raid` (`docs/scripts.md`), its three raiders Hop with his starter's last stage and Zacian
+  and Zamazenta at 70, each a trainer of ours with a team of one. The boss is Dynamaxed by the raid's own rule though
+  Eternatus never Dynamaxes elsewhere (`NeverDynamax`): Eternamax is the giant here. Sword's first battle with Eternatus
+  (level 60, before Eternamax) is not fought: the scene tells of Leon's fall. Leon then hands over a Master Ball and
+  `raid catch` throws it at Eternatus itself (not the form), so the Pokémon caught is Eternatus at 60.
+- **The Slumbering Weald's first meeting is a staged battle** ("Staged battles"): `wildbattle "Zacian" 70 hidelevel
+  untouchable passive endafter 3` in a Sword game, Zamazenta in a Shield one, before the fog closes in; a staged battle
+  gives the Pokédex nothing and refuses every ball, so it is still `seen` by the script and `SpeciesSources` counts no
+  staged `wildbattle` as a way to a species (Zacian and Zamazenta stay owed to GL7).
+- **A place's own light** (style guide, "Open world", "A place's own light"): an area of `world.json` may name `light`
+  (`night`, `darkestDay`) and `lightWhile` (a flag). Spikemuth is held in the night whatever the hour (GL5's owed fault:
+  it was drawn in the day's light), and Wyndon is under the Darkest Day's red while `FLAG_GALAR_DARKEST_DAY` is set. The
+  light is the picture's alone: a battle there and the zones' tables go by the hour as ever.
+- **Circhester's high street keeps its stone** (GL5's owed fault): the town's snow was painted over the street; the
+  street and the way up to the stadium are painted rock before the snow, since the first paint that holds a point is
+  the one.
+- **The Hall of Fame** is the pitch's own, as Alola's is: the team recorded, `GalarHallOfFame` set, the team healed, home to
+  the bedroom in Postwick, the game saved there and the credits. `VAR_GALAR_STORY` runs 36 to 46: 37 Leon and Hop on the
+  avenue, 38 Marnie beaten, 39 Hop beaten, 40 the Darkest Day, 41 the altar, 42 Oleana beaten, 43 Eternatus caught and the
+  sky clear, 44 Bede beaten, 45 Raihan beaten, 46 the Champion. Objectives 734 to 743, `galarFree` after them. A title
+  defended, Leon's rematches and the plane on to Paldea are GL7's.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or

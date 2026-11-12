@@ -1,0 +1,47 @@
+# Wyndon Stadium's lobby (plan 33 · GL6): where the Champion Cup is fought. The doors behind the desk lead to the pitch
+# (Wyndon_StadiumPitch.txt). Coming back out after the Semifinals, the sky over Wyndon turns red: the Darkest Day, and
+# Hop's word to go to the Slumbering Weald's altar. VAR_GALAR_STORY 39 to 40 (postwick.txt's count). Our own lines.
+
+
+script OnEnter
+  if var VAR_GALAR_STORY == 39 goto DarkestDay
+  end
+label DarkestDay
+  scene "The Darkest Day"
+  text "The lobby's lights flicker and die. Through the glass doors, the sky over Wyndon has turned the colour of embers."
+  speaker "Hop"
+  say "{player}! Did you see the sky? Everyone's saying the power's gone wild all over Galar, and nobody can find Leon!"
+  say "It's just like the tapestries in the vault. The Darkest Day, and the two heroes who stopped it with a sword and a shield."
+  say "The stories all end at the old altar in the Slumbering Weald. If there's anything left of the heroes, it's there. Let's go!"
+  setflag FLAG_GALAR_DARKEST_DAY
+  setflag FLAG_GALAR_HOP_ALTAR
+  setvar VAR_GALAR_STORY 40
+  objective galarAltar
+  text "Hop dragged {player} to the station, and the last train south ran them all the way home to Postwick."
+  warpto "Galar" weald_entry
+  endscene
+  end
+
+
+script Receptionist
+  speaker "Receptionist"
+  if var VAR_GALAR_STORY >= 46 goto Champion
+  if var VAR_GALAR_STORY >= 43 goto Finals
+  say "Welcome to Wyndon Stadium and the Champion Cup! The Semifinals are on the pitch, through the doors behind me."
+  end
+label Finals
+  say "The Finals are under way! Your opponents are waiting on the pitch. Good luck, challenger!"
+  end
+label Champion
+  say "Galar's new Champion! It's an honour. The pitch is yours whenever you like."
+  end
+
+
+script CupGuide
+  speaker "Gym Guide"
+  if var VAR_GALAR_STORY >= 46 goto Champion
+  say "Everyone left in the Cup has eight badges, so there's no type to lean on now. Bring a team that covers everything!"
+  end
+label Champion
+  say "I've guided challengers through eight stadiums for years. You're the first I've seen go all the way."
+  end

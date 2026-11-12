@@ -260,6 +260,7 @@ public class ScriptTests
           raid fight
           raid catch "Poké Ball"
           raid wish
+          raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail with "galar_raid_hop_a" "galar_raid_zacian" "galar_raid_zamazenta"
           treat can
           treat can mixed
           treat bake spicy
