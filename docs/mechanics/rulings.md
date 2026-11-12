@@ -10239,6 +10239,14 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   every table, `levels.txt` among them, is what it was. **How a statue looks** is the style guide's "A statue": a stone figure of its
   species' Pokédex shape on a plinth with its type's plaque, painted by the kit, not the species' field sprite in stone as the plan
   asked, since a field sprite is baked on the graphics card in later frames and a face painted from it would differ between runs.
+- **Soaring** (EX7, part a, begun 2026-11-12; `Overworld/Soaring.cs`, ours; decision 8 at its recommendation: the team's flier, or the
+  helper the field lends). A flight is a place in the region map's own cells, a heading and a height of one to five (starting at
+  three); it cruises at 2.5 cells a second and at 5 with Run, turns at 110° a second and climbs or dives a height in two thirds of
+  a second, and it stays within the map's view, sliding along its edge. A beacon stands over every one of Fly's places that is
+  open, no other; Confirm lands at the one whose cell's middle is within three quarters of a cell of the flier, and Cancel at the
+  open place nearest it (by its nearest cell; the lower spawn number where two are as near). It is refused before the region's
+  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. The screen,
+  the sky and the landing through Fly's own way are not built yet.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)

@@ -7307,5 +7307,12 @@
   },
   "recordMix": {
     "list": "{first} and {last}"
+  },
+  "soar": {
+    "refused": {
+      "noMap": "There is no map of this region to soar over.",
+      "hallOfFame": "The skies here open once you have entered this region's Hall of Fame.",
+      "noFlier": "No Pokémon on your team can carry you through the sky."
+    }
   }
 }
