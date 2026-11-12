@@ -267,6 +267,61 @@ public class PastureTests
         }
     }
 
+    // The field's frames until the script has ended, its lines read on and each question answered by the picker
+    private static void PlayOut(GameEngine engine, GameEngine.Driver game, Func<IReadOnlyList<string>, int> answer)
+    {
+        for (int i = 0; i < 3000 && (engine.ScriptRunning || game.State != GameState.Overworld); i++)
+        {
+            if (engine.Choice.IsOpen && engine.Choice.Shown >= 0.99f)
+            {
+                int pick = answer(engine.Choice.Options);
+                for (int k = 0; k < pick; k++) engine.Choice.Move(1);
+                engine.Choice.Confirm();
+            }
+            else if (game.Dialogue.IsActive && !game.Dialogue.IsQuestion) { game.Dialogue.FinishLine(); game.Dialogue.Advance(); }
+            Frames(engine, 1);
+        }
+    }
+
+    [Fact]
+    public void TheScriptsPlayedInTheFieldTakeOneAlongAndTheGateLeadsBack()
+    {
+        var paths = SavePaths.Current;
+        var (engine, game, _) = NewGame();
+        try
+        {
+            // The PC's own script: its first question, GO TO THE PASTURE
+            FillBox(game, 0, "Bidoof", "Starly");
+            game.Interact();
+            PlayOut(engine, game, options => Math.Max(0, options.ToList().IndexOf("GO TO THE PASTURE")));
+            Frames(engine, 90);
+            Assert.Equal("SinnohPasture", game.Map.Name);
+            Assert.Equal(2, game.Herd.Count);
+
+            // A Pokémon of the meadow spoken to from the tile south of it: TAKE ALONG
+            var bidoof = game.Boxes.Boxes[0].Slots[0]!;
+            var body = BodyOf(game, bidoof);
+            game.Place(game.Map, body.GridX, body.GridY + 1, Direction.Up);
+            game.Interact();
+            PlayOut(engine, game, options => Math.Max(0, options.ToList().IndexOf("TAKE ALONG")));
+            Assert.Contains(bidoof, game.Party.Members);
+            Assert.DoesNotContain(bidoof, game.Boxes.All);
+
+            // The gate's script, answered yes: back before the PC
+            Assert.True(engine.StartScript("PastureGate"));
+            PlayOut(engine, game, _ => 0);
+            Frames(engine, 90);
+            Assert.Equal("JubilifePokemonCenter", game.Map.Name);
+            Assert.Equal((12, 4), (game.Player.GridX, game.Player.GridY));
+            Assert.Null(game.PastureVisit);
+        }
+        finally
+        {
+            SavePaths.Current = paths;
+            Ruleset.Use(RulesPreset.Platinum);
+        }
+    }
+
     [Fact]
     public void ASaveMadeInTheMeadowLaysTheSameHerdAsItLoads()
     {

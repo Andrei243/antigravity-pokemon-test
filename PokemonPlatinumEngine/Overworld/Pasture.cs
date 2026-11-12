@@ -39,8 +39,11 @@ public static class Pasture
     /// <summary>The gate: where the player is put down coming in, facing the meadow.</summary>
     public const int GateX = 13, GateY = 17;
 
-    /// <summary>The rows nearest the gate, kept clear of the herd so the way in and out is never blocked.</summary>
-    public const int GateRows = 15;
+    /// <summary>
+    /// The herd's homes are north of this row, so that wandering <see cref="Roam"/> tiles from home never reaches the fence's
+    /// gap (row 16) nor the gate: the way in and out is never blocked.
+    /// </summary>
+    public const int GateRows = 13;
 
     /// <summary>One Pokémon in this many is holding something on a given day.</summary>
     public const int FindOneIn = 8;

@@ -12,6 +12,9 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
+    // The nursery's Egg collected with no cycles left, hatching once its result is read (plan 35 · BN6)
+    private Pokemon? hatchingFromTheBoard;
+
     internal void OpenJobs()
     {
         flow.JobsScreen.Open(flow.Jobs, flow.Boxes, flow.Bag, Dice.New(), Here.Id);
@@ -23,9 +26,9 @@ public partial class GameEngine
         flow.JobsScreen.Update(dt);
         switch (flow.JobsScreen.TakeCollected())
         {
+            // (its hatching waits for the result's panel to be read, "The Egg is about to hatch!")
             case { Hatches: true } nursery:
-                flow.JobsScreen.Close();
-                if (HatchFromTheBoard(nursery.Pokemon)) return;
+                hatchingFromTheBoard = nursery.Pokemon;
                 break;
             case { LevelsGained: > 0 } back:
             {
@@ -33,6 +36,12 @@ public partial class GameEngine
                 if (PlayEvolutions(evolutions, GameState.Jobs)) return;
                 break;
             }
+        }
+        if (hatchingFromTheBoard is { } egg && flow.JobsScreen.Result == null)
+        {
+            hatchingFromTheBoard = null;
+            flow.JobsScreen.Close();
+            if (HatchFromTheBoard(egg)) return;
         }
         if (flow.JobsScreen.IsActive) return;
         // The board by the pasture's shed sends Pokémon off and brings them back to the boxes: the herd is laid afresh (plan 35 · BN5)

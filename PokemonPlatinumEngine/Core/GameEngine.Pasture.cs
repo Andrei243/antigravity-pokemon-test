@@ -74,7 +74,10 @@ public partial class GameEngine
         var map = flow.Map;
         visit.Box = Math.Clamp(visit.Box, 0, flow.Boxes.Boxes.Count - 1);
         var slots = flow.Boxes.Boxes[visit.Box].Slots;
-        foreach (var (slot, pokemon, x, y) in Pasture.Place(Pasture.OpenTiles(map), visit.Box, slots))
+        // (never on the player's own tile, which a save made in the meadow may stand on)
+        var open = Pasture.OpenTiles(map);
+        open.Remove((flow.Player.GridX, flow.Player.GridY));
+        foreach (var (slot, pokemon, x, y) in Pasture.Place(open, visit.Box, slots))
         {
             var body = new NPC
             {

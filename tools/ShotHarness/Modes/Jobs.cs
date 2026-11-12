@@ -44,6 +44,12 @@ partial class Harness
             if (game.Dialogue.IsActive && !game.Dialogue.IsQuestion) { game.Dialogue.FinishLine(); game.Dialogue.Advance(); }
             Frames(1);
         }
+        // (where the region has a pasture the PC asks first whether to go there, plan 35 · BN5: USE THE PC)
+        if (engine.Choice.Options.Contains("GO TO THE PASTURE"))
+        {
+            Frames(20); engine.Choice.Confirm(); Frames(3);
+            for (int i = 0; i < 300 && !engine.Choice.IsOpen; i++) Frames(1);
+        }
         Frames(20); Shot("j01_pc_menu");
         Console.WriteLine($"pc: rules {Ruleset.Current.Preset}, the choice open {engine.Choice.IsOpen}");
 
