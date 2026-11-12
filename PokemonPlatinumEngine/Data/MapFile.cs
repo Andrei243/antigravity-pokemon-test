@@ -54,6 +54,15 @@ public sealed class MapFile
     /// <summary>True for a room that refuses the start menu's BOXES (plan 12 · Q13): a place where reaching the PC would be wrong (a Battle Frontier challenge's rooms); left out for every other.</summary>
     public bool? NoBoxLink { get; set; }
 
+    /// <summary>
+    /// What kind of place the map is (plan 38 · EX6): <c>Cave</c> makes it a cave as a cave of the world is (its rock,
+    /// <c>X</c>, stood up two tiles, the caves' camera and light); left out for a room or open country as before.
+    /// </summary>
+    public MapSetting? Setting { get; set; }
+
+    /// <summary>True where the map's wild Pokémon stand in sight whatever the options' WILD POKéMON row says (plan 38 · EX6: the hideaways); left out otherwise.</summary>
+    public bool? WildVisible { get; set; }
+
     [DataRequired] public int Width { get; set; }
     [DataRequired] public int Height { get; set; }
 
@@ -282,6 +291,12 @@ public sealed class MapFile
         if (EncounterRate is { } rate) map.EncounterRate = rate;
         map.BikeAllowed = Bike == true;
         map.NoBoxLink = NoBoxLink == true;
+        map.WildVisible = WildVisible == true;
+        if (Setting is { } setting)
+        {
+            map.Setting = setting;
+            if (setting == MapSetting.Cave) map.Camera = FieldCamera.Cave;
+        }
 
         CheckRows(Ground, "ground");
         CheckRows(Solid, "solid");
@@ -363,6 +378,9 @@ public sealed class MapFile
 
         foreach (var e in WildEncounters)
             map.WildEncounters.Add(new WildEncounterEntry { SpeciesName = e.SpeciesName, MinLevel = e.MinLevel, MaxLevel = e.MaxLevel, Weight = e.Weight, Count = e.Count });
+
+        // A cave's rock stands up as a cave of the world's does (plan 38 · EX6)
+        if (Setting == MapSetting.Cave) WorldMapBuilder.RaiseCaveRock(map);
 
         return map;
     }
@@ -567,6 +585,8 @@ public sealed class MapFile
             EncounterRate = map.EncounterRate == new Map(1, 1).EncounterRate ? null : map.EncounterRate,
             Bike = map.BikeAllowed ? true : null,
             NoBoxLink = map.NoBoxLink ? true : null,
+            Setting = map.Setting == MapSetting.Outdoors ? null : map.Setting,
+            WildVisible = map.WildVisible ? true : null,
             Width = map.Width,
             Height = map.Height
         };

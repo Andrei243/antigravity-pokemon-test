@@ -949,6 +949,8 @@ public partial class GameEngine
         else ResumeStroll();
         // A game saved below ground finds the tunnels laid out as it left them (plan 06 · R16a)
         if (IsUnderground) ArriveUnderground();
+        // and one saved in a hideaway finds the day's Pokémon (plan 38 · EX6)
+        StockHideaway();
         // and one saved in a secret base finds it furnished (plan 21 · H10)
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
     }

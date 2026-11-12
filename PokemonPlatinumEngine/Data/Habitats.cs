@@ -25,6 +25,8 @@ public enum HabitatWays
     Ours = 256,
     /// <summary>Shaken out of a tree with Headbutt (plan 38 · EX4; HeartGold's trees).</summary>
     Headbutt = 512,
+    /// <summary>Met in a hideaway under the Underground, after Sinnoh's Hall of Fame (plan 38 · EX6).</summary>
+    Hideaway = 1024,
     Grass = Morning | Day | Night,
     Fishing = OldRod | GoodRod | SuperRod
 }
@@ -57,7 +59,9 @@ public sealed class Habitats
     public const string SpecialFileName = "special.json";
 
     /// <param name="ours">The overlays' slots of our own species past level 100, by area key (plan 03 · D15): shown in the areas of those keys.</param>
-    public Habitats(WorldHabitatsFile file, WorldHabitatsFile? special = null, IEnumerable<(string Key, OverlayOurs Ours)>? ours = null)
+    /// <param name="hideaways">The hideaways under the Underground (plan 38 · EX6): each place's name, the cells over its way down and its species.</param>
+    public Habitats(WorldHabitatsFile file, WorldHabitatsFile? special = null, IEnumerable<(string Key, OverlayOurs Ours)>? ours = null,
+        IEnumerable<(string Name, IReadOnlyList<(int X, int Y)> Cells, IEnumerable<string> Species)>? hideaways = null)
     {
         map = file.Map.ToArray();
         Height = map.Length;
@@ -119,6 +123,15 @@ public sealed class Habitats
                 here.Add(new HabitatHere(species, name, w));
             }
         }
+
+        // The hideaways under the Underground, after the overworld's places (plan 38 · EX6); never on a cell's HERE list,
+        // since nothing of them is on the surface over them
+        foreach (var (name, cells, pool) in hideaways ?? Enumerable.Empty<(string, IReadOnlyList<(int X, int Y)>, IEnumerable<string>)>())
+            foreach (string s in pool)
+            {
+                if (!bySpecies.TryGetValue(s, out var list)) bySpecies[s] = list = new List<Habitat>();
+                list.Add(new Habitat(name, cells.ToList(), HabitatWays.Hideaway));
+            }
 
         // The Pokémon met in a way of their own, after the tables' places
         foreach (var area in special?.Areas ?? new List<HabitatArea>())
@@ -208,10 +221,16 @@ public sealed class Habitats
             if (File.Exists(GameDataFiles.PathOf(path)))
                 habitats = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path),
                     File.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldHabitatsFile>(special) : null,
-                    OursOf(Path.Combine(World.Folder, folder)));
+                    OursOf(Path.Combine(World.Folder, folder)),
+                    folder == "sinnoh" ? HideawaysOf() : null);
             return loaded[region] = habitats;
         }
     }
+
+    /// <summary>Sinnoh's hideaways for the area page (plan 38 · EX6): the cell over each way down, every species its pool holds with the National Pokédex.</summary>
+    private static List<(string, IReadOnlyList<(int X, int Y)>, IEnumerable<string>)> HideawaysOf() =>
+        Models.Underground.Hideaways.All.Select(h => (h.Name, (IReadOnlyList<(int X, int Y)>)new[] { Models.Underground.Hideaways.CellOver(h.DownX, h.DownZ) },
+            (IEnumerable<string>)Models.Underground.Hideaways.Pool(h, national: true))).ToList();
 
     /// <summary>The slots of ours a region's overlays give (plan 03 · D15), by area key, in the order of the keys.</summary>
     private static List<(string Key, OverlayOurs Ours)> OursOf(string regionFolder)

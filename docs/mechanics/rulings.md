@@ -10168,6 +10168,33 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   `FLAG_TUTOR_HEADBUTT`). The Pokédex's area page shows the trees' species as "Headbutt trees" (`HabitatWays.Headbutt`), Johto's
   areas alone (HeartGold's Kanto routes have trees too, which Johto's world holds and shakes, but Johto's habitats file lists none of
   Kanto's areas, as before).
+- **Hideaways under the Underground** (EX6, part a, 2026-11-12; `Models/Underground/Hideaways.cs`, ours, decision 7). Twelve caves
+  of ours, each laid from a seed of its own by `FloorLayout` (the Battle Pyramid's way): three squares by three of eight tiles from
+  eight pieces of ours (rock and pools), inside the cave's rock, its grounds the field's own by the seed's noise (the style guide's
+  "Hideaways"). Each is a habitat of two or three types (Grass and Bug, Water and Ice, Rock and Psychic, Ice and Steel, Fire and
+  Fighting, Ground and Rock, Ghost and Dark, Electric and Steel, Flying and Normal, Poison and Water, Dragon and Ground, and Normal,
+  Fighting and Psychic: every type of Generation 4 at least once). **They open with Sinnoh's Hall of Fame** (`FLAG_GAME_COMPLETED`),
+  where the plan's summary says the National Pokédex: the section of EX6 says the Hall of Fame and that its Pokémon are Sinnoh's
+  Pokédex's before the National Pokédex, which only means something if a Champion can come down before it. **Their Pokémon** are of
+  their types, never a legendary or a mythical, Generation 1 to 4, Sinnoh's Pokédex's alone until the National Pokédex is had, and
+  never one that would have grown by the band's levels (an evolution by a level under 47) nor a baby that grows by friendship: its
+  grown form stands there, and the Egg is the way to the first stage. **Twelve a day**: the day's number and the hideaway's seed choose
+  twelve of the pool by SplitMix (no draw of `Dice`, so no existing draw moved), on Platinum's grass weights, at the Battle Zone's
+  band 47 to 55; the map keeps the last day's table until the player comes in (`Hideaways.Stock`). **They are seen whatever the
+  WILD POKéMON row says** (`Map.WildVisible`, a map file's `wildVisible`, and `MapArea.WildVisible`, which nothing of the world files
+  sets yet), standing on any open floor but the way out, and nothing is met there by a step's roll. **The ways down**: two in each
+  of the six tunnel systems, a cave's mouth in a wall over a passage, laid in code as the maps load (`Hideaways.LayWaysDown`) rather
+  than as overlay `exits`, so the hideaway and its way down are one record; to the tunnels' own rules (the day's walls and traps)
+  the way down is rock open or not, so the day's spread is what it was. `SpeciesSources` counts every pool (the dual slot's species
+  and the other regions' first partners leave `OnlyInPalPark`); the Pokédex's area page shows them as "A hideaway under the
+  Underground" on the cell over the way down (never on that cell's HERE list: nothing of them is on the surface). A hideaway is a
+  cave, so Fly is refused there (a map file's cave, `FieldMoveRules`), and with no area of the world an Escape Rope and Dig find no
+  way out either: the way out is its mouth. A flag carried below and a trap sprung are left in the tunnels, as on any way up. **What
+  it costs Pal Park**: with the dual slot's species and the first partners given, `OnlyInPalPark` is the eighteen legendary and
+  mythical Pokémon of the older regions, so the Catching Show's day of six visitors (`PalParkState.VisitorSpecies`, which draws on
+  that pool) is six of them: that is the plan's rule followed through, and the user's to keep or change. The pools are the rule by
+  type too, so Spiritomb, Rotom, the Sinnoh starters' grown forms, the fossils' and the pseudo-legendaries stand there at 47 to 55.
+  **Not laid yet**: ice that slides and lava (neither has a ground of a map file), and part b's statues.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)

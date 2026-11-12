@@ -11,7 +11,7 @@ Written by `NationalSpeciesTests.TheReportOfWhatEachRegionOwesIsWhatTheChecksGiv
 | Unova | `updated-unova` | 301 | 283 | 18 |
 | Kalos | `kalos-central`, `kalos-coastal`, `kalos-mountain` | 457 | 457 | 0 |
 
-Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives (76 species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).
+Sinnoh's Pokédex is had whole. What of Diamond's, Pearl's and Platinum's National Pokédex nothing else in Sinnoh gives (18 species, `SinnohSpeciesTests.OnlyInPalPark`) comes by Pal Park's Catching Show (plan 03 · D12a).
 
 ## Kanto
 

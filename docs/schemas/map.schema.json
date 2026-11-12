@@ -221,6 +221,22 @@
         "null"
       ]
     },
+    "setting": {
+      "enum": [
+        "Outdoors",
+        "Cave",
+        "Void",
+        "Indoors",
+        "Underwater",
+        null
+      ]
+    },
+    "wildVisible": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
     "width": {
       "type": "integer"
     },

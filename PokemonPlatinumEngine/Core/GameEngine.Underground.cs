@@ -50,12 +50,20 @@ public partial class GameEngine
     private bool UndergroundRock(int x, int z)
     {
         var map = MapDatabase.Get(UndergroundMap);
-        return !map.InBounds(x, z) || baseEntrances.ContainsKey((x, z)) || map.IsSolid(x, z);
+        // (a way down to a hideaway is the tunnels' rock to their rules, open or not, so the day's spread is what it was: plan 38 · EX6)
+        return !map.InBounds(x, z) || baseEntrances.ContainsKey((x, z)) || map.IsSolid(x, z) || Hideaways.IsWayDown(x, z);
     }
 
     private UndergroundField Tunnels => flow.Tunnels ??= new UndergroundField(flow.Underground, UndergroundRock);
 
     private bool IsUnderground => flow.Map?.Name == UndergroundMap;
+
+    /// <summary>A hideaway under the tunnels stocked with the day's Pokémon as the player comes to it or wakes in it (plan 38 · EX6).</summary>
+    private void StockHideaway()
+    {
+        if (Hideaways.OfMap(flow.Map?.Name) is { } hideaway)
+            Hideaways.Stock(flow.Map!, hideaway, (int)(flow.Encounters.DailyNumber & 0x7FFFFFFF), flow.Pokedex.NationalUnlocked);
+    }
     private bool InTheBase => IsUnderground && flow.Player.GridX < SecretBaseRules.Size && flow.Player.GridY < SecretBaseRules.Size;
 
     /// <summary>The cavern the base's room shows: the player's own, or the digger's being visited.</summary>
@@ -171,6 +179,8 @@ public partial class GameEngine
         flow.Diggers = Diggers.Today(flow.Underground.Seed, UndergroundRock);
         LayOutEntrances();
         LayOutBase();
+        // The ways down to the hideaways, open once Sinnoh's Hall of Fame is set (plan 38 · EX6)
+        foreach (var (x, z) in Hideaways.ShowWaysDown(map, flow.Story.Has(Hideaways.OpenedBy))) world?.Forget(map, x, z, 1, 1);
         // Roark is beside whoever comes down for the first time (Underground_PutRoarkNextToPlayer)
         if (flow.Story.Var("VAR_HAS_SEEN_UNDERGROUND_ROARK_INTRO") == 0 && map.Everyone.FirstOrDefault(n => n.Key == "roark") is { } roark)
         {

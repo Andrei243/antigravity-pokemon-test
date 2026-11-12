@@ -29,16 +29,8 @@ public class SinnohSpeciesTests
     /// </summary>
     public static readonly string[] OnlyInPalPark =
     {
-        // A second game in the console's species (the original's dual slots), with their lines
-        "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Ekans", "Arbok", "Sandshrew", "Sandslash",
-        "Vulpix", "Ninetales", "Growlithe", "Arcanine", "Pineco", "Forretress", "Shuckle", "Teddiursa", "Ursaring",
-        "Lotad", "Lombre", "Ludicolo", "Seedot", "Nuzleaf", "Shiftry", "Sableye", "Mawile", "Zangoose", "Seviper",
-        "Lunatone", "Solrock",
-        // The first partners of Kanto, Johto and Hoenn
-        "Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise",
-        "Chikorita", "Bayleef", "Meganium", "Cyndaquil", "Quilava", "Typhlosion", "Totodile", "Croconaw", "Feraligatr",
-        "Treecko", "Grovyle", "Sceptile", "Torchic", "Combusken", "Blaziken", "Mudkip", "Marshtomp", "Swampert",
-        // The legendary and mythical Pokémon of the older regions (plan 03 · D12c's quests); Sinnoh's of an event have
+        // (A second game in the console's species and the other regions' first partners have the hideaways under the
+        // Underground since plan 38 · EX6.) The legendary and mythical Pokémon of the older regions (plan 03 · D12c's quests); Sinnoh's of an event have
         // ways of their own since plan 29 · LS11a (Darkrai, Shaymin, Arceus, the Manaphy Egg, and Phione bred from it)
         "Mewtwo", "Mew", "Raikou", "Entei", "Suicune", "Lugia", "Ho-Oh", "Celebi", "Regirock", "Regice", "Registeel",
         "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys"

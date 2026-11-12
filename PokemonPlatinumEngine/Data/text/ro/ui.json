@@ -1897,7 +1897,8 @@
         "other": "Undițele {rods}"
       },
       "ours": "Rar, după Sala Faimei",
-      "headbutt": "Copaci scuturați cu Headbutt"
+      "headbutt": "Copaci scuturați cu Headbutt",
+      "hideaway": "O ascunzătoare sub Subteran"
     },
     "search": {
       "title": "Caută în Pokédex",
@@ -5321,6 +5322,9 @@
     "in": "în {place}"
   },
   "places": {
+    "FernGrotto": "Grota Ferigilor", "LakeCavern": "Caverna Lacului", "CrystalHall": "Sala de Cristal", "IceHall": "Sala de Gheață",
+    "EmberHall": "Sala de Jar", "SandHall": "Sala de Nisip", "ShadeHollow": "Scorbura Umbrelor", "SparkVein": "Filonul Scânteilor",
+    "SkyShaft": "Puțul Cerului", "MirePool": "Balta Mocirlei", "DragonsDeep": "Adâncul Dragonilor", "EchoDen": "Bârlogul Ecoului",
     "TwinleafTown": "Orășelul Twinleaf", "SandgemTown": "Orășelul Sandgem", "FloaromaTown": "Orășelul Floaroma",
     "SolaceonTown": "Orășelul Solaceon", "CelesticTown": "Orășelul Celestic",
     "JubilifeCity": "Orașul Jubilife", "OreburghCity": "Orașul Oreburgh", "EternaCity": "Orașul Eterna",

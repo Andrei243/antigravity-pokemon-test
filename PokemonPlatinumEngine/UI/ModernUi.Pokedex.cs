@@ -506,6 +506,7 @@ internal static partial class ModernUi
         if (rods.Count > 0) parts.Add(Text.Of("pokedex.way.rods", ("rods", string.Join(", ", rods)), ("n", rods.Count)));
         // Shaken out of a tree with Headbutt (plan 38 · EX4)
         if (ways.HasFlag(HabitatWays.Headbutt)) parts.Add(Text.Of("pokedex.way.headbutt"));
+        if (ways.HasFlag(HabitatWays.Hideaway)) parts.Add(Text.Of("pokedex.way.hideaway"));
         // A species of ours past level 100, met rarely once the region's Hall of Fame is entered (plan 03 · D15)
         if (ways.HasFlag(HabitatWays.Ours)) parts.Add(Text.Of("pokedex.way.ours"));
         return string.Join(" · ", parts);
