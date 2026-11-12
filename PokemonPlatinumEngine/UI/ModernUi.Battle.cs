@@ -251,7 +251,7 @@ internal static partial class ModernUi
                 else
                     // 22 above the message box, its right edge on the box's
                     // (the field's box stands taller under large text, the message box doesn't: plan 12 · Q8)
-                    DrawChoices(sw + 48, sh + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height), new[] { Text.Of("battleMenu.yes"), Text.Of("battleMenu.no") }, battle.LearnCursor, 1f);
+                    DrawChoices(sw + 48, sh + 40 + (int)(DialogueBox.HeightNow - DialogueBox.Height), battle.LearnAnswers, battle.LearnCursor, 1f);
                 break;
             case BattleMenuState.Waiting:
                 // A link battle waits for the other player (plan 28 · I3; style guide, "Battle panels", "Waiting for the

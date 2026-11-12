@@ -119,6 +119,92 @@ public class StudioFilmTests
         Assert.All(StudioFilms.All.Where(f => f.Rank == 0), f => Assert.True(none.Opens(f)));
     }
 
+    /// <summary>A film's take made as the game makes it (<c>GameEngine.StartStudioFilm</c>), with no screen.</summary>
+    private static BattleEngine Take(StudioFilm film) => new(new BattleSetup
+    {
+        PlayerParty = Puzzles.PlayerParty(film.Battle),
+        Inventory = Puzzles.Bag(film.Battle),
+        Pokedex = new Pokedex(),
+        Trainers = new List<Trainer> { Puzzles.FoeTrainer(film.Battle)! },
+        Random = Puzzles.Random(film.Battle),
+        Rules = film.Battle.RulesSet,
+        Conditions = Puzzles.Conditions(film.Battle),
+        EnemyController = new PuzzleFoe(film.Battle.FoeMoves),
+        NoBattleItems = true,
+        NoRewards = true,
+        Frontier = true,
+        StudioFilm = new StudioDirector(film),
+        StudioTakeNumber = 2,
+        PlayerName = "Player"
+    });
+
+    /// <summary>Reads the battle on to its next menu, noting each line with its speaker and choosing lines by <paramref name="pick"/>.</summary>
+    private static void ReadOn(BattleEngine battle, List<(string Line, string? Speaker)> seen, int pick)
+    {
+        for (int i = 0; i < 400; i++)
+        {
+            if (battle.IsLearningMove && battle.LearnStep == LearnStep.Line)
+            {
+                battle.ChooseLearn(pick);
+                battle.Update(1f / 60f);
+                continue;
+            }
+            if (battle.HUD.MenuState is not (BattleMenuState.Message or BattleMenuState.LearnMove)) return;
+            if (battle.IsWaitingForConfirm) seen.Add((battle.CurrentMessage, battle.CurrentSpeaker));
+            battle.ConfirmMessage();
+            battle.Update(1f / 60f);
+        }
+    }
+
+    [Fact]
+    public void ATakeOnTheBattlesFaceSaysItsBeatsAndEndsOnItsStars()
+    {
+        var film = StudioFilms.Get("emptySeat")!;
+        var script = film.Takes.Single(t => t.Ending == "takesABow");
+        var battle = Take(film);
+        var seen = new List<(string Line, string? Speaker)>();
+        ReadOn(battle, seen, pick: 1);
+        foreach (var answer in script.Answers)
+        {
+            if (battle.IsBattleOver || battle.HUD.MenuState != BattleMenuState.Main) break;
+            battle.SelectMove(battle.Core.PlayerParty.Members[0].Moves.FindIndex(m => m.Name == answer.Move));
+            ReadOn(battle, seen, pick: 1);
+        }
+        Assert.True(battle.IsBattleOver);
+        battle.WrapUpStudio();
+        ReadOn(battle, seen, pick: 1);
+        Assert.True(battle.StudioDone);
+        Assert.Equal("takesABow", battle.StudioTake!.Ending);
+        Assert.Equal(5, battle.StudioTake.Stars);
+        Assert.Equal(new[] { "encore" }, battle.StudioTake.Chosen);
+
+        Assert.Contains(seen, s => s.Line.Contains("The Empty Seat") && s.Line.Contains("take 2"));
+        Assert.Contains(seen, s => s.Speaker == "Captain" && s.Line.Contains("seat thirteen"));
+        Assert.Contains(seen, s => s.Speaker == PlayerIdentity.Name && s.Line == "Stay for an encore, then!");
+        Assert.Contains(seen, s => s.Speaker == "The Usher" && s.Line.Contains("remain seated"));
+        Assert.Contains(seen, s => s.Line.Contains("taking a bow"));
+        Assert.Equal(Text.Of("studio.stars", ("stars", 5)), seen[^1].Line);
+        // The title card comes first of the film's own lines, before any beat
+        Assert.True(seen.FindIndex(s => s.Line.Contains("take 2")) < seen.FindIndex(s => s.Line.Contains("seat thirteen")));
+        // The rules fought the battle the puzzle's way, beats or none
+        Assert.Equal(Golden.BattleText.Written(Puzzles.Play(film.Battle, script.Answers)), Golden.BattleText.Written(battle.Core));
+    }
+
+    [Fact]
+    public void ReadingOnPicksTheScriptsLine()
+    {
+        var film = StudioFilms.Get("gildedHour")!;
+        var battle = Take(film);
+        for (int i = 0; i < 400 && !(battle.IsLearningMove && battle.LearnStep == LearnStep.Line); i++)
+        {
+            battle.ConfirmMessage();
+            battle.Update(1f / 60f);
+        }
+        Assert.Equal(new[] { "In and out. Nobody hears a thing.", "Let's give them a show first!" }, battle.LearnAnswers);
+        battle.ConfirmMessage();
+        Assert.Equal(new[] { "quietly" }, battle.Studio!.Chosen);
+    }
+
     [Fact]
     public void EveryLineOfEveryFilmFitsTheBattlesTwoRows()
     {

@@ -261,6 +261,13 @@ public class SaveData
     public Models.StageShow.StageShowSave? StageShow { get; set; }
 
     /// <summary>
+    /// The film studio (plan 42 · PS4, <see cref="Models.Studio.StudioRecords"/>): each film's takes shot, its best stars
+    /// and best take. Null while no film has been shot, and in every save from before it, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.Studio.StudioSave? Studio { get; set; }
+
+    /// <summary>
     /// Today's trade board (plan 40 · GE8, <see cref="Models.TradeBoard"/>): the requests met and the blind trades made, by
     /// the day they were made on. Null while none is, and in every save from before it, so no save version was raised.
     /// </summary>

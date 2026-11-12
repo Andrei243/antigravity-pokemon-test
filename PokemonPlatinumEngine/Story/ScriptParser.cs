@@ -1485,6 +1485,15 @@ public static class ScriptParser
             }
             // The stage show (plan 42 · PS1, PS2): "stageshow trunk" the owner's gift, "stageshow has" whether it was given,
             // "stageshow dress" the dressing room, "stageshow perform" a show on the stage, "stageshow fan fan_1" a fan's gift
+            case "studio":
+            {
+                // The film studio (plan 42 · PS4): "studio shoot "emptySeat"", "studio open|stars "id"", "studio rank"
+                string what = r.OneOf("shoot", "open", "stars", "rank");
+                if (what == "rank") return new Instruction { Op = Op.Studio, Line = line, Name = what };
+                string film = r.Text("a film's id");
+                if (Models.Studio.StudioFilms.Get(film) == null) throw r.Error($"'{film}' is no film of the studio's");
+                return new Instruction { Op = Op.Studio, Line = line, Name = what, Other = film };
+            }
             case "stageshow":
             {
                 string what = r.OneOf("trunk", "has", "dress", "perform", "fan");

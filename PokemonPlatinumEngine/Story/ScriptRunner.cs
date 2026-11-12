@@ -454,6 +454,8 @@ public sealed partial class ScriptRunner
         Op.Missions => i.Name == "open",
         // The stage show: the dressing room and the stage are the player's; the trunk and a fan's gift are as items given (plan 42 · PS1, PS2)
         Op.StageShow => i.Name is "dress" or "perform",
+        // The film studio: a take is a battle the player plays; the rest only reads the records (plan 42 · PS4)
+        Op.Studio => i.Name == "shoot",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1681,6 +1683,11 @@ public sealed partial class ScriptRunner
             // The stage show (plan 42 · PS1, PS2)
             case Op.StageShow:
                 StageShowCommand(i);
+                break;
+
+            // The film studio (plan 42 · PS4)
+            case Op.Studio:
+                StudioCommand(i);
                 break;
 
             default:
