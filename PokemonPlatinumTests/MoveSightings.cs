@@ -155,8 +155,8 @@ internal static class MoveSightings
 
     /// <summary>
     /// The moves Y10b gave a look and a sound because nothing showed them then, which later places show in the post-game
-    /// now (Flatter; and Me First, Power Trick, Role Play, Sky Attack and Weather Ball since the post-game's later rooms
-    /// and hideaways): they stay Y10b's.
+    /// now (Flatter; and Me First, Power Trick, Role Play, Sky Attack and Weather Ball, which places added to the post-game
+    /// since show): they stay Y10b's.
     /// </summary>
     public static readonly IReadOnlySet<string> SeenSinceY10b = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         { "Flatter", "Me First", "Power Trick", "Role Play", "Sky Attack", "Weather Ball" };

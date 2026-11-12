@@ -10721,7 +10721,7 @@ from Rose at 7,4 of Wyndon_EnergyPlant
 way -
   Chairman Rose> A thousand years from now, they will understand what I tried to do. I hope.
 === Wyndon_RoseTower.Oleana
-from Oleana at 5,4 of Wyndon_RoseTower
+from Oleana at 6,4 of Wyndon_RoseTower
 way 0
   Oleana> The chairman is busy saving Galar's future, and he does not wish to be disturbed. Least of all by children.
   Oleana> Leon went up and has not come down. Whatever you think you can do up there, you will not be doing it.

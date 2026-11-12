@@ -125,7 +125,7 @@ public sealed class Habitats
         }
 
         // The hideaways under the Underground, after the overworld's places (plan 38 · EX6); never on a cell's HERE list,
-        // since nothing of them is on the surface over them. A way down under the sea (Mire Pool's) is shown at the
+        // since nothing of them is on the surface over them. A way down under a cell the map draws nothing on (Mire Pool's) is shown at the
         // nearest cell the map draws, or the page would point at nothing.
         foreach (var (name, cells, pool) in hideaways ?? Enumerable.Empty<(string, IReadOnlyList<(int X, int Y)>, IEnumerable<string>)>())
         {

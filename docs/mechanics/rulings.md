@@ -11959,7 +11959,7 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   2026-11-10: **the Week's Work**). The rules are `Models/MissionBoard.cs`; the kinds, places and rewards are ours, in
   `Data/missions.json`, read strictly. Nothing is saved until the board is first read (`SaveData.Missions`), so no save
   version was raised.
-- **The week**: five missions, three of the week and two timed, each in a region whose Hall of Fame is entered, drawn by
+- **The week**: five missions, three of the week and two timed, each in a region whose Hall of Fame is entered (the regions in turn from one drawn first, so two regions share the five), drawn by
   weight from the kinds that fit it (a place's mission needs the region's places; the facility's and the contest's are
   Sinnoh's and Hoenn's), on `SplitMix` seeded by the week's Monday and the data's version (`MissionWeek.Draw`), never
   `Dice`: the board is the same however often it is read, the same for anyone that week, and anew each Monday. A week's
