@@ -11243,8 +11243,8 @@ same bug), the same match of digits from the right against the ID numbers of the
 boxes, Eggs passed over (`LotoId_CountDigitsMatched`, `ScrCmd_LotoIDSearch`), and the same five prizes by digits matched:
 an Ultra Ball, a PP Up, an Exp. Share, a Max Revive and a Master Ball (items 2, 51, 216, 29 and 1).
 
-- **Weekly, ours**: the plan holds a draw once a week, as the Radio Tower's man says. HeartGold's own number is moved on
-  with the day's events; the week is ours. `Lottery.WeekOf(day)` counts weeks from Monday (`DateOnly.DayNumber / 7`), and
+- **Weekly, ours**: the plan holds a draw once a week, as the Radio Tower's man says. HeartGold's claim is kept by a flag of its own (`FLAG_UNK_AA5`), and where it moves its
+  number on was not traced; the week is ours. `Lottery.WeekOf(day)` counts weeks from Monday (`DateOnly.DayNumber / 7`), and
   `Lottery.WeeklyTicket(week, gameNumber)` is `TicketOf` on the week's number mixed with a number of the game (so two games
   draw differently): a pure function, the same all week and another the next, nothing drawn from `Dice`. Whatever clears
   the week's claim asks `WeekOf`, so the claim and the ticket turn over together.
