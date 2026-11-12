@@ -19690,7 +19690,7 @@ from Flint at 654,424 of Sinnoh
 way -
   Flint> You there! Think you're up to it? Find yourself a partner and we'll see how hot you burn!
 === fight_area.HarbourClerk
-from Harbour Clerk at 626,433 of Sinnoh
+from Harbour Clerk at 626,435 of Sinnoh
 way -
   Harbour Clerk> Every ferry that comes and goes is written in my log. Every one, to the minute.
 === fight_area.InverseBattle
