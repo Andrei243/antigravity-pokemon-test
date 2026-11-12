@@ -2649,6 +2649,50 @@
       "random": "Random", "swap": "Swap", "oneBp": "1 BP", "threeBp": "3 BP", "noBattle": "No Battle", "noEvent": "No Event"
     }
   },
+  "cabinet": {
+    "ask": { "play": "PLAY", "leave": "LEAVE" },
+    "quitAsk": { "title": "Give up?", "body": "A cabinet left before its end pays nothing.", "yes": "GIVE UP", "no": "KEEP PLAYING" },
+    "hint": { "quit": "Give up" },
+    "match": {
+      "foe": "FOE",
+      "hp": "HP {hp} / {most}",
+      "swaps": "SWAPS LEFT",
+      "score": "SCORE",
+      "team": "ON THE BOARD",
+      "hint": { "pick": "Pick and swap" },
+      "ask": {
+        "title": "Stage: {name}",
+        "body": "Bring its HP down to nothing within {swaps} swaps. It has {hp} HP. A clear pays {coins} coins, and more for each swap left."
+      },
+      "line": {
+        "intro": "{hp} HP to knock down in {swaps} swaps.",
+        "pick": "Pick an icon, then swap it with a neighbour to line up three.",
+        "noLine": "That swap makes no line. Try another.",
+        "notNeighbours": "Only icons side by side can swap.",
+        "hit": "{damage} damage!",
+        "super": "It's super effective! {damage} damage!",
+        "weak": "It's not very effective… {damage} damage.",
+        "cascade": "A chain of {cascades}! {damage} damage!",
+        "cleared": "Stage cleared! You won {coins} coins.",
+        "failed": "Out of swaps. Better luck next time!"
+      }
+    },
+    "picture": {
+      "title": "PICTURE LOGIC",
+      "unknown": "???",
+      "grid": "GRID",
+      "mistakes": "MISTAKES",
+      "filled": "FILLED",
+      "hint": { "fill": "Fill", "cross": "Cross out" },
+      "line": {
+        "finding": "Choosing a picture…",
+        "none": "There are no new pictures. Every Pokémon you see on your travels adds one.",
+        "board": "Fill in the {size} by {size} grid. The numbers give the runs of each row and column.",
+        "mistake": "That cell isn't part of the picture. Mistakes: {mistakes}.",
+        "solved": "It's {name}! You won {coins} coins."
+      }
+    }
+  },
   "cardFlip": {
     "level": "LEVEL",
     "coins": "COINS",

@@ -105,6 +105,12 @@ public partial class GameEngine
         /// <summary>The Underground (plan 06 · R16a): its state and rules, its screens, the trap that has the player, and the game's own ways down and up.</summary>
         public Models.Underground.UndergroundState Underground => game.flow.Underground;
         public Models.Pastimes Pastimes => game.flow.Pastimes;
+        /// <summary>The arcade's two cabinets and their records (plan 42 · PS6).</summary>
+        public UI.MatchThreeScreen MatchThree => game.flow.MatchThreeScreen;
+        public UI.PictureLogicScreen PictureLogic => game.flow.PictureLogicScreen;
+        public Models.Cabinets.CabinetRecords Cabinets => game.flow.Cabinets;
+        /// <summary>Opens a cabinet as its script's <c>gamecorner cabinet</c> does: 0 the match-three, 1 the picture-logic puzzle.</summary>
+        public void OpenCabinet(int which) => game.OpenCabinet(which);
         public UI.SlotMachineScreen Slots => game.flow.SlotMachineScreen;
         public UI.ReelMachineScreen Reels => game.flow.ReelMachineScreen;
         public UI.RouletteScreen Roulette => game.flow.RouletteScreen;

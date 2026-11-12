@@ -4907,6 +4907,10 @@
         "accent": "en-us"
       }
     },
+    "gamer": {
+      "note": "first spoken at LumioseCity_Arcade.txt(88)",
+      "provisional": true
+    },
     "garden_keeper": {
       "note": "first spoken at SunyshoreGarden.txt(12)",
       "provisional": true
@@ -11378,6 +11382,7 @@
     "Gabby": "gabby",
     "Galactic Grunt": "look:grunt",
     "Galactic Grunts": "galactic_grunts",
+    "Gamer": "gamer",
     "Garden Keeper": "garden_keeper",
     "Gardener": "gardener",
     "Gardenia": "gardenia",

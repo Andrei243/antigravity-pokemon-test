@@ -930,7 +930,7 @@ public static class ScriptParser
             }
             case "gamecorner":
             {
-                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel", "cards", "pokemon", "pay");
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel", "cards", "pokemon", "pay", "cabinet");
                 bool machine = what is "slots" or "reels";
                 int number = what is "room" or "add" or "take" or "slots" or "reels" or "wheel" ? r.Int(machine ? "a machine, 0 to 11" : "a number of coins") : 0;
                 if (machine && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
@@ -938,7 +938,10 @@ public static class ScriptParser
                 if (!machine && number < 0) throw r.Error("coins are counted from nought up");
                 // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
                 string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville")
-                    : what == "prize" && r.PeekWord("goldenrod") ? r.OneOf("goldenrod") : "";
+                    : what == "prize" && r.PeekWord("goldenrod") ? r.OneOf("goldenrod")
+                    : what == "prize" && r.PeekWord("lumiose") ? r.OneOf("lumiose") : "";
+                // An arcade cabinet (plan 42 · PS6): the match-three (0) or the picture-logic puzzle (1)
+                if (what == "cabinet") number = r.OneOf("match", "picture") == "match" ? 0 : 1;
                 return new Instruction { Op = Op.GameCorner, Line = line, Name = what, Number = number, Other = list };
             }
             case "villa":

@@ -123,6 +123,8 @@ public partial class GameEngine
             case GameState.Evolution:
                 return new Pointable(flow.EvolutionScreen.HitTest, flow.EvolutionScreen.PointAt);
             // The card-flip table (plan 42 · PS3)
+            case GameState.Cabinet:
+                return flow.MatchThreeScreen.IsActive ? flow.MatchThreeScreen : flow.PictureLogicScreen;
             case GameState.CardFlip:
                 return flow.CardFlipScreen;
             // The card designer (plan 43 · LF1): its rows, the six's list and the signature's pad

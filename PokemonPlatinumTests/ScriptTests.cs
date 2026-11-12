@@ -381,6 +381,9 @@ public class ScriptTests
           gamecorner prize goldenrod
           gamecorner pokemon
           gamecorner pay
+          gamecorner cabinet match
+          gamecorner cabinet picture
+          gamecorner prize lumiose
           villa catalogue
           villa choose "Table"
           villa is "Piano"

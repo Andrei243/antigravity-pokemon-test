@@ -268,6 +268,9 @@ public class SaveData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.StageShow.StageShowSave? StageShow { get; set; }
 
+    /// <summary>The arcade's cabinets (plan 42 · PS6, <see cref="Models.Cabinets.CabinetRecords"/>): stages cleared, best scores, pictures solved. Null while empty.</summary>
+    public Models.Cabinets.CabinetsSave? Cabinets { get; set; }
+
     /// <summary>
     /// The film studio (plan 42 · PS4, <see cref="Models.Studio.StudioRecords"/>): each film's takes shot, its best stars
     /// and best take. Null while no film has been shot, and in every save from before it, so no save version was raised.

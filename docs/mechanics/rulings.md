@@ -12079,6 +12079,36 @@ Black and White's sports days in Nimbasa City's stadiums, on Black 2's fields an
   (`nimbasa_city_4.txt`'s and `_9.txt`'s `OnEnter`, marked as a scene): the bars, the camera's path over the rail, the
   crowd's cheer and the announcer's lines. A crowd's bed in the ambience is owed.
 
+## The arcade (2026-11-12, plan 42 · PS6)
+
+Two puzzle cabinets of ours, the match-three (an idea from Pokémon Shuffle) and the picture-logic puzzle (an idea from
+Picross); no game of the series had either in its world, so every rule and number here is ours.
+
+- **Where** (decision 2, its recommendation, bent): every door on Lumiose's boulevards had been given a room by plans 23
+  and 37 before the arcade came, so the arcade is a room of ours under Lumiose Station (`LumioseCity_Arcade`), come into
+  through a doorway in the station's back wall at (6, 2). Its clerk hands a Coin Case to whoever has none (a game begun
+  in Kalos may never have had one), sells fifty coins for $1,000 as Goldenrod's does, and keeps a prize counter of ours
+  (`GameCornerPrizes.Lumiose`: a Heart Scale 150, a Star Piece 250, a PP Up 400, a Rare Candy 500, an Ability Capsule
+  900, a Bottle Cap 1,500).
+- **A stage of the match-three** (`MatchThree`, `Data/cabinets.json`): eight stages in order, the first not cleared
+  offered at the cabinet (the last again once all are). A board is six by six, dealt cell by cell never three of a kind
+  beside one another, dealt again while no swap would make a line. Its four species are the team's first four (each
+  once, no Egg; decision of this session: no picking screen, the team's order is the pick), the table's helpers filling
+  any place left. Two neighbours swapped must make a line, or nothing happens and nothing is spent. Each run of three
+  deals 30, a run of four 45 and of five 60, times the run's species' first type against the foe's types on the
+  battle's chart under the modern rules, times 1 + a quarter for each cascade after the first, rounded down. What is
+  cleared falls and is refilled from the top; a board left with no swap is shuffled. Every draw is SplitMix's from the
+  stage's seed. A stage cleared pays its coins and its few coins for each swap left over; one run out of swaps, or given
+  up, pays nothing.
+- **A picture** (`PictureLogic`, `Silhouettes`): the next species the Pokédex has seen, in National order, not solved
+  yet, whose silhouette (its model seen from its left, the longer side filling the grid, at least 12% filled) line logic
+  alone finishes at a grid of 10, 15 or 20, the smallest that does; a species whose silhouette doesn't solve at any size
+  is passed over. Filling a cell outside the picture is a mistake: the cell is crossed and counted. A picture pays 20,
+  40 or 60 coins by its size, less 3, 4 or 5 a mistake, never under 5, 8 or 10; solved, it is kept by species with its
+  size. Silhouettes are kept this run only (a cache of them beside the sprites is owed).
+- **What is kept** (`CabinetRecords`, `SaveData.Cabinets`, null while empty: no version raised): the stages cleared,
+  each stage's best score, the pictures solved by species. The gallery's page of pictures solved is owed.
+
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
 Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and

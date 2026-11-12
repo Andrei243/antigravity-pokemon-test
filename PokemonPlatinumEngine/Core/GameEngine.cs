@@ -179,7 +179,9 @@ public enum GameState
     /// <summary>The photo tour's report, a script's <c>tour report</c> waiting on it (plan 44 · SD6).</summary>
     TourReport,
     /// <summary>The Stroll Counter's screen, from the bag or the item button (plan 35 · BN7).</summary>
-    StrollCounter
+    StrollCounter,
+    /// <summary>An arcade cabinet, the match-three or the picture-logic puzzle, a script's <c>gamecorner cabinet</c> waiting on it (plan 42 · PS6).</summary>
+    Cabinet
 }
 
 public partial class GameEngine
@@ -519,6 +521,7 @@ public partial class GameEngine
         flow.Gifts.Clear();
         flow.Records.Clear();
         flow.StageShow.Clear();
+        flow.Cabinets.Clear();
         flow.Studio.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
@@ -804,6 +807,7 @@ public partial class GameEngine
         flow.Gifts.Load(save.Gifts);
         flow.Records.Load(save.MixedRecords);
         flow.StageShow.Load(save.StageShow);
+        flow.Cabinets.Load(save.Cabinets);
         flow.Studio.Load(save.Studio);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
@@ -1043,6 +1047,7 @@ public partial class GameEngine
             Gifts = flow.Gifts.ToSave(),
             MixedRecords = flow.Records.ToSave(),
             StageShow = flow.StageShow.ToSave(),
+            Cabinets = flow.Cabinets.ToSave(),
             Studio = flow.Studio.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
@@ -1821,6 +1826,9 @@ public partial class GameEngine
                 break;
             case GameState.StageShow:
                 UpdateStageShow(dt);
+                break;
+            case GameState.Cabinet:
+                UpdateCabinet(dt);
                 break;
             case GameState.CardFlip:
                 UpdateCardFlip(dt);
@@ -3753,6 +3761,10 @@ public partial class GameEngine
                 break;
             case GameState.StageShow:
                 flow.StageShowScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Cabinet:
+                flow.MatchThreeScreen.Draw(VirtualWidth, VirtualHeight);
+                flow.PictureLogicScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.CardFlip:
                 flow.CardFlipScreen.Draw(VirtualWidth, VirtualHeight);

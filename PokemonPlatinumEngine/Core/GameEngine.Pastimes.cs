@@ -59,6 +59,10 @@ public partial class GameEngine
             case "cards":
                 OpenCardFlip();
                 return 1;
+            // An arcade cabinet (plan 42 · PS6): 0 the match-three, 1 the picture-logic puzzle
+            case "cabinet":
+                OpenCabinet(number);
+                return 1;
             case "furnish":
                 FurnishVilla();
                 // The delivery that leaves the catalogue nothing more to sell (Villa_HasAllFurniture)

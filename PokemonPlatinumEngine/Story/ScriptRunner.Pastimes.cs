@@ -122,7 +122,8 @@ public sealed partial class ScriptRunner
                 break;
             case "prize":
             {
-                var prizes = i.Other == "mauville" ? GameCornerPrizes.Mauville : i.Other == "goldenrod" ? GameCornerPrizes.Goldenrod : GameCornerPrizes.All;
+                var prizes = i.Other == "mauville" ? GameCornerPrizes.Mauville : i.Other == "goldenrod" ? GameCornerPrizes.Goldenrod
+                    : i.Other == "lumiose" ? GameCornerPrizes.Lumiose : GameCornerPrizes.All;
                 // A TM is listed with the move it holds
                 var rows = prizes.Select(p => PrizeRow(p.Item, "scriptLines.priceCoins", "price", p.Coins.ToString("N0")))
                     .Append(Text.Of("scriptLines.noThanks")).ToList();
@@ -149,6 +150,10 @@ public sealed partial class ScriptRunner
             // A card-flip table (plan 42 · PS3; Models/CardFlip.cs): the player sits at it, the script waits
             case "cards":
                 Result = host.PastimeAct("cards", 0, Subject);
+                break;
+            // An arcade cabinet (plan 42 · PS6; Models/Cabinets/): the player sits at it, the script waits
+            case "cabinet":
+                Result = host.PastimeAct("cabinet", i.Number, Subject);
                 break;
             // Goldenrod's three Pokémon for coins (plan 42 · PS3): which, RESULT 1 to 3 (0 none), {thing} and {price}; "pay" takes the price
             case "pokemon":
