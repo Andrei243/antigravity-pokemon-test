@@ -417,7 +417,10 @@ public sealed class SpeciesSources
                 {
                     case Op.GivePokemon: f.Species(i.Name, $"{where}: a gift"); break;
                     case Op.GiveEgg: f.Species(i.Name, $"{where}: an Egg"); break;
-                    case Op.WildBattle: f.Species(i.Name, $"{where}: met"); break;
+                    // A staged battle (docs/mechanics/rulings.md, "Staged battles") refuses every ball: it gives nobody
+                    case Op.WildBattle when i.Staged == null: f.Species(i.Name, $"{where}: met"); break;
+                    // A boss the story brings to a raid, caught at its end (plan 33 · GL6: Eternatus)
+                    case Op.Raid when i.Name == "boss": f.Species(PokemonDatabase.Get(i.Other)?.Name ?? PokemonDatabase.SpeciesOfForm(i.Other)?.Name, $"{where}: a raid's boss"); break;
                     case Op.Roamer: f.Species(i.Name, $"{where}: roaming"); break;
                     case Op.Trade: f.Species(NpcTrades.Get(i.Name)?.Gives, $"{where}: a trade"); break;
                     case Op.Give or Op.AddItem or Op.Find: f.Item(i.Name, $"{where}: given"); break;

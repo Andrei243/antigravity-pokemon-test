@@ -955,7 +955,17 @@
     "galarSpikemuth": "Cross Circhester Bay to Spikemuth's gate on the far shore.",
     "galarPiers": "Through Spikemuth's street to the stage, and win the Dark Badge from Piers.",
     "galarRaihan": "Back to Hammerlocke, and win the Dragon Badge from Raihan in its stadium.",
-    "galarFree": "That is as far as the road runs for now. Galar from Postwick to Spikemuth is yours to explore."
+    "galarWyndon": "Take the train north from Hammerlocke's station to Wyndon, where the Champion Cup is held.",
+    "galarSemifinal": "Win the Champion Cup's Semifinals in Wyndon Stadium.",
+    "galarHopCup": "One more Semifinal at Wyndon Stadium, and Hop is waiting on the pitch.",
+    "galarLobby": "The Finals are next. Go back through the stadium's lobby.",
+    "galarAltar": "Go with Hop to the altar deep in the Slumbering Weald.",
+    "galarRoseTower": "Back to Wyndon, and up Rose Tower to stop the Darkest Day.",
+    "galarEnergyPlant": "Take the tower's lift to the Energy Plant at the top.",
+    "galarFinals": "The Finals at Wyndon Stadium: win them, and the Champion is next.",
+    "galarRaihanCup": "Raihan is your last opponent in the Finals at Wyndon Stadium.",
+    "galarLeon": "On to the pitch at Wyndon Stadium for the Champion Match against Leon.",
+    "galarFree": "You are Galar's Champion. The whole region, from Postwick to Wyndon, is yours to explore."
   },
 
   "close": {
@@ -4834,6 +4844,8 @@
     "TeamSkullGrunt": "Team Skull Grunt",
     "TeamYell": "Team Yell",
     "GymTrainer": "Gym Trainer",
+    "Chairman": "Chairman",
+    "Secretary": "Secretary",
     "TrialCaptain": "Trial Captain",
     "IslandKahuna": "Island Kahuna",
     "PokemonProfessor": "Pokémon Professor",

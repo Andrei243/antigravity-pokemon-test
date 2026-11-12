@@ -1,0 +1,46 @@
+# Wyndon (plan 33 · GL6), Galar's capital at its north end, on the open world's engine: its places are
+# Data/world3d/galar/places/wyndon.json. The lines are our own, on Sword and Shield's beats as they are publicly described
+# (docs/mechanics/rulings.md, "Wyndon, the Champion Cup and the Darkest Day"). VAR_GALAR_STORY is postwick.txt's count:
+# 36 the Dragon Badge, 37 Leon and Hop on the avenue.
+
+
+# Off the train with eight badges: Leon and Hop waiting on the avenue
+script WyndonArrival
+  scene "Wyndon"
+  faceto player leon_wyndon
+  speaker "Hop"
+  say "{player}! Eight badges each! We're really here, in Wyndon, for the Champion Cup!"
+  speaker "Leon"
+  say "Welcome to Wyndon, the two of you. Every challenger who started this year, and only a handful left standing."
+  say "The Semifinals are at the stadium, up the avenue. Win them, and the Finals are tomorrow. Win those, and you'll face me."
+  say "The chairman wants a word with me in his tower tonight. Something about the future of Galar, he says. Always is."
+  speaker "Hop"
+  say "I'm not losing to you this time, {player}. See you on the pitch!"
+  clearflag FLAG_GALAR_LEON_WYNDON
+  clearflag FLAG_GALAR_HOP_WYNDON
+  setvar VAR_GALAR_STORY 37
+  objective galarSemifinal
+  endscene
+  end
+
+
+# The train back south to Hammerlocke, whenever the player wants it
+script TrainBack
+  speaker "Station Staff"
+  say "Trains south to Hammerlocke, and from there to everywhere in Galar."
+  ask "Take the train to Hammerlocke?"
+  if no goto Later
+  warpto "Galar" hammerlocke_station
+  end
+label Later
+  say "The trains run all day. Come back when you're ready."
+  end
+
+
+# Rose Tower's door: Macro Cosmos lets nobody in until the Darkest Day, when Hop and the player go up it
+script TowerShut
+  if var VAR_GALAR_STORY >= 41 end
+  speaker "Macro Cosmos Staff"
+  say "I'm sorry, Rose Tower is closed to visitors. The chairman is in meetings all day."
+  walkto player rose_tower_back
+  end

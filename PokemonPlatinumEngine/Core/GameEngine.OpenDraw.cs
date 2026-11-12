@@ -21,6 +21,8 @@ public partial class GameEngine
     private OpenRenderer? openRenderer;
     private readonly OrbitCamera openCamera = new();
     private readonly OpenUnderRock openUnderRock = new();
+    // A place's own light (plan 33 · GL6): Spikemuth's night, the Darkest Day over Wyndon
+    private readonly OpenMoodEase openMood = new();
     private float openFrameSeconds;
     private bool openScriptWasRunning, openViewSettled;
     private double openWalked;
@@ -114,8 +116,9 @@ public partial class GameEngine
         var ground = open.Map.Ground;
         var (eye, target) = openCamera.Place(ground, feet, openViewSettled ? openFrameSeconds : 0);
         if (OpenViewOverride is { } byHand) (eye, target) = (new OpenVec(byHand.Eye.X, byHand.Eye.Y, byHand.Eye.Z), new OpenVec(byHand.Target.X, byHand.Target.Y, byHand.Target.Z));
-        if (!openViewSettled) { openUnderRock.Settle(ground, eye); openViewSettled = true; }
-        else openUnderRock.Advance(ground, eye, openFrameSeconds);
+        string? mood = OpenMoodEase.Wanted(open.Map.AreaAt(open.Player.Pos), flow.Story.Has);
+        if (!openViewSettled) { openUnderRock.Settle(ground, eye); openMood.Settle(mood); openViewSettled = true; }
+        else { openUnderRock.Advance(ground, eye, openFrameSeconds); openMood.Advance(mood, openFrameSeconds); }
         var body = open.Player.Body;
         double perTick = Math.Sqrt(open.Player.Pos.GroundDistanceSquared(open.Player.Before)) / OpenPos.PerMetre;
         double speed = perTick * OpenClock.TicksPerSecond;
@@ -149,7 +152,7 @@ public partial class GameEngine
         return new OpenScene(open.Map, V(feet), yaw, pose, OpenPlayerLook,
             V(eye), V(target), GameClock.Hour, OpenWeatherHere(open), (float)openUnderRock.Share, FrameClock.Now,
             body.Stance == OpenStance.Swimming, (float)openCamera.RideLens(OrbitCamera.LensFor(world.Camera.Lens)), figures, OpenWalkersOf(open, figures),
-            mount, riderRoot, OpenBeamsNow(open));
+            mount, riderRoot, OpenBeamsNow(open), openMood.Mood, (float)openMood.Share);
     }
 
     // ------------------------------------------------------------------ the dens' beams (plan 33 · GL3)

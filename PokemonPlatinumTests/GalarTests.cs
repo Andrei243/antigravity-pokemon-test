@@ -41,7 +41,9 @@ public class GalarTests
         "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea",
         // The rest of the Wild Area's north, Routes 7 to 9, Circhester and Spikemuth (plan 33 · GL5, its second session)
         "wild_area_dusty_bowl", "wild_area_stony_wilderness", "wild_area_giants_cap", "wild_area_lake_of_outrage",
-        "galar_route_7", "galar_route_8", "circhester", "galar_route_9", "spikemuth" };
+        "galar_route_7", "galar_route_8", "circhester", "galar_route_9", "spikemuth",
+        // Wyndon (plan 33 · GL6)
+        "wyndon" };
 
     [Fact]
     public void GalarIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -110,7 +112,8 @@ public class GalarTests
         var behind = new[] { "Postwick_PlayersHouse_2F", "Motostoke_StadiumPitch", "Turffield_StadiumMission", "Turffield_StadiumPitch",
             "Hulbury_StadiumMission", "Hulbury_StadiumPitch", "Motostoke_StadiumMission",
             "StowOnSide_StadiumMission", "StowOnSide_StadiumPitch", "Ballonlea_StadiumMission", "Ballonlea_StadiumPitch",
-            "Circhester_StadiumMission", "Circhester_StadiumPitch", "Hammerlocke_StadiumMission", "Hammerlocke_StadiumPitch" };
+            "Circhester_StadiumMission", "Circhester_StadiumPitch", "Hammerlocke_StadiumMission", "Hammerlocke_StadiumPitch",
+            "Wyndon_StadiumPitch", "Wyndon_EnergyPlant" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
@@ -215,6 +218,11 @@ public class GalarTests
         Assert.False(walk.Reaches(OpenPos.FromMetres(130, 40, -1155)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(103, 40, -1340)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(-100, 40, -1406)));
+        // Plan 33 · GL6: Wyndon behind the mass north of Circhester, come to by the train from Hammerlocke alone: its
+        // avenue and the way to Rose Tower's door are reached, the wall between it and Circhester never is
+        Assert.True(walk.Reaches(OpenPos.FromMetres(0, 26, -1567)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(96, 26, -1588)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(60, 40, -1537)));
     }
 
     [Fact]
@@ -456,6 +464,56 @@ public class GalarTests
         Assert.Equal(8, story.BadgeCount(RegionDatabase.Galar));
         Assert.True(TrainerDatabase.Get("galar_raihan_1", "galar")!.DoubleBattle);
         Assert.False(TrainerDatabase.Get("galar_piers_1", "galar")!.DynamaxBand);
+        // Plan 33 · GL6: the train north to Wyndon, Leon and Hop on the avenue, the Semifinals (Marnie, Hop), the Darkest
+        // Day (the stadium's lobby, the Weald's altar, Rose Tower shut until then, Oleana, the chairman, Eternamax's raid
+        // and its catch), the Finals (Bede, Raihan) and the Champion Match, and the Hall of Fame
+        Assert.Equal("galarWyndon", Next());
+        Assert.True(story.Has("FLAG_GALAR_LEON_WYNDON"));
+        Play("hammerlocke", "TrainToWyndon");
+        Play("wyndon", "WyndonArrival");
+        Assert.Equal(37, story.Var("VAR_GALAR_STORY"));
+        Assert.False(story.Has("FLAG_GALAR_LEON_WYNDON"));
+        Assert.Equal("galarSemifinal", Next());
+        Play("Wyndon_StadiumPitch", "OnEnter", "Wyndon_StadiumPitch");
+        Assert.True(story.Has("FLAG_GALAR_CUP_MARNIE"));
+        Play("Wyndon_StadiumPitch", "Marnie", "Wyndon_StadiumPitch");
+        Assert.Equal(38, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.Has("FLAG_GALAR_CUP_HOP"));
+        Assert.Equal("galarHopCup", Next());
+        Play("Wyndon_StadiumPitch", "Hop", "Wyndon_StadiumPitch");
+        Assert.Equal(39, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarLobby", Next());
+        var tower = Play("wyndon", "TowerShut");
+        Assert.Equal("rose_tower_back", tower.OnMarker["player"]);
+        Play("Wyndon_Stadium", "OnEnter", "Wyndon_Stadium");
+        Assert.Equal(40, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.Has("FLAG_GALAR_DARKEST_DAY"));
+        Assert.Equal("galarAltar", Next());
+        Play("slumbering_weald", "Altar");
+        Assert.Equal(41, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarRoseTower", Next());
+        var towerOpen = Play("wyndon", "TowerShut");
+        Assert.False(towerOpen.OnMarker.ContainsKey("player"));
+        Play("Wyndon_RoseTower", "Oleana", "Wyndon_RoseTower");
+        Assert.Equal(42, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.Has("FLAG_GALAR_OLEANA_BEATEN"));
+        Assert.Equal("galarEnergyPlant", Next());
+        var plant = Play("Wyndon_EnergyPlant", "OnEnter", "Wyndon_EnergyPlant");
+        Assert.Equal(43, story.Var("VAR_GALAR_STORY"));
+        Assert.Contains(plant.Log, l => l.StartsWith("raidbattle Eternatus 60 5 stars", StringComparison.Ordinal));
+        Assert.Contains(party.Members, p => p.Species.Name == "Eternatus");
+        Assert.False(story.Has("FLAG_GALAR_DARKEST_DAY"));
+        Assert.Equal("galarFinals", Next());
+        Play("Wyndon_StadiumPitch", "OnEnter", "Wyndon_StadiumPitch");
+        Assert.True(story.Has("FLAG_GALAR_CUP_BEDE"));
+        Play("Wyndon_StadiumPitch", "Bede", "Wyndon_StadiumPitch");
+        Assert.Equal(44, story.Var("VAR_GALAR_STORY"));
+        Play("Wyndon_StadiumPitch", "Raihan", "Wyndon_StadiumPitch");
+        Assert.Equal(45, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarLeon", Next());
+        Play("Wyndon_StadiumPitch", "Leon", "Wyndon_StadiumPitch");
+        Assert.Equal(46, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.IsRegionComplete(RegionDatabase.Galar));
         Assert.Equal("galarFree", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }
@@ -478,7 +536,9 @@ public class GalarTests
             // Plan 33 · GL5, its first session: Leon at Hammerlocke's gate, Hop on Route 6, the mural
             ("hammerlocke", "LeonInHammerlocke", 24), ("galar_route_6", "HopOnRoute6", 26), ("stow_on_side", "Mural", 28),
             // Plan 33 · GL5, its second session: the Hero's Bath, the bike's kit, Marnie at the gate, Piers on his stage
-            ("circhester", "HerosBath", 30), ("galar_route_9", "BikeKit", 32), ("galar_route_9", "SpikemuthGate", 33), ("spikemuth", "Piers", 34)
+            ("circhester", "HerosBath", 30), ("galar_route_9", "BikeKit", 32), ("galar_route_9", "SpikemuthGate", 33), ("spikemuth", "Piers", 34),
+            // Plan 33 · GL6: Leon and Hop on Wyndon's avenue, the altar in the Weald on the Darkest Day
+            ("wyndon", "WyndonArrival", 36), ("slumbering_weald", "Altar", 40)
         })
         {
             var ends = new List<string>();
@@ -493,6 +553,8 @@ public class GalarTests
                     if (script is "LeonInHammerlocke" or "HopOnRoute6" or "Mural") host.Story.Set(shown);
                 foreach (string shown in new[] { "FLAG_GALAR_HOP_CIRCHESTER", "FLAG_GALAR_SONIA_CIRCHESTER", "FLAG_GALAR_MARNIE_ROUTE_9", "FLAG_GALAR_MARNIE_SPIKEMUTH" })
                     if (script is "HerosBath" or "SpikemuthGate" or "Piers") host.Story.Set(shown);
+                foreach (string shown in new[] { "FLAG_GALAR_LEON_WYNDON", "FLAG_GALAR_HOP_WYNDON", "FLAG_GALAR_HOP_ALTAR" })
+                    if (script is "WyndonArrival" or "Altar") host.Story.Set(shown);
                 // (the bike's kit waits for the sixth badge, Piers's battle for nothing: a story of 32 has it)
                 if (story >= 32) host.Story.GiveBadge(RegionDatabase.Galar, "Rock");
                 host.Party.Add(new Pokemon(PokemonDatabase.Get("Grookey")!, 5, new Random(0)));
@@ -609,6 +671,60 @@ public class GalarTests
                 Assert.True(stopped, "a walker without the kit never met the water's edge");
                 Assert.InRange(field.Player.Pos.MetresX, 8, 30);
             }
+        }
+    }
+
+    [Fact]
+    public void SpikemuthIsHeldInTheNightAndWyndonUnderTheDarkestDayOnlyWhileItLasts()
+    {
+        // Plan 33 · GL6 (style guide, "Open world", "A place's own light"): an area's light, wanted where its flag allows it
+        var map = Open.Value;
+        OpenArea At(double x, double z) => map.AreaAt(OpenPos.FromMetres(x, 26.3, z))!;
+        var story = new StoryState();
+        Assert.Equal(PokemonPlatinumEngine.Graphics.OpenWorld.OpenLook.Night,
+            PokemonPlatinumEngine.Graphics.OpenWorld.OpenMoodEase.Wanted(At(-134, -1450), story.Has));
+        Assert.Null(PokemonPlatinumEngine.Graphics.OpenWorld.OpenMoodEase.Wanted(At(0, -1567), story.Has));
+        Assert.Null(PokemonPlatinumEngine.Graphics.OpenWorld.OpenMoodEase.Wanted(At(100, -1448), story.Has));
+        story.Set("FLAG_GALAR_DARKEST_DAY");
+        Assert.Equal(PokemonPlatinumEngine.Graphics.OpenWorld.OpenLook.DarkestDay,
+            PokemonPlatinumEngine.Graphics.OpenWorld.OpenMoodEase.Wanted(At(0, -1567), story.Has));
+        // It eases in over a second and out again, and one light goes before another comes
+        var ease = new PokemonPlatinumEngine.Graphics.OpenWorld.OpenMoodEase();
+        ease.Settle(null);
+        ease.Advance("night", 0.5);
+        Assert.Equal(("night", 0.5), (ease.Mood, ease.Share));
+        ease.Advance("darkestDay", 0.25);
+        Assert.Equal(("night", 0.25), (ease.Mood, ease.Share));
+        ease.Advance("darkestDay", 0.25);
+        ease.Advance("darkestDay", 2);
+        Assert.Equal(("darkestDay", 1.0), (ease.Mood, ease.Share));
+        ease.Advance(null, 2);
+        Assert.Equal((null as string, 0.0), (ease.Mood, ease.Share));
+        // With no light, or none of it in, the rig of the hour is handed back to the bit
+        var noon = PokemonPlatinumEngine.Graphics.OpenWorld.OpenLook.Open(12f);
+        Assert.Equal(noon, PokemonPlatinumEngine.Graphics.OpenWorld.OpenLook.InMood(noon, null, 1f));
+        Assert.Equal(noon, PokemonPlatinumEngine.Graphics.OpenWorld.OpenLook.InMood(noon, "night", 0f));
+        Assert.NotEqual(noon, PokemonPlatinumEngine.Graphics.OpenWorld.OpenLook.InMood(noon, "darkestDay", 1f));
+    }
+
+    [Fact]
+    public void TheWealdsFirstMeetingIsAStagedBattleWithTheVersionsLegendary()
+    {
+        // Plan 33 · GL6 (docs/mechanics/rulings.md, "Staged battles"): its level hidden, untouchable, passive, gone in
+        // three turns; and so it gives no way to the species
+        foreach (var (version, species) in new[] { (1, "Zacian"), (2, "Zamazenta") })
+        {
+            var story = new StoryState();
+            story.SetVar("VAR_GALAR_VERSION", version);
+            story.SetVar("VAR_GALAR_STORY", 4);
+            var party = new Party();
+            party.Add(new Pokemon(PokemonDatabase.Get("Grookey")!, 5, new Random(0)));
+            var host = new HeadlessScriptHost(story, party, new Inventory()) { Region = RegionDatabase.Galar, OpenMap = Open.Value };
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find("Shadow", "slumbering_weald")!, null);
+            runner.RunToEnd();
+            Assert.Empty(host.Problems);
+            Assert.Contains(host.Log, l => l.StartsWith($"wildbattle {species} 70", StringComparison.Ordinal) && l.Contains("hidelevel untouchable passive endafter 3"));
         }
     }
 }

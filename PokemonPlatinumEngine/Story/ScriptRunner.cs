@@ -384,7 +384,7 @@ public sealed partial class ScriptRunner
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm" or "pantry",
         // A raid fought waits for the player (plan 33 · GL3); a den looked into, its Watts and a catch's die don't
-        Op.Raid => i.Name == "fight",
+        Op.Raid => i.Name is "fight" or "boss",
         Op.Treat => false,
         // The pasture's close-up is a screen the player looks into; its ways in and out are warps, ended at once (plan 35 · BN5)
         Op.Pasture => i.Name is "care" or "pick",
