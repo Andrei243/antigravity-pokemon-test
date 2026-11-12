@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- The night aboard the S.S. Aqua looks like night: the cabin is lit as in the evening and the deck as in the morning whatever the clock says, until you go ashore.
 - The hideaways under the Underground now have walls worth digging: two a day in each glint as you come near them, and they hold Spheres and stone statues of the Pokémon living there. A statue placed in your secret base draws more Pokémon of its types into every hideaway.
 - Three more regions keep a festival of their own: Garland Days in Hau'oli City (8 to 10 August), with lei arches, a dancer teaching the Z-Move poses and a stall; the Wool Fair in Wedgehurst's Pokémon Center (1 to 3 May), with hay bales, a fleece judge and a stall; and the Sheaf Feast in Jubilife Village (22 to 24 September), with the first sheaves of the harvest. Each leaves a gift at a Gift Runner, and every Pokémon Center in Galar now has a Gift Runner.
 - Grayfall Keep has a seventh bay: once you are Alola's Champion, Team Skull's Plumeria and Guzma are among the leaders who answered the rumour.

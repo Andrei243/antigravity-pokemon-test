@@ -8575,6 +8575,22 @@ could not be read, so each look is ours, chosen from the kit's.
   the warp's fade, where `WorldRenderer.ScenesFor` waits on purpose. J10's count had added the two together before the
   harness told them apart, so there is no fault.
 
+## The night aboard by its own light (2026-11-12, plan 20, part w)
+
+Part u's decision 3 had the S.S. Aqua's cabin lit by the clock, as every room is, so a crossing made at noon showed the
+cabin in daylight while its lines told of the sunset and of sleep. Ours, not HeartGold's (whose voyage is a night aboard
+whatever the console's clock says):
+
+- *The light, not the hour*: a scene may hold the field's light as at an hour of its own (`lighting 21`), and give it
+  back to the clock (`lighting clock`). Only the picture is held; `if time`, the wild Pokémon, the radio, the day's
+  events and every rule that reads the hour go by the clock as ever, so a scene can never move the story's day.
+- *How long*: until the player next goes somewhere (every warp and door, a white-out, a new game or a loaded one), so the
+  light changes only behind a fade; a hold is never saved. A scene gives it after its `warp`, since the warp lets the
+  last one go.
+- *The crossing*: the cabin is held at nine in the evening (night, past the sunset its first line tells of), the deck at
+  seven in the morning until the player leaves it down the gangway. In a hurry the hold is made at once, as when played.
+- *A photograph's hour* (plan 12 · Q16) still comes first: a photo taken in the cabin under its own hour is as asked.
+
 ## Research (2026-11-02, plan 15 · E1, E2)
 
 Legends: Arceus's research tasks, in our own words and numbers; nothing of a game's tables.

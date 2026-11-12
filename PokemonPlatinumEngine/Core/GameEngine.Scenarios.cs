@@ -23,6 +23,7 @@ public partial class GameEngine
         world.ForgetAll();
         world.Life.Restart();
         world.Camera.Reset();
+        world.HeldHour = null;
     }
 
     internal sealed partial class Driver

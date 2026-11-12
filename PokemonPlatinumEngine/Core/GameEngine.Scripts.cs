@@ -299,6 +299,8 @@ public partial class GameEngine
         world?.Life.ClearEffects();
         // ... and its set pieces: a machine's balls, a PC left on, whoever was being shaken (plan 09 · L12)
         world?.Pieces.Clear();
+        // ... and the light a scene held, which goes back to the clock behind the way's fade (plan 20, part w)
+        if (world != null) world.HeldHour = null;
     }
 
     /// <summary>
@@ -1216,6 +1218,12 @@ public partial class GameEngine
         {
             game.world.Camera.Letterbox(on, Skipping ? 0f : seconds);
             game.flow.CameraSent = true;
+        }
+
+        public void HoldLight(float? hour)
+        {
+            // The picture's alone, at once in a hurry as played: what it leaves is the same (plan 20, part w)
+            if (game.world != null) game.world.HeldHour = hour;
         }
 
         public void SlowMotion(float share, float seconds)

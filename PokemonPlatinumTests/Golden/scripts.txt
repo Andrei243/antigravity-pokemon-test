@@ -38038,9 +38038,11 @@ way 0
   * scene ss_aqua_1f.A night aboard the ship
   * fade out
   * warp SSAqua_1F_SouthwestRooms 23 3
+  * lighting 21
   * fade in
   * fade out
   * warp SSAqua_1F 24 18
+  * lighting 7
   * fade in
   * endscene
   + FLAG_JOHTO_SS_AQUA_AT_VERMILION

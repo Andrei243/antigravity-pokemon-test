@@ -1479,6 +1479,17 @@ public static class ScriptParser
                 bool on = r.OneOf("on", "off") == "on";
                 return new Instruction { Op = Op.Letterbox, Line = line, Option = on, Seconds = r.More ? r.Seconds() : CameraRig.BarSeconds };
             }
+            // The field's light held at an hour (plan 20, part w): lighting 21 | lighting clock
+            case "lighting":
+            {
+                if (r.PeekWord("clock"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Lighting, Line = line, Option = false };
+                }
+                float hour = r.Number("an hour of the day", 0f, 23.99f);
+                return new Instruction { Op = Op.Lighting, Line = line, Option = true, Factor = hour };
+            }
             case "slowmo":
             {
                 // slowmo <share> [seconds]: the field at a share of its pace, back by itself; a share of 1 ends it now
