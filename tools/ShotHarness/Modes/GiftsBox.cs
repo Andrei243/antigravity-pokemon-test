@@ -9,7 +9,7 @@ partial class Harness
     //   gf62_courier: a Gift Runner upstairs in Jubilife's Pokémon Center, the box open and Sinnoh's Hall of Fame entered
     //     (set by hand), saying something waits;
     //   gf63_box_waiting: the box on WAITING with the Laurel Gallery's Egg;
-    //   gf64_box_card: the card under the cursor a moment on, risen;
+    //   gf64_box_card: the card under the cursor a moment on, at the screen's own resolution;
     //   gf65_gift_taken: the Egg handed over;
     //   gf66_box_album: the runner again, the words SPARROW and CLOCKWORK told, the box on CARDS with what was taken.
     // It prints the flag, what waited and what was taken.
@@ -57,7 +57,7 @@ partial class Harness
         Shot("gf62_courier");
         GiftsUntil(() => game.State == GameState.GiftBox, "the gift box");
         Frames(8); Shot("gf63_box_waiting");
-        Frames(40); Shot("gf64_box_card");
+        Frames(40); ShotCrop("gf64_box_card", 280, 210, 470, 340, 2);
         game.GiftBoxScreen.Confirm(); Frames(4);
         GiftsUntil(() => GiftsSaying("received"), "the gift handed over");
         game.Dialogue.FinishLine(); Frames(20);
