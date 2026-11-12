@@ -181,6 +181,14 @@
         null
       ]
     },
+    "hall": {
+      "enum": [
+        "League",
+        "Champion",
+        "HallOfFame",
+        null
+      ]
+    },
     "overTheDark": {
       "type": "boolean"
     },
@@ -1072,7 +1080,9 @@
               "FestivalMusicStand",
               "FestivalLeiArch",
               "FestivalHayBales",
-              "FestivalSheaves"
+              "FestivalSheaves",
+              "Seagallop",
+              "NetworkMachine"
             ]
           },
           "x": {

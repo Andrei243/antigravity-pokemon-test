@@ -180,8 +180,10 @@ public class KantoTests
         Assert.Equal("{player}'s House", Overworld.GetSignboardAt(64, 267));
         // A sign in a room is read where it is, and stays what the room has there
         var room = BuiltMaps.Value["PalletTown_PlayersHouse_2F"];
-        Assert.Contains("PC", room.GetSignboardAt(1, 1));
-        Assert.NotEqual(TileType.Signpost, room.GetGroundTile(1, 1));
+        // (the PC on the desk is read as the PC since plan 19's last notes, a sign event the overlay gives a script)
+        Assert.Contains("A map of Kanto", room.GetSignboardAt(11, 1));
+        Assert.NotEqual(TileType.Signpost, room.GetGroundTile(11, 1));
+        Assert.Equal("PC", room.TileScripts[(1, 1)]);
     }
 
     [Fact]
