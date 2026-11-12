@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Pokéstar Studios"
+    ],
+    "text": [
+      "Pokéstar Studios"
+    ]
+  },
+  "people": {
+    "23": {
+      "name": {
+        "en": [
+          "Usher"
+        ],
+        "text": [
+          "Plasator"
+        ]
+      }
+    },
+    "24": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Fată"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I always sit in the front row. When the foe's last Pokémon goes down, the whole theater cheers!"
+        ],
+        "text": [
+          "Stau mereu în primul rând. Când cade ultimul Pokémon al adversarului, tot teatrul aplaudă!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

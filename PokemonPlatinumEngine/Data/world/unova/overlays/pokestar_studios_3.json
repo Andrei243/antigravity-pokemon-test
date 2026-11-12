@@ -1,0 +1,32 @@
+{
+  // Pokéstar Studios' studio building (plan 42 · PS4, part b): Black 2's room, our people and our words. Director Wren
+  // (person 0, at the head of the hall) shoots the studio's films; the casting clerk (8) tells the studio's rank. The
+  // sound stage (warp 1) and the back rooms (warp 2) stay shut, their areas not open; the policeman (4) keeps the latter
+  "area": "pokestar_studios_3",
+  "name": "Pokéstar Studios",
+  "bgmTrack": "unova/pokestar_studios",
+  "people": {
+    "0": { "name": "Director Wren", "npcType": "gentleman", "script": "StudioDesk", "still": true },
+    "8": { "name": "Casting Clerk", "npcType": "clerk", "script": "Casting", "still": true },
+    "4": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "dialog": [ "Staff only past this door. The props in there are worth more than my whole street!" ]
+    },
+    "5": {
+      "name": "Fan",
+      "npcType": "backers_f",
+      "dialog": [ "I auditioned for a part as a ghost. They said I was too cheerful. Too cheerful!" ]
+    },
+    "6": {
+      "name": "Rich Boy",
+      "npcType": "rich_boy",
+      "dialog": [ "Father says he'll buy me a film of my very own. I'll play the hero, the villain and the getaway driver." ]
+    },
+    "9": {
+      "name": "Fan",
+      "npcType": "pokefan_m",
+      "dialog": [ "Every film here is shot in one take. If it goes wrong, they just call it a different ending!" ]
+    }
+  }
+}

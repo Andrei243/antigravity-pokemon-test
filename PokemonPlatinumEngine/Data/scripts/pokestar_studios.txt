@@ -1,0 +1,27 @@
+# Pokéstar Studios' lot (plan 42 · PS4, part b; rulings, "The film studio"). Black 2's place, our people and our words.
+# The poster wall beside the studio building's door names the films whose takes the studio has kept.
+
+
+script PosterWall
+  text "The studio's poster wall. Painted posters in warm reds hang in a long row."
+  studio stars "emptySeat"
+  if result == 0 goto GildedHour
+  text "THE EMPTY SEAT: an audience of one, and the show must end."
+label GildedHour
+  studio stars "gildedHour"
+  if result == 0 goto Letters
+  text "THE GILDED HOUR: steal the clock before it strikes."
+label Letters
+  studio stars "lettersInTheFog"
+  if result == 0 goto Thunder
+  text "LETTERS IN THE FOG: a singer gone, and three letters in green ink."
+label Thunder
+  studio stars "thunderAtMarlowePass"
+  if result == 0 goto Done
+  text "THUNDER AT MARLOWE PASS: over the summit before the storm."
+label Done
+  studio rank
+  if result >= 1 goto End
+  text "The frames for the studio's own films are still empty."
+label End
+  end

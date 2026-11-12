@@ -1,0 +1,90 @@
+{
+  "id": "lettersInTheFog",
+  "genre": "detective",
+  "rank": 4,
+  "coStar": "Captain",
+  "coStarLook": "virbank_captain",
+  "battle": {
+    "id": "lettersInTheFog",
+    "goal": "Win",
+    "turns": 8,
+    "player": [
+      { "species": "Lucario", "level": 60, "nature": "Timid", "ability": "Inner Focus", "moves": ["Aura Sphere", "Nasty Plot", "Flash Cannon"] },
+      { "species": "Alakazam", "level": 60, "nature": "Timid", "ability": "Synchronize", "moves": ["Psychic", "Calm Mind"] },
+      { "species": "Gallade", "level": 60, "nature": "Adamant", "ability": "Steadfast", "moves": ["Close Combat", "Psycho Cut"] }
+    ],
+    "foe": [
+      { "species": "Persian", "level": 40, "nature": "Jolly", "ability": "Technician", "moves": ["Fake Out", "Slash"] },
+      { "species": "Liepard", "level": 40, "nature": "Jolly", "ability": "Limber", "moves": ["Night Slash"] },
+      { "species": "Purugly", "level": 40, "nature": "Adamant", "ability": "Thick Fat", "moves": ["Body Slam"] }
+    ],
+    "foeName": "Lady Octavia Maul",
+    "foeClass": "Actress",
+    "foeLook": "lady",
+    "foeMoves": ["Slash"],
+    "rolls": [
+      { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [0] }, { "kind": "Accuracy", "values": [0] },
+      { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+    ],
+    "solution": [ { "move": "Aura Sphere" }, { "move": "Aura Sphere" }, { "move": "Aura Sphere" } ],
+    "decoy": [ { "move": "Nasty Plot" } ]
+  },
+  "beats": [
+    {
+      "id": "theLetters",
+      "speaker": "CoStar",
+      "lines": [ "Three letters, all in green ink, and the singer gone the night the fog came in. Somebody in this house wrote them." ],
+      "choices": [
+        { "id": "accuseLady", "text": "The ink is Lady Maul's. She wrote them!", "script": true },
+        { "id": "accuseButler", "text": "It was the butler. It's always the butler!" },
+        { "id": "accuseSinger", "text": "The singer wrote them herself!" }
+      ]
+    },
+    {
+      "id": "denial",
+      "when": { "foeDown": 1 },
+      "speaker": "Foe",
+      "lines": [ "How dare you, in my own parlour! I have never owned a bottle of green ink in my life!" ]
+    },
+    {
+      "id": "fogThickens",
+      "when": { "playerHpUnder": 50 },
+      "speaker": "CoStar",
+      "lines": [ "The fog's coming in through the windows. Keep your eyes on her, she'll slip away in it!" ]
+    },
+    {
+      "id": "cornered",
+      "when": { "foeDown": 2 },
+      "speaker": "CoStar",
+      "lines": [ "One more, and the parlour's ours. Then we'll see what's in that writing desk." ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "rightSuspect",
+      "result": "won",
+      "chosen": [ "accuseLady" ],
+      "speaker": "CoStar",
+      "lines": [ "Green ink in her writing desk, and the singer safe in the attic! The case is closed.", "And... cut! A proper detective story, start to finish." ],
+      "stars": 5
+    },
+    {
+      "id": "wrongSuspect",
+      "result": "won",
+      "speaker": "Foe",
+      "lines": [ "You've won the battle, but you've named the wrong one! The singer walks home in the fog, and nobody knows why.", "And... cut! Hm. The audience may want their money back on that one." ],
+      "stars": 3
+    },
+    {
+      "id": "draw",
+      "speaker": "CoStar",
+      "lines": [ "The fog's too thick. She's gone, and the letters with her. We'll call it a draw... for now.", "And... cut! We'll get it next take." ],
+      "stars": 1
+    }
+  ],
+  "takes": [
+    { "ending": "rightSuspect", "answers": [ { "move": "Aura Sphere" }, { "move": "Aura Sphere" }, { "move": "Aura Sphere" } ], "picks": [ "accuseLady" ] },
+    { "ending": "wrongSuspect", "answers": [ { "move": "Aura Sphere" }, { "move": "Aura Sphere" }, { "move": "Aura Sphere" } ], "picks": [ "accuseButler" ] },
+    { "ending": "draw", "answers": [ { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" }, { "move": "Nasty Plot" } ], "picks": [ "accuseLady" ] }
+  ]
+}

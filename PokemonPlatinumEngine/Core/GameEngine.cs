@@ -1453,7 +1453,11 @@ public partial class GameEngine
                     // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
                     AudioManager.Giant = flow.Battle.Result == BattleResult.None && flow.Battle.GiantStands;
                     // A recording watched (plan 08 · P11) ends back on the Vs. Recorder's list, and leaves nothing behind
-                    if (flow.Battle.Watching)
+                    if (KeepThePremiere())
+                    {
+                        // A take's premiere (plan 42 · PS4, part b) ends on its ending, its crowd and its box office, back in the theatre
+                    }
+                    else if (flow.Battle.Watching)
                     {
                         if (flow.Battle.WatchOver) EndWatching();
                     }

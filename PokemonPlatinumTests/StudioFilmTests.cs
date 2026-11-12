@@ -30,7 +30,8 @@ public class StudioFilmTests
     {
         foreach (var film in StudioFilms.All)
         {
-            Assert.Empty(StudioFilms.Problems(film));
+            var problems = StudioFilms.Problems(film);
+            Assert.True(problems.Count == 0, string.Join("\n", problems));
             Assert.True(Text.Has(film.TitleKey), film.TitleKey);
             Assert.True(Text.Has(film.GenreKey), film.GenreKey);
         }
@@ -236,5 +237,160 @@ public class StudioFilmTests
             }
         }
         Assert.True(tooLong.Count == 0, string.Join("\n", tooLong));
+    }
+
+    [Fact]
+    public void TheDetectiveStoryAndTheRaceOpenAtTheirRanks()
+    {
+        Assert.Equal(new[] { "emptySeat", "gildedHour", "lettersInTheFog", "thunderAtMarlowePass" }, StudioFilms.All.Select(f => f.Id));
+        var letters = StudioFilms.Get("lettersInTheFog")!;
+        var race = StudioFilms.Get("thunderAtMarlowePass")!;
+        var records = new StudioRecords();
+        Assert.False(records.Opens(letters));
+        records.Keep(new StudioTake { Film = "emptySeat", Ending = "movedOn", Stars = 4 });
+        Assert.True(records.Opens(letters));
+        Assert.False(records.Opens(race));
+        records.Keep(new StudioTake { Film = "gildedHour", Ending = "clean", Stars = 5 });
+        Assert.True(records.Opens(race));
+    }
+
+    /// <summary>Reads a take on the face, answering its menus with the written take's moves and its lines with its picks.</summary>
+    private static BattleEngine ShootOnTheFace(StudioFilm film, StudioTakeScript script)
+    {
+        var battle = Take(film);
+        var picks = new Queue<string>(script.Picks);
+        var answers = new Queue<PuzzleAnswer>(script.Answers);
+        for (int i = 0; i < 4000; i++)
+        {
+            if (battle.IsLearningMove && battle.LearnStep == LearnStep.Line)
+            {
+                string? pick = picks.Count > 0 ? picks.Dequeue() : null;
+                var choice = film.Beats.SelectMany(b => b.Choices).FirstOrDefault(c => c.Id == pick);
+                int index = choice == null ? 0 : Math.Max(0, battle.LearnAnswers.ToList().IndexOf(PlayerIdentity.Fill(choice.Text)));
+                battle.ChooseLearn(index);
+                battle.Update(1f / 60f);
+                continue;
+            }
+            if (battle.IsBattleOver) break;
+            if (battle.HUD.MenuState == BattleMenuState.Main)
+            {
+                if (battle.Core.Turn >= film.Battle.Turns || answers.Count == 0) break;
+                var lead = battle.Core.PlayerSlots[0].Pokemon!;
+                string move = answers.Dequeue().Move!;
+                battle.SelectMove(lead.Moves.FindIndex(m => m.Name == move));
+            }
+            else battle.ConfirmMessage();
+            battle.Update(1f / 60f);
+        }
+        battle.WrapUpStudio();
+        for (int i = 0; i < 400 && !battle.StudioDone; i++)
+        {
+            battle.ConfirmMessage();
+            battle.Update(1f / 60f);
+        }
+        return battle;
+    }
+
+    [Fact]
+    public void EveryTakeKeptAsAFileIsShownAtItsPremiereToTheSameEnding()
+    {
+        foreach (var film in StudioFilms.All)
+            foreach (var script in film.Takes)
+            {
+                var shot = ShootOnTheFace(film, script);
+                Assert.True(shot.StudioDone, $"{film.Id}/{script.Ending}: the take never ended");
+                Assert.Equal(script.Ending, shot.StudioTake!.Ending);
+                var file = shot.RecordFile(new DateTime(2026, 11, 12));
+                Assert.NotNull(file);
+                Assert.Equal(film.Id, file!.StudioFilm);
+                Assert.Equal(shot.StudioTake.Chosen, file.StudioPicks);
+                // Read back from its text, as the premiere reads it
+                var reading = BattleRecordFile.Read(file.Serialize());
+                Assert.Equal(ReplayRefusal.None, reading.Refused);
+                Assert.Equal(Golden.BattleText.Written(shot.Core), Golden.BattleText.Written(reading.File!.Replay()));
+
+                var premiere = BattleEngine.ForReplay(reading.File, scene: false);
+                Assert.True(premiere.Studio!.Premiere);
+                var seen = new List<string>();
+                for (int i = 0; i < 20000 && !premiere.ReelOver; i++)
+                {
+                    if (premiere.IsWaitingForConfirm && (seen.Count == 0 || seen[^1] != premiere.CurrentMessage)) seen.Add(premiere.CurrentMessage);
+                    premiere.Watch(0.1f, fast: true, leave: false);
+                    Assert.False(premiere.WatchBroke, $"{film.Id}/{script.Ending}: the premiere broke off");
+                }
+                Assert.True(premiere.ReelOver, $"{film.Id}/{script.Ending}: the reel never ended");
+                premiere.WrapUpStudio();
+                for (int i = 0; i < 20000 && !premiere.StudioDone; i++)
+                {
+                    if (premiere.IsWaitingForConfirm && (seen.Count == 0 || seen[^1] != premiere.CurrentMessage)) seen.Add(premiere.CurrentMessage);
+                    premiere.Watch(0.1f, fast: true, leave: false);
+                }
+                Assert.True(premiere.StudioDone, $"{film.Id}/{script.Ending}: the premiere's ending never ended");
+                Assert.Equal(script.Ending, premiere.StudioTake!.Ending);
+                Assert.Equal(shot.StudioTake.Chosen, premiere.StudioTake.Chosen);
+                Assert.Equal(Golden.BattleText.Written(shot.Core), Golden.BattleText.Written(premiere.Core));
+                foreach (string pick in shot.StudioTake.Chosen)
+                {
+                    string said = PlayerIdentity.Fill(film.Beats.SelectMany(b => b.Choices).Single(c => c.Id == pick).Text);
+                    Assert.Contains(said, seen);
+                }
+            }
+    }
+
+    [Fact]
+    public void ATakeOfAFilmTheDataLacksIsRefused()
+    {
+        var film = StudioFilms.Get("emptySeat")!;
+        var file = ShootOnTheFace(film, film.Takes[0]).RecordFile(new DateTime(2026, 11, 12))!;
+        file.StudioFilm = "noSuchFilm";
+        Assert.Equal(ReplayRefusal.NoSuchFilm, BattleRecordFile.Read(file.Serialize()).Refused);
+        Assert.False(string.IsNullOrEmpty(BattleRecordFile.Notice(ReplayRefusal.NoSuchFilm)));
+    }
+
+    [Fact]
+    public void ABattleOfNoFilmKeepsNoFilmInItsFile()
+    {
+        var film = StudioFilms.Get("emptySeat")!;
+        var plain = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = Puzzles.PlayerParty(film.Battle),
+            Inventory = Puzzles.Bag(film.Battle),
+            Pokedex = new Pokedex(),
+            Trainers = new List<Trainer> { Puzzles.FoeTrainer(film.Battle)! },
+            Random = Puzzles.Random(film.Battle),
+            Rules = film.Battle.RulesSet,
+            Conditions = Puzzles.Conditions(film.Battle),
+            PlayerName = "Player"
+        });
+        var file = plain.RecordFile(new DateTime(2026, 11, 12))!;
+        Assert.Null(file.StudioFilm);
+        Assert.DoesNotContain("studioFilm", file.Serialize());
+    }
+
+    [Fact]
+    public void TheGatesFarDoorOpensOntoTheLotOnceRoxiesBadgeIsWon()
+    {
+        var unova = World.LoadAll().Single(w => w.Index.Region == "Unova");
+        foreach (string key in new[] { "pokestar_studios", "pokestar_studios_3", "pokestar_studios_4" }) Assert.Contains(key, unova.Index.Areas);
+        var doors = unova.Overlay("virbank_gate_gate")!.Doors!;
+        Assert.Equal(3, doors.Count);
+        Assert.All(doors, d => { Assert.Equal("PokestarStudios", d.Map); Assert.Equal("FLAG_UNOVA_GOT_TM09", d.OpenedBy); });
+        // Roxie's script sets the flag with the TM she gives right after her Badge
+        string gym = System.IO.File.ReadAllText(System.IO.Path.Combine(AppContext.BaseDirectory, "Data", "scripts", "virbank_city_gym_2.txt"));
+        Assert.True(gym.IndexOf("givebadge toxic", StringComparison.Ordinal) < gym.IndexOf("setflag FLAG_UNOVA_GOT_TM09", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void ThePremieresBoxOfficeGrowsWithTheStars()
+    {
+        foreach (var film in StudioFilms.All)
+            for (int stars = 1; stars < StudioFilms.MostStars; stars++)
+                Assert.True(StudioFilms.BoxOffice(film, stars + 1) > StudioFilms.BoxOffice(film, stars));
+        var host = new PokemonPlatinumEngine.Story.HeadlessScriptHost();
+        var records = host.Studio!;
+        Assert.False(host.StudioPremiere(StudioFilms.Get("emptySeat")!));
+        records.Keep(new StudioTake { Film = "emptySeat", Ending = "takesABow", Stars = 5 });
+        Assert.True(host.StudioPremiere(StudioFilms.Get("emptySeat")!));
+        Assert.Equal(StudioFilms.BoxOffice(StudioFilms.Get("emptySeat")!, 5), records.LastBoxOffice);
     }
 }

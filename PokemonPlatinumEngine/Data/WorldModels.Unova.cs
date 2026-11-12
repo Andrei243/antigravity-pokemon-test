@@ -55,6 +55,18 @@ public static partial class WorldModels
         Thing("d23_obj", PropType.Headframe, "a tank, a stack or a tower of the Virbank Complex, steel as tall as its model"),
         Thing("d7_inaba", PropType.Container, "a storage shed in the Virbank Complex"),
 
+        // ---------------------------------------------------------------- Pokéstar Studios (c15_)
+        // Plan 42 · PS4, part b: the studios' lot behind Virbank's gate, built as Virbank builds (Architecture.Dockyard)
+        Built("c15_studio", BuildingKind.Hall, "the studio building of Pokéstar Studios, where its films are shot", Architecture.Dockyard, sign: "STUDIO"),
+        Built("c15_theater", BuildingKind.Hall, "the theater of Pokéstar Studios, where its films have their premieres", Architecture.Dockyard, sign: "THEATER"),
+        Built("c15_whouse", BuildingKind.House, "a set's warehouse front on the studios' lot", Architecture.Dockyard),
+        Built("c15_trailer", BuildingKind.House, "a dressing trailer on the studios' lot", Architecture.Dockyard),
+        Built("c15_gate", BuildingKind.House, "a set's gateway on the studios' lot", Architecture.Dockyard),
+        Thing("c15_wood", PropType.Crates, "a stack of a set's timber in the middle of the studios' lot"),
+        Thing("c15_fountain", PropType.Fountain, "a set's fountain on the studios' lot"),
+        Thing("c15_sign", PropType.Pavilion, "the great sign of Pokéstar Studios over its theater"),
+        Ground("door_pwood01", "a wooden door of the studios' lot (the warp's tile draws it)"),
+
         // ---------------------------------------------------------------- Castelia City (c03_, c3_)
         // Plan 22 · U5, part c: Castelia's way of building (Architecture.Metropolis). Its towers are drawn into each
         // street's own model with no prop of their own; the reader writes a prop of ours for each block of them

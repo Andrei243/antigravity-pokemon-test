@@ -6,6 +6,7 @@ using System.Text.Json;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.Studio;
 using PokemonPlatinumEngine.Battle.Sim.Ai;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
@@ -23,7 +24,12 @@ public enum ReplayRefusal
     /// Written by a game whose species, moves, abilities, items or trainers were other than these
     /// (<see cref="GameDataFiles.Version"/>): played on, it would be another battle (plan 08's risk "A replay goes stale").
     /// </summary>
-    OtherDataVersion
+    OtherDataVersion,
+    /// <summary>
+    /// A take of the film studio (plan 42 · PS4) whose film this game's data lacks: its foe's moves and fixed rolls are
+    /// the film's, so without it the take would be another battle.
+    /// </summary>
+    NoSuchFilm
 }
 
 /// <summary>What reading a recorded battle's file came to: the file, or why there is none.</summary>
@@ -144,6 +150,16 @@ public sealed class BattleRecordFile
     public BattleResult Result { get; set; }
     public int Turns { get; set; }
 
+    /// <summary>
+    /// The film a take of the studio was shot for (plan 42 · PS4), by its id; null for every other battle. A take's foe
+    /// chooses by the film's moves turn by turn and its chance has the film's fixed rolls, which <see cref="ToSetup"/>
+    /// takes from the film, and a file whose film the data lacks is refused (<see cref="ReplayRefusal.NoSuchFilm"/>).
+    /// </summary>
+    public string? StudioFilm { get; set; }
+
+    /// <summary>The lines the player chose in the take, in order: what the premiere's director picks again.</summary>
+    public List<string>? StudioPicks { get; set; }
+
     // ------------------------------------------------------------------ taking it
 
     /// <summary>
@@ -263,6 +279,8 @@ public sealed class BattleRecordFile
         Pokemon? first = trainers.Count > 0 && FirstTrainerIndex >= 0 && FirstTrainerIndex < trainers[0].Party.Count
             ? trainers[0].Party.Members[FirstTrainerIndex] : null;
         var caught = Conditions.Caught.ToHashSet();
+        // A take of the studio fights on the film's own chance and its foe's moves (plan 42 · PS4)
+        var film = StudioFilm is { } filmId ? StudioFilms.Get(filmId) : null;
         return new CoreSetup
         {
             PlayerParty = party,
@@ -270,7 +288,7 @@ public sealed class BattleRecordFile
             Trainers = trainers,
             FirstTrainerPokemon = first,
             Format = Format,
-            Random = new BattleRandom(Seed),
+            Random = film != null ? Puzzles.Random(film.Battle) : new BattleRandom(Seed),
             Rules = rules,
             Conditions = new BattleConditions
             {
@@ -297,7 +315,7 @@ public sealed class BattleRecordFile
             PlayerName = PlayerName,
             PlayerController = null,
             // A link battle's other side was a player too, whose answers are in the record (plan 28 · I5)
-            EnemyController = Link == true ? null : TrainerAi.Instance,
+            EnemyController = Link == true ? null : film != null ? new PuzzleFoe(film.Battle.FoeMoves) : TrainerAi.Instance,
             // And a friend's at the partner's place (plan 13 · V20)
             PartnerController = FriendPartner == true ? null : TrainerAi.Instance,
             Kind = Kind,
@@ -363,6 +381,7 @@ public sealed class BattleRecordFile
         if (file == null || file.Player.Count == 0 && file.Wild.Count == 0) return new RecordFileReading(null, ReplayRefusal.Damaged);
         if (file.FileVersion > CurrentFileVersion || file.FileVersion < 1) return new RecordFileReading(null, ReplayRefusal.OtherFileVersion);
         if (file.DataVersion != (dataVersion ?? GameDataFiles.Version)) return new RecordFileReading(null, ReplayRefusal.OtherDataVersion);
+        if (file.StudioFilm is { } film && StudioFilms.Get(film) == null) return new RecordFileReading(null, ReplayRefusal.NoSuchFilm);
         return new RecordFileReading(file, ReplayRefusal.None);
     }
 
@@ -389,6 +408,7 @@ public sealed class BattleRecordFile
         ReplayRefusal.OtherDataVersion => Text.Of("engine.recordBattle.otherVersion"),
         ReplayRefusal.OtherFileVersion => Text.Of("engine.recordBattle.otherFile"),
         ReplayRefusal.Damaged => Text.Of("engine.recordBattle.damaged"),
+        ReplayRefusal.NoSuchFilm => Text.Of("engine.recordBattle.noSuchFilm"),
         _ => ""
     };
 

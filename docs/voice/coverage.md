@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1698 | 1635 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13148 | 12614 | 534 | 17 | 36 |
-| People of the world (`world:`) | 8059 | 7997 | 62 | 4 | 0 |
-| **All** | 23189 | 22527 | 662 | 22 | 36 |
+| Scripts (`script:`) | 13163 | 12628 | 535 | 17 | 36 |
+| People of the world (`world:`) | 8071 | 8009 | 62 | 4 | 0 |
+| **All** | 23216 | 22553 | 663 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,14 +22,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1067 |
+| a question's answers | 1077 |
 | a sign | 1768 |
 | the game's own voice (speaker none) | 325 |
-| the game's own voice (text) | 2162 |
+| the game's own voice (text) | 2168 |
 
 ## The cast
 
-- Named characters: 952 voices (364 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 954 voices (366 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 583 voices.
 - Archetypes in use: 251, with 758 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 354.
@@ -45,7 +45,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `rival` | 602 | 20 |
 | `look:clerk (any)` | 584 | 15 |
 | `look:lady (any)` | 574 | 10 |
-| `look:lass (any)` | 551 | 22 |
+| `look:lass (any)` | 552 | 22 |
 | `look:youngster (any)` | 516 | 32 |
 | `@self` | 354 | 44 |
 | `look:attendant (any)` | 335 | 12 |
@@ -176,10 +176,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `kurt` | 35 | 6 |
 | `look:battle_girl (any)` | 35 | 2 |
 | `move_deleter` | 35 | 5 |
+| `policeman` | 35 | 0 |
 | `class:super_nerd (any)` | 34 | 0 |
 | `clay` | 34 | 3 |
+| `look:artist (any)` | 34 | 0 |
 | `mr_briney` | 34 | 1 |
-| `policeman` | 34 | 0 |
 | `psychic` | 34 | 1 |
 | `saturn` | 34 | 0 |
 | `norman` | 33 | 0 |
@@ -191,7 +192,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:channeler (any)` | 32 | 0 |
 | `giovanni` | 32 | 2 |
 | `hop` | 32 | 0 |
-| `look:artist (any)` | 32 | 0 |
 | `look:expert_m (any)` | 32 | 0 |
 | `zinzolin` | 32 | 0 |
 | `kimono_girl` | 31 | 0 |
@@ -289,8 +289,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:double_team (any)` | 20 | 0 |
 | `class:pkmn_ranger (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
+| `fan` | 20 | 0 |
 | `gladion` | 20 | 4 |
 | `look:announcer (any)` | 20 | 12 |
+| `look:rich_boy (any)` | 20 | 0 |
 | `morty` | 20 | 0 |
 
 ## Casting problems
