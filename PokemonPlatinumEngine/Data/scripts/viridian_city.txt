@@ -84,3 +84,8 @@ script Tutorial
   setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 2
   endscene
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "kanto_viridian_square"
+  end

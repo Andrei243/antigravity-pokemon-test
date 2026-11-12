@@ -260,7 +260,8 @@ internal static class BuildingModels
         bool great = s.Shaft > 96;
         bool beacon = lighthouse || s.Gear.HasFlag(RoofGear.Beacon);
         int count = s.StageCount > 0 ? s.StageCount : lighthouse ? 2 : 3;
-        int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150, great ? 380 : 300);
+        int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150,
+            b.TallestRows > 0 ? b.TallestRows : great ? 380 : 300);
         // A skyscraper's model is cut off where the camera stops seeing it (Castelia's towers end in roofs a few tiles up):
         // it stands at least as tall as a great tower's middle
         if (s.FlatTop) total = Math.Max(total, 300);
@@ -681,7 +682,7 @@ internal static class BuildingModels
     /// <summary>The entrance block: taller than the eave, standing proud of the wall, with the sign over the door.</summary>
     private static void Portal(KitBuilder kit, BuildingInfo b, BuildingStyle s, string id, float cx, int zF)
     {
-        int w = s.Portal, d = BuildingArt.PortalDepth + 4, h = BuildingArt.PortalHeight;
+        int w = s.Portal, d = BuildingArt.PortalDepth + 4, h = BuildingArt.PortalHeightOf(s);
         var front = kit.Face(id + ".portal", w, h, c => BuildingArt.PaintPortal(c, b, s));
         var side = kit.Face(id + ".portal.side", d, h, c => BuildingArt.PaintPortalSide(c, s));
         var top = kit.Face(id + ".portal.top", w, d, c => BuildingArt.PaintPortalTop(c, s));

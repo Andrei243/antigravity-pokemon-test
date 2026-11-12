@@ -27,7 +27,7 @@ public static class Recruits
 
     internal static void MayAsk(DelveRun run, DelveMon resident)
     {
-        if (run.Asking != null || run.Team.Count >= DelveRun.MostOnTheTeam) return;
+        if (run.Asking != null || run.Team.Count >= DelveRun.MostOnTheTeam || resident.IsGuardian) return;
         int roll = run.FixedRecruitRoll ?? run.Rng.Next(100);
         if (roll >= ChanceOf(resident.Pokemon, run.Leader.Pokemon.Level)) return;
         run.Asking = resident;

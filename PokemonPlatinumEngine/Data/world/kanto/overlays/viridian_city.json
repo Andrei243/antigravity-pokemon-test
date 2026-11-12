@@ -3,6 +3,12 @@
   // The old man who lies across the road north and his lesson in catching are the story's (K3, viridian_city.txt);
   // the Dream Eater tutor only talks
   "area": "viridian_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 67, "z": 195, "kind": "Tree", "room": 2 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 63, "y": 197, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 63, "z": 197, "script": "PhotoSpot" } ],
   "bgmTrack": "kanto/viridian",
   "trees": "Round",
   "architecture": "Evergreen",

@@ -291,6 +291,12 @@ public class ScriptTests
           tour points
           tour report
           tour reward
+          delve go "brinecave"
+          delve open "rootwood"
+          delve able
+          delve board
+          delve rank
+          delve reward
           train open
           train drill
           train reset all

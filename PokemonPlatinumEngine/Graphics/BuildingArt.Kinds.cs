@@ -35,7 +35,7 @@ internal static partial class BuildingArt
     private static WallKind PorchWall(BuildingStyle s) => s.Pitched && s.Portal > 0 ? WallKind.Plaster : s.Wall;
 
     /// <summary>The height of a porch: an entrance block's under a pitched roof, one storey under a flat one.</summary>
-    public static int PorchHeight(BuildingStyle s) => s.Pitched ? PortalHeight : GroundStorey + TopBand;
+    public static int PorchHeight(BuildingStyle s) => s.Pitched ? PortalHeightOf(s) : GroundStorey + s.GroundLift + TopBand;
 
     // ------------------------------------------------------------------ materials
 
@@ -294,7 +294,7 @@ internal static partial class BuildingArt
             if (b.Doors.Exists(d => Math.Abs(d.X - tile) <= 1) || s.Window is WindowKind.None or WindowKind.Slit) continue;
             int cx = i * Bay + Bay / 2 - shift;
             if (cx - 14 < 2 || cx + 14 > w - 2 || h - top < 44) continue;
-            ShopWindow(c, cx, h - 13, light);
+            ShopWindow(c, cx, h - 13 - s.SillRise, light);
         }
     }
 
@@ -448,11 +448,17 @@ internal static partial class BuildingArt
 
         if (h < 30) return;
         int count = Math.Max(1, w / Bay);
-        for (int i = 0; i < count; i++)
+        // A tall tower's stage (StackedWindows) has a row to every storey, from the foot up to under its ledge
+        const int storey = 44;
+        for (int foot = h - 6; ; foot -= storey)
         {
-            int cx = w * (2 * i + 1) / (2 * count);
-            if (s.Window == WindowKind.Arched && h >= 40) ArchedWindow(c, cx, h - 6, light);
-            else SlitWindow(c, cx, h - 6, light, teal: false);
+            for (int i = 0; i < count; i++)
+            {
+                int cx = w * (2 * i + 1) / (2 * count);
+                if (s.Window == WindowKind.Arched && foot >= 40) ArchedWindow(c, cx, foot, light);
+                else SlitWindow(c, cx, foot, light, teal: false);
+            }
+            if (!s.StackedWindows || foot - storey < 30) break;
         }
     }
 

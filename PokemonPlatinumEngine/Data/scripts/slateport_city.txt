@@ -250,3 +250,8 @@ label Short
 label Bye
   say "Come back when you're hungry!"
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "hoenn_slateport_market"
+  end

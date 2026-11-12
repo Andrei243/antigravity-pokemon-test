@@ -49,6 +49,7 @@ internal static class CharacterFaces
     public static PixelCanvas Paint(CharacterStyle s, FaceLayout face, Expression expression, bool blink, bool mouthOpen)
     {
         // A face of the grown kit has a layout and a size of its own (plan 30 · FM4, part b)
+        if (face.Modelled) return ModelledFaces.Paint(s, face, expression, blink, mouthOpen);
         if (s.Kit == Data.CharacterKit.Grown) return GrownFaces.Paint(s, face, expression, blink, mouthOpen);
         const int S = TextureSize;
         var canvas = new PixelCanvas(S, S);

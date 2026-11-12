@@ -29,10 +29,11 @@ public class LevelCapTests
     // ================================================================== the cap
 
     [Fact]
-    public void TheCapIsAHundredByPlatinumsRulesAndTwoHundredAndSixtyByTheModernOnes()
+    public void TheCapIsAHundredByPlatinumsRulesAndThreeHundredByTheModernOnes()
     {
         Assert.Equal(100, Ruleset.Platinum.LevelCap);
-        Assert.Equal(260, Ruleset.Modern.LevelCap);
+        Assert.Equal(300, Ruleset.Modern.LevelCap);
+        Assert.Equal(260, Ruleset.FormerHighestLevel);
         Assert.Equal(Ruleset.HighestLevel, Ruleset.Modern.LevelCap);
         // The game in progress is Platinum's in a test, as Ruleset.Current always is
         Assert.Equal(100, Pokemon.Cap);
@@ -98,7 +99,7 @@ public class LevelCapTests
     public void TheCurvesAtTheHighestLevelFitTheirNumbers()
     {
         foreach (var rate in Enum.GetValues<GrowthRate>())
-            Assert.InRange(Pokemon.GetExpForLevel(Ruleset.HighestLevel, rate), 1, 40_000_000);
+            Assert.InRange(Pokemon.GetExpForLevel(Ruleset.HighestLevel, rate), 1, 50_000_000);
     }
 
     // ================================================================== EXP and what stopped at 100
@@ -117,9 +118,9 @@ public class LevelCapTests
         Assert.Equal(150, modern.Level);
 
         // And no further than it
-        var top = Made("Machop", 259);
+        var top = Made("Machop", 299);
         top.GainExp(int.MaxValue / 2, out _, out _, Ruleset.Modern.LevelCap);
-        Assert.Equal(260, top.Level);
+        Assert.Equal(300, top.Level);
         Assert.False(top.GainExp(1000, out _, out _, Ruleset.Modern.LevelCap));
     }
 
@@ -149,7 +150,10 @@ public class LevelCapTests
     [Fact]
     public void TheDamageFormulaHoldsAtTheHighestLevel()
     {
-        // (2 × 260 / 5 + 2) = 106: 6,000 × 250 × 106 is past an int, so the formula works in a long
+        // (2 × 300 / 5 + 2) = 122 at plan 46 · CP15's cap: 6,000 × 250 × 122 is past an int, so the formula works in a long
+        Assert.Equal(6_000L * 250 * 122 / 1 / 50 + 2, Formulas.BaseDamage(300, 250, 6_000, 1, burned: false, spread: false));
+        Assert.Equal(6_000L * 250 * 122 / 1 / 50 + 2, Formulas.ModernBaseDamage(300, 250, 6_000, 1));
+        // and at 260, the cap before it: (2 × 260 / 5 + 2) = 106
         Assert.Equal(6_000L * 250 * 106 / 1 / 50 + 2, Formulas.BaseDamage(260, 250, 6_000, 1, burned: false, spread: false));
         Assert.Equal(6_000L * 250 * 106 / 1 / 50 + 2, Formulas.ModernBaseDamage(260, 250, 6_000, 1));
         // And under 100 it is what it always was
@@ -173,8 +177,9 @@ public class LevelCapTests
 
         // A single pair moves every level by the same amount
         Assert.Equal(12, LevelMapping.From(new List<int[]> { new[] { 5, 10 } })!.Map(7));
-        // Held to the highest level
-        Assert.Equal(Ruleset.HighestLevel, LevelMapping.From(new List<int[]> { new[] { 2, 250 }, new[] { 10, 260 } })!.Map(100));
+        // Held to the former top, 260, where the mapping ends at or under it (plan 46 · CP15), and to the highest level past it
+        Assert.Equal(Ruleset.FormerHighestLevel, LevelMapping.From(new List<int[]> { new[] { 2, 250 }, new[] { 10, 260 } })!.Map(100));
+        Assert.Equal(Ruleset.HighestLevel, LevelMapping.From(new List<int[]> { new[] { 2, 250 }, new[] { 10, 270 } })!.Map(100));
         // None is no mapping
         Assert.Null(LevelMapping.From(null));
         Assert.Null(LevelMapping.From(new List<int[]>()));
@@ -186,7 +191,7 @@ public class LevelCapTests
         Assert.Throws<FormatException>(() => LevelMapping.From(new List<int[]> { new[] { 10, 50 }, new[] { 5, 60 } }));
         Assert.Throws<FormatException>(() => LevelMapping.From(new List<int[]> { new[] { 5, 60 }, new[] { 10, 50 } }));
         Assert.Throws<FormatException>(() => LevelMapping.From(new List<int[]> { new[] { 5, 60, 7 } }));
-        Assert.Throws<FormatException>(() => LevelMapping.From(new List<int[]> { new[] { 5, 300 } }));
+        Assert.Throws<FormatException>(() => LevelMapping.From(new List<int[]> { new[] { 5, 301 } }));
     }
 
     [Fact]

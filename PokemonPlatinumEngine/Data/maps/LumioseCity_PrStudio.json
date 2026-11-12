@@ -97,9 +97,7 @@
       "x": 8,
       "y": 6,
       "facing": "Left",
-      "dialog": [
-        "Hold still... and smile with your eyes. The lens loves a Trainer who looks like they mean it."
-      ]
+      "script": "Photographer"
     },
     {
       "id": "hopeful",

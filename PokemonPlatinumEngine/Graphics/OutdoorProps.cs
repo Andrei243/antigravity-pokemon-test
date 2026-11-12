@@ -976,6 +976,30 @@ internal static class OutdoorProps
 /// </summary>
 public static class ThingCards
 {
+    /// <summary>
+    /// The art of a kind of thing where the world is built to a grown body (<see cref="GrownScale"/>): a festival's thing
+    /// that a grown crowd stands under drawn larger, at the scenery's 32 texels to the tile still (style guide,
+    /// "Festivals", "In a grown region"); every other kind as anywhere.
+    /// </summary>
+    public static PixelCanvas Paint(PropType kind, bool grown)
+    {
+        if (!grown || !HasGrownSize(kind)) return Paint(kind);
+        var (w, h) = GrownSizeOf(kind);
+        var art = new PixelCanvas(w, h);
+        FestivalArt.PaintLeiArch(art);
+        return art;
+    }
+
+    /// <summary>Whether a kind is drawn larger where the world is built to a grown body: the lei arch, which a grown body walks under.</summary>
+    public static bool HasGrownSize(PropType kind) => kind == PropType.FestivalLeiArch;
+
+    /// <summary>A grown region's size of a kind of thing that has one, in texels.</summary>
+    public static (int Width, int Height) GrownSizeOf(PropType kind) => kind switch
+    {
+        PropType.FestivalLeiArch => (FestivalArt.GrownLeiWidth, FestivalArt.GrownLeiHeight),
+        _ => (0, 0)
+    };
+
     /// <summary>The art of a kind of thing: an obstacle's, or an item's ball for anything else.</summary>
     public static PixelCanvas Paint(PropType kind)
     {

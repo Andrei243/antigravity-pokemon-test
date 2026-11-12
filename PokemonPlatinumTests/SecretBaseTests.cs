@@ -98,7 +98,9 @@ public class SecretBaseTests
         Assert.Equal(FieldMoveError.Partner, FieldMoveRules.Check(FieldMove.SecretPower, new FieldSpot { SecretBase = true, Partner = true }, story));
         var knower = Knowing("Secret Power", "Tackle");
         Assert.Contains(PartyScreen.ActionsFor(knower, RegionDatabase.Hoenn), a => a.Move == FieldMove.SecretPower);
-        Assert.DoesNotContain(PartyScreen.ActionsFor(knower, RegionDatabase.Sinnoh), a => a.Move == FieldMove.SecretPower);
+        // ... and in every region whose overlays lay spots of ours for the home (plan 43 · LF7), but none without
+        Assert.Contains(PartyScreen.ActionsFor(knower, RegionDatabase.Sinnoh), a => a.Move == FieldMove.SecretPower);
+        Assert.DoesNotContain(PartyScreen.ActionsFor(knower, RegionDatabase.Alola), a => a.Move == FieldMove.SecretPower);
         // The spot is the map's: in front of it, and not beside it
         var map = new Map(5, 5) { Name = "Spot" };
         map.SecretBaseSpots[(2, 1)] = 161;
@@ -138,10 +140,11 @@ public class SecretBaseTests
         var own = Face(Knowing("Tackle"), check: 2);
         Assert.Contains("openbase enter", own.Log);
         Assert.DoesNotContain("openbase open", own.Log);
-        // A base elsewhere: asked whether to move it, then asked to use the move
+        // A base elsewhere: asked once whether its door opens here instead, the room going with its door (plan 43 · LF7)
         var elsewhere = Face(Knowing("Secret Power"), check: 3);
-        Assert.Equal(2, elsewhere.Asked.Count);
-        Assert.Contains("openbase open", elsewhere.Log);
+        Assert.Single(elsewhere.Asked);
+        Assert.Contains("openbase move", elsewhere.Log);
+        Assert.DoesNotContain("openbase open", elsewhere.Log);
     }
 
     /// <summary>A room of five tiles by four with a wall over it, a rock in its middle and the tile inside its door kept clear.</summary>

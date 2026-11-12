@@ -214,6 +214,8 @@ if (mode == "kalos") h.KalosMode();
 if (mode == "kalosgrown") h.KalosGrownMode();
 // Plan 33 · GL5, its second session: Galar's places on the open world, a marker each (not part of all)
 if (mode == "galar") h.GalarMode();
+// A shots pass (2026-11-12): the last waves' places with few shots or none (not part of all)
+if (mode == "leftovers") h.LeftoversMode();
 if (mode == "alola") h.AlolaMode();
 if (mode == "ulaula") h.UlaulaMode();
 // Plan 23 · Z6: the rest of Akala and a totem's battle
@@ -265,6 +267,7 @@ if (mode == "bonding") h.BondingMode();
 if (mode == "gifts") h.GiftsMode();
 if (mode == "lifestyle") h.LifestyleMode();
 if (mode == "tour") h.TourMode();
+if (mode == "delve") h.DelveMode();
 
 h.Close();
 Raylib.CloseWindow();

@@ -88,6 +88,21 @@ public sealed class SecretBaseSave
     public List<PlacedDecoration> Placed { get; set; } = new();
     public int TimesEntered { get; set; }
 
+    /// <summary>
+    /// The room the spot the door stands at would make (plan 43 · LF7): the room goes with its door, so <see cref="Id"/>
+    /// is the room the base was made in, and MOVE IN HERE (<c>openbase movein</c>) takes this one. 0 for a save from
+    /// before, whose door stands at the spot its room was made at (<see cref="SpotRoom"/>).
+    /// </summary>
+    public int DoorRoom { get; set; }
+
+    /// <summary>The room of the spot the door stands at: <see cref="DoorRoom"/>, or the base's own room in an older save.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public int SpotRoom => DoorRoom > 0 ? DoorRoom : Id;
+
+    /// <summary>Each room's last layout (plan 43 · LF7), by the room's id, kept as MOVE IN HERE leaves it; null while none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<int, List<PlacedDecoration>>? Layouts { get; set; }
+
     public SecretBaseLayout? Layout => SecretBaseLayouts.Of(Id);
 }
 
@@ -155,6 +170,17 @@ public sealed class BaseFloor
 /// </summary>
 public static class SecretBases
 {
+    /// <summary>
+    /// The regions with spots where the home opens (plan 43 · LF7): Hoenn's own, and those whose overlays lay spots of
+    /// ours. Secret Power is a field move there alone.
+    /// </summary>
+    public static readonly IReadOnlyList<string> RegionsWithSpots = new[]
+    {
+        Data.RegionDatabase.Hoenn, Data.RegionDatabase.Sinnoh, Data.RegionDatabase.Kanto, Data.RegionDatabase.Johto, Data.RegionDatabase.Unova, Data.RegionDatabase.Kalos
+    };
+
+    public static bool HasSpots(string? region) => region != null && RegionsWithSpots.Contains(region, StringComparer.OrdinalIgnoreCase);
+
     /// <summary>How many decorations may stand in a base at once (Emerald's <c>DECOR_MAX_SECRET_BASE</c>).</summary>
     public const int MostOut = 16;
 
@@ -179,6 +205,43 @@ public static class SecretBases
     {
         if (old != null) PackUp(old, store);
         return new SecretBaseSave { Id = id, Map = map, X = x, Y = y, OutX = outX, OutY = outY };
+    }
+
+    /// <summary>
+    /// The door of the home moved to another spot (plan 43 · LF7; decision 3, the room goes with its door): the room and
+    /// everything standing in it as they were, only the way in and out at the spot now, whatever its region.
+    /// </summary>
+    public static void MoveDoor(SecretBaseSave home, int spotRoom, string map, int x, int y, int outX, int outY)
+    {
+        home.Map = map;
+        home.X = x;
+        home.Y = y;
+        home.OutX = outX;
+        home.OutY = outY;
+        home.DoorRoom = spotRoom;
+    }
+
+    /// <summary>
+    /// MOVE IN HERE (plan 43 · LF7): the home takes the room of the spot its door stands at. The room left keeps its
+    /// layout (<see cref="SecretBaseSave.Layouts"/>), its pieces back in the PC; the room come to is laid as it was last
+    /// left, each piece that is still in the PC and not standing elsewhere. False where the door's room is the home's own.
+    /// </summary>
+    public static bool MoveIn(SecretBaseSave home, List<StoredDecoration> store)
+    {
+        int to = home.SpotRoom;
+        if (to == home.Id || SecretBaseLayouts.Of(to) == null) return false;
+        home.Layouts ??= new Dictionary<int, List<PlacedDecoration>>();
+        home.Layouts[home.Id] = home.Placed.Select(p => new PlacedDecoration { Slot = p.Slot, X = p.X, Y = p.Y }).ToList();
+        PackUp(home, store);
+        home.Id = to;
+        if (home.Layouts.TryGetValue(to, out var last))
+            foreach (var p in last)
+                if (p.Slot >= 0 && p.Slot < store.Count && !store[p.Slot].Out && home.Placed.Count < MostOut)
+                {
+                    store[p.Slot].Out = true;
+                    home.Placed.Add(new PlacedDecoration { Slot = p.Slot, X = p.X, Y = p.Y });
+                }
+        return true;
     }
 
     /// <summary>Everything standing in a base taken back into the PC.</summary>

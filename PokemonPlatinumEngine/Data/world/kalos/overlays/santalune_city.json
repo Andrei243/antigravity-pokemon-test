@@ -6,6 +6,10 @@
   // friends gather on the square after it (santalune_city.txt). Its houses are built as Aquacorde's are (Canalside),
   // and its song is the city's own (plan 31 · MU3)
   "area": "santalune_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 346, "z": 540, "kind": "Tree", "room": 2 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 341, "z": 528, "script": "PhotoSpot" } ],
   "bgmTrack": "kalos/santalune",
   "trees": "Round",
   "architecture": "Canalside",
@@ -21,7 +25,7 @@
     { "script": "Neighbour", "x": 319, "z": 526, "width": 1, "depth": 4, "variable": "VAR_KALOS_STORY", "value": 7 },
     { "script": "NotYet", "x": 356, "z": 499, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 8 }
   ],
-  "props": [
+  "props": [ { "type": "PhotoSpot", "x": 341, "y": 528, "width": 1, "depth": 1 },
     { "type": "Fountain", "x": 340, "y": 517, "width": 3, "depth": 3 },
     { "type": "Bench", "x": 332, "y": 517, "width": 2, "depth": 1 },
     { "type": "Bench", "x": 345, "y": 516, "width": 2, "depth": 1 },

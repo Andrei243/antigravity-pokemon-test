@@ -4,6 +4,10 @@
   // turns back a player with no Pokémon, and then sends them to help the professor; Mom waits before the house with
   // the Running Shoes once the Pokédex is had
   "area": "littleroot_town",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 128, "y": 299, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 128, "z": 299, "script": "PhotoSpot" } ],
   "bgmTrack": "hoenn/littleroot",
   "trees": "Round",
   "architecture": "Sapling",

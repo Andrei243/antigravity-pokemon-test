@@ -3,6 +3,9 @@
   "folder": "alola",
   // How its battles are filmed (plan 45 · BC6; style guide, "The battle's manners"): Kalos's, lower and wider
   "battleCamera": "alola",
+  // The travel phone works here (plan 43 · LF6), with this region's book (world/alola/phone.json); a save already in
+  // Alola is handed it as it loads, since Alola has no scene that gives it
+  "phone": true,
   // Alola's songs play in the modern sound (plan 31 · MU2, MU4): its own instruments, written before the region was
   "sound": "modern",
   "models": "alola",

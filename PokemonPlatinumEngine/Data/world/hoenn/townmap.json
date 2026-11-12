@@ -278,5 +278,12 @@
     // Plan 21 · H9: the Pokémon League at the top of Ever Grande City, flown to once its hall has been come into (Emerald's
     // sMapFlyDestinations: MAPSEC_EVER_GRANDE_CITY lands at the League once FLAG_LANDMARK_POKEMON_LEAGUE is set)
     { "spawn": 20, "cells": "23,5 24,5", "flag": "FLAG_LANDMARK_POKEMON_LEAGUE" }
+  ],
+  "sky": [
+    { "x": 12, "y": 6, "kind": "Islet" },
+    { "x": 12, "y": 9, "kind": "Islet" },
+    { "x": 3, "y": 5, "kind": "Grove" },
+    { "x": 14, "y": 1, "kind": "Hollow" },
+    { "x": 11, "y": 5, "kind": "Peak" }
   ]
 }

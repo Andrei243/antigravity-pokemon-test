@@ -12,7 +12,8 @@ namespace PokemonPlatinumEngine.Graphics.OpenWorld;
 /// in an atlas of <see cref="Slots"/> cells (<see cref="Paint"/>), each cell <see cref="Cell"/> texels square with the
 /// tile in its middle and <see cref="Pad"/> texels of the tile itself, come round its edges, all about it: a far mip
 /// level reads a little past a tile's edge, and what it reads there is the tile's own. Like beside like all the same
-/// (<see cref="SlotOf"/>). GPU-free but <see cref="Upload"/>.
+/// (<see cref="SlotOf"/>). GPU-free. Since the ground is shaded from <see cref="OpenGroundArt"/>, the tiles are the record of
+/// each cover's colours and marks (and the slots the ground's vertices name), no longer what is drawn.
 /// </summary>
 internal static class OpenCoverArt
 {
@@ -236,19 +237,5 @@ internal static class OpenCoverArt
                 break;
         }
         return tile;
-    }
-
-    /// <summary>
-    /// The atlas on the card: whole texels when magnified (nearest), blended between mip levels when minified, its
-    /// edges clamped (the program comes round each tile itself).
-    /// </summary>
-    public static Texture2D Upload()
-    {
-        var texture = Paint().ToTexture(1, "open");
-        Raylib.GenTextureMipmaps(ref texture);
-        Raylib.SetTextureWrap(texture, TextureWrap.Clamp);
-        Rlgl.TextureParameters(texture.Id, 0x2800, 0x2600);   // magnified: nearest, whole texels
-        Rlgl.TextureParameters(texture.Id, 0x2801, 0x2703);   // minified: blended between mip levels
-        return texture;
     }
 }

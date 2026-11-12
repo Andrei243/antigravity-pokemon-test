@@ -117,3 +117,75 @@ label Again
   say "A locked heart opens with battles, with walking beside you, with the camp's care. And at Sendoff Spring, once a day."
   say "Every port the ferries reach has a cell. Their head office, I am told, is a tower in Castelia City."
   end
+
+# The delve (plan 44 · SD8, SD9; decisions 5 to 7, the user's answers 48a and 62a): the camp's keeper, Brigid Stoat,
+# sends two of the team down one of the four hollows behind the camp once Sinnoh's Hall of Fame is entered. The first
+# two of the team who may go down go; each hollow cleared raises the camp's rank, which opens the next. Her board holds
+# the day's three requests, and she hands over what they paid.
+script DelveKeeper
+  face self player
+  speaker self
+  say "Brigid Stoat, keeper of the delve camp. Behind me are four hollows, and Pokémon live on every floor of them."
+  say "Your first two Pokémon go down together while you wait here. Reach the bottom and a local may come home with you."
+  choose "What can I do for you?" "GO DOWN" "THE BOARD" "PRIZES" "NOTHING"
+  if result == 1 goto Board
+  if result == 2 goto Prizes
+  if result == 3 goto Later
+  delve able
+  if result == 0 goto NotTwo
+  choose "Which hollow?" "BRINECAVE" "THE ROOTWOOD" "HEARTPEAK" "THE OLD TOWER" "NOT TODAY"
+  if result == 0 goto Brine
+  if result == 1 goto Root
+  if result == 2 goto Peak
+  if result == 3 goto Tower
+  goto Later
+label Brine
+  delve go "brinecave"
+  goto Back
+label Root
+  delve open "rootwood"
+  if result == 0 goto Shut
+  delve go "rootwood"
+  goto Back
+label Peak
+  delve open "heartpeak"
+  if result == 0 goto Shut
+  delve go "heartpeak"
+  goto Back
+label Tower
+  delve open "old_tower"
+  if result == 0 goto Shut
+  delve go "old_tower"
+  goto Back
+label Back
+  if result == 1 goto Cleared
+  if result == 2 goto Fell
+  if result == 3 goto Rope
+  goto Later
+label Cleared
+  say "All the way down and back! Well done, the pair of you. Anyone who came home with you is settling in."
+  goto Prizes
+label Fell
+  say "Carried out by the camp's rope team, I'm afraid. Whatever you found stayed below. Rest up and try again!"
+  end
+label Rope
+  say "Out by the rope. Sensible! You kept what you found."
+  goto Prizes
+label Board
+  delve board
+  say "The board changes every morning. Do what it asks on a run and I'll have something for you."
+  end
+label Prizes
+  delve reward
+  if result == 1 goto Prizes
+  say "That's everything waiting for you for now."
+  end
+label NotTwo
+  say "I need two Pokémon who can go: no Egg and no locked heart. Put two at the head of your team."
+  end
+label Shut
+  say "That hollow is too deep for a camp of this rank. Clear the ones before it first."
+  end
+label Later
+  say "The hollows aren't going anywhere."
+  end

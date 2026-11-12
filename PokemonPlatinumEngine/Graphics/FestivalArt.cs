@@ -475,6 +475,9 @@ internal static class FestivalArt
     /// <summary>Alola's lei arch, 64 by 54; Galar's hay bales, 44 by 36; Hisui's sheaves, 36 by 56.</summary>
     public const int LeiWidth = 64, LeiHeight = 54, BalesWidth = 44, BalesHeight = 36, SheavesWidth = 36, SheavesHeight = 56;
 
+    /// <summary>The lei arch where the world is built to a grown body (style guide, "Festivals"): 96 by 84, a grown crowd's heads well under its swag.</summary>
+    public const int GrownLeiWidth = 96, GrownLeiHeight = 84;
+
     /// <summary>A flower of a lei, five texels across: a 3 by 3 middle with a petal out on each side and its heart, centred on (x, y).</summary>
     private static void Flower(PixelCanvas c, int x, int y, int which)
     {
@@ -495,6 +498,9 @@ internal static class FestivalArt
         var knot = Rgb(132, 124, 66);
         var leaf = Rgb(72, 150, 80);
         int right = c.Width - 4, top = 9;
+        // (the swag and the short leis grow with the arch: 6 and 18 texels at its own 64 by 54)
+        float sag = c.Width * 6f / LeiWidth;
+        int hang = (c.Height - top) / 2 - 4;
         foreach (int x in new[] { 1, right })
         {
             Pole(c, x, top, bamboo, bambooLit);
@@ -504,14 +510,14 @@ internal static class FestivalArt
         int n = 0;
         for (int x = 5; x <= right - 2; x += 5, n++)
         {
-            int y = Sag(x, 2, right + 2, top + 2, 6f);
+            int y = Sag(x, 2, right + 2, top + 2, sag);
             Flower(c, x, y, n);
             int lx = x + 3;
-            if (lx < right - 1) c.Set(lx, Sag(lx, 2, right + 2, top + 2, 6f), leaf);
+            if (lx < right - 1) c.Set(lx, Sag(lx, 2, right + 2, top + 2, sag), leaf);
         }
         // A shorter lei down each pole, to half its height
         foreach (int x in new[] { 2, right + 1 })
-            for (int y = top + 6, k = 1; y < top + 6 + 18; y += 5, k++)
+            for (int y = top + 6, k = 1; y < top + 6 + hang; y += 5, k++)
             {
                 Flower(c, x, y, k);
                 c.Set(x + (x < 10 ? 2 : -2), y + 2, leaf);

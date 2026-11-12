@@ -1,0 +1,17 @@
+# Lumiose City's PR Video Studio (plan 43 · LF5's Kalos counter): the camerawoman keeps the photo studio here, as the
+# photographer does in the Jubilife Boutique. The first sitting at either gives the gilt frame, once.
+
+script Photographer
+  speaker "Camerawoman"
+  if flag FLAG_PHOTO_STUDIO_FRAME_GIVEN goto Welcome
+  say "A Trainer! Between takes I shoot stills: a backdrop, a Pokémon at your side, Seals for stickers."
+  say "Your first sitting is free, and here's a gilt frame to go with it. It suits every picture."
+  setflag FLAG_PHOTO_STUDIO_FRAME_GIVEN
+  goto Sit
+label Welcome
+  say "Lights are warm. Step onto the set whenever you're ready."
+label Sit
+  photo studio
+  speaker "Camerawoman"
+  say "That one's going in your photo book. Lumiose looks good on you!"
+  end
