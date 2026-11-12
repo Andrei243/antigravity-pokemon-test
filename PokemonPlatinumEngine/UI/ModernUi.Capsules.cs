@@ -47,7 +47,7 @@ internal static partial class ModernUi
     /// A Seal as a sticker of radius <paramref name="r"/>: a disc of its colour with a white rim and its sign in
     /// <see cref="StickerInk"/>, a letter Seal its letter. <paramref name="alpha"/> fades one that is off the ball or used up.
     /// </summary>
-    public static void SealSticker(Vector2 c, float r, int seal, float alpha = 1f)
+    public static void SealSticker(Vector2 c, float r, int seal, float alpha = 1f, float turn = 0f)
     {
         byte a = (byte)Math.Clamp((int)(255 * alpha), 0, 255);
         var color = SealFx.ColorOf(seal);
@@ -65,7 +65,7 @@ internal static partial class ModernUi
             return;
         }
         // A line Seal's ray lies along its length; the rest stand upright
-        FxSign(SealFx.ShapeOf(seal), c, r * (family == SealFamily.Line ? 2.4f : 1.7f), ink, family == SealFamily.Line ? MathF.PI / 4f : 0f);
+        FxSign(SealFx.ShapeOf(seal), c, r * (family == SealFamily.Line ? 2.4f : 1.7f), ink, (family == SealFamily.Line ? MathF.PI / 4f : 0f) + turn);
     }
 
     /// <summary>

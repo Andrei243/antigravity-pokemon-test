@@ -255,6 +255,39 @@ public class ContentTests
     }
 
     [Fact]
+    public void ABaseSpotIsABlockedTileWithOpenGroundBeforeIt()
+    {
+        // Plan 43 · LF7: a spot of the home is faced as Hoenn's are, so it is a blocked tile the player can stand before.
+        // The chunk is blocked in a square of three by three at 25 to 27: its middle has nothing open round it, its
+        // edge's middle has open ground to one side
+        using var folder = Sound();
+        string row(string cell) => string.Concat(Enumerable.Repeat(cell, WorldChunkFile.Tiles));
+        var solid = Enumerable.Range(0, WorldChunkFile.Tiles)
+            .Select(z => z is >= 25 and <= 27 ? new string('.', 25) + "###" + new string('.', WorldChunkFile.Tiles - 28) : row(".")).ToList();
+        folder.Write("world/test/chunks/001.json", GameDataFiles.Serialize(new WorldChunkFile
+        {
+            Id = 1,
+            Behaviours = Enumerable.Repeat(row("00"), WorldChunkFile.Tiles).ToList(),
+            Solid = solid,
+            Cover = Enumerable.Repeat(row("."), WorldChunkFile.Tiles).ToList(),
+            Heights = new() { new HeightPlate { Width = WorldChunkFile.Tiles, Depth = WorldChunkFile.Tiles, Height = 1f } }
+        }));
+        folder.Write(OverlayFile, SoundOverlay.TrimEnd().TrimEnd('}') + """
+            ,
+              "baseSpots": [
+                { "x": 3, "z": 3, "kind": "Tree", "room": 1 },
+                { "x": 26, "z": 26, "kind": "RedCave", "room": 2 },
+                { "x": 26, "z": 25, "kind": "Shrub", "room": 1 }
+              ]
+            }
+            """);
+        var found = folder.Check();
+        Has(found, Kind.Place, OverlayFile, "baseSpots 3,3", "is open ground");
+        Has(found, Kind.Place, OverlayFile, "baseSpots 26,26", "no open ground before it");
+        Assert.DoesNotContain(found, f => f.Name == "baseSpots 26,25");
+    }
+
+    [Fact]
     public void AnOverlaysSlotsOfOursAreHeldToTheirRules()
     {
         // Plan 03 · D15: species of ours that may be wild, of the region's batch, from their evolution's level to 260, as

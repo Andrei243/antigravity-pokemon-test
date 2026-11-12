@@ -5,6 +5,10 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 - Paldea opens: begin a new game there (`--region Paldea`) or fly in from Wyndon's airfield as Galar's Champion. Wake in Cabo Poco on its cape over the sea, choose Sprigatito, Fuecoco or Quaxly on the student council president's terrace and battle Nemona, find two worn-out legendaries in Inlet Grotto under the cliffs (the one you share your sandwich with decides whether your game is Scarlet or Violet, and it comes along), learn to catch at the lighthouse, and walk through Los Platos and the South Province's fields to Mesagoza, up the great stairs to the academy's door and your Tera Orb.
+- Your secret base now looks like the place it was made in: a cave of red, brown, blue or yellow rock, a hollow tree or a den of grass. Where its door stands, an opening is drawn in the tree, rock or bush outside.
+- The computer in your bedroom at home, in every region, now decorates the room from your decoration PC: up to twelve pieces, each region's room its own. A piece in your room stands nowhere else, and nothing can block the stairs.
+- In the photo studio a sticker can be made smaller or larger (C) and turned (Q / E) before it is put down.
+- A caller's face on the travel phone now shows the whole of a hat.
 - On the Energy Plant's roof you now battle Eternatus itself, before it swells into Eternamax.
 - After Galar's Hall of Fame the fog returns to the Slumbering Weald: Hop waits at the altar, and the legendary of your version comes out to meet you, to be caught at last.
 - Leon now runs the Battle Tower in Rose Tower and takes you on once a day; he also joins the Laurel Circuit's final for Galar.

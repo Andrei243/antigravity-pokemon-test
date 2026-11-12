@@ -5745,7 +5745,8 @@
     "Underwater128": "Sub apă 128"
   },
   "secretBase": {
-    "decorating": "DECOREAZĂ-ȚI BAZA SECRETĂ"
+    "decorating": "DECOREAZĂ-ȚI BAZA SECRETĂ",
+    "bedroom": "DECOREAZĂ-ȚI CAMERA"
   },
   "pokeblock": {
     "color": {
@@ -7707,7 +7708,8 @@
     "stickers": { "count": "{count} / {most}" },
     "take": { "action": "FĂ POZA" },
     "seals": { "heading": "STICKERELE TALE" },
-    "hints": { "put": "Pune jos" },
+    "hints": { "put": "Pune jos", "size": "Mărime", "turn": "Rotește" },
+    "keys": { "turn": "Q / E" },
     "refusal": {
       "notOwned": "Nu ai stickerul ăsta.",
       "full": "Poza nu mai încape alte autocolante.",
