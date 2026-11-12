@@ -1,0 +1,159 @@
+{
+  "name": "HauoliCity_TrainersSchool",
+  "displayName": "Trainers' School",
+  "bgmTrack": "alola/hauoli",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 13,
+  "height": 11,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#############",
+    "##.......##.#",
+    "#...........#",
+    "#...........#",
+    "#.##.....##.#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 1,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Blackboard",
+      "x": 5,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Bookshelf",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 9,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 6,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 10,
+      "targetMap": "Melemele",
+      "targetX": 309,
+      "targetY": 166,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "teacher",
+      "name": "Iwalani",
+      "npcType": "teacher",
+      "x": 6,
+      "y": 4,
+      "facing": "Down",
+      "script": "Teacher"
+    },
+    {
+      "id": "keahi",
+      "name": "Keahi",
+      "npcType": "Youngster",
+      "x": 2,
+      "y": 7,
+      "facing": "Up",
+      "script": "Keahi"
+    },
+    {
+      "id": "pualani",
+      "name": "Pualani",
+      "npcType": "Lass",
+      "x": 10,
+      "y": 7,
+      "facing": "Up",
+      "script": "Pualani"
+    },
+    {
+      "id": "aukai",
+      "name": "Aukai",
+      "npcType": "school_kid_m",
+      "x": 2,
+      "y": 4,
+      "facing": "Right",
+      "script": "Aukai"
+    },
+    {
+      "id": "kanoe",
+      "name": "Kanoe",
+      "npcType": "school_kid_f",
+      "x": 10,
+      "y": 5,
+      "facing": "Left",
+      "script": "Kanoe"
+    }
+  ],
+  "wildEncounters": []
+}

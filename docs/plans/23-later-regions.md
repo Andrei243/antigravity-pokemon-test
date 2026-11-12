@@ -129,23 +129,6 @@ Decisions: four islands as four matrices of one world folder, joined by a ferry 
 
 **A decompilation of Pokémon Moon** (found by the user on 2026-10-24: [gradenGnostic/pokemoon](https://github.com/gradenGnostic/pokemoon)). By the overview's rule, a decompilation wherever one exists, Z5 looks at it first, before the dump reader of decision 5. What it was on 2026-10-24, read from its README: the European base release's ARM executable, about 16% of its functions in C (2,984 of 18,945; 298 matching exactly); no licence stated; and no game data: the README says retail resources stay outside it, supplied from the player's own copy. So unlike pret's GBA and DS projects and fuddlesworth/pokebw2 (Unova's, whose maps, events, encounters and trainers are files of the repository), it gives Alola's code (how a trial, a totem or a SOS call is worked out) but none of Alola's layouts, events, wild Pokémon or trainers. Z5 checks again what it holds then, and asks the user before anything is pinned: a licence must be given before it is fetched into a cache (plan 22 · U1 pinned pokebw2 under its GPL v3.0), and a reader that needs the player's own game files is decision 5's dump reader, whose rules hold (nothing of the game in the repository but numbers and layouts).
 
-### Sharpedo's currents, Mantine Surf and the rest of the odds and ends (the wave after the Battle Tree)
-- **Built** (2026-11-09; rulings, "Sharpedo's currents, Mantine Surf, the day and night cells, the Cores' moves, the widow's
-  Spooky Plate and the Battle Tree's Multi room"; facts from public descriptions, never the games' pictures or words): **strong
-  currents** (the GBA's `CurrentWest` and kin, drawn in MapDraw as `<`, `>`, `A`, `V`) that carry a Lapras's rider on and that a
-  **Sharpedo Jet crosses** (`RidePager.StemsCurrents`), in the gap of a reef off the Secluded Shore that holds an islet with a
-  Rare Candy; **Mantine Surf**, the Ride Pager's second water ride (registered by Big Wave Beach's surfer, a run's pace, no wild
-  Pokémon met from its back) and **the beach's course** of four gates of buoys ridden in order for a Big Pearl and, the third
-  time, a Star Piece (the built-in `RAMMING` told Sharpedo's ramming from any ride); **twelve cells by day or by night only**
-  (`ClockFlags.Daylight`, `Nightfall`, none before the Cube is had); **each Core's own Cube move** (`FormChanges.CoreMoves`);
-  the **old woman and her Machamp** of Hau'oli Cemetery and **the Spooky Plate**; and **the Battle Tree's Multi room**
-  (`BattleTree` gains the `multi` way: two entered, a partner of ours with two, two trainers with two each, no host or Super
-  room, `StreakChallenge.Partner`, `facility tree partner`). Tests: `AlolaOddsAndEndsTests`. Shots owed (no GPU): the
-  `alolalast` mode's `wt20` on. **Not built**: the Ultra Warp Ride (its legendaries of every earlier region would each need their
-  species given a way and their own beat) and the link to Galar (the chain already holds `Transport.Plane` from Alola to Galar;
-  Galar has no region file or maps until plan 33). **Left**: the Multi room's partner choice and scouting, Magearna and
-  Marshadow (plan 29 · LS11), a Mantine that does tricks, the new places' own songs.
-
 ### Galar and Paldea
 Moved on 2026-11-04 at the user's request to plans of their own, on an open-world engine instead of this plan's grid: [plan 32](32-open-world-engine.md) (the engine), [plan 33](33-galar.md) (Galar, the Isle of Armor and the Crown Tundra) and [plan 34](34-paldea.md) (Paldea, the Teal Mask, the Indigo Disk and Mochi Mayhem). The two decompilations of Sword this section recorded are in plan 33's "Where we are".
 
@@ -493,6 +476,60 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   Surf, Sharpedo's currents, the Ultra Warp Ride, the cells by day and night, Magearna and Marshadow (plan 29 · LS11's
   proposals), the link to Galar.
 
+### Sharpedo's currents, Mantine Surf and the rest of the odds and ends (the wave after the Battle Tree)
+- **Built** (2026-11-09; rulings, "Sharpedo's currents, Mantine Surf, the day and night cells, the Cores' moves, the widow's
+  Spooky Plate and the Battle Tree's Multi room"; facts from public descriptions, never the games' pictures or words): **strong
+  currents** (the GBA's `CurrentWest` and kin, drawn in MapDraw as `<`, `>`, `A`, `V`) that carry a Lapras's rider on and that a
+  **Sharpedo Jet crosses** (`RidePager.StemsCurrents`), in the gap of a reef off the Secluded Shore that holds an islet with a
+  Rare Candy; **Mantine Surf**, the Ride Pager's second water ride (registered by Big Wave Beach's surfer, a run's pace, no wild
+  Pokémon met from its back) and **the beach's course** of four gates of buoys ridden in order for a Big Pearl and, the third
+  time, a Star Piece (the built-in `RAMMING` told Sharpedo's ramming from any ride); **twelve cells by day or by night only**
+  (`ClockFlags.Daylight`, `Nightfall`, none before the Cube is had); **each Core's own Cube move** (`FormChanges.CoreMoves`);
+  the **old woman and her Machamp** of Hau'oli Cemetery and **the Spooky Plate**; and **the Battle Tree's Multi room**
+  (`BattleTree` gains the `multi` way: two entered, a partner of ours with two, two trainers with two each, no host or Super
+  room, `StreakChallenge.Partner`, `facility tree partner`). Tests: `AlolaOddsAndEndsTests`. Shots owed (no GPU): the
+  `alolalast` mode's `wt20` on. **Not built**: the Ultra Warp Ride (its legendaries of every earlier region would each need their
+  species given a way and their own beat) and the link to Galar (the chain already holds `Transport.Plane` from Alola to Galar;
+  Galar has no region file or maps until plan 33). **Left**: the Multi room's partner choice and scouting, Magearna and
+  Marshadow (plan 29 · LS11), a Mantine that does tricks, the new places' own songs.
+  (This entry stood among Alola's decisions until 2026-11-12, when it was moved here, in the order the sessions came.)
+
+### Alola finished (Alola's last session)
+- **Built** (2026-11-09; rulings, "Alola finished: the Ultra Warp Ride, the mythicals, the owed crystals, the tree's
+  scouting, the island Pokédexes and the last shut doors"; this entry was written on 2026-11-12 from the rulings, since the
+  session recorded itself there alone): **the Ultra Warp Ride** from the Altar's wormhole once Necrozma has been met, its four
+  lights to four worlds of the wilds drawn by hand (matrices 71 to 74) and both versions' legendaries met there by colour at
+  60, each with a beat of its own; **Magearna** (Hokulani Observatory), **Marshadow** (Hau'oli Cemetery, the Marshadium Z),
+  **Zeraora** (the power plant) and **Meltan** (the old Thrifty Megamart, 400 Meltan Candy) after the Hall of Fame, on plan
+  29 · LS11's proposals; **the items Alola owed** (the partners' crystals and three Mega Stones from Kukui, a crystal carver
+  in Heahea's tourist bureau, the Solganium and Lunalium Z from the Altar's keeper, the Ultranecrozium Z and the N-Solarizer
+  and N-Lunarizer from Veyra); **the Battle Tree's scouting** (a partner chosen from the trainers beaten); **the four island
+  Pokédexes** with their diplomas; **Ultra Megalopolis's four houses**; **the plane to Galar** from Hau'oli's Pokémon Center
+  once Alola's Hall of Fame is entered (plan 33 · GL1's attendant); and beside it the Battle Tree's and the power plant's
+  outsides, the strong current drawn moving, Resolution Cave lit and six songs of ours. Tests: `AlolaFinishTests`;
+  `AlolaSpeciesTests.Owed`, `OwedNeeds` and `ItemSourcesTests.Owed` hold nothing of Alola. **Not built, and why** (the
+  rulings): a Mantine that does tricks (plan 42 · PS7), a friend in the Multi room over a link (plan 07), Poké Pelago,
+  Pokémon Refresh and the Festival Plaza (left out by Alola's decisions; plans 35 and 41 hold their places).
+
+### Melemele's last door and Z5's shots (2026-11-12)
+- **Built** (rulings, "Hau'oli City's Trainers' School"): **the Trainers' School**, Z5's first part's last Melemele place
+  left unbuilt: a building of Hau'oli City's street (`hauoli_city.txt`, its door warp 8 of the area) and a classroom of ours
+  (`HauoliCity_TrainersSchool`) whose four pupils battle once each and whose teacher battles once all four are beaten and
+  gives three Quick Balls (`FLAG_ALOLA_SCHOOL_*`; five trainers of ours at 7 to 10). **The `melemele` mode** for the shots
+  Z5's second part owed (Z5 named them `wa30` to `wa63`, but `ultraspace` took `wa50` on, so they are `wm01` to `wm29`):
+  the rest of Melemele and Akala to Brooklet Hill by day, Route 2 and the meadow after dark, and the part's ten rooms; every
+  spot is found from an area, a person or a door and printed, never a typed tile. Tests: `AlolaTrainersSchoolTests`.
+  **Z5 ticked**: its "done when" (Tauros ridden through Ten Carat Hill's rock with no Pokémon that knows Rock Smash) is
+  held by `AlolaRideTests.TaurosRunIntoTheCrackedRockBreaksItWithNoQuestion`, and everything its "Left" named is built by
+  the waves after it but what stays owed below. **Still owed**, none of it a reason to keep Z5 open: the user's look at
+  Melemele and at every Alola shot (the GPU was shared by eight agents: of the `melemele` mode only a few shots were taken
+  and looked at, below, and the rest are listed); Z5's story shots (`was30` on: the marina's grunts, the festival, the
+  totem Gumshoos, Hala's grand trial, the boat, Lapras across Brooklet Hill, the totem Wishiwashi), which the chapter's
+  headless tests stand for and `wz29` to `wz35` and `wl10` to `wl17` partly show; the profile's line for Hau'oli (timed
+  only on a quiet machine); Sandy Cave on Melemele (Sun and Moon's small beach cave, not drawn); and a Mantine that does
+  tricks (plan 42 · PS7). The Ride Pager was built as story flags (`Overworld/RidePager.cs`) rather than the plan's
+  `StoryState.Grants` and `SaveData.FieldGrants`: the same rule with no save field, which the rulings record.
+
 ### Galar and Paldea
 
 Z9 to Z16 moved to [plan 33](33-galar.md) (GL1 to GL9) and [plan 34](34-paldea.md) (PD1 to PD12) on 2026-11-04; their numbers are not reused.
@@ -593,7 +630,7 @@ Off the chain, after Kalos's Hall of Fame (decision 10): Z21 to Z24 need Z1 to Z
 - [x] Z2 Lumiose and central Kalos (2026-11-02 and 2026-11-03; closed 2026-11-09 with Kalos finished: every door of Lumiose open, its ring walked both ways by `KalosTests`, the palace's hall and the bicycle shop's Bicycle; `profile`'s Lumiose line waits for a quiet run on the Windows machine)
 - [x] Z3 Shalour, the coast and the Tower of Mastery (first part 2026-11-03: Route 10, Geosenge, Route 11, Shalour, the Rumble Badge, the Key Stone and the Lucario; second part 2026-11-03: the harness shots with a Lucario Mega Evolving, caves in the hand-drawn tool, Reflection and Glittering Caves, Route 8's south, Ambrette, Routes 9 and 12, Coumarine City; left, see Z3's second part: Coumarine's Gym, the Connecting Cave, the fossil lab, hordes and sky trainers, songs)
 - [x] Z4 The mountain, Team Flare and the League (2026-11-07: Coumarine's Gym, Route 13 and the Power Plant, the Prism Tower's Gym, Routes 14 to 21 but 16, Laverre, Dendemille, Anistar, Couriway, Snowbelle, the Pokémon Village, Lysandre's laboratory, Team Flare's base and Xerneas, Victory Road, the League and Kalos's Hall of Fame, every chapter played headless, and the playthrough bot's way from Coumarine City to the Hall of Fame (`Itineraries.KalosLastChapters`); then, afterwards, the bot's way from Vaniville whole, the three dexes and Route 16, the Lost Hotel, Frost Cavern, Terminus Cave, Kiloude City and AZ; and on 2026-11-08 four Gyms' puzzles, Kalos's water and the Mamoswine ride; the other four Gyms' pieces on 2026-11-08 and the places' own songs, the League's second round and the Friend Safari on 2026-11-09, "Kalos finished")
-- [ ] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; second part 2026-11-07: the rest of Melemele, the Ride Pager's grants (`Overworld/RidePager.cs`), the ferry and Akala from Heahea City to Lana's trial at Brooklet Hill, the story to `VAR_ALOLA_STORY` 18 headless (`AlolaIslandsTests`), "The engine for Alola" under Z5; shots owed, listed there; left: the rest of Akala, Ula'ula, Poni and Aether Paradise, the user's look at Melemele; the rider drawn, the rides' own travel mode and the Town Map, on one grid rather than a tab to an island, were wave 91's, "Alola's loose ends")
+- [x] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; second part 2026-11-07: the rest of Melemele, the Ride Pager's grants (`Overworld/RidePager.cs`), the ferry and Akala from Heahea City to Lana's trial at Brooklet Hill, the story to `VAR_ALOLA_STORY` 18 headless (`AlolaIslandsTests`), "The engine for Alola" under Z5; shots owed, listed there; left: the rest of Akala, Ula'ula, Poni and Aether Paradise, the user's look at Melemele; the rider drawn, the rides' own travel mode and the Town Map, on one grid rather than a tab to an island, were wave 91's, "Alola's loose ends"; ticked 2026-11-12 with Melemele's last door, the Trainers' School, and the `melemele` mode for the shots its second part owed, under "Melemele's last door and Z5's shots": the done when held while ridden, every later place built; still owed: the user's look, the story's shots `was30` on, Sandy Cave)
 - [x] Z4b Kalos after its Hall of Fame (written and built 2026-11-07, wave 92)
 - [x] Z6 Melemele and Akala: trials, totems and Z-Moves (2026-11-07: totems with their aura, first call and no ball; the trial sites calling for help; Alola's stamps; the rest of Akala drawn, Kiawe's and Mallow's trials, Olivia's grand trial and the Hano Grand Resort, headless; the harness's `akala` mode shoots the places, the rooms, the card and the totem Gumshoos calling an ally before the Normalium Z's Breakneck Blitz, which is the "done when"; left: the rulings' "Left")
 - [x] Z7 Ula'ula, Poni and the Aether Foundation (2026-11-07: Ula'ula, Poni, Aether Paradise, four caves and the League drawn by hand, the story from the Akala stamp to the Hall of Fame headless, `docs/mechanics/rulings.md`, "Ula'ula, Poni, Aether Paradise and the League"; the walk from Iki Town needs Z6's Akala between Brooklet Hill and the stamp; shots owed; left: the Ultra Beasts; the islands' Town Map, the three trials' totems and Tapu Fini's and Solgaleo's beats were wave 91's, "Alola's loose ends")

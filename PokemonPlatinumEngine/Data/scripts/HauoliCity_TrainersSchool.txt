@@ -1,0 +1,90 @@
+# Hau'oli City's Trainers' School (plan 23, Alola's last door on Melemele: Z5's "Left" named it). Sun and Moon keep a
+# school in the city where four pupils and their teacher battle a newcomer; ours is a classroom of our own with our own
+# people and lines (docs/mechanics/rulings.md, "Hau'oli City's Trainers' School"). Each pupil battles once (their
+# FLAG_ALOLA_SCHOOL_<NAME>); once all four are beaten the teacher battles too and gives three Quick Balls
+# (FLAG_ALOLA_SCHOOL_TEACHER).
+
+
+script Keahi
+  face self player
+  speaker "Keahi"
+  if flag FLAG_ALOLA_SCHOOL_KEAHI goto After
+  say "Today's lesson is type matchups. I learn better by battling, so you're my homework!"
+  battle self as "alola_youngster_keahi"
+  setflag FLAG_ALOLA_SCHOOL_KEAHI
+  speaker "Keahi"
+  say "I got the matchups right and still lost. Maybe the lesson is about speed too."
+  end
+label After
+  say "Some Pokémon only come out by day and others only by night. They take turns with the island!"
+  end
+
+
+script Pualani
+  face self player
+  speaker "Pualani"
+  if flag FLAG_ALOLA_SCHOOL_PUALANI goto After
+  say "My partner can tell how strong you are by your aura. It's buzzing like mad. Let's see if it's right!"
+  battle self as "alola_lass_pualani"
+  setflag FLAG_ALOLA_SCHOOL_PUALANI
+  speaker "Pualani"
+  say "It was right. It's always right. I should have listened to it."
+  end
+label After
+  say "A Pokémon's aura shows how it feels. Bug Pokémon gather wherever people are smiling."
+  end
+
+
+script Aukai
+  face self player
+  speaker "Aukai"
+  if flag FLAG_ALOLA_SCHOOL_AUKAI goto After
+  say "I sit by the window so I can watch the seabirds. Today I'll watch you lose instead!"
+  battle self as "alola_school_kid_aukai"
+  setflag FLAG_ALOLA_SCHOOL_AUKAI
+  speaker "Aukai"
+  say "Hmm. The seabirds saw that too, didn't they."
+  end
+label After
+  say "Bug Pokémon like to chew through the berry fields' fences on Route 2. Farmers don't like them much."
+  end
+
+
+script Kanoe
+  face self player
+  speaker "Kanoe"
+  if flag FLAG_ALOLA_SCHOOL_KANOE goto After
+  say "I've read every book on that shelf twice. Now I want to test what I've learned on a real Trainer!"
+  battle self as "alola_school_kid_kanoe"
+  setflag FLAG_ALOLA_SCHOOL_KANOE
+  speaker "Kanoe"
+  say "Books don't tell you how fast a real battle moves. I'll write that down."
+  end
+label After
+  say "Some of Alola's Pokémon look nothing like their cousins elsewhere. The islands changed them, the book says."
+  end
+
+
+script Teacher
+  face self player
+  speaker "Iwalani"
+  if flag FLAG_ALOLA_SCHOOL_TEACHER goto After
+  if not flag FLAG_ALOLA_SCHOOL_KEAHI goto Class
+  if not flag FLAG_ALOLA_SCHOOL_PUALANI goto Class
+  if not flag FLAG_ALOLA_SCHOOL_AUKAI goto Class
+  if not flag FLAG_ALOLA_SCHOOL_KANOE goto Class
+  say "You've battled every one of my pupils. That's a better lesson than any I could write on the board."
+  say "Then let the teacher sit the test too. Show me what the island challenge looks like up close!"
+  battle self as "alola_teacher_iwalani"
+  setflag FLAG_ALOLA_SCHOOL_TEACHER
+  speaker "Iwalani"
+  say "Top marks. Take these for the road: a Quick Ball works best thrown the moment a battle starts."
+  give "Quick Ball" 3
+  end
+label Class
+  say "Welcome to the Trainers' School! My pupils are itching to battle someone new."
+  say "Battle all four of them, and then come and see me for the final exam."
+  end
+label After
+  say "Come back whenever you like. My pupils still talk about the day you visited."
+  end

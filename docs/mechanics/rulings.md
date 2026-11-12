@@ -9905,6 +9905,20 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   place, plan 41 the plaza. *The Island Scan* is built (the rest of the islands). *A friend in the Multi room over a link*
   is plan 07's.
 
+## Hau'oli City's Trainers' School (2026-11-12, plan 23, Melemele's last door)
+
+- **Where it comes from.** Sun and Moon keep a Trainers' School in Hau'oli City, where a newcomer battles its pupils and
+  its teacher (Bulbapedia's and Serebii's descriptions); nothing of its plan, people, teams or lines is taken. Ours is a
+  building at the east end of the city's first street (`hauoli_city.txt`, the door at 309, 165, the area's warp 8) and a
+  classroom of ours (`HauoliCity_TrainersSchool`, 13 by 11: a blackboard, two desks, a bookshelf, the teacher's table).
+- **Its people**: four pupils of ours (Keahi, a Youngster; Pualani, a Lass; Aukai and Kanoe, School Kids), each battled once
+  by speaking to them (`FLAG_ALOLA_SCHOOL_KEAHI`, `_PUALANI`, `_AUKAI`, `_KANOE`), with teams of Melemele's own species at 7 and
+  8, and their teacher Iwalani (a Teacher, Alolan Meowth 9 and Crabrawler 10), who sends the player to the pupils first and
+  battles once all four are beaten (`FLAG_ALOLA_SCHOOL_TEACHER`), giving three Quick Balls. None of them watches the room
+  with a trainer's eyes: Sun and Moon's school is a place a player chooses to visit, and so is ours. Nothing of the story
+  asks for it.
+- **Left**: Sandy Cave (Sun and Moon's small cave on Melemele's beach) is not drawn.
+
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
 - **The contest's song** is ours (`Data/music/hoenn/contest.mml`, a showtime march), played from the stage's first frame to the field's return as a scene's song (`AudioManager.PlaySceneMusic("contest")`); Emerald's contest music is not taken.

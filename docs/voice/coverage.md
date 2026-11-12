@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1698 | 1635 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13148 | 12614 | 534 | 17 | 36 |
+| Scripts (`script:`) | 13166 | 12632 | 534 | 17 | 36 |
 | People of the world (`world:`) | 8059 | 7997 | 62 | 4 | 0 |
-| **All** | 23189 | 22527 | 662 | 22 | 36 |
+| **All** | 23207 | 22545 | 662 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -29,8 +29,8 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 ## The cast
 
-- Named characters: 952 voices (364 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
-- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 583 voices.
+- Named characters: 957 voices (364 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 588 voices.
 - Archetypes in use: 251, with 758 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 354.
 
