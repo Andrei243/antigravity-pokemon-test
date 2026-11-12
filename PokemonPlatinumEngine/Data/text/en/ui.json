@@ -278,6 +278,15 @@
         "On": "The start menu has BOXES, which opens the PC anywhere the place allows it, and each pocket of the bag can be put in order by name or by how many, with a letter jump."
       }
     },
+    "itemGlints": {
+      "label": "Hidden items glint",
+      "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
+      "help": {
+        "Off": "Hidden items lie unseen, as in Platinum: look at the ground, or use a dowsing app, to find them.",
+        "Rules": "Platinum's rules keep hidden items unseen; the modern rules let one within three steps glint now and then.",
+        "On": "A hidden item within three steps of you glints every couple of seconds, until it is found."
+      }
+    },
     "partyTools": {
       "label": "Remember and rename",
       "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
@@ -1629,12 +1638,39 @@
     "offTheMap": "Somewhere off the map",
     "wilds": "The wilds",
     "hintRegion": "Region",
-    "inRegion": "{place}, {region}"
+    "inRegion": "{place}, {region}",
+    "report": {
+      "tag": "TODAY",
+      "title": "Today in {region}",
+      "outbreaks": "OUTBREAKS",
+      "noOutbreaks": "No outbreaks today.",
+      "met": "{count} met",
+      "visitor": "VISITOR",
+      "minutes": "{count} min left",
+      "scan": {
+        "Ready": "Press {key:confirm} to scan for a visitor from another region. It stays for an hour.",
+        "NotOpen": "Nothing to report yet.",
+        "NoNationalDex": "A scan needs the National Pokédex.",
+        "Scanned": "You scanned today already. Try again tomorrow.",
+        "Nothing": "Nothing answers the scan today."
+      },
+      "hintReport": "Today",
+      "hintMap": "Map",
+      "hintScan": "Scan",
+      "legendOutbreak": "Outbreak",
+      "legendVisitor": "Visitor"
+    }
   },
   "field": {
     "skip": "SKIP",
     "safariBalls": "SAFARI BALLS",
+    "streak": "STREAK",
+    "hooks": "HOOKS",
     "steps": "STEPS"
+  },
+  "visitorToast": {
+    "came": "The scan picked up {name} in {place}! It will stay for an hour.",
+    "gone": "{name} has left {place}."
   },
   "outbreakToast": {
     "bonusOne": "{count} {name} met in {place} today. The grass has gone restless: shiny ones turn up more often.",

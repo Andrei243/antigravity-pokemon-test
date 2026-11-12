@@ -5,6 +5,9 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Once you are a region's Champion, the Town Map (and the Pokégear's map card) has a second page on the item button: the day's two outbreaks marked on the map with how many of each you have met, and a scan, once a day with the National Pokédex, that calls a Pokémon of another region to one of the region's routes for an hour.
+- Wild Pokémon you can see in the grass may be bright: the more of a species you have beaten or caught, the more often one of it shimmers, with perfect IVs and an Egg move. Catching the same species in a row from the grass builds a streak, shown in the corner, that brings better and shinier ones from eleven; hooking the same Pokémon in a row on a rod from one spot raises the shiny chance too.
+- Hidden items within three steps now glint now and then (the options' HIDDEN ITEMS GLINT row, on under the modern rules).
 - The hub's halls are open. The Laurel Gallery keeps every region's Hall of Fame: a plinth for each region you've crowned, each showing that region's first team and every team since. The PC's Hall of Fame now has a tab for each region.
 - The Laurel Circuit: at the Gallery's desk you can go back to every League you've won and fight its Elite Four and Champion again, all at one level, then face every Champion in a row in the Laurel Court. Each circuit you win makes the next one harder and earns a title and a medal.
 - Looker has opened the Open Door Agency in the hub, half in disguise as a clerk. He takes a case in each region you've crowned (Sinnoh, Kanto, Johto, Hoenn, Unova and Kalos): find the clues, tell him what they mean, and face the culprit. The cases show on the requests page.

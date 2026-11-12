@@ -27,7 +27,48 @@ public static class OutbreakFiles
             }
             Rows(content, region, (region.World.Encounters.Outbreaks ?? new()), content.Relative(Path.Combine(folder, WorldEncountersFile.FileName)), found);
             if (ours != null) Rows(content, region, ours.Rows, own, found);
+            Visitors(content, region, found);
         }
+    }
+
+    /// <summary>
+    /// A region's visitors (plan 38 · EX2, <c>visitors.json</c>, read strictly): a row for each day of the week once each, a
+    /// species of another region's Pokédex (never a legendary, a mythical or one of ours), places that can have an outbreak (an
+    /// open area with a land table of twelve slots), and levels of a Pokémon.
+    /// </summary>
+    private static void Visitors(GameContent content, GameContent.Region region, List<Finding> found)
+    {
+        string file = content.Relative(Path.Combine(region.Folder, WorldVisitorsFile.FileName));
+        WorldVisitorsFile visitors;
+        try
+        {
+            visitors = region.World.Visitors;
+        }
+        catch (Exception e) when (e is InvalidDataException or System.Text.Json.JsonException or UnknownKeyException)
+        {
+            found.Add(new Finding(Kind.Unreadable, file, "visitors", e.Message));
+            return;
+        }
+        void Add(string name, string what) => found.Add(new Finding(Kind.Data, file, name, what));
+        string? dex = RegionDatabase.Get(region.World.Index.Region)?.Dex;
+        foreach (var row in visitors.Rows)
+        {
+            string name = $"{row.Day}: {row.Species}";
+            if (!Enum.TryParse<DayOfWeek>(row.Day, ignoreCase: true, out _)) Add(name, "is on no day of the week");
+            var species = PokemonDatabase.Get(row.Species);
+            if (species == null) Add(name, "is no species");
+            else if (species.Legendary || species.Mythical || species.IsOurs) Add(name, "is a legendary, a mythical or a species of ours");
+            else if (dex != null && species.DexNumbers.ContainsKey(dex)) Add(name, $"is of the region's own Pokédex ({dex}), not a visitor's");
+            if (row.Places.Count == 0) Add(name, "has no place");
+            foreach (string place in row.Places)
+            {
+                if (!region.World.Index.Areas.Contains(place, StringComparer.OrdinalIgnoreCase)) Add(name, $"is met at {place}, which is not open");
+                else if (region.World.Area(place)?.Land is not { Count: 12 }) Add(name, $"is met at {place}, which has no land table of twelve slots");
+            }
+            if (row.MinLevel is < 1 or > 100 || row.MaxLevel < row.MinLevel || row.MaxLevel > 100) Add(name, $"has levels {row.MinLevel} to {row.MaxLevel}");
+        }
+        foreach (var twice in visitors.Rows.GroupBy(r => r.Day.ToLowerInvariant()).Where(g => g.Count() > 1))
+            Add(twice.Key, "has more than one row");
     }
 
     private static void Rows(GameContent content, GameContent.Region region, List<OutbreakRow> rows, string file, List<Finding> found)

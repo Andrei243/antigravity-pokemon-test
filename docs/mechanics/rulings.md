@@ -10035,6 +10035,48 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   rippling water's, which plan 38 · EX11 meets); the reader reads no swarm and Unova's outbreaks are the generated ones alone.
 - **Not done in EX1.** The Town Map's report page and the visitor (EX2), a mark on the grass or a ring on the Pokémon (the crowd is the
   mark), a shiny sparkle for the crowd's, and Johto's HeartGold has no television outbreak to read (its swarms stay as they are).
+- **The day's report** (EX2, 2026-11-12; `Overworld/FieldReport.cs`). The Town Map out of the bag and the Pokégear's map card turn to
+  a second page on the item button once the region's Hall of Fame is entered (decision 2, the recommended one): the region's two
+  outbreaks with how many of each have been beaten or caught there today, and the visitor. The map as Platinum draws it stays the
+  first page, and the report is the region the player stands in. **The Town Map now marks the day's outbreaks and the visitor**; it
+  still marks no swarm and no roamer (as the original's doesn't: those stay the assistant's sister's, the radio's and the Pokétch's).
+- **The visitor** (EX2; `Overworld/Visitors.cs`, `visitors.json` ours, after Sun and Moon's Island Scan). Each region with a file
+  (Sinnoh, Kanto, Johto, Hoenn and Unova; Kalos's and Alola's come with their Halls of Fame) has **a row for each day of the week**, a
+  species of another region's Pokédex at the region's post-game band. **A scan** from the report calls the weekday's row up: once a
+  day (by the day's number, `SpecialEncounters.ScannedOn`), only past the region's Hall of Fame and with the National Pokédex. It
+  stays **an hour of the game's own time** (`Visitors.Length`, 3,600 seconds of `dt`, counted while the field or a battle is on
+  screen, never a recording watched: menus and the Town Map stop it, as they stop the Bug-Catching Contest's minutes), and a new day
+  takes it with it. A toast says who came and where, and another as it leaves.
+- **Where it is met.** Its place is the first of the row's places (two each) that has **no outbreak that day**; where every one has,
+  nothing answers the scan that day (`ScanState.Nothing`) and the scan is not spent. It lays its species in the grass's **slots 2 to 5**
+  (weights 10 each, **forty meetings in a hundred**), each at the row's levels, after the outbreak's and before the second slot's and
+  ours: the order of what lays over a table is the swarm's, the radio's, the outbreak's, the visitor's, then the second slot's and
+  ours. Its levels are written in the region's own game's (FireRed's for Kanto, HeartGold's for Johto) and mapped as any slot's are
+  in a region the game crossed into. Nothing is drawn for it: the row is the weekday's, its place the first free one.
+- **Not counted as a source.** A visitor is an hour a day behind a scan, so `SpeciesSources` doesn't count it and no species check's
+  list moves by it.
+- **Bright Pokémon** (EX3, 2026-11-12; `Overworld/BrightPokemon.cs`, after Sword and Shield's brilliant Pokémon, decision 4: only with
+  the WILD POKéMON row at VISIBLE). The count is the Pokédex research's caught and defeated of the species (`Research.RecordOf`), and
+  its band gives a chance in a hundred that one in sight is bright, its perfect IVs and shiny rolls more (decision 3, the games' own
+  shape: 1 to 19 met, 2 in a hundred and one perfect IV; 20 to 49, 3 and two; 50 to 99, 4, three and one roll; 100 to 199, 5, three and
+  two rolls; 200 to 299, 6, three and three; 300 to 499, four rolls; from 500, five). **Whether one is bright, which stats are perfect
+  and the Egg move are read from its personality and species, never drawn** (`SplitMix.Mix` of the personality); the bright one knows
+  the first of its species' Egg moves it doesn't know in place of its last. The band's shiny rolls go to **every** one of the species
+  that comes into sight, drawn on the field's generator only from fifty met. `Pokemon.Bright` is not saved: once caught only its IVs
+  and moves remain.
+- **The catch streak** (EX3; `Overworld/CatchStreak.cs`, after Let's Go's catch combo; `SaveData.CatchStreak`, left out while empty).
+  Catches in a row of one species met in sight count; a catch of another begins it again at one, and the chained species running from
+  battle (`EnemyFled`) breaks it; running from it, beating it or a Pokémon met by a step leaves it as it is. From **eleven** in a row a
+  meeting of that species in sight has two perfect IVs and three shiny rolls more, from 21 three and seven, from 31 four and eleven
+  (Let's Go's steps, decision 3); the IVs are drawn among the stats not yet perfect, and nothing is drawn below eleven.
+- **The chain of hooks** (EX3; the same class, after X and Y's chain fishing): Pokémon of one species hooked in a row from one tile
+  count; a cast that hooks nothing or lets its bite go breaks it, another species or another tile begins it again. A hooked Pokémon has
+  **two shiny rolls more for each hook of the chain before it**, to forty (X and Y's numbers), drawn only when the chain is under way.
+- **Glints** (EX3; `Overworld/Glints.cs`, the options' HIDDEN ITEMS GLINT row, `GameSettings.ItemGlints`, a `RulesDefault` on under the
+  modern rules: decision 5). A hidden item not yet found within **three** tiles of the player glints once every **two** seconds of the
+  field's clock, never in a room. It is found as ever, by looking at its tile.
+- **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
+  its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
 
 What Z4 left, closed in our own words on X and Y's beats as they are publicly described.

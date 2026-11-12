@@ -1,0 +1,13 @@
+{
+  // Plan 38 · EX2: the visitor a scan from the Town Map's report calls up for an hour, a row for each day of the week: a
+  // species of another region's Pokédex at the Sevii Islands' band, in FireRed's own levels. Ours: no game has these rows.
+  "rows": [
+    { "day": "Sunday", "species": "Donphan", "places": ["five_island_meadow", "route_23"], "minLevel": 40, "maxLevel": 44 },
+    { "day": "Monday", "species": "Houndoom", "places": ["seven_island_sevault_canyon", "route_23"], "minLevel": 42, "maxLevel": 46 },
+    { "day": "Tuesday", "species": "Girafarig", "places": ["six_island_water_path", "five_island_meadow"], "minLevel": 40, "maxLevel": 44 },
+    { "day": "Wednesday", "species": "Stantler", "places": ["three_island_berry_forest", "six_island_water_path"], "minLevel": 40, "maxLevel": 44 },
+    { "day": "Thursday", "species": "Gligar", "places": ["seven_island_sevault_canyon_entrance", "seven_island_sevault_canyon"], "minLevel": 42, "maxLevel": 46 },
+    { "day": "Friday", "species": "Flaaffy", "places": ["route_23", "five_island_meadow"], "minLevel": 38, "maxLevel": 42 },
+    { "day": "Saturday", "species": "Yanma", "places": ["three_island_berry_forest", "six_island_pattern_bush"], "minLevel": 38, "maxLevel": 42 }
+  ]
+}

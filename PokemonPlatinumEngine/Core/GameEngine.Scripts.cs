@@ -659,12 +659,15 @@ public partial class GameEngine
         }
         if (cast.Stage != FishingStage.Done) return;
         flow.Fishing = null;
+        // The chain of hooks goes on, or is broken by a cast that hooked nothing (plan 38 · EX3)
+        hookRolls = KeepTheChain(cast.Caught);
         if (cast.Caught is { } fish)
         {
             flow.Player.Encounters.Reset();
             flow.Hooked = true;
             StartWildBattle(fish);
         }
+        hookRolls = 0;
     }
 
     /// <summary>A press of the confirm button for a rod's cast, given by a tool in place of the keys (the screenshot harness).</summary>

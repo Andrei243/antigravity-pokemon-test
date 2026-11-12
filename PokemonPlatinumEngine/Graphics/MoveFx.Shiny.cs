@@ -21,6 +21,27 @@ internal static partial class MoveFx
 
     private static readonly Color ShinyGold = new(255, 236, 150, 255);
 
+    private static readonly Color BrightWarm = new(255, 206, 110, 255);
+
+    /// <summary>
+    /// A bright Pokémon's shimmer as it comes out (plan 38 · EX3; style guide, "Poké Ball (G8)"): a warm glow swelling and
+    /// fading round its middle and one ring of six motes, no stars, so it is never taken for a shiny one's sparkle.
+    /// </summary>
+    private static void BrightShimmer(in FxCtx c, FxList fx)
+    {
+        float t = c.Age - c.Cue.Lead;
+        if (t < 0f || t > BattleAnimator.ShinyTime) return;
+        float h = c.ToSize;
+        fx.Sprite(FxShape.Glow, c.To, h * (0.6f + 0.3f * Fx.EaseOut(Math.Min(1f, t / 0.5f))),
+            Fx.Fade(BrightWarm, 0.38f * Fx.Envelope(t, 0f, 0.15f, 0.5f, 0.95f)));
+        for (int i = 0; i < 6; i++)
+        {
+            float angle = i * MathF.Tau / 6f + t * 1.4f, reach = h * (0.35f + 0.3f * Fx.EaseOut(Math.Min(1f, t / 0.6f)));
+            var at = c.To + new Vector3(MathF.Cos(angle) * reach, MathF.Sin(angle) * reach * 0.6f + t * h * 0.2f, 0.05f);
+            fx.Sprite(FxShape.Glow, at, h * 0.07f, Fx.Fade(BrightWarm, Fx.Envelope(t, 0.05f, 0.15f, 0.55f, 0.9f)));
+        }
+    }
+
     private static void ShinySparkle(in FxCtx c, FxList fx)
     {
         float t = c.Age - c.Cue.Lead;

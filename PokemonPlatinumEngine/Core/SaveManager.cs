@@ -296,6 +296,10 @@ public class SaveData
     /// </summary>
     public SpecialEncounters? Encounters { get; set; }
 
+    /// <summary>The catch streak and the chain of hooks (plan 38 · EX3); null while both are empty, and in older saves.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Overworld.CatchStreak? CatchStreak { get; set; }
+
     /// <summary>The berry patches (plan 06 · R14a). Null in older saves, which are given the new game's.</summary>
     public BerryPatches? Berries { get; set; }
 

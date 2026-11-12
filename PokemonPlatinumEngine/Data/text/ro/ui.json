@@ -431,6 +431,15 @@
         "On": "Meniul de start are CUTII, care deschide PC-ul oriunde locul o permite, iar fiecare buzunar al rucsacului poate fi ordonat după nume sau după câte ai, cu salt la literă."
       }
     },
+    "itemGlints": {
+      "label": "Obiecte ascunse care sclipesc",
+      "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
+      "help": {
+        "Off": "Obiectele ascunse stau nevăzute, ca în Platinum: uită-te la pământ sau folosește o aplicație de căutare ca să le găsești.",
+        "Rules": "Regulile din Platinum lasă obiectele ascunse nevăzute; regulile moderne fac ca unul aflat la cel mult trei pași să sclipească din când în când.",
+        "On": "Un obiect ascuns aflat la cel mult trei pași de tine sclipește la câteva secunde, până e găsit."
+      }
+    },
     "partyTools": {
       "label": "Amintire și redenumire",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -1949,6 +1958,27 @@
   "townMap": {
     "hintRegion": "Regiune",
     "inRegion": "{place}, {region}",
+    "report": {
+      "tag": "AZI",
+      "title": "Azi în {region}",
+      "outbreaks": "INVAZII",
+      "noOutbreaks": "Nicio invazie azi.",
+      "met": "{count} întâlniți",
+      "visitor": "VIZITATOR",
+      "minutes": "încă {count} min",
+      "scan": {
+        "Ready": "Apasă {key:confirm} ca să cauți un vizitator din altă regiune. Rămâne o oră.",
+        "NotOpen": "Nimic de raportat deocamdată.",
+        "NoNationalDex": "Căutarea are nevoie de Pokédexul Național.",
+        "Scanned": "Ai căutat deja azi. Încearcă mâine.",
+        "Nothing": "Nimic nu răspunde azi la căutare."
+      },
+      "hintReport": "Azi",
+      "hintMap": "Hartă",
+      "hintScan": "Caută",
+      "legendOutbreak": "Invazie",
+      "legendVisitor": "Vizitator"
+    },
     "title": { "Item": "HARTA REGIUNII", "Fly": "ZBOR", "Wall": "HARTĂ", "Card": "CARDUL HĂRȚII" },
     "flyTo": "Unde zbori?",
     "legend": { "you": "Tu", "visited": "Vizitat", "notVisited": "Nevizitat încă", "trail": "Drumul pe care ai venit" },
@@ -1968,7 +1998,13 @@
   "field": {
     "skip": "SARI",
     "safariBalls": "SAFARI BALLS",
+    "streak": "ȘIR",
+    "hooks": "AGĂȚATE",
     "steps": "PAȘI"
+  },
+  "visitorToast": {
+    "came": "Căutarea a găsit un {name} în {place}! Rămâne o oră.",
+    "gone": "{name} a plecat din {place}."
   },
   "outbreakToast": {
     "bonusOne": "{count} {name} întâlniți azi în {place}. Iarba s-a neliniștit: cei shiny apar mai des.",

@@ -476,6 +476,7 @@ public partial class GameEngine
         flow.EncounterAids.Flute = Flute.None;
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
         flow.Encounters = SpecialEncounters.NewGame(fieldRandom);
+        flow.CatchStreak = new Overworld.CatchStreak();
         flow.Berries = BerryPatches.NewGame();
         flow.PoffinCase.Clear();
         phoneRinger.Reset();
@@ -748,6 +749,7 @@ public partial class GameEngine
         // What the game remembered of its wild Pokémon (a save from before plan 06 · R13 is given a new start); a
         // game come back to sends every roamer anywhere (the original's continue task)
         flow.Encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
+        flow.CatchStreak = save.CatchStreak ?? new Overworld.CatchStreak();
         flow.Berries = (save.Berries ?? BerryPatches.NewGame()).Grown();
         flow.PoffinCase.Restore(save.Poffins);
         phoneRinger.Reset();
@@ -977,6 +979,7 @@ public partial class GameEngine
             BugContest = flow.BugContest.ToSave(),
             Athlon = flow.Athlon.Runs > 0 || flow.Athlon.Points > 0 ? flow.Athlon.Copy() : null,
             Encounters = flow.Encounters,
+            CatchStreak = flow.CatchStreak.IsEmpty ? null : flow.CatchStreak,
             Berries = flow.Berries,
             Poffins = flow.PoffinCase.Count > 0 ? flow.PoffinCase.All.ToList() : null,
             FashionCase = flow.FashionCase.ToSave(),
@@ -1255,6 +1258,8 @@ public partial class GameEngine
             RunTheSetPieces();
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
+            // Hidden items glint and bright Pokémon shimmer, by the field's own clock (plan 38 · EX3)
+            KeepTheGlints(before);
             // The Pokégear's phone counts the minutes before a call can come (plan 20 · J3)
             RunThePhonesClock(dt);
             // Thunder follows a storm's lightning, a moment after the flash
@@ -1377,6 +1382,8 @@ public partial class GameEngine
                 TickBugContest(dt);
                 // A timed mission's minutes in its region (plan 41 · EG6)
                 TickMissions(dt);
+                // The visitor's hour (plan 38 · EX2)
+                TickVisitor(dt);
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt * Pace);
@@ -1405,6 +1412,8 @@ public partial class GameEngine
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);
                     // ...and so do a timed mission's (plan 41 · EG6)
                     TickMissions(dt);
+                    // ...and the visitor's hour (plan 38 · EX2)
+                    if (!flow.Battle.Watching) TickVisitor(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
                     // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
@@ -1485,6 +1494,12 @@ public partial class GameEngine
                 break;
             case GameState.FlyMap:
                 flow.TownMapScreen.Update(dt);
+                // The report's scan (plan 38 · EX2): the visitor called up, and the report told again
+                if (flow.TownMapScreen.TakeScan())
+                {
+                    ScanForVisitor();
+                    flow.TownMapScreen.SetReport(FieldReportNow());
+                }
                 if (flow.TownMapScreen.TakeChoice() is { } town)
                 {
                     flow.FlyTarget = town;
@@ -3307,6 +3322,8 @@ public partial class GameEngine
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (shown == GameState.Overworld && !flow.StartMenu.IsActive && !ScriptRunning) flow.PoketchView.Draw(VirtualWidth, VirtualHeight, flow.Poketch, PoketchNow());
                 if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Endless);
+                // ...or, where neither game is on, the catch streak and the chain of hooks (plan 38 · EX3)
+                else if (!InBugContest && StreakShown is var (streakSpecies, streak, hooks)) ModernUi.StreakCount(VirtualWidth, streakSpecies, streak, hooks);
                 DrawBugContestCount();
                 DrawParkCount();
                 DrawBattlePoints();
