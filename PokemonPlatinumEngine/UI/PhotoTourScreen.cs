@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
@@ -38,6 +39,21 @@ public sealed class PhotoTourScreen
     /// <summary>The ride's total.</summary>
     public int Total { get; private set; }
 
+    /// <summary>How many of the judged panel's rows show at once (plan 44 · SD6: the rest scroll).</summary>
+    public const int RowsShown = 8;
+
+    /// <summary>The judged panel's chosen row, and the first row it shows.</summary>
+    public int Cursor { get; private set; }
+    public int FirstShown { get; private set; }
+
+    /// <summary>The judged panel's cursor moved a row, wrapping round, the window following it.</summary>
+    public void MoveCursor(int step)
+    {
+        if (Phase != TourPhase.Judged || Shown.Count == 0) return;
+        Cursor = UiNav.Wrap(Cursor, step, Shown.Count);
+        FirstShown = UiNav.Window(FirstShown, Cursor, Shown.Count, RowsShown);
+    }
+
     /// <summary>Whether the best photograph has been kept in the photo book this ride.</summary>
     public bool Kept { get; set; }
 
@@ -67,6 +83,7 @@ public sealed class PhotoTourScreen
         carry = 0f;
         Shown = bests = Array.Empty<TourBest>();
         Total = 0;
+        Cursor = FirstShown = 0;
         Kept = Taking = keepWanted = false;
         ticksSinceShot = 999;
     }
@@ -142,6 +159,7 @@ public sealed class PhotoTourScreen
         bests = TourResults.BestOf(Ride!);
         Shown = TourResults.ShownOf(bests);
         Total = TourResults.TotalOf(bests);
+        Cursor = FirstShown = 0;
         Begin(TourPhase.Judged);
     }
 
@@ -183,6 +201,8 @@ public sealed class PhotoTourScreen
         {
             if (InputManager.IsActionPressed(GameAction.Item)) Keep();
             else if (InputManager.IsActionPressed(GameAction.Confirm)) Leave();
+            else if (InputManager.IsActionPressed(GameAction.Down)) MoveCursor(1);
+            else if (InputManager.IsActionPressed(GameAction.Up)) MoveCursor(-1);
         }
         var stick = InputManager.GetStick();
         float turn = InputManager.IsActionDown(GameAction.Right) ? 1f : InputManager.IsActionDown(GameAction.Left) ? -1f : stick.X;

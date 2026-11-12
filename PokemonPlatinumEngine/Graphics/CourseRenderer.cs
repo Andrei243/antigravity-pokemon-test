@@ -26,11 +26,16 @@ internal sealed class CourseRenderer
 
     public CourseRenderer(RenderContext context) => this.context = context;
 
-    /// <summary>The look of the light for a ride: a meadow by a lake at its hour, in its weather.</summary>
-    public static LightRig RigFor(TourFrame frame)
+    /// <summary>The look of the light for a ride: its course's kind of ground (a meadow by a lake for the Reed River) at its hour, in its weather.</summary>
+    public static LightRig RigFor(TourFrame frame, TourCourseData course)
     {
-        var rig = ArtLook.ArenaRig(new ArenaSpec(BattleArena.Grass, Lakeside: true), frame.Hour);
-        return frame.Weather == TourWeather.Rain ? ArtLook.InBattleWeather(rig, BattleWeather.Rain) : rig;
+        var rig = ArtLook.ArenaRig(CourseScene.ArenaOf(course.Look), frame.Hour);
+        return frame.Weather switch
+        {
+            TourWeather.Rain => ArtLook.InBattleWeather(rig, BattleWeather.Rain),
+            TourWeather.Snow => ArtLook.InBattleWeather(rig, BattleWeather.Snow),
+            _ => rig
+        };
     }
 
     /// <summary>Renders the frame offscreen; call outside any other texture mode. Residents whose models aren't made are left out.</summary>
@@ -39,14 +44,14 @@ internal sealed class CourseRenderer
         context.EnsureLoaded();
         Ensure(course);
         var shaders = context.Shaders;
-        var rig = RigFor(frame);
+        var rig = RigFor(frame, course);
         var light = rig.Light;
         var cam = frame.Camera;
         var camera = new Camera3D(cam.Eye, cam.Eye + cam.Forward, Vector3.UnitY,
             Canvas2D.Layout.FovYFor(cam.FovY * 180f / MathF.PI), CameraProjection.Perspective);
 
         shaders.SetTime(time);
-        shaders.SetWind(frame.Weather == TourWeather.Rain ? 0.6f : 0.25f);
+        shaders.SetWind(frame.Weather == TourWeather.Clear ? 0.25f : 0.6f);
         shaders.SetWalkers(Array.Empty<Vector3>());
 
         // 1. The shadow map round where the lens looks

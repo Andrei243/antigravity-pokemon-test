@@ -15,7 +15,7 @@ public class MedalTests
     public void ThereAreAHundredAndTwentyInSixCategoriesEachOnTheCardsPage()
     {
         // (and the Laurel Circuit's three, plan 41 · EG4)
-        Assert.Equal(125, Medals.All.Count);
+        Assert.Equal(126, Medals.All.Count);
         Assert.Equal(Medals.All.Count, Medals.All.Select(m => m.Id).Distinct().Count());
         foreach (var category in Enum.GetValues<MedalCategory>())
         {
@@ -43,7 +43,7 @@ public class MedalTests
     private static MedalFacts At(string source, long value)
     {
         var counts = new Statistics();
-        int seen = 0, caught = 0, badges = 0, champions = 0, circuits = 0, reclaimed = 0, opened = 0;
+        int seen = 0, caught = 0, badges = 0, champions = 0, circuits = 0, reclaimed = 0, opened = 0, fourStars = 0;
         switch (source)
         {
             case MedalFacts.DexSeen: seen = (int)value; break;
@@ -53,9 +53,10 @@ public class MedalTests
             case MedalFacts.Circuits: circuits = (int)value; break;
             case MedalFacts.HeartsReclaimed: reclaimed = (int)value; break;
             case MedalFacts.HeartsOpened: opened = (int)value; break;
+            case MedalFacts.TourFourStars: fourStars = (int)value; break;
             default: counts.Count(source, value); break;
         }
-        return new MedalFacts { Counts = counts, Seen = seen, Caught = caught, BadgeCount = badges, ChampionCount = champions, CircuitCount = circuits, HeartsReclaimedCount = reclaimed, HeartsOpenedCount = opened };
+        return new MedalFacts { Counts = counts, Seen = seen, Caught = caught, BadgeCount = badges, ChampionCount = champions, CircuitCount = circuits, HeartsReclaimedCount = reclaimed, HeartsOpenedCount = opened, TourFourStarCount = fourStars };
     }
 
     [Fact]

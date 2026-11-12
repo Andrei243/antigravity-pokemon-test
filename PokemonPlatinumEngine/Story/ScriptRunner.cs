@@ -390,8 +390,8 @@ public sealed partial class ScriptRunner
         Op.Pasture => i.Name == "care",
         // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
         Op.Heart => i.Name == "open",
-        // A ride is a screen the player plays; the rest is asked without one (plan 44 · SD5)
-        Op.Tour => i.Name == "ride",
+        // A ride and the report are screens the player plays and reads; the rest is asked or handed over without one (plan 44 · SD5, SD6)
+        Op.Tour => i.Name is "ride" or "report",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
         // A power is learned or granted without a screen (plan 36 · TR8)
@@ -2297,6 +2297,33 @@ public sealed partial class ScriptRunner
             case "points":
                 Result = host.PhotoTour?.Total ?? 0;
                 break;
+            case "report":
+                // The report on its screen (plan 44 · SD6); the script waits until it is left
+                host.Open(ScriptScreen.TourReport, Subject);
+                break;
+            case "reward":
+            {
+                // The next of the guide's rewards the report's total has earned, handed over as `give` hands an item
+                // (its fanfare, its two lines), RESULT 1; nothing due, RESULT 0. A reward is asked of the randomiser as a
+                // gift is (`Swapped`), and `{item}` names it.
+                if (host.PhotoTour is not { } tourReport || tourReport.RewardDue(PhotoTourCourses.Rewards) is not { } due)
+                {
+                    Result = 0;
+                    break;
+                }
+                var (item, count) = Swapped(ItemDatabase.Get(due.Item) ?? throw Wrong(i, $"there is no item '{due.Item}'"), Math.Max(1, due.Count), i);
+                tourReport.Claim();
+                host.Bag.AddItem(item, count);
+                lastItem = item.Name;
+                host.Fanfare(FanfareFor(item));
+                host.Say(null, new List<string>
+                {
+                    Text.Of("found.received", ("n", count), ("item", item.DisplayName)),
+                    Text.Of("found.putAway", ("n", count), ("pocket", PocketName(item.Pocket)))
+                });
+                Result = 1;
+                break;
+            }
         }
     }
 
