@@ -59,6 +59,8 @@ public sealed partial class GameFlow
     /// <summary>The first start's page of options (plan 16 · T24).</summary>
     public FirstStartScreen FirstStartScreen { get; } = new();
     public HatchScreen HatchScreen { get; } = new();
+    /// <summary>A locked heart opening (plan 44 · SD2).</summary>
+    public HeartOpeningScreen HeartOpeningScreen { get; } = new();
     public HallOfFameCeremony Ceremony { get; } = new();
     public CreditsScreen Credits { get; } = new();
     public SealCaseScreen SealCaseScreen { get; } = new();

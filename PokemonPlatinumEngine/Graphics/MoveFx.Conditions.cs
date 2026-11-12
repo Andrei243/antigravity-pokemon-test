@@ -83,6 +83,46 @@ internal static partial class MoveFx
         // The later moves' marks (plan 06 · R26b)
         if (look.Salt.Visible) SaltGrains(look.Salt.Age, look.Salt.Strength * shown, look.Salt.Seed, feet, h, w, fx);
         if (look.Syrup.Visible) SyrupDrops(look.Syrup.Age, look.Syrup.Strength * shown, look.Syrup.Seed, feet, h, w, fx);
+        // A locked heart's grey haze (plan 44 · SD2), thicker while it is loose
+        if (look.Haze.Visible) LockHaze(look.Haze.Age, look.Haze.Strength * shown, look.Loose.Strength, look.Haze.Seed, feet, h, w, fx);
+    }
+
+    // ------------------------------------------------------------------ a locked heart (plan 44 · SD2)
+
+    /// <summary>The most the lock's haze draws: four wisps, and two more with a flicker while the Pokémon is loose.</summary>
+    public const int HazeCap = 7;
+
+    /// <summary>How long a wisp of the haze is on its way up and round, in seconds.</summary>
+    public const float HazeTime = 3.2f;
+
+    /// <summary>
+    /// A locked heart (style guide, "A locked heart"): grey wisps drifting slowly up round its body from its sides, never
+    /// over its middle, and while it is loose two more darker ones close in and a dull flicker rises from its feet. Matter,
+    /// alpha-blended, so the grey keeps its colour on any ground.
+    /// </summary>
+    public static void LockHaze(float age, float k, float loose, int seed, Vector3 feet, float h, float w, FxList fx)
+    {
+        if (k <= 0.004f) return;
+        var grey = Rgb(118, 116, 128);
+        var dark = Rgb(72, 68, 84);
+        int wisps = loose > 0.004f ? 6 : 4;
+        for (int i = 0; i < wisps; i++)
+        {
+            bool extra = i >= 4;
+            float u = Loop(age / HazeTime + i / (float)wisps + Fx.Rand(seed, i, 461) * 0.12f);
+            float side = i % 2 == 0 ? -1f : 1f;
+            float x = side * w * (1.05f + 0.25f * Fx.Rand(seed, i, 462) + 0.1f * MathF.Sin(age * 0.9f + i));
+            float y = h * (0.1f + 0.75f * u);
+            float fade = (extra ? loose : 1f) * k * Math.Min(1f, u * 4f) * Math.Min(1f, (1f - u) * 3f);
+            float size = h * (0.16f + 0.08f * u) * (extra ? 0.85f : 1f);
+            var p = feet + new Vector3(x * (extra ? 0.8f : 1f), y, h * 0.04f * Fx.Signed(seed, i, 463));
+            fx.Sprite(FxShape.Smoke, p, size, Fx.Fade(extra ? dark : grey, fade * 0.7f), FxBlend.Alpha, age * 0.3f * side + i);
+        }
+        if (loose > 0.004f)
+        {
+            float pulse = 0.5f + 0.5f * MathF.Sin(age * 6f);
+            fx.Sprite(FxShape.Glow, feet + new Vector3(0f, h * 0.06f, h * 0.05f), w * 1.6f, Fx.Fade(dark, loose * k * 0.35f * pulse), FxBlend.Alpha);
+        }
     }
 
     // ------------------------------------------------------------------ the later moves' marks (plan 06 · R26b)

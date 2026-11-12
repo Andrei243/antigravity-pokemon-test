@@ -1761,6 +1761,10 @@ public partial class GameEngine
         public IEnumerable<int> PatchesBeside(NPC soil) => BerryCrossing.Beside(game.flow.Map, soil).ToList();
         public ApricornBox Apricorns => game.flow.Apricorns;
         public CraftingState Crafting => game.flow.Crafting;
+
+        // Locked hearts (plan 44 · SD2): the game's record, and an opening with its scene
+        public HeartsRecord Hearts => game.flow.Hearts;
+        public void OpenHeart(Pokemon pokemon) => game.OpenTheHeart(pokemon);
         public PowerState Powers => game.flow.Powers;
         public TrainingRecords Training => game.flow.Training;
         public PhotoAlbum? Photos => game.flow.Photos;

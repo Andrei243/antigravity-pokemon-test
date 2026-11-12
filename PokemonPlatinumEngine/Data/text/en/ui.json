@@ -1179,6 +1179,8 @@
     "topLevel": "TOP LEVEL",
     "toLevel": "TO Lv {level}",
     "heldAt": "Gains no EXP above Lv. {level} for now.",
+    "heartLock": "HEART LOCK · {bars} OF 5 BARS",
+    "expHeld": "{exp} EXP. Points held until its heart opens",
     "stats": "STATS",
     "effort": "EFFORT",
     "effortValue": "{ev} / {max}",
@@ -2221,7 +2223,8 @@
       "room": "There is no room for it.",
       "cross": "That save's region can't take it yet.",
       "save": "A file couldn't be written. Nothing was moved.",
-      "notFound": "That Pokémon isn't there any more."
+      "notFound": "That Pokémon isn't there any more.",
+      "locked": "Its heart is locked. It can't leave until its heart opens."
     }
   },
   "migrate": {
@@ -4097,6 +4100,14 @@
     "lostSomeOfIts": "{pokemon} lost some of its HP!",
     "hungOnUsingIts": "{pokemon} hung on using its {item}!",
     "affectionHeldOn": "{pokemon} held on, not wanting to let you down!",
+    "reclaimed": "Got it! {foe} was reclaimed from its trainer!",
+    "brokeLoose": "{user}'s locked heart flared! It broke loose!",
+    "looseIgnores": "{user} is loose and ignored the order!",
+    "calmedDown": "{pokemon} calmed down. Its lock eased a little.",
+    "nothingToCalm": "{pokemon} isn't loose. There's nothing to calm.",
+    "looseHurts": "{pokemon} is hurt by its own wild struggle!",
+    "expHeld": "{pokemon}'s lock held back {exp} EXP. Points.",
+    "moveSealedByLock": "{pokemon}'s heart is locked. {move} won't come!",
     "affectionShookOff": "{pokemon} shrugged off its {condition} for your sake!",
     "affectionDodged": "{pokemon} slipped out of the way, keen to impress you!",
     "ateIts": "{pokemon} ate its {item}!",
@@ -4483,6 +4494,7 @@
     "pokemon": "POKÉMON",
     "run": "RUN",
     "shift": "SHIFT",
+    "calm": "CALM",
     "bait": "BAIT",
     "mud": "MUD",
     "pokeblock": "POKéBLOCK",
@@ -4602,6 +4614,9 @@
     "AceTrainer": "Ace Trainer",
     "AceTrainerF": "Ace Trainer",
     "AceTrainerM": "Ace Trainer",
+    "LockworkAgent": "Lockwork Agent",
+    "LockworkAdmin": "Lockwork Admin",
+    "LockworkHead": "Lockwork Head",
     "ArcadeStar": "Arcade Star",
     "AromaLady": "Aroma Lady",
     "Actor": "Actor",
@@ -6980,5 +6995,12 @@
       "sinnoh_oreburgh_museum": "Oreburgh's Museum",
       "sinnoh_floaroma_flowers": "Floaroma's Flowers"
     }
+  },
+  "hearts": {
+    "refused": "{pokemon}'s heart is locked. It won't go until its heart opens.",
+    "opened": "{pokemon}'s heart opened!",
+    "openedScene": "{pokemon}'s heart opened! It's itself again!",
+    "openedLevel": "{pokemon} took in what it had earned and grew to Lv. {level}!",
+    "movesWanted": "{pokemon} wants to learn a new move. Teach it at the Move Relearner's or with REMEMBER."
   }
 }

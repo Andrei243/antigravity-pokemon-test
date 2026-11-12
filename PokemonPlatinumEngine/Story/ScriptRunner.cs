@@ -386,6 +386,8 @@ public sealed partial class ScriptRunner
         // A raid fought waits for the player (plan 33 · GL3); a den looked into, its Watts and a catch's die don't
         Op.Raid => i.Name == "fight",
         Op.Treat => false,
+        // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
+        Op.Heart => i.Name == "open",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
         // A power is learned or granted without a screen (plan 36 · TR8)
@@ -1547,6 +1549,10 @@ public sealed partial class ScriptRunner
             case Op.Treat:
                 TreatCommand(i);
                 break;
+            // Locked hearts (plan 44 · SD2)
+            case Op.Heart:
+                HeartCommand(i);
+                break;
             // The training hall (plan 36 · TR2)
             case Op.Train:
                 TrainCommand(i);
@@ -1819,7 +1825,7 @@ public sealed partial class ScriptRunner
                 Result = Models.SuperContests.ContestRules.WhyNot(host.Party.Members[slot], contestCategory, rank) switch
                 {
                     null => 0,
-                    "egg" or "fainted" => 2,
+                    "egg" or "fainted" or "locked" => 2,
                     "rank" => 3,
                     _ => 4
                 };
@@ -2053,6 +2059,8 @@ public sealed partial class ScriptRunner
                 if (slot < 0 || slot >= party.Count) Result = 1;
                 else if (party.Members[slot].IsEgg) Result = 2;
                 else if (Models.DayCare.WhyNot(party, slot) == "last") Result = 3;
+                // A locked heart isn't left (plan 44 · SD1)
+                else if (Models.DayCare.WhyNot(party, slot) == "locked") Result = 5;
                 else if (dayCare.Count >= Models.DayCare.Places) Result = 4;
                 else
                 {

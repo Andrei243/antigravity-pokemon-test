@@ -274,7 +274,7 @@ public sealed class AthlonRun
     }
 
     /// <summary>Whether a team has three that may go in (no Eggs): what the dome's clerk asks first.</summary>
-    public static bool CanEnter(Party team) => team.Members.Count(p => !p.IsEgg) >= TeamSize;
+    public static bool CanEnter(Party team) => team.Members.Count(p => !p.IsEgg && !HeartLock.Refuses(p, LockedUse.Athlon)) >= TeamSize;
 
     /// <summary>The next event begins, on a seed drawn now.</summary>
     public AthlonEvent StartEvent()

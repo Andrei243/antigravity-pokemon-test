@@ -167,7 +167,9 @@ public enum GameState
     /// <summary>The salon's chair and the dye house's counter, a script's <c>wardrobe salon</c> or <c>wardrobe dye</c> waiting on it (plan 43 · LF3).</summary>
     Salon,
     /// <summary>The photo book, a script's <c>photo book</c> waiting on it (plan 43 · LF4).</summary>
-    PhotoBook
+    PhotoBook,
+    /// <summary>A locked heart opening, its scene and its level panel (plan 44 · SD2).</summary>
+    HeartOpening
 }
 
 public partial class GameEngine
@@ -515,6 +517,7 @@ public partial class GameEngine
         flow.DexNav = new();
         flow.Photos.Clear();
         LoadTheLife(null);
+        flow.Hearts = new HeartsRecord();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
         flow.PokeblockCase.Clear();
@@ -795,6 +798,7 @@ public partial class GameEngine
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
         LoadTheLife(save);
+        flow.Hearts = save.Hearts ?? new HeartsRecord();
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
         flow.PokeblockCase.Restore(save.Pokeblocks);
@@ -1027,6 +1031,7 @@ public partial class GameEngine
             Photos = flow.Photos.ToSave(),
             CardDesign = CardDesignToSave(),
             PhotoBook = flow.PhotoBook.ToSave(),
+            Hearts = flow.Hearts.IsEmpty ? null : flow.Hearts,
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
             Pokeblocks = flow.PokeblockCase.Count > 0 ? flow.PokeblockCase.ToSaved() : null,
@@ -1591,6 +1596,10 @@ public partial class GameEngine
                 flow.HatchScreen.Update(dt);
                 if (!flow.HatchScreen.IsActive) FinishHatch();
                 break;
+            case GameState.HeartOpening:
+                flow.HeartOpeningScreen.Update(dt);
+                if (!flow.HeartOpeningScreen.IsActive) FinishHeartOpening();
+                break;
             case GameState.PokedexMenu:
                 flow.PokedexScreen.Update(dt);
                 // An entry's A opens the gallery on its species (plan 12 · Q30), and B there comes back to the entry
@@ -1927,7 +1936,7 @@ public partial class GameEngine
     private void UpdateAmbience()
     {
         bool heard = gameStarted && flow.Map != null && flow.Player != null
-            && flow.Shown is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch
+            && flow.Shown is not (GameState.Title or GameState.Intro or GameState.Battle or GameState.Evolution or GameState.Hatch or GameState.HeartOpening
                 or GameState.HallOfFameCeremony or GameState.Credits);
         if (!heard)
         {
@@ -1997,6 +2006,8 @@ public partial class GameEngine
         RefreshPresence();
         // A Pokémon caught under the Nuzlocke is named before the field goes on (plan 13 · V4)
         if (NameTheCatch()) return;
+        // A locked heart whose gauge has emptied opens once the field is free (plan 44 · SD1)
+        if (KeepTheHearts()) return;
         // A Pokémon traded in from another of the player's saves is welcomed, and evolves if trading was its way (plan 12 · Q28)
         if (!flow.Runner.IsRunning && HandOverATrade()) return;
 
@@ -2320,6 +2331,8 @@ public partial class GameEngine
         // SystemVars_IncrementAmitySquareStepCount, which the original counts everywhere and reads only in the square)
         if (flow.Story.Var(AmitySquare.ActiveVar) == 1) AmitySquare.CountStep(flow.Story);
         if (PalParkStep()) return true;
+        // The team's locked hearts are lowered by its steps (plan 44 · SD1)
+        HeartsOnStep();
         if (++flow.FriendshipSteps >= FriendshipRules.WalkCycleSteps)
         {
             flow.FriendshipSteps = 0;
@@ -3343,6 +3356,10 @@ public partial class GameEngine
         {
             flow.HatchScreen.Render(renderContext);
         }
+        else if (scene == GameState.HeartOpening)
+        {
+            flow.HeartOpeningScreen.Render(renderContext);
+        }
         else if (scene == GameState.Intro)
         {
             flow.IntroScreen.Render(renderContext);
@@ -3469,6 +3486,9 @@ public partial class GameEngine
                 break;
             case GameState.Hatch:
                 flow.HatchScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.HeartOpening:
+                flow.HeartOpeningScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.PokedexMenu:
                 flow.PokedexScreen.Draw(VirtualWidth, VirtualHeight, flow.Pokedex);
@@ -3704,6 +3724,7 @@ public partial class GameEngine
                 }
                 else if (scene == GameState.Evolution) flow.EvolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Hatch) flow.HatchScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.HeartOpening) flow.HeartOpeningScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.BagMenu) flow.BagScreen.Draw(VirtualWidth, VirtualHeight, flow.Bag, flow.Party, EvolutionContextNow());
                 else if (scene == GameState.ReplayList) flow.ReplayListScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.SuperContest) flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);

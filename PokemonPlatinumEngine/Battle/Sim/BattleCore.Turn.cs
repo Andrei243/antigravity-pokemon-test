@@ -83,6 +83,8 @@ public sealed partial class BattleCore
         if (FieldConditions() && PokemonConditions()) SideConditions();
         // A Dynamax counts its turns and ends at its third (plan 06 · R22; Showdown's endTurn)
         DynamaxRunsDown();
+        // A loose Pokémon hurts itself (plan 44 · SD1): nothing where nobody is loose
+        if (Result == BattleResult.None && AllBattlers.Any(b => b.Volatile.Loose)) LooseBites();
     }
 
     // ---------------------------------------------------------------- the sides and the sky

@@ -399,6 +399,9 @@ public class SaveData
 
     /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
     public List<Models.PhotoPrint>? PhotoBook { get; set; }
+    /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD1); null while empty, so an older save needs nothing.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.HeartsRecord? Hearts { get; set; }
 
     /// <summary>
     /// The moves of Pokémon between this game's saves that have been begun here and not closed (plan 08 · P22,
@@ -879,6 +882,10 @@ public class SavedPokemonData
     /// <summary>The mark chosen as its title (plan 10 · F9); left out for none.</summary>
     public string? Title { get; set; }
 
+    /// <summary>Its heart's lock (plan 44 · SD1): left out for every Pokémon but Lockwork's locked, which is every Pokémon of an older save.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public HeartLock? Lock { get; set; }
+
     /// <summary>An alpha's size (plan 10 · F10); left out at 1, which is every Pokémon of an older save.</summary>
     public float? Scale { get; set; }
 
@@ -958,6 +965,7 @@ public class SavedPokemonData
             Ribbons = p.Ribbons.Count > 0 ? p.Ribbons.ToList() : null,
             EncounterMarks = p.EncounterMarks.Count > 0 ? p.EncounterMarks.ToList() : null,
             Title = p.Title,
+            Lock = p.Lock,
             Scale = p.Scale > 1f ? p.Scale : null,
             CapsuleId = p.CapsuleId,
             Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
@@ -1035,6 +1043,8 @@ public class SavedPokemonData
         if (EncounterMarks != null) p.EncounterMarks.UnionWith(EncounterMarks);
         // A title is one of its marks or nothing
         p.Title = Title != null && p.EncounterMarks.Contains(Title) ? Title : null;
+        // A lock keeps its gauge within its bounds (plan 44 · SD1)
+        p.Lock = Lock == null ? null : Lock with { Gauge = Math.Clamp(Lock.Gauge, 0, HeartLock.Full), HeldExp = Math.Max(0, Lock.HeldExp) };
         if (Scale is > 1f and var scale) p.Scale = Math.Min(Overworld.Alphas.Scale, scale);
         if (CapsuleId is > 0 and <= SealCase.Capsules)
         {

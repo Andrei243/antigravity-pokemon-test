@@ -84,6 +84,13 @@ public partial class BattleEngine
     /// </summary>
     public bool OffersShift => IsTriple && Kind == BattleKind.Normal && MenuBattler.Slot != BattleCore.CentreSlot && MenuBattler.Trainer == null;
 
+    /// <summary>
+    /// The Pokémon whose action is being chosen is a locked heart that has broken loose, so its fourth command is CALM in
+    /// place of RUN (plan 44 · SD2; style guide, "A locked heart"), as the rules have it.
+    /// </summary>
+    public bool OffersCalm => MenuBattler.Trainer == null && MenuBattler.IsActive && MenuBattler.Pokemon?.Lock != null
+        && core.WhyNot(BattleChoice.Calm(MenuBattler.Place)) == null;
+
     /// <summary>The calls answered in an SOS battle so far, as the lines shown have told (plan 14 · B5).</summary>
     public int SosChain { get; private set; }
 
@@ -220,6 +227,20 @@ public partial class BattleEngine
     /// <summary>The foes that fainted in this battle, as the screen had them when they did (plan 39 · CR1: a wild Pokémon felled leaves materials behind).</summary>
     public IReadOnlyList<Pokemon> FelledFoes => felledFoes;
 
+    private readonly List<Pokemon> reclaimed = new();
+
+    /// <summary>The trainers' locked Pokémon reclaimed this battle (plan 44 · SD1), as the screen has them: the game takes them in once it is over.</summary>
+    public IReadOnlyList<Pokemon> Reclaimed => reclaimed;
+
+    /// <summary>
+    /// How far each locked Pokémon of the player's gauge falls for this battle (plan 44 · SD1): a battle fought in and a
+    /// foe it was facing when it fell, by the screen's own Pokémon. Empty where nobody locked was sent out.
+    /// </summary>
+    public IReadOnlyList<(Pokemon Pokemon, int Fall)> LockFalls() =>
+        core.SentOut.Where(p => p.Lock != null)
+            .Select(p => (mirror.Shown(p), Models.HeartLock.Fall.Battle + Models.HeartLock.Fall.KnockOut * core.LockKnockOuts.GetValueOrDefault(p)))
+            .ToList();
+
     private readonly PcBoxes? pcBoxStorage;
     private readonly string? place;
     private readonly Models.MarkMoment? encounter;
@@ -345,6 +366,7 @@ public partial class BattleEngine
             NoRewards = setup.NoRewards,
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
+            Reclaimer = setup.Reclaimer,
             MegaMaxDen = setup.MegaMaxDen,
             // A raid's three raiders, copies as a partner is (plan 33 · GL3)
             Raid = setup.Raid == null ? null : setup.Raid with { Allies = setup.Raid.Allies.Select(mirror.Copy).ToList() },
@@ -518,6 +540,7 @@ public partial class BattleEngine
             // What lasts on it (plan 09 · L2): the lines have told all of it already; this catches a Pokémon changed from outside
             Anim.Conditions.Settle(place.Place, ConditionLooks.RulesHave(theirs));
             Anim.Conditions.SettleMarks(place.Place, ConditionLooks.MarksRulesHave(theirs));
+            Anim.Conditions.SettleLock(place.Place, ConditionLooks.LockRulesHave(theirs));
         }
         Weather = core.Field.Weather;
         Anim.SettleWeather(Weather);
@@ -1197,6 +1220,17 @@ public partial class BattleEngine
                 if (Enumerable.Range(0, Anim.Slots).Any(s => Anim[BattleSide.Player, s].Shown == gaining))
                     AudioManager.PlaySound("exp", -0.3f);
                 break;
+            case ExpHeld held:
+            {
+                // A locked heart's lock holds what it earned (plan 44 · SD1): the screen's own takes it as the line is read
+                var lockHolder = mirror.Shown(held.Pokemon);
+                if (lockHolder.Lock is { } heldLock) lockHolder.Lock = heldLock.Hold(held.Amount);
+                break;
+            }
+            case Calmed calmed:
+                // A calm lowers the lock (plan 44 · SD1)
+                if (At(calmed.Place).Pokemon is { } calm && calm.Lock is { } its) calm.Lock = its.Lower(Models.HeartLock.Fall.Calm);
+                break;
             case MoveWanted wanted:
                 // Nobody is asked anything while a recording is watched (plan 08 · P11)
                 if (!Watching) WantMove(wanted);
@@ -1234,6 +1268,18 @@ public partial class BattleEngine
                     messageWaitTimer = BattleAnimator.BallSettleTime(ball.Shakes, ball.Critical) + BattleAnimator.SendOutTime + 0.1f;
                 }
                 break;
+            case Caught caught when Trainers.Count > 0:
+            {
+                // A trainer's locked Pokémon reclaimed (plan 44 · SD1): the battle goes on, so no victory song and no
+                // closing; it joins the team or the PC once the battle is over (the game's EndBattle), never during it
+                var mine = mirror.Shown(caught.Pokemon);
+                mine.ResetStatStages();
+                mine.Ball = caught.Ball;
+                mine.Met(place, GameClock.Today);
+                if (!reclaimed.Contains(mine)) reclaimed.Add(mine);
+                if (Scene) Anim.Cheer(BattleSide.Player);
+                break;
+            }
             case Caught caught:
             {
                 var mine = mirror.Shown(caught.Pokemon);

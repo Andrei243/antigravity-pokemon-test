@@ -209,6 +209,9 @@ public sealed partial class GameFlow
     /// <summary>Cameron's photo album (plan 20, part q).</summary>
     public PhotoAlbum Photos { get; } = new();
 
+    /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD1).</summary>
+    public HeartsRecord Hearts { get; set; } = new();
+
     /// <summary>The Underground's own: the bag below ground, the base, the buried Spheres, the day's walls (saved).</summary>
     public UndergroundState Underground { get; set; } = new();
 

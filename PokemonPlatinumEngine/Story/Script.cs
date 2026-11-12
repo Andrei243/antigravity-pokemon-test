@@ -211,6 +211,8 @@ public enum Op
     Treat,
     // The film studio (plan 42 · PS4): a film shot, whether one is open, a film's best stars, the studio's rank
     Studio,
+    // Locked hearts (plan 44 · SD2): the Reclaimer held and given, the spring's rite, hearts opened, the locks counted
+    Heart,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

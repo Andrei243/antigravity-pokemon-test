@@ -1,0 +1,15 @@
+# Plan 44 · SD3: Elspeth, Lockwork's admin of Johto's cell, with two locked Pokémon
+script Admin
+  face self player
+  speaker self
+  if defeated "lockwork_johto_admin" goto Beaten
+  say "So you're the one taking our cargo back, one ball at a time."
+  say "Lockwork seals a heart so a Pokémon never has to choose. Isn't that kinder than all your bonds?"
+  battle self as "lockwork_johto_admin"
+  speaker self
+  say "Keep them, then. The head office in Castelia will still be ticking long after you've gone."
+  setflag FLAG_LOCKWORK_JOHTO_ADMIN_BEATEN
+  end
+label Beaten
+  say "This cell is finished. Go and bother Castelia's tower, if you dare."
+  end

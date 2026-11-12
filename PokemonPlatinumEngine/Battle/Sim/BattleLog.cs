@@ -454,3 +454,28 @@ public sealed record TotemAuraRaised(Place Place) : BattleEvent;
 /// line on, nought as the barrier falls. It rides on the line that tells of it.
 /// </summary>
 public sealed record RaidBarrier(Place Place, int Shields) : BattleEvent;
+
+/// <summary>
+/// A locked heart shows (plan 44 · SD1, <see cref="Models.HeartLock"/>): the Pokémon in <paramref name="Place"/> carries a
+/// lock with <paramref name="Bars"/> of its five bars left. It rides on the line that sends the Pokémon out, as what it
+/// brings does (<see cref="CameInWith"/>), and the screen hangs the lock's haze about it from that line on.
+/// </summary>
+public sealed record LockShown(Place Place, int Bars) : BattleEvent;
+
+/// <summary>
+/// A locked Pokémon of the player's breaks loose (plan 44 · SD1): from this line on it heeds an order one time in two and
+/// loses a sixteenth of its HP at each turn's end, until it is calmed. It rides on the line that says so.
+/// </summary>
+public sealed record BrokeLoose(Place Place) : BattleEvent;
+
+/// <summary>
+/// A loose Pokémon calmed (plan 44 · SD1, <see cref="ChoiceKind.Calm"/>): its lock has <paramref name="Bars"/> of its bars
+/// left after the calm lowered it. It rides on the line that says so.
+/// </summary>
+public sealed record Calmed(Place Place, int Bars) : BattleEvent;
+
+/// <summary>
+/// A locked Pokémon's EXP held by its lock (plan 44 · SD1): <paramref name="Amount"/> more, given when its heart opens. It
+/// rides on the line that says so, where an unlocked Pokémon's <see cref="ExpGained"/> would.
+/// </summary>
+public sealed record ExpHeld(Pokemon Pokemon, int Amount) : BattleEvent;

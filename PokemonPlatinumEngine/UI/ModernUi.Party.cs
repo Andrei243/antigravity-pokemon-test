@@ -237,6 +237,14 @@ internal static partial class ModernUi
             Label(Text.Of("summary.expPoints"), x + 260, who.Y + 752);
             UiFonts.Draw(p.CurrentExp.ToString("N0"), x + 260, who.Y + 776, 34, Ink, UiWeight.Black);
 
+            // A locked heart's gauge stands where the EXP bar does (plan 44 · SD2): its five bars and the EXP held
+            if (p.Lock is { } locked)
+            {
+                Label(Text.Of("summary.heartLock", ("bars", locked.BarsLeft)), x, who.Y + 820);
+                LockGauge(new Rectangle(x, who.Y + 846, who.Width - 88, 18), locked);
+                UiFonts.Draw(Text.Of("summary.expHeld", ("exp", locked.HeldExp.ToString("N0"))), x, who.Y + 874, 22, Muted, UiWeight.ExtraBold);
+                goto afterExp;
+            }
             // At the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
             bool top = p.AtTheCap;
             // Held to a level where the player stands (plan 18 · W4b-3: a run's cap or a crossed region's ceiling): the row moves up for a line under the bar
@@ -247,6 +255,7 @@ internal static partial class ModernUi
             UiFonts.Draw(toNext, who.X + who.Width - 44 - UiFonts.Measure(toNext, 24, UiWeight.Black), who.Y + 830 - up, 24, Ink, UiWeight.Black);
             ExpBar(new Rectangle(x, who.Y + 864 - up, who.Width - 88, 12), top ? 1f : p.ExpProgressRatio);
             if (held) UiFonts.Draw(Text.Of("summary.heldAt", ("level", heldAt!.Value)), x, who.Y + 868, 22, Muted, UiWeight.ExtraBold);
+            afterExp:;
         }
 
         // ---- The condition, on its own page
@@ -374,6 +383,13 @@ internal static partial class ModernUi
             float cy = row.Y + row.Height / 2f;
             TypePill(row.X + 16, cy - 22, move.Type, 44, 150);
             UiFonts.DrawCentered(move.DisplayName, row.X + 190, cy - 12, 32, Ink, UiWeight.Black);
+            // A locked heart's sealed move wears a padlock and its numbers are hidden (plan 44 · SD2)
+            if (p.Lock is { } sealedBy && sealedBy.Seals(i))
+            {
+                UiShapes.Fill(row, 24, new Color(118, 116, 128, 90));
+                LockMark(new Vector2(moves.X + 736, cy), 46f);
+                continue;
+            }
             if (contest)
             {
                 var quality = move.Data.Contest;

@@ -61,7 +61,7 @@ public sealed class JobResult
 }
 
 /// <summary>Why a Pokémon can't be sent on a job, or a job can't be collected.</summary>
-public enum JobRefusal { None, Full, Egg, NoHours, ClockBack }
+public enum JobRefusal { None, Full, Egg, NoHours, ClockBack, Locked }
 
 /// <summary>
 /// The jobs board (plan 15 · E3; GPU-free): up to <see cref="Slots"/> Pokémon away at once, each paid when it is
@@ -124,6 +124,8 @@ public sealed class JobBoard
     {
         if (IsFull) return JobRefusal.Full;
         if (pokemon.IsEgg) return JobRefusal.Egg;
+        // A locked heart isn't sent (plan 44 · SD1)
+        if (HeartLock.Refuses(pokemon, LockedUse.Jobs)) return JobRefusal.Locked;
         if (hours < MinHours || hours > MaxHours) return JobRefusal.NoHours;
         return JobRefusal.None;
     }

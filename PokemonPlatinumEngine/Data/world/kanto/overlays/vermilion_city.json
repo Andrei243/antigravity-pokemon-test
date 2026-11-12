@@ -38,6 +38,13 @@
   // The captain who takes a Champion of Kanto on to Johto (plan 19 · K8; RegionDatabase's link from Kanto, common.Attendant),
   // on the quay east of the pier. Before the Hall of Fame he says only who may come aboard
   "npcs": [
+    // Plan 44 · SD3: Lockwork's agents of Kanto's cell, out once Kanto's Hall of Fame is entered
+    // (and the doorman who shows the way down to the cell's admin, a room of ours: a script's warp, so no door stands in the street)
+    {"id": "lockwork_doorman", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 282, "y": 226, "facing": "Down", "script": "LockworkDoor", "shownBy": "KantoHallOfFame"},
+    {"id": "lockwork_agent_1", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 297, "y": 207, "facing": "Down", "script": "LockworkAgent1", "shownBy": "KantoHallOfFame"},
+    {"id": "lockwork_agent_2", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 302, "y": 215, "facing": "Down", "script": "LockworkAgent2", "shownBy": "KantoHallOfFame"},
+    {"id": "lockwork_agent_3", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 285, "y": 220, "facing": "Down", "script": "LockworkAgent3", "shownBy": "KantoHallOfFame"},
+    {"id": "lockwork_agent_4", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 300, "y": 228, "facing": "Down", "script": "LockworkAgent4", "shownBy": "KantoHallOfFame"},
     {
       "id": "vermilion_city.Captain",
       "name": "Sailor",

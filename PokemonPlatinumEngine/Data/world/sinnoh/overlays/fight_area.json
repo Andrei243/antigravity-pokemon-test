@@ -138,6 +138,11 @@
   // the crowd before the gate has gone, which is the flag that sends them away. He carries no team on the map: the
   // script battles him by one of Platinum's data
   "npcs": [
+    // Plan 44 · SD3: Lockwork's agents of Sinnoh's cell, out once Sinnoh's Hall of Fame is entered
+    // (and the doorman who shows the way down to the cell's admin, a room of ours: a script's warp, so no door stands in the street)
+    {"id": "lockwork_doorman", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 651, "y": 442, "facing": "Down", "script": "LockworkDoor", "shownBy": "SinnohHallOfFame"},
+    {"id": "lockwork_agent_3", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 618, "y": 434, "facing": "Down", "script": "LockworkAgent3", "shownBy": "SinnohHallOfFame"},
+    {"id": "lockwork_agent_4", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 645, "y": 435, "facing": "Down", "script": "LockworkAgent4", "shownBy": "SinnohHallOfFame"},
     { "id": "inverse_scientist", "name": "Scientist", "npcType": "Scientist", "x": 662, "y": 432, "facing": "Down",
       "script": "InverseBattle", "shownBy": "FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS" },
     // The Villa Larder (plan 41 · EG7): the harbour clerk with the ferry's log, a deckhand, and the ferry's captain, who

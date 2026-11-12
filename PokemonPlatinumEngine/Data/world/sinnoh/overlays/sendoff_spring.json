@@ -5,5 +5,9 @@
   // stays by the water until the Hall of Fame (FLAG_HIDE_SENDOFF_SPRING_CYNTHIA, which the original sets there)
   "people": {
     "cynthia": { "name": "Cynthia", "npcType": "Cynthia", "script": "Cynthia", "still": true }
-  }
+  },
+  // Plan 44 · SD3: the spring's rite, read at the water's edge
+  "readAt": [
+    {"x": 30, "z": 31, "script": "SpringRite"}
+  ]
 }

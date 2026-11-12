@@ -441,6 +441,8 @@ public static class RegionDatabase
                 "SunyshoreWorkshop",
                 // Plan 36 · TR2: the training hall, a map of ours standing for Sunyshore City's unused door 7
                 "SunyshoreTrainingHall",
+                // Plan 44 · SD3: Lockwork's cell behind the Fight Area quay's containers, a room of ours
+                "LockworkCellSinnoh",
                 "FightAreaMiddleHouse", "FightAreaSouthHouse", "Route225House", "SurvivalAreaSouthHouse",
                 "Route226House", "Route227House", "Route228SouthHouse", "ResortAreaHouse",
                 "ResortAreaRibbonSyndicate2F", "ResortAreaRibbonSyndicateElevator",
@@ -512,6 +514,8 @@ public static class RegionDatabase
             Maps = new[]
             {
                 "Kanto",
+                // Plan 44 · SD3: Lockwork's cell at Vermilion City's harbour, a room of ours
+                "LockworkCellKanto",
                 // Plan 19 · K1: Pallet Town's rooms and Viridian City's, each a matrix of the import built from its layout
                 "PalletTown_PlayersHouse_1F", "PalletTown_PlayersHouse_2F", "PalletTown_RivalsHouse", "PalletTown_ProfessorOaksLab",
                 "ViridianCity_House", "ViridianCity_Gym", "ViridianCity_School", "ViridianCity_Mart",
@@ -628,6 +632,8 @@ public static class RegionDatabase
             Maps = new[]
             {
                 "Johto",
+                // Plan 44 · SD3: Lockwork's cell at Olivine's port, a room of ours
+                "LockworkCellJohto",
                 // Plan 20 · J2: New Bark Town's rooms, Route 29's gate house, Cherrygrove City's rooms and Routes 30 and 31's
                 "NewBark_PlayersHouse_1F", "NewBark_PlayersHouse_2F", "NewBark_RivalsHouse_1F", "NewBark_RivalsHouse_2F",
                 "NewBark_ElmsLab", "NewBark_ElmsHouse", "NewBark_SouthwestHouse", "Route29_Route46Gate",
@@ -767,6 +773,8 @@ public static class RegionDatabase
             Maps = new[]
             {
                 "Hoenn",
+                // Plan 44 · SD4: Lockwork's cell at Lilycove City's harbour, a room of ours
+                "LockworkCellHoenn",
                 // Plan 21 · H1: Littleroot Town's rooms, Oldale Town's and Petalburg City's, each a matrix of the import
                 // built from its layout
                 "LittlerootTown_BrendansHouse_1F", "LittlerootTown_BrendansHouse_2F", "LittlerootTown_MaysHouse_1F",
@@ -937,6 +945,8 @@ public static class RegionDatabase
                 "VirbankCity_Gym", "VirbankCity_GymStage", "VirbankCity_PokemonCenter", "PokestarGate", "VirbankComplex",
                 // Plan 22 · U5, part c: Castelia City, its avenue a map of ours (Data/maps/CasteliaCity.json, Black 2's
                 // standing on rails), its piers, streets, plaza and rooms the import's, the gate to Route 4 and the sewers
+                // Plan 44 · SD4: Lockwork's head office, a tower of ours off Castelia's avenue
+                "LockworkTower1F", "LockworkTower2F",
                 "CasteliaCity", "CasteliaCity_PrimePier", "CasteliaCity_ThumbPier", "CasteliaCity_CasteliaStreet",
                 "CasteliaCity_ModeStreet", "CasteliaCity_NarrowStreet", "CasteliaCity_GymStreet", "CasteliaCity_Plaza",
                 "CasteliaCity_NorthStreet", "CasteliaCity_PokemonCenter", "CasteliaCity_Gym",

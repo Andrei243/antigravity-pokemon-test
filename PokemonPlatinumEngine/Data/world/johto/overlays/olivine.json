@@ -49,5 +49,14 @@
     "T26_005+1": "Olivine City\nThe port closest to foreign lands.",
     "T26_006+1": "Olivine Port\nThe S.S. Aqua sails from here.",
     "T26_007+1": "Glitter Lighthouse\nIts beam guides the ships home at night."
-  }
+  },
+  // Plan 44 · SD3: Lockwork's agents of Johto's cell, out once Johto's Hall of Fame is entered
+  "npcs": [
+    // (and the doorman who shows the way down to the cell's admin, a room of ours: a script's warp, so no door stands in the street)
+    {"id": "lockwork_doorman", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 266, "y": 268, "facing": "Down", "script": "LockworkDoor", "shownBy": "JohtoHallOfFame"},
+    {"id": "lockwork_agent_1", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 278, "y": 252, "facing": "Down", "script": "LockworkAgent1", "shownBy": "JohtoHallOfFame"},
+    {"id": "lockwork_agent_2", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 291, "y": 255, "facing": "Down", "script": "LockworkAgent2", "shownBy": "JohtoHallOfFame"},
+    {"id": "lockwork_agent_3", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 276, "y": 258, "facing": "Down", "script": "LockworkAgent3", "shownBy": "JohtoHallOfFame"},
+    {"id": "lockwork_agent_4", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 291, "y": 259, "facing": "Down", "script": "LockworkAgent4", "shownBy": "JohtoHallOfFame"}
+  ]
 }

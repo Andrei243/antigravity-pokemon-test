@@ -43,6 +43,13 @@
   // further from the city; Mossdeep and the east sea are shut anyway until plan 21 · H8. All twelve go with
   // FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
   "npcs": [
+    // Plan 44 · SD3: Lockwork's agents of Hoenn's cell, out once Hoenn's Hall of Fame is entered
+    // (and the doorman who shows the way down to the cell's admin, a room of ours: a script's warp, so no door stands in the street)
+    {"id": "lockwork_doorman", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 513, "y": 104, "facing": "Down", "script": "LockworkDoor", "shownBy": "HoennHallOfFame"},
+    {"id": "lockwork_agent_1", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 510, "y": 99, "facing": "Down", "script": "LockworkAgent1", "shownBy": "HoennHallOfFame"},
+    {"id": "lockwork_agent_2", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 518, "y": 97, "facing": "Down", "script": "LockworkAgent2", "shownBy": "HoennHallOfFame"},
+    {"id": "lockwork_agent_3", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 509, "y": 95, "facing": "Down", "script": "LockworkAgent3", "shownBy": "HoennHallOfFame"},
+    {"id": "lockwork_agent_4", "name": "Lockwork Agent", "npcType": "lockwork_agent_m", "x": 494, "y": 96, "facing": "Down", "script": "LockworkAgent4", "shownBy": "HoennHallOfFame"},
     { "id": "wailmer_1", "name": "Wailmer", "npcType": "Pokemon", "species": "Wailmer", "x": 556, "y": 82, "facing": "Down", "script": "Wailmer", "hiddenBy": "FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE" },
     { "id": "wailmer_1b", "name": "Wailmer", "npcType": "Unseen", "x": 557, "y": 82, "script": "Wailmer", "hiddenBy": "FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE" },
     { "id": "wailmer_1c", "name": "Wailmer", "npcType": "Unseen", "x": 556, "y": 83, "script": "Wailmer", "hiddenBy": "FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE" },

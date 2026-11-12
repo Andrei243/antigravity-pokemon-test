@@ -1650,6 +1650,7 @@ label Raise
   if result == 1 goto ComeAgain
   if result == 2 goto MerelyAnEgg
   if result == 3 goto NothingToBattle
+  if result == 5 goto ShutHeart
   setflag FLAG_STORED_POKEMON_AT_DAY_CARE
   # The couple's fan comes in (PokemonDayCare.txt: the original shows him as the room is next come to; plan 02 · S14)
   clearflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
@@ -1724,6 +1725,10 @@ label TeamFull
   end
 
 # How far each of the two has grown by level since it was left (BufferDaycareGainedLevelsBySlot): said only when it has.
+label ShutHeart
+  say "Oh, dear. That one's heart is shut tight. It wouldn't settle with us until it opens to you."
+  end
+
 script Grown0
   daycare grown 0
   if result > 0 say "By my reckoning, your {daycare:0} has grown by about {grown:0} levels."

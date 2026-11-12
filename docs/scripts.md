@@ -909,6 +909,20 @@ trigger of an open place whose script names its den of `Data/world/galar/dens.js
 | `raid catch "Great Ball"` | A ball of the bag thrown at the felled boss: `RESULT` 1 caught (the Pokémon given, in that ball), 0 it got away (on the host's own die, `Raids.CatchChance`), 2 no such ball in the bag. |
 | `raid wish` | A Wishing Piece of the bag thrown into the den looked into (plan 33 · GL3, second session): `RESULT` 1 its beam lit for the day (`FLAG_DAILY_GALAR_DEN_<ID>_WISHED`, the piece taken, the den looked into again so its three variables say what now waits), 0 no piece in the bag, 2 its beam lit already. `common.GalarDen` offers it at a quiet den; the Watt trader sells the piece for 3,000 W. |
 
+### Locked hearts
+
+Plan 44 · SD2; `docs/mechanics/rulings.md`, "Locked hearts". Lockwork's locked Pokémon, one command, `heart`.
+
+| Command | What it does |
+|---|---|
+| `heart has` | `RESULT` 1 when the Reclaimer is in the bag, else 0. |
+| `heart give` | Puts the Reclaimer in the bag once and sets `FLAG_GOT_RECLAIMER`: `RESULT` 1, or 0 and nothing given when it is held already; `{item}` names it. The text and the fanfare are the script's. |
+| `heart spring` | The spring's rite: every locked heart of the team is lowered by the spring's share, once a day. `RESULT` 1 when it was, 2 when the rite was done today already, 0 with no locked heart in the team. |
+| `heart open` | Opens every heart of the team whose gauge has emptied, its scene played (the game opens them by itself once the field is free; this is for a scene that wants it now). `RESULT` how many. |
+| `heart locked` | `RESULT` how many of the team are locked. |
+| `heart count`, `heart missed`, `heart opened` | `RESULT` how many locks have been reclaimed, missed (knocked out, so the courier carries them) and opened since the game began. |
+| `heart courier` | Plan 44 · SD4, the courier in Lockwork's tower: builds the team of the person spoken to from the first six locks missed (each as the trainer of ours whose team it was in has it), for the script's `battle self` after it. `RESULT` how many he carries, 0 with none missed. |
+
 ### Treats
 
 Plan 35 · BN3; `docs/mechanics/rulings.md`, "Care". The bakers' one command, `treat`; the confectioners sell with `shop "treats"`.

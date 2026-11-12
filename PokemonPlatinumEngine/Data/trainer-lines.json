@@ -202,5 +202,35 @@
     "lastPokemon": { "text": "Okay, okay! Now I'm all fired up! Here comes my best!", "mood": "happy", "act": "point" },
     "lowHp": { "text": "We're not done yet! We're Champions, aren't we?!", "mood": "angry", "act": "cheer" },
     "giant": { "text": "Aggron! Get super giant and stomp it all flat!", "mood": "happy", "act": "jump" }
+  },
+  "lockwork_sinnoh_admin": {
+    "firstDown": { "text": "A good lock holds whatever you do to the door.", "mood": "angry" },
+    "lastPokemon": { "text": "Then I'll hold the last of them myself.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "This cell was meant to be quiet work!", "mood": "surprised" }
+  },
+  "lockwork_kanto_admin": {
+    "firstDown": { "text": "Every crate counted, every crate signed for. That one wasn't.", "mood": "angry" },
+    "lastPokemon": { "text": "My last. Keld will hear of this.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "The ledger doesn't allow for you!", "mood": "surprised" }
+  },
+  "lockwork_johto_admin": {
+    "firstDown": { "text": "Locked hearts don't flinch. Watch closely.", "mood": "angry" },
+    "lastPokemon": { "text": "One left. It won't waver.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Hold still, all of you, hold still!", "mood": "surprised" }
+  },
+  "lockwork_hoenn_admin": {
+    "firstDown": { "text": "The tide brings them in. You won't send them back out.", "mood": "angry" },
+    "lastPokemon": { "text": "Last crate on the dock.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Steady! It's only salt spray!", "mood": "surprised" }
+  },
+  "lockwork_unova_admin": {
+    "firstDown": { "text": "The tower runs on time. So do I.", "mood": "angry" },
+    "lastPokemon": { "text": "Last of mine. Then it's Keld's floor.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "This shouldn't be how the clock reads!", "mood": "surprised" }
+  },
+  "lockwork_head": {
+    "firstDown": { "text": "Hear that ticking? Every lock keeps time with it.", "mood": "angry" },
+    "lastPokemon": { "text": "My own partner. Sealed, so it never has to leave me.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "The machine can't be wrong. It mustn't be.", "mood": "surprised" }
   }
 }

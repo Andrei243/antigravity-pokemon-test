@@ -561,6 +561,13 @@ public class Pokemon
     public string? Title { get; set; }
 
     /// <summary>
+    /// Its heart's lock (plan 44 · SD1, <see cref="HeartLock"/>): Lockwork's locked Pokémon carry one until the gauge
+    /// empties and the heart opens; null for every other Pokémon. While it has one it gains no level, no friendship
+    /// and no evolution, and every place that takes a Pokémon asks <see cref="HeartLock.WhyNot"/>. Saved.
+    /// </summary>
+    public HeartLock? Lock { get; set; }
+
+    /// <summary>
     /// Its size against its species' (plan 10 · F10): 1 for nearly everyone, <see cref="Overworld.Alphas.Scale"/> for an alpha, which towers over
     /// others of its kind in battle and on the field board. Saved (left out at 1).
     /// </summary>
@@ -1246,6 +1253,8 @@ public class Pokemon
         movesWanted = new List<string>();
         int top = Math.Min(cap ?? Cap, Ruleset.HighestLevel);
         if (Level >= top) return false;
+        // A locked heart grows no level (plan 44 · SD1): what it earns is held by its lock until the heart opens
+        if (Lock != null) return false;
 
         CurrentExp += expGained;
         bool leveledUp = false;
@@ -1476,6 +1485,7 @@ public class Pokemon
         EncounterMarks.Clear();
         EncounterMarks.UnionWith(other.EncounterMarks);
         Title = other.Title;
+        Lock = other.Lock;
         Scale = other.Scale;
         Bright = other.Bright;
 

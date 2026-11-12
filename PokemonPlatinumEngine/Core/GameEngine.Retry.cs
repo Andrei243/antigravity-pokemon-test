@@ -272,6 +272,7 @@ public partial class GameEngine
             TrainerLines = TrainerLinesOn,
             NoBattleItems = file.NoBattleItems,
             OffersSwitch = file.OffersSwitch,
+            Reclaimer = file.Reclaimer,
             MegaMaxDen = file.MegaMaxDen,
             Difficulty = file.Difficulty,
             RunLevelCap = file.RunLevelCap,

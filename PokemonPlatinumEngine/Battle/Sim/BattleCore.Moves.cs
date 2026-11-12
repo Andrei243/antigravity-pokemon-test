@@ -139,7 +139,7 @@ public sealed partial class BattleCore
         user.MovedThisTurn = true;
         PaysForTheRush(user);
         ItemLetItMoveFirst(act);
-        if (!CanMove(user, move) || (!goesOn && Disobeys(user, ref move, ref target)))
+        if (!CanMove(user, move) || (!goesOn && Disobeys(user, ref move, ref target)) || (!goesOn && Unruly(user, ref move, ref target)))
         {
             // Stomping Tantrum counts a move lost this way as a move that failed (plan 06 · R25)
             failedOnTurn[user.Pokemon!] = Turn;
@@ -1165,6 +1165,7 @@ public sealed partial class BattleCore
             hit.MessagesTold = true;
         }
         if (hit.LastCritical && hit.Touched) t.TookCriticalHit = true;
+        if (hit.Touched) Stir(t, hit.Critical, hit.SuperEffective);
         TargetEffects(use, hit);
     }
 
@@ -1322,6 +1323,7 @@ public sealed partial class BattleCore
             else if (hit.Endured) log.AddRange(hit.Notes);
             EffectivenessLine(use, hit);
             if (hit.LastCritical && hit.Touched) t.TookCriticalHit = true;
+            if (hit.Touched) Stir(t, hit.Critical, hit.SuperEffective);
             TargetEffects(use, hit);
         }
 

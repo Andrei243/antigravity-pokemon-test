@@ -353,6 +353,14 @@ public sealed class Ruleset
     public bool AffectionPerks { get; private init; }
 
     /// <summary>
+    /// Locked hearts (plan 44 · SD1, <see cref="Models.HeartLock"/>; <c>docs/mechanics/rulings.md</c>, "Locked hearts"): a
+    /// locked Pokémon of the player's holds its EXP, has its sealed moves refused and may break loose, and a ball may be
+    /// thrown at a trainer's locked Pokémon with the Reclaimer. Platinum has none, so under its rules nothing of it is asked
+    /// and <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool LockedHearts { get; private init; }
+
+    /// <summary>
     /// Critical captures (plan 40 · GE5; Generation 5 on; <c>docs/mechanics/rulings.md</c>, "The charms, critical captures
     /// and EXP for a catch"): before a thrown ball's shakes, one roll of 256 against a chance made of the catch rate and of
     /// how many species the player has caught (<see cref="Battle.Sim.Formulas.CriticalCapture"/>), doubled by the Catching
@@ -445,6 +453,7 @@ public sealed class Ruleset
         Raids = true,
         MegaDynamax = true,
         AffectionPerks = true,
+        LockedHearts = true,
         CriticalCaptures = true,
         ExpForACatch = true,
         LaterMachines = true

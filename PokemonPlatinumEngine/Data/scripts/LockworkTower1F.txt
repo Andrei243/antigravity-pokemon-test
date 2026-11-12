@@ -1,0 +1,33 @@
+# Plan 44 · SD4: Juno, Lockwork's admin of Unova's cell, in the tower's lobby; the stairs behind her go up to the head
+script Admin
+  face self player
+  speaker self
+  if defeated "lockwork_unova_admin" goto Beaten
+  say "Welcome to Lockwork's head office. Every crate that left a port in five regions was signed for on this floor."
+  say "You've undone four cells. You won't undo the fifth."
+  battle self as "lockwork_unova_admin"
+  speaker self
+  say "Fine. Go up. Keld will want to see the one who's been unpicking her locks."
+  setflag FLAG_LOCKWORK_UNOVA_ADMIN_BEATEN
+  end
+label Beaten
+  say "The stairs are behind me. She's waiting by the machine."
+  end
+
+
+# Plan 44 · SD4: the courier, once the machine has stopped, with every locked Pokémon the player knocked out instead of
+# reclaiming (HeartsRecord.Missed), six at a time, until every one is reclaimed
+script Courier
+  face self player
+  speaker self
+  heart courier
+  if var RESULT == 0 goto Empty
+  say "The machine's stopped, but the crates still came back. Every one you knocked out went straight into my van."
+  say "Keld says I'm to hand them over. I say you'll have to take them, one ball at a time."
+  battle self canlose
+  speaker self
+  say "Whatever's still in the van, I'll have it here next time you come."
+  end
+label Empty
+  say "The van's empty. Every crate that came back has gone home with you. Good riddance to the lot."
+  end

@@ -95,6 +95,12 @@ public sealed class CoreSetup
     /// </summary>
     public bool OffersSwitch { get; init; }
 
+    /// <summary>
+    /// The player carries the Reclaimer (plan 44 · SD1): a ball may be thrown at a trainer's locked Pokémon, which
+    /// <see cref="BattleCore.WhyNot"/> refuses for any other. Off unless given; read only under rules with locked hearts.
+    /// </summary>
+    public bool Reclaimer { get; init; }
+
     /// <summary>A den's Mega Dynamax boss (plan 06 · R20c): the wild side has a Key Stone and a Mega Max Band.</summary>
     public bool MegaMaxDen { get; init; }
 
@@ -355,6 +361,7 @@ public sealed partial class BattleCore : IBattleContext
         Link = setup.Link;
         NoRewards = setup.NoRewards;
         OffersSwitch = setup.OffersSwitch;
+        Reclaimer = setup.Reclaimer;
         MegaMaxDen = setup.MegaMaxDen;
         Difficulty = setup.Difficulty;
         RunLevelCap = setup.RunLevelCap > 0 ? setup.RunLevelCap : null;
@@ -516,7 +523,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp, LaterMechanicsBarred, FriendPartner, InTheAir) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format, CrossedExp, LaterMechanicsBarred, FriendPartner, InTheAir, Reclaimer) : null;
 
     /// <summary>
     /// A friend chooses for the partner's place (plan 13 · V20): there is a partner, and nobody inside the rules thinks
@@ -540,6 +547,7 @@ public sealed partial class BattleCore : IBattleContext
         if (CrossedExp != record.CrossedExp) throw new ArgumentException("A replay gives the record's own EXP (plan 18 · W4b-3): a crossed region's half again as such");
         if (FriendPartner != record.FriendPartner) throw new ArgumentException("A replay is answered for the partner's place where the recorded battle was (plan 13 · V20): a friend's answers as a friend's");
         if (InTheAir != record.InTheAir) throw new ArgumentException("A replay is fought where the recorded battle was (plan 14 · B2): a sky battle's in the air");
+        if (Reclaimer != record.Reclaimer) throw new ArgumentException("A replay carries the Reclaimer where the recorded battle did (plan 44 · SD1): a reclaim's ball as thrown");
         if (record.Format is { } format && format != Format) throw new ArgumentException("A replay is fought in the record's own format (plan 14 · B3): a horde's as a horde");
         Start();
         foreach (var answered in record.Answers) Submit(answered);
@@ -815,7 +823,7 @@ public sealed partial class BattleCore : IBattleContext
             var act = waiting[0];
             // The turn's Mega Evolutions come once its switches and items are done, before its first move (plan 06 ·
             // R20); the moves still to come are then put in order again by the Speeds they gave
-            if (!megasDone && act.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Run or ChoiceKind.Shift))
+            if (!megasDone && act.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Run or ChoiceKind.Shift or ChoiceKind.Calm))
             {
                 megasDone = true;
                 // The Dynamaxes come after them (plan 06 · R22; Showdown's runDynamax, order 105)
@@ -868,6 +876,10 @@ public sealed partial class BattleCore : IBattleContext
                 case ChoiceKind.Shift:
                     // A triple battle's shift to the centre is the Pokémon's turn (plan 14 · B6)
                     ShiftToTheCentre(act.User);
+                    break;
+                case ChoiceKind.Calm:
+                    // A loose Pokémon calmed is the Pokémon's turn (plan 44 · SD1)
+                    CalmDown(act.User);
                     break;
             }
             act.User.Turn.Acted = true;
@@ -992,8 +1004,8 @@ public sealed partial class BattleCore : IBattleContext
         if (runner != null) return byPlace.Where(a => a == runner).Concat(byPlace.Where(a => a != runner)).ToList();
 
         // A triple battle's shifts go with the switches, before any move (plan 14 · B6)
-        var order = byPlace.Where(a => a.Choice.Kind is ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Shift)
-            .Concat(byPlace.Where(a => a.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Shift))).ToList();
+        var order = byPlace.Where(a => a.Choice.Kind is ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Shift or ChoiceKind.Calm)
+            .Concat(byPlace.Where(a => a.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Shift or ChoiceKind.Calm))).ToList();
         for (int i = 0; i < order.Count - 1; i++)
         {
             for (int j = i + 1; j < order.Count; j++)
@@ -1146,6 +1158,13 @@ public sealed partial class BattleCore : IBattleContext
             return;
         }
 
+        // A trainer's locked Pokémon is reclaimed (plan 44 · SD1): the battle goes on
+        if (IsTrainerBattle)
+        {
+            Reclaim(target, ball);
+            return;
+        }
+
         // The lesson's catch is the assistant's own: it stays theirs
         if (Kind == BattleKind.CatchingLesson)
         {
@@ -1288,6 +1307,7 @@ public sealed partial class BattleCore : IBattleContext
         CreditTheKnockOut(down);
         down.ClearVolatile();
         NoteFaint(down);
+        CountLockKnockOut(down);
         faintedOnTurn[down.Side] = Turn;
         CountTheFallen(down);
         CountTheRaidFall(down);
@@ -1535,6 +1555,8 @@ public sealed partial class BattleCore : IBattleContext
         // Easy gives three halves of it (plan 13 · V2); the other difficulties leave it as it is
         exp = DifficultyRules.ScaleExp(exp, Difficulty);
         // The run's level cap (plan 13 · V3) lets through only what takes it to the cap's level; with none, exp is exp
+        // A locked heart holds what it earns, given whole when it opens (plan 44 · SD1)
+        if (HoldsTheExp(p, exp)) return;
         int wantedExp = exp;
         exp = LevelCaps.Allowed(p, exp, RunLevelCap);
         bool stopped = exp < wantedExp;

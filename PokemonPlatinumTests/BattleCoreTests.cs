@@ -473,6 +473,7 @@ public class BattleCoreTests
         p.Ribbons.Add("RIBBON_COOL");
         p.EncounterMarks.Add("SleepyTime");
         p.Title = "SleepyTime";
+        p.Lock = HeartLock.Locked("lock_test").Lower(30).Hold(77);
         p.CapsuleId = 3;
         p.Bright = true;
         p.TeraType = TeraType.Of(PokemonType.Fire);

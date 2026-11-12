@@ -668,6 +668,21 @@
   "Meowscaradite": {"new":true,"id": 9412, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Meowscarada, it lets it Mega Evolve in battle.", "megaStone": { "species": "Meowscarada", "form": "Meowscarada-Mega" } },
   "Skeledirgite": {"new":true,"id": 9413, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Skeledirge, it lets it Mega Evolve in battle.", "megaStone": { "species": "Skeledirge", "form": "Skeledirge-Mega" } },
   "Quaquavalite": {"new":true,"id": 9414, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Quaquaval, it lets it Mega Evolve in battle.", "megaStone": { "species": "Quaquaval", "form": "Quaquaval-Mega" } },
+  // The Reclaimer (plan 44 · SD1, our own): a device Looker's bureau made from a part of Lockwork's machine seized at the
+  // quay. Carried, a ball may be thrown at a trainer's locked Pokémon (BattleCore.Locks.cs). Id 9480, between the Megas'
+  // stones and the band
+  "Reclaimer": {
+    "new": true,
+    "id": 9480,
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A brass cuff with a dial. Worn on the throwing arm, it lets a ball reach a locked Pokémon a trainer sends out.",
+    "cantBeTossed": true
+  },
   // The band of Mega Dynamax (plan 06 · R20c, our own): Sonia sets the Key Stone into the Dynamax Band after Galar's Hall of Fame
   "Mega Max Band": {
     "new": true,

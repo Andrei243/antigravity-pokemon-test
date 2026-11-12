@@ -71,6 +71,8 @@ public static class FriendshipRules
         if (e == FriendshipEvent.WalkCycle && rng != null && rng.Next(2) == 0) return;
         // An Egg's friendship counts its cycles, which nothing but the steps of a cycle moves (plan 06 · R15)
         if (p.IsEgg) return;
+        // A locked heart takes no friendship (plan 44 · SD1)
+        if (p.Lock != null) return;
         Change(p, ChangeFor(e));
     }
 

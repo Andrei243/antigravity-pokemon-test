@@ -370,3 +370,46 @@ script Ferren
   hide self
   endscene
   end
+
+
+# Plan 44 · SD3: a Lockwork agent of Sinnoh's cell, one locked Pokémon in the team
+script LockworkAgent3
+  face self player
+  speaker self
+  if defeated "lockwork_sinnoh_agent_3" goto Beaten
+  say "Nobody asked you to look in the crates."
+  say "A locked heart never hesitates. Let me show you."
+  battle self as "lockwork_sinnoh_agent_3"
+  speaker self
+  say "So hesitation isn't everything after all."
+  end
+label Beaten
+  say "Go on. The admin will be the one to deal with you."
+  end
+
+
+# Plan 44 · SD3: a Lockwork agent of Sinnoh's cell, one locked Pokémon in the team
+script LockworkAgent4
+  face self player
+  speaker self
+  if defeated "lockwork_sinnoh_agent_4" goto Beaten
+  say "This stretch of the harbour is Lockwork's for the evening."
+  say "We seal their hearts so nothing ever comes between us. Efficient, isn't it?"
+  battle self as "lockwork_sinnoh_agent_4"
+  speaker self
+  say "Efficient. And beaten. Wonderful."
+  end
+label Beaten
+  say "Lockwork pays well. I'd still rather not face you twice."
+  end
+
+
+# Plan 44 · SD3: the doorman of Lockwork's cell, who shows the way down to its admin once the cell is out
+script LockworkDoor
+  face self player
+  speaker self
+  say "Down there's the admin's office. Go on, then. You'll come back up quicker than you went in."
+  fade out 0.4
+  warp "LockworkCellSinnoh" 6 8 up
+  fade in 0.4
+  end

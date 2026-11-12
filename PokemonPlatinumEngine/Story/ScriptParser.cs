@@ -1194,6 +1194,11 @@ public static class ScriptParser
 
             // Treats (plan 35 · BN3): `treat bake` (three berries of the flavour the bag has most of), `treat bake spicy`
             // and the other four, `treat bake mixed` (one berry of each flavour), and `treat can` (RESULT 1 when a bake could be made)
+            // Locked hearts (plan 44 · SD2): `heart has`, `heart give`, `heart spring`, `heart open`, `heart locked`,
+            // `heart count`, `heart missed`, `heart opened`
+            case "heart":
+                return new Instruction { Op = Op.Heart, Line = line, Name = r.OneOf("has", "give", "spring", "open", "locked", "count", "missed", "opened", "courier") };
+
             case "treat":
             {
                 string what = r.OneOf("bake", "can");

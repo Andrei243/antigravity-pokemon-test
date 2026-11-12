@@ -39,7 +39,9 @@ public static class FrontierRules
     /// An Egg, or a species on the banlist, enters nothing (<c>sub_02049EC4</c>, <c>Pokemon_IsBannedFromBattleFrontier</c>);
     /// nor does a species of our own that evolves from a legendary or a mythical one (plan 03 · D14, the batches' default).
     /// </summary>
-    public static bool MayEnter(Pokemon pokemon) => !pokemon.IsEgg && !FrontierDatabase.IsBanned(pokemon.Species.Name) && !IsBannedOfOurs(pokemon.Species);
+    public static bool MayEnter(Pokemon pokemon) => !pokemon.IsEgg && !FrontierDatabase.IsBanned(pokemon.Species.Name) && !IsBannedOfOurs(pokemon.Species)
+        // A locked heart isn't entered (plan 44 · SD1)
+        && !HeartLock.Refuses(pokemon, LockedUse.Frontier);
 
     /// <summary>A species of our own on the banlist: a legendary's or a mythical's evolution.</summary>
     public static bool IsBannedOfOurs(PokemonSpecies species) => species.IsOurs && (species.Legendary || species.Mythical);

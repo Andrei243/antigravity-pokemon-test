@@ -96,3 +96,24 @@ label Won
 label After
   say "Argh! You just keep getting tougher, {player}! Fine! Then so will I. Same time next week!"
   end
+
+
+# Plan 44 · SD3: Looker gives the Reclaimer, made by his bureau from a part seized at the quay, and tells of the spring
+script LookerReclaimer
+  face self player
+  speaker self
+  if flag FLAG_GOT_RECLAIMER goto Again
+  say "Ah, it is you! Looker is here on a matter of shipments. Crates that go out on the ferries and never quite arrive."
+  say "A syndicate called Lockwork. They put a machine to a Pokémon's heart and lock it shut. It obeys, but it feels nothing for its trainer."
+  say "My bureau took a part of that machine from a crate at the Fight Area's quay. From it the technicians made this."
+  heart give
+  fanfare keyitem
+  text "{player} received the {item}!"
+  say "Wear it on your throwing arm. With it a ball can reach a locked Pokémon a trainer sends out. Take them back!"
+  say "A locked heart opens in time beside a trainer who cares for it. At Sendoff Spring, the water itself helps."
+  say "Their cell here hides behind the quay's containers. Every port the ferries reach has one. Be careful, my friend."
+  end
+label Again
+  say "A locked heart opens with battles, with walking beside you, with the camp's care. And at Sendoff Spring, once a day."
+  say "Every port the ferries reach has a cell. Their head office, I am told, is a tower in Castelia City."
+  end

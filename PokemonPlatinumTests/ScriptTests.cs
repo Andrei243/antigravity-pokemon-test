@@ -257,6 +257,15 @@ public class ScriptTests
           treat can mixed
           treat bake spicy
           treat bake most
+          heart has
+          heart give
+          heart spring
+          heart open
+          heart locked
+          heart count
+          heart missed
+          heart opened
+          heart courier
           train open
           train drill
           train reset all

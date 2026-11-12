@@ -61,6 +61,8 @@
   // A Bottle Cap of ours on the sand before the island's house (plan 36 · TR3): peak training's cap, found in the Battle
   // Zone as well as traded for Battle Points
   "npcs": [
+    // Plan 44 · SD3: Lockwork's agents of Sinnoh's cell, out once Sinnoh's Hall of Fame is entered
+    {"id": "lockwork_agent_2", "name": "Lockwork Agent", "npcType": "lockwork_agent_f", "x": 700, "y": 329, "facing": "Down", "script": "LockworkAgent2", "shownBy": "SinnohHallOfFame"},
     { "id": "route_226.BottleCap", "name": "Bottle Cap", "npcType": "ItemBall", "x": 740, "y": 341, "item": "Bottle Cap",
       "hiddenBy": "FLAG_OBTAINED_ROUTE_226_BOTTLE_CAP" }
   ]

@@ -37,6 +37,8 @@ internal static partial class ModernUi
         _ when battle.OnlyBall != null => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.sportBall", ("n", battle.SpecialBalls)), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") }),
         // At an end of a triple battle's side SHIFT stands where RUN does (plan 14 · B6)
         _ when battle.OffersShift => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.shift") }),
+        // A loose locked heart's CALM stands where RUN does (plan 44 · SD2)
+        _ when battle.OffersCalm => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.calm") }),
         _ => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") })
     };
 

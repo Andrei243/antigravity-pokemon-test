@@ -106,11 +106,18 @@ public sealed class ConditionLook
     public LastingMark Salt { get; } = new();
     public LastingMark Syrup { get; } = new();
 
+    /// <summary>A locked heart's grey haze (plan 44 · SD2), and its flare while the Pokémon is loose.</summary>
+    public LastingMark Haze { get; } = new();
+    public LastingMark Loose { get; } = new();
+
+    /// <summary>The bars of the lock shown, five down to one; nought with no lock.</summary>
+    public int LockBars { get; private set; }
+
     public bool Confused => Confusion.Up;
     public bool InLove => Love.Up;
 
     /// <summary>Anything at all is shown: standing or fading.</summary>
-    public bool Any => Ailment.Visible || Going.Visible || Confusion.Visible || Love.Visible || Salt.Visible || Syrup.Visible;
+    public bool Any => Ailment.Visible || Going.Visible || Confusion.Visible || Love.Visible || Salt.Visible || Syrup.Visible || Haze.Visible || Loose.Visible;
 
     internal void SetStatus(StatusCondition status, ConditionLooks owner, int salt, bool instantly)
     {
@@ -138,6 +145,13 @@ public sealed class ConditionLook
     internal void SetMark(MoveMark which, bool up, ConditionLooks owner, int salt, bool instantly) =>
         Set(which == MoveMark.SaltCure ? Salt : Syrup, up, owner, salt + 307 + (int)which * 53, instantly);
 
+    internal void SetLock(int bars, bool loose, ConditionLooks owner, int salt, bool instantly)
+    {
+        LockBars = bars;
+        Set(Haze, bars > 0, owner, salt + 401, instantly);
+        Set(Loose, bars > 0 && loose, owner, salt + 457, instantly);
+    }
+
     private static void Set(LastingMark mark, bool up, ConditionLooks owner, int salt, bool instantly)
     {
         if (up == mark.Up) return;
@@ -155,6 +169,9 @@ public sealed class ConditionLook
         Love.Clear();
         Salt.Clear();
         Syrup.Clear();
+        Haze.Clear();
+        Loose.Clear();
+        LockBars = 0;
     }
 
     internal void Advance(float dt)
@@ -165,6 +182,8 @@ public sealed class ConditionLook
         Love.Advance(dt);
         Salt.Advance(dt);
         Syrup.Advance(dt);
+        Haze.Advance(dt);
+        Loose.Advance(dt);
     }
 }
 
@@ -233,6 +252,16 @@ public sealed class ConditionLooks
             case MarkChanged mark:
                 Of(mark.Place).SetMark(mark.Mark, mark.On, this, Salt(mark.Place), instantly: false);
                 return true;
+            // A locked heart's haze (plan 44 · SD2): shown as it comes, flaring while it is loose, easing as it is calmed
+            case LockShown shown:
+                Of(shown.Place).SetLock(shown.Bars, loose: false, this, Salt(shown.Place), instantly: false);
+                return true;
+            case BrokeLoose broke:
+                Of(broke.Place).SetLock(Math.Max(1, Of(broke.Place).LockBars), loose: true, this, Salt(broke.Place), instantly: false);
+                return true;
+            case Calmed calmed:
+                Of(calmed.Place).SetLock(calmed.Bars, loose: false, this, Salt(calmed.Place), instantly: false);
+                return true;
             case Fainted fainted:
                 Of(fainted.Place).Clear();
                 return true;
@@ -278,6 +307,14 @@ public sealed class ConditionLooks
         look.SetMark(MoveMark.SaltCure, rules.Salt, this, Salt(place), instantly: true);
         look.SetMark(MoveMark.SyrupBomb, rules.Syrup, this, Salt(place), instantly: true);
     }
+
+    /// <summary>What the rules have of a place's lock (plan 44 · SD2): its bars, nought with none, and whether it is loose.</summary>
+    public static (int Bars, bool Loose) LockRulesHave(Battler place) =>
+        place.IsActive && place.Pokemon!.Lock is { } locked ? (locked.BarsLeft, place.Volatile.Loose) : (0, false);
+
+    /// <summary>A place's lock as the rules have it once a menu opens, with nothing played (as <see cref="Settle"/>).</summary>
+    public void SettleLock(Place place, (int Bars, bool Loose) rules) =>
+        Of(place).SetLock(rules.Bars, rules.Loose, this, Salt(place), instantly: true);
 
     /// <summary>The first place that shows otherwise than the rules have it, or null when none does.</summary>
     public string? Difference(BattleCore rules)

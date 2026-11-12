@@ -195,6 +195,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public ApricornBox Apricorns { get; set; } = new();
     public CraftingState? Crafting { get; set; } = new();
 
+    /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD2).</summary>
+    public HeartsRecord Hearts { get; set; } = new();
+
     /// <summary>The Laurel Circuit (plan 41 · EG4).</summary>
     public CircuitState? Circuit { get; set; } = new();
     /// <summary>Pennant Hall (plan 41 · EG3) and the Week's Work (EG6), as a game keeps them.</summary>
