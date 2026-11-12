@@ -731,6 +731,9 @@ public sealed partial class BattleAnimator
     public string? EnemyTrainer2 { get => enemyTrainer2; internal set { enemyTrainer2 = value; if (value != null) EnemyTrainer2Look = value; } }
     private string? enemyTrainer2;
 
+    /// <summary>A Battle Royal's third trainer, standing on the ring's third platform (plan 14, finishing B13).</summary>
+    public string? EnemyTrainer3 { get; internal set; }
+
     /// <summary>
     /// The looks of the trainers across the field, kept once they have stepped off their platform (when
     /// <see cref="EnemyTrainer"/> and <see cref="EnemyTrainer2"/> are cleared), so that one who speaks can step back
@@ -1650,7 +1653,7 @@ public sealed partial class BattleAnimator
         if (PlayerTrainerExit >= 0f) PlayerTrainerExit += dt;
         if (EnemyTrainerExit >= 0f) EnemyTrainerExit += dt;
         if (PlayerTrainerExit > TrainerExitTime) PlayerTrainer = PartnerTrainer = null;
-        if (EnemyTrainerExit > TrainerExitTime) EnemyTrainer = EnemyTrainer2 = null;
+        if (EnemyTrainerExit > TrainerExitTime) EnemyTrainer = EnemyTrainer2 = EnemyTrainer3 = null;
         if (Speaking != null)
         {
             Speaking.Age += dt;

@@ -86,8 +86,9 @@ public sealed class BattleRenderer
     public void Render(BattleEngine battle)
     {
         context.EnsureLoaded();
-        var stage = StageFor(Arena);
         var anim = battle.Anim;
+        // A Battle Royal's stage has the ring's two more platforms (plan 14, finishing B13): a stage of its own, so no other battle's moves
+        var stage = StageFor(anim.Royal ? Arena with { Ring = true } : Arena);
         if (!ReferenceEquals(battle, lastBattle) || anim.Time < lastTime)
         {
             director.Reset();
@@ -201,7 +202,8 @@ public sealed class BattleRenderer
     // ------------------------------------------------------------------ places
 
     /// <summary>How much the Pokémon on a side's platform are scaled by how many share it (<see cref="BattlePlaces.Fit"/>).</summary>
-    private static float SlotFit(BattleAnimator anim, BattleSide side) => BattlePlaces.Fit(anim.SlotsOf(side), anim.Spread(side));
+    private static float SlotFit(BattleAnimator anim, BattleSide side) =>
+        BattlePlaces.InTheRing(side, anim.SlotsOf(side), anim.Royal) ? BattlePlaces.RingFit : BattlePlaces.Fit(anim.SlotsOf(side), anim.Spread(side));
 
     /// <summary>Where a place on the field stands (<see cref="BattlePlaces.Spot"/>).</summary>
     private static Vector3 Spot(BattleSide side, int slot, int slots) => BattlePlaces.Spot(side, slot, slots);
@@ -210,7 +212,8 @@ public sealed class BattleRenderer
     private static int MostSlotsShown(BattleAnimator anim) => Math.Max(anim.SlotsOf(BattleSide.Player), anim.SlotsOf(BattleSide.Enemy));
 
     /// <summary>Where a place stands in the battle shown: its side's count of places.</summary>
-    private static Vector3 Spot(BattleAnimator anim, BattleSide side, int slot) => BattlePlaces.Spot(side, slot, anim.SlotsOf(side), anim.Spread(side));
+    private static Vector3 Spot(BattleAnimator anim, BattleSide side, int slot) =>
+        BattlePlaces.InTheRing(side, anim.SlotsOf(side), anim.Royal) ? BattlePlaces.Spot(side, slot, 3, royal: true) : BattlePlaces.Spot(side, slot, anim.SlotsOf(side), anim.Spread(side));
 
     /// <summary>
     /// How much a Pokémon's model is scaled on its platform: the same size rule as the sprites, the sprite frame
@@ -238,7 +241,7 @@ public sealed class BattleRenderer
                     places.Set(s, slot, places.Feet(s, slots - 1), places.Height(s, slots - 1), places.HalfWidth(s, slots - 1));
                     continue;
                 }
-                var feet = Spot(s, Math.Min(slot, slots - 1), slots) + new Vector3(0, platformTop, 0);
+                var feet = BattlePlaces.Spot(s, Math.Min(slot, slots - 1), slots, anim.Royal) + new Vector3(0, platformTop, 0);
                 float height = (isPlayer ? 1.2f : 2.2f) * SlotFit(anim, s);
                 // How wide its body is as the battle turns it, for what is drawn beside it (plan 09 · L2)
                 float halfWidth = 0f;
@@ -493,7 +496,16 @@ public sealed class BattleRenderer
         }
         else if (anim.PlayerTrainer != null)
             PlaceOnPlatform(anim.PlayerTrainer, BattleStage.PlayerSpot, MathF.PI, PlayerTrainerScale, anim.PlayerTrainerExit, -1f, anim.Time);
-        if (anim.EnemyTrainer2 != null)
+        if (anim.Royal && anim.EnemyTrainer3 != null)
+        {
+            // A Battle Royal's three each stand on their own platform of the ring, facing its middle (plan 14, finishing B13)
+            var looks = new[] { anim.EnemyTrainer, anim.EnemyTrainer2, anim.EnemyTrainer3 };
+            for (int i = 0; i < 3; i++)
+                if (looks[i] is { } look)
+                    PlaceOnPlatform(look, BattlePlaces.RingSpots[i], BattlePlaces.RingTurn(i), i == 2 ? 1.9f : 2.3f,
+                        anim.EnemyTrainerExit, i == 2 ? -1f : 1f, anim.Time + 0.6f * i);
+        }
+        else if (anim.EnemyTrainer2 != null)
         {
             // Two trainers stand side by side, each behind their Pokémon's place
             if (anim.EnemyTrainer != null)
@@ -1262,7 +1274,9 @@ public sealed class BattleRenderer
         var (width, tall) = motion.Shape;
         float size = scale * a.Grow * motion.Grow;
         if (size <= 0.001f) return;
-        var root = Matrix4x4.CreateScale(size * width, size * tall, size * width) * Matrix4x4.CreateRotationY(framing.Yaw + motion.Spin) * Matrix4x4.CreateTranslation(feet);
+        // In a Battle Royal's ring the two at the sides turn half way to the ring's middle (plan 14, finishing B13)
+        float ringTurn = !isPlayer && BattlePlaces.InTheRing(BattleSide.Enemy, anim.SlotsOf(BattleSide.Enemy), anim.Royal) ? BattlePlaces.RingTurn(slot) : 0f;
+        var root = Matrix4x4.CreateScale(size * width, size * tall, size * width) * Matrix4x4.CreateRotationY(framing.Yaw + motion.Spin + ringTurn) * Matrix4x4.CreateTranslation(feet);
 
         float phase = (isPlayer ? 0.37f : 0f) + slot * 0.53f;
         var pose = new PokePose

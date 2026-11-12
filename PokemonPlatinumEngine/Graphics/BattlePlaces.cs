@@ -63,6 +63,44 @@ internal static class BattlePlaces
     public static Vector3 Spot(BattleSide side, int slot, int slots, float spread) =>
         spread >= 1f ? Spot(side, slot, slots) : Vector3.Lerp(Spot(side, slot, 1), Spot(side, slot, slots), Math.Clamp(spread, 0f, 1f));
 
+    /// <summary>
+    /// The Battle Royal's ring (plan 14, finishing B13; style guide, "Stage", "A Battle Royal's ring"): the other side's
+    /// three each stand on a platform of their own round the field with the player's, seen from the overview left to
+    /// right as the third, the second and the first: the first on the arena's own platform (the foe's right, where a
+    /// single's foe stands), the second on a small platform of the ring's own further back in the middle of the picture,
+    /// and the third on another nearer, toward the player's left and clear of the player's own Pokémon.
+    /// </summary>
+    public static readonly Vector3[] RingSpots = { BattleStage.EnemySpot, new(-3.6f, 0f, -3f), new(-6.6f, 0f, 4f) };
+
+    /// <summary>The radius of the ring's two platforms of its own.</summary>
+    public const float RingPlatformRadius = 1.5f;
+
+    /// <summary>How much a Pokémon of the ring is scaled: each stands alone on its platform, a little under a single's size.</summary>
+    public const float RingFit = 0.65f;
+
+    /// <summary>The ring's middle: the four platforms' spots taken together, which the two at the sides turn toward.</summary>
+    public static readonly Vector3 RingMiddle = (RingSpots[0] + RingSpots[1] + RingSpots[2] + BattleStage.PlayerSpot) / 4f;
+
+    /// <summary>Whether a side's places stand in the ring: the other side of a Battle Royal with its three.</summary>
+    public static bool InTheRing(BattleSide side, int slots, bool royal) => royal && side == BattleSide.Enemy && slots == 3;
+
+    /// <summary>Where a place stands, in the ring when the battle is a Royal (<see cref="RingSpots"/>), else as <see cref="Spot(BattleSide, int, int)"/>.</summary>
+    public static Vector3 Spot(BattleSide side, int slot, int slots, bool royal) =>
+        InTheRing(side, slots, royal) ? RingSpots[Math.Clamp(slot, 0, 2)] : Spot(side, slot, slots);
+
+    /// <summary>How much a Pokémon is scaled, in the ring when the battle is a Royal (<see cref="RingFit"/>).</summary>
+    public static float Fit(int slots, bool royal, BattleSide side) => InTheRing(side, slots, royal) ? RingFit : Fit(slots);
+
+    /// <summary>
+    /// How far a Pokémon of the ring is turned from how it faces on the arena's platform: half way toward the ring's
+    /// middle as it stands, which is nothing for the first, on the arena's own platform.
+    /// </summary>
+    public static float RingTurn(int slot)
+    {
+        float Toward(Vector3 from) => MathF.Atan2(RingMiddle.X - from.X, RingMiddle.Z - from.Z);
+        return 0.5f * (Toward(RingSpots[Math.Clamp(slot, 0, 2)]) - Toward(BattleStage.EnemySpot));
+    }
+
     /// <summary>How much a Pokémon is scaled on a side opened out <paramref name="spread"/> of the way (plan 14 · B5): <see cref="Fit(int)"/> at a spread of 1.</summary>
     public static float Fit(int slots, float spread) =>
         spread >= 1f ? Fit(slots) : Fit(1) + (Fit(slots) - Fit(1)) * Math.Clamp(spread, 0f, 1f);

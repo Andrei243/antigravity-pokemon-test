@@ -142,6 +142,43 @@ public class MasterTrainerTests
         }
     }
 
+    [Fact]
+    public void ASetWrittenByHandComesFirstAndMustBeTheSpeciesOwn()
+    {
+        // tools/DataImporter/Overrides/master-trainers.json (plan 14, finishing B14): a species to the moves its master
+        // knows, in place of Showdown's sets; a folder with no sets at all gives every other master none
+        string folder = Path.Combine(Path.GetTempPath(), "masters-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            Directory.CreateDirectory(folder);
+            var species = new[] { "Bidoof", "Bibarel", "Starly" }.Select(n => PokemonDatabase.Get(n)!).ToList();
+            var moves = MoveDatabase.GetAll().ToList();
+            var items = ItemDatabase.GetAll().ToList();
+            var written = new Dictionary<string, List<string>> { ["Bidoof"] = new() { "Tackle", "Growl" } };
+
+            var built = MasterTrainers.Build(folder, species, moves, items, written);
+            Assert.Equal(new[] { "Tackle", "Growl" }, built.Masters.Single(m => m.Id == "master_bidoof").Party[0].Moves);
+            Assert.Null(built.Masters.Single(m => m.Id == "master_starly").Party[0].Moves);
+
+            // A move the species can't learn, a name that is no species, and five moves each stop the import
+            Assert.Throws<InvalidOperationException>(() => MasterTrainers.Build(folder, species, moves, items,
+                new Dictionary<string, List<string>> { ["Bidoof"] = new() { "Psychic" } }));
+            Assert.Throws<InvalidOperationException>(() => MasterTrainers.Build(folder, species, moves, items,
+                new Dictionary<string, List<string>> { ["Bidof"] = new() { "Tackle" } }));
+            Assert.Throws<InvalidOperationException>(() => MasterTrainers.Build(folder, species, moves, items,
+                new Dictionary<string, List<string>> { ["Bidoof"] = new() { "Tackle", "Growl", "Rollout", "Headbutt", "Hyper Fang" } }));
+
+            // The file in the repository reads, and holds nothing the import would refuse
+            string file = Path.Combine(Repository.Root, "tools", "DataImporter", "Overrides", MasterTrainers.OverridesFile);
+            var ours = MasterTrainers.ReadHandWritten(file);
+            Assert.All(ours, kv => Assert.All(kv.Value, move => Assert.Contains(move, Legality.Learnable(PokemonDatabase.Get(kv.Key)!))));
+        }
+        finally
+        {
+            if (Directory.Exists(folder)) Directory.Delete(folder, recursive: true);
+        }
+    }
+
     // ================================================================== the legality check
 
     [Fact]

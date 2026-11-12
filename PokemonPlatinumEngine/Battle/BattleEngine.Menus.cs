@@ -75,6 +75,13 @@ public partial class BattleEngine
         {
             int columns = TargetColumns;
             var layout = new Battler?[columns * 2];
+            // A Battle Royal's ring (style guide, "The ring's cards"): the foe across the field alone on top, and under it the
+            // foe on the player's left, the player's own card and the foe on the player's right, as the ring stands them
+            if (IsRoyal && EnemySlots.Count == 3 && PlayerSlots.Count == 1)
+            {
+                (layout[1], layout[3], layout[4], layout[5]) = (EnemySlots[1], EnemySlots[2], PlayerSlots[0], EnemySlots[0]);
+                return layout;
+            }
             for (int i = 0; i < EnemySlots.Count; i++) layout[EnemySlots.Count - 1 - i] = EnemySlots[i];
             if (EnemySlots.Count < 2) (layout[0], layout[1]) = (null, EnemySlots[0]);
             if (PlayerSlots.Count == 1 && columns > 2) layout[columns + columns / 2] = PlayerSlots[0];

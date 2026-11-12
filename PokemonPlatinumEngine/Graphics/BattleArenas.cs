@@ -23,6 +23,9 @@ internal readonly record struct ArenaSpec(BattleArena Kind, PokemonType? Theme =
 
     /// <summary>A gym or a room of the League.</summary>
     public bool Hall => Kind is BattleArena.Gym or BattleArena.League;
+
+    /// <summary>A Battle Royal's stage: two more platforms, for the ring (plan 14, finishing B13; <see cref="BattlePlaces.RingSpots"/>).</summary>
+    public bool Ring { get; init; }
 }
 
 /// <summary>
@@ -41,7 +44,17 @@ internal static class BattleArenas
     private static Color Rgb(int r, int g, int b) => new(r, g, b, 255);
     private static Color Mix(Color a, Color b, float t) => PixelCanvas.Mix(a, b, Math.Clamp(t, 0f, 1f));
 
+    /// <summary>Whether the stage being built is a Battle Royal's, whose ring has two more platforms (set by <see cref="Build"/>).</summary>
+    [ThreadStatic] private static bool ring;
+
     public static void Build(MeshBatches b, ArenaSpec spec)
+    {
+        ring = spec.Ring;
+        try { BuildKind(b, spec); }
+        finally { ring = false; }
+    }
+
+    private static void BuildKind(MeshBatches b, ArenaSpec spec)
     {
         switch (spec.Kind)
         {
@@ -102,8 +115,19 @@ internal static class BattleArenas
             }
     }
 
-    /// <summary>A raised platform: a rim of <paramref name="rim"/> under a textured top, like the DS battle platforms.</summary>
+    /// <summary>
+    /// A raised platform: a rim of <paramref name="rim"/> under a textured top, like the DS battle platforms. On a Battle
+    /// Royal's stage the foe's platform brings the ring's two others with it, of the same make (plan 14, finishing B13).
+    /// </summary>
     private static void Platform(MeshBatches batches, Vector3 center, float radius, Texture2D top, Color rim, float height = Top, float baseY = -0.05f)
+    {
+        OnePlatform(batches, center, radius, top, rim, height, baseY);
+        if (ring && center == Enemy)
+            foreach (var spot in BattlePlaces.RingSpots)
+                if (spot != Enemy) OnePlatform(batches, spot, BattlePlaces.RingPlatformRadius, top, rim, height, baseY);
+    }
+
+    private static void OnePlatform(MeshBatches batches, Vector3 center, float radius, Texture2D top, Color rim, float height, float baseY)
     {
         batches.For(SceneTextures.White).Lathe(center, new[]
         {
