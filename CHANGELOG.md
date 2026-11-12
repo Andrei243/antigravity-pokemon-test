@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Lockwork's story has two new medals (reclaim a locked heart; open thirty), a request in the log for each of its cells, and a clipped march of its own that plays when its agents spot you.
+
 - Your Trainer Card can now be designed: press the item button on the card to choose a background, a frame, a pose and a face for your figure, a title, the six Pokémon it shows, a two-word greeting and your own signature on the back, and to print both sides as a picture. New backgrounds and frames come with Badges, Halls of Fame, medals, diplomas and photo spots.
 - The Jubilife Boutique has a stylist for a new cut, hair colour, eye colour or skin tone, and a dyer (in Lumiose too) who dyes a garment you own in one of fifteen colours for a fee and the right berry.
 - Photo mode can pose you (a wave, a cheer, a bow...) with a face to match, and every picture it takes is kept in a new photo book of a hundred. Five photo spots stand in Sinnoh's towns, each with its own view; photograph all five for a new card background.

@@ -109,7 +109,7 @@ public sealed partial class BattleCore
         var p = b.Pokemon!;
         b.Volatile.Loose = false;
         if (p.Lock is { } locked) p.Lock = locked.Lower(HeartLock.Fall.Calm);
-        Say(Text.Of("battle.calmedDown", ("pokemon", b.Name))).With(new Calmed(b.Place, p.Lock?.BarsLeft ?? 0));
+        Say(Text.Of("battle.calmedDownLock", ("pokemon", b.Name))).With(new Calmed(b.Place, p.Lock?.BarsLeft ?? 0));
     }
 
     /// <summary>Why CALM can't be chosen: nobody here is loose.</summary>
