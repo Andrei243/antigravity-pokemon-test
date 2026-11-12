@@ -110,7 +110,7 @@ public static class HoennContestDatabase
         {
             PokemonType.Fighting or PokemonType.Rock or PokemonType.Ground or PokemonType.Steel => ContestStat.Tough,
             PokemonType.Fire or PokemonType.Electric or PokemonType.Dragon or PokemonType.Flying => ContestStat.Cool,
-            PokemonType.Water or PokemonType.Ice or PokemonType.Ghost or PokemonType.Fairy => ContestStat.Beauty,
+            PokemonType.Water or PokemonType.Ice or PokemonType.Ghost or PokemonType.Fairy or PokemonType.Sound => ContestStat.Beauty,
             PokemonType.Normal or PokemonType.Grass or PokemonType.Bug => ContestStat.Cute,
             _ => ContestStat.Smart
         };

@@ -29,7 +29,7 @@ public readonly record struct SignPart(SignPartKind Kind, Vector2 A, Vector2 B, 
 }
 
 /// <summary>
-/// The eighteen types' signs (plan 12 · Q8; style guide, "Shapes and components", "Type signs"): our own one-colour
+/// The nineteen types' signs (Sound, plan 46 · CP2, the last) (plan 12 · Q8; style guide, "Shapes and components", "Type signs"): our own one-colour
 /// signs, drawn on a type pill and a move card's band when a colour remap or high contrast is in force, so a type
 /// reads without its colour. The parts are data (<see cref="Parts"/>, GPU-free, which a test holds inside their square);
 /// <see cref="Draw"/> lays them down with <see cref="UiShapes"/>.
@@ -135,6 +135,14 @@ public static class TypeSigns
             Tri(0, 0.94f, 0.22f, 0, -0.22f, 0),
             Tri(-0.94f, 0, 0, 0.22f, 0, -0.22f),
             Tri(0.94f, 0, 0, -0.22f, 0, 0.22f)
+        },
+        PokemonType.Sound => new[]
+        {
+            // A note (plan 46 · CP2): a round head leaning left, its stem rising from its right, a flag swept off the top
+            Circle(-0.26f, 0.5f, 0.38f),
+            Line(0.06f, 0.46f, 0.06f, -0.8f, 0.2f),
+            Line(0.06f, -0.8f, 0.62f, -0.42f, 0.2f),
+            Line(0.62f, -0.42f, 0.52f, -0.06f, 0.16f)
         },
         _ => Array.Empty<SignPart>()
     };

@@ -23,7 +23,8 @@ internal static partial class MoveFx
         ["Max Flutterby"] = PokemonType.Bug, ["Max Phantasm"] = PokemonType.Ghost, ["Max Steelspike"] = PokemonType.Steel,
         ["Max Flare"] = PokemonType.Fire, ["Max Geyser"] = PokemonType.Water, ["Max Overgrowth"] = PokemonType.Grass,
         ["Max Lightning"] = PokemonType.Electric, ["Max Mindstorm"] = PokemonType.Psychic, ["Max Hailstorm"] = PokemonType.Ice,
-        ["Max Wyrmwind"] = PokemonType.Dragon, ["Max Darkness"] = PokemonType.Dark, ["Max Starfall"] = PokemonType.Fairy
+        ["Max Wyrmwind"] = PokemonType.Dragon, ["Max Darkness"] = PokemonType.Dark, ["Max Starfall"] = PokemonType.Fairy,
+        ["Max Chorus"] = PokemonType.Sound
     };
 
     /// <summary>How a G-Max Move's own mark moves round its target.</summary>
@@ -476,6 +477,12 @@ internal static partial class MoveFx
                 Fx.Rain(fx, t, s, mid, h, I, 1.35f, 0.3f, 16, FxShape.Star, col.Main, col.Light, 0.11f, FxBlend.Alpha);
                 fx.Flat(FxShape.Ring, feet + Vector3.UnitY * h * 0.04f, Vector3.UnitY, ring, Fx.Fade(col.Main, e), rotation: t * 2f);
                 Fx.Shockwave(fx, t, mid, Vector3.Zero, I + 0.5f, 0.6f, h * 1.5f, Fx.Fade(col.Light, 0.8f));
+                break;
+            case PokemonType.Sound:
+                // Plan 46 · CP2: rings of sound beating down on it one after another, a ring of teal light at its feet
+                for (int i = 0; i < 4; i++)
+                    Fx.Shockwave(fx, t, mid, Vector3.Zero, I + i * 0.14f, 0.5f, h * (1.6f - 0.25f * i), Fx.Fade(i % 2 == 0 ? col.Light : col.Main, 0.9f));
+                fx.Flat(FxShape.Ring, feet + Vector3.UnitY * h * 0.04f, Vector3.UnitY, ring, Fx.Fade(col.Main, e), rotation: t * 2f);
                 break;
             default:
                 // Normal: five stars of light falling round it, bursting where they land

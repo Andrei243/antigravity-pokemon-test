@@ -836,7 +836,8 @@ public class BattlePresentationTests
     [Fact]
     public void TheHintIsTheTypeChartsAnswerForEveryPairOfTypes()
     {
-        var types = Enum.GetValues<PokemonType>();
+        // The games' types: Sound (plan 46 · CP2) has no species or move to try yet
+        var types = TypeChart.GamesTypes.ToArray();
         var moves = types.ToDictionary(t => t, t => new Move(MoveDatabase.GetAll().First(m => m.Type == t && m.Category != MoveCategory.Status)));
         foreach (var defending in types)
         {

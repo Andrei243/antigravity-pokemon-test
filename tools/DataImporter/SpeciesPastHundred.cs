@@ -124,7 +124,7 @@ public static class SpeciesPastHundred
     /// <summary>The machines, tutor moves and Egg moves of each species of ours, its forebear's as the import left them (after the later games' machines).</summary>
     public static void CopyMachines(List<PokemonSpecies> species)
     {
-        foreach (var s in species.Where(s => s.IsOurs))
+        foreach (var s in species.Where(s => s.IsPastHundred))
         {
             var from = ForebearOf(s, species);
             s.TmMoves = from.TmMoves?.ToList();

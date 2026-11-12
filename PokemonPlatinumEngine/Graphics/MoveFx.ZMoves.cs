@@ -25,7 +25,9 @@ internal static partial class MoveFx
     {
         "Breakneck Blitz", "All-Out Pummeling", "Supersonic Skystrike", "Acid Downpour", "Tectonic Rage", "Continental Crush",
         "Savage Spin-Out", "Never-Ending Nightmare", "Corkscrew Crash", "Inferno Overdrive", "Hydro Vortex", "Bloom Doom",
-        "Gigavolt Havoc", "Shattered Psyche", "Subzero Slammer", "Devastating Drake", "Black Hole Eclipse", "Twinkle Tackle"
+        "Gigavolt Havoc", "Shattered Psyche", "Subzero Slammer", "Devastating Drake", "Black Hole Eclipse", "Twinkle Tackle",
+        // Plan 46 · CP2: our own type's, drawn by the type's template
+        "Resounding Finale"
     };
 
     /// <summary>A Z-Move's look: a species' own, or its type's.</summary>

@@ -1128,13 +1128,13 @@
     "intoMany": "It can evolve into {list}.",
     "listSeparator": ", ",
     "listEnd": "{rest} or {last}",
-    "region": { "1": "Kanto", "2": "Johto", "3": "Hoenn", "4": "Sinnoh", "5": "Unova", "6": "Kalos", "7": "Alola", "8": "Galar", "9": "Paldea" }
+    "region": { "1": "Kanto", "2": "Johto", "3": "Hoenn", "4": "Sinnoh", "5": "Unova", "6": "Kalos", "7": "Alola", "8": "Galar", "9": "Paldea", "10": "Carpathia" }
   },
 
   "types": {
     "Normal": "Normal", "Fire": "Fire", "Water": "Water", "Grass": "Grass", "Electric": "Electric", "Ice": "Ice",
     "Fighting": "Fighting", "Poison": "Poison", "Ground": "Ground", "Flying": "Flying", "Psychic": "Psychic", "Bug": "Bug",
-    "Rock": "Rock", "Ghost": "Ghost", "Dragon": "Dragon", "Steel": "Steel", "Dark": "Dark", "Fairy": "Fairy"
+    "Rock": "Rock", "Ghost": "Ghost", "Dragon": "Dragon", "Steel": "Steel", "Dark": "Dark", "Fairy": "Fairy", "Sound": "Sound"
   },
 
   "natures": {
@@ -1399,8 +1399,8 @@
       "left": "Left {n}", "right": "Right {n}", "ready": "Press to hear", "sounding": "Sounding",
       "hint": "Press the confirm key to bend this cry."
     },
-    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "kaloscentral": "CENTRAL", "kaloscoastal": "COASTAL", "kalosmountain": "MOUNTAIN", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "national": "NATIONAL", "ours": "OF OUR OWN" },
-    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Coastal", "kalosmountain": "Kalos Mountain", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "national": "National", "ours": "Of our own" },
+    "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "updatedjohto": "JOHTO", "hoenn": "HOENN", "updatedunova": "UNOVA", "kaloscentral": "CENTRAL", "kaloscoastal": "COASTAL", "kalosmountain": "MOUNTAIN", "originalalola": "ALOLA", "originalmelemele": "MELEMELE", "originalakala": "AKALA", "originalulaula": "ULA'ULA", "originalponi": "PONI", "national": "NATIONAL", "ours": "OF OUR OWN", "carpathia": "CARPATHIA" },
+    "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "updatedjohto": "Johto", "hoenn": "Hoenn", "updatedunova": "Unova", "kaloscentral": "Kalos Central", "kaloscoastal": "Kalos Coastal", "kalosmountain": "Kalos Mountain", "originalalola": "Alola", "originalmelemele": "Melemele", "originalakala": "Akala", "originalulaula": "Ula'ula", "originalponi": "Poni", "national": "National", "ours": "Of our own", "carpathia": "Carpathia" },
     "oursMark": "OURS",
     "found": "FOUND",
     "order": "ORDER",
@@ -1474,6 +1474,7 @@
       "hoenn": "HOENN POKÉDEX",
       "updatedunova": "UNOVA POKÉDEX",
       "ours": "POKÉDEX OF OUR OWN",
+      "carpathia": "CARPATHIAN POKÉDEX",
       "kaloscentral": "CENTRAL KALOS POKÉDEX",
       "kaloscoastal": "COASTAL KALOS POKÉDEX",
       "kalosmountain": "MOUNTAIN KALOS POKÉDEX",
@@ -1491,6 +1492,7 @@
         "updatedjohto": "has seen every one of the {count} Pokémon of the Johto Pokédex, from the quiet routes to the deepest caves.",
         "hoenn": "has seen every one of the {count} Pokémon of the Hoenn Pokédex, on the land, in the sea and in the sky.",
         "updatedunova": "has seen every one of the {count} Pokémon of the Unova Pokédex, from the city towers to the buried sands.",
+        "carpathia": "has seen every one of the {count} Pokémon of the Carpathian Pokédex, from the delta's reeds to the snow on the ridge.",
         "ours": "has seen every one of the {count} Pokémon of our own, the ones no region's Pokédex lists. A record nobody else keeps.",
         "kaloscentral": "has seen every one of the {count} Pokémon of the Central Kalos Pokédex: the gardens, the forests and the streets of Lumiose, all of them recorded.",
         "kaloscoastal": "has seen every one of the {count} Pokémon of the Coastal Kalos Pokédex, from the tide pools to the open sea.",
@@ -2117,7 +2119,7 @@
     "short": {
       "Normal": "NOR", "Fire": "FIR", "Water": "WAT", "Grass": "GRS", "Electric": "ELE", "Ice": "ICE",
       "Fighting": "FIG", "Poison": "PSN", "Ground": "GRD", "Flying": "FLY", "Psychic": "PSY", "Bug": "BUG",
-      "Rock": "RCK", "Ghost": "GHO", "Dragon": "DRA", "Steel": "STL", "Dark": "DRK", "Fairy": "FAI"
+      "Rock": "RCK", "Ghost": "GHO", "Dragon": "DRA", "Steel": "STL", "Dark": "DRK", "Fairy": "FAI", "Sound": "SND"
     },
     "note": {
       "about": {
@@ -3272,7 +3274,7 @@
         "faintGlimmer": "Faint Glimmer", "dreamPrism": "Dream Prism", "silkStrand": "Silk Strand", "chitinShard": "Chitin Shard",
         "rockFlake": "Rock Flake", "geodeHeart": "Geode Heart", "paleWisp": "Pale Wisp", "nightVeil": "Night Veil",
         "drakeScale": "Drake Scale", "wyrmFang": "Wyrm Fang", "ironFilings": "Iron Filings", "brightAlloy": "Bright Alloy",
-        "nightFur": "Night Fur", "umbralClaw": "Umbral Claw", "charmGlitter": "Charm Glitter", "moonRibbon": "Moon Ribbon",
+        "nightFur": "Night Fur", "umbralClaw": "Umbral Claw", "charmGlitter": "Charm Glitter", "moonRibbon": "Moon Ribbon", "hollowReed": "Hollow Reed", "echoCrystal": "Echo Crystal",
         "quarryStone": "Quarry Stone", "rawOre": "Raw Ore", "timber": "Timber", "amberResin": "Amber Resin",
         "plantFibre": "Plant Fibre", "wildHerbs": "Wild Herbs", "seaShell": "Sea Shell", "coarseSalt": "Coarse Salt",
         "frostCrystal": "Frost Crystal", "riverClay": "River Clay",
@@ -3316,6 +3318,8 @@
         "umbralClaw": "A claw as black as a moonless night.",
         "charmGlitter": "Glitter that sparkles for no reason at all.",
         "moonRibbon": "A silvery ribbon that glows faintly after dark.",
+        "hollowReed": "A length of reed that whistles when the wind crosses it.",
+        "echoCrystal": "A clear crystal that rings back any note sung near it.",
         "quarryStone": "Plain stone broken from a rock face.",
         "rawOre": "A lump of ore with veins of metal in it.",
         "timber": "A length of wood from a felled tree.",

@@ -69,7 +69,7 @@ public class MaterialsTests
             Assert.Equal(material.Kind == MaterialKind.Pokemon, material.Type != null);
         }
         Assert.Equal(MaterialTable.All.Count, MaterialTable.All.Select(m => m.Id).Distinct().Count());
-        Assert.Equal(36, MaterialTable.All.Count(m => m.Kind == MaterialKind.Pokemon));
+        Assert.Equal(36 + 2, MaterialTable.All.Count(m => m.Kind == MaterialKind.Pokemon)); // and the Sound type's two, plan 46 · CP2
         Assert.Equal(10, MaterialTable.All.Count(m => m.Kind == MaterialKind.Field));
         Assert.Equal(999, MaterialTable.Limit);
     }

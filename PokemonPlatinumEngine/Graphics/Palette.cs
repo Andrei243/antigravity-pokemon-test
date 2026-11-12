@@ -39,6 +39,8 @@ public static class Palette
             "STEEL" => new Color(184, 184, 208, 255),
             "DARK" => new Color(112, 88, 72, 255),
             "FAIRY" => new Color(238, 153, 172, 255),
+            // Plan 46 · CP2: our own nineteenth type, a teal apart from Ice's and Grass's
+            "SOUND" => new Color(64, 168, 152, 255),
             _ => new Color(160, 160, 160, 255)
         };
     }

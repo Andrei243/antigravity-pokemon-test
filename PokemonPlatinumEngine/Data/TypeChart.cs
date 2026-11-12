@@ -1,9 +1,29 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PokemonPlatinumEngine.Data;
 
 public static class TypeChart
 {
+    /// <summary>
+    /// The games' eighteen types, Sound (plan 46 · CP2, a type of our own) left out: what a draw, a list or a board of
+    /// the games' own goes by (the randomiser's shuffle, the Friend Safari, the sparring room, Conversion 2, the help's
+    /// chart until it is drawn nineteen wide).
+    /// </summary>
+    public static IReadOnlyList<PokemonType> GamesTypes { get; } = Enum.GetValues<PokemonType>().Where(t => t != PokemonType.Sound).ToArray();
+
+    /// <summary>
+    /// The types some species of the data has (any of its forms, under either rules' values): what a choice of a type
+    /// offers (the Monotype run, the Pokédex's search), so Sound joins it by itself once a species of it is in the data.
+    /// </summary>
+    public static IReadOnlyList<PokemonType> TypesWithSpecies => typesWithSpecies ??= Enum.GetValues<PokemonType>()
+        .Where(t => t != PokemonType.Sound || PokemonDatabase.Everyone().Any(s => s.PrimaryType == t || s.SecondaryType == t
+            || s.Forms?.Any(f => f.Types?.Contains(t) == true) == true))
+        .ToArray();
+
+    private static IReadOnlyList<PokemonType>? typesWithSpecies;
+
     private static readonly Dictionary<(PokemonType Atk, PokemonType Def), float> Multipliers = new()
     {
         // Normal
@@ -163,7 +183,22 @@ public static class TypeChart
         { (PokemonType.Bug, PokemonType.Fairy), 0.5f },
         { (PokemonType.Dragon, PokemonType.Fairy), 0.0f },
         { (PokemonType.Dark, PokemonType.Fairy), 0.5f },
-        { (PokemonType.Steel, PokemonType.Fairy), 2.0f }
+        { (PokemonType.Steel, PokemonType.Fairy), 2.0f },
+
+        // Sound (plan 46 · CP2, a type of our own, decision 13): resonance shatters stone, ice and thought; metal rings it
+        // back and earth swallows it. Silence (Dark), feedback (Electric) and the earth (Ground) undo it; it shrugs off
+        // plain blows, wind and other sound. No species or move of the games has it, so no battle of theirs meets a row.
+        { (PokemonType.Sound, PokemonType.Rock), 2.0f },
+        { (PokemonType.Sound, PokemonType.Ice), 2.0f },
+        { (PokemonType.Sound, PokemonType.Psychic), 2.0f },
+        { (PokemonType.Sound, PokemonType.Steel), 0.5f },
+        { (PokemonType.Sound, PokemonType.Ground), 0.5f },
+        { (PokemonType.Sound, PokemonType.Sound), 0.5f },
+        { (PokemonType.Dark, PokemonType.Sound), 2.0f },
+        { (PokemonType.Electric, PokemonType.Sound), 2.0f },
+        { (PokemonType.Ground, PokemonType.Sound), 2.0f },
+        { (PokemonType.Normal, PokemonType.Sound), 0.5f },
+        { (PokemonType.Flying, PokemonType.Sound), 0.5f }
     };
 
     /// <param name="rules">The rules whose chart this is; left out, those of the game in progress.</param>

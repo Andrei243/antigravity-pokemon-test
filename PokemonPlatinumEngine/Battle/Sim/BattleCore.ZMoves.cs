@@ -47,7 +47,9 @@ public sealed partial class BattleCore
         [PokemonType.Bug] = "Savage Spin-Out", [PokemonType.Ghost] = "Never-Ending Nightmare", [PokemonType.Steel] = "Corkscrew Crash",
         [PokemonType.Fire] = "Inferno Overdrive", [PokemonType.Water] = "Hydro Vortex", [PokemonType.Grass] = "Bloom Doom",
         [PokemonType.Electric] = "Gigavolt Havoc", [PokemonType.Psychic] = "Shattered Psyche", [PokemonType.Ice] = "Subzero Slammer",
-        [PokemonType.Dragon] = "Devastating Drake", [PokemonType.Dark] = "Black Hole Eclipse", [PokemonType.Fairy] = "Twinkle Tackle"
+        [PokemonType.Dragon] = "Devastating Drake", [PokemonType.Dark] = "Black Hole Eclipse", [PokemonType.Fairy] = "Twinkle Tackle",
+        // Plan 46 · CP2: our own type's
+        [PokemonType.Sound] = "Resounding Finale"
     };
 
     /// <summary>The forms Showdown's crystals name by other names than the data's (the fused Necrozmas).</summary>
