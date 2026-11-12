@@ -135,6 +135,10 @@ public sealed class World
     public WorldOutbreaksFile OwnOutbreaks => ownOutbreaks ??= Optional<WorldOutbreaksFile>(WorldOutbreaksFile.FileName, strict: true) ?? new();
     private WorldOutbreaksFile? ownOutbreaks;
 
+    /// <summary>The visitors a scan may call up in the region (plan 38 · EX2, <c>visitors.json</c>, written by hand and read strictly); none when the folder has no file.</summary>
+    public WorldVisitorsFile Visitors => visitors ??= Optional<WorldVisitorsFile>(WorldVisitorsFile.FileName, strict: true) ?? new();
+    private WorldVisitorsFile? visitors;
+
     public WorldOverlayFile? Overlay(string key)
     {
         lock (reading)

@@ -38,6 +38,8 @@ public class SchemaTests
         ("training.schema.json", typeof(TrainingFile), "The training club's tables: the drills' prizes (Data/training.json)"),
         ("facility-trainers.schema.json", typeof(PokemonPlatinumEngine.Models.Facilities.FacilityTrainersFile), "The later battle places' trainers: classes, looks and names of ours (Data/facility-trainers.json)"),
         ("facility-prizes.schema.json", typeof(PokemonPlatinumEngine.Models.Facilities.FacilityPrizesFile), "The later battle places' prize counters, a stock to each place (Data/facility-prizes.json)"),
+        ("tree-cast.schema.json", typeof(PokemonPlatinumEngine.Models.Facilities.TreeCastFile), "The partners' tree's famous trainers (Data/tree-cast.json, plan 37 · FC3)"),
+        ("cups.schema.json", typeof(PokemonPlatinumEngine.Models.Facilities.CupsFile), "The stadium's cups (Data/cups.json, plan 37 · FC7)"),
         // An open region's descriptions (plan 32 · OW2), read strictly by tools/OpenWorldBake
         ("open-world.schema.json", typeof(OpenWorldBake.OpenWorldFile), "An open region's world.json (Data/world3d/<region>/world.json)"),
         ("open-terrain.schema.json", typeof(OpenWorldBake.TerrainFile), "An open region's land: control points, brushes and paint (Data/world3d/<region>/terrain/*.json)"),

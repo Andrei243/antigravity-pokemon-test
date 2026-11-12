@@ -243,6 +243,8 @@ public partial class GameEngine
                 Trainers = trainers,
                 WildPokemon = wild,
                 Partner = beside,
+                // FRIEND AS PARTNER (plan 13 · V20) plays a Frontier partner where it is on (plan 37 · FC3: the partners' tree's Multi room)
+                FriendPartner = Settings.Coop && beside != null,
                 Frontier = true,
                 // BACKGROUND_BATTLE_TOWER and TERRAIN_BATTLE_TOWER: one of the grounds of their own
                 Conditions = new Battle.Sim.BattleConditions

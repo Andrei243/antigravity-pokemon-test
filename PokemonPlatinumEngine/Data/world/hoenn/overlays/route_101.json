@@ -2,6 +2,10 @@
   // Route 101 (plan 21 · H1, H2), between Littleroot Town and Oldale Town. Professor Birch chased by a Zigzagoon, his
   // bag of Poké Balls in the grass and the steps that keep the player in the scene are route_101.txt's
   "area": "route_101",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_101.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 129, "y": 266, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "hoenn/route101",
   "trees": "Round",
   "triggers": [

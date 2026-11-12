@@ -33,7 +33,12 @@ public enum ItemSourceKind
     /// The crafting kit makes it (plan 39 · CR3, <c>recipes.json</c>'s <c>kit</c>), where a script gives the kit
     /// (<c>craft give kit</c>): a sure way once the kit is held, the kit going with the team into every region.
     /// </summary>
-    Made
+    Made,
+    /// <summary>
+    /// Crossing gives it (plan 39 · CR5, <c>recipes.json</c>'s <c>crosses</c>), where a script gives the crafting kit: two
+    /// berries of a pair planted side by side cross into it now and then, at every soil and in Johto's Berry Pots.
+    /// </summary>
+    Crossed
 }
 
 /// <summary>One way an item is had: its kind and where (an area, a room, a script, a counter, a list).</summary>
@@ -220,6 +225,7 @@ public sealed class ItemSources
                     // The crafting kit given (plan 39 · CR1) makes every item of its recipes (CR3)
                     case Op.Craft when i.Name == "give" && i.Other == "kit":
                         foreach (var recipe in Crafting.Recipes) Add(recipe.Makes, ItemSourceKind.Made, $"{where}: the crafting kit ({recipe.Id})");
+                        foreach (var cross in Overworld.BerryCrossing.Table.Rows) Add(cross.Makes, ItemSourceKind.Crossed, $"{where}: berries crossed");
                         break;
                     case Op.Charm when i.Name == "give":
                         foreach (string charm in Charms.Table.Regional.Append(Charms.Table.National)) Add(charm, ItemSourceKind.Given, where);

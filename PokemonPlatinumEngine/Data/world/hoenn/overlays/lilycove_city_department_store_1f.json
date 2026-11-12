@@ -19,6 +19,8 @@
   // the head coach's drills, the tutor's moves and the clerk's shelves (the club's Battle Points counter is the Battle
   // Frontier island's, plan 36 · TR3)
   "npcs": [
+    { "id": "lilycove_city_department_store_1f.Confectioner", "name": "Confectioner", "npcType": "Clerk", "x": 12, "y": 2, "facing": "Down", "script": "TreatCounter" },
+    { "id": "lilycove_city_department_store_1f.Baker", "name": "Baker", "npcType": "Clerk", "x": 14, "y": 2, "facing": "Down", "script": "TreatBaker" },
     { "id": "lilycove_city_department_store_1f.TrainingCoach", "name": "Head Coach", "npcType": "training_coach",
       "x": 17, "y": 3, "facing": "Left", "script": "TrainingCoach" },
     { "id": "lilycove_city_department_store_1f.TrainingTutor", "name": "Tutor Marlo", "npcType": "training_tutor",

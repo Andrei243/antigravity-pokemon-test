@@ -335,6 +335,13 @@ internal sealed class ScriptWalk
                     foreach (string species in new[] { "Starly", "Shinx", "Kricketot", "Bidoof" })
                         host.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 5, new Random(host.Party.Count)));
                 });
+            // The baker's berries (plan 35 · BN3): three of one flavour and one of every flavour
+            if (i.Op == Op.Treat && i.Name == "can")
+                Add("berries for the baker", host =>
+                {
+                    foreach (string berry in new[] { "Cheri Berry", "Cheri Berry", "Cheri Berry", "Chesto Berry", "Pecha Berry", "Rawst Berry", "Aspear Berry" })
+                        host.Bag.AddItem(ItemDatabase.Get(berry)!, 1);
+                });
             // A team that may enter any room of a later battle place (plan 37 · FC2): six of different species, for a triple room
             if (i.Op == Op.Facility && i.Other == "enough")
                 Add("a team of six that may enter", host =>

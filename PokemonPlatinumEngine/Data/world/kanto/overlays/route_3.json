@@ -2,6 +2,10 @@
   // Route 3 (plan 19 · K3): east of Pewter City toward Mt. Moon, which is plan 19 · K4's. Its trainers are FireRed's
   // own, their teams read from Kanto's trainers.json by the trainer each object's script names
   "area": "route_3",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_3.gather", "name": "Rock", "npcType": "GatherRock", "x": 142, "y": 80, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "kanto/route3",
   "trees": "Round",
   "people": {

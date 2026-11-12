@@ -14,6 +14,8 @@
   // a corner of the store's ground floor along its west wall: the head coach's drills (common.TrainingCoach), the
   // clerk's shelves, the tutor's moves and the club's Battle Points counter, as Sunyshore City's hall has them
   "npcs": [
+    { "id": "celadon_city_department_store_1f.Confectioner", "name": "Confectioner", "npcType": "Clerk", "x": 12, "y": 8, "facing": "Left", "script": "TreatCounter" },
+    { "id": "celadon_city_department_store_1f.Baker", "name": "Baker", "npcType": "Clerk", "x": 12, "y": 10, "facing": "Left", "script": "TreatBaker" },
     { "id": "celadon_city_department_store_1f.TrainingExchange", "name": "Club Clerk", "npcType": "training_clerk",
       "x": 1, "y": 8, "facing": "Right", "script": "TrainingExchange" },
     { "id": "celadon_city_department_store_1f.TrainingCoach", "name": "Head Coach", "npcType": "training_coach",

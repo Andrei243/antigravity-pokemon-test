@@ -205,6 +205,8 @@ public enum Op
     Missions,
     // The stage show (plan 42 · PS1, PS2): the owner's trunk, the dressing room, a show on the stage, a fan's gift
     StageShow,
+    // Treats (plan 35 · BN3): the baker's three berries of a flavour, or one of each, made into a finer treat
+    Treat,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

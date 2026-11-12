@@ -55,6 +55,16 @@
           "Bianca"
         ]
       }
+    },
+    "unova_route_19.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

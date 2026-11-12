@@ -93,6 +93,17 @@ public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDe
         return OutbreakMet[area] = OutbreakMetIn(area) + 1;
     }
 
+    /// <summary>
+    /// The visitor a scan has called up (plan 38 · EX2, <see cref="Overworld.Visitors"/>) and the time it has left; null when
+    /// none is. A new day takes it with it (<see cref="DaysPass"/>).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public VisitorCall? Visitor { get; set; }
+
+    /// <summary>The day's number on which a scan was last made (plan 38 · EX2): one a day; null before any.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public uint? ScannedOn { get; set; }
+
     /// <summary>The steps counted towards poison's next bite in the field, from 0 to 3 (<c>FieldOverworldState_GetPoisonStepCount</c>).</summary>
     public int PoisonSteps { get; set; }
 
@@ -129,6 +140,8 @@ public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDe
         MarshDaily = SwarmDaily = DailyNumber;
         // The day's outbreaks are others, and what was met of the last day's is forgotten (plan 38 · EX1)
         OutbreakMet = null;
+        // ...and the day's visitor goes with the day (plan 38 · EX2)
+        Visitor = null;
     }
 
     /// <summary>The clock has moved on to <paramref name="now"/>: the honey trees count the whole minutes since it was last read. A clock turned back counts nothing.</summary>
@@ -152,6 +165,21 @@ public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDe
         PreviousPlace = CurrentPlace;
         CurrentPlace = place;
     }
+}
+
+/// <summary>
+/// A visitor called up by a scan (plan 38 · EX2): the species, the region and the place it is met in, its levels as the
+/// region's own game writes them, and the seconds of the game's own time it has left (counted while the field or a battle
+/// is on screen).
+/// </summary>
+public sealed class VisitorCall
+{
+    public string Region { get; set; } = "";
+    public string Species { get; set; } = "";
+    public string Area { get; set; } = "";
+    public int MinLevel { get; set; }
+    public int MaxLevel { get; set; }
+    public float SecondsLeft { get; set; }
 }
 
 /// <summary>

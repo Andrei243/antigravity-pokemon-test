@@ -62,7 +62,11 @@ public partial class GameEngine
             // The powers in force that a step reads (plan 39 · CR6's dishes): the encounters' or stealth's, and a type's
             PowerRate = flow.Powers.Strength(PowerKind.Encounter) + flow.Powers.Strength(PowerKind.Stealth),
             PowerType = flow.Powers.TypeOf(PowerKind.TypeEncounter),
-            PowerSlots = flow.Powers.Strength(PowerKind.TypeEncounter)
+            PowerSlots = flow.Powers.Strength(PowerKind.TypeEncounter),
+            // The visitor a scan called up, for its hour (plan 38 · EX2)
+            Visitor = VisitorNow(),
+            // The hour's rift's table within its reach (plan 38 · EX5)
+            Rift = RiftHere()
         };
     }
 
@@ -84,10 +88,12 @@ public partial class GameEngine
         switch (FieldPoison.Step(flow.Encounters, flow.Party, Ruleset.Current))
         {
             case PoisonStep.Hurt:
+                CarePoisonBite();
                 AudioManager.PlaySound("status_poison");
                 poisonFlash = PoisonFlashSeconds;
                 break;
             case PoisonStep.Survived:
+                CarePoisonBite();
                 AudioManager.PlaySound("status_poison");
                 poisonFlash = PoisonFlashSeconds;
                 return StartScript(FieldScripts.PoisonSurvived);
@@ -204,6 +210,8 @@ public partial class GameEngine
     {
         bool field = flow.FieldEncounter;
         flow.FieldEncounter = flow.Hooked = false;
+        // The catch streak of Pokémon met in sight goes on or breaks (plan 38 · EX3)
+        KeepTheStreak(fought);
         // The DexNav's chain goes on or breaks (plan 10 · F12)
         DexNavAfterBattle(fought, defeat);
         // ...and the camp may cure the team once more (plan 10 · F6)
@@ -224,6 +232,8 @@ public partial class GameEngine
     /// </summary>
     private void KeepTheEncounterClock(int daysPassed)
     {
+        // The boxes' moods settle by the day (plan 35 · BN1)
+        if (daysPassed > 0) CareRules.DaysPass(flow.Care, daysPassed, flow.Party.Members);
         if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, flow.Story, flow.Encounters, PlaceKey(), fieldRandom, flow.Underground, flow.Frontier);
         flow.Encounters.ClockTo(GameClock.Moment);
         flow.Berries.ClockTo(GameClock.Moment);

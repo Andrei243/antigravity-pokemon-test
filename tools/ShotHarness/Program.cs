@@ -252,6 +252,7 @@ if (mode == "photo") h.PhotoMode();
 if (mode == "jobs") h.JobsMode();
 if (mode == "globallink") h.GlobalLinkMode();
 if (mode == "crafting") h.CraftingMode();
+if (mode == "bonding") h.BondingMode();
 if (mode == "gifts") h.GiftsMode();
 
 h.Close();

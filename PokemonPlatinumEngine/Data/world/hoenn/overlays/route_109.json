@@ -2,6 +2,10 @@
   // Route 109 (plan 21 · H3): Slateport City's beach and the sea south of it, where Mr. Briney moors his boat once he has
   // brought the player from Dewford (route_109.txt), with the Seashore House on the sand and children everywhere
   "area": "route_109",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_109.gather", "name": "Shells", "npcType": "GatherShore", "x": 227, "y": 330, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
   "people": {

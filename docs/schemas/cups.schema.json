@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The stadium's cups (Data/cups.json, plan 37 · FC7)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "cups": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "minLevel": {
+            "type": "integer"
+          },
+          "maxLevel": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "firstStage": {
+            "type": "boolean"
+          },
+          "maxHeight": {
+            "type": "number"
+          },
+          "maxWeight": {
+            "type": "number"
+          },
+          "prize": {
+            "type": "string"
+          },
+          "points": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "minLevel",
+          "maxLevel",
+          "prize",
+          "points"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "cups"
+  ],
+  "additionalProperties": false
+}

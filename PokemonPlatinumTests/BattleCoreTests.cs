@@ -474,6 +474,7 @@ public class BattleCoreTests
         p.EncounterMarks.Add("SleepyTime");
         p.Title = "SleepyTime";
         p.CapsuleId = 3;
+        p.Bright = true;
         p.TeraType = TeraType.Of(PokemonType.Fire);
         p.Capsule = new BallCapsule(new[] { new BallSeal(SealDatabase.Seal("HEART_SEAL_A"), 180, 60) });
         p.ReplaceMove(0, "Razor Leaf");

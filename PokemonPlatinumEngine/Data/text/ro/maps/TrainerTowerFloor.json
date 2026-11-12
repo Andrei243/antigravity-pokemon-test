@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Trainer Tower"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent_2": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

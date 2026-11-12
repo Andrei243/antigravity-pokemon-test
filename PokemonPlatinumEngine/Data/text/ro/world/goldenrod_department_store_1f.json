@@ -82,6 +82,26 @@
         ]
       }
     },
+    "goldenrod_department_store_1f.Confectioner": {
+      "name": {
+        "en": [
+          "Confectioner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "goldenrod_department_store_1f.Baker": {
+      "name": {
+        "en": [
+          "Baker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "goldenrod_department_store_1f.TrainingCoach": {
       "name": {
         "en": [

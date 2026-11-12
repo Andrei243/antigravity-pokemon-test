@@ -457,6 +457,16 @@
           "Zigzagoon"
         ]
       }
+    },
+    "route_109.gather": {
+      "name": {
+        "en": [
+          "Shells"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

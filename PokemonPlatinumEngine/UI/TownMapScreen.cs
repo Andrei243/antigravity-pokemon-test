@@ -67,6 +67,9 @@ public sealed class TownMapScreen
 
     public void Open(TownMapState state, TownMapMode mode, Pokemon? flier = null)
     {
+        Report = null;
+        ReportShown = false;
+        scanAsked = false;
         Tabs = new[] { state };
         Tab = HomeTab = 0;
         Show(state);
@@ -113,6 +116,46 @@ public sealed class TownMapScreen
         across.Release();
         down.Release();
         (shownX, shownY) = ZoomTarget();
+    }
+
+    // ---------------------------------------------------------------- the day's report (plan 38 · EX2)
+
+    private bool scanAsked;
+
+    /// <summary>
+    /// What the region has today (plan 38 · EX2, <see cref="Overworld.FieldReport"/>): given by the game as the map opens and
+    /// again after a scan; null before the region's Hall of Fame is entered, and then the item button does nothing.
+    /// </summary>
+    public Overworld.FieldReport? Report { get; private set; }
+
+    /// <summary>Whether the report's page is shown in place of the map as Platinum draws it (the first page).</summary>
+    public bool ReportShown { get; private set; }
+
+    /// <summary>Whether the screen has a report to turn to: the Town Map and the Pokégear's map card, with a report given.</summary>
+    public bool HasReport => Report != null && Mode is TownMapMode.Item or TownMapMode.Card;
+
+    /// <summary>The game hands the screen the region's report (null for none, and the first page comes back).</summary>
+    public void SetReport(Overworld.FieldReport? report)
+    {
+        Report = report;
+        if (report == null) ReportShown = false;
+    }
+
+    /// <summary>The item button: the report's page, or the map's again. Returns whether the page changed.</summary>
+    public bool ToggleReport()
+    {
+        if (!IsActive || !HasReport) return false;
+        ReportShown = !ReportShown;
+        AudioManager.PlaySound("page");
+        return true;
+    }
+
+    /// <summary>A scan was asked for on the report's page (the A button where one may be made), once.</summary>
+    public bool TakeScan()
+    {
+        bool asked = scanAsked;
+        scanAsked = false;
+        return asked;
     }
 
     /// <summary>The block under the cursor; null over open sea, forest, and a place the story has not revealed.</summary>
@@ -188,6 +231,17 @@ public sealed class TownMapScreen
     public void Confirm()
     {
         if (State == null) return;
+        // On the report's page the A button scans, where a scan may be made (plan 38 · EX2)
+        if (ReportShown && Report != null)
+        {
+            if (Report.Scan == Overworld.ScanState.Ready)
+            {
+                scanAsked = true;
+                AudioManager.PlaySound("select");
+            }
+            else AudioManager.PlaySound("error");
+            return;
+        }
         if (Mode != TownMapMode.Fly)
         {
             ToggleZoom();
@@ -290,6 +344,7 @@ public sealed class TownMapScreen
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
         else if (InputManager.IsActionPressed(GameAction.Menu)) ToggleZoom();
+        else if (InputManager.IsActionPressed(GameAction.Item)) ToggleReport();
     }
 
     public void Draw(int sw, int sh)

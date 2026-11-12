@@ -1,5 +1,9 @@
 {
   "area": "route_203",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_203.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 207, "y": 746, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route203",
   "trees": "Round",
   // The rival waits at the west end (plan 02 · S5, scripts/route_203.txt)

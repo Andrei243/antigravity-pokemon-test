@@ -271,6 +271,16 @@
           "Antrenor As Olivia: A meritat oprirea. Acum, mai departe, la lac!"
         ]
       }
+    },
+    "route_217.gather": {
+      "name": {
+        "en": [
+          "Snow drift"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

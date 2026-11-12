@@ -1,5 +1,16 @@
 {
-  "people": {},
+  "people": {
+    "route_2.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
   "signs": {
     "Route2_EventScript_RouteSign": {
       "en": [

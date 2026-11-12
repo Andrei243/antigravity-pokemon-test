@@ -13,6 +13,11 @@
 # Patron, Steward, Master of the House). Plan 37 · FC4 builds the rest: the guests' levels by the title over the player's
 # highest, other regions' Leaders and Champions, the title on the Trainer Card. The Leaders' teams here are Kalos's
 # Leaders' rematch teams (kalos_<who>_rematch, plan 41 · EG5's parity): met as every rematch is, a region gone past lifts them.
+# Plan 37 · FC4 (Models/Facilities/TitlesHouse.cs, `facility titles ...`): the members bring three of the later sets at a
+# level their title sets over the highest of the player's team, drawn by the day's seed (VAR_KALOS_CHATEAU_SEED), and a
+# visitor of another finished region stands by the north wall each day (VAR_KALOS_CHATEAU_VISITOR, shown by
+# FLAG_KALOS_CHATEAU_HAS_VISITOR, once a day by FLAG_DAILY_KALOS_CHATEAU_BEAT_VISITOR): a Leader, an Elite Four member
+# from the Steward's title, a Champion at the Master's.
 
 
 script OnEnter
@@ -28,6 +33,10 @@ script Draw
   setvar VAR_KALOS_CHATEAU_GUEST_1 RESULT
   random 3
   setvar VAR_KALOS_CHATEAU_GUEST_2 RESULT
+  # Plan 37 · FC4: the day's seed, which the members' teams and the day's visitor are drawn by, the same all day
+  random 65536
+  setvar VAR_KALOS_CHATEAU_SEED RESULT
+  facility titles visitor
   return
 
 
@@ -47,6 +56,10 @@ script Show
   clearflag FLAG_KALOS_CHATEAU_HAS_VALERIE
   clearflag FLAG_KALOS_CHATEAU_HAS_OLYMPIA
   clearflag FLAG_KALOS_CHATEAU_HAS_WULFRIC
+  clearflag FLAG_KALOS_CHATEAU_HAS_VISITOR
+  # Plan 37 · FC4: a visitor of another finished region, dressed as who the day drew
+  facility titles dress
+  if result == 1 setflag FLAG_KALOS_CHATEAU_HAS_VISITOR
   if var VAR_KALOS_CHATEAU_GUEST_1 == 0 setflag FLAG_KALOS_CHATEAU_HAS_MIRABELLE
   if var VAR_KALOS_CHATEAU_GUEST_1 == 1 setflag FLAG_KALOS_CHATEAU_HAS_TRISTAN
   if var VAR_KALOS_CHATEAU_GUEST_1 == 2 setflag FLAG_KALOS_CHATEAU_HAS_CELESTE
@@ -84,6 +97,7 @@ script Guest
   if subject "valerie" goto Valerie
   if subject "olympia" goto Olympia
   if subject "wulfric" goto Wulfric
+  if subject "opponent" goto Visitor
   end
 label Mirabelle
   speaker "Mirabelle"
@@ -91,10 +105,9 @@ label Mirabelle
   say "The tea is cold, the company is warm, and I have been waiting all afternoon for a battle. Will you oblige?"
   ask "Will you battle Mirabelle?"
   if no goto MirabelleRefused
-  battle self as "kalos_chateau_mirabelle" canlose
-  if lost goto Lost
+  facility titles member
+  if result == 0 goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_MIRABELLE
-  addvar VAR_KALOS_CHATEAU_POINTS 1
   speaker "Mirabelle"
   say "How lovely. I shall tell the others you play beautifully."
   goto Won
@@ -110,10 +123,9 @@ label Tristan
   say "They say the house remembers every battle fought in this hall. Let us give it one worth remembering."
   ask "Will you battle Tristan?"
   if no goto TristanRefused
-  battle self as "kalos_chateau_tristan" canlose
-  if lost goto Lost
+  facility titles member
+  if result == 0 goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_TRISTAN
-  addvar VAR_KALOS_CHATEAU_POINTS 1
   speaker "Tristan"
   say "A fine win. I will be training in the garden until tomorrow."
   goto Won
@@ -129,10 +141,9 @@ label Celeste
   say "My Pokémon are all very small and very proud. They would love to meet yours. Shall we?"
   ask "Will you battle Celeste?"
   if no goto CelesteRefused
-  battle self as "kalos_chateau_celeste" canlose
-  if lost goto Lost
+  facility titles member
+  if result == 0 goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_CELESTE
-  addvar VAR_KALOS_CHATEAU_POINTS 1
   speaker "Celeste"
   say "They are proud of you, too, now. That is rare."
   goto Won
@@ -148,10 +159,9 @@ label Octave
   say "I have been a guest of this house for forty years. I have learned one thing: no title ever battled for you. Show me."
   ask "Will you battle Octave?"
   if no goto OctaveRefused
-  battle self as "kalos_chateau_octave" canlose
-  if lost goto Lost
+  facility titles member
+  if result == 0 goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_OCTAVE
-  addvar VAR_KALOS_CHATEAU_POINTS 2
   speaker "Octave"
   say "Well battled. The house was right to call you a friend."
   goto Won
@@ -167,10 +177,9 @@ label Isaure
   say "Friends of the house are given the good chairs and the hard battles. You have the chair already."
   ask "Will you battle Isaure?"
   if no goto IsaureRefused
-  battle self as "kalos_chateau_isaure" canlose
-  if lost goto Lost
+  facility titles member
+  if result == 0 goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_ISAURE
-  addvar VAR_KALOS_CHATEAU_POINTS 2
   speaker "Isaure"
   say "Splendid. You may keep the chair."
   goto Won
@@ -186,10 +195,9 @@ label Corentin
   say "I saw this battle in my teacup this morning. I did not see who won. Let us find out."
   ask "Will you battle Corentin?"
   if no goto CorentinRefused
-  battle self as "kalos_chateau_corentin" canlose
-  if lost goto Lost
+  facility titles member
+  if result == 0 goto Lost
   setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_CORENTIN
-  addvar VAR_KALOS_CHATEAU_POINTS 2
   speaker "Corentin"
   say "Ah. The tea leaves were right not to tell me."
   goto Won
@@ -350,6 +358,25 @@ label WulfricBeaten
   end
 label WulfricRefused
   say "Another day, then. I am here every week."
+  end
+label Visitor
+  facility titles dress
+  if result == 0 end
+  speaker none
+  if flag FLAG_DAILY_KALOS_CHATEAU_BEAT_VISITOR goto VisitorBeaten
+  text "{foe} is visiting the house today."
+  ask "Will you battle {foe}?"
+  if no goto VisitorRefused
+  facility titles visit
+  if result == 0 goto Lost
+  setflag FLAG_DAILY_KALOS_CHATEAU_BEAT_VISITOR
+  text "{foe} bows to {player}. The house has seen a fine battle."
+  goto Won
+label VisitorBeaten
+  text "{foe} is resting after the battle. They may visit again another day."
+  end
+label VisitorRefused
+  text "{foe} nods and goes back to the tea."
   end
 label Lost
   heal

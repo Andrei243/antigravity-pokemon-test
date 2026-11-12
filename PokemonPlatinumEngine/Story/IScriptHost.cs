@@ -553,6 +553,9 @@ public interface IScriptHost
     /// <summary>The day of the week today (<see cref="GameClock.Today"/>).</summary>
     System.DayOfWeek Weekday { get; }
 
+    /// <summary>The game's date today (<see cref="GameClock.Today"/>): what the Battle Institute's ladder's seasons go by (plan 37 · FC8).</summary>
+    System.DateTime Today => GameClock.Today;
+
     /// <summary>The hour of the day now, 0 to 23 (<see cref="GameClock.Hour"/>): what Shoal Cave's <c>tide</c> reads (plan 21 · H8, part d).</summary>
     int Hour { get; }
 
@@ -578,6 +581,12 @@ public interface IScriptHost
 
     /// <summary>Sinnoh's berry patches.</summary>
     BerryPatches Berries { get; }
+
+    /// <summary>
+    /// The patches of the soils on the eight tiles round a soil of the map the player is on (plan 39 · CR5): what a berry
+    /// planted there may cross with. None where a host has no map.
+    /// </summary>
+    IEnumerable<int> PatchesBeside(NPC soil) => System.Array.Empty<int>();
 
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6).</summary>
     ApricornBox Apricorns { get; }

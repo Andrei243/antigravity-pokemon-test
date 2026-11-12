@@ -174,6 +174,8 @@ public class BagScreen
     {
         "mulch" => Overworld.BerryPatches.MulchOf(item.Name) != Overworld.Mulch.None,
         "gift" => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs),
+        // A meal of the care close-up (plan 35 · BN3): a berry or a treat (the treats are in the Items pocket)
+        "meal" => item.Berry != null || item.Treat != null,
         _ => item.Berry != null
     };
 
@@ -356,7 +358,7 @@ public class BagScreen
     /// Bicycle, the three rods, the Escape Rope, the Journal and the Vs. Seeker (plan 06 · R12), the Poké Radar and
     /// Honey (plan 06 · R13). The bag closes and the game carries them out.
     /// </summary>
-    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "Itemfinder" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey" or "PoffinCase" or "PokeblockCase" or "ExplorerKit" or "TownMap" or "VsRecorder" or "ApricornBox" or "DexNav" or "CraftingKit" or "PowerWatch" or "RidePager" || IsCase(item);
+    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "Itemfinder" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey" or "PoffinCase" or "PokeblockCase" or "ExplorerKit" or "TownMap" or "VsRecorder" or "ApricornBox" or "DexNav" or "CraftingKit" or "BerryPots" or "PowerWatch" or "RidePager" || IsCase(item);
 
     /// <summary>
     /// The Seal Case and the Fashion Case (plan 06 · R17b): the original's bag only says how many each holds

@@ -304,6 +304,10 @@ public class SaveData
     /// </summary>
     public SpecialEncounters? Encounters { get; set; }
 
+    /// <summary>The catch streak and the chain of hooks (plan 38 · EX3); null while both are empty, and in older saves.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Overworld.CatchStreak? CatchStreak { get; set; }
+
     /// <summary>The berry patches (plan 06 · R14a). Null in older saves, which are given the new game's.</summary>
     public BerryPatches? Berries { get; set; }
 
@@ -356,6 +360,12 @@ public class SaveData
 
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
     public Models.CraftingSave? Crafting { get; set; }
+
+    /// <summary>
+    /// The care book (plan 35 · BN1): each Pokémon's marks, meals, pats, grooming, mood and owed cure, by its id, pruned to
+    /// the Pokémon the save holds. Null in saves from before it, and while nothing is written.
+    /// </summary>
+    public Models.CareSave? Care { get; set; }
 
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3). Null in saves from before it, and until its manager is first spoken to.</summary>
     public Models.PlazaSave? Plaza { get; set; }

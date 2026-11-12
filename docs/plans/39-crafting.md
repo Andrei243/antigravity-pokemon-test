@@ -80,6 +80,12 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Shots: `cr10_spot_rock` to `cr10_spot_snow`, `cr11_gathered`, `cr12_spot_bare`, `cr13_tree_cut_wood`.
 - **Done when** a rock spot on a route of Sinnoh gives stone once on a fixed day and nothing more until the next, and every finished region has its spots with every warp still reached.
 
+**CR2 outcome (2026-11-12)**
+
+- **Built**: `Models/Gathering.cs` (`GatherKind`, `GatherFind`, `GatherTable`, `ClearedFinds`; `Gathering.Bears`, `Pick`, `Cleared`, `Problems`), `materials.json`'s `gather` (the five kinds' finds by weight) and `cleared` (timber and quarry stone, one time in three), `CraftingSave.Picked` and `CraftingState.Picked`, `NPC.GatherRockType` and its four fellows (`GatherKind`, `IsGatherSpot`, `GatherBearing`, a `GymThing` of a bearing or a bare look), ten `PropType`s at the enum's end (`GatherRock` to `GatherSnowBare`) painted by `Graphics/GatherArt.cs` through `ThingCards`, `GameEngine.KeepGatherSpotsInView` and `ShowGatherSpots`, `common.Gather` with `craft gather`, `craft cleared tree|rock` in the cut-tree and rock scripts, the content check's `GatherSpots` (shown by the kit's flag, on open ground, faced from an open tile) and its tables' rules, the style guide's "Gathering spots", the rulings, `docs/scripts.md`, `docs/data-files.md`, and `GatherSpotTests` (the plan named it `GatheringTests`, which plan 41 · EG9 had taken). Forty-two spots: ten in Sinnoh, eight each in Kanto, Johto, Hoenn and Unova, one to a route, placed where every tile round them is open ground of their own area and level (a scratch finder over each region's maps, removed afterwards).
+- **Deviations**: no `gather` field of the overlay and no `OverlayGather`: a spot is an entry of the overlay's own `npcs` list with its kind as its `npcType` and the kit's flag as its `shownBy`, read strictly as every person is, so no schema, reader or room editor changed. `FLAG_GOT_CRAFTING_KIT` is counted as set by `craft give kit` (`ScriptLibrary.FlagsWritten`). No recipe takes a field's material yet, and plan 35 · BN6's cave job isn't built, so it pays none.
+- **Owed**: the shots `cr10` to `cr13` (no GPU session ran in this wave's lane).
+
 ### CR3 · Making things at the kit
 - Style guide first: "The kit" gains the MAKE tab (the recipe's row, what it takes against what is held, how many).
 - `recipes.json`'s `kit` section, `Models/Crafting.cs`, the MAKE tab and its "how many?" (`Stepper`), the made item into the bag; the apprentice's trade (`craft` words of his own in his script); `docs/mechanics/where-items-are-found.md` names the kit for Hisui's six balls.
@@ -115,6 +121,12 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Shots: `cr40_soils_paired`, `cr41_cross_picked`, `cr42_crosses_page`, `cr43_johto_pot`, `cr44_pots_crossed`.
 - **Done when** a pair of the table planted side by side on Route 208 bears its cross among its fruit with the roll fixed, in a test and in the harness, and Johto's pots grow a berry in the harness.
 
+**CR5 outcome (2026-11-12)**
+
+- **Built**: `Overworld/BerryCrossing.cs` (`CrossRow`, `CrossRecipes`, `Strongest`, `CrossOf`, `Note`, `Roll`, `Beside`, `PotsBeside`, `Problems`), `recipes.json`'s `crosses` (fifteen rows by flavour, 40 in a hundred), `BerryPatch.Cross` (saved, cleared with the patch), `IScriptHost.PatchesBeside` (both hosts), `berry plant` noting a cross with the kit in the bag and `berry pick` drawing once for a noted patch, `berry crossed` and `{crossed}`, `CraftingSave.Crosses`, the kit's CROSSES tab (`CraftingTab.Crosses`, last wherever the kit opens; `ModernUi.DrawCrosses`), `ItemSourceKind.Crossed`, the style guide's "The kit's CROSSES page", the rulings, `docs/scripts.md`, `docs/data-files.md`, `where-items-are-found.md`, and `BerryCrossingTests`.
+- **Johto's Berry Pots**: a key item of ours (`Berry Pots`, 9901, `fieldUse` `BerryPots`) given once by Goldenrod's florist to a player holding the kit after the strange tree (`FLAG_JOHTO_GOT_BERRY_POTS`); USE runs `common.BerryPots`, which tends one of four patches past Hoenn's (`BerryPatches.PotFirst`, `PotCount`; `Grown` gives an older save them bare) with the soil's own words after `berry pot`; neighbouring pots cross. **Deviation**: the pots are a screen of their own as HeartGold's are, so nothing is set down on a map; they can be used in any region.
+- **Owed**: the shots `cr40` to `cr44`.
+
 ### CR6 · Cooking at the camp (1 to 2 sittings; plan 10 · F8, taken over)
 - Style guide first: "The camp" gains the pot (the ingredients in, the stirring, the grade, the team eating, the power's line).
 - The pantry in `materials.json` and its counter in the workshop (`craft pantry`, `ShopScreen.OpenForPouch`); `Models/Kitchen.cs` and `recipes.json`'s `kitchen` section; `CampScreen.Cook`; `GameEngine.HasCamp` with the kit; the dish's power started through plan 36, and the rows it adds to plan 36's table with their readers; plan 10's F8 line closed as moved here.
@@ -133,6 +145,12 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 - Tests (`MealStandTests`): each waiter's script on every way through it; a meal takes its price and starts its power, refused short of money; every `stands` row names a power plan 36 has and a place that exists; hidden before the workshop opens.
 - Shots: `cr60_seven_stars`, `cr60_celadon`, `cr60_olivine`, `cr60_slateport`, `cr60_castelia`, `cr61_menu`, `cr62_served`.
 - **Done when** a meal in Celadon City's restaurant starts its power and takes its price, and every waiter's script plays on every way.
+
+**CR7 outcome (2026-11-12)**
+
+- **Built**: `recipes.json`'s `stands` (fifteen rows: three of the kitchen's dishes at each of the five places, 1,500 to 2,400), `RecipeTable.StandAt`, a `MealStand` script in `SevenStarsRestaurant.txt`, `celadon_city_restaurant.txt`, `olivine_cafe.txt`, `slateport_city.txt` and `CasteliaCity.txt` (a `choose` of the three and the pantry, `takemoney`, `craft meal`, `craft pantry`), a waiter in the Seven Stars Restaurant (16, 12), Celadon City's restaurant (9, 8) and the Olivine Café (9, 3), a stall keeper in Slateport City's market (210, 305) and on Castelia City's avenue (50, 6), each shown by `FLAG_GOT_CRAFTING_KIT`; the content check's stands rules (a dish with a power, a price, a place with a `MealStand`), the rulings, `docs/data-files.md`, and `MealStandTests`.
+- **Deviation**: the stands serve the kitchen's own dishes, not dishes of their own.
+- **Owed**: the shots `cr60` to `cr62`.
 
 ### CR8 · A berry garden of our own (optional: crossing already works on Sinnoh's and Hoenn's soils, so a garden adds only a place and a keeper)
 - A garden behind the workshop's back door (a map of ours, two rows of twelve soils numbered past Hoenn's, `BerryPatches.Count` grown and `Grown` giving an older save the new ones as it gave Hoenn's), its keeper selling mulch and telling the crosses.
@@ -169,10 +187,10 @@ Every session: its rule first, in a GPU-free class, with its tests (`--filter` o
 ## Status
 
 - [x] CR1 The workshop, the kit and what Pokémon leave behind (2026-11-07; the outcome below)
-- [ ] CR2 Gathering in the field
+- [x] CR2 Gathering in the field (2026-11-12; the outcome above; shots owed)
 - [x] CR3 Making things at the kit (2026-11-09, before CR2, which it doesn't need; the outcome above; shots looked at 2026-11-09)
 - [x] CR4 The TM maker (2026-11-07; the outcome below)
-- [ ] CR5 Crossing berries (with Johto's Berry Pots)
+- [x] CR5 Crossing berries (with Johto's Berry Pots) (2026-11-12; the outcome above; shots owed)
 - [x] CR6 Cooking at the camp (plan 10 · F8, taken over; 2026-11-09, with plan 36 · TR7's frame of powers and five readers; the outcome above; shots looked at 2026-11-09)
-- [ ] CR7 Restaurants and stalls
+- [x] CR7 Restaurants and stalls (2026-11-12; the outcome above; shots owed)
 - [ ] CR8 A berry garden of our own (optional)

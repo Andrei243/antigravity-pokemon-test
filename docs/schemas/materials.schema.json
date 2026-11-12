@@ -101,6 +101,73 @@
         ],
         "additionalProperties": false
       }
+    },
+    "gather": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "Rock",
+              "Wood",
+              "Plant",
+              "Shore",
+              "Snow"
+            ]
+          },
+          "finds": {
+            "type": "array",
+            "items": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "material": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "integer"
+                },
+                "least": {
+                  "type": "integer"
+                },
+                "most": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "material",
+                "weight"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "cleared": {
+      "type": "object",
+      "properties": {
+        "tree": {
+          "type": "string"
+        },
+        "rock": {
+          "type": "string"
+        },
+        "oneIn": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "required": [

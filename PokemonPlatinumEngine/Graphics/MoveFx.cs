@@ -125,6 +125,10 @@ internal static partial class MoveFx
             case CueKind.Shiny:
                 ShinySparkle(c, fx);
                 break;
+            // A bright one's shimmer as it comes out (plan 38 · EX3)
+            case CueKind.Bright:
+                BrightShimmer(c, fx);
+                break;
         }
     }
 

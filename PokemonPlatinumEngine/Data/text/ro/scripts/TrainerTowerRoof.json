@@ -1,0 +1,52 @@
+{
+  "Owner": [
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You made it to the roof! All eight floors in {tower:TIME}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A fine climb, though your best for this challenge still stands at {tower:BEST}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's a new best for this challenge! I'll write it in the records downstairs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take the stairs down when you're ready. The attendant will see to your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The wind up here does a climber good. Come and see me after a climb!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

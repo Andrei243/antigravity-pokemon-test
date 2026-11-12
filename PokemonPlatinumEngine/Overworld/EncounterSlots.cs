@@ -113,6 +113,19 @@ public sealed record EncounterMoment
     /// </summary>
     public PokemonType? PowerType { get; init; }
     public int PowerSlots { get; init; }
+
+    /// <summary>
+    /// The visitor a scan has called up in the region (plan 38 · EX2, <see cref="Visitors"/>): its species in the grass's
+    /// slots 2 to 5 of its own place, after the outbreak's (which is never in its place) and before the second slot's and
+    /// ours. Null when none is out, and nothing is laid.
+    /// </summary>
+    public VisitorCall? Visitor { get; init; }
+
+    /// <summary>
+    /// The hour's rift's table, where the player stands within its reach (plan 38 · EX5, <see cref="Rifts"/>): its species in the
+    /// grass's slots 0 to 5 and on every rod, after the visitor's and before the second slot's and ours. Null outside a rift.
+    /// </summary>
+    public RiftTable? Rift { get; init; }
 }
 
 /// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>
@@ -192,6 +205,12 @@ public static class EncounterSlots
         // Plan 38 · EX1: the day's outbreak in this place, in its first slots; after the swarm (which is never in its place) and
         // the radio's species, which it takes the place of, and before everything that sits in the slots from 8 on
         if (Overworld.Outbreaks.At(moment.Outbreaks, area.Key) is { } outbreak) Overworld.Outbreaks.Lay(slots, outbreak);
+        // Plan 38 · EX2: the visitor a scan called up, in slots 2 to 5 of its own place (never an outbreak's); after the
+        // outbreak, before the second slot's and ours. (The order of what lays over a table: the swarm, the radio, the
+        // outbreak, the visitor, the rift, then the second slot's and ours.)
+        else if (Visitors.At(moment.Visitor, area.Key) is { } visitor) Visitors.Lay(slots, visitor);
+        // Plan 38 · EX5: within an hour's rift's reach, its table in slots 0 to 5, over whatever came before
+        if (moment.Rift is { } rift) Rifts.LayGrass(slots, rift);
         // Plan 03 · D12a: the other versions' species of ours, in the slots the original gave a second game in the
         // console (WildEncounters_ReplaceDualSlotEncounters), once the National Pokédex is had
         if (moment.NationalDex && area.NationalSlots.Count == 2)
@@ -322,6 +341,7 @@ public static class EncounterSlots
         Weight = e.Weight,
         Unmapped = e.Unmapped,
         Outbreak = e.Outbreak,
+        Rift = e.Rift,
         Moves = e.Moves
     };
 }

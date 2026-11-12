@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Trainer Tower"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "tower_owner": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

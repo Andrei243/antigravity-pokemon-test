@@ -278,6 +278,15 @@
         "On": "The start menu has BOXES, which opens the PC anywhere the place allows it, and each pocket of the bag can be put in order by name or by how many, with a letter jump."
       }
     },
+    "itemGlints": {
+      "label": "Hidden items glint",
+      "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
+      "help": {
+        "Off": "Hidden items lie unseen, as in Platinum: look at the ground, or use a dowsing app, to find them.",
+        "Rules": "Platinum's rules keep hidden items unseen; the modern rules let one within three steps glint now and then.",
+        "On": "A hidden item within three steps of you glints every couple of seconds, until it is found."
+      }
+    },
     "partyTools": {
       "label": "Remember and rename",
       "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
@@ -503,6 +512,19 @@
       "help": {
         "off": "Whoever battles beside you chooses their own moves.",
         "on": "Before a battle beside a partner, you are asked whether a friend will choose for them. A second pad answers the friend's turns."
+      }
+    },
+    "care": {
+      "label": "Team care",
+      "value": {
+        "Off": "Off",
+        "Rules": "By the rules",
+        "On": "On"
+      },
+      "help": {
+        "Off": "CAMP is in the start menu only while a Pokémon walks behind you.",
+        "Rules": "Platinum's rules keep the start menu as it is; the modern rules add CAMP, where you can look after each Pokémon close up.",
+        "On": "The start menu has CAMP, where you can pet, feed, brush and treat each Pokémon of the team close up."
       }
     },
     "battleCamera": {
@@ -931,7 +953,36 @@
       "3": "{name} hums to itself. It's enjoying the walk with you.",
       "4": "{name} gazes at you fondly. It would follow you anywhere!"
     },
-    "found": "{name} is holding something in its mouth. It wants you to have it!"
+    "found": "{name} is holding something in its mouth. It wants you to have it!",
+    "mood": {
+      "Glum": "{name} won't look at you. It seems to be sulking.",
+      "Low": "{name} looks a little down. It could use some care.",
+      "Cheerful": "{name} is in high spirits, bouncing along beside you!",
+      "Elated": "{name} is overjoyed! It can hardly keep still."
+    },
+    "place": {
+      "Gym": "{name} is sizing up the Gym. It's ready for a battle!",
+      "PokemonCenter": "{name} seems at ease in the Pokémon Center.",
+      "Room": "{name} is sniffing around the room curiously.",
+      "Cave": "{name} peers into the dark of the cave.",
+      "Water": "{name} is gazing at the water.",
+      "Snow": "{name} shivers a little in the snow.",
+      "Sand": "{name} shakes the sand from its feet.",
+      "TallGrass": "{name} is rustling through the tall grass.",
+      "Rain": "{name} is looking up at the rain.",
+      "Night": "{name} looks up at the night sky.",
+      "MetHere": "{name} looks around. It seems to remember {place}!",
+      "Town": "{name} is taking in the sights of {place}."
+    },
+    "likes": {
+      "water": "{name} wants to splash in the water. It loves being near it!",
+      "fireInRain": "{name} huddles close to you. It doesn't like the rain at all.",
+      "ice": "{name} is delighted by the snow!",
+      "ghost": "{name} seems livelier in the dark of night.",
+      "grass": "{name} is enjoying the feel of the grass.",
+      "rock": "{name} looks right at home among the rocks.",
+      "ground": "{name} is digging happily in the sand."
+    }
   },
 
   "marks": {
@@ -954,9 +1005,67 @@
     }
   },
 
+  "care": {
+    "title": "CARE",
+    "hint": {
+      "hold": "Hold",
+      "tool": "Tool"
+    },
+    "keys": {
+      "tool": "Q / E"
+    },
+    "fullness": "FULL",
+    "mood": "MOOD",
+    "moodWord": {
+      "Glum": "GLUM",
+      "Low": "LOW",
+      "Calm": "CALM",
+      "Cheerful": "CHEERFUL",
+      "Elated": "ELATED"
+    },
+    "tool": {
+      "Hand": "HAND",
+      "Treat": "TREAT",
+      "Brush": "BRUSH",
+      "Cloth": "CLOTH",
+      "Medicine": "MEDICINE",
+      "help": {
+        "Hand": "Hold Z and stroke it. It has a spot it likes best.",
+        "Treat": "Press Z to give it a berry or a treat from the bag.",
+        "Brush": "Hold Z and brush off dust, leaves and snow.",
+        "Cloth": "Hold Z and wipe off mud and wet.",
+        "Medicine": "Press Z on it to treat a condition."
+      }
+    },
+    "note": {
+      "welcome": "{name} looks up at you.",
+      "reach": "Reach out to it first.",
+      "cured": "{name} feels much better!",
+      "nothingToCure": "{name} has nothing that needs treating.",
+      "petted": "{name} leans into your hand, happy.",
+      "pettedAgain": "{name} closes its eyes and enjoys it.",
+      "wrongTool": {
+        "Brush": "The brush won't shift that. Try the cloth.",
+        "Cloth": "The cloth won't shift that. Try the brush."
+      },
+      "cleaned": {
+        "Dust": "The dust is gone from {name}'s coat.",
+        "Mud": "The mud is wiped off {name}.",
+        "Leaves": "The leaves are picked out of {name}'s coat.",
+        "Wet": "{name} is dry again.",
+        "Snow": "The snow is brushed off {name}."
+      },
+      "ate": {
+        "Plain": "{name} ate the {item}.",
+        "Liked": "{name} loved the {item}!",
+        "Disliked": "{name} ate the {item}, but made a face."
+      }
+    }
+  },
+
   "camp": {
     "title": "CAMP",
-    "hint": { "pet": "Pet", "feed": "Feed", "cook": "Cook" },
+    "hint": { "pet": "Look after", "feed": "Feed", "cook": "Cook" },
     "friendship": "FRIENDSHIP",
     "petted": "PETTED",
     "fed": "FED",
@@ -967,7 +1076,8 @@
       "fed": "{name} ate the {berry} up!",
       "egg": "The Egg sits warm by the fire.",
       "already": "{name} has had its share for this visit.",
-      "noBerry": "There are no berries in the bag."
+      "noBerry": "There are no berries in the bag.",
+      "full": "{name} is full for today."
     }
   },
 
@@ -1629,12 +1739,46 @@
     "offTheMap": "Somewhere off the map",
     "wilds": "The wilds",
     "hintRegion": "Region",
-    "inRegion": "{place}, {region}"
+    "inRegion": "{place}, {region}",
+    "report": {
+      "tag": "TODAY",
+      "title": "Today in {region}",
+      "outbreaks": "OUTBREAKS",
+      "noOutbreaks": "No outbreaks today.",
+      "met": "{count} met",
+      "visitor": "VISITOR",
+      "minutes": "{count} min left",
+      "scan": {
+        "Ready": "Press {key:confirm} to scan for a visitor from another region. It stays for an hour.",
+        "NotOpen": "Nothing to report yet.",
+        "NoNationalDex": "A scan needs the National Pokédex.",
+        "Scanned": "You scanned today already. Try again tomorrow.",
+        "Nothing": "Nothing answers the scan today."
+      },
+      "hintReport": "Today",
+      "hintMap": "Map",
+      "hintScan": "Scan",
+      "legendOutbreak": "Outbreak",
+      "legendVisitor": "Visitor",
+      "rift": "RIFT",
+      "riftUntil": "until {hour}:00",
+      "legendRift": "Rift"
+    }
   },
   "field": {
     "skip": "SKIP",
     "safariBalls": "SAFARI BALLS",
+    "streak": "STREAK",
+    "hooks": "HOOKS",
     "steps": "STEPS"
+  },
+  "riftToast": {
+    "opened": "A rift has opened on {place}! It will close within the hour.",
+    "closed": "The rift on {place} has closed."
+  },
+  "visitorToast": {
+    "came": "The scan picked up {name} in {place}! It will stay for an hour.",
+    "gone": "{name} has left {place}."
   },
   "outbreakToast": {
     "bonusOne": "{count} {name} met in {place} today. The grass has gone restless: shiny ones turn up more often.",
@@ -2193,7 +2337,7 @@
   },
   "records": {
     "title": "BATTLE RECORDS",
-    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison", "tree": "Battle Tree" },
+    "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade", "subway": "Battle Subway", "house": "Battle Maison", "tree": "Partners' Tree" },
     "row": {
       "single": "Single Battle", "double": "Double Battle", "multi": "Multi Battle",
       "tree": {
@@ -2259,6 +2403,10 @@
     "readNote": "Only your own Pokémon can be read in full. What the others can do, you saw in battle.",
     "level": "Lv. {level}",
     "givingUp": "GIVING UP"
+  },
+  "titlesHouse": {
+    "title": { "0": "Visitor", "1": "Guest", "2": "Regular", "3": "Friend of the House", "4": "Honoured Guest", "5": "Patron", "6": "Steward", "7": "Master of the House" },
+    "card": "House of titles: {title}"
   },
   "hallBoard": {
     "title": "BATTLE HALL",
@@ -2891,8 +3039,17 @@
     "orderReady": "{count} × {ball}, ready at his house."
   },
   "crafting": {
+    "cross": {
+      "unknown": "?????",
+      "found": "FOUND",
+      "count": "{n} / {of}",
+      "pair": "Two different Berries whose strongest flavour is {flavour}, planted side by side.",
+      "beside": "A {berry} planted beside a Berry whose strongest flavour is {flavour}.",
+      "how": "With the kit in your bag, plant them in soils or pots that touch. Now and then a harvest holds one."
+    },
+    "flavour": { "spicy": "spicy", "dry": "dry", "sweet": "sweet", "bitter": "bitter", "sour": "sour" },
     "title": "CRAFTING KIT",
-    "tab": { "materials": "MATERIALS", "machines": "TMS", "make": "MAKE", "pantry": "PANTRY" },
+    "tab": { "materials": "MATERIALS", "machines": "TMS", "make": "MAKE", "pantry": "PANTRY", "crosses": "CROSSES" },
     "hint": { "make": "Make", "tab": "Tab", "howMany": "How many", "buy": "Buy" },
     "make": {
       "empty": "The kit has no recipes.",

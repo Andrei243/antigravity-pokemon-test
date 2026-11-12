@@ -151,6 +151,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public TimeOfDay TimeOfDay { get; set; } = TimeOfDay.Morning;
     public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
 
+    /// <summary>The game's date (plan 37 · FC8: the ladder's seasons), a fixed day unless a test sets it.</summary>
+    public DateTime Today { get; set; } = new(2026, 1, 15);
+
     /// <summary>The clock's hour and minute and the time played, which a television's programme tells (plan 08 · P8).</summary>
     public int Hour { get; set; } = 10;
 
@@ -170,6 +173,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public IEnumerable<Pokemon> Boxed => Boxes;
 
     public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
+    public IEnumerable<int> PatchesBeside(NPC soil) => Map != null ? BerryCrossing.Beside(Map, soil).ToList() : new List<int>();
     public ApricornBox Apricorns { get; set; } = new();
     public CraftingState? Crafting { get; set; } = new();
 

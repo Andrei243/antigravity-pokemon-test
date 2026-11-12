@@ -149,6 +149,12 @@ public partial class BattleEngine
     /// </summary>
     public IReadOnlyList<Pokemon> LeveledUp => leveledUpPokemon;
 
+    /// <summary>
+    /// The player's own Pokémon (the game's, not the rules' copies) that the battle sent out (<see cref="BattleCore.SentOut"/>):
+    /// what the care book soils after the battle (plan 35 · BN1).
+    /// </summary>
+    public IReadOnlyList<Pokemon> SentOutShown => core.SentOut.Select(mirror.Shown).ToList();
+
     /// <summary>What Pay Day scattered for the player, picked up with a win.</summary>
     public int PayDayMoney => core.PayDayMoney;
 
@@ -831,6 +837,8 @@ public partial class BattleEngine
                 // scene off, as the original's other animations that are no moves, it doesn't
                 if (pokemon.IsShiny && !pokemon.IsEgg && Scene && Anim.ShinySparkle(entered.Place.Side, entered.Place.Slot, entered.FromBall) is { } sparkle)
                     After(sparkle.Lead, () => Sound("shiny", entered.Place.Side));
+                // ...and a bright one of those seen in the grass shimmers once (plan 38 · EX3)
+                else if (pokemon.Bright && !pokemon.IsShiny && !pokemon.IsEgg && Scene) Anim.BrightShimmer(entered.Place.Side, entered.Place.Slot, entered.FromBall);
                 break;
             }
             case CalledForHelp called:

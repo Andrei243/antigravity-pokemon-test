@@ -38,6 +38,8 @@
   // Johto's training hall (plan 36 · TR4): the training club's people in a corner of the store's ground floor, south of
   // its west hall: the head coach's drills, the tutor's moves, the clerk's shelves and the club's Battle Points counter
   "npcs": [
+    { "id": "goldenrod_department_store_1f.Confectioner", "name": "Confectioner", "npcType": "Clerk", "x": 22, "y": 4, "facing": "Down", "script": "TreatCounter" },
+    { "id": "goldenrod_department_store_1f.Baker", "name": "Baker", "npcType": "Clerk", "x": 23, "y": 5, "facing": "Left", "script": "TreatBaker" },
     { "id": "goldenrod_department_store_1f.TrainingCoach", "name": "Head Coach", "npcType": "training_coach",
       "x": 5, "y": 10, "facing": "Down", "script": "TrainingCoach" },
     { "id": "goldenrod_department_store_1f.TrainingTutor", "name": "Tutor Ines", "npcType": "training_tutor",

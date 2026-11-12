@@ -1,0 +1,13 @@
+{
+  // Plan 38 · EX2: the visitor a scan from the Town Map's report calls up for an hour, a row for each day of the week: a
+  // species of another region's Pokédex in the south and east, at the post-game band in Black 2's own levels. Ours.
+  "rows": [
+    { "day": "Sunday", "species": "Granbull", "places": ["unova_route_14", "abundant_shrine"], "minLevel": 52, "maxLevel": 56 },
+    { "day": "Monday", "species": "Breloom", "places": ["pinwheel_forest", "dreamyard"], "minLevel": 52, "maxLevel": 56 },
+    { "day": "Tuesday", "species": "Ursaring", "places": ["unova_route_15", "unova_route_14"], "minLevel": 52, "maxLevel": 56 },
+    { "day": "Wednesday", "species": "Houndoom", "places": ["unova_route_2", "unova_route_3"], "minLevel": 54, "maxLevel": 58 },
+    { "day": "Thursday", "species": "Fearow", "places": ["unova_route_15", "unova_route_1"], "minLevel": 54, "maxLevel": 58 },
+    { "day": "Friday", "species": "Kangaskhan", "places": ["unova_route_3", "unova_route_1"], "minLevel": 52, "maxLevel": 56 },
+    { "day": "Saturday", "species": "Rapidash", "places": ["dreamyard", "unova_route_2"], "minLevel": 52, "maxLevel": 56 }
+  ]
+}

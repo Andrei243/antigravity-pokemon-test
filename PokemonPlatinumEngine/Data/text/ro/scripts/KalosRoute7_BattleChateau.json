@@ -786,10 +786,50 @@
     },
     {
       "en": [
+        "{foe} is visiting the house today."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you battle {foe}?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} bows to {player}. The house has seen a fine battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} is resting after the battle. They may visit again another day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} nods and goes back to the tea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "The house's staff see to {player}'s Pokémon. Nobody leaves the Château hurt."
       ],
       "text": [
-        "Personalul casei are grijă de Pokémonii lui {player}. Nimeni nu pleacă rănit din Château."
+        ""
       ]
     }
   ],

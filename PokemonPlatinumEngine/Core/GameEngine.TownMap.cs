@@ -92,6 +92,9 @@ public partial class GameEngine
         if (TownMapNow() is not { } state) return false;
         townMapFromBag = fromBag;
         flow.TownMapScreen.Open(state, mode, flier);
+        // The day's report on the item button, for the map looked at (plan 38 · EX2): the region the player is in, once its
+        // Hall of Fame is entered
+        if (mode is TownMapMode.Item or TownMapMode.Card) flow.TownMapScreen.SetReport(FieldReportNow());
         flow.State = GameState.FlyMap;
         return true;
     }

@@ -1,6 +1,10 @@
 {
   // Route 12 (plan 22 · U8, part a): the road from Lacunosa Town west to the Village Bridge, Black 2's, with four trainers (the two on the shore, Cleo and Rio, battle together) and its balls and hidden things in the area file; our words
   "area": "unova_route_12",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "unova_route_12.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 615, "y": 175, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "unova/route12",
   "people": {
     "0": {

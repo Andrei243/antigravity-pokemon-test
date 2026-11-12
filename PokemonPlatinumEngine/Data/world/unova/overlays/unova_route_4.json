@@ -6,6 +6,10 @@
   // _10), Join Avenue at its north end and the Desert Resort to its north-west are open. The Braviary that only comes on
   // Thursdays (25) is left for later
   "area": "unova_route_4",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "unova_route_4.gather", "name": "Rock", "npcType": "GatherRock", "x": 374, "y": 579, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "unova/route4",
   "triggers": [
     { "script": "ColressWaits", "x": 427, "z": 584, "width": 6, "depth": 1, "variable": "VAR_UNOVA_CASTELIA", "value": 11 }

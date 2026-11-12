@@ -84,6 +84,8 @@
     "lumiose_trades": [ "Linking Cord", "Everstone" ],
     "royal_megamart": [ "Quick Ball", "Dusk Ball", "Timer Ball", "Repeat Ball", "Nest Ball", "Net Ball", "Dive Ball", "Luxury Ball", "Max Repel", "Revive" ],
     // The festivals' stalls (plan 40 · GE9): each town's festival keeps one, our own stock
+    // The confectioners' counter (plan 35 · BN3): the five treats sold, in every finished region's store or shopping street
+    "treats": [ "Pepper Bite", "Crisp Wafer", "Honey Drop", "Cocoa Nib", "Tart Chew" ],
     "festival_lanterns": [ "Lava Cookie", "Old Gateau", "Honey", "Sweet Heart" ],
     "festival_midwinter": [ "Moomoo Milk", "Old Gateau", "Lava Cookie", "Snowball" ],
     "festival_blossom": [ "Honey", "Sweet Heart", "Lemonade", "Moomoo Milk" ],

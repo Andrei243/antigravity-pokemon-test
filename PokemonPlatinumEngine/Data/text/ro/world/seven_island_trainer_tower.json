@@ -64,10 +64,10 @@
   "signs": {
     "SevenIsland_TrainerTower_EventScript_TrainerTowerSign": {
       "en": [
-        "Trainer Tower\nClosed for now. Come back soon!"
+        "Trainer Tower\nEight floors of trainers against the clock, and the owner on the roof."
       ],
       "text": [
-        "Turnul Antrenorilor\nÎnchis deocamdată. Revino curând!"
+        ""
       ]
     },
     "SevenIsland_TrainerTower_EventScript_TrainerTowerAheadSign": {

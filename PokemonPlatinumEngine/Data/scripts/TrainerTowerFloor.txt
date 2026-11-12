@@ -1,0 +1,71 @@
+# A floor of the Trainer Tower (plan 37 · FC6). docs/scripts.md describes the language; the lines are our own, on the
+# beats of FireRed's Trainer Tower (TrainerTower_1F to _8F), read for the order alone.
+#
+# Every floor is laid on this one map from the climb's own variables (Models/Frontier/TrainerTower.cs): the floor's
+# trainers stand as `opponent` and `opponent_2`, dressed as who FireRed puts there, as the player comes in. A knockout
+# floor's three come forward one after another. Once the floor is beaten the stairs take the player up, to the next floor
+# laid again on this map, or to the roof. A game saved on a floor lays it again as it is come back to.
+
+
+script OnEnter
+  facility trainertower climbing
+  if result == 1 goto Climbing
+  fade out 0.6
+  warp "TrainerTowerLobby" 7 9 up
+  fade in
+  end
+label Climbing
+  call Stand
+  facility trainertower floor
+  text "Trainer Tower, floor {number}. The clock reads {tower:TIME}."
+  end
+
+
+# Whoever the floor's next battle is with, standing where they wait
+script Stand
+  clearflag FLAG_KANTO_TRAINER_TOWER_SHOW_OPPONENT
+  clearflag FLAG_KANTO_TRAINER_TOWER_SHOW_OPPONENT_2
+  hide opponent
+  hide opponent_2
+  facility trainertower opponent
+  if result == 0 return
+  setflag FLAG_KANTO_TRAINER_TOWER_SHOW_OPPONENT
+  show opponent
+  if result == 1 return
+  setflag FLAG_KANTO_TRAINER_TOWER_SHOW_OPPONENT_2
+  show opponent_2
+  return
+
+
+# A trainer of the floor, spoken to
+script Trainer
+  facility trainertower opponent
+  if result == 0 end
+  text "{foe} challenges you!"
+  facility trainertower fight
+  if result == 0 goto Lost
+  facility trainertower cleared
+  if result == 1 goto Up
+  call Stand
+  text "{foe} steps forward!"
+  end
+label Up
+  text "The floor is clear! The stairs up are open."
+  facility trainertower climb
+  if result == 1 goto Roof
+  fade out 0.6
+  warp "TrainerTowerFloor" 6 9 up
+  fade in
+  end
+label Roof
+  fade out 0.6
+  warp "TrainerTowerRoof" 6 9 up
+  fade in
+  end
+label Lost
+  facility trainertower lost
+  text "{player} has no Pokémon left to battle with. The climb is over."
+  fade out 0.6
+  warp "TrainerTowerLobby" 7 9 up
+  fade in
+  end

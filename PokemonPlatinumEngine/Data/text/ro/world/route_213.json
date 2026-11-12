@@ -321,6 +321,16 @@
           "Marinar Paul: Ei, asta-i bună! Ai fi un marinar de punte excelent."
         ]
       }
+    },
+    "route_213.gather": {
+      "name": {
+        "en": [
+          "Shells"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {
