@@ -135,7 +135,9 @@ public partial class GameEngine
             studioFigureLoaded = true;
         }
         string look = InTheKitHere(PlayerIdentity.Character);
-        if (CharacterModels.TryGet(look, renderContext.Shaders) == null) return;
+        if (CharacterModels.TryGet(look, renderContext.Shaders) is not { } rig) return;
+        // (a grown look framed by its own height, plan 30; a chibi one as it always was)
+        var (viewHeight, lookY) = CharacterStudio.FigureOf(rig);
         var pose = new CharacterPose { Time = 0.5f, Expression = CharacterAnimation.ExpressionOf(shot.Mood) };
         if (shot.Pose == CardPoseKind.Sitting) pose.Stance = Overworld.Stance.SitGround;
         else if (shot.Pose == CardPoseKind.Gesture && shot.Gesture is { } gesture)
@@ -143,7 +145,7 @@ public partial class GameEngine
             pose.Emote = CharacterAnimation.EmoteOf(gesture);
             pose.EmoteTime = CardDesign.HeldAt * CharacterAnimation.Duration(pose.Emote);
         }
-        CharacterStudio.Render(renderContext, look, studioFigure, pose, yaw: 0.3f, viewHeight: 1.9f, lookY: 0.78f);
+        CharacterStudio.Render(renderContext, look, studioFigure, pose, yaw: 0.3f, viewHeight: viewHeight, lookY: lookY);
         studioFigureDrawn = true;
     }
 

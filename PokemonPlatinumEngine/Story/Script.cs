@@ -216,6 +216,8 @@ public enum Op
     // The pasture (plan 35 · BN5): in at its gate from a PC and back, the box shown, and a Pokémon of the meadow petted,
     // fed, cared for, found holding something or taken along
     Pasture,
+    // The photo tour (plan 44 · SD5): a ride on a course, whether a course is open, the report's total
+    Tour,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -171,7 +171,9 @@ public enum GameState
     /// <summary>A locked heart opening, its scene and its level panel (plan 44 · SD2).</summary>
     HeartOpening,
     /// <summary>The photo studio, a script's <c>photo studio</c> waiting on it (plan 43 · LF5).</summary>
-    Studio
+    Studio,
+    /// <summary>A ride of the photo tour, a script's <c>tour ride</c> waiting on it (plan 44 · SD5).</summary>
+    PhotoTour
 }
 
 public partial class GameEngine
@@ -1036,6 +1038,7 @@ public partial class GameEngine
             Photos = flow.Photos.ToSave(),
             CardDesign = CardDesignToSave(),
             PhotoBook = flow.PhotoBook.ToSave(),
+            PhotoTour = flow.PhotoTour.ToSave(),
             Hearts = flow.Hearts.IsEmpty ? null : flow.Hearts,
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
@@ -1731,6 +1734,9 @@ public partial class GameEngine
                 break;
             case GameState.Studio:
                 UpdateStudio(dt);
+                break;
+            case GameState.PhotoTour:
+                UpdatePhotoTour(dt);
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -3008,7 +3014,7 @@ public partial class GameEngine
                 flow.Pokedex.Enter(Here);
                 flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
                 flow.PokedexScreen.Random = Randomizer.For(flow.Run);
-        flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), Here);
+        flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), Here);
                 flow.PokedexScreen.SetHere(DexNavHereList(), flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
                 break;
             case StartMenuChoice.Pokemon:
@@ -3045,7 +3051,7 @@ public partial class GameEngine
                 flow.State = GameState.TrainerCard;
             {
                 var card = TrainerCardNow();
-                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false });
+                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false });
             }
                 break;
             case StartMenuChoice.Options:
@@ -3391,6 +3397,11 @@ public partial class GameEngine
         {
             flow.SalonScreen.Render(renderContext);
         }
+        else if (scene == GameState.PhotoTour)
+        {
+            // The photo tour's course, a scene of its own like the battle's (plan 44 · SD5)
+            RenderPhotoTour();
+        }
         else if (scene == GameState.Studio)
         {
             // The player's figure on the stage, rendered offscreen (plan 43 · LF5)
@@ -3525,6 +3536,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoBook:
                 ModernUi.DrawPhotoBook(VirtualWidth, VirtualHeight, flow.PhotoBookScreen, BookPicture);
+                break;
+            case GameState.PhotoTour:
+                DrawPhotoTour();
                 break;
             case GameState.Studio:
                 ModernUi.DrawStudio(VirtualWidth, VirtualHeight, flow.StudioScreen, StudioFigureNow(), StudioPokemonNow());
@@ -3793,6 +3807,7 @@ public partial class GameEngine
         TakeCardPrint();
         TakeBookPhoto();
         TakeStudioPhoto();
+        TakeTourPhoto();
         FrameProfiler.Lap(FrameSection.Interface);
         SampleTheFrame();
 

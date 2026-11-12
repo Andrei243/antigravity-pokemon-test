@@ -1340,6 +1340,10 @@ public partial class GameEngine
                 case ScriptScreen.PhotoStudio:
                     game.OpenStudio();
                     break;
+                case ScriptScreen.PhotoTour:
+                    // A ride on a course (plan 44 · SD5): the script hears its total as it is left
+                    game.OpenPhotoTour(counter ?? "");
+                    break;
                 case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
                     // The salon's chair and a boutique's dye house (plan 43 · LF3)
                     game.OpenSalon(dye: counter != Instruction.SalonCounter);
@@ -1802,6 +1806,7 @@ public partial class GameEngine
 
         // The photo book and its spots (plan 43 · LF4)
         public PhotoBook? PhotoBook => game.flow.PhotoBook;
+        public TourReport? PhotoTour => game.flow.PhotoTour;
         public bool PhotoAtSpot(string spot) => game.OpenPhotoAtSpot(spot);
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;

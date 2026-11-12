@@ -1202,6 +1202,13 @@ public static class ScriptParser
             case "heart":
                 return new Instruction { Op = Op.Heart, Line = line, Name = r.OneOf("has", "give", "spring", "open", "locked", "count", "missed", "opened", "courier") };
 
+            // The photo tour (plan 44 · SD5): `tour ride "<course>"`, `tour open "<course>"`, `tour points`
+            case "tour":
+            {
+                string tourWord = r.OneOf("ride", "open", "points");
+                return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord == "points" ? null : r.Text("a course's id") };
+            }
+
             // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,
             // and of the Pokémon the script belongs to `pasture mood`, `find`, `pet`, `feed` (the item last chosen), `care`, `take`
             case "pasture":

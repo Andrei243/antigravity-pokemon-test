@@ -108,6 +108,7 @@ label SinnohClose
   setflag FLAG_CASE_SINNOH_CLOSED
   givemoney 10000
   give "Heart Scale"
+  call CasePennants
   say "When you are Champion of another region, come back. The door is always open."
   end
 
@@ -157,6 +158,7 @@ label KantoClose
   setflag FLAG_CASE_KANTO_CLOSED
   givemoney 12000
   give "Big Pearl"
+  call CasePennants
   say "Here is the agency's fee, with my thanks. When you are Champion of another region, come back."
   end
 
@@ -206,6 +208,7 @@ label JohtoClose
   setflag FLAG_CASE_JOHTO_CLOSED
   givemoney 12000
   give "Heart Scale"
+  call CasePennants
   say "When you are Champion of another region, come back. The door is always open."
   end
 
@@ -255,6 +258,7 @@ label HoennClose
   setflag FLAG_CASE_HOENN_CLOSED
   givemoney 14000
   give "Star Piece"
+  call CasePennants
   say "When you are Champion of another region, come back. The door is always open."
   end
 
@@ -304,6 +308,7 @@ label UnovaClose
   setflag FLAG_CASE_UNOVA_CLOSED
   givemoney 14000
   give "Nugget"
+  call CasePennants
   say "When you are Champion of another region, come back. The door is always open."
   end
 
@@ -353,6 +358,7 @@ label KalosClose
   setflag FLAG_CASE_KALOS_CLOSED
   givemoney 15000
   give "Big Pearl"
+  call CasePennants
   say "You are a detective as much as a Champion, {player}. When you are Champion of another region, come back."
   end
 
@@ -368,6 +374,15 @@ label Later
 label NoCase
   say "No case waits for you today. When you are Champion of another region, there will be one. There always is."
   end
+
+
+# Pennant Hall's share of a case closed (plan 41 · EG3's owed line): pennants, once the hall has been opened to its manager
+script CasePennants
+  plaza give 40
+  if result == 0 goto NoHall
+  say "Oh, and Pennant Hall heard the news. They asked me to pass on 40 pennants. Detective work pays twice!"
+label NoHall
+  return
 
 
 script Crates

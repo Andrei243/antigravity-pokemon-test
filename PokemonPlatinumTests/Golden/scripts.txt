@@ -7322,6 +7322,11 @@ way 0
   * fade in
 way 1, from answer 1
   ? A pair of binoculars, pointed out over the Great Marsh. Put $100 in? = No
+=== PastoriaCityObservatoryGate2F.TourGuide
+from Maribel Orr at 11,5 of PastoriaCityObservatoryGate2F
+way -
+  Maribel Orr> I take trainers out along a river in a little cart, camera in hand, to photograph Pokémon going about their day.
+  Maribel Orr> The tour is only for those with a National Pokédex, though. Come back once yours has grown.
 === PastoriaCitySouthwestHouse.Berry
 from Pokémon Breeder at 5,5 of PastoriaCitySouthwestHouse
 way -
@@ -16360,18 +16365,18 @@ way 1, from answer 1
 === common.HubGuide
 from a trainer with lines of their own
 way 0
-  Anyone> I guide Trainers between the great battle facilities and the Hub.
-  Anyone> Shall I take you back to the Hub?
+  Anyone> I guide Trainers between the great battle facilities and Wayhaven.
+  Anyone> Shall I take you back to Wayhaven?
   Anyone> Very good. Follow me, and keep close.
-  > Lucas followed the guide back to the Hub...
-  ? Shall I take you back to the Hub? = Yes
+  > Lucas followed the guide back to Wayhaven...
+  ? Shall I take you back to Wayhaven? = Yes
   * fade out
   * travel to Hub Hub_HarbourHall 9 4
   * fade in
   + HubEntered
 way 1, from answer 1
   Anyone> Whenever you are ready. I will be right here.
-  ? Shall I take you back to the Hub? = No
+  ? Shall I take you back to Wayhaven? = No
 === common.ItemBall
 from an item's ball
 way -
