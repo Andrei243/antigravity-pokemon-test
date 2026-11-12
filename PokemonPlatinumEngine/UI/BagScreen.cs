@@ -174,6 +174,8 @@ public class BagScreen
     {
         "mulch" => Overworld.BerryPatches.MulchOf(item.Name) != Overworld.Mulch.None,
         "gift" => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs),
+        // A meal of the care close-up (plan 35 · BN3): a berry or a treat (the treats are in the Items pocket)
+        "meal" => item.Berry != null || item.Treat != null,
         _ => item.Berry != null
     };
 

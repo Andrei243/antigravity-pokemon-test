@@ -207,7 +207,8 @@ internal static partial class ModernUi
     /// </summary>
     public static void DrawStartMenu(int sw, IReadOnlyList<(string Label, UiIcon Icon, Color Color)> entries, int selected, float shown, string objective = "", string counts = "")
     {
-        const float width = 440, row = 74;
+        const float width = 440;
+        float row = StartMenuRowHeight(entries.Count);
         float height = 40 + entries.Count * row + 18;
         var panel = new Rectangle(sw - 40 - width + (1f - shown) * (width + 80), 40, width, height);
         Panel(panel, 34);

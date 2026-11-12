@@ -521,6 +521,19 @@
         "on": "Înaintea unei lupte lângă un partener, ești întrebat dacă un prieten alege pentru el. Un al doilea controler răspunde la rândurile prietenului."
       }
     },
+    "care": {
+      "label": "Îngrijirea echipei",
+      "value": {
+        "Off": "Oprit",
+        "Rules": "După reguli",
+        "On": "Pornit"
+      },
+      "help": {
+        "Off": "TABĂRA apare în meniu doar cât timp un Pokémon merge după tine.",
+        "Rules": "Regulile din Platinum lasă meniul cum e; regulile moderne adaugă TABĂRA, unde poți avea grijă de fiecare Pokémon de aproape.",
+        "On": "Meniul are TABĂRA, unde poți mângâia, hrăni, peria și trata de aproape fiecare Pokémon din echipă."
+      }
+    },
     "battleCamera": {
       "label": "Camera în luptă",
       "value": {
@@ -1394,7 +1407,36 @@
       "3": "{name} fredonează ceva. Îi place să se plimbe cu tine.",
       "4": "{name} te privește cu drag. Te-ar urma oriunde!"
     },
-    "found": "{name} ține ceva în gură. Vrea să ți-l dea!"
+    "found": "{name} ține ceva în gură. Vrea să ți-l dea!",
+    "mood": {
+      "Glum": "{name} nu se uită la tine. Pare îmbufnat.",
+      "Low": "{name} pare cam abătut. Ar avea nevoie de puțină grijă.",
+      "Cheerful": "{name} e plin de voie bună și țopăie lângă tine!",
+      "Elated": "{name} e în culmea fericirii! Abia stă locului."
+    },
+    "place": {
+      "Gym": "{name} cercetează Sala. E gata de luptă!",
+      "PokemonCenter": "{name} pare liniștit în Centrul Pokémon.",
+      "Room": "{name} adulmecă prin cameră, curios.",
+      "Cave": "{name} se uită în întunericul peșterii.",
+      "Water": "{name} privește apa.",
+      "Snow": "{name} tremură puțin în zăpadă.",
+      "Sand": "{name} își scutură nisipul de pe labe.",
+      "TallGrass": "{name} foșnește prin iarba înaltă.",
+      "Rain": "{name} se uită în sus, la ploaie.",
+      "Night": "{name} privește cerul nopții.",
+      "MetHere": "{name} se uită în jur. Pare să-și amintească de {place}!",
+      "Town": "{name} se uită cu plăcere prin {place}."
+    },
+    "likes": {
+      "water": "{name} vrea să se bălăcească. Îi place mult lângă apă!",
+      "fireInRain": "{name} se strânge lângă tine. Nu-i place deloc ploaia.",
+      "ice": "{name} e încântat de zăpadă!",
+      "ghost": "{name} pare mai vioi în întunericul nopții.",
+      "grass": "{name} se bucură de iarba de sub labe.",
+      "rock": "{name} se simte ca acasă printre stânci.",
+      "ground": "{name} sapă bucuros în nisip."
+    }
   },
 
   "marks": {
@@ -1417,9 +1459,67 @@
     }
   },
 
+  "care": {
+    "title": "ÎNGRIJIRE",
+    "hint": {
+      "hold": "Ține",
+      "tool": "Unealtă"
+    },
+    "keys": {
+      "tool": "Q / E"
+    },
+    "fullness": "SĂTUL",
+    "mood": "STARE",
+    "moodWord": {
+      "Glum": "ABĂTUT",
+      "Low": "TRIST",
+      "Calm": "LINIȘTIT",
+      "Cheerful": "VESEL",
+      "Elated": "ÎNCÂNTAT"
+    },
+    "tool": {
+      "Hand": "MÂNA",
+      "Treat": "GUSTARE",
+      "Brush": "PERIE",
+      "Cloth": "CÂRPĂ",
+      "Medicine": "LEAC",
+      "help": {
+        "Hand": "Ține Z și mângâie-l. Are un loc care îi place cel mai mult.",
+        "Treat": "Apasă Z ca să-i dai o boabă sau o gustare din rucsac.",
+        "Brush": "Ține Z și perie praful, frunzele și zăpada.",
+        "Cloth": "Ține Z și șterge noroiul și apa.",
+        "Medicine": "Apasă Z pe el ca să-i tratezi o suferință."
+      }
+    },
+    "note": {
+      "welcome": "{name} se uită la tine.",
+      "reach": "Întinde mâna spre el mai întâi.",
+      "cured": "{name} se simte mult mai bine!",
+      "nothingToCure": "{name} n-are nimic de tratat.",
+      "petted": "{name} se lipește de mâna ta, fericit.",
+      "pettedAgain": "{name} închide ochii și se bucură.",
+      "wrongTool": {
+        "Brush": "Peria nu ia asta. Încearcă cârpa.",
+        "Cloth": "Cârpa nu ia asta. Încearcă peria."
+      },
+      "cleaned": {
+        "Dust": "Praful a dispărut din blana lui {name}.",
+        "Mud": "Noroiul s-a șters de pe {name}.",
+        "Leaves": "Frunzele s-au scos din blana lui {name}.",
+        "Wet": "{name} e uscat din nou.",
+        "Snow": "Zăpada s-a periat de pe {name}."
+      },
+      "ate": {
+        "Plain": "{name} a mâncat {item}.",
+        "Liked": "Lui {name} i-a plăcut mult {item}!",
+        "Disliked": "{name} a mâncat {item}, dar s-a strâmbat."
+      }
+    }
+  },
+
   "camp": {
     "title": "TABĂRĂ",
-    "hint": { "pet": "Mângâie", "feed": "Hrănește", "cook": "Gătește" },
+    "hint": { "pet": "Îngrijește", "feed": "Hrănește", "cook": "Gătește" },
     "friendship": "PRIETENIE",
     "petted": "MÂNGÂIAT",
     "fed": "HRĂNIT",
@@ -1430,7 +1530,8 @@
       "fed": "{name} a mâncat {berry} cu poftă!",
       "egg": "Oul stă la căldură lângă foc.",
       "already": "{name} a primit destul la popasul ăsta.",
-      "noBerry": "Nu ai nicio boabă în rucsac."
+      "noBerry": "Nu ai nicio boabă în rucsac.",
+      "full": "{name} s-a săturat pentru azi."
     }
   },
 

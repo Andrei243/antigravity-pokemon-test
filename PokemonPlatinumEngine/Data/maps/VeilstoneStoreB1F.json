@@ -357,6 +357,24 @@
   ],
   "npcs": [
     {
+      "id": "treat_confectioner",
+      "name": "Confectioner",
+      "npcType": "Clerk",
+      "x": 21,
+      "y": 11,
+      "facing": "Up",
+      "script": "TreatCounter"
+    },
+    {
+      "id": "treat_baker",
+      "name": "Baker",
+      "npcType": "Clerk",
+      "x": 16,
+      "y": 11,
+      "facing": "Down",
+      "script": "TreatBaker"
+    },
+    {
       "id": "receptionist_1",
       "name": "Attendant",
       "npcType": "Clerk",

@@ -84,10 +84,12 @@ public partial class GameEngine
         switch (FieldPoison.Step(flow.Encounters, flow.Party, Ruleset.Current))
         {
             case PoisonStep.Hurt:
+                CarePoisonBite();
                 AudioManager.PlaySound("status_poison");
                 poisonFlash = PoisonFlashSeconds;
                 break;
             case PoisonStep.Survived:
+                CarePoisonBite();
                 AudioManager.PlaySound("status_poison");
                 poisonFlash = PoisonFlashSeconds;
                 return StartScript(FieldScripts.PoisonSurvived);
@@ -224,6 +226,8 @@ public partial class GameEngine
     /// </summary>
     private void KeepTheEncounterClock(int daysPassed)
     {
+        // The boxes' moods settle by the day (plan 35 · BN1)
+        if (daysPassed > 0) CareRules.DaysPass(flow.Care, daysPassed, flow.Party.Members);
         if (daysPassed > 0) DailyEvents.DaysPass(daysPassed, flow.Story, flow.Encounters, PlaceKey(), fieldRandom, flow.Underground, flow.Frontier);
         flow.Encounters.ClockTo(GameClock.Moment);
         flow.Berries.ClockTo(GameClock.Moment);

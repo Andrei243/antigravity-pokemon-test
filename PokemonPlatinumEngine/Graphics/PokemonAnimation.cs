@@ -99,11 +99,18 @@ internal static class PokemonAnimation
         if (p.Frozen) return EyeState.Open;
         // 8. A cheer (Y5): smiling; the camp's faces (F6) go here too
         if (p.Cheer > 0.04f && p.Cheer < 0.96f) return EyeState.Smile;
+        // ...then the camp's faces (plan 35 · BN2): happy, eating, sleepy
+        if (p.Happy > 0.3f) return EyeState.Smile;
+        if (p.Eating > 0.3f) return Frac(p.Time / ChewEvery) < 0.5f ? EyeState.Shut : EyeState.Open;
+        if (p.Sleepy > 0.5f) return Frac(p.Time / SleepyBlinkEvery) * SleepyBlinkEvery < SleepyBlinkLength ? EyeState.Shut : EyeState.Open;
         // 9. Tiredness: longer, slower blinks in place of the blink below (Y5)
         if (p.Tired > 0.5f) return Frac(p.Time / TiredBlinkEvery) * TiredBlinkEvery < TiredBlinkLength ? EyeState.Shut : EyeState.Open;
         // 10. A blink, 11. open
         return p.Blink > 0.5f ? EyeState.Shut : EyeState.Open;
     }
+
+    /// <summary>A chew of the camp's eating (plan 35 · BN2), and a sleepy one's slow blink: shut 1.2 s in every 3 s.</summary>
+    internal const float ChewEvery = 0.4f, SleepyBlinkEvery = 3f, SleepyBlinkLength = 1.2f;
 
     /// <summary>How often a tired Pokémon blinks, and how long its eyes stay shut (plan 25 · Y5): one slow breath each.</summary>
     internal const float TiredBlinkEvery = TiredBreath, TiredBlinkLength = 0.45f;
@@ -176,6 +183,7 @@ internal static class PokemonAnimation
         }
         if (p.Dodge > 0f && p.Dodge < 1f) Dodge(m, p.Dodge, pose);
         if (p.Cheer > 0f && p.Cheer < 1f) Cheer(m, p.Cheer, pose);
+        if (p.Happy > 0f || p.Sleepy > 0f || p.Eating > 0f || p.LookAt != Vector2.Zero) CampFaces(m, p, pose);
         if (p.Hurt > 0f && p.Hurt < 1f) Hit(m, p.Hurt, pose);
         if (p.Faint > 0f) Faint(m, Math.Min(1f, p.Faint), pose);
     }
@@ -904,6 +912,40 @@ internal static class PokemonAnimation
                     break;
                 case PokeRole.Fin:
                     pose.Turn(b, 0f, 0f, side * 0.4f * env);
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The camp's faces (plan 35 · BN2): the head turned toward the hand by its head bones, a lean into a stroke (the head
+    /// tilted, the body a little toward it), a droop (the head and ears down) and a chew (the jaw working, the head with
+    /// it). Each is nothing at nought, so a pose without them is as it was.
+    /// </summary>
+    private static void CampFaces(PokeModel m, PokePose p, SkeletonPose pose)
+    {
+        float happy = Math.Clamp(p.Happy, 0f, 1f), sleepy = Math.Clamp(p.Sleepy, 0f, 1f), eating = Math.Clamp(p.Eating, 0f, 1f);
+        float lookX = Math.Clamp(p.LookAt.X, -1f, 1f), lookY = Math.Clamp(p.LookAt.Y, -1f, 1f);
+        float chew = eating * MathF.Max(0f, MathF.Sin(MathF.Tau * p.Time / ChewEvery));
+        for (int b = 0; b < m.Bones.Count; b++)
+        {
+            var info = m.Bones[b];
+            switch (info.Role)
+            {
+                case PokeRole.Body:
+                    pose.Turn(b, 0.04f * happy + 0.06f * sleepy, 0.06f * lookX, 0.05f * happy);
+                    break;
+                case PokeRole.Head:
+                    pose.Turn(b, -0.32f * lookY + 0.3f * sleepy + 0.05f * chew, 0.5f * lookX, 0.18f * happy);
+                    break;
+                case PokeRole.Jaw:
+                    pose.Turn(b, 0.35f * chew);
+                    break;
+                case PokeRole.Ear:
+                    pose.Turn(b, 0.35f * sleepy - 0.15f * happy);
+                    break;
+                case PokeRole.Tail:
+                    pose.Turn(b, 0f, 0.35f * happy * MathF.Sin(MathF.Tau * p.Time * 1.5f));
                     break;
             }
         }

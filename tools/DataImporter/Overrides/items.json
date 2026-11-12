@@ -910,5 +910,19 @@
     "cantBeTossed": true,
     "canBeRegistered": true,
     "fieldUse": "PowerWatch"
-  }
+  },
+  // Plan 35 · BN3, our own: the treats of the care close-up (Models/Treats.cs). Five sold at the confectioners' counters
+  // (grade 1, one flavour each), five a baker makes from three berries of a flavour (grade 2) and the mixed loaf from one
+  // berry of each (grade 3). Ids 9600 to 9610, plan 35's hundred; the names are ours
+  "Pepper Bite": {"new": true, "id": 9600, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 200, "canUseInBattle": false, "canUseInOverworld": false, "description": "A little cake with a warm kick of pepper. Pokémon that like spicy food love it.", "treat": {"flavor": "Spicy", "grade": 1}},
+  "Crisp Wafer": {"new": true, "id": 9601, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 200, "canUseInBattle": false, "canUseInOverworld": false, "description": "A thin, crunchy wafer, not sweet at all. Pokémon that like dry food love it.", "treat": {"flavor": "Dry", "grade": 1}},
+  "Honey Drop": {"new": true, "id": 9602, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 200, "canUseInBattle": false, "canUseInOverworld": false, "description": "A soft drop of honey cake. Pokémon that like sweet food love it.", "treat": {"flavor": "Sweet", "grade": 1}},
+  "Cocoa Nib": {"new": true, "id": 9603, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 200, "canUseInBattle": false, "canUseInOverworld": false, "description": "A dark little bite with a bitter edge. Pokémon that like bitter food love it.", "treat": {"flavor": "Bitter", "grade": 1}},
+  "Tart Chew": {"new": true, "id": 9604, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 200, "canUseInBattle": false, "canUseInOverworld": false, "description": "A chewy sweet that makes the mouth pucker. Pokémon that like sour food love it.", "treat": {"flavor": "Sour", "grade": 1}},
+  "Pepper Cake": {"new": true, "id": 9605, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "A baker's cake made from three spicy berries. It fills a Pokémon up well.", "treat": {"flavor": "Spicy", "grade": 2}},
+  "Toasted Rusk": {"new": true, "id": 9606, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "A baker's rusk made from three dry berries. It fills a Pokémon up well.", "treat": {"flavor": "Dry", "grade": 2}},
+  "Honey Cake": {"new": true, "id": 9607, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "A baker's cake made from three sweet berries. It fills a Pokémon up well.", "treat": {"flavor": "Sweet", "grade": 2}},
+  "Cocoa Torte": {"new": true, "id": 9608, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "A baker's torte made from three bitter berries. It fills a Pokémon up well.", "treat": {"flavor": "Bitter", "grade": 2}},
+  "Citrus Tart": {"new": true, "id": 9609, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "A baker's tart made from three sour berries. It fills a Pokémon up well.", "treat": {"flavor": "Sour", "grade": 2}},
+  "Rainbow Loaf": {"new": true, "id": 9610, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "A baker's loaf made from one berry of every flavour. Every Pokémon with a taste loves it.", "treat": {"grade": 3}}
 }

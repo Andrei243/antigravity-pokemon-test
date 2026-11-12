@@ -284,6 +284,10 @@
       "note": "first spoken at opelucid_city.txt(81)",
       "provisional": true
     },
+    "baker": {
+      "note": "first spoken at common.txt(4325)",
+      "provisional": true
+    },
     "baoba": {
       "note": "first spoken at olivine.txt(29)",
       "provisional": true
@@ -3896,6 +3900,10 @@
       "note": "first spoken at KiloudeCity_Station.txt(27)",
       "provisional": true
     },
+    "confectioner": {
+      "note": "first spoken at common.txt(4315)",
+      "provisional": true
+    },
     "contest_lady": {
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(272)",
       "provisional": true
@@ -7027,6 +7035,22 @@
         "accent": "en-us"
       }
     },
+    "look:middle_aged_woman#1": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a woman in her middle years: warm, practical and unhurried"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_sarah:0.4",
+        "speed": 0.98,
+        "pitch": 0.97,
+        "accent": "en-gb"
+      }
+    },
     "look:ninja_boy#1": {
       "brief": {
         "register": "boy",
@@ -7137,22 +7161,6 @@
         "speed": 0.9,
         "pitch": 0.924,
         "accent": "en-us"
-      }
-    },
-    "look:middle_aged_woman#1": {
-      "brief": {
-        "register": "woman",
-        "age": "adult",
-        "pitch": "middle",
-        "pace": "even",
-        "manner": "a woman in her middle years: warm, practical and unhurried"
-      },
-      "design": {
-        "engine": "kokoro-82m",
-        "blend": "bf_emma:0.6,af_sarah:0.4",
-        "speed": 0.98,
-        "pitch": 0.97,
-        "accent": "en-gb"
       }
     },
     "look:old_woman#1": {
@@ -10536,6 +10544,7 @@
     "Azurill": "azurill",
     "Backer": "backer",
     "Backers": "backers",
+    "Baker": "baker",
     "Baoba": "baoba",
     "Barber": "barber",
     "Barnabé": "barnabe",
@@ -10616,6 +10625,7 @@
     "Commander Mars": "mars",
     "Commander Saturn": "saturn",
     "Commuter": "commuter",
+    "Confectioner": "confectioner",
     "Contest Lady": "contest_lady",
     "Cook": "cook",
     "Cooltrainer": "cooltrainer",
