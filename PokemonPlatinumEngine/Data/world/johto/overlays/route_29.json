@@ -5,7 +5,7 @@
   "area": "route_29",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_29.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 616, "y": 403, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_29.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 625, "y": 399, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "bgmTrack": "johto/route29",
   "trees": "Round",

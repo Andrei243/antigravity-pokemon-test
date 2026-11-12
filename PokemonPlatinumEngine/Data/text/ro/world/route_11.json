@@ -259,6 +259,16 @@
           "Inginer Bernie: Șocant! Adică, m-ai șocat."
         ]
       }
+    },
+    "route_11.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

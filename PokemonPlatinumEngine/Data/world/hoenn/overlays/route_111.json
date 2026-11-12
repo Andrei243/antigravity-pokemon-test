@@ -10,7 +10,7 @@
   "area": "route_111",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_111.gather", "name": "Rock", "npcType": "GatherRock", "x": 220, "y": 61, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_111.gather", "name": "Rock", "npcType": "GatherRock", "x": 223, "y": 65, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "ours": { "land": [ ["Saguarox", 148, 152] ] },
   "bgmTrack": "hoenn/route110",

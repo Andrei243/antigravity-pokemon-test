@@ -257,6 +257,16 @@
           "Crescător de păsări Peter: Iar la pământ. Probabil s-a oprit briza."
         ]
       }
+    },
+    "route_32.gather": {
+      "name": {
+        "en": [
+          "Shells"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

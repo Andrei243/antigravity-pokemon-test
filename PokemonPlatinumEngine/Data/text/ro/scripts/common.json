@@ -278,10 +278,179 @@
     },
     {
       "en": [
+        "One of them had crossed into a {crossed}!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "{player} a lăsat {berry} pe plantă."
+      ]
+    },
+    {
+      "en": [
         "{player} left the {berry} on the plant."
       ],
       "text": [
-        "{player} a lăsat {berry} pe plantă."
+        ""
+      ]
+    }
+  ],
+  "Gather": [
+    {
+      "en": [
+        "{player} gathered {materials} × {material}. Into the kit it went!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nothing more to gather here today. Come back tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BerryPots": [
+    {
+      "en": [
+        "Which pot?",
+        "First pot",
+        "Second pot",
+        "Third pot",
+        "Fourth pot",
+        "Put them away"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One {berry} was planted in this pot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A little {berry} plant has pushed up in this pot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The {berry} plant in this pot is growing taller."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The {berry} plant in this pot has burst into flower!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Give it some water?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you go. It looks pleased."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The pot is empty. What would you like to do?",
+        "Spread mulch",
+        "Plant a Berry",
+        "Leave it"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} spread the {mulch} over the pot's soil."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Plant a Berry in this pot?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} pressed one {berry} into the pot's soil."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The pot is empty. A Berry could be planted in it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are {yield} × {berry} in this pot. Pick them?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} picked {yield} × {berry}!",
+        "{player} put them away in the Berries pocket."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One of them had crossed into a {crossed}!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -760,10 +929,31 @@
     },
     {
       "en": [
+        "Among the cut branches lay {materials} × {material}. Into the kit it went!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Un copac subțire îți stă în cale. O mișcare destul de tăioasă l-ar putea doborî."
+      ]
+    },
+    {
+      "en": [
         "A thin tree stands in the way. A sharp enough move might clear it."
       ],
       "text": [
-        "Un copac subțire îți stă în cale. O mișcare destul de tăioasă l-ar putea doborî."
+        ""
+      ]
+    }
+  ],
+  "UseCut": [
+    {
+      "en": [
+        "Among the cut branches lay {materials} × {material}. Into the kit it went!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -778,10 +968,24 @@
     },
     {
       "en": [
+        "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Stânca e plină de crăpături. Spărgător de Pietre ar putea s-o spargă, dar în afara luptei abia după ce câștigi Insigna de Arenă potrivită."
+      ]
+    },
+    {
+      "en": [
         "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until the right Gym Badge is won."
       ],
       "text": [
-        "Stânca e plină de crăpături. Spărgător de Pietre ar putea s-o spargă, dar în afara luptei abia după ce câștigi Insigna de Arenă potrivită."
+        ""
+      ],
+      "was": [
+        "Stânca e plină de crăpături. Un Pokémon care știe Spărgător de Pietre ar putea s-o spargă."
       ]
     },
     {
@@ -789,7 +993,10 @@
         "The rock is riddled with cracks. A Pokémon that knows Rock Smash could break it apart."
       ],
       "text": [
-        "Stânca e plină de crăpături. Un Pokémon care știe Spărgător de Pietre ar putea s-o spargă."
+        ""
+      ],
+      "was": [
+        "Stânca e plină de crăpături. Un Pokémon care a învățat Spărgător de Pietre din HM06 ar putea s-o spargă."
       ]
     },
     {
@@ -797,7 +1004,10 @@
         "The rock is riddled with cracks. A Pokémon taught Rock Smash with HM06 could break it apart."
       ],
       "text": [
-        "Stânca e plină de crăpături. Un Pokémon care a învățat Spărgător de Pietre din HM06 ar putea s-o spargă."
+        ""
+      ],
+      "was": [
+        "Stânca e plină de crăpături. O lovitură destul de puternică ar sparge-o, după ce câștigi Insigna de Arenă potrivită."
       ]
     },
     {
@@ -805,7 +1015,17 @@
         "The rock is riddled with cracks. A hard enough blow might break it apart, once the right Gym Badge is won."
       ],
       "text": [
-        "Stânca e plină de crăpături. O lovitură destul de puternică ar sparge-o, după ce câștigi Insigna de Arenă potrivită."
+        ""
+      ]
+    }
+  ],
+  "UseRockSmash": [
+    {
+      "en": [
+        "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],
@@ -942,6 +1162,16 @@
       ],
       "text": [
         "Sharpedo a lovit stânca cu tot corpul, iar ea s-a prăbușit în mare!"
+      ]
+    }
+  ],
+  "TaurosCharge": [
+    {
+      "en": [
+        "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],

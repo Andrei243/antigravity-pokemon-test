@@ -4,7 +4,7 @@
   "area": "route_102",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_102.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 106, "y": 250, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_102.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 107, "y": 252, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "bgmTrack": "hoenn/route101",
   "trees": "Round",

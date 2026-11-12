@@ -5,7 +5,7 @@
   "area": "route_31",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_31.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 542, "y": 274, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_31.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 549, "y": 273, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
 
   // Plan 40 · GE3: SoulSilver's Ledyba, once the National Pokédex is had

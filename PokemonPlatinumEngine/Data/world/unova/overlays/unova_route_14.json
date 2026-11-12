@@ -8,7 +8,7 @@
   "area": "unova_route_14",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "unova_route_14.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 732, "y": 351, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "unova_route_14.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 728, "y": 324, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "bgmTrack": "unova/route14",
   "people": {

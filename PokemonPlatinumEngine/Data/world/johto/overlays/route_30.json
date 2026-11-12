@@ -6,7 +6,7 @@
   "area": "route_30",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_30.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 556, "y": 339, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_30.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 558, "y": 334, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
 
   // Plan 40 · GE3: SoulSilver's Ledyba, where HeartGold has Spinarak, once the National Pokédex is had

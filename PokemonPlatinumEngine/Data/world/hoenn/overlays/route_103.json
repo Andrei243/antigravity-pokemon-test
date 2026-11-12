@@ -10,8 +10,6 @@
     { "warp": 0, "map": "AlteringCave", "x": 18, "y": 21, "facing": "Up", "openedBy": "FLAG_HOENN_ALTERING_CAVE_OPEN" }
   ],
   "npcs": [
-    // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
-    {"id": "route_103.gather", "name": "Shells", "npcType": "GatherShore", "x": 172, "y": 231, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"},
     // The hiker who opens Altering Cave for a Champion of Hoenn (route_103.txt's AlteringCaveHiker)
     {
       "id": "altering_cave_hiker",

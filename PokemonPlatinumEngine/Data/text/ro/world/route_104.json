@@ -369,6 +369,16 @@
           "Pescar Darian: Mare nu înseamnă puternic, se pare."
         ]
       }
+    },
+    "route_104.gather": {
+      "name": {
+        "en": [
+          "Shells"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -318,7 +318,9 @@ public class TmMakerTests
             Assert.Equal(1, game.Bag.GetQuantity(Item("TM27")));
             Assert.Equal(0, screen.TakeSpent());
 
-            // The other tab is the pouch; the kit opened anywhere has no maker
+            // The next tab is the crosses (plan 39 · CR5), and after them the pouch; the kit opened anywhere has no maker
+            screen.ChangeTab(1);
+            Assert.Equal(CraftingTab.Crosses, screen.Tab);
             screen.ChangeTab(1);
             Assert.Equal(CraftingTab.Materials, screen.Tab);
             screen.Cancel();

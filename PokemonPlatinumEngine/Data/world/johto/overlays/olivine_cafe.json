@@ -3,7 +3,7 @@
   "area": "olivine_cafe",
   // A meal for the team (plan 39 · CR7; the place's MealStand script), shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "olivine_cafe.meal_stand", "name": "Waiter", "npcType": "Waiter", "x": 9, "y": 3, "facing": "Down", "script": "MealStand", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "olivine_cafe.meal_stand", "name": "Waiter", "npcType": "waiter", "x": 9, "y": 3, "facing": "Down", "script": "MealStand", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "bgmTrack": "johto/olivine",
   "people": {

@@ -90,7 +90,10 @@ public class BerryCrossingTests
     public void EveryCrossComesFromBerriesTheWorldGives()
     {
         // A fixed point: what the world gives, then whatever two berries had cross into, until nothing more comes
-        var had = ItemSources.Everywhere.Items.Where(i => ItemDatabase.Get(i)?.Berry != null).ToHashSet();
+        // (seeded only from a way other than crossing itself, which ItemSources counts once the kit is given)
+        var sources = ItemSources.Everywhere;
+        var had = sources.Items.Where(i => ItemDatabase.Get(i)?.Berry != null && sources.Of(i).Any(w => w.Kind != ItemSourceKind.Crossed)).ToHashSet();
+        Assert.All(BerryCrossing.Table.Rows, r => Assert.True(sources.Has(r.Makes, ItemSourceKind.Crossed)));
         bool grew = true;
         while (grew)
         {

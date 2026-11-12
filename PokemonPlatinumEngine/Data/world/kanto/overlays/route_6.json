@@ -4,7 +4,7 @@
   "area": "route_6",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_6.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 285, "y": 180, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_6.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 286, "y": 169, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
 
   // Plan 40 · GE3: LeafGreen's Bellsprout and Slowpoke, once the National Pokédex is had

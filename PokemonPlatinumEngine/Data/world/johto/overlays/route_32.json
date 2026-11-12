@@ -6,7 +6,7 @@
   "area": "route_32",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_32.gather", "name": "Shells", "npcType": "GatherShore", "x": 455, "y": 368, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_32.gather", "name": "Shells", "npcType": "GatherShore", "x": 454, "y": 366, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "ours": { "surf": [ ["Mirelord", 106, 110] ], "superRod": [ ["Fugumace", 106, 110] ] },
   "bgmTrack": "johto/route30",

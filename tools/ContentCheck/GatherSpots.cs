@@ -6,7 +6,7 @@ namespace ContentCheck;
 /// <summary>
 /// The gathering spots of an overlay (plan 39 · CR2): an overlay's <c>npcs</c> entry whose <c>npcType</c> is one of the
 /// five kinds. Each is shown by the crafting kit's flag (nothing of plan 39 is seen before the kit), stands on open ground
-/// that is no water, and is faced from an open tile beside it that nobody else stands on.
+/// that is no water and no path, and is faced from an open tile beside it that nobody else stands on.
 /// </summary>
 public static class GatherSpots
 {
@@ -20,6 +20,7 @@ public static class GatherSpots
         if (shownBy != GameEngine.CraftingKitFlag) yield return $"a gathering spot is shown by {GameEngine.CraftingKitFlag}, not by {shownBy ?? "nothing"}";
         if (map == null || !map.InBounds(x, y)) yield break;
         if (map.IsSolid(x, y) || map.GetGroundTile(x, y) == TileType.Water) yield return "a gathering spot stands on blocked ground or water";
+        if (map.GetGroundTile(x, y) is TileType.Path or TileType.Paving or TileType.Planks or TileType.Stairs) yield return "a gathering spot stands on a path";
         bool faced = false;
         foreach (var (dx, dy) in new[] { (0, 1), (0, -1), (1, 0), (-1, 0) })
         {

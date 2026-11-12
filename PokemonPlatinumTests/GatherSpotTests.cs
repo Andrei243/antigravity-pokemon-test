@@ -126,6 +126,18 @@ public class GatherSpotTests
                 Assert.Equal(GameEngine.CraftingKitFlag, spot.ShownBy);
                 Assert.Equal(FieldScripts.Gather, FieldScripts.For(spot));
                 Assert.Empty(ContentCheck.GatherSpots.Why(map, spot.GridX, spot.GridY, spot.ShownBy));
+                // Every tile round it open ground of its own area and level, so it shuts no way through (what the
+                // walks of the regions can't show, since they walk with the kit's flag unset and the spot away)
+                var area = map.AreaAt(spot.GridX, spot.GridY);
+                for (int dy = -1; dy <= 1; dy++)
+                    for (int dx = -1; dx <= 1; dx++)
+                    {
+                        int nx = spot.GridX + dx, ny = spot.GridY + dy;
+                        Assert.False(map.IsSolid(nx, ny), $"{spot.Key}: {nx},{ny} is blocked");
+                        Assert.Equal(area, map.AreaAt(nx, ny));
+                        Assert.Equal(map.HeightAt(spot.GridX, spot.GridY), map.HeightAt(nx, ny));
+                        Assert.Null(map.GetWarpAt(nx, ny));
+                    }
                 // Hidden in a game without the kit, there with it
                 map.ApplyPresence(_ => false);
                 Assert.DoesNotContain(spot, map.NPCs);
@@ -133,6 +145,26 @@ public class GatherSpotTests
                 Assert.Contains(spot, map.NPCs);
             }
         }
+    }
+
+    [Fact]
+    public void TheCheckFindsASpotOnBlockedGroundOnWaterOnAPathOrShownByAnotherFlag()
+    {
+        var map = new Map(6, 6);
+        for (int y = 0; y < 6; y++)
+            for (int x = 0; x < 6; x++) map.SetGroundTile(x, y, TileType.Grass, isSolid: false);
+        Assert.Empty(ContentCheck.GatherSpots.Why(map, 2, 2, GameEngine.CraftingKitFlag));
+        Assert.Contains(ContentCheck.GatherSpots.Why(map, 2, 2, "FLAG_SOMETHING_ELSE"), w => w.Contains("shown by"));
+        map.SetGroundTile(3, 3, TileType.Water, isSolid: false);
+        Assert.Contains(ContentCheck.GatherSpots.Why(map, 3, 3, GameEngine.CraftingKitFlag), w => w.Contains("water"));
+        map.SetGroundTile(1, 1, TileType.Path, isSolid: false);
+        Assert.Contains(ContentCheck.GatherSpots.Why(map, 1, 1, GameEngine.CraftingKitFlag), w => w.Contains("path"));
+        map.SetGroundTile(4, 4, TileType.Grass, isSolid: true);
+        Assert.Contains(ContentCheck.GatherSpots.Why(map, 4, 4, GameEngine.CraftingKitFlag), w => w.Contains("blocked"));
+        // Shut in on every side: nowhere to face it from
+        foreach (var (x, y) in new[] { (0, 1), (1, 0), (2, 1), (1, 2) }) map.SetGroundTile(x, y, TileType.Grass, isSolid: true);
+        map.SetGroundTile(1, 1, TileType.Grass, isSolid: false);
+        Assert.Contains(ContentCheck.GatherSpots.Why(map, 1, 1, GameEngine.CraftingKitFlag), w => w.Contains("faced"));
     }
 
     [Fact]

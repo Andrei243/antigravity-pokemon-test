@@ -44,5 +44,73 @@
         "Altă dată, atunci. Oricum se răcește supa."
       ]
     }
+  ],
+  "MealStand": [
+    {
+      "en": [
+        "Waiter"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good evening! Besides the battles, our kitchen now serves a meal for your whole team, eaten here and now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What will it be?",
+        "Mushroom Bake, 2,400",
+        "Quiet Broth, 1,800",
+        "Spiced Flatbread, 1,500",
+        "The pantry",
+        "Nothing, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bon appétit! Your team tucked in and looks ready for anything."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We sell the same goods we cook with. Take what you like for your own pot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, that's a little more than you have on you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're hungry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

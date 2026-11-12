@@ -121,6 +121,16 @@
           "E mai repede să sari de pe o treaptă de pământ decât s-o ocolești. Greu e să urci înapoi."
         ]
       }
+    },
+    "route_29.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

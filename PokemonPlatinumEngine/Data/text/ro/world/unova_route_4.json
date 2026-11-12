@@ -503,6 +503,16 @@
           "Nisipul bate dinspre deșertul din nord. Închide ochii, mergi mai departe și încrede-te în picioare!"
         ]
       }
+    },
+    "unova_route_4.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

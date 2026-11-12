@@ -321,6 +321,16 @@
           "Crescător de păsări Coby: S-au întors pe pământ."
         ]
       }
+    },
+    "route_113.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

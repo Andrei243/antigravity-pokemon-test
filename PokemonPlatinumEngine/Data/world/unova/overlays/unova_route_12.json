@@ -3,7 +3,7 @@
   "area": "unova_route_12",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "unova_route_12.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 607, "y": 184, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "unova_route_12.gather", "name": "Herb bush", "npcType": "GatherPlant", "x": 615, "y": 175, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "bgmTrack": "unova/route12",
   "people": {

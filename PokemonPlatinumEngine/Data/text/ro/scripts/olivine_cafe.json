@@ -24,5 +24,73 @@
         "Lumina lui Amphy ține corăbiile în siguranță cât mănânc. Îi sunt recunoscător."
       ]
     }
+  ],
+  "MealStand": [
+    {
+      "en": [
+        "Waiter"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello there! Sailors swear by our cooking. Your team can have a proper meal, here and now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What will it be?",
+        "Honey Oat Cakes, 2,000",
+        "Quiet Broth, 1,800",
+        "Berry Pilaf, 2,200",
+        "The pantry",
+        "Nothing, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you go! A sailor's meal for every one of them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We sell the same goods we cook with. Take what you like for your own pot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, that's a little more than you have on you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're hungry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

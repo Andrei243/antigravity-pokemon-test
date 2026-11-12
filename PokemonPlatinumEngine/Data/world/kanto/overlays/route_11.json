@@ -4,7 +4,7 @@
   "area": "route_11",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_11.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 345, "y": 221, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_11.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 321, "y": 219, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "bgmTrack": "kanto/route11",
   "people": {

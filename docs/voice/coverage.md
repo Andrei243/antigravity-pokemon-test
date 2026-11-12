@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 122 | 119 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1674 | 1611 | 63 | 1 | 0 |
-| Scripts (`script:`) | 12665 | 12159 | 506 | 17 | 36 |
+| Scripts (`script:`) | 12699 | 12191 | 508 | 17 | 36 |
 | People of the world (`world:`) | 8062 | 8000 | 62 | 4 | 0 |
-| **All** | 22667 | 22033 | 634 | 22 | 36 |
+| **All** | 22701 | 22065 | 636 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,9 +22,9 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 958 |
+| a question's answers | 983 |
 | a sign | 1770 |
-| the game's own voice (speaker none) | 297 |
+| the game's own voice (speaker none) | 319 |
 | the game's own voice (text) | 2115 |
 
 ## The cast
@@ -32,7 +32,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 910 voices (351 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 554 voices.
 - Archetypes in use: 248, with 749 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 347.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 349.
 
 ## Lines by voice
 
@@ -47,7 +47,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:clerk (any)` | 569 | 13 |
 | `look:lass (any)` | 549 | 22 |
 | `look:youngster (any)` | 516 | 32 |
-| `@self` | 347 | 40 |
+| `@self` | 349 | 42 |
 | `look:scientist (any)` | 330 | 13 |
 | `look:attendant (any)` | 321 | 12 |
 | `look:nurse (any)` | 297 | 2 |
@@ -106,6 +106,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `lance` | 67 | 0 |
 | `prof_juniper` | 67 | 0 |
 | `class:scientist (any)` | 66 | 0 |
+| `stall_keeper` | 65 | 12 |
 | `archie` | 62 | 3 |
 | `artist` | 62 | 1 |
 | `class:worker (any)` | 62 | 0 |
@@ -121,7 +122,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `crasher_wake` | 54 | 0 |
 | `school_kid` | 54 | 0 |
 | `bill` | 53 | 0 |
-| `stall_keeper` | 53 | 12 |
 | `owner` | 51 | 5 |
 | `class:gentleman (any)` | 50 | 0 |
 | `class:young_couple (any)` | 50 | 0 |
@@ -181,6 +181,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `saturn` | 34 | 0 |
 | `clay` | 33 | 3 |
 | `president` | 33 | 0 |
+| `waiter` | 33 | 0 |
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |
@@ -194,6 +195,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:dragon_tamer (any)` | 30 | 0 |
 | `class:school_kid_m (any)` | 30 | 0 |
 | `class:skier (any)` | 30 | 0 |
+| `florist` | 30 | 0 |
 | `head_coach` | 30 | 1 |
 | `lt_surge` | 30 | 0 |
 | `brock` | 29 | 0 |
@@ -208,7 +210,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:aroma_lady (any)` | 28 | 0 |
 | `class:triathlete (any)` | 28 | 0 |
 | `erika` | 28 | 0 |
-| `florist` | 28 | 0 |
 | `lillie` | 28 | 0 |
 | `misty` | 28 | 0 |
 | `hala` | 27 | 0 |

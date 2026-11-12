@@ -637,7 +637,7 @@
     {
       "id": "meal_waiter",
       "name": "Waiter",
-      "npcType": "Waiter",
+      "npcType": "waiter",
       "x": 16,
       "y": 12,
       "facing": "Up",

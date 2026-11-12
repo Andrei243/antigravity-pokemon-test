@@ -127,6 +127,16 @@
           "Marinar"
         ]
       }
+    },
+    "meal_stall": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

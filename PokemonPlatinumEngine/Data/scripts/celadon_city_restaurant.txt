@@ -23,7 +23,7 @@ label Done
 script MealStand
   face self player
   speaker "Waiter"
-  say "Welcome! Today's specials are for Pokémon and Trainer alike. The whole team eats, here and now."
+  say "The chef's kitchen isn't open yet, but our little pot is! Today's specials are for your whole team, eaten here and now."
   choose "What will it be?" "Bean Hotpot, 1,600" "Potato Hash, 1,800" "Honey Oat Cakes, 2,000" "The pantry" "Nothing, thanks"
   if result == 4 goto Bye
   if result == 3 goto Pantry

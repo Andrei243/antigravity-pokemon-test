@@ -8,7 +8,7 @@
   "area": "unova_route_4",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "unova_route_4.gather", "name": "Rock", "npcType": "GatherRock", "x": 410, "y": 551, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "unova_route_4.gather", "name": "Rock", "npcType": "GatherRock", "x": 374, "y": 579, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
   "bgmTrack": "unova/route4",
   "triggers": [

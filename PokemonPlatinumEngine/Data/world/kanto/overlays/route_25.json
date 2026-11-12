@@ -3,7 +3,7 @@
   "area": "route_25",
   // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
   "npcs": [
-    {"id": "route_25.gather", "name": "Shells", "npcType": "GatherShore", "x": 348, "y": 7, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+    {"id": "route_25.gather", "name": "Shells", "npcType": "GatherShore", "x": 341, "y": 8, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
   ],
 
   // Plan 40 · GE3: LeafGreen's Bellsprout and Slowpoke, once the National Pokédex is had

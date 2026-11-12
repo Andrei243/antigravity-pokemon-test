@@ -104,7 +104,7 @@
   // entered and the three Swords have been fought (FLAG_UNOVA_KELDEO_WAITS), gone once fought itself
   "npcs": [
     // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
-    {"id": "unova_route_13.gather", "name": "Shells", "npcType": "GatherShore", "x": 699, "y": 244, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"},
+    {"id": "unova_route_13.gather", "name": "Shells", "npcType": "GatherShore", "x": 712, "y": 261, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"},
     { "id": "grotto_mouth_6", "name": "Hollow", "npcType": "GrottoHollow", "x": 699, "y": 271, "facing": "Down", "script": "GrottoMouth" },
     { "id": "keldeo", "name": "Keldeo", "npcType": "Pokemon", "species": "Keldeo", "x": 684, "y": 190, "facing": "Down", "script": "Keldeo", "shownBy": "FLAG_UNOVA_KELDEO_WAITS", "hiddenBy": "FLAG_UNOVA_FOUGHT_KELDEO" }
   ],
