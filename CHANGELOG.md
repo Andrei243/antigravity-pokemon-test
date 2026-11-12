@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- In Kalos, riding Route 17's Mamoswine now shows you sitting on its back at its full size, and people lying in bed and fishermen fishing are drawn as the grown figures everyone else in Kalos is.
 - Sunyshore City's workshop has a berry garden through its back door: two rows of soft soil, twenty-four patches to plant in, and a keeper who sells mulch and, with the crafting kit, shows which Berries cross. Berries side by side in a row may cross as they do anywhere else.
 - The record desk upstairs in every Pokémon Center mixes records again, between your own save slots: your other adventures' trainers then stand in Jubilife City's friends' hall to battle, their Hoenn secret bases stand at their spots for you to visit (owner, furniture and all, listed on your own base's REGISTRY), and their answers to Jubilife TV's reporters turn up on television. Your other saves are only read, never changed.
 - Johto's trees can be shaken with Headbutt: face a tree with a Pokémon that knows the move and a Pokémon may fall out of it, such as Hoothoot, Pineco, Exeggcute, Spinarak, Aipom and Heracross. Some trees are richer than others, and which ones depends on your trainer number. The man by Ilex Forest's way in teaches Headbutt once, for nothing, and the Pokédex's area page shows which species live in the trees.

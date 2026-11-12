@@ -95,9 +95,26 @@ internal static class FieldRigChoice
 
     /// <summary>
     /// Whether the grown kit draws someone in a stance live (plan 30 · FM6): standing, sitting on a seat or on the ground,
-    /// and (the gate's owed) treading water. Lying stays the sprite.
+    /// and (the gate's owed) treading water, lying on a bed and fishing (a rod in their hands).
     /// </summary>
-    public static bool LiveIn(Overworld.Stance stance) => stance is Overworld.Stance.Stand or Overworld.Stance.Sit or Overworld.Stance.SitGround or Overworld.Stance.Swim;
+    public static bool LiveIn(Overworld.Stance stance) => stance is Overworld.Stance.Stand or Overworld.Stance.Sit or Overworld.Stance.SitGround
+        or Overworld.Stance.Swim or Overworld.Stance.Lie or Overworld.Stance.Fish or Overworld.Stance.Tug;
+
+    /// <summary>How far behind a lier's tile's middle their crown lies, in tiles: the pillow, where the chibi card stands.</summary>
+    public const float PillowBehind = 0.3f;
+
+    /// <summary>
+    /// Where a grown lier's root (their feet) lies (plan 30, the gate's owed; style guide, "Live rigs in the field"): the
+    /// lying clip lays the body on its back from the feet toward the way behind them, so the feet are put a body's length
+    /// (<paramref name="crown"/>, in tiles) less the pillow's share ahead of the tile's middle along the way they face, and
+    /// the crown comes to the pillow.
+    /// </summary>
+    public static Vector3 LieAlong(Vector3 lying, Data.Direction facing, float crown)
+    {
+        var (dx, dz) = Overworld.FieldMovement.Delta(facing);
+        float ahead = crown - PillowBehind;
+        return lying + new Vector3(dx * ahead, 0f, dz * ahead);
+    }
 
     /// <summary>
     /// How fast someone moved over the ground between two frames, in a grown rig's model units a second (plan 30 · FM6,
@@ -278,9 +295,20 @@ internal sealed class FieldRigs
         // at by that much of it, stretched as it is drawn (plan 30, the gate's owed)
         if (f.Pose.Stance == Overworld.Stance.Swim && f.Seating is { } water)
             at = water.Stood - new Vector3(0f, CharacterSprites.WaterLineHeight(rig) * vs, 0f);
-        else if (f.Seating is { } seating && f.Pose.Stance != Overworld.Stance.Stand)
-            at = FieldRigChoice.GrownSeated(seating.Stood, f.Pose.Stance, seating.Facing, seating.Seat, seating.Raised,
+        else if (f.Seating is { } seating && f.Pose.Stance == Overworld.Stance.Lie)
+        {
+            // Lying along the bed on the grown mattress, the crown on the pillow (the gate's owed): the mattress stands
+            // stretched as every upright thing is, so its top is its height by the vertical scale
+            float mattress = seating.Raised || seating.Seat is not { } bed ? 0f : Overworld.Seats.GrownHeightOf(bed) * vs;
+            float crown = CharacterModels.GrownFrameOf(rig.Style.Build, rig.Style.CurvedFigure()).Crown * rig.Scale;
+            at = FieldRigChoice.LieAlong(seating.Stood + new Vector3(0f, mattress, 0f), seating.Facing, crown);
+        }
+        else if (f.Seating is { } seating2 && f.Pose.Stance != Overworld.Stance.Stand)
+            at = FieldRigChoice.GrownSeated(seating2.Stood, f.Pose.Stance, seating2.Facing, seating2.Seat, seating2.Raised,
                 GrownAnimation.SeatOf(rig.Skeleton) * rig.Scale);
+        // A grown rider on a ride on land sits their saddle on the seat a chibi rider's feet are set at (the gate's owed)
+        else if (f.Pose.Riding == Riding.Mount)
+            at -= new Vector3(0f, GrownAnimation.SaddleOf(rig.Skeleton) * rig.Scale * vs, 0f);
         if (f.Who is not { } key) return (f.Pose, f.Yaw, at + f.Drawn);
         var ground = f.Seating?.Stood ?? f.Feet;
         if (!motions.TryGetValue(key, out var m) || !ReferenceEquals(m.Rig, rig)) m = (GrownMotion.For(rig, f.Yaw), ground, rig);
@@ -320,8 +348,12 @@ internal sealed class FieldRigs
                 continue;
             }
             var root = Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateScale(1f, vs, 1f) * Matrix4x4.CreateTranslation(at);
+            // Under a bridge's deck the boards hide them as they hide a sprite (plan 30, the gate's owed)
+            var over = figures[i].Over;
+            if (over != null) shaders.SetLiveDeckOver(over);
             CharacterRenderer.Draw(context, rig, pose, root, CharacterPass.Color);
             CharacterRenderer.Draw(context, rig, pose, root, CharacterPass.Outline);
+            if (over != null) { Rlgl.DrawRenderBatchActive(); shaders.SetLiveDeckOver(null); }
             // (the outline leaves culling on; the field draws with it off)
             Rlgl.DisableBackfaceCulling();
             Triangles += TrianglesOf(rig, outline: true);
