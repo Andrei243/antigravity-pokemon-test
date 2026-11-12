@@ -398,6 +398,12 @@ public sealed class SpeciesSources
             foreach (string s in tables.GreatMarsh.Local.Concat(tables.GreatMarsh.National)) f.Species(s, "the Great Marsh", true);
             foreach (string s in tables.TrophyGarden) f.Species(s, "the Trophy Garden", true);
             f.Species(tables.Feebas.Species, "Feebas's tiles", true);
+            // The hideaways under the Underground, after Sinnoh's Hall of Fame (plan 38 · EX6): each day's twelve are of its pool
+            foreach (var h in Models.Underground.Hideaways.All)
+            {
+                foreach (string s in Models.Underground.Hideaways.Pool(h, national: false)) f.Species(s, $"{h.Name}: a hideaway", true);
+                foreach (string s in Models.Underground.Hideaways.Pool(h, national: true)) f.Species(s, $"{h.Name}: a hideaway (National Pokédex)", true);
+            }
         }
 
         // What the scripts hand over, battle or sell

@@ -42,7 +42,7 @@ public sealed record InfoLine(string Name, string Detail = "", InfoTone Tone = I
 /// told them; an item the player saw go and that nothing has replaced is "None".
 /// </summary>
 public sealed record PokemonInfo(Battler Place, Pokemon Pokemon, string? Ability, string? Item,
-    IReadOnlyList<InfoLine> Stages, IReadOnlyList<InfoLine> Conditions);
+    IReadOnlyList<InfoLine> Stages, IReadOnlyList<InfoLine> Conditions, bool LevelHidden = false);
 
 /// <summary>A side of the field: what it has up and lying about, and its Pokémon.</summary>
 public sealed record SideInfo(BattleSide Side, IReadOnlyList<InfoLine> Lines, IReadOnlyList<PokemonInfo> Pokemon);
@@ -80,11 +80,12 @@ public sealed class BattleInfo
         Field.Select(l => l.Text).Concat(Sides.SelectMany(s => s.Lines.Select(l => l.Text)
             .Concat(s.Pokemon.SelectMany(p => p.Stages.Concat(p.Conditions).Select(l => $"{p.Pokemon.DisplayName}: {l.Text}")))));
 
-    public static BattleInfo Of(FieldState field, IReadOnlyList<Battler> player, IReadOnlyList<Battler> enemy, Revealed revealed)
+    /// <summary>The panel as it stands; <paramref name="foesLevelHidden"/> draws the foes' levels as ??? (a staged battle's <c>hidelevel</c>).</summary>
+    public static BattleInfo Of(FieldState field, IReadOnlyList<Battler> player, IReadOnlyList<Battler> enemy, Revealed revealed, bool foesLevelHidden = false)
     {
         var sides = new[] { player, enemy }
             .Select((slots, side) => new SideInfo((BattleSide)side, SideLines(field, (BattleSide)side),
-                slots.Where(b => b.IsActive).Select(b => Card(b, field, revealed)).ToList()))
+                slots.Where(b => b.IsActive).Select(b => Card(b, field, revealed) with { LevelHidden = foesLevelHidden && side == (int)BattleSide.Enemy }).ToList()))
             .ToList();
         return new BattleInfo(FieldLines(field), sides);
     }

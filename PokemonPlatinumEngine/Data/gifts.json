@@ -31,6 +31,7 @@
     { "id": "festival_bellfall", "when": { "festival": "bellfall" }, "yearly": true, "picture": { "kind": "item", "name": "Soothe Bell" }, "script": "FestivalBellfall" },
     { "id": "festival_tide_day", "when": { "festival": "tide_day" }, "yearly": true, "picture": { "kind": "item", "name": "Mystic Water" }, "script": "FestivalTideDay" },
     { "id": "festival_bridgelight", "when": { "festival": "bridgelight" }, "yearly": true, "picture": { "kind": "item", "name": "Prism Scale" }, "script": "FestivalBridgelight" },
+    { "id": "festival_serenade", "when": { "festival": "serenade" }, "yearly": true, "picture": { "kind": "item", "name": "Throat Spray" }, "script": "FestivalSerenade" },
     // The three great days of the year in every region, and a quiet fourth (the note of part D)
     { "id": "easter", "when": { "festival": "easter" }, "yearly": true, "picture": { "kind": "item", "name": "Lucky Egg" }, "script": "Easter" },
     { "id": "christmas", "when": { "festival": "christmas" }, "yearly": true, "picture": { "kind": "item", "name": "Star Piece" }, "script": "Christmas" },

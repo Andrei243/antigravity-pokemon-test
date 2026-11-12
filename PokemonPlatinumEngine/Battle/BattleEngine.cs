@@ -104,7 +104,7 @@ public partial class BattleEngine
     private readonly HashSet<Place> lungedForResearch = new();
 
     /// <summary>Whether what this battle shows feeds the Pokédex's research: not a watched recording, the catching lesson or the Frontier, which the Pokédex hears nothing of.</summary>
-    private bool Researching => !Watching && Kind != BattleKind.CatchingLesson && !IsFrontier;
+    private bool Researching => !Watching && Kind != BattleKind.CatchingLesson && !IsFrontier && !IsStaged;
 
     /// <summary>The places on each side as the screen has them: one each in a single battle, two in a double.</summary>
     public IReadOnlyList<Battler> PlayerSlots { get; }
@@ -393,6 +393,11 @@ public partial class BattleEngine
             PartnerController = (watched?.FriendPartner ?? setup.FriendPartner) && setup.Partner != null ? null : TrainerAi.Instance,
             Palace = watched?.Palace ?? setup.Palace,
             TurnLimit = watched?.TurnLimit ?? setup.TurnLimit,
+            // A staged battle's terms (docs/mechanics/rulings.md, "Staged battles")
+            HideLevel = setup.HideLevel,
+            Untouchable = setup.Untouchable,
+            Passive = setup.Passive,
+            EndAfterTurns = setup.EndAfterTurns,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched
             // has what the recorded one had (plan 08 · P11)
             KeyStone = watched?.KeyStone ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),
@@ -413,6 +418,8 @@ public partial class BattleEngine
 
         // A horde's wild side has its own count of places (plan 14 · B4); a single's and a double's are the same both sides
         Anim.SetSlots(core.PlayerSlots.Count, core.EnemySlots.Count);
+        // A staged battle's foe shows its level as ??? on its box (docs/mechanics/rulings.md, "Staged battles")
+        for (int slot = 0; slot < BattleAnimator.MostSlots; slot++) Anim[BattleSide.Enemy, slot].LevelHidden = HidesLevel(BattleSide.Enemy);
         // An SOS battle's wild Pokémon stands alone in the middle until an ally comes (plan 14 · B5)
         if (IsSos) Anim.Gather(BattleSide.Enemy);
         // A rotation battle's platforms are turntables (plan 14 · B7)
@@ -478,6 +485,18 @@ public partial class BattleEngine
 
     /// <summary>Nothing may be used from the bag (plan 14 · B14, a Master Trainer's battle): BAG is greyed and says why.</summary>
     public bool BagClosed => core.NoBattleItems || core.BagShutByTheRun;
+
+    /// <summary>A staged battle (docs/mechanics/rulings.md, "Staged battles"; <see cref="BattleCore.Staged"/>): no EXP, catch or Pokédex.</summary>
+    public bool IsStaged => core.Staged;
+
+    /// <summary>Whether a Pokémon's level is drawn as ??? (the staged battle's <c>hidelevel</c>): the other side's alone.</summary>
+    public bool HidesLevel(BattleSide side) => core.HideLevel && side == BattleSide.Enemy;
+
+    /// <summary>
+    /// The level the screen shows for a place's Pokémon, null where it is drawn as ??? (<see cref="HidesLevel"/>): what
+    /// every HP box, target card and information card asks, so a test can read it with no window.
+    /// </summary>
+    public int? ShownLevel(Battler place) => place.Pokemon == null || HidesLevel(place.Side) ? null : place.Pokemon.Level;
 
     /// <summary>A battle of the Battle Palace (plan 14 · B9): the player's Pokémon choose for themselves and the commands stand closed.</summary>
     public bool Palace => core.Palace;
@@ -837,7 +856,8 @@ public partial class BattleEngine
                 break;
             case Seen seen:
                 // The Pokédex isn't told of what is met in the catching lesson or the Battle Frontier (BattleSystem_DexFlagSeen)
-                if (Kind != BattleKind.CatchingLesson && !IsFrontier)
+                // (nor of a staged battle's foe: BattleCore.Staged.cs)
+                if (Kind != BattleKind.CatchingLesson && !IsFrontier && !IsStaged)
                 {
                     // The first Spinda met gives its spots (the log's event carries the look and not the personality, which only that species needs)
                     uint? spots = Pokedex.KeepsPersonality(seen.Species) ? EnemySlots.Select(b => b.Pokemon).FirstOrDefault(p => p != null && p.Species == seen.Species)?.Personality : null;

@@ -264,11 +264,13 @@ in vec4 fragColor;
 in vec3 fragWorld;
 uniform vec3 inkColor;
 uniform float inkAmount;
+uniform vec4 deckOver;
 out vec4 finalColor;
 " + MirrorFunctions + @"
 void main()
 {
     MirrorClip(fragWorld);
+    if (deckOver.w > 0.5 && fragWorld.y > deckOver.z && fragWorld.x >= deckOver.x && fragWorld.x <= deckOver.y) discard;
     finalColor = vec4(mix(fragColor.rgb, inkColor, inkAmount), 1.0);
 }";
 
@@ -502,11 +504,14 @@ uniform vec3 groundAmbient;
 uniform float shadowStrength;
 uniform float rimStrength;
 uniform vec4 flash;
+// A bridge's deck over a grown region's live rig (plan 30, the gate's owed), as the sprite program's: nought elsewhere
+uniform vec4 deckOver;
 out vec4 finalColor;
 " + ShadowFunctions + FogFunctions + CloudFunctions + MirrorFunctions + @"
 void main()
 {
     MirrorClip(fragWorld);
+    if (deckOver.w > 0.5 && fragWorld.y > deckOver.z && fragWorld.x >= deckOver.x && fragWorld.x <= deckOver.y) discard;
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
     vec3 albedo = texel.rgb * colDiffuse.rgb * fragColor.rgb;
@@ -1170,6 +1175,17 @@ void main()
     public void SetDeckOver((float X0, float X1, float Top)? deck) =>
         Set(Sprite, "deckOver", deck is { } d ? new Vector4(d.X0, d.X1, d.Top, 1f) : Vector4.Zero);
 
+    /// <summary>
+    /// The deck over the next live rig of a grown region's field (plan 30, the gate's owed), on the skinned programs (the
+    /// body's and the outline's), or null for none; <see cref="ClearSkinnedStraightening"/> puts it back to nought too.
+    /// </summary>
+    public void SetLiveDeckOver((float X0, float X1, float Top)? deck)
+    {
+        var value = deck is { } d ? new Vector4(d.X0, d.X1, d.Top, 1f) : Vector4.Zero;
+        Set(CharacterSkinned, "deckOver", value);
+        Set(OutlineSkinned, "deckOver", value);
+    }
+
     /// <summary>Ends the mirror pass: nothing is cut off any more. Call <see cref="SetUpright"/> for the scene after it.</summary>
     public void EndMirrorPass()
     {
@@ -1204,6 +1220,7 @@ void main()
             Set(shader, "pitchSin", 0f);
             Set(shader, "uprightBase", 0f);
             Set(shader, "mirrorClip", Vector2.Zero);
+            Set(shader, "deckOver", Vector4.Zero);
         }
     }
 

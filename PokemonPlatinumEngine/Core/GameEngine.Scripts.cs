@@ -200,12 +200,14 @@ public partial class GameEngine
         ArrivePuzzle();
         // The tunnels are laid out as the player comes to them (plan 06 · R16a)
         if (IsUnderground) ArriveUnderground();
-        // A flag carried and a trap sprung stay below, however the player leaves
+        // A flag carried and a trap sprung stay below, however the player leaves (a hideaway is left them too)
         else if (flow.Underground.HeldFlag != null || flow.Trap != null)
         {
             flow.Underground.HeldFlag = null;
             flow.Trap = null;
         }
+        // A hideaway under them is stocked with the day's Pokémon (plan 38 · EX6)
+        StockHideaway();
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
         // The Laurel Gallery's plinths stand for the regions finished (plan 41 · EG2)
@@ -1276,15 +1278,17 @@ public partial class GameEngine
             game.StartTrainerBattle(first, second, thirdNpc: third);
         }
 
-        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
+        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null, BattleTerms? terms = null, bool mayLose = false)
         {
             game.flow.ScriptOutcome = BattleOutcome.None;
-            game.flow.BattleMayBeLost = false;
+            game.flow.BattleMayBeLost = mayLose;
             // A script writes its game's own level; a region crossed into meets it at the mapped one (plan 18 · W4)
             if (kind != BattleKind.CatchingLesson) wild.Relevel(game.LevelHere(wild.Level));
             // A static encounter is the place's one chance under the Nuzlocke's gifts clause (plan 13 · V4)
+            // (a staged battle's foe is no catch at all, and spends no place's chance: docs/mechanics/rulings.md, "Staged battles")
             game.MeetWildPokemon(wild, kind, cannotFlee, catcher: catcher,
-                nuzlockeCatch: kind == BattleKind.Normal && !game.InBugContest ? game.MeetStaticUnderTheRun(wild) : NuzlockeCatch.Free);
+                nuzlockeCatch: kind == BattleKind.Normal && !game.InBugContest && terms is not { Staged: true } ? game.MeetStaticUnderTheRun(wild) : NuzlockeCatch.Free,
+                terms: terms);
         }
 
         public void TotemBattle(Pokemon wild, Battle.Sim.TotemAura aura)

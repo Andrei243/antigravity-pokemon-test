@@ -139,6 +139,9 @@ public class ScriptTests
           wildbattle "Giratina" 47 nofleeing
           wildbattle "Gyarados" 30 shiny
           wildbattle "Latios" 50 holding "Soul Dew"
+          wildbattle "Zacian" 70 hidelevel untouchable passive endafter 3
+          wildbattle "Zacian" 260 hidelevel mayrun canlose
+          battle self hidelevel untouchable passive endafter 2 canlose
           catchinglesson "Bidoof" 2
           catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7
           face self player
@@ -2045,7 +2048,7 @@ public class ScriptTests
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;
         public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null) { }
-        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null) { }
+        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null, BattleTerms? terms = null, bool mayLose = false) { }
         public BattleOutcome Outcome => BattleOutcome.Won;
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null) { }
         public bool GivePokemon(Pokemon pokemon) => true;

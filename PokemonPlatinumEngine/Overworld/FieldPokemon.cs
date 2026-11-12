@@ -78,6 +78,10 @@ public sealed class FieldPokemon
     {
         if (!map.InBounds(x, y) || map.GetNpcAt(x, y) != null) return false;
         if (water) return TileBehaviors.IsSurfable(map.BehaviourAt(x, y));
+        // A place that shows its Pokémon on every floor (plan 38 · EX6: a hideaway) stands them on any open ground but a way out
+        // (nor beside one, where it would stand in the only way to it)
+        if (map.WildVisibleAt(x, y)) return map.IsWalkable(x, y) && map.GetWarpAt(x, y) == null
+            && map.GetWarpAt(x, y - 1) == null && map.GetWarpAt(x, y + 1) == null && map.GetWarpAt(x - 1, y) == null && map.GetWarpAt(x + 1, y) == null;
         return map.IsTallGrass(x, y) && map.IsWalkable(x, y);
     }
 

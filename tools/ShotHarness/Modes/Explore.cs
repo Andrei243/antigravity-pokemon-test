@@ -20,6 +20,8 @@ partial class Harness
         if (part.Length == 0 || part == "unova") ExploreUnovaMap();
         if (part.Length == 0 || part == "outbreaks") ExploreOutbreaks();
         if (part.Length == 0 || part == "report") ExploreReport();
+        if (part.Length == 0 || part == "hideaways") ExploreHideaways();
+        if (part.Length == 0 || part == "headbutt") ExploreHeadbutt();
     }
 
     private void ExploreUnovaMap()

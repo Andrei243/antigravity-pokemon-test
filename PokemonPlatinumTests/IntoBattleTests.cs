@@ -371,6 +371,10 @@ public class IntoBattleTests
         Assert.Equal("Viola", SceneTransition.BandFor(With("kalos_viola_1", BattleTerrain.Building, 12, 10))!.Value.Name);
         Assert.Equal("Wulfric", SceneTransition.BandFor(With("kalos_wulfric_rematch", BattleTerrain.Building, 70, 60))!.Value.Name);
         Assert.Equal(Rgb(SceneTransition.KalosBands.Last().Base), Rgb(SceneTransition.BandFor(With("kalos_diantha_1", BattleTerrain.Special, 68, 60))!.Value.Base));
+        // The card behind a portrait is the band's light colour, but Viola's, whose vest and hair sank into it: a soft lilac
+        foreach (var band in SceneTransition.KalosBands.Where(b => b.Name != "Viola"))
+            Assert.Equal(band.Light, band.Backing);
+        Assert.Equal((196, 176, 220), Rgb(SceneTransition.BandOf("Leader", "Viola").Backing));
     }
 
     /// <summary>

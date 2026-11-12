@@ -17,7 +17,8 @@ partial class Harness
     //   gf88_tide_day: Slateport's bunting on 20 June (Hoenn);
     //   gf89_bridgelight: Castelia's plaza lit after dark on 3 February (Unova);
     //   gf8a_christmas: Jubilife City's park on 25 December with its decorated pine (Sinnoh's holidays);
-    //   gf8b_easter, gf8c_new_year, gf8d_valentine: the other three in Celadon's park, Kanto's holidays.
+    //   gf8b_easter, gf8c_new_year, gf8d_valentine: the other three in Celadon's park, Kanto's holidays;
+    //   gf8e_serenade, gf8f_serenade_after_dark, gf8g_serenade_east: Kalos's Solstice Serenade in Lumiose's two parks on 21 June.
     // It prints the festivals on each day and how many of each town's festival things stand on its map.
     void GiftsFestivals()
     {
@@ -98,6 +99,13 @@ partial class Harness
         Look("gf8c_new_year", "Kanto", 193, 144, Direction.Up);
         Day(2027, 2, 14, night: false);
         Look("gf8d_valentine", "Kanto", 193, 144, Direction.Up);
+
+        // Kalos's own: the Solstice Serenade in Lumiose's west park, by day and with its lanterns lit after dark
+        Day(2026, 6, 21, night: false);
+        Look("gf8e_serenade", "Kalos", 337, 360, Direction.Down);
+        Day(2026, 6, 21, night: true);
+        Look("gf8f_serenade_after_dark", "Kalos", 337, 360, Direction.Down);
+        Look("gf8g_serenade_east", "Kalos", 382, 366, Direction.Up);
 
         // The harness's day and the day's light back
         GameClock.FixedDate = harnessDay;

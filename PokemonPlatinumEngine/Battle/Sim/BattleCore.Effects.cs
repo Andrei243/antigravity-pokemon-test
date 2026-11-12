@@ -1135,6 +1135,8 @@ public sealed partial class BattleCore
         foreach (var b in BySpeed().Where(b => b.IsActive))
         {
             if (b.Volatile.PerishCount >= 0) continue;
+            // A staged battle's untouchable foe hears nothing of it (BattleCore.Staged.cs)
+            if (IsUntouched(user, b)) continue;
             if (Has(b, "Soundproof") && !(breaks && b != user))
             {
                 deaf.Add(b);

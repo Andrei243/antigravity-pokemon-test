@@ -92,6 +92,10 @@ public partial class BattleEngine
             RunLevelCap = rules.RunLevelCap,
             CrossedExp = rules.CrossedExp,
             Restrictions = rules.Restrictions,
+            HideLevel = rules.HideLevel,
+            Untouchable = rules.Untouchable,
+            Passive = rules.Passive,
+            EndAfterTurns = rules.EndAfterTurns,
             // A take of the studio: its foe's moves and its director, who picks the take's lines again (plan 42 · PS4)
             EnemyController = file.StudioFilm != null ? rules.EnemyController : null,
             StudioFilm = file.StudioFilm is { } id && Models.Studio.StudioFilms.Get(id) is { } film

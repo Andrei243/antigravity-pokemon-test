@@ -19,7 +19,9 @@ partial class Harness
     /// fishing and surfing on a pond of the harness's own (<c>kg30</c> to <c>kg32</c>), Lumiose's avenue, its station and
     /// a restaurant with their crowds (<c>kg40</c> to <c>kg44</c>), a species of ours met in Route 2's grass (<c>kg50</c>),
     /// and plan 30's free hand-offs on Kalos's ground (<c>fw31</c> a ledge's hop, <c>fw34</c> Aquacorde's bridge,
-    /// <c>fw35</c> a door walked into, <c>fw39</c> a script's walk). It prints what the field drew (live, impostors, sprites).
+    /// <c>fw35</c> a door walked into), then the rest of them and the owed grown figures (<see cref="KalosGrownWalk"/>:
+    /// <c>fw30</c> to <c>fw39</c>, <c>kg60</c> to <c>kg66</c>; <c>KALOSGROWN_FROM=walk</c> shoots those alone). It prints
+    /// what the field drew (live, impostors, sprites).
     /// </summary>
     public void KalosGrownMode()
     {
@@ -35,6 +37,14 @@ partial class Harness
         Console.WriteLine($"kit {engine.KitHere}, movement {engine.MovementHere.Directions}, the player's look {PlayerIdentity.Character}");
         void Drew(string what) =>
             Console.WriteLine($"  {what}: live {game.World.LiveRigs.Live}, impostors {game.World.LiveRigs.Impostors}, sprites {game.World.LiveRigs.Sprites}, waiting {game.World.LiveRigs.Waiting}");
+        // KALOSGROWN_FROM=walk shoots the free hand-offs and the owed figures alone (fw3*, kg6*)
+        if (Environment.GetEnvironmentVariable("KALOSGROWN_FROM") == "walk")
+        {
+            FreeHandOffs();
+            KalosGrownWalk();
+            FieldRigs.Patient = false;
+            return;
+        }
 
         // ---- talking to someone north of the player: the grown body stands back half a tile
         At("SantaluneCity_Gym", 6, 5, Direction.Up); Frames(4);
@@ -54,6 +64,8 @@ partial class Harness
             else Frames(1);
         }
         ShotBand("kg");
+        // KALOSGROWN_FROM=band stops at Viola's band (kg_band_viola), for a look at its card alone
+        if (Environment.GetEnvironmentVariable("KALOSGROWN_FROM") == "band") { FieldRigs.Patient = false; return; }
         for (int i = 0; i < 600 && game.State != GameState.Battle; i++) Frames(1);
         if (game.State == GameState.Battle) { Skip(1.0); ToMainMenu(game.Battle); Shot("kg03_violas_battle"); }
         // Back to the field, the battle let go of
@@ -156,6 +168,7 @@ partial class Harness
 
         // ---- plan 30's free hand-offs on Kalos's ground
         FreeHandOffs();
+        KalosGrownWalk();
         FieldRigs.Patient = false;
     }
 

@@ -391,4 +391,84 @@ internal static class FestivalArt
         c.VLine(10, 13, 3, ribbon);
         Pix.Outline(c);
     }
+
+    /// <summary>Kalos's music stand, 36 by 56: its card (<see cref="PaintMusicStand"/>).</summary>
+    public const int StandWidth = 36, StandHeight = 56;
+
+    /// <summary>
+    /// Kalos's Solstice Serenade in Lumiose City, 36 by 56: a music stand of wrought iron (a tripod's three splayed feet, a
+    /// rod, a tilted desk holding a sheet of songs on two staves, a scroll of iron curling over it with a small round lamp
+    /// at its top) and a bow of violet and gold ribbon tied round the rod, its tails hanging. Only the lamp's core is lit.
+    /// </summary>
+    public static void PaintMusicStand(PixelCanvas c)
+    {
+        var iron = Rgb(52, 56, 70);
+        var ironLit = Rgb(92, 98, 118);
+        int mid = c.Width / 2, h = c.Height;
+        // The tripod: three feet splayed from the rod's foot
+        for (int i = 0; i < 9; i++)
+        {
+            c.Set(mid - 1 - i, h - 9 + i, iron);
+            c.Set(mid + 1 + i, h - 9 + i, iron);
+        }
+        c.VLine(mid, h - 9, 9, iron);
+        c.HLine(mid - 11, h - 1, 3, iron);
+        c.HLine(mid + 9, h - 1, 3, iron);
+        // The rod, two texels, its left one lit
+        c.Rect(mid - 1, 24, 2, h - 33, iron);
+        c.VLine(mid - 1, 24, h - 33, ironLit);
+        // The desk: a ledge of iron with the sheet of songs standing on it, leaning back a texel every eight rows
+        int deskTop = 10, deskBottom = 26, left = 5, right = c.Width - 6;
+        var paper = Rgb(236, 226, 196);
+        var paperShade = Rgb(206, 192, 158);
+        var ink = Rgb(70, 52, 40);
+        for (int y = deskTop; y < deskBottom; y++)
+        {
+            int lean = (deskBottom - y) / 8;
+            c.HLine(left + lean, y, right - left, paper);
+            c.Set(right + lean - 1, y, paperShade);
+        }
+        // Two staves of five lines with a few notes on each
+        foreach (int top in new[] { deskTop + 2, deskTop + 9 })
+        {
+            for (int l = 0; l < 5; l += 2)
+            {
+                int y = top + l, lean = (deskBottom - y) / 8;
+                c.HLine(left + 2 + lean, y, right - left - 4, paperShade);
+            }
+            foreach (var (nx, ny) in new[] { (left + 5, top + 3), (left + 10, top + 1), (left + 15, top + 2), (left + 20, top), (left + 24, top + 3) })
+            {
+                c.Rect(nx, ny, 2, 2, ink);
+                c.VLine(nx + 1, ny - 3, 3, ink);
+            }
+        }
+        c.Rect(left - 1, deskBottom, right - left + 2, 2, iron);
+        c.HLine(left - 1, deskBottom, right - left + 2, ironLit);
+        // The scroll of iron over the desk: an arc from the desk's corners curling in at its ends, and the lamp at its top
+        for (int x = left; x <= right; x++)
+        {
+            float t = (x - mid) / (float)(right - left) * 2f;
+            int y = deskTop - 2 - (int)MathF.Round(5f * (1f - t * t));
+            c.Set(x, y, iron);
+        }
+        c.Set(left, deskTop - 1, iron); c.Set(left + 1, deskTop, iron);
+        c.Set(right, deskTop - 1, iron); c.Set(right - 1, deskTop, iron);
+        var glass = Rgb(246, 214, 120);
+        c.Rect(mid - 2, 0, 4, 4, glass);
+        c.HLine(mid - 2, 0, 4, Rgb(214, 170, 80));
+        c.VLine(mid, 4, 2, iron);
+        // The bow on the rod: violet and gold loops either side of a knot, two tails hanging
+        var violet = Rgb(150, 96, 196);
+        var violetDark = Rgb(104, 60, 148);
+        c.Rect(mid - 5, 30, 4, 3, violet);
+        c.Rect(mid + 1, 30, 4, 3, violet);
+        c.Set(mid - 5, 32, violetDark);
+        c.Set(mid + 4, 32, violetDark);
+        c.Rect(mid - 1, 30, 2, 3, Gold);
+        c.VLine(mid - 3, 33, 6, violet);
+        c.VLine(mid + 2, 33, 7, Gold);
+        c.Set(mid - 3, 39, violetDark);
+        Pix.Outline(c);
+        Pix.Lit(c, mid - 1, 1, 2, 2, ArtSheet.PublicLight);
+    }
 }

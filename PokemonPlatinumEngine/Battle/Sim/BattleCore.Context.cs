@@ -246,7 +246,8 @@ public sealed partial class BattleCore
     /// <param name="direct">Damage Magic Guard doesn't stop (Struggle's recoil, a Curse's price).</param>
     private void LoseHp(Battler target, int amount, string message, bool direct)
     {
-        if (!target.IsActive || (!direct && BattleEffects.Of(target).Any(e => e.PreventsIndirectDamage)))
+        // (and a staged battle's untouchable side loses nothing by the weather or anything else: BattleCore.Staged.cs)
+        if (!target.IsActive || (!direct && BattleEffects.Of(target).Any(e => e.PreventsIndirectDamage)) || (Untouchable && target.Side == BattleSide.Enemy))
         {
             Unsaid();
             return;

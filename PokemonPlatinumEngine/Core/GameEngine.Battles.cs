@@ -165,13 +165,14 @@ public partial class GameEngine
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
         Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null, bool sos = false,
-        Battle.Sim.TotemAura? totem = null, Battle.Sim.RaidTerms? raid = null)
+        Battle.Sim.TotemAura? totem = null, Battle.Sim.RaidTerms? raid = null, BattleTerms? terms = null)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second);
         // A horde's others are seen with the first (plan 14 · B3)
         foreach (var other in horde?.Skip(1) ?? Enumerable.Empty<Pokemon>()) flow.Pokedex.RegisterSeen(other);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
-        if (kind != BattleKind.CatchingLesson) { flow.Pokedex.RegisterSeen(wildPkmn); flow.Statistics.Count(Statistics.Encounters); }
+        // (nor of a staged battle's foe: docs/mechanics/rulings.md, "Staged battles")
+        if (kind != BattleKind.CatchingLesson && terms is not { Staged: true }) { flow.Pokedex.RegisterSeen(wildPkmn); flow.Statistics.Count(Statistics.Encounters); }
         // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
         var party = flow.Party;
         var bag = flow.Bag;
@@ -259,6 +260,11 @@ public partial class GameEngine
                 CrossedExp = CrossedExpHere(),
                 Nuzlocke = NuzlockeTermsFor(kind, nuzlockeCatch),
                 Restrictions = RunTermsFor(kind),
+                // A staged battle's terms, a script's (docs/mechanics/rulings.md, "Staged battles")
+                HideLevel = terms?.HideLevel ?? false,
+                Untouchable = terms?.Untouchable ?? false,
+                Passive = terms?.Passive ?? false,
+                EndAfterTurns = terms?.EndAfterTurns ?? 0,
                 Scene = Settings.BattleScene
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
@@ -685,6 +691,11 @@ public partial class GameEngine
                 CrossedExp = CrossedExpHere(),
                 Nuzlocke = NuzlockeTermsFor(BattleKind.Normal),
                 Restrictions = RunTermsFor(BattleKind.Normal),
+                // A staged battle's terms, a script's (docs/mechanics/rulings.md, "Staged battles")
+                HideLevel = terms?.HideLevel ?? false,
+                Untouchable = terms?.Untouchable ?? false,
+                Passive = terms?.Passive ?? false,
+                EndAfterTurns = terms?.EndAfterTurns ?? 0,
                 Scene = Settings.BattleScene
             });
             // (in an open map, the stage of the ground under the player: plan 32 · OW7)
@@ -873,6 +884,8 @@ public partial class GameEngine
     {
         if (!flow.Run.Nuzlocke || fought == null || flow.RunState.Ended) return false;
         if (fought.Kind == BattleKind.CatchingLesson || fought.Core.FirstBattle) return false;
+        // A staged battle (a foe the story brings to be lost to) buries nobody (docs/mechanics/rulings.md, "Staged battles")
+        if (fought.IsStaged) return false;
         var fallen = Nuzlocke.Bury(flow.RunState, flow.Party, Nuzlocke.PlaceKeyOf(flow.Map, flow.Player.GridX, flow.Player.GridY),
             flow.Map.DisplayNameAt(flow.Player.GridX, flow.Player.GridY), flow.PlayTime);
         if (fallen.Count > 0) Diagnostics.Log.Info($"The run lost {string.Join(", ", fallen.Select(p => p.Species.Name))}.");

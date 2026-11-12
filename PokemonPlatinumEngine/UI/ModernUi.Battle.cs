@@ -362,7 +362,7 @@ internal static partial class ModernUi
         float nameW = NameWithGender(p, x + pad, y + 32, 30);
         if (caught) nameW += CaughtMark(x + pad + nameW, y + 32, 30);
         StatusPill(x + pad + nameW + 12, y + 17, p.Status, 28);
-        Level(x + r.Width - 40, y + 32, p.Level, 30);
+        Level(x + r.Width - 40, y + 32, p.Level, 30, view.LevelHidden);
         HpBar(x + pad, y + 62, r.Width - pad - 44, 20, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
         if (mine)
         {
@@ -396,7 +396,7 @@ internal static partial class ModernUi
         float nameW = NameWithGender(p, x + 30, y + 27, 26);
         if (caught) nameW += CaughtMark(x + 30 + nameW, y + 27, 26);
         StatusPill(x + 30 + nameW + 10, y + 14, p.Status, 24);
-        Level(x + r.Width - 34, y + 27, p.Level, 26);
+        Level(x + r.Width - 34, y + 27, p.Level, 26, view.LevelHidden);
         HpBar(x + 30, y + 52, r.Width - 30 - 38, 16, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
         GiantTags(r, view);
     }
@@ -450,7 +450,7 @@ internal static partial class ModernUi
         Panel(r, 18, 0.2f, turn ? 5f : 4f, turn ? Selection : null);
         float nameW = NameWithGender(p, x + 34, y + 27, 26);
         StatusPill(x + 34 + nameW + 10, y + 14, p.Status, 24);
-        Level(x + r.Width - 34, y + 27, p.Level, 26);
+        Level(x + r.Width - 34, y + 27, p.Level, 26, view.LevelHidden);
         int hp = (int)MathF.Ceiling(view.DisplayedHp);
         string hpText = $"{hp}/{p.MaxHP}";
         float hw = UiFonts.Measure(hpText, 20, UiWeight.Black);
@@ -521,7 +521,7 @@ internal static partial class ModernUi
             {
                 Portrait(new Vector2(r.X + 56, r.Y + r.Height / 2f), 38, p, 1, selected);
                 NameWithGender(p, r.X + 112, r.Y + 34, 30);
-                Level(r.X + r.Width - 30, r.Y + 34, p.Level, 28);
+                Level(r.X + r.Width - 30, r.Y + 34, p.Level, 28, battle.ShownLevel(place) == null);
                 HpBar(r.X + 112, r.Y + 62, r.Width - 142, 18, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
             }
             if (choice < 0) UiShapes.Fill(r, 26, new Color(40, 40, 60, 60));
@@ -615,7 +615,7 @@ internal static partial class ModernUi
         float nameW = NameWithGender(p, x + 38, y + 38, 36);
         if (caught) nameW += CaughtMark(x + 38 + nameW, y + 38, 36);
         StatusPill(x + 38 + nameW + 14, y + 22, p.Status, 30);
-        Level(x + r.Width - 46, y + 38, p.Level, 34);
+        Level(x + r.Width - 46, y + 38, p.Level, 34, view.LevelHidden);
         HpBar(x + 38, y + 72, r.Width - 90, 24, view.DisplayedHp / Math.Max(1, p.MaxHP), ghost);
         GiantTags(r, view);
     }
@@ -1112,7 +1112,7 @@ internal static partial class ModernUi
         float x = r.X + 96;
         float nameW = NameWithGender(p, x, r.Y + 26, 26);
         StatusPill(x + nameW + 10, r.Y + 12, p.Status, 24);
-        Level(r.X + r.Width - 26, r.Y + 26, p.Level, 26);
+        Level(r.X + r.Width - 26, r.Y + 26, p.Level, 26, card.LevelHidden);
         string ability = card.Ability ?? Text.Of("battleMenu.info.notSeen");
         string item = card.Item ?? Text.Of("battleMenu.info.notSeen");
         UiFonts.DrawCentered(ability, x, r.Y + r.Height - 24, 22, card.Ability != null ? Ink : Muted, UiWeight.ExtraBold);
@@ -1132,7 +1132,7 @@ internal static partial class ModernUi
         float x = r.X + 152;
         float nameW = NameWithGender(p, x, r.Y + 42, 32);
         StatusPill(x + nameW + 12, r.Y + 26, p.Status, 30);
-        Level(r.X + r.Width - 30, r.Y + 42, p.Level, 30);
+        Level(r.X + r.Width - 30, r.Y + 42, p.Level, 30, card.LevelHidden);
 
         InfoFact(x, r.Y + 74, Text.Of("summary.ability"), card.Ability);
         InfoFact(x + 320, r.Y + 74, Text.Of("battleMenu.info.item"), card.Item);

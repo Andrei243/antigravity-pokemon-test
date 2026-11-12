@@ -1904,7 +1904,8 @@
         "other": "Undițele {rods}"
       },
       "ours": "Rar, după Sala Faimei",
-      "headbutt": "Copaci scuturați cu Headbutt"
+      "headbutt": "Copaci scuturați cu Headbutt",
+      "hideaway": "O ascunzătoare sub Subteran"
     },
     "search": {
       "title": "Caută în Pokédex",
@@ -3295,6 +3296,7 @@
       "festivalBellfall": { "sender": "Orașul Ecruteak", "title": "Căderea Clopotelor", "card": "Clopotele scutură frunzele jos. Fă ca acesta să sune mai departe." },
       "festivalTideDay": { "sender": "Orașul Slateport", "title": "Ziua Mareei", "card": "O picătură de mare, din cea mai lungă zi de pe docuri." },
       "festivalBridgelight": { "sender": "Orașul Castelia", "title": "Lumina Podurilor", "card": "Fiecare pod luminat și un solz care strălucește ca ele." },
+      "festivalSerenade": { "sender": "Orașul Lumiose", "title": "Serenada Solstițiului", "card": "Cea mai lungă zi cântată de la un capăt la altul și ceva pentru gâtul cântărețului." },
       "easter": { "sender": "Curierii de Cadouri", "title": "Paștele", "card": "Un ou care aduce noroc, cum fac ouăle în vremea asta a anului." },
       "christmas": { "sender": "Curierii de Cadouri", "title": "Crăciunul", "card": "O stea pentru vârful bradului. Crăciun fericit!" },
       "valentine": { "sender": "cineva", "title": "O felicitare fără nume", "card": "Mă gândesc la tine." }
@@ -3880,6 +3882,11 @@
     "raidActsAgain": "{pokemon} e încă furios!",
     "raidNoSwitch": "Fiecare luptător rămâne cu Pokémonul cu care a venit!",
     "tooStrongToCatch": "E încă prea puternic ca să fie prins! Câștigă mai întâi mai multe insigne.",
+    "cantBeTouched": "Nu poate fi atins!",
+    "onlyWatches": "Doar privește...",
+    "stagedLeaves": "{pokemon} s-a întors și a dispărut!",
+    "stagedNoCatch": "E dincolo de puterea oricărui Ball!",
+    "hiddenLevel": "???",
     "theTrainerBlockedThe": "Antrenorul a blocat Ball-ul! Nu fi hoț!",
     "thereAreTwoPokemon": "Sunt doi Pokémoni pe teren! Ball-ul nu poate fi țintit!",
     "thereATimeAnd": "Fiecare lucru la vremea lui, dar nu acum.",
@@ -5367,6 +5374,9 @@
     "in": "în {place}"
   },
   "places": {
+    "FernGrotto": "Grota Ferigilor", "LakeCavern": "Caverna Lacului", "CrystalHall": "Sala de Cristal", "IceHall": "Sala de Gheață",
+    "EmberHall": "Sala de Jar", "SandHall": "Sala de Nisip", "ShadeHollow": "Scorbura Umbrelor", "SparkVein": "Filonul Scânteilor",
+    "SkyShaft": "Puțul Cerului", "MirePool": "Balta Mocirlei", "DragonsDeep": "Adâncul Dragonilor", "EchoDen": "Bârlogul Ecoului",
     "TwinleafTown": "Orășelul Twinleaf", "SandgemTown": "Orășelul Sandgem", "FloaromaTown": "Orășelul Floaroma",
     "SolaceonTown": "Orășelul Solaceon", "CelesticTown": "Orășelul Celestic",
     "JubilifeCity": "Orașul Jubilife", "OreburghCity": "Orașul Oreburgh", "EternaCity": "Orașul Eterna",
