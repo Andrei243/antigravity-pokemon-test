@@ -423,6 +423,10 @@ public class SaveData
     /// <summary>The photo tour's report (plan 44 · SD5): each species' best photograph by stars and course, each course's best ride; null while empty.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.TourReportSave? PhotoTour { get; set; }
+
+    /// <summary>The delve's record (plan 44 · SD9): each hollow's clears, the board's requests done today, the prizes waiting; null while empty.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.Delve.DelveSave? Delve { get; set; }
     /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD1); null while empty, so an older save needs nothing.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.HeartsRecord? Hearts { get; set; }

@@ -508,6 +508,8 @@ public static class RegionDatabase
                 "BattlePalace", "BattleArena",
                 // Plan 14 · B10: the Battle Pike's hall of doors and its room, and the Battle Pyramid's floor (maps of ours)
                 "BattlePike", "BattlePikeRoom", "BattlePyramidFloor",
+                // Plan 44 · SD8: the delve's floor, laid afresh from a run's seed (a map of ours)
+                "DelveFloor",
                 // Plan 14 · B11: the World Tournament's hall in the annex (a map of ours)
                 "WorldTournamentHall",
                 // Plan 14 · B15: the Masters' Hall off the annex's lobby (a map of ours)

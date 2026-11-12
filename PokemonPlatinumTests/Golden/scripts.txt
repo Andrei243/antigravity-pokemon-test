@@ -38646,6 +38646,24 @@ from Cameraman at 651,348 of Sinnoh
 way -
   Cameraman> I once filmed a red Gyarados! Biggest scoop of my life, and I've been after the next one ever since.
   Cameraman> They say something stirs inside the volcano up north. If it shows itself, my camera will be rolling.
+=== survival_area.DelveKeeper
+from Brigid Stoat at 662,341 of Sinnoh
+way 0
+  Brigid Stoat> Brigid Stoat, keeper of the delve camp. Behind me are four hollows, and Pokémon live on every floor of them.
+  Brigid Stoat> Your first two Pokémon go down together while you wait here. Reach the bottom and a local may come home with you.
+  Brigid Stoat> What can I do for you?
+  Brigid Stoat> I need two Pokémon who can go: no Egg and no locked heart. Put two at the head of your team.
+  ? What can I do for you? = GO DOWN
+way 3, from answer 1
+  Brigid Stoat> The hollows aren't going anywhere.
+  ? What can I do for you? = NOTHING
+way 2, from answer 1
+  Brigid Stoat> That's everything waiting for you for now.
+  ? What can I do for you? = PRIZES
+way 1, from answer 1
+  Brigid Stoat> The board changes every morning. Do what it asks on a run and I'll have something for you.
+  ? What can I do for you? = THE BOARD
+  * open DelveBoard
 === survival_area.LookerReclaimer
 from Looker at 658,341 of Sinnoh
 way -

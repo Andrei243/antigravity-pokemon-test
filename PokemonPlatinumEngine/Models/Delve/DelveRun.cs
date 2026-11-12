@@ -60,7 +60,9 @@ public enum DelveEventKind
 {
     Stepped, Struck, UsedMove, Missed, Damaged, Fainted, StatusGiven, StatusFailed, Confused, Snapped, StatChanged, Healed,
     Recoil, Drained, Flinched, LostTurn, HurtItself, Woke, Noticed, Fled, Snare, Found, BagFull, Ate, Cured, Starving,
-    Descended, AsksToJoin, Joined, Declined, Revived, Cleared, Fell, Escaped, Bitten
+    Descended, AsksToJoin, Joined, Declined, Revived, Cleared, Fell, Escaped, Bitten,
+    /// <summary>The leader on the last floor's stairs with the guardian still standing (SD9).</summary>
+    Guarded
 }
 
 /// <summary>An event of the run: who, at whom, with what (a move's, an item's or a status's name) and how much.</summary>
@@ -113,6 +115,15 @@ public sealed class DelveRun
     public int? FixedRecruitRoll { get; set; }
 
     internal DelveRandom Rng { get; }
+
+    /// <summary>The deepest floor the team has stood on, from one.</summary>
+    public int DeepestFloor { get; private set; }
+
+    /// <summary>The hollow's guardian on its last floor, or null (SD9).</summary>
+    public DelveMon? Guardian { get; private set; }
+
+    /// <summary>How a resident's species is met (the randomiser's map, plan 13 · V6); null is the hollow's own.</summary>
+    public Func<string, string>? MapSpecies { get; init; }
     private int nextOrder;
 
     public DelveMon Leader => Team[0];
@@ -138,10 +149,10 @@ public sealed class DelveRun
         WhyNot(leader) ?? WhyNot(partner) ?? (ReferenceEquals(leader, partner) ? DelveRefusal.Same : null);
 
     /// <summary>A run begun on its first floor, the two going down as copies at the hollow's level holding nothing.</summary>
-    public static DelveRun Begin(DelveHollow hollow, Pokemon leader, Pokemon partner, uint seed)
+    public static DelveRun Begin(DelveHollow hollow, Pokemon leader, Pokemon partner, uint seed, Func<string, string>? mapSpecies = null)
     {
         if (WhyNot(leader, partner) is { } refused) throw new InvalidOperationException($"Can't go down: {refused}.");
-        var run = new DelveRun(hollow, seed);
+        var run = new DelveRun(hollow, seed) { MapSpecies = mapSpecies };
         run.Team.Add(run.Copy(leader, true));
         run.Team.Add(run.Copy(partner, true));
         run.EnterFloor(0);
@@ -161,7 +172,9 @@ public sealed class DelveRun
     internal void EnterFloor(int index)
     {
         Floor = DelveFloor.Generate(Hollow, index, FloorSeed(index));
+        DeepestFloor = Math.Max(DeepestFloor, index + 1);
         Residents.Clear();
+        Guardian = null;
         Finds.Clear();
         Finds.AddRange(Floor.Finds);
         Snares.Clear();
@@ -169,7 +182,8 @@ public sealed class DelveRun
         var made = new DelveRandom(DelveRandom.Mix(Floor.Seed, 0x5EED));
         foreach (var spawn in Floor.Residents)
         {
-            var species = PokemonDatabase.Get(spawn.Species) ?? throw new InvalidOperationException($"No species {spawn.Species}.");
+            string name = MapSpecies?.Invoke(spawn.Species) ?? spawn.Species;
+            var species = PokemonDatabase.Get(name) ?? throw new InvalidOperationException($"No species {name}.");
             var pokemon = new Pokemon(species, Hollow.Level, made) { HeldItem = null };
             Residents.Add(new DelveMon(pokemon, false, nextOrder++) { X = spawn.X, Y = spawn.Y, Dormant = spawn.Asleep, Shy = spawn.Shy, Facing = (Direction)made.Next(4) });
         }
@@ -185,10 +199,31 @@ public sealed class DelveRun
             Team[i].Y = near[i - 1].Y;
             Team[i].Facing = Leader.Facing;
         }
+        // The guardian stands on the open tile nearest the last floor's stairs, wakeful, never shy and never asking to join (SD9)
+        if (Floor.IsLast && Hollow.Guardian is { } guardian) PlaceGuardian(guardian, made);
+    }
+
+    private void PlaceGuardian(string guardian, DelveRandom made)
+    {
+        string name = MapSpecies?.Invoke(guardian) ?? guardian;
+        var species = PokemonDatabase.Get(name) ?? throw new InvalidOperationException($"No species {name}.");
+        var stairs = Floor.Stairs;
+        var at = Floor.Grid.Reachable(Floor.Entrance, new HashSet<(int, int)>())
+            .Where(t => t != stairs && t != Floor.Entrance && At(t.X, t.Y) == null && Team.All(m => (m.X, m.Y) != t))
+            .OrderBy(t => Math.Abs(t.X - stairs.X) + Math.Abs(t.Y - stairs.Y)).ThenBy(t => t.Y).ThenBy(t => t.X).First();
+        var pokemon = new Pokemon(species, Hollow.Level + DelveHollow.GuardianOver, made) { HeldItem = null };
+        Guardian = new DelveMon(pokemon, false, nextOrder++) { X = at.X, Y = at.Y, IsGuardian = true };
+        Residents.Add(Guardian);
     }
 
     internal void Say(DelveEventKind kind, string who, string? target = null, string? what = null, int amount = 0) =>
         Events.Add(new DelveEvent(kind, who, target, what, amount));
+
+    /// <summary>The leader turned on the spot, which is no turn (SD8: a way held with the turn button).</summary>
+    public void Face(Direction way)
+    {
+        if (Outcome == DelveOutcome.Going) Leader.Facing = way;
+    }
 
     /// <summary>Whoever stands on a tile, of the team or the floor, or null.</summary>
     public DelveMon? At(int x, int y) =>
@@ -300,6 +335,12 @@ public sealed class DelveRun
     {
         if (Floor.IsLast)
         {
+            // The guardian keeps the way up until it is knocked out
+            if (Guardian is { Fainted: false })
+            {
+                Say(DelveEventKind.Guarded, Leader.Name, Guardian.Name);
+                return;
+            }
             Outcome = DelveOutcome.Cleared;
             foreach (var m in Team.Where(m => m.Recruit && !m.Fainted)) RecruitsAtTheEnd.Add(m.Pokemon);
             Say(DelveEventKind.Cleared, Leader.Name, amount: Floor.Index + 1);

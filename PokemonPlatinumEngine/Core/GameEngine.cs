@@ -181,7 +181,11 @@ public enum GameState
     /// <summary>The Stroll Counter's screen, from the bag or the item button (plan 35 · BN7).</summary>
     StrollCounter,
     /// <summary>A flight over the region from Fly's choice (plan 38 · EX7).</summary>
-    Soaring
+    Soaring,
+    /// <summary>A run down a hollow on its floor, a script's <c>delve go</c> waiting on it (plan 44 · SD8).</summary>
+    Delve,
+    /// <summary>The delve camp's board, a script's <c>delve board</c> waiting on it (plan 44 · SD9).</summary>
+    DelveBoard
 }
 
 public partial class GameEngine
@@ -1059,6 +1063,7 @@ public partial class GameEngine
             CardDesign = CardDesignToSave(),
             PhotoBook = flow.PhotoBook.ToSave(),
             PhotoTour = flow.PhotoTour.ToSave(),
+            Delve = flow.DelveRecord.ToSave(),
             Hearts = flow.Hearts.IsEmpty ? null : flow.Hearts,
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
@@ -1761,6 +1766,12 @@ public partial class GameEngine
                 break;
             case GameState.Studio:
                 UpdateStudio(dt);
+                break;
+            case GameState.Delve:
+                UpdateDelve(dt);
+                break;
+            case GameState.DelveBoard:
+                UpdateDelveBoard();
                 break;
             case GameState.PhotoTour:
                 UpdatePhotoTour(dt);
@@ -3395,7 +3406,8 @@ public partial class GameEngine
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = flow.Scene;
-        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming or GameState.Nickname or GameState.Photo;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming or GameState.Nickname or GameState.Photo
+            or GameState.Delve or GameState.DelveBoard;
         bool showBattle = scene == GameState.Battle && flow.Battle != null;
         bool showTitle = scene == GameState.Title;
 
@@ -3604,6 +3616,12 @@ public partial class GameEngine
                 break;
             case GameState.PhotoTour:
                 DrawPhotoTour();
+                break;
+            case GameState.Delve:
+                DrawDelve();
+                break;
+            case GameState.DelveBoard:
+                DrawDelveBoard();
                 break;
             case GameState.TourReport:
                 DrawTourReport();

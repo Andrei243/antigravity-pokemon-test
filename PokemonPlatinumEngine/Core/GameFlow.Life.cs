@@ -26,6 +26,15 @@ public sealed partial class GameFlow
     public TourReport PhotoTour { get; } = new();
     public PhotoTourScreen PhotoTourScreen { get; } = new();
 
+    /// <summary>The delve's record (plan 44 · SD9), the run under way and its screen (SD8), and where the player waits at the camp.</summary>
+    public Models.Delve.DelveRecord DelveRecord { get; set; } = new();
+    public Models.Delve.DelveRun? Delve { get; set; }
+    public DelveScreen DelveScreen { get; } = new();
+    public (Overworld.Map Map, int X, int Y, Data.Direction Facing)? DelveCamp { get; set; }
+
+    /// <summary>The camp's board on a screen of its own (plan 44 · SD9).</summary>
+    public DelveBoardScreen DelveBoardScreen { get; } = new();
+
     /// <summary>The photo tour's report on a screen of its own (plan 44 · SD6).</summary>
     public TourReportScreen TourReportScreen { get; } = new();
 

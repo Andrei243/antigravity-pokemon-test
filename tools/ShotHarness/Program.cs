@@ -267,6 +267,7 @@ if (mode == "bonding") h.BondingMode();
 if (mode == "gifts") h.GiftsMode();
 if (mode == "lifestyle") h.LifestyleMode();
 if (mode == "tour") h.TourMode();
+if (mode == "delve") h.DelveMode();
 
 h.Close();
 Raylib.CloseWindow();

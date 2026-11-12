@@ -946,6 +946,19 @@ Plan 44 · SD5; style guide, "The photo tour". The tour's one command, `tour`; a
 | `tour report` | The report on its screen (`GameState.TourReport`, `TourReportScreen`; plan 44 · SD6): a page to each course, its species' best photographs and the chosen one's print. The script waits until it is left; a game with no window shows nothing. It stops a scene's hurry. |
 | `tour reward` | The next of the guide's rewards (`photo-tour.json`'s `rewards`) that the report's total has earned, handed over as `give` hands an item (its fanfare and its two lines; asked of the randomiser), `RESULT` 1 and `{item}` naming it; nothing due, `RESULT` 0. A guide with more to give asks again. |
 
+### The delve
+
+Plan 44 · SD8, SD9 (`Models/Delve/`, `Core/GameEngine.Delve.cs`; rulings, "The delve"). A hollow is named by its key in `Data/hollows.json` (`brinecave`, `rootwood`, `heartpeak`, `old_tower`).
+
+| Command | What it does |
+|---|---|
+| `delve go "<hollow>"` | The team's first two who may go down (no Egg, nobody fainted or locked) go down the hollow as copies (`GameState.Delve`, `DelveScreen`); the script waits until the run is over and settled at the camp (the bag's finds kept, the recruits home, the board's requests done) and hears `RESULT` 1 cleared, 2 fallen, 3 escaped by the rope, 0 when nobody went (the hollow not open at the camp's rank, or no two to send). A game with no window plays the run at once by the plain policy. It stops a scene's hurry. |
+| `delve open "<hollow>"` | `RESULT` 1 when the camp's rank has opened the hollow, else 0. |
+| `delve able` | `RESULT` 1 when two of the team may go down, else 0. |
+| `delve board` | The day's three requests on the camp's board (`GameState.DelveBoard`); the script waits until it is put down. Nothing in a game with no window. It stops a scene's hurry. |
+| `delve rank` | `RESULT` the camp's rank: the hollows cleared. |
+| `delve reward` | The next prize the board's requests have earned, handed over as `give` hands an item (its fanfare, its two lines), `RESULT` 1; nothing waiting, 0. |
+
 ### Treats
 
 Plan 35 · BN3; `docs/mechanics/rulings.md`, "Care". The bakers' one command, `treat`; the confectioners sell with `shop "treats"`.

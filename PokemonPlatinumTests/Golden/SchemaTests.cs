@@ -57,6 +57,7 @@ public class SchemaTests
         ("photo-spots.schema.json", typeof(PhotoSpotsFile), "The photo spots (Data/photo-spots.json, plan 43 · LF4)"),
         ("photo-studio.schema.json", typeof(StudioFile), "The photo studio's backdrops and frames (Data/photo-studio.json, plan 43 · LF5)"),
         ("photo-tour.schema.json", typeof(PhotoTourFile), "The photo tour's courses (Data/photo-tour.json, plan 44 · SD5)"),
+        ("hollows.schema.json", typeof(PokemonPlatinumEngine.Models.Delve.HollowsFile), "The delve's hollows and the camp board's prizes (Data/hollows.json, plan 44 · SD9)"),
         // Plan 40 · GE5: which charm a Pokédex filled earns
         ("charms.schema.json", typeof(CharmsFile), "The charms a Pokédex filled earns (Data/charms.json)"),
         // Plan 40 · GE7, GE8, GE9: the gift box's gifts, the trade board's made-up trainers and the festivals' days

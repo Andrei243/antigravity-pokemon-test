@@ -46,6 +46,9 @@ public partial class GameEngine
         flow.PhotoBook.Load(save?.PhotoBook);
         // The photo tour's report (plan 44 · SD5)
         flow.PhotoTour.Load(save?.PhotoTour);
+        // The delve's record (plan 44 · SD9); no run is ever saved, since a run is a copy of the team gone down
+        flow.DelveRecord = Models.Delve.DelveRecord.From(save?.Delve);
+        flow.Delve = null;
         cardFace = null;
         cardFaceKey = null;
         cardOwned = null;
