@@ -186,6 +186,12 @@ public sealed partial class ScriptRunner
             case "wheel":
                 Result = host.PastimeAct("wheel", i.Number, Subject);
                 break;
+            // The most roulette wins in a row (Emerald's GAME_STAT_CONSECUTIVE_ROULETTE_WINS, kept in a variable of ours):
+            // RESULT 1 when the sitting just ended set a new best, {number} the best
+            case "streak":
+                Result = host.PastimeAct("streak", 0, Subject);
+                lastNumber = host.Story.Var(RouletteWheel.BestRunVariable);
+                break;
         }
     }
 

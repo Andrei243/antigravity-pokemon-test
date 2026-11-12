@@ -1414,6 +1414,192 @@
     ]
   },
   {
+    "id": "palace_maven_spenser",
+    "name": "Spenser",
+    "class": "Palace Maven",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Crobat",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243041
+      },
+      {
+        "species": "Slaking",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243042
+      },
+      {
+        "species": "Lapras",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243043
+      }
+    ]
+  },
+  {
+    "id": "palace_maven_spenser_gold",
+    "name": "Spenser",
+    "class": "Palace Maven",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Arcanine",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243051
+      },
+      {
+        "species": "Slaking",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243052
+      },
+      {
+        "species": "Suicune",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243053
+      }
+    ]
+  },
+  {
+    "id": "arena_tycoon_greta",
+    "name": "Greta",
+    "class": "Arena Tycoon",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Heracross",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243061
+      },
+      {
+        "species": "Umbreon",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243062
+      },
+      {
+        "species": "Shedinja",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243063
+      }
+    ]
+  },
+  {
+    "id": "arena_tycoon_greta_gold",
+    "name": "Greta",
+    "class": "Arena Tycoon",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Umbreon",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243071
+      },
+      {
+        "species": "Gengar",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243072
+      },
+      {
+        "species": "Breloom",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243073
+      }
+    ]
+  },
+  {
+    "id": "dome_ace_tucker",
+    "name": "Tucker",
+    "class": "Dome Ace",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Swampert",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243081
+      },
+      {
+        "species": "Salamence",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243082
+      },
+      {
+        "species": "Charizard",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243083
+      }
+    ]
+  },
+  {
+    "id": "dome_ace_tucker_gold",
+    "name": "Tucker",
+    "class": "Dome Ace",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Swampert",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243091
+      },
+      {
+        "species": "Metagross",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243092
+      },
+      {
+        "species": "Latias",
+        "level": 50,
+        "ivScale": 255,
+        "personality": 5243093
+      }
+    ]
+  },
+  {
     "id": "elite_four_aaron_beyond",
     "name": "Aaron",
     "class": "Elite Four",

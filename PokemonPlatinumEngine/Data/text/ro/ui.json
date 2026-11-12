@@ -1,6 +1,6 @@
 {
   "cyclingRoad": { "seconds": "{time} de secunde", "minute": "un minut sau mai mult", "times": "de {count} ori", "many": "de 99 de ori sau mai mult" },
-  "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp" },
+  "trainerHill": { "time": "{minutes} min. {seconds},{hundredths} sec.", "none": "încă niciun timp", "mixedTime": "{name}, {time}" },
   "rouletteTable": {
     "coins": "FISE",
     "balls": "BILE RĂMASE",

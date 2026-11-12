@@ -15,6 +15,8 @@ script OnEnter
   place player 8 10 up
 label Battle
   venue next
+  venue brain
+  if result == 1 goto Tycoon
   speaker "Referee"
   say "Battle {number} of seven! Three turns a bout, then the judge decides."
   venue opponent
@@ -50,6 +52,24 @@ label Home
   warp "BattleFrontierAnnex" 12 5 right
   fade in
   end
+# The seventh battle of a round whose streak reaches the Arena Tycoon (plan 21's leftovers, Models/Frontier/EmeraldBrains.cs)
+label Tycoon
+  speaker "Referee"
+  say "Battle {number} of seven! Clear the floor: the Arena Tycoon is stepping in herself!"
+  venue opponent
+  place opponent 8 3 down
+  setflag FLAG_BATTLE_ARENA_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  speaker "Greta"
+  say "Three turns, no running and no excuses. Show me guts, and I'll show you mine!"
+  venue fight
+  if result == 0 goto Lost
+  call Leaves
+  speaker "Greta"
+  say "Whew! Mind, Skill and Body, all three. The judge didn't even need to think."
+  venue won
+  goto RoundWon
 
 
 # The opponent goes off the floor again

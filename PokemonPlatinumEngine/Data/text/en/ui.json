@@ -5089,7 +5089,7 @@
     }
   },
   "cyclingRoad": { "seconds": "{time} seconds", "minute": "a minute or more", "times": "{count} times", "many": "99 times or more" },
-  "trainerHill": { "time": "{minutes} min. {seconds}.{hundredths} sec.", "none": "no time yet" },
+  "trainerHill": { "time": "{minutes} min. {seconds}.{hundredths} sec.", "none": "no time yet", "mixedTime": "{name}, {time}" },
   "rouletteTable": {
     "coins": "COINS",
     "balls": "BALLS LEFT",

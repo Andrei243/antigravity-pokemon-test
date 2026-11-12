@@ -128,6 +128,10 @@ public sealed partial class ScriptRunner
             case "best":
                 Result = lastNumber = records.Dome.Best;
                 break;
+            case "brain":
+                // The Dome Ace (EmeraldBrains): RESULT 1 when the one the player meets now is Tucker
+                Result = EmeraldBrains.IsBrain(Dome().Opponent?.Opponent) ? 1 : 0;
+                break;
             case "end":
                 host.Dome = null;
                 domeSlots = Array.Empty<int>();

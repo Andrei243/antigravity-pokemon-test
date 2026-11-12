@@ -195,8 +195,17 @@ public sealed class BattleVenueChallenge
             if (!taken.Add(trainer)) continue;
             foes.Add(FrontierTrainers.ForTrainers(TeamSize, trainer, trainer, false, next16)[0]);
         }
-        return new BattleVenueChallenge(venue, slots.ToList(), foes, record.Streak);
+        // The venue's Brain (EmeraldBrains): the round's seventh is drawn all the same, so a round without them draws as ever
+        int due = EmeraldBrains.VenueDue(venue, record.Streak + RoundLength);
+        if (due > 0) foes[^1] = EmeraldBrains.OfVenue(venue, due);
+        return new BattleVenueChallenge(venue, slots.ToList(), foes, record.Streak) { BrainDue = due };
     }
+
+    /// <summary>Which of their two teams the venue's Brain brings to the round's last battle: 0 none, 1 silver, 2 gold.</summary>
+    public int BrainDue { get; private init; }
+
+    /// <summary>The battle to come is the Brain's.</summary>
+    public bool BrainNext => BrainDue > 0 && Battle == Length - 1;
 
     /// <summary>The trainer of the battle to come, or null once the round is won.</summary>
     public FrontierOpponent? Opponent => Battle < Foes.Count ? Foes[Battle] : null;

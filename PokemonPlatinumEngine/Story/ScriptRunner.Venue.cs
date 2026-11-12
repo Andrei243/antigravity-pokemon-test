@@ -140,6 +140,10 @@ public sealed partial class ScriptRunner
             case "best":
                 Result = lastNumber = BattleVenueChallenge.RecordOf(records, Named()).Best;
                 break;
+            case "brain":
+                // The venue's Brain (EmeraldBrains): RESULT 1 when the battle to come is theirs
+                Result = host.Venue is { BrainNext: true } ? 1 : 0;
+                break;
             case "end":
                 host.Venue = null;
                 venueSlots = Array.Empty<int>();
