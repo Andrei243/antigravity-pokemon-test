@@ -102,9 +102,9 @@ partial class Harness
 
         // Kalos's own: the Solstice Serenade in Lumiose's west park, by day and with its lanterns lit after dark
         Day(2026, 6, 21, night: false);
-        Look("gf8e_serenade", "Kalos", 336, 366, Direction.Up);
+        Look("gf8e_serenade", "Kalos", 337, 360, Direction.Down);
         Day(2026, 6, 21, night: true);
-        Look("gf8f_serenade_after_dark", "Kalos", 336, 366, Direction.Up);
+        Look("gf8f_serenade_after_dark", "Kalos", 337, 360, Direction.Down);
         Look("gf8g_serenade_east", "Kalos", 382, 366, Direction.Up);
 
         // The harness's day and the day's light back

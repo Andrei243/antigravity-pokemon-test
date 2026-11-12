@@ -64,6 +64,8 @@ partial class Harness
             else Frames(1);
         }
         ShotBand("kg");
+        // KALOSGROWN_FROM=band stops at Viola's band (kg_band_viola), for a look at its card alone
+        if (Environment.GetEnvironmentVariable("KALOSGROWN_FROM") == "band") { FieldRigs.Patient = false; return; }
         for (int i = 0; i < 600 && game.State != GameState.Battle; i++) Frames(1);
         if (game.State == GameState.Battle) { Skip(1.0); ToMainMenu(game.Battle); Shot("kg03_violas_battle"); }
         // Back to the field, the battle let go of
