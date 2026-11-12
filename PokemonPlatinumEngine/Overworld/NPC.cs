@@ -415,7 +415,8 @@ public class NPC
     public const string FestivalLanternsType = "FestivalLanterns", FestivalMoonLanternType = "FestivalMoonLantern",
         FestivalPineType = "FestivalPine", FestivalArchType = "FestivalArch", FestivalStallType = "FestivalStall",
         FestivalBellsType = "FestivalBells", FestivalBuntingType = "FestivalBunting", HolidayTreeType = "FestivalHolidayTree",
-        EggBasketType = "FestivalEggBasket", NewYearBannerType = "FestivalNewYearBanner", ValentineHeartType = "FestivalValentineHeart";
+        EggBasketType = "FestivalEggBasket", NewYearBannerType = "FestivalNewYearBanner", ValentineHeartType = "FestivalValentineHeart",
+        FestivalMusicStandType = "FestivalMusicStand";
 
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
@@ -461,6 +462,7 @@ public class NPC
         EggBasketType => PropType.EggBasket,
         NewYearBannerType => PropType.NewYearBanner,
         ValentineHeartType => PropType.ValentineHeart,
+        FestivalMusicStandType => PropType.FestivalMusicStand,
         GatherRockType => GatherBearing ? PropType.GatherRock : PropType.GatherRockBare,
         GatherWoodType => GatherBearing ? PropType.GatherWood : PropType.GatherWoodBare,
         GatherPlantType => GatherBearing ? PropType.GatherPlant : PropType.GatherPlantBare,

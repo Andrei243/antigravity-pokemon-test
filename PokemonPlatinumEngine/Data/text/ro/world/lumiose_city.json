@@ -214,6 +214,148 @@
         ]
       }
     },
+    "lumiose_city.Festival_serenade_1": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          "Felinare"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_2": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          "Felinare"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_3": {
+      "name": {
+        "en": [
+          "Music stand"
+        ],
+        "text": [
+          "Pupitru"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_4": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          "Felinare"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_5": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          "Felinare"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_6": {
+      "name": {
+        "en": [
+          "Music stand"
+        ],
+        "text": [
+          "Pupitru"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          "Tarabă"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          "Negustor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: The longest day of the year, and not a minute of it without a song! Something sweet for the listening?"
+        ],
+        "text": [
+          "Negustor: Cea mai lungă zi a anului și niciun minut fără un cântec! Ceva dulce cât ascultați?"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_guitarist": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          "Chitarist"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every player in Lumiose is out today, and nobody asks a penny. I've played since sunrise and I'll play till the lanterns go out!"
+        ],
+        "text": [
+          "Toți muzicienii din Lumiose sunt afară azi și nimeni nu cere un ban. Cânt de la răsărit și voi cânta până se sting felinarele!"
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_singer": {
+      "name": {
+        "en": [
+          "Singer"
+        ],
+        "text": [
+          "Cântăreață"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "La la... Oh! Will you sing the next verse with me? No? Then listen, at least. The night is short tonight."
+        ],
+        "text": [
+          "La la... Oh! Cânți strofa următoare cu mine? Nu? Atunci măcar ascultă. Noaptea e scurtă în seara asta."
+        ]
+      }
+    },
+    "lumiose_city.Festival_serenade_listener": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Domn"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say the Serenade began with one fiddler under the old tower. Now the whole city plays, from the first light to the last."
+        ],
+        "text": [
+          "Se spune că Serenada a început cu un singur lăutar sub turnul cel vechi. Acum cântă tot orașul, de la prima lumină până la ultima."
+        ]
+      }
+    },
     "alley_nanette": {
       "name": {
         "en": [

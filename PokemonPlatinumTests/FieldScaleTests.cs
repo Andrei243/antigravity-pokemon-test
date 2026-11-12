@@ -132,13 +132,21 @@ public class FieldScaleTests
         var onCushion = FieldRigChoice.GrownSeated(stood, Stance.SitGround, Direction.Up, PropType.Cushion, raised: false, seat);
         Assert.Equal(stood.Y + Seats.GrownHeightOf(PropType.Cushion), onCushion.Y, 4);
         Assert.Equal(stood.Y, FieldRigChoice.GrownSeated(stood, Stance.SitGround, Direction.Up, PropType.Cushion, raised: true, seat).Y);
-        // Live in the stances the grown kit is placed in, a sprite in the rest
-        // (a swimmer treads water live since the gate's owed; a fisher is live only as the player, holding the rod's look)
-        Assert.True(FieldRigChoice.LiveIn(Stance.Stand) && FieldRigChoice.LiveIn(Stance.Sit) && FieldRigChoice.LiveIn(Stance.SitGround) && FieldRigChoice.LiveIn(Stance.Swim));
-        Assert.False(FieldRigChoice.LiveIn(Stance.Lie) || FieldRigChoice.LiveIn(Stance.Fish) || FieldRigChoice.LiveIn(Stance.Tug));
-        // Far off, a sitter is an impostor of their own stance as a stander is; a swimmer or a lier stays the sprite
+        // Live in every stance since the gate's owed were shot: a swimmer treads water, a lier lies along the bed and a
+        // fisher of the map holds the rod's look as the player does
+        foreach (var stance in Enum.GetValues<Stance>()) Assert.True(FieldRigChoice.LiveIn(stance), $"{stance} is live");
+        // Far off, a sitter is an impostor of their own stance as a stander is; a swimmer, a lier or a fisher stays the sprite
         Assert.True(FieldRigs.HasImpostor(Stance.Sit) && FieldRigs.HasImpostor(Stance.SitGround) && FieldRigs.HasImpostor(Stance.Stand));
-        Assert.False(FieldRigs.HasImpostor(Stance.Swim) || FieldRigs.HasImpostor(Stance.Lie));
+        Assert.False(FieldRigs.HasImpostor(Stance.Swim) || FieldRigs.HasImpostor(Stance.Lie) || FieldRigs.HasImpostor(Stance.Fish));
+        // A lier's feet lie a body's length less the pillow ahead of their tile's middle, so the crown comes to the pillow
+        var lying = FieldRigChoice.LieAlong(stood, Direction.Down, 1.5f);
+        Assert.Equal(stood.Z + 1.5f - FieldRigChoice.PillowBehind, lying.Z, 4);
+        Assert.Equal(stood.X, lying.X, 4);
+        // A grown rider of a ride on land sits on the top of its back, higher than a chibi rider's seat and within the card,
+        // the card standing past a grown body's depth and spread knees nearer the camera than its rider
+        var ride = new FieldSprites.Strip(Array.Empty<CharacterSprites.Card>(), 96, 72);
+        Assert.InRange(WorldRenderer.GrownRideSeat(ride), WorldRenderer.RideSeat(ride) + 1, ride.Rows);
+        Assert.InRange(WorldRenderer.GrownRideAhead, 0.4f, 0.75f);
         Assert.Equal("PLAYER~Teen", FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Stand));
         Assert.NotEqual(FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Stand), FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Sit));
     }

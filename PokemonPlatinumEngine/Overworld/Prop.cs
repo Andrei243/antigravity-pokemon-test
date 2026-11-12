@@ -387,6 +387,8 @@ public enum PropType
     PhotoSpot,
     /// <summary>The film studio's poster wall (plan 42 · PS4, part b): a hoarding with the four films' posters in warm reds, read from the tile before it; appended past the decorations and blocks its tiles all the same, as the tower does.</summary>
     PosterWall,
+    /// <summary>Kalos's Solstice Serenade (plan 40 · GE9): a music stand of wrought iron with a sheet of songs and ribbons; a festival's thing.</summary>
+    FestivalMusicStand,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

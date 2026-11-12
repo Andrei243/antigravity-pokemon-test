@@ -188,7 +188,8 @@ public static partial class SceneTransition
     /// </summary>
     public static IReadOnlyList<BattleBand> KalosBands { get; } = new[]
     {
-        new BattleBand("Leader", "Viola", Rgb(152, 176, 64), Rgb(84, 100, 24), Rgb(220, 232, 150)),
+        // (Her olive vest sank into the band and her pale gold hair into its light colour: her card is a soft lilac)
+        new BattleBand("Leader", "Viola", Rgb(152, 176, 64), Rgb(84, 100, 24), Rgb(220, 232, 150), Rgb(196, 176, 220)),
         new BattleBand("Leader", "Grant", Rgb(196, 152, 104), Rgb(112, 80, 44), Rgb(240, 216, 180)),
         new BattleBand("Leader", "Korrina", Rgb(232, 112, 56), Rgb(140, 52, 20), Rgb(252, 192, 152)),
         new BattleBand("Leader", "Ramos", Rgb(104, 148, 72), Rgb(48, 80, 28), Rgb(196, 224, 164)),

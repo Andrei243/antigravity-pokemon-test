@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1754 | 1691 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13476 | 12922 | 554 | 17 | 36 |
-| People of the world (`world:`) | 8174 | 8112 | 62 | 4 | 0 |
-| **All** | 23688 | 23006 | 682 | 22 | 36 |
+| Scripts (`script:`) | 13482 | 12927 | 555 | 17 | 36 |
+| People of the world (`world:`) | 8178 | 8116 | 62 | 4 | 0 |
+| **All** | 23698 | 23015 | 683 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1102 |
+| a question's answers | 1114 |
 | a sign | 1771 |
 | the game's own voice (speaker none) | 326 |
 | the game's own voice (text) | 2222 |
@@ -40,7 +40,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `look:gentleman (any)` | 1215 | 52 |
+| `look:gentleman (any)` | 1216 | 52 |
 | `look:grunt (any)` | 612 | 0 |
 | `rival` | 605 | 20 |
 | `look:clerk (any)` | 590 | 15 |
@@ -108,7 +108,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `lance` | 68 | 0 |
 | `class:scientist (any)` | 66 | 0 |
 | `class:worker (any)` | 66 | 0 |
-| `stall_keeper` | 65 | 12 |
+| `stall_keeper` | 66 | 12 |
 | `archie` | 62 | 3 |
 | `artist` | 62 | 1 |
 | `collector` | 62 | 0 |
