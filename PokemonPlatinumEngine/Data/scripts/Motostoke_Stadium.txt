@@ -1,6 +1,6 @@
 # Motostoke Stadium's lobby (plan 33 · GL4): the registration for the gym challenge with Hop and Bede, and the way
 # through to the pitch on the morning of the opening ceremony. VAR_GALAR_STORY is postwick.txt's count. Kabu's gym
-# mission is through here too, and owed to GL4's second session.
+# mission is through here too (Motostoke_StadiumMission.txt, plan 33 · GL4, its second session).
 
 
 script OnEnter
@@ -41,8 +41,17 @@ label Ceremony
 script Receptionist
   speaker "Receptionist"
   if var VAR_GALAR_STORY < 17 goto Before
+  if badge fire goto Won
+  if badge water goto Ready
   say "Kabu's gym mission is the third of the challenge. Come back with the Grass and Water Badges and he'll test you!"
   end
 label Before
   say "Welcome to Motostoke Stadium, home of Kabu's gym and of the opening ceremony!"
+  end
+# Plan 33 · GL4, its second session: with the Water Badge, and with the Fire Badge
+label Ready
+  say "Two badges! Kabu's mission is through the doors behind me: round up the fire Pokémon loose on the course."
+  end
+label Won
+  say "The Fire Badge! Not many challengers get past Kabu. The road north goes on from Motostoke's west gate."
   end

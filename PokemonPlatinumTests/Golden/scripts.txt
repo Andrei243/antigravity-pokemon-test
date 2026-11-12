@@ -4362,6 +4362,23 @@ way 0
 way 1, from answer 1
   * battle galar_bede_1 Lost
   * scene over, unseen
+=== GalarMine2.BedeInMineTwo
+from the trigger at 1,9 of GalarMine2
+way 0
+  Bede> You again. The chairman sent me to look for wishing stars down here, while you play at herding Wooloo and pulling levers.
+  Bede> Two badges, is it? Let me show you what a real challenger does with his time.
+  Bede> ...This proves nothing. I'll be the one Chairman Rose is proud of. Remember that.
+  * scene GalarMine2.Bede in the second mine
+  * battle galar_bede_2 Won
+  * endscene
+  + FLAG_GALAR_MARNIE_IN_MOTOSTOKE
+  = VAR_GALAR_STORY 0 -> 22
+  = VAR_OBJECTIVE 0 -> 720
+  + beaten galar_bede_2
+  + seen GalarMine2.Bede in the second mine
+way 1, from answer 1
+  * battle galar_bede_2 Lost
+  * scene over, unseen
 === GearStation.AnvilleLine
 from Station Agent at 17,3 of GearStation
 way 0
@@ -5365,6 +5382,60 @@ way 1, from answer 1
   ? How may the ledger serve you? = THE LEDGER
   + FLAG_HUB_PLAZA_MET
   + seen Hub_Plaza.Pennant Hall's welcome
+=== Hulbury_Stadium.GymGuide
+from Gym Guide at 2,7 of Hulbury_Stadium
+way -
+  Gym Guide> Nessa's Water types can't stand grass or electric moves. Bring a Pokémon that can take a soaking!
+=== Hulbury_Stadium.Receptionist
+from Receptionist at 6,4 of Hulbury_Stadium
+way -
+  Receptionist> Welcome to Hulbury Stadium! Nessa's gym mission is through the doors behind me: turn the water aside.
+  Receptionist> A gatekeeper stands at each floodgate. Ask, and they'll pull the switch for you. Then Nessa awaits on the pitch.
+=== Hulbury_StadiumMission.MissionSwitch1
+from Gatekeeper at 6,13 of Hulbury_StadiumMission
+way -
+  Gatekeeper> This floodgate holds the water back from the course. Want me to pull the switch? Here goes!
+  > The water rushed off down a side channel, and the gateway drained dry!
+  + FLAG_GALAR_HULBURY_SWITCH_1
+=== Hulbury_StadiumMission.MissionSwitch2
+from Gatekeeper at 6,9 of Hulbury_StadiumMission
+way -
+  Gatekeeper> The second gate's the stubborn one. Lend me a hand with this lever... heave!
+  > With a great gurgle the channel turned, and the way ahead was clear!
+  + FLAG_GALAR_HULBURY_SWITCH_2
+=== Hulbury_StadiumMission.MissionSwitch3
+from Gatekeeper at 6,5 of Hulbury_StadiumMission
+way -
+  Gatekeeper> Last gate! Nessa's on the other side. Ready? Switch!
+  > The last of the water poured away. The mission is cleared!
+  + FLAG_GALAR_HULBURY_SWITCH_3
+=== Hulbury_StadiumPitch.Nessa
+from Nessa at 7,4 of Hulbury_StadiumPitch
+way 0
+  Nessa> So you made it through the floodgates. I'm Nessa, Hulbury's gym Leader.
+  Nessa> The sea doesn't care how strong you think you are. Let's see if your team can keep its head above water!
+  Nessa> Well, I'm soaked. You and your Pokémon move like the tide: you just don't stop.
+  Nessa> The Water Badge is yours. You've earned it.
+  > Lucas received the Water Badge from Nessa!
+  Nessa> Kabu's gym in Motostoke is next. Galar Mine No. 2 will take you there, just south of town.
+  * scene Hulbury_StadiumPitch.Nessa
+  * battle galar_nessa_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_marina
+  * defeat galar_gym_trainer_finn
+  * endscene
+  + FLAG_GALAR_BEDE_IN_MINE_2
+  + FLAG_GALAR_DEFEATED_HULBURY_GYM
+  = VAR_GALAR_STORY 0 -> 21
+  = VAR_OBJECTIVE 0 -> 719
+  + beaten galar_gym_trainer_finn
+  + beaten galar_gym_trainer_marina
+  + beaten galar_nessa_1
+  = badges Galar 0 -> 10
+  + seen Hulbury_StadiumPitch.Nessa
+way 1, from answer 1
+  * battle galar_nessa_1 Lost
+  * scene over, unseen
 === IronIslandHouse.Byron
 from Byron at 5,5 of IronIslandHouse
 way -
@@ -6907,6 +6978,53 @@ way -
 from Receptionist at 5,4 of Motostoke_Stadium
 way -
   Receptionist> Welcome to Motostoke Stadium, home of Kabu's gym and of the opening ceremony!
+=== Motostoke_StadiumMission.MissionGate
+from the trigger at 1,17 of Motostoke_StadiumMission
+way -
+  Gym Trainer> Hold on! Kabu takes on challengers with two badges. Come back once you've won Nessa's Water Badge.
+=== Motostoke_StadiumMission.MissionGrowlithe
+from Growlithe at 6,9 of Motostoke_StadiumMission
+way -
+  > The Growlithe barked and stood its ground. Lucas stood just as still, and waited...
+  > It wagged its tail and followed along to its keeper!
+  + FLAG_GALAR_MOTOSTOKE_CAUGHT_2
+=== Motostoke_StadiumMission.MissionSizzlipede
+from Sizzlipede at 6,5 of Motostoke_StadiumMission
+way -
+  > The Sizzlipede glowed hot in the last gateway. Lucas waited for it to cool, then scooped it up...
+  > It curled up happily and went back to its keeper. The mission is cleared!
+  + FLAG_GALAR_MOTOSTOKE_CAUGHT_3
+=== Motostoke_StadiumMission.MissionVulpix
+from Vulpix at 6,13 of Motostoke_StadiumMission
+way -
+  > The Vulpix yipped and dashed in circles. Lucas crouched down and held out a hand...
+  > It trotted over to be carried back to its keeper!
+  + FLAG_GALAR_MOTOSTOKE_CAUGHT_1
+=== Motostoke_StadiumPitch.Kabu
+from Kabu at 7,4 of Motostoke_StadiumPitch
+way 0
+  Kabu> You rounded up every one of them. Good. I am Kabu, the Leader of Motostoke's gym.
+  Kabu> Many challengers fall here. The fire doesn't forgive carelessness. Show me that you've trained for this moment!
+  Kabu> Hah! You turned the heat back on me. I haven't been burned like that in years.
+  Kabu> Take the Fire Badge. You've earned the right to carry it.
+  > Lucas received the Fire Badge from Kabu!
+  Kabu> Three badges. Keep that fire burning on the road ahead, and train every single day.
+  * scene Motostoke_StadiumPitch.Kabu
+  * battle galar_kabu_1 Won
+  * fanfare FanfareBadge
+  * defeat galar_gym_trainer_ash
+  * defeat galar_gym_trainer_ember
+  * endscene
+  + FLAG_GALAR_DEFEATED_MOTOSTOKE_GYM
+  = VAR_GALAR_STORY 0 -> 24
+  + beaten galar_gym_trainer_ash
+  + beaten galar_gym_trainer_ember
+  + beaten galar_kabu_1
+  = badges Galar 0 -> 100
+  + seen Motostoke_StadiumPitch.Kabu
+way 1, from answer 1
+  * battle galar_kabu_1 Lost
+  * scene over, unseen
 === OldChateauBackMiddleWestRoom.TV
 from the sign at 11,3 of OldChateauBackMiddleWestRoom
 from the sign at 12,3 of OldChateauBackMiddleWestRoom
@@ -9385,7 +9503,9 @@ way 0
   * defeat galar_gym_trainer_cole
   * endscene
   + FLAG_GALAR_DEFEATED_TURFFIELD_GYM
+  + FLAG_GALAR_HOP_ROUTE_5
   = VAR_GALAR_STORY 0 -> 19
+  = VAR_OBJECTIVE 0 -> 717
   + beaten galar_gym_trainer_cole
   + beaten galar_gym_trainer_wren
   + beaten galar_milo_1

@@ -1,27 +1,6 @@
 {
   "archetypeVoices": 3,
   "voices": {
-    "tamsin_crake": {"brief": {"register": "woman", "age": "adult", "pitch": "middle", "pace": "quick", "manner": "Tamsin Crake, Lockwork's admin in Sinnoh: crisp, precise, a little smug"}, "design": {"engine": "kokoro-82m", "blend": "af_nova:0.6,bf_emma:0.4", "speed": 1.04, "pitch": 1.0, "accent": "en-gb"}},
-    "dov_harlan": {"brief": {"register": "man", "age": "adult", "pitch": "low", "pace": "even", "manner": "Dov Harlan, Lockwork's admin in Kanto: a ledger-keeper, dry and counting"}, "design": {"engine": "kokoro-82m", "blend": "am_adam:0.6,am_onyx:0.4", "speed": 0.97, "pitch": 0.94, "accent": "en-us"}},
-    "elspeth_moor": {"brief": {"register": "woman", "age": "adult", "pitch": "low", "pace": "slow", "manner": "Elspeth Moor, Lockwork's admin in Johto: quiet and unblinking"}, "design": {"engine": "kokoro-82m", "blend": "af_river:0.5,af_sarah:0.5", "speed": 0.95, "pitch": 0.97, "accent": "en-us"}},
-    "rafe_ottoline": {"brief": {"register": "man", "age": "young", "pitch": "middle", "pace": "quick", "manner": "Rafe Ottoline, Lockwork's admin in Hoenn: a harbour hustler, breezy"}, "design": {"engine": "kokoro-82m", "blend": "am_puck:0.6,am_liam:0.4", "speed": 1.06, "pitch": 1.02, "accent": "en-us"}},
-    "juno_barrow": {"brief": {"register": "woman", "age": "adult", "pitch": "middle", "pace": "even", "manner": "Juno Barrow, Lockwork's admin in Unova: punctual and businesslike"}, "design": {"engine": "kokoro-82m", "blend": "af_alloy:0.6,af_heart:0.4", "speed": 1.0, "pitch": 1.0, "accent": "en-us"}},
-    "orsolya_keld": {"brief": {"register": "woman", "age": "elder", "pitch": "middle", "pace": "slow", "manner": "Orsolya Keld, Lockwork's head, a harbour clockmaker: soft, measured, sure of herself"}, "design": {"engine": "kokoro-82m", "blend": "bf_emma:0.6,af_nicole:0.4", "speed": 0.92, "pitch": 0.96, "accent": "en-gb"}},
-    "look:lockwork_agent_m#1": {"brief": {"register": "man", "age": "adult", "pitch": "low", "pace": "even", "manner": "a Lockwork agent: clipped and businesslike"}, "design": {"engine": "kokoro-82m", "blend": "am_eric:0.6,am_michael:0.4", "speed": 1.0, "pitch": 0.96, "accent": "en-us"}},
-    "look:lockwork_agent_m#2": {"brief": {"register": "man", "age": "adult", "pitch": "middle", "pace": "quick", "manner": "a Lockwork agent: curt, on a schedule"}, "design": {"engine": "kokoro-82m", "blend": "am_echo:0.5,bm_daniel:0.5", "speed": 1.04, "pitch": 1.0, "accent": "en-gb"}},
-    "look:lockwork_agent_m#3": {"brief": {"register": "man", "age": "adult", "pitch": "low", "pace": "slow", "manner": "a Lockwork agent: heavy, unbothered"}, "design": {"engine": "kokoro-82m", "blend": "am_fenrir:0.6,am_santa:0.4", "speed": 0.95, "pitch": 0.93, "accent": "en-us"}},
-    "look:lockwork_agent_f#1": {"brief": {"register": "woman", "age": "adult", "pitch": "middle", "pace": "quick", "manner": "a Lockwork agent: brisk and cool"}, "design": {"engine": "kokoro-82m", "blend": "af_sarah:0.6,af_nova:0.4", "speed": 1.05, "pitch": 1.0, "accent": "en-us"}},
-    "look:lockwork_agent_f#2": {"brief": {"register": "woman", "age": "adult", "pitch": "low", "pace": "even", "manner": "a Lockwork agent: flat and watchful"}, "design": {"engine": "kokoro-82m", "blend": "af_river:0.6,af_alloy:0.4", "speed": 1.0, "pitch": 0.97, "accent": "en-us"}},
-    "look:lockwork_agent_f#3": {"brief": {"register": "woman", "age": "young", "pitch": "middle", "pace": "quick", "manner": "a Lockwork agent: sharp-tongued"}, "design": {"engine": "kokoro-82m", "blend": "af_bella:0.5,af_aoede:0.5", "speed": 1.07, "pitch": 1.02, "accent": "en-us"}},
-    "class:lockwork_admin#1": {"brief": {"register": "man", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a Lockwork admin in battle: commanding"}, "design": {"engine": "kokoro-82m", "blend": "am_onyx:0.6,bm_george:0.4", "speed": 0.96, "pitch": 0.98, "accent": "en-us"}},
-    "class:lockwork_head#1": {"brief": {"register": "woman", "age": "elder", "pitch": "middle", "pace": "slow", "manner": "Lockwork's head in battle: measured"}, "design": {"engine": "kokoro-82m", "blend": "bf_emma:0.6,af_nicole:0.4", "speed": 0.9, "pitch": 0.95, "accent": "en-gb"}},
-    "class:lockwork_agent#1": {"brief": {"register": "man", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a Lockwork agent in battle"}, "design": {"engine": "kokoro-82m", "blend": "am_onyx:0.6,bm_george:0.4", "speed": 0.96, "pitch": 1.0, "accent": "en-us"}},
-    "class:lockwork_admin#2": {"brief": {"register": "woman", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a Lockwork admin in battle: commanding"}, "design": {"engine": "kokoro-82m", "blend": "af_nova:0.5,bf_emma:0.5", "speed": 1.0, "pitch": 0.98, "accent": "en-us"}},
-    "class:lockwork_head#2": {"brief": {"register": "woman", "age": "elder", "pitch": "middle", "pace": "slow", "manner": "Lockwork's head in battle: measured"}, "design": {"engine": "kokoro-82m", "blend": "bf_emma:0.6,af_nicole:0.4", "speed": 0.94, "pitch": 0.97, "accent": "en-gb"}},
-    "class:lockwork_agent#2": {"brief": {"register": "woman", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a Lockwork agent in battle"}, "design": {"engine": "kokoro-82m", "blend": "af_nova:0.5,bf_emma:0.5", "speed": 1.0, "pitch": 1.0, "accent": "en-us"}},
-    "class:lockwork_admin#3": {"brief": {"register": "man", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a Lockwork admin in battle: commanding"}, "design": {"engine": "kokoro-82m", "blend": "am_adam:0.5,am_eric:0.5", "speed": 0.98, "pitch": 0.98, "accent": "en-us"}},
-    "class:lockwork_head#3": {"brief": {"register": "woman", "age": "elder", "pitch": "middle", "pace": "slow", "manner": "Lockwork's head in battle: measured"}, "design": {"engine": "kokoro-82m", "blend": "bf_emma:0.6,af_nicole:0.4", "speed": 0.91, "pitch": 0.98, "accent": "en-gb"}},
-    "class:lockwork_agent#3": {"brief": {"register": "man", "age": "adult", "pitch": "middle", "pace": "even", "manner": "a Lockwork agent in battle"}, "design": {"engine": "kokoro-82m", "blend": "am_adam:0.5,am_eric:0.5", "speed": 0.98, "pitch": 1.0, "accent": "en-us"}},
     "aaron": {
       "brief": {
         "register": "man",
@@ -2333,6 +2312,150 @@
         "accent": "en-us"
       }
     },
+    "class:lockwork_admin#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Lockwork admin in battle: commanding"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,bm_george:0.4",
+        "speed": 0.96,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
+    },
+    "class:lockwork_admin#2": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Lockwork admin in battle: commanding"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.5,bf_emma:0.5",
+        "speed": 1,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
+    },
+    "class:lockwork_admin#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Lockwork admin in battle: commanding"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.5,am_eric:0.5",
+        "speed": 0.98,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
+    },
+    "class:lockwork_agent#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Lockwork agent in battle"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.6,bm_george:0.4",
+        "speed": 0.96,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
+    "class:lockwork_agent#2": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Lockwork agent in battle"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.5,bf_emma:0.5",
+        "speed": 1,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
+    "class:lockwork_agent#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "a Lockwork agent in battle"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.5,am_eric:0.5",
+        "speed": 0.98,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
+    "class:lockwork_head#1": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Lockwork's head in battle: measured"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_nicole:0.4",
+        "speed": 0.9,
+        "pitch": 0.95,
+        "accent": "en-gb"
+      }
+    },
+    "class:lockwork_head#2": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Lockwork's head in battle: measured"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_nicole:0.4",
+        "speed": 0.94,
+        "pitch": 0.97,
+        "accent": "en-gb"
+      }
+    },
+    "class:lockwork_head#3": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Lockwork's head in battle: measured"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_nicole:0.4",
+        "speed": 0.91,
+        "pitch": 0.98,
+        "accent": "en-gb"
+      }
+    },
     "class:ninja_boy#1": {
       "brief": {
         "register": "boy",
@@ -4312,6 +4435,22 @@
         "accent": "en-gb"
       }
     },
+    "dov_harlan": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "Dov Harlan, Lockwork's admin in Kanto: a ledger-keeper, dry and counting"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.6,am_onyx:0.4",
+        "speed": 0.97,
+        "pitch": 0.94,
+        "accent": "en-us"
+      }
+    },
     "dragon_tamer": {
       "note": "first spoken at blackthorn_move_tutor_house.txt(40)",
       "provisional": true
@@ -4424,6 +4563,22 @@
     "elesa": {
       "note": "first spoken at nimbasa_city_gym.txt(97)",
       "provisional": true
+    },
+    "elspeth_moor": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Elspeth Moor, Lockwork's admin in Johto: quiet and unblinking"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.5,af_sarah:0.5",
+        "speed": 0.95,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
     },
     "emma": {
       "note": "first spoken at LumioseCity_LookerBureau.txt(125)",
@@ -4762,6 +4917,10 @@
     },
     "gate_guard": {
       "note": "first spoken at jubilife_village.txt(37)",
+      "provisional": true
+    },
+    "gatekeeper": {
+      "note": "first spoken at Hulbury_StadiumMission.txt(8)",
       "provisional": true
     },
     "ghetsis": {
@@ -5176,6 +5335,22 @@
         "accent": "en-us"
       }
     },
+    "juno_barrow": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "Juno Barrow, Lockwork's admin in Unova: punctual and businesslike"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_alloy:0.6,af_heart:0.4",
+        "speed": 1,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
     "jupiter": {
       "brief": {
         "register": "woman",
@@ -5191,6 +5366,10 @@
         "pitch": 0.96,
         "accent": "en-us"
       }
+    },
+    "kabu": {
+      "note": "first spoken at Motostoke_StadiumPitch.txt(44)",
+      "provisional": true
     },
     "kahili": {
       "note": "first spoken at AlolaLeague_KahiliRoom.txt(8)",
@@ -7062,6 +7241,102 @@
         "accent": "en-us"
       }
     },
+    "look:lockwork_agent_f#1": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Lockwork agent: brisk and cool"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sarah:0.6,af_nova:0.4",
+        "speed": 1.05,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
+    "look:lockwork_agent_f#2": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Lockwork agent: flat and watchful"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_river:0.6,af_alloy:0.4",
+        "speed": 1,
+        "pitch": 0.97,
+        "accent": "en-us"
+      }
+    },
+    "look:lockwork_agent_f#3": {
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Lockwork agent: sharp-tongued"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.5,af_aoede:0.5",
+        "speed": 1.07,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
+    },
+    "look:lockwork_agent_m#1": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "a Lockwork agent: clipped and businesslike"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_michael:0.4",
+        "speed": 1,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
+    },
+    "look:lockwork_agent_m#2": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "a Lockwork agent: curt, on a schedule"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_echo:0.5,bm_daniel:0.5",
+        "speed": 1.04,
+        "pitch": 1,
+        "accent": "en-gb"
+      }
+    },
+    "look:lockwork_agent_m#3": {
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "a Lockwork agent: heavy, unbothered"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,am_santa:0.4",
+        "speed": 0.95,
+        "pitch": 0.93,
+        "accent": "en-us"
+      }
+    },
     "look:man#1": {
       "brief": {
         "register": "man",
@@ -8614,6 +8889,10 @@
       "note": "first spoken at humilau_city.txt(54)",
       "provisional": true
     },
+    "marnie": {
+      "note": "first spoken at motostoke.txt(49)",
+      "provisional": true
+    },
     "mars": {
       "brief": {
         "register": "woman",
@@ -9005,6 +9284,10 @@
         "accent": "en-us"
       }
     },
+    "nessa": {
+      "note": "first spoken at Hulbury_StadiumPitch.txt(8)",
+      "provisional": true
+    },
     "nikola": {
       "note": "first spoken at nimbasa_city_gym.txt(42)",
       "provisional": true
@@ -9104,6 +9387,22 @@
     "ombeline": {
       "note": "first spoken at LumioseCity_BattleInstitute.txt(21)",
       "provisional": true
+    },
+    "orsolya_keld": {
+      "brief": {
+        "register": "woman",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Orsolya Keld, Lockwork's head, a harbour clockmaker: soft, measured, sure of herself"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "bf_emma:0.6,af_nicole:0.4",
+        "speed": 0.92,
+        "pitch": 0.96,
+        "accent": "en-gb"
+      }
     },
     "oskin": {
       "note": "first spoken at AlolaRoute1_PlayersHouse.txt(54)",
@@ -9447,6 +9746,22 @@
     "quiz_lady": {
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(95)",
       "provisional": true
+    },
+    "rafe_ottoline": {
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Rafe Ottoline, Lockwork's admin in Hoenn: a harbour hustler, breezy"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.6,am_liam:0.4",
+        "speed": 1.06,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
     },
     "raffle_clerk": {
       "note": "first spoken at join_avenue.txt(121)",
@@ -10128,6 +10443,22 @@
     "tabitha": {
       "note": "first spoken at mossdeep_city_space_center_2f.txt(83)",
       "provisional": true
+    },
+    "tamsin_crake": {
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Tamsin Crake, Lockwork's admin in Sinnoh: crisp, precise, a little smug"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nova:0.6,bf_emma:0.4",
+        "speed": 1.04,
+        "pitch": 1,
+        "accent": "en-gb"
+      }
     },
     "tate": {
       "note": "first spoken at mossdeep_city_gym.txt(22)",
@@ -10877,6 +11208,7 @@
     "Garett": "garett",
     "Gate Guard": "gate_guard",
     "Gate Keeper": "look:guard",
+    "Gatekeeper": "gatekeeper",
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
     "Ghost": "ghost",
@@ -10937,6 +11269,7 @@
     "Joey": "joey",
     "Juan": "juan",
     "Jupiter": "jupiter",
+    "Kabu": "kabu",
     "Kahili": "kahili",
     "Kanoa": "kanoa",
     "Kanto Attendant": "kanto_attendant",
@@ -11009,6 +11342,7 @@
     "Marius": "marius",
     "Marley": "marley",
     "Marlon": "marlon",
+    "Marnie": "marnie",
     "Mars": "mars",
     "Marshal": "marshal",
     "Mary": "mary",
@@ -11051,6 +11385,7 @@
     "Nanu": "nanu",
     "Naoko": "naoko",
     "Neighbour": "neighbour",
+    "Nessa": "nessa",
     "Nikola": "nikola",
     "Norma": "norma",
     "Norman": "norman",
@@ -11270,12 +11605,6 @@
     "Zuki": "zuki"
   },
   "looks": {
-    "tamsin_crake": "tamsin_crake",
-    "dov_harlan": "dov_harlan",
-    "elspeth_moor": "elspeth_moor",
-    "rafe_ottoline": "rafe_ottoline",
-    "juno_barrow": "juno_barrow",
-    "orsolya_keld": "orsolya_keld",
     "archie": "archie",
     "assistant": "assistant",
     "Assistant": "assistant",
@@ -11285,16 +11614,21 @@
     "crasher_wake": "crasher_wake",
     "cynthia": "cynthia",
     "cyrus": "cyrus",
+    "dov_harlan": "dov_harlan",
+    "elspeth_moor": "elspeth_moor",
     "fantina": "fantina",
     "gardenia": "gardenia",
     "grunt": "look:grunt",
+    "juno_barrow": "juno_barrow",
     "jupiter": "jupiter",
     "looker": "looker",
     "marley": "marley",
     "mars": "mars",
     "maylene": "maylene",
     "mom": "mom",
+    "orsolya_keld": "orsolya_keld",
     "prof_oak": "prof_oak",
+    "rafe_ottoline": "rafe_ottoline",
     "riley": "riley",
     "rival": "rival",
     "Rival:MAY:BRENDAN": "rival",
@@ -11304,6 +11638,7 @@
     "scott": "scott",
     "Silver": "rival",
     "steven": "steven",
+    "tamsin_crake": "tamsin_crake",
     "teala": "look:grunt",
     "volkner": "volkner",
     "wally": "wally"

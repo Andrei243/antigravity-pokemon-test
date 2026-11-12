@@ -1,0 +1,22 @@
+{
+  // North of Turffield (plan 33 · GL4, its second session): Route 5 out through the gap in Turffield's north bank,
+  // over gentle downs and round to the east, and Hulbury beyond it on a level of its own above the harbour, with the
+  // sea to the north and east. No grid of control points reaches these rows, so the land is plateaus alone: the floor
+  // first, the seabed cut into it, then the banks too steep to climb on the west, the north of the route and the east.
+  // Our own land at about half the original's distances; read after wild_area_north.json (its name sorts after it)
+  "brushes": [
+    { "kind": "plateau", "name": "Route 5 and Hulbury's floor", "polygon": [[-40, -1056], [160, -1056], [160, -962], [58, -962], [58, -958], [-40, -958]], "height": 26, "falloff": 3 },
+    { "kind": "dome", "name": "a down by Route 5's gap", "at": [-4, -978], "radius": 14, "rise": 2 },
+    { "kind": "dome", "name": "a down in Route 5's long grass", "at": [-22, -1022], "radius": 11, "rise": 1.5 },
+    { "kind": "plateau", "name": "Hulbury's harbour floor", "polygon": [[62, -1056], [160, -1056], [160, -1032], [62, -1032]], "height": 20, "falloff": 2 },
+    { "kind": "plateau", "name": "Route 5's west bank", "polygon": [[-160, -1056], [-40, -1056], [-40, -950], [-160, -950]], "height": 40, "falloff": 4 },
+    { "kind": "plateau", "name": "Route 5's north bank", "polygon": [[-40, -1056], [60, -1056], [60, -1040], [-40, -1040]], "height": 40, "falloff": 4 },
+    { "kind": "plateau", "name": "the east bank past Hulbury", "polygon": [[150, -1032], [160, -1032], [160, -950], [150, -950]], "height": 40, "falloff": 4 }
+  ],
+  "paint": [
+    // Hulbury's streets and quay are stone; Route 5's long grass lies west of its path
+    { "cover": "RockDark", "polygon": [[66, -1030], [146, -1030], [146, -966], [66, -966]] },
+    { "cover": "GrassDeep", "polygon": [[-36, -1034], [0, -1034], [0, -996], [-36, -996]] },
+    { "cover": "GrassDeep", "polygon": [[4, -1036], [44, -1036], [44, -1026], [4, -1026]] }
+  ]
+}

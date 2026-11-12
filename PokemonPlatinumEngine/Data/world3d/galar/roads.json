@@ -27,6 +27,11 @@
     { "name": "the way to the west gate", "points": [[0, -730], [-50, -740], [-96, -752], [-96, -776]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
     { "name": "Route 3's path", "points": [[-96, -776], [-82, -800], [-80, -830], [-90, -852]], "width": 3, "shoulder": 2.5 },
     { "name": "Route 4's path", "points": [[-90, -884], [-70, -900], [-40, -904], [0, -910], [40, -916], [80, -920]], "width": 3, "shoulder": 2.5 },
-    { "name": "the way up to Turffield's stadium", "points": [[80, -920], [100, -922], [116, -924]], "width": 4, "shoulder": 2 }
+    { "name": "the way up to Turffield's stadium", "points": [[80, -920], [100, -922], [116, -924]], "width": 4, "shoulder": 2 },
+    // North of Turffield (plan 33 · GL4, its second session): Route 5's path out through the gap in the north bank, west
+    // round the downs and east to Hulbury's high street, and the high street down to the quay
+    { "name": "Route 5's path", "points": [[40, -916], [40, -958], [26, -984], [8, -1004], [20, -1020], [50, -1016], [70, -1004]], "width": 3, "shoulder": 2.5 },
+    { "name": "Hulbury's high street", "points": [[70, -1004], [100, -1000], [130, -998]], "width": 6, "shoulder": 2, "surface": "Rock" },
+    { "name": "the way down to Hulbury's quay", "points": [[104, -1000], [104, -1028]], "width": 5, "shoulder": 1.5, "surface": "Rock" }
   ]
 }

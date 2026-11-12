@@ -1,0 +1,35 @@
+# Kabu's gym mission (plan 33 · GL4, its second session): three fire Pokémon loose on the course, each rounded up and
+# handed back to its keeper, and two gym trainers beside the way. A Pokémon rounded up stays with its keeper (its own
+# flag). The course is for challengers with the Water Badge. Our own lines, on Sword and Shield's beat of a course of
+# Pokémon to catch; a round-up, not the original's points (docs/mechanics/rulings.md, "Route 5, Hulbury, Galar Mine
+# No. 2 and Kabu").
+
+
+# The first step onto the course: back to the lobby without the Water Badge
+script MissionGate
+  if badge water end
+  speaker "Gym Trainer"
+  say "Hold on! Kabu takes on challengers with two badges. Come back once you've won Nessa's Water Badge."
+  walk player down 1
+  end
+
+
+script MissionVulpix
+  text "The Vulpix yipped and dashed in circles. {player} crouched down and held out a hand..."
+  text "It trotted over to be carried back to its keeper!"
+  setflag FLAG_GALAR_MOTOSTOKE_CAUGHT_1
+  end
+
+
+script MissionGrowlithe
+  text "The Growlithe barked and stood its ground. {player} stood just as still, and waited..."
+  text "It wagged its tail and followed along to its keeper!"
+  setflag FLAG_GALAR_MOTOSTOKE_CAUGHT_2
+  end
+
+
+script MissionSizzlipede
+  text "The Sizzlipede glowed hot in the last gateway. {player} waited for it to cool, then scooped it up..."
+  text "It curled up happily and went back to its keeper. The mission is cleared!"
+  setflag FLAG_GALAR_MOTOSTOKE_CAUGHT_3
+  end

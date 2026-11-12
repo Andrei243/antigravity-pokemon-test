@@ -1,0 +1,31 @@
+# Route 5 (plan 33 · GL4, its second session), on the open world's engine: its places are
+# Data/world3d/galar/places/galar_route_5.json. The lines are our own, on Sword and Shield's beats as they are publicly
+# described (docs/mechanics/rulings.md, "Route 5, Hulbury, Galar Mine No. 2 and Kabu"). VAR_GALAR_STORY is
+# postwick.txt's count: 19 the Grass Badge, 20 Hop beaten on Route 5.
+
+
+# Through the gap in Turffield's north bank the day after the Grass Badge: Hop, wanting a battle before Hulbury
+script HopOnRoute5
+  scene "Hop on Route 5"
+  faceto player hop_route5
+  speaker "Hop"
+  say "There you are! I won my Grass Badge an hour after you did. Two challengers from Postwick, both through Turffield!"
+  say "Before we get to Hulbury, let's see how much our teams have grown. Leon says a good rival is half of a good champion!"
+  if starter "Grookey" goto AgainstGrookey
+  if starter "Scorbunny" goto AgainstScorbunny
+  battle hop_route5 as "galar_hop_4c" canlose
+  goto Fought
+label AgainstGrookey
+  battle hop_route5 as "galar_hop_4a" canlose
+  goto Fought
+label AgainstScorbunny
+  battle hop_route5 as "galar_hop_4b" canlose
+label Fought
+  speaker "Hop"
+  say "Ha! That was close, whoever was ahead. I'm going to train by the sea and come back stronger."
+  say "Hulbury's along the path to the east. Nessa's gym is the second of the challenge. See you there!"
+  clearflag FLAG_GALAR_HOP_ROUTE_5
+  setvar VAR_GALAR_STORY 20
+  objective galarNessa
+  endscene
+  end

@@ -5,6 +5,9 @@
     // The Wild Area's two lakes (plan 33 · GL2), in the bowls terrain/wild_area.json lays: Lake Axewell in its middle and
     // Lake Miloch further north, under the Giant's Seat's east side
     { "name": "Lake Axewell", "polygon": [[64, -450], [58, -432], [44, -425], [26, -434], [18, -446], [20, -462], [30, -472], [46, -474], [60, -466], [66, -458]], "level": 1.4 },
-    { "name": "Lake Miloch", "polygon": [[92, -545], [86, -530], [72, -523], [55, -530], [48, -543], [50, -558], [60, -567], [76, -568], [88, -560], [93, -552]], "level": 1.9 }
+    { "name": "Lake Miloch", "polygon": [[92, -545], [86, -530], [72, -523], [55, -530], [48, -543], [50, -558], [60, -567], [76, -568], [88, -560], [93, -552]], "level": 1.9 },
+    // Hulbury's harbour (plan 33 · GL4, its second session), over the floor terrain/wild_area_north_route5.json cuts:
+    // the sea north of the town's quay, to the region's edges
+    { "name": "Hulbury's harbour", "polygon": [[63, -1056], [160, -1056], [160, -1033], [63, -1033]], "level": 24.4 }
   ]
 }

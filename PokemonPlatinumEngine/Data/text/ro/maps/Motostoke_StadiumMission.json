@@ -1,0 +1,95 @@
+{
+  "displayName": {
+    "en": [
+      "Motostoke Stadium"
+    ],
+    "text": [
+      "Stadionul Motostoke"
+    ]
+  },
+  "people": {
+    "mission_vulpix": {
+      "name": {
+        "en": [
+          "Vulpix"
+        ],
+        "text": [
+          "Vulpix"
+        ]
+      }
+    },
+    "mission_growlithe": {
+      "name": {
+        "en": [
+          "Growlithe"
+        ],
+        "text": [
+          "Growlithe"
+        ]
+      }
+    },
+    "mission_sizzlipede": {
+      "name": {
+        "en": [
+          "Sizzlipede"
+        ],
+        "text": [
+          "Sizzlipede"
+        ]
+      }
+    },
+    "galar_gym_trainer_ash": {
+      "name": {
+        "en": [
+          "Ash"
+        ],
+        "text": [
+          "Ash"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Ash: Kabu's mission is about catching, but you'll have to beat me to get near the next one!"
+        ],
+        "text": [
+          "Antrenorul de Arenă Ash: Misiunea lui Kabu e despre prins, dar trebuie să mă bați ca să te apropii de următorul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Ash: Burnt out. Off you go."
+        ],
+        "text": [
+          "Antrenorul de Arenă Ash: M-am stins. Hai, treci."
+        ]
+      }
+    },
+    "galar_gym_trainer_ember": {
+      "name": {
+        "en": [
+          "Ember"
+        ],
+        "text": [
+          "Ember"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Ember: The fire's hottest at the end of the course. Feel it now!"
+        ],
+        "text": [
+          "Antrenoarea de Arenă Ember: Focul e cel mai fierbinte la capătul traseului. Simte-l acum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Ember: Kabu's waiting on the pitch."
+        ],
+        "text": [
+          "Antrenoarea de Arenă Ember: Kabu te așteaptă pe teren."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -37,6 +37,10 @@ trainers 2, 38-41: galactic_grunt_galactic_hq_b2f_1 41, galactic_grunt_galactic_
 Galar Mine
 grass 10-13
 trainers 2, 13-14: galar_hiker_ives 14, galar_worker_morris 13
+=== GalarMine2
+Galar Mine No. 2
+grass 18-21
+trainers 3, 19-20: galar_fisherman_cormac 20, galar_worker_hale 19, galar_yell_grunt_1 20
 === GeosengeTown_FlareHQ
 Team Flare Secret HQ
 trainers 4, 48-50: kalos_bryony_1 50, kalos_celosia_1 50, kalos_flare_grunt_hq_1 48, kalos_flare_grunt_hq_2 49
@@ -46,6 +50,9 @@ trainers 2, 20-23: lass_molly 23, youngster_donny 22
 === HearthomeGymRoom2
 Hearthome Gym
 trainers 4, 21-24: ace_trainer_allen 24, ace_trainer_catherine 24, school_kid_chance 23, school_kid_mackenzie 21
+=== Hulbury_StadiumMission
+Hulbury Stadium
+trainers 2, 21-22: galar_gym_trainer_finn 22, galar_gym_trainer_marina 22
 === KalosPowerPlant
 Kalos Power Plant
 trainers 2, 27-28: kalos_flare_grunt_plant_1 28, kalos_flare_grunt_plant_2 28
@@ -79,6 +86,9 @@ trainers 2, 45: kalos_flare_grunt_labs_1 45, kalos_flare_grunt_labs_2 45
 === LumioseCity_PrismTowerGym
 Prism Tower
 trainers 2, 32-33: kalos_schoolboy_hugo 33, kalos_schoolgirl_adele 33
+=== Motostoke_StadiumMission
+Motostoke Stadium
+trainers 2, 24-25: galar_gym_trainer_ash 24, galar_gym_trainer_ember 25
 === OldChateau
 Old Chateau
 grass 14-17

@@ -1,0 +1,80 @@
+{
+  "MissionSwitch1": [
+    {
+      "en": [
+        "Gatekeeper"
+      ],
+      "text": [
+        "Paznicul stăvilarului"
+      ]
+    },
+    {
+      "en": [
+        "This floodgate holds the water back from the course. Want me to pull the switch? Here goes!"
+      ],
+      "text": [
+        "Stăvilarul ăsta ține apa departe de traseu. Vrei să trag maneta? Uite așa!"
+      ]
+    },
+    {
+      "en": [
+        "The water rushed off down a side channel, and the gateway drained dry!"
+      ],
+      "text": [
+        "Apa s-a repezit pe un canal lateral, iar trecerea s-a golit de tot!"
+      ]
+    }
+  ],
+  "MissionSwitch2": [
+    {
+      "en": [
+        "Gatekeeper"
+      ],
+      "text": [
+        "Paznicul stăvilarului"
+      ]
+    },
+    {
+      "en": [
+        "The second gate's the stubborn one. Lend me a hand with this lever... heave!"
+      ],
+      "text": [
+        "Al doilea stăvilar e cel încăpățânat. Dă-mi o mână de ajutor cu maneta asta... hop!"
+      ]
+    },
+    {
+      "en": [
+        "With a great gurgle the channel turned, and the way ahead was clear!"
+      ],
+      "text": [
+        "Cu un gâlgâit puternic, apa a luat-o pe alt canal, iar drumul înainte s-a eliberat!"
+      ]
+    }
+  ],
+  "MissionSwitch3": [
+    {
+      "en": [
+        "Gatekeeper"
+      ],
+      "text": [
+        "Paznicul stăvilarului"
+      ]
+    },
+    {
+      "en": [
+        "Last gate! Nessa's on the other side. Ready? Switch!"
+      ],
+      "text": [
+        "Ultimul stăvilar! Nessa e de partea cealaltă. Gata? Maneta!"
+      ]
+    },
+    {
+      "en": [
+        "The last of the water poured away. The mission is cleared!"
+      ],
+      "text": [
+        "Și ultima apă s-a scurs. Misiunea e îndeplinită!"
+      ]
+    }
+  ]
+}

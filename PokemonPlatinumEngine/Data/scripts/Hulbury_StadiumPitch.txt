@@ -1,0 +1,29 @@
+# Hulbury Stadium's pitch (plan 33 · GL4, its second session): Nessa's battle for the Water Badge, the gym challenge's
+# second (`givebadge water`). She Dynamaxes her last Pokémon (the trainer AI's own use, plan 06 · R30). VAR_GALAR_STORY
+# 20 to 21 (postwick.txt's count). Our own lines.
+
+
+script Nessa
+  face nessa player
+  speaker "Nessa"
+  if badge water goto Won
+  scene "Nessa"
+  say "So you made it through the floodgates. I'm Nessa, Hulbury's gym Leader."
+  say "The sea doesn't care how strong you think you are. Let's see if your team can keep its head above water!"
+  battle nessa as "galar_nessa_1"
+  say "Well, I'm soaked. You and your Pokémon move like the tide: you just don't stop."
+  say "The Water Badge is yours. You've earned it."
+  givebadge water
+  text "{player} received the Water Badge from Nessa!"
+  setflag FLAG_GALAR_DEFEATED_HULBURY_GYM
+  defeat "galar_gym_trainer_marina"
+  defeat "galar_gym_trainer_finn"
+  setflag FLAG_GALAR_BEDE_IN_MINE_2
+  setvar VAR_GALAR_STORY 21
+  objective galarMineTwo
+  say "Kabu's gym in Motostoke is next. Galar Mine No. 2 will take you there, just south of town."
+  endscene
+  end
+label Won
+  say "Come back any time the tide's in. The sea's always got something new to teach."
+  end
