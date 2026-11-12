@@ -58,13 +58,24 @@ public static class TravelPhone
     /// no scene of its own (Galar), being there at all. A Champion who crossed into Unova or Kalos meets neither scene,
     /// and is owed the phone as they arrive.
     /// </summary>
-    public static bool Owed(StoryState story)
+    public static bool Owed(StoryState story) =>
+        !story.Has(Flag) && RegionDatabase.All.Any(r => r.File?.Phone == true && PastItsScene(story, r.Id));
+
+    /// <summary>Whether the story is past the scene that gives the phone in a region (or the region has none and has been entered).</summary>
+    public static bool PastItsScene(StoryState story, string region) => region switch
     {
-        if (story.Has(Flag)) return false;
-        if (story.HasEntered(RegionDatabase.Unova) && story.Has(StoryState.PokedexFlag)) return true;
-        if (story.HasEntered(RegionDatabase.Kalos) && (story.Var(KalosStoryVar) >= KalosGivenAt || story.BadgeCount(RegionDatabase.Kalos) > 0)) return true;
-        return RegionDatabase.All.Any(r => r.Id is not (RegionDatabase.Unova or RegionDatabase.Kalos) && r.File?.Phone == true && story.HasEntered(r.Id));
-    }
+        RegionDatabase.Unova => story.HasEntered(region) && story.Has(StoryState.PokedexFlag),
+        RegionDatabase.Kalos => story.HasEntered(region) && (story.Var(KalosStoryVar) >= KalosGivenAt || story.BadgeCount(region) > 0),
+        _ => WorksIn(region) && story.HasEntered(region),
+    };
+
+    /// <summary>
+    /// Whether a region's numbers are owed (<c>GameEngine.OweTheTravelPhone</c>): the phone works there, the story is past
+    /// its scene, and none of its book is saved yet: a phone given in Unova gets Kalos's numbers on crossing into it past
+    /// Mom's letter, a scene a Champion who crossed in never sees.
+    /// </summary>
+    public static bool NumbersOwed(StoryState story, string region) =>
+        WorksIn(region) && PastItsScene(story, region) && !PhoneBook.Of(region).Any(c => story.Has(Pokegear.ContactFlag(c.Id)));
 
     /// <summary>Kalos's count and the value it holds once Mom has read the professor's letter (vaniville_town.txt).</summary>
     public const string KalosStoryVar = "VAR_KALOS_STORY";

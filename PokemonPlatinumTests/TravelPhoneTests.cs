@@ -140,6 +140,41 @@ public class TravelPhoneTests
         Assert.False(TravelPhone.Owed(sinnoh));
     }
 
+    [Theory]
+    [InlineData("UnovaNewGame", "Unova")]
+    [InlineData("KalosNewGame", "Kalos")]
+    [InlineData("GalarNewGame", "Galar")]
+    public void ANewGameIsOwedNothingBeforeItsScene(string newGame, string region)
+    {
+        var host = new HeadlessScriptHost { Region = region };
+        host.Story.EnterRegion(region);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find(newGame, "common")!);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        // Galar has no scene of its own: entering it is enough
+        Assert.Equal(region == RegionDatabase.Galar, TravelPhone.Owed(host.Story));
+    }
+
+    [Fact]
+    public void APhoneGivenInUnovaTakesKalossNumbersOnceKalosIsPastItsScene()
+    {
+        var story = new StoryState();
+        story.EnterRegion(RegionDatabase.Unova);
+        story.Set(StoryState.PokedexFlag);
+        story.Set(TravelPhone.Flag);
+        foreach (var c in PhoneBook.Of(RegionDatabase.Unova)) story.Set(Pokegear.ContactFlag(c.Id));
+        Assert.False(TravelPhone.Owed(story));
+        Assert.False(TravelPhone.NumbersOwed(story, RegionDatabase.Unova));
+        Assert.False(TravelPhone.NumbersOwed(story, RegionDatabase.Kalos));
+        story.EnterRegion(RegionDatabase.Kalos);
+        story.GiveBadge(RegionDatabase.Kalos, RegionDatabase.Get(RegionDatabase.Kalos)!.BadgeNames[0]);
+        Assert.True(TravelPhone.NumbersOwed(story, RegionDatabase.Kalos));
+        foreach (var c in PhoneBook.Of(RegionDatabase.Kalos)) story.Set(Pokegear.ContactFlag(c.Id));
+        Assert.False(TravelPhone.NumbersOwed(story, RegionDatabase.Kalos));
+        Assert.NotEmpty(TravelPhone.Contacts(story, RegionDatabase.Kalos));
+    }
+
     [Fact]
     public void TheScenesThatGiveThePhoneRegisterTheirNumbers()
     {

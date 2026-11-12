@@ -78,8 +78,8 @@ public partial class GameEngine
     /// </summary>
     private void OweTheTravelPhone()
     {
-        if (!TravelPhone.Owed(flow.Story)) return;
-        flow.Story.Set(TravelPhone.Flag);
+        if (TravelPhone.Owed(flow.Story)) flow.Story.Set(TravelPhone.Flag);
+        if (!flow.Story.Has(TravelPhone.Flag) || !TravelPhone.NumbersOwed(flow.Story, Here.Id)) return;
         foreach (var contact in PhoneBook.Of(Here.Id)) flow.Story.Set(Pokegear.ContactFlag(contact.Id));
     }
 }
