@@ -327,6 +327,16 @@
           "Polițist Caleb: Totul pare în regulă. Drum bun."
         ]
       }
+    },
+    "route_212_north.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

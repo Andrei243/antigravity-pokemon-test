@@ -15,7 +15,9 @@ public enum CampRequest
     None,
     /// <summary>The player chose to feed the Pokémon under the cursor: the bag opens on the berries.</summary>
     Feed,
-    Close
+    Close,
+    /// <summary>The player chose to look after the Pokémon under the cursor close up (plan 35 · BN2).</summary>
+    Care
 }
 
 /// <summary>What the camp's screen shows: the team, the pot's pantry (choosing what goes in), the pot on the fire, the dish served.</summary>
@@ -75,7 +77,7 @@ public sealed class CampScreen
     public void Open(Party party, CampCare care, CampKitchen? kitchen = null)
     {
         Party = party;
-        Visit = new CampVisit();
+        Visit = care.NewVisit();
         Cursor = 0;
         request = CampRequest.None;
         Supplies = kitchen;
@@ -142,13 +144,27 @@ public sealed class CampScreen
         return true;
     }
 
+    /// <summary>Confirm opens the close-up of the one under the cursor (plan 35 · BN2); an Egg stays warm by the fire.</summary>
+    public void AskToCare()
+    {
+        if (Selected is not { } p) return;
+        if (p.IsEgg)
+        {
+            Note = Text.Of("camp.note.egg");
+            AudioManager.PlaySound("error");
+            return;
+        }
+        request = CampRequest.Care;
+        AudioManager.PlaySound("select");
+    }
+
     /// <summary>The player chose to feed the one under the cursor: the engine opens the bag's berries and hands one to <see cref="Feed"/>.</summary>
     public void AskToFeed()
     {
         if (Selected is not { } p) return;
         // What can be said without the bag is said here: an Egg, or a meal had already
         var why = Visit.WhyNotFeed(p, null, new Inventory());
-        if (why is CampRefusal.Egg or CampRefusal.AlreadyThisVisit)
+        if (why is CampRefusal.Egg or CampRefusal.AlreadyThisVisit or CampRefusal.Full)
         {
             Note = Refusal(why, p);
             AudioManager.PlaySound("error");
@@ -182,6 +198,7 @@ public sealed class CampScreen
         CampRefusal.Egg => Text.Of("camp.note.egg"),
         CampRefusal.AlreadyThisVisit => Text.Of("camp.note.already", ("name", p.DisplayName)),
         CampRefusal.NoBerry => Text.Of("camp.note.noBerry"),
+        CampRefusal.Full => Text.Of("camp.note.full", ("name", p.DisplayName)),
         _ => ""
     };
 
@@ -432,7 +449,7 @@ public sealed class CampScreen
         }
         int dx = InputManager.Axis(GameAction.Left, GameAction.Right), dy = InputManager.Axis(GameAction.Up, GameAction.Down);
         if (dx != 0 || dy != 0) MoveCursor(dx, dy);
-        else if (InputManager.IsActionPressed(GameAction.Confirm)) Pet();
+        else if (InputManager.IsActionPressed(GameAction.Confirm)) AskToCare();
         else if (InputManager.IsActionPressed(GameAction.Item)) AskToFeed();
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
     }

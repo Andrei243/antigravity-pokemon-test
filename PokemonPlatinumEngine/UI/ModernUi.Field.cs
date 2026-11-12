@@ -207,7 +207,8 @@ internal static partial class ModernUi
     /// </summary>
     public static void DrawStartMenu(int sw, IReadOnlyList<(string Label, UiIcon Icon, Color Color)> entries, int selected, float shown, string objective = "", string counts = "")
     {
-        const float width = 440, row = 74;
+        const float width = 440;
+        float row = StartMenuRowHeight(entries.Count);
         float height = 40 + entries.Count * row + 18;
         var panel = new Rectangle(sw - 40 - width + (1f - shown) * (width + 80), 40, width, height);
         Panel(panel, 34);
@@ -433,6 +434,29 @@ internal static partial class ModernUi
     /// panel at the top right. A number turns red at a fifth of its start or under. A game with no limit of steps (the
     /// Johto Safari Zone's, plan 20 · J8, part b) shows the balls alone, on a panel half as wide.
     /// </summary>
+    public static void StreakCount(int sw, string species, int streak, int hooks)
+    {
+        // The catch streak and the chain of hooks (plan 38 · EX3; style guide, "Field menus and notices"): where the Safari
+        // Game's count stands, a panel with the species' icon and the count, Gold from the streak's first step
+        bool both = streak > 0 && hooks > 0;
+        float width = both ? 360 : 230;
+        var r = new Rectangle(sw - 32 - width, 32, width, 96);
+        Panel(r, 24);
+        var icon = Graphics.PixelArtGenerator.GetPokemonIcon(species);
+        float scale = 2f;
+        Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
+            new Rectangle(r.X + 16, r.Y + (r.Height - icon.Height * scale) / 2f, icon.Width * scale, icon.Height * scale), Vector2.Zero, 0f, Color.White);
+        float x = r.X + 24 + icon.Width * scale;
+        void Count(string label, int value, bool lit)
+        {
+            Label(label, x, r.Y + 18);
+            UiFonts.Draw(value.ToString(), x, r.Y + 44, 36, lit ? Gold : Ink, UiWeight.Black);
+            x += 130;
+        }
+        if (streak > 0) Count(Text.Of("field.streak"), streak, streak >= Overworld.CatchStreak.FirstStep);
+        if (hooks > 0) Count(Text.Of("field.hooks"), hooks, hooks >= 2);
+    }
+
     public static void SafariCount(int sw, int balls, int steps, bool endless = false)
     {
         float width = endless ? 150 : 300;

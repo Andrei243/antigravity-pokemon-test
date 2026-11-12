@@ -208,7 +208,7 @@ public sealed class SubstituteView
 }
 
 /// <summary>What an effect cue shows: a move, something that happens to one Pokémon, the weather over the field, or a moment of the turn (plan 25 · Y3).</summary>
-public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment, Mega, UltraBurst, ZPower, Dynamax, DynamaxEnd, Tera, Shiny }
+public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment, Mega, UltraBurst, ZPower, Dynamax, DynamaxEnd, Tera, Shiny, Bright }
 
 /// <summary>
 /// An effect for the renderer to play (plan 04 · G8): a move from one place to another and how it landed, or a
@@ -361,6 +361,7 @@ public sealed class EffectCue
         CueKind.ZPower => BattleAnimator.ZPowerTime,
         CueKind.Seals => BattleAnimator.SealTime,
         CueKind.Shiny => Lead + BattleAnimator.ShinyTime,
+        CueKind.Bright => Lead + BattleAnimator.ShinyTime,
         CueKind.Weather => BattleAnimator.WeatherCueTime,
         CueKind.Moment => BattleAnimator.MomentTime,
         _ => BattleAnimator.MarkTime
@@ -1504,6 +1505,26 @@ public sealed partial class BattleAnimator
     /// A shiny Pokémon's sparkle as it comes out (plan 09 · L1): stars burst out of it once it has grown out of its
     /// ball, or a moment after it appears (<paramref name="fromBall"/> false). It counts for itself, so no move's
     /// seed moves, and it isn't started about a Pokémon that can't be seen; null then.
+    /// </summary>
+    public EffectCue? BrightShimmer(BattleSide side, int slot, bool fromBall)
+    {
+        // A bright one's shimmer as it comes out (plan 38 · EX3): warm motes round it once, on the shiny's timing; it counts
+        // for itself, so no move's seed and no shiny's sparkle moves
+        var cue = new EffectCue
+        {
+            Kind = CueKind.Bright, Lead = fromBall ? ShinyFromBall : ShinyFromAppearing,
+            FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Seed = ++brightCount * 4217 + slot * 31 + (int)side
+        };
+        if (!InSight(side, slot)) return null;
+        cues.Add(cue);
+        return cue;
+    }
+
+    private int brightCount;
+
+    /// <summary>
+    /// A shiny Pokémon's sparkle, as <see cref="BrightShimmer"/> but with stars.
     /// </summary>
     public EffectCue? ShinySparkle(BattleSide side, int slot, bool fromBall)
     {

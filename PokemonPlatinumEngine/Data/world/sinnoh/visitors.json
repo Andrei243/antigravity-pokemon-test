@@ -1,0 +1,14 @@
+{
+  // Plan 38 · EX2: the visitor a scan from the Town Map's report calls up for an hour, a row for each day of the week. Each
+  // is a species of another region's Pokédex, met in the first of its places that has no outbreak that day, at the Battle
+  // Zone's band. Ours: no game has these rows.
+  "rows": [
+    { "day": "Sunday", "species": "Breloom", "places": ["route_225", "route_229"], "minLevel": 48, "maxLevel": 52 },
+    { "day": "Monday", "species": "Pupitar", "places": ["route_226", "route_227"], "minLevel": 48, "maxLevel": 52 },
+    { "day": "Tuesday", "species": "Zangoose", "places": ["route_227", "route_228"], "minLevel": 49, "maxLevel": 53 },
+    { "day": "Wednesday", "species": "Seviper", "places": ["route_228", "route_226"], "minLevel": 49, "maxLevel": 53 },
+    { "day": "Thursday", "species": "Flygon", "places": ["route_224", "route_230"], "minLevel": 48, "maxLevel": 52 },
+    { "day": "Friday", "species": "Sawk", "places": ["route_225", "route_229"], "minLevel": 48, "maxLevel": 52 },
+    { "day": "Saturday", "species": "Throh", "places": ["route_226", "route_230"], "minLevel": 48, "maxLevel": 52 }
+  ]
+}

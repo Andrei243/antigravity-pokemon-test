@@ -81,6 +81,20 @@ internal struct PokePose
 
     /// <summary>0..1 how much of the walk shows: nought standing, one on the move.</summary>
     public float Moving;
+
+    // The camp's faces (plan 10 · F6, built by plan 35 · BN2; style guide, "The care close-up")
+
+    /// <summary>0..1 how far it leans into a stroke, smiling.</summary>
+    public float Happy;
+
+    /// <summary>0..1 how far it droops, sleepy at night or in a low mood.</summary>
+    public float Sleepy;
+
+    /// <summary>The way its head turns toward the hand: x to its right, y up, each −1 to 1; nought looks ahead.</summary>
+    public Vector2 LookAt;
+
+    /// <summary>0..1 how much it chews: a treat or a berry being eaten.</summary>
+    public float Eating;
 }
 
 /// <summary>Which eye texture shows (see <see cref="PokemonDecals"/>). <see cref="Smile"/> is a cheer's (plan 25 · Y5).</summary>

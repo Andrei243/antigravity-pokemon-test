@@ -2642,6 +2642,27 @@ way 0
 way 1, from answer 1
   Sailor> The pier's always here. Come back whenever you like.
   ? Shall we sail across the bay to the Liberty Garden? = No
+=== CasteliaCity.MealStand
+from Stall keeper at 50,6 of CasteliaCity
+way 0
+  Stall keeper> Lunch for the busy Trainer! A meal for the whole team, eaten right here on the avenue.
+  Stall keeper> What will it be?
+  Stall keeper> That's the avenue's best! Your team is fed and raring to go.
+  ? What will it be? = Mushroom Bake, 2,400
+way 4, from answer 1
+  Stall keeper> Come back when you're hungry!
+  ? What will it be? = Nothing, thanks
+way 3, from answer 1
+  Stall keeper> We sell the same goods we cook with. Take what you like for your own pot.
+  ? What will it be? = The pantry
+way 2, from answer 1
+  Stall keeper> That's the avenue's best! Your team is fed and raring to go.
+  ? What will it be? = Berry Pilaf, 2,200
+  = VAR_TEMP_1 0 -> 2
+way 1, from answer 1
+  Stall keeper> That's the avenue's best! Your team is fed and raring to go.
+  ? What will it be? = Spiced Flatbread, 1,500
+  = VAR_TEMP_1 0 -> 1
 === CelesticPokemonCenter.Pokefan
 from Pokéfan at 3,8 of CelesticPokemonCenter
 way -
@@ -8476,6 +8497,27 @@ way -
 from Rebecca at 15,3 of SevenStarsRestaurant
 way -
   Rebecca> The house rule is two Pokémon against two, I'm afraid. Do come back with a second!
+=== SevenStarsRestaurant.MealStand
+from Waiter at 16,12 of SevenStarsRestaurant
+way 0
+  Waiter> Good evening! Besides the battles, our kitchen now serves a meal for your whole team, eaten here and now.
+  Waiter> What will it be?
+  Waiter> Bon appétit! Your team tucked in and looks ready for anything.
+  ? What will it be? = Mushroom Bake, 2,400
+way 4, from answer 1
+  Waiter> Come back when you're hungry!
+  ? What will it be? = Nothing, thanks
+way 3, from answer 1
+  Waiter> We sell the same goods we cook with. Take what you like for your own pot.
+  ? What will it be? = The pantry
+way 2, from answer 1
+  Waiter> Bon appétit! Your team tucked in and looks ready for anything.
+  ? What will it be? = Spiced Flatbread, 1,500
+  = VAR_TEMP_1 0 -> 2
+way 1, from answer 1
+  Waiter> Bon appétit! Your team tucked in and looks ready for anything.
+  ? What will it be? = Quiet Broth, 1,800
+  = VAR_TEMP_1 0 -> 1
 === SevenStarsRestaurant.RomanKylie
 from Kylie at 10,3 of SevenStarsRestaurant
 way -
@@ -12873,6 +12915,27 @@ way -
   > Lucas put it away in the Key Items pocket.
   * fanfare FanfareKeyItem
   + FLAG_GOT_COIN_CASE
+=== celadon_city_restaurant.MealStand
+from Waiter at 9,8 of CeladonCity_Restaurant
+way 0
+  Waiter> The chef's kitchen isn't open yet, but our little pot is! Today's specials are for your whole team, eaten here and now.
+  Waiter> What will it be?
+  Waiter> Enjoy! Every plate came back clean.
+  ? What will it be? = Bean Hotpot, 1,600
+way 4, from answer 1
+  Waiter> Come back when you're hungry!
+  ? What will it be? = Nothing, thanks
+way 3, from answer 1
+  Waiter> We sell the same goods we cook with. Take what you like for your own pot.
+  ? What will it be? = The pantry
+way 2, from answer 1
+  Waiter> Enjoy! Every plate came back clean.
+  ? What will it be? = Honey Oat Cakes, 2,000
+  = VAR_TEMP_1 0 -> 2
+way 1, from answer 1
+  Waiter> Enjoy! Every plate came back clean.
+  ? What will it be? = Potato Hash, 1,800
+  = VAR_TEMP_1 0 -> 1
 === celadon_condominiums_3f.Director
 from Director at 8,12 of Celadon_Condominiums_3F
 way -
@@ -14470,6 +14533,23 @@ way 0
   * sound select
 way 1, from answer 1
   ? Give it some water? = No
+=== common.BerryPots
+from a trainer with lines of their own
+way 0
+  > Which pot?
+  > The pot is empty. A Berry could be planted in it.
+  ? Which pot? = First pot
+way 4, from answer 1
+  ? Which pot? = Put them away
+way 3, from answer 1
+  > The pot is empty. A Berry could be planted in it.
+  ? Which pot? = Fourth pot
+way 2, from answer 1
+  > The pot is empty. A Berry could be planted in it.
+  ? Which pot? = Third pot
+way 1, from answer 1
+  > The pot is empty. A Berry could be planted in it.
+  ? Which pot? = Second pot
 === common.BlackOutCenter
 from a trainer with lines of their own
 way -
@@ -15354,6 +15434,10 @@ way -
   + FLAG_GALAR_HIDE_LEON_STATION
   + FLAG_GALAR_HIDE_MAGNOLIA_LAKE
   + FLAG_GALAR_STORY_BEGUN
+=== common.Gather
+from a trainer with lines of their own
+way -
+  > Nothing more to gather here today. Come back tomorrow.
 === common.GlobalLink
 from a trainer with lines of their own
 way -
@@ -16724,6 +16808,25 @@ way -
 from a trainer with lines of their own
 way -
   > Nothing in it but a few scraps of paper.
+=== common.TreatBaker
+from a trainer with lines of their own
+way 0
+  Baker> I bake finer treats from the berries you bring me, and I don't charge a thing for the work.
+  Baker> What shall I bake?
+  Baker> I need three berries of one flavour for a cake. Come back when your bag has them.
+  ? What shall I bake? = A CAKE OF ONE FLAVOUR
+way 2, from answer 1
+  Baker> Come back with your berries any time.
+  ? What shall I bake? = NOTHING
+way 1, from answer 1
+  Baker> A loaf takes one berry of each flavour: spicy, dry, sweet, bitter and sour. You're short of one.
+  ? What shall I bake? = A LOAF OF EVERY FLAVOUR
+=== common.TreatCounter
+from a trainer with lines of their own
+way -
+  Confectioner> Welcome to the treat counter! Every treat here is baked with one flavour, for Pokémon who like it best.
+  Confectioner> Give one to a Pokémon at your camp. A treat in a flavour it loves makes it twice as happy!
+  * open Shop treats
 === common.UltraWayHome
 from a trainer with lines of their own
 way 0
@@ -20390,7 +20493,7 @@ from Flint at 654,424 of Sinnoh
 way -
   Flint> You there! Think you're up to it? Find yourself a partner and we'll see how hot you burn!
 === fight_area.HarbourClerk
-from Harbour Clerk at 626,433 of Sinnoh
+from Harbour Clerk at 626,435 of Sinnoh
 way -
   Harbour Clerk> Every ferry that comes and goes is written in my log. Every one, to the minute.
 === fight_area.InverseBattle
@@ -28198,6 +28301,27 @@ way -
   + FLAG_HIDE_OLIVINE_RIVAL
   = VAR_UNK_4078 0 -> 1
   + seen olivine.The red-haired boy at Olivine's Gym
+=== olivine_cafe.MealStand
+from Waiter at 9,3 of Olivine_Cafe
+way 0
+  Waiter> Hello there! Sailors swear by our cooking. Your team can have a proper meal, here and now.
+  Waiter> What will it be?
+  Waiter> There you go! A sailor's meal for every one of them.
+  ? What will it be? = Honey Oat Cakes, 2,000
+way 4, from answer 1
+  Waiter> Come back when you're hungry!
+  ? What will it be? = Nothing, thanks
+way 3, from answer 1
+  Waiter> We sell the same goods we cook with. Take what you like for your own pot.
+  ? What will it be? = The pantry
+way 2, from answer 1
+  Waiter> There you go! A sailor's meal for every one of them.
+  ? What will it be? = Berry Pilaf, 2,200
+  = VAR_TEMP_1 0 -> 2
+way 1, from answer 1
+  Waiter> There you go! A sailor's meal for every one of them.
+  ? What will it be? = Quiet Broth, 1,800
+  = VAR_TEMP_1 0 -> 1
 === olivine_cafe.MeetJasmine
 from Jasmine at 9,5 of Olivine_Cafe
 way -
@@ -35695,6 +35819,27 @@ from Gabby at 228,274 of Hoenn
 from Ty at 229,273 of Hoenn
 way -
   Gabby> Shh! We're rolling! The captain's telling us all about the sea floor.
+=== slateport_city.MealStand
+from Stall keeper at 210,305 of Hoenn
+way 0
+  Stall keeper> Hot food, straight off the griddle! A meal for the whole team, eaten right here at the stall.
+  Stall keeper> What will it be?
+  Stall keeper> Mind, it's hot! Your team wolfed it down.
+  ? What will it be? = Spiced Flatbread, 1,500
+way 4, from answer 1
+  Stall keeper> Come back when you're hungry!
+  ? What will it be? = Nothing, thanks
+way 3, from answer 1
+  Stall keeper> We sell the same goods we cook with. Take what you like for your own pot.
+  ? What will it be? = The pantry
+way 2, from answer 1
+  Stall keeper> Mind, it's hot! Your team wolfed it down.
+  ? What will it be? = Potato Hash, 1,800
+  = VAR_TEMP_1 0 -> 2
+way 1, from answer 1
+  Stall keeper> Mind, it's hot! Your team wolfed it down.
+  ? What will it be? = Bean Hotpot, 1,600
+  = VAR_TEMP_1 0 -> 1
 === slateport_city_battle_tent_lobby.Attendant
 from Attendant at 6,5 of SlateportCity_BattleTentLobby
 way 0

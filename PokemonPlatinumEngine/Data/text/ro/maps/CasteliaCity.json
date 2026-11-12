@@ -8,6 +8,26 @@
     ]
   },
   "people": {
+    "treat_confectioner": {
+      "name": {
+        "en": [
+          "Confectioner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "treat_baker": {
+      "name": {
+        "en": [
+          "Baker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "harlequin": {
       "name": {
         "en": [
@@ -125,6 +145,16 @@
         ],
         "text": [
           "Marinar"
+        ]
+      }
+    },
+    "meal_stall": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
         ]
       }
     }

@@ -73,5 +73,42 @@
       { "id": "spicedFlatbread", "needs": [ { "material": "flour" }, { "material": "spices" } ], "power": "Encounter" },
       { "id": "potatoHash", "needs": [ { "material": "potatoes" }, { "material": "butter" } ], "power": "Materials" }
     ]
-  }
+  },
+  "crosses": {
+    "inHundred": 40,
+    "rows": [
+      { "flavour": "Spicy", "makes": "Liechi Berry" },
+      { "flavour": "Sour", "makes": "Ganlon Berry" },
+      { "flavour": "Sweet", "makes": "Salac Berry" },
+      { "flavour": "Dry", "makes": "Petaya Berry" },
+      { "flavour": "Bitter", "makes": "Apicot Berry" },
+      { "berry": "Liechi Berry", "flavour": "Sweet", "makes": "Lansat Berry" },
+      { "berry": "Liechi Berry", "flavour": "Bitter", "makes": "Jaboca Berry" },
+      { "berry": "Ganlon Berry", "flavour": "Dry", "makes": "Rowap Berry" },
+      { "berry": "Ganlon Berry", "flavour": "Bitter", "makes": "Kee Berry" },
+      { "berry": "Salac Berry", "flavour": "Spicy", "makes": "Custap Berry" },
+      { "berry": "Salac Berry", "flavour": "Sour", "makes": "Micle Berry" },
+      { "berry": "Petaya Berry", "flavour": "Sour", "makes": "Maranga Berry" },
+      { "berry": "Petaya Berry", "flavour": "Spicy", "makes": "Enigma Berry" },
+      { "berry": "Apicot Berry", "flavour": "Sweet", "makes": "Roseli Berry" },
+      { "berry": "Apicot Berry", "flavour": "Dry", "makes": "Starf Berry" }
+    ]
+  },
+  "stands": [
+    { "place": "SevenStarsRestaurant", "dish": "mushroomBake", "price": 2400 },
+    { "place": "SevenStarsRestaurant", "dish": "quietBroth", "price": 1800 },
+    { "place": "SevenStarsRestaurant", "dish": "spicedFlatbread", "price": 1500 },
+    { "place": "celadon_city_restaurant", "dish": "beanHotpot", "price": 1600 },
+    { "place": "celadon_city_restaurant", "dish": "potatoHash", "price": 1800 },
+    { "place": "celadon_city_restaurant", "dish": "honeyOatCakes", "price": 2000 },
+    { "place": "olivine_cafe", "dish": "honeyOatCakes", "price": 2000 },
+    { "place": "olivine_cafe", "dish": "quietBroth", "price": 1800 },
+    { "place": "olivine_cafe", "dish": "berryPilaf", "price": 2200 },
+    { "place": "slateport_city", "dish": "spicedFlatbread", "price": 1500 },
+    { "place": "slateport_city", "dish": "beanHotpot", "price": 1600 },
+    { "place": "slateport_city", "dish": "potatoHash", "price": 1800 },
+    { "place": "CasteliaCity", "dish": "mushroomBake", "price": 2400 },
+    { "place": "CasteliaCity", "dish": "spicedFlatbread", "price": 1500 },
+    { "place": "CasteliaCity", "dish": "berryPilaf", "price": 2200 }
+  ]
 }

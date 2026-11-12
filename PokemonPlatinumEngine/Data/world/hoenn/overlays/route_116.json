@@ -4,6 +4,10 @@
   // runs on toward Verdanturf Town past rocks only Rock Smash moves (plan 21 · H3). Its two ways into Terra Cave open one at
   // a time after the Hall of Fame, while the drought is over that place (plan 21 · H12, part e: common.HoennAbnormalWeather)
   "area": "route_116",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_116.gather", "name": "Fallen log", "npcType": "GatherWood", "x": 59, "y": 134, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "ours": { "land": [ ["Shinobuzz", 145, 149] ] },
   "bgmTrack": "hoenn/route104",
   "trees": "Round",

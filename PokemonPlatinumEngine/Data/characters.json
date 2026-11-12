@@ -817,7 +817,14 @@
     "old_man": { "hairColor": "#c8ccd6", "hair": "Bald", "top": "#8a8a6a", "accent": "#e8e4d4", "bottom": "#5a5a60", "shoes": "#3a302a", "mustache": true, "bushyBrows": true, "coat": true, "build": "GrownElder" },
     "old_woman": { "hairColor": "#c8ccd8", "hair": "Bun", "top": "#8a6a9a", "accent": "#e8dcc8", "bottom": "#5a4a6a", "shoes": "#3a2e30", "skirt": true, "scarf": true, "lashes": true, "curved": false, "build": "GrownElder" },
     "veteran": { "hairColor": "#b8bcc6", "hair": "Swept", "hat": "Cap", "hatColor": "#6a7a4a", "hatBand": "#3a3a2a", "top": "#6a7a5a", "accent": "#d8c87a", "bottom": "#4a4a3a", "shoes": "#2a2420", "mustache": true, "bushyBrows": true, "coat": true, "build": "GrownElder", "height": 1.02 },
-    "veteran_f": { "hairColor": "#c8ccd4", "hair": "Bun", "top": "#7a6a4a", "accent": "#d8c87a", "bottom": "#4a4a3a", "shoes": "#2a2420", "coat": true, "skirt": true, "lashes": true, "curved": false, "build": "GrownElder" }
+    "veteran_f": { "hairColor": "#c8ccd4", "hair": "Bun", "top": "#7a6a4a", "accent": "#d8c87a", "bottom": "#4a4a3a", "shoes": "#2a2420", "coat": true, "skirt": true, "lashes": true, "curved": false, "build": "GrownElder" },
+    // The people later plans stood in Kalos: the policeman of the older regions, the depot's agent in his uniform cap,
+    // the Gift Runner in her yellow scarf, Odile and the Tera keeper, each grown as an adult of their trade
+    "policeman": { "hairColor": "#2a2224", "hat": "Cap", "hatColor": "#26305a", "hatBand": "#e0b84a", "top": "#2e3a6a", "accent": "#9ab8e0", "bottom": "#26305a", "shoes": "#1e1e22", "build": "Grown", "height": 1.04 },
+    "depot_agent": { "hairColor": "#3a2e28", "hat": "Cap", "hatColor": "#283656", "hatBand": "#d8b44a", "top": "#283656", "accent": "#d8b44a", "bottom": "#283656", "shoes": "#1e1e22", "buttoned": true, "jacket": true, "mustache": true, "build": "Grown", "height": 1.02 },
+    "gift_runner": { "hairColor": "#4a3428", "hat": "Cap", "hatColor": "#f0c446", "hatBand": "#3a4a6a", "top": "#3a4a6a", "accent": "#f0c446", "bottom": "#2e3448", "shoes": "#2a2420", "scarf": true, "build": "Grown" },
+    "odile": { "hairColor": "#2a1e1a", "hair": "Bun", "top": "#c86a3a", "accent": "#f4ead8", "bottom": "#3a3040", "shoes": "#2a2230", "coat": true, "scarf": true, "lashes": true, "build": "Grown" },
+    "tera_keeper": { "hairColor": "#e8eef8", "hair": "Bun", "top": "#5ab4e6", "accent": "#f0c84a", "bottom": "#2e3a5a", "shoes": "#f2f2f6", "coat": true, "scarf": true, "lashes": true, "build": "Grown" }
   },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },

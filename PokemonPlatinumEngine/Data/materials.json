@@ -69,5 +69,26 @@
     { "id": "oats", "kind": "Pantry", "rare": false, "worth": 50 },
     { "id": "tomatoes", "kind": "Pantry", "rare": false, "worth": 60 },
     { "id": "spices", "kind": "Pantry", "rare": false, "worth": 90 }
-  ]
+  ],
+  "gather": [
+    { "kind": "Rock", "finds": [
+      { "material": "quarryStone", "weight": 6, "least": 2, "most": 4 },
+      { "material": "rawOre", "weight": 2, "least": 1, "most": 2 },
+      { "material": "riverClay", "weight": 2, "least": 1, "most": 3 } ] },
+    { "kind": "Wood", "finds": [
+      { "material": "timber", "weight": 6, "least": 2, "most": 4 },
+      { "material": "amberResin", "weight": 2, "least": 1, "most": 2 },
+      { "material": "plantFibre", "weight": 2, "least": 1, "most": 3 } ] },
+    { "kind": "Plant", "finds": [
+      { "material": "plantFibre", "weight": 5, "least": 2, "most": 4 },
+      { "material": "wildHerbs", "weight": 4, "least": 1, "most": 3 } ] },
+    { "kind": "Shore", "finds": [
+      { "material": "seaShell", "weight": 5, "least": 1, "most": 3 },
+      { "material": "coarseSalt", "weight": 3, "least": 1, "most": 3 },
+      { "material": "riverClay", "weight": 2, "least": 1, "most": 2 } ] },
+    { "kind": "Snow", "finds": [
+      { "material": "frostCrystal", "weight": 6, "least": 1, "most": 3 },
+      { "material": "quarryStone", "weight": 2, "least": 1, "most": 2 } ] }
+  ],
+  "cleared": { "tree": "timber", "rock": "quarryStone", "oneIn": 3 }
 }

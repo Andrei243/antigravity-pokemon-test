@@ -210,6 +210,69 @@
         }
       },
       "additionalProperties": false
+    },
+    "crosses": {
+      "type": "object",
+      "properties": {
+        "inHundred": {
+          "type": "integer"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "flavour": {
+                "type": "string"
+              },
+              "berry": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "makes": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "flavour",
+              "makes"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "stands": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "place": {
+            "type": "string"
+          },
+          "dish": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "place",
+          "dish",
+          "price"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

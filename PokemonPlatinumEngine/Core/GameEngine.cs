@@ -153,7 +153,9 @@ public enum GameState
     /// <summary>The Power Watch's panel, from the bag or the item button (plan 36 · TR8).</summary>
     Powers,
     /// <summary>The hub's Week's Work read, a script's <c>missions open</c> waiting on it (plan 41 · EG6).</summary>
-    MissionBoard
+    MissionBoard,
+    /// <summary>One Pokémon of the camp close up: petted by hand, fed, brushed and cured (plan 35 · BN2).</summary>
+    Care
 }
 
 public partial class GameEngine
@@ -476,6 +478,7 @@ public partial class GameEngine
         flow.EncounterAids.Flute = Flute.None;
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
         flow.Encounters = SpecialEncounters.NewGame(fieldRandom);
+        flow.CatchStreak = new Overworld.CatchStreak();
         flow.Berries = BerryPatches.NewGame();
         flow.PoffinCase.Clear();
         phoneRinger.Reset();
@@ -487,6 +490,7 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Care.Clear();
         flow.Gifts.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
@@ -748,6 +752,7 @@ public partial class GameEngine
         // What the game remembered of its wild Pokémon (a save from before plan 06 · R13 is given a new start); a
         // game come back to sends every roamer anywhere (the original's continue task)
         flow.Encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
+        flow.CatchStreak = save.CatchStreak ?? new Overworld.CatchStreak();
         flow.Berries = (save.Berries ?? BerryPatches.NewGame()).Grown();
         flow.PoffinCase.Restore(save.Poffins);
         phoneRinger.Reset();
@@ -761,6 +766,7 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        flow.Care.Restore(save.Care);
         flow.Gifts.Load(save.Gifts);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
@@ -977,6 +983,7 @@ public partial class GameEngine
             BugContest = flow.BugContest.ToSave(),
             Athlon = flow.Athlon.Runs > 0 || flow.Athlon.Points > 0 ? flow.Athlon.Copy() : null,
             Encounters = flow.Encounters,
+            CatchStreak = flow.CatchStreak.IsEmpty ? null : flow.CatchStreak,
             Berries = flow.Berries,
             Poffins = flow.PoffinCase.Count > 0 ? flow.PoffinCase.All.ToList() : null,
             FashionCase = flow.FashionCase.ToSave(),
@@ -988,6 +995,7 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            Care = CareToSave(),
             Gifts = flow.Gifts.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
@@ -1255,6 +1263,8 @@ public partial class GameEngine
             RunTheSetPieces();
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
+            // Hidden items glint and bright Pokémon shimmer, by the field's own clock (plan 38 · EX3)
+            KeepTheGlints(before);
             // The Pokégear's phone counts the minutes before a call can come (plan 20 · J3)
             RunThePhonesClock(dt);
             // Thunder follows a storm's lightning, a moment after the flash
@@ -1377,6 +1387,10 @@ public partial class GameEngine
                 TickBugContest(dt);
                 // A timed mission's minutes in its region (plan 41 · EG6)
                 TickMissions(dt);
+                // The visitor's hour (plan 38 · EX2)
+                TickVisitor(dt);
+                // The hour's rift laid in its ground and taken away (plan 38 · EX5)
+                KeepTheRift();
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt * Pace);
@@ -1405,6 +1419,8 @@ public partial class GameEngine
                     if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);
                     // ...and so do a timed mission's (plan 41 · EG6)
                     TickMissions(dt);
+                    // ...and the visitor's hour (plan 38 · EX2)
+                    if (!flow.Battle.Watching) TickVisitor(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
                     // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
@@ -1485,6 +1501,12 @@ public partial class GameEngine
                 break;
             case GameState.FlyMap:
                 flow.TownMapScreen.Update(dt);
+                // The report's scan (plan 38 · EX2): the visitor called up, and the report told again
+                if (flow.TownMapScreen.TakeScan())
+                {
+                    ScanForVisitor();
+                    flow.TownMapScreen.SetReport(FieldReportNow());
+                }
                 if (flow.TownMapScreen.TakeChoice() is { } town)
                 {
                     flow.FlyTarget = town;
@@ -1502,6 +1524,7 @@ public partial class GameEngine
                 else if (!flow.BagScreen.IsActive && choosingBerryToCook && flow.BagScreen.TakePick(out var toCook)) BerryChosenToCook(toCook);
                 else if (!flow.BagScreen.IsActive && choosingBerryToBlend && flow.BagScreen.TakePick(out var toBlend)) BerryChosenToBlend(toBlend);
                 else if (!flow.BagScreen.IsActive && choosingBerryForCamp && flow.BagScreen.TakePick(out var toFeed)) BerryChosenForCamp(toFeed);
+                else if (!flow.BagScreen.IsActive && choosingForCare && flow.BagScreen.TakePick(out var toEat)) PickedForCare(toEat);
                 else if (!flow.BagScreen.IsActive && flow.BagScreen.TakePick(out var picked))
                 {
                     // A script that asked for an item hears which (plan 06 · R14a)
@@ -1773,6 +1796,9 @@ public partial class GameEngine
             case GameState.Camp:
                 UpdateCamp(dt);
                 break;
+            case GameState.Care:
+                UpdateCare(dt);
+                break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Update(dt);
                 if (!flow.TitleCreditsScreen.IsActive) flow.State = GameState.Title;
@@ -1902,6 +1928,7 @@ public partial class GameEngine
         KeepTheClock();
         KeepBerriesInView();
         KeepApricornTreesInView();
+        KeepGatherSpotsInView();
         KeepTheSaltInView();
         SlideBoulders(fieldDt);
         flow.PoketchView.Update(dt);
@@ -2254,6 +2281,8 @@ public partial class GameEngine
                 if (!p.IsEgg && before < FriendshipRules.EvolveAt && p.Friendship >= FriendshipRules.EvolveAt)
                     flow.Pokedex.Research.Tell(p.Species, ResearchKind.Befriended);
             }
+            // The care book's walk cycle: moods settle, and a coat left soiled lowers one (plan 35 · BN1)
+            CareRules.WalkCycle(flow.Care, flow.Party.Members);
         }
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
         flow.Poketch.Step();
@@ -2355,6 +2384,8 @@ public partial class GameEngine
         // (FieldSystem_InitFlagsOnMapChange, not during a Safari Game; plan 06 · R13)
         if (another) ChangePlace();
         if (another && !flow.Safari.Active) Roamers.PlayerWalkedInto(flow.Encounters, area.Key, fieldRandom);
+        // The follower notices a new place (plan 35 · BN4)
+        if (another) NoteForTheLead(LeadFollower.Moment.NewPlace);
         NoteArrival();
         PlayFieldMusic();
         // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
@@ -2449,7 +2480,12 @@ public partial class GameEngine
     {
         if (flow.EvolutionScreen.Outcome is { } outcome)
         {
-            if (flow.EvolutionScreen.Pokemon is { } evolved) flow.Pokedex.RegisterCaught(evolved);
+            if (flow.EvolutionScreen.Pokemon is { } evolved)
+            {
+                flow.Pokedex.RegisterCaught(evolved);
+                CareEvolved(evolved);
+                NoteForTheLead(LeadFollower.Moment.Evolved);
+            }
             else flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
             flow.Statistics.Count(Statistics.Evolutions);
             // An evolution out of a species, for its research (plan 15 · E1)
@@ -3008,7 +3044,7 @@ public partial class GameEngine
                     ? OwnDexCounts(own) : null,
                 Stamps = r.File?.Stamps == true,
                 // The house of titles on Route 7 (plan 37 · FC4): its title on Kalos's page
-                HouseTitle = r.Id == "Kalos" ? Math.Clamp(flow.Story.Var(Models.Facilities.TitlesHouse.TitleVariable), 0, Models.Facilities.TitlesHouse.HighestTitle) : 0
+                HouseTitle = r.Id == RegionDatabase.Kalos ? Math.Clamp(flow.Story.Var(Models.Facilities.TitlesHouse.TitleVariable), 0, Models.Facilities.TitlesHouse.HighestTitle) : 0
             })
             .ToList();
     }
@@ -3271,6 +3307,11 @@ public partial class GameEngine
         {
             flow.Credits.Render(renderContext);
         }
+        else if (scene == GameState.Care)
+        {
+            // The care close-up's model, a scene of its own as the gallery's (plan 35 · BN2)
+            flow.CareScreen.Render(renderContext);
+        }
         else if (scene == GameState.Gallery)
         {
             // The gallery's model, a scene of its own like the evolution's (plan 12 · Q30)
@@ -3309,6 +3350,8 @@ public partial class GameEngine
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (shown == GameState.Overworld && !flow.StartMenu.IsActive && !ScriptRunning) flow.PoketchView.Draw(VirtualWidth, VirtualHeight, flow.Poketch, PoketchNow());
                 if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Endless);
+                // ...or, where neither game is on, the catch streak and the chain of hooks (plan 38 · EX3)
+                else if (!InBugContest && StreakShown is var (streakSpecies, streak, hooks)) ModernUi.StreakCount(VirtualWidth, streakSpecies, streak, hooks);
                 DrawBugContestCount();
                 DrawParkCount();
                 DrawBattlePoints();
@@ -3409,6 +3452,9 @@ public partial class GameEngine
                 break;
             case GameState.Camp:
                 flow.CampScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Care:
+                flow.CareScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Draw(VirtualWidth, VirtualHeight);

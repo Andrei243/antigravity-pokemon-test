@@ -590,6 +590,10 @@ public class WildEncounterEntry
     [System.Text.Json.Serialization.JsonIgnore]
     public bool Outbreak { get; set; }
 
+    /// <summary>The slot is an hour's rift's (plan 38 · EX5, <see cref="Rifts"/>): its Pokémon has a shiny roll more; never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Rift { get; set; }
+
     /// <summary>The moves an outbreak of the game's own gives its Pokémon (Emerald's television outbreak); null leaves the moves its level gives. Never in a table.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public IReadOnlyList<string>? Moves { get; set; }

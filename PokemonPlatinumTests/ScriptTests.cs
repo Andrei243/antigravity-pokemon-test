@@ -246,6 +246,10 @@ public class ScriptTests
           craft pantry
           craft meal "beanHotpot"
           craft meal "campStew" superb
+          treat can
+          treat can mixed
+          treat bake spicy
+          treat bake most
           train open
           train drill
           train reset all

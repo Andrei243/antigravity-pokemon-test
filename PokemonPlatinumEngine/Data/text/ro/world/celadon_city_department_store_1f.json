@@ -18,6 +18,26 @@
         ]
       }
     },
+    "celadon_city_department_store_1f.Confectioner": {
+      "name": {
+        "en": [
+          "Confectioner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_city_department_store_1f.Baker": {
+      "name": {
+        "en": [
+          "Baker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "celadon_city_department_store_1f.TrainingExchange": {
       "name": {
         "en": [

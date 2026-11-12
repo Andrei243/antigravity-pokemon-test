@@ -415,6 +415,8 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `berry plant` | Plants the berry last chosen with `chooseitem berries`, taken from the bag: wet soil, the best rating, growing at once. |
 | `berry water` | Waters the patch to the full. |
 | `berry pick` | Picks what is in fruit into the bag, leaving bare soil with no mulch; `RESULT` is how many. |
+| `berry pot` | Plan 39 · CR5, Johto's Berry Pots (`common.BerryPots`): the pot `RESULT` names (0 to 3, from a `choose`) is the patch the `berry` words after it tend, in place of the soil the script belongs to. |
+| `berry crossed` | Plan 39 · CR5: `RESULT` 1 when the last `berry pick` held one of its cross, and `{crossed}` names the berry; 0 otherwise. With the crafting kit in the bag, `berry plant` notes a cross on it and on every soil of the eight tiles round it (or the pots beside it) growing a berry of a pair of `recipes.json`'s `crosses`, and `berry pick` of a noted patch draws once, before it is picked bare, for one of its fruit to be the cross. |
 | `apricorn tree` | The Apricorn tree the script belongs to (plan 20 · J6; `Models/Apricorns.cs`, `common.ApricornTree`): `RESULT` is 0 bare (picked today), 1 with its fruit on, 2 with its fruit on and the Box full of that colour; `{apricorn}` names the colour ("Red Apricorn") and `{ball}` the ball it becomes. |
 | `apricorn pick` | Takes the tree's Apricorn into the Apricorn Box: `RESULT` 1, or 0 where it is bare or the Box is full of that colour; `{apricorns}` is how many of the colour the Box holds now. A tree bears one a calendar day. |
 | `apricorn box` | Opens the Apricorn Box (`UI/ApricornBoxScreen.cs`) and waits for it to be put away. |
@@ -888,6 +890,17 @@ was started with; anyone else is no friend's trainer and has nothing to battle.
 | `friend before`, `friend after` | Says the line their file chose to say before the battle, or after it (`friends.line.N` of the table), under their name. |
 | `friend battle` | The battle at level 50: copies of the player's team but its Eggs, and of the friend's own team made from their file, under the Frontier's battle rules (nothing won, paid, learnt or used up) and every routine of the trainer AI. `RESULT` 1 won, 0 lost; a win beats them for the day and counts as a trainer beaten. |
 
+### Treats
+
+Plan 35 · BN3; `docs/mechanics/rulings.md`, "Care". The bakers' one command, `treat`; the confectioners sell with `shop "treats"`.
+A flavour is `spicy`, `dry`, `sweet`, `bitter` or `sour`, a berry's flavour its strongest; `most` (or nothing) is the flavour
+the bag has most berries of, three at least.
+
+| Command | What it does |
+|---|---|
+| `treat can [most\|spicy\|dry\|sweet\|bitter\|sour\|mixed]` | `RESULT` 1 when a bake could be made: three berries of the flavour, or for `mixed` one of each of the five; else 0. |
+| `treat bake [most\|spicy\|dry\|sweet\|bitter\|sour\|mixed]` | Takes the berries (the most plentiful kind first) and puts the treat in the bag: a grade-2 treat of the flavour, or the Rainbow Loaf for `mixed`. `RESULT` 1 and `{item}` naming it, or 0 and nothing taken. |
+
 ### The crafting kit
 
 Plan 39 · CR1; `docs/mechanics/rulings.md`, "Materials, crafting and cooking". The kit is a key item of ours (`Crafting Kit`,
@@ -909,6 +922,8 @@ another command. `{material}` says the last material named, in the language chos
 | `craft trade` | Trades three of that material for one of its type's rare: `RESULT` 1 and `{material}` names the rare one, or 0 and nothing traded. |
 | `craft pantry` | Plan 39 · CR6, the workshop's counter: looks into the kit on its PANTRY tab, which sells the pot's goods into the pouch for money, and waits for it to be put away; `RESULT` 1, or 0 and nothing opened without the kit in the bag. |
 | `craft meal "beanHotpot" [plain\|good\|great\|superb]` | Plan 39 · CR6 (CR7's waiters): the team eats a dish of `recipes.json`'s `kitchen` there and then, at the grade named (great when none is): HP back by the grade's share, conditions cured, and the dish's power started for the grade's level and length (a type's encounters of the Normal type, there being no berry); nobody's friendship rises, which is the camp's. `RESULT` 1 when it started a power. A dish the table lacks is a mistake of the file. |
+| `craft gather` | Plan 39 · CR2, a gathering spot's `common.Gather`: the spot the script belongs to gives one of its kind's finds into the pouch, once a calendar day, `{material}` and `{materials}` naming it; `RESULT` 1, or 0 when it has been picked today, and 0 with nothing drawn without the kit in the bag. |
+| `craft cleared tree`, `craft cleared rock` | Plan 39 · CR2: after a tree is cut or a rock smashed, with the kit in the bag, one time in three a piece of timber or quarry stone goes into the pouch (`RESULT` 1, `{material}` and `{materials}` naming it); without the kit nothing is drawn. |
 
 ### The training hall
 

@@ -209,6 +209,16 @@
           "Treptele de pământ de pe drumul ăsta merg într-o singură direcție. Odată ce sari jos, mergi spre sud!"
         ]
       }
+    },
+    "route_45.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

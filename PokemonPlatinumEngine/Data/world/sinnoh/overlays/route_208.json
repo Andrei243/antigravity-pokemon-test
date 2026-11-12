@@ -1,5 +1,9 @@
 {
   "area": "route_208",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_208.gather", "name": "Rock", "npcType": "GatherRock", "x": 439, "y": 721, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route206",
   "trees": "Pine",
   // Plan 01 · M11, part a: rooms on the original's plans

@@ -1,0 +1,13 @@
+{
+  // Plan 38 · EX2: the visitor a scan from the Town Map's report calls up for an hour, a row for each day of the week: a
+  // species of another region's Pokédex on the eastern routes, in Emerald's own levels. Ours: no game has these rows.
+  "rows": [
+    { "day": "Sunday", "species": "Stantler", "places": ["route_119", "route_120"], "minLevel": 32, "maxLevel": 36 },
+    { "day": "Monday", "species": "Ursaring", "places": ["route_118", "route_123"], "minLevel": 32, "maxLevel": 36 },
+    { "day": "Tuesday", "species": "Flaaffy", "places": ["route_110", "route_118"], "minLevel": 30, "maxLevel": 34 },
+    { "day": "Wednesday", "species": "Sneasel", "places": ["route_115", "route_114"], "minLevel": 30, "maxLevel": 34 },
+    { "day": "Thursday", "species": "Floatzel", "places": ["route_121", "route_123"], "minLevel": 32, "maxLevel": 36 },
+    { "day": "Friday", "species": "Luxio", "places": ["route_111", "route_119"], "minLevel": 30, "maxLevel": 34 },
+    { "day": "Saturday", "species": "Ponyta", "places": ["route_111", "route_112"], "minLevel": 30, "maxLevel": 34 }
+  ]
+}

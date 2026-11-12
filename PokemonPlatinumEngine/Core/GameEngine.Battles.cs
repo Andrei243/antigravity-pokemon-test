@@ -46,6 +46,10 @@ public partial class GameEngine
         // The day's outbreak: one more shiny roll from thirty of its species met in its place and two from sixty, drawn only
         // then (plan 38 · EX1); an outbreak of the region's own game also gives its Pokémon its moves, drawing nothing
         if (!entry.Shiny && OutbreakRolls(area, entry.SpeciesName) is > 0 and var outbreakRolls) wild.RerollForShiny(rng, outbreakRolls, entry.Gender, entry.Nature);
+        // An hour's rift: one shiny roll more for what is met out of it, drawn only then (plan 38 · EX5)
+        if (!entry.Shiny && entry.Rift) wild.RerollForShiny(rng, Overworld.Rifts.ShinyRolls, entry.Gender, entry.Nature);
+        // The chain of hooks on a rod: two rolls more for each hook of the species before it at the spot, drawn only then (plan 38 · EX3)
+        if (!entry.Shiny && hookRolls > 0) wild.RerollForShiny(rng, hookRolls, entry.Gender, entry.Nature);
         if (entry.Moves is { Count: > 0 } outbreakMoves) Overworld.Outbreaks.GiveMoves(wild, outbreakMoves);
         // A slot of a region's table met in a form of its species (an Alolan Rattata, plan 23): knowing what the form learns;
         // a slot whose form name is no form of the species (the species' own, for the base form) is met as it is
@@ -796,6 +800,8 @@ public partial class GameEngine
         OpenWildAfterBattle(flow.Battle);
         // Wild Pokémon felled or caught leave materials in the kit's pouch, if the kit is in the bag (plan 39 · CR1)
         if (flow.Battle != null) MaterialsAfterBattle(flow.Battle, isDefeat);
+        // The care book hears how it went: the marks of where it was fought, and the mood (plan 35 · BN1)
+        if (flow.Battle != null) CareAfterBattle(flow.Battle, isDefeat);
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
         bool goesOn = isDefeat && flow.Runner.IsRunning && flow.BattleMayBeLost;
         flow.BattleMayBeLost = false;

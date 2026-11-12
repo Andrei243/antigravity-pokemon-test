@@ -54,9 +54,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "{foe} pășește înainte!"
       ]
     },
     {
@@ -65,9 +62,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "{foe} fac un pas înainte!"
       ]
     },
     {
@@ -76,9 +70,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "{player} a primit {number} BP!"
       ]
     },
     {
@@ -87,9 +78,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "{player} a primit trofeul acestei săli! Va atârna pentru totdeauna în ramurile Battle Tree."
       ]
     },
     {
@@ -98,9 +86,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "Arbitru"
       ]
     },
     {
@@ -109,9 +94,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "L-ai învins pe un Maestru al Copacului! De acum, și luptele Super ale acestei săli îți sunt deschise."
       ]
     },
     {
@@ -128,12 +110,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "Pokémonii tăi sunt din nou refăcuți. Ce faci?",
-        "Lupta următoare",
-        "Odihnă",
-        "Retragere"
       ]
     },
     {
@@ -156,9 +132,6 @@
         "",
         "",
         ""
-      ],
-      "was": [
-        "Te retragi cu fruntea sus. Copacul îți va ține minte seria."
       ]
     },
     {
@@ -175,9 +148,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "Atunci odihnește-te bine. Locul îți e păstrat, iar progresul salvat."
       ]
     },
     {
@@ -194,9 +164,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "Seria se încheie aici. Trage-ți sufletul și urcă din nou. Copacul te va aștepta."
       ]
     },
     {

@@ -83,6 +83,16 @@
           "L-am auzit pe profesor strigând după ajutor tocmai de aici! Noroc că ai venit tu."
         ]
       }
+    },
+    "route_101.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -1,5 +1,9 @@
 {
   "area": "route_213",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_213.gather", "name": "Shells", "npcType": "GatherShore", "x": 706, "y": 831, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/valor",
   "trees": "Round",
   "architecture": "Resort",

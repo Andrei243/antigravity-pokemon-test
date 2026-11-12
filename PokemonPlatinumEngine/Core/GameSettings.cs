@@ -242,6 +242,12 @@ public sealed class GameSettings
     public RulesDefault PartyTools { get; set; } = RulesDefault.Rules;
 
     /// <summary>
+    /// Whether a hidden item within three tiles glints (plan 38 · EX3, <see cref="Overworld.Glints"/>): <see cref="RulesDefault.Rules"/>
+    /// unless chosen, so a game played by the modern rules shows it, as the later games show their hidden items.
+    /// </summary>
+    public RulesDefault ItemGlints { get; set; } = RulesDefault.Rules;
+
+    /// <summary>
     /// Whether the start menu has BOXES, which opens the PC anywhere the map allows, and the bag can be put in order (plan 12 · Q13):
     /// <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's rules keeps its menu and bag.
     /// </summary>
@@ -446,6 +452,12 @@ public sealed class GameSettings
     /// everywhere, or the camera as it was (Classic). REDUCE MOTION films every manner as Classic.
     /// </summary>
     public BattleCameraChoice BattleCamera { get; set; } = BattleCameraChoice.Region;
+
+    /// <summary>
+    /// TEAM CARE (plan 35 · BN2, decision 1): whether the start menu offers CAMP and its close-up whatever the FOLLOWER row
+    /// says. <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's rules keeps its menu.
+    /// </summary>
+    public RulesDefault Care { get; set; } = RulesDefault.Rules;
 
     /// <summary>
     /// The battle room's records (plan 13 · V13, V26): the furthest a gauntlet came, the longest streak and the puzzles

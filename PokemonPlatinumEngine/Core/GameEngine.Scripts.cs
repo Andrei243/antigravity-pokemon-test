@@ -472,6 +472,12 @@ public partial class GameEngine
             flow.JournalScreen.Open();
             return;
         }
+        // Johto's Berry Pots, tended wherever the player is (plan 39 · CR5)
+        if (item.FieldUse == BerryPotsUse)
+        {
+            StartScript(FieldScripts.BerryPots);
+            return;
+        }
         // The Vs. Recorder's battles off the item button, and back to the field (plan 08 · P11)
         if (item.FieldUse == "VsRecorder")
         {
@@ -659,12 +665,15 @@ public partial class GameEngine
         }
         if (cast.Stage != FishingStage.Done) return;
         flow.Fishing = null;
+        // The chain of hooks goes on, or is broken by a cast that hooked nothing (plan 38 · EX3)
+        hookRolls = KeepTheChain(cast.Caught);
         if (cast.Caught is { } fish)
         {
             flow.Player.Encounters.Reset();
             flow.Hooked = true;
             StartWildBattle(fish);
         }
+        hookRolls = 0;
     }
 
     /// <summary>A press of the confirm button for a rod's cast, given by a tool in place of the keys (the screenshot harness).</summary>
@@ -1717,6 +1726,7 @@ public partial class GameEngine
         }
 
         public BerryPatches Berries => game.flow.Berries;
+        public IEnumerable<int> PatchesBeside(NPC soil) => BerryCrossing.Beside(game.flow.Map, soil).ToList();
         public ApricornBox Apricorns => game.flow.Apricorns;
         public CraftingState Crafting => game.flow.Crafting;
         public PowerState Powers => game.flow.Powers;

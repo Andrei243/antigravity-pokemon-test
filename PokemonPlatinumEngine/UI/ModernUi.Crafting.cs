@@ -18,6 +18,7 @@ internal static partial class ModernUi
         CraftingTab.Machines => (Text.Of("crafting.tab.machines"), UiIcon.Disc, Blue),
         CraftingTab.Make => (Text.Of("crafting.tab.make"), UiIcon.Gear, Green),
         CraftingTab.Pantry => (Text.Of("crafting.tab.pantry"), UiIcon.Pouch, PantryGreen),
+        CraftingTab.Crosses => (Text.Of("crafting.tab.crosses"), UiIcon.Berry, CrossPink),
         _ => (Text.Of("crafting.tab.materials"), UiIcon.Pouch, Gold)
     }).ToArray();
 
@@ -30,6 +31,7 @@ internal static partial class ModernUi
     };
 
     private static readonly Color PantryGreen = new(110, 168, 88, 255);
+    private static readonly Color CrossPink = new(214, 92, 128, 255);
 
     public static void DrawCrafting(int sw, int sh, CraftingScreen screen, float appear)
     {
@@ -72,6 +74,11 @@ internal static partial class ModernUi
         if (screen.Tab == CraftingTab.Pantry)
         {
             DrawPantry(screen, list, detail);
+            return;
+        }
+        if (screen.Tab == CraftingTab.Crosses)
+        {
+            DrawCrosses(screen, list, detail);
             return;
         }
 
@@ -298,6 +305,69 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(x, detail.Y + 436, room, 3), 1.5f, Rule);
         DrawWrapped(MaterialTable.DescriptionOf(chosen.Id), x, detail.Y + 462, room, 28, Ink, 36);
         DrawHowManyAndNotice(screen, detail, detail.Y + 560);
+    }
+
+    /// <summary>
+    /// The CROSSES page (plan 39 · CR5; style guide, "The kit's CROSSES page"): a row to each berry crossing can give, a
+    /// berry's chip in the page's colour, its name once crossing has given it and a row of question marks until then; for
+    /// the row under the cursor, the berry large and the pair it comes from in a sentence, which is shown whether found or not.
+    /// </summary>
+    private static void DrawCrosses(CraftingScreen screen, Rectangle list, Rectangle detail)
+    {
+        var rows = screen.Crosses;
+        bool scrolls = rows.Count > CraftingScreen.VisibleRows;
+        for (int row = 0; row < CraftingScreen.VisibleRows && screen.CrossFirst + row < rows.Count; row++)
+        {
+            int index = screen.CrossFirst + row;
+            var cross = rows[index];
+            bool found = screen.Found(cross);
+            var r = RowRect(list, row, 24, scrolls);
+            var ink = ListRow(r, index == screen.CrossCursor, found ? LocalNames.Item(cross.Makes) : Text.Of("crafting.cross.unknown"), enabled: found, nameX: 112, size: 32);
+            CrossChip(new Vector2(r.X + 56, r.Y + r.Height / 2f), 28, found);
+            if (found) RowValue(r, Text.Of("crafting.cross.found"), ink);
+        }
+        ScrollBar(list, screen.CrossFirst, CraftingScreen.VisibleRows, rows.Count, 24);
+
+        float x = detail.X + 44, room = detail.Width - 88;
+        string count = Text.Of("crafting.cross.count", ("n", rows.Count(screen.Found)), ("of", rows.Count));
+        Label(Text.Of("crafting.tab.crosses"), x, detail.Y + 30);
+        Tag(detail.X + detail.Width - 44 - UiFonts.Measure(count, 24, UiWeight.Black) - 34, detail.Y + 26, count, Frame, 40);
+        if (screen.SelectedCross is not { } chosen) return;
+        bool known = screen.Found(chosen);
+        var disc = new Vector2(detail.X + detail.Width / 2f, detail.Y + 210);
+        UiShapes.Circle(disc, 120, Disc);
+        UiShapes.Ring(disc, 120, 5, Rule);
+        CrossChip(disc, 78, known);
+        string name = known ? LocalNames.Item(chosen.Makes) : Text.Of("crafting.cross.unknown");
+        float size = 44, nameW = UiFonts.Measure(name, size, UiWeight.Black);
+        if (nameW > room) size = MathF.Floor(size * room / nameW);
+        UiFonts.DrawCentered(name, detail.X + (detail.Width - Math.Min(nameW, room)) / 2f, detail.Y + 380, size, Ink, UiWeight.Black);
+        UiShapes.Fill(new Rectangle(x, detail.Y + 440, room, 3), 1.5f, Rule);
+        DrawWrapped(CrossRecipe(chosen), x, detail.Y + 466, room, 28, Ink, 36);
+        DrawWrapped(Text.Of("crafting.cross.how"), x, detail.Y + 466 + 36 * 3 + 12, room, 26, Muted, 34, UiWeight.ExtraBold);
+    }
+
+    /// <summary>A cross's pair in a sentence: two berries of a flavour, or a berry beside one of a flavour.</summary>
+    internal static string CrossRecipe(Overworld.CrossRow row)
+    {
+        string taste = row.Flavour.ToLowerInvariant();
+        string flavour = Text.Of($"crafting.flavour.{taste}");
+        return row.Berry == null
+            ? Text.Of("crafting.cross.pair", ("flavour", flavour))
+            : Text.Of("crafting.cross.beside", ("berry", LocalNames.Item(row.Berry)), ("flavour", flavour));
+    }
+
+    // A berry's chip on the CROSSES page: a round fruit in the page's colour with a leaf, dimmed until it is found
+    private static void CrossChip(Vector2 at, float radius, bool found)
+    {
+        var body = found ? CrossPink : new Color(206, 178, 186, 255);
+        var rim = new Color((int)(body.R * 0.55f), (int)(body.G * 0.55f), (int)(body.B * 0.55f), 255);
+        UiShapes.Circle(at + new Vector2(0, radius * 0.06f), radius * 0.72f + 3, rim);
+        UiShapes.Circle(at, radius * 0.72f, body);
+        UiShapes.Circle(at + new Vector2(-radius * 0.26f, -radius * 0.26f), radius * 0.18f, new Color(255, 255, 255, 150));
+        var leaf = found ? new Color(96, 160, 72, 255) : new Color(170, 190, 160, 255);
+        UiShapes.Fill(new Rectangle(at.X - radius * 0.06f, at.Y - radius * 0.98f, radius * 0.12f, radius * 0.32f), radius * 0.05f, rim);
+        UiShapes.Circle(at + new Vector2(radius * 0.22f, -radius * 0.8f), radius * 0.18f, leaf);
     }
 
     // The "how many?" stepper while it is asked, and the words of the last press under it

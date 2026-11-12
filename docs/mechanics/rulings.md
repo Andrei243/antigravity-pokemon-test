@@ -5395,8 +5395,9 @@ hides the chapter's people for a new game and for a save from before it (story v
   game in which the tree stays reaches neither Route 37 nor Ecruteak City (`JohtoTests`). A save made west of the tree
   before it stood is never shut in: Goldenrod City, Ilex Forest and Union Cave lead round to Violet City. The florist
   lends the SquirtBottle (a key item of ours, `Overrides/items.json`) to a trainer with the Plain Badge; her sister,
-  who waits by the tree, gives three Oran and three Pecha Berries and goes home, where HeartGold's Berry Pots, a key
-  item with no use in this game yet, are left out. The florist sells the four mulches afterwards.
+  who waits by the tree, gives three Oran and three Pecha Berries and goes home. HeartGold's Berry Pots are given by the
+  florist once the tree is dealt with, but only to a player with plan 39's crafting kit, since they are its berries' crossing
+  in a row of four pots (plan 39 · CR5; "Materials, crafting and cooking"). The florist sells the four mulches afterwards.
 - **Bugsy is away until the Slowpoke Well is cleared** (a flag of ours): HeartGold's Gym is open all along, but the
   Hive Badge is what lets Cut be used outside of battle, and Ilex Forest's apprentice and his birds only come once the
   well is cleared, so the chapter is played in HeartGold's order either way.
@@ -9112,6 +9113,11 @@ The rules of plan 10's companions that need no picture; what they draw waits (pl
   opened by the START menu's CAMP, after POKéMON, while the options' FOLLOWER row is on and there is a Pokémon (no
   row of its own: with FOLLOWER off the menu is Platinum's). *Ours*: the team stands as its menu sprites on a clearing
   of our own, not as models on a stage, and a meal is chosen from the bag's berries with the item button.
+  **Since plan 35 · BN1 the camp is a view over the care book** ("Care", below): in the game a pat counts for friendship
+  once a day rather than once a visit (a second visit still pets, for the mood), a Pokémon eats until it is full for the
+  day (five pips) however many visits that takes, a dish of the pot fills a pip as a berry does, and the cure as the camp
+  opens is each Pokémon's own, once for each battle it fought since its last cure. `new CampCare()` with no book (what
+  tests make) keeps F6's once-a-visit rules.
 - **The DexNav** (`Overworld/DexNav.cs`, `Core/GameEngine.DexNav.cs`; decision 6's recommendation, a key item): its HERE
   list is the species of the place the player stands in met now (the grass at this hour, the water and the rods),
   from `Habitats.At`, the region's habitats by cell, with what the Pokédex knows and each species' search level. Switched
@@ -10035,6 +10041,66 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   rippling water's, which plan 38 · EX11 meets); the reader reads no swarm and Unova's outbreaks are the generated ones alone.
 - **Not done in EX1.** The Town Map's report page and the visitor (EX2), a mark on the grass or a ring on the Pokémon (the crowd is the
   mark), a shiny sparkle for the crowd's, and Johto's HeartGold has no television outbreak to read (its swarms stay as they are).
+- **The day's report** (EX2, 2026-11-12; `Overworld/FieldReport.cs`). The Town Map out of the bag and the Pokégear's map card turn to
+  a second page on the item button once the region's Hall of Fame is entered (decision 2, the recommended one): the region's two
+  outbreaks with how many of each have been beaten or caught there today, and the visitor. The map as Platinum draws it stays the
+  first page, and the report is the region the player stands in. **The Town Map now marks the day's outbreaks and the visitor**; it
+  still marks no swarm and no roamer (as the original's doesn't: those stay the assistant's sister's, the radio's and the Pokétch's).
+- **The visitor** (EX2; `Overworld/Visitors.cs`, `visitors.json` ours, after Sun and Moon's Island Scan). Each region with a file
+  (Sinnoh, Kanto, Johto, Hoenn and Unova; Kalos's and Alola's come with their Halls of Fame) has **a row for each day of the week**, a
+  species of another region's Pokédex at the region's post-game band. **A scan** from the report calls the weekday's row up: once a
+  day (by the day's number, `SpecialEncounters.ScannedOn`), only past the region's Hall of Fame and with the National Pokédex. It
+  stays **an hour of the game's own time** (`Visitors.Length`, 3,600 seconds of `dt`, counted while the field or a battle is on
+  screen, never a recording watched: menus and the Town Map stop it, as they stop the Bug-Catching Contest's minutes), and a new day
+  takes it with it. A toast says who came and where, and another as it leaves.
+- **Where it is met.** Its place is the first of the row's places (two each) that has **no outbreak that day**; where every one has,
+  nothing answers the scan that day (`ScanState.Nothing`) and the scan is not spent. It lays its species in the grass's **slots 2 to 5**
+  (weights 10 each, **forty meetings in a hundred**), each at the row's levels, after the outbreak's and before the second slot's and
+  ours: the order of what lays over a table is the swarm's, the radio's, the outbreak's, the visitor's, then the second slot's and
+  ours. Its levels are written in the region's own game's (FireRed's for Kanto, HeartGold's for Johto) and mapped as any slot's are
+  in a region the game crossed into. Nothing is drawn for it: the row is the weekday's, its place the first free one.
+- **Not counted as a source.** A visitor is an hour a day behind a scan, so `SpeciesSources` doesn't count it and no species check's
+  list moves by it.
+- **Bright Pokémon** (EX3, 2026-11-12; `Overworld/BrightPokemon.cs`, after Sword and Shield's brilliant Pokémon, decision 4: only with
+  the WILD POKéMON row at VISIBLE). The count is the Pokédex research's caught and defeated of the species (`Research.RecordOf`), and
+  its band gives a chance in a hundred that one in sight is bright, its perfect IVs and shiny rolls more (decision 3, the games' own
+  shape: 1 to 19 met, 2 in a hundred and one perfect IV; 20 to 49, 3 and two; 50 to 99, 4, three and one roll; 100 to 199, 5, three and
+  two rolls; 200 to 299, 6, three and three; 300 to 499, four rolls; from 500, five). **Whether one is bright, which stats are perfect
+  and the Egg move are read from its personality and species, never drawn** (`SplitMix.Mix` of the personality); the bright one knows
+  the first of its species' Egg moves it doesn't know in place of its last. The band's shiny rolls go to **every** one of the species
+  that comes into sight, drawn on the field's generator only from fifty met. `Pokemon.Bright` is not saved: once caught only its IVs
+  and moves remain.
+- **The catch streak** (EX3; `Overworld/CatchStreak.cs`, after Let's Go's catch combo; `SaveData.CatchStreak`, left out while empty).
+  Catches in a row of one species met in sight count; a catch of another begins it again at one, and the chained species running from
+  battle (`EnemyFled`) breaks it; running from it, beating it or a Pokémon met by a step leaves it as it is. From **eleven** in a row a
+  meeting of that species in sight has two perfect IVs and three shiny rolls more, from 21 three and seven, from 31 four and eleven
+  (Let's Go's steps, decision 3); the IVs are drawn among the stats not yet perfect, and nothing is drawn below eleven.
+- **The chain of hooks** (EX3; the same class, after X and Y's chain fishing): Pokémon of one species hooked in a row from one tile
+  count; a cast that hooks nothing or lets its bite go breaks it, another species or another tile begins it again. A hooked Pokémon has
+  **two shiny rolls more for each hook of the chain before it**, to forty (X and Y's numbers), drawn only when the chain is under way.
+- **Glints** (EX3; `Overworld/Glints.cs`, the options' HIDDEN ITEMS GLINT row, `GameSettings.ItemGlints`, a `RulesDefault` on under the
+  modern rules: decision 5). A hidden item not yet found within **three** tiles of the player glints once every **two** seconds of the
+  field's clock, never in a room. It is found as ever, by looking at its tile.
+- **Rifts in the field** (EX5, 2026-11-12; `Overworld/Rifts.cs`, after Legends: Arceus's space-time distortions, the content ours).
+  Not the rift to Hisui nor Spear Pillar's: only the picture `SceneEffect.Rift` is shared. Once a region's Hall of Fame is entered
+  (decision 1) and where `Data/rifts.json` has a table (Sinnoh, Kanto, Johto, Hoenn, Unova), **one hour in three** of the clock has a
+  rift, worked out by `SplitMix` from the day's number, the hour and the region, never drawn: its place is one that can have an outbreak
+  and has none that day, its centre one of that place's tall-grass tiles. It lasts the hour and is gone on the next, so a save made in
+  one loads into it within its hour. **Within twelve tiles** of its centre (either way) the grass's slots 0 to 5 (eighty meetings in a
+  hundred) are the rift's species, in its table's order and round again, and every rod hooks its water species, all at the table's
+  levels (the region's own game's, mapped in a crossed region); what is met out of it has **one shiny roll more**, drawn only then.
+  The order of what lays over a table: the swarm, the radio, the outbreak, the visitor, then the rift over all of these in its reach,
+  then the second slot's and ours. **Three finds** lie on walkable ground of its place within four tiles of its centre, items of the
+  table's list: they are hidden items (found by looking at the tile, shown by the glint) under the daily flags
+  `FLAG_DAILY_RIFT_FIND_1` to `_3`, so three a day are taken in all, whichever rifts they lie in. A toast tells as one opens and closes;
+  the Town Map's report marks it.
+- **Route 119's Feebas** (EX4, 2026-11-12; `HoennFeebas` in `Overworld/FieldPoison.cs`). Emerald hides Feebas under six tiles of the
+  route's water, chosen from its trend; **the pinned pokeemerald's sparse cache holds none of its fishing code**, so the rule is ours on
+  that shape: the day's six tiles of the route's surfable water (row by row), worked out by `SplitMix` from the day's number (Dewford's
+  trend isn't kept); a cast with any rod onto one hooks Feebas **one time in two** (the one draw, made only on those tiles), at levels
+  20 to 25, in every slot of the rod's table. `HoennSpeciesTests.Owed` no longer lists Feebas and Milotic.
+- **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
+  its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
 
 What Z4 left, closed in our own words on X and Y's beats as they are publicly described.
@@ -10501,7 +10567,7 @@ In our own words, on X and Y's beats as they are publicly described. Kalos's mov
   skating stretches' looks are plan 30's grown kit, which other sessions own. The Friend Safari's other friends and
   Lumiose's online rooms are plan 07's. `profile`'s Lumiose line wants a quiet run on the Windows machine.
 
-## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6)
+## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6; 2026-11-12, CR2, CR5, CR7)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).
 
@@ -10513,6 +10579,10 @@ Only the mechanics come from the games (a Pokémon leaving something behind, thi
 - **The kit's MAKE tab** (CR3, 2026-11-09; `Models/Crafting.cs`, `recipes.json`'s `kit`). Twenty-two recipes of ours, each the materials of the pouch and the items of the bag it takes and the item it makes: the Poké, Great and Ultra Balls; Hisui's Feather, Wing, Jet, Leaden and Gigaton Balls and the Heavy Ball (the first sure way to the five, which nothing in the world gives); the Potion and the five status cures (each with a berry of the bag); the Repel, the Escape Rope, Honey and the four mulches. Made wherever the kit is opened, as many at once as "how many?" asks (99 at most, the bag holding 999 of a thing made). **No recipe is cheaper than the Mart**: what a recipe takes is worth, by the materials' worth and the items' prices, at least its item's price, or for an item with no price (Hisui's balls and the Heavy Ball) the recipe's own `value` (300 to 1,000, about a Great or Ultra Ball's); the content check and `CraftingKitTests` hold every row. A made thing is no find: it is exactly the recipe's item, so the randomiser (which maps what the world and the scripts give) never sees it, and Hisui's balls catch by R28a's rules as any other (the Feather and Wing Balls' and the weight balls' distance is their own game's, here the bonus alone). `ItemSources` counts the kit as a sure way of its own (`ItemSourceKind.Made`) where a script gives it. **Deviation: no field material yet.** CR2 (gathering) is not built, so no recipe takes a field's material: every need is a Pokémon's material (left by wild Pokémon of its type, its rare one now and then) or an item the world gives (the berries); CR2 may rewrite the recipes to take its finds. **The apprentice** (`SunyshoreWorkshop`'s second person, `craft tradable`, `craft trade`) trades three of a type's common material for one of its rare, always the common material held most of (the table's order breaking a tie), never into a rare one the pouch is full of: a choice among eighteen types would be a list no question box holds, and the most-held is the one a player has to spare.
 - **Cooking at the camp** (CR6, 2026-11-09; plan 10 · F8, taken over by decision 1; `Models/Kitchen.cs`, `recipes.json`'s `kitchen`, `Models/Powers.cs`, `Data/powers.json`). **The camp comes with the kit**: the start menu offers CAMP while the FOLLOWER row is on (plan 10 · F6) or the crafting kit is in the bag, so the start menu is as it was until Sinnoh's Hall of Fame; the start button at the camp puts the pot on. **The pantry** is ten goods of ours (flour, rice, beans, potatoes, onions, cheese, butter, oats, tomatoes, spices; worth 40 to 120), materials of the pouch's third kind, sold for their worth at the workshop's counter (`craft pantry`, the kit's PANTRY tab: the money taken as the TM maker's is) rather than through `ShopScreen.OpenForPouch` (the plan's), since the shop sells items and the pantry's goods are no items. **What goes in the pot**: one to four things, the pantry's goods, the bag's berries, Honey and the Tiny and Big Mushrooms, each one unit. **The dish** is the recipe of the table whose wants the pot holds, each want met by an ingredient of its own, the one that wants the most winning (the table's order breaking a tie), and the plain dish (Camp Stew) from anything else; eight dishes of ours. **The pot at work** (`Kitchen`, thirty frames a second, no chance): four rounds, a needle sweeping the gauge to and fro at a pace of 30 to 53 frames a sweep and a zone of heat 0.16 of the gauge wide whose middle lies between 0.2 and 0.8, both worked out from the pot's seed (`SplitMix`, from the visit's seed, what is in the pot and how many were cooked before; the visit's seed is the play time's, so nothing is drawn from `Dice`). A press in the middle half of the zone is perfect (two points), in the zone good (one), out of it a miss, and a round with no press in five seconds a miss. Generous doubles the zone; Automatic presses as the needle comes into it (so it is good, never perfect). Seven or eight points are superb, five or six great, three or four good, less plain. Cancel takes the pot off with nothing used. **The meal** (`Meals.Serve`): each Pokémon's HP back by the grade (25, 50, 75 or 100 per cent of its most; one that has fainted is not brought round, as the camp's cure is no Revive), every condition but fainting cured, its friendship's `Fed` once a visit (shared with the berry, `CampVisit.Eat`), and the dish's power started at the grade's level and length (level 1 for five minutes of play, 1 for ten, 2 for ten, 3 for fifteen). A meal served by `craft meal` (CR7's waiters) heals and starts its power the same way and befriends nobody. **Powers** (plan 36's frame, built here because TR7 isn't): `PowerKind` lists plan 36's eight and CR6's two at its end (`TypeEncounter`, `Materials`); `PowerState` keeps one of each kind in force, a new one replacing the old, the encounters' and stealth's putting each other out, counted down by the play time summed from each frame (never the wall clock), saved as `SaveData.Powers` (null with none; no version raised), and a power that wears off is told once on the toast. **Only the kinds with a reader are started**, and the dishes give only those (`PowerTable.Read`; plan 36 · TR7 adds the battle's and the shops' readers, the levels learned, the charge, the day's free one and NO POWERS): the encounters' and stealth's add 10, 20 or 30 to (or take them from) a step's flat chance, as the Pokégear's March and Lullaby do; a type's encounters puts the place's first species of the type (its Natural Gift's type, from the pot's first berry) in the first 2, 4 or 6 of the grass's commonest slots of another type, never our own species' slots, and changes nothing where the place has none of it; the hatching power takes 1, 2 or 3 more cycles off each Egg at a cycle's end; the materials' power leaves 1, 2 or 3 more of each common material. **None of them draws anything**: a step, a battle's leavings and an Egg's count roll exactly as they would, and a game in which no dish is eaten rolls as before.
 
+- **Gathering in the field** (CR2, 2026-11-12; `Models/Gathering.cs`, `materials.json`'s `gather` and `cleared`). Forty-two spots of ours, eight to ten in each finished region (Sinnoh ten, Kanto, Johto, Hoenn and Unova eight each), one to a route, each an entry of its area's overlay `npcs` with an `npcType` of its kind (`GatherRock`, `GatherWood`, `GatherPlant`, `GatherShore`, `GatherSnow`) and `shownBy` `FLAG_GOT_CRAFTING_KIT`, which the kit given sets (`ScriptLibrary.FlagsWritten` counts `craft give kit` as setting it). **Deviation: no new overlay field.** The plan named a `gather` list of the overlay; the overlay's own `npcs` list already says everything a spot needs (a kind, a tile, the flag that shows it) and is read strictly, so a spot is a thing of the map as a festival's things are, and the content check holds it (`GatherSpots`: shown by the kit's flag, on open ground that is no water, faced from an open tile nobody stands on). Each stands where every tile round it is open ground of its own area and level, away from warps, triggers, people and hidden items. A spot bears once a calendar day as an Apricorn tree does (`ApricornBox.DayOf`, by the spot's place and id, kept in `CraftingSave.Picked`); a picking draws one of its kind's finds by weight and a count between its least and most, on the field's chance: a rock quarry stone, raw ore or river clay; a fallen log timber, amber resin or plant fibre; a herb bush plant fibre or wild herbs; a heap on the shore sea shells, coarse salt or river clay; a snow drift frost crystals or quarry stone. **A tree cut or a rock smashed** with the kit in the bag leaves a timber or a quarry stone one time in three (`craft cleared tree|rock` in `common.CutTree`, `UseCut`, `Rock`, `UseRockSmash` and `TaurosCharge`); without the kit nothing is drawn. No recipe takes a field's material yet (CR3 needed none); they are the pantry's and the later sessions' to use. Plan 35 · BN6's cave job is not built, so no job pays materials (the plan forbids both in one wave).
+- **Crossing berries** (CR5, 2026-11-12; `Overworld/BerryCrossing.cs`, `recipes.json`'s `crosses`). Ours, by flavour: a berry's strongest flavour is the one of its five that is greater than the other four, a tie none (the pinch berries, whose two strongest are equal, have none). Two different berries whose strongest flavour is spicy cross into a Liechi Berry, sour a Ganlon, sweet a Salac, dry a Petaya, bitter an Apicot; a pinch berry beside one of a flavour gives the rarer ten (Liechi with sweet a Lansat, with bitter a Jaboca; Ganlon with dry a Rowap, with bitter a Kee; Salac with spicy a Custap, with sour a Micle; Petaya with sour a Maranga, with spicy an Enigma; Apicot with sweet a Roseli, with dry a Starf), each from berries the world gives (a test holds the fixed point). As a berry is planted with the kit in the bag, every soil of the eight tiles round it growing another berry of a pair notes the cross (`BerryPatch.Cross`, saved within the patches; null in an older save), and so does the planted one; each harvest of a noted patch draws once, before it is picked bare, and 40 times in a hundred one of its fruit is the cross (`{crossed}`, "One of them had crossed into a Liechi Berry!"); a patch with no cross draws nothing, so Sinnoh's and Hoenn's patches grow as they did. The crosses found are kept (`CraftingSave.Crosses`) for the kit's CROSSES page, which lists every cross with its pair, its berry named once found. Kalos's Roseli, Kee and Maranga, which have no plant of their own in the data, are crossed but can't be planted. `ItemSources` counts the crosses as a way to the fifteen once the kit is given (`ItemSourceKind.Crossed`).
+- **Johto's Berry Pots** (CR5): HeartGold's four pots, a key item of ours (`Berry Pots`, id 9901, `fieldUse` `BerryPots`), given once by Goldenrod's florist to a player holding the crafting kit, after the strange tree (`FLAG_JOHTO_GOT_BERRY_POTS`; HeartGold gives them in Violet City and the rulings had left them out with the sister's berries). USE in the bag runs `common.BerryPots`: one of the four chosen, then planted, mulched, watered (the pots carry their own can) or picked by the same `berry` words a soil's script has (`berry pot` sets the pot for the rest of the script). The pots are patches 216 to 219 of `BerryPatches` (`PotFirst`, `Count` 220; an older save is given them bare by `Grown`), grow by the same minutes wherever the player is, and stand in a row, each touching the one before and after, so berries in neighbouring pots cross as two soils do. HeartGold's pots are a screen of their own, not things of the map, and so are ours: nothing is set down on a map.
+- **Restaurants and stalls** (CR7, 2026-11-12; `recipes.json`'s `stands`, each place's `MealStand` script). A waiter of ours in the Seven Stars Restaurant (at its south-east corner), Celadon City's restaurant (by the kitchen's wall) and the Olivine Café (at the head of its room), and a stall keeper of ours in Slateport City's market and on Castelia City's avenue (against the building north of the street), each shown by `FLAG_GOT_CRAFTING_KIT`. Each serves three dishes of the camp's kitchen (no dishes of their own: the kitchen's eight are the stands' too) at prices of ours from 1,500 to 2,400, eaten there and then at a great grade (`craft meal`: the team healed by three quarters and cured, the dish's power started through plan 36's door; a type's encounters is Normal's, there being no berry), its price taken first (`takemoney`, refused and nothing served when short), and sells the pantry's goods (`craft pantry`). A test holds each script's prices and dishes to its rows.
 ## Every species, region by region: the checks (2026-11-07, plan 40 · GE1)
 
 - **What counts as had in a region.** Its own game, with nobody else: the region's open areas and the maps its world makes,
@@ -11340,3 +11410,68 @@ The user's answers to the outline sheet (decisions/APPROVAL-plans-35-44.md, part
   mechanic, the Bug-Catching Contest's corner as its look). Its time running out ends it undone, and it may be begun again.
 - **What it pays**: pennants for each thing asked and a bonus (more for a timed one), and one mission in two an item of the
   file's list besides; claimed at the board, once, the pennants to Pennant Hall.
+
+## Care (2026-11-12, plan 35 · BN1; the camp's paragraph above)
+
+- **The book** (`Models/Care.cs`, `CareBook`, `CareRecord`, `CareRules`; `Core/GameEngine.Care.cs`): a page for each
+  Pokémon of the player's, kept by its own id (`Pokemon.Id`), so the Pokémon carries nothing of it: a battle's copy, a
+  trade and the Home box move nothing, and the battle's rules read none of it (plan 35's decision 3), so the golden
+  battles hold. A Pokémon with no id yet has a loose page until it is given one, never saved. The save keeps it as
+  `SaveData.Care` (null while nothing is written; no version raised), pruned as the save is built to the Pokémon the save
+  holds: the team, the boxes, the Day Care, those away on a job and the team set aside for the Bug-Catching Contest. A
+  day is the calendar day of `GameClock.Today`, counted as the Apricorn Box counts it.
+- **Soil** (ours): each Pokémon of the player's a battle sent out (`BattleCore.SentOut`, the original's participant mask)
+  takes the mark of where it fought: the weather first (a sandstorm's dust, rain's or a downpour's wet, hail's or snow's
+  snow), then the ground (sand's dust, the Great Marsh's or a puddle's mud, grass's leaves, water's wet, snow's or ice's
+  snow), nothing on a plain, a mountain, in a cave or a building, on a bridge or somewhere special. Two marks at most, the
+  newest kept (a mark it has is made the newest). Not the catching lesson's battle nor one of the Battle Frontier's copies.
+  The brush takes dust, leaves and snow off, the cloth mud and wet (plan 35 · BN2's close-up).
+- **Meals**: five pips of fullness a day; a berry fills one (and a dish of the camp's pot one), a treat its grade (BN3);
+  a full Pokémon refuses. A berry's friendship is `Fed` (5/3/2) every meal; its taste is its strongest flavour (the first
+  of the five on a tie) against the nature's liked and disliked flavours (`Poffins.TasteOf`).
+- **Pats and grooming**: a pat lifts the mood every time and counts for friendship (`Petted`, 3/2/1) once a day; a mark
+  cleaned lifts the mood and counts (`FriendshipEvent.Groomed`, ours, appended: 2/1/1) once a day.
+- **Cures**: a status (not fainting) is cured once for each battle the Pokémon fought since its last cure; a page begun
+  counts as after a battle, as a game loaded did for F6's camp.
+- **Mood**, −100 to 100, read as five faces: glum to −60, low to −20, calm under 20, cheerful under 60, elated from 60.
+  A win +8 and a loss −10 for each Pokémon sent out, a faint −15 more, a level +6, an evolution +20, a hatching +30, a
+  heal by a script's `heal` +5 for the team, a pat +4, a meal +8 liked, +4 plain, −4 disliked, a grooming +5, a cure +6,
+  poison's bite in the field −1 for each still poisoned, and a walk cycle (128 steps) with a mark left on −1. A walk cycle
+  settles the team's moods 2 toward calm (before a soiled coat's −1); a day settles every other page 10.
+- **How fast it climbs** (the plan's risk): care alone (a pat, five berries and a grooming every day) takes a Pokémon
+  from 70 to 220 in no fewer than seven days (`CareTests`).
+- **Nothing is drawn**: no rule of the book draws from `Dice` or the field's generator, so no wild Pokémon, battle or
+  shot moves for it.
+- **The close-up** (plan 35 · BN2; `UI/CareScreen.cs`, `Graphics/CareStage.cs`): the camp's Confirm opens it on the
+  Pokémon under the cursor. The hand held and moved over the body (the box of its silhouette on the picture, a tenth in
+  from each side) strokes it; strokes over the spot its body plan likes (a biped's, a serpent's and a floater's head, a
+  quadruped's back, a bird's neck, a fish's fin; within 0.12 of the picture's width) count double, and 1.2 picture widths
+  of strokes make a pat (`CareRules.Pat`: the mood every time, the friendship once a day). The brush takes dust, leaves
+  and snow and the cloth mud and wet, 0.9 picture widths of strokes over a mark; the wrong tool says so and wears
+  nothing. The medicine, pressed over the body, is the book's cure. TREAT asks the bag's berries (BN3 adds the treats).
+  At night, or glum or low, it is sleepy. **TEAM CARE** (decision 1, `OptionRow.Care`, a `RulesDefault`): CAMP is in the
+  start menu while the FOLLOWER row is on, TEAM CARE is in force (on under the modern rules unless turned off) or the
+  crafting kit is in the bag. The start menu's rows are 74 tall up to ten entries and shorter beyond, so eleven or twelve
+  still fit the screen.
+- **Treats** (plan 35 · BN3; `Models/Treats.cs`, `ItemData.Treat`, items 9600 to 9610 of `tools/DataImporter/Overrides/items.json`;
+  the names are ours): five sold at 200 (grade 1: the Pepper Bite spicy, the Crisp Wafer dry, the Honey Drop sweet, the Cocoa
+  Nib bitter, the Tart Chew sour), five a baker makes for nothing from three berries whose strongest flavour is theirs (grade
+  2: the Pepper Cake, the Toasted Rusk, the Honey Cake, the Cocoa Torte, the Citrus Tart) and the Rainbow Loaf from one berry of
+  each of the five (grade 3). A treat fills its grade's pips; its friendship is its grade's (grade 1: 4/3/2, grade 2: 6/4/3,
+  grade 3: 8/6/4, by the three bands of friendship) doubled for the flavour the nature likes and halved (rounded down) for the
+  one it dislikes; the loaf counts as liked by every nature with a taste, and plain for the five with none. Its mood is the
+  meal's by the same taste. The baker takes the most plentiful berries of the flavour first, and with no flavour named bakes
+  the one the bag has most berries of (three at least, the first of spicy, dry, sweet, bitter and sour on a tie). The
+  confectioner (`common.TreatCounter`, `shop "treats"`) and the baker (`common.TreatBaker`, `treat can`, `treat bake`) stand
+  in Veilstone's Department Store's basement, Goldenrod's and Celadon's Department Stores' ground floors, Lilycove's and on
+  Castelia's avenue. A treat is fed at the care close-up's TREAT, which opens the bag on a berry or a treat.
+- **The follower's mood and its words** (plan 35 · BN4; `LeadFollower.LineFor`, `Core/GameEngine.Follower.cs`): spoken to,
+  the lead says a line of its mood when the mood is 40 or more from calm (`followerTalk.mood.*`); otherwise, one talk in
+  two by a hash of its id, its steps and its tile (`SplitMix`, never a draw, so a calm follower's talk draws exactly what
+  F4's did: the find's rolls, and nothing more), what its type makes of the place (a Water type by water or in rain, a Fire
+  type in rain, an Ice type in snow, a Ghost type at night, a Grass type in tall grass, a Rock type in a cave, a Ground type on
+  sand: `followerTalk.likes.*`) or else a line of the place, the first of a Gym, a Pokémon Center, a room, a cave, by water
+  (the player's tile or one beside it), snow, sand, tall grass, rain, night outdoors, where it was met (`Pokemon.MetLocation`
+  is the place's name) and a town or city (`followerTalk.place.*`); otherwise F4's line of its band. The line in its own
+  region is not built (every Pokémon belongs to the region it was met in, so it would be every line). Its bubbles of its own
+  are the style guide's ("The follower"). Nothing of it with the FOLLOWER row off.

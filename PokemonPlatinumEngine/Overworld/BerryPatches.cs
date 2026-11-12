@@ -35,9 +35,17 @@ public sealed class BerryPatch
     public Mulch Mulch { get; set; }
     public bool Growing { get; set; }
 
+    /// <summary>
+    /// The berry this patch and one beside it cross into (plan 39 · CR5, <see cref="BerryCrossing"/>), noted as the second
+    /// of the pair was planted with the crafting kit in the bag; each harvest rolls once for one of its fruit to be it.
+    /// Null for none, and in every older save.
+    /// </summary>
+    public string? Cross { get; set; }
+
     internal void Clear()
     {
         Berry = null;
+        Cross = null;
         Stage = BerryStage.None;
         StageMinutes = MoistureMinutes = Replants = Yield = Moisture = YieldRating = 0;
         Mulch = Mulch.None;
@@ -61,9 +69,10 @@ public sealed class BerryPatches
     /// Every patch: Sinnoh's 128, then Hoenn's 88 berry trees (plan 21 · H2, part b), numbered from
     /// <see cref="HoennFirst"/> in the order of Emerald's <c>BERRY_TREE_</c> names (the map importer's
     /// <c>GbaTables.BerryTrees</c>), so no tree of Hoenn shares a number with a patch of Sinnoh. They grow by the same
-    /// rules; Emerald's own (watered by the Wailmer Pail, three of its own stages) are a later session's.
+    /// rules; Emerald's own (watered by the Wailmer Pail, three of its own stages) are a later session's. Johto's four Berry Pots (plan 39 · CR5) come last, from <see cref="PotFirst"/>: carried in the bag, with no soil on any map.
     /// </summary>
-    public const int SinnohCount = 128, HoennFirst = SinnohCount, HoennCount = 88, Count = SinnohCount + HoennCount;
+    public const int SinnohCount = 128, HoennFirst = SinnohCount, HoennCount = 88, PotFirst = HoennFirst + HoennCount, PotCount = 4,
+        Count = SinnohCount + HoennCount + PotCount;
     private const int HarvestStages = 4, ReplantCount = 10, MaxMoisture = 100, MaxYieldRating = 5;
 
     public List<BerryPatch> Patches { get; set; } = Enumerable.Range(0, Count).Select(_ => new BerryPatch()).ToList();

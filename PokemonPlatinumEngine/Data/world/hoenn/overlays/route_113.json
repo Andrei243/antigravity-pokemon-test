@@ -4,6 +4,10 @@
   // grass, to be gathered in the glass workshop's Soot Sack (GameEngine.GatherAsh). Two of its doors lead to places
   // not open yet (a secret base's hollow and the way Terra Cave would open), and stay shut
   "area": "route_113",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_113.gather", "name": "Rock", "npcType": "GatherRock", "x": 132, "y": 8, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "ours": { "land": [ ["Whirlpanda", 140, 144] ] },
   "bgmTrack": "hoenn/route113",
   "trees": "Round",

@@ -1,0 +1,38 @@
+{
+  // Plan 38 · EX5: what an hour's rift holds in each region whose Hall of Fame is built (ours; no game has these tables).
+  // Within twelve tiles of a rift's centre the tall grass's slots 0 to 5 are the grass species, in this order and round
+  // again, and every rod hooks the water species; both at these levels, written as the region's own game writes them
+  // (mapped as any slot's are in a region the game crossed into). Three finds lie in its ground, drawn from "finds".
+  "regions": {
+    "Sinnoh": {
+      "grass": ["Absol", "Breloom", "Zangoose", "Seviper", "Flaaffy", "Granbull"],
+      "water": ["Corsola", "Sharpedo", "Lanturn"],
+      "minLevel": 50, "maxLevel": 55,
+      "finds": ["Fire Stone", "Water Stone", "Thunder Stone", "Leaf Stone", "Moon Stone", "Sun Stone", "Shiny Stone", "Dusk Stone", "Dawn Stone", "Ice Stone", "Red Shard", "Blue Shard", "Yellow Shard", "Green Shard", "PP Up", "Star Piece"]
+    },
+    "Kanto": {
+      "grass": ["Riolu", "Shinx", "Buneary", "Skitty", "Aipom", "Snubbull"],
+      "water": ["Buizel", "Finneon", "Corsola"],
+      "minLevel": 42, "maxLevel": 46,
+      "finds": ["Fire Stone", "Water Stone", "Thunder Stone", "Leaf Stone", "Moon Stone", "Sun Stone", "Red Shard", "Blue Shard", "Yellow Shard", "Green Shard", "PP Up", "Star Piece"]
+    },
+    "Johto": {
+      "grass": ["Shinx", "Buneary", "Electrike", "Zigzagoon", "Gulpin", "Starly"],
+      "water": ["Buizel", "Carvanha", "Barboach"],
+      "minLevel": 40, "maxLevel": 44,
+      "finds": ["Fire Stone", "Water Stone", "Thunder Stone", "Leaf Stone", "Moon Stone", "Sun Stone", "Shiny Stone", "Dusk Stone", "Dawn Stone", "Red Shard", "Blue Shard", "Yellow Shard", "Green Shard", "PP Up", "Star Piece"]
+    },
+    "Hoenn": {
+      "grass": ["Shinx", "Buneary", "Mareep", "Teddiursa", "Snubbull", "Sentret"],
+      "water": ["Buizel", "Finneon", "Qwilfish"],
+      "minLevel": 32, "maxLevel": 36,
+      "finds": ["Fire Stone", "Water Stone", "Thunder Stone", "Leaf Stone", "Moon Stone", "Sun Stone", "Red Shard", "Blue Shard", "Yellow Shard", "Green Shard", "PP Up", "Star Piece"]
+    },
+    "Unova": {
+      "grass": ["Absol", "Stantler", "Girafarig", "Tropius", "Kecleon", "Zangoose"],
+      "water": ["Corsola", "Qwilfish", "Lanturn"],
+      "minLevel": 54, "maxLevel": 58,
+      "finds": ["Fire Stone", "Water Stone", "Thunder Stone", "Leaf Stone", "Moon Stone", "Sun Stone", "Shiny Stone", "Dusk Stone", "Dawn Stone", "Ice Stone", "Red Shard", "Blue Shard", "Yellow Shard", "Green Shard", "PP Up", "Star Piece"]
+    }
+  }
+}

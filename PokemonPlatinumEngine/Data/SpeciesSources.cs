@@ -297,6 +297,9 @@ public sealed class SpeciesSources
             // A region's outbreaks, its game's television one and ours (plan 38 · EX1): a species met in the grass of the row's place
             foreach (var row in (world.Encounters.Outbreaks ?? new()).Concat(world.OwnOutbreaks.Rows))
                 f.Species(row.Species, $"{row.Area}: an outbreak", true);
+            // Route 119's Feebas under the day's six tiles of its water (plan 38 · EX4)
+            if (string.Equals(world.Index.Region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase) && world.Index.Areas.Contains(Overworld.HoennFeebas.Area))
+                f.Species(Overworld.HoennFeebas.Species, $"{Overworld.HoennFeebas.Area}: Feebas's tiles", true);
         }
         foreach (var world in worlds)
         foreach (string key in world.Index.Areas)
