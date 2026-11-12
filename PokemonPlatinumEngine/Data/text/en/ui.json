@@ -3140,6 +3140,9 @@
       "festivalTideDay": { "sender": "Slateport City", "title": "Tide Day", "card": "A drop of the sea, from the longest day on the docks." },
       "festivalBridgelight": { "sender": "Castelia City", "title": "Bridgelight", "card": "Every bridge lit up, and a scale that shines like one." },
       "festivalSerenade": { "sender": "Lumiose City", "title": "Solstice Serenade", "card": "The longest day sung through, and something for the singer's throat." },
+      "festivalGarland": { "sender": "Hau'oli City", "title": "Garland Days", "card": "A pearl for the lei you string next year. Dance one pose for us!" },
+      "festivalWoolFair": { "sender": "Wedgehurst", "title": "The Wool Fair", "card": "From the fair's wishing well: a coin that came back with a shine on it." },
+      "festivalSheafFeast": { "sender": "Jubilife Village", "title": "The Sheaf Feast", "card": "The first seed of this year's sheaves, saved for the next field." },
       "easter": { "sender": "the Gift Runners", "title": "Easter", "card": "An egg that brings luck, as eggs do this time of year." },
       "christmas": { "sender": "the Gift Runners", "title": "Christmas", "card": "A star for the top of the tree. Merry Christmas!" },
       "valentine": { "sender": "someone", "title": "A card with no name", "card": "Thinking of you." }

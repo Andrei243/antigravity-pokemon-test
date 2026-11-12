@@ -63,6 +63,24 @@
           "Misiunea lui Milo e numai despre Wooloo. Mergi spre unul și o ia la trap înaintea ta. Dar ai grijă la antrenorii arenei!"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          "Curier de Cadouri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          "Curierii de Cadouri, la dispoziția ta!"
+        ]
+      }
     }
   },
   "signs": {}

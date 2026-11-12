@@ -471,4 +471,145 @@ internal static class FestivalArt
         Pix.Outline(c);
         Pix.Lit(c, mid - 1, 1, 2, 2, ArtSheet.PublicLight);
     }
+
+    /// <summary>Alola's lei arch, 64 by 54; Galar's hay bales, 44 by 36; Hisui's sheaves, 36 by 56.</summary>
+    public const int LeiWidth = 64, LeiHeight = 54, BalesWidth = 44, BalesHeight = 36, SheavesWidth = 36, SheavesHeight = 56;
+
+    /// <summary>A flower of a lei, a cross of five texels with its heart, centred on (x, y).</summary>
+    private static void Flower(PixelCanvas c, int x, int y, int which)
+    {
+        Color petal = (which % 3) switch { 0 => Rgb(236, 110, 150), 1 => Rgb(246, 236, 200), _ => Rgb(240, 150, 70) };
+        c.Set(x, y - 1, petal); c.Set(x - 1, y, petal); c.Set(x + 1, y, petal); c.Set(x, y + 1, petal);
+        c.Set(x, y, which % 3 == 1 ? Rgb(246, 206, 90) : PixelCanvas.Shadow(petal, 0.25f));
+    }
+
+    /// <summary>
+    /// Alola's Garland Days in Hau'oli City, 64 by 54: two bamboo poles knotted every eight rows, a lei of hibiscus, plumeria
+    /// and orange flowers with leaves between swung from top to top, a shorter lei hanging down each pole, and a pale aqua
+    /// crystal on each pole's top for the Z-Move poses danced under it. Only the crystals' middles are lit.
+    /// </summary>
+    public static void PaintLeiArch(PixelCanvas c)
+    {
+        var bamboo = Rgb(176, 168, 92);
+        var bambooLit = Rgb(214, 206, 130);
+        var knot = Rgb(132, 124, 66);
+        var leaf = Rgb(72, 150, 80);
+        int right = c.Width - 4, top = 9;
+        foreach (int x in new[] { 1, right })
+        {
+            Pole(c, x, top, bamboo, bambooLit);
+            for (int y = top + 6; y < c.Height; y += 8) c.HLine(x, y, 3, knot);
+        }
+        // The lei swung between the tops: a flower every four texels, a leaf between
+        int n = 0;
+        for (int x = 5; x <= right - 2; x += 4, n++)
+        {
+            int y = Sag(x, 2, right + 2, top + 2, 6f);
+            Flower(c, x, y, n);
+            int lx = x + 2;
+            if (lx < right - 1) c.Set(lx, Sag(lx, 2, right + 2, top + 2, 6f), leaf);
+        }
+        // A shorter lei down each pole, to half its height
+        foreach (int x in new[] { 2, right + 1 })
+            for (int y = top + 6, k = 1; y < top + 6 + 18; y += 4, k++)
+            {
+                Flower(c, x, y, k);
+                c.Set(x + (x < 10 ? 2 : -2), y + 2, leaf);
+            }
+        // A crystal on each pole's top
+        var aqua = Rgb(150, 220, 220);
+        var aquaDeep = Rgb(90, 170, 180);
+        foreach (int x in new[] { 0, right - 1 })
+        {
+            c.Rect(x + 1, 1, 2, 6, aqua);
+            c.Rect(x, 2, 4, 4, aqua);
+            c.VLine(x + 3, 2, 4, aquaDeep);
+            c.Set(x + 2, 6, aquaDeep);
+        }
+        Pix.Outline(c);
+        Pix.Lit(c, 1, 2, 2, 3, ArtSheet.PublicLight);
+        Pix.Lit(c, right, 2, 2, 3, ArtSheet.PublicLight);
+    }
+
+    /// <summary>A round bale of straw, its straws in lighter rows every third row.</summary>
+    private static void Bale(PixelCanvas c, int x, int y, int w, int h)
+    {
+        var straw = Rgb(214, 184, 104);
+        var shade = Rgb(176, 146, 72);
+        c.Rect(x + 1, y, w - 2, h, straw);
+        c.Rect(x, y + 1, w, h - 2, straw);
+        for (int r = y + 2; r < y + h - 1; r += 3) c.HLine(x + 2, r, w - 4, Rgb(236, 212, 140));
+        c.VLine(x + w - 2, y + 1, h - 2, shade);
+        c.HLine(x + 1, y + h - 1, w - 2, shade);
+    }
+
+    /// <summary>
+    /// Galar's Wool Fair in Wedgehurst, 44 by 36: two round bales of straw with a smaller one on them, a prize rosette pinned
+    /// to the top bale's face and a tuft of fleece heaped on its top for the shearing. Nothing lit.
+    /// </summary>
+    public static void PaintHayBales(PixelCanvas c)
+    {
+        Bale(c, 1, 20, 21, 15);
+        Bale(c, 22, 20, 21, 15);
+        Bale(c, 12, 7, 20, 14);
+        // The fleece on top
+        var fleece = Rgb(236, 232, 222);
+        var fleeceShade = Rgb(200, 196, 186);
+        c.Rect(15, 3, 14, 5, fleece);
+        c.Rect(13, 5, 18, 3, fleece);
+        for (int x = 14; x < 30; x += 3) c.Set(x, 7, fleeceShade);
+        c.Set(18, 2, fleece); c.Set(24, 2, fleece);
+        // The rosette with its tails
+        var red = Rgb(200, 52, 56);
+        c.Rect(19, 10, 6, 6, red);
+        c.Rect(18, 11, 8, 4, red);
+        c.Rect(21, 12, 2, 2, Gold);
+        c.VLine(20, 16, 4, Gold);
+        c.VLine(23, 16, 5, Gold);
+        Pix.Outline(c);
+    }
+
+    /// <summary>A sheaf of wheat whose waist is at (x, y): stalks below, a fringe of ears above, leaning by <paramref name="lean"/>.</summary>
+    private static void Sheaf(PixelCanvas c, int x, int y, int lean)
+    {
+        var wheat = Rgb(220, 184, 96);
+        var stalk = Rgb(176, 140, 66);
+        var ear = Rgb(236, 206, 120);
+        int foot = c.Height - 1;
+        for (int r = y; r <= foot; r++)
+        {
+            int spread = (r - y) / 5;
+            int off = lean * (foot - r) / 24;
+            c.HLine(x - 2 - spread + off, r, 5 + spread * 2, wheat);
+            c.Set(x + 2 + spread + off, r, stalk);
+        }
+        for (int r = y - 16; r < y; r++)
+        {
+            int spread = (r - (y - 16)) < 8 ? (r - (y - 16)) / 2 : (y - r) / 2;
+            int off = lean * (foot - r) / 24;
+            c.HLine(x - 2 - spread + off, r, 5 + spread * 2, wheat);
+            if (r % 2 == 0) { c.Set(x - 2 - spread + off, r, ear); c.Set(x + 2 + spread + off, r, ear); }
+        }
+        c.HLine(x - 3 + lean * (foot - y) / 24, y, 7, Rgb(150, 110, 62));
+    }
+
+    /// <summary>
+    /// Hisui's Sheaf Feast in Jubilife Village, 36 by 56: a stake with a paper tally of three red marks, and before it three
+    /// sheaves of wheat leaning together, each bound at its waist with straw rope. Nothing lit.
+    /// </summary>
+    public static void PaintSheaves(PixelCanvas c)
+    {
+        var stake = Rgb(120, 84, 56);
+        int mid = c.Width / 2;
+        c.Rect(mid - 1, 1, 3, c.Height - 1, stake);
+        var paper = Rgb(236, 226, 196);
+        c.Rect(mid - 3, 4, 7, 18, paper);
+        c.VLine(mid + 3, 4, 18, Rgb(206, 192, 158));
+        var red = Rgb(190, 56, 48);
+        for (int k = 0; k < 3; k++) c.Rect(mid - 1, 7 + k * 5, 3, 2, red);
+        Sheaf(c, mid - 8, 36, 3);
+        Sheaf(c, mid + 8, 36, -3);
+        Sheaf(c, mid, 38, 0);
+        Pix.Outline(c);
+    }
 }

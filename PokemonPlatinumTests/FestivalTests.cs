@@ -30,6 +30,10 @@ public class FestivalTests
         Assert.Equal(RegionDatabase.Unova, F("bridgelight").Region);
         Assert.Equal(RegionDatabase.Kalos, F("serenade").Region);
         Assert.Equal("lumiose_city", F("serenade").Town);
+        // Alola's, Galar's and Hisui's own, each in its town (Galar's inside Wedgehurst's Pokémon Center, its towns being open maps)
+        Assert.Equal((RegionDatabase.Alola, "hauoli_city"), (F("garland").Region, F("garland").Town));
+        Assert.Equal((RegionDatabase.Galar, "wedgehurst"), (F("wool_fair").Region, F("wool_fair").Town));
+        Assert.Equal((RegionDatabase.Hisui, "jubilife_village"), (F("sheaf_feast").Region, F("sheaf_feast").Town));
         // The three great days and the quiet fourth belong to no one region: every region's Gift Runners keep them
         Assert.All(new[] { "new_year", "easter", "christmas", "valentine" }, id => Assert.Null(F(id).Region));
         // A town's festival has a stall of its own in marts.json
@@ -50,6 +54,15 @@ public class FestivalTests
         Assert.False(On("serenade", 2026, 6, 20));
         Assert.True(On("serenade", 2026, 6, 21));
         Assert.False(On("serenade", 2026, 6, 22));
+        Assert.False(On("garland", 2026, 8, 7));
+        Assert.True(On("garland", 2026, 8, 8) && On("garland", 2026, 8, 10));
+        Assert.False(On("garland", 2026, 8, 11));
+        Assert.False(On("wool_fair", 2026, 4, 30));
+        Assert.True(On("wool_fair", 2026, 5, 1) && On("wool_fair", 2026, 5, 3));
+        Assert.False(On("wool_fair", 2026, 5, 4));
+        Assert.False(On("sheaf_feast", 2026, 9, 21));
+        Assert.True(On("sheaf_feast", 2026, 9, 22) && On("sheaf_feast", 2026, 9, 24));
+        Assert.False(On("sheaf_feast", 2026, 9, 25));
         Assert.True(On("valentine", 2027, 2, 14));
         Assert.False(On("valentine", 2027, 2, 15));
         // Across the year's end: Snowpoint's Midwinter Lights, 18 December to 2 January
@@ -127,6 +140,14 @@ public class FestivalTests
         foreach (string holiday in new[] { "christmas", "easter", "new_year", "valentine" })
             foreach (string town in towns)
                 Assert.Contains(Placed.Value, p => p.Npc.ShownBy == Festivals.FlagOf(holiday) && (p.Npc.Key ?? "").StartsWith(town + ".", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void EveryGalarPokemonCenterHasAGiftRunner()
+    {
+        // Galar's Centers are rooms of their own on one plan (plan 40 · GE7's owed line): a Runner in each, by the counter
+        foreach (string town in new[] { "Wedgehurst", "Motostoke", "Turffield", "Hulbury", "Hammerlocke", "StowOnSide", "Ballonlea", "Circhester", "Spikemuth" })
+            Assert.Contains(MapDatabase.Get(town + "_PokemonCenter").Everyone, n => n.Script == "Courier" && n.NpcType == "gift_runner");
     }
 
     [Fact]

@@ -122,6 +122,18 @@ script FestivalSerenade
   give "Throat Spray"
   return
 
+script FestivalGarland
+  give "Big Pearl"
+  return
+
+script FestivalWoolFair
+  give "Wishing Piece"
+  return
+
+script FestivalSheafFeast
+  give "Miracle Seed"
+  return
+
 # The three great days of the year, in every region, and the quiet fourth
 script Easter
   give "Lucky Egg"

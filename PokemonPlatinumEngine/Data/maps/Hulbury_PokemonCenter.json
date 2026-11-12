@@ -252,6 +252,18 @@
       "dialog": [
         "Nessa's mission is all about the water. Ask each gatekeeper to pull the switch, and mind the gym trainers!"
       ]
+    },
+    {
+      "id": "gift_runner",
+      "name": "Gift Runner",
+      "npcType": "gift_runner",
+      "x": 15,
+      "y": 6,
+      "facing": "Down",
+      "dialog": [
+        "Gift Runners, at your service!"
+      ],
+      "script": "Courier"
     }
   ],
   "wildEncounters": []

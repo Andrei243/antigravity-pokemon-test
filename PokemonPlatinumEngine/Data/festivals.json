@@ -17,6 +17,13 @@
     // Kalos's own (the user's request of 2026-11-12): the Solstice Serenade, the longest day sung through in Lumiose City's
     // parks either side of the Prism Tower, with music stands, lanterns that burn into the short night and players on every corner
     { "id": "serenade", "region": "Kalos", "town": "lumiose_city", "from": "06-21", "to": "06-21", "night": true, "stall": "festival_serenade" },
+    // Alola's, Galar's and Hisui's own (plan 40 · GE9's owed line, 2026-11-12): Garland Days in Hau'oli City's plaza, the
+    // islands' leis strung and the Z-Move poses danced under lei arches into the night; the Wool Fair in Wedgehurst, a
+    // village fete held indoors at the Pokémon Center (Galar's towns are open maps, which stand no things of the map); and the
+    // Sheaf Feast on Jubilife Village's training ground, the Galaxy Team's farmers bringing in the first harvest
+    { "id": "garland", "region": "Alola", "town": "hauoli_city", "from": "08-08", "to": "08-10", "night": true, "stall": "festival_garland" },
+    { "id": "wool_fair", "region": "Galar", "town": "wedgehurst", "from": "05-01", "to": "05-03", "stall": "festival_wool_fair" },
+    { "id": "sheaf_feast", "region": "Hisui", "town": "jubilife_village", "from": "09-22", "to": "09-24", "stall": "festival_sheaf_feast" },
     { "id": "new_year", "from": "12-31", "to": "01-01" },
     { "id": "easter", "easter": [ -2, 1 ] },
     { "id": "christmas", "from": "12-24", "to": "12-26" },
