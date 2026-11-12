@@ -693,10 +693,10 @@
     "lucy": { "hairColor": "#3a2a4a", "hair": "Long", "top": "#26222e", "accent": "#5ab44a", "bottom": "#26222e", "shoes": "#2a2430", "eyes": "#6a3a7a", "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
     "brandon": { "hairColor": "#4a3022", "hair": "Short", "hat": "Cap", "hatColor": "#c8a868", "hatBand": "#5a4a2a", "top": "#a88a52", "accent": "#e8dcb8", "bottom": "#5a4a32", "shoes": "#3a2a1e", "eyes": "#3a2a22", "bushyBrows": true, "build": "Adult", "height": 1.12 },
     // The three Brains of Emerald's facilities that had none (plan 21's leftovers, 2026-11-12), our own takes: Spenser, the
-    // Palace Maven, an old master with a white topknot and beard in a moss-green robe; Greta, the Arena Tycoon, short
+    // Palace Maven, a bald old master with a silver beard in a moss-green robe; Greta, the Arena Tycoon, short
     // spiky rose hair and a black fighter's jacket with orange trim; Tucker, the Dome Ace, a showman's swept golden hair
     // under a violet tailcoat with a gold collar
-    "spenser": { "hairColor": "#ecebe4", "hair": "Bun", "top": "#4a6a3a", "accent": "#d8c27a", "bottom": "#3a5230", "shoes": "#2a2420", "eyes": "#3a3a2a", "skirt": true, "coat": true, "beard": true, "bushyBrows": true, "build": "Elder" },
+    "spenser": { "skin": "#c89270", "hairColor": "#a8a8b4", "hair": "Bald", "top": "#4a6a3a", "accent": "#d8c27a", "bottom": "#3a5230", "shoes": "#2a2420", "eyes": "#3a3a2a", "skirt": true, "coat": true, "beard": true, "bushyBrows": true, "build": "Elder" },
     "greta": { "skin": "#c08a62", "hairColor": "#e05a7a", "hair": "Spiky", "top": "#26222a", "accent": "#f08a2a", "bottom": "#26222a", "shoes": "#f08a2a", "eyes": "#5a2a3a", "shortSleeves": true, "build": "Adult", "lashes": true, "height": 0.98 },
     "tucker": { "hairColor": "#f0cc5a", "hair": "Swept", "top": "#5a3a8a", "accent": "#f2c84a", "bottom": "#2e2440", "shoes": "#1e1a26", "eyes": "#4a3a6a", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
     // Plan 21 · H12, part p: the Trick House's Mechadolls, our own clockwork dolls: a bald pewter head under a band of
