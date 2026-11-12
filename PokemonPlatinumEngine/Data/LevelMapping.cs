@@ -61,7 +61,14 @@ public sealed class LevelMapping
     private static int RoundHalfUp(long numerator, long denominator) =>
         (int)Math.Floor((2.0 * numerator + denominator) / (2.0 * denominator));
 
-    private static int Hold(long level) => (int)Math.Clamp(level, 1, Ruleset.HighestLevel);
+    /// <summary>
+    /// The highest level this mapping gives (plan 46 · CP15): <see cref="Ruleset.HighestLevel"/> for a mapping that climbs
+    /// past <see cref="Ruleset.FormerHighestLevel"/> (Carpathia's), and 260 for one that ends at or under it (every region
+    /// before), so a post-game level extrapolated past the last pair is held where it was held before the cap was raised.
+    /// </summary>
+    public int Top => Points[^1].To > Ruleset.FormerHighestLevel ? Ruleset.HighestLevel : Ruleset.FormerHighestLevel;
+
+    private int Hold(long level) => (int)Math.Clamp(level, 1, Top);
 
     public override string ToString() => string.Join(", ", Points.Select(p => $"{p.From} → {p.To}"));
 }

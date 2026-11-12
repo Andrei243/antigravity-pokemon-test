@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Pokémon can now grow to level 300, for the region still to come beyond Paldea; every region already in the game keeps its levels as they were.
 - Alola's and Galar's houses, shops and Pokémon Centers are built for grown people: taller doors you walk through without stooping, windows at a grown body's height, taller entrance porches.
 - Riding Tauros, Stoutland, Mudsdale or Machamp, you sit where that Pokémon's back is and tuck your legs up on the small ones, so your feet no longer hang to the ground beside them.
 - Six of Alola's houses that were furnished alike now each have their own: the berry farmer's plants, a boy's bookshelves and television, Ilima's tidy room, the malasada shop's stoves, a Heahea family's pictures and the rancher's feed crates.

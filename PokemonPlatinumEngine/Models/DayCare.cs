@@ -159,7 +159,7 @@ public sealed class DayCare
         if (p.CurrentHP > 0) p.CurrentHP = Math.Clamp(p.CurrentHP + p.MaxHP - oldMax, 1, p.MaxHP);
     }
 
-    /// <summary>The level a Pokémon's EXP reaches, at most the game's level cap (<c>Pokemon_GetLevelAt</c>; 100 in Platinum, plan 18 · W4's 260 by the modern rules).</summary>
+    /// <summary>The level a Pokémon's EXP reaches, at most the game's level cap (<c>Pokemon_GetLevelAt</c>; 100 in Platinum, 300 by the modern rules since plan 46 · CP15).</summary>
     public static int LevelForExp(Pokemon p, int exp)
     {
         int level = p.Level;

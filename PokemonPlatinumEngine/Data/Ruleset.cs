@@ -170,11 +170,19 @@ public sealed class Ruleset
     public bool EvsAtTheCap { get; private init; }
 
     /// <summary>
-    /// The highest level any rules let a Pokémon reach (plan 18 · W4, the user's ruling of 2026-10-21): 260, the study's
-    /// fair climb under the modern EXP, so that a team carried from Sinnoh to Paldea stays a step ahead of every
-    /// region's Champion. Whatever level a Pokémon is made or loaded at is held between 1 and this.
+    /// The highest level any rules let a Pokémon reach (plan 18 · W4, the user's ruling of 2026-10-21, raised by plan 46 ·
+    /// CP15 for Carpathia, decision 3 of 2026-11-09): 300. It was 260, the study's fair climb under the modern EXP from
+    /// Sinnoh to Paldea (<see cref="FormerHighestLevel"/>); Carpathia climbs on from there, its story from about 262 to
+    /// 286 and its post-game to about 296. Whatever level a Pokémon is made or loaded at is held between 1 and this.
     /// </summary>
-    public const int HighestLevel = 260;
+    public const int HighestLevel = 300;
+
+    /// <summary>
+    /// The highest level before plan 46 · CP15 (plan 18 · W4's 260): the top of the climb from Sinnoh to Paldea, which the
+    /// regions before Carpathia keep. A crossed region whose levels end at or under it has its soft ceiling held under
+    /// it (<c>LevelCaps.Ceiling</c>), so raising the cap moved nothing of theirs.
+    /// </summary>
+    public const int FormerHighestLevel = 260;
 
     /// <summary>
     /// The level no Pokémon grows past under these rules (plan 18 · W4): 100 in Platinum, <see cref="HighestLevel"/> by

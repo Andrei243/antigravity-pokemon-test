@@ -6074,6 +6074,20 @@ well above 100 ([the study](../plans/studies/W4-level-curve-study.md), option B)
   Champion's), and `LevelCaps.TableOf(region, crossed)` maps it in a region crossed into: Kanto 70 to 104, Johto 111
   to 136, Hoenn 142 to 162, Unova 166 to 185. `levels-crossed.txt` holds every crossed place as met; `LevelLadderTests`
   holds the rules.
+- **The cap to 300** (plan 46 · CP15, 2026-11-12; decision 3 of 2026-11-09): `Ruleset.HighestLevel` and the modern
+  rules' cap are **300**, so that Carpathia climbs on from Paldea (its story about 262 to 286, its post-game to about
+  296). What it touched: every reader of `HighestLevel` (clamps all: a Pokémon made, loaded, relevelled, given by a
+  script, a staged foe's `hidelevel` level, the console's and the scenarios' levels, the online check, the save tool);
+  Erratic and Fluctuating go on by the same rule past 100 (at 300 Erratic 16,200,000 and Fluctuating 44,280,000, the
+  dearest, still far inside an int); the damage formula carries a hit under `Formulas.MostDamage` (2^28) between its
+  steps, so nothing wraps at 300 whatever the stats and modifiers, and no hit any battle had was near it; saves, the
+  Vs. Recorder's file and its replay take 1 to 300 with no change of format, so every older save loads as it was.
+  *Our ruling*: **the regions before Carpathia keep 260 as their top.** A mapping whose last pair ends at or under
+  `Ruleset.FormerHighestLevel` (260: every region's today) holds what it gives there (`LevelMapping.Top`), and a crossed
+  region's soft ceiling is held under the same (`LevelCaps.TopOf`): Galar's post-game ceiling, 110% of 242, stays 260
+  rather than 266 and Alola's 260 rather than 261, so raising the cap moved no level and no ceiling of a region already
+  built. A mapping that climbs past 260 (Carpathia's own `levels` and `caps`, written in a later session) reaches 300.
+  R31's moves past 100 still end at 260's last; moves of our own learned from 261 to 300 are owed.
 
 ## Regions (2026-10-24, plan 18 · W4, part b)
 

@@ -69,7 +69,7 @@ public static class Formulas
     {
         // In a long, so that no stat, power or level any rules allow can overflow it (plan 18 · W4); every step is the
         // whole number it was, so nothing under 100 moves
-        int damage = (int)((long)attack * power * (level * 2 / 5 + 2) / Math.Max(1, defense) / 50);
+        int damage = Fit((long)attack * power * (level * 2 / 5 + 2) / Math.Max(1, defense) / 50);
         if (burned) damage /= 2;
         if (screened) damage = sharedScreen ? damage * 2 / 3 : damage / 2;
         if (spread) damage = damage * 3 / 4;
@@ -126,6 +126,17 @@ public static class Formulas
     }
 
     /// <summary>A value times one bonus in 4096ths, rounded half down (a spread hit's 3072, the weather's 6144 and 2048).</summary>
+    /// <summary>
+    /// The most a hit's damage is carried as between the formula's steps (plan 46 · CP15, the overflow check at level
+    /// 300): 2^28, past any Pokémon's HP by five orders and far from an int's end, so that what follows (a critical
+    /// hit's half again, a modifier's 4096ths in a long) can't overflow whatever the level, stats and modifiers. Nothing
+    /// any battle ever hit for was near it, so no hit's number moved.
+    /// </summary>
+    public const int MostDamage = 1 << 28;
+
+    /// <summary>A step of the formula, worked in a long, held under <see cref="MostDamage"/>.</summary>
+    private static int Fit(long damage) => (int)Math.Min(damage, MostDamage);
+
     public static int Modify(int value, int mod) => (int)RoundHalfDown((long)value * mod);
 
     /// <summary>
@@ -133,7 +144,7 @@ public static class Formulas
     /// each step rounded down, + 2. The burn, the screens and the weather are not in it.
     /// </summary>
     public static int ModernBaseDamage(int level, int power, int attack, int defense) =>
-        (int)((long)(level * 2 / 5 + 2) * power * attack / Math.Max(1, defense) / 50) + 2;
+        Fit((long)(level * 2 / 5 + 2) * power * attack / Math.Max(1, defense) / 50) + 2;
 
     /// <summary>
     /// What one roll comes to in the later games (<c>getFinalDamage</c>): the roll (<paramref name="roll"/> 0 the
@@ -147,7 +158,7 @@ public static class Formulas
         damage = (long)Math.Floor(damage * (double)effectiveness);
         if (burned) damage /= 2;
         long scaled = damage * finalMod;
-        return scaled < 4096 ? 1 : (int)RoundHalfDown(scaled);
+        return scaled < 4096 ? 1 : Fit(RoundHalfDown(scaled));
     }
 
     /// <summary>

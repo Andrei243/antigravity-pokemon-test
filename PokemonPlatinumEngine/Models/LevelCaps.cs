@@ -65,11 +65,19 @@ public static class LevelCaps
     /// <summary>
     /// A crossed region's soft ceiling (plan 18 · W4b-3, Design C; <c>docs/mechanics/rulings.md</c>, "A crossed region's
     /// EXP"): no Pokémon gains EXP past 110% of the next milestone's level (<see cref="MilestoneOf"/>, rounded down), held
-    /// under <see cref="Ruleset.HighestLevel"/>. It never lowers a level: a Pokémon over it keeps its level and fights at
-    /// it, and only stops growing until the region catches up. In every difficulty; null where there is no milestone.
+    /// under <see cref="TopOf"/> (the highest level, or 260 for a region whose levels end at or under it, plan 46 · CP15).
+    /// It never lowers a level: a Pokémon over it keeps its level and fights at it, and only stops growing until the
+    /// region catches up. In every difficulty; null where there is no milestone.
     /// </summary>
     public static int? Ceiling(string regionId, StoryState story) =>
-        MilestoneOf(regionId, story) is { } m ? Math.Min(Ruleset.HighestLevel, m * CeilingPercent / 100) : null;
+        MilestoneOf(regionId, story) is { } m ? Math.Min(TopOf(regionId), m * CeilingPercent / 100) : null;
+
+    /// <summary>
+    /// The highest a crossed region's ceiling may stand (plan 46 · CP15): <see cref="Ruleset.FormerHighestLevel"/> (260)
+    /// for a region whose levels, as met, end at or under it (every region before Carpathia, whose post-game ceilings
+    /// stood at 260 when that was the cap and stay there), and <see cref="Ruleset.HighestLevel"/> for one that climbs past it.
+    /// </summary>
+    public static int TopOf(string regionId) => RegionDatabase.Get(regionId)?.Levels?.Top ?? Ruleset.FormerHighestLevel;
 
     /// <summary>The lower of two caps, either of which may be none: a run's own cap wins where it is lower (W4b-3's L5).</summary>
     public static int? Lower(int? a, int? b) => a is { } x ? (b is { } y ? Math.Min(x, y) : x) : b;

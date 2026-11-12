@@ -96,7 +96,7 @@ public static class Overlays
         }
 
         // ---- our own species past level 100 after the Hall of Fame (plan 03 · D15): species of ours that may be wild, of
-        // this region's batch, at levels from their evolution's to 260, as many as the slots, where the tables have them
+        // this region's batch, at levels from their evolution's to the highest level, as many as the slots, where the tables have them
         if (overlay.Ours is { } ours)
         {
             string regionId = Path.GetFileName(region.Folder.TrimEnd('/', '\\'));

@@ -94,7 +94,7 @@ public static class ItemUse
             if (!p.IsFainted && p.CurrentHP < p.MaxHP) return true;
         }
 
-        // A Rare Candy up to the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
+        // A Rare Candy up to the game's level cap (plan 18 · W4: 100 in Platinum, 300 by the modern rules since plan 46 · CP15)
         if (Has(item, "levelUp") && !p.AtTheCap && !LevelCaps.Holds(p, runCap) && !HeartLock.Refuses(p, LockedUse.RareCandy)) return true;
         if ((Has(item, "ppUp") || Has(item, "ppMax")) && MoveIn(p, moveSlot) is { } raised && CanTakePPUp(raised)) return true;
         if (Has(item, "ppRestored") && !Has(item, "restorePPAllMoves") && MissingPP(p, moveSlot)) return true;
