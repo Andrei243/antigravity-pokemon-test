@@ -524,6 +524,9 @@ public sealed partial class WorldRenderer
     public Texture2D Portrait(string characterType)
     {
         context.EnsureLoaded();
+        // A look of the grown kit (a grown region's player, plan 30) is its impostor facing the eye, never a chibi sprite
+        if (CharacterStyle.For(characterType).Kit == Data.CharacterKit.Grown)
+            return liveRigs.Portrait(context, CharacterModels.Get(characterType, context.Shaders));
         return CharacterSprites.Portrait(context, characterType);
     }
 
@@ -1120,10 +1123,13 @@ public sealed partial class WorldRenderer
         public readonly bool Sprite;
         /// <summary>A sitter's own place, way and seat, which a grown rig is seated from (plan 30 · FM6); null for anyone standing.</summary>
         public readonly FieldSeating? Seating;
+        /// <summary>How far a grown rig is drawn off its feet, which its motion never sees (the player's step back in a talk).</summary>
+        public readonly Vector3 Drawn;
 
-        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null, object? who = null, bool sprite = false, FieldSeating? seating = null)
+        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null, object? who = null, bool sprite = false, FieldSeating? seating = null, Vector3 drawn = default)
         {
             Seating = seating;
+            Drawn = drawn;
             Rig = rig;
             Feet = feet;
             Yaw = yaw;
@@ -1327,7 +1333,10 @@ public sealed partial class WorldRenderer
             Running = player.IsRunning,
             Hop = player.HopProgress,
             Time = time,
-            Blink = IsBlinking(time, 0.37f)
+            Blink = IsBlinking(time, 0.37f),
+            // (the grown kit's skater and glide; a chibi rig never reads them)
+            Skating = player.Mode == TravelMode.Skating,
+            Gliding = player.IsSliding && player.Mode is TravelMode.OnFoot or TravelMode.Skating
         };
         // A gesture and a face a script gave the player (plan 11 · C11); a ledge's hop goes before a jump on the spot
         float playerJump = Acted(ref playerPose, player.HopProgress > 0f ? null : player.Gesture, player.GestureAge, player.Mood);
@@ -1359,6 +1368,8 @@ public sealed partial class WorldRenderer
             playerPose.Running = false;
         }
         float seat = carrier != null ? (riding ? RideSeat(carrier) : CarrierSeat(carrier)) : SurfMount.Seat;
+        // A grown surfer kneels on the Pokémon's back (the grown kit's alone; a chibi rig never reads it)
+        if (player.Mount != null) playerPose.Riding = Riding.Surf;
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
         // Fishing, the player holds the rod (plan 11 · C8): their own look holding one
         bool fishing = player.Posed is Overworld.Stance.Fish or Overworld.Stance.Tug;
@@ -1376,7 +1387,10 @@ public sealed partial class WorldRenderer
             playerAt = Seated(playerRig, posed, playerAt, player.Facing, underThem, false, MapScene.PitchOf(map));
         }
         actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose, Relief.DeckOver(map, playerAt.X, playerAt.Z, playerAt.Y), player,
-            !FieldRigChoice.LiveIn(playerPose.Stance) || player.Mount != null || riding || fishing, playerSeating));
+            // (a grown player fishes and surfs as a live rig, plan 30's owed: the rod in their hands, kneeling on the
+            // Pokémon's back; a ride on land is still the sprite)
+            !(FieldRigChoice.LiveIn(playerPose.Stance) || fishing) || riding, playerSeating,
+            new Vector3(0f, 0f, TalkBackOf(map, player))));
 
         if (player.Mount is { } ridden)
         {
