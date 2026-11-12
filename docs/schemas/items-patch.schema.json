@@ -382,6 +382,31 @@
           }
         ]
       },
+      "treat": {
+        "anyOf": [
+          {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "flavor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "grade": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
       "megaStone": {
         "anyOf": [
           {

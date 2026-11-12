@@ -16024,6 +16024,25 @@ way -
 from a trainer with lines of their own
 way -
   > Nothing in it but a few scraps of paper.
+=== common.TreatBaker
+from a trainer with lines of their own
+way 0
+  Baker> I bake finer treats from the berries you bring me, and I don't charge a thing for the work.
+  Baker> What shall I bake?
+  Baker> I need three berries of one flavour for a cake. Come back when your bag has them.
+  ? What shall I bake? = A CAKE OF ONE FLAVOUR
+way 2, from answer 1
+  Baker> Come back with your berries any time.
+  ? What shall I bake? = NOTHING
+way 1, from answer 1
+  Baker> A loaf takes one berry of each flavour: spicy, dry, sweet, bitter and sour. You're short of one.
+  ? What shall I bake? = A LOAF OF EVERY FLAVOUR
+=== common.TreatCounter
+from a trainer with lines of their own
+way -
+  Confectioner> Welcome to the treat counter! Every treat here is baked with one flavour, for Pokémon who like it best.
+  Confectioner> Give one to a Pokémon at your camp. A treat in a flavour it loves makes it twice as happy!
+  * open Shop treats
 === common.UltraWayHome
 from a trainer with lines of their own
 way 0
