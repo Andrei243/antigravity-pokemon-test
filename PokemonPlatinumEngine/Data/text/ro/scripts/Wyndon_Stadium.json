@@ -1,0 +1,112 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The lobby's lights flicker and die. Through the glass doors, the sky over Wyndon has turned the colour of embers."
+      ],
+      "text": [
+        "Luminile holului pâlpâie și se sting. Prin ușile de sticlă, cerul de deasupra Wyndonului s-a făcut de culoarea jarului."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Did you see the sky? Everyone's saying the power's gone wild all over Galar, and nobody can find Leon!"
+      ],
+      "text": [
+        "{player}! Ai văzut cerul? Toată lumea zice că energia a luat-o razna în tot Galarul și nimeni nu-l găsește pe Leon!"
+      ]
+    },
+    {
+      "en": [
+        "It's just like the tapestries in the vault. The Darkest Day, and the two heroes who stopped it with a sword and a shield."
+      ],
+      "text": [
+        "E exact ca în tapiseriile din seif. Ziua cea mai Întunecată și cei doi eroi care au oprit-o cu o sabie și un scut."
+      ]
+    },
+    {
+      "en": [
+        "The stories all end at the old altar in the Slumbering Weald. If there's anything left of the heroes, it's there. Let's go!"
+      ],
+      "text": [
+        "Toate poveștile se termină la vechiul altar din Pădurea Adormită. Dacă a mai rămas ceva de la eroi, acolo e. Hai!"
+      ]
+    },
+    {
+      "en": [
+        "Hop dragged {player} to the station, and the last train south ran them all the way home to Postwick."
+      ],
+      "text": [
+        "Hop l-a tras pe {player} la gară, iar ultimul tren spre sud i-a dus până acasă, în Postwick."
+      ]
+    }
+  ],
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționeră"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Wyndon Stadium and the Champion Cup! The Semifinals are on the pitch, through the doors behind me."
+      ],
+      "text": [
+        "Bine ai venit pe Stadionul din Wyndon și la Cupa Campionilor! Semifinalele sunt pe teren, prin ușile din spatele meu."
+      ]
+    },
+    {
+      "en": [
+        "The Finals are under way! Your opponents are waiting on the pitch. Good luck, challenger!"
+      ],
+      "text": [
+        "Finala a început! Adversarii tăi te așteaptă pe teren. Mult noroc, concurentule!"
+      ]
+    },
+    {
+      "en": [
+        "Galar's new Champion! It's an honour. The pitch is yours whenever you like."
+      ],
+      "text": [
+        "Noul Campion din Galar! E o onoare. Terenul e al tău oricând vrei."
+      ]
+    }
+  ],
+  "CupGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Everyone left in the Cup has eight badges, so there's no type to lean on now. Bring a team that covers everything!"
+      ],
+      "text": [
+        "Toți cei rămași în Cupă au opt insigne, așa că nu mai ai pe ce tip să te bazezi. Vino cu o echipă care acoperă tot!"
+      ]
+    },
+    {
+      "en": [
+        "I've guided challengers through eight stadiums for years. You're the first I've seen go all the way."
+      ],
+      "text": [
+        "Ghidez concurenți prin opt stadioane de ani de zile. Ești primul pe care îl văd mergând până la capăt."
+      ]
+    }
+  ]
+}

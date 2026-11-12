@@ -10,10 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1754 | 1691 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13482 | 12927 | 555 | 17 | 36 |
+| People of the hand-made maps (`map:`) | 1759 | 1696 | 63 | 1 | 0 |
+| Scripts (`script:`) | 13558 | 12997 | 561 | 17 | 36 |
 | People of the world (`world:`) | 8178 | 8116 | 62 | 4 | 0 |
-| **All** | 23698 | 23015 | 683 | 22 | 36 |
+| **All** | 23779 | 23090 | 689 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,17 +22,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1114 |
+| a question's answers | 1122 |
 | a sign | 1771 |
 | the game's own voice (speaker none) | 326 |
-| the game's own voice (text) | 2222 |
+| the game's own voice (text) | 2236 |
 
 ## The cast
 
-- Named characters: 976 voices (381 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 979 voices (384 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 590 voices.
 - Archetypes in use: 254, with 767 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 380.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 390.
 
 ## Lines by voice
 
@@ -43,16 +43,16 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:gentleman (any)` | 1216 | 52 |
 | `look:grunt (any)` | 612 | 0 |
 | `rival` | 605 | 20 |
-| `look:clerk (any)` | 590 | 15 |
+| `look:clerk (any)` | 591 | 15 |
 | `look:lady (any)` | 574 | 10 |
 | `look:lass (any)` | 553 | 22 |
 | `look:youngster (any)` | 521 | 32 |
-| `@self` | 380 | 58 |
-| `look:receptionist (any)` | 348 | 40 |
+| `@self` | 390 | 64 |
+| `look:receptionist (any)` | 352 | 40 |
 | `look:attendant (any)` | 335 | 12 |
 | `look:scientist (any)` | 329 | 13 |
 | `look:nurse (any)` | 297 | 2 |
-| `look:gym_guide (any)` | 250 | 1 |
+| `look:gym_guide (any)` | 252 | 1 |
 | `looker` | 248 | 1 |
 | `class:ace_trainer (any)` | 210 | 0 |
 | `class:hiker (any)` | 202 | 0 |
@@ -83,7 +83,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:cooltrainer (any)` | 102 | 0 |
 | `look:hiker (any)` | 100 | 0 |
 | `cyrus` | 99 | 7 |
-| `ace_trainer` | 95 | 0 |
+| `ace_trainer` | 96 | 0 |
 | `look:worker (any)` | 95 | 0 |
 | `class:swimmer (any)` | 92 | 0 |
 | `steven` | 91 | 1 |
@@ -113,6 +113,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `artist` | 62 | 1 |
 | `collector` | 62 | 0 |
 | `underground_man` | 62 | 0 |
+| `hop` | 61 | 0 |
 | `class:battle_girl (any)` | 60 | 0 |
 | `class:beauty (any)` | 60 | 0 |
 | `cheren` | 59 | 1 |
@@ -146,7 +147,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `gardenia` | 44 | 0 |
 | `riley` | 44 | 1 |
 | `flint` | 43 | 1 |
-| `hop` | 43 | 0 |
 | `look:clown (any)` | 43 | 0 |
 | `mystery` | 43 | 4 |
 | `class:bird_keeper_gs (any)` | 42 | 0 |
@@ -176,6 +176,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:battle_girl (any)` | 36 | 2 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `mars` | 36 | 0 |
+| `president` | 36 | 0 |
 | `kurt` | 35 | 6 |
 | `move_deleter` | 35 | 5 |
 | `class:super_nerd (any)` | 34 | 0 |
@@ -186,7 +187,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `saturn` | 34 | 0 |
 | `backer` | 33 | 0 |
 | `norman` | 33 | 0 |
-| `president` | 33 | 0 |
 | `socialite` | 33 | 0 |
 | `waiter` | 33 | 0 |
 | `alder` | 32 | 1 |
@@ -219,6 +219,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:triathlete (any)` | 28 | 0 |
 | `hala` | 28 | 0 |
 | `ione` | 28 | 7 |
+| `leon` | 28 | 1 |
 | `lillie` | 28 | 0 |
 | `blaine` | 27 | 0 |
 | `sailor_eldritch` | 27 | 0 |

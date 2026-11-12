@@ -92,5 +92,47 @@
         "Îmi pare rău! Arena lui Raihan e ultima din competiție. Întoarce-te cu șapte insigne și ușa e a ta."
       ]
     }
+  ],
+  "TrainToWyndon": [
+    {
+      "en": [
+        "Station Staff"
+      ],
+      "text": [
+        "Personalul gării"
+      ]
+    },
+    {
+      "en": [
+        "Trains north run to Wyndon, for the Champion Cup. Only challengers with all eight badges may ride them this season."
+      ],
+      "text": [
+        "Trenurile spre nord merg la Wyndon, pentru Cupa Campionilor. În sezonul ăsta urcă în ele doar concurenții cu toate cele opt insigne."
+      ]
+    },
+    {
+      "en": [
+        "Eight badges! The Champion Cup is waiting for you in Wyndon."
+      ],
+      "text": [
+        "Opt insigne! Cupa Campionilor te așteaptă în Wyndon."
+      ]
+    },
+    {
+      "en": [
+        "Take the train north to Wyndon?"
+      ],
+      "text": [
+        "Iei trenul spre nord, la Wyndon?"
+      ]
+    },
+    {
+      "en": [
+        "The line north runs all day. Come back when you're ready."
+      ],
+      "text": [
+        "Linia spre nord merge toată ziua. Întoarce-te când ești gata."
+      ]
+    }
   ]
 }

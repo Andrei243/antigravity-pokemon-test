@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Energy Plant"
+    ],
+    "text": [
+      "Centrala Energetică"
+    ]
+  },
+  "people": {
+    "rose": {
+      "name": {
+        "en": [
+          "Rose"
+        ],
+        "text": [
+          "Rose"
+        ]
+      }
+    },
+    "leon_plant": {
+      "name": {
+        "en": [
+          "Leon"
+        ],
+        "text": [
+          "Leon"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whatever the chairman's woken, it isn't something any one Trainer can hold back."
+        ],
+        "text": [
+          "Orice ar fi trezit președintele, nu e ceva ce poate opri un singur Antrenor."
+        ]
+      }
+    },
+    "hop_plant": {
+      "name": {
+        "en": [
+          "Hop"
+        ],
+        "text": [
+          "Hop"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We came this far. We're not backing down now!"
+        ],
+        "text": [
+          "Am ajuns până aici. Nu dăm înapoi acum!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
