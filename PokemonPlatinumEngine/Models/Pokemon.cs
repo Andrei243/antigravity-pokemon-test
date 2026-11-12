@@ -570,6 +570,14 @@ public class Pokemon
     public bool IsAlpha => Scale > 1f;
 
     /// <summary>
+    /// A bright one of the wild Pokémon in sight (plan 38 · EX3, <see cref="Overworld.BrightPokemon"/>): it shimmers in the
+    /// grass and once as it comes out in battle, with perfect IVs and an Egg move. Not saved: once caught it is a Pokémon
+    /// like any other, and only its IVs and moves remain.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Bright { get; set; }
+
+    /// <summary>
     /// The Ball Capsule on its ball (plan 06 · R17b; the original's <c>MON_DATA_BALL_CAPSULE_ID</c> and
     /// <c>MON_DATA_BALL_CAPSULE</c>): the capsule's number among the Seal Case's twelve, from 1, or 0 for none, and a
     /// copy of its Seals, which burst as the Pokémon is sent out in battle (<see cref="CapsuleRules"/>). A trainer's
@@ -1469,6 +1477,7 @@ public class Pokemon
         EncounterMarks.UnionWith(other.EncounterMarks);
         Title = other.Title;
         Scale = other.Scale;
+        Bright = other.Bright;
 
         for (int i = 0; i < other.Moves.Count; i++)
         {

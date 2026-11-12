@@ -62,7 +62,11 @@ public partial class GameEngine
             // The powers in force that a step reads (plan 39 · CR6's dishes): the encounters' or stealth's, and a type's
             PowerRate = flow.Powers.Strength(PowerKind.Encounter) + flow.Powers.Strength(PowerKind.Stealth),
             PowerType = flow.Powers.TypeOf(PowerKind.TypeEncounter),
-            PowerSlots = flow.Powers.Strength(PowerKind.TypeEncounter)
+            PowerSlots = flow.Powers.Strength(PowerKind.TypeEncounter),
+            // The visitor a scan called up, for its hour (plan 38 · EX2)
+            Visitor = VisitorNow(),
+            // The hour's rift's table within its reach (plan 38 · EX5)
+            Rift = RiftHere()
         };
     }
 
@@ -206,6 +210,8 @@ public partial class GameEngine
     {
         bool field = flow.FieldEncounter;
         flow.FieldEncounter = flow.Hooked = false;
+        // The catch streak of Pokémon met in sight goes on or breaks (plan 38 · EX3)
+        KeepTheStreak(fought);
         // The DexNav's chain goes on or breaks (plan 10 · F12)
         DexNavAfterBattle(fought, defeat);
         // ...and the camp may cure the team once more (plan 10 · F6)

@@ -837,6 +837,8 @@ public partial class BattleEngine
                 // scene off, as the original's other animations that are no moves, it doesn't
                 if (pokemon.IsShiny && !pokemon.IsEgg && Scene && Anim.ShinySparkle(entered.Place.Side, entered.Place.Slot, entered.FromBall) is { } sparkle)
                     After(sparkle.Lead, () => Sound("shiny", entered.Place.Side));
+                // ...and a bright one of those seen in the grass shimmers once (plan 38 · EX3)
+                else if (pokemon.Bright && !pokemon.IsShiny && !pokemon.IsEgg && Scene) Anim.BrightShimmer(entered.Place.Side, entered.Place.Slot, entered.FromBall);
                 break;
             }
             case CalledForHelp called:

@@ -1,0 +1,13 @@
+{
+  // Plan 38 · EX2: the visitor a scan from the Town Map's report calls up for an hour, a row for each day of the week: a
+  // species of another region's Pokédex on the far western routes and Mt. Silver's band, in HeartGold's own levels. Ours.
+  "rows": [
+    { "day": "Sunday", "species": "Absol", "places": ["route_28", "mount_silver"], "minLevel": 40, "maxLevel": 44 },
+    { "day": "Monday", "species": "Shelgon", "places": ["route_47", "route_48"], "minLevel": 38, "maxLevel": 42 },
+    { "day": "Tuesday", "species": "Kecleon", "places": ["route_47", "route_27"], "minLevel": 36, "maxLevel": 40 },
+    { "day": "Wednesday", "species": "Tropius", "places": ["route_48", "route_26"], "minLevel": 38, "maxLevel": 42 },
+    { "day": "Thursday", "species": "Luxio", "places": ["route_26", "route_27"], "minLevel": 36, "maxLevel": 40 },
+    { "day": "Friday", "species": "Riolu", "places": ["route_28", "mount_silver"], "minLevel": 38, "maxLevel": 42 },
+    { "day": "Saturday", "species": "Kricketune", "places": ["route_26", "route_47"], "minLevel": 36, "maxLevel": 40 }
+  ]
+}

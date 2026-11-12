@@ -5,6 +5,11 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Once you are a region's Champion, the Town Map (and the Pokégear's map card) has a second page on the item button: the day's two outbreaks marked on the map with how many of each you have met, and a scan, once a day with the National Pokédex, that calls a Pokémon of another region to one of the region's routes for an hour.
+- Wild Pokémon you can see in the grass may be bright: the more of a species you have beaten or caught, the more often one of it shimmers, with perfect IVs and an Egg move. Catching the same species in a row from the grass builds a streak, shown in the corner, that brings better and shinier ones from eleven; hooking the same Pokémon in a row on a rod from one spot raises the shiny chance too.
+- After a region's Hall of Fame, rifts open in the field for an hour at a time: within reach of one the grass and the water hold Pokémon from other regions, three finds lie in its ground, and the Town Map's report shows where it is.
+- Feebas can be fished from six spots of Route 119's water in Hoenn, different each day.
+- Hidden items within three steps now glint now and then (the options' HIDDEN ITEMS GLINT row, on under the modern rules).
 - With the crafting kit in your bag, rocks, fallen logs, herb bushes, heaps of shells and snow drifts appear along the routes of every region you can travel to. Each gives you something for the kit once a day, and cutting a tree or smashing a rock sometimes leaves wood or stone too.
 - Berries planted side by side can now cross into rare berries, as long as you carry the crafting kit. The kit's new CROSSES page shows every cross and which berries make it. In Goldenrod, the florist gives kit holders four Berry Pots to grow berries in wherever you go.
 - Waiters in the Seven Stars Restaurant, Celadon City's restaurant and the Olivine Café, and stall keepers in Slateport's market and on Castelia's avenue, now serve meals for your whole team and sell cooking goods, once you have the crafting kit.

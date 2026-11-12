@@ -29,8 +29,7 @@ public class HoennSpeciesTests
     {
         // (Plan 40 · GE3 gave Ruby's and Sapphire's species in the overlays' national slots and a Linking Cord in
         // Lilycove's Pokémon Center)
-        // Route 119's Feebas tiles, not built for Hoenn
-        ["Feebas"] = "plan 38 · EX4: Route 119's Feebas", ["Milotic"] = "plan 38 · EX4: Route 119's Feebas",
+        // (Plan 38 · EX4 gave Route 119's Feebas under the day's six tiles, and Milotic with it)
         // (Jirachi, which no island of decision 5 gave, wakes in Steven's cave since plan 29 · LS11c)
     };
 

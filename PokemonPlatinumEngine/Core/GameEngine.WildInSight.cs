@@ -37,7 +37,7 @@ public partial class GameEngine
         }
         var touched = wildInSight.Update(dt, flow.Map, flow.Player.GridX, flow.Player.GridY, fieldRandom,
             (x, y, water) => flow.Map.DrawOutWild(x, y, water, flow.Player.Lead, EncounterMomentNow()),
-            entry => MakeWild(entry, flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)), PutWild,
+            entry => MakeSeenWild(entry, flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)), PutWild,
             // Ten stand in the grass of a place with an outbreak today (plan 38 · EX1)
             OutbreakHere() != null ? FieldPokemon.MostInOutbreak : FieldPokemon.MostInView);
         // Nothing is met while a script, a rod or a fade has the field
@@ -80,6 +80,8 @@ public partial class GameEngine
         flow.FieldEncounter = true;
         flow.Player.Encounters.Reset();
         wildSurprised = FieldPokemon.FromBehind(flow.Player.Facing, seen.Body.Facing);
+        // Its end goes on the catch streak or breaks it (plan 38 · EX3)
+        metInSight = true;
         MeetWildPokemon(seen.Pokemon, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, nuzlockeCatch: MeetUnderTheRun(seen.Pokemon));
         return true;
     }

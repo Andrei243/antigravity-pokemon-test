@@ -242,6 +242,12 @@ public sealed class GameSettings
     public RulesDefault PartyTools { get; set; } = RulesDefault.Rules;
 
     /// <summary>
+    /// Whether a hidden item within three tiles glints (plan 38 · EX3, <see cref="Overworld.Glints"/>): <see cref="RulesDefault.Rules"/>
+    /// unless chosen, so a game played by the modern rules shows it, as the later games show their hidden items.
+    /// </summary>
+    public RulesDefault ItemGlints { get; set; } = RulesDefault.Rules;
+
+    /// <summary>
     /// Whether the start menu has BOXES, which opens the PC anywhere the map allows, and the bag can be put in order (plan 12 · Q13):
     /// <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's rules keeps its menu and bag.
     /// </summary>

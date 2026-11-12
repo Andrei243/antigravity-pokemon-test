@@ -51,6 +51,7 @@ public enum OptionRow
     Coop,
     BattleCamera,
     Care,
+    ItemGlints,
     Help,
     ResetDefaults
 }
@@ -115,7 +116,7 @@ public class OptionsScreen
             or OptionRow.Autosave or OptionRow.NextObjective or OptionRow.Tips or OptionRow.Requests or OptionRow.MedalNotices
             or OptionRow.TimeOfDay or OptionRow.Season or OptionRow.SlotTwo => OptionCategory.Game,
         OptionRow.Autorun or OptionRow.Movement or OptionRow.Follower or OptionRow.WildPokemon or OptionRow.FieldHelpers
-            or OptionRow.PartyTools or OptionRow.BoxesAnywhere or OptionRow.BoxTools or OptionRow.AreaChecklist or OptionRow.Care => OptionCategory.Field,
+            or OptionRow.PartyTools or OptionRow.BoxesAnywhere or OptionRow.BoxTools or OptionRow.AreaChecklist or OptionRow.Care or OptionRow.ItemGlints => OptionCategory.Field,
         OptionRow.BattleScene or OptionRow.BattleStyle or OptionRow.MoveHints or OptionRow.TrainerLines or OptionRow.AutoBattle
             or OptionRow.RetryBattles or OptionRow.RecordBattles or OptionRow.Coop or OptionRow.BattleCamera => OptionCategory.Battle,
         OptionRow.Quality or OptionRow.WindowSize or OptionRow.Fullscreen or OptionRow.VSync or OptionRow.FrameCap
@@ -608,6 +609,10 @@ public class OptionsScreen
                 // Off, as the rules have it, On (plan 12 · Q19), and round again
                 s.PartyTools = (RulesDefault)Wrap((int)s.PartyTools + step, 3);
                 break;
+            case OptionRow.ItemGlints:
+                // Off, as the rules have it, On (plan 38 · EX3), and round again
+                s.ItemGlints = (RulesDefault)Wrap((int)s.ItemGlints + step, 3);
+                break;
             case OptionRow.Autosave:
                 s.Autosave = !s.Autosave;
                 break;
@@ -739,6 +744,7 @@ public class OptionsScreen
             Text.Of(s.Season.HasValue ? "options.season.help.fixed" : "options.season.help.calendar")),
         OptionRow.FieldHelpers => (Text.Of("options.fieldHelpers.label"), Text.Of($"options.fieldHelpers.value.{s.FieldHelpers}"), Text.Of($"options.fieldHelpers.help.{s.FieldHelpers}")),
         OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
+        OptionRow.ItemGlints => (Text.Of("options.itemGlints.label"), Text.Of($"options.itemGlints.value.{s.ItemGlints}"), Text.Of($"options.itemGlints.help.{s.ItemGlints}")),
         OptionRow.BoxTools => (Text.Of("boxTools.option.label"), Text.Of($"boxTools.option.value.{s.BoxTools}"), Text.Of($"boxTools.option.help.{s.BoxTools}")),
         OptionRow.AutoBattle => (Text.Of("options.autoBattle.label"), OnOff(s.AutoBattle), Text.Of(s.AutoBattle ? "options.autoBattle.help.on" : "options.autoBattle.help.off")),
         OptionRow.RetryBattles => (Text.Of("options.retryBattles.label"), OnOff(s.RetryBattles), Text.Of(s.RetryBattles ? "options.retryBattles.help.on" : "options.retryBattles.help.off")),

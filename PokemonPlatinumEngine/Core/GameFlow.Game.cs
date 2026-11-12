@@ -136,6 +136,9 @@ public sealed partial class GameFlow
     /// <summary>What the game remembers of its wild Pokémon (saved as <see cref="SaveData.Encounters"/>).</summary>
     public SpecialEncounters Encounters { get; set; } = new();
 
+    /// <summary>The catch streak of Pokémon met in sight and the chain of hooks on a rod (plan 38 · EX3).</summary>
+    public Overworld.CatchStreak CatchStreak { get; set; } = new();
+
     /// <summary>Sinnoh's berry patches (saved as <see cref="SaveData.Berries"/>).</summary>
     public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
 

@@ -307,6 +307,37 @@ internal sealed partial class FieldLife
         }
     }
 
+    private static readonly Color GlintTint = Rgb(255, 250, 222), ShimmerTint = Rgb(255, 214, 120);
+
+    /// <summary>
+    /// A hidden item glints (plan 38 · EX3; style guide, "Life", "A hidden item's glint"): a small star blinks just over the
+    /// ground of its tile and two sparks hop off it. Brief, and from no farther than three tiles.
+    /// </summary>
+    public void ItemGlint(Map map, int x, int y)
+    {
+        if (!map.InBounds(x, y)) return;
+        float cx = x + 0.5f, cz = y + 0.5f, ground = Relief.At(map, cx, cz);
+        pieces.Add(new Piece(Kind.Star, new Vector3(cx, ground + 0.18f, cz + 0.1f), Now, GlintTint, 0, 0f, 0.55f));
+        foreach (float side in new[] { -0.15f, 0.15f })
+            pieces.Add(new Piece(Kind.Drop, new Vector3(cx + side, ground + 0.15f, cz + 0.12f), Now + 0.1, GlintTint, 0, -side * 0.5f, 1.1f));
+    }
+
+    /// <summary>
+    /// A bright Pokémon in sight shimmers (plan 38 · EX3; style guide, "Wild Pokémon in sight"): warm sparks rise round its card,
+    /// one after another, and a ring spreads under it.
+    /// </summary>
+    public void Shimmer(Map map, int x, int y)
+    {
+        if (!map.InBounds(x, y)) return;
+        float cx = x + 0.5f, cz = y + 0.5f, ground = Relief.At(map, cx, cz);
+        pieces.Add(new Piece(Kind.Ring, new Vector3(cx, ground + 0.02f, cz), Now, ShimmerTint, 0, 0f, 1.6f));
+        for (int i = 0; i < 4; i++)
+        {
+            float side = i % 2 == 0 ? -0.35f : 0.35f;
+            pieces.Add(new Piece(Kind.Drop, new Vector3(cx + side, ground + 0.5f + 0.15f * i, cz + 0.2f), Now + i * 0.22, ShimmerTint, 0, -side * 0.4f, 1.4f));
+        }
+    }
+
     /// <summary>
     /// A honey tree shakes with what the honey drew to it (plan 06 · R13): leaves shaken loose from its crown, more
     /// the harder it shakes.
@@ -491,6 +522,9 @@ internal sealed partial class FieldLife
     private readonly record struct Lit(SceneEffect Kind, int X, int Y, Vector3 Foot, double Born, float Seconds, double Ends, Direction Way, int Seed);
 
     private readonly List<Lit> effects = new();
+
+    /// <summary>Whether an effect of a kind is lit on a tile now (plan 38 · EX5: a rift lit again once a place change has cleared it).</summary>
+    public bool HasEffect(SceneEffect kind, int x, int y) => effects.Exists(e => e.Kind == kind && e.X == x && e.Y == y && e.Ends > Now);
 
     public int EffectCount => effects.Count;
 

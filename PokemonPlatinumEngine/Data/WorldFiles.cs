@@ -711,6 +711,37 @@ public sealed class WorldOutbreaksFile
     public List<OutbreakRow> Rows { get; set; } = new();
 }
 
+/// <summary>
+/// The day's visitor a scan may call up (plan 38 · EX2, <see cref="Overworld.Visitors"/>): a species of another region's
+/// Pokédex, met for an hour in the tall grass of the first of its <see cref="Places"/> with no outbreak that day, at levels
+/// written as the region's own game writes them (mapped as a slot's are in a region the game crossed into).
+/// </summary>
+[JsonConverter(typeof(OneLine<VisitorRow>))]
+public sealed class VisitorRow
+{
+    /// <summary>The day of the week it calls on, by its English name ("Sunday").</summary>
+    [DataRequired] public string Day { get; set; } = "";
+
+    [DataRequired] public string Species { get; set; } = "";
+
+    /// <summary>The places it may be met in, in order: the first with no outbreak that day is its own.</summary>
+    [DataRequired] public List<string> Places { get; set; } = new();
+
+    public int MinLevel { get; set; }
+    public int MaxLevel { get; set; }
+}
+
+/// <summary>
+/// A region's visitors (plan 38 · EX2), written by hand and read strictly: <c>visitors.json</c> beside the region's world
+/// files, a row for each day of the week.
+/// </summary>
+public sealed class WorldVisitorsFile
+{
+    public const string FileName = "visitors.json";
+
+    public List<VisitorRow> Rows { get; set; } = new();
+}
+
 [JsonConverter(typeof(OneLine<SwarmPlace>))]
 public sealed class SwarmPlace
 {

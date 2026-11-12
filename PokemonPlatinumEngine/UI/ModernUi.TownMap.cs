@@ -106,6 +106,12 @@ internal static partial class ModernUi
         if (fly && screen.HasTabs)
             Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("pokegear.keys.shoulders", "townMap.hintRegion"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
         else if (fly) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
+        // The day's report on the item button (plan 38 · EX2): its hint only where the region has one, so a map before the
+        // region's Hall of Fame is drawn as it was
+        else if (screen.ReportShown)
+            Hints(sw - Margin, 44, Hint("shared.keys.z", "townMap.report.hintScan"), Hint("shared.keys.c", "townMap.report.hintMap"), Hint("shared.keys.esc", "shared.hints.close"));
+        else if (screen.HasReport)
+            Hints(sw - Margin, 44, Hint("shared.keys.z", zoom), Hint("shared.keys.c", "townMap.report.hintReport"), Hint("shared.keys.esc", "shared.hints.close"));
         else Hints(sw - Margin, 44, Hint("shared.keys.z", zoom), Hint("shared.keys.esc", "shared.hints.close"));
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
 
@@ -160,6 +166,9 @@ internal static partial class ModernUi
             UiShapes.Circle(c, r * 0.36f, spot.Open ? Color.White : new Color(214, 220, 232, 255));
         }
 
+        // The day's report: a ring and the species over each place of an outbreak and the visitor's (plan 38 · EX2)
+        if (screen.ReportShown && screen.Report is { } report) ReportMarks(state, report, CentreOf, cell, breath);
+
         // The player
         if (state.Here is var (hx, hy))
         {
@@ -196,6 +205,7 @@ internal static partial class ModernUi
         Panel(strip, 26);
         float sy0 = strip.Y + StripHeight / 2f;
         if (fly) UiFonts.DrawCentered(Text.Of("townMap.flyTo"), strip.X + 32, sy0, 30, Ink, UiWeight.ExtraBold);
+        else if (screen.ReportShown) ReportLegend(strip);
         else
         {
             float lx = strip.X + 36;
@@ -226,6 +236,12 @@ internal static partial class ModernUi
             info = new Rectangle(info.X, info.Y + RegionTabHeight + RegionTabGap, info.Width, info.Height - RegionTabHeight - RegionTabGap);
         }
         Panel(info, 34);
+        // The report's page fills the panel with the day's list (plan 38 · EX2)
+        if (screen.ReportShown && screen.Report is { } told)
+        {
+            ReportPanel(info, told);
+            return;
+        }
         float x0 = info.X + 44, wide = info.Width - 88, ty = info.Y + 44;
         var block = screen.Hovered;
         if (block == null)
