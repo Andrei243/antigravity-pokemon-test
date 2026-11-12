@@ -332,6 +332,10 @@ public class ScriptTests
           gamecorner buy
           gamecorner hiddenpower
           gamecorner cointrick
+          gamecorner cards
+          gamecorner prize goldenrod
+          gamecorner pokemon
+          gamecorner pay
           villa catalogue
           villa choose "Table"
           villa is "Piano"
@@ -861,6 +865,11 @@ public class ScriptTests
           gift waiting
           gift open
           gift give
+          stageshow trunk
+          stageshow has
+          stageshow dress
+          stageshow perform
+          stageshow fan fan_4
           gift words GIFT_WORDS
           gift backdrop "Lantern"
           givepokemon "Pichu" 10 in "Cherish Ball" ribbon RIBBON_GIFT_DAY from "the Gift Desk"

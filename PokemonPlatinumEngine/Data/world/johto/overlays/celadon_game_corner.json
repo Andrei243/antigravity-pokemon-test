@@ -1,7 +1,7 @@
 {
-  // The Celadon Game Corner (plan 20 · J15, part k; its tables at work since part o). HeartGold's tables play a card
-  // game this one hasn't: here they are plan 06 · R16b's slot machines (celadon_game_corner.txt), and the clerk sells
-  // coins and hands a Coin Case to whoever has none
+  // The Celadon Game Corner (plan 20 · J15, part k; its tables at work since part o). HeartGold's tables play the card-flip
+  // game, and since plan 42 · PS3 so do ours (decision 3; celadon_game_corner.txt), and the clerk sells coins and hands a
+  // Coin Case to whoever has none
   "interior": "GameHall",
   "area": "celadon_game_corner",
   "bgmTrack": "kanto/game_corner",
@@ -13,7 +13,7 @@
     }
   },
   "read": {
-    "T07SP0101_000+1": "Slots",
-    "T07SP0101_002+1": "Slots"
+    "T07SP0101_000+1": "Cards",
+    "T07SP0101_002+1": "Cards"
   }
 }

@@ -51,3 +51,90 @@ label Fled
   hide meloetta
   text "Meloetta's song faded away behind the stage's door..."
   end
+
+
+# The stage show (plan 42 · PS1, PS2; docs/mechanics/rulings.md, "The stage show"): the owner gives the trunk and a first
+# handful of Props at the first word, the desk (the socialite, person 6) opens the dressing room and the stage, and the
+# three fans of the lobby (persons 1, 4 and 18) each wait with a Prop after a show (their own lines otherwise)
+script Owner
+  face self player
+  stageshow has
+  if result == 1 goto Again
+  say "Ah, a new face! I am the owner of this theater, and every Pokémon deserves a turn in the spotlight."
+  say "Take this trunk. It holds a few Props to start with: hats, glasses, a cape and more."
+  stageshow trunk
+  fanfare keyitem
+  text "{player} received the Prop Trunk and {number} Props!"
+  say "Dress a Pokémon of yours at the desk, then take the stage against our three performers. The crowd decides the rest!"
+  end
+label Again
+  say "A musical is music, dance and costume all at once. Pokémon shine in all three!"
+  say "Win the crowd's eyes with tricks on the beat, and wear Props that suit the show's mood."
+  end
+
+script Desk
+  face self player
+  stageshow has
+  if result == 0 goto NoTrunk
+  choose "Welcome, darling. What will it be today?" "DRESSING ROOM" "TAKE THE STAGE" "NOTHING"
+  if result == 0 goto Dress
+  if result == 1 goto Perform
+  say "Do come back when you feel like shining."
+  end
+label Dress
+  stageshow dress
+  say "Divine! Your Pokémon will remember that look on stage."
+  end
+label Perform
+  say "Splendid! Choose a show and a performer. Press on the beat when the spotlight finds you!"
+  stageshow perform
+  if result == 0 goto NotToday
+  if result == 1 goto Won
+  say "What a performance! The crowd will be talking about it all evening."
+  end
+label Won
+  say "First place! The whole theater was looking at your Pokémon!"
+  end
+label NotToday
+  say "Another time, then. The stage will wait for you."
+  end
+label NoTrunk
+  say "The dressing room is through there. Only performers and their Pokémon may go in, darling."
+  say "Speak to the owner first. He has something for every new performer."
+  end
+
+script Fan1
+  face self player
+  stageshow fan fan_1
+  if result == 1 goto Gift
+  sayown
+  end
+label Gift
+  say "I saw your show! It was wonderful. Please, take this for your next one!"
+  fanfare item
+  text "{player} received a Prop: {thing}!"
+  end
+
+script Fan4
+  face self player
+  stageshow fan fan_4
+  if result == 1 goto Gift
+  sayown
+  end
+label Gift
+  say "You were amazing up there! I made this for your Pokémon. Please wear it on stage!"
+  fanfare item
+  text "{player} received a Prop: {thing}!"
+  end
+
+script Fan18
+  face self player
+  stageshow fan fan_18
+  if result == 1 goto Gift
+  sayown
+  end
+label Gift
+  say "That was a real performance! My Pokémon and I want you to have this."
+  fanfare item
+  text "{player} received a Prop: {thing}!"
+  end

@@ -43,6 +43,13 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     /// <summary>The gift box (plan 40 · GE7) and what its terms read (a test sets the day, the counts, the Halls of Fame).</summary>
     public GiftBox? Gifts { get; set; } = new();
+
+    /// <summary>The stage show's records (plan 42 · PS1, PS2).</summary>
+    public Models.StageShow.ShowRecords? StageShow { get; set; } = new();
+
+    /// <summary>What the dressing room's screen answers (1 a dressing kept), and the place the stage's show ends in (0 backed out).</summary>
+    public int DressingAnswer { get; set; } = 1;
+    public int StagePlace { get; set; } = 1;
     public GiftFacts GiftFacts { get; set; } = new();
 
     /// <summary>The gift the box's screen chooses (from 1), <see cref="GiftBoxAnswers.Words"/> for TELL WORDS, 0 to back out.</summary>
@@ -916,6 +923,19 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         if (screen == ScriptScreen.TownMap) Answer = TownMapOpens ? 1 : 0;
         // The gift box and the trade board (plan 40 · GE7, GE8): what the test says is chosen
         if (screen == ScriptScreen.GiftBox) Answer = GiftChoice;
+        // The theatre (plan 42 · PS1, PS2): a dressing kept, a show ended in the place the test says, its fan set waiting
+        if (screen == ScriptScreen.DressingRoom) Answer = DressingAnswer;
+        if (screen == ScriptScreen.StageShow)
+        {
+            Answer = StagePlace;
+            if (StagePlace > 0 && StageShow != null && Models.StageShow.StageShowDatabase.All.Count > 0)
+            {
+                var show = Models.StageShow.StageShowDatabase.All[0];
+                StageShow.Record(show.Id, 30, StagePlace == 1);
+                var gift = Models.StageShow.ShowFans.GiftAfter(StageShow.Played, 30);
+                StageShow.Owe(gift.Fan, gift.Prop);
+            }
+        }
         if (screen == ScriptScreen.TradeBoard) Answer = BoardChoice;
         // A phrase (plan 08 · P9): the one the test gives is kept under the script's name, as the game's picker keeps it
         if (screen == ScriptScreen.Phrase && PhraseGroups.IsWhole(PhraseChoice) && counter is { Length: > 0 } phrase)

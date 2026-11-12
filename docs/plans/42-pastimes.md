@@ -167,9 +167,9 @@ Every session builds its rules with their tests (`dotnet test --filter`), writes
 
 ## Status
 
-- [ ] PS1 Props and the dressing room
-- [ ] PS2 The stage show
-- [ ] PS3 The card-flip game
+- [x] PS1 Props and the dressing room (2026-11-12; shots sh01 to sh03 and sh05 owed, below)
+- [x] PS2 The stage show (2026-11-12; its shots and `profile`'s stage scene owed, below)
+- [ ] PS3 The card-flip game (2026-11-12: the rules, the screen, Goldenrod's and HeartGold's Celadon's tables and Goldenrod's prize counter built; the lucky number's station and counter owed, below)
 - [ ] PS4 The film studio
 - [ ] PS5 Sports days in Nimbasa's stadiums
 - [ ] PS6 The arcade: a match-three and a picture-logic puzzle
@@ -177,3 +177,13 @@ Every session builds its rules with their tests (`dotnet test --filter`), writes
 - [ ] PS8 A riding race (optional)
 - [ ] PS9 The link rooms' games, played alone (optional)
 - [ ] PS10 A pinball table and a café of orders (optional)
+
+## As built (2026-11-12)
+
+**PS1.** `Data/show-props.json` (40 Props of 28 shapes), `Models/StageShow/ShowProps.cs` (`ShowProp`, `PropSlot`, `PropMood`, `PropTrick`, `ShowPropDatabase`, `PropTrunk`, `Dressing`), `Models/StageShow/ShowRecords.cs` (`ShowRecords`, saved as `SaveData.StageShow`, null while empty: no version raised); `Graphics/ShowPropModels.cs` (every shape sculpted in the SDF kit, one bone, through `SdfCache`, `Unload` when the room or the stage closes) and `Graphics/PropAnchors.cs` (GPU-free: each slot's anchor read off a built model's mesh, `SlotsOf`); `PokemonSprites.Render(..., props)` draws the pieces on the posed bones, and with none draws what it drew. `DressingRoomScreen` (`GameState.DressingRoom`) and `ModernUi.StageShow.cs`; the command `stageshow` (`Op.StageShow`: `trunk`, `has`, `dress`, `perform`, `fan`); the owner, the desk and the fans in `musical_theater.txt` and its overlay. Tests: `StageShowTests` (the table, the dressing's refusals, the trunk, the save), `ShowPropModelTests` (the sculpts, the anchors on every body plan and six generated kinds). The harness's `stage` mode has `sh04_body_<plan>`; the cape's fix after that one run has not been seen in a picture.
+
+**PS2.** `Data/stage-shows.json` (Sunny Side Revue, bright, and Hour of Lanterns, eerie: the user's 25a and 26a), `Models/StageShow/ShowRun.cs` (`ShowRun`, `ShowFans`), `StageShowScreen` (`GameState.StageShow`, the four rendered each frame), the two songs of ours (`Data/music/unova/stage_sunny_side.mml`, 128, 32 bars of 4/4; `stage_lanterns.mml`, 108, 48 bars of 3/4; both clean in `MusicRender`, awaiting the user's ear: WAVs only, no MP3 encoder here). Tests: `StageShowTests` (purity, the eyes summing to a hundred, off the beat, a repeat, the mood's pull, Automatic as Generous, the bounded frame, the fans, the scripts headless).
+
+**PS3.** `Models/CardFlip.cs` (HeartGold's rules, each function naming the original's), `CardFlipScreen` (`GameState.CardFlip`, the pointer) and `ModernUi.CardFlip.cs`; `gamecorner cards`, `prize goldenrod`, `pokemon` and `pay`; Goldenrod's tables, clerk and prize counter (`goldenrod_game_corner.txt`) and HeartGold's Celadon's tables (decision 3); `GameCornerPrizes.Goldenrod` and `GoldenrodPokemon`; `Lottery.WeekOf`, `WeeklyTicket`, `WeeklyPrize`, `RadioLines`. Tests: `CardFlipTests`, `WeeklyDrawTests`.
+
+**Owed**, in order: PS3's lucky number station (`RadioStation` at the enum's end, its `RadioShows` entry and a dial spot, from `Lottery.RadioLines`) and the Radio Tower's counter (`goldenrod_radio_tower_1f.txt` and its overlay, a weekly flag cleared on `Lottery.WeekOf`'s boundary); the shots of PS1 to PS3 (`stage` mode's sh01 to sh03, sh05, sh10 to sh18; a `cards` mode cf01 to cf13), each run twice; `profile`'s stage scene; a trick's piece turned or tossed by its age on the stage (the body cheers, the piece rides still); Onix's back anchor (a serpent's should take the segment nearest the head); the hand and tail pieces may want to be larger; PS4 whole (the user's answers 28a to 33a: The Empty Seat and The Gilded Hour first, then Letters in the Fog and Thunder at Marlowe Pass; posters painted, warm reds).

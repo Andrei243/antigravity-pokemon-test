@@ -122,6 +122,9 @@ public partial class GameEngine
                 return new Pointable(flow.TownMapScreen.HitTest, flow.TownMapScreen.PointAt);
             case GameState.Evolution:
                 return new Pointable(flow.EvolutionScreen.HitTest, flow.EvolutionScreen.PointAt);
+            // The card-flip table (plan 42 · PS3)
+            case GameState.CardFlip:
+                return flow.CardFlipScreen;
             default:
                 return null;
         }

@@ -890,14 +890,15 @@ public static class ScriptParser
             }
             case "gamecorner":
             {
-                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel");
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel", "cards", "pokemon", "pay");
                 bool machine = what is "slots" or "reels";
                 int number = what is "room" or "add" or "take" or "slots" or "reels" or "wheel" ? r.Int(machine ? "a machine, 0 to 11" : "a number of coins") : 0;
                 if (machine && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
                 if (what == "wheel" && number is not (1 or 3)) throw r.Error("Mauville's roulette tables take a wager of 1 or 3 Coins");
                 if (!machine && number < 0) throw r.Error("coins are counted from nought up");
                 // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
-                string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville") : "";
+                string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville")
+                    : what == "prize" && r.PeekWord("goldenrod") ? r.OneOf("goldenrod") : "";
                 return new Instruction { Op = Op.GameCorner, Line = line, Name = what, Number = number, Other = list };
             }
             case "villa":
@@ -1442,6 +1443,16 @@ public static class ScriptParser
                 string backdrop = r.Text("a backdrop's name");
                 if (Data.SuperContestDatabase.Backdrop(backdrop) < 0) throw r.Error($"there is no backdrop '{backdrop}'");
                 return new Instruction { Op = Op.Gift, Line = line, Name = what, Other = backdrop };
+            }
+            // The stage show (plan 42 · PS1, PS2): "stageshow trunk" the owner's gift, "stageshow has" whether it was given,
+            // "stageshow dress" the dressing room, "stageshow perform" a show on the stage, "stageshow fan fan_1" a fan's gift
+            case "stageshow":
+            {
+                string what = r.OneOf("trunk", "has", "dress", "perform", "fan");
+                if (what != "fan") return new Instruction { Op = Op.StageShow, Line = line, Name = what };
+                string fan = r.Word("a fan's key");
+                if (!Models.StageShow.ShowFans.Keys.Contains(fan)) throw r.Error($"'{fan}' is no fan of the theatre's");
+                return new Instruction { Op = Op.StageShow, Line = line, Name = what, Other = fan };
             }
             case "circuit":
             {

@@ -1,17 +1,11 @@
 {
-  // The Goldenrod Game Corner (plan 20 · J5, part b). HeartGold's own has no slot machines to play, and neither has
-  // ours: its people talk, and the prize counter is shut
+  // The Goldenrod Game Corner (plan 20 · J5, part b). Since plan 42 · PS3 its tables play the card-flip game on HeartGold's
+  // rules, the clerk sells coins (and gives a Coin Case), and the prize counter is open (goldenrod_game_corner.txt)
   "interior": "GameHall",
   "area": "goldenrod_game_corner",
   "bgmTrack": "johto/game_corner",
   "people": {
-    "t25sp0101_suit": {
-      "name": "Clerk",
-      "still": true,
-      "dialog": [
-        "Welcome to the Game Corner! I'm afraid the prize counter is closed for now."
-      ]
-    },
+    "t25sp0101_suit": { "name": "Clerk", "still": true, "script": "Clerk" },
     "t25sp0101_gsgentleman": {
       "name": "Gentleman",
       "still": true,
@@ -23,12 +17,12 @@
       "name": "Gentleman",
       "still": true,
       "dialog": [
-        "They say the prizes here include rare Pokémon. If only the counter were open!"
+        "They say the prizes here include rare Pokémon. A Dratini for coins! Imagine that."
       ]
     }
   },
-  "signs": {
-    "T25SP0101_000+1": "Prize Exchange\nClosed for now.",
-    "T25SP0101_001+1": "A list of prizes. Every one of them is marked sold out."
+  "read": {
+    "T25SP0101_000+1": "Prizes",
+    "T25SP0101_001+1": "Cards"
   }
 }

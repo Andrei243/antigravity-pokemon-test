@@ -2425,6 +2425,92 @@
       "claim": "If it matches the ID number of one of your Pokémon, come to the Radio Tower to claim a prize!"
     }
   },
+  "stageShow": {
+    "dressing": {
+      "title": "DRESSING ROOM",
+      "wait": "Getting ready...",
+      "choose": "WHO WILL PERFORM?",
+      "nothing": "(nothing)",
+      "trunk": "PROP TRUNK",
+      "takeOff": "Take it off",
+      "moods": "MOODS WORN"
+    },
+    "slot": {
+      "head": "HEAD",
+      "face": "FACE",
+      "neck": "NECK",
+      "back": "BACK",
+      "hand": "HAND",
+      "tail": "TAIL"
+    },
+    "mood": {
+      "bright": "BRIGHT",
+      "dashing": "DASHING",
+      "gentle": "GENTLE",
+      "eerie": "EERIE"
+    },
+    "hint": {
+      "choose": "Choose",
+      "leave": "Leave",
+      "wear": "Wear",
+      "back": "Back",
+      "bow": "Take a bow"
+    },
+    "show": {
+      "sunnySideRevue": "Sunny Side Revue",
+      "hourOfLanterns": "Hour of Lanterns"
+    },
+    "stage": {
+      "you": "YOU",
+      "yourCue": "YOUR CUE! PRESS ON THE BEAT!",
+      "chooseShow": "WHICH SHOW?",
+      "choosePerformer": "WHO TAKES THE STAGE?",
+      "results": "THE CROWD'S VERDICT",
+      "eyes": "{eyes}% of eyes"
+    },
+    "prop": {
+      "topHatBlack": "Black Top Hat",
+      "topHatWhite": "White Top Hat",
+      "paperCrownGold": "Gold Paper Crown",
+      "paperCrownSilver": "Silver Paper Crown",
+      "flowerCrown": "Flower Crown",
+      "pointedHat": "Pointed Hat",
+      "beretRed": "Red Beret",
+      "beretYellow": "Yellow Beret",
+      "headBowPink": "Pink Bow",
+      "headBowOrange": "Orange Bow",
+      "tiara": "Tiara",
+      "roundGlasses": "Round Glasses",
+      "starGlasses": "Star Glasses",
+      "masqueradeMask": "Masquerade Mask",
+      "monocle": "Monocle",
+      "bowTieRed": "Red Bow Tie",
+      "bowTieTeal": "Teal Bow Tie",
+      "scarfYellow": "Yellow Scarf",
+      "scarfMint": "Mint Scarf",
+      "ruff": "Ruff",
+      "pearlString": "String of Pearls",
+      "bellCollar": "Bell Collar",
+      "spiritBeads": "Spirit Beads",
+      "shortCapeRed": "Red Cape",
+      "shortCapeNight": "Night Cape",
+      "paperWings": "Paper Wings",
+      "backBow": "Big Back Bow",
+      "paperLanternPack": "Paper Lantern",
+      "foldingFan": "Folding Fan",
+      "baton": "Baton",
+      "handBell": "Hand Bell",
+      "starWand": "Star Wand",
+      "parasol": "Parasol",
+      "handLantern": "Hand Lantern",
+      "cane": "Cane",
+      "tambourine": "Tambourine",
+      "tailRibbonPink": "Pink Tail Ribbon",
+      "tailRibbonBlue": "Blue Tail Ribbon",
+      "tailBell": "Tail Bell",
+      "tailCharm": "Tail Charm"
+    }
+  },
   "slots": {
     "machine": "MACHINE {number}",
     "replay": "REPLAY",

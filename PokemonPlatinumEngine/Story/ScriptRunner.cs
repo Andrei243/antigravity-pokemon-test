@@ -445,6 +445,8 @@ public sealed partial class ScriptRunner
         Op.Plaza => i.Name is "pitch" or "shop" or "battle",
         // The Week's Work: the board is a screen the player reads; the rest only counts and pays (plan 41 · EG6)
         Op.Missions => i.Name == "open",
+        // The stage show: the dressing room and the stage are the player's; the trunk and a fan's gift are as items given (plan 42 · PS1, PS2)
+        Op.StageShow => i.Name is "dress" or "perform",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1653,6 +1655,11 @@ public sealed partial class ScriptRunner
             // The gift box (plan 40 · GE7)
             case Op.Gift:
                 GiftCommand(i);
+                break;
+
+            // The stage show (plan 42 · PS1, PS2)
+            case Op.StageShow:
+                StageShowCommand(i);
                 break;
 
             default:

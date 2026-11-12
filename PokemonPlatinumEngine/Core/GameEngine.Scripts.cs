@@ -1009,6 +1009,7 @@ public partial class GameEngine
         public Pokedex? Pokedex => game.flow.Pokedex;
         // The gift box and the trade board (plan 40 · GE7, GE8)
         public GiftBox? Gifts => game.flow.Gifts;
+        public Models.StageShow.ShowRecords? StageShow => game.flow.StageShow;
         public GiftFacts GiftFacts => game.GiftFactsNow();
         public TradeBoard? Board => game.flow.Board;
         public IReadOnlyList<string> RegionsEntered => game.RegionsEnteredNow();
@@ -1354,6 +1355,13 @@ public partial class GameEngine
                 // The gift box and the trade board (plan 40 · GE7, GE8)
                 case ScriptScreen.GiftBox:
                     game.OpenGiftBox();
+                    break;
+                // The theatre's dressing room and stage (plan 42 · PS1, PS2)
+                case ScriptScreen.DressingRoom:
+                    game.OpenDressingRoom();
+                    break;
+                case ScriptScreen.StageShow:
+                    game.OpenStageShow();
                     break;
                 case ScriptScreen.TradeBoard:
                     game.OpenTradeBoard(counter ?? game.Here.Id);

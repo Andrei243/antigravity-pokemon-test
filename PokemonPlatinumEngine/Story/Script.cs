@@ -203,6 +203,8 @@ public enum Op
     Plaza,
     // The Week's Work, the hub's board of missions (plan 41 · EG6): the board read and opened, a timed mission begun, the rewards claimed
     Missions,
+    // The stage show (plan 42 · PS1, PS2): the owner's trunk, the dressing room, a show on the stage, a fan's gift
+    StageShow,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

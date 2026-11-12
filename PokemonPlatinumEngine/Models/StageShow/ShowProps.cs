@@ -29,7 +29,7 @@ public sealed class ShowProp
     [DataRequired] public string Shape { get; set; } = "";
 
     /// <summary>The key of the piece's name in <c>ui.json</c>.</summary>
-    public string NameKey => "stageShow.prop." + ShowPropDatabase.KeyOf(Id);
+    public string NameKey { get { string key = ShowPropDatabase.KeyOf(Id); return $"stageShow.prop.{key}"; } }
 }
 
 public sealed class ShowPropsFile

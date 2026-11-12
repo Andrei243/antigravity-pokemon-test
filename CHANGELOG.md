@@ -5,6 +5,8 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 ### Added
+- Nimbasa City's theatre has a show at last. Its owner hands you a trunk of Props, and the desk lets you dress a Pokémon of your team in hats, glasses, scarves, capes, fans and tail ribbons, worn on the Pokémon itself, then take the stage in Sunny Side Revue or Hour of Lanterns against three performers. Press on the beat when the spotlight finds you to win the crowd's eyes; Props that suit the show's mood draw them further. After a show, a fan in the lobby waits with a new Prop.
+- Goldenrod's Game Corner is open: its tables play a card-flip game of guessing which cards hide numbers and which a cracked tile, its clerk sells coins, and its prize counter trades TMs, held items, Abra, Ekans and Dratini for them. HeartGold's Celadon Game Corner plays the same cards.
 - The hub's halls are open. The Laurel Gallery keeps every region's Hall of Fame: a plinth for each region you've crowned, each showing that region's first team and every team since. The PC's Hall of Fame now has a tab for each region.
 - The Laurel Circuit: at the Gallery's desk you can go back to every League you've won and fight its Elite Four and Champion again, all at one level, then face every Champion in a row in the Laurel Court. Each circuit you win makes the next one harder and earns a title and a medal.
 - Looker has opened the Open Door Agency in the hub, half in disguise as a clerk. He takes a case in each region you've crowned (Sinnoh, Kanto, Johto, Hoenn, Unova and Kalos): find the clues, tell him what they mean, and face the culprit. The cases show on the requests page.

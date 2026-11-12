@@ -11251,3 +11251,33 @@ an Ultra Ball, a PP Up, an Exp. Share, a Max Revive and a Master Ball (items 2, 
 - `Lottery.WeeklyPrize` is HeartGold's list, which is `Prize`'s. Jubilife's `TicketOf`, `Matching`, `Check` and `Prize` are
   unchanged, and `Matching` and `Check` serve both.
 - The radio's three lines (`Lottery.RadioLines`, `luckyDraw.radio.*`) are ours.
+
+## The stage show (2026-11-12, plan 42 · PS1, PS2)
+
+Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and
+Hour of Lanterns, the fans' own lines kept and their gifts Props). Nimbasa's theatre lobby is Black 2's; its owner (person
+11) gives the Prop Trunk at the first word, its desk (the socialite, person 6) opens the dressing room and the stage, and
+its three fans (persons 1, 4 and 18) each wait with a Prop after a show.
+
+- **Props** (`Data/show-props.json`, 40 pieces of 28 shapes): one to a slot, four at most (`Dressing`); nine of a piece at
+  most in the trunk (`PropTrunk`). A slot the body's model lacks is not offered (`PropAnchors.SlotsOf`). Props are worn only
+  in the dressing room and on the stage; nothing of them changes the Pokémon. A Pokémon's last dressing is kept by its id.
+- **The owner's handful** (ours): a black top hat, a pink bow, a yellow scarf, round glasses, a night cape, a folding fan
+  and a tail bell, one of each, so every mood and every slot has a piece.
+- **A show** (`ShowRun`, thirty frames a second, the rivals' draws on the show's own generator from its seed): four on the
+  stage, the player's Pokémon first and the show's three after; each has the spotlight for three cues (`stage-shows.json`).
+  In a cue each beat may take one trick: the player's is a press within 0.1 s of the beat (doubled by a timing assist;
+  Automatic counts as Generous and presses nothing), a rival's a draw out of a hundred under its knack on the beat's own
+  frame. A press off the beat earns nothing.
+- **The crowd's eyes** (ours): a share of a hundred among the four, 25 each at the curtain. A trick on the beat is done with
+  the performer's next piece in turn (slot by slot) and draws 4 eyes, 7 for a piece of the show's mood, 2 with no piece;
+  the same trick as the performer's last draws half, rounded up. Each eye is taken from whoever of the others has most
+  (the first on the bill on a tie), never below nought, so the four always sum to a hundred.
+- **The score** (ours): the eyes at the curtain and 5 for every piece worn of the show's mood. Places by score, then eyes,
+  then the order on the bill.
+- **The fans' gifts** (`ShowFans`, ours, nothing drawn): after the nth show the fans take turns (persons 1, 4, 18, ...),
+  each with a Prop of a band by the score (under 30, 30 to 44, 45 and over) picked by (n − 1 + score) round the band's list.
+  A fan given a Prop the trunk holds nine of goes on waiting.
+- **What is not taken**: no stage, prop, song, performer, judge, mascot or word of Black and White's; the two songs are
+  ours (Sunny Side Revue, a brass shuffle at 128, 32 bars of 4/4; Hour of Lanterns, a music-box waltz at 108, 48 bars of
+  3/4), awaiting the user's ear.

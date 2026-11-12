@@ -1,6 +1,7 @@
 {
-  // The Musical Theater's lobby in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. The Pokémon Musical
-  // itself (the dressing room, the stage and its Props) is left out, so the café's waitresses (0, 15, 16) and the
+  // The Musical Theater's lobby in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. Since plan 42 · PS1 and
+  // PS2 the owner (11) gives the Prop Trunk, the desk (6) opens the dressing room and the stage, and the three fans (1, 4,
+  // 18) each wait with a Prop after a show (musical_theater.txt); otherwise the café's waitresses (0, 15, 16) and the
   // lobby's people only talk; a few of the musical's fans who wander the lobby on a show day (1, 4, 18) are shown
   // always
   "area": "musical_theater",
@@ -22,24 +23,28 @@
       "dialog": [ "Shh! The owner is rehearsing a new number upstairs. He says it will be his best ever." ]
     },
     "1": {
+      "script": "Fan1",
       "name": "Fan",
       "npcType": "backers_m",
       "hiddenBy": "",
       "dialog": [ "I've seen every musical this season. My favourite was the one with a Lillipup in a top hat!" ]
     },
     "4": {
+      "script": "Fan4",
       "name": "Girl",
       "npcType": "lass",
       "hiddenBy": "",
       "dialog": [ "When I grow up, I want to dress Pokémon for the stage. Ribbons, crowns, glasses, the lot!" ]
     },
     "18": {
+      "script": "Fan18",
       "name": "Battle Girl",
       "npcType": "battle_girl",
       "hiddenBy": "",
       "dialog": [ "My Pokémon battles hard all week. On Sundays it dances. Everyone needs a hobby!" ]
     },
     "6": {
+      "script": "Desk",
       "name": "Socialite",
       "npcType": "socialite",
       "dialog": [ "The dressing room is through there. Only performers and their Pokémon may go in, darling." ]
@@ -50,6 +55,7 @@
       "dialog": [ "One, two, spin! I'm practising my steps. The Pokémon on stage can't be the only ones who dance!" ]
     },
     "11": {
+      "script": "Owner",
       "name": "Gentleman",
       "npcType": "gentleman",
       "dialog": [ "I am the owner of this theater. A musical is music, dance and costume all at once. Pokémon shine in all three!" ]
@@ -86,7 +92,7 @@
     { "id": "meloetta", "name": "Meloetta", "npcType": "Pokemon", "species": "Meloetta", "x": 14, "y": 3, "facing": "Down", "script": "Meloetta", "shownBy": "FLAG_UNOVA_MELOETTA_SINGS", "hiddenBy": "FLAG_UNOVA_FOUGHT_MELOETTA" }
   ],
   "signs": {
-    "12": "Pokémon Musical\nToday's show: closed for rehearsals",
+    "12": "Pokémon Musical\nToday's shows: Sunny Side Revue and Hour of Lanterns",
     "14": "Pokémon Musical\nDress up your Pokémon and take the stage!"
   }
 }
