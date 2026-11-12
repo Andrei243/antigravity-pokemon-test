@@ -669,6 +669,17 @@ public static class ScriptParser
             case "starter":
                 return new Instruction { Op = Op.Starter, Line = line };
             case "wardrobe":
+                // The salon's chair and the dye house's counter (plan 43 · LF3): bare words, the dye house with its boutique's key
+                if (r.PeekIs("salon"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Wardrobe, Line = line, Name = Instruction.SalonCounter };
+                }
+                if (r.PeekIs("dye"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Wardrobe, Line = line, Name = Instruction.DyeCounter + r.Text("a boutique's key") };
+                }
                 return new Instruction { Op = Op.Wardrobe, Line = line, Name = r.More ? r.Text("a boutique's key") : "" };
             case "shop":
                 return new Instruction { Op = Op.Shop, Line = line, Name = r.More ? r.Text("a counter's key") : "" };
@@ -721,7 +732,11 @@ public static class ScriptParser
             }
             // Cameron's photographs (plan 20, part q)
             case "photo":
-                return new Instruction { Op = Op.Photo, Line = line, Name = r.OneOf("take", "album", "count") };
+            {
+                // The photo book and its spots (plan 43 · LF4): `photo book`, `photo spot "<id>"`, `photo booked`, how many it holds
+                string photoWord = r.OneOf("take", "album", "count", "book", "spot", "booked");
+                return new Instruction { Op = Op.Photo, Line = line, Name = photoWord, Other = photoWord == "spot" ? r.Text("a photo spot's id") : null };
+            }
             case "chooseitem":
                 return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch", "gift") };
             case "swarms":

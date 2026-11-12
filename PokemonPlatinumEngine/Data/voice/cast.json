@@ -4341,6 +4341,10 @@
         "accent": "en-us"
       }
     },
+    "dyer": {
+      "note": "first spoken at JubilifeBoutique.txt(27)",
+      "provisional": true
+    },
     "dylan": {
       "note": "first spoken at phone.txt(280)",
       "brief": {
@@ -10803,6 +10807,7 @@
     "Drayden": "drayden",
     "Dulse": "dulse",
     "Dusty": "dusty",
+    "Dyer": "dyer",
     "Dylan": "dylan",
     "Edwin": "edwin",
     "Elder": "elder",

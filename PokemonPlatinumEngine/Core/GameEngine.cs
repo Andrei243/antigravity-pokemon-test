@@ -161,7 +161,13 @@ public enum GameState
     /// <summary>The theatre's stage, a script's <c>stageshow perform</c> waiting on it (plan 42 · PS2).</summary>
     StageShow,
     /// <summary>A card-flip table, a script's <c>gamecorner cards</c> waiting on it (plan 42 · PS3).</summary>
-    CardFlip
+    CardFlip,
+    /// <summary>The card designer, opened from the Trainer Card (plan 43 · LF1).</summary>
+    CardDesign,
+    /// <summary>The salon's chair and the dye house's counter, a script's <c>wardrobe salon</c> or <c>wardrobe dye</c> waiting on it (plan 43 · LF3).</summary>
+    Salon,
+    /// <summary>The photo book, a script's <c>photo book</c> waiting on it (plan 43 · LF4).</summary>
+    PhotoBook
 }
 
 public partial class GameEngine
@@ -508,6 +514,7 @@ public partial class GameEngine
         flow.Training.Clear();
         flow.DexNav = new();
         flow.Photos.Clear();
+        LoadTheLife(null);
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
         flow.PokeblockCase.Clear();
@@ -787,6 +794,7 @@ public partial class GameEngine
         flow.Training.Load(save.Training);
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
+        LoadTheLife(save);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
         flow.PokeblockCase.Restore(save.Pokeblocks);
@@ -1017,6 +1025,8 @@ public partial class GameEngine
             Training = flow.Training.ToSave(),
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
+            CardDesign = CardDesignToSave(),
+            PhotoBook = flow.PhotoBook.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
             Pokeblocks = flow.PokeblockCase.Count > 0 ? flow.PokeblockCase.ToSaved() : null,
@@ -1589,7 +1599,13 @@ public partial class GameEngine
                 break;
             case GameState.TrainerCard:
                 flow.TrainerCardScreen.Update(dt);
-                if (!flow.TrainerCardScreen.IsActive) flow.State = GameState.Overworld;
+                // The item button on the card opens the designer (plan 43 · LF1)
+                if (flow.TrainerCardScreen.TakeDesignRequest()) { OpenCardDesigner(); break; }
+                if (!flow.TrainerCardScreen.IsActive)
+                {
+                    flow.State = GameState.Overworld;
+                    ForgetCardFigure();
+                }
                 break;
             case GameState.SaveMenu:
                 flow.SaveScreen.Update(dt);
@@ -1685,6 +1701,15 @@ public partial class GameEngine
                     // The place's own song again after a course's (Data/athlon.json's music)
                     if (AthlonData.File.Music.Length > 0 && flow.AthlonScreen.Phase != UI.AthlonPhase.Records) PlayFieldMusic();
                 }
+                break;
+            case GameState.CardDesign:
+                UpdateCardDesigner(dt);
+                break;
+            case GameState.Salon:
+                UpdateSalon(dt);
+                break;
+            case GameState.PhotoBook:
+                UpdatePhotoBook(dt);
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -3109,7 +3134,8 @@ public partial class GameEngine
                 .Concat(flow.Story.Has("FLAG_GATHERING_DONE") ? new[] { new CardTitle(1, Text.Of("laurelCircuit.keepTitle")) } : Array.Empty<CardTitle>())
                 .Concat(MasterTitles.Won(flow.Story).Select(t => new CardTitle(t.Number, MasterTitles.Title(t.Species)))).ToList(),
             TitlesOf = MasterTitles.Total,
-            LatestTitle = MasterTitles.Latest(flow.Story) is { } latest ? MasterTitles.Title(latest) : ""
+            LatestTitle = CardTitleNow(),
+            Design = CardFaceNow()
         };
     }
 
@@ -3321,6 +3347,20 @@ public partial class GameEngine
         {
             flow.IntroScreen.Render(renderContext);
         }
+        else if (scene == GameState.PhotoBook)
+        {
+            // The page's pictures loaded, the rest let go (plan 43 · LF4)
+            KeepThePageLoaded();
+        }
+        else if (scene == GameState.Salon)
+        {
+            flow.SalonScreen.Render(renderContext);
+        }
+        else if (scene is GameState.TrainerCard or GameState.CardDesign)
+        {
+            // The designed card's posed figure (plan 43 · LF1); nothing for a card never designed
+            RenderCardFigure();
+        }
         else if (scene == GameState.Wardrobe)
         {
             flow.WardrobeScreen.Render(renderContext);
@@ -3435,6 +3475,16 @@ public partial class GameEngine
                 break;
             case GameState.TrainerCard:
                 flow.TrainerCardScreen.Draw(VirtualWidth, VirtualHeight, TrainerCardNow());
+                break;
+            case GameState.Salon:
+                flow.SalonScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
+                break;
+            case GameState.PhotoBook:
+                ModernUi.DrawPhotoBook(VirtualWidth, VirtualHeight, flow.PhotoBookScreen, BookPicture);
+                break;
+            case GameState.CardDesign:
+                if (PrintingCard) DrawCardForPrint();
+                else flow.CardDesignScreen.Draw(VirtualWidth, VirtualHeight, CardFaceNow() ?? EmptyCardFace);
                 break;
             case GameState.SaveMenu:
                 DrawTheField();
@@ -3691,6 +3741,8 @@ public partial class GameEngine
         TakeDevShot();
         TakeReportScreen();
         TakeScreenshot();
+        TakeCardPrint();
+        TakeBookPhoto();
         FrameProfiler.Lap(FrameSection.Interface);
         SampleTheFrame();
 

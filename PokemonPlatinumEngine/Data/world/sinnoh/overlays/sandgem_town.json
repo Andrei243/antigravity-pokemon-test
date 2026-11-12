@@ -1,5 +1,8 @@
 {
   "area": "sandgem_town",
+  // The photo spot's plate (plan 43 · LF4), read from the tile before it
+  "readAt": [ { "x": 175, "z": 848, "script": "PhotoSpot" } ],
+  "props": [ { "type": "PhotoSpot", "x": 175, "y": 848, "width": 1, "depth": 1 } ],
   "bgmTrack": "sinnoh/sandgem",
   "trees": "Round",
   "architecture": "Plaster",

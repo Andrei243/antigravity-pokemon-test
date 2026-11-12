@@ -1,5 +1,7 @@
 {
   "area": "twinleaf_town",
+  // The photo spot's plate (plan 43 · LF4), read from the tile before it
+  "readAt": [ { "x": 113, "z": 889, "script": "PhotoSpot" } ],
   "bgmTrack": "sinnoh/twinleaf",
   "trees": "Pine",
   "architecture": "Timber",
@@ -46,6 +48,8 @@
   "props": [
     { "type": "LampPost", "x": 109, "y": 876, "width": 1, "depth": 1 },
     { "type": "LampPost", "x": 114, "y": 880, "width": 1, "depth": 1 },
-    { "type": "Bench", "x": 120, "y": 880, "width": 2, "depth": 1 }
+    { "type": "Bench", "x": 120, "y": 880, "width": 2, "depth": 1 },
+    // The photo spot's plate (plan 43 · LF4)
+    { "type": "PhotoSpot", "x": 113, "y": 889, "width": 1, "depth": 1 }
   ]
 }

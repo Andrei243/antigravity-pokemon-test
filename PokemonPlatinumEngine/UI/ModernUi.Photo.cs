@@ -51,6 +51,13 @@ internal static partial class ModernUi
             case PhotoRow.Filter:
                 var filter = p.Filter;
                 return Text.Of($"photo.filter.{filter}");
+            // The player's pose and face (plan 43 · LF4)
+            case PhotoRow.Pose:
+                if (p.Pose is not { } pose) return Text.Of("photo.pose.none");
+                return Text.Of($"cardDesign.pose.{pose}");
+            case PhotoRow.Face:
+                var face = p.Face;
+                return Text.Of($"cardDesign.face.{face}");
             default:
                 var frame = p.Frame;
                 return Text.Of($"photo.frame.{frame}");
@@ -63,7 +70,7 @@ internal static partial class ModernUi
     /// </summary>
     public static void PhotoPanel(PhotoView p)
     {
-        var rows = Enum.GetValues<PhotoRow>();
+        var rows = p.Rows;
         var names = new string[rows.Length];
         var values = new string[rows.Length];
         var here = new bool[rows.Length];
@@ -74,7 +81,7 @@ internal static partial class ModernUi
             values[i] = PhotoValue(p, rows[i]);
             here[i] = rows[i] != PhotoRow.Weather || p.WeatherAllowed;
         }
-        PhotoRows(names, values, here, p.PanelOpen, (int)p.Row);
+        PhotoRows(names, values, here, p.PanelOpen, Array.IndexOf(rows, p.Row));
     }
 
     /// <summary>The panel's rows, the field's and the battle's (plan 12 · Q17): names, values, whether each can change here.</summary>
@@ -166,7 +173,7 @@ internal static partial class ModernUi
             values[i] = BattlePhotoValue(p, rows[i]);
             here[i] = true;
         }
-        PhotoRows(names, values, here, p.PanelOpen, (int)p.Row);
+        PhotoRows(names, values, here, p.PanelOpen, Array.IndexOf(rows, p.Row));
     }
 
     /// <summary>The Cinema frame over a battle's stage: the camera kit's bars, 120 high and black.</summary>

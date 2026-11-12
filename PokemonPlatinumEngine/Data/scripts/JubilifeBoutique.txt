@@ -11,3 +11,22 @@ script Clerk
   speaker "Clerk"
   say "Thank you for stopping by! Do come again."
   end
+
+
+# The salon's chair beside the counter (plan 43 · LF3): the cut, the hair's colour, the eyes and the skin, each paid at the chair.
+script Stylist
+  speaker "Stylist"
+  say "Welcome to the chair! A new cut, a new colour, new eyes or a new tone: sit down and we'll find your look."
+  wardrobe salon
+  speaker "Stylist"
+  say "There! Every mirror in Jubilife will want a second look."
+  end
+
+# The dye house's counter (plan 43 · LF3): a garment owned, a dye, the fee and the dye's berry.
+script Dyer
+  speaker "Dyer"
+  say "A garment of yours, a berry and a little money, and I'll dye it any colour on my shelf."
+  wardrobe dye "jubilife"
+  speaker "Dyer"
+  say "Hang it to dry in the sun and it'll keep its colour for good."
+  end

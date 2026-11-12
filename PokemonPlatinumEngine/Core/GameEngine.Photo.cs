@@ -42,6 +42,7 @@ public partial class GameEngine
     internal void ClosePhoto()
     {
         if (photo == null) return;
+        LetGoOfThePose(photo);
         photo = null;
         barsWanted = false;
         zoomAsked = 1f;
@@ -71,8 +72,9 @@ public partial class GameEngine
         }
         else if (InputManager.IsActionPressed(GameAction.Confirm))
         {
-            // The picture is the next frame drawn, with nothing of the interface in it
+            // The picture is the next frame drawn, with nothing of the interface in it; a copy goes in the photo book (plan 43 · LF4)
             AskForScreenshot();
+            bookPhotoWanted = true;
         }
         else if (InputManager.IsActionPressed(GameAction.Menu))
         {
@@ -113,6 +115,8 @@ public partial class GameEngine
     /// <summary>Hands the photo to the camera kit: where it looks, its lens and the cinema bars.</summary>
     private void KeepThePhotoInView(PhotoView p)
     {
+        // The player's pose and face for the picture (plan 43 · LF4)
+        PoseForThePhoto(p);
         var rig = world.Camera;
         rig.Pan(p.Spot.X, p.Spot.Y, 0.01f);
         // Asked once for each new factor: asked every frame, the ease would begin again and never arrive

@@ -2224,6 +2224,17 @@ public sealed partial class ScriptRunner
             case "count":
                 Result = album?.Count ?? 0;
                 break;
+            // The photo book (plan 43 · LF4)
+            case "book":
+                host.Open(ScriptScreen.PhotoBook, Subject);
+                break;
+            case "booked":
+                Result = host.PhotoBook?.Count ?? 0;
+                break;
+            case "spot":
+                if (host.PhotoAtSpot(i.Other ?? "")) afterBusy = () => Result = host.Answer;
+                else Result = 0;
+                break;
         }
     }
 

@@ -136,6 +136,10 @@ internal static partial class Landmarks
             case PropType.Billboard:
                 kit.Sprite(kit.Face("billboard", 48, 60, PaintBillboard), w / 2f, d / 2f + 4);
                 return true;
+            case PropType.PhotoSpot:
+                // A photo spot's plate (plan 43 · LF4): a low post with a camera on its face
+                kit.Sprite(kit.Face("photospot", 26, 30, PaintPhotoSpot), w / 2f, d / 2f + 4);
+                return true;
             case PropType.Outcrop:
             {
                 int width = Math.Min(w - 6, 480), height = Rows(kit, MathF.Min(prop.Height, 8f), 60, 130);
@@ -1254,6 +1258,23 @@ internal static partial class Landmarks
         c.Rect(10, 11, 28, 2, DarkWood.Base);
         c.Rect(10, 16, 22, 2, DarkWood.Base);
         c.Rect(10, 21, 16, 2, DarkWood.Base);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// A photo spot's plate (plan 43 · LF4; style guide, "Props"): a short dark post and on it a cream plate tilted to
+    /// the eye with a camera drawn on it in the post's wood, a red dot for its lamp.
+    /// </summary>
+    public static void PaintPhotoSpot(PixelCanvas c)
+    {
+        c.Rect(11, 16, 4, 14, DarkWood.Base);
+        c.VLine(11, 16, 14, DarkWood.Light);
+        Pix.Raised(c, 1, 1, 24, 17, DarkWood);
+        Pix.Raised(c, 3, 3, 20, 13, Tone.Of(236, 226, 196));
+        c.Rect(7, 7, 12, 7, DarkWood.Base);
+        c.Rect(10, 5, 5, 2, DarkWood.Base);
+        c.Rect(11, 9, 4, 3, Tone.Of(236, 226, 196).Base);
+        c.Rect(16, 8, 2, 1, Tone.Of(214, 70, 70).Base);
         Pix.Outline(c);
     }
 

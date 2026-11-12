@@ -85,5 +85,57 @@
     { "id": "snow", "name": "Snow Set", "garments": [ "navy_beret", "winter_coat", "black_trousers", "black_boots" ] },
     { "id": "beret", "name": "Beret Set", "garments": [ "plum_beret", "sunny_tee", "red_skirt", "white_sneakers", "pink_backpack" ], "for": "Girl" },
     { "id": "rose", "name": "Rose Set", "garments": [ "mint_beret", "rose_coat", "navy_skirt", "white_sneakers" ], "for": "Girl" }
+  ],
+  // The salon (plan 43 · LF3; style guide, "Characters", "Parts"): the cuts it offers (HairCut by name, every cut both
+  // kits draw), the hair's eight colours, the eyes' six and the six skin tones, each named in ui.json's salon section
+  "hair": [ "Short", "Spiky", "Long", "Swept", "Afro", "Bun", "Braids", "Bunches", "Bowl", "Ponytail", "Curls", "Bald" ],
+  "hairColours": [
+    { "id": "black", "color": "#2a2430" },
+    { "id": "brown", "color": "#5a3c2c" },
+    { "id": "chestnut", "color": "#8a4e2c" },
+    { "id": "blond", "color": "#e0bc6c" },
+    { "id": "copper", "color": "#c4622e" },
+    { "id": "ash", "color": "#a8a4ac" },
+    { "id": "plum", "color": "#6e3c78" },
+    { "id": "teal", "color": "#2e7c80" }
+  ],
+  "eyeColours": [
+    { "id": "dark", "color": "#28243c" },
+    { "id": "brown", "color": "#6a3e22" },
+    { "id": "hazel", "color": "#86702e" },
+    { "id": "green", "color": "#3a8050" },
+    { "id": "blue", "color": "#3a64b8" },
+    { "id": "grey", "color": "#68707e" }
+  ],
+  "skinTones": [
+    { "id": "fair", "color": "#fde6d2" },
+    { "id": "light", "color": "#f4d0b0" },
+    { "id": "warm", "color": "#e2ae86" },
+    { "id": "tan", "color": "#c88e62" },
+    { "id": "brown", "color": "#9a6442" },
+    { "id": "deep", "color": "#6e452e" }
+  ],
+  // What the salon's chair and the dye house's counter ask
+  "prices": { "cut": 2000, "colour": 1500, "eyes": 1000, "skin": 1000, "dye": 800 },
+  // The dye house (plan 43 · LF3): sixteen dyes of ours, each a colour, an accent and the berry it is made with, which
+  // the dyer takes with the fee. A dyed garment is the garment's id and the dye's (striped_tee~mint). Teal is no
+  // counter's: it is a café's gift (plan 43 · LF9)
+  "dyes": [
+    { "id": "cherry", "color": "#d23c48", "accent": "#f8ecec", "berry": "Cheri Berry" },
+    { "id": "coral", "color": "#ec7462", "accent": "#fff1ea", "berry": "Razz Berry" },
+    { "id": "peach", "color": "#f4a886", "accent": "#fff4ec", "berry": "Pecha Berry" },
+    { "id": "sunflower", "color": "#f0c43a", "accent": "#fff8de", "berry": "Aspear Berry" },
+    { "id": "lemon", "color": "#f2e478", "accent": "#5a5a3a", "berry": "Nomel Berry" },
+    { "id": "leaf", "color": "#58a660", "accent": "#eaf4e4", "berry": "Rawst Berry" },
+    { "id": "mint", "color": "#8cd4b6", "accent": "#f4fbf6", "berry": "Lum Berry" },
+    { "id": "teal", "color": "#2c8a8a", "accent": "#e6f6f4", "berry": "Aguav Berry", "sold": false },
+    { "id": "sky", "color": "#6ab6e6", "accent": "#eef6fc", "berry": "Oran Berry" },
+    { "id": "navy", "color": "#2e3e78", "accent": "#dadff2", "berry": "Bluk Berry" },
+    { "id": "violet", "color": "#7e5cc8", "accent": "#f0eaf8", "berry": "Chesto Berry" },
+    { "id": "plum", "color": "#7a3c78", "accent": "#f2d468", "berry": "Wiki Berry" },
+    { "id": "rose", "color": "#e48aa6", "accent": "#fdf2f6", "berry": "Persim Berry" },
+    { "id": "cream", "color": "#f2e6c8", "accent": "#8a6a44", "berry": "Nanab Berry" },
+    { "id": "charcoal", "color": "#3a3a44", "accent": "#d0d2dc", "berry": "Durin Berry" },
+    { "id": "snow", "color": "#f6f6f8", "accent": "#7c8296", "berry": "Pinap Berry" }
   ]
 }

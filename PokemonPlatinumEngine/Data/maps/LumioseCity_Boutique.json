@@ -119,6 +119,14 @@
       "dialog": [
         "The berets here are the height of fashion. I can never choose just one colour!"
       ]
+    },
+    {
+      "name": "Dyer",
+      "npcType": "Lady",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "script": "Dyer"
     }
   ],
   "wildEncounters": []

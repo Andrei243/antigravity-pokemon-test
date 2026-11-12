@@ -78,5 +78,32 @@ public sealed class Wardrobe
         foreach (string id in bought ?? Enumerable.Empty<string>()) Give(id);
         if (worn == null) return;
         foreach (var (slot, garment) in worn.Garments()) Wear(slot, garment);
+        Restyle(worn);
+    }
+
+    /// <summary>
+    /// The salon's work (plan 43 · LF3): the cut, the hair's colour, the eyes and the skin of <paramref name="style"/>
+    /// put on what is worn, each one the data doesn't know (or null) being the look's own.
+    /// </summary>
+    public void Restyle(Outfit style) => Worn = Worn with
+    {
+        Hair = ClothingDatabase.Cuts.FirstOrDefault(c => string.Equals(c, style.Hair, StringComparison.OrdinalIgnoreCase)),
+        HairColour = ClothingDatabase.HairColourOf(style.HairColour)?.Id,
+        Eyes = ClothingDatabase.EyeColourOf(style.Eyes)?.Id,
+        Skin = ClothingDatabase.SkinToneOf(style.Skin)?.Id
+    };
+
+    /// <summary>
+    /// The dye house's work (plan 43 · LF3): a garment owned, dyed, is a garment of its own beside the plain one, owned
+    /// and worn in its slot; returns its id, or null for one not owned, already dyed, with no colour, or a dye unknown.
+    /// </summary>
+    public string? Dye(string garment, string dye)
+    {
+        if (!Owns(garment) || ClothingDatabase.DyeIn(garment) != null || ClothingDatabase.Get(garment) is not { IsNothing: false } g || ClothingDatabase.DyeOf(dye) == null)
+            return null;
+        string dyed = ClothingDatabase.DyedId(g.Id, ClothingDatabase.DyeOf(dye)!.Id);
+        owned.Add(dyed);
+        Wear(g.Slot, dyed);
+        return dyed;
     }
 }
