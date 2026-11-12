@@ -4178,7 +4178,6 @@ label Valentine
 # Pokémon of the team, and five blind trades a day with made-up trainers far away. Sinnoh's is the Global Terminal's
 # receptionist; the other regions' a receptionist of their Pokémon Centers' link desks or a desk of ours.
 script TradeDesk
-  face self player
   speaker "Trade Receptionist"
   say "Welcome to the trade board! Trainers far and wide post the Pokémon they're after here, and what they'd give for one."
 label Board

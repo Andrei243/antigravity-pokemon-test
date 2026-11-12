@@ -112,6 +112,16 @@ public sealed class GiftBox
 
     public static Gift? Get(string id) => All.FirstOrDefault(g => g.Id == id);
 
+    /// <summary>
+    /// A gift's words' key in <c>ui.json</c>: its id in camel case (<c>festival_bellfall</c> is
+    /// <c>giftBox.gift.festivalBellfall.sender</c>, <c>.title</c>, <c>.card</c>), as a key's segment is letters and digits.
+    /// </summary>
+    public static string KeyOf(string id)
+    {
+        var parts = id.Split('_', StringSplitOptions.RemoveEmptyEntries);
+        return string.Concat(parts.Select((p, k) => k == 0 ? p : char.ToUpperInvariant(p[0]) + p[1..]));
+    }
+
     /// <summary>The gifts of these layers' <c>gifts.json</c>, each read strictly, a later layer's gift replacing an earlier's of its id.</summary>
     public static List<Gift> Read(IEnumerable<DataLayer> layers)
     {

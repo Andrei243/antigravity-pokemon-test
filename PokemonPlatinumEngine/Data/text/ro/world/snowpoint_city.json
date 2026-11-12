@@ -167,6 +167,74 @@
           "Luăm doar Antrenori care s-au dovedit la Liga Pokémon. Te aștept!"
         ]
       }
+    },
+    "snowpoint_city.Festival_midwinter_1": {
+      "name": {
+        "en": [
+          "Lit pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "snowpoint_city.Festival_midwinter_2": {
+      "name": {
+        "en": [
+          "Lit pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "snowpoint_city.Festival_midwinter_3": {
+      "name": {
+        "en": [
+          "Lit pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "snowpoint_city.Festival_midwinter_4": {
+      "name": {
+        "en": [
+          "Lit pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "snowpoint_city.Festival_midwinter_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "snowpoint_city.Festival_midwinter_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: Midwinter Lights! Warm your hands on something from the stall."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

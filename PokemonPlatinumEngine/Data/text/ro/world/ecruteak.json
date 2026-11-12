@@ -157,6 +157,114 @@
           "Morty, Liderul Arenei noastre, se antrenează la Turnul Ars. Mereu caută ceva."
         ]
       }
+    },
+    "ecruteak.Festival_bellfall_1": {
+      "name": {
+        "en": [
+          "Bells"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_bellfall_2": {
+      "name": {
+        "en": [
+          "Bells"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_bellfall_3": {
+      "name": {
+        "en": [
+          "Bells"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_bellfall_4": {
+      "name": {
+        "en": [
+          "Bells"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_bellfall_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_bellfall_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: Bellfall's begun. Listen... the leaves ring when they fall here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ecruteak.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

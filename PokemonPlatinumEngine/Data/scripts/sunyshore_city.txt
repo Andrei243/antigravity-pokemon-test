@@ -23,9 +23,11 @@
 
 script OnEnter
   # The Summer Night's bursts of light over the water east of the Poké Mart, after dark on its days (plan 40 · GE9;
-  # style guide, "Life", "Festivals"): once, as the city is come to
+  # style guide, "Life", "Festivals"): once a day (a daily flag), the first time the city is come to after dark
   if not flag FLAG_FESTIVAL_SUMMER goto AfterTheBursts
   if not time night goto AfterTheBursts
+  if flag FLAG_DAILY_SUNYSHORE_SUMMER_BURST goto AfterTheBursts
+  setflag FLAG_DAILY_SUNYSHORE_SUMMER_BURST
   effect burst 861 767 3
   effect sparkles 863 768 3
 label AfterTheBursts

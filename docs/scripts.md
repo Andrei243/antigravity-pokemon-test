@@ -1298,6 +1298,25 @@ label Give
   end
 ```
 
+### The gift box and the trade board
+
+Plan 40 · GE7 and GE8 (`Models/GiftBox.cs`, `Data/gifts.json`, `scripts/gifts.txt`; `Models/TradeBoard.cs`). A Gift Runner (`common.Courier`) and a trade desk (`common.TradeDesk`) are the scripts that use them.
+
+| Command | What it does |
+|---|---|
+| `gift due` | `RESULT` (and `{number}`) is how many gifts wait now: terms held, not taken, nothing keeping them back. |
+| `gift waiting` | `RESULT` is how many gifts hold and are not taken but wait for room on the team or for a run's rules. |
+| `gift open` | The box's screen (`ScriptScreen.GiftBox`; the script waits): `RESULT` 1 with a gift chosen, 2 for TELL WORDS, 0 backed out of. |
+| `gift give` | The gift chosen (the first due where none was) is noted taken and its script of `gifts.txt` is called as `call` calls (it ends in `return`): `RESULT` 1, or 0 with none due. |
+| `gift words NAME` | The phrase kept under `NAME` (`phrase NAME` first) is told to the box: every gift of those two words, in either order, waits from then on. `RESULT` is how many it called up. |
+| `gift backdrop "Lantern"` | A backdrop into the Fashion Case with the item fanfare and its two lines; `RESULT` 0, and nothing said, for one the case holds already. |
+| `givepokemon "Pichu" 10 … in "Cherish Ball" ribbon RIBBON_GIFT_DAY from "the Gift Desk"` | An event Pokémon's own words, after `holding` and `knowing`: its ball, a ribbon on it, and who sent it as its first trainer. |
+| `giveegg "Gible" in "Cherish Ball" ribbon RIBBON_CHAMPION_HEARTH from "the Laurel Gallery"` | A gift's Egg in its ball with its ribbon; `from` is who it was met from (hatched, it is the player's own). |
+| `trade board open` | The region's trade board (`ScriptScreen.TradeBoard`; the script waits): `RESULT` the request chosen, 1 to 3, 4 for a blind trade, 0 backed out of. |
+| `trade board 2`, `trade blind` | The Pokémon `choosepokemon` chose last sent to request 2 (or blind), the one received through the game's own way in, its trade evolution played: `RESULT` 1 done, 0 not the species or level asked, 2 met already, 3 an Egg or the last able to fight, 4 a run that holds its Pokémon, 5 no blind trade left today. |
+
+A gift's script is started by nothing but `gift give`, so `gifts.txt` is the one file besides `common` and `phone` that is no place's. A festival's flag (`FLAG_FESTIVAL_<ID>`, plan 40 · GE9, `Data/festivals.json`) is kept by the clock, never by a script; a script may ask it.
+
 ### The open world's places
 
 Plan 32 · OW5. An open map (Galar's and Paldea's outdoors, plan 32; the open test world, `tools/OpenWorldBake/worlds/lab`)

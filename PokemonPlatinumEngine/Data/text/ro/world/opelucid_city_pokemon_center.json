@@ -171,6 +171,24 @@
           "Iris era doar o fetiță când a venit în acest oraș. Acum e Campioana Unovei. Nu a fost repede?"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

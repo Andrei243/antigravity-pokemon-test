@@ -611,7 +611,18 @@
               "Workbench",
               "DrillTarget",
               "TrainingMat",
-              "ZygardeCell"
+              "ZygardeCell",
+              "FestivalLanterns",
+              "FestivalMoonLantern",
+              "FestivalPine",
+              "FestivalArch",
+              "FestivalStall",
+              "FestivalBells",
+              "FestivalBunting",
+              "HolidayTree",
+              "EggBasket",
+              "NewYearBanner",
+              "ValentineHeart"
             ]
           },
           "x": {

@@ -1,0 +1,92 @@
+{
+  "FacilityGuide": [
+    {
+      "en": [
+        "I guide Champions to the great battle facilities of the regions, and back here whenever they like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where would you like to go?",
+        "SINNOH'S FRONTIER",
+        "HOENN'S FRONTIER",
+        "THE GEAR STATION",
+        "NOWHERE"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sinnoh's Battle Frontier it is. Follow me, and keep close."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} followed the guide to Sinnoh's Battle Frontier..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hoenn's Battle Frontier island it is. Follow me, and keep close."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} followed the guide to Hoenn's Battle Frontier..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Unova's Gear Station it is. Follow me, and keep close."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} followed the guide to Unova's Gear Station..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, I can only take Champions of that region. Come back once you've entered its Hall of Fame."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take your time. I'll be at this desk whenever you'd like to go."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

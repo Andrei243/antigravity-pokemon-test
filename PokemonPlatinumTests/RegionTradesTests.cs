@@ -32,7 +32,7 @@ public class RegionTradesTests
     /// <summary>Every script that makes a trade, with the trades it makes in the order it makes them.</summary>
     private static List<(Script Script, List<string> Trades)> TradeScripts() =>
         ScriptLibrary.Default.All
-            .Select(s => (Script: s, Trades: s.Everything().Where(i => i.Op == Op.Trade).Select(i => i.Name).ToList()))
+            .Select(s => (Script: s, Trades: s.Everything().Where(i => i.Op == Op.Trade && i.Name is not ("board" or "blind")).Select(i => i.Name).ToList()))
             .Where(t => t.Trades.Count > 0)
             .ToList();
 

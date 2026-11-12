@@ -156,7 +156,9 @@ public class TextTests
         ["UI/ModernUi.Ribbons.cs"] = new[]
         {
             "Dress Up", "Ranch", "City at Night", "Snowy Town", "Fiery", "Outer Space", "Cumulus Cloud", "Desert", "Flower Patch",
-            "Future Room", "Open Sea", "Total Darkness", "Tatami Room", "Gingerbread Room", "Seafloor", "Underground", "Sky", "Theater"
+            "Future Room", "Open Sea", "Total Darkness", "Tatami Room", "Gingerbread Room", "Seafloor", "Underground", "Sky", "Theater",
+            // ...and the gift box's and the festivals' of ours (plan 40 · GE7, GE9)
+            "Midnight Bloom", "Field Notes", "Lantern", "Blossom", "Sea-Burst"
         },
         // A mistake of the code's own, never seen by a player
         ["Models/Poffins.cs"] = new[] { "A Poffin has five flavours." },

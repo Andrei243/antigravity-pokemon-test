@@ -81,7 +81,8 @@ internal static partial class ModernUi
         Card(r, 22, selected, GiftYellow);
         if (selected) UiShapes.Shape(new Rectangle(r.X + 6, r.Y + 6, r.Width - 12, r.Height - 12), 18, Color.Blank, Color.Blank, GiftYellow, 3);
         UiShapes.Fill(new Rectangle(r.X + 4, r.Y + 4, r.Width - 8, 48), 18, GiftYellow);
-        string sender = Text.Of($"giftBox.gift.{gift.Id}.sender");
+        string id = GiftBox.KeyOf(gift.Id);
+        string sender = Text.Of($"giftBox.gift.{id}.sender");
         UiFonts.DrawCentered(sender, r.X + 20, r.Y + 28, 26, Color.White, UiWeight.Black);
         if (taken is { } day)
         {
@@ -91,9 +92,9 @@ internal static partial class ModernUi
         var well = new Rectangle(r.X + (r.Width - 200) / 2f, r.Y + 62, 200, 120);
         UiShapes.Fill(well, 14, new Color(236, 240, 248, 255));
         GiftPictureArt(well, gift.Picture);
-        UiFonts.Draw(Text.Of($"giftBox.gift.{gift.Id}.title"), r.X + 20, r.Y + 192, 28, Ink, UiWeight.Black);
+        UiFonts.Draw(Text.Of($"giftBox.gift.{id}.title"), r.X + 20, r.Y + 192, 28, Ink, UiWeight.Black);
         float y = r.Y + 232;
-        foreach (string line in Wrap(Text.Of($"giftBox.gift.{gift.Id}.card"), r.Width - 40, 22, UiWeight.ExtraBold))
+        foreach (string line in Wrap(Text.Of($"giftBox.gift.{id}.card"), r.Width - 40, 22, UiWeight.ExtraBold))
         {
             if (y > r.Y + r.Height - 24) break;
             UiFonts.Draw(line, r.X + 20, y, 22, Muted, UiWeight.ExtraBold);

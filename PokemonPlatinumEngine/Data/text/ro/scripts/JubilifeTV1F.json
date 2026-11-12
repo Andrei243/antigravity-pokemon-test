@@ -146,5 +146,119 @@
         "Oh! Numărul ID al lui {winner}, din Cutiile PC-ului, se potrivește!"
       ]
     }
+  ],
+  "Questionnaire": [
+    {
+      "en": [
+        "Madame Ottilie Fray"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good day! I am Ottilie Fray, and I ask a question or two of everyone who comes through these doors."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you answer my questionnaire? Two questions, two words each."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The first. What do you like best about travelling with Pokémon? Two words, please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Madame Ottilie Fray"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "\"{phrase:GIFT_QUESTION_ONE}\"... Charming. I shall write that down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And the second. What sings at the break of day, and what never stops ticking?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Madame Ottilie Fray"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "\"{phrase:GIFT_QUESTION_TWO}\"? Not what I had in mind, I'm afraid. Do try again another time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "\"{phrase:GIFT_QUESTION_TWO}\"! Exactly so. You've answered the questionnaire, and the gift box is open to you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Gift Runners in their yellow scarves stand in the Pokémon Centers. They'll hand you whatever is waiting."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. My questions will keep."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you been to see the Gift Runners? Gifts come to the box from all over, on days and for deeds."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And words, too. Say the right two words to a Runner, and you never know what might turn up."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -137,6 +137,54 @@
           "Mi s-a părut ciudat când am coborât prima oară pe mal. Dar oamenii și Pokémonii se obișnuiesc cu orice, cu timpul."
         ]
       }
+    },
+    "sunyshore_city.Festival_summer_1": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sunyshore_city.Festival_summer_2": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sunyshore_city.Festival_summer_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sunyshore_city.Festival_summer_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: Summer Night's here! Stay till dark and watch the sky over the sea."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

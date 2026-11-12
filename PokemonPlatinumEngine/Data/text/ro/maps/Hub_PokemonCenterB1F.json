@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "wifi_plaza_attendant_f": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the desk of the Wi-Fi Plaza: a fair where Trainers from all round the world play games together.",
+          "It is closed, I'm sorry to say. The link to the wider world has gone quiet."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "teala_middle": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the Pokémon Wi-Fi Club, for battles and trades with friends who live far away.",
+          "Its doors are shut for the time being. The link to the wider world is down."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "teala_east": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I am here to explain the Wi-Fi Club to anyone who asks.",
+          "There is little to explain while it is closed, though. I do hope you will come back when the link is up again!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

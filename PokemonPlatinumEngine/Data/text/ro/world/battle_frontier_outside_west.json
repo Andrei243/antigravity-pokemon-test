@@ -414,6 +414,16 @@
         ]
       }
     },
+    "battle_frontier_outside_west.HubGuide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "battle_frontier_outside_west.BottleCap": {
       "name": {
         "en": [

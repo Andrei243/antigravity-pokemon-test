@@ -372,6 +372,46 @@
         ]
       }
     },
+    "jubilife_city.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "jubilife_city.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "jubilife_city.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "jubilife_city.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "tv_reporter": {
       "name": {
         "en": [

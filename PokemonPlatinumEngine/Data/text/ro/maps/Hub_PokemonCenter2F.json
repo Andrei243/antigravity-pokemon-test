@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "teala_west": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the desk of the Union Room, where Trainers from all over meet to chat, to trade and to battle.",
+          "I'm sorry to say its door is shut for now. The wireless link it runs on has gone quiet everywhere."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "teala_middle": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the desk of the Colosseum, where friends bring their teams to battle one another.",
+          "It is closed for the time being, I'm afraid. The wireless link is down."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "teala_east": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At this desk Trainers mix their records and sign one another's Trainer Cards.",
+          "With the link down there is nobody to mix them with. Do ask again another day!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -47,7 +47,7 @@ public class GiftBoxTests
         {
             Assert.True(ScriptLibrary.Default.Find(ScriptRunner.GiftScripts + "." + gift.Script) != null, $"{gift.Id}: no script {gift.Script} in gifts.txt");
             foreach (string part in new[] { "sender", "title", "card" })
-                Assert.DoesNotContain("[", PokemonPlatinumEngine.Core.Text.Of($"giftBox.gift.{gift.Id}.{part}"));
+                Assert.DoesNotContain("[", PokemonPlatinumEngine.Core.Text.Of($"giftBox.gift.{GiftBox.KeyOf(gift.Id)}.{part}"));
             // What a card shows is of the data
             switch (gift.Picture.Kind)
             {

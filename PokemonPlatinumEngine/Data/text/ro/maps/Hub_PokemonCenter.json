@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Center"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "globetrotter": {
+      "name": {
+        "en": [
+          "Globetrotter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I keep a Badge case for every region I have been to. The hub is the one place none of them is any use!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_sailor": {
+      "name": {
+        "en": [
+          "Old Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Before the harbours all sailed here, a Trainer had to go round the long way, region after region. Not any more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

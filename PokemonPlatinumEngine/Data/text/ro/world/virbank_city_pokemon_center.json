@@ -145,6 +145,24 @@
           "Pot să te întreb ceva? Îți place să te joci afară sau acasă? ...Afară? Știam eu, arăți sportiv!"
         ]
       }
+    },
+    "gift_runner": {
+      "name": {
+        "en": [
+          "Gift Runner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gift Runners, at your service!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

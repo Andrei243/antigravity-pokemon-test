@@ -35,6 +35,114 @@
           "Fântâna, turnurile, oamenii care se grăbesc... E câte un tablou în fiecare colț al pieței ăsteia."
         ]
       }
+    },
+    "castelia_city_2.Festival_bridgelight_1": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_bridgelight_2": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_bridgelight_3": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_bridgelight_4": {
+      "name": {
+        "en": [
+          "Lanterns"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_bridgelight_stall": {
+      "name": {
+        "en": [
+          "Stall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_bridgelight_keeper": {
+      "name": {
+        "en": [
+          "Stall keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stall keeper: Bridgelight! Every bridge in Unova is lit tonight. Take some warmth home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_christmas": {
+      "name": {
+        "en": [
+          "Decorated pine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_easter": {
+      "name": {
+        "en": [
+          "Basket of eggs"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_new_year": {
+      "name": {
+        "en": [
+          "New Year's banner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "castelia_city_2.Festival_valentine": {
+      "name": {
+        "en": [
+          "Heart on a post"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {
