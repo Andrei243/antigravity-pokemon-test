@@ -18,6 +18,9 @@ public sealed class CombatantView
     /// <summary>On the platform (fainted, recalled or captured Pokémon are not).</summary>
     public bool Present { get; internal set; }
 
+    /// <summary>The place's level is drawn as ??? on its HP box (a staged battle's <c>hidelevel</c>, <see cref="BattleEngine.HidesLevel"/>).</summary>
+    public bool LevelHidden { get; internal set; }
+
     /// <summary>Still in the battle but out of sight for now: up in the air or under the ground, in the middle of a move.</summary>
     public bool Away { get; internal set; }
 

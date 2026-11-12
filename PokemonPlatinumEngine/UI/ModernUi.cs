@@ -141,9 +141,12 @@ internal static partial class ModernUi
     // ------------------------------------------------------------------ Pokémon labels
 
     /// <summary>The level, right-aligned at <paramref name="rightX"/>: a small muted "Lv" before a large number.</summary>
-    public static void Level(float rightX, float centerY, int level, float size)
+    public static void Level(float rightX, float centerY, int level, float size) => Level(rightX, centerY, level, size, false);
+
+    /// <summary>A level, or ??? in its place where it is <paramref name="hidden"/> (a staged battle's foe: style guide, "Battle panels").</summary>
+    public static void Level(float rightX, float centerY, int level, float size, bool hidden)
     {
-        string n = level.ToString();
+        string n = hidden ? Text.Of("battle.hiddenLevel") : level.ToString();
         float nw = UiFonts.Measure(n, size, UiWeight.Black);
         string lv = Text.Of("party.level");
         float lw = UiFonts.Measure(lv, size * 0.62f, UiWeight.ExtraBold);

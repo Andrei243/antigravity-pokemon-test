@@ -154,8 +154,16 @@ public static class BattleFormats
 /// chart is turned round (<see cref="Sim.BattleConditions.Inverse"/>). B14: a Master Trainer's battle, in which nothing
 /// may be used from the bag by either side (<see cref="NoBattleItems"/>) and the player's side is one Pokémon of the
 /// team alone (<see cref="Alone"/>): the team's own, not a copy, so what the battle does to it stays.
+/// A staged battle (docs/mechanics/rulings.md, "Staged battles"): the foe's level drawn as ??? (<see cref="HideLevel"/>),
+/// every move aimed at it failing (<see cref="Untouchable"/>), it choosing nothing (<see cref="Passive"/>), and the battle
+/// ending by itself after so many turns (<see cref="EndAfterTurns"/>), each by itself.
 /// </summary>
-public sealed record BattleTerms(bool Inverse = false, bool NoBattleItems = false, Pokemon? Alone = null);
+public sealed record BattleTerms(bool Inverse = false, bool NoBattleItems = false, Pokemon? Alone = null,
+    bool HideLevel = false, bool Untouchable = false, bool Passive = false, int EndAfterTurns = 0)
+{
+    /// <summary>Any of a staged battle's terms: no EXP, catch or Pokédex in it.</summary>
+    public bool Staged => HideLevel || Untouchable || Passive || EndAfterTurns > 0;
+}
 
 /// <summary>Everything a battle starts from.</summary>
 public sealed class BattleSetup
@@ -357,6 +365,12 @@ public sealed class BattleSetup
     /// <summary>The take's number on the title card (the films shot of it so far, and one).</summary>
     public int StudioTakeNumber { get; init; }
 
+    /// <summary>A staged battle's terms (<see cref="BattleTerms"/>; <see cref="Sim.CoreSetup.HideLevel"/> and the three after it). Off unless given, which changes nothing.</summary>
+    public bool HideLevel { get; init; }
+    public bool Untouchable { get; init; }
+    public bool Passive { get; init; }
+    public int EndAfterTurns { get; init; }
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 
@@ -405,6 +419,10 @@ public sealed class BattleSetup
         Palace = Palace,
         TurnLimit = TurnLimit,
         VictoryMusic = VictoryMusic,
+        HideLevel = HideLevel,
+        Untouchable = Untouchable,
+        Passive = Passive,
+        EndAfterTurns = EndAfterTurns,
         // (a film's take is never fought again: its director has been used, and a take is a Frontier battle, which no retry takes)
         FirstTrainerPokemon = first
     };

@@ -278,6 +278,10 @@ public partial class GameEngine
             RunLevelCap = file.RunLevelCap,
             CrossedExp = file.CrossedExp,
             Restrictions = suspension.Restrictions,
+            HideLevel = file.HideLevel,
+            Untouchable = file.Untouchable,
+            Passive = file.Passive,
+            EndAfterTurns = file.EndAfterTurns,
             Scene = Settings.BattleScene
         };
         AwaitModels(PrepareModels(setup.WildPokemon.Concat(setup.Trainers.SelectMany(t => t.Party.Members))

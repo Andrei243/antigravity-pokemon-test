@@ -276,10 +276,19 @@ public static class ScriptParser
                 // What may follow, in any order: a second trainer, someone at the player's side, a battle that may be lost
                 bool mayLose = false, byId = false, first = false, rematch = false, inverse = false;
                 string second = "", partner = "", asTrainer = "";
+                var staged = new Battle.BattleTerms();
                 while (r.More)
                 {
-                    switch (r.OneOf("canlose", "first", "and", "with", "as", "rematch", "inverse"))
+                    string option = r.OneOf("canlose", "first", "and", "with", "as", "rematch", "inverse", "hidelevel", "untouchable", "passive", "endafter");
+                    switch (option)
                     {
+                        // A staged battle's terms (docs/mechanics/rulings.md, "Staged battles")
+                        case "hidelevel":
+                        case "untouchable":
+                        case "passive":
+                        case "endafter":
+                            staged = StagedTerm(r, option, staged);
+                            break;
                         case "inverse":
                             inverse = true;
                             break;
@@ -306,7 +315,8 @@ public static class ScriptParser
                             break;
                     }
                 }
-                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch, Inverse = inverse };
+                return new Instruction { Op = Op.Battle, Line = line, Name = who, Other = second, Partner = partner, PartnerById = byId, Option = mayLose, FirstBattle = first, AsTrainer = asTrainer, Rematch = rematch, Inverse = inverse,
+                    Staged = staged.Staged ? staged : null };
             }
             // A Master Trainer's battle (plan 14 · B14): the one choosepokemon chose, alone, with the bag closed
             // A Battle Royal (plan 14 · B13): three people of the map, each named with the trainer of the data they battle
@@ -338,7 +348,8 @@ public static class ScriptParser
             {
                 string species = r.Text("a species' name");
                 int level = r.Int("its level");
-                if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
+                // A staged foe may stand above any level a game reaches, up to the highest a Pokémon has (checked once its terms are read)
+                if (level is < 1 or > Data.Ruleset.HighestLevel || (word == "catchinglesson" && level > 100)) throw r.Error("a Pokémon's level is from 1 to 100");
                 if (word == "catchinglesson")
                 {
                     // Who shows the lesson, when it isn't the assistant (plan 21 · H2: Wally with his father's
@@ -356,13 +367,18 @@ public static class ScriptParser
                 // and `holding "Soul Dew"` (plan 21 · H12, part a: Emerald's seteventmon of the eon Pokémon on Southern Island)
                 // and `totem defense [2] [ally "Alomomola"]` (plan 23 · Z6: a trial's totem, with its aura's stats, their
                 // stages and the species its first call brings; a totem can't be run from)
-                bool noFleeing = false, shiny = false;
+                bool noFleeing = false, shiny = false, mayLose = false, mayRun = false;
                 string held = "";
                 Battle.Sim.TotemAura? totem = null;
+                var staged = new Battle.BattleTerms();
                 while (r.More)
                 {
-                    string option = r.OneOf("nofleeing", "shiny", "holding", "totem", "ally");
+                    string option = r.OneOf("nofleeing", "shiny", "holding", "totem", "ally", "canlose", "hidelevel", "untouchable", "passive", "endafter", "mayrun");
                     if (option == "shiny") shiny = true;
+                    // A staged battle's terms, and a loss the story goes on from (docs/mechanics/rulings.md, "Staged battles")
+                    else if (option is "hidelevel" or "untouchable" or "passive" or "endafter") staged = StagedTerm(r, option, staged);
+                    else if (option == "canlose") mayLose = true;
+                    else if (option == "mayrun") mayRun = true;
                     else if (option == "holding") held = r.Text("an item's name");
                     else if (option == "totem")
                     {
@@ -385,7 +401,13 @@ public static class ScriptParser
                     }
                     else noFleeing = true;
                 }
-                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny, Other = held, Totem = totem };
+                if (level > 100 && !staged.HideLevel) throw r.Error("a Pokémon's level is from 1 to 100 (above it only with hidelevel, a staged foe's)");
+                if (totem != null && (staged.Staged || mayLose)) throw r.Error("a totem's battle is no staged battle and is never lost to go on");
+                // A staged foe can't be run from unless the line lets it be (`mayrun`)
+                if (mayRun && (!staged.Staged || noFleeing)) throw r.Error("only a staged battle says mayrun, and never with nofleeing");
+                if (staged.Staged && !mayRun) noFleeing = true;
+                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny, Other = held, Totem = totem,
+                    Staged = staged.Staged ? staged : null, CanLose = mayLose };
             }
 
             case "face":
@@ -2032,6 +2054,31 @@ public static class ScriptParser
             if (steps.Count == 0) throw Error("a walk needs steps: up, down, left, right");
             return (steps, fast);
         }
+    }
+
+    /// <summary>
+    /// A staged battle's term on a <c>battle</c> or <c>wildbattle</c> line (docs/mechanics/rulings.md, "Staged battles"):
+    /// <c>hidelevel</c>, <c>untouchable</c>, <c>passive</c>, or <c>endafter N</c> with its turns, each once.
+    /// </summary>
+    private static Battle.BattleTerms StagedTerm(Reader r, string term, Battle.BattleTerms so)
+    {
+        bool twice = term switch
+        {
+            "hidelevel" => so.HideLevel,
+            "untouchable" => so.Untouchable,
+            "passive" => so.Passive,
+            _ => so.EndAfterTurns > 0
+        };
+        if (twice) throw r.Error($"'{term}' is said once");
+        switch (term)
+        {
+            case "hidelevel": return so with { HideLevel = true };
+            case "untouchable": return so with { Untouchable = true };
+            case "passive": return so with { Passive = true };
+        }
+        int turns = r.Int("the turns it lasts");
+        if (turns is < 1 or > 99) throw r.Error("a staged battle ends after 1 to 99 turns");
+        return so with { EndAfterTurns = turns };
     }
 
     /// <summary>A nature by its name, in any case (<c>team nature serious</c>).</summary>

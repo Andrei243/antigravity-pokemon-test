@@ -261,6 +261,9 @@ public sealed partial class BattleCore
         // A Fire move set off the powder on its user (plan 06 · R25)
         if (Explodes(use)) return true;
 
+        // A staged battle's untouchable side: nothing aimed at it gets there (BattleCore.Staged.cs)
+        if (Untouched(use)) return false;
+
         if (use.Targets.Count == 0)
         {
             Say(Text.Of("battle.butThereWasNoTarget"));

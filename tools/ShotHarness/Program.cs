@@ -203,6 +203,7 @@ if (mode == "saves") h.SavesMode();
 if (mode == "home") h.HomeMode();
 if (mode == "crash") h.CrashMode();
 if (mode == "formats") h.FormatsMode();
+if (mode == "staged") h.StagedMode();
 if (mode == "ways") h.WaysMode();
 if (mode == "kanto") h.KantoMode();
 if (mode == "johto") h.JohtoMode();

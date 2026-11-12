@@ -132,6 +132,16 @@ public sealed class BattleRecordFile
     public bool Palace { get; set; }
     public int TurnLimit { get; set; }
 
+    /// <summary>A staged battle's terms (docs/mechanics/rulings.md, "Staged battles"): all off, as a file without them.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool HideLevel { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool Untouchable { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool Passive { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int EndAfterTurns { get; set; }
+
     /// <summary>A battle between two players (plan 28 · I4), which may be given up; null, as a file without it, for every other.</summary>
     public bool? Link { get; set; }
 
@@ -208,6 +218,10 @@ public sealed class BattleRecordFile
             TeraOrb = setup.TeraOrb,
             Palace = setup.Palace,
             TurnLimit = setup.TurnLimit,
+            HideLevel = setup.HideLevel,
+            Untouchable = setup.Untouchable,
+            Passive = setup.Passive,
+            EndAfterTurns = setup.EndAfterTurns,
             Link = setup.Link ? true : null,
             FriendPartner = setup.Partner != null && setup.PartnerController == null ? true : null,
             Conditions = new RecordedConditions
@@ -342,6 +356,10 @@ public sealed class BattleRecordFile
             TeraOrb = TeraOrb,
             Palace = Palace,
             TurnLimit = TurnLimit,
+            HideLevel = HideLevel,
+            Untouchable = Untouchable,
+            Passive = Passive,
+            EndAfterTurns = EndAfterTurns,
             Link = Link == true
         };
     }

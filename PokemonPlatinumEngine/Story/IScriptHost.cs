@@ -369,7 +369,7 @@ public interface IScriptHost
 
     /// <summary>A wild Pokémon in the player's way: one met as ever, one that can't be run from, or the assistant's catching lesson, which the player watches.</summary>
     /// <remarks>A lesson someone else shows names them and their Pokémon (<paramref name="catcher"/>; plan 21 · H2, Wally with his father's Zigzagoon).</remarks>
-    void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null);
+    void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null, BattleTerms? terms = null, bool mayLose = false);
 
     /// <summary>
     /// A trial's totem (plan 23 · Z6): a wild battle that can't be run from, fought as an SOS battle under the totem's
