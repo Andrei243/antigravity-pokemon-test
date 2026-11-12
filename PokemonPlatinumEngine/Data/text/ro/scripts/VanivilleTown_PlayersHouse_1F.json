@@ -108,6 +108,22 @@
     },
     {
       "en": [
+        "And take this phone, too, so you can call home. I've put your friends' numbers in it already."
+      ],
+      "text": [
+        "Și ia și telefonul ăsta, ca să suni acasă. Am pus deja numerele prietenilor tăi în el."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the travel phone!"
+      ],
+      "text": [
+        "{player} a primit telefonul de drum!"
+      ]
+    },
+    {
+      "en": [
         "Come home whenever you're tired. Now go on, your friends will be waiting!"
       ],
       "text": [

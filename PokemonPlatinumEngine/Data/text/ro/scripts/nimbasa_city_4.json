@@ -1,0 +1,28 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The crowd is on its feet! The home side breaks down the field..."
+      ],
+      "text": [
+        "Mulțimea e în picioare! Gazdele pornesc pe teren..."
+      ]
+    },
+    {
+      "en": [
+        "And they score! The stands roar, and the scoreboard flickers with the new numbers."
+      ],
+      "text": [
+        "Și înscriu! Tribunele vuiesc, iar tabela clipește cu noul scor."
+      ]
+    },
+    {
+      "en": [
+        "There's the final whistle! The players shake hands and wave to the crowd."
+      ],
+      "text": [
+        "Fluierul final! Jucătorii își strâng mâinile și fac cu mâna mulțimii."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "Athlete1": [
+    {
+      "en": [
+        "Nothing but net! And nothing but wins!"
+      ],
+      "text": [
+        "Numai fileu! Și numai victorii!"
+      ]
+    },
+    {
+      "en": [
+        "You blocked every shot! Good game."
+      ],
+      "text": [
+        "Mi-ai blocat fiecare aruncare! Joc frumos."
+      ]
+    }
+  ],
+  "Athlete2": [
+    {
+      "en": [
+        "We run plays here. Here's a play: battle!"
+      ],
+      "text": [
+        "Aici exersăm faze. Uite o fază: luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Time-out for me. You're good!"
+      ],
+      "text": [
+        "Time-out pentru mine. Ești bun!"
+      ]
+    }
+  ],
+  "Athlete3": [
+    {
+      "en": [
+        "My Pokémon can jump higher than the hoop!"
+      ],
+      "text": [
+        "Pokémonul meu sare mai sus decât coșul!"
+      ]
+    },
+    {
+      "en": [
+        "Practice again tomorrow, then."
+      ],
+      "text": [
+        "Atunci, iar antrenament mâine."
+      ]
+    }
+  ]
+}

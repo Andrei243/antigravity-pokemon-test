@@ -7,6 +7,10 @@
   "name": "Pokéstar Studios",
   "bgmTrack": "unova/pokestar_studios",
   "read": { "34": "PosterWall" },
+  // The poster wall itself (plan 42 · PS4, part b, the user's 33a): a hoarding of the four films in warm reds standing
+  // before the building's front east of its door, over the tiles the sign is read from, and read on its own tiles
+  "props": [ { "type": "PosterWall", "x": 22, "y": 21, "width": 3, "depth": 1 } ],
+  "readAt": [ { "x": 22, "z": 21, "script": "PosterWall" }, { "x": 23, "z": 21, "script": "PosterWall" }, { "x": 24, "z": 21, "script": "PosterWall" } ],
   "people": {
     "1": {
       "name": "Painter",

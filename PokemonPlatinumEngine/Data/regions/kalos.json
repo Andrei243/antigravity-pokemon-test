@@ -1,6 +1,8 @@
 {
   "id": "Kalos",
   "folder": "kalos",
+  // The travel phone works here (plan 43 · LF6), with this region's book (world/kalos/phone.json)
+  "phone": true,
   // How its battles are filmed (plan 45 · BC6; style guide, "The battle's manners"): a cycle of shots, splits, a low hit
   "battleCamera": "kalos",
   // Kalos's songs play in the modern sound (plan 31 · MU3): 48 kHz, its room and width, the region's own instruments

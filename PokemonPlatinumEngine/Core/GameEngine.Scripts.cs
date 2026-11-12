@@ -136,6 +136,9 @@ public partial class GameEngine
         {
             ShowsNothing = true,
             Hour = ((int)Math.Floor(GameClock.Hour) % 24 + 24) % 24,
+            // (the time of day and the weekday too: Nimbasa's stadiums ask whether a game is on, plan 42 · PS5)
+            TimeOfDay = GameClock.Now,
+            Weekday = GameClock.Today.DayOfWeek,
             CameInFromOutdoors = cameInFromOutdoors
         };
         var runner = new ScriptRunner(flow.Scripts, host);
@@ -1348,6 +1351,10 @@ public partial class GameEngine
                     // A ride on a course (plan 44 · SD5): the script hears its total as it is left
                     game.OpenPhotoTour(counter ?? "");
                     break;
+                case ScriptScreen.TourReport:
+                    // The tour's report (plan 44 · SD6): the script waits until it is left
+                    game.OpenTourReport();
+                    break;
                 case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
                     // The salon's chair and a boutique's dye house (plan 43 · LF3)
                     game.OpenSalon(dye: counter != Instruction.SalonCounter);
@@ -1839,9 +1846,10 @@ public partial class GameEngine
         {
             if (Skipping) return;
             AudioManager.PlaySound("phone_registered");
-            game.ShowNotification(contact.Region == "hoenn"
-                ? Text.Of("pokenav.matchCall.registered", ("name", contact.Name))
-                : Text.Of("pokegear.phone.registered", ("name", contact.Name)));
+            // (the travel phone's books, plan 43 · LF6, are any region's but Johto's and Hoenn's)
+            game.ShowNotification(contact.Region == "hoenn" ? Text.Of("pokenav.matchCall.registered", ("name", contact.Name))
+                : contact.Region == "johto" ? Text.Of("pokegear.phone.registered", ("name", contact.Name))
+                : Text.Of("travelPhone.registered", ("name", contact.Name)));
         }
 
         // ---- Ball Capsules, Seals and ribbons (plan 06 · R17b)

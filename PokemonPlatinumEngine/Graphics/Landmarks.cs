@@ -140,6 +140,10 @@ internal static partial class Landmarks
                 // A photo spot's plate (plan 43 · LF4): a low post with a camera on its face
                 kit.Sprite(kit.Face("photospot", 26, 30, PaintPhotoSpot), w / 2f, d / 2f + 4);
                 return true;
+            case PropType.PosterWall:
+                // The film studio's poster wall (plan 42 · PS4, part b): four posters in warm reds on a hoarding
+                kit.Sprite(kit.Face("posterwall", 92, 60, PaintPosterWall), w / 2f, d / 2f + 4);
+                return true;
             case PropType.Outcrop:
             {
                 int width = Math.Min(w - 6, 480), height = Rows(kit, MathF.Min(prop.Height, 8f), 60, 130);
@@ -1275,6 +1279,77 @@ internal static partial class Landmarks
         c.Rect(10, 5, 5, 2, DarkWood.Base);
         c.Rect(11, 9, 4, 3, Tone.Of(236, 226, 196).Base);
         c.Rect(16, 8, 2, 1, Tone.Of(214, 70, 70).Base);
+        Pix.Outline(c);
+    }
+
+    /// <summary>
+    /// The film studio's poster wall (plan 42 · PS4, part b; style guide, "The film studio", "The posters"): a hoarding
+    /// of dark wood on three posts with the studio's four films painted on it in warm reds, each a poster lit from its
+    /// top as a stage is (a crimson ground warming to orange), its film's emblem in cream and a gold band at its foot:
+    /// an empty seat, a clock at its gilded hour, a letter sealed in green, a bolt over a pass.
+    /// </summary>
+    public static void PaintPosterWall(PixelCanvas c)
+    {
+        foreach (int x in new[] { 6, 44, 82 })
+        {
+            c.Rect(x, 44, 4, 16, DarkWood.Base);
+            c.VLine(x, 44, 16, DarkWood.Light);
+        }
+        Pix.Raised(c, 0, 2, 92, 46, DarkWood);
+        var cream = Tone.Of(244, 228, 196).Base;
+        var gold = Tone.Of(226, 176, 72);
+        for (int i = 0; i < 4; i++)
+        {
+            int px = 4 + i * 22, py = 5, pw = 18, ph = 39;
+            // the ground: deep crimson at the foot warming to a lit orange at the top, in bands of three rows
+            for (int y = 0; y < ph; y++)
+            {
+                float t = y / (float)(ph - 1);
+                int r = (int)(232 - 92 * t), g = (int)(108 - 82 * t), b = (int)(64 - 30 * t);
+                c.Rect(px, py + y / 3 * 3, pw, Math.Min(3, ph - y / 3 * 3), Rgb(r, g, b));
+            }
+            // a spotlight's pale ring behind the emblem
+            c.Rect(px + 4, py + 6, 10, 1, Rgb(250, 168, 104));
+            int ex = px + 9, ey = py + 16;
+            switch (i)
+            {
+                case 0: // The Empty Seat: a theatre's chair, nobody in it
+                    c.Rect(ex - 4, ey - 6, 8, 7, cream);
+                    c.Rect(ex - 5, ey + 1, 10, 3, cream);
+                    c.Rect(ex - 4, ey + 4, 2, 4, cream);
+                    c.Rect(ex + 2, ey + 4, 2, 4, cream);
+                    c.Rect(ex - 3, ey - 5, 6, 5, Rgb(150, 38, 40));
+                    break;
+                case 1: // The Gilded Hour: a clock face at a minute to the hour
+                    for (int dy = -6; dy <= 6; dy++)
+                        for (int dx = -6; dx <= 6; dx++)
+                        {
+                            int d = dx * dx + dy * dy;
+                            if (d <= 36) c.Set(ex + dx, ey + dy, d >= 25 ? gold.Base : cream);
+                        }
+                    c.Rect(ex, ey - 5, 1, 5, Rgb(60, 30, 30));
+                    c.Rect(ex - 3, ey, 3, 1, Rgb(60, 30, 30));
+                    break;
+                case 2: // Letters in the Fog: a letter sealed in green ink
+                    c.Rect(ex - 6, ey - 4, 12, 9, cream);
+                    for (int k = 0; k < 6; k++) { c.Set(ex - 6 + k, ey - 4 + k, Rgb(196, 170, 140)); c.Set(ex + 5 - k, ey - 4 + k, Rgb(196, 170, 140)); }
+                    c.Rect(ex - 1, ey + 1, 3, 3, Rgb(64, 150, 92));
+                    break;
+                default: // Thunder at Marlowe Pass: a bolt over two peaks
+                    for (int k = 0; k < 6; k++) { c.Rect(ex - 7 + k, ey + 7 - k, 1, k + 1, Rgb(96, 40, 44)); c.Rect(ex + 6 - k, ey + 7 - k, 1, k + 1, Rgb(96, 40, 44)); }
+                    c.Rect(ex, ey - 7, 3, 2, gold.Base);
+                    c.Rect(ex - 1, ey - 5, 3, 2, gold.Base);
+                    c.Rect(ex - 2, ey - 3, 5, 1, gold.Base);
+                    c.Rect(ex, ey - 2, 3, 2, gold.Base);
+                    c.Rect(ex - 1, ey, 2, 3, gold.Base);
+                    break;
+            }
+            // the title's gold band, its letters three dark strokes
+            Pix.Raised(c, px + 1, py + ph - 9, pw - 2, 6, gold);
+            c.Rect(px + 3, py + ph - 7, 4, 1, Rgb(96, 40, 32));
+            c.Rect(px + 8, py + ph - 7, 6, 1, Rgb(96, 40, 32));
+            c.Rect(px + 5, py + ph - 5, 8, 1, Rgb(96, 40, 32));
+        }
         Pix.Outline(c);
     }
 

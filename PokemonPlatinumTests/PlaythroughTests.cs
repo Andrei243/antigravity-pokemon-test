@@ -121,6 +121,34 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void AlolasFirstChapterPlaysFreelyWithAStickFromTheNewHomeToTheMarina()
+    {
+        // Alola moves freely and grown since the user's switch of 2026-11-12, on its own file: the bot steers a stick
+        // from Mom's word to Hau'oli City's marina, playing the professor's door, the trail's bridge, the kahuna's gift,
+        // Hau's battle, the Pokédex and Team Skull's grunts as they come
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            Assert.Null(engine.RegionMovementOverride);
+            Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
+            Assert.Equal(CharacterKit.Grown, engine.KitHere);
+            // (a strong Pokémon on the team before the first arrives, so the marina's battles are the story's to be got
+            // through, not a Rowlet of level 5's: the starter's own battle with Hau is won either way)
+            game.Party.Add(new Pokemon(PokemonDatabase.Get("Lycanroc")!, 40));
+            output.WriteLine($"begun on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}, VAR_ALOLA_STORY {game.Story.Var("VAR_ALOLA_STORY")}");
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.AlolaFirstChapter) };
+            Run(bot, 3600);
+            output.WriteLine($"ended on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}, VAR_ALOLA_STORY {game.Story.Var("VAR_ALOLA_STORY")}");
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.True(game.Story.Has(StoryState.PokedexFlag), report.ToMarkdown());
+            Assert.True(game.Story.Var("VAR_ALOLA_STORY") >= 8, $"VAR_ALOLA_STORY {game.Story.Var("VAR_ALOLA_STORY")}\n{report.ToMarkdown()}");
+        }, Seed, RegionDatabase.Alola);
+    }
+
+    [Fact]
     public void TheWayIsFoundAcrossMapsAndAlongAMapWithNoBound()
     {
         // Across maps, by their warps: down the stairs and out of the house; into the mine and down a floor

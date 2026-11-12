@@ -173,7 +173,14 @@ public enum GameState
     /// <summary>The photo studio, a script's <c>photo studio</c> waiting on it (plan 43 · LF5).</summary>
     Studio,
     /// <summary>A ride of the photo tour, a script's <c>tour ride</c> waiting on it (plan 44 · SD5).</summary>
-    PhotoTour
+    PhotoTour,
+<<<<<<< HEAD
+    /// <summary>The travel phone over the field (plan 43 · LF6).</summary>
+    Phone
+=======
+    /// <summary>The photo tour's report, a script's <c>tour report</c> waiting on it (plan 44 · SD6).</summary>
+    TourReport
+>>>>>>> worktree-agent-af309f69094a300d9
 }
 
 public partial class GameEngine
@@ -885,6 +892,7 @@ public partial class GameEngine
         OweTheFashionCase();
         OweTheDexNav();
         OweTheRidePager();
+        OweTheTravelPhone();
         MapDatabase.RestoreDefeatedTrainers(flow.Story.DefeatedTrainers);
         RefreshPresence(startOver: true);
 
@@ -1701,6 +1709,9 @@ public partial class GameEngine
             case GameState.PokeNav:
                 UpdatePokeNav(dt);
                 break;
+            case GameState.Phone:
+                UpdatePhone(dt);
+                break;
             case GameState.AlphPuzzle:
                 // The script that opened the panel hears whether the picture was put back together (plan 20 · J5)
                 flow.AlphPuzzleScreen.Update(dt);
@@ -1740,6 +1751,9 @@ public partial class GameEngine
                 break;
             case GameState.PhotoTour:
                 UpdatePhotoTour(dt);
+                break;
+            case GameState.TourReport:
+                UpdateTourReport();
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -2146,6 +2160,7 @@ public partial class GameEngine
             flow.StartMenu.HasCamp = HasCamp;
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
+            flow.StartMenu.HasPhone = HasTravelPhone;
             flow.StartMenu.HasRequests = HasRequests;
             flow.StartMenu.Objective = NextObjectiveLine;
             flow.StartMenu.Counts = AreaCountsLine() ?? "";
@@ -2427,7 +2442,7 @@ public partial class GameEngine
         if (TryStepTrigger()) return true;
         if (CheckTrainerSight()) return true;
         // Last, a contact may ring the Pokégear (plan 20 · J3)
-        return StoryCallOnAStep() || KurtRingsOnAStep() || PhoneRingsOnAStep();
+        return StoryCallOnAStep() || KurtRingsOnAStep() || PhoneRingsOnAStep() || TravelPhoneRingsOnAStep();
     }
 
     /// <summary>
@@ -2951,6 +2966,8 @@ public partial class GameEngine
             // Nothing of the field left behind comes along (a door, a print), as on a script's warp
             world.Life.Clear();
             Crossing.Arrive(region, flow.Pokedex);
+            // The travel phone where it works, for a Champion who crossed in past its scene (plan 43 · LF6)
+            OweTheTravelPhone();
             ArriveOnMap();
             AnnounceLocation();
         });
@@ -3046,6 +3063,9 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.PokeNav:
                 OpenPokeNav();
+                break;
+            case StartMenuChoice.Phone:
+                OpenPhone();
                 break;
             case StartMenuChoice.Requests:
                 OpenRequests();
@@ -3405,6 +3425,11 @@ public partial class GameEngine
             // The photo tour's course, a scene of its own like the battle's (plan 44 · SD5)
             RenderPhotoTour();
         }
+        else if (scene == GameState.TourReport)
+        {
+            // The chosen photograph's print redrawn from its record (plan 44 · SD6)
+            RenderTourPrint();
+        }
         else if (scene == GameState.Studio)
         {
             // The player's figure on the stage, rendered offscreen (plan 43 · LF5)
@@ -3543,6 +3568,9 @@ public partial class GameEngine
             case GameState.PhotoTour:
                 DrawPhotoTour();
                 break;
+            case GameState.TourReport:
+                DrawTourReport();
+                break;
             case GameState.Studio:
                 ModernUi.DrawStudio(VirtualWidth, VirtualHeight, flow.StudioScreen, StudioFigureNow(), StudioPokemonNow());
                 break;
@@ -3640,6 +3668,9 @@ public partial class GameEngine
                 break;
             case GameState.PokeNav:
                 flow.PokeNavScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Phone:
+                flow.PhoneScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.AlphPuzzle:
                 flow.AlphPuzzleScreen.Draw(VirtualWidth, VirtualHeight);

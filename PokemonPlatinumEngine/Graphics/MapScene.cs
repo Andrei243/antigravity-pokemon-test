@@ -65,6 +65,12 @@ internal sealed class MapScene
     public const float KalosFovYDeg = 20f;
     public const float KalosDistance = 520f / 16f;
 
+    // Alola's own (the user's switch of 2026-11-12; style guide, "Scale in a grown region", "Alola's camera"): lower and a
+    // little nearer than Kalos's, so the islands' sea and far shore show past the player
+    public const float AlolaPitchDeg = 46f;
+    public const float AlolaFovYDeg = 22f;
+    public const float AlolaDistance = 500f / 16f;
+
     // Rooms get a closer, wider perspective camera so their walls and furniture read as a 3D space
     public const float IndoorPitchDeg = 52f;
     public const float IndoorFovYDeg = 30f;
@@ -161,6 +167,7 @@ internal sealed class MapScene
             FieldCamera.StarkMountain => new FieldView(StarkMountainPitchDeg, StarkMountainFovYDeg, StarkMountainDistance),
             FieldCamera.Drawbridge => new FieldView(DrawbridgePitchDeg, DrawbridgeFovYDeg, DrawbridgeDistance),
             FieldCamera.Kalos => OutdoorOverride ?? new FieldView(KalosPitchDeg, KalosFovYDeg, KalosDistance),
+            FieldCamera.Alola => OutdoorOverride ?? new FieldView(AlolaPitchDeg, AlolaFovYDeg, AlolaDistance),
             _ => OutdoorOverride ?? FieldView.Outdoor
         };
     }

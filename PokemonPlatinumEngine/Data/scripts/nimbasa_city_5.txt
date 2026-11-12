@@ -1,0 +1,73 @@
+# NimbasaCity_GridironField: Nimbasa City's American football field (plan 42 · PS5; rulings, "Sports days"). Black 2's place, our words.
+# Its three athletes battle once a day each (FLAG_DAILY_UNOVA_*), with the team the story calls for: the first
+# under five of Unova's Badges, the second from five, the third with all eight, the fourth after the Hall of Fame
+# (SportsDays.TierOf; SportsDayTests hold these scripts to SportsDays).
+
+script Athlete1
+  face self player
+  if flag FLAG_DAILY_UNOVA_GRIDIRON_1 goto Done1
+  say "Off-season training! Want to block for me? I mean, battle!"
+  if flag UnovaHallOfFame goto Fourth1
+  if badges >= 8 goto Third1
+  if badges >= 5 goto Second1
+  battle self as "unova_linebacker_dan"
+  goto Won1
+label Second1
+  battle self as "unova_linebacker_dan_2"
+  goto Won1
+label Third1
+  battle self as "unova_linebacker_dan_3"
+  goto Won1
+label Fourth1
+  battle self as "unova_linebacker_dan_4"
+label Won1
+  setflag FLAG_DAILY_UNOVA_GRIDIRON_1
+label Done1
+  say "You broke right through my line! Good game."
+  end
+
+script Athlete2
+  face self player
+  if flag FLAG_DAILY_UNOVA_GRIDIRON_2 goto Done2
+  say "Hut, hut... BATTLE!"
+  if flag UnovaHallOfFame goto Fourth2
+  if badges >= 8 goto Third2
+  if badges >= 5 goto Second2
+  battle self as "unova_linebacker_bob_3"
+  goto Won2
+label Second2
+  battle self as "unova_linebacker_bob_4"
+  goto Won2
+label Third2
+  battle self as "unova_linebacker_bob"
+  goto Won2
+label Fourth2
+  battle self as "unova_linebacker_bob_2"
+label Won2
+  setflag FLAG_DAILY_UNOVA_GRIDIRON_2
+label Done2
+  say "Tackled, fair and square."
+  end
+
+script Athlete3
+  face self player
+  if flag FLAG_DAILY_UNOVA_GRIDIRON_3 goto Done3
+  say "My Pokémon hits harder than any tackle. Ready?"
+  if flag UnovaHallOfFame goto Fourth3
+  if badges >= 8 goto Third3
+  if badges >= 5 goto Second3
+  battle self as "unova_linebacker_jonah_2"
+  goto Won3
+label Second3
+  battle self as "unova_linebacker_jonah_3"
+  goto Won3
+label Third3
+  battle self as "unova_linebacker_jonah_4"
+  goto Won3
+label Fourth3
+  battle self as "unova_linebacker_jonah"
+label Won3
+  setflag FLAG_DAILY_UNOVA_GRIDIRON_3
+label Done3
+  say "Back to the drills for me. Come again tomorrow!"
+  end

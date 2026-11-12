@@ -1290,3 +1290,107 @@ label Ready
 label Working
   say "Kurt here. Your {ball} are coming along. Give me until tomorrow."
   end
+
+
+
+# ------------------------------------------------------------------ the travel phone (plan 43 · LF6)
+# The travel phone's numbers in Unova (Data/world/unova/phone.json) and Kalos (Data/world/kalos/phone.json): Bianca
+# hands the phone over with the Pokédex at Aspertia's outlook, and Kalos's Mom with the roller skates. The friends ring
+# on their own as a Pokégear's do; the lines are ours, and change with the region's Badges.
+
+# Mom, at home in Aspertia City
+script UnovaMom
+  speaker "Mom"
+  if badges >= 4 goto Far
+  say "{player}! Are you eating properly? Aspertia's view isn't the same without you looking out at it."
+  say "Call whenever you like. And remember to let your Pokémon rest!"
+  end
+label Far
+  say "Hello, dear! The neighbours keep asking about your Badges. I tell them you're doing wonderfully."
+  end
+
+# Bianca, Professor Juniper's assistant
+script UnovaBianca
+  speaker "Bianca"
+  if badges >= 8 goto Done
+  say "Heeey, {player}! It's Bianca! I'm checking on everyone the professor gave a Pokédex to."
+  say "Remember: every new Pokémon you see fills in a page. Even the ones that run away!"
+  end
+label Done
+  say "Eight Badges?! Wow wow wow! The Pokémon League is waiting for you, {player}. I'm so excited!"
+  end
+
+# Cheren, Aspertia's Gym Leader
+script UnovaCheren
+  speaker "Cheren"
+  if badges >= 1 goto Taught
+  say "{player}. You haven't challenged my Gym yet. Take your time, but don't keep me waiting too long."
+  end
+label Taught
+  say "How are you and your Pokémon getting on? A Trainer grows by thinking about every battle afterwards."
+  end
+
+# Hugh, the rival next door
+script UnovaHugh
+  speaker "{rival}"
+  random 2
+  if result == 1 goto Two
+  say "{player}! I'm training on the next route. Don't you dare fall behind!"
+  end
+label Two
+  say "Hey. My sister says hello. ...And I say: get stronger, so our next battle is a real one!"
+  end
+
+# Professor Juniper
+script UnovaJuniper
+  speaker "Prof. Juniper"
+  if var CAUGHT >= 50 goto Many
+  say "{player}! How is the Pokédex? Unova's Pokémon change with the seasons, so look again when the month turns!"
+  end
+label Many
+  say "That many caught already? Your Pokédex is the best data I've had in years. Thank you!"
+  end
+
+# Mom, at home in Vaniville Town
+script KalosMom
+  speaker "Mom"
+  if badges >= 4 goto Far
+  say "{player}! Are you skating carefully? Not through the tall grass, I hope!"
+  end
+label Far
+  say "I keep your Badges' news on the fridge, dear. Vaniville is very proud of you."
+  end
+
+# The neighbour, the rival next door
+script KalosNeighbour
+  speaker "{rival}"
+  say "It's me. I've been training hard. When we meet again, I'll show you exactly how much."
+  end
+
+# Shauna
+script KalosShauna
+  speaker "Shauna"
+  say "Hiya, {player}! I just found the cutest café! We should all meet up there. Promise you'll come!"
+  end
+
+# Tierno
+script KalosTierno
+  speaker "Tierno"
+  say "Hey, {player}! I've been working on a new dance with my Pokémon. You've gotta see it next time!"
+  end
+
+# Trevor
+script KalosTrevor
+  speaker "Trevor"
+  if var CAUGHT >= 30 goto Ahead
+  say "Um, hi, {player}. I've seen more Pokémon than you so far. Just so you know."
+  end
+label Ahead
+  say "You've seen more Pokémon than me now?! I need to try harder..."
+  end
+
+# Professor Sycamore
+script KalosSycamore
+  speaker "Prof. Sycamore"
+  say "Bonjour, {player}! Every Pokémon you meet tells us something new about Kalos. Enjoy the journey!"
+  end

@@ -158,6 +158,9 @@ public sealed record TourReportSave
 
     /// <summary>Each course's best ride's total.</summary>
     public Dictionary<string, int> Rides { get; init; } = new();
+
+    /// <summary>How many of the guide's rewards have been handed over, in the table's order (plan 44 · SD6).</summary>
+    public int Rewarded { get; init; }
 }
 
 /// <summary>
@@ -174,10 +177,29 @@ public sealed class TourReport
 
     public int Total => best.GroupBy(b => (b.Course, b.Species)).Sum(g => g.Max(b => b.Points));
 
-    public bool IsEmpty => best.Count == 0 && rides.Count == 0;
+    public bool IsEmpty => best.Count == 0 && rides.Count == 0 && Rewarded == 0;
 
     /// <summary>Whether a course is open by the report's total.</summary>
     public bool IsOpen(TourCourseData course) => Total >= course.OpensAt;
+
+    /// <summary>How many of the guide's rewards have been handed over (plan 44 · SD6).</summary>
+    public int Rewarded { get; private set; }
+
+    /// <summary>The next reward the total has earned and that isn't handed over yet; null with none due.</summary>
+    public TourRewardData? RewardDue(IReadOnlyList<TourRewardData> rewards) =>
+        Rewarded < rewards.Count && Total >= rewards[Rewarded].At ? rewards[Rewarded] : null;
+
+    /// <summary>The reward due handed over: the next is due from now on.</summary>
+    public void Claim() => Rewarded++;
+
+    /// <summary>The four-star photographs the report keeps (its rare actions), which a medal counts.</summary>
+    public int FourStars => best.Count(b => b.Stars >= 4);
+
+    /// <summary>The report's best photographs on a course, one to a species, the best first (what its page lists).</summary>
+    public IReadOnlyList<TourBest> On(string course) => TourResults.ShownOf(best.Where(b => b.Course == course));
+
+    /// <summary>The report's total on one course: each species' best there, summed.</summary>
+    public int TotalOn(string course) => best.Where(b => b.Course == course).GroupBy(b => b.Species).Sum(g => g.Max(b => b.Points));
 
     /// <summary>A photograph offered: kept where it beats the best of its course, species and stars. True where it was kept.</summary>
     public bool Keep(TourBest photo)
@@ -215,9 +237,10 @@ public sealed class TourReport
     {
         best.Clear();
         rides.Clear();
+        Rewarded = 0;
     }
 
-    public TourReportSave? ToSave() => IsEmpty ? null : new TourReportSave { Best = best.ToList(), Rides = new Dictionary<string, int>(rides) };
+    public TourReportSave? ToSave() => IsEmpty ? null : new TourReportSave { Best = best.ToList(), Rides = new Dictionary<string, int>(rides), Rewarded = Rewarded };
 
     public void Load(TourReportSave? saved)
     {
@@ -225,6 +248,7 @@ public sealed class TourReport
         if (saved == null) return;
         best.AddRange(saved.Best);
         foreach (var (k, v) in saved.Rides) rides[k] = v;
+        Rewarded = Math.Max(0, saved.Rewarded);
     }
 }
 
@@ -298,8 +322,11 @@ public static class TourAutopilot
         float zoom = Math.Clamp((wantZoom - ride.Zoom) / (TourRide.ZoomSpeed * TourRide.Tick), -1f, 1f);
 
         bool onTarget = MathF.Abs(wantAim - ride.Aim) < 0.03f && MathF.Abs(wantPitch - ride.Pitch) < 0.03f;
-        var best = onTarget ? PhotoJudge.Best(frame, ride.Course) : null;
-        bool shoot = best != null && ticksSinceShot >= 90 && best.Points >= 350;
+        // It shoots only once its own subject counts and shows something of its face (plan 44 · SD6: a resident turned
+        // away was shot for its neighbours' points before), or a four-star moment, which waits for nobody
+        var mine = onTarget ? PhotoJudge.Judge(frame, ride.Course).FirstOrDefault(j => j.Resident == target.Resident) : null;
+        bool shoot = mine != null && (mine.Facing > 0 || mine.Stars >= 4) && mine.Points >= 350
+            && ticksSinceShot >= (mine.Stars >= 4 ? 30 : 90);
         // A fruit every fifteen seconds at most, to one that idles within reach
         bool throwFruit = onTarget && ride.FruitLeft > 0 && target.Act is TourAct.Idle && flat is > TourRide.FruitNearest and < TourRide.FruitFurthest
             && ride.Time >= (TourRide.FruitBag - ride.FruitLeft + 1) * 15f;

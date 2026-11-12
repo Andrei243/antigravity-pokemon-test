@@ -30,10 +30,10 @@ public sealed record Medal(MedalCategory Category, string Source, long Goal)
 public sealed class MedalFacts
 {
     public const string DexSeen = "dexSeen", DexCaught = "dexCaught", Badges = "badges", Champions = "champions", Circuits = "circuits",
-        HeartsReclaimed = "heartsReclaimed", HeartsOpened = "heartsOpened";
+        HeartsReclaimed = "heartsReclaimed", HeartsOpened = "heartsOpened", TourFourStars = "tourFourStars";
 
     /// <summary>The facts that are no counter, in the order the medals list them.</summary>
-    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions, Circuits, HeartsReclaimed, HeartsOpened };
+    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions, Circuits, HeartsReclaimed, HeartsOpened, TourFourStars };
 
     public Statistics Counts { get; init; } = new();
     public int Seen { get; init; }
@@ -48,6 +48,9 @@ public sealed class MedalFacts
     public int HeartsReclaimedCount { get; init; }
     public int HeartsOpenedCount { get; init; }
 
+    /// <summary>The photo tour's four-star photographs the report keeps (plan 44 · SD6).</summary>
+    public int TourFourStarCount { get; init; }
+
     public long Value(string source) => source switch
     {
         DexSeen => Seen,
@@ -57,6 +60,7 @@ public sealed class MedalFacts
         Circuits => CircuitCount,
         HeartsReclaimed => HeartsReclaimedCount,
         HeartsOpened => HeartsOpenedCount,
+        TourFourStars => TourFourStarCount,
         _ => Counts.Get(source)
     };
 }
@@ -85,6 +89,8 @@ public sealed class Medals
         Add(MedalCategory.Journey, Statistics.StepsSurf, 100, 1000, 5000, 10000, 25000, 50000);
         Add(MedalCategory.Journey, Statistics.StepsCycle, 500, 5000, 20000, 50000);
         Add(MedalCategory.Journey, Statistics.StepsDive, 100, 1000, 5000);
+        // A four-star photograph on the photo tour, a rare action caught (plan 44 · SD6)
+        Add(MedalCategory.Journey, MedalFacts.TourFourStars, 1);
 
         Add(MedalCategory.Battles, Statistics.WildWon, 1, 10, 50, 100, 250, 500, 1000);
         Add(MedalCategory.Battles, Statistics.TrainerWon, 1, 10, 25, 50, 100, 250, 500, 1000);

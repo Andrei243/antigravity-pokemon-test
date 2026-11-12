@@ -14,7 +14,7 @@ namespace PokemonPlatinumEngine.Models;
 public enum TourAct { Idle, Walk, Sleep, Eat, Play, Show, Fruit, Woke, Turn, Flee, Rare }
 
 /// <summary>The weather a ride is taken in (plan 44 · SD5, the user's answer 64: rare actions hang on weather and time).</summary>
-public enum TourWeather { Clear, Rain }
+public enum TourWeather { Clear, Rain, Snow }
 
 /// <summary>A step of a resident's day: an action for so many seconds; a walk's end point; a playmate; a move's kind shown.</summary>
 public sealed record TourStepData
@@ -100,23 +100,49 @@ public sealed record TourCourseData
     /// <summary>The report's total that opens the course.</summary>
     public int OpensAt { get; init; }
 
-    /// <summary>The course's look (<c>river</c>; later courses add their own).</summary>
+    /// <summary>The course's look (<see cref="TourLooks"/>: <c>river</c>, <c>wood</c>, <c>reef</c>, <c>cavern</c>, <c>pass</c>, <c>garden</c>).</summary>
     public string Look { get; init; } = "river";
 
     /// <summary>The song played on the ride; null keeps the place's.</summary>
     public string? Music { get; init; }
 
+    /// <summary>The kinds of place its residents live in (plan 44 · SD6): every resident's Pokédex habitat is one of them.</summary>
+    public List<DexHabitat> Habitats { get; init; } = new();
+
+    /// <summary>
+    /// A course ridden after dark whatever the clock says (plan 44 · SD6, the Night Garden): a ride begun by day is taken at
+    /// <see cref="TourRide.NightHour"/>, one begun at night at its own hour (<see cref="TourRide.HourFor"/>).
+    /// </summary>
+    public bool Night { get; init; }
+
     public List<TourResidentData> Residents { get; init; } = new();
     public List<TourScreenData> Screens { get; init; } = new();
+}
+
+/// <summary>A reward of the guide's (plan 44 · SD6): an item, handed over once the report's total reaches <see cref="At"/>.</summary>
+public sealed record TourRewardData
+{
+    [DataRequired] public int At { get; init; }
+    [DataRequired] public string Item { get; init; } = "";
+    public int Count { get; init; } = 1;
 }
 
 /// <summary>What <c>Data/photo-tour.json</c> holds.</summary>
 public sealed record PhotoTourFile
 {
     public List<TourCourseData> Courses { get; init; } = new();
+
+    /// <summary>The guide's rewards, the report's total rising (plan 44 · SD6).</summary>
+    public List<TourRewardData> Rewards { get; init; } = new();
 }
 
-/// <summary>The photo tour's courses (plan 44 · SD5).</summary>
+/// <summary>The courses' looks (plan 44 · SD6), which <c>Graphics/CourseScene</c> builds and the renderer lights.</summary>
+public static class TourLooks
+{
+    public static IReadOnlyList<string> All { get; } = new[] { "river", "wood", "reef", "cavern", "pass", "garden" };
+}
+
+/// <summary>The photo tour's courses (plan 44 · SD5, SD6).</summary>
 public static class PhotoTourCourses
 {
     public const string FileName = "photo-tour.json";
@@ -124,6 +150,8 @@ public static class PhotoTourCourses
     private static readonly Lazy<PhotoTourFile> file = new(() => GameDataFiles.Load<PhotoTourFile>(FileName, strict: true));
 
     public static IReadOnlyList<TourCourseData> All => file.Value.Courses;
+
+    public static IReadOnlyList<TourRewardData> Rewards => file.Value.Rewards;
 
     public static TourCourseData? Get(string? id) => All.FirstOrDefault(c => c.Id == id);
 }
@@ -293,6 +321,16 @@ public sealed class TourRide
     /// <summary>How far along the rail, 0 to 1.</summary>
     public float Progress => Math.Clamp(Time / course.Seconds, 0f, 1f);
 
+    /// <summary>The hour a night course is ridden at when it is begun by day.</summary>
+    public const int NightHour = 21;
+
+    /// <summary>The hour a ride on a course is taken at: the clock's, or <see cref="NightHour"/> on a night course begun by day.</summary>
+    public static int HourFor(TourCourseData course, int hour)
+    {
+        hour = ((hour % 24) + 24) % 24;
+        return course.Night && hour is >= 5 and < 19 ? NightHour : hour;
+    }
+
     /// <summary>The weather a seed draws from a course's list.</summary>
     public static TourWeather WeatherFor(TourCourseData course, uint seed) =>
         course.Weathers.Count == 0 ? TourWeather.Clear : course.Weathers[new SplitMix(seed ^ 0x5EEDu).Int(course.Weathers.Count)];
@@ -301,7 +339,7 @@ public sealed class TourRide
     {
         this.course = course;
         Seed = seed;
-        Hour = ((hour % 24) + 24) % 24;
+        Hour = HourFor(course, hour);
         Weather = weather;
         railLength = new float[Math.Max(1, course.Rail.Count)];
         for (int i = 1; i < course.Rail.Count; i++) railLength[i] = railLength[i - 1] + Vector3.Distance(Point(i - 1), Point(i));

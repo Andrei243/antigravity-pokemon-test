@@ -1359,15 +1359,20 @@ public sealed partial class WorldRenderer
         else if (riding)
         {
             int facing = CharacterSprites.FacingIndex(player.Yaw);
-            FieldSprites.Prepare(context, player.Steed!, facing, ref fieldBakes);
-            carrier = FieldSprites.Get(player.Steed!, facing);
+            // (in a grown region at the grown field's size, as its Pokémon stand: a grown rider astride a chibi Tauros
+            // would sit on a calf)
+            string steed = GrownField ? FieldSprites.GrownName(player.Steed!) : player.Steed!;
+            FieldSprites.Prepare(context, steed, facing, ref fieldBakes);
+            carrier = FieldSprites.Get(steed, facing);
             saddle = carrier != null ? 1f : 0f;
+            // A grown rider sits astride live, the saddle on the back (the chibi kit reads none of it)
+            if (carrier != null && GrownField) playerPose.Riding = Riding.Mount;
             bob = carrier != null && player.IsMoving && MathF.Floor(time * 8f) % 2f == 0f ? Rows(1f) : 0f;
             playerPose.Walk = 0f;
             playerPose.WalkBlend = 0f;
             playerPose.Running = false;
         }
-        float seat = carrier != null ? (riding ? RideSeat(carrier) : CarrierSeat(carrier)) : SurfMount.Seat;
+        float seat = carrier != null ? (riding ? (GrownField ? GrownRideSeat(carrier) : RideSeat(carrier)) : CarrierSeat(carrier)) : SurfMount.Seat;
         // A grown surfer kneels on the Pokémon's back (the grown kit's alone; a chibi rig never reads it)
         if (player.Mount != null) playerPose.Riding = Riding.Surf;
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
@@ -1388,8 +1393,8 @@ public sealed partial class WorldRenderer
         }
         actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose, Relief.DeckOver(map, playerAt.X, playerAt.Z, playerAt.Y), player,
             // (a grown player fishes and surfs as a live rig, plan 30's owed: the rod in their hands, kneeling on the
-            // Pokémon's back; a ride on land is still the sprite)
-            !(FieldRigChoice.LiveIn(playerPose.Stance) || fishing) || riding, playerSeating,
+            // Pokémon's back; and since Alola turned grown, rides a Pokémon on land astride, live)
+            !(FieldRigChoice.LiveIn(playerPose.Stance) || fishing), playerSeating,
             new Vector3(0f, 0f, TalkBackOf(map, player))));
 
         if (player.Mount is { } ridden)
@@ -1406,6 +1411,13 @@ public sealed partial class WorldRenderer
 
     /// <summary>How many rows above the ground a rider of a ride on land sits: a little under half of the Pokémon's height (plan 23, wave 91).</summary>
     internal static int RideSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - FieldSprites.FootRows) * 0.45f);
+
+    /// <summary>
+    /// Where a grown rider's saddle sits on a ride on land (Alola grown, 2026-11-12; style guide, "Live rigs in the
+    /// field", "Stances and rides"): on its back, three fifths of the Pokémon's height up, the rider astride with the
+    /// grown kit's mount clip.
+    /// </summary>
+    internal static int GrownRideSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - FieldSprites.FootRows) * 0.6f);
 
     /// <summary>How many rows of a Pokémon's field sprite are under the water while it carries someone: a fifth of it.</summary>
     internal static int CarrierSunk(FieldSprites.Strip carrier) => (int)MathF.Round(carrier.Rows * 0.2f);

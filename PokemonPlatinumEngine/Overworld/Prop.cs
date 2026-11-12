@@ -385,6 +385,8 @@ public enum PropType
     GatherSnowBare,
     /// <summary>A photo spot's plate (plan 43 · LF4): a low post with a camera on its face, read from the tile before it; blocks nothing.</summary>
     PhotoSpot,
+    /// <summary>The film studio's poster wall (plan 42 · PS4, part b): a hoarding with the four films' posters in warm reds, read from the tile before it; appended past the decorations and blocks its tiles all the same, as the tower does.</summary>
+    PosterWall,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>
@@ -407,7 +409,7 @@ public sealed class Prop
 
     /// <summary>Whether it blocks every tile it covers. A conveyor and its gantry stand over open ground: the world says which of their tiles block.</summary>
     // Lumiose City's tower (plan 23 · Z2) is appended past the decorations and blocks all the same: nothing walks through it
-    public bool IsSolid => Type < PropType.Rug && Type is not (PropType.Conveyor or PropType.Gantry) || Type == PropType.PrismTower;
+    public bool IsSolid => Type < PropType.Rug && Type is not (PropType.Conveyor or PropType.Gantry) || Type is PropType.PrismTower or PropType.PosterWall;
 
     /// <summary>Reception and shop counters: you can talk to whoever stands behind them.</summary>
     public bool IsCounter => Type is PropType.Counter or PropType.LabDesk;

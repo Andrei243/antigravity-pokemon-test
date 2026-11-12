@@ -20,10 +20,12 @@
   // A new game begun here (--region Alola) wakes in the player's new home on Route 1 with nothing, and the kahuna of
   // Iki Town hands over the first Pokémon (plan 23 · Z5)
   "hasStory": true,
-  // How the player moves here (plan 30 · FM1): eight ways on the grid, as Kalos does, until plan 30's gate lets the
-  // later regions move freely (stage 2, FM7 to FM9). The body kit stays chibi until plan 30 · FM3 and FM4 build the
-  // grown one. Its own mode is the Ride Pager's rides on land (plan 23, wave 91: TravelMode.Riding)
-  "movement": { "directions": "Eight", "speed": "Paces", "modes": [ "Ride" ] },
+  // How the player moves here: freely at the stick's tilt (plan 30 · FM7 to FM9) and in the grown body kit (FM4), as
+  // Kalos does since its gate; the user switched Alola on 2026-11-12 (plan 30, "Alola free and grown"). Outdoors it is
+  // looked at with a camera of its own (FieldCamera.Alola). Its own mode is the Ride Pager's rides on land (plan 23,
+  // wave 91: TravelMode.Riding)
+  "movement": { "directions": "Free", "speed": "Analog", "modes": [ "Ride" ] },
+  "kit": "Grown",
   // The rival is the kahuna's grandson, who has the same name in every game
   "rival": "Hau",
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },

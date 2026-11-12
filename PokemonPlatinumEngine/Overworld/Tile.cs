@@ -134,7 +134,13 @@ public enum FieldCamera
     /// the ground across about what Platinum's shows. Every outdoor place of such a region whose own header names no
     /// camera has it (<c>World</c>'s builder); an area may name it as <c>Kalos</c>.
     /// </summary>
-    Kalos
+    Kalos,
+    /// <summary>
+    /// 500 units away, pitched 46°, 22° of view: Alola's outdoors once its people are grown (the user's switch of
+    /// 2026-11-12; style guide, "Scale in a grown region", "Alola's camera"), lower and nearer than Kalos's, so the
+    /// islands' sea and far shore show past the player. An area may name it as <c>Alola</c>.
+    /// </summary>
+    Alola
 }
 
 /// <summary>

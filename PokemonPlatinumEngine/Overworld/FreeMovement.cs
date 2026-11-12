@@ -89,7 +89,10 @@ public static class FreeMovement
         {
             if (step.Obstacle == Obstacle.Person && map.InBounds(nx, ny)
                 && map.NpcIn(nx, ny, map.SurfaceAt(nx, ny, walker.Height).Height) is { } thing
-                && (thing.IsIceBlock || (pushes && thing.Obstacle == PropType.StrengthBoulder)))
+                && (thing.IsIceBlock || (pushes && thing.Obstacle == PropType.StrengthBoulder)
+                    // A charging ride (Tauros) runs into a cracked rock from the tile's centre, as on the grid, so the
+                    // grid's bump notes what it ran into and the engine's charge breaks it (plan 23, Alola free)
+                    || (walker.Mode == TravelMode.Riding && RidePager.Charges(walker.Steed) && thing.Obstacle == PropType.CrackedRock)))
                 return Edge.HandOff;
             // Skates refused (tall grass, stairs): the grid takes the step on foot
             return step.Obstacle == Obstacle.Skates ? Edge.HandOff : Edge.Solid;
