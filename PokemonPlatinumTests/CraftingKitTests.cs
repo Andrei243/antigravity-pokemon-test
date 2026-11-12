@@ -249,7 +249,7 @@ public class CraftingKitTests
         var bag = new Inventory();
         var screen = new CraftingScreen();
         screen.Open(state, bag, 0, CraftingPlace.Anywhere);
-        Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make }, screen.Tabs);
+        Assert.Equal(new[] { CraftingTab.Materials, CraftingTab.Make, CraftingTab.Crosses }, screen.Tabs);
         screen.ChangeTab(1);
         Assert.Equal(CraftingTab.Make, screen.Tab);
         Assert.Equal("pokeBall", screen.SelectedRecipe!.Id);

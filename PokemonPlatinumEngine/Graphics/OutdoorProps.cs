@@ -1023,6 +1023,17 @@ public static class ThingCards
             PropType.EggBasket => (FestivalArt.BasketWidth, FestivalArt.BasketHeight, FestivalArt.PaintEggBasket),
             PropType.NewYearBanner => (FestivalArt.BannerWidth, FestivalArt.BannerHeight, FestivalArt.PaintNewYearBanner),
             PropType.ValentineHeart => (FestivalArt.HeartWidth, FestivalArt.HeartHeight, FestivalArt.PaintValentineHeart),
+            // The gathering spots (plan 39 · CR2), bearing and bare
+            PropType.GatherRock => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintRock(c, bearing: true)),
+            PropType.GatherRockBare => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintRock(c, bearing: false)),
+            PropType.GatherWood => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintWood(c, bearing: true)),
+            PropType.GatherWoodBare => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintWood(c, bearing: false)),
+            PropType.GatherPlant => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintPlant(c, bearing: true)),
+            PropType.GatherPlantBare => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintPlant(c, bearing: false)),
+            PropType.GatherShore => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintShore(c, bearing: true)),
+            PropType.GatherShoreBare => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintShore(c, bearing: false)),
+            PropType.GatherSnow => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintSnow(c, bearing: true)),
+            PropType.GatherSnowBare => (GatherArt.Width, GatherArt.Height, c => GatherArt.PaintSnow(c, bearing: false)),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);

@@ -21,7 +21,9 @@ public enum FriendshipEvent
     /// <summary>Petted in camp (plan 10 · F6, ours), once a visit.</summary>
     Petted,
     /// <summary>Fed a berry or a Poffin in camp (plan 10 · F6, ours), once a visit.</summary>
-    Fed
+    Fed,
+    /// <summary>A mark a battle left cleaned off its coat (plan 35 · BN1, ours), once a day.</summary>
+    Groomed
 }
 
 /// <summary>
@@ -58,6 +60,8 @@ public static class FriendshipRules
         // The camp's (plan 10 · F6): a pat is worth a contest's win, a meal a level's
         FriendshipEvent.Petted => (3, 2, 1),
         FriendshipEvent.Fed => (5, 3, 2),
+        // The care book's grooming (plan 35 · BN1): a little less than a pat
+        FriendshipEvent.Groomed => (2, 1, 1),
         _ => (0, 0, 0)
     };
 

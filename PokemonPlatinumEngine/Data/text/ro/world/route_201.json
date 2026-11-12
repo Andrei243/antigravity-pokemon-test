@@ -127,6 +127,16 @@
           "Laboratorul profesorului e clădirea mare din stânga, cum intri."
         ]
       }
+    },
+    "route_201.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

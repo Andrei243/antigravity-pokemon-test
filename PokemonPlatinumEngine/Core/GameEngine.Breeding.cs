@@ -55,6 +55,7 @@ public partial class GameEngine
         if (flow.HatchScreen.Pokemon is { IsEgg: false } hatched)
         {
             flow.Pokedex.RegisterCaught(hatched);
+            CareHatched(hatched);
             flow.Poketch.Remember(hatched);
             flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.HatchedEgg);
             // An Egg hatched counts for the Week's Work (plan 41 · EG6)

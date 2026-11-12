@@ -649,6 +649,16 @@
           "Campist Branden: Trebuia să-mi iau Pokémoni mai buni."
         ]
       }
+    },
+    "route_111.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -131,6 +131,16 @@
           "Pokémonii de pe drumul ăsta sunt ceva mai puternici decât cei de pe Ruta 29. Ai grijă!"
         ]
       }
+    },
+    "route_30.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

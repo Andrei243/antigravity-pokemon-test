@@ -581,6 +581,12 @@ public interface IScriptHost
     /// <summary>Sinnoh's berry patches.</summary>
     BerryPatches Berries { get; }
 
+    /// <summary>
+    /// The patches of the soils on the eight tiles round a soil of the map the player is on (plan 39 · CR5): what a berry
+    /// planted there may cross with. None where a host has no map.
+    /// </summary>
+    IEnumerable<int> PatchesBeside(NPC soil) => System.Array.Empty<int>();
+
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6).</summary>
     ApricornBox Apricorns { get; }
 

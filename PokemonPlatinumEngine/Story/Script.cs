@@ -205,6 +205,8 @@ public enum Op
     Missions,
     // Galar's Max Raid dens (plan 33 · GL3): a den looked into, its light's Watts, its raid fought, its felled boss caught
     Raid,
+    // Treats (plan 35 · BN3): the baker's three berries of a flavour, or one of each, made into a finer treat
+    Treat,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

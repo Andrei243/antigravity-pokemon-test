@@ -81,6 +81,16 @@
           "În Orașul Violet e un turn înalt. Se leagănă când bate vântul, dar nu cade niciodată!"
         ]
       }
+    },
+    "route_31.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

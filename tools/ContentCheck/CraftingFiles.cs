@@ -68,6 +68,17 @@ public static class CraftingFiles
         foreach (var (name, what) in Crafting.Problems(data.Kit)) Add(name, what);
         // The camp's dishes (plan 39 · CR6): the plain dish, four climbing grades, needs of the pantry, powers something reads
         foreach (var (name, what) in Meals.Problems(data.Kitchen)) Add(name, what);
+        // The crosses (plan 39 · CR5): flavours that are flavours, berries that are berries, each cross made by one row
+        foreach (string what in PokemonPlatinumEngine.Overworld.BerryCrossing.Problems(data.Crosses)) Add("crosses", what);
+        // The waiters' and stalls' menus (plan 39 · CR7): a dish of the kitchen's at a price, at a place whose script serves it
+        foreach (var stand in data.Stands)
+        {
+            string name = $"stands: {stand.Place} {stand.Dish}";
+            if (data.Kitchen.Dishes.All(d => d.Id != stand.Dish)) Add(name, "names no dish of the kitchen");
+            else if (data.Kitchen.Dishes.First(d => d.Id == stand.Dish).Power == null) Add(name, "serves a dish that starts no power");
+            if (stand.Price < 1) Add(name, "costs nothing");
+            if (content.Scripts.In(stand.Place, "MealStand") == null) Add(name, "is at a place with no MealStand script");
+        }
     }
 
     /// <summary>
@@ -136,5 +147,7 @@ public static class CraftingFiles
             if (rare == null) Add(type.ToString(), "has no rare material");
             if (common != null && rare != null && rare.Worth <= common.Worth) Add(rare.Id, $"is the rare material of {type} and not worth more than its common one");
         }
+        // The gathering spots' finds and what a tree cut or a rock smashed leaves (plan 39 · CR2): field materials, with weights
+        foreach (string what in Gathering.Problems(data)) Add("gather", what);
     }
 }

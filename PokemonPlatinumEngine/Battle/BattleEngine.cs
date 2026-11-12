@@ -149,6 +149,12 @@ public partial class BattleEngine
     /// </summary>
     public IReadOnlyList<Pokemon> LeveledUp => leveledUpPokemon;
 
+    /// <summary>
+    /// The player's own Pokémon (the game's, not the rules' copies) that the battle sent out (<see cref="BattleCore.SentOut"/>):
+    /// what the care book soils after the battle (plan 35 · BN1).
+    /// </summary>
+    public IReadOnlyList<Pokemon> SentOutShown => core.SentOut.Select(mirror.Shown).ToList();
+
     /// <summary>What Pay Day scattered for the player, picked up with a win.</summary>
     public int PayDayMoney => core.PayDayMoney;
 

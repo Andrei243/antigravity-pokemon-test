@@ -163,6 +163,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public IEnumerable<Pokemon> Boxed => Boxes;
 
     public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
+    public IEnumerable<int> PatchesBeside(NPC soil) => Map != null ? BerryCrossing.Beside(Map, soil).ToList() : new List<int>();
     public ApricornBox Apricorns { get; set; } = new();
     public CraftingState? Crafting { get; set; } = new();
 

@@ -368,6 +368,21 @@ public enum PropType
     EggBasket,
     NewYearBanner,
     ValentineHeart,
+    /// <summary>
+    /// The gathering spots of the field (plan 39 · CR2; style guide, "Props", "Gathering spots"): things of the map
+    /// (<see cref="NPC.GatherSpotType"/>), in five kinds, each bearing (something loose on it to take today) or bare
+    /// (picked today), drawn as cards of our own (<c>GatherArt</c>).
+    /// </summary>
+    GatherRock,
+    GatherRockBare,
+    GatherWood,
+    GatherWoodBare,
+    GatherPlant,
+    GatherPlantBare,
+    GatherShore,
+    GatherShoreBare,
+    GatherSnow,
+    GatherSnowBare,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

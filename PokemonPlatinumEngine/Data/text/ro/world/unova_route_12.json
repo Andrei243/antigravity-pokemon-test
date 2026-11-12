@@ -103,6 +103,16 @@
           "Nici garda mea n-a fost de ajuns."
         ]
       }
+    },
+    "unova_route_12.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

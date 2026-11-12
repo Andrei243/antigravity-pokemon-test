@@ -77,6 +77,16 @@
           "Drumeț Benjamin: Ha! Mă întorc pe munte."
         ]
       }
+    },
+    "route_42.gather": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

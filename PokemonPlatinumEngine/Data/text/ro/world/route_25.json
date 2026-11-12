@@ -269,6 +269,16 @@
           "Domnișoară Haley: Briza nu m-a ajutat deloc!"
         ]
       }
+    },
+    "route_25.gather": {
+      "name": {
+        "en": [
+          "Shells"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

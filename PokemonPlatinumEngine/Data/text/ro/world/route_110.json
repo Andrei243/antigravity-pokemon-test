@@ -635,6 +635,16 @@
           "Chitarist Joseph: Am rupt o coardă. Și o luptă."
         ]
       }
+    },
+    "route_110.gather": {
+      "name": {
+        "en": [
+          "Herb bush"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

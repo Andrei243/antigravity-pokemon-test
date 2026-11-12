@@ -70,9 +70,16 @@ internal static partial class ModernUi
     }
 
     /// <summary>The start menu's rows once it has slid in (<see cref="DrawStartMenu"/>), in the entries' order.</summary>
+    /// <summary>
+    /// A start menu row's height: 74 up to ten entries, and less beyond, so the panel never runs off the screen (plan 35 ·
+    /// BN2: CAMP by TEAM CARE beside the Pokégear or the PokéNav and REQUESTS).
+    /// </summary>
+    public static float StartMenuRowHeight(int count) => count <= 10 ? 74f : MathF.Max(56f, MathF.Floor(740f / count));
+
     public static Rectangle[] StartMenuRows(int sw, int count, float shown = 1f)
     {
-        const float width = 440, row = 74;
+        const float width = 440;
+        float row = StartMenuRowHeight(count);
         var panel = new Rectangle(sw - 40 - width + (1f - shown) * (width + 80), 40, width, 40 + count * row + 18);
         var rects = new Rectangle[count];
         for (int i = 0; i < count; i++)

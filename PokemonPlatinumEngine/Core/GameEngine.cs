@@ -153,7 +153,9 @@ public enum GameState
     /// <summary>The Power Watch's panel, from the bag or the item button (plan 36 · TR8).</summary>
     Powers,
     /// <summary>The hub's Week's Work read, a script's <c>missions open</c> waiting on it (plan 41 · EG6).</summary>
-    MissionBoard
+    MissionBoard,
+    /// <summary>One Pokémon of the camp close up: petted by hand, fed, brushed and cured (plan 35 · BN2).</summary>
+    Care
 }
 
 public partial class GameEngine
@@ -487,6 +489,7 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
+        flow.Care.Clear();
         flow.Gifts.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
@@ -761,6 +764,7 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.Crafting.Load(save.Crafting);
+        flow.Care.Restore(save.Care);
         flow.Gifts.Load(save.Gifts);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
@@ -988,6 +992,7 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             Crafting = flow.Crafting.ToSave(),
+            Care = CareToSave(),
             Gifts = flow.Gifts.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
@@ -1502,6 +1507,7 @@ public partial class GameEngine
                 else if (!flow.BagScreen.IsActive && choosingBerryToCook && flow.BagScreen.TakePick(out var toCook)) BerryChosenToCook(toCook);
                 else if (!flow.BagScreen.IsActive && choosingBerryToBlend && flow.BagScreen.TakePick(out var toBlend)) BerryChosenToBlend(toBlend);
                 else if (!flow.BagScreen.IsActive && choosingBerryForCamp && flow.BagScreen.TakePick(out var toFeed)) BerryChosenForCamp(toFeed);
+                else if (!flow.BagScreen.IsActive && choosingForCare && flow.BagScreen.TakePick(out var toEat)) PickedForCare(toEat);
                 else if (!flow.BagScreen.IsActive && flow.BagScreen.TakePick(out var picked))
                 {
                     // A script that asked for an item hears which (plan 06 · R14a)
@@ -1773,6 +1779,9 @@ public partial class GameEngine
             case GameState.Camp:
                 UpdateCamp(dt);
                 break;
+            case GameState.Care:
+                UpdateCare(dt);
+                break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Update(dt);
                 if (!flow.TitleCreditsScreen.IsActive) flow.State = GameState.Title;
@@ -1902,6 +1911,7 @@ public partial class GameEngine
         KeepTheClock();
         KeepBerriesInView();
         KeepApricornTreesInView();
+        KeepGatherSpotsInView();
         KeepTheSaltInView();
         SlideBoulders(fieldDt);
         flow.PoketchView.Update(dt);
@@ -2254,6 +2264,8 @@ public partial class GameEngine
                 if (!p.IsEgg && before < FriendshipRules.EvolveAt && p.Friendship >= FriendshipRules.EvolveAt)
                     flow.Pokedex.Research.Tell(p.Species, ResearchKind.Befriended);
             }
+            // The care book's walk cycle: moods settle, and a coat left soiled lowers one (plan 35 · BN1)
+            CareRules.WalkCycle(flow.Care, flow.Party.Members);
         }
         if (flow.Party.Count > 0) Evolution.CountStep(flow.Party.Members[0]);
         flow.Poketch.Step();
@@ -2355,6 +2367,8 @@ public partial class GameEngine
         // (FieldSystem_InitFlagsOnMapChange, not during a Safari Game; plan 06 · R13)
         if (another) ChangePlace();
         if (another && !flow.Safari.Active) Roamers.PlayerWalkedInto(flow.Encounters, area.Key, fieldRandom);
+        // The follower notices a new place (plan 35 · BN4)
+        if (another) NoteForTheLead(LeadFollower.Moment.NewPlace);
         NoteArrival();
         PlayFieldMusic();
         // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
@@ -2450,7 +2464,12 @@ public partial class GameEngine
     {
         if (flow.EvolutionScreen.Outcome is { } outcome)
         {
-            if (flow.EvolutionScreen.Pokemon is { } evolved) flow.Pokedex.RegisterCaught(evolved);
+            if (flow.EvolutionScreen.Pokemon is { } evolved)
+            {
+                flow.Pokedex.RegisterCaught(evolved);
+                CareEvolved(evolved);
+                NoteForTheLead(LeadFollower.Moment.Evolved);
+            }
             else flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
             flow.Statistics.Count(Statistics.Evolutions);
             // An evolution out of a species, for its research (plan 15 · E1)
@@ -3270,6 +3289,11 @@ public partial class GameEngine
         {
             flow.Credits.Render(renderContext);
         }
+        else if (scene == GameState.Care)
+        {
+            // The care close-up's model, a scene of its own as the gallery's (plan 35 · BN2)
+            flow.CareScreen.Render(renderContext);
+        }
         else if (scene == GameState.Gallery)
         {
             // The gallery's model, a scene of its own like the evolution's (plan 12 · Q30)
@@ -3408,6 +3432,9 @@ public partial class GameEngine
                 break;
             case GameState.Camp:
                 flow.CampScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Care:
+                flow.CareScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.TitleCredits:
                 flow.TitleCreditsScreen.Draw(VirtualWidth, VirtualHeight);

@@ -461,8 +461,40 @@ public class NPC
         EggBasketType => PropType.EggBasket,
         NewYearBannerType => PropType.NewYearBanner,
         ValentineHeartType => PropType.ValentineHeart,
+        GatherRockType => GatherBearing ? PropType.GatherRock : PropType.GatherRockBare,
+        GatherWoodType => GatherBearing ? PropType.GatherWood : PropType.GatherWoodBare,
+        GatherPlantType => GatherBearing ? PropType.GatherPlant : PropType.GatherPlantBare,
+        GatherShoreType => GatherBearing ? PropType.GatherShore : PropType.GatherShoreBare,
+        GatherSnowType => GatherBearing ? PropType.GatherSnow : PropType.GatherSnowBare,
         _ => null
     };
+
+    // ---- Gathering spots (plan 39 · CR2)
+
+    /// <summary>
+    /// The gathering spots of the field (plan 39 · CR2): things of the map an overlay stands in a region's routes, shown
+    /// by the crafting kit's flag (<c>FLAG_GOT_CRAFTING_KIT</c>), in the way like a person and spoken to through
+    /// <c>common.Gather</c>; each gives its kind's finds once a calendar day (<c>Models/Gathering.cs</c>). Drawn as cards
+    /// of our own (<c>GatherArt</c>), bearing or bare.
+    /// </summary>
+    public const string GatherRockType = "GatherRock", GatherWoodType = "GatherWood", GatherPlantType = "GatherPlant",
+        GatherShoreType = "GatherShore", GatherSnowType = "GatherSnow";
+
+    /// <summary>Which kind of gathering spot this is; null for anyone and anything else.</summary>
+    public Models.GatherKind? GatherKind => NpcType switch
+    {
+        GatherRockType => Models.GatherKind.Rock,
+        GatherWoodType => Models.GatherKind.Wood,
+        GatherPlantType => Models.GatherKind.Plant,
+        GatherShoreType => Models.GatherKind.Shore,
+        GatherSnowType => Models.GatherKind.Snow,
+        _ => null
+    };
+
+    public bool IsGatherSpot => GatherKind != null;
+
+    /// <summary>For a gathering spot: whether something is on it to take today, as the game last told it (the renderer reads this and nothing else).</summary>
+    public bool GatherBearing { get; set; } = true;
 
     /// <summary>A snowball of the Snowpoint Gym (plan 01 · M9, part 2b), which someone sliding fast enough breaks (<see cref="IceSlide"/>).</summary>
     public bool IsSnowball => NpcType == SnowballType;

@@ -250,6 +250,10 @@ public class ScriptTests
           raid watts
           raid fight
           raid catch "Poké Ball"
+          treat can
+          treat can mixed
+          treat bake spicy
+          treat bake most
           train open
           train drill
           train reset all

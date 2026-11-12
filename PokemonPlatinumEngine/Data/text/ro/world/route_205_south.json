@@ -277,6 +277,16 @@
           "Excursionistă Karina: Nu te mișca și ascultă. Auzi cum strigă Pokémonii?"
         ]
       }
+    },
+    "route_205_south.gather": {
+      "name": {
+        "en": [
+          "Fallen log"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

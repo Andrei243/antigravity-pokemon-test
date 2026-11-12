@@ -711,7 +711,7 @@ public static class ScriptParser
             case "lottery":
                 return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed") };
             case "berry":
-                return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches") };
+                return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches", "pot", "crossed") };
             // Apricorn trees, the Apricorn Box and Kurt's balls (plan 20 · J6)
             case "apricorn":
             {
@@ -1176,6 +1176,15 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Subway, Line = line, Name = what, Other = which };
             }
 
+            // Treats (plan 35 · BN3): `treat bake` (three berries of the flavour the bag has most of), `treat bake spicy`
+            // and the other four, `treat bake mixed` (one berry of each flavour), and `treat can` (RESULT 1 when a bake could be made)
+            case "treat":
+            {
+                string what = r.OneOf("bake", "can");
+                string flavour = r.More ? r.OneOf("spicy", "dry", "sweet", "bitter", "sour", "mixed", "most") : "most";
+                return new Instruction { Op = Op.Treat, Line = line, Name = what, Other = flavour };
+            }
+
             // The crafting kit and its pouch (plan 39 · CR1): `craft has`, `craft give kit`, `craft give "Soft Fluff" 3`,
             // `craft take "Soft Fluff" 3`, `craft count "Soft Fluff"`, `craft open`; a material by its id or its English name;
             // CR4's `craft tm`, CR3's apprentice's `craft tradable` and `craft trade`, CR6's `craft pantry` and `craft meal`
@@ -1195,7 +1204,7 @@ public static class ScriptParser
 
             case "craft":
             {
-                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal");
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared");
                 // A dish eaten there and then (plan 39 · CR6): `craft meal "beanHotpot"`, or with its grade, `craft meal "beanHotpot" superb`
                 if (what == "meal")
                 {
@@ -1204,6 +1213,9 @@ public static class ScriptParser
                     string grade = r.More ? r.OneOf("plain", "good", "great", "superb") : "great";
                     return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = dish, Number = (int)System.Enum.Parse<Models.DishGrade>(grade, ignoreCase: true) };
                 }
+                // What a tree cut or a rock smashed leaves (plan 39 · CR2): `craft cleared tree`, `craft cleared rock`
+                if (what == "cleared")
+                    return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = r.OneOf("tree", "rock") };
                 if (what == "give" && r.PeekWord("kit"))
                 {
                     r.Next();

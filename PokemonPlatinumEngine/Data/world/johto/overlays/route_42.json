@@ -3,6 +3,10 @@
   // Mahogany Town, its three trainers by their own records. Its Apricorn trees are plan 20 · J6's; the hiker at
   // the cave's west mouth, Suicune and Eusine wait for plan 20 · J11 and are left out
   "area": "route_42",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_42.gather", "name": "Rock", "npcType": "GatherRock", "x": 454, "y": 181, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "johto/route42",
   "trees": "Round",
   "people": {

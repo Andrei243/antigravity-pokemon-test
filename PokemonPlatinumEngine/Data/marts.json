@@ -720,6 +720,57 @@
       "Max Repel",
       "Revive"
     ],
+    "treats": [
+      "Pepper Bite",
+      "Crisp Wafer",
+      "Honey Drop",
+      "Cocoa Nib",
+      "Tart Chew"
+    ],
+    "festival_lanterns": [
+      "Lava Cookie",
+      "Old Gateau",
+      "Honey",
+      "Sweet Heart"
+    ],
+    "festival_midwinter": [
+      "Moomoo Milk",
+      "Old Gateau",
+      "Lava Cookie",
+      "Snowball"
+    ],
+    "festival_blossom": [
+      "Honey",
+      "Sweet Heart",
+      "Lemonade",
+      "Moomoo Milk"
+    ],
+    "festival_summer": [
+      "Lemonade",
+      "Soda Pop",
+      "Fresh Water",
+      "Sweet Heart"
+    ],
+    "festival_harvest_moon": [
+      "Moomoo Milk",
+      "Old Gateau",
+      "Honey"
+    ],
+    "festival_bellfall": [
+      "Rage Candy Bar",
+      "Lava Cookie",
+      "Moomoo Milk"
+    ],
+    "festival_tide_day": [
+      "Fresh Water",
+      "Soda Pop",
+      "Lemonade"
+    ],
+    "festival_bridgelight": [
+      "Casteliacone",
+      "Lemonade",
+      "Sweet Heart"
+    ],
     "training_hall_machines": [
       "TM93",
       "TM94",
@@ -933,50 +984,6 @@
       "TM302",
       "TM303",
       "TM304"
-    ],
-    "festival_lanterns": [
-      "Lava Cookie",
-      "Old Gateau",
-      "Honey",
-      "Sweet Heart"
-    ],
-    "festival_midwinter": [
-      "Moomoo Milk",
-      "Old Gateau",
-      "Lava Cookie",
-      "Snowball"
-    ],
-    "festival_blossom": [
-      "Honey",
-      "Sweet Heart",
-      "Lemonade",
-      "Moomoo Milk"
-    ],
-    "festival_summer": [
-      "Lemonade",
-      "Soda Pop",
-      "Fresh Water",
-      "Sweet Heart"
-    ],
-    "festival_harvest_moon": [
-      "Moomoo Milk",
-      "Old Gateau",
-      "Honey"
-    ],
-    "festival_bellfall": [
-      "Rage Candy Bar",
-      "Lava Cookie",
-      "Moomoo Milk"
-    ],
-    "festival_tide_day": [
-      "Fresh Water",
-      "Soda Pop",
-      "Lemonade"
-    ],
-    "festival_bridgelight": [
-      "Casteliacone",
-      "Lemonade",
-      "Sweet Heart"
     ]
   }
 }

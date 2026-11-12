@@ -495,6 +495,16 @@
           "Oaspeții vin pentru bucătărie și rămân pentru lupte: doi Pokémoni contra doi, la orice masă vrei."
         ]
       }
+    },
+    "meal_waiter": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

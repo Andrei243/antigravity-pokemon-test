@@ -1,5 +1,9 @@
 {
   "area": "route_216",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_216.gather", "name": "Snow drift", "npcType": "GatherSnow", "x": 340, "y": 393, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
   "bgmTrack": "sinnoh/route216",
   "trees": "Pine",
   // The Snowbound Lodge, on the original's plan (plan 01 · M11, part c): its keeper and its bed give a rest

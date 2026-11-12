@@ -91,6 +91,16 @@
           "Se zice că cafeneaua asta e aici de mai mult timp decât farul. Eu unul nu cred."
         ]
       }
+    },
+    "olivine_cafe.meal_stand": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

@@ -38,7 +38,8 @@ public class CompanionCampTests
     private static (GameEngine Engine, GameEngine.Driver Game) NewGame(bool follower)
     {
         Dice.Seed(41);
-        var engine = new GameEngine(new GameSettings { Muted = true, Follower = follower });
+        // TEAM CARE off, so the camp follows the FOLLOWER row alone (plan 35 · BN2 adds CAMP under its own row)
+        var engine = new GameEngine(new GameSettings { Muted = true, Follower = follower, Care = RulesDefault.Off });
         engine.InitializeHeadless();
         engine.PeopleStayPut = true;
         var game = engine.Drive;

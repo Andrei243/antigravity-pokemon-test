@@ -382,5 +382,73 @@
         "PC-ul tău de decorațiuni nu mai are loc pentru păpuși."
       ]
     }
+  ],
+  "MealStand": [
+    {
+      "en": [
+        "Stall keeper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hot food, straight off the griddle! A meal for the whole team, eaten right here at the stall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What will it be?",
+        "Spiced Flatbread, 1,500",
+        "Bean Hotpot, 1,600",
+        "Potato Hash, 1,800",
+        "The pantry",
+        "Nothing, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mind, it's hot! Your team wolfed it down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We sell the same goods we cook with. Take what you like for your own pot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, that's a little more than you have on you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're hungry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

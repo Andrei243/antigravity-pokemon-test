@@ -1,6 +1,10 @@
 {
   // Route 25 (plan 19 · K4): along the sea cliffs east to Bill's Sea Cottage (route_25_sea_cottage.txt)
   "area": "route_25",
+  // A gathering spot of plan 39 · CR2, shown once the crafting kit is in the bag
+  "npcs": [
+    {"id": "route_25.gather", "name": "Shells", "npcType": "GatherShore", "x": 341, "y": 8, "facing": "Down", "shownBy": "FLAG_GOT_CRAFTING_KIT"}
+  ],
 
   // Plan 40 · GE3: LeafGreen's Bellsprout and Slowpoke, once the National Pokédex is had
 

@@ -448,6 +448,12 @@ public sealed class GameSettings
     public BattleCameraChoice BattleCamera { get; set; } = BattleCameraChoice.Region;
 
     /// <summary>
+    /// TEAM CARE (plan 35 · BN2, decision 1): whether the start menu offers CAMP and its close-up whatever the FOLLOWER row
+    /// says. <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's rules keeps its menu.
+    /// </summary>
+    public RulesDefault Care { get; set; } = RulesDefault.Rules;
+
+    /// <summary>
     /// The battle room's records (plan 13 · V13, V26): the furthest a gauntlet came, the longest streak and the puzzles
     /// solved. Per machine, never per save; no row of the options, and kept when the options are reset.
     /// </summary>
