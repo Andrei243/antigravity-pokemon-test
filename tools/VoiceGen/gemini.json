@@ -1,6 +1,7 @@
 {
   "note": "Gemini TTS for the packs in other languages than English (generate --engine gemini --language ro). Each voice is one of Gemini's prebuilt voices with tags of delivery in brackets before the line, which Gemini follows and does not read aloud (a sentence of direction is read aloud). A voice not listed here gets a voice and tags by rule from its brief in cast.json (GeminiEngine.ByRule). The key is GEMINI_API_KEY.",
   "model": "gemini-3.8-flash-tts",
+  "models": [ "gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts", "gemini-2.5-pro-preview-tts" ],
   "voices": {
     "rowan": { "voice": "Algenib", "tags": "elderly professor, deep, gruff, stern, slow and deliberate" },
     "mom": { "voice": "Sulafat", "tags": "warm mother, easy-going, gently teasing" },

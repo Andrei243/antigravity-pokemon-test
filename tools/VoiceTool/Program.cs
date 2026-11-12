@@ -173,8 +173,10 @@ int Generate()
     {
         var catalogue = CatalogueNow();
         var pack = PackNow();
+        // Gemini plans every line and keeps those that need a take below, as their model can make a current take one to redo
+        var which = Option("--engine") == "gemini" ? VoiceGeneration.Which.All : VoiceGeneration.Which.Stale;
         foreach (string voice in words.Skip(1))
-            files.Add(VoiceGeneration.Plan(catalogue, voice, pack, VoiceGeneration.Which.Stale, LanguageOf(), SamplesFor(voice), VoiceLexicon.Default, takes: int.TryParse(Option("--takes"), out int takes) && takes > 0 ? takes : VoiceGeneration.Takes, selfSpeakers: SelfSpeakers));
+            files.Add(VoiceGeneration.Plan(catalogue, voice, pack, which, LanguageOf(), SamplesFor(voice), VoiceLexicon.Default, takes: int.TryParse(Option("--takes"), out int takes) && takes > 0 ? takes : VoiceGeneration.Takes, selfSpeakers: SelfSpeakers));
     }
     if (files.Count == 0) { Console.Error.WriteLine("generate <voice>... [--region <id>] [--language <tag>] [--engine gemini] | --jobs <file>"); return 2; }
     // Another language: each line as its translation has it (a line it hasn't translated is left out)
@@ -190,7 +192,24 @@ int Generate()
     if (Option("--engine") == "gemini")
     {
         if (Option("--takes") == null) foreach (var j in files.SelectMany(f => f.Jobs)) j.Seeds = j.Seeds.Take(1).ToList();
-        gemini = new GeminiEngine(Path.Combine(repo, "tools", "VoiceGen", "gemini.json"), GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath)));
+        gemini = new GeminiEngine(Path.Combine(repo, "tools", "VoiceGen", "gemini.json"), GameDataFiles.Deserialize<CastFile>(File.ReadAllText(castPath)), Option("--model"));
+        // One model to a voice, since the models' voices of one name differ: the model most of its takes in the pack were
+        // made by; a line made by another model, or not current, is made again by it
+        var made = VoiceLibrary.Open(Option("--into") is { } dest ? Path.GetFullPath(dest) : PackFolderOption());
+        const string prefix = "Gemini ";
+        var pins = (made?.Entries ?? Array.Empty<VoicePackEntry>()).Where(e => e.Engine?.StartsWith(prefix, StringComparison.Ordinal) == true)
+            .GroupBy(e => e.Voice).ToDictionary(g => g.Key, g => g.GroupBy(e => e.Engine!).OrderByDescending(m => m.Count()).ThenBy(m => m.Key, StringComparer.Ordinal).First().Key[prefix.Length..]);
+        gemini.Pin(pins);
+        int redo = 0;
+        foreach (var f in files)
+            f.Jobs = f.Jobs.Where(j =>
+            {
+                if (made?.StateOf(j.Key, j.English, j.Voice) is not ({ } state, { } entry) || state != VoiceState.Current) return true;
+                bool other = pins.TryGetValue(j.Voice, out var m) && entry.Engine != prefix + m;
+                if (other) redo++;
+                return other;
+            }).ToList();
+        if (redo > 0) Console.WriteLine($"{redo} lines were made by another model than their voice's and are made again.");
     }
     else if (!File.Exists(config))
     {
@@ -203,6 +222,13 @@ int Generate()
     var clock = Stopwatch.StartNew();
     foreach (var jobs in files)
     {
+        if (jobs.Jobs.Count == 0) continue;
+        // A voice whose model has no requests left today waits for another day, while voices of other models go on
+        if (gemini != null && jobs.Jobs.Select(j => j.Voice).Distinct().All(v => !gemini.CanSpeak(v)))
+        {
+            Console.WriteLine($"{jobs.Voice}: its model ({gemini.ModelOf(jobs.Jobs[0].Voice)}) has no requests left today; {jobs.Jobs.Count} lines wait.");
+            continue;
+        }
         var (kept, failed) = VoiceGeneration.Generate(jobs, command, Option("--into") is { } into ? Path.GetFullPath(into) : PackFolderOption(), Console.WriteLine);
         foreach (var (key, findings) in failed) Console.WriteLine($"{key}: {string.Join("; ", findings)}");
         Console.WriteLine($"{jobs.Voice}: {kept.Count} lines generated with {command.Name}; {failed.Count} with findings or failed.");

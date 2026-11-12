@@ -17,6 +17,11 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
     {
         public string? Note { get; set; }
         public string Model { get; set; } = "gemini-3.8-flash-tts";
+        /// <summary>
+        /// The models a run may use, in the order it uses them: when one's requests for the day are spent, the next takes
+        /// over, each with a daily allowance of its own. Only models the user has approved by ear go here. Empty: <see cref="Model"/> alone.
+        /// </summary>
+        public List<string> Models { get; set; } = new();
         public Dictionary<string, GeminiVoice> Voices { get; set; } = new();
     }
 
@@ -31,11 +36,35 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
     private readonly string key;
     private readonly HttpClient http = new() { Timeout = TimeSpan.FromMinutes(2) };
 
-    public string Name => "Gemini " + config.Model;
+    private readonly List<string> models;
+    // Every voice is said by one model alone, since the models' voices of one name differ: the model of a voice's takes
+    // already in the pack (Pin), or the first model with requests left when its first take is made
+    private readonly Dictionary<string, string> modelOf = new();
+    private readonly HashSet<string> spent = new();
+    private string last;
 
-    public GeminiEngine(string configPath, CastFile cast)
+    /// <summary>The model the last take was asked of, which its entry in the pack names.</summary>
+    public string Model => last;
+    public string Name => "Gemini " + last;
+
+    /// <summary>The models voices already have takes of (a voice to a model), which their further takes keep to.</summary>
+    public void Pin(IReadOnlyDictionary<string, string> already)
+    {
+        foreach (var (voice, model) in already) modelOf[voice] = model;
+    }
+
+    /// <summary>The model a voice is said by, or null before its first take.</summary>
+    public string? ModelOf(string voice) => modelOf.TryGetValue(voice, out var m) ? m : null;
+
+    /// <summary>Whether a voice can still be said today: its model has requests left, or it has none yet and some model has.</summary>
+    public bool CanSpeak(string voice) => ModelOf(voice) is { } m ? !spent.Contains(m) : !OutForTheDay;
+
+    /// <param name="model">One model alone (<c>--model</c>, as a trial of a model not approved yet is made), in place of the file's.</param>
+    public GeminiEngine(string configPath, CastFile cast, string? model = null)
     {
         config = GameDataFiles.Deserialize<Config>(File.ReadAllText(configPath));
+        models = model is { Length: > 0 } ? new List<string> { model } : config.Models.Count > 0 ? config.Models.ToList() : new List<string> { config.Model };
+        last = models[0];
         this.cast = cast;
         key = Environment.GetEnvironmentVariable("GEMINI_API_KEY") is { Length: > 0 } k ? k
             : throw new InvalidOperationException("GEMINI_API_KEY is not set.");
@@ -109,12 +138,11 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
         return tags.Length > 0 ? $"[{tags}] {job.Text}" : job.Text;
     }
 
-    /// <summary>Whether Gemini has said the day's requests are used up: every take asked after that is given up unasked.</summary>
-    public bool OutForTheDay { get; private set; }
+    /// <summary>Whether every model's requests for the day are used up: every take asked after that is given up unasked.</summary>
+    public bool OutForTheDay => models.All(spent.Contains);
 
     public (float[] Samples, int Rate)? Speak(VoiceJob job, int seed)
     {
-        if (OutForTheDay) return null;
         var v = VoiceOf(job.Voice);
         var body = new
         {
@@ -127,9 +155,13 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
             }
         };
         string json = JsonSerializer.Serialize(body);
-        string url = $"https://generativelanguage.googleapis.com/v1beta/models/{config.Model}:generateContent";
         for (int attempt = 0; attempt < 6; attempt++)
         {
+            // The voice's own model; a voice with no takes yet takes the first model with requests left
+            string? model = ModelOf(job.Voice) is { } pinned ? (spent.Contains(pinned) ? null : pinned) : models.FirstOrDefault(m => !spent.Contains(m));
+            if (model == null) return null;
+            last = model;
+            string url = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent";
             using var request = new HttpRequestMessage(HttpMethod.Post, url) { Content = new StringContent(json, Encoding.UTF8, "application/json") };
             request.Headers.Add("x-goog-api-key", key);
             using var response = http.Send(request);
@@ -138,8 +170,10 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
             // given up at once, and the voices already made are written into the pack; the next run picks up from there
             if (response.StatusCode == HttpStatusCode.TooManyRequests && answer.Contains("PerDay", StringComparison.Ordinal))
             {
-                if (!OutForTheDay) Console.Error.WriteLine($"{job.Key}: Gemini's requests for the day are used up; the rest of this run is left for another day.");
-                OutForTheDay = true;
+                spent.Add(model);
+                Console.Error.WriteLine($"{job.Key}: {model}'s requests for the day are used up" + (OutForTheDay ? $" and so are every model's; the rest is left for another day.\n{answer[..Math.Min(1200, answer.Length)]}" : "."));
+                // A voice not begun yet goes on with the next model at once; one begun keeps to its model, and waits for another day
+                if (!modelOf.ContainsKey(job.Voice) && !OutForTheDay) { attempt = -1; continue; }
                 return null;
             }
             if (response.StatusCode is HttpStatusCode.TooManyRequests or HttpStatusCode.ServiceUnavailable or HttpStatusCode.InternalServerError)
@@ -154,7 +188,9 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
                 Console.Error.WriteLine($"{job.Key}: Gemini said {(int)response.StatusCode}: {answer[..Math.Min(300, answer.Length)]}");
                 return null;
             }
-            return AudioOf(answer, job.Key);
+            var audio = AudioOf(answer, job.Key);
+            if (audio != null) modelOf.TryAdd(job.Voice, model);
+            return audio;
         }
         return null;
     }
