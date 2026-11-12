@@ -2,7 +2,7 @@
 
 Written 2026-11-09 for the user's approval, as D14's proposals were. Every name is a proposal: English first, the Romanian beside it for the user to review (decision 7). Stats follow the games' conventions for new species (a starter line 318 / 405 / 530, a legendary of a box 680, a minor legendary 580, a mythical 600). Answer each line with **yes**, **no** or a change; anything unanswered goes ahead as written when CP3 runs. The Sound type's matchups are plan 46's.
 
-**Approved 2026-11-09**: the three starter lines and the four legendaries as designed. The user asked for other names for the legendaries, inspired by the first ones; the new names below are the ones in use (each with alternatives the user may pick instead). The whole Pokédex's picture briefs, these included, are in [CP-dex-1](CP-dex-1-plateau.md) to [CP-dex-5](CP-dex-5-forms.md).
+**Approved 2026-11-09**: the three starter lines and the four legendaries as designed. The user asked for other names for the legendaries, inspired by the first ones; the new names below are the ones in use (each with alternatives the user may pick instead). The whole Pokédex's picture briefs, these included, are in [CP-dex-1](CP-dex-1-plateau.md) to [CP-dex-6](CP-dex-6-legends-and-mythicals.md) (with the `b` files and the forms beside them; the Pokédex grew to 249 species on 2026-11-12).
 
 ## The starters
 
@@ -90,6 +90,18 @@ Each final stage gains a second type, and each line is bound to a tale (its Tale
 
 - **Ielele** / Iele: Fairy / Sound, three dancing fairies of the night meadows who move as one (600).
 - **Muma Pădurii** / Muma Pădurii: Grass / Ghost, the old mother of the forest, part tree and part crone (600).
+
+### The mythicals of the story (2026-11-12, to approve)
+
+The user asked on 2026-11-12 for more mythicals that move the story. The two above and Măiastra (in the Pokédex's briefs since 2026-11-09) are now in the story, and four more are new. What each does is [the chapters' section 9](CP-story-chapters.md); their picture briefs are [the Pokédex's last file](CP-dex-6-legends-and-mythicals.md). Answer each with **yes**, **no** or a change; each can be dropped alone without touching the user's fixed beats.
+
+- **Murgila** / Murgilă: Dark / Fire, the brother of dusk, a dark-bay horse with a patient face who pulls the evening behind him; caged in the Stilling machine (the endless noon), freed at the stronghold (600).
+- **Miezila** / Miezilă: Dark / Psychic, the brother of midnight, a vast night-black beast with a crescent between its horns and eyes always shut; kept from his hour by the false dawns, seen under the capital's arch (600).
+- **Zorila** / Zorilă: Fire / Fairy, the brother of dawn, a rose-gold deer of morning light; steps out of the first light after the ridge and looks at the Champion, whose family name is his (600). The three brothers are Ruxandra's tale; the folklore source is marked **Unsure** in the chapters' review table, so it is the first thing to confirm.
+- **Nazdravan** / Năzdrăvanul: Fire / Flying, the magic horse of the tales that eats embers; Ilie's "old horse" behind the observatory, gone after the ridge (600).
+- **Ielele**: they take the rival's singing voice and give it back when he learns to listen.
+- **Muma Pădurii** (Mumapadura in the Pokédex): her roots hold the monastery's tales against Team Zenith.
+- **Măiastra** (Maiastra): answers the rival's first verse at the sanctuary; her healing song cannot bring the professors back.
 
 ## The people (decision 17)
 

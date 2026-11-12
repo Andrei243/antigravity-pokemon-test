@@ -2,7 +2,7 @@
 
 Written 2026-11-12, the same day as [the outline](CP-story-outline.md) and the user's answers to it, at the user's request ("the story plan should go on"). It turns the approved framework into chapters, scene by scene, so that CP18 to CP27 each know what they build. **Everything here is a proposal** except what the outline marks as the user's and the answers of 2026-11-12; names are invented with Romanian roots (decision 4), and every Romanian word I am not sure of is in the review table at the end (decision 7). Nothing is taken from any game: the beats are ours, the lines are outlines to be written in the sessions.
 
-Read with: [plan 46](../46-carpathia.md), [the outline](CP-story-outline.md), [the starters and legendaries](CP-proposals-starters-legendaries.md), [the Pokédex briefs](CP-dex-1-plateau.md) (files 1 to 5), [the study](../studies/romania-region-study.md).
+Read with: [plan 46](../46-carpathia.md), [the outline](CP-story-outline.md), [the starters and legendaries](CP-proposals-starters-legendaries.md), [the Pokédex briefs](CP-dex-1-plateau.md) (files 1 to 6, with the `b` files; 249 species and 25 forms since 2026-11-12), [the study](../studies/romania-region-study.md).
 
 ## What this settles
 
@@ -44,7 +44,7 @@ Eight gyms in any order, so nothing waits for a gym by name: a scene waits for *
 
 **P1 · The home village, an evening.** The player's home is a village of the southern plain, on the river's terrace. Tonight is the village's *șezătoare*, the winter-evening gathering where the women spin and the old people tell tales (held whatever the calendar says: it is the village's evening for the professor's visit). The player wakes, comes down; Mom (or Dad: the player's parent, by the region's file) says the professor from the plateau has come to hear the old people's tales and has brought something in a painted chest.
 - *Who*: the player's parent, the village's elder (Bunica Floarea, working name), the neighbours, the rival.
-- *Said, in outline*: the elder tells a short tale of the midsummer fairies (the Sânziene) while the spindles turn; the rival, a shepherd's son from the hill farm, sings a verse badly and the room laughs kindly; he says he will be the best singer *and* the best Trainer in the country.
+- *Said, in outline*: the elder tells a short tale of the midsummer fairies (the Sânziene) while the spindles turn, and, looking at the player, says the three Fates who came on the player's third night spun them a long thread (the Ursitoare, section 9); the rival, a shepherd's son from the hill farm, sings a verse badly and the room laughs kindly; he says he will be the best singer *and* the best Trainer in the country.
 - *Features*: a grid room (the house), an open village (plan 32), `scene`, `act`, `mood`, `pose sit`, the voice of the elder.
 
 **P2 · The painted chest.** Professor **Doina Lupescu** opens a painted dowry chest (*lada de zestre*) with the three starters on its lid's three painted panels: Lynkit, Salamint, Pelicub. She asks the player to choose; the rival takes the one strong against the player's (Lynkit against Pelicub, Salamint against Lynkit, Pelicub against Salamint). Doina's line to remember: *a tale told long enough gets a body*.
@@ -61,7 +61,7 @@ Eight gyms in any order, so nothing waits for a gym by name: a scene waits for *
 - *Gets*: the Pokédex, the Book of Tales, the Sânziene's tale, five Poké Balls.
 - *Features*: `tale learn "sanziene"` (CP12), the Book's screen (CP12), `catchinglesson … by`.
 
-**P6 · Ilie's observatory on the first pass.** Up the lower hairpins, a white dome over the plateau. Professor **Ilie Sorescu**, gruff and funny, shows the player the sun through the telescope's filter, says the sun is the clock the whole country keeps, and gives the **first mask pattern** (the bear) and a handful of felt and fur for the crafting kit (plan 39; if the bag has no kit, his apprentice **Costel** hands a spare). His line to remember: *the sun does not stand still, and that is its only mercy*. He mentions, in passing, an old colleague from the capital who "loves the sun too much" (Aurelian Zenovie, unnamed here).
+**P6 · Ilie's observatory on the first pass.** Up the lower hairpins, a white dome over the plateau. Professor **Ilie Sorescu**, gruff and funny, shows the player the sun through the telescope's filter, says the sun is the clock the whole country keeps, and gives the **first mask pattern** (the bear) and a handful of felt and fur for the crafting kit (plan 39; if the bag has no kit, his apprentice **Costel** hands a spare). His line to remember: *the sun does not stand still, and that is its only mercy*. He mentions, in passing, an old colleague from the capital who "loves the sun too much" (Aurelian Zenovie, unnamed here). Behind the dome stands a stall with a lean bronze horse under a ragged horse blanket (its wings folded tight beneath it, which nobody points out), its mane smouldering like banked coals, that Ilie feeds a shovel of glowing embers from the stove "because it won't eat anything else, the old show-off": the first sight of **Nazdravan** (section 9), which nobody names.
 - *Gets*: the bear mask's pattern, mask materials.
 - *Features*: plan 39's crafting kit, `craft learn "mask_bear"` (CP13), a grid room (the dome) with a telescope set piece.
 
@@ -75,7 +75,7 @@ Eight gyms in any order, so nothing waits for a gym by name: a scene waits for *
 - **The Champion's first meeting.** A woman with a long braid and a *bucium* across her back, who has been listening at the clockmaker's door, asks the Stiller one question ("Who sold you the hands?": every clock the Stillers buy has its hands taken off) and he leaves. She introduces herself only as **Ruxandra**, a player of the *bucium* who walks the country's old sites; she says nothing of being the Champion (the player learns it at the League, as Sinnoh's player learns Cynthia's title). She tells, in three lines, her own tale (section 2) and says she will be at the stone faces.
 - *Features*: open-world people (plan 32 · OW6), `battle self`, a tag battle not yet.
 
-**I-2 · The sun's hero** (1 badge; the observatory). Ilie, back from the market rumour, teaches **Făt-Frumos' tale** (youth without age: no stat may fall), the tale of the hero who rides the sun's horse. If the player's starter is Salamint's line, he notes that its line is the hero's smith.
+**I-2 · The sun's hero** (1 badge; the observatory). Ilie, back from the market rumour, teaches **Făt-Frumos' tale** (youth without age: no stat may fall), the tale of the hero who rides the sun's horse, telling it in the old horse's stall while it eats its embers ("he'd have you believe he's the one in the story"). If the player's starter is Salamint's line, he notes that its line is the hero's smith.
 - *Gets*: Făt-Frumos' tale.
 - **After the ridge** this scene can't play (Ilie is gone): Costel gives the tale from Ilie's notes instead, with a line of his own (`if flag FLAG_CARPATHIA_RIDGE_DONE`).
 
@@ -84,7 +84,10 @@ Eight gyms in any order, so nothing waits for a gym by name: a scene waits for *
 
 **I-4 · The rival on the pony road** (2 badges; wherever the player first rides the road between two provinces after the second badge). The rival's second battle. He has learned the Sânziene's tale and tells it in battle (a trainer's tale, CP11).
 
-**I-5 · The blank wall** (2 badges; the painted monastery in the wooden north). The monastery's outer wall is painted with the tales, scene by scene. One scene has gone blank overnight. The nuns' painter (a Carpathian Smeargle with an old monk) says strangers came with a cabinet. Executive **Teodor Uitescu** is in the cloister, lifting the paint off a second scene into a glass-fronted cabinet: Team Zenith is taking the tales so that no one can tell them against the endless day. Battle; he leaves with the cabinet but the second scene, half lifted, settles back on the wall.
+**I-4b · The voice taken** (2 badges, after I-4, at night; the delta's reed meadow). The rival has heard that the **Ielele** dance on the trampled reeds and goes to sing over them, to prove he is the best singer in the country. The player finds him at the meadow's edge as three pale figures turn above the reeds; he sings, the dance stops, and when it starts again **his singing voice is gone**: he can speak, not sing. The Ielele are not battled (section 9). From here to A-4 the rival never sings; his tales are told, not sung, and the village laughs at nothing more. It is the turn of his arc: he has to learn to listen.
+- *Features*: `effect sparkles`, people of the map drawn as a Pokémon (engine need 6), a flag of ours (`FLAG_CARPATHIA_RIVAL_VOICE_TAKEN`).
+
+**I-5 · The blank wall** (2 badges; the painted monastery in the wooden north). The monastery's outer wall is painted with the tales, scene by scene. One scene has gone blank overnight. The nuns' painter (a Carpathian Smeargle with an old monk) says strangers came with a cabinet. Executive **Teodor Uitescu** is in the cloister, lifting the paint off a second scene into a glass-fronted cabinet: Team Zenith is taking the tales so that no one can tell them against the endless day. Battle; he leaves with the cabinet but the second scene, half lifted, settles back on the wall. What held it is seen only by the player: thin roots coming out of the wall's foot from the forest behind the monastery, gripping the paint, then drawing back (**Mumapadura**, section 9, never named here).
 - *Gets*: the monastery's thanks (a Fresco item for crafting, CP13), nothing else: the tale painted there is the Grass leader's to tell.
 - *Features*: `effect sparkles` as the paint settles back, the wall's scenes as a prop whose look changes by flag (`FLAG_CARPATHIA_WALL_LIFTED`), `battle self as "zenith_teodor_1"`.
 
@@ -96,16 +99,16 @@ Eight gyms in any order, so nothing waits for a gym by name: a scene waits for *
 
 ### Act II · The stilling (4 to 6 badges)
 
-**II-1 · Noon that does not end** (4 badges; the next time the player is on the plateau). The sun stops at noon over the plateau. A shepherd's flock stands still in the road; the plateau town's festival lanterns cannot be lit because evening never comes; the clock tower's hands have been taken. **What it changes**: the plateau's areas only (not the coast, the delta, the north, the capital), **both the look and the hour**: the hour reads noon there, so wild tables and evolutions that ask for night cannot be had on the plateau while it lasts; they can anywhere else. It lasts until II-2 is won, and II-2 is open at once.
+**II-1 · Noon that does not end** (4 badges; the next time the player is on the plateau). The sun stops at noon over the plateau. A shepherd's flock stands still in the road; the plateau town's festival lanterns cannot be lit because evening never comes; the clock tower's hands have been taken. Shepherds say the dusk's horse has not been seen coming down off the hills: in the tales the evening is brought by **Murgilă**, the eldest of the night's three brothers (section 9), and he has not come. **What it changes**: the plateau's areas only (not the coast, the delta, the north, the capital), **both the look and the hour**: the hour reads noon there, so wild tables and evolutions that ask for night cannot be had on the plateau while it lasts; they can anywhere else. It lasts until II-2 is won, and II-2 is open at once.
 - Doina and Ilie each call the player within the hour; each offers to come. The player is given the choice "Wait, I'll go" (the only answer that goes on): each agrees to wait. (The professors are not in Act II.)
 - *Features*: a story-held hour over named areas (engine need 3), the stage's light of the open sky at noon held, the rival's call.
 
 **II-2 · The stronghold** (4 badges; the castle on the crag). The castle is two buildings on one crag: **the lower halls and chapel are the Ghost gym** (open from the start, any order) and **the keep above is Team Zenith's**, shut "for restoration" by a company of theirs until Act II. Now the keep's gate is open and the Stillers hold it.
 1. At the gate, **Ruxandra** is already there, says the player shouldn't go up alone, and battles beside the player: a tag battle against two Stillers (`battle a and b with ruxandra`).
-2. In the courtyard the **rival** stays to hold the stair against the Stillers coming up from the chapel side ("Go! I'll make them listen to me sing!").
+2. In the courtyard the **rival** stays to hold the stair against the Stillers coming up from the chapel side ("Go! I'll make them listen to me sing!"; if the Ielele have taken his voice, I-4b: "Go! I'll make them listen to me, voice or no voice!").
 3. Up the keep's stair, three floors of Stillers (open-world trainers inside a grid room: the keep is a grid room behind its door, plan 32 · decision 6).
-4. At the top, under the open roof, the **Stilling machine**: a brass orrery of rings and mirrors catching the sun and holding it. Executive **Grigore Pendulescu**, the team's clockmaker, battles beside it.
-5. Beaten, he tries to stop the machine himself and can't; the player's starter breaks its last ring (a scripted move, `anim`/`effect burst`). The sun races to evening across the plateau: the held hour is released and eased to the clock's own over a few seconds while the camera looks out over the plateau (engine need 3).
+4. At the top, under the open roof, the **Stilling machine**: a brass orrery of rings and mirrors catching the sun and holding it. Inside its rings, as in a cage, stands a dark bay horse-shape with a patient face, its back glowing like embers: **Murgilă**, caught (section 9). The machine holds the sun by holding him. Executive **Grigore Pendulescu**, the team's clockmaker, battles beside it.
+5. Beaten, he tries to stop the machine himself and can't; the player's starter breaks its last ring (a scripted move, `anim`/`effect burst`). Murgilă steps out of the broken rings, looks once at the player, and goes down off the keep's wall to the west, and the evening follows him across the plateau like a cloth pulled behind him (he is not battled now; section 9). The sun races to evening across the plateau: the held hour is released and eased to the clock's own over a few seconds while the camera looks out over the plateau (engine need 3).
 6. **Zenovie is not there.** On his desk, a note in a careful hand: *"It must be done before the winter."* A chain's broken link lies beside it. Ruxandra reads the note and says nothing.
 - *Gets*: the plateau's evening back; the Stillers' Key (opens the salt mine's foundry door, II-3).
 - *Features*: `battle … with`, the grid keep, `letterbox`, a held effect, `camera look` over the plateau, the hour released.
@@ -113,14 +116,14 @@ Eight gyms in any order, so nothing waits for a gym by name: a scene waits for *
 **II-3 · The chains** (5 badges; the salt mine, its great hall with the lake, the wheel and the boat). Below the salt lake, a foundry where Stillers are forging braided chains of something that crackles. Executive **Zamfira Lănțoiu** commands it. She battles the player on the lake's boat landing; beaten, she has the chains carried out by the mine's old lift and goes with them. She drops her ledger: a column of numbers, a drawing of three heads, and *"two tales to hold it: the sun's and the moon's"*. The player can't read more.
 - *Features*: the cave at full size (plan 32 carves), the boat on the salt lake (a set piece, or the delta's boat grant), `battle self as "zenith_zamfira_1"`.
 
-**II-4 · The second sun** (6 badges; the capital, at the arch on the boulevard). At dusk a second "sun" rises inside the capital's arch: Sabina's false dawn, mirrors on the arch catching the city's lights. The city's people stand in the boulevard staring. Sabina's second battle (alone), then her mirrors go dark. She says the real dawn will be "on the ridge, and it will not end", and that she never wanted the winter gone, only the dark. She is not seen again in the story.
+**II-4 · The second sun** (6 badges; the capital, at the arch on the boulevard). At dusk a second "sun" rises inside the capital's arch: Sabina's false dawn, mirrors on the arch catching the city's lights. The city's people stand in the boulevard staring. Sabina's second battle (alone), then her mirrors go dark. She says the real dawn will be "on the ridge, and it will not end", and that she never wanted the winter gone, only the dark. She is not seen again in the story. As the mirrors go dark the player alone sees, for a moment, a huge black shape with a crescent between its horns standing under the arch, eyes shut, and then real midnight comes down on the capital all at once: **Miezilă**, the middle brother, whom the false dawn had kept from his hour (section 9).
 - *Features*: the capital's open map, the stage's light, `effect burst`.
 
 **Not before the ridge**: Teodor's second battle and Zamfira's second are on the ridge's road (III-1, III-2). Grigore is beaten once. The rival's last battle before the ridge is III-0.
 
 ### Act III · The ridge (7 badges, the plateau's and the castle's among them)
 
-This is the user's climax. Each step below is one scene (`scene`), and the whole act is one evening into one night.
+This is the user's climax. Each step below is one scene (`scene`), and the whole act is one evening into one night, and the dawn after it (III-9b, since 2026-11-12).
 
 **III-0 · The rival at the foot** (the high pass's town, by the road up). The rival is waiting with the pony: he battles the player (his strongest team before the League, and he tells the Miorița's tale if he has it, the Sânziene's if not), then says he is coming up to watch, "someone should be there to remember it".
 
@@ -139,7 +142,7 @@ This is the user's climax. Each step below is one scene (`scene`), and the whole
 - Nothing else is said of how they came. (Nobody called them: the user's beat is that each came on a hunch.)
 
 **III-6 · The binding.** They do not know how to unbind Furtunaur, only how to hold it. Doina holds out her hand for the player's **Book of Tales**; it opens by itself to two pages. Ilie reads **the Zmeu's tale** (the sun cannot set) and Doina **the Vârcolac's** (the eclipse), together, over the storm (the tales' own layers of the battle music, their skies over the crest: gold on Ilie's side, deep blue on Doina's). The storm quiets into a weather; the chains brighten; Furtunaur sinks to the rock.
-- Then the lightning turns on them. **There is no speech**: the player sees it happen. Letterbox, slow motion; a burst of gold where Ilie stands, a burst of night-blue where Doina stands; when the light falls, **Solzmeu** stands where Ilie stood, the sun-disc behind its shoulders, and **Lunacolac** where Doina stood, the crescent in its jaws. Doina's scarf is caught on Lunacolac's mane; Ilie's spectacles lie on the rock.
+- Then the lightning turns on them. **There is no speech**: the player sees it happen. Letterbox, slow motion; a burst of gold where Ilie stands, a burst of night-blue where Doina stands; when the light falls, **Solzmeu** stands where Ilie stood, the sun-disc behind its shoulders, and **Lunacolac** where Doina stood, the crescent in its jaws. Doina's scarf is caught on Lunacolac's mane; Ilie's spectacles lie on the rock. For one heartbeat, at the crest's far edge in the last of the burst, three tall pale figures stand side by side, one spinning, one measuring a thread between her hands, one with silver shears, and two threads drift down in the wind; then they are gone. Nothing points at them and no one mentions them (the **Ursitoare**, section 9).
 - *Features*: `letterbox`, `slowmo`, `effect burst` ×2 and `effect beam`, `camera path`, the two tales' skies (CP12), `hide doina`/`hide ilie` and their flags, `show solzmeu`/`show lunacolac` (open-map people drawn as Pokémon, plan 32 · OW6/OW9's figures).
 
 **III-7 · The second fight.** Furtunaur, bound between the two new legendaries' light and night (Solzmeu and Lunacolac stand on either side of the field as part of the stage, people of the map drawn as Pokémon, never in the battle), is battled with **its real level shown, 56**, and its HP at a third. It can't be run from.
@@ -154,7 +157,9 @@ This is the user's climax. Each step below is one scene (`scene`), and the whole
 **III-9 · What is left.** Furtunaur's chained book has fallen open: the player learns **the Solomonar's tale** (the storm: a weather the teller owns). The cabinet of tales opens with the chains: its stolen scenes drift out as light toward the north (the monastery's wall is whole again when visited). Ruxandra and the rival come through the tunnel; the rival sees the scarf and the spectacles and says nothing; Ruxandra picks up the spectacles and gives them to the player. Her one line: *"Bring these to the observatory. Then come to the capital when you have all eight."*
 - *Gets*: the Solomonar's tale, Ilie's spectacles (a key item, given to Costel in III-10), Doina's scarf if the player picks it up (a key item, given to Mara).
 
-**III-10 · The labs** (the next visit to each). At the observatory Costel has set two cups out, one for Ilie; he takes the spectacles and puts them on the telescope's eyepiece. At Doina's lab Mara has the kettle on; she takes the scarf and hangs it on the lab's door. Each says only that the professor "will be back when the tales say so". (The darker side the user asked for: nobody says the professors are gone.)
+**III-9b · The dawn.** The three of them walk down through the tunnel and the night; at the lake the sky greys, and out of the first light on the far shore a pale rose-gold deer-like creature steps onto the water's edge, a small star between its branches of light: **Zorilă**, the youngest brother (section 9). It looks at Ruxandra, and she looks back, and neither moves until it is gone. She says nothing at all (her one line is III-9's, before the dawn); she touches the *mărțișor* cord in her braid. Nobody battles anything.
+
+**III-10 · The labs** (the next visit to each). At the observatory Costel has set two cups out, one for Ilie; he takes the spectacles and puts them on the telescope's eyepiece. At Doina's lab Mara has the kettle on; she takes the scarf and hangs it on the lab's door. Each says only that the professor "will be back when the tales say so". (The darker side the user asked for: nobody says the professors are gone.) Behind the observatory the old horse's stall is empty, the ember pail cold and kicked over, hoofprints burnt into the boards and none leading away (Nazdravan, section 9).
 
 ### The League (8 badges)
 
@@ -172,11 +177,14 @@ This is the user's climax. Each step below is one scene (`scene`), and the whole
 
 **A-3 · The Dacian sanctuary.** Ruxandra, after her defeat, tells the player of the stone circles in the forest of the south-west mountains. The sanctuary is open (a new area). At its stone sun-disc, at dawn, **Stindrac** the war banner coils down howling; the **Draco's tale** is carved on the circle's andesite blocks (found there, so the twelfth tale is had). Stindrac is battled (level 68) and may be caught.
 
-**A-4 · The rival's verse.** The first time the player comes to the sanctuary after catching both roamers, or after a hundred days, the rival is there at dusk. He sings **one verse of the professors' favourite *doină*** (well, at last: his arc is that he has learned to listen), and goes. That is all. If Lunacolac is not yet caught, it answers from the trees (V5).
+**A-4 · The rival's verse.** The first time the player comes to the sanctuary after catching both roamers, or after a hundred days, the rival is there at dusk. He sings **one verse of the professors' favourite *doină*** (well, at last: his arc is that he has learned to listen), and goes. If Lunacolac is not yet caught, it answers from the trees (V5).
+- *The voice given back* (since 2026-11-12; only `if flag FLAG_CARPATHIA_RIVAL_VOICE_TAKEN`, since I-4b, like every scene, can be missed: without it the rival simply sings, and the bird below still answers): the rival has had no singing voice since I-4b. At the sanctuary he stands a long time only listening (to the wind in the stones, to Lunacolac's answer if it comes, to nothing); then three pale figures turn once above the clearing's grass, and he sings. The **Ielele** gave the voice back when he stopped trying to be heard (section 9). After the verse, a slender golden bird lands on the sun-disc and sings the same tune back: **Maiastra** (section 9). The rival asks the player, very quietly, whether a song that heals could... and does not finish, and nobody answers. It cannot: the professors stay as they are (the user's beat 6).
 
 **A-5 · The remnants.** A few Stillers can be met in the markets, no longer in gold, winding the market's clocks back up and saying nothing; their old brochures in the bins. Not a story.
 
 **A-6 · Rematches.** The leaders and the Elite Four at their post-game levels (60 to 68); Ruxandra again in the throne room once a week with her team at 70 [about 296]; the rival's last team at the observatory.
+
+**A-7 · The mythicals met** (from the Hall of Fame; section 9 has who, where and when). Each mythical the story showed is met once, alone, at its own place and hour, battled at 66 to 68 and catchable; none of them is a roamer, and none of them changes what happened to the professors.
 
 ## 2 · The Champion
 
@@ -307,17 +315,17 @@ The user's answer 2: at certain moments Solzmeu and Lunacolac speak **a human ph
 
 | Session | Builds | Story it carries | Needs from the engine (beyond the province's map) |
 |---|---|---|---|
-| **CP18** · the file and the first town | the home village, the plateau town (Doina's lab), the first pass (Ilie's observatory), the route between | **the prologue** P1 to P7; the crossing's version; `namerival` | the region file (professor Doina), the chest's starter screen, the pony grant (PD2's `MovementGrants`), Doina's and Ilie's voices designed (plan 26), the phone (need 7) |
-| **CP19** · the coast and the delta | the port, the casino, the delta's villages, the boat | the Water and Flying gyms and tales; **I-6** (Sabina's false dawn, 3 badges) | an open map's hour held for a scene (need 4), the tag battle with the rival |
+| **CP18** · the file and the first town | the home village, the plateau town (Doina's lab), the first pass (Ilie's observatory), the route between | **the prologue** P1 to P7 (with Nazdravan's stall behind the observatory and the Fates in the elder's tale); the crossing's version; `namerival` | the region file (professor Doina), the chest's starter screen, the pony grant (PD2's `MovementGrants`), Doina's and Ilie's voices designed (plan 26), the phone (need 7) |
+| **CP19** · the coast and the delta | the port, the casino, the delta's villages, the boat | the Water and Flying gyms and tales; **I-6** (Sabina's false dawn, 3 badges); **I-4b** (the Ielele take the rival's voice at the reed meadow) | an open map's hour held for a scene (need 4), the tag battle with the rival |
 | **CP20** · the plateau's towns | the market square, the stone-face plateau, the Psychic gym | **I-1** (the market, the Champion), **I-3** (the glide), **II-1** (the endless noon), the Zmeu's tale | the hour held over named areas (need 3), the glide grant |
 | **CP21** · the ridge and its road | the hairpins, the high pass, the lake, the tunnel, the crest (shut) | the Rock gym and Baba Dochia's tale; **I-4** (the rival); **I-2** (Făt-Frumos, at the observatory) | the storm barrier by flag, the crest's ground |
 | **CP22** · the caves | the salt mine with its lake and foundry, the ice cave | the Ice gym and the Uriași's tale; **II-3** (Zamfira) | the salt lake's boat |
 | **CP23** · the wooden north | the monastery, the carved gates, the old forest | the Grass gym and Muma Pădurii's tale; **I-5** (Teodor) | the wall's scene that changes by flag, the dance's rhythm task (plan 12 · Q24's timing assist) |
-| **CP24** · the capital | the boulevards, the arch, the opera, the palace's outside | the Sound gym and the Miorița's tale; **II-4** (Sabina's second sun) | the opera's choir task |
-| **CP25** · the villain and the sun | the castle on the crag: the Ghost gym's halls and the keep | **I-7**, **II-2** (the stronghold), the Ghost gym and the Vârcolac's tale | the Stillers' trainers in a grid keep, the tag battle with Ruxandra, the hour released |
-| **CP25b** · the ridge (new, proposed) | the crest's scene | **III-0 to III-10** | `hidelevel`, `untouchable`, `canlose` and `hp` on a wild battle (need 1), the Nuzlocke's exception (need 2), `passive`, the two tales told by people of the map, the transformation's effects, the Pokémon of the map, the beast voices (need 8) and text (need 9), and **the roamers' first half**: seen on the open map by the day's draw and fleeing on approach, with V1 and V2 (need 5) |
+| **CP24** · the capital | the boulevards, the arch, the opera, the palace's outside | the Sound gym and the Miorița's tale; **II-4** (Sabina's second sun, and Miezilă under the arch as it ends) | the opera's choir task |
+| **CP25** · the villain and the sun | the castle on the crag: the Ghost gym's halls and the keep | **I-7**, **II-2** (the stronghold, with Murgilă caged in the Stilling machine and freed), the Ghost gym and the Vârcolac's tale | the Stillers' trainers in a grid keep, the tag battle with Ruxandra, the hour released |
+| **CP25b** · the ridge (new, proposed) | the crest's scene | **III-0 to III-10** (with the Fates' glimpse at III-6, the dawn and Zorilă at III-9b, the empty stall at III-10) | `hidelevel`, `untouchable`, `canlose` and `hp` on a wild battle (need 1), the Nuzlocke's exception (need 2), `passive`, the two tales told by people of the map, the transformation's effects, the Pokémon of the map, the beast voices (need 8) and text (need 9), and **the roamers' first half**: seen on the open map by the day's draw and fleeing on approach, with V1 and V2 (need 5) |
 | **CP26** · the League and the crossing | the palace's rooms | **L-1 to L-5**, Ruxandra's team, the credits' last picture | — |
-| **CP27** · after the Hall of Fame | the sanctuary | **A-1 to A-6**, the roamers' second half (battled and caught from the Hall of Fame: `passive` turns, the flee rule, HP kept; need 5), V3 to V6, Stindrac and the Draco's tale, the notes' reading screen | the roamers' battles (need 5), the cry option (need 10), the notes' screen (the Journal's) |
+| **CP27** · after the Hall of Fame | the sanctuary | **A-1 to A-7** (A-7, the mythicals, added 2026-11-12), the roamers' second half (battled and caught from the Hall of Fame: `passive` turns, the flee rule, HP kept; need 5), V3 to V6, Stindrac and the Draco's tale, the notes' reading screen | the roamers' battles (need 5), the cry option (need 10), the notes' screen (the Journal's) |
 
 CP11 and CP12 (the tales) must be built before CP18's P5 can teach a tale; CP13 (the masks) before P6's pattern. The executives' and the Champion's teams are `our-trainers.json` rows of Carpathian species (CP19 to CP26 each write theirs).
 
@@ -333,6 +341,7 @@ CP11 and CP12 (the tales) must be built before CP18's P5 can teach a tale; CP13 
 8. **The beast chain in the voice tool** (an octave down with formants, doubled, the cry under it).
 9. **The beast text style** (`{beast:…}`: no pill, the species' colour, a tremor).
 10. **A cry with a voice's contour under it**, for two species.
+11. **A mythical met at its hour** (A-7): a wild battle of the map's own that is there only within an hour's window (dusk, midnight, dawn, noon) and only once a set of flags is held; the staged battle's terms are enough, the window is new.
 
 ## 8 · Open questions for the user
 
@@ -346,6 +355,27 @@ Each has my recommendation; the session named goes ahead on it unless the user s
 6. **The beast voice and text**: a doubled, octave-lowered take of each professor's own voice with the cry under it, and a text style with no name and a tremor? *Recommended*: yes, both, and the user hears the two voices before anything is baked.
 7. **Who keeps the labs after the ridge**: Mara Doina's lab, Costel Ilie's observatory with the rival helping him? *Recommended*: yes (it settles the outline's two sentences that disagreed).
 8. **The rival's name**: fixed as Radu or Ilinca by the player's look, or asked (`namerival`) with those as the defaults? *Recommended*: asked, with Radu or Ilinca already typed, as Sinnoh's rival is.
+9. **Tale Forms for the new mythicals** (section 9, added 2026-11-12): do Nazdravan, Maiastra and the three brothers get a Tale Form under the tale they belong to (Ielele and Mumapadura already have one each in section 5)? *Recommended*: Nazdravan under Făt-Frumos' and Maiastra under the Sânziene's (two sculpts more), the brothers none, since their tale is Ruxandra's and not one of the twelve.
+10. **The mythicals' places in the story** (section 9): the caged dusk at the stronghold, the midnight under the arch, the dawn at the lake, Ilie's ember-eating horse, the rival's voice taken and given back, the roots in the monastery's wall, the bird at the sanctuary, the Fates at the binding. *Recommended*: as written; each can be dropped alone without touching the user's fixed beats.
+
+## 9 · The mythicals in the story
+
+Added 2026-11-12, when the user asked for a Pokédex of about 250 species and for **more mythicals that move the story**. They are additions: none changes a beat the user fixed (the professors come on a hunch and stay Pokémon, the binding has no speech, Zenovie's fate is never said, the roamers are never together, the ridge opens at 7 badges), and none settles section 8's questions. Their designs are [the Pokédex's last file](CP-dex-6-legends-and-mythicals.md).
+
+| Mythical | Type | What it does in the story | Where it is seen | Met and caught (A-7) | Its tale |
+|---|---|---|---|---|---|
+| **Murgila** (*Murgilă*, the dusk) | Dark / Fire | Team Zenith's Stilling machine holds the sun by caging him: no dusk can come to the plateau. Freed when the machine breaks, he takes the evening across the plateau behind him. Why the plateau alone: in the tale each brother walks the country from the mountains down, and the Stillers caught him as he came down onto the plateau, so the dusk stops there; below it the evening still comes, late and thin, carried by what the tale calls his shadow. | II-1 (missed), II-2 (caged, freed) | at dusk, on the castle keep's roof beside the broken orrery | Ruxandra's (the three brothers), not one of the twelve |
+| **Miezila** (*Miezilă*, the midnight) | Dark / Psychic | Sabina's false dawns keep him from his hour; when the capital's mirrors go dark he is seen for a moment under the arch, and midnight comes. | II-4 | at midnight, under the capital's arch, once Murgilă is caught or beaten (a run that bars catching must not shut the brothers away) | the same |
+| **Zorila** (*Zorilă*, the dawn) | Fire / Fairy | The youngest brother, who brings the dawn after the ridge's night; the brother of Ruxandra's family name, who looks at her and goes. | III-9b | at dawn on the ridge's crest, once both brothers are caught or beaten, with Ruxandra watching from the tunnel's mouth | the same |
+| **Nazdravan** (*Năzdrăvanul*, the magic horse) | Fire / Flying | Ilie's old horse that eats embers, never named: the hero's horse of Făt-Frumos' tale. After the ridge its stall is empty, the hoofprints burnt into the boards. | P6, I-2, III-10 | at noon in its old stall, after the player has read Ilie's last page (A-1); it eats embers from the player's hand, then battles | Făt-Frumos' (2) |
+| **Ielele** | Fairy / Sound | They take the rival's singing voice at the reed meadow and give it back at the sanctuary when he has learned to listen: the rival's arc made visible. | I-4b, A-4 | at night on the reed meadow, after A-4 | the Ielele's (4) |
+| **Mumapadura** (*Muma Pădurii*) | Grass / Ghost | Her roots hold the half-lifted scene of the monastery's wall (I-5); the stolen tales that drift north out of the cabinet at III-9 drift to her forest, and she gives them back to the wall. | I-5, III-9 | at the old forest's carved gate, once the monastery's wall is whole and the Grass badge is held | Muma Pădurii's (7) |
+| **Maiastra** (*Măiastra*, the wonder bird) | Fire / Sound | Answers the rival's first verse at the sanctuary. Her song heals and enchants, and the rival's unfinished question is the story's last word on whether it could bring the professors back: it cannot. | A-4 | at the sanctuary at dusk, after A-4 | the Sânziene's (1) |
+| **Stindrac** (the war banner) | Sound / Dragon | As before (A-3). | A-3 | at dawn at the sanctuary's sun-disc | the Draco's (12) |
+
+**The Fates.** The *Ursitoare* (Ursivia, Ursifira, Ursimora), the minor legendary trio, are not mythicals but are in the story too: the village elder tells of them at the *șezătoare* (P1: they spun the player a long thread), and they are glimpsed for one heartbeat at the binding (III-6), silent, spinning, measuring and cutting. After the Hall of Fame each is met alone: Ursivia at the home village on the night of the next *șezătoare*, Ursifira in Doina's lab garden, Ursimora on the crest where the binding was (never beside the lantern: Zenovie's fate stays unspoken).
+
+**What it changes elsewhere.** The Tale Form table (section 5) is unchanged: whether the new mythicals get Tale Forms is open question 9. The new species of the Pokédex (Nos. 31 to 52, 87 to 114, 147 to 173, 207 to 235) are free for the gym leaders', executives' and trainers' teams that CP19 to CP26 write; the teams above are left as the chapters gave them.
 
 ## Romanian words to review (decision 7)
 
@@ -375,6 +405,12 @@ Every Romanian word this file adds, with the root I meant and how sure I am. **S
 | Octavian Chipescu | *chip*, face | Check |
 | Lavinia Cântărescu | *cântăreț*, singer | Check |
 | *Uriași* | giants | Sure |
+| *Năzdrăvanul*, *cal năzdrăvan* | the magic horse of the tales that eats embers | Sure of the word; check the article form as a name |
+| *Ursitoare* | the three Fates of a child's third night | Sure |
+| *Ielele* | the night fairies who dance, and can take a voice | Sure of the word; check that taking a singer's voice suits their lore |
+| *Muma Pădurii* | the forest mother | Sure |
+| *Pasărea Măiastră* | the wonder bird | Sure |
+| *Pricolici* | the werewolf-dog (a species of the new Pokédex) | Sure |
 | *Spiriduș* | house sprite | Sure |
 
 Names I avoided on purpose: anything beginning *Ceaș-* (it echoes a real dictator's name), Babeș and Vlaicu (real people's surnames well known in Romania), and any real place's name for the villages (CP18 names the map with the user).
