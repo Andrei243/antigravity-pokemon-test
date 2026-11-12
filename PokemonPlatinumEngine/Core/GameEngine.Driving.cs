@@ -138,6 +138,11 @@ public partial class GameEngine
         public AlphPuzzleScreen AlphPuzzle => game.flow.AlphPuzzleScreen;
         /// <summary>The phrase picker, open while a script's <c>phrase</c> waits on it (plan 08 · P9).</summary>
         public PhraseScreen Phrases => game.flow.PhraseScreen;
+        /// <summary>The gift box and the trade board (plan 40 · GE7, GE8): their screens, open while a script's <c>gift open</c> or <c>trade board open</c> waits, and what the save keeps of each.</summary>
+        public GiftBoxScreen GiftBoxScreen => game.flow.GiftBoxScreen;
+        public TradeBoardScreen TradeBoardScreen => game.flow.TradeBoardScreen;
+        public Models.GiftBox Gifts => game.flow.Gifts;
+        public Models.TradeBoard TradeBoardState => game.flow.Board;
         public Models.Frontier.BattleCastleChallenge? Castle => game.flow.Castle;
         public CastleScreen CastleCounter => game.flow.CastleScreen;
         /// <summary>The Battle Arcade (plan 06 · R18d): the challenge under way and its game board.</summary>

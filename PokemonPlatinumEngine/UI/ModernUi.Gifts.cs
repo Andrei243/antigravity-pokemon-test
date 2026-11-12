@@ -201,6 +201,6 @@ internal static partial class ModernUi
         Label(label, well.X + 12, well.Y + 8);
         var c = new Vector2(well.X + well.Width / 2f, well.Y + well.Height / 2f + 10);
         PixelArt(PixelArtGenerator.GetPokemonIcon(species), c, 3, tint: known ? null : Frame);
-        if (item != null && ItemDatabase.Get(item) is { } data) PixelArt(PixelArtGenerator.GetItemIcon(data), new Vector2(well.X + well.Width - 30, well.Y + well.Height - 30), 2);
+        if (item != null && ItemDatabase.Get(item) is { } data) PixelArt(PixelArtGenerator.GetItemIcon(data), new Vector2(well.X + well.Width - 40, well.Y + well.Height - 40), 2);
     }
 }
