@@ -48,6 +48,7 @@ internal sealed partial class Autoplayer
         ArrivedOpen(field);
         // A scene, or a trainer walking up: lines read on, nothing steered
         if (engine.ScriptRunning || game.OpenApproach != null) return Pulse(GameAction.Confirm);
+        if (Itinerary is { Finished: false } itinerary) return FollowOpen(itinerary, dt);
         if (OpenWay is not { Finished: false } way)
         {
             Report.Finished = true;

@@ -4,6 +4,10 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- On the Energy Plant's roof you now battle Eternatus itself, before it swells into Eternamax.
+- After Galar's Hall of Fame the fog returns to the Slumbering Weald: Hop waits at the altar, and the legendary of your version comes out to meet you, to be caught at last.
+- Leon now runs the Battle Tower in Rose Tower and takes you on once a day; he also joins the Laurel Circuit's final for Galar.
+- Wyndon Station has an airfield lounge: once you are Galar's Champion its planes fly back to every region you have been to, and one day on to Paldea.
 - Pokémon can now grow to level 300, for the region still to come beyond Paldea; every region already in the game keeps its levels as they were.
 - Alola's and Galar's houses, shops and Pokémon Centers are built for grown people: taller doors you walk through without stooping, windows at a grown body's height, taller entrance porches.
 - Riding Tauros, Stoutland, Mudsdale or Machamp, you sit where that Pokémon's back is and tuck your legs up on the small ones, so your feet no longer hang to the ground beside them.

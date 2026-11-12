@@ -1,5 +1,5 @@
 # The Energy Plant at the top of Rose Tower (plan 33 · GL6): the Darkest Day's end. Chairman Rose's battle, Eternatus
-# woken out of the plant's core and Leon's fall, and Eternamax fought as a Max Raid that can't be lost (plan 33's design:
+# woken out of the plant's core and Leon's fall, its first battle at level 60 (plan 33 · GL7), and Eternamax fought as a Max Raid that can't be lost (plan 33's design:
 # `raid boss … cannotfail`), Hop beside the player and the two of the legend come from the Slumbering Weald; Eternatus
 # caught at its end with the Master Ball Leon hands over. The sky clears (FLAG_GALAR_DARKEST_DAY cleared) and the Finals
 # go on. VAR_GALAR_STORY 42 to 43 (postwick.txt's count). Our own lines.
@@ -23,7 +23,12 @@ script OnEnter
   say "Stand back, the two of you! This one's mine!"
   text "Leon's team goes up against it one after another, and falls one after another. The Champion goes down on one knee."
   speaker "Hop"
-  say "Leon! {player}, look, it's growing! We have to stop it together, now, before it swallows the whole sky!"
+  say "Leon! {player}, it's coming for us now! Send out everyone you've got!"
+  # Plan 33 · GL7: Sword's first battle with Eternatus, at level 60 before it swells into Eternamax, a staged battle (no
+  # ball takes it, its level shown as ???); lost or won, the story goes on into the raid
+  wildbattle "Eternatus" 60 hidelevel canlose
+  text "Eternatus reels back over the core... and then the red light pours out of it, and it swells, and swells."
+  say "It's growing! We have to stop it together, now, before it swallows the whole sky!"
   text "Out of the red, two shapes leap onto the roof: the two from the fog of the Slumbering Weald."
   say "They came! They really came! Come on, everyone, all together!"
   if starter "Grookey" goto WithInteleon

@@ -21,3 +21,32 @@ script Oleana
 label Done
   say "The lift is open. Go, before I change my mind."
   end
+
+
+# After the Hall of Fame (plan 33 · GL7): Leon has turned Rose's tower into the Battle Tower and runs it, and battles the
+# Champion once a day in its lobby on a team past the Cup's (galar_leon_rematch). His first defeat there sets
+# FLAG_GALAR_LEON_TOWER_WON, which the objectives read. Galar's ranked ladder (plan 33 · decision 5) is owed
+script LeonTower
+  face leon_tower player
+  speaker "Leon"
+  if flag FLAG_DAILY_GALAR_LEON_TOWER goto Rested
+  say "Champion! Rose's tower is the Battle Tower now, and I'm the one who runs it."
+  ask "But the one Trainer I want to battle is you. A rematch, here and now?"
+  if no goto Later
+  battle leon_tower as "galar_leon_rematch" canlose
+  if lost goto Lost
+  setflag FLAG_DAILY_GALAR_LEON_TOWER
+  setflag FLAG_GALAR_LEON_TOWER_WON
+  speaker "Leon"
+  say "Beaten twice! I'll take that as a promise you'll keep coming back. Same time tomorrow, Champion?"
+  end
+label Lost
+  speaker "Leon"
+  say "Ha! The tower's master keeps his crown today. Rest up and come back. I'll be right here."
+  end
+label Later
+  say "Whenever you're ready. The tower never closes."
+  end
+label Rested
+  say "That was a champion time! Come back tomorrow and we'll do it all over again."
+  end

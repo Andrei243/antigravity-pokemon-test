@@ -1197,6 +1197,9 @@ public static class RegionDatabase
             // there wakes in the player's room in Postwick; a Champion come across from Alola is inside the house's door
             Start = new MapSpot("Postwick_PlayersHouse_2F", 4, 6, Direction.Down),
             Arrival = new MapSpot("Postwick_PlayersHouse_1F", 6, 10, Direction.Up),
+            // Where a return to Galar lands (plan 33 · GL7): beside the airline's attendant in Wyndon Airfield's lounge,
+            // whose plane flies back to every region entered once Galar's Hall of Fame is set (plan 18 · W8)
+            Harbour = new MapSpot("Wyndon_Airfield", 6, 4, Direction.Right),
             Maps = new[]
             {
                 // Plan 33 · GL1: Postwick's two houses, Wedgehurst's station, Pokémon Center, research lab and house, and
@@ -1227,6 +1230,8 @@ public static class RegionDatabase
                 "Hammerlocke_Stadium", "Hammerlocke_StadiumMission", "Hammerlocke_StadiumPitch",
                 // Plan 33 · GL6: Wyndon's Pokémon Center, stadium and its pitch, and Rose Tower's lobby and Energy Plant
                 "Wyndon_PokemonCenter", "Wyndon_Stadium", "Wyndon_StadiumPitch", "Wyndon_RoseTower", "Wyndon_EnergyPlant",
+                // Plan 33 · GL7: the airfield's lounge by Wyndon's station, where the plane on to Paldea leaves
+                "Wyndon_Airfield",
             }
         },
         new() { Id = Paldea, Name = "Paldea", Generation = 9 },
@@ -1295,7 +1300,9 @@ public static class RegionDatabase
         // From Alola by air (plan 23 · Z8's link, built with plan 33 · GL1 once Galar had maps): the airline's attendant
         // stands in Hau'oli City's Pokémon Center once Alola's Hall of Fame is entered, as Lumiose City's does for Kalos
         new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "HauoliCity_PokemonCenter_1F" },
-        new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" },
+        // From Galar by air (plan 33 · GL7): the airline's attendant in the airfield's lounge by Wyndon's station, shown by
+        // GalarHallOfFame; the plane waits for Paldea to have maps (plan 34)
+        new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "Wyndon_Airfield" },
         // The branches (plan 23 · Z17, decision 3): Hisui off Sinnoh, through the light at the heart of the ancient painting
         // in Celestic Town's ruins once Sinnoh's Hall of Fame is entered (celestic_town_cave.txt's Painting, `travel to`),
         // and back by the stone on Prelude Beach (prelude_beach.txt's Stone). No attendant: the scene is the way
