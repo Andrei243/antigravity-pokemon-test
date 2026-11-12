@@ -539,7 +539,7 @@
         "Every ferry that comes and goes is written in my log. Every one, to the minute."
       ],
       "text": [
-        ""
+        "Fiecare feribot care vine și pleacă e scris în jurnalul meu. Fiecare, la minut."
       ]
     },
     {
@@ -547,7 +547,7 @@
         "The ferry's log, for Looker? Here... Strange. On each night before a party at the villa, there are two hours with nothing written."
       ],
       "text": [
-        ""
+        "Jurnalul feribotului, pentru Looker? Poftim... Ciudat. În fiecare seară dinaintea unei petreceri la vilă sunt două ore fără nimic scris."
       ]
     },
     {
@@ -555,7 +555,7 @@
         "The ferry left on time and came in late, and nobody wrote down where it went."
       ],
       "text": [
-        ""
+        "Feribotul a plecat la timp și a sosit târziu, iar nimeni n-a notat unde a fost."
       ]
     },
     {
@@ -563,7 +563,7 @@
         "{player} noted the gap in the ferry's log."
       ],
       "text": [
-        ""
+        "{player} a notat golul din jurnalul feribotului."
       ]
     },
     {
@@ -571,7 +571,7 @@
         "Two hours missing, every party night. I'd never let a gap like that go by on my watch."
       ],
       "text": [
-        ""
+        "Două ore lipsă, în fiecare seară de petrecere. Eu n-aș lăsa niciodată un gol ca ăsta să treacă în tura mea."
       ]
     },
     {
@@ -579,7 +579,7 @@
         "The captain writes every minute in the log now. Neatest hand on the pier."
       ],
       "text": [
-        ""
+        "Căpitanul scrie acum fiecare minut în jurnal. Cel mai îngrijit scris de pe debarcader."
       ]
     }
   ],
@@ -589,7 +589,7 @@
         "Hauling crates all day. My arms will be twice as long by the end of the season."
       ],
       "text": [
-        ""
+        "Car lăzi toată ziua. Până la sfârșitul sezonului, brațele îmi vor fi de două ori mai lungi."
       ]
     },
     {
@@ -597,7 +597,7 @@
         "Crates of fine food? Funny you ask. The captain sold a few to the Survival Area's cook, cheap. Here's the receipt he left lying about."
       ],
       "text": [
-        ""
+        "Lăzi cu mâncare aleasă? Ciudat că întrebi. Căpitanul a vândut câteva bucătarului din Survival Area, ieftin. Iată chitanța pe care a lăsat-o pe-aici."
       ]
     },
     {
@@ -605,7 +605,7 @@
         "{player} noted the receipt for crates of food sold off cheap."
       ],
       "text": [
-        ""
+        "{player} a notat chitanța pentru lăzile cu mâncare vândute ieftin."
       ]
     },
     {
@@ -613,7 +613,7 @@
         "Cheap food from a ferry captain. I thought it was a bargain, not a crime!"
       ],
       "text": [
-        ""
+        "Mâncare ieftină de la un căpitan de feribot. Credeam că e o afacere, nu o crimă!"
       ]
     },
     {
@@ -621,7 +621,7 @@
         "The captain's paying back every crate. He's even carrying them himself."
       ],
       "text": [
-        ""
+        "Căpitanul plătește înapoi fiecare ladă. Le și cară singur."
       ]
     }
   ],
@@ -631,7 +631,7 @@
         "Ferren"
       ],
       "text": [
-        ""
+        "Ferren"
       ]
     },
     {
@@ -639,7 +639,7 @@
         "Looker's helper, eh? So somebody found the gap in my log."
       ],
       "text": [
-        ""
+        "Ajutorul lui Looker, ai? Deci cineva a găsit golul din jurnalul meu."
       ]
     },
     {
@@ -647,7 +647,7 @@
         "Who'd doubt a ferry captain over a hungry Gible? Nobody, until you. Fine. Let's settle it on the pier!"
       ],
       "text": [
-        ""
+        "Cine ar bănui un căpitan de feribot în loc de un Gible flămând? Nimeni, până la tine. Bine. Să rezolvăm pe debarcader!"
       ]
     },
     {
@@ -655,7 +655,7 @@
         "...Shipwrecked. All right, all right. I'll own up at the villa and pay for every crate. Tell Looker I'll be at his door."
       ],
       "text": [
-        ""
+        "...Naufragiat. Bine, bine. Voi recunoaște la vilă și voi plăti fiecare ladă. Spune-i lui Looker că voi fi la ușa lui."
       ]
     }
   ],
@@ -665,7 +665,7 @@
         "Nobody asked you to look in the crates."
       ],
       "text": [
-        ""
+        "Nimeni nu ți-a cerut să te uiți în lăzi."
       ]
     },
     {
@@ -673,7 +673,7 @@
         "A locked heart never hesitates. Let me show you."
       ],
       "text": [
-        ""
+        "O inimă încuiată nu șovăie niciodată. Lasă-mă să-ți arăt."
       ]
     },
     {
@@ -681,7 +681,7 @@
         "So hesitation isn't everything after all."
       ],
       "text": [
-        ""
+        "Deci șovăiala nu e totul, până la urmă."
       ]
     },
     {
@@ -689,7 +689,7 @@
         "Go on. The admin will be the one to deal with you."
       ],
       "text": [
-        ""
+        "Treci. Administratorul se va ocupa de tine."
       ]
     }
   ],
@@ -699,7 +699,7 @@
         "This stretch of the harbour is Lockwork's for the evening."
       ],
       "text": [
-        ""
+        "Porțiunea asta de port e a Lockwork în seara asta."
       ]
     },
     {
@@ -707,7 +707,7 @@
         "We seal their hearts so nothing ever comes between us. Efficient, isn't it?"
       ],
       "text": [
-        ""
+        "Le sigilăm inimile ca nimic să nu se bage între noi. Eficient, nu?"
       ]
     },
     {
@@ -715,7 +715,7 @@
         "Efficient. And beaten. Wonderful."
       ],
       "text": [
-        ""
+        "Eficient. Și învins. Minunat."
       ]
     },
     {
@@ -723,7 +723,7 @@
         "Lockwork pays well. I'd still rather not face you twice."
       ],
       "text": [
-        ""
+        "Lockwork plătește bine. Tot n-aș vrea să te înfrunt de două ori."
       ]
     }
   ],
@@ -733,7 +733,7 @@
         "Down there's the admin's office. Go on, then. You'll come back up quicker than you went in."
       ],
       "text": [
-        ""
+        "Acolo jos e biroul administratorului. Hai, treci. Te vei întoarce mai repede decât ai intrat."
       ]
     }
   ]

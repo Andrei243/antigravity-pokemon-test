@@ -39,7 +39,7 @@
         "Waiter"
       ],
       "text": [
-        ""
+        "Ospătarul"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "The chef's kitchen isn't open yet, but our little pot is! Today's specials are for your whole team, eaten here and now."
       ],
       "text": [
-        ""
+        "Bucătăria bucătarului-șef nu e deschisă încă, dar oala noastră mică e! Specialitățile zilei sunt pentru toată echipa, mâncate aici și acum."
       ]
     },
     {
@@ -60,12 +60,12 @@
         "Nothing, thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce va fi?",
+        "Tocană de fasole, 1.600",
+        "Cartofi sotați, 1.800",
+        "Turte de ovăz cu miere, 2.000",
+        "Cămara",
+        "Nimic, mulțumesc"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Enjoy! Every plate came back clean."
       ],
       "text": [
-        ""
+        "Poftă bună! Fiecare farfurie s-a întors curată."
       ]
     },
     {
@@ -81,7 +81,7 @@
         "We sell the same goods we cook with. Take what you like for your own pot."
       ],
       "text": [
-        ""
+        "Vindem aceleași ingrediente cu care gătim. Ia ce-ți place pentru oala ta."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Oh dear, that's a little more than you have on you."
       ],
       "text": [
-        ""
+        "Vai, e puțin mai mult decât ai la tine."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Come back when you're hungry!"
       ],
       "text": [
-        ""
+        "Revino când ți se face foame!"
       ]
     }
   ]

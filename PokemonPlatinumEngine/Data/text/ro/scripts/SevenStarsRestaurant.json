@@ -51,7 +51,7 @@
         "Waiter"
       ],
       "text": [
-        ""
+        "Ospătarul"
       ]
     },
     {
@@ -59,7 +59,7 @@
         "Good evening! Besides the battles, our kitchen now serves a meal for your whole team, eaten here and now."
       ],
       "text": [
-        ""
+        "Bună seara! Pe lângă lupte, bucătăria noastră servește acum o masă pentru toată echipa ta, mâncată aici și acum."
       ]
     },
     {
@@ -72,12 +72,12 @@
         "Nothing, thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce va fi?",
+        "Ciuperci la cuptor, 2.400",
+        "Supă liniștită, 1.800",
+        "Lipie condimentată, 1.500",
+        "Cămara",
+        "Nimic, mulțumesc"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Bon appétit! Your team tucked in and looks ready for anything."
       ],
       "text": [
-        ""
+        "Poftă bună! Echipa ta a mâncat cu poftă și pare gata de orice."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "We sell the same goods we cook with. Take what you like for your own pot."
       ],
       "text": [
-        ""
+        "Vindem aceleași ingrediente cu care gătim. Ia ce-ți place pentru oala ta."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Oh dear, that's a little more than you have on you."
       ],
       "text": [
-        ""
+        "Vai, e puțin mai mult decât ai la tine."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Come back when you're hungry!"
       ],
       "text": [
-        ""
+        "Revino când ți se face foame!"
       ]
     }
   ]
