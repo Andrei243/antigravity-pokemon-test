@@ -314,6 +314,9 @@ public sealed class Instruction
 {
     public Op Op { get; init; }
 
+    /// <summary>A <c>wardrobe</c>'s counter that is the salon's chair, and the start of one that is a boutique's dye house (plan 43 · LF3).</summary>
+    public const string SalonCounter = "salon", DyeCounter = "dye:";
+
     /// <summary>The line of the file it was written on, for messages about it.</summary>
     public int Line { get; init; }
 

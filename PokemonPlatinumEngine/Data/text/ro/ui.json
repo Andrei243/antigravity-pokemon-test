@@ -7158,5 +7158,128 @@
       "all": "TOATE ȘASE ({item})",
       "never": "LASĂ"
     }
+  },
+  "cardDesign": {
+    "heading": "CREATORUL DE CARD",
+    "row": {
+      "Background": "FUNDAL",
+      "Frame": "RAMĂ",
+      "Pose": "POZĂ",
+      "Face": "CHIP",
+      "Title": "TITLU",
+      "Shown": "ARĂTAȚI",
+      "Greeting": "SALUT",
+      "Signature": "SEMNĂTURĂ",
+      "Print": "TIPĂREȘTE"
+    },
+    "background": {
+      "plain": "Crem simplu",
+      "meadow": "Pajiște",
+      "sea_breeze": "Briză de mare",
+      "dusk": "Amurg",
+      "sinnoh_peaks": "Piscurile din Sinnoh",
+      "kanto_sunset": "Apus în Kanto",
+      "johto_maple": "Arțar din Johto",
+      "hoenn_tide": "Flux în Hoenn",
+      "unova_lights": "Luminile din Unova",
+      "kalos_rose": "Trandafir din Kalos",
+      "sinnoh_aurora": "Aurora din Sinnoh",
+      "kanto_laurel": "Laurii din Kanto",
+      "johto_bells": "Clopotele din Johto",
+      "hoenn_coral": "Coral din Hoenn",
+      "unova_steel": "Oțel din Unova",
+      "long_road": "Drumul lung",
+      "flare": "Flacără",
+      "net_and_reeds": "Plasă și trestii",
+      "pages": "Pagini întoarse",
+      "starlit": "Sub stele",
+      "backdrop": "Decor: {name}"
+    },
+    "frame": {
+      "plain": "Simplă",
+      "double_line": "Linie dublă",
+      "scallop": "Festoane",
+      "corners": "Colțuri",
+      "beads": "Mărgele",
+      "ribbon": "Panglică",
+      "laurel": "Lauri",
+      "gilt": "Aurită"
+    },
+    "pose": {
+      "Standing": "În picioare",
+      "Sitting": "Așezat jos",
+      "Wave": "Face cu mâna",
+      "Nod": "Dă din cap",
+      "Cheer": "Se bucură",
+      "Surprised": "Tresare",
+      "Bow": "Se înclină",
+      "Shrug": "Ridică din umeri",
+      "Point": "Arată",
+      "Laugh": "Râde",
+      "Jump": "Sare"
+    },
+    "face": {
+      "Neutral": "Calm",
+      "Happy": "Zâmbitor",
+      "Surprised": "Cu ochii mari",
+      "Sad": "Visător",
+      "Angry": "Aprig"
+    },
+    "title": {
+      "none": "Niciunul",
+      "champion": "Campion din {region}"
+    },
+    "shown": {
+      "team": "Echipa",
+      "chosen": "{count} aleși",
+      "heading": "CEI ȘASE ARĂTAȚI",
+      "note": "A ca să pui sau să scoți unul. Cel mult șase."
+    },
+    "greeting": {
+      "none": "Niciunul"
+    },
+    "signature": {
+      "none": "Nesemnat",
+      "signed": "Semnat",
+      "heading": "SEMNEAZĂ-ȚI CARDUL",
+      "pen": "STILOU",
+      "eraser": "RADIERĂ",
+      "down": "SCRIE",
+      "up": "RIDICAT"
+    },
+    "print": {
+      "action": "Ambele fețe",
+      "done": "Card tipărit: {file}",
+      "notDone": "Cardul nu a putut fi tipărit: {why}"
+    },
+    "hints": {
+      "pen": "Stilou",
+      "eraser": "Radieră",
+      "clear": "Șterge"
+    },
+    "keyQ": "Q"
+  },
+  "salon": {
+    "title": "SALON",
+    "dyeHouse": "VOPSITORIE",
+    "tab": { "Cut": "TUNS", "Colour": "CULOARE", "Eyes": "OCHI", "Skin": "PIELE" },
+    "step": { "Garment": "HAINĂ", "Dye": "VOPSEA" },
+    "own": "A ta",
+    "cut": { "Short": "Scurt", "Spiky": "Țepos", "Long": "Lung și liber", "Swept": "Breton pieptănat", "Afro": "Bucle bogate", "Bun": "Coc", "Braids": "Împletituri", "Bunches": "Codițe", "Bowl": "Tuns castron", "Ponytail": "Coadă de cal", "Curls": "Bucle moi", "Bald": "Ras" },
+    "hairColour": { "black": "Negru", "brown": "Castaniu", "chestnut": "Șaten", "blond": "Blond", "copper": "Arămiu", "ash": "Cenușiu", "plum": "Prună", "teal": "Turcoaz" },
+    "eyeColour": { "dark": "Închiși", "brown": "Căprui", "hazel": "Alune", "green": "Verzi", "blue": "Albaștri", "grey": "Gri" },
+    "skinTone": { "fair": "Foarte deschisă", "light": "Deschisă", "warm": "Caldă", "tan": "Bronzată", "brown": "Brună", "deep": "Închisă" },
+    "dye": { "cherry": "Cireașă", "coral": "Coral", "peach": "Piersică", "sunflower": "Floarea-soarelui", "lemon": "Lămâie", "leaf": "Frunză", "mint": "Mentă", "teal": "Turcoaz", "sky": "Cer", "navy": "Bleumarin", "violet": "Violet", "plum": "Prună", "rose": "Trandafir", "cream": "Crem", "charcoal": "Cărbune", "snow": "Zăpadă" },
+    "dyedName": "{garment} ({dye})",
+    "done": "Un look nou! Îți stă bine.",
+    "dyed": "{garment} e vopsită și îmbrăcată!",
+    "noBerry": "Vopseaua asta cere o {berry}.",
+    "nothingToDye": "Nimic de vopsit: cumpără întâi o haină.",
+    "withBerry": "ȘI O BOABĂ",
+    "note": "Stânga și dreapta schimbă ce se aranjează. O schimbare se plătește pe scaun, iar înapoi la a ta se poate oricând... la același preț.",
+    "dyeNote": "Alege o haină a ta, apoi o vopsea. Cea vopsită e a ta, lângă cea simplă.",
+    "question": "{what}: acesta e look-ul?",
+    "dyeQuestion": "O vopsești {what}?",
+    "answer": { "yes": "DA" }
   }
 }

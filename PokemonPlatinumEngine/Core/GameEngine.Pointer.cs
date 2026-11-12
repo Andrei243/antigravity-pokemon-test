@@ -125,6 +125,9 @@ public partial class GameEngine
             // The card-flip table (plan 42 · PS3)
             case GameState.CardFlip:
                 return flow.CardFlipScreen;
+            // The card designer (plan 43 · LF1): its rows, the six's list and the signature's pad
+            case GameState.CardDesign:
+                return new Pointable(flow.CardDesignScreen.HitTest, flow.CardDesignScreen.PointAt);
             default:
                 return null;
         }

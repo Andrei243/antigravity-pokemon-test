@@ -669,6 +669,17 @@ public static class ScriptParser
             case "starter":
                 return new Instruction { Op = Op.Starter, Line = line };
             case "wardrobe":
+                // The salon's chair and the dye house's counter (plan 43 · LF3): bare words, the dye house with its boutique's key
+                if (r.PeekIs("salon"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Wardrobe, Line = line, Name = Instruction.SalonCounter };
+                }
+                if (r.PeekIs("dye"))
+                {
+                    r.Next();
+                    return new Instruction { Op = Op.Wardrobe, Line = line, Name = Instruction.DyeCounter + r.Text("a boutique's key") };
+                }
                 return new Instruction { Op = Op.Wardrobe, Line = line, Name = r.More ? r.Text("a boutique's key") : "" };
             case "shop":
                 return new Instruction { Op = Op.Shop, Line = line, Name = r.More ? r.Text("a counter's key") : "" };

@@ -1,0 +1,34 @@
+{
+  "backgrounds": [
+    { "id": "plain", "top": "#fbf6ea", "bottom": "#efe6d2", "pattern": "None", "ink": "#c9b996", "unlock": "start" },
+    { "id": "meadow", "top": "#e4f4d2", "bottom": "#bfe2a4", "pattern": "Leaves", "ink": "#8fc472", "unlock": "start" },
+    { "id": "sea_breeze", "top": "#dff1fb", "bottom": "#a9d6ef", "pattern": "Waves", "ink": "#7fb9dd", "unlock": "start" },
+    { "id": "dusk", "top": "#fbe0d0", "bottom": "#e8b8c8", "pattern": "Stripes", "ink": "#d99cb1", "unlock": "start" },
+    { "id": "sinnoh_peaks", "top": "#e6ecf6", "bottom": "#bccbe2", "pattern": "Hills", "ink": "#93a7cb", "unlock": "badges:sinnoh" },
+    { "id": "kanto_sunset", "top": "#fde7c4", "bottom": "#f4b585", "pattern": "Rays", "ink": "#eb9a63", "unlock": "badges:kanto" },
+    { "id": "johto_maple", "top": "#fbe8d0", "bottom": "#e9b98c", "pattern": "Leaves", "ink": "#d68c56", "unlock": "badges:johto" },
+    { "id": "hoenn_tide", "top": "#d8f4ee", "bottom": "#93d9cb", "pattern": "Waves", "ink": "#63bfae", "unlock": "badges:hoenn" },
+    { "id": "unova_lights", "top": "#e9e4f6", "bottom": "#b9afdf", "pattern": "Dots", "ink": "#9286cc", "unlock": "badges:unova" },
+    { "id": "kalos_rose", "top": "#fbe4ea", "bottom": "#efb6c6", "pattern": "Checks", "ink": "#e095aa", "unlock": "badges:kalos" },
+    { "id": "sinnoh_aurora", "top": "#d9e7f7", "bottom": "#b7a6e3", "pattern": "Stars", "ink": "#8d7fd2", "unlock": "champion:sinnoh" },
+    { "id": "kanto_laurel", "top": "#fff4d4", "bottom": "#ead48e", "pattern": "Leaves", "ink": "#cdb05c", "unlock": "champion:kanto" },
+    { "id": "johto_bells", "top": "#f6efe0", "bottom": "#d9c7a0", "pattern": "Dots", "ink": "#b9a274", "unlock": "champion:johto" },
+    { "id": "hoenn_coral", "top": "#fde6dc", "bottom": "#f5ab9a", "pattern": "Waves", "ink": "#e98872", "unlock": "champion:hoenn" },
+    { "id": "unova_steel", "top": "#e7ebee", "bottom": "#b6c0c8", "pattern": "Checks", "ink": "#93a0ab", "unlock": "champion:unova" },
+    { "id": "long_road", "top": "#f3ecdc", "bottom": "#d8c6a0", "pattern": "Stripes", "ink": "#bea877", "unlock": "medals:Journey" },
+    { "id": "flare", "top": "#fde3d4", "bottom": "#f19a78", "pattern": "Rays", "ink": "#e4774f", "unlock": "medals:Battles" },
+    { "id": "net_and_reeds", "top": "#e6f3e4", "bottom": "#a9d2b0", "pattern": "Checks", "ink": "#7db58a", "unlock": "medals:Catching" },
+    { "id": "pages", "top": "#fdfaf0", "bottom": "#e6dcc0", "pattern": "Stripes", "ink": "#cbbd95", "unlock": "diploma:National" },
+    { "id": "starlit", "top": "#d6d9ef", "bottom": "#8f95c8", "pattern": "Stars", "ink": "#6c72b0", "unlock": "medals:League" }
+  ],
+  "frames": [
+    { "id": "plain", "color": "#ffffff", "accent": "#d8d0bc", "style": "Plain", "unlock": "start" },
+    { "id": "double_line", "color": "#ffffff", "accent": "#b7a98a", "style": "Double", "unlock": "start" },
+    { "id": "scallop", "color": "#fff6ea", "accent": "#e3b98d", "style": "Scallop", "unlock": "start" },
+    { "id": "corners", "color": "#ffffff", "accent": "#7f95bd", "style": "Corners", "unlock": "badges:sinnoh" },
+    { "id": "beads", "color": "#fff8f0", "accent": "#c98aa8", "style": "Beads", "unlock": "medals:Growth" },
+    { "id": "ribbon", "color": "#ffffff", "accent": "#d85f6a", "style": "Ribbon", "unlock": "medals:Pokedex" },
+    { "id": "laurel", "color": "#fffbea", "accent": "#a6a24a", "style": "Laurel", "unlock": "champion:sinnoh" },
+    { "id": "gilt", "color": "#fff7dc", "accent": "#d2a73c", "style": "Gilt", "unlock": "diploma:Sinnoh" }
+  ]
+}

@@ -1323,6 +1323,10 @@ public partial class GameEngine
                     // And the Bargain Power in force as it opens (plan 36 · TR7)
                     game.flow.ShopScreen.Bargain = game.flow.Powers.Strength(PowerKind.Bargain);
                     break;
+                case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
+                    // The salon's chair and a boutique's dye house (plan 43 · LF3)
+                    game.OpenSalon(dye: counter != Instruction.SalonCounter);
+                    break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name
                     game.flow.State = GameState.Wardrobe;

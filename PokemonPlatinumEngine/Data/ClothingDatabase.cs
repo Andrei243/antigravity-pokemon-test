@@ -82,6 +82,45 @@ public sealed class ClothingData
     public List<Garment> Garments { get; set; } = new();
     public Dictionary<string, List<string>> Boutiques { get; set; } = new();
     public List<OutfitSet> Sets { get; set; } = new();
+
+    /// <summary>The salon's cuts (<c>HairCut</c> by name), colours, eyes and tones (plan 43 · LF3).</summary>
+    public List<string> Hair { get; set; } = new();
+    public List<SalonColour> HairColours { get; set; } = new();
+    public List<SalonColour> EyeColours { get; set; } = new();
+    public List<SalonColour> SkinTones { get; set; } = new();
+
+    /// <summary>The dye house's dyes (plan 43 · LF3).</summary>
+    public List<Dye> Dyes { get; set; } = new();
+
+    /// <summary>What the salon's chair and the dye house's counter ask.</summary>
+    public SalonPrices Prices { get; set; } = new();
+}
+
+/// <summary>A colour of the salon's (plan 43 · LF3): its id, named in <c>ui.json</c>'s <c>salon</c> section, and <c>#rrggbb</c>.</summary>
+public sealed class SalonColour
+{
+    public string Id { get; set; } = string.Empty;
+    public string Color { get; set; } = "#000000";
+}
+
+/// <summary>A dye of the dye house (plan 43 · LF3): the colour and accent it gives a garment, the berry it is made with, and whether a counter sells it.</summary>
+public sealed class Dye
+{
+    public string Id { get; set; } = string.Empty;
+    public string Color { get; set; } = "#ffffff";
+    public string Accent { get; set; } = "#ffffff";
+    public string Berry { get; set; } = string.Empty;
+    public bool Sold { get; set; } = true;
+}
+
+/// <summary>What each change at the salon costs, and a dye at the counter (plan 43 · LF3).</summary>
+public sealed class SalonPrices
+{
+    public int Cut { get; set; } = 2000;
+    public int Colour { get; set; } = 1500;
+    public int Eyes { get; set; } = 1000;
+    public int Skin { get; set; } = 1000;
+    public int Dye { get; set; } = 800;
 }
 
 /// <summary>
@@ -99,7 +138,49 @@ public static class ClothingDatabase
 
     public static IReadOnlyDictionary<string, List<string>> Boutiques => Data.Boutiques;
 
-    public static Garment? Get(string? id) => id != null && ById.TryGetValue(id, out var g) ? g : null;
+    /// <summary>
+    /// A garment by id; a dyed one (<c>striped_tee~mint</c>, plan 43 · LF3) is its garment in the dye's colours, named
+    /// for both. Null for an id the data doesn't know, a dye on nothing, or a dye on a garment that has no colour.
+    /// </summary>
+    public static Garment? Get(string? id)
+    {
+        if (id == null) return null;
+        if (ById.TryGetValue(id, out var g)) return g;
+        int at = id.IndexOf(DyeMark);
+        if (at <= 0 || !ById.TryGetValue(id[..at], out var plain) || plain.IsNothing || DyeOf(id[(at + 1)..]) is not { } dye) return null;
+        // Made afresh each time, so its name follows the language chosen
+        return new Garment
+        {
+            Id = plain.Id + DyeMark + dye.Id, Name = Text.Of("salon.dyedName", ("garment", plain.Name), ("dye", Text.Of($"salon.dye.{dye.Id}"))),
+            Slot = plain.Slot, Price = plain.Price, Description = plain.Description,
+            Color = dye.Color, Accent = dye.Accent, Hat = plain.Hat, Coat = plain.Coat, ShortSleeves = plain.ShortSleeves,
+            Stripes = plain.Stripes, Scarf = plain.Scarf, Skirt = plain.Skirt, Shorts = plain.Shorts
+        };
+    }
+
+    /// <summary>What joins a garment's id and its dye's in a dyed garment's id.</summary>
+    public const char DyeMark = '~';
+
+    /// <summary>A dyed garment's id: the garment's and the dye's.</summary>
+    public static string DyedId(string garment, string dye) => PlainOf(garment) + DyeMark + dye;
+
+    /// <summary>A garment's own id with any dye taken off.</summary>
+    public static string PlainOf(string garment) => garment.IndexOf(DyeMark) is var at and > 0 ? garment[..at] : garment;
+
+    /// <summary>The dye a garment's id names; null for a garment not dyed.</summary>
+    public static Dye? DyeIn(string garment) => garment.IndexOf(DyeMark) is var at and > 0 ? DyeOf(garment[(at + 1)..]) : null;
+
+    public static IReadOnlyList<string> Cuts => Data.Hair;
+    public static IReadOnlyList<SalonColour> HairColours => Data.HairColours;
+    public static IReadOnlyList<SalonColour> EyeColours => Data.EyeColours;
+    public static IReadOnlyList<SalonColour> SkinTones => Data.SkinTones;
+    public static IReadOnlyList<Dye> Dyes => Data.Dyes;
+    public static SalonPrices Prices => Data.Prices;
+
+    public static Dye? DyeOf(string? id) => Data.Dyes.FirstOrDefault(d => string.Equals(d.Id, id, StringComparison.OrdinalIgnoreCase));
+    public static SalonColour? HairColourOf(string? id) => Data.HairColours.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
+    public static SalonColour? EyeColourOf(string? id) => Data.EyeColours.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
+    public static SalonColour? SkinToneOf(string? id) => Data.SkinTones.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>What a boutique sells, in the file's order; an unknown key sells nothing.</summary>
     public static List<Garment> Stock(string? boutique) =>

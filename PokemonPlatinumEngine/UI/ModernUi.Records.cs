@@ -358,6 +358,14 @@ internal static partial class ModernUi
 
     private static void CardFront(Rectangle card, TrainerCardInfo info, Texture2D? portrait, Color colour)
     {
+        // A card the player designed (plan 43 · LF1) has its face where the records and the portrait stand
+        if (info.Design is { } face) CardFrontDesigned(card, info, face);
+        else CardFrontRecords(card, info, portrait, colour);
+        CardBadges(card, info);
+    }
+
+    private static void CardFrontRecords(Rectangle card, TrainerCardInfo info, Texture2D? portrait, Color colour)
+    {
         // ---- Records
         bool dex = info.Colour != TrainerCardRules.CardColour.NoPokedex;
         float x = card.X + 72, y = card.Y + 176;
@@ -383,7 +391,10 @@ internal static partial class ModernUi
             Raylib.DrawTexturePro(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height),
                 new Rectangle(MathF.Round(plate.X + (plate.Width - w) / 2f), MathF.Round(plate.Y + plate.Height - 40 - h), w, h), Vector2.Zero, 0f, Color.White);
         }
+    }
 
+    private static void CardBadges(Rectangle card, TrainerCardInfo info)
+    {
         // ---- Badges
         float by = card.Y + 590;
         UiShapes.Fill(new Rectangle(card.X + 72, by, card.Width - 144, 3), 1.5f, Rule);
@@ -736,8 +747,13 @@ internal static partial class ModernUi
             CardStar(new Vector2(x + 36 + k * 88, by + 118), 32, k < info.Stars, Darker(colour, 0.5f), Rule);
         string count = $"{info.Stars} / 5";
         UiFonts.DrawCentered(count, x + 36 + 4 * 88 + 72, by + 118, 40, Ink, UiWeight.Black);
-        string note = Text.Of("card.starsNote");
-        UiFonts.DrawCentered(note, right - UiFonts.Measure(note, 26, UiWeight.ExtraBold), by + 118, 26, Muted, UiWeight.ExtraBold);
+        // A signed card has the signature where the note stands (plan 43 · LF1)
+        if (info.Design?.Signature is { IsEmpty: false } signature) CardBackSignature(right, by, signature);
+        else
+        {
+            string note = Text.Of("card.starsNote");
+            UiFonts.DrawCentered(note, right - UiFonts.Measure(note, 26, UiWeight.ExtraBold), by + 118, 26, Muted, UiWeight.ExtraBold);
+        }
     }
 
     // ------------------------------------------------------------------ saving

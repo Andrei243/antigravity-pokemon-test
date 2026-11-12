@@ -6814,5 +6814,128 @@
       "all": "ALL SIX ({item})",
       "never": "NEVER MIND"
     }
+  },
+  "cardDesign": {
+    "heading": "CARD DESIGNER",
+    "row": {
+      "Background": "BACKGROUND",
+      "Frame": "FRAME",
+      "Pose": "POSE",
+      "Face": "FACE",
+      "Title": "TITLE",
+      "Shown": "SHOWN",
+      "Greeting": "GREETING",
+      "Signature": "SIGNATURE",
+      "Print": "PRINT"
+    },
+    "background": {
+      "plain": "Plain Cream",
+      "meadow": "Meadow",
+      "sea_breeze": "Sea Breeze",
+      "dusk": "Dusk",
+      "sinnoh_peaks": "Sinnoh Peaks",
+      "kanto_sunset": "Kanto Sunset",
+      "johto_maple": "Johto Maple",
+      "hoenn_tide": "Hoenn Tide",
+      "unova_lights": "Unova Lights",
+      "kalos_rose": "Kalos Rose",
+      "sinnoh_aurora": "Sinnoh Aurora",
+      "kanto_laurel": "Kanto Laurel",
+      "johto_bells": "Johto Bells",
+      "hoenn_coral": "Hoenn Coral",
+      "unova_steel": "Unova Steel",
+      "long_road": "The Long Road",
+      "flare": "Flare",
+      "net_and_reeds": "Net and Reeds",
+      "pages": "Turning Pages",
+      "starlit": "Starlit",
+      "backdrop": "Backdrop: {name}"
+    },
+    "frame": {
+      "plain": "Plain",
+      "double_line": "Double Line",
+      "scallop": "Scallop",
+      "corners": "Corners",
+      "beads": "Beads",
+      "ribbon": "Ribbon",
+      "laurel": "Laurel",
+      "gilt": "Gilt"
+    },
+    "pose": {
+      "Standing": "Standing",
+      "Sitting": "Sitting Down",
+      "Wave": "Waving",
+      "Nod": "Nodding",
+      "Cheer": "Cheering",
+      "Surprised": "Startled",
+      "Bow": "Bowing",
+      "Shrug": "Shrugging",
+      "Point": "Pointing",
+      "Laugh": "Laughing",
+      "Jump": "Jumping"
+    },
+    "face": {
+      "Neutral": "Calm",
+      "Happy": "Smiling",
+      "Surprised": "Wide-Eyed",
+      "Sad": "Wistful",
+      "Angry": "Fierce"
+    },
+    "title": {
+      "none": "None",
+      "champion": "Champion of {region}"
+    },
+    "shown": {
+      "team": "The Team",
+      "chosen": "{count} Chosen",
+      "heading": "THE SIX SHOWN",
+      "note": "A to put one in or take it out. Six at most."
+    },
+    "greeting": {
+      "none": "Not Given"
+    },
+    "signature": {
+      "none": "Not Signed",
+      "signed": "Signed",
+      "heading": "SIGN YOUR CARD",
+      "pen": "PEN",
+      "eraser": "ERASER",
+      "down": "WRITING",
+      "up": "LIFTED"
+    },
+    "print": {
+      "action": "Both Sides",
+      "done": "Card printed: {file}",
+      "notDone": "The card couldn't be printed: {why}"
+    },
+    "hints": {
+      "pen": "Pen",
+      "eraser": "Eraser",
+      "clear": "Clear"
+    },
+    "keyQ": "Q"
+  },
+  "salon": {
+    "title": "SALON",
+    "dyeHouse": "DYE HOUSE",
+    "tab": { "Cut": "CUT", "Colour": "COLOUR", "Eyes": "EYES", "Skin": "SKIN" },
+    "step": { "Garment": "GARMENT", "Dye": "DYE" },
+    "own": "Your Own",
+    "cut": { "Short": "Short Crop", "Spiky": "Spiky", "Long": "Long and Loose", "Swept": "Swept Fringe", "Afro": "Full Curls", "Bun": "Top Bun", "Braids": "Braids", "Bunches": "Bunches", "Bowl": "Bowl Cut", "Ponytail": "Ponytail", "Curls": "Soft Curls", "Bald": "Shaved" },
+    "hairColour": { "black": "Black", "brown": "Brown", "chestnut": "Chestnut", "blond": "Blond", "copper": "Copper", "ash": "Ash", "plum": "Plum", "teal": "Teal" },
+    "eyeColour": { "dark": "Dark", "brown": "Brown", "hazel": "Hazel", "green": "Green", "blue": "Blue", "grey": "Grey" },
+    "skinTone": { "fair": "Fair", "light": "Light", "warm": "Warm", "tan": "Tan", "brown": "Brown", "deep": "Deep" },
+    "dye": { "cherry": "Cherry", "coral": "Coral", "peach": "Peach", "sunflower": "Sunflower", "lemon": "Lemon", "leaf": "Leaf", "mint": "Mint", "teal": "Teal", "sky": "Sky", "navy": "Navy", "violet": "Violet", "plum": "Plum", "rose": "Rose", "cream": "Cream", "charcoal": "Charcoal", "snow": "Snow" },
+    "dyedName": "{garment} ({dye})",
+    "done": "A new look! It suits you.",
+    "dyed": "{garment} is dyed and on!",
+    "noBerry": "That dye needs a {berry}.",
+    "nothingToDye": "Nothing to dye: buy a garment first.",
+    "withBerry": "AND A BERRY",
+    "note": "Left and right change what is styled. A change is paid at the chair, and your own is always free to go back to... for the same price.",
+    "dyeNote": "Choose a garment you own, then a dye. The dyed one is yours beside the plain one.",
+    "question": "{what}: is that the look?",
+    "dyeQuestion": "Dye it {what}?",
+    "answer": { "yes": "YES" }
   }
 }

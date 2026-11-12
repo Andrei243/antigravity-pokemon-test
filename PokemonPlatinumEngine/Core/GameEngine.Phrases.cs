@@ -34,6 +34,13 @@ public partial class GameEngine
     /// <summary>The picker closed: a phrase given is kept and the script hears 1, one backed out of leaves the phrase as it was and the script hears 0.</summary>
     private void ClosePhrases()
     {
+        // The card designer's greeting (plan 43 · LF1): kept, and back to the designer, with no script to answer
+        if (flow.PhrasesReturn == GameState.CardDesign)
+        {
+            flow.PhrasesReturn = GameState.Overworld;
+            CloseGreetingPicker();
+            return;
+        }
         if (flow.PhraseScreen.Outcome is IReadOnlyList<string> phrase && PhraseGroups.IsWhole(phrase))
         {
             flow.Story.SetPhrase(flow.PhraseScreen.Name, phrase);

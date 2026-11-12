@@ -112,7 +112,11 @@ public class WardrobeScreen
         rows.Clear();
         rows.Add(null);
         foreach (var g in ClothingDatabase.All.Where(g => g.Slot == Slot && (g.IsFree || wardrobe.Owns(g.Id) || stock.Contains(g))))
+        {
             rows.Add(g.Id);
+            // A garment dyed at the dye house (plan 43 · LF3) follows its plain one
+            rows.AddRange(wardrobe.Owned.Where(o => ClothingDatabase.DyeIn(o) != null && string.Equals(ClothingDatabase.PlainOf(o), g.Id, StringComparison.OrdinalIgnoreCase)));
+        }
         int at = rows.FindIndex(r => string.Equals(r, keepOn, StringComparison.OrdinalIgnoreCase));
         SelectedIndex = Math.Max(0, at);
         FirstRow = UiNav.Window(0, SelectedIndex, rows.Count, VisibleRows);
