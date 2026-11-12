@@ -274,6 +274,9 @@ public sealed class BattleSetup
     /// </summary>
     public bool OffersSwitch { get; init; }
 
+    /// <summary>The player carries the Reclaimer (plan 44 · SD1, <see cref="Sim.CoreSetup.Reclaimer"/>). Off unless given.</summary>
+    public bool Reclaimer { get; init; }
+
     /// <summary>A Galar den's battle against a Mega Dynamax boss (plan 06 · R20c, question 14): the wild Pokémon there may Mega Evolve and Mega Dynamax by itself, under rules that have it. Off unless given.</summary>
     public bool MegaMaxDen { get; init; }
 
@@ -380,6 +383,7 @@ public sealed class BattleSetup
         Frontier = Frontier,
         NoBattleItems = NoBattleItems,
         OffersSwitch = OffersSwitch,
+        Reclaimer = Reclaimer,
         MegaMaxDen = MegaMaxDen,
         Raid = Raid,
         Difficulty = Difficulty,

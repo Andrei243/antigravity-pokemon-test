@@ -405,9 +405,28 @@ public partial class BattleEngine
                     SelectShift();
                     break;
                 }
+                // A loose locked heart's fourth command is CALM (plan 44 · SD2)
+                if (OffersCalm)
+                {
+                    SelectCalm();
+                    break;
+                }
                 AttemptRun();
                 break;
         }
+    }
+
+    /// <summary>The loose Pokémon whose action is being chosen is calmed this turn (plan 44 · SD2).</summary>
+    public void SelectCalm()
+    {
+        InCore(MenuBattler);
+        if (core.WhyNot(BattleChoice.Calm(MenuBattler.Place)) is { } why)
+        {
+            Refuse(why, BattleMenuState.Main);
+            return;
+        }
+        AudioManager.PlaySound("select");
+        Commit(BattleChoice.Calm(MenuBattler.Place));
     }
 
     /// <summary>The Pokémon whose action is being chosen moves to the centre of a triple battle's side this turn (plan 14 · B6).</summary>

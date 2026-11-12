@@ -54,6 +54,8 @@ public sealed partial class BattleCore
         if (data.Effect == "Belch" && !ateBerry.Contains(mine.Pokemon!)) return Text.Of("battle.isDisabled", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (CantUseTwice(mine, data)) return Text.Of("battle.cantUseTwiceInARow", ("pokemon", mine.Name), ("move", move.DisplayName));
         if (IsSealed(mine, data)) return Text.Of("battle.cantUseTheSealed", ("pokemon", mine.Name), ("move", move.DisplayName));
+        // A locked heart's moves come back one by one (plan 44 · SD1)
+        if (SealedByTheLock(mine, move) is { } lockSealed) return lockSealed;
         // A sky battle refuses the moves that need the ground (plan 14 · B2)
         if (NotInTheAir(mine, move) is { } grounded) return grounded;
         if (Field.Gravity && FailsUnderGravity(data)) return Text.Of("battle.cantUseBecauseOf", ("pokemon", mine.Name), ("move", move.DisplayName));
@@ -143,6 +145,10 @@ public sealed partial class BattleCore
                 return EmeraldSafari && choice.Block != null ? null : Text.Of("battle.thereNothingToThrow");
             case ChoiceKind.GoNear:
                 return EmeraldSafari ? null : Text.Of("battle.thereNothingToThrow");
+
+            // A loose Pokémon of the player's is calmed (plan 44 · SD1)
+            case ChoiceKind.Calm:
+                return WhyNotCalm(b);
 
             case ChoiceKind.Item:
                 return WhyNotItem(b, choice);

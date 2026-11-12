@@ -11641,3 +11641,37 @@ its three fans (persons 1, 4 and 18) each wait with a Prop after a show.
 - **What is not taken**: no stage, prop, song, performer, judge, mascot or word of Black and White's; the two songs are
   ours (Sunny Side Revue, a brass shuffle at 128, 32 bars of 4/4; Hour of Lanterns, a music-box waltz at 108, 48 bars of
   3/4), awaiting the user's ear.
+
+## Locked hearts (2026-11-12, plan 44 · SD1)
+
+Colosseum's and XD's snag and purification as a mechanic, with everything in it ours (the user's answers 39a to 46a and
+41c: Lockwork, the Reclaimer, Orsolya Keld's Ampharos, Looker as the giver). The numbers are ours.
+
+- **Only under the modern rules** (`Ruleset.LockedHearts`): Platinum's battles never meet a lock, and `battles-platinum.txt`
+  and `battles-modern.txt` never move for it, since no battle of theirs has a lock or the Reclaimer.
+- **The lock** (`Models/HeartLock.cs`, `Pokemon.Lock`, saved as `SavedPokemonData.Lock`, null for every other Pokémon): a
+  gauge of 100, five bars of 20, the EXP held and the lock's id. Its moves come back one by one: the first from the start,
+  one more as each of the first three bars empties, so all four by the gauge's 40.
+- **What lowers it**: 4 for a battle it was sent out in and 3 for each foe that fell while it faced it, 2 every 128 steps in
+  the team, 6 for the camp's pat and 6 for its meal, 6 for a calm in battle, and 25 for the spring's rite once a day. A
+  heart opens in about two hours' play with it in the team; by steps alone in 6,400 steps.
+- **While locked** it gains no level (`Pokemon.GainExp` refuses), no friendship (`FriendshipRules.Apply`) and no evolution
+  (`Evolution.Find`), is taught nothing by a machine or a tutor, takes no Rare Candy, and is turned away by the Day Care,
+  the Poké Jobs, the Battle Frontier and its venues, the Pokéathlon, the contests and the Home box's trades: one rule,
+  `HeartLock.WhyNot`, at each place.
+- **The opening** (decision 4): at once, wherever the gauge empties, once the field is free. The lock goes, the held EXP is
+  given through `GainExp` up to `GameEngine.CurrentLevelCap()`, and its friendship is its species' base.
+- **The reclaim** (`BattleCore.Locks.cs`): with the Reclaimer in the bag (`CoreSetup.Reclaimer`, kept by the record and the
+  Vs. Recorder's file) a ball may be thrown at a trainer's locked Pokémon in a single battle; any other trainer's Pokémon is
+  still refused with the line it always had. The throw is a wild Pokémon's throw. Caught, it gives the EXP a faint would
+  have, leaves the trainer's team and the field, and the trainer sends the next at the turn's end; reclaiming the last wins
+  the battle and its prize. It joins the team or the PC once the battle is over, never during it, so it is never sent in
+  against its old trainer. A reclaim is a gift to the Nuzlocke's gifts clause.
+- **A locked Pokémon knocked out** goes back to Lockwork, noted as missed (`HeartsRecord.Missed`), and is met again with
+  the courier, so none is lost.
+- **Breaking loose** (`RollKind.Lock`): at its action a locked Pokémon of the player's breaks loose 6 times in 100, 30 on the
+  turn after it took a critical or super-effective hit. Loose, it heeds the order one time in two (the other it ignores
+  it), and loses a sixteenth of its HP at each turn's end. CALM (`ChoiceKind.Calm`, the Pokémon's turn, taken with the
+  items and switches) ends it and lowers the gauge. A switch ends it too.
+- **What is not taken**: no Shadow move, Shadow type, Snag Machine, Purify Chamber, Relic Stone, region, villain team or
+  name of Colosseum's or XD's; the locked fight with their own moves.

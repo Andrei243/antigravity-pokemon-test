@@ -507,6 +507,7 @@ public partial class GameEngine
         flow.Training.Clear();
         flow.DexNav = new();
         flow.Photos.Clear();
+        flow.Hearts = new HeartsRecord();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
         flow.PokeblockCase.Clear();
@@ -785,6 +786,7 @@ public partial class GameEngine
         flow.Training.Load(save.Training);
         flow.DexNav = Overworld.DexNavState.From(save.DexNav);
         flow.Photos.Load(save.Photos);
+        flow.Hearts = save.Hearts ?? new HeartsRecord();
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
         flow.PokeblockCase.Restore(save.Pokeblocks);
@@ -1014,6 +1016,7 @@ public partial class GameEngine
             Training = flow.Training.ToSave(),
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
+            Hearts = flow.Hearts.IsEmpty ? null : flow.Hearts,
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
             Pokeblocks = flow.PokeblockCase.Count > 0 ? flow.PokeblockCase.ToSaved() : null,
@@ -1965,6 +1968,8 @@ public partial class GameEngine
         RefreshPresence();
         // A Pokémon caught under the Nuzlocke is named before the field goes on (plan 13 · V4)
         if (NameTheCatch()) return;
+        // A locked heart whose gauge has emptied opens once the field is free (plan 44 · SD1)
+        if (KeepTheHearts()) return;
         // A Pokémon traded in from another of the player's saves is welcomed, and evolves if trading was its way (plan 12 · Q28)
         if (!flow.Runner.IsRunning && HandOverATrade()) return;
 
@@ -2288,6 +2293,8 @@ public partial class GameEngine
         // SystemVars_IncrementAmitySquareStepCount, which the original counts everywhere and reads only in the square)
         if (flow.Story.Var(AmitySquare.ActiveVar) == 1) AmitySquare.CountStep(flow.Story);
         if (PalParkStep()) return true;
+        // The team's locked hearts are lowered by its steps (plan 44 · SD1)
+        HeartsOnStep();
         if (++flow.FriendshipSteps >= FriendshipRules.WalkCycleSteps)
         {
             flow.FriendshipSteps = 0;

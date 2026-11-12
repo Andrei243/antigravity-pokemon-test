@@ -4077,6 +4077,14 @@
     "lostSomeOfIts": "{pokemon} și-a pierdut o parte din HP!",
     "hungOnUsingIts": "{pokemon} a rezistat cu ajutorul obiectului {item}!",
     "affectionHeldOn": "{pokemon} a rezistat, ca să nu te dezamăgească!",
+    "reclaimed": "Gata! {foe} a fost recuperat de la antrenorul lui!",
+    "brokeLoose": "Inima încuiată a lui {user} a izbucnit! S-a dezlănțuit!",
+    "looseIgnores": "{user} e dezlănțuit și a ignorat ordinul!",
+    "calmedDown": "{pokemon} s-a liniștit. Lacătul i-a slăbit puțin.",
+    "nothingToCalm": "{pokemon} nu e dezlănțuit. Nu e nimic de liniștit.",
+    "looseHurts": "{pokemon} se rănește în propria zbatere!",
+    "expHeld": "Lacătul lui {pokemon} a ținut {exp} Puncte EXP.",
+    "moveSealedByLock": "Inima lui {pokemon} e încuiată. {move} nu vine!",
     "affectionShookOff": "{pokemon} a scăpat de {condition} de dragul tău!",
     "affectionDodged": "{pokemon} s-a ferit, dornic să te impresioneze!",
     "ateIts": "{pokemon} a mâncat {item}!",
@@ -4463,6 +4471,7 @@
     "pokemon": "POKÉMON",
     "run": "FUGI",
     "shift": "MUTĂ",
+    "calm": "CALMEAZĂ",
     "bait": "MOMEALĂ",
     "pokeblock": "POKéBLOCK",
     "goNear": "APROPIE-TE",
@@ -5100,7 +5109,8 @@
       "room": "Nu e loc pentru el.",
       "cross": "Regiunea salvării aceleia nu-l poate primi încă.",
       "save": "Un fișier nu a putut fi scris. Nimic nu a fost mutat.",
-      "notFound": "Pokémonul acela nu mai e acolo."
+      "notFound": "Pokémonul acela nu mai e acolo.",
+      "locked": "Inima lui e încuiată. Nu poate pleca până nu i se deschide inima."
     }
   },
   "migrate": {
@@ -7158,5 +7168,9 @@
       "all": "TOATE ȘASE ({item})",
       "never": "LASĂ"
     }
+  },
+  "hearts": {
+    "refused": "Inima lui {pokemon} e încuiată. Nu merge până nu i se deschide inima.",
+    "opened": "Inima lui {pokemon} s-a deschis!"
   }
 }

@@ -86,6 +86,7 @@ public partial class BattleEngine
             Frontier = rules.Frontier,
             NoBattleItems = rules.NoBattleItems,
             OffersSwitch = rules.OffersSwitch,
+            Reclaimer = rules.Reclaimer,
             Difficulty = rules.Difficulty,
             RunLevelCap = rules.RunLevelCap,
             CrossedExp = rules.CrossedExp,

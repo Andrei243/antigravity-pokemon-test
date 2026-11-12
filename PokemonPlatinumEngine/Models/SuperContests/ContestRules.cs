@@ -187,6 +187,8 @@ public static class ContestRules
     {
         if (pokemon.IsEgg) return "egg";
         if (pokemon.CurrentHP <= 0) return "fainted";
+        // A locked heart isn't entered (plan 44 · SD1)
+        if (HeartLock.Refuses(pokemon, LockedUse.Contest)) return "locked";
         if (RibbonsOf(pokemon, contest) < (int)rank) return "rank";
         if (pokemon.Moves.Count < 2) return "moves";
         return null;

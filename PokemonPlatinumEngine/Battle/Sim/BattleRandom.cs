@@ -90,7 +90,12 @@ public enum RollKind
     /// its chance (<see cref="Formulas.CriticalCapture"/>). Rolled only under the modern rules, before the shakes, and only
     /// where the chance is above nothing.
     /// </summary>
-    CriticalCapture
+    CriticalCapture,
+    /// <summary>
+    /// A locked heart (plan 44 · SD1, <c>Ruleset.LockedHearts</c>): out of 100, whether a locked Pokémon of the player's
+    /// breaks loose at its action, and out of 2 whether a loose one heeds the order. Rolled only for a Pokémon with a lock.
+    /// </summary>
+    Lock
 }
 
 /// <summary>

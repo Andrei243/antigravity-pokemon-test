@@ -58,6 +58,8 @@ public sealed class CampVisit
     {
         if (WhyNotPet(p) != CampRefusal.None) return false;
         petted.Add(p);
+        // A locked heart is lowered by the pat (plan 44 · SD1)
+        HeartLock.Lower(p, HeartLock.Fall.Pat);
         if (Book != null) CareRules.Pat(Book.Of(p), p, Day);
         else FriendshipRules.Apply(p, FriendshipEvent.Petted);
         return true;
@@ -78,6 +80,8 @@ public sealed class CampVisit
         if (WhyNotFeed(p, berry, bag) != CampRefusal.None) return false;
         bag.RemoveItem(berry);
         fed.Add(p);
+        // ...and by the meal (plan 44 · SD1)
+        HeartLock.Lower(p, HeartLock.Fall.Meal);
         if (Book != null) CareRules.FeedBerry(Book.Of(p), p, Day, berry);
         else FriendshipRules.Apply(p, FriendshipEvent.Fed);
         return true;

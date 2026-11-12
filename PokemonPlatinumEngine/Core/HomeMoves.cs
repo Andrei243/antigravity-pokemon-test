@@ -41,7 +41,9 @@ public enum HomeRefusal
     CannotCross,
     /// <summary>One of the files could not be written; nothing was moved.</summary>
     CouldNotSave,
-    NotFound
+    NotFound,
+    /// <summary>A locked heart (plan 44 · SD1): it isn't traded or put in the Home box until its heart opens.</summary>
+    Locked
 }
 
 /// <summary>
@@ -120,6 +122,7 @@ public static class HomeMoves
     public static HomeRefusal WhyNotLeave(SaveData save, SavedPokemonData pokemon, bool trade)
     {
         if (pokemon.IsEgg && trade) return HomeRefusal.Egg;
+        if (pokemon.Lock != null) return HomeRefusal.Locked;
         if (pokemon.Id is not { } id) return HomeRefusal.NoId;
         if (RunHolds(save)) return HomeRefusal.RunUnderWay;
         if (!trade && OnTeam(save, pokemon) && !TeamStands(save, id, null)) return HomeRefusal.LastOnTeam;
@@ -580,6 +583,7 @@ public static class HomeMoves
         HomeRefusal.CannotCross => Text.Of("homeBox.why.cross"),
         HomeRefusal.CouldNotSave => Text.Of("homeBox.why.save"),
         HomeRefusal.NotFound => Text.Of("homeBox.why.notFound"),
+        HomeRefusal.Locked => Text.Of("homeBox.why.locked"),
         _ => ""
     };
 }

@@ -31,7 +31,8 @@ public class Trainer
             // What its level taught it stops at the games' own 100: the moves of our own past it (plan 06 · R31) are the
             // player's to earn, and a later region's trainer keeps their own game's moves (R31's question 8)
             mine.Relevel(levelOf(p.Level), Data.Ruleset.Platinum.LevelCap);
-            if (grow) OursGrowth.GrowTrainers(mine, Data.Ruleset.Platinum.LevelCap);
+            // A locked member is never grown into another species (plan 44 · SD1): it is the one Lockwork locked
+            if (grow && mine.Lock == null) OursGrowth.GrowTrainers(mine, Data.Ruleset.Platinum.LevelCap);
             copy.party.Add(mine);
         }
         copy.Items = Items.ToList();
@@ -58,7 +59,13 @@ public class Trainer
     {
         var copy = (Trainer)MemberwiseClone();
         copy.party = new Party();
-        foreach (var p in party.Members) copy.party.Add(change(p));
+        foreach (var p in party.Members)
+        {
+            var changed = change(p);
+            // A locked member keeps its lock whatever it becomes (plan 44 · SD1)
+            if (p.Lock != null) changed.Lock = p.Lock;
+            copy.party.Add(changed);
+        }
         copy.Items = Items.ToList();
         return copy;
     }

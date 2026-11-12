@@ -1805,7 +1805,7 @@ public sealed partial class ScriptRunner
                 Result = Models.SuperContests.ContestRules.WhyNot(host.Party.Members[slot], contestCategory, rank) switch
                 {
                     null => 0,
-                    "egg" or "fainted" => 2,
+                    "egg" or "fainted" or "locked" => 2,
                     "rank" => 3,
                     _ => 4
                 };
@@ -2039,6 +2039,8 @@ public sealed partial class ScriptRunner
                 if (slot < 0 || slot >= party.Count) Result = 1;
                 else if (party.Members[slot].IsEgg) Result = 2;
                 else if (Models.DayCare.WhyNot(party, slot) == "last") Result = 3;
+                // A locked heart isn't left (plan 44 · SD1)
+                else if (Models.DayCare.WhyNot(party, slot) == "locked") Result = 5;
                 else if (dayCare.Count >= Models.DayCare.Places) Result = 4;
                 else
                 {

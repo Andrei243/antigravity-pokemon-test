@@ -1650,6 +1650,7 @@ label Raise
   if result == 1 goto ComeAgain
   if result == 2 goto MerelyAnEgg
   if result == 3 goto NothingToBattle
+  if result == 5 goto ShutHeart
   setflag FLAG_STORED_POKEMON_AT_DAY_CARE
   # The couple's fan comes in (PokemonDayCare.txt: the original shows him as the room is next come to; plan 02 · S14)
   clearflag FLAG_HIDE_DAY_CARE_GYM_GUIDE
@@ -1663,6 +1664,9 @@ label ComeAgain
   end
 label MerelyAnEgg
   say "Now, now. That's only an Egg, dear!"
+  end
+label ShutHeart
+  say "Oh, dear. That one's heart is shut tight. It wouldn't settle with us until it opens to you."
   end
 label NothingToBattle
   say "If you leave that one with me, what would you battle with? Come back another time."

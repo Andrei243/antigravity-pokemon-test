@@ -83,7 +83,7 @@ public static class MoveTutors
     /// </summary>
     public static List<TutorMove> Teachable(Pokemon p, string place)
     {
-        if (p.IsEgg) return new();
+        if (p.IsEgg || HeartLock.Refuses(p, LockedUse.Teach)) return new();
         var list = place == TrainingHall ? p.Species.LaterTutorMoves : p.Species.TutorMoves;
         return At(place).Where(m => list?.Contains(m.Move) == true && !p.Knows(m.Move)).ToList();
     }

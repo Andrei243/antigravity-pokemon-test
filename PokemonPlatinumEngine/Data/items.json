@@ -14718,6 +14718,18 @@
     }
   },
   {
+    "id": 9480,
+    "name": "Reclaimer",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A brass cuff with a dial. Worn on the throwing arm, it lets a ball reach a locked Pokémon a trainer sends out.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9500,
     "name": "Mega Max Band",
     "pocket": "KeyItems",

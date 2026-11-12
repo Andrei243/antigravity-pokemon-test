@@ -81,6 +81,8 @@ public sealed class DayCare
         if (slot < 0 || slot >= party.Count) return "none";
         var chosen = party.Members[slot];
         if (chosen.IsEgg) return "egg";
+        // A locked heart isn't left (plan 44 · SD1)
+        if (HeartLock.Refuses(chosen, LockedUse.DayCare)) return "locked";
         if (!party.Members.Where((p, i) => i != slot).Any(p => !p.IsFainted)) return "last";
         return null;
     }

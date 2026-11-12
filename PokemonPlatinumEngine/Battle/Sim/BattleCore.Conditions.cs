@@ -31,6 +31,8 @@ public sealed partial class BattleCore
         if (place.Pokemon is not { } p) yield break;
         if (p.Status is not (StatusCondition.None or StatusCondition.Faint)) yield return new CameInWith(place.Place, p.Status);
         if (place.IsConfused || place.Volatile.InLoveWith != null) yield return Passing(place);
+        // A locked heart shows as it comes (plan 44 · SD1)
+        if (p.Lock is { } locked) yield return new LockShown(place.Place, locked.BarsLeft);
     }
 
     /// <summary>The line that sends a Pokémon out tells what it brings (<see cref="Brought"/>).</summary>

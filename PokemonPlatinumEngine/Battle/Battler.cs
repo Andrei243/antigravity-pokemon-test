@@ -193,6 +193,12 @@ internal sealed class Volatiles
 
     public bool Cursed, Nightmare, Tormented;
 
+    /// <summary>A locked Pokémon of the player's has broken loose (plan 44 · SD1): it heeds one order in two until calmed.</summary>
+    public bool Loose;
+
+    /// <summary>The turn on which a locked Pokémon is likelier to break loose: the one after it took a critical or super-effective hit (plan 44 · SD1).</summary>
+    public int StirredOnTurn;
+
     /// <summary>Foresight or Odor Sleuth: raised evasion counts for nothing, and a Ghost can be hit by Normal and Fighting moves.</summary>
     public bool Identified;
 

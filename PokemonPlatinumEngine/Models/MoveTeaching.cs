@@ -53,7 +53,7 @@ public static class MoveTeaching
 
     /// <summary>Whether the Pokémon's species can learn what the machine teaches by these rules (never an Egg).</summary>
     public static bool CanLearn(Pokemon p, ItemData machine, Ruleset rules) =>
-        IsMachine(machine) && !p.IsEgg && Takes(p.Species, machine, rules);
+        IsMachine(machine) && !p.IsEgg && !HeartLock.Refuses(p, LockedUse.Teach) && Takes(p.Species, machine, rules);
 
     /// <summary>
     /// Whether a species takes a machine by these rules: its own list (<see cref="PokemonSpecies.TmMoves"/>), and under the

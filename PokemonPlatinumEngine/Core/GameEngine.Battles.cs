@@ -678,6 +678,8 @@ public partial class GameEngine
                 TrainerLines = TrainerLinesOn,
                 // Platinum's two battle options (plan 08 · P1): the core offers only where a single battle allows it
                 OffersSwitch = Settings.BattleStyle == BattleStyle.Shift && !flow.Run.SetStyle,
+                // The Reclaimer in the bag lets a ball reach a trainer's locked Pokémon (plan 44 · SD1)
+                Reclaimer = CarriesTheReclaimer,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
                 CrossedExp = CrossedExpHere(),
@@ -807,6 +809,8 @@ public partial class GameEngine
         if (flow.Battle != null) MaterialsAfterBattle(flow.Battle, isDefeat);
         // The care book hears how it went: the marks of where it was fought, and the mood (plan 35 · BN1)
         if (flow.Battle != null) CareAfterBattle(flow.Battle, isDefeat);
+        // Lockwork's locked Pokémon: those reclaimed come home, those knocked out are missed, and the team's own locks fall (plan 44 · SD1)
+        if (flow.Battle != null) HeartsAfterBattle(flow.Battle);
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
         bool goesOn = isDefeat && flow.Runner.IsRunning && flow.BattleMayBeLost;
         flow.BattleMayBeLost = false;

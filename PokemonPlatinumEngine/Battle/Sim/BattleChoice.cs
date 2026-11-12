@@ -8,7 +8,7 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 /// and staying in when Battle Style Shift offers a switch (plan 08 · P1); in a triple battle, a Pokémon at an end moving
 /// to the centre (plan 14 · B6); in a link battle, giving the match up (plan 28 · I4).
 /// </summary>
-public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay, Shift, Forfeit, Pokeblock, GoNear }
+public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay, Shift, Forfeit, Pokeblock, GoNear, Calm }
 
 /// <summary>
 /// What one Pokémon's trainer decides for a turn, as plain data: a seed and the choices made are a whole battle
@@ -115,6 +115,9 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// </summary>
     public static BattleChoice Shift(Place who) => new(who, ChoiceKind.Shift);
 
+    /// <summary>A loose Pokémon of the player's is calmed (plan 44 · SD1): the Pokémon's turn, as a switch is.</summary>
+    public static BattleChoice Calm(Place who) => new(who, ChoiceKind.Calm);
+
     /// <summary>
     /// A link battle (plan 28 · I4): the side of <paramref name="who"/> gives the match up and loses it. Taken at any
     /// question, alone, whatever else was asked; refused in every other battle (<see cref="CoreSetup.Link"/>).
@@ -133,7 +136,7 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 /// doesn't say (one written before, or a Vs. Recorder file's, whose setup names the format itself) isn't held to one.
 /// </summary>
 public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false, Difficulty Difficulty = Difficulty.Normal, int RunLevelCap = 0,
-    BattleFormat? Format = null, bool CrossedExp = false, bool NoLaterMechanics = false, bool FriendPartner = false, bool InTheAir = false);
+    BattleFormat? Format = null, bool CrossedExp = false, bool NoLaterMechanics = false, bool FriendPartner = false, bool InTheAir = false, bool Reclaimer = false);
 
 /// <summary>What the core is waiting for before it can go on.</summary>
 public abstract record BattleRequest;

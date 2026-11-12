@@ -95,7 +95,7 @@ public static class ItemUse
         }
 
         // A Rare Candy up to the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
-        if (Has(item, "levelUp") && !p.AtTheCap && !LevelCaps.Holds(p, runCap)) return true;
+        if (Has(item, "levelUp") && !p.AtTheCap && !LevelCaps.Holds(p, runCap) && !HeartLock.Refuses(p, LockedUse.RareCandy)) return true;
         if ((Has(item, "ppUp") || Has(item, "ppMax")) && MoveIn(p, moveSlot) is { } raised && CanTakePPUp(raised)) return true;
         if (Has(item, "ppRestored") && !Has(item, "restorePPAllMoves") && MissingPP(p, moveSlot)) return true;
         if (Has(item, "restorePPAllMoves") && Enumerable.Range(0, p.Moves.Count).Any(i => MissingPP(p, i))) return true;

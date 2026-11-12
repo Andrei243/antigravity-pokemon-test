@@ -96,6 +96,10 @@ public sealed class BattleRecordFile
     public bool OffersSwitch { get; set; }
     public bool MegaMaxDen { get; set; }
 
+    /// <summary>The player carried the Reclaimer (plan 44 · SD1): a ball could be thrown at a trainer's locked Pokémon. Off, as a file without it.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool Reclaimer { get; set; }
+
     /// <summary>A Max Raid den's battle (plan 33 · GL3): its stars (nought for none, as a file without them), the three raiders as they went in, and whether it couldn't be lost.</summary>
     public int RaidStars { get; set; }
     public List<RecordedTrainer>? RaidAllies { get; set; }
@@ -173,6 +177,7 @@ public sealed class BattleRecordFile
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
             MegaMaxDen = setup.MegaMaxDen,
+            Reclaimer = setup.Reclaimer,
             RaidStars = setup.Raid?.Stars ?? 0,
             RaidAllies = setup.Raid?.Allies.Select(RecordedTrainer.Of).ToList(),
             RaidCannotFail = setup.Raid?.CannotFail == true ? true : null,
@@ -236,7 +241,7 @@ public sealed class BattleRecordFile
     /// <summary>The record the rules replay: the seed and the answers, with the two flags a record keeps.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public BattleRecord Record => new(Seed, Answers.Select(turn => (IReadOnlyList<BattleChoice>)turn.Select(c => c.ToChoice()).ToList()).ToList(),
-        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp, NoLaterMechanics: NoLaterMechanics, FriendPartner: FriendPartner == true, InTheAir: Conditions.InTheAir);
+        Conditions.Inverse, OffersSwitch, Difficulty, RunLevelCap, CrossedExp: CrossedExp, NoLaterMechanics: NoLaterMechanics, FriendPartner: FriendPartner == true, InTheAir: Conditions.InTheAir, Reclaimer: Reclaimer);
 
     /// <summary>Whom the battle was against: the first trainer's class and name, or the first wild Pokémon's species.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
@@ -306,6 +311,7 @@ public sealed class BattleRecordFile
             NoBattleItems = NoBattleItems,
             OffersSwitch = OffersSwitch,
             MegaMaxDen = MegaMaxDen,
+            Reclaimer = Reclaimer,
             Raid = RaidStars > 0 ? new RaidTerms(RaidStars, (RaidAllies ?? new()).Select(t => t.ToTrainer(rules)).ToList(), RaidCannotFail == true) : null,
             Difficulty = Difficulty,
             RunLevelCap = RunLevelCap,

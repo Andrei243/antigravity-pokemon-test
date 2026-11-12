@@ -119,6 +119,8 @@ public static class Evolution
     public static EvolutionData? Find(Pokemon p, EvolutionTrigger trigger, EvolutionContext context)
     {
         if (p.Species.Evolutions == null) return null;
+        // A locked heart doesn't evolve (plan 44 · SD1)
+        if (HeartLock.Refuses(p, LockedUse.Evolve)) return null;
 
         // A Linking Cord is a trade in all but name
         bool cord = trigger == EvolutionTrigger.UseItem && context.Item?.Name == LinkingCord;

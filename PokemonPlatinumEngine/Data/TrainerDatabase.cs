@@ -92,6 +92,13 @@ public sealed class TrainerPokemonRecord
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int BallSeal { get; set; }
+
+    /// <summary>
+    /// The lock a member of a Lockwork trainer's team carries (plan 44 · SD1, <see cref="HeartLock"/>), by its id
+    /// (<c>lock_sinnoh_gible</c>); null, and left out, for every other trainer's Pokémon.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Lock { get; set; }
 }
 
 /// <summary>
@@ -389,6 +396,8 @@ public static class TrainerDatabase
             pokemon.CapsuleId = 1;
             pokemon.Capsule = capsule;
         }
+        // A locked member's lock, full (plan 44 · SD1)
+        if (m.Lock != null) pokemon.Lock = HeartLock.Locked(m.Lock);
         pokemon.RecalculateStats();
         pokemon.CurrentHP = pokemon.MaxHP;
         return pokemon;
