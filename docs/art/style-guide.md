@@ -1987,7 +1987,9 @@ Plan 42 · PS4 (`Battle/BattleEngine.Studio.cs`). A film is shot on the battle's
 - **A beat's line**: in the box with its speaker's name on the pill, as a trainer's own line (plan 11 · C12): the co-star's, the foe's, or the player's own name for a line the player says. Two rows at most; nothing steps onto a platform, since nobody of the film stands on one.
 - **A line to choose**: the beat's last line stays in the box and its two or three lines stand beside it where Yes and No do (`DrawChoices`, the cursor on the first), each short enough for one row of the choices' panel. The line chosen is then said in the box under the player's name.
 - **The stars**: the ending's lines under their speaker's pill, then "That take earned N out of 5 stars!" with no pill, the take's last line.
-- Part b adds the lot, the posters (painted, theatrical, warm reds: the user's 33a) and the premiere.
+- **The premiere** (part b): the best take watched as a recorded battle is (the lines standing their time and going on by themselves), the take's chosen lines said again under the player's name, then its ending, its stars, the crowd's line (cheers, applause or murmurs, no pill) and "Box office: N tickets sold!" (the number grouped with commas in every language), the premiere's last line.
+- **The lot** is Black 2's place as imported, its people and words ours; its music is the studio's own march (`unova/pokestar_studios`, F major, brass over a striding bass, a strings bridge in D minor).
+- **The posters** (still owed: painted, theatrical, warm reds, the user's 33a): until their art is painted, the poster wall beside the studio building's door is read, and names the films the studio has kept.
 
 ### Menu screens (G10)
 

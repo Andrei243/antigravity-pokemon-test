@@ -623,6 +623,8 @@ public class UnovaTests
                 || m.Name == "d13_house"
                 // and the Abundant Shrine and its house since plan 22 · U10, part d
                 || m.Name is "d19_house01" or "d19_shirne01"
+                // and Pokéstar Studios' lot since plan 42 · PS4, part b, built as Virbank builds
+                || m.Name.StartsWith("c15_", StringComparison.Ordinal)
                 // and Icirrus City's houses since plan 22 · U10, part e
                 || m.Name == "c7_house"
                 // and the old roads from the Skyarrow Bridge to Nuvema Town since plan 22 · U10, part f

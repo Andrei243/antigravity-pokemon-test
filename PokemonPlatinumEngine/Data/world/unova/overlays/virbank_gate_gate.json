@@ -1,17 +1,23 @@
 {
   // The gate between Virbank City and Pokéstar Studios (plan 22 · U5, part b): Black 2's room, our words. Its far door
-  // stays shut: the studios are a door the plan leaves closed (plan 22's decision 7)
+  // (warps 1, 4 and 5) leads onto the studios' lot since plan 42 · PS4, part b, opened by Roxie's Badge (the TM she gives
+  // with it, FLAG_UNOVA_GOT_TM09: the studio hand before the gate turns back whoever comes before it)
   "area": "virbank_gate_gate",
   "bgmTrack": "unova/virbank",
+  "doors": [
+    { "warp": 1, "map": "PokestarStudios", "x": 30, "y": 59, "facing": "Up", "openedBy": "FLAG_UNOVA_GOT_TM09" },
+    { "warp": 4, "map": "PokestarStudios", "x": 31, "y": 59, "facing": "Up", "openedBy": "FLAG_UNOVA_GOT_TM09" },
+    { "warp": 5, "map": "PokestarStudios", "x": 32, "y": 59, "facing": "Up", "openedBy": "FLAG_UNOVA_GOT_TM09" }
+  ],
   "people": {
     "0": {
       "name": "Guard",
       "npcType": "Gentleman",
-      "dialog": [ "Through this gate lies Pokéstar Studios! I'm sorry, but they're filming, so it's closed to visitors for now." ]
+      "dialog": [ "Through this gate lies Pokéstar Studios! Shoot a film, then see it at the theater. Enjoy the lot!" ]
     },
     "1": {
       "name": "Clown",
-      "dialog": [ "At Pokéstar Studios you can live a whole other life! A hero, a villain, a ghost... once they let us in, anyway." ]
+      "dialog": [ "At Pokéstar Studios you can live a whole other life! A hero, a villain, a ghost... all in one afternoon." ]
     }
   }
 }

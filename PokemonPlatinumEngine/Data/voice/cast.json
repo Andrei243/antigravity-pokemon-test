@@ -676,6 +676,10 @@
       "note": "first spoken at CamphrierTown_Castle.txt(7)",
       "provisional": true
     },
+    "casting_clerk": {
+      "note": "first spoken at pokestar_studios_3.txt(56)",
+      "provisional": true
+    },
     "catherine": {
       "note": "first spoken at phone.txt(315)",
       "brief": {
@@ -10677,6 +10681,10 @@
       "note": "Nate of Nimbasa City (plan 22 · U6), named by his id so the other Trainers called Nate keep their voices; first spoken at nimbasa_city.txt(41)",
       "provisional": true
     },
+    "usher": {
+      "note": "first spoken at pokestar_studios_4.txt(8)",
+      "provisional": true
+    },
     "valerie": {
       "note": "first spoken at KalosRoute7_BattleChateau.txt(297)",
       "brief": {
@@ -11088,6 +11096,7 @@
     "Capucine": "capucine",
     "Caretaker": "caretaker",
     "Castellan Aubert": "castellan_aubert",
+    "Casting Clerk": "casting_clerk",
     "Catherine": "catherine",
     "Celebrity": "celebrity",
     "Celeste": "celeste",
@@ -11562,6 +11571,7 @@
     "TV Producer": "tv_producer",
     "Ty": "ty",
     "Underground Man": "underground_man",
+    "Usher": "usher",
     "Valerie": "valerie",
     "Valet": "valet",
     "Vance": "vance",

@@ -1,0 +1,47 @@
+{
+  // Pokéstar Studios' lot behind Virbank's gate (plan 42 · PS4, part b): Black 2's place, our people and our words. The
+  // studio building (warp 1) is where Director Wren shoots the studio's films, the theater (warp 2) where their best takes
+  // have their premieres; the poster wall beside the building's door (pokestar_studios.txt's PosterWall) names the films
+  // the studio has kept. Black 2's own scenes on the lot are left out, and its sets' fences are only fences
+  "area": "pokestar_studios",
+  "name": "Pokéstar Studios",
+  "bgmTrack": "unova/pokestar_studios",
+  "read": { "34": "PosterWall" },
+  "people": {
+    "1": {
+      "name": "Painter",
+      "npcType": "artist",
+      "dialog": [ "I paint the studio's posters. Reds, always warm reds! A poster should feel like the lights going down." ]
+    },
+    "2": {
+      "name": "Fan",
+      "npcType": "pokefan_m",
+      "dialog": [ "I come every week hoping to see someone famous. Today I saw a Pokémon in a top hat. Close enough!" ]
+    },
+    "10": {
+      "name": "Set Painter",
+      "npcType": "artist",
+      "dialog": [ "This fence was a castle wall last week. Next week it'll be a mountain pass in a thunderstorm." ]
+    },
+    "11": {
+      "name": "Clown",
+      "npcType": "harlequin",
+      "dialog": [ "I play the comic relief in every film nobody has written yet. It's very restful work." ]
+    },
+    "12": {
+      "name": "Fan",
+      "npcType": "pokefan_f",
+      "dialog": [ "The premieres at the theater are the best! The crowd gasps at every twist, even on a second showing." ]
+    },
+    "17": {
+      "name": "Fan",
+      "npcType": "pokefan_m",
+      "dialog": [ "The studio building is where the takes are shot. Tell the director I said hello!" ]
+    },
+    "19": {
+      "name": "Fan",
+      "npcType": "pokefan_m",
+      "dialog": [ "A good take depends on the lines you choose as much as the moves you pick. Trust me, I've watched hundreds." ]
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "thunderAtMarlowePass",
+  "genre": "race",
+  "rank": 8,
+  "coStar": "Scout",
+  "coStarLook": "gentleman",
+  "battle": {
+    "id": "thunderAtMarlowePass",
+    "goal": "Win",
+    "turns": 10,
+    "player": [
+      { "species": "Jolteon", "level": 60, "nature": "Timid", "ability": "Volt Absorb", "moves": ["Thunderbolt", "Agility"] },
+      { "species": "Ampharos", "level": 60, "nature": "Modest", "ability": "Static", "moves": ["Thunderbolt", "Dragon Pulse"] },
+      { "species": "Raichu", "level": 60, "nature": "Timid", "ability": "Static", "moves": ["Thunderbolt", "Nasty Plot"] }
+    ],
+    "foe": [
+      { "species": "Pelipper", "level": 40, "nature": "Modest", "ability": "Keen Eye", "moves": ["Hurricane", "Scald"] },
+      { "species": "Swanna", "level": 40, "nature": "Modest", "ability": "Keen Eye", "moves": ["Hurricane"] },
+      { "species": "Gyarados", "level": 40, "nature": "Adamant", "ability": "Intimidate", "moves": ["Waterfall"] }
+    ],
+    "foeName": "Commodore Brisk",
+    "foeClass": "Actor",
+    "foeLook": "sailor",
+    "foeMoves": ["Hurricane"],
+    "weather": "Rain",
+    "rolls": [
+      { "kind": "Critical", "values": [1] }, { "kind": "Damage", "values": [0] }, { "kind": "Accuracy", "values": [0] },
+      { "kind": "SideEffect", "values": [99] }, { "kind": "AbilityChance", "values": [99] }
+    ],
+    "solution": [ { "move": "Thunderbolt" }, { "move": "Thunderbolt" }, { "move": "Thunderbolt" } ],
+    "decoy": [ { "move": "Agility" } ]
+  },
+  "beats": [
+    {
+      "id": "startingLine",
+      "speaker": "CoStar",
+      "lines": [ "The pass closes when the storm hits. The Commodore's sails are already up. Ready, pilot?" ],
+      "choices": [
+        { "id": "fullThrottle", "text": "Full throttle! We fly straight through!", "script": true },
+        { "id": "rideTheStorm", "text": "Let the storm carry us over the top!" }
+      ]
+    },
+    {
+      "id": "storm",
+      "when": { "weather": "Rain" },
+      "speaker": "Foe",
+      "lines": [ "Ha! Feel that rain? The weather has always been on my side of the pass!" ]
+    },
+    {
+      "id": "halfway",
+      "when": { "turn": 3 },
+      "speaker": "CoStar",
+      "lines": [ "Halfway up, and the thunder's right behind us! Don't look down!" ]
+    },
+    {
+      "id": "lastSail",
+      "when": { "foeDown": 2 },
+      "speaker": "CoStar",
+      "lines": [ "Only one sail left on the Commodore's side! The summit's in sight!" ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "byAMile",
+      "result": "won",
+      "byTurn": 3,
+      "speaker": "CoStar",
+      "lines": [ "Over the summit before the first thunderclap! He's still back at the foot of the pass!", "And... cut! Nobody's ever flown it faster." ],
+      "stars": 5
+    },
+    {
+      "id": "byAHead",
+      "result": "won",
+      "speaker": "CoStar",
+      "lines": [ "Neck and neck to the very top... and we're over by a head!", "And... cut! What a finish. My heart's still racing." ],
+      "stars": 3
+    },
+    {
+      "id": "forcedBack",
+      "speaker": "Foe",
+      "lines": [ "The pass is closed! Turn back, the storm belongs to me today.", "And... cut! Let's dry off and go again." ],
+      "stars": 1
+    }
+  ],
+  "takes": [
+    { "ending": "byAMile", "answers": [ { "move": "Thunderbolt" }, { "move": "Thunderbolt" }, { "move": "Thunderbolt" } ], "picks": [ "fullThrottle" ] },
+    { "ending": "byAHead", "answers": [ { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Thunderbolt" }, { "move": "Thunderbolt" }, { "move": "Thunderbolt" } ], "picks": [ "rideTheStorm" ] },
+    { "ending": "forcedBack", "answers": [ { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" }, { "move": "Agility" } ], "picks": [ "fullThrottle" ] }
+  ]
+}

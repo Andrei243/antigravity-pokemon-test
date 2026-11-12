@@ -1,0 +1,139 @@
+{
+  "displayName": {
+    "en": [
+      "Pokéstar Studios"
+    ],
+    "text": [
+      "Pokéstar Studios"
+    ]
+  },
+  "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Painter"
+        ],
+        "text": [
+          "Pictor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I paint the studio's posters. Reds, always warm reds! A poster should feel like the lights going down."
+        ],
+        "text": [
+          "Eu pictez afișele studioului. Roșuri, mereu roșuri calde! Un afiș trebuie să semene cu stingerea luminilor."
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come every week hoping to see someone famous. Today I saw a Pokémon in a top hat. Close enough!"
+        ],
+        "text": [
+          "Vin în fiecare săptămână sperând să văd pe cineva celebru. Azi am văzut un Pokémon cu joben. Aproape!"
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Set Painter"
+        ],
+        "text": [
+          "Pictor de decor"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This fence was a castle wall last week. Next week it'll be a mountain pass in a thunderstorm."
+        ],
+        "text": [
+          "Gardul ăsta era zid de castel săptămâna trecută. Săptămâna viitoare va fi o trecătoare în furtună."
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Clown"
+        ],
+        "text": [
+          "Clovn"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I play the comic relief in every film nobody has written yet. It's very restful work."
+        ],
+        "text": [
+          "Joc rolul comic în fiecare film pe care nu l-a scris încă nimeni. E o muncă foarte odihnitoare."
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The premieres at the theater are the best! The crowd gasps at every twist, even on a second showing."
+        ],
+        "text": [
+          "Premierele de la teatru sunt cele mai bune! Publicul tresare la fiecare răsturnare, chiar și a doua oară."
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The studio building is where the takes are shot. Tell the director I said hello!"
+        ],
+        "text": [
+          "În clădirea studioului se filmează dublele. Salută-l pe regizor din partea mea!"
+        ]
+      }
+    },
+    "19": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          "Fan"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A good take depends on the lines you choose as much as the moves you pick. Trust me, I've watched hundreds."
+        ],
+        "text": [
+          "O dublă bună ține de replicile alese la fel de mult ca de atacuri. Crede-mă, am văzut sute."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

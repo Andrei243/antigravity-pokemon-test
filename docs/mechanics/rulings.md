@@ -11768,6 +11768,28 @@ Gilded Hour first; Letters in the Fog and Thunder at Marlowe Pass are part b's).
   Verity Cask's Klefki, Bronzong and Probopass at 40, co-starring the talent scout. Their classes are ours: Actor and
   Actress, drawn as the person cast (`characters.json`'s `classes`, null).
 
+### Part b (2026-11-12): the later films, the takes kept and the premiere
+
+- **The later films** (the user's 31a and 32a): Letters in the Fog (a detective story; Lucario, Alakazam and Gallade at 60
+  against Lady Octavia Maul's Persian, Liepard and Purugly at 40, co-starring the captain as the inspector; the right
+  suspect, named by the script's line, 5 stars; the wrong one, either ad-lib, 3; a draw, 1) opens at rank 4, and Thunder at
+  Marlowe Pass (a race against the storm, fought in the rain from the first turn; Jolteon, Ampharos and Raichu at 60
+  against Commodore Brisk's Pelipper, Swanna and Gyarados at 40, co-starring the scout as the pilot; won by a mile, by the
+  third turn, 5; by a head, 3; forced back, 1) at rank 8. Both numbers are ours: the first two films' best stars together
+  reach 4 with one good take, 8 with two.
+- **A take kept**: a new best take is written as a Vs. Recorder file of its own (`replays/studio/studio-<id>.json`,
+  written over the film's last best), with `BattleRecordFile.StudioFilm` naming the film and `StudioPicks` the lines
+  chosen; every other battle's file has neither (both null and left out of the text, so older files read as before). A
+  take is fought by the film's foe's moves turn by turn and its fixed rolls, so `ToSetup` takes both from the film, and a
+  file naming a film the data lacks is refused (`ReplayRefusal.NoSuchFilm`). The takes are kept in a folder of their own so
+  the Vs. Recorder's own list never shows them: a take is watched at its premiere, with its film's beats and ending.
+- **The premiere** (`studio premiere "id"`): the best take's file watched through `BattleEngine.ForReplay` with a director
+  handed the take's picks (`StudioDirector(film, picks)`), who says the lines the take chose with nobody asked; a take that
+  ran out of turns, or stopped where nobody answered, ends its reel there (`ReelOver`) instead of breaking off. Then its
+  ending's lines and stars, the crowd (cheers for 4 or 5 stars, applause for 2 or 3, murmurs for 1) and the box office:
+  tickets sold, ours, `stars² × 1,200` plus the genre's draw (ghost 900, detective 1,100, heist 1,500, race 1,800).
+  Nothing of it is kept but the number, which the script reads as `RESULT`.
+
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
 Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and

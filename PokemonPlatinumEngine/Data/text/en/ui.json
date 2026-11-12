@@ -2593,14 +2593,24 @@
   "studio": {
     "film": {
       "emptySeat": { "title": "The Empty Seat" },
-      "gildedHour": { "title": "The Gilded Hour" }
+      "gildedHour": { "title": "The Gilded Hour" },
+      "lettersInTheFog": { "title": "Letters in the Fog" },
+      "thunderAtMarlowePass": { "title": "Thunder at Marlowe Pass" }
     },
     "genre": {
       "ghost": "A ghost story",
-      "heist": "A heist"
+      "heist": "A heist",
+      "detective": "A detective story",
+      "race": "A race against the storm"
     },
     "titleCard": "{title}: {genre}, take {take}. Lights, camera... action!",
-    "stars": "That take earned {stars} out of 5 stars!"
+    "stars": "That take earned {stars} out of 5 stars!",
+    "premiere": {
+      "cheers": "The audience is on its feet! Cheers fill the theatre!",
+      "claps": "The audience gives the take a warm round of applause.",
+      "murmurs": "The audience murmurs politely as the lights come up.",
+      "boxOffice": "Box office: {tickets} tickets sold!"
+    }
   },
   "luckyDraw": {
     "radio": {
@@ -3564,7 +3574,8 @@
       "notSaved": "The battle couldn't be kept: the Vs. Recorder's folder can't be written to.",
       "otherVersion": "This battle was recorded with other Pokémon data. It can't be played back.",
       "otherFile": "This battle was recorded by a newer game. It can't be played back.",
-      "damaged": "This recording is damaged. It can't be played back."
+      "damaged": "This recording is damaged. It can't be played back.",
+      "noSuchFilm": "This take was shot for a film this game doesn't have. It can't be played back."
     }
   },
   "tunnels": {

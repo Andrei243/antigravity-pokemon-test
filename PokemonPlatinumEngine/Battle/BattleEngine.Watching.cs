@@ -84,6 +84,7 @@ public partial class BattleEngine
             MoveHints = false,
             TrainerLines = trainerLines,
             Frontier = rules.Frontier,
+            NoRewards = rules.NoRewards,
             NoBattleItems = rules.NoBattleItems,
             OffersSwitch = rules.OffersSwitch,
             Reclaimer = rules.Reclaimer,
@@ -91,6 +92,10 @@ public partial class BattleEngine
             RunLevelCap = rules.RunLevelCap,
             CrossedExp = rules.CrossedExp,
             Restrictions = rules.Restrictions,
+            // A take of the studio: its foe's moves and its director, who picks the take's lines again (plan 42 · PS4)
+            EnemyController = file.StudioFilm != null ? rules.EnemyController : null,
+            StudioFilm = file.StudioFilm is { } id && Models.Studio.StudioFilms.Get(id) is { } film
+                ? new Models.Studio.StudioDirector(film, file.StudioPicks ?? new List<string>()) : null,
             Scene = scene
         };
         return new BattleEngine(setup, file);
