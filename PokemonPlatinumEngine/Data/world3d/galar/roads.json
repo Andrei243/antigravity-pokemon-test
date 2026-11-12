@@ -32,6 +32,15 @@
     // round the downs and east to Hulbury's high street, and the high street down to the quay
     { "name": "Route 5's path", "points": [[40, -916], [40, -958], [26, -984], [8, -1004], [20, -1020], [50, -1016], [70, -1004]], "width": 3, "shoulder": 2.5 },
     { "name": "Hulbury's high street", "points": [[70, -1004], [100, -1000], [130, -998]], "width": 6, "shoulder": 2, "surface": "Rock" },
-    { "name": "the way down to Hulbury's quay", "points": [[104, -1000], [104, -1028]], "width": 5, "shoulder": 1.5, "surface": "Rock" }
+    { "name": "the way down to Hulbury's quay", "points": [[104, -1000], [104, -1028]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
+    // North of Route 5 (plan 33 · GL5, its first session): the track north out of Route 5's gap over Hammerlocke Hills
+    // to the city's south gate, the city's streets to its stadium and out of its west gate, Route 6's path west and north
+    // up to Stow-on-Side, Stow-on-Side's street past the market to its stadium, and Ballonlea's path to its stadium
+    { "name": "the track over Hammerlocke Hills", "points": [[38, -1030], [38, -1060], [24, -1090], [12, -1124], [12, -1160]], "width": 3.5, "shoulder": 2.5 },
+    { "name": "Hammerlocke's high street", "points": [[12, -1160], [12, -1200], [30, -1226], [64, -1232]], "width": 7, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "the way to Hammerlocke's west gate", "points": [[12, -1214], [-20, -1214], [-46, -1214]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "Route 6's path", "points": [[-46, -1214], [-70, -1222], [-96, -1236], [-110, -1262], [-100, -1290], [-96, -1312]], "width": 3, "shoulder": 2.5 },
+    { "name": "Stow-on-Side's street", "points": [[-96, -1312], [-96, -1340], [-80, -1356], [-60, -1360]], "width": 5, "shoulder": 1.5, "surface": "Rock" },
+    { "name": "Ballonlea's path", "points": [[-20, -1320], [10, -1330], [40, -1350], [62, -1352]], "width": 3, "shoulder": 2 }
   ]
 }

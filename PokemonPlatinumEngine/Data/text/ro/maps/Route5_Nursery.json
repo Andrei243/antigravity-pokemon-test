@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Nursery"
+    ],
+    "text": [
+      "Creșa Pokémon"
+    ]
+  },
+  "people": {
+    "nursery_lady": {
+      "name": {
+        "en": [
+          "Day-Care Lady"
+        ],
+        "text": [
+          "Doamna de la Creșă"
+        ]
+      }
+    },
+    "nursery_wooloo_fan": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The keeper outside says every Pokémon left here comes home a little stronger. And now and then there is an Egg!"
+        ],
+        "text": [
+          "Îngrijitorul de afară zice că fiecare Pokémon lăsat aici se întoarce acasă puțin mai puternic. Și din când în când apare și un Ou!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

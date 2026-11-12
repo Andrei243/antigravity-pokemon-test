@@ -4,7 +4,7 @@
       "Motostoke Pokémon Center"
     ],
     "text": [
-      ""
+      "Centrul Pokémon din Motostoke"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Nurse Joy"
         ],
         "text": [
-          ""
+          "Asistenta Joy"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "PC Terminal"
         ],
         "text": [
-          ""
+          "Terminal PC"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
         ],
         "text": [
-          ""
+          "Vânzătorul: Bine ai venit! În Galar, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Challenger"
         ],
         "text": [
-          ""
+          "Concurentul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Every challenger in Galar comes through Motostoke. Half of them are already arguing about who'll beat Leon."
         ],
         "text": [
-          ""
+          "Fiecare concurent din Galar trece prin Motostoke. Jumătate dintre ei se ceartă deja cine îl va învinge pe Leon."
         ]
       }
     }

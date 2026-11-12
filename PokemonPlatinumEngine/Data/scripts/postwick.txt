@@ -12,7 +12,9 @@
 # and on (plan 33 · GL2, GL4): 12 off the train in the Wild Area, 13 up the steps into Motostoke, 14 off to register,
 # 15 registered, 16 the morning of the opening ceremony, 17 the challenge open, 18 Bede beaten in the Galar Mine,
 # 19 the Grass Badge, and on (GL4's second session): 20 Hop beaten on Route 5, 21 the Water Badge, 22 Bede beaten in
-# Galar Mine No. 2, 23 Marnie beaten in Motostoke, 24 the Fire Badge
+# Galar Mine No. 2, 23 Marnie beaten in Motostoke, 24 the Fire Badge, and on (GL5's first session): 25 Leon and Hop
+# at Hammerlocke's gate, 26 Sonia in the vault, 27 Hop beaten on Route 6, 28 the fourth badge (Bea's Fighting Badge in a
+# Sword game, Allister's Ghost Badge in a Shield one), 29 the mural, 30 the Fairy Badge
 # VAR_GALAR_VERSION is the version the game is (plan 33 · decision 2): 1 Sword, 2 Shield, asked by Mum on the first
 # morning (Postwick_PlayersHouse_1F.txt).
 

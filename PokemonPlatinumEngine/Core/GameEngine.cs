@@ -3113,7 +3113,7 @@ public partial class GameEngine
         return RegionDatabase.All
             .Where(r => r == here || !r.BorrowsRules && ( flow.Story.BadgeMask(r.Id) != 0 || flow.Story.IsRegionComplete(r.Id)
                 || r.Dexes.Any(flow.Pokedex.Entered.Contains)))
-            .Select(r => new CardRegion(r.Id, r.Generation, r.BadgeNames, flow.Story.BadgeMask(r.Id), flow.Story.IsRegionComplete(r.Id))
+            .Select(r => new CardRegion(r.Id, r.Generation, r.BadgeNamesIn(flow.Story), flow.Story.BadgeMask(r.Id), flow.Story.IsRegionComplete(r.Id))
             {
                 // A region with several Pokédexes (Kalos's three) counts each species once, whichever list names it
                 Pokedex = r.Dexes.Where(flow.Pokedex.Regional.Contains).ToList() is { Count: > 0 } own

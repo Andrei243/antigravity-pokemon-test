@@ -1092,6 +1092,8 @@ public class SceneSkipTests
         "wild_area_motostoke_riverbank.Up the steps to Motostoke", "motostoke.Hop in Motostoke",
         // Plan 33 · GL4, its second session: Hop on Route 5, and Marnie by Motostoke's east wall
         "galar_route_5.Hop on Route 5", "motostoke.Marnie in Motostoke",
+        // Plan 33 · GL5, its first session: Leon at Hammerlocke's gate, Hop on Route 6, and the mural above Stow-on-Side
+        "hammerlocke.Leon in Hammerlocke", "galar_route_6.Hop on Route 6", "stow_on_side.The mural",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

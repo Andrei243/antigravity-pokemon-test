@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Stow-on-Side Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon din Stow-on-Side"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Galar the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          "Vânzătorul: Bine ai venit! În Galar, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
+        ]
+      }
+    },
+    "challenger": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The market's the busiest in the region on a good day. Everything you can think of, from all over Galar and beyond."
+        ],
+        "text": [
+          "Într-o zi bună, piața e cea mai aglomerată din regiune. Tot ce-ți poți închipui, din tot Galarul și de dincolo de el."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

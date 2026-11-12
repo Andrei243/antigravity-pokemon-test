@@ -1,0 +1,69 @@
+{
+  // Hammerlocke (plan 33 · GL5, its first session): the old walled city at the heart of Galar, the gym challenge's last
+  // stop before the Champion Cup. The high street runs north from the south gate past the Pokémon Center and turns east
+  // to the stadium; the vault, the castle's keep where the region's tapestries are kept, stands in the west; the west
+  // gate lets onto Route 6. Raihan's gym waits for seven badges, so the stadium's door is not built yet. Our own city at
+  // about half the original's distances, its walls the mass the land is cut from. Scripts: Data/scripts/hammerlocke.txt
+  "markers": [
+    { "name": "hammerlocke_south_gate", "at": [12, 26.3, -1166], "yaw": 180 },
+    { "name": "hammerlocke_south_back", "at": [12, 26.3, -1140], "yaw": 0 },
+    { "name": "hammerlocke_center_door", "at": [16, 26.3, -1189], "yaw": 270 },
+    { "name": "hammerlocke_vault_door", "at": [-19, 26.3, -1246], "yaw": 0 },
+    { "name": "hammerlocke_west_gate", "at": [-30, 26.3, -1214], "yaw": 90 }
+  ],
+  "doors": [
+    {
+      "name": "hammerlocke_center_door",
+      "box": { "min": [19, 25.4, -1190], "max": [20, 30, -1188] },
+      "room": "Hammerlocke_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "hammerlocke_center_door"
+    },
+    {
+      "name": "hammerlocke_vault_door",
+      "box": { "min": [-20, 25.4, -1250], "max": [-18, 30, -1249] },
+      "room": "Hammerlocke_Vault", "at": [4, 8], "facing": "up",
+      "out": "hammerlocke_vault_door"
+    }
+  ],
+  "triggers": [
+    // Through the south gate with three badges: Leon and Hop, waiting under the walls
+    { "name": "hammerlocke_arrival", "box": { "min": [4, 23, -1174], "max": [20, 30, -1160] }, "script": "LeonInHammerlocke", "var": "VAR_GALAR_STORY", "value": 24 }
+  ],
+  "solids": [
+    { "name": "Hammerlocke Stadium", "min": [40, 25.4, -1272], "max": [96, 40, -1240], "building": { "kind": "hall", "town": "galar", "sign": "HAMMERLOCKE STADIUM" } },
+    { "name": "the vault", "min": [-30, 25.4, -1272], "max": [-8, 46, -1250], "building": { "kind": "tower", "town": "galar", "sign": "THE VAULT" } },
+    { "name": "Hammerlocke's Pokémon Center", "min": [20, 25.4, -1196], "max": [34, 32, -1182], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "a house by the west gate", "min": [-30, 25.4, -1200], "max": [-14, 33, -1186], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a house on the high street", "min": [46, 25.4, -1200], "max": [62, 33, -1186], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a shop on the high street", "min": [70, 25.4, -1212], "max": [90, 32, -1196], "building": { "kind": "shop", "town": "galar", "sign": "OUTFITTERS" } }
+  ],
+  "people": [
+    {
+      "name": "leon_hammerlocke", "at": [8, 26.3, -1176], "yaw": 180, "look": "leon", "displayName": "Leon",
+      "lines": ["The vault's open to anyone with an interest in Galar's history. Sonia's up there more often than not."],
+      "shownBy": "FLAG_GALAR_LEON_HAMMERLOCKE"
+    },
+    {
+      "name": "hop_hammerlocke", "at": [16, 26.3, -1176], "yaw": 180, "look": "hop", "displayName": "Hop",
+      "lines": ["Route 6 is out of the west gate. Stow-on-Side's at the top of it!"],
+      "shownBy": "FLAG_GALAR_HOP_HAMMERLOCKE"
+    },
+    {
+      "name": "stadium_staffer", "at": [64, 26.3, -1236], "yaw": 0, "look": "clerk", "displayName": "League Staff",
+      "lines": ["Hammerlocke Stadium is Raihan's. He takes on challengers who've won seven badges and not one fewer."]
+    },
+    {
+      "name": "hammerlocke_gentleman", "at": [-2, 26.3, -1232], "yaw": 90, "look": "gentleman", "displayName": "Gentleman",
+      "lines": ["These walls have stood a thousand years. The vault at their heart holds the tapestries of the Darkest Day."]
+    },
+    {
+      "name": "hammerlocke_lass", "at": [40, 26.3, -1220], "yaw": 270, "look": "lass", "displayName": "Lass",
+      "lines": ["Every train in Galar runs through Hammerlocke. You can get anywhere from here!"],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [0, -1182], "kind": "round", "size": 0.9 },
+    { "at": [-6, -1226], "kind": "round", "size": 0.9 }
+  ]
+}

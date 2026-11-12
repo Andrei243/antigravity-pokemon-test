@@ -1,0 +1,43 @@
+# Stow-on-Side Stadium's gym mission (plan 33 · GL5, its first session): a gym trainer at each of the course's three
+# gates, stepping aside once the player has passed their test, and two gym trainers beside the way. A gate passed stays
+# open (its own flag). A Sword game's test is Bea's spinning floor, a Shield game's Allister's masks: talks, not the
+# original's puzzles (docs/mechanics/rulings.md, "Hammerlocke, Route 6, Stow-on-Side and Ballonlea"). Our own lines.
+
+
+script MissionGate1
+  speaker "Gym Trainer"
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "The floor under this gate spins! Keep your feet and you may pass."
+  text "The floor whirled round and round. {player} kept their balance and stepped off steady!"
+  setflag FLAG_GALAR_STOW_GATE_1
+  end
+label Shield
+  say "Behind my mask is a face you saw in the lobby. Can you guess whose? ...Yes! On you go."
+  setflag FLAG_GALAR_STOW_GATE_1
+  end
+
+
+script MissionGate2
+  speaker "Gym Trainer"
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "Faster spins at this gate. Bea runs this course every morning before breakfast!"
+  text "The floor spun twice as fast. {player} leaned into it and came off without a stumble!"
+  setflag FLAG_GALAR_STOW_GATE_2
+  end
+label Shield
+  say "My mask is a ghost's, but am I one? Look closely... You saw my shadow. Off you go!"
+  setflag FLAG_GALAR_STOW_GATE_2
+  end
+
+
+script MissionGate3
+  speaker "Gym Trainer"
+  if var VAR_GALAR_VERSION == 2 goto Shield
+  say "Last gate, and the fastest floor of all. Step on when you're ready."
+  text "Everything became a blur. {player} held firm until it slowed. The mission is cleared!"
+  setflag FLAG_GALAR_STOW_GATE_3
+  end
+label Shield
+  say "The last mask. I won't move unless you can tell me who I am... Right again! The mission is cleared."
+  setflag FLAG_GALAR_STOW_GATE_3
+  end

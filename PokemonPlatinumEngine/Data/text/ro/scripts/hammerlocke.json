@@ -1,0 +1,68 @@
+{
+  "LeonInHammerlocke": [
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You made it! Three badges each, and here we are in Hammerlocke!"
+      ],
+      "text": [
+        "{player}! Ai ajuns! Câte trei insigne fiecare și iată-ne în Hammerlocke!"
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Hammerlocke, the two of you. This city's walls have stood longer than the League has, and Raihan's gym is the last before the Champion Cup."
+      ],
+      "text": [
+        "Bine ați venit în Hammerlocke, amândoi. Zidurile orașului stau în picioare de mai mult timp decât Liga, iar arena lui Raihan e ultima înaintea Cupei Campionilor."
+      ]
+    },
+    {
+      "en": [
+        "He won't see a challenger with fewer than seven badges, though. Your road runs west from here, out of the gate and up Route 6 to Stow-on-Side."
+      ],
+      "text": [
+        "Dar nu primește niciun concurent cu mai puțin de șapte insigne. Drumul vostru merge spre vest de aici, pe poartă și în sus pe Ruta 6, până la Stow-on-Side."
+      ]
+    },
+    {
+      "en": [
+        "And if you've a moment, look in at the vault. Sonia's been up there all week with the old tapestries. She'd like to see you, I'd bet."
+      ],
+      "text": [
+        "Și dacă aveți o clipă, treceți pe la criptă. Sonia stă acolo toată săptămâna cu tapiseriile vechi. Pun pariu că s-ar bucura să vă vadă."
+      ]
+    },
+    {
+      "en": [
+        "Hop"
+      ],
+      "text": [
+        "Hop"
+      ]
+    },
+    {
+      "en": [
+        "I'm going straight to Route 6! I've been training the whole way from Motostoke. See you on the road, {player}!"
+      ],
+      "text": [
+        "Eu merg direct pe Ruta 6! M-am antrenat tot drumul de la Motostoke. Ne vedem pe drum, {player}!"
+      ]
+    }
+  ]
+}

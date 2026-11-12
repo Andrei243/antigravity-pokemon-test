@@ -36,7 +36,9 @@ public class GalarTests
         // Motostoke, Route 3, Route 4 and Turffield (plan 33 · GL4)
         "motostoke", "galar_route_3", "galar_route_4", "turffield",
         // Route 5 and Hulbury (plan 33 · GL4, its second session)
-        "galar_route_5", "hulbury" };
+        "galar_route_5", "hulbury",
+        // Hammerlocke Hills, Hammerlocke, Route 6, Stow-on-Side and Ballonlea (plan 33 · GL5, its first session)
+        "wild_area_hammerlocke_hills", "hammerlocke", "galar_route_6", "stow_on_side", "ballonlea" };
 
     [Fact]
     public void GalarIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -103,7 +105,8 @@ public class GalarTests
         // A door to each room, and each room's way out leads back through it to its marker
         // (but the rooms come to only from another room: upstairs, and a stadium's mission and pitch; the Galar Mine has two)
         var behind = new[] { "Postwick_PlayersHouse_2F", "Motostoke_StadiumPitch", "Turffield_StadiumMission", "Turffield_StadiumPitch",
-            "Hulbury_StadiumMission", "Hulbury_StadiumPitch", "Motostoke_StadiumMission" };
+            "Hulbury_StadiumMission", "Hulbury_StadiumPitch", "Motostoke_StadiumMission",
+            "StowOnSide_StadiumMission", "StowOnSide_StadiumPitch", "Ballonlea_StadiumMission", "Ballonlea_StadiumPitch" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
@@ -183,6 +186,17 @@ public class GalarTests
         Assert.True(walk.Reaches(OpenPos.FromMetres(100, 26, -1000)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(10, 40, -1050)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(155, 40, -1000)));
+        // Plan 33 · GL5, its first session: through the gap in Route 5's north bank over Hammerlocke Hills, into Hammerlocke,
+        // out of its west gate along Route 6 to Stow-on-Side, and through Glimwood Tangle to Ballonlea; the mass the land is cut
+        // from (Hammerlocke's walls, the wall between the city and Ballonlea, the region's west edge) is never come to
+        Assert.True(walk.Reaches(OpenPos.FromMetres(10, 26, -1100)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(12, 26, -1220)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-100, 26, -1230)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-96, 26, -1340)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(40, 26, -1340)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(30, 40, -1285)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-40, 40, -1180)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-80, 40, -1120)));
     }
 
     [Fact]
@@ -335,6 +349,47 @@ public class GalarTests
         Assert.Equal(24, story.Var("VAR_GALAR_STORY"));
         Assert.True(story.HasBadge(RegionDatabase.Galar, "Fire"));
         Assert.Equal(3, story.BadgeCount(RegionDatabase.Galar));
+        // Plan 33 · GL5, its first session: north over Hammerlocke Hills to Leon and Hop at the gate, Sonia and the tapestries
+        // in the vault, Hop on Route 6, the fourth badge (Bea's in this Sword game), the mural and Opal's Fairy Badge.
+        // Route 5's north gap was shut without the Fire Badge, and Glimwood Tangle is shut without the fourth
+        Assert.Equal("galarHammerlocke", Next());
+        var north = Play("galar_route_5", "NorthShut");
+        Assert.False(north.OnMarker.ContainsKey("player"));
+        var tangle = Play("stow_on_side", "GlimwoodShut");
+        Assert.Equal("glimwood_west", tangle.OnMarker["player"]);
+        Play("hammerlocke", "LeonInHammerlocke");
+        Assert.Equal(25, story.Var("VAR_GALAR_STORY"));
+        Assert.False(story.Has("FLAG_GALAR_LEON_HAMMERLOCKE"));
+        Assert.Equal("galarVault", Next());
+        Play("Hammerlocke_Vault", "OnEnter", "Hammerlocke_Vault");
+        Assert.Equal(26, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarRoute6", Next());
+        Play("galar_route_6", "HopOnRoute6");
+        Assert.Equal(27, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarStow", Next());
+        foreach (string gate in new[] { "MissionGate1", "MissionGate2", "MissionGate3" })
+            Play("StowOnSide_StadiumMission", gate, "StowOnSide_StadiumMission");
+        Assert.True(story.Has("FLAG_GALAR_STOW_GATE_3"));
+        Play("StowOnSide_StadiumPitch", "OnEnter", "StowOnSide_StadiumPitch");
+        Assert.False(story.Has("FLAG_GALAR_SHIELD_GAME"));
+        Play("StowOnSide_StadiumPitch", "Bea", "StowOnSide_StadiumPitch");
+        Assert.Equal(28, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Fighting"));
+        Assert.Equal("Fighting", Region.BadgeNamesIn(story)[3]);
+        Assert.Equal("galarMural", Next());
+        Play("stow_on_side", "Mural");
+        Assert.Equal(29, story.Var("VAR_GALAR_STORY"));
+        Assert.False(story.Has("FLAG_GALAR_BEDE_AT_MURAL"));
+        Assert.Equal("galarOpal", Next());
+        var through = Play("stow_on_side", "GlimwoodShut");
+        Assert.False(through.OnMarker.ContainsKey("player"));
+        // A wrong answer leaves the quizmaster at the gate (the first answer, Dragon, is the first question's right one)
+        Play("Ballonlea_StadiumMission", "MissionQuiz1", "Ballonlea_StadiumMission");
+        Assert.True(story.Has("FLAG_GALAR_BALLONLEA_QUIZ_1"));
+        Play("Ballonlea_StadiumPitch", "Opal", "Ballonlea_StadiumPitch");
+        Assert.Equal(30, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Fairy"));
+        Assert.Equal(5, story.BadgeCount(RegionDatabase.Galar));
         Assert.Equal("galarFree", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }
@@ -353,7 +408,9 @@ public class GalarTests
             // Plan 33 · GL4's open scenes: up the steps, and Hop at the top of them
             ("wild_area_motostoke_riverbank", "MotostokeSteps", 12), ("motostoke", "HopInMotostoke", 13),
             // Plan 33 · GL4, its second session: Hop on Route 5, and Marnie by Motostoke's east wall
-            ("galar_route_5", "HopOnRoute5", 19), ("motostoke", "MarnieInMotostoke", 22)
+            ("galar_route_5", "HopOnRoute5", 19), ("motostoke", "MarnieInMotostoke", 22),
+            // Plan 33 · GL5, its first session: Leon at Hammerlocke's gate, Hop on Route 6, the mural
+            ("hammerlocke", "LeonInHammerlocke", 24), ("galar_route_6", "HopOnRoute6", 26), ("stow_on_side", "Mural", 28)
         })
         {
             var ends = new List<string>();
@@ -363,6 +420,9 @@ public class GalarTests
                 StoryMigration.BeginNewGame(host.Story, ScriptLibrary.Default);
                 host.Story.SetVar("VAR_GALAR_STORY", story);
                 host.Story.SetVar("VAR_GALAR_VERSION", 1);
+                // (whoever a scene faces stands where the scene before left them)
+                foreach (string shown in new[] { "FLAG_GALAR_LEON_HAMMERLOCKE", "FLAG_GALAR_HOP_HAMMERLOCKE", "FLAG_GALAR_HOP_ROUTE_6", "FLAG_GALAR_BEDE_AT_MURAL" })
+                    if (script is "LeonInHammerlocke" or "HopOnRoute6" or "Mural") host.Story.Set(shown);
                 host.Party.Add(new Pokemon(PokemonDatabase.Get("Grookey")!, 5, new Random(0)));
                 var runner = new ScriptRunner(ScriptLibrary.Default, host) { Impatient = hurry };
                 runner.Start(ScriptLibrary.Default.Find(script, file)!, null);
@@ -390,5 +450,37 @@ public class GalarTests
             runner.RunToEnd();
             Assert.Equal(new[] { seen }, host.SeenSpecies);
         }
+    }
+
+    [Fact]
+    public void AShieldGamesFourthBadgeIsAllistersGhostBadgeInTheSamePlace()
+    {
+        // Plan 33 · decision 2 and GL5: Bea and Allister stand on one spot of the pitch, the version's shown; the Ghost Badge
+        // is the Fighting Badge's place on the card, named by the version, and a script may ask either name
+        var story = new StoryState();
+        story.SetVar("VAR_GALAR_VERSION", 2);
+        story.SetVar("VAR_GALAR_STORY", 27);
+        var pitch = Rooms.Value("StowOnSide_StadiumPitch");
+        void Play(string script)
+        {
+            var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { Region = RegionDatabase.Galar, Map = pitch };
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find(script, "StowOnSide_StadiumPitch")!, null);
+            runner.RunToEnd();
+            Assert.Empty(host.Problems);
+        }
+        Play("OnEnter");
+        Assert.True(story.Has("FLAG_GALAR_SHIELD_GAME"));
+        pitch.ApplyPresence(story.Has);
+        Assert.Contains(pitch.NPCs, n => n.Id == "allister");
+        Assert.DoesNotContain(pitch.NPCs, n => n.Id == "bea");
+        Play("Allister");
+        Assert.Equal(28, story.Var("VAR_GALAR_STORY"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Ghost"));
+        Assert.True(story.HasBadge(RegionDatabase.Galar, "Fighting"));
+        Assert.Equal(1, story.BadgeCount(RegionDatabase.Galar));
+        Assert.Equal(new[] { "Grass", "Water", "Fire", "Ghost", "Fairy", "Ice", "Dark", "Dragon" }, Region.BadgeNamesIn(story));
+        story.SetVar("VAR_GALAR_VERSION", 1);
+        Assert.Equal(Region.BadgeNames, Region.BadgeNamesIn(story));
     }
 }

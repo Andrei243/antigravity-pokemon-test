@@ -113,6 +113,10 @@
       "note": "first spoken at fuchsia_gym.txt(79)",
       "provisional": true
     },
+    "allister": {
+      "note": "first spoken at StowOnSide_StadiumPitch.txt(38)",
+      "provisional": true
+    },
     "altar_keeper": {
       "note": "first spoken at poni_altar.txt(167)",
       "provisional": true
@@ -331,6 +335,10 @@
     },
     "battle_fan": {
       "note": "first spoken at RoyalAvenue_BattleRoyalDome.txt(227)",
+      "provisional": true
+    },
+    "bea": {
+      "note": "first spoken at StowOnSide_StadiumPitch.txt(18)",
       "provisional": true
     },
     "beauty": {
@@ -9073,7 +9081,7 @@
         "engine": "kokoro-82m",
         "blend": "am_michael:0.6,am_eric:0.4",
         "speed": 0.98,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -9477,6 +9485,10 @@
       "note": "first spoken at LumioseCity_BattleInstitute.txt(21)",
       "provisional": true
     },
+    "opal": {
+      "note": "first spoken at Ballonlea_StadiumPitch.txt(8)",
+      "provisional": true
+    },
     "orsolya_keld": {
       "brief": {
         "register": "woman",
@@ -9855,6 +9867,10 @@
     },
     "quiz_lady": {
       "note": "first spoken at lilycove_city_pokemon_center_1f.txt(95)",
+      "provisional": true
+    },
+    "quizmaster": {
+      "note": "first spoken at Ballonlea_StadiumMission.txt(8)",
       "provisional": true
     },
     "rafe_ottoline": {
@@ -11127,6 +11143,7 @@
     "Alder": "alder",
     "Aliana": "aliana",
     "Alice": "alice",
+    "Allister": "allister",
     "Altar Keeper": "altar_keeper",
     "Ampère": "ampere",
     "Anatole": "anatole",
@@ -11156,6 +11173,7 @@
     "Barry": "barry",
     "Bastien": "bastien",
     "Battle Fan": "battle_fan",
+    "Bea": "bea",
     "Beauty": "beauty",
     "Bede": "bede",
     "Ben": "ben",
@@ -11525,6 +11543,7 @@
     "Olivia": "olivia",
     "Olympia": "olympia",
     "Ombeline": "ombeline",
+    "Opal": "opal",
     "Oskin": "oskin",
     "Ottoline": "ottoline",
     "Owner": "owner",
@@ -11576,6 +11595,7 @@
     "Quinn": "quinn",
     "Quiz Host": "quiz_host",
     "Quiz Lady": "quiz_lady",
+    "Quizmaster": "quizmaster",
     "Raffle Clerk": "raffle_clerk",
     "Ralph": "ralph",
     "Ramon": "ramon",

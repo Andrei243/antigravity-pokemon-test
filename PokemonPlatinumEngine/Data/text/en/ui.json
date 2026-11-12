@@ -942,7 +942,13 @@
     "galarMineTwo": "Kabu's gym is back in Motostoke. Take Galar Mine No. 2 south from Hulbury.",
     "galarMarnie": "Out of the mine and into Motostoke. Someone is waiting by the east wall.",
     "galarKabu": "Win the Fire Badge at Motostoke Stadium, through Kabu's mission.",
-    "galarFree": "That is as far as the line runs for now. Galar's south is yours to explore."
+    "galarHammerlocke": "Three badges won. North out of Route 5 over Hammerlocke Hills to Hammerlocke.",
+    "galarVault": "Sonia is in the vault on the west side of Hammerlocke.",
+    "galarRoute6": "Out of Hammerlocke's west gate onto Route 6, towards Stow-on-Side.",
+    "galarStow": "Win the fourth badge at Stow-on-Side Stadium.",
+    "galarMural": "Something is happening at the mural on the hill above Stow-on-Side.",
+    "galarOpal": "Through Glimwood Tangle to Ballonlea, and win the Fairy Badge from Opal.",
+    "galarFree": "That is as far as the road runs for now. Galar from Postwick to Ballonlea is yours to explore."
   },
 
   "close": {
@@ -1537,7 +1543,7 @@
     "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave",
     "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg",
     "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
-    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon"
+    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon", "Ghost": "Ghost", "Ice": "Ice"
   },
   "run": {
     "heading": "WAYS TO PLAY",

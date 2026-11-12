@@ -5,7 +5,7 @@
         "The Wooloo bleated and wouldn't budge. {player} gave it a gentle nudge..."
       ],
       "text": [
-        ""
+        "Wooloo-ul a behăit și nu s-a clintit. {player} i-a dat un ghiont ușor..."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "It trotted off through the gate and into its pen!"
       ],
       "text": [
-        ""
+        "A trecut la trap prin poartă, drept în țarcul lui!"
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "This Wooloo was fast asleep in the gateway. {player} gave it a gentle nudge..."
       ],
       "text": [
-        ""
+        "Wooloo-ul ăsta dormea dus în poartă. {player} i-a dat un ghiont ușor..."
       ]
     },
     {
@@ -31,7 +31,7 @@
         "It rolled off into its pen without waking up!"
       ],
       "text": [
-        ""
+        "S-a rostogolit în țarc fără să se trezească!"
       ]
     }
   ],
@@ -41,7 +41,7 @@
         "The last Wooloo stood its ground. {player} gave it a gentle nudge..."
       ],
       "text": [
-        ""
+        "Ultimul Wooloo nu s-a dat bătut. {player} i-a dat un ghiont ușor..."
       ]
     },
     {
@@ -49,7 +49,7 @@
         "It bounced away into the last pen. The mission is cleared!"
       ],
       "text": [
-        ""
+        "A țopăit până în ultimul țarc. Misiunea e îndeplinită!"
       ]
     }
   ]

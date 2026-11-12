@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "The Vault"
+    ],
+    "text": [
+      "Cripta"
+    ]
+  },
+  "people": {
+    "vault_curator": {
+      "name": {
+        "en": [
+          "Curator"
+        ],
+        "text": [
+          "Custodele"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These tapestries tell of the Darkest Day, when a great darkness fell over Galar and two heroes drove it back."
+        ],
+        "text": [
+          "Tapiseriile astea povestesc despre Ziua Cea Mai Întunecată, când un mare întuneric s-a lăsat peste Galar și doi eroi l-au alungat."
+        ]
+      }
+    },
+    "sonia_vault": {
+      "name": {
+        "en": [
+          "Sonia"
+        ],
+        "text": [
+          "Sonia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two heroes with a sword and a shield. Why does every telling of it leave out what they faced?"
+        ],
+        "text": [
+          "Doi eroi cu o sabie și un scut. De ce fiecare variantă a poveștii lasă deoparte ce au înfruntat?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

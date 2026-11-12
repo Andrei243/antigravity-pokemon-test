@@ -11264,6 +11264,50 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   travel mode and plan 30's `RotomBike` mode has no engine in an open map; giving it would ship a bike that rides the
   grid. It is owed with that engine.
 
+## Hammerlocke, Route 6, Stow-on-Side and Ballonlea (2026-11-12, plan 33 · GL5, its first session)
+
+- **The land grows north again, eleven rows** (plan 33 · decision 1 still unanswered): the region's rectangle of chunks
+  is `[-5, -44, 4, 1]` (460 chunks, about 59 MB of bake), not wider. Sword puts the Wild Area's northern half and
+  Hammerlocke north of Motostoke, where Route 3 to Hulbury already stand here, so the order of the places is kept and
+  the ground is the cheapest left: north of Route 5. `terrain/wild_area_north_route6.json` lays the whole of it as a mass
+  too steep to climb and cuts the floors into it (plateaus alone, no control points): a gap in Route 5's north bank
+  (east of the bank's middle, so the bank's top stays unreached), Hammerlocke Hills, Hammerlocke behind walls that are
+  the mass with a south and a west gate, Route 6 west of the city, Stow-on-Side at its head with the mural's hill, and
+  Ballonlea north of the city's walls. Every floor is at 26 m; Stow-on-Side keeps no height of its own (a ramp would
+  have wanted a road cut at its heights, and the sense of the hill is the mural's). The gap is shut by a sign without
+  the Fire Badge.
+- **Hammerlocke Hills is the Wild Area's northern half begun**: one part of it, with its zones (the species Sword shows
+  in the north, our levels and weights) and a column of `calendar.json` (the Giant's Seat's a week later). The rest of
+  the north half (the Dusty Bowl, the Bridge Field and the others) is the second session's or later.
+- **Glimwood Tangle is a grid map** (`GlimwoodTangle`) between doors in Stow-on-Side's east bank and Ballonlea's west
+  bank, as the mines are; it is shut by a sign without the fourth badge. Its glow is not drawn: it is a dark cave map
+  with the wood's Pokémon. **The ways under and through the banks are drawn as mouths**: a short tunnel carved into the
+  face where each door stands (`carve/mouths.json`: the Galar Mine's two, Galar Mine No. 2's two, Glimwood's two), the
+  owed mouths of GL4's second session.
+- **The version's gym** (plan 33 · decision 2): Bea in a Sword game and Allister in a Shield one stand on one spot of
+  Stow-on-Side's pitch, the version's shown by `FLAG_GALAR_SHIELD_GAME`, which the pitch's arrival keeps to
+  `VAR_GALAR_VERSION`. **A region's badges may be named by version**: `galar.json`'s `versionBadges` (a variable, its
+  value, and the other version's names slot for slot) names the card's badges (`Region.BadgeNamesIn`) and lets a script
+  give or ask either name of a slot (`StoryState.FindBadge`), so the Ghost Badge is the Fighting Badge's place and a
+  Shield game's Ice Badge will be the Rock Badge's. The mission is a talk either way: three gym trainers at the gates,
+  Bea's spinning floor or Allister's masks.
+- **The chapter goes on** (`VAR_GALAR_STORY`, postwick.txt's count): Leon and Hop at Hammerlocke's south gate the first
+  time through (25; Kabu's script shows them), Sonia and the tapestries in the vault (26), Hop's battle on Route 6 (27,
+  ours: Sword's placing of a battle there was not confirmed), the fourth badge (28), the mural: Bede breaking into it,
+  the statue of the two heroes behind it, the chairman ending Bede's challenge (29), and Opal's Fairy Badge (30). Our
+  lines on Sword's beats as publicly told. People shown by flags of ours, so no story version moves. Objectives 722 to
+  727. Opal's mission is a quiz of three questions of ours whose answers change nothing in the battle.
+- **Ours**: Hammerlocke Hills', Route 6's and Glimwood Tangle's trainers and tables, Hop's fifth teams, the gym trainers',
+  Bea's (Machamp at 36), Allister's (Gengar at 36) and Opal's (Alcremie at 38) at Sword's caps after three and four
+  badges, and three looks (`bea`, `allister`, `opal`, chibi-kit stand-ins on the Adult and Elder builds as the cast before
+  them).
+- **GL4's owed doors**: the Pokémon Nursery on Route 5 is a Day Care (`Route5_Nursery`, the common `DayCareLady`
+  inside and `DayCareMan` at the door as the keeper), and Hulbury's seafood restaurant and lighthouse have rooms of a
+  house's plan with their people.
+- **Left owed**: Hammerlocke's stadium door with Raihan's gym (seven badges), the vault's room as more than a house's
+  plan, Route 7, Route 8, Circhester, Route 9 with the Rotom Bike's water (the bike itself still waits for an open-map
+  engine), Spikemuth and the rest of the Wild Area's north half; the shots of every new place.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or

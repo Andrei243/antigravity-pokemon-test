@@ -1,0 +1,55 @@
+{
+  // Ballonlea (plan 33 · GL5, its first session): a quiet village in a glade north of Hammerlocke's walls, come to out of
+  // Glimwood Tangle on its west side. Its path runs east past the Pokémon Center to the stadium, Opal's. Our own village
+  // at about half the original's distances. Scripts: Data/scripts/ballonlea.txt
+  "markers": [
+    { "name": "glimwood_east", "at": [-26, 26.3, -1338], "yaw": 90 },
+    { "name": "ballonlea_center_door", "at": [7, 26.3, -1304], "yaw": 0 },
+    { "name": "ballonlea_stadium_door", "at": [70, 26.3, -1362], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "glimwood_east",
+      "box": { "min": [-32.5, 25.4, -1340], "max": [-31.5, 30, -1336] },
+      "room": "GlimwoodTangle", "at": [22, 12], "facing": "left",
+      "out": "glimwood_east"
+    },
+    {
+      "name": "ballonlea_center_door",
+      "box": { "min": [6, 25.4, -1308], "max": [8, 30, -1307] },
+      "room": "Ballonlea_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "ballonlea_center_door"
+    },
+    {
+      "name": "ballonlea_stadium_door",
+      "box": { "min": [69, 25.4, -1366], "max": [71, 30, -1365] },
+      "room": "Ballonlea_Stadium", "at": [4, 8], "facing": "up",
+      "out": "ballonlea_stadium_door"
+    }
+  ],
+  "solids": [
+    { "name": "Ballonlea Stadium", "min": [50, 25.4, -1396], "max": [90, 38, -1366], "building": { "kind": "hall", "town": "galar", "sign": "BALLONLEA STADIUM" } },
+    { "name": "Ballonlea's Pokémon Center", "min": [0, 25.4, -1320], "max": [14, 32, -1308], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "a cottage in the glade, west", "min": [-20, 25.4, -1380], "max": [-6, 32, -1368], "building": { "kind": "house", "town": "galar", "storeys": 2 } },
+    { "name": "a cottage in the glade, east", "min": [24, 25.4, -1318], "max": [38, 32, -1306], "building": { "kind": "house", "town": "galar", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "ballonlea_lady", "at": [30, 26.3, -1340], "yaw": 180, "look": "lady", "displayName": "Lady",
+      "lines": ["The glow in the woods comes from the mushrooms. On a dark night the whole glade shines pink and blue."]
+    },
+    {
+      "name": "ballonlea_youngster", "at": [-10, 26.3, -1330], "yaw": 90, "look": "youngster", "displayName": "Youngster",
+      "lines": ["Opal's been the Leader here longer than anyone can remember. She's looking for someone to take over, they say."],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [-24, -1300], "kind": "round", "size": 1.2 },
+    { "at": [-18, -1396], "kind": "round", "size": 1.3 },
+    { "at": [44, -1300], "kind": "round", "size": 1.1 },
+    { "at": [96, -1300], "kind": "round", "size": 1.2 },
+    { "at": [96, -1340], "kind": "round", "size": 1.1 },
+    { "at": [40, -1394], "kind": "round", "size": 1.3 }
+  ]
+}

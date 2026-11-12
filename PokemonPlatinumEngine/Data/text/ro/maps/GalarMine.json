@@ -4,7 +4,7 @@
       "Galar Mine"
     ],
     "text": [
-      ""
+      "Mina Galar"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Morris"
         ],
         "text": [
-          ""
+          "Morris"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Worker Morris: Mind the carts! And mind me, while you're at it!"
         ],
         "text": [
-          ""
+          "Muncitorul Morris: Atenție la vagoneți! Și la mine, dacă tot ești aici!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Worker Morris: Off you go. The far end comes out on Route 4."
         ],
         "text": [
-          ""
+          "Muncitorul Morris: Mergi mai departe. Capătul celălalt iese pe Ruta 4."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Ives"
         ],
         "text": [
-          ""
+          "Ives"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Hiker Ives: The coal in this seam has warmed Motostoke for a hundred years. Let's warm up too!"
         ],
         "text": [
-          ""
+          "Drumețul Ives: Cărbunele din filonul ăsta a încălzit Motostoke vreme de o sută de ani. Hai să ne încălzim și noi!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Hiker Ives: Phew! You've got a hot streak going."
         ],
         "text": [
-          ""
+          "Drumețul Ives: Uf! Ești într-o serie fierbinte."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Bede"
         ],
         "text": [
-          ""
+          "Bede"
         ]
       },
       "dialog": {
@@ -74,7 +74,7 @@
           "Hmph."
         ],
         "text": [
-          ""
+          "Hmf."
         ]
       }
     }

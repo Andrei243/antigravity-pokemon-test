@@ -1,0 +1,138 @@
+{
+  "name": "Hulbury_Restaurant",
+  "displayName": "Hulbury",
+  "bgmTrack": "galar/wedgehurst",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "####D######"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.....#####",
+    "#.........#",
+    "#..##.....#",
+    "#..##.....#",
+    "#.........#",
+    "#.........#",
+    "####.######"
+  ],
+  "props": [
+    {
+      "type": "Window",
+      "x": 4,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "KitchenCounter",
+      "x": 7,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fridge",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 3,
+      "y": 5,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Cushion",
+      "x": 5,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 9,
+      "targetMap": "Galar",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "restaurant_chef",
+      "name": "Chef",
+      "npcType": "worker",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Today's catch is on the board. Everything on it was swimming in the harbour this morning."
+      ]
+    },
+    {
+      "id": "restaurant_diner",
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "x": 5,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "I come all the way from Hammerlocke for the fish here. Nessa eats at that table by the window, you know."
+      ]
+    },
+    {
+      "id": "restaurant_waitress",
+      "name": "Waitress",
+      "npcType": "lass",
+      "x": 2,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "Sorry, every table's taken tonight! Come back after your next badge and we'll find you a seat."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

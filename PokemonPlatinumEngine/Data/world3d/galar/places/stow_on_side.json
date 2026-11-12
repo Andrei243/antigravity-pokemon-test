@@ -1,0 +1,74 @@
+{
+  // Stow-on-Side (plan 33 · GL5, its first session): a town of traders at the head of Route 6, its market along the
+  // street, its stadium at the street's end, and on the hill behind the town the old mural no one has looked closely at
+  // in a thousand years. The gym is Bea's in a Sword game and Allister's in a Shield one (plan 33 · decision 2). The way
+  // into Glimwood Tangle opens in the town's east bank. Our own town at about half the original's distances. Scripts:
+  // Data/scripts/stow_on_side.txt
+  "markers": [
+    { "name": "stow_south", "at": [-96, 26.3, -1304], "yaw": 180 },
+    { "name": "stow_center_door", "at": [-112, 26.3, -1324], "yaw": 90 },
+    { "name": "stow_stadium_door", "at": [-64, 26.3, -1366], "yaw": 0 },
+    { "name": "glimwood_west", "at": [-53, 26.3, -1338], "yaw": 270 },
+    { "name": "stow_mural", "at": [-132, 26.3, -1374], "yaw": 180 },
+    { "name": "stow_mural_back", "at": [-110, 26.3, -1360], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "stow_center_door",
+      "box": { "min": [-116, 25.4, -1325], "max": [-115, 30, -1323] },
+      "room": "StowOnSide_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "stow_center_door"
+    },
+    {
+      "name": "stow_stadium_door",
+      "box": { "min": [-65, 25.4, -1370], "max": [-63, 30, -1369] },
+      "room": "StowOnSide_Stadium", "at": [4, 8], "facing": "up",
+      "out": "stow_stadium_door"
+    },
+    {
+      "name": "glimwood_west",
+      "box": { "min": [-44.5, 25.4, -1340], "max": [-43.5, 30, -1336] },
+      "room": "GlimwoodTangle", "at": [1, 12], "facing": "right",
+      "out": "glimwood_west"
+    }
+  ],
+  "triggers": [
+    // Before the mural with the fourth badge: Bede, the chairman and what the mural was hiding
+    { "name": "stow_mural", "box": { "min": [-142, 23, -1380], "max": [-122, 30, -1366] }, "script": "Mural", "var": "VAR_GALAR_STORY", "value": 28 },
+    // Glimwood Tangle is for challengers with four badges
+    { "name": "glimwood_shut", "box": { "min": [-50, 23, -1344], "max": [-45, 30, -1332] }, "script": "GlimwoodShut" }
+  ],
+  "solids": [
+    { "name": "Stow-on-Side Stadium", "min": [-80, 25.4, -1400], "max": [-48, 38, -1370], "building": { "kind": "hall", "town": "galar", "sign": "STOW-ON-SIDE STADIUM" } },
+    { "name": "Stow-on-Side's Pokémon Center", "min": [-130, 25.4, -1330], "max": [-116, 32, -1318], "building": { "kind": "pokemonCenter", "town": "galar" } },
+    { "name": "a market stall, south", "min": [-112, 25.4, -1350], "max": [-104, 29, -1344], "building": { "kind": "shop", "town": "galar", "sign": "MARKET" } },
+    { "name": "a market stall, north", "min": [-112, 25.4, -1338], "max": [-104, 29, -1332], "building": { "kind": "shop", "town": "galar", "sign": "MARKET" } },
+    { "name": "a house on the hillside", "min": [-146, 25.4, -1356], "max": [-132, 33, -1342], "building": { "kind": "house", "town": "galar", "storeys": 3 } },
+    { "name": "a house by the route", "min": [-78, 25.4, -1330], "max": [-62, 32, -1318], "building": { "kind": "house", "town": "galar", "storeys": 2 } },
+    { "name": "the mural", "min": [-140, 25.4, -1388], "max": [-124, 36, -1382], "building": { "kind": "shrine", "town": "galar", "sign": "THE MURAL" } }
+  ],
+  "people": [
+    {
+      "name": "bede_stow", "at": [-130, 26.3, -1378], "yaw": 180, "look": "bede", "displayName": "Bede",
+      "lines": ["Don't interrupt. The chairman wants wishing stars, and there are wishing stars in this wall."],
+      "shownBy": "FLAG_GALAR_BEDE_AT_MURAL"
+    },
+    {
+      "name": "stow_merchant", "at": [-102, 26.3, -1341], "yaw": 90, "look": "worker", "displayName": "Merchant",
+      "lines": ["Fine goods from all over Galar! Well, the market's shut today. Do come back."]
+    },
+    {
+      "name": "stow_old_man", "at": [-120, 26.3, -1364], "yaw": 180, "look": "old_man", "displayName": "Old Man",
+      "lines": ["That mural's older than the town. Two great heroes, two great Pokémon, and a dark day long ago. That's the tale, anyway."]
+    },
+    {
+      "name": "stow_backpacker", "at": [-84, 26.3, -1340], "yaw": 270, "look": "hiker", "displayName": "Hiker",
+      "lines": ["Glimwood Tangle's through the east bank. It glows in there, day and night. Ballonlea's on the far side."],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [-148, -1312], "kind": "pine", "size": 0.9 },
+    { "at": [-52, -1312], "kind": "pine" }
+  ]
+}

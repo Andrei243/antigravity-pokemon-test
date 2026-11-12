@@ -1,0 +1,20 @@
+# Hammerlocke's vault (plan 33 · GL5, its first session): the keep at the city's heart, where the tapestries of the
+# Darkest Day hang. Sonia shows them to the player the first time they come in. VAR_GALAR_STORY 25 to 26 (postwick.txt's
+# count). Our own lines, on the beat of the tapestries as publicly told.
+
+
+script OnEnter
+  if var VAR_GALAR_STORY != 25 end
+  scene "The tapestries"
+  face sonia_vault player
+  speaker "Sonia"
+  say "Oh, it's you! Leon said you'd be along. Come and look at these. They're the oldest record of the Darkest Day there is."
+  say "A great darkness fell over Galar, and two young heroes stood against it with a sword and a shield. Every child here knows the tale."
+  say "But look closer. The heroes, the sword, the shield... and where the darkness ought to be, there's nothing at all. Someone left it out."
+  say "I mean to find out why. Gran thinks I'm chasing fairy tales. Maybe I am! But the shadow you saw in the Weald was real enough."
+  say "Off you go to Stow-on-Side, then. There's an old mural above the town I've been meaning to look at. I might see you there!"
+  setflag FLAG_GALAR_HOP_ROUTE_6
+  setvar VAR_GALAR_STORY 26
+  objective galarRoute6
+  endscene
+  end

@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Stow-on-Side Stadium"
+    ],
+    "text": [
+      "Stadionul Stow-on-Side"
+    ]
+  },
+  "people": {
+    "stowonside_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "stowonside_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul arenei"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

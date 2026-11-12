@@ -5,11 +5,24 @@
   // distances. Scripts: Data/scripts/galar_route_5.txt
   "markers": [
     { "name": "route5_south", "at": [40, 26.3, -952], "yaw": 180 },
-    { "name": "route5_gap", "at": [40, 26.3, -962], "yaw": 180 }
+    { "name": "route5_gap", "at": [40, 26.3, -962], "yaw": 180 },
+    // Plan 33 · GL5: the Nursery's door, and the way back from the gap in the north bank to Hammerlocke Hills
+    { "name": "route5_nursery_door", "at": [-23, 26.3, -980], "yaw": 180 },
+    { "name": "route5_north_back", "at": [38, 26.3, -1030], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "route5_nursery_door",
+      "box": { "min": [-24, 25.4, -977], "max": [-22, 30, -976] },
+      "room": "Route5_Nursery", "at": [4, 8], "facing": "up",
+      "out": "route5_nursery_door"
+    }
   ],
   "triggers": [
     // Through the gap the day after the Grass Badge: Hop, wanting a battle before Hulbury
-    { "name": "route5_hop", "box": { "min": [32, 23, -962], "max": [48, 30, -954] }, "script": "HopOnRoute5", "var": "VAR_GALAR_STORY", "value": 19 }
+    { "name": "route5_hop", "box": { "min": [32, 23, -962], "max": [48, 30, -954] }, "script": "HopOnRoute5", "var": "VAR_GALAR_STORY", "value": 19 },
+    // The gap in the north bank onto Hammerlocke Hills (plan 33 · GL5): for challengers with three badges
+    { "name": "route5_north_shut", "box": { "min": [30, 23, -1046], "max": [46, 30, -1038] }, "script": "NorthShut" }
   ],
   "zones": [
     {
@@ -49,8 +62,8 @@
       "shownBy": "FLAG_GALAR_HOP_ROUTE_5"
     },
     {
-      "name": "nursery_keeper", "at": [-23, 26.3, -980], "yaw": 0, "look": "lady", "displayName": "Nursery Keeper",
-      "lines": ["The Pokémon Nursery's closed for a spring clean. Do come back once we're open again!"]
+      "name": "nursery_keeper", "at": [-29, 26.3, -980], "yaw": 90, "look": "old_man", "displayName": "Nursery Keeper",
+      "script": "DayCareMan"
     },
     {
       "name": "camper_rhys", "at": [6, 27.1, -1000], "yaw": 90, "trainer": "galar_camper_rhys",
