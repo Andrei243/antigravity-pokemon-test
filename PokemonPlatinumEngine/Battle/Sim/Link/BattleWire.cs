@@ -44,7 +44,8 @@ public static class BattleWire
         typeof(Ended), typeof(MomentShown), typeof(AheadLanded), typeof(VolatileChanged), typeof(CameInWith), typeof(Charging),
         typeof(MegaEvolved), typeof(ZPowerUsed), typeof(UltraBursted), typeof(PlacesSwapped), typeof(Dynamaxed),
         typeof(DynamaxEnded), typeof(MaxMoveUsed), typeof(Terastallized), typeof(MarkChanged), typeof(FormHpChanged),
-        typeof(CalledForHelp), typeof(AllyJoined), typeof(Rotated), typeof(Judged), typeof(RoyalPlaced), typeof(TotemAuraRaised)
+        typeof(CalledForHelp), typeof(AllyJoined), typeof(Rotated), typeof(Judged), typeof(RoyalPlaced), typeof(TotemAuraRaised),
+        typeof(RaidBarrier)
     };
 
     /// <summary>Every question the core asks.</summary>

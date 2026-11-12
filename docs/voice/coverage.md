@@ -29,8 +29,8 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 ## The cast
 
-- Named characters: 923 voices (357 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
-- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 561 voices.
+- Named characters: 924 voices (357 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 562 voices.
 - Archetypes in use: 246, with 743 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 351.
 
@@ -117,12 +117,12 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:beauty (any)` | 58 | 0 |
 | `cheren` | 57 | 1 |
 | `officer` | 57 | 5 |
-| `owner` | 56 | 7 |
 | `crasher_wake` | 55 | 0 |
 | `elder` | 55 | 0 |
 | `maxie` | 55 | 1 |
 | `school_kid` | 54 | 0 |
 | `bill` | 53 | 0 |
+| `owner` | 51 | 5 |
 | `class:gentleman (any)` | 50 | 0 |
 | `class:young_couple (any)` | 50 | 0 |
 | `drayden` | 50 | 0 |

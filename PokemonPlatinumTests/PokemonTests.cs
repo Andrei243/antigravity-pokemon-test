@@ -251,6 +251,9 @@ public class PokemonTests
             && mapName != "BattlePyramidFloor"
             // (and the Trainer Hill's floor, left by its stairs' scripts, plan 21, part l)
             && mapName != "TrainerHillFloor"
+            // (and the Trainer Tower's floor, laid again on one map for every floor and left only by its stairs' and
+            // arrival's scripts, to the next floor, the roof or the lobby, plan 37 · FC6)
+            && mapName != "TrainerTowerFloor"
             // (and the Battle Tents' corridors and battle rooms, left by the round's own script, plan 21 · H3)
             && !mapName.Contains("_BattleTent")
             // (and Black 2's hidden grotto, left by reading its tunnel mouth, plan 22 · U11)
