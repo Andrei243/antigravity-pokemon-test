@@ -94,6 +94,7 @@ public sealed class OrbitCamera
         sinceTurned = double.PositiveInfinity;
         lookPoint = null;
         lookShare = lookSpeed = 0;
+        OffTheMount();
     }
 
     /// <summary>The next placing lets the arm out whole where nothing holds it (a shot set up), as after <see cref="Reset"/>.</summary>
@@ -192,11 +193,21 @@ public sealed class OrbitCamera
     /// </summary>
     public (OpenVec Position, OpenVec Target) Place(OpenGround? ground, OpenVec feet, double seconds)
     {
-        var head = feet + new OpenVec(0, Above, 0);
+        // Riding (plan 30 · FM13): over the mount, further back, a lead ahead in a sprint; nothing of it at a share of nought
+        double ride = RideShare;
+        var head = feet + new OpenVec(0, ride == 0 ? Above : Above + (rideAbove - Above) * ride, 0);
         var back = BackWay;
-        double allowed = Length;
+        double length = Length;
+        if (ride != 0)
+        {
+            double pitch = Pitch + (ridePitch - PitchDegrees) * Math.PI / 180 * ride;
+            back = new OpenVec(-Math.Sin(Yaw) * Math.Cos(pitch), Math.Sin(pitch), -Math.Cos(Yaw) * Math.Cos(pitch));
+            length = Math.Max(Shortest, Length + (rideArm - Back) * ride);
+            head += new OpenVec(Math.Sin(Yaw), 0, Math.Cos(Yaw)) * (rideLead * ride);
+        }
+        double allowed = length;
         Held = false;
-        if (ground != null && ground.HasAnything && ground.Raycast(head, back, Length + Margin) is { } hit)
+        if (ground != null && ground.HasAnything && ground.Raycast(head, back, length + Margin) is { } hit)
         {
             allowed = Math.Max(Shortest, hit - Margin);
             Held = true;
@@ -215,6 +226,74 @@ public sealed class OrbitCamera
     }
 
     private static double Smooth(double t) => t * t * (3 - 2 * t);
+
+    // ---------------------------------------------------------------- the mount (plan 30 · FM13)
+
+    /// <summary>Riding at the trot or standing: the point looked at over the feet, the arm, the pitch in degrees (style guide, "Open world", "The mount").</summary>
+    public const double RideAbove = 2.4, RideArm = 7.4, RidePitchDegrees = 18;
+
+    /// <summary>A sprint's longer arm, wider lens (degrees) and lead ahead (metres), whole from <see cref="SprintFrom"/> + 5 m a second.</summary>
+    public const double SprintArm = 1.2, SprintLens = 6, SprintLead = 1.5, SprintFrom = 6;
+
+    /// <summary>A glide's point, arm, pitch and lens; a climb's point, arm and pitch; a swim's point and arm.</summary>
+    public const double GlideAbove = 2.2, GlideArm = 8.5, GlidePitchDegrees = 26, GlideLens = 54,
+        ClimbAbove = 2.2, ClimbArm = 7.0, ClimbPitchDegrees = 4, SwimAbove = 1.8, SwimArm = 6.8;
+
+    /// <summary>How long the camera takes to come over to the mount and back (the share's run from nought to one), and its ease between stances' numbers (a half-life), in seconds.</summary>
+    public const double RideSeconds = 0.5, RideHalfLife = 0.3;
+
+    private double rideShare;
+    private double rideAbove = RideAbove, rideArm = RideArm, ridePitch = RidePitchDegrees, rideLens = LensDegrees, rideLead;
+
+    /// <summary>How far the camera has come over to the mount, 0 to 1 (smoothstep of its run): nought on foot, and then nothing of the mount reaches the camera.</summary>
+    public double RideShare => rideShare <= 0 ? 0 : rideShare >= 1 ? 1 : Smooth(rideShare);
+
+    /// <summary>
+    /// A frame of the mount for the camera: its share run toward riding or not over <see cref="RideSeconds"/>, and its
+    /// numbers eased toward the stance's (<paramref name="speed"/> over the ground, metres a second, for a sprint's).
+    /// Back on foot with the share at nought, the numbers are the trot's again for the next ride.
+    /// </summary>
+    public void Ride(bool mounted, OpenStance stance, double speed, double seconds)
+    {
+        if (seconds <= 0) return;
+        rideShare = Math.Clamp(rideShare + (mounted ? 1 : -1) * seconds / RideSeconds, 0, 1);
+        if (!mounted && rideShare <= 0)
+        {
+            (rideAbove, rideArm, ridePitch, rideLens, rideLead) = (RideAbove, RideArm, RidePitchDegrees, LensDegrees, 0);
+            return;
+        }
+        double sprint = Math.Clamp((speed - SprintFrom) / 5, 0, 1);
+        var (above, arm, pitch, lens, lead) = !mounted ? (rideAbove, rideArm, ridePitch, rideLens, rideLead) : stance switch
+        {
+            OpenStance.Gliding => (GlideAbove, GlideArm, GlidePitchDegrees, GlideLens, 0.0),
+            OpenStance.Climbing => (ClimbAbove, ClimbArm, ClimbPitchDegrees, LensDegrees, 0.0),
+            OpenStance.Swimming => (SwimAbove, SwimArm, RidePitchDegrees, LensDegrees, 0.0),
+            _ => (RideAbove, RideArm + SprintArm * sprint, RidePitchDegrees, LensDegrees + SprintLens * sprint, SprintLead * sprint)
+        };
+        double k = 1 - Math.Pow(0.5, seconds / RideHalfLife);
+        rideAbove += (above - rideAbove) * k;
+        rideArm += (arm - rideArm) * k;
+        ridePitch += (pitch - ridePitch) * k;
+        rideLens += (lens - rideLens) * k;
+        rideLead += (lead - rideLead) * k;
+    }
+
+    /// <summary>Off the mount at once (a fade's midpoint took the player off): the share at nought and the numbers the trot's.</summary>
+    public void OffTheMount()
+    {
+        rideShare = 0;
+        (rideAbove, rideArm, ridePitch, rideLens, rideLead) = (RideAbove, RideArm, RidePitchDegrees, LensDegrees, 0);
+    }
+
+    /// <summary>The vertical lens with the mount's share of its widening over <paramref name="lens"/> (the zoom's), in degrees: <paramref name="lens"/> itself, to the bit, on foot.</summary>
+    public double RideLens(double lens)
+    {
+        double s = RideShare;
+        return s == 0 ? lens : lens + (rideLens - LensDegrees) * s;
+    }
+
+    /// <summary>The ride's share and its numbers as they stand, for a tool to print.</summary>
+    public (double Share, double Above, double Arm, double Pitch, double Lens, double Lead) RideNow => (RideShare, rideAbove, rideArm, ridePitch, rideLens, rideLead);
 
     /// <summary>An angle brought into −π to π.</summary>
     public static double Angle(double radians)

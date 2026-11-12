@@ -10960,7 +10960,23 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   wakes mounted only where the movement in force lists `Mount` and a mount is had; anywhere else on foot.
 - **Owed**: the navigation mesh's links for the jump, the glide and the climb (the baker makes none yet;
   `OpenNavMesh.Allowed` lets the `Climb` and `Glide` flags through once granted), the bot riding, the camera's lead,
-  the picnic, Let's Go from the saddle, and the rig (FM13).
+  the picnic, Let's Go from the saddle, and the rig (FM13: built 2026-11-12, below).
+
+## The mount as a rig (2026-11-12, plan 30 · FM13)
+
+- **The forms ridden** (`MountRules.FormFor`'s third argument is now *ridden*, not *moving*): FM12 drew a standing
+  mount in its limited form, which would have sat the rider on an upright biped's back. Scarlet and Violet keep the
+  running form under a rider wherever it stands, and so does this: ridden, standing, trotting, sprinting and clinging
+  to a face the running form (Koraidon's Sprinting Build, Miraidon's Drive Mode), swimming the swimming form, gliding
+  the gliding form; a jump or a fall keeps the running form (FM12 had a fall glide, which would have flashed a change of
+  form at every hop). The limited form is the mount's off the saddle: coming out of its ball as the player gets on and
+  going back as they get off. Nothing of the rules reads the form.
+- **One size a species**: the forms' heights in the data (3.5 m and 2.8 m, each form the same) would have put a seat
+  two metres up, so the rig draws every form of a species at one scale (Koraidon 2.3 m a model unit, Miraidon 2.4),
+  their backs about 1.15 m up; the style guide's "Open world", "The mount" has every number.
+- **A dismount behind a fade plays nothing**: the key's and a script's dismounts are played (the rider hops down, the
+  mount goes back), but one at a fade's midpoint forgets the mount and puts the camera on foot at once, so no hop is
+  seen after a battle or a door.
 ## The hub: a region of our own between the regions (2026-11-09, plan 41 · EG1)
 
 - **What it is.** A small region of our own, `Hub` (the plan's working word, decision 3: the user names it later), off the

@@ -71,18 +71,20 @@ public static class MountRules
     };
 
     /// <summary>
-    /// The form the mount is drawn in for a stance (plan 30, "The mount as a rig"): standing still its limited form,
-    /// trotting and sprinting its running one, swimming its swimming one, gliding its gliding one, and clinging to a face
-    /// its running one. Null for no mount.
+    /// The form the mount is drawn in for a stance (plan 30 · FM13, "The mount as a rig"; style guide, "Open world",
+    /// "The mount"): ridden, standing, trotting, sprinting or clinging to a face its running form, swimming its swimming
+    /// one, gliding its gliding one (a jump or a fall keeps the running form); not ridden (out of its ball as the player gets on, and going back as they get
+    /// off) its limited form, as Scarlet and Violet keep it: a rider never sits an upright biped. Null for no mount.
     /// </summary>
-    public static string? FormFor(int mount, OpenStance stance, bool moving) => (mount, stance) switch
+    public static string? FormFor(int mount, OpenStance stance, bool ridden) => (mount, stance) switch
     {
+        (Koraidon or Miraidon, _) when !ridden => mount == Koraidon ? "Koraidon-Limited-Build" : "Miraidon-Low-Power-Mode",
         (Koraidon, OpenStance.Swimming) => "Koraidon-Swimming-Build",
-        (Koraidon, OpenStance.Gliding or OpenStance.Falling) => "Koraidon-Gliding-Build",
-        (Koraidon, _) => moving || stance == OpenStance.Climbing ? "Koraidon-Sprinting-Build" : "Koraidon-Limited-Build",
+        (Koraidon, OpenStance.Gliding) => "Koraidon-Gliding-Build",
+        (Koraidon, _) => "Koraidon-Sprinting-Build",
         (Miraidon, OpenStance.Swimming) => "Miraidon-Aquatic-Mode",
-        (Miraidon, OpenStance.Gliding or OpenStance.Falling) => "Miraidon-Glide-Mode",
-        (Miraidon, _) => moving || stance == OpenStance.Climbing ? "Miraidon-Drive-Mode" : "Miraidon-Low-Power-Mode",
+        (Miraidon, OpenStance.Gliding) => "Miraidon-Glide-Mode",
+        (Miraidon, _) => "Miraidon-Drive-Mode",
         _ => null
     };
 

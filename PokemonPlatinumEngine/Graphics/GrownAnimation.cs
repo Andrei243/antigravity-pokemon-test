@@ -564,7 +564,11 @@ internal static class GrownAnimation
         switch (p.Riding)
         {
             case Riding.Surf:
+            case Riding.Mount when p.RideStance == RideStance.Swim:
             {
+                // (a mount swimming is ridden kneeling on its back, as a Surfer is (plan 30 · FM13): its floats are too
+                // wide to sit astride, so the root, which the field puts its saddle under the seat, is raised by it)
+                if (p.Riding == Riding.Mount) pose.Offset[HumanBones.Root] += new Vector3(0, legs.HipY - 0.075f * legs.Size, 0);
                 // Kneeling: the thighs a little forward of upright, the shins along the back behind, the body forward over
                 // the right hand held ahead, the left on the thigh
                 float kneel = 0.045f * legs.Size + legs.Thigh * MathF.Cos(0.3f);
@@ -621,8 +625,10 @@ internal static class GrownAnimation
                 float rock = 0.012f * legs.Size * MathF.Sin(2f * Tau * p.Walk) * Math.Clamp(p.WalkBlend, 0f, 1f);
                 pose.Offset[HumanBones.Root] += new Vector3(0, rock, 0);
                 pose.Turn(HumanBones.Hips, -0.35f);
-                pose.Turn(HumanBones.ThighL, -0.6f, 0f, 0.34f);
-                pose.Turn(HumanBones.ThighR, -0.6f, 0f, -0.34f);
+                // The thighs spread round the mount's back where its width is told (plan 30 · FM13), the old 0.34 otherwise
+                float spread = p.Astride > 0f ? AstrideSpread(sk, legs, p.Astride) : 0.34f;
+                pose.Turn(HumanBones.ThighL, -0.6f, 0f, spread);
+                pose.Turn(HumanBones.ThighR, -0.6f, 0f, -spread);
                 pose.Turn(HumanBones.ShinL, 1.1f);
                 pose.Turn(HumanBones.ShinR, 1.1f);
                 pose.Turn(HumanBones.FootL, 0.3f);
@@ -638,8 +644,76 @@ internal static class GrownAnimation
                 pose.Turn(HumanBones.CoatTail, 0.2f + 0.3f * run);
                 pose.Turn(HumanBones.Skirt, -0.6f);
                 pose.Turn(HumanBones.Hair, 0.08f + 0.18f * run);
+                RideStanceOver(p.RideStance, legs, pose);
                 break;
             }
+        }
+    }
+
+    /// <summary>
+    /// How far a rider's root is under the top of what they sit astride, in model units (plan 30 · FM13): the hip
+    /// joints' height less the seat's flesh under them, as the sitter's (<see cref="StanceClip"/>, 0.075 of the body's size).
+    /// </summary>
+    public static float SaddleOf(Skeleton sk)
+    {
+        var legs = LegsOf(sk);
+        return legs.HipY - 0.075f * legs.Size;
+    }
+
+    /// <summary>The widest the thighs spread astride (a roll at the hip): wider stretches the crotch's edges past what the grown sculpt's weights hold.</summary>
+    public const float MostSpread = 0.6f;
+
+    /// <summary>How far a climbing rider is leant forward about the hips onto the mount's back (plan 30 · FM13), in radians: the field leans the root, the clip turns the thighs back by as much.</summary>
+    public const float ClimbLean = 0.6f;
+
+    /// <summary>The thighs' spread (a roll at the hip) that brings the knees clear of a mount <paramref name="halfWidth"/> wide at the seat, with a thigh's girth to spare.</summary>
+    internal static float AstrideSpread(Skeleton sk, Legs legs, float halfWidth)
+    {
+        float hipX = MathF.Abs(sk[HumanBones.ThighL].Joint.X);
+        float clear = halfWidth + 0.06f * legs.Size - hipX;
+        float share = Math.Clamp(clear / MathF.Max(1e-4f, legs.Thigh), 0f, 0.95f);
+        return Math.Clamp(MathF.Asin(share), 0.34f, MostSpread);
+    }
+
+    /// <summary>
+    /// What a rider's stance adds over sitting astride (style guide, "Open world", "The mount"): a dash crouches lower
+    /// with the head up, a glide sits up with the arms out wide, a climb lies flat along the mount's back with the head
+    /// turned up the face. Seated adds nothing; a swim is ridden kneeling (<see cref="Ride"/>).
+    /// </summary>
+    private static void RideStanceOver(RideStance stance, Legs legs, SkeletonPose pose)
+    {
+        switch (stance)
+        {
+            case RideStance.Dash:
+                pose.Turn(HumanBones.Spine, 0.08f);
+                pose.Turn(HumanBones.Neck, -0.1f);
+                pose.Turn(HumanBones.Head, -0.2f);
+                pose.Turn(HumanBones.UpperArmL, -0.2f);
+                pose.Turn(HumanBones.UpperArmR, -0.2f);
+                pose.Turn(HumanBones.CoatTail, 0.3f);
+                pose.Turn(HumanBones.Hair, 0.15f);
+                break;
+            case RideStance.Glide:
+                pose.Turn(HumanBones.Spine, -0.25f);
+                pose.Turn(HumanBones.Head, 0.1f);
+                pose.Turn(HumanBones.UpperArmL, 0.35f, 0f, 0.75f);
+                pose.Turn(HumanBones.UpperArmR, 0.35f, 0f, -0.75f);
+                pose.Turn(HumanBones.ForeArmL, 0.3f);
+                pose.Turn(HumanBones.ForeArmR, 0.3f);
+                pose.Turn(HumanBones.CoatTail, 0.6f);
+                pose.Turn(HumanBones.Hair, 0.3f);
+                break;
+            case RideStance.Climb:
+                // (the field leans the whole rider ClimbLean forward onto the mount's back; the thighs are turned back by it)
+                pose.Turn(HumanBones.ThighL, ClimbLean);
+                pose.Turn(HumanBones.ThighR, ClimbLean);
+                pose.Turn(HumanBones.Spine, 0.15f);
+                pose.Turn(HumanBones.Hips, -0.15f);
+                pose.Turn(HumanBones.Neck, -0.25f);
+                pose.Turn(HumanBones.Head, -0.45f);
+                pose.Turn(HumanBones.UpperArmL, -0.5f);
+                pose.Turn(HumanBones.UpperArmR, -0.5f);
+                break;
         }
     }
 
