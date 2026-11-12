@@ -508,6 +508,7 @@ public partial class GameEngine
         flow.Crafting.Clear();
         flow.Care.Clear();
         flow.Gifts.Clear();
+        flow.Records.Clear();
         flow.StageShow.Clear();
         flow.Studio.Clear();
         flow.Board.Clear();
@@ -790,6 +791,7 @@ public partial class GameEngine
         // A visit to the pasture under way (plan 35 · BN5): its herd is laid as the place is come to
         flow.Pasture = save.Pasture?.Copy();
         flow.Gifts.Load(save.Gifts);
+        flow.Records.Load(save.MixedRecords);
         flow.StageShow.Load(save.StageShow);
         flow.Studio.Load(save.Studio);
         flow.Board.Load(save.TradeBoard);
@@ -1024,6 +1026,7 @@ public partial class GameEngine
             Care = CareToSave(),
             Pasture = flow.Pasture?.Copy(),
             Gifts = flow.Gifts.ToSave(),
+            MixedRecords = flow.Records.ToSave(),
             StageShow = flow.StageShow.ToSave(),
             Studio = flow.Studio.ToSave(),
             TradeBoard = flow.Board.ToSave(),

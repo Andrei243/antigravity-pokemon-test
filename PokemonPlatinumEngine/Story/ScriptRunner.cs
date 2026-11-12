@@ -447,6 +447,8 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // Records are mixed and asked about at once: nothing to see through (plan 40 · GE10)
+        Op.Records => false,
         // The gift box's screen is the player's to work; a gift handed over, words told and a backdrop given are as items given (plan 40 · GE7)
         Op.Gift => i.Name == "open",
         // The Laurel Circuit only asks and changes its record (plan 41 · EG4); a deduction is a question (EG7)
@@ -1671,6 +1673,9 @@ public sealed partial class ScriptRunner
             // The charms of a Pokédex filled (plan 40 · GE5)
             case Op.Charm:
                 CharmCommand(i);
+                break;
+            case Op.Records:
+                RecordsCommand(i);
                 break;
             case Op.Circuit:
                 CircuitCommand(i);

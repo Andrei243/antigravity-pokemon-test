@@ -15764,6 +15764,10 @@ way -
   > Lucas put it away in the Berries pocket.
   * cry Turtwig
   * fanfare FanfareItem
+=== common.FriendsBasePC
+from a trainer with lines of their own
+way -
+  > It's your friend's PC. Better leave it be!
 === common.FriendsHallTrainer
 from a trainer with lines of their own
 way -
@@ -16807,6 +16811,17 @@ way 0
 way 1, from answer 1
   > Better not touch it.
   ? There's a secret switch behind the statue's eyes! Press it? = No
+=== common.RecordDesk
+from a trainer with lines of their own
+way 0
+  Anyone> Welcome to the record desk! Here your records are mixed with those of your other adventures.
+  Anyone> Shall I mix your records?
+  Anyone> There's no other adventure to mix with, I'm afraid. Each save slot holds an adventure of its own.
+  Anyone> Do come back once you've begun another!
+  ? Shall I mix your records? = Yes
+way 1, from answer 1
+  Anyone> Please come again!
+  ? Shall I mix your records? = No
 === common.RepelWoreOff
 from a trainer with lines of their own
 way -
@@ -17069,7 +17084,7 @@ way 0
 way 3, from answer 1
   ? What would you like to do? = LOG OFF
 way 2, from answer 1
-  > No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked.
+  > No friend's secret base is registered. Mix records at a Pokémon Center's record desk to bring one in.
   ? What would you like to do? = REGISTRY
 way 1.0, from answer 1
   > Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again.

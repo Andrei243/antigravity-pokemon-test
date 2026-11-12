@@ -561,9 +561,10 @@ and a decoration PC (`StoredDecoration`s, saved). The game starts `common.Secret
 | Command | What it does |
 |---|---|
 | `openbase` | The spot in front becomes the player's base (the one before emptied, everything in it back in the PC) and the player goes in, to stand before its PC: `RESULT` 0 with no spot in front. A warp: the script goes on in the room. |
-| `openbase check` | `RESULT` 0 with no spot in front, 1 at a spot while the player has no base, 2 at the player's own base, 3 at another spot while the player has a base elsewhere. Nothing to see: a hurry passes it. |
+| `openbase check` | `RESULT` 0 with no spot in front, 1 at a spot while the player has no base, 2 at the player's own base, 3 at another spot while the player has a base elsewhere, 4 at a friend's base mixed in at the record desk (plan 40 · GE10), where the player's own is not. Nothing to see: a hurry passes it. |
 | `openbase kind` | `RESULT` is the kind of the spot in front, in Emerald's order: 1 a red cave's indent, 2 a brown, 3 a blue, 4 a yellow, 5 a tree, 6 a shrub; 0 for none. |
 | `openbase enter` | Into the player's base, inside its door. |
+| `openbase visit` | Into the friend's base at the spot in front (plan 40 · GE10), inside its door: laid out with what stood in it and its owner standing by the PC, a friend's trainer battled as the friends' hall's are, the door leading back to the spot. `RESULT` 0 with none there. |
 | `openbase pc` | Opens the decorating over the base's floor (the shared `DecorationScreen`), and the script waits: `RESULT` 0 outside the player's own base. |
 | `openbase packup` | Everything in the base back into the PC, the base given up, and the player out to where its spot is faced from. |
 | `openbase give "Red Brick"` | A decoration into the PC, without a word: `RESULT` 1, or 0 with no room for its kind (ten desks, chairs, plants, posters and cushions, thirty ornaments and mats, forty dolls). `{thing}` names it. |
@@ -1382,6 +1383,19 @@ label Give
   if var RESULT > 0 goto Give
   end
 ```
+
+### Records mixed between one's own saves
+
+Plan 40 · GE10 (`Models/RecordMix.cs`): the record desk upstairs in every Pokémon Center (`common.RecordDesk`) mixes the
+game's records with the player's other save slots, which are read and never written; a damaged slot and the game in play
+give nothing. Each other game gives its trainer (stood in the friends' hall after the folder's files), its Hoenn secret
+base (visited at its spot with `openbase visit`, listed by the base PC's REGISTRY) and its interview (on television).
+
+| Command | What it does |
+|---|---|
+| `records mix` | Mixes with the other saves: `RESULT` is how many were mixed (0 with none), and `{thing}` names their players ("Ann and Bo"). |
+| `records count` | `RESULT` is how many records the game keeps (at most eight, one to a game), and `{thing}` names whose. |
+| `records bases` | `RESULT` is how many friends' secret bases are registered (one to a spot), and `{thing}` names whose. |
 
 ### The gift box and the trade board
 

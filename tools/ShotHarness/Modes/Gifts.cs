@@ -21,8 +21,10 @@ partial class Harness
     //     the backdrop lady (gf70 to gf75).
     //   festivals (plan 40 · GE9, Modes/GiftsFestivals.cs): each festival's town dressed on its days, by day and after
     //     dark, a stall and the holidays (gf80 to gf8d), the harness's day moved and put back.
+    //   records (plan 40 · GE10, Modes/GiftsRecords.cs): another save written into slot 3, the record desk mixing with it,
+    //     its trainer in the friends' hall and its secret base at Route 118's tree (gf90 to gf92).
     // Later sessions of plan 40 add parts of their own, a line each above.
-    // GIFTS_PART=charms,items,diplomas,giftbox,board,festivals (a list, by commas) runs those parts alone; every part with none named, in this order.
+    // GIFTS_PART=charms,items,diplomas,giftbox,board,festivals,records (a list, by commas) runs those parts alone; every part with none named, in this order.
     public void GiftsMode()
     {
         string only = Environment.GetEnvironmentVariable("GIFTS_PART") ?? "";
@@ -33,5 +35,6 @@ partial class Harness
         if (Part("giftbox")) GiftsBox();
         if (Part("board")) GiftsBoard();
         if (Part("festivals")) GiftsFestivals();
+        if (Part("records")) GiftsRecords();
     }
 }

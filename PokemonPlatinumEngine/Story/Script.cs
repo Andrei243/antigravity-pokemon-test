@@ -216,6 +216,8 @@ public enum Op
     // The pasture (plan 35 · BN5): in at its gate from a PC and back, the box shown, and a Pokémon of the meadow petted,
     // fed, cared for, found holding something or taken along
     Pasture,
+    // Records mixed between one's own saves (plan 40 · GE10): mixed at the record desk, the mixed bases counted and named
+    Records,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
