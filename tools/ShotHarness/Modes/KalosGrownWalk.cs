@@ -186,6 +186,8 @@ partial class Harness
         Console.WriteLine($"  kg60: {(lier != null ? $"{lier.Name} lies at {lier.GridX},{lier.GridY} facing {lier.Facing}" : "!! nobody lies")}; live {game.World.LiveRigs.Live}, sprites {game.World.LiveRigs.Sprites}");
         Shot("kg60_lying_on_a_bed");
         ShotCrop("kg61_lying_close", 1180, 240, 400, 225, 2);
+        // The same with nobody live: the lier and the sitters as the impostors they are past the live twelve
+        Impostors("kg60i_lying_impostor", ("kg61i_lying_impostor_close", 1180, 240, 400, 225));
 
         // Fishers of the map on the pond's shore, holding the rod: the fisherman (whose look carries one already) and a
         // youngster, whose look has none, so the rod is the grown kit's fishing look's
@@ -206,6 +208,8 @@ partial class Harness
         Shot("kg62_fisher_of_the_map");
         ShotCrop("kg63_fisher_close", 900, 450, 400, 225, 2);
         ShotCrop("kg63b_youngster_fishing_close", 1300, 380, 400, 225, 2);
+        // The fishers and the pond's swimmers as impostors (nobody live)
+        Impostors("kg62i_fisher_impostor", ("kg63i_fisher_impostor_close", 900, 450, 400, 225), ("kg63bi_youngster_impostor_close", 1300, 380, 400, 225));
 
         // Under the terrain lab's bridge: the grown player on foot, tall enough to cross the deck, cut by its boards as the
         // chibi sprite is (the kit laid grown, then Sinnoh's own chibi), and a grown surfer under it and beside it
@@ -274,6 +278,18 @@ partial class Harness
         At(saved.Map.Name, saved.GridX, saved.GridY, Direction.Up);
         game.Player.SetMode(TravelMode.OnFoot);
         game.LocationSign.Hide(); Frames(10);
+    }
+
+    /// <summary>A shot of the place as it stands with nobody drawn live (<see cref="FieldRigChoice.LiveCap"/> 0), so every grown figure is its impostor, with crops; then live again.</summary>
+    private void Impostors(string shot, params (string Name, int X, int Y, int W, int H)[] crops)
+    {
+        FieldRigChoice.LiveCap = 0;
+        Frames(6);
+        Console.WriteLine($"  {shot}: live {game.World.LiveRigs.Live}, impostors {game.World.LiveRigs.Impostors}, sprites {game.World.LiveRigs.Sprites}, looks baked {game.World.LiveRigs.LooksBaked}");
+        Shot(shot);
+        foreach (var c in crops) ShotCrop(c.Name, c.X, c.Y, c.W, c.H, 2);
+        FieldRigChoice.LiveCap = null;
+        Frames(2);
     }
 
     private static Direction Opposite(Direction d) => d switch

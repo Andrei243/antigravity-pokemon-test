@@ -2740,7 +2740,7 @@ What R19b, R20 to R23, R27b and R28b left of the forms, outside a battle, and th
 - **The Rotom Catalog's list** (Sun and Moon's): used on a Rotom, the bag lists the microwave oven, the washing machine, the refrigerator, the electric fan, the lawn mower and the light bulb (`FormChanges.OptionsFor`, `Choose`; `BagScreen.Options`, drawn as a question's answers), and Rotom goes straight into the one chosen with its move as R29 has it; the appliance it is in changes nothing. `FormChanges.Apply`'s page a use stays for whoever has no list (the tests of R29).
 - **The Zygarde Cube's moves**: the Cube lists CHANGE FORME (where the form can change) and Thousand Arrows, Thousand Waves, Core Enforcer, Extreme Speed and Dragon Dance; a move is learned into a free place or asked about as a level's is, and one known already changes nothing. **Our ruling**: all five from the first, since no game of ours has Zygarde's cores to gather; **left**: Zygarde's cells and cores, and the Cube's cells deciding the form (a world of Kalos's or Alola's, plans 23 and after).
 - **Giratina in the Distortion World** (Platinum's `Party_SetGiratinaForm`, `Pokemon_SetGiratinaOriginForm`): on coming to any floor or room of the Distortion World (the Turnback Cave's room too) every Giratina of the team takes its Origin Forme, and on coming anywhere else the form its item gives it (`FormRules.GiratinaHere`, from `ArriveOnMap`); after a battle there it keeps it, and one caught there keeps it on the team (`ByHeldItem(p, distortionWorld)`). An item given or taken in the bag there still sets the form by the item, as `BoxPokemon_SetGiratinaForm` does.
-- **Furfrou's trim grows out in a box** (X and Y's; `FormRules.TrimGrowsOut`, `PcBoxes.AsStored`). **Left**: the groomer who trims and the five days a trim lasts, plan 23's with Kalos.
+- **Furfrou's trim grows out in a box** (X and Y's; `FormRules.TrimGrowsOut`, `PcBoxes.AsStored`). **Left** then: the groomer who trims and the five days a trim lasts, plan 23's with Kalos; built 2026-11-12 ("Lumiose's groomer and Furfrou's trims").
 - **Hoopa stays unbound in a box** (**our ruling**, Sword and Shield's, as the Prison Bottle's missing three days are): nothing built.
 - **Showdown's names** (`Data/ShowdownNames.cs`): the data's names that differ from Showdown's ("Found on the way", above) are a table both ways, which the export's text (`ShowdownText`) writes by; a Pyroar, Frillish or Jellicent of Showdown's is read back as the species, and Showdown's Zygarde as the data's own.
 - **Left**: the forms only events give (Magearna's Original Color, Zarude's Dada, the Cosplay and cap Pikachu: this game has no events), Necrozma-Ultra outside Ultra Burst (none), and the oracle's scenarios, which still take the data's names as Showdown's.
@@ -10784,6 +10784,25 @@ Every table a new region adds its row to, swept for Kalos. Nothing of X and Y's 
   Diantha's five at 204 and her last at 207, the batch's highest evolution and four, as the other Champions), ready at
   Kalos's Hall of Fame with a Pokémon at 120 (Faerieon's evolution). `BeyondTeamsTests` holds the repeats to exactly two,
   for Kalos only. The Champions' circuit's final calls Diantha on hers.
+
+## Lumiose's groomer and Furfrou's trims (2026-11-12, plan 23, "Finishing Kalos")
+
+The last of Kalos's own left (plan 06 · R29b's "the groomer who trims and the five days a trim lasts"). In our own
+words, on X and Y's beats as they are publicly described.
+
+- **The groomer** of Lumiose's grooming salon (`LumioseCity_GroomingSalon`, its `Groomer` script) asks whether to trim a
+  Furfrou for 500 dollars, lets only a Furfrou of the team be chosen (`choosepokemon "Furfrou"`) and offers the nine trims
+  on two questions (Heart, Star, Diamond and Debutante; Matron, Dandy, La Reine, Kabuki and Pharaoh), each a form of the
+  data. **Our ruling**: the price is one flat 500 for every trim (X and Y price them by the trim and the day), and the
+  trim is given whatever the Furfrou's friendship.
+- **Five days**: `team trim <word> <variable>` (`FormRules.Trim`) puts the Furfrou in the trim with `TrimLasts` (5) days
+  on it (`Pokemon.TrimDays`, saved, left out at nought; copied by `CopyStateFrom`); each new day takes one off for every
+  Furfrou of the team (`FormRules.TrimDaysPass`, from `GameEngine.KeepTheEncounterClock` with the other days' rules),
+  and at nought the trim grows out to the natural form. Going into a box grows it out at once, as before
+  (`FormRules.TrimGrowsOut`). Trimming one already in that trim begins its five days again (`RESULT` 2) and charges the
+  same. `VAR_KALOS_GROOM_SLOT` (ours) holds the Furfrou's place between the questions.
+- **Not built**: a trim's look on the Pokémon in the field beyond its form's model (the forms are sculpted, plan 03),
+  and the Furfrou Groomer of X and Y's other places: there is one salon.
 
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6; 2026-11-12, CR2, CR5, CR7, CR8)
 

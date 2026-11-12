@@ -26,7 +26,7 @@ internal sealed class BandPortraits
     private BattleBand band;
     private string? theirLook, ownLook;
     private RenderTexture2D theirs, own;
-    private bool theirsLoaded, ownLoaded, theirsRendered, ownRendered;
+    private bool theirsLoaded, ownLoaded, theirsRendered, ownRendered, theirsGrown;
 
     /// <summary>True from <see cref="Begin"/> to <see cref="End"/>.</summary>
     public bool Active { get; private set; }
@@ -48,6 +48,8 @@ internal sealed class BandPortraits
         band = whose;
         this.theirLook = theirLook;
         this.ownLook = ownLook;
+        // (a grown bust is wider than a chibi one: the Leader's plate goes over it, BandPicture.NameOver)
+        theirsGrown = CharacterStyle.For(theirLook).Kit == Data.CharacterKit.Grown;
         Active = true;
     }
 
@@ -85,7 +87,8 @@ internal sealed class BandPortraits
 
     /// <summary>What the band is drawn with now: whose it is and the portraits rendered so far; null when no band is on.</summary>
     public BandPicture? Picture => Active
-        ? new BandPicture(band, theirsRendered ? theirs.Texture : null, ownRendered ? own.Texture : null)
+        ? new BandPicture(band, theirsRendered ? theirs.Texture : null, ownRendered ? own.Texture : null,
+            theirsGrown)
         : null;
 
     /// <summary>The band is over: its targets are freed.</summary>
@@ -93,7 +96,7 @@ internal sealed class BandPortraits
     {
         if (theirsLoaded) Gpu.Unload(theirs);
         if (ownLoaded) Gpu.Unload(own);
-        theirsLoaded = ownLoaded = theirsRendered = ownRendered = false;
+        theirsLoaded = ownLoaded = theirsRendered = ownRendered = theirsGrown = false;
         theirLook = ownLook = null;
         Active = false;
     }

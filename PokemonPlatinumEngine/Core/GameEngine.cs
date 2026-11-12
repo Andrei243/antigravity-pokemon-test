@@ -2759,6 +2759,8 @@ public partial class GameEngine
             // someone seated or lying, who keeps the seat's facing (plan 11 · C7)
             if (npc.IsTrainer) npc.LeavePost();
             if (!npc.IsThing && flow.Map.StanceOf(npc) is Overworld.Stance.Stand or Overworld.Stance.Swim) npc.FaceTowards(flow.Player.GridX, flow.Player.GridY);
+            // In a free place the player turns to whoever they speak to, a diagonal neighbour too (plan 30, the gate's owed)
+            if (!npc.IsThing) flow.Player.TurnToFace(npc.GridX, npc.GridY);
             // Someone spoken to counts toward the Hallowed Tower's stirring, once each (plan 08 · P12)
             if (!npc.IsThing && !npc.IsPokemon) flow.Story.Greet(GreetingKey(flow.Map, npc));
 

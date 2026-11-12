@@ -109,7 +109,8 @@
       "facing": "Down",
       "dialog": [
         "A trim, a fluff, a little ribbon. Bring your Pokémon by whenever its coat needs taming."
-      ]
+      ],
+      "script": "Groomer"
     },
     {
       "id": "client",

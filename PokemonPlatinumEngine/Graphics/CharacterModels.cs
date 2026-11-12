@@ -93,8 +93,11 @@ internal struct CharacterPose
 /// <summary>What a grown body is riding (plan 30 · FM5): nothing, a Pokémon it surfs on, a Bicycle, a mount (plan 30 · FM13).</summary>
 internal enum Riding { None, Surf, Bicycle, Mount }
 
-/// <summary>How a rider sits the mount (plan 30 · FM13; style guide, "Open world", "The mount"), by what the mount is doing.</summary>
-internal enum RideStance { Seated, Dash, Swim, Glide, Climb }
+/// <summary>
+/// How a rider sits the mount (plan 30 · FM13; style guide, "Open world", "The mount"), by what the mount is doing;
+/// <see cref="Reins"/> is the grid's ride on land alone (plan 30, the gate's owed): the hands down on the ride's back.
+/// </summary>
+internal enum RideStance { Seated, Dash, Swim, Glide, Climb, Reins }
 
 /// <summary>
 /// Bone numbers of every humanoid skeleton (L is the character's left, +X). The chibi kit's are the first
