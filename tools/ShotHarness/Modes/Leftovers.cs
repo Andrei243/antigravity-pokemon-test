@@ -35,6 +35,17 @@ partial class Harness
                      ("lo06b_seagallop_seven_island", "SevenIsland_Harbor") })
             Before(shot, map, n => n.NpcType == NPC.SeagallopType, show: true);
         Middle("lo07_champions_room", "PokemonLeague_ChampionsRoom");
+        // Hoenn's leftovers: the annex's three halls with their opponents' places shown, the Game Corner's roulette, the
+        // Battle Frontier's lounges (the tutors, the nature girl) and the counters of its dolls
+        foreach (var flag in new[] { "FLAG_BATTLE_ARENA_SHOW_OPPONENT", "FLAG_BATTLE_PALACE_SHOW_OPPONENT", "FLAG_BATTLE_DOME_SHOW_OPPONENT" })
+            game.Story.Set(flag);
+        foreach (var (shot, map) in new[]
+                 {
+                     ("lo40_battle_palace", "BattlePalace"), ("lo41_battle_arena", "BattleArena"), ("lo42_battle_dome", "BattleDome"),
+                     ("lo43_mauville_game_corner", "MauvilleCity_GameCorner"), ("lo44_lounge_5", "BattleFrontier_Lounge5"),
+                     ("lo45_lounge_7", "BattleFrontier_Lounge7"), ("lo46_exchange_corner", "BattleFrontier_ExchangeServiceCorner"),
+                 })
+            Middle(shot, map);
 
         // Unova
         foreach (var (shot, x, y) in new[] { ("lo10_route23_holes", 582, 98), ("lo11_route23_holes_east", 592, 99) })
