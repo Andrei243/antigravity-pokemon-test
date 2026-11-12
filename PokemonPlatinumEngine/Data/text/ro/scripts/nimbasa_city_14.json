@@ -5,7 +5,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Battle Institute, where Trainers are tested and ranked!"
       ],
       "text": [
-        ""
+        "Bun venit la Institutul de Luptă, unde Antrenorii sunt testați și clasați!"
       ]
     },
     {
@@ -24,10 +24,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce dorești să faci?",
+        "Testul",
+        "Clasamentul",
+        "Nu"
       ]
     },
     {
@@ -35,7 +35,7 @@
         "Welcome to the Battle Institute! Our tests are open to Champions of Unova. Come back once the League has crowned you."
       ],
       "text": [
-        ""
+        "Bun venit la Institutul de Luptă! Testele noastre sunt deschise Campionilor din Unova. Revino după ce te încoronează Liga."
       ]
     },
     {
@@ -43,7 +43,7 @@
         "Come back whenever you'd like to be tested."
       ],
       "text": [
-        ""
+        "Revino oricând vrei să fii testat."
       ]
     },
     {
@@ -54,10 +54,10 @@
         "Cancel"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce test dai?",
+        "Lupte simple",
+        "Lupte duble",
+        "Renunț"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Five single battles at level 50. Please choose the three you'll enter."
       ],
       "text": [
-        ""
+        "Cinci lupte simple la nivelul 50. Alege cei trei cu care intri."
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Five double battles at level 50. Please choose the four you'll enter."
       ],
       "text": [
-        ""
+        "Cinci lupte duble la nivelul 50. Alege cei patru cu care intri."
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Each battle is scored by how quickly you win, how much HP you keep, and how strong your opponent was. Good luck!"
       ],
       "text": [
-        ""
+        "Fiecare luptă e punctată după cât de repede câștigi, cât HP îți rămâne și cât de puternic era adversarul. Mult noroc!"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Test battle {number}: {foe} steps up!"
       ],
       "text": [
-        ""
+        "Lupta de test {number}: {foe} se înfățișează!"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "A win! That battle scored {number}."
       ],
       "text": [
-        ""
+        "O victorie! Lupta aceea a adus {number} puncte."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "A loss scores nothing, but the test goes on."
       ],
       "text": [
-        ""
+        "O înfrângere nu aduce nimic, dar testul continuă."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "The test is over. Your total is {number} out of 9,999."
       ],
       "text": [
-        ""
+        "Testul s-a încheiat. Totalul tău e {number} din 9.999."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "That's the rank of Master! Extraordinary."
       ],
       "text": [
-        ""
+        "Acesta e rangul de Maestru! Extraordinar."
       ]
     },
     {
@@ -153,7 +153,7 @@
         "That's the rank of Platinum. Very fine work."
       ],
       "text": [
-        ""
+        "Acesta e rangul de Platină. Treabă foarte bună."
       ]
     },
     {
@@ -161,7 +161,7 @@
         "That's the rank of Gold. Well done."
       ],
       "text": [
-        ""
+        "Acesta e rangul de Aur. Bravo."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "That's the rank of Silver. A good showing."
       ],
       "text": [
-        ""
+        "Acesta e rangul de Argint. O prestație bună."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "That's the rank of Bronze. Keep at it."
       ],
       "text": [
-        ""
+        "Acesta e rangul de Bronz. Continuă tot așa."
       ]
     },
     {
@@ -185,7 +185,7 @@
         "That's the rank of Novice. Everyone starts somewhere!"
       ],
       "text": [
-        ""
+        "Acesta e rangul de Începător. Toți începem de undeva!"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "That's a new best for this test!"
       ],
       "text": [
-        ""
+        "Este un nou record pentru acest test!"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "Your best puts you at number {number} on the institute's board."
       ],
       "text": [
-        ""
+        "Cel mai bun rezultat al tău te pune pe locul {number} în clasamentul institutului."
       ]
     },
     {
@@ -209,7 +209,7 @@
         "A new month means a new season! Your last season's best band has earned you Battle Points, and your rating carries on as {number}."
       ],
       "text": [
-        ""
+        "O lună nouă înseamnă un sezon nou! Cea mai bună treaptă a sezonului trecut ți-a adus Puncte de Luptă, iar ratingul tău continuă la {number}."
       ]
     },
     {
@@ -217,7 +217,7 @@
         "Your rating is {number}: the band of Legend."
       ],
       "text": [
-        ""
+        "Ratingul tău e {number}: treapta Legendă."
       ]
     },
     {
@@ -225,7 +225,7 @@
         "Your rating is {number}: the band of Elite."
       ],
       "text": [
-        ""
+        "Ratingul tău e {number}: treapta Elită."
       ]
     },
     {
@@ -233,7 +233,7 @@
         "Your rating is {number}: the band of Veteran."
       ],
       "text": [
-        ""
+        "Ratingul tău e {number}: treapta Veteran."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Your rating is {number}: the band of Challenger."
       ],
       "text": [
-        ""
+        "Ratingul tău e {number}: treapta Provocator."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "Your rating is {number}: the band of Rookie."
       ],
       "text": [
-        ""
+        "Ratingul tău e {number}: treapta Novice."
       ]
     },
     {
@@ -257,7 +257,7 @@
         "This season's ladder is single battles at level 50. Please choose the three you'll enter."
       ],
       "text": [
-        ""
+        "Clasamentul acestui sezon e cu lupte simple la nivelul 50. Alege cei trei cu care intri."
       ]
     },
     {
@@ -265,7 +265,7 @@
         "This season's ladder is double battles at level 50. Please choose the four you'll enter."
       ],
       "text": [
-        ""
+        "Clasamentul acestui sezon e cu lupte duble la nivelul 50. Alege cei patru cu care intri."
       ]
     },
     {
@@ -273,7 +273,7 @@
         "{foe}, rated {number}, accepts your challenge!"
       ],
       "text": [
-        ""
+        "{foe}, cu ratingul {number}, îți acceptă provocarea!"
       ]
     },
     {
@@ -281,7 +281,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "A win! Your rating rises to {number}."
       ],
       "text": [
-        ""
+        "O victorie! Ratingul tău urcă la {number}."
       ]
     },
     {
@@ -297,7 +297,7 @@
         "A loss. Your rating falls to {number}."
       ],
       "text": [
-        ""
+        "O înfrângere. Ratingul tău scade la {number}."
       ]
     },
     {
@@ -307,9 +307,9 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Încă o luptă de clasament?",
+        "Da",
+        "Nu"
       ]
     },
     {
@@ -317,7 +317,7 @@
         "Your rating is saved. The season runs until the end of the month."
       ],
       "text": [
-        ""
+        "Ratingul tău e salvat. Sezonul ține până la sfârșitul lunii."
       ]
     }
   ]

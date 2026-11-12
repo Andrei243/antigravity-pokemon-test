@@ -125,7 +125,7 @@
         "Ah, it is you! Looker is here on a matter of shipments. Crates that go out on the ferries and never quite arrive."
       ],
       "text": [
-        ""
+        "Ah, ești tu! Looker e aici pentru o chestiune de transporturi. Lăzi care pleacă pe feriboturi și nu ajung tocmai la destinație."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "A syndicate called Lockwork. They put a machine to a Pokémon's heart and lock it shut. It obeys, but it feels nothing for its trainer."
       ],
       "text": [
-        ""
+        "Un sindicat numit Lockwork. Pun o mașinărie pe inima unui Pokémon și o încuie. Ascultă, dar nu simte nimic pentru antrenorul lui."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "My bureau took a part of that machine from a crate at the Fight Area's quay. From it the technicians made this."
       ],
       "text": [
-        ""
+        "Biroul meu a luat o piesă din mașinăria aceea dintr-o ladă de la chei, în Fight Area. Din ea, tehnicienii au făcut asta."
       ]
     },
     {
@@ -149,7 +149,7 @@
         "{player} received the {item}!"
       ],
       "text": [
-        ""
+        "{player} a primit {item}!"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Wear it on your throwing arm. With it a ball can reach a locked Pokémon a trainer sends out. Take them back!"
       ],
       "text": [
-        ""
+        "Poartă-l pe brațul cu care arunci. Cu el, o bilă poate ajunge la un Pokémon încuiat pe care îl scoate un antrenor. Ia-i înapoi!"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "A locked heart opens in time beside a trainer who cares for it. At Sendoff Spring, the water itself helps."
       ],
       "text": [
-        ""
+        "O inimă încuiată se deschide cu timpul lângă un antrenor care ține la ea. La Sendoff Spring, chiar apa ajută."
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Their cell here hides behind the quay's containers. Every port the ferries reach has one. Be careful, my friend."
       ],
       "text": [
-        ""
+        "Celula lor de aici se ascunde în spatele containerelor de pe chei. Fiecare port la care ajung feriboturile are una. Fii atent, prietene."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "A locked heart opens with battles, with walking beside you, with the camp's care. And at Sendoff Spring, once a day."
       ],
       "text": [
-        ""
+        "O inimă încuiată se deschide prin lupte, mergând alături de tine, prin grija din tabără. Iar la Sendoff Spring, o dată pe zi."
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Every port the ferries reach has a cell. Their head office, I am told, is a tower in Castelia City."
       ],
       "text": [
-        ""
+        "Fiecare port la care ajung feriboturile are o celulă. Sediul lor central, mi s-a spus, e un turn din Castelia City."
       ]
     }
   ]

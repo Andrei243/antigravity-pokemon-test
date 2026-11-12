@@ -5,7 +5,7 @@
         "Owner"
       ],
       "text": [
-        ""
+        "Proprietarul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "You made it to the roof! All eight floors in {tower:TIME}."
       ],
       "text": [
-        ""
+        "Ai ajuns pe acoperiș! Toate cele opt etaje în {tower:TIME}."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "A fine climb, though your best for this challenge still stands at {tower:BEST}."
       ],
       "text": [
-        ""
+        "Un urcuș frumos, deși cel mai bun rezultat al tău la această provocare rămâne {tower:BEST}."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "That's a new best for this challenge! I'll write it in the records downstairs."
       ],
       "text": [
-        ""
+        "E un nou record pentru această provocare! Îl voi scrie în evidențele de la parter."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Take the stairs down when you're ready. The attendant will see to your Pokémon."
       ],
       "text": [
-        ""
+        "Coboară scările când ești gata. Însoțitorul va avea grijă de Pokémonii tăi."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "The wind up here does a climber good. Come and see me after a climb!"
       ],
       "text": [
-        ""
+        "Vântul de aici sus face bine unui alpinist. Treci pe la mine după un urcuș!"
       ]
     }
   ]

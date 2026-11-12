@@ -53,7 +53,7 @@
         "Referee"
       ],
       "text": [
-        ""
+        "Arbitrul"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Hold on... the leaves are rustling at the very top. A Champion is coming down to battle you!"
       ],
       "text": [
-        ""
+        "Stați puțin... frunzele foșnesc chiar în vârf. Un Campion coboară să lupte cu tine!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{foe} steps forward!"
       ],
       "text": [
-        ""
+        "{foe} înaintează!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "{foe} step forward!"
       ],
       "text": [
-        ""
+        "{foe} înaintează!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} BP!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "{player} received this room's trophy! It will hang in the Partners' Tree's branches for good."
       ],
       "text": [
-        ""
+        "{player} a primit trofeul acestei săli! Va atârna pentru totdeauna în ramurile Copacului Partenerilor."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "You beat a Tree Master! From now on, the Super battles of this room are open to you as well."
       ],
       "text": [
-        ""
+        "Ai învins un Maestru al Copacului! De acum, și luptele Super din această sală ți se deschid."
       ]
     },
     {
@@ -128,10 +128,10 @@
         "Retire"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Pokémonii tăi sunt din nou întregi. Ce faci?",
+        "Următoarea luptă",
+        "Mă odihnesc",
+        "Mă retrag"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "You retire with your head held high. The tree will remember your streak."
       ],
       "text": [
-        ""
+        "Te retragi cu fruntea sus. Copacul își va aminti de seria ta."
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Then rest well. Your place is kept, and your progress is saved."
       ],
       "text": [
-        ""
+        "Atunci odihnește-te bine. Locul îți e păstrat, iar progresul salvat."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "Referee"
       ],
       "text": [
-        ""
+        "Arbitrul"
       ]
     },
     {
@@ -179,7 +179,7 @@
         "The streak ends here. Catch your breath, and climb back up. The tree will be waiting."
       ],
       "text": [
-        ""
+        "Seria se încheie aici. Trage-ți sufletul și urcă iar. Copacul te va aștepta."
       ]
     }
   ],
@@ -207,7 +207,7 @@
         "Cynthia"
       ],
       "text": [
-        ""
+        "Cynthia"
       ]
     },
     {
@@ -215,7 +215,7 @@
         "A tree that remembers every Trainer who climbs it. I had to see it for myself."
       ],
       "text": [
-        ""
+        "Un copac care ține minte fiecare Antrenor ce îl urcă. Trebuia să-l văd cu ochii mei."
       ]
     },
     {
@@ -223,7 +223,7 @@
         "Aaron"
       ],
       "text": [
-        ""
+        "Aaron"
       ]
     },
     {
@@ -231,7 +231,7 @@
         "I came all this way to learn something new. Let's see if you can teach me!"
       ],
       "text": [
-        ""
+        "Am venit de departe ca să învăț ceva nou. Să vedem dacă mă poți învăța!"
       ]
     },
     {
@@ -239,7 +239,7 @@
         "Bertha"
       ],
       "text": [
-        ""
+        "Bertha"
       ]
     },
     {
@@ -247,7 +247,7 @@
         "My, what a climb! These old knees are glad of a good battle at the top."
       ],
       "text": [
-        ""
+        "Ce urcuș! Bătrânilor ăstora genunchi le face bine o luptă bună în vârf."
       ]
     },
     {
@@ -255,7 +255,7 @@
         "Flint"
       ],
       "text": [
-        ""
+        "Flint"
       ]
     },
     {
@@ -263,7 +263,7 @@
         "The air up here's thin, but my fire's burning as hot as ever!"
       ],
       "text": [
-        ""
+        "Aerul de aici e rarefiat, dar focul meu arde tot atât de tare!"
       ]
     },
     {
@@ -271,7 +271,7 @@
         "Lucian"
       ],
       "text": [
-        ""
+        "Lucian"
       ]
     },
     {
@@ -279,7 +279,7 @@
         "I left a book half read for this. Make it worth the lost chapter."
       ],
       "text": [
-        ""
+        "Am lăsat o carte pe jumătate citită pentru asta. Fă să merite capitolul pierdut."
       ]
     },
     {
@@ -287,7 +287,7 @@
         "Roark"
       ],
       "text": [
-        ""
+        "Roark"
       ]
     },
     {
@@ -295,7 +295,7 @@
         "There's no rock up here, but a good battle's a good battle anywhere!"
       ],
       "text": [
-        ""
+        "Aici nu e stâncă, dar o luptă bună e bună oriunde!"
       ]
     },
     {
@@ -303,7 +303,7 @@
         "Gardenia"
       ],
       "text": [
-        ""
+        "Gardenia"
       ]
     },
     {
@@ -311,7 +311,7 @@
         "So many leaves! I could happily live in a tree like this."
       ],
       "text": [
-        ""
+        "Câte frunze! Aș locui cu plăcere într-un copac ca ăsta."
       ]
     },
     {
@@ -319,7 +319,7 @@
         "Maylene"
       ],
       "text": [
-        ""
+        "Maylene"
       ]
     },
     {
@@ -327,7 +327,7 @@
         "I trained the whole way up the Gauntlet. My legs are warm and ready!"
       ],
       "text": [
-        ""
+        "M-am antrenat pe tot drumul prin Provocare. Picioarele îmi sunt calde și gata!"
       ]
     },
     {
@@ -335,7 +335,7 @@
         "Wake"
       ],
       "text": [
-        ""
+        "Wake"
       ]
     },
     {
@@ -343,7 +343,7 @@
         "HA HA! A tree full of Trainers! Crasher Wake has arrived!"
       ],
       "text": [
-        ""
+        "HA HA! Un copac plin de Antrenori! Crasher Wake a sosit!"
       ]
     },
     {
@@ -351,7 +351,7 @@
         "Fantina"
       ],
       "text": [
-        ""
+        "Fantina"
       ]
     },
     {
@@ -359,7 +359,7 @@
         "Ah, the branches, they sway like a dance! Let us dance too, non?"
       ],
       "text": [
-        ""
+        "Ah, ramurile, se unduiesc ca într-un dans! Să dansăm și noi, non?"
       ]
     },
     {
@@ -367,7 +367,7 @@
         "Byron"
       ],
       "text": [
-        ""
+        "Byron"
       ]
     },
     {
@@ -375,7 +375,7 @@
         "Hm! Sturdy timber, this. Let's see if you're as sturdy, eh?"
       ],
       "text": [
-        ""
+        "Hm! Lemn solid, ăsta. Să vedem dacă ești la fel de solid, ei?"
       ]
     },
     {
@@ -383,7 +383,7 @@
         "Candice"
       ],
       "text": [
-        ""
+        "Candice"
       ]
     },
     {
@@ -391,7 +391,7 @@
         "It's not snowing here, but I've brought my focus all the same!"
       ],
       "text": [
-        ""
+        "Aici nu ninge, dar mi-am adus concentrarea oricum!"
       ]
     },
     {
@@ -399,7 +399,7 @@
         "Volkner"
       ],
       "text": [
-        ""
+        "Volkner"
       ]
     },
     {
@@ -407,7 +407,7 @@
         "It's been a while since anyone gave me a real spark. Maybe today."
       ],
       "text": [
-        ""
+        "A trecut ceva vreme de când cineva mi-a dat o scânteie adevărată. Poate azi."
       ]
     },
     {
@@ -415,7 +415,7 @@
         "Blue"
       ],
       "text": [
-        ""
+        "Blue"
       ]
     },
     {
@@ -423,7 +423,7 @@
         "I was the best in Kanto once. Up here I'll prove it all over again."
       ],
       "text": [
-        ""
+        "Am fost cel mai bun din Kanto odată. Aici o dovedesc din nou."
       ]
     },
     {
@@ -431,7 +431,7 @@
         "Lorelei"
       ],
       "text": [
-        ""
+        "Lorelei"
       ]
     },
     {
@@ -439,7 +439,7 @@
         "The sea breeze up here is pleasant. My battles are colder, I warn you."
       ],
       "text": [
-        ""
+        "Briza mării de aici e plăcută. Luptele mele sunt mai reci, te avertizez."
       ]
     },
     {
@@ -447,7 +447,7 @@
         "Bruno"
       ],
       "text": [
-        ""
+        "Bruno"
       ]
     },
     {
@@ -455,7 +455,7 @@
         "I climbed the Gauntlet twice to warm up. Now I am ready!"
       ],
       "text": [
-        ""
+        "Am urcat Provocarea de două ori ca să mă încălzesc. Acum sunt gata!"
       ]
     },
     {
@@ -463,7 +463,7 @@
         "Agatha"
       ],
       "text": [
-        ""
+        "Agatha"
       ]
     },
     {
@@ -471,7 +471,7 @@
         "Heh heh. Young people climbing trees. In my day we battled on the ground!"
       ],
       "text": [
-        ""
+        "He he. Tineri care se cațără în copaci. Pe vremea mea ne băteam pe pământ!"
       ]
     },
     {
@@ -479,7 +479,7 @@
         "Brock"
       ],
       "text": [
-        ""
+        "Brock"
       ]
     },
     {
@@ -487,7 +487,7 @@
         "A tree that grows Trainers? I'll stand firm all the same."
       ],
       "text": [
-        ""
+        "Un copac care crește Antrenori? Eu tot țin piept."
       ]
     },
     {
@@ -495,7 +495,7 @@
         "Misty"
       ],
       "text": [
-        ""
+        "Misty"
       ]
     },
     {
@@ -503,7 +503,7 @@
         "I hope there's water at the top of this thing. No? Then let's battle!"
       ],
       "text": [
-        ""
+        "Sper că e apă în vârful chestiei ăsteia. Nu? Atunci să luptăm!"
       ]
     },
     {
@@ -511,7 +511,7 @@
         "Lt. Surge"
       ],
       "text": [
-        ""
+        "Lt. Surge"
       ]
     },
     {
@@ -519,7 +519,7 @@
         "Ten-hut! A soldier never turns down a fight, kid!"
       ],
       "text": [
-        ""
+        "Drepți! Un soldat nu refuză niciodată o luptă, puștiule!"
       ]
     },
     {
@@ -527,7 +527,7 @@
         "Erika"
       ],
       "text": [
-        ""
+        "Erika"
       ]
     },
     {
@@ -535,7 +535,7 @@
         "Such a peaceful tree. Forgive me if I doze off between turns."
       ],
       "text": [
-        ""
+        "Ce copac liniștit. Iartă-mă dacă moțăi între ture."
       ]
     },
     {
@@ -543,7 +543,7 @@
         "Janine"
       ],
       "text": [
-        ""
+        "Janine"
       ]
     },
     {
@@ -551,7 +551,7 @@
         "I slipped in without anyone seeing me. Did you see me? No? Good!"
       ],
       "text": [
-        ""
+        "M-am strecurat fără să mă vadă nimeni. M-ai văzut? Nu? Bine!"
       ]
     },
     {
@@ -559,7 +559,7 @@
         "Sabrina"
       ],
       "text": [
-        ""
+        "Sabrina"
       ]
     },
     {
@@ -567,7 +567,7 @@
         "I knew you would be here. I knew how this would start, at least."
       ],
       "text": [
-        ""
+        "Știam că vei fi aici. Știam măcar cum va începe asta."
       ]
     },
     {
@@ -575,7 +575,7 @@
         "Blaine"
       ],
       "text": [
-        ""
+        "Blaine"
       ]
     },
     {
@@ -583,7 +583,7 @@
         "Hah! I've got a riddle for you: what burns hotter than a volcano? Me!"
       ],
       "text": [
-        ""
+        "Hah! Am o ghicitoare pentru tine: ce arde mai tare decât un vulcan? Eu!"
       ]
     },
     {
@@ -591,7 +591,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -599,7 +599,7 @@
         "Every Trainer here earned their place. Show me how you earned yours."
       ],
       "text": [
-        ""
+        "Fiecare Antrenor de aici și-a câștigat locul. Arată-mi cum ți l-ai câștigat pe al tău."
       ]
     },
     {
@@ -607,7 +607,7 @@
         "Will"
       ],
       "text": [
-        ""
+        "Will"
       ]
     },
     {
@@ -615,7 +615,7 @@
         "I trained my mind on the long way here. I hope you did too."
       ],
       "text": [
-        ""
+        "Mi-am antrenat mintea pe drumul lung până aici. Sper că și tu."
       ]
     },
     {
@@ -623,7 +623,7 @@
         "Koga"
       ],
       "text": [
-        ""
+        "Koga"
       ]
     },
     {
@@ -631,7 +631,7 @@
         "A ninja waits in the branches. You may not see the strike coming."
       ],
       "text": [
-        ""
+        "Un ninja așteaptă în ramuri. S-ar putea să nu vezi lovitura venind."
       ]
     },
     {
@@ -639,7 +639,7 @@
         "Karen"
       ],
       "text": [
-        ""
+        "Karen"
       ]
     },
     {
@@ -647,7 +647,7 @@
         "Strong Pokémon, weak Pokémon... I only care about how you battle."
       ],
       "text": [
-        ""
+        "Pokémoni puternici, Pokémoni slabi... mă interesează doar cum lupți."
       ]
     },
     {
@@ -655,7 +655,7 @@
         "Falkner"
       ],
       "text": [
-        ""
+        "Falkner"
       ]
     },
     {
@@ -663,7 +663,7 @@
         "A tree this tall? My birds and I feel right at home up here!"
       ],
       "text": [
-        ""
+        "Un copac atât de înalt? Păsările mele și cu mine ne simțim ca acasă aici!"
       ]
     },
     {
@@ -671,7 +671,7 @@
         "Bugsy"
       ],
       "text": [
-        ""
+        "Bugsy"
       ]
     },
     {
@@ -679,7 +679,7 @@
         "This tree must be full of interesting things. After the battle, I'm exploring!"
       ],
       "text": [
-        ""
+        "Copacul ăsta trebuie să fie plin de lucruri interesante. După luptă, îl explorez!"
       ]
     },
     {
@@ -687,7 +687,7 @@
         "Whitney"
       ],
       "text": [
-        ""
+        "Whitney"
       ]
     },
     {
@@ -695,7 +695,7 @@
         "I came all this way, so I'm not losing! Not even a little!"
       ],
       "text": [
-        ""
+        "Am venit până aici, așa că nu pierd! Nici măcar un pic!"
       ]
     },
     {
@@ -703,7 +703,7 @@
         "Morty"
       ],
       "text": [
-        ""
+        "Morty"
       ]
     },
     {
@@ -711,7 +711,7 @@
         "I saw this moment in a vision once. Let's find out how it ends."
       ],
       "text": [
-        ""
+        "Am văzut clipa asta într-o viziune. Să aflăm cum se sfârșește."
       ]
     },
     {
@@ -719,7 +719,7 @@
         "Pryce"
       ],
       "text": [
-        ""
+        "Pryce"
       ]
     },
     {
@@ -727,7 +727,7 @@
         "Hmph. The years have taught me patience. They have not slowed me down."
       ],
       "text": [
-        ""
+        "Hmpf. Anii m-au învățat răbdarea. Nu m-au încetinit."
       ]
     },
     {
@@ -735,7 +735,7 @@
         "Jasmine"
       ],
       "text": [
-        ""
+        "Jasmine"
       ]
     },
     {
@@ -743,7 +743,7 @@
         "Um... I'm a little nervous so high up. But I will do my very best!"
       ],
       "text": [
-        ""
+        "Ăă... sunt puțin emoționată atât de sus. Dar voi face tot ce pot!"
       ]
     },
     {
@@ -751,7 +751,7 @@
         "Chuck"
       ],
       "text": [
-        ""
+        "Chuck"
       ]
     },
     {
@@ -759,7 +759,7 @@
         "WAHAHA! A tree to climb and a Trainer to beat! What a day!"
       ],
       "text": [
-        ""
+        "WAHAHA! Un copac de urcat și un Antrenor de învins! Ce zi!"
       ]
     },
     {
@@ -767,7 +767,7 @@
         "Clair"
       ],
       "text": [
-        ""
+        "Clair"
       ]
     },
     {
@@ -775,7 +775,7 @@
         "I don't climb trees for anyone. I came up here to win, nothing less."
       ],
       "text": [
-        ""
+        "Eu nu mă cațăr în copaci pentru nimeni. Am urcat aici ca să câștig, nimic mai puțin."
       ]
     },
     {
@@ -783,7 +783,7 @@
         "Wallace"
       ],
       "text": [
-        ""
+        "Wallace"
       ]
     },
     {
@@ -791,7 +791,7 @@
         "What elegance! A battle among the branches is a performance in itself."
       ],
       "text": [
-        ""
+        "Ce eleganță! O luptă printre ramuri e un spectacol în sine."
       ]
     },
     {
@@ -799,7 +799,7 @@
         "Sidney"
       ],
       "text": [
-        ""
+        "Sidney"
       ]
     },
     {
@@ -807,7 +807,7 @@
         "Heh. You look tough. That just means I'll enjoy this more."
       ],
       "text": [
-        ""
+        "Heh. Pari dur. Asta înseamnă doar că mă voi bucura mai mult."
       ]
     },
     {
@@ -815,7 +815,7 @@
         "Phoebe"
       ],
       "text": [
-        ""
+        "Phoebe"
       ]
     },
     {
@@ -823,7 +823,7 @@
         "The spirits up here are so friendly! I think they're cheering for us."
       ],
       "text": [
-        ""
+        "Spiritele de aici sunt atât de prietenoase! Cred că ne încurajează."
       ]
     },
     {
@@ -831,7 +831,7 @@
         "Glacia"
       ],
       "text": [
-        ""
+        "Glacia"
       ]
     },
     {
@@ -839,7 +839,7 @@
         "I travelled far to find a battle worth the trip. Let us see."
       ],
       "text": [
-        ""
+        "Am străbătut un drum lung să găsesc o luptă care merită. Să vedem."
       ]
     },
     {
@@ -847,7 +847,7 @@
         "Drake"
       ],
       "text": [
-        ""
+        "Drake"
       ]
     },
     {
@@ -855,7 +855,7 @@
         "Climbing a tree is like sailing a storm. You grip hard and keep going!"
       ],
       "text": [
-        ""
+        "Să urci într-un copac e ca și cum ai naviga prin furtună. Te ții strâns și mergi înainte!"
       ]
     },
     {
@@ -863,7 +863,7 @@
         "Roxanne"
       ],
       "text": [
-        ""
+        "Roxanne"
       ]
     },
     {
@@ -871,7 +871,7 @@
         "I've studied this tree's records. Now for the practical lesson."
       ],
       "text": [
-        ""
+        "Am studiat evidențele acestui copac. Acum, lecția practică."
       ]
     },
     {
@@ -879,7 +879,7 @@
         "Brawly"
       ],
       "text": [
-        ""
+        "Brawly"
       ]
     },
     {
@@ -887,7 +887,7 @@
         "Riding the big wave of a battle! Let's go, let's go!"
       ],
       "text": [
-        ""
+        "Călăresc marele val al luptei! Hai, hai!"
       ]
     },
     {
@@ -895,7 +895,7 @@
         "Wattson"
       ],
       "text": [
-        ""
+        "Wattson"
       ]
     },
     {
@@ -903,7 +903,7 @@
         "Wahahahah! I'm all charged up and raring to go!"
       ],
       "text": [
-        ""
+        "Wahahahah! Sunt complet încărcat și gata de drum!"
       ]
     },
     {
@@ -911,7 +911,7 @@
         "Flannery"
       ],
       "text": [
-        ""
+        "Flannery"
       ]
     },
     {
@@ -919,7 +919,7 @@
         "I-I'm not nervous at all! I'm just... very fired up!"
       ],
       "text": [
-        ""
+        "N-n-nu sunt deloc emoționată! Sunt doar... foarte aprinsă!"
       ]
     },
     {
@@ -927,7 +927,7 @@
         "Norman"
       ],
       "text": [
-        ""
+        "Norman"
       ]
     },
     {
@@ -935,7 +935,7 @@
         "A good battle tells you more about a Trainer than any words."
       ],
       "text": [
-        ""
+        "O luptă bună îți spune despre un Antrenor mai mult decât orice cuvinte."
       ]
     },
     {
@@ -943,7 +943,7 @@
         "Winona"
       ],
       "text": [
-        ""
+        "Winona"
       ]
     },
     {
@@ -951,7 +951,7 @@
         "The winds are kind up here. Let's both fly as high as we can."
       ],
       "text": [
-        ""
+        "Vânturile sunt blânde aici sus. Să zburăm amândoi cât de sus putem."
       ]
     },
     {
@@ -959,7 +959,7 @@
         "Tate & Liza"
       ],
       "text": [
-        ""
+        "Tate & Liza"
       ]
     },
     {
@@ -967,7 +967,7 @@
         "We climbed up here together. We'll battle together too!"
       ],
       "text": [
-        ""
+        "Am urcat aici împreună. Vom lupta tot împreună!"
       ]
     },
     {
@@ -975,7 +975,7 @@
         "Juan"
       ],
       "text": [
-        ""
+        "Juan"
       ]
     },
     {
@@ -983,7 +983,7 @@
         "Ah, a fitting stage for a battle of true beauty. Shall we begin?"
       ],
       "text": [
-        ""
+        "Ah, o scenă potrivită pentru o luptă de adevărată frumusețe. Începem?"
       ]
     },
     {
@@ -991,7 +991,7 @@
         "Iris"
       ],
       "text": [
-        ""
+        "Iris"
       ]
     },
     {
@@ -999,7 +999,7 @@
         "Wow, this tree is the best! I wanna climb it all the way up!"
       ],
       "text": [
-        ""
+        "Uau, copacul ăsta e cel mai tare! Vreau să-l urc până sus de tot!"
       ]
     },
     {
@@ -1007,7 +1007,7 @@
         "Shauntal"
       ],
       "text": [
-        ""
+        "Shauntal"
       ]
     },
     {
@@ -1015,7 +1015,7 @@
         "Oh, the story I'll write about this! Battle well, so the ending is good."
       ],
       "text": [
-        ""
+        "Oh, ce poveste voi scrie despre asta! Luptă bine, ca să fie un final frumos."
       ]
     },
     {
@@ -1023,7 +1023,7 @@
         "Grimsley"
       ],
       "text": [
-        ""
+        "Grimsley"
       ]
     },
     {
@@ -1031,7 +1031,7 @@
         "Win or lose, it all comes down to how the cards fall. Shall we deal?"
       ],
       "text": [
-        ""
+        "Câștig sau pierd, totul depinde de cum cad cărțile. Dăm?"
       ]
     },
     {
@@ -1039,7 +1039,7 @@
         "Marshal"
       ],
       "text": [
-        ""
+        "Marshal"
       ]
     },
     {
@@ -1047,7 +1047,7 @@
         "My master taught me to seek out strong opponents. You will do."
       ],
       "text": [
-        ""
+        "Maestrul meu m-a învățat să caut adversari puternici. Tu vei fi de ajuns."
       ]
     },
     {
@@ -1055,7 +1055,7 @@
         "Caitlin"
       ],
       "text": [
-        ""
+        "Caitlin"
       ]
     },
     {
@@ -1063,7 +1063,7 @@
         "I would normally be asleep. For a battle like this, I'll stay awake."
       ],
       "text": [
-        ""
+        "În mod normal aș dormi. Pentru o luptă ca asta, rămân trează."
       ]
     },
     {
@@ -1071,7 +1071,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -1079,7 +1079,7 @@
         "I came to see how far you've come. Show me everything."
       ],
       "text": [
-        ""
+        "Am venit să văd cât de departe ai ajuns. Arată-mi tot."
       ]
     },
     {
@@ -1087,7 +1087,7 @@
         "Roxie"
       ],
       "text": [
-        ""
+        "Roxie"
       ]
     },
     {
@@ -1095,7 +1095,7 @@
         "Yeah! Let's make this tree shake! Turn it up!"
       ],
       "text": [
-        ""
+        "Da! Să zguduim copacul ăsta! Dă-i drumul tare!"
       ]
     },
     {
@@ -1103,7 +1103,7 @@
         "Burgh"
       ],
       "text": [
-        ""
+        "Burgh"
       ]
     },
     {
@@ -1111,7 +1111,7 @@
         "What an inspiring place! I feel a new masterpiece coming on."
       ],
       "text": [
-        ""
+        "Ce loc plin de inspirație! Simt că se naște o nouă capodoperă."
       ]
     },
     {
@@ -1119,7 +1119,7 @@
         "Elesa"
       ],
       "text": [
-        ""
+        "Elesa"
       ]
     },
     {
@@ -1127,7 +1127,7 @@
         "The stage is small, but the spotlight's on us. Let's dazzle them."
       ],
       "text": [
-        ""
+        "Scena e mică, dar reflectorul e pe noi. Să-i uimim."
       ]
     },
     {
@@ -1135,7 +1135,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -1143,7 +1143,7 @@
         "Hah! A Trainer in a tree! Let's see if you're worth the climb."
       ],
       "text": [
-        ""
+        "Hah! Un Antrenor într-un copac! Să vedem dacă meriți urcușul."
       ]
     },
     {
@@ -1151,7 +1151,7 @@
         "Skyla"
       ],
       "text": [
-        ""
+        "Skyla"
       ]
     },
     {
@@ -1159,7 +1159,7 @@
         "It's almost like flying up here! Ready for takeoff?"
       ],
       "text": [
-        ""
+        "Parcă zbori aici sus! Ești gata de decolare?"
       ]
     },
     {
@@ -1167,7 +1167,7 @@
         "Drayden"
       ],
       "text": [
-        ""
+        "Drayden"
       ]
     },
     {
@@ -1175,7 +1175,7 @@
         "I have trained many Trainers. Let me see what you are made of."
       ],
       "text": [
-        ""
+        "Am format mulți Antrenori. Lasă-mă să văd din ce ești făcut."
       ]
     },
     {
@@ -1183,7 +1183,7 @@
         "Marlon"
       ],
       "text": [
-        ""
+        "Marlon"
       ]
     },
     {
@@ -1191,7 +1191,7 @@
         "Chill out, it's just a battle! A really, really big one!"
       ],
       "text": [
-        ""
+        "Relaxează-te, e doar o luptă! Una foarte, foarte mare!"
       ]
     },
     {
@@ -1199,7 +1199,7 @@
         "Diantha"
       ],
       "text": [
-        ""
+        "Diantha"
       ]
     },
     {
@@ -1207,7 +1207,7 @@
         "This tree is like a theatre. Let's give the audience a show."
       ],
       "text": [
-        ""
+        "Copacul ăsta e ca un teatru. Să oferim publicului un spectacol."
       ]
     },
     {
@@ -1215,7 +1215,7 @@
         "Malva"
       ],
       "text": [
-        ""
+        "Malva"
       ]
     },
     {
@@ -1223,7 +1223,7 @@
         "I'll report on this battle personally. Don't make it a boring story."
       ],
       "text": [
-        ""
+        "Voi relata personal despre această luptă. Nu face din ea o poveste plictisitoare."
       ]
     },
     {
@@ -1231,7 +1231,7 @@
         "Siebold"
       ],
       "text": [
-        ""
+        "Siebold"
       ]
     },
     {
@@ -1239,7 +1239,7 @@
         "A fine battle is like a fine meal. I hope you've brought something good."
       ],
       "text": [
-        ""
+        "O luptă frumoasă e ca o masă frumoasă. Sper că ai adus ceva bun."
       ]
     },
     {
@@ -1247,7 +1247,7 @@
         "Wikstrom"
       ],
       "text": [
-        ""
+        "Wikstrom"
       ]
     },
     {
@@ -1255,7 +1255,7 @@
         "En garde! A knight never refuses a duel among noble branches!"
       ],
       "text": [
-        ""
+        "En garde! Un cavaler nu refuză niciodată un duel printre ramuri nobile!"
       ]
     },
     {
@@ -1263,7 +1263,7 @@
         "Drasna"
       ],
       "text": [
-        ""
+        "Drasna"
       ]
     },
     {
@@ -1271,7 +1271,7 @@
         "Oh my, what a lovely tree. And what a lovely battle this will be."
       ],
       "text": [
-        ""
+        "Vai, ce copac minunat. Și ce luptă minunată va fi asta."
       ]
     },
     {
@@ -1279,7 +1279,7 @@
         "Viola"
       ],
       "text": [
-        ""
+        "Viola"
       ]
     },
     {
@@ -1287,7 +1287,7 @@
         "Smile! Every battle up here deserves a good photograph."
       ],
       "text": [
-        ""
+        "Zâmbiți! Fiecare luptă de aici sus merită o fotografie bună."
       ]
     },
     {
@@ -1295,7 +1295,7 @@
         "Grant"
       ],
       "text": [
-        ""
+        "Grant"
       ]
     },
     {
@@ -1303,7 +1303,7 @@
         "Every climb has a route to the top. Let's find ours."
       ],
       "text": [
-        ""
+        "Fiecare urcuș are un drum spre vârf. Hai să-l găsim pe al nostru."
       ]
     },
     {
@@ -1311,7 +1311,7 @@
         "Korrina"
       ],
       "text": [
-        ""
+        "Korrina"
       ]
     },
     {
@@ -1319,7 +1319,7 @@
         "Roller skates don't work in trees, but my fists still do!"
       ],
       "text": [
-        ""
+        "Patinele cu rotile nu merg în copaci, dar pumnii mei merg!"
       ]
     },
     {
@@ -1327,7 +1327,7 @@
         "Ramos"
       ],
       "text": [
-        ""
+        "Ramos"
       ]
     },
     {
@@ -1335,7 +1335,7 @@
         "Hohoho! A great old tree. It makes an old gardener smile."
       ],
       "text": [
-        ""
+        "Hohoho! Un copac mare și bătrân. Îl face pe un bătrân grădinar să zâmbească."
       ]
     },
     {
@@ -1343,7 +1343,7 @@
         "Clemont"
       ],
       "text": [
-        ""
+        "Clemont"
       ]
     },
     {
@@ -1351,7 +1351,7 @@
         "My calculations predicted a battle here! The future is now!"
       ],
       "text": [
-        ""
+        "Calculele mele au prevăzut o luptă aici! Viitorul e acum!"
       ]
     },
     {
@@ -1359,7 +1359,7 @@
         "Valerie"
       ],
       "text": [
-        ""
+        "Valerie"
       ]
     },
     {
@@ -1367,7 +1367,7 @@
         "How strange and lovely to be up here. Let us battle gently, then fiercely."
       ],
       "text": [
-        ""
+        "Ce ciudat și frumos să fiu aici sus. Să luptăm întâi blând, apoi cu foc."
       ]
     },
     {
@@ -1375,7 +1375,7 @@
         "Olympia"
       ],
       "text": [
-        ""
+        "Olympia"
       ]
     },
     {
@@ -1383,7 +1383,7 @@
         "The stars said I would come to this tree. They are rarely wrong."
       ],
       "text": [
-        ""
+        "Stelele spuneau că voi ajunge la acest copac. Rareori se înșală."
       ]
     },
     {
@@ -1391,7 +1391,7 @@
         "Wulfric"
       ],
       "text": [
-        ""
+        "Wulfric"
       ]
     },
     {
@@ -1399,7 +1399,7 @@
         "Har har! A battle in the treetops! I wouldn't miss this!"
       ],
       "text": [
-        ""
+        "Har har! O luptă în vârful copacilor! N-aș lipsi pentru nimic!"
       ]
     },
     {
@@ -1407,7 +1407,7 @@
         "Kukui"
       ],
       "text": [
-        ""
+        "Kukui"
       ]
     },
     {
@@ -1415,7 +1415,7 @@
         "Woo! A battle up here gets the blood pumping! Let's go!"
       ],
       "text": [
-        ""
+        "Woo! O luptă aici sus pune sângele în mișcare! Hai!"
       ]
     },
     {
@@ -1423,7 +1423,7 @@
         "Hala"
       ],
       "text": [
-        ""
+        "Hala"
       ]
     },
     {
@@ -1431,7 +1431,7 @@
         "The wind through these branches sounds like a drum. A fine battle awaits!"
       ],
       "text": [
-        ""
+        "Vântul prin ramurile astea sună ca o tobă. Ne așteaptă o luptă frumoasă!"
       ]
     },
     {
@@ -1439,7 +1439,7 @@
         "Olivia"
       ],
       "text": [
-        ""
+        "Olivia"
       ]
     },
     {
@@ -1447,7 +1447,7 @@
         "This tree's bark looks like it could make some lovely jewellery."
       ],
       "text": [
-        ""
+        "Scoarța acestui copac pare bună pentru niște bijuterii frumoase."
       ]
     },
     {
@@ -1455,7 +1455,7 @@
         "Acerola"
       ],
       "text": [
-        ""
+        "Acerola"
       ]
     },
     {
@@ -1463,7 +1463,7 @@
         "Hee hee! Tree spirits are watching. Let's put on a good show for them!"
       ],
       "text": [
-        ""
+        "Hi hi! Spiritele copacilor ne privesc. Să le oferim un spectacol bun!"
       ]
     },
     {
@@ -1471,7 +1471,7 @@
         "Kahili"
       ],
       "text": [
-        ""
+        "Kahili"
       ]
     },
     {
@@ -1479,7 +1479,7 @@
         "The view from up here reminds me of a long drive down the fairway."
       ],
       "text": [
-        ""
+        "Priveliștea de aici sus îmi amintește de o lovitură lungă pe terenul de golf."
       ]
     },
     {
@@ -1487,7 +1487,7 @@
         "Nanu"
       ],
       "text": [
-        ""
+        "Nanu"
       ]
     },
     {
@@ -1495,7 +1495,7 @@
         "Ugh, too many stairs. Let's get this over with, kid."
       ],
       "text": [
-        ""
+        "Uf, prea multe scări. Să terminăm repede, puștiule."
       ]
     },
     {
@@ -1503,7 +1503,7 @@
         "Hapu"
       ],
       "text": [
-        ""
+        "Hapu"
       ]
     },
     {
@@ -1511,7 +1511,7 @@
         "The island sent me here to battle you. I won't disappoint it."
       ],
       "text": [
-        ""
+        "Insula m-a trimis aici să lupt cu tine. N-o voi dezamăgi."
       ]
     }
   ]
