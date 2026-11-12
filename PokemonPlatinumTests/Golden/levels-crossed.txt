@@ -4085,6 +4085,10 @@ trainers 7, 82-87 (own 31-38): kanto_channeler_amanda 84 (34) [Gastly → Gengar
 === saffron_gym
 Saffron City, Johto
 trainers 4, 131-134 (own 42-47): johto_medium_darcy 133 (46) [Slowpoke → Slowmantle, Slowbro → Slowmantle], johto_medium_rebecca 133 (45) [Bronzor → Dotakuron, Hypno → Mesmeryx], johto_psychic_m_franklin 134 (47) [Kadabra → Alakazam, Girafarig → Farigiraf], johto_psychic_m_jared 133 (45) [Mr. Mime → Mimestro, Exeggcute → Palmagus, Exeggcute → Palmagus]
+=== sandy_cave
+Sandy Cave, Alola
+grass 208-209 (own 10-13)
+surf 208-209 (own 11-14)
 === santalune_forest
 Santalune Forest, Kalos
 grass 185-186 (own 3-5)

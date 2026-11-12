@@ -1,0 +1,8 @@
+{
+  // Sandy Cave, Melemele Island (Ultra Sun and Ultra Moon's; plan 23, Melemele's last places): a cave of its own, drawn by
+  // hand (tools/MapDraw/alola/sandy_cave.txt), our words. A floor of sand round a still pool in the rock off Big Wave Beach's
+  // south-west end, reached only by sea; a boulder that a Machamp's Strength shifts shuts a nook with a TM in it
+  "area": "sandy_cave",
+  "bgmTrack": "alola/cave",
+  "trees": "Round"
+}

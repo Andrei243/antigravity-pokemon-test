@@ -221,6 +221,7 @@ if (mode == "alolarest") h.AlolaRestMode();
 if (mode == "alolaponi") h.AlolaPoniMode();
 if (mode == "alolalast") h.AlolaLastMode();
 if (mode == "melemele") h.MelemeleMode();
+if (mode == "alolastory") h.AlolaStoryMode();
 // Plan 23 · Z8: Alola after its Hall of Fame, Ultra Space and the Battle Royal Dome
 if (mode == "ultraspace") h.AlolaUltraSpaceMode();
 // Plan 37 · FC2: the streak house in Kiloude City's Battle Maison

@@ -45,6 +45,40 @@ public class AlolaLastIslandsTests
     }
 
     [Fact]
+    public void SandyCaveIsReachedBySeaFromBigWaveBeachAndItsTmWaitsBehindABoulder()
+    {
+        // Melemele's last cave (plan 23, "Melemele's last door and Z5's shots"): its mouth stands on a rock off the
+        // beach's south-west end, behind a spit of sand only a surfer comes to
+        var beach = MapNamed("Melemele");
+        var mouth = beach.Warps.Single(w => w.TargetMap == "SandyCave");
+        Assert.Equal("big_wave_beach", beach.AreaAt(mouth.SourceX, mouth.SourceY)?.Key);
+        Assert.True(beach.IsDeepWater(mouth.SourceX, mouth.SourceY - 2), "the spit of sand is reached by sea");
+        Assert.True(Walked.Value.Keys.Any(m => m.Name == "SandyCave"), "Sandy Cave is never reached");
+
+        var cave = MapNamed("SandyCave");
+        Assert.Equal("sandy_cave", Assert.Single(cave.Areas).Key);
+        var tm = cave.Everyone.Single(n => n.IsItemBall && n.Item == "TM24");
+        var boulder = cave.Everyone.Single(n => n.Obstacle == PropType.StrengthBoulder);
+        // The nook's one way in is the boulder's tile, right under it
+        Assert.Equal(tm.GridY + 3, boulder.GridY);
+        Assert.Contains(cave.Areas[0].WildEncounters, s => s.SpeciesName == "Psyduck");
+    }
+
+    [Fact]
+    public void MelemelesSouthCoastLooksOutOnTheSeaAndNotOnWoods()
+    {
+        // Hau'oli City's beach had three rows of water before the island's woods filled its chunk (wm02); the sea now runs
+        // to the bottom of every chunk of the coast, and is the city's, Route 1's and Big Wave Beach's own
+        var melemele = MapNamed("Melemele");
+        foreach (var (x, key) in new[] { (300, "hauoli_city"), (350, "hauoli_city"), (240, "alola_route_1"), (170, "big_wave_beach") })
+            for (int y = 181; y < 192; y++)
+            {
+                Assert.True(melemele.IsDeepWater(x, y), $"{x},{y} is no water");
+                Assert.Equal(key, melemele.AreaAt(x, y)?.Key);
+            }
+    }
+
+    [Fact]
     public void EveryZygardeCellAndCoreOfAlolaStandsWhereItCanBeSpokenToAndThereAreAHundred()
     {
         var walked = Walked.Value;

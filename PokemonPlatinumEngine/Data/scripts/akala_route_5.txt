@@ -7,6 +7,7 @@
 
 script Gladion
   scene "Gladion on Route 5"
+  walk player up 3
   face player up
   speaker "Gladion"
   say "...You're the one Hau talks about. The trial-goer who beat him."

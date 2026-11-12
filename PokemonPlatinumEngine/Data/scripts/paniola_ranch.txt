@@ -8,7 +8,8 @@
 
 script Mallow
   scene "Mallow at the ranch"
-  face player right
+  walk player up 4
+  face player up
   speaker "Mallow"
   say "Alola! You must be the trial-goer Kukui keeps talking about. I'm Mallow, one of Akala's trial captains."
   say "My trial's up in the Lush Jungle, but you'll want to see Lana's at Brooklet Hill first. It's west off Route 5, just north of here."

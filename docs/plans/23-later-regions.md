@@ -550,9 +550,46 @@ upgraded), and Looker's episode's `VAR_KALOS_LOOKER` (0 to 7).
   later look at the drawing should widen; the rest of `wm01` to `wm30` are owed); Z5's story shots (`was30` on: the marina's grunts, the festival, the
   totem Gumshoos, Hala's grand trial, the boat, Lapras across Brooklet Hill, the totem Wishiwashi), which the chapter's
   headless tests stand for and `wz29` to `wz35` and `wl10` to `wl17` partly show; the profile's line for Hau'oli (timed
-  only on a quiet machine); Sandy Cave on Melemele (Sun and Moon's small beach cave, not drawn); and a Mantine that does
-  tricks (plan 42 · PS7). The Ride Pager was built as story flags (`Overworld/RidePager.cs`) rather than the plan's
+  only on a quiet machine); Sandy Cave on Melemele (Sun and Moon's small beach cave, not drawn; drawn since, below); and a
+  Mantine that does tricks (plan 42 · PS7). The Ride Pager was built as story flags (`Overworld/RidePager.cs`) rather than the plan's
   `StoryState.Grants` and `SaveData.FieldGrants`: the same rule with no save field, which the rulings record.
+
+### Sandy Cave, the islands' sea and Z5's story shots (2026-11-12, the session after)
+- **Built** (rulings, "Sandy Cave and Melemele's sea"): **Sandy Cave** (`tools/MapDraw/alola/sandy_cave.txt`, matrix 41,
+  `SandyCave`), its mouth on a rock off Big Wave Beach's south-west end reached by sea, Zubat and Psyduck, TM24 behind a
+  Strength boulder and a Pearl; **the sea** below Melemele's south coast and Kala'e Bay (`melemele_sea.txt`) and off
+  Heahea City's pier and Hano's and Konikoni's beaches (`akala_sea.txt`, `akala_sea_south.txt`), where the island's woods
+  had filled the coast's chunks a few rows off the shore (`wm02`; Heahea's pier ended in woods, `wm11`), inside chunks
+  already drawn so no chunk was renumbered; the areas' rectangles reach over their new water. **Z5's story shots**, the
+  `alolastory` mode (`Modes/AlolaStory.cs`, not part of `all`): `was30` to `was42` from the marina to the totem
+  Wishiwashi, each scene started by its own trigger or person; the totem Gumshoos stays `akala`'s `wz29` on. Looking at
+  them found four things, fixed: the Team Skull grunts named "Grunt" read "Team Skull Grunt Grunt wants to battle!" (ten
+  of Alola's trainers given names of ours), and the festival, the grand trial, Hau in Paniola, Mallow, Gladion and Lillie
+  spoke from five to eleven tiles off the picture (each scene now walks the player up to them first). The `melemele`
+  mode has `wm31` to `wm34` (the cave's mouth, Hau'oli's beach, the cave inside and its boulder). Tests:
+  `AlolaLastIslandsTests.SandyCave…`, `MelemelesSouthCoast…`.
+- **Seen and left**: the six houses of Z5's second part (Route 2's berry house, Hau'oli's east house, Ilima's house, the
+  malasada shop, Heahea's and Paniola's houses) are one plan furnished alike, a kitchen and a table each; Brooklet Hill's
+  battles from its beaches are fought on the sand stage, the engine's rule for a beach's tile (`BattleArena.Sand`), so the
+  splashing Wishiwashi and the totem are met on dunes; Sandy Cave's mouth stands in a flat shelf of rock rather than a
+  cliff; the battles by Hau'oli's marina and in Iki Town are fought on the meadow stage (the paving's area names no
+  `City` background); a surfer still meets the woods where the drawn chunks end (z 192 below Melemele, x 127 and 480 at
+  its sides, z 288 and 352 on Akala), which only new chunk rows (every later chunk renumbered) or an engine rule for an
+  island's undrawn edge would change. Each is a look for the user, not a fault of the rules.
+- **What flipping Alola to Free and grown would need** (looked at, not done; the user decides; plan 30, "The gate
+  opened"): `Data/regions/alola.json`'s `movement` to `"directions": "Free", "speed": "Analog"` (keeping `"modes": [
+  "Ride" ]`) and `"kit": "Grown"`, as Kalos's two words; `WorldMapBuilder.GrownCamera` would then give Alola Kalos's
+  camera, where "The engine for Alola" asks a row of its own. **No Alola look has a grown twin** in `characters.json`'s
+  `grown` block (held against Alola's overlays' people by a script on 2026-11-12; the rooms' people not counted): Hau,
+  Kukui, Hala, Lillie, Ilima, Mallow, Lana, Kiawe, Acerola, Olivia, Nanu, Hapu, Gladion, Plumeria, Lusamine, Wicke,
+  Dulse, the Skull grunt, Veyra and Oskin, and the generic looks Alola uses that Kalos didn't (both swimmers, both
+  breeders, the middle-aged woman, the dragon tamer, the ruin maniac, the ranger); an `AlolaCastGrownTests` on `KalosCastGrownTests`' pattern
+  would list them mechanically, and `RegionMovementTests`, `KalosGateTests` (its crossing into Alola) and
+  `FieldScaleTests` assert Alola is the grid's today. **One rule breaks under free movement**: a Tauros charging the
+  cracked rock before Ten Carat Hill sets `ranInto` only in the grid's `TryStep`, and free movement treats the rock as a
+  solid edge (`FreeMovement.Classify`), so `ChargeThroughRock` never fires; the rough ground, the currents, the Mantine
+  course's gates, Lapras and Machamp go through `FieldMovement.Step` and should hold. A grown rider (Alola's own mode)
+  is still the chibi sprite, plan 30's owed visual.
 
 ### Galar and Paldea
 
@@ -654,7 +691,7 @@ Off the chain, after Kalos's Hall of Fame (decision 10): Z21 to Z24 need Z1 to Z
 - [x] Z2 Lumiose and central Kalos (2026-11-02 and 2026-11-03; closed 2026-11-09 with Kalos finished: every door of Lumiose open, its ring walked both ways by `KalosTests`, the palace's hall and the bicycle shop's Bicycle; `profile`'s Lumiose line waits for a quiet run on the Windows machine)
 - [x] Z3 Shalour, the coast and the Tower of Mastery (first part 2026-11-03: Route 10, Geosenge, Route 11, Shalour, the Rumble Badge, the Key Stone and the Lucario; second part 2026-11-03: the harness shots with a Lucario Mega Evolving, caves in the hand-drawn tool, Reflection and Glittering Caves, Route 8's south, Ambrette, Routes 9 and 12, Coumarine City; left then, see Z3's second part: Coumarine's Gym, the Connecting Cave, the fossil lab, hordes and sky trainers, songs; all built or ruled on since: Coumarine's Gym with Z4, the Connecting Cave a ruling (Routes 7 and 8 join in the open), the fossil laboratory and the hordes and sky trainers with Kalos's Gyms and port, the songs with Kalos finished)
 - [x] Z4 The mountain, Team Flare and the League (2026-11-07: Coumarine's Gym, Route 13 and the Power Plant, the Prism Tower's Gym, Routes 14 to 21 but 16, Laverre, Dendemille, Anistar, Couriway, Snowbelle, the Pokémon Village, Lysandre's laboratory, Team Flare's base and Xerneas, Victory Road, the League and Kalos's Hall of Fame, every chapter played headless, and the playthrough bot's way from Coumarine City to the Hall of Fame (`Itineraries.KalosLastChapters`); then, afterwards, the bot's way from Vaniville whole, the three dexes and Route 16, the Lost Hotel, Frost Cavern, Terminus Cave, Kiloude City and AZ; and on 2026-11-08 four Gyms' puzzles, Kalos's water and the Mamoswine ride; the other four Gyms' pieces on 2026-11-08 and the places' own songs, the League's second round and the Friend Safari on 2026-11-09, "Kalos finished"; on 2026-11-12 Kalos's rows of the other plans' tables: its species of ours in the wild, its World Tournament events, its bands and the last Romanian; the League's teams beyond wait for the user, since 26 slots meet 24 species)
-- [x] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; second part 2026-11-07: the rest of Melemele, the Ride Pager's grants (`Overworld/RidePager.cs`), the ferry and Akala from Heahea City to Lana's trial at Brooklet Hill, the story to `VAR_ALOLA_STORY` 18 headless (`AlolaIslandsTests`), "The engine for Alola" under Z5; shots owed, listed there; left: the rest of Akala, Ula'ula, Poni and Aether Paradise, the user's look at Melemele; the rider drawn, the rides' own travel mode and the Town Map, on one grid rather than a tab to an island, were wave 91's, "Alola's loose ends"; ticked 2026-11-12 with Melemele's last door, the Trainers' School, and the `melemele` mode for the shots its second part owed, under "Melemele's last door and Z5's shots": the done when held while ridden, every later place built; still owed: the user's look, the story's shots `was30` on, Sandy Cave)
+- [x] Z5 The four islands, the Ride Pager and the ferry (first part 2026-11-04: Melemele drawn by hand as Kalos is, since the Moon decompilation holds no maps and states no licence and no dump is read (the user may rule otherwise); Route 1 with the new home and the lab, Iki Town, the Mahalo Trail, Hau'oli City's west end and nine rooms, the chapter from Mom to Hau'oli headless (`AlolaTests`), the attendant in Lumiose's Pokémon Center, shots `wa01` to `wa25`; second part 2026-11-07: the rest of Melemele, the Ride Pager's grants (`Overworld/RidePager.cs`), the ferry and Akala from Heahea City to Lana's trial at Brooklet Hill, the story to `VAR_ALOLA_STORY` 18 headless (`AlolaIslandsTests`), "The engine for Alola" under Z5; shots owed, listed there; left: the rest of Akala, Ula'ula, Poni and Aether Paradise, the user's look at Melemele; the rider drawn, the rides' own travel mode and the Town Map, on one grid rather than a tab to an island, were wave 91's, "Alola's loose ends"; ticked 2026-11-12 with Melemele's last door, the Trainers' School, and the `melemele` mode for the shots its second part owed, under "Melemele's last door and Z5's shots": the done when held while ridden, every later place built; still owed: the user's look; the story's shots `was30` on and Sandy Cave were done the same day, "Sandy Cave, the islands' sea and Z5's story shots")
 - [x] Z4b Kalos after its Hall of Fame (written and built 2026-11-07, wave 92)
 - [x] Z6 Melemele and Akala: trials, totems and Z-Moves (2026-11-07: totems with their aura, first call and no ball; the trial sites calling for help; Alola's stamps; the rest of Akala drawn, Kiawe's and Mallow's trials, Olivia's grand trial and the Hano Grand Resort, headless; the harness's `akala` mode shoots the places, the rooms, the card and the totem Gumshoos calling an ally before the Normalium Z's Breakneck Blitz, which is the "done when"; left: the rulings' "Left")
 - [x] Z7 Ula'ula, Poni and the Aether Foundation (2026-11-07: Ula'ula, Poni, Aether Paradise, four caves and the League drawn by hand, the story from the Akala stamp to the Hall of Fame headless, `docs/mechanics/rulings.md`, "Ula'ula, Poni, Aether Paradise and the League"; the walk from Iki Town needs Z6's Akala between Brooklet Hill and the stamp; shots owed; left: the Ultra Beasts; the islands' Town Map, the three trials' totems and Tapu Fini's and Solgaleo's beats were wave 91's, "Alola's loose ends")

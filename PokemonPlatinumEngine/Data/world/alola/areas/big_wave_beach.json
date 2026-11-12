@@ -14,7 +14,14 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
-  "warps": [],
+  "warps": [
+    {
+      "x": 142,
+      "z": 182,
+      "to": "sandy_cave",
+      "toWarp": 0
+    }
+  ],
   "objects": [
     {
       "id": "kahale",

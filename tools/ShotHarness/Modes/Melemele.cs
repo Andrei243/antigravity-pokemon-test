@@ -6,7 +6,7 @@ partial class Harness
     /// Hau'oli City's east end and marina, Route 2 by its Pokémon Center and before Verdant Cavern, Route 3, Melemele
     /// Meadow, the shore before Ten Carat Hill, inside Ten Carat Hill and Verdant Cavern, Heahea City's plaza and pier,
     /// Route 4, Paniola Town, Paniola Ranch, Route 5 by its Pokémon Center and Brooklet Hill), Route 2 and the meadow
-    /// after dark (<c>wm17</c>, <c>wm18</c>) the part's rooms (<c>wm20</c> to <c>wm29</c>), and the Trainers' School built after it, from its street and inside (<c>wm19</c>, <c>wm30</c>). Z5 had named them
+    /// after dark (<c>wm17</c>, <c>wm18</c>) the part's rooms (<c>wm20</c> to <c>wm29</c>), and the Trainers' School built after it, from its street and inside (<c>wm19</c>, <c>wm30</c>), and Sandy Cave's mouth, Hau'oli's beach on its widened sea, the cave inside and its boulder (<c>wm31</c> to <c>wm34</c>). Z5 had named them
     /// <c>wa30</c> to <c>wa63</c>, but the <c>ultraspace</c> mode took <c>wa50</c> on. Nothing is placed by a typed tile:
     /// an area's spot is the open ground nearest its middle (<see cref="AreaSpot"/>), a pier's or a street's is beside
     /// the person of the overlay who stands there, a door's is two tiles before it, and a room's is the tile it is come
@@ -56,6 +56,19 @@ partial class Harness
                 : (room.Width / 2, room.Height - 3);
             ShootAt($"wm{20 + i}_{Snake(rooms[i])}", room, x, y, Direction.Up);
         }
+
+        // Sandy Cave (plan 23, Melemele's last places): its rock off Big Wave Beach from the spit of sand before its mouth,
+        // Hau'oli's sea from the beach west of the marina, and inside the cave from its way in and before the boulder
+        var melemele = MapDatabase.Get("Melemele");
+        var mouth = melemele.Warps.Single(w => w.TargetMap == "SandyCave");
+        ShootAt("wm31_sandy_cave_mouth", melemele, mouth.SourceX, mouth.SourceY - 1, Direction.Down);
+        var hauoli = BesidePerson("wm32_hauoli_beach", "Melemele", "sailor", "hauoli_city");
+        ShootAt(hauoli.Name, hauoli.Map, hauoli.X - 30, OpenNear(hauoli.Map, hauoli.X - 30, 177).Y, Direction.Down);
+        var cave = MapDatabase.Get("SandyCave");
+        var (inX, inY) = SaveData.ArrivalIn(cave, MapDatabase.Get) is { } c ? (c.X, c.Y) : (22, 6);
+        ShootAt("wm33_sandy_cave", cave, inX, inY, Direction.Down);
+        var boulder = cave.Everyone.Single(n => n.Obstacle == PropType.StrengthBoulder);
+        ShootAt("wm34_sandy_cave_boulder", cave, boulder.GridX - 3, boulder.GridY + 1, Direction.Right);
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
         engine.ApplySettings(window: false);

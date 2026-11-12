@@ -9,6 +9,7 @@
 
 script HauInPaniola
   scene "Hau in Paniola"
+  walk player up 4
   face player up
   speaker "Hau"
   say "Alola, {player}! I took the ferry right after you. Akala's huge! And look, I got a Normalium Z too!"

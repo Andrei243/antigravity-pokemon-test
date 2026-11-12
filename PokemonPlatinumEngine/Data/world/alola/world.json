@@ -33,6 +33,8 @@
     // The rest of the islands (plan 23, the wave after the loose ends): Seaward Cave under Melemele, from the meadow to
     // Kala'e Bay (matrix 40, clear of the other sessions' numbers)
     { "name": "SeawardCave", "matrix": 40, "area": "seaward_cave", "trees": "Round", "setting": "Cave" },
+    // Sandy Cave off Big Wave Beach, reached by sea (matrix 41)
+    { "name": "SandyCave", "matrix": 41, "area": "sandy_cave", "trees": "Round", "setting": "Cave" },
     // The wave after Ultra Space: Resolution Cave under Poni Meadow, a map of its own (matrix 70, clear of the other
     // sessions' numbers)
     { "name": "ResolutionCave", "matrix": 70, "area": "resolution_cave", "trees": "Round", "setting": "Cave" },
@@ -135,6 +137,7 @@
     // Plan 23, the rest of the islands: Hau'oli Cemetery, Big Wave Beach and the Secluded Shore
     "hauoli_cemetery",
     "big_wave_beach",
+    "sandy_cave",
     "secluded_shore"
   ]
 }

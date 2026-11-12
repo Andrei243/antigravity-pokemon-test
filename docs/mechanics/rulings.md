@@ -9927,7 +9927,34 @@ Our own: Platinum has neither. `Core/GameEngine.Coop.cs`, `BattleSetup.FriendPar
   battles once all four are beaten (`FLAG_ALOLA_SCHOOL_TEACHER`), giving three Quick Balls. None of them watches the room
   with a trainer's eyes: Sun and Moon's school is a place a player chooses to visit, and so is ours. Nothing of the story
   asks for it.
-- **Left**: Sandy Cave (Sun and Moon's small cave on Melemele's beach) is not drawn.
+- **Left**: Sandy Cave (Sun and Moon's small cave on Melemele's beach) is not drawn. *(Drawn since: "Sandy Cave and Melemele's
+  sea", below.)*
+
+## Sandy Cave and Melemele's sea (2026-11-12, plan 23, Melemele's last places)
+
+- **Where it comes from.** Ultra Sun and Ultra Moon keep Sandy Cave at the south end of Big Wave Beach, past the shallows, a
+  small cave of sand and water with Zubat and Psyduck and a TM behind a boulder Machamp shifts (Bulbapedia's and PokémonDB's
+  descriptions); nothing of its plan is taken. Ours (`tools/MapDraw/alola/sandy_cave.txt`, matrix 41, `SandyCave`) is a floor
+  of sand round a still pool, its one way out in its north wall; its mouth stands in a rock off the beach's south-west end
+  (the beach's warp 0 at 142, 182), behind a spit of sand only a surfer comes to, so the cave waits for Lapras's ride.
+- **What is in it**: Zubat and Psyduck at 10 to 13 on its sand and Psyduck on its pool (Seaward Cave's levels, Melemele's
+  others: the source's 6 to 9 would be the lowest of the island once Lapras is had), TM24 (Thunderbolt) in a nook of its
+  north-east corner whose one way in is a Strength boulder's tile (Machamp's ride grants Strength), and a Pearl on its sand.
+  Both species are Alola's already, so no species' source moved.
+- **The sea**: the chunks of Melemele's south coast had been drawn to three rows of water below the beaches, and the woods
+  that fill a drawn chunk stood below them (`wm02`). A drawing of the sea (`melemele_sea.txt`, laid first so every place
+  stands on it) fills those chunks to their bottom row (z 191) under Big Wave Beach, Route 1 and Hau'oli City, the column
+  of chunks west of the beach, and the chunk row under Kala'e Bay, inside chunks already drawn, so no chunk was added; the
+  areas' rectangles reach over their new water (Hau'oli's 32 rows deep and to the chunk's east edge, Route 1's to z 191,
+  Big Wave Beach's from 128, 128, Kala'e Bay's from 416). The sea beyond those chunks (z 192 on, x 480 on) is still the
+  undrawn woods of an island's edge, out of sight from the shore but met by a surfer who sails out to it. Akala had the same below Heahea City's pier and the
+  beaches of Hano and Konikoni (`akala_sea.txt`, `akala_sea_south.txt`; Hano's and Konikoni's last rows of woods are sea).
+- **Team Skull's grunts have names.** A trainer's line is its class and its name, so the ten grunts of Alola named
+  "Grunt" were announced as "Team Skull Grunt Grunt"; each has a name of ours now (Laka, Lono, Mana, Ulu, Moku, Malu,
+  Hiapo, Kawe, Pilipo, Nakoa), as Kahale on Big Wave Beach had.
+- **Z5's scenes are spoken face to face.** The festival, the grand trial, Hau in Paniola, Mallow, Gladion and Lillie in
+  the meadow began where the player stepped onto their trigger, five to eleven tiles from whoever spoke, off the picture;
+  each scene now walks the player up to them first (`walk player up …`), which the shots of `alolastory` showed.
 
 ## Hoenn's last leftovers: the contest's stage, the gallery's wall, the feeders, two programmes and the orbs given back (2026-11-04, plan 21 · H11, part f and H8, part e)
 
