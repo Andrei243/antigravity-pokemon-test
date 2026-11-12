@@ -1991,6 +1991,15 @@ Plan 42 · PS4 (`Battle/BattleEngine.Studio.cs`). A film is shot on the battle's
 - **The lot** is Black 2's place as imported, its people and words ours; its music is the studio's own march (`unova/pokestar_studios`, F major, brass over a striding bass, a strings bridge in D minor).
 - **The posters** (still owed: painted, theatrical, warm reds, the user's 33a): until their art is painted, the poster wall beside the studio building's door is read, and names the films the studio has kept.
 
+### The photo tour
+
+Plan 44 · SD5 (`Graphics/CourseScene.cs`, `CourseRenderer.cs`, `UI/PhotoTourScreen.cs`, `ModernUi.PhotoTour.cs`). A course is a scene of its own in the battle's smooth style, never a map of a region: one 3D scene a frame, drawn from a `TourFrame` (the camera, every resident's look, action, pose time, place and facing, the fruit, the hour and the weather), so a ride's live picture and a kept photograph are the same drawing.
+
+- **The course**: a strip of ground along its rail in the arena kit's pieces (the meadow's ground, `SoftTextures.Water` for its water, soft trees, rocks and tufts, hills on the horizon), lit by the battle's rig for its kind of ground at the ride's hour (`ArtLook.ArenaRig`) and laid over by the ride's weather (`ArtLook.InBattleWeather`). The Reed River is a slow river 8 wide between two meadow banks, reeds (tall tufts) at the water's edge, round trees beyond, the rail on the east bank at 1.6 above the ground.
+- **The residents** are the battle's models, posed by `PokemonAnimation`: idle; a walk's stride; asleep (eyes shut and drooping, `Sleepy`); eating (`Eating`, head down); playing (a cheer's bounce toward the other); showing off a move (`Attack` of its kind); a reaction (the cheer, facing the lens); the rare action (the cheer with a hop of a third of its height). Each stands at its height in tiles by its species' metres (0.35 + 0.8 × metres, 0.4 to 2.4), the same height the judge measures.
+- **The viewfinder**: the picture whole, four corner brackets 64 long and 6 thick in white at 80% (inset 96 by 64), a cross of two 24-long strokes at the middle; at the foot a bar of the rail's way (600 wide, Gold over Panel), the film left (a roll's icon and "FILM 47") and the fruit left at the left, the zoom (×1.0 to ×3.0, five ticks) at the right. A shot is a white flash over the picture (alpha from 200 to nothing over 0.18 s) and the film's count turning; a thrown fruit is a red-gold sphere of 0.18 on its arc; a whistle is three white rings widening from the middle of the picture over 0.6 s.
+- **The opening and the end**: the ride opens from black over 0.8 s once every resident's model is made (never by a frame first); at the rail's end, or with the film gone, the picture closes to black and the judged panel comes up: the ride's best photograph of each species, a row of 84 each (the species' icon, its name, its stars in Gold, its points right-aligned), the ride's total under it in Black 40, and KEEP (the item button) to put the best of them in the photo book.
+
 ### Menu screens (G10)
 
 Every full-screen menu is the same frame: the backdrop, its title at the top left, key hints at the top right, and its content between rows 132 and 1032 with 64 margins and 32 gutters. Its parts rise or slide into place over 0.25–0.45 s when it opens.
@@ -2577,7 +2586,7 @@ Rooms, caves and the Distortion World have their own rigs that ignore the clock.
 
 **Don't**
 - Don't add random per-texel variation, dithering or "grain" to any texture.
-- Don't draw 3D renders of Pokémon in menus, or pixel sprites of Pokémon in battle. (The gallery, plan 12 · Q30, is a scene like the evolution's, not a menu: its model is the one 3D Pokémon on a screen of lists, and its stand-in while the model is built is the still sprite.)
+- Don't draw 3D renders of Pokémon in menus, or pixel sprites of Pokémon in battle. (The gallery, plan 12 · Q30, is a scene like the evolution's, not a menu: its model is the one 3D Pokémon on a screen of lists, and its stand-in while the model is built is the still sprite. So are the photo tour's course and a locked heart's opening, plan 44: scenes that show models, never menus.)
 - Don't scale pixel art by fractions or filter it bilinearly.
 - Don't use near-black outlines, pure black shadows or flat, unshaded UI boxes.
 - Don't copy art, models, textures, fonts or UI from the Pokémon games.

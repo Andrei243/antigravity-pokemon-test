@@ -924,6 +924,17 @@ Plan 44 · SD2; `docs/mechanics/rulings.md`, "Locked hearts". Lockwork's locked 
 | `heart count`, `heart missed`, `heart opened` | `RESULT` how many locks have been reclaimed, missed (knocked out, so the courier carries them) and opened since the game began. |
 | `heart courier` | Plan 44 · SD4, the courier in Lockwork's tower: builds the team of the person spoken to from the first six locks missed (each as the trainer of ours whose team it was in has it), for the script's `battle self` after it. `RESULT` how many he carries, 0 with none missed. |
 
+### The photo tour
+
+Plan 44 · SD5; style guide, "The photo tour". The tour's one command, `tour`; a course is an id of `Data/photo-tour.json`
+(`reed_river`), and an id no course has is a finding of `ScriptLibrary.Problems`.
+
+| Command | What it does |
+|---|---|
+| `tour ride "<course>"` | A ride on the course (`GameState.PhotoTour`, `PhotoTourScreen`): the script waits until the judged panel is left and hears the ride's total in `RESULT` (`{result}`), its photographs judged into the report; 0 with no ride (the course not open yet). A game with no window plays the ride at once by the autopilot. It stops a scene's hurry. |
+| `tour open "<course>"` | `RESULT` 1 when the report's total has opened the course, else 0. |
+| `tour points` | `RESULT` the report's total: each species' best photograph on each course, summed. |
+
 ### Treats
 
 Plan 35 · BN3; `docs/mechanics/rulings.md`, "Care". The bakers' one command, `treat`; the confectioners sell with `shop "treats"`.

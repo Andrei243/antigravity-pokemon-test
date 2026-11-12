@@ -22,6 +22,10 @@ public sealed partial class GameFlow
     public PhotoBook PhotoBook { get; } = new();
     public PhotoBookScreen PhotoBookScreen { get; } = new();
 
+    /// <summary>The photo tour's report and its ride's screen (plan 44 · SD5).</summary>
+    public TourReport PhotoTour { get; } = new();
+    public PhotoTourScreen PhotoTourScreen { get; } = new();
+
     /// <summary>The photo studio (plan 43 · LF5) and the composition it was last left on (not saved: a studio opens on its last picture of the session).</summary>
     public StudioScreen StudioScreen { get; } = new();
     public StudioShot? LastStudioShot { get; set; }
