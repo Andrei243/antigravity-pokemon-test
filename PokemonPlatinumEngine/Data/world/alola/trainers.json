@@ -2911,5 +2911,15 @@
   { "id": "alola_worker_kanoa", "name": "Kanoa", "class": "Worker", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 1200,
     "party": [ { "species": "Magnemite", "level": 30, "ivScale": 0, "personality": 61030480 }, { "species": "Charjabug", "level": 30, "ivScale": 0, "personality": 61133528 }, { "species": "Magneton", "level": 31, "ivScale": 0, "personality": 61236576 } ] },
   { "id": "alola_scientist_ola", "name": "Ola", "class": "Scientist", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 1240,
-    "party": [ { "species": "Togedemaru", "level": 31, "ivScale": 0, "personality": 61339624 }, { "species": "Elekid", "level": 31, "ivScale": 0, "personality": 61442672 }, { "species": "Vikavolt", "level": 32, "ivScale": 0, "personality": 61545720 } ] }
+    "party": [ { "species": "Togedemaru", "level": 31, "ivScale": 0, "personality": 61339624 }, { "species": "Elekid", "level": 31, "ivScale": 0, "personality": 61442672 }, { "species": "Vikavolt", "level": 32, "ivScale": 0, "personality": 61545720 } ] },
+  { "id": "alola_youngster_keahi", "name": "Keahi", "class": "Youngster", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 196,
+    "party": [ { "species": "Yungoos", "level": 7, "ivScale": 0, "personality": 61648768 }, { "species": "Pikipek", "level": 7, "ivScale": 0, "personality": 61751816 } ] },
+  { "id": "alola_lass_pualani", "name": "Pualani", "class": "Lass", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 224,
+    "party": [ { "species": "Cutiefly", "level": 8, "ivScale": 0, "personality": 61854864 } ] },
+  { "id": "alola_school_kid_aukai", "name": "Aukai", "class": "School Kid", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 320,
+    "party": [ { "species": "Grubbin", "level": 7, "ivScale": 0, "personality": 61957912 }, { "species": "Wingull", "level": 8, "ivScale": 0, "personality": 62060960 } ] },
+  { "id": "alola_school_kid_kanoe", "name": "Kanoe", "class": "School Kid", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 320,
+    "party": [ { "species": "Rattata", "form": "Rattata-Alola", "level": 8, "ivScale": 0, "personality": 62164008 }, { "species": "Magnemite", "level": 8, "ivScale": 0, "personality": 62267056 } ] },
+  { "id": "alola_teacher_iwalani", "name": "Iwalani", "class": "Teacher", "ai": [ "CheckHp" ], "items": [], "prizeMoney": 800,
+    "party": [ { "species": "Meowth", "form": "Meowth-Alola", "level": 9, "ivScale": 0, "personality": 62370104 }, { "species": "Crabrawler", "level": 10, "ivScale": 0, "personality": 62473152 } ] }
 ]

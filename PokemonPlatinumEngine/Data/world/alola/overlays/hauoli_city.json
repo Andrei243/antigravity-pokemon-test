@@ -5,7 +5,8 @@
   // city hall, the police station, the malasada shop, the clothes shop and Captain Ilima's house) and the marina's pier,
   // where Team Skull's grunts are met with Ilima and the ferry to Akala sails (hauoli_city.txt). The city hall, the
   // police station and the clothes shop are a later session's. The grunts, Ilima and the professor on the beach are
-  // shown by flags of ours for their scenes
+  // shown by flags of ours for their scenes. The Trainers' School (warp 8) stands at the first street's east end since
+  // 2026-11-12 (HauoliCity_TrainersSchool)
   "area": "hauoli_city",
   "bgmTrack": "alola/hauoli",
   "trees": "Round",
@@ -18,7 +19,8 @@
     { "warp": 7, "map": "HauoliCity_IlimasHouse", "x": 4, "y": 8, "facing": "Up" },
     { "warp": 3, "map": "HauoliCity_CityHall", "x": 7, "y": 10, "facing": "Up" },
     { "warp": 4, "map": "HauoliCity_PoliceStation", "x": 4, "y": 8, "facing": "Up" },
-    { "warp": 6, "map": "HauoliCity_ApparelShop", "x": 4, "y": 8, "facing": "Up" }
+    { "warp": 6, "map": "HauoliCity_ApparelShop", "x": 4, "y": 8, "facing": "Up" },
+    { "warp": 8, "map": "HauoliCity_TrainersSchool", "x": 6, "y": 9, "facing": "Up" }
   ],
   "triggers": [
     { "script": "Marina", "x": 356, "z": 176, "width": 3, "depth": 1, "variable": "VAR_ALOLA_STORY", "value": 7 },
