@@ -295,7 +295,8 @@ internal sealed class FieldRigs
         // at by that much of it, stretched as it is drawn (plan 30, the gate's owed)
         if (f.Pose.Stance == Overworld.Stance.Swim && f.Seating is { } water)
             at = water.Stood - new Vector3(0f, CharacterSprites.WaterLineHeight(rig) * vs, 0f);
-        else if (f.Seating is { } seating && f.Pose.Stance == Overworld.Stance.Lie)
+        // (lying anywhere but a bed, as a script may pose someone, the body stays on its tile, as the chibi card does)
+        else if (f.Seating is { Seat: Overworld.PropType.Bed } seating && f.Pose.Stance == Overworld.Stance.Lie)
         {
             // Lying along the bed on the grown mattress, the crown on the pillow (the gate's owed): the mattress stands
             // stretched as every upright thing is, so its top is its height by the vertical scale

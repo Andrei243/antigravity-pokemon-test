@@ -135,6 +135,11 @@ public class FieldScaleTests
         var lying = FieldRigChoice.LieAlong(stood, Direction.Down, 1.5f);
         Assert.Equal(stood.Z + 1.5f - FieldRigChoice.PillowBehind, lying.Z, 4);
         Assert.Equal(stood.X, lying.X, 4);
+        // A grown rider of a ride on land sits on the top of its back, higher than a chibi rider's seat and within the card,
+        // the card standing past a grown body's depth and spread knees nearer the camera than its rider
+        var ride = new FieldSprites.Strip(Array.Empty<CharacterSprites.Card>(), 96, 72);
+        Assert.InRange(WorldRenderer.GrownRideSeat(ride), WorldRenderer.RideSeat(ride) + 1, ride.Rows);
+        Assert.InRange(WorldRenderer.GrownRideAhead, 0.4f, 0.75f);
         Assert.Equal("PLAYER~Teen", FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Stand));
         Assert.NotEqual(FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Stand), FieldRigs.ImpostorKey("PLAYER~Teen", Stance.Sit));
     }

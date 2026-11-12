@@ -167,9 +167,9 @@ partial class Harness
 
     /// <summary>
     /// The grown figures plan 30's gate left owed, each shot on the harness's own ground with the kit laid as grown:
-    /// someone lying along a bed (<c>kg60</c>, <c>kg61</c>), a fisher of the map holding the rod (<c>kg62</c>, <c>kg63</c>),
-    /// a grown surfer under the terrain lab's bridge cut by its deck (<c>kg64</c>, <c>kg64b</c> the same with the deck's
-    /// cut a chibi sprite's), and the Mamoswine of Route 17 ridden astride (<c>kg65</c>, <c>kg66</c>).
+    /// someone lying along a bed (<c>kg60</c>, <c>kg61</c>), fishers of the map holding the rod (<c>kg62</c> to <c>kg63b</c>),
+    /// the player under the terrain lab's bridge cut by its deck, grown and chibi on foot and grown surfing, and beside it
+    /// (<c>kg64*</c>), and the Mamoswine of Route 17 ridden astride four ways (<c>kg65</c> to <c>kg69</c>).
     /// </summary>
     private void KalosGrownFigures()
     {
@@ -187,31 +187,47 @@ partial class Harness
         Shot("kg60_lying_on_a_bed");
         ShotCrop("kg61_lying_close", 1180, 240, 400, 225, 2);
 
-        // A fisher of the map on the pond's shore, holding the rod
+        // Fishers of the map on the pond's shore, holding the rod: the fisherman (whose look carries one already) and a
+        // youngster, whose look has none, so the rod is the grown kit's fishing look's
         var pond = BuildPond();
         var fisher = pond.NPCs.First(n => n.NpcType == "Fisherman");
         fisher.Posed = Stance.Fish;
-        CharacterModels.Get(CharacterStyle.Holding(PlayerIdentity.CharacterFor(fisher.NpcType), HeldProp.Rod), game.RenderContext.Shaders);
-        CharacterModels.Get(CharacterStyle.Holding(CharacterStyle.InKit(PlayerIdentity.CharacterFor(fisher.NpcType), CharacterKit.Grown), HeldProp.Rod), game.RenderContext.Shaders);
+        var youngster = new NPC { Name = "Youngster_fishing", NpcType = "Youngster", GridX = 12, GridY = 5, Facing = Direction.Left, Posed = Stance.Fish };
+        pond.NPCs.Add(youngster);
+        foreach (var who in new[] { fisher, youngster })
+        {
+            CharacterModels.Get(CharacterStyle.Holding(PlayerIdentity.CharacterFor(who.NpcType), HeldProp.Rod), game.RenderContext.Shaders);
+            CharacterModels.Get(CharacterStyle.InKit(CharacterStyle.Holding(PlayerIdentity.CharacterFor(who.NpcType), HeldProp.Rod), CharacterKit.Grown), game.RenderContext.Shaders);
+        }
         game.Map = pond;
         game.Player.SetPosition(4, 4, Direction.Right);
         Frames(6); Skip(0.6);
-        Console.WriteLine($"  kg62: the fisher at {fisher.GridX},{fisher.GridY} {pond.StanceOf(fisher)}; live {game.World.LiveRigs.Live}, sprites {game.World.LiveRigs.Sprites}");
+        Console.WriteLine($"  kg62: the fisher at {fisher.GridX},{fisher.GridY} {pond.StanceOf(fisher)}, the youngster at {youngster.GridX},{youngster.GridY} {pond.StanceOf(youngster)}; live {game.World.LiveRigs.Live}, sprites {game.World.LiveRigs.Sprites}");
         Shot("kg62_fisher_of_the_map");
         ShotCrop("kg63_fisher_close", 900, 450, 400, 225, 2);
+        ShotCrop("kg63b_youngster_fishing_close", 1300, 380, 400, 225, 2);
 
-        // A grown surfer under the terrain lab's bridge: cut by the deck as a sprite is
+        // Under the terrain lab's bridge: the grown player on foot, tall enough to cross the deck, cut by its boards as the
+        // chibi sprite is (the kit laid grown, then Sinnoh's own chibi), and a grown surfer under it and beside it
         var lab = BuildTerrainLab();
         game.Map = lab;
-        foreach (var (name, y) in new[] { ("kg64_under_the_deck", 18), ("kg64c_beside_the_deck", 20) })
+        foreach (var (name, y, mode, kit) in new (string, int, TravelMode, CharacterKit?)[]
+                 {
+                     ("kg64_on_foot_under_the_deck", 18, TravelMode.OnFoot, CharacterKit.Grown),
+                     ("kg64c_on_foot_under_the_deck_chibi", 18, TravelMode.OnFoot, null),
+                     ("kg64e_surfing_under_the_deck", 18, TravelMode.Surfing, CharacterKit.Grown),
+                     ("kg64g_surfing_beside_the_deck", 20, TravelMode.Surfing, CharacterKit.Grown)
+                 })
         {
+            engine.RegionKitOverride = kit;
             game.Player.SetPosition(23, y, Direction.Up);
-            game.Player.SetMode(TravelMode.Surfing);
+            game.Player.SetMode(mode);
+            if (mode == TravelMode.OnFoot) game.Player.SetHeight(0f);
             Frames(6); Skip(0.4);
             var at = new Vector3(game.Player.PixelX / 32f + 0.5f, 0f, game.Player.PixelY / 32f + 0.5f);
-            Console.WriteLine($"  {name}: surfing at 23,{y}, the deck over them {(Relief.DeckOver(lab, at.X, at.Z, Relief.At(lab, at.X, at.Z)) is { } d ? $"{d.X0:0.00}..{d.X1:0.00} at {d.Top:0.00}" : "none")}; live {game.World.LiveRigs.Live}, sprites {game.World.LiveRigs.Sprites}");
+            Console.WriteLine($"  {name}: {mode} at 23,{y}, kit {engine.KitHere}, the deck over them {(Relief.DeckOver(lab, at.X, at.Z, Relief.At(lab, at.X, at.Z)) is { } d ? $"{d.X0:0.00}..{d.X1:0.00} at {d.Top:0.00}" : "none")}; live {game.World.LiveRigs.Live}, sprites {game.World.LiveRigs.Sprites}");
             Shot(name);
-            ShotCrop(name.Replace("kg64", "kg64b").Replace("_under", "_under_close").Replace("_beside", "_beside_close"), 760, 240, 400, 225, 2);
+            ShotCrop(name.Replace("kg64", "kg64x") + "_close", 760, 240, 400, 225, 2);
         }
         game.Player.SetMode(TravelMode.OnFoot);
         engine.RegionKitOverride = null;
@@ -243,6 +259,16 @@ partial class Harness
             engine.Steering = null;
             Frames(30);
             ShotCrop("kg66b_ride_on_land_standing_close", 770, 300, 400, 225, 2);
+            // Ridden the other three ways, the card half a tile nearer the camera seen from the front and the back
+            foreach (var (way, name) in new[] { (Direction.Down, "kg67_ride_facing_down"), (Direction.Left, "kg68_ride_facing_left"), (Direction.Up, "kg69_ride_facing_up") })
+            {
+                engine.Steering = (way, false);
+                Frames(12);
+                engine.Steering = null;
+                Frames(20);
+                Console.WriteLine($"  {name}: facing {game.Player.Facing} at {game.Player.GridX},{game.Player.GridY}");
+                ShotCrop(name, 760, 260, 400, 250, 2);
+            }
         }
         else Console.WriteLine("  !! kg65: no Mamoswine on Route 17");
         At(saved.Map.Name, saved.GridX, saved.GridY, Direction.Up);
