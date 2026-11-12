@@ -1234,6 +1234,28 @@ public static class GameCornerPrizes
         ("TM32", 1500), ("TM29", 3500), ("TM35", 4000), ("TM24", 4000), ("TM13", 4000)
     };
 
+    /// <summary>
+    /// Goldenrod's prize counter (plan 42 · PS3; HeartGold's <c>scr_seq_0910_T25SP0101.s</c>, its menus and the coins
+    /// each <c>TakeCoins</c> asks): six TMs, then four held items, in the menus' order.
+    /// </summary>
+    public static readonly (string Item, int Coins)[] Goldenrod =
+    {
+        ("TM90", 2000), ("TM75", 4000), ("TM44", 6000), ("TM35", 10000), ("TM13", 10000), ("TM24", 10000),
+        ("Silk Scarf", 1000), ("Wide Lens", 1000), ("Zoom Lens", 1000), ("Metronome", 1000)
+    };
+
+    /// <summary>
+    /// Goldenrod's three Pokémon (the same script's HeartGold menu, game version 7: Abra, Ekans and Dratini, where
+    /// SoulSilver's has Sandshrew for Ekans), each given at <see cref="GoldenrodPokemonLevel"/> by <c>GiveMon</c>.
+    /// </summary>
+    public static readonly (string Species, int Coins)[] GoldenrodPokemon =
+    {
+        ("Abra", 200), ("Ekans", 700), ("Dratini", 2100)
+    };
+
+    /// <summary>The level Goldenrod's counter gives its Pokémon at (<c>GiveMon VAR_TEMP_x4002, 15, …</c>).</summary>
+    public const int GoldenrodPokemonLevel = 15;
+
     /// <summary>What the counter sells coins at: fifty for 1,000, five hundred for 10,000.</summary>
     public static readonly (int Coins, int Money)[] Counter = { (50, 1000), (500, 10000) };
 

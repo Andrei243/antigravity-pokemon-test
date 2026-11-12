@@ -2529,6 +2529,51 @@
       "random": "La întâmplare", "swap": "Schimb", "oneBp": "1 PL", "threeBp": "3 PL", "noBattle": "Fără luptă", "noEvent": "Nimic"
     }
   },
+  "cardFlip": {
+    "level": "NIVEL",
+    "coins": "JETOANE",
+    "round": "RUNDA ASTA",
+    "memo": "NOTIȚE",
+    "quit": "IEȘI",
+    "mark": { "bust": "X" },
+    "hint": { "flip": "Întoarce", "memo": "Notează", "quit": "Ieși" },
+    "ask": {
+      "title": "Joci nivelul {level}?",
+      "body": "Întoarce cărțile ca să găsești cifrele 2 și 3. Fiecare număr îți înmulțește jetoanele. O plăcuță crăpată încheie runda.",
+      "up": "Bravo! Tabla următoare plătește mai mult.",
+      "down": "Tabla asta e ceva mai ușoară.",
+      "play": "JOACĂ",
+      "leave": "PLEACĂ"
+    },
+    "quitAsk": {
+      "title": "Ieși din runda asta?",
+      "keep": "Vei păstra {coins} jetoane.",
+      "none": "Încă n-ai găsit niciun jeton.",
+      "yes": "IEȘI",
+      "no": "JOC MAI DEPARTE"
+    },
+    "line": {
+      "menu": "Fiecare rând și coloană arată totalul și câte plăcuțe crăpate ascunde.",
+      "level": "Nivelul {level}. Alege o carte.",
+      "first": "Un {coins}! Ai {coins} jetoane în runda asta.",
+      "one": "Un 1. Tot {coins} jetoane.",
+      "times": "Ori {times}! Acum {coins} jetoane.",
+      "bust": "O plăcuță crăpată! Jetoanele rundei s-au pierdut.",
+      "won": "Ai găsit toți de 2 și de 3! {coins} jetoane intră în cutie.",
+      "kept": "Păstrezi {coins} jetoane.",
+      "nothing": "Niciun jeton de data asta.",
+      "up": "Urci la nivelul {level}!",
+      "down": "Înapoi la nivelul {level}.",
+      "full": "Cutia de jetoane e plină. Nu mai încap jetoane."
+    }
+  },
+  "luckyDraw": {
+    "radio": {
+      "hello": "E timpul pentru tragerea numărului norocos!",
+      "number": "Numărul norocos al săptămânii este {number}!",
+      "claim": "Dacă se potrivește cu numărul de ID al unuia dintre Pokémonii tăi, vino la Turnul Radio să-ți iei premiul!"
+    }
+  },
   "slots": {
     "machine": "APARATUL {number}",
     "replay": "DIN NOU",

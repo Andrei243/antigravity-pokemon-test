@@ -2380,6 +2380,51 @@
       "random": "Random", "swap": "Swap", "oneBp": "1 BP", "threeBp": "3 BP", "noBattle": "No Battle", "noEvent": "No Event"
     }
   },
+  "cardFlip": {
+    "level": "LEVEL",
+    "coins": "COINS",
+    "round": "THIS ROUND",
+    "memo": "MEMO",
+    "quit": "QUIT",
+    "mark": { "bust": "X" },
+    "hint": { "flip": "Turn over", "memo": "Mark", "quit": "Quit" },
+    "ask": {
+      "title": "Play level {level}?",
+      "body": "Turn over the cards to find the 2s and 3s. Each number multiplies your coins. A cracked tile ends the round.",
+      "up": "Well played! The next board pays more.",
+      "down": "This board is a little easier.",
+      "play": "PLAY",
+      "leave": "LEAVE"
+    },
+    "quitAsk": {
+      "title": "Quit this round?",
+      "keep": "You will keep {coins} coins.",
+      "none": "You have found no coins yet.",
+      "yes": "QUIT",
+      "no": "KEEP PLAYING"
+    },
+    "line": {
+      "menu": "Each row and column shows its total and how many cracked tiles it hides.",
+      "level": "Level {level}. Choose a card.",
+      "first": "A {coins}! You have {coins} coins this round.",
+      "one": "A 1. Still {coins} coins.",
+      "times": "Times {times}! Now {coins} coins.",
+      "bust": "A cracked tile! The round's coins are lost.",
+      "won": "Every 2 and 3 found! {coins} coins go into your case.",
+      "kept": "You keep {coins} coins.",
+      "nothing": "No coins this time.",
+      "up": "You move up to level {level}!",
+      "down": "Back to level {level}.",
+      "full": "Your Coin Case is full. It can't hold any more coins."
+    }
+  },
+  "luckyDraw": {
+    "radio": {
+      "hello": "It's time for the lucky number draw!",
+      "number": "This week's lucky number is {number}!",
+      "claim": "If it matches the ID number of one of your Pokémon, come to the Radio Tower to claim a prize!"
+    }
+  },
   "slots": {
     "machine": "MACHINE {number}",
     "replay": "REPLAY",

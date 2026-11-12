@@ -143,7 +143,10 @@ public static class Sources
         // Plan 20 · J2: the trainers' class genders and personalities (src/trainer_data.c), the prize money's table by
         // class (sPrizeMoneyTbl, still assembly), and what each hidden item holds
         "/src/trainer_data.c", "/asm/overlay_12_battle_command.s", "/src/data/fieldmap/hidden_items.h",
-        "/include/constants/hidden_items.h"
+        "/include/constants/hidden_items.h",
+        // Plan 42 · PS3: the card-flip game's rules (its configurations, draws and levels, read for their numbers and
+        // order alone) and Goldenrod's Game Corner's script, for its prize list's items, Pokémon and coins
+        "/src/voltorb_flip/", "/files/fielddata/script/scr_seq/scr_seq_0910_T25SP0101.s"
     };
 
     /// <summary>
