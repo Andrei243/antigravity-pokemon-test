@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- After Kalos's Hall of Fame, the twenty-four species of our own that grow from Kalos's Pokémon can be met in its late places: Routes 18 to 21, the Pokémon Village, Frost Cavern, the Lost Hotel, Victory Road, Terminus Cave's depths, the Unknown Dungeon and Azure Bay's grass, and on the water and the Super Rod in Azure Bay, Kiloude City, Victory Road and the Pokémon Village.
+- Kalos's Gym Leaders, Elite Four and Diantha now open their battles on bands of their own colours, and the World Tournament has two Kalos events (Kalos Leaders and Kalos's League); Diantha joins the World Champions.
 - Lockwork's story has two new medals (reclaim a locked heart; open thirty), a request in the log for each of its cells, and a clipped march of its own that plays when its agents spot you.
 
 - Your Trainer Card can now be designed: press the item button on the card to choose a background, a frame, a pose and a face for your figure, a title, the six Pokémon it shows, a two-word greeting and your own signature on the back, and to print both sides as a picture. New backgrounds and frames come with Badges, Halls of Fame, medals, diplomas and photo spots.

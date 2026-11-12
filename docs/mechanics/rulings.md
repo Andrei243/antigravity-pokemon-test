@@ -10567,6 +10567,34 @@ In our own words, on X and Y's beats as they are publicly described. Kalos's mov
   skating stretches' looks are plan 30's grown kit, which other sessions own. The Friend Safari's other friends and
   Lumiose's online rooms are plan 07's. `profile`'s Lumiose line wants a quiet run on the Windows machine.
 
+## Kalos's rows of the other plans' tables (2026-11-12, plan 23)
+
+Every table a new region adds its row to, swept for Kalos. Nothing of X and Y's is read; the rows are ours.
+
+- **Species of ours in the wild** (plan 03 · D15, design B; its question 9's default: Kalos's batch waits for Kalos's
+  maps, which are drawn). Kalos's batch is the 24 placeable species of ours whose line begins in the sixth generation
+  (`OursSlots.RegionOf`). They live in the rarest slots of Kalos's eleven latest grass places by their tables' highest
+  level (a third of Kalos's 32 places with grass, the tie at 38 taken whole): Routes 18 to 21, the Pokémon Village,
+  Frost Cavern, the Lost Hotel, Victory Road, Terminus Cave's depths, the Unknown Dungeon and Azure Bay; and on the water
+  and the Super Rod of Azure Bay, Kiloude City, Victory Road and the Pokémon Village. Each stands where its forebear's
+  written habitat says (the grassland's on the open routes, the forest's in Route 20's woods, the urban ones in the
+  Lost Hotel, the caves' and mountains' in Frost Cavern, Terminus Cave and the Unknown Dungeon, the sea's on the water),
+  at its evolution level to four above, unmapped, once Kalos's Hall of Fame is entered. Faerieon, the one evolution of
+  ours below 188 (Sylveon's, at 120, with the Eeveelutions), is met at 120 to 124 in the Pokémon Village like the rest:
+  the rule gives it its own level whatever the place's.
+- **The World Tournament** (plan 14 · B12's rule: a region's section once its trainers' table exists). Kalos's section
+  is two events, its Leaders and its League, on the rematch teams (`kalos_<who>_rematch`, the Château's and the League's
+  second round, plan 23's "Kalos finished"), with the looks of Kalos's cast. Kalos's Leaders and League join the world's
+  events that draw on every region, and Diantha stands among the World Champions, who are six now with one of the Elite
+  Four drawn to make seven. No Kalos events of a format of their own (X and Y's sky battles and hordes are the field's).
+- **The bands** (plan 09 · L15). Kalos's eight Leaders, four of the Elite Four and Diantha wear bands of their own
+  (`SceneTransition.KalosBands`, the style guide's fifth table), each after its Gym's type or its room and none the base
+  colour of another region's; until now they wore the plain steel-grey band.
+- **Not built: the League's teams beyond** (plan 03 · D15-T). The rule of the 26 built teams is the rematch team slot
+  for slot in species of the region's batch, none twice in the region's teams. Kalos's League fields 26 Pokémon (five
+  each and Diantha's six) and Kalos's batch holds 24 placeable species, so the rule can't be met; it waits for the user
+  (a species allowed twice, or teams of fewer).
+
 ## Materials, crafting and cooking (2026-11-07, plan 39 · CR1, CR4; 2026-11-09, CR3, CR6; 2026-11-12, CR2, CR5, CR7)
 
 Only the mechanics come from the games (a Pokémon leaving something behind, things made at a kit, a pot that gives a power for a time); every material, name, number, recipe, room, person and line is ours (`Data/materials.json`, `ui.json`, `SunyshoreWorkshop`).

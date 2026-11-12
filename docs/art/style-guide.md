@@ -884,6 +884,24 @@ The drought and the abnormal weather are Emerald's (plan 21 · H8, part b): Grou
   | Karen | the dark type, a wine black | `136,48,72` | `68,20,36` | `220,148,168` |
   | Lance | the Champion's room, a cape's crimson | `168,36,64` | `96,12,32` | `236,156,176` |
 
+  **Kalos's thirteen** (plan 23, Kalos's loose ends; `SceneTransition.KalosBands`, the same beats and the same rules of colour), the eight Leaders, the four of the Elite Four and Diantha, each after its Gym's type or its room, none the base colour of a band of another region. The card behind a portrait is the band's light colour for all thirteen:
+
+  | Whose | After | Base | Deep | Light |
+  |---|---|---|---|---|
+  | Viola | bugs, a lens's green-gold | `152,176,64` | `84,100,24` | `220,232,150` |
+  | Grant | rock, a climbing wall's sandstone | `196,152,104` | `112,80,44` | `240,216,180` |
+  | Korrina | fighting, a skater's tangerine | `232,112,56` | `140,52,20` | `252,192,152` |
+  | Ramos | grass, an old gardener's moss | `104,148,72` | `48,80,28` | `196,224,164` |
+  | Clemont | electricity, a battery's amber | `244,184,48` | `144,100,12` | `252,232,160` |
+  | Valerie | fairies, a silk rose | `228,152,196` | `140,64,108` | `248,216,236` |
+  | Olympia | the mind, a star chart's violet | `152,104,196` | `80,44,116` | `220,196,244` |
+  | Wulfric | ice, a glacier's blue | `120,184,208` | `44,100,124` | `200,236,244` |
+  | Malva | fire, an ember's scarlet | `208,64,48` | `120,24,16` | `248,168,152` |
+  | Siebold | water, a deep sea's blue | `56,136,184` | `20,68,108` | `160,212,240` |
+  | Wikstrom | steel, a knight's plate | `152,160,176` | `72,80,96` | `220,224,232` |
+  | Drasna | dragons, a jade | `72,156,128` | `28,84,64` | `168,220,200` |
+  | Diantha | the Champion's room, a diamond's rose | `216,96,120` | `124,36,60` | `248,192,204` |
+
   The card behind a portrait is the band's light colour, but for the two whose hair is that colour: Volkner's is the pale blue of a spark, `196,224,252`, and Cynthia's a moonlit blue, `132,140,196`, between her hair's gold and her coat's night. A band's colours are chosen with its person on it (the harness's `gyms` and `league` shoot all thirteen, `g_band_<name>` and `lg_band_<name>`), never from the table alone.
 
   A Leader or a League member the table doesn't name (another region's, before its band is written) wears a plain band of steel grey (`120,132,152`, `64,72,92`, `204,212,224`).
