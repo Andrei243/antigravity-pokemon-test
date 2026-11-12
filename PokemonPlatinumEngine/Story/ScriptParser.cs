@@ -1202,11 +1202,11 @@ public static class ScriptParser
             case "heart":
                 return new Instruction { Op = Op.Heart, Line = line, Name = r.OneOf("has", "give", "spring", "open", "locked", "count", "missed", "opened", "courier") };
 
-            // The photo tour (plan 44 · SD5): `tour ride "<course>"`, `tour open "<course>"`, `tour points`
+            // The photo tour (plan 44 · SD5, SD6): `tour ride "<course>"`, `tour open "<course>"`, `tour points`, `tour report`, `tour reward`
             case "tour":
             {
-                string tourWord = r.OneOf("ride", "open", "points");
-                return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord == "points" ? null : r.Text("a course's id") };
+                string tourWord = r.OneOf("ride", "open", "points", "report", "reward");
+                return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord is "ride" or "open" ? r.Text("a course's id") : null };
             }
 
             // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,

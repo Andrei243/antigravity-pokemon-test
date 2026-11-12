@@ -166,23 +166,31 @@ public class KalosGateTests
             Assert.Equal((-40, 33), game.Player.Offset);
             Assert.Equal((x, y), (game.Player.GridX, game.Player.GridY));
 
-            // Crossed out of Kalos off its tile's centre (to Alola, which keeps eight ways and the chibi kit for now)
+            // Crossed out of Kalos off its tile's centre (to Alola, free and grown too since the user's switch of
+            // 2026-11-12, but with no skates): the body lands on its tile's centre, off its skates
+            game.Story.Set(SkateRules.Flag);
             game.Story.Set("KalosHallOfFame");
             game.TravelTo("Alola");
             Run(engine, 240);
             Assert.Equal("Alola", engine.Here.Id);
             Assert.Equal((0, 0), game.Player.Offset);
-            Assert.Equal(MovementDirections.Eight, engine.MovementHere.Directions);
-            Assert.False(game.Player.MovesFreely(game.Map));
-            Assert.Equal(CharacterKit.Chibi, engine.KitHere);
+            Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
+            Assert.False(engine.MovementHere.Offers(RegionMode.Skates));
+            Assert.Equal(CharacterKit.Grown, engine.KitHere);
+            if (!game.Map.IsIndoors) Assert.Equal(FieldCamera.Alola, game.Map.Camera);
             Assert.NotEqual(TravelMode.Skating, game.Player.Mode);
 
-            // And back into Kalos: free and grown again
+            // Pushed off Alola's tile centre and crossed back into Kalos: free and grown again, on a tile's centre
+            for (int f = 0; f < 6; f++) { engine.Stick = (new Vector2(0.3f, 0f), false); InputManager.Feed(ActionFrame.None); engine.Update(Frame); }
+            engine.Stick = null;
+            Run(engine, 1);
             game.TravelTo("Kalos");
             Run(engine, 240);
             Assert.Equal(RegionDatabase.Kalos, engine.Here.Id);
+            Assert.Equal((0, 0), game.Player.Offset);
             Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
             Assert.Equal(CharacterKit.Grown, engine.KitHere);
+            if (!game.Map.IsIndoors) Assert.Equal(FieldCamera.Kalos, game.Map.Camera);
         });
     }
 }

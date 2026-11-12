@@ -1349,6 +1349,10 @@ public partial class GameEngine
                     // A ride on a course (plan 44 · SD5): the script hears its total as it is left
                     game.OpenPhotoTour(counter ?? "");
                     break;
+                case ScriptScreen.TourReport:
+                    // The tour's report (plan 44 · SD6): the script waits until it is left
+                    game.OpenTourReport();
+                    break;
                 case ScriptScreen.Wardrobe when counter == Instruction.SalonCounter || counter?.StartsWith(Instruction.DyeCounter, StringComparison.Ordinal) == true:
                     // The salon's chair and a boutique's dye house (plan 43 · LF3)
                     game.OpenSalon(dye: counter != Instruction.SalonCounter);

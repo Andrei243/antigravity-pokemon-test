@@ -148,10 +148,58 @@
     },
     {
       "en": [
-        "Shall we ride the Reed River?"
+        "What would you like to do?",
+        "RIDE A COURSE",
+        "SEE THE REPORT",
+        "NOTHING"
       ],
       "text": [
-        "Mergem pe Râul cu Trestii?"
+        "Ce-ai vrea să faci?",
+        "UN TRASEU",
+        "RAPORTUL",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "Which course shall we ride?",
+        "REED RIVER",
+        "DEEP WOOD",
+        "REEF SHORE",
+        "FURTHER AFIELD",
+        "NOT TODAY"
+      ],
+      "text": [
+        "Pe ce traseu mergem?",
+        "RÂUL CU TRESTII",
+        "CODRUL ADÂNC",
+        "ȚĂRMUL CU RECIFE",
+        "MAI DEPARTE",
+        "NU AZI"
+      ]
+    },
+    {
+      "en": [
+        "Further afield, then. Which one?",
+        "CAVERN",
+        "HIGH PASS",
+        "NIGHT GARDEN",
+        "NOT TODAY"
+      ],
+      "text": [
+        "Mai departe, deci. Care dintre ele?",
+        "PEȘTERA",
+        "TRECĂTOAREA ÎNALTĂ",
+        "GRĂDINA DE NOAPTE",
+        "NU AZI"
+      ]
+    },
+    {
+      "en": [
+        "The garden is at its best after dark, so we'll go out once the lamps are lit."
+      ],
+      "text": [
+        "Grădina e cea mai frumoasă după lăsarea întunericului, așa că ieșim când se aprind felinarele."
       ]
     },
     {
@@ -164,10 +212,10 @@
     },
     {
       "en": [
-        "Every best photograph goes into my report. Rain and the hour change what the river's residents get up to, so ride again!"
+        "Every best photograph goes into my report. Rain and the hour change what the residents get up to, so ride again!"
       ],
       "text": [
-        "Fiecare fotografie cea mai bună intră în raportul meu. Ploaia și ora schimbă ce fac locuitorii râului, așa că mai vino!"
+        "Fiecare fotografie cea mai bună intră în raportul meu. Ploaia și ora schimbă ce fac locuitorii, așa că mai vino!"
       ]
     },
     {
@@ -176,6 +224,30 @@
       ],
       "text": [
         "Nicio fotografie pe care s-o pot puncta... Nu-i nimic. Data viitoare prinde-i mari, în mijloc și cu fața spre tine."
+      ]
+    },
+    {
+      "en": [
+        "My report stands at {result} points. Bring me more and there'll be more thanks in it for you."
+      ],
+      "text": [
+        "Raportul meu are acum {result} puncte. Adu-mi mai multe și vei primi și mai multe mulțumiri."
+      ]
+    },
+    {
+      "en": [
+        "Every page is yours to fill. A rare moment, caught just right, is worth four stars!"
+      ],
+      "text": [
+        "Fiecare pagină e a ta de umplut. Un moment rar, prins cum trebuie, valorează patru stele!"
+      ]
+    },
+    {
+      "en": [
+        "That course opens once my report has more points in it. Bring me good photographs from the courses that are open!"
+      ],
+      "text": [
+        "Traseul acela se deschide când raportul meu are mai multe puncte. Adu-mi fotografii bune de pe traseele deschise!"
       ]
     },
     {
