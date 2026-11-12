@@ -3,7 +3,7 @@
 Written 2026-11-09, before any session, at the user's request, from [the study](studies/romania-region-study.md) and the user's answers of the same day (decisions 1 to 12, below).
 
 **Goal**: a tenth region, **Carpathia**, that has no original game at all. It is drawn from Romania: the ring of the Carpathians round the Transylvanian plateau, the plains outside it, the Danube to its delta and the Black Sea. It is built on [plan 32](32-open-world-engine.md)'s open-world engine and comes after Paldea in the chain. It has:
-- **its own Pokédex of about 120 new species** with no forebear in any game, three starter lines, a trio of legendaries and the Dacian draco as its mythical;
+- **its own Pokédex of about 250 new species** (249 since 2026-11-12) with no forebear in any game, three starter lines, a trio of legendaries, the three Fates, eight mythicals woven into the story and 25 Carpathian forms of existing species;
 - **a nineteenth type, Sound**, because music is at the heart of Romania;
 - **a primary gimmick of our own, the Tales (*basme*)**: once a battle a trainer tells a tale learned in the world, which changes the field for both sides for five turns and wakes the Pokémon bound to it; the other trainer may answer with a tale of their own;
 - **a secondary gimmick, the winter masks**: the bear, goat, horse and stag of the New Year's dances, crafted or found at the festivals, giving a Pokémon a role for a battle;
@@ -22,7 +22,7 @@ Everything in it is ours: places, people, species, words, art and music. Real pl
 - **The later-mechanic pattern** (plan 06 · R20 to R23, R30) has been followed five times: a `Ruleset` flag, a key item, a flag on the choice, a `WhyNot`, an event, the AI's use, `RunTerms.NoLaterMechanics`, a field of the Vs. Recorder's file. Its looks (plan 25) and a layer of the battle songs (plan Y · YD5) have a pattern too.
 - **Seasons** exist on the grid only (plan 22 · U3, U4); the open renderer has none.
 - **Crafting** (plan 39 · CR1) has the kit, materials and drops; CR3 to CR5 add making.
-- **The story** (docs, 2026-11-12): [the outline](decisions/CP-story-outline.md) with the user's beats, answers and approved names (Doina Lupescu, Ilie Sorescu, Aurelian Zenovie, Mara, Costel, Radu and Ilinca), and [the chapters](decisions/CP-story-chapters.md), scene by scene from the prologue to the post-game, with the Champion (Ruxandra Zorescu, proposed), Team Zenith's four executives, the eight leaders, the twelve tales' places and Tale Forms, the professors' creepy-voice moments, the roamers and the story's map onto the sessions below. The chapters wait for the user's eight open questions; CP18 to CP27 go ahead on their recommendations.
+- **The story** (docs, 2026-11-12): [the outline](decisions/CP-story-outline.md) with the user's beats, answers and approved names (Doina Lupescu, Ilie Sorescu, Aurelian Zenovie, Mara, Costel, Radu and Ilinca), and [the chapters](decisions/CP-story-chapters.md), scene by scene from the prologue to the post-game, with the Champion (Ruxandra Zorescu, proposed), Team Zenith's four executives, the eight leaders, the twelve tales' places and Tale Forms, the professors' creepy-voice moments, the roamers and the story's map onto the sessions below. The chapters wait for the user's ten open questions; CP18 to CP27 go ahead on their recommendations.
 
 ## Design
 
@@ -63,11 +63,12 @@ Built as plan 32's data (`Data/world3d/carpathia/`), hand-written terrain, carve
 
 ### The new species
 
-About **120** (decision 2), numbered **from 10001** in the order of the Carpathian Pokédex, outside the National 1,025 (`GetAll()` stays the games' alone) and outside the Pokédex of our own (`Pokedex.Ours` stays D14's). A **Carpathian Pokédex** of its own, with a diploma (plan 40 · GE4's pattern) and the charm a regional Pokédex earns (decision 6).
+About **250** (decision 2: 120 at first, 249 since 2026-11-12: Nos. 1 to 235 the region's species, 236 to 249 the Fates, the legendaries and the mythicals), numbered **from 10001** in the order of the Carpathian Pokédex, outside the National 1,025 (`GetAll()` stays the games' alone) and outside the Pokédex of our own (`Pokedex.Ours` stays D14's). A **Carpathian Pokédex** of its own, with a diploma (plan 40 · GE4's pattern) and the charm a regional Pokédex earns (decision 6).
 
 - **Made from nothing**: a hand-written table `tools/DataImporter/Overrides/species-carpathia.json` with every value a species has (stats, types, abilities, catch rate, growth, egg groups, effort, base experience, height, weight, colour, shape, gender ratio, learnset, TMs, tutors, evolutions), which the importer makes whole species of (`SpeciesOfNothing.cs`, beside `SpeciesPastHundred.cs`); a test holds every field present and every move and ability existing and run.
-- **Designed in batches** that the user approves, as D14's were (`decisions/CP-proposals-*.md`), the first being the starters and legendaries ([CP-proposals-starters-legendaries.md](decisions/CP-proposals-starters-legendaries.md)). About **15 regional forms** of existing species (a Carpathian Ursaring line, a delta Pelipper, a salt-mine Sableye, a shepherd's Lycanroc, a Bucovina Smeargle…) in the region's own block of a thousand (10000 + the species' number would collide with the Pokédex's own numbers, so forms take **11000 + the species' number**).
-- **Sculpted** from pictures, as D14's 400 were (`PokemonModels.Carpathia*.cs`), a batch of about 25 a session.
+- **Designed in batches** that the user approves, as D14's were (`decisions/CP-proposals-*.md`), the first being the starters and legendaries ([CP-proposals-starters-legendaries.md](decisions/CP-proposals-starters-legendaries.md)). **25 regional forms** of existing species (nine first, sixteen more on 2026-11-12: the salt-mine Sableye, the monastery painter Smeargle, the Sound lines of Noibat, Whismur and Jigglypuff, the goat dance's Skiddo, the lantern Drifloon, the giant Golett, the village balaur Dunsparce, the hora Spinda, the Dacian Bronzor, the linden-tea Sinistea, the wooden Chingling) in the region's own block of a thousand (10000 + the species' number would collide with the Pokédex's own numbers, so forms take **11000 + the species' number**).
+- **Sculpted** from pictures, as D14's 400 were (`PokemonModels.Carpathia*.cs`), a batch of about 25 a session: about ten sessions for 249 species and 25 forms, where CP4 to CP8 were counted for half that.
+- **The briefs** (2026-11-09, grown 2026-11-12) are `decisions/CP-dex-1-plateau.md` to `CP-dex-6-legends-and-mythicals.md`, read in that order with the `b` files after their area and the forms (`CP-dex-5-forms.md`) last; `tools/GeminiArt -- missing --set carpathia` lists what has no picture yet.
 - **Named** in English and Romanian together; **the user reviews the Romanian** (decision 7): `Data/text/ro/names.json` gains the Carpathian species, written by hand.
 - **Pokédex entries** written by hand (`dex-entries.json`), the check run as always.
 - **About 20 signature moves and 15 abilities** of our own (moves from **3101**, after R31's 3001 to 3072), each with its effect, its look (`MoveFx`), its sound and scenario tests (Showdown's oracle knows none of them).
@@ -134,7 +135,7 @@ The cap is **raised** (decision 3): `Ruleset.HighestLevel` to **300**. Carpathia
 Answered on 2026-11-09:
 
 1. **The gimmick**: the Tales as the primary, the winter masks as the secondary.
-2. **New species**: about 120.
+2. **New species**: about 120; raised by the user on 2026-11-12 to **about 240 to 250** (249 written), with more regional forms (25) and more mythicals that move the story (8).
 3. **Levels**: the cap raised past 260 (to about 300), Carpathia climbing on from Paldea.
 4. **Names**: invented with Romanian roots.
 5. **A new type**: yes, **Sound**.
@@ -182,7 +183,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - The starters and legendaries ([the file](decisions/CP-proposals-starters-legendaries.md)) answered by the user; then the proposals of the rest in batches of 25 to 30 (the Delta and coast, the plateau, the ridge and caves, the north and the capital) and the regional forms.
 
 ### CP4 to CP8 · Sculpts (5 sessions, H)
-- About 25 species a session from the approved pictures, with their eyes, decals and shiny palettes, held by the model tests; the regional forms in the last.
+- About 25 species a session from the approved pictures, with their eyes, decals and shiny palettes, held by the model tests; the regional forms in the last. Since the Pokédex grew to 249 species and 25 forms (2026-11-12) this is about ten sessions, not five: CP8 is split into CP8 to CP8e as the batches come.
 
 ### CP9 · Entries and names (1 session)
 - Two entries and a habitat for each, the Romanian names for the user's review.
@@ -242,7 +243,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [x] CP1 Species made from nothing (2026-11-12; the table empty until CP3; see "As built", below)
 - [x] CP2 The Sound type (2026-11-12; decisions 13 and 14 carried out as recommended; see "As built", below)
 - [ ] CP3 The first proposals approved (starters and legendaries written 2026-11-09, waiting for the user)
-- [x] The story's outline (2026-11-12: the user's beats, answers and names approved) and its chapters (2026-11-12, docs; eight open questions waiting for the user)
+- [x] The story's outline (2026-11-12: the user's beats, answers and names approved) and its chapters (2026-11-12, docs; ten open questions (two added 2026-11-12 with the new mythicals) waiting for the user)
 - [ ] CP4 Sculpts I
 - [ ] CP5 Sculpts II
 - [ ] CP6 Sculpts III

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 // Concept art for the sculpting sessions, drawn by Gemini from the proposals' written briefs.
 //   dotnet run --project tools/GeminiArt -- list
 //   dotnet run --project tools/GeminiArt -- prompt <name>
+//   dotnet run --project tools/GeminiArt -- missing [--set carpathia]     what generate would draw, and pictures no brief names
 //   dotnet run --project tools/GeminiArt -- generate [--set kanto|johto|hoenn|sinnoh|megas|carpathia] [--model <id>] [--size 1K|2K]
 //                                                   [--force] [--delay <ms>] [--limit <n>] [name ...]
 // The key is read from the GEMINI_API_KEY environment variable and never written anywhere.
@@ -24,7 +25,7 @@ static class Cli
     {
         if (args.Length == 0 || args[0] is "-h" or "--help")
         {
-            Console.WriteLine("usage: GeminiArt list | prompt <name> | generate [--set s] [--model id] [--size 1K] [--force] [--delay ms] [--limit n] [name ...]");
+            Console.WriteLine("usage: GeminiArt list | missing [--set s] | prompt <name> | generate [--set s] [--model id] [--size 1K] [--force] [--delay ms] [--limit n] [name ...]");
             return args.Length == 0 ? 2 : 0;
         }
 
@@ -52,6 +53,24 @@ static class Cli
                     Console.WriteLine($"{g.Key,-8} {g.Count()} briefs");
                 Console.WriteLine($"{all.Count} in all");
                 return 0;
+
+            // What generate would draw (briefs with no picture) and pictures no brief names any more: nothing is drawn or moved.
+            case "missing":
+            {
+                foreach (var g in chosen.GroupBy(b => b.Set))
+                {
+                    string dir = Path.Combine(root, "docs", "art", "reference", "gemini", g.Key);
+                    var drawn = Directory.Exists(dir)
+                        ? Directory.GetFiles(dir, "*.jpg").Select(Path.GetFileNameWithoutExtension).ToHashSet(StringComparer.OrdinalIgnoreCase)
+                        : new HashSet<string?>(StringComparer.OrdinalIgnoreCase);
+                    var wanted = g.Where(b => !drawn.Contains(b.Slug)).ToList();
+                    var orphans = drawn.Where(s => g.All(b => !b.Slug.Equals(s, StringComparison.OrdinalIgnoreCase))).OrderBy(s => s).ToList();
+                    Console.WriteLine($"{g.Key}: {g.Count()} briefs, {g.Count() - wanted.Count} drawn, {wanted.Count} to draw, {orphans.Count} pictures no brief names");
+                    foreach (var b in wanted) Console.WriteLine($"  to draw  {b.Slug}" + (b.From != null ? $"  (from {b.From})" : ""));
+                    foreach (var o in orphans) Console.WriteLine($"  orphan   {o}.jpg");
+                }
+                return 0;
+            }
 
             case "prompt":
                 if (chosen.Count == 0) { Console.Error.WriteLine("no brief by that name"); return 2; }
@@ -400,8 +419,10 @@ static class Briefs
         ("paldea", "D14-proposals-paldea.md"), ("megas", "R20b-mega-proposals.md"), ("megadynamax", "R20c-mega-dynamax-proposals.md"),
         ("alola", "D14-proposals-alola-supplement.md"), ("galar", "D14-proposals-galar-supplement.md"),
         ("kalos", "D14-proposals-kalos-supplement.md"), ("paldea", "D14-proposals-paldea-supplement.md"),
-        ("carpathia", "CP-dex-1-plateau.md"), ("carpathia", "CP-dex-2-mountains.md"), ("carpathia", "CP-dex-3-river-and-caves.md"),
-        ("carpathia", "CP-dex-4-folk-and-legends.md"), ("carpathia", "CP-dex-5-forms.md"),
+        ("carpathia", "CP-dex-1-plateau.md"), ("carpathia", "CP-dex-1b-plateau-more.md"), ("carpathia", "CP-dex-2-mountains.md"),
+        ("carpathia", "CP-dex-2b-mountains-more.md"), ("carpathia", "CP-dex-3-river-and-caves.md"), ("carpathia", "CP-dex-3b-river-and-caves-more.md"),
+        ("carpathia", "CP-dex-4-folk-and-legends.md"), ("carpathia", "CP-dex-4b-towns-more.md"),
+        ("carpathia", "CP-dex-6-legends-and-mythicals.md"), ("carpathia", "CP-dex-5-forms.md"),
     };
 
     public static List<Brief> ReadAll(string root)
