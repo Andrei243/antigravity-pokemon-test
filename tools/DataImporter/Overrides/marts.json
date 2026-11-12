@@ -94,6 +94,7 @@
     "festival_bellfall": [ "Rage Candy Bar", "Lava Cookie", "Moomoo Milk" ],
     "festival_tide_day": [ "Fresh Water", "Soda Pop", "Lemonade" ],
     "festival_bridgelight": [ "Casteliacone", "Lemonade", "Sweet Heart" ],
+    "festival_serenade": [ "Lumiose Galette", "Lemonade", "Sweet Heart" ],
     // The workshop garden's keeper (plan 39 · CR8): the four mulches, for the garden's soils and any other
     "workshop_garden": [ "Growth Mulch", "Damp Mulch", "Stable Mulch", "Gooey Mulch" ]
   }

@@ -146,6 +146,19 @@ Decisions: four directions (the skates are a new `TravelMode.Skating`: `Pace.Fas
   Pokémon against a batch of 24 placeable species, so two repeats, for this batch only (rulings, "The League's teams beyond"). Shots owed (the GPU is shared):
   a band of each kind (`gyms`-like `kwb_band_viola`, `kwb_band_diantha`), the tournament's Kalos events on its screen, and
   a species of ours met in Kalos's grass.
+- **Finishing Kalos** (2026-11-12, the user's request "finish Kalos if it is not finished"). **Kalos's own festival**
+  (plan 40 · GE9's owed row): the Solstice Serenade on 21 June in Lumiose's two parks south of the Prism Tower, four
+  strings of lanterns lit into the night, two music stands of wrought iron (`FestivalMusicStand`, a card of Kalos's own;
+  style guide, "Festivals"), a guitarist, a singer, a gentleman and a stall (`festival_serenade`), its gift a Throat Spray
+  at a courier (rulings, "Kalos's own festival"); `FestivalTests`; shots `gift`'s `GIFTS_PART=festivals` `gf8e` to `gf8g`.
+  **Viola's band**: her olive vest sank into her band and her pale gold hair into its light colour; her card is a soft
+  lilac (`196,176,220`, the style guide's fifth table; `IntoBattleTests.KalosHasItsOwnThirteenBands`). **Free movement in
+  Kalos** (plan 30, "The gate's owed, settled"): `fw30`, `fw33`, `fw36` to `fw39` shot in the `kalosgrown` mode
+  (`KALOSGROWN_FROM=walk`), with lying people, map fishers, Route 17's Mamoswine ridden and a live body under a deck as
+  grown figures (`kg60` to `kg69`); Kalos has no ledge and no ice tile, so `fw31` and `fw32` have nothing to show.
+  **Still owed**: the World Tournament's Kalos events and a species of ours met in Kalos's grass on the harness (shots
+  only, the content is built and tested); `profile` with twelve live rigs and Lumiose's line on the Windows machine (the
+  user's); the Friend Safari's other friends (plan 07); the user's look at the grown kit's Kalos and its gate.
 ### Alola
 Decisions: four islands as four matrices of one world folder, joined by a ferry that is a warp with a scene (plan 18 · W5's `common.Crossing` within a region); trials replace gyms (`Region.Challenge = "trials"`: seven trials and four grand trials as story flags, the card showing the four stamps, the cap counting stamps); the Ride Pager is `Grants` (Tauros `Charge`, Lapras and Sharpedo `Surf`, Machamp `Strength`, Mudsdale `Climb`, Charizard `Fly`); totems are a trainer-like battle with a new `BattleConditions.TotemAura` (stat stages on entry) and `callsForHelp` set in their areas (plan 14 · B5's); Z-Moves at home as plan 06 · R21 builds them (the Z-Ring only to a bag without one, each trial's crystal as the original gives it); the three region-bound evolutions come alive; Ultra Beasts and Ultra Space are the post-game; the Battle Royal is plan 14 · B13 placed, if plan 14's decision 7 keeps it; the Rotom Dex, Poké Pelago and the Festival Plaza are left out.
 

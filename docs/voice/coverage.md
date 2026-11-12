@@ -12,8 +12,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1754 | 1691 | 63 | 1 | 0 |
 | Scripts (`script:`) | 13405 | 12851 | 554 | 17 | 36 |
-| People of the world (`world:`) | 8069 | 8007 | 62 | 4 | 0 |
-| **All** | 23512 | 22830 | 682 | 22 | 36 |
+| People of the world (`world:`) | 8073 | 8011 | 62 | 4 | 0 |
+| **All** | 23516 | 22834 | 682 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -40,7 +40,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `look:gentleman (any)` | 1214 | 52 |
+| `look:gentleman (any)` | 1215 | 52 |
 | `look:grunt (any)` | 612 | 0 |
 | `rival` | 602 | 20 |
 | `look:clerk (any)` | 590 | 15 |
@@ -107,7 +107,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_juniper` | 67 | 0 |
 | `class:scientist (any)` | 66 | 0 |
 | `class:worker (any)` | 66 | 0 |
-| `stall_keeper` | 65 | 12 |
+| `stall_keeper` | 66 | 12 |
 | `archie` | 62 | 3 |
 | `artist` | 62 | 1 |
 | `collector` | 62 | 0 |

@@ -118,6 +118,10 @@ script FestivalBridgelight
   give "Prism Scale"
   return
 
+script FestivalSerenade
+  give "Throat Spray"
+  return
+
 # The three great days of the year, in every region, and the quiet fourth
 script Easter
   give "Lucky Egg"

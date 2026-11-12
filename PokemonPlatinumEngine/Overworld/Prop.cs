@@ -385,6 +385,8 @@ public enum PropType
     GatherSnowBare,
     /// <summary>A photo spot's plate (plan 43 · LF4): a low post with a camera on its face, read from the tile before it; blocks nothing.</summary>
     PhotoSpot,
+    /// <summary>Kalos's Solstice Serenade (plan 40 · GE9): a music stand of wrought iron with a sheet of songs and ribbons; a festival's thing.</summary>
+    FestivalMusicStand,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

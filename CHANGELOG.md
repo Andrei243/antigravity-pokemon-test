@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Kalos has a festival of its own: on 21 June, the longest day, Lumiose City's parks beside the Prism Tower fill with music stands, lanterns, players and a stall for the Solstice Serenade, and a Throat Spray waits at a Gift Runner. Viola's band before her battle now sets her against a soft lilac card, so she no longer melts into its green.
+
 - In Kalos, riding Route 17's Mamoswine now shows you sitting on its back at its full size, and people lying in bed and fishermen fishing are drawn as the grown figures everyone else in Kalos is.
 - Galar's gym challenge runs to its end: out of Hammerlocke's east gate along Routes 7 and 8 into the snow, Circhester with its Hero's Bath and Gordie's (Sword) or Melony's (Shield) gym, Route 9 on Circhester Bay, crossed on the water once a mechanic fits your bike for it, Spikemuth behind its shutter with Piers on his stage, and Raihan's double battles in Hammerlocke's stadium for the eighth badge. The rest of the Wild Area's north is open too: Dusty Bowl, the Stony Wilderness, the Giant's Cap and the Lake of Outrage, each with its own weather of the day.
 - Sunyshore City's workshop has a berry garden through its back door: two rows of soft soil, twenty-four patches to plant in, and a keeper who sells mulch and, with the crafting kit, shows which Berries cross. Berries side by side in a row may cross as they do anywhere else.

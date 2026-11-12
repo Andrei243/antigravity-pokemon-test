@@ -28,6 +28,8 @@ public class FestivalTests
         Assert.Equal(RegionDatabase.Johto, F("bellfall").Region);
         Assert.Equal(RegionDatabase.Hoenn, F("tide_day").Region);
         Assert.Equal(RegionDatabase.Unova, F("bridgelight").Region);
+        Assert.Equal(RegionDatabase.Kalos, F("serenade").Region);
+        Assert.Equal("lumiose_city", F("serenade").Town);
         // The three great days and the quiet fourth belong to no one region: every region's Gift Runners keep them
         Assert.All(new[] { "new_year", "easter", "christmas", "valentine" }, id => Assert.Null(F(id).Region));
         // A town's festival has a stall of its own in marts.json
@@ -44,6 +46,10 @@ public class FestivalTests
         Assert.False(On("lanterns", 2026, 10, 17));
         Assert.True(On("tide_day", 2026, 6, 20));
         Assert.False(On("tide_day", 2026, 6, 21));
+        // Kalos's Solstice Serenade keeps the longest day alone
+        Assert.False(On("serenade", 2026, 6, 20));
+        Assert.True(On("serenade", 2026, 6, 21));
+        Assert.False(On("serenade", 2026, 6, 22));
         Assert.True(On("valentine", 2027, 2, 14));
         Assert.False(On("valentine", 2027, 2, 15));
         // Across the year's end: Snowpoint's Midwinter Lights, 18 December to 2 January
