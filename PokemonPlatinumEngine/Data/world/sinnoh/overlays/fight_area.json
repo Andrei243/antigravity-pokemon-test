@@ -142,7 +142,7 @@
       "script": "InverseBattle", "shownBy": "FLAG_HIDE_FIGHT_AREA_BATTLERS_AND_SPECTATORS" },
     // The Villa Larder (plan 41 · EG7): the harbour clerk with the ferry's log, a deckhand, and the ferry's captain, who
     // waits on the pier once Looker has made his deductions
-    { "id": "harbour_clerk", "name": "Harbour Clerk", "npcType": "clerk", "x": 626, "y": 433, "facing": "Left", "script": "HarbourClerk" },
+    { "id": "harbour_clerk", "name": "Harbour Clerk", "npcType": "clerk", "x": 626, "y": 435, "facing": "Up", "script": "HarbourClerk" },
     { "id": "deckhand", "name": "Deckhand", "npcType": "sailor", "x": 633, "y": 435, "facing": "Down", "script": "Deckhand" },
     { "id": "ferren", "name": "Ferren Dray", "npcType": "ferren", "x": 622, "y": 434, "facing": "Right", "script": "Ferren",
       "shownBy": "FLAG_CASE_SINNOH_FERREN_WAITS" }

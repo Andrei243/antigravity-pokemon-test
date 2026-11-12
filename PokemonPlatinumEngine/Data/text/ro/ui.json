@@ -1007,6 +1007,62 @@
     "help": "Un pachet de mai jos e pus peste cele de dinainte. Un pachet e munca celui care l-a făcut; meritele îl însoțesc."
   },
 
+  "hubPlaza": {
+    "pennants": "FANIOANE",
+    "rank": "RANGUL SĂLII",
+    "pitch": {
+      "which": "Ce tarabă să stea pe locul {n}?",
+      "empty": "LASĂ-L GOL",
+      "leave": "CUM E ACUM"
+    },
+    "stall": {
+      "goods": { "name": "TARABA CU MĂRFURI", "keeper": "Negustor de Mărfuri" },
+      "lottery": { "name": "COLȚUL LOTERIEI", "keeper": "Omul Loteriei" },
+      "seals": { "name": "TARABA CU SIGILII", "keeper": "Negustor de Sigilii" },
+      "poffin": { "name": "OALA DE POFFIN", "keeper": "Bucătar de Poffin" },
+      "relearner": { "name": "REAMINTITORUL DE MIȘCĂRI", "keeper": "Reamintitorul de Mișcări" },
+      "kurt": { "name": "TEJGHEAUA LUI KURT", "keeper": "Agentul Apricornilor" },
+      "blender": { "name": "MIXERUL DE BOABE", "keeper": "Omul Mixerului" }
+    }
+  },
+  "hubMissions": {
+    "title": "MUNCA SĂPTĂMÂNII",
+    "hint": { "act": "Primește sau începe" },
+    "week": "SĂPTĂMÂNA {from} – {to}",
+    "empty": "Nu e nimic afișat săptămâna asta. Panoul afișează misiuni în regiunile în a căror Sală a Faimei ai intrat.",
+    "state": { "claimed": "PRIMITĂ", "claim": "PRIMEȘTE!", "running": "ÎN CURS", "begin": "ÎNCEPE" },
+    "timed": "O MISIUNE CONTRA CRONOMETRU",
+    "plain": "O MISIUNE A SĂPTĂMÂNII",
+    "progress": "FĂCUT PÂNĂ ACUM",
+    "reward": "RĂSPLATĂ",
+    "andItem": "și {item}",
+    "clock": "TIMP",
+    "clockNote": "Ceasul merge cât timp joci pe teren și în luptele lui în regiunea asta și stă pe loc oriunde altundeva. O singură misiune contra cronometru odată.",
+    "corner": { "done": "MISIUNE", "left": "TIMP RĂMAS" },
+    "kind": {
+      "CatchType": "Prinde {n} Pokémoni de tip {type} în {region}.",
+      "CatchInArea": "Prinde {n} Pokémoni în {place}, {region}.",
+      "BeatTrainers": "Învinge {n} antrenori în {region}.",
+      "WinRematch": "Câștigă {n} revanșe în {region}.",
+      "HatchEggs": "Clocește {n} Ouă în {region}.",
+      "Landmark": "Mergi la {place}, {region}.",
+      "WinFacility": "Câștigă {n} lupte la un complex de lupte din {region}.",
+      "WinContest": "Câștigă un concurs în {region}."
+    },
+    "notice": {
+      "past": "Răsplăți rămase din săptămânile trecute: {n} fanioane sunt ale tale!",
+      "claimed": "Primită! {n} fanioane au mers la Sala Fanioanelor.",
+      "claimedItem": "Primită! {n} fanioane au mers la Sala Fanioanelor, iar {item} în Rucsac.",
+      "begun": "A început! Ai {minutes} minute de joc în {region}.",
+      "alreadyClaimed": "Răsplata asta a fost primită deja.",
+      "oneAtATime": "Doar o misiune contra cronometru poate fi în curs odată.",
+      "underWay": "Misiunea asta e în curs. Grăbește-te!",
+      "notDone": "Misiunea asta nu e încă gata.",
+      "doneInField": "Misiune îndeplinită! {mission} Primește răsplata la panou.",
+      "timeUp": "S-a terminat timpul! Misiunea contra cronometru n-a fost îndeplinită. Poate fi începută din nou la panou."
+    }
+  },
+
   "athlon": {
     "title": "POKÉATHLON",
     "courses": "TRASEE",
@@ -1880,7 +1936,8 @@
     "levelCaption": "NIVEL",
     "trainer": "ANTRENOR ORIGINAL",
     "id": "Nr. ID",
-    "type": "TIP"
+    "type": "TIP",
+    "earlier": "ECHIPE MAI VECHI"
   },
   "journal": {
     "title": "JURNAL",
@@ -2938,6 +2995,53 @@
     "photoContest": "Concurs de {category}, Rang {rank}",
     "photoBy": "{trainer}  ·  {date}"
   },
+  "giftBox": {
+    "title": "CUTIA CU CADOURI",
+    "tab": { "waiting": "AȘTEAPTĂ ({n})", "cards": "FELICITĂRI", "words": "SPUNE CUVINTE" },
+    "hint": { "choose": "Ia", "words": "Spune cuvinte" },
+    "empty": "Nimic nu așteaptă în cutie.",
+    "album": { "empty": "Niciun cadou n-a fost luat încă." },
+    "words": { "title": "SPUNE CUVINTE", "body": "Două cuvinte spuse unui Curier de Cadouri pot aduce un cadou. Alege asta, iar Curierul ți le va cere." },
+    "backdrop": "Fundalul {name}",
+    "gift": {
+      "newYear": { "sender": "Poșta Anului Nou", "title": "Ziua de Anul Nou", "card": "Să-ți înceapă anul plin de culoare." },
+      "laurelSinnoh": { "sender": "Galeria Laurilor", "title": "Sala Faimei din Sinnoh", "card": "Pentru prima dintre Săli." },
+      "laurelKanto": { "sender": "Galeria Laurilor", "title": "Sala Faimei din Kanto", "card": "Un rând liniștit pentru o victorie zgomotoasă." },
+      "laurelJohto": { "sender": "Galeria Laurilor", "title": "Sala Faimei din Johto", "card": "Muntele își aduce aminte." },
+      "laurelHoenn": { "sender": "Galeria Laurilor", "title": "Sala Faimei din Hoenn", "card": "Pentru lungul drum pe mare." },
+      "laurelUnova": { "sender": "Galeria Laurilor", "title": "Sala Faimei din Unova", "card": "Pentru orașul podurilor." },
+      "registry100": { "sender": "Registrul", "title": "100 de specii prinse", "card": "O sută de nume. Mergi mai departe." },
+      "registry500": { "sender": "Registrul", "title": "500 de specii prinse", "card": "Pagina e aproape plină." },
+      "registry1000": { "sender": "Registrul", "title": "1.000 de specii prinse", "card": "Câte una din fiecare fel, plus ale tale." },
+      "hourKeepers": { "sender": "Păzitorii Orelor", "title": "50 de ore de joc", "card": "Pentru orele lăsate în urmă." },
+      "anniversary": { "sender": "Poșta Anului Nou", "title": "Încă un an", "card": "Încă un an pe drum." },
+      "giftDay": { "sender": "Ghișeul de Cadouri", "title": "Ziua Cadourilor", "card": "Un mic ceva venit de nicăieri." },
+      "festivalLanterns": { "sender": "Orașul Hearthome", "title": "Noaptea Felinarelor", "card": "Fiecare acoperiș luminat o săptămână. Ia-ți puțin din ea acasă." },
+      "festivalMidwinter": { "sender": "Orașul Snowpoint", "title": "Luminile Iernii", "card": "Lumini în fiecare brad și fulgi de nea pentru Poké Ball-urile tale." },
+      "festivalBlossom": { "sender": "Orășelul Floaroma", "title": "Zilele Florilor", "card": "Orășelul în floare, de la noi pentru tine." },
+      "festivalSummer": { "sender": "Orașul Sunyshore", "title": "Noaptea de Vară", "card": "Pentru focurile de lumină de deasupra mării." },
+      "festivalHarvestMoon": { "sender": "Orașul Celadon", "title": "Luna Recoltei", "card": "Trei mingi rotunde ca luna de deasupra acoperișurilor." },
+      "festivalBellfall": { "sender": "Orașul Ecruteak", "title": "Căderea Clopotelor", "card": "Clopotele scutură frunzele jos. Fă ca acesta să sune mai departe." },
+      "festivalTideDay": { "sender": "Orașul Slateport", "title": "Ziua Mareei", "card": "O picătură de mare, din cea mai lungă zi de pe docuri." },
+      "festivalBridgelight": { "sender": "Orașul Castelia", "title": "Lumina Podurilor", "card": "Fiecare pod luminat și un solz care strălucește ca ele." },
+      "easter": { "sender": "Curierii de Cadouri", "title": "Paștele", "card": "Un ou care aduce noroc, cum fac ouăle în vremea asta a anului." },
+      "christmas": { "sender": "Curierii de Cadouri", "title": "Crăciunul", "card": "O stea pentru vârful bradului. Crăciun fericit!" },
+      "valentine": { "sender": "cineva", "title": "O felicitare fără nume", "card": "Mă gândesc la tine." }
+    }
+  },
+  "tradeBoard": {
+    "title": "PANOUL DE SCHIMBURI",
+    "hint": { "choose": "Alege" },
+    "wants": "VREA",
+    "offers": "OFERĂ",
+    "unknown": "???",
+    "level": "Nv. {n} sau mai mare",
+    "met": "ÎNTÂLNIT",
+    "blind": "SCHIMB PE NEVĂZUTE",
+    "blindLeft": "{n} din {of} rămase azi",
+    "sent": "{trainer} a trimis {received} în schimbul lui {given}!",
+    "language": { "French": "FRANCEZĂ", "German": "GERMANĂ", "Italian": "ITALIANĂ", "Spanish": "SPANIOLĂ", "Japanese": "JAPONEZĂ", "Korean": "COREEANĂ" }
+  },
   "photoAlbum": {
     "title": "ALBUM FOTO",
     "count": "{n} / {of}",
@@ -3056,6 +3160,10 @@
     "carnival": "O amintire de la un carnaval.",
     "classic": "O panglică dată la o adunare clasică a Pokémonilor.",
     "premier": "O panglică pentru o zi deosebită de toate celelalte.",
+    "championHearth": "Trimisă de Galeria Laurilor în cinstea primilor pași ai unui Campion.",
+    "naturalist": "Pentru un Antrenor care a prins cinci sute de feluri de Pokémoni.",
+    "thousandNames": "Pentru un Antrenor care a prins o mie de feluri de Pokémoni.",
+    "giftDay": "O panglică de la Ghișeul de Cadouri, pentru cele două cuvinte potrivite.",
     "any": "O panglică.",
     "waitsFor": {
       "hoenn": "un Pokémon adus din Hoenn",
@@ -4308,6 +4416,7 @@
     "Clown": "Clovn",
     "Collector": "Colecționar",
     "Commander": "Comandant",
+    "RecordsKeeper": "Păstrător de Recorduri",
     "CoolCouple": "Cuplu cool",
     "Cooltrainer": "Antrenor cool",
     "Cowgirl": "Cowgirl",
@@ -5929,7 +6038,166 @@
         "coupon3": "Răspunde la ghicitoarea clovnului de lângă Jubilife TV.",
         "president": "Du-i președintelui cele trei cupoane."
       }
+    },
+    "case_sinnoh": {
+      "title": "Cămara vilei",
+      "giver": "Looker",
+      "place": "Agenția Ușa Deschisă",
+      "reward": "Onorariul agenției și un Solz-Inimă",
+      "step": {
+        "clue_label": "Întreabă-l pe îngrijitorul vilei din Zona de Odihnă despre cămară.",
+        "clue_bite": "Găsește-o pe fata al cărei Gible tânăr e învinuit, în Zona de Odihnă.",
+        "clue_log": "Cere-i funcționarului portului de pe cheiul Zonei de Luptă jurnalul feribotului.",
+        "clue_receipt": "Întreabă-l pe marinarul feribotului din Zona de Luptă despre lăzi.",
+        "deduce": "Spune-i lui Looker ce arată indiciile.",
+        "culprit": "Înfruntă-l pe vinovat pe cheiul Zonei de Luptă.",
+        "closed": "Întoarce-te la Looker, la agenție, și dă-i raportul."
+      }
+    },
+    "case_kanto": {
+      "title": "Pasagerul în plus al feribotului",
+      "giver": "Looker",
+      "place": "Agenția Ușa Deschisă",
+      "reward": "Onorariul agenției și o Perlă Mare",
+      "step": {
+        "clue_stub": "Întreabă-l pe casierul de bilete de pe cheiul din Orașul Vermilion despre locul gol.",
+        "clue_duffel": "Întreab-o pe paznica portului de pe Insula Doi despre ce a rămas în urmă.",
+        "clue_remark": "Întreabă-l pe pescarul bătrân de pe cheiul din Orașul Vermilion despre feribot.",
+        "deduce": "Spune-i lui Looker ce arată indiciile.",
+        "culprit": "Înfruntă-l pe vinovat pe cheiul din Orașul Vermilion.",
+        "closed": "Întoarce-te la Looker, la agenție, și dă-i raportul."
+      }
+    },
+    "case_johto": {
+      "title": "Gravurile din Alph",
+      "giver": "Looker",
+      "place": "Agenția Ușa Deschisă",
+      "reward": "Onorariul agenției și un Solz-Inimă",
+      "step": {
+        "clue_chalk": "Întreabă-l pe cercetătorul de la Ruinele Alph despre semnele de cretă.",
+        "clue_lanterns": "Întreabă-l pe campistul de la Ruinele Alph despre nopți.",
+        "clue_dust": "Întreabă-l pe școlarul de la Ruinele Alph despre literele Unown.",
+        "deduce": "Spune-i lui Looker ce arată indiciile.",
+        "culprit": "Găsește-l pe cel din spatele cretei, la Ruinele Alph.",
+        "closed": "Întoarce-te la Looker, la agenție, și dă-i raportul."
+      }
+    },
+    "case_hoenn": {
+      "title": "Drumul sării",
+      "giver": "Looker",
+      "place": "Agenția Ușa Deschisă",
+      "reward": "Onorariul agenției și o Bucată de Stea",
+      "step": {
+        "clue_seal": "Întreabă-l pe vameșul din Orășelul Dewford despre lăzile cu sare.",
+        "clue_song": "Întreabă-l pe marinarul care cântă în Orășelul Dewford despre echipajul bărcii cu sare.",
+        "clue_tide": "Întreabă-l pe pescarul bătrân din Orășelul Dewford despre barca cu sare.",
+        "deduce": "Spune-i lui Looker ce arată indiciile.",
+        "culprit": "Înfruntă-l pe vinovat pe țărmul Orășelului Dewford.",
+        "closed": "Întoarce-te la Looker, la agenție, și dă-i raportul."
+      }
+    },
+    "case_unova": {
+      "title": "Sala închiriată de două ori",
+      "giver": "Looker",
+      "place": "Agenția Ușa Deschisă",
+      "reward": "Onorariul agenției și o Pepită",
+      "step": {
+        "clue_schedule": "Întreabă-l pe organizatorul din piața Turneului Mondial despre rezervare.",
+        "clue_smudge": "Întreabă-l pe celălalt organizator din piața Turneului Mondial.",
+        "clue_keys": "Întreabă-l pe îngrijitorul Turneului Mondial despre chei.",
+        "deduce": "Spune-i lui Looker ce arată indiciile.",
+        "culprit": "Înfruntă-l pe vinovat la ușa Turneului Mondial.",
+        "closed": "Întoarce-te la Looker, la agenție, și dă-i raportul."
+      }
+    },
+    "case_kalos": {
+      "title": "Capodopera împrumutată",
+      "giver": "Looker",
+      "place": "Agenția Ușa Deschisă",
+      "reward": "Onorariul agenției și o Perlă Mare",
+      "step": {
+        "clue_screws": "Întreabă-l pe paznicul de noapte de lângă muzeul din Orașul Lumiose despre ramă.",
+        "clue_ticket": "Întreabă-l pe hamalul de lângă gara din Orașul Kiloude despre trenuri.",
+        "clue_varnish": "Întreabă-l pe pictorul din Orașul Kiloude despre nopți.",
+        "deduce": "Spune-i lui Looker ce arată indiciile.",
+        "culprit": "Înfruntă-l pe vinovat în piața din Orașul Kiloude.",
+        "closed": "Întoarce-te la Looker, la agenție, și dă-i raportul."
+      }
     }
+  },
+  "cases": {
+    "thinkAgain": "STAI SĂ MĂ GÂNDESC",
+    "sinnoh": {
+      "clue": {
+        "label": "Eticheta lăzii",
+        "bite": "Urmele de mușcături",
+        "log": "Jurnalul feribotului",
+        "receipt": "Chitanța ieftină"
+      },
+      "deduce": {
+        "1": "Ce arată că Gible-ul cel tânăr n-a prădat niciodată cămara?",
+        "2": "Atunci când ar fi putut ieși mâncarea din vilă fără să fie văzută?"
+      }
+    },
+    "kanto": {
+      "clue": {
+        "stub": "Cotorul biletului",
+        "duffel": "Sacul de voiaj",
+        "remark": "Vorba pescarului"
+      },
+      "deduce": {
+        "1": "Ce arată că mai vinde cineva bilete, în afară de casă?",
+        "2": "Atunci cine îl urcă la bord pe călătorul în plus după numărătoare?"
+      }
+    },
+    "johto": {
+      "clue": {
+        "chalk": "Copiile în cretă",
+        "lanterns": "Felinarele",
+        "dust": "Mânecile pline de cretă"
+      },
+      "deduce": {
+        "1": "Ce arată că semnele sunt o lecție, nu o șotie?",
+        "2": "Atunci cine aduce o clasă la ruine noaptea?"
+      }
+    },
+    "hoenn": {
+      "clue": {
+        "seal": "Sigiliul vămii",
+        "song": "Cântecul marinarului",
+        "tide": "Tabelul mareelor"
+      },
+      "deduce": {
+        "1": "Ce arată că lăzile au fost deschise după vamă?",
+        "2": "Atunci ce duc de fapt lăzile?"
+      }
+    },
+    "unova": {
+      "clue": {
+        "schedule": "Programul ștampilat",
+        "smudge": "Urma de radieră",
+        "keys": "Registrul cheilor"
+      },
+      "deduce": {
+        "1": "Ce arată că după-amiaza a fost vândută de două ori?",
+        "2": "Atunci cine a schimbat registrul după program?"
+      }
+    },
+    "kalos": {
+      "clue": {
+        "screws": "Șuruburile lucioase",
+        "ticket": "Biletul de tren",
+        "varnish": "Lacul proaspăt"
+      },
+      "deduce": {
+        "1": "Cum iese tabloul din muzeu fără să fie văzut?",
+        "2": "Atunci unde se duce în fiecare noapte?"
+      }
+    }
+  },
+  "laurelCircuit": {
+    "keepTitle": "Vedeta serii",
+    "title": "Campion al Laurilor"
   },
   "friends": {
     "title": "Antrenori prieteni",
