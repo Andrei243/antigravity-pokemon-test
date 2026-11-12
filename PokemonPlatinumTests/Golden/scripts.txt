@@ -15419,6 +15419,10 @@ way -
 === common.GabbyAndTyUpdateLocation
 from a trainer with lines of their own
 way -
+=== common.GalarDen
+from a trainer with lines of their own
+way -
+  > A den of red stone. No light rises from it today.
 === common.GalarNewGame
 from a trainer with lines of their own
 way -
@@ -15426,6 +15430,7 @@ way -
   + FLAG_GALAR_HIDE_HOP_GARDEN2
   + FLAG_GALAR_HIDE_HOP_GATE
   + FLAG_GALAR_HIDE_HOP_LAKE
+  + FLAG_GALAR_HIDE_HOP_RIVERBANK
   + FLAG_GALAR_HIDE_HOP_STATION
   + FLAG_GALAR_HIDE_HOP_WEALD
   + FLAG_GALAR_HIDE_HOP_WEDGEHURST

@@ -1,0 +1,19 @@
+# Motostoke Riverbank (plan 33 · GL2): the Wild Area's northern edge under Motostoke. The steps up to the city are
+# closed until the opening ceremony (plan 33 · GL4 opens them, at VAR_GALAR_STORY 13, postwick.txt's count).
+
+
+# The foot of the steps: the League's steward turns a Trainer back
+script MotostokeSteps
+  if var VAR_GALAR_STORY >= 13 end
+  faceto player league_steward
+  speaker "League Steward"
+  say "Sorry, the steps are closed! Motostoke is busy getting ready for the opening ceremony of the gym challenge."
+  say "You'll hear when they open. The Wild Area's all yours until then!"
+  walkto player motostoke_steps_back
+  end
+
+
+script DenRiverbank1
+  raid den "riverbank_1"
+  call GalarDen
+  end

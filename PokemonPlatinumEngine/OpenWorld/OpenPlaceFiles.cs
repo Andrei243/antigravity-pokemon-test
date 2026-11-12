@@ -42,6 +42,12 @@ public sealed class OpenPlaceFile
 
     /// <summary>Groves (plan 32 · OW9): polygons filled with trees on a jittered grid.</summary>
     public List<OpenGroveFile> Groves { get; set; } = new();
+
+    /// <summary>
+    /// The places some Pokémon evolve at in this area (plan 33 · GL2: <c>Stone Arch</c>, the Runerigus line's), as a
+    /// grid overlay's <c>evolutionSites</c>: a level-up anywhere in the area counts as at them.
+    /// </summary>
+    public List<string> EvolutionSites { get; set; } = new();
 }
 
 /// <summary>A tree: its foot ([x, z] on the highest ground there, or [x, y, z] on the ground nearest y), its kind and its size.</summary>
@@ -179,6 +185,12 @@ public sealed class OpenZoneFile
     [DataRequired] public List<OpenSlotFile> Slots { get; set; } = new();
     public int Density { get; set; } = 4;
     public int Cap { get; set; } = 4;
+
+    /// <summary>
+    /// The zone's rustling grass's table (plan 33 · GL2): met by touching a patch of its grass that shakes now and then,
+    /// never seen walking about. Left out where the grass never rustles.
+    /// </summary>
+    public List<OpenSlotFile>? Rustle { get; set; }
 }
 
 /// <summary>A row of a zone's table.</summary>
@@ -191,6 +203,9 @@ public sealed class OpenSlotFile
 
     /// <summary>When in the day the row is met (plan 32 · OW7): <c>Any</c> unless told, <c>Morning</c>, <c>Day</c> or <c>Night</c>.</summary>
     public OpenSlotTime Time { get; set; }
+
+    /// <summary>The weathers the row is met under (plan 33 · GL2: <c>Rain</c>, <c>Snow</c>...); left out, under any.</summary>
+    public List<FieldWeather>? Weather { get; set; }
 }
 
 /// <summary>Water laid by hand: [x, z] corners and the surface's height.</summary>
@@ -276,7 +291,7 @@ public static class OpenPlaceFiles
             map.Add(new OpenDoor(d.Name, key, ShapeOf(d.Box, d.Cylinder), d.Room, d.At[0], d.At[1], d.Facing, d.Out, d.OpenedBy));
         foreach (var z in place.Zones)
             map.Add(new OpenZone(z.Name, key, z.Polygon.Select(Ground).ToList(), OpenPos.Millimetres(z.MinY), OpenPos.Millimetres(z.MaxY),
-                z.Slots.Select(s => new OpenSlot(s.Species, s.MinLevel, s.MaxLevel, s.Weight, s.Time)).ToList(), z.Density, z.Cap));
+                z.Slots.Select(SlotOf).ToList(), z.Density, z.Cap) { Rustle = z.Rustle?.Select(SlotOf).ToList() ?? (IReadOnlyList<OpenSlot>)Array.Empty<OpenSlot>() });
         foreach (var w in place.Water) map.Add(OpenWaterBox.Metres(w.Name, w.Min[0], w.Min[1], w.Max[0], w.Max[1], w.Level));
         foreach (var s in place.Solids)
         {
@@ -288,7 +303,12 @@ public static class OpenPlaceFiles
         // Scenery (plan 32 · OW9): the trees standing one by one, then the groves'
         foreach (var t in place.Trees) map.Add(TreeOf(t));
         foreach (var g in place.Groves) map.Add(GroveOf(g));
+        if (place.EvolutionSites.Count > 0) map.AddSites(key, place.EvolutionSites);
     }
+
+    /// <summary>A row of a zone's table as the map keeps it.</summary>
+    static OpenSlot SlotOf(OpenSlotFile s) =>
+        new(s.Species, s.MinLevel, s.MaxLevel, s.Weight, s.Time) { Weather = s.Weather is { Count: > 0 } w ? w.ToList() : null };
 
     /// <summary>A tree of a place as the map keeps it (plan 32 · OW9).</summary>
     public static OpenTree TreeOf(OpenTreeFile t)
@@ -344,11 +364,13 @@ public static class OpenPlaceFiles
         string baked = Path.Combine(folder, "baked");
         BakedRegion? land = withLand && File.Exists(Path.Combine(baked, "index.json")) ? BakedRegion.Open(baked) : null;
 
+        // The region's weather by area and day (plan 33 · GL2), where it keeps one
+        var calendar = OpenCalendar.Read(folder);
         var maps = new List<OpenMap>();
         var mapOfArea = new Dictionary<string, OpenMap>(StringComparer.OrdinalIgnoreCase);
         foreach (var entry in index.Maps)
         {
-            var map = new OpenMap(entry.Name, index.Region) { Land = land };
+            var map = new OpenMap(entry.Name, index.Region) { Land = land, Calendar = calendar };
             foreach (var area in index.Areas.Where(a => entry.Areas.Contains(a.Key, StringComparer.OrdinalIgnoreCase)))
             {
                 map.Add(AreaOf(area));
@@ -406,13 +428,18 @@ public static class OpenPlaceFiles
             if (z.Slots.Count == 0) Fail(file, $"$.zones[{i}].slots", "a zone has a row of its table or more");
             if (z.Cap < 1) Fail(file, $"$.zones[{i}].cap", "is one or more");
             if (z.Density < 1) Fail(file, $"$.zones[{i}].density", "is one or more");
-            for (int s = 0; s < z.Slots.Count; s++)
+            var rows = z.Slots.Select((slot, n) => (slot, path: $"$.zones[{i}].slots[{n}]"))
+                .Concat((z.Rustle ?? new()).Select((slot, n) => (slot, path: $"$.zones[{i}].rustle[{n}]")));
+            if (z.Rustle is { Count: 0 }) Fail(file, $"$.zones[{i}].rustle", "a zone's rustling grass has a row of its table or more, or is left out");
+            foreach (var (slot, path) in rows)
             {
-                var slot = z.Slots[s];
-                if (slot.MinLevel < 1 || slot.MaxLevel < slot.MinLevel) Fail(file, $"$.zones[{i}].slots[{s}]", "levels from one, maxLevel no less than minLevel");
-                if (slot.MaxLevel > Ruleset.HighestLevel) Fail(file, $"$.zones[{i}].slots[{s}].maxLevel", $"is no more than {Ruleset.HighestLevel}, the highest level a Pokémon may have");
-                if (!Enum.IsDefined(slot.Time)) Fail(file, $"$.zones[{i}].slots[{s}].time", "is any, morning, day or night");
-                if (slot.Weight < 1) Fail(file, $"$.zones[{i}].slots[{s}].weight", "is one or more");
+                if (slot.Weather is { } weathers)
+                    for (int w = 0; w < weathers.Count; w++)
+                        if (!Enum.IsDefined(weathers[w])) Fail(file, $"{path}.weather[{w}]", "is a weather of the field's");
+                if (slot.MinLevel < 1 || slot.MaxLevel < slot.MinLevel) Fail(file, path, "levels from one, maxLevel no less than minLevel");
+                if (slot.MaxLevel > Ruleset.HighestLevel) Fail(file, $"{path}.maxLevel", $"is no more than {Ruleset.HighestLevel}, the highest level a Pokémon may have");
+                if (!Enum.IsDefined(slot.Time)) Fail(file, $"{path}.time", "is any, morning, day or night");
+                if (slot.Weight < 1) Fail(file, $"{path}.weight", "is one or more");
             }
         }
         for (int i = 0; i < place.Water.Count; i++)

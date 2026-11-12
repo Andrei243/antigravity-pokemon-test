@@ -60,7 +60,14 @@ public enum BattleFormat
     /// (<see cref="Data.Ruleset.Royals"/>) against three trainers; anywhere else it is the double the first two make
     /// (<see cref="BattleFormats.FallBack"/>).
     /// </summary>
-    Royal
+    Royal,
+    /// <summary>
+    /// A Max Raid battle (plan 33 · GL3, Sword and Shield's; <c>docs/mechanics/rulings.md</c>, "Max Raid dens"): the player
+    /// and three Trainers of their own on four places against one wild Pokémon Dynamaxed for the whole battle
+    /// (<see cref="Sim.RaidTerms"/>, <see cref="Sim.BattleCore.IsRaid"/>). Fought only under rules that have it
+    /// (<see cref="Data.Ruleset.Raids"/>) against one wild Pokémon; anywhere else it is the single it began as.
+    /// </summary>
+    Raid
 }
 
 /// <summary>What each format is made of (plan 14 · B3): how many places a side has, and what a battle asked for becomes.</summary>
@@ -80,6 +87,8 @@ public static class BattleFormats
         BattleFormat.Triple => 3,
         // The player's one place and one for each of the three others (plan 14 · B13)
         BattleFormat.Royal => side == BattleSide.Enemy ? 3 : 1,
+        // The player's place and three raiders' against the den's one (plan 33 · GL3)
+        BattleFormat.Raid => side == BattleSide.Enemy ? 1 : 4,
         _ => 1
     };
 
@@ -125,6 +134,14 @@ public static class BattleFormats
             if (!partner && rules.Royals && trainers == 3 && ownAble > 0 && foesAble > 0 && kind == BattleKind.Normal)
                 return BattleFormat.Royal;
             asked = BattleFormat.Double;
+        }
+        // A Max Raid (plan 33 · GL3): the player alone with a Pokémon able to fight against one wild Pokémon, under rules
+        // that have it; otherwise the single it began as
+        if (asked == BattleFormat.Raid)
+        {
+            if (!partner && rules.Raids && trainers == 0 && wild == 1 && ownAble > 0 && kind == BattleKind.Normal)
+                return BattleFormat.Raid;
+            asked = BattleFormat.Single;
         }
         return (asked == BattleFormat.Double || partnerStays) && canDouble && !special ? BattleFormat.Double : BattleFormat.Single;
     }
@@ -260,6 +277,9 @@ public sealed class BattleSetup
     /// <summary>A Galar den's battle against a Mega Dynamax boss (plan 06 · R20c, question 14): the wild Pokémon there may Mega Evolve and Mega Dynamax by itself, under rules that have it. Off unless given.</summary>
     public bool MegaMaxDen { get; init; }
 
+    /// <summary>A Max Raid den's battle (plan 33 · GL3): its stars and the three raiders beside the player; null for any other.</summary>
+    public Sim.RaidTerms? Raid { get; init; }
+
     /// <summary>
     /// The difficulty chosen at NEW GAME (plan 13 · V2; <see cref="Sim.CoreSetup.Difficulty"/>): Easy gives more EXP. The
     /// game hands it over from the run's rules; a battle a test or a tool builds itself is Normal unless it asks.
@@ -361,6 +381,7 @@ public sealed class BattleSetup
         NoBattleItems = NoBattleItems,
         OffersSwitch = OffersSwitch,
         MegaMaxDen = MegaMaxDen,
+        Raid = Raid,
         Difficulty = Difficulty,
         RunLevelCap = RunLevelCap,
         CrossedExp = CrossedExp,

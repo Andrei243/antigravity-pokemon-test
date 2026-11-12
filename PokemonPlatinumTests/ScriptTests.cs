@@ -246,6 +246,10 @@ public class ScriptTests
           craft pantry
           craft meal "beanHotpot"
           craft meal "campStew" superb
+          raid den "rolling_1"
+          raid watts
+          raid fight
+          raid catch "Poké Ball"
           treat can
           treat can mixed
           treat bake spicy

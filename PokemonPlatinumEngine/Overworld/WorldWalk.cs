@@ -51,6 +51,23 @@ internal static class WorldWalk
             Visit(map, start.X, start.Y, TravelMode.OnFoot, map.HeightAt(start.X, start.Y), arrived: true);
         }
 
+        // Where a script sends the player: a tile of a grid map, or (plan 33 · GL2, the train to the Wild Area) a marker of an
+        // open map, which the open map's flood then sets out from
+        void Send(PokemonPlatinumEngine.Story.Instruction sent)
+        {
+            if (sent.Op == PokemonPlatinumEngine.Story.Op.WarpTo)
+            {
+                if (OpenWorld.OpenRegions.Shared(sent.Name) is { } outside && outside.Marker(sent.Other) is { } landing)
+                {
+                    if (!openStarts.TryGetValue(outside.Name, out var list)) openStarts[outside.Name] = list = new();
+                    list.Add(landing.Pos);
+                }
+                return;
+            }
+            var onto = mapOf(sent.Name);
+            Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+        }
+
         // Who and what takes the player somewhere when spoken to or read, by the tile they are on, whenever in the story
         // they are there and whatever they stand on (plan 02 · S12): Cynthia by the tear at Spear Pillar, who is hidden
         // until her scene, and a portal of the Distortion World, which hangs on rock or over nothing
@@ -82,8 +99,7 @@ internal static class WorldWalk
             if (arrived)
                 foreach (var sent in WarpsOf(PokemonPlatinumEngine.Story.ScriptLibrary.OnEnter, map.ScriptFileAt(x, y)))
                 {
-                    var onto = mapOf(sent.Name);
-                    Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                    Send(sent);
                 }
 
             // A tile whose own script puts the player down elsewhere on the map is a way there (plan 06 · R16c: the huts
@@ -98,6 +114,7 @@ internal static class WorldWalk
                 if (trigger.Script.Length > 0)
                     foreach (var sent in WarpsOf(trigger.Script, trigger.ScriptFile ?? map.ScriptFileAt(x, y)))
                     {
+                        if (sent.Op == PokemonPlatinumEngine.Story.Op.WarpTo) { Send(sent); continue; }
                         var onto = mapOf(sent.Name);
                         if (onto.InBounds(sent.X, sent.Y) && !onto.IsSolid(sent.X, sent.Y))
                             Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
@@ -197,16 +214,14 @@ internal static class WorldWalk
                 if (SendingOf(map).TryGetValue((x + ax, y + ay), out var portals))
                     foreach (var sent in portals)
                     {
-                        var onto = mapOf(sent.Name);
-                        Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                        Send(sent);
                     }
                 // and someone behind a counter is spoken to across it, as the game speaks to them (plan 23, Kalos
                 // finished: the Friend Safari's guide)
                 if (map.BehaviourAt(x + ax, y + ay) == TileBehavior.Counter && SendingOf(map).TryGetValue((x + 2 * ax, y + 2 * ay), out var across))
                     foreach (var sent in across)
                     {
-                        var onto = mapOf(sent.Name);
-                        Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                        Send(sent);
                     }
                 var step = FieldMovement.Step(map, x, y, way, walker);
                 if (step.Moves)
@@ -290,8 +305,7 @@ internal static class WorldWalk
                 else if (step.Obstacle == Obstacle.Person && map.GetNpcAt(nx, ny) is { Script: { } name } person)
                     foreach (var sent in WarpsOf(name, person.ScriptFile))
                     {
-                        var onto = mapOf(sent.Name);
-                        Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                        Send(sent);
                     }
             }
         }
@@ -357,7 +371,7 @@ internal static class WorldWalk
                 if (line.Op == PokemonPlatinumEngine.Story.Op.Call) waiting.Enqueue(line.Name);
             }
         }
-        return lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp);
+        return lines.Where(i => i.Op is PokemonPlatinumEngine.Story.Op.Warp or PokemonPlatinumEngine.Story.Op.WarpTo);
     }
 
     /// <summary>
@@ -371,7 +385,7 @@ internal static class WorldWalk
         if (lines == null) return Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
         lines.AddRange(lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Call).ToList()
             .SelectMany(call => library.Find(call.Name, file)?.Everything() ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>()));
-        if (lines.Any(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)) return Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+        if (lines.Any(i => i.Op is PokemonPlatinumEngine.Story.Op.Warp or PokemonPlatinumEngine.Story.Op.WarpTo)) return Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
         return lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Place && i.Name == "player");
     }
 

@@ -29,7 +29,10 @@ public class GalarTests
         return (grid, open);
     });
 
-    private static readonly string[] Areas = { "postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2" };
+    private static readonly string[] Areas = { "postwick", "slumbering_weald", "galar_route_1", "wedgehurst", "galar_route_2",
+        // The Wild Area's southern half (plan 33 · GL2; GalarWildAreaTests)
+        "wild_area_meetup_spot", "wild_area_rolling_fields", "wild_area_dappled_grove", "wild_area_watchtower_ruins", "wild_area_lake_axewell",
+        "wild_area_giants_seat", "wild_area_lake_miloch", "wild_area_motostoke_riverbank" };
 
     [Fact]
     public void GalarIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -82,7 +85,7 @@ public class GalarTests
     }
 
     [Fact]
-    public void TheOpenMapHasItsFiveAreasTheirSongsAndTheirPlaces()
+    public void TheOpenMapHasItsAreasTheirSongsAndTheirPlaces()
     {
         var map = Open.Value;
         Assert.Equal(Areas, map.Areas.Select(a => a.Key));
@@ -103,9 +106,10 @@ public class GalarTests
             var way = room.Warps.Single(w => w.TargetMap == "Galar");
             Assert.Equal(door, map.DoorBackFrom(room.Name, way.SourceX, way.SourceY));
         }
-        // Wild Pokémon live in the grass of the two routes only, every row a species of the data, at their levels
-        Assert.Equal(new[] { "route1_west", "route1_east", "route2_south", "route2_north" }, map.Zones.Select(z => z.Name));
-        foreach (var slot in map.Zones.SelectMany(z => z.Slots))
+        // Wild Pokémon live in the grass of the two routes and the Wild Area, every row a species of the data, the routes'
+        // at their first levels (the Wild Area's are GalarWildAreaTests')
+        Assert.Equal(new[] { "route1_west", "route1_east", "route2_south", "route2_north" }, map.Zones.Where(z => z.Place.StartsWith("galar_route")).Select(z => z.Name));
+        foreach (var slot in map.Zones.Where(z => z.Place.StartsWith("galar_route")).SelectMany(z => z.Slots))
         {
             Assert.True(PokemonDatabase.Get(slot.Species) != null || PokemonDatabase.SpeciesOfForm(slot.Species) != null, slot.Species);
             Assert.InRange(slot.MinLevel, 2, 7);
@@ -162,6 +166,8 @@ public class GalarTests
             Assert.True(walk.Reaches(person.Home), $"{person.Key} stands where nobody can come");
         // And the open map isn't one piece with the banks round it: their tops are never come to
         Assert.False(walk.Reaches(OpenPos.FromMetres(-80, 9, -150)));
+        // nor the Wild Area's north bank under Motostoke, until plan 33 · GL4 opens its steps
+        Assert.False(walk.Reaches(OpenPos.FromMetres(0, 16, -650)));
     }
 
     [Fact]
@@ -240,7 +246,11 @@ public class GalarTests
         Assert.Equal("galarTrain", Next());
         Play("Wedgehurst_Station", "Attendant", "Wedgehurst_Station");
         Assert.Equal(11, story.Var("VAR_GALAR_STORY"));
-        Assert.Equal("galarFree", Next());
+        // The train runs north to the Wild Area (plan 33 · GL2), where it stops short and Hop goes on ahead
+        Assert.Equal("galarWildArea", Next());
+        Play("wild_area_meetup_spot", "OnEnter");
+        Assert.Equal(12, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarWildArea", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }
 
@@ -254,7 +264,7 @@ public class GalarTests
         {
             ("postwick", "HopAtTheDoor", 1), ("postwick", "WealdGate", 3), ("slumbering_weald", "Shadow", 4),
             ("wedgehurst", "LeonArrives", 2), ("wedgehurst", "HopWaits", 6), ("galar_route_2", "HopsBattle", 8),
-            ("galar_route_2", "WishingStars", 9)
+            ("galar_route_2", "WishingStars", 9), ("wild_area_meetup_spot", "OnEnter", 11)
         })
         {
             var ends = new List<string>();

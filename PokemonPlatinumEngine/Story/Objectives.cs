@@ -356,6 +356,8 @@ public static class Objectives
         (708, "galarGarden", AtLeast("VAR_GALAR_STORY", 9), true),
         (709, "galarLake", AtLeast("VAR_GALAR_STORY", 10), true),
         (710, "galarTrain", AtLeast("VAR_GALAR_STORY", 11), true),
+        // Plan 33 · GL2: off the train at the Wild Area, north on foot to Motostoke's steps (GL4 sets 13 there)
+        (711, "galarWildArea", AtLeast("VAR_GALAR_STORY", 13), true),
         (799, "galarFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

@@ -66,6 +66,31 @@ public sealed partial class OpenMap
         return null;
     }
 
+    private readonly Dictionary<string, List<string>> sites = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// The places some Pokémon evolve at in an area (plan 33 · GL2: the Stone Arch, rulings' Runerigus line), what a
+    /// place's <c>evolutionSites</c> names: an open map's <c>Map.EvolutionSitesAt</c>.
+    /// </summary>
+    public void AddSites(string area, IEnumerable<string> names)
+    {
+        if (!sites.TryGetValue(area, out var list)) sites[area] = list = new();
+        foreach (string name in names) if (!list.Contains(name)) list.Add(name);
+    }
+
+    /// <summary>The evolution sites of the area a place is in; none where it names none.</summary>
+    public IReadOnlyList<string> SitesAt(OpenPos pos) =>
+        AreaAt(pos) is { } area && sites.TryGetValue(area.Key, out var list) ? list : Array.Empty<string>();
+
+    /// <summary>Every area's evolution sites, by the area's key.</summary>
+    public IReadOnlyDictionary<string, List<string>> Sites => sites;
+
+    /// <summary>
+    /// The region's weather calendar (plan 33 · GL2: Galar's <c>calendar.json</c>, a column to an area), or null where
+    /// the region has none and every area keeps the weather it names (<see cref="OpenWeather.Of"/>).
+    /// </summary>
+    public OpenCalendar? Calendar { get; set; }
+
     /// <summary>The script file of a place: its area's key, or the map's name where no area holds it.</summary>
     public string ScriptFileAt(OpenPos pos) => AreaAt(pos)?.Key ?? Name;
 

@@ -1,0 +1,10 @@
+{
+  // The Stone Arch (plan 33 · GL2; docs/mechanics/rulings.md, "The Wild Area"): two legs of rock and a lintel over them
+  // at the Giant's Seat's eastern foot, walked under, where a Galarian Yamask that has taken enough hits becomes Runerigus.
+  // Our own shape, rock of the land; the Watchtower's stones are a building of the places' (places/wild_area_watchtower_ruins.json)
+  "additions": [
+    { "kind": "pillar", "name": "the Stone Arch's west leg", "at": [-49, -528], "radius": 1.4, "bottom": 1, "top": 10 },
+    { "kind": "pillar", "name": "the Stone Arch's east leg", "at": [-39, -528], "radius": 1.4, "bottom": 1, "top": 10 },
+    { "kind": "capsules", "name": "the Stone Arch's lintel", "points": [[-50.5, 9.6, -528], [-44, 10.4, -528], [-37.5, 9.6, -528]], "radius": 1.5 }
+  ]
+}

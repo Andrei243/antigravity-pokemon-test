@@ -86,6 +86,16 @@ public partial class GameEngine
         openWalkers.Clear();
         var feet = Feet(field.Player.Pos);
         openWalkers.Add(feet);
+        // A patch of rustling grass (plan 33 · GL2; style guide, "Open world"): an unseen walker going round in a small
+        // circle, so the grass over it parts this way and that, three turns a second, from the picture's clock alone
+        foreach (var r in field.Wild.Rustles)
+        {
+            if (openWalkers.Count >= 3) break;
+            var at = Feet(r.At);
+            if (Vector3.Distance(at, feet) > OpenGrass.Reach) continue;
+            double turn = FrameClock.Now * 3.0 * Math.Tau + r.Began;
+            openWalkers.Add(at + new Vector3((float)Math.Cos(turn) * 0.35f, 0, (float)Math.Sin(turn) * 0.35f));
+        }
         var near = new List<(float D, Vector3 At)>();
         foreach (var f in figures)
         {

@@ -1,0 +1,48 @@
+{
+  // The Rolling Fields (plan 33 · GL2): grassy swells west of the station, where the Wild Area's most ordinary Pokémon
+  // graze, its grass rustles, and a huge Onix far beyond the Poké Balls of a Trainer with no badges sleeps in the open.
+  // The Digging Duo dig by the track for Watts. Scripts: Data/scripts/wild_area_rolling_fields.txt
+  "triggers": [
+    // Its Max Raid den (plan 33 · GL3): stepping to it looks in, its light gives Watts once a day and its Pokémon may be raided
+    { "name": "den_rolling_1", "cylinder": { "at": [-100, -330], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenRolling1" },
+    { "name": "den_rolling_2", "cylinder": { "at": [-120, -362], "radius": 1.5, "bottom": -1, "top": 30 }, "script": "DenRolling2" }
+  ],
+  "zones": [
+    {
+      "name": "rolling_fields",
+      "polygon": [[-146, -376], [-48, -376], [-48, -306], [-146, -306]],
+      "minY": -1, "maxY": 14,
+      "slots": [
+        { "species": "Wooloo", "minLevel": 8, "maxLevel": 12, "weight": 25 },
+        { "species": "Bunnelby", "minLevel": 8, "maxLevel": 12, "weight": 20 },
+        { "species": "Nickit", "minLevel": 8, "maxLevel": 11, "weight": 15 },
+        { "species": "Vulpix", "minLevel": 9, "maxLevel": 12, "weight": 15, "weather": ["Drought", "Clear"] },
+        { "species": "Hoothoot", "minLevel": 8, "maxLevel": 11, "weight": 15, "time": "Night" },
+        { "species": "Ralts", "minLevel": 9, "maxLevel": 12, "weight": 15, "weather": ["Fog"] },
+        { "species": "Snom", "minLevel": 9, "maxLevel": 12, "weight": 20, "weather": ["Snow", "HeavySnow"] },
+        // The strong one: over a Trainer's reach until three badges
+        { "species": "Onix", "minLevel": 36, "maxLevel": 38, "weight": 3 }
+      ],
+      "rustle": [
+        { "species": "Hatenna", "minLevel": 9, "maxLevel": 12, "weight": 20 },
+        { "species": "Ralts", "minLevel": 9, "maxLevel": 12, "weight": 15 },
+        { "species": "Impidimp", "minLevel": 9, "maxLevel": 12, "weight": 15, "time": "Night" },
+        { "species": "Seedot", "minLevel": 8, "maxLevel": 11, "weight": 20 }
+      ],
+      "density": 3, "cap": 6
+    }
+  ],
+  "people": [
+    {
+      "name": "digger_drill", "at": [-60, 4.8, -352], "yaw": 90, "look": "worker", "displayName": "Digging Brother",
+      "script": "DiggingDuo"
+    },
+    {
+      "name": "digger_drill_brother", "at": [-60, 4.8, -356], "yaw": 90, "look": "worker", "displayName": "Digging Brother",
+      "lines": ["My brother does the digging. I do the cheering. It's a fair split, I'd say."]
+    }
+  ],
+  "groves": [
+    { "name": "the Rolling Fields' west copse", "polygon": [[-146, -372], [-128, -372], [-128, -330], [-146, -330]], "spacing": 6, "fill": 0.6, "pines": 0.3, "seed": 501 }
+  ]
+}

@@ -11044,6 +11044,84 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   Escape Rope, Dig and Teleport in an open map (each still notes a grid place), the train's run north (GL2), and every
   species of the Galar Pokédex but the sixteen the two routes and the three give (`GalarSpeciesTests.Owed`).
 
+## The Wild Area (2026-11-12, plan 33 · GL2)
+
+- **A smaller Wild Area than the plan's, for the user to judge** (plan 33 · decision 1 asked for about 1.2 km by 2 km in
+  all). The southern half is built at 300 m by 330 m (`Data/world3d/galar`, chunks `[-5, -20, 4, 1]`), north of the
+  railway's bank, because the region's land is baked to one rectangle of chunks and committed: the plan's size would be
+  more than a hundred megabytes of bake, this is 26 MB for the whole region. Its eight parts are the original's
+  southern places in their order (Meetup Spot by the station, the Rolling Fields, the Dappled Grove, the Watchtower
+  Ruins, Lake Axewell, the Giant's Seat, Lake Miloch, Motostoke Riverbank), keyed `wild_area_*`, our own land. The
+  northern half and a larger footprint are GL5's to decide with the user.
+- **The train.** Wedgehurst Station's attendant boards the endorsed Trainer (`VAR_GALAR_STORY` 11, as GL1 had it) and the
+  train runs north at once to the Wild Area's station (`warpto "Galar" wild_area_station`); the Meetup Spot's `OnEnter`
+  says the line ahead is blocked by Wooloo and Hop goes on ahead to the steps under Motostoke (12). The steps are closed
+  by a League steward until the ceremony (GL4 sets 13 there). The train runs both ways from then on. The objective is
+  `galarWildArea` (711). `WorldWalk` follows a script's `warpto` into an open map as it follows a `warp`.
+- **Weather by part and day** is `calendar.json`, the shape of Platinum's calendar (`WorldCalendarFile`, a column to an
+  area), read by `OpenWorld/OpenWeather.cs` for `GameClock.Today` (the harness fixes the day): one answer for the
+  picture, the wild Pokémon's tables, a battle's opening weather and an evolution that waits for rain. Our own table
+  (decision 4): each part has weights by season and a weather holds for one to four days; the Giant's Seat has the
+  sandstorms, the hard sun (`Drought`) and the winter's snow, the lakes the rain and the thunder, the Rolling Fields and
+  the ruins the fog.
+- **Pokémon by weather.** A zone's row may name the weathers it is met under (`weather`); a row that names none is met
+  under any, so GL1's zones and every zone of the lab bring out what they did, with no draw more. The Wild Area's
+  tables are the species Sword shows in those parts as public lists have them, with our own weights and levels.
+- **Rustling grass** (decision 3, kept): a zone with a `rustle` table shakes a patch of its grass now and then (every
+  three seconds a zone with none shaking may start one, 6 to 28 m from the player, in view or not), which stills after
+  eight seconds; touched, it meets one of that table at once, drawn from the zone's own seed and the field's tick, never
+  the dice (`OpenWildField.Rustles`, `Touching`). The picture parts the grass over it with an unseen walker going round
+  (style guide, "Open world"). Its Pokémon are never seen walking about.
+- **Strong Pokémon** stand among the ordinary ones (an Onix in the Rolling Fields, a Haxorus by Lake Axewell, a Steelix
+  on the Giant's Seat, a Gengar by the ruins in fog), and a ball is refused for a wild Pokémon above the level Galar's
+  badges allow (`Models/CatchLimits.cs`: 25 with none, five more a badge, none with all eight; our numbers, beside
+  `Obedience`'s; `BattleConditions.CatchCeiling`, kept by the Vs. Recorder's file; `battle.tooStrongToCatch`). It can
+  still be battled and beaten. Every other region catches anything.
+- **Watts** are a story variable, `VAR_GALAR_WATTS`, as the Battle Subway keeps its run, so no save version was raised.
+  The Watt trader at the Meetup Spot sells Exp. Candy, a Dynamax Candy and a Bottle Cap for them, and the Digging Duo
+  dig for 500 W (an item of eight on the game's own die). The dens that give Watts are GL3's. The Ball Guy gives one
+  ball of six a day (`FLAG_DAILY_GALAR_BALL_GUY`).
+- **The Stone Arch** (the rulings' Runerigus line) is rock of the land at the Giant's Seat's eastern foot (`carve/wild_area.json`),
+  and the Giant's Seat's place names it (`evolutionSites`): a level-up anywhere in that part counts. In Sword it stands in
+  the Dusty Bowl, which is the northern half's; GL5 may move it. In an open map the evolution rules now read the open
+  place's sites and its weather of the day (`GameEngine.EvolutionContextNow`), where they had read the grid map left.
+- **What GL2 leaves owed**: the Rotom Bike in Galar (plan 30's `RotomBike` mode, which no engine code runs yet; the
+  Bicycle item is not offered there), camping and curry in the open map (plan 10 · F6 to F8's camp opens from the start
+  menu as anywhere; nothing of it is placed in the Wild Area), the harness's shots and `profile` with twelve field
+  Pokémon in rain (the `galar` mode isn't written; no GPU run was made), and the user's look at the Wild Area.
+
+## Max Raid dens (2026-11-12, plan 33 · GL3)
+
+- **A raid is a format of its own**, `BattleFormat.Raid` at the enum's end, behind `Ruleset.Raids` (the modern rules have
+  it, Platinum's don't, so `battles-platinum.txt` can't move; under Platinum's a raid asked for is the single it began
+  as). The player's side has four places, the wild side one (`PlacesOf`). The three raiders are Trainers of their own on
+  places 1 to 3 (`RaidTerms.Allies`), each with one Pokémon, thought for by the trainer AI as a partner is
+  (`ControllerOf`); nobody switches (`battle.raidNoSwitch`) and nothing is used from the bag. For plan 34's Tera Raids
+  too.
+- **The boss** Dynamaxes as the battle opens (the rules' own `Dynamax`) and keeps it to the end (`KeepsItsDynamax`), its
+  HP then raised once more for every star past the first (`RaidRules.HpHalves`: five stars, five times). It uses Max
+  Moves as any Dynamaxed Pokémon does. At four stars it acts a second time every other turn and at five every turn
+  (`RaidRules.ActsTwice`, a wild Pokémon's choice on the battle's generator, before the turn's end).
+- **Its barrier** (Sword's shields, our numbers): once a hit takes it to half its HP the barrier goes up (the hit stops at
+  half), with one shield fewer than its stars (none at one or two stars); while shields stand a hit lets a quarter of its
+  damage through, never the last HP, and breaks one shield (a Max Move two). `RaidBarrier` on the line tells the screen.
+- **Falls**: a raider who falls is back on their feet, whole, as the turn ends (`battle.raidBackOnItsFeet`), and the
+  raiders' fourth fall blows them out of the den (`battle.raidBlownOut`): the raid is lost, as a loss a script allows,
+  with no white-out. `RaidTerms.CannotFail` (GL6's Eternatus) never loses.
+- **The catch** is the den's script's, after the battle, as Sword asks before the throw: `raid catch` with a ball of the
+  bag, its chance by the stars (one star always, five 45 in a hundred; a Great Ball ten more, an Ultra Ball fifteen, a
+  Master Ball always; `Raids.CatchChance`, ours) on the host's own die.
+- **The dens** are `Data/world/galar/dens.json` (ours, decision 4): nine in the Wild Area, each a table of species by
+  stars and version. What a den holds on a day is drawn by the day's number, the den's id and the version, among the rows
+  the badges allow (`Raids.MostStars`: two stars with none or one badge, five with six or more), and a third of them are
+  lit on a day. A lit den's light gives Watts once a day (two hundred and a hundred a star). The raiders who answer are
+  drawn the same way from the file's seven, each with one of their species at the boss's level.
+- **Kept by the Vs. Recorder's file**: `RaidStars`, `RaidAllies`, `RaidCannotFail`; `GalarRaidTests` replays one.
+- **Owed** (GL3's second session): the den's beam drawn in the open map (a column of light, our own; the style guide's row
+  is written, nothing draws it yet), the raid's screen (four platforms on the player's side, the barrier's shields on the
+  boss's box), the Wishing Piece (an item the importer must add; `FLAG_DAILY_GALAR_DEN_<ID>_WISHED` already lights a den),
+  `CoreSetup.MegaMaxDen`'s post-game den (GL7), the shots `ft70_raid_four`, `ft71_raid_catch` and the beam by day and night.
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or

@@ -382,6 +382,8 @@ public sealed partial class ScriptRunner
         Op.Tutor or Op.Amity => true,
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm" or "pantry",
+        // A raid fought waits for the player (plan 33 · GL3); a den looked into, its Watts and a catch's die don't
+        Op.Raid => i.Name == "fight",
         Op.Treat => false,
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
@@ -1525,6 +1527,10 @@ public sealed partial class ScriptRunner
             // The crafting kit and its pouch (plan 39 · CR1)
             case Op.Craft:
                 CraftCommand(i);
+                break;
+            // Galar's Max Raid dens (plan 33 · GL3)
+            case Op.Raid:
+                RaidCommand(i);
                 break;
             // Treats (plan 35 · BN3)
             case Op.Treat:

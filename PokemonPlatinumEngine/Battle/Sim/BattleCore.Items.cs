@@ -398,6 +398,9 @@ public sealed partial class BattleCore
             if (IsTrainerBattle) return Text.Of("battle.theTrainerBlockedThe");
             // A trial's totem and its allies can't be caught (plan 23 · Z6)
             if (Totem != null) return TotemRefusal;
+            // Galar's strong wild Pokémon can't be caught until the badges say so (plan 33 · GL2)
+            if (Conditions.CatchCeiling > 0 && EnemySlots.FirstOrDefault(f => f.IsActive)?.Pokemon is { } strong && strong.Level > Conditions.CatchCeiling)
+                return Text.Of("battle.tooStrongToCatch");
             if (EnemySlots.Count(f => f.IsActive) is > 1 and var standing) return NoAim(standing);
             return null;
         }

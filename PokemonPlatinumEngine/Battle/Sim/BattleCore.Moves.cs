@@ -1112,6 +1112,8 @@ public sealed partial class BattleCore
             }));
         }
         if (hit.OneHitKo) damage = p.MaxHP;
+        // A raid's boss behind its barrier (plan 33 · GL3)
+        damage = ThroughTheRaidBarrier(use, t, damage);
         // False Swipe leaves one
         if (effect.LeavesOneHp && damage >= p.CurrentHP) damage = p.CurrentHP - 1;
         int dealt = Math.Min(p.CurrentHP, damage);

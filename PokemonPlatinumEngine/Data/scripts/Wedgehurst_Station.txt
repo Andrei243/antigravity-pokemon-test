@@ -1,11 +1,11 @@
 # Wedgehurst Station (plan 33 · GL1): the attendant sells a ticket north only to a Trainer endorsed for the gym
-# challenge. Boarding is the end of Galar's first chapter; the train's run north and its stop at the Wild Area's
-# station are plan 33 · GL2's, so for now it waits at the platform. VAR_GALAR_STORY is postwick.txt's count.
+# challenge. Boarding is the end of Galar's first chapter, and the train runs north to the Wild Area's station, where it
+# stops short of Motostoke (plan 33 · GL2, wild_area_meetup_spot.txt). VAR_GALAR_STORY is postwick.txt's count.
 
 
 script Attendant
   speaker "Station Attendant"
-  if var VAR_GALAR_STORY >= 11 goto Waiting
+  if var VAR_GALAR_STORY >= 11 goto Again
   if var VAR_GALAR_STORY == 10 goto Board
   say "Trains north to the Wild Area and Motostoke. Gym challengers travel free, with an endorsement."
   end
@@ -16,14 +16,18 @@ label Board
   scene "Aboard the train north"
   text "{player} stepped aboard. Hop is already at a window seat, waving like mad."
   speaker "Station Attendant"
-  say "We'll be off as soon as the line ahead is clear. There's a flock of Wooloo on it again, I'm told."
+  say "Next stop the Wild Area, and Motostoke after it, if the line's clear of Wooloo."
   setvar VAR_GALAR_STORY 11
-  objective galarFree
+  objective galarWildArea
   endscene
+  warpto "Galar" wild_area_station
   end
 label Later
   say "Come back when you're ready. The trains wait for gym challengers."
   end
-label Waiting
-  say "Still waiting on those Wooloo up the line, I'm afraid. The train won't be long."
+label Again
+  say "The line north still stops at the Wild Area. There's a flock of Wooloo on it past there, I'm told."
+  ask "Take the train to the Wild Area?"
+  if no goto Later
+  warpto "Galar" wild_area_station
   end

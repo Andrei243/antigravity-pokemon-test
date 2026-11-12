@@ -1086,6 +1086,8 @@ public class SceneSkipTests
         "postwick.Hop at the door", "postwick.Into the Weald", "slumbering_weald.The shadow in the fog",
         "wedgehurst.The Champion comes home", "wedgehurst.Hop in Wedgehurst",
         "galar_route_2.Hop in the professor's garden", "galar_route_2.The Wishing Stars",
+        // and the Wild Area's arrival by train (plan 33 · GL2), an open place's OnEnter
+        "wild_area_meetup_spot.The train stops short",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

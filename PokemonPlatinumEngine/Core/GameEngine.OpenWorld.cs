@@ -75,6 +75,8 @@ public partial class GameEngine
         KeepTheOpenPeopleThere(field);
         // The zones' tables are read at the game's time of day (plan 32 · OW7)
         field.Wild.Now = GameClock.Now;
+        // and under each zone's weather of the day (plan 33 · GL2)
+        field.Wild.WeatherOf ??= zone => OpenWeather.OfZone(field.Map, zone, GameClock.Today);
         if (ScriptRunning)
         {
             // A script that begins takes the player off the mount (plan 30 · FM12)

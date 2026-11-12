@@ -448,3 +448,9 @@ public sealed record RoyalPlaced(IReadOnlyList<int> Standing, IReadOnlyList<int>
 /// come after it on lines of their own.
 /// </summary>
 public sealed record TotemAuraRaised(Place Place) : BattleEvent;
+
+/// <summary>
+/// A raid's boss behind its barrier (plan 33 · GL3; <see cref="BattleCore.RaidShields"/>): the shields standing from this
+/// line on, nought as the barrier falls. It rides on the line that tells of it.
+/// </summary>
+public sealed record RaidBarrier(Place Place, int Shields) : BattleEvent;

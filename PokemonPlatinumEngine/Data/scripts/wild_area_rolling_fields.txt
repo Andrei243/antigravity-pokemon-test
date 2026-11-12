@@ -1,0 +1,59 @@
+# The Rolling Fields (plan 33 · GL2): the Digging Duo, who dig for a Trainer's Watts (VAR_GALAR_WATTS,
+# wild_area_meetup_spot.txt's header) and turn up something the ground holds, drawn on the game's own chance.
+
+
+script DiggingDuo
+  speaker "Digging Brother"
+  say "Dig, dig, dig! For 500 Watts I'll dig you up whatever's down there. Could be something good! You have {var:VAR_GALAR_WATTS} W."
+  ask "Pay 500 Watts for a dig?"
+  if no goto Bye
+  if var VAR_GALAR_WATTS < 500 goto Short
+  addvar VAR_GALAR_WATTS -500
+  text "The brother dug and dug..."
+  random 8
+  if result == 0 goto Stone
+  if result == 1 goto Stone2
+  if result == 2 goto Pearl
+  if result == 3 goto Nugget
+  if result == 4 goto Candy
+  if result == 5 goto Shard
+  give "Hard Stone"
+  goto Done
+label Stone
+  give "Everstone"
+  goto Done
+label Stone2
+  give "Fire Stone"
+  goto Done
+label Pearl
+  give "Pearl"
+  goto Done
+label Nugget
+  give "Nugget"
+  goto Done
+label Candy
+  give "Exp. Candy S"
+  goto Done
+label Shard
+  give "Red Shard"
+label Done
+  say "There you go! The ground's always got something for those who ask it nicely."
+  end
+label Short
+  say "That's not 500 Watts, friend. Touch a den's beam of light and you'll have plenty."
+  end
+label Bye
+  say "Suit yourself! The ground's not going anywhere."
+  end
+
+
+script DenRolling1
+  raid den "rolling_1"
+  call GalarDen
+  end
+
+
+script DenRolling2
+  raid den "rolling_2"
+  call GalarDen
+  end

@@ -106,6 +106,8 @@ public sealed partial class BattleCore
 
             case ChoiceKind.Switch:
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return Text.Of("battle.thereNoPokemonOfYours");
+                // A raider fights with the one they came with (plan 33 · GL3)
+                if (IsRaid) return RaidSwitchRefusal;
                 if (!CanSendIn(b, choice.SwitchTo)) return Text.Of("battle.thatPokemonCantBe");
                 // At Battle Style Shift's offer nothing holds it: the original opens the team with nothing barred
                 // (BtlCmd_ChoosePokemonMenu), and whatever bound it fell with the foe

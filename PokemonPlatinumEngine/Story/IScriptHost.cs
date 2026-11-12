@@ -349,6 +349,15 @@ public interface IScriptHost
     /// <paramref name="aura"/>, in which nothing can be caught. A host that has no such battle fights it as a wild one.
     /// </summary>
     void TotemBattle(Pokemon wild, Battle.Sim.TotemAura aura) => WildBattle(wild, BattleKind.Normal, cannotFlee: true);
+
+    /// <summary>
+    /// A Max Raid den's battle (plan 33 · GL3, the script's <c>raid fight</c>): the den's boss with its stars and three
+    /// raiders beside the player. A host with no raids fights it as a wild battle.
+    /// </summary>
+    void RaidBattle(Pokemon boss, Battle.Sim.RaidTerms raid) => WildBattle(boss, BattleKind.Normal, cannotFlee: false);
+
+    /// <summary>The day's number (<see cref="Models.SpecialEncounters.DailyNumber"/>) a den's day is drawn from; nought for a host with none.</summary>
+    uint DayNumber => 0;
     BattleOutcome Outcome { get; }
 
     /// <summary>

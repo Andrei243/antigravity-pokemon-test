@@ -342,6 +342,8 @@ public partial class BattleEngine
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
             MegaMaxDen = setup.MegaMaxDen,
+            // A raid's three raiders, copies as a partner is (plan 33 · GL3)
+            Raid = setup.Raid == null ? null : setup.Raid with { Allies = setup.Raid.Allies.Select(mirror.Copy).ToList() },
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
             CrossedExp = setup.CrossedExp,

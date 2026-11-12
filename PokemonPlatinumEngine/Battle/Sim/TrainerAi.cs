@@ -326,7 +326,10 @@ public sealed class TrainerAi : IBattleController
     /// A wild Pokémon (<c>Task_TrainerShowMoveSelectMenu</c> outside a trainer battle): one of the moves it can use,
     /// each as likely, at a foe picked as the move's target would be.
     /// </summary>
-    private static BattleChoice Wild(BattleCore battle, Battler mine)
+    private static BattleChoice Wild(BattleCore battle, Battler mine) => WildChoice(battle, mine);
+
+    /// <summary>A wild Pokémon's choice, which a raid's boss also makes for its second action (plan 33 · GL3).</summary>
+    internal static BattleChoice WildChoice(BattleCore battle, Battler mine)
     {
         var moves = mine.Pokemon!.Moves;
         var usable = battle.UsableMoves(mine);

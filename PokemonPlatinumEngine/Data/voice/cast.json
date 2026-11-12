@@ -288,6 +288,10 @@
       "note": "first spoken at common.txt(4325)",
       "provisional": true
     },
+    "ball_guy": {
+      "note": "first spoken at wild_area_meetup_spot.txt(78)",
+      "provisional": true
+    },
     "baoba": {
       "note": "first spoken at olivine.txt(29)",
       "provisional": true
@@ -4226,6 +4230,10 @@
       "note": "first spoken at KalosLeague_ChampionRoom.txt(9)",
       "provisional": true
     },
+    "digging_brother": {
+      "note": "first spoken at wild_area_rolling_fields.txt(6)",
+      "provisional": true
+    },
     "director": {
       "note": "first spoken at goldenrod_radio_tower_5f.txt(28)",
       "provisional": true
@@ -5383,6 +5391,10 @@
     },
     "lanette": {
       "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
+      "provisional": true
+    },
+    "league_steward": {
+      "note": "first spoken at wild_area_motostoke_riverbank.txt(9)",
       "provisional": true
     },
     "leon": {
@@ -10454,6 +10466,10 @@
         "accent": "en-us"
       }
     },
+    "watt_trader": {
+      "note": "first spoken at wild_area_meetup_spot.txt(39)",
+      "provisional": true
+    },
     "wattson": {
       "note": "first spoken at mauville_city_gym.txt(86)",
       "provisional": true
@@ -10585,6 +10601,7 @@
     "Backer": "backer",
     "Backers": "backers",
     "Baker": "baker",
+    "Ball Guy": "ball_guy",
     "Baoba": "baoba",
     "Barber": "barber",
     "Barnabé": "barnabe",
@@ -10694,6 +10711,7 @@
     "Devon Employee": "devon_employee",
     "Dexio": "dexio",
     "Diantha": "diantha",
+    "Digging Brother": "digging_brother",
     "Director": "director",
     "Dock": "dock",
     "Dojo Master": "dojo_master",
@@ -10840,6 +10858,7 @@
     "Lance": "lance",
     "Lanette": "lanette",
     "Lass": "look:lass",
+    "League Steward": "league_steward",
     "Leon": "leon",
     "Librarian": "librarian",
     "Lift Attendant": "lift_attendant",
@@ -11120,6 +11139,7 @@
     "Walter": "walter",
     "Wanda": "wanda",
     "Warden": "warden",
+    "Watt Trader": "watt_trader",
     "Wattson": "wattson",
     "Wesley": "wesley",
     "Whitney": "whitney",

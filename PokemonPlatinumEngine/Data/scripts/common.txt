@@ -4115,7 +4115,57 @@ script GalarNewGame
   setflag FLAG_GALAR_HIDE_HOP_LAKE
   setflag FLAG_GALAR_HIDE_MAGNOLIA_LAKE
   setflag FLAG_GALAR_HIDE_LEON_LAKE
+  setflag FLAG_GALAR_HIDE_HOP_RIVERBANK
   setflag FLAG_GALAR_STORY_BEGUN
+  return
+
+
+# A Max Raid den of Galar's (plan 33 · GL3; docs/scripts.md, "Max Raid dens"), after its place's script has looked into it
+# with `raid den` (RESULT 1 where its beam is lit and its boss not yet felled today): its light's Watts once a day, the
+# raid offered, fought beside three Trainers who answer the den's call, and the felled boss's catch
+script GalarDen
+  if result == 0 goto Quiet
+  raid watts
+  if result == 0 goto Look
+  text "Watts poured out of the den's light! {player} got {result} W."
+label Look
+  text "Something huge stirs in the den's light: a {species:VAR_GALAR_RAID_SPECIES} of {var:VAR_GALAR_RAID_STARS} stars!"
+  ask "Call for three other Trainers and raid the den?"
+  if no return
+  raid fight
+  if won goto Felled
+  text "The den's light went out. Everyone's Pokémon are safe, but the raid is over for now."
+  return
+label Felled
+  text "The {species:VAR_GALAR_RAID_SPECIES} has shrunk back to its own size and lies still in the den."
+label Throw
+  choose "Throw a ball?" "Poké Ball" "Great Ball" "Ultra Ball" "Let it go"
+  if result == 0 goto Poke
+  if result == 1 goto Great
+  if result == 2 goto Ultra
+  text "The {species:VAR_GALAR_RAID_SPECIES} slipped back into the den's light."
+  return
+label Poke
+  raid catch "Poké Ball"
+  goto Thrown
+label Great
+  raid catch "Great Ball"
+  goto Thrown
+label Ultra
+  raid catch "Ultra Ball"
+label Thrown
+  if result == 2 goto NoBall
+  if result == 0 goto Away
+  text "Gotcha! The {species:VAR_GALAR_RAID_SPECIES} was caught!"
+  return
+label NoBall
+  text "There was no ball of that kind in the Bag, and the {species:VAR_GALAR_RAID_SPECIES} slipped away into the den's light."
+  return
+label Away
+  text "Oh no! The {species:VAR_GALAR_RAID_SPECIES} broke free and vanished into the den's light."
+  return
+label Quiet
+  text "A den of red stone. No light rises from it today."
   return
 
 

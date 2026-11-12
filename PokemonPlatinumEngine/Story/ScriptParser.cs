@@ -1188,6 +1188,20 @@ public static class ScriptParser
             // The crafting kit and its pouch (plan 39 · CR1): `craft has`, `craft give kit`, `craft give "Soft Fluff" 3`,
             // `craft take "Soft Fluff" 3`, `craft count "Soft Fluff"`, `craft open`; a material by its id or its English name;
             // CR4's `craft tm`, CR3's apprentice's `craft tradable` and `craft trade`, CR6's `craft pantry` and `craft meal`
+            case "raid":
+            {
+                // Galar's Max Raid dens (plan 33 · GL3): `raid den "rolling_1"`, `raid watts`, `raid fight`, `raid catch "Poké Ball"`
+                string what = r.OneOf("den", "watts", "fight", "catch");
+                if (what == "den") return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = r.Text("a den's id") };
+                if (what == "catch")
+                {
+                    string ball = r.Text("a Poké Ball");
+                    if (ItemDatabase.Get(ball) is not { Pocket: ItemPocket.PokeBalls }) throw r.Error($"'{ball}' is no Poké Ball");
+                    return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = ball };
+                }
+                return new Instruction { Op = Op.Raid, Line = line, Name = what };
+            }
+
             case "craft":
             {
                 string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared");

@@ -11,6 +11,11 @@
     { "name": "the way to the lab", "points": [[-6, -152], [14, -156], [28, -160]], "width": 3, "shoulder": 2 },
     { "name": "the way east to Route 2", "points": [[-4, -146], [24, -142], [48, -146], [64, -150]], "width": 3, "shoulder": 2 },
     { "name": "Route 2's path", "points": [[64, -150], [78, -166], [82, -200], [78, -236], [72, -260]], "width": 3, "shoulder": 2.5 },
-    { "name": "the Weald's track", "points": [[-58, 20], [-70, 18], [-82, 30], [-78, 46]], "width": 2, "shoulder": 1.5 }
+    { "name": "the Weald's track", "points": [[-58, 20], [-70, 18], [-82, 30], [-78, 46]], "width": 2, "shoulder": 1.5 },
+    // The Wild Area's tracks (plan 33 · GL2): north from the station's platform past the lakes to the steps under
+    // Motostoke, with a branch west to the watchtower's ruins and one east to the Dappled Grove's edge
+    { "name": "the Wild Area's track north", "points": [[0, -318], [-4, -350], [-24, -392], [-18, -440], [-10, -500], [10, -560], [0, -600], [0, -622]], "width": 3.5, "shoulder": 3 },
+    { "name": "the track to the watchtower", "points": [[-24, -392], [-46, -402], [-64, -412]], "width": 2.5, "shoulder": 2 },
+    { "name": "the track into the grove", "points": [[-4, -350], [30, -346], [60, -352]], "width": 2.5, "shoulder": 2 }
   ]
 }

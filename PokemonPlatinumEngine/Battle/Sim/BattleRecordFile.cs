@@ -96,6 +96,11 @@ public sealed class BattleRecordFile
     public bool OffersSwitch { get; set; }
     public bool MegaMaxDen { get; set; }
 
+    /// <summary>A Max Raid den's battle (plan 33 · GL3): its stars (nought for none, as a file without them), the three raiders as they went in, and whether it couldn't be lost.</summary>
+    public int RaidStars { get; set; }
+    public List<RecordedTrainer>? RaidAllies { get; set; }
+    public bool? RaidCannotFail { get; set; }
+
     /// <summary>The difficulty the battle was fought under (plan 13 · V2): Easy gives more EXP, so a replay needs it. A file without it is Normal.</summary>
     public Difficulty Difficulty { get; set; } = Difficulty.Normal;
 
@@ -168,6 +173,9 @@ public sealed class BattleRecordFile
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
             MegaMaxDen = setup.MegaMaxDen,
+            RaidStars = setup.Raid?.Stars ?? 0,
+            RaidAllies = setup.Raid?.Allies.Select(RecordedTrainer.Of).ToList(),
+            RaidCannotFail = setup.Raid?.CannotFail == true ? true : null,
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
             CrossedExp = setup.CrossedExp,
@@ -193,6 +201,7 @@ public sealed class BattleRecordFile
                 Inverse = conditions.Inverse,
                 Fishing = conditions.Fishing,
                 OnlyBall = conditions.OnlyBall,
+                CatchCeiling = conditions.CatchCeiling > 0 ? conditions.CatchCeiling : null,
                 Surprised = conditions.Surprised,
                 InTheAir = conditions.InTheAir,
                 TotemAura = conditions.TotemAura,
@@ -271,6 +280,7 @@ public sealed class BattleRecordFile
                 Inverse = Conditions.Inverse,
                 Fishing = Conditions.Fishing,
                 OnlyBall = Conditions.OnlyBall,
+                CatchCeiling = Conditions.CatchCeiling ?? 0,
                 Surprised = Conditions.Surprised,
                 InTheAir = Conditions.InTheAir,
                 TotemAura = Conditions.TotemAura,
@@ -296,6 +306,7 @@ public sealed class BattleRecordFile
             NoBattleItems = NoBattleItems,
             OffersSwitch = OffersSwitch,
             MegaMaxDen = MegaMaxDen,
+            Raid = RaidStars > 0 ? new RaidTerms(RaidStars, (RaidAllies ?? new()).Select(t => t.ToTrainer(rules)).ToList(), RaidCannotFail == true) : null,
             Difficulty = Difficulty,
             RunLevelCap = RunLevelCap,
             CrossedExp = CrossedExp,
@@ -507,6 +518,9 @@ public sealed class RecordedConditions
     public bool Inverse { get; set; }
     public bool Fishing { get; set; }
     public string? OnlyBall { get; set; }
+
+    /// <summary>The highest level a wild Pokémon could be caught at (plan 33 · GL2); a file without it, any.</summary>
+    public int? CatchCeiling { get; set; }
 
     /// <summary>The wild Pokémon was met from behind (plan 10 · F5).</summary>
     public bool Surprised { get; set; }
