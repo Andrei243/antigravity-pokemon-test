@@ -387,7 +387,8 @@ public sealed partial class ScriptRunner
         Op.Raid => i.Name == "fight",
         Op.Treat => false,
         // The pasture's close-up is a screen the player looks into; its ways in and out are warps, ended at once (plan 35 · BN5)
-        Op.Pasture => i.Name == "care",
+        Op.Pasture => i.Name is "care" or "pick",
+        Op.Stroll => i.Name == "pick",
         // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
         Op.Heart => i.Name == "open",
         // A ride is a screen the player plays; the rest is asked without one (plan 44 · SD5)
@@ -1567,6 +1568,10 @@ public sealed partial class ScriptRunner
             // The pasture (plan 35 · BN5)
             case Op.Pasture:
                 PastureCommand(i);
+                break;
+            // The Stroll Counter (plan 35 · BN7)
+            case Op.Stroll:
+                StrollCommand(i);
                 break;
             // Locked hearts (plan 44 · SD2)
             case Op.Heart:

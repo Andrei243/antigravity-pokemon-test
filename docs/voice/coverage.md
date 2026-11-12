@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 144 | 144 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1742 | 1679 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13346 | 12792 | 554 | 17 | 36 |
+| Scripts (`script:`) | 13358 | 12799 | 559 | 17 | 36 |
 | People of the world (`world:`) | 8069 | 8007 | 62 | 4 | 0 |
-| **All** | 23441 | 22759 | 682 | 22 | 36 |
+| **All** | 23453 | 22766 | 687 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1102 |
+| a question's answers | 1110 |
 | a sign | 1771 |
 | the game's own voice (speaker none) | 326 |
 | the game's own voice (text) | 2195 |
@@ -32,7 +32,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 - Named characters: 971 voices (376 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 590 voices.
 - Archetypes in use: 252, with 761 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 380.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 389.
 
 ## Lines by voice
 
@@ -47,7 +47,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lady (any)` | 574 | 10 |
 | `look:lass (any)` | 552 | 22 |
 | `look:youngster (any)` | 517 | 32 |
-| `@self` | 380 | 58 |
+| `@self` | 389 | 63 |
 | `look:attendant (any)` | 335 | 12 |
 | `look:scientist (any)` | 329 | 13 |
 | `look:receptionist (any)` | 323 | 40 |
@@ -174,6 +174,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:school_kid (any)` | 36 | 0 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `mars` | 36 | 0 |
+| `president` | 36 | 0 |
 | `kurt` | 35 | 6 |
 | `look:battle_girl (any)` | 35 | 2 |
 | `move_deleter` | 35 | 5 |
@@ -185,7 +186,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `psychic` | 34 | 1 |
 | `saturn` | 34 | 0 |
 | `norman` | 33 | 0 |
-| `president` | 33 | 0 |
 | `socialite` | 33 | 0 |
 | `waiter` | 33 | 0 |
 | `alder` | 32 | 1 |

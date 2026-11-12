@@ -263,6 +263,13 @@ public class ScriptTests
           pasture box 1
           pasture take
           pasture job
+          pasture pick
+          pasture picked
+          stroll back
+          stroll caught
+          stroll found
+          stroll pick
+          stroll put
           chooseitem meal
           heart has
           heart give

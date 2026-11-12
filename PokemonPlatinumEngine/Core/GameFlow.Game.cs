@@ -208,6 +208,9 @@ public sealed partial class GameFlow
     /// </summary>
     public PastureSave? Pasture { get; set; }
 
+    /// <summary>The Stroll Counter (plan 35 · BN7): what rides and is held in it. Saved as <c>SaveData.Stroll</c>, null while it has never held anything.</summary>
+    public StrollSave Stroll { get; set; } = new();
+
     /// <summary>The herd of the pasture as it stands now, by the id of its body on the map (plan 35 · BN5; not saved).</summary>
     public System.Collections.Generic.Dictionary<string, Pokemon> Herd { get; } = new();
 

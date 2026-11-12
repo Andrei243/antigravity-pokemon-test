@@ -173,7 +173,9 @@ public enum GameState
     /// <summary>The photo studio, a script's <c>photo studio</c> waiting on it (plan 43 · LF5).</summary>
     Studio,
     /// <summary>A ride of the photo tour, a script's <c>tour ride</c> waiting on it (plan 44 · SD5).</summary>
-    PhotoTour
+    PhotoTour,
+    /// <summary>The Stroll Counter's screen, from the bag or the item button (plan 35 · BN7).</summary>
+    StrollCounter
 }
 
 public partial class GameEngine
@@ -509,6 +511,7 @@ public partial class GameEngine
         flow.Apricorns.Clear();
         flow.Crafting.Clear();
         flow.Care.Clear();
+        flow.Stroll = new StrollSave();
         flow.Gifts.Clear();
         flow.Records.Clear();
         flow.StageShow.Clear();
@@ -792,6 +795,8 @@ public partial class GameEngine
         flow.Care.Restore(save.Care);
         // A visit to the pasture under way (plan 35 · BN5): its herd is laid as the place is come to
         flow.Pasture = save.Pasture?.Copy();
+        // The Stroll Counter (plan 35 · BN7)
+        flow.Stroll = save.Stroll?.Copy() ?? new StrollSave();
         flow.Gifts.Load(save.Gifts);
         flow.Records.Load(save.MixedRecords);
         flow.StageShow.Load(save.StageShow);
@@ -1027,6 +1032,7 @@ public partial class GameEngine
             Crafting = flow.Crafting.ToSave(),
             Care = CareToSave(),
             Pasture = flow.Pasture?.Copy(),
+            Stroll = flow.Stroll.IsEmpty ? null : flow.Stroll.Copy(),
             Gifts = flow.Gifts.ToSave(),
             MixedRecords = flow.Records.ToSave(),
             StageShow = flow.StageShow.ToSave(),
@@ -1597,6 +1603,8 @@ public partial class GameEngine
                         else if (usedHere.FieldUse == CraftingKitUse) OpenCrafting(fromBag: true);
                         // The Power Watch's panel, and back to the bag (plan 36 · TR8)
                         else if (usedHere.FieldUse == PowerWatchUse) OpenPowers(fromBag: true);
+                        // The Stroll Counter, and back to the bag (plan 35 · BN7)
+                        else if (usedHere.FieldUse == StrollCounter.FieldUse) OpenStroll(fromBag: true);
                         // The Vs. Recorder's battles, and back to the bag (plan 08 · P11)
                         else if (usedHere.FieldUse == "VsRecorder") OpenReplays(fromBag: true);
                         else UseFieldItem(usedHere);
@@ -1783,6 +1791,9 @@ public partial class GameEngine
             case GameState.Crafting:
                 UpdateCrafting(dt);
                 break;
+            case GameState.StrollCounter:
+                UpdateStroll(dt);
+                break;
             case GameState.MissionBoard:
                 UpdateMissionBoard(dt);
                 break;
@@ -1917,6 +1928,8 @@ public partial class GameEngine
                 if (!flow.PCScreen.IsActive)
                 {
                     if (flow.PCScreen.Changed) flow.Journal.Tell(new JournalEvent(JournalEventKind.UsedPcBox));
+                    // Opened by the pasture's board to pick the box that grazes (plan 35 · BN5)
+                    KeepThePickedBox();
                     // A Deerling or Sawsbuck taken out of a box wears the season here (plan 22 · U4)
                     KeepTheCoats();
                     flow.State = GameState.Overworld;
@@ -2407,6 +2420,8 @@ public partial class GameEngine
         if (flow.Safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
         // The Power Watch's charge fills a point every 200 steps (plan 36 · TR7), while the watch is in the bag
         if (HoldsPowerWatch) flow.Powers.Walk();
+        // The Stroll Counter's Pokémon walks the step too: a stride every twenty, nothing drawn (plan 35 · BN7)
+        StrollCounter.Step(flow.Stroll);
         // The Day Care's couple walk the step too, and an Egg of the team may hatch (Field_UpdateDaycare, plan 06 · R15)
         if (DayCareStep()) return true;
         // The DexNav's find in the grass stays, flees or is met, or one is found (plan 10 · F12)
@@ -3687,6 +3702,9 @@ public partial class GameEngine
                 break;
             case GameState.Crafting:
                 flow.CraftingScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.StrollCounter:
+                flow.StrollScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Powers:
                 flow.PowersScreen.Draw(VirtualWidth, VirtualHeight);

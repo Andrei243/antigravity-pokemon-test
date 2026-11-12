@@ -158,9 +158,77 @@ public partial class PCScreen
     /// <summary>The Pokémon a release of several would let go, in their places.</summary>
     public IReadOnlyList<int> Releasing => releasing;
 
+    /// <summary>
+    /// Opened to pick a box and nothing else (plan 35 · BN5's owed piece: the pasture's board, which box grazes): the
+    /// cursor stays on the box's name, left and right change the box, A takes the box shown (<see cref="PickedBox"/>) and B
+    /// goes back with none. Nothing in the boxes can be moved meanwhile.
+    /// </summary>
+    public bool PickingBox { get; private set; }
+
+    /// <summary>The box A took while <see cref="PickingBox"/>, from nought; null until one is taken, and after B.</summary>
+    public int? PickedBox { get; private set; }
+
+    /// <summary>Opens the boxes to pick one (<see cref="PickingBox"/>), on the box given.</summary>
+    public void OpenToPickBox(PcBoxes pc, int box)
+    {
+        Open(pc);
+        Box = Math.Clamp(box, 0, BoxCount - 1);
+        Zone = StorageZone.BoxName;
+        PickingBox = true;
+    }
+
+    /// <summary>
+    /// Opened to pick one Pokémon of the boxes and nothing else (plan 35 · BN7: who rides in the Stroll Counter): the cursor
+    /// goes over the box's places and its name (never the team), A on a Pokémon takes it (<see cref="PickedBox"/>,
+    /// <see cref="PickedCell"/>) and B goes back with none.
+    /// </summary>
+    public bool PickingPokemon { get; private set; }
+
+    /// <summary>The place of the box A took while <see cref="PickingPokemon"/>; null until one is taken.</summary>
+    public int? PickedCell { get; private set; }
+
+    /// <summary>Opens the boxes to pick a Pokémon (<see cref="PickingPokemon"/>), on the PC's own box.</summary>
+    public void OpenToPickPokemon(PcBoxes pc)
+    {
+        Open(pc);
+        Zone = StorageZone.Box;
+        Cell = 0;
+        PickingPokemon = true;
+    }
+
+    /// <summary>A step while a Pokémon is picked: over the box's places and its name, round the columns, never onto the team.</summary>
+    private void MovePicking(int dx, int dy, bool held)
+    {
+        int boxBefore = Box, cellBefore = Cell;
+        var zoneBefore = Zone;
+        int col = Cell % Columns, row = Cell / Columns;
+        if (Zone == StorageZone.BoxName)
+        {
+            if (dx != 0 && BoxCount > 1) Box = held ? Math.Clamp(Box + Math.Sign(dx), 0, BoxCount - 1) : UiNav.Wrap(Box, dx, BoxCount);
+            else if (dy != 0)
+            {
+                Zone = StorageZone.Box;
+                Cell = (dy > 0 ? 0 : Rows - 1) * Columns + col;
+            }
+        }
+        else if (dx != 0) Cell = row * Columns + UiNav.Wrap(col, Math.Sign(dx), Columns);
+        else
+        {
+            row += Math.Sign(dy);
+            if (row is < 0 or >= Rows) Zone = StorageZone.BoxName;
+            else Cell = row * Columns + col;
+        }
+        if (Box == boxBefore && Cell == cellBefore && Zone == zoneBefore) return;
+        if (tick.Sounds(held)) AudioManager.PlaySound(Box != boxBefore ? "page" : "cursor");
+    }
+
     public void Open(PcBoxes? pc = null)
     {
         IsActive = true;
+        PickingBox = false;
+        PickingPokemon = false;
+        PickedBox = null;
+        PickedCell = null;
         Zone = StorageZone.Party;
         PartyIndex = 0;
         Cell = 0;
@@ -221,6 +289,21 @@ public partial class PCScreen
     public void Move(int dx, int dy, int partyCount, bool held = false)
     {
         if (dx == 0 && dy == 0) return;
+        if (PickingPokemon)
+        {
+            MovePicking(dx, dy, held);
+            return;
+        }
+        if (PickingBox)
+        {
+            // Only the box changes while one is being picked
+            if (dx == 0 || BoxCount < 2) return;
+            int next = held ? Math.Clamp(Box + Math.Sign(dx), 0, BoxCount - 1) : UiNav.Wrap(Box, dx, BoxCount);
+            if (next == Box) return;
+            Box = next;
+            if (tick.Sounds(held)) AudioManager.PlaySound("page");
+            return;
+        }
         if (Naming != null || AskingReleaseMany) return;
         if (MoveTools(dx, dy)) return;
         if (Marking != null)
@@ -307,7 +390,8 @@ public partial class PCScreen
     {
         if (!IsActive || Busy || TeamsOpen) return null;
         // Among the team's cards only those with a Pokémon, and the first empty one while one is carried
-        for (int i = 0; i < Party.MaxSize; i++)
+        // (none of them while a box or a Pokémon of the boxes is being picked)
+        for (int i = 0; i < Party.MaxSize && !PickingBox && !PickingPokemon; i++)
             if (UiPointer.Inside(ModernUi.StorageTeamCard(i), at)) return i < partyCount + (Held != null ? 1 : 0) ? i : null;
         if (UiPointer.Inside(ModernUi.StorageArrow(-1), at)) return BoxBefore;
         if (UiPointer.Inside(ModernUi.StorageArrow(1), at)) return BoxAfter;
@@ -374,6 +458,25 @@ public partial class PCScreen
     /// </summary>
     public void Confirm(Party party, PcBoxes pc, Action<string> onNotification)
     {
+        if (PickingBox)
+        {
+            PickedBox = Box;
+            pc.CurrentBox = Box;
+            AudioManager.PlaySound("select");
+            Close();
+            return;
+        }
+        if (PickingPokemon)
+        {
+            // Only a Pokémon of the box is taken; the box's name and an empty place do nothing
+            if (Zone != StorageZone.Box || pc[Box, Cell] == null) return;
+            PickedBox = Box;
+            PickedCell = Cell;
+            pc.CurrentBox = Box;
+            AudioManager.PlaySound("select");
+            Close();
+            return;
+        }
         if (Naming != null) return;
         if (ConfirmTools(party, pc, onNotification)) return;
         if (AskingRelease)
@@ -773,8 +876,9 @@ public partial class PCScreen
         {
             if (!Cancel(party, pc))
             {
-                // The PC remembers the box it was left on
-                pc.CurrentBox = Box;
+                // The PC remembers the box it was left on (not one only looked at while picking)
+                if (!PickingBox && !PickingPokemon) pc.CurrentBox = Box;
+                else AudioManager.PlaySound("cancel");
                 Close();
             }
         }

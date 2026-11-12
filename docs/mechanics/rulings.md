@@ -11818,8 +11818,42 @@ Poké Pelago's and the later games' pastures as mechanics; the meadow, its keepe
 - **Finds**: once a day one Pokémon in eight holds something, decided by `SplitMix` of the day and its id, from a table of
   its region (ours: berries, the five sold treats, now and then a Heart Scale); the day it gave one up is its care page's
   (`CareRecord.FoundDay`), so a second visit that day finds nothing on it.
-- **Not built**: the PC's box screen opened to pick a box (the board turns the boxes one at a time), the shots and the
-  frame's time with thirty in view.
+- **Not built**: the shots and the frame's time with thirty in view. The PC's box screen opened to pick a box was built
+  after (BN7's session): the board's CHOOSE A BOX opens the PC's own boxes with only the box to change (`pasture pick`,
+  `PCScreen.OpenToPickBox`), A takes the box shown and B leaves the meadow as it was. A song of ours for the meadow,
+  `common/pasture` (a D-major waltz, flute over a nylon guitar; ocarina and harp after dark), is written and waits for the
+  user's ear: the three pastures play their stand-ins until it is approved.
+
+## The Stroll Counter (2026-11-12, plan 35 · BN7)
+
+The Pokéwalker as a mechanic; the device, its courses, its seek and its meet and every line are ours. Built on the
+session's instruction although the plan's decision 6 kept it optional.
+
+- **The device**: a key item of ours (`Stroll Counter`, id 9611), given once by the Pokétch Company's president to Sinnoh's
+  Champion under the modern rules (`FLAG_GOT_STROLL_COUNTER`). USE and the item button open its screen.
+- **One Pokémon of the boxes rides in it**, held whole as a job holds one (`SaveData.Stroll`, null while it has never held
+  anything; no save version raised). It is put in at a PC (`common.PC` asks first, beside the pasture where there is one:
+  STROLL COUNTER; the PC's own boxes open to pick it, `PCScreen.OpenToPickPokemon`); an Egg and a locked heart never go in.
+  The care book keeps its page while it rides.
+- **Strides**: every step of the player's (`OnStep`) is a step of its Pokémon; twenty are a stride and a spark (at most
+  999 sparks). Nothing is drawn, so recordings and the field's dice are as they were.
+- **Courses** (ours): two to each of Sinnoh, Kanto, Johto, Hoenn and Unova, the first open once the region is entered,
+  the second after 300 strides in all; the regions after them have none yet. Each names five species met in that region's
+  own grass (`StrollCounterTests` holds it, so no region's ways to a species move) at its own game's levels, mapped as the
+  region's levels are where the game didn't begin in it, and five things to find.
+- **A seek** costs ten sparks: three bushes, one of which hides one of the course's finds, and two tries.
+- **A meet** costs ten sparks: a Pokémon of the course at a level of its range, three rounds of STRIKE (70 in 100 lands and
+  takes a heart of its two; sure after a DODGE), DODGE (nothing lands on it) and CATCH (30 in 100, and 30 more for each
+  heart it has lost); the other strikes back 40 in 100 after a STRIKE or a missed CATCH, and two hearts lost send it home.
+  Refused in a run that forbids catching and under a Nuzlocke (whose catches are its places'). Under the randomiser the
+  species is mapped as a wild one's.
+- **Its draws**: a seek's and a meet's generator is `SplitMix` of the trainer's number and the counter's own count of them
+  (`StrollSave.Draws`), and so is the caught Pokémon's (its personality first, then its IVs), never the dice; the Shiny
+  Charm's extra rolls are not made for it.
+- **Held until a PC**: three Pokémon met and three things found at most; at a PC (`stroll back`) the Pokémon met go to the
+  boxes (seen and caught in the Pokédex, met at the Stroll Counter), the things found to the bag, and its own Pokémon comes
+  back into the boxes paid: EXP a hundredth of its level's span a stride, a level's worth at most and never past the level
+  cap in force (`GameEngine.CurrentLevelCap`), and a point of friendship every ten strides, twenty at most.
 
 ## The card-flip game (2026-11-12, plan 42 · PS3)
 

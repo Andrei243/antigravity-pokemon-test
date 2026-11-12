@@ -884,6 +884,8 @@ label NoSeals
 # The modern rules' PC (plan 15 · E3): storage, the jobs board, the Ball Capsules with a Seal Case, and off. Written
 # after the rest so that Platinum's own lines keep their places
 label Modern
+  # With the Stroll Counter in the bag, the PC asks first about it too (plan 35 · BN7; its lines are written last)
+  if item "Stroll Counter" goto StrollFirst
   # Where the region has a pasture, the PC asks first whether to go there (plan 35 · BN5; the question is written last)
   if pasture goto PastureFirst
 label ModernMenu
@@ -932,6 +934,45 @@ label Pasture
   anim pc off
   pasture enter
   end
+# The Stroll Counter (plan 35 · BN7): asked first beside the pasture where the counter is in the bag, and written after
+# the rest so that the PC's own lines keep their places. Whoever rode in it comes back paid, with what it found and met
+label StrollFirst
+  if pasture goto StrollPastureFirst
+  choose "What should be done?" "USE THE PC" "STROLL COUNTER" "SWITCH OFF"
+  if result == 1 goto Stroll
+  if result == 2 goto Off
+  goto ModernMenu
+label StrollPastureFirst
+  choose "What should be done?" "USE THE PC" "GO TO THE PASTURE" "STROLL COUNTER" "SWITCH OFF"
+  if result == 1 goto Pasture
+  if result == 2 goto Stroll
+  if result == 3 goto Off
+  goto ModernMenu
+label Stroll
+  stroll back
+  if result == 0 goto StrollPut
+  sound "select"
+  say "{thing} came back from its stroll and went into the boxes, grown a little from {number} strides."
+  stroll caught
+  if result == 0 goto StrollFound
+  say "{number} Pokémon met on the way went into the boxes too."
+label StrollFound
+  stroll found
+  if result == 0 goto StrollPut
+  say "{player} put {number} things found on the way in the Bag."
+label StrollPut
+  ask "Put a Pokémon of the boxes in the Stroll Counter?"
+  if no goto Off
+  stroll pick
+  stroll put
+  if result == 0 goto Off
+  if result == 2 goto StrollRefused
+  sound "select"
+  say "{thing} hopped into the Stroll Counter!"
+  goto Off
+label StrollRefused
+  say "That one can't go for a stroll."
+  goto Off
 
 
 # The Ribbon Syndicate of the Resort Area (plan 06 · R17b; scripts_resort_area_ribbon_syndicate_1f.s). Its building
@@ -4644,10 +4685,11 @@ label NotThisRun
 script PastureBoard
   pasture box
   say "The Pokémon of {thing} are out in the meadow."
-  choose "What will you do?" "POKé JOBS" "NEXT BOX" "PREVIOUS BOX" "LEAVE IT"
+  choose "What will you do?" "POKé JOBS" "NEXT BOX" "PREVIOUS BOX" "CHOOSE A BOX" "LEAVE IT"
   if result == 0 goto Jobs
   if result == 1 goto Next
   if result == 2 goto Previous
+  if result == 3 goto Pick
   end
 label Jobs
   jobs
@@ -4658,6 +4700,13 @@ label Next
   end
 label Previous
   pasture box -1
+  say "The Pokémon of {thing} came out into the meadow."
+  end
+# The PC's own boxes opened to pick one (the screen waits; B leaves the meadow as it was)
+label Pick
+  pasture pick
+  pasture picked
+  if result == 0 end
   say "The Pokémon of {thing} came out into the meadow."
   end
 

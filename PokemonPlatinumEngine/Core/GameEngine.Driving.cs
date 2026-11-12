@@ -474,6 +474,11 @@ public partial class GameEngine
         /// <summary>An act of the pasture, as the script's <c>pasture</c> asks it (a warp is the script's own, behind its fade).</summary>
         public PastureAnswer Pasture(string act, int number = 0, Overworld.NPC? subject = null, string? item = null) =>
             game.PastureAct(act, number, subject, item, game.WarpTo);
+        /// <summary>The Stroll Counter (plan 35 · BN7): what it holds, its screen opened as the bag's USE opens it, and its acts at a PC.</summary>
+        public Models.StrollSave Stroll => game.flow.Stroll;
+        public StrollCounterScreen StrollScreen => game.flow.StrollScreen;
+        public void OpenStroll() => game.OpenStroll(fromBag: false);
+        public Story.StrollAnswer StrollAct(string act) => game.StrollAct(act);
         /// <summary>The care close-up (plan 35 · BN2), and the camp's way into it for the Pokémon under its cursor.</summary>
         public CareScreen CareCloseUp => game.flow.CareScreen;
         public void OpenCare() => game.OpenCare();

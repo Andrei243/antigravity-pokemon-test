@@ -220,6 +220,8 @@ public enum Op
     Records,
     // The photo tour (plan 44 · SD5): a ride on a course, whether a course is open, the report's total
     Tour,
+    // The Stroll Counter (plan 35 · BN7): its Pokémon back from a PC with what it met and found, and another put in
+    Stroll,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -388,6 +388,12 @@ public class SaveData
     /// </summary>
     public Overworld.PastureSave? Pasture { get; set; }
 
+    /// <summary>
+    /// The Stroll Counter (plan 35 · BN7): the Pokémon riding in it, its strides and sparks, its course and what it met and
+    /// found. Null in saves from before it, and while it has never held anything.
+    /// </summary>
+    public Models.StrollSave? Stroll { get; set; }
+
     /// <summary>Pennant Hall, the hub's plaza (plan 41 · EG3). Null in saves from before it, and until its manager is first spoken to.</summary>
     public Models.PlazaSave? Plaza { get; set; }
 

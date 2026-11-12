@@ -74,6 +74,7 @@ public sealed partial class GameFlow
     public CardFlipScreen CardFlipScreen { get; } = new();
     public TradeBoardScreen TradeBoardScreen { get; } = new();
     public PowersScreen PowersScreen { get; } = new();
+    public StrollCounterScreen StrollScreen { get; } = new();
     public MissionBoardScreen MissionBoardScreen { get; } = new();
     public TrainingScreen TrainingScreen { get; } = new();
     public PhotoAlbumScreen PhotoAlbumScreen { get; } = new();

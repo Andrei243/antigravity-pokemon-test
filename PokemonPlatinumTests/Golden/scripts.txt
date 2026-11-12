@@ -16931,8 +16931,10 @@ way 0
   Anyone> What will you do?
   ? What will you do? = POKé JOBS
   * open Jobs
-way 3, from answer 1
+way 4, from answer 1
   ? What will you do? = LEAVE IT
+way 3, from answer 1
+  ? What will you do? = CHOOSE A BOX
 way 2, from answer 1
   Anyone> The Pokémon of  came out into the meadow.
   ? What will you do? = PREVIOUS BOX

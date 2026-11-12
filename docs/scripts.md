@@ -960,6 +960,8 @@ belongs to (a body of the herd or of one away on a job); with nobody they answer
 | `pasture enter` | Notes the tile the player stands on and the way they face, and warps them to the pasture's gate. `RESULT` 1, or 0 where there is none. |
 | `pasture leave` | Warps the player back to the tile the visit began on, facing as they did. `RESULT` 1, or 0 outside a visit. |
 | `pasture box [-1\|1]` | The box shown in the meadow (`RESULT` and `{number}` its number from 1, `{thing}` its name); with -1 or 1 the box before or after it is shown, the PC's own box follows, and the herd is laid afresh. |
+| `pasture pick` | Opens the PC's boxes to pick the box that grazes (the boxes' screen with only the box to change; A takes the box shown, B none); the script waits for it, and a box taken is shown in the meadow with the herd laid afresh. `RESULT` 1, or 0 outside a visit. |
+| `pasture picked` | Whether the last `pasture pick` took a box: `RESULT` 1 and `{thing}` its name, or 0. |
 | `pasture count` | `RESULT` and `{number}` how many of the box walk the meadow. |
 | `pasture mood` | Its mood shown in a bubble: `RESULT` 0 (glum) to 4 (elated), `{thing}` the word. |
 | `pasture find` | What it holds today, once a day: `RESULT` 1 and `{item}` with it put in the bag, or 0. |
@@ -970,6 +972,19 @@ belongs to (a body of the herd or of one away on a job); with nobody they answer
 | `pasture job` | One away on a job, at its work: `RESULT` and `{number}` the whole hours it has left (0 once due back), `{thing}` its job's word. |
 
 `chooseitem meal` opens the bag on its berries and treats.
+
+### The Stroll Counter
+
+Plan 35 · BN7; `docs/mechanics/rulings.md`, "The Stroll Counter". `common.PC` asks about it first where the counter is in
+the bag. One command, `stroll`; each act answers `RESULT`, and some name `{thing}` or `{number}`.
+
+| Line | What it does |
+| --- | --- |
+| `stroll back` | Whatever the counter met goes to the boxes and whatever it found to the bag; its own Pokémon comes back into the boxes paid for its strides. `RESULT` 1, `{thing}` its name and `{number}` its strides, or 0 when nothing rode in it. |
+| `stroll caught` | How many Pokémon the last `stroll back` sent to the boxes: `RESULT` and `{number}`. |
+| `stroll found` | How many things the last `stroll back` put in the bag: `RESULT` and `{number}`. |
+| `stroll pick` | Opens the PC's boxes to pick a Pokémon (the boxes' screen over the box's places alone; A on a Pokémon takes it, B none); the script waits for it. `RESULT` 1, or 0 with something already in the counter. |
+| `stroll put` | The Pokémon picked into the counter, out of its box: `RESULT` 1 and `{thing}` its name, 2 refused (an Egg, a locked heart), 0 none picked. |
 
 ### The crafting kit
 

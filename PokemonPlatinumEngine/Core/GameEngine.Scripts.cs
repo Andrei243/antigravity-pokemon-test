@@ -517,6 +517,12 @@ public partial class GameEngine
             OpenPowers(fromBag: false);
             return;
         }
+        // The Stroll Counter from the item button (plan 35 · BN7)
+        if (item.FieldUse == StrollCounter.FieldUse)
+        {
+            OpenStroll(fromBag: false);
+            return;
+        }
         // The crafting kit from the item button (plan 39 · CR1)
         if (item.FieldUse == CraftingKitUse)
         {

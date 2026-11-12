@@ -4,6 +4,9 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- The Stroll Counter: once you are Sinnoh's Champion, the Pokétch Company's president gives you his newest device. Put a Pokémon from your PC's boxes in it at any PC and it walks every step you take; spend the sparks its strides earn to seek out things hidden in the bushes or to meet wild Pokémon on its course and try to catch them. Back at a PC it returns to the boxes having grown (a level at most), with whatever it met and found. New courses open in each region you have been to, and further ones the more it walks.
+- The pasture's board can now open your PC's boxes to choose the box that grazes, instead of only stepping through them one at a time.
+
 - Sunyshore City's workshop has a berry garden through its back door: two rows of soft soil, twenty-four patches to plant in, and a keeper who sells mulch and, with the crafting kit, shows which Berries cross. Berries side by side in a row may cross as they do anywhere else.
 - The record desk upstairs in every Pokémon Center mixes records again, between your own save slots: your other adventures' trainers then stand in Jubilife City's friends' hall to battle, their Hoenn secret bases stand at their spots for you to visit (owner, furniture and all, listed on your own base's REGISTRY), and their answers to Jubilife TV's reporters turn up on television. Your other saves are only read, never changed.
 - Johto's trees can be shaken with Headbutt: face a tree with a Pokémon that knows the move and a Pokémon may fall out of it, such as Hoothoot, Pineco, Exeggcute, Spinarak, Aipom and Heracross. Some trees are richer than others, and which ones depends on your trainer number. The man by Ilex Forest's way in teaches Headbutt once, for nothing, and the Pokédex's area page shows which species live in the trees.
