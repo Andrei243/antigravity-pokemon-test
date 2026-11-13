@@ -7,6 +7,12 @@
   "additions": [
     // A rock bridge arching over the river, and a stack standing in the pond
     { "kind": "capsules", "name": "the rock bridge", "points": [[24, -0.6, 34], [24, 1.6, 44], [24, -0.6, 54]], "radius": 1.1 },
-    { "kind": "pillar", "name": "the pond's stack", "at": [43, -40], "radius": 1.4, "bottom": -4, "top": 3 }
+    { "kind": "pillar", "name": "the pond's stack", "at": [43, -40], "radius": 1.4, "bottom": -4, "top": 3 },
+    // The mount's yard on the west meadow (plan 34 · PD2): a block of rock 6 m high whose east face is painted
+    // climbable, a step under a metre the mount hops onto and one over two metres only its high jump reaches; nothing
+    // of it is walked onto, so each is a way the mount alone has
+    { "kind": "box", "name": "the climbing block", "min": [-62, -1, -26], "max": [-56, 6.2, -14] },
+    { "kind": "box", "name": "the hop step", "min": [-52, -1, -17], "max": [-48, 0.8, -13] },
+    { "kind": "box", "name": "the high step", "min": [-52, -1, -26], "max": [-48, 2.3, -21] }
   ]
 }

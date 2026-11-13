@@ -32,6 +32,8 @@
   "paint": [
     // A patch of bare rock on the south-west meadow, and a muddy square south-east of the hill
     { "cover": "Rock", "at": [-40, 26], "radius": 4 },
-    { "cover": "Mud", "polygon": [[20, 18], [30, 18], [30, 26], [20, 26]] }
+    { "cover": "Mud", "polygon": [[20, 18], [30, 18], [30, 26], [20, 26]] },
+    // The mount's yard (plan 34 · PD2): the climbing block's east face, from its foot to its top, painted climbable
+    { "cover": "ClimbableRock", "polygon": [[-56.6, -26.4], [-55.4, -26.4], [-55.4, -13.6], [-56.6, -13.6]] }
   ]
 }

@@ -146,7 +146,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 ## Status
 
 - [x] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza (2026-11-13, its first session: the file, the open map of five areas described and baked, six rooms, the chapter from the bedroom to the academy's door headless, the plane from Galar landing; "PD1 as built", below. **Waits for the user**: the look of Cabo Poco and Mesagoza, judged from the shots its second session owes, as the done-when has it; the bake's footprint for the whole region (the question below); `Architecture.Paldea` seen in the game. **Owed**: the bot's run to the academy's door in `PlaythroughTests`, the harness's `paldea` mode and its shots, the academy's halls past the entrance hall, the voices of the new cast designed by ear)
-- [ ] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12: `OpenWorld/MountRules.cs`, the five powers on the capsule, the `ClimbableRock` cover, the key, the dismounts and the saved mode, `MountTests` and `MountGameTests`; plan 30's "FM12 as built" has it. FM13's rig built 2026-11-12, plan 30's "FM13 as built", ridden in the harness on a climbable block of its own (`freewalk`, `fw70` to `fw89`). Left: the navigation mesh's power links, a climbable brush painted and baked in the open test world)
+- [x] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12, its rig 2026-11-12 as FM13, and its last part 2026-11-13: the navigation mesh's hop, high jump, climb and glide links for a region whose `world.json` says `mount`, the lab's yard with a painted climbable face, the done-when ridden in `MountLabTests`, Paldea's mesh baked again with them; "PD2 as built", below. **Owed**: the playthrough bot riding the links; the user's word on the yard's shots `fwy0` to `fwy6`)
 - [ ] PD3 The South and East Provinces and the first three gyms
 - [ ] PD4 The Path of Legends
 - [ ] PD5 Starfall Street and Let's Go
@@ -157,6 +157,42 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [ ] PD10 The Teal Mask (optional)
 - [ ] PD11 The Indigo Disk (optional)
 - [ ] PD12 Mochi Mayhem (optional)
+
+## PD2 as built (2026-11-13)
+
+The rules (plan 30 · FM12) and the rig (FM13) were built before; this session built what PD2 still owed, all GPU-free
+but the harness's shots. The rulings' "The mount on the open world" has the links' numbers. Nothing of the grid and
+nothing of a walker's path changed.
+
+- **The navigation mesh's power links** (`tools/OpenWorldBake/NavBake.cs`, `MountLinks`): `OpenNavFlags.Jump` and
+  `HighJump` at the enum's end beside FM12's `Climb` and `Glide`, still a byte, so the file's format stays 1. Made only
+  where `world.json` says `"mount": true` (`OpenWorldFile.Mount`, its schema and `docs/data-files.md`): a hop onto
+  walked ground up to `HopHeight` over the feet, a high jump up to `HighJumpHeight`, a climb up a face climbable every
+  half metre to its top, and a glide off a side to the furthest landing 6 to 20 m out that the glide reaches, each off
+  the mesh, one of a kind for a pair of polygons, none where a walk or a step goes; the final sort compares the flags,
+  so the bytes are the same whatever order the chunks come in. Every number is `OpenBody`'s own.
+- **Who takes them**: `OpenNavMesh.Allowed(grants, mounted)`. On foot nothing of the mount's, whatever the grants; mounted
+  the hop always and the rest with their grants. Every caller today (the people, the follower, the wild Pokémon, the
+  bot's `Policy`, `WorldWalk`, `PaldeaTests`' walk) asks as a walker, so no path of theirs changed.
+- **The lab's yard** (`tools/OpenWorldBake/worlds/lab`: three boxes of `carve/hill.json`'s additions on the west meadow,
+  away from every marker, road, zone and the bot's way; the block's east face painted `ClimbableRock` in
+  `terrain/ground.json`): a block 6 m high, a hop step 0.8 m and a high step 2.3 m. The lab's bake: 33 hops, 51 high
+  jumps, 6 climbs, 83 glides. `--nav --ride` draws the mesh as a mounted body with every power finds its paths (hops
+  orange, high jumps brown, climbs magenta, glides sky blue), and the game's debug layer draws them in the same colours.
+- **Paldea's mesh** baked again with `"mount": true` (17 hops, 40 high jumps, no climbs: no cliff is painted yet,
+  674 glides); only `navmesh.bin` and `index.json` changed. Galar's is untouched to the byte.
+- **The done-when** (`MountLabTests`, on the lab baked as the game reads it): each kind of link baked in the yard, none
+  in a region not ridden; a path up the yard takes the hop mounted, the high jump and the climb only with their grants,
+  never on foot; a glide off the block reaches further than any drop; the capsule rides each link from its takeoff to
+  its landing (the hop, the high jump, the climb onto the block's top, the glide as far as its link says, softly) and is
+  refused each without its grant (a walker stays under the hop step, the high step and the face are not reached, a fall
+  is short and hard); the trot (6 m/s), the sprint only with the dash (11), and the swim into the pond only with its grant.
+- **Shots** (`freewalk`, `Modes/FreeWalkYard.cs`, `SHOTS_FILTER=fwy`): Koraidon half way up the painted face (`fwy0`),
+  on the block's top (`fwy1`), gliding off it (`fwy2`), the high jump in the air and on the high step (`fwy3`, `fwy4`),
+  the hop in the air (`fwy5`) and the yard from over the meadow (`fwy6`). They wait for the user's word.
+- **Owed**: the playthrough bot riding the links (`Autoplayer.Open` steers walking paths; a mounted leg would press the
+  jump at a hop's takeoff, hold into a climb's face and press once falling for a glide); a climbable cliff painted in
+  Paldea itself (PD4's Titans and PD6's mountains).
 
 ## PD1 as built (2026-11-13, its first session)
 

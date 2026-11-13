@@ -162,7 +162,7 @@ public static class RegionBake
         if (only == null)
         {
             var (solids, waters) = PlacedOf(description);
-            files[OpenNavMesh.FileName] = NavBake.Build(baked.Select(b => b[0]), solids, waters, report: navReport, trees: TrunksOf(description)).Bytes();
+            files[OpenNavMesh.FileName] = NavBake.Build(baked.Select(b => b[0]), solids, waters, report: navReport, trees: TrunksOf(description), mount: world.Mount).Bytes();
         }
         var index = new BakedIndexFile
         {

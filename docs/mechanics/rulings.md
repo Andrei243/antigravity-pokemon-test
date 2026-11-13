@@ -11873,9 +11873,22 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   (a battle's way in, a door, a warp, a crossing), and as a script begins in the open field. A save keeps whether the
   player rides (`SavedOpenPlace.Mounted`, absent when on foot, so no save version was raised), and a game taken up
   wakes mounted only where the movement in force lists `Mount` and a mount is had; anywhere else on foot.
-- **Owed**: the navigation mesh's links for the jump, the glide and the climb (the baker makes none yet;
-  `OpenNavMesh.Allowed` lets the `Climb` and `Glide` flags through once granted), the bot riding, the camera's lead,
-  the picnic, Let's Go from the saddle, and the rig (FM13: built 2026-11-12, below).
+- **The mount's links on the navigation mesh** (2026-11-13, plan 34 · PD2). A region whose `world.json` says
+  `"mount": true` (Paldea's, the lab's) bakes four kinds of link beside walking, drops and swims, each off the mesh from
+  a side of a span that joins nothing, one of each kind for a pair of polygons and none where walking or a step already
+  goes: a **hop** (`OpenNavFlags.Jump`) onto walked ground over a step and no more than `HopHeight` (0.9 m) over the
+  feet; a **high jump** (`HighJump`) onto ground up to `HighJumpHeight` (2.4 m); both the nearest of four probes 0.6 to
+  2.5 m past the side, open over the takeoff and at the knees and head to the landing (the jumps clear a tenth more than
+  their heights, so the links keep that tenth spare); a **climb** (`Climb`) where the face before the side is
+  climbable every half metre from the knees to its top, onto the walked ground just past it, up to 40 m; and a
+  **glide** (`Glide`, with `Swim` where it lands in water swum) off the side to the furthest of five landings 6 to 20 m
+  out at least 2 m under the feet that the glide reaches (the trot's 6 m/s over the 2 m/s sink, four fifths of it), its
+  line clear at the knees and the head. A way down a face is a drop, which every body has. **Only a mounted body takes
+  them**: `OpenNavMesh.Allowed(grants, mounted)` gives the hop to any mounted body and the high jump, the climb and the
+  glide with their grants, and nothing of the mount's on foot whatever the grants say, so no walker, person, follower
+  or wild Pokémon is routed over one. A region with no mount bakes the mesh it always had, to the byte (Galar's).
+- **Owed**: the bot riding (the playthrough bot follows walking paths only; plan 34 · PD2's owed line), the camera's
+  lead, the picnic, Let's Go from the saddle, and the rig (FM13: built 2026-11-12, below).
 
 ## The mount as a rig (2026-11-12, plan 30 · FM13)
 

@@ -6,6 +6,8 @@
   "region": "lab",
   "chunks": [-2, -2, 1, 1],
   "baseHeight": 0,
+  // The mount's links are baked into its navigation mesh (plan 34 · PD2): its yard on the west meadow is ridden
+  "mount": true,
   "cover": { "shore": 0.6 },
   "areas": [
     { "key": "lab_meadow", "name": "Test Meadow", "polygon": [[-64, -64], [64, -64], [64, 64], [-64, 64]] },

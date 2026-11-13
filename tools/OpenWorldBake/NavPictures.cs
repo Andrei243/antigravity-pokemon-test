@@ -8,12 +8,14 @@ namespace OpenWorldBake;
 /// The navigation mesh drawn without a window (plan 32 · OW4, <c>--nav</c>): over the region's plan, each polygon's
 /// outline (dark on the top of the land, violet where it lies under other ground: a cave's floor, a tunnel's), swim
 /// polygons washed cyan, the shared edges green, a step off the mesh yellow and a drop red (a line from where it is
-/// taken to where it lands, a dot at the landing), and paths white with their corners ringed.
+/// taken to where it lands, a dot at the landing), the mount's hops orange, high jumps brown, climbs magenta and
+/// glides sky blue (plan 34 · PD2), and paths white with their corners ringed.
 /// </summary>
 public static class NavPictures
 {
     static readonly Color Outline = new(30, 34, 40, 255), Under = new(170, 90, 230, 255), Portal = new(60, 200, 90, 255),
-        Step = new(250, 220, 40, 255), Drop = new(230, 50, 50, 255), SwimWash = new(40, 210, 240, 255), PathColour = new(255, 255, 255, 255);
+        Step = new(250, 220, 40, 255), Drop = new(230, 50, 50, 255), SwimWash = new(40, 210, 240, 255), PathColour = new(255, 255, 255, 255),
+        Hop = new(255, 140, 30, 255), HighJump = new(150, 80, 30, 255), Climb = new(230, 60, 220, 255), Glide = new(120, 190, 255, 255);
 
     /// <summary>The mesh and <paramref name="paths"/> over a plan drawn at <paramref name="perMetre"/> pixels a metre from <paramref name="box"/>'s corner.</summary>
     public static void Over(PixelCanvas plan, OpenNavMesh mesh, OpenGround ground, (double X0, double Z0, double X1, double Z1) box, int perMetre,
@@ -52,7 +54,9 @@ public static class NavPictures
         foreach (var l in mesh.Links)
         {
             if (!l.OffMesh) { if (l.From < l.To) Line(OpenVec.Of(l.A), OpenVec.Of(l.B), Portal); continue; }
-            var c = (l.Flags & OpenNavFlags.Drop) != 0 ? Drop : Step;
+            var c = (l.Flags & OpenNavFlags.Glide) != 0 ? Glide : (l.Flags & OpenNavFlags.Climb) != 0 ? Climb
+                : (l.Flags & OpenNavFlags.HighJump) != 0 ? HighJump : (l.Flags & OpenNavFlags.Jump) != 0 ? Hop
+                : (l.Flags & OpenNavFlags.Drop) != 0 ? Drop : Step;
             Line(OpenVec.Of(l.A), OpenVec.Of(l.Land), c);
             Dot(OpenVec.Of(l.Land), c, Math.Max(1, perMetre / 6));
         }
