@@ -543,5 +543,11 @@ The user chose **Gemini TTS** for the Romanian pack (Kokoro has no Romanian; Kok
   (quota `GenerateRequestsPerDayPerProjectPerModel`), so Sinnoh's 6,479 lines are some 65 days of the free tier: the
   engine stops asking once the day's quota is spent (`OutForTheDay`) and the next run picks up the lines still missing.
   A whole region wants a paid tier on the key (the user's decision).
-- **Made so far**: a trial reel of twelve lines (Rowan, the moms, the rivals) the user approved, and the rival's first
-  68 Sinnoh lines in `voice/ro` (git-ignored, as every pack).
+- **Five models in turn** (2026-11-12, each approved by ear from a trial reel): `gemini.json`'s `models`,
+  gemini-3.8-flash-tts, 3.8-flash-lite, 3.1-flash, 2.5-flash and 2.5-pro. Billing is on (Tier 1), which still gives 100
+  requests a day **per model**, so a run makes about 500 lines before every model is spent. **One model to a voice**
+  (the user's rule: the models' voices of one name differ): a voice keeps the model most of its takes in the pack were
+  made by (`GeminiEngine.Pin`, from the entries' `engine`), a voice not begun takes the first model with requests left,
+  a voice whose model is spent waits for the next day, and a take made by another model is made again.
+- **Made so far** (2026-11-13): 1,161 of Sinnoh's 6,479 lines in `voice/ro` (git-ignored, as every pack), after the
+  trial reel the user approved; a daily run picks up the rest, some eleven more days at five models.
