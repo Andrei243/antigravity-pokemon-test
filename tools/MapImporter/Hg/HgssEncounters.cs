@@ -35,7 +35,17 @@ public sealed record HgHeadbutt(string Map, List<HgSlot> Common, List<HgSlot> Ra
     List<List<(int X, int Z)>> Trees, List<List<(int X, int Z)>> SecretTrees);
 
 /// <summary>One of the Safari Zone's areas (<c>files/arc/safari_enc.json</c>): each way's slots by time, and the slots objects bring.</summary>
-public sealed record HgSafariArea(string Area, Dictionary<string, List<HgSlot>> Ways, Dictionary<string, int> BonusSlots);
+public sealed record HgSafariArea(string Area, Dictionary<string, List<HgSlot>> Ways, Dictionary<string, List<HgSafariBonus>> Bonus)
+{
+    /// <summary>How many slots objects bring to each way.</summary>
+    public Dictionary<string, int> BonusSlots => Bonus.ToDictionary(b => b.Key, b => b.Value.Count, StringComparer.Ordinal);
+}
+
+/// <summary>
+/// A slot the Safari Zone's objects bring (plan 38 · EX8; <c>bonus_mons</c>): its species by time and level, and what it
+/// asks of the area's objects, each an object type (<c>SAFARI_ZONE_OBJECT_TYPE_PEAK</c>) and a count, all of them.
+/// </summary>
+public sealed record HgSafariBonus(HgSlot Slot, List<(string Type, int Count)> Needs);
 
 /// <summary>
 /// HeartGold's tables of wild Pokémon (plan 20 · J1): <c>gs_enc_data.json</c> with both versions' slots, the
@@ -89,7 +99,7 @@ public static class HgssEncounters
         foreach (var a in doc.RootElement.GetProperty("encounters").EnumerateArray())
         {
             var ways = new Dictionary<string, List<HgSlot>>(StringComparer.Ordinal);
-            var bonus = new Dictionary<string, int>(StringComparer.Ordinal);
+            var bonus = new Dictionary<string, List<HgSafariBonus>>(StringComparer.Ordinal);
             foreach (string way in new[] { "land", "surf", "oldrod", "goodrod", "superrod" })
             {
                 if (!a.TryGetProperty(way, out var w) || !w.TryGetProperty("mons", out var mons)) continue;
@@ -101,7 +111,18 @@ public static class HgssEncounters
                     var d = i < day.Count ? day[i] : morn[i];
                     return new HgSlot(d.Level, d.Level, i < morn.Count ? morn[i].Species : d.Species, d.Species, i < nite.Count ? nite[i].Species : d.Species);
                 }).ToList();
-                bonus[way] = w.TryGetProperty("bonus_mons", out var b) ? b.GetArrayLength() : 0;
+                var extra = new List<HgSafariBonus>();
+                if (w.TryGetProperty("bonus_mons", out var b))
+                    foreach (var m in b.EnumerateArray())
+                    {
+                        var needs = m.GetProperty("conditions").EnumerateArray()
+                            .Select(c => (c.GetProperty("object_type").GetString() ?? "", c.GetProperty("count").GetInt32())).ToList();
+                        var (mornS, mornL) = (Species(m.GetProperty("morn").GetProperty("species")), Number(m.GetProperty("morn").GetProperty("level")));
+                        var (dayS, dayL) = (Species(m.GetProperty("day").GetProperty("species")), Number(m.GetProperty("day").GetProperty("level")));
+                        var niteS = Species(m.GetProperty("nite").GetProperty("species"));
+                        extra.Add(new HgSafariBonus(new HgSlot(mornL, dayL, mornS, dayS, niteS), needs));
+                    }
+                bonus[way] = extra;
             }
             list.Add(new HgSafariArea(a.GetProperty("area").GetString() ?? "", ways, bonus));
         }

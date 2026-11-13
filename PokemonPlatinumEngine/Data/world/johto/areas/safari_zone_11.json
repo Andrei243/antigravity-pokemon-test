@@ -79,6 +79,161 @@
     { "species": "Dratini", "level": 45, "weight": 1 }
   ],
   "superRodRate": 100,
+  "safariSlots": [
+    {
+      "way": "land",
+      "species": "Magneton",
+      "level": 42,
+      "needs": [
+        { "kind": "Plains", "count": 3 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Volbeat",
+      "level": 46,
+      "needs": [
+        { "kind": "Plains", "count": 10 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Chingling",
+      "level": 38,
+      "needs": [
+        { "kind": "Forest", "count": 10 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Meditite",
+      "level": 43,
+      "needs": [
+        { "kind": "Forest", "count": 20 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Dusclops",
+      "level": 45,
+      "needs": [
+        { "kind": "Forest", "count": 35 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Larvitar",
+      "level": 42,
+      "needs": [
+        { "kind": "Peak", "count": 5 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Lunatone",
+      "level": 46,
+      "needs": [
+        { "kind": "Peak", "count": 15 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Metang",
+      "level": 44,
+      "needs": [
+        { "kind": "Peak", "count": 56 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Krabby",
+      "level": 43,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Sealeo",
+      "level": 45,
+      "needs": [
+        { "kind": "Water", "count": 49 },
+        { "kind": "Peak", "count": 21 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Quagsire",
+      "level": 25,
+      "needs": [
+        { "kind": "Water", "count": 10 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Surskit",
+      "level": 25,
+      "needs": [
+        { "kind": "Forest", "count": 20 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Surskit",
+      "level": 25,
+      "needs": [
+        { "kind": "Forest", "count": 20 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Seaking",
+      "level": 20,
+      "needs": [
+        { "kind": "Water", "count": 10 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Seaking",
+      "level": 20,
+      "needs": [
+        { "kind": "Water", "count": 20 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Dratini",
+      "level": 25,
+      "needs": [
+        { "kind": "Water", "count": 10 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Dratini",
+      "level": 25,
+      "needs": [
+        { "kind": "Water", "count": 20 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Dragonair",
+      "level": 45,
+      "needs": [
+        { "kind": "Water", "count": 20 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Dragonair",
+      "level": 45,
+      "needs": [
+        { "kind": "Water", "count": 30 }
+      ]
+    }
+  ],
   "warps": [],
   "objects": [],
   "signs": [],

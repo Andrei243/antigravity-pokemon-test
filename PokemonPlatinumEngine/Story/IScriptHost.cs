@@ -541,6 +541,13 @@ public interface IScriptHost
     /// </summary>
     bool Headbutt() => false;
 
+    /// <summary>
+    /// The Johto Safari Zone's Area Customizer (plan 38 · EX8, <c>safari objects</c>): the area numbered from 0 in its
+    /// order (<see cref="Models.SafariObjects.AreaKeys"/>) opened to arrange its objects. False where there is no such
+    /// area; a host with no screen opens nothing and says so.
+    /// </summary>
+    bool ArrangeSafari(int area) => false;
+
     // ------------------------------------------------------------------ autosave (plan 12 · Q3)
 
     /// <summary>

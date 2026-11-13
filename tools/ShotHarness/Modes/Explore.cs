@@ -26,6 +26,7 @@ partial class Harness
         if (part.Length == 0 || part == "soaring") ExploreSoaring();
         if (part.Length == 0 || part == "skyplaces") ExploreSkyPlaces();
         if (part.Length == 0 || part == "feebas") ExploreFeebas();
+        if (part.Length == 0 || part == "safari") ExploreSafari();
     }
 
     private void ExploreUnovaMap()

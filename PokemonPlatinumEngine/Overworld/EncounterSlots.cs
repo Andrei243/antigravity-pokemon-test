@@ -126,6 +126,13 @@ public sealed record EncounterMoment
     /// grass's slots 0 to 5 and on every rod, after the visitor's and before the second slot's and ours. Null outside a rift.
     /// </summary>
     public RiftTable? Rift { get; init; }
+
+    /// <summary>
+    /// The Johto Safari Zone's objects and the day they are counted on (plan 38 · EX8, <see cref="Models.SafariObjects"/>):
+    /// the slots they bring laid into an area's own. Null with none placed anywhere, and then nothing changes.
+    /// </summary>
+    public Models.SafariObjects? SafariObjects { get; init; }
+    public int SafariDay { get; init; }
 }
 
 /// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>
@@ -168,6 +175,9 @@ public static class EncounterSlots
                 _ => null
             });
         }
+        // Plan 38 · EX8: the slots the Johto Safari Zone's objects bring, into its ten as each opens (a table of ten, so before the rest)
+        if (moment.SafariObjects is { } placed && area.SafariSlots.Count > 0)
+            Models.SafariObjects.Lay(slots, area.SafariSlots, Models.SafariWay.Land, placed.In(area.Key), moment.SafariDay, moment.Time);
         if (slots.Count != 12) return slots;
 
         var timed = moment.Time switch
@@ -294,8 +304,10 @@ public static class EncounterSlots
     {
         bool swarm = moment?.SwarmArea == area.Key && moment.SwarmWay == SwarmWay.Surf && !string.IsNullOrEmpty(area.SurfSwarm) && table.Count > 0;
         bool ours = moment?.OursOpen == true && area.OursSurf.Count > 0 && table.Count > OverlayOurs.SurfSlot;
-        if (!swarm && !ours) return table;
+        bool safari = SafariOpen(area, Models.SafariWay.Water, moment);
+        if (!swarm && !ours && !safari) return table;
         var slots = table.Select(Copy).ToList();
+        if (safari) Models.SafariObjects.Lay(slots, area.SafariSlots, Models.SafariWay.Water, moment!.SafariObjects!.In(area.Key), moment.SafariDay, moment.Time);
         if (swarm) slots[0].SpeciesName = area.SurfSwarm!;
         if (ours) OursSlots.Put(slots[OverlayOurs.SurfSlot], area.OursSurf[0]);
         return slots;
@@ -307,6 +319,14 @@ public static class EncounterSlots
     /// </summary>
     public static IReadOnlyList<WildEncounterEntry> Rod(MapArea area, FishingRod rod, IReadOnlyList<WildEncounterEntry> table, EncounterMoment? moment)
     {
+        // Plan 38 · EX8: the slots the Johto Safari Zone's objects bring to a rod (its zone has no swarm)
+        var way = rod switch { FishingRod.Old => Models.SafariWay.OldRod, FishingRod.Good => Models.SafariWay.GoodRod, _ => Models.SafariWay.SuperRod };
+        if (SafariOpen(area, way, moment))
+        {
+            var laid = table.Select(Copy).ToList();
+            Models.SafariObjects.Lay(laid, area.SafariSlots, way, moment!.SafariObjects!.In(area.Key), moment.SafariDay, moment.Time);
+            table = laid;
+        }
         if (moment?.SwarmArea != area.Key || moment.SwarmWay != SwarmWay.Fish || string.IsNullOrEmpty(area.FishSwarm) || table.Count == 0) return table;
         int[] which = rod switch { FishingRod.Old => new[] { 2 }, FishingRod.Good => new[] { 0, 2, 3 }, _ => new[] { 0, 1, 2, 3, 4 } };
         var slots = table.Select(Copy).ToList();
@@ -314,6 +334,11 @@ public static class EncounterSlots
             if (slot < slots.Count && !slots[slot].Unmapped) slots[slot].SpeciesName = area.FishSwarm; // a slot of ours keeps its own (plan 03 · D15)
         return slots;
     }
+
+    /// <summary>Whether the Johto Safari Zone's objects open a slot of a way in an area at a moment (plan 38 · EX8).</summary>
+    private static bool SafariOpen(MapArea area, Models.SafariWay way, EncounterMoment? moment) =>
+        moment?.SafariObjects is { } placed && area.SafariSlots.Count > 0
+        && Models.SafariObjects.AnyOpen(area.SafariSlots, way, placed.In(area.Key), moment.SafariDay);
 
     /// <summary>The Poké Radar's hard shake puts its four in slots 4, 5, 10 and 11 (<c>TryGenerateGrassEncounter_WithRadar</c>).</summary>
     public static void PutRadarSpecies(List<WildEncounterEntry> slots, MapArea area)

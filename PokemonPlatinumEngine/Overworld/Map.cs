@@ -191,6 +191,9 @@ public sealed class MapArea
     /// <summary>The area's Headbutt trees and their tables (plan 38 · EX4; HeartGold's); null where it has none.</summary>
     public AreaHeadbuttTrees? Headbutt { get; set; }
 
+    /// <summary>The slots the Johto Safari Zone's objects bring (plan 38 · EX8; HeartGold's); empty everywhere else.</summary>
+    public List<Models.SafariSlot> SafariSlots { get; } = new();
+
     /// <summary>
     /// Black 2's tables beside the grass's and the water's (plan 22 · U4; <c>WorldAreaFile.DarkGrass</c> and its
     /// kin): the dark grass's, the grass that shakes, the water that ripples and a rod cast into it. Empty in every
