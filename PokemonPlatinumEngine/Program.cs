@@ -54,6 +54,8 @@ public static class Program
         // Only the game itself looks for a voice pack beside it: a tool's or a test's engine, whose VOICES row is ALL
         // unless chosen too, would otherwise find the pack kept at the repository's root and speak in its shots
         GameEngine.LooksForVoicePacks = true;
+        // The same for the models built from the Blender sculpts (plan 48 · BL1)
+        Graphics.ModelOverrides.LookForBuiltModels();
         // Where the saves, the options, the log and a crash's files are kept (plan 12 · Q2): decided once, here, for
         // the whole run. This is the only place that asks the real machine, so nothing but the game itself ever
         // writes in a user's own folder

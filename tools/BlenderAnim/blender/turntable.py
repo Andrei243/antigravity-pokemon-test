@@ -1,6 +1,6 @@
 # A still turntable of a .glb to look at a sculpt: its front, front three-quarter, side and back on one sheet, in the
 # file's own colours (vertex colours and textures, through the materials the importer makes). Run by Blender itself:
-#   blender --background --factory-startup --python turntable.py -- <in.glb> <out.png> [size] [engine]
+#   blender --background --factory-startup --python turntable.py -- <in.glb> <out.png> [size] [engine] [eyes]
 # It prints what the file holds (TT: lines): meshes, colour attributes, materials, clips and bounds.
 import bpy, math, os, sys
 import numpy as np
@@ -11,6 +11,8 @@ src, out = args[0], args[1]
 size = int(args[2]) if len(args) > 2 else 480
 # EEVEE renders with no window on Windows; "BLENDER_WORKBENCH" is the fallback where it can't
 engine = args[3] if len(args) > 3 else "BLENDER_EEVEE_NEXT"
+# Which of the eyes' five states to show (Open, Shut, Squeeze, Fierce, Smile)
+eyes = (args[4] if len(args) > 4 else "Open").lower()
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 bpy.ops.import_scene.gltf(filepath=src)
@@ -25,6 +27,10 @@ for o in bpy.data.objects:
         o.data.pose_position = "REST"
 bpy.context.view_layer.update()
 
+# Of the eyes' five states (pieces named eyes.<State>) only the open ones, as the game draws a model at rest
+for o in bpy.data.objects:
+    if o.type == "MESH" and o.name.lower().startswith("eyes.") and not o.name.lower().startswith("eyes." + eyes):
+        bpy.data.objects.remove(o, do_unlink=True)
 meshes = [o for o in bpy.data.objects if o.type == "MESH"]
 print("TT: meshes", [(o.name, len(o.data.vertices), len(o.data.polygons)) for o in meshes])
 for o in meshes:

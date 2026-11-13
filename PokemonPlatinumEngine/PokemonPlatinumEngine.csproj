@@ -48,4 +48,14 @@
     <InternalsVisibleTo Include="BlenderAnim" />
   </ItemGroup>
 
+  <!-- The models built from the Blender sculpts (plan 48 · BL1; built/models at the repository's root, which git
+       ignores) go with a published game. A copy on publish alone: as content they would be copied into the output of
+       every project that refers to the engine, tests and tools among them. -->
+  <Target Name="PublishBuiltModels" AfterTargets="Publish">
+    <ItemGroup>
+      <BuiltModel Include="$(MSBuildProjectDirectory)\..\built\models\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(BuiltModel)" DestinationFolder="$(PublishDir)built\models\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
 </Project>

@@ -209,6 +209,82 @@ hair cut and garments, all on one armature. The hero's file is the format tried 
 
 What these files still lack beside a hand-built sculpt is under "What the round trip keeps and loses".
 
+## Building and installing a species (plan 48 · BL1)
+
+```bash
+dotnet run -c Release --project tools/BlenderAnim -- sculpt Turtwig Chimchar Piplup     # or: sculpt all
+```
+
+It exports the C# sculpt with every model file switched off, builds `sculpts/<species>.py` twice, installs the file
+into `built/models` (ignored by git, read by the game alone, copied by `dotnet publish`) only if the two builds are the
+same bytes, and prints what the game's reader finds in it: eye states, surfaces, clips. To see it in a shot, copy it
+into `<out dir>/overrides/models` as before: the harness and the tests never look in `built/models`.
+
+A species is at parity with a hand-built sculpt only with both of these, so every new script has them:
+
+- **Eyes in five states.** Build the body, then `k.eye_states(lay)`: `lay(state)` adds the eyes' decals for a state
+  and each becomes a piece `eyes.<State>` on the body. `eye_look(state, open_look, lid, ink)` makes the colour function
+  of each state from the open eye's (shut a line curving down on the lid's colour, a smile curving up, a squeeze two
+  lines meeting at the inner corner, fierce the lid slanting over the open eye); `+u` is outward on both eyes. The lid
+  is the colour round the eye (Piplup's white disc, Chimchar's cream face); what stays whatever the eye does (Turtwig's
+  yellow ring) is painted back after it. Use `rings=20, segs=56` for an eye: a state's line is a seventh of the eye.
+- **Surfaces.** `Kit(src, coat="scales")` and `add(..., surface="shell")`: a material a surface, named as the game
+  names them (`skin`, `cloth`, `hair`, `leather`, `plastic`, `metal`, `fur`, `scales`, `shell`, `leaf`), each face of
+  the fused mesh taking the surface of the part it is nearest. Take them from the species' C# sculptor (`Coat = ...`,
+  `mat: Shell`), which is what parity is against.
+- The kit removes the export's old materials as it starts and reuses a material by name, or Blender numbers the
+  second one (`body.001`); the game's reader ignores such a number all the same.
+
+## References, and what the first batches taught
+
+- **Reference pictures live outside the repository**, in `references/pokemon/` in the folder above it
+  (`<number>_<Species>_art.png`, the design's drawing, and `_3d.png`, its 3D model), fetched with the user's leave
+  from the PokeAPI sprites repository (`sprites/pokemon/other/official-artwork/<n>.png` and `other/home/<n>.png`; a
+  form by its own number, Giratina's Origin Forme 10007). Open both with Read before writing a species, write down
+  its features as a list, and tick them against the turntable. Never copy one into the repository or use it as a
+  texture.
+- **Order**: the order a player meets them in (the user, 2026-11-13); a species' skeleton is printed first
+  (each bone's `head_local`) and every part's pivot put on it.
+- **A patch that misses the surface** (a decal over thin or loose geometry) used to leave its points where its rays
+  began, 0.35 off the model, and the game then measured the model too large. The kit drops them and prints
+  `KIT: !! a decal ... missed`; lay a patch only on the fused surface, and watch the `KIT:` line's width and length.
+- **The turntable shows the open eyes only.** With all five pieces drawn, every face looked fierce.
+- **The user's corrections so far, as rules**: eyes on a round head sit further apart than feels right (Chimchar,
+  Piplup: aim about 0.45 of the way from the middle of the face to its side).
+- **Shapes in the kit beyond `ell` and `tube`** (each first written by an agent inside a species' script): `blade` for a horn, prong or fin (a tube squashed about its own line; squashing about the part's middle pushes its far end off), `sheet` for a collar or membrane, `leaf` for a flat pointed piece along a direction, `lumpy` for a crown or a cloud of fur, `polygon` for a patch with corners (chest points, a mask). `turntable.py` takes an eye state after the engine (`... 480 BLENDER_EEVEE_NEXT Shut`).
+- **Agents sculpt well from this skill** (2026-11-13: six evolutions and then six wild Pokémon, three agents at once, two species each): give each the skill, the kit, two worked examples of a like body, the references, the skeletons' file and its own scratch folder; let it touch only its two scripts; build, install and shoot in the game yourself. Colours and shapes follow the references even where the old C# sculpt differs.
+- **A mirrored patch's `outline` is not mirrored** (only its colour function's `u` is): an outline that is not symmetric comes out wrong on the other side, so lay it as two patches. Left as it is because tuned sculpts rest on it.
+- **A patch catches whatever its rays meet first**: laid behind a limb it lands on the limb. Make such a mark a small fused part instead.
+- **A mouth is carved**: `add(name, shape, colour, bone, carve=True)` cuts the part out of the fused body (a Boolean after the remesh) and lines the hollow with its colour. The cutter must break the surface (centre it on the surface, keep it thin) and stay inside the head's width, or it notches the cheeks; its colour spreads a voxel onto the rim, so on a convex snout it reads as lips: aim it into an overhang. Fangs are loose pieces seated just inside the rim (`zubat.py`, `onix.py`, `machop.py`).
+- **Anything that must keep its edges is a loose piece**: a beak, a band (a loose `sheet` along the shell), a peak, spikes of a fringe, a flipper of two extruded slabs (`empoleon.py`'s `slab`). Hard rock is a convex hull with its coplanar faces merged and shaded flat after `build()` (`onix.py`'s `stone` and `rock`): the game reads the file's normals. The kit's `facets` alone stays soft.
+- **A crisp line between two colours of the body** is two paints with no `on`, kept to the body by a mask of place, with an edge under a voxel (`inside(d, 0.0025)`); `on=` blends where parts of two colours meet (`shinx.py`).
+- **Patches**: a tiny dot (a pupil) is a patch of its own, or it comes out a star; a patch wider than what it is cast on wraps round as a streak; `polygon` is star-shaped about the patch's own middle, so a long band is cut into near-convex patches; a long throat marking is painted along the neck's centre line, not laid as one oval patch.
+- **Watch the `KIT:` line**: `height nan` is a fractional power of a negative number in a deform (clip first); a raised tail, crest or forelock raises the height and the game draws the body smaller; a script's `out` is its export path (never a loop variable). A bone the import numbered (`hindR.001`) is named so on its parts: print the joints before borrowing names.
+- **Creases between fused parts remesh rough** and speckle under the coat: fill the crease with a set-back part and keep one part's surface from running along another's. A flame's yellow heart is two thin copies on its two faces. Leaves fan out along each lobe's outward direction. A tail that rises behind a round head shows over it from the front.
+- **A wing is loose flat plates**: a base plate and coloured panels thicker than it, so each panel shows on both faces, front and back (`beautifly.py`'s `flat`, which triangulates any outline; `slab` fans from the outline's mean and folds a notched one).
+- **A face that reads** (Infernape, after the user found it odd): look at the head alone at 1400 and tick it against the references feature by feature: the size and slant of the eyes first (small almond eyes under a brow are an `outline=polygon(...)` patch a side, its top edge overlapping the brow; the iris a patch of its own in the same frame, in the Open and Fierce states only), then whether the muzzle stands forward, the ears' size, the fur's silhouette. Two patches laid by hand have `u` toward +X on both sides: flip the left one's colour function and outline. A face patch misses where an ear stands in front of the head.
+- **The references overrule the brief**: an agent told of feelers or a yellow rim that the pictures do not show follows the pictures and says so.
+- **Mouths and marks go in before the body's `build()`**: a patch added after it and before `eye_states` falls into `eyes.Open` and shows with open eyes alone. The lid colour given to `eye_look` is whatever is painted under the eye, or closed eyes wear a ring; on a body dark all round give the closed states a light line.
+- **A big eye on a round head** wants a flattened face part fused in, or the patch wraps. A skeleton with one leg (`legR` at x 0, Hoothoot) takes the leg on `legR` unmirrored.
+- **`sheet` gives NaN normals where its width is nought** (a leaf's point at u 0 or 1): keep u off the ends (`0.015 + 0.97 u`). A thin painted stripe wants an edge near the voxel (0.004 at 0.005), not far under it.
+- **Gas, smoke or fluff with no transparency** is opaque loose puffs in rings behind and round the body, the face left clear and the body showing through the middle from behind (`gastly.py`); jitter their places, or they read as petals.
+- **An evolution is grown from its forebear's script**: give the agent that script as its example and say so; it keeps the line's colours and its way of making eyes, teeth and fur (Staravia, Bibarel, Luxio).
+- **A wide mask or chest mark on a round head** is paint in coordinates round the head's upright axis (angle × radius, z) against a polygon with a soft edge (`luxio.py`'s `poly_mask`), not a wide patch, which streaks. A brow that must stay over the eye in every state is a wrapper round `eye_look`. A mask is painted, not patched, where a mouth is carved: a patch would lie in the hollow, while the carve recolours after the paints.
+- **A hard-edged cell with a face** (Combee) is a loose prism with a thin fused plate standing just proud of its front for the patches; paint under eye patches is flat, or closed eyes show a ring.
+- Never run a bare `python -` or `blender --python -` here: the first hangs, the second looks for a file named `-`.
+- Judge a face on a turntable of 1100 or more; a part off its joint cannot be seen at rest, so check its first point against the skeleton.
+- **`inside(d)` is 1 where `d` is below nought**: a region within a radius is `inside(distance - r)`.
+- **`paint(on=[...])` goes by a name's beginning**: `tail` also takes `tailtip`; name parts with that in mind.
+- **Give a fused part its majority colour and paint the minority**, with the same-coloured neighbours in `on`: a part painted whole to match its neighbour leaves a pale ring where it meets a third (Wurmple's skull).
+- **On a patch that faces sideways `+u` runs toward the back** on both sides of a mirrored pair.
+- **The skeleton decides the pose**, even where the art stands the species upright (Buizel is a quadruped here).
+- **Patches are cast on the fused surface alone**: a loose piece in front never catches one (an ear's lining under a loose forelock lands on the ear).
+- **Every loose piece with `glow=` is a material and a primitive of its own**: join a flame's tongues into one piece a bone and colour before adding them (`ponyta.py`). A long body is a loose boulder a joint, each on its own bone, with the head fused for its eyes (`onix.py`); a belly line on a curved body goes by the body's centre line (`wurmple.py`).
+- **Ways of making a feature that worked**: a ragged sail is a flat ellipsoid whose outline is scaled by a sine of
+  the angle (Giratina's wings); bars down a curved front are one patch with a colour function banded in `v`; a
+  zigzag edge is `tri` of the angle round the part (a ruff, a crown, toes); puffs of fur are fused balls; a tooth is
+  a `boxy(5)` ellipsoid left loose; a spike that hangs from a sail starts thin inside it, or it pokes out the back.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;

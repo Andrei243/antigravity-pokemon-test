@@ -68,6 +68,12 @@ blender --background --factory-startup --python tools/BlenderAnim/blender/sculpt
 
 The result is a draft for `<out dir>/overrides/models`, to be looked at with `turntable.py` and in the game.
 
+`dotnet run --project tools/BlenderAnim -- sculpt <Species>... | all [--out <dir>]` does the whole of it for species
+that have a script (plan 48 · BL1): it exports the game's own sculpt with every model file switched off, builds the
+script twice, and installs the file into `built/models` at the repository's root only if both builds are the same
+bytes. Git ignores that folder; the game alone reads it, after every other model folder, and `dotnet publish` copies it
+beside the published game. It prints the eye states, surfaces and clips the game's reader finds in each file.
+
 `sculpts/hero.py` is a person, whom the game reads from no file yet: the boy hero as a wardrobe of pieces (a body in
 parts, a hair cut, two hats, two tops, two bottoms, shoes, a bag, a scarf) on the chibi kit's joints, each piece's
 colours kept as zones so that any colourway is the same mesh. Its header has the format; `sculpts/hero_outfits.py`

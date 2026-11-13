@@ -55,6 +55,7 @@ Saved outfits and wardrobes, garment ids and prices, the boutique's stock, the s
 3. **The plain look**: the boy and the girl with nothing chosen stay exactly as they are drawn today (recommended: yes until WD3's gate, so no shot moves), or are redrawn in pieces at once.
 4. **Which kit first**: the chibi player of Sinnoh to Unova (recommended, where most of the game is played), or the grown player of Kalos on.
 5. **New garments**: how many shapes are wanted in the first set beyond today's (a hoodie with its hood, a skirt, a coat, boots, a second and third bag), and whether new slots are wanted (gloves, glasses, a neck slot for the scarf). A new slot is a field of `Outfit` and of the save, so it is asked here and not assumed.
+**Said by the user on 2026-11-13**, before the five were answered: the grown characters are to be remade too, not only the chibi ones. So decision 4 is no longer either-or: both kits are in scope, WD5 is a session of the plan and not an afterthought, and WD1's prototype shows a grown hero beside the chibi one. Decisions 1, 2, 3 and 5 are still open.
 
 ## Sessions
 
