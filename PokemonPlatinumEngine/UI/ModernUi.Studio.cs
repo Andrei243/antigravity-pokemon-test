@@ -20,6 +20,26 @@ internal static partial class ModernUi
     /// <summary>The stage as it is drawn beside the panel: sixteen to nine.</summary>
     public static Rectangle StudioStage => new(Margin, ContentTop + 8, 1120, 630);
 
+    /// <summary>The rows' panel at the right (the drawing's and the pointer's).</summary>
+    public static Rectangle StudioPanel(int sw) =>
+        new(sw - Margin - StudioPanelWidth, ContentTop + 8, StudioPanelWidth, Enum.GetValues<StudioRow>().Length * StudioRowHeight + 36);
+
+    /// <summary>A row's rectangle in the panel.</summary>
+    public static Rectangle StudioRowRect(int sw, StudioRow row)
+    {
+        var panel = StudioPanel(sw);
+        return new Rectangle(panel.X + 18, panel.Y + 18 + (int)row * StudioRowHeight, panel.Width - 36, StudioRowHeight - 6);
+    }
+
+    /// <summary>The middle of the <paramref name="i"/>th Seal shown under the stage while one is chosen, and its radius.</summary>
+    public static Vector2 StudioSealSpot(int i)
+    {
+        var stage = StudioStage;
+        return new Vector2(stage.X + 46 + i * 104, stage.Y + stage.Height + 56 + 90);
+    }
+
+    public const float StudioSealRadius = 44;
+
     /// <summary>A row's value in words.</summary>
     public static string StudioRowValue(StudioScreen screen, StudioRow row)
     {
@@ -81,7 +101,7 @@ internal static partial class ModernUi
                 new Rectangle(MathF.Round(pokemonX - w / 2f), MathF.Round(floorY + 10 * k - h), MathF.Round(w), MathF.Round(h)), Vector2.Zero, 0f, Color.White);
         }
         foreach (var sticker in shot.Stickers)
-            SealSticker(new Vector2(r.X + sticker.X * r.Width, r.Y + sticker.Y * r.Height), 34 * k, sticker.Seal);
+            SealSticker(new Vector2(r.X + sticker.X * r.Width, r.Y + sticker.Y * r.Height), 34 * k * sticker.Size, sticker.Seal, 1f, sticker.Angle);
         CardFrameArt(r, StudioLooks.Frame(shot.Frame), k);
     }
 
@@ -99,7 +119,7 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("photoStudio.heading"));
         if (screen.Mode == StudioMode.PlaceSeal)
-            Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.move"), Hint("shared.keys.z", "photoStudio.hints.put"), Hint("shared.keys.esc", "shared.hints.back"));
+            Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.move"), Hint("shared.keys.c", "photoStudio.hints.size"), Hint("photoStudio.keys.turn", "photoStudio.hints.turn"), Hint("shared.keys.z", "photoStudio.hints.put"), Hint("shared.keys.esc", "shared.hints.back"));
         else
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
 
@@ -108,15 +128,15 @@ internal static partial class ModernUi
         if (screen.Mode == StudioMode.PlaceSeal && screen.Seals.Count > screen.SealIndex)
         {
             var at = new Vector2(stage.X + screen.CursorX * stage.Width, stage.Y + screen.CursorY * stage.Height);
-            SealSticker(at, 34 * stage.Width / 1920f * 1.75f, screen.Seals[screen.SealIndex], 0.8f);
+            SealSticker(at, 34 * stage.Width / 1920f * 1.75f * StudioSticker.Sizes[screen.CarriedSize], screen.Seals[screen.SealIndex], 0.8f, screen.CarriedTurn * MathF.Tau / StudioSticker.Turns);
             UiShapes.Ring(at, 30, 3, Selection);
         }
 
-        var panel = new Rectangle(sw - Margin - StudioPanelWidth, ContentTop + 8, StudioPanelWidth, Enum.GetValues<StudioRow>().Length * StudioRowHeight + 36);
+        var panel = StudioPanel(sw);
         Panel(panel, 34);
         foreach (var row in Enum.GetValues<StudioRow>())
         {
-            var rr = new Rectangle(panel.X + 18, panel.Y + 18 + (int)row * StudioRowHeight, panel.Width - 36, StudioRowHeight - 6);
+            var rr = StudioRowRect(sw, row);
             bool selected = screen.Mode == StudioMode.Rows && screen.Row == row;
             var ink = ListRow(rr, selected, Text.Of($"photoStudio.row.{row}"), nameX: 26, size: 26);
             string value = StudioRowValue(screen, row);
@@ -136,8 +156,8 @@ internal static partial class ModernUi
             for (int i = 0; i < shown; i++)
             {
                 int at = screen.FirstSeal + i;
-                var c = new Vector2(stage.X + 46 + i * 104, top + 90);
-                UiShapes.Circle(c, 44, new Color(255, 255, 255, at == screen.SealIndex ? 235 : 130));
+                var c = StudioSealSpot(i);
+                UiShapes.Circle(c, StudioSealRadius,new Color(255, 255, 255, at == screen.SealIndex ? 235 : 130));
                 if (at == screen.SealIndex) UiShapes.Ring(c, 46, 4, Selection);
                 SealSticker(c, 30, screen.Seals[at]);
             }

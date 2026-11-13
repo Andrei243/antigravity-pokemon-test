@@ -105,6 +105,12 @@ public partial class GameEngine
         /// <summary>The Underground (plan 06 · R16a): its state and rules, its screens, the trap that has the player, and the game's own ways down and up.</summary>
         public Models.Underground.UndergroundState Underground => game.flow.Underground;
         public Models.Pastimes Pastimes => game.flow.Pastimes;
+        /// <summary>The arcade's two cabinets and their records (plan 42 · PS6).</summary>
+        public UI.MatchThreeScreen MatchThree => game.flow.MatchThreeScreen;
+        public UI.PictureLogicScreen PictureLogic => game.flow.PictureLogicScreen;
+        public Models.Cabinets.CabinetRecords Cabinets => game.flow.Cabinets;
+        /// <summary>Opens a cabinet as its script's <c>gamecorner cabinet</c> does: 0 the match-three, 1 the picture-logic puzzle.</summary>
+        public void OpenCabinet(int which) => game.OpenCabinet(which);
         public UI.SlotMachineScreen Slots => game.flow.SlotMachineScreen;
         public UI.ReelMachineScreen Reels => game.flow.ReelMachineScreen;
         public UI.RouletteScreen Roulette => game.flow.RouletteScreen;
@@ -162,7 +168,15 @@ public partial class GameEngine
         public void OpenBaseDecoration() => game.OpenDecoration();
         /// <summary>Hoenn's secret bases (plan 21 · H10): the player's base, the decoration PC, and the base's decorating opened.</summary>
         public Models.SecretBaseSave? SecretBase => game.flow.SecretBase;
+        /// <summary>The player's base set by hand (a test of the way in at its spot, plan 43 · LF7).</summary>
+        public void SecretBaseSet(Models.SecretBaseSave? home) => game.flow.SecretBase = home;
         public List<Models.StoredDecoration> Decorations => game.flow.Decorations;
+        /// <summary>Each region's bedroom at home as it was decorated (plan 43 · LF7), and its decorating opened at its computer.</summary>
+        public Dictionary<string, List<Models.PlacedDecoration>> Bedrooms => game.flow.Bedrooms;
+        public bool OpenBedroomDecoration() => game.OpenBedroomDecoration();
+        /// <summary>A bedroom laid as it is come to, and the way into the home drawn at its spot (plan 43 · LF7).</summary>
+        public void LayOutBedroom(Overworld.Map room) => game.LayOutBedroom(room);
+        public void KeepTheBaseEntrance() => game.KeepTheBaseEntrance();
         /// <summary>The records mixed in at the record desk, and the friend's base being visited (plan 40 · GE10).</summary>
         public Models.RecordMixState Records => game.flow.Records;
         /// <summary>The player's other saves as the record desk reads them (plan 40 · GE10).</summary>
@@ -246,6 +260,10 @@ public partial class GameEngine
         public PCScreen PcScreen => game.flow.PCScreen;
         public HallOfFameScreen HallOfFameScreen => game.flow.HallOfFameScreen;
         public JournalScreen JournalScreen => game.flow.JournalScreen;
+
+        /// <summary>The Book of Tales (plan 46 · CP11), and opening it as USE on the Book does.</summary>
+        public BookOfTalesScreen BookOfTalesScreen => game.flow.BookOfTalesScreen;
+        public void OpenBookOfTales() => game.OpenBookOfTales();
         public PokedexScreen PokedexScreen => game.flow.PokedexScreen;
         public EvolutionScreen Evolution => game.flow.EvolutionScreen;
         public OptionsScreen Options => game.flow.OptionsScreen;
@@ -278,6 +296,13 @@ public partial class GameEngine
         public PhoneRinger PhoneRinger => game.phoneRinger;
         /// <summary>A call as the game makes it: the player ringing a contact, or a contact ringing the player.</summary>
         public void PlaceCall(PhoneContact contact, bool incoming) => game.PlaceCall(contact, incoming);
+
+        /// <summary>The travel phone's caller's face on a call (plan 43 · LF6): the look asked for and whether it is rendered.</summary>
+        /// <summary>The travel phone's screen, opened as the start menu's PHONE opens it, on a card.</summary>
+        public PhoneScreen TravelPhoneScreen => game.flow.PhoneScreen;
+        public void OpenTravelPhone(PhoneCard? on = null) => game.OpenPhone(on);
+        public string? CallFaceLook => game.callFace.Look;
+        public bool CallFaceRendered => game.callFace.Rendered;
         /// <summary>A step's chance of a contact ringing, asked at once.</summary>
         public bool PhoneRingsOnAStep() => game.PhoneRingsOnAStep();
 

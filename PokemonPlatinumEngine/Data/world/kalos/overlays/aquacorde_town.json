@@ -6,6 +6,10 @@
   // over. The way north over the bridge, Route 2, turns back whoever comes to it before the first Pokémon, or before
   // the letter has been taken home
   "area": "aquacorde_town",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 253, "z": 647, "kind": "Tree", "room": 4 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 255, "z": 669, "script": "PhotoSpot" } ],
   "bgmTrack": "kalos/aquacorde",
   "trees": "Round",
   "architecture": "Canalside",
@@ -23,7 +27,7 @@
     { "script": "NotYet", "x": 254, "z": 648, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 1 },
     { "script": "HomeFirst", "x": 254, "z": 648, "width": 4, "depth": 1, "variable": "VAR_KALOS_STORY", "value": 3 }
   ],
-  "props": [
+  "props": [ { "type": "PhotoSpot", "x": 255, "y": 669, "width": 1, "depth": 1 },
     { "type": "Table", "x": 250, "y": 657, "width": 2, "depth": 1 },
     { "type": "Table", "x": 243, "y": 657, "width": 1, "depth": 1 },
     { "type": "Table", "x": 246, "y": 657, "width": 1, "depth": 1 },

@@ -8,6 +8,12 @@
   // Hugh (3, FLAG_UNOVA_HIDE_HUGH_NIMBASA) faces Team Plasma's grunts (0, 1, 2, 4, FLAG_UNOVA_HIDE_NIMBASA_PLASMA) on
   // the street to Route 5, and our trigger (409, 437 to 440, VAR_UNOVA_NIMBASA 1) plays the scene
   "area": "nimbasa_city",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it (a bush in the fence's row: a cave's mouth stood there in the open, so it is a shrub since the spots were looked at)
+  "baseSpots": [ { "x": 416, "z": 436, "kind": "Shrub", "room": 2 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 412, "y": 448, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 412, "z": 448, "script": "PhotoSpot" } ],
   "bgmTrack": "unova/nimbasa",
   "architecture": "Funfair",
   // The Gear Station (plan 22 · U6, part c) is a map of ours, Black 2's hall standing on rails, which the reader leaves out

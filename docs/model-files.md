@@ -15,6 +15,13 @@ Put the files in a folder called `overrides/models`, in either of these places:
 Git ignores every folder called `overrides`, so nothing you put there goes into the repository. Check `git status`
 after adding files if in doubt.
 
+**Built models** (plan 48). The game itself, and nothing else, also looks in `built/models` beside its executable and in the
+folder it is started from, after every folder above. That is where `dotnet run --project tools/BlenderAnim -- sculpt
+<Species>...` puts the models built from the Blender sculpts (`tools/BlenderAnim/blender/sculpts/`). Git ignores the
+folder; `dotnet publish` copies it beside the published game. A species with no file there is drawn as its sculpt, so a
+machine that has built nothing shows the game as it always was, and the harness and the tests never look there (the
+harness shows a built model only when it is copied into `<out dir>/overrides/models`).
+
 `assets/models` in the repository folder is read the same way, and **git tracks it**: it holds the approved models of
 our own (the new species' sculpts), so they travel with the repository. A file of the same name in `overrides/models`
 wins, which lets you try a draft without touching what is committed. Only models made for this game belong there, each
@@ -48,6 +55,17 @@ glTF 2.0 files, binary (`.glb`) or text (`.gltf` with its `.bin` and textures in
   they fit, which is more than a model in battle or a 128-pixel sprite shows.
 - The node tree with its transforms, skins with any number of joints (a rig with more joints than the shaders take
   at once is drawn in pieces), and animations (translation, rotation and scale; linear, step or cubic-spline keys).
+
+**Eyes in the game's five states.** A node named `eyes.Open`, `eyes.Shut`, `eyes.Squeeze`, `eyes.Fierce` or `eyes.Smile`
+(any case) is drawn only while the pose shows those eyes: shut asleep or fainted, squeezed as a hit lands, fierce in
+an attack, and so on (`PokemonAnimation.EyesOf`). A state the file has no node for shows the open eyes, and a file
+with no such nodes is drawn whole, as before. Put the open eyes in `eyes.Open` once any other state is there, or they
+are drawn under it.
+
+**Surfaces.** A material named after one of the game's surfaces (`skin`, `cloth`, `hair`, `leather`, `plastic`, `metal`,
+`glow`, `fur`, `scales`, `shell`, `leaf`; any case, with or without the `.001` Blender adds) is shaded as that surface,
+with its highlight and its shade. Any other material is a glow where its emission is over 0.4, metal where it is 0.7
+metallic or more, and plain otherwise.
 
 Not read: Draco or meshopt mesh compression, WebP or KTX2 textures, morph targets, and textures other than the base
 colour (normal, roughness and other maps). A file that can't be used is reported in the log (`MODELS:` lines) and

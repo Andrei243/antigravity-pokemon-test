@@ -185,3 +185,8 @@ script Woman
   speaker "Woman"
   say "I'd love one of those shiny red bicycles in the shop. But have you seen the price? A million!"
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "kanto_cerulean_bridge"
+  end

@@ -15,6 +15,8 @@ public sealed class RaidRowFile
     [DataRequired] public int Stars { get; set; }
     public int Weight { get; set; } = 10;
     public int Version { get; set; }
+    /// <summary>The item the boss holds (plan 33 · GL7, part b: a Mega Max den's boss holds its Mega Stone), or none.</summary>
+    public string? Item { get; set; }
 }
 
 /// <summary>A Max Raid den (plan 33 · GL3): its id (what its script names it by), the area it is in and its table.</summary>
@@ -23,6 +25,12 @@ public sealed class RaidDenFile
     [DataRequired] public string Id { get; set; } = "";
     [DataRequired] public string Area { get; set; } = "";
     [DataRequired] public List<RaidRowFile> Rows { get; set; } = new();
+    /// <summary>The story flag the den waits for (plan 33 · GL7, part b: <c>GalarHallOfFame</c>); quiet, unlit and unwished until it is set. None for a den open from the first.</summary>
+    public string? Opens { get; set; }
+    /// <summary>A Mega Max den (<see cref="Battle.Sim.CoreSetup.MegaMaxDen"/>): its boss holding its stone Mega Evolves and Mega Dynamaxes by itself.</summary>
+    public bool MegaMax { get; set; }
+    /// <summary>The levels its bosses are met at, least and most, in place of their stars' (<see cref="Raids.LevelsOf"/>); none for the stars'.</summary>
+    public List<int>? Levels { get; set; }
 }
 
 /// <summary>
@@ -44,7 +52,7 @@ public sealed class RaiderFile
 }
 
 /// <summary>What a den holds today: its species, its stars, the level it is met at, and whether its beam is lit.</summary>
-public readonly record struct RaidToday(string Species, int Stars, int Level, bool Lit);
+public readonly record struct RaidToday(string Species, int Stars, int Level, bool Lit, string? Item = null);
 
 /// <summary>
 /// Max Raid dens out of a battle (plan 33 · GL3; <c>docs/mechanics/rulings.md</c>, "Max Raid dens"): which Pokémon a den
@@ -103,9 +111,12 @@ public static class Raids
         {
             if ((pick -= Math.Max(1, r.Weight)) < 0) { row = r; break; }
         }
-        var (least, most) = LevelsOf(row.Stars);
-        return new RaidToday(row.Species, row.Stars, least + draws.Int(most - least + 1), lit);
+        var (least, most) = den.Levels is { Count: 2 } levels ? (levels[0], levels[1]) : LevelsOf(row.Stars);
+        return new RaidToday(row.Species, row.Stars, least + draws.Int(most - least + 1), lit, row.Item);
     }
+
+    /// <summary>Whether a den is open as the story stands: one with no <see cref="RaidDenFile.Opens"/>, or whose flag is set. A closed den is quiet, unlit and takes no Wishing Piece.</summary>
+    public static bool IsOpen(RaidDenFile den, Func<string, bool> has) => den.Opens == null || has(den.Opens);
 
     /// <summary>
     /// The three raiders who answer a den's call on a day: three of the file's raiders, each with one of their species at
@@ -149,8 +160,8 @@ public static class Raids
     /// Whether a den's beam stands today: lit by the day's draw or by a Wishing Piece thrown in, and its boss not felled
     /// today. The same question `raid den` asks, so the picture never shows a beam the den's script calls quiet.
     /// </summary>
-    public static bool BeamStands(RaidDenFile den, uint day, int version, int badges, bool wished, bool felled) =>
-        !felled && Today(den, day, version, badges, wished).Lit;
+    public static bool BeamStands(RaidDenFile den, uint day, int version, int badges, bool wished, bool felled, bool open = true) =>
+        open && !felled && Today(den, day, version, badges, wished).Lit;
 
     /// <summary>The chance in a hundred a ball takes a felled boss of so many stars: by its stars, a Master Ball always, a Great or Ultra Ball better (ours).</summary>
     public static int CatchChance(int stars, string ball)

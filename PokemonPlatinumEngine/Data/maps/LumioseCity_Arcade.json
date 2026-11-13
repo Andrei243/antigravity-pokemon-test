@@ -1,0 +1,220 @@
+{
+  "name": "LumioseCity_Arcade",
+  "displayName": "Lumiose Arcade",
+  "bgmTrack": "kalos/lumiose",
+  "interior": "GameHall",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "######...######",
+    "#.....###.....#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "##...........##",
+    "#.............#",
+    "#######.#######"
+  ],
+  "behaviours": [
+    { "x": 6, "y": 4, "width": 3, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "SlotMachine",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Painting",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "LumioseCity_Station",
+      "targetX": 6,
+      "targetY": 3,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 2,
+      "y": 3,
+      "text": "A match-three cabinet.",
+      "script": "Match"
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "text": "A match-three cabinet.",
+      "script": "Match"
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "text": "A match-three cabinet.",
+      "script": "Match"
+    },
+    {
+      "x": 10,
+      "y": 3,
+      "text": "A picture-logic cabinet.",
+      "script": "Picture"
+    },
+    {
+      "x": 11,
+      "y": 3,
+      "text": "A picture-logic cabinet.",
+      "script": "Picture"
+    },
+    {
+      "x": 12,
+      "y": 3,
+      "text": "A picture-logic cabinet.",
+      "script": "Picture"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "receptionist",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "script": "Clerk"
+    },
+    {
+      "id": "player_match",
+      "name": "Gamer",
+      "npcType": "school_kid_m",
+      "x": 3,
+      "y": 6,
+      "facing": "Up",
+      "script": "Gamer"
+    },
+    {
+      "id": "player_picture",
+      "name": "Socialite",
+      "npcType": "socialite",
+      "x": 11,
+      "y": 6,
+      "facing": "Up",
+      "script": "Sketcher"
+    },
+    {
+      "id": "regular",
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 12,
+      "y": 9,
+      "facing": "Left",
+      "script": "Regular"
+    }
+  ],
+  "wildEncounters": []
+}

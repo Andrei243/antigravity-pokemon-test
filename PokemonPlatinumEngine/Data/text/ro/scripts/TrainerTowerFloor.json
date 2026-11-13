@@ -5,7 +5,7 @@
         "Trainer Tower, floor {number}. The clock reads {tower:TIME}."
       ],
       "text": [
-        ""
+        "Turnul Antrenorilor, etajul {number}. Ceasul arată {tower:TIME}."
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "{foe} challenges you!"
       ],
       "text": [
-        ""
+        "{foe} te provoacă!"
       ]
     },
     {
@@ -23,7 +23,7 @@
         "{foe} steps forward!"
       ],
       "text": [
-        ""
+        "{foe} înaintează!"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "The floor is clear! The stairs up are open."
       ],
       "text": [
-        ""
+        "Etajul e curat! Scările în sus sunt deschise."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "{player} has no Pokémon left to battle with. The climb is over."
       ],
       "text": [
-        ""
+        "{player} nu mai are Pokémoni cu care să lupte. Urcușul s-a terminat."
       ]
     }
   ]

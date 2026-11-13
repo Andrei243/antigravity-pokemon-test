@@ -365,6 +365,16 @@ public static class AudioManager
         set => mixer.Giant = value;
     }
 
+    /// <summary>
+    /// The music's tale layer (plan 46 · CP12): the song layer of the tale the screen shows told over the battle
+    /// (<c>BattleEngine.TaleLayer</c>, from the animator, never the rules' field), or null; cleared with <see cref="Giant"/>.
+    /// </summary>
+    public static string? Tale
+    {
+        get => mixer.Tale;
+        set => mixer.Tale = value;
+    }
+
     /// <summary>Fades the music out.</summary>
     public static void StopMusic()
     {

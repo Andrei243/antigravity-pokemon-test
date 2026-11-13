@@ -26,7 +26,7 @@ using OpenWorldBake;
 
 if (args.Length == 0)
 {
-    Console.Error.WriteLine("usage: OpenWorldBake <region> [--check] [--chunk x,z] [--plan <out dir> [area]] [--section <out dir> [area] [x1,z1 x2,z2 ...]] [--seams] [--walk <out dir> [--swim] x,z x,z ...] [--world <folder>] [--out <folder>]");
+    Console.Error.WriteLine("usage: OpenWorldBake <region> [--check] [--chunk x,z] [--plan <out dir> [area]] [--section <out dir> [area] [x1,z1 x2,z2 ...]] [--seams] [--walk <out dir> [--swim] x,z x,z ...] [--ride] [--nav <out dir> [area|box:x0,z0,x1,z1] x,z x,z ...] [--world <folder>] [--out <folder>]");
     Console.Error.WriteLine("       OpenWorldBake prototype [--section <out dir> [x1,z1 x2,z2 ...]] [--plan <out dir>] [--check] [--seams]");
     return 2;
 }

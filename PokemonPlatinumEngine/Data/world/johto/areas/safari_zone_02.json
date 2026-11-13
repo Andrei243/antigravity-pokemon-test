@@ -79,6 +79,162 @@
     { "species": "Poliwhirl", "level": 38, "weight": 1 }
   ],
   "superRodRate": 100,
+  "safariSlots": [
+    {
+      "way": "land",
+      "species": "Raticate",
+      "level": 40,
+      "needs": [
+        { "kind": "Plains", "count": 5 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Chansey",
+      "level": 42,
+      "needs": [
+        { "kind": "Plains", "count": 12 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Seedot",
+      "level": 45,
+      "needs": [
+        { "kind": "Plains", "count": 35 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Skiploom",
+      "level": 40,
+      "needs": [
+        { "kind": "Forest", "count": 8 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Nuzleaf",
+      "level": 38,
+      "needs": [
+        { "kind": "Forest", "count": 28 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Nuzleaf",
+      "level": 47,
+      "needs": [
+        { "kind": "Forest", "count": 35 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Geodude",
+      "night": "Clefairy",
+      "level": 45,
+      "needs": [
+        { "kind": "Peak", "count": 3 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Nosepass",
+      "level": 45,
+      "needs": [
+        { "kind": "Peak", "count": 35 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Riolu",
+      "level": 46,
+      "needs": [
+        { "kind": "Peak", "count": 42 },
+        { "kind": "Forest", "count": 28 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Wooper",
+      "level": 40,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Skiploom",
+      "level": 47,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Masquerain",
+      "level": 42,
+      "needs": [
+        { "kind": "Water", "count": 10 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Masquerain",
+      "level": 46,
+      "needs": [
+        { "kind": "Water", "count": 14 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Poliwhirl",
+      "level": 15,
+      "needs": [
+        { "kind": "Water", "count": 2 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Poliwhirl",
+      "level": 16,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Poliwhirl",
+      "level": 27,
+      "needs": [
+        { "kind": "Water", "count": 5 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Gyarados",
+      "level": 28,
+      "needs": [
+        { "kind": "Water", "count": 7 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Gyarados",
+      "level": 42,
+      "needs": [
+        { "kind": "Water", "count": 10 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Gyarados",
+      "level": 45,
+      "needs": [
+        { "kind": "Water", "count": 14 }
+      ]
+    }
+  ],
   "warps": [],
   "objects": [],
   "signs": [],

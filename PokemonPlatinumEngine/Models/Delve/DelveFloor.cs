@@ -41,6 +41,9 @@ public sealed class DelveFloor
     /// <summary>The map every floor is drawn on (SD8).</summary>
     public const string MapName = "DelveFloor";
 
+    /// <summary>How far a wall stands over the floor, in tiles: enough to be drawn as a block with faces.</summary>
+    public const float WallHeight = 1f;
+
     /// <summary>A square's side, the squares to a side, and where the floor's first tile lies on the map (a wall round it).</summary>
     public const int Square = 8, Squares = 4, Left = 1, Top = 3;
     public const int Width = Square * Squares + 2, Height = Square * Squares + Top + 1;
@@ -140,8 +143,9 @@ public sealed class DelveFloor
     };
 
     /// <summary>
-    /// The floor as a hand-made map's file (SD8 draws it): the cave's floor, the hollow's walls, its pools, the stairs a
-    /// trigger of the floor's script (<c>Stairs</c>). Its residents and finds are the run's, laid on it as it is drawn.
+    /// The floor as a hand-made map's file (SD8 draws it): the cave's floor, the hollow's walls, its pools, the stairs
+    /// (which the run's own rules take, so no script stands on them). Its residents and finds are the run's, laid on it
+    /// as it is drawn.
     /// </summary>
     public MapFile ToFile()
     {
@@ -162,6 +166,18 @@ public sealed class DelveFloor
             ground.Add(new string(g));
             solid.Add(new string(s));
         }
+        // The walls stand a tile over the floor (a plate to each row's run of them), so the room draws them as raised
+        // blocks with faces and a floor reads as its passages; the floor, the pools and the stairs lie at nought
+        var heights = new List<HeightPlate>();
+        bool Raised(int x, int y) => TileAt(x, y) == DelveTile.Wall && (x, y) != Stairs;
+        for (int y = 0; y < Height; y++)
+            for (int x = 0; x < Width;)
+            {
+                bool raised = Raised(x, y);
+                int from = x;
+                while (x < Width && Raised(x, y) == raised) x++;
+                heights.Add(new HeightPlate { X = from, Z = y, Width = x - from, Depth = 1, Height = raised ? WallHeight : 0 });
+            }
         return new MapFile
         {
             Name = MapName,
@@ -171,8 +187,9 @@ public sealed class DelveFloor
             Width = Width,
             Height = Height,
             Ground = ground,
+            BgmTrack = Hollow.Song ?? "sinnoh/cave",
             Solid = solid,
-            Triggers = new List<MapFile.TriggerRecord> { new() { X = Stairs.X, Y = Stairs.Y, Script = "Stairs" } }
+            Heights = heights
         };
     }
 }

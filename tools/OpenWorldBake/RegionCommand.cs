@@ -41,7 +41,7 @@ public static class RegionCommand
         string region = args[0];
         string? folder = null, outFolder = null, planDir = null, planArea = null, sectionDir = null, sectionArea = null;
         (int X, int Z)? onlyChunk = null;
-        bool check = false, seams = false, swim = false;
+        bool check = false, seams = false, swim = false, ride = false;
         string? walkDir = null, navDir = null, navArea = null;
         var navPaths = new List<((double X, double? Y, double Z) From, (double X, double? Y, double Z) To)>();
         var walkPoints = new List<(double X, double Z, bool Run)>();
@@ -84,6 +84,7 @@ public static class RegionCommand
                     if (walkPoints.Count < 2) { Console.Error.WriteLine("--walk: a start and at least one stop, as x,z (a stop ending in ! is run to)"); return 2; }
                     break;
                 case "--swim": swim = true; break;
+                case "--ride": ride = true; break;
                 case "--nav":
                     navDir = args[++i];
                     if (i + 1 < args.Length && !args[i + 1].StartsWith("--") && (!args[i + 1].Contains(',') || args[i + 1].StartsWith("box:"))) navArea = args[++i];
@@ -213,7 +214,7 @@ public static class RegionCommand
         {
             var box = BoxOf(description, navArea);
             if (box == null) { Console.Error.WriteLine($"no area {navArea}"); return 2; }
-            Nav(description, land, Meshes(), OpenNavMesh.Read(new MemoryStream(files[OpenNavMesh.FileName])), navDir, navArea, box.Value, navPaths, swim);
+            Nav(description, land, Meshes(), OpenNavMesh.Read(new MemoryStream(files[OpenNavMesh.FileName])), navDir, navArea, box.Value, navPaths, swim, ride);
         }
         return 0;
     }
@@ -224,12 +225,17 @@ public static class RegionCommand
     /// printed with its length, corners and what it crosses.
     /// </summary>
     static void Nav(RegionDescription description, TerrainWorld land, Dictionary<(int, int), ChunkMesh[]> meshes, OpenNavMesh mesh, string dir, string? area,
-        (double X0, double Z0, double X1, double Z1) box, List<((double X, double? Y, double Z) From, (double X, double? Y, double Z) To)> pairs, bool swim)
+        (double X0, double Z0, double X1, double Z1) box, List<((double X, double? Y, double Z) From, (double X, double? Y, double Z) To)> pairs, bool swim, bool ride = false)
     {
         var ground = CapsuleRoute.GroundOf(description, land);
         OpenPos? At((double X, double? Y, double Z) p) =>
             ground.Footing(p.X, p.Z, (p.Y ?? 1000) + 0.5, p.Y is { } y ? y - 2 : -1000) is { } f ? OpenPos.FromMetres(p.X, f.Y, p.Z) : null;
-        var allowed = OpenNavMesh.Allowed(swim ? PokemonPlatinumEngine.OpenWorld.MovementGrants.Swim : PokemonPlatinumEngine.OpenWorld.MovementGrants.None);
+        // --ride (plan 34 · PD2): a mounted body with every power, so the mount's links are taken too
+        var allowed = ride
+            ? OpenNavMesh.Allowed(PokemonPlatinumEngine.OpenWorld.MovementGrants.Swim | PokemonPlatinumEngine.OpenWorld.MovementGrants.Dash
+                | PokemonPlatinumEngine.OpenWorld.MovementGrants.HighJump | PokemonPlatinumEngine.OpenWorld.MovementGrants.Glide
+                | PokemonPlatinumEngine.OpenWorld.MovementGrants.Climb, mounted: true)
+            : OpenNavMesh.Allowed(swim ? PokemonPlatinumEngine.OpenWorld.MovementGrants.Swim : PokemonPlatinumEngine.OpenWorld.MovementGrants.None);
         var paths = new List<NavPath>();
         foreach (var (from, to) in pairs)
         {
@@ -247,7 +253,7 @@ public static class RegionCommand
         string path0 = Path.Combine(dir, $"nav_{(area ?? description.World.Region).Replace(':', '_').Replace(',', '_').Replace('-', 'm')}.png");
         Pictures.Save(plan, path0);
         Console.WriteLine($"wrote {path0} ({perMetre} pixels a metre)");
-        Console.WriteLine("  key: polygons outlined dark on the top, violet under other ground; swim polygons washed cyan; shared edges green; a step off the mesh yellow, a drop red (to a dot where it lands); paths white, their corners dotted");
+        Console.WriteLine("  key: polygons outlined dark on the top, violet under other ground; swim polygons washed cyan; shared edges green; a step off the mesh yellow, a drop red (to a dot where it lands); the mount's hops orange, high jumps brown, climbs magenta, glides sky blue; paths white, their corners dotted");
     }
 
     static (double X, double? Y, double Z) Place3(string text)

@@ -2,6 +2,7 @@
 //   dotnet run --project tools/BlenderAnim -- inspect <file.glb> [--map role=bone[,bone]]
 //   dotnet run --project tools/BlenderAnim -- animate <in.glb> [--out <file.glb>] [--only idle,physical,...] [--map role=bone[,bone]]
 //   dotnet run --project tools/BlenderAnim -- render <file.glb> [--out <dir>] [--frames <n>] [--size <px>] [--only <clip>,...]
+//   dotnet run --project tools/BlenderAnim -- sculpt <Species>... | all [--out <dir>]   (plan 48: a species built from blender/sculpts/<species>.py into built/models)
 // Every command takes --blender <exe>; else BLENDER, the PATH or Program Files is searched.
 // animate writes <in>.battle.glb unless told otherwise, never over its input. Clips of the file that would play in
 // place of one it writes are dropped (it says which); the others are kept. It ends by reading the file as the game
@@ -19,9 +20,24 @@ internal static class Cli
     {
         if (args.Length < 2 || args[0] is "-h" or "--help")
         {
-            Console.WriteLine("usage: BlenderAnim inspect <file.glb> [--map role=bone] | animate <in.glb> [--out file.glb] [--only roles] [--map role=bone] | render <file.glb> [--out dir] [--frames n] [--size px] [--only clips]   (--blender exe)");
+            Console.WriteLine("usage: BlenderAnim inspect <file.glb> [--map role=bone] | animate <in.glb> [--out file.glb] [--only roles] [--map role=bone] | render <file.glb> [--out dir] [--frames n] [--size px] [--only clips] | sculpt <Species>... | all [--out dir]   (--blender exe)");
             Console.WriteLine($"roles: {string.Join(", ", BattleClips.All.Select(c => $"{c.Role} ({c.Clip})"))}; bones by role: root, spine, neck, head, front, back, tail, wings");
             return args.Length == 0 ? 2 : 0;
+        }
+        if (args[0] == "sculpt")
+        {
+            var named = args.Skip(1).ToList();
+            string? given = Take(named, "--blender"), into = Take(named, "--out");
+            if (Blender.Find(given) is not { } found) { Console.Error.WriteLine(Blender.Hint); return 2; }
+            try
+            {
+                return Sculpt.Run(found, named, into);
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.Error.WriteLine(e.Message);
+                return 1;
+            }
         }
         string verb = args[0], input = Path.GetFullPath(args[1]);
         var rest = args.Skip(2).ToList();
@@ -58,7 +74,7 @@ internal static class Cli
 
     static int Unknown(string verb)
     {
-        Console.Error.WriteLine($"unknown command {verb}: inspect, animate or render");
+        Console.Error.WriteLine($"unknown command {verb}: inspect, animate, render or sculpt");
         return 2;
     }
 

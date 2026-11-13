@@ -26,16 +26,19 @@ public class GalarRaidTests
 
     private static List<Trainer> Allies(int level) => Raids.Allies(Raids.Den("rolling_1")!, 7, 1, level);
 
-    private static BattleSetup Setup(int stars, int level, uint seed, string boss = "Onix", string mine = "Rillaboom", int mineLevel = 60, Ruleset? rules = null, int? allyLevel = null)
+    private static BattleSetup Setup(int stars, int level, uint seed, string boss = "Onix", string mine = "Rillaboom", int mineLevel = 60, Ruleset? rules = null, int? allyLevel = null,
+        string? held = null, bool megaMaxDen = false)
     {
         var party = new Party();
         party.Add(Mon(mine, mineLevel, "Wood Hammer", "Drum Beating", "Knock Off", "U-turn"));
+        var foe = Mon(boss, level, "Rock Slide", "Iron Tail", "Bind", "Screech");
+        if (held != null) foe.HeldItem = ItemDatabase.Get(held);
         return new BattleSetup
         {
             PlayerParty = party, Inventory = new Inventory(), Pokedex = new Pokedex(),
-            WildPokemon = { Mon(boss, level, "Rock Slide", "Iron Tail", "Bind", "Screech") },
+            WildPokemon = { foe },
             Random = new BattleRandom(seed), Rules = rules ?? Ruleset.Modern, Format = BattleFormat.Raid,
-            Raid = new RaidTerms(stars, Allies(allyLevel ?? level)), PlayerName = "Victor"
+            Raid = new RaidTerms(stars, Allies(allyLevel ?? level), MegaMaxDen: megaMaxDen), MegaMaxDen = megaMaxDen, PlayerName = "Victor"
         };
     }
 
@@ -243,5 +246,107 @@ public class GalarRaidTests
         quiet.Start(ScriptLibrary.Default.Find("DenRuins1", "wild_area_watchtower_ruins")!, null);
         quiet.RunToEnd();
         Assert.Empty(empty.Asked);
+    }
+
+    [Fact]
+    public void AMegaMaxDensBossHoldingItsStoneMegaEvolvesAndGrowsIntoItsMegaDynamaxForm()
+    {
+        // Plan 33 · GL7, part b: the den's light makes the boss's stone react, and the Mega grows into its -Mmax form
+        BattleEngine Raid(bool megaMax) =>
+            new(Setup(5, 65, 33010, boss: "Garchomp", mine: "Rillaboom", mineLevel: 70, held: "Garchompite", megaMaxDen: megaMax));
+        var core = Raid(true).Core;
+        Assert.Equal("Garchomp-Mega-Mmax", core.EnemySlots[0].Pokemon!.Form);
+        Assert.Contains(Lines(core), l => l.Contains("den's light"));
+        Assert.Contains(core.Log.OfType<Said>().SelectMany(s => s.Shows), e => e is MegaEvolved { Form: "Garchomp-Mega", Primal: false });
+        // Without the den's word the same boss only Dynamaxes, its stone held and unused
+        var plain = Raid(false).Core;
+        Assert.DoesNotContain(plain.Log.OfType<Said>().SelectMany(s => s.Shows), e => e is MegaEvolved);
+        Assert.Null(plain.EnemySlots[0].Pokemon!.Form);
+    }
+
+    [Fact]
+    public void TheMegaMaxDenWaitsForTheHallOfFameAndItsBossHoldsItsStone()
+    {
+        var den = Raids.Den("outrage_mega")!;
+        Assert.True(den.MegaMax);
+        Assert.Equal("GalarHallOfFame", den.Opens);
+        // Every row holds a Mega Stone of its own species whose Mega has a Mega Dynamax form, at the post-game's levels
+        foreach (var row in den.Rows)
+        {
+            var stone = ItemDatabase.Get(row.Item!)!;
+            Assert.NotNull(stone.MegaStone);
+            var species = PokemonDatabase.Get(row.Species)!;
+            Assert.Contains(species.Forms, f => f.Name.EndsWith("-Mmax"));
+        }
+        for (uint d = 0; d < 40; d++)
+        {
+            var today = Raids.Today(den, d, 1, 8);
+            Assert.InRange(today.Level, 65, 70);
+            Assert.NotNull(today.Item);
+        }
+        uint lit = (uint)Enumerable.Range(0, 60).First(d => Raids.Today(den, (uint)d, 1, 8).Lit);
+        // Before the Hall of Fame: sealed, no beam, no raid
+        var story = new StoryState();
+        story.SetVar("VAR_GALAR_VERSION", 1);
+        Assert.False(Raids.IsOpen(den, story.Has));
+        Assert.False(Raids.BeamStands(den, lit, 1, 8, false, false, Raids.IsOpen(den, story.Has)));
+        var party = new Party();
+        party.Add(Mon("Rillaboom", 70, "Wood Hammer"));
+        var bag = new Inventory();
+        bag.AddItem(ItemDatabase.Get("Ultra Ball")!, 3);
+        var sealedHost = new HeadlessScriptHost(story, party, bag) { Region = RegionDatabase.Galar, DayNumber = lit };
+        var sealedRunner = new ScriptRunner(ScriptLibrary.Default, sealedHost);
+        sealedRunner.Start(ScriptLibrary.Default.Find("DenOutrageMega", "wild_area_lake_of_outrage")!, null);
+        sealedRunner.RunToEnd();
+        Assert.Empty(sealedHost.Problems);
+        Assert.DoesNotContain(sealedHost.Log, l => l.StartsWith("raidbattle "));
+        Assert.Contains(sealedHost.Transcript, t => t.Text.Contains("black stone"));
+
+        // After it: lit, the raid fought with the boss holding its stone in a Mega Max den
+        story.Set("GalarHallOfFame");
+        Assert.True(Raids.BeamStands(den, lit, 1, 8, false, false, Raids.IsOpen(den, story.Has)));
+        var host = new HeadlessScriptHost(story, party, bag) { Region = RegionDatabase.Galar, DayNumber = lit };
+        host.Answers.Enqueue(0);
+        host.Answers.Enqueue(3);
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(ScriptLibrary.Default.Find("DenOutrageMega", "wild_area_lake_of_outrage")!, null);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        var today2 = Raids.Today(den, lit, 1, story.BadgeCount(RegionDatabase.Galar));
+        Assert.True(host.Log.Any(l => l.StartsWith($"raidbattle {today2.Species} ") && l.Contains($"megamax holding {today2.Item}")), string.Join("\n", host.Log));
+    }
+
+    [Fact]
+    public void SoniaSetsAKeyStoneIntoADynamaxBandAfterTheHallOfFame()
+    {
+        var script = ScriptLibrary.Default.Find("Sonia", "Wedgehurst_ResearchLab")!;
+        var band = ItemDatabase.Get("Mega Max Band")!;
+        // Without a Key Stone she says where one comes from, and gives nothing
+        var story = new StoryState();
+        story.Set("GalarHallOfFame");
+        var bag = new Inventory();
+        bag.AddItem(ItemDatabase.Get("Dynamax Band")!, 1);
+        var party = new Party();
+        party.Add(Mon("Rillaboom", 70, "Wood Hammer"));
+        var lab = MapDatabase.Fresh()("Wedgehurst_ResearchLab");
+        var sonia = lab.Everyone.Single(n => n.Id == "sonia_lab");
+        var host = new HeadlessScriptHost(story, party, bag) { Region = RegionDatabase.Galar, Map = lab };
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(script, sonia);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        Assert.Equal(0, bag.GetQuantity(band));
+        Assert.False(story.Has("FLAG_GOT_MEGA_MAX_BAND"));
+        // With both, the band; the Key Stone and the Dynamax Band are kept
+        bag.AddItem(ItemDatabase.Get("Key Stone")!, 1);
+        var again = new HeadlessScriptHost(story, party, bag) { Region = RegionDatabase.Galar, Map = lab };
+        var second = new ScriptRunner(ScriptLibrary.Default, again);
+        second.Start(script, sonia);
+        second.RunToEnd();
+        Assert.Empty(again.Problems);
+        Assert.Equal(1, bag.GetQuantity(band));
+        Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Key Stone")!));
+        Assert.Equal(1, bag.GetQuantity(ItemDatabase.Get("Dynamax Band")!));
+        Assert.True(story.Has("FLAG_GOT_MEGA_MAX_BAND"));
     }
 }

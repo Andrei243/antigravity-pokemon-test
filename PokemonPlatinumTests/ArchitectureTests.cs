@@ -99,7 +99,13 @@ public class ArchitectureTests
         new("A player's own file is only read (plan 08 · P20): Foreign touches no File or Directory, and writes through no stream",
             (root, u) => In(root, u, "Foreign")
                 && (u.TargetType is "System.IO.File" or "System.IO.Directory" or "System.IO.StreamWriter" or "System.IO.BinaryWriter"
-                    || u.TargetType == "System.IO.Stream" && u.Member.StartsWith("Write")))
+                    || u.TargetType == "System.IO.Stream" && u.Member.StartsWith("Write"))),
+        new("The screen takes a tale from the log, never from the rules' field (plan 46 · CP11): Battle, Graphics and UI read FieldState.Tale only in BattleEngine.SyncFromCore",
+            (root, u) => (u.Namespace == $"{root}.Battle" || In(root, u, "Graphics") || In(root, u, "UI"))
+                && u.TargetType == $"{Engine}.Battle.Sim.FieldState" && u.Member == "get_Tale"
+                && !(u.Caller == "BattleEngine" && u.Method == "SyncFromCore")),
+        new("The Book of Tales' pages need no window (plan 46 · CP11): BookOfTalesScreen uses no raylib type",
+            (root, u) => u.Namespace == $"{root}.UI" && u.Caller == "BookOfTalesScreen" && Raylib(u))
     };
 
     // What starts work on another thread

@@ -18,7 +18,17 @@ public enum LegKind
     /// <summary>Walk to and fro over a stretch of ground until the lead is of a level, seen to by a nurse when low.</summary>
     Train,
     /// <summary>Have the team seen to by the nurse of a Pokémon Center's map.</summary>
-    Heal
+    Heal,
+    /// <summary>
+    /// Cross into a trigger of an open map, found by its name (plan 33 · GL6, the first itinerary to walk an open region and
+    /// its rooms in one): done once its variable has moved off the value it waits at, or once the leg's
+    /// <see cref="Leg.Until"/> holds where it waits at none.
+    /// </summary>
+    OpenTrigger,
+    /// <summary>Speak to someone of an open map, found by their name, and see their script through.</summary>
+    OpenTalk,
+    /// <summary>Stand on a marker of an open map (within <see cref="OpenItinerary.Reached"/>), or until the leg's <see cref="Leg.Until"/> holds.</summary>
+    OpenReach
 }
 
 /// <summary>
@@ -36,17 +46,31 @@ public sealed record Leg(LegKind Kind, string Map, string What = "", string? Pla
     /// </summary>
     public Func<Story.StoryState, bool>? Until { get; init; }
 
+    /// <summary>
+    /// Whether a question met on the leg is answered otherwise each time it is asked again (a quiz, plan 33 · GL5's
+    /// Ballonlea: the first answer, then the second, as <see cref="Autoplayer.VaryAnswers"/> does), the leg tried again
+    /// until its <see cref="Until"/> holds.
+    /// </summary>
+    public bool Vary { get; init; }
+
+    /// <summary>Whether the leg is of an open map (a trigger, a person or a marker there).</summary>
+    public bool IsOpen => Kind is LegKind.OpenTrigger or LegKind.OpenTalk or LegKind.OpenReach;
+
     public static Leg Trigger(string map, string script, string? place = null) => new(LegKind.Trigger, map, script, place);
     public static Leg Talk(string map, string key, string? place = null) => new(LegKind.Talk, map, key, place);
     public static Leg Enter(string map) => new(LegKind.Enter, map);
     public static Leg Reach(string map, int x, int y) => new(LegKind.Reach, map, X: x, Y: y);
     public static Leg Heal(string center) => new(LegKind.Heal, center);
+    public static Leg OpenTrigger(string map, string trigger) => new(LegKind.OpenTrigger, map, trigger);
+    public static Leg OpenTalk(string map, string person) => new(LegKind.OpenTalk, map, person);
+    public static Leg OpenReach(string map, string marker) => new(LegKind.OpenReach, map, marker);
     public static Leg Train(int level, string map, int x, int y, int x2, int y2, string center) =>
         new(LegKind.Train, map, X: x, Y: y, X2: x2, Y2: y2, Level: level, Center: center);
 
     public override string ToString() => Kind switch
     {
         LegKind.Trigger or LegKind.Talk => $"{Kind} {What} on {Map}{(Place != null ? $" ({Place})" : "")}",
+        LegKind.OpenTrigger or LegKind.OpenTalk or LegKind.OpenReach => $"{Kind} {What} on {Map}",
         LegKind.Reach => $"Reach {Map} {X},{Y}",
         LegKind.Train => $"Train to {Level} on {Map} {X},{Y}..{X2},{Y2}",
         _ => $"{Kind} {Map}"

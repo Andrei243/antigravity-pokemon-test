@@ -766,7 +766,8 @@ public class SunyshoreAndTheLakeGuardiansTests
     public void TheChaptersPlacesAreReachedOnFootAndByTheLift()
     {
         var game = NewGame();
-        Map Named(string name) => game.Maps[name];
+        // (a room this game didn't build, a home's room of plan 43 · LF7 behind Sinnoh's base spots, is the game's own)
+        Map Named(string name) => game.Maps.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
         var reached = WorldWalk.From(Named, new MapSpot("Sinnoh", 722, 790, Direction.Right));
         // Along Route 222 into Sunyshore City, to the Gym's door, the beach and the lighthouse's door
         foreach (var (x, y) in new[] { (833, 790), (845, 749), (855, 743), (886, 791), (860, 785) }) Assert.Contains((x, y), reached[Named("Sinnoh")]);

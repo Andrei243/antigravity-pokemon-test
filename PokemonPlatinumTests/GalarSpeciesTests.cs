@@ -17,7 +17,6 @@ public class GalarSpeciesTests
     private const string Region = RegionDatabase.Galar;
 
     private const string Places = "plan 33 · GL2 to GL7: Galar's places after Route 2, the Wild Area to Wyndon and the post-game";
-    private const string Legend = "plan 33 · GL7: the Slumbering Weald's legendary of each version";
 
     private static Dictionary<string, string> Owe(string who, params string[] species) => species.ToDictionary(s => s, _ => who);
 
@@ -30,11 +29,11 @@ public class GalarSpeciesTests
         "Swinub", "Piloswine", "Mamoswine",
         "Froslass", "Mudbray", "Mudsdale", 
            "Munna", "Musharna", "Natu", "Xatu", "Stufful",
-        "Bewear", "Snover", "Abomasnow", "Krabby", "Kingler", "Corphish",
+        "Bewear", "Krabby", "Kingler", "Corphish",
         "Crawdaunt",         "Combee", "Vespiquen", 
         "Cherubi", "Cherrim", "Stunky", "Skuntank",
         "Machop", "Machoke", "Machamp",
-        "Magikarp", "Gyarados", "Goldeen", "Seaking", "Remoraid", "Octillery", "Shellder",
+        "Goldeen", "Seaking", "Remoraid", "Octillery", "Shellder",
         "Cloyster", "Feebas", "Milotic", "Basculin", "Wishiwashi", "Trubbish", "Garbodor",
         
         "Gigalith", "Conkeldurr", 
@@ -51,7 +50,7 @@ public class GalarSpeciesTests
         "Duosion", "Reuniclus", "Escavalier", "Accelgor", "Elgyem", "Beheeyem",
         "Rufflet", "Braviary", "Vullaby", "Mandibuzz", "Skorupi", "Drapion",
         "Litwick", "Lampent", "Chandelure", "Weavile", "Sableye",
-        "Mawile", "Maractus", "Sigilyph", "Riolu", "Lucario",  "Mimikyu", "Cufant",
+        "Mawile", "Maractus", "Sigilyph",  "Mimikyu", "Cufant",
         "Copperajah", "Qwilfish", "Frillish", "Jellicent", "Cramorant",
             
         "Heliolisk", "Hawlucha",   
@@ -60,12 +59,10 @@ public class GalarSpeciesTests
         "Passimian", "Morpeko", "Falinks", "Drampa", "Turtonator", "Togedemaru",
         "Pincurchin", "Mantyke", "Mantine", 
         "Dhelmise", "Lunatone", "Solrock", "Mime Jr.", "Mr. Mime", "Mr. Rime",
-        "Eiscue", "Duraludon", "Rotom", "Ditto", "Dracozolt",
+        "Eiscue", "Rotom", "Ditto", "Dracozolt",
         "Arctozolt", "Dracovish", "Arctovish", "Charmander", "Charmeleon", "Charizard", "Type: Null", "Silvally",
-        "Larvitar", "Pupitar", "Tyranitar", "Deino", "Zweilous", "Hydreigon", 
-        "Jangmo-o", "Hakamo-o", "Kommo-o", "Dreepy", "Drakloak", "Dragapult")
-        .Concat(Owe(Legend, "Zacian", "Zamazenta"))
-        .ToDictionary(p => p.Key, p => p.Value);
+        "Deino", "Zweilous", "Hydreigon", 
+        "Jangmo-o", "Hakamo-o", "Kommo-o", "Dreepy", "Drakloak", "Dragapult");
 
     /// <summary>The items and places Galar's evolutions ask for that nothing in Galar gives, and who owes each.</summary>
     public static readonly Dictionary<string, string> OwedNeeds = Owe(Places,

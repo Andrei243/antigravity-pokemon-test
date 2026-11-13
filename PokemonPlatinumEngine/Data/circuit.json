@@ -11,6 +11,8 @@
     { "region": "Unova", "team": "unova_champion_iris_beyond", "look": "iris", "person": "iris" },
     { "region": "Kalos", "team": "kalos_diantha_beyond", "look": "diantha", "person": "diantha" },
     // Alola (plan 41's owed row): Kukui, the League's founder, who meets the new Champion in his room, on his last team
-    { "region": "Alola", "team": "alola_kukui_3", "look": "kukui", "person": "kukui" }
+    { "region": "Alola", "team": "alola_kukui_3", "look": "kukui", "person": "kukui" },
+    // Galar (plan 33 · GL7): Leon on the team he keeps for the Battle Tower in Rose Tower
+    { "region": "Galar", "team": "galar_leon_rematch", "look": "leon", "person": "leon" }
   ]
 }

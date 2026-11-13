@@ -39,22 +39,29 @@
       "depth": 1
     },
     {
-      "type": "KitchenCounter",
+      "type": "Stove",
       "x": 7,
       "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Stove",
+      "type": "KitchenCounter",
       "x": 8,
       "y": 3,
       "width": 1,
       "depth": 1
     },
     {
-      "type": "Fridge",
+      "type": "Stove",
       "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Crates",
+      "x": 6,
       "y": 3,
       "width": 1,
       "depth": 1

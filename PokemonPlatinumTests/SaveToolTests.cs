@@ -63,7 +63,7 @@ public class SaveToolTests
         var save = Good();
         var p = save.Party[0];
         p.IvSpeed = 99;
-        p.Level = 300;
+        p.Level = 301;
         p.EvAttack = 252;
         p.EvDefense = 252;
         p.EvSpeed = 252;
@@ -79,7 +79,7 @@ public class SaveToolTests
 
         string all = string.Join("\n", Errors(save).Select(f => f.ToString()));
         Assert.Contains("Speed IV 99 is outside 0 to 31", all);
-        Assert.Contains("level 300 is outside 1 to 260", all);
+        Assert.Contains("level 301 is outside 1 to 300", all);
         Assert.Contains("effort adds up to 756", all);
         Assert.Contains("there is no item 'Wonder Potato' to hold", all);
         Assert.Contains("there is no ability 'Being Great'", all);

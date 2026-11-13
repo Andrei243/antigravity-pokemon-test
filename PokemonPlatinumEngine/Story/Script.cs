@@ -225,6 +225,12 @@ public enum Op
     // The field's light held at an hour for a scene, or given back to the clock (plan 20, part w: the night aboard the
     // S.S. Aqua); the picture's alone, never the hour the rules read
     Lighting,
+    // The delve (plan 44 · SD8, SD9): a run down a hollow, whether a hollow is open, the camp's board, rank and prizes
+    Delve,
+    // The Tales (plan 46 · CP12): a tale learned into the Book of Tales, or whether one is there
+    Tale,
+    // Galar's Battle Tower ladder in Rose Tower (plan 33 · GL7, part b): ten ranks with the Frontier's rules lent, Leon at the Master Rank
+    GalarTower,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

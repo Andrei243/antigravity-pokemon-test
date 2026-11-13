@@ -254,6 +254,12 @@ public sealed class BattleSetup
     public bool MoveHints { get; init; }
 
     /// <summary>
+    /// The tales the player has learned (plan 46 · CP11; <see cref="Data.TaleTable.FlagOf"/>): they may tell them in the
+    /// battle only with the Book of Tales in <see cref="Inventory"/>. Null or empty: none.
+    /// </summary>
+    public IReadOnlyList<string>? Tales { get; init; }
+
+    /// <summary>
     /// The trainers across the field speak at the moments the rules mark (plan 11 · C12; <see cref="Sim.TrainerReacts"/>,
     /// <see cref="Data.TrainerLines"/>): presentation only, never read by the rules.
     /// </summary>
@@ -402,6 +408,7 @@ public sealed class BattleSetup
         PlayerName = PlayerName,
         PlayerLook = PlayerLook,
         MoveHints = MoveHints,
+        Tales = Tales,
         TrainerLines = TrainerLines,
         Frontier = Frontier,
         NoBattleItems = NoBattleItems,

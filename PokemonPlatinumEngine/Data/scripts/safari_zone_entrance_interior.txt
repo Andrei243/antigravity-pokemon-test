@@ -15,7 +15,9 @@
 #   4  he has rung to say it is ready (safari_zone_gate.txt): the hall's arrival plays it
 #   5  catch a Sandshrew in the zone (the Desert Area) and show him; the workmen on the plaza come out
 #   6  shown: the player is the Safari Zone's Owner
-# HeartGold's later beats (Object Arrangement, VAR_UNK_4057 7 and FLAG_UNK_183) are a later session's.
+# Once the player is the Owner, the Area Customizer arranges an area's objects (plan 38 · EX8, `safari objects`: the
+# shared decorating screen over the area, objects of ours, docs/mechanics/rulings.md, "The Johto Safari Zone's objects").
+# HeartGold's other later beats (VAR_UNK_4057 7 and FLAG_UNK_183) are not built.
 
 
 script OnEnter
@@ -138,9 +140,15 @@ label Enjoy
 script Customizer
   speaker "Attendant"
   if var VAR_UNK_4057 < 5 goto NotYet
+  if var VAR_UNK_4057 >= 6 goto Owner
   say "This is the Area Customizer. In time it will let you swap the Safari Zone's areas about and set them in any order."
   say "Every area has Pokémon of its own, so a different layout means different Pokémon to find."
   say "For now the warden has opened all twelve areas side by side, so you can visit any of them. Do try them all!"
+  end
+label Owner
+  say "Owner! The Area Customizer is yours to use now. Choose an area on its screen and set objects down in it."
+  say "Every object brings out a kind of place: plains, forest, peak or water. With enough of a kind, new Pokémon move in."
+  say "An object counts from the day after it's set down, and twice over once it has stood for ten days. Do come back and see!"
   end
 label NotYet
   say "I'm sorry, but this machine can't be used yet. Warden Baoba has some grand plan for it... or so he says."
@@ -151,8 +159,59 @@ label NotYet
 # D47R0101_005: the Area Customizer itself
 script Machine
   if var VAR_UNK_4057 < 5 goto Off
+  if var VAR_UNK_4057 >= 6 goto Owner
   text "It's the Area Customizer. Twelve areas are laid out on its screen, side by side."
   text "It's still being finished. Nothing can be changed yet."
+  end
+label Owner
+  text "It's the Area Customizer. Twelve areas are laid out on its screen, side by side."
+  choose "Which area's objects will you arrange?" "Plains to Peak" "Rocky Beach to Swamp" "Marshland to Desert" "Cancel"
+  if result == 1 goto Second
+  if result == 2 goto Third
+  if result == 3 goto Leave
+  choose "Which area?" "Plains" "Meadow" "Savannah" "Peak" "Cancel"
+  if result == 4 goto Leave
+  safari objects
+  end
+label Second
+  choose "Which area?" "Rocky Beach" "Wetland" "Forest" "Swamp" "Cancel"
+  if result == 0 goto RockyBeach
+  if result == 1 goto Wetland
+  if result == 2 goto Forest
+  if result == 3 goto Swamp
+  end
+label RockyBeach
+  safari objects 5
+  end
+label Wetland
+  safari objects 6
+  end
+label Forest
+  safari objects 7
+  end
+label Swamp
+  safari objects 8
+  end
+label Third
+  choose "Which area?" "Marshland" "Wasteland" "Mountain" "Desert" "Cancel"
+  if result == 0 goto Marshland
+  if result == 1 goto Wasteland
+  if result == 2 goto Mountain
+  if result == 3 goto Desert
+  end
+label Marshland
+  safari objects 9
+  end
+label Wasteland
+  safari objects 10
+  end
+label Mountain
+  safari objects 11
+  end
+label Desert
+  safari objects 12
+  end
+label Leave
   end
 label Off
   text "It's a large machine. Its screen is dark."

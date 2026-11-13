@@ -3419,8 +3419,11 @@ label Friend
   end
 label Elsewhere
   if not knows "Secret Power" goto Cannot
-  ask "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+  ask "You already have a secret base. Open its door here instead? Everything inside stays just where you left it."
   if no end
+  usemove "Secret Power"
+  openbase move
+  end
 label Ask
   openbase kind
   if result == 5 goto AskTree
@@ -3493,10 +3496,20 @@ label Open
 script SecretBasePC
   speaker none
   text "The base's PC hummed into life."
-  choose "What would you like to do?" "DECORATE" "PACK UP" "REGISTRY" "LOG OFF"
+  choose "What would you like to do?" "DECORATE" "PACK UP" "REGISTRY" "MOVE IN HERE" "LOG OFF"
   if result == 0 goto Decorate
   if result == 1 goto PackUp
   if result == 2 goto Registry
+  if result == 3 goto MoveIn
+  end
+label MoveIn
+  ask "Move into the room this spot opens on? This room's layout is kept for when you come back to it."
+  if no end
+  openbase movein
+  if result == 0 goto SameRoom
+  end
+label SameRoom
+  text "Your home is already in the room this spot opens on."
   end
 label Decorate
   openbase pc
@@ -3519,6 +3532,21 @@ label NoFriends
 script FriendsBasePC
   speaker none
   text "It's your friend's PC. Better leave it be!"
+  end
+
+
+# The computer in the player's bedroom at home, in every region (plan 43 · LF7; Emerald's own room is decorated from
+# its PC): once the decoration PC holds anything, the room is decorated from it, twelve pieces at most, each region's
+# room its own. A piece set down here is out of the PC, and so stands in no other room at the same time.
+script BedroomPC
+  speaker none
+  sound "pc_on"
+  text "{player} turned on the computer."
+  ask "Decorate your room with things from your decoration PC?"
+  if no goto Off
+  openbase bedroom
+label Off
+  sound "pc_off"
   end
 
 
@@ -4240,6 +4268,19 @@ script GalarNewGame
   setflag FLAG_GALAR_HIDE_LEON_LAKE
   setflag FLAG_GALAR_HIDE_HOP_RIVERBANK
   setflag FLAG_GALAR_STORY_BEGUN
+  return
+
+
+# What a game starts with in Paldea (plan 34 · PD1), run for every new game as each region's <Region>NewGame is: the
+# first chapter's people hidden until their scenes (cabo_poco.txt's header has the count). It may only set flags: it
+# runs with no screen. The director at the player's house is there from the start, for the first morning
+script PaldeaNewGame
+  setflag FLAG_PALDEA_HIDE_CLAVELL_TERRACE
+  setflag FLAG_PALDEA_HIDE_NEMONA_TERRACE
+  setflag FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  setflag FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  setflag FLAG_PALDEA_HIDE_NEMONA_GATE
+  setflag FLAG_PALDEA_STORY_BEGUN
   return
 
 

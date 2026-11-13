@@ -210,6 +210,8 @@ public partial class GameEngine
         StockHideaway();
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // The Johto Safari Zone's objects where an Owner set them down (plan 38 · EX8)
+        if (flow.Map.Name == SafariObjects.ZoneMap) LayOutSafariObjects();
         // The Laurel Gallery's plinths stand for the regions finished (plan 41 · EG2)
         if (flow.Map.Name == LaurelGallery.Map) FurnishGallery();
         // Pennant Hall's stalls, keepers and the day's guests where the plaza has them (plan 41 · EG3)
@@ -222,6 +224,8 @@ public partial class GameEngine
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
         // and out of one, no friend's base is being visited any more (plan 40 · GE10)
         else flow.Records.Visiting = null;
+        // and a bedroom at home with what was set down in it (plan 43 · LF7)
+        LayOutBedroom(flow.Map);
         // The pasture's herd is the box shown, laid as the meadow is come to and taken off as it is left (plan 35 · BN5)
         KeepThePasture();
         // The friends' trainers stand in the friends' hall as it is come to (plan 13 · V23)
@@ -332,6 +336,8 @@ public partial class GameEngine
             // Fly's choice is the map of the region in its own mode (TOWN_MAP_MODE_FLY; plan 01 · M12)
             townMapFromBag = false;
             flow.TownMapScreen.Open(flyChoice.Tabs, flyChoice.Home, TownMapMode.Fly, user);
+            // SOAR over a region whose Hall of Fame is set (plan 38 · EX7)
+            flow.TownMapScreen.SoarableTab = SoarableTab;
             flow.State = GameState.FlyMap;
             return;
         }
@@ -528,6 +534,12 @@ public partial class GameEngine
         if (item.FieldUse == StrollCounter.FieldUse)
         {
             OpenStroll(fromBag: false);
+            return;
+        }
+        // The Book of Tales from the item button (plan 46 · CP11)
+        if (item.FieldUse == BookOfTalesUse)
+        {
+            OpenBookOfTales();
             return;
         }
         // The crafting kit from the item button (plan 39 · CR1)
@@ -1367,6 +1379,14 @@ public partial class GameEngine
                     // A ride on a course (plan 44 · SD5): the script hears its total as it is left
                     game.OpenPhotoTour(counter ?? "");
                     break;
+                case ScriptScreen.Delve:
+                    // A run down a hollow (plan 44 · SD8): the script hears how it ended as the camp comes back
+                    game.OpenDelve(counter ?? "");
+                    break;
+                case ScriptScreen.DelveBoard:
+                    // The camp's board (plan 44 · SD9): the script waits until it is put down
+                    game.OpenDelveBoard();
+                    break;
                 case ScriptScreen.TourReport:
                     // The tour's report (plan 44 · SD6): the script waits until it is left
                     game.OpenTourReport();
@@ -1834,6 +1854,7 @@ public partial class GameEngine
         // The photo book and its spots (plan 43 · LF4)
         public PhotoBook? PhotoBook => game.flow.PhotoBook;
         public TourReport? PhotoTour => game.flow.PhotoTour;
+        public Models.Delve.DelveRecord? DelveRecord => game.flow.DelveRecord;
         public bool PhotoAtSpot(string spot) => game.OpenPhotoAtSpot(spot);
         public bool OnlineServerSet => game.OnlineServer != null;
         public string? ChosenItem => game.flow.ScriptItem;

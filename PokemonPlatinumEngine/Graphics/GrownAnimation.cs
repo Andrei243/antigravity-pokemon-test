@@ -701,10 +701,12 @@ internal static class GrownAnimation
                 pose.Turn(HumanBones.Hips, -0.35f);
                 // The thighs spread round the mount's back where its width is told (plan 30 · FM13), the old 0.34 otherwise
                 float spread = p.Astride > 0f ? AstrideSpread(sk, legs, p.Astride) : 0.34f;
-                pose.Turn(HumanBones.ThighL, -0.6f, 0f, spread);
-                pose.Turn(HumanBones.ThighR, -0.6f, 0f, -spread);
-                pose.Turn(HumanBones.ShinL, 1.1f);
-                pose.Turn(HumanBones.ShinR, 1.1f);
+                // (a small ride's rider folds the legs up, the knees forward and the feet back under the seat: RideSeats)
+                float tuck = Math.Clamp(p.RideTuck, 0f, 1f);
+                pose.Turn(HumanBones.ThighL, -0.6f - 0.45f * tuck, 0f, spread);
+                pose.Turn(HumanBones.ThighR, -0.6f - 0.45f * tuck, 0f, -spread);
+                pose.Turn(HumanBones.ShinL, 1.1f + 0.9f * tuck);
+                pose.Turn(HumanBones.ShinR, 1.1f + 0.9f * tuck);
                 pose.Turn(HumanBones.FootL, 0.3f);
                 pose.Turn(HumanBones.FootR, 0.3f);
                 pose.Turn(HumanBones.Spine, 0.5f + 0.25f * run);

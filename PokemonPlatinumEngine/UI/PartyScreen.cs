@@ -313,8 +313,9 @@ public class PartyScreen
     {
         var actions = new List<PartyAction> { new(PartyActionKind.Summary) };
         bool dives = RegionDatabase.Get(region ?? RegionDatabase.Sinnoh)?.Gates.ContainsKey(nameof(FieldMove.Dive)) == true;
-        // Secret Power only where there are secret bases, Emerald's Hoenn (plan 21 · H10): Platinum's is a move of battle alone
-        bool bases = string.Equals(region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase);
+        // Secret Power only where there are spots for a home: Emerald's Hoenn (plan 21 · H10) and the regions whose
+        // overlays lay spots of ours (plan 43 · LF7)
+        bool bases = SecretBases.HasSpots(region);
         // Headbutt only where its trees grow, HeartGold's Johto (plan 38 · EX4, decision 6): elsewhere a move of battle alone
         bool trees = string.Equals(region, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase);
         // An Egg knows no field moves it could use (plan 06 · R15)

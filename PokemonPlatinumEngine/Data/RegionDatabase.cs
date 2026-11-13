@@ -508,6 +508,8 @@ public static class RegionDatabase
                 "BattlePalace", "BattleArena",
                 // Plan 14 · B10: the Battle Pike's hall of doors and its room, and the Battle Pyramid's floor (maps of ours)
                 "BattlePike", "BattlePikeRoom", "BattlePyramidFloor",
+                // Plan 44 · SD8: the delve's floor, laid afresh from a run's seed (a map of ours)
+                "DelveFloor",
                 // Plan 14 · B11: the World Tournament's hall in the annex (a map of ours)
                 "WorldTournamentHall",
                 // Plan 14 · B15: the Masters' Hall off the annex's lobby (a map of ours)
@@ -1195,6 +1197,9 @@ public static class RegionDatabase
             // there wakes in the player's room in Postwick; a Champion come across from Alola is inside the house's door
             Start = new MapSpot("Postwick_PlayersHouse_2F", 4, 6, Direction.Down),
             Arrival = new MapSpot("Postwick_PlayersHouse_1F", 6, 10, Direction.Up),
+            // Where a return to Galar lands (plan 33 · GL7): beside the airline's attendant in Wyndon Airfield's lounge,
+            // whose plane flies back to every region entered once Galar's Hall of Fame is set (plan 18 · W8)
+            Harbour = new MapSpot("Wyndon_Airfield", 6, 4, Direction.Right),
             Maps = new[]
             {
                 // Plan 33 · GL1: Postwick's two houses, Wedgehurst's station, Pokémon Center, research lab and house, and
@@ -1225,9 +1230,29 @@ public static class RegionDatabase
                 "Hammerlocke_Stadium", "Hammerlocke_StadiumMission", "Hammerlocke_StadiumPitch",
                 // Plan 33 · GL6: Wyndon's Pokémon Center, stadium and its pitch, and Rose Tower's lobby and Energy Plant
                 "Wyndon_PokemonCenter", "Wyndon_Stadium", "Wyndon_StadiumPitch", "Wyndon_RoseTower", "Wyndon_EnergyPlant",
+                // Plan 33 · GL7: the airfield's lounge by Wyndon's station, where the plane on to Paldea leaves
+                "Wyndon_Airfield",
             }
         },
-        new() { Id = Paldea, Name = "Paldea", Generation = 9 },
+        new()
+        {
+            Id = Paldea, Name = "Paldea", Generation = 9, File = RegionFiles.Load(Paldea),
+            // Paldea on the open world's engine (plan 34 · PD1; plan 32), as Galar is: its outdoors are the open map
+            // "Paldea" (Data/world3d/paldea, Region.OpenMaps), and these its grid rooms behind their doors. A new game begun
+            // there wakes in the player's room in Cabo Poco; a Champion come across from Galar is inside the house's door
+            Start = new MapSpot("CaboPoco_PlayersHouse_2F", 4, 6, Direction.Down),
+            Arrival = new MapSpot("CaboPoco_PlayersHouse_1F", 6, 10, Direction.Up),
+            // Where a return to Paldea lands (plan 18 · W8): inside the door of Los Platos's Pokémon Center, the first
+            // Pokémon Center of the road north; Paldea has no airport of the original's (the rulings' "Paldea's first chapter")
+            Harbour = new MapSpot("LosPlatos_PokemonCenter", 8, 12, Direction.Up),
+            Maps = new[]
+            {
+                // Plan 34 · PD1: the player's house and the president's in Cabo Poco, Inlet Grotto under the cliffs, Los
+                // Platos's Pokémon Center and the academy's entrance hall at the top of Mesagoza's stairs
+                "CaboPoco_PlayersHouse_1F", "CaboPoco_PlayersHouse_2F", "CaboPoco_NemonasHouse", "InletGrotto",
+                "LosPlatos_PokemonCenter", "Mesagoza_AcademyHall",
+            }
+        },
         // Side regions stand after the chain (plan 23 · Z17)
         new()
         {
@@ -1293,7 +1318,9 @@ public static class RegionDatabase
         // From Alola by air (plan 23 · Z8's link, built with plan 33 · GL1 once Galar had maps): the airline's attendant
         // stands in Hau'oli City's Pokémon Center once Alola's Hall of Fame is entered, as Lumiose City's does for Kalos
         new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "HauoliCity_PokemonCenter_1F" },
-        new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" },
+        // From Galar by air (plan 33 · GL7): the airline's attendant in the airfield's lounge by Wyndon's station, shown by
+        // GalarHallOfFame; the plane lands in Paldea since plan 34 · PD1 gave it maps
+        new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane", DepartureMap = "Wyndon_Airfield" },
         // The branches (plan 23 · Z17, decision 3): Hisui off Sinnoh, through the light at the heart of the ancient painting
         // in Celestic Town's ruins once Sinnoh's Hall of Fame is entered (celestic_town_cave.txt's Painting, `travel to`),
         // and back by the stone on Prelude Beach (prelude_beach.txt's Stone). No attendant: the scene is the way
@@ -1584,7 +1611,9 @@ public sealed class RegionChain
         Regions.FirstOrDefault(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase));
 
     public Region? RegionOfMap(string mapName) =>
-        Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
+        // A place of the day in the sky is laid on its region's own map as it is landed on (plan 38 · EX7, part b)
+        Overworld.SkyPlaces.RegionOfMap(mapName) is { } sky ? Regions.FirstOrDefault(r => string.Equals(r.Id, sky, StringComparison.OrdinalIgnoreCase))
+            : Regions.FirstOrDefault(r => r.Maps.Contains(mapName, StringComparer.OrdinalIgnoreCase));
 
     public RegionLink? LinkFrom(string regionId) =>
         Links.FirstOrDefault(l => l.Kind == LinkKind.Next && string.Equals(l.From, regionId, StringComparison.OrdinalIgnoreCase));

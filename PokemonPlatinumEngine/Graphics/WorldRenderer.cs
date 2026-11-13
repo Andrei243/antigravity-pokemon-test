@@ -767,6 +767,7 @@ public sealed partial class WorldRenderer
             else scene.DrawLights(rig.LampGlow * rig.LampGlow, rig.HomeGlow * rig.HomeGlow, rig.LightTint);
         }
         DrawReflections(map, camera);
+        DrawStrengthHoles(map, camera);
         DrawContactShadows(map, camera, player != null, px, pz, groundY, lift);
         DrawLife(map, camera, rig, upright: false);
         DrawDoor(map);
@@ -1202,7 +1203,7 @@ public sealed partial class WorldRenderer
     private (Vector3 At, float Yaw, FieldSprites.Strip? Own)? mount;
 
     // The Pokémon standing in the field in view (plan 10 · F1), and how many field sprites a frame may still bake
-    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving, float Scale)> pokemon = new();
+    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving, float Scale, bool Locked)> pokemon = new();
     private int fieldBakes = 1;
 
     /// <summary>How many rows of the card a hop over a ledge lifts a Pokémon of the map at its height (plan 10 · F3): a quarter of a tile, as the player's.</summary>
@@ -1222,6 +1223,8 @@ public sealed partial class WorldRenderer
         actors.Clear();
         mount = null;
         things.Clear();
+        // (a festival thing is drawn larger where the world is built to a grown body: GrownScale)
+        thingsGrown = GrownScale.Of(map);
         berryPlants.Clear();
         apricornTrees.Clear();
         pokemon.Clear();
@@ -1255,7 +1258,7 @@ public sealed partial class WorldRenderer
                 float hop = (up ? Rows(2f) : 0f) + Rows(npc.Hop * HopRows);
                 float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz) - Rows(npc.Wading);
                 pokemon.Add((new Vector3(sx + nudge, ground + hop, sz), species, facingIndex,
-                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving, npc.Scale));
+                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving, npc.Scale, npc.Locked));
                 continue;
             }
             if (npc.IsBerrySoil)
@@ -1275,6 +1278,7 @@ public sealed partial class WorldRenderer
             }
             // A snowball of the Snowpoint Gym is a card of the scenery, drawn with the room's pieces (GymPieces)
             if (npc.IsSnowball || npc.IsLeagueDoor || npc.IsGymWaterfall) continue;
+            if (OffThePlan(map, npc)) continue;
             if (npc.IsThing)
             {
                 // An item in its ball and an obstacle are cards, not people: an obstacle stands a little south of
@@ -1336,6 +1340,15 @@ public sealed partial class WorldRenderer
         // The player too may be shaken or flicker (nobody stands for them)
         if (player == null || !Seen(null)) return;
 
+        // A Pokémon drawn in the player's place (plan 44 · SD8: the delve's leader), standing as a Pokémon of the map stands
+        if (player.Avatar is { } avatar)
+        {
+            string shown = GrownField ? FieldSprites.GrownName(avatar) : avatar;
+            int avatarFacing = CharacterSprites.FacingIndex(player.Yaw);
+            pokemon.Add((new Vector3(px + NudgeOf(null), groundY + lift - SinkAt(map, px, pz), pz), shown, avatarFacing, FieldSprites.FrameAt(time), false, 1f, false));
+            return;
+        }
+
         var playerPose = new CharacterPose
         {
             Walk = player.WalkCycle,
@@ -1387,11 +1400,23 @@ public sealed partial class WorldRenderer
         // A grown rider of a ride on land sits astride its sprite once it is baked (plan 30, the gate's owed)
         bool grownRide = GrownField && riding && carrier != null;
         // (holding the reins, the hands on the ride's back under the seat's line: facing the camera they showed over its card)
-        if (grownRide) { playerPose.Riding = Riding.Mount; playerPose.RideStance = RideStance.Reins; seat = GrownRideSeat(carrier!); }
+        // (where the world is built to a grown body, the ride's own seat by species: RideSeats; Kalos keeps the gate's)
+        bool bySpecies = GrownField && GrownScale.Of(map);
+        var rideSeat = !bySpecies ? RideSeats.Land
+            : riding ? RideSeats.Of(player.Steed, water: false) : RideSeats.Of(player.Carrier, water: true);
+        if (bySpecies && carrier != null && player.Mount != null && !riding) seat = CarrierSeat(carrier, rideSeat.Seat);
+        if (grownRide)
+        {
+            playerPose.Riding = Riding.Mount; playerPose.RideStance = RideStance.Reins; seat = GrownRideSeat(carrier!, rideSeat.Seat);
+            playerPose.RideTuck = rideSeat.Tuck;
+            // (a grown rig stands at its own scale near one tile a model unit, so the back's half width is handed as it is)
+            playerPose.Astride = rideSeat.Back;
+        }
+        float rideAhead = grownRide ? rideSeat.Ahead : GrownRideAhead;
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
         // (the ride's card stands GrownRideAhead nearer the camera, so the body astride is wholly behind it and only what
         // rises over its back shows: the seat is lowered by as much as that step forward lifts the card's back on the picture)
-        if (grownRide) feet -= GrownRideAhead * MathF.Tan(MapScene.PitchOf(map) * MathF.PI / 180f);
+        if (grownRide) feet -= rideAhead * MathF.Tan(MapScene.PitchOf(map) * MathF.PI / 180f);
         // Fishing, the player holds the rod (plan 11 · C8): their own look holding one
         bool fishing = player.Posed is Overworld.Stance.Fish or Overworld.Stance.Tug;
         // (built in the background the first time a cast is made; the plain look stands in until it is ready)
@@ -1422,7 +1447,7 @@ public sealed partial class WorldRenderer
         }
         // A ride on land stands on the ground under its rider, a little nearer the camera, so its back covers their shoes
         else if (riding && carrier != null)
-            mount = (new Vector3(px + NudgeOf(null), groundY + lift + bob - Rows(FieldSprites.FootRows), pz + (grownRide ? GrownRideAhead : 0.06f)), player.Yaw, carrier);
+            mount = (new Vector3(px + NudgeOf(null), groundY + lift + bob - Rows(FieldSprites.FootRows), pz + (grownRide ? rideAhead : 0.06f)), player.Yaw, carrier);
     }
 
     /// <summary>How many rows above the ground a rider of a ride on land sits: a little under half of the Pokémon's height (plan 23, wave 91).</summary>
@@ -1432,7 +1457,10 @@ public sealed partial class WorldRenderer
     /// How many rows above the ground a grown rider of a ride on land sits (plan 30, the gate's owed; style guide, "Live
     /// rigs in the field"): on the top of its back, nineteen twentieths of the height its card fills, the live body astride behind its card.
     /// </summary>
-    internal static int GrownRideSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - FieldSprites.FootRows) * 0.95f);
+    internal static int GrownRideSeat(FieldSprites.Strip carrier) => GrownRideSeat(carrier, RideSeats.Land.Seat);
+
+    /// <summary>The same at a ride's own share of its card (<see cref="RideSeats"/>).</summary>
+    internal static int GrownRideSeat(FieldSprites.Strip carrier, float share) => (int)MathF.Round((carrier.Rows - FieldSprites.FootRows) * share);
 
     /// <summary>How much nearer the camera a grown rider's ride on land stands than its rider, in tiles: past a grown body's depth.</summary>
     internal const float GrownRideAhead = 0.5f;
@@ -1441,7 +1469,10 @@ public sealed partial class WorldRenderer
     internal static int CarrierSunk(FieldSprites.Strip carrier) => (int)MathF.Round(carrier.Rows * 0.2f);
 
     /// <summary>How many rows above the water its rider's feet are lifted: a little over half of what shows of it.</summary>
-    internal static int CarrierSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - CarrierSunk(carrier)) * 0.55f);
+    internal static int CarrierSeat(FieldSprites.Strip carrier) => CarrierSeat(carrier, RideSeats.Water.Seat);
+
+    /// <summary>The same at a water ride's own share of what shows of it (<see cref="RideSeats"/>).</summary>
+    internal static int CarrierSeat(FieldSprites.Strip carrier, float share) => (int)MathF.Round((carrier.Rows - CarrierSunk(carrier)) * share);
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
 
@@ -1521,6 +1552,8 @@ public sealed partial class WorldRenderer
     // an item's ball goes under the key of the mailbox, which is never a thing
     private readonly List<(Vector3 At, PropType Kind)> things = new();
     private readonly Dictionary<PropType, CharacterSprites.Card> thingCards = new();
+    private readonly Dictionary<PropType, CharacterSprites.Card> grownThingCards = new();
+    private bool thingsGrown;
 
     // The berry patches in view, and a card for each look one has had (plan 06 · R14a)
     private readonly List<(Vector3 At, BerryStage Stage, string? Berry, bool Mulched)> berryPlants = new();
@@ -1530,12 +1563,23 @@ public sealed partial class WorldRenderer
     private readonly List<(Vector3 At, Models.Apricorn? Colour, bool InFruit)> apricornTrees = new();
     private readonly Dictionary<string, CharacterSprites.Card> apricornCards = new();
 
+    /// <summary>
+    /// A ship of a harbour room moored past the room's floor (the Seagallop at the Sevii Islands' harbours, which FireRed
+    /// draws on the sea beyond the pier): a room has no sea there, so the ship isn't drawn over the dark (style guide,
+    /// "The Seagallop"). It is still in the way, as nobody walks there.
+    /// </summary>
+    private static bool OffThePlan(Map map, NPC npc) =>
+        npc.NpcType == NPC.SeagallopType && map.IsIndoors
+        && (npc.GridX < 0 || npc.GridY < 0 || npc.GridX >= map.Width || npc.GridY >= map.Height
+            || map.GetGroundTile(npc.GridX, npc.GridY) is TileType.Void or TileType.Wall);
+
     /// <summary>The things on the ground: a card for each kind, lit and casting like the people.</summary>
     private void DrawThings(CharacterPass pass)
     {
         foreach (var (at, kind) in things)
         {
-            if (!thingCards.TryGetValue(kind, out var card)) thingCards[kind] = card = CharacterSprites.MakeCard(context, ThingCards.Paint(kind), ThingCards.PartOfAWall(kind));
+            var cards = thingsGrown && ThingCards.HasGrownSize(kind) ? grownThingCards : thingCards;
+            if (!cards.TryGetValue(kind, out var card)) cards[kind] = card = CharacterSprites.MakeCard(context, ThingCards.Paint(kind, cards == grownThingCards), ThingCards.PartOfAWall(kind));
             CharacterSprites.DrawCard(card, at, VerticalScale, pass);
         }
         foreach (var (at, stage, berry, mulched) in berryPlants)
@@ -1579,17 +1623,19 @@ public sealed partial class WorldRenderer
     private void DrawPokemon(CharacterPass pass)
     {
         // An alpha's sprite is its species' drawn at its own size, its foot where a plain one's is (plan 10 · F10)
-        foreach (var (at, name, facing, frame, moving, scale) in pokemon)
+        foreach (var (at, name, facing, frame, moving, scale, locked) in pokemon)
         {
+            // A locked heart walking with the player is drawn in the lock's grey (plan 44 · SD2)
+            Color? tint = locked ? CharacterSprites.LockedTint : null;
             // The walk strip once it is baked and the Pokémon is on the move (plan 10 · F2)
             if (moving && FieldSprites.GetWalk(name, facing) is { } walk)
             {
-                CharacterSprites.DrawCard(walk.Frames[frame % walk.Frames.Length], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale);
+                CharacterSprites.DrawCard(walk.Frames[frame % walk.Frames.Length], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale, tint);
                 continue;
             }
             if (FieldSprites.Get(name, facing) is { } strip)
             {
-                CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale);
+                CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale, tint);
                 continue;
             }
             if (!thingCards.TryGetValue(PropType.Mailbox, out var ball)) thingCards[PropType.Mailbox] = ball = CharacterSprites.MakeCard(context, ThingCards.Paint(PropType.Mailbox));
@@ -1746,7 +1792,7 @@ public sealed partial class WorldRenderer
         Rlgl.EnableDepthMask();
     }
 
-    private readonly Dictionary<(bool Glass, bool Pair, byte Light, int Frame), CharacterSprites.Card> doorCards = new();
+    private readonly Dictionary<(bool Glass, bool Pair, byte Light, int Frame, bool Grown), CharacterSprites.Card> doorCards = new();
 
     /// <summary>
     /// The door someone is going through, standing ajar or open: a card of the open door's art over the shut
@@ -1758,9 +1804,9 @@ public sealed partial class WorldRenderer
         int frame = Life.DoorFrame(map, moving.X, moving.Y);
         if (frame == 0 || DoorPlace(map, moving.X, moving.Y) is not { } place) return;
 
-        var key = (place.Glass, place.Pair, place.Light, frame);
+        var key = (place.Glass, place.Pair, place.Light, frame, place.Grown);
         if (!doorCards.TryGetValue(key, out var card))
-            doorCards[key] = card = CharacterSprites.MakeCard(context, BuildingArt.OpenDoor(place.Glass, place.Pair, frame, place.Light), partOfAWall: true);
+            doorCards[key] = card = CharacterSprites.MakeCard(context, BuildingArt.OpenDoor(place.Glass, place.Pair, frame, place.Light, place.Grown), partOfAWall: true);
         CharacterSprites.DrawCard(card, place.Foot, VerticalScale, CharacterPass.Color);
     }
 
@@ -1769,12 +1815,12 @@ public sealed partial class WorldRenderer
     /// block that stands proud of it, or in a porch's front. Null if no building has a door there, or its door
     /// is one that doesn't open by itself (a works' sliding door).
     /// </summary>
-    internal static (Vector3 Foot, bool Glass, bool Pair, byte Light)? DoorPlace(Map map, int x, int y)
+    internal static (Vector3 Foot, bool Glass, bool Pair, byte Light, bool Grown)? DoorPlace(Map map, int x, int y)
     {
         foreach (var b in MapStructures.BuildingsOf(map))
         {
             if (b.Annex || x < b.X0 || x > b.X1 || (y != b.Y1 && y != b.Y1 + 1) || !b.Doors.Exists(d => d.X == x)) continue;
-            var style = BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0));
+            var style = BuildingArt.StyleOf(b, map.ArchitectureAt(b.X0, b.Y0), GrownScale.Of(map));
             if (style.SlidingDoor) return null;
 
             // Texels south of the building's north edge: the wall's face, or the front of what stands before it
@@ -1784,7 +1830,7 @@ public sealed partial class WorldRenderer
             bool pair = !style.GlassDoor && (style.Portal > 0 || closedPorch);
             float ground = Relief.At(map, b.X0 + b.Width / 2f, b.Y1 + 0.5f);
             // A texel in front of the wall's art, so it wins over it
-            return (new Vector3(x + 0.5f, ground, b.Y0 + (z + 1f) / BuildingArt.Bay), style.GlassDoor, pair, BuildingArt.WindowLight(b, style));
+            return (new Vector3(x + 0.5f, ground, b.Y0 + (z + 1f) / BuildingArt.Bay), style.GlassDoor, pair, BuildingArt.WindowLight(b, style), style.Grown);
         }
         return null;
     }
@@ -1911,6 +1957,53 @@ public sealed partial class WorldRenderer
     /// A faint dark patch right under each character's feet. The shadow map casts their real shadow; this keeps
     /// them grounded when the sun is high or they are standing in shade.
     /// </summary>
+    /// <summary>
+    /// The holes a boulder pushed with Strength fills (<see cref="Map.FilledHoles"/>; style guide, "Life", "Holes"), while
+    /// they are open: a rim of trodden earth round a pit of dark earth, in whole texels, the rim only where the hole meets
+    /// ground that isn't hole. Nothing is drawn once a hole is filled (its tile walked again).
+    /// </summary>
+    private void DrawStrengthHoles(Map map, Camera3D camera)
+    {
+        if (map.FilledHoles.Count == 0) return;
+        float pitchDeg = MapScene.PitchOf(map);
+        const float rim = 3f / 32f;
+        bool Open(int x, int y) => map.FilledHoles.ContainsKey((x, y)) && map.IsSolid(x, y);
+        Rlgl.DisableDepthMask();
+        Rlgl.SetTexture(Rlgl.GetTextureIdDefault());
+        void Quad(float x0, float z0, float x1, float z1, float y, Color c)
+        {
+            float a = x0, b = x1, a2 = x0, b2 = x1;
+            if (!map.IsIndoors && y > 0.02f)
+            {
+                a = Straighten(camera, pitchDeg, x0, y, z1); b = Straighten(camera, pitchDeg, x1, y, z1);
+                a2 = Straighten(camera, pitchDeg, x0, y, z0); b2 = Straighten(camera, pitchDeg, x1, y, z0);
+            }
+            Rlgl.CheckRenderBatchLimit(4);
+            Rlgl.Begin(DrawMode.Quads);
+            Rlgl.Color4ub(c.R, c.G, c.B, c.A);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(a, y, z1);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(b, y, z1);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(b2, y, z0);
+            Rlgl.TexCoord2f(0, 0); Rlgl.Vertex3f(a2, y, z0);
+            Rlgl.End();
+        }
+        float cx = camera.Target.X, cz = camera.Target.Z;
+        foreach (var (tile, _) in map.FilledHoles)
+        {
+            int x = tile.X, z = tile.Y;
+            if (!Open(x, z) || MathF.Abs(x - cx) > 40 || MathF.Abs(z - cz) > 40) continue;
+            float y = Relief.At(map, x + 0.5f, z + 0.5f) + 0.02f;
+            Quad(x, z, x + 1, z + 1, y, new Color(118, 92, 66, 255));
+            float l = Open(x - 1, z) ? 0 : rim, r = Open(x + 1, z) ? 0 : rim, t = Open(x, z - 1) ? 0 : rim, d = Open(x, z + 1) ? 0 : rim;
+            // The pit's floor in shade, and its far (north) wall, which the field's camera looks down onto, in earth
+            Quad(x + l, z + t, x + 1 - r, z + 1 - d, y + 0.002f, new Color(30, 22, 18, 255));
+            if (t > 0) Quad(x + l, z + t, x + 1 - r, z + t + 5f / 32f, y + 0.004f, new Color(78, 58, 42, 255));
+        }
+        Rlgl.SetTexture(0);
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.EnableDepthMask();
+    }
+
     private void DrawContactShadows(Map map, Camera3D camera, bool withPlayer, float px, float pz, float playerGround, float lift)
     {
         var tex = SceneTextures.ShadowBlob;
@@ -1937,7 +2030,7 @@ public sealed partial class WorldRenderer
         {
             // (An item's ball has a smaller patch under it than a person, and an obstacle one a little smaller)
             // (Whoever is shaken takes their patch with them, and whoever flickers has none while they are unseen)
-            if (!npc.IsPCTerminal && !npc.IsUnseen && !npc.OutOfSight && InSight(npc) && Seen(npc))
+            if (!npc.IsPCTerminal && !npc.IsUnseen && !npc.OutOfSight && InSight(npc) && Seen(npc) && !OffThePlan(map, npc))
                 Blob(npc.DrawX + 0.5f + NudgeOf(npc), npc.DrawY + 0.52f, npc.Level is { } level ? Relief.Under(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f, level) : Relief.At(map, npc.DrawX + 0.5f, npc.DrawY + 0.5f),
                     npc.IsItemBall ? 0.6f : npc.IsObstacle ? 0.85f : npc.IsPokemon ? 0.75f : 1f);
         }

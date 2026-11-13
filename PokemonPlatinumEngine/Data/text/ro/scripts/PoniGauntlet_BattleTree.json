@@ -5,7 +5,7 @@
         "Ione"
       ],
       "text": [
-        ""
+        "Ione"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Partners' Tree! I'm Ione Calder, and I keep its branches. The strongest Trainers of every land gather here."
       ],
       "text": [
-        ""
+        "Bun venit la Copacul Partenerilor! Sunt Ione Calder și îi țin ramurile. Cei mai puternici Antrenori din toate ținuturile se adună aici."
       ]
     },
     {
@@ -25,11 +25,11 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Vrei să înfrunți Copacul Partenerilor?",
+        "Intru",
+        "Regulile",
+        "Recordurile",
+        "Nu"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "The tree isn't going anywhere, and neither am I. Come back whenever you like."
       ],
       "text": [
-        ""
+        "Copacul nu pleacă nicăieri, nici eu. Revino oricând vrei."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "In the Super rooms, the famous Trainers of every land you have finished come down to battle now and then, and a Champion waits at the fiftieth."
       ],
       "text": [
-        ""
+        "În sălile Super, Antrenorii faimoși din fiecare ținut pe care l-ai terminat coboară din când în când să lupte, iar un Campion așteaptă la a cincizecea."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "Beat one of them, and they may offer to partner you in the Multi room."
       ],
       "text": [
-        ""
+        "Învinge-l pe unul dintre ei și s-ar putea să-ți ofere să-ți fie partener în sala Multi."
       ]
     }
   ],

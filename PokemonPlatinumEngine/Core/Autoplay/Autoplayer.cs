@@ -169,7 +169,7 @@ internal sealed partial class Autoplayer
                 return InBattle(battle);
             case GameState.Transition:
                 return ActionFrame.None;
-            case GameState.Dialogue when game.Choice.IsOpen && VaryAnswers && Itinerary is not { Finished: false }:
+            case GameState.Dialogue when game.Choice.IsOpen && (VaryAnswers && Itinerary is not { Finished: false } || Itinerary?.Current is { Vary: true }):
                 return Answer();
             case GameState.Dialogue:
                 return Pulse(GameAction.Confirm);

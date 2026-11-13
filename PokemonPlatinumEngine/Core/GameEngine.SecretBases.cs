@@ -28,15 +28,18 @@ public partial class GameEngine
     /// <summary>Whether the decorating screen shows a secret base (and not the Underground's base).</summary>
     private bool decoratingBase;
 
-    private void LoadSecretBase(SecretBaseSave? save, List<StoredDecoration>? store)
+    private void LoadSecretBase(SecretBaseSave? save, List<StoredDecoration>? store, Dictionary<string, List<PlacedDecoration>>? bedrooms)
     {
         flow.SecretBase = save;
         flow.Decorations = store ?? new List<StoredDecoration>();
-        // What stands in the base is what the PC calls out, whatever an older file said
-        for (int i = 0; i < flow.Decorations.Count; i++) flow.Decorations[i].Out = save?.Placed.Any(p => p.Slot == i) == true;
+        flow.Bedrooms = bedrooms != null ? new Dictionary<string, List<PlacedDecoration>>(bedrooms, System.StringComparer.OrdinalIgnoreCase) : new(System.StringComparer.OrdinalIgnoreCase);
+        // What stands in the base and the bedrooms is what the PC calls out, whatever an older file said
+        Bedrooms.MarkOut(flow.Decorations, save, flow.Bedrooms);
         decoratingBase = false;
-        // The maps outlast a game: the room the last game laid out is bare again
+        decoratingBedroom = null;
+        // The maps outlast a game: the room the last game laid out is bare again, and so is every bedroom
         if (baseRoom != null) LayOutSecretBase(baseRoom);
+        ClearTheBedrooms();
     }
 
     /// <summary>The spot right in front of the player, with its base's id; null where there is none.</summary>
@@ -56,6 +59,10 @@ public partial class GameEngine
             return StartScript(FieldScripts.SecretBaseSpot);
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name) && flow.Map.InBounds(x, y) && flow.Map.BehaviourAt(x, y) == TileBehavior.Computer)
             return StartScript(flow.Records.Visiting != null ? FieldScripts.FriendsBasePc : FieldScripts.SecretBasePc);
+        // The computer in a bedroom at home, once the decoration PC holds anything (plan 43 · LF7): before then it is
+        // the room's own computer, with whatever note is left on it
+        if (Bedrooms.RegionOf(flow.Map.Name) != null && flow.Decorations.Count > 0 && Bedrooms.IsComputerAt(flow.Map, x, y))
+            return StartScript(FieldScripts.BedroomPc);
         return false;
     }
 
@@ -79,6 +86,24 @@ public partial class GameEngine
                 GoIntoSecretBase(first: true);
                 return 1;
             }
+            case "move":
+            {
+                // The home's door to this spot, its room and pieces as they were (plan 43 · LF7)
+                if (SpotAhead() is not { } at || flow.SecretBase is not { } home || SecretBaseLayouts.Of(at.Id) == null) return 0;
+                SecretBases.MoveDoor(home, at.Id, flow.Map.Name, at.X, at.Y, flow.Player.GridX, flow.Player.GridY);
+                GoIntoSecretBase(first: false);
+                return 1;
+            }
+            case "movein":
+            {
+                // MOVE IN HERE at the home's PC: the room of the spot the door stands at, laid as it was last left
+                if (flow.Records.Visiting != null || flow.SecretBase is not { } home || !SecretBases.MoveIn(home, flow.Decorations)) return 0;
+                GoIntoSecretBase(first: true);
+                return 1;
+            }
+            case "bedroom":
+                // The bedroom at home decorated from the decoration PC (plan 43 · LF7), at its computer
+                return OpenBedroomDecoration() ? 1 : 0;
             case "visit":
                 return VisitFriendsBase() ? 1 : 0;
             case "enter":
@@ -94,6 +119,7 @@ public partial class GameEngine
                 if (flow.SecretBase is not { } room) return 0;
                 SecretBases.PackUp(room, flow.Decorations);
                 flow.SecretBase = null;
+                Bedrooms.MarkOut(flow.Decorations, null, flow.Bedrooms);
                 if (SecretBaseLayouts.IsBaseMap(flow.Map.Name))
                 {
                     LayOutSecretBase(flow.Map);
@@ -219,6 +245,7 @@ public partial class GameEngine
         if (flow.SecretBase is { } own)
         {
             SecretBases.Keep(own, flow.DecorationScreen.Session.Room, flow.Decorations);
+            Bedrooms.MarkOut(flow.Decorations, own, flow.Bedrooms);
             LayOutSecretBase(flow.Map);
         }
         flow.State = GameState.Overworld;

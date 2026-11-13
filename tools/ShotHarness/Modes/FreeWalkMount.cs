@@ -14,8 +14,8 @@ partial class Harness
 
     /// <summary>
     /// FM13's shots (`SHOTS_FILTER=fw7,fw8`; plan 30, "FM13 as built"), at the end of `freewalk`: in the open test
-    /// world (the lab, with a climbable block of the harness's own laid on the meadow by the ledge, since no world
-    /// paints a climbable cliff yet) with a test region's movement that lists the mount, Koraidon and then Miraidon
+    /// world (the lab, with a climbable block of the harness's own laid on the meadow by the ledge, laid before the lab
+    /// painted one of its own: plan 34 · PD2's yard is FreeWalkYard's) with a test region's movement that lists the mount, Koraidon and then Miraidon
     /// ridden with every power: getting on half way, standing, the trot, the sprint with the camera's lead, a swim in
     /// the river, a glide off the hill's top and its change of form half way, a climb half way up the block, getting off
     /// half way; and both mounts standing from the side close up (the rider on the seat), and Koraidon at night by the
@@ -28,7 +28,8 @@ partial class Harness
         PastTheOpening();
         game.SaveSlot = 1;
         var map = openLab ??= BuildOpenLab();
-        // A climbable block on the meadow under the ledge, 7 m tall (the lab paints no climbable cliff: plan 34 · PD2 owes it)
+        // A climbable box of the harness's own on the meadow under the ledge, 7 m tall (FM13's shots, kept as they were
+        // shot; the lab's own painted face, plan 34 · PD2, is FreeWalkYard's)
         // (its bottom 2 cm over the highest ground under it, as MountRigTests' MountShots has it: a block sunk into the
         // ground has the meadow inside it, which the climb's step onto the top takes for open ground)
         double wallFoot = double.MinValue;

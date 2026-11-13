@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, GiftBox, TradeBoard, MissionBoard, DressingRoom, StageShow, PhotoBook, PhotoStudio, PhotoTour, TourReport }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, GiftBox, TradeBoard, MissionBoard, DressingRoom, StageShow, PhotoBook, PhotoStudio, PhotoTour, TourReport, Delve, DelveBoard }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -541,6 +541,13 @@ public interface IScriptHost
     /// </summary>
     bool Headbutt() => false;
 
+    /// <summary>
+    /// The Johto Safari Zone's Area Customizer (plan 38 · EX8, <c>safari objects</c>): the area numbered from 0 in its
+    /// order (<see cref="Models.SafariObjects.AreaKeys"/>) opened to arrange its objects. False where there is no such
+    /// area; a host with no screen opens nothing and says so.
+    /// </summary>
+    bool ArrangeSafari(int area) => false;
+
     // ------------------------------------------------------------------ autosave (plan 12 · Q3)
 
     /// <summary>
@@ -694,6 +701,9 @@ public interface IScriptHost
 
     /// <summary>The photo tour's report (plan 44 · SD5); none in a host that keeps none, and <c>tour ride</c> then rides nothing.</summary>
     TourReport? PhotoTour => null;
+
+    /// <summary>The delve's record (plan 44 · SD9); none in a host that keeps none, and <c>delve go</c> then goes nowhere.</summary>
+    Models.Delve.DelveRecord? DelveRecord => null;
 
     /// <summary>
     /// A photo spot read (plan 43 · LF4, <c>photo spot "&lt;id&gt;"</c>): photo mode opened on the spot's view, the script

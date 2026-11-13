@@ -198,6 +198,8 @@ public class ScriptTests
           safari start 600
           safari end
           safari start endless
+          safari objects
+          safari objects 4
           safari end
           bicycle on
           bicycle off
@@ -291,6 +293,12 @@ public class ScriptTests
           tour points
           tour report
           tour reward
+          delve go "brinecave"
+          delve open "rootwood"
+          delve able
+          delve board
+          delve rank
+          delve reward
           train open
           train drill
           train reset all
@@ -384,6 +392,9 @@ public class ScriptTests
           gamecorner prize goldenrod
           gamecorner pokemon
           gamecorner pay
+          gamecorner cabinet match
+          gamecorner cabinet picture
+          gamecorner prize lumiose
           villa catalogue
           villa choose "Table"
           villa is "Piano"
@@ -667,6 +678,20 @@ public class ScriptTests
           blacktower finish
           blacktower best
           blacktower cleared
+          galartower enough
+          galartower begin
+          galartower choose
+          galartower check
+          galartower active
+          galartower rank
+          galartower wins
+          galartower leon
+          galartower opponent
+          galartower battle
+          galartower won
+          galartower lost
+          galartower finish
+          galartower beaten
           friend beaten
           friend before
           friend after
@@ -759,6 +784,9 @@ public class ScriptTests
           openbase visit
           openbase pc
           openbase packup
+          openbase move
+          openbase movein
+          openbase bedroom
           openbase give "Red Brick"
           openbase buy "Small Desk"
           openbase room "Pikachu Doll"
@@ -915,6 +943,8 @@ public class ScriptTests
           tournament rental
           charm due
           charm give
+          tale learn "zmeu"
+          tale has "zmeu"
           records mix
           records count
           records bases

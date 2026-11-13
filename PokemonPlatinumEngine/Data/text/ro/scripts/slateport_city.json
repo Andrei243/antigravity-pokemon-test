@@ -389,7 +389,7 @@
         "Stall keeper"
       ],
       "text": [
-        ""
+        "Negustor"
       ]
     },
     {
@@ -397,7 +397,7 @@
         "Hot food, straight off the griddle! A meal for the whole team, eaten right here at the stall."
       ],
       "text": [
-        ""
+        "Mâncare caldă, direct de pe plită! O masă pentru toată echipa, mâncată chiar aici, la tarabă."
       ]
     },
     {
@@ -410,12 +410,12 @@
         "Nothing, thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce va fi?",
+        "Lipie condimentată, 1.500",
+        "Tocană de fasole, 1.600",
+        "Cartofi sotați, 1.800",
+        "Cămara",
+        "Nimic, mulțumesc"
       ]
     },
     {
@@ -423,7 +423,7 @@
         "Mind, it's hot! Your team wolfed it down."
       ],
       "text": [
-        ""
+        "Atenție, e fierbinte! Echipa ta a înfulecat-o."
       ]
     },
     {
@@ -431,7 +431,7 @@
         "We sell the same goods we cook with. Take what you like for your own pot."
       ],
       "text": [
-        ""
+        "Vindem aceleași ingrediente cu care gătim. Ia ce-ți place pentru oala ta."
       ]
     },
     {
@@ -439,7 +439,7 @@
         "Oh dear, that's a little more than you have on you."
       ],
       "text": [
-        ""
+        "Vai, e puțin mai mult decât ai la tine."
       ]
     },
     {
@@ -447,7 +447,7 @@
         "Come back when you're hungry!"
       ],
       "text": [
-        ""
+        "Revino când ți se face foame!"
       ]
     }
   ]

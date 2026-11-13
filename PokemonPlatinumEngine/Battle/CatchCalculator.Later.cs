@@ -28,7 +28,7 @@ public static partial class CatchCalculator
     /// Dusk Ball 30, a Quick Ball 50, a Repeat Ball 35, a Timer Ball 1229/4096 more each turn to four times, a Nest
     /// Ball 41 less the level), and every ball but the Beast Ball catches an Ultra Beast at a tenth.
     /// </summary>
-    public static int LaterBallTenths(string ball, Pokemon target, int turn, BattleConditions conditions, Pokemon? mine)
+    public static int LaterBallTenths(string ball, Pokemon target, int turn, BattleConditions conditions, Pokemon? mine, bool? night = null)
     {
         bool beast = UltraBeasts.Contains(target.Species.Name);
         if (ball == "Beast Ball") return beast ? 50 : 1;
@@ -42,7 +42,7 @@ public static partial class CatchCalculator
             "Nest Ball" when target.Level < 30 => Math.Max(10, 41 - target.Level),
             "Repeat Ball" when conditions.HasCaught(target.Species) => 35,
             "Timer Ball" => Math.Min(40, 10 + turn * 3),
-            "Dusk Ball" when conditions.Night || conditions.Terrain == BattleTerrain.Cave => 30,
+            "Dusk Ball" when (night ?? conditions.Night) || conditions.Terrain == BattleTerrain.Cave => 30,
             "Quick Ball" when turn < 1 => 50,
             "Dream Ball" when target.Status == StatusCondition.Sleep || target.AbilityName == "Comatose" => 40,
             "Fast Ball" when target.Species.BaseSpeed >= 100 => 40,

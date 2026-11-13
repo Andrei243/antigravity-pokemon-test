@@ -644,6 +644,10 @@
         "accent": "en-us"
       }
     },
+    "camerawoman": {
+      "note": "first spoken at LumioseCity_PrStudio.txt(5)",
+      "provisional": true
+    },
     "cameron": {
       "note": "first spoken at common.txt(3387)",
       "provisional": true
@@ -4443,6 +4447,10 @@
       "note": "first spoken at goldenrod_radio_tower_5f.txt(28)",
       "provisional": true
     },
+    "director_clavell": {
+      "note": "first spoken at CaboPoco_PlayersHouse_1F.txt(16)",
+      "provisional": true
+    },
     "director_wren": {
       "note": "first spoken at JubilifeTV1F.txt(121)",
       "provisional": true
@@ -4919,6 +4927,10 @@
         "accent": "en-us"
       }
     },
+    "gamer": {
+      "note": "first spoken at LumioseCity_Arcade.txt(88)",
+      "provisional": true
+    },
     "garden_keeper": {
       "note": "first spoken at SunyshoreGarden.txt(12)",
       "provisional": true
@@ -5202,6 +5214,10 @@
     },
     "hotel_clerk": {
       "note": "first spoken at HeaheaCity_Hotel.txt(7)",
+      "provisional": true
+    },
+    "housekeeper": {
+      "note": "first spoken at CaboPoco_NemonasHouse.txt(5)",
       "provisional": true
     },
     "huey": {
@@ -9438,6 +9454,10 @@
         "accent": "en-us"
       }
     },
+    "nemona": {
+      "note": "first spoken at cabo_poco.txt(27)",
+      "provisional": true
+    },
     "nessa": {
       "note": "first spoken at Hulbury_StadiumPitch.txt(8)",
       "provisional": true
@@ -10439,6 +10459,10 @@
       "note": "first spoken at route_119_weather_institute_2f.txt(21)",
       "provisional": true
     },
+    "shielbert": {
+      "note": "first spoken at Motostoke_StadiumPitch.txt(75)",
+      "provisional": true
+    },
     "shop_boy": {
       "note": "first spoken at EternaCycleShop.txt(30)",
       "brief": {
@@ -10566,6 +10590,10 @@
     },
     "sophocles": {
       "note": "first spoken at HokulaniObservatory.txt(17)",
+      "provisional": true
+    },
+    "sordward": {
+      "note": "first spoken at Hammerlocke_StadiumPitch.txt(38)",
       "provisional": true
     },
     "sparring_coach": {
@@ -11294,6 +11322,7 @@
     "Caitlin": "caitlin",
     "Cal": "cal",
     "Cameraman": "cameraman",
+    "Camerawoman": "camerawoman",
     "Cameron": "cameron",
     "Candice": "candice",
     "Captain": "captain",
@@ -11370,6 +11399,7 @@
     "Diantha": "diantha",
     "Digging Brother": "digging_brother",
     "Director": "director",
+    "Director Clavell": "director_clavell",
     "Director Wren": "director_wren",
     "Dock": "dock",
     "Dojo Master": "dojo_master",
@@ -11425,6 +11455,7 @@
     "Gabby": "gabby",
     "Galactic Grunt": "look:grunt",
     "Galactic Grunts": "galactic_grunts",
+    "Gamer": "gamer",
     "Garden Keeper": "garden_keeper",
     "Gardener": "gardener",
     "Gardenia": "gardenia",
@@ -11473,6 +11504,7 @@
     "Host": "look:host",
     "Hostess": "hostess",
     "Hotel Clerk": "hotel_clerk",
+    "Housekeeper": "housekeeper",
     "Huey": "huey",
     "Ian": "ian",
     "Ilima": "ilima",
@@ -11619,6 +11651,7 @@
     "Nanu": "nanu",
     "Naoko": "naoko",
     "Neighbour": "neighbour",
+    "Nemona": "nemona",
     "Nessa": "nessa",
     "Nikola": "nikola",
     "Norma": "norma",
@@ -11747,6 +11780,7 @@
     "Shauna": "shauna",
     "Shauntal": "shauntal",
     "Shelly": "shelly",
+    "Shielbert": "shielbert",
     "Shop Boy": "shop_boy",
     "Shop Girl": "shop_girl",
     "Shop Owner": "shop_owner",
@@ -11763,6 +11797,7 @@
     "Socialite": "socialite",
     "Sonia": "sonia",
     "Sophocles": "sophocles",
+    "Sordward": "sordward",
     "Sparring Coach": "sparring_coach",
     "Spenser": "spenser",
     "Stall Keeper": "stall_keeper",

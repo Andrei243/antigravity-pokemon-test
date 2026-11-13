@@ -23,6 +23,11 @@ partial class Harness
         if (part.Length == 0 || part == "hideaways") ExploreHideaways();
         if (part.Length == 0 || part == "headbutt") ExploreHeadbutt();
         if (part.Length == 0 || part == "statues") ExploreStatues();
+        if (part.Length == 0 || part == "soaring") ExploreSoaring();
+        if (part.Length == 0 || part == "skyplaces") ExploreSkyPlaces();
+        if (part.Length == 0 || part == "feebas") ExploreFeebas();
+        if (part.Length == 0 || part == "safari") ExploreSafari();
+        if (part.Length == 0 || part == "special") ExploreUnovaSpecial();
     }
 
     private void ExploreUnovaMap()

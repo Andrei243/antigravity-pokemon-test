@@ -89,7 +89,9 @@
         "en": [
           "Network Machine"
         ],
-        "text": [ "Mașina de rețea" ]
+        "text": [
+          "Mașina de rețea"
+        ]
       }
     },
     "network_machine_east": {
@@ -97,7 +99,9 @@
         "en": [
           "Network Machine"
         ],
-        "text": [ "Mașina de rețea" ]
+        "text": [
+          "Mașina de rețea"
+        ]
       }
     }
   },

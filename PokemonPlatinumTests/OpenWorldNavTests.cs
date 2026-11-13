@@ -379,7 +379,9 @@ public class OpenWorldNavTests
         var (solids, waters) = RegionBake.PlacedOf(description);
         Assert.Contains(solids, s => s.Name == "the house");
         var withPlaces = new NavReport();
-        Assert.Equal(NavBake.Build(level0.Value, solids, waters, report: withPlaces).Bytes(), all[OpenNavMesh.FileName]);
+        // the lab is ridden (plan 34 · PD2: its world.json says "mount"), so its bake holds the mount's links
+        Assert.True(description.World.Mount);
+        Assert.Equal(NavBake.Build(level0.Value, solids, waters, report: withPlaces, mount: true).Bytes(), all[OpenNavMesh.FileName]);
         Assert.Equal(withPlaces.ToString(), report.ToString());
         Assert.NotEqual(Mesh.Bytes(), all[OpenNavMesh.FileName]);
         // --check holds it as it holds the chunks: a changed byte of the mesh is a difference

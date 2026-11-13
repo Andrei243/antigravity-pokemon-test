@@ -19,9 +19,11 @@ public class OpenWorldTests
     {
         Assert.Equal(FieldKind.Grid, new RegionFile { Id = "Somewhere" }.FieldKind);
         Assert.Equal(FieldKind.Grid, new Region { Id = "Nowhere", Name = "Nowhere", Generation = 0 }.Field);
-        // Every region of today is the grid's, whatever its file, but Galar, the first open region (plan 33 · GL1)
-        Assert.All(RegionDatabase.All, r => Assert.Equal(r.Id == RegionDatabase.Galar ? FieldKind.Open : FieldKind.Grid, r.Field));
-        Assert.All(RegionDatabase.All.Where(r => r.Id != RegionDatabase.Galar), r => Assert.True(r.File?.Field == null, $"{r.Id}'s file names a field"));
+        // Every region of today is the grid's, whatever its file, but Galar, the first open region (plan 33 · GL1), and
+        // Paldea (plan 34 · PD1)
+        static bool Open(Region r) => r.Id is RegionDatabase.Galar or RegionDatabase.Paldea;
+        Assert.All(RegionDatabase.All, r => Assert.Equal(Open(r) ? FieldKind.Open : FieldKind.Grid, r.Field));
+        Assert.All(RegionDatabase.All.Where(r => !Open(r)), r => Assert.True(r.File?.Field == null, $"{r.Id}'s file names a field"));
 
         Assert.Equal(FieldKind.Grid, new RegionFile { Field = "grid" }.FieldKind);
         Assert.Equal(FieldKind.Open, new RegionFile { Field = "open" }.FieldKind);

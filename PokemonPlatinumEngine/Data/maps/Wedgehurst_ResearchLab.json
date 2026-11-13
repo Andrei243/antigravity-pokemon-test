@@ -143,6 +143,16 @@
         "Sonia works here, the professor's granddaughter. She's out at her gran's on Route 2 most days, digging through old books."
       ],
       "script": "Researcher"
+    },
+    {
+      "id": "sonia_lab",
+      "name": "Sonia",
+      "npcType": "sonia",
+      "x": 10,
+      "y": 5,
+      "facing": "Left",
+      "script": "Sonia",
+      "shownBy": "GalarHallOfFame"
     }
   ],
   "wildEncounters": []

@@ -96,7 +96,7 @@ public static class Overlays
         }
 
         // ---- our own species past level 100 after the Hall of Fame (plan 03 · D15): species of ours that may be wild, of
-        // this region's batch, at levels from their evolution's to 260, as many as the slots, where the tables have them
+        // this region's batch, at levels from their evolution's to the highest level, as many as the slots, where the tables have them
         if (overlay.Ours is { } ours)
         {
             string regionId = Path.GetFileName(region.Folder.TrimEnd('/', '\\'));
@@ -235,6 +235,20 @@ public static class Overlays
                 if (!Inside(tile.X, tile.Z)) Add(Kind.Place, name, "is not a tile of the area");
                 Script(content, found, file, name, tile.Script, key, needed: true);
             }
+        // A spot where the player's home opens (plan 43 · LF7): a tile of the area, of a kind and a room that are rooms of Emerald's
+        foreach (var spot in overlay.BaseSpots ?? new())
+        {
+            string name = $"baseSpots {spot.X},{spot.Z}";
+            if (!Inside(spot.X, spot.Z)) Add(Kind.Place, name, "is not a tile of the area");
+            if (spot.Id == 0) Add(Kind.Place, name, $"names the kind '{spot.Kind}' and room {spot.Room}, which make no room (a kind of SecretBaseKind but None, a room of 1 to 4)");
+            // The spot is faced as Hoenn's are: a blocked tile (the tree, the rock, the bush) with open ground before it
+            // on some side, where the player stands to open it and where its door leads back out to
+            if (map == null || !map.InBounds(spot.X, spot.Z)) continue;
+            if (!map.IsSolid(spot.X, spot.Z))
+                Add(Kind.Place, name, "is open ground: a spot is the blocked tile the player faces (a tree, a rock face, a bush), not one they walk onto");
+            else if (!new[] { (0, 1), (0, -1), (1, 0), (-1, 0) }.Any(d => map.IsWalkable(spot.X + d.Item1, spot.Z + d.Item2) && map.GetWarpAt(spot.X + d.Item1, spot.Z + d.Item2) == null))
+                Add(Kind.Place, name, "has no open ground before it on any side: nobody can stand to face it");
+        }
 
         // ---- the ways in and out
 

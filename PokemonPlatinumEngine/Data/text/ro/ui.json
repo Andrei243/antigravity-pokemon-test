@@ -35,7 +35,8 @@
       "arrows": "Săgeți",
       "enter": "Enter",
       "x": "X",
-      "c": "C"
+      "c": "C",
+      "pageRight": "E"
     },
     "hints": {
       "open": "Deschide",
@@ -1386,7 +1387,19 @@
     "galarFinals": "Finala pe Stadionul din Wyndon: câștig-o, iar după ea urmează Campionul.",
     "galarRaihanCup": "Raihan e ultimul tău adversar în finala de pe Stadionul din Wyndon.",
     "galarLeon": "Pe terenul Stadionului din Wyndon, la meciul pentru titlu împotriva lui Leon.",
+    "galarWeald": "Ceața s-a întors în Pădurea Adormită. Hop te așteaptă la altar.",
+    "galarLeonTower": "Leon conduce acum Turnul de Luptă din Turnul Rose. Du-te și înfruntă-l din nou.",
+    "galarShielbert": "Doi frați au fost văzuți pe Stadionul din Motostoke, iar un Pokémon de acolo a crescut uriaș de la sine.",
+    "galarSordward": "Sordward a plecat la Stadionul din Hammerlocke. Oprește-l până nu scapă alt Pokémon de sub control.",
     "galarFree": "Ești Campionul din Galar. Toată regiunea, de la Postwick la Wyndon, îți stă deschisă.",
+    "paldeaDownstairs": "Coboară. A venit cineva să te vadă.",
+    "paldeaTerrace": "Urcă dealul până la casa președintei și întâlnește-l pe director pe terasa ei.",
+    "paldeaBeach": "Ceva a strigat sub stânci. Coboară pe cărarea de pe Poco Path până pe plajă.",
+    "paldeaGrotto": "Strigătul a venit dintr-o peșteră de la poalele stâncilor. Intră în Inlet Grotto.",
+    "paldeaLighthouse": "Nemona te așteaptă la farul de pe Poco Path, la est de potecă.",
+    "paldeaMesagoza": "Mergi spre nord prin Los Platos și South Province, până la poarta de sud a orașului Mesagoza.",
+    "paldeaAcademy": "Urcă scările cele mari până la academie și intră pe ușile ei.",
+    "paldeaFree": "Începe semestrul. Vânătoarea de comori e a ta: arenele, Titanii și multe altele te așteaptă dincolo de Mesagoza.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
     "kalosClemont": "Întoarce-te în Lumiose City și câștigă de la Clemont, în vârful Turnului Prism, Insigna Tensiune.",
@@ -1993,6 +2006,45 @@
     "type": "TIP",
     "earlier": "ECHIPE MAI VECHI"
   },
+  "basme": {
+    "zmeu": {
+      "name": "Zmeu",
+      "told": "Soarele stă pe loc deasupra câmpului!",
+      "rule": "Timp de cinci ture, mișcările de Foc lovesc mai tare și noaptea nu poate cădea.",
+      "story": "Un Zmeu a furat soarele și l-a ascuns în turnul lui de aramă, iar ziua nu se mai sfârșea. Un cioban a urcat în turn cu un fluier și a cântat până a adormit balaurul, iar soarele a stat un an întreg deasupra dealurilor până a învățat iar să apună."
+    },
+    "varcolac": {
+      "name": "Vârcolac",
+      "told": "Luna e mâncată și câmpul se întunecă!",
+      "rule": "Timp de cinci ture, mișcările de Întuneric și de Fantomă lovesc mai tare, iar toate mișcările nimeresc mai rar.",
+      "story": "Când un copil se naște fără binecuvântare, pe cer se naște un Vârcolac. El fugărește luna și o mușcă, iar noaptea se întunecă. Sătenii bat în oale și trag clopotele până îi dă drumul, iar luna se întoarce cu o mușcătură pe margine."
+    },
+    "solomonar": {
+      "name": "Solomonar",
+      "told": "Norii de furtună se adună la chemarea povestitorului!",
+      "rule": "Timp de cinci ture plouă peste câmp.",
+      "story": "Solomonarii își învață meșteșugul într-o școală de sub un lac, iar cel mai bun dintre ei călărește un balaur prin nori. Cere unui sat lapte și pâine; unde e alungat cade grindina, iar unde e ospătat ploaia vine blândă și la vreme."
+    },
+    "dochia": {
+      "name": "Baba Dochia",
+      "told": "Frigul se întoarce peste câmp!",
+      "rule": "Timp de cinci ture ninge peste câmp.",
+      "story": "Baba Dochia și-a mânat oile pe munte în martie, purtând nouă cojoace. Soarele strălucea, așa că le-a lepădat unul câte unul. În a noua zi gerul s-a întors și ea a înghețat, prefăcută în stană de piatră cu turma ei pe vârf, unde stă și azi."
+    },
+    "ielele": {
+      "name": "Ielele",
+      "told": "Un joc de noapte răsună peste câmp!",
+      "rule": "Timp de cinci ture, mișcările de tip Sunet și orice mișcare făcută din sunet lovesc mai tare.",
+      "story": "În nopțile de vară Ielele joacă hora pe pajiști, iar iarba arde unde le-au călcat picioarele. Cine le aude cântecul joacă până în zori. Cei înțelepți își astupă urechile cu pelin și o iau pe drumul cel lung spre casă."
+    },
+    "learned": "{player} a învățat basmul despre {tale}!",
+    "writtenDown": "A fost scris în Cartea Basmelor."
+  },
+  "bookOfTales": {
+    "title": "Cartea Basmelor",
+    "empty": "Încă nu e scris niciun basm în Carte.",
+    "when": "Când e spus"
+  },
   "journal": {
     "title": "JURNAL",
     "empty": "Nu s-a scris încă nimic.",
@@ -2035,7 +2087,8 @@
     "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val",
     "Bug": "Insectă", "Cliff": "Stâncă", "Rumble": "Bubuit", "Plant": "Plantă", "Voltage": "Tensiune", "Fairy": "Zână", "Psychic": "Psihic", "Iceberg": "Aisberg",
     "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
-    "Grass": "Iarbă", "Water": "Apă", "Fire": "Foc", "Fighting": "Luptă", "Rock": "Rocă", "Dark": "Întuneric", "Dragon": "Dragon", "Ghost": "Fantomă", "Ice": "Gheață"
+    "Grass": "Iarbă", "Water": "Apă", "Fire": "Foc", "Fighting": "Luptă", "Rock": "Rocă", "Dark": "Întuneric", "Dragon": "Dragon", "Ghost": "Fantomă", "Ice": "Gheață",
+    "Electric": "Electric", "Normal": "Normal"
   },
   "card": {
     "runSub": "Cum se joacă acest joc. Ales la început și neschimbat apoi.",
@@ -2264,6 +2317,11 @@
     "came": "Căutarea a găsit un {name} în {place}! Rămâne o oră.",
     "gone": "{name} a plecat din {place}."
   },
+  "unovaSpecial": {
+    "dust": "Un nor de praf ascundea un {item}!",
+    "dustPokemon": "Ceva a sărit din norul de praf!",
+    "shadow": "O umbră a trecut peste pod și ceva s-a năpustit!"
+  },
   "outbreakToast": {
     "bonusOne": "{count} {name} întâlniți azi în {place}. Iarba s-a neliniștit: cei shiny apar mai des.",
     "bonusTwo": "{count} {name} întâlniți azi în {place}! Cei shiny apar și mai des."
@@ -2283,12 +2341,14 @@
     "card": {
       "Calls": "APELURI",
       "News": "ȘTIRI",
-      "Map": "HARTĂ"
+      "Map": "HARTĂ",
+      "Powers": "PUTERI"
     },
     "hints": {
       "call": "Sună",
       "open": "Deschide harta",
-      "cards": "Cartele"
+      "cards": "Cartele",
+      "powers": "Deschide panoul"
     },
     "calls": {
       "empty": "Niciun număr salvat încă.",
@@ -2303,6 +2363,10 @@
       "heading": "HARTĂ",
       "body": "Deschide harta ca să vezi toată regiunea, oraș cu oraș și rută cu rută.",
       "none": "Locul acesta nu e pe harta telefonului."
+    },
+    "powers": {
+      "heading": "PUTERI LA ÎNDEMÂNĂ",
+      "body": "Deschide panoul Ceasului Puterilor ca să vezi puterile pe care le știi, încărcarea lor și pe cele active acum."
     },
     "registered": "Numărul lui {name} e salvat în telefonul tău!"
   },
@@ -2407,7 +2471,17 @@
       "kalosShauna": "Shauna",
       "kalosTierno": "Tierno",
       "kalosTrevor": "Trevor",
-      "kalosSycamore": "Prof. Sycamore"
+      "kalosSycamore": "Prof. Sycamore",
+      "alolaMom": "Mama",
+      "alolaHau": "{rival}",
+      "alolaLillie": "Lillie",
+      "alolaKukui": "Prof. Kukui",
+      "alolaHala": "Hala",
+      "galarMom": "Mama",
+      "galarHop": "{rival}",
+      "galarSonia": "Sonia",
+      "galarMagnolia": "Prof. Magnolia",
+      "galarLeon": "Leon"
     }
   },
   "pokenav": {
@@ -2868,6 +2942,50 @@
       "berry": "Boabă", "item": "Obiect", "levelUp": "Nivel în sus", "sun": "Soare", "rain": "Ploaie", "sandstorm": "Furtună de nisip",
       "hail": "Grindină", "fog": "Ceață", "trickRoom": "Camera Truc", "speedUp": "Mai repede", "slowDown": "Mai încet",
       "random": "La întâmplare", "swap": "Schimb", "oneBp": "1 PL", "threeBp": "3 PL", "noBattle": "Fără luptă", "noEvent": "Nimic"
+    }
+  },
+  "cabinet": {
+    "ask": { "play": "JOACĂ", "leave": "PLEACĂ" },
+    "quitAsk": { "title": "Renunți?", "body": "Un aparat lăsat înainte de final nu plătește nimic.", "yes": "RENUNȚĂ", "no": "JOACĂ MAI DEPARTE" },
+    "hint": { "quit": "Renunță" },
+    "match": {
+      "foe": "ADVERSAR",
+      "hp": "PV {hp} / {most}",
+      "swaps": "MUTĂRI RĂMASE",
+      "score": "SCOR",
+      "team": "PE TABLĂ",
+      "hint": { "pick": "Alege și mută" },
+      "ask": {
+        "title": "Nivel: {name}",
+        "body": "Adu-i PV la zero în {swaps} mutări. Are {hp} PV. Un nivel terminat plătește {coins} fise, și mai mult pentru fiecare mutare rămasă."
+      },
+      "line": {
+        "intro": "{hp} PV de doborât în {swaps} mutări.",
+        "pick": "Alege o iconiță, apoi schimb-o cu o vecină ca să aliniezi trei.",
+        "noLine": "Mutarea asta nu face niciun rând. Încearcă alta.",
+        "notNeighbours": "Doar iconițele alăturate se pot schimba.",
+        "hit": "{damage} daune!",
+        "super": "E foarte eficient! {damage} daune!",
+        "weak": "Nu e prea eficient… {damage} daune.",
+        "cascade": "Un lanț de {cascades}! {damage} daune!",
+        "cleared": "Nivel terminat! Ai câștigat {coins} fise.",
+        "failed": "Nu mai ai mutări. Mai mult noroc data viitoare!"
+      }
+    },
+    "picture": {
+      "title": "LOGICA IMAGINII",
+      "unknown": "???",
+      "grid": "GRILĂ",
+      "mistakes": "GREȘELI",
+      "filled": "COMPLETATE",
+      "hint": { "fill": "Umple", "cross": "Taie" },
+      "line": {
+        "finding": "Se alege o imagine…",
+        "none": "Nu sunt imagini noi. Fiecare Pokémon văzut în călătorii mai adaugă una.",
+        "board": "Completează grila de {size} pe {size}. Numerele dau șirurile fiecărui rând și fiecărei coloane.",
+        "mistake": "Celula asta nu face parte din imagine. Greșeli: {mistakes}.",
+        "solved": "E {name}! Ai câștigat {coins} fise."
+      }
     }
   },
   "cardFlip": {
@@ -4153,6 +4271,14 @@
     "cantTerastallize": "{pokemon} nu se poate Teracristaliza!",
     "teraOnlyOnce": "Poți folosi Teracristalizarea o singură dată într-o luptă!",
     "terastallized": "{pokemon} s-a Teracristalizat în tipul {type}!",
+    "cantTellTale": "Povestea aceasta nu poate fi spusă acum!",
+    "taleAlreadyTold": "Basmul lui {tale} a fost spus deja!",
+    "taleOnlyOnce": "Poți spune un singur basm și da un singur răspuns într-o luptă!",
+    "taleTold": "{trainer} a spus basmul lui {tale}!",
+    "taleAnswered": "{trainer} a răspuns basmului lui {ended} cu basmul lui {tale}!",
+    "taleEnded": "Basmul lui {tale} s-a sfârșit.",
+    "taleWoke": "{pokemon} s-a trezit la basmul lui {tale}!",
+    "taleSlept": "{pokemon} a redevenit ce era.",
     "stellarType": "Stelar",
     "teraformZero": "{ability} lui {pokemon} a șters vremea și terenul!",
     "theDimensionsBecameDistorted": "Dimensiunile s-au deformat!",
@@ -4873,6 +4999,7 @@
     "Sailor": "Marinar",
     "SchoolKid": "Școlar",
     "SchoolKidM": "Școlar",
+    "Student": "Elev",
     "Scientist": "Om de știință",
     "ScientistGs": "Om de știință",
     "SisAndBro": "Soră și frate",
@@ -5672,7 +5799,8 @@
     "Underwater128": "Sub apă 128"
   },
   "secretBase": {
-    "decorating": "DECOREAZĂ-ȚI BAZA SECRETĂ"
+    "decorating": "DECOREAZĂ-ȚI BAZA SECRETĂ",
+    "bedroom": "DECOREAZĂ-ȚI CAMERA"
   },
   "pokeblock": {
     "color": {
@@ -6049,7 +6177,7 @@
       "wildWon": "Câștigă o luptă sălbatică", "trainerWon": "Învinge un antrenor", "wildRan": "Fugi de un Pokémon sălbatic",
       "wildFled": "Vezi un Pokémon sălbatic fugind", "trainerLost": "Pierde în fața unui antrenor", "whiteouts": "Leșină și mergi mai departe",
       "caught": "Prinde un Pokémon", "encounters": "Întâlnește un Pokémon sălbatic", "levelled": "Crește un nivel în luptă",
-      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată", "tourFourStars": "Fă o fotografie de patru stele în tur"
+      "evolutions": "Vezi un Pokémon evoluând", "badges": "Câștigă o Insignă", "champions": "Devino Campion", "circuits": "Câștigă Circuitul Laurilor", "heartsReclaimed": "Recuperează o inimă blocată", "tourFourStars": "Fă o fotografie de patru stele în tur", "hollowBrinecave": "Termină Peștera Sării", "hollowRootwood": "Termină Codrul Rădăcinilor", "hollowHeartpeak": "Termină Vârful Inimii", "hollowOldTower": "Termină Turnul Vechi"
     },
     "name": {
       "stepsFoot": "Mergi {count} pași", "stepsSurf": "Fă {count} pași pe apă", "stepsCycle": "Fă {count} pași cu bicicleta", "stepsDive": "Fă {count} pași sub apă",
@@ -7438,6 +7566,11 @@
       "pages": "Pagini întoarse",
       "starlit": "Sub stele",
       "sinnoh_snapshot": "Instantanee din Sinnoh",
+      "kanto_snapshot": "Instantanee din Kanto",
+      "johto_snapshot": "Instantanee din Johto",
+      "hoenn_snapshot": "Instantanee din Hoenn",
+      "unova_snapshot": "Instantanee din Unova",
+      "kalos_snapshot": "Instantanee din Kalos",
       "backdrop": "Decor: {name}"
     },
     "frame": {
@@ -7629,7 +7762,8 @@
     "stickers": { "count": "{count} / {most}" },
     "take": { "action": "FĂ POZA" },
     "seals": { "heading": "STICKERELE TALE" },
-    "hints": { "put": "Pune jos" },
+    "hints": { "put": "Pune jos", "size": "Mărime", "turn": "Rotește" },
+    "keys": { "turn": "Q / E" },
     "refusal": {
       "notOwned": "Nu ai stickerul ăsta.",
       "full": "Poza nu mai încape alte autocolante.",
@@ -7655,7 +7789,32 @@
       "sinnoh_sandgem_lab": "Laboratorul din Sandgem",
       "sinnoh_jubilife_fountain": "Fântâna din Jubilife",
       "sinnoh_oreburgh_museum": "Muzeul din Oreburgh",
-      "sinnoh_floaroma_flowers": "Florile din Floaroma"
+      "sinnoh_floaroma_flowers": "Florile din Floaroma",
+      "kanto_pallet_lane": "Aleea din Pallet Town",
+      "kanto_viridian_square": "Piața din Viridian",
+      "kanto_pewter_stones": "Pietrele cenușii din Pewter",
+      "kanto_cerulean_bridge": "Malul apei din Cerulean",
+      "kanto_vermilion_harbour": "Portul din Vermilion",
+      "johto_new_bark_breeze": "Briza din New Bark",
+      "johto_violet_tower": "Turnul vechi din Violet",
+      "johto_goldenrod_plaza": "Piața din Goldenrod",
+      "johto_ecruteak_lanes": "Ulițele vechi din Ecruteak",
+      "johto_olivine_harbour": "Portul din Olivine",
+      "hoenn_littleroot_green": "Pajiștea din Littleroot",
+      "hoenn_petalburg_pond": "Iazul din Petalburg",
+      "hoenn_rustboro_corner": "Colțul de piatră din Rustboro",
+      "hoenn_slateport_market": "Piața din Slateport",
+      "hoenn_lilycove_seafront": "Faleza din Lilycove",
+      "unova_aspertia_steps": "Treptele din Aspertia",
+      "unova_floccesy_bell": "Clopotul din Floccesy",
+      "unova_virbank_docks": "Docurile din Virbank",
+      "unova_nimbasa_lights": "Luminile din Nimbasa",
+      "unova_driftveil_market": "Piața din Driftveil",
+      "kalos_vaniville_garden": "Grădina din Vaniville",
+      "kalos_aquacorde_river": "Râul din Aquacorde",
+      "kalos_santalune_fountain": "Fântâna din Santalune",
+      "kalos_lumiose_boulevard": "Bulevardul din Lumiose",
+      "kalos_cyllage_cliffs": "Stâncile din Cyllage"
     }
   },
   "hearts": {
@@ -7683,6 +7842,141 @@
       "noMap": "Nu există o hartă a acestei regiuni peste care să zbori.",
       "hallOfFame": "Cerul de aici se deschide după ce intri în Sala Celebrităților a acestei regiuni.",
       "noFlier": "Niciun Pokémon din echipa ta nu te poate purta prin văzduh."
+    },
+    "hint": {
+      "soar": "Zbor",
+      "turn": "Virează",
+      "climb": "Urcă / coboară",
+      "faster": "Mai repede",
+      "land": "Aterizează"
+    },
+    "place": {
+      "Islet": "Insula zilei",
+      "Grove": "Crângul zilei",
+      "Hollow": "Grota zilei",
+      "Peak": "Culmea zilei"
+    }
+  },
+  "delve": {
+    "floor": "Etajul {n} din {of}",
+    "leader": "LIDER",
+    "partner": "PARTENER",
+    "recruit": "RECRUT",
+    "level": "Nv. {n}",
+    "hunger": "BURTICĂ",
+    "moves": "ATACURI",
+    "pp": "{n}/{of}",
+    "bag": "RUCSAC  {n}/{of}",
+    "bagEmpty": "Încă n-ai găsit nimic",
+    "giveTo": "Dă {item} lui...",
+    "asks": "{pokemon} vrea să vină cu voi!",
+    "yes": "BINE AI VENIT",
+    "no": "NU ACUM",
+    "flinch": "o tresărire",
+    "home": "{pokemon} a venit acasă din scorbură!",
+    "board": "AVIZIERUL TABEREI",
+    "boardEmpty": "Nimic afișat azi. Revino mâine!",
+    "rank": "Rangul taberei: {n}",
+    "pays": "Răsplată: {prize}",
+    "done": "GATA",
+    "hint": { "strike": "Lovește", "moves": "Atacuri" },
+    "reach": { "Ahead": "înainte", "Round": "de jur împrejur", "Room": "toată sala", "Self": "pe sine", "Team": "echipa", "Ally": "un prieten", "None": "doar în luptă" },
+    "hollow": {
+      "brinecave": "Peștera Sării",
+      "rootwood": "Codrul Rădăcinilor",
+      "heartpeak": "Vârful Inimii",
+      "old_tower": "Turnul Vechi",
+      "test_hollow": "Scorbura de probă"
+    },
+    "snare": { "Sleep": "o capcană adormitoare", "Poison": "o capcană înțepătoare", "Drop": "o groapă" },
+    "request": {
+      "Rescue": "Un drumeț a rămas blocat la etajul {floor} din {hollow}. Ajunge la el!",
+      "Find": "Adu, te rog, {item} din {hollow}.",
+      "Befriend": "Un {species} din {hollow} își caută un cămin.",
+      "Clear": "Străbate {hollow} de sus până jos."
+    },
+    "refused": {
+      "Egg": "Un Ou nu poate coborî.",
+      "Fainted": "Nu mai are putere.",
+      "Locked": "O inimă încuiată nu coboară.",
+      "Same": "Alege doi Pokémoni diferiți.",
+      "NotNow": "Nu acum.",
+      "Blocked": "Drumul e blocat.",
+      "NoMove": "Nu e niciun atac acolo.",
+      "NoPP": "Atacul nu mai are PP.",
+      "NeedsABattle": "Atacul merge doar într-o luptă.",
+      "NotInTheBag": "Nu e în rucsac.",
+      "WouldNotHelp": "N-ar ajuta acum.",
+      "NobodyAsks": "Nu întreabă nimeni."
+    },
+    "event": {
+      "Stepped": "{who} a făcut un pas.",
+      "Struck": "{who} s-a năpustit!",
+      "UsedMove": "{who} a folosit {what}!",
+      "Missed": "{who} a ratat!",
+      "Damaged": "{target} a pierdut {amount} PV.",
+      "Fainted": "{who} a leșinat!",
+      "StatusGiven": "{who} este acum {what}.",
+      "StatusFailed": "N-a avut efect asupra lui {target}.",
+      "Confused": "{who} s-a zăpăcit!",
+      "Snapped": "{who} și-a revenit din zăpăceală.",
+      "StatChanged": "{what} lui {who} s-a schimbat.",
+      "Healed": "{who} și-a recăpătat {amount} PV.",
+      "Recoil": "{who} s-a rănit din recul.",
+      "Drained": "{who} i-a supt din puteri lui {target}.",
+      "Flinched": "{who} a tresărit!",
+      "LostTurn": "{who} nu s-a putut mișca ({what}).",
+      "HurtItself": "{who} s-a rănit singur de zăpăcit ce era!",
+      "Woke": "{who} s-a trezit!",
+      "Noticed": "{who} a observat echipa!",
+      "Fled": "{who} a fugit!",
+      "Snare": "{who} a călcat pe {what}!",
+      "Found": "{who} a găsit {what}!",
+      "BagFull": "Rucsacul e plin. {who} a lăsat {what} pe loc.",
+      "Ate": "{who} a mâncat {what}. Delicios!",
+      "Cured": "{who} se simte mai bine.",
+      "Starving": "{who} moare de foame!",
+      "Descended": "Echipa a coborât la etajul {amount}.",
+      "AsksToJoin": "{who} vrea să se alăture echipei!",
+      "Joined": "{who} s-a alăturat echipei!",
+      "Declined": "{who} a plecat în treaba lui.",
+      "Revived": "Revive l-a readus în simțiri pe {who}!",
+      "Cleared": "Echipa a ajuns la capătul scorburii!",
+      "Fell": "{who} s-a prăbușit. Echipa a fost dusă înapoi în tabără...",
+      "Escaped": "Echipa a ieșit cu Funia de Scăpare.",
+      "Bitten": "{who} suferă din cauza: {what}.",
+      "Guarded": "{target} păzește drumul în sus!"
+    }
+  },
+  "safariObjects": {
+    "title": "PERSONALIZATORUL DE ZONE: {area}",
+    "area": {
+      "1": "CÂMPIE",
+      "2": "LUNCĂ",
+      "3": "SAVANĂ",
+      "4": "PISC",
+      "5": "PLAJĂ STÂNCOASĂ",
+      "6": "ZONĂ UMEDĂ",
+      "7": "PĂDURE",
+      "8": "MOCIRLĂ",
+      "9": "MLAȘTINĂ",
+      "10": "PUSTIETATE",
+      "11": "MUNTE",
+      "12": "DEȘERT"
+    },
+    "name": {
+      "flowerPatch": "Strat de Flori",
+      "haystack": "Căpiță de Fân",
+      "fencePost": "Stâlp de Gard",
+      "sapling": "Puiet",
+      "oldStump": "Ciot Bătrân",
+      "mushroomRing": "Cerc de Ciuperci",
+      "pebbles": "Pietricele",
+      "boulder": "Bolovan",
+      "stonePillar": "Stâlp de Piatră",
+      "puddle": "Băltoacă",
+      "reeds": "Trestii",
+      "pond": "Iaz"
     }
   }
 }

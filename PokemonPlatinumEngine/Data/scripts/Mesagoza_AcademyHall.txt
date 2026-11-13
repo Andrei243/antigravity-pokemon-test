@@ -1,0 +1,37 @@
+# The academy's entrance hall at the top of Mesagoza's stairs (plan 34 · PD1). VAR_PALDEA_STORY is cabo_poco.txt's
+# count. The lines are our own, on Scarlet and Violet's beats. The Tera Orb is given only to a bag without one (plan 34,
+# "The region's file", kept from plan 23's design), as Galar's Dynamax Band is.
+
+
+# In through the doors the first time: the director's welcome and the Tera Orb
+script OnEnter
+  if var VAR_PALDEA_STORY == 6 goto Welcome
+  end
+label Welcome
+  scene "The director's welcome"
+  face clavell_hall player
+  speaker "Director Clavell"
+  say "{player}! You found your way up all those stairs. Welcome, officially, to the academy."
+  say "Every student here carries one of these. Pokémon in Paldea can shine like gemstones in battle, and this is how."
+  if item "Tera Orb" goto HasOrb
+  give "Tera Orb"
+  goto TreasureHunt
+label HasOrb
+  say "Ah, but you have a Tera Orb already. Then you know what it can do. Keep it charged."
+label TreasureHunt
+  say "Tomorrow the treasure hunt begins: every student goes out into Paldea to find what matters to them."
+  say "The gyms, the Titans, whatever calls you. Settle in tonight. Paldea will still be there in the morning."
+  setvar VAR_PALDEA_STORY 7
+  objective paldeaFree
+  endscene
+  end
+
+
+script Clavell
+  speaker "Director Clavell"
+  if var VAR_PALDEA_STORY >= 7 goto Hunt
+  sayown
+  end
+label Hunt
+  say "The treasure hunt has no wrong road. Gyms, Titans, or something nobody has thought of yet: choose for yourself."
+  end

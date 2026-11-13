@@ -245,7 +245,7 @@ internal static partial class ModernUi
                 UiFonts.Draw(Text.Of("summary.expHeld", ("exp", locked.HeldExp.ToString("N0"))), x, who.Y + 874, 22, Muted, UiWeight.ExtraBold);
                 goto afterExp;
             }
-            // At the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
+            // At the game's level cap (plan 18 · W4: 100 in Platinum, 300 by the modern rules since plan 46 · CP15)
             bool top = p.AtTheCap;
             // Held to a level where the player stands (plan 18 · W4b-3: a run's cap or a crossed region's ceiling): the row moves up for a line under the bar
             bool held = !top && Models.LevelCaps.Holds(p, heldAt);

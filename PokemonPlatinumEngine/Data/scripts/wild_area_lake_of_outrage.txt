@@ -1,0 +1,14 @@
+# The Lake of Outrage (plan 33 · GL7, part b): the Mega Max den on its south shore. Before Galar's Hall of Fame it is a
+# den of dark stone that no light rises from and no Wishing Piece wakes; afterwards it is looked into as every den is
+# (`raid den`, common.GalarDen), and its boss holds its Mega Stone and Mega Dynamaxes in the raid (Data/world/galar/
+# dens.json's outrage_mega; docs/mechanics/rulings.md, "The Mega Max den and Sonia's band"). Our own lines.
+
+
+script DenOutrageMega
+  if not flag GalarHallOfFame goto Sealed
+  raid den "outrage_mega"
+  call GalarDen
+  end
+label Sealed
+  text "A den of black stone, colder than the lake beside it. Whatever sleeps in it isn't stirring for a challenger."
+  end

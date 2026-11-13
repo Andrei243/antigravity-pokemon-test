@@ -1,5 +1,7 @@
 {
   "area": "route_202",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 175, "z": 812, "kind": "Shrub", "room": 1 } ],
   "bgmTrack": "sinnoh/route202",
   "trees": "Round",
   "people": {

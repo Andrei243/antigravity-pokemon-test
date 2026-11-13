@@ -61,6 +61,17 @@
       "y": 4,
       "facing": "Down",
       "script": "Raihan"
+    },
+    {
+      "id": "sordward_pitch",
+      "name": "Sordward",
+      "npcType": "sordward",
+      "x": 7,
+      "y": 8,
+      "facing": "Down",
+      "script": "Sordward",
+      "hiddenBy": "FLAG_GALAR_SORDWARD_BEATEN",
+      "shownBy": "FLAG_GALAR_SHIELBERT_BEATEN"
     }
   ],
   "wildEncounters": []

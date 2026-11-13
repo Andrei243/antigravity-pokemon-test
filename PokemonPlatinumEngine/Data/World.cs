@@ -1120,8 +1120,19 @@ public static class WorldMapBuilder
         foreach (var (x, z) in beyond) map.SetGroundTile(x, z, TileType.Void, isSolid: true);
     }
 
+    /// <summary>A secret base's room by its kind (plan 43 · LF7; style guide, "Secret bases").</summary>
+    public static InteriorStyle DenStyleOf(Models.SecretBaseKind kind) => kind switch
+    {
+        Models.SecretBaseKind.RedCave => InteriorStyle.DenRedCave,
+        Models.SecretBaseKind.BrownCave => InteriorStyle.DenBrownCave,
+        Models.SecretBaseKind.BlueCave => InteriorStyle.DenBlueCave,
+        Models.SecretBaseKind.YellowCave => InteriorStyle.DenYellowCave,
+        Models.SecretBaseKind.Tree => InteriorStyle.DenTree,
+        _ => InteriorStyle.DenShrub
+    };
+
     /// <summary>The look of a room built from a layout, by its map's name (<see cref="MapStructures.KindOfDoor"/>).</summary>
-    public static InteriorStyle RoomStyleOf(string name) => MapStructures.KindOfDoor(name) switch
+    public static InteriorStyle RoomStyleOf(string name) => Models.SecretBaseLayouts.OfMap(name) is { } den ? DenStyleOf(den.Kind) : MapStructures.KindOfDoor(name) switch
     {
         BuildingKind.PokemonCenter => InteriorStyle.PokemonCenter,
         BuildingKind.PokeMart => InteriorStyle.PokeMart,
@@ -1866,6 +1877,21 @@ public static class WorldMapBuilder
                 foreach (var tile in HeadbuttTrees.TilesOf(headbutt.SecretTrees![t])) trees.Tiles[tile] = (t, true);
             trees.TreeCount = headbutt.Trees.Count + (headbutt.SecretTrees?.Count ?? 0);
             area.Headbutt = trees;
+        }
+        // The slots the Johto Safari Zone's objects bring (plan 38 · EX8)
+        foreach (var slot in file?.SafariSlots ?? new())
+        {
+            var way = slot.Way switch
+            {
+                "land" => Models.SafariWay.Land,
+                "water" => Models.SafariWay.Water,
+                "oldRod" => Models.SafariWay.OldRod,
+                "goodRod" => Models.SafariWay.GoodRod,
+                "superRod" => Models.SafariWay.SuperRod,
+                _ => throw new InvalidDataException($"{key}: a Safari slot's way '{slot.Way}' is none of land, water, oldRod, goodRod, superRod")
+            };
+            var needs = slot.Needs.Select(n => (Enum.Parse<Models.SafariObjectKind>(n.Kind), n.Count)).ToList();
+            area.SafariSlots.Add(new Models.SafariSlot(way, slot.Species, slot.Day, slot.Night, slot.Level, needs));
         }
         // Black 2's tables beside them (plan 22 · U4): the dark grass's met as the grass's, the shaking grass's too,
         // the rippling water's and its rod's as the water's
@@ -3076,6 +3102,10 @@ public static class WorldMapBuilder
         }
         // What is read where nothing shows, and the pits a pushed boulder falls into (plan 02 · S12)
         foreach (var read in overlay?.ReadAt ?? new()) map.TileScripts[(read.X, read.Z)] = read.Script;
+        // Where the player's home opens (plan 43 · LF7): a spot of ours, read by the same spot's script as Hoenn's
+        foreach (var spot in overlay?.BaseSpots ?? new())
+            map.SecretBaseSpots[(spot.X, spot.Z)] = spot.Id > 0 ? spot.Id
+                : throw new InvalidDataException($"The overlay of {key} names a base spot of kind '{spot.Kind}' and room {spot.Room}, which is none.");
         // Where a field move works a puzzle of the place (plan 21 · H12, part a)
         foreach (var puzzle in overlay?.Braille ?? new())
             map.BrailleSpots[(puzzle.X, puzzle.Z)] = (FieldMoveRules.Of(puzzle.Move)

@@ -4,7 +4,7 @@
       "Laurel Court"
     ],
     "text": [
-      ""
+      "Curtea Laurilor"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Piers Lindqvist"
         ],
         "text": [
-          ""
+          "Piers Lindqvist"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Cynthia"
         ],
         "text": [
-          ""
+          "Cynthia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Every region you've crowned, gathered in one hall. I'm honoured to stand among them."
         ],
         "text": [
-          ""
+          "Fiecare regiune pe care ai încoronat-o, adunată într-o singură sală. Sunt onorat să stau printre ele."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Don't get comfortable. I'm only here to take my title back."
         ],
         "text": [
-          ""
+          "Nu te simți prea comod. Sunt aici doar ca să-mi iau titlul înapoi."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Lance"
         ],
         "text": [
-          ""
+          "Lance"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "A Champion of many lands. My dragons have been waiting for this."
         ],
         "text": [
-          ""
+          "Un Campion din multe ținuturi. Dragonii mei au așteptat asta."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Wallace"
         ],
         "text": [
-          ""
+          "Wallace"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Such a stage! Let us make our battle as beautiful as the hall."
         ],
         "text": [
-          ""
+          "Ce scenă! Să facem lupta noastră la fel de frumoasă ca sala."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Iris"
         ],
         "text": [
-          ""
+          "Iris"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I've been practising all week. You're not getting past me this time!"
         ],
         "text": [
-          ""
+          "M-am antrenat toată săptămâna. De data asta nu mă treci!"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Diantha"
         ],
         "text": [
-          ""
+          "Diantha"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "A final with every Champion on one stage... What a cast!"
         ],
         "text": [
-          ""
+          "O finală cu fiecare Campion pe aceeași scenă... Ce distribuție!"
         ]
       }
     },
@@ -141,6 +141,24 @@
         ],
         "text": [
           "Uau! O curte întreagă de Campioni sub un singur acoperiș. Alola vine cu tot focul, vere!"
+        ]
+      }
+    },
+    "leon": {
+      "name": {
+        "en": [
+          "Leon"
+        ],
+        "text": [
+          "Leon"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Champion there is, on one court! Now that's what I call a champion time."
+        ],
+        "text": [
+          "Toți Campionii care există, pe un singur teren! Asta da distracție de campion."
         ]
       }
     }

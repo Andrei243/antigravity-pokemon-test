@@ -8,7 +8,8 @@ namespace PokemonPlatinumEngine.OpenWorld;
 /// What crosses a link of the navigation mesh (plan 32, "The navigation mesh"): walking (on foot, stepping a kerb or
 /// a short steep band, going down what the feet are held to), swimming (into water deeper than
 /// <see cref="OpenBody.SwimDepth"/>), a drop (off a ledge, one way: the way back is elsewhere), and the climb and the
-/// glide plan 34's mount opens, which no bake makes yet. A link is usable when every flag it carries is allowed.
+/// glide plan 34's mount opens, and its hop and high jump onto ground over a step (plan 34 · PD2: baked only for a
+/// region whose <c>world.json</c> says it is ridden). A link is usable when every flag it carries is allowed.
 /// </summary>
 [Flags]
 public enum OpenNavFlags : byte
@@ -18,7 +19,13 @@ public enum OpenNavFlags : byte
     Swim = 2,
     Drop = 4,
     Climb = 8,
-    Glide = 16
+    Glide = 16,
+
+    /// <summary>The mount's hop onto ground over a step and up to <see cref="OpenBody.HopHeight"/>'s clearance (plan 34 · PD2).</summary>
+    Jump = 32,
+
+    /// <summary>The mount's high jump onto ground the hop can't reach, up to <see cref="OpenBody.HighJumpHeight"/>'s clearance.</summary>
+    HighJump = 64
 }
 
 /// <summary>
@@ -141,13 +148,17 @@ public sealed class OpenNavMesh
     public IReadOnlyList<int> LinksFrom(int polygon) => linksFrom[polygon];
 
     /// <summary>
-    /// What a body may cross with what the region grants it: walking and drops always, swimming with the grant, and
-    /// (plan 30 · FM12) the mount's climbs and glides with theirs; the baker makes no link of either yet.
+    /// What a body may cross with what the region grants it: walking and drops always, swimming with the grant, and,
+    /// only while it is <paramref name="mounted"/> (plan 30 · FM12, plan 34 · PD2), the mount's hop always and its high
+    /// jump, climbs and glides with their grants. A walker is never handed a link of the mount's, whatever its grants say,
+    /// as the capsule reads no power but the swim on foot.
     /// </summary>
-    public static OpenNavFlags Allowed(MovementGrants grants) =>
+    public static OpenNavFlags Allowed(MovementGrants grants, bool mounted = false) =>
         OpenNavFlags.Walk | OpenNavFlags.Drop | ((grants & MovementGrants.Swim) != 0 ? OpenNavFlags.Swim : OpenNavFlags.None)
-        | ((grants & MovementGrants.Climb) != 0 ? OpenNavFlags.Climb : OpenNavFlags.None)
-        | ((grants & MovementGrants.Glide) != 0 ? OpenNavFlags.Glide : OpenNavFlags.None);
+        | (mounted ? OpenNavFlags.Jump : OpenNavFlags.None)
+        | (mounted && (grants & MovementGrants.HighJump) != 0 ? OpenNavFlags.HighJump : OpenNavFlags.None)
+        | (mounted && (grants & MovementGrants.Climb) != 0 ? OpenNavFlags.Climb : OpenNavFlags.None)
+        | (mounted && (grants & MovementGrants.Glide) != 0 ? OpenNavFlags.Glide : OpenNavFlags.None);
 
     /// <summary>
     /// Twice the signed area of a, b, c on the ground (x and z): positive one way round, negative the other. The

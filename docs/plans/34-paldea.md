@@ -145,8 +145,8 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 
 ## Status
 
-- [ ] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza
-- [ ] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12: `OpenWorld/MountRules.cs`, the five powers on the capsule, the `ClimbableRock` cover, the key, the dismounts and the saved mode, `MountTests` and `MountGameTests`; plan 30's "FM12 as built" has it. FM13's rig built 2026-11-12, plan 30's "FM13 as built", ridden in the harness on a climbable block of its own (`freewalk`, `fw70` to `fw89`). Left: the navigation mesh's power links, a climbable brush painted and baked in the open test world)
+- [x] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza (2026-11-13, its first session: the file, the open map of five areas described and baked, six rooms, the chapter from the bedroom to the academy's door headless, the plane from Galar landing; "PD1 as built", below. **Waits for the user**: the look of Cabo Poco and Mesagoza, judged from the shots its second session owes, as the done-when has it; the bake's footprint for the whole region (the question below); `Architecture.Paldea` seen in the game. **Owed**: the bot's run to the academy's door in `PlaythroughTests`, the harness's `paldea` mode and its shots, the academy's halls past the entrance hall, the voices of the new cast designed by ear)
+- [x] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12, its rig 2026-11-12 as FM13, and its last part 2026-11-13: the navigation mesh's hop, high jump, climb and glide links for a region whose `world.json` says `mount`, the lab's yard with a painted climbable face, the done-when ridden in `MountLabTests`, Paldea's mesh baked again with them; "PD2 as built", below. **Owed**: the playthrough bot riding the links; the user's word on the yard's shots `fwy0` to `fwy6`)
 - [ ] PD3 The South and East Provinces and the first three gyms
 - [ ] PD4 The Path of Legends
 - [ ] PD5 Starfall Street and Let's Go
@@ -157,3 +157,57 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [ ] PD10 The Teal Mask (optional)
 - [ ] PD11 The Indigo Disk (optional)
 - [ ] PD12 Mochi Mayhem (optional)
+
+## PD2 as built (2026-11-13)
+
+The rules (plan 30 · FM12) and the rig (FM13) were built before; this session built what PD2 still owed, all GPU-free
+but the harness's shots. The rulings' "The mount on the open world" has the links' numbers. Nothing of the grid and
+nothing of a walker's path changed.
+
+- **The navigation mesh's power links** (`tools/OpenWorldBake/NavBake.cs`, `MountLinks`): `OpenNavFlags.Jump` and
+  `HighJump` at the enum's end beside FM12's `Climb` and `Glide`, still a byte, so the file's format stays 1. Made only
+  where `world.json` says `"mount": true` (`OpenWorldFile.Mount`, its schema and `docs/data-files.md`): a hop onto
+  walked ground up to `HopHeight` over the feet, a high jump up to `HighJumpHeight`, a climb up a face climbable every
+  half metre to its top, and a glide off a side to the furthest landing 6 to 20 m out that the glide reaches, each off
+  the mesh, one of a kind for a pair of polygons, none where a walk or a step goes; the final sort compares the flags,
+  so the bytes are the same whatever order the chunks come in. Every number is `OpenBody`'s own.
+- **Who takes them**: `OpenNavMesh.Allowed(grants, mounted)`. On foot nothing of the mount's, whatever the grants; mounted
+  the hop always and the rest with their grants. Every caller today (the people, the follower, the wild Pokémon, the
+  bot's `Policy`, `WorldWalk`, `PaldeaTests`' walk) asks as a walker, so no path of theirs changed.
+- **The lab's yard** (`tools/OpenWorldBake/worlds/lab`: three boxes of `carve/hill.json`'s additions on the west meadow,
+  away from every marker, road, zone and the bot's way; the block's east face painted `ClimbableRock` in
+  `terrain/ground.json`): a block 6 m high, a hop step 0.8 m and a high step 2.3 m. The lab's bake: 33 hops, 51 high
+  jumps, 6 climbs, 83 glides. `--ride --nav` (the switch before `--nav`) draws the mesh as a mounted body with every power finds its paths (hops
+  orange, high jumps brown, climbs magenta, glides sky blue), and the game's debug layer draws them in the same colours.
+- **Paldea's mesh** baked again with `"mount": true` (17 hops, 40 high jumps, no climbs: no cliff is painted yet,
+  674 glides); only `navmesh.bin` and `index.json` changed. Galar's is untouched to the byte.
+- **The done-when** (`MountLabTests`, on the lab baked as the game reads it): each kind of link baked in the yard, none
+  in a region not ridden; a path up the yard takes the hop mounted, the high jump and the climb only with their grants,
+  never on foot; a glide off the block reaches further than any drop; the capsule rides each link from its takeoff to
+  its landing (the hop, the high jump, the climb onto the block's top, the glide at least as far as its link's landing, softly: a whole glide off the block comes down past it, so a body that must land there lets go over it) and is
+  refused each without its grant (a walker stays under the hop step, the high step and the face are not reached, a fall
+  is short and hard); the trot (6 m/s), the sprint only with the dash (11), and the swim into the pond only with its grant.
+- **Shots** (`freewalk`, `Modes/FreeWalkYard.cs`, `SHOTS_FILTER=fwy`): Koraidon half way up the painted face (`fwy0`),
+  on the block's top (`fwy1`), gliding off it (`fwy2`), the high jump in the air and on the high step (`fwy3`, `fwy4`),
+  the hop landing on its step (`fwy5`) and the yard from over the meadow (`fwy6`). They wait for the user's word.
+- **Seen in other shots**: the lab's pictures that look west (`open`'s, `freewalk`'s) now show the yard on the west meadow.
+- **Owed**: the playthrough bot riding the links (`Autoplayer.Open` steers walking paths; a mounted leg would press the
+  jump at a hop's takeoff, hold into a climb's face, press once falling for a glide and press again over its landing to let go); a climbable cliff painted in
+  Paldea itself (PD4's Titans and PD6's mountains).
+
+## PD1 as built (2026-11-13, its first session)
+
+One session, by an agent beside a full test run on the main checkout, so **no harness shot was taken**: the land was looked at with `OpenWorldBake paldea --plan` (the places' picture) and held by `PaldeaTests`' walk. The plan's six decisions are unanswered and were taken at their recommendations; the rulings' "Paldea's first chapter, on the open world" has each, and one of ours: **the version and the mount are one choice**, made in Inlet Grotto (plan 34 · decision 2 and plan 30 · decision 14 read together), so `VAR_PALDEA_VERSION` and `VAR_PALDEA_MOUNT` can't disagree.
+
+**What there is**
+- **The region's file** (`Data/regions/paldea.json`): `"field": "open"`, plan 30's movement record (`Free`, `Analog`, `Mount`) and the grown kit, the battle camera `paldea`, the modern sound, Director Clavell as the introduction's speaker (the professor is the version's, unknown when it runs), the rival Nemona, Sprigatito, Fuecoco and Quaxly, eight badges in the academy's suggested order, the `paldea` Pokédex, two spawns (home and Los Platos's Pokémon Center), `levels` `[[2, 242], [62, 258]]` (plan 03 · D14's Paldea question 1: Galar's Champion to two under the cap) and Scarlet and Violet's `caps`. `RegionDatabase`: `Start` in the bedroom, `Arrival` inside the house's door, `Harbour` inside Los Platos's Pokémon Center, six rooms; the plane from Galar's airfield lands here (plan 33 · GL7's link).
+- **`Architecture.Paldea`** (whitewashed stucco under terracotta hip roofs, shutters, flower boxes; its row of the style guide first).
+- **The open map** `Paldea` (`Data/world3d/paldea`, 6 by 14 chunks, `chunks: [-3, -12, 2, 1]`), five areas south to north: `cabo_poco`, `poco_path` (with the beach under the cliffs and Inlet Grotto's mouth), `los_platos`, `south_province_area_one`, `mesagoza` (the plaza and the academy's hill at the head of the great stairs). Baked: 84 chunks, 823,703 triangles at level 0, 6,658 navigation polygons, about 9.6 MB. Places: eleven solids built as houses, shops, a lighthouse, Pokémon Centers and the academy's hall, four doors, four triggers, five zones of Pokémon seen in the field (the species Scarlet and Violet show in those places, our weights), people (Nemona at each of her scenes behind flags, the director, townsfolk, two students who battle).
+- **Rooms**: `CaboPoco_PlayersHouse_1F`, `_2F`, `CaboPoco_NemonasHouse`, `InletGrotto`, `LosPlatos_PokemonCenter`, `Mesagoza_AcademyHall`, laid out from Galar's rooms of the same shapes.
+- **The chapter**, `VAR_PALDEA_STORY` 0 to 7 (`cabo_poco.txt`'s header), `common.PaldeaNewGame`, objectives 800 to 806 and `paldeaFree` 899 (English and Romanian); scripts `cabo_poco`, `poco_path`, `mesagoza` and the rooms'. Looks of ours: `nemona`, `clavell`, `paldea_mom`. Trainers in `Data/world/paldea/trainers.json`; the class `Student`.
+- **The sample pack's Tidemark** joins after Paldea, its ferryman in Los Platos's Pokémon Center.
+- **Tests**: `PaldeaTests` (the record and the plane's landing; the bake to the byte; the areas, songs, doors both ways, zones, trainers and Nemona's teams; the new game and the arrival; the walk from the bedroom reaching every room, marker, trigger and person, the beach by its track and the academy by its stairs, never the banks; the chapter headless from the bedroom to the academy's door, the Tera Orb given once; the grotto's first answer a Scarlet game with Koraidon; the four open scenes played and skipped), and the tests that knew Paldea as unbuilt now ask the hub for a region with no table, Pokédex or objectives.
+
+**The question for the user before PD3**: the whole region at decision 1's third (about 3 km by 3 km) as one rectangle of chunks is some 8,800 chunks and about a gigabyte of bake at PD1's density. The choices: (a) a smaller scale (a fifth, about 1.8 km square, some 3,200 chunks); (b) the baker taught to bake only the chunks that hold land within a region's polygons (the sea and the mountains' backs left out); (c) the bake kept out of the repository and baked on the machine at the first start. *Recommended:* (b), which keeps the scale and the bake in the repository.
+
+**Shots owed** (the harness's `paldea` mode isn't written): `pd00` to `pd06` Cabo Poco from four yaws, the player's door, the president's terrace over the sea; `pd10` to `pd13` Poco Path, the lighthouse, the beach and the grotto's mouth; `pd20` Inlet Grotto; `pd30` Los Platos; `pd40` the South Province's fields with their Pokémon; `pd50` to `pd54` Mesagoza's gate, plaza, the stairs and the academy's door; `pd60` the six rooms; `pd*n` after dark; and the chapter's scenes `pds00` to `pds10`. `profile`'s busiest scene (Mesagoza's plaza) is owed with them.

@@ -268,6 +268,9 @@ public class SaveData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.StageShow.StageShowSave? StageShow { get; set; }
 
+    /// <summary>The arcade's cabinets (plan 42 · PS6, <see cref="Models.Cabinets.CabinetRecords"/>): stages cleared, best scores, pictures solved. Null while empty.</summary>
+    public Models.Cabinets.CabinetsSave? Cabinets { get; set; }
+
     /// <summary>
     /// The film studio (plan 42 · PS4, <see cref="Models.Studio.StudioRecords"/>): each film's takes shot, its best stars
     /// and best take. Null while no film has been shot, and in every save from before it, so no save version was raised.
@@ -364,6 +367,10 @@ public class SaveData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public List<Models.StoredDecoration>? Decorations { get; set; }
 
+    /// <summary>Each region's bedroom at home as it was decorated (plan 43 · LF7), by the region; null while none is.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<string, List<Models.PlacedDecoration>>? Bedrooms { get; set; }
+
     /// <summary>
     /// Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b): the Coin Case's coins, the six Pokémon that
     /// wait in Pal Park, and four of the original's game records. Null in saves from before them.
@@ -372,6 +379,9 @@ public class SaveData
 
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6). Null in saves from before them, and while none has been picked.</summary>
     public Models.ApricornSave? Apricorns { get; set; }
+
+    /// <summary>The objects an Owner has set down in the Johto Safari Zone's areas (plan 38 · EX8). Null while none stands, so no version was raised.</summary>
+    public Models.SafariObjectsSave? SafariObjects { get; set; }
 
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
     public Models.CraftingSave? Crafting { get; set; }
@@ -420,9 +430,17 @@ public class SaveData
     /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
     public List<Models.PhotoPrint>? PhotoBook { get; set; }
 
+    /// <summary>The photo studio's last composition (plan 43 · LF5's leftover), which the studio opens on; null for a studio never left. A Pokémon or a Seal no longer had falls back as it opens.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.StudioShot? LastStudioShot { get; set; }
+
     /// <summary>The photo tour's report (plan 44 · SD5): each species' best photograph by stars and course, each course's best ride; null while empty.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.TourReportSave? PhotoTour { get; set; }
+
+    /// <summary>The delve's record (plan 44 · SD9): each hollow's clears, the board's requests done today, the prizes waiting; null while empty.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.Delve.DelveSave? Delve { get; set; }
     /// <summary>Lockwork's locked Pokémon reclaimed, missed and opened (plan 44 · SD1); null while empty, so an older save needs nothing.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.HeartsRecord? Hearts { get; set; }

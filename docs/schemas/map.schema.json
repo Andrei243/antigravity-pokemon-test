@@ -29,7 +29,15 @@
         "Street",
         "Tower",
         "Aerie",
-        "Tent"
+        "Tent",
+        "Field",
+        "Court",
+        "DenRedCave",
+        "DenBrownCave",
+        "DenBlueCave",
+        "DenYellowCave",
+        "DenTree",
+        "DenShrub"
       ]
     },
     "trees": {
@@ -115,6 +123,7 @@
         "Hisuian",
         "Galar",
         "Crossroads",
+        "Paldea",
         null
       ]
     },
@@ -659,7 +668,9 @@
               "FestivalHayBales",
               "FestivalSheaves",
               "Seagallop",
-              "NetworkMachine"
+              "NetworkMachine",
+              "BaseEntrance",
+              "SafariObject"
             ]
           },
           "x": {

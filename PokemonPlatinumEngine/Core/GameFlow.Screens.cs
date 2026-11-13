@@ -25,6 +25,13 @@ public sealed partial class GameFlow
     public SaveScreen SaveScreen { get; } = new();
     public TownMapScreen TownMapScreen { get; } = new();
 
+    /// <summary>A flight over a region from Fly's choice (plan 38 · EX7).</summary>
+    public SoarScreen SoarScreen { get; } = new();
+
+    /// <summary>The place of the day landed on last and its map, laid from the day's seed (plan 38 · EX7, part b); not saved.</summary>
+    public Overworld.Map? SkyPlaceMap { get; set; }
+    public Overworld.SkyPlace? SkyPlaceShown { get; set; }
+
     /// <summary>The title, made afresh with the slots as the game starts and after a save is deleted.</summary>
     public TitleScreen TitleScreen { get; set; } = new(null);
     public IntroScreen IntroScreen { get; } = new();
@@ -34,6 +41,9 @@ public sealed partial class GameFlow
     /// <summary>The screens of the game's other corners (plan 16 · T11g): each made its pictures, if any, only when drawn.</summary>
     public HallOfFameScreen HallOfFameScreen { get; } = new();
     public JournalScreen JournalScreen { get; } = new();
+
+    /// <summary>The Book of Tales (plan 46 · CP11).</summary>
+    public BookOfTalesScreen BookOfTalesScreen { get; } = new();
     public ReplayListScreen ReplayListScreen { get; } = new();
     public MigrateScreen MigrateScreen { get; } = new();
     /// <summary>The title's HOME (plan 12 · Q28, Q29).</summary>
@@ -72,6 +82,8 @@ public sealed partial class GameFlow
     public DressingRoomScreen DressingRoomScreen { get; } = new();
     public StageShowScreen StageShowScreen { get; } = new();
     public CardFlipScreen CardFlipScreen { get; } = new();
+    public MatchThreeScreen MatchThreeScreen { get; } = new();
+    public PictureLogicScreen PictureLogicScreen { get; } = new();
     public TradeBoardScreen TradeBoardScreen { get; } = new();
     public PowersScreen PowersScreen { get; } = new();
     public StrollCounterScreen StrollScreen { get; } = new();

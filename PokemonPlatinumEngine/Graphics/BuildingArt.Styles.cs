@@ -186,6 +186,9 @@ internal static partial class BuildingArt
             Architecture.Galar => Pitched(WallKind.Stone, Rgb(70, 76, 92)) with { Chimney = true, FlowerBoxes = true },
             // The hub (plan 41 · EG1): warm pale stone under harbour-blue gables with shutters and flower boxes
             Architecture.Crossroads => Pitched(WallKind.PaleStone, Rgb(52, 98, 156)) with { Shutters = true, FlowerBoxes = true },
+            // Paldea (plan 34 · PD1): whitewashed stucco under terracotta tiles, shutters and flower boxes, the villages and the old
+            // city of the sunny south-west, at the open world's metre scale
+            Architecture.Paldea => Pitched(WallKind.Stucco, Rgb(186, 92, 58), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }
@@ -194,7 +197,10 @@ internal static partial class BuildingArt
     private static int PortalFor(string? text, int least = 52) => text == null ? least : Math.Max(least, Pix.TextWidth(text, 2) + 12);
 
     /// <summary>The style of a building: public buildings look the same in every town, houses follow the town.</summary>
-    public static BuildingStyle StyleOf(BuildingInfo b, Architecture mapTown)
+    public static BuildingStyle StyleOf(BuildingInfo b, Architecture mapTown, bool grown = false) =>
+        grown ? BaseStyleOf(b, mapTown) with { Grown = true } : BaseStyleOf(b, mapTown);
+
+    private static BuildingStyle BaseStyleOf(BuildingInfo b, Architecture mapTown)
     {
         var town = b.Town ?? mapTown;
         bool placed = b.Model.Length > 0;

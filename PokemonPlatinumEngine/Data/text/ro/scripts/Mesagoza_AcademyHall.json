@@ -1,0 +1,70 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Director Clavell"
+      ],
+      "text": [
+        "Directorul Clavell"
+      ]
+    },
+    {
+      "en": [
+        "{player}! You found your way up all those stairs. Welcome, officially, to the academy."
+      ],
+      "text": [
+        "{player}! Ai urcat toate scările alea. Bun venit, oficial, la academie."
+      ]
+    },
+    {
+      "en": [
+        "Every student here carries one of these. Pokémon in Paldea can shine like gemstones in battle, and this is how."
+      ],
+      "text": [
+        "Fiecare elev de aici poartă unul dintre acestea. În Paldea, Pokémonii pot străluci ca nestematele în luptă, iată cum."
+      ]
+    },
+    {
+      "en": [
+        "Ah, but you have a Tera Orb already. Then you know what it can do. Keep it charged."
+      ],
+      "text": [
+        "A, dar ai deja un Tera Orb. Atunci știi ce poate face. Ține-l încărcat."
+      ]
+    },
+    {
+      "en": [
+        "Tomorrow the treasure hunt begins: every student goes out into Paldea to find what matters to them."
+      ],
+      "text": [
+        "Mâine începe vânătoarea de comori: fiecare elev pleacă prin Paldea să găsească ce contează pentru el."
+      ]
+    },
+    {
+      "en": [
+        "The gyms, the Titans, whatever calls you. Settle in tonight. Paldea will still be there in the morning."
+      ],
+      "text": [
+        "Arenele, Titanii, orice te cheamă. Instalează-te în seara asta. Paldea va fi tot acolo dimineață."
+      ]
+    }
+  ],
+  "Clavell": [
+    {
+      "en": [
+        "Director Clavell"
+      ],
+      "text": [
+        "Directorul Clavell"
+      ]
+    },
+    {
+      "en": [
+        "The treasure hunt has no wrong road. Gyms, Titans, or something nobody has thought of yet: choose for yourself."
+      ],
+      "text": [
+        "Vânătoarea de comori n-are drum greșit. Arene, Titani sau ceva la care nu s-a gândit nimeni: alege singur."
+      ]
+    }
+  ]
+}

@@ -94,7 +94,7 @@ public static class Objectives
         // Nothing presses any more
         S(34, "free", null),
     }
-    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).Concat(Alola).Concat(Galar).Concat(Hisui).ToArray();
+    .Concat(Kanto).Concat(Johto).Concat(Hoenn).Concat(Unova).Concat(Kalos).Concat(Alola).Concat(Galar).Concat(Paldea).Concat(Hisui).ToArray();
 
     // The later regions (plan 12 · Q14, their part). Each has a block of a hundred numbers of its own, its derived
     // conditions read from what only its own chapters set (its badges, its own flags and counts, never a flag another
@@ -396,7 +396,25 @@ public static class Objectives
         (741, "galarFinals", AtLeast("VAR_GALAR_STORY", 44), true),
         (742, "galarRaihanCup", AtLeast("VAR_GALAR_STORY", 45), true),
         (743, "galarLeon", s => s.Var("VAR_GALAR_STORY") >= 46 || s.Has("GalarHallOfFame"), false),
+        // Plan 33 · GL7: after the Hall of Fame, the version's legendary in the Weald and Leon's rematch in the Battle Tower
+        (744, "galarWeald", AtLeast("VAR_GALAR_STORY", 47), false),
+        (745, "galarLeonTower", s => s.Has("FLAG_GALAR_LEON_TOWER_WON"), false),
+        // Plan 33 · GL7, part b: Sordward and Shielbert, Shielbert at Motostoke's stadium and Sordward at Hammerlocke's
+        (746, "galarShielbert", s => s.Has("FLAG_GALAR_SHIELBERT_BEATEN"), false),
+        (747, "galarSordward", s => s.Has("FLAG_GALAR_SORDWARD_BEATEN"), false),
         (799, "galarFree", null, false));
+
+    // Paldea (plan 34 · PD1): the first chapter, Cabo Poco to the academy's door in Mesagoza, by VAR_PALDEA_STORY
+    // (cabo_poco.txt's header has its count). Its ids are the 800s; a later chapter adds its own before paldeaFree
+    private static Objective[] Paldea => Region(RegionDatabase.Paldea,
+        (800, "paldeaDownstairs", AtLeast("VAR_PALDEA_STORY", 1), true),
+        (801, "paldeaTerrace", AtLeast("VAR_PALDEA_STORY", 2), true),
+        (802, "paldeaBeach", AtLeast("VAR_PALDEA_STORY", 3), true),
+        (803, "paldeaGrotto", AtLeast("VAR_PALDEA_STORY", 4), true),
+        (804, "paldeaLighthouse", AtLeast("VAR_PALDEA_STORY", 5), true),
+        (805, "paldeaMesagoza", AtLeast("VAR_PALDEA_STORY", 6), true),
+        (806, "paldeaAcademy", AtLeast("VAR_PALDEA_STORY", 7), true),
+        (899, "paldeaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);
 

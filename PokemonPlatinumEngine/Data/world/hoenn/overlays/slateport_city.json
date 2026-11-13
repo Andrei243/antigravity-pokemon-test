@@ -4,6 +4,10 @@
   // player there (slateport_city_sterns_shipyard_1f.txt), and Scott meets the player outside once the museum's scene
   // is played (slateport_city.txt). Route 110 north of the city is plan 21 · H3's second part
   "area": "slateport_city",
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 219, "y": 291, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 219, "z": 291, "script": "PhotoSpot" } ],
   "bgmTrack": "hoenn/slateport",
   "trees": "Round",
   "architecture": "Wharf",

@@ -245,7 +245,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `givepokemon "Castform" 25 holding "Mystic Water"` | The same with an item in its hand (plan 21 · H6: the Weather Institute's Castform, as Emerald gives it). |
 | `givepokemon "Dratini" 15 knowing "Extreme Speed"` | The same with a move in the place of its first (plan 20 · J11, part c: the Dragon Shrine's Dratini, as HeartGold's `SetMonMove` puts it); `holding` and `knowing` may both be given, in either order. A move the data doesn't have is a problem of the library's. |
 | `givebadge coal` | Gives a badge of the region the player is in, by its name in that region's file (plan 18 · W2), with its fanfare; `givebadge thunder of kanto` gives another region's (plan 20 · J15, part b: HeartGold's Kanto Gyms, Johto's maps, give Kanto's Badges). |
-| `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
+| `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. Either may name a variable in place of the amount (`givemoney VAR_JOHTO_MOM_SAVINGS`, plan 43 · LF7), its value as it is then. |
 | `heal` | The whole team. |
 | `seen "Dialga"` | The Pokédex has the species as seen, without a word and without a battle (plan 02 · S12; the original's `SetSpeciesSeen`, for a Pokémon a scene shows: Dialga and Palkia at Spear Pillar). |
 | `greetings clear` | The count of people spoken to starts again from nought (plan 08 · P12; the original's `ClearSpiritombCounter`). The built-in variable `GREETINGS` is the count: everyone spoken to since, each once (`StoryState.Greeted`, saved). |
@@ -389,6 +389,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
 | `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. `safari start 600` is a game of another number of steps (plan 19 · K6: FireRed's Safari Zone in Fuchsia City), and the two common scripts send a player of Kanto back to its entrance. `safari start endless` is HeartGold's game (plan 20 · J8, part b): thirty balls and no steps, over when the last ball is thrown or the player walks out; the panel over the field shows the balls alone, and the common scripts send a player of Johto back inside the Safari Zone's gate. Emerald's is `safari start 500` at Route 121's gate (plan 21 · H6, part b), and the common scripts send a player of Hoenn back to that gate's door with `VAR_SAFARI_ZONE_STATE` 1, which its arrival walks out past the counter. |
+| `safari objects`, `safari objects 4` | The Johto Safari Zone's Area Customizer (plan 38 · EX8): the area numbered (from 1) or, with no number, numbered by the script's RESULT from 0, in the machine's order (Plains, Meadow, Savannah, Peak, Rocky Beach, Wetland, Forest, Swamp, Marshland, Wasteland, Mountain, Desert; `SafariObjects.AreaKeys`) opened on the shared decorating screen to set the Owner's objects down, and the script waits for the screen. RESULT is then 1, or 0 where the number names no area (backing out of a `choose`). What is left standing is kept and laid out in the zone as the screen closes; a host with no screen notes the area (`HeadlessScriptHost.Arranged`). Who may use it is the script's to ask (`if var VAR_UNK_4057 >= 6`). |
 | `bugcontest open`, `on`, `start`, `balls`, `caught`, `keep`, `release`, `judge`, `results`, `prize`, `end` | The National Park's Bug-Catching Contest (plan 15 · E5; `Models/BugCatchingContest.cs`, HeartGold's rules). `open` is 1 on a contest day (Tuesday, Thursday, Saturday), `on` 1 while a contest is under way and not yet judged. `start` sets the team aside but for its first Pokémon able to fight, gives twenty Sport Balls and twenty minutes, draws the five others and shows them in the park (`FLAG_BUG_CONTESTANT_<NAME>`) with the park's own people kept away (`FLAG_BUG_CONTEST_UNDER_WAY`); RESULT 0 for a team with nobody able. While one is on, a wild Pokémon of the park's grass is the contest's table's, BAG is the Sport Ball, a catch is the contest's, a second runs `common.BugContestSwap`, the last ball `common.BugContestOutOfBalls` and the twenty minutes `common.BugContestTimeUp`. `balls` is the Sport Balls left, `caught` 1 while a Pokémon is kept (`{bugmon}`); `keep` keeps the one just caught (`{bugnew}`) in its place and `release` lets it go. `judge` judges the six by HeartGold's score (RESULT the place, 0 first to 3 none of the three; `{score}`, `{prize}`), `results` opens the board, `prize` gives the prize as `give` does, and `end` gives the team back with the catch (RESULT 1 on the team, 2 in the PC, 0 nothing caught) and sends the others home. |
 | `athlon able`, `athlon open`, `athlon points` | The Pokéathlon (plan 15 · E6; `Models/Athlon.cs`). `able` is 1 when the team has three that may compete (no Eggs). `open` opens the Pokéathlon's screen on the courses and waits: a course chosen, three of the team, its three events and the scoreboard, which records the course and earns its points; RESULT is the player's place (1 to 4), or 0 when the screen was left before a course began. Never in a hurry: a scene stops before it. `points` is the Athlete Points held. `HeadlessScriptHost.AthlonPlace` and `AthlonScore` say what a test's course comes to. `athlon records` opens the records board (each course's best score and medal) and `athlon shop` the Athlete Shop (the shop's screen with the dome's stock, paid in Athlete Points), each waited out (plan 15 · E8). `athlon earned shoes|clothes|flag|pokegear|ball|statue` is 1 where that honour of the halls under the lobby is earned (`AthlonRecords.Has`; the rulings' "The Pokéathlon", the bonuses), which the halls' signs ask. |
 | `tide` | Shoal Cave's tide (plan 21 · H8, part d; Emerald's `UpdateShoalTideFlag`, `Overworld/ShoalTide.cs`): when the player has just come in from outdoors (`IScriptHost.CameInFromOutdoors`: the place left was open country and no cave), `FLAG_SYS_SHOAL_TIDE` is set if the tide is high at the hour (`IScriptHost.Hour`: from midnight to three, nine to three and nine to midnight) and cleared if it is low; coming from inside, it is left as it was, so the tide never turns under someone in the cave. The entrance room's `OnTransition` runs it, and `world.json`'s swaps lay the high tide's chunks over the two upper rooms while the flag is set. Nothing to see: a hurry passes it. `HeadlessScriptHost.Hour` and `CameInFromOutdoors` say what a test's clock and arrival are. |
@@ -570,6 +571,9 @@ and a decoration PC (`StoredDecoration`s, saved). The game starts `common.Secret
 | `openbase visit` | Into the friend's base at the spot in front (plan 40 · GE10), inside its door: laid out with what stood in it and its owner standing by the PC, a friend's trainer battled as the friends' hall's are, the door leading back to the spot. `RESULT` 0 with none there. |
 | `openbase pc` | Opens the decorating over the base's floor (the shared `DecorationScreen`), and the script waits: `RESULT` 0 outside the player's own base. |
 | `openbase packup` | Everything in the base back into the PC, the base given up, and the player out to where its spot is faced from. |
+| `openbase move` | Plan 43 · LF7: the home's door moved to the spot faced, in any region with spots; the room and everything in it as they were, and the player into it. |
+| `openbase movein` | Plan 43 · LF7, at the home's PC: the home takes the room the spot its door stands at would make, the room left keeping its layout for when it is come back to. `RESULT` 0 where the door's room is the home's own already. |
+| `openbase bedroom` | Plan 43 · LF7, at the computer of the player's bedroom at home in any region: the shared decorating over the room's floor from the decoration PC, twelve pieces at most, each region's room a layout of its own, and the script waits. The tiles the room's scenes and steps need stay clear, and nothing may shut a way off. `RESULT` 0 outside a bedroom. |
 | `openbase give "Red Brick"` | A decoration into the PC, without a word: `RESULT` 1, or 0 with no room for its kind (ten desks, chairs, plants, posters and cushions, thirty ornaments and mats, forty dolls). `{thing}` names it. |
 | `openbase buy "Red Brick"` | As a decoration shop does: `RESULT` 1 bought (its price taken, the decoration in the PC), 0 short of money, 2 no room for its kind. `{thing}` names it. |
 | `openbase trade "Kiss Poster" 16` | As the Battle Frontier island's decoration clerks do (plan 21's leftovers): for that many Battle Points. `RESULT` 1 traded, 0 short of points, 2 no room for its kind; `{thing}` and `{price}`. |
@@ -891,6 +895,9 @@ by the Tower's rooms, with the Subway Bosses at the 21st battle (Ingo) and the 4
 | `blacktower enough`, `blacktower begin`, `blacktower choose`, `blacktower check`, `blacktower active` | Black City's Black Tower (plan 22 · U10, the last part; `Models/Frontier/BlackTower.cs`): `RESULT` 1 when the team holds three that could go in together (`{number}`, `{banned}`); starts a climb; has the three chosen (`RESULT` 1, or 0 when backed out of); 0, or 1 for two of a species and 2 for two holding the same item; 1 while a climb is under way. A climb is the story's own variables (`VAR_UNOVA_BLACK_TOWER_*`). |
 | `blacktower next`, `blacktower area`, `blacktower top`, `blacktower opponent`, `blacktower battle`, `blacktower won` | The battle to come and its area (1 to 5, `{number}`); 1 when Benga waits at it (the fifteenth, after Unova's Hall of Fame); makes the battle's trainer ready (a Frontier trainer of the Tower's room of the area, dressed as the Subway's riders, or Benga at level 50) and stands them as `opponent` (`{foe}`); fights them with the three as copies at Level 50 (`RESULT` 1 won, 0 lost); counts the win (`RESULT` 1 once an area is cleared, 2 once the top is, `{number}` the area). |
 | `blacktower finish`, `blacktower best`, `blacktower cleared` | Ends the climb, keeps the most areas cleared and hands over a Battle Point an area and ten for the top (`RESULT` and `{number}`); the records. |
+| `galartower enough`, `begin`, `choose`, `check`, `active` | Galar's Battle Tower ladder in Rose Tower (plan 33 · GL7, part b; `Models/Frontier/GalarTower.cs`; rulings, "Galar's Battle Tower ladder"), as `blacktower`'s: three that may go in, a run begun, the three chosen and checked, a run under way. The ladder is the story's `VAR_GALAR_TOWER_*`. |
+| `galartower rank`, `wins`, `leon`, `opponent`, `battle` | The rank from 1 and the wins at it (`RESULT` and `{number}`); 1 when Leon waits at the battle to come (the Master Rank's third win); the battle's trainer made ready (`{foe}`); fought with the three at Level 50 (`RESULT` 1 won, 0 lost). |
+| `galartower won`, `lost`, `finish`, `beaten` | A win counted (`RESULT` 1 the rank rose, 2 Leon beaten; `{number}` the rank); a loss counted (from Rank 5 a win taken back); the run ended with its Battle Points handed over (`RESULT` and `{number}`); how often Leon has been beaten there. |
 
 ### The friends' hall
 
@@ -945,6 +952,19 @@ Plan 44 · SD5; style guide, "The photo tour". The tour's one command, `tour`; a
 | `tour points` | `RESULT` the report's total: each species' best photograph on each course, summed. |
 | `tour report` | The report on its screen (`GameState.TourReport`, `TourReportScreen`; plan 44 · SD6): a page to each course, its species' best photographs and the chosen one's print. The script waits until it is left; a game with no window shows nothing. It stops a scene's hurry. |
 | `tour reward` | The next of the guide's rewards (`photo-tour.json`'s `rewards`) that the report's total has earned, handed over as `give` hands an item (its fanfare and its two lines; asked of the randomiser), `RESULT` 1 and `{item}` naming it; nothing due, `RESULT` 0. A guide with more to give asks again. |
+
+### The delve
+
+Plan 44 · SD8, SD9 (`Models/Delve/`, `Core/GameEngine.Delve.cs`; rulings, "The delve"). A hollow is named by its key in `Data/hollows.json` (`brinecave`, `rootwood`, `heartpeak`, `old_tower`).
+
+| Command | What it does |
+|---|---|
+| `delve go "<hollow>"` | The team's first two who may go down (no Egg, nobody fainted or locked) go down the hollow as copies (`GameState.Delve`, `DelveScreen`); the script waits until the run is over and settled at the camp (the bag's finds kept, the recruits home, the board's requests done) and hears `RESULT` 1 cleared, 2 fallen, 3 escaped by the rope, 0 when nobody went (the hollow not open at the camp's rank, or no two to send). A game with no window plays the run at once by the plain policy. It stops a scene's hurry. |
+| `delve open "<hollow>"` | `RESULT` 1 when the camp's rank has opened the hollow, else 0. |
+| `delve able` | `RESULT` 1 when two of the team may go down, else 0. |
+| `delve board` | The day's three requests on the camp's board (`GameState.DelveBoard`); the script waits until it is put down. Nothing in a game with no window. It stops a scene's hurry. |
+| `delve rank` | `RESULT` the camp's rank: the hollows cleared. |
+| `delve reward` | The next prize the board's requests have earned, handed over as `give` hands an item (its fanfare, its two lines), `RESULT` 1; nothing waiting, 0. |
 
 ### Treats
 
@@ -1427,6 +1447,31 @@ label Give
   charm give
   charm due
   if var RESULT > 0 goto Give
+  end
+```
+
+### The Tales
+
+Plan 46 · CP12; `docs/mechanics/rulings.md`, "The Tales". A tale is learned in the world (an elder, a painted wall, a
+carved gate, a festival), never bought, and is kept by the story's own flag `FLAG_TALE_<ID>` (`TaleTable.FlagOf`), so
+nothing new is saved. The id is a tale of `Data/tales.json`, checked as the script is read. A battle offers only the
+tales learned, and only with the Book of Tales in the bag.
+
+| Command | What it does |
+|---|---|
+| `tale learn "zmeu"` | Writes the tale into the Book: its flag is set, the key item's fanfare plays and two lines say so, `RESULT` 1. A tale already learned changes and says nothing, `RESULT` 0. Skipped as an item given is: the lines and the fanfare are dropped. |
+| `tale has "zmeu"` | `RESULT` is 1 when the tale is learned, 0 when it isn't. |
+
+```
+script Elder
+  face self player
+  tale has "zmeu"
+  if var RESULT > 0 goto Told
+  say "Sit, child. I'll tell you how the Zmeu stole the sun."
+  tale learn "zmeu"
+  end
+label Told
+  say "Tell it well when your turn comes."
   end
 ```
 

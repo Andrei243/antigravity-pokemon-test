@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Core.Autoplay;
 /// order a player meets them, written from the chapters' own scripts (the triggers by their scripts' names, the
 /// people by their keys). Only what the story asks for is named; the way between is the bot's to find.
 /// </summary>
-public static class Itineraries
+public static partial class Itineraries
 {
     /// <summary>The first chapter (plan 02 · S4): from the bedroom to the catching lesson on Route 202.</summary>
     public static IReadOnlyList<Leg> FirstChapter { get; } = new[]

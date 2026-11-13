@@ -3,7 +3,7 @@
 Written 2026-11-09, before any session, at the user's request, from [the study](studies/romania-region-study.md) and the user's answers of the same day (decisions 1 to 12, below).
 
 **Goal**: a tenth region, **Carpathia**, that has no original game at all. It is drawn from Romania: the ring of the Carpathians round the Transylvanian plateau, the plains outside it, the Danube to its delta and the Black Sea. It is built on [plan 32](32-open-world-engine.md)'s open-world engine and comes after Paldea in the chain. It has:
-- **its own Pokédex of about 120 new species** with no forebear in any game, three starter lines, a trio of legendaries and the Dacian draco as its mythical;
+- **its own Pokédex of about 250 new species** (249 since 2026-11-12) with no forebear in any game, three starter lines, a trio of legendaries, the three Fates, eight mythicals woven into the story and 25 Carpathian forms of existing species;
 - **a nineteenth type, Sound**, because music is at the heart of Romania;
 - **a primary gimmick of our own, the Tales (*basme*)**: once a battle a trainer tells a tale learned in the world, which changes the field for both sides for five turns and wakes the Pokémon bound to it; the other trainer may answer with a tale of their own;
 - **a secondary gimmick, the winter masks**: the bear, goat, horse and stag of the New Year's dances, crafted or found at the festivals, giving a Pokémon a role for a battle;
@@ -22,7 +22,7 @@ Everything in it is ours: places, people, species, words, art and music. Real pl
 - **The later-mechanic pattern** (plan 06 · R20 to R23, R30) has been followed five times: a `Ruleset` flag, a key item, a flag on the choice, a `WhyNot`, an event, the AI's use, `RunTerms.NoLaterMechanics`, a field of the Vs. Recorder's file. Its looks (plan 25) and a layer of the battle songs (plan Y · YD5) have a pattern too.
 - **Seasons** exist on the grid only (plan 22 · U3, U4); the open renderer has none.
 - **Crafting** (plan 39 · CR1) has the kit, materials and drops; CR3 to CR5 add making.
-- **The story** (docs, 2026-11-12): [the outline](decisions/CP-story-outline.md) with the user's beats, answers and approved names (Doina Lupescu, Ilie Sorescu, Aurelian Zenovie, Mara, Costel, Radu and Ilinca), and [the chapters](decisions/CP-story-chapters.md), scene by scene from the prologue to the post-game, with the Champion (Ruxandra Zorescu, proposed), Team Zenith's four executives, the eight leaders, the twelve tales' places and Tale Forms, the professors' creepy-voice moments, the roamers and the story's map onto the sessions below. The chapters wait for the user's eight open questions; CP18 to CP27 go ahead on their recommendations.
+- **The story** (docs, 2026-11-12): [the outline](decisions/CP-story-outline.md) with the user's beats, answers and approved names (Doina Lupescu, Ilie Sorescu, Aurelian Zenovie, Mara, Costel, Radu and Ilinca), and [the chapters](decisions/CP-story-chapters.md), scene by scene from the prologue to the post-game, with the Champion (Ruxandra Zorescu, proposed), Team Zenith's four executives, the eight leaders, the twelve tales' places and Tale Forms, the professors' creepy-voice moments, the roamers and the story's map onto the sessions below. The chapters wait for the user's ten open questions; CP18 to CP27 go ahead on their recommendations.
 
 ## Design
 
@@ -63,11 +63,12 @@ Built as plan 32's data (`Data/world3d/carpathia/`), hand-written terrain, carve
 
 ### The new species
 
-About **120** (decision 2), numbered **from 10001** in the order of the Carpathian Pokédex, outside the National 1,025 (`GetAll()` stays the games' alone) and outside the Pokédex of our own (`Pokedex.Ours` stays D14's). A **Carpathian Pokédex** of its own, with a diploma (plan 40 · GE4's pattern) and the charm a regional Pokédex earns (decision 6).
+About **250** (decision 2: 120 at first, 249 since 2026-11-12: Nos. 1 to 235 the region's species, 236 to 249 the Fates, the legendaries and the mythicals), numbered **from 10001** in the order of the Carpathian Pokédex, outside the National 1,025 (`GetAll()` stays the games' alone) and outside the Pokédex of our own (`Pokedex.Ours` stays D14's). A **Carpathian Pokédex** of its own, with a diploma (plan 40 · GE4's pattern) and the charm a regional Pokédex earns (decision 6).
 
 - **Made from nothing**: a hand-written table `tools/DataImporter/Overrides/species-carpathia.json` with every value a species has (stats, types, abilities, catch rate, growth, egg groups, effort, base experience, height, weight, colour, shape, gender ratio, learnset, TMs, tutors, evolutions), which the importer makes whole species of (`SpeciesOfNothing.cs`, beside `SpeciesPastHundred.cs`); a test holds every field present and every move and ability existing and run.
-- **Designed in batches** that the user approves, as D14's were (`decisions/CP-proposals-*.md`), the first being the starters and legendaries ([CP-proposals-starters-legendaries.md](decisions/CP-proposals-starters-legendaries.md)). About **15 regional forms** of existing species (a Carpathian Ursaring line, a delta Pelipper, a salt-mine Sableye, a shepherd's Lycanroc, a Bucovina Smeargle…) in the region's own block of a thousand (10000 + the species' number would collide with the Pokédex's own numbers, so forms take **11000 + the species' number**).
-- **Sculpted** from pictures, as D14's 400 were (`PokemonModels.Carpathia*.cs`), a batch of about 25 a session.
+- **Designed in batches** that the user approves, as D14's were (`decisions/CP-proposals-*.md`), the first being the starters and legendaries ([CP-proposals-starters-legendaries.md](decisions/CP-proposals-starters-legendaries.md)). **25 regional forms** of existing species (nine first, sixteen more on 2026-11-12: the salt-mine Sableye, the monastery painter Smeargle, the Sound lines of Noibat, Whismur and Jigglypuff, the goat dance's Skiddo, the lantern Drifloon, the giant Golett, the village balaur Dunsparce, the hora Spinda, the Dacian Bronzor, the linden-tea Sinistea, the wooden Chingling) in the region's own block of a thousand (10000 + the species' number would collide with the Pokédex's own numbers, so forms take **11000 + the species' number**).
+- **Sculpted** from pictures, as D14's 400 were (`PokemonModels.Carpathia*.cs`), a batch of about 25 a session: about ten sessions for 249 species and 25 forms, where CP4 to CP8 were counted for half that.
+- **The briefs** (2026-11-09, grown 2026-11-12) are `decisions/CP-dex-1-plateau.md` to `CP-dex-6-legends-and-mythicals.md`, read in that order with the `b` files after their area and the forms (`CP-dex-5-forms.md`) last; `tools/GeminiArt -- missing --set carpathia` lists what has no picture yet.
 - **Named** in English and Romanian together; **the user reviews the Romanian** (decision 7): `Data/text/ro/names.json` gains the Carpathian species, written by hand.
 - **Pokédex entries** written by hand (`dex-entries.json`), the check run as always.
 - **About 20 signature moves and 15 abilities** of our own (moves from **3101**, after R31's 3001 to 3072), each with its effect, its look (`MoveFx`), its sound and scenario tests (Showdown's oracle knows none of them).
@@ -134,7 +135,7 @@ The cap is **raised** (decision 3): `Ruleset.HighestLevel` to **300**. Carpathia
 Answered on 2026-11-09:
 
 1. **The gimmick**: the Tales as the primary, the winter masks as the secondary.
-2. **New species**: about 120.
+2. **New species**: about 120; raised by the user on 2026-11-12 to **about 240 to 250** (249 written), with more regional forms (25) and more mythicals that move the story (8).
 3. **Levels**: the cap raised past 260 (to about 300), Carpathia climbing on from Paldea.
 4. **Names**: invented with Romanian roots.
 5. **A new type**: yes, **Sound**.
@@ -174,11 +175,25 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - **CP1** (`tools/DataImporter/SpeciesOfNothing.cs`, `docs/mechanics/rulings.md`, "Species made from nothing"): the table `Overrides/species-carpathia.json` (empty; a row leaving any value out stops the import naming it), a species' number 10000 + its Carpathian number (`PokemonDatabase.CarpathiaFrom` 10001, `CarpathianFormsFrom` 11000 kept for the forms), `IsOurs` still "no game's" so every exclusion of ours holds, D14's own readers moved to `IsPastHundred`, `IsCarpathian` and `PokemonDatabase.Carpathia()`, `GetAll()` the 1,025 and `Ours()` D14's alone. `Pokedex.Carpathia` (`carpathia`) with its words and diploma in English and Romanian, read from `Everyone()`; **the National Pokédex leaves Carpathia's species out** (decided here: "outside the National 1,025"), so they are listed in the Carpathian Pokédex alone. Owed: the region's file naming the Pokédex (CP18), its charm (CP27), the forms' block in use (CP8). The tests hold a placeholder line of their own, never in the data.
 - **CP2** (`docs/mechanics/rulings.md`, "The Sound type"; style guide, "Type signs" and the colours' row): the chart above; Words (*Sunet* in Romanian), a sign (a note), teal `64,168,152`, a cry timbre, the move, Z-Move and Max Move sounds and looks; Tera Sound and its shard, the Sound Gem, the Tuning Fork, the Taci Berry, the Sonorium Z (**items 9920 to 9924**), Resounding Finale and Max Chorus (**moves 3090 and 3091**, generation 0; 3073 to 3089 free, 3101 on CP10's), two crafting materials (Hollow Reed, Echo Crystal). The Z-Move and Max Move carry no flags (as none do), so Soundproof doesn't stop them. Left out by `TypeChart.GamesTypes`: the randomiser, the Friend Safari, the sparring room, Conversion 2 and the help's chart; offered by `TypesWithSpecies` (none yet): the Monotype run and the Pokédex's search; the battle corpus draws no Sound item. **Owed**: the help's type chart drawn nineteen wide (a shot), Sound moves of its own (CP10), Hidden Power, the plates, the memories and the Battle Hall's board stay without it by decision 13.
 
+### CP15 as built (2026-11-12)
+- **The cap to 300** (`docs/mechanics/rulings.md`, "The level cap past 100 and a region's levels", its last entry): `Ruleset.HighestLevel` and `Ruleset.Modern.LevelCap` 300, the old 260 kept as `Ruleset.FormerHighestLevel`. Every reader of `HighestLevel` was a clamp or a bound and follows it (the constructors, `LevelTo`, `Relevel`, `Trainer.Relevelled`, the Rare Candy, the EXP Candies and the Day Care through `Pokemon.Cap`, the staged `hidelevel` foe, the console's and the scenarios' `wild`, which said 260 by hand, the online check, the save tool, `OpenPlaceFiles`, the content check). Erratic and Fluctuating go on by plan 18 · W4's rule (44,280,000 EXP for Fluctuating at 300, the dearest). The damage formula's steps are held under `Formulas.MostDamage` (2^28), its overflow check at 300. Saves, `SavedPokemonData` and the Vs. Recorder's file take 1 to 300 with no change of format. **The regions before Carpathia keep 260** (decided here): `LevelMapping.Top` and `LevelCaps.TopOf` hold a mapping, and a crossed region's soft ceiling, under 260 wherever the region's levels end at or under it, so Galar's post-game ceiling stays 260 (not 266) and nothing of `levels.txt`, `levels-crossed.txt` or the ladder moved; Carpathia's own `levels` climbing past 260 reach 300. Tests: `LevelThreeHundredTests`, `LevelCapTests` brought to 300.
+- **Owed**: moves of our own learned from 261 to 300 (R31's table ends below 260), Carpathia's own `levels` and `caps` (CP18), the study's simulation run again with Carpathia's climb.
+
+### CP11 as built (2026-11-13; the first of its sessions: the engine, no species)
+- **Built** (`docs/mechanics/rulings.md`, "The Tales"): `Ruleset.Tales` (modern rules), the Book of Tales (key item 9930, `fieldUse` `BookOfTales`, named in Romanian), `BattleChoice.Tale` (a tale's id) and `WhyNotTale` (once a battle and one answer for each trainer, a tale never told twice, no Book, Platinum's rules or `NoLaterMechanics` refuse it), `TaleState` in `FieldState` (five turn ends, the teller's side, its rule, the weather it brought), `TaleTold`, `TaleAnswered`, `TaleEnded` and `TaleFormChanged` on their lines, `Data/tales.json` read strictly with its schema and a content check, the **five tales the story needs** (the Zmeu's Fire, the Vârcolac's Dark and Ghost with accuracy at 80%, the Solomonar's rain, Baba Dochia's hail-then-snow, the Ielele's Sound moves), the Tale Forms' mechanism (`FormKind.Tale`, a tale's `forms`, woken as told and as a Pokémon comes in, put back as it ends, is answered and with the battle), the trainer AI (`TrainerAi.TaleNow`, `TaleWorth`), the Vs. Recorder's file (`Tales` of the player and of each trainer, the choice's `Tale`), the move menu's TALE button (`PageRight`), each tale's sky (`StageLights.TaleLight`), the Book of Tales' screen (`UI/BookOfTalesScreen.cs`, `GameState.BookOfTales`, ahead of CP12), the song layer's name as data. With no Book a battle is the one it was: the golden battles didn't move. Tests: `TaleTests`; two rules of `ArchitectureTests`.
+- **Settled** (decision 15 and the first list): one telling and one answer a trainer, the slower of two tales on one turn an answer; Baba Dochia's the cold returning and the Ielele's Sound moves stronger (the brief's), the plan's "sheds defence" and "strike twice" left.
+- **Owed**: the other seven tales of the list (CP11's second session, with balance by scenario tests); the Zmeu's "no night forms" bites nowhere yet (nothing in a battle has a night form: CP12); `tales.json` in `GameDataFiles.Version`'s hash; trainers' tales in `trainers.json` (`TrainerDatabase` reads none: CP18 on); CP12's Tale Forms and sculpts, the tale's field look and Tale Form cue, the songs' tale layers, `tale learn` (a tale is learned by its flag, `FLAG_TALE_<ID>`, until then).
+
+### CP12 as built (2026-11-13; its engine side, no species, no art, no music)
+- **Built** (`docs/mechanics/rulings.md`, "The Tales"; `docs/scripts.md`, "The Tales"; `docs/music-format.md`): the script's `tale learn "<id>"` (the flag, the key item's fanfare, two lines in English and Romanian, once; skipped as an item given is) and `tale has "<id>"`, the id checked as the script is read; the battle songs' **tale layers** as a mechanism (`only=tale_<id>`, `only=tale`, `unless=tale` in MML; `SongPlayer.Tale`, `AudioMixer.Tale`, `AudioManager.Tale`, set every frame of a battle from `BattleEngine.TaleLayer`, the animator's tale, and cleared wherever the giant layer is), a song with no layer the same to the sample; **the Zmeu's held day** bites on the Dusk Ball (`BattleCore.TaleHoldsTheDay`); `tales.json` in `GameDataFiles.Version`'s hash (CP11's owed item). Tests: `TaleTests` (the learning, the parse check, the layers read and played, the screen's layer, the Dusk Ball), `ScriptTests.EveryCommand`.
+- **Decided here**: a tale may be learned without the Book in the bag (the Book is what lets it be told); every tale's song layer is named `tale_<id>` (a test holds it); a cave keeps the Dusk Ball's bonus under the Zmeu's sun.
+- **Owed** (each waits on approval or the GPU): the Tale Forms' bindings and sculpts (CP3's species), a Tale Form's wake cue and the tale's field look (one harness run of `tales`, H), the tale layers' music for the region's themes (the user's ear), the elders, walls and gates that say `tale learn` (CP18 on), and CP11's seven other tales.
+
 ### CP3 · The first proposals approved (beside; docs)
 - The starters and legendaries ([the file](decisions/CP-proposals-starters-legendaries.md)) answered by the user; then the proposals of the rest in batches of 25 to 30 (the Delta and coast, the plateau, the ridge and caves, the north and the capital) and the regional forms.
 
 ### CP4 to CP8 · Sculpts (5 sessions, H)
-- About 25 species a session from the approved pictures, with their eyes, decals and shiny palettes, held by the model tests; the regional forms in the last.
+- About 25 species a session from the approved pictures, with their eyes, decals and shiny palettes, held by the model tests; the regional forms in the last. Since the Pokédex grew to 249 species and 25 forms (2026-11-12) this is about ten sessions, not five: CP8 is split into CP8 to CP8e as the batches come.
 
 ### CP9 · Entries and names (1 session)
 - Two entries and a habitat for each, the Romanian names for the user's review.
@@ -238,7 +253,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [x] CP1 Species made from nothing (2026-11-12; the table empty until CP3; see "As built", below)
 - [x] CP2 The Sound type (2026-11-12; decisions 13 and 14 carried out as recommended; see "As built", below)
 - [ ] CP3 The first proposals approved (starters and legendaries written 2026-11-09, waiting for the user)
-- [x] The story's outline (2026-11-12: the user's beats, answers and names approved) and its chapters (2026-11-12, docs; eight open questions waiting for the user)
+- [x] The story's outline (2026-11-12: the user's beats, answers and names approved) and its chapters (2026-11-12, docs; ten open questions (two added 2026-11-12 with the new mythicals) waiting for the user)
 - [ ] CP4 Sculpts I
 - [ ] CP5 Sculpts II
 - [ ] CP6 Sculpts III
@@ -246,11 +261,11 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [ ] CP8 Sculpts V and the regional forms
 - [ ] CP9 Entries and names
 - [ ] CP10 Signature moves and abilities
-- [ ] CP11 The Tales: rules
-- [ ] CP12 The Tales: forms, looks, songs and the Book
+- [ ] CP11 The Tales: rules (first session 2026-11-13: the engine and five tales; see "CP11 as built"; the other seven owed)
+- [ ] CP12 The Tales: forms, looks, songs and the Book (engine side 2026-11-13: `tale learn`, the songs' tale layers' switch, the Zmeu's held day, the hash; see "CP12 as built"; forms, looks and music owed)
 - [ ] CP13 The masks: rules and making
 - [ ] CP14 The masks: on every body
-- [ ] CP15 The cap to 300
+- [x] CP15 The cap to 300 (2026-11-12; see "CP15 as built", above)
 - [ ] CP16 Seasons in the open world
 - [ ] CP17 Carpathian architecture
 - [ ] CP18 Carpathia's file and the first town

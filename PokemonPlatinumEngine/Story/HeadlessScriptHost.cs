@@ -233,6 +233,13 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public TourReport? PhotoTour { get; set; } = new();
     public uint TourSeed { get; set; } = 1;
 
+    /// <summary>The delve's record (plan 44 · SD9): a run is played at once by the plain policy on <see cref="DelveSeed"/>.</summary>
+    public Models.Delve.DelveRecord? DelveRecord { get; set; } = new();
+    public uint DelveSeed { get; set; } = 1;
+
+    /// <summary>The runs played, the last last (a test's eye on what a run did).</summary>
+    public List<Models.Delve.DelveRun> DelveRuns { get; } = new();
+
     public bool PhotoAtSpot(string spot)
     {
         if (PhotoSpots.Get(spot) is not { } s || PhotoBook is not { } book) return false;
@@ -322,7 +329,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     {
         Log.Add($"openbase {what}");
         // (what is only asked, check and kind, may be hurried through)
-        if (what is "open" or "enter" or "visit" or "pc" or "packup")
+        if (what is "open" or "enter" or "visit" or "pc" or "packup" or "move" or "movein" or "bedroom")
         {
             NeverInAHurry($"a secret base's '{what}'");
             Waits();
@@ -957,7 +964,8 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         Waits();
         Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
         if (Outcome == BattleOutcome.Caught) Outcome = BattleOutcome.Won;
-        Log.Add($"raidbattle {boss.Species.Name} {boss.Level} {raid.Stars} stars with {string.Join(",", raid.Allies.Select(a => a.Name + ":" + a.Party.Members[0].Species.Name))} {Outcome}");
+        string megaMax = raid.MegaMaxDen ? $" megamax holding {boss.HeldItem?.Name}" : "";
+        Log.Add($"raidbattle {boss.Species.Name} {boss.Level} {raid.Stars} stars with {string.Join(",", raid.Allies.Select(a => a.Name + ":" + a.Party.Members[0].Species.Name))}{megaMax} {Outcome}");
         if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 
@@ -1091,6 +1099,30 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             TourAutopilot.Play(ride);
             Answer = PhotoTour.Take(ride);
             Log[^1] = $"open {screen} {course.Id} {Answer}";
+        }
+        // A run down a hollow (plan 44 · SD8, SD9): played at once by the plain policy and settled at the camp
+        if (screen == ScriptScreen.Delve && Models.Delve.DelveHollows.Get(counter) is { } hollow && DelveRecord != null)
+        {
+            Answer = 0;
+            if (Models.Delve.DelveHome.PairOf(Party.Members) is var (leader, partner))
+            {
+                var randomiser = Randomizer.For(Rules);
+                var run = Models.Delve.DelveRun.Begin(hollow, leader, partner, DelveSeed, randomiser == null ? null : randomiser.Species);
+                for (int n = 0; n < 20000 && run.Outcome == Models.Delve.DelveOutcome.Going; n++) run.Act(Models.Delve.DelvePolicy.Next(run));
+                DelveRuns.Add(run);
+                var board = Models.Delve.DelveBoard.Of(Encounters.DailyNumber, DelveRecord.RankOn(ApricornBox.DayOf(GameClock.Today)));
+                Models.Delve.DelveHome.Settle(run, DelveRecord, board, ApricornBox.DayOf(GameClock.Today), Bag,
+                    p => !Rules.NoCatching && Rules.MayCarry(p, Story.PlayerStarter),
+                    p =>
+                    {
+                        Pokedex?.RegisterSeen(p);
+                        Pokedex?.RegisterCaught(p);
+                        if (!Party.Add(p)) Box.Add(p);
+                        return true;
+                    }, hollow.Name ?? hollow.Key);
+                Answer = Models.Delve.DelveHome.AnswerOf(run.Outcome);
+            }
+            Log[^1] = $"open {screen} {hollow.Key} {Answer}";
         }
         if (screen != ScriptScreen.Starter) return;
 
@@ -1361,6 +1393,17 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     /// <summary>What <c>headbutt</c> shakes out of the tree in front: a species and its level, or null when nothing falls.</summary>
     public (string Species, int Level)? Headbutted { get; set; }
+
+    /// <summary>The areas a script opened to arrange, in turn (plan 38 · EX8): a host with no screen sets nothing down.</summary>
+    public List<int> Arranged { get; } = new();
+
+    public bool ArrangeSafari(int area)
+    {
+        if (area < 0 || area >= Models.SafariObjects.AreaKeys.Length) return false;
+        Arranged.Add(area);
+        Log.Add($"safari objects {Models.SafariObjects.AreaKeys[area]}");
+        return true;
+    }
 
     public bool Headbutt()
     {

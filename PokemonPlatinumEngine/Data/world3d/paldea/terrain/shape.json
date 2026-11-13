@@ -1,0 +1,36 @@
+{
+  // What shapes Paldea's first places (plan 34 · PD1) over the control grid: the cape Cabo Poco, Poco Path, Los Platos
+  // and the South Province stand on, cliffs on its west and south over the beach; the long rise north to Mesagoza; the
+  // academy's hill at the head of the city; the president's house and the lighthouse on knolls of their own; and banks
+  // at the region's present edges, too steep to climb, which later sessions cut back as the region grows
+  "brushes": [
+    // The cape: level at 8 m, its west edge a cliff over the beach from Cabo Poco north to the South Province, its south
+    // edge a cliff over Cabo Poco's own beach; north of the beach's end it runs on to the region's west edge
+    { "kind": "plateau", "name": "the cape", "polygon": [[-52, 34], [96, 34], [96, -400], [-96, -400], [-96, -250], [-52, -250]], "height": 8, "falloff": 2.5 },
+    // The plain rises to Mesagoza, four metres over forty
+    { "kind": "plateau", "name": "Mesagoza's rise", "polygon": [[-96, -300], [96, -300], [96, -400], [-96, -400]], "height": 12, "falloff": 40 },
+    // The academy's hill at the head of the city, its stairs a road (roads.json)
+    { "kind": "plateau", "name": "the academy's hill", "polygon": [[-24, -354], [24, -354], [24, -378], [-24, -378]], "height": 22, "falloff": 2 },
+    // The president's house on its hill over Cabo Poco, and the lighthouse's knoll on Poco Path
+    { "kind": "plateau", "name": "the president's hill", "polygon": [[18, 0], [44, 0], [44, 30], [18, 30]], "height": 10.5, "falloff": 10 },
+    { "kind": "plateau", "name": "the lighthouse's knoll", "polygon": [[50, -104], [70, -104], [70, -82], [50, -82]], "height": 10, "falloff": 8 },
+    // The region's present edges: the hills east of the road, the mountains north of the academy, and the high ground west
+    // of Mesagoza where the beach ends
+    { "kind": "plateau", "name": "the east hills", "polygon": [[86, 64], [100, 64], [100, -400], [86, -400]], "height": 20, "falloff": 4 },
+    { "kind": "plateau", "name": "the north mountains", "polygon": [[-100, -380], [100, -380], [100, -400], [-100, -400]], "height": 32, "falloff": 3 },
+    { "kind": "plateau", "name": "the west heights", "polygon": [[-100, -258], [-84, -258], [-84, -400], [-100, -400]], "height": 20, "falloff": 3 }
+  ],
+  "paint": [
+    // The beaches under the cliffs
+    { "cover": "Sand", "polygon": [[-92, -252], [-50, -252], [-50, 50], [-92, 50]], "maxY": 3 },
+    { "cover": "Sand", "polygon": [[-52, 32], [90, 32], [90, 50], [-52, 50]], "maxY": 3 },
+    // Poco Path's long grass either side of the way, where its Pokémon live
+    { "cover": "GrassDeep", "polygon": [[-36, -106], [-8, -106], [-8, -50], [-36, -50]] },
+    { "cover": "GrassDeep", "polygon": [[24, -140], [50, -140], [50, -110], [24, -110]] },
+    // The South Province's fields
+    { "cover": "GrassDeep", "polygon": [[-60, -290], [-12, -290], [-12, -222], [-60, -222]] },
+    { "cover": "GrassDeep", "polygon": [[20, -280], [76, -280], [76, -220], [20, -220]] },
+    // The fisherman's lawn east of the lane, kept short
+    { "cover": "GrassLight", "polygon": [[40, -24], [80, -24], [80, 2], [40, 2]] }
+  ]
+}

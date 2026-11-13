@@ -714,10 +714,22 @@ public partial class GameEngine
     {
         flow.DecorationScreen.Update(dt);
         if (flow.DecorationScreen.IsActive) return;
+        // An area of the Johto Safari Zone arranged through the same screen (plan 38 · EX8)
+        if (arrangingSafari >= 0)
+        {
+            FinishSafariArrangement();
+            return;
+        }
         // A secret base of Hoenn's decorated through the same screen goes back to its own field (plan 21 · H10)
         if (decoratingBase)
         {
             FinishSecretBaseDecoration();
+            return;
+        }
+        // and a bedroom at home (plan 43 · LF7)
+        if (decoratingBedroom != null)
+        {
+            FinishBedroomDecoration();
             return;
         }
         // What stands in the room now is the base's (BaseDecoration_SaveBaseGoods), and the mission's flag is set whatever was done

@@ -373,7 +373,10 @@ public enum Architecture
     Galar,
     // The hub (plan 41 · EG1): drawn by hand, a row of the style guide's "Buildings" first
     /// <summary>Warm pale stone under harbour-blue gable roofs with shutters and flower boxes: the harbour town between the regions (the hub).</summary>
-    Crossroads
+    Crossroads,
+    // Paldea (plan 34 · PD1): built on the open world's engine at metre scale, a row of the style guide's "Buildings" first
+    /// <summary>Whitewashed stucco under terracotta tile roofs with shutters and flower boxes: the villages and the old city of the sunny south-west (Cabo Poco, Los Platos, Mesagoza).</summary>
+    Paldea
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>
@@ -414,6 +417,27 @@ public enum InteriorStyle
     /// (style guide, "Rooms", "A Battle Tent").
     /// </summary>
     Tent,
+    /// <summary>
+    /// A sports ground under the sky (plan 42 · PS5: Nimbasa City's gridiron, baseball and football fields): turf mown in
+    /// broad stripes of two greens underfoot and walls of padded green over concrete, the stands' rail (style guide,
+    /// "Rooms", "A sports ground").
+    /// </summary>
+    Field,
+    /// <summary>
+    /// A hard court (plan 42 · PS5: Nimbasa City's tennis court): its surface of blue-green in two close tones, the same
+    /// walls as a field's (style guide, "Rooms", "A sports ground").
+    /// </summary>
+    Court,
+    /// <summary>
+    /// A secret base's room in its kind's own look (plan 43 · LF7; style guide, "Secret bases"): a cave of red, brown, blue
+    /// or yellow rock, a hollow tree, a den of grass. Each a floor and walls of their own; the room's plan is Emerald's.
+    /// </summary>
+    DenRedCave,
+    DenBrownCave,
+    DenBlueCave,
+    DenYellowCave,
+    DenTree,
+    DenShrub,
 }
 
 /// <summary>

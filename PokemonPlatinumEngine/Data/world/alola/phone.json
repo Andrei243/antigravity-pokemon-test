@@ -1,0 +1,7 @@
+[
+  { "id": "alola_mom", "look": "mom", "type": 1, "class": "Mom", "area": "alola_route_1" },
+  { "id": "alola_hau", "look": "hau", "type": 11, "class": "Pokémon Trainer", "area": "iki_town" },
+  { "id": "alola_lillie", "look": "lillie", "type": 11, "class": "Assistant", "area": "alola_route_1" },
+  { "id": "alola_kukui", "look": "kukui", "type": 2, "class": "Pokémon Professor", "area": "alola_route_1" },
+  { "id": "alola_hala", "look": "hala", "type": 12, "class": "Island Kahuna", "area": "iki_town" }
+]

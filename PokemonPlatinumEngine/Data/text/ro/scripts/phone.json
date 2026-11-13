@@ -59,6 +59,32 @@
       ]
     }
   ],
+  "MomShops": [
+    {
+      "en": [
+        "Oh, and I used a little of your savings on a Super Potion. I sent it along to you!"
+      ],
+      "text": [
+        "Ah, și am folosit puțin din economiile tale pe o Super Poțiune. Ți-am trimis-o!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! I saw the sweetest Pikachu Doll and bought it with some of your savings. It's waiting in your decoration PC."
+      ],
+      "text": [
+        "Oh! Am văzut o Păpușă Pikachu atât de drăguță și am cumpărat-o cu o parte din economiile tale. Te așteaptă în PC-ul de decorațiuni."
+      ]
+    },
+    {
+      "en": [
+        "I bought you a Repel with some of your savings. Wild Pokémon can be such a bother!"
+      ],
+      "text": [
+        "Ți-am cumpărat un Repel cu o parte din economiile tale. Pokémonii sălbatici pot fi atât de cicălitori!"
+      ]
+    }
+  ],
   "ProfElm": [
     {
       "en": [
@@ -3206,6 +3232,266 @@
       ],
       "text": [
         "Bonjour, {player}! Fiecare Pokémon pe care îl întâlnești ne spune ceva nou despre Kalos. Bucură-te de călătorie!"
+      ]
+    }
+  ],
+  "AlolaMom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Alola, {player}! Meowth's been napping on your bed all afternoon. I think it misses you."
+      ],
+      "text": [
+        "Alola, {player}! Meowth a moțăit pe patul tău toată după-amiaza. Cred că îi e dor de tine."
+      ]
+    },
+    {
+      "en": [
+        "The sea breeze is lovely today. Don't forget your sun hat out there!"
+      ],
+      "text": [
+        "Briza mării e minunată azi. Nu-ți uita pălăria de soare!"
+      ]
+    },
+    {
+      "en": [
+        "You've been to how many islands now? I'll have a big plate of malasada waiting when you come home."
+      ],
+      "text": [
+        "Pe câte insule ai fost deja? Te va aștepta un platou mare de malasada când vii acasă."
+      ]
+    }
+  ],
+  "AlolaHau": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Alola, {player}! I'm gonna get way stronger before our next battle. You'll see!"
+      ],
+      "text": [
+        "Alola, {player}! O să devin mult mai puternic până la următoarea noastră luptă. Vei vedea!"
+      ]
+    },
+    {
+      "en": [
+        "Hey, hey! I found a stand that sells malasadas with three kinds of filling. We gotta go together sometime!"
+      ],
+      "text": [
+        "Hei, hei! Am găsit o tarabă cu malasada cu trei feluri de umplutură. Trebuie să mergem împreună!"
+      ]
+    }
+  ],
+  "AlolaLillie": [
+    {
+      "en": [
+        "Lillie"
+      ],
+      "text": [
+        "Lillie"
+      ]
+    },
+    {
+      "en": [
+        "Um, hello, {player}. I wanted to say... please be careful out there. The tall grass can be surprising."
+      ],
+      "text": [
+        "Ăă, bună, {player}. Voiam să-ți spun... ai grijă pe drum. Iarba înaltă te poate surprinde."
+      ]
+    },
+    {
+      "en": [
+        "You've met so many Pokémon already! I'm writing down everything you tell me in my notebook."
+      ],
+      "text": [
+        "Ai întâlnit deja atâția Pokémoni! Notez tot ce-mi spui în carnețelul meu."
+      ]
+    }
+  ],
+  "AlolaKukui": [
+    {
+      "en": [
+        "Prof. Kukui"
+      ],
+      "text": [
+        "Prof. Kukui"
+      ]
+    },
+    {
+      "en": [
+        "Woo! How are the trials treating you, cousin? Every battle is a lesson, yeah?"
+      ],
+      "text": [
+        "Uau! Cum merg încercările, vere? Fiecare luptă e o lecție, da?"
+      ]
+    },
+    {
+      "en": [
+        "All four islands done! Something big is waiting for you up the mountain. That's all I'm saying for now!"
+      ],
+      "text": [
+        "Toate cele patru insule! Ceva mare te așteaptă sus pe munte. Asta e tot ce spun deocamdată!"
+      ]
+    }
+  ],
+  "AlolaHala": [
+    {
+      "en": [
+        "Hala"
+      ],
+      "text": [
+        "Hala"
+      ]
+    },
+    {
+      "en": [
+        "Ho ho! {player}, the island is proud of you. Keep your heart open and your Pokémon close."
+      ],
+      "text": [
+        "Ho ho! {player}, insula e mândră de tine. Ține-ți inima deschisă și Pokémonii aproape."
+      ]
+    }
+  ],
+  "GalarMom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Hello, love! The Wooloo got out again this morning. Postwick's as busy as ever."
+      ],
+      "text": [
+        "Bună, dragă! Wooloo au scăpat iar azi-dimineață. Postwick e la fel de agitat ca întotdeauna."
+      ]
+    },
+    {
+      "en": [
+        "Eat something warm and give your Pokémon a good rest tonight."
+      ],
+      "text": [
+        "Mănâncă ceva cald și lasă-ți Pokémonii să se odihnească bine diseară."
+      ]
+    },
+    {
+      "en": [
+        "Four Badges! I watched your match on the telly. The whole village was cheering!"
+      ],
+      "text": [
+        "Patru Insigne! Ți-am văzut meciul la televizor. Tot satul a aplaudat!"
+      ]
+    }
+  ],
+  "GalarHop": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Mate! I've been training nonstop. Next time we battle, I'm taking the win!"
+      ],
+      "text": [
+        "Prietene! M-am antrenat fără oprire. Data viitoare când ne luptăm, câștig eu!"
+      ]
+    },
+    {
+      "en": [
+        "My brother says the best Trainers learn from every loss. ...I'm trying to believe that one!"
+      ],
+      "text": [
+        "Fratele meu zice că cei mai buni Antrenori învață din fiecare înfrângere. ...Încerc să cred asta!"
+      ]
+    }
+  ],
+  "GalarSonia": [
+    {
+      "en": [
+        "Sonia"
+      ],
+      "text": [
+        "Sonia"
+      ]
+    },
+    {
+      "en": [
+        "Hiya, {player}! I'm digging through old books about Galar's legends. Tell me if you spot anything odd out there!"
+      ],
+      "text": [
+        "Salut, {player}! Răsfoiesc cărți vechi despre legendele din Galar. Spune-mi dacă vezi ceva ciudat pe drum!"
+      ]
+    }
+  ],
+  "GalarMagnolia": [
+    {
+      "en": [
+        "Prof. Magnolia"
+      ],
+      "text": [
+        "Prof. Magnolia"
+      ]
+    },
+    {
+      "en": [
+        "Good day, {player}. Every Pokémon you meet fills in a little more of what we know about Galar."
+      ],
+      "text": [
+        "Bună ziua, {player}. Fiecare Pokémon pe care îl întâlnești ne arată ceva mai mult despre Galar."
+      ]
+    },
+    {
+      "en": [
+        "Such a fine Pokédex already. Sonia will be delighted to read it, and so am I."
+      ],
+      "text": [
+        "Ce Pokédex frumos ai deja. Sonia se va bucura să-l citească, și eu la fel."
+      ]
+    }
+  ],
+  "GalarLeon": [
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        "Leon"
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ-to-be! Keep battling your hardest. I'll be waiting at the top!"
+      ],
+      "text": [
+        "Hei, viitor campion! Luptă cât poți de bine. Te aștept în vârf!"
+      ]
+    },
+    {
+      "en": [
+        "Eight Badges! Then it's time. Let's give everyone a match they'll talk about for years!"
+      ],
+      "text": [
+        "Opt Insigne! Atunci a venit vremea. Hai să le dăm tuturor un meci despre care să vorbească ani de zile!"
       ]
     }
   ]

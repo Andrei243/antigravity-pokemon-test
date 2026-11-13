@@ -74,10 +74,8 @@ public class ItemSourcesTests
     private const string GalarCafes = "plan 33 · GL4: the cafés whose battles give the Sweets (or GL5's, the study's finding)";
     private const string Galar = "plan 33 · GL7: Galar's last session, after its Hall of Fame";
     private const string GalarStones = "plan 33 · GL7: Galar's Hall of Fame, its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
-    private const string GalarBand = "plan 33 · GL7: after Galar's Hall of Fame, the band made of a Key Stone and a Dynamax Band (decisions/R20c-mega-dynamax-proposals.md, 3.2)";
     private const string IsleOfArmor = "plan 33 · GL8 (optional): the Isle of Armor";
     private const string CrownTundra = "plan 33 · GL9 (optional): the Crown Tundra";
-    private const string Academy = "plan 34 · PD1: Paldea's academy, the Tera Orb to a bag without one";
     private const string Provinces = "plan 34 · PD3: the provinces' chests and roaming Gimmighoul (and PD6's)";
     private const string Paldea = "plan 34 · PD9: Paldea's last session, after its Hall of Fame";
     private const string PaldeaStones = "plan 34 · PD9: Paldea's Hall of Fame, its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
@@ -117,12 +115,11 @@ public class ItemSourcesTests
         // Galar, with the Isle of Armor and the Crown Tundra
         (GalarCafes, new[] { "Strawberry Sweet", "Love Sweet", "Berry Sweet", "Clover Sweet", "Flower Sweet", "Star Sweet", "Ribbon Sweet" }),
         (Galar, new[] { "Sweet Apple", "Tart Apple", "Cracked Pot", "Chipped Pot", "Rotom Catalog" }),
-        (GalarBand, new[] { BattleCore.MegaMaxBandItem }),
         (GalarStones, new[] { "Rillaboomite", "Cinderacite", "Inteleonite" }),
         (IsleOfArmor, new[] { "Galarica Cuff", "Galarica Wreath", "Scroll of Darkness", "Scroll of Waters" }),
         (CrownTundra, new[] { "Reins of Unity" }),
         // Paldea, with the Teal Mask and the Indigo Disk
-        (Academy, new[] { BattleCore.TeraOrbItem }),
+        // (the Tera Orb is had since PD1: Mesagoza's academy hall hands it to a bag without one)
         (Provinces, new[] { "Gimmighoul Coin" }),
         (Paldea, new[] { "Malicious Armor", "Auspicious Armor", "Punching Glove" }),
         (PaldeaStones, new[] { "Meowscaradite", "Skeledirgite", "Quaquavalite" }),

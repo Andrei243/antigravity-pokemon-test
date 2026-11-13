@@ -23,7 +23,7 @@
   "solid": [
     "#################",
     "#################",
-    "#################",
+    "######.##########",
     "##.........###.##",
     "#...............#",
     "#...............#",
@@ -107,6 +107,14 @@
       "targetX": 433,
       "targetY": 352,
       "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 2,
+      "targetMap": "LumioseCity_Arcade",
+      "targetX": 7,
+      "targetY": 10,
+      "targetFacing": "Up"
     }
   ],
   "signboards": [],

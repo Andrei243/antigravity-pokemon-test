@@ -15146,6 +15146,20 @@
     "description": "A shard that hums when held to the ear. Fifty of them can turn a Pokémon's Tera Type to Sound."
   },
   {
+    "id": 9930,
+    "name": "Book of Tales",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A book bound in painted wood, its pages the tales of the old country. A tale written in it may be told once in a battle.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "BookOfTales"
+  },
+  {
     "id": 10000,
     "name": "TM93",
     "pocket": "TMsAndHMs",

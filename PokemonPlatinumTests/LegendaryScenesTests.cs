@@ -27,6 +27,10 @@ public class LegendaryScenesTests
         // Plan 33 · GL6's staged battle in the fog of the open Weald, written with no beat of plan 29's
         ["slumbering_weald.Shadow Zacian"] = "plan 33 GL6's staged shadow in an open map; its beat is owed to plan 29 LS",
         ["slumbering_weald.Shadow Zamazenta"] = "plan 33 GL6's staged shadow in an open map; its beat is owed to plan 29 LS",
+        // Plan 33 · GL7's meetings after the Hall of Fame and on the Darkest Day, written with no beat of plan 29's
+        ["slumbering_weald.Legend Zacian"] = "plan 33 GL7's legend in the Weald's fog (a Sword game); its beat is owed to plan 29 LS",
+        ["slumbering_weald.Legend Zamazenta"] = "plan 33 GL7's legend in the Weald's fog (a Shield game); its beat is owed to plan 29 LS",
+        ["Wyndon_EnergyPlant.OnEnter Eternatus"] = "plan 33 GL7's first battle with Eternatus on the Energy Plant's roof; its beat is owed to plan 29 LS",
     };
 
     /// <summary>Whether a wild battle's species (or form) is a legendary or a mythical one.</summary>

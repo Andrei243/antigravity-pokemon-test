@@ -234,6 +234,9 @@ public static class ScriptParser
             case "givemoney":
             case "takemoney":
             {
+                // A number, or a variable's value as it is now (plan 43 · LF7: Mom's savings in Johto, "givemoney VAR_X")
+                var moneyOp = word == "givemoney" ? Op.GiveMoney : Op.TakeMoney;
+                if (r.PeekVariable) return new Instruction { Op = moneyOp, Line = line, Other = r.Variable(writable: false) };
                 int amount = r.Int("an amount");
                 if (amount < 0) throw r.Error("an amount of money is not negative");
                 return new Instruction { Op = word == "givemoney" ? Op.GiveMoney : Op.TakeMoney, Line = line, Number = amount };
@@ -639,7 +642,11 @@ public static class ScriptParser
             case "safari":
             {
                 // A Safari Game of another game's own number of steps (plan 19 · K6: FireRed's Safari Zone is 600)
-                bool start = r.OneOf("start", "end") == "start";
+                string safariWord = r.OneOf("start", "end", "objects");
+                // The Johto Safari Zone's Area Customizer (plan 38 · EX8): the area of the script's RESULT arranged
+                // (its number written, from 1 in the machine's order, or the RESULT a `choose` left, from 0)
+                if (safariWord == "objects") return new Instruction { Op = Op.Safari, Line = line, Name = "objects", Number = r.PeekNumber ? r.Int("an area from 1 to 12") : 0 };
+                bool start = safariWord == "start";
                 // ...or of none: HeartGold's Safari Zone counts no steps (plan 20 · J8, part b: `safari start endless`)
                 bool endless = start && r.PeekWord("endless");
                 if (endless) r.Next();
@@ -930,7 +937,7 @@ public static class ScriptParser
             }
             case "gamecorner":
             {
-                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel", "cards", "pokemon", "pay", "streak");
+                string what = r.OneOf("coins", "room", "add", "take", "slots", "reels", "prize", "buy", "hiddenpower", "cointrick", "wheel", "cards", "pokemon", "pay", "streak", "cabinet");
                 bool machine = what is "slots" or "reels";
                 int number = what is "room" or "add" or "take" or "slots" or "reels" or "wheel" ? r.Int(machine ? "a machine, 0 to 11" : "a number of coins") : 0;
                 if (machine && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
@@ -938,7 +945,10 @@ public static class ScriptParser
                 if (!machine && number < 0) throw r.Error("coins are counted from nought up");
                 // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
                 string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville")
-                    : what == "prize" && r.PeekWord("goldenrod") ? r.OneOf("goldenrod") : "";
+                    : what == "prize" && r.PeekWord("goldenrod") ? r.OneOf("goldenrod")
+                    : what == "prize" && r.PeekWord("lumiose") ? r.OneOf("lumiose") : "";
+                // An arcade cabinet (plan 42 · PS6): the match-three (0) or the picture-logic puzzle (1)
+                if (what == "cabinet") number = r.OneOf("match", "picture") == "match" ? 0 : 1;
                 return new Instruction { Op = Op.GameCorner, Line = line, Name = what, Number = number, Other = list };
             }
             case "villa":
@@ -1116,7 +1126,7 @@ public static class ScriptParser
             // the decoration PC filled
             case "openbase":
             {
-                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade") : "open";
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "visit", "give", "buy", "room", "trade", "move", "movein", "bedroom") : "open";
                 if (what is not ("give" or "buy" or "room" or "trade")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
                 string decoration = r.Text("a decoration's name");
                 if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
@@ -1239,6 +1249,14 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord is "ride" or "open" ? r.Text("a course's id") : null };
             }
 
+            // The delve (plan 44 · SD8, SD9): `delve go "<hollow>"`, `delve open "<hollow>"`, `delve able`, `delve board`,
+            // `delve rank`, `delve reward`
+            case "delve":
+            {
+                string delveWord = r.OneOf("go", "open", "able", "board", "rank", "reward");
+                return new Instruction { Op = Op.Delve, Line = line, Name = delveWord, Other = delveWord is "go" or "open" ? r.Text("a hollow's key") : null };
+            }
+
             // The pasture (plan 35 · BN5): `pasture enter`, `pasture leave`, `pasture box` (with -1 or 1 to turn it), `pasture count`,
             // and of the Pokémon the script belongs to `pasture mood`, `find`, `pet`, `feed` (the item last chosen), `care`, `take`;
             // `pasture pick` opens the PC's boxes to pick the one that grazes, and `pasture picked` says whether one was taken
@@ -1355,6 +1373,11 @@ public static class ScriptParser
             case "blacktower":
                 return new Instruction { Op = Op.BlackTower, Line = line, Name = r.OneOf("enough", "begin", "choose", "check", "active", "next", "area",
                     "top", "opponent", "battle", "won", "finish", "best", "cleared") };
+
+            // Galar's Battle Tower ladder in Rose Tower (plan 33 · GL7, part b)
+            case "galartower":
+                return new Instruction { Op = Op.GalarTower, Line = line, Name = r.OneOf("enough", "begin", "choose", "check", "active", "rank",
+                    "wins", "leon", "opponent", "battle", "won", "lost", "finish", "beaten") };
 
             // The Trainer Hill's climb (plan 21, part l)
             case "trainerhill":
@@ -1594,6 +1617,14 @@ public static class ScriptParser
             }
             // The stage show (plan 42 · PS1, PS2): "stageshow trunk" the owner's gift, "stageshow has" whether it was given,
             // "stageshow dress" the dressing room, "stageshow perform" a show on the stage, "stageshow fan fan_1" a fan's gift
+            // The Tales (plan 46 · CP12): "tale learn "zmeu"" a tale into the Book of Tales, "tale has "zmeu"" whether it is there
+            case "tale":
+            {
+                string what = r.OneOf("learn", "has");
+                string tale = r.Text("a tale's id");
+                if (Data.TaleTable.Default.Get(tale) == null) throw r.Error($"'{tale}' is no tale of Data/tales.json");
+                return new Instruction { Op = Op.Tale, Line = line, Name = what, Other = tale };
+            }
             case "studio":
             {
                 // The film studio (plan 42 · PS4): "studio shoot "emptySeat"", "studio open|stars "id"", "studio rank"

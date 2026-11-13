@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The delve's hollows and the camp board's prizes (Data/hollows.json, plan 44 · SD9)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "hollows": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "theme": {
+            "enum": [
+              "Cave",
+              "Wood",
+              "SeaCave",
+              "Tower"
+            ]
+          },
+          "floors": {
+            "type": "integer"
+          },
+          "level": {
+            "type": "integer"
+          },
+          "residents": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "residentsPerFloor": {
+            "type": "integer"
+          },
+          "finds": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "findsPerFloor": {
+            "type": "integer"
+          },
+          "snaresPerFloor": {
+            "type": "integer"
+          },
+          "guardian": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rank": {
+            "type": "integer"
+          },
+          "song": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dark": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "key",
+          "name",
+          "theme",
+          "floors",
+          "level",
+          "residents",
+          "finds"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "prizes": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "Rescue",
+              "Find",
+              "Befriend",
+              "Clear"
+            ]
+          },
+          "item": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "kind",
+          "item"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

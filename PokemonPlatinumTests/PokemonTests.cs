@@ -249,6 +249,8 @@ public class PokemonTests
             && mapName != "RockPeakChamber" && mapName != "IronChamber" && mapName != "IcebergChamber"
             // (and the Battle Pyramid's floor, left by its stairs' script and its own arrival's, plan 14 · B10)
             && mapName != "BattlePyramidFloor"
+            // (and the delve's floor, laid from a run and left by its rules alone, plan 44 · SD8)
+            && mapName != "DelveFloor"
             // (and the Trainer Hill's floor, left by its stairs' scripts, plan 21, part l)
             && mapName != "TrainerHillFloor"
             // (and the Trainer Tower's floor, laid again on one map for every floor and left only by its stairs' and
@@ -272,6 +274,9 @@ public class PokemonTests
         // The pasture has no warp in or out: a PC's script puts the player at its gate (PastureTests, and the walk of the
         // whole game, which reaches it from every PC, plan 35 · BN5)
         if (PokemonPlatinumEngine.Overworld.Pasture.IsPasture(mapName)) return;
+        // The delve's floor is laid by the engine from a run (`delve go`, GameEngine.Delve's LayTheFloor), never by a
+        // warp or a script's warp: its map file is a stand-in the run replaces (plan 44 · SD8)
+        if (mapName == PokemonPlatinumEngine.Models.Delve.DelveFloor.MapName) return;
 
         // Every tile another map warps the player onto in this map
         var arrivals = walkArrivals![mapName].ToList();
@@ -279,9 +284,10 @@ public class PokemonTests
         // Lighthouse, where the lift's car puts its rider down)
         if (arrivals.Count == 0)
             arrivals.AddRange(walkScriptArrivals![mapName]);
-        // Galar's rooms are entered by the open world's doors (plan 32 · OW5), which are no warps of the grid
-        if (arrivals.Count == 0 && RegionDatabase.RegionOfMap(mapName)?.Id == "Galar") return;
-        Assert.NotEmpty(arrivals);
+        // Galar's and Paldea's rooms are entered by the open world's doors (plan 32 · OW5), which are no warps of the
+        // grid: any region with open maps (plan 34 · PD1 laid Paldea's)
+        if (arrivals.Count == 0 && RegionDatabase.RegionOfMap(mapName) is { } openRegion && openRegion.OpenMaps.Count > 0) return;
+        Assert.True(arrivals.Count > 0, $"{mapName}: no warp and no script's warp leads into it");
 
         // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every
         // warp need only be reached from one arrival or another (RoomPlanTests holds how their stairs join).
@@ -377,6 +383,9 @@ public class PokemonTests
         foreach (string name in MapDatabase.MapNames)
         {
             if ((RegionDatabase.RegionOfMap(name)?.Id ?? "other") != regionId) continue;
+            // The delve's floor is laid by the engine from a run (`delve go`), never walked into: no walk comes to its
+            // stand-in (plan 44 · SD8; the arrival test above says the same)
+            if (name == PokemonPlatinumEngine.Models.Delve.DelveFloor.MapName) continue;
             var map = maps(name);
             // Hoenn and the regions after it have no maps yet; every map there is must be one the game can come to
             Assert.True(reached.TryGetValue(map, out var tiles), $"{name} can't be reached from where its region starts");

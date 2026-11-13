@@ -57,6 +57,26 @@ public sealed class StudioScreen
     public int FirstSeal { get; private set; }
 
     /// <summary>The carried Seal's place on the stage, as shares.</summary>
+    /// <summary>The carried Seal's size (an index of <see cref="StudioSticker.Sizes"/>) and turn in steps of fifteen degrees (plan 43 · LF7's leftover).</summary>
+    public int CarriedSize { get; private set; } = 1;
+    public int CarriedTurn { get; private set; }
+
+    /// <summary>The carried Seal one size on, round from the largest to the smallest (the item button).</summary>
+    public void Resize()
+    {
+        if (Mode != StudioMode.PlaceSeal) return;
+        CarriedSize = (CarriedSize + 1) % StudioSticker.Sizes.Length;
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>The carried Seal turned a step either way (the shoulders).</summary>
+    public void Turn(int step)
+    {
+        if (Mode != StudioMode.PlaceSeal || step == 0) return;
+        CarriedTurn = ((CarriedTurn + Math.Sign(step)) % StudioSticker.Turns + StudioSticker.Turns) % StudioSticker.Turns;
+        AudioManager.PlaySound("cursor");
+    }
+
     public float CursorX { get; private set; } = 0.5f;
     public float CursorY { get; private set; } = 0.5f;
 
@@ -204,7 +224,7 @@ public sealed class StudioScreen
             AudioManager.PlaySound("cancel");
             return;
         }
-        Shot = Shot.WithSticker(seal, CursorX, CursorY, sealCase);
+        Shot = Shot.WithSticker(seal, CursorX, CursorY, sealCase, StudioSticker.Sizes[CarriedSize], CarriedTurn);
         AudioManager.PlaySound("select");
     }
 
@@ -225,6 +245,63 @@ public sealed class StudioScreen
         return wanted;
     }
 
+    // ------------------------------------------------------------------ the pointer
+
+    /// <summary>The steps a point of the stage is told in, across and down, for the pointer (<see cref="HitTest"/>).</summary>
+    public const int StageSteps = 1000;
+
+    /// <summary>
+    /// What the pointer is over (plan 43 · LF5's leftover): a row (its number) while the rows are chosen, a Seal of the
+    /// case (100 and on) while one is picked, or a point of the stage (10000 and on, row by row in
+    /// <see cref="StageSteps"/>) while one is carried; null for nothing. From the rectangles the drawing uses.
+    /// </summary>
+    public int? HitTest(System.Numerics.Vector2 at)
+    {
+        if (!IsActive || Taking) return null;
+        switch (Mode)
+        {
+            case StudioMode.PlaceSeal:
+            {
+                var stage = ModernUi.StudioStage;
+                if (at.X < stage.X || at.Y < stage.Y || at.X > stage.X + stage.Width || at.Y > stage.Y + stage.Height) return null;
+                int cx = (int)MathF.Round((at.X - stage.X) / stage.Width * StageSteps), cy = (int)MathF.Round((at.Y - stage.Y) / stage.Height * StageSteps);
+                return 10000 + Math.Clamp(cy, 0, StageSteps) * (StageSteps + 1) + Math.Clamp(cx, 0, StageSteps);
+            }
+            case StudioMode.PickSeal:
+            {
+                int shown = Math.Min(VisibleSeals, seals.Count - FirstSeal);
+                for (int i = 0; i < shown; i++)
+                    if (System.Numerics.Vector2.Distance(at, ModernUi.StudioSealSpot(i)) <= ModernUi.StudioSealRadius) return 100 + FirstSeal + i;
+                return null;
+            }
+            default:
+                foreach (var row in Enum.GetValues<StudioRow>())
+                {
+                    var r = ModernUi.StudioRowRect(GameEngine.VirtualWidth, row);
+                    if (at.X >= r.X && at.Y >= r.Y && at.X <= r.X + r.Width && at.Y <= r.Y + r.Height) return (int)row;
+                }
+                return null;
+        }
+    }
+
+    /// <summary>The pointer over something: the cursor to that row or Seal, or the carried Seal to that point of the stage.</summary>
+    public void PointAt(int index)
+    {
+        if (!IsActive) return;
+        if (index >= 10000 && Mode == StudioMode.PlaceSeal)
+        {
+            int cell = index - 10000;
+            CursorX = (cell % (StageSteps + 1)) / (float)StageSteps;
+            CursorY = (cell / (StageSteps + 1)) / (float)StageSteps;
+        }
+        else if (index >= 100 && index < 10000 && Mode == StudioMode.PickSeal && seals.Count > 0)
+        {
+            SealIndex = Math.Clamp(index - 100, 0, seals.Count - 1);
+            FirstSeal = UiNav.Window(FirstSeal, SealIndex, seals.Count, VisibleSeals);
+        }
+        else if (index >= 0 && index < Enum.GetValues<StudioRow>().Length && Mode == StudioMode.Rows) Row = (StudioRow)index;
+    }
+
     public void Update(float dt = 1f / 60f)
     {
         if (!IsActive) return;
@@ -242,6 +319,11 @@ public sealed class StudioScreen
             int dy = InputManager.IsActionPressed(GameAction.Up) ? -1 : InputManager.IsActionPressed(GameAction.Down) ? 1 : 0;
             Change(dx);
             Move(dy);
+        }
+        if (Mode == StudioMode.PlaceSeal)
+        {
+            if (InputManager.IsActionPressed(GameAction.Item)) Resize();
+            Turn(InputManager.IsActionPressed(GameAction.PageLeft) ? -1 : InputManager.IsActionPressed(GameAction.PageRight) ? 1 : 0);
         }
         if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();

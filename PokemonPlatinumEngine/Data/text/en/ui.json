@@ -13,7 +13,8 @@
       "arrows": "Arrows",
       "enter": "Enter",
       "x": "X",
-      "c": "C"
+      "c": "C",
+      "pageRight": "E"
     },
     "hints": {
       "here": "Here",
@@ -965,7 +966,19 @@
     "galarFinals": "The Finals at Wyndon Stadium: win them, and the Champion is next.",
     "galarRaihanCup": "Raihan is your last opponent in the Finals at Wyndon Stadium.",
     "galarLeon": "On to the pitch at Wyndon Stadium for the Champion Match against Leon.",
-    "galarFree": "You are Galar's Champion. The whole region, from Postwick to Wyndon, is yours to explore."
+    "galarWeald": "The fog is back in the Slumbering Weald. Hop is waiting at the altar.",
+    "galarLeonTower": "Leon runs the Battle Tower in Rose Tower now. Go and take him on again.",
+    "galarShielbert": "Two brothers have been seen at Motostoke Stadium, and a Pokémon there has Dynamaxed on its own.",
+    "galarSordward": "Sordward has gone on to Hammerlocke Stadium. Stop him before another Pokémon runs wild.",
+    "galarFree": "You are Galar's Champion. The whole region, from Postwick to Wyndon, is yours to explore.",
+    "paldeaDownstairs": "Go downstairs. Someone has come to see you.",
+    "paldeaTerrace": "Go up the hill to the president's house and meet the director on its terrace.",
+    "paldeaBeach": "Something cried out under the cliffs. Take the track down from Poco Path to the beach.",
+    "paldeaGrotto": "The cry came from a cave in the foot of the cliffs. Go into Inlet Grotto.",
+    "paldeaLighthouse": "Nemona is waiting at the lighthouse on Poco Path, east of the path.",
+    "paldeaMesagoza": "Head north through Los Platos and the South Province to Mesagoza's south gate.",
+    "paldeaAcademy": "Climb the great stairs to the academy and go in at its doors.",
+    "paldeaFree": "Term begins. The treasure hunt is yours: Paldea's gyms, its Titans and more wait beyond Mesagoza."
   },
 
   "close": {
@@ -1522,6 +1535,45 @@
     "type": "TYPE",
     "earlier": "EARLIER TEAMS"
   },
+  "basme": {
+    "zmeu": {
+      "name": "the Zmeu",
+      "told": "The sun stands still over the field!",
+      "rule": "For five turns Fire moves hit harder, and the night can't fall.",
+      "story": "A Zmeu stole the sun and hid it in his tower of brass, and the day would not end. A shepherd climbed the tower with a flute and played until the dragon slept, and the sun stood over the hills a whole year before it learned to set again."
+    },
+    "varcolac": {
+      "name": "the Vârcolac",
+      "told": "The moon is eaten and the field goes dark!",
+      "rule": "For five turns Dark and Ghost moves hit harder, and every move hits less often.",
+      "story": "When a child is born under no blessing, a Vârcolac is born in the sky. It chases the moon and bites it, and the night goes dark. The villagers bang pots and ring bells until it lets go, and the moon comes back with a bite out of its edge."
+    },
+    "solomonar": {
+      "name": "the Solomonar",
+      "told": "Storm clouds gather at the teller's call!",
+      "rule": "For five turns rain falls over the field.",
+      "story": "The Solomonari learn their craft in a school under a lake, and the best of them rides a dragon through the clouds. He asks a village for milk and bread; where he is turned away the hail falls, and where he is fed the rain comes soft and on time."
+    },
+    "dochia": {
+      "name": "Baba Dochia",
+      "told": "The cold comes back over the field!",
+      "rule": "For five turns snow falls over the field.",
+      "story": "Old Dochia drove her sheep up the mountain in March, wearing nine coats. The sun shone, so she took them off one by one. On the ninth day the frost came back, and she froze to stone with her flock on the peak, where she stands to this day."
+    },
+    "ielele": {
+      "name": "the Ielele",
+      "told": "A night dance rings through the field!",
+      "rule": "For five turns Sound-type moves, and every move made of sound, hit harder.",
+      "story": "On summer nights the Ielele dance in a ring in the meadows, and the grass burns where their feet have been. Whoever hears their song dances until dawn. The wise ones stop their ears with wormwood and walk the long way home."
+    },
+    "learned": "{player} learned the tale of {tale}!",
+    "writtenDown": "It was written into the Book of Tales."
+  },
+  "bookOfTales": {
+    "title": "Book of Tales",
+    "empty": "No tale is written in the Book yet.",
+    "when": "When it is told"
+  },
   "journal": {
     "title": "JOURNAL",
     "empty": "Nothing has been written yet.",
@@ -1564,7 +1616,8 @@
     "Basic": "Basic", "Toxic": "Toxic", "Insect": "Insect", "Bolt": "Bolt", "Quake": "Quake", "Jet": "Jet", "Legend": "Legend", "Wave": "Wave",
     "Bug": "Bug", "Cliff": "Cliff", "Rumble": "Rumble", "Plant": "Plant", "Voltage": "Voltage", "Fairy": "Fairy", "Psychic": "Psychic", "Iceberg": "Iceberg",
     "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
-    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon", "Ghost": "Ghost", "Ice": "Ice"
+    "Grass": "Grass", "Water": "Water", "Fire": "Fire", "Fighting": "Fighting", "Rock": "Rock", "Dark": "Dark", "Dragon": "Dragon", "Ghost": "Ghost", "Ice": "Ice",
+    "Electric": "Electric", "Normal": "Normal"
   },
   "run": {
     "heading": "WAYS TO PLAY",
@@ -1872,6 +1925,11 @@
     "came": "The scan picked up {name} in {place}! It will stay for an hour.",
     "gone": "{name} has left {place}."
   },
+  "unovaSpecial": {
+    "dust": "A cloud of dust hid a {item}!",
+    "dustPokemon": "Something jumped out of the dust cloud!",
+    "shadow": "A shadow passed over the bridge, and something dived!"
+  },
   "outbreakToast": {
     "bonusOne": "{count} {name} met in {place} today. The grass has gone restless: shiny ones turn up more often.",
     "bonusTwo": "{count} {name} met in {place} today! Shiny ones turn up more often still."
@@ -1900,12 +1958,14 @@
     "card": {
       "Calls": "CALLS",
       "News": "NEWS",
-      "Map": "MAP"
+      "Map": "MAP",
+      "Powers": "POWERS"
     },
     "hints": {
       "call": "Call",
       "open": "Open the map",
-      "cards": "Cards"
+      "cards": "Cards",
+      "powers": "Open the panel"
     },
     "calls": {
       "empty": "No numbers saved yet.",
@@ -1920,6 +1980,10 @@
       "heading": "MAP",
       "body": "Open the map to look over the whole region, town by town and route by route.",
       "none": "This place isn't on the phone's map."
+    },
+    "powers": {
+      "heading": "POWERS IN HAND",
+      "body": "Open the panel of the Power Watch to see the powers you know, their charge and the ones in force now."
     },
     "registered": "{name}'s number is saved in your phone!"
   },
@@ -2024,7 +2088,17 @@
       "kalosShauna": "Shauna",
       "kalosTierno": "Tierno",
       "kalosTrevor": "Trevor",
-      "kalosSycamore": "Prof. Sycamore"
+      "kalosSycamore": "Prof. Sycamore",
+      "alolaMom": "Mom",
+      "alolaHau": "{rival}",
+      "alolaLillie": "Lillie",
+      "alolaKukui": "Prof. Kukui",
+      "alolaHala": "Hala",
+      "galarMom": "Mom",
+      "galarHop": "{rival}",
+      "galarSonia": "Sonia",
+      "galarMagnolia": "Prof. Magnolia",
+      "galarLeon": "Leon"
     }
   },
   "pokenav": {
@@ -2662,6 +2736,50 @@
       "berry": "Berry", "item": "Item", "levelUp": "Level Up", "sun": "Sun", "rain": "Rain", "sandstorm": "Sandstorm",
       "hail": "Hail", "fog": "Fog", "trickRoom": "Trick Room", "speedUp": "Speed Up", "slowDown": "Slow Down",
       "random": "Random", "swap": "Swap", "oneBp": "1 BP", "threeBp": "3 BP", "noBattle": "No Battle", "noEvent": "No Event"
+    }
+  },
+  "cabinet": {
+    "ask": { "play": "PLAY", "leave": "LEAVE" },
+    "quitAsk": { "title": "Give up?", "body": "A cabinet left before its end pays nothing.", "yes": "GIVE UP", "no": "KEEP PLAYING" },
+    "hint": { "quit": "Give up" },
+    "match": {
+      "foe": "FOE",
+      "hp": "HP {hp} / {most}",
+      "swaps": "SWAPS LEFT",
+      "score": "SCORE",
+      "team": "ON THE BOARD",
+      "hint": { "pick": "Pick and swap" },
+      "ask": {
+        "title": "Stage: {name}",
+        "body": "Bring its HP down to nothing within {swaps} swaps. It has {hp} HP. A clear pays {coins} coins, and more for each swap left."
+      },
+      "line": {
+        "intro": "{hp} HP to knock down in {swaps} swaps.",
+        "pick": "Pick an icon, then swap it with a neighbour to line up three.",
+        "noLine": "That swap makes no line. Try another.",
+        "notNeighbours": "Only icons side by side can swap.",
+        "hit": "{damage} damage!",
+        "super": "It's super effective! {damage} damage!",
+        "weak": "It's not very effective… {damage} damage.",
+        "cascade": "A chain of {cascades}! {damage} damage!",
+        "cleared": "Stage cleared! You won {coins} coins.",
+        "failed": "Out of swaps. Better luck next time!"
+      }
+    },
+    "picture": {
+      "title": "PICTURE LOGIC",
+      "unknown": "???",
+      "grid": "GRID",
+      "mistakes": "MISTAKES",
+      "filled": "FILLED",
+      "hint": { "fill": "Fill", "cross": "Cross out" },
+      "line": {
+        "finding": "Choosing a picture…",
+        "none": "There are no new pictures. Every Pokémon you see on your travels adds one.",
+        "board": "Fill in the {size} by {size} grid. The numbers give the runs of each row and column.",
+        "mistake": "That cell isn't part of the picture. Mistakes: {mistakes}.",
+        "solved": "It's {name}! You won {coins} coins."
+      }
     }
   },
   "cardFlip": {
@@ -4157,6 +4275,14 @@
     "cantTerastallize": "{pokemon} can't Terastallize!",
     "teraOnlyOnce": "You can Terastallize only once in a battle!",
     "terastallized": "{pokemon} Terastallized into the {type} type!",
+    "cantTellTale": "That tale can't be told now!",
+    "taleAlreadyTold": "The tale of {tale} has been told already!",
+    "taleOnlyOnce": "You can tell only one tale and give one answer in a battle!",
+    "taleTold": "{trainer} told the tale of {tale}!",
+    "taleAnswered": "{trainer} answered {ended} with the tale of {tale}!",
+    "taleEnded": "The tale of {tale} came to its end.",
+    "taleWoke": "{pokemon} woke to the tale of {tale}!",
+    "taleSlept": "{pokemon} was itself again.",
     "stellarType": "Stellar",
     "teraformZero": "{pokemon}'s {ability} cleared the weather and the terrain away!",
     "theDimensionsBecameDistorted": "The dimensions became distorted!",
@@ -4877,6 +5003,7 @@
     "Sailor": "Sailor",
     "SchoolKid": "School Kid",
     "SchoolKidM": "School Kid",
+    "Student": "Student",
     "Scientist": "Scientist",
     "ScientistGs": "Scientist",
     "SisAndBro": "Sis and Bro",
@@ -5641,7 +5768,8 @@
   "places": {
   },
   "secretBase": {
-    "decorating": "DECORATE YOUR SECRET BASE"
+    "decorating": "DECORATE YOUR SECRET BASE",
+    "bedroom": "DECORATE YOUR ROOM"
   },
   "pokeblock": {
     "color": {
@@ -5972,7 +6100,7 @@
       "wildWon": "Win a wild battle", "trainerWon": "Beat a trainer", "wildRan": "Run from a wild Pokémon",
       "wildFled": "See a wild Pokémon flee", "trainerLost": "Lose to a trainer", "whiteouts": "Black out and carry on",
       "caught": "Catch a Pokémon", "encounters": "Meet a wild Pokémon", "levelled": "Grow a level in battle",
-      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit", "heartsReclaimed": "Reclaim a locked heart", "tourFourStars": "Take a four-star tour photograph"
+      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit", "heartsReclaimed": "Reclaim a locked heart", "tourFourStars": "Take a four-star tour photograph", "hollowBrinecave": "Clear Brinecave", "hollowRootwood": "Clear the Rootwood", "hollowHeartpeak": "Clear Heartpeak", "hollowOldTower": "Clear the Old Tower"
     },
     "name": {
       "stepsFoot": "Walk {count} steps", "stepsSurf": "Surf {count} steps", "stepsCycle": "Cycle {count} steps", "stepsDive": "Dive {count} steps",
@@ -7089,6 +7217,11 @@
       "pages": "Turning Pages",
       "starlit": "Starlit",
       "sinnoh_snapshot": "Sinnoh Snapshots",
+      "kanto_snapshot": "Kanto Snapshots",
+      "johto_snapshot": "Johto Snapshots",
+      "hoenn_snapshot": "Hoenn Snapshots",
+      "unova_snapshot": "Unova Snapshots",
+      "kalos_snapshot": "Kalos Snapshots",
       "backdrop": "Backdrop: {name}"
     },
     "frame": {
@@ -7280,7 +7413,8 @@
     "stickers": { "count": "{count} / {most}" },
     "take": { "action": "TAKE THE PICTURE" },
     "seals": { "heading": "YOUR SEALS" },
-    "hints": { "put": "Put down" },
+    "hints": { "put": "Put down", "size": "Size", "turn": "Turn" },
+    "keys": { "turn": "Q / E" },
     "refusal": {
       "notOwned": "You don't have that Seal.",
       "full": "The picture can't hold any more stickers.",
@@ -7306,7 +7440,32 @@
       "sinnoh_sandgem_lab": "The Lab at Sandgem",
       "sinnoh_jubilife_fountain": "Jubilife's Fountain",
       "sinnoh_oreburgh_museum": "Oreburgh's Museum",
-      "sinnoh_floaroma_flowers": "Floaroma's Flowers"
+      "sinnoh_floaroma_flowers": "Floaroma's Flowers",
+      "kanto_pallet_lane": "Pallet Town's Lane",
+      "kanto_viridian_square": "Viridian's Square",
+      "kanto_pewter_stones": "Pewter's Grey Stones",
+      "kanto_cerulean_bridge": "Cerulean's Waterside",
+      "kanto_vermilion_harbour": "Vermilion's Harbour",
+      "johto_new_bark_breeze": "New Bark's Breeze",
+      "johto_violet_tower": "Violet's Old Tower",
+      "johto_goldenrod_plaza": "Goldenrod's Plaza",
+      "johto_ecruteak_lanes": "Ecruteak's Old Lanes",
+      "johto_olivine_harbour": "Olivine's Harbour",
+      "hoenn_littleroot_green": "Littleroot's Green",
+      "hoenn_petalburg_pond": "Petalburg's Pond",
+      "hoenn_rustboro_corner": "Rustboro's Stone Corner",
+      "hoenn_slateport_market": "Slateport's Market",
+      "hoenn_lilycove_seafront": "Lilycove's Seafront",
+      "unova_aspertia_steps": "Aspertia's Steps",
+      "unova_floccesy_bell": "Floccesy's Bell",
+      "unova_virbank_docks": "Virbank's Docks",
+      "unova_nimbasa_lights": "Nimbasa's Lights",
+      "unova_driftveil_market": "Driftveil's Market",
+      "kalos_vaniville_garden": "Vaniville's Garden",
+      "kalos_aquacorde_river": "Aquacorde's River",
+      "kalos_santalune_fountain": "Santalune's Fountain",
+      "kalos_lumiose_boulevard": "Lumiose's Boulevard",
+      "kalos_cyllage_cliffs": "Cyllage's Cliffs"
     }
   },
   "hearts": {
@@ -7334,6 +7493,141 @@
       "noMap": "There is no map of this region to soar over.",
       "hallOfFame": "The skies here open once you have entered this region's Hall of Fame.",
       "noFlier": "No Pokémon on your team can carry you through the sky."
+    },
+    "hint": {
+      "soar": "Soar",
+      "turn": "Turn",
+      "climb": "Climb / dive",
+      "faster": "Faster",
+      "land": "Land"
+    },
+    "place": {
+      "Islet": "Islet of the Day",
+      "Grove": "Grove of the Day",
+      "Hollow": "Hollow of the Day",
+      "Peak": "Peak of the Day"
+    }
+  },
+  "delve": {
+    "floor": "Floor {n} of {of}",
+    "leader": "LEADER",
+    "partner": "PARTNER",
+    "recruit": "RECRUIT",
+    "level": "Lv. {n}",
+    "hunger": "BELLY",
+    "moves": "MOVES",
+    "pp": "{n}/{of}",
+    "bag": "BAG  {n}/{of}",
+    "bagEmpty": "Nothing found yet",
+    "giveTo": "Give the {item} to...",
+    "asks": "{pokemon} wants to join!",
+    "yes": "WELCOME",
+    "no": "NOT NOW",
+    "flinch": "a flinch",
+    "home": "{pokemon} came home from the hollow!",
+    "board": "THE CAMP'S BOARD",
+    "boardEmpty": "Nothing posted today. Come back tomorrow!",
+    "rank": "Camp rank {n}",
+    "pays": "Pays: {prize}",
+    "done": "DONE",
+    "hint": { "strike": "Strike", "moves": "Moves" },
+    "reach": { "Ahead": "ahead", "Round": "all round", "Room": "the room", "Self": "itself", "Team": "the team", "Ally": "a friend", "None": "battles only" },
+    "hollow": {
+      "brinecave": "Brinecave",
+      "rootwood": "The Rootwood",
+      "heartpeak": "Heartpeak",
+      "old_tower": "The Old Tower",
+      "test_hollow": "Test Hollow"
+    },
+    "snare": { "Sleep": "a dozing snare", "Poison": "a stinging snare", "Drop": "a pitfall" },
+    "request": {
+      "Rescue": "A hiker is stuck on floor {floor} of {hollow}. Reach them!",
+      "Find": "Bring a {item} up from {hollow}, please.",
+      "Befriend": "A {species} from {hollow} is looking for a home.",
+      "Clear": "Clear {hollow} from top to bottom."
+    },
+    "refused": {
+      "Egg": "An Egg can't go down.",
+      "Fainted": "It has no strength left.",
+      "Locked": "A locked heart won't go down.",
+      "Same": "Pick two different Pokémon.",
+      "NotNow": "Not now.",
+      "Blocked": "The way is blocked.",
+      "NoMove": "There's no move there.",
+      "NoPP": "That move has no PP left.",
+      "NeedsABattle": "That move only works in a battle.",
+      "NotInTheBag": "That isn't in the bag.",
+      "WouldNotHelp": "That wouldn't help now.",
+      "NobodyAsks": "Nobody is asking."
+    },
+    "event": {
+      "Stepped": "{who} stepped.",
+      "Struck": "{who} lunged!",
+      "UsedMove": "{who} used {what}!",
+      "Missed": "{who} missed!",
+      "Damaged": "{target} took {amount} damage.",
+      "Fainted": "{who} fainted!",
+      "StatusGiven": "{who} is now {what}.",
+      "StatusFailed": "It didn't take hold of {target}.",
+      "Confused": "{who} became confused!",
+      "Snapped": "{who} snapped out of its confusion.",
+      "StatChanged": "{who}'s {what} shifted.",
+      "Healed": "{who} got {amount} HP back.",
+      "Recoil": "{who} was hurt by the recoil.",
+      "Drained": "{who} drained some of {target}'s strength.",
+      "Flinched": "{who} flinched!",
+      "LostTurn": "{who} couldn't move ({what}).",
+      "HurtItself": "{who} hurt itself in its confusion!",
+      "Woke": "{who} woke up!",
+      "Noticed": "{who} noticed the team!",
+      "Fled": "{who} ran off!",
+      "Snare": "{who} stepped on {what}!",
+      "Found": "{who} found a {what}!",
+      "BagFull": "The bag is full. {who} left the {what}.",
+      "Ate": "{who} ate the {what}. Delicious!",
+      "Cured": "{who} feels better.",
+      "Starving": "{who} is starving!",
+      "Descended": "The team went down to floor {amount}.",
+      "AsksToJoin": "{who} wants to join the team!",
+      "Joined": "{who} joined the team!",
+      "Declined": "{who} wandered off.",
+      "Revived": "The Revive brought {who} round!",
+      "Cleared": "The team reached the end of the hollow!",
+      "Fell": "{who} collapsed. The team was carried back to camp...",
+      "Escaped": "The team climbed out with the Escape Rope.",
+      "Bitten": "{who} is hurt by its {what}.",
+      "Guarded": "{target} blocks the way up!"
+    }
+  },
+  "safariObjects": {
+    "title": "AREA CUSTOMIZER: {area}",
+    "area": {
+      "1": "PLAINS",
+      "2": "MEADOW",
+      "3": "SAVANNAH",
+      "4": "PEAK",
+      "5": "ROCKY BEACH",
+      "6": "WETLAND",
+      "7": "FOREST",
+      "8": "SWAMP",
+      "9": "MARSHLAND",
+      "10": "WASTELAND",
+      "11": "MOUNTAIN",
+      "12": "DESERT"
+    },
+    "name": {
+      "flowerPatch": "Flower Patch",
+      "haystack": "Haystack",
+      "fencePost": "Fence Post",
+      "sapling": "Sapling",
+      "oldStump": "Old Stump",
+      "mushroomRing": "Mushroom Ring",
+      "pebbles": "Pebbles",
+      "boulder": "Boulder",
+      "stonePillar": "Stone Pillar",
+      "puddle": "Puddle",
+      "reeds": "Reeds",
+      "pond": "Pond"
     }
   }
 }

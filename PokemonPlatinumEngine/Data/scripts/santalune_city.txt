@@ -91,3 +91,8 @@ script NotYet
   text "A guard stands at the garden gate: only Trainers with a Badge may take the road to Lumiose City."
   walk player down 1
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "kalos_santalune_fountain"
+  end

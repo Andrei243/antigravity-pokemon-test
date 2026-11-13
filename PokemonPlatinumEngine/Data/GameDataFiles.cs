@@ -72,10 +72,11 @@ public static class GameDataFiles
     public static string PathOf(string relativePath) => DataLayers.PathOf(relativePath);
 
     /// <summary>
-    /// The five files a battle's rules are made of (plan 08 · P10): what <see cref="Version"/> is a hash of. A file the
-    /// importer rewrites with another move, species, ability, item or trainer changes it.
+    /// The files a battle's rules are made of (plan 08 · P10): what <see cref="Version"/> is a hash of. A file the
+    /// importer rewrites with another move, species, ability, item or trainer changes it, and so does a tale's rule
+    /// (plan 46 · CP12: <c>tales.json</c>, whose rules a recorded battle with a tale told is fought by).
     /// </summary>
-    public static readonly string[] VersionedFiles = { "species.json", "moves.json", "abilities.json", "items.json", "trainers.json" };
+    public static readonly string[] VersionedFiles = { "species.json", "moves.json", "abilities.json", "items.json", "trainers.json", "tales.json" };
 
     private static string? version;
 

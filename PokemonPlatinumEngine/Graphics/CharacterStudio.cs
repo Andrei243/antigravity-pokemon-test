@@ -90,11 +90,13 @@ internal static class CharacterStudio
     /// a short person and a tall one fill their pictures alike. It takes the rig itself and never waits for one:
     /// whoever calls asked <see cref="CharacterModels.TryGet"/>. Call outside any other texture mode.
     /// </summary>
-    public static void RenderBust(RenderContext context, CharacterRig rig, RenderTexture2D target, CharacterPose pose, float yaw = 0f)
+    public static void RenderBust(RenderContext context, CharacterRig rig, RenderTexture2D target, CharacterPose pose, float yaw = 0f, float headroom = 0f)
     {
         context.EnsureLoaded();
         var shaders = context.Shaders;
         var (middle, height) = BustOf(rig.Style.Kit, rig.Style.Build, rig.Style.CurvedFigure(), rig.Face.Anchor.Y);
+        // Room over the head where a caller asks for it (plan 43 · LF7's leftover: a chibi caller's hat), the chest kept where it was
+        if (headroom > 0f) { height += headroom; middle += headroom / 2f; }
         var look = new Vector3(0, middle * rig.Scale, 0);
         float pitch = 4f * MathF.PI / 180f;
         var camera = new Camera3D(look + new Vector3(0, MathF.Sin(pitch), MathF.Cos(pitch)) * 6f, look, Vector3.UnitY, height * rig.Scale, CameraProjection.Orthographic);

@@ -1,0 +1,95 @@
+{
+  // Poco Path (plan 34 · PD1): the way north from Cabo Poco along the top of the cliffs, the lighthouse on its knoll to the
+  // east where Nemona teaches catching, the track down to the beach under the cliffs, and Inlet Grotto's mouth in their
+  // foot. Scripts: Data/scripts/poco_path.txt
+  "markers": [
+    { "name": "poco_path_south", "at": [12, 8.0, -34], "yaw": 180 },
+    { "name": "lighthouse_foot", "at": [56, 10.0, -80], "yaw": 0 },
+    { "name": "beach_foot", "at": [-72, 1.3, -126], "yaw": 90 },
+    { "name": "grotto_door", "at": [-60, 1.3, -80], "yaw": 90 },
+    { "name": "beach_south", "at": [-66, 1.3, 10], "yaw": 0 },
+    { "name": "poco_path_north", "at": [8, 8.0, -146], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "grotto_door",
+      "box": { "min": [-56, 0.4, -82], "max": [-54, 4, -78] },
+      "room": "InletGrotto", "at": [3, 22], "facing": "up",
+      "out": "grotto_door"
+    }
+  ],
+  "triggers": [
+    // On the beach under the cliffs once the battle is over: the roar out of the grotto
+    { "name": "a_roar", "box": { "min": [-80, 0, -140], "max": [-52, 5, -120] }, "script": "ARoar", "var": "VAR_PALDEA_STORY", "value": 2 },
+    // At the lighthouse's foot with the legendary along: Nemona's lesson in catching
+    { "name": "nemonas_lesson", "cylinder": { "at": [56, -80], "radius": 5, "bottom": 8, "top": 14 }, "script": "NemonasLesson", "var": "VAR_PALDEA_STORY", "value": 4 }
+  ],
+  "zones": [
+    {
+      "name": "poco_path_west",
+      "polygon": [[-36, -106], [-8, -106], [-8, -50], [-36, -50]],
+      "minY": 5, "maxY": 13,
+      "slots": [
+        { "species": "Lechonk", "minLevel": 2, "maxLevel": 4, "weight": 30 },
+        { "species": "Hoppip", "minLevel": 2, "maxLevel": 4, "weight": 20 },
+        { "species": "Tarountula", "minLevel": 2, "maxLevel": 4, "weight": 20 },
+        { "species": "Fletchling", "minLevel": 3, "maxLevel": 5, "weight": 15 },
+        { "species": "Sunkern", "minLevel": 2, "maxLevel": 4, "weight": 15, "time": "Day" }
+      ],
+      "density": 3, "cap": 4
+    },
+    {
+      "name": "poco_path_lighthouse",
+      "polygon": [[24, -140], [50, -140], [50, -110], [24, -110]],
+      "minY": 5, "maxY": 13,
+      "slots": [
+        { "species": "Lechonk", "minLevel": 3, "maxLevel": 5, "weight": 30 },
+        { "species": "Pawmi", "minLevel": 3, "maxLevel": 5, "weight": 20 },
+        { "species": "Nymble", "minLevel": 3, "maxLevel": 5, "weight": 20 },
+        { "species": "Hoppip", "minLevel": 3, "maxLevel": 5, "weight": 15 },
+        { "species": "Hoothoot", "minLevel": 3, "maxLevel": 5, "weight": 15, "time": "Night" }
+      ],
+      "density": 3, "cap": 4
+    },
+    {
+      "name": "poco_beach",
+      "polygon": [[-84, -150], [-56, -150], [-56, 30], [-84, 30]],
+      "minY": -1, "maxY": 5,
+      "slots": [
+        { "species": "Wingull", "minLevel": 3, "maxLevel": 5, "weight": 40 },
+        { "species": "Wiglett", "minLevel": 3, "maxLevel": 5, "weight": 30 },
+        { "species": "Psyduck", "minLevel": 3, "maxLevel": 5, "weight": 20 },
+        { "species": "Shellos", "minLevel": 3, "maxLevel": 5, "weight": 10 }
+      ],
+      "density": 2, "cap": 3
+    }
+  ],
+  "solids": [
+    { "name": "the lighthouse", "min": [56, 9, -96], "max": [64, 26, -88], "building": { "kind": "lighthouse", "town": "paldea" } }
+  ],
+  "people": [
+    // Nemona at the lighthouse's foot, gone ahead after the battle to wait there (hidden once the lesson is given)
+    {
+      "name": "nemona_lighthouse", "at": [53, 10.0, -78], "yaw": 90, "look": "nemona", "displayName": "Nemona",
+      "lines": ["Over here! There's no better view of Paldea than from this lighthouse."],
+      "hiddenBy": "FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE"
+    },
+    {
+      "name": "poco_hiker", "at": [0, 8.0, -90], "yaw": 90, "look": "hiker", "displayName": "Hiker",
+      "lines": ["Follow this path north and you'll come to Los Platos. Mesagoza's a fair walk past that, up the long rise."]
+    },
+    {
+      "name": "poco_beachcomber", "at": [-70, 1.3, -40], "yaw": 0, "look": "middle_aged_man", "displayName": "Beachcomber",
+      "lines": ["You can only get down here by the old track to the north. Mind the cave in the cliff: something big lives in it."]
+    }
+  ],
+  "trees": [
+    { "at": [-20, -40], "kind": "round" },
+    { "at": [30, -60], "kind": "round", "size": 1.1 },
+    { "at": [-40, -140], "kind": "pine" },
+    { "at": [44, -126], "kind": "round", "size": 0.9 }
+  ],
+  "groves": [
+    { "name": "the copse below the east hills", "polygon": [[70, -146], [84, -146], [84, -40], [70, -40]], "spacing": 5, "fill": 0.6, "pines": 0.5, "seed": 342 }
+  ]
+}

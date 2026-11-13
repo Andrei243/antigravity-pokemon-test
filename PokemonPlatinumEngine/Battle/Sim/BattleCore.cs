@@ -163,6 +163,15 @@ public sealed class CoreSetup
     public bool MegaMaxBand { get; init; }
 
     /// <summary>
+    /// The tales the player may tell (plan 46 · CP11): the ids of those learned, with the Book of Tales in the bag; null
+    /// with no Book. A trainer has theirs as <see cref="Trainer.Tales"/>.
+    /// </summary>
+    public IReadOnlyList<string>? Tales { get; init; }
+
+    /// <summary>The tales' rules this battle reads (null: the game's, <see cref="TaleTable.Default"/>); a test hands one of its own.</summary>
+    public TaleTable? TaleTable { get; init; }
+
+    /// <summary>
     /// The player has a Tera Orb (plan 06 · R23): under rules with <see cref="Ruleset.Terastallization"/> one of their
     /// own Pokémon may Terastallize once in the battle. A trainer has theirs as <see cref="Trainer.TeraOrb"/>.
     /// </summary>
@@ -397,6 +406,8 @@ public sealed partial class BattleCore : IBattleContext
         DynamaxBand = setup.DynamaxBand;
         MegaMaxBand = setup.MegaMaxBand;
         TeraOrb = setup.TeraOrb;
+        PlayerTales = setup.Tales;
+        talesGiven = setup.TaleTable;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
@@ -522,6 +533,8 @@ public sealed partial class BattleCore : IBattleContext
                 RefuseTwoDynamax(choices);
                 // And one Terastallization (plan 06 · R23)
                 RefuseTwoTera(choices);
+                // And one tale (plan 46 · CP11)
+                RefuseTwoTales(choices);
                 break;
             case ReplacementRequest replacement:
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
@@ -734,6 +747,8 @@ public sealed partial class BattleCore : IBattleContext
                 chosen = AsTheDynamaxRulesLet(b, chosen);
                 // And Terastallize only where they let it (plan 06 · R23)
                 chosen = AsTheTeraRulesLet(b, chosen);
+                // And tell a tale only where they let it (plan 46 · CP11)
+                chosen = AsTheTaleRulesLet(b, chosen);
                 ChooseMegas(new[] { chosen });
                 choices.Add(chosen);
             }
@@ -861,7 +876,8 @@ public sealed partial class BattleCore : IBattleContext
                 megasDone = true;
                 // The Dynamaxes come after them (plan 06 · R22; Showdown's runDynamax, order 105)
                 // And the Terastallizations after those (plan 06 · R23; Showdown's terastallize, order 106)
-                if (MegaEvolutions(waiting) | Dynamaxes(waiting) | Terastallizations(waiting))
+                // And the tales after those (plan 46 · CP11)
+                if (MegaEvolutions(waiting) | Dynamaxes(waiting) | Terastallizations(waiting) | TellTales(waiting))
                 {
                     if (Result != BattleResult.None) yield break;
                     waiting = Order(waiting);
@@ -1169,7 +1185,7 @@ public sealed partial class BattleCore : IBattleContext
         // may be a critical capture, one shake check where a plain one is four (plan 40 · GE5)
         var thrown = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? new CatchCalculator.CatchResult { IsCaught = true, Shakes = 4 }
             : CatchCalculator.Throw(foe, ball, rng, Turn, Conditions, SafariCatchStage, Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon,
-                EmeraldSafari ? EmeraldSafariRate : null);
+                EmeraldSafari ? EmeraldSafariRate : null, heldDay: TaleHoldsTheDay);
         int shakes = thrown.Shakes;
         if (ball.Name == "Safari Ball" || ball.Name == Conditions.OnlyBall) SpecialBalls = Math.Max(0, SpecialBalls - 1);
         Emit(new BallThrown(ball.Name, target.Slot, shakes, thrown.Critical));
@@ -1455,6 +1471,8 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in AllBattlers.Concat(WheelBattlers).Where(b => b.Pokemon != null)) Revert(b);
         // And the shapes that last the battle out are given back (plan 06 · R19b: Disguise, Ice Face, Zero to Hero)
         GiveBackLastingShapes();
+        // And a tale ends, its forms given back (plan 46 · CP11)
+        EndTalesWithTheBattle();
         // And so are the Mega and primal forms (plan 06 · R20)
         GiveBackMegas();
         // And a Terastallization ends (plan 06 · R23)
@@ -1528,7 +1546,7 @@ public sealed partial class BattleCore : IBattleContext
     /// player's Pokémon that fought it and are still standing, with the Exp. Share's half for its holders, and the
     /// Lucky Egg's, a trainer battle's and another trainer's Pokémon's bonus on each one's part. Whoever gains EXP
     /// gains the foe's effort too (<see cref="EffortRules.Gain"/>); a Pokémon at the rules' level cap gains neither
-    /// (100 in Platinum; plan 18 · W4's 260 by the modern rules, where effort still comes). By the modern rules the
+    /// (100 in Platinum; 300 by the modern rules since plan 46 · CP15, where effort still comes). By the modern rules the
     /// whole party gains by the scaled formula (<see cref="Formulas.ScaledExp"/>).
     /// </summary>
     private void AwardExp(Battler defeated)

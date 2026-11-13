@@ -1,8 +1,8 @@
 [
-  { "id": "kalos_mom", "type": 1, "class": "Mom", "area": "vaniville_town" },
+  { "id": "kalos_mom", "look": "mom", "type": 1, "class": "Mom", "area": "vaniville_town" },
   { "id": "kalos_neighbour", "type": 11, "class": "Pokémon Trainer", "area": "vaniville_town" },
-  { "id": "kalos_shauna", "type": 11, "class": "Pokémon Trainer", "area": "vaniville_town" },
-  { "id": "kalos_tierno", "type": 11, "class": "Pokémon Trainer", "area": "vaniville_town" },
-  { "id": "kalos_trevor", "type": 11, "class": "Pokémon Trainer", "area": "vaniville_town" },
-  { "id": "kalos_sycamore", "type": 2, "class": "Pokémon Professor", "area": "lumiose_city" }
+  { "id": "kalos_shauna", "look": "shauna", "type": 11, "class": "Pokémon Trainer", "area": "vaniville_town" },
+  { "id": "kalos_tierno", "look": "tierno", "type": 11, "class": "Pokémon Trainer", "area": "vaniville_town" },
+  { "id": "kalos_trevor", "look": "trevor", "type": 11, "class": "Pokémon Trainer", "area": "vaniville_town" },
+  { "id": "kalos_sycamore", "look": "sycamore", "type": 2, "class": "Pokémon Professor", "area": "lumiose_city" }
 ]

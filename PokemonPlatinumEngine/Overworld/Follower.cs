@@ -61,6 +61,8 @@ public sealed class Follower
         body.Name = pokemon.DisplayName;
         // An alpha's field sprite is its species' at its own size (plan 10 · F10)
         body.Scale = pokemon.Scale;
+        // A locked heart walks in the lock's grey (plan 44 · SD2)
+        body.Locked = pokemon.Lock != null;
     }
 
     /// <summary>

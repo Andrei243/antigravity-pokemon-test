@@ -20,7 +20,12 @@
     { "id": "net_and_reeds", "top": "#e6f3e4", "bottom": "#a9d2b0", "pattern": "Checks", "ink": "#7db58a", "unlock": "medals:Catching" },
     { "id": "pages", "top": "#fdfaf0", "bottom": "#e6dcc0", "pattern": "Stripes", "ink": "#cbbd95", "unlock": "diploma:National" },
     { "id": "starlit", "top": "#d6d9ef", "bottom": "#8f95c8", "pattern": "Stars", "ink": "#6c72b0", "unlock": "medals:League" },
-    { "id": "sinnoh_snapshot", "top": "#eef3f8", "bottom": "#c9d6e6", "pattern": "Checks", "ink": "#a9bad2", "unlock": "spots:Sinnoh" }
+    { "id": "sinnoh_snapshot", "top": "#eef3f8", "bottom": "#c9d6e6", "pattern": "Checks", "ink": "#a9bad2", "unlock": "spots:Sinnoh" },
+    { "id": "kanto_snapshot", "top": "#f8efe6", "bottom": "#e6cdb6", "pattern": "Checks", "ink": "#d2b294", "unlock": "spots:Kanto" },
+    { "id": "johto_snapshot", "top": "#f4efe2", "bottom": "#dccfae", "pattern": "Checks", "ink": "#c4b48a", "unlock": "spots:Johto" },
+    { "id": "hoenn_snapshot", "top": "#e8f6f2", "bottom": "#bfe3d8", "pattern": "Checks", "ink": "#98ccbd", "unlock": "spots:Hoenn" },
+    { "id": "unova_snapshot", "top": "#eceff6", "bottom": "#c8cfe2", "pattern": "Checks", "ink": "#a5afcc", "unlock": "spots:Unova" },
+    { "id": "kalos_snapshot", "top": "#f8eef2", "bottom": "#e6c9d6", "pattern": "Checks", "ink": "#d2a7ba", "unlock": "spots:Kalos" }
   ],
   "frames": [
     { "id": "plain", "color": "#ffffff", "accent": "#d8d0bc", "style": "Plain", "unlock": "start" },

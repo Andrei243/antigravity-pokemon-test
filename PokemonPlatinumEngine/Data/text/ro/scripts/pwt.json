@@ -209,7 +209,7 @@
         "I've booked the hall for my club's tournament. I asked months ago! The papers are all in order."
       ],
       "text": [
-        ""
+        "Am rezervat sala pentru turneul clubului meu. Am cerut-o acum luni de zile! Actele sunt toate în regulă."
       ]
     },
     {
@@ -217,7 +217,7 @@
         "You're looking into it? Here's my schedule, with the hall's own stamp. The afternoon of the twelfth, all mine."
       ],
       "text": [
-        ""
+        "Cercetezi cazul? Iată programul meu, cu ștampila sălii. După-amiaza zilei de doisprezece, numai a mea."
       ]
     },
     {
@@ -225,7 +225,7 @@
         "The other organiser has the very same stamp. Both real, both the same number. How can that be?"
       ],
       "text": [
-        ""
+        "Celălalt organizator are exact aceeași ștampilă. Amândouă adevărate, amândouă cu același număr. Cum e posibil?"
       ]
     },
     {
@@ -233,7 +233,7 @@
         "{player} noted the stamped schedule."
       ],
       "text": [
-        ""
+        "{player} a notat programul ștampilat."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Two stamps, one number. The hall can't have meant us both."
       ],
       "text": [
-        ""
+        "Două ștampile, un singur număr. Sala nu ne putea înțelege pe amândoi."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "We're sharing the day now. My club in the morning, theirs in the evening. And the hall gave us both a discount!"
       ],
       "text": [
-        ""
+        "Împărțim acum ziua. Clubul meu dimineața, al lor seara. Și sala ne-a făcut amândurora reducere!"
       ]
     }
   ],
@@ -259,7 +259,7 @@
         "Somebody else says they've booked the hall on my afternoon. Nonsense! I booked it myself."
       ],
       "text": [
-        ""
+        "Cineva spune că a rezervat sala în după-amiaza mea. Prostii! Am rezervat-o eu însumi."
       ]
     },
     {
@@ -267,7 +267,7 @@
         "My booking? Here, the hall's register, copied out for me. My name, the afternoon of the twelfth."
       ],
       "text": [
-        ""
+        "Rezervarea mea? Poftim, registrul sălii, copiat pentru mine. Numele meu, după-amiaza zilei de doisprezece."
       ]
     },
     {
@@ -275,7 +275,7 @@
         "Though, look closely. There's an eraser smudge under my name. Somebody else's name was there first, and rubbed out."
       ],
       "text": [
-        ""
+        "Dar uită-te bine. E o urmă de gumă sub numele meu. Numele altcuiva a fost acolo mai întâi și a fost șters."
       ]
     },
     {
@@ -283,7 +283,7 @@
         "{player} noted the eraser smudge under the booking."
       ],
       "text": [
-        ""
+        "{player} a notat urma de gumă de sub rezervare."
       ]
     },
     {
@@ -291,7 +291,7 @@
         "A name rubbed out under mine. I paid in good faith! Somebody took my money for a day that was already sold."
       ],
       "text": [
-        ""
+        "Un nume șters sub al meu. Am plătit cu bună-credință! Cineva mi-a luat banii pentru o zi deja vândută."
       ]
     },
     {
@@ -299,7 +299,7 @@
         "My money's back, and we have the evening. Honestly, the evening light suits a final better."
       ],
       "text": [
-        ""
+        "Mi-am primit banii înapoi, iar noi avem seara. Sincer, lumina serii se potrivește mai bine unei finale."
       ]
     }
   ],
@@ -309,7 +309,7 @@
         "I keep the keys to every door in the World Tournament. And I write down who borrows them. Every time."
       ],
       "text": [
-        ""
+        "Țin cheile de la fiecare ușă din World Tournament. Și notez cine le împrumută. De fiecare dată."
       ]
     },
     {
@@ -317,7 +317,7 @@
         "The office key? Let me see my log... Here. The night of the second booking. The clerk, Mr. Calloway, at nine at night."
       ],
       "text": [
-        ""
+        "Cheia biroului? Să mă uit în jurnal... Aici. Noaptea celei de-a doua rezervări. Funcționarul, domnul Calloway, la nouă seara."
       ]
     },
     {
@@ -325,7 +325,7 @@
         "Nobody books a hall at nine at night. I wrote it down all the same. I write everything down."
       ],
       "text": [
-        ""
+        "Nimeni nu rezervă o sală la nouă seara. Am notat totuși. Notez totul."
       ]
     },
     {
@@ -333,7 +333,7 @@
         "{player} noted the key log with the clerk out after hours."
       ],
       "text": [
-        ""
+        "{player} a notat jurnalul cheilor, cu funcționarul venit după program."
       ]
     },
     {
@@ -341,7 +341,7 @@
         "Nine at night, the office key, Mr. Calloway. It's all in my log."
       ],
       "text": [
-        ""
+        "Nouă seara, cheia biroului, domnul Calloway. Totul e în jurnalul meu."
       ]
     },
     {
@@ -349,7 +349,7 @@
         "The office key stays on its hook after hours now. I check it twice a night."
       ],
       "text": [
-        ""
+        "Cheia biroului rămâne acum în cui după program. O verific de două ori pe noapte."
       ]
     }
   ],
@@ -359,7 +359,7 @@
         "Isidore"
       ],
       "text": [
-        ""
+        "Isidore"
       ]
     },
     {
@@ -367,7 +367,7 @@
         "Ah. Looker's investigator. You'll have seen my little smudge, then. One afternoon, two fees. It seemed so tidy."
       ],
       "text": [
-        ""
+        "Ah. Investigatorul lui Looker. Ai văzut, deci, mica mea pată. O după-amiază, două taxe. Părea atât de curat."
       ]
     },
     {
@@ -375,7 +375,7 @@
         "Well, this is the World Tournament. Disputes here are settled one way. Shall we?"
       ],
       "text": [
-        ""
+        "Ei bine, aceasta e World Tournament. Disputele de aici se rezolvă într-un singur fel. Începem?"
       ]
     },
     {
@@ -383,7 +383,7 @@
         "...Eliminated in the first round. Very well. I'll refund the second fee and resign the stamp. Tell Looker, please."
       ],
       "text": [
-        ""
+        "...Eliminat din prima rundă. Foarte bine. Voi returna a doua taxă și voi renunța la ștampilă. Spune-i lui Looker, te rog."
       ]
     }
   ]

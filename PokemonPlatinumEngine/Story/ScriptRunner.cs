@@ -353,7 +353,9 @@ public sealed partial class ScriptRunner
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker or Op.Photograph => false,
         // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
         Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape or Op.Dive => true,
-        Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle or Op.RidePokemon => false,
+        Op.Poketch or Op.PoketchApp or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle or Op.RidePokemon => false,
+        // A Safari Game begun or ended is as told; the Area Customizer's screen is the player's to work (plan 38 · EX8)
+        Op.Safari => i.Name == "objects",
         // A puzzle's pieces move while the field waits
         Op.FlowerClock or Op.PressButton or Op.GearButton => true,
         Op.PlatformLift => !i.Option,
@@ -379,7 +381,7 @@ public sealed partial class ScriptRunner
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
         // battle on most of their words: none of them is hurried through
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
-        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower => true,
+        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower or Op.GalarTower => true,
         Op.Tutor or Op.Amity => true,
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm" or "pantry",
@@ -395,6 +397,8 @@ public sealed partial class ScriptRunner
         Op.Heart => i.Name == "open",
         // A ride and the report are screens the player plays and reads; the rest is asked or handed over without one (plan 44 · SD5, SD6)
         Op.Tour => i.Name is "ride" or "report",
+        // A run down a hollow and the board are played by the player; the rest only reads or hands over
+        Op.Delve => i.Name is "go" or "board",
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
         // A power is learned or granted without a screen (plan 36 · TR8)
@@ -452,6 +456,8 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // A tale is learned as an item is given (plan 46 · CP12): the lines and the fanfare are dropped
+        Op.Tale => false,
         // Records are mixed and asked about at once: nothing to see through (plan 40 · GE10)
         Op.Records => false,
         // The gift box's screen is the player's to work; a gift handed over, words told and a backdrop given are as items given (plan 40 · GE7)
@@ -695,12 +701,15 @@ public sealed partial class ScriptRunner
                 host.Milestone(AutosaveMoment.Badge);
                 break;
             case Op.GiveMoney:
-                host.Money += i.Number;
+                host.Money += Math.Max(0, i.Other.Length > 0 ? Value(i.Other) : i.Number);
                 break;
             case Op.TakeMoney:
-                Result = host.Money >= i.Number ? 1 : 0;
-                if (Result == 1) host.Money -= i.Number;
+            {
+                int amount = Math.Max(0, i.Other.Length > 0 ? Value(i.Other) : i.Number);
+                Result = host.Money >= amount ? 1 : 0;
+                if (Result == 1) host.Money -= amount;
                 break;
+            }
             case Op.Heal:
                 host.Party.HealAll();
                 host.Milestone(AutosaveMoment.Heal);
@@ -1042,6 +1051,10 @@ public sealed partial class ScriptRunner
                 break;
             case Op.PoketchApp:
                 host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
+                break;
+            case Op.Safari when i.Name == "objects":
+                // RESULT 1 where the area was opened to arrange, 0 where it wasn't (no such area, or nobody to arrange it)
+                Result = host.ArrangeSafari(i.Number > 0 ? i.Number - 1 : Result) ? 1 : 0;
                 break;
             case Op.Safari:
             {
@@ -1558,6 +1571,10 @@ public sealed partial class ScriptRunner
             case Op.BlackTower:
                 BlackTowerCommand(i);
                 break;
+            // Galar's Battle Tower ladder (plan 33 · GL7, part b)
+            case Op.GalarTower:
+                GalarTowerCommand(i);
+                break;
             // The crafting kit and its pouch (plan 39 · CR1)
             case Op.Craft:
                 CraftCommand(i);
@@ -1585,6 +1602,10 @@ public sealed partial class ScriptRunner
             // The photo tour (plan 44 · SD5)
             case Op.Tour:
                 TourCommand(i);
+                break;
+            // The delve (plan 44 · SD8, SD9)
+            case Op.Delve:
+                DelveCommand(i);
                 break;
             // The training hall (plan 36 · TR2)
             case Op.Train:
@@ -1701,6 +1722,11 @@ public sealed partial class ScriptRunner
             // The charms of a Pokédex filled (plan 40 · GE5)
             case Op.Charm:
                 CharmCommand(i);
+                break;
+
+            // The Tales (plan 46 · CP12)
+            case Op.Tale:
+                TaleCommand(i);
                 break;
             case Op.Records:
                 RecordsCommand(i);
@@ -2294,6 +2320,59 @@ public sealed partial class ScriptRunner
     /// until it is left and hearing the ride's total (0 where the course isn't open); <c>tour open</c> is 1 when the
     /// report has opened the course; <c>tour points</c> is the report's total.
     /// </summary>
+    /// <summary>
+    /// The delve (plan 44 · SD8, SD9): <c>delve go "&lt;hollow&gt;"</c> sends the team's first two who may go down (waits;
+    /// RESULT 0 when nobody went, 1 cleared, 2 fallen, 3 escaped), <c>delve open "&lt;hollow&gt;"</c>, <c>delve able</c> (two may
+    /// go), <c>delve board</c> (the day's requests on their screen), <c>delve rank</c>, <c>delve reward</c> (the next prize due
+    /// handed over as <c>give</c> hands an item, RESULT 1; none, 0).
+    /// </summary>
+    private void DelveCommand(Instruction i)
+    {
+        var record = host.DelveRecord;
+        var hollow = Models.Delve.DelveHollows.Get(i.Other);
+        switch (i.Name)
+        {
+            case "go":
+                if (hollow == null || record == null || !record.IsOpen(hollow)) { Result = 0; break; }
+                host.Open(ScriptScreen.Delve, Subject, hollow.Key);
+                afterBusy = () => Result = host.Answer;
+                break;
+            case "open":
+                Result = hollow != null && record?.IsOpen(hollow) == true ? 1 : 0;
+                break;
+            case "able":
+                Result = host.Party.Members.Count(p => Models.Delve.DelveRun.WhyNot(p) == null) >= 2 ? 1 : 0;
+                break;
+            case "board":
+                host.Open(ScriptScreen.DelveBoard, Subject);
+                break;
+            case "rank":
+                Result = record?.Rank ?? 0;
+                break;
+            case "reward":
+            {
+                if (record is not { Due.Count: > 0 })
+                {
+                    Result = 0;
+                    break;
+                }
+                var due = record.Due[0];
+                var (item, count) = Swapped(ItemDatabase.Get(due.Item) ?? throw Wrong(i, $"there is no item '{due.Item}'"), Math.Max(1, due.Count), i);
+                record.Due.RemoveAt(0);
+                host.Bag.AddItem(item, count);
+                lastItem = item.Name;
+                host.Fanfare(FanfareFor(item));
+                host.Say(null, new List<string>
+                {
+                    Text.Of("found.received", ("n", count), ("item", item.DisplayName)),
+                    Text.Of("found.putAway", ("n", count), ("pocket", PocketName(item.Pocket)))
+                });
+                Result = 1;
+                break;
+            }
+        }
+    }
+
     private void TourCommand(Instruction i)
     {
         var course = PhotoTourCourses.Get(i.Other);

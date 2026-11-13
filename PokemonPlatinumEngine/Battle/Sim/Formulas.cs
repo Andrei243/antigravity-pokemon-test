@@ -69,7 +69,7 @@ public static class Formulas
     {
         // In a long, so that no stat, power or level any rules allow can overflow it (plan 18 · W4); every step is the
         // whole number it was, so nothing under 100 moves
-        int damage = (int)((long)attack * power * (level * 2 / 5 + 2) / Math.Max(1, defense) / 50);
+        int damage = Fit((long)attack * power * (level * 2 / 5 + 2) / Math.Max(1, defense) / 50);
         if (burned) damage /= 2;
         if (screened) damage = sharedScreen ? damage * 2 / 3 : damage / 2;
         if (spread) damage = damage * 3 / 4;
@@ -126,6 +126,17 @@ public static class Formulas
     }
 
     /// <summary>A value times one bonus in 4096ths, rounded half down (a spread hit's 3072, the weather's 6144 and 2048).</summary>
+    /// <summary>
+    /// The most a hit's damage is carried as between the formula's steps (plan 46 · CP15, the overflow check at level
+    /// 300): 2^28, past any Pokémon's HP by five orders and far from an int's end, so that what follows (a critical
+    /// hit's half again, a modifier's 4096ths in a long) can't overflow whatever the level, stats and modifiers. Nothing
+    /// any battle ever hit for was near it, so no hit's number moved.
+    /// </summary>
+    public const int MostDamage = 1 << 28;
+
+    /// <summary>A step of the formula, worked in a long, held under <see cref="MostDamage"/>.</summary>
+    private static int Fit(long damage) => (int)Math.Min(damage, MostDamage);
+
     public static int Modify(int value, int mod) => (int)RoundHalfDown((long)value * mod);
 
     /// <summary>
@@ -133,7 +144,7 @@ public static class Formulas
     /// each step rounded down, + 2. The burn, the screens and the weather are not in it.
     /// </summary>
     public static int ModernBaseDamage(int level, int power, int attack, int defense) =>
-        (int)((long)(level * 2 / 5 + 2) * power * attack / Math.Max(1, defense) / 50) + 2;
+        Fit((long)(level * 2 / 5 + 2) * power * attack / Math.Max(1, defense) / 50) + 2;
 
     /// <summary>
     /// What one roll comes to in the later games (<c>getFinalDamage</c>): the roll (<paramref name="roll"/> 0 the
@@ -147,7 +158,7 @@ public static class Formulas
         damage = (long)Math.Floor(damage * (double)effectiveness);
         if (burned) damage /= 2;
         long scaled = damage * finalMod;
-        return scaled < 4096 ? 1 : (int)RoundHalfDown(scaled);
+        return scaled < 4096 ? 1 : Fit(RoundHalfDown(scaled));
     }
 
     /// <summary>
@@ -278,7 +289,7 @@ public static class Formulas
     /// A ball's strength in tenths (<c>sBasicBallMod</c> and the special balls of
     /// <c>BattleScript_CalcCatchShakes</c>). A Master Ball is not here: it catches whatever the rolls say.
     /// </summary>
-    public static int BallTenths(string ball, Pokemon target, int turn, BattleConditions conditions) => ball switch
+    public static int BallTenths(string ball, Pokemon target, int turn, BattleConditions conditions, bool? night = null) => ball switch
     {
         "Ultra Ball" => 20,
         "Great Ball" or "Safari Ball" => 15,
@@ -287,7 +298,7 @@ public static class Formulas
         "Nest Ball" when target.Level < 40 => Math.Max(10, 40 - target.Level),
         "Repeat Ball" when conditions.HasCaught(target.Species) => 30,
         "Timer Ball" => Math.Min(40, 10 + turn),
-        "Dusk Ball" when conditions.Night || conditions.Terrain == BattleTerrain.Cave => 35,
+        "Dusk Ball" when (night ?? conditions.Night) || conditions.Terrain == BattleTerrain.Cave => 35,
         "Quick Ball" when turn < 1 => 40,
         _ => 10
     };

@@ -2620,6 +2620,23 @@ Our own: no game has it and Showdown has no rule for it. The design is `docs/pla
 - **The data**: 63 Mega Dynamax forms after their Megas in `species.json`, written by the importer from `tools/DataImporter/Overrides/mega-dynamax.json` (a Mega form and its height, 20 to 60 m; weight 1000 kg) by `MegaDynamaxForms.cs`; R20b's fifteen rows wait in the table for their Megas. Each has its two written entries. They have no sculpts: a Pokémon in one shows its Mega's model (`Pokemon.ModelName`), grown as every giant is.
 - **Left**: the look (plan 25: the wreath in the Mega's four colours, the growth; the button has a plain mark of the Key Stone in Dynamax's red ring until then); the sculpts (the user's); Sonia's scene, the den and the four later Champions (plan 23).
 
+## The Tales (2026-11-13, plan 46 · CP11)
+
+Our own, Carpathia's primary gimmick (plan 46, "The Tales, the primary gimmick"), on the later mechanics' pattern, behind `Ruleset.Tales` (the modern rules have it, Platinum's don't). Code: `Data/Tales.cs` and `Data/tales.json` (read strictly, `docs/schemas/tales.schema.json`, held by `tools/ContentCheck`'s `TaleFiles`), `Battle/Sim/BattleCore.Tales.cs`, `Battle/BattleEngine.Tales.cs` and `Battle/BattleAnimator.Tales.cs` for the screen, `UI/BookOfTalesScreen.cs`, `Core/GameEngine.Tales.cs`; tests: `TaleTests`.
+
+- **Who may**: a trainer with the Book of Tales and a tale learned: the player while the Book (a key item, id 9930) is in the bag, the tales learned being those whose story flag `FLAG_TALE_<ID>` is set (`TaleTable.FlagOf`; no save field and no version raised: the script's `tale learn` sets the flag); a trainer by `Trainer.Tales`. With no Book, under Platinum's rules or under the run's "No later mechanics" (`LaterMechanicsBarred`), nothing is offered and a battle is the one it was to the line (`TaleTests`, and the golden battles, which no session's tale moved).
+- **Once a battle, and an answer** (decision 15, as recommended): a trainer tells one tale while none of the other side's is told, and answers one while the other side's is told; an answer ends the first at once and begins its own (`TaleAnswered`). A tale told once in the battle, by either side, is never told again (`taleAlreadyTold`), and a side never tells over its own tale. Two tales of one trainer in one answer are refused. **Both sides on one turn**: the faster trainer's tale is told first and the slower's is an answer to it, as the turn's other later mechanics go by Speed.
+- **When**: after the turn's Mega Evolutions, Dynamaxes and Terastallizations and before its first move, the fastest first, and the moves still to come are put in order again; a tale goes with any move, and with any other later mechanic. "{trainer} told the tale of {tale}!" carries `TaleTold(Teller, Tale, Turns)`, then the tale's own line (`basme.<id>.told`).
+- **How long**: five turn ends from the end of the turn it is told in (`TaleState.Turns` in `FieldState.Tale`, counted after the terrain's), then "The tale of {tale} came to its end." with `TaleEnded`; with the battle it ends unsaid.
+- **What each does** is one effect, read where the field's rules already bite, for both sides alike (decision CP11 · "for both sides"): **the Zmeu's**, Fire moves at 130% (a line of both paths of `DamageCalculator`, in the power's chain under the modern rules beside Helping Hand's); **the Vârcolac's**, Dark and Ghost moves at 130% and every move's chance to hit at 80% (`Hits`, after every other change of accuracy); **the Solomonar's**, rain for the tale's turns through the core's own `SetWeather`; **Baba Dochia's**, hail the same way, which the modern rules make snow; **the Ielele's**, Sound-type moves and every move with the sound flag at 130%. **Settled here, where the plan's first list differs**: Baba Dochia's is the cold come back (the brief), not "each switch-in sheds a layer of its defence"; the Ielele's make Sound moves stronger (the brief), not strike twice; the Solomonar's storm is plain rain, its owner's only by its turns. A weather a tale brought goes with it as it ends or is answered, if it still holds; a weather that was there already is left alone.
+- **No night forms** (the Zmeu's `noNight`): since CP12 (2026-11-13) it holds the day for the Dusk Ball (`BattleCore.TaleHoldsTheDay`, handed to `CatchCalculator.Throw`): thrown at night under the Zmeu's tale it is a plain ball, in a cave it is still the Dusk Ball, since a cave is no night. Nothing in a battle has a night form today; one of Carpathia's species with one asks the same.
+- **Tale Forms** (`FormKind.Tale`): a tale's `forms` bind a species to a form it wakes into while its own side's tale is told, as the tale is told and as it comes in (`ShapeOnEntry`); "{pokemon} woke to the tale of {tale}!" carries `TaleFormChanged(Place, Form, Woke)`. Not a Pokémon transformed, Dynamaxed or in a Mega, primal or Ultra form. It goes back as the tale ends or is answered (a line for one on the field, the event's change alone for one on the bench) and with the battle. Its original is kept apart from the Megas' (`beforeTale`). **No species is bound yet**: CP12 writes the forms (`tools/DataImporter/Overrides/forms.json`) and their sculpts; `TaleTests` binds Rotom to its Heat form in a table of its own (`CoreSetup.TaleTable`), never the game's species.
+- **The trainer AI** (`TrainerAi.TaleNow`, `TaleWorth`), drawing nothing: with no tale told it tells its tale worth most to its side over the foe's (the moves on the field it favours, theirs counted against, a third of a hit each; a rain's or a sun's by the Water and Fire moves; hail's by the Ice types; a Pokémon of its own that would wake), where that is above nothing; with the other side's tale told, it answers only where that tale is worth less than nothing to it.
+- **The record**: the tale is the choice's (`BattleChoice.Tale`, `RecordedChoice.Tale`), and the Vs. Recorder's file keeps the player's tales (`BattleRecordFile.Tales`) and each trainer's (`RecordedTrainer.Tales`), so a recorded battle replays to the same log. Since CP12 (2026-11-13) `GameDataFiles.Version` hashes `tales.json` beside the five tables, so a recording made before a tale's numbers change is refused afterwards rather than replayed otherwise (every recording, link room and Home box of an older build is refused once, as any change of the tables does).
+- **Learned in the world** (CP12, 2026-11-13): the script's `tale learn "<id>"` sets the tale's flag with the key item's fanfare and two lines (`basme.learned`, `basme.writtenDown`), once; `tale has "<id>"` asks it (`docs/scripts.md`, "The Tales"). The id is checked as the script is read. A tale is learned with or without the Book in the bag: the Book is what lets it be told.
+- **The tale layers of the battle songs** (CP12): a battle theme's track marked `only=tale_<id>` plays while that tale is told, `only=tale` while any is, `unless=tale` while none is (`docs/music-format.md`), switched by `AudioManager.Tale` from `BattleEngine.TaleLayer`, which is the animator's tale, never the rules'; tempo and instruments stay. **No theme has a layer yet**: they are music for the user's ear, written with Carpathia's own themes.
+- **On screen**: the move menu's TALE button (`PageRight`; style guide, "Battle panels") arms a tale, each press the next that can be told; the sky is the tale's (`StageLights.TaleLight`), taken from the log's events and never from the rules' field (`ArchitectureTests`). The Book of Tales' screen lists the tales learned, a page each (style guide, "Menu screens"). The tale layers' switch is built (above); a Tale Form's own cue and the tale's field look are CP12's still.
+
 ## Terastallization (2026-10-18, plan 06 · R23)
 
 The rules are Pokémon Showdown's at the pinned commit (`sim/battle-actions.ts`' `canTerastallize`, `terastallize`, the power of 60 in `getDamage` and the same-type bonus in `modifyDamage`; `sim/pokemon.ts`' `getTypes` and `runEffectiveness`; `sim/battle-queue.ts`' `terastallize` order; `data/moves.ts`' Tera Blast and Tera Starstorm; `data/abilities.ts`' Tera Shift, Tera Shell, Teraform Zero and Embody Aspect; `data/pokedex.ts`' `forceTeraType`), behind `Ruleset.Terastallization` (the modern rules have it, Platinum's don't). Code: `Battle/Sim/BattleCore.Tera.cs`, `Battle/DamageCalculator.Tera.cs`, `Battle/BattleEngine.Tera.cs` for the screen and `Models/TeraType.cs`; tests: `TerastallizationTests`.
@@ -5612,12 +5629,12 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
   zone's matrix (212) to eight chunks and fills both sixes at once (`HgMaps.SafariCells`): the opening arrangement
   (Plains, Meadow and Savannah north; Peak, Rocky Beach and Wetland south) where HeartGold puts it, and the other six
   (Forest, Swamp, Marshland; Wasteland, Mountain, Desert) east of them in the same order. Every area is open from the
-  first visit. The machine in the hall says it can change nothing yet, and its attendant says why: arranging the
-  areas is a later session's, if ever.
+  first visit. The machine in the hall swaps no areas, and its attendant says so; since plan 38 · EX8 it arranges an
+  area's objects for the Owner (below, "The Johto Safari Zone's objects").
 - **Each area keeps its own wild Pokémon**, read from HeartGold's `safari_enc.json` (`FieldSystem_GenerateSafariEncounter`):
   ten slots met as often as one another, each at its level, the grass's species by the time of day as the rest of
-  Johto's are. The slots HeartGold adds for the objects placed in an area (and for days spent laid out) are left out
-  with the Customizer. Every area is named "Safari Zone", which is the place a Pokémon caught there was met.
+  Johto's are. The slots HeartGold adds for the objects placed in an area are laid in since plan 38 · EX8 (below).
+  Every area is named "Safari Zone", which is the place a Pokémon caught there was met.
 - **The Safari Game is HeartGold's: thirty balls and no steps** (`safari start endless`, `SafariGame.NoStepLimit`). The
   counter takes $500 and gives thirty Safari Balls; the game ends when the last is thrown (`common.SafariOutOfBalls`,
   which brings a Johto player back before the hall's counter) or when the player walks back out through the zone's
@@ -5643,7 +5660,7 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
   Route 48 plays his call as the player comes to it on a later day. The workmen on the gate's plaza come out with the
   second test (`FLAG_HIDE_SAFARI_ZONE_WORKERS`, set by the gate's own arrival until then), as HeartGold's do.
 - **The Owner** (`VAR_UNK_4057` 6) is greeted as one at the counter and still pays, as in HeartGold. What HeartGold asks
-  of an Owner after that (placing objects, `VAR_UNK_4057` 7 and on, `FLAG_UNK_183`) is a later session's.
+  of an Owner after that is placing objects (below); its `VAR_UNK_4057` 7 and on and `FLAG_UNK_183` are not built.
 - **The Safari Zone Link** (swapping zones with a friend) is closed: its counters say it isn't ready, as the wireless
   link is down elsewhere (decision 06 · 7).
 - **Cliff Cave's cracked rocks** stand only for a player with the National Pokédex: the cave's arrival takes them off
@@ -5652,8 +5669,37 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
   for the routes, Route 34's for the gate in the cliff, Union Cave's for Cliff Cave, the National Park's for the
   Safari Zone, its gate and its hall).
 - **Left for later sessions**: the Embedded Tower behind Route 47's hiker (warps 4 to 6 locked), Crasher Wake by
-  Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link),
-  the Area Customizer and objects, and the Safari Zone's Pokémon called by the objects.
+  Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link).
+
+### The Johto Safari Zone's objects (2026-11-13, plan 38 · EX8)
+
+- **The slots are HeartGold's; the objects are ours.** The pinned pokeheartgold's `files/arc/safari_enc.json` gives every
+  area's `bonus_mons`: ten for the grass, three for the water and two for each rod, each a species by the time of day, a
+  level and one or two conditions (an object type, `SAFARI_ZONE_OBJECT_TYPE_PLAINS`, `_FOREST`, `_PEAK` or `_WATER`, and a
+  count, 2 to 63), and nothing else: its `bonus_param` lists are empty and the cache holds no table of the objects, their
+  points or a rule of days. `--game heartgold --data` writes each area's slots into its file (`safariSlots`); the level is
+  the day's (HeartGold's night level differs by one for a few). The objects, their points and the days are ours.
+- **Twelve objects of ours** (`SafariObjects.Catalogue`, names under `safariObjects.name` in `ui.json`): a Flower Patch
+  (plains 1), Haystack (plains 2), Fence Post (plains 1, peak 1), Sapling (forest 1), Old Stump (forest 2), Mushroom Ring
+  (forest 1, water 1), Pebbles (peak 1), Boulder (peak 2), Stone Pillar (two by two, peak 4), Puddle (water 1), Reeds
+  (plains 1, water 1) and Pond (two by two, water 4). An area's store has three of each, and thirty may stand in an area
+  at once, HeartGold's number.
+- **Points are counted in the area alone**, from the day after an object is set down, and twice over once it has stood
+  ten days (`SafariObjects.Points`, `DaysToDouble`). Days are calendar days (`ApricornBox.DayOf`). An object moved is set
+  down afresh and counts from the next day again; one left where it stood keeps its day.
+- **A slot opens** once the area's points meet every count it asks; the k-th slot of a way, open, takes that way's slot
+  k of the area's own table (`SafariObjects.Lay`), its species by the time of day and its level. So the grass's ten can
+  all be changed and the water's first three and each rod's first two. Which slot a bonus takes is ours: HeartGold's
+  code for it isn't decompiled. Nothing is drawn: a step meets as often as without objects, and with none placed the
+  tables are the areas' own (the same lists).
+- **Who arranges**: the Owner (`VAR_UNK_4057` 6 and on, as HeartGold asks), at the Area Customizer: the machine asks which
+  of the twelve areas and opens the shared decorating screen over it (`safari objects`, `DecorationScreen`), the area's
+  open floor its room (walked tiles that are no warp, no tall grass, not within two tiles of the area's edge where the
+  ways between areas run, nor within two of the way in). Its attendant explains the rule to an Owner. The objects block
+  nothing (`PropType.SafariObject`, our own drawings, `SafariArt`), so no arrangement can shut a way. They are saved as
+  `SaveData.SafariObjects`, null while none stands, so no version was raised.
+- **Not built**: HeartGold's areas swapped in and out (the twelve stay side by side), objects earned by visits (all
+  twelve are in every store from the start), and the Safari Zone Link.
 
 ## The north of Johto, first part (2026-10-20, plan 20 · J10, part a)
 
@@ -6074,6 +6120,20 @@ well above 100 ([the study](../plans/studies/W4-level-curve-study.md), option B)
   Champion's), and `LevelCaps.TableOf(region, crossed)` maps it in a region crossed into: Kanto 70 to 104, Johto 111
   to 136, Hoenn 142 to 162, Unova 166 to 185. `levels-crossed.txt` holds every crossed place as met; `LevelLadderTests`
   holds the rules.
+- **The cap to 300** (plan 46 · CP15, 2026-11-12; decision 3 of 2026-11-09): `Ruleset.HighestLevel` and the modern
+  rules' cap are **300**, so that Carpathia climbs on from Paldea (its story about 262 to 286, its post-game to about
+  296). What it touched: every reader of `HighestLevel` (clamps all: a Pokémon made, loaded, relevelled, given by a
+  script, a staged foe's `hidelevel` level, the console's and the scenarios' levels, the online check, the save tool);
+  Erratic and Fluctuating go on by the same rule past 100 (at 300 Erratic 16,200,000 and Fluctuating 44,280,000, the
+  dearest, still far inside an int); the damage formula carries a hit under `Formulas.MostDamage` (2^28) between its
+  steps, so nothing wraps at 300 whatever the stats and modifiers, and no hit any battle had was near it; saves, the
+  Vs. Recorder's file and its replay take 1 to 300 with no change of format, so every older save loads as it was.
+  *Our ruling*: **the regions before Carpathia keep 260 as their top.** A mapping whose last pair ends at or under
+  `Ruleset.FormerHighestLevel` (260: every region's today) holds what it gives there (`LevelMapping.Top`), and a crossed
+  region's soft ceiling is held under the same (`LevelCaps.TopOf`): Galar's post-game ceiling, 110% of 242, stays 260
+  rather than 266 and Alola's 260 rather than 261, so raising the cap moved no level and no ceiling of a region already
+  built. A mapping that climbs past 260 (Carpathia's own `levels` and `caps`, written in a later session) reaches 300.
+  R31's moves past 100 still end at 260's last; moves of our own learned from 261 to 300 are owed.
 
 ## Regions (2026-10-24, plan 18 · W4, part b)
 
@@ -9371,6 +9431,7 @@ The user switched Alola as Kalos was switched: **`alola.json` says `"movement": 
 - **The camera** is Alola's own, `FieldCamera.Alola`: 46° down, 22° of view, 500 units away, lower and nearer than Kalos's, for the islands' sea and far shore (style guide, "Alola's camera"). Every outdoor place of Alola whose own header names no camera has it (`WorldMapBuilder.GrownCamera`); rooms and caves keep theirs.
 - **The kit**: Alola's people are drawn as their grown twins; the 41 looks Kalos's twins didn't cover were given theirs (style guide, "Alola's cast"). A rider of a ride on land is now drawn live, astride, in the grown kit (Kalos's lent Mamoswine too), on the ride's sprite at the grown field's size; in a chibi region nothing of it changed.
 - **A crossing** between Kalos and Alola, either way, stands the body on its tile's centre and keeps both free and grown; the skates are Kalos's alone and are off on arrival in Alola.
+- **Built to a grown body** (2026-11-12, the owed of the switch; style guide, "A grown region's buildings", "A ride's seat"): Alola's and Galar's buildings are built to the grown numbers (`GrownScale`: taller ground storeys, 56-texel doors, windows at 0.85 of a tile), Kalos not yet, since its towns were approved at the chibi numbers. A ride's seat is the species' own (`RideSeats`). Hau'oli City's overlay names the city stage (`battleArena` `City`), so battles on its streets and at the marina are fought on the street, as Castelia's and Nimbasa's are; the beach's sand and the sea keep theirs. **Brooklet Hill's beaches stay the sand stage**: a lake's beach is sand, and the engine's rule for a beach tile is one for every region; Iki Town stays the meadow, a village of grass round its stage.
 
 ## A friend in the partner's place; the friends' hall (2026-11-03, plan 13 · V20, V23)
 
@@ -10334,10 +10395,36 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   a second, and it stays within the map's view, sliding along its edge. A beacon stands over every one of Fly's places that is
   open, no other; Confirm lands at the one whose cell's middle is within three quarters of a cell of the flier, and Cancel at the
   open place nearest it (by its nearest cell; the lower spawn number where two are as near). It is refused before the region's
-  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. The screen,
-  the sky and the landing through Fly's own way are not built yet.
+  Hall of Fame, in a region with no town map, and with nobody to carry the player. Nothing in it draws from any chance. **The take-off
+  and the landing** (part a, built 2026-11-12): SOAR is the item button on Fly's choice (`TownMapScreen.AskSoar`, its hint drawn only
+  where the tab shown may be soared over, `SoarableTab`), over the region of the tab shown, from the player's own cell over the region
+  they stand in and from its map's start over another. The flier is whoever Fly's choice was opened with: the Pokémon whose Fly it is,
+  or the field helpers' wild helper. A refusal is a toast and the team comes back, as the Town Map's other refusals. The flier's and
+  the rider's models are asked for before the fade and never waited for by a frame (left out of the sky until made). Landing,
+  over a beacon or by Cancel, sets Fly's target to the place and runs `common.UseFly`, so the cut-in, the roamers scattered, the
+  open map's markers and a landing in another region are all Fly's own; nothing new is saved. **The sky** is drawn as the style
+  guide's "Soaring" says, with two simplifications of ours: the land and the sea are drawn unshaded by the scene's fog (the
+  picture is tinted by the hour's sun and sky instead, which dims it after dark), and the clouds' sheets are laid by a hash of the
+  region's name on a grid of five cells (a third of the grid's squares empty), drifting east at 0.12 cells a second and more with
+  the hour's wind, since a clear hour's wind is none and the clouds would never move.
+- **The places of the day** (EX7, part b, built 2026-11-12; `Overworld/SkyPlaces.cs`, `Data/skyplaces.json`, ours). Each region whose
+  Hall of Fame is built (Sinnoh, Kanto, Johto, Hoenn) names five or six cells of its town map in a `sky` list, each an islet, a grove,
+  a hollow or a peak, chosen over sea and mountain off every one of Fly's places. Two are lit on an even day and three on an odd one
+  (days counted from 1 January 2000), by a fixed rotation: the first lit moves on by one place a day and the rest are spread
+  evenly after it, so a date is always the same places and a week lights every one; nothing is drawn. Only the places of the region
+  the player stands in stand over it while soaring (landing on one in another region would be a crossing no vessel makes). Landing
+  lays the place on its region's own map (`SkyPlace<Region>`, one to a region, as every map belongs to one region, and never saved:
+  a game saved there wakes at its region's place to come back to, outside the town of the last Pokémon Center gone into
+  there, `SkyPlaces.ReturnPointFor`, since 2026-11-13) from a seed of its region, its
+  number and the day, by `FloorLayout` with five pieces of ours for each kind; its Pokémon are twelve slots of its kind's species,
+  never a legendary, a mythical or one of the region's own Pokédex, at its own game's post-game band (Sinnoh and Kanto 50 to 58,
+  Johto and Hoenn 48 to 56, mapped as any wild level in a region crossed into), seen in the field whatever the options say; its two or
+  three finds are item balls of a list of ours, each behind a daily flag of ours (`FLAG_DAILY_SKY_<REGION>_<n>_FIND_<k>`), so a new day
+  brings them back and nothing new is saved. A step back onto the beacon's tile lifts the player into the sky again, carried by the
+  Pokémon that brought them, else whoever on the team knows Fly, else the field helpers' Fly. No extra shiny roll is given.
 - **Not done in EX3.** The Repel's question when one wears off (it needs a script word to use an item; `common.RepelWoreOff` still says
   its line alone), the rifts' and the places' finds with the glint (EX5 and EX7), and the shots `ex20` to `ex26`.
+- **Unova's special tiles** (EX11; `Overworld/UnovaSpecialGrass.cs`, `Core/GameEngine.UnovaSpecial.cs`). Black 2's shaking-grass, rippling-water and rippling-rod tables were imported and never met; they are met on the day's patches, one candidate tile in 36 (`Density`), found by `SplitMix` over the day's number, the area's key and the tile alone (stateless, never `Dice`, so the same day always has the same patches and the next day others). There is no Hall of Fame gate: Black 2 has them from the start, and only Unova's areas have the tables. **Which kind an area's patches are is the area's own**: a key with "bridge" has shadows on its walkable tiles (the Driftveil Drawbridge's Ducklett line is the flyers Black 2 sends over its deck), a cave has dust clouds on its walkable floor, any other area with a shaking-grass table has shaking grass on its tall grass, and surfable water of an area with a rippling table ripples. The step's own roll (`Map.RollWildEncounter`, asked through `EncounterMoment.SpecialDay`, null outside Unova) meets a shaking patch or a ripple's table every time, as the Poké Radar's patch does (an Encounter step's draws are unchanged on any other tile and with no day in force); a rod cast into a ripple (`Map.Fish`) always bites with the rippling rod table (the data's rate is 1 everywhere, a flag and not a chance, so a ripple is taken to always have its fish, as a shaking patch its Pokémon). A dust cloud (`DustAt`: half items, a Gem of our own list of seventeen, half a slot of the area's shaking-grass table at one of its levels, decided from the seed) and a bridge's shadow (a slot of the area's table drawn on the field's chance as any wild Pokémon is) are met on the step onto their tile, once a day each: the tiles met are kept in memory and not saved. **The look** is plan 10 · F12's rustle on a shaking patch (the grass parted as a hard shake, leaves every 0.6 s), two rings spreading on a ripple, three puffs of dust on a cloud and two dark puffs low on a shadow (`FieldLife.UnovaSpecial.cs`). No Repel-or-lead rule is new: a patch meets as any wild Pokémon is (the lead's ability, Repel, Synchronize).
 ## Kalos's loose ends: the three Pokédexes, the whole playthrough, Route 16 to Kiloude City (2026-11-07, plan 23 · Z4, afterwards)
 
 What Z4 left, closed in our own words on X and Y's beats as they are publicly described.
@@ -11588,12 +11675,13 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   …`, a word of the script's `raid` (`docs/scripts.md`), its three raiders Hop with his starter's last stage and Zacian
   and Zamazenta at 70, each a trainer of ours with a team of one. The boss is Dynamaxed by the raid's own rule though
   Eternatus never Dynamaxes elsewhere (`NeverDynamax`): Eternamax is the giant here. Sword's first battle with Eternatus
-  (level 60, before Eternamax) is not fought: the scene tells of Leon's fall. Leon then hands over a Master Ball and
+  (level 60, before Eternamax) was not fought in GL6; GL7 added it ("After the Hall of Fame in Galar"). Leon then hands over a Master Ball and
   `raid catch` throws it at Eternatus itself (not the form), so the Pokémon caught is Eternatus at 60.
 - **The Slumbering Weald's first meeting is a staged battle** ("Staged battles"): `wildbattle "Zacian" 70 hidelevel
   untouchable passive endafter 3` in a Sword game, Zamazenta in a Shield one, before the fog closes in; a staged battle
   gives the Pokédex nothing and refuses every ball, so it is still `seen` by the script and `SpeciesSources` counts no
-  staged `wildbattle` as a way to a species (Zacian and Zamazenta stay owed to GL7).
+  staged `wildbattle` as a way to a species (Zacian and Zamazenta were owed to GL7, which meets them after the Hall of
+  Fame).
 - **A place's own light** (style guide, "Open world", "A place's own light"): an area of `world.json` may name `light`
   (`night`, `darkestDay`) and `lightWhile` (a flag). Spikemuth is held in the night whatever the hour (GL5's owed fault:
   it was drawn in the day's light), and Wyndon is under the Darkest Day's red while `FLAG_GALAR_DARKEST_DAY` is set. The
@@ -11606,6 +11694,90 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   avenue, 38 Marnie beaten, 39 Hop beaten, 40 the Darkest Day, 41 the altar, 42 Oleana beaten, 43 Eternatus caught and the
   sky clear, 44 Bede beaten, 45 Raihan beaten, 46 the Champion. Objectives 734 to 743, `galarFree` after them. A title
   defended, Leon's rematches and the plane on to Paldea are GL7's.
+
+## After the Hall of Fame in Galar (2026-11-12, plan 33 · GL7, its first part)
+
+- **The bot plays Galar whole** (GL6's "done when"): the playthrough bot's `Itinerary` takes legs of an open map beside
+  the grid's (`Leg.OpenTrigger`, `OpenTalk`, `OpenReach`: a trigger, a person or a marker of the open map by its name),
+  and the bot crosses between them by itself: a leg of a grid room, met in the open map, is gone for through the open
+  map's door into that room (or into a room whose ways lead there), and a leg of the open map, met in a room, by the
+  room's way out. Each open leg is done when its trigger's variable moves on, or when the leg's `Until` holds
+  (`VAR_GALAR_STORY`, a badge, a flag). A leg may vary its answers (`Leg.Vary`: Opal's quiz, where the first answer is
+  wrong for two of the three questions). `Itineraries.GalarWhole` is the four stretches of `Itineraries.Galar.cs`;
+  `PlaythroughGalarTests` plays the first chapter and the whole. As Kalos's run does, five Pokémon of level 80 stand on
+  the team before the first arrives and a Repel lasts the whole way: the story is what is tried. Galar's open land is
+  several parts that only grid rooms (the two mines, Glimwood Tangle) and trains join, so the bot goes through one such
+  room when no way over the ground reaches the leg, leaves a room by the door that has a way on, and keeps out of other
+  doors; the trains are people, so a white-out home would strand it, and the itinerary heals at the town's Pokémon
+  Center before every Leader and every match of the Cup.
+- **Sword's first battle with Eternatus is fought**: after Leon's fall on the Energy Plant's roof, `wildbattle "Eternatus"
+  60 hidelevel canlose`, a staged battle (no ball takes it, nothing reaches the Pokédex but the scene's `seen`), lost or
+  won, before it swells into Eternamax and the raid that can't fail. Its level is shown as ??? because `hidelevel` is
+  the staged word that keeps the balls away without making the foe untouchable or passive; Sword shows level 60.
+- **The version's legendary in the Weald, after the Hall of Fame**: the Leon's scene ends on the objective `galarWeald`
+  (744), and the altar's cylinder in the Slumbering Weald is a third trigger (`the_legend`, `VAR_GALAR_STORY` 46): Hop at
+  the altar, the rusted sword (Zacian, a Sword game) or shield (Zamazenta, a Shield one) carried out of the fog, and a
+  `wildbattle` at level 70 that may be caught. A battle won or run from leaves it in the fog for the next walk in; a
+  catch sets 47, and the other of the two is Hop's, in words only. **Sordward and Shielbert's plot is not built** (the
+  Dynamaxing at the stadiums and their two battles): the Weald's legend comes straight after the Hall of Fame. Zacian and
+  Zamazenta are off `GalarSpeciesTests.Owed`.
+- **Leon in the Battle Tower**: Leon stands in Rose Tower's lobby from `GalarHallOfFame` and battles once a day
+  (`FLAG_DAILY_GALAR_LEON_TOWER`) on a team of ours past the Cup's (`galar_leon_rematch`: Aegislash, Dragapult,
+  Rhyperior, Haxorus, Seismitoad, Charizard, 72 to 75); his first defeat sets `FLAG_GALAR_LEON_TOWER_WON`, the objective
+  `galarLeonTower` (745). **The Battle Tower as a ladder** (plan 33 · decision 5's facility, with its ranks and its
+  trainers) is not built: Leon is its master in words.
+- **The Laurel Circuit's Galar row** (plan 41): Leon on `galar_leon_rematch`, standing at 1,4 of the Laurel Court behind
+  `FLAG_HUB_COURT_LEON`, called after Kukui (Alola's `goto` now lands on Galar's row, which ends on the final won).
+  Galar's row of the gathering (Macro Cosmos's bay at Grayfall Keep) and Galar's case are still owed: the keep would
+  widen by an eighth bay, and the case waits for the user's outline.
+- **The plane on to Paldea** leaves from a room of ours, `Wyndon_Airfield` (a lounge in the station's west end, its
+  door on the station's north face at x -140, `wyndon_airfield_door`), the link's `DepartureMap` and Galar's `Harbour`
+  (6,4, beside her). She stands from `GalarHallOfFame` and is Galar's harbour as plan 18 · W8 has every finished region's:
+  her plane flies back to every region entered, and a return to Galar lands beside her (Galar had no `Harbour` before,
+  so another region's harbour could not have landed a player in Galar). While Paldea has no maps the way on is not
+  offered (in a game begun in Galar she says the destination isn't ready). GL7's "plane lands in Paldea" waits for plan
+  34 · PD1.
+- **Songs written, not wired**: `galar/wyndon.mml` (a civic march in D) and `galar/darkest_day.mml` (strings in D minor
+  under a choir) are ours, rendered for the user's ear; Wyndon still plays `galar/wedgehurst` and the Darkest Day
+  Wyndon's own until the user approves them. The Cup's and Eternatus's songs are owed.
+
+## After the Hall of Fame in Galar, part b (2026-11-13, plan 33 · GL7)
+
+Plan 33's six decisions stay at their recommendations; nothing here asked the user.
+
+- **The Mega Max den and Sonia's band** (plan 06 · R20c's questions 7 and 14, answered on 2026-10-25). Sonia stands in
+  Wedgehurst's lab from `GalarHallOfFame` (`sonia_lab`) and, to a bag holding both the Key Stone and the Dynamax Band,
+  gives the Mega Max Band (`FLAG_GOT_MEGA_MAX_BAND`); the player keeps both. A game begun in Galar has no Key Stone
+  (it is Kalos's), so she says where one comes from and gives nothing until it is brought. The den is `outrage_mega`
+  on the Lake of Outrage's south shore (`den_outrage_mega`): a den's file may name `opens` (a story flag; the den is
+  quiet, unlit and refuses a Wishing Piece until it is set, the one question `raid den`, `raid wish` and the beam ask,
+  `Raids.IsOpen`), `megaMax` (its raid sets `RaidTerms.MegaMaxDen` and `BattleSetup.MegaMaxDen`) and `levels` (65 to 70
+  here, over its stars' own); a row may name the `item` its boss holds. A Mega Max den's boss holding its stone Mega
+  Evolves as the raid begins ("its stone is reacting to the den's light") and so Dynamaxes into its `-Mmax` form
+  (`BattleCore.BeginTheRaid`); without the den's word it only Dynamaxes. Eight bosses of ours, every one a form with an
+  `-Mmax` of the data, Abomasnow in a Shield game and Lucario in a Sword one. A boss caught comes without its stone.
+- **Galar's Battle Tower ladder** (decision 5's facility). Rose Tower's receptionist runs it after the Hall of Fame
+  (`Models/Frontier/GalarTower.cs`, the script's `galartower`), the Frontier's rules lent as the Black Tower lends them:
+  three Pokémon of different species holding different items, copies at level 50, against trainers of the Frontier's
+  table, the room a rank higher every rank from the second (the eighth from the ninth rank on), each rank's third
+  battle from the room's bosses. **Ten ranks of ours**, never Sword's names: three wins take a rank up; a loss ends the
+  run and from the fifth rank on takes a win back, never a rank; at the tenth, the Master Rank, the third battle is
+  Leon's, his team of ours' last three at level 50, and beating him starts the Master Rank's count again. A win earns
+  one Battle Point and one more for every third rank, handed over as the run ends. Everything is the story's
+  `VAR_GALAR_TOWER_*`: no `FrontierFacility`, stat or save field. Sword's doubles ladder and its rental teams are not
+  built; the battles are fought in the lobby over the dark, as the Black Tower's are, with no battle room.
+- **Sordward and Shielbert** (Sword's post-game beats, told in two stadiums at our scale). Shielbert stands on
+  Motostoke's pitch from `GalarHallOfFame`: he Dynamaxes the stadium's Coalossal, raided beside Hop, Sonia and Leon
+  (three trainers of ours, a raid that can't fail), and battles (`galar_shielbert_1`). Beaten, he sends the player to
+  Hammerlocke, where Sordward does the same with Duraludon and battles (`galar_sordward_1`); beaten, the stadiums are
+  quiet (`FLAG_GALAR_SORDWARD_BEATEN`). Sword's other stadiums, the brothers' visit to the Slumbering Weald and the
+  rusted sword's part in it are not told, and **the arc does not gate the Weald's legend**: GL7's first part opened the
+  legend straight after the Hall of Fame, and a save may already stand at `VAR_GALAR_STORY` 47, so the two run side
+  by side. Objectives `galarShielbert` (746) and `galarSordward` (747). Their class is `Pokémon Trainer`, no new class;
+  their looks (`sordward`, `shielbert`) are chibi stand-ins as the cast before them.
+- **Still owed**: Route 10 as land (a bake), the rest of the Wild Area's species, the gathering's Galar bay, the songs,
+  the shots of GL1 to GL6, the voices of the new lines designed by ear, and the bot playing the Weald's catch (GL7's
+  done-when: the bot's itinerary has no leg that throws a ball).
 
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
@@ -11742,9 +11914,22 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   (a battle's way in, a door, a warp, a crossing), and as a script begins in the open field. A save keeps whether the
   player rides (`SavedOpenPlace.Mounted`, absent when on foot, so no save version was raised), and a game taken up
   wakes mounted only where the movement in force lists `Mount` and a mount is had; anywhere else on foot.
-- **Owed**: the navigation mesh's links for the jump, the glide and the climb (the baker makes none yet;
-  `OpenNavMesh.Allowed` lets the `Climb` and `Glide` flags through once granted), the bot riding, the camera's lead,
-  the picnic, Let's Go from the saddle, and the rig (FM13: built 2026-11-12, below).
+- **The mount's links on the navigation mesh** (2026-11-13, plan 34 · PD2). A region whose `world.json` says
+  `"mount": true` (Paldea's, the lab's) bakes four kinds of link beside walking, drops and swims, each off the mesh from
+  a side of a span that joins nothing, one of each kind for a pair of polygons and none where walking or a step already
+  goes: a **hop** (`OpenNavFlags.Jump`) onto walked ground over a step and no more than `HopHeight` (0.9 m) over the
+  feet; a **high jump** (`HighJump`) onto ground up to `HighJumpHeight` (2.4 m); both the nearest of four probes 0.6 to
+  2.5 m past the side, open over the takeoff and at the knees and head to the landing (the jumps clear a tenth more than
+  their heights, so the links keep that tenth spare); a **climb** (`Climb`) where the face before the side is
+  climbable every half metre from the knees to its top, onto the walked ground just past it, up to 40 m; and a
+  **glide** (`Glide`, with `Swim` where it lands in water swum) off the side to the furthest of five landings 6 to 20 m
+  out at least 2 m under the feet that the glide reaches (the trot's 6 m/s over the 2 m/s sink, four fifths of it), its
+  line clear at the knees and the head. A way down a face is a drop, which every body has. **Only a mounted body takes
+  them**: `OpenNavMesh.Allowed(grants, mounted)` gives the hop to any mounted body and the high jump, the climb and the
+  glide with their grants, and nothing of the mount's on foot whatever the grants say, so no walker, person, follower
+  or wild Pokémon is routed over one. A region with no mount bakes the mesh it always had, to the byte (Galar's).
+- **Owed**: the bot riding (the playthrough bot follows walking paths only; plan 34 · PD2's owed line), the camera's
+  lead, the picnic, Let's Go from the saddle, and the rig (FM13: built 2026-11-12, below).
 
 ## The mount as a rig (2026-11-12, plan 30 · FM13)
 
@@ -12268,6 +12453,36 @@ Black and White's sports days in Nimbasa City's stadiums, on Black 2's fields an
   (`nimbasa_city_4.txt`'s and `_9.txt`'s `OnEnter`, marked as a scene): the bars, the camera's path over the rail, the
   crowd's cheer and the announcer's lines. A crowd's bed in the ambience is owed.
 
+## The arcade (2026-11-12, plan 42 · PS6)
+
+Two puzzle cabinets of ours, the match-three (an idea from Pokémon Shuffle) and the picture-logic puzzle (an idea from
+Picross); no game of the series had either in its world, so every rule and number here is ours.
+
+- **Where** (decision 2, its recommendation, bent): every door on Lumiose's boulevards had been given a room by plans 23
+  and 37 before the arcade came, so the arcade is a room of ours under Lumiose Station (`LumioseCity_Arcade`), come into
+  through a doorway in the station's back wall at (6, 2). Its clerk hands a Coin Case to whoever has none (a game begun
+  in Kalos may never have had one), sells fifty coins for $1,000 as Goldenrod's does, and keeps a prize counter of ours
+  (`GameCornerPrizes.Lumiose`: a Heart Scale 150, a Star Piece 250, a PP Up 400, a Rare Candy 500, an Ability Capsule
+  900, a Bottle Cap 1,500).
+- **A stage of the match-three** (`MatchThree`, `Data/cabinets.json`): eight stages in order, the first not cleared
+  offered at the cabinet (the last again once all are). A board is six by six, dealt cell by cell never three of a kind
+  beside one another, dealt again while no swap would make a line. Its four species are the team's first four (each
+  once, no Egg; decision of this session: no picking screen, the team's order is the pick), the table's helpers filling
+  any place left. Two neighbours swapped must make a line, or nothing happens and nothing is spent. Each run of three
+  deals 30, a run of four 45 and of five 60, times the run's species' first type against the foe's types on the
+  battle's chart under the modern rules, times 1 + a quarter for each cascade after the first, rounded down. What is
+  cleared falls and is refilled from the top; a board left with no swap is shuffled. Every draw is SplitMix's from the
+  stage's seed. A stage cleared pays its coins and its few coins for each swap left over; one run out of swaps, or given
+  up, pays nothing.
+- **A picture** (`PictureLogic`, `Silhouettes`): the next species the Pokédex has seen, in National order, not solved
+  yet, whose silhouette (its model seen from its left, the longer side filling the grid, at least 12% filled) line logic
+  alone finishes at a grid of 10, 15 or 20, the smallest that does; a species whose silhouette doesn't solve at any size
+  is passed over. Filling a cell outside the picture is a mistake: the cell is crossed and counted. A picture pays 20,
+  40 or 60 coins by its size, less 3, 4 or 5 a mistake, never under 5, 8 or 10; solved, it is kept by species with its
+  size. Silhouettes are kept this run only (a cache of them beside the sprites is owed).
+- **What is kept** (`CabinetRecords`, `SaveData.Cabinets`, null while empty: no version raised): the stages cleared,
+  each stage's best score, the pictures solved by species. The gallery's page of pictures solved is owed.
+
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
 Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and
@@ -12482,6 +12697,32 @@ the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbe
   residents from the floor's own, so a seed and the actions are the whole run.
 - **What is not taken**: no guild, rank, region, town, partner, mascot, item or move of Mystery Dungeon's; no abilities,
   held items, type of a tile, belly item, IQ, team skill or wonder orb.
+- **On screen** (SD8): a run is begun by a script's `delve go "<hollow>"`, which sends the team's **first two** who may go
+  down (`DelveHome.PairOf`; no choosing screen, ours: a player puts the two they want at the head of the team first). The
+  floor is the map `DelveFloor`, laid afresh behind a fade on every floor; the leader never takes the field's own steps,
+  so no wild Pokémon, warp, trigger, autosave or arrival script is met below. The stairs are the rules' (the map has no
+  script on them). A run is not saved: the window's close button and a crash leave it as if never begun, the team's own
+  Pokémon untouched.
+- **The hollows** (SD9, the user's answer 48a; `Data/hollows.json`, ours): Brinecave (a sea cave, four floors at 30,
+  Lapras its guardian), the Rootwood (a wood, five at 40, Tangrowth), Heartpeak (a dark cave, six at 50, Aggron) and the Old
+  Tower (dark, seven at 60, Dusknoir). **A hollow opens at the camp's rank**, which is the number of hollows cleared, so
+  each opens the next. **The guardian** stands on the open tile nearest the last floor's stairs at three levels over the
+  hollow's, wakeful and never shy; the stairs end the run only once it is knocked out (the event `Guarded` otherwise), and
+  it never asks to join.
+- **The board** (SD9, answer 62a's brisk and kind words): three requests a day, drawn by `SplitMix` from the day's number
+  (`SpecialEncounters.DailyNumber`) over the open hollows: a rescue (reach floor N and come back without falling), a find
+  (bring an item of the hollow's up), a friend (bring a recruit of a species home) or a clear. A run's end marks every one
+  of today's it does and puts its prize at the camp (`hollows.json`'s `prizes`: three Great Balls, two Super Potions, a
+  Heart Scale, a Rare Candy), handed over by the keeper (`delve reward`).
+- **Coming home** (SD9): what the bag found is put in the player's bag on a clear or a rope, nothing on a fall. A recruit
+  at a clear's end comes home whole, holding nothing, met in the hollow at its level, seen and caught, as a gift the
+  Nuzlocke's gifts clause counts (`Nuzlocke.Gift` on the camp's place), onto the team or into the PC, with its id
+  (`GiveIds`); a run with no catching or a Monotype it breaks leaves it in the hollow. **A resident's species is the
+  randomiser's** where the run randomises species (mapped as it is made, so the recruit is the species met).
+- **Medals** (SD9): the first clear of each hollow is a medal of its own (`MedalFacts.HollowBrinecave` and its fellows,
+  judged from the record's clears), in the League tab beside Lockwork's, since the Journey tab is full.
+- **The moves' list** (SD8) names each move's reach on the floor beside its PP (`delve.reach.*`: ahead, all round, the
+  room, itself, the team, a friend), and "battles only" for a move the floor refuses, so the list says what the rules do.
 
 ## The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk (2026-11-12, plan 21's leftovers)
 
@@ -12554,3 +12795,51 @@ built; what is still owed is listed at the end and in plan 21's last note.
 - **What every type has, Sound has**: its words (`types.Sound`, Romanian *Sunet*), its sign (a note), its colour (teal `64,168,152`), its cry's timbre, its move, Z-Move and Max Move sounds and looks, the trainer AI's chart (the AI reads `TypeChart`), Tera Sound (a Tera type like any, and its Tera Shard), the Sound Gem, the Tuning Fork (a fifth more, as the boosters), the Taci Berry (*a tăcea*, to be silent: halves a super-effective Sound hit, as the resist berries) and the Sonorium Z, and plan 39's two materials of a type (the Hollow Reed and the rarer Echo Crystal). Items 9920 to 9924; moves 3090 and 3091 (3073 to 3089 free; 3101 on is CP10's).
 - **What leaves it out**: Hidden Power (Platinum's sixteen), Arceus's plates and Silvally's memories (decision 13), the Battle Hall's board (Platinum's seventeen), the Legend Plate's Judgment, the Pokétch's Move Tester, and whatever draws or lists the games' types (`TypeChart.GamesTypes`): the randomiser's shuffle (a seed deals what it always dealt), the Friend Safari, the sparring room, Conversion 2 (so no battle's draw moves) and the help's chart (shown eighteen wide until a shot of it nineteen wide is looked at). A choice of a type the player makes (the Monotype run, the Pokédex's search) offers the types some species has (`TypeChart.TypesWithSpecies`), so Sound joins it by itself with the first Sound species.
 - **What must not move**: no species or move of the games has the type, so the golden battles of both rules stand; the Sound items are kept out of the battle corpus's draw (`BattleCorpus`), and the oracle's scenarios never draw Sound (Showdown has no such type).
+
+## Paldea's first chapter, on the open world (2026-11-13, plan 34 · PD1, its first session)
+
+- **The plan's decisions, unanswered, at their recommendations** (plan 34 · "Decisions for the user"): (1) about a third
+  of the original's distances; (2) the version is the player's choice, kept as `VAR_PALDEA_VERSION` (1 Scarlet, 2
+  Violet); (3) to (6) are later sessions' (the gyms' order, sandwiches, battles on the stages of plan 32 · decision 3,
+  the expansions last). Each is open to the user's word.
+- **The version and the mount are one choice.** Plan 34 has the version decide the legendary; plan 30 · decision 14 has
+  the player choose the legendary at the original's beat, both offered once in a scene of ours. They are made one fact:
+  in Inlet Grotto both lie worn out after the Houndour's chase, and the one the player shares the sandwich with sets
+  `VAR_PALDEA_VERSION` and `VAR_PALDEA_MOUNT` together (the red one 1 and Koraidon, the violet one 2 and Miraidon), so
+  the two can never disagree; the other leaves, to come back as its counterpart in a later chapter. A Champion crossing
+  in plays the same scene. Nothing before the grotto is the version's (the introduction is the director's, the tables
+  of PD1's places are both versions').
+- **The mount is had from the grotto on**: `VAR_PALDEA_MOUNT` set is all plan 30 · FM12's rules ask before the trot
+  (`MountRules.WhyNot`), as Scarlet and Violet's legendary carries its rider from the opening chapter; its five powers
+  wait for the Titans' flags (PD4). The original's first ride is a beat of its own; here it is the mount's key.
+- **The introduction's speaker is Director Clavell**, the one person of the opening every game meets: the professor is
+  Sada or Turo by the version, which a new game hasn't chosen when the introduction runs. The region file's `professor`
+  record is his, with lines of ours.
+- **Where Paldea's land comes from.** Hand-built on plan 32's engine as data (`Data/world3d/paldea`), as Galar's is,
+  baked by `dotnet run --project tools/OpenWorldBake -- paldea` into `baked/` (84 chunks, about 9.6 MB, held by
+  `PaldeaTests.TheBakeIsWhatTheDescriptionsGive`). One open map, `Paldea`, of five areas south to north: Cabo Poco on its
+  cape (the player's house, the president's house on its hill with the terrace over the sea), Poco Path with the
+  lighthouse on its knoll and the beach under the cliffs (reached by a track down, its cliffs dropped from), Los Platos,
+  the South Province's first area, and Mesagoza with its plaza and the academy's hill at the head of the great stairs.
+  Its present edges are banks too steep to climb; the sea west and south. Keys: `cabo_poco`, `poco_path`, `los_platos`,
+  `south_province_area_one`, `mesagoza`. **Its chunks' rectangle** is `[-3, -12, 2, 1]`, Cabo Poco near the origin, so
+  the rest of the region grows north and east without moving these places; the whole region at decision 1's scale
+  (about 3 km square, some 8,800 chunks as one rectangle, about a gigabyte of bake) is a question for the user before PD3
+  (see plan 34's "PD1 as built").
+- **Rooms**: six grid map files laid out from rooms of the same shape (the player's house on two floors and Nemona's
+  house from Postwick's, Inlet Grotto from the Galar Mine with one way out, Los Platos's Pokémon Center from
+  Wedgehurst's, the academy's entrance hall from the research lab). A new game (`--region Paldea`) wakes in the bedroom
+  (4, 6); a Champion crossing in from Galar lands inside the house's door (`CaboPoco_PlayersHouse_1F` 6, 10); **a return
+  to Paldea lands inside Los Platos's Pokémon Center** (its `Harbour`: the original has no airport, and the plane's
+  return needs a spot). The plane from Galar's airfield (plan 33 · GL7) lands here now.
+- **The first chapter** (our words on Scarlet and Violet's beats as they are publicly told): `VAR_PALDEA_STORY` 0 to 7
+  (`cabo_poco.txt`'s header): the director at home on the first morning, the three on the president's terrace with the
+  Pokédex and Nemona's first battle (her team the starter strong against the player's), the roar on the beach, the two
+  in Inlet Grotto, Nemona's lesson in catching at the lighthouse (five Poké Balls), Nemona at Mesagoza's south gate, and
+  the director's welcome in the entrance hall with **the Tera Orb, given only to a bag without one**, as Galar's
+  Dynamax Band is. Objectives 800 to 806 and `paldeaFree` 899, English and Romanian. `common.PaldeaNewGame` hides the
+  chapter's people until their scenes. Looks of ours: `nemona`, `clavell`, `paldea_mom`. Trainers of ours in
+  `Data/world/paldea/trainers.json` (Nemona's three, two Students, the class `Student` new to the table).
+- **The sample pack's Tidemark moves after Paldea**, now the last region with maps: its ferryman stands in Los Platos's
+  Pokémon Center (`samples/packs/tidemark-isle`, `docs/packs.md`), and with Paldea at the chain's end nothing goes on
+  from Tidemark.

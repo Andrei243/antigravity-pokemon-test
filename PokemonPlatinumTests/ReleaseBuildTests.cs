@@ -131,7 +131,7 @@ public class ReleaseBuildTests
             Assert.Contains("<ShippedBuild>true</ShippedBuild>", profile);
         }
         // What the zip carries beside the game, and the list --verify reads
-        foreach (string shipped in new[] { "docs/playing.md", Manifest.FileName, "THIRD-PARTY-NOTICES.md", "LICENSE", "README.md", "mesh-cache" })
+        foreach (string shipped in new[] { "docs/playing.md", Manifest.FileName, "THIRD-PARTY-NOTICES.md", "LICENSE", "README.md", "mesh-cache", "built-models", "sculpt all", "game/built/models" })
             Assert.Contains(shipped, workflow);
         Assert.True(File.Exists(Path.Combine(root, "docs", "playing.md")));
         Assert.Contains("## [Unreleased]", File.ReadAllText(Path.Combine(root, "CHANGELOG.md")));

@@ -8,11 +8,16 @@ public sealed class NavReport
 {
     public int Triangles, Walkable, Steps, Steep, Columns, Spans, Swum, Unclear, Walled, Polygons, Portals, StepLinks, DropLinks, SwimLinks, Pieces, Largest;
 
+    /// <summary>The mount's links (plan 34 · PD2), made only for a region that is ridden.</summary>
+    public int HopLinks, HighJumpLinks, ClimbLinks, GlideLinks;
+
     public override string ToString() =>
         $"{Triangles} triangles of level 0 and the boxes' tops: {Walkable} walkable ({Steps} of them a steep band no higher than a step), {Steep} too steep or facing down; "
         + $"{Columns} columns of {NavBake.Cell} m with {Spans} places a body stands ({Swum} of them swum), {Unclear} under something lower than a body, {Walled} nearer a wall than a body's radius; "
         + $"{Polygons} polygons, {Portals} shared edges each way, {StepLinks} steps, {DropLinks} drops and {SwimLinks} swims off the mesh; "
-        + $"{Pieces} pieces joined by walking and drops, the largest {Largest} polygons";
+        + $"{Pieces} pieces joined by walking and drops, the largest {Largest} polygons"
+        + (HopLinks + HighJumpLinks + ClimbLinks + GlideLinks > 0
+            ? $"; the mount's {HopLinks} hops, {HighJumpLinks} high jumps, {ClimbLinks} climbs and {GlideLinks} glides" : "");
 }
 
 /// <summary>
@@ -86,10 +91,11 @@ public static class NavBake
     /// <summary>
     /// The mesh of a region's level-0 chunks (each <see cref="BakedChunk.Level"/> 0), with the map's boxes and its water
     /// laid by hand, and the solid trunks of <paramref name="trees"/> (<see cref="OpenTrunks"/>), pillars after the boxes as
-    /// the game's collision has them. <paramref name="report"/>, if given, is filled with what was found.
+    /// the game's collision has them. <paramref name="report"/>, if given, is filled with what was found. With
+    /// <paramref name="mount"/> (a region that is ridden, plan 34 · PD2) the mount's links are made too (<see cref="MountLinks"/>).
     /// </summary>
     public static OpenNavMesh Build(IEnumerable<BakedChunk> level0, IEnumerable<OpenBox>? boxes = null, IEnumerable<OpenWaterBox>? waters = null,
-        NavReport? report = null, IEnumerable<OpenTree>? trees = null)
+        NavReport? report = null, IEnumerable<OpenTree>? trees = null, bool mount = false)
     {
         report ??= new NavReport();
         var chunks = level0.OrderBy(c => c.ChunkZ).ThenBy(c => c.ChunkX).ToList();
@@ -414,11 +420,192 @@ public static class NavBake
             else if ((link.Flags & OpenNavFlags.Swim) != 0) report.SwimLinks++;
             else report.StepLinks++;
         }
-        links.Sort((x, y) => x.From != y.From ? x.From.CompareTo(y.From) : x.To != y.To ? x.To.CompareTo(y.To) : x.OffMesh.CompareTo(y.OffMesh));
+        if (mount) links.AddRange(MountLinks(ground, tris, byKey, spans, cells, polygons, joinedPolygons, off, report));
+        links.Sort((x, y) => x.From != y.From ? x.From.CompareTo(y.From) : x.To != y.To ? x.To.CompareTo(y.To)
+            : x.OffMesh != y.OffMesh ? x.OffMesh.CompareTo(y.OffMesh) : ((byte)x.Flags).CompareTo((byte)y.Flags));
 
         var mesh = new OpenNavMesh(vertices, polygons, links);
         (report.Pieces, report.Largest) = Pieces(mesh);
         return mesh;
+    }
+
+    /// <summary>How far past a span's side the mount's jumps and climbs look for the ground above, in metres.</summary>
+    public static readonly double[] RiseProbes = { 0.6, 1.0, 1.6, 2.5 };
+
+    /// <summary>How far out a glide's landing is looked for, in metres: past the drops' probes, as far as the glide reaches.</summary>
+    public static readonly double[] GlideProbes = { 6, 9, 12, 16, 20 };
+
+    /// <summary>The highest face a climb is made up, in metres over its foot.</summary>
+    public const double MostClimb = 40;
+
+    /// <summary>The least a glide drops, in metres: under it a drop does as well.</summary>
+    public const double LeastGlide = 2;
+
+    /// <summary>
+    /// The mount's links (plan 34 · PD2; rulings, "The mount on the open world"), from each side of a span on the ground
+    /// that joins nothing, one of each kind at most, each a way only a mounted body takes and none where walking or a
+    /// step already goes:
+    /// <list type="bullet">
+    /// <item>a <b>hop</b> (<see cref="OpenNavFlags.Jump"/>) onto walked ground over a step and no more than
+    /// <see cref="Body.HopHeight"/> over the feet, a <b>high jump</b> (<see cref="OpenNavFlags.HighJump"/>) onto ground up to
+    /// <see cref="Body.HighJumpHeight"/>, the nearest the probes find, open over the takeoff and the landing;</item>
+    /// <item>a <b>climb</b> (<see cref="OpenNavFlags.Climb"/>) where the face before the side is climbable
+    /// (<see cref="OpenGround.Climbable"/>) every half metre from the knees to the top, onto the walked ground just past
+    /// its top;</item>
+    /// <item>a <b>glide</b> (<see cref="OpenNavFlags.Glide"/>) off the side to the furthest landing of
+    /// <see cref="GlideProbes"/> at least <see cref="LeastGlide"/> under the feet that the glide reaches (the trot's speed
+    /// over the sink, with a fifth to spare), its way clear.</item>
+    /// </list>
+    /// A way down a face is a drop, which every body has. Swimming spans make none.
+    /// </summary>
+    private static List<OpenNavLink> MountLinks(OpenGround ground, List<Tri> tris, Dictionary<long, int> byKey, List<Span> spans,
+        Dictionary<(int, int), List<int>> cells, List<OpenNavPolygon> polygons, HashSet<(int, int)> joined,
+        SortedDictionary<(int, int), (double Length, OpenNavLink Link)> steps, NavReport report)
+    {
+        var found = new SortedDictionary<(int, int, byte), (double Length, OpenNavLink Link)>();
+        var near = new List<int>();
+        void Keep(OpenNavLink link, double length, bool longest = false)
+        {
+            if (joined.Contains((link.From, link.To)) || steps.ContainsKey((link.From, link.To))) return;
+            var key = (link.From, link.To, (byte)link.Flags);
+            if (!found.TryGetValue(key, out var best) || (longest ? length > best.Length + 1e-9 : length < best.Length - 1e-9)) found[key] = (length, link);
+        }
+        int PolygonOf(double x, double z, double feet, bool swim)
+        {
+            int pi = (int)Math.Floor(x / Cell), pk = (int)Math.Floor(z / Cell);
+            if (!cells.TryGetValue((pi, pk), out var there)) return -1;
+            int q = -1;
+            double nearest = 0.3;
+            foreach (int o in there)
+                if (spans[o].Swim == swim && Math.Abs(spans[o].Feet - feet) < nearest) { nearest = Math.Abs(spans[o].Feet - feet); q = spans[o].Polygon; }
+            return q;
+        }
+        foreach (var s in spans)
+        {
+            if (s.Swim) continue;
+            double cx = (s.I + 0.5) * Cell, cz = (s.K + 0.5) * Cell;
+            foreach (var (dx, dz, side) in new[] { (1, 0, s.East), (-1, 0, s.West), (0, 1, s.South), (0, -1, s.North) })
+            {
+                if (side >= 0) continue;
+                double mx = cx + dx * Cell / 2, mz = cz + dz * Cell / 2;
+                var from = OpenPos.FromMetres(mx, s.Feet, mz);
+
+                // A hop or a high jump up
+                foreach (double reach in RiseProbes)
+                {
+                    double px = mx + dx * reach, pz = mz + dz * reach;
+                    if (Above(ground, s.Feet + Body.HighJumpHeight, px, pz) is not { } top || top <= s.Feet + Body.StepUp + 1e-6) continue;
+                    int q = PolygonOf(px, pz, top, swim: false);
+                    if (q < 0 || q == s.Polygon) continue;
+                    if (!Clear(ground, cx, cz, s.Feet, top + Body.Height) || !Open(ground, mx, s.Feet, mz, dx, dz, reach, top, drop: false)) continue;
+                    var flags = top - s.Feet <= Body.HopHeight ? OpenNavFlags.Jump : OpenNavFlags.HighJump;
+                    Keep(new OpenNavLink(s.Polygon, q, from, from, flags, true, OpenPos.FromMetres(px, top, pz)), reach);
+                    break;
+                }
+
+                // A climb up a climbable face
+                if (ClimbableAhead(ground, near, mx, s.Feet + 0.8, mz, dx, dz) is { } face)
+                    foreach (double reach in RiseProbes)
+                    {
+                        double px = mx + dx * (face + reach), pz = mz + dz * (face + reach);
+                        if (Above(ground, s.Feet + MostClimb, px, pz) is not { } top || top <= s.Feet + Body.HighJumpHeight) continue;
+                        int q = PolygonOf(px, pz, top, swim: false);
+                        if (q < 0 || q == s.Polygon) continue;
+                        bool whole = true;
+                        for (double h = s.Feet + 1.3; h < top - 0.3 && whole; h += 0.5)
+                            whole = ClimbableAhead(ground, near, mx, h, mz, dx, dz) is not null;
+                        if (!whole) break;
+                        Keep(new OpenNavLink(s.Polygon, q, from, from, OpenNavFlags.Climb, true, OpenPos.FromMetres(px, top, pz)), top - s.Feet);
+                        break;
+                    }
+
+                // A glide off a height, as far as it reaches
+                for (int g = GlideProbes.Length - 1; g >= 0; g--)
+                {
+                    double reach = GlideProbes[g];
+                    double px = mx + dx * reach, pz = mz + dz * reach;
+                    if (Landing(ground, tris, byKey, s.Feet, px, pz) is not { } land) continue;
+                    double fall = s.Feet - land;
+                    if (fall < LeastGlide || reach > fall * Body.TrotSpeed / Body.GlideSink * 0.8) continue;
+                    int q = PolygonOf(px, pz, land, swim: false);
+                    if (q < 0) q = PolygonOf(px, pz, land, swim: true);
+                    if (q < 0 || q == s.Polygon) continue;
+                    if (!GlideClear(ground, mx, s.Feet, mz, px, land, pz)) continue;
+                    var flags = OpenNavFlags.Glide | (polygons[q].Swim ? OpenNavFlags.Swim : OpenNavFlags.None);
+                    Keep(new OpenNavLink(s.Polygon, q, from, from, flags, true, OpenPos.FromMetres(px, land, pz)), reach, longest: true);
+                    break;
+                }
+            }
+        }
+        var links = new List<OpenNavLink>();
+        foreach (var (_, (_, link)) in found)
+        {
+            if ((link.Flags & OpenNavFlags.Jump) != 0) report.HopLinks++;
+            else if ((link.Flags & OpenNavFlags.HighJump) != 0) report.HighJumpLinks++;
+            else if ((link.Flags & OpenNavFlags.Climb) != 0) report.ClimbLinks++;
+            else report.GlideLinks++;
+            links.Add(link);
+        }
+        return links;
+    }
+
+    /// <summary>The highest walkable ground at x, z no higher than <paramref name="highest"/>, with nothing over it lower than a body; null where there is none, or water stands over it.</summary>
+    private static double? Above(OpenGround ground, double highest, double x, double z)
+    {
+        double? roof = null;
+        foreach (var (y, index) in ground.Column(x, z))
+        {
+            var face = ground[index];
+            if (y > highest + 1e-6 || !face.FacesUp) { roof = y; continue; }
+            if (!face.Walkable) return null;
+            if (roof is { } r && r - y < Body.Height) return null;
+            if (ground.WaterAt(x, z) is { } w && w > y) return null;
+            return y;
+        }
+        return null;
+    }
+
+    /// <summary>Whether nothing stands over x, z between two heights (the takeoff's column, open to the jump's top).</summary>
+    private static bool Clear(OpenGround ground, double x, double z, double feet, double top)
+    {
+        foreach (var (y, _) in ground.Column(x, z))
+            if (y > feet + 0.02 && y <= top) return false;
+        return true;
+    }
+
+    /// <summary>
+    /// How far along dx, dz from x, z at height y the nearest face is, where it is a climbable face (steep, of
+    /// <see cref="OpenGround.Climbable"/>) within a metre; null where none is.
+    /// </summary>
+    private static double? ClimbableAhead(OpenGround ground, List<int> near, double x, double y, double z, double dx, double dz)
+    {
+        if (ground.Raycast(new OpenVec(x, y, z), new OpenVec(dx, 0, dz), 1.0) is not { } hit) return null;
+        var at = new OpenVec(x + dx * hit, y, z + dz * hit);
+        ground.Near(at.X, at.Z, 0.2, near);
+        foreach (int i in near)
+        {
+            var t = ground[i];
+            if (t.Walkable || !ground.Climbable(i)) continue;
+            var gap = OpenTriangles.ClosestPoint(at, t.A, t.B, t.C) - at;
+            if (gap.X * gap.X + gap.Y * gap.Y + gap.Z * gap.Z < 0.05 * 0.05) return hit;
+        }
+        return null;
+    }
+
+    /// <summary>Whether a glide's line from the takeoff to the landing passes through nothing at the knees and at the head.</summary>
+    private static bool GlideClear(OpenGround ground, double x0, double y0, double z0, double x1, double y1, double z1)
+    {
+        foreach (double over in new[] { Body.StepUp + 0.2, Body.Height - 0.25 })
+        {
+            var a = new OpenVec(x0, y0 + over, z0);
+            var b = new OpenVec(x1, y1 + over, z1);
+            var way = b - a;
+            double length = Math.Sqrt(way.X * way.X + way.Y * way.Y + way.Z * way.Z);
+            if (ground.Raycast(a, way * (1 / length), length) is not null) return false;
+        }
+        foreach (var (yy, _) in ground.Column(x1, z1))
+            if (yy > y1 + 0.05 && yy <= y1 + Body.Height) return false;
+        return true;
     }
 
     private static int FloorDiv(int value, int by) => (int)Math.Floor(value / (double)by);

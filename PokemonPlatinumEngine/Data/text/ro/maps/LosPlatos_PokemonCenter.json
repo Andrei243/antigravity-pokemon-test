@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Los Platos Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon din Los Platos"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzător"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Paldea the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          "Vânzător: Bun venit! În Paldea, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
+        ]
+      }
+    },
+    "student": {
+      "name": {
+        "en": [
+          "Student"
+        ],
+        "text": [
+          "Elev"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm on my treasure hunt! Mesagoza's just up the road, past the fields. Everyone starts there."
+        ],
+        "text": [
+          "Sunt în vânătoarea de comori! Mesagoza e chiar în susul drumului, după câmpuri. Toată lumea începe acolo."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -3,6 +3,12 @@
   // town's edge, waits at the top of the street and sends them on to the ranch with Hugh's Town Map
   // (floccesy_town.txt). The way to the Pledge Grove and Bianca's Habitat List are later sessions'
   "area": "floccesy_town",
+  // A spot where the player's home opens (plan 43 · LF7): a blocked tile with open ground before it
+  "baseSpots": [ { "x": 115, "z": 673, "kind": "Shrub", "room": 4 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "props": [ { "type": "PhotoSpot", "x": 113, "y": 672, "width": 1, "depth": 1 } ],
+  // The photo spot's plate (plan 43 · LF4, laid by LF7's session), read from the tile before it
+  "readAt": [ { "x": 113, "z": 672, "script": "PhotoSpot" } ],
   "bgmTrack": "unova/floccesy",
   "trees": "Round",
   "architecture": "Bellfield",

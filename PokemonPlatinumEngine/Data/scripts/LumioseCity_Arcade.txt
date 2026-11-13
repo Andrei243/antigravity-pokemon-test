@@ -1,0 +1,102 @@
+# The Lumiose Arcade (plan 42 · PS6): a room of ours under Lumiose Station, reached through a doorway in the station's
+# back wall, since every door on Lumiose's boulevards had been given a room before the arcade came (rulings, "The arcade").
+# docs/scripts.md describes the language; every line is ours. Two cabinets of each kind stand along the back wall: the
+# match-three (Models/Cabinets/MatchThree.cs, gamecorner cabinet match) and the picture-logic puzzle
+# (Models/Cabinets/PictureLogic.cs, gamecorner cabinet picture), both played with a Coin Case. The clerk hands a Coin
+# Case to whoever has none (a game begun in Kalos may never have had one), sells coins as Goldenrod's clerk does, and
+# keeps the arcade's prize counter (GameCornerPrizes.Lumiose).
+
+
+# The match-three cabinets
+script Match
+  speaker none
+  if not item "Coin Case" goto NoCase
+  ask "A match-three cabinet. Swap two icons side by side to line up three of a kind. Play?"
+  if no end
+  fade out 0.3
+  gamecorner cabinet match
+  fade in 0.3
+  end
+label NoCase
+  text "A match-three cabinet. It takes coins, and coins need a Coin Case: the clerk has them."
+  end
+
+
+# The picture-logic cabinets
+script Picture
+  speaker none
+  if not item "Coin Case" goto NoCase
+  ask "A picture-logic cabinet. Fill in the grid by its numbers until a Pokémon's shape appears. Play?"
+  if no end
+  fade out 0.3
+  gamecorner cabinet picture
+  fade in 0.3
+  end
+label NoCase
+  text "A picture-logic cabinet. It takes coins, and coins need a Coin Case: the clerk has them."
+  end
+
+
+# The clerk: a Coin Case for whoever has none, coins for money, and the prize counter
+script Clerk
+  speaker "Clerk"
+  if item "Coin Case" goto Menu
+  say "Welcome to the Lumiose Arcade! The cabinets pay out in coins, so you'll want somewhere to keep them."
+  say "Here's a Coin Case, on the house."
+  give "Coin Case"
+label Menu
+  say "You have {coins} coins."
+  choose "How can I help?" "BUY COINS" "PRIZES" "NO THANKS"
+  if result == 0 goto Sell
+  if result == 1 goto Prizes
+  goto Bye
+label Sell
+  ask "Fifty coins for $1,000?"
+  if no goto Bye
+  gamecorner room 50
+  if result == 0 goto Full
+  if money < 1000 goto Poor
+  takemoney 1000
+  gamecorner add 50
+  text "{player} bought 50 coins."
+  goto Bye
+label Prizes
+  gamecorner prize lumiose
+  if result == 0 goto Bye
+  ask "The {item}, for {price} coins?"
+  if no goto Bye
+  gamecorner buy
+  if result == 0 goto Short
+  sound "select"
+  say "Here you are!"
+  text "{player} put the {item} away."
+label Bye
+  say "Come back and play again!"
+  end
+label Full
+  say "Your Coin Case is full already!"
+  end
+label Poor
+  say "I'm sorry, you don't have enough money."
+  end
+label Short
+  say "I'm sorry, you don't have enough coins for that."
+  end
+
+
+script Gamer
+  speaker "Gamer"
+  say "Line up a Pokémon that the foe is weak to and the cabinet hits twice as hard. Four in a row hits harder still!"
+  end
+
+
+script Sketcher
+  speaker "Socialite"
+  say "Each picture is a Pokémon you've seen. The more you see on your travels, the more pictures there are to solve."
+  end
+
+
+script Regular
+  speaker "Gentleman"
+  say "Kalos never had a Game Corner, so the station's cellar made one. Quieter than the slots, and kinder to the purse."
+  end

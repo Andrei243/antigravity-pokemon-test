@@ -37,6 +37,52 @@ partial class Harness
             Raylib.ImageDrawText(ref board, text, x + 12, y + 7, 20, Color.White);
         }
 
+        // The modelled kit's prototype beside the grown kit's sculpt (style guide, "Modelled characters"): the Teen hero
+        // turning, his head close up, and a few poses, the sculpt above and the modelled one below (fw95_modelled*)
+        if (Wanted("fw95_modelled"))
+        {
+            const string Hero = "PLAYER~Teen";
+            var frame = CharacterModels.GrownFrameOf(BodyBuild.Teen);
+            float[] round = { 0f, 0.65f, MathF.PI / 2f, MathF.PI, -0.65f };
+            (string Text, CharacterPose Pose, float Yaw)[] poses =
+            {
+                ("walk", pose with { Walk = 0.25f, WalkBlend = 1f }, 0.5f), ("run", pose with { Walk = 0.25f, WalkBlend = 1f, Running = true }, MathF.PI / 2f),
+                ("bow", pose with { Emote = Emote.Bow, EmoteTime = 0.6f }, 0.5f), ("sit", pose with { Stance = PokemonPlatinumEngine.Overworld.Stance.Sit }, 0.5f),
+                ("throw", pose with { Emote = Emote.Throw, EmoteTime = 0.45f }, 0.5f), ("cheer", pose with { Emote = Emote.Cheer, EmoteTime = 0.5f }, 0.3f), ("wave", pose with { Emote = Emote.Wave, EmoteTime = 0.5f }, 0f), ("happy", pose with { Expression = Expression.Happy, Walk = 0.75f, WalkBlend = 1f }, -0.4f)
+            };
+            const int W = 420, H = 780, HW = 560, HH = 620, PW = 360, PH = 660;
+            var body = Raylib.GenImageColor(W * round.Length, (H + Label) * 2, backdrop);
+            var heads = Raylib.GenImageColor(HW * 3, (HH + Label) * 2, backdrop);
+            var moves = Raylib.GenImageColor(PW * poses.Length, (PH + Label) * 2, backdrop);
+            for (int row = 0; row < 2; row++)
+            {
+                CharacterModels.Forget(Hero);
+                CharacterModels.Modelled = row == 1;
+                Print(Hero);
+                string text = row == 0 ? "sculpted (the SDF kit)" : "modelled (the prototype)";
+                var views = CharacterStudio.Turntable(context, Hero, round, W, H, pose, 1.72f, 0.80f);
+                Raylib.ImageDraw(ref body, views, new Rectangle(0, 0, views.Width, views.Height), new Rectangle(0, row * (H + Label) + Label, views.Width, H), Color.White);
+                Raylib.UnloadImage(views);
+                Labelled(ref body, text, 0, row * (H + Label), W * round.Length);
+                views = CharacterStudio.Turntable(context, Hero, new[] { 0f, 0.65f, MathF.PI / 2f }, HW, HH, pose, 0.36f, frame.HeadC.Y + 0.01f);
+                Raylib.ImageDraw(ref heads, views, new Rectangle(0, 0, views.Width, views.Height), new Rectangle(0, row * (HH + Label) + Label, views.Width, HH), Color.White);
+                Raylib.UnloadImage(views);
+                Labelled(ref heads, text, 0, row * (HH + Label), HW * 3);
+                for (int i = 0; i < poses.Length; i++)
+                {
+                    var view = CharacterStudio.Turntable(context, Hero, new[] { poses[i].Yaw }, PW, PH, poses[i].Pose, 1.85f, 0.84f);
+                    Raylib.ImageDraw(ref moves, view, new Rectangle(0, 0, PW, PH), new Rectangle(i * PW, row * (PH + Label) + Label, PW, PH), Color.White);
+                    Raylib.UnloadImage(view);
+                    Labelled(ref moves, $"{poses[i].Text}, {(row == 0 ? "sculpted" : "modelled")}", i * PW, row * (PH + Label), PW);
+                }
+            }
+            CharacterModels.Forget(Hero);
+            CharacterModels.Modelled = Environment.GetEnvironmentVariable("SHOTS_MODELLED") == "1";
+            Save(body, "fw95_modelled");
+            Save(heads, "fw95_modelled_head");
+            Save(moves, "fw95_modelled_poses");
+        }
+
         foreach (var (look, build) in GrownBuilds)
         {
             string name = $"fw40_turntable_{build.ToString().ToLowerInvariant()}";
@@ -163,5 +209,8 @@ partial class Harness
 
         // FM13: the mount as a rig in the open test world (fw70 to fw89; a game of its own, past the opening)
         FreeWalkMountShots();
+
+        // Plan 34 · PD2: the mount's yard the lab bakes, ridden by its links (fwy0 to fwy6; a game of its own)
+        FreeWalkYardShots();
     }
 }

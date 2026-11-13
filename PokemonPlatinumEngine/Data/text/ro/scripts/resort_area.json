@@ -181,7 +181,7 @@
         "Someone keeps raiding the villa's larder before every party. Everyone blames that little Gible down the road."
       ],
       "text": [
-        ""
+        "Cineva îi golește cămara vilei înaintea fiecărei petreceri. Toți dau vina pe Gible-ul acela mic de pe drum."
       ]
     },
     {
@@ -189,7 +189,7 @@
         "You're helping Looker? Then look at this label from the last crate. It says the sixth, but the ferry only brought it on the ninth."
       ],
       "text": [
-        ""
+        "Îl ajuți pe Looker? Atunci uită-te la eticheta de pe ultima ladă. Scrie șase, dar feribotul a adus-o abia pe nouă."
       ]
     },
     {
@@ -197,7 +197,7 @@
         "Whoever wrote it put down the day it should have come, not the day it did."
       ],
       "text": [
-        ""
+        "Cine a scris-o a trecut ziua în care trebuia să ajungă, nu cea în care a ajuns."
       ]
     },
     {
@@ -205,7 +205,7 @@
         "{player} noted the crate label with the wrong date."
       ],
       "text": [
-        ""
+        "{player} a notat eticheta lăzii cu data greșită."
       ]
     },
     {
@@ -213,7 +213,7 @@
         "Those labels never match the ferry's days. Odd, isn't it?"
       ],
       "text": [
-        ""
+        "Etichetele alea nu se potrivesc niciodată cu zilele feribotului. Ciudat, nu?"
       ]
     },
     {
@@ -221,7 +221,7 @@
         "The larder's full and nobody blames the Gible any more. The parties are back on!"
       ],
       "text": [
-        ""
+        "Cămara e plină și nimeni nu mai dă vina pe Gible. Petrecerile au revenit!"
       ]
     }
   ],
@@ -231,7 +231,7 @@
         "My Gible gets the blame for everything around here. It only ever chews on its own tail!"
       ],
       "text": [
-        ""
+        "Gible-ul meu e de vină pentru orice pe aici. Nu face decât să-și roadă coada!"
       ]
     },
     {
@@ -239,7 +239,7 @@
         "You're looking into the larder? Good! They say my Gible bit the crates open. Come and see the marks."
       ],
       "text": [
-        ""
+        "Cercetezi cămara? Bine! Se spune că Gible-ul meu a mușcat lăzile. Vino să vezi urmele."
       ]
     },
     {
@@ -247,7 +247,7 @@
         "Two straight cuts, the same on every crate. A Gible's teeth are tiny and crooked. That's a tool, not a bite!"
       ],
       "text": [
-        ""
+        "Două tăieturi drepte, la fel pe fiecare ladă. Dinții unui Gible sunt mici și strâmbi. Asta e o unealtă, nu o mușcătură!"
       ]
     },
     {
@@ -255,7 +255,7 @@
         "{player} noted the bite marks too even for a Gible."
       ],
       "text": [
-        ""
+        "{player} a notat urmele de mușcătură, prea drepte pentru un Gible."
       ]
     },
     {
@@ -263,7 +263,7 @@
         "Straight cuts, every one. My Gible couldn't do that if it tried."
       ],
       "text": [
-        ""
+        "Tăieturi drepte, toate. Gible-ul meu n-ar putea face asta nici dacă ar încerca."
       ]
     },
     {
@@ -271,7 +271,7 @@
         "Nobody blames my Gible now. It's been chewing its tail all morning to celebrate."
       ],
       "text": [
-        ""
+        "Acum nimeni nu mai dă vina pe Gible-ul meu. Și-a ros coada toată dimineața ca să sărbătorească."
       ]
     }
   ]

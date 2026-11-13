@@ -233,10 +233,11 @@ public class GalarTests
         var bag = new Inventory();
         var library = ScriptLibrary.Default;
         var open = OpenRegions.Load(Region).Single();
-        HeadlessScriptHost Play(string file, string script, string? room = null)
+        HeadlessScriptHost Play(string file, string script, string? room = null, Func<PokemonPlatinumEngine.Overworld.NPC?, BattleOutcome>? fight = null)
         {
             var host = new HeadlessScriptHost(story, party, bag)
             {
+                Fight = fight,
                 Map = room != null ? Rooms.Value(room) : null,
                 OpenMap = room == null ? open : null,
                 OpenMapNamed = name => name == open.Name ? open : null,
@@ -500,6 +501,8 @@ public class GalarTests
         Assert.Equal("galarEnergyPlant", Next());
         var plant = Play("Wyndon_EnergyPlant", "OnEnter", "Wyndon_EnergyPlant");
         Assert.Equal(43, story.Var("VAR_GALAR_STORY"));
+        // (Sword's first battle with Eternatus, plan 33 · GL7: a staged battle at 60 before the raid)
+        Assert.Contains(plant.Log, l => l.StartsWith("wildbattle Eternatus 60 nofleeing hidelevel canlose", StringComparison.Ordinal));
         Assert.Contains(plant.Log, l => l.StartsWith("raidbattle Eternatus 60 5 stars", StringComparison.Ordinal));
         Assert.Contains(party.Members, p => p.Species.Name == "Eternatus");
         Assert.False(story.Has("FLAG_GALAR_DARKEST_DAY"));
@@ -514,6 +517,27 @@ public class GalarTests
         Play("Wyndon_StadiumPitch", "Leon", "Wyndon_StadiumPitch");
         Assert.Equal(46, story.Var("VAR_GALAR_STORY"));
         Assert.True(story.IsRegionComplete(RegionDatabase.Galar));
+        // Plan 33 · GL7: after the Hall of Fame, the version's legendary at the Weald's altar (a battle won leaves it in the
+        // fog for the next try; a catch ends the story there), and Leon's rematch in the Battle Tower
+        Assert.Equal("galarWeald", Next());
+        var left = Play("slumbering_weald", "Legend");
+        Assert.Contains(left.Log, l => l.StartsWith("wildbattle Zacian 70 Won", StringComparison.Ordinal));
+        Assert.Equal(46, story.Var("VAR_GALAR_STORY"));
+        Play("slumbering_weald", "Legend", fight: _ => BattleOutcome.Caught);
+        Assert.Equal(47, story.Var("VAR_GALAR_STORY"));
+        Assert.Equal("galarLeonTower", Next());
+        var battleTower = Play("Wyndon_RoseTower", "LeonTower", "Wyndon_RoseTower");
+        Assert.Contains(battleTower.Log, l => l.StartsWith("battle galar_leon_rematch", StringComparison.Ordinal));
+        Assert.True(story.Has("FLAG_GALAR_LEON_TOWER_WON"));
+        // Plan 33 · GL7, part b: Shielbert at Motostoke's stadium and Sordward at Hammerlocke's, each after a stadium's raid
+        Assert.Equal("galarShielbert", Next());
+        var shielbert = Play("Motostoke_StadiumPitch", "Shielbert", "Motostoke_StadiumPitch");
+        Assert.Contains(shielbert.Log, l => l.StartsWith("raidbattle Coalossal", StringComparison.Ordinal));
+        Assert.Contains(shielbert.Log, l => l.StartsWith("battle galar_shielbert_1", StringComparison.Ordinal));
+        Assert.Equal("galarSordward", Next());
+        var sordward = Play("Hammerlocke_StadiumPitch", "Sordward", "Hammerlocke_StadiumPitch");
+        Assert.Contains(sordward.Log, l => l.StartsWith("raidbattle Duraludon", StringComparison.Ordinal));
+        Assert.True(story.Has("FLAG_GALAR_SORDWARD_BEATEN"));
         Assert.Equal("galarFree", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }
@@ -538,13 +562,16 @@ public class GalarTests
             // Plan 33 · GL5, its second session: the Hero's Bath, the bike's kit, Marnie at the gate, Piers on his stage
             ("circhester", "HerosBath", 30), ("galar_route_9", "BikeKit", 32), ("galar_route_9", "SpikemuthGate", 33), ("spikemuth", "Piers", 34),
             // Plan 33 · GL6: Leon and Hop on Wyndon's avenue, the altar in the Weald on the Darkest Day
-            ("wyndon", "WyndonArrival", 36), ("slumbering_weald", "Altar", 40)
+            ("wyndon", "WyndonArrival", 36), ("slumbering_weald", "Altar", 40),
+            // Plan 33 · GL7: the version's legendary at the altar after the Hall of Fame, caught
+            ("slumbering_weald", "Legend", 46)
         })
         {
             var ends = new List<string>();
             foreach (bool hurry in new[] { false, true })
             {
-                var host = new HeadlessScriptHost { Region = RegionDatabase.Galar, OpenMap = Open.Value, OpenMapNamed = n => n == "Galar" ? Open.Value : null };
+                var host = new HeadlessScriptHost { Region = RegionDatabase.Galar, OpenMap = Open.Value, OpenMapNamed = n => n == "Galar" ? Open.Value : null,
+                    Fight = script == "Legend" ? _ => BattleOutcome.Caught : null };
                 StoryMigration.BeginNewGame(host.Story, ScriptLibrary.Default);
                 host.Story.SetVar("VAR_GALAR_STORY", story);
                 host.Story.SetVar("VAR_GALAR_VERSION", 1);
@@ -554,7 +581,7 @@ public class GalarTests
                 foreach (string shown in new[] { "FLAG_GALAR_HOP_CIRCHESTER", "FLAG_GALAR_SONIA_CIRCHESTER", "FLAG_GALAR_MARNIE_ROUTE_9", "FLAG_GALAR_MARNIE_SPIKEMUTH" })
                     if (script is "HerosBath" or "SpikemuthGate" or "Piers") host.Story.Set(shown);
                 foreach (string shown in new[] { "FLAG_GALAR_LEON_WYNDON", "FLAG_GALAR_HOP_WYNDON", "FLAG_GALAR_HOP_ALTAR" })
-                    if (script is "WyndonArrival" or "Altar") host.Story.Set(shown);
+                    if (script is "WyndonArrival" or "Altar" or "Legend") host.Story.Set(shown);
                 // (the bike's kit waits for the sixth badge, Piers's battle for nothing: a story of 32 has it)
                 if (story >= 32) host.Story.GiveBadge(RegionDatabase.Galar, "Rock");
                 host.Party.Add(new Pokemon(PokemonDatabase.Get("Grookey")!, 5, new Random(0)));
@@ -567,6 +594,30 @@ public class GalarTests
                     + "|" + host.Bag.GetQuantity(ItemDatabase.Get("Dynamax Band")!) + "|" + string.Join(",", host.OnMarker.OrderBy(m => m.Key).Select(m => m.Key + "=" + m.Value)));
             }
             Assert.True(ends[0] == ends[1], $"{file}.{script} skipped leaves otherwise than played:\n{ends[0]}\n{ends[1]}");
+        }
+    }
+
+    [Fact]
+    public void WyndonAirfieldsAttendantFliesOnToPaldeaAndBackToTheRegionsEntered()
+    {
+        // Plan 33 · GL7: Galar's harbour in the airfield's lounge. Since plan 34 · PD1 gave Paldea maps the plane flies on
+        // there (the first of the harbour's answers); one that came across from Alola may fly back there too, and a return
+        // to Galar lands beside her
+        Assert.Equal("Wyndon_Airfield", RegionDatabase.HarbourLinkOf(RegionDatabase.Galar)!.DepartureMap);
+        Assert.Equal("Wyndon_Airfield", Region.HarbourSpot!.Map);
+        foreach (bool fromAlola in new[] { false, true })
+        {
+            var story = new StoryState();
+            story.Set("GalarHallOfFame");
+            if (fromAlola) story.EnterRegion(RegionDatabase.Alola);
+            var room = Rooms.Value("Wyndon_Airfield");
+            var attendant = room.Everyone.Single(n => n.IsTransportAttendant);
+            var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { Map = room, Region = RegionDatabase.Galar };
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find(FieldScripts.For(attendant)!, room.Name)!, attendant);
+            runner.RunToEnd();
+            Assert.Empty(host.Problems);
+            Assert.Equal(new[] { RegionDatabase.Paldea }, host.Crossings);
         }
     }
 

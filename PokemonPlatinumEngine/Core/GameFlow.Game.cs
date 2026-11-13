@@ -167,6 +167,9 @@ public sealed partial class GameFlow
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6; saved).</summary>
     public ApricornBox Apricorns { get; } = new();
 
+    /// <summary>The objects standing in the Johto Safari Zone's areas (plan 38 · EX8; saved).</summary>
+    public SafariObjects SafariObjects { get; } = new();
+
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1; saved).</summary>
     public CraftingState Crafting { get; } = new();
 
@@ -178,6 +181,8 @@ public sealed partial class GameFlow
 
     /// <summary>The stage show's trunk, dressings and shows (plan 42 · PS1, PS2; saved).</summary>
     public Models.StageShow.ShowRecords StageShow { get; } = new();
+    /// <summary>The arcade's records (plan 42 · PS6).</summary>
+    public Models.Cabinets.CabinetRecords Cabinets { get; } = new();
 
     /// <summary>The film studio's takes and bests (plan 42 · PS4; saved).</summary>
     public Models.Studio.StudioRecords Studio { get; } = new();
@@ -233,6 +238,9 @@ public sealed partial class GameFlow
     /// <summary>The player's secret base of Hoenn's, null with none, and the decoration PC (plan 21 · H10; saved).</summary>
     public SecretBaseSave? SecretBase { get; set; }
     public List<StoredDecoration> Decorations { get; set; } = new();
+
+    /// <summary>Each region's bedroom at home as it was decorated, by the region (plan 43 · LF7; saved as <c>SaveData.Bedrooms</c>).</summary>
+    public Dictionary<string, List<PlacedDecoration>> Bedrooms { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>The Battle Frontier's records (saved).</summary>
     public FrontierRecords Frontier { get; set; } = new();

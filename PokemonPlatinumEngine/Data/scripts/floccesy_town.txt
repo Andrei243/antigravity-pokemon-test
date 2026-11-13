@@ -78,3 +78,8 @@ script Alder
 label Map
   say "Take that map to your friend first. Route 20 is east of here."
   end
+
+# The photo spot's plate (plan 43 · LF4): photo mode on the spot's view, and the photo book keeps the picture.
+script PhotoSpot
+  photo spot "unova_floccesy_bell"
+  end

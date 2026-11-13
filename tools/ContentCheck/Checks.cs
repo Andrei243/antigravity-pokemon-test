@@ -41,6 +41,8 @@ public static class Checks
         OpenWorlds.Check(content, flags, found);
         Translations.Check(content, found);
         CraftingFiles.Check(content, found);
+        // The Tales (plan 46 · CP11)
+        TaleFiles.Check(content, found);
         OutbreakFiles.Check(content, found);
         flags.Stale(found);
         return found;

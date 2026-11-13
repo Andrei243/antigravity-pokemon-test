@@ -1,0 +1,33 @@
+# Poco Path (plan 34 · PD1): the way north from Cabo Poco along the cliffs, the beach under them and the lighthouse on
+# its knoll. VAR_PALDEA_STORY is cabo_poco.txt's count. The lines are our own, on Scarlet and Violet's beats.
+
+
+# Down the track onto the beach after the battle: the cry again, out of the cave in the cliff
+script ARoar
+  scene "A roar on the beach"
+  text "The cry comes again, louder now, out of a cave in the foot of the cliff. Something in there sounds hurt."
+  text "There is another sound under it: snarling, and claws on rock."
+  clearflag FLAG_PALDEA_HIDE_GROTTO_LEGENDS
+  setvar VAR_PALDEA_STORY 3
+  objective paldeaGrotto
+  endscene
+  end
+
+
+# At the lighthouse's foot with the legendary along: Nemona's lesson in catching, and the way north
+script NemonasLesson
+  scene "Nemona at the lighthouse"
+  faceto player nemona_lighthouse
+  speaker "Nemona"
+  say "There you are! Wait... what is that? It's huge! Where did you find it?"
+  say "In the cave under the cliffs? And it just followed you out? I've never seen a Pokémon like it, not even in books."
+  say "Well, it obviously likes you. Hang on to it! Now, catching. Weaken a wild Pokémon in battle, then throw one of these."
+  give "Poké Ball" 5
+  say "The fields past Los Platos are full of Pokémon. Catch a few on the way and you'll have a real team by Mesagoza."
+  say "I'll meet you at the city's south gate. Last one there battles the other! Well, we battle either way."
+  setflag FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
+  clearflag FLAG_PALDEA_HIDE_NEMONA_GATE
+  setvar VAR_PALDEA_STORY 5
+  objective paldeaMesagoza
+  endscene
+  end

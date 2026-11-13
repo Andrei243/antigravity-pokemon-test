@@ -1,0 +1,71 @@
+{
+  // Cabo Poco (plan 34 · PD1): a handful of whitewashed houses on a cape in Paldea's far south-west, at about a third of
+  // the original's distances. The player's new home by the lane, the president's house up its own hill to the east with
+  // its terrace over the sea, where the academy's director brings the three, and the cliffs over the beach south and
+  // west. Scripts: Data/scripts/cabo_poco.txt, whose header has VAR_PALDEA_STORY's count
+  "markers": [
+    { "name": "players_door", "at": [-18, 8.0, 9.5], "yaw": 0 },
+    { "name": "nemona_door", "at": [31, 10.5, 17.5], "yaw": 0 },
+    { "name": "terrace", "at": [31, 10.5, 23], "yaw": 180 },
+    { "name": "cabo_poco_lane", "at": [0, 8.0, -2], "yaw": 90 },
+    { "name": "cabo_poco_north", "at": [12, 8.0, -26], "yaw": 180 },
+    { "name": "south_cliff", "at": [-20, 8.0, 28], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "players_house_door",
+      "box": { "min": [-19, 7, 6], "max": [-17, 10.5, 7] },
+      "room": "CaboPoco_PlayersHouse_1F", "at": [6, 10], "facing": "up",
+      "out": "players_door"
+    },
+    {
+      "name": "nemonas_house_door",
+      "box": { "min": [30, 9.5, 14], "max": [32, 13, 15] },
+      "room": "CaboPoco_NemonasHouse", "at": [4, 8], "facing": "up",
+      "out": "nemona_door"
+    }
+  ],
+  "triggers": [
+    // Up on the president's terrace with the director's word: the three, and Nemona's first battle
+    { "name": "the_three", "cylinder": { "at": [31, 24], "radius": 4, "bottom": 9, "top": 14 }, "script": "TheThree", "var": "VAR_PALDEA_STORY", "value": 1 }
+  ],
+  "solids": [
+    { "name": "the player's house", "min": [-24, 7, -4], "max": [-12, 13, 6], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the president's house", "min": [24, 9.5, 4], "max": [38, 16.5, 14], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the fisherman's cottage", "min": [52, 7, -14], "max": [62, 12, -6], "building": { "kind": "house", "town": "paldea", "storeys": 1 } }
+  ],
+  "people": [
+    // The director and the president on the terrace, waiting with the three (hidden once the battle is over)
+    {
+      "name": "clavell_terrace", "at": [28, 10.5, 25.5], "yaw": 0, "look": "clavell", "displayName": "Director Clavell",
+      "lines": ["Take your time choosing. A partner chosen in a hurry is a partner chosen twice."],
+      "hiddenBy": "FLAG_PALDEA_HIDE_CLAVELL_TERRACE"
+    },
+    {
+      "name": "nemona_terrace", "at": [34, 10.5, 25.5], "yaw": 0, "look": "nemona", "displayName": "Nemona",
+      "lines": ["You're the new student? Finally! I've been waiting all week to battle someone new!"],
+      "hiddenBy": "FLAG_PALDEA_HIDE_NEMONA_TERRACE"
+    },
+    // The village's own
+    {
+      "name": "cabo_fisherman", "at": [50, 8.0, -2], "yaw": 270, "look": "fisherman", "displayName": "Fisherman",
+      "lines": ["The tide brings all sorts into the cove under the cliffs. Last week I'd swear I heard something roar down there."]
+    },
+    {
+      "name": "cabo_old_woman", "at": [-2, 8.0, 18], "yaw": 180, "look": "old_woman", "displayName": "Old Woman",
+      "lines": ["A new family in the house by the lane! It's been empty since the summer. Welcome to Cabo Poco, dear."],
+      "moves": "wander", "radius": 4
+    }
+  ],
+  "trees": [
+    { "at": [-32, 2], "kind": "round", "size": 1.1 },
+    { "at": [-6, -14], "kind": "round" },
+    { "at": [46, 22], "kind": "round", "size": 0.9 },
+    { "at": [16, 26], "kind": "round", "size": 1.15 },
+    { "at": [70, 10], "kind": "pine" },
+    { "at": [-40, 22], "kind": "round" }
+  ],
+  "groves": [
+    { "name": "the copse by the east hills", "polygon": [[66, -26], [84, -26], [84, 24], [66, 24]], "spacing": 5, "fill": 0.6, "pines": 0.4, "seed": 341 }
+  ]
+}

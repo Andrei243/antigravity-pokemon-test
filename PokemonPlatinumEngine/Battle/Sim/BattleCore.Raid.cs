@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 /// partner is), and whether the raid can't be lost (plan 33 · GL6's Eternatus). Plain values, so the Vs. Recorder's file
 /// keeps them.
 /// </summary>
-public sealed record RaidTerms(int Stars, IReadOnlyList<Trainer> Allies, bool CannotFail = false)
+public sealed record RaidTerms(int Stars, IReadOnlyList<Trainer> Allies, bool CannotFail = false, bool MegaMaxDen = false)
 {
     /// <summary>The fewest stars and the most.</summary>
     public const int FewestStars = 1, MostStars = 5;
@@ -98,6 +98,9 @@ public sealed partial class BattleCore
     {
         if (RaidBoss is not { IsActive: true } boss || Raid == null) return;
         Say(Text.Of("battle.raidBegins", ("pokemon", boss.Name)));
+        // A Mega Max den's boss holding its stone Mega Evolves first, its stone reacting to the den's light, and so grows
+        // into its Mega Dynamax form (plan 33 · GL7, part b; plan 06 · R20c's question 14)
+        if (MegaMaxDen && Rules.MegaEvolution && Rules.MegaDynamax && !LaterMechanicsBarred && MegaFormOf(boss.Pokemon!) != null) MegaEvolve(boss);
         Dynamax(boss);
         var p = boss.Pokemon!;
         int halves = RaidRules.HpHalves(Raid.Stars);

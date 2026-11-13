@@ -1,0 +1,212 @@
+{
+  "Match": [
+    {
+      "en": [
+        "A match-three cabinet. Swap two icons side by side to line up three of a kind. Play?"
+      ],
+      "text": [
+        "Un aparat de potrivit trei. Schimbă două iconițe alăturate ca să aliniezi trei la fel. Joci?"
+      ]
+    },
+    {
+      "en": [
+        "A match-three cabinet. It takes coins, and coins need a Coin Case: the clerk has them."
+      ],
+      "text": [
+        "Un aparat de potrivit trei. Merge cu fise, iar fisele au nevoie de o Cutie de fise: le are funcționarul."
+      ]
+    }
+  ],
+  "Picture": [
+    {
+      "en": [
+        "A picture-logic cabinet. Fill in the grid by its numbers until a Pokémon's shape appears. Play?"
+      ],
+      "text": [
+        "Un aparat de logica imaginii. Completează grila după numere până apare silueta unui Pokémon. Joci?"
+      ]
+    },
+    {
+      "en": [
+        "A picture-logic cabinet. It takes coins, and coins need a Coin Case: the clerk has them."
+      ],
+      "text": [
+        "Un aparat de logica imaginii. Merge cu fise, iar fisele au nevoie de o Cutie de fise: le are funcționarul."
+      ]
+    }
+  ],
+  "Clerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Funcționar"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Lumiose Arcade! The cabinets pay out in coins, so you'll want somewhere to keep them."
+      ],
+      "text": [
+        "Bine ai venit la Sala de jocuri din Lumiose! Aparatele plătesc în fise, așa că o să-ți trebuiască unde să le ții."
+      ]
+    },
+    {
+      "en": [
+        "Here's a Coin Case, on the house."
+      ],
+      "text": [
+        "Uite o Cutie de fise, din partea casei."
+      ]
+    },
+    {
+      "en": [
+        "You have {coins} coins."
+      ],
+      "text": [
+        "Ai {coins} fise."
+      ]
+    },
+    {
+      "en": [
+        "How can I help?",
+        "BUY COINS",
+        "PRIZES",
+        "NO THANKS"
+      ],
+      "text": [
+        "Cu ce te pot ajuta?",
+        "CUMPĂR FISE",
+        "PREMII",
+        "NU, MERSI"
+      ]
+    },
+    {
+      "en": [
+        "Fifty coins for $1,000?"
+      ],
+      "text": [
+        "Cincizeci de fise pentru 1.000 $?"
+      ]
+    },
+    {
+      "en": [
+        "{player} bought 50 coins."
+      ],
+      "text": [
+        "{player} a cumpărat 50 de fise."
+      ]
+    },
+    {
+      "en": [
+        "The {item}, for {price} coins?"
+      ],
+      "text": [
+        "{item}, pentru {price} fise?"
+      ]
+    },
+    {
+      "en": [
+        "Here you are!"
+      ],
+      "text": [
+        "Poftim!"
+      ]
+    },
+    {
+      "en": [
+        "{player} put the {item} away."
+      ],
+      "text": [
+        "{player} a pus deoparte {item}."
+      ]
+    },
+    {
+      "en": [
+        "Come back and play again!"
+      ],
+      "text": [
+        "Mai vino să joci!"
+      ]
+    },
+    {
+      "en": [
+        "Your Coin Case is full already!"
+      ],
+      "text": [
+        "Cutia ta de fise e deja plină!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money."
+      ],
+      "text": [
+        "Îmi pare rău, nu ai destui bani."
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough coins for that."
+      ],
+      "text": [
+        "Îmi pare rău, nu ai destule fise pentru asta."
+      ]
+    }
+  ],
+  "Gamer": [
+    {
+      "en": [
+        "Gamer"
+      ],
+      "text": [
+        "Jucător"
+      ]
+    },
+    {
+      "en": [
+        "Line up a Pokémon that the foe is weak to and the cabinet hits twice as hard. Four in a row hits harder still!"
+      ],
+      "text": [
+        "Aliniază un Pokémon la care adversarul e vulnerabil și aparatul lovește de două ori mai tare. Patru la rând lovesc și mai tare!"
+      ]
+    }
+  ],
+  "Sketcher": [
+    {
+      "en": [
+        "Socialite"
+      ],
+      "text": [
+        "Doamnă din lumea bună"
+      ]
+    },
+    {
+      "en": [
+        "Each picture is a Pokémon you've seen. The more you see on your travels, the more pictures there are to solve."
+      ],
+      "text": [
+        "Fiecare imagine e un Pokémon pe care l-ai văzut. Cu cât vezi mai mulți în călătorii, cu atât sunt mai multe imagini de rezolvat."
+      ]
+    }
+  ],
+  "Regular": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        "Domn"
+      ]
+    },
+    {
+      "en": [
+        "Kalos never had a Game Corner, so the station's cellar made one. Quieter than the slots, and kinder to the purse."
+      ],
+      "text": [
+        "Kalos n-a avut niciodată o sală de jocuri, așa că pivnița gării și-a făcut una. Mai liniștită decât păcănelele și mai blândă cu punga."
+      ]
+    }
+  ]
+}

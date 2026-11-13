@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 
 using PokemonPlatinumEngine.Models.Underground;
 using PokemonPlatinumEngine.Overworld;
@@ -73,6 +74,29 @@ public class StatueTests
         Assert.Equal(SecretBaseRules.GoodsLimit(0), session.Room.Limit);
         Assert.Equal(10, session.Room.Limit);
         Assert.Equal(12, session.Store.Count(s => s.Kind == statue));
+    }
+
+    [Fact]
+    public void AnEleventhStatueIsRefusedOnceTenStandInTheBase()
+    {
+        var state = new UndergroundState { Base = SecretBaseRules.Create(100, 100, Direction.Up, new Rand32(5)) };
+        state.Base.Boulders.Clear();
+        int statue = UndergroundDatabase.StatueOf("Golduck");
+        for (int i = 0; i < 11; i++) Assert.True(state.TryAddPcGood(statue));
+        // Ten out already, a row of them along the floor's lower edge
+        for (int i = 0; i < 10; i++)
+            state.Base.Goods.Add(new PlacedGood { Good = statue, X = SecretBaseRules.FloorLeft + i, Z = SecretBaseRules.FloorBottom, Slot = i });
+        var session = SecretBaseRules.Decorating(state);
+        Assert.Equal(10, session.Room.Out);
+        Assert.Equal(session.Room.Limit, session.Room.Out);
+        // PUT OUT on the menu: the eleventh is refused before the store opens, and nothing is set down
+        Assert.Equal(0, session.MenuCursor);
+        session.Confirm();
+        Assert.True(session.Refused);
+        Assert.Equal(Text.Of("decorating.noMore"), session.Message);
+        Assert.Equal(DecoratingStep.Menu, session.Step);
+        Assert.False(session.Store[10].Out);
+        Assert.Equal(10, session.Room.Out);
     }
 
     [Fact]
