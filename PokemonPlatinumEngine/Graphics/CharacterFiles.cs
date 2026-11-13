@@ -100,6 +100,10 @@ internal static class CharacterFiles
             try
             {
                 file = path == null ? null : Read(path, skeleton);
+                // Said once a build, so the log shows whether people come from the files or from the sculpting kits
+                Core.Diagnostics.Log.Info(file == null
+                    ? $"People of the {name} build are sculpted by the kit: no {name}.glb in {string.Join(", ", Folders.Distinct())}."
+                    : $"People of the {name} build are made from {path} ({file.Pieces.Count} pieces).");
             }
             catch (Exception e) when (e is IOException or InvalidDataException or FormatException or KeyNotFoundException or System.Text.Json.JsonException)
             {

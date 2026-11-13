@@ -38,7 +38,12 @@ internal static partial class CharacterModels
         GrownFrame? gf = grown ? GrownFrameOf(s.Build, s.CurvedFigure()) : null;
         Frame? cf = grown ? null : FrameOf(s.Build);
         var file = CharacterFiles.For(s.Build, grown && s.CurvedFigure(), skeleton);
-        if (file == null || CharacterFiles.Missing(file, s).Count > 0) return false;
+        if (file == null) return false;
+        if (CharacterFiles.Missing(file, s) is { Count: > 0 } missing)
+        {
+            Core.Diagnostics.Log.Info($"{rig.Type} is sculpted by the kit: {file.Path} lacks {string.Join(", ", missing)}.");
+            return false;
+        }
 
         float outline = grown ? GrownOutlineThickness : OutlineThickness;
         var (body, clothes, held) = CharacterFiles.Wanted(s);
