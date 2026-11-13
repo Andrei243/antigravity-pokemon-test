@@ -133,6 +133,12 @@ public sealed record EncounterMoment
     /// </summary>
     public Models.SafariObjects? SafariObjects { get; init; }
     public int SafariDay { get; init; }
+
+    /// <summary>
+    /// The day's number where Unova's special tiles are in force (plan 38 · EX11, <see cref="UnovaSpecialGrass"/>): a step onto a
+    /// shaking patch or a ripple meets the area's special table. Null elsewhere, and then no draw changes.
+    /// </summary>
+    public uint? SpecialDay { get; init; }
 }
 
 /// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>

@@ -197,8 +197,9 @@ public sealed class MapArea
     /// <summary>
     /// Black 2's tables beside the grass's and the water's (plan 22 · U4; <c>WorldAreaFile.DarkGrass</c> and its
     /// kin): the dark grass's, the grass that shakes, the water that ripples and a rod cast into it. Empty in every
-    /// place of the other regions. The dark grass's is met on its tiles; the other three wait for plan 10 · F12's
-    /// patches.
+    /// place of the other regions. The dark grass's is met on its tiles; the other three are met on the day's patches
+    /// (plan 38 · EX11, <see cref="UnovaSpecialGrass"/>): shaking grass and ripples through the step's own roll, a cave's
+    /// dust clouds and a bridge's shadows on the step onto them.
     /// </summary>
     public List<WildEncounterEntry> DarkGrassEncounters { get; } = new();
     public int DarkGrassRate { get; set; }
@@ -1697,6 +1698,13 @@ public class Map
         // The Super Rod's of the season, where the area's change with it (plan 22 · U4)
         if (rod == FishingRod.Super && moment?.Season is { } season && area.SeasonTables.TryGetValue(season, out var tables))
             (table, rate) = (tables.SuperRod, tables.SuperRodRate);
+        // A rod cast into a ripple (plan 38 · EX11) always bites with the area's rippling rod table
+        if (moment?.SpecialDay is uint special && area.RipplingRodEncounters.Count > 0
+            && UnovaSpecialGrass.KindAt(this, x, y, special, true) == SpecialKind.Rippling)
+        {
+            // The data's rate is 1 everywhere (a flag, not a chance): a ripple always has its fish, as a shaking patch its Pokémon
+            return WildEncounterRules.Meet(area.RipplingRodEncounters, water: true, lead is { } ripple ? ripple with { RepelLevel = null } : null, rng);
+        }
         // A rod's table laid over the area's own (plan 13 · V15, Remix): met as written, at the area's own rate
         if (Tables?.Rod(area.Key, rod) is { } laid)
         {
@@ -1820,6 +1828,13 @@ public class Map
     /// <param name="lead">The Pokémon at the head of the party; left out, nothing shapes the meeting.</param>
     public WildEncounterEntry? RollWildEncounter(int x, int y, EncounterSteps steps, bool water = false, bool thick = false, WildLead? lead = null, EncounterMoment? moment = null)
     {
+        // Unova's shaking grass and rippling water (plan 38 · EX11): the day's patch always has its Pokémon, from the area's special table
+        if (moment?.SpecialDay is uint special && UnovaSpecialGrass.KindAt(this, x, y, special, water) is (SpecialKind.Shaking or SpecialKind.Rippling) and { } special2 && AreaAt(x, y) is { } patchArea
+            && UnovaSpecialGrass.TableOf(patchArea, special2).Table is { Count: > 0 } patchTable)
+        {
+            moment.Radar?.Clear();
+            return WildEncounterRules.Meet(patchTable, water, lead, rng);
+        }
         var (table, rate) = WildAt(x, y, water, moment);
         if (table.Count == 0 || rate <= 0) return null;
         rate = WildEncounterRules.Rate(rate, lead, WeatherAt(x, y));

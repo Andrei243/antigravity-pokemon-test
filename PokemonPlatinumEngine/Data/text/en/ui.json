@@ -1923,6 +1923,11 @@
     "came": "The scan picked up {name} in {place}! It will stay for an hour.",
     "gone": "{name} has left {place}."
   },
+  "unovaSpecial": {
+    "dust": "A cloud of dust hid a {item}!",
+    "dustPokemon": "Something jumped out of the dust cloud!",
+    "shadow": "A shadow passed over the bridge, and something dived!"
+  },
   "outbreakToast": {
     "bonusOne": "{count} {name} met in {place} today. The grass has gone restless: shiny ones turn up more often.",
     "bonusTwo": "{count} {name} met in {place} today! Shiny ones turn up more often still."

@@ -2315,6 +2315,11 @@
     "came": "Căutarea a găsit un {name} în {place}! Rămâne o oră.",
     "gone": "{name} a plecat din {place}."
   },
+  "unovaSpecial": {
+    "dust": "Un nor de praf ascundea un {item}!",
+    "dustPokemon": "Ceva a sărit din norul de praf!",
+    "shadow": "O umbră a trecut peste pod și ceva s-a năpustit!"
+  },
   "outbreakToast": {
     "bonusOne": "{count} {name} întâlniți azi în {place}. Iarba s-a neliniștit: cei shiny apar mai des.",
     "bonusTwo": "{count} {name} întâlniți azi în {place}! Cei shiny apar și mai des."

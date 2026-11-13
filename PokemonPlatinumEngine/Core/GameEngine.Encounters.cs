@@ -69,7 +69,9 @@ public partial class GameEngine
             Rift = RiftHere(),
             // The Johto Safari Zone's objects, counted on today (plan 38 · EX8); none placed, none handed over
             SafariObjects = flow.SafariObjects.IsEmpty ? null : flow.SafariObjects,
-            SafariDay = ApricornBox.DayOf(GameClock.Today)
+            SafariDay = ApricornBox.DayOf(GameClock.Today),
+            // Unova's special tiles, from the day's number (plan 38 · EX11); null in every other region
+            SpecialDay = SpecialDayNow()
         };
     }
 
@@ -141,6 +143,8 @@ public partial class GameEngine
         // does, and every 0.6 s throws up leaf bits and its shiver marks. With nothing found nothing is added here
         var hiding = DexNavHere ? rustle : null;
         if (hiding != null) world.Stirring.Add((hiding.X, hiding.Y, true));
+        // Unova's shaking grass, ripples, dust clouds and shadows near the player (plan 38 · EX11)
+        TickUnovaSpecial();
         if (life.Now < nextStir) return;
         nextStir = life.Now + StirEvery;
         if (hiding != null) life.Hiding(flow.Map, hiding.X, hiding.Y);
