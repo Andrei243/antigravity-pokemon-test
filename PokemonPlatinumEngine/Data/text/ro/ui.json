@@ -2083,7 +2083,8 @@
     "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val",
     "Bug": "Insectă", "Cliff": "Stâncă", "Rumble": "Bubuit", "Plant": "Plantă", "Voltage": "Tensiune", "Fairy": "Zână", "Psychic": "Psihic", "Iceberg": "Aisberg",
     "Melemele": "Melemele", "Akala": "Akala", "UlaUla": "Ula'ula", "Poni": "Poni",
-    "Grass": "Iarbă", "Water": "Apă", "Fire": "Foc", "Fighting": "Luptă", "Rock": "Rocă", "Dark": "Întuneric", "Dragon": "Dragon", "Ghost": "Fantomă", "Ice": "Gheață"
+    "Grass": "Iarbă", "Water": "Apă", "Fire": "Foc", "Fighting": "Luptă", "Rock": "Rocă", "Dark": "Întuneric", "Dragon": "Dragon", "Ghost": "Fantomă", "Ice": "Gheață",
+    "Electric": "Electric", "Normal": "Normal"
   },
   "card": {
     "runSub": "Cum se joacă acest joc. Ales la început și neschimbat apoi.",

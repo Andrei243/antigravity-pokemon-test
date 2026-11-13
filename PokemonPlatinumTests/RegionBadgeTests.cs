@@ -47,10 +47,11 @@ public class RegionBadgeTests
         Assert.Equal(3, story.TotalBadges);
         Assert.True(story.HasBadge("Sinnoh", "Icicle"));
         Assert.False(story.HasBadge("Kanto", "Cascade"));
-        // A region with no file has no badges, and nothing is kept for it
-        Assert.Equal(0, story.BadgeMask("Paldea"));
-        story.SetBadges("Paldea", 0xFF);
-        Assert.Equal(0, story.BadgeMask("Paldea"));
+        // A region with no file has no badges, and nothing is kept for it (Paldea was the example until plan 34 · PD1
+        // gave it a file with its eight)
+        Assert.Equal(0, story.BadgeMask("Nowhere"));
+        story.SetBadges("Nowhere", 0xFF);
+        Assert.Equal(0, story.BadgeMask("Nowhere"));
         // A name the region doesn't have is a mistake, not a badge
         Assert.Throws<ArgumentException>(() => story.GiveBadge("Sinnoh", "Boulder"));
         Assert.Throws<ArgumentException>(() => story.HasBadge("Kanto", "Coal"));

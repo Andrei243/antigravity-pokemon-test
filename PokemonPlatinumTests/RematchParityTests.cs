@@ -143,6 +143,8 @@ public class RematchParityTests
         // A side region with no Gyms and no League (plan 23 · Z17): its Nobles and the Pearl and Diamond Clans' wardens
         // are fought in plan 23 · Z19 and Z20, whose sessions decide whether they are fought again
         [RegionDatabase.Hisui] = "plan 23 · Z19 and Z20 (Hisui's Nobles and wardens)",
+        // PD1 gave Paldea its story's first steps; its Gyms, Titans, Star Barrage and League come in later sessions
+        [RegionDatabase.Paldea] = "plan 34 (Paldea's Gyms and League, after PD1)",
     };
 
     private static IEnumerable<TrainerRecord> Everyone() =>

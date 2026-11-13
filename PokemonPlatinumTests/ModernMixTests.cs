@@ -83,8 +83,9 @@ public class ModernMixTests
         Assert.Equal(SynthSound.Modern, RegionFiles.Load("Kalos")?.MusicSound);
         Assert.Equal(SynthSound.Modern, RegionFiles.Load("Alola")?.MusicSound);
         Assert.Equal(SynthSound.Modern, RegionFiles.Load("Galar")?.MusicSound);
+        Assert.Equal(SynthSound.Modern, RegionFiles.Load("Paldea")?.MusicSound); // (plan 34 · PD1)
         // The later legendaries' themes of common/legendary name the modern sound in their own headers (MU7)
-        Assert.All(MusicLibrary.All, s => Assert.Equal(s.Id.StartsWith("kalos/") || s.Id.StartsWith("alola/") || s.Id.StartsWith("galar/") || ModernMusicTests.IsLaterLegendary(s.Id)
+        Assert.All(MusicLibrary.All, s => Assert.Equal(s.Id.StartsWith("kalos/") || s.Id.StartsWith("alola/") || s.Id.StartsWith("galar/") || s.Id.StartsWith("paldea/") || ModernMusicTests.IsLaterLegendary(s.Id)
             ? SynthSound.Modern : SynthSound.Ds, s.PlaysIn));
         Assert.Contains(MusicLibrary.All, s => s.Id.StartsWith("kalos/"));
     }

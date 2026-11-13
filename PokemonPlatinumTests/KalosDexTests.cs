@@ -28,7 +28,8 @@ public class KalosDexTests
         }
         // A region with one Pokédex still has it as its only entry
         Assert.Equal(new[] { "kanto" }, RegionDatabase.Get("Kanto")!.Dexes);
-        Assert.Empty(RegionDatabase.Get("Paldea")!.Dexes);
+        // (Paldea had none until plan 34 · PD1 gave it its file)
+        Assert.Equal(new[] { "paldea" }, RegionDatabase.Get("Paldea")!.Dexes);
     }
 
     [Fact]

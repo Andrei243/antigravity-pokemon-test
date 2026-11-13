@@ -1058,7 +1058,8 @@ public class SpearPillarAndTheDistortionWorldTests
     public void TheDistortionWorldIsComeToThroughTheScenesAndLeftThroughItsPortals()
     {
         var game = NewGame();
-        Map Named(string name) => game.Maps[name];
+        // (a room this game didn't build, a home's room of plan 43 · LF7 behind Sinnoh's base spots, is the game's own)
+        Map Named(string name) => game.Maps.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
         // From the torn pillar: Cynthia's question leads in, the floors lead down to Giratina's room, and its portal out
         var fromThePillar = WorldWalk.From(Named, new MapSpot("SpearPillarDistorted", 30, 30, Direction.Up));
         foreach (string floor in new[] { "DistortionWorld1F", "DistortionWorldB1F", "DistortionWorldB2F", "DistortionWorldB3F", "DistortionWorldB4F", "DistortionWorldB5F",
