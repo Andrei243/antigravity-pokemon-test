@@ -215,6 +215,43 @@ public class RecordingTests
     }
 
     [Fact]
+    public void AGameWhoseRegionsWereBuiltTogetherPlaysBackTheSame()
+    {
+        // The game itself builds its regions several at once, each from a seed of its own (MapDatabase.Initialize(true)):
+        // its recording says so, and a replay, which builds them the same way, comes to the same rows and the same save
+        const int Frames = 60 * 240;
+        InputRecording? recording = null;
+        string recorded = "", played = "";
+        List<MovieCheckpoint>? rows = null;
+
+        Sandbox(folder =>
+        {
+            var settings = new GameSettings { Muted = true };
+            var recorder = MovieRecorder.Begin(settings, folder, "Sinnoh", seed: 4242, fixFrameClock: true, regionsTogether: true);
+            var engine = new GameEngine(settings) { NewGameRegion = "Sinnoh", RegionsTogether = recorder.Recording.RegionsTogether };
+            engine.InitializeHeadless();
+            var fuzzer = new KeyFuzzer(8);
+            var source = new ListInput(f => f >= Frames ? null : Actions(f, fuzzer), Start);
+            while (source.Next(Frame) is { } frame) recorder.Step(engine, frame);
+            recorded = Final(engine);
+            recording = recorder.Recording;
+            Movie.Release();
+        });
+        Assert.True(recording!.RegionsTogether);
+        using (var stream = new MemoryStream())
+        {
+            recording.Write(stream);
+            stream.Position = 0;
+            recording = InputRecording.Read(stream);
+        }
+        Assert.True(recording.RegionsTogether);
+
+        Sandbox(folder => (played, rows) = PlayBack(recording, folder));
+        Assert.Equal(recorded, played);
+        Assert.Equal(Rows(recording.Checkpoints), Rows(rows!));
+    }
+
+    [Fact]
     public void AReadingOfTheClockPutIntoAReplayIsNamedByTheSecondItPartsAt()
     {
         InputRecording? recording = null;

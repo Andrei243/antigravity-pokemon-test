@@ -150,7 +150,7 @@ public static class DataLayers
     public static string ReadPatched(string relativePath, IReadOnlyList<DataLayer>? over = null)
     {
         string path = PathOf(relativePath, over);
-        string text = File.ReadAllText(path);
+        string text = DataArchive.ReadText(path);
         var patches = PatchesOf(relativePath, over);
         if (patches.Count == 0) return text;
         var options = new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true };

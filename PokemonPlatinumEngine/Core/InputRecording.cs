@@ -24,7 +24,7 @@ public sealed record MovieCheckpoint(int Frame, double Seconds, uint[] Hash);
 public sealed class InputRecording
 {
     /// <summary>The file's shape; a file of a newer one is refused.</summary>
-    public const int FormatVersion = 4; // 2: each frame keeps the mouse's too (plan 12 · Q6); 3: the packs in use and the first run (plan 16 · T14, T24); 4: the stick's tilt (plan 30 · FM7)
+    public const int FormatVersion = 5; // 2: each frame keeps the mouse's too (plan 12 · Q6); 3: the packs in use and the first run (plan 16 · T14, T24); 4: the stick's tilt (plan 30 · FM7); 5: whether the regions were built together
 
     private const string Magic = "PPMOVIE";
 
@@ -51,6 +51,12 @@ public sealed class InputRecording
     public List<string> Packs { get; init; } = new();
     /// <summary>Whether the session began on the game's first run (plan 16 · T24), which opens on the first start's page.</summary>
     public bool FirstRun { get; init; }
+    /// <summary>
+    /// Whether the regions' maps were built several at once as the session began (<see cref="MapDatabase.Initialize(bool)"/>):
+    /// each region then drew from a generator of its own, so the same seed makes other trainers than a build one
+    /// after another does, and a replay builds its maps the way its recording did. False in a recording of an older shape.
+    /// </summary>
+    public bool RegionsTogether { get; init; }
 
     /// <summary>The packs in use now, as a recording names them.</summary>
     public static List<string> PacksInUse(IReadOnlyList<DataLayer>? packs = null) =>
@@ -130,6 +136,10 @@ public sealed class InputRecording
             foreach (string pack in Packs) w.Write(pack);
             w.Write(FirstRun);
         }
+        if (Format >= 5)
+        {
+            w.Write(RegionsTogether);
+        }
         w.Write(Frames.Count);
         foreach (var f in Frames)
         {
@@ -188,6 +198,11 @@ public sealed class InputRecording
             for (int i = 0; i < count; i++) packs.Add(r.ReadString());
             firstRun = r.ReadBoolean();
         }
+        bool together = false;
+        if (format >= 5)
+        {
+            together = r.ReadBoolean();
+        }
         var recording = new InputRecording
         {
             Format = format,
@@ -199,7 +214,8 @@ public sealed class InputRecording
             Region = region,
             Saves = saves,
             Packs = packs,
-            FirstRun = firstRun
+            FirstRun = firstRun,
+            RegionsTogether = together
         };
         int frames = r.ReadInt32();
         recording.Frames.Capacity = frames;

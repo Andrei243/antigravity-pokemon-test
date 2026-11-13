@@ -189,15 +189,15 @@ public static class TrainerDatabase
         foreach (string name in DataLayers.FoldersIn(World.Folder, over))
         {
             string relative = Path.Combine(World.Folder, name, FileName);
-            if (File.Exists(DataLayers.PathOf(relative, over)))
+            if (DataArchive.Exists(DataLayers.PathOf(relative, over)))
             {
                 var list = GameDataFiles.Deserialize<List<TrainerRecord>>(DataLayers.ReadPatched(relative, over));
                 lists[name] = list;
                 // A region's rematch rows written by hand (plan 21 · H9, part c), beside the generated file the importer
                 // rewrites: trainer id to the ids of the teams they bring, whose records are the game's own (our-trainers.json)
                 string rows = Path.Combine(World.Folder, name, "rematches.json");
-                if (File.Exists(DataLayers.PathOf(rows, over)))
-                    foreach (var (id, row) in GameDataFiles.Deserialize<Dictionary<string, List<string?>>>(File.ReadAllText(DataLayers.PathOf(rows, over))))
+                if (DataArchive.Exists(DataLayers.PathOf(rows, over)))
+                    foreach (var (id, row) in GameDataFiles.Deserialize<Dictionary<string, List<string?>>>(DataArchive.ReadText(DataLayers.PathOf(rows, over))))
                         if (list.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase)) is { } who) who.Rematches = row;
             }
         }

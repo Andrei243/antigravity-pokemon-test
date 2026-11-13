@@ -12,6 +12,27 @@ public static class Dice
 {
     private static Random? seeded;
 
+    // A generator of this thread's own (Scope): what the regions' maps are built by when several are built at once
+    [ThreadStatic] private static Random? scoped;
+
+    /// <summary>
+    /// Hands this thread a generator of its own until the scope is disposed: every roll asked of the dice on this
+    /// thread meanwhile comes from it, and none reaches the game's own. How work done on several threads at once (the
+    /// regions' maps as the game starts) stays the same every run: each piece is given a generator seeded, in order,
+    /// from the game's chance before any of them begins, so which thread ran when changes nothing.
+    /// </summary>
+    public static IDisposable Scope(Random random)
+    {
+        var before = scoped;
+        scoped = random;
+        return new Scoped(before);
+    }
+
+    private sealed class Scoped(Random? before) : IDisposable
+    {
+        public void Dispose() => scoped = before;
+    }
+
     /// <summary>
     /// Makes every roll from here on repeat, run after run; null gives chance back. For tools, on one thread:
     /// the tests leave it alone, because they run side by side.
@@ -20,10 +41,10 @@ public static class Dice
 
     /// <summary>A generator for something that keeps its own (a battle, a map, the field).</summary>
 #pragma warning disable RS0030 // the game's one source of unseeded chance
-    public static Random New() => seeded != null ? new Random(seeded.Next()) : new Random();
+    public static Random New() => scoped != null ? new Random(scoped.Next()) : seeded != null ? new Random(seeded.Next()) : new Random();
 
     /// <summary>The generator for a single roll.</summary>
-    public static Random Shared => seeded ?? Random.Shared;
+    public static Random Shared => scoped ?? seeded ?? Random.Shared;
 
     /// <summary>
     /// A seed drawn by chance (plan 16 · T19): what the game hands <see cref="Seed"/> as it starts a recording, so its

@@ -70,7 +70,7 @@ public sealed class MovieRecorder
     /// <param name="seed">The seed; null draws one by chance (<see cref="Dice.DrawSeed"/>).</param>
     /// <param name="fixFrameClock">Whether the picture's clock is set to the movie's time each frame, as playback sets it: a
     /// headless game's recording does, so that even what keeps time by the picture repeats; the live game keeps its own.</param>
-    public static MovieRecorder Begin(GameSettings settings, string saveFolder, string? region, int? seed = null, bool fixFrameClock = false)
+    public static MovieRecorder Begin(GameSettings settings, string saveFolder, string? region, int? seed = null, bool fixFrameClock = false, bool regionsTogether = false)
     {
         int s = seed ?? Dice.DrawSeed();
         Dice.Seed(s);
@@ -84,7 +84,8 @@ public sealed class MovieRecorder
             Region = region,
             Saves = InputRecording.SavesIn(saveFolder),
             Packs = InputRecording.PacksInUse(),
-            FirstRun = settings.FirstRun
+            FirstRun = settings.FirstRun,
+            RegionsTogether = regionsTogether
         };
         return new MovieRecorder(recording, fixFrameClock);
     }
@@ -171,7 +172,7 @@ public sealed class MoviePlayer
         // A session begun on the first run opened on the first start's page (plan 16 · T24), and so does its replay
         var settings = GameSettings.FromJson(recording.Settings);
         settings.FirstRun = recording.FirstRun;
-        var engine = new GameEngine(settings) { NewGameRegion = recording.Region };
+        var engine = new GameEngine(settings) { NewGameRegion = recording.Region, RegionsTogether = recording.RegionsTogether };
         if (headless) engine.InitializeHeadless();
         return engine;
     }

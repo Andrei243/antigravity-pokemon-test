@@ -117,7 +117,7 @@ public static class GameDataFiles
     public static T Load<T>(string relativePath)
     {
         string path = PathOf(relativePath);
-        if (!File.Exists(path))
+        if (!DataArchive.Exists(path))
             throw new FileNotFoundException($"Game data file not found: {path}", path);
 
         try
@@ -141,7 +141,7 @@ public static class GameDataFiles
     {
         if (!strict) return Load<T>(relativePath);
         string path = PathOf(relativePath);
-        if (!File.Exists(path))
+        if (!DataArchive.Exists(path))
             throw new FileNotFoundException($"Game data file not found: {path}", path);
         return ReadStrict<T>(DataLayers.ReadPatched(relativePath), relativePath.Replace('\\', '/'));
     }

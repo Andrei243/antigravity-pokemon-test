@@ -41,7 +41,9 @@ public static class AudioManager
             if (Raylib.IsAudioDeviceReady())
             {
                 isInitialized = true;
-                SoundBank.Preload();
+                // Every sound is made on a worker, so the start does not wait for them: one asked for before its turn
+                // is made on the spot by whoever asks (SoundBank.Get), the same samples either way
+                System.Threading.Tasks.Task.Run(SoundBank.Preload);
                 Ambience.RequestAll();
                 StartStream();
             }

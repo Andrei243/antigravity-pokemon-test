@@ -234,9 +234,9 @@ public sealed class Habitats
             string folder = region.ToLowerInvariant();
             string path = Path.Combine(World.Folder, folder, WorldHabitatsFile.FileName);
             string special = Path.Combine(World.Folder, folder, SpecialFileName);
-            if (File.Exists(GameDataFiles.PathOf(path)))
+            if (DataArchive.Exists(GameDataFiles.PathOf(path)))
                 habitats = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path),
-                    File.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldHabitatsFile>(special) : null,
+                    DataArchive.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldHabitatsFile>(special) : null,
                     OursOf(Path.Combine(World.Folder, folder)),
                     folder == "sinnoh" ? HideawaysOf() : null);
             return loaded[region] = habitats;
@@ -257,7 +257,7 @@ public sealed class Habitats
         foreach (string file in Directory.GetFiles(overlays, "*.json").OrderBy(f => f, StringComparer.Ordinal))
         {
             // Most overlays hold none: only those that name the key are read whole
-            if (!File.ReadAllText(file).Contains("\"ours\"", StringComparison.Ordinal)) continue;
+            if (!DataArchive.ReadText(file).Contains("\"ours\"", StringComparison.Ordinal)) continue;
             var overlay = GameDataFiles.Load<WorldOverlayFile>(Path.Combine(regionFolder, "overlays", Path.GetFileName(file)), strict: true);
             if (overlay.Ours != null) found.Add((Path.GetFileNameWithoutExtension(file), overlay.Ours));
         }

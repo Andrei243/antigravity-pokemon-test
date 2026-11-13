@@ -2593,6 +2593,8 @@ EV, $, %, CAT, ENC, SNK, EGG...) in white Black, 0.74 of the radius (0.62 for a 
 
 The order follows the games' opening: a notice, a short film, the legendary Pokémon with the title, "press start", then the menu. Any button skips to the title.
 
+**The loading bar** (`GameEngine.ShowLoading`): while the game loads, before the notice, its window is black with one thin bar five sixths of the way down, a third of the window wide and a 180th of it tall (four pixels at least): the track in `ModernUi.Ink`, the fill in `ModernUi.Gold`, growing a step for each part of the start (the rooms, then each region). It is drawn straight into the window in the window's own pixels and carries no words, so it needs no typeface and reads the same in every language. Only the game's own window shows it; the harness's and a test's engines draw nothing before their first frame.
+
 1. **Notice** (3.4 s): white text on black saying this is a fan-made project with original art.
 2. **Journey** (3 × 3.6 s): slow pans over the field itself at different times of day (Twinleaf Town in the morning, Route 201 by day, Sandgem Town at night with its windows lit), between cinema bars 120 units tall, dipping to black between shots. They are rendered by the field renderer, so they always match the game.
 3. **Reveal** (3.2 s): fade up from black on the void, a white flash, then Giratina and the lettering.

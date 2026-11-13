@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- The game no longer waits three seconds for its sounds as it opens, and a start right after an update (when every data file is new to the system) is much shorter: the small map and script files are kept as one. A thin bar shows how far loading has come before the opening notice.
+
 - Join Avenue's visitors now ask to open shops in its empty bays: say yes and a raffle, dojo, salon, nursery or antique shop moves in, as many as the avenue's rank has room for. Every shop grows with what you spend there, widening its stock or doing more for your Pokémon.
 - Under Challenge, Unova's Gym Leaders, Elite Four and Iris now bring their own Challenge Mode teams, with an extra Pokémon and better-trained partners.
 - Route 23 has its six holes: push the valley's boulders into them with Strength to cross.

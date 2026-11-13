@@ -132,7 +132,7 @@ public sealed class ScriptLibrary
         try
         {
             return new ScriptLibrary((paths ?? Directory.GetFiles(folder, "*.txt").OrderBy(p => p, StringComparer.Ordinal).ToList())
-                .Select(p => (Path.GetFileNameWithoutExtension(p), File.ReadAllText(p))));
+                .Select(p => (Path.GetFileNameWithoutExtension(p), DataArchive.ReadText(p))));
         }
         catch (ScriptException e)
         {
@@ -555,5 +555,5 @@ public sealed class ScriptLibrary
     /// </summary>
     public static Region? RegionOfFile(string file) =>
         RegionDatabase.RegionOfMap(file)
-        ?? RegionDatabase.All.FirstOrDefault(r => r.File != null && System.IO.File.Exists(GameDataFiles.PathOf($"world/{r.Folder}/areas/{file}.json")));
+        ?? RegionDatabase.All.FirstOrDefault(r => r.File != null && DataArchive.Exists(GameDataFiles.PathOf($"world/{r.Folder}/areas/{file}.json")));
 }

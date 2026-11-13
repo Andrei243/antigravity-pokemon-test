@@ -582,7 +582,7 @@ public class FreeMovementTests
         recording.Write(stream);
         stream.Position = 0;
         var back = InputRecording.Read(stream);
-        Assert.Equal(4, back.Format);
+        Assert.Equal(InputRecording.FormatVersion, back.Format);
         Assert.Equal(recording.Frames, back.Frames);
         Assert.Equal((sbyte)-60, back.Frames[0].Actions.MoveX);
 

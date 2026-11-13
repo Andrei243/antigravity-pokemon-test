@@ -43,7 +43,7 @@ public sealed class World
         foreach (string name in DataLayers.FoldersIn(Folder))
         {
             string relative = Path.Combine(Folder, name);
-            if (File.Exists(GameDataFiles.PathOf(Path.Combine(relative, IndexFile))))
+            if (DataArchive.Exists(GameDataFiles.PathOf(Path.Combine(relative, IndexFile))))
                 worlds.Add(new World(relative, GameDataFiles.Load<WorldIndexFile>(Path.Combine(relative, IndexFile), strict: true)));
         }
         return worlds;
@@ -67,7 +67,7 @@ public sealed class World
     private T? Optional<T>(string file, bool strict = false) where T : class
     {
         string relative = Path.Combine(folder, file);
-        return File.Exists(GameDataFiles.PathOf(relative)) ? GameDataFiles.Load<T>(relative, strict) : null;
+        return DataArchive.Exists(GameDataFiles.PathOf(relative)) ? GameDataFiles.Load<T>(relative, strict) : null;
     }
 
     // The files read so far are kept for everyone who asks: tests and the chunks' workers ask from several threads at
@@ -198,9 +198,45 @@ public sealed class World
     public TileBehavior BehaviourAt(int matrixId, int x, int z) =>
         ChunkAt(matrixId, x, z) is { } at ? at.Chunk.BehaviourAt(at.X, at.Z) : TileBehavior.None;
 
+    /// <summary>
+    /// Reads the world's matrices, chunks, areas and overlays ahead on every core, so that building the maps, which
+    /// goes one map after another (the trainers' teams are drawn from the game's chance in that order), finds each
+    /// file read already. A file that can't be read is left for whoever asks for it, who is told what is wrong with
+    /// it exactly as before.
+    /// </summary>
+    public void ReadAhead()
+    {
+        static T? Quietly<T>(Func<T?> read) where T : class
+        {
+            try { return read(); }
+            catch (Exception e) when (e is InvalidDataException or IOException or UnauthorizedAccessException) { return null; }
+        }
+        List<string> Names(string kind) => DataLayers.FilesIn(Path.Combine(folder, kind), "*.json").Select(f => Path.GetFileNameWithoutExtension(f.Key)).ToList();
+        void Fill<TKey, T>(Dictionary<TKey, T?> cache, List<(TKey Key, T? File)> read) where TKey : notnull where T : class
+        {
+            lock (reading)
+                foreach (var (key, file) in read)
+                    if (file != null) cache.TryAdd(key, file);
+        }
+        List<(TKey, T?)> All<TKey, T>(List<TKey> keys, Func<TKey, T?> read) where T : class =>
+            keys.AsParallel().AsOrdered().Select(key => (key, Quietly(() => read(key)))).ToList();
+
+        var numbered = new Func<string, List<int>>(kind => Names(kind).Select(n => int.TryParse(n, out int id) && $"{id:000}" == n ? id : -1).Where(id => id >= 0).ToList());
+        Fill(matrices!, All(numbered("matrices"), id => GameDataFiles.Load<WorldMatrixFile>(Path.Combine(folder, "matrices", $"{id:000}.json"))));
+        Fill(chunks, All(numbered("chunks"), id =>
+        {
+            var chunk = Optional<WorldChunkFile>(Path.Combine("chunks", $"{id:000}.json"));
+            chunk?.Validate();
+            return chunk;
+        }));
+        Fill(areas, All(Names("areas"), key => Optional<WorldAreaFile>(Path.Combine("areas", key + ".json"))));
+        Fill(overlays, All(Names("overlays"), key => Optional<WorldOverlayFile>(Path.Combine("overlays", key + ".json"), strictOverlays)));
+    }
+
     public List<Map> BuildMaps()
     {
-        var maps = Index.Maps.Select(entry => WorldMapBuilder.Build(this, entry)).ToList();
+        ReadAhead();
+        var maps =Index.Maps.Select(entry => WorldMapBuilder.Build(this, entry)).ToList();
         // What the story reveals later is built like the rest, and the map keeps a copy of it to put back
         foreach (var hidden in Index.Hidden)
             maps.FirstOrDefault(m => m.Name == hidden.Map)?.AddHiddenPlace(hidden.Var, hidden.Value, hidden.ChunkX, hidden.ChunkY, hidden.ChunksWide, hidden.ChunksHigh);

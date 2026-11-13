@@ -366,7 +366,16 @@ public partial class GameEngine
             Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
         }
 
+        ShowLoading(0f);
         using (Log.Phase("the sound")) AudioManager.Initialize();
+        ShowLoading(0.04f);
+        // The songs are read on a worker while the maps load: the title asks for its own as the start-up ends, and a
+        // song that can't be read is told of there, by whoever asks first, as before
+        System.Threading.Tasks.Task.Run(() =>
+        {
+            try { MusicLibrary.Exists(""); }
+            catch (Exception e) when (e is not OutOfMemoryException) { }
+        });
         LoadTheData();
 
         var modelled = PokemonModels.Preloaded.ToList();
@@ -387,6 +396,7 @@ public partial class GameEngine
             SubstituteDoll.Preload();
         }
 
+        ShowLoading(0.9f);
         using (Log.Phase("options")) ApplySettings(window: false);
 
         // The menu sprites of the species the story shows first are made up front (read from the sprite cache once
@@ -424,8 +434,19 @@ public partial class GameEngine
         using (Log.Phase("moves")) MoveDatabase.Initialize();
         using (Log.Phase("species")) PokemonDatabase.Initialize();
         using (Log.Phase("items")) ItemDatabase.Initialize();
-        using (Log.Phase("maps")) MapDatabase.Initialize();
+        ShowLoading(0.1f);
+        // The bar moves on a step for the rooms and one for each region (it is drawn only for the game's own window)
+        if (ShowsLoading) MapDatabase.Loading = (done, steps) => ShowLoading(0.1f + 0.7f * done / steps);
+        try
+        {
+            using (Log.Phase("maps")) MapDatabase.Initialize(RegionsTogether);
+        }
+        finally
+        {
+            MapDatabase.Loading = null;
+        }
         using (Log.Phase("scripts")) LoadScripts();
+        ShowLoading(0.86f);
         // The open regions' maps (plan 32 · OW5): none says it is open yet, so none is loaded
         LoadOpenRegions();
     }

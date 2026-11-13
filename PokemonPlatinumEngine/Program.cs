@@ -180,6 +180,16 @@ public static class Program
         WindowSettings.Apply(settings);
         Log.Info($"Renderer: {Gl.Renderer() ?? "unknown"}");
         Log.Info($"Options: {System.Text.RegularExpressions.Regex.Replace(settings.Describe(), @"\s+", " ")}");
+        // The maps, the worlds and the scripts read as one file from the cache, made again whenever a file of theirs
+        // changed (DataArchive): opened with the window up and black, before anything reads them. Not in safe mode,
+        // which reads the game as it is built, nor in developer mode, whose files change while the game runs
+        if (!launch.SafeMode && !DevMode.Wanted(launch, settings))
+        {
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.Black);
+            Raylib.EndDrawing();
+            OpenTheDataArchive();
+        }
         if (player != null)
         {
             Replay(player, launch.ReplayFolder!, made);
@@ -190,11 +200,11 @@ public static class Program
         // The session is recorded from the title (plan 16 · T19): a seed drawn by chance goes into the dice before the
         // engine is made, so the field's chance and every map the start loads draw from it, and each frame's keys and
         // clock are kept with it. Only --record writes it anywhere
-        var recorder = MovieRecorder.Begin(settings, SavePaths.Current.Folder, launch.Region);
+        var recorder = MovieRecorder.Begin(settings, SavePaths.Current.Folder, launch.Region, regionsTogether: true);
         Log.Info($"Recording the session from seed {recorder.Recording.Seed}{(launch.RecordPath != null ? $", to be written to {launch.RecordPath}" : "")}.");
 
         // Initialize Engine
-        GameEngine engine = new(settings) { Recording = recorder.Recording };
+        GameEngine engine = new(settings) { Recording = recorder.Recording, ShowsLoading = true, RegionsTogether = recorder.Recording.RegionsTogether };
         made(engine);
         // A crash leaves a report's folder beside its report, which replays to the frame that threw (plan 16 · T20)
         CrashReport.ReportFolderWriter = engine.WriteCrashFolder;
@@ -249,6 +259,26 @@ public static class Program
         // Cleanup
         engine.Close();
         Raylib.CloseWindow();
+    }
+
+    // The archive is kept with the other caches: in POKEMON_CACHE where several trees share one (each tree's files have
+    // their own fingerprint, so none is taken away there), beside the saves for a published build, else beside the game
+    private static void OpenTheDataArchive()
+    {
+        using var phase = Log.Phase("data archive");
+        string folder = CacheFolders.Shared != null ? CacheFolders.Of("data", CacheFolders.Shared, AppContext.BaseDirectory)
+            : CacheFolders.Of("data", null, GameVersion.Shipped ? SavePaths.Current.Folder : AppContext.BaseDirectory);
+        try
+        {
+            var archive = Data.DataArchive.Open(Data.GameDataFiles.Directory, folder, prune: CacheFolders.Prunes);
+            Data.DataArchive.Use(archive);
+            Log.Info($"The data archive holds {archive.Count} files ({(archive.FromCache ? "read from the cache" : "made from the files, which had changed")}).");
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or AggregateException)
+        {
+            // The files themselves are read, as they always were
+            Log.Warn($"The data archive couldn't be made ({e.Message}): the files are read one by one.");
+        }
     }
 
     /// <summary>A report's recording, read and checked; null, said to the terminal and the log, where it can't be played.</summary>
