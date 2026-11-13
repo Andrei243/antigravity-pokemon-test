@@ -57,6 +57,10 @@ internal static class OpenDebugLayers
     public static readonly Color SwimColour = new(40, 210, 230, 230);
     public static readonly Color StepColour = new(250, 226, 40, 240);
     public static readonly Color DropColour = new(240, 40, 40, 240);
+
+    /// <summary>The mount's links (plan 34 · PD2): a hop orange, a high jump brown, a climb magenta, a glide sky blue, as the baker's --nav draws them.</summary>
+    public static readonly Color HopColour = new(255, 140, 30, 240), HighJumpColour = new(150, 80, 30, 240),
+        ClimbColour = new(230, 60, 220, 240), GlideColour = new(120, 190, 255, 240);
     public static readonly Color TriggerColour = DebugLayers.TriggerColour with { A = 240 };
     public static readonly Color DoorColour = DebugLayers.WarpColour with { A = 240 };
     public static readonly Color SightColour = DebugLayers.SightColour with { A = 240 };
@@ -157,8 +161,11 @@ internal static class OpenDebugLayers
             if (!link.OffMesh) continue;
             var from = V(link.A);
             if (!Near(centre, from.X, from.Z, Reach)) continue;
-            bool drop = (link.Flags & OpenNavFlags.Drop) != 0;
-            Add(picture, from + lift, V(link.Land) + lift, drop ? DropColour : StepColour, DebugLayer.Nav);
+            var f = link.Flags;
+            var colour = (f & OpenNavFlags.Glide) != 0 ? GlideColour : (f & OpenNavFlags.Climb) != 0 ? ClimbColour
+                : (f & OpenNavFlags.HighJump) != 0 ? HighJumpColour : (f & OpenNavFlags.Jump) != 0 ? HopColour
+                : (f & OpenNavFlags.Drop) != 0 ? DropColour : StepColour;
+            Add(picture, from + lift, V(link.Land) + lift, colour, DebugLayer.Nav);
         }
     }
 

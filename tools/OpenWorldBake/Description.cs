@@ -26,6 +26,13 @@ public sealed class OpenWorldFile
     /// <summary>The height where no grid of control points lies.</summary>
     public double BaseHeight { get; set; }
 
+    /// <summary>
+    /// Whether the region is ridden (plan 34 · PD2): its navigation mesh then gains the mount's links, a hop, a high
+    /// jump, a climb up a climbable face and a glide off a height, which only a mounted body may take. False unless it says,
+    /// so a region with no mount bakes the mesh it always had.
+    /// </summary>
+    public bool Mount { get; set; }
+
     /// <summary>The cover's rules, where the region wants other heights than the defaults.</summary>
     public CoverRulesFile? Cover { get; set; }
 

@@ -209,5 +209,8 @@ partial class Harness
 
         // FM13: the mount as a rig in the open test world (fw70 to fw89; a game of its own, past the opening)
         FreeWalkMountShots();
+
+        // Plan 34 · PD2: the mount's yard the lab bakes, ridden by its links (fwy0 to fwy6; a game of its own)
+        FreeWalkYardShots();
     }
 }

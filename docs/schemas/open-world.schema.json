@@ -22,6 +22,9 @@
     "baseHeight": {
       "type": "number"
     },
+    "mount": {
+      "type": "boolean"
+    },
     "cover": {
       "type": [
         "object",

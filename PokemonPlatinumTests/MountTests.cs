@@ -345,11 +345,16 @@ public class MountTests
     }
 
     [Fact]
-    public void OnTheNavigationMeshTheClimbAndTheGlideAreAllowedOnlyOnceGranted()
+    public void OnTheNavigationMeshTheMountsLinksAreAllowedOnlyMountedAndOnceGranted()
     {
-        Assert.Equal(OpenNavFlags.None, OpenNavMesh.Allowed(MovementGrants.Dash | MovementGrants.HighJump) & (OpenNavFlags.Climb | OpenNavFlags.Glide | OpenNavFlags.Swim));
-        Assert.True(OpenNavMesh.Allowed(MovementGrants.Climb).HasFlag(OpenNavFlags.Climb));
-        Assert.True(OpenNavMesh.Allowed(MovementGrants.Glide).HasFlag(OpenNavFlags.Glide));
+        const OpenNavFlags Mounts = OpenNavFlags.Jump | OpenNavFlags.HighJump | OpenNavFlags.Climb | OpenNavFlags.Glide;
+        // Mounted with no power but the dash: the hop alone
+        Assert.Equal(OpenNavFlags.Jump, OpenNavMesh.Allowed(MovementGrants.Dash, mounted: true) & (Mounts | OpenNavFlags.Swim));
+        Assert.True(OpenNavMesh.Allowed(MovementGrants.HighJump, mounted: true).HasFlag(OpenNavFlags.HighJump));
+        Assert.True(OpenNavMesh.Allowed(MovementGrants.Climb, mounted: true).HasFlag(OpenNavFlags.Climb));
+        Assert.True(OpenNavMesh.Allowed(MovementGrants.Glide, mounted: true).HasFlag(OpenNavFlags.Glide));
+        // On foot, never one of the mount's, whatever the grants say
+        Assert.Equal(OpenNavFlags.None, OpenNavMesh.Allowed(All) & Mounts);
     }
 
     [Fact]

@@ -9,6 +9,8 @@
   "region": "Paldea",
   "chunks": [-3, -12, 2, 1],
   "baseHeight": 1.2,
+  // Ridden (plan 34 · PD2): its navigation mesh holds the mount's hops, high jumps, climbs and glides
+  "mount": true,
   "cover": { "shore": 0.6 },
   "areas": [
     { "key": "cabo_poco", "name": "Cabo Poco", "polygon": [[-52, -30], [96, -30], [96, 64], [-52, 64]], "music": "paldea/cabo_poco" },
