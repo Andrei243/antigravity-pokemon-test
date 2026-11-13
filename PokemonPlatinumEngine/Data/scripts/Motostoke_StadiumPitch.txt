@@ -65,3 +65,34 @@ script Kabu
 label Won
   say "Train hard, every day. That's all there is to it, at my age or yours."
   end
+
+
+# After the Hall of Fame (plan 33 · GL7, part b; docs/mechanics/rulings.md, "Sordward and Shielbert"): Shielbert on the
+# pitch, a Pokémon of the stadium Dynamaxed by the brothers' doing, raided with Hop, Sonia and Leon beside the player (a
+# raid that can't fail), and his battle. Our own lines on the beats of Sword's post-game, told in two stadiums here.
+script Shielbert
+  face shielbert_pitch player
+  speaker "Shielbert"
+  if flag FLAG_GALAR_SHIELBERT_BEATEN end
+  scene "Shielbert at Motostoke Stadium"
+  say "Ah, the new Champion. My brother and I come of Galar's true kings, you know, and its history has been told wrong for far too long."
+  say "Watch. A little Galar Particle energy, and the stadium's Pokémon remember what they really are."
+  text "A roar shakes the stands. The stadium's Coalossal swells to a giant, out of anyone's control!"
+  speaker "Hop"
+  say "{player}! We came as fast as we could. Sonia, Leon, all of us. Let's calm it down together!"
+  raid boss "Coalossal" 62 stars 5 cannotfail with "galar_raid_post_hop" "galar_raid_post_sonia" "galar_raid_post_leon"
+  speaker "Shielbert"
+  say "Hmph. Then let me see how well the Champion fares against me."
+  battle shielbert_pitch as "galar_shielbert_1" canlose
+  if lost goto Lost
+  speaker "Shielbert"
+  say "...Very well. My brother has gone on to Hammerlocke. You will not find him so easily put off."
+  setflag FLAG_GALAR_SHIELBERT_BEATEN
+  objective galarSordward
+  endscene
+  end
+label Lost
+  speaker "Shielbert"
+  say "As expected. Run along, Champion. Come back when you can stand in our way."
+  endscene
+  end

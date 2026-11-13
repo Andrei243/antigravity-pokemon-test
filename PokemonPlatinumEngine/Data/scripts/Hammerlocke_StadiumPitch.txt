@@ -28,3 +28,35 @@ script Raihan
 label Won
   say "Next time it's me and Leon. Don't you dare miss it."
   end
+
+
+# After the Hall of Fame (plan 33 · GL7, part b; docs/mechanics/rulings.md, "Sordward and Shielbert"): Sordward on
+# Hammerlocke's pitch once his brother has been beaten at Motostoke, another of the stadium's Pokémon Dynamaxed and
+# raided, and his battle. Our own lines.
+script Sordward
+  face sordward_pitch player
+  speaker "Sordward"
+  if flag FLAG_GALAR_SORDWARD_BEATEN end
+  scene "Sordward at Hammerlocke Stadium"
+  say "So you beat my brother. No matter. The heroes of the legend were never what Galar was told, and Hammerlocke's own vault says so."
+  text "The pitch shudders. The stadium's Duraludon rears up to a giant's height, roaring at the stands!"
+  speaker "Leon"
+  say "Not again! {player}, we're with you. Hop, Sonia, positions!"
+  raid boss "Duraludon" 63 stars 5 cannotfail with "galar_raid_post_hop" "galar_raid_post_sonia" "galar_raid_post_leon"
+  speaker "Sordward"
+  say "Then it falls to me. Let us settle this, Champion!"
+  battle sordward_pitch as "galar_sordward_1" canlose
+  if lost goto Lost
+  speaker "Sordward"
+  say "Beaten, both of us... Perhaps the true kings were only ever stories. We will trouble the stadiums no more."
+  setflag FLAG_GALAR_SORDWARD_BEATEN
+  speaker "Hop"
+  say "Every stadium's quiet again! Champion, you were brilliant. Nobody's doing that to Galar's Pokémon again."
+  objective galarFree
+  endscene
+  end
+label Lost
+  speaker "Sordward"
+  say "As I thought. Come back when you are worthy of the sword, Champion."
+  endscene
+  end

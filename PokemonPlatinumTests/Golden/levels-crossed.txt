@@ -1594,11 +1594,16 @@ galar_piers_1 237 (46) [Scrafty → Brawlhood, Malamar → Mesmerquid, Skuntank 
 galar_raid_hop_a 241 (60)
 galar_raid_hop_b 241 (60)
 galar_raid_hop_c 241 (60)
+galar_raid_post_hop 241 (62) [Dubwool → Ramsworth]
+galar_raid_post_leon 241 (62)
+galar_raid_post_sonia 241 (62) [Boltund → Voltcourser]
 galar_raid_zacian 243 (70)
 galar_raid_zamazenta 243 (70)
 galar_raihan_1 237 (48) [Sandaconda → Duneconda, Duraludon → Archaludon]
 galar_raihan_2 240 (58) [Torkoal → Smeltortoise, Turtonator → Caldertoise, Duraludon → Archaludon]
 galar_rose_1 241 (62) [Escavalier → Lancelier, Ferrothorn → Ferrospire, Perrserker → Jarlkatt, Copperajah → Verdigrand]
+galar_shielbert_1 241 (63) [Klefki → Chatelkey, Bronzong → Dotakuron, Copperajah → Verdigrand]
+galar_sordward_1 242 (64) [Escavalier → Lancelier, Bisharp → Kingambit, Golisopod → Shogunpod]
 galar_worker_brann 232 (30) [Silicobra → Duneconda, Drilbur → Excavarch]
 galar_worker_glen 227 (12) [Rolycoly → Coalossal, Roggenrola → Gigalith]
 galar_worker_idris 233 (35) [Boldore → Gigalith, Throh → Throjutsu]

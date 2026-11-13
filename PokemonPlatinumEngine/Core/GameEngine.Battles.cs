@@ -241,6 +241,8 @@ public partial class GameEngine
                 WildPokemon = wilds,
                 Format = raid != null ? BattleFormat.Raid : horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Raid = raid,
+                // A Mega Max den's boss Mega Evolves and Mega Dynamaxes by itself (plan 33 · GL7, part b)
+                MegaMaxDen = raid?.MegaMaxDen ?? false,
                 Partner = beside,
                 Conditions = BattleConditionsHere(totem: totem),
                 // When, under what sky and how it was met, for a catch's mark (plan 10 · F9), and the Mark Charm's three tries (plan 40 · GE5)

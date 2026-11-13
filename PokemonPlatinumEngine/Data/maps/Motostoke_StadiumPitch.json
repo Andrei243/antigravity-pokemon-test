@@ -122,6 +122,17 @@
       "facing": "Down",
       "script": "Kabu",
       "hiddenBy": "FLAG_GALAR_AT_THE_CEREMONY"
+    },
+    {
+      "id": "shielbert_pitch",
+      "name": "Shielbert",
+      "npcType": "shielbert",
+      "x": 7,
+      "y": 7,
+      "facing": "Down",
+      "script": "Shielbert",
+      "hiddenBy": "FLAG_GALAR_SHIELBERT_BEATEN",
+      "shownBy": "GalarHallOfFame"
     }
   ],
   "wildEncounters": []

@@ -675,6 +675,20 @@ public class ScriptTests
           blacktower finish
           blacktower best
           blacktower cleared
+          galartower enough
+          galartower begin
+          galartower choose
+          galartower check
+          galartower active
+          galartower rank
+          galartower wins
+          galartower leon
+          galartower opponent
+          galartower battle
+          galartower won
+          galartower lost
+          galartower finish
+          galartower beaten
           friend beaten
           friend before
           friend after

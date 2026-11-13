@@ -227,6 +227,8 @@ public enum Op
     Lighting,
     // The delve (plan 44 · SD8, SD9): a run down a hollow, whether a hollow is open, the camp's board, rank and prizes
     Delve,
+    // Galar's Battle Tower ladder in Rose Tower (plan 33 · GL7, part b): ten ranks with the Frontier's rules lent, Leon at the Master Rank
+    GalarTower,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

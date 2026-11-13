@@ -29,11 +29,11 @@ public class GalarSpeciesTests
         "Swinub", "Piloswine", "Mamoswine",
         "Froslass", "Mudbray", "Mudsdale", 
            "Munna", "Musharna", "Natu", "Xatu", "Stufful",
-        "Bewear", "Snover", "Abomasnow", "Krabby", "Kingler", "Corphish",
+        "Bewear", "Krabby", "Kingler", "Corphish",
         "Crawdaunt",         "Combee", "Vespiquen", 
         "Cherubi", "Cherrim", "Stunky", "Skuntank",
         "Machop", "Machoke", "Machamp",
-        "Magikarp", "Gyarados", "Goldeen", "Seaking", "Remoraid", "Octillery", "Shellder",
+        "Goldeen", "Seaking", "Remoraid", "Octillery", "Shellder",
         "Cloyster", "Feebas", "Milotic", "Basculin", "Wishiwashi", "Trubbish", "Garbodor",
         
         "Gigalith", "Conkeldurr", 
@@ -50,7 +50,7 @@ public class GalarSpeciesTests
         "Duosion", "Reuniclus", "Escavalier", "Accelgor", "Elgyem", "Beheeyem",
         "Rufflet", "Braviary", "Vullaby", "Mandibuzz", "Skorupi", "Drapion",
         "Litwick", "Lampent", "Chandelure", "Weavile", "Sableye",
-        "Mawile", "Maractus", "Sigilyph", "Riolu", "Lucario",  "Mimikyu", "Cufant",
+        "Mawile", "Maractus", "Sigilyph",  "Mimikyu", "Cufant",
         "Copperajah", "Qwilfish", "Frillish", "Jellicent", "Cramorant",
             
         "Heliolisk", "Hawlucha",   
@@ -59,9 +59,9 @@ public class GalarSpeciesTests
         "Passimian", "Morpeko", "Falinks", "Drampa", "Turtonator", "Togedemaru",
         "Pincurchin", "Mantyke", "Mantine", 
         "Dhelmise", "Lunatone", "Solrock", "Mime Jr.", "Mr. Mime", "Mr. Rime",
-        "Eiscue", "Duraludon", "Rotom", "Ditto", "Dracozolt",
+        "Eiscue", "Rotom", "Ditto", "Dracozolt",
         "Arctozolt", "Dracovish", "Arctovish", "Charmander", "Charmeleon", "Charizard", "Type: Null", "Silvally",
-        "Larvitar", "Pupitar", "Tyranitar", "Deino", "Zweilous", "Hydreigon", 
+        "Deino", "Zweilous", "Hydreigon", 
         "Jangmo-o", "Hakamo-o", "Kommo-o", "Dreepy", "Drakloak", "Dragapult");
 
     /// <summary>The items and places Galar's evolutions ask for that nothing in Galar gives, and who owes each.</summary>

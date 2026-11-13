@@ -179,7 +179,7 @@ public partial class GameEngine
             if (Raids.DenOfTrigger(trigger.Name) is not { } den) continue;
             bool wished = flow.Story.Has(Story.ScriptRunner.DenFlag(den.Id, "WISHED"));
             bool felled = flow.Story.Has(Story.ScriptRunner.DenFlag(den.Id, "DONE"));
-            if (!Raids.BeamStands(den, key.DailyNumber, version, badges, wished, felled)) continue;
+            if (!Raids.BeamStands(den, key.DailyNumber, version, badges, wished, felled, Raids.IsOpen(den, flow.Story.Has))) continue;
             var middle = trigger.Shape.Base;
             double x = middle.X / (double)OpenPos.PerMetre, z = middle.Z / (double)OpenPos.PerMetre;
             double top = trigger.Shape.Max.Y / (double)OpenPos.PerMetre, bottom = trigger.Shape.Min.Y / (double)OpenPos.PerMetre;

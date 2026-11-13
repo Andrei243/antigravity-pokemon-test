@@ -117,7 +117,8 @@
       "facing": "Right",
       "dialog": [
         "Welcome to Rose Tower, home of Macro Cosmos. The lift goes up to the Energy Plant."
-      ]
+      ],
+      "script": "TowerDesk"
     }
   ],
   "wildEncounters": []
