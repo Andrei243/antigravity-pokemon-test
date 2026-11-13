@@ -1505,6 +1505,8 @@ public partial class GameEngine
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
                     // ...and takes its giant layer while a Dynamaxed Pokémon stands on the field (plan Y · YD5)
                     AudioManager.Giant = flow.Battle.Result == BattleResult.None && flow.Battle.GiantStands;
+                    // ...and its tale layer while a tale is told over the field (plan 46 · CP12)
+                    AudioManager.Tale = flow.Battle.Result == BattleResult.None ? flow.Battle.TaleLayer : null;
                     // A recording watched (plan 08 · P11) ends back on the Vs. Recorder's list, and leaves nothing behind
                     if (KeepThePremiere())
                     {
@@ -3060,6 +3062,7 @@ public partial class GameEngine
         {
             AudioManager.LowHp = false;
             AudioManager.Giant = false;
+            AudioManager.Tale = null;
             AudioManager.PlayMusic(radio);
             return;
         }
@@ -3077,6 +3080,7 @@ public partial class GameEngine
     {
         AudioManager.LowHp = false;
         AudioManager.Giant = false;
+        AudioManager.Tale = null;
         AudioManager.Region = RegionDatabase.RegionOfMap(map.Name)?.Id;
         string track = map.BgmTrackAt(x, y);
         if (!string.IsNullOrEmpty(track)) AudioManager.PlayMusic(track);

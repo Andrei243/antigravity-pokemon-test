@@ -289,7 +289,7 @@ public static class Formulas
     /// A ball's strength in tenths (<c>sBasicBallMod</c> and the special balls of
     /// <c>BattleScript_CalcCatchShakes</c>). A Master Ball is not here: it catches whatever the rolls say.
     /// </summary>
-    public static int BallTenths(string ball, Pokemon target, int turn, BattleConditions conditions) => ball switch
+    public static int BallTenths(string ball, Pokemon target, int turn, BattleConditions conditions, bool? night = null) => ball switch
     {
         "Ultra Ball" => 20,
         "Great Ball" or "Safari Ball" => 15,
@@ -298,7 +298,7 @@ public static class Formulas
         "Nest Ball" when target.Level < 40 => Math.Max(10, 40 - target.Level),
         "Repeat Ball" when conditions.HasCaught(target.Species) => 30,
         "Timer Ball" => Math.Min(40, 10 + turn),
-        "Dusk Ball" when conditions.Night || conditions.Terrain == BattleTerrain.Cave => 35,
+        "Dusk Ball" when (night ?? conditions.Night) || conditions.Terrain == BattleTerrain.Cave => 35,
         "Quick Ball" when turn < 1 => 40,
         _ => 10
     };

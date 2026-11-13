@@ -162,6 +162,7 @@ public class JukeboxScreen
         if (playing is { Tab: JukeboxTab.Songs }) AudioManager.StopMusic();
         AudioManager.LowHp = false;
         AudioManager.Giant = false;
+        AudioManager.Tale = null;
         playing = null;
     }
 

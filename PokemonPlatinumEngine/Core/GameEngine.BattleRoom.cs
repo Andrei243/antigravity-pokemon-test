@@ -336,6 +336,7 @@ public partial class GameEngine
         roomBattle = false;
         AudioManager.LowHp = false;
         AudioManager.Giant = false;
+        AudioManager.Tale = null;
         if (roomPuzzle is { } puzzle)
         {
             bool solved = Puzzles.Judge(puzzle, battle.Core);

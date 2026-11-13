@@ -10,6 +10,13 @@ namespace PokemonPlatinumEngine.Battle;
 // events and a Tale Form's shape from TaleFormChanged, never from the rules' field, which is a turn ahead.
 public partial class BattleEngine
 {
+    /// <summary>
+    /// The song layer of the tale told over the field as the lines have shown it (the animator's, never the rules',
+    /// which are a turn ahead): what the battle theme's tale layer plays (plan 46 · CP12), from the line that tells the
+    /// tale to the line that ends it, with the scene off as well, since the layer is state of the tale told.
+    /// </summary>
+    public string? TaleLayer => Anim.Tale is { } tale ? core.TaleTable.Get(tale)?.SongLayer : null;
+
     /// <summary>The tale armed for the move to be chosen next, or null.</summary>
     public string? TaleArmed { get; private set; }
 

@@ -456,6 +456,8 @@ public sealed partial class ScriptRunner
         Op.GlobalLink => i.Name != "check",
         // A charm is asked for or handed over as an item is given (plan 40 · GE5): the lines and the fanfare are dropped
         Op.Charm => false,
+        // A tale is learned as an item is given (plan 46 · CP12): the lines and the fanfare are dropped
+        Op.Tale => false,
         // Records are mixed and asked about at once: nothing to see through (plan 40 · GE10)
         Op.Records => false,
         // The gift box's screen is the player's to work; a gift handed over, words told and a backdrop given are as items given (plan 40 · GE7)
@@ -1716,6 +1718,11 @@ public sealed partial class ScriptRunner
             // The charms of a Pokédex filled (plan 40 · GE5)
             case Op.Charm:
                 CharmCommand(i);
+                break;
+
+            // The Tales (plan 46 · CP12)
+            case Op.Tale:
+                TaleCommand(i);
                 break;
             case Op.Records:
                 RecordsCommand(i);

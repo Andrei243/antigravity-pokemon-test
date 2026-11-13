@@ -227,6 +227,8 @@ public enum Op
     Lighting,
     // The delve (plan 44 · SD8, SD9): a run down a hollow, whether a hollow is open, the camp's board, rank and prizes
     Delve,
+    // The Tales (plan 46 · CP12): a tale learned into the Book of Tales, or whether one is there
+    Tale,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

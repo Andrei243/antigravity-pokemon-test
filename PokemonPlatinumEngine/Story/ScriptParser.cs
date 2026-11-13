@@ -1609,6 +1609,14 @@ public static class ScriptParser
             }
             // The stage show (plan 42 · PS1, PS2): "stageshow trunk" the owner's gift, "stageshow has" whether it was given,
             // "stageshow dress" the dressing room, "stageshow perform" a show on the stage, "stageshow fan fan_1" a fan's gift
+            // The Tales (plan 46 · CP12): "tale learn "zmeu"" a tale into the Book of Tales, "tale has "zmeu"" whether it is there
+            case "tale":
+            {
+                string what = r.OneOf("learn", "has");
+                string tale = r.Text("a tale's id");
+                if (Data.TaleTable.Default.Get(tale) == null) throw r.Error($"'{tale}' is no tale of Data/tales.json");
+                return new Instruction { Op = Op.Tale, Line = line, Name = what, Other = tale };
+            }
             case "studio":
             {
                 // The film studio (plan 42 · PS4): "studio shoot "emptySeat"", "studio open|stars "id"", "studio rank"

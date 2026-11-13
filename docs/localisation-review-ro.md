@@ -35,5 +35,7 @@ Written by a translation session (plan 17 · N6); for the user's review. Each ro
 | `scripts/dewford_town.json` | CaseHoennSailor 1 | the sea song "Salt on the label, light in the hand, lamps for the dark of the land!" | Sare pe etichetă, lumină în mână, lămpi pentru bezna din țară! | rhyme lost; the English rhymes |
 | `scripts/ruins_of_alph.json` | CaseJohtoMirelle 3 | Top marks. | Notă maximă. | |
 | Various | Looker / Lockwork lines | "Efficient. And beaten. Wonderful." | Eficient. Și învins. Minunat. | |
+| `ui.json` | basme.learned (plan 46 · CP12) | {player} learned the tale of {tale}! | {player} a învățat basmul despre {tale}! | Carpathia's words, for the user's review (decision 7); "basmul despre" or "basmul lui"? `{tale}` is the tale's name without an article (Zmeu, Vârcolac, Baba Dochia) |
+| `ui.json` | basme.writtenDown (plan 46 · CP12) | It was written into the Book of Tales. | A fost scris în Cartea Basmelor. | Carpathia's words, for the user's review |
 
 Place names and people's names (Looker, Quincy Rowan-Pike, Ione Calder, towns of the games) are kept in English, as the existing files do.

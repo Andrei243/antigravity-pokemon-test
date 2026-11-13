@@ -2034,7 +2034,9 @@
       "told": "Un joc de noapte răsună peste câmp!",
       "rule": "Timp de cinci ture, mișcările de tip Sunet și orice mișcare făcută din sunet lovesc mai tare.",
       "story": "În nopțile de vară Ielele joacă hora pe pajiști, iar iarba arde unde le-au călcat picioarele. Cine le aude cântecul joacă până în zori. Cei înțelepți își astupă urechile cu pelin și o iau pe drumul cel lung spre casă."
-    }
+    },
+    "learned": "{player} a învățat basmul despre {tale}!",
+    "writtenDown": "A fost scris în Cartea Basmelor."
   },
   "bookOfTales": {
     "title": "Cartea Basmelor",

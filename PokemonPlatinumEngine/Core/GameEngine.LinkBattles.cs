@@ -66,6 +66,7 @@ public partial class GameEngine
         linkEnding = true;
         AudioManager.LowHp = false;
         AudioManager.Giant = false;
+        AudioManager.Tale = null;
         var over = linkOver;
         over();
         return true;

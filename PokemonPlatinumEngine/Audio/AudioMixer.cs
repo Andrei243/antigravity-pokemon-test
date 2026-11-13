@@ -258,6 +258,23 @@ public sealed class AudioMixer
         }
     }
 
+    /// <summary>
+    /// The music's tale layer (plan 46 · CP12): the song layer of the tale told over a battle, or null. Like
+    /// <see cref="Giant"/> it holds across songs and the game sets it every frame of a battle.
+    /// </summary>
+    public string? Tale
+    {
+        get { lock (gate) return music.Tale; }
+        set
+        {
+            lock (gate)
+            {
+                music.Tale = value;
+                if (modernMusic != null) modernMusic.Tale = value;
+            }
+        }
+    }
+
     /// <summary>A bus's volume, 0 to 1: what the options set.</summary>
     public float VolumeOf(AudioBus bus)
     {

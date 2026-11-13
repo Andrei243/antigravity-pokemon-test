@@ -1447,6 +1447,31 @@ label Give
   end
 ```
 
+### The Tales
+
+Plan 46 · CP12; `docs/mechanics/rulings.md`, "The Tales". A tale is learned in the world (an elder, a painted wall, a
+carved gate, a festival), never bought, and is kept by the story's own flag `FLAG_TALE_<ID>` (`TaleTable.FlagOf`), so
+nothing new is saved. The id is a tale of `Data/tales.json`, checked as the script is read. A battle offers only the
+tales learned, and only with the Book of Tales in the bag.
+
+| Command | What it does |
+|---|---|
+| `tale learn "zmeu"` | Writes the tale into the Book: its flag is set, the key item's fanfare plays and two lines say so, `RESULT` 1. A tale already learned changes and says nothing, `RESULT` 0. Skipped as an item given is: the lines and the fanfare are dropped. |
+| `tale has "zmeu"` | `RESULT` is 1 when the tale is learned, 0 when it isn't. |
+
+```
+script Elder
+  face self player
+  tale has "zmeu"
+  if var RESULT > 0 goto Told
+  say "Sit, child. I'll tell you how the Zmeu stole the sun."
+  tale learn "zmeu"
+  end
+label Told
+  say "Tell it well when your turn comes."
+  end
+```
+
 ### Records mixed between one's own saves
 
 Plan 40 · GE10 (`Models/RecordMix.cs`): the record desk upstairs in every Pokémon Center (`common.RecordDesk`) mixes the

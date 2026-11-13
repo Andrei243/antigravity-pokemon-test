@@ -88,6 +88,14 @@ public sealed class SongPlayer
     }
     private bool giant;
 
+    /// <summary>
+    /// The tale told over the battle, by its song layer (plan 46 · CP12: <c>tales.json</c>'s <c>songLayer</c>), or null:
+    /// the tracks of that layer (<c>only=tale_zmeu</c>, or <c>only=tale</c> for any tale) join in on their next notes and
+    /// those marked <c>unless=tale</c> fall silent, the song keeping its place and its tempo. A song with no tale layer
+    /// plays exactly as it did.
+    /// </summary>
+    public string? Tale { get; set; }
+
     private void Retime()
     {
         if (song != null) ticksPerSample = 1.0 / (song.SecondsPerTick(night, agitated, giant) * synth.Rate);
@@ -228,7 +236,8 @@ public sealed class SongPlayer
                 bool plays = track.When switch
                 {
                     TrackWhen.LowHp => agitated, TrackWhen.NotLowHp => !agitated,
-                    TrackWhen.Giant => giant, TrackWhen.NotGiant => !giant, _ => true
+                    TrackWhen.Giant => giant, TrackWhen.NotGiant => !giant,
+                    TrackWhen.Tale or TrackWhen.NotTale => Song.PlaysUnderTale(track, Tale), _ => true
                 };
                 while (next[t] < notes.Count && notes[next[t]].Tick < end && notes[next[t]].Tick < s.EndTick)
                 {

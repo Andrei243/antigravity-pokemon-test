@@ -1185,7 +1185,7 @@ public sealed partial class BattleCore : IBattleContext
         // may be a critical capture, one shake check where a plain one is four (plan 40 · GE5)
         var thrown = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? new CatchCalculator.CatchResult { IsCaught = true, Shakes = 4 }
             : CatchCalculator.Throw(foe, ball, rng, Turn, Conditions, SafariCatchStage, Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon,
-                EmeraldSafari ? EmeraldSafariRate : null);
+                EmeraldSafari ? EmeraldSafariRate : null, heldDay: TaleHoldsTheDay);
         int shakes = thrown.Shakes;
         if (ball.Name == "Safari Ball" || ball.Name == Conditions.OnlyBall) SpecialBalls = Math.Max(0, SpecialBalls - 1);
         Emit(new BallThrown(ball.Name, target.Slot, shakes, thrown.Critical));
