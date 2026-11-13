@@ -15,7 +15,7 @@ track tick square vol=0.42 pan=-0.3 rev=0.05
 
 track pad pad vol=0.36 pan=-0.2 rev=0.35
   L o4 (d f a)1 | (e g b-)1 | (c f a)1 | (d g b-)2 (c e a)2 |
-  (d f a)1 | (c e g)1 | (e g b-)1 | (d f a)1 |
+  (d f b-)1 | (c f a)1 | (e g b-)1 | (d f a)1 |
 
 track bass synthbass vol=0.98 rev=0.05
   L o2 [ d8 r8 ]4 | [ e8 r8 ]4 | [ f8 r8 ]4 | [ g8 r8 ]2 [ a8 r8 ]2 |

@@ -32,8 +32,19 @@ public sealed class MedalFacts
     public const string DexSeen = "dexSeen", DexCaught = "dexCaught", Badges = "badges", Champions = "champions", Circuits = "circuits",
         HeartsReclaimed = "heartsReclaimed", HeartsOpened = "heartsOpened", TourFourStars = "tourFourStars";
 
+    /// <summary>The delve's hollows, each cleared once (plan 44 · SD9): a fact each, its source <c>hollow</c> and the hollow's key in camel case.</summary>
+    public const string HollowBrinecave = "hollowBrinecave", HollowRootwood = "hollowRootwood", HollowHeartpeak = "hollowHeartpeak",
+        HollowOldTower = "hollowOldTower";
+
+    /// <summary>Each hollow's key (<c>Data/hollows.json</c>) by its medal's source.</summary>
+    public static IReadOnlyDictionary<string, string> HollowKeys { get; } = new Dictionary<string, string>
+    {
+        [HollowBrinecave] = "brinecave", [HollowRootwood] = "rootwood", [HollowHeartpeak] = "heartpeak", [HollowOldTower] = "old_tower"
+    };
+
     /// <summary>The facts that are no counter, in the order the medals list them.</summary>
-    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions, Circuits, HeartsReclaimed, HeartsOpened, TourFourStars };
+    public static IReadOnlyList<string> Others { get; } = new[] { DexSeen, DexCaught, Badges, Champions, Circuits, HeartsReclaimed, HeartsOpened, TourFourStars,
+        HollowBrinecave, HollowRootwood, HollowHeartpeak, HollowOldTower };
 
     public Statistics Counts { get; init; } = new();
     public int Seen { get; init; }
@@ -51,7 +62,10 @@ public sealed class MedalFacts
     /// <summary>The photo tour's four-star photographs the report keeps (plan 44 · SD6).</summary>
     public int TourFourStarCount { get; init; }
 
-    public long Value(string source) => source switch
+    /// <summary>The delve's hollows cleared, by key (plan 44 · SD9); empty while none is.</summary>
+    public IReadOnlySet<string> HollowsCleared { get; init; } = new HashSet<string>();
+
+    public long Value(string source) => HollowKeys.TryGetValue(source, out var hollow) ? (HollowsCleared.Contains(hollow) ? 1 : 0) : source switch
     {
         DexSeen => Seen,
         DexCaught => Caught,
@@ -116,6 +130,11 @@ public sealed class Medals
         // Lockwork's locked hearts: the first reclaimed, the thirtieth opened (plan 44 · SD5)
         Add(MedalCategory.League, MedalFacts.HeartsReclaimed, 1);
         Add(MedalCategory.League, MedalFacts.HeartsOpened, 30);
+        // Each of the delve's four hollows cleared (plan 44 · SD9; the Journey tab is full)
+        Add(MedalCategory.League, MedalFacts.HollowBrinecave, 1);
+        Add(MedalCategory.League, MedalFacts.HollowRootwood, 1);
+        Add(MedalCategory.League, MedalFacts.HollowHeartpeak, 1);
+        Add(MedalCategory.League, MedalFacts.HollowOldTower, 1);
         return all;
     }
 
