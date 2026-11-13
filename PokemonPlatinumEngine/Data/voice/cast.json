@@ -10455,6 +10455,10 @@
       "note": "first spoken at route_119_weather_institute_2f.txt(21)",
       "provisional": true
     },
+    "shielbert": {
+      "note": "first spoken at Motostoke_StadiumPitch.txt(75)",
+      "provisional": true
+    },
     "shop_boy": {
       "note": "first spoken at EternaCycleShop.txt(30)",
       "brief": {
@@ -10582,6 +10586,10 @@
     },
     "sophocles": {
       "note": "first spoken at HokulaniObservatory.txt(17)",
+      "provisional": true
+    },
+    "sordward": {
+      "note": "first spoken at Hammerlocke_StadiumPitch.txt(38)",
       "provisional": true
     },
     "sparring_coach": {
@@ -11767,6 +11775,7 @@
     "Shauna": "shauna",
     "Shauntal": "shauntal",
     "Shelly": "shelly",
+    "Shielbert": "shielbert",
     "Shop Boy": "shop_boy",
     "Shop Girl": "shop_girl",
     "Shop Owner": "shop_owner",
@@ -11783,6 +11792,7 @@
     "Socialite": "socialite",
     "Sonia": "sonia",
     "Sophocles": "sophocles",
+    "Sordward": "sordward",
     "Sparring Coach": "sparring_coach",
     "Spenser": "spenser",
     "Stall Keeper": "stall_keeper",

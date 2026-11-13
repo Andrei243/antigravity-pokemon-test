@@ -4977,6 +4977,42 @@ way 0
 way 1, from answer 1
   * battle galar_raihan_1 Lost
   * scene over, unseen
+=== Hammerlocke_StadiumPitch.Sordward
+from Sordward at 7,8 of Hammerlocke_StadiumPitch
+way 0.0
+  Sordward> So you beat my brother. No matter. The heroes of the legend were never what Galar was told, and Hammerlocke's own vault says so.
+  > The pitch shudders. The stadium's Duraludon rears up to a giant's height, roaring at the stands!
+  Leon> Not again! Lucas, we're with you. Hop, Sonia, positions!
+  Sordward> Then it falls to me. Let us settle this, Champion!
+  Sordward> Beaten, both of us... Perhaps the true kings were only ever stories. We will trouble the stadiums no more.
+  Hop> Every stadium's quiet again! Champion, you were brilliant. Nobody's doing that to Galar's Pokémon again.
+  * scene Hammerlocke_StadiumPitch.Sordward at Hammerlocke Stadium
+  * raidbattle Duraludon 63 5 stars with Hop:Dubwool,Sonia:Boltund,Leon:Charizard Won
+  * battle galar_sordward_1 Won
+  * endscene
+  + FLAG_GALAR_SORDWARD_BEATEN
+  + beaten galar_sordward_1
+  + seen Hammerlocke_StadiumPitch.Sordward at Hammerlocke Stadium
+way 0.1, from answer 2
+  Sordward> As I thought. Come back when you are worthy of the sword, Champion.
+  * battle galar_sordward_1 Lost
+  * endscene
+  + seen Hammerlocke_StadiumPitch.Sordward at Hammerlocke Stadium
+way 1.0, from answer 1
+  Sordward> Then it falls to me. Let us settle this, Champion!
+  Sordward> Beaten, both of us... Perhaps the true kings were only ever stories. We will trouble the stadiums no more.
+  Hop> Every stadium's quiet again! Champion, you were brilliant. Nobody's doing that to Galar's Pokémon again.
+  * raidbattle Duraludon 63 5 stars with Hop:Dubwool,Sonia:Boltund,Leon:Charizard Lost
+  * battle galar_sordward_1 Won
+  * endscene
+  + FLAG_GALAR_SORDWARD_BEATEN
+  + beaten galar_sordward_1
+  + seen Hammerlocke_StadiumPitch.Sordward at Hammerlocke Stadium
+way 1.1, from answer 2
+  Sordward> As I thought. Come back when you are worthy of the sword, Champion.
+  * battle galar_sordward_1 Lost
+  * endscene
+  + seen Hammerlocke_StadiumPitch.Sordward at Hammerlocke Stadium
 === HauoliCity_ApparelShop.Clerk
 from Clerk at 7,3 of HauoliCity_ApparelShop
 way -
@@ -7392,6 +7428,41 @@ way 0
 way 1, from answer 1
   * battle galar_kabu_1 Lost
   * scene over, unseen
+=== Motostoke_StadiumPitch.Shielbert
+from Shielbert at 7,7 of Motostoke_StadiumPitch
+way 0.0
+  Shielbert> Ah, the new Champion. My brother and I come of Galar's true kings, you know, and its history has been told wrong for far too long.
+  Shielbert> Watch. A little Galar Particle energy, and the stadium's Pokémon remember what they really are.
+  > A roar shakes the stands. The stadium's Coalossal swells to a giant, out of anyone's control!
+  Hop> Lucas! We came as fast as we could. Sonia, Leon, all of us. Let's calm it down together!
+  Shielbert> Hmph. Then let me see how well the Champion fares against me.
+  Shielbert> ...Very well. My brother has gone on to Hammerlocke. You will not find him so easily put off.
+  * scene Motostoke_StadiumPitch.Shielbert at Motostoke Stadium
+  * raidbattle Coalossal 62 5 stars with Hop:Dubwool,Sonia:Boltund,Leon:Charizard Won
+  * battle galar_shielbert_1 Won
+  * endscene
+  + FLAG_GALAR_SHIELBERT_BEATEN
+  + beaten galar_shielbert_1
+  + seen Motostoke_StadiumPitch.Shielbert at Motostoke Stadium
+way 0.1, from answer 2
+  Shielbert> As expected. Run along, Champion. Come back when you can stand in our way.
+  * battle galar_shielbert_1 Lost
+  * endscene
+  + seen Motostoke_StadiumPitch.Shielbert at Motostoke Stadium
+way 1.0, from answer 1
+  Shielbert> Hmph. Then let me see how well the Champion fares against me.
+  Shielbert> ...Very well. My brother has gone on to Hammerlocke. You will not find him so easily put off.
+  * raidbattle Coalossal 62 5 stars with Hop:Dubwool,Sonia:Boltund,Leon:Charizard Lost
+  * battle galar_shielbert_1 Won
+  * endscene
+  + FLAG_GALAR_SHIELBERT_BEATEN
+  + beaten galar_shielbert_1
+  + seen Motostoke_StadiumPitch.Shielbert at Motostoke Stadium
+way 1.1, from answer 2
+  Shielbert> As expected. Run along, Champion. Come back when you can stand in our way.
+  * battle galar_shielbert_1 Lost
+  * endscene
+  + seen Motostoke_StadiumPitch.Shielbert at Motostoke Stadium
 === OldChateauBackMiddleWestRoom.TV
 from the sign at 11,3 of OldChateauBackMiddleWestRoom
 from the sign at 12,3 of OldChateauBackMiddleWestRoom
@@ -10781,6 +10852,11 @@ way -
 from Researcher at 7,4 of Wedgehurst_ResearchLab
 way -
   Researcher> Sonia works here, the professor's granddaughter. She's out at her gran's on Route 2 most days, digging through old books.
+=== Wedgehurst_ResearchLab.Sonia
+from Sonia at 10,5 of Wedgehurst_ResearchLab
+way -
+  Sonia> Champion! I've been reading about the Wishing Stars again, and about a stone from Kalos whose light does something very like theirs.
+  Sonia> If you ever find a Key Stone, from Kalos I'd guess, bring it here with your Dynamax Band. I've a band I'm itching to build.
 === Wedgehurst_Station.Attendant
 from Station Attendant at 7,5 of Wedgehurst_Station
 way -
@@ -10824,6 +10900,10 @@ way 0
 way 1, from answer 1
   * battle galar_oleana_1 Lost
   * scene over, unseen
+=== Wyndon_RoseTower.TowerDesk
+from Receptionist at 2,7 of Wyndon_RoseTower
+way -
+  Receptionist> Welcome to Rose Tower, home of Macro Cosmos. The lift goes up to the Energy Plant.
 === Wyndon_Stadium.CupGuide
 from Gym Guide at 2,7 of Wyndon_Stadium
 way -

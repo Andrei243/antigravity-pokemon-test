@@ -42,8 +42,9 @@ public sealed partial class ScriptRunner
                 host.Story.SetVar(RaidStarsVariable, raidToday.Stars);
                 host.Story.SetVar(RaidSpeciesVariable, species?.DexNumber ?? 0);
                 host.Story.SetVar(RaidLevelVariable, raidToday.Level);
-                // A den whose boss was felled today is quiet until tomorrow
-                Result = raidToday.Lit && !host.Story.Has(DenFlag(raidDen.Id, "DONE")) ? 1 : 0;
+                // A den whose boss was felled today is quiet until tomorrow, and so is a den the story hasn't opened
+                // (plan 33 · GL7, part b: the Mega Max den waits for Galar's Hall of Fame)
+                Result = raidToday.Lit && Raids.IsOpen(raidDen, host.Story.Has) && !host.Story.Has(DenFlag(raidDen.Id, "DONE")) ? 1 : 0;
                 break;
             }
             case "watts":
@@ -63,8 +64,10 @@ public sealed partial class ScriptRunner
                 if (NoPokemonToBattle()) break;
                 int version = Math.Max(1, host.Story.Var("VAR_GALAR_VERSION"));
                 var boss = Make(raidToday.Species, raidToday.Level, i);
+                // A Mega Max den's boss holds its stone and Mega Dynamaxes by itself (plan 33 · GL7, part b)
+                if (raidToday.Item is { } held) boss.HeldItem = ItemDatabase.Get(held) ?? throw Wrong(i, $"there is no item '{held}'");
                 var allies = Raids.Allies(den, host.DayNumber, version, raidToday.Level);
-                host.RaidBattle(boss, new RaidTerms(raidToday.Stars, allies));
+                host.RaidBattle(boss, new RaidTerms(raidToday.Stars, allies, MegaMaxDen: den.MegaMax));
                 afterBusy = () =>
                 {
                     AfterBattle(mayLose: true);
@@ -99,6 +102,7 @@ public sealed partial class ScriptRunner
                 // the bag, the den looked into again so its variables say what now waits), 0 no piece in the bag, 2 its
                 // beam lit already. The piece's daily flag is what `raid den` reads as wished
                 var den = raidDen ?? throw Wrong(i, "no den has been looked into");
+                if (!Raids.IsOpen(den, host.Story.Has)) { Result = 0; break; }
                 if (raidToday.Lit) { Result = 2; break; }
                 var piece = ItemDatabase.Get(WishingPiece);
                 if (piece == null || host.Bag.GetQuantity(piece) <= 0) { Result = 0; break; }

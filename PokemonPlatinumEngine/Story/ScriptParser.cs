@@ -1371,6 +1371,11 @@ public static class ScriptParser
                 return new Instruction { Op = Op.BlackTower, Line = line, Name = r.OneOf("enough", "begin", "choose", "check", "active", "next", "area",
                     "top", "opponent", "battle", "won", "finish", "best", "cleared") };
 
+            // Galar's Battle Tower ladder in Rose Tower (plan 33 · GL7, part b)
+            case "galartower":
+                return new Instruction { Op = Op.GalarTower, Line = line, Name = r.OneOf("enough", "begin", "choose", "check", "active", "rank",
+                    "wins", "leon", "opponent", "battle", "won", "lost", "finish", "beaten") };
+
             // The Trainer Hill's climb (plan 21, part l)
             case "trainerhill":
             {

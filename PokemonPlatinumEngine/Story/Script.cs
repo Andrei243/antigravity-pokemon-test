@@ -229,6 +229,8 @@ public enum Op
     Delve,
     // The Tales (plan 46 · CP12): a tale learned into the Book of Tales, or whether one is there
     Tale,
+    // Galar's Battle Tower ladder in Rose Tower (plan 33 · GL7, part b): ten ranks with the Frontier's rules lent, Leon at the Master Rank
+    GalarTower,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

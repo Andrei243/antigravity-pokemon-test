@@ -11741,6 +11741,44 @@ The user's word of 2026-11-07 ("build it", `decisions/USER-DECISIONS-2026-11-07.
   under a choir) are ours, rendered for the user's ear; Wyndon still plays `galar/wedgehurst` and the Darkest Day
   Wyndon's own until the user approves them. The Cup's and Eternatus's songs are owed.
 
+## After the Hall of Fame in Galar, part b (2026-11-13, plan 33 · GL7)
+
+Plan 33's six decisions stay at their recommendations; nothing here asked the user.
+
+- **The Mega Max den and Sonia's band** (plan 06 · R20c's questions 7 and 14, answered on 2026-10-25). Sonia stands in
+  Wedgehurst's lab from `GalarHallOfFame` (`sonia_lab`) and, to a bag holding both the Key Stone and the Dynamax Band,
+  gives the Mega Max Band (`FLAG_GOT_MEGA_MAX_BAND`); the player keeps both. A game begun in Galar has no Key Stone
+  (it is Kalos's), so she says where one comes from and gives nothing until it is brought. The den is `outrage_mega`
+  on the Lake of Outrage's south shore (`den_outrage_mega`): a den's file may name `opens` (a story flag; the den is
+  quiet, unlit and refuses a Wishing Piece until it is set, the one question `raid den`, `raid wish` and the beam ask,
+  `Raids.IsOpen`), `megaMax` (its raid sets `RaidTerms.MegaMaxDen` and `BattleSetup.MegaMaxDen`) and `levels` (65 to 70
+  here, over its stars' own); a row may name the `item` its boss holds. A Mega Max den's boss holding its stone Mega
+  Evolves as the raid begins ("its stone is reacting to the den's light") and so Dynamaxes into its `-Mmax` form
+  (`BattleCore.BeginTheRaid`); without the den's word it only Dynamaxes. Eight bosses of ours, every one a form with an
+  `-Mmax` of the data, Abomasnow in a Shield game and Lucario in a Sword one. A boss caught comes without its stone.
+- **Galar's Battle Tower ladder** (decision 5's facility). Rose Tower's receptionist runs it after the Hall of Fame
+  (`Models/Frontier/GalarTower.cs`, the script's `galartower`), the Frontier's rules lent as the Black Tower lends them:
+  three Pokémon of different species holding different items, copies at level 50, against trainers of the Frontier's
+  table, the room a rank higher every rank from the second (the eighth from the ninth rank on), each rank's third
+  battle from the room's bosses. **Ten ranks of ours**, never Sword's names: three wins take a rank up; a loss ends the
+  run and from the fifth rank on takes a win back, never a rank; at the tenth, the Master Rank, the third battle is
+  Leon's, his team of ours' last three at level 50, and beating him starts the Master Rank's count again. A win earns
+  one Battle Point and one more for every third rank, handed over as the run ends. Everything is the story's
+  `VAR_GALAR_TOWER_*`: no `FrontierFacility`, stat or save field. Sword's doubles ladder and its rental teams are not
+  built; the battles are fought in the lobby over the dark, as the Black Tower's are, with no battle room.
+- **Sordward and Shielbert** (Sword's post-game beats, told in two stadiums at our scale). Shielbert stands on
+  Motostoke's pitch from `GalarHallOfFame`: he Dynamaxes the stadium's Coalossal, raided beside Hop, Sonia and Leon
+  (three trainers of ours, a raid that can't fail), and battles (`galar_shielbert_1`). Beaten, he sends the player to
+  Hammerlocke, where Sordward does the same with Duraludon and battles (`galar_sordward_1`); beaten, the stadiums are
+  quiet (`FLAG_GALAR_SORDWARD_BEATEN`). Sword's other stadiums, the brothers' visit to the Slumbering Weald and the
+  rusted sword's part in it are not told, and **the arc does not gate the Weald's legend**: GL7's first part opened the
+  legend straight after the Hall of Fame, and a save may already stand at `VAR_GALAR_STORY` 47, so the two run side
+  by side. Objectives `galarShielbert` (746) and `galarSordward` (747). Their class is `Pokémon Trainer`, no new class;
+  their looks (`sordward`, `shielbert`) are chibi stand-ins as the cast before them.
+- **Still owed**: Route 10 as land (a bake), the rest of the Wild Area's species, the gathering's Galar bay, the songs,
+  the shots of GL1 to GL6, the voices of the new lines designed by ear, and the bot playing the Weald's catch (GL7's
+  done-when: the bot's itinerary has no leg that throws a ball).
+
 ## The training halls of the other regions (2026-11-09, plan 36 · TR4)
 
 - **Where each region's hall stands.** Plan 36 lets a region's hall stand behind a door its overlay keeps locked, or

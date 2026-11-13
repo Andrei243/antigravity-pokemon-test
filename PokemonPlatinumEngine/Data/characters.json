@@ -762,6 +762,8 @@
     "raihan": { "skin": "#8a5a3e", "hairColor": "#1e1a20", "hair": "Spiky", "hat": "Cap", "hatColor": "#e07a2a", "hatBand": "#e07a2a", "top": "#2a3040", "accent": "#e07a2a", "bottom": "#2a3040", "shoes": "#f2f0ec", "eyes": "#3a6a8a", "jacket": true, "build": "Adult", "height": 1.16 },
     // Plan 33 · GL6 (our own design): Oleana, Chairman Rose's secretary, pale hair in a long side tail, a white coat over a
     // black dress and a red scarf
+    "sordward": { "skin": "#ecd0b8", "hairColor": "#e8d48a", "hair": "Short", "top": "#3a4a8a", "accent": "#d8b44a", "bottom": "#e8e2d0", "shoes": "#5a3a2a", "eyes": "#4a5a8a", "coat": true, "scarf": true, "build": "Adult", "height": 1.02 },
+    "shielbert": { "skin": "#ecd0b8", "hairColor": "#c8b070", "hair": "Short", "top": "#8a2a2a", "accent": "#d8b44a", "bottom": "#e8e2d0", "shoes": "#5a3a2a", "eyes": "#6a4a3a", "coat": true, "scarf": true, "build": "Adult", "height": 1.04 },
     "oleana": { "skin": "#f0dcd0", "hairColor": "#ece6dc", "hair": "Ponytail", "top": "#f2f0ec", "accent": "#c8302a", "bottom": "#1e1c22", "shoes": "#1e1c22", "eyes": "#5a6a7a", "coat": true, "scarf": true, "lashes": true, "build": "Adult", "height": 1.1 },
     // Paldea's first chapter (plan 34 · PD1; our own designs, on the Adult build as Galar's cast is, drawn in the grown kit
     // in Paldea): Nemona, the student council president and the player's rival, dark hair in a short side tail, the

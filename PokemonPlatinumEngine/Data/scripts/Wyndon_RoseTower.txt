@@ -50,3 +50,119 @@ label Later
 label Rested
   say "That was a champion time! Come back tomorrow and we'll do it all over again."
   end
+
+
+# The Battle Tower's ladder (plan 33 · GL7, part b; plan 33 · decision 5; docs/mechanics/rulings.md, "Galar's Battle
+# Tower ladder"): after the Hall of Fame the lobby's receptionist runs Galar's ranked ladder (Models/Frontier/GalarTower.cs).
+# Three Pokémon of different species holding different items go in as copies at Level 50 or under, whole before every
+# battle, nothing from the Bag. Ten ranks: three wins take a Trainer up a rank, a loss ends the run and from the fifth
+# rank on costs a win; at the Master Rank the third win is Leon's battle. Each win earns Battle Points, handed over as the
+# run ends. The ladder is the story's own variables, so a game saved mid-run goes on at its battle. Our own lines.
+script TowerDesk
+  face tower_receptionist player
+  speaker "Receptionist"
+  if not flag GalarHallOfFame goto Before
+  galartower active
+  if result == 1 goto GoOn
+  galartower rank
+  say "Welcome to the Battle Tower! You stand at Rank {number} of ten. Three wins take you up a rank."
+  choose "What would you like to do?" "BATTLE" "INFO" "EXIT"
+  if result == 1 goto Info
+  if result == 2 goto Bye
+  galartower enough
+  if result == 0 goto NotEnough
+  say "Please choose the three Pokémon who will battle for you."
+  galartower begin
+  galartower choose
+  if result == 0 goto Changed
+  galartower check
+  if result == 1 goto SameKind
+  if result == 2 goto SameItem
+  say "Very good! Your opponent is waiting. Good luck!"
+  goto Run
+label GoOn
+  say "Welcome back! Your run is waiting for you."
+  goto Run
+label Info
+  say "Three Pokémon battle for you, all of different species and holding different items, at Level 50 or under. Nothing from the Bag may be used."
+  say "Three wins take you up a rank. A loss ends your run, and from Rank 5 on it costs you a win as well."
+  say "At the Master Rank, the tenth, Leon himself waits for whoever wins twice there."
+  galartower beaten
+  say "Times you have beaten Leon here: {number}."
+  end
+label NotEnough
+  say "You need three Pokémon of different species, holding different items, to battle here. {banned} may not take part."
+  end
+label Changed
+  galartower finish
+  say "Come back when you're ready to battle."
+  end
+label SameKind
+  galartower finish
+  say "Two Pokémon of the same species can't battle together here. Please choose again."
+  end
+label SameItem
+  galartower finish
+  say "Two Pokémon holding the same item can't battle together here. Please choose again."
+  end
+label Bye
+  say "We hope to see you on the ladder soon!"
+  end
+label Before
+  sayown
+  end
+label Run
+  call Ladder
+  end
+
+
+script Ladder
+  scene "A run up the Battle Tower"
+  fade out 0.6
+  music stop
+label Next
+  galartower leon
+  if result == 1 goto Leon
+  galartower rank
+  text "Rank {number} of the Battle Tower."
+  galartower opponent
+  text "{foe} steps onto the court to battle!"
+  goto Fight
+label Leon
+  galartower opponent
+  speaker "Leon"
+  say "Master Rank! Then it's my turn. Three on three, Champion, and this time I'm not holding anything back!"
+  speaker "Receptionist"
+label Fight
+  galartower battle
+  if result == 0 goto Lost
+  galartower won
+  if result == 2 goto LeonBeaten
+  if result == 1 goto RankUp
+  ask "A win! Will you battle on?"
+  if no goto Down
+  goto Next
+label RankUp
+  text "Rank up! {player} is now at Rank {number}!"
+  ask "Will you battle on?"
+  if no goto Down
+  goto Next
+label LeonBeaten
+  speaker "Leon"
+  say "Beaten at the top of my own tower! That's what a real Champion looks like. Come climb back up to me any time."
+  speaker "Receptionist"
+  goto Down
+label Lost
+  galartower lost
+  text "The run ends here."
+label Down
+  galartower finish
+  endscene
+  fade in
+  speaker "Receptionist"
+  if result == 0 goto NoPoints
+  say "Welcome back! For your run you've earned {number} Battle Points."
+  return
+label NoPoints
+  say "Welcome back! Please battle again soon."
+  return

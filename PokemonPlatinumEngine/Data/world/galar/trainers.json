@@ -2466,5 +2466,131 @@
         "personality": 3876013391
       }
     ]
+  },
+  // Plan 33 · GL7, part b (ours): Sordward and Shielbert after the Hall of Fame, and the three who raid the stadiums
+  // beside the player while the brothers' Dynamaxing runs wild
+  {
+    "id": "galar_shielbert_1",
+    "name": "Shielbert",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6300,
+    "party": [
+      {
+        "species": "Klefki",
+        "level": 62,
+        "ivScale": 31,
+        "personality": 4166182152
+      },
+      {
+        "species": "Bronzong",
+        "level": 62,
+        "ivScale": 31,
+        "personality": 692331520
+      },
+      {
+        "species": "Copperajah",
+        "level": 63,
+        "ivScale": 31,
+        "personality": 754680832
+      }
+    ]
+  },
+  {
+    "id": "galar_sordward_1",
+    "name": "Sordward",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6400,
+    "party": [
+      {
+        "species": "Escavalier",
+        "level": 63,
+        "ivScale": 31,
+        "personality": 3780076544
+      },
+      {
+        "species": "Bisharp",
+        "level": 63,
+        "ivScale": 31,
+        "personality": 2001060864
+      },
+      {
+        "species": "Golisopod",
+        "level": 64,
+        "ivScale": 31,
+        "personality": 2725028864
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_post_hop",
+    "name": "Hop",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Dubwool",
+        "level": 62,
+        "ivScale": 31,
+        "personality": 440009728
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_post_sonia",
+    "name": "Sonia",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Boltund",
+        "level": 62,
+        "ivScale": 31,
+        "personality": 4025214016
+      }
+    ]
+  },
+  {
+    "id": "galar_raid_post_leon",
+    "name": "Leon",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Charizard",
+        "level": 62,
+        "ivScale": 31,
+        "personality": 3497779200
+      }
+    ]
   }
 ]

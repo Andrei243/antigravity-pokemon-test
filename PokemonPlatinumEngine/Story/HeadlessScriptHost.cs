@@ -964,7 +964,8 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         Waits();
         Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
         if (Outcome == BattleOutcome.Caught) Outcome = BattleOutcome.Won;
-        Log.Add($"raidbattle {boss.Species.Name} {boss.Level} {raid.Stars} stars with {string.Join(",", raid.Allies.Select(a => a.Name + ":" + a.Party.Members[0].Species.Name))} {Outcome}");
+        string megaMax = raid.MegaMaxDen ? $" megamax holding {boss.HeldItem?.Name}" : "";
+        Log.Add($"raidbattle {boss.Species.Name} {boss.Level} {raid.Stars} stars with {string.Join(",", raid.Allies.Select(a => a.Name + ":" + a.Party.Members[0].Species.Name))}{megaMax} {Outcome}");
         if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 

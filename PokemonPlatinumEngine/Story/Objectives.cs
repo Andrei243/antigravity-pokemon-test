@@ -399,6 +399,9 @@ public static class Objectives
         // Plan 33 · GL7: after the Hall of Fame, the version's legendary in the Weald and Leon's rematch in the Battle Tower
         (744, "galarWeald", AtLeast("VAR_GALAR_STORY", 47), false),
         (745, "galarLeonTower", s => s.Has("FLAG_GALAR_LEON_TOWER_WON"), false),
+        // Plan 33 · GL7, part b: Sordward and Shielbert, Shielbert at Motostoke's stadium and Sordward at Hammerlocke's
+        (746, "galarShielbert", s => s.Has("FLAG_GALAR_SHIELBERT_BEATEN"), false),
+        (747, "galarSordward", s => s.Has("FLAG_GALAR_SORDWARD_BEATEN"), false),
         (799, "galarFree", null, false));
 
     // Paldea (plan 34 · PD1): the first chapter, Cabo Poco to the academy's door in Mesagoza, by VAR_PALDEA_STORY

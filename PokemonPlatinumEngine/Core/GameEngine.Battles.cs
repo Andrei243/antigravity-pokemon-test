@@ -241,6 +241,8 @@ public partial class GameEngine
                 WildPokemon = wilds,
                 Format = raid != null ? BattleFormat.Raid : horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Raid = raid,
+                // A Mega Max den's boss Mega Evolves and Mega Dynamaxes by itself (plan 33 · GL7, part b)
+                MegaMaxDen = raid?.MegaMaxDen ?? false,
                 Partner = beside,
                 Conditions = BattleConditionsHere(totem: totem),
                 // When, under what sky and how it was met, for a catch's mark (plan 10 · F9), and the Mark Charm's three tries (plan 40 · GE5)
@@ -771,7 +773,13 @@ public partial class GameEngine
     {
         // A Mega or primal form it may take (plan 06 · R20), only where the rules of the game have them
         if (Ruleset.Current.MegaEvolution && (PokemonPlatinumEngine.Battle.Sim.BattleCore.MegaFormOf(p) ?? PokemonPlatinumEngine.Battle.Sim.BattleCore.PrimalFormOf(p)) is { } mega)
+        {
+            // and the Mega Dynamax form it may grow into where the rules have it (plan 06 · R20c; plan 33 · GL7, part b's
+            // den), asked for by the name it is drawn by, so no frame is the first to want it
+            if (Ruleset.Current.MegaDynamax && p.Species.Form(mega + Pokemon.MegaDynamaxSuffix) is { Kind: FormKind.MegaDynamax } mmax)
+                return PokemonModels.HasModel(mmax.Name) ? new[] { mega, mmax.Name } : new[] { mega };
             return new[] { mega };
+        }
         // And the form an Ultra Burst gives (plan 06 · R21)
         if (Ruleset.Current.ZMoves && PokemonPlatinumEngine.Battle.Sim.BattleCore.UltraBurstFormOf(p) is { } ultra)
             return new[] { ultra };

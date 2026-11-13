@@ -529,6 +529,15 @@ public class GalarTests
         var battleTower = Play("Wyndon_RoseTower", "LeonTower", "Wyndon_RoseTower");
         Assert.Contains(battleTower.Log, l => l.StartsWith("battle galar_leon_rematch", StringComparison.Ordinal));
         Assert.True(story.Has("FLAG_GALAR_LEON_TOWER_WON"));
+        // Plan 33 · GL7, part b: Shielbert at Motostoke's stadium and Sordward at Hammerlocke's, each after a stadium's raid
+        Assert.Equal("galarShielbert", Next());
+        var shielbert = Play("Motostoke_StadiumPitch", "Shielbert", "Motostoke_StadiumPitch");
+        Assert.Contains(shielbert.Log, l => l.StartsWith("raidbattle Coalossal", StringComparison.Ordinal));
+        Assert.Contains(shielbert.Log, l => l.StartsWith("battle galar_shielbert_1", StringComparison.Ordinal));
+        Assert.Equal("galarSordward", Next());
+        var sordward = Play("Hammerlocke_StadiumPitch", "Sordward", "Hammerlocke_StadiumPitch");
+        Assert.Contains(sordward.Log, l => l.StartsWith("raidbattle Duraludon", StringComparison.Ordinal));
+        Assert.True(story.Has("FLAG_GALAR_SORDWARD_BEATEN"));
         Assert.Equal("galarFree", Next());
         Assert.Equal(799, Objectives.Find("galarFree")!.Id);
     }

@@ -381,7 +381,7 @@ public sealed partial class ScriptRunner
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
         // battle on most of their words: none of them is hurried through
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
-        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower => true,
+        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway or Op.TrainerHill or Op.BlackTower or Op.GalarTower => true,
         Op.Tutor or Op.Amity => true,
         // The crafting kit is a screen the player looks into; the rest is asked and changed without one (plan 39 · CR1)
         Op.Craft => i.Name is "open" or "tm" or "pantry",
@@ -1570,6 +1570,10 @@ public sealed partial class ScriptRunner
             // Black City's Black Tower (plan 22 · U10, the last part)
             case Op.BlackTower:
                 BlackTowerCommand(i);
+                break;
+            // Galar's Battle Tower ladder (plan 33 · GL7, part b)
+            case Op.GalarTower:
+                GalarTowerCommand(i);
                 break;
             // The crafting kit and its pouch (plan 39 · CR1)
             case Op.Craft:

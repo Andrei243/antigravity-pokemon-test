@@ -45,11 +45,11 @@ The later generations, owed by their regions' plans until each plan's last sessi
 |---|---:|---:|---:|
 | plan 23: Kalos | 72 | 72 | 0 |
 | plan 23: Alola | 88 | 88 | 0 |
-| plan 33: Galar | 89 | 55 | 34 |
+| plan 33: Galar | 89 | 56 | 33 |
 | plan 23: Hisui | 7 | 1 | 6 |
 | plan 34: Paldea | 120 | 24 | 96 |
 
-**plan 33: Galar**, not yet had: Flapple, Appletun, Cramorant, Sinistea, Polteageist, Obstagoon, Cursola, Mr. Rime, Runerigus, Milcery, Alcremie, Falinks, Pincurchin, Eiscue, Indeedee, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Duraludon, Dreepy, Drakloak, Dragapult, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex.
+**plan 33: Galar**, not yet had: Flapple, Appletun, Cramorant, Sinistea, Polteageist, Obstagoon, Cursola, Mr. Rime, Runerigus, Milcery, Alcremie, Falinks, Pincurchin, Eiscue, Indeedee, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Dreepy, Drakloak, Dragapult, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex.
 
 **plan 23: Hisui**, not yet had: Kleavor, Ursaluna, Basculegion, Sneasler, Overqwil, Enamorus.
 

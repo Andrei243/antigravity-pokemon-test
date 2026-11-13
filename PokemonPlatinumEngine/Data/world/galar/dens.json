@@ -42,7 +42,20 @@
     { "id": "riverbank_1", "area": "wild_area_motostoke_riverbank", "rows": [
       { "species": "Dottler", "stars": 1, "weight": 25 }, { "species": "Klink", "stars": 1, "weight": 25 },
       { "species": "Pancham", "stars": 2, "weight": 20 }, { "species": "Klang", "stars": 3, "weight": 10 },
-      { "species": "Pangoro", "stars": 4, "weight": 6 }, { "species": "Klinklang", "stars": 5, "weight": 4 } ] }
+      { "species": "Pangoro", "stars": 4, "weight": 6 }, { "species": "Klinklang", "stars": 5, "weight": 4 } ] },
+    // The Mega Max den (plan 33 · GL7, part b; plan 06 · R20c's question 14): by the Lake of Outrage, open once Galar's
+    // Hall of Fame is set. Its boss holds its Mega Stone, Mega Evolves as the den's light makes its stone react and grows
+    // into its Mega Dynamax form (CoreSetup.MegaMaxDen). Five stars, at the post-game's levels. Every form here has an
+    // -Mmax form in the data
+    { "id": "outrage_mega", "area": "wild_area_lake_of_outrage", "opens": "GalarHallOfFame", "megaMax": true, "levels": [65, 70], "rows": [
+      { "species": "Garchomp", "stars": 5, "weight": 10, "item": "Garchompite" },
+      { "species": "Gengar", "stars": 5, "weight": 10, "item": "Gengarite" },
+      { "species": "Gyarados", "stars": 5, "weight": 10, "item": "Gyaradosite" },
+      { "species": "Tyranitar", "stars": 5, "weight": 10, "item": "Tyranitarite" },
+      { "species": "Salamence", "stars": 5, "weight": 10, "item": "Salamencite" },
+      { "species": "Abomasnow", "stars": 5, "weight": 10, "item": "Abomasite", "version": 2 },
+      { "species": "Lucario", "stars": 5, "weight": 10, "item": "Lucarionite", "version": 1 },
+      { "species": "Excadrill", "stars": 5, "weight": 10, "item": "Excadrite" } ] }
   ],
   "raiders": [
     { "name": "Ada", "look": "lass", "species": ["Eldegoss", "Dubwool", "Toxtricity"] },
