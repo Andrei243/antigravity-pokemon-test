@@ -7893,5 +7893,36 @@
       "Bitten": "{who} suferă din cauza: {what}.",
       "Guarded": "{target} păzește drumul în sus!"
     }
+  },
+  "safariObjects": {
+    "title": "PERSONALIZATORUL DE ZONE: {area}",
+    "area": {
+      "1": "CÂMPIE",
+      "2": "LUNCĂ",
+      "3": "SAVANĂ",
+      "4": "PISC",
+      "5": "PLAJĂ STÂNCOASĂ",
+      "6": "ZONĂ UMEDĂ",
+      "7": "PĂDURE",
+      "8": "MOCIRLĂ",
+      "9": "MLAȘTINĂ",
+      "10": "PUSTIETATE",
+      "11": "MUNTE",
+      "12": "DEȘERT"
+    },
+    "name": {
+      "flowerPatch": "Strat de Flori",
+      "haystack": "Căpiță de Fân",
+      "fencePost": "Stâlp de Gard",
+      "sapling": "Puiet",
+      "oldStump": "Ciot Bătrân",
+      "mushroomRing": "Cerc de Ciuperci",
+      "pebbles": "Pietricele",
+      "boulder": "Bolovan",
+      "stonePillar": "Stâlp de Piatră",
+      "puddle": "Băltoacă",
+      "reeds": "Trestii",
+      "pond": "Iaz"
+    }
   }
 }

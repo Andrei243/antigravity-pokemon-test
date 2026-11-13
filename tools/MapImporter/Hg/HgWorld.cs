@@ -340,8 +340,8 @@ public sealed class HgWorld
     /// music, camera, ground and rates, on the exterior's matrix, with the area's own tables of <c>safari_enc.json</c>
     /// (<c>FieldSystem_GenerateSafariEncounter</c>): ten slots met as often as one another (<c>LCRandom() % 10</c>),
     /// each at its level (the slot's <c>maxLevel</c>), the grass's species by the time of day as the rest of Johto's
-    /// (the morning's the slot's own), the water's and the rods' the day's. The slots that objects bring are left out
-    /// (the rulings).
+    /// (the morning's the slot's own), the water's and the rods' the day's. The slots that objects bring are written
+    /// beside them (plan 38 · EX8, <see cref="AreaSafariSlot"/>).
     /// </summary>
     private WorldAreaFile SafariArea(HgHeader header, int area)
     {
@@ -390,6 +390,38 @@ public sealed class HgWorld
         file.SuperRodRate = file.SuperRod == null ? null : wild?.SuperRod.Rate;
         file.RockSmash = null;
         file.RockSmashRate = null;
+        // The slots the objects bring (plan 38 · EX8): each way's in HeartGold's order, its day's level, its species by time
+        var bonus = new List<AreaSafariSlot>();
+        foreach (var (way, name) in new[] { ("land", "land"), ("surf", "water"), ("oldrod", "oldRod"), ("goodrod", "goodRod"), ("superrod", "superRod") })
+        {
+            if (!tables.Bonus.TryGetValue(way, out var slots)) continue;
+            foreach (var b in slots)
+            {
+                string Named(string time) { string c = b.Slot.Species(heartGold: true, time); return GbaNames.Species(c) ?? Note($"{header.Key}: the object slot's {c} is not in the game's data", c); }
+                string morn = Named("morn"), day = Named("day"), nite = Named("nite");
+                bonus.Add(new AreaSafariSlot
+                {
+                    Way = name,
+                    Species = morn,
+                    Day = day != morn ? day : null,
+                    Night = nite != morn ? nite : null,
+                    Level = b.Slot.MaxLevel.HeartGold,
+                    Needs = b.Needs.Select(n => new AreaSafariNeed
+                    {
+                        Kind = n.Type switch
+                        {
+                            "SAFARI_ZONE_OBJECT_TYPE_PLAINS" => "Plains",
+                            "SAFARI_ZONE_OBJECT_TYPE_FOREST" => "Forest",
+                            "SAFARI_ZONE_OBJECT_TYPE_PEAK" => "Peak",
+                            "SAFARI_ZONE_OBJECT_TYPE_WATER" => "Water",
+                            _ => Note($"{header.Key}: an object type {n.Type} nobody knows", n.Type)
+                        },
+                        Count = n.Count
+                    }).ToList()
+                });
+            }
+        }
+        file.SafariSlots = bonus.Count > 0 ? bonus : null;
         file.HoennSounds = null;
         file.SinnohSounds = null;
         // The exterior's events are its two ways out at the way in, which stays the exterior's: the areas have none

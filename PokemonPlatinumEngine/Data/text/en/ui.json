@@ -7544,5 +7544,36 @@
       "Bitten": "{who} is hurt by its {what}.",
       "Guarded": "{target} blocks the way up!"
     }
+  },
+  "safariObjects": {
+    "title": "AREA CUSTOMIZER: {area}",
+    "area": {
+      "1": "PLAINS",
+      "2": "MEADOW",
+      "3": "SAVANNAH",
+      "4": "PEAK",
+      "5": "ROCKY BEACH",
+      "6": "WETLAND",
+      "7": "FOREST",
+      "8": "SWAMP",
+      "9": "MARSHLAND",
+      "10": "WASTELAND",
+      "11": "MOUNTAIN",
+      "12": "DESERT"
+    },
+    "name": {
+      "flowerPatch": "Flower Patch",
+      "haystack": "Haystack",
+      "fencePost": "Fence Post",
+      "sapling": "Sapling",
+      "oldStump": "Old Stump",
+      "mushroomRing": "Mushroom Ring",
+      "pebbles": "Pebbles",
+      "boulder": "Boulder",
+      "stonePillar": "Stone Pillar",
+      "puddle": "Puddle",
+      "reeds": "Reeds",
+      "pond": "Pond"
+    }
   }
 }

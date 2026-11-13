@@ -642,7 +642,11 @@ public static class ScriptParser
             case "safari":
             {
                 // A Safari Game of another game's own number of steps (plan 19 · K6: FireRed's Safari Zone is 600)
-                bool start = r.OneOf("start", "end") == "start";
+                string safariWord = r.OneOf("start", "end", "objects");
+                // The Johto Safari Zone's Area Customizer (plan 38 · EX8): the area of the script's RESULT arranged
+                // (its number written, from 1 in the machine's order, or the RESULT a `choose` left, from 0)
+                if (safariWord == "objects") return new Instruction { Op = Op.Safari, Line = line, Name = "objects", Number = r.PeekNumber ? r.Int("an area from 1 to 12") : 0 };
+                bool start = safariWord == "start";
                 // ...or of none: HeartGold's Safari Zone counts no steps (plan 20 · J8, part b: `safari start endless`)
                 bool endless = start && r.PeekWord("endless");
                 if (endless) r.Next();

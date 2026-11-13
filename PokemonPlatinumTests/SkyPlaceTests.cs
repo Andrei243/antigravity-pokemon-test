@@ -158,4 +158,23 @@ public class SkyPlaceTests
         Assert.Equal(place, screen.TakePlace());
         Assert.Equal("Sinnoh", RegionDatabase.RegionOfMap(SkyPlaces.MapNameOf("Sinnoh"))!.Id);
     }
+
+    [Fact]
+    public void AGameSavedOnAPlaceOfTheDayWakesAtItsRegionsPlaceToComeBackTo()
+    {
+        // Sinnoh's last Pokémon Center's town by the original's variable, and the region's first with none
+        var story = new PokemonPlatinumEngine.Story.StoryState();
+        story.SetVar(SpawnLocations.VariableOf("Sinnoh"), 5);
+        var five = SpawnLocations.Get(5)!;
+        Assert.Equal(new MapSpot(five.Map, five.X, five.Y, Direction.Down), SkyPlaces.ReturnPointFor(SkyPlaces.MapNameOf("Sinnoh"), () => story));
+        var first = SpawnLocations.In("Kanto")[0];
+        Assert.Equal(new MapSpot(first.Map, first.X, first.Y, Direction.Down), SkyPlaces.ReturnPointFor(SkyPlaces.MapNameOf("Kanto"), () => story));
+        // Kanto's own variable, never Sinnoh's
+        var kantoThird = SpawnLocations.In("Kanto")[2];
+        story.SetVar(SpawnLocations.VariableOf("Kanto"), kantoThird.Id);
+        Assert.Equal(kantoThird.X, SkyPlaces.ReturnPointFor(SkyPlaces.MapNameOf("Kanto"), () => story)!.X);
+        // Any other map is no place of the day
+        Assert.Null(SkyPlaces.ReturnPointFor("Sinnoh", () => story));
+        Assert.Null(SkyPlaces.ReturnPointFor(null, () => story));
+    }
 }

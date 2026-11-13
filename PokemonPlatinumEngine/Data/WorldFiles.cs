@@ -447,6 +447,14 @@ public sealed class WorldAreaFile
     public AreaHeadbutt? Headbutt { get; set; }
 
     /// <summary>
+    /// The slots the Safari Zone's objects bring to one of its areas (plan 38 · EX8; HeartGold's <c>bonus_mons</c> of
+    /// <c>files/arc/safari_enc.json</c>): each for a way (<c>land</c>, <c>water</c>, <c>oldRod</c>, <c>goodRod</c>,
+    /// <c>superRod</c>), in the order the k-th of a way takes that way's slot k once open
+    /// (<see cref="Models.SafariObjects"/>). Left out everywhere but the Johto Safari Zone's twelve areas.
+    /// </summary>
+    public List<AreaSafariSlot>? SafariSlots { get; set; }
+
+    /// <summary>
     /// The two species the Pokégear's Hoenn Sound and Sinnoh Sound bring into the grass (plan 20 · J3; HeartGold's
     /// <c>hoenn</c> and <c>sinnoh</c>, <c>EncSlotArray_Update_HoennSinnohSounds</c>: the first into slots 2 and 3, the
     /// second into 4 and 5). Left out where the area has none.
@@ -532,6 +540,28 @@ public sealed class AreaHeadbutt
     public List<AreaEncounter>? Secret { get; set; }
     public List<string> Trees { get; set; } = new();
     public List<string>? SecretTrees { get; set; }
+}
+
+/// <summary>
+/// A slot the Safari Zone's objects bring (plan 38 · EX8): its way, its species (the morning's, with the day's and the
+/// night's where they differ), its level and what it asks of the area's objects, every need met.
+/// </summary>
+public sealed class AreaSafariSlot
+{
+    public string Way { get; set; } = "";
+    public string Species { get; set; } = "";
+    public string? Day { get; set; }
+    public string? Night { get; set; }
+    public int Level { get; set; }
+    public List<AreaSafariNeed> Needs { get; set; } = new();
+}
+
+/// <summary>What a slot of <see cref="AreaSafariSlot"/> asks: so many points of a kind (<c>Plains</c>, <c>Forest</c>, <c>Peak</c>, <c>Water</c>).</summary>
+[JsonConverter(typeof(OneLine<AreaSafariNeed>))]
+public sealed class AreaSafariNeed
+{
+    public string Kind { get; set; } = "";
+    public int Count { get; set; }
 }
 
 /// <summary>One slot of an area's table of wild Pokémon.</summary>

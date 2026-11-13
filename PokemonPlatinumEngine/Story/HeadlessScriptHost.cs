@@ -1393,6 +1393,17 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>What <c>headbutt</c> shakes out of the tree in front: a species and its level, or null when nothing falls.</summary>
     public (string Species, int Level)? Headbutted { get; set; }
 
+    /// <summary>The areas a script opened to arrange, in turn (plan 38 · EX8): a host with no screen sets nothing down.</summary>
+    public List<int> Arranged { get; } = new();
+
+    public bool ArrangeSafari(int area)
+    {
+        if (area < 0 || area >= Models.SafariObjects.AreaKeys.Length) return false;
+        Arranged.Add(area);
+        Log.Add($"safari objects {Models.SafariObjects.AreaKeys[area]}");
+        return true;
+    }
+
     public bool Headbutt()
     {
         Shown("a tree shaken");
