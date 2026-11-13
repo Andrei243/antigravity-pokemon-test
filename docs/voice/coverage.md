@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 160 | 160 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1778 | 1715 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13777 | 13198 | 579 | 17 | 36 |
+| Scripts (`script:`) | 13791 | 13210 | 581 | 17 | 36 |
 | People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 23957 | 23273 | 684 | 22 | 36 |
+| **All** | 23971 | 23285 | 686 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,15 +22,15 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1189 |
-| a sign | 1776 |
+| a question's answers | 1192 |
+| a sign | 1782 |
 | a thing's words | 81 |
-| the game's own voice (speaker none) | 328 |
-| the game's own voice (text) | 2273 |
+| the game's own voice (speaker none) | 330 |
+| the game's own voice (text) | 2277 |
 
 ## The cast
 
-- Named characters: 993 voices (398 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 994 voices (399 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 590 voices.
 - Archetypes in use: 247, with 746 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 420.
@@ -41,10 +41,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `look:gentleman (any)` | 1220 | 54 |
+| `look:gentleman (any)` | 1221 | 54 |
+| `look:clerk (any)` | 613 | 17 |
 | `look:grunt (any)` | 612 | 0 |
 | `rival` | 609 | 20 |
-| `look:clerk (any)` | 602 | 15 |
 | `look:lady (any)` | 574 | 10 |
 | `look:lass (any)` | 553 | 22 |
 | `look:youngster (any)` | 521 | 32 |
@@ -187,9 +187,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `mr_briney` | 34 | 1 |
 | `psychic` | 34 | 1 |
 | `saturn` | 34 | 0 |
+| `socialite` | 34 | 0 |
 | `backer` | 33 | 0 |
 | `norman` | 33 | 0 |
-| `socialite` | 33 | 0 |
 | `waiter` | 33 | 0 |
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
