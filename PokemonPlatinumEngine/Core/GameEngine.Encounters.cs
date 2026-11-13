@@ -66,7 +66,10 @@ public partial class GameEngine
             // The visitor a scan called up, for its hour (plan 38 · EX2)
             Visitor = VisitorNow(),
             // The hour's rift's table within its reach (plan 38 · EX5)
-            Rift = RiftHere()
+            Rift = RiftHere(),
+            // The Johto Safari Zone's objects, counted on today (plan 38 · EX8); none placed, none handed over
+            SafariObjects = flow.SafariObjects.IsEmpty ? null : flow.SafariObjects,
+            SafariDay = ApricornBox.DayOf(GameClock.Today)
         };
     }
 

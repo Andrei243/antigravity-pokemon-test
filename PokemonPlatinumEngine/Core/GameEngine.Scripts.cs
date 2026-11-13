@@ -210,6 +210,8 @@ public partial class GameEngine
         StockHideaway();
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // The Johto Safari Zone's objects where an Owner set them down (plan 38 · EX8)
+        if (flow.Map.Name == SafariObjects.ZoneMap) LayOutSafariObjects();
         // The Laurel Gallery's plinths stand for the regions finished (plan 41 · EG2)
         if (flow.Map.Name == LaurelGallery.Map) FurnishGallery();
         // Pennant Hall's stalls, keepers and the day's guests where the plaza has them (plan 41 · EG3)

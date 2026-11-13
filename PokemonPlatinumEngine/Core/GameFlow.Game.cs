@@ -167,6 +167,9 @@ public sealed partial class GameFlow
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6; saved).</summary>
     public ApricornBox Apricorns { get; } = new();
 
+    /// <summary>The objects standing in the Johto Safari Zone's areas (plan 38 · EX8; saved).</summary>
+    public SafariObjects SafariObjects { get; } = new();
+
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1; saved).</summary>
     public CraftingState Crafting { get; } = new();
 

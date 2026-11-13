@@ -373,6 +373,9 @@ public class SaveData
     /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6). Null in saves from before them, and while none has been picked.</summary>
     public Models.ApricornSave? Apricorns { get; set; }
 
+    /// <summary>The objects an Owner has set down in the Johto Safari Zone's areas (plan 38 · EX8). Null while none stands, so no version was raised.</summary>
+    public Models.SafariObjectsSave? SafariObjects { get; set; }
+
     /// <summary>The crafting kit's pouch of materials (plan 39 · CR1). Null in saves from before it, and while nothing is held.</summary>
     public Models.CraftingSave? Crafting { get; set; }
 

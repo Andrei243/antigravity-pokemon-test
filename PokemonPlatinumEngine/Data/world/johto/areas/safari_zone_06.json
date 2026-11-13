@@ -79,6 +79,160 @@
     { "species": "Poliwhirl", "level": 37, "weight": 1 }
   ],
   "superRodRate": 100,
+  "safariSlots": [
+    {
+      "way": "land",
+      "species": "Furret",
+      "level": 37,
+      "needs": [
+        { "kind": "Plains", "count": 2 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Surskit",
+      "level": 40,
+      "needs": [
+        { "kind": "Plains", "count": 6 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Lombre",
+      "level": 47,
+      "needs": [
+        { "kind": "Plains", "count": 14 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Farfetch'd",
+      "level": 41,
+      "needs": [
+        { "kind": "Forest", "count": 3 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Pachirisu",
+      "level": 43,
+      "needs": [
+        { "kind": "Forest", "count": 8 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Doduo",
+      "level": 45,
+      "needs": [
+        { "kind": "Peak", "count": 4 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Golduck",
+      "level": 40,
+      "needs": [
+        { "kind": "Peak", "count": 5 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Shelgon",
+      "level": 46,
+      "needs": [
+        { "kind": "Peak", "count": 63 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Ditto",
+      "level": 41,
+      "needs": [
+        { "kind": "Water", "count": 15 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Buizel",
+      "level": 45,
+      "needs": [
+        { "kind": "Water", "count": 35 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Quagsire",
+      "level": 37,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Golduck",
+      "level": 37,
+      "needs": [
+        { "kind": "Water", "count": 4 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Golduck",
+      "level": 45,
+      "needs": [
+        { "kind": "Water", "count": 6 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Poliwhirl",
+      "level": 17,
+      "needs": [
+        { "kind": "Water", "count": 2 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Poliwhirl",
+      "level": 18,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Corphish",
+      "level": 26,
+      "needs": [
+        { "kind": "Water", "count": 10 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Corphish",
+      "level": 28,
+      "needs": [
+        { "kind": "Water", "count": 14 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Gyarados",
+      "level": 44,
+      "needs": [
+        { "kind": "Water", "count": 6 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Gyarados",
+      "level": 47,
+      "needs": [
+        { "kind": "Water", "count": 9 }
+      ]
+    }
+  ],
   "warps": [],
   "objects": [],
   "signs": [],

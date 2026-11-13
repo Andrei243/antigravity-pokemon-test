@@ -531,6 +531,7 @@ public partial class GameEngine
         LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
+        flow.SafariObjects.Clear();
         flow.Crafting.Clear();
         flow.Care.Clear();
         flow.Stroll = new StrollSave();
@@ -768,8 +769,9 @@ public partial class GameEngine
         // (A save made in a room laid out again since wakes on the tile the room is come into by: plan 01 · M11)
         // (A save made in a region a pack adds, with the pack no longer in use, stands on no map at all: it wakes where
         // its game began, plan 16 · T14, which the title has said)
-        var place = save.WhereAPackLeftIt(MapDatabase.TryGet) ?? save.PlaceOn(MapDatabase.Get);
-        if (MapDatabase.TryGet(save.Place().Map) == null)
+        // (A save made on a place of the day, which is never saved, wakes at its region's place to come back to: plan 38 · EX7)
+        var place = SkyPlaces.ReturnPointFor(save.Place().Map, () => { var story = new StoryState(); story.Restore(save.ToStory()); return story; }) ?? save.WhereAPackLeftIt(MapDatabase.TryGet) ?? save.PlaceOn(MapDatabase.Get);
+        if (MapDatabase.TryGet(save.Place().Map) == null && SkyPlaces.RegionOfMap(save.Place().Map) == null)
             Log.Warn($"The save stood on {save.Place().Map}, which no region has now (a pack's region not in use?): it wakes on {place.Map}.");
         flow.Map = MapDatabase.Get(place.Map);
         flow.Player = new Player(place.X, place.Y);
@@ -814,6 +816,7 @@ public partial class GameEngine
         LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
+        flow.SafariObjects.Load(save.SafariObjects);
         flow.Crafting.Load(save.Crafting);
         flow.Care.Restore(save.Care);
         // A visit to the pasture under way (plan 35 · BN5): its herd is laid as the place is come to
@@ -1056,6 +1059,7 @@ public partial class GameEngine
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
+            SafariObjects = flow.SafariObjects.ToSave(),
             Crafting = flow.Crafting.ToSave(),
             Care = CareToSave(),
             Pasture = flow.Pasture?.Copy(),

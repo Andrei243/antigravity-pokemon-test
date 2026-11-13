@@ -70,6 +70,18 @@ public static class SkyPlaces
     public static string? RegionOfMap(string? map) =>
         map != null && map.StartsWith("SkyPlace", StringComparison.Ordinal) && map.Length > 8 ? map[8..] : null;
 
+    /// <summary>
+    /// Where a game saved on a place of the day wakes (plan 38 · EX7's owed point, built with EX8): the place is never
+    /// saved, so the save wakes at its region's own place to come back to (<see cref="SpawnLocations.Respawn(Story.StoryState, string?)"/>:
+    /// the town of the last Pokémon Center gone into there, else the region's first), outside, facing down. Null for a
+    /// save on any other map, or a region with no spawns.
+    /// </summary>
+    public static MapSpot? ReturnPointFor(string? savedMap, Func<Story.StoryState> story)
+    {
+        if (RegionOfMap(savedMap) is not { } region || SpawnLocations.Respawn(story(), region) is not { } spawn) return null;
+        return new MapSpot(spawn.Map, spawn.X, spawn.Y, Direction.Down);
+    }
+
     /// <summary>A region's places: its town map's sky list.</summary>
     public static IReadOnlyList<SkyPlace> Of(RegionMap map) => map.SkyPlaces;
 

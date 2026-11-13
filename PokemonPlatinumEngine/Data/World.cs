@@ -1831,6 +1831,21 @@ public static class WorldMapBuilder
             trees.TreeCount = headbutt.Trees.Count + (headbutt.SecretTrees?.Count ?? 0);
             area.Headbutt = trees;
         }
+        // The slots the Johto Safari Zone's objects bring (plan 38 · EX8)
+        foreach (var slot in file?.SafariSlots ?? new())
+        {
+            var way = slot.Way switch
+            {
+                "land" => Models.SafariWay.Land,
+                "water" => Models.SafariWay.Water,
+                "oldRod" => Models.SafariWay.OldRod,
+                "goodRod" => Models.SafariWay.GoodRod,
+                "superRod" => Models.SafariWay.SuperRod,
+                _ => throw new InvalidDataException($"{key}: a Safari slot's way '{slot.Way}' is none of land, water, oldRod, goodRod, superRod")
+            };
+            var needs = slot.Needs.Select(n => (Enum.Parse<Models.SafariObjectKind>(n.Kind), n.Count)).ToList();
+            area.SafariSlots.Add(new Models.SafariSlot(way, slot.Species, slot.Day, slot.Night, slot.Level, needs));
+        }
         // Black 2's tables beside them (plan 22 · U4): the dark grass's met as the grass's, the shaking grass's too,
         // the rippling water's and its rod's as the water's
         Fill(area.DarkGrassEncounters, file?.DarkGrass, WorldAreaFile.LandSlotWeights);

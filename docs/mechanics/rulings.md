@@ -5627,12 +5627,12 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
   zone's matrix (212) to eight chunks and fills both sixes at once (`HgMaps.SafariCells`): the opening arrangement
   (Plains, Meadow and Savannah north; Peak, Rocky Beach and Wetland south) where HeartGold puts it, and the other six
   (Forest, Swamp, Marshland; Wasteland, Mountain, Desert) east of them in the same order. Every area is open from the
-  first visit. The machine in the hall says it can change nothing yet, and its attendant says why: arranging the
-  areas is a later session's, if ever.
+  first visit. The machine in the hall swaps no areas, and its attendant says so; since plan 38 · EX8 it arranges an
+  area's objects for the Owner (below, "The Johto Safari Zone's objects").
 - **Each area keeps its own wild Pokémon**, read from HeartGold's `safari_enc.json` (`FieldSystem_GenerateSafariEncounter`):
   ten slots met as often as one another, each at its level, the grass's species by the time of day as the rest of
-  Johto's are. The slots HeartGold adds for the objects placed in an area (and for days spent laid out) are left out
-  with the Customizer. Every area is named "Safari Zone", which is the place a Pokémon caught there was met.
+  Johto's are. The slots HeartGold adds for the objects placed in an area are laid in since plan 38 · EX8 (below).
+  Every area is named "Safari Zone", which is the place a Pokémon caught there was met.
 - **The Safari Game is HeartGold's: thirty balls and no steps** (`safari start endless`, `SafariGame.NoStepLimit`). The
   counter takes $500 and gives thirty Safari Balls; the game ends when the last is thrown (`common.SafariOutOfBalls`,
   which brings a Johto player back before the hall's counter) or when the player walks back out through the zone's
@@ -5658,7 +5658,7 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
   Route 48 plays his call as the player comes to it on a later day. The workmen on the gate's plaza come out with the
   second test (`FLAG_HIDE_SAFARI_ZONE_WORKERS`, set by the gate's own arrival until then), as HeartGold's do.
 - **The Owner** (`VAR_UNK_4057` 6) is greeted as one at the counter and still pays, as in HeartGold. What HeartGold asks
-  of an Owner after that (placing objects, `VAR_UNK_4057` 7 and on, `FLAG_UNK_183`) is a later session's.
+  of an Owner after that is placing objects (below); its `VAR_UNK_4057` 7 and on and `FLAG_UNK_183` are not built.
 - **The Safari Zone Link** (swapping zones with a friend) is closed: its counters say it isn't ready, as the wireless
   link is down elsewhere (decision 06 · 7).
 - **Cliff Cave's cracked rocks** stand only for a player with the National Pokédex: the cave's arrival takes them off
@@ -5667,8 +5667,37 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
   for the routes, Route 34's for the gate in the cliff, Union Cave's for Cliff Cave, the National Park's for the
   Safari Zone, its gate and its hall).
 - **Left for later sessions**: the Embedded Tower behind Route 47's hiker (warps 4 to 6 locked), Crasher Wake by
-  Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link),
-  the Area Customizer and objects, and the Safari Zone's Pokémon called by the objects.
+  Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link).
+
+### The Johto Safari Zone's objects (2026-11-13, plan 38 · EX8)
+
+- **The slots are HeartGold's; the objects are ours.** The pinned pokeheartgold's `files/arc/safari_enc.json` gives every
+  area's `bonus_mons`: ten for the grass, three for the water and two for each rod, each a species by the time of day, a
+  level and one or two conditions (an object type, `SAFARI_ZONE_OBJECT_TYPE_PLAINS`, `_FOREST`, `_PEAK` or `_WATER`, and a
+  count, 2 to 63), and nothing else: its `bonus_param` lists are empty and the cache holds no table of the objects, their
+  points or a rule of days. `--game heartgold --data` writes each area's slots into its file (`safariSlots`); the level is
+  the day's (HeartGold's night level differs by one for a few). The objects, their points and the days are ours.
+- **Twelve objects of ours** (`SafariObjects.Catalogue`, names under `safariObjects.name` in `ui.json`): a Flower Patch
+  (plains 1), Haystack (plains 2), Fence Post (plains 1, peak 1), Sapling (forest 1), Old Stump (forest 2), Mushroom Ring
+  (forest 1, water 1), Pebbles (peak 1), Boulder (peak 2), Stone Pillar (two by two, peak 4), Puddle (water 1), Reeds
+  (plains 1, water 1) and Pond (two by two, water 4). An area's store has three of each, and thirty may stand in an area
+  at once, HeartGold's number.
+- **Points are counted in the area alone**, from the day after an object is set down, and twice over once it has stood
+  ten days (`SafariObjects.Points`, `DaysToDouble`). Days are calendar days (`ApricornBox.DayOf`). An object moved is set
+  down afresh and counts from the next day again; one left where it stood keeps its day.
+- **A slot opens** once the area's points meet every count it asks; the k-th slot of a way, open, takes that way's slot
+  k of the area's own table (`SafariObjects.Lay`), its species by the time of day and its level. So the grass's ten can
+  all be changed and the water's first three and each rod's first two. Which slot a bonus takes is ours: HeartGold's
+  code for it isn't decompiled. Nothing is drawn: a step meets as often as without objects, and with none placed the
+  tables are the areas' own (the same lists).
+- **Who arranges**: the Owner (`VAR_UNK_4057` 6 and on, as HeartGold asks), at the Area Customizer: the machine asks which
+  of the twelve areas and opens the shared decorating screen over it (`safari objects`, `DecorationScreen`), the area's
+  open floor its room (walked tiles that are no warp, no tall grass, not within two tiles of the area's edge where the
+  ways between areas run, nor within two of the way in). Its attendant explains the rule to an Owner. The objects block
+  nothing (`PropType.SafariObject`, our own drawings, `SafariArt`), so no arrangement can shut a way. They are saved as
+  `SaveData.SafariObjects`, null while none stands, so no version was raised.
+- **Not built**: HeartGold's areas swapped in and out (the twelve stay side by side), objects earned by visits (all
+  twelve are in every store from the start), and the Safari Zone Link.
 
 ## The north of Johto, first part (2026-10-20, plan 20 · J10, part a)
 
@@ -10383,7 +10412,8 @@ Plan 38 adds what the field offers in every region beyond its tables; each sessi
   evenly after it, so a date is always the same places and a week lights every one; nothing is drawn. Only the places of the region
   the player stands in stand over it while soaring (landing on one in another region would be a crossing no vessel makes). Landing
   lays the place on its region's own map (`SkyPlace<Region>`, one to a region, as every map belongs to one region, and never saved:
-  a game saved there wakes where a pack's lost map would, at the start of the game it began in) from a seed of its region, its
+  a game saved there wakes at its region's place to come back to, outside the town of the last Pokémon Center gone into
+  there, `SkyPlaces.ReturnPointFor`, since 2026-11-13) from a seed of its region, its
   number and the day, by `FloorLayout` with five pieces of ours for each kind; its Pokémon are twelve slots of its kind's species,
   never a legendary, a mythical or one of the region's own Pokédex, at its own game's post-game band (Sinnoh and Kanto 50 to 58,
   Johto and Hoenn 48 to 56, mapped as any wild level in a region crossed into), seen in the field whatever the options say; its two or

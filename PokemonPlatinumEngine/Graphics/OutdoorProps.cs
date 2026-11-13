@@ -61,6 +61,12 @@ internal static class OutdoorProps
                 UndergroundArt.Build(kit, prop, map);
                 continue;
             }
+            // An object an Owner has set down in the Johto Safari Zone (plan 38 · EX8)
+            if (SafariArt.Builds(prop))
+            {
+                SafariArt.Build(kit, prop, map);
+                continue;
+            }
             kit.Origin = new Vector3(prop.X, Relief.At(map, prop.X + prop.Width / 2f, prop.Y + prop.Depth / 2f), prop.Y);
             switch (prop.Type)
             {

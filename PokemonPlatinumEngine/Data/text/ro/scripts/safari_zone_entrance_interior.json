@@ -328,6 +328,30 @@
     },
     {
       "en": [
+        "Owner! The Area Customizer is yours to use now. Choose an area on its screen and set objects down in it."
+      ],
+      "text": [
+        "Proprietare! Personalizatorul de Zone e al tău acum. Alege o zonă pe ecranul lui și așază obiecte în ea."
+      ]
+    },
+    {
+      "en": [
+        "Every object brings out a kind of place: plains, forest, peak or water. With enough of a kind, new Pokémon move in."
+      ],
+      "text": [
+        "Fiecare obiect scoate la iveală un fel de loc: câmpie, pădure, pisc sau apă. Cu destule de un fel, vin Pokémoni noi."
+      ]
+    },
+    {
+      "en": [
+        "An object counts from the day after it's set down, and twice over once it has stood for ten days. Do come back and see!"
+      ],
+      "text": [
+        "Un obiect contează din ziua de după ce e așezat și de două ori după ce a stat zece zile. Mai treci să vezi!"
+      ]
+    },
+    {
+      "en": [
         "I'm sorry, but this machine can't be used yet. Warden Baoba has some grand plan for it... or so he says."
       ],
       "text": [
@@ -358,6 +382,84 @@
       ],
       "text": [
         "Încă se mai lucrează la el. Nimic nu poate fi schimbat deocamdată."
+      ]
+    },
+    {
+      "en": [
+        "It's the Area Customizer. Twelve areas are laid out on its screen, side by side."
+      ],
+      "text": [
+        "E Personalizatorul de Zone. Pe ecranul lui sunt așezate douăsprezece zone, una lângă alta."
+      ]
+    },
+    {
+      "en": [
+        "Which area's objects will you arrange?",
+        "Plains to Peak",
+        "Rocky Beach to Swamp",
+        "Marshland to Desert",
+        "Cancel"
+      ],
+      "text": [
+        "Obiectele cărei zone le vei aranja?",
+        "De la Câmpie la Pisc",
+        "De la Plajă la Mocirlă",
+        "De la Mlaștină la Deșert",
+        "Renunță"
+      ]
+    },
+    {
+      "en": [
+        "Which area?",
+        "Plains",
+        "Meadow",
+        "Savannah",
+        "Peak",
+        "Cancel"
+      ],
+      "text": [
+        "Care zonă?",
+        "Câmpie",
+        "Luncă",
+        "Savană",
+        "Pisc",
+        "Renunță"
+      ]
+    },
+    {
+      "en": [
+        "Which area?",
+        "Rocky Beach",
+        "Wetland",
+        "Forest",
+        "Swamp",
+        "Cancel"
+      ],
+      "text": [
+        "Care zonă?",
+        "Plajă Stâncoasă",
+        "Zonă Umedă",
+        "Pădure",
+        "Mocirlă",
+        "Renunță"
+      ]
+    },
+    {
+      "en": [
+        "Which area?",
+        "Marshland",
+        "Wasteland",
+        "Mountain",
+        "Desert",
+        "Cancel"
+      ],
+      "text": [
+        "Care zonă?",
+        "Mlaștină",
+        "Pustietate",
+        "Munte",
+        "Deșert",
+        "Renunță"
       ]
     },
     {

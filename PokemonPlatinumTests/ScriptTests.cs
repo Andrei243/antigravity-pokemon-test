@@ -198,6 +198,8 @@ public class ScriptTests
           safari start 600
           safari end
           safari start endless
+          safari objects
+          safari objects 4
           safari end
           bicycle on
           bicycle off

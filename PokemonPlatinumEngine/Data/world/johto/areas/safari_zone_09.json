@@ -79,6 +79,160 @@
     { "species": "Gyarados", "level": 37, "weight": 1 }
   ],
   "superRodRate": 100,
+  "safariSlots": [
+    {
+      "way": "land",
+      "species": "Gloom",
+      "level": 42,
+      "needs": [
+        { "kind": "Plains", "count": 2 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Jumpluff",
+      "level": 38,
+      "needs": [
+        { "kind": "Plains", "count": 5 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Seviper",
+      "level": 47,
+      "needs": [
+        { "kind": "Plains", "count": 35 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Carnivine",
+      "level": 41,
+      "needs": [
+        { "kind": "Forest", "count": 35 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Croagunk",
+      "level": 44,
+      "needs": [
+        { "kind": "Forest", "count": 42 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Roselia",
+      "level": 46,
+      "needs": [
+        { "kind": "Forest", "count": 49 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Diglett",
+      "level": 43,
+      "needs": [
+        { "kind": "Peak", "count": 5 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Shuckle",
+      "level": 44,
+      "needs": [
+        { "kind": "Peak", "count": 8 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Banette",
+      "level": 44,
+      "needs": [
+        { "kind": "Peak", "count": 49 }
+      ]
+    },
+    {
+      "way": "land",
+      "species": "Muk",
+      "level": 38,
+      "needs": [
+        { "kind": "Water", "count": 8 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Jumpluff",
+      "level": 47,
+      "needs": [
+        { "kind": "Water", "count": 10 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Quagsire",
+      "level": 43,
+      "needs": [
+        { "kind": "Water", "count": 13 }
+      ]
+    },
+    {
+      "way": "water",
+      "species": "Muk",
+      "level": 48,
+      "needs": [
+        { "kind": "Water", "count": 16 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Poliwag",
+      "level": 16,
+      "needs": [
+        { "kind": "Water", "count": 2 }
+      ]
+    },
+    {
+      "way": "oldRod",
+      "species": "Poliwag",
+      "level": 18,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Gyarados",
+      "level": 26,
+      "needs": [
+        { "kind": "Water", "count": 3 }
+      ]
+    },
+    {
+      "way": "goodRod",
+      "species": "Gyarados",
+      "level": 29,
+      "needs": [
+        { "kind": "Water", "count": 4 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Barboach",
+      "level": 42,
+      "needs": [
+        { "kind": "Water", "count": 4 }
+      ]
+    },
+    {
+      "way": "superRod",
+      "species": "Barboach",
+      "level": 45,
+      "needs": [
+        { "kind": "Water", "count": 5 }
+      ]
+    }
+  ],
   "warps": [],
   "objects": [],
   "signs": [],

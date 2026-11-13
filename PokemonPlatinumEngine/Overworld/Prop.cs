@@ -399,6 +399,12 @@ public enum PropType
     Seagallop,
     /// <summary>Celio's network machine in One Island's Pokémon Center (plan 19's last notes): a thing of the map (<see cref="NPC.NetworkMachineType"/>), drawn as a card.</summary>
     NetworkMachine,
+    /// <summary>
+    /// An object an Owner has set down in the Johto Safari Zone (plan 38 · EX8; style guide, "Props", "The Safari Zone's
+    /// objects"): its type the prop's <see cref="Prop.Model"/> (<c>safari:&lt;key&gt;</c>), our own drawing (<c>SafariArt</c>).
+    /// It blocks nothing, so no arrangement can shut a way.
+    /// </summary>
+    SafariObject,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

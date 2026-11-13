@@ -353,7 +353,9 @@ public sealed partial class ScriptRunner
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker or Op.Photograph => false,
         // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
         Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape or Op.Dive => true,
-        Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle or Op.RidePokemon => false,
+        Op.Poketch or Op.PoketchApp or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle or Op.RidePokemon => false,
+        // A Safari Game begun or ended is as told; the Area Customizer's screen is the player's to work (plan 38 · EX8)
+        Op.Safari => i.Name == "objects",
         // A puzzle's pieces move while the field waits
         Op.FlowerClock or Op.PressButton or Op.GearButton => true,
         Op.PlatformLift => !i.Option,
@@ -1047,6 +1049,10 @@ public sealed partial class ScriptRunner
                 break;
             case Op.PoketchApp:
                 host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
+                break;
+            case Op.Safari when i.Name == "objects":
+                // RESULT 1 where the area was opened to arrange, 0 where it wasn't (no such area, or nobody to arrange it)
+                Result = host.ArrangeSafari(i.Number > 0 ? i.Number - 1 : Result) ? 1 : 0;
                 break;
             case Op.Safari:
             {
