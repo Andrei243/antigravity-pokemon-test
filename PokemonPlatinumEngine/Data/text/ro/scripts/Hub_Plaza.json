@@ -5,7 +5,7 @@
         "Quincy Rowan-Pike"
       ],
       "text": [
-        ""
+        "Quincy Rowan-Pike"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome, welcome, to Pennant Hall! I'm Quincy Rowan-Pike, and this hall and its ledger are in my keeping."
       ],
       "text": [
-        ""
+        "Bun venit, bun venit la Sala Fanioanelor! Sunt Quincy Rowan-Pike, iar sala și registrul ei sunt în grija mea."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Every stall here hails from a region whose Champion has passed through. You choose which stall stands at each pitch."
       ],
       "text": [
-        ""
+        "Fiecare tarabă de aici vine dintr-o regiune al cărei Campion a trecut pe aici. Tu alegi ce tarabă stă la fiecare loc."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Each pennant the hall earns raises its rank, and every rank opens another pitch and finer wares."
       ],
       "text": [
-        ""
+        "Fiecare fanion câștigat de sală îi ridică rangul, iar fiecare rang deschide alt loc și mărfuri mai alese."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Our guests pay their way in pennants, and so does the Week's Work, the board of missions on the wall."
       ],
       "text": [
-        ""
+        "Oaspeții noștri plătesc cu fanioane, la fel ca Munca Săptămânii, panoul de misiuni de pe perete."
       ]
     },
     {
@@ -49,11 +49,11 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Cu ce vă poate servi registrul?",
+        "AȘEAZĂ O TARABĂ",
+        "REGISTRUL",
+        "OASPEȚII DE AZI",
+        "NIMIC"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Mind the bunting on your way out. Do come again!"
       ],
       "text": [
-        ""
+        "Ai grijă la ghirlande când pleci. Mai treci pe aici!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "You hold {pennants} pennants, and the hall stands at rank {number}."
       ],
       "text": [
-        ""
+        "Ai {pennants} fanioane, iar sala e la rangul {number}."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Earn {number} more and the hall rises a rank."
       ],
       "text": [
-        ""
+        "Mai câștigă {number} și sala urcă un rang."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "The hall stands at its very highest rank. The ledger has never looked finer!"
       ],
       "text": [
-        ""
+        "Sala se află la cel mai înalt rang. Registrul n-a arătat niciodată mai bine!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "{number} guests have come today. Do say hello: the first word of the day costs them a pennant or two."
       ],
       "text": [
-        ""
+        "Azi au venit {number} oaspeți. Salută-i: primul cuvânt al zilei îi costă un fanion sau două."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Not a single guest today, I'm afraid. Perhaps tomorrow!"
       ],
       "text": [
-        ""
+        "Niciun oaspete azi, mă tem. Poate mâine!"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "The hall has {number} pitches at its rank. The first four stand along the north wall, the rest in the row across the middle."
       ],
       "text": [
-        ""
+        "Sala are {number} locuri la rangul ei. Primele patru sunt pe peretele de nord, restul în rândul din mijloc."
       ]
     },
     {
@@ -123,13 +123,13 @@
         "BACK"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce loc?",
+        "LOCUL 1",
+        "LOCUL 2",
+        "LOCUL 3",
+        "LOCUL 4",
+        "RÂNDUL DIN MIJLOC",
+        "ÎNAPOI"
       ]
     },
     {
@@ -143,13 +143,13 @@
         "BACK"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce loc?",
+        "LOCUL 5",
+        "LOCUL 6",
+        "LOCUL 7",
+        "LOCUL 8",
+        "PERETELE DE NORD",
+        "ÎNAPOI"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Done! The ledger is updated, and the stall stands ready."
       ],
       "text": [
-        ""
+        "Gata! Registrul e actualizat, iar taraba e pregătită."
       ]
     },
     {
@@ -165,7 +165,7 @@
         "That pitch opens at a higher rank. Earn the hall some pennants and it's yours!"
       ],
       "text": [
-        ""
+        "Locul acela se deschide la un rang mai înalt. Câștigă niște fanioane pentru sală și e al tău!"
       ]
     }
   ],
@@ -175,7 +175,7 @@
         "Fine wares from every harbour, priced in pennants! The higher the hall's rank, the finer my shelves."
       ],
       "text": [
-        ""
+        "Mărfuri alese din toate porturile, cu preț în fanioane! Cu cât rangul sălii e mai înalt, cu atât rafturile mele sunt mai bune."
       ]
     },
     {
@@ -183,7 +183,7 @@
         "Welcome to the Lottery Corner's Pennant Hall branch! Same lucky number, same prizes as in Jubilife."
       ],
       "text": [
-        ""
+        "Bun venit la filiala din Sala Fanioanelor a Colțului Loteriei! Același număr norocos, aceleași premii ca în Jubilife."
       ]
     },
     {
@@ -191,7 +191,7 @@
         "Shall I check today's number against your Pokémon?"
       ],
       "text": [
-        ""
+        "Să verific numărul de azi cu Pokémonii tăi?"
       ]
     },
     {
@@ -199,7 +199,7 @@
         "Today's lucky number is {ticket}! Let me look through your Pokémon's ID numbers..."
       ],
       "text": [
-        ""
+        "Numărul norocos de azi e {ticket}! Mă uit prin numerele de ID ale Pokémonilor tăi..."
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Not a single digit matched today, I'm afraid. A new number comes up tomorrow!"
       ],
       "text": [
-        ""
+        "Nicio cifră nu s-a potrivit azi, mă tem. Mâine iese alt număr!"
       ]
     },
     {
@@ -215,7 +215,7 @@
         "The last digit matches {winner}'s ID! That's the fifth prize."
       ],
       "text": [
-        ""
+        "Ultima cifră se potrivește cu ID-ul lui {winner}! Premiul al cincilea."
       ]
     },
     {
@@ -223,7 +223,7 @@
         "The last two digits match {winner}'s ID! That's the fourth prize."
       ],
       "text": [
-        ""
+        "Ultimele două cifre se potrivesc cu ID-ul lui {winner}! Premiul al patrulea."
       ]
     },
     {
@@ -231,7 +231,7 @@
         "The last three digits match {winner}'s ID! That's the third prize."
       ],
       "text": [
-        ""
+        "Ultimele trei cifre se potrivesc cu ID-ul lui {winner}! Premiul al treilea."
       ]
     },
     {
@@ -239,7 +239,7 @@
         "Four digits match {winner}'s ID! That's the second prize!"
       ],
       "text": [
-        ""
+        "Patru cifre se potrivesc cu ID-ul lui {winner}! Premiul al doilea!"
       ]
     },
     {
@@ -247,7 +247,7 @@
         "Every digit matches {winner}'s ID! Incredible! That's the first prize!"
       ],
       "text": [
-        ""
+        "Toate cifrele se potrivesc cu ID-ul lui {winner}! Incredibil! Premiul întâi!"
       ]
     },
     {
@@ -255,7 +255,7 @@
         "Today's draw is done, here or in Jubilife: the number is the same everywhere. Come back tomorrow!"
       ],
       "text": [
-        ""
+        "Extragerea de azi s-a făcut, aici sau în Jubilife: numărul e același peste tot. Revino mâine!"
       ]
     },
     {
@@ -263,7 +263,7 @@
         "Come back any time today. The number won't run away!"
       ],
       "text": [
-        ""
+        "Revino oricând azi. Numărul nu fuge!"
       ]
     },
     {
@@ -271,7 +271,7 @@
         "Seals for your Ball Capsules! I've the same stock as the market in Sunyshore, day by day."
       ],
       "text": [
-        ""
+        "Stickere pentru Capsulele tale! Am același stoc ca piața din Sunyshore, zi de zi."
       ]
     },
     {
@@ -279,7 +279,7 @@
         "Seals for sale! ...But you've no Seal Case to put them in. A house in Solaceon Town gives them away."
       ],
       "text": [
-        ""
+        "Stickere de vânzare! ...Dar n-ai o Cutie de Stickere în care să le pui. O casă din Solaceon Town le dă pe gratis."
       ]
     },
     {
@@ -287,7 +287,7 @@
         "A pot, a spoon and a Berry: that's all it takes for a Poffin. Shall we stir?"
       ],
       "text": [
-        ""
+        "Un ceaun, o lingură și o Boabă: atât îți trebuie pentru un Poffin. Amestecăm?"
       ]
     },
     {
@@ -295,7 +295,7 @@
         "Come back and stir whenever you like!"
       ],
       "text": [
-        ""
+        "Revino și amestecă oricând vrei!"
       ]
     },
     {
@@ -303,7 +303,7 @@
         "Oh, but you'll need a Poffin Case to keep them in. The Pokémon Fan Club in Hearthome gives them out."
       ],
       "text": [
-        ""
+        "Dar o să-ți trebuiască o Cutie de Poffinuri în care să-i ții. Fan Club-ul Pokémon din Hearthome le dă."
       ]
     },
     {
@@ -311,7 +311,7 @@
         "Not a single Berry in your bag! Bring some along and we'll stir."
       ],
       "text": [
-        ""
+        "Nicio Boabă în rucsac! Adu câteva și amestecăm."
       ]
     },
     {
@@ -319,7 +319,7 @@
         "Your Poffin Case is full to the brim! Feed a few to your Pokémon first."
       ],
       "text": [
-        ""
+        "Cutia ta de Poffinuri e plină ochi! Dă câțiva Pokémonilor tăi mai întâi."
       ]
     },
     {
@@ -327,7 +327,7 @@
         "I remember every move a Pokémon learns as it grows, and I can teach one back for a Heart Scale."
       ],
       "text": [
-        ""
+        "Țin minte fiecare mișcare pe care o învață un Pokémon pe măsură ce crește și pot preda una înapoi pentru un Solz-Inimă."
       ]
     },
     {
@@ -335,7 +335,7 @@
         "Bring a Heart Scale and I'll gladly help. The goods stall here sells them for pennants."
       ],
       "text": [
-        ""
+        "Adu un Solz-Inimă și te ajut cu plăcere. Taraba de mărfuri de aici le vinde pe fanioane."
       ]
     },
     {
@@ -343,7 +343,7 @@
         "Shall I trade your Heart Scale for a move one of your Pokémon has let slip?"
       ],
       "text": [
-        ""
+        "Să-ți schimb Solzul-Inimă pe o mișcare pe care un Pokémon de-al tău a uitat-o?"
       ]
     },
     {
@@ -351,7 +351,7 @@
         "Which Pokémon is it to be?"
       ],
       "text": [
-        ""
+        "Care Pokémon să fie?"
       ]
     },
     {
@@ -359,7 +359,7 @@
         "One, two, and... poof! {wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "Unu, doi și... pof! {wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -367,7 +367,7 @@
         "{wearer} remembered {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} și-a amintit {thing}!"
       ]
     },
     {
@@ -375,7 +375,7 @@
         "An Egg hasn't learned a thing yet, let alone forgotten one!"
       ],
       "text": [
-        ""
+        "Un Ou n-a învățat încă nimic, d-apoi să fi uitat ceva!"
       ]
     },
     {
@@ -383,7 +383,7 @@
         "That one hasn't let a single move slip. A fine memory!"
       ],
       "text": [
-        ""
+        "Pokémonul acela n-a uitat nicio mișcare. Ce memorie!"
       ]
     },
     {
@@ -391,7 +391,7 @@
         "Come back whenever a Pokémon of yours wants a move back."
       ],
       "text": [
-        ""
+        "Revino oricând un Pokémon de-al tău vrea o mișcare înapoi."
       ]
     },
     {
@@ -399,7 +399,7 @@
         "I take Apricorns for Kurt of Azalea Town. Whatever I take, he makes, and it's ready the day after."
       ],
       "text": [
-        ""
+        "Primesc Apricorni pentru Kurt din Azalea Town. Ce primesc, el face, și e gata a doua zi."
       ]
     },
     {
@@ -407,7 +407,7 @@
         "Shall I send him every Apricorn of one colour from your Box?"
       ],
       "text": [
-        ""
+        "Să-i trimit toți Apricornii de o culoare din Cutia ta?"
       ]
     },
     {
@@ -421,13 +421,13 @@
         "Never mind"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce culoare?",
+        "Roșu",
+        "Albastru",
+        "Galben",
+        "Verde",
+        "Alte culori",
+        "Las-o baltă"
       ]
     },
     {
@@ -439,11 +439,11 @@
         "Back"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce culoare?",
+        "Roz",
+        "Alb",
+        "Negru",
+        "Înapoi"
       ]
     },
     {
@@ -451,7 +451,7 @@
         "You've no {apricorn} in your Box. Try another colour."
       ],
       "text": [
-        ""
+        "N-ai niciun {apricorn} în Cutie. Încearcă altă culoare."
       ]
     },
     {
@@ -459,7 +459,7 @@
         "Sent! That's {apricorns} × {ball} on their way. Come back tomorrow, here or at Kurt's."
       ],
       "text": [
-        ""
+        "Trimis! {apricorns} × {ball} sunt pe drum. Revino mâine, aici sau la Kurt."
       ]
     },
     {
@@ -467,7 +467,7 @@
         "Kurt's batch came in on the morning boat: {apricorns} × {ball}, all yours."
       ],
       "text": [
-        ""
+        "Lotul lui Kurt a venit cu barca de dimineață: {apricorns} × {ball}, toate ale tale."
       ]
     },
     {
@@ -475,7 +475,7 @@
         "{apricorns} × {ball} went into the bag."
       ],
       "text": [
-        ""
+        "{apricorns} × {ball} au intrat în rucsac."
       ]
     },
     {
@@ -483,7 +483,7 @@
         "Kurt's still at work on your {ball}: {apricorns} of them, ready tomorrow."
       ],
       "text": [
-        ""
+        "Kurt mai lucrează la {ball} tale: {apricorns} bucăți, gata mâine."
       ]
     },
     {
@@ -491,7 +491,7 @@
         "Bring Apricorns in your Apricorn Box and I'll send them to Kurt. Each colour makes a ball of its own."
       ],
       "text": [
-        ""
+        "Adu Apricorni în Cutia de Apricorni și i-i trimit lui Kurt. Fiecare culoare face o bilă a ei."
       ]
     },
     {
@@ -499,7 +499,7 @@
         "No hurry. Kurt's always glad of Apricorns."
       ],
       "text": [
-        ""
+        "Nicio grabă. Kurt e mereu bucuros de Apricorni."
       ]
     },
     {
@@ -507,7 +507,7 @@
         "Berries in, Pokéblocks out! This blender came all the way from Lilycove."
       ],
       "text": [
-        ""
+        "Boabe intră, Pokéblocuri ies! Mixerul acesta a venit tocmai din Lilycove."
       ]
     },
     {
@@ -515,7 +515,7 @@
         "You'll need a Pokéblock Case to keep what we make. Lilycove's Contest Hall gives them out."
       ],
       "text": [
-        ""
+        "Îți trebuie o Cutie de Pokéblocuri ca să păstrezi ce facem. Sala de Concursuri din Lilycove le dă."
       ]
     },
     {
@@ -523,7 +523,7 @@
         "Choose a Berry to blend. The more it stands out from mine, the better the Pokéblock."
       ],
       "text": [
-        ""
+        "Alege o Boabă de amestecat. Cu cât se deosebește mai mult de a mea, cu atât Pokéblockul iese mai bun."
       ]
     },
     {
@@ -531,7 +531,7 @@
         "A fine Pokéblock! It's in your Case."
       ],
       "text": [
-        ""
+        "Un Pokéblock frumos! E în Cutia ta."
       ]
     },
     {
@@ -539,7 +539,7 @@
         "Your Pokéblock Case is full. Feed a few to your Pokémon first."
       ],
       "text": [
-        ""
+        "Cutia ta de Pokéblock-uri e plină. Dă câteva Pokémonilor tăi mai întâi."
       ]
     }
   ],
@@ -549,7 +549,7 @@
         "Hello! I've come a long way to see this hall. Here, a few pennants for the stalls."
       ],
       "text": [
-        ""
+        "Salut! Am venit de departe să văd sala asta. Poftim, câteva fanioane pentru tarabe."
       ]
     },
     {
@@ -557,7 +557,7 @@
         "{player} received {number} pennants!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} fanioane!"
       ]
     },
     {
@@ -565,7 +565,7 @@
         "Fancy a battle? I've brought my strongest team."
       ],
       "text": [
-        ""
+        "Facem o luptă? Mi-am adus echipa cea mai puternică."
       ]
     },
     {
@@ -573,7 +573,7 @@
         "Ha! Good fun. Come back and try me again today if you like."
       ],
       "text": [
-        ""
+        "Ha! Ce distracție. Revino și încearcă-mă din nou azi, dacă vrei."
       ]
     },
     {
@@ -581,7 +581,7 @@
         "What a battle! The hall pays its guests' winners, and today that's you."
       ],
       "text": [
-        ""
+        "Ce luptă! Sala îi plătește pe câștigătorii oaspeților ei, iar azi ești tu."
       ]
     },
     {
@@ -589,7 +589,7 @@
         "{player} received {number} pennants!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} fanioane!"
       ]
     },
     {
@@ -597,7 +597,7 @@
         "You beat me fair and square today. Tomorrow I'll be ready!"
       ],
       "text": [
-        ""
+        "M-ai învins corect azi. Mâine voi fi pregătit!"
       ]
     },
     {
@@ -605,7 +605,7 @@
         "Enjoy the hall! There's something new at every stall."
       ],
       "text": [
-        ""
+        "Bucură-te de sală! E ceva nou la fiecare tarabă."
       ]
     }
   ]

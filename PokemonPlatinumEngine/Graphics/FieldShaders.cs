@@ -440,6 +440,8 @@ in vec2 fragTexCoord;
 in vec4 fragColor;
 in vec3 fragWorld;
 uniform sampler2D texture0;
+// The card's own tint: white for everyone (so nothing moves), the lock's grey for a locked heart walking (plan 44 · SD2)
+uniform vec4 colDiffuse;
 uniform vec3 sunColor;
 uniform vec3 skyAmbient;
 // A bridge's deck over whoever is drawn (Relief.DeckOver): x0, x1 in tiles, the deck's height, and 1 while it holds.
@@ -453,7 +455,10 @@ void main()
     if (deckOver.w > 0.5 && fragWorld.y > deckOver.z && fragWorld.x >= deckOver.x && fragWorld.x <= deckOver.y) discard;
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
-    vec3 color = texel.rgb * fragColor.rgb * (skyAmbient * 0.62 + sunColor * 0.78 * CloudLight(fragWorld));
+    // colDiffuse's alpha is how much of the card's own colour is kept against its grey (1 for everyone)
+    vec3 own = texel.rgb * fragColor.rgb * colDiffuse.rgb;
+    own = mix(vec3(dot(own, vec3(0.30, 0.59, 0.11))), own, colDiffuse.a);
+    vec3 color = own * (skyAmbient * 0.62 + sunColor * 0.78 * CloudLight(fragWorld));
     finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
 }";
 

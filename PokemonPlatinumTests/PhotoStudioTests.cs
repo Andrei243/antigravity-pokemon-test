@@ -93,6 +93,22 @@ public class PhotoStudioTests
     }
 
     [Fact]
+    public void AStickerKeepsItsSizeAndTurnAndAnOlderOneReadsAsItWas()
+    {
+        // Plan 43 · LF7's leftover (LF5's owed): a sticker is put on at a size and a turn, kept through a save; one
+        // written before them reads at the middle size, upright
+        int heart = SealDatabase.Seal("HEART_SEAL_A");
+        var shot = new StudioShot().WithSticker(heart, 0.5f, 0.5f, Seals(heart), StudioSticker.Sizes[2], -1);
+        var sticker = Assert.Single(shot.Stickers);
+        Assert.Equal(1.4f, sticker.Size);
+        Assert.Equal(StudioSticker.Turns - 1, sticker.Turn);
+        var back = SaveManager.Read(SaveManager.Write(new SaveData { LastStudioShot = shot })!)!.LastStudioShot!;
+        Assert.Equal((1.4f, StudioSticker.Turns - 1), (back.Stickers[0].Size, back.Stickers[0].Turn));
+        var older = System.Text.Json.JsonSerializer.Deserialize<StudioSticker>("""{ "Seal": 3, "X": 0.25, "Y": 0.5 }""")!;
+        Assert.Equal((1f, 0), (older.Size, older.Turn));
+    }
+
+    [Fact]
     public void AnEggMayNotStandOnTheStage()
     {
         var egg = new Pokemon(PokemonDatabase.Get("Bidoof")!, 5) { Id = Guid.NewGuid(), IsEgg = true };

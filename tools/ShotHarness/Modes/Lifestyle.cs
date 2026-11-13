@@ -27,6 +27,8 @@ partial class Harness
         if (part is "" or "photo") LifestylePhoto();
         if (part is "studio") LifestyleStudio();
         if (part is "phone") LifestylePhone();
+        if (part is "home") LifestyleHome();
+        if (part is "spots") LifestyleSpots();
     }
 
     private void LifestyleCard()

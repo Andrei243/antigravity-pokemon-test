@@ -329,7 +329,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     {
         Log.Add($"openbase {what}");
         // (what is only asked, check and kind, may be hurried through)
-        if (what is "open" or "enter" or "visit" or "pc" or "packup" or "move" or "movein")
+        if (what is "open" or "enter" or "visit" or "pc" or "packup" or "move" or "movein" or "bedroom")
         {
             NeverInAHurry($"a secret base's '{what}'");
             Waits();
@@ -1109,7 +1109,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
                 var run = Models.Delve.DelveRun.Begin(hollow, leader, partner, DelveSeed, randomiser == null ? null : randomiser.Species);
                 for (int n = 0; n < 20000 && run.Outcome == Models.Delve.DelveOutcome.Going; n++) run.Act(Models.Delve.DelvePolicy.Next(run));
                 DelveRuns.Add(run);
-                var board = Models.Delve.DelveBoard.Of(Encounters.DailyNumber, DelveRecord.Rank);
+                var board = Models.Delve.DelveBoard.Of(Encounters.DailyNumber, DelveRecord.RankOn(ApricornBox.DayOf(GameClock.Today)));
                 Models.Delve.DelveHome.Settle(run, DelveRecord, board, ApricornBox.DayOf(GameClock.Today), Bag,
                     p => !Rules.NoCatching && Rules.MayCarry(p, Story.PlayerStarter),
                     p =>

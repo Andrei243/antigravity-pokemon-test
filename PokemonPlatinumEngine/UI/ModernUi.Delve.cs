@@ -49,7 +49,8 @@ internal static partial class ModernUi
 
         // The log, along the bottom
         var log = new Rectangle(424, sh - 32 - 196, sw - 424 - 32, 196);
-        Panel(log, 24);
+        // (nothing said yet, nothing drawn: an empty panel only covers the floor)
+        if (screen.Log.Count > 0) Panel(log, 24);
         float ly = log.Y + 22;
         for (int i = 0; i < screen.Log.Count; i++)
         {
@@ -62,13 +63,12 @@ internal static partial class ModernUi
         switch (screen.Menu)
         {
             case DelveMenu.Moves:
-                DelveList(sw, Text.Of("delve.moves"), run.Leader.Pokemon.Moves.Select(m =>
-                    $"{LocalNames.Move(m.Name)}   {Text.Of("delve.pp", ("n", m.CurrentPP), ("of", m.MaxPP))}").ToList(), screen.Cursor);
+                DelveList(sw, Text.Of("delve.moves"), run.Leader.Pokemon.Moves.Select(DelveScreen.MoveRow).ToList(), screen.Cursor);
                 break;
             case DelveMenu.Bag:
                 var items = screen.BagItems;
                 DelveList(sw, Text.Of("delve.bag", ("n", run.Bag.Count), ("of", DelveRun.BagSize)),
-                    items.Count == 0 ? new() { Text.Of("delve.bagEmpty") } : items.Select(i => $"{LocalNames.Item(i)}  ×{screen.CountOf(i)}").ToList(), screen.Cursor);
+                    items.Count == 0 ? new() { Text.Of("delve.bagEmpty") } : items.Select(i => LocalNames.Item(i) + "  ×" + screen.CountOf(i)).ToList(), screen.Cursor);
                 break;
             case DelveMenu.BagTarget:
                 DelveList(sw, Text.Of("delve.giveTo", ("item", LocalNames.Item(screen.Chosen ?? ""))), run.Team.Select(m => m.Pokemon.DisplayName).ToList(), screen.Cursor);

@@ -720,6 +720,12 @@ public partial class GameEngine
             FinishSecretBaseDecoration();
             return;
         }
+        // and a bedroom at home (plan 43 · LF7)
+        if (decoratingBedroom != null)
+        {
+            FinishBedroomDecoration();
+            return;
+        }
         // What stands in the room now is the base's (BaseDecoration_SaveBaseGoods), and the mission's flag is set whatever was done
         if (flow.Underground.Base is { } room)
         {

@@ -5,7 +5,7 @@
         "{player} received an Egg from the Laurel Gallery!"
       ],
       "text": [
-        ""
+        "{player} a primit un Ou de la Galeria Laurilor!"
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "{player} received an Egg from the Laurel Gallery!"
       ],
       "text": [
-        ""
+        "{player} a primit un Ou de la Galeria Laurilor!"
       ]
     }
   ],
@@ -25,7 +25,7 @@
         "{player} received an Egg from the Laurel Gallery!"
       ],
       "text": [
-        ""
+        "{player} a primit un Ou de la Galeria Laurilor!"
       ]
     }
   ],
@@ -35,7 +35,7 @@
         "{player} received an Egg from the Laurel Gallery!"
       ],
       "text": [
-        ""
+        "{player} a primit un Ou de la Galeria Laurilor!"
       ]
     }
   ],
@@ -45,7 +45,7 @@
         "{player} received an Egg from the Laurel Gallery!"
       ],
       "text": [
-        ""
+        "{player} a primit un Ou de la Galeria Laurilor!"
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "{player} received a Pikachu from the Registry!"
       ],
       "text": [
-        ""
+        "{player} a primit un Pikachu de la Registru!"
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "{player} received a Pichu from the Gift Desk!"
       ],
       "text": [
-        ""
+        "{player} a primit un Pichu de la Ghișeul de Cadouri!"
       ]
     }
   ]

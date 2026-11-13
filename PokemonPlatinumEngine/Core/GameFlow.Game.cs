@@ -234,6 +234,9 @@ public sealed partial class GameFlow
     public SecretBaseSave? SecretBase { get; set; }
     public List<StoredDecoration> Decorations { get; set; } = new();
 
+    /// <summary>Each region's bedroom at home as it was decorated, by the region (plan 43 · LF7; saved as <c>SaveData.Bedrooms</c>).</summary>
+    public Dictionary<string, List<PlacedDecoration>> Bedrooms { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+
     /// <summary>The Battle Frontier's records (saved).</summary>
     public FrontierRecords Frontier { get; set; } = new();
 

@@ -1,5 +1,75 @@
 {
   "people": {
+    "11": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Azelf"
+        ],
+        "text": [
+          "Azelf"
+        ]
+      }
+    },
     "0": {
       "name": {
         "en": [
@@ -153,76 +223,6 @@
         ],
         "text": [
           "Nici măcar n-ai asudat!"
-        ]
-      }
-    },
-    "10": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
-        ]
-      }
-    },
-    "11": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
-        ]
-      }
-    },
-    "12": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
-        ]
-      }
-    },
-    "13": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
-        ]
-      }
-    },
-    "14": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
-        ]
-      }
-    },
-    "15": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
-        ]
-      }
-    },
-    "16": {
-      "name": {
-        "en": [
-          "Azelf"
-        ],
-        "text": [
-          "Azelf"
         ]
       }
     },
