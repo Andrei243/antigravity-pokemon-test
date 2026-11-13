@@ -57,6 +57,26 @@ public sealed class StudioScreen
     public int FirstSeal { get; private set; }
 
     /// <summary>The carried Seal's place on the stage, as shares.</summary>
+    /// <summary>The carried Seal's size (an index of <see cref="StudioSticker.Sizes"/>) and turn in steps of fifteen degrees (plan 43 · LF7's leftover).</summary>
+    public int CarriedSize { get; private set; } = 1;
+    public int CarriedTurn { get; private set; }
+
+    /// <summary>The carried Seal one size on, round from the largest to the smallest (the item button).</summary>
+    public void Resize()
+    {
+        if (Mode != StudioMode.PlaceSeal) return;
+        CarriedSize = (CarriedSize + 1) % StudioSticker.Sizes.Length;
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>The carried Seal turned a step either way (the shoulders).</summary>
+    public void Turn(int step)
+    {
+        if (Mode != StudioMode.PlaceSeal || step == 0) return;
+        CarriedTurn = ((CarriedTurn + Math.Sign(step)) % StudioSticker.Turns + StudioSticker.Turns) % StudioSticker.Turns;
+        AudioManager.PlaySound("cursor");
+    }
+
     public float CursorX { get; private set; } = 0.5f;
     public float CursorY { get; private set; } = 0.5f;
 
@@ -204,7 +224,7 @@ public sealed class StudioScreen
             AudioManager.PlaySound("cancel");
             return;
         }
-        Shot = Shot.WithSticker(seal, CursorX, CursorY, sealCase);
+        Shot = Shot.WithSticker(seal, CursorX, CursorY, sealCase, StudioSticker.Sizes[CarriedSize], CarriedTurn);
         AudioManager.PlaySound("select");
     }
 
@@ -299,6 +319,11 @@ public sealed class StudioScreen
             int dy = InputManager.IsActionPressed(GameAction.Up) ? -1 : InputManager.IsActionPressed(GameAction.Down) ? 1 : 0;
             Change(dx);
             Move(dy);
+        }
+        if (Mode == StudioMode.PlaceSeal)
+        {
+            if (InputManager.IsActionPressed(GameAction.Item)) Resize();
+            Turn(InputManager.IsActionPressed(GameAction.PageLeft) ? -1 : InputManager.IsActionPressed(GameAction.PageRight) ? 1 : 0);
         }
         if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
         else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();

@@ -3287,6 +3287,24 @@
       ]
     }
   ],
+  "BedroomPC": [
+    {
+      "en": [
+        "{player} turned on the computer."
+      ],
+      "text": [
+        "{player} a pornit calculatorul."
+      ]
+    },
+    {
+      "en": [
+        "Decorate your room with things from your decoration PC?"
+      ],
+      "text": [
+        "Îți decorezi camera cu lucruri din PC-ul de decorațiuni?"
+      ]
+    }
+  ],
   "ApricornTree": [
     {
       "en": [

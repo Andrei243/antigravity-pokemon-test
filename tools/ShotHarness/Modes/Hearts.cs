@@ -19,6 +19,7 @@ partial class Harness
     // (lh08) with the level panel for the EXP its lock held (lh09). It prints the lock at each step.
     public void HeartsMode()
     {
+        if (Environment.GetEnvironmentVariable("HEARTS_PART") == "cells") { HeartsCells(); return; }
         var rules = Ruleset.Modern;
         // ---- a Lockwork agent's locked Gible, the player carrying the Reclaimer
         var (name, x, y) = Place("Route201", -1, -1);
@@ -124,5 +125,6 @@ partial class Harness
         screen.PressConfirm();
         screen.PressConfirm();
         Frames(60);
+        HeartsCells();
     }
 }

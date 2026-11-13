@@ -364,6 +364,10 @@ public class SaveData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public List<Models.StoredDecoration>? Decorations { get; set; }
 
+    /// <summary>Each region's bedroom at home as it was decorated (plan 43 · LF7), by the region; null while none is.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<string, List<Models.PlacedDecoration>>? Bedrooms { get; set; }
+
     /// <summary>
     /// Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b): the Coin Case's coins, the six Pokémon that
     /// wait in Pal Park, and four of the original's game records. Null in saves from before them.

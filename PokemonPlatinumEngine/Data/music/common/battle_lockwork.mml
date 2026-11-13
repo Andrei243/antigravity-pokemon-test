@@ -1,0 +1,62 @@
+# Battle against Lockwork (plan 44 · SD3, the class's own battle song; the user's answer 65a, a clipped march):
+# a wind-up of ticks, then a D-minor drive over a clock's hand that never stops. Original composition for this game.
+title Battle! Lockwork
+tempo 168
+meter 4/4
+lowhptempo 1.08
+reverb 0.18
+
+track lead square lowhp=sawlead vol=0.72 pan=0 rev=0.18
+  o5 d16 r16 d16 r16 d16 r16 d16 r16 d16 r16 d16 r16 d8 e8 | o5 f8 r8 e8 r8 (d f a)4 r4 |
+  L o5 d4 a8 d8 f4 e8 d8 | o5 c+4. d8 a2 | o5 b-4 d8 f8 b-4 a8 g8 | o5 a2 c+4 e4 |
+  o5 d4 a8 d8 f4 g8 a8 | o5 b-4. a8 g4 d4 | o5 f4 b-8 f8 o6 d4 c8 o5 b-8 | o5 a2. r4 |
+  o5 g4 b-8 o6 d8 g4 f8 e-8 | o6 d4 c8 o5 a8 f4 d4 | o5 e-4 g8 b-8 o6 e-4 d8 c8 | o5 c+4 e8 a8 o6 c+2 |
+  o6 d4. c8 o5 a4 f4 | o5 b-4 o6 d8 f8 d4 o5 b-4 | o5 g4 b-8 o6 d8 c4 o5 b-8 a8 | o5 a4 e8 c+8 o4 a2 |
+
+track double brass vol=0.42 pan=-0.2 rev=0.22
+  r1 | o3 (d f a)8 r8 (d f a)8 r8 (c+ e a)4 r4 |
+  L o4 d1 | d1 | b-1 | a1 |
+  d1 | g1 | b-1 | a1 |
+  g1 | d1 | e-1 | a1 |
+  d1 | b-1 | g1 | a1 |
+
+track stabs organ unless=lowhp vol=0.32 pan=0.3 rev=0.2
+  r1 | r1 |
+  L [ r8 o4 (d f a)8 ]4 | [ r8 o4 (d f a)8 ]4 | [ r8 o4 (d f b-)8 ]4 | [ r8 o4 (c+ e a)8 ]4 |
+  [ r8 o4 (d f a)8 ]4 | [ r8 o4 (d g b-)8 ]4 | [ r8 o4 (d f b-)8 ]4 | [ r8 o4 (c+ e a)8 ]4 |
+  [ r8 o4 (d g b-)8 ]4 | [ r8 o4 (d f a)8 ]4 | [ r8 o4 (e- g b-)8 ]4 | [ r8 o4 (c+ e a)8 ]4 |
+  [ r8 o4 (d f a)8 ]4 | [ r8 o4 (d f b-)8 ]4 | [ r8 o4 (d g b-)8 ]4 | [ r8 o4 (c+ e a)8 ]4 |
+
+track pad strings unless=lowhp vol=0.34 pan=-0.35 rev=0.3
+  r1 | r1 |
+  L o4 (d f a)1 | (d f a)1 | (d f b-)1 | (c+ e a)1 |
+  (d f a)1 | (d g b-)1 | (d f b-)1 | (c+ e a)1 |
+  (d g b-)1 | (d f a)1 | (e- g b-)1 | (c+ e a)1 |
+  (d f a)1 | (d f b-)1 | (d g b-)1 | (c+ e a)1 |
+
+track bass synthbass vol=0.72 rev=0.05
+  o2 d8 d8 d8 d8 d8 d8 d8 d8 | d8 r8 d8 r8 a4 r4 |
+  L [ o2 d8 d16 o3 d16 ]4 | [ o2 d8 d16 o3 d16 ]4 | [ o2 b-8 b-16 o3 b-16 ]4 | [ o2 a8 a16 o3 a16 ]4 |
+  [ o2 d8 d16 o3 d16 ]4 | [ o2 g8 g16 o3 g16 ]4 | [ o2 b-8 b-16 o3 b-16 ]4 | [ o2 a8 a16 o3 a16 ]4 |
+  [ o2 g8 g16 o3 g16 ]4 | [ o2 d8 d16 o3 d16 ]4 | [ o2 e-8 e-16 o3 e-16 ]4 | [ o2 a8 a16 o3 a16 ]4 |
+  [ o2 d8 d16 o3 d16 ]4 | [ o2 b-8 b-16 o3 b-16 ]4 | [ o2 g8 g16 o3 g16 ]4 | [ o2 a8 a16 o3 a16 ]4 |
+
+# The clock's hand: a tick and a tock every beat, from the first bar of the loop to its last
+track tick pulse vol=0.3 pan=0.35 rev=0.05
+  r1 | r1 | L [ o6 a32 r32 r16 o6 e32 r32 r16 ]64
+
+track drums kit vol=0.5 rev=0.12
+  v100 [ s16 ]12 b4 | (b c)8 r8 (b c)8 r8 b4 t16 t16 m16 f16 | L [ (b c)8 b8 s8 b8 b8 b8 s8 b8 | [ b8 b8 s8 b8 b8 b8 s8 b8 | ]6 b8 b8 s8 b8 s16 s16 s16 s16 s16 s16 s16 s16 | ]2
+
+track hats kit vol=0.44 pan=0.15 rev=0.1
+  r1 | r1 | L v65 [ h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 h16 v40 h16 h16 h16 v65 o16 v40 h16 h16 h16 v65 | ]16
+
+# Low HP: the alarm, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.42 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o7 a16 r16 a16 r16 r4 a16 r16 a16 r16 r4 | ]16
+
+# Giant (plan Y · YD5): while a Dynamaxed Pokémon stands on the field, a choir on the chords,
+# brass on the roots and timpani on the bass's beats
+track giantchoir choir only=giant double=pad vol=0.2 pan=-0.25 rev=0.4
+track giantbrass brass only=giant double=bass beats=4 shift=12 vol=0.22 pan=0.25 rev=0.28
+track gianttimpani timpani only=giant double=bass beats=4 shift=12 vol=0.32 rev=0.2

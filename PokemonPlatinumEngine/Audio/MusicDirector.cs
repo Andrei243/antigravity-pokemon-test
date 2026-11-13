@@ -68,7 +68,9 @@ public enum MusicRole
     /// <summary>A medal won (plan 13 · V9), with the options' MEDAL NOTICES row on.</summary>
     FanfareMedal,
     /// <summary>The World Tournament's hall, its battles and its wins (plan 14 · B11; songs of our own in <c>common/tournament</c>).</summary>
-    Tournament, BattleTournament, VictoryTournament
+    Tournament, BattleTournament, VictoryTournament,
+    /// <summary>A battle against Lockwork's agents and admins (plan 44 · SD3; a clipped march of our own in <c>common</c>, Team Galactic's while it is missing).</summary>
+    BattleLockwork
 }
 
 /// <summary>
@@ -110,7 +112,8 @@ public static class MusicDirector
         ["galactic"] = MusicRole.BattleGalactic,
         ["galacticBoss"] = MusicRole.BattleGalacticBoss,
         ["eliteFour"] = MusicRole.BattleEliteFour,
-        ["champion"] = MusicRole.BattleChampion
+        ["champion"] = MusicRole.BattleChampion,
+        ["lockwork"] = MusicRole.BattleLockwork
     };
 
     /// <summary>The file name a role's song has in a region's folder.</summary>
@@ -165,6 +168,7 @@ public static class MusicDirector
         MusicRole.Tournament => "tournament/hall",
         MusicRole.BattleTournament => "tournament/battle",
         MusicRole.VictoryTournament => "tournament/victory",
+        MusicRole.BattleLockwork => "battle_lockwork",
         _ => throw new ArgumentOutOfRangeException(nameof(role))
     };
 
@@ -192,6 +196,7 @@ public static class MusicDirector
         MusicRole.FanfareBadge or MusicRole.FanfareTM or MusicRole.FanfareKeyItem or MusicRole.FanfareMedal => MusicRole.FanfareItem,
         MusicRole.BattleTournament => MusicRole.BattleGymLeader,
         MusicRole.VictoryTournament => MusicRole.VictoryGymLeader,
+        MusicRole.BattleLockwork => MusicRole.BattleGalactic,
         _ => null
     };
 
@@ -340,7 +345,7 @@ public static class MusicDirector
         MusicRole.BattleGalacticBoss => 4,
         MusicRole.BattleGymLeader => 3,
         MusicRole.BattleRival => 2,
-        MusicRole.BattleGalactic => 1,
+        MusicRole.BattleGalactic or MusicRole.BattleLockwork => 1,
         _ => 0
     };
 
@@ -355,7 +360,7 @@ public static class MusicDirector
         MusicRole.BattleGymLeader => MusicRole.VictoryGymLeader,
         MusicRole.BattleEliteFour => MusicRole.VictoryEliteFour,
         MusicRole.BattleChampion => MusicRole.VictoryChampion,
-        MusicRole.BattleGalactic => MusicRole.VictoryGalactic,
+        MusicRole.BattleGalactic or MusicRole.BattleLockwork => MusicRole.VictoryGalactic,
         MusicRole.BattleGalacticBoss => MusicRole.VictoryGalacticBoss,
         _ => MusicRole.VictoryTrainer
     };
