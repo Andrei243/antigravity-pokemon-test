@@ -23,13 +23,17 @@
         "en": [
           "Seagallop"
         ],
-        "text": [ "Seagallop" ]
+        "text": [
+          "Seagallop"
+        ]
       },
       "dialog": {
         "en": [
           "The Seagallop rocks gently at the pier."
         ],
-        "text": [ "Seagallop se leagănă ușor lângă debarcader." ]
+        "text": [
+          "Seagallop se leagănă ușor lângă debarcader."
+        ]
       }
     },
     "woman_2": {

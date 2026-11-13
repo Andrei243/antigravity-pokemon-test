@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Romanian: the newer scenes are translated: the hub town's keep, office, plaza, arena and gallery, the Battle Frontier's cups, Lockwork's cells and tower, the Battle Tree and the Trainer Tower, the harbour cases, festival stalls and the Delve camp.
+
 - Paldea opens: begin a new game there (`--region Paldea`) or fly in from Wyndon's airfield as Galar's Champion. Wake in Cabo Poco on its cape over the sea, choose Sprigatito, Fuecoco or Quaxly on the student council president's terrace and battle Nemona, find two worn-out legendaries in Inlet Grotto under the cliffs (the one you share your sandwich with decides whether your game is Scarlet or Violet, and it comes along), learn to catch at the lighthouse, and walk through Los Platos and the South Province's fields to Mesagoza, up the great stairs to the academy's door and your Tera Orb.
 - On the Energy Plant's roof you now battle Eternatus itself, before it swells into Eternamax.
 - After Galar's Hall of Fame the fog returns to the Slumbering Weald: Hop waits at the altar, and the legendary of your version comes out to meet you, to be caught at last.
