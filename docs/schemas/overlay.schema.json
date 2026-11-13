@@ -182,6 +182,12 @@
         "Tent",
         "Field",
         "Court",
+        "DenRedCave",
+        "DenBrownCave",
+        "DenBlueCave",
+        "DenYellowCave",
+        "DenTree",
+        "DenShrub",
         null
       ]
     },
@@ -1087,6 +1093,7 @@
               "FestivalSheaves",
               "Seagallop",
               "NetworkMachine",
+              "BaseEntrance",
               "SafariObject"
             ]
           },

@@ -225,7 +225,7 @@
         "Customs, Dewford Town. Everything that lands here gets weighed, stamped and written down."
       ],
       "text": [
-        ""
+        "Vama din Dewford Town. Tot ce ajunge aici e cântărit, ștampilat și notat."
       ]
     },
     {
@@ -233,7 +233,7 @@
         "The salt crates? Here's a seal off one of them. That's my stamp, the wave. But see the little star beside it?"
       ],
       "text": [
-        ""
+        "Lăzile cu sare? Iată un sigiliu de la una dintre ele. Aceea e ștampila mea, valul. Dar vezi steluța de lângă ea?"
       ]
     },
     {
@@ -241,7 +241,7 @@
         "That's not mine. Someone opened the crate after I sealed it, and sealed it again with a stamp of their own."
       ],
       "text": [
-        ""
+        "Aceea nu e a mea. Cineva a deschis lada după ce am sigilat-o și a sigilat-o din nou cu o ștampilă proprie."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "{player} noted the customs seal with a second stamp."
       ],
       "text": [
-        ""
+        "{player} a notat sigiliul vamal cu o a doua ștampilă."
       ]
     },
     {
@@ -257,7 +257,7 @@
         "My wave, and a star that shouldn't be there. Somebody's been at those crates."
       ],
       "text": [
-        ""
+        "Valul meu și o stea care n-ar trebui să fie acolo. Cineva s-a atins de lăzile alea."
       ]
     },
     {
@@ -265,7 +265,7 @@
         "Every crate weighed, every seal mine. Customs is dull again, and I like it that way."
       ],
       "text": [
-        ""
+        "Fiecare ladă cântărită, fiecare sigiliu al meu. Vama e iar plictisitoare și așa îmi place."
       ]
     }
   ],
@@ -275,7 +275,7 @@
         "Heave, and haul, and home again! Sorry, I sing when I work. And when I don't."
       ],
       "text": [
-        ""
+        "Trage, ridică și acasă iar! Scuze, cânt când lucrez. Și când nu lucrez."
       ]
     },
     {
@@ -283,7 +283,7 @@
         "The salt boat's crew? They taught me their song. Salt on the label, light in the hand, lamps for the dark of the land!"
       ],
       "text": [
-        ""
+        "Echipajul bărcii cu sare? M-au învățat cântecul lor. Sare pe etichetă, lumină în mână, lămpi pentru bezna din țară!"
       ]
     },
     {
@@ -291,7 +291,7 @@
         "Catchy, isn't it? Though I never did work out what lamps have to do with salt."
       ],
       "text": [
-        ""
+        "Se ține minte, nu? Deși n-am înțeles niciodată ce legătură au lămpile cu sarea."
       ]
     },
     {
@@ -299,7 +299,7 @@
         "{player} noted the crew's song about lamps."
       ],
       "text": [
-        ""
+        "{player} a notat cântecul echipajului despre lămpi."
       ]
     },
     {
@@ -307,7 +307,7 @@
         "Salt on the label, light in the hand, lamps for the dark of the land! It's stuck in my head for good."
       ],
       "text": [
-        ""
+        "Sare pe etichetă, lumină în mână, lămpi pentru bezna din țară! Mi-a rămas în cap pentru totdeauna."
       ]
     },
     {
@@ -315,7 +315,7 @@
         "The salt boat's crew have a new song now. It's about paying your duty. Not as catchy."
       ],
       "text": [
-        ""
+        "Echipajul bărcii cu sare are acum un cântec nou. Despre plata taxei. Nu se ține la fel de bine minte."
       ]
     }
   ],
@@ -325,7 +325,7 @@
         "I keep a tide table in my pocket. A fisherman who doesn't know the tide goes home with nothing."
       ],
       "text": [
-        ""
+        "Țin în buzunar un tabel cu mareele. Un pescar care nu știe mareea se întoarce acasă fără nimic."
       ]
     },
     {
@@ -333,7 +333,7 @@
         "The salt boat? It always comes in at the lowest tide of the evening. Look, I've marked the times in my table."
       ],
       "text": [
-        ""
+        "Barca cu sare? Vine mereu la reflux cel mai scăzut al serii. Uite, am notat orele în tabel."
       ]
     },
     {
@@ -341,7 +341,7 @@
         "Low tide is when the customs hut shuts for supper. Clever, or lucky. I've never seen her come in at any other time."
       ],
       "text": [
-        ""
+        "La reflux, baraca vămii se închide pentru cină. Deștept sau norocos. Nu am văzut-o niciodată venind în alt moment."
       ]
     },
     {
@@ -349,7 +349,7 @@
         "{player} noted the tide table's low tides."
       ],
       "text": [
-        ""
+        "{player} a notat refluxurile din tabelul mareelor."
       ]
     },
     {
@@ -357,7 +357,7 @@
         "Lowest tide, every time, while customs has its supper. You could set your clock by it."
       ],
       "text": [
-        ""
+        "Reflux scăzut, de fiecare dată, când vama cinează. Ți-ai putea regla ceasul după ea."
       ]
     },
     {
@@ -365,7 +365,7 @@
         "The salt boat comes in at high noon now, right under the customs officer's nose. Takes the fun out of it."
       ],
       "text": [
-        ""
+        "Barca cu sare vine acum la amiază, chiar sub nasul vameșului. Pierde tot farmecul."
       ]
     }
   ],
@@ -375,7 +375,7 @@
         "Ottoline"
       ],
       "text": [
-        ""
+        "Ottoline"
       ]
     },
     {
@@ -383,7 +383,7 @@
         "Looker's sent a Champion after me? I'm flattered. Yes, there's no salt in those crates. Never was."
       ],
       "text": [
-        ""
+        "Looker a trimis un Campion după mine? Sunt flatată. Da, în lăzile alea nu e sare. N-a fost niciodată."
       ]
     },
     {
@@ -391,7 +391,7 @@
         "Lamp parts pay a fortune in duty, and the keepers can't afford it. But I'll not hand my boat over without a fight!"
       ],
       "text": [
-        ""
+        "Piesele de lămpi plătesc o avere în taxe, iar paznicii nu și-o permit. Dar nu-mi predau barca fără luptă!"
       ]
     },
     {
@@ -399,7 +399,7 @@
         "...Run aground. Fair's fair. I'll pay the duty, every coin of it. Tell Looker he'll have it in writing."
       ],
       "text": [
-        ""
+        "...Eșuată. Corect e corect. Voi plăti taxa, până la ultimul ban. Spune-i lui Looker că o va avea în scris."
       ]
     }
   ]

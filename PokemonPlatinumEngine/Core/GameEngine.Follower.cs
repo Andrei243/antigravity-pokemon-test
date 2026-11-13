@@ -92,6 +92,8 @@ public partial class GameEngine
         }
         // The player has come to another map: the lead comes with them, behind them as they arrive
         if (leadMap != flow.Map) CarryTheLead();
+        // Its grey goes as its heart opens (plan 44 · SD2)
+        leadBody.Locked = walker!.Lock != null;
 
         // A bubble of its own for what came to pass, at most once in so many steps; and the weather's turn (plan 35 · BN4)
         var weather = flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY);

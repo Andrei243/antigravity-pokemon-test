@@ -1203,7 +1203,7 @@ public sealed partial class WorldRenderer
     private (Vector3 At, float Yaw, FieldSprites.Strip? Own)? mount;
 
     // The Pokémon standing in the field in view (plan 10 · F1), and how many field sprites a frame may still bake
-    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving, float Scale)> pokemon = new();
+    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving, float Scale, bool Locked)> pokemon = new();
     private int fieldBakes = 1;
 
     /// <summary>How many rows of the card a hop over a ledge lifts a Pokémon of the map at its height (plan 10 · F3): a quarter of a tile, as the player's.</summary>
@@ -1258,7 +1258,7 @@ public sealed partial class WorldRenderer
                 float hop = (up ? Rows(2f) : 0f) + Rows(npc.Hop * HopRows);
                 float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz) - Rows(npc.Wading);
                 pokemon.Add((new Vector3(sx + nudge, ground + hop, sz), species, facingIndex,
-                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving, npc.Scale));
+                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving, npc.Scale, npc.Locked));
                 continue;
             }
             if (npc.IsBerrySoil)
@@ -1345,7 +1345,7 @@ public sealed partial class WorldRenderer
         {
             string shown = GrownField ? FieldSprites.GrownName(avatar) : avatar;
             int avatarFacing = CharacterSprites.FacingIndex(player.Yaw);
-            pokemon.Add((new Vector3(px + NudgeOf(null), groundY + lift - SinkAt(map, px, pz), pz), shown, avatarFacing, FieldSprites.FrameAt(time), false, 1f));
+            pokemon.Add((new Vector3(px + NudgeOf(null), groundY + lift - SinkAt(map, px, pz), pz), shown, avatarFacing, FieldSprites.FrameAt(time), false, 1f, false));
             return;
         }
 
@@ -1623,17 +1623,19 @@ public sealed partial class WorldRenderer
     private void DrawPokemon(CharacterPass pass)
     {
         // An alpha's sprite is its species' drawn at its own size, its foot where a plain one's is (plan 10 · F10)
-        foreach (var (at, name, facing, frame, moving, scale) in pokemon)
+        foreach (var (at, name, facing, frame, moving, scale, locked) in pokemon)
         {
+            // A locked heart walking with the player is drawn in the lock's grey (plan 44 · SD2)
+            Color? tint = locked ? CharacterSprites.LockedTint : null;
             // The walk strip once it is baked and the Pokémon is on the move (plan 10 · F2)
             if (moving && FieldSprites.GetWalk(name, facing) is { } walk)
             {
-                CharacterSprites.DrawCard(walk.Frames[frame % walk.Frames.Length], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale);
+                CharacterSprites.DrawCard(walk.Frames[frame % walk.Frames.Length], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale, tint);
                 continue;
             }
             if (FieldSprites.Get(name, facing) is { } strip)
             {
-                CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale);
+                CharacterSprites.DrawCard(strip.Frames[frame], at - new Vector3(0, Rows(FieldSprites.FootRows) * scale, 0), VerticalScale, pass, scale, tint);
                 continue;
             }
             if (!thingCards.TryGetValue(PropType.Mailbox, out var ball)) thingCards[PropType.Mailbox] = ball = CharacterSprites.MakeCard(context, ThingCards.Paint(PropType.Mailbox));

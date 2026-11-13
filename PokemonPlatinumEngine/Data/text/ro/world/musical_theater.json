@@ -18,42 +18,6 @@
         ]
       }
     },
-    "15": {
-      "name": {
-        "en": [
-          "Waitress"
-        ],
-        "text": [
-          "Chelneriță"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "The performers come in here after a show, still wearing their Props. It's quite a sight!"
-        ],
-        "text": [
-          "Artiștii vin aici după spectacol, încă purtându-și Accesoriile. E o priveliște!"
-        ]
-      }
-    },
-    "16": {
-      "name": {
-        "en": [
-          "Waitress"
-        ],
-        "text": [
-          "Chelneriță"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Shh! The owner is rehearsing a new number upstairs. He says it will be his best ever."
-        ],
-        "text": [
-          "Șșt! Proprietarul repetă un număr nou sus. Spune că va fi cel mai bun al lui."
-        ]
-      }
-    },
     "1": {
       "name": {
         "en": [
@@ -87,24 +51,6 @@
         ],
         "text": [
           "Când voi crește, vreau să îmbrac Pokémoni pentru scenă. Panglici, coroane, ochelari, de toate!"
-        ]
-      }
-    },
-    "18": {
-      "name": {
-        "en": [
-          "Battle Girl"
-        ],
-        "text": [
-          "Luptătoarea"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "My Pokémon battles hard all week. On Sundays it dances. Everyone needs a hobby!"
-        ],
-        "text": [
-          "Pokémonul meu se luptă din greu toată săptămâna. Duminica dansează. Fiecare are nevoie de un hobby!"
         ]
       }
     },
@@ -216,6 +162,60 @@
         ]
       }
     },
+    "15": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          "Chelneriță"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The performers come in here after a show, still wearing their Props. It's quite a sight!"
+        ],
+        "text": [
+          "Artiștii vin aici după spectacol, încă purtându-și Accesoriile. E o priveliște!"
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          "Chelneriță"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! The owner is rehearsing a new number upstairs. He says it will be his best ever."
+        ],
+        "text": [
+          "Șșt! Proprietarul repetă un număr nou sus. Spune că va fi cel mai bun al lui."
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          "Luptătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon battles hard all week. On Sundays it dances. Everyone needs a hobby!"
+        ],
+        "text": [
+          "Pokémonul meu se luptă din greu toată săptămâna. Duminica dansează. Fiecare are nevoie de un hobby!"
+        ]
+      }
+    },
     "22": {
       "name": {
         "en": [
@@ -269,7 +269,7 @@
         "Pokémon Musical\nToday's shows: Sunny Side Revue and Hour of Lanterns"
       ],
       "text": [
-        ""
+        "Musicalul Pokémon\nSpectacolele de azi: Revista Partea Însorită și Ora Felinarelor"
       ]
     },
     "14": {

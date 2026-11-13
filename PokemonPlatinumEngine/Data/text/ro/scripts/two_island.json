@@ -47,7 +47,7 @@
         "I keep the harbour tidy. Ropes coiled, nets dried, lost things kept safe until someone comes for them."
       ],
       "text": [
-        ""
+        "Țin portul curat. Frânghii strânse, plase uscate, lucruri pierdute păstrate până vine cineva după ele."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Lost things off the ferry? There's this duffel. It came off with the cargo, not the passengers, and nobody's claimed it."
       ],
       "text": [
-        ""
+        "Lucruri pierdute de pe feribot? Există geanta asta de voiaj. A coborât odată cu marfa, nu cu pasagerii, și nimeni n-a revendicat-o."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "A change of clothes inside, and a timetable with seat thirteen circled. So somebody rode over, ghost or no ghost."
       ],
       "text": [
-        ""
+        "Înăuntru, haine de schimb și un orar cu locul treisprezece încercuit. Deci cineva a venit pe aici, fantomă sau nu."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "{player} noted the duffel nobody claimed."
       ],
       "text": [
-        ""
+        "{player} a notat geanta de voiaj pe care n-a revendicat-o nimeni."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Off with the cargo, not the passengers. Whoever owned that duffel didn't ride with the rest."
       ],
       "text": [
-        ""
+        "Coborâtă cu marfa, nu cu pasagerii. Cine a avut geanta aceea nu a călătorit cu ceilalți."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "The duffel's owner came back for it at last. Rode over in a proper seat this time, they said."
       ],
       "text": [
-        ""
+        "Stăpânul genții a venit în sfârșit după ea. A zis că de data asta a călătorit pe un loc cum se cuvine."
       ]
     }
   ]

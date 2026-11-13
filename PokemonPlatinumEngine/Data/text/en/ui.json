@@ -5714,7 +5714,8 @@
   "places": {
   },
   "secretBase": {
-    "decorating": "DECORATE YOUR SECRET BASE"
+    "decorating": "DECORATE YOUR SECRET BASE",
+    "bedroom": "DECORATE YOUR ROOM"
   },
   "pokeblock": {
     "color": {
@@ -6045,7 +6046,7 @@
       "wildWon": "Win a wild battle", "trainerWon": "Beat a trainer", "wildRan": "Run from a wild Pokémon",
       "wildFled": "See a wild Pokémon flee", "trainerLost": "Lose to a trainer", "whiteouts": "Black out and carry on",
       "caught": "Catch a Pokémon", "encounters": "Meet a wild Pokémon", "levelled": "Grow a level in battle",
-      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit", "heartsReclaimed": "Reclaim a locked heart", "tourFourStars": "Take a four-star tour photograph"
+      "evolutions": "Watch a Pokémon evolve", "badges": "Win a Badge", "champions": "Become a Champion", "circuits": "Win the Laurel Circuit", "heartsReclaimed": "Reclaim a locked heart", "tourFourStars": "Take a four-star tour photograph", "hollowBrinecave": "Clear Brinecave", "hollowRootwood": "Clear the Rootwood", "hollowHeartpeak": "Clear Heartpeak", "hollowOldTower": "Clear the Old Tower"
     },
     "name": {
       "stepsFoot": "Walk {count} steps", "stepsSurf": "Surf {count} steps", "stepsCycle": "Cycle {count} steps", "stepsDive": "Dive {count} steps",
@@ -7358,7 +7359,8 @@
     "stickers": { "count": "{count} / {most}" },
     "take": { "action": "TAKE THE PICTURE" },
     "seals": { "heading": "YOUR SEALS" },
-    "hints": { "put": "Put down" },
+    "hints": { "put": "Put down", "size": "Size", "turn": "Turn" },
+    "keys": { "turn": "Q / E" },
     "refusal": {
       "notOwned": "You don't have that Seal.",
       "full": "The picture can't hold any more stickers.",
@@ -7475,6 +7477,7 @@
     "pays": "Pays: {prize}",
     "done": "DONE",
     "hint": { "strike": "Strike", "moves": "Moves" },
+    "reach": { "Ahead": "ahead", "Round": "all round", "Room": "the room", "Self": "itself", "Team": "the team", "Ally": "a friend", "None": "battles only" },
     "hollow": {
       "brinecave": "Brinecave",
       "rootwood": "The Rootwood",

@@ -101,7 +101,7 @@ internal static partial class ModernUi
                 new Rectangle(MathF.Round(pokemonX - w / 2f), MathF.Round(floorY + 10 * k - h), MathF.Round(w), MathF.Round(h)), Vector2.Zero, 0f, Color.White);
         }
         foreach (var sticker in shot.Stickers)
-            SealSticker(new Vector2(r.X + sticker.X * r.Width, r.Y + sticker.Y * r.Height), 34 * k, sticker.Seal);
+            SealSticker(new Vector2(r.X + sticker.X * r.Width, r.Y + sticker.Y * r.Height), 34 * k * sticker.Size, sticker.Seal, 1f, sticker.Angle);
         CardFrameArt(r, StudioLooks.Frame(shot.Frame), k);
     }
 
@@ -119,7 +119,7 @@ internal static partial class ModernUi
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("photoStudio.heading"));
         if (screen.Mode == StudioMode.PlaceSeal)
-            Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.move"), Hint("shared.keys.z", "photoStudio.hints.put"), Hint("shared.keys.esc", "shared.hints.back"));
+            Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.move"), Hint("shared.keys.c", "photoStudio.hints.size"), Hint("photoStudio.keys.turn", "photoStudio.hints.turn"), Hint("shared.keys.z", "photoStudio.hints.put"), Hint("shared.keys.esc", "shared.hints.back"));
         else
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
 
@@ -128,7 +128,7 @@ internal static partial class ModernUi
         if (screen.Mode == StudioMode.PlaceSeal && screen.Seals.Count > screen.SealIndex)
         {
             var at = new Vector2(stage.X + screen.CursorX * stage.Width, stage.Y + screen.CursorY * stage.Height);
-            SealSticker(at, 34 * stage.Width / 1920f * 1.75f, screen.Seals[screen.SealIndex], 0.8f);
+            SealSticker(at, 34 * stage.Width / 1920f * 1.75f * StudioSticker.Sizes[screen.CarriedSize], screen.Seals[screen.SealIndex], 0.8f, screen.CarriedTurn * MathF.Tau / StudioSticker.Turns);
             UiShapes.Ring(at, 30, 3, Selection);
         }
 

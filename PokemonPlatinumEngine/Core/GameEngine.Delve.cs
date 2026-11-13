@@ -28,15 +28,18 @@ public partial class GameEngine
     /// <summary>A run begun (a script's <c>delve go</c>); false where the hollow isn't open or two can't go down.</summary>
     internal bool OpenDelve(string hollowKey) => OpenDelve(hollowKey, null);
 
-    /// <summary>A run begun on a seed a tool gives (the harness's), or drawn from <see cref="Dice"/>.</summary>
-    internal bool OpenDelve(string hollowKey, uint? seed)
+    /// <summary>
+    /// A run begun on a seed a tool gives (the harness's), or drawn from <see cref="Dice"/>. A game with no window plays
+    /// it at once unless <paramref name="onTheFloor"/> asks for the floor laid as on screen (a test's key fuzzer).
+    /// </summary>
+    internal bool OpenDelve(string hollowKey, uint? seed, bool onTheFloor = false)
     {
         flow.ScriptAnswer = 0;
         if (DelveHollows.Get(hollowKey) is not { } hollow || !flow.DelveRecord.IsOpen(hollow) && hollow != DelveHollow.Test) return false;
         if (DelveHome.PairOf(flow.Party.Members) is not var (leader, partner)) return false;
         var randomiser = Randomizer.For(flow.Run);
         var run = DelveRun.Begin(hollow, leader, partner, seed ?? (uint)Dice.New().Next(), randomiser == null ? null : randomiser.Species);
-        if (IsHeadless)
+        if (IsHeadless && !onTheFloor)
         {
             for (int n = 0; n < 20000 && run.Outcome == DelveOutcome.Going; n++) run.Act(DelvePolicy.Next(run));
             SettleTheDelve(run);
@@ -88,7 +91,7 @@ public partial class GameEngine
         {
             if (!delvePeople.TryGetValue(m.Order, out var npc))
             {
-                npc = new NPC { Name = $"delve_{m.Order}", NpcType = NPC.PokemonType, Species = m.Pokemon.ModelName };
+                npc = new NPC { Name = "delve_" + m.Order, NpcType = NPC.PokemonType, Species = m.Pokemon.ModelName };
                 delvePeople[m.Order] = npc;
                 map.NPCs.Add(npc);
             }
@@ -99,7 +102,7 @@ public partial class GameEngine
         for (int i = 0; i < run.Finds.Count; i++)
         {
             var (x, y, item) = run.Finds[i];
-            var ball = new NPC { Name = $"delve_find_{i}", NpcType = NPC.ItemBallType, Item = item };
+            var ball = new NPC { Name = "delve_find_" + i, NpcType = NPC.ItemBallType, Item = item };
             (ball.GridX, ball.GridY) = (x, y);
             delveFinds.Add(ball);
             map.NPCs.Add(ball);
@@ -217,7 +220,7 @@ public partial class GameEngine
     }
 
     /// <summary>Today's board, drawn from the day's number over the hollows the camp's rank has opened.</summary>
-    internal IReadOnlyList<DelveRequest> DelveBoardToday() => DelveBoard.Of(flow.Encounters.DailyNumber, flow.DelveRecord.Rank);
+    internal IReadOnlyList<DelveRequest> DelveBoardToday() => DelveBoard.Of(flow.Encounters.DailyNumber, flow.DelveRecord.RankOn(ApricornBox.DayOf(GameClock.Today)));
 
     /// <summary>The board opened (a script's <c>delve board</c>); with no window there is nothing to read and the script goes on.</summary>
     internal void OpenDelveBoard()
@@ -265,7 +268,13 @@ public partial class GameEngine
         public DelveRecord DelveRecord => game.flow.DelveRecord;
 
         /// <summary>A run begun on a hollow, on a seed a tool gives; the test hollow is open to a tool.</summary>
-        public bool OpenDelve(string hollow, uint seed) => game.OpenDelve(hollow, seed);
+        public bool OpenDelve(string hollow, uint seed) => game.OpenDelve(hollow, seed, onTheFloor: true);
+
+        /// <summary>The Pokémon drawn in the player's place now (the delve's leader), or null for the player.</summary>
+        public string? Avatar => game.flow.Player.Avatar;
+
+        /// <summary>The floor's map while a run is laid, or null.</summary>
+        public Map? DelveMap => game.delveMap;
 
         /// <summary>The camp's board's screen.</summary>
         public DelveBoardScreen DelveBoardScreen => game.flow.DelveBoardScreen;

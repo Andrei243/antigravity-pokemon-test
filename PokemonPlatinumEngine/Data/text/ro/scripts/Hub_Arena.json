@@ -5,7 +5,7 @@
         "Piers"
       ],
       "text": [
-        ""
+        "Piers"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Champion {player}, every League you have won is stamped. The final of the Laurel Circuit begins now."
       ],
       "text": [
-        ""
+        "Campionule {player}, fiecare Ligă pe care ai câștigat-o e ștampilată. Finala Circuitului Laurilor începe acum."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "You will face each Champion in turn, at level {result}, with no rest between. Your bag is your own. Champions, step forward!"
       ],
       "text": [
-        ""
+        "Vei înfrunta fiecare Campion pe rând, la nivelul {result}, fără odihnă între ei. Rucsacul îți aparține. Campionilor, înainte!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Cynthia"
       ],
       "text": [
-        ""
+        "Cynthia"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Sinnoh's Champion opens the final. I'll give you nothing less than everything."
       ],
       "text": [
-        ""
+        "Campioana din Sinnoh deschide finala. Nu-ți dau mai puțin decât tot ce am."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Kanto's turn. I've been training since the day you took my title. Let's settle it!"
       ],
       "text": [
-        ""
+        "Rândul Kanto. M-am antrenat din ziua în care mi-ai luat titlul. Să încheiem socotelile!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Johto's dragons answer to me. Let's see if they answer to you."
       ],
       "text": [
-        ""
+        "Dragonii din Johto îmi răspund mie. Să vedem dacă îți răspund și ție."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Wallace"
       ],
       "text": [
-        ""
+        "Wallace"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Hoenn's Champion, at your service. Shall we make this the most beautiful battle of the day?"
       ],
       "text": [
-        ""
+        "Campionul din Hoenn, la dispoziția ta. Facem din asta cea mai frumoasă luptă a zilei?"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Iris"
       ],
       "text": [
-        ""
+        "Iris"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Unova's Champion is up! My dragons and I won't hold back, not even a little."
       ],
       "text": [
-        ""
+        "E rândul Campioanei din Unova! Dragonii mei și cu mine nu ne vom reține, nici cât de puțin."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Diantha"
       ],
       "text": [
-        ""
+        "Diantha"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Piers"
       ],
       "text": [
-        ""
+        "Piers"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "The final is won! Champion of every League you have crowned, and now the Laurel Champion."
       ],
       "text": [
-        ""
+        "Finala e câștigată! Campion al fiecărei Ligi pe care ai încoronat-o, și acum Campionul Laurilor."
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Your team will stand on the circuit's plinth in the Laurel Gallery. Circuits won: {result}."
       ],
       "text": [
-        ""
+        "Echipa ta va sta pe soclul circuitului din Galeria Laurilor. Circuite câștigate: {result}."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "The next circuit will meet you five levels higher. Rest well, Laurel Champion."
       ],
       "text": [
-        ""
+        "Următorul circuit te va întâmpina cu cinci niveluri mai sus. Odihnește-te bine, Campionule al Laurilor."
       ]
     },
     {
@@ -197,7 +197,7 @@
         "Piers"
       ],
       "text": [
-        ""
+        "Piers"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "The final ends here for today. Your circuit stands, and the Champions will wait for you to try again."
       ],
       "text": [
-        ""
+        "Finala se oprește aici pentru azi. Circuitul tău rămâne în picioare, iar Campionii te vor aștepta să încerci din nou."
       ]
     },
     {
@@ -213,7 +213,7 @@
         "The final opens once every League you have won is stamped. Stamps so far: {result}."
       ],
       "text": [
-        ""
+        "Finala se deschide când fiecare Ligă pe care ai câștigat-o e ștampilată. Ștampile până acum: {result}."
       ]
     },
     {
@@ -221,7 +221,7 @@
         "This is the Laurel Court, where the Laurel Circuit's final is fought. Begin a circuit at the Laurel Gallery's desk."
       ],
       "text": [
-        ""
+        "Aceasta este Curtea Laurilor, unde se dă finala Circuitului Laurilor. Începe un circuit la ghișeul Galeriei Laurilor."
       ]
     }
   ]

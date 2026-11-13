@@ -5,7 +5,7 @@
         "Cup Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Cupelor"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the cups! Eight battles in a row under a cup's rules, and a prize the first time you win it."
       ],
       "text": [
-        ""
+        "Bun venit la cupe! Opt lupte la rând după regulile unei cupe și un premiu prima dată când o câștigi."
       ]
     },
     {
@@ -24,10 +24,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să intri într-o cupă?",
+        "Intru",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -41,13 +41,13 @@
         "Cancel"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "În ce cupă intri?",
+        "Cupa Creastei",
+        "Cupa Mugurului",
+        "Cupa Scânteii",
+        "Cupa Pietricelei",
+        "Cupa Culmii",
+        "Renunț"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "The Crest Cup: three Pokémon of levels 50 to 55, no more than 155 levels together."
       ],
       "text": [
-        ""
+        "Cupa Creastei: trei Pokémoni de nivel 50–55, cu cel mult 155 de niveluri împreună."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "The Sprout Cup: three Pokémon at level 5 that are the first of their line and can still evolve."
       ],
       "text": [
-        ""
+        "Cupa Mugurului: trei Pokémoni de nivel 5, primii din linia lor, care încă pot evolua."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "The Spark Cup: three Pokémon of levels 15 to 20, no more than 50 levels together."
       ],
       "text": [
-        ""
+        "Cupa Scânteii: trei Pokémoni de nivel 15–20, cu cel mult 50 de niveluri împreună."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "The Pebble Cup: three Pokémon of levels 25 to 30, no taller than 2 m and no heavier than 20 kg, no more than 80 levels together."
       ],
       "text": [
-        ""
+        "Cupa Pietricelei: trei Pokémoni de nivel 25–30, cel mult de 2 m înălțime și 20 kg, cu cel mult 80 de niveluri împreună."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "The Summit Cup: three Pokémon of any level. Anything goes, but the strongest of the Frontier's rules."
       ],
       "text": [
-        ""
+        "Cupa Culmii: trei Pokémoni de orice nivel. Totul e permis, în afară de cele mai stricte reguli ale Frontierei."
       ]
     },
     {
@@ -98,10 +98,10 @@
         "Cancel"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Îți aduci Pokémonii tăi sau împrumuți de-ai noștri?",
+        "Ai mei",
+        "Împrumutați",
+        "Renunț"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Please choose the three you'll enter."
       ],
       "text": [
-        ""
+        "Alege cei trei cu care intri."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Here are three of ours, ready for this cup. Look after them!"
       ],
       "text": [
-        ""
+        "Iată trei de-ai noștri, gata pentru această cupă. Ai grijă de ei!"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Your first opponent is waiting on the field. Good luck!"
       ],
       "text": [
-        ""
+        "Primul tău adversar te așteaptă pe teren. Noroc!"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Battle {number}: {foe} takes the field!"
       ],
       "text": [
-        ""
+        "Lupta {number}: {foe} intră pe teren!"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "Cup Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Cupelor"
       ]
     },
     {
@@ -151,9 +151,9 @@
         "Retire"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Pokémonii tăi sunt din nou întregi. Ești gata pentru următoarea luptă?",
+        "Următoarea luptă",
+        "Mă retrag"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "You retire from the cup. Come back and try it from the start whenever you like."
       ],
       "text": [
-        ""
+        "Te retragi din cupă. Revino și încearc-o de la început oricând vrei."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Cup Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Cupelor"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Eight in a row! You've won the cup!"
       ],
       "text": [
-        ""
+        "Opt la rând! Ai câștigat cupa!"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} BP!"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "{player} received the {item} for winning the cup for the first time!"
       ],
       "text": [
-        ""
+        "{player} a primit {item} pentru prima victorie în cupă!"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "Congratulations. Your name is on the stadium's board."
       ],
       "text": [
-        ""
+        "Felicitări. Numele tău e pe tabela stadionului."
       ]
     },
     {
@@ -209,7 +209,7 @@
         "Cup Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Cupelor"
       ]
     },
     {
@@ -217,7 +217,7 @@
         "That's the end of your cup. Every Trainer loses one sometimes. Try again!"
       ],
       "text": [
-        ""
+        "Cupa ta s-a încheiat. Orice Antrenor pierde uneori. Încearcă din nou!"
       ]
     },
     {
@@ -225,7 +225,7 @@
         "I'm sorry, those three don't meet the cup's rules: their levels, their total, their size or their line."
       ],
       "text": [
-        ""
+        "Îmi pare rău, aceștia trei nu respectă regulile cupei: nivelurile, totalul, înălțimea sau linia lor."
       ]
     },
     {
@@ -233,7 +233,7 @@
         "They must also be of three different species, holding different items."
       ],
       "text": [
-        ""
+        "Trebuie să fie și de trei specii diferite, cu obiecte diferite."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Each cup has its own rules: how high your Pokémon's levels may be, their total, their size or how far they've evolved."
       ],
       "text": [
-        ""
+        "Fiecare cupă are regulile ei: cât de mari pot fi nivelurile Pokémonilor tăi, totalul, înălțimea sau cât au evoluat."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "Your own Pokémon battle as they are, at their own levels. Rentals come at the cup's highest level."
       ],
       "text": [
-        ""
+        "Pokémonii tăi luptă așa cum sunt, la nivelul lor. Cei împrumutați vin la nivelul maxim al cupei."
       ]
     },
     {
@@ -257,7 +257,7 @@
         "Win eight battles in a row to win the cup. Lose once, and the cup starts over."
       ],
       "text": [
-        ""
+        "Câștigă opt lupte la rând ca să câștigi cupa. Pierzi o dată și cupa o iei de la capăt."
       ]
     },
     {
@@ -265,7 +265,7 @@
         "The cups are always open. Come back whenever you're ready."
       ],
       "text": [
-        ""
+        "Cupele sunt mereu deschise. Revino când ești gata."
       ]
     }
   ],
@@ -275,7 +275,7 @@
         "Round Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Rundei"
       ]
     },
     {
@@ -283,7 +283,7 @@
         "This is the Leaders' round: every Gym Leader of a region, then its Elite Four and its Champion, one after another."
       ],
       "text": [
-        ""
+        "Aceasta e runda Liderilor: toți Liderii de Sală ai unei regiuni, apoi Elita ei de Patru și Campionul, unul după altul."
       ]
     },
     {
@@ -291,7 +291,7 @@
         "Everyone battles at level 100, your three and theirs."
       ],
       "text": [
-        ""
+        "Toți luptă la nivelul 100, ai tăi trei și ai lor."
       ]
     },
     {
@@ -305,13 +305,13 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Runda cărei regiuni o înfrunți?",
+        "Sinnoh",
+        "Kanto",
+        "Johto",
+        "Hoenn",
+        "Unova",
+        "Nu"
       ]
     },
     {
@@ -319,7 +319,7 @@
         "That region's round opens once you've entered its Hall of Fame."
       ],
       "text": [
-        ""
+        "Runda acelei regiuni se deschide după ce ai intrat în Sala ei a Faimei."
       ]
     },
     {
@@ -327,7 +327,7 @@
         "Please choose the three you'll enter. They'll battle at level 100 for the round."
       ],
       "text": [
-        ""
+        "Alege cei trei cu care intri. Vor lupta la nivelul 100 în această rundă."
       ]
     },
     {
@@ -335,7 +335,7 @@
         "Match {number}: {foe} steps up!"
       ],
       "text": [
-        ""
+        "Meciul {number}: {foe} se înfățișează!"
       ]
     },
     {
@@ -343,7 +343,7 @@
         "Round Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Rundei"
       ]
     },
     {
@@ -353,9 +353,9 @@
         "Retire"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Pokémonii tăi sunt din nou întregi. Trecem la următorul meci?",
+        "Următorul meci",
+        "Mă retrag"
       ]
     },
     {
@@ -363,7 +363,7 @@
         "You retire from the round. Come back and start it again whenever you like."
       ],
       "text": [
-        ""
+        "Te retragi din rundă. Revino și începe-o din nou oricând vrei."
       ]
     },
     {
@@ -371,7 +371,7 @@
         "Round Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Rundei"
       ]
     },
     {
@@ -379,7 +379,7 @@
         "You've beaten the whole round! Every Leader, the Elite Four and the Champion. What a run!"
       ],
       "text": [
-        ""
+        "Ai învins întreaga rundă! Fiecare Lider, Elita de Patru și Campionul. Ce parcurs!"
       ]
     },
     {
@@ -387,7 +387,7 @@
         "Round Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul Rundei"
       ]
     },
     {
@@ -395,7 +395,7 @@
         "The round ends here. Rest up, and take it on again from the first Leader."
       ],
       "text": [
-        ""
+        "Runda se încheie aici. Odihnește-te și reia-o de la primul Lider."
       ]
     },
     {
@@ -403,7 +403,7 @@
         "The Leaders will be here. Come back whenever you're ready."
       ],
       "text": [
-        ""
+        "Liderii vor fi aici. Revino când ești gata."
       ]
     }
   ],
@@ -413,7 +413,7 @@
         "Sparring Coach"
       ],
       "text": [
-        ""
+        "Antrenorul de Sparring"
       ]
     },
     {
@@ -421,7 +421,7 @@
         "The sparring room! Choose a type, enter three of it, and spar against Trainers who use it too, as long as you can."
       ],
       "text": [
-        ""
+        "Sala de sparring! Alege un tip, intră cu trei de acel tip și fă sparring cu Antrenori care îl folosesc și ei, cât poți de mult."
       ]
     },
     {
@@ -435,13 +435,13 @@
         "More"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Cu ce tip faci sparring?",
+        "Normal",
+        "Foc",
+        "Apă",
+        "Iarbă",
+        "Electric",
+        "Mai multe"
       ]
     },
     {
@@ -455,13 +455,13 @@
         "More"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Cu ce tip faci sparring?",
+        "Gheață",
+        "Luptă",
+        "Otravă",
+        "Pământ",
+        "Zbor",
+        "Mai multe"
       ]
     },
     {
@@ -475,13 +475,13 @@
         "More"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Cu ce tip faci sparring?",
+        "Psihic",
+        "Insectă",
+        "Rocă",
+        "Fantomă",
+        "Dragon",
+        "Mai multe"
       ]
     },
     {
@@ -493,11 +493,11 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Cu ce tip faci sparring?",
+        "Întuneric",
+        "Oțel",
+        "Zână",
+        "Nu"
       ]
     },
     {
@@ -505,7 +505,7 @@
         "Your best in this room is {number} in a row."
       ],
       "text": [
-        ""
+        "Cel mai bun rezultat al tău în această sală e {number} la rând."
       ]
     },
     {
@@ -513,7 +513,7 @@
         "You need three Pokémon that can take part, of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de trei Pokémoni care pot participa, de specii diferite și cu obiecte diferite."
       ]
     },
     {
@@ -521,7 +521,7 @@
         "Please choose the three you'll enter. All three must be of the room's type."
       ],
       "text": [
-        ""
+        "Alege cei trei cu care intri. Toți trei trebuie să fie de tipul sălii."
       ]
     },
     {
@@ -529,7 +529,7 @@
         "Sparring match {number}: {foe} steps up!"
       ],
       "text": [
-        ""
+        "Meciul de sparring {number}: {foe} se înfățișează!"
       ]
     },
     {
@@ -537,7 +537,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} BP!"
       ]
     },
     {
@@ -545,7 +545,7 @@
         "Sparring Coach"
       ],
       "text": [
-        ""
+        "Antrenorul de Sparring"
       ]
     },
     {
@@ -555,9 +555,9 @@
         "Retire"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Pokémonii tăi sunt din nou întregi. Continui?",
+        "Următorul meci",
+        "Mă retrag"
       ]
     },
     {
@@ -565,7 +565,7 @@
         "A fine streak. It's on the room's record."
       ],
       "text": [
-        ""
+        "O serie frumoasă. E în recordul sălii."
       ]
     },
     {
@@ -573,7 +573,7 @@
         "Sparring Coach"
       ],
       "text": [
-        ""
+        "Antrenorul de Sparring"
       ]
     },
     {
@@ -581,7 +581,7 @@
         "That's the streak over. Train hard and come back!"
       ],
       "text": [
-        ""
+        "Seria s-a încheiat. Antrenează-te serios și revino!"
       ]
     },
     {
@@ -589,7 +589,7 @@
         "All three must be of the room's type. Choose again when you have three."
       ],
       "text": [
-        ""
+        "Toți trei trebuie să fie de tipul sălii. Alege din nou când ai trei."
       ]
     },
     {
@@ -597,7 +597,7 @@
         "Those three must be of different species, holding different items."
       ],
       "text": [
-        ""
+        "Cei trei trebuie să fie de specii diferite, cu obiecte diferite."
       ]
     },
     {
@@ -605,7 +605,7 @@
         "Come back when you feel like a workout."
       ],
       "text": [
-        ""
+        "Revino când ai chef de un antrenament."
       ]
     }
   ]

@@ -270,6 +270,17 @@ public sealed class DelveScreen
         return null;
     }
 
+    /// <summary>
+    /// A row of the moves' list: the move, its PP and where it reaches on the floor (<c>delve.reach.*</c>; a move that needs
+    /// a battle says so).
+    /// </summary>
+    public static string MoveRow(Move move)
+    {
+        var reach = DelveMoves.WorksOnAFloor(move.Data) ? DelveMoves.ReachOf(move.Data) : DelveReach.None;
+        return LocalNames.Move(move.Name) + "   " + Text.Of("delve.pp", ("n", move.CurrentPP), ("of", move.MaxPP))
+            + "   " + Text.Of($"delve.reach.{reach}");
+    }
+
     /// <summary>A line of the log for an event: words of <c>delve.event.*</c>, the names in the language chosen.</summary>
     public static string LineOf(DelveEvent e)
     {

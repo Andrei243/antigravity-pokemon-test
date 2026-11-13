@@ -767,6 +767,9 @@ public class ScriptTests
           openbase visit
           openbase pc
           openbase packup
+          openbase move
+          openbase movein
+          openbase bedroom
           openbase give "Red Brick"
           openbase buy "Small Desk"
           openbase room "Pikachu Doll"

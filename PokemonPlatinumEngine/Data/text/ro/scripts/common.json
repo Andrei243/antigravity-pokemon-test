@@ -339,7 +339,7 @@
         "One of them had crossed into a {crossed}!"
       ],
       "text": [
-        ""
+        "Una dintre ele s-a încrucișat într-un {crossed}!"
       ]
     },
     {
@@ -347,7 +347,7 @@
         "{player} left the {berry} on the plant."
       ],
       "text": [
-        ""
+        "{player} a lăsat {berry} pe plantă."
       ]
     }
   ],
@@ -357,7 +357,7 @@
         "{player} gathered {materials} × {material}. Into the kit it went!"
       ],
       "text": [
-        ""
+        "{player} a adunat {materials} × {material}. Direct în trusă!"
       ]
     },
     {
@@ -365,7 +365,7 @@
         "Nothing more to gather here today. Come back tomorrow."
       ],
       "text": [
-        ""
+        "Nu mai e nimic de adunat aici azi. Revino mâine."
       ]
     }
   ],
@@ -380,12 +380,12 @@
         "Put them away"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce ghiveci?",
+        "Primul ghiveci",
+        "Al doilea ghiveci",
+        "Al treilea ghiveci",
+        "Al patrulea ghiveci",
+        "Las-o baltă"
       ]
     },
     {
@@ -393,7 +393,7 @@
         "One {berry} was planted in this pot."
       ],
       "text": [
-        ""
+        "O {berry} a fost plantată în acest ghiveci."
       ]
     },
     {
@@ -401,7 +401,7 @@
         "A little {berry} plant has pushed up in this pot."
       ],
       "text": [
-        ""
+        "O plăntiță de {berry} a răsărit în acest ghiveci."
       ]
     },
     {
@@ -409,7 +409,7 @@
         "The {berry} plant in this pot is growing taller."
       ],
       "text": [
-        ""
+        "Planta de {berry} din acest ghiveci crește tot mai înaltă."
       ]
     },
     {
@@ -417,7 +417,7 @@
         "The {berry} plant in this pot has burst into flower!"
       ],
       "text": [
-        ""
+        "Planta de {berry} din acest ghiveci a înflorit!"
       ]
     },
     {
@@ -425,7 +425,7 @@
         "Give it some water?"
       ],
       "text": [
-        ""
+        "Vrei s-o uzi puțin?"
       ]
     },
     {
@@ -433,7 +433,7 @@
         "There you go. It looks pleased."
       ],
       "text": [
-        ""
+        "Așa. Pare mulțumită."
       ]
     },
     {
@@ -444,10 +444,10 @@
         "Leave it"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ghiveciul e gol. Ce vrei să faci?",
+        "Pune mulci",
+        "Plantează o Boabă",
+        "Las-o baltă"
       ]
     },
     {
@@ -455,7 +455,7 @@
         "{player} spread the {mulch} over the pot's soil."
       ],
       "text": [
-        ""
+        "{player} a presărat {mulch} peste pământul din ghiveci."
       ]
     },
     {
@@ -463,7 +463,7 @@
         "Plant a Berry in this pot?"
       ],
       "text": [
-        ""
+        "Plantezi o Boabă în acest ghiveci?"
       ]
     },
     {
@@ -471,7 +471,7 @@
         "{player} pressed one {berry} into the pot's soil."
       ],
       "text": [
-        ""
+        "{player} a apăsat o {berry} în pământul din ghiveci."
       ]
     },
     {
@@ -479,7 +479,7 @@
         "The pot is empty. A Berry could be planted in it."
       ],
       "text": [
-        ""
+        "Ghiveciul e gol. S-ar putea planta o Boabă în el."
       ]
     },
     {
@@ -487,7 +487,7 @@
         "There are {yield} × {berry} in this pot. Pick them?"
       ],
       "text": [
-        ""
+        "În ghiveci sunt {yield} × {berry}. Le culegi?"
       ]
     },
     {
@@ -496,8 +496,8 @@
         "{player} put them away in the Berries pocket."
       ],
       "text": [
-        "",
-        ""
+        "{player} a cules {yield} × {berry}!",
+        "{player} le-a pus în buzunarul pentru Boabe."
       ]
     },
     {
@@ -505,7 +505,7 @@
         "One of them had crossed into a {crossed}!"
       ],
       "text": [
-        ""
+        "Una dintre ele s-a încrucișat într-un {crossed}!"
       ]
     }
   ],
@@ -1087,7 +1087,7 @@
         "Among the cut branches lay {materials} × {material}. Into the kit it went!"
       ],
       "text": [
-        ""
+        "Printre crengile tăiate erau {materials} × {material}. Direct în trusă!"
       ]
     },
     {
@@ -1095,7 +1095,7 @@
         "A thin tree stands in the way. A sharp enough move might clear it."
       ],
       "text": [
-        ""
+        "Un copac subțire stă în cale. O mișcare destul de ascuțită l-ar putea doborî."
       ]
     }
   ],
@@ -1105,7 +1105,7 @@
         "Among the cut branches lay {materials} × {material}. Into the kit it went!"
       ],
       "text": [
-        ""
+        "Printre crengile tăiate erau {materials} × {material}. Direct în trusă!"
       ]
     }
   ],
@@ -1123,7 +1123,7 @@
         "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
       ],
       "text": [
-        ""
+        "Printre bucățile sparte erau {materials} × {material}. Direct în trusă!"
       ]
     },
     {
@@ -1131,7 +1131,7 @@
         "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until the right Gym Badge is won."
       ],
       "text": [
-        ""
+        "Piatra e plină de crăpături. Spărgător de Pietre ar putea-o sparge, dar nu în afara luptei până nu câștigi Insigna de Sală potrivită."
       ]
     },
     {
@@ -1139,7 +1139,7 @@
         "The rock is riddled with cracks. A Pokémon that knows Rock Smash could break it apart."
       ],
       "text": [
-        ""
+        "Piatra e plină de crăpături. Un Pokémon care știe Spărgător de Pietre ar putea-o sparge."
       ]
     },
     {
@@ -1147,7 +1147,7 @@
         "The rock is riddled with cracks. A Pokémon taught Rock Smash with HM06 could break it apart."
       ],
       "text": [
-        ""
+        "Piatra e plină de crăpături. Un Pokémon învățat Spărgător de Pietre cu HM06 ar putea-o sparge."
       ]
     },
     {
@@ -1155,7 +1155,7 @@
         "The rock is riddled with cracks. A hard enough blow might break it apart, once the right Gym Badge is won."
       ],
       "text": [
-        ""
+        "Piatra e plină de crăpături. O lovitură destul de puternică ar sparge-o, odată ce ai Insigna de Sală potrivită."
       ]
     }
   ],
@@ -1165,7 +1165,7 @@
         "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
       ],
       "text": [
-        ""
+        "Printre bucățile sparte erau {materials} × {material}. Direct în trusă!"
       ]
     }
   ],
@@ -1311,7 +1311,7 @@
         "Among the broken pieces lay {materials} × {material}. Into the kit it went!"
       ],
       "text": [
-        ""
+        "Printre bucățile sparte erau {materials} × {material}. Direct în trusă!"
       ]
     }
   ],
@@ -2067,7 +2067,7 @@
         "Oh, dear. That one's heart is shut tight. It wouldn't settle with us until it opens to you."
       ],
       "text": [
-        ""
+        "Vai, vai. Inima aceluia e încuiată bine. Nu se liniștește la noi până nu se deschide pentru tine."
       ]
     }
   ],
@@ -3287,6 +3287,24 @@
       ]
     }
   ],
+  "BedroomPC": [
+    {
+      "en": [
+        "{player} turned on the computer."
+      ],
+      "text": [
+        "{player} a pornit calculatorul."
+      ]
+    },
+    {
+      "en": [
+        "Decorate your room with things from your decoration PC?"
+      ],
+      "text": [
+        "Îți decorezi camera cu lucruri din PC-ul de decorațiuni?"
+      ]
+    }
+  ],
   "ApricornTree": [
     {
       "en": [
@@ -3944,10 +3962,10 @@
         "NOT NOW"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care dintre mărfurile noastre?",
+        "UNELTE DE ANTRENAMENT",
+        "CIOBURI TERA",
+        "DEOCAMDATĂ NU"
       ]
     },
     {
@@ -3955,7 +3973,7 @@
         "{player} traded {price} BP for the {item}."
       ],
       "text": [
-        ""
+        "{player} a dat {price} BP pe {item}."
       ]
     },
     {
@@ -3963,7 +3981,7 @@
         "Thank you! A Bottle Cap goes to the Head Coach of any training hall, if that's what you chose."
       ],
       "text": [
-        ""
+        "Mulțumim! Un Capac de Sticlă ajunge la Antrenorul-șef din orice sală de antrenament, dacă asta ai ales."
       ]
     },
     {
@@ -3971,7 +3989,7 @@
         "I'm with the training club. Our best goods are kept for Champions, I'm afraid. Come back once you've been crowned!"
       ],
       "text": [
-        ""
+        "Sunt de la clubul de antrenament. Cele mai bune mărfuri le păstrăm pentru Campioni, din păcate. Revino după ce ești încoronat!"
       ]
     },
     {
@@ -3979,7 +3997,7 @@
         "Oh dear, you don't have the Battle Points for that."
       ],
       "text": [
-        ""
+        "Vai, nu ai Punctele de Luptă pentru asta."
       ]
     },
     {
@@ -3987,7 +4005,7 @@
         "Come back whenever your points pile up!"
       ],
       "text": [
-        ""
+        "Revino oricând ți se adună punctele!"
       ]
     }
   ],
@@ -4087,7 +4105,7 @@
         "I can change the type a Pokémon takes when it Terastallizes. It costs fifty Tera Shards of the new type. Shall I?"
       ],
       "text": [
-        ""
+        "Pot schimba tipul pe care îl ia un Pokémon când se Terastalizează. Costă cincizeci de Cioburi Tera din tipul nou. Să fac asta?"
       ]
     },
     {
@@ -4095,7 +4113,7 @@
         "Which Pokémon's Tera Type shall I change?"
       ],
       "text": [
-        ""
+        "Al cărui Pokémon să schimb Tipul Tera?"
       ]
     },
     {
@@ -4103,7 +4121,7 @@
         "Done! It will shine as the {thing} type the next time it Terastallizes."
       ],
       "text": [
-        ""
+        "Gata! Va străluci ca tip {thing} data viitoare când se Terastalizează."
       ]
     },
     {
@@ -4111,7 +4129,7 @@
         "I'm the club's Tera keeper. With a Tera Orb, fifty Tera Shards of a type can change the type a Pokémon takes when it Terastallizes."
       ],
       "text": [
-        ""
+        "Sunt paznicul Tera al clubului. Cu un Glob Tera, cincizeci de Cioburi Tera dintr-un tip pot schimba tipul pe care îl ia un Pokémon când se Terastalizează."
       ]
     },
     {
@@ -4119,7 +4137,7 @@
         "You don't seem to have a Tera Orb. Come and see me if you ever get one."
       ],
       "text": [
-        ""
+        "Se pare că nu ai un Glob Tera. Vino la mine dacă ajungi să ai unul."
       ]
     },
     {
@@ -4127,7 +4145,7 @@
         "That one's Tera Type is part of what it is. No shard of mine could change it."
       ],
       "text": [
-        ""
+        "Tipul Tera al aceluia face parte din ceea ce este. Niciun cioburi de-al meu nu l-ar putea schimba."
       ]
     },
     {
@@ -4135,7 +4153,7 @@
         "You'll need fifty shards of a type it doesn't have yet. Golds in the drills earn them, and the club's clerk trades them for Battle Points."
       ],
       "text": [
-        ""
+        "Îți trebuie cincizeci de cioburi dintr-un tip pe care nu-l are încă. Medaliile de aur din antrenamente îi aduc, iar funcționarul clubului îi schimbă pe Puncte de Luptă."
       ]
     },
     {
@@ -4143,7 +4161,7 @@
         "Come back whenever you'd like a new Tera Type."
       ],
       "text": [
-        ""
+        "Revino oricând vrei un Tip Tera nou."
       ]
     }
   ],
@@ -4153,7 +4171,7 @@
         "Ah, a Champion! Let me show you a power of this land: {thing}, at level {number}."
       ],
       "text": [
-        ""
+        "Ah, un Campion! Lasă-mă să-ți arăt o putere a acestui ținut: {thing}, la nivelul {number}."
       ]
     },
     {
@@ -4161,7 +4179,7 @@
         "And you'll want somewhere to keep it. Here, take this."
       ],
       "text": [
-        ""
+        "Și ai nevoie de un loc unde s-o păstrezi. Ia asta."
       ]
     },
     {
@@ -4169,7 +4187,7 @@
         "{player} received the {item}!"
       ],
       "text": [
-        ""
+        "{player} a primit {item}!"
       ]
     },
     {
@@ -4177,7 +4195,7 @@
         "The Power Watch holds every power you learn. Use one from it, and it lasts ten minutes of play."
       ],
       "text": [
-        ""
+        "Ceasul de Putere ține toate puterile pe care le înveți. Folosește una de pe el și ține zece minute de joc."
       ]
     },
     {
@@ -4185,7 +4203,7 @@
         "Each use costs charge, as many points as its level. Walking fills the charge, a point every two hundred steps."
       ],
       "text": [
-        ""
+        "Fiecare folosire costă încărcare, atâtea puncte cât nivelul ei. Mersul umple încărcarea, un punct la fiecare două sute de pași."
       ]
     },
     {
@@ -4193,7 +4211,7 @@
         "And once a day the watch offers one power for nothing. Look at it often!"
       ],
       "text": [
-        ""
+        "Și o dată pe zi ceasul oferă o putere pe gratis. Uită-te des la el!"
       ]
     },
     {
@@ -4201,7 +4219,7 @@
         "You know all I can teach you for now. Enter another Hall of Fame, and I'll teach you a stronger level."
       ],
       "text": [
-        ""
+        "Știi tot ce te pot învăța deocamdată. Intră în încă o Sală a Faimei și te voi învăța un nivel mai puternic."
       ]
     },
     {
@@ -4209,7 +4227,7 @@
         "I teach powers: boosts that last a while, to EXP and the like. But only to Champions. Come back once you've entered a Hall of Fame."
       ],
       "text": [
-        ""
+        "Predau puteri: întăriri care țin o vreme, pentru Exp și altele. Dar numai Campionilor. Revino după ce intri într-o Sală a Faimei."
       ]
     }
   ],
@@ -4263,7 +4281,7 @@
         "Watts poured out of the den's light! {player} got {result} W."
       ],
       "text": [
-        ""
+        "Wați au țâșnit din lumina bârlogului! {player} a primit {result} W."
       ]
     },
     {
@@ -4271,7 +4289,7 @@
         "Something huge stirs in the den's light: a {species:VAR_GALAR_RAID_SPECIES} of {var:VAR_GALAR_RAID_STARS} stars!"
       ],
       "text": [
-        ""
+        "Ceva uriaș se mișcă în lumina bârlogului: un {species:VAR_GALAR_RAID_SPECIES} de {var:VAR_GALAR_RAID_STARS} stele!"
       ]
     },
     {
@@ -4279,7 +4297,7 @@
         "Call for three other Trainers and raid the den?"
       ],
       "text": [
-        ""
+        "Chemi alți trei Antrenori și dați raid bârlogului?"
       ]
     },
     {
@@ -4287,7 +4305,7 @@
         "The den's light went out. Everyone's Pokémon are safe, but the raid is over for now."
       ],
       "text": [
-        ""
+        "Lumina bârlogului s-a stins. Pokémonii tuturor sunt în siguranță, dar raidul s-a încheiat pentru moment."
       ]
     },
     {
@@ -4295,7 +4313,7 @@
         "The {species:VAR_GALAR_RAID_SPECIES} has shrunk back to its own size and lies still in the den."
       ],
       "text": [
-        ""
+        "{species:VAR_GALAR_RAID_SPECIES} s-a micșorat la mărimea lui obișnuită și zace nemișcat în bârlog."
       ]
     },
     {
@@ -4307,11 +4325,11 @@
         "Let it go"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Arunci o bilă?",
+        "Poké Ball",
+        "Great Ball",
+        "Ultra Ball",
+        "Dă-i drumul"
       ]
     },
     {
@@ -4319,7 +4337,7 @@
         "The {species:VAR_GALAR_RAID_SPECIES} slipped back into the den's light."
       ],
       "text": [
-        ""
+        "{species:VAR_GALAR_RAID_SPECIES} s-a strecurat înapoi în lumina bârlogului."
       ]
     },
     {
@@ -4327,7 +4345,7 @@
         "Gotcha! The {species:VAR_GALAR_RAID_SPECIES} was caught!"
       ],
       "text": [
-        ""
+        "Gata! {species:VAR_GALAR_RAID_SPECIES} a fost prins!"
       ]
     },
     {
@@ -4335,7 +4353,7 @@
         "There was no ball of that kind in the Bag, and the {species:VAR_GALAR_RAID_SPECIES} slipped away into the den's light."
       ],
       "text": [
-        ""
+        "Nu era nicio bilă de felul acela în Rucsac, iar {species:VAR_GALAR_RAID_SPECIES} a dispărut în lumina bârlogului."
       ]
     },
     {
@@ -4343,7 +4361,7 @@
         "Oh no! The {species:VAR_GALAR_RAID_SPECIES} broke free and vanished into the den's light."
       ],
       "text": [
-        ""
+        "Vai! {species:VAR_GALAR_RAID_SPECIES} s-a eliberat și a dispărut în lumina bârlogului."
       ]
     },
     {
@@ -4351,7 +4369,7 @@
         "A den of red stone. No light rises from it today."
       ],
       "text": [
-        ""
+        "Un bârlog de piatră roșie. Azi nu se ridică nicio lumină din el."
       ]
     },
     {
@@ -4359,7 +4377,7 @@
         "Throw a Wishing Piece into the den?"
       ],
       "text": [
-        ""
+        "Arunci o Bucată de Dorință în bârlog?"
       ]
     },
     {
@@ -4367,7 +4385,7 @@
         "{player} threw in a Wishing Piece. A column of red light rose out of the den!"
       ],
       "text": [
-        ""
+        "{player} a aruncat o Bucată de Dorință. O coloană de lumină roșie s-a ridicat din bârlog!"
       ]
     }
   ],
@@ -4393,7 +4411,7 @@
         "Very good. Follow me, and keep close."
       ],
       "text": [
-        ""
+        "Foarte bine. Urmează-mă și rămâi aproape."
       ]
     },
     {
@@ -4409,7 +4427,7 @@
         "Whenever you are ready. I will be right here."
       ],
       "text": [
-        ""
+        "Oricând ești gata. Eu sunt chiar aici."
       ]
     }
   ],
@@ -4427,7 +4445,7 @@
         "Gift Runners, at your service! Gifts find their way to us from all over, and we bring them to you."
       ],
       "text": [
-        ""
+        "Curierii de Cadouri, la dispoziția ta! Cadourile ajung la noi de peste tot, iar noi ți le aducem."
       ]
     },
     {
@@ -4435,7 +4453,7 @@
         "There's something in the box with your name on it. Let's open it up!"
       ],
       "text": [
-        ""
+        "E ceva în cutie cu numele tău pe el. Hai s-o deschidem!"
       ]
     },
     {
@@ -4443,7 +4461,7 @@
         "Here it is, card and all."
       ],
       "text": [
-        ""
+        "Poftim, cu tot cu carte poștală."
       ]
     },
     {
@@ -4451,7 +4469,7 @@
         "Delivered! Do come back. There's always something on its way."
       ],
       "text": [
-        ""
+        "Livrat! Mai treci pe aici. Mereu e ceva pe drum."
       ]
     },
     {
@@ -4459,7 +4477,7 @@
         "Two words, is it? Tell me, and I'll see whether they call anything up."
       ],
       "text": [
-        ""
+        "Două cuvinte, deci? Spune-mi și vedem dacă fac să apară ceva."
       ]
     },
     {
@@ -4475,7 +4493,7 @@
         "Oh! Those words called something up. It's in the box now!"
       ],
       "text": [
-        ""
+        "Oh! Cuvintele alea au făcut să apară ceva. E în cutie acum!"
       ]
     },
     {
@@ -4483,7 +4501,7 @@
         "Hmm, nothing came of those. Words are funny things. Try others another time!"
       ],
       "text": [
-        ""
+        "Hmm, n-a ieșit nimic din ele. Cuvintele sunt ciudate. Încearcă altele altă dată!"
       ]
     },
     {
@@ -4491,7 +4509,7 @@
         "Nothing in the box for you today. But words have a way of calling things up."
       ],
       "text": [
-        ""
+        "Azi nu e nimic în cutie pentru tine. Dar cuvintele au darul de a face lucruri să apară."
       ]
     },
     {
@@ -4499,7 +4517,7 @@
         "Would you like to tell me two words?"
       ],
       "text": [
-        ""
+        "Vrei să-mi spui două cuvinte?"
       ]
     },
     {
@@ -4507,7 +4525,7 @@
         "There's something waiting, but it needs a place on your team. Make some room and come back!"
       ],
       "text": [
-        ""
+        "Așteaptă ceva, dar are nevoie de loc în echipa ta. Fă loc și revino!"
       ]
     },
     {
@@ -4515,7 +4533,7 @@
         "The box will keep. Come back whenever you like!"
       ],
       "text": [
-        ""
+        "Cutia rămâne aici. Revino oricând vrei!"
       ]
     },
     {
@@ -4523,7 +4541,7 @@
         "Gift Runners, at your service! Only we've nothing to deliver until the gift box is open to you."
       ],
       "text": [
-        ""
+        "Curierii de Cadouri, la dispoziția ta! Doar că n-avem nimic de livrat până nu ți se deschide cutia de cadouri."
       ]
     },
     {
@@ -4531,7 +4549,7 @@
         "There's a lady at Jubilife TV with a questionnaire. They say the answer to her second question is a sparrow and clockwork, of all things."
       ],
       "text": [
-        ""
+        "La Jubilife TV e o doamnă cu un chestionar. Se zice că răspunsul la a doua întrebare e o vrabie și un mecanism de ceasornic, dintre toate lucrurile!"
       ]
     },
     {
@@ -4539,7 +4557,7 @@
         "Merry Christmas! The whole Center smells of pine and gingerbread. We've been run off our feet!"
       ],
       "text": [
-        ""
+        "Crăciun fericit! Tot Centrul miroase a brad și a turtă dulce. Nu ne simțim picioarele!"
       ]
     },
     {
@@ -4547,7 +4565,7 @@
         "Happy New Year! A new year, and a new bag of post to go with it."
       ],
       "text": [
-        ""
+        "La mulți ani! Un an nou și o geantă nouă de corespondență pe deasupra."
       ]
     },
     {
@@ -4555,7 +4573,7 @@
         "Happy Easter! We found painted eggs tucked into the parcels all morning. Someone's idea of a joke!"
       ],
       "text": [
-        ""
+        "Paști fericit! Toată dimineața am găsit ouă vopsite printre colete. Cineva și-a bătut joc de noi!"
       ]
     },
     {
@@ -4563,7 +4581,7 @@
         "Oh, and between you and me... someone asked after you today. They wouldn't leave a name."
       ],
       "text": [
-        ""
+        "Ah, și între noi fie vorba... cineva a întrebat de tine azi. N-a vrut să lase un nume."
       ]
     }
   ],
@@ -4573,7 +4591,7 @@
         "Trade Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera de schimburi"
       ]
     },
     {
@@ -4581,7 +4599,7 @@
         "Welcome to the trade board! Trainers far and wide post the Pokémon they're after here, and what they'd give for one."
       ],
       "text": [
-        ""
+        "Bun venit la panoul de schimburi! Antrenori de departe postează aici Pokémonii pe care îi caută și ce ar da pentru unul."
       ]
     },
     {
@@ -4589,7 +4607,7 @@
         "Which of your Pokémon will you send?"
       ],
       "text": [
-        ""
+        "Pe care dintre Pokémonii tăi îl trimiți?"
       ]
     },
     {
@@ -4597,7 +4615,7 @@
         "A blind trade, then! You send one, and you'll get one back from someone, somewhere. Which will you send?"
       ],
       "text": [
-        ""
+        "Un schimb pe nevăzute, deci! Trimiți unul și primești unul înapoi de la cineva, de undeva. Pe care îl trimiți?"
       ]
     },
     {
@@ -4605,7 +4623,7 @@
         "That one isn't what they asked for. Have a look at the card again: the species and the level both count."
       ],
       "text": [
-        ""
+        "Ăsta nu e ce au cerut. Mai uită-te o dată pe fișă: contează și specia, și nivelul."
       ]
     },
     {
@@ -4613,7 +4631,7 @@
         "The trade's done! Take good care of your new friend."
       ],
       "text": [
-        ""
+        "Schimbul e făcut! Ai grijă de noul tău prieten."
       ]
     },
     {
@@ -4621,7 +4639,7 @@
         "That request has been met already today. New ones go up tomorrow!"
       ],
       "text": [
-        ""
+        "Cererea aceea a fost deja îndeplinită azi. Mâine apar altele noi!"
       ]
     },
     {
@@ -4629,7 +4647,7 @@
         "I can't take that one. An Egg can't be traded, and you'll want at least one Pokémon able to battle."
       ],
       "text": [
-        ""
+        "Pe ăsta nu-l pot lua. Un Ou nu poate fi schimbat și îți trebuie măcar un Pokémon în stare de luptă."
       ]
     },
     {
@@ -4637,7 +4655,7 @@
         "Your journey's rules keep your team as it is, I'm afraid. No trades while they hold."
       ],
       "text": [
-        ""
+        "Regulile călătoriei tale îți țin echipa neschimbată, mă tem. Fără schimburi cât ele sunt în vigoare."
       ]
     },
     {
@@ -4645,7 +4663,7 @@
         "That's all the blind trades for today. Come back tomorrow for more!"
       ],
       "text": [
-        ""
+        "Astea au fost toate schimburile pe nevăzute de azi. Revino mâine pentru altele!"
       ]
     },
     {
@@ -4653,7 +4671,7 @@
         "Come back any time. The board changes every day!"
       ],
       "text": [
-        ""
+        "Revino oricând. Panoul se schimbă în fiecare zi!"
       ]
     }
   ],
@@ -4663,7 +4681,7 @@
         "Confectioner"
       ],
       "text": [
-        ""
+        "Cofetarul"
       ]
     },
     {
@@ -4671,7 +4689,7 @@
         "Welcome to the treat counter! Every treat here is baked with one flavour, for Pokémon who like it best."
       ],
       "text": [
-        ""
+        "Bun venit la tejgheaua cu dulciuri! Fiecare dulce de aici e copt cu o singură aromă, pentru Pokémonii cărora le place cel mai mult."
       ]
     },
     {
@@ -4679,7 +4697,7 @@
         "Give one to a Pokémon at your camp. A treat in a flavour it loves makes it twice as happy!"
       ],
       "text": [
-        ""
+        "Dă unul unui Pokémon din tabăra ta. Un dulce cu aroma pe care o iubește îl face de două ori mai fericit!"
       ]
     }
   ],
@@ -4689,7 +4707,7 @@
         "Baker"
       ],
       "text": [
-        ""
+        "Brutarul"
       ]
     },
     {
@@ -4697,7 +4715,7 @@
         "I bake finer treats from the berries you bring me, and I don't charge a thing for the work."
       ],
       "text": [
-        ""
+        "Coc dulciuri mai alese din boabele pe care mi le aduci și nu cer nimic pe muncă."
       ]
     },
     {
@@ -4708,10 +4726,10 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce să coc?",
+        "O PRĂJITURĂ CU O SINGURĂ AROMĂ",
+        "O PÂINE CU TOATE AROMELE",
+        "NIMIC"
       ]
     },
     {
@@ -4719,7 +4737,7 @@
         "There! Three of your berries made a {item}. It's yours!"
       ],
       "text": [
-        ""
+        "Gata! Trei dintre boabele tale au făcut {item}. E al tău!"
       ]
     },
     {
@@ -4727,7 +4745,7 @@
         "I need three berries of one flavour for a cake. Come back when your bag has them."
       ],
       "text": [
-        ""
+        "Pentru o prăjitură îmi trebuie trei boabe de aceeași aromă. Revino când le ai în rucsac."
       ]
     },
     {
@@ -4735,7 +4753,7 @@
         "One berry of every flavour, and here's your {item}! Every Pokémon with a taste loves it."
       ],
       "text": [
-        ""
+        "Câte o boabă din fiecare aromă, și iată {item}! Orice Pokémon cu un gust îl iubește."
       ]
     },
     {
@@ -4743,7 +4761,7 @@
         "A loaf takes one berry of each flavour: spicy, dry, sweet, bitter and sour. You're short of one."
       ],
       "text": [
-        ""
+        "O pâine cere o boabă din fiecare aromă: picant, sec, dulce, amar și acru. Îți lipsește unul."
       ]
     },
     {
@@ -4751,7 +4769,7 @@
         "Come back with your berries any time."
       ],
       "text": [
-        ""
+        "Revino oricând cu boabele tale."
       ]
     }
   ],

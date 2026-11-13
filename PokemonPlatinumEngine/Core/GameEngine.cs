@@ -528,7 +528,7 @@ public partial class GameEngine
         flow.FashionCase.Load(null);
         flow.SealCase.Load(null);
         LoadUnderground(null);
-        LoadSecretBase(null, null);
+        LoadSecretBase(null, null, null);
         flow.Pastimes.Clear();
         flow.Apricorns.Clear();
         flow.SafariObjects.Clear();
@@ -813,7 +813,7 @@ public partial class GameEngine
         if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) flow.FashionCase.Add("Glitter Powder");
         flow.SealCase.Load(save.SealCase);
         LoadUnderground(save.Underground);
-        LoadSecretBase(save.SecretBase, save.Decorations);
+        LoadSecretBase(save.SecretBase, save.Decorations, save.Bedrooms);
         flow.Pastimes.Load(save.Pastimes);
         flow.Apricorns.Load(save.Apricorns);
         flow.SafariObjects.Load(save.SafariObjects);
@@ -986,6 +986,8 @@ public partial class GameEngine
         StockHideaway();
         // and one saved in a secret base finds it furnished (plan 21 · H10)
         if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
+        // and one saved in a bedroom finds it decorated (plan 43 · LF7)
+        LayOutBedroom(flow.Map);
     }
 
     /// <summary>The game as it stands, as a save.</summary>
@@ -1057,6 +1059,7 @@ public partial class GameEngine
             Underground = flow.Underground,
             SecretBase = flow.SecretBase,
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
+            Bedrooms = flow.Bedrooms.Count > 0 ? flow.Bedrooms : null,
             Pastimes = flow.Pastimes.ToSave(),
             Apricorns = flow.Apricorns.ToSave(),
             SafariObjects = flow.SafariObjects.ToSave(),

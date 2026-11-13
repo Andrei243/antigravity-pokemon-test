@@ -153,7 +153,7 @@
         "Madame Ottilie Fray"
       ],
       "text": [
-        ""
+        "Madame Ottilie Fray"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "Good day! I am Ottilie Fray, and I ask a question or two of everyone who comes through these doors."
       ],
       "text": [
-        ""
+        "Bună ziua! Sunt Ottilie Fray și pun una-două întrebări tuturor celor care trec pe aici."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Would you answer my questionnaire? Two questions, two words each."
       ],
       "text": [
-        ""
+        "Ai răspunde la chestionarul meu? Două întrebări, câte două cuvinte."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "The first. What do you like best about travelling with Pokémon? Two words, please."
       ],
       "text": [
-        ""
+        "Prima. Ce îți place cel mai mult la călătoria cu Pokémonii? Două cuvinte, te rog."
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Madame Ottilie Fray"
       ],
       "text": [
-        ""
+        "Madame Ottilie Fray"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "\"{phrase:GIFT_QUESTION_ONE}\"... Charming. I shall write that down."
       ],
       "text": [
-        ""
+        "„{phrase:GIFT_QUESTION_ONE}”... Fermecător. Voi nota asta."
       ]
     },
     {
@@ -201,7 +201,7 @@
         "And the second. What sings at the break of day, and what never stops ticking?"
       ],
       "text": [
-        ""
+        "Și a doua. Ce cântă în zori și ce nu încetează niciodată să ticăie?"
       ]
     },
     {
@@ -209,7 +209,7 @@
         "Madame Ottilie Fray"
       ],
       "text": [
-        ""
+        "Madame Ottilie Fray"
       ]
     },
     {
@@ -217,7 +217,7 @@
         "\"{phrase:GIFT_QUESTION_TWO}\"? Not what I had in mind, I'm afraid. Do try again another time."
       ],
       "text": [
-        ""
+        "„{phrase:GIFT_QUESTION_TWO}”? Nu la asta mă gândeam, mă tem. Mai încearcă altă dată."
       ]
     },
     {
@@ -225,7 +225,7 @@
         "\"{phrase:GIFT_QUESTION_TWO}\"! Exactly so. You've answered the questionnaire, and the gift box is open to you."
       ],
       "text": [
-        ""
+        "„{phrase:GIFT_QUESTION_TWO}”! Exact așa. Ai răspuns la chestionar, iar cutia de cadouri ți se deschide."
       ]
     },
     {
@@ -233,7 +233,7 @@
         "The Gift Runners in their yellow scarves stand in the Pokémon Centers. They'll hand you whatever is waiting."
       ],
       "text": [
-        ""
+        "Curierii de Cadouri, cu eșarfele lor galbene, stau în Centrele Pokémon. Îți vor da tot ce așteaptă."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Another time, then. My questions will keep."
       ],
       "text": [
-        ""
+        "Altă dată, atunci. Întrebările mele pot aștepta."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "Have you been to see the Gift Runners? Gifts come to the box from all over, on days and for deeds."
       ],
       "text": [
-        ""
+        "Ai trecut pe la Curierii de Cadouri? Cadourile ajung în cutie de peste tot, în anumite zile și pentru anumite fapte."
       ]
     },
     {
@@ -257,7 +257,7 @@
         "And words, too. Say the right two words to a Runner, and you never know what might turn up."
       ],
       "text": [
-        ""
+        "Și pentru cuvinte, de asemenea. Spune două cuvinte potrivite unui Curier și nu se știe ce poate apărea."
       ]
     }
   ],
@@ -267,7 +267,7 @@
         "Director Wren"
       ],
       "text": [
-        ""
+        "Regizorul Wren"
       ]
     },
     {
@@ -275,7 +275,7 @@
         "Ah, a new face! I'm Wren, and I direct films for the studio. Every take is a battle, played to a script."
       ],
       "text": [
-        ""
+        "Ah, o față nouă! Sunt Wren și regizez filme pentru studio. Fiecare duplă e o luptă, jucată după scenariu."
       ]
     },
     {
@@ -283,7 +283,7 @@
         "We lend you the cast. Say the script's lines or your own, and the take ends however you play it."
       ],
       "text": [
-        ""
+        "Îți împrumutăm distribuția. Spune replicile din scenariu sau ale tale, iar dupla se termină cum o joci."
       ]
     },
     {
@@ -291,7 +291,7 @@
         "Back for another take? Splendid! The studio keeps your best take of every film."
       ],
       "text": [
-        ""
+        "Te-ai întors pentru încă o duplă? Splendid! Studioul păstrează cea mai bună duplă a ta din fiecare film."
       ]
     },
     {
@@ -302,10 +302,10 @@
         "NOT TODAY"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce film filmăm?",
+        "LOCUL GOL",
+        "ORA AURITĂ",
+        "NU AZI"
       ]
     },
     {
@@ -313,7 +313,7 @@
         "Come back whenever you feel like a star!"
       ],
       "text": [
-        ""
+        "Revino oricând te simți vedetă!"
       ]
     },
     {
@@ -321,7 +321,7 @@
         "Director Wren"
       ],
       "text": [
-        ""
+        "Regizorul Wren"
       ]
     },
     {
@@ -329,7 +329,7 @@
         "That's a wrap! Every take you shoot goes into the studio's records."
       ],
       "text": [
-        ""
+        "Gata filmarea! Fiecare duplă filmată intră în arhiva studioului."
       ]
     },
     {
@@ -337,7 +337,7 @@
         "Magnificent! That's the take the posters will be painted from!"
       ],
       "text": [
-        ""
+        "Magnific! Din dubla asta se vor picta afișele!"
       ]
     }
   ]

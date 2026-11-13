@@ -134,6 +134,13 @@ public class HollowTests
         Assert.False(record.IsOpen(DelveHollows.Get("heartpeak")!));
         Assert.Contains(record.Due, d => d.Item == "Rare Candy");
         Assert.Empty(record.Take(run, board, 100));
+        // The clear raised the rank, but today's board is still drawn at the rank it was drawn at, so its DONE marks stay
+        // on the requests they were won on; tomorrow's is drawn at the new rank
+        Assert.Equal(0, record.RankOn(100));
+        Assert.Equal(1, record.RankOn(101));
+        Assert.Equal(DelveBoard.Of(777, 0), DelveBoard.Of(777, record.RankOn(100)));
+        var back = DelveRecord.From(GameDataFiles.Deserialize<DelveSave>(GameDataFiles.Serialize(record.ToSave())));
+        Assert.Equal(0, back.RankOn(100));
     }
 
     [Fact]

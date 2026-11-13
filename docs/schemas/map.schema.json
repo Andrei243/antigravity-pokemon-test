@@ -31,7 +31,13 @@
         "Aerie",
         "Tent",
         "Field",
-        "Court"
+        "Court",
+        "DenRedCave",
+        "DenBrownCave",
+        "DenBlueCave",
+        "DenYellowCave",
+        "DenTree",
+        "DenShrub"
       ]
     },
     "trees": {
@@ -663,6 +669,7 @@
               "FestivalSheaves",
               "Seagallop",
               "NetworkMachine",
+              "BaseEntrance",
               "SafariObject"
             ]
           },

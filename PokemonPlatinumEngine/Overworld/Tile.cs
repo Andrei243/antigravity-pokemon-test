@@ -428,6 +428,16 @@ public enum InteriorStyle
     /// walls as a field's (style guide, "Rooms", "A sports ground").
     /// </summary>
     Court,
+    /// <summary>
+    /// A secret base's room in its kind's own look (plan 43 · LF7; style guide, "Secret bases"): a cave of red, brown, blue
+    /// or yellow rock, a hollow tree, a den of grass. Each a floor and walls of their own; the room's plan is Emerald's.
+    /// </summary>
+    DenRedCave,
+    DenBrownCave,
+    DenBlueCave,
+    DenYellowCave,
+    DenTree,
+    DenShrub,
 }
 
 /// <summary>

@@ -12635,6 +12635,10 @@ the user's answer 48a names the camp's keeper and the hollows, SD9's). The numbe
   Nuzlocke's gifts clause counts (`Nuzlocke.Gift` on the camp's place), onto the team or into the PC, with its id
   (`GiveIds`); a run with no catching or a Monotype it breaks leaves it in the hollow. **A resident's species is the
   randomiser's** where the run randomises species (mapped as it is made, so the recruit is the species met).
+- **Medals** (SD9): the first clear of each hollow is a medal of its own (`MedalFacts.HollowBrinecave` and its fellows,
+  judged from the record's clears), in the League tab beside Lockwork's, since the Journey tab is full.
+- **The moves' list** (SD8) names each move's reach on the floor beside its PP (`delve.reach.*`: ahead, all round, the
+  room, itself, the team, a friend), and "battles only" for a move the floor refuses, so the list says what the rules do.
 
 ## The Brains of the Palace, the Arena and the Dome, the roulette's service day and the Trainer Hill's clerk (2026-11-12, plan 21's leftovers)
 
