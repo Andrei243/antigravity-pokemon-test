@@ -54,7 +54,9 @@ public static class GalarTower
     public static int TrainerFor(int rank, int wins, Func<int> next16)
     {
         int room = RoomOf(rank);
-        int[] row = wins == WinsToRise - 1 ? FrontierDatabase.TowerBossRooms[room] : FrontierDatabase.TowerRooms[room];
+        // (The rooms of bosses run short of the rooms, as the Subway's draw has it: past them the room's own row)
+        int[] row = wins == WinsToRise - 1 && room < FrontierDatabase.TowerBossRooms.Count ? FrontierDatabase.TowerBossRooms[room]
+            : FrontierDatabase.TowerRooms[Math.Min(room, FrontierDatabase.TowerRooms.Count - 1)];
         return row[0] + (next16() & 0xFFFF) % (row[1] - row[0] + 1);
     }
 

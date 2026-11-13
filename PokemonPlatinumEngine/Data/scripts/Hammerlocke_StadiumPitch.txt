@@ -52,7 +52,6 @@ script Sordward
   setflag FLAG_GALAR_SORDWARD_BEATEN
   speaker "Hop"
   say "Every stadium's quiet again! Champion, you were brilliant. Nobody's doing that to Galar's Pokémon again."
-  objective galarFree
   endscene
   end
 label Lost

@@ -4,6 +4,7 @@ using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Frontier;
 using PokemonPlatinumEngine.Story;
+using Objectives = PokemonPlatinumEngine.Story.Objectives;
 using Xunit;
 using static PokemonPlatinumTests.Scenario;
 
@@ -63,6 +64,39 @@ public class GalarTowerTests
         Assert.Equal(master, story.Var(GalarTower.Vars.Rank));
         Assert.Equal(0, story.Var(GalarTower.Vars.Wins));
         Assert.Equal(1, story.Var(GalarTower.Vars.LeonBeaten));
+    }
+
+    [Fact]
+    public void TheBrothersBeatenFirstLeaveTheWealdsObjectiveStanding()
+    {
+        // Plan 33 · GL7, part b: the brothers' arc sets no objective of its own, so done before the Weald and Leon it
+        // hides neither of them
+        var story = new StoryState();
+        story.Set("GalarHallOfFame");
+        story.SetVar("VAR_GALAR_STORY", 46);
+        Assert.Equal("galarWeald", Objectives.Current(story, RegionDatabase.Galar)?.Name);
+        story.Set("FLAG_GALAR_SHIELBERT_BEATEN");
+        story.Set("FLAG_GALAR_SORDWARD_BEATEN");
+        Assert.Equal("galarWeald", Objectives.Current(story, RegionDatabase.Galar)?.Name);
+        story.SetVar("VAR_GALAR_STORY", 47);
+        story.Set("FLAG_GALAR_LEON_TOWER_WON");
+        Assert.Equal("galarFree", Objectives.Current(story, RegionDatabase.Galar)?.Name);
+    }
+
+    [Fact]
+    public void EveryRanksBattlesHaveAnOpponentDrawnTheSameTwice()
+    {
+        for (int rank = 0; rank < GalarTower.Ranks; rank++)
+            for (int wins = 0; wins < GalarTower.WinsToRise; wins++)
+            {
+                var a = new System.Random(rank * 7 + wins);
+                var b = new System.Random(rank * 7 + wins);
+                var first = GalarTower.MakeOpponent(rank, wins, () => a.Next(0x10000));
+                var second = GalarTower.MakeOpponent(rank, wins, () => b.Next(0x10000));
+                Assert.Single(first);
+                Assert.Equal(GalarTower.PartySize, first[0].Pokemon.Count);
+                Assert.Equal(first[0].Number, second[0].Number);
+            }
     }
 
     [Fact]

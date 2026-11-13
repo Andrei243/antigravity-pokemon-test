@@ -88,7 +88,6 @@ script Shielbert
   speaker "Shielbert"
   say "...Very well. My brother has gone on to Hammerlocke. You will not find him so easily put off."
   setflag FLAG_GALAR_SHIELBERT_BEATEN
-  objective galarSordward
   endscene
   end
 label Lost

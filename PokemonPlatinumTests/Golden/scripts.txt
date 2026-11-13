@@ -4991,7 +4991,6 @@ way 0.0
   * battle galar_sordward_1 Won
   * endscene
   + FLAG_GALAR_SORDWARD_BEATEN
-  = VAR_OBJECTIVE 0 -> 799
   + beaten galar_sordward_1
   + seen Hammerlocke_StadiumPitch.Sordward at Hammerlocke Stadium
 way 0.1, from answer 2
@@ -5007,7 +5006,6 @@ way 1.0, from answer 1
   * battle galar_sordward_1 Won
   * endscene
   + FLAG_GALAR_SORDWARD_BEATEN
-  = VAR_OBJECTIVE 0 -> 799
   + beaten galar_sordward_1
   + seen Hammerlocke_StadiumPitch.Sordward at Hammerlocke Stadium
 way 1.1, from answer 2
@@ -7444,7 +7442,6 @@ way 0.0
   * battle galar_shielbert_1 Won
   * endscene
   + FLAG_GALAR_SHIELBERT_BEATEN
-  = VAR_OBJECTIVE 0 -> 747
   + beaten galar_shielbert_1
   + seen Motostoke_StadiumPitch.Shielbert at Motostoke Stadium
 way 0.1, from answer 2
@@ -7459,7 +7456,6 @@ way 1.0, from answer 1
   * battle galar_shielbert_1 Won
   * endscene
   + FLAG_GALAR_SHIELBERT_BEATEN
-  = VAR_OBJECTIVE 0 -> 747
   + beaten galar_shielbert_1
   + seen Motostoke_StadiumPitch.Shielbert at Motostoke Stadium
 way 1.1, from answer 2
