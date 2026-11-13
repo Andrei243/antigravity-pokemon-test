@@ -109,11 +109,16 @@ def flat(outline, x, thick):
 # --- the body --------------------------------------------------------------------------------------------------------
 # A hawk's build: tall and upright, the breast pushed forward, narrowing to a high bottom that shows the legs
 def egg(V):
+    # broad and high at the chest, tapering hard below to the thighs: a hawk's, not a hen's
     V = V.copy()
-    V[:, 0] *= 1 - 0.28 * np.clip(-V[:, 2], 0, 1) ** 1.5
+    t = np.clip(-V[:, 2], 0, 1)
+    V[:, 0] *= 1 - 0.58 * t ** 1.1
+    V[:, 1] *= 1 - 0.2 * t ** 1.5
     return V
-k.add("body", ell((0, 0.05, 0.44), (0.21, 0.19, 0.27), rot=(-12, 0, 0), deform=egg), BODY, "body")
-k.add("breast", ell((0, -0.07, 0.48), (0.19, 0.15, 0.25), deform=egg), BODY, "body")
+k.add("body", ell((0, 0.06, 0.47), (0.21, 0.19, 0.25), rot=(-14, 0, 0), deform=egg), BODY, "body")
+k.add("breast", ell((0, -0.07, 0.52), (0.195, 0.15, 0.23), deform=egg), BODY, "body")
+# the feathered thighs the lower body tapers into, over the legs' tops
+k.add("thigh", ell((0.075, -0.015, 0.26), (0.058, 0.065, 0.075)), BODY, "leg{s}", mirror=True)
 k.add("neck", ell((0, -0.08, 0.6), (0.15, 0.15, 0.15)), DARK, "head")
 k.add("head", ell(H, HR), DARK, "head")
 # The pale brow runs back from over the eyes to a point behind the head, rising
@@ -127,14 +132,15 @@ k.add("crest", blade(CREST, [0.105, 0.075, 0.02], (1, 0, 0), 0.55), DARK, "head"
 k.add("crestarm", blade(CRESTARM, [0.03, 0.08, 0.06, 0.008], (1, 0, 0), 0.55), DARK, "head")
 def crest_red(P):
     line = 1.02 + 0.45 * (P[:, 1] + 0.15)                      # above and behind this the crest stays dark
-    zig = -0.095 + 0.02 * tri((P[:, 2] - 0.9) / 0.045)       # its back edge, a zigzag
+    # its back edge, a zigzag, drawn forward near the top so the red stays on the crest's front
+    zig = -0.095 + 0.02 * tri((P[:, 2] - 0.9) / 0.045) - 1.3 * np.clip(P[:, 2] - 0.93, 0, 1)
     return inside(P[:, 2] - line, 0.003) * inside(P[:, 1] - zig, 0.003) * (P[:, 2] > 0.84) * (P[:, 2] < 1.01)
 k.add("crestfill", blade([(0, -0.1, 0.85), (0, -0.22, 0.87)], [0.055, 0.03], (1, 0, 0), 0.6), DARK, "head")
 k.paint(crest_red, RED, on=["crest"])
 # Big folded wings down the sides, their tips sweeping back over the tail's root
 def folded(V):
     V = V.copy(); V[:, 2] *= 1 - 0.45 * np.clip(V[:, 1], 0, 1); return V
-k.add("wing", ell((0.18, 0.11, 0.43), (0.07, 0.27, 0.21), rot=(-36, -6, 4), deform=folded), WING, "wing{s}", mirror=True)
+k.add("wing", ell((0.17, 0.12, 0.46), (0.062, 0.27, 0.195), rot=(-38, 12, 4), deform=folded), WING, "wing{s}", mirror=True)
 k.add("wingtip", blade([(0.17, 0.16, 0.36), (0.165, 0.28, 0.27), (0.13, 0.42, 0.19)], [0.075, 0.05, 0.006], (1, 0, 0), 0.5),
       WING, "wing{s}", mirror=True)
 
