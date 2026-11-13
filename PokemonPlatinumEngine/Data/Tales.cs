@@ -60,8 +60,9 @@ public sealed class TaleRule
     public BattleWeather? Weather { get; set; }
 
     /// <summary>
-    /// The sun can't set (the Zmeu's): whatever a battle reads of the night reads day while the tale is told. Nothing in a
-    /// battle has a night form yet; the Dusk Ball is what reads it today (CP12 owes the rest).
+    /// The sun can't set (the Zmeu's): whatever a battle reads of the night reads day while the tale is told
+    /// (<c>BattleCore.TaleHoldsTheDay</c>). The Dusk Ball is what reads it today (plan 46 · CP12); nothing in a battle has
+    /// a night form yet.
     /// </summary>
     public bool NoNight { get; set; }
 

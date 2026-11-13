@@ -57,7 +57,7 @@ public static partial class CatchCalculator
     /// <param name="mine">The player's Pokémon on the field, which a Level Ball and a Love Ball go by.</param>
     /// <param name="safariRate">For a Safari Ball in Hoenn's Safari Zone, the catch rate Emerald's catch factor gives in place of the species' (plan 21 · H11, part e).</param>
     public static CatchResult Throw(Pokemon wild, ItemData ball, Random rng, int turn, BattleConditions conditions, int safariStage = 6,
-        Ruleset? rules = null, Pokemon? mine = null, int? safariRate = null)
+        Ruleset? rules = null, Pokemon? mine = null, int? safariRate = null, bool heldDay = false)
     {
         // A Master Ball holds whatever the rolls would have said (and an Origin Ball and a Park Ball: plan 06 · R28a)
         if (ball.EffectValue >= 9999 || (rules?.LaterBalls == true && AlwaysHolds(ball.Name))) return Held(critical: false);
@@ -65,11 +65,12 @@ public static partial class CatchCalculator
         int speciesRate = wild.CatchRate;
         if (ball.Name == "Safari Ball")
             speciesRate = safariRate ?? speciesRate * SafariStages[safariStage].Num / SafariStages[safariStage].Den;
-        int tenths = Formulas.BallTenths(ball.Name, wild, turn, conditions);
+        bool night = conditions.Night && !heldDay;
+        int tenths = Formulas.BallTenths(ball.Name, wild, turn, conditions, night);
         if (rules?.LaterBalls == true)
         {
             speciesRate = HeavyBallRate(ball.Name, wild, speciesRate);
-            tenths = LaterBallTenths(ball.Name, wild, turn, conditions, mine);
+            tenths = LaterBallTenths(ball.Name, wild, turn, conditions, mine, night);
         }
         // The Catching Power in force as the battle began (plan 36 · TR7) raises the species' rate, at most to 255
         if (conditions.Powers?.Catch is > 0 and var power) speciesRate = Math.Min(255, Models.PowerSet.Raise(speciesRate, power));

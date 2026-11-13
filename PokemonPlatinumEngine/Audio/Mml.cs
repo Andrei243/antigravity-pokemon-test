@@ -174,7 +174,7 @@ public static class Mml
         Instrument? night = null, lowHp = null, giant = null;
         var when = TrackWhen.Always;
         float vol = 0.8f, pan = 0f, rev = 0.3f, width = 1f;
-        string? source = null;
+        string? source = null, taleLayer = null;
         int shift = 0, beats = 0;
         bool shifted = false, thinned = false;
         for (int i = 2; i < parts.Length; i++)
@@ -187,17 +187,21 @@ public static class Mml
                 case "lowhp": lowHp = InstrumentBank.Get(kv[1]) ?? throw Error(id, line - 1, $"unknown instrument '{kv[1]}'"); break;
                 case "giant": giant = InstrumentBank.Get(kv[1]) ?? throw Error(id, line - 1, $"unknown instrument '{kv[1]}'"); break;
                 case "only":
+                    // A tale's layer (plan 46 · CP12): only=tale for whichever tale is told, only=tale_zmeu for that tale's
+                    // song layer alone (tales.json's songLayer)
+                    if (kv[1].StartsWith("tale_", StringComparison.Ordinal) && kv[1].Length > 5) taleLayer = kv[1];
                     when = kv[1] switch
                     {
-                        "lowhp" => TrackWhen.LowHp, "giant" => TrackWhen.Giant,
-                        _ => throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (lowhp or giant)")
+                        "lowhp" => TrackWhen.LowHp, "giant" => TrackWhen.Giant, "tale" => TrackWhen.Tale,
+                        _ when taleLayer != null => TrackWhen.Tale,
+                        _ => throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (lowhp, giant, tale or tale_<layer>)")
                     };
                     break;
                 case "unless":
                     when = kv[1] switch
                     {
-                        "lowhp" => TrackWhen.NotLowHp, "giant" => TrackWhen.NotGiant,
-                        _ => throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (lowhp or giant)")
+                        "lowhp" => TrackWhen.NotLowHp, "giant" => TrackWhen.NotGiant, "tale" => TrackWhen.NotTale,
+                        _ => throw Error(id, line - 1, $"unknown arrangement '{kv[1]}' (lowhp, giant or tale)")
                     };
                     break;
                 case "double": source = kv[1]; break;
@@ -221,7 +225,7 @@ public static class Mml
         var track = new SongTrack
         {
             Name = parts[0], Instrument = inst, NightInstrument = night, LowHpInstrument = lowHp, GiantInstrument = giant,
-            When = when, Volume = vol, Pan = pan, ReverbSend = rev, Width = width
+            When = when, TaleLayer = when == TrackWhen.Tale ? taleLayer : null, Volume = vol, Pan = pan, ReverbSend = rev, Width = width
         };
         return (track, source == null ? null : new Doubling(source, shift, beats));
     }

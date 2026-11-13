@@ -926,6 +926,8 @@ public class ScriptTests
           tournament rental
           charm due
           charm give
+          tale learn "zmeu"
+          tale has "zmeu"
           records mix
           records count
           records bases

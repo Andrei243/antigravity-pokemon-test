@@ -397,4 +397,163 @@ public class TaleTests
         Assert.False(battle.CanTellTaleNow);
         Assert.False(battle.ToggleTale());
     }
+
+    // ---------------------------------------------------------------- learned in the world (plan 46 · CP12)
+
+    private const string Elder = """
+        script Elder
+          tale has "zmeu"
+          if var RESULT > 0 goto Told
+          say "Sit, child."
+          tale learn "zmeu"
+          setvar VAR_FIRST RESULT
+          tale learn "zmeu"
+          setvar VAR_SECOND RESULT
+          end
+        label Told
+          say "Tell it well."
+          end
+        """;
+
+    private static PokemonPlatinumEngine.Story.HeadlessScriptHost Told()
+    {
+        var library = PokemonPlatinumEngine.Story.ScriptLibrary.FromSources(("test", Elder), ("common", ""));
+        var host = new PokemonPlatinumEngine.Story.HeadlessScriptHost();
+        var runner = new PokemonPlatinumEngine.Story.ScriptRunner(library, host);
+        runner.Start(library.All.First(s => s.File == "test"));
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        return host;
+    }
+
+    [Fact]
+    public void ATaleLearnedSetsItsFlagWithTheKeyItemsFanfareAndTwoLinesOnce()
+    {
+        var host = Told();
+        Assert.True(host.Story.Has(TaleTable.FlagOf("zmeu")));
+        Assert.Equal(1, host.Story.Var("VAR_FIRST"));
+        Assert.Equal(0, host.Story.Var("VAR_SECOND"));
+        var said = host.Transcript.Select(t => t.Text).ToList();
+        Assert.Equal(3, said.Count);
+        Assert.Contains("the Zmeu", said[1]);
+        Assert.Contains("Book of Tales", said[2]);
+        Assert.Single(host.Log, l => l == "fanfare FanfareKeyItem");
+    }
+
+    [Fact]
+    public void TaleHasAsksTheFlagAndAToldElderSaysNoMore()
+    {
+        var library = PokemonPlatinumEngine.Story.ScriptLibrary.FromSources(("test", Elder), ("common", ""));
+        var host = new PokemonPlatinumEngine.Story.HeadlessScriptHost();
+        host.Story.Set(TaleTable.FlagOf("zmeu"));
+        var runner = new PokemonPlatinumEngine.Story.ScriptRunner(library, host);
+        runner.Start(library.All.First(s => s.File == "test"));
+        runner.RunToEnd();
+        Assert.Equal(new[] { "Tell it well." }, host.Transcript.Select(t => t.Text));
+        Assert.Equal(0, host.Story.Var("VAR_FIRST"));
+    }
+
+    [Fact]
+    public void ATaleThatIsNoTaleOfTheFileIsAMistakeOfItsLine()
+    {
+        var wrong = Assert.ThrowsAny<Exception>(() => PokemonPlatinumEngine.Story.ScriptParser.Parse("test", """
+            script Wrong
+              tale learn "nobody"
+              end
+            """));
+        Assert.Contains("nobody", wrong.Message);
+    }
+
+    // ---------------------------------------------------------------- the Zmeu's day held (plan 46 · CP12)
+
+    [Fact]
+    public void TheZmeusTaleHoldsTheDaySoADuskBallThrownAtNightIsAPlainBall()
+    {
+        var night = new BattleConditions { Night = true };
+        var bidoof = Mon("Bidoof", 5, "Tackle");
+        Assert.Equal(30, CatchCalculator.LaterBallTenths("Dusk Ball", bidoof, 0, night, null));
+        Assert.Equal(10, CatchCalculator.LaterBallTenths("Dusk Ball", bidoof, 0, night, null, night: false));
+        Assert.Equal(35, Formulas.BallTenths("Dusk Ball", bidoof, 0, night));
+        Assert.Equal(10, Formulas.BallTenths("Dusk Ball", bidoof, 0, night, night: false));
+        // A cave is no night: the Dusk Ball still works there under the Zmeu's sun
+        Assert.Equal(30, CatchCalculator.LaterBallTenths("Dusk Ball", bidoof, 0, new BattleConditions { Terrain = BattleTerrain.Cave }, null, night: false));
+
+        var core = Tales(new[] { Mon("Monferno", 30, "Splash") }, new[] { Mon("Snorlax", 50, "Splash") }, myTales: All);
+        Assert.False(core.TaleHoldsTheDay);
+        Tell(core, mine: "varcolac");
+        Assert.False(core.TaleHoldsTheDay);
+        var other = Tales(new[] { Mon("Monferno", 30, "Splash") }, new[] { Mon("Snorlax", 50, "Splash") }, myTales: All);
+        Tell(other, mine: "zmeu");
+        Assert.True(other.TaleHoldsTheDay);
+    }
+
+    // ---------------------------------------------------------------- the song's tale layer (plan 46 · CP12)
+
+    [Fact]
+    public void ATaleLayerIsReadForAnyTaleOrOneTalesLayerAndNothingElse()
+    {
+        var song = PokemonPlatinumEngine.Audio.Mml.Parse("test", """
+            tempo 120
+            track lead flute
+              L [ c4 d4 e4 f4 | ]2
+            track pad strings unless=tale
+              L [ c1 | ]2
+            track any choir only=tale double=lead shift=-12
+            track zmeu brass only=tale_zmeu double=lead shift=12
+            """);
+        Assert.True(song.HasTale);
+        Assert.False(song.HasGiant);
+        Assert.Equal(new[] { PokemonPlatinumEngine.Audio.TrackWhen.Always, PokemonPlatinumEngine.Audio.TrackWhen.NotTale, PokemonPlatinumEngine.Audio.TrackWhen.Tale, PokemonPlatinumEngine.Audio.TrackWhen.Tale },
+            song.Tracks.Select(t => t.When));
+        Assert.Equal(new string?[] { null, null, null, "tale_zmeu" }, song.Tracks.Select(t => t.TaleLayer));
+        Assert.Throws<FormatException>(() => PokemonPlatinumEngine.Audio.Mml.Parse("test", "track a flute only=tale_\n  c1 |\n"));
+        Assert.Throws<FormatException>(() => PokemonPlatinumEngine.Audio.Mml.Parse("test", "track a flute unless=tale_zmeu\n  c1 |\n"));
+        Assert.False(PokemonPlatinumEngine.Audio.Mml.Parse("test", "track a flute only=giant\n  c1 |\n").HasTale);
+        // Every tale of the file names a layer of that shape, so a song can be written for it
+        Assert.All(TaleTable.Default.All, t => Assert.Equal("tale_" + t.Id, t.SongLayer));
+    }
+
+    [Fact]
+    public void TheTaleLayerPlaysOnlyUnderItsTaleAndASongWithoutOnePlaysAsItDid()
+    {
+        static float[] Render(string tracks, string? tale)
+        {
+            var song = PokemonPlatinumEngine.Audio.Mml.Parse("test", "tempo 120\n" + tracks);
+            var player = new PokemonPlatinumEngine.Audio.SongPlayer { Tale = tale };
+            player.Start(song, atNight: false);
+            var buffer = new float[PokemonPlatinumEngine.Audio.Synthesizer.DsRate * 2];
+            player.Render(buffer, 1f);
+            return buffer;
+        }
+        static double Loud(string track, string? tale) => Render(track + "\n  L c4 e4 g4 >c4 |\n", tale).Sum(x => Math.Abs(x));
+
+        Assert.Equal(0, Loud("track any choir only=tale", null));
+        Assert.True(Loud("track any choir only=tale", "tale_varcolac") > 1);
+        Assert.Equal(0, Loud("track z brass only=tale_zmeu", "tale_varcolac"));
+        Assert.True(Loud("track z brass only=tale_zmeu", "tale_zmeu") > 1);
+        Assert.True(Loud("track pad strings unless=tale", null) > 1);
+        Assert.Equal(0, Loud("track pad strings unless=tale", "tale_zmeu"));
+
+        // A song with no tale layer is the same to the sample whatever tale is told
+        const string plain = "track lead flute\n  L [ c4 d4 e4 f4 | ]2\n";
+        Assert.Equal(Render(plain, null), Render(plain, "tale_ielele"));
+    }
+
+    [Fact]
+    public void TheScreensTaleLayerFollowsTheToldTaleAsTheAnimatorHasIt()
+    {
+        var mine = new Party();
+        mine.Add(Mon("Monferno", 30, "Ember"));
+        var battle = new BattleEngine(new BattleSetup
+        {
+            PlayerParty = mine, Inventory = new Inventory(), Pokedex = new Pokedex(), WildPokemon = new List<Pokemon> { Mon("Bidoof", 5, "Tackle") },
+            Random = Steady(), Rules = Modern, PlayerName = "Lucas"
+        });
+        Settle(battle);
+        Assert.Null(battle.TaleLayer);
+        battle.Anim.TellTale("zmeu");
+        Assert.Equal("tale_zmeu", battle.TaleLayer);
+        battle.Anim.TellTale(null);
+        Assert.Null(battle.TaleLayer);
+    }
 }

@@ -1563,7 +1563,9 @@
       "told": "A night dance rings through the field!",
       "rule": "For five turns Sound-type moves, and every move made of sound, hit harder.",
       "story": "On summer nights the Ielele dance in a ring in the meadows, and the grass burns where their feet have been. Whoever hears their song dances until dawn. The wise ones stop their ears with wormwood and walk the long way home."
-    }
+    },
+    "learned": "{player} learned the tale of {tale}!",
+    "writtenDown": "It was written into the Book of Tales."
   },
   "bookOfTales": {
     "title": "Book of Tales",

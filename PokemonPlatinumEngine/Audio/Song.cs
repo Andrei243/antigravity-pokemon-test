@@ -9,7 +9,7 @@ public readonly record struct NoteEvent(int Tick, int Length, int Gate, int Key,
 /// Which arrangements a track belongs to: always; only in the low-HP arrangement or only out of it; only while a giant
 /// stands (plan Y · YD5) or only while none does. The two arrangements are independent, so a giant in the red takes both.
 /// </summary>
-public enum TrackWhen { Always, LowHp, NotLowHp, Giant, NotGiant }
+public enum TrackWhen { Always, LowHp, NotLowHp, Giant, NotGiant, Tale, NotTale }
 
 public sealed class SongTrack
 {
@@ -27,6 +27,12 @@ public sealed class SongTrack
 
     /// <summary>When the track plays: always, only in the low-HP arrangement (an alarm figure), only out of it, only while a giant stands, or only while none does.</summary>
     public TrackWhen When { get; init; } = TrackWhen.Always;
+
+    /// <summary>
+    /// For a track that plays only while a tale is told (plan 46 · CP12): the tale's song layer it belongs to
+    /// (<c>tales.json</c>'s <c>songLayer</c>, as <c>tale_zmeu</c>), or null for whichever tale is told.
+    /// </summary>
+    public string? TaleLayer { get; init; }
 
     public float Volume { get; init; } = 0.8f;
     public float Pan { get; init; }
@@ -119,6 +125,17 @@ public sealed class Song
 
     /// <summary>Whether the song has a giant arrangement (plan Y · YD5): a tempo of its own, a track that plays only with a giant or only without, or an instrument swapped for it.</summary>
     public bool HasGiant => GiantTempo != 1.0 || Tracks.Exists(t => t.When is TrackWhen.Giant or TrackWhen.NotGiant || t.GiantInstrument != null);
+
+    /// <summary>Whether the song has a tale layer (plan 46 · CP12): a track that plays only while a tale is told, or only while none is.</summary>
+    public bool HasTale => Tracks.Exists(t => t.When is TrackWhen.Tale or TrackWhen.NotTale);
+
+    /// <summary>Whether a track plays with the tale of this song layer told (null: none is), as far as the tale layer decides.</summary>
+    public static bool PlaysUnderTale(SongTrack track, string? tale) => track.When switch
+    {
+        TrackWhen.Tale => tale != null && (track.TaleLayer == null || track.TaleLayer == tale),
+        TrackWhen.NotTale => tale == null,
+        _ => true
+    };
 
     public double SecondsPerTick(bool night, bool lowHp = false, bool giant = false) =>
         60.0 / (Tempo * (night && HasNight ? NightTempo : 1.0) * (lowHp ? LowHpTempo : 1.0) * (giant ? GiantTempo : 1.0) * TicksPerQuarter);

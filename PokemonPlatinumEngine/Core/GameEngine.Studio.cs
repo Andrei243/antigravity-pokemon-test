@@ -122,6 +122,7 @@ public partial class GameEngine
         if (battle.StudioTake is { } take && !battle.WatchLeft) flow.Studio.LastBoxOffice = StudioFilms.BoxOffice(film, take.Stars);
         AudioManager.LowHp = false;
         AudioManager.Giant = false;
+        AudioManager.Tale = null;
         StartTransition(GameState.Overworld, () =>
         {
             premiereShowing = null;
@@ -156,6 +157,7 @@ public partial class GameEngine
         flow.BattleMayBeLost = false;
         AudioManager.LowHp = false;
         AudioManager.Giant = false;
+        AudioManager.Tale = null;
         StartTransition(GameState.Overworld, () =>
         {
             PokemonModels.Trim(flow.Party.Members.Select(p => p.LookName));

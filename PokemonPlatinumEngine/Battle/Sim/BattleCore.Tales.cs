@@ -44,6 +44,12 @@ public sealed partial class BattleCore
     /// <summary>The tale told over the field now and its rule, or null.</summary>
     public TaleRule? TaleInForce => Field.Tale?.Rule;
 
+    /// <summary>
+    /// A tale told holds the day (the Zmeu's <c>noNight</c>, plan 46 · CP12): whatever the battle reads of the night reads
+    /// day while it is told. The Dusk Ball is the one reader today; a night form of Carpathia's species asks it too.
+    /// </summary>
+    public bool TaleHoldsTheDay => TaleInForce?.NoNight == true;
+
     // ---------------------------------------------------------------- what may be chosen
 
     /// <summary>

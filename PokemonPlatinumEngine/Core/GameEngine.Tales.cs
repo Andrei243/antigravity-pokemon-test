@@ -7,7 +7,7 @@ namespace PokemonPlatinumEngine.Core;
 // The Tales in the game (plan 46 · CP11): which tales the player has learned is the story's own flags
 // (TaleTable.FlagOf, FLAG_TALE_<ID>: no save field, no version), handed to a battle as BattleSetup.Tales and told only
 // with the Book of Tales in the bag; the Book's screen (UI/BookOfTalesScreen) lists them, opened by USE on the Book.
-// CP12 adds the script's `tale learn`; until then a tale is learned by its flag.
+// A script learns one with `tale learn "<id>"` (plan 46 · CP12, Story/ScriptRunner.Tales.cs), which sets that flag.
 public partial class GameEngine
 {
     /// <summary>The Book of Tales' field use, by name (<c>items.json</c>'s <c>fieldUse</c>).</summary>

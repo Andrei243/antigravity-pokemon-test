@@ -184,6 +184,11 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - **Settled** (decision 15 and the first list): one telling and one answer a trainer, the slower of two tales on one turn an answer; Baba Dochia's the cold returning and the Ielele's Sound moves stronger (the brief's), the plan's "sheds defence" and "strike twice" left.
 - **Owed**: the other seven tales of the list (CP11's second session, with balance by scenario tests); the Zmeu's "no night forms" bites nowhere yet (nothing in a battle has a night form: CP12); `tales.json` in `GameDataFiles.Version`'s hash; trainers' tales in `trainers.json` (`TrainerDatabase` reads none: CP18 on); CP12's Tale Forms and sculpts, the tale's field look and Tale Form cue, the songs' tale layers, `tale learn` (a tale is learned by its flag, `FLAG_TALE_<ID>`, until then).
 
+### CP12 as built (2026-11-13; its engine side, no species, no art, no music)
+- **Built** (`docs/mechanics/rulings.md`, "The Tales"; `docs/scripts.md`, "The Tales"; `docs/music-format.md`): the script's `tale learn "<id>"` (the flag, the key item's fanfare, two lines in English and Romanian, once; skipped as an item given is) and `tale has "<id>"`, the id checked as the script is read; the battle songs' **tale layers** as a mechanism (`only=tale_<id>`, `only=tale`, `unless=tale` in MML; `SongPlayer.Tale`, `AudioMixer.Tale`, `AudioManager.Tale`, set every frame of a battle from `BattleEngine.TaleLayer`, the animator's tale, and cleared wherever the giant layer is), a song with no layer the same to the sample; **the Zmeu's held day** bites on the Dusk Ball (`BattleCore.TaleHoldsTheDay`); `tales.json` in `GameDataFiles.Version`'s hash (CP11's owed item). Tests: `TaleTests` (the learning, the parse check, the layers read and played, the screen's layer, the Dusk Ball), `ScriptTests.EveryCommand`.
+- **Decided here**: a tale may be learned without the Book in the bag (the Book is what lets it be told); every tale's song layer is named `tale_<id>` (a test holds it); a cave keeps the Dusk Ball's bonus under the Zmeu's sun.
+- **Owed** (each waits on approval or the GPU): the Tale Forms' bindings and sculpts (CP3's species), a Tale Form's wake cue and the tale's field look (one harness run of `tales`, H), the tale layers' music for the region's themes (the user's ear), the elders, walls and gates that say `tale learn` (CP18 on), and CP11's seven other tales.
+
 ### CP3 · The first proposals approved (beside; docs)
 - The starters and legendaries ([the file](decisions/CP-proposals-starters-legendaries.md)) answered by the user; then the proposals of the rest in batches of 25 to 30 (the Delta and coast, the plateau, the ridge and caves, the north and the capital) and the regional forms.
 
@@ -257,7 +262,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [ ] CP9 Entries and names
 - [ ] CP10 Signature moves and abilities
 - [ ] CP11 The Tales: rules (first session 2026-11-13: the engine and five tales; see "CP11 as built"; the other seven owed)
-- [ ] CP12 The Tales: forms, looks, songs and the Book
+- [ ] CP12 The Tales: forms, looks, songs and the Book (engine side 2026-11-13: `tale learn`, the songs' tale layers' switch, the Zmeu's held day, the hash; see "CP12 as built"; forms, looks and music owed)
 - [ ] CP13 The masks: rules and making
 - [ ] CP14 The masks: on every body
 - [x] CP15 The cap to 300 (2026-11-12; see "CP15 as built", above)
