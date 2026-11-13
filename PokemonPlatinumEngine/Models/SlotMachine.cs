@@ -1245,6 +1245,15 @@ public static class GameCornerPrizes
     };
 
     /// <summary>
+    /// The Lumiose arcade's prize counter (plan 42 · PS6; ours): what the cabinets' coins buy, cheaper than the card
+    /// tables' TMs, since a cabinet pays less for the same time.
+    /// </summary>
+    public static readonly (string Item, int Coins)[] Lumiose =
+    {
+        ("Heart Scale", 150), ("Star Piece", 250), ("PP Up", 400), ("Rare Candy", 500), ("Ability Capsule", 900), ("Bottle Cap", 1500)
+    };
+
+    /// <summary>
     /// Goldenrod's three Pokémon (the same script's HeartGold menu, game version 7: Abra, Ekans and Dratini, where
     /// SoulSilver's has Sandshrew for Ekans), each given at <see cref="GoldenrodPokemonLevel"/> by <c>GiveMon</c>.
     /// </summary>

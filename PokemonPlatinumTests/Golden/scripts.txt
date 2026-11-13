@@ -6685,6 +6685,104 @@ way -
 from Old Woman at 8,9 of LostTower5F
 way -
   Old Woman> Ohh... Who's there? I can hardly see a thing in this fog.
+=== LumioseCity_Arcade.Clerk
+from Clerk at 7,3 of LumioseCity_Arcade
+way 0.0
+  Clerk> Welcome to the Lumiose Arcade! The cabinets pay out in coins, so you'll want somewhere to keep them.
+  Clerk> Here's a Coin Case, on the house.
+  > Lucas received the Coin Case!
+  > Lucas put it away in the Key Items pocket.
+  Clerk> You have 0 coins.
+  Clerk> How can I help?
+  Clerk> Fifty coins for $1,000?
+  > Lucas bought 50 coins.
+  Clerk> Come back and play again!
+  ? How can I help? = BUY COINS
+  ? Fifty coins for $1,000? = Yes
+  * fanfare FanfareKeyItem
+way 0.1, from answer 2
+  Clerk> Come back and play again!
+  ? Fifty coins for $1,000? = No
+way 2, from answer 1
+  Clerk> Come back and play again!
+  ? How can I help? = NO THANKS
+way 1.0.0, from answer 1
+  Clerk> Which prize would you like?
+  Clerk> The Heart Scale, for 150 coins?
+  Clerk> I'm sorry, you don't have enough coins for that.
+  ? How can I help? = PRIZES
+  ? Which prize would you like? = Heart Scale   150 C
+  ? The Heart Scale, for 150 coins? = Yes
+way 1.0.1, from answer 3
+  Clerk> Come back and play again!
+  ? The Heart Scale, for 150 coins? = No
+way 1.6, from answer 2
+  Clerk> Come back and play again!
+  ? Which prize would you like? = No thanks
+way 1.5.0, from answer 2
+  Clerk> The Bottle Cap, for 1,500 coins?
+  Clerk> I'm sorry, you don't have enough coins for that.
+  ? Which prize would you like? = Bottle Cap   1,500 C
+  ? The Bottle Cap, for 1,500 coins? = Yes
+way 1.5.1, from answer 3
+  Clerk> Come back and play again!
+  ? The Bottle Cap, for 1,500 coins? = No
+way 1.4.0, from answer 2
+  Clerk> The Ability Capsule, for 900 coins?
+  Clerk> I'm sorry, you don't have enough coins for that.
+  ? Which prize would you like? = Ability Capsule   900 C
+  ? The Ability Capsule, for 900 coins? = Yes
+way 1.4.1, from answer 3
+  Clerk> Come back and play again!
+  ? The Ability Capsule, for 900 coins? = No
+way 1.3.0, from answer 2
+  Clerk> The Rare Candy, for 500 coins?
+  Clerk> I'm sorry, you don't have enough coins for that.
+  ? Which prize would you like? = Rare Candy   500 C
+  ? The Rare Candy, for 500 coins? = Yes
+way 1.3.1, from answer 3
+  Clerk> Come back and play again!
+  ? The Rare Candy, for 500 coins? = No
+way 1.2.0, from answer 2
+  Clerk> The PP Up, for 400 coins?
+  Clerk> I'm sorry, you don't have enough coins for that.
+  ? Which prize would you like? = PP Up   400 C
+  ? The PP Up, for 400 coins? = Yes
+way 1.2.1, from answer 3
+  Clerk> Come back and play again!
+  ? The PP Up, for 400 coins? = No
+way 1.1.0, from answer 2
+  Clerk> The Star Piece, for 250 coins?
+  Clerk> I'm sorry, you don't have enough coins for that.
+  ? Which prize would you like? = Star Piece   250 C
+  ? The Star Piece, for 250 coins? = Yes
+way 1.1.1, from answer 3
+  Clerk> Come back and play again!
+  ? The Star Piece, for 250 coins? = No
+=== LumioseCity_Arcade.Gamer
+from Gamer at 3,6 of LumioseCity_Arcade
+way -
+  Gamer> Line up a Pokémon that the foe is weak to and the cabinet hits twice as hard. Four in a row hits harder still!
+=== LumioseCity_Arcade.Match
+from the sign at 2,3 of LumioseCity_Arcade
+from the sign at 3,3 of LumioseCity_Arcade
+from the sign at 4,3 of LumioseCity_Arcade
+way -
+  > A match-three cabinet. It takes coins, and coins need a Coin Case: the clerk has them.
+=== LumioseCity_Arcade.Picture
+from the sign at 10,3 of LumioseCity_Arcade
+from the sign at 11,3 of LumioseCity_Arcade
+from the sign at 12,3 of LumioseCity_Arcade
+way -
+  > A picture-logic cabinet. It takes coins, and coins need a Coin Case: the clerk has them.
+=== LumioseCity_Arcade.Regular
+from Gentleman at 12,9 of LumioseCity_Arcade
+way -
+  Gentleman> Kalos never had a Game Corner, so the station's cellar made one. Quieter than the slots, and kinder to the purse.
+=== LumioseCity_Arcade.Sketcher
+from Socialite at 11,6 of LumioseCity_Arcade
+way -
+  Socialite> Each picture is a Pokémon you've seen. The more you see on your travels, the more pictures there are to solve.
 === LumioseCity_BattleInstitute.Examiner
 from Eustache at 8,6 of LumioseCity_BattleInstitute
 way -

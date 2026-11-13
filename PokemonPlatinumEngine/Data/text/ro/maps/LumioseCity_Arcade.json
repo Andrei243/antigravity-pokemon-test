@@ -1,0 +1,102 @@
+{
+  "displayName": {
+    "en": [
+      "Lumiose Arcade"
+    ],
+    "text": [
+      "Sala de jocuri din Lumiose"
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Funcționar"
+        ]
+      }
+    },
+    "player_match": {
+      "name": {
+        "en": [
+          "Gamer"
+        ],
+        "text": [
+          "Jucător"
+        ]
+      }
+    },
+    "player_picture": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Doamnă din lumea bună"
+        ]
+      }
+    },
+    "regular": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Domn"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2,3": {
+      "en": [
+        "A match-three cabinet."
+      ],
+      "text": [
+        "Un aparat de potrivit trei."
+      ]
+    },
+    "3,3": {
+      "en": [
+        "A match-three cabinet."
+      ],
+      "text": [
+        "Un aparat de potrivit trei."
+      ]
+    },
+    "4,3": {
+      "en": [
+        "A match-three cabinet."
+      ],
+      "text": [
+        "Un aparat de potrivit trei."
+      ]
+    },
+    "10,3": {
+      "en": [
+        "A picture-logic cabinet."
+      ],
+      "text": [
+        "Un aparat de logica imaginii."
+      ]
+    },
+    "11,3": {
+      "en": [
+        "A picture-logic cabinet."
+      ],
+      "text": [
+        "Un aparat de logica imaginii."
+      ]
+    },
+    "12,3": {
+      "en": [
+        "A picture-logic cabinet."
+      ],
+      "text": [
+        "Un aparat de logica imaginii."
+      ]
+    }
+  }
+}

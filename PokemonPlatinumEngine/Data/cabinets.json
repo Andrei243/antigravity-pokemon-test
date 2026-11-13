@@ -1,0 +1,23 @@
+{
+  // The arcade's cabinets (plan 42 · PS6; docs/data-files.md, "The arcade's cabinets"): written by hand, ours. The
+  // match-three's stages in the order they are offered (each foe a species of the data, its types read for the chart,
+  // a stage's HP, the swaps it allows, the seed its board is drawn from and the coins it pays, with a coin or two for
+  // each swap left over), the species that fill a board's places the team leaves empty, and what a picture of each grid
+  // size pays (less for each mistake, never under its least). Both cabinets pay less than the card tables for the same time.
+  "stages": [
+    { "id": "lumiose_1", "foe": "Bidoof", "hp": 300, "swaps": 15, "seed": 4207, "coins": 20, "coinsPerSwapLeft": 1 },
+    { "id": "lumiose_2", "foe": "Geodude", "hp": 420, "swaps": 16, "seed": 1913, "coins": 30, "coinsPerSwapLeft": 1 },
+    { "id": "lumiose_3", "foe": "Gyarados", "hp": 560, "swaps": 18, "seed": 7730, "coins": 40, "coinsPerSwapLeft": 1 },
+    { "id": "lumiose_4", "foe": "Gengar", "hp": 700, "swaps": 18, "seed": 2655, "coins": 55, "coinsPerSwapLeft": 2 },
+    { "id": "lumiose_5", "foe": "Magnezone", "hp": 840, "swaps": 20, "seed": 9182, "coins": 70, "coinsPerSwapLeft": 2 },
+    { "id": "lumiose_6", "foe": "Garchomp", "hp": 1000, "swaps": 20, "seed": 3341, "coins": 85, "coinsPerSwapLeft": 2 },
+    { "id": "lumiose_7", "foe": "Togekiss", "hp": 1150, "swaps": 22, "seed": 6068, "coins": 100, "coinsPerSwapLeft": 3 },
+    { "id": "lumiose_8", "foe": "Dialga", "hp": 1400, "swaps": 24, "seed": 8524, "coins": 120, "coinsPerSwapLeft": 3 }
+  ],
+  "helpers": [ "Pikachu", "Bulbasaur", "Charmander", "Squirtle" ],
+  "pictures": [
+    { "size": 10, "coins": 20, "perMistake": 3, "least": 5 },
+    { "size": 15, "coins": 40, "perMistake": 4, "least": 8 },
+    { "size": 20, "coins": 60, "perMistake": 5, "least": 10 }
+  ]
+}

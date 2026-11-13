@@ -2944,6 +2944,50 @@
       "random": "La întâmplare", "swap": "Schimb", "oneBp": "1 PL", "threeBp": "3 PL", "noBattle": "Fără luptă", "noEvent": "Nimic"
     }
   },
+  "cabinet": {
+    "ask": { "play": "JOACĂ", "leave": "PLEACĂ" },
+    "quitAsk": { "title": "Renunți?", "body": "Un aparat lăsat înainte de final nu plătește nimic.", "yes": "RENUNȚĂ", "no": "JOACĂ MAI DEPARTE" },
+    "hint": { "quit": "Renunță" },
+    "match": {
+      "foe": "ADVERSAR",
+      "hp": "PV {hp} / {most}",
+      "swaps": "MUTĂRI RĂMASE",
+      "score": "SCOR",
+      "team": "PE TABLĂ",
+      "hint": { "pick": "Alege și mută" },
+      "ask": {
+        "title": "Nivel: {name}",
+        "body": "Adu-i PV la zero în {swaps} mutări. Are {hp} PV. Un nivel terminat plătește {coins} fise, și mai mult pentru fiecare mutare rămasă."
+      },
+      "line": {
+        "intro": "{hp} PV de doborât în {swaps} mutări.",
+        "pick": "Alege o iconiță, apoi schimb-o cu o vecină ca să aliniezi trei.",
+        "noLine": "Mutarea asta nu face niciun rând. Încearcă alta.",
+        "notNeighbours": "Doar iconițele alăturate se pot schimba.",
+        "hit": "{damage} daune!",
+        "super": "E foarte eficient! {damage} daune!",
+        "weak": "Nu e prea eficient… {damage} daune.",
+        "cascade": "Un lanț de {cascades}! {damage} daune!",
+        "cleared": "Nivel terminat! Ai câștigat {coins} fise.",
+        "failed": "Nu mai ai mutări. Mai mult noroc data viitoare!"
+      }
+    },
+    "picture": {
+      "title": "LOGICA IMAGINII",
+      "unknown": "???",
+      "grid": "GRILĂ",
+      "mistakes": "GREȘELI",
+      "filled": "COMPLETATE",
+      "hint": { "fill": "Umple", "cross": "Taie" },
+      "line": {
+        "finding": "Se alege o imagine…",
+        "none": "Nu sunt imagini noi. Fiecare Pokémon văzut în călătorii mai adaugă una.",
+        "board": "Completează grila de {size} pe {size}. Numerele dau șirurile fiecărui rând și fiecărei coloane.",
+        "mistake": "Celula asta nu face parte din imagine. Greșeli: {mistakes}.",
+        "solved": "E {name}! Ai câștigat {coins} fise."
+      }
+    }
+  },
   "cardFlip": {
     "level": "NIVEL",
     "coins": "JETOANE",
