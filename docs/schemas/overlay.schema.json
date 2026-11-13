@@ -182,6 +182,12 @@
         "Tent",
         "Field",
         "Court",
+        "DenRedCave",
+        "DenBrownCave",
+        "DenBlueCave",
+        "DenYellowCave",
+        "DenTree",
+        "DenShrub",
         null
       ]
     },
@@ -1086,7 +1092,8 @@
               "FestivalHayBales",
               "FestivalSheaves",
               "Seagallop",
-              "NetworkMachine"
+              "NetworkMachine",
+              "BaseEntrance"
             ]
           },
           "x": {
