@@ -25,6 +25,9 @@ internal sealed class GltfNode
 
     public int Mesh = -1, Skin = -1;
 
+    /// <summary>The node's extras (Blender's custom properties), each value as its text: what a character's piece says of itself (<see cref="CharacterFiles"/>).</summary>
+    public Dictionary<string, string> Extras = new(StringComparer.OrdinalIgnoreCase);
+
     /// <summary>The node's transform relative to its parent (System.Numerics row-vector convention).</summary>
     public Matrix4x4 Local => Matrix ?? Compose(Translation, Rotation, Scale);
 
@@ -539,6 +542,9 @@ internal static class GltfReader
             foreach (var n in Array("nodes"))
             {
                 var node = new GltfNode { Name = Text(n, "name"), Mesh = Int(n, "mesh"), Skin = Int(n, "skin") };
+                if (n.TryGetProperty("extras", out var extras) && extras.ValueKind == JsonValueKind.Object)
+                    foreach (var extra in extras.EnumerateObject())
+                        node.Extras[extra.Name] = extra.Value.ValueKind == JsonValueKind.String ? extra.Value.GetString() ?? "" : extra.Value.GetRawText();
                 var m = Floats(n, "matrix");
                 if (m.Length == 16)
                     node.Matrix = new Matrix4x4(m[0], m[1], m[2], m[3], m[4], m[5], m[6], m[7], m[8], m[9], m[10], m[11], m[12], m[13], m[14], m[15]);

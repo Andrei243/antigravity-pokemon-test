@@ -31,7 +31,9 @@ internal static class CharacterRenderer
                 // A layered look's clothes, a mesh of their own over the body, and what a grown look holds, another
                 rig.ClothesBody?.Draw(context.ToonSkinned, rig.Skin, model);
                 rig.HeldBody?.Draw(context.ToonSkinned, rig.Skin, model);
-                if (drawFace && rig.FaceModel != null && rig.FaceMaterials.Length > 0)
+                if (drawFace && rig.File != null)
+                    rig.FaceState(CharacterAnimation.ExpressionOf(pose), pose.Blink, pose.MouthOpen)?.Draw(context.ToonSkinned, rig.Skin, model);
+                else if (drawFace && rig.FaceModel != null && rig.FaceMaterials.Length > 0)
                     rig.FaceModel.Draw(rig.FaceMaterial(CharacterAnimation.ExpressionOf(pose), pose.Blink, pose.MouthOpen), rig.Skin, model);
                 break;
             case CharacterPass.Outline:

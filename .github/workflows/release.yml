@@ -1,7 +1,8 @@
 # A release (plan 16 · T2): a tag v<major>.<minor>.<patch>[-label] builds the game for Windows, Linux and macOS (Intel
 # and Apple silicon), each one executable with the .NET runtime and raylib inside it and the game's Data and Assets
-# beside it, zips each with the licence, the README, the third-party notices, docs/playing.md, the shipped mesh cache
-# and a manifest of the game's files (what `--verify` checks), and puts the four zips on a GitHub release of this
+# beside it, zips each with the licence, the README, the third-party notices, docs/playing.md, the shipped mesh cache,
+# the people's files built with Blender (Assets/characters: plan 47, the user's decision of 2026-11-13 that they are
+# built here and never committed) and a manifest of the game's files (what `--verify` checks), and puts the four zips on a GitHub release of this
 # repository with the changelog's section for the version. Nothing else is uploaded anywhere.
 #
 # The version is the tag less its "v" (GameVersion.FromTag does the same, and GameVersionTests holds the cases); a
@@ -72,8 +73,38 @@ jobs:
           path: ${{ runner.temp }}/warm/cache/models
           retention-days: 1
 
+  # The people's files (style guide, "Characters from files"): a file a build, made by Blender from the scripts in
+  # tools/BlenderAnim/blender/sculpts on the engine's own frames, and shipped in every zip as Assets/characters. The
+  # Blender is the LTS the scripts were written with; a run that makes fewer than every build's file fails.
+  characters:
+    runs-on: ubuntu-latest
+    env:
+      BLENDER_VERSION: 4.5.10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - name: Blender
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxi6 libxxf86vm1 libxfixes3 libxrender1 libgl1 libsm6 libxkbcommon0 libegl1
+          series="${BLENDER_VERSION%.*}"
+          curl -fsSL "https://download.blender.org/release/Blender$series/blender-$BLENDER_VERSION-linux-x64.tar.xz" -o "$RUNNER_TEMP/blender.tar.xz"
+          mkdir -p "$RUNNER_TEMP/blender"
+          tar -xJf "$RUNNER_TEMP/blender.tar.xz" -C "$RUNNER_TEMP/blender" --strip-components=1
+          echo "BLENDER=$RUNNER_TEMP/blender/blender" >> "$GITHUB_ENV"
+      - name: Build every build's file
+        shell: bash
+        run: tools/dev/people.sh --strict "$RUNNER_TEMP/people"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: characters
+          path: ${{ runner.temp }}/people/overrides/characters/*.glb
+          retention-days: 1
+
   build:
-    needs: [version, cache]
+    needs: [version, cache, characters]
     strategy:
       fail-fast: true
       matrix:
@@ -106,6 +137,12 @@ jobs:
         with:
           name: mesh-cache
           path: ${{ runner.temp }}/game/cache/models
+
+      # Before the manifest is written, so --verify holds them like the rest of Assets
+      - uses: actions/download-artifact@v4
+        with:
+          name: characters
+          path: ${{ runner.temp }}/game/Assets/characters
 
       - name: Put the folder together
         shell: bash

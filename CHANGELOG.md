@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Every person in the game, in the chibi regions and the grown ones, has been modelled again: new bodies, hair cuts, hats and clothes, and faces whose eyes, brows and mouth are modelled rather than painted, in every expression, blinking and speaking. Outfits, the boutique, the salon and saves work as before.
+
 - Unova's special tiles now work: patches of shaking grass rustle and always hold a Pokémon of the place, ripples on the water bring up the water's own Pokémon (on a rod too), dust clouds in caves hide a Gem or a Pokémon, and a shadow crossing a bridge brings down a flyer. Each day's patches stand in other places.
 
 - Once you are the Johto Safari Zone's Owner, the Area Customizer in its gate hall lets you set haystacks, saplings, boulders, ponds and other objects down in any of its twelve areas. Enough of a kind of place, plains, forest, peak or water, and new Pokémon move into that area: they show up from the day after, and objects that have stood ten days count twice.

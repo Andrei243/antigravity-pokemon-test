@@ -172,6 +172,24 @@ internal sealed class CharacterRig
     public Material[] FaceMaterials = Array.Empty<Material>();
     public bool Uploaded;
 
+    /// <summary>
+    /// A look read from a file (style guide, "Characters from files"): its face is pieces of its own for each
+    /// expression, a blink and an open mouth, assembled and put on the graphics card the first time each is drawn.
+    /// </summary>
+    public CharacterFile? File;
+    internal readonly Dictionary<int, SkinnedModel> FaceStates = new();
+
+    /// <summary>The modelled face for an expression, a blink and a syllable (null for a look that isn't from a file).</summary>
+    public SkinnedModel? FaceState(Expression expression, bool blink, bool mouthOpen)
+    {
+        if (File == null) return null;
+        int key = (int)expression * 4 + (blink ? 2 : 0) + (mouthOpen ? 1 : 0);
+        if (FaceStates.TryGetValue(key, out var model)) return model;
+        var mesh = CharacterFiles.Assemble(File, CharacterFiles.FacePieces(expression, blink, mouthOpen, Style.Lashes), Style);
+        if (mesh == null) return null;
+        return FaceStates[key] = SkinnedModel.Upload(mesh, Skeleton.Count);
+    }
+
     // Scratch for posing: one pose at a time
     internal SkeletonPose Pose = null!;
     internal Matrix4x4[] Skin = Array.Empty<Matrix4x4>();
@@ -280,6 +298,8 @@ internal static partial class CharacterModels
         rig.HeldBody?.Unload();
         rig.HeldOutline?.Unload();
         rig.FaceModel?.Unload();
+        foreach (var state in rig.FaceStates.Values) state.Unload();
+        rig.FaceStates.Clear();
         foreach (var material in rig.FaceMaterials.Concat(rig.OpenFaceMaterials.Where(m => m != null).Select(m => m!.Value)))
         {
             Gpu.Unload(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
@@ -328,6 +348,8 @@ internal static partial class CharacterModels
             case RigKind.Rift: BuildRift(rig, model); break;
             default:
                 rig.Style = CharacterStyle.For(npcType);
+                // A look whose build has a file with every piece it wears is assembled from it (style guide, "Characters from files")
+                if (BuildFromFile(rig)) return rig;
                 // A look of the grown kit is a body of its own (plan 30 · FM4), meshed and finished in its own way
                 if (rig.Style.Kit == Data.CharacterKit.Grown) return BuildGrownRig(rig, model);
                 wear = new SdfModel("clothes " + rig.Type) { WeightBlend = 0.04f };
@@ -441,7 +463,13 @@ internal static partial class CharacterModels
         rig.Scale = s.Height;
         m.WeightBlend = 0.04f;
 
-        var sk = rig.Skeleton;
+        ChibiSkeleton(rig.Skeleton, f);
+        BuildHumanoidBody(rig, m, s, wear, f);
+    }
+
+    /// <summary>The chibi kit's 19 bones on a frame's joints (<see cref="HumanBones"/>).</summary>
+    private static void ChibiSkeleton(Skeleton sk, Frame f)
+    {
         sk.Add("root", -1, Vector3.Zero);
         sk.Add("hips", HumanBones.Root, new(0, f.HipY, 0));
         sk.Add("spine", HumanBones.Hips, new(0, f.WaistY, 0));
@@ -461,7 +489,10 @@ internal static partial class CharacterModels
         sk.Add("hair", HumanBones.Head, f.HeadC + new Vector3(0, 0.02f, -0.12f));
         sk.Add("bag", HumanBones.Spine, new(0, f.ChestY + 0.05f, -0.1f));
         sk.Add("skirt", HumanBones.Hips, new(0, f.HipY + 0.04f, 0));
+    }
 
+    private static void BuildHumanoidBody(CharacterRig rig, SdfModel m, CharacterStyle s, SdfModel wear, Frame f)
+    {
         var skin = s.Skin;
         var hair = s.HairColor;
         var H = f.HeadC;

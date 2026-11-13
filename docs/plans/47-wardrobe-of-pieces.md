@@ -83,10 +83,36 @@ The cast or everyone from pieces (decision 2); new slots (decision 5); pieces re
 - **Needs**: nothing built later. Under route (a) it builds on the modelled prototype on `main`, so it starts from `main` and after whoever owns that prototype says it is steady. It touches `CharacterModels`, which plan 30 and plan 43 also touch: one of them at a time.
 - **Gives**: plan 43 (the player's life) a salon and a dye house whose work is colours only; plan 46 a wardrobe a new region can add shapes to; the Blender skill a second kind of model to practise on.
 
+## The user's answers of 2026-11-13, and what that session built
+
+Asked in a session whose request was "remake the game's characters, chibi and grown, with the Blender skill", the user answered three questions, which settle decisions 1 and 2 otherwise than this plan recommended and overrule "The face stays the engine's":
+
+1. **Route (b)**: the game reads the files made in Blender.
+2. **Everyone, the whole vocabulary at once**: every build of both kits, every hair cut, hat, garment and thing held; not the player alone, and no gate between the pilot and the rest.
+3. **The face is modelled in Blender**, a piece to a state, in place of the painted patch.
+
+Decisions 3 to 5 were not asked. As built, decision 3 answers itself: with no file nothing moves, and with a file every look of that build is drawn from it.
+
+**Built** (style guide, "Characters from files", is the format's reference):
+
+- `Graphics/CharacterFiles.cs` (GPU-free): the reader (a file a build, pieces by node name, bones found on the engine's skeleton by name, extras `colours`, `tint`, `hides`), `Wanted` (the pieces a look wears), `FacePieces`, `Palette` and `Fill` (zones), `Assemble`, `HiddenBy`. `CharacterModels.Files.cs`: `BuildFromFile`, which `CharacterModels.Build` asks first and which answers only when the build's file holds every piece the look wears, and `FramesJson`, the engine's frames and skeletons for Blender's scripts. `CharacterRig.File` and `FaceState`: the modelled face's meshes, made the first time each is drawn. `GltfNode.Extras`.
+- `tools/BlenderAnim/blender/peoplekit.py` (shapes in the game's axes, zones, lathes and rings), `people_frames.json` (held to the engine by `CharacterFilesTests`), `sculpts/people_chibi.py` (89 pieces a build: all four chibi builds) and `sculpts/people_grown.py` (the nine grown files), `tools/dev/people.sh`.
+- The wardrobe needed nothing: an outfit already becomes a `CharacterStyle` (`CharacterStyle.Dressed`), and the pieces are chosen from the style. Garment ids, the boutique, the salon, the dye house, the introduction and saves are untouched. So WD2's "each row of `clothes.json` names its piece" is not needed while garments are shapes by flags; it comes back with WD4's new shapes.
+
+**Not done, and the user's to decide**:
+
+- **Where the files live: decided by the user on 2026-11-13, built at release.** No file is ever committed (`/assets/characters/` is git-ignored). The release workflow's `characters` job downloads Blender 4.5.10 LTS, runs `tools/dev/people.sh --strict` (which fails unless all thirteen files are made) and every zip ships them as `Assets/characters`, under the manifest `--verify` checks; the game reads that folder beside its executable after `overrides/characters` and `assets/characters`. **The job has never run**: it was written on the Windows machine and wants a first run by hand (`workflow_dispatch`, which makes a draft) before a tag relies on it. A developer builds them for a look with `tools/dev/people.sh <out dir>`, or into `assets/characters` at the repository's root to play with them (`tools/dev/people.sh --here`). The zips grow by the files' size, about 330 MB before compression: shrinking them (coarser hair, 16-bit positions) is still worth a session.
+- **The look itself wants the user's eye**: boards of the chibi cast and the grown turntables beside today's were shown at the session's end; nothing is approved yet.
+- WD4 (new shapes, new slots) and the pieces' own `clothes.json` field.
+- **Measured** (`CHARACTER_FILES=<folder> dotnet test PokemonPlatinumTests --filter CharacterFilesTests` writes `sweep.txt` there): all 830 looks of the table in both kits are made from the twelve files their builds use, none falls back, the largest mesh is 40,798 vertices; a file is read in 50 to 150 ms and holds 25 to 33 MB, and nothing lets a file go once read (about 340 MB with every build in memory, which a crowd of every build would reach; freeing a build nobody stands in is owed).
+- **Where the first pass is worse than the sculpts** (seen on the boards): the grown coats are closed, where the sculpt's stand open over the shirt; a grown coat over a skirt shows two tiers; the broad build's shoulders are boxy; hair is lumpier in both kits, Swept and Bun most; the swim bottoms' leg edge fights the thigh; the grown neck openings and the vest's V are a little stepped; the grown eyes are small.
+- **Owed in the scripts**: `people_grown.py` calls `pp.k.build` itself to pass `band` and `wband`, which `People.piece` should take, and its `garment_body` reaches into the kit's parts to flatten a hem; hair's vertex counts (up to 17,000 for a long cut) are where a file's size would come down first.
+- `--safe-mode` and `CharacterFiles.Enabled = false` draw everyone from the sculpting kits, which therefore stay.
+
 ## Status
 
-- [ ] Decisions 1 to 5 answered
-- [ ] WD1 · The prototype and its gate
+- [~] Decisions 1 and 2 answered and the face decided (2026-11-13: route b, everyone, a modelled face); 3 to 5 open
+- [~] WD1 · The reader, the format and both kits' files built behind "no file, no change" (2026-11-13); the user's look at the boards and where the files live are open
 - [ ] WD2 · Every garment of today as a piece
 - [ ] WD3 · The switch thrown
 - [ ] WD4 · New shapes
