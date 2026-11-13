@@ -267,7 +267,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -275,7 +275,7 @@
         "Hi there! I work on the Lucky Number Show. Every week we draw a lucky number and read it out on the radio."
       ],
       "text": [
-        ""
+        "Salut! Lucrez la Emisiunea Numărului Norocos. În fiecare săptămână extragem un număr norocos și îl citim la radio."
       ]
     },
     {
@@ -283,7 +283,7 @@
         "Shall I check this week's number against your Pokémon's ID numbers?"
       ],
       "text": [
-        ""
+        "Să verific numărul din această săptămână cu numerele de ID ale Pokémonilor tăi?"
       ]
     },
     {
@@ -291,7 +291,7 @@
         "This week's lucky number is {luckynumber}! Let me look through your Pokémon's ID numbers..."
       ],
       "text": [
-        ""
+        "Numărul norocos al săptămânii e {luckynumber}! Mă uit prin numerele de ID ale Pokémonilor tăi..."
       ]
     },
     {
@@ -299,7 +299,7 @@
         "Aw, no luck. Not a single digit matched this week."
       ],
       "text": [
-        ""
+        "Of, ghinion. Nicio cifră nu s-a potrivit săptămâna asta."
       ]
     },
     {
@@ -307,7 +307,7 @@
         "There's a new number every week, though. Keep your radio tuned in!"
       ],
       "text": [
-        ""
+        "Dar în fiecare săptămână e un număr nou. Ține radioul deschis!"
       ]
     },
     {
@@ -315,7 +315,7 @@
         "The last digit matches! That's our fifth prize."
       ],
       "text": [
-        ""
+        "Ultima cifră se potrivește! E premiul nostru al cincilea."
       ]
     },
     {
@@ -323,7 +323,7 @@
         "The last two digits match! That's our fourth prize."
       ],
       "text": [
-        ""
+        "Ultimele două cifre se potrivesc! E premiul nostru al patrulea."
       ]
     },
     {
@@ -331,7 +331,7 @@
         "The last three digits match! That's our third prize."
       ],
       "text": [
-        ""
+        "Ultimele trei cifre se potrivesc! E premiul nostru al treilea."
       ]
     },
     {
@@ -339,7 +339,7 @@
         "Four digits match! That's our second prize!"
       ],
       "text": [
-        ""
+        "Patru cifre se potrivesc! E premiul nostru al doilea!"
       ]
     },
     {
@@ -347,7 +347,7 @@
         "All five digits match! I can hardly believe it! That's our first prize!"
       ],
       "text": [
-        ""
+        "Toate cele cinci cifre se potrivesc! Nu-mi vine să cred! E premiul nostru întâi!"
       ]
     },
     {
@@ -355,7 +355,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -363,7 +363,7 @@
         "Congratulations! Tune in again next week for a new number."
       ],
       "text": [
-        ""
+        "Felicitări! Ascultă din nou săptămâna viitoare pentru un număr nou."
       ]
     },
     {
@@ -371,7 +371,7 @@
         "You've had your go this week. A new lucky number goes out on the radio next week!"
       ],
       "text": [
-        ""
+        "Ți-ai încercat norocul săptămâna asta. Un nou număr norocos pleacă la radio săptămâna viitoare!"
       ]
     },
     {
@@ -379,7 +379,7 @@
         "No? Well, the number's good all week. Come back any time!"
       ],
       "text": [
-        ""
+        "Nu? Ei bine, numărul e valabil toată săptămâna. Revino oricând!"
       ]
     }
   ],
@@ -389,7 +389,7 @@
         "Oh! The ID number of {winner}, on your team, matches!"
       ],
       "text": [
-        ""
+        "Oh! Numărul de ID al lui {winner}, din echipa ta, se potrivește!"
       ]
     },
     {
@@ -397,7 +397,7 @@
         "Oh! The ID number of {winner}, in your PC Boxes, matches!"
       ],
       "text": [
-        ""
+        "Oh! Numărul de ID al lui {winner}, din Cutiile tale de PC, se potrivește!"
       ]
     }
   ]

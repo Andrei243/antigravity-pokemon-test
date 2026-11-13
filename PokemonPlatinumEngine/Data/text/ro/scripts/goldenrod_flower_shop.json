@@ -53,7 +53,7 @@
         "Is that a crafting kit? Then you're the sort who grows things. My sister wanted these to go to someone like you."
       ],
       "text": [
-        ""
+        "Aceea e o trusă de creație? Atunci ești genul care crește lucruri. Sora mea voia ca astea să ajungă la cineva ca tine."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Plant two Berries side by side in them and watch closely. Sometimes they cross into something rare!"
       ],
       "text": [
-        ""
+        "Plantează două Boabe una lângă alta în ele și privește cu atenție. Uneori se încrucișează în ceva rar!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Thanks for helping my sister! We sell mulch for berry soil now. They're 200 each."
       ],
       "text": [
-        ""
+        "Mulțumesc că ai ajutat-o pe sora mea! Vindem acum mulci pentru pământul Boabelor. Costă 200 bucata."
       ]
     },
     {
@@ -82,12 +82,12 @@
         "No thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce mulci vrei?",
+        "Mulci de Creștere",
+        "Mulci Umed",
+        "Mulci Stabil",
+        "Mulci Lipicios",
+        "Nu, mulțumesc"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Oh dear, you don't have enough money."
       ],
       "text": [
-        ""
+        "Vai, nu ai destui bani."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Come again! A little care goes a long way with berries."
       ],
       "text": [
-        ""
+        "Mai treci pe aici! Puțină grijă înseamnă mult pentru Boabe."
       ]
     }
   ]

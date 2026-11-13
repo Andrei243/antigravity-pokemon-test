@@ -136,24 +136,6 @@
         ]
       }
     },
-    "12": {
-      "name": {
-        "en": [
-          "Breeder"
-        ],
-        "text": [
-          "Crescătorul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "A Pokémon's happiness shows in how it eats. Mine eats like a dragon. Which is to say, a lot."
-        ],
-        "text": [
-          "Fericirea unui Pokémon se vede după cum mănâncă. Al meu mănâncă precum un dragon. Adică mult."
-        ]
-      }
-    },
     "11": {
       "name": {
         "en": [
@@ -172,13 +154,31 @@
         ]
       }
     },
+    "12": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          "Crescătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon's happiness shows in how it eats. Mine eats like a dragon. Which is to say, a lot."
+        ],
+        "text": [
+          "Fericirea unui Pokémon se vede după cum mănâncă. Al meu mănâncă precum un dragon. Adică mult."
+        ]
+      }
+    },
     "gift_runner": {
       "name": {
         "en": [
           "Gift Runner"
         ],
         "text": [
-          ""
+          "Curier de Cadouri"
         ]
       },
       "dialog": {
@@ -186,7 +186,7 @@
           "Gift Runners, at your service!"
         ],
         "text": [
-          ""
+          "Curierii de Cadouri, la dispoziția ta!"
         ]
       }
     }

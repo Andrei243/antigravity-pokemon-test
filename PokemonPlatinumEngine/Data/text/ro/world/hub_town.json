@@ -6,7 +6,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Every harbour that has crowned a Champion sends a boat here now. Some days the quay is a forest of masts!"
         ],
         "text": [
-          ""
+          "Fiecare port care a încoronat un Campion trimite acum o barcă aici. Unele zile, cheiul e o pădure de catarge!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Traveller"
         ],
         "text": [
-          ""
+          "Călătorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I came over from Hoenn this morning, and tomorrow I'm off to Unova. This town is everybody's halfway house."
         ],
         "text": [
-          ""
+          "Am venit azi-dimineață din Hoenn, iar mâine plec spre Unova. Orașul ăsta e popasul tuturor."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Veteran"
         ],
         "text": [
-          ""
+          "Veteranul"
         ]
       },
       "dialog": {
@@ -51,8 +51,8 @@
           "So a Pokémon that heeds you there heeds you here too. Handy, eh?"
         ],
         "text": [
-          "",
-          ""
+          "Nimeni de aici nu are Insigne proprii. Orașul merge după regulile celui mai îndepărtat loc în care ai fost încoronat.",
+          "Așa că un Pokémon care te ascultă acolo te ascultă și aici. Practic, nu?"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "They say the big halls round here will open one by one. I want to be first through every door!"
         ],
         "text": [
-          ""
+          "Se zice că sălile mari de pe aici se vor deschide pe rând. Vreau să fiu primul pe fiecare ușă!"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "Pennant Hall's open at last: stalls from every region under one roof. We hung the last pennant this morning!"
         ],
         "text": [
-          ""
+          "Sala Fanioanelor s-a deschis în sfârșit: tarabe din fiecare regiune sub un singur acoperiș. Am atârnat ultimul fanion azi-dimineață!"
         ]
       }
     },
@@ -147,7 +147,7 @@
         "The Week's Work\nThis week's missions in the regions you have won"
       ],
       "text": [
-        ""
+        "Munca Săptămânii\nMisiunile săptămânii în regiunile pe care le-ai câștigat"
       ]
     }
   }

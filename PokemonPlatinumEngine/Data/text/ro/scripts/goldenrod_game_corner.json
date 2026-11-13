@@ -5,7 +5,7 @@
         "A card-flip table. Twenty-five cards, and the coins grow with every number found. Play?"
       ],
       "text": [
-        ""
+        "O masă de întors cărți. Douăzeci și cinci de cărți, iar fisele cresc cu fiecare număr găsit. Joci?"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "A card-flip table. Without a Coin Case there is nothing to play with."
       ],
       "text": [
-        ""
+        "O masă de întors cărți. Fără o Cutie de Fise nu ai cu ce juca."
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "Welcome to the Goldenrod Game Corner! The tables take coins, and coins need a case to carry them in."
       ],
       "text": [
-        ""
+        "Bun venit la Sala de Jocuri din Goldenrod! Mesele iau fise, iar fisele au nevoie de o cutie în care să le porți."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Here, have one of ours. Every new player gets one."
       ],
       "text": [
-        ""
+        "Poftim, ia una de-a noastră. Fiecare jucător nou primește una."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "We sell coins for the tables: 50 for $1,000. Would you like some?"
       ],
       "text": [
-        ""
+        "Vindem fise pentru mese: 50 la 1.000 de $. Vrei câteva?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "{player} bought 50 coins."
       ],
       "text": [
-        ""
+        "{player} a cumpărat 50 de fise."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai treci pe aici!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Your Coin Case is full already!"
       ],
       "text": [
-        ""
+        "Cutia ta de Fise e deja plină!"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "I'm sorry, you don't have enough money."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destui bani."
       ]
     }
   ],
@@ -89,7 +89,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Funcționarul"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Welcome to the prize exchange! You have {coins} coins."
       ],
       "text": [
-        ""
+        "Bun venit la schimbul de premii! Ai {coins} fise."
       ]
     },
     {
@@ -108,10 +108,10 @@
         "NO THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce vrei să vezi?",
+        "OBIECTE",
+        "POKéMONI",
+        "NU, MULȚUMESC"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "The {item}, for {price} coins?"
       ],
       "text": [
-        ""
+        "{item}, pe {price} fise?"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Here you are!"
       ],
       "text": [
-        ""
+        "Poftim!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "{player} put the {item} away."
       ],
       "text": [
-        ""
+        "{player} a pus {item} în rucsac."
       ]
     },
     {
@@ -143,7 +143,7 @@
         "{player} received {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit {thing}!"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Please take good care of it!"
       ],
       "text": [
-        ""
+        "Ai grijă de el, te rog!"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "I'm sorry, you don't have enough coins for that."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destule fise pentru asta."
       ]
     },
     {
@@ -167,7 +167,7 @@
         "The prize exchange trades in coins. You'll need a Coin Case first: the clerk will gladly give you one."
       ],
       "text": [
-        ""
+        "Schimbul de premii funcționează cu fise. Mai întâi îți trebuie o Cutie de Fise: funcționarul ți-o dă cu plăcere."
       ]
     }
   ]

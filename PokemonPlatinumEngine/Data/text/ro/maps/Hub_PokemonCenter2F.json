@@ -4,7 +4,7 @@
       "Pokémon Center"
     ],
     "text": [
-      ""
+      "Centrul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -23,8 +23,8 @@
           "I'm sorry to say its door is shut for now. The wireless link it runs on has gone quiet everywhere."
         ],
         "text": [
-          "",
-          ""
+          "Acesta e ghișeul Union Room, unde Antrenori de peste tot se întâlnesc să discute, să facă schimburi și să lupte.",
+          "Din păcate, ușa lui e închisă acum. Legătura wireless pe care funcționează a amuțit peste tot."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -43,8 +43,8 @@
           "It is closed for the time being, I'm afraid. The wireless link is down."
         ],
         "text": [
-          "",
-          ""
+          "Acesta e ghișeul Colosseum, unde prietenii își aduc echipele ca să lupte între ei.",
+          "Deocamdată e închis, mă tem. Legătura wireless nu funcționează."
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -63,8 +63,8 @@
           "With the link down there is nobody to mix them with. Do ask again another day!"
         ],
         "text": [
-          "",
-          ""
+          "La ghișeul ăsta Antrenorii își amestecă recordurile și își semnează unii altora Cardul de Antrenor.",
+          "Fără legătură, n-ai cu cine să le amesteci. Mai întreabă altă dată!"
         ]
       }
     }

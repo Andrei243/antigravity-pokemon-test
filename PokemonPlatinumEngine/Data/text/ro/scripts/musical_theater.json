@@ -31,7 +31,7 @@
         "Ah, a new face! I am the owner of this theater, and every Pokémon deserves a turn in the spotlight."
       ],
       "text": [
-        ""
+        "Ah, o față nouă! Sunt proprietarul acestui teatru și fiecare Pokémon merită un rând sub reflector."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Take this trunk. It holds a few Props to start with: hats, glasses, a cape and more."
       ],
       "text": [
-        ""
+        "Ia cufărul acesta. Conține câteva Accesorii pentru început: pălării, ochelari, o pelerină și altele."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "{player} received the Prop Trunk and {number} Props!"
       ],
       "text": [
-        ""
+        "{player} a primit Cufărul cu Accesorii și {number} Accesorii!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Dress a Pokémon of yours at the desk, then take the stage against our three performers. The crowd decides the rest!"
       ],
       "text": [
-        ""
+        "Îmbracă un Pokémon de-al tău la ghișeu, apoi urcă pe scenă împotriva celor trei artiști ai noștri. Restul îl hotărăște publicul!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "A musical is music, dance and costume all at once. Pokémon shine in all three!"
       ],
       "text": [
-        ""
+        "Un musical e muzică, dans și costum deodată. Pokémonii strălucesc în toate trei!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Win the crowd's eyes with tricks on the beat, and wear Props that suit the show's mood."
       ],
       "text": [
-        ""
+        "Câștigă ochii publicului cu trucuri pe ritm și poartă Accesorii care se potrivesc cu dispoziția spectacolului."
       ]
     }
   ],
@@ -84,10 +84,10 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Bun venit, dragule. Ce va fi azi?",
+        "CABINA DE ÎMBRĂCARE",
+        "URCĂ PE SCENĂ",
+        "NIMIC"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Do come back when you feel like shining."
       ],
       "text": [
-        ""
+        "Revino când ai chef să strălucești."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Divine! Your Pokémon will remember that look on stage."
       ],
       "text": [
-        ""
+        "Divin! Pokémonul tău își va aminti acel aspect pe scenă."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Splendid! Choose a show and a performer. Press on the beat when the spotlight finds you!"
       ],
       "text": [
-        ""
+        "Splendid! Alege un spectacol și un artist. Apasă pe ritm când reflectorul te găsește!"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "What a performance! The crowd will be talking about it all evening."
       ],
       "text": [
-        ""
+        "Ce prestație! Publicul va vorbi despre ea toată seara."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "First place! The whole theater was looking at your Pokémon!"
       ],
       "text": [
-        ""
+        "Locul întâi! Tot teatrul s-a uitat la Pokémonul tău!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Another time, then. The stage will wait for you."
       ],
       "text": [
-        ""
+        "Altă dată, atunci. Scena te va aștepta."
       ]
     },
     {
@@ -143,7 +143,7 @@
         "The dressing room is through there. Only performers and their Pokémon may go in, darling."
       ],
       "text": [
-        ""
+        "Cabina de îmbrăcare e pe acolo. Doar artiștii și Pokémonii lor pot intra, dragule."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Speak to the owner first. He has something for every new performer."
       ],
       "text": [
-        ""
+        "Vorbește mai întâi cu proprietarul. Are ceva pentru fiecare artist nou."
       ]
     }
   ],
@@ -161,7 +161,7 @@
         "I saw your show! It was wonderful. Please, take this for your next one!"
       ],
       "text": [
-        ""
+        "Ți-am văzut spectacolul! A fost minunat. Te rog, ia asta pentru următorul!"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "{player} received a Prop: {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit un Accesoriu: {thing}!"
       ]
     }
   ],
@@ -179,7 +179,7 @@
         "You were amazing up there! I made this for your Pokémon. Please wear it on stage!"
       ],
       "text": [
-        ""
+        "Ai fost uimitor acolo sus! Am făcut asta pentru Pokémonul tău. Te rog să-l porți pe scenă!"
       ]
     },
     {
@@ -187,7 +187,7 @@
         "{player} received a Prop: {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit un Accesoriu: {thing}!"
       ]
     }
   ],
@@ -197,7 +197,7 @@
         "That was a real performance! My Pokémon and I want you to have this."
       ],
       "text": [
-        ""
+        "Asta a fost o adevărată reprezentație! Pokémonul meu și cu mine vrem să primești asta."
       ]
     },
     {
@@ -205,7 +205,7 @@
         "{player} received a Prop: {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit un Accesoriu: {thing}!"
       ]
     }
   ]

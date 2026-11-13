@@ -10,36 +10,6 @@
         ]
       }
     },
-    "21": {
-      "name": {
-        "en": [
-          "{rival}"
-        ],
-        "text": [
-          "{rival}"
-        ]
-      }
-    },
-    "23": {
-      "name": {
-        "en": [
-          "Cheren"
-        ],
-        "text": [
-          "Cheren"
-        ]
-      }
-    },
-    "22": {
-      "name": {
-        "en": [
-          "Grunt"
-        ],
-        "text": [
-          "Recrut"
-        ]
-      }
-    },
     "1": {
       "name": {
         "en": [
@@ -248,6 +218,36 @@
         ]
       }
     },
+    "21": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "22": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Recrut"
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          "Cheren"
+        ]
+      }
+    },
     "24": {
       "name": {
         "en": [
@@ -272,7 +272,7 @@
           "Fallen log"
         ],
         "text": [
-          ""
+          "Buștean căzut"
         ]
       }
     }

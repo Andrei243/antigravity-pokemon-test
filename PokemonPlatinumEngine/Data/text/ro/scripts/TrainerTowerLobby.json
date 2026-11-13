@@ -5,7 +5,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome back down. That climb is over, but the tower will be here whenever you're ready to try again."
       ],
       "text": [
-        ""
+        "Bine ai coborât. Urcușul acela s-a terminat, dar turnul va fi aici oricând vrei să încerci din nou."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Your Pokémon are rested and ready."
       ],
       "text": [
-        ""
+        "Pokémonii tăi sunt odihniți și gata."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitorul"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Back from the roof! What a climb. Let me see to your Pokémon."
       ],
       "text": [
-        ""
+        "Înapoi de pe acoperiș! Ce urcuș. Las-mă să am grijă de Pokémonii tăi."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "There you go. They're rested and ready."
       ],
       "text": [
-        ""
+        "Gata. Sunt odihniți și pregătiți."
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitorul"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Welcome to the Trainer Tower! Eight floors of trainers stand between you and the owner on the roof."
       ],
       "text": [
-        ""
+        "Bun venit la Turnul Antrenorilor! Opt etaje de antrenori stau între tine și proprietarul de pe acoperiș."
       ]
     },
     {
@@ -74,10 +74,10 @@
         "INFO"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să încerci o provocare?",
+        "DA",
+        "NU",
+        "INFO"
       ]
     },
     {
@@ -90,12 +90,12 @@
         "CANCEL"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce provocare alegi?",
+        "SIMPLĂ",
+        "DUBLĂ",
+        "ELIMINARE",
+        "MIXTĂ",
+        "RENUNȚ"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Your Pokémon are rested. The clock is running from now on. Good luck up there!"
       ],
       "text": [
-        ""
+        "Pokémonii tăi sunt odihniți. Ceasul merge de acum încolo. Mult noroc acolo sus!"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "You're in the middle of a climb! The trainers upstairs are waiting for you."
       ],
       "text": [
-        ""
+        "Ești în mijlocul unui urcuș! Antrenorii de sus te așteaptă."
       ]
     },
     {
@@ -119,7 +119,7 @@
         "The tower is open to Champions of Kanto. Come back once the League has crowned you."
       ],
       "text": [
-        ""
+        "Turnul e deschis Campionilor din Kanto. Revino după ce te încoronează Liga."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Each floor has trainers waiting: one with two Pokémon, a pair with one each, or three in a row with one each."
       ],
       "text": [
-        ""
+        "Fiecare etaj are antrenori care așteaptă: unul cu doi Pokémoni, o pereche cu câte unul, sau trei la rând cu câte unul."
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Their Pokémon are as strong as your strongest. Your Pokémon aren't healed between floors, so take care."
       ],
       "text": [
-        ""
+        "Pokémonii lor sunt la fel de puternici ca cel mai puternic al tău. Pokémonii tăi nu sunt vindecați între etaje, așa că ai grijă."
       ]
     },
     {
@@ -143,7 +143,7 @@
         "Reach the roof, and the owner will tell you your time. The quicker the climb, the better."
       ],
       "text": [
-        ""
+        "Ajunge pe acoperiș și proprietarul îți va spune timpul. Cu cât urci mai repede, cu atât mai bine."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Come back whenever you feel like a climb."
       ],
       "text": [
-        ""
+        "Revino oricând ai chef de un urcuș."
       ]
     }
   ],
@@ -161,7 +161,7 @@
         "Gentleman"
       ],
       "text": [
-        ""
+        "Domnul"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "I keep the tower's records. These are your best times."
       ],
       "text": [
-        ""
+        "Țin evidențele turnului. Acestea sunt cele mai bune timpuri ale tale."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Single: {tower:BEST_SINGLE}. Double: {tower:BEST_DOUBLE}."
       ],
       "text": [
-        ""
+        "Simplă: {tower:BEST_SINGLE}. Dublă: {tower:BEST_DOUBLE}."
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Knockout: {tower:BEST_KNOCKOUT}. Mixed: {tower:BEST_MIXED}."
       ],
       "text": [
-        ""
+        "Eliminare: {tower:BEST_KNOCKOUT}. Mixtă: {tower:BEST_MIXED}."
       ]
     }
   ]
