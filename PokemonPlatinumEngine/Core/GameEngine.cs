@@ -2485,6 +2485,8 @@ public partial class GameEngine
         if (FallThroughCrackedFloor()) return true;
         // Poison bites every fourth step, the Poké Radar charges and its patches out of sight go still (plan 06 · R13)
         if (EncountersStep()) return true;
+        // Unova's dust clouds and bridges' shadows are met by the step onto them (plan 38 · EX11)
+        if (UnovaSpecialStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)
         if (flow.Safari.Step() && StartScript(FieldScripts.SafariTimeUp)) return true;
         // The Power Watch's charge fills a point every 200 steps (plan 36 · TR7), while the watch is in the bag
