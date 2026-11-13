@@ -70,12 +70,14 @@ k.add("nose", ell(TIP + np.array([0, -0.012, 0.004]), (0.017, 0.012, 0.012)), "#
 k.add("brow", tube([(0.03, -0.1, 0.958), (0.07, -0.088, 0.975), (0.1, -0.06, 0.982)], [0.02, 0.022, 0.016]),
       YELLOW, "head", mirror=True)
 # Tall pointed ears, swept a little out and back
-k.add("ear", blade([(0.06, 0.01, 0.98), (0.1, 0.03, 1.08), (0.14, 0.05, 1.2)], [0.06, 0.04, 0.005], (0, 1, 0), 0.4),
+k.add("ear", blade([(0.06, 0.01, 0.98), (0.1, 0.03, 1.08), (0.14, 0.05, 1.2)], [0.06, 0.04, 0.005], (0, 1, 0), 0.5),
       YELLOW, "ear{s}", mirror=True)
 
-# The long moustache: from the snout's sides out and drooping down past the chest, thin at its ends
-k.add("moustache", tube([(0.03, -0.2, 0.872), (0.08, -0.21, 0.86), (0.13, -0.2, 0.8), (0.155, -0.19, 0.71),
-                         (0.16, -0.17, 0.62), (0.15, -0.15, 0.56)], [0.012, 0.013, 0.012, 0.01, 0.007, 0.002], seg=12),
+# The long moustache: two whiskers from under the nose at the snout's tip, hanging down and a little out before the
+# chest like a drooping moustache, flat to the front and tapering to points
+k.add("moustache", blade([(0.012, -0.228, 0.866), (0.03, -0.226, 0.835), (0.058, -0.214, 0.77), (0.083, -0.2, 0.69),
+                          (0.102, -0.188, 0.61), (0.112, -0.18, 0.55)], [0.012, 0.017, 0.016, 0.012, 0.007, 0.0015],
+                         (0, 1, 0), 0.45),
       GOLD, "head", fuse=False, mirror=True)
 
 # Arms: the spoon arm (-X) up with the spoon over the head; the other (+X) raised open, three claws
@@ -92,10 +94,16 @@ for s, bone in ((-1, "armL"), (1, "armR")):
     k.add("hand" + bone[-1], ell(hand * m, (0.035, 0.032, 0.035)), YELLOW, bone)
     if s < 0:
         # fingers curled round the spoon's handle
-        for i, dz in enumerate((-0.02, 0.0, 0.02)):
-            k.add(f"fist{i}L", tube([np.array([-0.3, -0.12, hand[2] + dz]), np.array([-0.315, -0.155, hand[2] + dz]),
-                                     np.array([-0.3, -0.165, hand[2] + dz + 0.004])], [0.014, 0.013, 0.011]),
+        for i, dz in enumerate((-0.022, 0.0, 0.022)):
+            hx = -0.29 - 0.33 * (hand[2] + dz - 0.875)          # the handle's x at this height
+            z = hand[2] + dz
+            k.add(f"fist{i}L", tube([np.array([hx - 0.03, -0.13, z]), np.array([hx - 0.026, -0.168, z]),
+                                     np.array([hx, -0.182, z]), np.array([hx + 0.022, -0.168, z - 0.004])],
+                                    [0.013, 0.012, 0.011, 0.01]),
                   YELLOW, bone)
+        # the thumb, down the handle's back
+        k.add("thumbL", tube([np.array([-0.27, -0.12, hand[2] + 0.01]), np.array([-0.268, -0.135, hand[2] + 0.04])],
+                             [0.013, 0.011]), YELLOW, bone)
         spoon((-0.29, -0.155, 0.875), (-0.37, -0.17, 1.12), bone)
     else:
         for i, (dx, dy) in enumerate(((-0.03, 0.0), (0.0, -0.01), (0.03, 0.0))):

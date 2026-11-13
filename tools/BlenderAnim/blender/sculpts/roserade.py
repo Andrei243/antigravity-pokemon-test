@@ -1,13 +1,13 @@
 # Roserade sculpted from nothing on the skeleton and clips of the game's own export of it (sculptkit.py):
 #   blender --background --factory-startup --python sculpts/roserade.py -- <the export's Roserade.glb> <out.glb>
 #
-# Grown from Roselia's script: the same greens and pale limbs, the same roses of loose cupped petals (now three to a
-# bouquet, closed tighter, as round as the drawing's), the same way of painting a hood and laying a mouth. From the
-# references: a slim green figure, its chest green and its belly, hips and legs pale; legs tapering to yellow points;
-# a yellow ring at the neck; a dark green cape of leaf hanging from the shoulders with a pointed hem; a green face
-# with a dark green mask round sly yellow eyes (a red lid line over a red iris); a small smirk; a great white bloom of
-# petals for hair, swept out to the +X side, points rising off its top; leafy pale hands, a bouquet of red roses in
-# the hand on -X and of blue in the hand on +X.
+# Grown from Roselia's script: the same greens and pale limbs, the same way of painting a hood and laying a mouth.
+# From the references: a slim green figure, its chest green and its belly, hips and legs pale; legs tapering to yellow
+# points; a yellow ring at the neck; a cape of two long leaves hanging from the back of the neck and parting like a
+# tailcoat's tails to the knees; a green face with a dark green mask round sly yellow eyes (a red lid line over a red
+# iris); a small smirk; a great white bloom for hair, one smooth mass fused to the head (a crisp painted hairline, no
+# seam), broad petals swept out to the +X side and back, a few points off its top; leafy pale hands, each holding a
+# bouquet of three round roses (a ball in shells of petal, a spiral on its face), red in the hand on -X, blue on +X.
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
@@ -52,26 +52,35 @@ k.add("torso", ell((0, 0.0, 0.48), (0.074, 0.062, 0.13), deform=slim), GREEN, "b
 # the pale belly: the lower body pale, rising to a point up the front
 def belly(P):
     edge = 0.43 + 0.07 * np.clip(1 - np.abs(P[:, 0]) / 0.045, 0, 1) * (P[:, 1] < -0.02)
-    return inside(P[:, 2] - edge, E_) * (P[:, 2] < 0.6)
+    return inside(P[:, 2] - edge, 0.006) * (P[:, 2] < 0.6)
 k.paint(belly, PALE)
 k.add("neck", tube([(0, 0.0, 0.58), (0, 0.0, 0.66)], [0.03, 0.03]), GREEN, "head")
 
 # the yellow ring at the neck
 k.add("collar", torus((0, 0.0, 0.602), 0.034, 0.011), YELLOW, "body", fuse=False, surface="leaf")
 
-# --- the cape: dark green, from behind the shoulders down past the hips, its hem in points ------------------------
-def cape(u, v):
-    u = 0.015 + 0.97 * u
-    s = 2 * u - 1
-    w = 0.05 + 0.16 * v
-    L = 0.25 + 0.07 * (1 - np.abs(tri(s * 1.25 + 0.5)))   # five broad points at the hem
-    x = s * w
-    # its top hugs the back of the neck under the ring, wrapping toward the shoulders; then it bellies out over the
-    # back and hangs, its sides drawn forward
-    y = 0.034 + 0.11 * v - 0.04 * v * v - 0.012 * s * s - 0.05 * s * s * v
-    z = 0.592 - L * v
-    return np.stack([x, y, z], -1)
-k.add("cape", sheet(cape, 30, 20, 0.012), CAPE, "cape", fuse=False)
+# --- the cape: two long leaves hanging from the back of the neck, curving out and parting like a tailcoat's tails,
+# to about the knees; dark green outside, a lighter green underside facing the body
+def tail(s, inset, lift):
+    def at(u, v):
+        v = 0.985 * v
+        c = 2 * u - 1
+        x0 = s * (0.022 + 0.085 * v + 0.045 * v * v)
+        y0 = 0.046 + 0.085 * v - 0.025 * v * v
+        z0 = 0.588 - 0.33 * v
+        r = np.stack([x0, y0], -1); r = r / np.linalg.norm(r, axis=-1, keepdims=True)
+        across = np.stack([-r[..., 1], r[..., 0]], -1)
+        w = inset * (0.014 * (1 - v) + 0.062 * np.sin(np.pi * v ** 0.75))
+        bow = 0.022 * (1 - c * c) * np.sin(np.pi * v ** 0.8)        # the leaf's middle stands out, its edges in
+        out = bow + lift - 0.004 * c * c
+        x = x0 + across[..., 0] * c * w + r[..., 0] * out
+        y = y0 + across[..., 1] * c * w + r[..., 1] * out
+        z = z0 + 0.012 * c * s * v                                   # a little twist down the length
+        return np.stack([x, y, z], -1)
+    return at
+for s, side in ((1, "R"), (-1, "L")):
+    k.add(f"cape{side}", sheet(tail(s, 1.0, 0.0), 14, 34, 0.011), CAPE, "cape", fuse=False)
+    k.add(f"capein{side}", sheet(tail(s, 0.86, -0.006), 14, 34, 0.004), "#3E9A48", "cape", fuse=False)
 
 # --- the arms, leafy hands and bouquets ----------------------------------------------------------------------
 for s in (1, -1):
@@ -86,43 +95,44 @@ for s in (1, -1):
         k.add(f"leafhand{side}{i}", leaf(hand, d, 0.055, 0.02, 0.008), PALE, f"arm{side}", fuse=False)
 
 
-def rose(name, c, axis, R, col, dark, bone):
-    """Roselia's rose closed tighter: loose cupped petals in rings round a dark heart, its face along axis."""
+def rose(name, c, axis, R, col, dark, bone, turn):
+    """A tidy rose: a round ball wrapped in a few shells of petal lying close on it, each starting a little further
+    from the face than the one inside it so their rims spiral, and a thin dark spiral drawn on the face."""
     z = unit(*axis)
     x = np.cross(z, (0, 0, 1.0)); x /= np.linalg.norm(x)
     y = np.cross(z, x)
     c = np.array(c, float)
-    k.add(f"{name}heart", ell(c + z * 0.2 * R, (0.34 * R, 0.34 * R, 0.36 * R), sub=3), dark, bone, fuse=False)
-    k.add(f"{name}back", ell(c - z * 0.2 * R, (0.8 * R, 0.8 * R, 0.75 * R), sub=3), col * 0.85, bone, fuse=False)
-    for ring, (n, rho, h, w, hh, tilt, off, colr) in enumerate([
-            (3, 0.28, 0.24, 0.32, 0.4, 14, 0.3, dark),
-            (5, 0.56, 0.08, 0.44, 0.5, 30, 0.1, col),
-            (6, 0.82, -0.12, 0.46, 0.52, 48, 0.55, col)]):
-        for i in range(n):
-            a = 2 * math.pi * (i + off) / n
-            r = math.cos(a) * x + math.sin(a) * y
-            up = math.cos(math.radians(tilt)) * z + math.sin(math.radians(tilt)) * r
-            rad = math.cos(math.radians(tilt)) * r - math.sin(math.radians(tilt)) * z
-            tan = np.cross(up, rad)
-            def cup(V, i=i):
-                V = V.copy()
-                V[:, 1] -= 0.9 * V[:, 0] ** 2
-                V[:, 0] *= 1 + 0.08 * np.sin(7 * V[:, 2] + i)
-                return V
-            V, F = ell((0, 0, 0), (w * R, 0.11 * R, hh * R), deform=cup, sub=2)
-            V = V @ np.stack([tan, rad, up], axis=1).T + c + r * rho * R + z * h * R
-            k.add(f"{name}p{ring}{i}", (V, F), colr, bone, fuse=False)
+    k.add(f"{name}ball", ell(c, (0.97 * R, 0.97 * R, 0.97 * R), sub=3), col, bone, fuse=False)
+    for j in range(4):
+        a0 = turn + j * 1.75
+        rj = R * (1.0 + 0.03 * j)
+        p0 = 0.55 + 0.2 * j
+        shade = col * (0.94 if j % 2 else 1.0)
+        def at(u, v, a0=a0, rj=rj, p0=p0):
+            cu = 2 * u - 1
+            a = a0 + 2.5 * u
+            ph = p0 + 0.45 * cu * cu + (2.55 - p0 - 0.45 * cu * cu) * v
+            lip = 1 + 0.07 * np.clip(1 - v / 0.25, 0, 1)            # the rim turned out a little
+            d = (np.sin(ph) * np.cos(a))[..., None] * x + (np.sin(ph) * np.sin(a))[..., None] * y \
+                + np.cos(ph)[..., None] * z
+            return c + d * (rj * lip)[..., None]
+        k.add(f"{name}pet{j}", sheet(at, 18, 12, 0.005), shade, bone, fuse=False)
+    t = np.linspace(0, 3.2 * math.pi, 40)
+    rr = 0.12 + 0.6 * t / t[-1]
+    pts = [c + R * 1.012 * (q * math.cos(a + turn) * x + q * math.sin(a + turn) * y + math.sqrt(1 - q * q) * z)
+           for q, a in zip(rr, t)]
+    k.add(f"{name}curl", tube(pts, [0.0022] * len(pts), seg=8, per=2), dark, bone, fuse=False)
 
 
 def bouquet(name, hand, s, col, dark, bone):
-    """Three roses in a little triangle before the hand, facing forward and out."""
+    """Three round roses in a tight triangle before the hand, facing forward and out."""
     axis = unit(0.35 * s, -1, 0.15)
     xx = np.cross(axis, (0, 0, 1.0)); xx /= np.linalg.norm(xx)
     yy = np.cross(axis, xx)
-    mid = np.array(hand) + np.array((0.03 * s, -0.055, 0.03))
+    mid = np.array(hand) + np.array((0.03 * s, -0.05, 0.03))
     for i, a in enumerate((90, 210, 330)):
-        p = mid + 0.05 * (math.cos(math.radians(a)) * yy + math.sin(math.radians(a)) * xx)
-        rose(f"{name}{i}", p, axis, 0.048, col, dark, bone)
+        p = mid + 0.04 * (math.cos(math.radians(a)) * yy + math.sin(math.radians(a)) * xx)
+        rose(f"{name}{i}", p, axis, 0.032, col, dark, bone, 1.3 * i)
 
 bouquet("red", (-0.17, -0.075, 0.5), -1, srgb("#E2505E"), srgb("#A82A3C"), "armL")
 bouquet("blue", (0.17, -0.075, 0.48), 1, srgb("#3B7FE2"), srgb("#1E4EA8"), "armR")
@@ -136,13 +146,42 @@ def chin(V):
     return V
 k.add("head", ell(H, (0.078, 0.074, 0.075), deform=chin), GREEN, "head")
 
-# the white hair's line round the head: over the brow in front, lower at the sides and back
-def hair(P):
+# --- the white bloom of hair: one smooth mass fused to the head, a rounded cap with broad petals sweeping back and
+# out to the +X side, a few points rising off its top (all fused, so it joins the head with no seam)
+def bl(name, shape):
+    k.add(name, shape, WHITE, "head", surface="leaf")
+bl("bloom", ell((0.005, 0.012, 0.77), (0.104, 0.1, 0.078)))
+bl("bloomTop", ell((-0.01, 0.018, 0.815), (0.09, 0.085, 0.068)))
+bl("bloomBack", ell((0.0, 0.055, 0.75), (0.088, 0.065, 0.072)))
+for i, (base, d, L, w) in enumerate([
+        ((0.05, 0.025, 0.79), (1, 0.55, -0.3), 0.2, 0.075),      # the big sweep out to +X and back
+        ((0.065, -0.01, 0.76), (1, -0.1, -0.7), 0.12, 0.05),     # its lower petal, by the +X cheek
+        ((0.02, 0.065, 0.79), (0.3, 1, -0.5), 0.14, 0.07),       # back
+        ((-0.055, 0.035, 0.79), (-1, 0.45, -0.3), 0.11, 0.055)]):  # the smaller -X side
+    bl(f"bloomPetal{i}", leaf(base, d, L, w, 0.034))
+for i, (base, tip, r) in enumerate([
+        ((-0.04, 0.02, 0.84), (-0.085, 0.01, 0.935), 0.04),
+        ((0.0, 0.025, 0.845), (-0.01, 0.02, 0.94), 0.036),
+        ((0.04, 0.03, 0.83), (0.07, 0.03, 0.9), 0.03)]):
+    mid = np.array(base) * 0.45 + np.array(tip) * 0.55
+    bl(f"bloomPoint{i}", blade([base, mid, tip], [r, r * 0.55, 0.006], (0, 1, 0), 0.62))
+
+HEADR = np.array([0.078, 0.074, 0.075])
+def hairline(P):
+    """Above it the bloom: over the brow in front, lower at the sides, lowest behind."""
     q = P - H
     th = np.abs(np.arctan2(q[:, 0], -q[:, 1]))
-    edge = 0.042 - 0.05 * smoothstep(0.9, 2.2, th) + 0.2 * (th < 1.2)    # in front the mask runs up under the bloom
-    near = np.linalg.norm(q, axis=1) < 0.11
-    return inside(edge - q[:, 2], E_) * near * (P[:, 2] > 0.64)
+    return q[:, 2] - (0.031 - 0.02 * smoothstep(0.6, 1.5, th) - 0.032 * smoothstep(1.7, 2.7, th))
+def hair(P):
+    q = P - H
+    far = np.linalg.norm(q / HEADR, axis=1) > 1.18
+    above = inside(-hairline(P), 0.006) * (np.linalg.norm(q, axis=1) < 0.13)
+    return np.maximum(above, far * (P[:, 2] > 0.665)) * (P[:, 2] > 0.6)
+def skin(P):
+    """The head's own green back under the hairline, where the fused bloom's white spread onto it."""
+    q = P - H
+    return inside(hairline(P), 0.006) * (np.linalg.norm(q, axis=1) < 0.105) * (P[:, 2] > 0.63)
+k.paint(skin, GREEN)
 
 # the dark green mask round the eyes, in coordinates round the head's upright axis (angle times radius, height)
 def mask(P):
@@ -167,35 +206,6 @@ def smirk(u, v):
     return c
 mdir = unit(0, -1, -0.55)
 k.decal(H + mdir * 0.078, mdir, (0.02, 0.011), smirk, eps=0.004, rings=8, segs=36)
-
-# --- the white bloom of hair: loose petals over the crown, swept out to the +X side, points off its top -------
-def flare(V):
-    """The bloom's lower rim flared out and turned up, so it stands proud of the brow instead of grazing it."""
-    V = V.copy()
-    t = np.clip(-V[:, 2] - 0.2, 0, 1)
-    V[:, 0] *= 1 + 0.25 * t; V[:, 1] *= 1 + 0.25 * t
-    V[:, 2] += 0.35 * t ** 2
-    return V
-k.add("bloom", ell((0, 0.012, 0.8), (0.1, 0.098, 0.077), deform=flare), WHITE, "head", fuse=False, surface="leaf")
-k.add("bloomB", ell((0, 0.06, 0.75), (0.085, 0.06, 0.07)), WHITE, "head", fuse=False, surface="leaf")
-# the side lobes, the +X one larger and swept out and down
-k.add("lobeR", ell((0.1, 0.03, 0.775), (0.075, 0.06, 0.05), rot=(0, 25, 0)), WHITE, "head", fuse=False,
-      surface="leaf")
-k.add("lobeR2", ell((0.16, 0.04, 0.74), (0.045, 0.04, 0.032), rot=(0, 40, 0)), WHITE, "head", fuse=False,
-      surface="leaf")
-k.add("lobeL", ell((-0.085, 0.03, 0.79), (0.06, 0.055, 0.045), rot=(0, -20, 0)), WHITE, "head", fuse=False,
-      surface="leaf")
-# petals' points: off the top, and off the +X lobe's tip
-# broad soft petal tips, flat to the front, a few off the top and two off the +X lobe
-for i, (base, tip, r) in enumerate([
-        ((-0.03, 0.03, 0.83), (-0.06, 0.05, 0.915), 0.045),
-        ((0.02, 0.035, 0.835), (0.035, 0.06, 0.925), 0.045),
-        ((-0.07, 0.04, 0.82), (-0.13, 0.06, 0.875), 0.035),
-        ((0.17, 0.05, 0.75), (0.235, 0.07, 0.725), 0.03),
-        ((0.15, 0.05, 0.725), (0.2, 0.08, 0.675), 0.026),
-        ((0.0, 0.1, 0.78), (0.0, 0.16, 0.76), 0.035)]):
-    k.add(f"spike{i}", blade([base, (np.array(base) * 0.4 + np.array(tip) * 0.6), tip], [r, r * 0.75, 0.004],
-                             (0, 1, 0) if i < 3 else (0, 0, 1), 0.35), WHITE, "head", fuse=False, surface="leaf")
 
 # --- the eyes: sly yellow almonds, a heavy red lid along the top sloping down to the nose, a red iris and a dark
 # pupil. u runs outward, v up.

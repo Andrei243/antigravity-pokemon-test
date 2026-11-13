@@ -69,20 +69,16 @@ k.add("brow", tube([(0.03, -0.1, 1.028), (0.07, -0.088, 1.045), (0.1, -0.06, 1.0
       YELLOW, "head", mirror=True)
 # Long pointed ears sweeping up and out
 k.add("ear", blade([(0.06, 0.01, 1.05), (0.13, 0.03, 1.13), (0.2, 0.05, 1.22), (0.27, 0.06, 1.3)],
-                   [0.065, 0.045, 0.025, 0.004], (0, 1, 0), 0.38), YELLOW, "ear{s}", mirror=True)
+                   [0.065, 0.045, 0.025, 0.004], (0, 1, 0), 0.5), YELLOW, "ear{s}", mirror=True)
 
 # The huge moustache: from under the nose out over the shoulders, drooping, to ends frayed into points
 def moustache():
-    # a ribbon, flat to the front, widening a little toward its frayed end
-    pts = [(0.02, -0.228, 0.872), (0.09, -0.222, 0.845), (0.18, -0.185, 0.8), (0.27, -0.145, 0.775), (0.34, -0.115, 0.77)]
-    return blade(pts, [0.013, 0.02, 0.024, 0.026, 0.026], (0, 1, 0), 0.45)
+    # a ribbon, flat to the front: out from under the nose, then drooping in a long smooth sweep down past the chest
+    # to a single point
+    pts = [(0.012, -0.242, 0.872), (0.045, -0.238, 0.85), (0.1, -0.222, 0.79), (0.145, -0.2, 0.7),
+           (0.17, -0.178, 0.6), (0.178, -0.16, 0.51), (0.172, -0.145, 0.43)]
+    return blade(pts, [0.012, 0.018, 0.02, 0.019, 0.015, 0.009, 0.0015], (0, 1, 0), 0.45)
 k.add("moustache", moustache(), GOLD, "head", fuse=False, mirror=True)
-END = np.array([0.335, -0.117, 0.77])
-for i, (d, L) in enumerate([((1, 0.2, 0.75), 0.09), ((1, 0.25, 0.3), 0.11), ((1, 0.25, -0.15), 0.12),
-                           ((1, 0.2, -0.6), 0.1), ((0.75, 0.2, -1.0), 0.08)]):
-    d = unit(*d)
-    k.add(f"fray{i}", blade([END, END + d * L * 0.5, END + d * L], [0.013, 0.009, 0.002], (0, 1, 0), 0.5), GOLD,
-          "head", fuse=False, mirror=True)
 
 # Arms: brown shoulders, yellow upper arms, brown cuffs at the elbows, yellow forearms forward to the hands at the waist
 for s, bone in ((1, "armR"), (-1, "armL")):

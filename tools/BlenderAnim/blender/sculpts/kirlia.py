@@ -10,7 +10,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, leaf, boxy, srgb, inside, smoothstep, unit, eye_look, args
+from sculptkit import Kit, ell, tube, blade, sheet, boxy, srgb, inside, smoothstep, unit, eye_look, args
 
 src, out = args()
 k = Kit(src, coat="fur")
@@ -32,17 +32,20 @@ k.add("chest", ell((0, 0.002, 0.462), (0.038, 0.032, 0.058)), WHITE, "body")
 k.add("core", ell((0, 0.002, 0.412), (0.058, 0.052, 0.022)), WHITE, "body")
 k.add("neck", tube([(0, 0.0, 0.5), (0, -0.008, 0.545)], [0.015, 0.014]), WHITE, "head")
 
-# The tutu: pointed white petals out from the waist, flat and drooping a little, two rings a little apart in height
-for i in range(7):
-    a = 2 * math.pi * (i + 0.5) / 7
-    d = (math.sin(a), -math.cos(a), -0.22)
-    base = (0.03 * math.sin(a), -0.03 * math.cos(a), 0.418)
-    k.add(f"petal{i}", leaf(base, d, 0.15, 0.075, 0.007), WHITE, "body", fuse=False)
-for i in range(7):
-    a = 2 * math.pi * i / 7
-    d = (math.sin(a), -math.cos(a), -0.32)
-    base = (0.03 * math.sin(a), -0.03 * math.cos(a), 0.41)
-    k.add(f"underpetal{i}", leaf(base, d, 0.13, 0.068, 0.007), WHITE, "body", fuse=False)
+# The tutu: broad flat white petals standing out from the waist like a ballerina's skirt, blunt at their ends and
+# drooping a little, two rings a little apart in height, the lower one between the upper's
+def petal(name, a, z, length, droop, wide):
+    d = np.array([math.sin(a), -math.cos(a), -droop]); d /= np.linalg.norm(d)
+    n = np.array([0, 0, 1.0]) - d * d[2]; n /= np.linalg.norm(n)          # its flat face, to the sky's side
+    p0 = np.array([0.026 * math.sin(a), -0.026 * math.cos(a), z])
+    pts = [p0 + d * length * f for f in (0, 0.35, 0.75, 1.0)]
+    k.add(name, blade(pts, [wide * 0.55, wide * 0.95, wide, wide * 0.8], n, 0.13), WHITE, "body", fuse=False)
+for i in range(8):
+    a = 2 * math.pi * (i + 0.5) / 8
+    petal(f"petal{i}", a, 0.42, 0.13, 0.08, 0.034)
+for i in range(8):
+    a = 2 * math.pi * i / 8
+    petal(f"underpetal{i}", a, 0.41, 0.118, 0.2, 0.031)
 
 # Thin white arms folded across the chest, the hands crossing before it (loose, apart from the body)
 for s, side, y in ((1, "R", -0.074), (-1, "L", -0.064)):
@@ -86,15 +89,28 @@ def lock(V):
     V[:, 1] *= 1 + 0.22 * np.clip(-V[:, 2], 0, 1)
     V[:, 2] = np.maximum(V[:, 2], -0.92)
     return V
-k.add("lock", ell((0.104, 0.008, 0.525), (0.02, 0.062, 0.105), rot=(0, -13, 0), deform=lock), GREEN, "head",
+k.add("lock", ell((0.104, 0.008, 0.525), (0.016, 0.064, 0.105), rot=(0, -13, 0), deform=lock), GREEN, "head",
       fuse=False, mirror=True)
-# the fringe swept down over the outer edge of the eye on +X
-k.add("fringe", blade([(0.03, -0.082, 0.632), (0.062, -0.088, 0.596), (0.078, -0.07, 0.56), (0.083, -0.05, 0.535)],
-                      [0.02, 0.017, 0.011, 0.003], (0.55, -1, 0.1), 0.3), GREEN, "head", fuse=False)
+# The fringe: a flat lock lying on the bowl from its crown and sweeping down in front of the face over the eye on -X
+# to the chin, as both pictures have it (the eye on that side hidden)
+FTH = [0.12, -0.06, -0.22, -0.3, -0.46]    # its middle's angle round the head, from the front toward +X
+FE = [1.1, 0.6, 0.1, -0.32, -0.76]         # its height, as an angle over the bowl's middle
+FW = [0.11, 0.21, 0.27, 0.3, 0.05]         # its half width, in radians
+def fringe_at(u, v):
+    s = 0.015 + 0.97 * u
+    knots = np.linspace(0, 1, len(FTH))
+    th = np.interp(s, knots, FTH) + (v - 0.5) * 2 * np.interp(s, knots, FW)
+    e = np.interp(s, knots, FE)
+    lift = 1.003 + 0.05 * smoothstep(0.15, 0.6, s)
+    U = np.stack([np.sin(th) * np.cos(e), -np.cos(th) * np.cos(e), np.sin(e)], axis=-1)
+    sh = U.shape
+    return HC + boxy(2.1)(U.reshape(-1, 3)).reshape(sh) * HCR * lift[..., None]
+k.add("fringe", sheet(fringe_at, 40, 16, 0.008), GREEN, "head", fuse=False)
 
-# The horns: flat red blades out of the hair's upper sides, up and out and a little back, like clips
-k.add("horn", blade([(0.07, 0.012, 0.66), (0.104, 0.022, 0.698), (0.134, 0.038, 0.73)], [0.032, 0.023, 0.004],
-                    (0.4, -1, 0.15), 0.32), HORN, "head", fuse=False, mirror=True)
+# The horns: flat red plates out of the hair's upper sides, up and out and a little back like clips, narrow where
+# they leave the hair and broad and rounded at their ends
+k.add("horn", blade([(0.07, 0.012, 0.66), (0.096, 0.02, 0.69), (0.118, 0.03, 0.716), (0.132, 0.036, 0.736)],
+                    [0.016, 0.03, 0.03, 0.008], (0.4, -1, 0.15), 0.22), HORN, "head", fuse=False, mirror=True)
 
 # A small calm mouth low on the face
 INK, LID, IRIS = srgb(INKH), srgb(WHITE), srgb(RED)
@@ -117,8 +133,8 @@ def eye(u, v):
     c[((u + 0.04) / 0.25) ** 2 + ((v + 0.04) / 0.36) ** 2 < 1] = INK
     c[((u - 0.14) / 0.17) ** 2 + ((v - 0.32) / 0.19) ** 2 < 1] = (1, 1, 1)
     c[((u + 0.24) / 0.08) ** 2 + ((v + 0.36) / 0.08) ** 2 < 1] = (1, 1, 1)
-    c[(o < 1) & (o > 0.9)] = OUTL
-    c[(o < 1) & (o > 0.64) & (v > 0.36)] = OUTL
+    # no ring: a soft dark line over the upper lid alone, a little heavier at the outer corner
+    c[(o < 1) & (o > 0.8 - 0.1 * np.clip(u, 0, 1)) & (v > 0.25 - 0.15 * u)] = OUTL
     return c
 de = unit(0.45, -0.88, 0.06)
 def eyes(state):
