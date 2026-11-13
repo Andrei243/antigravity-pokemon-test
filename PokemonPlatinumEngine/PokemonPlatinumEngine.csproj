@@ -58,4 +58,13 @@
     <Copy SourceFiles="@(BuiltModel)" DestinationFolder="$(PublishDir)built\models\%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
 
+  <!-- And beside the game's own executable on every build of it, so that the game shows them however it is started
+       (Visual Studio, the executable itself), not only from the repository's root. This project's output alone. -->
+  <Target Name="CopyBuiltModels" AfterTargets="Build">
+    <ItemGroup>
+      <BuiltModelHere Include="$(MSBuildProjectDirectory)\..\built\models\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(BuiltModelHere)" DestinationFolder="$(OutDir)built\models\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
 </Project>
