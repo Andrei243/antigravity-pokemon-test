@@ -3,10 +3,10 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, tri, unit, boxy, args
+from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, tri, unit, boxy, eye_look, args
 
 src, out = args()
-k = Kit(src)
+k = Kit(src, coat="scales")
 
 LIGHT, HEAD, CAPE, YELLOW, WHITE = "#9AD6F2", "#3F82D6", "#2C5DAE", "#F6C52B", "#F6FBFF"
 H = np.array([0, -0.01, 0.665])          # the head's centre
@@ -24,13 +24,13 @@ def toes(V):
     s = 1 + 0.16 * np.cos(3 * ph) * front
     V = V.copy(); V[:, 0] *= s; V[:, 1] *= s
     return V
-k.add("foot", ell((0.1, -0.07, 0.032), (0.075, 0.115, 0.032), deform=toes), YELLOW, "leg{s}", fuse=False, mirror=True)
+k.add("foot", ell((0.1, -0.07, 0.032), (0.075, 0.115, 0.032), deform=toes), YELLOW, "leg{s}", fuse=False, mirror=True, surface="shell")
 
 def pointed(V):
     t = np.clip(-V[:, 1], 0, 1)
     V = V.copy(); V[:, 0] *= 1 - 0.75 * t; V[:, 2] *= 1 - 0.75 * t
     return V
-k.add("beak", ell((0, -0.262, 0.595), (0.064, 0.09, 0.047), deform=pointed), YELLOW, "head", fuse=False)
+k.add("beak", ell((0, -0.262, 0.595), (0.064, 0.09, 0.047), deform=pointed), YELLOW, "head", fuse=False, surface="shell")
 
 # The collar: dark from the neck down to a scalloped edge, and the cape down the back
 def collar(P):
@@ -55,7 +55,10 @@ def eye(u, v):
     c[((u - 0.12) / 0.3) ** 2 + ((v - 0.5) / 0.26) ** 2 < 1] = (1, 1, 1)
     return c
 de = unit(0.47, -0.88, 0.02)
-k.decal(H + de * HR, de, (0.042, 0.072), eye, eps=0.007, rings=12, segs=36, mirror=True)
+LID = srgb(WHITE)
+def eyes(state):
+    k.decal(H + de * HR, de, (0.042, 0.072), eye_look(state, eye, LID, NAVY), eps=0.007, rings=20, segs=56, mirror=True)
 
 k.build(voxel=0.007)
+k.eye_states(eyes)
 k.export(out)

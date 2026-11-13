@@ -71,10 +71,10 @@ internal static class PokemonRenderer
                 Rlgl.DrawRenderBatchActive();
                 Rlgl.EnableBackfaceCulling();
                 Rlgl.SetCullFace(0);
-                ImportedModels.Draw(context, m, root, pass);
+                ImportedModels.Draw(context, m, root, pass, PokemonAnimation.EyesOf(pose, fierce));
                 Rlgl.SetCullFace(1);
             }
-            else ImportedModels.Draw(context, m, root, pass);
+            else ImportedModels.Draw(context, m, root, pass, PokemonAnimation.EyesOf(pose, fierce));
             return;
         }
         if (m.Body == null) return;

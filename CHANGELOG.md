@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Forty-two Pokémon have new models, sculpted again from their designs: the three Sinnoh starters and their evolutions, Giratina, Starly, Bidoof, Shinx, Kricketot, Abra, Budew, Zubat, Geodude, Psyduck, Buizel, Onix, Wurmple, Machop, Ponyta, Silcoon, Beautifly, Cascoon, Dustox, Shellos, Pachirisu, Buneary, Gastly, Hoothoot, Murkrow, Misdreavus, Cherubi, Burmy, Combee, Aipom, Staravia, Bibarel and Luxio. Among them: Turtwig's soil-brown crown and banded shell up to Torterra's tree and stone-rimmed shell, Chimchar's cream face and glowing tail flame up to Infernape's crown of fire and golden guards, Piplup's white face discs and cape up to Empoleon's trident and steel-edged flippers, Giratina's ragged wings with their red spikes and golden ribs.
+
 - Pokémon can now grow to level 300, for the region still to come beyond Paldea; every region already in the game keeps its levels as they were.
 - Alola's and Galar's houses, shops and Pokémon Centers are built for grown people: taller doors you walk through without stooping, windows at a grown body's height, taller entrance porches.
 - Riding Tauros, Stoutland, Mudsdale or Machamp, you sit where that Pokémon's back is and tuck your legs up on the small ones, so your feet no longer hang to the ground beside them.

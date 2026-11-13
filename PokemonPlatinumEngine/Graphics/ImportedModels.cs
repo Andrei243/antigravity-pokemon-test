@@ -27,6 +27,12 @@ internal sealed class ImportedPart
 
     public int[] Palette = Array.Empty<int>();
 
+    /// <summary>
+    /// The eyes this piece is (plan 48 · BL1): a node named <c>eyes.Shut</c> is drawn only while the pose shuts the
+    /// eyes. Null for every other piece, which is always drawn.
+    /// </summary>
+    public EyeState? Eyes;
+
     /// <summary>The base colour image (-1: the vertex colours alone).</summary>
     public int Image = -1;
 
@@ -48,6 +54,9 @@ internal sealed class ImportedRig
     public readonly List<ImportedPart> Parts = new();
     public (int Node, Matrix4x4 Offset)[] Bones = Array.Empty<(int, Matrix4x4)>();
     public readonly Dictionary<ClipRole, int> Clips = new();
+
+    /// <summary>Which eye states the file has a piece for (by <see cref="EyeState"/>): a state it lacks shows the open eyes.</summary>
+    public readonly bool[] HasEyes = new bool[5];
 
     /// <summary>The base colour images, decoded (null where an image couldn't be read).</summary>
     public PixelCanvas?[] Images = Array.Empty<PixelCanvas?>();
@@ -138,6 +147,29 @@ internal static class ModelOverrides
         Path.Combine(Environment.CurrentDirectory, "assets", "models")
     };
 
+    /// <summary>
+    /// Where the models built from the Blender sculpts are kept (plan 48 · BL1): <c>built/models</c>, which git
+    /// ignores, beside the game (a published build carries them) and in the folder it is started from (the
+    /// repository). A file there stands in for the species' sculpt; where there is none the sculpt is drawn.
+    /// </summary>
+    public static IReadOnlyList<string> BuiltFolders => new[]
+    {
+        Path.Combine(AppContext.BaseDirectory, "built", "models"),
+        Path.Combine(Environment.CurrentDirectory, "built", "models")
+    };
+
+    /// <summary>
+    /// Has the built models looked for, after every other folder. Only the game itself asks (<c>Program.Main</c>): a
+    /// tool's or a test's models stay the sculpts unless it hands a folder over, so no shot and no test depends on
+    /// what a machine happens to have built.
+    /// </summary>
+    public static void LookForBuiltModels()
+    {
+        foreach (string folder in BuiltFolders)
+            if (!Folders.Contains(folder)) Folders.Add(folder);
+        Refresh();
+    }
+
     private static Dictionary<string, string>? files;
     private static readonly object Gate = new();
 
@@ -204,7 +236,7 @@ internal static class ModelOverrides
 internal static class ImportedModels
 {
     /// <summary>Raise when the conversion changes, so menu sprites baked from imported models are baked again.</summary>
-    public const int Version = 1;
+    public const int Version = 2;
 
     /// <summary>What went wrong with model files, for the harness and the log.</summary>
     public static readonly ConcurrentQueue<string> Problems = new();
@@ -292,6 +324,7 @@ internal static class ImportedModels
     {
         public GltfPrimitive Prim = null!;
         public GltfMaterial? Material;
+        public string Node = "";
         public int[] Bones = Array.Empty<int>();
         public float[] Weights = Array.Empty<float>();
         public Vector3[] World = Array.Empty<Vector3>();
@@ -327,6 +360,7 @@ internal static class ImportedModels
                 var g = new Gathered
                 {
                     Prim = prim,
+                    Node = node.Name.Length > 0 ? node.Name : asset.Meshes[node.Mesh].Name,
                     Material = prim.Material >= 0 && prim.Material < asset.Materials.Count ? asset.Materials[prim.Material] : null,
                     Bones = new int[count * 4], Weights = new float[count * 4], World = new Vector3[count]
                 };
@@ -394,8 +428,10 @@ internal static class ImportedModels
             var mat = g.Material;
             var normals = prim.Normals ?? FaceNormals(prim);
             var tint = mat?.BaseColor ?? Vector4.One;
-            byte surface = (byte)(mat != null && Math.Max(mat.Emissive.X, Math.Max(mat.Emissive.Y, mat.Emissive.Z)) > 0.4f ? SurfaceMaterial.Glow
-                : mat != null && mat.Metallic >= 0.7f ? SurfaceMaterial.Metal : SurfaceMaterial.Default);
+            var eyes = EyesOf(g.Node);
+            if (eyes is { } state) rig.HasEyes[(int)state] = true;
+            byte surface = (byte)(SurfaceNamed(mat?.Name) ?? (mat != null && Math.Max(mat.Emissive.X, Math.Max(mat.Emissive.Y, mat.Emissive.Z)) > 0.4f ? SurfaceMaterial.Glow
+                : mat != null && mat.Metallic >= 0.7f ? SurfaceMaterial.Metal : SurfaceMaterial.Default));
             int image = mat?.Image ?? -1;
             if (prim.UVs == null) image = -1;
             var part = new PartBuilder();
@@ -413,7 +449,8 @@ internal static class ImportedModels
                     },
                     UVs = part.UVs.Count == n ? part.UVs.ToArray() : new Vector2[n],
                     Palette = part.Palette.ToArray(),
-                    Image = image
+                    Image = image,
+                    Eyes = eyes
                 });
                 part = new PartBuilder();
             }
@@ -466,6 +503,37 @@ internal static class ImportedModels
             }
             Finish();
         }
+    }
+
+    /// <summary>
+    /// A name without the number Blender adds to one already taken (<c>shell.001</c>), in lower case.
+    /// </summary>
+    private static string Plain(string name)
+    {
+        int dot = name.LastIndexOf('.');
+        if (dot > 0 && dot < name.Length - 1 && name.AsSpan(dot + 1).IndexOfAnyExceptInRange('0', '9') < 0) name = name[..dot];
+        return name.ToLowerInvariant();
+    }
+
+    /// <summary>The eye state a piece is for by its node's name, <c>eyes.Shut</c> (any case), or null for any other piece.</summary>
+    internal static EyeState? EyesOf(string node)
+    {
+        const string prefix = "eyes.";
+        if (!node.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) return null;
+        string word = Plain(node[prefix.Length..]);
+        foreach (var state in Enum.GetValues<EyeState>())
+            if (state.ToString().Equals(word, StringComparison.OrdinalIgnoreCase)) return state;
+        return null;
+    }
+
+    /// <summary>The game's surface a material names (<c>fur</c>, <c>shell</c>, <c>leaf</c>: any of <see cref="SurfaceMaterial"/>), or null.</summary>
+    internal static SurfaceMaterial? SurfaceNamed(string? material)
+    {
+        if (string.IsNullOrEmpty(material)) return null;
+        string word = Plain(material);
+        foreach (var surface in Enum.GetValues<SurfaceMaterial>())
+            if (surface != SurfaceMaterial.Default && surface.ToString().Equals(word, StringComparison.OrdinalIgnoreCase)) return surface;
+        return null;
     }
 
     private static Vector3 SafeNormal(Vector3 n) => n.LengthSquared() > 1e-12f ? Vector3.Normalize(n) : Vector3.UnitY;
@@ -899,13 +967,15 @@ internal static class ImportedModels
     }
 
     /// <summary>Draws the posed parts for one pass (the skin is already posed by <see cref="PokeModel.Animate"/>).</summary>
-    public static void Draw(RenderContext context, PokeModel m, Matrix4x4 root, CharacterPass pass)
+    /// <param name="eyes">The eyes the pose shows: of the file's eye pieces only that state's is drawn, the open ones where it has none.</param>
+    public static void Draw(RenderContext context, PokeModel m, Matrix4x4 root, CharacterPass pass, EyeState eyes = EyeState.Open)
     {
         var rig = m.Imported!;
+        if (!rig.HasEyes[(int)eyes]) eyes = EyeState.Open;
         foreach (var part in rig.Parts)
         {
             var model = pass == CharacterPass.Outline ? part.Outline : part.Body;
-            if (model == null) continue;
+            if (model == null || (part.Eyes is { } own && own != eyes)) continue;
             for (int i = 0; i < part.Palette.Length; i++) rig.Palette[i] = m.Skin[part.Palette[i]];
             var skin = rig.Palette.AsSpan(0, part.Palette.Length);
             var material = pass switch

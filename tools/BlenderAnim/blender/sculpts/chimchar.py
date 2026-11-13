@@ -3,10 +3,10 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, tri, unit, boxy, args
+from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, tri, unit, boxy, eye_look, args
 
 src, out = args()
-k = Kit(src)
+k = Kit(src, coat="fur")
 
 ORANGE, CREAM, RED, PINK, FLAME, CORE = "#F0902E", "#F7E0A2", "#E2452C", "#E9705A", "#EF5A2B", "#FFD43F"
 H = np.array([0, -0.01, 0.74])
@@ -63,7 +63,11 @@ def eye(u, v):
     c = np.tile(DARK, (len(u), 1))
     c[((u - 0.15) / 0.3) ** 2 + ((v - 0.42) / 0.28) ** 2 < 1] = (1, 1, 1)
     return c
-k.decal(E + np.array([0, 0, -0.01]), de, (0.036, 0.052), eye, eps=0.009, rings=10, segs=32, mirror=True)
+LID = srgb(CREAM)
+def eyes(state):
+    k.decal(E + np.array([0, 0, -0.01]), de, (0.036, 0.052), eye_look(state, eye, LID, DARK), eps=0.009, rings=20, segs=56,
+            mirror=True)
 
 k.build(voxel=0.007)
+k.eye_states(eyes)
 k.export(out)

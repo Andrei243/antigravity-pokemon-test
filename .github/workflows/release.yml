@@ -1,6 +1,7 @@
 # A release (plan 16 · T2): a tag v<major>.<minor>.<patch>[-label] builds the game for Windows, Linux and macOS (Intel
 # and Apple silicon), each one executable with the .NET runtime and raylib inside it and the game's Data and Assets
-# beside it, zips each with the licence, the README, the third-party notices, docs/playing.md, the shipped mesh cache
+# beside it, zips each with the licence, the README, the third-party notices, docs/playing.md, the shipped mesh cache,
+# the models built from the Blender sculpts
 # and a manifest of the game's files (what `--verify` checks), and puts the four zips on a GitHub release of this
 # repository with the changelog's section for the version. Nothing else is uploaded anywhere.
 #
@@ -72,8 +73,40 @@ jobs:
           path: ${{ runner.temp }}/warm/cache/models
           retention-days: 1
 
+  # The models built from the Blender sculpts (plan 48 · BL1), made once and shipped in every zip beside the game:
+  # git holds the sculpts' scripts, never the built files. Blender is the version the sculpts are written against,
+  # fetched from blender.org; it runs with no window and renders nothing here.
+  models:
+    runs-on: ubuntu-latest
+    env:
+      BLENDER_VERSION: 4.5.10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Blender
+        shell: bash
+        run: |
+          sudo apt-get update && sudo apt-get install -y libxi6 libxxf86vm1 libxfixes3 libxrender1 libxkbcommon0 libsm6 libgl1 libegl1
+          curl -fsSL "https://download.blender.org/release/Blender${BLENDER_VERSION%.*}/blender-${BLENDER_VERSION}-linux-x64.tar.xz" -o "$RUNNER_TEMP/blender.tar.xz"
+          mkdir -p "$RUNNER_TEMP/blender"
+          tar -xJf "$RUNNER_TEMP/blender.tar.xz" -C "$RUNNER_TEMP/blender" --strip-components=1
+          "$RUNNER_TEMP/blender/blender" --version | head -n 1
+          echo "BLENDER=$RUNNER_TEMP/blender/blender" >> "$GITHUB_ENV"
+      - name: Build the sculpts
+        shell: bash
+        run: dotnet run -c Release --project tools/BlenderAnim -- sculpt all --out "$RUNNER_TEMP/built/models"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: built-models
+          path: ${{ runner.temp }}/built/models
+          retention-days: 1
+
   build:
-    needs: [version, cache]
+    needs: [version, cache, models]
     strategy:
       fail-fast: true
       matrix:
@@ -106,6 +139,11 @@ jobs:
         with:
           name: mesh-cache
           path: ${{ runner.temp }}/game/cache/models
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: built-models
+          path: ${{ runner.temp }}/game/built/models
 
       - name: Put the folder together
         shell: bash
