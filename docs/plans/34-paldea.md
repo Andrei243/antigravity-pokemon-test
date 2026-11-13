@@ -177,21 +177,22 @@ nothing of a walker's path changed.
 - **The lab's yard** (`tools/OpenWorldBake/worlds/lab`: three boxes of `carve/hill.json`'s additions on the west meadow,
   away from every marker, road, zone and the bot's way; the block's east face painted `ClimbableRock` in
   `terrain/ground.json`): a block 6 m high, a hop step 0.8 m and a high step 2.3 m. The lab's bake: 33 hops, 51 high
-  jumps, 6 climbs, 83 glides. `--nav --ride` draws the mesh as a mounted body with every power finds its paths (hops
+  jumps, 6 climbs, 83 glides. `--ride --nav` (the switch before `--nav`) draws the mesh as a mounted body with every power finds its paths (hops
   orange, high jumps brown, climbs magenta, glides sky blue), and the game's debug layer draws them in the same colours.
 - **Paldea's mesh** baked again with `"mount": true` (17 hops, 40 high jumps, no climbs: no cliff is painted yet,
   674 glides); only `navmesh.bin` and `index.json` changed. Galar's is untouched to the byte.
 - **The done-when** (`MountLabTests`, on the lab baked as the game reads it): each kind of link baked in the yard, none
   in a region not ridden; a path up the yard takes the hop mounted, the high jump and the climb only with their grants,
   never on foot; a glide off the block reaches further than any drop; the capsule rides each link from its takeoff to
-  its landing (the hop, the high jump, the climb onto the block's top, the glide as far as its link says, softly) and is
+  its landing (the hop, the high jump, the climb onto the block's top, the glide at least as far as its link's landing, softly: a whole glide off the block comes down past it, so a body that must land there lets go over it) and is
   refused each without its grant (a walker stays under the hop step, the high step and the face are not reached, a fall
   is short and hard); the trot (6 m/s), the sprint only with the dash (11), and the swim into the pond only with its grant.
 - **Shots** (`freewalk`, `Modes/FreeWalkYard.cs`, `SHOTS_FILTER=fwy`): Koraidon half way up the painted face (`fwy0`),
   on the block's top (`fwy1`), gliding off it (`fwy2`), the high jump in the air and on the high step (`fwy3`, `fwy4`),
-  the hop in the air (`fwy5`) and the yard from over the meadow (`fwy6`). They wait for the user's word.
+  the hop landing on its step (`fwy5`) and the yard from over the meadow (`fwy6`). They wait for the user's word.
+- **Seen in other shots**: the lab's pictures that look west (`open`'s, `freewalk`'s) now show the yard on the west meadow.
 - **Owed**: the playthrough bot riding the links (`Autoplayer.Open` steers walking paths; a mounted leg would press the
-  jump at a hop's takeoff, hold into a climb's face and press once falling for a glide); a climbable cliff painted in
+  jump at a hop's takeoff, hold into a climb's face, press once falling for a glide and press again over its landing to let go); a climbable cliff painted in
   Paldea itself (PD4's Titans and PD6's mountains).
 
 ## PD1 as built (2026-11-13, its first session)

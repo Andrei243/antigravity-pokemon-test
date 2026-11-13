@@ -182,7 +182,7 @@ public class MountLabTests
     }
 
     [Fact]
-    public void AGlideOffTheBlockLandsAsFarAsItsLinkSaysAndAFallWithoutItIsShortAndHard()
+    public void AGlideOffTheBlockLandsAtLeastAsFarAsItsLinkAndAFallWithoutItIsShortAndHard()
     {
         // The longest glide off the block's top
         var glide = Mesh.Links.Where(l => l.OffMesh && (l.Flags & OpenNavFlags.Glide) != 0 && l.A.MetresX is > -64 and < -44 && l.A.MetresZ is > -30 and < -8 && l.A.MetresY > 5)

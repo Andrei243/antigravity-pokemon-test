@@ -4,7 +4,6 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
-- In Paldea the paths the game works out now know the legendary mount's ways: a hop, a high jump, a climb up a climbable face and a glide off a height, taken only while riding and with the power each needs.
 - Once you are the Johto Safari Zone's Owner, the Area Customizer in its gate hall lets you set haystacks, saplings, boulders, ponds and other objects down in any of its twelve areas. Enough of a kind of place, plains, forest, peak or water, and new Pokémon move into that area: they show up from the day after, and objects that have stood ten days count twice.
 - A game saved on a place of the day you landed on from the sky now wakes outside your last Pokémon Center in that region, rather than back where your game began.
 - Romanian: the newer scenes are translated: the hub town's keep, office, plaza, arena and gallery, the Battle Frontier's cups, Lockwork's cells and tower, the Battle Tree and the Trainer Tower, the harbour cases, festival stalls and the Delve camp.

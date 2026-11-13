@@ -10,7 +10,7 @@ partial class Harness
     /// with the mount's yard on the west meadow (a block of rock whose east face is painted <c>ClimbableRock</c>, a hop step
     /// and a high step), Koraidon ridden with every power along the links its navigation mesh bakes: half way up the
     /// painted face (fwy0), standing on the block's top (fwy1), gliding off it (fwy2), the high jump in the air and on the
-    /// high step (fwy3, fwy4), the hop in the air (fwy5), and the yard from over the meadow with the mount on its top
+    /// high step (fwy3, fwy4), the hop landing on its step (fwy5), and the yard from over the meadow with the mount on its top
     /// (fwy6). Each shot prints the open world's line, the mount's form and the camera's ride, and what the stance was.
     /// </summary>
     void FreeWalkYardShots()
