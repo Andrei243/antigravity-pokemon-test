@@ -171,7 +171,40 @@ How the kit works, and why:
 - The game stands every model at one height: a tall sprout or tuft makes the body smaller on screen.
 - Git Bash heredocs fail on a script with apostrophes: write Python with the Write tool.
 
-**People** (`sculpts/hero.py`): the game reads no character from a file (only species, through
+**People in the game** (2026-11-13; style guide, "Characters from files"; plan 47): the game now reads people from
+files, a file a build, and `sculpts/people_chibi.py` and `people_grown.py` make them on `peoplekit.py`. What was
+learned making them:
+
+- **The loop for people**: `tools/dev/people.sh "$S/new" Kid` (18 s a chibi build, all 89 pieces), then
+  `dotnet run -c Release --no-build --project tools/ShotHarness -- "$S/new" cast player dawn rowan` (boards
+  `56_cast_NN`, a large turntable each, a battle each) beside the same in an out dir with no `overrides`;
+  `SHOTS_FILTER=player ... lineup` gives the faces in every expression (`39_faces_*`) and the field sprites
+  (`38_sheet_*`); `freewalk` with `SHOTS_FILTER=fw40` the grown kit. The harness copies the engine: after a change
+  to the reader build `tools/ShotHarness`, not the engine alone.
+- **A look falls back to the old sculpt without a word when its file lacks one piece it wears**, so a board can show
+  the old kit and look "unchanged": check a distinctive shape, or ask `CharacterFiles.Missing`.
+- **Frames come from the engine** (`people_frames.json`, written by `GOLDEN=accept dotnet test PokemonPlatinumTests
+  --filter CharacterFilesTests`): never copy a joint into a script. Shapes are written in the game's axes through
+  `E`, `T`, `Box`, `lathe`, `torus` (`peoplekit.py`); a `deform` works on the unit sphere in Blender's axes.
+- **Never cut a window in a fused shell** (`build(cut=...)`): the rim is stepped, and a cut by angle from the head
+  also removed everything below it (long hair's fall). Draw the unwanted part of the ball in under the skin with a
+  `deform` before fusing (`cap` in `people_chibi.py`): the hairline is then the surface's own smooth edge.
+- **Hats, brims, skirts and hems are lathes** (`lathe(c, [(radius, height)...])`, the outer side going up),
+  unfused: crisp, a few hundred vertices, and they tilt with the engine's own `Pitch`.
+- **A face's lines are rows of thin patches** (`arc`): a decal is geometry, so it cannot be see-through; a curved
+  lid or a smile is five dashes along the curve. A patch lifted less than 0.005 flickers into the skin.
+- **Eyes that read at the game's sizes are large and dark**: the first pair, sized like a realistic eye
+  (0.034 by 0.05), looked like dots beside the old painted face; 0.046 by 0.066 with a pupil a third of the width
+  and the iris showing round it is right for a child.
+- **Voxel 0.012 with 7 rounds of Smooth** for hair (0.010 and 3 left it lumpy); 0.011 for the head.
+- A thing with a string colour (`"#B0B4BE"`) in a piece of `colours="true"` is its own colour; a zone piece takes
+  the arrays `P`, `A`, `W`, `K`, `STRIPE`, `SHADE`, `THIRD`.
+- Four Blender processes at once build the four chibi files in under half a minute.
+- **Check every look, not a board**: `CHARACTER_FILES=<folder of the .glb files> dotnet test PokemonPlatinumTests
+  --filter CharacterFilesTests` writes `sweep.txt` there: each file's read time and memory, every look of the table
+  in both kits that the files can't make (a missing piece, or a mesh past 65,535 vertices) and the largest mesh.
+
+**The first draft of a person** (`sculpts/hero.py`, 2026-11-12, before the reader above existed): then the game read no character from a file (only species, through
 `overrides/models`), so a person sculpted here can be seen on the turntable and nowhere in the game. The kit makes
 its own armature for one (`Kit(name=..., skeleton=[(bone, parent, place)...], sides=("L", "R"))`: a person's `L`
 bones are on +X, the other way round from a Pokémon's; edit bones are made with `bpy.ops.object.mode_set`, which

@@ -6,6 +6,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 - The game no longer waits three seconds for its sounds as it opens, and a start right after an update (when every data file is new to the system) is much shorter: the small map and script files are kept as one. A thin bar shows how far loading has come before the opening notice.
 
+- Every person in the game, in the chibi regions and the grown ones, has been modelled again: new bodies, hair cuts, hats and clothes, and faces whose eyes, brows and mouth are modelled rather than painted, in every expression, blinking and speaking. Outfits, the boutique, the salon and saves work as before.
+
 - Unova's special tiles now work: patches of shaking grass rustle and always hold a Pokémon of the place, ripples on the water bring up the water's own Pokémon (on a rod too), dust clouds in caves hide a Gem or a Pokémon, and a shadow crossing a bridge brings down a flyer. Each day's patches stand in other places.
 
 - After Galar's Hall of Fame: Sonia, back in her Wedgehurst lab, sets a Key Stone into your Dynamax Band and hands you the Mega Max Band; a black-glowing den by the Lake of Outrage holds raids against Pokémon that Mega Evolve and Mega Dynamax; Rose Tower's receptionist runs the Battle Tower's ten-rank ladder with Leon waiting at the top; and two brothers, Sordward and Shielbert, set the stadiums' Pokémon running wild at Motostoke and Hammerlocke until you stop them.

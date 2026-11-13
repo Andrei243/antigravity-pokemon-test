@@ -47,6 +47,9 @@ overrides/
 # Models built from the Blender sculpts (plan 48 · BL1): made by `tools/BlenderAnim sculpt`, published with the game, never in git
 /built/
 
+# The people's files (plan 47): built with Blender by tools/dev/people.sh and by the release workflow, never in git
+/assets/characters/
+
 # Voice packs (plan 26 · V2): voice/<language>/ at the repository's root or beside the game, a separate download, never in git
 /voice/
 # The voice engine chosen by plan 26's trials: its own folder and settings on the user's machine, never in git

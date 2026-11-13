@@ -153,3 +153,7 @@ markings as a texture, the skeleton and every clip of the body plan. Refine one 
 them (add `--back` to see them from behind, as your own Pokémon is seen in battle), and `sheets` the menu sprites of
 every species. Menu sprites are cached in `cache/sprites` next to the game,
 named after a signature of the model (its file's size and date), so a changed file is baked again.
+
+## People
+
+People are read from files too, but not one to a character: a file holds a whole body build's pieces (the body in parts, every hair cut, hat, garment, thing held and the face's states), and a look of `characters.json` is assembled from them in its own colours. They go in `overrides/characters` (or `assets/characters`), named after the build (`Kid.glb`, `Grown-curved.glb`), and are made by the scripts in `tools/BlenderAnim/blender/sculpts` (`tools/dev/people.sh <out dir>`). The format (piece names, zones in place of colours, `tint`, `hides`, the face) is in the style guide under "Characters from files". A file needs no animation: the skeleton and every clip are the game's own, and the pieces are skinned to its bones by name.
