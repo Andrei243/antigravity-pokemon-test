@@ -62,6 +62,23 @@ internal static class CharacterFiles
     private static readonly object Gate = new();
     private static readonly Color Ink = new(34, 26, 40, 255);
 
+    /// <summary>
+    /// Has the game look in the repository's own <c>assets/characters</c> too when its executable is inside the
+    /// repository (started from Visual Studio or by <c>dotnet run</c> from another folder, where the folder it is
+    /// started in is not the repository's root). Only the game itself asks (<c>Program.Main</c>): a test's or a tool's
+    /// engine reads no file it wasn't handed, so files a developer built never reach a test or a shot.
+    /// </summary>
+    public static void LookInTheRepository()
+    {
+        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
+        {
+            if (!File.Exists(Path.Combine(dir.FullName, "PokemonPlatinum.sln"))) continue;
+            Folders.Add(Path.Combine(dir.FullName, "assets", "characters"));
+            Refresh();
+            return;
+        }
+    }
+
     /// <summary>Forgets the files read (after files were added or removed).</summary>
     public static void Refresh()
     {
