@@ -64,4 +64,14 @@ public partial class GameEngine
     {
         public bool ArrangeSafari(int area) => game.ArrangeSafari(area);
     }
+
+    internal sealed partial class Driver
+    {
+        /// <summary>The objects standing in the Johto Safari Zone (plan 38 · EX8).</summary>
+        public SafariObjects SafariObjects => game.flow.SafariObjects;
+        /// <summary>An area opened at the Area Customizer, as <c>safari objects</c> opens it.</summary>
+        public bool ArrangeSafari(int area) => game.ArrangeSafari(area);
+        /// <summary>The objects laid out in the zone as an arrival lays them.</summary>
+        public void LayOutSafariObjects() => game.LayOutSafariObjects();
+    }
 }

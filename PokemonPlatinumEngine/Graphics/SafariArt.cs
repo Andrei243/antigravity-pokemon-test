@@ -35,7 +35,8 @@ internal static class SafariArt
         var best = SafariObjectKind.Plains;
         foreach (var kind in Enum.GetValues<SafariObjectKind>())
             if (t.PointsOf(kind) > t.PointsOf(best)) best = kind;
-        return (KindColour(best), "");
+        // A piece of one tile is too small for its name: its first letter tells it
+        return (KindColour(best), t.Width * t.Depth > 1 ? "" : t.Name[..1]);
     }
 
     /// <summary>Builds an object where it stands.</summary>
