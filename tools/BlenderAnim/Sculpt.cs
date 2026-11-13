@@ -48,6 +48,21 @@ internal static class Sculpt
         return null;
     }
 
+    /// <summary>
+    /// The repository's main checkout when <paramref name="root"/> is a git worktree of it (its <c>.git</c> is a file
+    /// naming <c>&lt;main&gt;/.git/worktrees/&lt;name&gt;</c>), else null.
+    /// </summary>
+    public static string? MainCheckout(string root)
+    {
+        string dotGit = Path.Combine(root, ".git");
+        if (!File.Exists(dotGit)) return null;
+        string line = File.ReadAllText(dotGit).Trim();
+        if (!line.StartsWith("gitdir:", StringComparison.Ordinal)) return null;
+        string dir = line["gitdir:".Length..].Trim().Replace('\\', '/');
+        int at = dir.IndexOf("/.git/worktrees/", StringComparison.Ordinal);
+        return at > 0 && Directory.Exists(dir[..at]) ? Path.GetFullPath(dir[..at]) : null;
+    }
+
     public static int Run(string blender, IReadOnlyList<string> named, string? outDir)
     {
         var species = named.Count == 1 && named[0] == "all" ? Sculpted().ToList() : named.ToList();
@@ -81,6 +96,12 @@ internal static class Sculpt
                 }
                 string file = Path.Combine(target, s + ".glb");
                 File.Copy(first, file, overwrite: true);
+                // In a worktree the main checkout gets the file too: that is where the game is played from
+                if (outDir == null && MainCheckout(root!) is { } main)
+                {
+                    Directory.CreateDirectory(Path.Combine(main, "built", "models"));
+                    File.Copy(first, Path.Combine(main, "built", "models", s + ".glb"), overwrite: true);
+                }
                 var asset = GltfReader.Read(file);
                 var eyes = asset.Nodes.Select(n => ImportedModels.EyesOf(n.Name)).Where(e => e != null).Select(e => e!.Value).Distinct().OrderBy(e => e).ToList();
                 var surfaces = asset.Materials.Select(m => ImportedModels.SurfaceNamed(m.Name)?.ToString() ?? $"({m.Name})").Distinct().ToList();

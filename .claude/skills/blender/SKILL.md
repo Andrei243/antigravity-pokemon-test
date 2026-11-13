@@ -220,6 +220,13 @@ into `built/models` (ignored by git, read by the game alone, copied by `dotnet p
 same bytes, and prints what the game's reader finds in it: eye states, surfaces, clips. To see it in a shot, copy it
 into `<out dir>/overrides/models` as before: the harness and the tests never look in `built/models`.
 
+Run in a git worktree, `sculpt` also installs each file into the main checkout's `built/models`, where the game is
+played from (the folder is ignored by git, so a merge carries no model). A script written since the tool was last
+built is not found with `--no-build`: the scripts are copied beside the tool as it builds. A form is a script of its
+own named without the hyphen (`gastrodoneast.py` for `Gastrodon-East`, `mimejr.py` for `Mime Jr.`), built on the
+form's own export and grown from its species' script; shiny looks in the games' own colours are owed as a second
+palette a script and a second file a species (plan 48, "Shiny looks in the games' own colours, and forms").
+
 A species is at parity with a hand-built sculpt only with both of these, so every new script has them:
 
 - **Eyes in five states.** Build the body, then `k.eye_states(lay)`: `lay(state)` adds the eyes' decals for a state

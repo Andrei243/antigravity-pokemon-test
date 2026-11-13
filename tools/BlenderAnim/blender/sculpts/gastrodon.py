@@ -96,7 +96,7 @@ def eye(u, v):
     return c
 dt = unit(0, -0.5, 0.86)
 k.decal(H + dt * 0.112, dt, (0.024, 0.024), eye, up=(0, 0.86, 0.5), eps=0.005, rings=20, segs=56)
-de = unit(0.8, -0.6, 0.05)
+de = unit(0.73, -0.68, 0.05)
 E_ = H + de * 0.115
 def eyes(state):
     k.decal(E_, de, (0.023, 0.024), eye_look(state, eye, LID, INK), eps=0.005, rings=20, segs=56, mirror=True)
