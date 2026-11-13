@@ -73,13 +73,17 @@ public class MissionBoardTests
         var board = new MissionBoard();
         board.Refresh(Monday, Two);
         var plain = board.Missions.Take(MissionWeek.File.Plain).ToList();
+        // (an event told for one mission may count for another of the week too, a trainer beaten for a rematch's: each is
+        // held to what it had before its own two events, and one an earlier event finished is passed by)
         foreach (var m in plain)
         {
+            if (m.IsDone) continue;
+            int before = m.Progress;
             string other = m.Region == RegionDatabase.Sinnoh ? RegionDatabase.Kanto : RegionDatabase.Sinnoh;
             board.Tell(EventFor(m, other));
-            Assert.Equal(0, m.Progress);
+            Assert.Equal(before, m.Progress);
             board.Tell(EventFor(m, m.Region));
-            Assert.Equal(1, m.Progress);
+            Assert.Equal(before + 1, m.Progress);
         }
         // A timed mission counts only while it runs
         var timed = board.Missions[MissionWeek.File.Plain];
@@ -141,25 +145,35 @@ public class MissionBoardTests
         board.Refresh(Monday, Two);
         var first = board.Missions[0];
         Assert.Null(board.Claim(0));
+        // (an event told for one mission may finish another of the week too, a trainer beaten for a rematch's: what is
+        // counted is every mission done and not claimed)
+        int Done() => board.Missions.Count(m => m.IsDone && !m.Claimed);
         for (int k = 0; k < first.Goal; k++) board.Tell(EventFor(first, first.Region));
-        Assert.Equal(1, board.Unclaimed);
+        int done = Done();
+        Assert.True(first.IsDone);
+        Assert.Equal(done, board.Unclaimed);
         Assert.Equal(first.Reward, board.Claim(0)!.Value.Pennants);
         Assert.Null(board.Claim(0));
+        Assert.Equal(done - 1, board.Unclaimed);
+        for (int i = 1; i < board.Missions.Count; i++) if (board.Missions[i].IsDone) board.Claim(i);
         Assert.Equal(0, board.Unclaimed);
         // Done and not claimed when the week turns: it waits, and the week's undone missions go
-        var second = board.Missions[1];
+        var second = board.Missions.First(m => !m.IsDone && !m.IsTimed);
         for (int k = 0; k < second.Goal; k++) board.Tell(EventFor(second, second.Region));
+        var waiting = board.Missions.Where(m => m.IsDone && !m.Claimed).ToList();
+        Assert.Contains(second, waiting);
+        int pennants = waiting.Sum(m => m.Reward);
         Assert.True(board.Refresh(Monday.AddDays(7), Two));
-        Assert.Single(board.Waiting);
-        Assert.Equal(second.Reward, board.Waiting[0].Pennants);
+        Assert.Equal(waiting.Count, board.Waiting.Count);
+        Assert.Equal(pennants, board.Waiting.Sum(w => w.Pennants));
         Assert.All(board.Missions, m => Assert.Equal(0, m.Progress));
         // The board's screen claims what waits as it opens, its pennants to Pennant Hall
         var plaza = new PlazaState();
         var screen = new MissionBoardScreen();
         screen.Open(board, plaza, new Inventory());
-        Assert.Equal(second.Reward, plaza.Coins);
+        Assert.Equal(pennants, plaza.Coins);
         Assert.Empty(board.Waiting);
-        Assert.Equal(second.Reward, screen.Paid);
+        Assert.Equal(pennants, screen.Paid);
     }
 
     [Fact]

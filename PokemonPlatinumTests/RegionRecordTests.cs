@@ -50,10 +50,12 @@ public class RegionRecordTests
             foreach (var property in typeof(RegionIntroLines).GetProperties())
                 Assert.False(string.IsNullOrWhiteSpace((string)property.GetValue(professor.Lines)!), $"{id}'s {property.Name}");
         }
-        // The record of a region without a file is empty, not missing
-        Assert.Null(Of(RegionDatabase.Paldea).File);
-        Assert.Empty(Of(RegionDatabase.Paldea).Starters);
-        Assert.False(Of(RegionDatabase.Paldea).HasStory);
+        // The record of a region without a file is empty, not missing (a made-up one: Paldea was the example until plan
+        // 34 · PD1 gave it its file)
+        var none = new Region { Id = "Nowhere", Name = "Nowhere", Generation = 0 };
+        Assert.Null(none.File);
+        Assert.Empty(none.Starters);
+        Assert.False(none.HasStory);
     }
 
     [Fact]

@@ -46,7 +46,9 @@ public static class BattleWire
         typeof(DynamaxEnded), typeof(MaxMoveUsed), typeof(Terastallized), typeof(MarkChanged), typeof(FormHpChanged),
         typeof(CalledForHelp), typeof(AllyJoined), typeof(Rotated), typeof(Judged), typeof(RoyalPlaced), typeof(TotemAuraRaised),
         typeof(RaidBarrier),
-        typeof(LockShown), typeof(BrokeLoose), typeof(Calmed), typeof(ExpHeld)
+        typeof(LockShown), typeof(BrokeLoose), typeof(Calmed), typeof(ExpHeld),
+        // (plan 46 · CP11's Tales)
+        typeof(TaleTold), typeof(TaleAnswered), typeof(TaleEnded), typeof(TaleFormChanged)
     };
 
     /// <summary>Every question the core asks.</summary>
