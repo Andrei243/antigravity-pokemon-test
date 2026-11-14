@@ -44,3 +44,5 @@ Rules learnt since this brief was first written (they overrule anything above):
 - Eyes that are always shut: the open state is the slit; write Fierce by hand (the slit tilted), since `eye_look`'s Fierce draws a lid across it.
 - A loose piece built on a hand-made frame (a wing, a vane, a plate with its own axes) keeps that frame right-handed, the mirrored twin too (side = face x direction): wound inside out it looks right in Blender's turntable, which draws both faces, and thin, grey and see-through in the game, which does not.
 - A flyer's level wings are edge-on from the game's cameras: raise each pair in a V of 25 to 35 degrees and sweep the pairs apart; legs hang tucked and short.
+- The art's pose is not the rest pose: arms flung wide or raised in the picture are carried forward and a little down in the model (a model wider than it is tall is drawn small in the game and can be cut by its cell).
+- Stripes round a limb or a body are crisp as loose rings (a `sheet` wound round the part, 0.004 off its surface, its seam behind); a band mask in paint is `inside(z - top) * inside(bottom - z)`.
