@@ -7,16 +7,47 @@
   // third area, its floor at the road's height, climbing at its head over a ramp onto a ledge six metres up where the
   // Titan Klawf keeps its den and its Herba Mystica. In the gully stands a crag of rock whose south face is painted
   // climbable: the mount can stand on its top only once it climbs (the fifth Titan's power, PD4's second session)
+  //
+  // The other four (PD4's second session) are stand-ins: small places of our own laid beside the land that is built,
+  // each a floor at the ways' height cut into the hills, shut in on every side but its mouth, with a den up a ramp or
+  // across a lake, until PD6 builds the provinces the originals stand in (the West Province, the East Province's third
+  // area, Asado Desert and Casseroya Lake) and moves each Titan there:
+  // - Open Sky (Bombirdier): a gully north off the South Province's second area, its den a ledge at its head
+  // - Lurking Steel (Orthworm): a sandy cutting east off the East Province's first area, its den a ledge at its end
+  // - Quaking Earth (Great Tusk or Iron Treads): a dusty basin north of Cortondo, its den a rise at its north end
+  // - False Dragon (Tatsugiri and Dondozo): a lake in a hollow east off the East Province's first area, its shores walked
+  //   round to the den on the far side
   "brushes": [
     // The hills north of the third area run on past the gully's head (south_and_east.json's stop at its edge), so the
     // ledge is shut in on every side but the ramp
     { "kind": "plateau", "name": "the hills round the Stony Cliff", "polygon": [[96, -512], [352, -512], [352, -410], [96, -410]], "height": 40, "falloff": 4 },
+    // The hills north of Cortondo and of the South Province's second area run on as far, round Open Sky and Quaking Earth
+    { "kind": "plateau", "name": "the hills north of Cortondo", "polygon": [[-512, -540], [-96, -540], [-96, -410], [-512, -410]], "height": 40, "falloff": 4 },
     { "kind": "plateau", "name": "the Stony Cliff's gully", "polygon": [[200, -420], [252, -420], [252, -360], [200, -360]], "height": 12, "falloff": 3 },
-    { "kind": "plateau", "name": "the Titan Klawf's ledge", "polygon": [[204, -452], [248, -452], [248, -420], [204, -420]], "height": 18, "falloff": 12 }
+    { "kind": "plateau", "name": "the Titan Klawf's ledge", "polygon": [[204, -452], [248, -452], [248, -420], [204, -420]], "height": 18, "falloff": 12 },
+    // Open Sky: the gully north off the second area, and the Titan Bombirdier's ledge at its head
+    { "kind": "plateau", "name": "Open Sky's gully", "polygon": [[-264, -420], [-212, -420], [-212, -360], [-264, -360]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the Titan Bombirdier's ledge", "polygon": [[-260, -452], [-216, -452], [-216, -420], [-260, -420]], "height": 18, "falloff": 12 },
+    // Lurking Steel: the cutting east off the East Province's first area, and the Titan Orthworm's ledge at its end
+    { "kind": "plateau", "name": "Lurking Steel's cutting", "polygon": [[480, -560], [540, -560], [540, -508], [480, -508]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the Titan Orthworm's ledge", "polygon": [[540, -556], [572, -556], [572, -512], [540, -512]], "height": 18, "falloff": 12 },
+    // Quaking Earth: the basin north of Cortondo, and the rise at its north end where the Titan keeps its den
+    { "kind": "plateau", "name": "Quaking Earth's basin", "polygon": [[-460, -470], [-372, -470], [-372, -384], [-460, -384]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the Quaking Earth Titan's rise", "polygon": [[-452, -504], [-380, -504], [-380, -470], [-452, -470]], "height": 18, "falloff": 12 },
+    // False Dragon: the hollow east off the East Province's first area, its lake's bed in its middle with the shore
+    // round it, the den on the far shore
+    { "kind": "plateau", "name": "False Dragon's hollow", "polygon": [[480, -472], [604, -472], [604, -400], [480, -400]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "False Dragon's lake bed", "polygon": [[512, -458], [584, -458], [584, -414], [512, -414]], "height": 8, "falloff": 3 }
   ],
   "paint": [
     // The gully's floor is broken stone, the ledge bare rock
     { "cover": "Rock", "polygon": [[204, -452], [248, -452], [248, -420], [204, -420]], "minY": 17 },
+    // Open Sky's ledge is bare rock, Lurking Steel's cutting and ledge sand, Quaking Earth's basin and rise sand
+    { "cover": "Rock", "polygon": [[-260, -452], [-216, -452], [-216, -420], [-260, -420]], "minY": 17 },
+    { "cover": "Sand", "polygon": [[480, -560], [572, -560], [572, -508], [480, -508]], "maxY": 18.5 },
+    { "cover": "Sand", "polygon": [[-460, -504], [-372, -504], [-372, -384], [-460, -384]], "maxY": 18.5 },
+    // The lake's shore round False Dragon's water is sand
+    { "cover": "Sand", "polygon": [[506, -464], [590, -464], [590, -408], [506, -408]], "maxY": 12.5 },
     // The crag's south face, from its foot to its top (carve/titans.json's box), painted climbable
     { "cover": "ClimbableRock", "polygon": [[237.6, -398.6], [248.4, -398.6], [248.4, -397.4], [237.6, -397.4]] }
   ]

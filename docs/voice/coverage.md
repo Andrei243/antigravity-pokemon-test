@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 160 | 160 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1790 | 1727 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13857 | 13274 | 583 | 17 | 36 |
+| Scripts (`script:`) | 13880 | 13297 | 583 | 17 | 36 |
 | People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 24049 | 23361 | 688 | 22 | 36 |
+| **All** | 24072 | 23384 | 688 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -26,7 +26,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a sign | 1782 |
 | a thing's words | 81 |
 | the game's own voice (speaker none) | 330 |
-| the game's own voice (text) | 2310 |
+| the game's own voice (text) | 2348 |
 
 ## The cast
 
@@ -172,6 +172,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `wally` | 38 | 0 |
 | `baoba` | 37 | 0 |
 | `byron` | 37 | 0 |
+| `arven` | 36 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
 | `class:school_kid (any)` | 36 | 0 |
 | `look:battle_girl (any)` | 36 | 2 |

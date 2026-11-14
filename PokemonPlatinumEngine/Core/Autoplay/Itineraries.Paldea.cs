@@ -58,6 +58,32 @@ public static partial class Itineraries
         Leg.Talk("Levincia_GymTest", "iono") with { Until = PaldeaBadge("Electric") },
     };
 
+    /// <summary>Where <c>VAR_PALDEA_LEGENDS</c> stands once the path is walked to its end.</summary>
+    public const int PaldeaLegendsEnd = 12;
+
+    private static Func<StoryState, bool> PaldeaLegends(int at) => story => story.Var("VAR_PALDEA_LEGENDS") >= at;
+
+    /// <summary>
+    /// Plan 34 · PD4: the Path of Legends from Arven's word at Poco Path's lighthouse, each Titan met as its place is
+    /// walked into and beaten again at its den, on foot (the bot rides no link yet), and Arven's battle at the lighthouse
+    /// after the fifth. Each leg is done when <c>VAR_PALDEA_LEGENDS</c> (stony_cliff.txt's header has its count) says so.
+    /// </summary>
+    public static IReadOnlyList<Leg> PaldeaPathOfLegends { get; } = new[]
+    {
+        Leg.OpenTalk(PaldeaMap, "arven_lighthouse") with { Until = PaldeaLegends(1) },
+        Leg.OpenTrigger(PaldeaMap, "klawf_gully") with { Until = PaldeaLegends(2) },
+        Leg.OpenTrigger(PaldeaMap, "klawf_den") with { Until = PaldeaLegends(3) },
+        Leg.OpenTrigger(PaldeaMap, "bombirdier_gully") with { Until = PaldeaLegends(4) },
+        Leg.OpenTrigger(PaldeaMap, "bombirdier_den") with { Until = PaldeaLegends(5) },
+        Leg.OpenTrigger(PaldeaMap, "orthworm_cutting") with { Until = PaldeaLegends(6) },
+        Leg.OpenTrigger(PaldeaMap, "orthworm_den") with { Until = PaldeaLegends(7) },
+        Leg.OpenTrigger(PaldeaMap, "quaking_basin") with { Until = PaldeaLegends(8) },
+        Leg.OpenTrigger(PaldeaMap, "quaking_den") with { Until = PaldeaLegends(9) },
+        Leg.OpenTrigger(PaldeaMap, "tatsugiri_shore") with { Until = PaldeaLegends(10) },
+        Leg.OpenTrigger(PaldeaMap, "dondozo_shore") with { Until = PaldeaLegends(11) },
+        Leg.OpenTalk(PaldeaMap, "arven_lighthouse") with { Until = PaldeaLegends(12) },
+    };
+
     /// <summary>From the bedroom in Cabo Poco to the Electric Badge.</summary>
     public static IReadOnlyList<Leg> PaldeaToTheThirdBadge => Join(PaldeaToTheAcademy, PaldeaToTheThreeBadges);
 }

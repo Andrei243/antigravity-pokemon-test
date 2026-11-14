@@ -1,0 +1,142 @@
+{
+  "Quaking": [
+    {
+      "en": [
+        "The ground shudders. A Great Tusk bigger than a house curls into a ball and comes rolling across the basin!"
+      ],
+      "text": [
+        "Pământul se cutremură. Un Great Tusk mai mare decât o casă se face ghem și vine rostogolindu-se prin căldare!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Great Tusk uncurls, stamps hard enough to crack the ground, and pounds off up onto the rise!"
+      ],
+      "text": [
+        "Titanul Great Tusk se desface, bate din picior de crapă pământul și o ia la goană în sus, pe ridicătură!"
+      ]
+    },
+    {
+      "en": [
+        "The ground shudders. An Iron Treads bigger than a house comes spinning across the basin, throwing up dust!"
+      ],
+      "text": [
+        "Pământul se cutremură. Un Iron Treads mai mare decât o casă vine învârtindu-se prin căldare și ridică praful!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Iron Treads sparks and whirs, then spins away up onto the rise at the basin's end!"
+      ],
+      "text": [
+        "Titanul Iron Treads scapără și bâzâie, apoi se învârte departe, în sus pe ridicătura din capătul căldării!"
+      ]
+    }
+  ],
+  "QuakingDen": [
+    {
+      "en": [
+        "The Titan Great Tusk is gulping down a clump of glowing herbs, dust pouring off its hide."
+      ],
+      "text": [
+        "Titanul Great Tusk înghite un smoc de ierburi strălucitoare, iar praful i se scurge de pe piele."
+      ]
+    },
+    {
+      "en": [
+        "Its tusks gleam and its back swells. It lowers its head at {player}!"
+      ],
+      "text": [
+        "Colții îi lucesc și spinarea i se umflă. Își pleacă fruntea spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Great Tusk is beaten. It shrinks back to an ordinary size and lumbers off into the hills."
+      ],
+      "text": [
+        "Titanul Great Tusk e învins. Se micșorează la mărimea obișnuită și se îndepărtează greoi printre dealuri."
+      ]
+    },
+    {
+      "en": [
+        "The Titan Iron Treads has rolled over a clump of glowing herbs. Its plates hum louder and louder."
+      ],
+      "text": [
+        "Titanul Iron Treads s-a rostogolit peste un smoc de ierburi strălucitoare. Plăcile îi bâzâie tot mai tare."
+      ]
+    },
+    {
+      "en": [
+        "Light runs along its seams and its wheel spins up. It turns on {player}!"
+      ],
+      "text": [
+        "Lumina îi aleargă pe încheieturi și roata i se învârte tot mai repede. Se întoarce spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Iron Treads is beaten. It shrinks back to an ordinary size and rolls off into the hills."
+      ],
+      "text": [
+        "Titanul Iron Treads e învins. Se micșorează la mărimea obișnuită și se rostogolește printre dealuri."
+      ]
+    },
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "Four! I've never seen anything that size move that fast. These herbs are salty, like the desert's in them."
+      ],
+      "text": [
+        "Patru! N-am văzut niciodată ceva atât de mare mișcându-se atât de repede. Ierburile astea sunt sărate, ca deșertul."
+      ]
+    },
+    {
+      "en": [
+        "Koraidon ate the sandwich and spread the fins along its sides wide, like wings catching the wind."
+      ],
+      "text": [
+        "Koraidon a mâncat sandvișul și și-a desfăcut larg aripioarele de pe laturi, ca niște aripi prinse de vânt."
+      ]
+    },
+    {
+      "en": [
+        "Miraidon ate the sandwich and opened the fins along its sides, which lit up like a glider's wings."
+      ],
+      "text": [
+        "Miraidon a mâncat sandvișul și și-a deschis aripioarele de pe laturi, care s-au aprins ca aripile unui planor."
+      ]
+    },
+    {
+      "en": [
+        "Some of its old strength has come back. It can glide again! (Riding, press jump again in the air to glide.)"
+      ],
+      "text": [
+        "I-a revenit o parte din puterea de altădată. Poate plana din nou! (Călare, apasă iar butonul de sărit în aer ca să planezi.)"
+      ]
+    },
+    {
+      "en": [
+        "There's one more. Way out east, past the road to Levincia, there's a lake in a hollow."
+      ],
+      "text": [
+        "Mai e unul. Departe spre est, dincolo de drumul spre Levincia, e un lac într-o scobitură."
+      ]
+    },
+    {
+      "en": [
+        "People say a dragon lives on its shore. A small one, bossing around something huge. We'll see."
+      ],
+      "text": [
+        "Se zice că pe malul lui trăiește un dragon. Unul mic, care comandă ceva uriaș. Om vedea."
+      ]
+    }
+  ]
+}

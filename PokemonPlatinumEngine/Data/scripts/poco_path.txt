@@ -54,9 +54,47 @@ label Busy
   say "Hm? I'm busy. Go on, the academy's waiting for you."
   end
 label Begun
-  if var VAR_PALDEA_LEGENDS >= 3 goto Next
+  if var VAR_PALDEA_LEGENDS >= 12 goto Done
+  if var VAR_PALDEA_LEGENDS >= 11 goto Mabosstiff
+  if var VAR_PALDEA_LEGENDS >= 9 goto FalseDragon
+  if var VAR_PALDEA_LEGENDS >= 7 goto Quaking
+  if var VAR_PALDEA_LEGENDS >= 5 goto LurkingSteel
+  if var VAR_PALDEA_LEGENDS >= 3 goto OpenSky
   say "The Stony Cliff's the gully north of the road east out of Mesagoza, before Artazon. Be careful of the rocks."
   end
-label Next
-  say "That Klawf's herbs worked. I'm still asking around for where the next Titan's dug in. I'll find it."
+label OpenSky
+  say "Next Titan's a bird, they say, in the gully north of the road west out of Mesagoza, toward Cortondo."
+  end
+label LurkingSteel
+  say "The next one's east: a cutting off the road north from Artazon to Levincia. Something steel's under the sand."
+  end
+label Quaking
+  say "The next Titan's in the dusty basin north of Cortondo. Mind your footing when it starts to run."
+  end
+label FalseDragon
+  say "Last one's at the lake in the hollow east of the road to Levincia. A small dragon and a huge friend."
+  end
+label Done
+  say "Mabosstiff's been bouncing off the walls since. Come back any time. I'll cook."
+  end
+
+
+# Back at the lighthouse after the fifth Titan (plan 34 · PD4, its second session): why Arven wanted the herbs, his
+# Mabosstiff well again, and his battle. VAR_PALDEA_LEGENDS 11 to 12 (FLAG_PALDEA_LEGENDS_DONE)
+label Mabosstiff
+  scene "Arven's Mabosstiff"
+  faceto arven_lighthouse player
+  say "You came. I owe you the truth about the herbs. They were never really for cooking."
+  say "My Mabosstiff got hurt protecting me, years back. Nothing the doctors did helped. I've been feeding it herbs since."
+  say "I don't know if it was the fifth batch or all five together, but... watch."
+  cry "Mabosstiff"
+  text "A Mabosstiff bounds out from behind the lighthouse and slams into Arven's legs, its tail going like a drum."
+  say "Ha! Easy, easy! See? It's back. It's really back. And it wants to battle, I can tell. So do I."
+  say "Show me what you and your ride's friends can do. I won't hold back. My partner wouldn't let me."
+  battle arven_lighthouse as "paldea_arven"
+  say "You're strong. Stronger than a Titan. Thanks for walking the Path of Legends with me."
+  say "Say thanks too, buddy. ...That's a lick. That counts."
+  setflag FLAG_PALDEA_LEGENDS_DONE
+  setvar VAR_PALDEA_LEGENDS 12
+  endscene
   end

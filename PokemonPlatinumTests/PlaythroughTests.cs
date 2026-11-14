@@ -202,6 +202,35 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void APaldeaGameWalksThePathOfLegendsFromArvensWordToHisBattle()
+    {
+        // Plan 34 · PD4: a game past the academy's welcome put down at the lighthouse's foot, the bot walking the Path of
+        // Legends on foot: Arven spoken to, each Titan met by its place's trigger, chased to its den and beaten there, and
+        // Arven's battle at the lighthouse; a strong team on hand, as the gyms' run has it
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            foreach (var (species, level) in new[] { ("Pawmot", 70), ("Skeledirge", 70), ("Garganacl", 70) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            game.Story.SetVar("VAR_PALDEA_STORY", 7);
+            game.Story.Unset("FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE");
+            game.Story.SetVar("VAR_PALDEA_MOUNT", 1);
+            game.PlaceOpen(engine.OpenMapNamed("Paldea")!, "lighthouse_foot");
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.PaldeaPathOfLegends) };
+            Run(bot, 2 * 3600);
+            output.WriteLine($"ended at VAR_PALDEA_LEGENDS {game.Story.Var("VAR_PALDEA_LEGENDS")}");
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.Equal(Itineraries.PaldeaLegendsEnd, game.Story.Var("VAR_PALDEA_LEGENDS"));
+            Assert.Equal(PokemonPlatinumEngine.OpenWorld.MovementGrants.Dash | PokemonPlatinumEngine.OpenWorld.MovementGrants.Swim | PokemonPlatinumEngine.OpenWorld.MovementGrants.HighJump
+                | PokemonPlatinumEngine.OpenWorld.MovementGrants.Glide | PokemonPlatinumEngine.OpenWorld.MovementGrants.Climb, PokemonPlatinumEngine.OpenWorld.MountRules.Grants(game.Story));
+        }, Seed, RegionDatabase.Paldea);
+    }
+
+    [Fact]
     public void TheWayIsFoundAcrossMapsAndAlongAMapWithNoBound()
     {
         // Across maps, by their warps: down the stairs and out of the house; into the mine and down a floor

@@ -119,15 +119,30 @@ public class PaldeaLegendsTests
     [Fact]
     public void ThePathsScenesPlayedAndSkippedLeaveTheSame()
     {
-        foreach (var (file, script, legends) in new[] { ("poco_path", "ArvenLighthouse", 0), ("stony_cliff", "Klawf", 1), ("stony_cliff", "KlawfDen", 2) })
+        var scenes = new List<(string, string, int)> { ("poco_path", "ArvenLighthouse", 0) };
+        for (int i = 0; i < Titans.Length; i++)
+        {
+            scenes.Add((Titans[i].File, Titans[i].First, 1 + 2 * i));
+            scenes.Add((Titans[i].File, Titans[i].Den, 2 + 2 * i));
+        }
+        scenes.Add(("poco_path", "ArvenLighthouse", 11));
+        foreach (var (file, script, legends) in scenes)
         {
             var ends = new List<string>();
             foreach (bool hurry in new[] { false, true })
             {
                 var game = new Game();
-                game.Story.SetVar("VAR_PALDEA_LEGENDS", legends);
-                if (legends >= 1) game.Story.Set("FLAG_PALDEA_LEGENDS_BEGUN");
-                if (legends >= 2) game.Story.Set("FLAG_PALDEA_KLAWF_FLED");
+                // Every scene before this one played, so whoever it walks about stands where the story has them
+                game.Play("poco_path", "ArvenLighthouse");
+                foreach (var (f, first, den, _) in Titans)
+                {
+                    if (game.Story.Var("VAR_PALDEA_LEGENDS") >= legends) break;
+                    game.Play(f, first);
+                    if (game.Story.Var("VAR_PALDEA_LEGENDS") >= legends) break;
+                    game.Play(f, den);
+                }
+                if (legends == 0) game = new Game();
+                Assert.Equal(legends, game.Story.Var("VAR_PALDEA_LEGENDS"));
                 var host = game.Play(file, script, hurry);
                 Assert.True(game.Story.Var("VAR_PALDEA_LEGENDS") > legends, $"{file}.{script} left the path where it was");
                 ends.Add(System.Text.Json.JsonSerializer.Serialize(game.Story.Snapshot()) + "|" + string.Join(",", game.Party.Members.Select(p => p.Species.Name))
@@ -209,6 +224,120 @@ public class PaldeaLegendsTests
         Assert.True(climber.Pos.MetresY > top.MetresY - 0.2, $"{climber.Pos}");
         var stuck = Up(MovementGrants.Dash);
         Assert.True(stuck.Pos.MetresY < foot.MetresY + 0.5, $"{stuck.Pos}");
+    }
+
+    // The five Titans in their order, each a place's two scripts and the power its herbs give (PD4's second session)
+    private static readonly (string File, string First, string Den, string Power)[] Titans =
+    {
+        ("stony_cliff", "Klawf", "KlawfDen", "FLAG_PALDEA_MOUNT_DASH"),
+        ("open_sky", "Bombirdier", "BombirdierDen", "FLAG_PALDEA_MOUNT_SWIM"),
+        ("lurking_steel", "Orthworm", "OrthwormDen", "FLAG_PALDEA_MOUNT_HIGH_JUMP"),
+        ("quaking_earth", "Quaking", "QuakingDen", "FLAG_PALDEA_MOUNT_GLIDE"),
+        ("false_dragon", "Tatsugiri", "Dondozo", "FLAG_PALDEA_MOUNT_CLIMB"),
+    };
+
+    [Fact]
+    public void TheFourOtherTitansHaveTheirPlacesBesideTheLandThatIsBuilt()
+    {
+        var map = Open.Value;
+        foreach (string area in new[] { "open_sky", "lurking_steel", "quaking_earth", "false_dragon" })
+        {
+            Assert.Contains(map.Areas, a => a.Key == area);
+            Assert.Equal("Paldea", OpenRegions.MapOfArea(area));
+        }
+        foreach (var (titan, species) in new[] { ("titan_bombirdier", "Bombirdier"), ("titan_orthworm", "Orthworm"), ("titan_great_tusk", "Great Tusk"),
+            ("titan_iron_treads", "Iron Treads"), ("titan_tatsugiri", "Tatsugiri"), ("titan_dondozo", "Dondozo") })
+            Assert.Equal(species, map.People.Single(p => p.Key == titan).Species);
+        // Each place's two triggers, the second a den up a ramp or across the lake
+        foreach (string trigger in new[] { "bombirdier_gully", "bombirdier_den", "orthworm_cutting", "orthworm_den", "quaking_basin", "quaking_den", "tatsugiri_shore", "dondozo_shore" })
+            Assert.Contains(map.Triggers, t => t.Name == trigger);
+        // Every Titan and den stands on ground walked to on foot (the bot rides no link yet): its foot is walkable land
+        lock (OpenRegions.Reading)
+            foreach (var p in map.People.Where(p => p.Key.StartsWith("titan_")))
+                Assert.True(map.Ground.Footing(p.Home.MetresX, p.Home.MetresZ, p.Home.MetresY + 2, p.Home.MetresY - 3, walkableOnly: true) != null, p.Key);
+    }
+
+    [Fact]
+    public void TheFiveTitansAreBeatenInOrderAndEachGrantsTheNextPower()
+    {
+        foreach (int mount in new[] { MountRules.Koraidon, MountRules.Miraidon })
+        {
+            var game = new Game();
+            var story = game.Story;
+            story.SetVar(MountRules.MountVariable, mount);
+            game.Play("poco_path", "ArvenLighthouse");
+            var powers = new List<string>();
+            foreach (var (file, first, den, power) in Titans)
+            {
+                // A later Titan does nothing before the one before it is beaten
+                int at = story.Var("VAR_PALDEA_LEGENDS");
+                game.Play(file, den);
+                Assert.Equal(at, story.Var("VAR_PALDEA_LEGENDS"));
+                var a = game.Play(file, first);
+                Assert.Contains(a.Log, l => l.StartsWith("titanbattle") && l.EndsWith("Won"));
+                Assert.Equal(at + 1, story.Var("VAR_PALDEA_LEGENDS"));
+                Assert.False(story.Has(power), $"{power} before {file}'s den");
+                var b = game.Play(file, den);
+                Assert.Contains(b.Log, l => l.StartsWith("titanbattle") && l.Contains("Attack,Defense,SpAttack,SpDefense,Speed") && l.EndsWith("Won"));
+                Assert.Equal(at + 2, story.Var("VAR_PALDEA_LEGENDS"));
+                Assert.True(story.Has(power), power);
+                powers.Add(power);
+            }
+            // The version's own fourth Titan
+            Assert.Equal(mount == MountRules.Miraidon, story.Has("FLAG_PALDEA_IRON_TREADS_FLED"));
+            Assert.Equal(mount == MountRules.Koraidon, story.Has("FLAG_PALDEA_GREAT_TUSK_FLED"));
+            Assert.Equal(MovementGrants.Dash | MovementGrants.Swim | MovementGrants.HighJump | MovementGrants.Glide | MovementGrants.Climb, MountRules.Grants(story));
+            Assert.Equal(11, story.Var("VAR_PALDEA_LEGENDS"));
+            // Arven at the lighthouse: his Mabosstiff well again, and his battle
+            var arven = game.Play("poco_path", "ArvenLighthouse");
+            Assert.Contains(arven.Log, l => l.Contains("paldea_arven"));
+            Assert.Equal(12, story.Var("VAR_PALDEA_LEGENDS"));
+            Assert.True(story.Has("FLAG_PALDEA_LEGENDS_DONE"));
+            Assert.Single(game.Party.Members);
+        }
+    }
+
+    [Fact]
+    public void TheLastTitansHerbsLetTheMountClimbTheStonyCliffsCragItCouldntBefore()
+    {
+        // Plan 34 · PD4's done-when: the grants as the story has them just before the False Dragon's herbs and just after
+        var map = Open.Value;
+        var game = new Game();
+        game.Play("poco_path", "ArvenLighthouse");
+        foreach (var (file, first, den, _) in Titans.Take(4)) { game.Play(file, first); game.Play(file, den); }
+        game.Play("false_dragon", "Tatsugiri");
+        var before = MountRules.Grants(game.Story);
+        game.Play("false_dragon", "Dondozo");
+        var after = MountRules.Grants(game.Story);
+        Assert.Equal(MovementGrants.Climb, after & ~before);
+
+        var mesh = map.Land!.Nav!;
+        OpenPos foot, top;
+        lock (OpenRegions.Reading)
+        {
+            foot = On(map, 243, -394);
+            top = On(map, 243, -402);
+        }
+        Assert.Null(NavPath.Find(mesh, foot, top, OpenNavMesh.Allowed(before, mounted: true)));
+        Assert.NotNull(NavPath.Find(mesh, foot, top, OpenNavMesh.Allowed(after, mounted: true)));
+        OpenBody Up(MovementGrants grants)
+        {
+            lock (OpenRegions.Reading)
+            {
+                var body = new OpenBody(foot);
+                body.Mount();
+                bool clung = false;
+                for (int i = 0; i < 12 * T; i++)
+                {
+                    body.Step(map.Ground, new OpenInput(0, -1), grants);
+                    clung |= body.Stance == OpenStance.Climbing;
+                    if (clung && body.Stance == OpenStance.Standing) break;
+                }
+                return body;
+            }
+        }
+        Assert.True(Up(before).Pos.MetresY < foot.MetresY + 0.5);
+        Assert.True(Up(after).Pos.MetresY > top.MetresY - 0.2);
     }
 
     private static OpenPos On(OpenMap map, double x, double z) =>

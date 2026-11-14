@@ -1616,6 +1616,7 @@ galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
 === region Paldea
 levels 2 → 242, 62 → 258
 caps 245 246 248 249 251 253 253 254 258 (own 15 17 24 30 36 42 45 48 62)
+paldea_arven 258 (61) [Greedent → Larderous, Cloyster → Clamspire, Scovillain → Habanerogue, Toedscruel → Myceliarch, Mabosstiff → Mastiffdon]
 paldea_brassius 246 (17) [Petilil → Ballerilly, Smoliv → Arboliva, Sudowoodo → Mimicedar]
 paldea_iono 248 (24) [Wattrel → Terawattrel, Bellibolt → Thunderbelly, Luxio → Luxray, Mismagius → Hexmagistra]
 paldea_katy 245 (15) [Nymble → Lokix, Tarountula → Fortarach, Teddiursa → Ursaluna]
