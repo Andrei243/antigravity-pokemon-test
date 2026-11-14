@@ -19,7 +19,7 @@ internal readonly record struct ArenaSpec(BattleArena Kind, PokemonType? Theme =
     }
 
     /// <summary>Under the open sky, lit by the time of day.</summary>
-    public bool Outdoors => Kind is BattleArena.Grass or BattleArena.Forest or BattleArena.Water or BattleArena.Snow or BattleArena.Sand or BattleArena.City or BattleArena.Sky;
+    public bool Outdoors => Kind is BattleArena.Grass or BattleArena.Forest or BattleArena.Water or BattleArena.Snow or BattleArena.Sand or BattleArena.City or BattleArena.Sky or BattleArena.StarBase;
 
     /// <summary>A gym or a room of the League.</summary>
     public bool Hall => Kind is BattleArena.Gym or BattleArena.League;
@@ -69,6 +69,7 @@ internal static class BattleArenas
             case BattleArena.Underwater: Underwater(b); break;
             case BattleArena.City: City(b); break;
             case BattleArena.Sky: Sky(b); break;
+            case BattleArena.StarBase: StarBase(b); break;
             default: Meadow(b, spec); break;
         }
     }
@@ -884,6 +885,88 @@ internal static class BattleArenas
                 var at = new Vector3(x + (k - 1) * size * 0.8f, y + (k == 1 ? size * 0.25f : 0f), z + Rand(i, k, 155) * 1.2f);
                 puff.Ellipsoid(at, new Vector3(size, size * 0.6f, size * 0.8f), ring => ring < 5 ? Rgb(204, 214, 234) : Rgb(248, 250, 255));
             }
+        }
+    }
+
+    /// <summary>
+    /// A Team Star base's yard (plan 34 · PD5; style guide, "Arenas (G8)", "Star base"): a beaten dirt yard, the two
+    /// platforms the crew's painted pads (black, a ring of hot pink, a yellow star laid in the top), the base's black
+    /// tent behind the field striped in pink and yellow with its lit star over the door, crates and drums at the sides
+    /// and four floodlight masts. Our own picture of a gang's camp; nothing of the originals'.
+    /// </summary>
+    private static void StarBase(MeshBatches batches)
+    {
+        GroundDisc(batches, SoftTextures.Ground("starbase", Rgb(176, 150, 116), Rgb(160, 134, 104), Rgb(132, 110, 86), Rgb(150, 126, 98), 0.3f));
+        Platforms(batches, SoftTextures.Top("starbase", Rgb(70, 64, 78), Rgb(46, 42, 52), Rgb(236, 86, 160), rings: 2), Rgb(40, 36, 46));
+        var white = batches.For(SceneTextures.White);
+        // A yellow star laid in each pad's top, its points a little proud of the paint
+        foreach (var (center, rad) in new[] { (Enemy, EnemyRadius), (Player, PlayerRadius) })
+        {
+            float y = Top + 0.02f, outer = rad * 0.55f, inner = outer * 0.42f;
+            var star = Rgb(246, 206, 72);
+            for (int k = 0; k < 5; k++)
+            {
+                float a = -MathF.PI / 2 + k * MathF.Tau / 5;
+                float a0 = a - MathF.PI / 5, a1 = a + MathF.PI / 5;
+                var tip = center with { X = center.X + MathF.Cos(a) * outer, Y = y, Z = center.Z + MathF.Sin(a) * outer };
+                var left = center with { X = center.X + MathF.Cos(a0) * inner, Y = y, Z = center.Z + MathF.Sin(a0) * inner };
+                var right = center with { X = center.X + MathF.Cos(a1) * inner, Y = y, Z = center.Z + MathF.Sin(a1) * inner };
+                var mid = center with { Y = y };
+                white.Tri(mid, right, tip, Vector2.Zero, Vector2.Zero, Vector2.Zero, star, Vector3.UnitY);
+                white.Tri(mid, tip, left, Vector2.Zero, Vector2.Zero, Vector2.Zero, star, Vector3.UnitY);
+            }
+        }
+
+        // The base's tent behind the field: seven panels round a pole, black striped in pink and yellow
+        var walls = Backdrop(batches);
+        var apex = new Vector3(-4f, 13f, -30f);
+        const int panels = 7;
+        const float tentRadius = 11f;
+        for (int k = 0; k < panels; k++)
+        {
+            float a0 = MathF.PI * (0.05f + 0.9f * k / panels), a1 = MathF.PI * (0.05f + 0.9f * (k + 1) / panels);
+            // The half of the tent that faces the field (its back hidden behind it)
+            var p0 = new Vector3(apex.X + MathF.Cos(a0) * tentRadius, 0f, apex.Z + MathF.Sin(a0) * tentRadius * 0.7f);
+            var p1 = new Vector3(apex.X + MathF.Cos(a1) * tentRadius, 0f, apex.Z + MathF.Sin(a1) * tentRadius * 0.7f);
+            var colour = k % 3 == 1 ? Rgb(236, 86, 160) : k % 3 == 2 ? Rgb(246, 206, 72) : Rgb(40, 36, 46);
+            var normal = Vector3.Normalize(Vector3.Cross(p1 - p0, apex - p0));
+            if (normal.Z < 0) normal = -normal;
+            walls.Tri(p0, p1, apex, Vector2.Zero, Vector2.Zero, Vector2.Zero, colour, normal);
+            walls.Tri(p0, apex, p1, Vector2.Zero, Vector2.Zero, Vector2.Zero, colour, -normal);
+        }
+        // Its door, a dark gap at the middle panel's foot, and the star over it, lit
+        walls.Box(new Vector3(-5.6f, 0f, -22.4f), new Vector3(-2.4f, 3.6f, -22.1f), Rgb(18, 16, 22), BoxFaces.All);
+        var lit = batches.For(SceneTextures.White, MeshPass.Light);
+        var starAt = new Vector3(-4f, 5.6f, -22.0f);
+        for (int k = 0; k < 5; k++)
+        {
+            float a = -MathF.PI / 2 + k * MathF.Tau / 5;
+            float a0 = a - MathF.PI / 5, a1 = a + MathF.PI / 5;
+            Vector3 P(float ang, float r) => starAt + new Vector3(MathF.Cos(ang) * r, -MathF.Sin(ang) * r, 0f);
+            lit.Tri(starAt, P(a, 1.6f), P(a1, 0.65f), Vector2.Zero, Vector2.Zero, Vector2.Zero, Rgb(255, 214, 96), Vector3.UnitZ);
+            lit.Tri(starAt, P(a0, 0.65f), P(a, 1.6f), Vector2.Zero, Vector2.Zero, Vector2.Zero, Rgb(255, 214, 96), Vector3.UnitZ);
+        }
+        Halo(batches, SceneTextures.SoftGlow, starAt, 4.2f, new Color(255, 120, 190, 150));
+
+        // Crates and drums at both sides of the field
+        foreach (var (cx, cz, n) in new[] { (-19f, -6f, 3), (16f, -8f, 2), (-22f, 3f, 2), (19f, 2f, 3) })
+        {
+            for (int k = 0; k < n; k++)
+            {
+                float x = cx + (k % 2) * 2.2f, y = (k / 2) * 2f;
+                white.Box(new Vector3(x - 1f, y, cz - 1f), new Vector3(x + 1f, y + 2f, cz + 1f), Rgb(120, 96, 70), BoxFaces.All);
+                white.Box(new Vector3(x - 1.02f, y + 0.85f, cz - 1.02f), new Vector3(x + 1.02f, y + 1.15f, cz + 1.02f), Rgb(70, 56, 44), BoxFaces.All);
+            }
+            white.Cylinder(new Vector3(cx + 4f, 0f, cz + 1.5f), 0.7f, 0.7f, 1.8f, 12, (int)cx % 2 == 0 ? Rgb(196, 62, 104) : Rgb(60, 56, 70));
+        }
+        // Four floodlight masts, their lamps added light
+        foreach (var (lx, lz) in new[] { (-28f, -14f), (-12f, -18f), (6f, -18f), (24f, -14f) })
+        {
+            white.Cylinder(new Vector3(lx, 0f, lz), 0.18f, 0.14f, 8f, 8, Rgb(60, 56, 70));
+            white.Box(new Vector3(lx - 1.1f, 8f, lz - 0.3f), new Vector3(lx + 1.1f, 8.8f, lz + 0.3f), Rgb(40, 36, 46), BoxFaces.All);
+            lit.Quad(new Vector3(lx - 1f, 8.05f, lz + 0.32f), new Vector3(lx + 1f, 8.05f, lz + 0.32f), new Vector3(lx + 1f, 8.75f, lz + 0.32f), new Vector3(lx - 1f, 8.75f, lz + 0.32f),
+                new(0, 1), new(1, 1), new(1, 0), new(0, 0), Rgb(255, 246, 220), Vector3.UnitZ);
+            Halo(batches, SceneTextures.SoftGlow, new Vector3(lx, 8.4f, lz + 0.4f), 3f, new Color(255, 240, 210, 140));
         }
     }
 

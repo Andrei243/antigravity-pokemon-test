@@ -149,7 +149,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12, its rig 2026-11-12 as FM13, and its last part 2026-11-13: the navigation mesh's hop, high jump, climb and glide links for a region whose `world.json` says `mount`, the lab's yard with a painted climbable face, the done-when ridden in `MountLabTests`, Paldea's mesh baked again with them; "PD2 as built", below. **Owed**: the playthrough bot riding the links; the user's word on the yard's shots `fwy0` to `fwy6`)
 - [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below; its second session the same day: the bot's run to three badges in `PlaythroughTests`, Brassius's and Iono's tests as searches about their towns on the open map and Katy's giant olives as cards, the towns' and the gym's songs, Paldea's Town Map with Fly's places, the new cast's voices designed; "PD3, second session", below. **Waits for the user**: the provinces' distances, decision 3 (taken at its recommendation), the songs by ear, the voices by ear, and how Fly is to be asked for in the open field)
 - [x] PD4 The Path of Legends (its first session 2026-11-14: Arven at the lighthouse, the Stony Cliff and the Titan Klawf beaten twice, the Herba Mystica scene and the mount's dash, Paldea's first climbable crag; "PD4, first session", below; its second session the same day: the four other Titans in stand-in places beside the land that is built, their powers in order, the climb opening the Stony Cliff's crag, Arven's Mabosstiff and battle at the lighthouse, the five beaten by the bot headless and in the harness, the Titans' song; "PD4, second session", below. **Waits for the user**: the stand-ins (PD6 moves the Titans to their provinces), the Titans' fixed order, the song by ear. **Owed**: Arven's voice designed by ear)
-- [ ] PD5 Starfall Street and Let's Go
+- [x] PD5 Starfall Street and Let's Go (2026-11-15, one session: Let's Go on its key, the five bases in a stand-in valley north of Mesagoza with their raids' clock, the bosses and Starmobiles on a stage of their own, Cassiopeia's calls; "PD5 as built", below. **Waits for the user**: the stand-in valley (PD6 moves the bases), the raid's numbers (fifteen in five minutes), the song and the five bosses' looks by eye. **Owed**: the bot playing a raid, Let's Go's materials for the crafting kit, the new cast's voices by ear)
 - [ ] PD6 The West and North Provinces and the last five gyms
 - [ ] PD7 Tera Raids and picnics
 - [ ] PD8 The League, Area Zero and the Way Home
@@ -383,3 +383,59 @@ area, Great Tusk and Iron Treads to Asado Desert, the Tatsugiri and Dondozo to C
 names, flags and the count so the tests stand; the Stony Cliff is the South Province's own and stays.
 
 **Owed**: Arven's voice designed by ear (provisional in the cast); the bot riding the mount's links (PD2's owed).
+
+## PD5 as built (2026-11-15)
+
+One session, beside PD6 in another worktree. The rulings' "Starfall Street and Let's Go" has every decision; the plan
+asked nothing new of the user, and nothing was waited on.
+
+**What there is**
+- **Let's Go** (`Models/LetsGo.cs`; `Core/GameEngine.LetsGo.cs`): `GameAction.LetsGo` at the enum's end (R, the pad's
+  right trigger, in every preset), on foot in an open map, sends the lead at the nearest wild Pokémon within 10 m; the
+  battle is `BattleCore`'s with nobody watching, the lead's moves AUTO's (`Battle/Sim/MoveSuggestion.cs`, which
+  `BattleEngine.Suggest` now asks: one scorer), its record a `BattleRecordFile` that replays. A higher level, a shiny or
+  a Nuzlocke run meets it in a real battle. The field shows the lead running out, the target flickering with the hits
+  and shrinking away, and the lead running back (`LetsGoShow`, figures of `GatherOpenFigures`).
+- **Starfall Street** (`starfall_street`, a stand-in): `terrain/starfall.json` (a valley north of Mesagoza at the
+  plaza's height, the hills round it, a pass through Mesagoza's north mountains east of the academy),
+  `places/starfall_street.json` (five gates, each a hall of the crew, a yard's marker `<boss>_yard`, the gate's
+  `<boss>_gate`, a grunt and the boss), `scripts/starfall_street.txt`, one area line in `world.json` (and its name in
+  the map's list). Baked again: 486 chunks (from 454), the mesh's 25 hops, 47 high jumps, 12 climbs, 1597 glides.
+- **The raids** (`Models/StarRaids.cs`): `starraid begin "<boss>"` (a new script command, both hosts, `docs/scripts.md`),
+  fifteen to fell in five minutes of the field's ticks, the crew's Pokémon standing round the yard, the first three
+  sent in turn; the corner's count and clock (`ModernUi.StarRaidCount`); the game starts `<Boss>RaidWon` or
+  `<Boss>RaidLost` as it ends.
+- **The bosses** (`Data/world/paldea/trainers.json`, `paldea_star_giacomo` … `paldea_star_eri`, class `Team Star Boss`,
+  `format` `"starmobile"`), each team ending with its Starmobile, a Revavroom with its crew's Torque move, fought on
+  `BattleArena.StarBase` (style guide's row first). Looks of ours for the five and the grunts.
+- **Cassiopeia's calls**: the first as the street is first walked into, one after each boss, her thanks after the fifth
+  (`VAR_PALDEA_STARFALL` 0 to 6).
+- **Song** `paldea/team_star` (a garage band's bluster in E minor, 25.6 s loop; `tools/MusicRender`: no clash, -19.3 dB,
+  in the loudness window).
+- **Objectives** 850 to 855, English and Romanian; Romanian for every line (`ro/scripts/starfall_street.json`).
+- **Tests**: `LetsGoTests` (a Let's Go battle replays from its record and gives its EXP; the same seed fights the same
+  battle; a higher level or a shiny is no Let's Go; an outmatched lead faints; a base's clock ends a raid on the gate;
+  a raid felled to its goal is won; the three leads in turn; the bases' species and bosses) and `LetsGoGameTests` (the
+  key in the whole game on Paldea's bake: a wild Pokémon felled and gone, the lead's EXP; a raid's clock run out and the
+  player put back on the gate by its script; a raid won bringing the boss's battle) and `StarfallStreetTests` (the
+  street's places, Cassiopeia's first call only after the academy's welcome, the grunt's question, a raid lost and won
+  headless, the five bosses counted, every scene played and skipped alike).
+- **Shots** (`paldea` mode, `Modes/PaldeaStarfall.cs`): `pd99` the street from its mouth, `pd99b` Giacomo's gate,
+  `l80_lets_go` (with `l80b` the hits and `l80c` the fade), `l81_star_raid` and `l81b`, `l82_star_boss` on the stage.
+  Looked at: the lead runs out to the Lechonk from the player's side and it shrinks away; the raid's crew stand round
+  the yard with the corner's count and clock over them, and a Let's Go in the raid fells one (1/15); Giacomo's battle
+  stands on the star pads before the striped tent. **Findings, unchanged**: the five bases are the open kit's plain
+  `hall` (pale walls, a straw-coloured hip roof, a STAR sign), nothing of the crews' black and pink; the valley's floor
+  reads as sand and the yards' mud paint doesn't show; the crew's Pokémon face the yard's middle and never move. In a
+  crossed game the Starmobile grows into Turbovroom with the rest of the boss's team (`levels-crossed.txt`).
+
+**What PD6 replaces**: the stand-in valley (`terrain/starfall.json`, the `starfall_street` area of `world.json` and
+`places/starfall_street.json`), moving each base to its province (Giacomo's to the West Province's first area, Mela's to
+the East Province's first area, Atticus's to Tagtree Thicket, Ortega's to the North Province's third area, Eri's to its
+second), keeping the scripts' names, flags, the markers `<boss>_yard` and `<boss>_gate` and `StarBases.File` (or
+changing that one constant), so the tests stand. A merge of PD5 and PD6 that touches the bake is settled by baking again
+(`dotnet run -c Release --project tools/OpenWorldBake -- paldea`).
+
+**Owed**: the playthrough bot playing a raid (`Autoplayer.Open` presses no Let's Go); Let's Go's materials for the
+crafting kit (`MaterialsAfterBattle` reads a `BattleEngine`); the five bosses' and Cassiopeia's voices designed by ear
+(provisional in the cast); the song by ear; who Cassiopeia is (PD8).

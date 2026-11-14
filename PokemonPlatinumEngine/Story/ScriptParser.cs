@@ -1549,6 +1549,15 @@ public static class ScriptParser
                 bool on = r.OneOf("on", "off") == "on";
                 return new Instruction { Op = Op.Letterbox, Line = line, Option = on, Seconds = r.More ? r.Seconds() : CameraRig.BarSeconds };
             }
+            // A raid on a Team Star base's gate begun (plan 34 · PD5): starraid begin "giacomo"
+            case "starraid":
+            {
+                r.OneOf("begin");
+                string key = r.Text("a base of Starfall Street");
+                if (Models.StarBases.Get(key) == null)
+                    throw r.Error($"no base of Starfall Street is called {key} ({string.Join(", ", Models.StarBases.All.Select(b => b.Key))})");
+                return new Instruction { Op = Op.StarRaid, Line = line, Name = "begin", Other = key };
+            }
             // The field's light held at an hour (plan 20, part w): lighting 21 | lighting clock
             case "lighting":
             {

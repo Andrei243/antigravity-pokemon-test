@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 160 | 160 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1790 | 1727 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13880 | 13297 | 583 | 17 | 36 |
+| Scripts (`script:`) | 13937 | 13354 | 583 | 17 | 36 |
 | People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 24072 | 23384 | 688 | 22 | 36 |
+| **All** | 24129 | 23441 | 688 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -26,11 +26,11 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a sign | 1782 |
 | a thing's words | 81 |
 | the game's own voice (speaker none) | 330 |
-| the game's own voice (text) | 2348 |
+| the game's own voice (text) | 2364 |
 
 ## The cast
 
-- Named characters: 1000 voices (400 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 1007 voices (407 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 595 voices.
 - Archetypes in use: 247, with 746 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 420.
@@ -214,6 +214,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `lillie` | 30 | 0 |
 | `roxie` | 30 | 1 |
 | `sabrina` | 30 | 0 |
+| `team_star_grunt` | 30 | 0 |
 | `celio` | 29 | 0 |
 | `chairman` | 29 | 0 |
 | `erika` | 29 | 0 |

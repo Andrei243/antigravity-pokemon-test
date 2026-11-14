@@ -1112,6 +1112,10 @@ public class SceneSkipTests
         "lurking_steel.The Lurking Steel Titan's Herba Mystica", "quaking_earth.The Quaking Earth Titan",
         "quaking_earth.The Quaking Earth Titan's Herba Mystica", "false_dragon.The False Dragon Titan",
         "false_dragon.The False Dragon Titan's Herba Mystica", "poco_path.Arven's Mabosstiff",
+        // Plan 34 · PD5: Starfall Street's scenes of the open map, played both ways by
+        // StarfallStreetTests.TheStreetsScenesPlayedAndSkippedLeaveTheSame
+        "starfall_street.Cassiopeia's first call", "starfall_street.Giacomo comes out of his gate", "starfall_street.Mela comes out of her gate",
+        "starfall_street.Atticus comes out of his gate", "starfall_street.Ortega comes out of his gate", "starfall_street.Eri comes out of her gate",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

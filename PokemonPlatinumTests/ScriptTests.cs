@@ -177,6 +177,7 @@ public class ScriptTests
           slowmo 1 2
           lighting 21
           lighting clock
+          starraid begin "giacomo"
           effect burst 3 4
           effect shadow 3 4 2 left wait
           effect beam 3 4 hold

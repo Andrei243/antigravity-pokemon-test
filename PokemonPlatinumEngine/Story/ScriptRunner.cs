@@ -393,6 +393,8 @@ public sealed partial class ScriptRunner
         Op.Stroll => i.Name == "pick",
         // The light held for a scene is the picture's, there at once (plan 20, part w)
         Op.Lighting => false,
+        // A raid on a base's gate is the player's own to play (plan 34 · PD5)
+        Op.StarRaid => true,
         // A heart opened plays its scene; the rest is asked and changed without one (plan 44 · SD2)
         Op.Heart => i.Name == "open",
         // A ride and the report are screens the player plays and reads; the rest is asked or handed over without one (plan 44 · SD5, SD6)
@@ -1679,6 +1681,10 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Lighting:
                 host.HoldLight(i.Option ? i.Factor : null);
+                break;
+            // A raid on a Team Star base's gate (plan 34 · PD5): begun here, played in the field, ended by the game
+            case Op.StarRaid:
+                host.BeginStarRaid(i.Other);
                 break;
 
             // The original's set pieces (plan 09 · L12): each is waited for by the runner itself, for as long as the

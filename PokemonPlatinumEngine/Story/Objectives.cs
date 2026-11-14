@@ -429,6 +429,14 @@ public static class Objectives
         (814, "paldeaQuaking", AtLeast("VAR_PALDEA_LEGENDS", 9), false),
         (815, "paldeaFalseDragon", AtLeast("VAR_PALDEA_LEGENDS", 11), false),
         (816, "paldeaArvenBattle", AtLeast("VAR_PALDEA_LEGENDS", 12), false),
+        // Starfall Street (plan 34 · PD5) by VAR_PALDEA_STARFALL, starfall_street.txt's count: Cassiopeia's first call,
+        // then each of the five bases by its boss beaten (the 850s, kept apart from the gyms' ids PD6 adds)
+        (850, "paldeaStarfall", AtLeast("VAR_PALDEA_STARFALL", 1), false),
+        (851, "paldeaGiacomo", F("FLAG_PALDEA_STAR_GIACOMO_BEATEN"), false),
+        (852, "paldeaMela", F("FLAG_PALDEA_STAR_MELA_BEATEN"), false),
+        (853, "paldeaAtticus", F("FLAG_PALDEA_STAR_ATTICUS_BEATEN"), false),
+        (854, "paldeaOrtega", F("FLAG_PALDEA_STAR_ORTEGA_BEATEN"), false),
+        (855, "paldeaEri", F("FLAG_PALDEA_STAR_ERI_BEATEN"), false),
         (899, "paldeaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

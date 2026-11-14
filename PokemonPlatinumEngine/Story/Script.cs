@@ -233,6 +233,9 @@ public enum Op
     GalarTower,
     // The rides of the beaches (plan 42 · PS7): a course surfed off a beach's hut, its runs and its best
     Ride,
+    // A raid on a Team Star base's gate begun (plan 34 · PD5): the field's own play with Let's Go against the clock,
+    // which the game ends by starting the base's script won or lost
+    StarRaid,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -1,0 +1,71 @@
+{
+  // Starfall Street (plan 34 · PD5): a stand-in valley north of Mesagoza (terrain/starfall.json) where Team Star's five
+  // bases stand, each a gate with its crew's yard before it, a grunt at the gate and the boss behind it, until plan 34 ·
+  // PD6 builds the provinces the originals scatter them over and moves each there. A raid on a gate is Let's Go against
+  // the clock round the yard's middle (Models/StarRaids.cs: the yard's marker is <base>_yard, the place a raid begins
+  // and a lost one ends <base>_gate); the boss comes out once it is won. Cassiopeia calls as the street is first come to
+  // and after each boss. Scripts: Data/scripts/starfall_street.txt. Our own place, on Scarlet and Violet's beats
+  "markers": [
+    { "name": "starfall_mouth", "at": [56, 12.0, -412], "yaw": 180 },
+    { "name": "giacomo_yard", "at": [-50, 12.0, -430], "yaw": 270 },
+    { "name": "giacomo_gate", "at": [-36, 12.0, -430], "yaw": 270 },
+    { "name": "mela_yard", "at": [50, 12.0, -430], "yaw": 90 },
+    { "name": "mela_gate", "at": [36, 12.0, -430], "yaw": 90 },
+    { "name": "atticus_yard", "at": [-50, 12.0, -490], "yaw": 270 },
+    { "name": "atticus_gate", "at": [-36, 12.0, -490], "yaw": 270 },
+    { "name": "ortega_yard", "at": [50, 12.0, -490], "yaw": 90 },
+    { "name": "ortega_gate", "at": [36, 12.0, -490], "yaw": 90 },
+    { "name": "eri_yard", "at": [0, 12.0, -506], "yaw": 180 },
+    { "name": "eri_gate", "at": [0, 12.0, -492], "yaw": 180 }
+  ],
+  "triggers": [
+    // Out of the pass onto the street, once the academy has welcomed the player: Cassiopeia's first call
+    { "name": "starfall_first_call", "box": { "min": [46, 9, -416], "max": [66, 16, -404] }, "script": "CassiopeiaCalls", "var": "VAR_PALDEA_STARFALL", "value": 0 }
+  ],
+  "solids": [
+    // Each base's gate: the crew's black hall against the valley's side, the yard before its door
+    { "name": "Giacomo's base", "min": [-86, 11.5, -440], "max": [-70, 19, -420], "building": { "kind": "hall", "town": "paldea", "sign": "STAR" } },
+    { "name": "Mela's base", "min": [70, 11.5, -440], "max": [86, 19, -420], "building": { "kind": "hall", "town": "paldea", "sign": "STAR" } },
+    { "name": "Atticus's base", "min": [-86, 11.5, -500], "max": [-70, 19, -480], "building": { "kind": "hall", "town": "paldea", "sign": "STAR" } },
+    { "name": "Ortega's base", "min": [70, 11.5, -500], "max": [86, 19, -480], "building": { "kind": "hall", "town": "paldea", "sign": "STAR" } },
+    { "name": "Eri's base", "min": [-10, 11.5, -536], "max": [10, 19, -522], "building": { "kind": "hall", "town": "paldea", "sign": "STAR" } }
+  ],
+  "people": [
+    { "name": "giacomo_grunt", "at": [-36, 12.0, -435], "yaw": 0, "look": "star_grunt", "displayName": "Team Star Grunt", "script": "GiacomoGate" },
+    {
+      "name": "giacomo_boss", "at": [-64, 12.0, -430], "yaw": 90, "look": "giacomo", "displayName": "Giacomo", "script": "GiacomoBoss",
+      "shownBy": "FLAG_PALDEA_STAR_GIACOMO_RAIDED", "hiddenBy": "FLAG_PALDEA_STAR_GIACOMO_BEATEN"
+    },
+    { "name": "mela_grunt", "at": [36, 12.0, -435], "yaw": 0, "look": "star_grunt", "displayName": "Team Star Grunt", "script": "MelaGate" },
+    {
+      "name": "mela_boss", "at": [64, 12.0, -430], "yaw": 270, "look": "mela", "displayName": "Mela", "script": "MelaBoss",
+      "shownBy": "FLAG_PALDEA_STAR_MELA_RAIDED", "hiddenBy": "FLAG_PALDEA_STAR_MELA_BEATEN"
+    },
+    { "name": "atticus_grunt", "at": [-36, 12.0, -495], "yaw": 0, "look": "star_grunt", "displayName": "Team Star Grunt", "script": "AtticusGate" },
+    {
+      "name": "atticus_boss", "at": [-64, 12.0, -490], "yaw": 90, "look": "atticus", "displayName": "Atticus", "script": "AtticusBoss",
+      "shownBy": "FLAG_PALDEA_STAR_ATTICUS_RAIDED", "hiddenBy": "FLAG_PALDEA_STAR_ATTICUS_BEATEN"
+    },
+    { "name": "ortega_grunt", "at": [36, 12.0, -495], "yaw": 0, "look": "star_grunt", "displayName": "Team Star Grunt", "script": "OrtegaGate" },
+    {
+      "name": "ortega_boss", "at": [64, 12.0, -490], "yaw": 270, "look": "ortega", "displayName": "Ortega", "script": "OrtegaBoss",
+      "shownBy": "FLAG_PALDEA_STAR_ORTEGA_RAIDED", "hiddenBy": "FLAG_PALDEA_STAR_ORTEGA_BEATEN"
+    },
+    { "name": "eri_grunt", "at": [5, 12.0, -492], "yaw": 270, "look": "star_grunt", "displayName": "Team Star Grunt", "script": "EriGate" },
+    {
+      "name": "eri_boss", "at": [0, 12.0, -518], "yaw": 0, "look": "eri", "displayName": "Eri", "script": "EriBoss",
+      "shownBy": "FLAG_PALDEA_STAR_ERI_RAIDED", "hiddenBy": "FLAG_PALDEA_STAR_ERI_BEATEN"
+    },
+    {
+      "name": "starfall_lookout", "at": [70, 12.0, -408], "yaw": 180, "look": "school_kid_f", "displayName": "Student",
+      "lines": ["The crews out here used to be students like us. Then they stopped coming to class and started guarding gates."]
+    }
+  ],
+  "trees": [
+    { "at": [-80, -410], "kind": "pine", "size": 0.9 },
+    { "at": [80, -460], "kind": "pine" },
+    { "at": [-80, -460], "kind": "pine", "size": 1.1 },
+    { "at": [-30, -530], "kind": "pine" },
+    { "at": [30, -530], "kind": "pine", "size": 0.9 }
+  ]
+}

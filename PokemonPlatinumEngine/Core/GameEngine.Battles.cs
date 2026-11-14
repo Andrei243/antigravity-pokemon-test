@@ -714,6 +714,8 @@ public partial class GameEngine
             else battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
             // A sky battle's stage is the sky's, wherever it is met (plan 14 · B2)
             if (inTheAir) battleRenderer.SetArena(BattleArena.Sky);
+            // A Team Star boss's battle is fought before their base's gate, on its own stage (plan 34 · PD5)
+            else if (trainer.AtAStarBase) battleRenderer.SetArena(BattleArena.StarBase);
             flow.BattleTrainers.Clear();
             flow.BattleTrainers.Add(trainerNpc);
             if (secondNpc?.TrainerData != null) flow.BattleTrainers.Add(secondNpc);

@@ -1470,6 +1470,12 @@
     "paldeaQuaking": "Un Titan cutremură pământul la Quaking Earth, căldarea prăfuită de la nord de Cortondo. Învinge-l de două ori.",
     "paldeaFalseDragon": "Un Tatsugiri și Dondozo-ul lui stăpânesc lacul de la est de drumul spre Levincia. Învinge Titanul False Dragon.",
     "paldeaArvenBattle": "Arven vrea să-ți arate ceva la farul de pe Poco Path, unde a început Path of Legends.",
+    "paldeaStarfall": "Cineva care semnează Cassiopeia vrea ca bazele Team Star să fie desființate. Ia trecătoarea spre nord din Mesagoza, la est de academie.",
+    "paldeaGiacomo": "Echipa lui Giacomo ține poarta de vest a Starfall Street. Atac-o și înfruntă-l pe șef.",
+    "paldeaMela": "Echipa Melei ține poarta de est a Starfall Street. Atac-o și înfrunt-o pe șefă.",
+    "paldeaAtticus": "Echipa lui Atticus ține poarta din capătul de vest al Starfall Street. Atac-o și înfruntă-l pe șef.",
+    "paldeaOrtega": "Echipa lui Ortega ține poarta din capătul de est al Starfall Street. Atac-o și înfruntă-l pe șef.",
+    "paldeaEri": "Echipa lui Eri ține poarta din capul Starfall Street. Atac-o și înfrunt-o pe șefă.",
     "paldeaFree": "Începe semestrul. Vânătoarea de comori e a ta: arenele, Titanii și multe altele te așteaptă dincolo de Mesagoza.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
@@ -2420,7 +2426,8 @@
     "safariBalls": "SAFARI BALLS",
     "streak": "ȘIR",
     "hooks": "AGĂȚATE",
-    "steps": "PAȘI"
+    "steps": "PAȘI",
+    "starRaid": { "felled": "ÎNVINȘI", "count": "{felled}/{goal}", "clock": "TIMP" }
   },
   "riftToast": {
     "opened": "S-a deschis o ruptură pe {place}! Se închide în ora asta.",
@@ -3820,7 +3827,7 @@
     "action": {
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
-      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto", "Mount": "Urcă sau coboară"
+      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto", "Mount": "Urcă sau coboară", "LetsGo": "Hai, la luptă"
     },
     "page": {
       "title": "COMENZI",
@@ -5121,6 +5128,7 @@
     "SchoolKid": "Școlar",
     "SchoolKidM": "Școlar",
     "Student": "Elev",
+    "TeamStarBoss": "Șef Team Star",
     "Scientist": "Om de știință",
     "ScientistGs": "Om de știință",
     "SisAndBro": "Soră și frate",

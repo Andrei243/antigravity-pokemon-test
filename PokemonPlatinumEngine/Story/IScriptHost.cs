@@ -245,6 +245,13 @@ public interface IScriptHost
     void HoldLight(float? hour) { }
 
     /// <summary>
+    /// A raid on a Team Star base's gate begins (plan 34 · PD5; <see cref="Models.StarBases"/>): the field's own play
+    /// with Let's Go against the clock, round the base's yard. The script goes on at once (and is meant to end); the
+    /// game starts the base's script won or lost as the raid ends. A host with no field only notes it.
+    /// </summary>
+    void BeginStarRaid(string @base) { }
+
+    /// <summary>
     /// The field runs at a <paramref name="share"/> of its pace for <paramref name="seconds"/> and is back by itself
     /// (plan 09 · L4): people, life and weather are slowed, never the camera, the text or the script's own waits.
     /// </summary>

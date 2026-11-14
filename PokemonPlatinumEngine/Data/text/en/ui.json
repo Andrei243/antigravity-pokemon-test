@@ -988,6 +988,12 @@
     "paldeaQuaking": "A Titan shakes the ground of Quaking Earth, the dusty basin north of Cortondo. Beat it twice.",
     "paldeaFalseDragon": "A Tatsugiri and its Dondozo hold the lake east of the road to Levincia. Beat the False Dragon Titan.",
     "paldeaArvenBattle": "Arven wants to show you something at the lighthouse on Poco Path, where the Path of Legends began.",
+    "paldeaStarfall": "Someone signing themselves Cassiopeia wants Team Star's bases broken up. Take the pass north out of Mesagoza, east of the academy.",
+    "paldeaGiacomo": "Giacomo's crew holds the west gate of Starfall Street. Raid it and face the boss.",
+    "paldeaMela": "Mela's crew holds the east gate of Starfall Street. Raid it and face the boss.",
+    "paldeaAtticus": "Atticus's crew holds the far west gate of Starfall Street. Raid it and face the boss.",
+    "paldeaOrtega": "Ortega's crew holds the far east gate of Starfall Street. Raid it and face the boss.",
+    "paldeaEri": "Eri's crew holds the gate at the head of Starfall Street. Raid it and face the boss.",
     "paldeaFree": "Term begins. The treasure hunt is yours: Paldea's gyms, its Titans and more wait beyond Mesagoza."
   },
 
@@ -1967,7 +1973,8 @@
     "safariBalls": "SAFARI BALLS",
     "streak": "STREAK",
     "hooks": "HOOKS",
-    "steps": "STEPS"
+    "steps": "STEPS",
+    "starRaid": { "felled": "FELLED", "count": "{felled}/{goal}", "clock": "TIME" }
   },
   "riftToast": {
     "opened": "A rift has opened on {place}! It will close within the hour.",
@@ -3766,7 +3773,7 @@
     "action": {
       "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
       "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
-      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay", "Photo": "Photo mode", "Mount": "Ride or get off"
+      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay", "Photo": "Photo mode", "Mount": "Ride or get off", "LetsGo": "Let's Go"
     },
     "page": {
       "title": "CONTROLS",
@@ -5064,6 +5071,7 @@
     "SchoolKid": "School Kid",
     "SchoolKidM": "School Kid",
     "Student": "Student",
+    "TeamStarBoss": "Team Star Boss",
     "Scientist": "Scientist",
     "ScientistGs": "Scientist",
     "SisAndBro": "Sis and Bro",
