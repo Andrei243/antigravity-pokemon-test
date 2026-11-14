@@ -16,10 +16,10 @@ namespace PokemonPlatinumTests;
 /// rule over the whole field for five turns for both sides, answered once by the other side, its Tale Forms woken and put
 /// back, the trainer AI's sense of when, the Vs. Recorder's file, and nothing at all with no Book.
 /// </summary>
-public class TaleTests
+public partial class TaleTests
 {
     private static readonly Ruleset Modern = Ruleset.Modern;
-    private static readonly string[] All = { "zmeu", "varcolac", "solomonar", "dochia", "ielele" };
+    internal static readonly string[] All = { "zmeu", "varcolac", "solomonar", "dochia", "ielele", "miorita", "mumapadurii", "fatfrumos", "uriasi", "spiridus", "sanziene", "draco" };
 
     /// <summary>A battle against a trainer under the modern rules, each side's tales given (null: no Book), both sides answered from outside unless the AI chooses for the foe.</summary>
     private static BattleCore Tales(Pokemon[] mine, Pokemon[] theirs, string[]? myTales = null, string[]? theirTales = null, bool ai = false,
@@ -54,7 +54,7 @@ public class TaleTests
     // ---------------------------------------------------------------- the file
 
     [Fact]
-    public void TheTalesFileHoldsTheFiveTheStoryNeedsEachWithItsWords()
+    public void TheTalesFileHoldsThePlansTwelveEachWithItsWords()
     {
         var table = TaleTable.Default;
         Assert.Equal(5, table.Turns);

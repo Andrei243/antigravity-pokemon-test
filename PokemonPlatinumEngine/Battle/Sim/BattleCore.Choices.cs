@@ -170,6 +170,8 @@ public sealed partial class BattleCore
         if (forRunning ? effects.Any(e => e.AlwaysEscapes) : effects.Any(e => e.SlipsAway)) return null;
         if (Rules.GhostTypesCantBeTrapped && b.HasType(PokemonType.Ghost)) return null;
 
+        // Muma Pădurii's forest holds the teller's foes (plan 46 · CP11)
+        if (TaleHolds(b, forRunning) is { } held) return held;
         bool onTheGround = IsOnTheGround(b);
         foreach (var foe in ActiveFoes(b))
         {

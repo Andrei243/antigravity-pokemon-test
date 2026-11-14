@@ -213,6 +213,8 @@ public sealed partial class BattleCore
             }
         }
         beforeTale.Clear();
+        strengthOwed.Clear();
+        itemsKept.Clear();
         // The weather it brought goes with it (an answer that brings its own takes its place next)
         if (told.BroughtWeather && rule.Weather is { } weather && Field.Weather == Rules.Sky(weather) && !Field.WeatherLasts && !Field.WeatherIsStrong)
         {
@@ -228,7 +230,7 @@ public sealed partial class BattleCore
     {
         if (Field.Tale is not { } told) return;
         if (told.Turns <= 1) EndTale(said: true);
-        else Field.Tale = told with { Turns = told.Turns - 1 };
+        else Field.Tale = told with { Turns = told.Turns - 1, Rounds = told.Rounds + 1 };
     }
 
     /// <summary>Every tale ends with the battle, with nothing said: the forms are given back.</summary>
@@ -240,6 +242,8 @@ public sealed partial class BattleCore
             pokemon.AbilityName = ability;
         }
         beforeTale.Clear();
+        strengthOwed.Clear();
+        itemsKept.Clear();
         Field.Tale = null;
     }
 
@@ -251,4 +255,96 @@ public sealed partial class BattleCore
 
     /// <summary>A move's chance to hit under the tale over the field (the Vârcolac's eclipse).</summary>
     private int TaleAccuracy(int rate) => TaleInForce is { Accuracy: not 100 } rule ? rate * rule.Accuracy / 100 : rate;
+
+    /// <summary>
+    /// What the tale over a field does to a damaging move's power for this user against this target, in hundredths (100:
+    /// nothing): the Uriași' giants (a user heavier than its target, by <see cref="WeightOf"/>), the Draco's banner (the
+    /// teller's side, more for each turn the tale has been told). Never more than one of them is told at a time.
+    /// </summary>
+    internal static int TaleSidePercent(FieldState? field, Battler attacker, Battler defender)
+    {
+        if (field?.Tale is not { } told) return 100;
+        var rule = told.Rule;
+        int percent = 100;
+        if (rule.Heavier != 100 && WeightOf(attacker) > WeightOf(defender)) percent = percent * rule.Heavier / 100;
+        if (rule.Rising > 0 && attacker.Side == told.Teller) percent = percent * (100 + rule.Rising * (told.Rounds + 1)) / 100;
+        return percent;
+    }
+
+    /// <summary>The HP a heal gives back under the tale (the Sânziene's midsummer doubles it).</summary>
+    private int TaleHealing(int amount) => TaleInForce is { Healing: not 100 } rule ? amount * rule.Healing / 100 : amount;
+
+    /// <summary>
+    /// Whether the tale keeps a stage from falling (Făt-Frumos' youth without age): every fall, a Pokémon's own moves'
+    /// included, through <see cref="ChangeStat(Battler, StatType, int, Battler?, bool, By)"/>; said where the change would
+    /// say its failure.
+    /// </summary>
+    private bool TaleKeepsTheStat(Battler target, int amount, bool announceFailure)
+    {
+        if (amount >= 0 || TaleInForce is not { NoStatFalls: true } || Field.Tale is not { } told) return false;
+        if (announceFailure) Say(Text.Of("battle.taleKeepsStats", ("target", target.Name), ("tale", TaleTable.NameOf(told.Id))));
+        return true;
+    }
+
+    /// <summary>The Pokémon whose held item the Spiriduș' tale has kept once already.</summary>
+    private readonly HashSet<Pokemon> itemsKept = new();
+
+    /// <summary>
+    /// The Spiriduș' house sprite: a held item about to be used up is kept the first time each Pokémon's would be, while
+    /// the tale is told, with a line; true when it is kept (the item has done its work and stays to do it again).
+    /// </summary>
+    private bool TaleKeepsTheItem(Battler holder, ItemData item)
+    {
+        if (TaleInForce is not { ItemsTwice: true } || Field.Tale is not { } told || holder.Pokemon is not { } p || !itemsKept.Add(p)) return false;
+        Say(Text.Of("battle.taleKeepsItem", ("pokemon", holder.Name), ("item", ItemOf(holder, item)), ("tale", TaleTable.NameOf(told.Id))));
+        return true;
+    }
+
+    /// <summary>Muma Pădurii's forest: a Grass type gets back its share of HP at the turn's end, beside Grassy Terrain's.</summary>
+    private void TaleForestHeals(Battler b)
+    {
+        if (TaleInForce is not { GrassHeals: > 0 } rule || Field.Tale is not { } told || !b.HasType(PokemonType.Grass)) return;
+        var p = b.Pokemon!;
+        if (p.CurrentHP >= p.MaxHP || b.Volatile.HealBlockTurns > 0) return;
+        RestoreHp(b, Math.Max(1, p.MaxHP / rule.GrassHeals), Text.Of("battle.taleForestHeals", ("pokemon", b.Name), ("tale", TaleTable.NameOf(told.Id))));
+    }
+
+    /// <summary>Muma Pădurii's forest holds the teller's foes: a line of <see cref="TrapOn"/>'s, after its Shed Shell and Ghost exits.</summary>
+    private string? TaleHolds(Battler b, bool forRunning)
+    {
+        if (TaleInForce is not { HoldsFoes: true } || Field.Tale is not { } told || b.Side == told.Teller) return null;
+        return forRunning ? Text.Of("battle.cantEscape") : Text.Of("battle.taleHoldsFoe", ("pokemon", b.Name), ("tale", TaleTable.NameOf(told.Id)));
+    }
+
+    /// <summary>The Miorița's strength owed by each side to the next of its own to come in: the stat and its stages.</summary>
+    private readonly Dictionary<BattleSide, (StatType Stat, int Stages, string Fallen)> strengthOwed = new();
+
+    /// <summary>
+    /// The Miorița's lament, as a Pokémon faints: its higher attacking stat (Attack on a tie, its own stats as they stood)
+    /// goes as the tale's stages to an ally of its side on the field, or is owed to the next of its side to come in.
+    /// Nothing is said when nobody takes it.
+    /// </summary>
+    private void TaleTakesTheStrength(Battler down, StatType stat)
+    {
+        if (TaleInForce is not { FallenStrength: > 0 } rule || Result != BattleResult.None) return;
+        var ally = AllBattlers.FirstOrDefault(x => x.Side == down.Side && x != down && x.IsActive && x.Pokemon is { IsFainted: false });
+        if (ally != null) GiveTheStrength(ally, stat, rule.FallenStrength, down.Name);
+        else strengthOwed[down.Side] = (stat, rule.FallenStrength, down.Name);
+    }
+
+    /// <summary>The fallen Pokémon's higher attacking stat, read before its fall resets anything.</summary>
+    private static StatType StrongerAttackOf(Pokemon p) => p.SpAttack > p.Attack ? StatType.SpAttack : StatType.Attack;
+
+    /// <summary>The strength owed to a side taken up by the one coming in, while the tale is still told.</summary>
+    private void TakeUpOwedStrength(Battler b)
+    {
+        if (TaleInForce is not { FallenStrength: > 0 } || !strengthOwed.Remove(b.Side, out var owed) || !b.IsActive) return;
+        GiveTheStrength(b, owed.Stat, owed.Stages, owed.Fallen);
+    }
+
+    private void GiveTheStrength(Battler to, StatType stat, int stages, string fallen)
+    {
+        Say(Text.Of("battle.taleTakesStrength", ("pokemon", to.Name), ("fallen", fallen)));
+        ChangeStat(to, stat, stages, null, announceFailure: true, By.Other);
+    }
 }

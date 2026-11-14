@@ -104,6 +104,8 @@ public sealed partial class BattleCore
         TeraOnEntry(b);
         // A Pokémon bound to the tale its side tells wakes as it comes in (plan 46 · CP11)
         WakeToTheTale(b);
+        // And takes up the strength the Miorița's tale owes its side (plan 46 · CP11)
+        TakeUpOwedStrength(b);
         HpShapes(b);
     }
 

@@ -53,6 +53,8 @@ public static partial class DamageCalculator
             if (attacker.Turn.HelpingHand) bp.Add(6144);
             // The tale over the field (plan 46 · CP11): the moves it favours, whoever uses them
             if (typed && BattleCore.TaleBoostPercent(field, type, move.Data.Flags) is var tale and not 100) bp.Add(tale * 4096 / 100);
+            // And for this user against this target: the Uriași' giants, the Draco's banner
+            if (BattleCore.TaleSidePercent(field, attacker, defender) is var told and not 100) bp.Add(told * 4096 / 100);
             if (typed && field != null && field.Terrain is { } terrain && field.Has(terrain))
             {
                 bool boosts = terrain switch

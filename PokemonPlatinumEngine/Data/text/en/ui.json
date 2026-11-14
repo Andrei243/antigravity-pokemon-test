@@ -1566,6 +1566,48 @@
       "rule": "For five turns Sound-type moves, and every move made of sound, hit harder.",
       "story": "On summer nights the Ielele dance in a ring in the meadows, and the grass burns where their feet have been. Whoever hears their song dances until dawn. The wise ones stop their ears with wormwood and walk the long way home."
     },
+    "miorita": {
+      "name": "the Miorița",
+      "told": "A shepherd's lament drifts over the field!",
+      "rule": "For five turns, a Pokémon that faints gives its strength to an ally, or to the next of its side to come in.",
+      "story": "Three shepherds drove their flocks over the mountain, and two of them plotted to kill the third at sunset. His ewe lamb Miorița heard and warned him. He did not run: he asked to be buried by the fold with his flutes, so that the wind would play them and his sheep would gather to mourn him."
+    },
+    "mumapadurii": {
+      "name": "Muma Pădurii",
+      "told": "The old forest closes around the field!",
+      "rule": "For five turns Grass types recover HP at each turn's end, and the teller's foes can't switch out or flee.",
+      "story": "Deep in the old forest lives Muma Pădurii, the forest's mother, with bark for skin and moss for hair. She leads lost travellers in circles until the trees close behind them. Those who greet her kindly and leave bread on a stump find the path again by morning."
+    },
+    "fatfrumos": {
+      "name": "Făt-Frumos",
+      "told": "The light of youth without age falls on the field!",
+      "rule": "For five turns no Pokémon's stats can fall.",
+      "story": "A prince born crying would not be calmed until his father promised him youth without age and life without death. He rode the world on a horse that ate live coals and found that land beyond the mountains, where nobody grew old. He stayed a day there that was a hundred years."
+    },
+    "uriasi": {
+      "name": "the Uriași",
+      "told": "The mountains stir as the giants wake!",
+      "rule": "For five turns a Pokémon heavier than its target hits it harder.",
+      "story": "Before people came, the mountains were the uriași, giants who stepped from peak to peak and threw boulders at one another for sport. When the first ploughmen came, the giants were afraid of the tiny folk and lay down to sleep, and the ridges are their backs."
+    },
+    "spiridus": {
+      "name": "the Spiriduș",
+      "told": "A house sprite slips onto the field!",
+      "rule": "For five turns, the first time a held item would be used up, it stays to work once more.",
+      "story": "A spiriduș hatches from an egg kept warm under the arm for nine days. It lives behind the stove, mends what is broken and finds what is lost, and every good thing in its house happens twice. Forget its bowl of milk, though, and it hides your boots in the chimney."
+    },
+    "sanziene": {
+      "name": "the Sânziene",
+      "told": "Midsummer fairies dance across the field!",
+      "rule": "For five turns every heal restores twice as much HP.",
+      "story": "On midsummer night the Sânziene, the fairies of the yellow bedstraw, dance in the fields and bless the herbs. Girls weave crowns of the flowers and throw them over the roof. Whatever is gathered that night heals twice as well, and the sick sleep through to morning."
+    },
+    "draco": {
+      "name": "the Draco",
+      "told": "The war banner howls over the field!",
+      "rule": "For five turns the teller's attacks grow stronger with every turn.",
+      "story": "The Dacians rode to war under the draco, a wolf's head of bronze on a tail of cloth. As the horsemen gathered speed the wind filled the tail and it howled, and the louder it howled the harder they charged, until the enemy fled before the sound alone."
+    },
     "learned": "{player} learned the tale of {tale}!",
     "writtenDown": "It was written into the Book of Tales."
   },
@@ -4283,6 +4325,11 @@
     "taleEnded": "The tale of {tale} came to its end.",
     "taleWoke": "{pokemon} woke to the tale of {tale}!",
     "taleSlept": "{pokemon} was itself again.",
+    "taleKeepsStats": "The tale of {tale} keeps {target}'s stats from falling!",
+    "taleKeepsItem": "The tale of {tale} kept {pokemon}'s {item} for another time!",
+    "taleForestHeals": "The forest of {tale} restored {pokemon}'s HP!",
+    "taleHoldsFoe": "The forest of {tale} holds {pokemon} fast!",
+    "taleTakesStrength": "{pokemon} took up the strength of {fallen}!",
     "stellarType": "Stellar",
     "teraformZero": "{pokemon}'s {ability} cleared the weather and the terrain away!",
     "theDimensionsBecameDistorted": "The dimensions became distorted!",

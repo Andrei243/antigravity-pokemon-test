@@ -1348,6 +1348,8 @@ public sealed partial class BattleCore : IBattleContext
 
     private void Faint(Battler down)
     {
+        // Its higher attacking stat as it stood, for the Miorița's tale (plan 46 · CP11)
+        var strength = StrongerAttackOf(down.Pokemon!);
         down.Pokemon!.Status = StatusCondition.Faint;
         down.Pokemon.CurrentHP = 0;
         var letGo = LetGoOf(down);
@@ -1372,6 +1374,8 @@ public sealed partial class BattleCore : IBattleContext
         // Soul-Heart answers every faint (plan 06 · R27), Receiver and Power of Alchemy an ally's (R27b)
         SoulHeart(down);
         Receives(down);
+        // The Miorița's lament: an ally takes up its strength (plan 46 · CP11)
+        TaleTakesTheStrength(down, strength);
     }
 
     /// <summary>The next Pokémon at 0 HP that hasn't been told so yet: the fastest first, as the original faints them.</summary>

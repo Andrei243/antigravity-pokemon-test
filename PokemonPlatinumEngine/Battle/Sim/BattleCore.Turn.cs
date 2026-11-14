@@ -197,6 +197,8 @@ public sealed partial class BattleCore
             // And the G-Max Moves' fires, vines, rocks and waters (plan 06 · R22; Showdown's residual order 5.1)
             if (b.IsActive) GMaxBurns(b);
             if (b.IsActive) GrassyTerrainHeals(b);
+            // And Muma Pădurii's forest, a Grass type's (plan 46 · CP11)
+            if (b.IsActive) TaleForestHeals(b);
 
             // Roots and a ring of water give a sixteenth back
             // The roots have a moment of their own (subscript_ingrain_heal); the ring of water plays the heal's (plan 25 · Y3)
