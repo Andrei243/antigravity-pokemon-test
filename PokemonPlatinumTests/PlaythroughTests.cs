@@ -149,6 +149,32 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void APaldeaGamePlaysFromTheBedroomInCaboPocoToTheAcademysDoor()
+    {
+        // Plan 34 · PD1's "done when": the bot steers a stick on the open map and walks the rooms, from Mom and the director
+        // downstairs through the terrace, the beach, the grotto, the lighthouse and Mesagoza's gate to the academy's welcome
+        // (a strong Pokémon on the team before the first arrives, so Nemona's lesson and the students are the story's to be
+        // got through, as Alola's run has it; the starter's battle on the terrace is won either way)
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            Assert.Equal(MovementDirections.Free, engine.MovementHere.Directions);
+            game.Party.Add(new Pokemon(PokemonDatabase.Get("Pawmot")!, 40));
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            output.WriteLine($"begun on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}, VAR_PALDEA_STORY {game.Story.Var("VAR_PALDEA_STORY")}");
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.PaldeaToTheAcademy) };
+            Run(bot, 3600);
+            output.WriteLine($"ended on {game.Map.Name}, VAR_PALDEA_STORY {game.Story.Var("VAR_PALDEA_STORY")}");
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.Equal(7, game.Story.Var("VAR_PALDEA_STORY"));
+            Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Tera Orb")!));
+        }, Seed, RegionDatabase.Paldea);
+    }
+
+    [Fact]
     public void TheWayIsFoundAcrossMapsAndAlongAMapWithNoBound()
     {
         // Across maps, by their warps: down the stairs and out of the house; into the mine and down a floor

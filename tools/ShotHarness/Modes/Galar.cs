@@ -84,7 +84,7 @@ partial class Harness
     void ShootToward(PokemonPlatinumEngine.OpenWorld.OpenMap galar, string shot, string marker, double tx, double tz, double back)
     {
         if (!Wanted(shot)) return;
-        if (galar.Marker(marker) is not { } m) { Console.WriteLine($"!! Galar has no marker {marker}"); return; }
+        if (galar.Marker(marker) is not { } m) { Console.WriteLine($"!! {galar.Name} has no marker {marker}"); return; }
         double mx = m.Pos.X / 1000.0, mz = m.Pos.Z / 1000.0;
         double dx = mx - tx, dz = mz - tz, len = Math.Sqrt(dx * dx + dz * dz);
         if (len < 0.001) { dx = 0; dz = 1; len = 1; }
@@ -101,7 +101,7 @@ partial class Harness
     void ShootAt(PokemonPlatinumEngine.OpenWorld.OpenMap galar, string shot, string marker)
     {
         if (!Wanted(shot)) return;
-        if (galar.Marker(marker) is not { } m) { Console.WriteLine($"!! Galar has no marker {marker}"); return; }
+        if (galar.Marker(marker) is not { } m) { Console.WriteLine($"!! {galar.Name} has no marker {marker}"); return; }
         PutInOpenMap(galar, m.Pos, m.Yaw);
         game.LocationSign.Hide();
         Frames(40);

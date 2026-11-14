@@ -12843,3 +12843,19 @@ built; what is still owed is listed at the end and in plan 21's last note.
 - **The sample pack's Tidemark moves after Paldea**, now the last region with maps: its ferryman stands in Los Platos's
   Pokémon Center (`samples/packs/tidemark-isle`, `docs/packs.md`), and with Paldea at the chain's end nothing goes on
   from Tidemark.
+
+### Its second session (2026-11-14): the bot's way and the shots
+
+- **The bot's way to the academy ends on the director spoken to.** An itinerary's arrival leg is done as its door is
+  come through, while the room's own `OnEnter` scene is still playing; the director's welcome sets `VAR_PALDEA_STORY` 7
+  only at its end. So `Itineraries.PaldeaToTheAcademy` ends with `Talk clavell_hall` held open until the count is 7,
+  which the bot comes to once the welcome has played. The team has a Pawmot of level 40 beside the starter and a Repel's
+  steps, as Alola's and Galar's runs have, so the chapter's battles are the story's to be got through.
+- **The story's shots are told by the scene running**, never by the bot's leg: a student who sees the player on the
+  way to Mesagoza's gate speaks while the gate's leg is the bot's, and the director's welcome plays on the arrival's
+  leg's successor. The `paldea` mode asks `Driver.Scene` for each scene's name (Nemona's battle alone by its leg, since
+  a battle's scene isn't the running one while the battle has the screen).
+- **Nothing of the land or the places was changed for the shots.** What they show that may be wrong (no sea from the
+  terrace, Mesagoza on lawn, the stairs a ramp, the grotto's door with no mouth, Inlet Grotto drawn as a clearing in a
+  forest, a house's side wall in grey timber) is listed in plan 34's "PD1's second session" for the user's judgment of
+  Cabo Poco and Mesagoza, which the done-when asks for first.
