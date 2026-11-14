@@ -266,6 +266,56 @@ public class OpenSceneryTests
         Assert.Equal(land.Trees, OpenHorizon.Of((-2, -2, 1, 1), height, 1234u).Trees);
     }
 
+    [Fact]
+    public void WhereTheBorderIsSeaTheLandBeyondIsTheSeasAndElsewhereAsItWas()
+    {
+        // The same region as above; the sea a metre deep over its west half (x under 0), whose border runs 128 m north
+        // to south and 64 m along each of the others
+        Func<float, float, float?> height = (x, z) => x / 32f + (x > 60 && MathF.Abs(z) < 4 ? -2f : 0f);
+        Func<float, float, float?> westSea = (x, z) => x < 0 ? x / 32f + 1f : null;
+        var plain = OpenHorizon.Of((-2, -2, 1, 1), height, 1234u);
+        // With no water, or no run of the border under water as long as the sea's, the land is what it was
+        Func<float, float, float?> pond = (x, z) => x < -60 && MathF.Abs(z) < OpenHorizon.SeaRun / 2f - 4f ? x / 32f + 1f : null;
+        foreach (var water in new Func<float, float, float?>?[] { null, (_, _) => null, pond })
+        {
+            var same = OpenHorizon.Of((-2, -2, 1, 1), height, 1234u, waterAt: water);
+            Assert.Null(same.Sea);
+            Assert.Equal(plain.Mesh.Positions.Take(plain.Mesh.Count), same.Mesh.Positions.Take(same.Mesh.Count));
+            Assert.Equal(plain.Trees, same.Trees);
+        }
+        // With the sea: a level sea at its surface (a metre over the border's ground, so about -1) out to the horizon, its
+        // floor under it where the land beyond is the sea's, and no far tree standing in it
+        var land = OpenHorizon.Of((-2, -2, 1, 1), height, 1234u, waterAt: westSea);
+        Assert.NotNull(land.Sea);
+        var sea = land.Sea!.Positions.Take(land.Sea.Count).ToList();
+        Assert.All(sea, p => Assert.Equal(land.SeaLevel, p.Y));
+        Assert.InRange(land.SeaLevel, -2.1f, 0f);
+        Assert.Contains(sea, p => p.X < -2000);
+        Assert.DoesNotContain(sea, p => p.X > 2000);
+        for (int t = 0; t < sea.Count; t += 3)
+            Assert.True(Vector3.Cross(sea[t + 1] - sea[t], sea[t + 2] - sea[t]).Y > 0, $"the sea's face at {sea[t]} faces down");
+        var points = land.Mesh.Positions.Take(land.Mesh.Count).ToList();
+        Assert.All(points.Where(p => p.X < -64f - OpenHorizon.Near && MathF.Abs(p.Z) < 32f), p => Assert.True(p.Y < land.SeaLevel, $"{p} stands out of the sea"));
+        Assert.Contains(points, p => p.X > 64f + OpenHorizon.HillsFull && p.Y > land.Median + 20f);
+        Assert.All(land.Trees, t => Assert.True(t.Foot.Y >= land.SeaLevel + 1f, $"a far tree at {t.Foot} stands in the sea"));
+    }
+
+    [Theory]
+    [InlineData("paldea", true)]
+    [InlineData("galar", false)]
+    public void ARegionsBorderIsSeaOnlyWhereItsWaterRunsAlongIt(string region, bool sea)
+    {
+        // As the renderer makes it (OpenRenderer.PrepareHorizon): the ground and water the rules collide with, round the bake's extent
+        string folder = Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "world3d", region, "baked");
+        var map = new OpenMap(region, region) { Land = BakedRegion.Open(folder) };
+        var chunks = map.Land.Chunks.ToList();
+        var bounds = (chunks.Min(c => c.X), chunks.Min(c => c.Z), chunks.Max(c => c.X), chunks.Max(c => c.Z));
+        var ground = map.Ground;
+        var land = OpenHorizon.Of(bounds, (x, z) => ground.Footing(x, z, 2000, -2000)?.Y is { } y ? (float)y : null, 7u, trees: false,
+            waterAt: (x, z) => ground.WaterAt(x, z) is { } w ? (float)w : null);
+        Assert.Equal(sea, land.Sea != null);
+    }
+
     // ------------------------------------------------------------------ the light of lit glass
 
     [Fact]
