@@ -15,6 +15,9 @@ trainers 3, 25: collector_edwin 25, collector_fernando 25, waitress_kati 25
 === CanalaveGym
 Canalave Gym
 trainers 7, 34-40: ace_trainer_breanna 38, ace_trainer_cesar 40, black_belt_david 37, black_belt_ricky 38, worker_gary 37, worker_gerardo 35, worker_jackson 34
+=== Cascarrafa_GymTest
+Cascarrafa Gym
+trainers 1, 28: paldea_gym_trainer_marisa 28
 === Circhester_StadiumMission
 Circhester Stadium
 trainers 2, 38-40: galar_gym_trainer_carys 39, galar_gym_trainer_tomos 40
@@ -144,6 +147,9 @@ trainers 2, 45: kalos_flare_grunt_labs_1 45, kalos_flare_grunt_labs_2 45
 === LumioseCity_PrismTowerGym
 Prism Tower
 trainers 2, 32-33: kalos_schoolboy_hugo 33, kalos_schoolgirl_adele 33
+=== Medali_GymTest
+Medali Gym
+trainers 1, 33: paldea_gym_trainer_dina 33
 === Motostoke_StadiumMission
 Motostoke Stadium
 trainers 2, 24-25: galar_gym_trainer_ash 24, galar_gym_trainer_ember 25

@@ -1112,6 +1112,9 @@ public class SceneSkipTests
         "lurking_steel.The Lurking Steel Titan's Herba Mystica", "quaking_earth.The Quaking Earth Titan",
         "quaking_earth.The Quaking Earth Titan's Herba Mystica", "false_dragon.The False Dragon Titan",
         "false_dragon.The False Dragon Titan's Herba Mystica", "poco_path.Arven's Mabosstiff",
+        // Plan 34 · PD6: Kofu's auction on Porto Marinada's quay, an open place's person, played both ways by
+        // PaldeaWestTests.TheAuctionPlayedAndSkippedLeavesTheSame
+        "porto_marinada.The auction",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

@@ -9,7 +9,7 @@
 # (Data/world/paldea/trainers.json: paldea_larry, paldea_larry_b0 to _b7)
 script Leader
   face larry player
-  speaker "Larry"
+  speaker paldea_larry "Larry"
   if badge normal goto Won
   if var VAR_PALDEA_STORY < 7 goto NotEnrolled
   if not flag FLAG_PALDEA_MEDALI_TEST_DONE goto NotYet

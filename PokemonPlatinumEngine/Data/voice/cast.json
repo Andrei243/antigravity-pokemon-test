@@ -259,6 +259,23 @@
         "accent": "en-us"
       }
     },
+    "auctioneer": {
+      "note": "first spoken at porto_marinada.txt(9)",
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Porto Marinada's auctioneer: a quayside showman, rattling through the lots, enjoying the chef's bad luck a little too much"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.6,am_echo:0.4",
+        "speed": 1.1,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
     "aukai": {
       "note": "first spoken at HauoliCity_TrainersSchool.txt(40)",
       "brief": {
@@ -5638,7 +5655,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_sarah:0.4",
         "speed": 0.94,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -5695,6 +5712,23 @@
     "kiri": {
       "note": "first spoken at sootopolis_city.txt(159)",
       "provisional": true
+    },
+    "kofu": {
+      "note": "first spoken at Cascarrafa_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "Kofu, Cascarrafa's Water-type gym leader and cook: big, hearty and loud, bursting with enthusiasm, every line a shout across a busy kitchen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,am_puck:0.4",
+        "speed": 1.06,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "koga": {
       "note": "first spoken at fuchsia_city_gym.txt(11)",
@@ -9593,6 +9627,27 @@
       "note": "first spoken at lumiose_city.txt(214)",
       "provisional": true
     },
+    "paldea_larry": {
+      "note": "first spoken at Medali_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Larry, Medali's Normal-type gym leader: a tired office worker, flat and dry, every line said as if it were the end of a long shift"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_onyx:0.4",
+        "speed": 0.9,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
+    },
+    "office_worker": {
+      "note": "first spoken at medali.txt(26)",
+      "provisional": true
+    },
     "officer": {
       "note": "first spoken at new_bark_elms_lab_1f.txt(118)",
       "provisional": true
@@ -11362,6 +11417,7 @@
     "Arven": "arven",
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
+    "Auctioneer": "auctioneer",
     "Aukai": "aukai",
     "Avery": "avery",
     "AZ": "az",
@@ -11636,6 +11692,7 @@
     "Kimono Girl": "kimono_girl",
     "Kira": "kira",
     "Kiri": "kiri",
+    "Kofu": "kofu",
     "Koga": "koga",
     "Koichi": "koichi",
     "Koji": "koji",
@@ -11757,6 +11814,7 @@
     "Octave": "octave",
     "Odette": "odette",
     "Odile": "odile",
+    "Office Worker": "office_worker",
     "Officer": "officer",
     "Ola": "ola",
     "Old Lady": "old_lady",

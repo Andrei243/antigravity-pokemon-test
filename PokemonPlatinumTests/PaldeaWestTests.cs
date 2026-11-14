@@ -117,7 +117,6 @@ public class PaldeaWestTests
         var game = new Game();
         game.Story.SetVar("VAR_PALDEA_STORY", 7);
         foreach (string badge in new[] { "Bug", "Grass", "Electric" }) game.Story.GiveBadge(RegionDatabase.Paldea, badge);
-        // Before the academy's welcome nobody battles, whatever the test
         var kofu = game.Kofu();
         Assert.Contains("paldea_kofu ", game.Battled(kofu) + " ");
         Assert.True(game.Story.HasBadge(RegionDatabase.Paldea, "Water"));
@@ -161,6 +160,37 @@ public class PaldeaWestTests
                 Assert.Equal(caps[held], record.Party.Max(p => p.Level));
                 Assert.Equal(tera, record.Party[^1].TeraType);
             }
+        }
+    }
+
+    [Fact]
+    public void TheAuctionPlayedAndSkippedLeavesTheSame()
+    {
+        // The scene of an open place's person, which the walk of every script doesn't start (SceneSkipTests.BeyondTheWalk):
+        // each way through it, won, bid too soon and missed, played and then hurried
+        foreach (int[] answers in new[] { new[] { 1, 1, 0 }, new[] { 0 }, new[] { 1, 0 }, new[] { 1, 1, 1 } })
+        {
+            var ends = new List<string>();
+            foreach (bool hurry in new[] { false, true })
+            {
+                var game = new Game();
+                game.Story.SetVar("VAR_PALDEA_STORY", 7);
+                game.Story.Set("FLAG_PALDEA_CASCARRAFA_ERRAND");
+                var host = new HeadlessScriptHost(game.Story, game.Party, game.Bag)
+                {
+                    OpenMap = Open.Value,
+                    OpenMapNamed = name => name == Open.Value.Name ? Open.Value : null,
+                    Region = RegionDatabase.Paldea
+                };
+                foreach (int a in answers) host.Answers.Enqueue(a);
+                var runner = new ScriptRunner(ScriptLibrary.Default, host) { Impatient = hurry };
+                runner.Start(ScriptLibrary.Default.Find("Auctioneer", "porto_marinada")!, null);
+                runner.RunToEnd();
+                Assert.Empty(host.Problems);
+                Assert.Contains("porto_marinada.The auction", game.Story.ScenesSeen);
+                ends.Add(System.Text.Json.JsonSerializer.Serialize(game.Story.Snapshot()) + "|" + string.Join(",", host.Asked.Select(q => q.Answer)));
+            }
+            Assert.True(ends[0] == ends[1], $"the auction answered {string.Join(".", answers)} skipped leaves otherwise than played:\n{ends[0]}\n{ends[1]}");
         }
     }
 

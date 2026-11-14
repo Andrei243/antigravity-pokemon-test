@@ -1620,14 +1620,33 @@ paldea_arven 258 (61) [Greedent → Larderous, Cloyster → Clamspire, Scovillai
 paldea_brassius 246 (17) [Petilil → Ballerilly, Smoliv → Arboliva, Sudowoodo → Mimicedar]
 paldea_iono 248 (24) [Wattrel → Terawattrel, Bellibolt → Thunderbelly, Luxio → Luxray, Mismagius → Hexmagistra]
 paldea_katy 245 (15) [Nymble → Lokix, Tarountula → Fortarach, Teddiursa → Ursaluna]
+paldea_kofu 249 (30) [Veluza → Sashimaru, Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_kofu_b0 245 (15) [Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_kofu_b1 246 (17) [Veluza → Sashimaru, Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_kofu_b2 248 (24) [Veluza → Sashimaru, Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_kofu_b4 251 (36) [Veluza → Sashimaru, Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_kofu_b5 253 (42) [Veluza → Sashimaru, Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_kofu_b6 253 (45) [Veluza → Sashimaru, Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_kofu_b7 254 (48) [Veluza → Sashimaru, Wugtrio → Wugsextet, Crabominable → Glacipincer]
+paldea_larry 251 (36) [Komala → Somnikoala]
+paldea_larry_b0 245 (15) [Komala → Somnikoala]
+paldea_larry_b1 246 (17) [Komala → Somnikoala]
+paldea_larry_b2 248 (24) [Komala → Somnikoala]
+paldea_larry_b3 249 (30) [Komala → Somnikoala]
+paldea_larry_b5 253 (42) [Komala → Somnikoala, Dudunsparce → Dunsprawl]
+paldea_larry_b6 253 (45) [Komala → Somnikoala, Dudunsparce → Dunsprawl]
+paldea_larry_b7 254 (48) [Komala → Somnikoala, Dudunsparce → Dunsprawl]
 paldea_nemona_1a 243 (5) [Fuecoco → Skeledirge]
 paldea_nemona_1b 243 (5) [Quaxly → Quaquaval]
 paldea_nemona_1c 243 (5) [Sprigatito → Meowscarada]
 paldea_student_bruno 245 (12) [Sunkern → Helianthra, Bonsly → Mimicedar]
+paldea_student_dario 248 (26) [Silicobra → Duneconda, Sandile → Krookodile]
+paldea_student_elena 249 (28) [Rockruff → Lupinacle, Flittle → Mirastrich, Gothita → Gothitelle]
 paldea_student_iris 244 (10) [Smoliv → Arboliva, Tarountula → Fortarach]
 paldea_student_lucia 243 (6) [Hoppip → Jumpluff, Lechonk → Oinkologne]
 paldea_student_mateo 243 (6) [Pawmi → Pawmot, Fletchling → Talonflame]
 paldea_student_noa 246 (17) [Shinx → Luxray, Tadbulb → Bellibolt]
+paldea_student_pablo 249 (29) [Wingull → Pelicaptain, Squawkabilly → Bossquawk]
 === region Hisui
 levels 2 → 62, 75 → 104
 === AnistarCity_Gym
@@ -1639,6 +1658,9 @@ trainers 1, 245 (own 15): paldea_gym_trainer_hedge 245 (15) [Hoppip → Jumpluff
 === Ballonlea_StadiumMission
 Ballonlea Stadium, Galar
 trainers 2, 233 (own 33): galar_gym_trainer_luned 233 (33) [Kirlia → Gardevoir, Hattrem → Hatterene], galar_gym_trainer_posy 233 (33) [Clefairy → Clefable, Spritzee → Perfumelle]
+=== Cascarrafa_GymTest
+Cascarrafa Gym, Paldea
+trainers 1, 249 (own 28): paldea_gym_trainer_marisa 249 (28) [Pelipper → Pelicaptain, Clauncher → Salvoclaw]
 === Circhester_StadiumMission
 Circhester Stadium, Galar
 trainers 2, 234-235 (own 38-40): galar_gym_trainer_carys 235 (39) [Rolycoly → Coalossal, Carkol → Coalossal], galar_gym_trainer_tomos 235 (40) [Boldore → Gigalith, Stonjourner → Henjourner]
@@ -1693,6 +1715,9 @@ trainers 2, 198 (own 45): kalos_flare_grunt_labs_1 198 (45) [Houndoom → Cerber
 === LumioseCity_PrismTowerGym
 Prism Tower, Kalos
 trainers 2, 194 (own 32-33): kalos_schoolboy_hugo 194 (33) [Magnemite → Magnezone, Helioptile → Coronafrill], kalos_schoolgirl_adele 194 (33) [Emolga → Nimbolga, Dedenne → Signalmus]
+=== Medali_GymTest
+Medali Gym, Paldea
+trainers 1, 250 (own 33): paldea_gym_trainer_dina 250 (33) [Gumshoos → Inspectoose, Oinkologne → Trufflord]
 === Motostoke_StadiumMission
 Motostoke Stadium, Galar
 trainers 2, 230-231 (own 24-25): galar_gym_trainer_ash 230 (24) [Vulpix → Kitsunox, Sizzlipede → Centiskorch], galar_gym_trainer_ember 231 (25) [Growlithe → Kirinine, Carkol → Coalossal]

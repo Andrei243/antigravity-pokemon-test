@@ -13071,8 +13071,8 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
   the West Province's second area and down a ramp to Porto Marinada on the western sea, and east out of the desert along
   the West Province's first area to Medali. Every way and town is a floor between hills 28 m higher, as PD3's are, but
   Porto Marinada's, which stands at 4 m on a quay over the sea. The distances are PD1's and PD3's compressed ones
-  (Cascarrafa about 300 m north of Cortondo, Porto Marinada about 300 m west of Cascarrafa, Medali about 200 m north-west
-  of Mesagoza's walls), for the user's judgment with the rest; nothing was laid in the region's north-west corner past
+  (Cascarrafa about 350 m north of Cortondo, Porto Marinada about 260 m west of Cascarrafa, Medali about 270 m north
+  of Mesagoza's walls and a little west), for the user's judgment with the rest; nothing was laid in the region's north-west corner past
   the towns (`z` under -760, `x` under -520 north of Cascarrafa), which Starfall Street's session (PD5) builds beside this.
   `world.json`'s `chunks` now start at `-26` (the coast); the bake keeps 625 chunks (from 454), 80.4 MB (from 62.0 MB).
 - **Cascarrafa's falls** are a river of `water.json` coming down a slot cut into the hills north of the city (its
