@@ -25,6 +25,12 @@
     "mount": {
       "type": "boolean"
     },
+    "bakeRing": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
     "cover": {
       "type": [
         "object",
