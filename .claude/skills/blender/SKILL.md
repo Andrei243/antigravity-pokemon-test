@@ -390,6 +390,26 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
   edge-on from behind. An agent cannot see the game's cameras, so the main session checks such a part in the shot.
 - **A patch wider than the thin part it is meant for** (an ear's lining) lands on whatever lies behind it (the tail,
   a metre away) and prints no warning, since its rays did hit something.
+- **A family is sculpted in two waves** (Eevee and its seven): the base form alone first, written to be grown from
+  (its frame in named constants and small functions, the calls at the end), seen in the game and corrected; only
+  then its evolutions, each agent told to keep that frame and change what the pictures change. The eight then read
+  as kin: the same paw, the same way of making a face.
+- **A long-legged skeleton is not a thin animal** (Umbreon and Leafeon came out as fawns on four sticks, with a
+  small head on a pole of a neck, and the other five would have): the joints are high, but shoulder and thigh are
+  broad masses fused over the upper half of each leg, the trunk is as deep as the leg showing under it is long, the
+  lower leg tapers and is never a stick, the neck is short and thick, the head some 15% larger than first measured.
+- **Eyes that are always shut** (Snorlax): the open state is the slit itself, Shut, Squeeze and Smile come from
+  `eye_look` on it, and Fierce is written by hand (the same slit tilted): `eye_look`'s Fierce draws a lid line
+  across the slit.
+- **A large fused mass of another colour** (a mane, a crown) washes its colour over the coat at `build()`'s default
+  `band=0.012`: `band=0.004` keeps the edge.
+- **A line drawn inside a patch's colour function** (a lid cutting an eye) steps at the patch's rings: make the cut
+  the patch's own outline (`polygon`), or use the outer rings as the lid.
+- **A paint mask limited by a ball round the head's bone** misses the face standing forward of it and says nothing;
+  a decal cast from above whose plane starts over the neck streaks a line down the neck (start it just above the
+  back); a lining painted with `on=[ear]` has a ragged edge where one without `on` is crisp; a fused blade thinner
+  than two voxels frays (thin plates are loose pieces); a three-point `blade` is a rhombus (a lobe wants four or
+  five points).
 
 ## Not tried yet
 
