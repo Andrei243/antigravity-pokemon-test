@@ -55,8 +55,7 @@ public partial class GameEngine
         openCrossings.Settle(map, pos);
         openWalk = null;
         // A raid and a Let's Go don't outlast being put down elsewhere (plan 34 · PD5)
-        starRaid = null;
-        letsGoShow = null;
+        ForgetTheLetsGo();
         // Everyone back where they were put, and whoever travels along behind the player (OW6)
         BeginTheOpenPeople(flow.Open);
         // The orbit camera begun behind them (plan 32 · OW8)
@@ -167,6 +166,8 @@ public partial class GameEngine
     {
         flow.Open = null;
         openAreaKey = null;
+        // A raid and a Let's Go are never saved (plan 34 · PD5)
+        ForgetTheLetsGo();
         if (save.OpenPlace is not { } saved) return;
         var place = saved.ToPlace();
         if (OpenMapNamed(place.Map) is { } map)

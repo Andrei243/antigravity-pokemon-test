@@ -18,9 +18,27 @@ partial class Harness
     /// </summary>
     void PaldeaStarfall(OpenMap paldea)
     {
-        game.Story.SetVar("VAR_PALDEA_STORY", 7);
         ShootToward(paldea, "pd99_starfall_street", "starfall_mouth", 0, -470, 40);
         ShootToward(paldea, "pd99b_giacomo_gate", "giacomo_gate", -78, -430, 26);
+    }
+
+    /// <summary>
+    /// Let's Go, a raid and a boss's stage played (plan 34 · PD5), last in the `paldea` mode and in a new game of its own,
+    /// so the draws and frames they spend move no shot before them (<c>l80</c> to <c>l82</c>).
+    /// </summary>
+    void PaldeaLetsGoPlayed()
+    {
+        if (!Wanted("l80") && !Wanted("l81") && !Wanted("l82")) return;
+        engine.NewGameRegion = "Paldea";
+        engine.StartNewGame();
+        game.State = GameState.Overworld;
+        game.SaveSlot = 1;
+        game.LocationSign.Hide();
+        game.Story.SetVar("VAR_PALDEA_STORY", 7);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Sprigatito")!, 12));
+        Frames(10);
+        var paldea = engine.OpenMapNamed("Paldea");
+        if (paldea == null) { Console.WriteLine("!! no open map called Paldea"); return; }
 
         void PressLetsGo()
         {

@@ -81,6 +81,46 @@ public class LetsGoGameTests
     }
 
     [Fact]
+    public void AWildPokemonAboveTheLeadsLevelIsMetInARealBattle()
+    {
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            Team(engine);
+            var map = Paldea(engine);
+            var zone = map.Zones.First(z => z.Place == "south_province_area_one");
+            double cx = zone.Polygon.Average(p => p.X) / 1000.0, cz = zone.Polygon.Average(p => p.Z) / 1000.0;
+            OpenPos On(double x, double z) => OpenPos.FromMetres(x, map.Ground.Footing(x, z, 90, 0)!.Value.Y, z);
+            game.PlaceOpen(map, On(cx, cz + 3), OpenYaw.North);
+            Frames(engine, 2);
+            game.OpenWild!.Clear();
+            game.OpenWild.Put(map, zone, zone.Slots[0], 60, On(cx, cz - 2), OpenYaw.South);
+            Frames(engine, 1, ActionFrame.Press(GameAction.LetsGo));
+            Assert.Null(game.LastLetsGo);
+            Assert.NotNull(game.OpenWildMet);
+            for (int i = 0; i < 300 && game.State != GameState.Battle; i++) Frames(engine, 1);
+            Assert.Equal(GameState.Battle, game.State);
+        }, region: "Paldea");
+    }
+
+    [Fact]
+    public void ANewGameForgetsARaidUnderWay()
+    {
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            Team(engine);
+            var map = Paldea(engine);
+            game.PlaceOpen(map, "giacomo_gate");
+            game.BeginStarRaid("giacomo");
+            Assert.NotNull(game.StarRaid);
+            engine.StartNewGame();
+            Assert.Null(game.StarRaid);
+            Assert.Null(game.LetsGoShowing);
+        }, region: "Paldea");
+    }
+
+    [Fact]
     public void ABasesClockEndsARaidAndItsScriptPutsThePlayerBackOnTheGate()
     {
         Headless.Play(engine =>

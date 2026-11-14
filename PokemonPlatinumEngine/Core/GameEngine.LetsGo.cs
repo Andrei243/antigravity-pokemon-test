@@ -73,8 +73,7 @@ public partial class GameEngine
             field.Wild.Ended(seen.Zone, OpenWildEnd.CaughtOrFelled);
         }
         letsGoShow = LetsGoShow.Of(lead, field.Player.Pos, seen.Pos, seen.Species, battle.End, field.Wild.Tick);
-        AfterLetsGo(lead, battle);
-        return false;
+        return AfterLetsGo(lead, battle);
     }
 
     /// <summary>A raid's Let's Go: the next of the first three at the nearest of the crew's Pokémon within the raid's reach.</summary>
@@ -90,8 +89,7 @@ public partial class GameEngine
         var battle = FightLetsGo(lead, wild);
         if (battle.End == LetsGoEnd.Felled) raid.Fell(foe);
         letsGoShow = LetsGoShow.Of(lead, field.Player.Pos, foe.Pos, foe.Species, battle.End, field.Wild.Tick);
-        AfterLetsGo(lead, battle);
-        return false;
+        return AfterLetsGo(lead, battle);
     }
 
     /// <summary>The fight itself, on a seed the field's chance draws for it, under the place's conditions and the run's terms.</summary>
@@ -113,14 +111,14 @@ public partial class GameEngine
         return battle;
     }
 
-    /// <summary>What a Let's Go leaves: the Pokédex told of what was seen, a level's evolution, the statistics.</summary>
-    private void AfterLetsGo(Pokemon lead, LetsGoBattle battle)
+    /// <summary>What a Let's Go leaves: the Pokédex told of what was seen, a level's evolution, the statistics. True when an evolution begins (the frame's walking ends there).</summary>
+    private bool AfterLetsGo(Pokemon lead, LetsGoBattle battle)
     {
         flow.Pokedex.RegisterSeen(battle.Core.WildPokemon[0]);
         flow.Statistics.Count(Statistics.Levelled, battle.LeveledUp ? 1 : 0);
         AudioManager.PlaySound(battle.End == LetsGoEnd.Felled ? "hit_super" : "hit_normal");
-        if (battle.LeveledUp && !flow.Run.Nuzlocke)
-            PlayEvolutions(FindEvolutions(new[] { lead }, EvolutionTrigger.LevelUp, cancellable: true), GameState.Overworld);
+        return battle.LeveledUp && !flow.Run.Nuzlocke
+            && PlayEvolutions(FindEvolutions(new[] { lead }, EvolutionTrigger.LevelUp, cancellable: true), GameState.Overworld);
     }
 
     /// <summary>The wild Pokémon of the field nearest the player within <see cref="LetsGoReach"/>, on their level of ground.</summary>
@@ -218,10 +216,17 @@ public partial class GameEngine
             openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "letsgo:target", show.Target, Feet(show.To), (float)OpenYaw.Radians(show.Yaw + OpenYaw.Turn / 2), Height: HeightOf(show.Target) * scale));
     }
 
-    /// <summary>The raid's corner (its count and its clock), over the field while one is under way.</summary>
+    /// <summary>The raid's corner (its count and its clock), over the open field while one is under way.</summary>
     private void DrawStarRaidCorner()
     {
-        if (starRaid is { } raid) ModernUi.StarRaidCount(VirtualWidth, raid.Felled, StarRaid.Goal, raid.SecondsLeft);
+        if (flow.Open != null && starRaid is { } raid) ModernUi.StarRaidCount(VirtualWidth, raid.Felled, StarRaid.Goal, raid.SecondsLeft);
+    }
+
+    /// <summary>No raid and no Let's Go under way: a new game, a loaded one, the player put down in an open map.</summary>
+    private void ForgetTheLetsGo()
+    {
+        starRaid = null;
+        letsGoShow = null;
     }
 
     internal sealed partial class Driver

@@ -13069,8 +13069,8 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
 - **Let's Go** (`Models/LetsGo.cs`, `Core/GameEngine.LetsGo.cs`): the key `GameAction.LetsGo` (R, the pad's right
   trigger: free in every preset), read in an open map on foot only, sends the team's first Pokémon able to fight at
   the wild Pokémon of the field nearest the player within 10 m (and 3 m of height). The battle is the rules' own,
-  `BattleCore` with nobody watching, on a seed the field's chance draws for it at the press (one draw, and none on a
-  press that sends nobody); the lead's moves are AUTO's (`Battle/Sim/MoveSuggestion.cs`, the one scorer the bot, AUTO
+  `BattleCore` with nobody watching, on a seed the field's chance draws for it at the press, after the wild Pokémon is made on the
+  same chance as walking into it would make it (nothing is drawn on a press that sends nobody); the lead's moves are AUTO's (`Battle/Sim/MoveSuggestion.cs`, the one scorer the bot, AUTO
   and Let's Go share, which `BattleEngine.Suggest` now asks), answered from outside so they are the record's; the wild
   side chooses inside the rules as a wild Pokémon does. The record is a `BattleRecordFile` taken from the setup before
   the rules touch it, which `Replay()` fights again to the same log (`LetsGoTests`).
