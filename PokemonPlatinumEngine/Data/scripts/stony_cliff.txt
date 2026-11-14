@@ -19,7 +19,7 @@ label Titan
   text "Rocks clatter down the gully. A Klawf the size of a cart scrambles out of the stones, its claws wide!"
   wildbattle "Klawf" 16 titan defense
   text "The Titan Klawf reels back... then turns and scuttles off up the gully toward the ledge at its head!"
-  walkto titan_klawf klawf_den fast
+  walkto titan_klawf stony_cliff_ramp_foot fast
   setflag FLAG_PALDEA_KLAWF_FLED
   setvar VAR_PALDEA_LEGENDS 2
   endscene

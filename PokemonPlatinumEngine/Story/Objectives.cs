@@ -423,6 +423,12 @@ public static class Objectives
         // then the Titan Klawf at the Stony Cliff
         (810, "paldeaArven", AtLeast("VAR_PALDEA_LEGENDS", 1), false),
         (811, "paldeaKlawf", AtLeast("VAR_PALDEA_LEGENDS", 3), false),
+        // PD4's second session: the other four Titans, each beaten twice, and Arven's battle back at the lighthouse
+        (812, "paldeaBombirdier", AtLeast("VAR_PALDEA_LEGENDS", 5), false),
+        (813, "paldeaOrthworm", AtLeast("VAR_PALDEA_LEGENDS", 7), false),
+        (814, "paldeaQuaking", AtLeast("VAR_PALDEA_LEGENDS", 9), false),
+        (815, "paldeaFalseDragon", AtLeast("VAR_PALDEA_LEGENDS", 11), false),
+        (816, "paldeaArvenBattle", AtLeast("VAR_PALDEA_LEGENDS", 12), false),
         (899, "paldeaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

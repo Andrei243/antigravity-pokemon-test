@@ -1,0 +1,64 @@
+# Lurking Steel (plan 34 · PD4, its second session): the third Titan of the Path of Legends, Orthworm, met as it bursts
+# out of the sand in the cutting east off the East Province's first area, beaten and chased to its den on the ledge at the
+# cutting's end, beaten again there once the Herba Mystica has made it bigger, and the herbs it left shared with the
+# mount, which can leap again. A stand-in for the original's place in the East Province's third area, until plan 34 ·
+# PD6 builds it. VAR_PALDEA_LEGENDS (stony_cliff.txt's header has the whole count) goes on:
+#   5  the Titan Bombirdier beaten: the Titan Orthworm lurks in the cutting
+#   6  the Titan Orthworm beaten in the cutting and fled to its den (FLAG_PALDEA_ORTHWORM_FLED)
+#   7  the Titan Orthworm beaten at its den (FLAG_PALDEA_ORTHWORM_BEATEN), its herbs shared: the mount leaps high
+#      (FLAG_PALDEA_MOUNT_HIGH_JUMP); the next Titan's version is set for the basin north of Cortondo
+#      (FLAG_PALDEA_QUAKING_TUSK with Koraidon, FLAG_PALDEA_QUAKING_TREADS with Miraidon)
+# The lines are our own, on Scarlet and Violet's beats.
+
+
+# The Titan out of the sand: the first battle, and its flight to the ledge
+script Orthworm
+  if var VAR_PALDEA_LEGENDS == 5 goto Titan
+  end
+label Titan
+  scene "The Lurking Steel Titan"
+  faceto titan_orthworm player
+  cry "Orthworm"
+  text "The sand heaves. A length of steel as thick as a tree trunk rears up out of the ground, its feelers glowing red!"
+  wildbattle "Orthworm" 29 titan defense
+  text "The Titan Orthworm grinds its segments, burrows into the sand and bursts out again at the cutting's far end!"
+  walkto titan_orthworm lurking_steel_ramp_foot fast
+  setflag FLAG_PALDEA_ORTHWORM_FLED
+  setvar VAR_PALDEA_LEGENDS 6
+  endscene
+  end
+
+
+# Up on the ledge: the Titan at its Herba Mystica, the second battle, and Arven come up the ramp to share the herbs
+script OrthwormDen
+  if var VAR_PALDEA_LEGENDS == 6 goto Den
+  end
+label Den
+  scene "The Lurking Steel Titan's Herba Mystica"
+  faceto player titan_orthworm_den
+  text "The Titan Orthworm is coiled round a clump of glowing herbs, swallowing them stalks and all."
+  text "Its steel plates ring like a bell and its feelers blaze. It uncoils toward {player}!"
+  wildbattle "Orthworm" 29 titan all
+  text "The Titan Orthworm is beaten. It shrinks to an ordinary Orthworm and tunnels away under the sand."
+  setflag FLAG_PALDEA_ORTHWORM_BEATEN
+  placeat arven_lurking_steel lurking_steel_ramp_foot
+  walkto arven_lurking_steel lurking_steel_herbs fast
+  faceto player arven_lurking_steel
+  speaker "Arven"
+  say "Three! I could feel that one through my boots the whole way here. These herbs are bitter. Perfect."
+  faceto arven_lurking_steel player
+  if var VAR_PALDEA_MOUNT == 2 goto Miraidon
+  text "Koraidon ate the sandwich, crouched low, and sprang straight up higher than Arven's head."
+  setflag FLAG_PALDEA_QUAKING_TUSK
+  goto Strength
+label Miraidon
+  text "Miraidon ate the sandwich, sank on its legs, and shot straight up higher than Arven's head."
+  setflag FLAG_PALDEA_QUAKING_TREADS
+label Strength
+  setflag FLAG_PALDEA_MOUNT_HIGH_JUMP
+  text "Some of its old strength has come back. It can leap high again! (Riding, the jump button now clears ledges twice as tall.)"
+  say "The next Titan's in the dusty basin north of Cortondo. People say the ground shakes when it runs."
+  say "That's a long way west. Good thing your ride's feeling better."
+  setvar VAR_PALDEA_LEGENDS 7
+  endscene
+  end

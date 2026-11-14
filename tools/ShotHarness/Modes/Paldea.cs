@@ -70,6 +70,7 @@ partial class Harness
         PaldeaLegends(paldea);
 
         PaldeaChapter();
+        PaldeaLegendsPlayed();
     }
 
     /// <summary>

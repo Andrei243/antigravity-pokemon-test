@@ -1,0 +1,41 @@
+{
+  // Lurking Steel (plan 34 · PD4, its second session): a stand-in for the third Titan's place in the East Province's
+  // third area, until plan 34 · PD6 builds it and moves the Titan there. A sandy cutting east off the East Province's
+  // first area where the Titan Orthworm lurks once the second Titan's herbs are shared; beaten there, it burrows to its
+  // den on the ledge at the cutting's end, where the second battle is fought and Arven comes up to share the herbs.
+  // Scripts: Data/scripts/lurking_steel.txt. Our own place, on Scarlet and Violet's beats
+  "markers": [
+    { "name": "lurking_steel_mouth", "at": [488, 12.0, -534], "yaw": 90 },
+    { "name": "lurking_steel_ramp_foot", "at": [524, 12.0, -530], "yaw": 90 },
+    { "name": "orthworm_den", "at": [560, 18.0, -534], "yaw": 270 },
+    { "name": "lurking_steel_herbs", "at": [552, 18.0, -528], "yaw": 270 }
+  ],
+  "triggers": [
+    // Across the cutting before the Titan, once the second Titan is beaten: the first battle
+    { "name": "orthworm_cutting", "box": { "min": [500, 9, -560], "max": [508, 16, -508] }, "script": "Orthworm", "var": "VAR_PALDEA_LEGENDS", "value": 5 },
+    // Up the ramp onto the ledge once the Titan has fled there: its den and the second battle
+    { "name": "orthworm_den", "cylinder": { "at": [554, -534], "radius": 6, "bottom": 15, "top": 22 }, "script": "OrthwormDen", "var": "VAR_PALDEA_LEGENDS", "value": 6 }
+  ],
+  "people": [
+    // The Titan in the cutting, from the second Titan's herbs until it flees to its den
+    {
+      "name": "titan_orthworm", "at": [516, 12.0, -534], "yaw": 270, "species": "Orthworm", "size": 2, "displayName": "Orthworm",
+      "script": "Orthworm", "shownBy": "FLAG_PALDEA_MOUNT_SWIM", "hiddenBy": "FLAG_PALDEA_ORTHWORM_FLED"
+    },
+    // The Titan at its den on the ledge, from its flight until it is beaten
+    {
+      "name": "titan_orthworm_den", "at": [562, 18.0, -534], "yaw": 270, "species": "Orthworm", "size": 2, "displayName": "Orthworm",
+      "script": "OrthwormDen", "shownBy": "FLAG_PALDEA_ORTHWORM_FLED", "hiddenBy": "FLAG_PALDEA_ORTHWORM_BEATEN"
+    },
+    // Arven, come up the ramp after the Titan is beaten, until the herbs are shared
+    {
+      "name": "arven_lurking_steel", "at": [548, 18.0, -540], "yaw": 0, "look": "arven", "displayName": "Arven",
+      "lines": ["Bitter Herba Mystica. Bitter's the best kind."],
+      "shownBy": "FLAG_PALDEA_ORTHWORM_BEATEN", "hiddenBy": "FLAG_PALDEA_MOUNT_HIGH_JUMP"
+    },
+    {
+      "name": "lurking_steel_worker", "at": [490, 12.0, -552], "yaw": 0, "look": "worker", "displayName": "Worker",
+      "lines": ["We stopped digging here when our drills started digging back. Something steel's down in that sand."]
+    }
+  ]
+}

@@ -31,11 +31,17 @@
     { "key": "levincia", "name": "Levincia", "polygon": [[400, -800], [592, -800], [592, -640], [400, -640]], "music": "paldea/levincia" },
     // The Path of Legends (plan 34 · PD4): the Titans' places, the first the Stony Cliff, a gully north off the South
     // Province's third area where the Titan Klawf keeps its den
-    { "key": "stony_cliff", "name": "Stony Cliff", "polygon": [[196, -460], [256, -460], [256, -360], [196, -360]], "music": "paldea/south_province" }
+    { "key": "stony_cliff", "name": "Stony Cliff", "polygon": [[196, -460], [256, -460], [256, -360], [196, -360]], "music": "paldea/titans" },
+    // The four other Titans' places (PD4's second session), stand-ins beside the land that is built until PD6 builds
+    // the provinces the originals stand in (terrain/titans.json says where each is)
+    { "key": "open_sky", "name": "Open Sky", "polygon": [[-268, -460], [-208, -460], [-208, -360], [-268, -360]], "music": "paldea/titans" },
+    { "key": "lurking_steel", "name": "Lurking Steel", "polygon": [[480, -566], [580, -566], [580, -502], [480, -502]], "music": "paldea/titans" },
+    { "key": "quaking_earth", "name": "Quaking Earth", "polygon": [[-466, -510], [-366, -510], [-366, -384], [-466, -384]], "music": "paldea/titans" },
+    { "key": "false_dragon", "name": "False Dragon", "polygon": [[480, -478], [606, -478], [606, -394], [480, -394]], "music": "paldea/titans" }
   ],
   "maps": [
     { "name": "Paldea", "areas": ["cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza",
       "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia",
-      "stony_cliff"] }
+      "stony_cliff", "open_sky", "lurking_steel", "quaking_earth", "false_dragon"] }
   ]
 }

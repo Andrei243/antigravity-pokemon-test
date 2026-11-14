@@ -3,6 +3,9 @@
   "sea": { "level": 0, "polygon": [[-130, -420], [-80, -420], [-80, 44], [130, 44], [130, 100], [-130, 100]] },
   // The eastern sea off Levincia's sea wall (plan 34 · PD3), over the seabed terrain/south_and_east.json lays
   "lakes": [
-    { "name": "the sea off Levincia", "polygon": [[600, -864], [672, -864], [672, -600], [600, -600]], "level": 0 }
+    { "name": "the sea off Levincia", "polygon": [[600, -864], [672, -864], [672, -600], [600, -600]], "level": 0 },
+    // False Dragon's lake (plan 34 · PD4's second session), a stand-in for Casseroya Lake in its hollow east off the East
+    // Province's first area, over the bed terrain/titans.json lays
+    { "name": "False Dragon's lake", "polygon": [[508, -462], [588, -462], [588, -410], [508, -410]], "level": 11.2 }
   ]
 }

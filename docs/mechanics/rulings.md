@@ -13023,3 +13023,43 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
   has a cliff to open that nothing else reaches (the second session's done-when). Its song is the South Province's.
 - **Objectives** 810 `paldeaArven` and 811 `paldeaKlawf` (English and Romanian), each done by the path's count; they
   come after the three gyms' in the list, so the line names a gym still to win before the path.
+
+## The Path of Legends, its last four Titans (2026-11-14, plan 34 · PD4, its second session)
+
+- **Stand-in places.** The originals' four other Titans live in provinces not built yet (the West Province, the East
+  Province's third area, Asado Desert, Casseroya Lake: PD6's). The user did not answer which way to go, so the
+  recommendation was taken: each is a small place of ours laid beside the land that is built, shut in by hills but for
+  its mouth, until PD6 builds the province and moves the Titan there (the plan's "PD4, second session" lists what PD6
+  replaces). **Open Sky** (`open_sky`, Bombirdier) is a gully north off the South Province's second area, its den a
+  ledge at its head; **Lurking Steel** (`lurking_steel`, Orthworm) a sandy cutting east off the East Province's first
+  area, its den a ledge at its end; **Quaking Earth** (`quaking_earth`, the version's Titan) a dusty basin north of
+  Cortondo, its den a rise at its north end; **False Dragon** (`false_dragon`, Tatsugiri and Dondozo) a hollow east off
+  the East Province's first area with a lake at 11.2 m in it, its den the far shore, walked round to by either shore.
+  Every den is reached on foot: nothing of the path asks a power the path has not given, and the playthrough bot,
+  which rides no link yet, walks all five.
+- **The order is the story's**: each Titan waits only once the one before it is beaten (`VAR_PALDEA_LEGENDS` 3 to 11;
+  each place's script header has its steps), so the powers come in plan 30 · decision 16's order (dash, swim, high
+  jump, glide, climb) by construction. The originals let the Titans be taken in any order and give the powers in the
+  same fixed order whichever is beaten; ours fixes the Titans' order instead, which the stand-ins (no province to
+  wander in yet) make no worse. PD6 may open the order once the provinces exist.
+- **The version's Titan** is told by the mount (`VAR_PALDEA_MOUNT` 1 Koraidon, Scarlet: Great Tusk; 2 Miraidon,
+  Violet: Iron Treads), as `stony_cliff.txt` tells the mount's name: Orthworm's herbs scene sets
+  `FLAG_PALDEA_QUAKING_TUSK` or `_TREADS`, which shows one of two people standing on the same spot, and the flight sets
+  `FLAG_PALDEA_GREAT_TUSK_FLED` or `FLAG_PALDEA_IRON_TREADS_FLED` for the den's.
+- **The False Dragon is two battles**: a Titan is fought alone (`titan` calls nobody), so the Tatsugiri is the first
+  battle on the near shore (`titan spattack`, level 57) and the Dondozo with the Tatsugiri in its mouth the second on
+  the far shore (`titan all`, 56); the Commander's part is told, not fought.
+- **Levels** are ours, near the originals' as remembered and not checked against a source: Bombirdier 20, Orthworm 29,
+  Great Tusk and Iron Treads 45, Tatsugiri 57, Dondozo 56; each first battle's aura raises one stat (Bombirdier speed,
+  Orthworm defense, Great Tusk attack, Iron Treads defense, Tatsugiri special attack), each den's all five.
+- **A Titan's flight is short**: it walks to the foot of its den's ramp and is gone from there (its `…_FLED` flag),
+  the first session's Klawf too, which had walked the whole way up to its den. The playthrough bot's first real-engine
+  pass of the first Titan found Klawf's walk of 54 m holding the player still for over ten seconds after the battle
+  (its softlock check); the False Dragon's Arven comes from the shore's north-east corner for the same reason.
+- **Arven at the lighthouse** after the fifth: he tells why he wanted the herbs, his Mabosstiff runs out well again
+  (`mabosstiff_lighthouse`, shown by `FLAG_PALDEA_LEGENDS_DONE`) and he battles (`battle arven_lighthouse as
+  "paldea_arven"`, `Data/world/paldea/trainers.json`, six Pokémon at 58 to 61, his Mabosstiff Terastallizing into a
+  Dark type). The path's count ends at 12.
+- **The Titans' places play a song of their own**, `paldea/titans` (the Stony Cliff's too, which played the South
+  Province's).
+- **Objectives** 812 `paldeaBombirdier` to 816 `paldeaArvenBattle`, English and Romanian.

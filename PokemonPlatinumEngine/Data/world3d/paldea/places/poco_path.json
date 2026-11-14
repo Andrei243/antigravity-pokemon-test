@@ -79,6 +79,11 @@
       "name": "arven_lighthouse", "at": [60, 10.0, -80], "yaw": 270, "look": "arven", "displayName": "Arven",
       "script": "ArvenLighthouse", "hiddenBy": "FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE"
     },
+    // Arven's Mabosstiff beside him once the five Titans' herbs have made it well again (PD4's second session)
+    {
+      "name": "mabosstiff_lighthouse", "at": [58, 10.0, -78], "yaw": 270, "species": "Mabosstiff", "displayName": "Mabosstiff",
+      "script": "ArvenLighthouse", "shownBy": "FLAG_PALDEA_LEGENDS_DONE"
+    },
     {
       "name": "poco_hiker", "at": [0, 8.0, -90], "yaw": 90, "look": "hiker", "displayName": "Hiker",
       "lines": ["Follow this path north and you'll come to Los Platos. Mesagoza's a fair walk past that, up the long rise."]

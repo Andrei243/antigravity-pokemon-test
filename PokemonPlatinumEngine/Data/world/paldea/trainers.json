@@ -352,5 +352,57 @@
         "personality": 1259210854
       }
     ]
+  },
+  {
+    "id": "paldea_arven",
+    "name": "Arven",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Greedent",
+        "level": 58,
+        "ivScale": 24,
+        "personality": 1601184011
+      },
+      {
+        "species": "Cloyster",
+        "level": 58,
+        "ivScale": 24,
+        "personality": 2744001233
+      },
+      {
+        "species": "Scovillain",
+        "level": 59,
+        "ivScale": 24,
+        "personality": 880164327
+      },
+      {
+        "species": "Toedscruel",
+        "level": 59,
+        "ivScale": 24,
+        "personality": 3311007452
+      },
+      {
+        "species": "Garganacl",
+        "level": 60,
+        "ivScale": 24,
+        "personality": 1720043381
+      },
+      {
+        "species": "Mabosstiff",
+        "level": 61,
+        "ivScale": 24,
+        "personality": 2457709013,
+        "teraType": "Dark"
+      }
+    ]
   }
 ]
