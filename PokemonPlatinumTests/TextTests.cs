@@ -80,6 +80,7 @@ public class TextTests
         ["Core/Autoplay/OpenItinerary.cs"] = "a leg of the bot's way over an open map as play.md names it (plan 32 · OW10)",
         ["Core/Autoplay/Itineraries.cs"] ="the names of maps, places, scripts and people the bot's way goes by, no words (plan 16 · T13)",
         ["Core/Autoplay/Itineraries.Galar.cs"] = "the names of Galar's maps, triggers, people and flags the bot's way goes by, no words (plan 33 · GL6)",
+        ["Core/Autoplay/Itineraries.Paldea.cs"] = "the names of Paldea's maps, triggers and variables the bot's way goes by, no words (plan 34 · PD1)",
         ["Core/DevMode.cs"] = "where developer mode reads the data from, for the log (plan 16 · T6)",
         ["Core/Reload.cs"] = "the folders and kinds of file the live reload watches, for the developer (plan 16 · T6)",
         ["Core/GameEngine.Dev.cs"] = "what the developer's console, reload, trace and frame time say, for the developer alone (plan 16 · T6)",

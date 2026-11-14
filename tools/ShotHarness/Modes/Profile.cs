@@ -482,6 +482,8 @@ partial class Harness
             OpenPrototypeProfile();
             // The game's own open renderer (plan 32 · OW8) on the open test world, against the same 8 ms
             OpenLabProfile();
+            // Paldea's busiest place (plan 34 · PD1): Mesagoza's plaza on its open map, when SHOTS_ONLY names it
+            MesagozaProfile();
             // A grown region's crowd of thirty as live rigs and impostors (plan 30 · FM3), when SHOTS_ONLY names it
             FreeWalkCrowdProfile();
         }

@@ -215,6 +215,8 @@ if (mode == "kalos") h.KalosMode();
 if (mode == "kalosgrown") h.KalosGrownMode();
 // Plan 33 · GL5, its second session: Galar's places on the open world, a marker each (not part of all)
 if (mode == "galar") h.GalarMode();
+// Plan 34 · PD1, its second session: Paldea's first places and chapter on the open world (not part of all)
+if (mode == "paldea") h.PaldeaMode();
 // A shots pass (2026-11-12): the last waves' places with few shots or none (not part of all)
 if (mode == "leftovers") h.LeftoversMode();
 if (mode == "alola") h.AlolaMode();
