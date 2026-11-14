@@ -10663,6 +10663,10 @@
       "note": "first spoken at route_37.txt(19)",
       "provisional": true
     },
+    "surf_captain": {
+      "note": "first spoken at hauoli_city.txt(120)",
+      "provisional": true
+    },
     "surfer": {
       "note": "first spoken at PoniGauntlet_BattleTree.txt(122)",
       "provisional": true
@@ -11809,6 +11813,7 @@
     "Studio Hand": "studio_hand",
     "Stylist": "stylist",
     "Sunny": "sunny",
+    "Surf Captain": "surf_captain",
     "Surfer": "surfer",
     "Tabitha": "tabitha",
     "Tate": "tate",

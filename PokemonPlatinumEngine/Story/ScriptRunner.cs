@@ -473,6 +473,8 @@ public sealed partial class ScriptRunner
         Op.StageShow => i.Name is "dress" or "perform",
         // The film studio: a take is a battle the player plays; the rest only reads the records (plan 42 · PS4)
         Op.Studio => i.Name is "shoot" or "premiere",
+        // A ride: the course is the player's to ride; its runs and best only read the records (plan 42 · PS7)
+        Op.Ride => i.Name == "surf",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1754,6 +1756,11 @@ public sealed partial class ScriptRunner
             // The stage show (plan 42 · PS1, PS2)
             case Op.StageShow:
                 StageShowCommand(i);
+                break;
+
+            // The rides of the beaches (plan 42 · PS7)
+            case Op.Ride:
+                RideCommand(i);
                 break;
 
             // The film studio (plan 42 · PS4)

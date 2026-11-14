@@ -1,0 +1,26 @@
+{
+  // Trick surfing's courses (plan 42 · PS7; docs/data-files.md, "Trick surfing's courses"): written by hand, ours. Each
+  // course is ridden off a beach on a Mantine the hut lends: its id (the script's `ride surf "<id>"` and the words
+  // `rides.course.<id>`), the area of its hut, its seconds, its swell (the wave's height as a share of the first course's,
+  // which lengthens every jump), the surf club's three who ride it with the player (their names `rides.club.<name>`, how
+  // well each rides, 0 to 1) and what a first place pays in Battle Points by the score it reached (the highest band
+  // reached: every first place pays at least the first band's). No course pays more than a first round of seven at the Battle Tower (3).
+  "courses": [
+    {
+      "id": "hauoli",
+      "beach": "hauoli_city",
+      "seconds": 45,
+      "swell": 1.0,
+      "club": [
+        { "name": "kai", "knack": 0.55 },
+        { "name": "leilani", "knack": 0.68 },
+        { "name": "makoa", "knack": 0.8 }
+      ],
+      "pay": [
+        { "score": 0, "points": 1 },
+        { "score": 10000, "points": 2 },
+        { "score": 18000, "points": 3 }
+      ]
+    }
+  ]
+}

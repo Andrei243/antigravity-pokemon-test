@@ -24185,6 +24185,19 @@ way 0
   + FLAG_DAILY_ALOLA_SCAN_KLINK_MET
 way 1, from answer 1
   * wildbattle Klink 8 Lost
+=== hauoli_city.SurfHut
+from Surf Captain at 306,177 of Melemele
+way 0
+  Surf Captain> Alola! This is the surf club's hut. Our Mantine ride the waves off this beach, and they love showing off in the air.
+  Surf Captain> Carve down the wave for speed, jump off the crest, hold an arrow for a trick and press again just before you land.
+  Surf Captain> Want to borrow a Mantine and ride the course against the club?
+  Surf Captain> First place! The club's never seen moves like that. Here's what the hut pays a winner.
+  > Lucas received 1 Battle Point(s)!
+  ? Want to borrow a Mantine and ride the course against the club? = Yes
+  * open Ride
+way 1, from answer 1
+  Surf Captain> No worries. The waves aren't going anywhere. Come back whenever you feel like riding!
+  ? Want to borrow a Mantine and ride the course against the club? = No
 === heahea_city.AetherFerry
 from Sailor at 126,339 of Akala
 way -

@@ -58,8 +58,12 @@ public class AthlonBatch3Tests
         foreach (var e in BuiltElsewhere)
             Assert.True(AthlonData.KindOf(e) == null, $"{e} is an event of the game now: take it off BuiltElsewhere");
         // Every built event is in some course, and each of the five is offered once its events are all built
+        // (a ride of the beaches, plan 42 · PS7's trick surfing, is in none: the dome never offers it)
         foreach (var kind in Enum.GetValues<AthlonEventKind>())
-            Assert.Contains(file.Courses, c => c.Events.Contains(kind.ToString()));
+        {
+            if (AthlonEvent.IsRide(kind)) Assert.DoesNotContain(file.Courses, c => c.Events.Contains(kind.ToString()));
+            else Assert.Contains(file.Courses, c => c.Events.Contains(kind.ToString()));
+        }
         Assert.Equal(file.Courses.Count, AthlonData.Courses.Count + AthlonData.Waiting.Count);
     }
 

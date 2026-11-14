@@ -1520,6 +1520,16 @@ Plan 42 · PS1, PS2 (`Models/StageShow/`, `Data/show-props.json`, `Data/stage-sh
 
 The card-flip tables (plan 42 · PS3) are words of `gamecorner`: `gamecorner cards` seats the player at a table (the script waits; the coins come back to the case), `gamecorner prize goldenrod` asks from Goldenrod's list (HeartGold's TMs and held items), and `gamecorner pokemon` asks which of Goldenrod's three Pokémon (`RESULT` 1 to 3, 0 none; `{thing}` and `{price}`), whose price `gamecorner pay` takes (`RESULT` 0 with too few coins).
 
+### The rides
+
+Plan 42 · PS7 (`Models/Rides/TrickSurf.cs`, `Data/surf-courses.json`; `docs/mechanics/rulings.md`, "Trick surfing"). Words of `ride` (`Op.Ride`), told from the Ride Pager's `ride "Tauros"` and `ride off` (`Op.RidePokemon`) by the word after it; Hau'oli's surf hut (`hauoli_city.SurfHut`) says them. A course's id must be one of `surf-courses.json`'s.
+
+| Command | What it does |
+|---|---|
+| `ride surf "hauoli"` | The course ridden on its screen (`ScriptScreen.Ride`; the script waits): `RESULT` the player's place, 1 to 4, or 0 backed out of at the briefing; `{number}` the Battle Points it paid (a first place pays by its score's band, `SurfCourse.PayFor`; anything else nothing), which are the Frontier's already. |
+| `ride runs "hauoli"` | `RESULT` the times the course has been ridden. |
+| `ride best "hauoli"` | `RESULT` and `{number}` the course's best score. |
+
 ### The film studio
 
 Plan 42 · PS4 (`Models/Studio/StudioFilms.cs`, `Data/studio-films/`; `docs/mechanics/rulings.md`, "The film studio"). Director Wren speaks it at the studio building on Pokéstar Studios' lot behind Virbank's gate (`pokestar_studios_3.txt`'s `StudioDesk`), the usher at the lot's theater (`pokestar_studios_4.txt`'s `Premiere`), and his first desk in Jubilife TV's lobby (`JubilifeTV1F.txt`) still shoots the first two films for a game that hasn't come to Unova.

@@ -5548,6 +5548,44 @@
       "timeUp": "Time's up! The timed mission wasn't done. It can be begun again at the board."
     }
   },
+  "rides": {
+    "title": "TRICK SURFING",
+    "surfing": "TRICK SURFING ON A LENT MANTINE",
+    "start": "Ride",
+    "seconds": "{n} SECONDS",
+    "howTo": "Hold down to carve down the wave and gather speed, hold up to climb back to its crest, and press the button there to jump. In the air, hold an arrow for a trick. Press again just before the water to land it straight: a crooked landing falls, and tricks landed in a row make a combo.",
+    "best": "YOUR BEST: {score}",
+    "notRidden": "NOT RIDDEN YET",
+    "pays": "A WIN PAYS UP TO {most} BP",
+    "straight": "STRAIGHT!",
+    "crooked": "CROOKED!",
+    "pop": "{trick} +{points}",
+    "combo": "×{n} COMBO",
+    "go": "GO!",
+    "results": "RESULTS",
+    "score": "SCORE",
+    "bestCombo": "BEST COMBO",
+    "tricks": "TRICKS",
+    "yourScore": "Your score: {score}",
+    "newRecord": "NEW RECORD",
+    "battlePoints": "BATTLE POINTS",
+    "none": "NONE THIS TIME",
+    "held": "BP held: {points}",
+    "course": {
+      "hauoli": "Hau'oli Beach"
+    },
+    "club": {
+      "kai": "KAI",
+      "leilani": "LEILANI",
+      "makoa": "MAKOA"
+    },
+    "trick": {
+      "spin": "SPIN",
+      "roll": "ROLL",
+      "flip": "FLIP",
+      "dive": "DIVE"
+    }
+  },
   "athlon": {
     "title": "POKÉATHLON",
     "courses": "COURSES",

@@ -957,6 +957,9 @@ public class ScriptTests
           stageshow dress
           stageshow perform
           stageshow fan fan_4
+          ride runs "hauoli"
+          ride best "hauoli"
+          ride surf "hauoli"
           studio shoot "emptySeat"
           studio open "gildedHour"
           studio stars "emptySeat"

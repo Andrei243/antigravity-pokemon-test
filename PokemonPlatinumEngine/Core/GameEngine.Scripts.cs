@@ -1053,6 +1053,7 @@ public partial class GameEngine
         // The gift box and the trade board (plan 40 · GE7, GE8)
         public GiftBox? Gifts => game.flow.Gifts;
         public Models.StageShow.ShowRecords? StageShow => game.flow.StageShow;
+        public Models.Rides.RideRecords? Rides => game.flow.Rides;
         // The film studio (plan 42 · PS4)
         public Models.Studio.StudioRecords? Studio => game.flow.Studio;
         public void StudioShoot(Models.Studio.StudioFilm film) => game.StartStudioFilm(film);
@@ -1382,6 +1383,10 @@ public partial class GameEngine
                 case ScriptScreen.Delve:
                     // A run down a hollow (plan 44 · SD8): the script hears how it ended as the camp comes back
                     game.OpenDelve(counter ?? "");
+                    break;
+                case ScriptScreen.Ride:
+                    // A course of trick surfing (plan 42 · PS7): the script hears the place as the field comes back
+                    game.OpenRide(counter ?? "");
                     break;
                 case ScriptScreen.DelveBoard:
                     // The camp's board (plan 44 · SD9): the script waits until it is put down

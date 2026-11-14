@@ -112,3 +112,32 @@ script ScanKlink
   wildbattle "Klink" 8
   setflag FLAG_DAILY_ALOLA_SCAN_KLINK_MET
   end
+
+
+# The surf club's hut on the beach (plan 42 · PS7; rulings, "Trick surfing"): the captain lends a Mantine for the course
+# off the beach, ridden against three of the club on its own screen; a first place pays Battle Points by its score
+script SurfHut
+  speaker "Surf Captain"
+  ride runs "hauoli"
+  if result > 0 goto Again
+  say "Alola! This is the surf club's hut. Our Mantine ride the waves off this beach, and they love showing off in the air."
+  say "Carve down the wave for speed, jump off the crest, hold an arrow for a trick and press again just before you land."
+  goto Ask
+label Again
+  ride best "hauoli"
+  say "Back for more waves? Your best off this beach is {number} points."
+label Ask
+  ask "Want to borrow a Mantine and ride the course against the club?"
+  if no goto Later
+  ride surf "hauoli"
+  if result == 0 goto Later
+  if result == 1 goto Won
+  say "Nice riding! The club got the better of you this time, but there'll be waves again next time."
+  end
+label Won
+  say "First place! The club's never seen moves like that. Here's what the hut pays a winner."
+  text "{player} received {number} Battle Point(s)!"
+  end
+label Later
+  say "No worries. The waves aren't going anywhere. Come back whenever you feel like riding!"
+  end

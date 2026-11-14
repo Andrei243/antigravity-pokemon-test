@@ -12492,6 +12492,41 @@ Picross); no game of the series had either in its world, so every rule and numbe
 - **What is kept** (`CabinetRecords`, `SaveData.Cabinets`, null while empty: no version raised): the stages cleared,
   each stage's best score, the pictures solved by species. The gallery's page of pictures solved is owed.
 
+## Trick surfing (2026-11-14, plan 42 · PS7)
+
+An idea from Sun and Moon's Mantine Surf; the wave, the tricks, the club and every number are ours.
+
+- **A ride is an event of the Pokéathlon's shape** (`TrickSurf`, `AthlonEventKind.Surf`, `AthlonEvent.IsRide`): thirty
+  frames a second, four riders, each a team of one on the Mantine the hut lends (all four the same Mantine, so the
+  club's three differ only by how well they ride: Kai 0.55, Leilani 0.68, Makoa 0.8). No course of the dome names it,
+  the dome never offers it, and its two bonuses (at most two falls with a trick landed; a combo of four) are counted only
+  so that the bonus tests hold every kind alike: a ride pays no Athlete Points.
+- **The wave**: down held carves down the face (2% of it a frame) and gathers speed by Stamina (0.08 + 0.03 a point) to
+  a top by Speed (4 + 0.8 a point); up held climbs it (1.8% a frame, losing a little speed); nothing held drifts down
+  and loses speed, and the trough loses it faster. A press from 80% of the way up jumps; the air lasts 10 + 2 × speed +
+  2 × Jump frames, times the course's swell.
+- **Tricks**: an arrow in the air with no trick under way begins one, which then runs by itself: left a spin (12 frames,
+  300 points), right a roll (14, 350), down a dive (16, 450), up a flip (18, 500), each a frame shorter for every point of
+  Skill. A trick taken twice in one jump counts half the second time.
+- **The landing**: a press in the last 8 frames (a quarter of a second) before the water lands straight; under the
+  timing assist the window is 16 frames, and Automatic counts as Generous, since the ride is scored against the club
+  (`TimingAssists.Scored`). A jump with a trick lands crooked on no press, an earlier press or a trick not finished, and
+  falls: the jump's points are lost, the combo ends and the rider is down 46 − 4 × Skill frames. A jump with no trick
+  lands plain whatever is pressed and leaves the combo as it stood.
+- **The score**: a straight landing scores its tricks times the combo's multiplier, a quarter more for each straight
+  landing in a row, at most twice. The club press at the window's middle with a wobble wider the worse they ride, take one
+  to three tricks by their knack and now and then one that won't fit.
+- **The pay** (`SurfCourse.PayFor`, `RideRecords.Record`, both hosts): a first place pays Battle Points by its score's
+  band (Hau'oli: 1 from nought, 2 from 10,000, 3 from 18,000), anything else nothing; no course pays more than a first
+  round of seven at the Battle Tower (3), which `RideTests` holds. Paying only a win keeps a 45-second ride from paying
+  more for the time than the Tower.
+- **The hut**: Hau'oli's surf captain (a person of the overlay at 306, 177, on the beach's lower row east of the
+  fisherman, the look `swimmer_m`) lends the Mantine to anyone, from the first day: no Badge, trial or Pokémon is asked.
+  A hut of its own, the club's three standing on the sand with looks of their own, the other beaches' courses (plan
+  23 · Z6 to Z8's) and the ride's own song and sounds (plan 31) are owed; the game's own sounds stand in.
+- **What is kept** (`RideRecords`, `SaveData.Rides`, null while empty: no version raised): each course's best and runs
+  and the Battle Points the rides have paid.
+
 ## The stage show (2026-11-12, plan 42 · PS1, PS2)
 
 Black and White's musical as a mechanic, with everything in it ours (the user's answers 25a, 26a, 27a: Sunny Side Revue and
