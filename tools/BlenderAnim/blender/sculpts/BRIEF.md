@@ -46,3 +46,4 @@ Rules learnt since this brief was first written (they overrule anything above):
 - A flyer's level wings are edge-on from the game's cameras: raise each pair in a V of 25 to 35 degrees and sweep the pairs apart; legs hang tucked and short.
 - The art's pose is not the rest pose: arms flung wide or raised in the picture are carried forward and a little down in the model (a model wider than it is tall is drawn small in the game and can be cut by its cell).
 - Stripes round a limb or a body are crisp as loose rings (a `sheet` wound round the part, 0.004 off its surface, its seam behind); a band mask in paint is `inside(z - top) * inside(bottom - z)`.
+- Blades, claws, spikes and crests are solid pieces (a flat-faced hull at least 0.03 thick at its root), never thin plates in close pairs: at the game's size (a model some 150 pixels tall) thin plates alias into stripes. A crest laid back, not standing up, keeps the body large in the game.
