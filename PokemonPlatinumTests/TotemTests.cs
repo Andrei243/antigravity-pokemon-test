@@ -156,6 +156,40 @@ public class TotemTests
     }
 
     [Fact]
+    public void ATitanIsATotemsAuraFoughtAloneWithLinesOfItsOwn()
+    {
+        // Plan 34 · PD4: Paldea's Titans, a single battle in which nothing calls, under the aura
+        var party = new Party();
+        party.Add(Mon("Golem", 60, "Rock Throw"));
+        var core = new BattleCore(new CoreSetup
+        {
+            PlayerParty = party, WildPokemon = new List<Pokemon> { Mon("Klawf", 16, "Tackle") }, Format = BattleFormat.Single,
+            Random = Calm(), Rules = Ruleset.Modern, PlayerController = null, EnemyController = null,
+            PlayerName = "Lucas", CannotFlee = true, Conditions = new BattleConditions { TotemAura = new TotemAura(new[] { StatType.Defense }, Titan: true) }
+        });
+        core.Start();
+        var titan = core.EnemySlots[0];
+        Assert.Equal(1, titan.Pokemon!.StatStages.GetValueOrDefault(StatType.Defense));
+        Assert.Contains(core.Log.OfType<Said>(), s => s.Text == Text.Of("battle.titanAura", ("pokemon", titan.Name)));
+        Assert.Equal(BattleCore.TitanRefusal, core.WhyNot(BattleChoice.UseItem(Mine, "Poké Ball")));
+        Assert.True(core.CannotFlee);
+        titan.Pokemon.CurrentHP = 1;
+        var said = Answer(core);
+        Assert.DoesNotContain(core.Log, e => e is AllyJoined);
+        Assert.Equal(BattleResult.PlayerVictory, core.Result);
+        Assert.Contains(said, s => s.StartsWith("Lucas defeated the Titan"));
+
+        // The script's word: `titan`, never with an ally, and written down as a Titan's battle
+        var parsed = ScriptParser.Parse("test", "script T\n  wildbattle \"Klawf\" 16 titan all\n  end\n").Single().Code.Single(x => x.Op == Op.WildBattle);
+        Assert.True(parsed.Totem!.Titan);
+        Assert.True(parsed.Option);
+        Assert.ThrowsAny<System.Exception>(() => ScriptParser.Parse("test", "script T\n  wildbattle \"Klawf\" 16 titan defense ally \"Klawf\"\n  end\n"));
+        Assert.ThrowsAny<System.Exception>(() => ScriptParser.Parse("test", "script T\n  wildbattle \"Klawf\" 16 titan defense totem attack\n  end\n"));
+        var file = new RecordedConditions { TotemAura = new TotemAura(new[] { StatType.Defense }, Titan: true) };
+        Assert.True(GameDataFiles.Deserialize<RecordedConditions>(GameDataFiles.Serialize(file)).TotemAura!.Titan);
+    }
+
+    [Fact]
     public void AZMoveIsRefusedWithoutItsCrystal()
     {
         var bare = Mon("Litten", 20, "Tackle");

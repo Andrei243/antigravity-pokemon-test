@@ -1440,6 +1440,8 @@
     "paldeaKaty": "La vest de Mesagoza, Katy te așteaptă la Arena din Cortondo cu rostogolirea măslinelor și Insigna Gândac.",
     "paldeaBrassius": "La est de Mesagoza, Brassius te așteaptă la Arena din Artazon cu Sunflora ascunse și Insigna Iarbă.",
     "paldeaIono": "La nord de Artazon, Iono transmite live din Arena din Levincia. Găsește-i Wattrel-ii și câștigă Insigna Electrică.",
+    "paldeaArven": "Un elev pe nume Arven așteaptă la farul de pe Poco Path și întreabă de Titani și de ierburi.",
+    "paldeaKlawf": "Titanul Klawf s-a ascuns la Stony Cliff, defileul de la nord de drumul spre Artazon. Învinge-l de două ori.",
     "paldeaFree": "Începe semestrul. Vânătoarea de comori e a ta: arenele, Titanii și multe altele te așteaptă dincolo de Mesagoza.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
@@ -4757,7 +4759,10 @@
     },
     "totemAura": "{pokemon} e învăluit în aura unui totem!",
     "totemCantBeCaught": "Aura totemului a abătut Ball-ul! Un totem nu poate fi prins!",
-    "defeatedTheTotem": "{player} a învins totemul {pokemon}! Aliații lui s-au împrăștiat!"
+    "defeatedTheTotem": "{player} a învins totemul {pokemon}! Aliații lui s-au împrăștiat!",
+    "titanAura": "Titanul {pokemon} se ridică, uriaș și furios!",
+    "titanCantBeCaught": "Titanul a respins Ball-ul! Un Titan nu poate fi prins!",
+    "defeatedTheTitan": "{player} a învins Titanul {pokemon}!"
   },
 
   "battleInfo": {

@@ -957,7 +957,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
         if (Outcome == BattleOutcome.Caught) Outcome = BattleOutcome.Won;
         string ally = aura.Ally is { } named ? $" ally {named}" : "";
-        Log.Add($"totembattle {wild.Species.Name} {wild.Level} {string.Join(",", aura.Stats)}+{aura.Stages}{ally} {Outcome}");
+        Log.Add($"{(aura.Titan ? "titanbattle" : "totembattle")} {wild.Species.Name} {wild.Level} {string.Join(",", aura.Stats)}+{aura.Stages}{ally} {Outcome}");
         if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 

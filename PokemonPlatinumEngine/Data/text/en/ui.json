@@ -981,6 +981,8 @@
     "paldeaKaty": "West out of Mesagoza, Katy waits at Cortondo Gym with her olive roll and the Bug Badge.",
     "paldeaBrassius": "East out of Mesagoza, Brassius waits at Artazon Gym with his hidden Sunflora and the Grass Badge.",
     "paldeaIono": "North of Artazon, Iono streams from Levincia Gym. Find her Wattrel and win the Electric Badge.",
+    "paldeaArven": "A student called Arven waits at the lighthouse on Poco Path, asking after Titans and herbs.",
+    "paldeaKlawf": "The Titan Klawf has dug in at the Stony Cliff, the gully north of the road to Artazon. Beat it twice.",
     "paldeaFree": "Term begins. The treasure hunt is yours: Paldea's gyms, its Titans and more wait beyond Mesagoza."
   },
 
@@ -4079,6 +4081,9 @@
     "totemAura": "{pokemon} is wrapped in a totem's aura!",
     "totemCantBeCaught": "The totem's aura turned the Ball aside! A totem can't be caught!",
     "defeatedTheTotem": "{player} defeated the totem {pokemon}! Its allies scattered!",
+    "titanAura": "The Titan {pokemon} rears up, huge and furious!",
+    "titanCantBeCaught": "The Titan knocked the Ball away! A Titan can't be caught!",
+    "defeatedTheTitan": "{player} defeated the Titan {pokemon}!",
     "shiftedToTheCentre": "{pokemon} moved to the center!",
     "movedToTheCentre": "The Pokémon moved to the center!",
     "isOutOfReach": "{pokemon} is out of reach!",

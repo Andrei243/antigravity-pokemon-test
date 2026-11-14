@@ -197,6 +197,10 @@
         "accent": "en-us"
       }
     },
+    "arven": {
+      "note": "first spoken at poco_path.txt(39)",
+      "provisional": true
+    },
     "assistant": {
       "note": "The character the player isn't, under the default name: chosen by the player's look when a talk starts.",
       "chooses": [
@@ -11286,6 +11290,7 @@
     "Ariana": "ariana",
     "Arthur": "arthur",
     "Artist": "artist",
+    "Arven": "arven",
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
     "Aukai": "aukai",

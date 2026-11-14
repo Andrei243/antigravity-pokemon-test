@@ -376,14 +376,15 @@ public static class ScriptParser
                 var staged = new Battle.BattleTerms();
                 while (r.More)
                 {
-                    string option = r.OneOf("nofleeing", "shiny", "holding", "totem", "ally", "canlose", "hidelevel", "untouchable", "passive", "endafter", "mayrun");
+                    // `titan defense [2]` (plan 34 · PD4): a Titan of the Path of Legends, a totem's aura fought alone
+                    string option = r.OneOf("nofleeing", "shiny", "holding", "totem", "titan", "ally", "canlose", "hidelevel", "untouchable", "passive", "endafter", "mayrun");
                     if (option == "shiny") shiny = true;
                     // A staged battle's terms, and a loss the story goes on from (docs/mechanics/rulings.md, "Staged battles")
                     else if (option is "hidelevel" or "untouchable" or "passive" or "endafter") staged = StagedTerm(r, option, staged);
                     else if (option == "canlose") mayLose = true;
                     else if (option == "mayrun") mayRun = true;
                     else if (option == "holding") held = r.Text("an item's name");
-                    else if (option == "totem")
+                    else if (option is "totem" or "titan")
                     {
                         var stats = new List<StatType>();
                         while (Battle.Sim.TotemAura.StatWords.FirstOrDefault(r.PeekWord) is { } statWord)
@@ -394,12 +395,14 @@ public static class ScriptParser
                         if (stats.Count == 0) throw r.Error("a totem's aura names the stats it raises (attack, defense, spattack, spdefense, speed, accuracy, evasion or all)");
                         int stages = r.PeekNumber ? r.Int("its stages") : 1;
                         if (stages is < 1 or > 6) throw r.Error("an aura raises a stat by one to six stages");
-                        totem = new Battle.Sim.TotemAura(stats, stages);
+                        if (totem != null) throw r.Error("a battle has one totem or Titan");
+                        totem = new Battle.Sim.TotemAura(stats, stages, Titan: option == "titan");
                         noFleeing = true;
                     }
                     else if (option == "ally")
                     {
                         if (totem == null) throw r.Error("only a totem names its ally: `totem <stats>` comes first");
+                        if (totem.Titan) throw r.Error("a Titan is fought alone and calls nobody");
                         totem = totem with { Ally = r.Text("a species' name") };
                     }
                     else noFleeing = true;

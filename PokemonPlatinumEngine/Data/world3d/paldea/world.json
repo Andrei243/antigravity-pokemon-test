@@ -28,10 +28,14 @@
     { "key": "south_province_area_three", "name": "South Province (Area Three)", "polygon": [[96, -360], [352, -360], [352, -296], [96, -296]], "music": "paldea/south_province" },
     { "key": "artazon", "name": "Artazon", "polygon": [[352, -384], [480, -384], [480, -264], [352, -264]], "music": "paldea/cabo_poco" },
     { "key": "east_province_area_one", "name": "East Province (Area One)", "polygon": [[400, -640], [480, -640], [480, -384], [400, -384]], "music": "paldea/south_province" },
-    { "key": "levincia", "name": "Levincia", "polygon": [[400, -800], [592, -800], [592, -640], [400, -640]], "music": "paldea/mesagoza" }
+    { "key": "levincia", "name": "Levincia", "polygon": [[400, -800], [592, -800], [592, -640], [400, -640]], "music": "paldea/mesagoza" },
+    // The Path of Legends (plan 34 · PD4): the Titans' places, the first the Stony Cliff, a gully north off the South
+    // Province's third area where the Titan Klawf keeps its den
+    { "key": "stony_cliff", "name": "Stony Cliff", "polygon": [[196, -460], [256, -460], [256, -360], [196, -360]], "music": "paldea/south_province" }
   ],
   "maps": [
     { "name": "Paldea", "areas": ["cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza",
-      "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia"] }
+      "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia",
+      "stony_cliff"] }
   ]
 }

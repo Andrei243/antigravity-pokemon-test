@@ -1,0 +1,118 @@
+{
+  "Klawf": [
+    {
+      "en": [
+        "Rocks clatter down the gully. A Klawf the size of a cart scrambles out of the stones, its claws wide!"
+      ],
+      "text": [
+        "Pietrele se rostogolesc prin defileu. Un Klawf cât o căruță iese dintre bolovani, cu cleștii larg deschiși!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Klawf reels back... then turns and scuttles off up the gully toward the ledge at its head!"
+      ],
+      "text": [
+        "Titanul Klawf se clatină... apoi se întoarce și fuge în sus pe defileu, spre pervazul din capătul lui!"
+      ]
+    }
+  ],
+  "KlawfDen": [
+    {
+      "en": [
+        "The Titan Klawf is crouched at the back of the ledge, gulping down a clump of herbs that glow like embers."
+      ],
+      "text": [
+        "Titanul Klawf stă ghemuit în fundul pervazului și înghite un smoc de ierburi care strălucesc ca jarul."
+      ]
+    },
+    {
+      "en": [
+        "Its shell swells and shines. It turns on {player}, bigger than ever!"
+      ],
+      "text": [
+        "Carapacea i se umflă și strălucește. Se repede la {player}, mai mare ca oricând!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Klawf is beaten. It shrinks back to an ordinary Klawf and slips away between the rocks."
+      ],
+      "text": [
+        "Titanul Klawf e învins. Se micșorează la loc într-un Klawf obișnuit și se strecoară printre stânci."
+      ]
+    },
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "You did it! I heard the whole fight from the bottom of the ramp. And look: it didn't eat all of them."
+      ],
+      "text": [
+        "Ai reușit! Am auzit toată lupta de la poalele pantei. Și uite: nu le-a mâncat pe toate."
+      ]
+    },
+    {
+      "en": [
+        "Herba Mystica. Five flavours, one in each Titan's den. Nothing in Paldea makes food stronger."
+      ],
+      "text": [
+        "Herba Mystica. Cinci gusturi, câte unul în vizuina fiecărui Titan. Nimic din Paldea nu face mâncarea mai puternică."
+      ]
+    },
+    {
+      "en": [
+        "Your ride's been limping since you met it, right? Hold on. Bread, a smear of this, a few herbs on top..."
+      ],
+      "text": [
+        "Pokémonul pe care călărești șchiopătează de când l-ai găsit, nu? Stai puțin. Pâine, puțin din asta, câteva ierburi deasupra..."
+      ]
+    },
+    {
+      "en": [
+        "Arven held out the sandwich. Koraidon wolfed it down in two bites and shook itself from head to tail."
+      ],
+      "text": [
+        "Arven i-a întins sandvișul. Koraidon l-a înfulecat din două mușcături și s-a scuturat din cap până în coadă."
+      ]
+    },
+    {
+      "en": [
+        "Arven held out the sandwich. Miraidon swallowed it whole and its lights blinked on, one after another."
+      ],
+      "text": [
+        "Arven i-a întins sandvișul. Miraidon l-a înghițit întreg și luminile i s-au aprins una după alta."
+      ]
+    },
+    {
+      "en": [
+        "Some of its old strength has come back. It can dash again! (Riding, hold the run button to sprint.)"
+      ],
+      "text": [
+        "I-a revenit o parte din puterea de altădată. Poate goni din nou! (Călare, ține apăsat butonul de alergat ca să gonești.)"
+      ]
+    },
+    {
+      "en": [
+        "That's the first. There are four more Titans out there, and four more piles of herbs."
+      ],
+      "text": [
+        "Ăsta a fost primul. Mai sunt patru Titani pe undeva, și încă patru grămezi de ierburi."
+      ]
+    },
+    {
+      "en": [
+        "I'll find out where the next one's hiding. You keep riding. That thing's going to want to stretch its legs."
+      ],
+      "text": [
+        "Aflu eu unde se ascunde următorul. Tu călărește mai departe. Prietenul tău o să vrea să-și dezmorțească picioarele."
+      ]
+    }
+  ]
+}

@@ -1323,8 +1323,9 @@ public partial class GameEngine
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
             wild.Relevel(game.LevelHere(wild.Level));
-            // A trial's totem (plan 23 · Z6): no running, an SOS battle under its aura, and nothing to catch
-            game.MeetWildPokemon(wild, BattleKind.Normal, cannotFlee: true, sos: true, totem: aura);
+            // A trial's totem (plan 23 · Z6): no running, an SOS battle under its aura, and nothing to catch; a Titan
+            // (plan 34 · PD4) is the same aura fought alone
+            game.MeetWildPokemon(wild, BattleKind.Normal, cannotFlee: true, sos: !aura.Titan, totem: aura);
         }
 
         /// <summary>A Max Raid den's battle (plan 33 · GL3): the boss at the region's levels, the three raiders beside the player, nothing to catch in the battle.</summary>

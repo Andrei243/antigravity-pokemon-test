@@ -148,7 +148,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza (2026-11-13, its first session: the file, the open map of five areas described and baked, six rooms, the chapter from the bedroom to the academy's door headless, the plane from Galar landing; "PD1 as built", below; its second session 2026-11-14: the harness's `paldea` mode with every owed shot, the bot's run from the bedroom to the academy's door in `PlaythroughTests`, `profile`'s Mesagoza plaza; "PD1's second session", below. **Waits for the user**: the look of Cabo Poco and Mesagoza, judged from the `paldea` mode's shots, as the done-when has it (the second session's findings, below, are the things to judge first); the bake's footprint for the whole region (the question below); `Architecture.Paldea` seen in the game. **Owed**: the academy's halls past the entrance hall, the voices of the new cast designed by ear, and whatever the user's judgment of the findings asks)
 - [x] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12, its rig 2026-11-12 as FM13, and its last part 2026-11-13: the navigation mesh's hop, high jump, climb and glide links for a region whose `world.json` says `mount`, the lab's yard with a painted climbable face, the done-when ridden in `MountLabTests`, Paldea's mesh baked again with them; "PD2 as built", below. **Owed**: the playthrough bot riding the links; the user's word on the yard's shots `fwy0` to `fwy6`)
 - [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below. **Owed**: the bot's run to three badges, the tests as searches of the towns, the towns' and gyms' songs, the new cast's voices, the user's word on the provinces' distances)
-- [ ] PD4 The Path of Legends
+- [ ] PD4 The Path of Legends (its first session 2026-11-14: Arven at the lighthouse, the Stony Cliff and the Titan Klawf beaten twice, the Herba Mystica scene and the mount's dash, Paldea's first climbable crag; "PD4, first session", below. **Owed** (the second session): Bombirdier, Orthworm, Great Tusk or Iron Treads, and Dondozo with Tatsugiri, their places and their powers (swim, high jump, glide, climb), and with the climb the done-when's cliff; the five beaten in the harness)
 - [ ] PD5 Starfall Street and Let's Go
 - [ ] PD6 The West and North Provinces and the last five gyms
 - [ ] PD7 Tera Raids and picnics
@@ -280,3 +280,38 @@ One session, which left the map-storage question (above) alone and built nothing
 - **5, Inlet Grotto**: its room is a cave (`"setting": "Cave"`, `"battleArena": "Cave"`): rock stood up round its floor, the cave's camera and stage. The Galar Mine has the same file and look, left for Galar's sessions.
 
 **Left**: 6, the house's side is the same stucco in the afternoon's shade, with plainer windows than its front (unchanged: the open kit's sides are `BuildingArt.PaintSide`'s, shared with every grid town); 8, the paths' saw-tooth edges (the cover is a vertex's, decided on level 0's 0.5 m cells; a fix is the ground program's or the baker's, shared by every open region); 9, the field's Pokémon as specks (`OpenWild`'s distances, 12 to 56 m, are plan 32 · OW7's for every open map); 10, the pale Sprigatito: its green is `CatLeafLight` (176, 216, 146) in `PokemonModels.Paldea1.cs`, a sculpt file this session didn't touch; a deeper green there (about 120, 196, 104) is the one-line fix. The bake was made again; where a merge meets PD3's bake, baking again after it settles it.
+
+## PD4, first session (2026-11-14)
+
+One session of two, beside PD3's second session (the bot's run, the songs, the voices) in another worktree. The rulings'
+"The Path of Legends, its first Titan" has every decision.
+
+**What there is**
+- **Arven's lighthouse**: Arven (`arven` of `characters.json`, our own look) at the foot of Poco Path's lighthouse from
+  the academy's welcome on, whose director now sends the player to him; his scene begins the path
+  (`VAR_PALDEA_LEGENDS` 1, `FLAG_PALDEA_LEGENDS_BEGUN`; `poco_path.txt`'s `ArvenLighthouse`).
+- **The Stony Cliff** (`stony_cliff`, a new area of the open map: `terrain/titans.json`, `carve/titans.json`,
+  `places/stony_cliff.json`, `scripts/stony_cliff.txt`): a gully cut north into the hills from the South Province's
+  third area, a ramp at its head onto the den's ledge 6 m up, and a crag 6.5 m high with its south face painted
+  climbable.
+- **The first Titan**: Klawf at three times its height in the gully's mouth (a Pokémon may now stand in an open place:
+  `species` and `size` of a place's person), beaten (`wildbattle … titan`, a totem's aura fought alone, `TotemAura.Titan`),
+  fleeing up the ramp to its den, beaten again there under a stronger aura once it has eaten its Herba Mystica.
+- **The Herba Mystica scene**: Arven up the ramp, the sandwich, the mount's first power, the dash
+  (`FLAG_PALDEA_MOUNT_DASH`), `VAR_PALDEA_LEGENDS` 3.
+- **Objectives** 810 `paldeaArven` and 811 `paldeaKlawf`, English and Romanian; the Titan's three battle lines.
+- **Baked again**: Paldea's navigation mesh now has 12 climbs (all up the crag's face), 18 hops, 47 high jumps, 1480
+  glides. **A merge with PD3's second session that touches the bake is settled by baking again after it**
+  (`dotnet run --project tools/OpenWorldBake -- paldea`).
+- **Tests** (`PaldeaLegendsTests`): the place, its Titan and den; the path headless from Arven's word to the dash, the
+  Titan's two battles fought as Titans; the three scenes played and skipped alike; the mount ridden up the gully on
+  Paldea's own bake trotting before the Titan and sprinting after; and the crag climbed by the capsule and the
+  navigation mesh only with the climb, never with every other power.
+
+**Owed** (the second session): the four other Titans, each a place of its own in a province not yet built (Bombirdier
+in the West Province, Orthworm in the East Province's third area, Great Tusk or Iron Treads in Asado Desert, Dondozo and
+Tatsugiri at Casseroya Lake: PD6's provinces, so the second session lays a gully or a shore for each beside the land
+that is built, or waits for PD6), their scenes, their powers in order (swim, high jump, glide, climb), and with the
+climb the done-when's cliff (the Stony Cliff's crag is ready for it); Arven's battle at the lighthouse and his reveal
+of his Mabosstiff after the fifth; the Titans' song and the path's; the five beaten in the harness (no shot of the
+Stony Cliff was taken this session); the voices of Arven designed by ear (provisional in the cast).

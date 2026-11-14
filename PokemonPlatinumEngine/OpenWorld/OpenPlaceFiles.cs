@@ -115,6 +115,13 @@ public sealed class OpenPersonFile
     public double[][]? Bounds { get; set; }
     public string? HiddenBy { get; set; }
     public string? ShownBy { get; set; }
+
+    /// <summary>
+    /// A Pokémon standing in the place in place of a person (plan 34 · PD4: a Titan of the Path of Legends): the species
+    /// or form it is drawn as, at its own height times <see cref="Size"/>; null for a person in their look.
+    /// </summary>
+    public string? Species { get; set; }
+    public double Size { get; set; } = 1;
 }
 
 /// <summary>A trainer's cone: how far they see, in metres, and how wide the cone is in all, in degrees.</summary>
@@ -346,7 +353,9 @@ public static class OpenPlaceFiles
             Moves = p.Moves,
             Bounds = p.Bounds is { } bounds ? bounds.Select(Ground).ToList() : OpenPerson.Circle(home, OpenPos.Millimetres(p.Radius ?? OpenPerson.WanderRadius / 1000.0)),
             HiddenBy = p.HiddenBy,
-            ShownBy = p.ShownBy
+            ShownBy = p.ShownBy,
+            Species = p.Species,
+            Size = p.Size
         };
     }
 

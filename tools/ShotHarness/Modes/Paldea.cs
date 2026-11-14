@@ -67,6 +67,7 @@ partial class Harness
         }
 
         PaldeaProvinces(paldea);
+        PaldeaLegends(paldea);
 
         PaldeaChapter();
     }

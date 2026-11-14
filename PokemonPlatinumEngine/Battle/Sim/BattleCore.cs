@@ -1458,7 +1458,7 @@ public sealed partial class BattleCore : IBattleContext
         else
         {
             Say(IsHorde ? Text.Of("battle.defeatedTheHorde", ("player", playerName))
-                : TotemFell ? Text.Of("battle.defeatedTheTotem", ("player", playerName), ("pokemon", totem!.DisplayName))
+                : TotemFell ? Text.Of(Totem!.Titan ? "battle.defeatedTheTitan" : "battle.defeatedTheTotem",("player", playerName), ("pokemon", totem!.DisplayName))
                 : Text.Of("battle.defeatedTheWild", ("player", playerName), ("pokemon", JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName)))));
         }
         // What Pay Day scattered, up to the original's most

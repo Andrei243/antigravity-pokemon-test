@@ -31,3 +31,32 @@ script NemonasLesson
   objective paldeaMesagoza
   endscene
   end
+
+
+# Arven at the lighthouse once term has begun (plan 34 · PD4): the Path of Legends begins. VAR_PALDEA_LEGENDS is
+# stony_cliff.txt's count
+script ArvenLighthouse
+  speaker "Arven"
+  if var VAR_PALDEA_STORY < 7 goto Busy
+  if var VAR_PALDEA_LEGENDS >= 1 goto Begun
+  scene "Arven at the lighthouse"
+  faceto arven_lighthouse player
+  say "You're the transfer student with the strange ride, aren't you? The director said you might come out here."
+  say "I'm Arven. I'm looking for Herba Mystica: herbs so strong that one leaf makes any dish a cure."
+  say "The trouble is, they only grow where the Titans live. Huge Pokémon, bigger than anything you've seen, and furious."
+  say "One of them has dug in at the Stony Cliff: the gully north of the road from Mesagoza to Artazon. A Klawf."
+  say "I can cook, but I can't beat a Titan alone. Help me, and whatever herbs we find, your ride gets its share."
+  setflag FLAG_PALDEA_LEGENDS_BEGUN
+  setvar VAR_PALDEA_LEGENDS 1
+  endscene
+  end
+label Busy
+  say "Hm? I'm busy. Go on, the academy's waiting for you."
+  end
+label Begun
+  if var VAR_PALDEA_LEGENDS >= 3 goto Next
+  say "The Stony Cliff's the gully north of the road east out of Mesagoza, before Artazon. Be careful of the rocks."
+  end
+label Next
+  say "That Klawf's herbs worked. I'm still asking around for where the next Titan's dug in. I'll find it."
+  end

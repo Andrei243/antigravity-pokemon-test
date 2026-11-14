@@ -778,7 +778,10 @@
     // blue jacket over a pink dress
     "katy": { "skin": "#e8c0a0", "hairColor": "#c8783a", "hair": "Short", "top": "#7a4a2e", "accent": "#f2d24a", "bottom": "#7a4a2e", "shoes": "#4a2e22", "eyes": "#5a3a2a", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.98 },
     "brassius": { "skin": "#d8a882", "hairColor": "#4aa04a", "hair": "Swept", "top": "#f2f0ea", "accent": "#3a8a3a", "bottom": "#2e3a2e", "shoes": "#2a2a24", "eyes": "#3a5a3a", "coat": true, "build": "Adult", "height": 1.14 },
-    "iono": { "skin": "#f0d0b8", "hairColor": "#e070b0", "hair": "Bunches", "top": "#3a6ad8", "accent": "#f2a2c8", "bottom": "#e070b0", "shoes": "#2a2a3a", "eyes": "#6a4aa0", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.96 }
+    "iono": { "skin": "#f0d0b8", "hairColor": "#e070b0", "hair": "Bunches", "top": "#3a6ad8", "accent": "#f2a2c8", "bottom": "#e070b0", "shoes": "#2a2a3a", "eyes": "#6a4aa0", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.96 },
+    // The Path of Legends (plan 34 · PD4), our own look: Arven, the academy student who cooks, dark tousled hair with a
+    // green streak, the academy's white shirt under an olive field jacket, dark trousers, sturdy boots
+    "arven": { "skin": "#e0b48e", "hairColor": "#2e2a26", "hair": "Swept", "top": "#f2f0ea", "accent": "#8a9a3a", "bottom": "#3a3a34", "shoes": "#4a3a2a", "eyes": "#5a6a3a", "vest": "#6a7a3a", "build": "Adult", "height": 1.08 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

@@ -37,6 +37,13 @@ public partial class GameEngine
         foreach (var p in map.PeopleNear(field.Player.Pos, (int)(OpenFigures.DrawReach * OpenPos.PerMetre), openFigurePeople))
         {
             if (!p.Present) continue;
+            // A Pokémon of the place (plan 34 · PD4: a Titan) at its species' height times its size
+            if (p.Species is { } species)
+            {
+                openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "person:" + p.Key, species, Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw),
+                    Height: HeightOf(species) * (float)p.Size));
+                continue;
+            }
             bool exclaiming = openApproach is { } a && a.Trainer == p && a.Exclaiming || openPairApproach is { } b && b.Trainer == p && b.Exclaiming;
             openFigures.Add(new OpenFigure(OpenFigureKind.Person, "person:" + p.Key, OpenLookOf(map, p), Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming));
         }
@@ -126,7 +133,11 @@ public partial class GameEngine
     {
         if (IsHeadless) return;
         var looks = new List<string>();
-        foreach (var p in field.Map.People) looks.Add(OpenLookOf(field.Map, p));
+        foreach (var p in field.Map.People)
+        {
+            if (p.Species is { } species) PokemonModels.Request(species);
+            else looks.Add(OpenLookOf(field.Map, p));
+        }
         CharacterModels.Preload(looks);
         if (field.Follower is { TrainerId: null } f) PokemonModels.Request(f.Who);
         // The species the map's zones bring out (plan 32 · OW7), so a wild Pokémon coming into view has its model

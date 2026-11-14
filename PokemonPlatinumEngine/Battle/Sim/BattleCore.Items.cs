@@ -398,7 +398,7 @@ public sealed partial class BattleCore
             // A trainer's Pokémon may be caught only if it is locked and the player carries the Reclaimer (plan 44 · SD1)
             if (IsTrainerBattle) return WhyNotReclaim();
             // A trial's totem and its allies can't be caught (plan 23 · Z6)
-            if (Totem != null) return TotemRefusal;
+            if (Totem != null) return Totem.Titan ? TitanRefusal : TotemRefusal;
             // Nor a staged battle's foe (BattleCore.Staged.cs)
             if (Staged) return StagedBallRefusal;
             // Galar's strong wild Pokémon can't be caught until the badges say so (plan 33 · GL2)

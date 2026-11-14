@@ -638,6 +638,15 @@
               "string",
               "null"
             ]
+          },
+          "species": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "size": {
+            "type": "number"
           }
         },
         "required": [
