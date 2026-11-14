@@ -29,6 +29,16 @@ public sealed class RideScreen
     public RideRecords Records { get; private set; } = new();
     public TrickSurf? Ride { get; private set; }
 
+    /// <summary>The track of a riding race (plan 42 · PS8), with its race once begun; both null for a course of trick surfing.</summary>
+    public RaceTrack? Track { get; private set; }
+    public RidingRace? Race { get; private set; }
+
+    /// <summary>The player's mount in a race: its species and the athlete it is made into.</summary>
+    public Athlete? Mount { get; private set; }
+
+    /// <summary>The event ridden, whichever it is.</summary>
+    public AthlonEvent? Event => (AthlonEvent?)Ride ?? Race;
+
     /// <summary>The player's place once the ride is over (1 to 4); 0 when the briefing was left.</summary>
     public int Outcome { get; private set; }
 
@@ -56,9 +66,20 @@ public sealed class RideScreen
     /// <summary>The Battle Points held once the ride has paid.</summary>
     public int PointsHeld => PointsBefore + Result.Paid;
 
-    public void Open(SurfCourse course, RideRecords records, TimingAssist timing, Random random, int pointsHeld = 0)
+    /// <summary>Opens a riding race on <paramref name="mount"/>, the player's own Pokémon of a riding size.</summary>
+    public void OpenRace(RaceTrack track, Athlete mount, RideRecords records, Random random, int pointsHeld = 0)
+    {
+        Open(null, records, TimingAssist.Off, random, pointsHeld);
+        Track = track;
+        Mount = mount;
+    }
+
+    public void Open(SurfCourse? course, RideRecords records, TimingAssist timing, Random random, int pointsHeld = 0)
     {
         PointsBefore = pointsHeld;
+        Track = null;
+        Race = null;
+        Mount = null;
         Course = course;
         Records = records;
         assist = timing;
@@ -84,7 +105,8 @@ public sealed class RideScreen
         switch (Phase)
         {
             case RidePhase.Briefing:
-                Ride = new TrickSurf(Course!, SurfCourses.Riders(Course!), (rng ?? Dice.New()).Next()) { Assist = assist };
+                if (Track != null) Race = new RidingRace(Track, RaceTracks.Teams(Track, Mount!), (rng ?? Dice.New()).Next());
+                else Ride = new TrickSurf(Course!, SurfCourses.Riders(Course!), (rng ?? Dice.New()).Next()) { Assist = assist };
                 Input = AthlonInput.None;
                 heard = default;
                 Enter(RidePhase.Riding);
@@ -119,12 +141,28 @@ public sealed class RideScreen
         if (!IsActive) return;
         float before = PhaseAge;
         PhaseAge += dt;
-        if (Phase != RidePhase.Riding || Ride is not { } ride) return;
+        if (Phase != RidePhase.Riding || Event is not { } ride) return;
         float running = PhaseAge - Math.Max(before, CountIn);
         if (running <= 0f) return;
         if (ride.Advance(running, Input) > 0) Input = Input with { Tap = false };
-        Hear(ride);
+        Hear();
         if (ride.IsDone) Finish();
+    }
+
+    /// <summary>Plays a race's frames one by one, as <see cref="Play"/> does a ride's (for tests and the harness).</summary>
+    public int PlayRace(int frames, Func<RidingRace, AthlonInput> input)
+    {
+        if (!IsActive || Phase != RidePhase.Riding || Race is not { } race) return 0;
+        if (PhaseAge < CountIn) PhaseAge = CountIn;
+        int played = 0;
+        for (; played < frames && !race.IsDone; played++)
+        {
+            race.Step(input(race));
+            PhaseAge += AthlonEvent.Frame;
+            Hear();
+        }
+        if (race.IsDone) Finish();
+        return played;
     }
 
     /// <summary>
@@ -140,7 +178,7 @@ public sealed class RideScreen
         {
             ride.Step(input(ride));
             PhaseAge += AthlonEvent.Frame;
-            Hear(ride);
+            Hear();
         }
         if (ride.IsDone) Finish();
         return played;
@@ -148,17 +186,35 @@ public sealed class RideScreen
 
     private void Finish()
     {
-        var ride = Ride!;
-        Outcome = ride.PlayerPlace;
-        Result = Records.Record(Course!, ride.Riders[0].Score, Outcome);
+        if (Race is { } race)
+        {
+            Outcome = race.PlayerPlace;
+            Result = Records.RecordRace(Track!, race.Points(0), Outcome);
+        }
+        else
+        {
+            var ride = Ride!;
+            Outcome = ride.PlayerPlace;
+            Result = Records.Record(Course!, ride.Riders[0].Score, Outcome);
+        }
         Enter(RidePhase.Results);
         AudioManager.PlaySound(Outcome == 1 ? "levelup" : "lift_ding");
     }
 
     // The player's own rider is heard as it rides: a straight landing, a fall and each jump off the crest (the game's own
     // sounds stand in; the rides' own wait for plan 31's fuller sound and the user's ear)
-    private void Hear(TrickSurf ride)
+    private void Hear()
     {
+        if (Race is { } race)
+        {
+            var racer = race.Racers[0];
+            if (racer.Cleared > heard.Tricks) AudioManager.PlaySound("coin_land");
+            if (racer.Stumbles > heard.Falls) AudioManager.PlaySound("bump");
+            if (racer.Air > 0 && racer.Air == racer.AirLength - 1) AudioManager.PlaySound("ledge");
+            heard = (racer.Cleared, racer.Stumbles, heard.Jumps);
+            return;
+        }
+        var ride = Ride!;
         var me = ride.Riders[0];
         if (me.Landed > heard.Tricks) AudioManager.PlaySound("coin_land");
         if (me.Falls > heard.Falls) AudioManager.PlaySound("bump");
@@ -173,7 +229,9 @@ public sealed class RideScreen
         {
             int dx = (InputManager.IsActionDown(GameAction.Right) ? 1 : 0) - (InputManager.IsActionDown(GameAction.Left) ? 1 : 0);
             int dy = (InputManager.IsActionDown(GameAction.Down) ? 1 : 0) - (InputManager.IsActionDown(GameAction.Up) ? 1 : 0);
-            Input = new AthlonInput(Tap: Input.Tap || InputManager.IsActionPressed(GameAction.Confirm), Held: InputManager.IsActionDown(GameAction.Confirm),
+            // A race: the button jumps and Run (B, Shift) held pushes; a ride's button is its jump and its landing's press
+            Input = new AthlonInput(Tap: Input.Tap || InputManager.IsActionPressed(GameAction.Confirm),
+                Held: Track != null ? InputManager.IsActionDown(GameAction.Run) : InputManager.IsActionDown(GameAction.Confirm),
                 Dx: dx, Dy: dy);
             Advance(dt);
             return;

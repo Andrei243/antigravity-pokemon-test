@@ -126,6 +126,13 @@ public interface IScriptHost
     Models.Rides.RideRecords? Rides => null;
 
     /// <summary>
+    /// The species of the Pokémon of the team that would carry the player in a riding race (plan 42 · PS8,
+    /// <c>ride race</c>): the first able one of a riding size; null where there is none or the host has no races. Its screen
+    /// is <see cref="ScriptScreen.Ride"/> with the counter <c>race:&lt;track&gt;</c>.
+    /// </summary>
+    string? RaceMount => null;
+
+    /// <summary>
     /// The film studio's records (plan 42 · PS4, <c>studio</c>): each film's takes and best, the studio's rank; null for a
     /// host that has none, where nothing can be shot.
     /// </summary>

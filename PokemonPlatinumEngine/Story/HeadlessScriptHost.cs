@@ -83,6 +83,8 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>The rides (plan 42 · PS7): the records, and the place (0 backed out of) and score a course's screen ends with.</summary>
     public Models.Rides.RideRecords? Rides { get; set; } = new();
     public int RidePlace { get; set; } = 1;
+    /// <summary>The species that would carry the player in a riding race (null for none), and what a race's screen ends with is <see cref="RidePlace"/> and <see cref="RideScore"/>.</summary>
+    public string? RaceMount { get; set; } = "Rhyhorn";
     public int RideScore { get; set; } = 6000;
     public GiftFacts GiftFacts { get; set; } = new();
 
@@ -1029,6 +1031,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             Answer = RidePlace;
             if (RidePlace > 0 && Rides != null && Models.Rides.SurfCourses.Get(counter ?? "") is { } surfCourse)
                 Frontier.GivePoints(Rides.Record(surfCourse, RideScore, RidePlace).Paid);
+            else if (RidePlace > 0 && Rides != null && (counter ?? "").StartsWith(Models.Rides.RaceTracks.Prefix, StringComparison.Ordinal)
+                && Models.Rides.RaceTracks.Get((counter ?? "").Substring(Models.Rides.RaceTracks.Prefix.Length)) is { } raceTrack)
+                Frontier.GivePoints(Rides.RecordRace(raceTrack, RideScore, RidePlace).Paid);
         }
         if (screen == ScriptScreen.StageShow)
         {

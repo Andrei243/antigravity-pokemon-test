@@ -5574,8 +5574,31 @@
     "battlePoints": "BATTLE POINTS",
     "none": "NONE THIS TIME",
     "held": "BP held: {points}",
+    "racing": "RIDING RACE ON YOUR OWN POKÉMON",
+    "raceHowTo": "Hold Run to push for speed, which spends its stamina, and press the button to jump the rocks. Mud slows a mount that lacks the strength, so push through it. In a turn, hold the arrow it points to, or lose speed. The first home wins.",
+    "racePays": "FIRST PLACE PAYS {most} BP",
+    "raceTime": "TIME",
+    "raceStumbles": "STUMBLES",
+    "raceTurns": "TURNS",
+    "raceHome": "{time} s",
+    "raceOut": "NOT HOME",
+    "raceStamina": "STAMINA",
+    "raceYourTime": "Your time: {time} s",
+    "raceYourPlace": "You came {place} of four.",
+    "stumble": "STUMBLE!",
+    "cleared": "CLEARED!",
+    "leaned": "LEANED!",
+    "swung": "WIDE!",
     "course": {
       "hauoli": "Hau'oli Beach"
+    },
+    "track": {
+      "blossom": "Blossom Road Track"
+    },
+    "rider": {
+      "adele": "ADÈLE",
+      "bastien": "BASTIEN",
+      "colette": "COLETTE"
     },
     "club": {
       "kai": "KAI",

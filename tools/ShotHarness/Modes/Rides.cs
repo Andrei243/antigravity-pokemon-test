@@ -18,6 +18,8 @@ partial class Harness
     /// </summary>
     public void RidesMode()
     {
+        // The riding race (plan 42 · PS8) is a game of its own in Kalos: RIDES_PART=race runs it alone
+        if (Environment.GetEnvironmentVariable("RIDES_PART") == "race") { RaceRidesPart(); return; }
         engine.NewGameRegion = "Alola";
         engine.StartNewGame();
         game.State = GameState.Overworld;
@@ -119,5 +121,105 @@ partial class Harness
         Until(() => game.State is GameState.Overworld or GameState.Dialogue, "the field again", 120);
         ReadOn(screen.Outcome == 1 ? "Battle Point" : "riding", "rd09_captain_after");
         Console.WriteLine($"  Battle Points held {game.Frontier.BattlePoints}; runs {game.Rides.RunsOf("hauoli")}, best {game.Rides.BestOf("hauoli")}");
+    }
+
+    /// <summary>
+    /// The riding race (plan 42 · PS8; <c>RIDES_PART=race</c>; <c>rd20</c> to <c>rd27</c>): a new game in Kalos with a Tauros
+    /// in the team, the stable beside Route 12's road (<c>rd20_stable</c>), the track's briefing (<c>rd21_briefing</c>), the
+    /// count and the start (<c>rd22_start</c>), a rock cleared in the air (<c>rd23_jump</c>), a stumble on the ground
+    /// (<c>rd24_stumble</c>), mud (<c>rd25_mud</c>) and a turn leant into (<c>rd26_turn</c>), the rest ridden by the
+    /// autopilot to the results (<c>rd27_results</c>) and the points (<c>rd28_points</c>). It prints each rider's time,
+    /// stumbles and turns, the place, what it paid and the points held.
+    /// </summary>
+    void RaceRidesPart()
+    {
+        engine.NewGameRegion = "Kalos";
+        engine.StartNewGame();
+        game.State = GameState.Overworld;
+        game.SaveSlot = 1;
+        game.LocationSign.Hide();
+        game.Party.Add(new Pokemon(PokemonPlatinumEngine.Data.PokemonDatabase.Get("Tauros")!, 30));
+        Frames(30);
+        var screen = game.RideScreen;
+        DialogueManager Box() => game.Dialogue;
+        void Until(System.Func<bool> holds, string what, int most = 900)
+        {
+            for (int i = 0; i < most && !holds(); i++) Frames(1);
+            if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+        }
+        void ReadOn()
+        {
+            for (int i = 0; i < 120 && (Box().IsActive || engine.Choice.IsOpen || game.State == GameState.Dialogue || engine.ScriptRunning); i++)
+            {
+                if (game.State is not (GameState.Overworld or GameState.Dialogue)) break;
+                if (engine.Choice.IsOpen) { Frames(14); engine.Choice.Confirm(); Frames(4); continue; }
+                if (!Box().IsActive) { Frames(6); continue; }
+                Box().FinishLine(); Frames(2);
+                if (Box().IsQuestion) { Frames(4); continue; }
+                Box().Advance(); Frames(2);
+            }
+        }
+
+        At("Kalos", 220, 482, Direction.Up);
+        Frames(30);
+        game.LocationSign.Hide();
+        Shot("rd20_stable");
+        game.Interact();
+        Frames(3);
+        ReadOn();
+        Until(() => game.State == GameState.Ride, "the race's screen", 300);
+        for (int i = 0; i < 600 && PokemonSprites.GetBaked("Tauros", SpriteView.Icon) == null; i++) Frames(1);
+        Frames(30);
+        Shot("rd21_briefing");
+
+        screen.Confirm();
+        Frames(4);
+        var race = screen.Race!;
+        var me = race.Racers[0];
+        screen.PlayRace(10, _ => new AthlonInput(Held: true));
+        Frames(1);
+        Shot("rd22_start");
+        void Until3(System.Func<bool> holds, AthlonInput input)
+        {
+            for (int f = 0; f < 3000 && holds() && !race.IsDone; f++) screen.PlayRace(1, _ => input);
+        }
+        // Up to a rock, pushing, and the jump a little before it: cleared in the air
+        float NextRock(float from) => race.Track.Obstacles.First(o => o.Kind == RaceObstacleKind.Rock && o.At > from).At;
+        float rock = NextRock(me.Distance);
+        Until3(() => me.Distance < rock - 60, new AthlonInput(Held: true));
+        screen.PlayRace(1, _ => new AthlonInput(Tap: true));
+        Until3(() => me.Distance < rock + 4, AthlonInput.None);
+        Frames(1);
+        Shot("rd23_jump");
+        // The next rock met on the ground: a stumble
+        float rock2 = NextRock(me.Distance);
+        Until3(() => me.Distance < rock2 + 6, AthlonInput.None);
+        Frames(1);
+        Shot("rd24_stumble");
+        // On to the mud: a push through it
+        var mud = race.Track.Obstacles.First(o => o.Kind == RaceObstacleKind.Mud && o.At + o.Length > me.Distance);
+        Until3(() => me.Distance < mud.At + mud.Length / 2f, new AthlonInput(Held: true));
+        Frames(1);
+        Shot("rd25_mud");
+        // And a turn, leant into
+        var turn = race.Track.Obstacles.First(o => o.Kind == RaceObstacleKind.Turn && o.At > me.Distance);
+        Until3(() => me.Distance < turn.At, new AthlonInput(Dx: turn.Dir));
+        Frames(1);
+        Shot("rd26_turn");
+        Console.WriteLine($"  by hand: stumbles {me.Stumbles}, cleared {me.Cleared}, turns leant {me.TurnsLeant}, missed {me.TurnsMissed}");
+
+        screen.PlayRace(int.MaxValue, r => r.Autopilot(0.97f));
+        Frames(30);
+        Shot("rd27_results");
+        foreach (int t in race.Ranking)
+            Console.WriteLine($"  {(t == 0 ? "player" : race.Teams[t].Name)}: {(race.TimeOf(t) is { } s ? s.ToString("0.0") + " s" : "not home")} (stumbles {race.Racers[t].Stumbles}, turns leant {race.Racers[t].TurnsLeant})");
+        Console.WriteLine($"  place {screen.Outcome}, paid {screen.Result.Paid}, new record {screen.Result.NewRecord}");
+        screen.Confirm();
+        Frames(30);
+        Shot("rd28_points");
+        screen.Confirm();
+        Until(() => game.State is GameState.Overworld or GameState.Dialogue, "the field again", 120);
+        ReadOn();
+        Console.WriteLine($"  Battle Points held {game.Frontier.BattlePoints}; runs {game.Rides.RunsOf("race:blossom")}, best {game.Rides.BestOf("race:blossom")}");
     }
 }

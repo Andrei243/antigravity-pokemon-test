@@ -1530,6 +1530,12 @@ Plan 42 · PS7 (`Models/Rides/TrickSurf.cs`, `Data/surf-courses.json`; `docs/mec
 | `ride runs "hauoli"` | `RESULT` the times the course has been ridden. |
 | `ride best "hauoli"` | `RESULT` and `{number}` the course's best score. |
 
+| `ride race "blossom"` | The riding race (plan 42 · PS8, `Data/race-tracks.json`) on its screen, the script waiting: `RESULT` -1 where no Pokémon of the team is of a riding size and able (`IScriptHost.RaceMount`; nothing opens), 0 backed out of at the briefing, otherwise the player's place, 1 to 4; `{number}` the Battle Points it paid (`RaceTrack.PayFor`, by place), which are the Frontier's already. The screen is told the track as `race:<id>`. |
+| `ride raceruns "blossom"` | `RESULT` the times the track has been raced. |
+| `ride racebest "blossom"` | `RESULT` and `{number}` the track's best score (10,000 less the finishing frame, or for one not home its way along in five thousandths). |
+
+The Blossom Road's stable (`kalos_route_12.RaceStable`) says them.
+
 ### The film studio
 
 Plan 42 · PS4 (`Models/Studio/StudioFilms.cs`, `Data/studio-films/`; `docs/mechanics/rulings.md`, "The film studio"). Director Wren speaks it at the studio building on Pokéstar Studios' lot behind Virbank's gate (`pokestar_studios_3.txt`'s `StudioDesk`), the usher at the lot's theater (`pokestar_studios_4.txt`'s `Premiere`), and his first desk in Jubilife TV's lobby (`JubilifeTV1F.txt`) still shoots the first two films for a game that hasn't come to Unova.

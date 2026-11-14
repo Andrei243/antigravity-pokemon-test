@@ -93,7 +93,7 @@ public sealed record AthlonTeam(string Name, bool IsPlayer, IReadOnlyList<Athlet
 
 /// <summary>The events of the Pokéathlon this game has (plan 15 · E6: one of each kind; E7 and E8 add at the end).</summary>
 // Surf (plan 42 · PS7) is trick surfing, a ride no course of the dome names (AthlonEvent.IsRide)
-public enum AthlonEventKind { HurdleDash, BlockSmash, RingDrop, PennantCapture, SnowThrow, DiscCatch, LampJump, RelayRun, CirclePush, GoalRoll, Surf }
+public enum AthlonEventKind { HurdleDash, BlockSmash, RingDrop, PennantCapture, SnowThrow, DiscCatch, LampJump, RelayRun, CirclePush, GoalRoll, Surf, Race }
 
 /// <summary>A course: three events in order, by its text key (<c>athlon.course.&lt;key&gt;</c>).</summary>
 public sealed record AthlonCourse(string Key, IReadOnlyList<AthlonEventKind> Events);
@@ -388,11 +388,12 @@ public abstract class AthlonEvent
         AthlonEventKind.CirclePush => new CirclePush(teams, seed),
         AthlonEventKind.GoalRoll => new GoalRoll(teams, seed),
         AthlonEventKind.Surf => new Rides.TrickSurf(teams, seed),
+        AthlonEventKind.Race => new Rides.RidingRace(teams, seed),
         _ => AthlonEventsBatch2.Create(kind, teams, seed) ?? throw new ArgumentOutOfRangeException(nameof(kind))
     };
 
     /// <summary>Whether a kind is a ride of the beaches (plan 42 · PS7), which no course of the dome names and which wins no bonus.</summary>
-    public static bool IsRide(AthlonEventKind kind) => kind == AthlonEventKind.Surf;
+    public static bool IsRide(AthlonEventKind kind) => kind is AthlonEventKind.Surf or AthlonEventKind.Race;
 
     /// <summary>One frame, the player's team doing what <paramref name="mine"/> says and the rivals what they think.</summary>
     public void Step(AthlonInput mine)

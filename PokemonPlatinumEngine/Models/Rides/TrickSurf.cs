@@ -412,12 +412,18 @@ public sealed class RideRecords
     /// A run ended: its place and score kept, and what it pays worked out (a first place pays by its score's band,
     /// anything else nothing). The caller hands the points to the Battle Frontier's records.
     /// </summary>
-    public RideResult Record(SurfCourse course, int score, int place)
+    public RideResult Record(SurfCourse course, int score, int place) =>
+        RecordRun(course.Id, score, place, place == 1 ? course.PayFor(score) : 0);
+
+    /// <summary>A riding race ended (plan 42 · PS8): kept under the track's key, and a place pays what the track gives it.</summary>
+    public RideResult RecordRace(RaceTrack track, int score, int place) =>
+        RecordRun(RaceTracks.KeyOf(track), score, place, track.PayFor(place));
+
+    private RideResult RecordRun(string key, int score, int place, int paid)
     {
-        runs[course.Id] = RunsOf(course.Id) + 1;
-        bool newRecord = score > BestOf(course.Id);
-        if (newRecord) best[course.Id] = score;
-        int paid = place == 1 ? course.PayFor(score) : 0;
+        runs[key] = RunsOf(key) + 1;
+        bool newRecord = score > BestOf(key);
+        if (newRecord) best[key] = score;
         PointsWon += paid;
         LastPaid = paid;
         return new RideResult(place, score, paid, newRecord);

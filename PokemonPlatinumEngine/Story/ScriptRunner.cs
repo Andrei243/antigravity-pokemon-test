@@ -474,7 +474,7 @@ public sealed partial class ScriptRunner
         // The film studio: a take is a battle the player plays; the rest only reads the records (plan 42 · PS4)
         Op.Studio => i.Name is "shoot" or "premiere",
         // A ride: the course is the player's to ride; its runs and best only read the records (plan 42 · PS7)
-        Op.Ride => i.Name == "surf",
+        Op.Ride => i.Name is "surf" or "race",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
