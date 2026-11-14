@@ -134,6 +134,11 @@ public static class OpenWorlds
                 found.Add(new Finding(Kind.Script, file, p.Key, $"runs the script '{p.Script}', which is in neither scripts/{p.Place}.txt nor scripts/{PokemonPlatinumEngine.Story.ScriptLibrary.Common}.txt"));
             if (p.TrainerId != null && (TrainerDatabase.Get(p.TrainerId, map.Region) ?? TrainerDatabase.Get(p.TrainerId)) == null)
                 found.Add(new Finding(Kind.Data, file, p.Key, $"battles as the trainer '{p.TrainerId}', whom the data hasn't"));
+            // A Pokémon of the place (plan 34 · PD4: a Titan) is a species or form of the data, and battles no trainer
+            if (p.Species != null && PokemonDatabase.Get(p.Species) == null && PokemonDatabase.SpeciesOfForm(p.Species) == null)
+                found.Add(new Finding(Kind.Data, file, p.Key, $"stands as a '{p.Species}', which is no species or form"));
+            if (p.Species != null && (p.TrainerId != null || p.Look != null))
+                found.Add(new Finding(Kind.Person, file, p.Key, "is a Pokémon of the place and a person's look or trainer at once"));
             if (p.Script == null && p.TrainerId == null && p.Lines.Count == 0)
                 found.Add(new Finding(Kind.Person, file, p.Key, "says nothing when spoken to: no script, no trainer and no lines"));
             flags?.Check(found, file, p.Key, p.HiddenBy, "is hidden by");

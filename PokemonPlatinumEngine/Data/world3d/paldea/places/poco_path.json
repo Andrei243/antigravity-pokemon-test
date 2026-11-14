@@ -74,6 +74,11 @@
       "lines": ["Over here! There's no better view of Paldea than from this lighthouse."],
       "hiddenBy": "FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE"
     },
+    // Arven at the lighthouse once term has begun (plan 34 · PD4): where the Path of Legends begins
+    {
+      "name": "arven_lighthouse", "at": [60, 10.0, -80], "yaw": 270, "look": "arven", "displayName": "Arven",
+      "script": "ArvenLighthouse", "hiddenBy": "FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE"
+    },
     {
       "name": "poco_hiker", "at": [0, 8.0, -90], "yaw": 90, "look": "hiker", "displayName": "Hiker",
       "lines": ["Follow this path north and you'll come to Los Platos. Mesagoza's a fair walk past that, up the long rise."]

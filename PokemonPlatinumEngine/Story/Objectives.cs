@@ -419,6 +419,10 @@ public static class Objectives
         (807, "paldeaKaty", RegionBadge(RegionDatabase.Paldea, "Bug"), false),
         (808, "paldeaBrassius", RegionBadge(RegionDatabase.Paldea, "Grass"), false),
         (809, "paldeaIono", RegionBadge(RegionDatabase.Paldea, "Electric"), false),
+        // The Path of Legends (plan 34 · PD4) by VAR_PALDEA_LEGENDS, stony_cliff.txt's count: Arven at the lighthouse,
+        // then the Titan Klawf at the Stony Cliff
+        (810, "paldeaArven", AtLeast("VAR_PALDEA_LEGENDS", 1), false),
+        (811, "paldeaKlawf", AtLeast("VAR_PALDEA_LEGENDS", 3), false),
         (899, "paldeaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

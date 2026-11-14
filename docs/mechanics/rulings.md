@@ -12986,3 +12986,40 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
   of a player in an open map is the chunk they stand in, and a town of an open map is reachable when its area is one of
   the map's. **The open field has no start menu yet, so Fly can't be asked for in Paldea**: the map and its landings
   wait for a way to open them (a question for the user: the original's flying taxi, or the start menu in the open field).
+
+## The Path of Legends, its first Titan (2026-11-14, plan 34 · PD4, its first session)
+
+- **The path's count** is `VAR_PALDEA_LEGENDS` (`stony_cliff.txt`'s header): 0 not begun, 1 Arven met at Poco Path's
+  lighthouse (`FLAG_PALDEA_LEGENDS_BEGUN`), 2 the Titan Klawf beaten in the Stony Cliff's mouth and fled to its den
+  (`FLAG_PALDEA_KLAWF_FLED`), 3 beaten at its den (`FLAG_PALDEA_KLAWF_BEATEN`) and its herbs shared, the mount's dash
+  granted (`FLAG_PALDEA_MOUNT_DASH`, plan 30 · decision 16's first power, `MountRules.Powers`). PD4's second session
+  goes on from 3 with the other four Titans.
+- **Arven's lighthouse** is Poco Path's (PD1's): he stands at its foot from the academy's welcome on
+  (`FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE`, set by `common.PaldeaNewGame` and cleared by the welcome, whose director now
+  sends the player to him; a save from before this session has the flag unset, so its Arven stands there at once and
+  says only that he is busy until term begins). The path is gated by nothing but its own flags: the gyms' badges and
+  the path's Titans may be had in any order. The originals' battle with Arven is not built.
+- **A Titan is a totem's aura fought alone** (`wildbattle "Klawf" 16 titan defense`; `TotemAura.Titan`): the aura's
+  stat stages as the battle opens, no running, no ball ("A Titan can't be caught!"), the battle won once it falls, and
+  lines of its own; unlike a trial's totem it is a single battle in which nothing calls for help (the engine meets it
+  with `sos: false`). It can be lost: the player wakes at the last Pokémon Center and the Titan waits where it was.
+- **The chase is a flight and a den**, each a person of the place: the Titan in the gully's mouth (`titan_klawf`,
+  shown from Arven's word), beaten, runs up the ramp (`walkto … fast`) and is the Titan at its den from then on
+  (`titan_klawf_den`), which the ledge's trigger and the Titan itself both start: it eats its Herba Mystica, grows, and
+  the second battle is fought under a stronger aura (`titan all`). The originals' chase over open ground with the
+  Titan's health carried from one battle to the next is ours made two whole battles at the original's level (16).
+- **A Pokémon may stand in a place** (`species` and `size` of an open place's person, `OpenPerson.Species`, `Size`):
+  drawn as a Pokémon of the field at its species' height times its size (the open figures' clamp of 3.5 m holds a
+  Titan to a house's storey), a Pokémon to the scripts (`NPC.PokemonType`, its species), its model asked for behind
+  the fade with the rest. Klawf stands at three times its own height.
+- **The Herba Mystica scene** is Arven come up the ramp once the Titan is beaten (shown by `FLAG_PALDEA_KLAWF_BEATEN`,
+  hidden by the power's own flag): he makes a sandwich of the herbs left over and the mount eats it (its name by
+  `VAR_PALDEA_MOUNT`). The power is a story flag, so a mount ridden before the scene trots (6 m/s) and after it
+  sprints (11 m/s) with nothing saved but the flag.
+- **The Stony Cliff** is an area of ours (`stony_cliff`, `terrain/titans.json`, `carve/titans.json`,
+  `places/stony_cliff.json`): a gully cut north into the hills from the middle of the South Province's third area, its
+  floor at the road's height, a ramp at its head onto a ledge 6 m up where the den is. **In the gully stands a crag**
+  6.5 m high whose south face is painted `ClimbableRock`: Paldea's first climb links (12), so the fifth Titan's power
+  has a cliff to open that nothing else reaches (the second session's done-when). Its song is the South Province's.
+- **Objectives** 810 `paldeaArven` and 811 `paldeaKlawf` (English and Romanian), each done by the path's count; they
+  come after the three gyms' in the list, so the line names a gym still to win before the path.

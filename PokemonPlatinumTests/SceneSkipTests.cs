@@ -1104,6 +1104,9 @@ public class SceneSkipTests
         // PaldeaTests.EveryOpenSceneOfTheChapterPlayedAndSkippedLeavesTheSame plays each both ways
         "cabo_poco.The three on the terrace", "poco_path.A roar on the beach", "poco_path.Nemona at the lighthouse",
         "mesagoza.Nemona at Mesagoza's gate",
+        // Plan 34 · PD4: the Path of Legends' scenes of the open map, played both ways by
+        // PaldeaLegendsTests.ThePathsScenesPlayedAndSkippedLeaveTheSame
+        "poco_path.Arven at the lighthouse", "stony_cliff.The Stony Cliff Titan", "stony_cliff.The Titan's Herba Mystica",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

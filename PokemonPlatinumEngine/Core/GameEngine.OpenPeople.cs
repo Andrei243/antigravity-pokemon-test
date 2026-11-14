@@ -46,6 +46,7 @@ public partial class GameEngine
         {
             Name = p.ShownName ?? p.Key,
             Key = p.Key,
+            // A Pokémon of the place (plan 34 · PD4: a Titan) is one to the scripts as the grid's are: its cry is its own
             NpcType = p.Species != null ? NPC.PokemonType : p.Look ?? "Trainer",
             Species = p.Species,
             Script = p.Script,

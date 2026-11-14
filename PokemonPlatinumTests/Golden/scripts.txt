@@ -17663,6 +17663,7 @@ way -
 === common.PaldeaNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE
   + FLAG_PALDEA_HIDE_CLAVELL_TERRACE
   + FLAG_PALDEA_HIDE_GROTTO_LEGENDS
   + FLAG_PALDEA_HIDE_NEMONA_GATE

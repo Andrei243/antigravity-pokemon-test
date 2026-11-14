@@ -66,5 +66,79 @@
         "Ne vedem la poarta de sud a orașului. Ultimul care ajunge se luptă cu celălalt! Mă rog, ne luptăm oricum."
       ]
     }
+  ],
+  "ArvenLighthouse": [
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "You're the transfer student with the strange ride, aren't you? The director said you might come out here."
+      ],
+      "text": [
+        "Tu ești elevul transferat cu Pokémonul ciudat pe care călărește, nu? Directorul a zis că s-ar putea să vii pe aici."
+      ]
+    },
+    {
+      "en": [
+        "I'm Arven. I'm looking for Herba Mystica: herbs so strong that one leaf makes any dish a cure."
+      ],
+      "text": [
+        "Eu sunt Arven. Caut Herba Mystica: ierburi atât de puternice încât o singură frunză face din orice mâncare un leac."
+      ]
+    },
+    {
+      "en": [
+        "The trouble is, they only grow where the Titans live. Huge Pokémon, bigger than anything you've seen, and furious."
+      ],
+      "text": [
+        "Necazul e că cresc doar unde trăiesc Titanii. Pokémoni uriași, mai mari decât tot ce ai văzut, și furioși."
+      ]
+    },
+    {
+      "en": [
+        "One of them has dug in at the Stony Cliff: the gully north of the road from Mesagoza to Artazon. A Klawf."
+      ],
+      "text": [
+        "Unul dintre ei s-a ascuns la Stony Cliff: defileul de la nord de drumul dintre Mesagoza și Artazon. Un Klawf."
+      ]
+    },
+    {
+      "en": [
+        "I can cook, but I can't beat a Titan alone. Help me, and whatever herbs we find, your ride gets its share."
+      ],
+      "text": [
+        "Știu să gătesc, dar nu pot învinge singur un Titan. Ajută-mă, și din ce ierburi găsim, Pokémonul tău își primește partea."
+      ]
+    },
+    {
+      "en": [
+        "Hm? I'm busy. Go on, the academy's waiting for you."
+      ],
+      "text": [
+        "Hm? Sunt ocupat. Du-te, te așteaptă academia."
+      ]
+    },
+    {
+      "en": [
+        "The Stony Cliff's the gully north of the road east out of Mesagoza, before Artazon. Be careful of the rocks."
+      ],
+      "text": [
+        "Stony Cliff e defileul de la nord de drumul spre est din Mesagoza, înainte de Artazon. Ai grijă la pietre."
+      ]
+    },
+    {
+      "en": [
+        "That Klawf's herbs worked. I'm still asking around for where the next Titan's dug in. I'll find it."
+      ],
+      "text": [
+        "Ierburile lui Klawf au mers. Încă întreb în stânga și-n dreapta unde s-a ascuns următorul Titan. O să-l găsesc."
+      ]
+    }
   ]
 }

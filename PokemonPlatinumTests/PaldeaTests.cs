@@ -30,7 +30,7 @@ public class PaldeaTests
     });
 
     private static readonly string[] Areas = { "cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza",
-        "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia" };
+        "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia", "stony_cliff" };
 
     [Fact]
     public void PaldeaIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -249,7 +249,8 @@ public class PaldeaTests
                 Play(town + "_GymTest", "Leader");
                 Assert.Equal(won, story.BadgeCount(RegionDatabase.Paldea));
             }
-            Assert.Equal("paldeaFree", Objectives.Current(story, RegionDatabase.Paldea)?.Name);
+            // With the three badges won, the line goes on to the Path of Legends (plan 34 · PD4)
+            Assert.Equal("paldeaArven", Objectives.Current(story, RegionDatabase.Paldea)?.Name);
         }
         // The leaders' levels are the original's, fixed, and each Terastallizes its last into the gym's type, which a
         // team relevelled for a crossed-in game keeps
