@@ -414,6 +414,12 @@ recommendations stand (PD3's compressed distances; the later gyms scaled to the 
   academy's order at the originals' levels; taken first, scaled down to the badges held; nothing before the welcome),
   and `PaldeaTests`' lists grown by the new areas, zones, rooms and spawns.
 - **Baked again**: 625 chunks (from 454), 80.4 MB (from 62.0 MB); about five and a half minutes to bake.
+- **Shots** (the `paldea` mode, `Modes/PaldeaWest.cs`, `SHOTS_FILTER=pdw`): `pdw00` to `pdw13` the places from their
+  markers and the gyms and the eatery faced from their squares, `pdw20` to `pdw27` the eight rooms, `pdw30` Kofu and `pdw31`
+  Larry at the far end of their halls. Looked at: Porto Marinada reads as a port, its quay paved over the sea with the
+  auction house and the Pokémon Center on it. Findings, unchanged: **Cascarrafa's falls don't show** (`pdw05`): the pool
+  at the city's foot is a round pond in sand, and the river's slot in the hills is not seen from the city, so the hill
+  behind reads as a plain wall of layered rock; the towns and ways are lawn as PD3's are, Cascarrafa's houses far apart.
 
 **Left for session two**
 - The North Province and Glaseado: Montenevera (Ryme, Ghost, her rap battle), Alfornada (Tulip, Psychic, her photos;
@@ -426,5 +432,5 @@ recommendations stand (PD3's compressed distances; the later gyms scaled to the 
   itinerary in `Itineraries.Paldea.cs` and `PlaythroughTests`, and the harness's `paldea` mode timing the ride as the
   `world` mode times Sinnoh's walks).
 - Owed from this session: the bot's run to the fifth badge in `PlaythroughTests` (only headless tests play Kofu's and
-  Larry's tests); harness shots of the West Province (a `pd*` part of the `paldea` mode); Cascarrafa's bridges over its
+  Larry's tests); Cascarrafa's falls made to show (pdw05) and its bridges over its
   river; the new cast's voices by ear (Kofu, Larry and the auctioneer have designs, no audio).

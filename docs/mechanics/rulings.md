@@ -13077,7 +13077,7 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
   `world.json`'s `chunks` now start at `-26` (the coast); the bake keeps 625 chunks (from 454), 80.4 MB (from 62.0 MB).
 - **Cascarrafa's falls** are a river of `water.json` coming down a slot cut into the hills north of the city (its
   surface 30 m up, then down to the pool at the city's foot over ten metres), into the pool's bed (a crater) by the
-  Pokémon Center: no falling water is drawn by the open renderer, so the falls are a steep sheet of water in a cleft.
+  Pokémon Center. No falling water is drawn by the open renderer, and from the city the slot is not seen (the harness's `pdw05`): the falls are owed.
   The originals' bridges over the river are not built (owed); the city's ways go round its pool.
 - **Two stand-in Titans moved to their provinces**, their keys, scripts, flags and the count kept: Open Sky (Bombirdier)
   is a gully north off the West Province's first area, its den a ledge at its head as before; Quaking Earth (Great Tusk or
