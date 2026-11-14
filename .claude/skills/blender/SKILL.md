@@ -521,7 +521,10 @@ move (the session held it: every model built by the new kit is the file the old 
   corners are feet shows 0.853 × width + 0.522 × length across. A model longer than it is tall fits when its width
   is at most 0.68 of its length. Heatran was cut at 0.90 × 0.87 and still at 0.75 × 0.98 (the main session had
   asked for the feet in sideways and apart lengthwise, which lengthens the square and the showing width alike),
-  and fits at 0.64 × 0.98. Give an agent the sum, not "narrower".
+  and stands whole in its cell at 0.64 × 0.98 (seen at four times its size, from both sides). Give an agent the
+  sum, not "narrower". **The sum is an upper bound for a footprint whose corners are filled**: a round or oval
+  one shows far less (Shaymin, 0.44 × 0.48 and 0.35 tall, would be 18% over by the sum and fills its cell with
+  room to spare), so it is asked only of crabs, toads and tables.
 - **A bowl, a collar or a cup made of a `sheet` shows its far wall through its own opening** (Darkrai's collar:
   the far teeth as black-notched triangles): close it with a floor of its inner colour just under the rim.
 - **A reference drawn from the three-quarter shows a symmetric pair as two unlike parts** (Cresselia's lower ring
