@@ -76,7 +76,7 @@
     },
     // Arven at the lighthouse once term has begun (plan 34 · PD4): where the Path of Legends begins
     {
-      "name": "arven_lighthouse", "at": [60, 10.0, -80], "yaw": 180, "look": "arven", "displayName": "Arven",
+      "name": "arven_lighthouse", "at": [60, 10.0, -80], "yaw": 270, "look": "arven", "displayName": "Arven",
       "script": "ArvenLighthouse", "hiddenBy": "FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE"
     },
     {

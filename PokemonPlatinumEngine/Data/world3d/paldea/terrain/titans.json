@@ -8,6 +8,9 @@
   // Titan Klawf keeps its den and its Herba Mystica. In the gully stands a crag of rock whose south face is painted
   // climbable: the mount can stand on its top only once it climbs (the fifth Titan's power, PD4's second session)
   "brushes": [
+    // The hills north of the third area run on past the gully's head (south_and_east.json's stop at its edge), so the
+    // ledge is shut in on every side but the ramp
+    { "kind": "plateau", "name": "the hills round the Stony Cliff", "polygon": [[96, -512], [352, -512], [352, -410], [96, -410]], "height": 40, "falloff": 4 },
     { "kind": "plateau", "name": "the Stony Cliff's gully", "polygon": [[200, -420], [252, -420], [252, -360], [200, -360]], "height": 12, "falloff": 3 },
     { "kind": "plateau", "name": "the Titan Klawf's ledge", "polygon": [[204, -452], [248, -452], [248, -420], [204, -420]], "height": 18, "falloff": 12 }
   ],

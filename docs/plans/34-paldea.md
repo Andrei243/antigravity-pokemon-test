@@ -303,6 +303,10 @@ One session of two, beside PD3's second session (the bot's run, the songs, the v
 - **Baked again**: Paldea's navigation mesh now has 12 climbs (all up the crag's face), 18 hops, 47 high jumps, 1480
   glides. **A merge with PD3's second session that touches the bake is settled by baking again after it**
   (`dotnet run --project tools/OpenWorldBake -- paldea`).
+- **Shots** (the `paldea` mode, `Modes/PaldeaLegends.cs`, `SHOTS_FILTER=pd9`): `pd90` Arven at the lighthouse, `pd91`
+  the Titan Klawf in the gully's mouth, `pd92` at its den on the ledge (shut in by rock on three sides), `pd93` the
+  crag. Looked at: the Titan stands three times Klawf's height (3.9 m) and reads as a giant beside the player; the
+  gully's floor is lawn and its west bank a green wall, as PD3's hills are (finding, unchanged).
 - **Tests** (`PaldeaLegendsTests`): the place, its Titan and den; the path headless from Arven's word to the dash, the
   Titan's two battles fought as Titans; the three scenes played and skipped alike; the mount ridden up the gully on
   Paldea's own bake trotting before the Titan and sprinting after; and the crag climbed by the capsule and the
@@ -313,5 +317,4 @@ in the West Province, Orthworm in the East Province's third area, Great Tusk or 
 Tatsugiri at Casseroya Lake: PD6's provinces, so the second session lays a gully or a shore for each beside the land
 that is built, or waits for PD6), their scenes, their powers in order (swim, high jump, glide, climb), and with the
 climb the done-when's cliff (the Stony Cliff's crag is ready for it); Arven's battle at the lighthouse and his reveal
-of his Mabosstiff after the fifth; the Titans' song and the path's; the five beaten in the harness (no shot of the
-Stony Cliff was taken this session); the voices of Arven designed by ear (provisional in the cast).
+of his Mabosstiff after the fifth; the Titans' song and the path's; the five beaten in the harness (this session shot only the places); the voices of Arven designed by ear (provisional in the cast).
