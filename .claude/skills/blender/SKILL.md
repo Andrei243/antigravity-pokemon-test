@@ -347,6 +347,14 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
   or changed, run `sculpt` without it (a model that "did not change" was this).
 - **`render.py`** takes a JSON job (`input`, `out`, `frames`, `size`) and wants a `report` key, or it ends with a
   `KeyError` after writing its sheets.
+- **A fish's midline fins are edge-on in the game**: the Pokédex and a battle look at a model from the front
+  three-quarter and from behind, never side-on, so a dorsal or tail fin in the body's own plane is a pole over it.
+  Keep it lower than the body is tall and bend it to one side along its length (some 40 degrees), with the thickest
+  plate the one whose colour should show at the edge; eyes on flat sides come forward onto the cheeks and turn about
+  40 degrees off straight ahead.
+- **Mirroring by hand**: multiply only the offsets by the side, never an anchor point that is off the midline.
+- **Thin black paint lines on a fused body hatch** at voxel 0.006 whatever the edge and with or without `on`: they
+  read clean at the game's size, and a loose thin strip is the way where they must be crisp up close.
 
 ## Not tried yet
 
