@@ -514,6 +514,31 @@ move (the session held it: every model built by the new kit is the file the old 
   cap was turned by the prism's centre with the cap at depth nought, and rounding turned its triangles each its
   own way): take a point inside the solid.
 
+## What the first batch with the new kit taught (Heatran to Arceus, 2026-11-14)
+
+- **Why a wide, low model is cut by the game's board, exactly** (`PokemonStudio.Strip`): the board frames a square
+  of 1.3 × max(height, 0.85 × max(width, length)) and sees the model turned 31.5 degrees, so a model whose four
+  corners are feet shows 0.853 × width + 0.522 × length across. A model longer than it is tall fits when its width
+  is at most 0.68 of its length. Heatran was cut at 0.90 × 0.87 and still at 0.75 × 0.98 (the main session had
+  asked for the feet in sideways and apart lengthwise, which lengthens the square and the showing width alike),
+  and fits at 0.64 × 0.98. Give an agent the sum, not "narrower".
+- **A bowl, a collar or a cup made of a `sheet` shows its far wall through its own opening** (Darkrai's collar:
+  the far teeth as black-notched triangles): close it with a floor of its inner colour just under the rim.
+- **A reference drawn from the three-quarter shows a symmetric pair as two unlike parts** (Cresselia's lower ring
+  wings read as one wing behind and one below): count pairs before the brief says a number.
+- **A small head on a long neck has no face in the game** (Arceus at 0.17 of the height: two specks): a head a
+  third larger than the reference's ratio reads, and the game's shot, not the ratio, decides.
+- **Fingers, feelers and ribbons that hang to the ground** take the eye from everything else (Regigigas): as long
+  as the picture's, never as long as the limb. A ribbon drawn broad (Phione's feeler) is a cord at a third of the
+  width.
+- **Loose pieces added after `build()` fall into the first eye piece** as patches do: every loose piece goes in
+  before the body's `build()`.
+- **`glow=` on a pale loose plate renders it white on the turntable** and hides its colour: judge the colour with
+  the glow off.
+- **The new shapes held**: seven scripts used `hull`, `slab`, `ring_band`, `lathe` and `outward` and none wrote
+  its own or printed `KIT: !!`. Asked next: a torus, a seamless closed band, a gem, a swept ellipse along a curve,
+  a chain of hulls along a path, an ellipsoid along a direction, a rosette of petals, a spline.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
