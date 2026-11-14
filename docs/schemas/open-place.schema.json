@@ -560,12 +560,6 @@
               "null"
             ]
           },
-          "species": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
           "displayName": {
             "type": [
               "string",

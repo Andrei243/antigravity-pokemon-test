@@ -37,18 +37,11 @@ public partial class GameEngine
         foreach (var p in map.PeopleNear(field.Player.Pos, (int)(OpenFigures.DrawReach * OpenPos.PerMetre), openFigurePeople))
         {
             if (!p.Present) continue;
-            // A Pokémon of the place (plan 34 · PD4: a Titan) at its species' height times its size
-            if (p.Species is { } species)
-            {
-                openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "person:" + p.Key, species, Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw),
-                    Height: HeightOf(species) * (float)p.Size));
-                continue;
-            }
             bool exclaiming = openApproach is { } a && a.Trainer == p && a.Exclaiming || openPairApproach is { } b && b.Trainer == p && b.Exclaiming;
-            // A Pokémon standing in a place in place of a person (plan 34 · PD3's second session), at its species' height
+            // A Pokémon standing in a place in place of a person (plan 34 · PD3's second session), at its species' height times its size (a Titan's is several)
             if (p.Species is { } species)
             {
-                openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "person:" + p.Key, species, Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming, HeightOf(species)));
+                openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "person:" + p.Key, species, Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming, HeightOf(species) * (float)p.Size));
                 continue;
             }
             openFigures.Add(new OpenFigure(OpenFigureKind.Person, "person:" + p.Key, OpenLookOf(map, p), Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming));

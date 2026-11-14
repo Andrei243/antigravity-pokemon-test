@@ -106,8 +106,6 @@ public sealed class OpenPersonFile
     public double Yaw { get; set; }
     public string? Look { get; set; }
 
-    /// <summary>A Pokémon standing in the place in place of a person (plan 34 · PD3's second session: a gym test's finds), drawn as the species' model and spoken to like anyone.</summary>
-    public string? Species { get; set; }
     public string? DisplayName { get; set; }
     public string? Script { get; set; }
     public List<string> Lines { get; set; } = new();
@@ -348,7 +346,6 @@ public static class OpenPlaceFiles
         return new OpenPerson(p.Name, key, home, YawOfDegrees(p.Yaw))
         {
             Look = p.Look,
-            Species = p.Species,
             ShownName = p.DisplayName,
             Script = p.Script,
             Lines = p.Lines.ToList(),
