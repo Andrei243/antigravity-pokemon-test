@@ -386,8 +386,8 @@ names, flags and the count so the tests stand; the Stony Cliff is the South Prov
 
 ## PD6, first session (2026-11-15)
 
-One session of two, beside PD5 (Starfall Street, in its own files) in another worktree; nothing was laid in the region's
-north-west past the towns (`z` under -760, `x` under -520 north of Cascarrafa). The rulings' "The West Province and the
+One session of two, beside PD5 (Starfall Street, in its own files) in another worktree; the West's areas stop at `z` -740 and its hills (to -800) step round Starfall Street's, north of Mesagoza, so neither buries the other: **after merging the two, bake again and
+run both sessions' walk tests**. The rulings' "The West Province and the
 fourth and fifth gyms" has every decision. The user did not answer the provinces' distances or decision 3, so their
 recommendations stand (PD3's compressed distances; the later gyms scaled to the badges held).
 
@@ -413,13 +413,14 @@ recommendations stand (PD3's compressed distances; the later gyms scaled to the 
 - **Tests**: `PaldeaWestTests` (the areas, towns, rooms and the Titans in their provinces; Kofu and Larry won in the
   academy's order at the originals' levels; taken first, scaled down to the badges held; nothing before the welcome),
   and `PaldeaTests`' lists grown by the new areas, zones, rooms and spawns.
-- **Baked again**: 625 chunks (from 454), 80.4 MB (from 62.0 MB); about five and a half minutes to bake.
+- **Baked again**: 625 chunks (from 454), 84.6 MB (from 62.0 MB); about five and a half minutes to bake.
 - **Shots** (the `paldea` mode, `Modes/PaldeaWest.cs`, `SHOTS_FILTER=pdw`): `pdw00` to `pdw13` the places from their
   markers and the gyms and the eatery faced from their squares, `pdw20` to `pdw27` the eight rooms, `pdw30` Kofu and `pdw31`
   Larry at the far end of their halls. Looked at: Porto Marinada reads as a port, its quay paved over the sea with the
-  auction house and the Pokémon Center on it. Findings, unchanged: **Cascarrafa's falls don't show** (`pdw05`): the pool
-  at the city's foot is a round pond in sand, and the river's slot in the hills is not seen from the city, so the hill
-  behind reads as a plain wall of layered rock; the towns and ways are lawn as PD3's are, Cascarrafa's houses far apart.
+  auction house and the Pokémon Center on it. The first shot of the falls (`pdw05`) showed only the pool: the river's slot ended inside the
+  cliff's face, so its drop sat in the rock; the slot now cuts through the face to the floor's edge, and the river runs
+  out of a cleft at the foot of the hills into the pool. **The falling water down the face is still not drawn** (the open
+  renderer draws no falls; the river's steep stretch is hidden in the cleft). Findings, unchanged: the towns and ways are lawn as PD3's are, Cascarrafa's houses far apart.
 
 **Left for session two**
 - The North Province and Glaseado: Montenevera (Ryme, Ghost, her rap battle), Alfornada (Tulip, Psychic, her photos;
@@ -432,5 +433,5 @@ recommendations stand (PD3's compressed distances; the later gyms scaled to the 
   itinerary in `Itineraries.Paldea.cs` and `PlaythroughTests`, and the harness's `paldea` mode timing the ride as the
   `world` mode times Sinnoh's walks).
 - Owed from this session: the bot's run to the fifth badge in `PlaythroughTests` (only headless tests play Kofu's and
-  Larry's tests); Cascarrafa's falls made to show (pdw05) and its bridges over its
+  Larry's tests); Cascarrafa's falls drawn falling (`pdw05`: the cleft and the river show, the drop down the face doesn't) and its bridges over its
   river; the new cast's voices by ear (Kofu, Larry and the auctioneer have designs, no audio).

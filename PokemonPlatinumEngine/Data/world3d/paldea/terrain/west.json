@@ -8,9 +8,11 @@
   // stand-ins' old gullies and its floors cut the hills: the hills first, too steep to climb, then every way's and town's
   // floor. The bake keeps only the land the areas hold (world.json's bakeRing), so the hills' backs are never baked
   "brushes": [
-    // The hills of the whole west, north of the hills round Cortondo and west of them, and on east as far as the hills
-    // north of Mesagoza's mountains, so no floor here falls away to the low land the grid leaves north of the city
-    { "kind": "plateau", "name": "the West Province's hills", "polygon": [[-800, -800], [-60, -800], [-60, -536], [-800, -536]], "height": 40, "falloff": 4 },
+    // The hills of the whole west, north of the hills round Cortondo and west of them, and on east past Medali, so no floor
+    // here falls away to the low land the grid leaves north of Mesagoza. They step round the north-west corner of
+    // Starfall Street's hills (PD5's terrain/starfall.json, x -92 to 92, z -584 to -400), which sort before this file, so
+    // these never bury that valley's floor
+    { "kind": "plateau", "name": "the West Province's hills", "polygon": [[-800, -800], [-60, -800], [-60, -584], [-92, -584], [-92, -540], [-100, -540], [-100, -536], [-800, -536]], "height": 40, "falloff": 4 },
     { "kind": "plateau", "name": "the hills west of Cortondo", "polygon": [[-800, -540], [-512, -540], [-512, -250], [-800, -250]], "height": 40, "falloff": 4 },
     // Quaking Earth: the dusty basin out of Cortondo's north side, the desert's south end, and the rise at its west end
     // where the Titan keeps its den, a ramp of sand down to the basin's floor on its east
@@ -25,7 +27,7 @@
     // into the hills behind it
     { "kind": "plateau", "name": "Cascarrafa", "polygon": [[-520, -740], [-352, -740], [-352, -600], [-520, -600]], "height": 12, "falloff": 3 },
     { "kind": "crater", "name": "the pool under Cascarrafa's falls", "at": [-390, -716], "radius": 14, "depth": 4 },
-    { "kind": "channel", "name": "the slot of Cascarrafa's falls", "points": [[-390, -800], [-390, -748]], "width": 12, "depth": 14 },
+    { "kind": "channel", "name": "the slot of Cascarrafa's falls", "points": [[-390, -800], [-390, -731]], "width": 10, "depth": 14 },
     // The West Province's second area, west from Cascarrafa, and Porto Marinada below it on the sea, a quay over the
     // seabed off its west side
     { "kind": "plateau", "name": "the West Province's second area", "polygon": [[-640, -700], [-520, -700], [-520, -640], [-640, -640]], "height": 12, "falloff": 3 },
