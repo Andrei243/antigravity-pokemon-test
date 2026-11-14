@@ -36,8 +36,15 @@ public static class TaleFiles
                 Add(tale.Id, "is no id of letters (its words are basme.<id>.name)");
             foreach (string word in new[] { "name", "told", "rule", "story" })
                 if (!Text.Has($"basme.{tale.Id}.{word}")) Add(tale.Id, $"has no {word} (basme.{tale.Id}.{word} in ui.json)");
-            if (tale.Boost == null && tale.Weather == null && tale.Accuracy == 100 && !tale.NoNight && tale.Forms.Count == 0)
-                Add(tale.Id, "does nothing: no bonus, weather, accuracy, sun or form");
+            bool later = tale.Healing != 100 || tale.NoStatFalls || tale.ItemsTwice || tale.Heavier != 100 || tale.GrassHeals != 0
+                || tale.HoldsFoes || tale.FallenStrength != 0 || tale.Rising != 0;
+            if (tale.Boost == null && tale.Weather == null && tale.Accuracy == 100 && !tale.NoNight && tale.Forms.Count == 0 && !later)
+                Add(tale.Id, "does nothing: no bonus, weather, accuracy, sun, form or rule of the later seven");
+            if (tale.Healing <= 0) Add(tale.Id, "heals nothing or less (healing)");
+            if (tale.Heavier <= 0) Add(tale.Id, "has a giants' power of nothing or less (heavier)");
+            if (tale.GrassHeals < 0) Add(tale.Id, "has a forest's heal under nothing (grassHeals)");
+            if (tale.FallenStrength is < 0 or > 6) Add(tale.Id, "gives a fallen's strength outside 0 to 6 stages (fallenStrength)");
+            if (tale.Rising < 0) Add(tale.Id, "has a banner that falls (rising)");
             if (tale.Boost is { } boost)
             {
                 if (boost.Percent <= 0) Add(tale.Id, "has a bonus of nothing or less");
