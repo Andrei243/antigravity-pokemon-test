@@ -37,10 +37,12 @@ partial class Harness
             game.Party.Swap(0, game.Party.Count - 1);
             var zone = paldea.Zones.FirstOrDefault(z => z.Place == "south_province_area_one") ?? paldea.Zones[0];
             double cx = zone.Polygon.Average(p => p.X) / 1000.0, cz = zone.Polygon.Average(p => p.Z) / 1000.0;
+            // The player facing the target off to the north-east, the camera looking east past them, so the lead's run
+            // is seen from the side and not behind the player's back
             var at = OnLabGround(paldea, cx, cz + 3, 90, 0);
-            PutInLab(paldea, at, 180);
+            PutInLab(paldea, at, 135, 95);
             game.OpenWild!.Clear();
-            var target = OnLabGround(paldea, cx, cz - 2, 90, 0);
+            var target = OnLabGround(paldea, cx + 5, cz - 2, 90, 0);
             var slot = zone.Slots.First();
             game.OpenWild.Put(paldea, zone, slot, 5, target, OpenYaw.South);
             game.LocationSign.Hide();

@@ -410,15 +410,24 @@ asked nothing new of the user, and nothing was waited on.
   `BattleArena.StarBase` (style guide's row first). Looks of ours for the five and the grunts.
 - **Cassiopeia's calls**: the first as the street is first walked into, one after each boss, her thanks after the fifth
   (`VAR_PALDEA_STARFALL` 0 to 6).
-- **Song** `paldea/team_star` (a garage band's bluster in E minor, 25.6 s loop), not yet rendered by `tools/MusicRender`.
+- **Song** `paldea/team_star` (a garage band's bluster in E minor, 25.6 s loop; `tools/MusicRender`: no clash, -19.3 dB,
+  in the loudness window).
 - **Objectives** 850 to 855, English and Romanian; Romanian for every line (`ro/scripts/starfall_street.json`).
 - **Tests**: `LetsGoTests` (a Let's Go battle replays from its record and gives its EXP; the same seed fights the same
   battle; a higher level or a shiny is no Let's Go; an outmatched lead faints; a base's clock ends a raid on the gate;
   a raid felled to its goal is won; the three leads in turn; the bases' species and bosses) and `LetsGoGameTests` (the
   key in the whole game on Paldea's bake: a wild Pokémon felled and gone, the lead's EXP; a raid's clock run out and the
-  player put back on the gate by its script; a raid won bringing the boss's battle).
+  player put back on the gate by its script; a raid won bringing the boss's battle) and `StarfallStreetTests` (the
+  street's places, Cassiopeia's first call only after the academy's welcome, the grunt's question, a raid lost and won
+  headless, the five bosses counted, every scene played and skipped alike).
 - **Shots** (`paldea` mode, `Modes/PaldeaStarfall.cs`): `pd99` the street from its mouth, `pd99b` Giacomo's gate,
   `l80_lets_go` (with `l80b` the hits and `l80c` the fade), `l81_star_raid` and `l81b`, `l82_star_boss` on the stage.
+  Looked at: the lead runs out to the Lechonk from the player's side and it shrinks away; the raid's crew stand round
+  the yard with the corner's count and clock over them, and a Let's Go in the raid fells one (1/15); Giacomo's battle
+  stands on the star pads before the striped tent. **Findings, unchanged**: the five bases are the open kit's plain
+  `hall` (pale walls, a straw-coloured hip roof, a STAR sign), nothing of the crews' black and pink; the valley's floor
+  reads as sand and the yards' mud paint doesn't show; the crew's Pokémon face the yard's middle and never move. In a
+  crossed game the Starmobile grows into Turbovroom with the rest of the boss's team (`levels-crossed.txt`).
 
 **What PD6 replaces**: the stand-in valley (`terrain/starfall.json`, the `starfall_street` area of `world.json` and
 `places/starfall_street.json`), moving each base to its province (Giacomo's to the West Province's first area, Mela's to
