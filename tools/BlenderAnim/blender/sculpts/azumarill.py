@@ -11,7 +11,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, eye_look, args
+from sculptkit import Kit, ell, tube, blade, polygon, srgb, inside, smoothstep, unit, eye_look, args
 
 src, out = args()
 k = Kit(src, coat="fur")
@@ -47,7 +47,7 @@ k.add("crown", ell((0, -0.006, 0.4), (0.108, 0.098, 0.076)), BLUE, "head")
 # White below a wavy line like water a little under the middle, crisp
 def belly(P):
     a = np.arctan2(P[:, 0], -P[:, 1])
-    line = 0.205 + 0.011 * np.sin(a * 4.5 + 0.6)
+    line = 0.18 + 0.011 * np.sin(a * 4.5 + 0.6)
     return inside(P[:, 2] - line, 0.0025) * (P[:, 2] > 0.0)
 k.paint(belly, BELLY, on=["body", "crown"])
 
@@ -60,7 +60,7 @@ EARS = {
 LINING = {"R": 0.9, "L": 0.62}               # how far up each ear its lining goes
 for s, pts in EARS.items():
     n = len(pts)
-    radii = [0.04, 0.05, 0.047, 0.03] if n == 4 else [0.04, 0.05, 0.047, 0.04, 0.026]
+    radii = [0.045, 0.06, 0.058, 0.042] if n == 4 else [0.045, 0.06, 0.058, 0.05, 0.036]
     k.add(f"ear{s}", blade(pts, radii, (0, 1, 0), 0.34), BLUE, f"ear{s}")
 
 
@@ -75,7 +75,7 @@ def ear_lining(s):
                             for a in range(0, len(P), 4000)])
         off = P - line[j]
         across = np.sqrt(off[:, 0] ** 2 + off[:, 2] ** 2)
-        w = 0.03 * np.sin(np.clip(length[j], 0, 1) * math.pi) ** 0.4
+        w = 0.044 * np.sin(np.clip(length[j], 0, 1) * math.pi) ** 0.4
         return (inside(across - w, 0.003) * inside(length[j] - LINING[s], 0.02) * (length[j] > 0.1)
                 * (off[:, 1] < -0.003))
     return mask
@@ -107,32 +107,31 @@ for i in range(len(ZP) - 1):
 k.add("tailball", ell(TB, (0.05, 0.05, 0.05)), BLUE, "tail")
 
 # White bubbles of several sizes above the belly's line, on the front and round the sides
-for i, (x, z, r) in enumerate([(-0.088, 0.33, 0.016), (-0.142, 0.25, 0.018), (-0.084, 0.278, 0.027),
-                               (0.012, 0.276, 0.024), (0.078, 0.292, 0.024), (0.076, 0.236, 0.012),
-                               (0.142, 0.27, 0.018), (0.13, 0.33, 0.011)]):
+for i, (x, z, r) in enumerate([(-0.118, 0.336, 0.017), (-0.15, 0.255, 0.022), (-0.085, 0.272, 0.031),
+                               (0.015, 0.268, 0.028), (0.09, 0.293, 0.029), (0.075, 0.226, 0.015),
+                               (0.15, 0.262, 0.02), (0.137, 0.345, 0.013)]):
     p, nrm = front(x, z)
     k.decal(p, nrm, (r, r), WHITE, eps=0.003, rings=8, segs=36)
 
-# An open smile with a pink tongue, flat along its top
+# An open smile: a small triangle pointing down, flat along its top, dark with a pink tongue in its lower part
 CM, CT, CB, CI, CW = srgb(MOUTH), srgb(TONGUE), srgb(BLUE), srgb(INK), srgb(WHITE)
 def mouth(u, v):
     c = np.tile(CM, (len(u), 1))
-    c[(u / 0.7) ** 2 + ((v + 0.75) / 0.6) ** 2 < 1] = CT
+    c[(u / 0.62) ** 2 + ((v + 0.62) / 0.6) ** 2 < 1] = CT
     return c
-def mouth_shape(th):
-    s = math.sin(th)
-    return min(1.0, 0.3 / s) if s > 0 else 1.0
-p, nrm = front(0, 0.36)
-k.decal(p, nrm, (0.028, 0.026), mouth, eps=0.003, outline=mouth_shape, rings=20, segs=60)
+p, nrm = front(0, 0.357)
+k.decal(p, nrm, (0.03, 0.027), mouth, eps=0.003,
+        outline=polygon([(-1.0, 0.62), (-0.94, 0.75), (0.94, 0.75), (1.0, 0.62), (0.12, -0.92), (-0.12, -0.92)]),
+        rings=20, segs=60)
 
 # Small black eyes with a white glint, high on the egg
 def eye(u, v):
     c = np.tile(CI, (len(u), 1))
     c[((u - 0.12) / 0.32) ** 2 + ((v - 0.3) / 0.3) ** 2 < 1] = CW
     return c
-E, de = front(0.058, 0.4)
+E, de = front(0.066, 0.405)
 def eyes(state):
-    k.decal(E, de, (0.018, 0.024), eye_look(state, eye, CB, CI, line=0.2), eps=0.004, rings=20, segs=56, mirror=True)
+    k.decal(E, de, (0.024, 0.032), eye_look(state, eye, CB, CI, line=0.2), eps=0.004, rings=20, segs=56, mirror=True)
 
 k.build(voxel=0.0055)
 k.eye_states(eyes)

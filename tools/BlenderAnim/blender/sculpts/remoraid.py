@@ -2,11 +2,11 @@
 #   blender --background --factory-startup --python sculpts/remoraid.py -- <the export's Remoraid.glb> <out.glb>
 #
 # From the references: a plump, blunt-nosed fish, one even pale mint all over (no darker back), with two short dark
-# teal stripes stacked lengthwise on the upper rear of each flank; a large round eye (white in a dark rim, a dark
-# upright pupil) forward on the face; a wide mouth line across the blunt nose; a small cone of a spike on the top of
-# the head; a great swept-back fin rising from the top of the back, a forked tail below and behind, small pale fins
+# teal stripes stacked lengthwise on the upper rear of each flank; a large eye (a plain white upright oval, a thin
+# dark outline, a black upright pupil) forward on the face; a wide mouth line and a gill line; a cone of a spike on
+# the head; a tall fin leaning back along the back, a large forked tail fan behind and below, small pale fins
 # on the flanks and one under the chin. The fins are pale, near white, loose flat plates (finneon.py's), each with a
-# grey vein; the midline ones are kept lower than the body is tall and swished 40 degrees to one side (feebas.py).
+# grey vein; the midline ones are kept lower than the body is tall, rolled and swished to one side (feebas.py).
 # The export's joints: body (0, 0, 0.21), head (0, -0.1, 0.21), dorsal (0, 0.02, 0.31), tail (0, 0.2, 0.21),
 # tailFin (0, 0.27, 0.21), finR/L (+-0.08, -0.04, 0.15).
 import os, sys, math
@@ -112,50 +112,78 @@ def strip(a0, a1, w):
     return [tuple(a0 + n), tuple(a1 + n * 0.4), tuple(a1 - n * 0.4), tuple(a0 - n)]
 
 
-# --- the body: plump and blunt in front, narrowing into the tail's root --------------------------------------------
-k.add("body", ell((0, 0.03, 0.21), (0.088, 0.14, 0.104)), MINT, "body")
-k.add("head", ell((0, -0.055, 0.207), (0.086, 0.09, 0.098), deform=None), MINT, "head")
-k.add("stalk", tube([(0, 0.11, 0.205), (0, 0.18, 0.2), (0, 0.235, 0.198)], [0.06, 0.04, 0.024]), MINT, "tail")
+
+
+def roll(shape, pivot, deg):
+    """A plate turned about the body's long axis (y) through pivot, so its face shows from in front and behind."""
+    V, F = shape
+    V = np.array(V, float) - np.array(pivot, float)
+    a = math.radians(deg)
+    x, z = V[:, 0].copy(), V[:, 2].copy()
+    V[:, 0] = x * math.cos(a) + z * math.sin(a)
+    V[:, 2] = -x * math.sin(a) + z * math.cos(a)
+    return V + np.array(pivot, float), F
+
+
+# --- the body: a fish's shape, blunt at the snout, tapering into the tail's root -----------------------------------
+k.add("body", ell((0, 0.04, 0.205), (0.085, 0.165, 0.1)), MINT, "body")
+k.add("head", ell((0, -0.06, 0.205), (0.084, 0.09, 0.096)), MINT, "head")
+k.add("stalk", tube([(0, 0.13, 0.2), (0, 0.21, 0.198), (0, 0.27, 0.196)], [0.06, 0.035, 0.02]), MINT, "tail")
 # A small cone of a spike on top of the head, leaning back
-k.add("spike", tube([(0, -0.072, 0.285), (0, -0.064, 0.322), (0, -0.05, 0.352)], [0.03, 0.017, 0.004]), MINT, "head")
+k.add("spike", tube([(0, -0.072, 0.28), (0, -0.064, 0.318), (0, -0.05, 0.348)], [0.03, 0.017, 0.004]), MINT, "head")
 
 
-# Two short dark stripes stacked lengthwise on the upper rear of each flank
+# Two dark teal oval stripes stacked lengthwise on the upper rear of each flank
 def band(yc, zc, a, b):
     def m(P):
         r = np.sqrt(((P[:, 1] - yc) / a) ** 2 + ((P[:, 2] - zc) / b) ** 2)
         return inside((r - 1) * b, 0.0025) * (np.abs(P[:, 0]) > 0.02)
     return m
-k.paint(band(0.07, 0.276, 0.055, 0.0135), BAND)
-k.paint(band(0.075, 0.232, 0.062, 0.0145), BAND)
+k.paint(band(0.095, 0.27, 0.055, 0.014), BAND)
+k.paint(band(0.1, 0.226, 0.062, 0.015), BAND)
+
+
+# The gill line: from the mouth's corner back under the eye, then up behind it
+GILL = np.array([(-0.135, 0.188), (-0.05, 0.178), (-0.026, 0.186), (-0.016, 0.205), (-0.014, 0.238)])
+def gill(P):
+    q = P[:, 1:3]
+    best = np.full(len(P), 9.0)
+    for a, b in zip(GILL[:-1], GILL[1:]):
+        e = b - a
+        t = np.clip(((q - a) @ e) / (e @ e), 0, 1)
+        best = np.minimum(best, np.linalg.norm(q - (a + t[:, None] * e), axis=1))
+    return inside(best - 0.0028, 0.0022) * (np.abs(P[:, 0]) > 0.035)
+k.paint(gill, MOUTH)
 
 # The mouth: one wide line across the blunt nose, its corners turned down
 def mouth(u, v):
     c = np.tile(srgb(MINT), (len(u), 1))
     c[np.abs(v - (0.3 - 0.7 * u * u)) < 0.2] = srgb(MOUTH)
     return c
-k.decal((0, -0.145, 0.188), unit(0, -1, -0.12), (0.05, 0.018), mouth, eps=0.004, rings=10, segs=48)
+k.decal((0, -0.148, 0.188), unit(0, -1, -0.12), (0.05, 0.018), mouth, eps=0.004, rings=10, segs=48)
 
-# Cheeks for the eyes, forward on the face and turned off straight ahead
-CHEEK = np.array([0.045, -0.092, 0.222])
-k.add("cheek", ell(CHEEK, (0.036, 0.036, 0.046), rot=(0, 0, -40)), MINT, "head", mirror=True)
+# Small cheeks for the eyes, forward on the face and turned off straight ahead
+CHEEK = np.array([0.048, -0.09, 0.224])
+k.add("cheek", ell(CHEEK, (0.03, 0.03, 0.04), rot=(0, 0, -40)), MINT, "head", mirror=True)
 
 # --- fins -----------------------------------------------------------------------------------------------------------
-# The great fin swept back from the top of the back (lower than the body is tall), swished to one side
-DORS = smooth([(0.0, 0.0), (0.03, 0.03), (0.07, 0.085), (0.12, 0.14), (0.175, 0.175), (0.15, 0.135),
-               (0.13, 0.1), (0.1, 0.07), (0.08, 0.035), (0.075, -0.005)], per=5)
-D0 = (0, 0.06, 0.29)
-k.add("dorsal", swish(flat(DORS, D0, (0, 1, 0), (0, 0, 1), 0.01), 0.06, 40, 0.18), FIN, "dorsal", fuse=False)
-k.add("dorsalvein", swish(flat(strip((0.02, 0.01), (0.15, 0.15), 0.004), (0.0, 0.06, 0.29), (0, 1, 0), (0, 0, 1),
-                               0.014), 0.06, 40, 0.18), VEIN, "dorsal", fuse=False)
+# The tall fin: from the top of the back, leaning back along the body like a scythe, rolled and swished to one side
+DORS = smooth([(0.0, 0.0), (0.06, 0.035), (0.13, 0.085), (0.215, 0.145), (0.18, 0.1), (0.155, 0.075),
+               (0.125, 0.058), (0.1, 0.03), (0.075, 0.0)], per=5)
+D0 = (0, 0.0, 0.298)
+k.add("dorsal", swish(roll(flat(DORS, D0, (0, 1, 0), (0, 0, 1), 0.01), D0, 15), 0.0, 42, 0.22), FIN, "dorsal",
+      fuse=False)
+k.add("dorsalvein", swish(roll(flat(strip((0.03, 0.012), (0.19, 0.125), 0.0045), D0, (0, 1, 0), (0, 0, 1), 0.014),
+                               D0, 15), 0.0, 42, 0.22), VEIN, "dorsal", fuse=False)
 
-# The forked tail behind and below, swished the other way
-TAIL = smooth([(0.0, 0.02), (0.05, 0.015), (0.1, -0.02), (0.15, -0.035), (0.13, -0.065), (0.155, -0.11),
-               (0.11, -0.11), (0.06, -0.075), (0.02, -0.035), (-0.005, -0.01)], per=5)
-T0 = (0, 0.215, 0.19)
-k.add("tailfin", swish(flat(TAIL, T0, (0, 1, 0), (0, 0, 1), 0.01), 0.215, -40, 0.16), FIN, "tailFin", fuse=False)
-k.add("tailvein", swish(flat(strip((0.02, -0.01), (0.12, -0.07), 0.004), T0, (0, 1, 0), (0, 0, 1), 0.014),
-                        0.215, -40, 0.16), VEIN, "tailFin", fuse=False)
+# The tail: a large pale fan hanging back and down, forked at its end, rolled and swished the other way
+TAIL = smooth([(0.0, 0.02), (0.05, 0.015), (0.11, -0.02), (0.175, -0.045), (0.135, -0.08), (0.16, -0.145),
+               (0.1, -0.125), (0.045, -0.075), (-0.005, -0.02)], per=5)
+T0 = (0, 0.25, 0.196)
+k.add("tailfin", swish(roll(flat(TAIL, T0, (0, 1, 0), (0, 0, 1), 0.01), T0, 15), 0.25, 42, 0.17), FIN, "tailFin",
+      fuse=False)
+k.add("tailvein", swish(roll(flat(strip((0.02, -0.01), (0.14, -0.08), 0.0045), T0, (0, 1, 0), (0, 0, 1), 0.014),
+                             T0, 15), 0.25, 42, 0.17), VEIN, "tailFin", fuse=False)
 
 # Small pale fins low on the flanks, swept back and out, their faces toward the front
 PEC = smooth([(0.0, 0.0), (0.03, 0.012), (0.075, 0.008), (0.09, -0.015), (0.06, -0.035), (0.02, -0.02)], per=5)
@@ -165,17 +193,17 @@ k.add("pec", flat(PEC, (0.072, -0.03, 0.16), unit(0.6, 0.75, -0.25), unit(0.2, 0
 CHIN = smooth([(0.0, 0.0), (0.035, -0.01), (0.07, -0.05), (0.06, -0.08), (0.03, -0.065), (0.005, -0.03)], per=5)
 k.add("chin", flat(CHIN, (0.0, -0.055, 0.12), unit(0.6, 0.8, 0), (0, 0, 1), 0.01), FIN, "body", fuse=False)
 
-# --- the eyes: large and round, white in a dark rim, an upright dark pupil -------------------------------------------
+# --- the eyes: a plain white upright oval with a thin dark outline and a black upright oval pupil ---------------------
 CM, CK, CW = srgb(MINT), srgb(INK), np.array([0.97, 0.98, 0.97])
 def eye(u, v):
     r2 = u * u + v * v
     c = np.tile(CW, (len(u), 1))
-    c[((u + 0.08) / 0.32) ** 2 + ((v + 0.02) / 0.48) ** 2 < 1] = CK
-    c[r2 > 0.78 ** 2] = CK
+    c[((u + 0.06) / 0.36) ** 2 + ((v + 0.02) / 0.58) ** 2 < 1] = CK
+    c[r2 > 0.925 ** 2] = CK                    # a thin rim, its edge between two rings of the patch
     return c
 de = unit(0.85, -1.0, 0.08)
 def eyes(state):
-    k.decal(CHEEK + de * 0.034, de, (0.034, 0.036), eye_look(state, eye, CM, CK, line=0.16), eps=0.005, rings=20,
+    k.decal(CHEEK + de * 0.029, de, (0.027, 0.037), eye_look(state, eye, CM, CK, line=0.16), eps=0.005, rings=20,
             segs=56, mirror=True)
 
 k.build(voxel=0.004, smooth=4)

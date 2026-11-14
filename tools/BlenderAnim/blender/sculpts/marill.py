@@ -30,8 +30,8 @@ def on_body(d, lift=0.0):
 k.add("body", ell(B, BR), BLUE, "body")
 k.add("crown", ell((0, -0.006, 0.235), (0.128, 0.12, 0.082)), BLUE, "head")
 
-# White below a level line round the lower third, crisp
-k.paint(lambda P: inside(P[:, 2] - (0.124 + 0.012 * (P[:, 0] / 0.146) ** 2), 0.0025) * (P[:, 2] > 0.0), BELLY,
+# White below a line round the lower 40 percent, curving up toward the sides
+k.paint(lambda P: inside(P[:, 2] - (0.142 + 0.03 * (P[:, 0] / 0.146) ** 2), 0.004) * (P[:, 2] > 0.0), BELLY,
         on=["body", "crown"])
 
 # Big round ears on top, set apart and leaning out, pink-red inside
@@ -51,24 +51,25 @@ k.add("arm", tube([(0.11, -0.04, 0.172), (0.145, -0.062, 0.158), (0.17, -0.078, 
       BLUE, "arm{s}", mirror=True)
 
 # Short legs and small round feet under the ball
-k.add("leg", tube([(0.062, -0.02, 0.08), (0.066, -0.03, 0.035)], [0.03, 0.028]), BLUE, "leg{s}", mirror=True)
-k.add("foot", ell((0.068, -0.045, 0.022), (0.032, 0.044, 0.023)), BLUE, "leg{s}", mirror=True)
+k.add("leg", tube([(0.062, -0.02, 0.08), (0.065, -0.028, 0.035)], [0.026, 0.024]), BLUE, "leg{s}", mirror=True)
+k.add("foot", ell((0.066, -0.04, 0.02), (0.026, 0.036, 0.02)), BLUE, "leg{s}", mirror=True)
 
-# The tail: a thin black zigzag out of its back, up behind its left, its face turned to the front three-quarter,
-# ending in a blue ball
-O = np.array([0.0, 0.125, 0.13])
-TB = np.array([-0.09, 0.3, 0.3])           # the ball's middle
+# The tail: a thin black zigzag leaving low at its back and going out and up to its left, its face to the front,
+# ending in a blue ball beside the body at its middle's height, clear of the ear (at ear height it read as a third ear)
+O = np.array([-0.03, 0.13, 0.095])
+TB = np.array([-0.215, 0.105, 0.195])       # the ball's middle: beside the hip and a little behind, clear of the ear
 L = TB - O
 LD = unit(*L)
-face = unit(-0.7, -0.4, 0.3)
+face = unit(-0.3, -0.9, 0.25)
 face = face - LD * np.dot(face, LD); face /= np.linalg.norm(face)
 SD = np.cross(face, LD)
-ZP = [O + L * t + SD * a for t, a in ((0.0, 0.0), (0.2, 0.03), (0.38, -0.03), (0.58, 0.03), (0.76, -0.025),
+BOW = np.array([-0.045, 0.075, 0.0])         # the line bowed out behind, clear of the body
+ZP = [O + L * t + SD * a + BOW * math.sin(math.pi * t) for t, a in ((0.0, 0.0), (0.2, 0.034), (0.38, -0.034), (0.58, 0.034), (0.76, -0.028),
                                        (0.86, 0.0))]
 for i in range(len(ZP) - 1):
     a, b = ZP[i], ZP[i + 1]
     k.add(f"tail{i}", blade([a, (a + b) / 2, b], [0.014, 0.014, 0.014], face, 0.5), INK, "tail", fuse=False)
-k.add("tailball", ell(TB, (0.064, 0.064, 0.064)), BLUE, "tail")
+k.add("tailball", ell(TB, (0.06, 0.06, 0.06)), BLUE, "tail")
 
 # An open smile with a pink tongue, flat along its top
 CM, CT, CB, CI, CW = srgb(MOUTH), srgb(TONGUE), srgb(BLUE), srgb(INK), srgb(WHITE)
@@ -87,7 +88,7 @@ def eye(u, v):
     c = np.tile(CI, (len(u), 1))
     c[((u - 0.12) / 0.32) ** 2 + ((v - 0.3) / 0.3) ** 2 < 1] = CW
     return c
-de = unit(0.4, -0.88, 0.3)
+de = unit(0.47, -0.84, 0.28)
 E = on_body(de)
 def eyes(state):
     k.decal(E, de, (0.019, 0.026), eye_look(state, eye, CB, CI, line=0.2), eps=0.004, rings=20, segs=56, mirror=True)
