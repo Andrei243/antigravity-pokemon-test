@@ -9,7 +9,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, leaf, srgb, inside, unit, eye_look, args
+from sculptkit import Kit, ell, tube, leaf, srgb, inside, unit, eye_look, args, outward
 
 src, out = args()
 k = Kit(src, coat="leaf")
@@ -75,8 +75,8 @@ for row, (z, length, width, clear) in enumerate(ROWS):
         lower, _ = on_bell(a, zz - length)
         d = (lower - p); d /= np.linalg.norm(d)
         d = d + o * 0.32 + np.array([math.cos(a), math.sin(a), 0]) * rs.uniform(-0.25, 0.25)
-        k.add(f"leaf{n}", leaf(p - o * 0.012, d, length * rs.uniform(0.92, 1.08), width * rs.uniform(0.9, 1.1),
-                               thick=0.012), LEAVES[rs.randint(3)], "body", fuse=False, surface="leaf")
+        k.add(f"leaf{n}", outward(leaf(p - o * 0.012, d, length * rs.uniform(0.92, 1.08), width * rs.uniform(0.9, 1.1),
+                               thick=0.012)), LEAVES[rs.randint(3)], "body", fuse=False, surface="leaf")
         n += 1
 
 # Under the chin: leaves hung from just under the nose, fanned a little, so no bare cloak shows below the face
@@ -84,7 +84,7 @@ for i, a in enumerate((-0.42, 0.42, 0.0)):
     p, o = on_bell(a, 0.462)
     p = p * np.array([0.8, 0.82, 1])
     d = np.array([0, 0, -1.0]) + o * 0.35 + np.array([math.cos(a), math.sin(a), 0]) * a * 0.5
-    k.add(f"chin{i}", leaf(p, d, 0.15, 0.062, thick=0.012), LEAVES[i], "body", fuse=False, surface="leaf")
+    k.add(f"chin{i}", outward(leaf(p, d, 0.15, 0.062, thick=0.012)), LEAVES[i], "body", fuse=False, surface="leaf")
 
 # The collar: leaves standing up and out round the sides and back of the head, two of them high beside the horn
 COLLAR = [(-0.95, 0.53, 0.15), (0.95, 0.53, 0.15), (-1.75, 0.51, 0.14), (1.75, 0.51, 0.14), (-2.55, 0.52, 0.13),
@@ -93,7 +93,7 @@ for i, (a, z, length) in enumerate(COLLAR):
     o = np.array([math.sin(a), -math.cos(a), 0.0])
     p = np.array([0.1 * math.sin(a), -0.095 * math.cos(a) + 0.01, z])
     d = o * 0.8 + np.array([0, 0, 1.0]) + np.array([math.cos(a), math.sin(a), 0]) * (0.25 if a > 0 else -0.25)
-    k.add(f"collar{i}", leaf(p - o * 0.015, d, length, 0.06, thick=0.012),
+    k.add(f"collar{i}", outward(leaf(p - o * 0.015, d, length, 0.06, thick=0.012)),
           LEAVES[(i + 1) % 3], "head", fuse=False, surface="leaf")
 
 # The hem: a ragged fringe of narrow dark leaves hanging all round
@@ -103,7 +103,7 @@ for j in range(count):
     z = 0.19 + rs.uniform(-0.02, 0.02)
     p, o = on_bell(a, z)
     d = np.array([0, 0, -1.0]) + o * rs.uniform(0.1, 0.45)
-    k.add(f"fringe{j}", leaf(p - o * 0.03, d, rs.uniform(0.09, 0.13), rs.uniform(0.02, 0.028), thick=0.01),
+    k.add(f"fringe{j}", outward(leaf(p - o * 0.03, d, rs.uniform(0.09, 0.13), rs.uniform(0.02, 0.028), thick=0.01)),
           (FRINGE, FRINGE2)[j % 2], "body", fuse=False, surface="leaf")
 
 # Two twigs poking out below, splayed

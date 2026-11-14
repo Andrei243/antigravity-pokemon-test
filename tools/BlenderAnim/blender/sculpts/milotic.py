@@ -12,7 +12,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, eye_look, tri, polygon, args
+from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, eye_look, tri, polygon, args, outward
 
 src, out = args()
 k = Kit(src, coat="scales")
@@ -153,8 +153,8 @@ TIP = LINE[0]
 for n_, a in enumerate([-42, -15, 12, 39]):
     d = np.array([math.sin(math.radians(a)), math.cos(math.radians(a))])
     o = TIP + np.array([0, 0.006 * (n_ % 2) - 0.003, -0.01])
-    k.add(f"fan{n_}", plate(lens(d * 0.0, d * 0.165, 0.042, bulge=0.5), o, 0.008), BLUE, "tailFin", fuse=False)
-    k.add(f"heart{n_}", plate(lens(d * 0.045, d * 0.128, 0.016, bulge=0.45), o, 0.014), PINK, "tailFin", fuse=False)
+    k.add(f"fan{n_}", outward(plate(lens(d * 0.0, d * 0.165, 0.042, bulge=0.5), o, 0.008)), BLUE, "tailFin", fuse=False)
+    k.add(f"heart{n_}", outward(plate(lens(d * 0.045, d * 0.128, 0.016, bulge=0.45), o, 0.014)), PINK, "tailFin", fuse=False)
 
 # --- the head: small, pointed in front, a tall crest ---------------------------------------------------------------
 def snout(V):

@@ -102,7 +102,9 @@ def hexcell(c, n, up, r, d_in, d_out):
     b = [c - n * d_in + r * q for q in ring]
     quads = [[f[i], b[i], b[(i + 1) % 6], f[(i + 1) % 6]] for i in range(6)]
     tris = [[c + n * d_out, f[i], f[(i + 1) % 6]] for i in range(6)] + [[c - n * d_in, b[(i + 1) % 6], b[i]] for i in range(6)]
-    return flatfaces(quads, tris, away=c)
+    # away from a point inside the prism: with d_in nought c lies in the back cap's own plane, and its faces were
+    # then turned by rounding, some one way and some the other
+    return flatfaces(quads, tris, away=c + n * (d_out - d_in) / 2)
 
 
 RC =0.084                                  # a cell's corner radius

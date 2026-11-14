@@ -14,7 +14,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, leaf, sheet, srgb, inside, smoothstep, unit, eye_look, args
+from sculptkit import Kit, ell, tube, leaf, sheet, srgb, inside, smoothstep, unit, eye_look, args, outward
 
 # --- the cloak: everything a form changes -------------------------------------------------------------------------
 CLOAK = dict(
@@ -124,16 +124,16 @@ if CLOAK["tips"]:
                 continue
             p, o = on_gown(a, z + rs.uniform(-0.012, 0.012))
             d = np.array([0, 0, -1.0]) + o * rs.uniform(0.75, 1.0)
-            k.add(f"tip{n}", leaf(p - o * 0.03, d, length * rs.uniform(0.9, 1.1), width * rs.uniform(0.9, 1.1),
-                                  thick=0.012), CLOAK["shades"][rs.randint(3)], "body", fuse=False, surface="leaf")
+            k.add(f"tip{n}", outward(leaf(p - o * 0.03, d, length * rs.uniform(0.9, 1.1), width * rs.uniform(0.9, 1.1),
+                                  thick=0.012)), CLOAK["shades"][rs.randint(3)], "body", fuse=False, surface="leaf")
             n += 1
     for j in range(8):
         a = 2 * math.pi * (j + 0.25) / 8
         o = np.array([math.sin(a), -math.cos(a) * 0.8, 0.0]); o /= np.linalg.norm(o)
         p = np.array([0.035 * math.sin(a), -0.03 * math.cos(a), 0.1])
-        k.add(f"hem{j}", leaf(p, np.array([0, 0, -0.75]) + o, 0.1, 0.045, thick=0.012),
+        k.add(f"hem{j}", outward(leaf(p, np.array([0, 0, -0.75]) + o, 0.1, 0.045, thick=0.012)),
               CLOAK["shades"][j % 3], "body", fuse=False, surface="leaf")
-    k.add("hemtip", leaf((0, -0.005, 0.08), (0, -0.2, -1.0), 0.075, 0.04, thick=0.012), CLOAK["shades"][1], "body",
+    k.add("hemtip", outward(leaf((0, -0.005, 0.08), (0, -0.2, -1.0), 0.075, 0.04, thick=0.012)), CLOAK["shades"][1], "body",
           fuse=False, surface="leaf")
 
 # The collar: leaves standing up round the sides and back of the head
@@ -142,7 +142,7 @@ for i, (a, length) in enumerate(((1.25, 0.11), (-1.25, 0.11), (1.9, 0.12), (-1.9
     o = np.array([math.sin(a), -math.cos(a), 0.0])
     p = np.array([0.12 * math.sin(a), -0.09 * math.cos(a) + 0.01, 0.53])
     d = o * 0.75 + np.array([0, 0, 1.0])
-    k.add(f"collar{i}", leaf(p - o * 0.02, d, length, 0.055, thick=0.012), CLOAK["collar"][i % 3], "head",
+    k.add(f"collar{i}", outward(leaf(p - o * 0.02, d, length, 0.055, thick=0.012)), CLOAK["collar"][i % 3], "head",
           fuse=False, surface="leaf")
 
 # --- the two great leaves held out like arms -----------------------------------------------------------------------

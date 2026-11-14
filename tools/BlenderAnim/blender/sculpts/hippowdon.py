@@ -7,7 +7,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, boxy, eye_look, args
+from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, boxy, eye_look, args, outward
 
 src, out = args()
 k = Kit(src, coat="fur")
@@ -74,12 +74,12 @@ k.paint(lambda P: inside(np.abs(P[:, 0]) - 0.145, 0.005) * inside(P[:, 1] + 0.25
 for i, (x, a, ln, r) in enumerate([(0.122, 0.118, 0.026, 0.026), (0.05, 0.14, 0.02, 0.02)]):
     for s in (1, -1):
         c = UC + X * x * s + UA * a - UN * (0.06 + ln * 0.6)
-        k.add(f"uptooth{i}{'R' if s > 0 else 'L'}", oriented(c, [X, UA, UN], (r, r * 0.9, ln)), TOOTH, "head",
+        k.add(f"uptooth{i}{'R' if s > 0 else 'L'}", outward(oriented(c, [X, UA, UN], (r, r * 0.9, ln))), TOOTH, "head",
               fuse=False, surface="shell")
 for i, (x, a, ln, r) in enumerate([(0.125, 0.105, 0.036, 0.028), (0.05, 0.128, 0.024, 0.021)]):
     for s in (1, -1):
         c = LC + X * x * s + LA * a + LN * (0.05 + ln * 0.6)
-        k.add(f"lowtooth{i}{'R' if s > 0 else 'L'}", oriented(c, [X, LA, LN], (r, r * 0.9, ln)), TOOTH, "jaw",
+        k.add(f"lowtooth{i}{'R' if s > 0 else 'L'}", outward(oriented(c, [X, LA, LN], (r, r * 0.9, ln))), TOOTH, "jaw",
               fuse=False, surface="shell")
 
 # --- the mounds the eyes peer out of, on the top of the head behind the upper jaw -----------------------------------
