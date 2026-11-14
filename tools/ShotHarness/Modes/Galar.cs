@@ -25,6 +25,8 @@ partial class Harness
         Frames(10);
         var galar = engine.OpenMapNamed("Galar");
         if (galar == null) { Console.WriteLine("!! no open map called Galar"); return; }
+        // GL7, part c: the Mega Max den's raid, played through the game by the stick
+        if (Environment.GetEnvironmentVariable("GALAR_FROM") == "den") { GalarDenRaid(galar); return; }
         foreach (var (shot, marker) in new[]
         {
             ("ga70_hammerlocke", "hammerlocke_south_gate"),
