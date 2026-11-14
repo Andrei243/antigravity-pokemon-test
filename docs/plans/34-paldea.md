@@ -187,6 +187,12 @@ written again from the session's own record.
 - **Shots**: the `paldea` mode's `pd70` to `pd85` (the gates, the ways, the towns and their gyms, the nine rooms, each
   leader at the end of the test).
 
+**Findings from the shots** (`pd70` to `pd85`, looked at; none changed here): the hills between the places stand as
+sheer grey walls of layered rock round every way and town; the towns are lawn with their squares paved and their
+buildings far apart; Cortondo's and Artazon's lanes stop short of the gyms' doors (the last ten metres are grass); the
+tests' rooms draw no walls on the course's gap rows (the rows block, as Galar's mission rooms' do, but nothing shows
+them), and the gym trainers stand in the worker's look.
+
 **Owed** (PD3's second session): the playthrough bot's run to three badges in `PlaythroughTests`; the tests as the
 originals' searches about the towns on the open map, and a giant olive's card; the towns' and the gyms' songs (the
 gym song loops too soon for a room's theme); the voices of the new cast designed by ear; Fly's places on a Town Map of
