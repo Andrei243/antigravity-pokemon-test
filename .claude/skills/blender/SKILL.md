@@ -352,6 +352,17 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
   Keep it lower than the body is tall and bend it to one side along its length (some 40 degrees), with the thickest
   plate the one whose colour should show at the edge; eyes on flat sides come forward onto the cheeks and turn about
   40 degrees off straight ahead.
+- **A shell** is loose sheets with a darker lining at 0.9 of its radius; knobs and spike roots on it stay shallower
+  than the gap, or they poke through the lining. Knobs want `sub=3` (a `sub=4` ball is some 2,500 vertices).
+- **A fan with ribs** is edge-to-edge wedges of alternating colour: ribs laid over a bent plate stayed hidden.
+- **A thin mark that is not convex** (a W, a zigzag) is paint in a local frame; as a decal its edge is ragged even
+  at `rings=40`. An eye's white edge goes between two rings of its decal, never on one.
+- **A fused limb tip of another colour bleeds up the limb**: paint the limb's colour back on its side of the line and
+  the tip's on the other, both with sharp edges.
+- **A part on the head bone that sits inside the body's outline** (a crown on an egg) must stay inside it, or it
+  leaves a shelf.
+- **A full disk cuts a copy short without a word**: after `No space left on device`, compare what was installed
+  byte for byte and remove what differs.
 - **Mirroring by hand**: multiply only the offsets by the side, never an anchor point that is off the midline.
 - **Thin black paint lines on a fused body hatch** at voxel 0.006 whatever the edge and with or without `on`: they
   read clean at the game's size, and a loose thin strip is the way where they must be crisp up close.
