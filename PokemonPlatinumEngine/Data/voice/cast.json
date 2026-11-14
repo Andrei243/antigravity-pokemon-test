@@ -516,6 +516,10 @@
         "accent": "en-us"
       }
     },
+    "brassius": {
+      "note": "first spoken at Artazon_GymTest.txt(33)",
+      "provisional": true
+    },
     "brawly": {
       "note": "first spoken at dewford_town_gym.txt(12)",
       "provisional": true
@@ -5257,6 +5261,10 @@
         "accent": "en-us"
       }
     },
+    "iono": {
+      "note": "first spoken at Levincia_GymTest.txt(33)",
+      "provisional": true
+    },
     "iris": {
       "note": "first spoken at CasteliaCity.txt(51)",
       "provisional": true
@@ -5573,6 +5581,10 @@
         "pitch": 1.032,
         "accent": "en-us"
       }
+    },
+    "katy": {
+      "note": "first spoken at Cortondo_GymTest.txt(34)",
+      "provisional": true
     },
     "keahi": {
       "note": "first spoken at HauoliCity_TrainersSchool.txt(10)",
@@ -11311,6 +11323,7 @@
     "Blue": "blue",
     "Boy": "look:boy",
     "Brandon": "brandon",
+    "Brassius": "brassius",
     "Brawly": "brawly",
     "Breeder": "breeder",
     "Brock": "brock",
@@ -11515,6 +11528,7 @@
     "Ilse": "ilse",
     "Ingo": "ingo",
     "Ione": "ione",
+    "Iono": "iono",
     "Iris": "iris",
     "Isaac": "isaac",
     "Isabel": "isabel",
@@ -11540,6 +11554,7 @@
     "Karate Master": "karate_master",
     "Karen": "karen",
     "Katelyn": "katelyn",
+    "Katy": "katy",
     "Keahi": "keahi",
     "Keira": "keira",
     "Kenji": "kenji",
