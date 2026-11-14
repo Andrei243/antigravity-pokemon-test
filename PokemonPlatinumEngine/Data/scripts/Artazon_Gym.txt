@@ -1,12 +1,12 @@
 # Artazon Gym's lobby (plan 34 · PD3): Brassius's gym, the second of Victory Road in the academy's suggested order. His
-# test, the hidden Sunflora, is through the doors behind the counter (Artazon_GymTest.txt). Our own lines.
+# test, the hidden Sunflora, is a search about the town (artazon.txt); his garden is behind the counter (Artazon_GymTest.txt). Our own lines.
 
 
 script Receptionist
   speaker "Receptionist"
   if badge grass goto Won
-  say "Welcome to Artazon Gym! Brassius's gym test is behind me: find the Sunflora hiding in his garden."
-  say "They stand perfectly still among the flowers. Find all three and Brassius will see you."
+  say "Welcome to Artazon Gym! Brassius's gym test is out in the town: find the Sunflora hiding among Artazon's flowers."
+  say "They stand perfectly still, like sculptures. Find all three, then come through to Brassius's garden."
   end
 label Won
   say "Congratulations on the Grass Badge! Levincia's gym is up the road north, and Cortondo's is west of Mesagoza."

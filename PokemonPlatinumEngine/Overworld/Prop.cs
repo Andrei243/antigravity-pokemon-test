@@ -407,6 +407,8 @@ public enum PropType
     /// It blocks nothing, so no arrangement can shut a way.
     /// </summary>
     SafariObject,
+    /// <summary>A giant olive of Katy's olive roll (plan 34 · PD3's second session): a thing of the map (<see cref="NPC.GiantOliveType"/>), drawn as a card.</summary>
+    GiantOlive,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

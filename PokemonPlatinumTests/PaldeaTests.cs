@@ -192,6 +192,15 @@ public class PaldeaTests
             new[] { "Levincia", "Cortondo", "Artazon" },
         };
         var badges = new Dictionary<string, string> { ["Cortondo"] = "Bug", ["Artazon"] = "Grass", ["Levincia"] = "Electric" };
+        // Katy's olive roll is in her gym's room; Brassius's and Iono's tests are searches about their towns on the open map
+        // (PD3's second session), each find a Pokémon of the place's file spoken to
+        var tests = new Dictionary<string, (string File, string[] Scripts)>
+        {
+            ["Cortondo"] = ("Cortondo_GymTest", new[] { "Test1", "Test2", "Test3" }),
+            ["Artazon"] = ("artazon", new[] { "HiddenSunflora1", "HiddenSunflora2", "HiddenSunflora3" }),
+            ["Levincia"] = ("levincia", new[] { "HiddenWattrel1", "HiddenWattrel2", "HiddenWattrel3" }),
+        };
+        var open = Open.Value;
         foreach (var order in orders)
         {
             var story = new StoryState();
@@ -199,11 +208,18 @@ public class PaldeaTests
             party.Add(new Pokemon(PokemonDatabase.Get("Sprigatito")!, 30, new Random(0)));
             var bag = new Inventory();
             StoryMigration.BeginNewGame(story, ScriptLibrary.Default);
-            HeadlessScriptHost Play(string room, string script)
+            HeadlessScriptHost Play(string file, string script)
             {
-                var host = new HeadlessScriptHost(story, party, bag) { Map = Rooms.Value(room), Region = RegionDatabase.Paldea };
+                bool room = char.IsUpper(file[0]);
+                var host = new HeadlessScriptHost(story, party, bag)
+                {
+                    Map = room ? Rooms.Value(file) : null,
+                    OpenMap = room ? null : open,
+                    OpenMapNamed = name => name == open.Name ? open : null,
+                    Region = RegionDatabase.Paldea
+                };
                 var runner = new ScriptRunner(ScriptLibrary.Default, host);
-                runner.Start(ScriptLibrary.Default.Find(script, room)!, null);
+                runner.Start(ScriptLibrary.Default.Find(script, file)!, null);
                 runner.RunToEnd();
                 Assert.Empty(host.Problems);
                 return host;
@@ -216,7 +232,14 @@ public class PaldeaTests
             int won = 0;
             foreach (string town in order)
             {
-                foreach (string test in new[] { "Test1", "Test2", "Test3" }) Play(town + "_GymTest", test);
+                // Brassius and Iono battle nobody who hasn't found all three of their finds
+                if (town != "Cortondo")
+                {
+                    Play(town + "_GymTest", "Leader");
+                    Assert.False(story.HasBadge(RegionDatabase.Paldea, badges[town]), $"{town}'s leader battled before the test was done");
+                }
+                var (file, scripts) = tests[town];
+                foreach (string test in scripts) Play(file, test);
                 for (int n = 1; n <= 3; n++) Assert.True(story.Has($"FLAG_PALDEA_{town.ToUpperInvariant()}_TEST_{n}"));
                 var host = Play(town + "_GymTest", "Leader");
                 Assert.Contains(host.Log, l => l.Contains("battle", StringComparison.OrdinalIgnoreCase));
@@ -239,6 +262,63 @@ public class PaldeaTests
             Assert.Equal(tera, record.Party[^1].TeraType);
             Assert.Equal(tera, TrainerDatabase.Build(record.Party[^1]).TeraType.Name);
         }
+    }
+
+    [Fact]
+    public void TheGymTestsOfArtazonAndLevinciaAreSearchesAboutTheirTownsAndKatysOlivesAreGiantOlives()
+    {
+        // Plan 34 · PD3's second session: Brassius's Sunflora and Iono's Wattrel stand about their towns on the open map as
+        // Pokémon of the places' files, each gone once found, every one where the walk of the region comes to it; Katy's
+        // olive roll keeps its gym's room, its three olives cards of their own
+        var open = Open.Value;
+        foreach (var (town, species) in new[] { ("ARTAZON", "Sunflora"), ("LEVINCIA", "Wattrel") })
+        {
+            var finds = open.People.Where(p => p.HiddenBy?.StartsWith($"FLAG_PALDEA_{town}_TEST_") == true).ToList();
+            Assert.Equal(3, finds.Count);
+            Assert.All(finds, p => Assert.Equal(species, p.Species));
+            Assert.All(finds, p => Assert.Equal(town.ToLowerInvariant(), open.AreaAt(p.Pos)?.Key));
+            Assert.All(finds, p => Assert.NotNull(ScriptLibrary.Default.Find(p.Script!, p.Place)));
+            // and nobody stands in the room's gaps any more
+            var room = Rooms.Value(char.ToUpperInvariant(town[0]) + town[1..].ToLowerInvariant() + "_GymTest");
+            Assert.DoesNotContain(room.Everyone, n => n.IsPokemon);
+        }
+        var olives = Rooms.Value("Cortondo_GymTest").Everyone.Where(n => n.NpcType == NPC.GiantOliveType).ToList();
+        Assert.Equal(3, olives.Count);
+        Assert.All(olives, o => Assert.Equal(PropType.GiantOlive, o.GymThing));
+        Assert.All(olives, o => Assert.True(o.IsThing));
+    }
+
+    [Fact]
+    public void PaldeasTownMapIsTheBakesGridAndFlyLandsOnEachTownsMarker()
+    {
+        // Plan 34 · PD3's second session: the Town Map of Paldea is a cell to each chunk of the baked land's bounds, its
+        // towns' cells hold the markers Fly lands on, and a town is open to Fly once its first arrival's flag is set
+        var open = Open.Value;
+        var map = RegionMap.Of(RegionDatabase.Paldea)!;
+        Assert.NotNull(map);
+        Assert.Equal("Paldea", map.Map);
+        Assert.Same(map, RegionMap.ForMap("Paldea"));
+        var (_, _, columns, rows) = PokemonPlatinumEngine.Graphics.RegionMapArt.OpenBoundsOf(open.Land!);
+        Assert.Equal((columns, rows), (map.Columns, map.Rows));
+        var spawns = SpawnLocations.In(RegionDatabase.Paldea);
+        Assert.Equal(spawns.Count, map.FlySpots.Count);
+        foreach (var spot in map.FlySpots)
+        {
+            var town = spawns.Single(s => s.Id == spot.Spawn);
+            Assert.Equal("Paldea", town.Map);
+            var marker = open.Marker(spot.Marker!);
+            Assert.NotNull(marker);
+            Assert.Equal(town.Area, open.AreaAt(marker!.Pos)?.Key);
+            Assert.Contains(PokemonPlatinumEngine.Graphics.RegionMapArt.OpenCellOf(open.Land!, marker.Pos), spot.Cells);
+            var landing = PokemonPlatinumEngine.Core.GameEngine.FlyLandingIn(open, map, town.Id);
+            Assert.Equal(marker, landing!.Value.Marker);
+        }
+        var story = new StoryState();
+        Assert.All(new TownMapState(map, story).Spots, s => Assert.False(s.Open));
+        story.Set("FLAG_FIRST_ARRIVAL_ARTAZON");
+        var spots = new TownMapState(map, story).Spots;
+        Assert.Equal(spawns.Count, spots.Count);
+        Assert.Equal(new[] { "artazon" }, spots.Where(s => s.Open).Select(s => s.Town.Area));
     }
 
     [Fact]

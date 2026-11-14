@@ -518,7 +518,20 @@
     },
     "brassius": {
       "note": "first spoken at Artazon_GymTest.txt(33)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "Brassius, Artazon's Grass-type gym leader and sculptor: theatrical, grand, every line a declaration about art"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.5,am_fenrir:0.5",
+        "speed": 0.96,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "brawly": {
       "note": "first spoken at dewford_town_gym.txt(12)",
@@ -4453,7 +4466,20 @@
     },
     "director_clavell": {
       "note": "first spoken at CaboPoco_PlayersHouse_1F.txt(16)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "Director Clavell of the academy in Mesagoza: courteous, measured, a kindly headmaster with a touch of formality"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_adam:0.4",
+        "speed": 0.95,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
     },
     "director_wren": {
       "note": "first spoken at JubilifeTV1F.txt(121)",
@@ -5263,7 +5289,20 @@
     },
     "iono": {
       "note": "first spoken at Levincia_GymTest.txt(33)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "Iono, Levincia's Electric-type gym leader and streamer: bubbly, loud, playing to her chat, never still"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sky:0.6,af_nova:0.4",
+        "speed": 1.08,
+        "pitch": 1.04,
+        "accent": "en-us"
+      }
     },
     "iris": {
       "note": "first spoken at CasteliaCity.txt(51)",
@@ -5584,7 +5623,20 @@
     },
     "katy": {
       "note": "first spoken at Cortondo_GymTest.txt(34)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Katy, Cortondo's Bug-type gym leader and baker: warm, soft, motherly, a teasing sweetness with a sting under it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.6,af_sarah:0.4",
+        "speed": 0.94,
+        "pitch": 1.0,
+        "accent": "en-us"
+      }
     },
     "keahi": {
       "note": "first spoken at HauoliCity_TrainersSchool.txt(10)",
@@ -9468,7 +9520,20 @@
     },
     "nemona": {
       "note": "first spoken at cabo_poco.txt(27)",
-      "provisional": true
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Nemona, the student council president and the rival: sunny, eager, battle-mad and generous with it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.6,af_river:0.4",
+        "speed": 1.05,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
     },
     "nessa": {
       "note": "first spoken at Hulbury_StadiumPitch.txt(8)",

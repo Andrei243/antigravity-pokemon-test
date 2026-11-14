@@ -1,7 +1,7 @@
 {
   // Artazon (plan 34 · PD3): the town of flowers and sculptures at the end of the road east, its fields of flowers on
   // both sides, its paved square, the gym north of the square and the Pokémon Center south of it; the road north to the
-  // East Province leaves from its north-east corner. Its people only talk; the gym and its test are rooms (Artazon_Gym,
+  // East Province leaves from its north-east corner. Its people only talk but for its gym test's three finds about the town (PD3's second session); the gym and its leader's course are rooms (Artazon_Gym,
   // Artazon_GymTest)
   "markers": [
     { "name": "artazon_west", "at": [356, 12.0, -324], "yaw": 90 },
@@ -31,6 +31,11 @@
     { "name": "the house by the fields", "min": [420, 11, -296], "max": [432, 16.5, -284], "building": { "kind": "house", "town": "paldea", "storeys": 2 } }
   ],
   "people": [
+    // Brassius's test (plan 34 · PD3's second session): three Sunflora standing perfectly still about the town, each found by
+    // a word and gone once found (artazon.txt's HiddenSunflora1 to 3)
+    { "name": "hidden_sunflora_1", "at": [378, 12.0, -342], "yaw": 0, "species": "Sunflora", "displayName": "Sunflora", "script": "HiddenSunflora1", "hiddenBy": "FLAG_PALDEA_ARTAZON_TEST_1" },
+    { "name": "hidden_sunflora_2", "at": [462, 12.0, -302], "yaw": 270, "species": "Sunflora", "displayName": "Sunflora", "script": "HiddenSunflora2", "hiddenBy": "FLAG_PALDEA_ARTAZON_TEST_2" },
+    { "name": "hidden_sunflora_3", "at": [438, 12.0, -372], "yaw": 180, "species": "Sunflora", "displayName": "Sunflora", "script": "HiddenSunflora3", "hiddenBy": "FLAG_PALDEA_ARTAZON_TEST_3" },
     {
       "name": "artazon_gardener", "at": [368, 12.0, -330], "yaw": 90, "look": "gentleman", "displayName": "Gardener",
       "lines": ["Brassius planted half of these flower beds himself. He says a town should be a sculpture you can walk through."],

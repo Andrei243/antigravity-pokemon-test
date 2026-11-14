@@ -12963,3 +12963,26 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
 - **The pay** (`RaceTrack.PayFor`, `RideRecords.RecordRace`, both hosts): by place, 3, 2, 1 and 0 Battle Points on the Blossom Road, none over a first round of seven at the Battle Tower; unlike the surf a second and a third place pay, because a race has no score band to pay by.
 - **The stable** (`kalos_route_12.RaceStable`): the Stable Master stands at 220, 481 on Route 12 (a person of the overlay, `gentleman`), asks nothing of the story, and turns away a team with nothing of a riding size (RESULT -1). The race's controls are Run held to push, the button to jump and the arrows to lean (the surf's button and landing window are not in it).
 - **What is kept**: `RideRecords`' best and runs under `race:<track>` and the Battle Points paid, in `SaveData.Rides` as the surf's are (no version raised). Owed: a stable of its own (the Master stands on the grass), the rivals' mounts drawn as riders and not as icons, a track beyond the first, the race's own song and sounds (the surf's stand in).
+### PD3's second session (2026-11-14)
+
+- **Brassius's and Iono's tests are searches about their towns**, as Scarlet and Violet's are: three Sunflora stand
+  about Artazon and three Wattrel about Levincia on the open map, each a person of the place's file with a `species`
+  (`OpenPersonFile.Species`: drawn as the species' model, spoken to like anyone), found by a word (`artazon.txt`'s
+  `HiddenSunflora1` to `3`, `levincia.txt`'s `HiddenWattrel1` to `3`) and gone once found by its test's flag. Their
+  gyms' rooms keep the leader's course with nobody in its gaps, so **Brassius and Iono battle only a challenger who has
+  found all three**. Katy's olive roll stays in her gym's room, its three olives now **cards of a giant olive** of ours
+  (`NPC.GiantOliveType`, `PropType.GiantOlive`; style guide, "A giant olive"), since the open world draws no cards.
+- **The towns' and gyms' songs are ours**: `paldea/cortondo` (an oboe in G over a nylon guitar and an accordion),
+  `paldea/artazon` (a flute in D over a marimba and pizzicato), `paldea/levincia` (a saw lead in A minor over a synth bass
+  and a four-on-the-floor kit), and `paldea/gym` given a second half (its loop now 30 s), which the six gym rooms play
+  in place of the academy's song. They wait for the user's ear.
+- **An open area is told as the player crosses into it** (`GameEngine.ComeToTheOpenArea`): its song plays (open areas'
+  `music` had been read and never played), a town of the region's spawns is come to (its first arrival's flag and a
+  line of the Journal), and the region's map hears of a first arrival it waits for. Galar's areas are told the same way.
+- **Paldea's Town Map** (`Data/world/paldea/townmap.json`) is a cell to each chunk of the baked land's bounds (36 by
+  28), painted from the bake (plan 32 · OW10); its blocks are the areas built so far, and Fly lands on a marker of the
+  places' files (the player's door, each town's Pokémon Center's door) once the town's first arrival's flag is set.
+  Paldea's spawns now name their open map (`"map": "Paldea"`), `RegionMap.ForMap` finds an open map's region, the cell
+  of a player in an open map is the chunk they stand in, and a town of an open map is reachable when its area is one of
+  the map's. **The open field has no start menu yet, so Fly can't be asked for in Paldea**: the map and its landings
+  wait for a way to open them (a question for the user: the original's flying taxi, or the start menu in the open field).

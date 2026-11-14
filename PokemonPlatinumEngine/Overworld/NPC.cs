@@ -413,6 +413,12 @@ public class NPC
     public const string ZygardeCellType = "ZygardeCell";
 
     /// <summary>
+    /// A giant olive of Katy's olive roll in Cortondo's gym (plan 34 · PD3's second session): a thing of the map in a gap of
+    /// the course, in the way like a person and spoken to like one (its script rolls it on into the goal). Drawn as a card.
+    /// </summary>
+    public const string GiantOliveType = "GiantOlive";
+
+    /// <summary>
     /// The Sevii Islands' fast ferry at its harbour, and Celio's network machine in One Island's Pokémon Center (plan 19's
     /// last notes; FireRed's <c>OBJ_EVENT_GFX_SEAGALLOP</c>, and the machine FireRed draws into its tiles): things of the
     /// map, in the way like a person, saying nothing (the ferry's sailor and the machine's sign events speak). Drawn as
@@ -466,6 +472,7 @@ public class NPC
         LawnmowerType => PropType.Lawnmower,
         DeoxysTriangleType => PropType.DeoxysTriangle,
         ZygardeCellType => PropType.ZygardeCell,
+        GiantOliveType => PropType.GiantOlive,
         SeagallopType => PropType.Seagallop,
         NetworkMachineType => PropType.NetworkMachine,
         FestivalLanternsType => PropType.FestivalLanterns,

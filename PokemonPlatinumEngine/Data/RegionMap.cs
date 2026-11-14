@@ -378,7 +378,10 @@ public sealed class RegionMap
     }
 
     /// <summary>The map of the region a map of the game belongs to; null for a region with no map of its own.</summary>
-    public static RegionMap? ForMap(string mapName) => RegionDatabase.RegionOfMap(mapName) is { } region ? Of(region.Id) : null;
+    public static RegionMap? ForMap(string mapName) =>
+        RegionDatabase.RegionOfMap(mapName) is { } region ? Of(region.Id)
+        // an open map's region (plan 34 · PD3's second session: Paldea's Town Map names its open map)
+        : OpenWorld.OpenRegions.IsOpenMap(mapName) && OpenWorld.OpenRegions.MapNames[mapName] is { } open ? Of(open) : null;
 
     /// <summary>Sinnoh's map.</summary>
     public static RegionMap? Sinnoh => Of("sinnoh");

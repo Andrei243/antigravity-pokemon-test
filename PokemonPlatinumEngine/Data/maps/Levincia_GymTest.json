@@ -1,7 +1,7 @@
 {
   "name": "Levincia_GymTest",
   "displayName": "Levincia Gym",
-  "bgmTrack": "paldea/academy",
+  "bgmTrack": "paldea/gym",
   "interior": "Gym",
   "trees": "Round",
   "battleArena": "Gym",
@@ -94,39 +94,6 @@
   ],
   "signboards": [],
   "npcs": [
-    {
-      "id": "test_wattrel_1",
-      "name": "Wattrel",
-      "npcType": "Pokemon",
-      "x": 6,
-      "y": 13,
-      "facing": "Down",
-      "script": "Test1",
-      "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_1",
-      "species": "Wattrel"
-    },
-    {
-      "id": "test_wattrel_2",
-      "name": "Wattrel",
-      "npcType": "Pokemon",
-      "x": 6,
-      "y": 9,
-      "facing": "Down",
-      "script": "Test2",
-      "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_2",
-      "species": "Wattrel"
-    },
-    {
-      "id": "test_wattrel_3",
-      "name": "Wattrel",
-      "npcType": "Pokemon",
-      "x": 6,
-      "y": 5,
-      "facing": "Down",
-      "script": "Test3",
-      "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_3",
-      "species": "Wattrel"
-    },
     {
       "id": "paldea_gym_trainer_volt",
       "name": "Volt",

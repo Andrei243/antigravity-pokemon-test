@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumEngine.Core.Autoplay;
@@ -30,4 +31,33 @@ public static partial class Itineraries
         // is what holds the itinerary open until the welcome has set the count)
         Leg.Talk("Mesagoza_AcademyHall", "clavell_hall") with { Until = PaldeaStory(7) },
     };
+
+    private static Func<StoryState, bool> PaldeaBadge(string badge) => story => story.HasBadge(RegionDatabase.Paldea, badge);
+
+    /// <summary>
+    /// Plan 34 · PD3's second session: from the academy's door the first three gyms in the academy's order, each test
+    /// and then its leader, the team seen to at the town's Pokémon Center before each: Katy's olive roll in her gym's room,
+    /// Brassius's hidden Sunflora about Artazon and Iono's Wattrel about Levincia on the open map.
+    /// </summary>
+    public static IReadOnlyList<Leg> PaldeaToTheThreeBadges { get; } = new[]
+    {
+        Leg.Talk("Cortondo_GymTest", "giant_olive_1") with { Until = Flag("FLAG_PALDEA_CORTONDO_TEST_1") },
+        Leg.Talk("Cortondo_GymTest", "giant_olive_2") with { Until = Flag("FLAG_PALDEA_CORTONDO_TEST_2") },
+        Leg.Talk("Cortondo_GymTest", "giant_olive_3") with { Until = Flag("FLAG_PALDEA_CORTONDO_TEST_3") },
+        Leg.Heal("Cortondo_PokemonCenter"),
+        Leg.Talk("Cortondo_GymTest", "katy") with { Until = PaldeaBadge("Bug") },
+        Leg.OpenTalk(PaldeaMap, "hidden_sunflora_1") with { Until = Flag("FLAG_PALDEA_ARTAZON_TEST_1") },
+        Leg.OpenTalk(PaldeaMap, "hidden_sunflora_2") with { Until = Flag("FLAG_PALDEA_ARTAZON_TEST_2") },
+        Leg.OpenTalk(PaldeaMap, "hidden_sunflora_3") with { Until = Flag("FLAG_PALDEA_ARTAZON_TEST_3") },
+        Leg.Heal("Artazon_PokemonCenter"),
+        Leg.Talk("Artazon_GymTest", "brassius") with { Until = PaldeaBadge("Grass") },
+        Leg.OpenTalk(PaldeaMap, "hidden_wattrel_1") with { Until = Flag("FLAG_PALDEA_LEVINCIA_TEST_1") },
+        Leg.OpenTalk(PaldeaMap, "hidden_wattrel_2") with { Until = Flag("FLAG_PALDEA_LEVINCIA_TEST_2") },
+        Leg.OpenTalk(PaldeaMap, "hidden_wattrel_3") with { Until = Flag("FLAG_PALDEA_LEVINCIA_TEST_3") },
+        Leg.Heal("Levincia_PokemonCenter"),
+        Leg.Talk("Levincia_GymTest", "iono") with { Until = PaldeaBadge("Electric") },
+    };
+
+    /// <summary>From the bedroom in Cabo Poco to the Electric Badge.</summary>
+    public static IReadOnlyList<Leg> PaldeaToTheThirdBadge => Join(PaldeaToTheAcademy, PaldeaToTheThreeBadges);
 }
