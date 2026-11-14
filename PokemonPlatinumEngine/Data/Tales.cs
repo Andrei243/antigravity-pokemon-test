@@ -66,6 +66,36 @@ public sealed class TaleRule
     /// </summary>
     public bool NoNight { get; set; }
 
+    /// <summary>The HP every heal gives back, in hundredths of its own (200 for the Sânziene's midsummer); 100 changes nothing.</summary>
+    public int Healing { get; set; } = 100;
+
+    /// <summary>No stage of any Pokémon may fall while it is told, its own moves' falls included (Făt-Frumos' youth without age).</summary>
+    public bool NoStatFalls { get; set; }
+
+    /// <summary>A held item that would be used up is kept the first time each Pokémon's is, so it works twice (the Spiriduș').</summary>
+    public bool ItemsTwice { get; set; }
+
+    /// <summary>A damaging move from a user heavier than its target hits with this much of its power, in hundredths (the Uriași'); 100 changes nothing.</summary>
+    public int Heavier { get; set; } = 100;
+
+    /// <summary>A Grass-type Pokémon gets back this share of its HP at each turn's end (16: a sixteenth, Muma Pădurii's forest); 0 for none.</summary>
+    public int GrassHeals { get; set; }
+
+    /// <summary>The teller's foes can't be switched out or run (Muma Pădurii's forest closing), Ghost types and a Shed Shell aside.</summary>
+    public bool HoldsFoes { get; set; }
+
+    /// <summary>
+    /// A Pokémon that faints gives this many stages of its higher attacking stat to an ally on the field, or to the next
+    /// of its side to come in while the tale is told (the Miorița's lament); 0 for none.
+    /// </summary>
+    public int FallenStrength { get; set; }
+
+    /// <summary>
+    /// The teller's side's moves gain this much power, in hundredths, for each turn the tale has been told, the turn told
+    /// counting as the first (the Draco's banner: 110, 120… for 10); 0 for none.
+    /// </summary>
+    public int Rising { get; set; }
+
     public TaleSky? Sky { get; set; }
 
     /// <summary>The battle song's tale layer by name (data only: CP12 writes the layers, as the giant layer is written).</summary>

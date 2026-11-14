@@ -70,7 +70,7 @@ public sealed class TrainerAi : IBattleController
     {
         var tales = battle.TalesToTell(mine);
         if (tales.Count == 0) return null;
-        if (battle.Field.Tale is { } told && (told.Teller == mine.Side || TaleWorth(battle, mine.Side, told.Rule) >= 0)) return null;
+        if (battle.Field.Tale is { } told && (told.Teller == mine.Side || TaleWorth(battle, mine.Side, told.Rule, told.Teller) >= 0)) return null;
         string? best = null;
         int most = 0;
         foreach (var id in tales)
@@ -87,9 +87,11 @@ public sealed class TrainerAi : IBattleController
     /// (theirs counted against), the weather it brings by the moves and types it helps and wears, and a Pokémon of the
     /// side that would wake to it. Accuracy cuts both ways alike and counts for nothing.
     /// </summary>
-    internal static int TaleWorth(BattleCore battle, BattleSide side, TaleRule rule)
+    internal static int TaleWorth(BattleCore battle, BattleSide side, TaleRule rule, BattleSide? teller = null)
     {
         int worth = 0;
+        // Whose tale it is, for the two that favour their teller (the Draco's banner, Muma Pădurii's hold): the side's own unless said
+        var by = teller ?? side;
         foreach (var b in battle.AllBattlers.Where(b => b.IsActive && b.Pokemon != null))
         {
             int sign = b.Side == side ? 1 : -1;
@@ -103,7 +105,35 @@ public sealed class TrainerAi : IBattleController
             // Hail and snow: what isn't Ice is worn or kept down, what is stands firm
             if (rule.Weather is BattleWeather.Hail or BattleWeather.Snow) worth += sign * (b.HasType(PokemonType.Ice) ? 25 : -25);
             if (b.Side == side && rule.FormFor(p.Species.Name) is { } form && p.Species.Form(form) != null && p.Form != form) worth += 50;
+            worth += sign * LaterTaleWorth(battle, b, rule, b.Side == by);
         }
+        // The forest's hold is worth a hit to its teller
+        if (rule.HoldsFoes) worth += by == side ? 30 : -30;
+        return worth;
+    }
+
+    /// <summary>
+    /// What the tales of CP11's second session are worth for one Pokémon on the field, to its own side (rough hundredths
+    /// of power, as <see cref="TaleWorth"/>): a heal doubled by its healing and draining moves and its berry; stats kept by
+    /// its moves that lower its own; a held item kept; a weight over its foes; a Grass type's heal; a strength owed by the
+    /// team behind it; a rising banner by its damaging moves, its teller's alone.
+    /// </summary>
+    private static int LaterTaleWorth(BattleCore battle, Battler b, TaleRule rule, bool tellers)
+    {
+        var p = b.Pokemon!;
+        int worth = 0;
+        var attacks = p.Moves.Where(m => m.Data.Category != MoveCategory.Status).ToList();
+        if (rule.Healing > 100)
+            worth += p.Moves.Count(m => m.Data.HealPercent > 0 || m.Data.DrainPercent > 0) * (rule.Healing - 100) / 4
+                + (p.HeldItem?.Pocket == ItemPocket.Berries ? 25 : 0);
+        if (rule.NoStatFalls)
+            worth += p.Moves.Count(m => m.Data.StatChangeTargetSelf && m.Data.StatStageAmount < 0) * 30 + p.StatStages.Values.Count(v => v > 0) * 20;
+        if (rule.ItemsTwice && p.HeldItem?.Pocket == ItemPocket.Berries) worth += 30;
+        if (rule.Heavier > 100 && battle.ActiveFoes(b).Any())
+            worth += battle.ActiveFoes(b).Count(f => BattleCore.WeightOf(b) > BattleCore.WeightOf(f)) * attacks.Count * (rule.Heavier - 100) / 2;
+        if (rule.GrassHeals > 0 && b.HasType(PokemonType.Grass)) worth += 25;
+        if (rule.FallenStrength > 0) worth += Math.Max(0, TeamOf(b).Count(m => !m.IsFainted && !m.IsEgg) - 1) * 10;
+        if (rule.Rising > 0 && tellers) worth += attacks.Count * rule.Rising * 3;
         return worth;
     }
 

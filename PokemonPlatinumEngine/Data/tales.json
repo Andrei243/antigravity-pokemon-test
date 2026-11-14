@@ -32,6 +32,49 @@
       "boost": { "types": ["Sound"], "flags": ["Sound"], "percent": 130 },
       "sky": { "color": [96, 64, 156], "amount": 0.35 },
       "songLayer": "tale_ielele"
+    },
+    {
+      "id": "miorita",
+      "fallenStrength": 1,
+      "sky": { "color": [150, 120, 140], "amount": 0.28, "grey": 0.25 },
+      "songLayer": "tale_miorita"
+    },
+    {
+      "id": "mumapadurii",
+      "grassHeals": 16,
+      "holdsFoes": true,
+      "sky": { "color": [40, 72, 40], "amount": 0.4, "grey": 0.1 },
+      "songLayer": "tale_mumapadurii"
+    },
+    {
+      "id": "fatfrumos",
+      "noStatFalls": true,
+      "sky": { "color": [255, 236, 190], "amount": 0.2 },
+      "songLayer": "tale_fatfrumos"
+    },
+    {
+      "id": "uriasi",
+      "heavier": 130,
+      "sky": { "color": [120, 104, 84], "amount": 0.3, "grey": 0.2 },
+      "songLayer": "tale_uriasi"
+    },
+    {
+      "id": "spiridus",
+      "itemsTwice": true,
+      "sky": { "color": [232, 120, 48], "amount": 0.25 },
+      "songLayer": "tale_spiridus"
+    },
+    {
+      "id": "sanziene",
+      "healing": 200,
+      "sky": { "color": [236, 220, 96], "amount": 0.22 },
+      "songLayer": "tale_sanziene"
+    },
+    {
+      "id": "draco",
+      "rising": 10,
+      "sky": { "color": [168, 44, 40], "amount": 0.3 },
+      "songLayer": "tale_draco"
     }
   ]
 }

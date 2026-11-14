@@ -142,7 +142,11 @@ public sealed class PlaceState
 /// turn ends it has left, its rule as the battle's table has it, and whether it brought the weather now over the field
 /// (which goes with it). It holds over both sides alike.
 /// </summary>
-public sealed record TaleState(string Id, BattleSide Teller, int Turns, Data.TaleRule Rule, bool BroughtWeather = false);
+public sealed record TaleState(string Id, BattleSide Teller, int Turns, Data.TaleRule Rule, bool BroughtWeather = false)
+{
+    /// <summary>Turn ends the tale has seen since it was told (the Draco's banner rises by them).</summary>
+    public int Rounds { get; init; }
+}
 
 /// <summary>
 /// The battlefield beyond the Pokémon on it (plan 06 · R3): the weather, Trick Room, Gravity, each side's screens

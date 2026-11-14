@@ -2037,6 +2037,48 @@
       "rule": "Timp de cinci ture, mișcările de tip Sunet și orice mișcare făcută din sunet lovesc mai tare.",
       "story": "În nopțile de vară Ielele joacă hora pe pajiști, iar iarba arde unde le-au călcat picioarele. Cine le aude cântecul joacă până în zori. Cei înțelepți își astupă urechile cu pelin și o iau pe drumul cel lung spre casă."
     },
+    "miorita": {
+      "name": "Miorița",
+      "told": "Bocetul unui cioban plutește peste câmp!",
+      "rule": "Timp de cinci ture, un Pokémon care leșină își dă puterea unui aliat sau următorului din tabăra lui care intră.",
+      "story": "Trei ciobani își mânau turmele peste munte, iar doi dintre ei au pus la cale să-l omoare pe al treilea la apus. Mioara lui, Miorița, a auzit și l-a prevenit. El n-a fugit: a cerut să fie îngropat lângă stână, cu fluierele lui, ca vântul să cânte din ele și oile să se strângă să-l jelească."
+    },
+    "mumapadurii": {
+      "name": "Muma Pădurii",
+      "told": "Pădurea veche se închide în jurul câmpului!",
+      "rule": "Timp de cinci ture, Pokémonii de tip Iarbă își refac HP-ul la sfârșitul fiecărei ture, iar adversarii povestitorului nu pot fi schimbați și nu pot fugi.",
+      "story": "Adânc în pădurea veche trăiește Muma Pădurii, mama codrului, cu scoarță în loc de piele și mușchi în loc de păr. Îi poartă pe drumeții rătăciți în cerc până se închid copacii în urma lor. Cei care o salută cu blândețe și lasă pâine pe o buturugă își găsesc drumul până dimineață."
+    },
+    "fatfrumos": {
+      "name": "Făt-Frumos",
+      "told": "Lumina tinereții fără bătrânețe cade peste câmp!",
+      "rule": "Timp de cinci ture, nicio statistică a niciunui Pokémon nu poate scădea.",
+      "story": "Un prinț născut plângând nu s-a liniștit până nu i-a promis tatăl lui tinerețe fără bătrânețe și viață fără de moarte. A străbătut lumea pe un cal care mânca jăratic și a găsit tărâmul acela de dincolo de munți, unde nimeni nu îmbătrânea. A stat acolo o zi care a fost o sută de ani."
+    },
+    "uriasi": {
+      "name": "Uriași",
+      "told": "Munții se mișcă: uriașii se trezesc!",
+      "rule": "Timp de cinci ture, un Pokémon mai greu decât ținta lui o lovește mai tare.",
+      "story": "Înainte să vină oamenii, munții erau uriașii, care pășeau din vârf în vârf și aruncau cu bolovani unii în alții de joacă. Când au venit primii plugari, uriașii s-au speriat de oamenii mărunți și s-au culcat să doarmă, iar culmile sunt spinările lor."
+    },
+    "spiridus": {
+      "name": "Spiriduș",
+      "told": "Un spiriduș se strecoară pe câmp!",
+      "rule": "Timp de cinci ture, prima dată când un obiect ținut s-ar consuma, rămâne ca să mai lucreze o dată.",
+      "story": "Un spiriduș iese dintr-un ou ținut cald la subraț nouă zile. Trăiește după sobă, repară ce e stricat și găsește ce s-a pierdut, iar orice lucru bun din casa lui se întâmplă de două ori. Dacă îi uiți castronul cu lapte, însă, îți ascunde cizmele în horn."
+    },
+    "sanziene": {
+      "name": "Sânziene",
+      "told": "Zânele de Sânziene dansează pe câmp!",
+      "rule": "Timp de cinci ture, orice vindecare reface de două ori mai mult HP.",
+      "story": "În noaptea de Sânziene, zânele florilor galbene de sânziene dansează pe câmpuri și binecuvântează ierburile. Fetele împletesc cununi din flori și le aruncă peste acoperiș. Tot ce se culege în noaptea aceea vindecă de două ori mai bine, iar bolnavii dorm liniștiți până dimineață."
+    },
+    "draco": {
+      "name": "Draco",
+      "told": "Steagul de luptă urlă peste câmp!",
+      "rule": "Timp de cinci ture, atacurile povestitorului se întăresc cu fiecare tură.",
+      "story": "Dacii mergeau la război sub draco, un cap de lup din bronz cu o coadă de pânză. Când călăreții prindeau viteză, vântul umfla coada și ea urla, și cu cât urla mai tare, cu atât șarjau mai cu putere, până fugea dușmanul numai de sunetul ei."
+    },
     "learned": "{player} a învățat basmul despre {tale}!",
     "writtenDown": "A fost scris în Cartea Basmelor."
   },
@@ -4279,6 +4321,11 @@
     "taleEnded": "Basmul lui {tale} s-a sfârșit.",
     "taleWoke": "{pokemon} s-a trezit la basmul lui {tale}!",
     "taleSlept": "{pokemon} a redevenit ce era.",
+    "taleKeepsStats": "Basmul lui {tale} nu lasă statisticile lui {target} să scadă!",
+    "taleKeepsItem": "Basmul lui {tale} i-a păstrat lui {pokemon} {item} pentru altă dată!",
+    "taleForestHeals": "Pădurea lui {tale} i-a refăcut HP-ul lui {pokemon}!",
+    "taleHoldsFoe": "Pădurea lui {tale} îl ține pe loc pe {pokemon}!",
+    "taleTakesStrength": "{pokemon} a preluat puterea lui {fallen}!",
     "stellarType": "Stelar",
     "teraformZero": "{ability} lui {pokemon} a șters vremea și terenul!",
     "theDimensionsBecameDistorted": "Dimensiunile s-au deformat!",

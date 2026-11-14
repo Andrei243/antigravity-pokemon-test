@@ -483,8 +483,9 @@ public sealed partial class BattleCore
         if (use.TryGetValue("hpRestored", out int code) && target.CurrentHP < target.MaxHP)
         {
             int before = target.CurrentHP;
-            int after = Math.Min(target.MaxHP, before + HpAmount(code, target));
-            if (where != null) RestoreHp(where, after - before, Text.Of("battle.recoveredHp", ("pokemon", name), ("amount", after - before)));
+            // (twice as much under the Sânziene's tale, plan 46 · CP11, on the field or on the bench, and the line says so)
+            int after = Math.Min(target.MaxHP, before + TaleHealing(HpAmount(code, target)));
+            if (where != null) RestoreHp(where, after - before, Text.Of("battle.recoveredHp", ("pokemon", name), ("amount", after - before)), talesOwn: true);
             else
             {
                 target.CurrentHP = after;

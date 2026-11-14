@@ -62,6 +62,8 @@ public sealed partial class BattleCore
 
         // By the modern rules Simple doubles the change itself; under Platinum's its stages count double where they are read
         if (Rules.SimpleDoublesChanges) foreach (var e in BattleEffects.Of(target)) amount = e.ScaleStatChange(amount);
+        // Făt-Frumos' tale lets no stage fall, whoever lowers it (plan 46 · CP11)
+        if (TaleKeepsTheStat(target, amount, announceFailure)) return false;
         int current = p.StatStages.GetValueOrDefault(stat);
         int next = Math.Clamp(current + amount, -6, 6);
         if (next == current)
@@ -228,7 +230,10 @@ public sealed partial class BattleCore
         return true;
     }
 
-    public void RestoreHp(Battler target, int amount, string message)
+    public void RestoreHp(Battler target, int amount, string message) => RestoreHp(target, amount, message, talesOwn: false);
+
+    /// <param name="talesOwn">The amount has had the tale's healing already (the bag's medicine, whose line names it).</param>
+    private void RestoreHp(Battler target, int amount, string message, bool talesOwn)
     {
         if (!target.IsActive)
         {
@@ -237,7 +242,8 @@ public sealed partial class BattleCore
         }
         var p = target.Pokemon!;
         // A berry eaten with Ripen gives twice as much (plan 06 · R27b)
-        p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + Ripened(target, amount));
+        // And the Sânziene's tale doubles every heal (plan 46 · CP11)
+        p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + (talesOwn ? amount : TaleHealing(Ripened(target, amount))));
         Say(message).With(new HpChanged(target.Place, p.CurrentHP, Healed: true));
     }
 
@@ -273,6 +279,8 @@ public sealed partial class BattleCore
     public void ConsumeItem(Battler holder)
     {
         if (holder.Pokemon?.HeldItem is not { } item) return;
+        // The Spiriduș' tale keeps it the first time, so that it works twice (plan 46 · CP11)
+        if (TaleKeepsTheItem(holder, item)) return;
         // A berry eaten lets Belch be used, for the rest of the battle (plan 06 · R25; Showdown's ateBerry)
         if (item.Pocket == ItemPocket.Berries) ateBerry.Add(holder.Pokemon);
         holder.Volatile.ConsumedItem = item;

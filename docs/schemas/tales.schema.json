@@ -89,6 +89,30 @@
           "noNight": {
             "type": "boolean"
           },
+          "healing": {
+            "type": "integer"
+          },
+          "noStatFalls": {
+            "type": "boolean"
+          },
+          "itemsTwice": {
+            "type": "boolean"
+          },
+          "heavier": {
+            "type": "integer"
+          },
+          "grassHeals": {
+            "type": "integer"
+          },
+          "holdsFoes": {
+            "type": "boolean"
+          },
+          "fallenStrength": {
+            "type": "integer"
+          },
+          "rising": {
+            "type": "integer"
+          },
           "sky": {
             "type": [
               "object",
