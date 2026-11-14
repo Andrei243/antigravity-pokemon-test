@@ -2,13 +2,13 @@
 
 The scratch paths are a session's own: replace them. A species' own lines (its number, forebear, examples and what to expect in the pictures) go with it.
 
-Work in the repository worktree `F:\projects\antigravity-pokemon-test\antigravity-pokemon-test\.claude\worktrees\blender-learning-9e5d0e` (run every command from there with paths relative to it; never `cd`; do not commit or touch git; never run a bare `python -`).
+Work in the repository worktree `E:\projects\antigravity-pokemon-test\antigravity-pokemon-test\.claude\worktrees\blender-learning-9e5d0e` (run every command from there with paths relative to it; never `cd`; do not commit or touch git; never run a bare `python -`).
 
 Read first, in this order:
 1. `.claude/skills/blender/SKILL.md`, the sections "Sculpting a species from nothing", "Building and installing a species" and "References, and what the first batches taught" (read ALL of the last: it is the lessons of forty-two species, among them "A face that reads", which the user has twice had to ask for).
 2. `tools/BlenderAnim/blender/sculptkit.py` (the kit: `Kit`, `ell`, `tube`, `blade`, `sheet`, `leaf`, `lumpy`, `polygon`, `facets`, `boxy`, `tri`, `unit`, `inside`, `smoothstep`, `srgb`, `eye_look`, `eye_states`, `paint`, `decal`, `add(..., carve=True)`, `build`, `export`).
 3. The worked examples named below.
-4. The references, with the Read tool (look only; never copy them into the repository or use them as textures), in `F:\projects\antigravity-pokemon-test\references\pokemon\`: `<number>_<Species>_art.png` and `_3d.png` for each of your species (and its forebear's). Write each species' features down as a list from the PICTURES (they overrule this brief wherever they differ; say so in your report) and tick them against your turntables.
+4. The references, with the Read tool (look only; never copy them into the repository or use them as textures), in `E:\projects\antigravity-pokemon-test\references\pokemon\`: `<number>_<Species>_art.png` and `_3d.png` for each of your species (and its forebear's). Write each species' features down as a list from the PICTURES (they overrule this brief wherever they differ; say so in your report) and tick them against your turntables.
 5. The skeletons: the sections `== <Species>` of `G:/Temp/claude/bb3a2cf7ebc9ae26/9d7f979c-f0c3-43b2-9ca3-5ca11351caca/scratchpad/bones.txt` (rest positions in Blender's axes: front is -Y, up +Z, the model's left is -X where the `L` bones are). The skeleton decides the pose. Put every part's pivot on these joints; give parts only bone names that exist, exactly as printed (`{s}` for R/L on mirrored parts).
 6. The C# sculptors for the surfaces (`Coat = ...`, `mat:`): search `PokemonPlatinumEngine/Graphics/PokemonModels*.cs` for `PokeBuilder <Species>(`. Follow the references where the old sculpt differs. Female looks and other forms are not needed.
 
