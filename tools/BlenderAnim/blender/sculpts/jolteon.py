@@ -138,21 +138,22 @@ def add_spikes():
     spike("cheek0", H + HS * np.array((0.068, 0.0, -0.025)), (0.75, 0.6, -0.25), 0.05, 0.022, (0, 0, 1), "head", mirror=True)
     spike("cheek1", H + HS * np.array((0.06, 0.03, 0.01)), (0.6, 0.8, 0.1), 0.045, 0.02, (0, 0, 1), "head", mirror=True)
     spike("crown", H + np.array((0, 0.0, HR[2] - 0.014)), (0, 0.5, 1), 0.045, 0.024, unit(0.77, -0.64, 0), "head")
-    # Along the back: two on the midline, their faces turned 40 degrees toward +X, and a pair to each side
-    spike("back0", (0, 0.0, 0.345), (0, 0.8, 1), 0.075, 0.034, unit(0.77, -0.64, 0), "body")
-    spike("back1", (0.03, 0.06, 0.34), (0.4, 0.9, 0.9), 0.08, 0.034, (0, 0, 1), "body", mirror=True)
-    # The burst over the haunches, where Eevee's tail was: a fan of spikes back and out, up and down
-    for i, (ang, ln, out_) in enumerate(((70, 0.11, 0.4), (35, 0.135, 0.6), (5, 0.135, 0.8), (-28, 0.1, 0.9))):
-        a = math.radians(ang)
-        d = (out_, math.cos(a), math.sin(a))
-        spike(f"burst{i}", (0.04, 0.165, 0.3 + 0.01 * math.sin(a)), d, ln, 0.038, unit(-math.sin(a) * 0.3, 0, 1)
-              if abs(ang) < 50 else (1, 0, 0), "tail", mirror=True)
-    spike("burstmid", (0, 0.18, 0.31), (0, 1, 0.45), 0.12, 0.038, unit(0.77, 0, 0.64), "tail")
-    # Spikes up and out over each hip, so the burst shows from behind and not only end-on
-    spike("hipup", (0.05, 0.11, 0.33), (0.85, 0.35, 0.6), 0.085, 0.034, (0, 1, 0), "tail", mirror=True)
-    spike("hipout", (0.065, 0.14, 0.28), (1, 0.45, 0.05), 0.08, 0.032, (0, 0, 1), "tail", mirror=True)
-    # A spike low on each haunch, back and down
-    spike("haunch", (0.07, 0.16, 0.21), (0.5, 0.9, -0.5), 0.065, 0.03, (0, 0, 1), "hind{s}", mirror=True)
+    # The coat behind the collar is all large jagged points (the art's), each about as long as the head is wide and
+    # broad at its foot, sweeping back more than out so the model stays narrow:
+    # a row down the spine, leaning back, faces turned 40 degrees toward +X
+    for i, (y, z, ln) in enumerate(((-0.01, 0.37, 0.1), (0.05, 0.352, 0.115), (0.11, 0.35, 0.125))):
+        spike(f"spine{i}", (0, y, z), (0, 1, 0.75), ln, 0.046, unit(0.77, -0.64, 0), "body")
+    # one behind each shoulder, back, out and up
+    spike("shoulderpt", (0.062, -0.03, 0.3), (0.8, 1, 0.45), 0.1, 0.044, (0, 0, 1), "body", mirror=True)
+    # three on each haunch, sweeping back and out: high, level and low
+    for i, (base, d, ln) in enumerate((((0.058, 0.13, 0.31), (0.75, 1, 0.45), 0.14),
+                                       ((0.07, 0.15, 0.25), (0.8, 1, -0.05), 0.14),
+                                       ((0.064, 0.165, 0.19), (0.6, 1, -0.5), 0.105))):
+        spike(f"haunch{i}", base, d, ln, 0.047, (0, 0, 1) if i else unit(-0.3, 0.3, 1), "hind{s}" if i == 2 else "tail",
+              mirror=True)
+    # The rump's burst where Eevee's tail was: a few large points, back and up from the middle and to each side
+    spike("burstmid", (0, 0.18, 0.32), (0, 1, 0.5), 0.15, 0.05, unit(0.77, 0, 0.64), "tail")
+    spike("burstup", (0.035, 0.17, 0.33), (0.75, 0.6, 0.9), 0.14, 0.048, unit(-0.6, 0.3, 0.4), "tail", mirror=True)
 
 
 # --- the face: patches on the fused head, laid before the body's build ------------------------------------------------

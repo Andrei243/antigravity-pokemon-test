@@ -151,7 +151,7 @@ CI, CW, CT = srgb(INK), srgb(WHITE), srgb(TEAL)
 def eye(u, v):
     c = np.tile(CW, (len(u), 1))
     r = np.hypot(u, v)
-    c[r > 0.83] = CI
+    c[r > 0.92] = CI                      # a thin edge: at 0.83 it was a heavy black ring at the game's size
     c[np.hypot(u + 0.02, v + 0.03) < 0.36] = CI
     return c
 de = unit(0.48, -0.84, 0.28)
