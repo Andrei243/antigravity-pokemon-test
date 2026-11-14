@@ -5,6 +5,7 @@ What changes from one release to the next, for players. Every session's close-ou
 ## [Unreleased]
 
 - Paldea grows past Mesagoza: out of its west gate to Cortondo among its olive groves, out of its east gate to Artazon and its flower fields, and north from Artazon to Levincia on the eastern sea, each with a Pokémon Center, wild Pokémon along the way and a gym. Katy, Brassius and Iono wait at the end of their gym tests with the Bug, Grass and Electric Badges, and the three may be taken in any order.
+- Brassius's and Iono's gym tests are now searches about their towns: find the Sunflora standing still among Artazon's flowers and the Wattrel hiding about Levincia's streets before the leader will battle you. Katy's olive roll rolls giant olives. Cortondo, Artazon, Levincia and the gyms have songs of their own, and Paldea's places now play their songs as you walk into them.
 
 - Trick surfing on Hau'oli's beach: the surf club's captain lends you a Mantine to ride the waves against three of the club. Carve down the wave for speed, jump off its crest, hold an arrow for a spin, a roll, a flip or a dive, and press just before the water to land it straight; tricks landed in a row build a combo, and a first place pays Battle Points.
 

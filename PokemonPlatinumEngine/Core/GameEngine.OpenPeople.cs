@@ -46,7 +46,8 @@ public partial class GameEngine
         {
             Name = p.ShownName ?? p.Key,
             Key = p.Key,
-            NpcType = p.Look ?? "Trainer",
+            NpcType = p.Species != null ? NPC.PokemonType : p.Look ?? "Trainer",
+            Species = p.Species,
             Script = p.Script,
             ScriptFile = p.Place,
             DialogLines = p.Lines.ToList(),

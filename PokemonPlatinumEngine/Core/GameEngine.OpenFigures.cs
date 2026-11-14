@@ -38,6 +38,12 @@ public partial class GameEngine
         {
             if (!p.Present) continue;
             bool exclaiming = openApproach is { } a && a.Trainer == p && a.Exclaiming || openPairApproach is { } b && b.Trainer == p && b.Exclaiming;
+            // A Pokémon standing in a place in place of a person (plan 34 · PD3's second session), at its species' height
+            if (p.Species is { } species)
+            {
+                openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "person:" + p.Key, species, Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming, HeightOf(species)));
+                continue;
+            }
             openFigures.Add(new OpenFigure(OpenFigureKind.Person, "person:" + p.Key, OpenLookOf(map, p), Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming));
         }
         if (field.Follower is { } follower)
@@ -126,7 +132,11 @@ public partial class GameEngine
     {
         if (IsHeadless) return;
         var looks = new List<string>();
-        foreach (var p in field.Map.People) looks.Add(OpenLookOf(field.Map, p));
+        foreach (var p in field.Map.People)
+        {
+            if (p.Species is { } species) PokemonModels.Request(species);
+            else looks.Add(OpenLookOf(field.Map, p));
+        }
         CharacterModels.Preload(looks);
         if (field.Follower is { TrainerId: null } f) PokemonModels.Request(f.Who);
         // The species the map's zones bring out (plan 32 · OW7), so a wild Pokémon coming into view has its model

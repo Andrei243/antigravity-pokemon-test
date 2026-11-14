@@ -24,11 +24,11 @@
     // The South and East Provinces (plan 34 · PD3): west out of Mesagoza to Cortondo, east to Artazon, and north from
     // Artazon to Levincia on the eastern sea
     { "key": "south_province_area_two", "name": "South Province (Area Two)", "polygon": [[-352, -360], [-96, -360], [-96, -296], [-352, -296]], "music": "paldea/south_province" },
-    { "key": "cortondo", "name": "Cortondo", "polygon": [[-480, -384], [-352, -384], [-352, -264], [-480, -264]], "music": "paldea/cabo_poco" },
+    { "key": "cortondo", "name": "Cortondo", "polygon": [[-480, -384], [-352, -384], [-352, -264], [-480, -264]], "music": "paldea/cortondo" },
     { "key": "south_province_area_three", "name": "South Province (Area Three)", "polygon": [[96, -360], [352, -360], [352, -296], [96, -296]], "music": "paldea/south_province" },
-    { "key": "artazon", "name": "Artazon", "polygon": [[352, -384], [480, -384], [480, -264], [352, -264]], "music": "paldea/cabo_poco" },
+    { "key": "artazon", "name": "Artazon", "polygon": [[352, -384], [480, -384], [480, -264], [352, -264]], "music": "paldea/artazon" },
     { "key": "east_province_area_one", "name": "East Province (Area One)", "polygon": [[400, -640], [480, -640], [480, -384], [400, -384]], "music": "paldea/south_province" },
-    { "key": "levincia", "name": "Levincia", "polygon": [[400, -800], [592, -800], [592, -640], [400, -640]], "music": "paldea/mesagoza" }
+    { "key": "levincia", "name": "Levincia", "polygon": [[400, -800], [592, -800], [592, -640], [400, -640]], "music": "paldea/levincia" }
   ],
   "maps": [
     { "name": "Paldea", "areas": ["cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza",

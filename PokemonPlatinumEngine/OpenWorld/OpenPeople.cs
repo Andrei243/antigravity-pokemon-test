@@ -91,6 +91,9 @@ public sealed class OpenPerson
     /// <summary>The look they are drawn with (a look of <c>characters.json</c>); null for the plain townsperson.</summary>
     public string? Look { get; init; }
 
+    /// <summary>The species of a Pokémon standing in the place in place of a person (plan 34 · PD3's second session), drawn as its model; null for a person.</summary>
+    public string? Species { get; init; }
+
     /// <summary>The name over what they say; null for their trainer's name, or nobody's.</summary>
     public string? ShownName { get; init; }
 

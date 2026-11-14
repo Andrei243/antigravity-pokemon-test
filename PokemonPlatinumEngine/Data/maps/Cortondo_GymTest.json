@@ -1,7 +1,7 @@
 {
   "name": "Cortondo_GymTest",
   "displayName": "Cortondo Gym",
-  "bgmTrack": "paldea/academy",
+  "bgmTrack": "paldea/gym",
   "interior": "Gym",
   "trees": "Round",
   "battleArena": "Gym",
@@ -95,37 +95,34 @@
   "signboards": [],
   "npcs": [
     {
-      "id": "test_smoliv_1",
-      "name": "Smoliv",
-      "npcType": "Pokemon",
+      "id": "giant_olive_1",
+      "name": "Giant Olive",
+      "npcType": "GiantOlive",
       "x": 6,
       "y": 13,
       "facing": "Down",
       "script": "Test1",
-      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_1",
-      "species": "Smoliv"
+      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_1"
     },
     {
-      "id": "test_smoliv_2",
-      "name": "Smoliv",
-      "npcType": "Pokemon",
+      "id": "giant_olive_2",
+      "name": "Giant Olive",
+      "npcType": "GiantOlive",
       "x": 6,
       "y": 9,
       "facing": "Down",
       "script": "Test2",
-      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_2",
-      "species": "Smoliv"
+      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_2"
     },
     {
-      "id": "test_smoliv_3",
-      "name": "Smoliv",
-      "npcType": "Pokemon",
+      "id": "giant_olive_3",
+      "name": "Giant Olive",
+      "npcType": "GiantOlive",
       "x": 6,
       "y": 5,
       "facing": "Down",
       "script": "Test3",
-      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_3",
-      "species": "Smoliv"
+      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_3"
     },
     {
       "id": "paldea_gym_trainer_olive",

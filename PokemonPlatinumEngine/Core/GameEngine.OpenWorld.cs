@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Core.Diagnostics;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.OpenWorld;
 
 namespace PokemonPlatinumEngine.Core;
@@ -56,6 +58,9 @@ public partial class GameEngine
         BeginTheOpenPeople(flow.Open);
         // The orbit camera begun behind them (plan 32 · OW8)
         BeginTheOpenCamera(yaw);
+        // The area come to (plan 34 · PD3's second session)
+        openAreaKey = null;
+        ComeToTheOpenArea(flow.Open);
     }
 
     /// <summary>
@@ -114,8 +119,37 @@ public partial class GameEngine
             jump = false;
             return tick;
         }, f => CrossTheVolumes(f) || LookForOpenTrainers(f) || MeetOpenWild(f));
+        // The area the player stands in now (plan 34 · PD3's second session): its song and its first arrival
+        ComeToTheOpenArea(field);
         // A wild Pokémon that noticed the player in those ticks cries out (plan 32, after OW10)
         HearTheNoticed(field);
+    }
+
+    // The open area the player was last told to be in (its key), so a crossing into another is told once
+    private string? openAreaKey;
+
+    /// <summary>
+    /// The area of an open map the player stands in (plan 34 · PD3's second session), told once as they cross into it, as
+    /// a grid area is (<see cref="NoteArrival"/>): a town of the region's spawns is come to (its first arrival's flag, which
+    /// Fly's place waits for, and a line of the Journal the first time), the region's map hears of a first arrival it
+    /// waits for, and the area's song plays. A place come to by a door or a save is told the same way.
+    /// </summary>
+    private void ComeToTheOpenArea(OpenField field)
+    {
+        if (field.Map.AreaAt(field.Player.Pos) is not { } area || area.Key == openAreaKey) return;
+        openAreaKey = area.Key;
+        if (SpawnLocations.ArrivedIn(Here.Id, area.Key) is { } town)
+        {
+            if (!flow.Story.Has(town.ArrivalFlag)) flow.Journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, area.Name));
+            flow.Story.Set(town.ArrivalFlag);
+        }
+        if (RegionMap.ForMap(field.Map.Name) is { } region)
+            foreach (string flag in region.ArrivalFlags(area.Key)) flow.Story.Set(flag);
+        if (area.Music is { Length: > 0 } song && MusicLibrary.Exists(song))
+        {
+            AudioManager.Region = Here.Id;
+            AudioManager.PlayMusic(song);
+        }
     }
 
     /// <summary>
@@ -125,6 +159,7 @@ public partial class GameEngine
     private void TakeUpOpenPlace(SaveData save)
     {
         flow.Open = null;
+        openAreaKey = null;
         if (save.OpenPlace is not { } saved) return;
         var place = saved.ToPlace();
         if (OpenMapNamed(place.Map) is { } map)

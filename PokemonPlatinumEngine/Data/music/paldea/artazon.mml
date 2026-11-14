@@ -1,0 +1,44 @@
+# The town of flowers and sculptures east of Mesagoza: a flute's skipping tune in D over a marimba's arpeggios and
+# pizzicato strings, a ukulele on the off-beats and a light kit, bright as a flower bed in the sun; at night a celesta.
+# Original composition for this game (plan 34 · PD3's second session), in the modern sound.
+title Artazon
+tempo 108
+meter 4/4
+reverb 0.26
+nighttempo 0.92
+room chamber 1.4
+
+track lead flute night=celesta vol=0.6 pan=0.05 rev=0.26
+  o5 a2. r4 | L o5 f+4 a8 o6 d8 o5 a4 f+4 | o5 g4 b8 o6 d8 o5 b4 g4 | o5 a4 o6 c+8 e8 c+4 o5 a4 |
+  o6 d2 o5 a4 f+4 | o5 f+4 b8 o6 d8 o5 b4 f+4 | o5 g4 d8 g8 b4 g4 | o5 e4 a8 o6 c+8 o5 a4 e4 |
+  o5 a2. r4 | o6 d4 o5 a8 f+8 a4 o6 d4 | o5 b4 g8 d8 g4 b4 | o5 g4 e8 g8 b4 e4 |
+  o5 c+4 e8 a8 o6 c+4 o5 a4 | o5 b4 o6 d8 o5 b8 g4 d4 | o5 e4 a8 o6 c+8 e4 c+4 | o6 d4 o5 a8 f+8 d4 f+4 |
+  o5 d2. r4 | o5 a2. r4 |
+
+track marimba marimba vol=0.3 pan=-0.25 rev=0.22
+  o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | L o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 |
+  o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 b8 o5 d8 f+8 d8 o4 b8 o5 d8 f+8 d8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 |
+  o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 e8 g8 b8 g8 e8 g8 b8 g8 |
+  o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 |
+  o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 |
+
+track uke ukulele vol=0.2 pan=0.3 rev=0.24
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | L o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (a > c+ e)4 r4 (a > c+ e)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (b > d f+)4 r4 (b > d f+)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (a > c+ e)4 r4 (a > c+ e)4 |
+  o4 r4 (a > c+ e)4 r4 (a > c+ e)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (e g b)4 r4 (e g b)4 |
+  o4 r4 (a > c+ e)4 r4 (a > c+ e)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (a > c+ e)4 r4 (a > c+ e)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+
+track bass pizzicato vol=0.5 rev=0.1
+  o3 d4 a8 d8 f+4 a4 | L o3 d4 a8 d8 f+4 a4 | o3 g4 d8 g8 b4 d4 | o2 a4 o3 e8 o2 a8 o3 c+4 e4 |
+  o3 d4 a8 d8 f+4 a4 | o2 b4 o3 f+8 o2 b8 o3 d4 f+4 | o3 g4 d8 g8 b4 d4 | o2 a4 o3 e8 o2 a8 o3 c+4 e4 |
+  o2 a4 o3 e8 o2 a8 o3 c+4 e4 | o3 d4 a8 d8 f+4 a4 | o3 g4 d8 g8 b4 d4 | o3 e4 b8 e8 g4 b4 |
+  o2 a4 o3 e8 o2 a8 o3 c+4 e4 | o3 g4 d8 g8 b4 d4 | o2 a4 o3 e8 o2 a8 o3 c+4 e4 | o3 d4 a8 d8 f+4 a4 |
+  o3 d4 a8 d8 f+4 a4 | o3 d4 a8 d8 f+4 a4 |
+
+track drums kit vol=0.22 pan=0.1 rev=0.12
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | L v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |

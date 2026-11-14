@@ -175,6 +175,33 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void APaldeaGamePlaysFromTheBedroomInCaboPocoToTheThirdBadge()
+    {
+        // Plan 34 · PD3's second session: on from the academy's door through the first three gyms in the academy's order,
+        // Katy's olive roll in her gym's room and Brassius's and Iono's searches on the open map, the team seen to before
+        // each leader; strong Pokémon on the team before the first arrives, as Galar's run has it, so the leaders are the
+        // story's to be got through
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            foreach (var (species, level) in new[] { ("Pawmot", 60), ("Skeledirge", 60), ("Garganacl", 60) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.PaldeaToTheThirdBadge) };
+            Run(bot, 3 * 3600);
+            output.WriteLine($"ended on {game.Map.Name}, VAR_PALDEA_STORY {game.Story.Var("VAR_PALDEA_STORY")}, badges {game.Story.BadgeCount(RegionDatabase.Paldea)}");
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.Equal(3, game.Story.BadgeCount(RegionDatabase.Paldea));
+            foreach (string badge in new[] { "Bug", "Grass", "Electric" }) Assert.True(game.Story.HasBadge(RegionDatabase.Paldea, badge), badge);
+            // Crossing into the towns opened them to Fly on Paldea's Town Map
+            foreach (string town in new[] { "CORTONDO", "ARTAZON", "LEVINCIA" }) Assert.True(game.Story.Has("FLAG_FIRST_ARRIVAL_" + town), town);
+        }, Seed, RegionDatabase.Paldea);
+    }
+
+    [Fact]
     public void TheWayIsFoundAcrossMapsAndAlongAMapWithNoBound()
     {
         // Across maps, by their warps: down the stairs and out of the house; into the mine and down a floor

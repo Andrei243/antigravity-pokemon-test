@@ -1,7 +1,7 @@
 {
   "name": "Artazon_Gym",
   "displayName": "Artazon Gym",
-  "bgmTrack": "paldea/academy",
+  "bgmTrack": "paldea/gym",
   "interior": "Gym",
   "trees": "Round",
   "width": 11,

@@ -1,7 +1,7 @@
 {
   "name": "Artazon_GymTest",
   "displayName": "Artazon Gym",
-  "bgmTrack": "paldea/academy",
+  "bgmTrack": "paldea/gym",
   "interior": "Gym",
   "trees": "Round",
   "battleArena": "Gym",
@@ -94,39 +94,6 @@
   ],
   "signboards": [],
   "npcs": [
-    {
-      "id": "test_sunflora_1",
-      "name": "Sunflora",
-      "npcType": "Pokemon",
-      "x": 6,
-      "y": 13,
-      "facing": "Down",
-      "script": "Test1",
-      "hiddenBy": "FLAG_PALDEA_ARTAZON_TEST_1",
-      "species": "Sunflora"
-    },
-    {
-      "id": "test_sunflora_2",
-      "name": "Sunflora",
-      "npcType": "Pokemon",
-      "x": 6,
-      "y": 9,
-      "facing": "Down",
-      "script": "Test2",
-      "hiddenBy": "FLAG_PALDEA_ARTAZON_TEST_2",
-      "species": "Sunflora"
-    },
-    {
-      "id": "test_sunflora_3",
-      "name": "Sunflora",
-      "npcType": "Pokemon",
-      "x": 6,
-      "y": 5,
-      "facing": "Down",
-      "script": "Test3",
-      "hiddenBy": "FLAG_PALDEA_ARTAZON_TEST_3",
-      "species": "Sunflora"
-    },
     {
       "id": "paldea_gym_trainer_hedge",
       "name": "Hedge",

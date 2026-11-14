@@ -147,7 +147,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 
 - [x] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza (2026-11-13, its first session: the file, the open map of five areas described and baked, six rooms, the chapter from the bedroom to the academy's door headless, the plane from Galar landing; "PD1 as built", below; its second session 2026-11-14: the harness's `paldea` mode with every owed shot, the bot's run from the bedroom to the academy's door in `PlaythroughTests`, `profile`'s Mesagoza plaza; "PD1's second session", below. **Waits for the user**: the look of Cabo Poco and Mesagoza, judged from the `paldea` mode's shots, as the done-when has it (the second session's findings, below, are the things to judge first); the bake's footprint for the whole region (the question below); `Architecture.Paldea` seen in the game. **Owed**: the academy's halls past the entrance hall, the voices of the new cast designed by ear, and whatever the user's judgment of the findings asks)
 - [x] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12, its rig 2026-11-12 as FM13, and its last part 2026-11-13: the navigation mesh's hop, high jump, climb and glide links for a region whose `world.json` says `mount`, the lab's yard with a painted climbable face, the done-when ridden in `MountLabTests`, Paldea's mesh baked again with them; "PD2 as built", below. **Owed**: the playthrough bot riding the links; the user's word on the yard's shots `fwy0` to `fwy6`)
-- [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below. **Owed**: the bot's run to three badges, the tests as searches of the towns, the towns' and gyms' songs, the new cast's voices, the user's word on the provinces' distances)
+- [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below; its second session the same day: the bot's run to three badges in `PlaythroughTests`, Brassius's and Iono's tests as searches about their towns on the open map and Katy's giant olives as cards, the towns' and the gym's songs, Paldea's Town Map with Fly's places, the new cast's voices designed; "PD3, second session", below. **Waits for the user**: the provinces' distances, decision 3 (taken at its recommendation), the songs by ear, the voices by ear, and how Fly is to be asked for in the open field)
 - [ ] PD4 The Path of Legends
 - [ ] PD5 Starfall Street and Let's Go
 - [ ] PD6 The West and North Provinces and the last five gyms
@@ -197,6 +197,31 @@ them), and the gym trainers stand in the worker's look.
 originals' searches about the towns on the open map, and a giant olive's card; the towns' and the gyms' songs (the
 gym song loops too soon for a room's theme); the voices of the new cast designed by ear; Fly's places on a Town Map of
 Paldea; the user's word on the provinces' distances.
+
+## PD3, second session (2026-11-14)
+
+What PD3's first session owed, but for the user's word on the provinces' distances (left as they are) and decision 3
+(still at its recommendation). The rulings' "PD3's second session" has the decisions.
+
+- **The bot's run to three badges** (`Itineraries.PaldeaToTheThreeBadges`, `PaldeaToTheThirdBadge`;
+  `PlaythroughTests.APaldeaGamePlaysFromTheBedroomInCaboPocoToTheThirdBadge`): from the bedroom on through the academy's
+  welcome, then Cortondo, Artazon and Levincia in the academy's order, each test, the town's nurse and the leader, a
+  strong team on hand as Galar's run has it.
+- **The tests as searches**: Brassius's three Sunflora and Iono's three Wattrel stand about Artazon and Levincia on the
+  open map (`species` of a place's person, new: drawn as the species' model, `GatherOpenFigures`), each gone once found;
+  the two leaders battle only once all three are found. Katy's olive roll stays in her gym's room, its olives cards of a
+  giant olive (`GiantOlive`, a thing of the map; style guide first). `PaldeaTests` holds both.
+- **Songs**: `paldea/cortondo`, `paldea/artazon`, `paldea/levincia` (40, 38 and 33 s loops) and `paldea/gym` lengthened
+  to a 30 s loop, played by the six gym rooms; `tools/MusicRender` reports no clash and each within the loudness window.
+  **Open areas now play their songs** as they are crossed into (`GameEngine.ComeToTheOpenArea`), which they never had.
+- **Paldea's Town Map** (`Data/world/paldea/townmap.json`, 36 by 28 cells from the bake) with Fly's five places on markers,
+  the arrival flags set as the towns are crossed into, and the engine's Town Map taught an open map's region, cell and
+  reachable towns; `PaldeaTests.PaldeasTownMapIsTheBakesGridAndFlyLandsOnEachTownsMarker`. **Fly still can't be asked
+  for**: the open field has no start menu (`UpdateOpenField` runs none), so a session must add one or the flying taxi.
+- **Voices**: briefs and designs for Katy, Brassius, Iono, Director Clavell and Nemona (`cast.json`), the catalogue run
+  with `--add-missing`; no audio made. They wait for the user's ear.
+- **Not done**: no harness shot of the searches, the olive cards or the Town Map was taken in this session (the
+  `paldea` mode's PD3 shots stand as they were; its gym-test shots now show empty gaps in Artazon's and Levincia's rooms).
 
 ## PD2 as built (2026-11-13)
 
