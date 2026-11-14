@@ -10,14 +10,10 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 160 | 160 | 0 | 0 | 0 |
-| People of the hand-made maps (`map:`) | 1790 | 1727 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13937 | 13354 | 583 | 17 | 36 |
-| People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 24129 | 23441 | 688 | 22 | 36 |
 | People of the hand-made maps (`map:`) | 1801 | 1738 | 63 | 1 | 0 |
-| Scripts (`script:`) | 13934 | 13351 | 583 | 17 | 36 |
+| Scripts (`script:`) | 13991 | 13408 | 583 | 17 | 36 |
 | People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 24137 | 23449 | 688 | 22 | 36 |
+| **All** | 24194 | 23506 | 688 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -30,17 +26,11 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a sign | 1782 |
 | a thing's words | 81 |
 | the game's own voice (speaker none) | 330 |
-| the game's own voice (text) | 2364 |
+| the game's own voice (text) | 2372 |
 
 ## The cast
 
-- Named characters: 1007 voices (407 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
-- Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 595 voices.
-| the game's own voice (text) | 2356 |
-
-## The cast
-
-- Named characters: 1004 voices (401 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 1011 voices (408 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 598 voices.
 - Archetypes in use: 247, with 746 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 420.

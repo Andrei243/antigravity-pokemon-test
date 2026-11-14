@@ -791,7 +791,7 @@
     "mela": { "skin": "#e0b08a", "hairColor": "#f2a23a", "hair": "Spiky", "top": "#2e2a34", "accent": "#e2463a", "bottom": "#2e2a34", "shoes": "#e2463a", "eyes": "#7a3a2a", "jacket": true, "lashes": true, "build": "Adult", "height": 1.0 },
     "atticus": { "skin": "#dcb08c", "hairColor": "#6a3a8a", "hair": "Long", "top": "#2e2a34", "accent": "#9a5ac8", "bottom": "#2e2a34", "shoes": "#1e1a22", "eyes": "#5a3a6a", "coat": true, "build": "Adult", "height": 1.1 },
     "ortega": { "skin": "#ecc6a6", "hairColor": "#5a7ae0", "hair": "Bowl", "top": "#2e2a34", "accent": "#f28ac8", "bottom": "#2e2a34", "shoes": "#f28ac8", "eyes": "#3a4a8a", "blush": true, "build": "Child", "height": 0.92 },
-    "eri": { "skin": "#c88e62", "hairColor": "#f2ece0", "hair": "Ponytail", "top": "#2e2a34", "accent": "#e2863a", "bottom": "#2e2a34", "shoes": "#3a3a46", "eyes": "#6a4a2a", "vest": "#e2863a", "lashes": true, "build": "Adult", "height": 1.12 }
+    "eri": { "skin": "#c88e62", "hairColor": "#f2ece0", "hair": "Ponytail", "top": "#2e2a34", "accent": "#e2863a", "bottom": "#2e2a34", "shoes": "#3a3a46", "eyes": "#6a4a2a", "vest": "#e2863a", "lashes": true, "build": "Adult", "height": 1.12 },
     // The West Province's leaders (plan 34 · PD6), our own looks: Kofu, Cascarrafa's cook, broad and sun-browned, his
     // black hair swept back, an orange shirt with a sea-green trim under a white cook's vest; Larry, Medali's leader, a
     // tired office worker, short grey-brown hair, a beige coat over a white shirt with a dark tie
