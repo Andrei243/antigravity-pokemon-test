@@ -186,7 +186,7 @@ float Hash3(vec3 p) { return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758
     // three sizes in the world (so nothing repeats to the eye), laid by the face's own axes and blended between them,
     // the covers of a triangle's corners meeting along a ragged, soft border, and the surface's grain felt by the light.
     // The slots are the atlas's order (OpenCoverArt.Order): 0 to 3 the grasses and the highland, 4 mud, 5 the path,
-    // 6 sand, 7 the cave's floor, 8 and 9 the rocks, 10 snow, 11 climbable rock
+    // 6 sand, 7 the cave's floor, 8 and 9 the rocks, 10 snow, 11 climbable rock, 12 paving
     private const string TerrainFragment = @"#version 330
 in vec3 fragWorld;
 in vec3 fragNormal;
@@ -219,6 +219,10 @@ vec4 Sheet(vec3 p, vec3 w, float s, vec3 dx, vec3 dy)
                      + textureGrad(texture0, p.xy * s, dx.xy * s, dy.xy * s) * w.z;
 }
 
+// How many metres a texel of the picture spans on the ground here (main's, worked out before any branch): what the
+// paving's joints fade by, since no slope may be asked inside a branch
+float pavingFootprint = 0.0;
+
 // One cover's colour at a point, and how rough it is to the light
 vec3 Cover(int slot, vec4 fine, vec4 mid, vec4 macro, float steep, vec3 p, out float rough)
 {
@@ -249,6 +253,28 @@ vec3 Cover(int slot, vec4 fine, vec4 mid, vec4 macro, float steep, vec3 p, out f
         c = mix(c, dark, smoothstep(0.55, 0.90, mid.a * 0.7 + fine.r * 0.3) * 0.45);
         c = mix(c, vec3(0.94, 0.96, 1.0), (1.0 - smoothstep(0.015, 0.04, fine.b)) * 0.45);
         rough = 0.22;
+    }
+    else if (slot == 12)
+    {
+        // Paving: flags 0.9 m by 0.6 m in courses, every other course shifted half a flag, each flag a tone of its own
+        // and a dark joint round it with a light lip, the joints fading out as a flag grows small in the picture; where
+        // the paving leans (a stair) treads and risers by its height, a step every 0.25 m with the riser's shade
+        vec2 q = vec2(p.x / 0.9, p.z / 0.6);
+        q.x += 0.5 * mod(floor(q.y), 2.0);
+        vec2 f = fract(q);
+        float tone = Hash(floor(q) + vec2(17.0, 3.0));
+        c = mix(base, patch, tone * 0.8 + mid.r * 0.2);
+        c = mix(c, dark, smoothstep(0.62, 0.92, fine.a) * 0.12);
+        float edge = min(min(f.x, 1.0 - f.x) * 0.9, min(f.y, 1.0 - f.y) * 0.6);
+        float sharp = 1.0 - smoothstep(0.03, 0.12, pavingFootprint);
+        c = mix(c, dark, (1.0 - smoothstep(0.018, 0.04, edge)) * 0.75 * sharp);
+        c = mix(c, light, (1.0 - smoothstep(0.04, 0.07, f.y * 0.6)) * smoothstep(0.018, 0.04, edge) * 0.35 * sharp);
+        float lean = smoothstep(0.004, 0.03, steep);
+        float tread = fract(p.y / 0.25);
+        c = mix(c, dark * 0.85, (1.0 - smoothstep(0.30, 0.42, tread)) * 0.55 * lean);
+        c = mix(c, light, smoothstep(0.88, 0.97, tread) * 0.45 * lean);
+        c *= 0.94 + 0.12 * macro.r;
+        rough = 0.55;
     }
     else if (slot >= 8)
     {
@@ -291,6 +317,7 @@ void main()
     vec3 w = pow(abs(n), vec3(4.0));
     w /= (w.x + w.y + w.z);
     vec3 wdx = dFdx(fragWorld), wdy = dFdy(fragWorld);
+    pavingFootprint = max(length(wdx), length(wdy));
     // (what the water mirrors is seen bent and small: it needs the land's colours, not its grain)
     bool mirrored = mirrorClip.x > 0.5;
     vec4 fine = mirrored ? vec4(0.5) : Sheet(fragWorld, w, Fine, wdx, wdy);

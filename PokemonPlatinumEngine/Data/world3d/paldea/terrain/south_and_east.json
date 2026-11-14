@@ -31,9 +31,9 @@
   ],
   "paint": [
     // Cortondo's square and Artazon's and Levincia's streets are paved
-    { "cover": "Path", "polygon": [[-440, -340], [-392, -340], [-392, -304], [-440, -304]] },
-    { "cover": "Path", "polygon": [[392, -344], [440, -344], [440, -304], [392, -304]] },
-    { "cover": "Path", "polygon": [[440, -760], [560, -760], [560, -680], [440, -680]] },
+    { "cover": "Paving", "polygon": [[-440, -340], [-392, -340], [-392, -304], [-440, -304]] },
+    { "cover": "Paving", "polygon": [[392, -344], [440, -344], [440, -304], [392, -304]] },
+    { "cover": "Paving", "polygon": [[440, -760], [560, -760], [560, -680], [440, -680]] },
     // The long grass of the three ways, where their Pokémon live
     { "cover": "GrassDeep", "polygon": [[-300, -352], [-220, -352], [-220, -336], [-300, -336]] },
     { "cover": "GrassDeep", "polygon": [[-200, -318], [-130, -318], [-130, -302], [-200, -302]] },
