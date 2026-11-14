@@ -38,6 +38,8 @@ label Den
   wildbattle "Klawf" 16 titan all
   text "The Titan Klawf is beaten. It shrinks back to an ordinary Klawf and slips away between the rocks."
   setflag FLAG_PALDEA_KLAWF_BEATEN
+  placeat arven_stony_cliff stony_cliff_ramp_foot
+  walkto arven_stony_cliff stony_cliff_herbs fast
   faceto player arven_stony_cliff
   speaker "Arven"
   say "You did it! I heard the whole fight from the bottom of the ramp. And look: it didn't eat all of them."

@@ -67,6 +67,8 @@ public class PaldeaLegendsTests
         Assert.True(den.Home.MetresY - titan.Home.MetresY > 5, $"{den.Home} over {titan.Home}");
         Assert.Contains(map.People, p => p.Key == "arven_lighthouse" && p.Look == "arven");
         Assert.Contains(map.Triggers, t => t.Name == "klawf_den");
+        // The first battle is met as the gully is walked up, not only by speaking to the giant
+        Assert.Contains(map.Triggers, t => t.Name == "klawf_gully");
         // A person of the place is no Pokémon unless the place says so
         Assert.All(map.People.Where(p => p.Species == null), p => Assert.Equal(1, p.Size));
     }

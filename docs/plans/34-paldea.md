@@ -300,12 +300,12 @@ One session of two, beside PD3's second session (the bot's run, the songs, the v
 - **The Herba Mystica scene**: Arven up the ramp, the sandwich, the mount's first power, the dash
   (`FLAG_PALDEA_MOUNT_DASH`), `VAR_PALDEA_LEGENDS` 3.
 - **Objectives** 810 `paldeaArven` and 811 `paldeaKlawf`, English and Romanian; the Titan's three battle lines.
-- **Baked again**: Paldea's navigation mesh now has 12 climbs (all up the crag's face), 18 hops, 47 high jumps, 1480
+- **Baked again**: Paldea's navigation mesh now has 12 climbs (all up the crag's face), 20 hops, 47 high jumps, 1431
   glides. **A merge with PD3's second session that touches the bake is settled by baking again after it**
   (`dotnet run --project tools/OpenWorldBake -- paldea`).
 - **Shots** (the `paldea` mode, `Modes/PaldeaLegends.cs`, `SHOTS_FILTER=pd9`): `pd90` Arven at the lighthouse, `pd91`
   the Titan Klawf in the gully's mouth, `pd92` at its den on the ledge (shut in by rock on three sides), `pd93` the
-  crag. Looked at: the Titan stands three times Klawf's height (3.9 m) and reads as a giant beside the player; the
+  crag. Looked at: the Titan is asked at three times Klawf's height (3.9 m), drawn at the open figures' clamp of 3.5 m, and reads as a giant beside the player; the
   gully's floor is lawn and its west bank a green wall, as PD3's hills are (finding, unchanged).
 - **Tests** (`PaldeaLegendsTests`): the place, its Titan and den; the path headless from Arven's word to the dash, the
   Titan's two battles fought as Titans; the three scenes played and skipped alike; the mount ridden up the gully on
