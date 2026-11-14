@@ -35,7 +35,7 @@
     // Mesagoza's streets and plaza, paved inside its walls on the level ground at the head of the rise (the academy's
     // stairs are paved by their road; the banks either side of them are rock, cut stone under the hill)
     { "cover": "Paving", "polygon": [[-84, -299], [84, -299], [84, -380], [-84, -380]], "minY": 11.5, "maxY": 12.6 },
-    { "cover": "Rock", "polygon": [[-14, -328], [-4.2, -328], [-4.2, -356], [-14, -356]], "minY": 12.3, "maxY": 22.5 },
-    { "cover": "Rock", "polygon": [[4.2, -328], [14, -328], [14, -356], [4.2, -356]], "minY": 12.3, "maxY": 22.5 }
+    { "cover": "Rock", "polygon": [[-14, -328], [-4.0, -328], [-4.0, -356], [-14, -356]], "minY": 12.3, "maxY": 22.5 },
+    { "cover": "Rock", "polygon": [[4.0, -328], [14, -328], [14, -356], [4.0, -356]], "minY": 12.3, "maxY": 22.5 }
   ]
 }

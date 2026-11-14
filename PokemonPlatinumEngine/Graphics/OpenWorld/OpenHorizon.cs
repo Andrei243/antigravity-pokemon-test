@@ -62,7 +62,7 @@ internal static class OpenHorizon
     public const float SeaRun = 40f;
 
     /// <summary>How far along the border the sea's share is eased in and out on either side of it, in metres.</summary>
-    public const float SeaEase = 24f;
+    public const float SeaEase = 64f;
 
     /// <summary>How far under the sea's surface the floor beyond the region lies at the border, and how much deeper it goes a metre out (to <see cref="SeaDeepest"/>).</summary>
     public const float SeaFloor = 1.5f, SeaSlope = 0.01f, SeaDeepest = 8f;
@@ -210,19 +210,29 @@ internal static class OpenHorizon
         all.Sort();
         float level = all[all.Count / 2];
 
-        // Eased along the loop: the share at a point is the sea's at the nearest sea point within the ease, smoothstepped by the distance
-        int reach = (int)MathF.Ceiling(SeaEase / 2f);
+        // Eased along the loop by the metres of border between (a corner's points stand on one spot, so its fan takes
+        // one share): the share at a point is smoothstepped by its distance from the nearest sea point, to nought at the ease
         var share = new float[n];
         for (int i = 0; i < n; i++)
         {
             if (sea[i]) { share[i] = 1f; continue; }
-            for (int d = 1; d <= reach; d++)
-                if (sea[(i + d) % n] || sea[(i - d + n) % n])
+            float best = float.MaxValue;
+            foreach (int step in new[] { 1, -1 })
+            {
+                float metres = 0f;
+                for (int d = 1; d < n && metres < SeaEase; d++)
                 {
-                    float t = 1f - d / (float)(reach + 1);
-                    share[i] = t * t * (3f - 2f * t);
-                    break;
+                    int j = ((i + step * d) % n + n) % n;
+                    // The metres between a point and the one before it (none round a corner, whose points stand on one spot)
+                    metres += Vector2.Distance(points[j].Border, points[((j - step) % n + n) % n].Border);
+                    if (sea[j]) { best = MathF.Min(best, metres); break; }
                 }
+            }
+            if (best < SeaEase)
+            {
+                float t = 1f - best / SeaEase;
+                share[i] = t * t * (3f - 2f * t);
+            }
         }
         return (share, level);
     }

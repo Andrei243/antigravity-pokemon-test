@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Paldea: Cabo Poco's terrace looks out over open sea, Mesagoza's plaza and the academy's great stairs are paved stone behind a city wall and gate, and Inlet Grotto has a dark cave mouth in the cliff and is a cave inside.
 - The game no longer waits three seconds for its sounds as it opens, and a start right after an update (when every data file is new to the system) is much shorter: the small map and script files are kept as one. A thin bar shows how far loading has come before the opening notice.
 
 - Every person in the game, in the chibi regions and the grown ones, has been modelled again: new bodies, hair cuts, hats and clothes, and faces whose eyes, brows and mouth are modelled rather than painted, in every expression, blinking and speaking. Outfits, the boutique, the salon and saves work as before.
