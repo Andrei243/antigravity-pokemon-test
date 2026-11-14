@@ -69,6 +69,7 @@ partial class Harness
         PaldeaProvinces(paldea);
         PaldeaLegends(paldea);
         PaldeaStarfall(paldea);
+        PaldeaWest(paldea);
 
         PaldeaChapter();
         PaldeaLegendsPlayed();

@@ -1258,6 +1258,11 @@ public static class RegionDatabase
                 "Cortondo_PokemonCenter", "Cortondo_Gym", "Cortondo_GymTest",
                 "Artazon_PokemonCenter", "Artazon_Gym", "Artazon_GymTest",
                 "Levincia_PokemonCenter", "Levincia_Gym", "Levincia_GymTest",
+                // Plan 34 · PD6, its first session: the West Province's three Pokémon Centers, Cascarrafa's and Medali's
+                // gyms with their halls, and Medali's Treasure Eatery, where Larry's test is ordered
+                "Cascarrafa_PokemonCenter", "Cascarrafa_Gym", "Cascarrafa_GymTest",
+                "PortoMarinada_PokemonCenter",
+                "Medali_PokemonCenter", "Medali_Gym", "Medali_GymTest", "Medali_TreasureEatery",
             }
         },
         // Side regions stand after the chain (plan 23 · Z17)

@@ -63,7 +63,7 @@ label Begun
   say "The Stony Cliff's the gully north of the road east out of Mesagoza, before Artazon. Be careful of the rocks."
   end
 label OpenSky
-  say "Next Titan's a bird, they say, in the gully north of the road west out of Mesagoza, toward Cortondo."
+  say "Next Titan's a bird, they say, in a gully off the West Province's road, east of Asado Desert."
   end
 label LurkingSteel
   say "The next one's east: a cutting off the road north from Artazon to Levincia. Something steel's under the sand."

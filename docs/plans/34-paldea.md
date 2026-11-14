@@ -151,6 +151,8 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD4 The Path of Legends (its first session 2026-11-14: Arven at the lighthouse, the Stony Cliff and the Titan Klawf beaten twice, the Herba Mystica scene and the mount's dash, Paldea's first climbable crag; "PD4, first session", below; its second session the same day: the four other Titans in stand-in places beside the land that is built, their powers in order, the climb opening the Stony Cliff's crag, Arven's Mabosstiff and battle at the lighthouse, the five beaten by the bot headless and in the harness, the Titans' song; "PD4, second session", below. **Waits for the user**: the stand-ins (PD6 moves the Titans to their provinces), the Titans' fixed order, the song by ear. **Owed**: Arven's voice designed by ear)
 - [x] PD5 Starfall Street and Let's Go (2026-11-15, one session: Let's Go on its key, the five bases in a stand-in valley north of Mesagoza with their raids' clock, the bosses and Starmobiles on a stage of their own, Cassiopeia's calls; "PD5 as built", below. **Waits for the user**: the stand-in valley (PD6 moves the bases), the raid's numbers (fifteen in five minutes), the song and the five bosses' looks by eye. **Owed**: the bot playing a raid, Let's Go's materials for the crafting kit, the new cast's voices by ear)
 - [ ] PD6 The West and North Provinces and the last five gyms
+- [ ] PD5 Starfall Street and Let's Go
+- [ ] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below. **Session two**: the north, the last three gyms, eight badges and the walk to Glaseado's top)
 - [ ] PD7 Tera Raids and picnics
 - [ ] PD8 The League, Area Zero and the Way Home
 - [ ] PD9 After the Hall of Fame
@@ -439,3 +441,54 @@ changing that one constant), so the tests stand. A merge of PD5 and PD6 that tou
 **Owed**: the playthrough bot playing a raid (`Autoplayer.Open` presses no Let's Go); Let's Go's materials for the
 crafting kit (`MaterialsAfterBattle` reads a `BattleEngine`); the five bosses' and Cassiopeia's voices designed by ear
 (provisional in the cast); the song by ear; who Cassiopeia is (PD8).
+## PD6, first session (2026-11-15)
+
+One session of two, beside PD5 (Starfall Street, in its own files) in another worktree; the West's areas stop at `z` -740 and its hills (to -800) step round Starfall Street's, north of Mesagoza, so neither buries the other: **after merging the two, bake again and
+run both sessions' walk tests**. The rulings' "The West Province and the
+fourth and fifth gyms" has every decision. The user did not answer the provinces' distances or decision 3, so their
+recommendations stand (PD3's compressed distances; the later gyms scaled to the badges held).
+
+**What there is**
+- **The land** (`terrain/west.json`, `water.json`, `roads.json`, `world.json`): six areas, `asado_desert`,
+  `cascarrafa`, `west_province_area_two`, `porto_marinada`, `west_province_area_one` and `medali`, north and west of
+  Cortondo, each a place's file with its people; the desert and the two areas with zones of wild Pokémon at 22 to 29
+  and a student each; Cascarrafa's falls a river down a slot in the hills into the pool at the city's foot; Porto
+  Marinada at 4 m on its quay over the western sea, come down to by a ramp. `chunks` start at `-26`.
+- **The Titans moved**: Open Sky to a gully north off the West Province's first area, Quaking Earth to the basin at
+  Asado Desert's south end (the road north runs through it), every key, script, flag and the count kept; their
+  stand-ins' brushes are gone from `terrain/titans.json`. Arven's direction to Open Sky rewritten.
+- **Rooms**: `Cascarrafa_PokemonCenter`, `_Gym`, `_GymTest`; `PortoMarinada_PokemonCenter`; `Medali_PokemonCenter`,
+  `_Gym`, `_GymTest`, `Medali_TreasureEatery`; spawns 6 to 8.
+- **Kofu** (Water): his errand to Porto Marinada's auction, won by bidding at the last call (`porto_marinada.txt`), a
+  gym trainer, and his battle. **Larry** (Normal): three hints about Medali and the secret order at the Treasure Eatery,
+  a gym trainer, and his battle. Looks `kofu`, `larry`.
+- **Decision 3's scaling**: a team for each count of badges held (`paldea_kofu_b0` to `_b7`, `paldea_larry_b0` to
+  `_b7`, the plain ids the original's), picked by the leader's script; the best at `paldea.json`'s cap for that count.
+- **Songs** `paldea/west_province`, `cascarrafa`, `porto_marinada`, `medali` (33 to 43 s loops, no clash, in the
+  loudness window). **Town Map** written again from the bake (45 by 28), Fly's eight places. **Objectives** 830
+  `paldeaKofu`, 831 `paldeaLarry`. Romanian for every new line (`docs/localisation-review-ro.md`).
+- **Tests**: `PaldeaWestTests` (the areas, towns, rooms and the Titans in their provinces; Kofu and Larry won in the
+  academy's order at the originals' levels; taken first, scaled down to the badges held; nothing before the welcome),
+  and `PaldeaTests`' lists grown by the new areas, zones, rooms and spawns.
+- **Baked again**: 625 chunks (from 454), 84.6 MB (from 62.0 MB); about five and a half minutes to bake.
+- **Shots** (the `paldea` mode, `Modes/PaldeaWest.cs`, `SHOTS_FILTER=pdw`): `pdw00` to `pdw13` the places from their
+  markers and the gyms and the eatery faced from their squares, `pdw20` to `pdw27` the eight rooms, `pdw30` Kofu and `pdw31`
+  Larry at the far end of their halls. Looked at: Porto Marinada reads as a port, its quay paved over the sea with the
+  auction house and the Pokémon Center on it. The first shot of the falls (`pdw05`) showed only the pool: the river's slot ended inside the
+  cliff's face, so its drop sat in the rock; the slot now cuts through the face to the floor's edge, and the river runs
+  out of a cleft at the foot of the hills into the pool. **The falling water down the face is still not drawn** (the open
+  renderer draws no falls; the river's steep stretch is hidden in the cleft). Findings, unchanged: the towns and ways are lawn as PD3's are, Cascarrafa's houses far apart.
+
+**Left for session two**
+- The North Province and Glaseado: Montenevera (Ryme, Ghost, her rap battle), Alfornada (Tulip, Psychic, her photos;
+  in the originals reached from the south-west through a cavern), Glaseado Mountain with Grusha (Ice, his snowboard
+  run), each town's Pokémon Center, rooms, trainers, songs, Fly places and objectives, the three leaders scaled to the
+  badges held as Kofu and Larry are (their `_b0` to `_b7` teams); and the two Titans still in stand-ins, Lurking Steel
+  (Orthworm) to the East Province's third area and False Dragon (Tatsugiri and Dondozo) to Casseroya Lake.
+- The done-when: eight badges won (a test of the eight in the academy's order and in another, beside
+  `PaldeaWestTests`), and the region walked and ridden from Cabo Poco to Glaseado's top with no chunk waited for (an
+  itinerary in `Itineraries.Paldea.cs` and `PlaythroughTests`, and the harness's `paldea` mode timing the ride as the
+  `world` mode times Sinnoh's walks).
+- Owed from this session: the bot's run to the fifth badge in `PlaythroughTests` (only headless tests play Kofu's and
+  Larry's tests); Cascarrafa's falls drawn falling (`pdw05`: the cleft and the river show, the drop down the face doesn't) and its bridges over its
+  river; the new cast's voices by ear (Kofu, Larry and the auctioneer have designs, no audio).

@@ -1116,6 +1116,9 @@ public class SceneSkipTests
         // StarfallStreetTests.TheStreetsScenesPlayedAndSkippedLeaveTheSame
         "starfall_street.Cassiopeia's first call", "starfall_street.Giacomo comes out of his gate", "starfall_street.Mela comes out of her gate",
         "starfall_street.Atticus comes out of his gate", "starfall_street.Ortega comes out of his gate", "starfall_street.Eri comes out of her gate",
+        // Plan 34 · PD6: Kofu's auction on Porto Marinada's quay, an open place's person, played both ways by
+        // PaldeaWestTests.TheAuctionPlayedAndSkippedLeavesTheSame
+        "porto_marinada.The auction",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

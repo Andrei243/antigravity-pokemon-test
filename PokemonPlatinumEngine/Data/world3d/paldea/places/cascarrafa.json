@@ -1,0 +1,56 @@
+{
+  // Cascarrafa (plan 34 · PD6): the city of the falls, north of Asado Desert under the hills, its river coming down a slot
+  // in the hills behind it into the pool at its foot; its avenue up from the desert past the market hall to Kofu's gym in
+  // the north-west, the road west out of the avenue to the West Province's second area and Porto Marinada, and the
+  // Pokémon Center by the pool. Its people only talk; Kofu's test is an errand to Porto Marinada's auction
+  // (porto_marinada.txt), and the gym and his hall are rooms (Cascarrafa_Gym, Cascarrafa_GymTest)
+  "markers": [
+    { "name": "cascarrafa_south", "at": [-436, 12.0, -604], "yaw": 0 },
+    { "name": "cascarrafa_square", "at": [-452, 12.0, -668], "yaw": 0 },
+    { "name": "cascarrafa_gym_door", "at": [-496, 12.0, -715], "yaw": 0 },
+    { "name": "cascarrafa_center_door", "at": [-373, 12.0, -623], "yaw": 0 },
+    { "name": "cascarrafa_falls", "at": [-390, 12.0, -696], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "cascarrafa_gym_door",
+      "box": { "min": [-498, 11.5, -718], "max": [-494, 15.5, -717] },
+      "room": "Cascarrafa_Gym", "at": [4, 8], "facing": "up",
+      "out": "cascarrafa_gym_door"
+    },
+    {
+      "name": "cascarrafa_center_door",
+      "box": { "min": [-374, 11.5, -626], "max": [-372, 15, -625] },
+      "room": "Cascarrafa_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "cascarrafa_center_door"
+    }
+  ],
+  "solids": [
+    { "name": "Cascarrafa Gym", "min": [-510, 11, -736], "max": [-482, 21, -718], "building": { "kind": "gym", "town": "paldea", "sign": "GYM", "storeys": 2 } },
+    { "name": "Cascarrafa's Pokémon Center", "min": [-380, 11, -640], "max": [-366, 17.5, -626], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the market hall", "min": [-480, 11, -652], "max": [-462, 16.5, -638], "building": { "kind": "shop", "town": "paldea" } },
+    { "name": "the house by the square", "min": [-424, 11, -662], "max": [-410, 16.5, -650], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the house under the hills", "min": [-506, 11, -690], "max": [-494, 16.5, -678], "building": { "kind": "house", "town": "paldea", "storeys": 1 } },
+    { "name": "the tower by the falls", "min": [-428, 11, -736], "max": [-412, 22, -720], "building": { "kind": "apartments", "town": "paldea", "storeys": 3 } }
+  ],
+  "people": [
+    {
+      "name": "cascarrafa_fisherman", "at": [-382, 12.0, -698], "yaw": 0, "look": "fisherman", "displayName": "Fisherman",
+      "lines": ["The falls never stop. The water comes all the way down from the snow in the north, cold enough to wake you up."]
+    },
+    {
+      "name": "cascarrafa_vendor", "at": [-458, 12.0, -646], "yaw": 270, "look": "lady", "displayName": "Vendor",
+      "lines": ["Kofu buys half the market's fish every morning. Then he sends challengers all the way to Porto Marinada for the other half!"]
+    },
+    {
+      "name": "cascarrafa_kid", "at": [-430, 12.0, -680], "yaw": 90, "look": "school_kid_m", "displayName": "Boy",
+      "lines": ["The road west out of the square goes over the hills and down to the sea. Porto Marinada's market sells everything!"],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [-404, -612], "kind": "round", "size": 0.9 },
+    { "at": [-500, -620], "kind": "round" },
+    { "at": [-360, -700], "kind": "round", "size": 1.1 }
+  ]
+}

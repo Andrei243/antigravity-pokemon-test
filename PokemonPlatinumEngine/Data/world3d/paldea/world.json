@@ -7,7 +7,7 @@
   // the top of the stairs. x runs east, z south, y up, in metres; a chunk is 32 m. The rest of the region grows north and
   // east of these chunks in later sessions (plan 34 · PD3 on), so nothing here has to move
   "region": "Paldea",
-  "chunks": [-16, -27, 20, 1],
+  "chunks": [-26, -27, 20, 1],
   // Only the land the areas hold is baked (plan 34 · PD3, the user's option b of 2026-11-14): every chunk an area
   // touches and the ring of chunks round it, so the hills between the places and the sea beyond them are never baked
   "bakeRing": 1,
@@ -34,10 +34,21 @@
     { "key": "stony_cliff", "name": "Stony Cliff", "polygon": [[196, -460], [256, -460], [256, -360], [196, -360]], "music": "paldea/titans" },
     // The four other Titans' places (PD4's second session), stand-ins beside the land that is built until PD6 builds
     // the provinces the originals stand in (terrain/titans.json says where each is)
-    { "key": "open_sky", "name": "Open Sky", "polygon": [[-268, -460], [-208, -460], [-208, -360], [-268, -360]], "music": "paldea/titans" },
+    // (Open Sky and Quaking Earth moved by plan 34 · PD6 to their provinces in the West: the gully north off the West
+    // Province's first area, and the basin at Asado Desert's south end)
+    { "key": "open_sky", "name": "Open Sky", "polygon": [[-304, -692], [-252, -692], [-252, -600], [-304, -600]], "music": "paldea/titans" },
     { "key": "lurking_steel", "name": "Lurking Steel", "polygon": [[480, -566], [580, -566], [580, -502], [480, -502]], "music": "paldea/titans" },
-    { "key": "quaking_earth", "name": "Quaking Earth", "polygon": [[-466, -510], [-366, -510], [-366, -384], [-466, -384]], "music": "paldea/titans" },
+    { "key": "quaking_earth", "name": "Quaking Earth", "polygon": [[-504, -462], [-352, -462], [-352, -384], [-504, -384]], "music": "paldea/titans" },
     { "key": "false_dragon", "name": "False Dragon", "polygon": [[480, -478], [606, -478], [606, -394], [480, -394]], "music": "paldea/titans" },
+    // The West Province and its two gyms (plan 34 · PD6, its first session): north from Quaking Earth's basin through Asado
+    // Desert to Cascarrafa, west from it to Porto Marinada on the sea, and east out of the desert along the West
+    // Province's first area to Medali (terrain/west.json)
+    { "key": "asado_desert", "name": "Asado Desert", "polygon": [[-504, -600], [-352, -600], [-352, -462], [-504, -462]], "music": "paldea/west_province" },
+    { "key": "cascarrafa", "name": "Cascarrafa", "polygon": [[-520, -740], [-352, -740], [-352, -600], [-520, -600]], "music": "paldea/cascarrafa" },
+    { "key": "west_province_area_two", "name": "West Province (Area Two)", "polygon": [[-640, -700], [-520, -700], [-520, -640], [-640, -640]], "music": "paldea/west_province" },
+    { "key": "porto_marinada", "name": "Porto Marinada", "polygon": [[-768, -720], [-640, -720], [-640, -610], [-768, -610]], "music": "paldea/porto_marinada" },
+    { "key": "west_province_area_one", "name": "West Province (Area One)", "polygon": [[-352, -600], [-160, -600], [-160, -530], [-352, -530]], "music": "paldea/west_province" },
+    { "key": "medali", "name": "Medali", "polygon": [[-232, -720], [-100, -720], [-100, -600], [-232, -600]], "music": "paldea/medali" },
     // Starfall Street (plan 34 · PD5): Team Star's five bases, a stand-in valley north of Mesagoza (terrain/starfall.json)
     // until PD6 moves each base to its province
     { "key": "starfall_street", "name": "Starfall Street", "polygon": [[-88, -540], [88, -540], [88, -400], [-88, -400]], "music": "paldea/team_star" }
@@ -46,6 +57,7 @@
     { "name": "Paldea", "areas": ["cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza",
       "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia",
       "stony_cliff", "open_sky", "lurking_steel", "quaking_earth", "false_dragon",
-      "starfall_street"] }
+      "starfall_street",
+      "asado_desert", "cascarrafa", "west_province_area_two", "porto_marinada", "west_province_area_one", "medali"] }
   ]
 }

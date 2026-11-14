@@ -2700,6 +2700,19 @@ way 1, from answer 1
 from Youngster at 3,7 of CanalaveLibrary3F
 way -
   Youngster> There's one book I'm after, and it's out on loan every single time I come. Every time!
+=== Cascarrafa_Gym.GymGuide
+from Gym Guide at 2,7 of Cascarrafa_Gym
+way -
+  Gym Guide> Kofu's Water types hit hard and take a hit well. Grass and Electric moves will serve you best here.
+=== Cascarrafa_Gym.Receptionist
+from Receptionist at 6,4 of Cascarrafa_Gym
+way -
+  Receptionist> Welcome to Cascarrafa Gym! Kofu's gym test is an errand. Go through and he'll tell you what he needs.
+  Receptionist> Between you and me, it's always something from the market in Porto Marinada. He's a cook before he's anything else.
+=== Cascarrafa_GymTest.Leader
+from Kofu at 6,3 of Cascarrafa_GymTest
+way -
+  Kofu> A challenger who isn't a student? Ah, no, no. Enrol at the academy in Mesagoza first, then come back hungry!
 === CasteliaCity.Harlequin
 from Harlequin at 44,8 of CasteliaCity
 way -
@@ -7485,6 +7498,55 @@ way 1.0.0, from answer 1
 way 1.0.1, from answer 3
   Master> Not this time. Raise Turtwig a little more, and the two of you come back to me.
   * battle master_turtwig alone Turtwig noitems Lost
+=== Medali_Gym.GymGuide
+from Gym Guide at 2,7 of Medali_Gym
+way -
+  Gym Guide> Larry's Normal types have no weakness but Fighting moves. Bring one, and watch for his Tera at the end.
+=== Medali_Gym.Receptionist
+from Receptionist at 6,4 of Medali_Gym
+way -
+  Receptionist> Welcome to Medali Gym! Larry's gym test is at the Treasure Eatery on the square: order the secret menu.
+  Receptionist> Nobody here will tell you what it is. Well. Nobody here. Try asking around town.
+=== Medali_GymTest.Leader
+from Larry at 6,3 of Medali_GymTest
+way -
+  Larry> You're not enrolled at the academy, are you. Then I can't battle you. Rules. Come back once you are.
+=== Medali_TreasureEatery.Order
+from Waiter at 5,3 of Medali_TreasureEatery
+way 0.0.0
+  Waiter> Welcome to the Treasure Eatery! What can I get you?
+  Waiter> What will you order?
+  Waiter> Anything on the side?
+  Waiter> And how would you like them?
+  > The waiter's eyebrows went up. He leaned in and lowered his voice.
+  Waiter> Grilled rice balls, lemon on the side, extra crispy. That's the secret order. You've passed Larry's test!
+  Waiter> Head up to the gym when you've eaten. He'll be expecting you. Probably. He's always expecting something.
+  ? What will you order? = Grilled rice balls
+  ? Anything on the side? = Lemon
+  ? And how would you like them? = Extra crispy
+  * scene Medali_TreasureEatery.The secret order
+  * endscene
+  + FLAG_PALDEA_MEDALI_TEST_DONE
+  + seen Medali_TreasureEatery.The secret order
+way 0.0.1, from answer 3
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? And how would you like them? = Just as they come
+way 0.2, from answer 2
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? Anything on the side? = No side
+way 0.1, from answer 2
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? Anything on the side? = Mustard
+way 2, from answer 1
+  Waiter> Take your time. Ask around town, if you're after something special.
+  ? What will you order? = Nothing, thanks
+way 1, from answer 1
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? What will you order? = Seafood stew
 === MegaloTower.Necrozma
 from Necrozma at 7,4 of MegaloTower
 way 0

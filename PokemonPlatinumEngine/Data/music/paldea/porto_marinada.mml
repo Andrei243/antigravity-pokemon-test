@@ -1,0 +1,37 @@
+# The market port on the western sea: the quay, the auction's calls and the boats coming in, an accordion's bouncing
+# tune in G over a guitar's strum, a tuba on the beat and a busy kit; at night a musette. Original composition for this
+# game (plan 34 · PD6), in the modern sound.
+title Porto Marinada
+tempo 116
+meter 4/4
+reverb 0.24
+nighttempo 0.9
+room chamber 1.4
+
+track lead accordion night=musette vol=0.75 pan=0.05 rev=0.24
+  o5 d2. r4 | L o5 g8 a8 b8 o6 d8 o5 b4 g4 | o5 a8 b8 a8 f+8 d4 f+4 | o5 g8 a8 b8 g8 e4 b4 |
+  o5 c8 e8 g8 o6 c8 o5 g4 e4 | o5 d8 g8 b8 o6 d8 g4 d4 | o6 c8 o5 b8 a8 g8 f+4 a4 | o5 g4 b4 g4 r4 |
+  o5 a4 f+8 a8 d4 r4 | o5 e8 g8 o6 c8 e8 d4 c4 | o5 b8 o6 d8 g8 d8 o5 b4 g4 | o5 a8 b8 o6 c8 e8 d4 c4 |
+  o5 b8 a8 f+8 a8 d4 f+4 | o5 g8 b8 o6 d8 g8 f+4 d4 | o6 e8 d8 o5 b8 g8 e4 g4 | o5 f+8 a8 o6 d8 c8 o5 b4 a4 |
+  o5 g2. r4 |
+
+track guitar guitar vol=0.45 pan=-0.3 rev=0.2
+  o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | L o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 |
+  o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 |
+  o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (a > c e)4 (a > c e)8 (a > c e)8 r8 (a > c e)8 (a > c e)4 |
+  o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 |
+
+track bass tuba vol=0.69 rev=0.1
+  o2 g4 r8 g8 d4 g4 | L o2 g4 r8 g8 d4 g4 | o2 d4 r8 d8 a4 d4 | o2 e4 r8 e8 b4 e4 |
+  o2 c4 r8 c8 g4 c4 | o2 g4 r8 g8 d4 g4 | o2 d4 r8 d8 a4 d4 | o2 g4 r8 g8 d4 g4 |
+  o2 d4 r8 d8 a4 d4 | o2 c4 r8 c8 g4 c4 | o2 g4 r8 g8 d4 g4 | o2 a4 r8 a8 e4 a4 |
+  o2 d4 r8 d8 a4 d4 | o2 g4 r8 g8 d4 g4 | o2 e4 r8 e8 b4 e4 | o2 d4 r8 d8 a4 d4 |
+  o2 g4 r8 g8 d4 g4 |
+
+track drums kit vol=0.36 pan=0.1 rev=0.12
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | L v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |

@@ -792,6 +792,11 @@
     "atticus": { "skin": "#dcb08c", "hairColor": "#6a3a8a", "hair": "Long", "top": "#2e2a34", "accent": "#9a5ac8", "bottom": "#2e2a34", "shoes": "#1e1a22", "eyes": "#5a3a6a", "coat": true, "build": "Adult", "height": 1.1 },
     "ortega": { "skin": "#ecc6a6", "hairColor": "#5a7ae0", "hair": "Bowl", "top": "#2e2a34", "accent": "#f28ac8", "bottom": "#2e2a34", "shoes": "#f28ac8", "eyes": "#3a4a8a", "blush": true, "build": "Child", "height": 0.92 },
     "eri": { "skin": "#c88e62", "hairColor": "#f2ece0", "hair": "Ponytail", "top": "#2e2a34", "accent": "#e2863a", "bottom": "#2e2a34", "shoes": "#3a3a46", "eyes": "#6a4a2a", "vest": "#e2863a", "lashes": true, "build": "Adult", "height": 1.12 }
+    // The West Province's leaders (plan 34 · PD6), our own looks: Kofu, Cascarrafa's cook, broad and sun-browned, his
+    // black hair swept back, an orange shirt with a sea-green trim under a white cook's vest; Larry, Medali's leader, a
+    // tired office worker, short grey-brown hair, a beige coat over a white shirt with a dark tie
+    "kofu": { "skin": "#b8825a", "hairColor": "#1e1c1a", "hair": "Swept", "top": "#e8782e", "accent": "#2e9a8a", "bottom": "#3a3a40", "shoes": "#2a2420", "eyes": "#3a2a1e", "vest": "#f2f0ea", "build": "Adult", "height": 1.1 },
+    "larry": { "skin": "#e0bc9a", "hairColor": "#6a5e52", "hair": "Short", "top": "#f2f0ea", "accent": "#2a2e3a", "bottom": "#4a4a50", "shoes": "#2a2626", "eyes": "#4a4a4a", "coat": true, "build": "Adult", "height": 1.06 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

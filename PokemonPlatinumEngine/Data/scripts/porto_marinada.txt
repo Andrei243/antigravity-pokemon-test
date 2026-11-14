@@ -1,0 +1,45 @@
+# Porto Marinada on the open map (plan 34 · PD6). Kofu's gym test is an errand, as Scarlet and Violet's is: he sends a
+# challenger west over the hills to the port's auction for the morning's best crate, and the auctioneer sells it to
+# whoever bids last. Raise the paddle while the chef can still answer and he outbids every time; wait for the last call
+# and the crate is the challenger's (FLAG_PALDEA_CASCARRAFA_TEST_DONE, which Kofu asks for: Cascarrafa_GymTest.txt). A
+# lot lost can be bid for again. Our own lines.
+
+
+script Auctioneer
+  speaker "Auctioneer"
+  if flag FLAG_PALDEA_CASCARRAFA_TEST_DONE goto Sold
+  if flag FLAG_PALDEA_CASCARRAFA_ERRAND goto Errand
+  say "Bids on every crate, all morning long! Fish, shellfish, sea salt by the sack. Come back when you've something to buy."
+  end
+label Errand
+  scene "The auction"
+  say "Kofu sent you, did he? Then you'll want the next lot: one crate of the morning's finest sea urchins, fresh off the boat!"
+  say "Paddles ready. The bidding is open!"
+  choose "The chef across the quay is watching you." "Raise the paddle" "Wait"
+  if result == 0 goto TooSoon
+  say "Do I hear a bid? Going once!"
+  choose "The chef is fiddling with his paddle." "Raise the paddle" "Wait"
+  if result == 0 goto TooSoon
+  say "Going twice! Last call for the urchins!"
+  choose "The chef has looked away." "Raise the paddle" "Wait"
+  if result == 1 goto Missed
+  text "{player} raised the paddle at the very last moment!"
+  say "Sold! To Kofu's runner, before the chef could blink. Here you are, one crate, packed in ice."
+  text "{player} received a crate of sea urchins for Kofu."
+  setflag FLAG_PALDEA_CASCARRAFA_TEST_DONE
+  say "Take it straight up to Cascarrafa. Kofu doesn't like his urchins kept waiting."
+  endscene
+  end
+label TooSoon
+  text "The chef raised his paddle at once. {player} raised again, and so did he, and again, and again..."
+  say "Sold, to the chef! The price got away from you, I'm afraid. Another crate comes in soon. Try again!"
+  endscene
+  end
+label Missed
+  text "Nobody raised a paddle... until the chef did, at the very last second."
+  say "Sold, to the chef! You've got to bid before the hammer falls. Another crate comes in soon. Try again!"
+  endscene
+  end
+label Sold
+  say "Kofu's runner! That crate made the whole morning. Come back any time you want to bid."
+  end

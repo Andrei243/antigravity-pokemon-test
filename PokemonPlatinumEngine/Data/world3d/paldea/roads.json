@@ -22,6 +22,14 @@
     { "name": "the road east to Artazon", "points": [[104, -326], [180, -326], [250, -330], [310, -326], [352, -324]], "width": 4, "shoulder": 2.5 },
     { "name": "Artazon's street", "points": [[352, -324], [416, -324], [416, -354]], "width": 5, "shoulder": 2 },
     { "name": "the road north to Levincia", "points": [[416, -324], [446, -336], [446, -384], [440, -460], [448, -540], [440, -640], [470, -690]], "width": 4, "shoulder": 2.5 },
-    { "name": "Levincia's avenue", "points": [[470, -690], [496, -720], [496, -776]], "width": 6, "shoulder": 2, "surface": "Paving" }
+    { "name": "Levincia's avenue", "points": [[470, -690], [496, -720], [496, -776]], "width": 6, "shoulder": 2, "surface": "Paving" },
+    // The West Province (plan 34 · PD6): north out of Cortondo through Quaking Earth's basin and Asado Desert to
+    // Cascarrafa and up its avenue to the gym; west from the avenue along the West Province's second area and down the
+    // ramp to Porto Marinada's quay; and east out of the desert along the first area to Medali's square and its gym
+    { "name": "the road north to Asado Desert", "points": [[-416, -322], [-446, -336], [-446, -384], [-436, -430], [-424, -500], [-430, -560], [-436, -600]], "width": 4, "shoulder": 2.5 },
+    { "name": "Cascarrafa's avenue", "points": [[-436, -600], [-440, -640], [-460, -670], [-490, -700], [-496, -714]], "width": 5, "shoulder": 2, "surface": "Paving" },
+    { "name": "the road west to Porto Marinada", "points": [[-460, -670], [-520, -668], [-590, -668], [-626, 12, -668], [-660, 4, -668], [-700, 4, -668]], "width": 4, "shoulder": 2.5 },
+    { "name": "the road east through the West Province", "points": [[-430, -566], [-380, -566], [-300, -566], [-240, -570], [-200, -590], [-184, -620]], "width": 4, "shoulder": 2.5 },
+    { "name": "Medali's street", "points": [[-184, -620], [-190, -650], [-184, -680], [-182, -696]], "width": 5, "shoulder": 2, "surface": "Paving" }
   ]
 }
