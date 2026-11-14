@@ -331,6 +331,23 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
   zigzag edge is `tri` of the angle round the part (a ruff, a crown, toes); puffs of fur are fused balls; a tooth is
   a `boxy(5)` ellipsoid left loose; a spike that hangs from a sail starts thin inside it, or it pokes out the back.
 
+- **A face is judged small.** The game draws a head some 60 pixels across: render the turntable at 480 too. An eye
+  is a solid pupil in a white with a rim a sixth of its half-size or none; a thin ring, a row of tiny teeth, small
+  pads on fingertips and the like turn into noise (Ambipom, Gliscor, Mr. Mime). A mouth is one clean shape; a patch
+  on the fused face often reads better than a carved hollow full of loose teeth.
+- **Whiskers, antennae and other thin loose tubes** widen or heighten the model, so the game draws its body smaller,
+  and in pixel art they come out heavier than they are: short and few (Purugly).
+- **In the turntable's front view +X is on the viewer's right**; a feature on one side of the art goes by that.
+- **A `sheet` closed round in a ring shows a seam where its ends meet**, even overlapped: put the seam at the back or
+  under another piece. Two loose pieces sharing an edge plane flicker: offset one by a few percent. A parameter of
+  a sheet that jumps with the angle leaves a step along the edge: keep every one continuous.
+- **Tiles on a dome** (a honeycomb) laid as rings only work near the equator; lower down the columns converge. Loose
+  faceted pieces need their faces wound outward from a point.
+- **`sculpt --no-build` builds the scripts as they stood at the last build of the tool**: after a script is written
+  or changed, run `sculpt` without it (a model that "did not change" was this).
+- **`render.py`** takes a JSON job (`input`, `out`, `frames`, `size`) and wants a `report` key, or it ends with a
+  `KeyError` after writing its sheets.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
