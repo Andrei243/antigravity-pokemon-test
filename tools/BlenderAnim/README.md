@@ -50,7 +50,9 @@ blender --background --factory-startup --python tools/BlenderAnim/blender/roundt
 ```
 
 `turntable.py` renders the file's front, front three-quarter, side and back on one sheet in its own colours (EEVEE,
-since an exported sculpt's body is vertex colours and its eyes a texture) and prints what the file holds.
+since an exported sculpt's body is vertex colours and its eyes a texture), and after them the two views the game's
+own boards take (`dex` and `dex --back`), and prints what the file holds. A face seen from its inner side is drawn
+in ink, so a piece wound inside out, which the game draws dull and without its outline, is black on the sheet.
 `roundtrip.py` reads a file and writes it as the game reads it, running an edit script in between (`bpy`, `np`,
 `meshes` and `arm` in its globals); with no edit it is the check that nothing is lost on the way. It imports at 60
 frames a second, at which every clip of the game's is a whole number of frames. `.claude/skills/blender/SKILL.md` has
@@ -67,6 +69,14 @@ blender --background --factory-startup --python tools/BlenderAnim/blender/sculpt
 ```
 
 The result is a draft for `<out dir>/overrides/models`, to be looked at with `turntable.py` and in the game.
+
+Beside ellipsoids and tubes the kit has the shapes that keep their edges, each a loose piece wound outward under
+any frame: `hull` (a flat-faced solid from its corners), `slab` (a flat plate from an outline), `ring_band` (a
+stripe round a limb), `lathe` (a solid of turning); `outward` turns a hand-made closed shape outward, and
+`sibling("unown")` reads another sculpt's script as a module for a form built by the same functions. `Kit.add`
+checks every loose piece's winding and the kit says `KIT: !! N loose pieces wound wrongly` for those that are
+inside out, which `sculpt` prints with the kit's other lines. `blender/kitcheck.py` is the kit's own check
+(`blender --background --factory-startup --python-exit-code 1 --python tools/BlenderAnim/blender/kitcheck.py`).
 
 `dotnet run --project tools/BlenderAnim -- sculpt <Species>... | all [--out <dir>]` does the whole of it for species
 that have a script (plan 48 · BL1): it exports the game's own sculpt with every model file switched off, builds the
