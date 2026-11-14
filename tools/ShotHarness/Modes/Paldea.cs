@@ -66,7 +66,53 @@ partial class Harness
             Console.WriteLine($"  pd60f_bedroom: {start.Map} at {start.X},{start.Y}");
         }
 
+        PaldeaProvinces(paldea);
+
         PaldeaChapter();
+    }
+
+    /// <summary>
+    /// The South and East Provinces (plan 34 · PD3): Mesagoza's two gates, the three ways and the three towns from
+    /// their markers, each gym faced from its square, and the nine rooms: the Pokémon Centers, the gyms' lobbies and their
+    /// tests, and each leader at the far end of the test with the three in the way gone (<c>pd70</c> to <c>pd85</c>). It
+    /// prints the area each stands in.
+    /// </summary>
+    void PaldeaProvinces(OpenMap paldea)
+    {
+        ShootAt(paldea, "pd70_mesagoza_west_gate", "area_two_east");
+        ShootAt(paldea, "pd71_area_two", "area_two_west");
+        ShootAt(paldea, "pd72_cortondo", "cortondo_east");
+        ShootToward(paldea, "pd73_cortondo_gym", "cortondo_square", -416, -374, 20);
+        ShootAt(paldea, "pd74_mesagoza_east_gate", "area_three_west");
+        ShootAt(paldea, "pd75_artazon", "artazon_west");
+        ShootToward(paldea, "pd76_artazon_gym", "artazon_square", 416, -374, 20);
+        ShootAt(paldea, "pd77_east_province", "east_one_south");
+        ShootAt(paldea, "pd78_levincia", "levincia_south");
+        ShootToward(paldea, "pd79_levincia_gym", "levincia_plaza", 496, -788, 24);
+        foreach (var (shot, room) in new[]
+        {
+            ("pd80a_cortondo_center", "Cortondo_PokemonCenter"),
+            ("pd80b_cortondo_gym", "Cortondo_Gym"),
+            ("pd80c_cortondo_test", "Cortondo_GymTest"),
+            ("pd81a_artazon_center", "Artazon_PokemonCenter"),
+            ("pd81b_artazon_gym", "Artazon_Gym"),
+            ("pd81c_artazon_test", "Artazon_GymTest"),
+            ("pd82a_levincia_center", "Levincia_PokemonCenter"),
+            ("pd82b_levincia_gym", "Levincia_Gym"),
+            ("pd82c_levincia_test", "Levincia_GymTest"),
+        })
+            ShootRoom(shot, room);
+        foreach (var (shot, room, town) in new[] { ("pd83_katy", "Cortondo_GymTest", "CORTONDO"), ("pd84_brassius", "Artazon_GymTest", "ARTAZON"), ("pd85_iono", "Levincia_GymTest", "LEVINCIA") })
+        {
+            if (!Wanted(shot)) continue;
+            for (int n = 1; n <= 3; n++) game.Story.Set($"FLAG_PALDEA_{town}_TEST_{n}");
+            var map = MapDatabase.Get(room);
+            game.Place(map, 6, 6, Direction.Up);
+            game.LocationSign.Hide();
+            Frames(40);
+            Shot(shot);
+            Console.WriteLine($"  {shot}: {room} at 6,6, {map.NPCs.Count} people: {string.Join(", ", map.NPCs.Select(n => n.Name))}");
+        }
     }
 
     /// <summary>Paldea's places by their markers (<paramref name="night"/> "n" for the shots after dark, which take only some of them).</summary>

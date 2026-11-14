@@ -3,6 +3,9 @@
 === AnistarCity_Gym
 Anistar Gym
 trainers 2, 42-43: kalos_psychic_aurele 43, kalos_psychic_lucile 42
+=== Artazon_GymTest
+Artazon Gym
+trainers 1, 15: paldea_gym_trainer_hedge 15
 === Ballonlea_StadiumMission
 Ballonlea Stadium
 trainers 2, 33: galar_gym_trainer_luned 33, galar_gym_trainer_posy 33
@@ -15,6 +18,9 @@ trainers 7, 34-40: ace_trainer_breanna 38, ace_trainer_cesar 40, black_belt_davi
 === Circhester_StadiumMission
 Circhester Stadium
 trainers 2, 38-40: galar_gym_trainer_carys 39, galar_gym_trainer_tomos 40
+=== Cortondo_GymTest
+Cortondo Gym
+trainers 1, 13: paldea_gym_trainer_olive 13
 === CoumarineCity_Gym
 Coumarine Gym
 trainers 2, 29-30: kalos_gardener_flora 29, kalos_hiker_sylvain 30
@@ -111,6 +117,9 @@ trainers 2, 36-37: kalos_lady_eleonore 37, kalos_lass_josette 36
 === LaverreCity_PokeBallFactory
 Poké Ball Factory
 trainers 3, 37-39: kalos_flare_grunt_factory_1 38, kalos_flare_grunt_factory_2 38, kalos_flare_grunt_factory_3 39
+=== Levincia_GymTest
+Levincia Gym
+trainers 1, 22: paldea_gym_trainer_volt 22
 === LostTower1F
 Lost Tower
 grass 17-20

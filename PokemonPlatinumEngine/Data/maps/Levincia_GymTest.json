@@ -1,0 +1,159 @@
+{
+  "name": "Levincia_GymTest",
+  "displayName": "Levincia Gym",
+  "bgmTrack": "paldea/academy",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Electric",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Levincia_Gym",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "test_wattrel_1",
+      "name": "Wattrel",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 13,
+      "facing": "Down",
+      "script": "Test1",
+      "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_1",
+      "species": "Wattrel"
+    },
+    {
+      "id": "test_wattrel_2",
+      "name": "Wattrel",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 9,
+      "facing": "Down",
+      "script": "Test2",
+      "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_2",
+      "species": "Wattrel"
+    },
+    {
+      "id": "test_wattrel_3",
+      "name": "Wattrel",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "Test3",
+      "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_3",
+      "species": "Wattrel"
+    },
+    {
+      "id": "paldea_gym_trainer_volt",
+      "name": "Volt",
+      "npcType": "worker",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "paldea_gym_trainer_volt",
+        "name": "Volt",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Volt: You're live on the stream! Say hello, and then battle me!",
+        "dialogueAfter": "Gym Trainer Volt: The chat loved that. Go and find the rest of the hidden Wattrel!",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "iono",
+      "name": "Iono",
+      "npcType": "iono",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Leader"
+    }
+  ],
+  "wildEncounters": []
+}

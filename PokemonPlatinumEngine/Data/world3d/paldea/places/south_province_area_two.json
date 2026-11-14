@@ -1,0 +1,50 @@
+{
+  // The South Province's second area (plan 34 · PD3): out through Mesagoza's west gate, the road west between the hills
+  // to Cortondo, with long grass either side of it and a student looking for battles
+  "markers": [
+    { "name": "area_two_east", "at": [-100, 12.0, -326], "yaw": 270 },
+    { "name": "area_two_west", "at": [-346, 12.0, -322], "yaw": 270 }
+  ],
+  "zones": [
+    {
+      "name": "area_two_south",
+      "polygon": [[-300, -352], [-220, -352], [-220, -336], [-300, -336]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Smoliv", "minLevel": 8, "maxLevel": 11, "weight": 25 },
+        { "species": "Tarountula", "minLevel": 8, "maxLevel": 10, "weight": 20 },
+        { "species": "Lechonk", "minLevel": 8, "maxLevel": 10, "weight": 20 },
+        { "species": "Hoppip", "minLevel": 8, "maxLevel": 10, "weight": 15 },
+        { "species": "Sunkern", "minLevel": 8, "maxLevel": 10, "weight": 10 },
+        { "species": "Hoothoot", "minLevel": 8, "maxLevel": 10, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 4
+    },
+    {
+      "name": "area_two_north",
+      "polygon": [[-200, -318], [-130, -318], [-130, -302], [-200, -302]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Nymble", "minLevel": 8, "maxLevel": 11, "weight": 25 },
+        { "species": "Pawmi", "minLevel": 8, "maxLevel": 10, "weight": 20 },
+        { "species": "Skwovet", "minLevel": 8, "maxLevel": 10, "weight": 20 },
+        { "species": "Fletchling", "minLevel": 8, "maxLevel": 10, "weight": 20 },
+        { "species": "Combee", "minLevel": 9, "maxLevel": 11, "weight": 15 }
+      ],
+      "density": 3, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "student_iris", "at": [-210, 12.0, -318], "yaw": 180, "trainer": "paldea_student_iris",
+      "lines": ["Cortondo's just down this road! I'm warming up before I take on Katy's gym. You'll do nicely!", "Hmm. Maybe I'll warm up a bit longer."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-140, -344], "kind": "round" },
+    { "at": [-180, -350], "kind": "round", "size": 0.9 },
+    { "at": [-260, -306], "kind": "round", "size": 1.1 },
+    { "at": [-320, -350], "kind": "pine" }
+  ]
+}

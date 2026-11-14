@@ -1616,22 +1616,34 @@ galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
 === region Paldea
 levels 2 → 242, 62 → 258
 caps 245 246 248 249 251 253 253 254 258 (own 15 17 24 30 36 42 45 48 62)
+paldea_brassius 246 (17) [Petilil → Ballerilly, Smoliv → Arboliva, Sudowoodo → Mimicedar]
+paldea_iono 248 (24) [Wattrel → Terawattrel, Bellibolt → Thunderbelly, Luxio → Luxray, Mismagius → Hexmagistra]
+paldea_katy 245 (15) [Nymble → Lokix, Tarountula → Fortarach, Teddiursa → Ursaluna]
 paldea_nemona_1a 243 (5) [Fuecoco → Skeledirge]
 paldea_nemona_1b 243 (5) [Quaxly → Quaquaval]
 paldea_nemona_1c 243 (5) [Sprigatito → Meowscarada]
+paldea_student_bruno 245 (12) [Sunkern → Helianthra, Bonsly → Mimicedar]
+paldea_student_iris 244 (10) [Smoliv → Arboliva, Tarountula → Fortarach]
 paldea_student_lucia 243 (6) [Hoppip → Jumpluff, Lechonk → Oinkologne]
 paldea_student_mateo 243 (6) [Pawmi → Pawmot, Fletchling → Talonflame]
+paldea_student_noa 246 (17) [Shinx → Luxray, Tadbulb → Bellibolt]
 === region Hisui
 levels 2 → 62, 75 → 104
 === AnistarCity_Gym
 Anistar Gym, Kalos
 trainers 2, 197 (own 42-43): kalos_psychic_aurele 197 (43) [Duosion → Reuniclus, Grumpig → Boarcane], kalos_psychic_lucile 197 (42) [Kirlia → Gardevoir, Chingling → Carillone]
+=== Artazon_GymTest
+Artazon Gym, Paldea
+trainers 1, 245 (own 15): paldea_gym_trainer_hedge 245 (15) [Hoppip → Jumpluff, Petilil → Ballerilly]
 === Ballonlea_StadiumMission
 Ballonlea Stadium, Galar
 trainers 2, 233 (own 33): galar_gym_trainer_luned 233 (33) [Kirlia → Gardevoir, Hattrem → Hatterene], galar_gym_trainer_posy 233 (33) [Clefairy → Clefable, Spritzee → Perfumelle]
 === Circhester_StadiumMission
 Circhester Stadium, Galar
 trainers 2, 234-235 (own 38-40): galar_gym_trainer_carys 235 (39) [Rolycoly → Coalossal, Carkol → Coalossal], galar_gym_trainer_tomos 235 (40) [Boldore → Gigalith, Stonjourner → Henjourner]
+=== Cortondo_GymTest
+Cortondo Gym, Paldea
+trainers 1, 245 (own 13): paldea_gym_trainer_olive 245 (13) [Nymble → Lokix, Tarountula → Fortarach]
 === CoumarineCity_Gym
 Coumarine Gym, Kalos
 trainers 2, 193 (own 29-30): kalos_gardener_flora 193 (29) [Skiploom → Jumpluff], kalos_hiker_sylvain 193 (30) [Sudowoodo → Mimicedar, Gogoat → Alpicorn]
@@ -1671,6 +1683,9 @@ trainers 2, 195-196 (own 36-37): kalos_lady_eleonore 196 (37) [Mr. Mime → Mime
 === LaverreCity_PokeBallFactory
 Poké Ball Factory, Kalos
 trainers 3, 196 (own 37-39): kalos_flare_grunt_factory_1 196 (38) [Houndoom → Cerberhound, Mightyena → Hyaenarch], kalos_flare_grunt_factory_2 196 (38) [Golbat → Crobat, Swalot → Gulpgorge], kalos_flare_grunt_factory_3 196 (39) [Liepard → Umbrapard, Toxicroak → Venomsensei, Houndoom → Cerberhound]
+=== Levincia_GymTest
+Levincia Gym, Paldea
+trainers 1, 247 (own 22): paldea_gym_trainer_volt 247 (22) [Pawmo → Pawmot, Voltorb → Dynamorb]
 === LumioseCity_LysandreLabs
 Lysandre Labs, Kalos
 trainers 2, 198 (own 45): kalos_flare_grunt_labs_1 198 (45) [Houndoom → Cerberhound, Scrafty → Brawlhood], kalos_flare_grunt_labs_2 198 (45) [Toxicroak → Venomsensei, Swalot → Gulpgorge]

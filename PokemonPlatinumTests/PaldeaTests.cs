@@ -29,7 +29,8 @@ public class PaldeaTests
         return (grid, open);
     });
 
-    private static readonly string[] Areas = { "cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza" };
+    private static readonly string[] Areas = { "cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza",
+        "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia" };
 
     [Fact]
     public void PaldeaIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -98,7 +99,7 @@ public class PaldeaTests
         Assert.NotNull(map.Land!.Nav);
         // A door to each room, and each room's way out leads back through it to its marker (but upstairs, come to from
         // downstairs)
-        var behind = new[] { "CaboPoco_PlayersHouse_2F" };
+        var behind = new[] { "CaboPoco_PlayersHouse_2F", "Cortondo_GymTest", "Artazon_GymTest", "Levincia_GymTest" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
@@ -109,12 +110,13 @@ public class PaldeaTests
         }
         // Wild Pokémon live in the grass of Poco Path, its beach and the South Province, every row a species of the data at
         // the first chapter's levels
-        Assert.Equal(new[] { "poco_path_west", "poco_path_lighthouse", "poco_beach", "area_one_west", "area_one_east" }, map.Zones.Select(z => z.Name));
+        Assert.Equal(new[] { "poco_path_west", "poco_path_lighthouse", "poco_beach", "area_one_west", "area_one_east",
+            "area_two_south", "area_two_north", "area_three_south", "area_three_north", "east_one_grass" }.OrderBy(n => n), map.Zones.Select(z => z.Name).OrderBy(n => n));
         foreach (var slot in map.Zones.SelectMany(z => z.Slots))
         {
             Assert.NotNull(PokemonDatabase.Get(slot.Species));
-            Assert.InRange(slot.MinLevel, 2, 7);
-            Assert.InRange(slot.MaxLevel, slot.MinLevel, 7);
+            Assert.InRange(slot.MinLevel, 2, 18);
+            Assert.InRange(slot.MaxLevel, slot.MinLevel, 18);
         }
         // The two students are Paldea's own, and Nemona's three teams answer the three starters
         foreach (var person in map.People.Where(p => p.TrainerId != null))
@@ -139,7 +141,8 @@ public class PaldeaTests
         Assert.True(downstairs.IsWalkable(arrival.X, arrival.Y));
         Assert.Equal("Paldea", downstairs.GetWarpAt(arrival.X, arrival.Y + 1)?.TargetMap);
         // A white-out goes home, then to Los Platos's Pokémon Center
-        Assert.Equal(new[] { "CaboPoco_PlayersHouse_1F", "LosPlatos_PokemonCenter" }, Region.File!.Spawns.Select(s => s.Room));
+        Assert.Equal(new[] { "CaboPoco_PlayersHouse_1F", "LosPlatos_PokemonCenter", "Cortondo_PokemonCenter", "Artazon_PokemonCenter", "Levincia_PokemonCenter" },
+            Region.File!.Spawns.Select(s => s.Room));
     }
 
     [Fact]
@@ -168,7 +171,74 @@ public class PaldeaTests
         // The banks at the region's present edges are never come to: the east hills, the north mountains, the west heights
         Assert.False(walk.Reaches(OpenPos.FromMetres(93, 20, -150)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(0, 32, -392)));
-        Assert.False(walk.Reaches(OpenPos.FromMetres(-92, 20, -330)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-92, 20, -290)));
+        // Since plan 34 · PD3 the west heights and the east hills have gates on the avenue's row, and the hills between
+        // the South and East Provinces' places are never come to either
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-100, 12, -326)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(100, 12, -326)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-250, 40, -392)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(250, 40, -270)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(540, 40, -520)));
+    }
+
+    [Fact]
+    public void TheFirstThreeBadgesAreWonInAnyOrderAtTheLeadersOwnLevels()
+    {
+        // Plan 34 · PD3's done-when: the three gyms of the South and East Provinces won in the academy's order and in
+        // another, each gated by its own badge alone, the leaders at their fixed levels whatever the order (decision 3)
+        var orders = new[]
+        {
+            new[] { "Cortondo", "Artazon", "Levincia" },
+            new[] { "Levincia", "Cortondo", "Artazon" },
+        };
+        var badges = new Dictionary<string, string> { ["Cortondo"] = "Bug", ["Artazon"] = "Grass", ["Levincia"] = "Electric" };
+        foreach (var order in orders)
+        {
+            var story = new StoryState();
+            var party = new Party();
+            party.Add(new Pokemon(PokemonDatabase.Get("Sprigatito")!, 30, new Random(0)));
+            var bag = new Inventory();
+            StoryMigration.BeginNewGame(story, ScriptLibrary.Default);
+            HeadlessScriptHost Play(string room, string script)
+            {
+                var host = new HeadlessScriptHost(story, party, bag) { Map = Rooms.Value(room), Region = RegionDatabase.Paldea };
+                var runner = new ScriptRunner(ScriptLibrary.Default, host);
+                runner.Start(ScriptLibrary.Default.Find(script, room)!, null);
+                runner.RunToEnd();
+                Assert.Empty(host.Problems);
+                return host;
+            }
+            // Before the academy's welcome no leader battles
+            Play("Cortondo_GymTest", "Leader");
+            Assert.False(story.HasBadge(RegionDatabase.Paldea, "Bug"));
+            story.SetVar("VAR_PALDEA_STORY", 7);
+            Assert.Equal("paldeaKaty", Objectives.Current(story, RegionDatabase.Paldea)?.Name);
+            int won = 0;
+            foreach (string town in order)
+            {
+                foreach (string test in new[] { "Test1", "Test2", "Test3" }) Play(town + "_GymTest", test);
+                for (int n = 1; n <= 3; n++) Assert.True(story.Has($"FLAG_PALDEA_{town.ToUpperInvariant()}_TEST_{n}"));
+                var host = Play(town + "_GymTest", "Leader");
+                Assert.Contains(host.Log, l => l.Contains("battle", StringComparison.OrdinalIgnoreCase));
+                Assert.True(story.HasBadge(RegionDatabase.Paldea, badges[town]), $"{town}'s badge in the order {string.Join(", ", order)}");
+                Assert.Equal(++won, story.BadgeCount(RegionDatabase.Paldea));
+                // Spoken to again, the leader gives nothing more
+                Play(town + "_GymTest", "Leader");
+                Assert.Equal(won, story.BadgeCount(RegionDatabase.Paldea));
+            }
+            Assert.Equal("paldeaFree", Objectives.Current(story, RegionDatabase.Paldea)?.Name);
+        }
+        // The leaders' levels are the original's, fixed, and each Terastallizes its last into the gym's type, which a
+        // team relevelled for a crossed-in game keeps
+        foreach (var (id, best, tera) in new[] { ("paldea_katy", 15, "Bug"), ("paldea_brassius", 17, "Grass"), ("paldea_iono", 24, "Electric") })
+        {
+            var record = TrainerDatabase.Get(id, "paldea")!;
+            Assert.Equal("Leader", record.Class);
+            Assert.True(record.TeraOrb);
+            Assert.Equal(best, record.Party.Max(p => p.Level));
+            Assert.Equal(tera, record.Party[^1].TeraType);
+            Assert.Equal(tera, TrainerDatabase.Build(record.Party[^1]).TeraType.Name);
+        }
     }
 
     [Fact]

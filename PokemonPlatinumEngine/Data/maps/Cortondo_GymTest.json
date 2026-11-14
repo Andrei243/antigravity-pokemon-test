@@ -1,0 +1,159 @@
+{
+  "name": "Cortondo_GymTest",
+  "displayName": "Cortondo Gym",
+  "bgmTrack": "paldea/academy",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Bug",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Cortondo_Gym",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "test_smoliv_1",
+      "name": "Smoliv",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 13,
+      "facing": "Down",
+      "script": "Test1",
+      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_1",
+      "species": "Smoliv"
+    },
+    {
+      "id": "test_smoliv_2",
+      "name": "Smoliv",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 9,
+      "facing": "Down",
+      "script": "Test2",
+      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_2",
+      "species": "Smoliv"
+    },
+    {
+      "id": "test_smoliv_3",
+      "name": "Smoliv",
+      "npcType": "Pokemon",
+      "x": 6,
+      "y": 5,
+      "facing": "Down",
+      "script": "Test3",
+      "hiddenBy": "FLAG_PALDEA_CORTONDO_TEST_3",
+      "species": "Smoliv"
+    },
+    {
+      "id": "paldea_gym_trainer_olive",
+      "name": "Olive",
+      "npcType": "worker",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "paldea_gym_trainer_olive",
+        "name": "Olive",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Olive: Katy's course is no picnic! Well. It is a little bit of a picnic.",
+        "dialogueAfter": "Gym Trainer Olive: Roll on, then. Katy's at the end of the course.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "katy",
+      "name": "Katy",
+      "npcType": "katy",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Leader"
+    }
+  ],
+  "wildEncounters": []
+}

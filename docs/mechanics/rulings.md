@@ -12903,3 +12903,48 @@ built; what is still owed is listed at the end and in plan 21's last note.
   terrace, Mesagoza on lawn, the stairs a ramp, the grotto's door with no mouth, Inlet Grotto drawn as a clearing in a
   forest, a house's side wall in grey timber) is listed in plan 34's "PD1's second session" for the user's judgment of
   Cabo Poco and Mesagoza, which the done-when asks for first.
+
+## The South and East Provinces and the first three gyms (2026-11-14, plan 34 · PD3, its first session)
+
+- **The map's storage is the user's option b** (2026-11-14, the question PD1 left): the baker bakes only the chunks that
+  hold land within the region's areas. `world.json`'s `bakeRing` (the baker's `OpenWorldFile.BakeRing`,
+  `RegionBake.Held`) names how many chunks round each chunk an area's polygon touches are baked too (Paldea's 1, so a
+  coast keeps a chunk of its sea and a bank its face); every other chunk of the `chunks` rectangle is left out of the
+  bake and of the index, and the game, which streams by the index's list (`BakedRegion.Has`), draws and stands on
+  nothing there. A region that names no `bakeRing` bakes its whole rectangle as before (Galar's bake is untouched).
+  Paldea's rectangle is `[-16, -27, 20, 1]`, of which some 370 chunks are baked.
+- **The land grows west and east, then north**: out of Mesagoza's west gate (cut through PD1's west heights on the
+  avenue's row) along the South Province's second area to Cortondo; out of its east gate along the third to Artazon; and
+  north from Artazon up the East Province's first area to Levincia on the eastern sea. PD1's `world.json` said the region
+  grows north and east; Cortondo lies west of Mesagoza in the originals, so its way runs west between hills over the
+  beach, never through the sea. Every way and town is a floor at Mesagoza's height between hills 28 m higher and too
+  steep to climb (`terrain/south_and_east.json`); the hills' tops lie outside every area and their backs are never baked.
+- **The distances are PD1's, not decision 1's third.** PD1 put Cabo Poco only about 350 m south of Mesagoza; PD3 keeps
+  that compression round Mesagoza, so Cortondo stands about 420 m west of it, Artazon about 420 m east and Levincia's sea
+  wall about 600 m east and 400 m north, where decision 1's frame of about 3 km would put the east coast nearer 1.5 km.
+  It is for the user's judgment with PD1's: option b keeps any scale's bake small, and laying the provinces out further
+  apart later moves only these places' files.
+- **The towns**: each has a Pokémon Center (a spawn, and a grid room as Los Platos's), its gym and a few houses and
+  people of ours: Cortondo's olive groves and bakery, Artazon's flower fields and sculptor's workshop, Levincia's tall
+  houses, plaza and sea wall. The town songs are owed: Cortondo and Artazon play Cabo Poco's, Levincia Mesagoza's, and
+  the gyms' rooms the academy's (`paldea/gym` loops after 15 s, under the 25 s an area's theme must run).
+- **A gym is a lobby and its test** (`<Town>_Gym`, `<Town>_GymTest`, grid rooms behind the gym's door), as Galar's
+  stadiums are: the receptionist and the guide in the lobby, the test behind the counter, a gym trainer beside it and
+  the leader at its far end. **Each test is three Pokémon standing in the course's three gaps**, each sent on by a word
+  with its own flag (`FLAG_PALDEA_<TOWN>_TEST_<n>`), as Galar's herding is a nudge, not a puzzle: Katy's olive roll's
+  "olives" are Smoliv curled up into balls (a card of a giant olive is owed), Brassius's hidden Sunflora stand in the
+  garden's beds, and Iono's stream hunt finds three Wattrel hiding on her set. The originals' searches about the town
+  are owed to a later session with plan 32's places.
+- **Decision 3, at its recommendation** (the user has not answered it): the three leaders keep the original's fixed
+  levels whatever order they are taken in (Katy's best 15, Brassius's 17, Iono's 24), and each gym is gated by its own
+  badge alone, so the three may be won in any order; the gyms after the third are to be scaled to the badges held,
+  which PD6 builds. A leader battles only a student (`VAR_PALDEA_STORY` 7, the academy's welcome). The objectives
+  807 to 809 are each done by its own badge, so the line names the first of the three still to win in the academy's
+  order.
+- **A trainer's Pokémon may name its Tera Type** (`teraType` of a team's member, `TrainerPokemonRecord.TeraType`): each
+  leader Terastallizes the last of the team into the gym's type (Teddiursa Bug, Sudowoodo Grass, Mismagius Electric),
+  which the trainer AI's own use (plan 06 · R30) decides the moment of; a copy of the Pokémon keeps it.
+- **The leaders' looks are ours** (`katy`, `brassius`, `iono` of `characters.json`), battled by the leader's script with
+  `battle <who> as "paldea_<who>"`, never as trainers of the map; their teams are in `Data/world/paldea/trainers.json`
+  with the class `Leader` (the plain band), three gym trainers and three students beside them. Iono's line before her
+  battle names no Wattrel, since a crossed-in team's Wattrel is met as Terawattrel (`GrownNamesTests`).

@@ -1,0 +1,36 @@
+{
+  // The East Province's first area (plan 34 · PD3): the long road north from Artazon between the hills to Levincia,
+  // its long grass on the west side where its Pokémon live, and a student on the way
+  "markers": [
+    { "name": "east_one_south", "at": [446, 12.0, -390], "yaw": 180 },
+    { "name": "east_one_north", "at": [442, 12.0, -634], "yaw": 180 }
+  ],
+  "zones": [
+    {
+      "name": "east_one_grass",
+      "polygon": [[406, -600], [430, -600], [430, -440], [406, -440]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Shinx", "minLevel": 15, "maxLevel": 18, "weight": 20 },
+        { "species": "Pawmi", "minLevel": 15, "maxLevel": 18, "weight": 20 },
+        { "species": "Mareep", "minLevel": 15, "maxLevel": 18, "weight": 20 },
+        { "species": "Tadbulb", "minLevel": 15, "maxLevel": 18, "weight": 15 },
+        { "species": "Wattrel", "minLevel": 15, "maxLevel": 18, "weight": 15 },
+        { "species": "Venonat", "minLevel": 15, "maxLevel": 18, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "student_noa", "at": [452, 12.0, -520], "yaw": 270, "trainer": "paldea_student_noa",
+      "lines": ["I'm on my way to be on Iono's stream! I just need one more win to get my nerve up.", "Okay, maybe I'll just watch the stream instead."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [470, -420], "kind": "pine" },
+    { "at": [466, -500], "kind": "pine", "size": 1.1 },
+    { "at": [470, -580], "kind": "pine" }
+  ]
+}

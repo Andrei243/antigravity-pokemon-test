@@ -1253,6 +1253,11 @@ public static class RegionDatabase
                 // Platos's Pokémon Center and the academy's entrance hall at the top of Mesagoza's stairs
                 "CaboPoco_PlayersHouse_1F", "CaboPoco_PlayersHouse_2F", "CaboPoco_NemonasHouse", "InletGrotto",
                 "LosPlatos_PokemonCenter", "Mesagoza_AcademyHall",
+                // Plan 34 · PD3: the South and East Provinces' three Pokémon Centers and their three gyms, each a lobby
+                // and the test behind it with its leader at the end
+                "Cortondo_PokemonCenter", "Cortondo_Gym", "Cortondo_GymTest",
+                "Artazon_PokemonCenter", "Artazon_Gym", "Artazon_GymTest",
+                "Levincia_PokemonCenter", "Levincia_Gym", "Levincia_GymTest",
             }
         },
         // Side regions stand after the chain (plan 23 · Z17)

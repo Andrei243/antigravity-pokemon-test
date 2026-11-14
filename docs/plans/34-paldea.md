@@ -147,7 +147,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 
 - [x] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza (2026-11-13, its first session: the file, the open map of five areas described and baked, six rooms, the chapter from the bedroom to the academy's door headless, the plane from Galar landing; "PD1 as built", below; its second session 2026-11-14: the harness's `paldea` mode with every owed shot, the bot's run from the bedroom to the academy's door in `PlaythroughTests`, `profile`'s Mesagoza plaza; "PD1's second session", below. **Waits for the user**: the look of Cabo Poco and Mesagoza, judged from the `paldea` mode's shots, as the done-when has it (the second session's findings, below, are the things to judge first); the bake's footprint for the whole region (the question below); `Architecture.Paldea` seen in the game. **Owed**: the academy's halls past the entrance hall, the voices of the new cast designed by ear, and whatever the user's judgment of the findings asks)
 - [x] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12, its rig 2026-11-12 as FM13, and its last part 2026-11-13: the navigation mesh's hop, high jump, climb and glide links for a region whose `world.json` says `mount`, the lab's yard with a painted climbable face, the done-when ridden in `MountLabTests`, Paldea's mesh baked again with them; "PD2 as built", below. **Owed**: the playthrough bot riding the links; the user's word on the yard's shots `fwy0` to `fwy6`)
-- [ ] PD3 The South and East Provinces and the first three gyms
+- [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below. **Owed**: the bot's run to three badges, the tests as searches of the towns, the towns' and gyms' songs, the new cast's voices, the user's word on the provinces' distances)
 - [ ] PD4 The Path of Legends
 - [ ] PD5 Starfall Street and Let's Go
 - [ ] PD6 The West and North Provinces and the last five gyms
@@ -157,6 +157,46 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [ ] PD10 The Teal Mask (optional)
 - [ ] PD11 The Indigo Disk (optional)
 - [ ] PD12 Mochi Mayhem (optional)
+
+## PD3 as built (2026-11-14, its first session)
+
+One session, on **the user's answer to the map-storage question of 2026-11-14: option b** (recorded under "PD1 as
+built", below, and in the rulings' "The South and East Provinces and the first three gyms", which has every decision).
+The session's worktree was deleted from outside it part-way through, by a clean-up of the full disk, and its work was
+written again from the session's own record.
+
+**What there is**
+- **The baker bakes only the land the areas hold** (`world.json`'s `bakeRing`; `RegionBake.Held`): every chunk an
+  area's polygon touches and the ring round it; the index lists only those, and the game streams by the index. A region
+  naming no `bakeRing` bakes its whole rectangle as before.
+- **The land**: `terrain/south_and_east.json` (hills 28 m over the floors, the floors cut into them, the seabed and sea
+  wall off Levincia, the gates through PD1's banks on Mesagoza's avenue row), the sea off Levincia in `water.json`, the
+  avenues, roads and towns' streets in `roads.json`; six areas, `south_province_area_two`, `cortondo`,
+  `south_province_area_three`, `artazon`, `east_province_area_one`, `levincia`, each a place's file with its people,
+  zones of wild Pokémon at levels 8 to 18, a student who battles, and in each town a Pokémon Center and a gym. The
+  distances are PD1's compressed ones round Mesagoza, not decision 1's third (the rulings say how far apart).
+- **Rooms**: `Cortondo_PokemonCenter`, `_Gym`, `_GymTest`, and the same of Artazon and Levincia, with three spawns.
+- **The three gyms**: each test three Pokémon in its course's gaps sent on by a word (Smoliv for Katy's olive roll,
+  Sunflora for Brassius's hidden Sunflora, Wattrel for Iono's stream hunt), a gym trainer, and the leader at the far end
+  with the badge; leaders' looks `katy`, `brassius`, `iono`; their teams at the original's fixed levels, each
+  Terastallizing its last (`teraType` of a team's member, new); objectives 807 to 809 (English and Romanian).
+- **Decision 3 taken at its recommendation** (unanswered by the user): the first three keep their fixed levels in any
+  order, each gated by its own badge alone; the scaling of gyms four to eight is PD6's.
+- **The done-when**: `PaldeaTests.TheFirstThreeBadgesAreWonInAnyOrderAtTheLeadersOwnLevels` wins the three badges headless
+  in the academy's order and in Levincia, Cortondo, Artazon.
+- **Shots**: the `paldea` mode's `pd70` to `pd85` (the gates, the ways, the towns and their gyms, the nine rooms, each
+  leader at the end of the test).
+
+**Findings from the shots** (`pd70` to `pd85`, looked at; none changed here): the hills between the places stand as
+sheer grey walls of layered rock round every way and town; the towns are lawn with their squares paved and their
+buildings far apart; Cortondo's and Artazon's lanes stop short of the gyms' doors (the last ten metres are grass); the
+tests' rooms draw no walls on the course's gap rows (the rows block, as Galar's mission rooms' do, but nothing shows
+them), and the gym trainers stand in the worker's look.
+
+**Owed** (PD3's second session): the playthrough bot's run to three badges in `PlaythroughTests`; the tests as the
+originals' searches about the towns on the open map, and a giant olive's card; the towns' and the gyms' songs (the
+gym song loops too soon for a room's theme); the voices of the new cast designed by ear; Fly's places on a Town Map of
+Paldea; the user's word on the provinces' distances.
 
 ## PD2 as built (2026-11-13)
 
@@ -208,7 +248,7 @@ One session, by an agent beside a full test run on the main checkout, so **no ha
 - **The sample pack's Tidemark** joins after Paldea, its ferryman in Los Platos's Pokémon Center.
 - **Tests**: `PaldeaTests` (the record and the plane's landing; the bake to the byte; the areas, songs, doors both ways, zones, trainers and Nemona's teams; the new game and the arrival; the walk from the bedroom reaching every room, marker, trigger and person, the beach by its track and the academy by its stairs, never the banks; the chapter headless from the bedroom to the academy's door, the Tera Orb given once; the grotto's first answer a Scarlet game with Koraidon; the four open scenes played and skipped), and the tests that knew Paldea as unbuilt now ask the hub for a region with no table, Pokédex or objectives.
 
-**The question for the user before PD3**: the whole region at decision 1's third (about 3 km by 3 km) as one rectangle of chunks is some 8,800 chunks and about a gigabyte of bake at PD1's density. The choices: (a) a smaller scale (a fifth, about 1.8 km square, some 3,200 chunks); (b) the baker taught to bake only the chunks that hold land within a region's polygons (the sea and the mountains' backs left out); (c) the bake kept out of the repository and baked on the machine at the first start. *Recommended:* (b), which keeps the scale and the bake in the repository.
+**The question for the user before PD3**: the whole region at decision 1's third (about 3 km by 3 km) as one rectangle of chunks is some 8,800 chunks and about a gigabyte of bake at PD1's density. The choices: (a) a smaller scale (a fifth, about 1.8 km square, some 3,200 chunks); (b) the baker taught to bake only the chunks that hold land within a region's polygons (the sea and the mountains' backs left out); (c) the bake kept out of the repository and baked on the machine at the first start. *Recommended:* (b), which keeps the scale and the bake in the repository. **The user chose (b) on 2026-11-14**; PD3 built it ("PD3 as built", above).
 
 **Shots owed** (the harness's `paldea` mode isn't written): `pd00` to `pd06` Cabo Poco from four yaws, the player's door, the president's terrace over the sea; `pd10` to `pd13` Poco Path, the lighthouse, the beach and the grotto's mouth; `pd20` Inlet Grotto; `pd30` Los Platos; `pd40` the South Province's fields with their Pokémon; `pd50` to `pd54` Mesagoza's gate, plaza, the stairs and the academy's door; `pd60` the six rooms; `pd*n` after dark; and the chapter's scenes `pds00` to `pds10`. `profile`'s busiest scene (Mesagoza's plaza) is owed with them. (Written by the second session, below.)
 

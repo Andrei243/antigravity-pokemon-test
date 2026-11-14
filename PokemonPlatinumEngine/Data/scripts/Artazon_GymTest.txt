@@ -1,0 +1,53 @@
+# Brassius's gym test, the hidden Sunflora (plan 34 · PD3): three Sunflora standing still among the garden's beds in
+# its three gaps, each found and sent hopping off, a gym trainer beside the beds, and Brassius at the garden's end
+# with the Grass Badge. A Sunflora found stays gone (its own flag). The finding is a word, not a search, as Galar's
+# herding is (docs/mechanics/rulings.md, "The South and East Provinces and the first three gyms"). Our own lines, on
+# Scarlet and Violet's beat of finding Sunflora hidden in the town.
+
+
+script Test1
+  text "That flower in the gap has eyes... It's a Sunflora, standing perfectly still! {player} said hello."
+  text "Found out, the Sunflora hopped off into the flower beds!"
+  setflag FLAG_PALDEA_ARTAZON_TEST_1
+  end
+
+
+script Test2
+  text "This sunflower is a little too cheerful. It's another Sunflora! {player} tapped it on the leaf."
+  text "It giggled and hopped away!"
+  setflag FLAG_PALDEA_ARTAZON_TEST_2
+  end
+
+
+script Test3
+  text "The last Sunflora was hiding in plain sight. {player} found it!"
+  text "It spun round and hopped off. Every Sunflora has been found!"
+  setflag FLAG_PALDEA_ARTAZON_TEST_3
+  end
+
+
+# Brassius's battle for the Grass Badge. He Terastallizes his Sudowoodo into a Grass type. His levels are fixed,
+# whatever order the gyms are taken in (plan 34 · decision 3)
+script Leader
+  face brassius player
+  speaker "Brassius"
+  if badge grass goto Won
+  if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  scene "Brassius"
+  say "You found them all! Your eye for art is keen. I am Brassius, Artazon's gym leader, and an artist of the grass."
+  say "A battle is a sculpture made in a moment. Let us shape something magnificent together!"
+  battle brassius as "paldea_brassius"
+  say "Bravo! A masterpiece of a battle. Take this, the Grass Badge, as a frame for your triumph."
+  givebadge grass
+  text "{player} received the Grass Badge from Brassius!"
+  setflag FLAG_PALDEA_DEFEATED_ARTAZON_GYM
+  defeat "paldea_gym_trainer_hedge"
+  say "Go forth and find your art, young challenger. Victory Road has much more to show you."
+  endscene
+  end
+label NotEnrolled
+  say "A challenger who is not yet a student? Enrol at the academy first, and then we shall make art."
+  end
+label Won
+  say "Your battle still inspires me. I have begun a new sculpture in its honour."
+  end

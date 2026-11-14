@@ -1,0 +1,24 @@
+# Cortondo Gym's lobby (plan 34 · PD3): Katy's gym, the first of Victory Road in the academy's suggested order. Her
+# test, the olive roll, is through the doors behind the counter (Cortondo_GymTest.txt). Our own lines. The three gyms
+# of the South and East Provinces may be taken in any order: each is gated by its own badge alone (plan 34 · decision 3).
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge bug goto Won
+  say "Welcome to Cortondo Gym! Katy's gym test is the olive roll, through the doors behind me."
+  say "Her course is blocked by Smoliv curled up into balls. Roll each one along to the end, and Katy will be waiting."
+  end
+label Won
+  say "Congratulations on the Bug Badge! Artazon's gym is east of Mesagoza, and Levincia's is north of Artazon."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge bug goto Won
+  say "Katy's Bug types hate fire, flying and rock moves. Bring something that hits from above!"
+  end
+label Won
+  say "You beat Katy! Her pastries are almost as tough as her team. Almost."
+  end

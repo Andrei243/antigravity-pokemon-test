@@ -26,9 +26,45 @@ public static class RegionBake
     /// <summary>The region's chunks, as OpenMap.ChunkOf counts them, west to east and then north to south.</summary>
     public static IEnumerable<(int X, int Z)> ChunksOf(OpenWorldFile world)
     {
+        var held = world.BakeRing is { } ring ? Held(world, ring) : null;
         for (int z = world.Chunks[1]; z <= world.Chunks[3]; z++)
             for (int x = world.Chunks[0]; x <= world.Chunks[2]; x++)
-                yield return (x, z);
+                if (held == null || held.Contains((x, z))) yield return (x, z);
+    }
+
+    /// <summary>
+    /// The chunks a region whose <c>bakeRing</c> is given bakes (plan 34 · PD3, option b): those an area's polygon
+    /// touches, by a look every two metres over each chunk and each polygon's corners, and every chunk within
+    /// <paramref name="ring"/> of one, within the rectangle.
+    /// </summary>
+    public static HashSet<(int X, int Z)> Held(OpenWorldFile world, int ring)
+    {
+        var touched = new HashSet<(int X, int Z)>();
+        foreach (var area in world.Areas)
+        {
+            var polygon = area.Polygon.Select(p => new P2(p[0], p[1])).ToList();
+            foreach (var p in polygon) touched.Add(((int)Math.Floor(p.X / 32), (int)Math.Floor(p.Z / 32)));
+            double x0 = polygon.Min(p => p.X), x1 = polygon.Max(p => p.X), z0 = polygon.Min(p => p.Z), z1 = polygon.Max(p => p.Z);
+            for (int cz = (int)Math.Floor(z0 / 32); cz <= (int)Math.Floor(z1 / 32); cz++)
+                for (int cx = (int)Math.Floor(x0 / 32); cx <= (int)Math.Floor(x1 / 32); cx++)
+                {
+                    if (touched.Contains((cx, cz))) continue;
+                    bool hit = false;
+                    for (int k = 0; k <= 16 && !hit; k++)
+                        for (int i = 0; i <= 16 && !hit; i++)
+                            hit = Flat.Inside(polygon, cx * 32 + i * 2, cz * 32 + k * 2);
+                    if (hit) touched.Add((cx, cz));
+                }
+        }
+        var held = new HashSet<(int X, int Z)>();
+        foreach (var (x, z) in touched)
+            for (int dz = -ring; dz <= ring; dz++)
+                for (int dx = -ring; dx <= ring; dx++)
+                {
+                    int cx = x + dx, cz = z + dz;
+                    if (cx >= world.Chunks[0] && cx <= world.Chunks[2] && cz >= world.Chunks[1] && cz <= world.Chunks[3]) held.Add((cx, cz));
+                }
+        return held;
     }
 
     /// <summary>A chunk's three levels as ChunkMeshes (what --seams and the pictures read), the finest first.</summary>

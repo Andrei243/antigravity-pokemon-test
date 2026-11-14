@@ -268,6 +268,37 @@ way -
 from Olympia at 6,4 of AnistarCity_Gym
 way -
   Olympia> The stars say you are not yet ready to face me. Visit Laverre's Gym first, and its tree.
+=== Artazon_Gym.GymGuide
+from Gym Guide at 2,7 of Artazon_Gym
+way -
+  Gym Guide> Brassius's Grass types can't stand fire, ice, flying, poison or bug moves. Plenty to choose from!
+=== Artazon_Gym.Receptionist
+from Receptionist at 6,4 of Artazon_Gym
+way -
+  Receptionist> Welcome to Artazon Gym! Brassius's gym test is behind me: find the Sunflora hiding in his garden.
+  Receptionist> They stand perfectly still among the flowers. Find all three and Brassius will see you.
+=== Artazon_GymTest.Leader
+from Brassius at 6,3 of Artazon_GymTest
+way -
+  Brassius> A challenger who is not yet a student? Enrol at the academy first, and then we shall make art.
+=== Artazon_GymTest.Test1
+from Sunflora at 6,13 of Artazon_GymTest
+way -
+  > That flower in the gap has eyes... It's a Sunflora, standing perfectly still! Lucas said hello.
+  > Found out, the Sunflora hopped off into the flower beds!
+  + FLAG_PALDEA_ARTAZON_TEST_1
+=== Artazon_GymTest.Test2
+from Sunflora at 6,9 of Artazon_GymTest
+way -
+  > This sunflower is a little too cheerful. It's another Sunflora! Lucas tapped it on the leaf.
+  > It giggled and hopped away!
+  + FLAG_PALDEA_ARTAZON_TEST_2
+=== Artazon_GymTest.Test3
+from Sunflora at 6,5 of Artazon_GymTest
+way -
+  > The last Sunflora was hiding in plain sight. Lucas found it!
+  > It spun round and hopped off. Every Sunflora has been found!
+  + FLAG_PALDEA_ARTAZON_TEST_3
 === Ballonlea_Stadium.GymGuide
 from Gym Guide at 2,7 of Ballonlea_Stadium
 way -
@@ -3710,6 +3741,37 @@ way -
   Boy> It's hard to win without one. Still, if you're set on it, I won't stop you.
   Boy> You could always practise at the counter on the right.
   + FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY
+=== Cortondo_Gym.GymGuide
+from Gym Guide at 2,7 of Cortondo_Gym
+way -
+  Gym Guide> Katy's Bug types hate fire, flying and rock moves. Bring something that hits from above!
+=== Cortondo_Gym.Receptionist
+from Receptionist at 6,4 of Cortondo_Gym
+way -
+  Receptionist> Welcome to Cortondo Gym! Katy's gym test is the olive roll, through the doors behind me.
+  Receptionist> Her course is blocked by Smoliv curled up into balls. Roll each one along to the end, and Katy will be waiting.
+=== Cortondo_GymTest.Leader
+from Katy at 6,3 of Cortondo_GymTest
+way -
+  Katy> A challenger? Oh, but you aren't enrolled at the academy yet. Come back once term has started, dear.
+=== Cortondo_GymTest.Test1
+from Smoliv at 6,13 of Cortondo_GymTest
+way -
+  > A Smoliv has curled up into a ball in the gap, as round as an olive. Lucas gave it a push...
+  > It rolled away down the course and into the goal!
+  + FLAG_PALDEA_CORTONDO_TEST_1
+=== Cortondo_GymTest.Test2
+from Smoliv at 6,9 of Cortondo_GymTest
+way -
+  > Another Smoliv, rolled up tight. Lucas gave it a push...
+  > It bumped off the rail and trundled into the goal!
+  + FLAG_PALDEA_CORTONDO_TEST_2
+=== Cortondo_GymTest.Test3
+from Smoliv at 6,5 of Cortondo_GymTest
+way -
+  > The last Smoliv was the roundest of all. Lucas gave it a good push...
+  > It rolled straight into the goal. The olive roll is cleared!
+  + FLAG_PALDEA_CORTONDO_TEST_3
 === CoumarineCity_EastHouse.GoodRod
 from Fisherman at 2,7 of CoumarineCity_EastHouse
 way -
@@ -6608,6 +6670,37 @@ way -
 from Worker at 17,13 of LaverreCity_PokeBallFactory
 way -
   Worker> They switched off half the lines and told us to make only their balls. Red ones, with an F. Hideous things.
+=== Levincia_Gym.GymGuide
+from Gym Guide at 2,7 of Levincia_Gym
+way -
+  Gym Guide> Iono's Electric types are no match for a good ground move. Watch out for her Mismagius, though.
+=== Levincia_Gym.Receptionist
+from Receptionist at 6,4 of Levincia_Gym
+way -
+  Receptionist> Welcome to Levincia Gym! Iono's gym test is live on her stream: find her Wattrel hiding on the set.
+  Receptionist> Three of them, tucked away behind the lights. Find them all and Iono will battle you on camera!
+=== Levincia_GymTest.Leader
+from Iono at 6,3 of Levincia_GymTest
+way -
+  Iono> A challenger who isn't a student yet? The chat says enrol at the academy first! Then come back, okay?
+=== Levincia_GymTest.Test1
+from Wattrel at 6,13 of Levincia_GymTest
+way -
+  > Something is fluttering behind the light rig. It's a Wattrel! Lucas pointed it out to the camera.
+  > The Wattrel squawked and flew off the set!
+  + FLAG_PALDEA_LEVINCIA_TEST_1
+=== Levincia_GymTest.Test2
+from Wattrel at 6,9 of Levincia_GymTest
+way -
+  > A Wattrel is hiding in a coil of cable. Lucas found it!
+  > It flapped away to a round of cheering from the chat!
+  + FLAG_PALDEA_LEVINCIA_TEST_2
+=== Levincia_GymTest.Test3
+from Wattrel at 6,5 of Levincia_GymTest
+way -
+  > The last Wattrel was perched right on top of the camera. Lucas spotted it!
+  > It took off in a shower of sparks. Every Wattrel has been found!
+  + FLAG_PALDEA_LEVINCIA_TEST_3
 === LockworkCellHoenn.Admin
 from Rafe Ottoline at 6,4 of LockworkCellHoenn
 way 0

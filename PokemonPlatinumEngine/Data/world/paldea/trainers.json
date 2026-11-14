@@ -100,5 +100,257 @@
         "personality": 830012467
       }
     ]
+  },
+  {
+    "id": "paldea_gym_trainer_olive",
+    "name": "Olive",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 520,
+    "party": [
+      {
+        "species": "Nymble",
+        "level": 13,
+        "ivScale": 6,
+        "personality": 1895828827
+      },
+      {
+        "species": "Tarountula",
+        "level": 13,
+        "ivScale": 6,
+        "personality": 3792538374
+      }
+    ]
+  },
+  {
+    "id": "paldea_katy",
+    "name": "Katy",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Nymble",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 419177012
+      },
+      {
+        "species": "Tarountula",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 1262986637
+      },
+      {
+        "species": "Teddiursa",
+        "level": 15,
+        "ivScale": 12,
+        "personality": 2808464295,
+        "teraType": "Bug"
+      }
+    ]
+  },
+  {
+    "id": "paldea_gym_trainer_hedge",
+    "name": "Hedge",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 600,
+    "party": [
+      {
+        "species": "Hoppip",
+        "level": 15,
+        "ivScale": 6,
+        "personality": 3014684397
+      },
+      {
+        "species": "Petilil",
+        "level": 15,
+        "ivScale": 6,
+        "personality": 3699059780
+      }
+    ]
+  },
+  {
+    "id": "paldea_brassius",
+    "name": "Brassius",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1700,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Petilil",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 3454864503
+      },
+      {
+        "species": "Smoliv",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 598703396
+      },
+      {
+        "species": "Sudowoodo",
+        "level": 17,
+        "ivScale": 12,
+        "personality": 2295196783,
+        "teraType": "Grass"
+      }
+    ]
+  },
+  {
+    "id": "paldea_gym_trainer_volt",
+    "name": "Volt",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 880,
+    "party": [
+      {
+        "species": "Pawmo",
+        "level": 22,
+        "ivScale": 6,
+        "personality": 3638562341
+      },
+      {
+        "species": "Voltorb",
+        "level": 22,
+        "ivScale": 6,
+        "personality": 2965987116
+      }
+    ]
+  },
+  {
+    "id": "paldea_iono",
+    "name": "Iono",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2400,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Wattrel",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 456691723
+      },
+      {
+        "species": "Bellibolt",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 753344623
+      },
+      {
+        "species": "Luxio",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 1872039312
+      },
+      {
+        "species": "Mismagius",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 3353424431,
+        "teraType": "Electric"
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_iris",
+    "name": "Iris",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 40,
+    "party": [
+      {
+        "species": "Smoliv",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 88456532
+      },
+      {
+        "species": "Tarountula",
+        "level": 10,
+        "ivScale": 0,
+        "personality": 3110791266
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_bruno",
+    "name": "Bruno",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 40,
+    "party": [
+      {
+        "species": "Sunkern",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 3494759114
+      },
+      {
+        "species": "Bonsly",
+        "level": 12,
+        "ivScale": 0,
+        "personality": 1794887520
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_noa",
+    "name": "Noa",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 40,
+    "party": [
+      {
+        "species": "Shinx",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 1468595178
+      },
+      {
+        "species": "Tadbulb",
+        "level": 17,
+        "ivScale": 0,
+        "personality": 1259210854
+      }
+    ]
   }
 ]
