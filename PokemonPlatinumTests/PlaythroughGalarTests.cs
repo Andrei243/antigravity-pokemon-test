@@ -69,6 +69,30 @@ public class PlaythroughGalarTests
         }, Seed, RegionDatabase.Galar);
     }
 
+    /// <summary>Plan 33 · GL7's "done when": the version's legend, met in the Weald after the Hall of Fame, is caught by the bot.</summary>
+    [Fact]
+    public void AGalarGamePlaysOnAfterTheHallOfFameAndTheBotCatchesTheWealdsLegend()
+    {
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            Strengthen(engine);
+            game.Bag.AddItem(ItemDatabase.Get("Master Ball")!, 3);
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.GalarWholeAndTheLegend) };
+            bot.CatchSpecies.Add("Zacian");
+            bot.CatchSpecies.Add("Zamazenta");
+            Run(bot, 13 * 3600);
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.True(game.Story.Has("GalarHallOfFame"), report.ToMarkdown());
+            Assert.True(game.Story.Var("VAR_GALAR_STORY") >= 47, $"VAR_GALAR_STORY {game.Story.Var("VAR_GALAR_STORY")}");
+            string legend = game.Story.Var("VAR_GALAR_VERSION") == 2 ? "Zamazenta" : "Zacian";
+            Assert.Contains(game.Party.Members.Concat(game.Boxes.All), p => p.Species.Name == legend && p.Level == 70);
+        }, Seed, RegionDatabase.Galar);
+    }
+
     // Plays until the itinerary is done (and the field is the player's again), the run stops or the time is up
     private void Run(Autoplayer bot, double seconds)
     {

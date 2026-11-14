@@ -125,6 +125,15 @@ public static partial class Itineraries
         Leg.Talk("Wyndon_StadiumPitch", "leon") with { Until = Flag("GalarHallOfFame") },
     };
 
+    /// <summary>After the Hall of Fame: the Weald's fog and the version's legend, met and caught (plan 33 · GL7's "done when"; the bot is told to catch it, <see cref="Autoplayer.CatchSpecies"/>).</summary>
+    public static IReadOnlyList<Leg> GalarToTheLegend { get; } = new[]
+    {
+        Leg.OpenTrigger(GalarMap, "the_legend") with { Until = GalarStory(47) },
+    };
+
     /// <summary>A Galar game played whole by the bot, from the bedroom in Postwick to the Hall of Fame.</summary>
     public static IReadOnlyList<Leg> GalarWhole => Join(GalarToTheTrain, GalarToTheFireBadge, GalarToTheDragonBadge, GalarToTheHallOfFame);
+
+    /// <summary>The whole game and then the Weald's legend (plan 33 · GL7).</summary>
+    public static IReadOnlyList<Leg> GalarWholeAndTheLegend => Join(GalarWhole, GalarToTheLegend);
 }

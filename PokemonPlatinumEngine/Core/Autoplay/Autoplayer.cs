@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Battle.Sim;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Core.Autoplay;
@@ -319,6 +320,19 @@ internal sealed partial class Autoplayer
         if (Report.Arrive(place)) FirstArrival?.Invoke(place);
     }
 
+    /// <summary>Wild species the bot catches rather than fights down (plan 33 · GL7: the Weald's legend): a ball is thrown at the first menu, the best it has.</summary>
+    public HashSet<string> CatchSpecies { get; } = new();
+
+    private static readonly string[] BallsBestFirst = { "Master Ball", "Ultra Ball", "Great Ball", "Poké Ball" };
+
+    private string? BallToThrow(BattleEngine battle)
+    {
+        if (CatchSpecies.Count == 0 || battle.IsTrainerBattle || battle.IsStaged || !CatchSpecies.Contains(battle.EnemyPokemon.Species.Name)) return null;
+        foreach (var name in BallsBestFirst)
+            if (ItemDatabase.Get(name) is { } item && game.Bag.GetQuantity(item) > 0) return name;
+        return null;
+    }
+
     private ActionFrame InBattle(BattleEngine battle)
     {
         if (battle.IsBattleOver) return Pulse(GameAction.Confirm);
@@ -330,6 +344,9 @@ internal sealed partial class Autoplayer
                 return ActionFrame.None;
             case BattleMenuState.Main when battle.Kind == BattleKind.CatchingLesson:
                 return Pulse(GameAction.Confirm);
+            case BattleMenuState.Main when BallToThrow(battle) is { } ball:
+                battle.UseBagItem(ball);
+                return ActionFrame.None;
             case BattleMenuState.Main:
             case BattleMenuState.Moves:
                 int move = battle.Suggest();
