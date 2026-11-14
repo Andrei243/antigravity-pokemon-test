@@ -13,7 +13,7 @@
   "doors": [
     {
       "name": "grotto_door",
-      "box": { "min": [-56, 0.4, -82], "max": [-54, 4, -78] },
+      "box": { "min": [-50.5, 0.8, -82], "max": [-48.5, 4, -78] },
       "room": "InletGrotto", "at": [3, 22], "facing": "up",
       "out": "grotto_door"
     }

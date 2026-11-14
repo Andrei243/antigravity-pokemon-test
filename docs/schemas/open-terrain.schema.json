@@ -234,7 +234,8 @@
               "Sand",
               "Snow",
               "Mud",
-              "ClimbableRock"
+              "ClimbableRock",
+              "Paving"
             ]
           },
           "polygon": {

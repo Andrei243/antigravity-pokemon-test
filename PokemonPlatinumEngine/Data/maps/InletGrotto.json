@@ -4,7 +4,9 @@
   "bgmTrack": "paldea/south_province",
   "interior": "None",
   "trees": "Round",
+  "battleArena": "Cave",
   "encounterRate": 0,
+  "setting": "Cave",
   "width": 9,
   "height": 24,
   "ground": [

@@ -163,6 +163,7 @@ public static partial class RegionMapArt
             OpenCover.Sand => SandColor,
             OpenCover.Snow => grain ? SnowShade : SnowColor,
             OpenCover.Mud => MarshColor,
+            OpenCover.Paving => grain ? PavingShade : PavingColor,
             _ => BareColor
         };
     }
