@@ -1,0 +1,25 @@
+{"what":"SaveManager.Read and Write of w5-s30-v3-past-the-opening.json","ms":1.218}
+{"what":"PixelGround.Bake of one chunk","ms":77.37}
+{"what":"MapDatabase.Initialize","ms":2369.394}
+{"what":"ScriptLibrary.Load","ms":132.991}
+{"what":"World.LoadAll and WorldMapBuilder.Build of Sinnoh","ms":285.032}
+{"what":"species.json (PokemonDatabase)","ms":32.724}
+{"what":"moves.json (MoveDatabase)","ms":1.404}
+{"what":"abilities.json (AbilityDatabase)","ms":0.122}
+{"what":"items.json (ItemDatabase)","ms":1.181}
+{"what":"trainers.json (TrainerDatabase\u0027s first read)","ms":1.394}
+{"what":"SdfMesher.Mesh of Turtwig (PokemonModels.Build)","ms":261.714}
+{"what":"SdfMesher.Mesh of a rig (CharacterModels.Build)","ms":591.229}
+{"what":"Mml.Parse of 530 songs","ms":48.306}
+{"what":"OpenWorldBake: the lab\u0027s descriptions read and made a land","ms":0.426}
+{"what":"OpenWorldBake: the hill\u0027s chunk at level 0 (RegionBake.Finest)","ms":127.587}
+{"what":"OpenWorldBake: the hill\u0027s chunk at three levels (RegionBake.Chunk)","ms":308.224}
+{"what":"OpenWorldBake: the lab\u0027s navigation mesh (NavBake.Build of 16 chunks)","ms":756.441}
+{"what":"start-up: moves","ms":0.048}
+{"what":"start-up: species","ms":0.024}
+{"what":"start-up: items","ms":0.006}
+{"what":"start-up: maps","ms":1449.854}
+{"what":"start-up: scripts","ms":147.555}
+{"what":"start-up: migrate folder","ms":0.677}
+{"what":"start-up: the save","ms":17.162}
+{"what":"headless start-up, in all","ms":1741.947}
