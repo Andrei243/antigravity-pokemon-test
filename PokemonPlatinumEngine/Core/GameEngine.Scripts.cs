@@ -1054,6 +1054,7 @@ public partial class GameEngine
         public GiftBox? Gifts => game.flow.Gifts;
         public Models.StageShow.ShowRecords? StageShow => game.flow.StageShow;
         public Models.Rides.RideRecords? Rides => game.flow.Rides;
+        public string? RaceMount => game.RaceMountNow()?.Species.Name;
         // The film studio (plan 42 · PS4)
         public Models.Studio.StudioRecords? Studio => game.flow.Studio;
         public void StudioShoot(Models.Studio.StudioFilm film) => game.StartStudioFilm(film);

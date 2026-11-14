@@ -660,6 +660,14 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Bicycle, Line = line, Option = r.OneOf("on", "off") == "on" };
             case "ride":
                 // A ride of the beaches (plan 42 · PS7): `ride surf "hauoli"`, `ride runs "hauoli"`, `ride best "hauoli"`
+                // and of the riding race (plan 42 · PS8): `ride race "blossom"`, `ride racebest "blossom"`, `ride raceruns "blossom"`
+                if (r.PeekWord("race") || r.PeekWord("racebest") || r.PeekWord("raceruns"))
+                {
+                    string raceWord = r.OneOf("race", "racebest", "raceruns");
+                    string track = r.Text("a track's id");
+                    if (Models.Rides.RaceTracks.Get(track) == null) throw r.Error($"'{track}' is no track of race-tracks.json");
+                    return new Instruction { Op = Op.Ride, Line = line, Name = raceWord, Other = track };
+                }
                 if (r.PeekWord("surf") || r.PeekWord("runs") || r.PeekWord("best"))
                 {
                     string rideWord = r.OneOf("surf", "runs", "best");

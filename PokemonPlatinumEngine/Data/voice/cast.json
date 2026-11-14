@@ -10629,6 +10629,10 @@
       "note": "first spoken at BattlePalace.txt(65)",
       "provisional": true
     },
+    "stable_master": {
+      "note": "first spoken at kalos_route_12.txt(5)",
+      "provisional": true
+    },
     "stall_keeper": {
       "note": "first spoken at common.txt(2892)",
       "brief": {
@@ -11819,6 +11823,7 @@
     "Sordward": "sordward",
     "Sparring Coach": "sparring_coach",
     "Spenser": "spenser",
+    "Stable Master": "stable_master",
     "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
     "Station Attendant": "station_attendant",

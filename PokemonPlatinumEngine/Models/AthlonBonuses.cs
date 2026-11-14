@@ -68,6 +68,8 @@ public static class AthlonBonuses
         GoalRoll g => (g.Players[team].Goals > 0 && g.Players[team].OwnGoals == 0, g.Players[team].Goals >= 3),
         // Trick surfing (plan 42 · PS7), a ride the dome never offers: at most two falls with a trick landed, and a combo of four
         Rides.TrickSurf ts => (ts.Riders[team].Falls <= 2 && ts.Riders[team].Landed > 0, ts.Riders[team].BestCombo >= 4),
+        // The riding race (plan 42 · PS8), also never offered by the dome: home without a stumble, and home first
+        Rides.RidingRace rr => (rr.Racers[team].Finished && rr.Racers[team].Stumbles == 0, rr.Racers[team].Finished && rr.Ranking[0] == team),
         _ => (false, false)
     };
 }

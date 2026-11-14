@@ -25616,6 +25616,19 @@ way 0
   + FLAG_DAILY_ALOLA_SCAN_HORSEA_MET
 way 1, from answer 1
   * wildbattle Horsea 18 Lost
+=== kalos_route_12.RaceStable
+from Stable Master at 220,481 of Kalos
+way 0
+  Stable Master> Welcome to the Blossom Road stable! Rhyhorn, Tauros and Rapidash are bred for speed here, and we race them round the track.
+  Stable Master> Any Pokémon big enough to carry a rider can run it. Hold the run button to push, press the button to jump the rocks, and lean into every turn.
+  Stable Master> Care to race your own Pokémon against my three riders?
+  Stable Master> First home! Not one of my riders has beaten that. Here is the stable's prize.
+  > Lucas received 3 Battle Point(s)!
+  ? Care to race your own Pokémon against my three riders? = Yes
+  * open Ride
+way 1, from answer 1
+  Stable Master> No hurry. The track isn't going anywhere. Come back whenever you like!
+  ? Care to race your own Pokémon against my three riders? = No
 === kalos_route_14.Neighbour
 from the trigger at 358,276 of Kalos
 way 0

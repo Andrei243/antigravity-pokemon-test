@@ -1102,8 +1102,31 @@
     "battlePoints": "PUNCTE DE LUPTĂ",
     "none": "NICIUNUL DE ASTĂ DATĂ",
     "held": "BP deținute: {points}",
+    "racing": "CURSĂ CALARE PE POKÉMONUL TĂU",
+    "raceHowTo": "Ține apăsat Alergare ca să împingi pentru viteză, ceea ce îi consumă răsuflarea, și apasă butonul ca să sari peste stânci. Noroiul încetinește o montură fără putere, așa că împinge prin el. Într-o curbă, ține săgeata spre care arată sau pierzi viteză. Câștigă cine ajunge primul.",
+    "racePays": "LOCUL ÎNTÂI PLĂTEȘTE {most} BP",
+    "raceTime": "TIMP",
+    "raceStumbles": "ÎMPIEDICĂRI",
+    "raceTurns": "CURBE",
+    "raceHome": "{time} s",
+    "raceOut": "NESOSIT",
+    "raceStamina": "RĂSUFLARE",
+    "raceYourTime": "Timpul tău: {time} s",
+    "raceYourPlace": "Ai ieșit pe locul {place} din patru.",
+    "stumble": "ÎMPIEDICARE!",
+    "cleared": "SĂRIT!",
+    "leaned": "ÎNCLINAT!",
+    "swung": "LARG!",
     "course": {
       "hauoli": "Hau'oli Beach"
+    },
+    "track": {
+      "blossom": "Pista Drumului Înflorit"
+    },
+    "rider": {
+      "adele": "ADÈLE",
+      "bastien": "BASTIEN",
+      "colette": "COLETTE"
     },
     "club": {
       "kai": "KAI",
