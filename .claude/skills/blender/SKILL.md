@@ -428,6 +428,20 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
 - **A decal is cast from its centre pushed out along its normal**: with a tilted normal the centre goes near the
   surface, or the patch lands off its mark. A loose disc on a dome is lifted, or its rim sinks and shows a
   crescent. A check that keeps vines out of a region samples each arc more finely than its control points.
+- **Crisp stripes round a limb or a body** (Elekid's line): a loose ring, a `sheet` wound round the part standing
+  0.004 off its surface with its seam behind, has no hatching at any size, where paint steps up close. A band mask
+  in paint is `inside(z - top) * inside(bottom - z)` (`inside(d)` is 1 where `d` is below nought): turned round
+  it paints nothing and says nothing.
+- **An eye on a loose faceted piece** (Porygon) lies on a thin fused plate just proud of the facet, shaded flat
+  after `build()` so it takes the facet's light. Loose pieces sit between the fused faces and the decals in the
+  mesh: a script that finds them by counting from the end breaks once a decal is added before `build()`.
+- **A curved blade at a limb's end** (Scyther's scythe) cannot show its face to both of the game's cameras: turn
+  its plane some 55 degrees out from straight ahead and accept the far one edge-on in the three-quarter view.
+  A flared rim of petals (Magmortar's muzzle) reads as floating discs unless the petals are thick, nearly close
+  the ring and start inside the barrel's wall.
+- **The main session holds the game's shot beside the reference BEFORE it sends a correction**: Lickitung's broad
+  flat tongue and great tail were the art's own, and a correction written from the game's shot alone had them
+  made thin and small; a second round put them back.
 
 ## Not tried yet
 
