@@ -9,7 +9,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, unit, eye_look, tri, args
+from sculptkit import Kit, ell, tube, sheet, srgb, inside, smoothstep, unit, eye_look, tri, args
 
 src, out = args()
 k = Kit(src, coat="scales")
@@ -84,25 +84,59 @@ def swish(shape, y0, deg, length):
     return V, F
 
 
-# --- the body: a long sausage, a little higher in front, narrowing to the tail ---------------------------------------
-k.add("body", tube([(0, -0.07, 0.178), (0, 0.0, 0.172), (0, 0.08, 0.166), (0, 0.14, 0.165)],
-                   [0.05, 0.054, 0.053, 0.048]), GREY, "body")
-k.add("tailbody", tube([(0, 0.12, 0.165), (0, 0.17, 0.166), (0, 0.205, 0.167)], [0.049, 0.042, 0.032]), GREY, "tail")
+# --- the body: a long tube of even thickness (depth about a quarter of its length), narrowing only at the tail -------
+BZ = 0.17
+BODY_Y, BODY_R = [-0.075, 0.0, 0.08, 0.16, 0.205], [0.05, 0.052, 0.052, 0.05, 0.046]
+k.add("body", tube([(0, y, BZ) for y in BODY_Y], BODY_R), GREY, "body")
+k.add("tailbody", tube([(0, 0.18, BZ), (0, 0.215, BZ), (0, 0.238, BZ)], [0.048, 0.042, 0.032]), GREY, "tail")
 # The head: a small blue ball in front of the body, its colour a crisp line where it meets the grey
-HC, HR = np.array([0.0, -0.118, 0.176]), np.array([0.037, 0.04, 0.038])
+HC, HR = np.array([0.0, -0.118, 0.174]), np.array([0.037, 0.04, 0.038])
 k.add("head", ell(HC, HR), BLUE, "head")
 k.paint(lambda P: 1 - inside((np.linalg.norm((P - HC) / HR, axis=1) - 1.07) * 0.037, 0.0025), GREY)
 k.paint(lambda P: inside((np.linalg.norm((P - HC) / HR, axis=1) - 1.07) * 0.037, 0.0025), BLUE)
 
 
-# The zigzag: a thick black band of sharp teeth down each side
-def zigzag(P):
-    y, z = P[:, 1], P[:, 2]
-    zc = 0.172 - 0.08 * (y + 0.02) * 0.9
-    zl = zc + 0.021 * tri((y - 0.0) / 0.054 + 0.25)
-    d = np.abs(z - zl) / 1.8
-    return inside(d - 0.0085, 0.0022) * inside(np.abs(y - 0.06) - 0.085, 0.003) * (np.abs(P[:, 0]) > 0.012)
-k.paint(zigzag, BLACK)
+def strip(line, half, at, thick, nu=10, nv=3):
+    """A band of even width along a polyline in a plane (a, b), its corners mitred sharp, laid by at(a, b) onto a
+    surface: a sheet a segment, each segment's ends on the mitre lines so neighbours meet without a gap."""
+    p = np.array(line, float)
+    n = len(p)
+    seg = [p[i + 1] - p[i] for i in range(n - 1)]
+    nrm = [np.array([-d[1], d[0]]) / np.linalg.norm(d) for d in seg]
+    off = []
+    for i in range(n):
+        if i == 0:
+            m = nrm[0]
+        elif i == n - 1:
+            m = nrm[-1]
+        else:
+            b = nrm[i - 1] + nrm[i]; b /= np.linalg.norm(b)
+            m = b / max(np.dot(b, nrm[i]), 0.2)
+        off.append(m * (half[i] if np.ndim(half) else half))
+    Vs, Fs, o = [], [], 0
+    for i in range(n - 1):
+        L0, L1, R0, R1 = p[i] + off[i], p[i + 1] + off[i + 1], p[i] - off[i], p[i + 1] - off[i + 1]
+        def f(u, v, L0=L0, L1=L1, R0=R0, R1=R1):
+            A = L0[:, None, None] * (1 - u) + L1[:, None, None] * u
+            B = R0[:, None, None] * (1 - u) + R1[:, None, None] * u
+            Q = A * (1 - v) + B * v
+            return at(Q[0], Q[1])
+        V, F = sheet(f, nu, nv, thick)
+        Vs.append(V); Fs.extend([[j + o for j in fc] for fc in F]); o += len(V)
+    return np.vstack(Vs), Fs
+
+
+# The zigzag: one clean black band of three and a half even teeth, as wide as they are tall, along each flank, a loose strip lying on the tube (paint
+# was a rough scrawl at the game's size); a + along the body, b round it (metres along the surface from the side's
+# middle, upward)
+def on_flank(a, b):
+    r = np.interp(a, BODY_Y, BODY_R) + 0.002
+    phi = b / r
+    return np.stack([r * np.cos(phi), a, BZ + r * np.sin(phi)], axis=-1)
+
+
+ZIG = [(-0.04 + i * 0.034, (0.014 if i % 2 else -0.014) - 0.004) for i in range(8)]
+k.add("zigzag", strip(ZIG, 0.0075, on_flank, 0.004), BLACK, "body", fuse=False, mirror=True)
 
 # --- the barbels: two long ones rising up and back from the head's top, short forked ones under the chin -------------
 k.add("whisker", tube([(0.012, -0.13, 0.205), (0.024, -0.135, 0.235), (0.04, -0.12, 0.258), (0.052, -0.095, 0.27),
@@ -144,20 +178,20 @@ underfin("fin", (0.03, 0.05, 0.13), 0.022, "fin{s}")
 
 # The tail: a blue fan, its root narrow, its edge round, bent to one side mid-stroke; darker ribs are wedges of the
 # fan itself, so that they show on both faces (ribs laid over a face were lost in it)
-TC = (0.207, 0.167)
+TC = (0.242, 0.17)
 def wedge(a0, a1, r0, n=6):
     arc = [(TC[0] + 0.062 * math.cos(math.radians(a)), TC[1] + 0.065 * math.sin(math.radians(a)))
            for a in np.linspace(a0, a1, n)]
     inner = [(TC[0] + r0 * math.cos(math.radians(a)), TC[1] + r0 * math.sin(math.radians(a))) for a in (a1, a0)]
     return arc + inner
 def tailpiece(name, outline, colour):
-    k.add(name, swish(flat(outline, (0, 0, 0), (0, 1, 0), (0, 0, 1), 0.012), 0.19, 38, 0.08), colour, "tailFin",
+    k.add(name, swish(flat(outline, (0, 0, 0), (0, 1, 0), (0, 0, 1), 0.012), 0.225, 38, 0.08), colour, "tailFin",
           fuse=False)
 R0 = 0.01
-tailpiece("tailroot", [(0.19, 0.156), (TC[0] + R0 * math.cos(math.radians(-78)), TC[1] + R0 * math.sin(math.radians(-78))),
+tailpiece("tailroot", [(0.225, 0.159), (TC[0] + R0 * math.cos(math.radians(-78)), TC[1] + R0 * math.sin(math.radians(-78))),
                        (TC[0] + R0, TC[1]),
                        (TC[0] + R0 * math.cos(math.radians(78)), TC[1] + R0 * math.sin(math.radians(78))),
-                       (0.19, 0.178)], FIN)
+                       (0.225, 0.181)], FIN)
 RIBS, RW = (-45, -15, 15, 45), 3.0
 edges = [-78] + [x for r in RIBS for x in (r - RW, r + RW)] + [78]
 for i in range(0, len(edges), 2):

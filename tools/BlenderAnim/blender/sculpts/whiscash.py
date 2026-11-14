@@ -3,7 +3,7 @@
 #   blender --background --factory-startup --python sculpts/whiscash.py -- <the export's Whiscash.glb> <out.glb>
 # A big catfish: a fat bean of a body, deep blue, tall at the forehead and tapering to the tail, a pale cream belly; a
 # wide mouth with thick light blue lips across the whole front, two light blue drops hanging from the lower lip; round
-# white eyes with black pupils high on the cheeks; a yellow lightning W on the forehead; two long pale yellow whiskers
+# white eyes with black pupils high on the cheeks; a broad yellow lightning bolt on the forehead; two pale yellow whiskers
 # rising from the mouth's corners and curling at their tips; a round light blue dorsal fin with three black spots like
 # a face; a light blue heart of a tail; dark blue flippers in front and behind, below.
 # The export's joints: body (0, 0.04, 0.227), head (0, -0.14, 0.227), dorsal (0, 0.1, 0.367), tail (0, 0.28, 0.227),
@@ -11,7 +11,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, unit, eye_look, args
+from sculptkit import Kit, ell, tube, sheet, srgb, inside, smoothstep, unit, eye_look, args
 
 src, out = args()
 k = Kit(src, coat="scales")
@@ -104,7 +104,7 @@ k.add("tailstalk", tube([(0, 0.17, 0.238), (0, 0.24, 0.248), (0, 0.3, 0.256)], [
 
 # The belly: cream below a line that drops a little toward the tail
 def belly(P):
-    zb = 0.158 - 0.025 * np.clip((P[:, 1] + 0.05) / 0.3, 0, 1) + 0.013 * np.sin(P[:, 1] * 28)
+    zb = 0.186 - 0.012 * np.clip((P[:, 1] + 0.05) / 0.3, 0, 1) + 0.012 * np.sin(P[:, 1] * 28)
     return inside(P[:, 2] - zb, 0.003)
 k.paint(belly, CREAM, on=["head", "body", "tailstalk"])
 
@@ -140,11 +140,12 @@ for s, sd in ((1, "R"), (-1, "L")):
     k.add(f"drop{sd}", tube([top, top + (0.003 * s, -0.004, -0.03), top + (0.005 * s, -0.002, -0.058)],
                             [0.011, 0.013, 0.021]), LIGHT, "head", fuse=False, surface="skin")
 
-# The whiskers: from the mouth's corners up beside the head (inside its width, or the model grows wide), curling in at their tips
-k.add("whisker", tube([(0.128, -0.12, 0.175), (0.14, -0.13, 0.22), (0.145, -0.125, 0.28), (0.14, -0.105, 0.34),
-                       (0.125, -0.075, 0.385), (0.105, -0.05, 0.41), (0.088, -0.04, 0.413), (0.08, -0.048, 0.396),
-                       (0.088, -0.06, 0.385), (0.1, -0.06, 0.395)],
-                      [0.0085, 0.0085, 0.008, 0.0078, 0.0074, 0.007, 0.0068, 0.0066, 0.0064, 0.006], per=6),
+# The whiskers: from the ends of the lips at the sides of the head, sweeping up and out away from the face (never
+# across it from the front three-quarter), each ending in a curl above and outside the head that faces the front
+k.add("whisker", tube([(0.136, -0.05, 0.172), (0.158, -0.045, 0.215), (0.18, -0.035, 0.27), (0.192, -0.02, 0.33),
+                       (0.19, 0.0, 0.385), (0.172, 0.01, 0.42), (0.148, 0.012, 0.425), (0.134, 0.012, 0.405),
+                       (0.142, 0.012, 0.385), (0.162, 0.012, 0.388), (0.166, 0.012, 0.404)],
+                      [0.0085, 0.0085, 0.0082, 0.008, 0.0078, 0.0075, 0.0072, 0.007, 0.0068, 0.0066, 0.0064], per=6),
       WHISK, "head", fuse=False, mirror=True)
 
 # --- the fins ------------------------------------------------------------------------------------------------------
@@ -170,21 +171,49 @@ for t in np.linspace(0, 2 * math.pi, 64, endpoint=False):
 k.add("tailfin", swish(flat(HEART, (0, 0, 0), (0, 1, 0), (0, 0, 1), 0.016), TY, 38, 0.11), LIGHT, "tailFin",
       fuse=False)
 
-# --- the forehead's mark: a yellow lightning W on the top of the head, painted (a patch's edge came out ragged) -------
-BOLT = np.array([(-0.85, 0.5), (-0.38, -0.42), (0.02, 0.22), (0.4, -0.5), (0.86, 0.55)]) * np.array([0.075, 0.045])
+# --- the forehead's mark: a broad yellow lightning bolt on the top of the head, a loose strip lying on its surface ----
+def strip(line, half, at, thick, nu=10, nv=3):
+    """A band along a polyline in a plane (a, b), its corners mitred sharp, laid by at(a, b) onto a surface: a sheet a
+    segment, each segment's ends on the mitre lines so neighbours meet without a gap. half: a half-width a point."""
+    p = np.array(line, float)
+    n = len(p)
+    seg = [p[i + 1] - p[i] for i in range(n - 1)]
+    nrm = [np.array([-d[1], d[0]]) / np.linalg.norm(d) for d in seg]
+    off = []
+    for i in range(n):
+        if i == 0:
+            m = nrm[0]
+        elif i == n - 1:
+            m = nrm[-1]
+        else:
+            b = nrm[i - 1] + nrm[i]; b /= np.linalg.norm(b)
+            m = b / max(np.dot(b, nrm[i]), 0.2)
+        off.append(m * half[i])
+    Vs, Fs, o = [], [], 0
+    for i in range(n - 1):
+        L0, L1, R0, R1 = p[i] + off[i], p[i + 1] + off[i + 1], p[i] - off[i], p[i + 1] - off[i + 1]
+        def f(u, v, L0=L0, L1=L1, R0=R0, R1=R1):
+            A = L0[:, None, None] * (1 - u) + L1[:, None, None] * u
+            B = R0[:, None, None] * (1 - u) + R1[:, None, None] * u
+            Q = A * (1 - v) + B * v
+            return at(Q[0], Q[1])
+        V, F = sheet(f, nu, nv, thick)
+        Vs.append(V); Fs.extend([[j + o for j in fc] for fc in F]); o += len(V)
+    return np.vstack(Vs), Fs
+
+
 mn = unit(0, -0.5, 0.86)
-MC = HC + mn * HR[2] + np.array([0, -0.01, 0])
+MC = HC + mn * HR[2]
 MU = np.cross(mn, (1.0, 0, 0))
-def mark(P):
-    u = P[:, 0]
-    v = (P - MC) @ MU
-    best = np.full(len(P), 9.0)
-    for a, b in zip(BOLT[:-1], BOLT[1:]):
-        e = b - a
-        t = np.clip(((u - a[0]) * e[0] + (v - a[1]) * e[1]) / e.dot(e), 0, 1)
-        best = np.minimum(best, np.hypot(u - a[0] - t * e[0], v - a[1] - t * e[1]))
-    return inside(best - 0.012, 0.004) * ((P - HC) @ mn > 0.05)
-k.paint(mark, YELLOW)
+def on_brow(a, b):
+    """a across the head, b up over its brow (metres), cast from the head's middle onto its surface."""
+    p = MC[None, None, :] + a[..., None] * np.array([1.0, 0, 0]) + b[..., None] * MU
+    d = p - HC
+    t = 1 / np.sqrt(((d / HR) ** 2).sum(-1, keepdims=True))
+    dn = d / np.linalg.norm(d, axis=-1, keepdims=True)
+    return HC + d * t + dn * 0.003
+BOLT = [(-0.07, 0.02), (-0.024, -0.016), (0.008, 0.014), (0.068, -0.024)]
+k.add("bolt", strip(BOLT, [0.019, 0.019, 0.017, 0.005], on_brow, 0.004), YELLOW, "head", fuse=False)
 
 # --- the eyes: round, white, a black pupil and a black rim, high on the cheeks and turned forward --------------------
 INK, WH, LID, LINE = srgb("#141418"), srgb("#FFFFFF"), srgb(NAVY), srgb("#B4C6F2")
