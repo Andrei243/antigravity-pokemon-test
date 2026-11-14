@@ -129,6 +129,12 @@ public class Trainer
     /// </summary>
     public bool InTheAir => Format == "sky";
 
+    /// <summary>
+    /// A boss of Team Star (plan 34 · PD5: <c>"starmobile"</c>), whose battle is fought before their base's gate on a stage
+    /// of its own (<see cref="Overworld.BattleArena.StarBase"/>), their Starmobile the team's last. A single as ever.
+    /// </summary>
+    public bool AtAStarBase => Format == "starmobile";
+
     /// <summary>How the trainer thinks in battle (plan 06 · R9): Platinum's flags from the trainer's data.</summary>
     public Battle.Sim.Ai.AiFlags Ai { get; set; } = Battle.Sim.Ai.AiFlags.Basic;
 

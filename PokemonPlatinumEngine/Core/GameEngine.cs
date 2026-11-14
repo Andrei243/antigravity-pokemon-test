@@ -3632,6 +3632,8 @@ public partial class GameEngine
                 if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Endless);
                 // ...or, where neither game is on, the catch streak and the chain of hooks (plan 38 · EX3)
                 else if (!InBugContest && StreakShown is var (streakSpecies, streak, hooks)) ModernUi.StreakCount(VirtualWidth, streakSpecies, streak, hooks);
+                // A raid on a Team Star base's gate: its count and its clock (plan 34 · PD5)
+                DrawStarRaidCorner();
                 DrawBugContestCount();
                 DrawParkCount();
                 DrawBattlePoints();

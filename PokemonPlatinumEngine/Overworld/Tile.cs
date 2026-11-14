@@ -193,7 +193,12 @@ public enum BattleArena
     /// The sky (plan 14 · B2): a sky battle's stage, platforms of cloud over a sea of cloud, wherever it is met. No map
     /// names it; a sky trainer's battle sets it.
     /// </summary>
-    Sky
+    Sky,
+    /// <summary>
+    /// A Team Star base's yard (plan 34 · PD5): a dirt yard before the crew's black tent, painted pads, crates and
+    /// floodlights. No map names it; a boss's battle (a trainer whose format is "starmobile") sets it.
+    /// </summary>
+    StarBase
 }
 
 /// <summary>How a town's houses are built (style guide, "Buildings"); public buildings look the same everywhere.</summary>

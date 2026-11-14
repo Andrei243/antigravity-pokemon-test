@@ -582,6 +582,15 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         HeldLight = hour;
     }
 
+    /// <summary>The base whose raid a script last began (plan 34 · PD5), or null: a host with no field plays no raid, and a test plays its end's script.</summary>
+    public string? StarRaidBegun { get; private set; }
+
+    public void BeginStarRaid(string @base)
+    {
+        Log.Add($"starraid {@base}");
+        StarRaidBegun = @base;
+    }
+
     /// <summary>The effects held on their tiles: the kind and the tile each.</summary>
     public SortedSet<string> HeldEffects { get; } = new(StringComparer.Ordinal);
 

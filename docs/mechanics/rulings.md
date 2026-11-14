@@ -13063,3 +13063,53 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
 - **The Titans' places play a song of their own**, `paldea/titans` (the Stony Cliff's too, which played the South
   Province's).
 - **Objectives** 812 `paldeaBombirdier` to 816 `paldeaArvenBattle`, English and Romanian.
+
+## Starfall Street and Let's Go (2026-11-15, plan 34 · PD5)
+
+- **Let's Go** (`Models/LetsGo.cs`, `Core/GameEngine.LetsGo.cs`): the key `GameAction.LetsGo` (R, the pad's right
+  trigger: free in every preset), read in an open map on foot only, sends the team's first Pokémon able to fight at
+  the wild Pokémon of the field nearest the player within 10 m (and 3 m of height). The battle is the rules' own,
+  `BattleCore` with nobody watching, on a seed the field's chance draws for it at the press (one draw, and none on a
+  press that sends nobody); the lead's moves are AUTO's (`Battle/Sim/MoveSuggestion.cs`, the one scorer the bot, AUTO
+  and Let's Go share, which `BattleEngine.Suggest` now asks), answered from outside so they are the record's; the wild
+  side chooses inside the rules as a wild Pokémon does. The record is a `BattleRecordFile` taken from the setup before
+  the rules touch it, which `Replay()` fights again to the same log (`LetsGoTests`).
+- **What it gives**: the lead is the team's own object, alone on a party of its own, so its HP, PP, EXP, levels and
+  friendship are what the battle left; the place's conditions, the run's difficulty, the level cap and a crossed
+  region's EXP are handed over as a real battle's. A level asks after evolution as a real battle's end does. A move that
+  wants a place among four already known is passed by (the Move Relearner remembers it). Nothing is caught, nothing
+  from the bag is used, neither side runs; one that comes to no end in 12 turns is broken off. **Ours**: a lead that
+  faints comes back fainted with no white-out, the wild Pokémon staying, as the originals' Let's Go has it. Let's Go
+  leaves no materials for the crafting kit yet (plan 39's pouch reads a `BattleEngine`; owed).
+- **What is met in a real battle instead**: a wild Pokémon of a higher level than the lead, a shiny one, and under the
+  Nuzlocke any one (its catches and burials are a real battle's), met as walking into it would meet it.
+- **The field's show** (`LetsGoShow`): the lead runs out to a metre short of its target over half a second, stands
+  there for the hits (the target flickering, drawn on alternate twentieths of a second), the target shrinks into the
+  ground over half a second where it was felled, and the lead runs back; all by the field's ticks, drawing and nothing
+  else. The key sends nobody else until the lead is home.
+- **Starfall Street is a stand-in** (the user named no place; the originals scatter the five bases over the West and
+  North Provinces, PD6's): a valley of ours north of Mesagoza, `terrain/starfall.json`, its floor at the plaza's height
+  shut in by hills, reached by a pass cut through Mesagoza's north mountains east of the academy; one area,
+  `starfall_street`, five gates, each a crew's black hall against the valley's side with a yard before it. PD6 moves
+  each base to its province, keeping the scripts' names and flags (the plan's "PD5 as built" lists what it replaces).
+- **A raid** (`Models/StarRaids.cs`, `StarRaid`; Scarlet and Violet's, our numbers): begun by a script's
+  `starraid begin "giacomo"` at a grunt's question; fifteen of the crew's Pokémon to fell in five minutes of the field's
+  ticks (the originals' thirty in ten), six standing at once on a ring of 9 m round the yard's middle, a felled one's
+  spot filled again two seconds later; each from the base's four species at its levels, drawn from a SplitMix of the
+  base's key and the count, never `Dice`. The key sends the first three able to fight in turn at the nearest within
+  16 m, whatever its level (the crew's are never shiny). Touching a crew's Pokémon meets nothing. Leaving the street or
+  having nobody able to fight gives the raid up. Won or lost, the game starts the base's `<Boss>RaidWon` or
+  `<Boss>RaidLost`; lost puts the player back on the gate, won sets `FLAG_PALDEA_STAR_<BOSS>_RAIDED` and the boss comes
+  out and battles at once. A raid is not saved (an open field has no save but the game's own; one put down is lost).
+- **The bosses and their Starmobiles**: one trainer battle each, the Starmobile the team's last (a Revavroom with its
+  crew's Torque move: Wicked, Blazing, Noxious, Magical and Combat; our levels, near the originals' as remembered:
+  Giacomo 21, Mela 28, Atticus 33, Ortega 51, Eri 57, fixed in any order), class `Team Star Boss` (the eye song
+  `galactic`), trainers' `format` `"starmobile"` (`Trainer.AtAStarBase`), which the battle sets on a stage of its own,
+  `BattleArena.StarBase` (style guide, "Arenas (G8)", "Star base"). A boss lost to waits in the yard and battles again
+  when spoken to.
+- **Cassiopeia's calls** are scenes of the street's script with the phone's ring: the first as the street is first
+  walked into after the academy's welcome (`VAR_PALDEA_STARFALL` 1), one after each boss, and her thanks after the fifth
+  (`VAR_PALDEA_STARFALL` 6). Who she is waits for PD8.
+- **Objectives** 850 `paldeaStarfall` and 851 to 855 a boss each, English and Romanian (the 850s, apart from the gyms'
+  ids PD6 adds); looks of ours `star_grunt`, `giacomo`, `mela`, `atticus`, `ortega`, `eri`; the street's song
+  `paldea/team_star`.

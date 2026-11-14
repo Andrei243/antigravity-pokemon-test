@@ -781,7 +781,17 @@
     "iono": { "skin": "#f0d0b8", "hairColor": "#e070b0", "hair": "Bunches", "top": "#3a6ad8", "accent": "#f2a2c8", "bottom": "#e070b0", "shoes": "#2a2a3a", "eyes": "#6a4aa0", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.96 },
     // The Path of Legends (plan 34 · PD4), our own look: Arven, the academy student who cooks, dark tousled hair with a
     // green streak, the academy's white shirt under an olive field jacket, dark trousers, sturdy boots
-    "arven": { "skin": "#e0b48e", "hairColor": "#2e2a26", "hair": "Swept", "top": "#f2f0ea", "accent": "#8a9a3a", "bottom": "#3a3a34", "shoes": "#4a3a2a", "eyes": "#5a6a3a", "vest": "#6a7a3a", "build": "Adult", "height": 1.08 }
+    "arven": { "skin": "#e0b48e", "hairColor": "#2e2a26", "hair": "Swept", "top": "#f2f0ea", "accent": "#8a9a3a", "bottom": "#3a3a34", "shoes": "#4a3a2a", "eyes": "#5a6a3a", "vest": "#6a7a3a", "build": "Adult", "height": 1.08 },
+    // Team Star (plan 34 · PD5), our own looks: the crews' grunts in black with a hot-pink star and a helmet, and the five
+    // bosses, each in the crew's black with the crew's colour. Giacomo the Dark crew's music man, Mela the Fire crew's
+    // brawler, Atticus the Poison crew's poet in a long coat, Ortega the Fairy crew's small boss, Eri the Fighting crew's
+    // champion with her long pale ponytail
+    "star_grunt": { "skin": "#e2b48c", "hairColor": "#2a2426", "hair": "Short", "hat": "Helmet", "hatColor": "#2e2a34", "hatBand": "#ec56a0", "top": "#2e2a34", "accent": "#ec56a0", "bottom": "#2e2a34", "shoes": "#f6ce48", "eyes": "#3a3a46", "build": "Adult", "height": 1.0 },
+    "giacomo": { "skin": "#e8c0a0", "hairColor": "#f2f0ea", "hair": "Swept", "top": "#2e2a34", "accent": "#6a6a7a", "bottom": "#2e2a34", "shoes": "#1e1a22", "eyes": "#4a4a5a", "jacket": true, "scarf": true, "build": "Adult", "height": 1.06 },
+    "mela": { "skin": "#e0b08a", "hairColor": "#f2a23a", "hair": "Spiky", "top": "#2e2a34", "accent": "#e2463a", "bottom": "#2e2a34", "shoes": "#e2463a", "eyes": "#7a3a2a", "jacket": true, "lashes": true, "build": "Adult", "height": 1.0 },
+    "atticus": { "skin": "#dcb08c", "hairColor": "#6a3a8a", "hair": "Long", "top": "#2e2a34", "accent": "#9a5ac8", "bottom": "#2e2a34", "shoes": "#1e1a22", "eyes": "#5a3a6a", "coat": true, "build": "Adult", "height": 1.1 },
+    "ortega": { "skin": "#ecc6a6", "hairColor": "#5a7ae0", "hair": "Bowl", "top": "#2e2a34", "accent": "#f28ac8", "bottom": "#2e2a34", "shoes": "#f28ac8", "eyes": "#3a4a8a", "blush": true, "build": "Child", "height": 0.92 },
+    "eri": { "skin": "#c88e62", "hairColor": "#f2ece0", "hair": "Ponytail", "top": "#2e2a34", "accent": "#e2863a", "bottom": "#2e2a34", "shoes": "#3a3a46", "eyes": "#6a4a2a", "vest": "#e2863a", "lashes": true, "build": "Adult", "height": 1.12 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

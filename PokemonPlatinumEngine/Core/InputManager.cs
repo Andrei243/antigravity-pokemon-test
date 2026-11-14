@@ -26,7 +26,8 @@ public enum GameAction
     Screenshot,   // F12 (plan 12 · Q16 takes the picture)
     Report,       // F8: a report of the session, to be replayed (plan 16 · T20)
     Photo,        // F9, the pad's Select: photo mode in the field (plan 12 · Q16)
-    Mount         // On and off Paldea's mount (plan 30 · FM12): the Item button's place (C), read in an open map only
+    Mount,        // On and off Paldea's mount (plan 30 · FM12): the Item button's place (C), read in an open map only
+    LetsGo        // Let's Go (plan 34 · PD5): the lead sent at the wild Pokémon nearest (R, the pad's right trigger), read in an open map only
 }
 
 /// <summary>An action's keys and the pad's buttons for it, with the name the help page gives it.</summary>

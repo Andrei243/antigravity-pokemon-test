@@ -1240,6 +1240,9 @@ public partial class GameEngine
             if (game.world != null) game.world.HeldHour = hour;
         }
 
+        // A raid on a Team Star base's gate (plan 34 · PD5), played in the field once the script has ended
+        public void BeginStarRaid(string @base) => game.BeginStarRaid(@base);
+
         public void SlowMotion(float share, float seconds)
         {
             // (Slow motion passes by itself: a hurry never begins it)

@@ -70,6 +70,8 @@ public partial class GameEngine
             openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "wild:" + wild.Id, wild.Species, feet, (float)OpenYaw.Radians(wild.Yaw),
                 field.Wild.Exclaiming(wild), HeightOf(wild.Species)));
         }
+        // A raid's crew round its yard, and a Let's Go under way (plan 34 · PD5)
+        GatherLetsGoFigures(field);
         // A tool's figures put in by hand (the harness's crowd, standing about the village)
         if (OpenFiguresByHand is { } byHand) openFigures.AddRange(byHand);
         return openFigures;

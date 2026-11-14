@@ -54,6 +54,9 @@ public partial class GameEngine
         // What the player is put down in is no crossing (plan 32 · OW5)
         openCrossings.Settle(map, pos);
         openWalk = null;
+        // A raid and a Let's Go don't outlast being put down elsewhere (plan 34 · PD5)
+        starRaid = null;
+        letsGoShow = null;
         // Everyone back where they were put, and whoever travels along behind the player (OW6)
         BeginTheOpenPeople(flow.Open);
         // The orbit camera begun behind them (plan 32 · OW8)
@@ -105,6 +108,8 @@ public partial class GameEngine
         bool pressed = InputManager.IsActionPressed(GameAction.Confirm);
         if (pressed && TalkInTheOpen(field)) return;
         if (InputManager.IsActionPressed(GameAction.Mount)) ToggleMount();
+        // Let's Go: the lead sent at the wild Pokémon nearest, or a raid's crew (plan 34 · PD5); a real battle met instead ends the frame
+        if (InputManager.IsActionPressed(GameAction.LetsGo) && LetsGo(field)) return;
         KeepTheMountsPowers(field);
         // What the story grants the walker (plan 33 · GL5: Galar's bike fitted for the water), derived every frame
         field.Grants = OpenGrants.Of(flow.Story);
@@ -118,9 +123,11 @@ public partial class GameEngine
             var tick = jump ? input with { Jump = true } : input;
             jump = false;
             return tick;
-        }, f => CrossTheVolumes(f) || LookForOpenTrainers(f) || MeetOpenWild(f));
+        }, f => RaidTick(f) || CrossTheVolumes(f) || LookForOpenTrainers(f) || starRaid == null && MeetOpenWild(f));
         // The area the player stands in now (plan 34 · PD3's second session): its song and its first arrival
         ComeToTheOpenArea(field);
+        // A Let's Go's show played out is let go (plan 34 · PD5)
+        if (letsGoShow is { } show && show.Over(field.Wild.Tick)) letsGoShow = null;
         // A wild Pokémon that noticed the player in those ticks cries out (plan 32, after OW10)
         HearTheNoticed(field);
     }

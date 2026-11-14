@@ -4,6 +4,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Let's Go in Paldea: press R (the pad's right trigger) on foot to send your first Pokémon at a wild Pokémon nearby. It runs out, fights it there and then without a battle screen, and comes back with the EXP; a wild Pokémon of a higher level, or a shiny one, is met in an ordinary battle instead.
+- Starfall Street, a valley north of Mesagoza through a pass east of the academy, where Team Star keeps five bases. A stranger called Cassiopeia calls as you first walk in. At each gate a grunt lets you raid it: send your first three Pokémon at the crew's Pokémon with Let's Go and fell fifteen before the clock runs out, and the boss comes out to battle you with their Starmobile in front of the base. Giacomo, Mela, Atticus, Ortega and Eri each lead their crew, and Starfall Street has a song of its own. (The valley stands in for the provinces the bases lie in, which come later.)
 - Paldea grows past Mesagoza: out of its west gate to Cortondo among its olive groves, out of its east gate to Artazon and its flower fields, and north from Artazon to Levincia on the eastern sea, each with a Pokémon Center, wild Pokémon along the way and a gym. Katy, Brassius and Iono wait at the end of their gym tests with the Bug, Grass and Electric Badges, and the three may be taken in any order.
 - Brassius's and Iono's gym tests are now searches about their towns: find the Sunflora standing still among Artazon's flowers and the Wattrel hiding about Levincia's streets before the leader will battle you. Katy's olive roll rolls giant olives. Cortondo, Artazon, Levincia and the gyms have songs of their own, and Paldea's places now play their songs as you walk into them.
 

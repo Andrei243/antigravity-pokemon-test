@@ -1,0 +1,34 @@
+# Starfall Street, where Team Star keeps its five bases: a garage band's loud, cheerful bluster in E minor, an overdriven
+# guitar chugging its power chords down the minor's rock turn (E, C, D, B) under a buzzing saw lead, a pumping synth
+# bass and a kit that never sits still. Played by Starfall Street. Original composition for this game (plan 34 · PD5),
+# in the modern sound.
+title Starfall Street
+tempo 150
+meter 4/4
+reverb 0.16
+night none
+room hall 1.2
+
+track lead sawlead vol=0.5 pan=0.12 rev=0.16
+  r1 | L o5 e4 e8 d8 e4 g4 | o5 e8 d8 c4 o4 b4 g4 | o4 a4 b8 o5 c8 d4 c8 o4 b8 | o4 b2 a4 b4 |
+  o5 e4 e8 d8 e4 g4 | o5 a8 g8 f+4 e4 d4 | o5 c4 d8 e8 d4 c8 o4 a8 | o4 b2. r4 |
+  o5 g4 f+8 e8 f+4 a4 | o5 g8 f+8 e4 d4 c4 | o5 d4 e8 f+8 g4 f+8 e8 | o5 d+2 f+4 o4 b4 |
+  o5 e8 g8 b8 g8 e4 d4 | o5 c8 e8 g8 e8 c4 o4 b4 | o4 a8 o5 c8 e8 d8 c4 o4 a4 | o4 b2 o5 e2 |
+
+track rhythm driveguitar vol=0.42 pan=-0.18 rev=0.12
+  o3 (e b > e)8 r8 (e b > e)8 r8 (e b > e)4 r4 | L o3 (e b)8 (e b)8 (e b)8 (e b)8 (e b)8 (e b)8 (e b)4 | o3 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)4 | o3 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)4 | o2 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)4 |
+  o3 (e b)8 (e b)8 (e b)8 (e b)8 (e b)8 (e b)8 (e b)4 | o3 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)4 | o3 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)4 | o2 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)4 |
+  o3 (g > d)8 (g > d)8 (g > d)8 (g > d)8 (g > d)8 (g > d)8 (g > d)4 | o3 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)4 | o3 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)4 | o2 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)4 |
+  o3 (e b)8 (e b)8 (e b)8 (e b)8 (e b)8 (e b)8 (e b)4 | o3 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)8 (c g)4 | o3 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)8 (d a)4 | o2 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)8 (b > f+)4 (b > f+)4 |
+
+track bass synthbass vol=0.66 rev=0.05
+  o2 e8 r8 e8 r8 e4 r4 | L o2 e8 e8 o3 e8 o2 e8 e8 e8 o3 e8 o2 e8 | o2 c8 c8 o3 c8 o2 c8 c8 c8 o3 c8 o2 c8 | o2 d8 d8 o3 d8 o2 d8 d8 d8 o3 d8 o2 d8 | o1 b8 b8 o2 b8 o1 b8 b8 b8 o2 b8 o1 b8 |
+  o2 e8 e8 o3 e8 o2 e8 e8 e8 o3 e8 o2 e8 | o2 c8 c8 o3 c8 o2 c8 c8 c8 o3 c8 o2 c8 | o2 d8 d8 o3 d8 o2 d8 d8 d8 o3 d8 o2 d8 | o1 b8 b8 o2 b8 o1 b8 b8 b8 o2 b8 o1 b8 |
+  o2 g8 g8 o3 g8 o2 g8 g8 g8 o3 g8 o2 g8 | o2 c8 c8 o3 c8 o2 c8 c8 c8 o3 c8 o2 c8 | o2 d8 d8 o3 d8 o2 d8 d8 d8 o3 d8 o2 d8 | o1 b8 b8 o2 b8 o1 b8 b8 b8 o2 b8 o1 b8 |
+  o2 e8 e8 o3 e8 o2 e8 e8 e8 o3 e8 o2 e8 | o2 c8 c8 o3 c8 o2 c8 c8 c8 o3 c8 o2 c8 | o2 d8 d8 o3 d8 o2 d8 d8 d8 o3 d8 o2 d8 | o1 b8 b8 o2 b8 o1 b8 b4 b4 |
+
+track drums kit vol=0.5 rev=0.1
+  v110 b8 r8 b8 r8 v100 s4 r4 | L v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v90 s8 s8 s8 s8 |
+  v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v90 s8 s8 s8 s8 |
+  v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v90 s8 s8 s8 s8 |
+  v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v100 b8 h8 v90 s8 h8 v100 b8 b8 v90 s8 h8 | v110 b8 b8 s8 s8 b4 s4 |

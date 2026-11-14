@@ -259,6 +259,10 @@
         "accent": "en-us"
       }
     },
+    "atticus": {
+      "note": "first spoken at starfall_street.txt(211)",
+      "provisional": true
+    },
     "aukai": {
       "note": "first spoken at HauoliCity_TrainersSchool.txt(40)",
       "brief": {
@@ -720,6 +724,10 @@
     },
     "caretaker": {
       "note": "first spoken at AlolaRoute2_BerryFieldsHouse.txt(5)",
+      "provisional": true
+    },
+    "cassiopeia": {
+      "note": "first spoken at starfall_street.txt(20)",
       "provisional": true
     },
     "castellan_aubert": {
@@ -4705,6 +4713,10 @@
         "accent": "en-us"
       }
     },
+    "eri": {
+      "note": "first spoken at starfall_street.txt(341)",
+      "provisional": true
+    },
     "erika": {
       "note": "first spoken at celadon_city_gym.txt(10)",
       "brief": {
@@ -5034,6 +5046,10 @@
         "pitch": 0.97,
         "accent": "en-us"
       }
+    },
+    "giacomo": {
+      "note": "first spoken at starfall_street.txt(81)",
+      "provisional": true
     },
     "gideon": {
       "note": "first spoken at five_island_rocket_warehouse.txt(45)",
@@ -5638,7 +5654,7 @@
         "engine": "kokoro-82m",
         "blend": "af_heart:0.6,af_sarah:0.4",
         "speed": 0.94,
-        "pitch": 1.0,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -9242,6 +9258,10 @@
       "note": "first spoken at galar_route_9.txt(12)",
       "provisional": true
     },
+    "mela": {
+      "note": "first spoken at starfall_street.txt(146)",
+      "provisional": true
+    },
     "melony": {
       "note": "first spoken at Circhester_StadiumPitch.txt(38)",
       "provisional": true
@@ -9666,6 +9686,10 @@
         "pitch": 0.96,
         "accent": "en-gb"
       }
+    },
+    "ortega": {
+      "note": "first spoken at starfall_street.txt(276)",
+      "provisional": true
     },
     "oskin": {
       "note": "first spoken at AlolaRoute1_PlayersHouse.txt(54)",
@@ -10801,6 +10825,10 @@
         "accent": "en-us"
       }
     },
+    "team_star_grunt": {
+      "note": "first spoken at starfall_street.txt(52)",
+      "provisional": true
+    },
     "team_yell_grunt": {
       "note": "first spoken at Motostoke_Hotel.txt(9)",
       "provisional": true
@@ -11362,6 +11390,7 @@
     "Arven": "arven",
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
+    "Atticus": "atticus",
     "Aukai": "aukai",
     "Avery": "avery",
     "AZ": "az",
@@ -11421,6 +11450,7 @@
     "Captain Stern": "captain_stern",
     "Capucine": "capucine",
     "Caretaker": "caretaker",
+    "Cassiopeia": "cassiopeia",
     "Castellan Aubert": "castellan_aubert",
     "Casting Clerk": "casting_clerk",
     "Catherine": "catherine",
@@ -11512,6 +11542,7 @@
     "Emmet": "emmet",
     "Energy Guru": "energy_guru",
     "Engineer": "engineer",
+    "Eri": "eri",
     "Erika": "erika",
     "Erin": "erin",
     "Ernest": "ernest",
@@ -11557,6 +11588,7 @@
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
     "Ghost": "ghost",
+    "Giacomo": "giacomo",
     "Gideon": "gideon",
     "Gift Runner": "gift_runner",
     "Giovanni": "giovanni",
@@ -11714,6 +11746,7 @@
     "Mechadoll 4": "mechadoll_4",
     "Mechadoll 5": "mechadoll_5",
     "Mechanic": "mechanic",
+    "Mela": "mela",
     "Melony": "melony",
     "Member": "member",
     "Miguel": "miguel",
@@ -11767,6 +11800,7 @@
     "Olympia": "olympia",
     "Ombeline": "ombeline",
     "Opal": "opal",
+    "Ortega": "ortega",
     "Oskin": "oskin",
     "Ottoline": "ottoline",
     "Owner": "owner",
@@ -11911,6 +11945,7 @@
     "Teala": "teala",
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",
+    "Team Star Grunt": "team_star_grunt",
     "Team Yell Grunt": "team_yell_grunt",
     "Temple Guard": "temple_guard",
     "Thalia": "thalia",

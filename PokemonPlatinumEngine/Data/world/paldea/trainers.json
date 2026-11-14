@@ -404,5 +404,181 @@
         "teraType": "Dark"
       }
     ]
+  },
+  {
+    "id": "paldea_star_giacomo",
+    "name": "Giacomo",
+    "class": "Team Star Boss",
+    "format": "starmobile",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2100,
+    "party": [
+      {
+        "species": "Pawniard",
+        "level": 21,
+        "ivScale": 15,
+        "personality": 2160430571
+      },
+      {
+        "species": "Revavroom",
+        "level": 20,
+        "ivScale": 20,
+        "personality": 3891025446,
+        "moves": ["Wicked Torque", "Iron Head", "Shift Gear", "Assurance"]
+      }
+    ]
+  },
+  {
+    "id": "paldea_star_mela",
+    "name": "Mela",
+    "class": "Team Star Boss",
+    "format": "starmobile",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2700,
+    "party": [
+      {
+        "species": "Torkoal",
+        "level": 27,
+        "ivScale": 15,
+        "personality": 1489231770
+      },
+      {
+        "species": "Revavroom",
+        "level": 28,
+        "ivScale": 20,
+        "personality": 2871190534,
+        "moves": ["Blazing Torque", "Iron Head", "Screech", "Shift Gear"]
+      }
+    ]
+  },
+  {
+    "id": "paldea_star_atticus",
+    "name": "Atticus",
+    "class": "Team Star Boss",
+    "format": "starmobile",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3300,
+    "party": [
+      {
+        "species": "Skuntank",
+        "level": 32,
+        "ivScale": 15,
+        "personality": 3112046915
+      },
+      {
+        "species": "Muk",
+        "level": 32,
+        "ivScale": 15,
+        "personality": 905521458
+      },
+      {
+        "species": "Revavroom",
+        "level": 33,
+        "ivScale": 20,
+        "personality": 1766024419,
+        "moves": ["Noxious Torque", "Iron Head", "Poison Jab", "Shift Gear"]
+      }
+    ]
+  },
+  {
+    "id": "paldea_star_ortega",
+    "name": "Ortega",
+    "class": "Team Star Boss",
+    "format": "starmobile",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 5100,
+    "party": [
+      {
+        "species": "Azumarill",
+        "level": 50,
+        "ivScale": 20,
+        "personality": 2234501977
+      },
+      {
+        "species": "Dachsbun",
+        "level": 50,
+        "ivScale": 20,
+        "personality": 3301559840
+      },
+      {
+        "species": "Wigglytuff",
+        "level": 50,
+        "ivScale": 20,
+        "personality": 1186640203
+      },
+      {
+        "species": "Revavroom",
+        "level": 51,
+        "ivScale": 24,
+        "personality": 2990314461,
+        "moves": ["Magical Torque", "Iron Head", "Gunk Shot", "Shift Gear"]
+      }
+    ]
+  },
+  {
+    "id": "paldea_star_eri",
+    "name": "Eri",
+    "class": "Team Star Boss",
+    "format": "starmobile",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 5700,
+    "party": [
+      {
+        "species": "Toxicroak",
+        "level": 55,
+        "ivScale": 20,
+        "personality": 4021165397
+      },
+      {
+        "species": "Passimian",
+        "level": 55,
+        "ivScale": 20,
+        "personality": 1630279912
+      },
+      {
+        "species": "Lucario",
+        "level": 55,
+        "ivScale": 20,
+        "personality": 2709384410
+      },
+      {
+        "species": "Annihilape",
+        "level": 56,
+        "ivScale": 20,
+        "personality": 845290163
+      },
+      {
+        "species": "Revavroom",
+        "level": 57,
+        "ivScale": 24,
+        "personality": 3567012284,
+        "moves": ["Combat Torque", "Iron Head", "Gunk Shot", "Shift Gear"]
+      }
+    ]
   }
 ]
