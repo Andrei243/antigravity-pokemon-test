@@ -230,7 +230,10 @@ public sealed partial class BattleCore
         return true;
     }
 
-    public void RestoreHp(Battler target, int amount, string message)
+    public void RestoreHp(Battler target, int amount, string message) => RestoreHp(target, amount, message, talesOwn: false);
+
+    /// <param name="talesOwn">The amount has had the tale's healing already (the bag's medicine, whose line names it).</param>
+    private void RestoreHp(Battler target, int amount, string message, bool talesOwn)
     {
         if (!target.IsActive)
         {
@@ -240,7 +243,7 @@ public sealed partial class BattleCore
         var p = target.Pokemon!;
         // A berry eaten with Ripen gives twice as much (plan 06 · R27b)
         // And the Sânziene's tale doubles every heal (plan 46 · CP11)
-        p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + TaleHealing(Ripened(target, amount)));
+        p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + (talesOwn ? amount : TaleHealing(Ripened(target, amount))));
         Say(message).With(new HpChanged(target.Place, p.CurrentHP, Healed: true));
     }
 

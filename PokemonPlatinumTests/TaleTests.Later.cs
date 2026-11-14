@@ -35,6 +35,19 @@ public partial class TaleTests
         Assert.Equal(porygon.MaxHP - 1, told);
     }
 
+    [Fact]
+    public void TheSanzienesMidsummerDoublesThePotionAndItsLineSaysSo()
+    {
+        var mine = Mon("Monferno", 50, "Splash");
+        mine.CurrentHP = 1;
+        var core = Tales(new[] { mine }, new[] { Mon("Snorlax", 50, "Splash") }, myTales: All);
+        Tell(core, mine: "sanziene");
+        core.Submit(BattleChoice.UseItem(Mine, "Potion"), BattleChoice.Fight(Foe, 0));
+        var said = Lines(core.TakeLog());
+        Assert.Equal(41, mine.CurrentHP);
+        Assert.Contains(said, l => l.Contains("40"));
+    }
+
     // ---------------------------------------------------------------- Făt-Frumos': no stat may fall
 
     [Fact]
@@ -93,6 +106,16 @@ public partial class TaleTests
         mine.CurrentHP = mine.MaxHP / 2 + 1;
         Tell(core);
         Assert.Null(mine.HeldItem);
+    }
+
+    [Fact]
+    public void TheSpiridusKeepsAFocusSashThatHeld()
+    {
+        var mine = With(Mon("Bidoof", 20, "Splash"), item: "Focus Sash");
+        var core = Tales(new[] { mine }, new[] { Mon("Snorlax", 90, "Body Slam") }, myTales: All);
+        Tell(core, mine: "spiridus");
+        Assert.Equal(1, mine.CurrentHP);
+        Assert.Equal("Focus Sash", mine.HeldItem?.Name);
     }
 
     // ---------------------------------------------------------------- Muma Pădurii's: Grass heals, the foe is held

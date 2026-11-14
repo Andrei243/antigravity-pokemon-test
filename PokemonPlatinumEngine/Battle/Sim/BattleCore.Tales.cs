@@ -316,20 +316,20 @@ public sealed partial class BattleCore
         return forRunning ? Text.Of("battle.cantEscape") : Text.Of("battle.taleHoldsFoe", ("pokemon", b.Name), ("tale", TaleTable.NameOf(told.Id)));
     }
 
-    /// <summary>The Miorița's strength owed by each side to the next of its own to come in: the stat and its stages.</summary>
-    private readonly Dictionary<BattleSide, (StatType Stat, int Stages, string Fallen)> strengthOwed = new();
+    /// <summary>The Miorița's strength owed to the next to come into a fallen Pokémon's place: the stat and its stages.</summary>
+    private readonly Dictionary<Place, (StatType Stat, int Stages, string Fallen)> strengthOwed = new();
 
     /// <summary>
     /// The Miorița's lament, as a Pokémon faints: its higher attacking stat (Attack on a tie, its own stats as they stood)
-    /// goes as the tale's stages to an ally of its side on the field, or is owed to the next of its side to come in.
+    /// goes as the tale's stages to an ally on the field (never a foe: a Battle Royal's camps by <see cref="AreFoes"/>), or is owed to the next to come into its place.
     /// Nothing is said when nobody takes it.
     /// </summary>
     private void TaleTakesTheStrength(Battler down, StatType stat)
     {
         if (TaleInForce is not { FallenStrength: > 0 } rule || Result != BattleResult.None) return;
-        var ally = AllBattlers.FirstOrDefault(x => x.Side == down.Side && x != down && x.IsActive && x.Pokemon is { IsFainted: false });
+        var ally = AllBattlers.FirstOrDefault(x => x.Side == down.Side && !AreFoes(down, x) && x != down && x.IsActive && x.Pokemon is { IsFainted: false });
         if (ally != null) GiveTheStrength(ally, stat, rule.FallenStrength, down.Name);
-        else strengthOwed[down.Side] = (stat, rule.FallenStrength, down.Name);
+        else strengthOwed[down.Place] = (stat, rule.FallenStrength, down.Name);
     }
 
     /// <summary>The fallen Pokémon's higher attacking stat, read before its fall resets anything.</summary>
@@ -338,7 +338,7 @@ public sealed partial class BattleCore
     /// <summary>The strength owed to a side taken up by the one coming in, while the tale is still told.</summary>
     private void TakeUpOwedStrength(Battler b)
     {
-        if (TaleInForce is not { FallenStrength: > 0 } || !strengthOwed.Remove(b.Side, out var owed) || !b.IsActive) return;
+        if (TaleInForce is not { FallenStrength: > 0 } || !strengthOwed.Remove(b.Place, out var owed) || !b.IsActive) return;
         GiveTheStrength(b, owed.Stat, owed.Stages, owed.Fallen);
     }
 
