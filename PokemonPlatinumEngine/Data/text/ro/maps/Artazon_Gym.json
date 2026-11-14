@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Artazon Gym"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "artazon_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "artazon_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

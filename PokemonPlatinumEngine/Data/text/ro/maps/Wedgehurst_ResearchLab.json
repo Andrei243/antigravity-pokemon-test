@@ -25,6 +25,16 @@
           "Aici lucrează Sonia, nepoata profesoarei. Cele mai multe zile e la bunica ei, pe Drumul 2, scotocind prin cărți vechi."
         ]
       }
+    },
+    "sonia_lab": {
+      "name": {
+        "en": [
+          "Sonia"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}
