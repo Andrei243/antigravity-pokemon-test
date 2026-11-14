@@ -410,6 +410,24 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
   back); a lining painted with `on=[ear]` has a ragged edge where one without `on` is crisp; a fused blade thinner
   than two voxels frays (thin plates are loose pieces); a three-point `blade` is a rhombus (a lobe wants four or
   five points).
+- **A loose piece built on a hand-made frame keeps that frame right-handed** (side = face × direction), the
+  mirrored twin too, or its faces are wound inside out. Blender's turntable draws both faces and shows nothing
+  wrong; the game culls the outer faces and draws the inside: Togetic's wings came out thin, grey and see-through,
+  and only the game's shot showed it. A wing that looks grey or glassy in the game is first a question of winding.
+- **A flyer's level wings are edge-on from the game's cameras**: each pair is raised in a V of 25 to 35 degrees
+  and the pairs swept apart; a plate is lit on the face turned to the light, so the pair meant to be seen from
+  behind tilts its lit face that way (Yanma's hind pair). Hanging legs half a body long make a dragonfly a spider:
+  tucked, a third of the head's height.
+- **Eyes that are a visor or a mark of the design** (Yanmega) keep the eye's own colour as the lid in the shut
+  states, or the face loses its signature when it blinks. **One eye in the middle** (Magnemite) is laid without
+  mirroring; `eye_look`'s Fierce slants one way on it.
+- **A hollow mark with two crisp edges** (Togepi's rings and triangles) is two stacked `polygon` patches, the
+  colour and a smaller one of the ground's colour at a higher lift; its band a third of the mark's width, or it
+  reads as wire at the game's size. An eye's dark outline over a sixth of its radius is a heavy ring there
+  (Munchlax, Magnemite: 0.09 reads as a line).
+- **A decal is cast from its centre pushed out along its normal**: with a tilted normal the centre goes near the
+  surface, or the patch lands off its mark. A loose disc on a dome is lifted, or its rim sinks and shows a
+  crescent. A check that keeps vines out of a region samples each arc more finely than its control points.
 
 ## Not tried yet
 
