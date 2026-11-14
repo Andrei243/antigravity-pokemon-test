@@ -10,9 +10,7 @@ script Leader
   speaker "Brassius"
   if badge grass goto Won
   if var VAR_PALDEA_STORY < 7 goto NotEnrolled
-  if not flag FLAG_PALDEA_ARTAZON_TEST_1 goto NotYet
-  if not flag FLAG_PALDEA_ARTAZON_TEST_2 goto NotYet
-  if not flag FLAG_PALDEA_ARTAZON_TEST_3 goto NotYet
+  if not flag FLAG_PALDEA_ARTAZON_TEST_DONE goto NotYet
   scene "Brassius"
   say "You found them all! Your eye for art is keen. I am Brassius, Artazon's gym leader, and an artist of the grass."
   say "A battle is a sculpture made in a moment. Let us shape something magnificent together!"

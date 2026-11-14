@@ -10,9 +10,7 @@ script Leader
   speaker "Iono"
   if badge electric goto Won
   if var VAR_PALDEA_STORY < 7 goto NotEnrolled
-  if not flag FLAG_PALDEA_LEVINCIA_TEST_1 goto NotYet
-  if not flag FLAG_PALDEA_LEVINCIA_TEST_2 goto NotYet
-  if not flag FLAG_PALDEA_LEVINCIA_TEST_3 goto NotYet
+  if not flag FLAG_PALDEA_LEVINCIA_TEST_DONE goto NotYet
   scene "Iono"
   say "Hey hey, you found every last one of my hiders! Welcome to the stream, everyone! I'm Iono, Levincia's gym leader and streamer!"
   say "Today's challenger is a real one, chat! Let's see if they can survive my electrifying team!"
@@ -26,7 +24,7 @@ script Leader
   endscene
   end
 label NotYet
-  say "Whoa, slow down, challenger! My Wattrel are still hiding out in Levincia. Find all three on stream, then come back!"
+  say "Whoa, slow down, challenger! My little hiders are still out in Levincia. Find all three on stream, then come back!"
   end
 label NotEnrolled
   say "A challenger who isn't a student yet? The chat says enrol at the academy first! Then come back, okay?"
