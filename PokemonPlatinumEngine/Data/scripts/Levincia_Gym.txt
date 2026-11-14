@@ -1,0 +1,23 @@
+# Levincia Gym's lobby (plan 34 · PD3): Iono's gym, the third of Victory Road in the academy's suggested order. Her
+# test, the stream hunt, is through the doors behind the counter (Levincia_GymTest.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge electric goto Won
+  say "Welcome to Levincia Gym! Iono's gym test is live on her stream: find her Wattrel hiding on the set."
+  say "Three of them, tucked away behind the lights. Find them all and Iono will battle you on camera!"
+  end
+label Won
+  say "Congratulations on the Electric Badge! You were trending for a whole hour."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge electric goto Won
+  say "Iono's Electric types are no match for a good ground move. Watch out for her Mismagius, though."
+  end
+label Won
+  say "You beat Iono! The stream's chat still can't stop talking about it."
+  end

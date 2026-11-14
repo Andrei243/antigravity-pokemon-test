@@ -33,6 +33,15 @@ public sealed class OpenWorldFile
     /// </summary>
     public bool Mount { get; set; }
 
+    /// <summary>
+    /// Bake only the land the areas hold (plan 34 · PD3, the user's option b of 2026-11-14): when given, a chunk of
+    /// <see cref="Chunks"/>' rectangle is baked only where it lies within this many chunks of one an area's polygon
+    /// touches, so the sea and the mountains' backs between a region's places are left out of the bake (the index lists
+    /// the chunks baked, and the game streams nothing where there is none). Null, as every region before it, bakes the
+    /// whole rectangle.
+    /// </summary>
+    public int? BakeRing { get; set; }
+
     /// <summary>The cover's rules, where the region wants other heights than the defaults.</summary>
     public CoverRulesFile? Cover { get; set; }
 
@@ -353,6 +362,7 @@ public sealed class RegionDescription
         if (w.ChunkSize != 32) Fail("world.json", "$.chunkSize", $"an open map's chunks are 32 m, not {w.ChunkSize}");
         if (w.Chunks.Length != 4 || w.Chunks[2] < w.Chunks[0] || w.Chunks[3] < w.Chunks[1])
             Fail("world.json", "$.chunks", "is [west, north, east, south], east no less than west and south no less than north");
+        if (w.BakeRing is < 0 or > 8) Fail("world.json", "$.bakeRing", $"is 0 to 8 chunks round the areas, not {w.BakeRing}");
         var keys = new HashSet<string>(StringComparer.Ordinal);
         for (int i = 0; i < w.Areas.Count; i++)
         {

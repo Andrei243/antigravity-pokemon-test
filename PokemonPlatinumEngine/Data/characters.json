@@ -771,7 +771,14 @@
     // back, square glasses, a long dark-brown coat; the player's Mom, in plain house clothes
     "nemona": { "skin": "#c8946a", "hairColor": "#2a2224", "hair": "Ponytail", "top": "#f2f0ea", "accent": "#e2a23a", "bottom": "#3a3446", "shoes": "#5a3a2a", "eyes": "#4a8a5a", "vest": "#9a6a3e", "shorts": true, "lashes": true, "blush": true, "build": "Adult", "height": 1.0 },
     "clavell": { "skin": "#e0b894", "hairColor": "#8a8a8e", "hair": "Swept", "top": "#5a3e2a", "accent": "#f2ece0", "bottom": "#3a2e26", "shoes": "#2a2420", "eyes": "#3a3a3a", "glasses": "#2a2a2a", "coat": true, "beard": true, "build": "Adult", "height": 1.12 },
-    "paldea_mom": { "skin": "#d8a882", "hairColor": "#4a2e22", "hair": "Bun", "top": "#e8c26a", "accent": "#f2ece0", "bottom": "#6a4a3a", "shoes": "#3a302a", "eyes": "#4a3a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 }
+    "paldea_mom": { "skin": "#d8a882", "hairColor": "#4a2e22", "hair": "Bun", "top": "#e8c26a", "accent": "#f2ece0", "bottom": "#6a4a3a", "shoes": "#3a302a", "eyes": "#4a3a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    // The South and East Provinces' three Gym Leaders (plan 34 · PD3), our own looks: Katy, Cortondo's baker, plump and
+    // smiling, short ginger hair, a yellow apron over a brown dress; Brassius, Artazon's sculptor, tall, his green hair
+    // swept up, a green and white artist's coat; Iono, Levincia's streamer, her pink hair in long bunches, an oversized
+    // blue jacket over a pink dress
+    "katy": { "skin": "#e8c0a0", "hairColor": "#c8783a", "hair": "Short", "top": "#7a4a2e", "accent": "#f2d24a", "bottom": "#7a4a2e", "shoes": "#4a2e22", "eyes": "#5a3a2a", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.98 },
+    "brassius": { "skin": "#d8a882", "hairColor": "#4aa04a", "hair": "Swept", "top": "#f2f0ea", "accent": "#3a8a3a", "bottom": "#2e3a2e", "shoes": "#2a2a24", "eyes": "#3a5a3a", "coat": true, "build": "Adult", "height": 1.14 },
+    "iono": { "skin": "#f0d0b8", "hairColor": "#e070b0", "hair": "Bunches", "top": "#3a6ad8", "accent": "#f2a2c8", "bottom": "#e070b0", "shoes": "#2a2a3a", "eyes": "#6a4aa0", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.96 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

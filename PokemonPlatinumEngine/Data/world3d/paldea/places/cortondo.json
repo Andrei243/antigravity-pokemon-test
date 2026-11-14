@@ -1,0 +1,48 @@
+{
+  // Cortondo (plan 34 · PD3): the olive-growing town at the end of the road west, its square paved, its groves on the
+  // knoll south-west of it and north-east by the hills, the gym at the head of the lane north from the square and the
+  // Pokémon Center on the square's west side. Its people only talk; the gym and its test are rooms (Cortondo_Gym,
+  // Cortondo_GymTest)
+  "markers": [
+    { "name": "cortondo_east", "at": [-356, 12.0, -322], "yaw": 270 },
+    { "name": "cortondo_square", "at": [-416, 12.0, -322], "yaw": 0 },
+    { "name": "cortondo_gym_door", "at": [-416, 12.0, -363], "yaw": 0 },
+    { "name": "cortondo_center_door", "at": [-463, 12.0, -313], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "cortondo_gym_door",
+      "box": { "min": [-418, 11.5, -366], "max": [-414, 15.5, -365] },
+      "room": "Cortondo_Gym", "at": [4, 8], "facing": "up",
+      "out": "cortondo_gym_door"
+    },
+    {
+      "name": "cortondo_center_door",
+      "box": { "min": [-464, 11.5, -316], "max": [-462, 15, -315] },
+      "room": "Cortondo_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "cortondo_center_door"
+    }
+  ],
+  "solids": [
+    { "name": "Cortondo Gym", "min": [-430, 11, -382], "max": [-402, 20, -366], "building": { "kind": "gym", "town": "paldea", "sign": "GYM" } },
+    { "name": "Cortondo's Pokémon Center", "min": [-470, 11, -330], "max": [-456, 17.5, -316], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the bakery on the square", "min": [-404, 11, -300], "max": [-390, 16.5, -288], "building": { "kind": "shop", "town": "paldea" } },
+    { "name": "the house by the grove", "min": [-472, 11, -372], "max": [-460, 16.5, -360], "building": { "kind": "house", "town": "paldea", "storeys": 1 } },
+    { "name": "the house on the square", "min": [-386, 11, -350], "max": [-374, 16.5, -338], "building": { "kind": "house", "town": "paldea", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "cortondo_farmer", "at": [-440, 12.0, -296], "yaw": 180, "look": "middle_aged_man", "displayName": "Farmer",
+      "lines": ["These groves have grown olives since before Mesagoza had walls. Katy bakes with the best of them."],
+      "moves": "wander", "radius": 3
+    },
+    {
+      "name": "cortondo_girl", "at": [-400, 12.0, -318], "yaw": 270, "look": "lass", "displayName": "Girl",
+      "lines": ["The gym's the big building up the lane. Katy's test is all about rolling olives. Honestly!"]
+    }
+  ],
+  "groves": [
+    { "name": "the olive grove on the knoll", "polygon": [[-476, -300], [-444, -300], [-444, -268], [-476, -268]], "spacing": 5, "fill": 0.7, "pines": 0, "seed": 3401 },
+    { "name": "the olive grove by the hills", "polygon": [[-392, -384], [-360, -384], [-360, -356], [-392, -356]], "spacing": 5, "fill": 0.7, "pines": 0, "seed": 3402 }
+  ]
+}

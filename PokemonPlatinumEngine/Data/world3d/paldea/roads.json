@@ -11,6 +11,17 @@
     { "name": "Los Platos's street", "points": [[8, -150], [12, -176], [10, -210]], "width": 4, "shoulder": 2.5 },
     { "name": "the road north through the fields", "points": [[10, -210], [-2, -240], [6, -270], [0, -300]], "width": 4, "shoulder": 2.5 },
     { "name": "Mesagoza's avenue", "points": [[0, -300], [0, -318]], "width": 8, "shoulder": 3, "surface": "Path" },
-    { "name": "the academy's stairs", "points": [[0, 12, -318], [0, 12, -330], [0, 22, -352], [0, 22, -357]], "width": 8, "shoulder": 2 }
+    { "name": "the academy's stairs", "points": [[0, 12, -318], [0, 12, -330], [0, 22, -352], [0, 22, -357]], "width": 8, "shoulder": 2 },
+    // The South and East Provinces (plan 34 · PD3): the avenue west and east across the plaza to the city's two gates,
+    // the road west through the South Province's second area to Cortondo's square and up its lane to the gym, the road
+    // east through the third to Artazon, and the road north from Artazon through the East Province to Levincia
+    { "name": "Mesagoza's west avenue", "points": [[-6, -325], [-60, -325], [-104, -326]], "width": 4, "shoulder": 2, "surface": "Path" },
+    { "name": "Mesagoza's east avenue", "points": [[6, -325], [60, -325], [104, -326]], "width": 4, "shoulder": 2, "surface": "Path" },
+    { "name": "the road west to Cortondo", "points": [[-104, -326], [-170, -326], [-240, -330], [-300, -324], [-352, -322]], "width": 4, "shoulder": 2.5 },
+    { "name": "Cortondo's lane to the gym", "points": [[-352, -322], [-416, -322], [-416, -354]], "width": 4, "shoulder": 2 },
+    { "name": "the road east to Artazon", "points": [[104, -326], [180, -326], [250, -330], [310, -326], [352, -324]], "width": 4, "shoulder": 2.5 },
+    { "name": "Artazon's street", "points": [[352, -324], [416, -324], [416, -354]], "width": 5, "shoulder": 2 },
+    { "name": "the road north to Levincia", "points": [[416, -324], [446, -336], [446, -384], [440, -460], [448, -540], [440, -640], [470, -690]], "width": 4, "shoulder": 2.5 },
+    { "name": "Levincia's avenue", "points": [[470, -690], [496, -720], [496, -776]], "width": 6, "shoulder": 2, "surface": "Path" }
   ]
 }

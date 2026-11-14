@@ -83,6 +83,12 @@ public sealed class TrainerPokemonRecord
 
     public string? Item { get; set; }
 
+    /// <summary>
+    /// The Tera Type it takes as it Terastallizes (plan 34 · PD3: Paldea's Gym Leaders' last Pokémon, Teddiursa's Bug),
+    /// by the type's name or <c>Stellar</c>; null, and left out, for its own first type.
+    /// </summary>
+    public string? TeraType { get; set; }
+
     /// <summary>The moves the trainer chose for it; null when it knows what its level taught it.</summary>
     public List<string>? Moves { get; set; }
 
@@ -398,6 +404,8 @@ public static class TrainerDatabase
         }
         // A locked member's lock, full (plan 44 · SD1)
         if (m.Lock != null) pokemon.Lock = HeartLock.Locked(m.Lock);
+        // A Tera Type of the trainer's choosing (plan 34 · PD3)
+        if (Models.TeraType.Parse(m.TeraType) is { } tera) pokemon.TeraType = tera;
         pokemon.RecalculateStats();
         pokemon.CurrentHP = pokemon.MaxHP;
         return pokemon;

@@ -58,7 +58,11 @@
   // Pokémon Center, and Los Platos's Pokémon Center. An open region's spawns name their rooms
   "spawns": [
     { "id": 1, "area": "cabo_poco", "x": 0, "y": 0, "room": "CaboPoco_PlayersHouse_1F" },
-    { "id": 2, "area": "los_platos", "x": 0, "y": 0, "room": "LosPlatos_PokemonCenter" }
+    { "id": 2, "area": "los_platos", "x": 0, "y": 0, "room": "LosPlatos_PokemonCenter" },
+    // Plan 34 · PD3: the South and East Provinces' three towns
+    { "id": 3, "area": "cortondo", "x": 0, "y": 0, "room": "Cortondo_PokemonCenter" },
+    { "id": 4, "area": "artazon", "x": 0, "y": 0, "room": "Artazon_PokemonCenter" },
+    { "id": 5, "area": "levincia", "x": 0, "y": 0, "room": "Levincia_PokemonCenter" }
   ],
   // Plan 18 · W4 with plan 03 · D14's Paldea proposals (their question 1) and the level curve study: Scarlet and
   // Violet's levels for a team that crossed from Galar, from Galar's Champion at 242 the first route stands at 242 to

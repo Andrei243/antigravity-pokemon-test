@@ -414,6 +414,11 @@ public static class Objectives
         (804, "paldeaLighthouse", AtLeast("VAR_PALDEA_STORY", 5), true),
         (805, "paldeaMesagoza", AtLeast("VAR_PALDEA_STORY", 6), true),
         (806, "paldeaAcademy", AtLeast("VAR_PALDEA_STORY", 7), true),
+        // Plan 34 · PD3: the first three gyms in the academy's suggested order, each done by its own badge alone, so a
+        // badge won out of order is done where it stands and the line names the first of the three still to win
+        (807, "paldeaKaty", RegionBadge(RegionDatabase.Paldea, "Bug"), false),
+        (808, "paldeaBrassius", RegionBadge(RegionDatabase.Paldea, "Grass"), false),
+        (809, "paldeaIono", RegionBadge(RegionDatabase.Paldea, "Electric"), false),
         (899, "paldeaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

@@ -1,0 +1,47 @@
+{
+  // The South and East Provinces (plan 34 · PD3): out of Mesagoza's west gate along the South Province's second area to
+  // Cortondo among its olive groves; out of its east gate along the third to Artazon and its flower fields; and north
+  // from Artazon up the East Province's first area to Levincia on the eastern sea. Our own land, laid out at PD1's own
+  // compressed distances round Mesagoza (docs/mechanics/rulings.md, "The South and East Provinces and the first three
+  // gyms"). No grid of control points reaches these places, so the land is plateaus alone: the hills first, too steep to
+  // climb and between the places, then each way's and town's floor cut into them, the seabed off Levincia and its sea
+  // wall, and the two gates through Mesagoza's own banks. The bake keeps only the land the areas hold (world.json's
+  // bakeRing: the user's option b of 2026-11-14), so the hills' backs are never baked. Read after shape.json (its name
+  // sorts after it), so its gates cut Mesagoza's west heights and east hills
+  "brushes": [
+    { "kind": "plateau", "name": "the hills round Cortondo", "polygon": [[-512, -416], [-96, -416], [-96, -250], [-512, -250]], "height": 40, "falloff": 4 },
+    { "kind": "plateau", "name": "the hills round Artazon", "polygon": [[96, -416], [672, -416], [672, -250], [96, -250]], "height": 40, "falloff": 4 },
+    { "kind": "plateau", "name": "the East Province's hills", "polygon": [[352, -864], [672, -864], [672, -416], [352, -416]], "height": 40, "falloff": 4 },
+    // The ways and the towns, each a floor at Mesagoza's height
+    { "kind": "plateau", "name": "the South Province's second area", "polygon": [[-352, -360], [-96, -360], [-96, -296], [-352, -296]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "Cortondo", "polygon": [[-480, -384], [-352, -384], [-352, -264], [-480, -264]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the South Province's third area", "polygon": [[96, -360], [352, -360], [352, -296], [96, -296]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "Artazon", "polygon": [[352, -384], [480, -384], [480, -264], [352, -264]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the East Province's first area", "polygon": [[400, -640], [480, -640], [480, -384], [400, -384]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "Levincia", "polygon": [[400, -800], [592, -800], [592, -640], [400, -640]], "height": 12, "falloff": 3 },
+    // The olive grove's knoll south-west of Cortondo, and Artazon's sculpted mound
+    { "kind": "dome", "name": "the olive grove's knoll", "at": [-460, -284], "radius": 16, "rise": 2 },
+    { "kind": "dome", "name": "Artazon's mound", "at": [448, -300], "radius": 14, "rise": 1.5 },
+    // The sea off Levincia and the wall Levincia's quay stands on over it
+    { "kind": "plateau", "name": "the seabed off Levincia", "polygon": [[600, -864], [672, -864], [672, -600], [600, -600]], "height": -4, "falloff": 2 },
+    { "kind": "plateau", "name": "Levincia's sea wall", "polygon": [[592, -800], [600, -800], [600, -640], [592, -640]], "height": 16, "falloff": 1 },
+    // Mesagoza's two gates, cut through its west heights and its east hills on the avenue's row
+    { "kind": "plateau", "name": "Mesagoza's west gate", "polygon": [[-110, -342], [-80, -342], [-80, -318], [-110, -318]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "Mesagoza's east gate", "polygon": [[80, -342], [110, -342], [110, -318], [80, -318]], "height": 12, "falloff": 3 }
+  ],
+  "paint": [
+    // Cortondo's square and Artazon's and Levincia's streets are paved
+    { "cover": "Path", "polygon": [[-440, -340], [-392, -340], [-392, -304], [-440, -304]] },
+    { "cover": "Path", "polygon": [[392, -344], [440, -344], [440, -304], [392, -304]] },
+    { "cover": "Path", "polygon": [[440, -760], [560, -760], [560, -680], [440, -680]] },
+    // The long grass of the three ways, where their Pokémon live
+    { "cover": "GrassDeep", "polygon": [[-300, -352], [-220, -352], [-220, -336], [-300, -336]] },
+    { "cover": "GrassDeep", "polygon": [[-200, -318], [-130, -318], [-130, -302], [-200, -302]] },
+    { "cover": "GrassDeep", "polygon": [[140, -352], [230, -352], [230, -336], [140, -336]] },
+    { "cover": "GrassDeep", "polygon": [[260, -318], [330, -318], [330, -302], [260, -302]] },
+    { "cover": "GrassDeep", "polygon": [[406, -600], [430, -600], [430, -440], [406, -440]] },
+    // Artazon's flower fields, kept short
+    { "cover": "GrassLight", "polygon": [[452, -380], [478, -380], [478, -270], [452, -270]] },
+    { "cover": "GrassLight", "polygon": [[354, -380], [380, -380], [380, -270], [354, -270]] }
+  ]
+}
