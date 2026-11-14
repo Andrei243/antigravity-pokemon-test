@@ -52,15 +52,32 @@ internal static class OpenHorizon
     /// <summary>A point of a ring: where along the loop it stands (side k from u = k to k + ½, its corner to k + 1), the border point it stands out from and the way out.</summary>
     internal readonly record struct RingPoint(float U, Vector2 Border, Vector2 Out, bool OnCorner);
 
-    /// <summary>The land and its trees.</summary>
-    public sealed record Land(OpenVertices Mesh, List<OpenFarTree> Trees, float Median);
+    /// <summary>The land and its trees, and the sea beyond the region where its border is sea (null where it isn't).</summary>
+    public sealed record Land(OpenVertices Mesh, List<OpenFarTree> Trees, float Median, OpenVertices? Sea = null, float SeaLevel = 0f);
+
+    /// <summary>
+    /// How long a run of the border must be under water to be the sea's (plan 34 · PD1's second session), in metres: a
+    /// river or a lake cut by the border is narrower, and the land beyond it stays the land.
+    /// </summary>
+    public const float SeaRun = 40f;
+
+    /// <summary>How far along the border the sea's share is eased in and out on either side of it, in metres.</summary>
+    public const float SeaEase = 24f;
+
+    /// <summary>How far under the sea's surface the floor beyond the region lies at the border, and how much deeper it goes a metre out (to <see cref="SeaDeepest"/>).</summary>
+    public const float SeaFloor = 1.5f, SeaSlope = 0.01f, SeaDeepest = 8f;
 
     /// <summary>
     /// The land beyond a region whose chunks span <paramref name="bounds"/> (west, north, east, south, in chunks), the
     /// ground's height at a point given by <paramref name="heightAt"/> (null where there is none), its hills of
-    /// <paramref name="seed"/>; with its far trees unless <paramref name="trees"/> is false.
+    /// <paramref name="seed"/>; with its far trees unless <paramref name="trees"/> is false. Where <paramref name="waterAt"/>
+    /// (the water's surface over a point, null where there is none) finds a run of the border at least <see cref="SeaRun"/>
+    /// long under water, the land beyond it is the sea's (plan 34 · PD1's second session): its floor stays under the
+    /// water's surface out to the horizon, no hills rise there, and a sea at that surface is laid over it out to
+    /// <see cref="Reach"/> (<see cref="Land.Sea"/>). With no such run, or no <paramref name="waterAt"/>, the land is as it was.
     /// </summary>
-    public static Land Of((int X0, int Z0, int X1, int Z1) bounds, Func<float, float, float?> heightAt, uint seed, bool trees = true)
+    public static Land Of((int X0, int Z0, int X1, int Z1) bounds, Func<float, float, float?> heightAt, uint seed, bool trees = true,
+        Func<float, float, float?>? waterAt = null)
     {
         float side = OpenMap.ChunkSide / (float)OpenPos.PerMetre;
         var rect = (X0: bounds.X0 * side, Z0: bounds.Z0 * side, X1: (bounds.X1 + 1) * side, Z1: (bounds.Z1 + 1) * side);
@@ -82,8 +99,25 @@ internal static class OpenHorizon
         float median = all.Count > 0 ? all[all.Count / 2] : 0f;
         foreach (var key in new List<float>(own.Keys)) if (float.IsNaN(own[key])) own[key] = median;
 
+        var (seaShare, seaLevel) = waterAt == null ? (null, 0f) : SeaShares(basePoints, own, waterAt);
+        // A ring point's share of the sea, by the border point nearest it along the loop
+        var baseU = new float[basePoints.Count];
+        for (int i = 0; i < baseU.Length; i++) baseU[i] = basePoints[i].U;
+        float SeaOf(float u)
+        {
+            if (seaShare == null) return 0f;
+            int i = Array.BinarySearch(baseU, u);
+            if (i < 0)
+            {
+                i = ~i;
+                if (i >= baseU.Length) i = 0;
+                else if (i > 0 && u - baseU[i - 1] < baseU[i] - u) i--;
+            }
+            return seaShare[i];
+        }
+
         var hills = new Hills(seed);
-        float HeightOf(RingPoint p, float d, Vector2 at)
+        float LandHeight(RingPoint p, float d, Vector2 at)
         {
             if (d <= Level)
             {
@@ -93,6 +127,15 @@ internal static class OpenHorizon
                 return border + (median - border) * (t * t * (3f - 2f * t));
             }
             return median + Rise(d) * hills.At(at) + LiftRise * Smooth(LiftFrom, Reach, d);
+        }
+        float HeightOf(RingPoint p, float d, Vector2 at)
+        {
+            float land = LandHeight(p, d, at);
+            float s = SeaOf(p.U);
+            if (s <= 0f) return land;
+            float border = own.TryGetValue(p.U, out var o) ? o : median;
+            float floor = MathF.Min(border, seaLevel - SeaFloor) - MathF.Min(MathF.Max(d, 0f) * SeaSlope, SeaDeepest);
+            return land + (floor - land) * s;
         }
 
         // Each ring's points: the band's are the base loop's; the hills' as fine as the gap to the next ring
@@ -114,7 +157,114 @@ internal static class OpenHorizon
         // The band is lit as level ground, as OW8's plain was (a river's channel eased out into it is no dark wedge); the hills by their faces
         for (int r = 0; r + 1 < rings.Count; r++) Zip(mesh, rings[r].Points, rings[r + 1].Points, median, level: rings[r + 1].D <= Level);
         var farTrees = trees ? Trees(mesh, rect, seed) : new List<OpenFarTree>();
-        return new Land(mesh, farTrees, median);
+        if (seaShare == null) return new Land(mesh, farTrees, median);
+
+        // No tree stands in the sea, nor on the shore within a metre of it
+        farTrees.RemoveAll(t => t.Foot.Y < seaLevel + 1f);
+        return new Land(mesh, farTrees, median, SeaOver(rect, basePoints, seaShare, seaLevel), seaLevel);
+    }
+
+    /// <summary>
+    /// Each border point's share of the sea (nought to one) and the sea's surface: a point is wet where the water over a
+    /// metre inside the border stands 0.3 m or more over its own ground; a run of wet points <see cref="SeaRun"/> long or
+    /// longer is the sea's, eased in and out over <see cref="SeaEase"/> metres along the border either side. Null where
+    /// no run is long enough. The surface is the median of the sea's points' water.
+    /// </summary>
+    private static (float[]? Share, float Level) SeaShares(List<RingPoint> points, Dictionary<float, float> own, Func<float, float, float?> waterAt)
+    {
+        int n = points.Count;
+        var wet = new bool[n];
+        var levels = new float?[n];
+        for (int i = 0; i < n; i++)
+        {
+            var inner = points[i].Border - points[i].Out * Under;
+            if (waterAt(inner.X, inner.Y) is { } w && w >= own[points[i].U] + 0.3f) { wet[i] = true; levels[i] = w; }
+        }
+        // Runs of wet points round the loop, each point standing for 2 m of the border (a corner's points for none)
+        var sea = new bool[n];
+        int start = Array.IndexOf(wet, false);
+        if (start < 0) start = 0;
+        bool any = false;
+        for (int k = 0; k < n;)
+        {
+            int i = (start + k) % n;
+            if (!wet[i]) { k++; continue; }
+            int length = 0;
+            float metres = 0f;
+            while (length < n && wet[(start + k + length) % n])
+            {
+                if (!points[(start + k + length) % n].OnCorner) metres += 2f;
+                length++;
+            }
+            if (metres >= SeaRun)
+            {
+                for (int j = 0; j < length; j++) sea[(start + k + j) % n] = true;
+                any = true;
+            }
+            k += Math.Max(1, length);
+        }
+        if (!any) return (null, 0f);
+
+        var all = new List<float>();
+        for (int i = 0; i < n; i++) if (sea[i] && levels[i] is { } l) all.Add(l);
+        all.Sort();
+        float level = all[all.Count / 2];
+
+        // Eased along the loop: the share at a point is the sea's at the nearest sea point within the ease, smoothstepped by the distance
+        int reach = (int)MathF.Ceiling(SeaEase / 2f);
+        var share = new float[n];
+        for (int i = 0; i < n; i++)
+        {
+            if (sea[i]) { share[i] = 1f; continue; }
+            for (int d = 1; d <= reach; d++)
+                if (sea[(i + d) % n] || sea[(i - d + n) % n])
+                {
+                    float t = 1f - d / (float)(reach + 1);
+                    share[i] = t * t * (3f - 2f * t);
+                    break;
+                }
+        }
+        return (share, level);
+    }
+
+    /// <summary>
+    /// The sea beyond the region (plan 34 · PD1's second session): a level surface at <paramref name="level"/> from the
+    /// border out to <see cref="Reach"/>, laid as the water's own vertices (up, deep) over every stretch of the rings where
+    /// the sea has a share; the land beyond rises through it where the share fades, so the shore is where they meet.
+    /// </summary>
+    private static OpenVertices SeaOver((float X0, float Z0, float X1, float Z1) rect, List<RingPoint> basePoints, float[] share, float level)
+    {
+        var sea = new OpenVertices(4096);
+        var deep = new Vector2(OpenTerrainMesh.NoGroundDepth, 0f);
+        var white = new Raylib_cs.Color(255, 255, 255, 255);
+        float[] distances = { 0f, Near, 12f, 28f, 60f, Level, 215f, 345f, 515f, 730f, 1010f, 1380f, 1900f, Reach };
+        int n = basePoints.Count;
+        for (int i = 0; i < n; i++)
+        {
+            int j = (i + 1) % n;
+            if (share[i] <= 0f && share[j] <= 0f) continue;
+            var a = basePoints[i];
+            var b = basePoints[j];
+            for (int r = 0; r + 1 < distances.Length; r++)
+            {
+                Vector3 P(RingPoint p, float d) { var at = p.Border + p.Out * d; return new Vector3(at.X, level, at.Y); }
+                Vector3 a0 = P(a, distances[r]), b0 = P(b, distances[r]), a1 = P(a, distances[r + 1]), b1 = P(b, distances[r + 1]);
+                // Facing up, as the water's own: (a0, a1, b0) and (b0, a1, b1) wound so the cross of their edges points to the sky
+                AddUp(sea, a0, a1, b0, deep, white);
+                AddUp(sea, b0, a1, b1, deep, white);
+            }
+        }
+        return sea;
+    }
+
+    private static void AddUp(OpenVertices mesh, Vector3 a, Vector3 b, Vector3 c, Vector2 depth, Raylib_cs.Color colour)
+    {
+        var n = Vector3.Cross(b - a, c - a);
+        if (n.LengthSquared() < 1e-8f) return;
+        if (n.Y < 0) (b, c) = (c, b);
+        mesh.Add(a, Vector3.UnitY, depth, colour);
+        mesh.Add(b, Vector3.UnitY, depth, colour);
+        mesh.Add(c, Vector3.UnitY, depth, colour);
     }
 
     /// <summary>How far ring <paramref name="r"/> lies from the next one out, in metres (the last, from the one before).</summary>

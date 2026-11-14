@@ -32,11 +32,12 @@ internal static class OpenCoverArt
     /// <summary>The atlas's cells: room for the covers to come.</summary>
     public const int Slots = 16;
 
-    /// <summary>The covers in the atlas's order, like beside like: the grasses and the highland, mud, the path and sand, the cave's floor, the rocks, snow.</summary>
+    /// <summary>The covers in the atlas's order, like beside like: the grasses and the highland, mud, the path and sand, the cave's floor, the rocks, snow, climbable rock, paving.</summary>
     public static readonly OpenCover[] Order =
     {
         OpenCover.Grass, OpenCover.GrassLight, OpenCover.GrassDeep, OpenCover.Highland, OpenCover.Mud, OpenCover.Path,
-        OpenCover.Sand, OpenCover.CaveFloor, OpenCover.Rock, OpenCover.RockDark, OpenCover.Snow, OpenCover.ClimbableRock
+        OpenCover.Sand, OpenCover.CaveFloor, OpenCover.Rock, OpenCover.RockDark, OpenCover.Snow, OpenCover.ClimbableRock,
+        OpenCover.Paving
     };
 
     private static readonly int[] slots = BuildSlots();
@@ -69,6 +70,7 @@ internal static class OpenCoverArt
         OpenCover.Snow => (Rgb(186, 204, 232), Rgb(196, 212, 238), Rgb(168, 188, 224), Rgb(206, 220, 242)),
         OpenCover.Mud => (Rgb(124, 106, 86), Rgb(140, 122, 98), Rgb(98, 112, 108), Rgb(150, 160, 150)),
         OpenCover.ClimbableRock => (Rgb(138, 124, 108), Rgb(150, 136, 118), Rgb(96, 86, 78), Rgb(188, 176, 158)),
+        OpenCover.Paving => (Rgb(206, 196, 180), Rgb(220, 210, 192), Rgb(150, 138, 124), Rgb(232, 224, 210)),
         _ => (Rgb(255, 0, 255), Rgb(255, 0, 255), Rgb(255, 0, 255), Rgb(255, 0, 255))
     };
 
@@ -233,6 +235,20 @@ internal static class OpenCoverArt
                     int x = (int)(Rand(k, 20, salt) * Tile), y = (int)(Rand(k, 21, salt) * Tile);
                     Put(x, y, dark); Put(x + 1, y, dark); Put(x, y + 1, dark); Put(x + 1, y + 1, dark);
                     Put(x, y, light);
+                }
+                break;
+            case OpenCover.Paving:
+                // Flags: courses of eight texels, each flag sixteen long and every other course shifted half a flag, the
+                // joints a texel of the dark, with a light chip at each flag's corner
+                for (int y = 0; y < Tile; y += 8)
+                {
+                    for (int x = 0; x < Tile; x++) Put(x, y, dark);
+                    int shift = (y / 8) % 2 == 0 ? 0 : 8;
+                    for (int x = shift; x < Tile + shift; x += 16)
+                    {
+                        for (int s = 1; s < 8; s++) Put(x, y + s, dark);
+                        Put(x + 1, y + 1, light);
+                    }
                 }
                 break;
         }

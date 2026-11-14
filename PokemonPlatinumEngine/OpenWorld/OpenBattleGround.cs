@@ -16,7 +16,7 @@ public static class OpenBattleGround
     public static BattleTerrain TerrainOf(OpenCover? cover, bool inWater) => inWater ? BattleTerrain.Water : cover switch
     {
         OpenCover.GrassDeep => BattleTerrain.Grass,
-        OpenCover.Grass or OpenCover.GrassLight or OpenCover.Highland or OpenCover.Path => BattleTerrain.Plain,
+        OpenCover.Grass or OpenCover.GrassLight or OpenCover.Highland or OpenCover.Path or OpenCover.Paving => BattleTerrain.Plain,
         OpenCover.Rock or OpenCover.RockDark or OpenCover.ClimbableRock => BattleTerrain.Mountain,
         OpenCover.CaveFloor => BattleTerrain.Cave,
         OpenCover.Sand => BattleTerrain.Sand,

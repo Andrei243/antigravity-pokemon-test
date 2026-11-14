@@ -31,6 +31,11 @@
     { "cover": "GrassDeep", "polygon": [[-60, -290], [-12, -290], [-12, -222], [-60, -222]] },
     { "cover": "GrassDeep", "polygon": [[20, -280], [76, -280], [76, -220], [20, -220]] },
     // The fisherman's lawn east of the lane, kept short
-    { "cover": "GrassLight", "polygon": [[40, -24], [80, -24], [80, 2], [40, 2]] }
+    { "cover": "GrassLight", "polygon": [[40, -24], [80, -24], [80, 2], [40, 2]] },
+    // Mesagoza's streets and plaza, paved inside its walls on the level ground at the head of the rise (the academy's
+    // stairs are paved by their road; the banks either side of them are rock, cut stone under the hill)
+    { "cover": "Paving", "polygon": [[-84, -299], [84, -299], [84, -380], [-84, -380]], "minY": 11.5, "maxY": 12.6 },
+    { "cover": "Rock", "polygon": [[-14, -328], [-4.2, -328], [-4.2, -356], [-14, -356]], "minY": 12.3, "maxY": 22.5 },
+    { "cover": "Rock", "polygon": [[4.2, -328], [14, -328], [14, -356], [4.2, -356]], "minY": 12.3, "maxY": 22.5 }
   ]
 }

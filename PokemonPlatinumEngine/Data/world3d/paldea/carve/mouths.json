@@ -1,0 +1,8 @@
+{
+  // Inlet Grotto's mouth (plan 34 · PD1's second session): a short tunnel cut into the foot of the cliff over the beach,
+  // its door at the tunnel's back, so the way in is seen as a dark mouth in the rock and not as plain wall. The grid map
+  // behind it (InletGrotto) takes the rest of the distance. Our own
+  "carves": [
+    { "kind": "capsules", "name": "Inlet Grotto's mouth", "points": [[-58, 3.0, -80], [-49, 3.0, -80]], "radius": 2.2, "floor": 1.2 }
+  ]
+}

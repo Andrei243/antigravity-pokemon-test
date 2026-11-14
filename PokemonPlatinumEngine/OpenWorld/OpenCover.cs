@@ -24,7 +24,13 @@ public enum OpenCover : byte
     /// Rock the mount climbs (plan 30 · FM12, plan 34 · PD2): laid only by the baker's paint on a cliff, never by its
     /// rules; a steep face of it is climbed once the climb is granted (<see cref="MovementGrants.Climb"/>).
     /// </summary>
-    ClimbableRock
+    ClimbableRock,
+
+    /// <summary>
+    /// A town's paving (plan 34 · PD1's second session: Mesagoza's plaza and the academy's stairs): flags of stone laid
+    /// in courses, and on a slope the steps of a stair; laid by paint or a road's surface, never by the rules.
+    /// </summary>
+    Paving
 }
 
 /// <summary>Which covers are one family (plan 32 · OW2): what the far levels may blend across as they are thinned.</summary>

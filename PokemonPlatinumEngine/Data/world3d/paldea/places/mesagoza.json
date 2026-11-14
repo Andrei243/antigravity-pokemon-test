@@ -26,7 +26,12 @@
     { "name": "the house by the west gate", "min": [-44, 11.5, -322], "max": [-32, 17, -310], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
     { "name": "the house by the east gate", "min": [32, 11.5, -322], "max": [44, 17, -310], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
     { "name": "the café at the stairs' foot", "min": [-28, 11.5, -352], "max": [-14, 17, -344], "building": { "kind": "shop", "town": "paldea" } },
-    { "name": "the bookshop at the stairs' foot", "min": [14, 11.5, -352], "max": [28, 17, -344], "building": { "kind": "shop", "town": "paldea" } }
+    { "name": "the bookshop at the stairs' foot", "min": [14, 11.5, -352], "max": [28, 17, -344], "building": { "kind": "shop", "town": "paldea" } },
+    // The old city's south wall, its gate open over the avenue between two towers (drawn as blocks of stone)
+    { "name": "the south wall, west", "min": [-88, 10.5, -302], "max": [-10, 15.5, -300] },
+    { "name": "the south wall, east", "min": [10, 10.5, -302], "max": [88, 15.5, -300] },
+    { "name": "the gate's west tower", "min": [-10, 10.5, -304], "max": [-7.5, 17.5, -300] },
+    { "name": "the gate's east tower", "min": [7.5, 10.5, -304], "max": [10, 17.5, -300] }
   ],
   "people": [
     // Nemona inside the south gate, gone ahead after the lesson (hidden once she has shown the way)

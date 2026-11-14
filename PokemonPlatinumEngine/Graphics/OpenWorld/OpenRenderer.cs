@@ -69,6 +69,12 @@ internal sealed class OpenRenderer
     private bool resources;
     private Mesh horizon;
     private bool horizonLoaded;
+    // The sea beyond the region where its border is sea (plan 34 · PD1's second session), drawn with the water
+    private Mesh horizonSea;
+    private bool horizonSeaLoaded;
+
+    /// <summary>The sea beyond the region as it was made for the map in use: its triangles, none where the border is land.</summary>
+    public int HorizonSeaTriangles { get; private set; }
     private readonly Matrix4x4[] lightVP = new Matrix4x4[OpenCascades.Count];
 
     /// <summary>Whether level 0's skirts are drawn: not since the thinned levels meet it on its own vertices (OW2), and a skirt hung from a tunnel's roof along a chunk's border is a fin in the tunnel.</summary>
@@ -514,6 +520,19 @@ internal sealed class OpenRenderer
             FrameProfiler.Count(chunk.WaterTriangles);
             WaterTriangles += chunk.WaterTriangles;
         }
+        if (horizonSeaLoaded)
+        {
+            Raylib.DrawMesh(horizonSea, water, Matrix4x4.Identity);
+            FrameProfiler.Count(HorizonSeaTriangles);
+            WaterTriangles += HorizonSeaTriangles;
+        }
+    }
+
+    private void UnloadHorizonSea()
+    {
+        if (horizonSeaLoaded) Gpu.Unload(horizonSea);
+        horizonSeaLoaded = false;
+        HorizonSeaTriangles = 0;
     }
 
     /// <summary>
@@ -533,12 +552,22 @@ internal sealed class OpenRenderer
         if (horizonLoaded && ReferenceEquals(horizonMap, map)) return;
         if (horizonLoaded) Gpu.Unload(horizon);
         horizonLoaded = false;
+        UnloadHorizonSea();
         var ground = map.Ground;
-        // The rings to the horizon (plan 32 · OW9), their hills the map's own by its name, and their far forests
-        var land = OpenHorizon.Of(bounds, (x, z) => ground.Footing(x, z, 2000, -2000)?.Y is { } y ? (float)y : null, Core.SplitMix.Fnv(map.Name));
+        // The rings to the horizon (plan 32 · OW9), their hills the map's own by its name, and their far forests; where
+        // a long run of the border is under water, the sea beyond it (plan 34 · PD1's second session)
+        var land = OpenHorizon.Of(bounds, (x, z) => ground.Footing(x, z, 2000, -2000)?.Y is { } y ? (float)y : null, Core.SplitMix.Fnv(map.Name),
+            waterAt: (x, z) => ground.WaterAt(x, z) is { } w ? (float)w : null);
         horizon = land.Mesh.Pack();
         Gpu.Upload(ref horizon, "openchunk");
         HorizonTriangles = land.Mesh.Triangles;
+        if (land.Sea is { Triangles: > 0 } sea)
+        {
+            horizonSea = sea.Pack();
+            Gpu.Upload(ref horizonSea, "openchunk");
+            horizonSeaLoaded = true;
+            HorizonSeaTriangles = sea.Triangles;
+        }
         HorizonTrees = land.Trees.Count;
         horizonLoaded = true;
         horizonMap = map;
@@ -687,6 +716,7 @@ internal sealed class OpenRenderer
         cascades.Unload();
         if (horizonLoaded) Gpu.Unload(horizon);
         horizonLoaded = false;
+        UnloadHorizonSea();
         horizonMap = null;
         if (resources) Gpu.Unload(atlas);
         resources = false;
