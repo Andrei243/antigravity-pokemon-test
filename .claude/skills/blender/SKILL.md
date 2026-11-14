@@ -442,6 +442,22 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
 - **The main session holds the game's shot beside the reference BEFORE it sends a correction**: Lickitung's broad
   flat tongue and great tail were the art's own, and a correction written from the game's shot alone had them
   made thin and small; a second round put them back.
+- **Thin plates in close pairs alias into stripes at the game's size** (Dialga's crest and fan first came out as
+  brushes of hatched lines, its claws as wisps): a model is some 150 pixels tall there, so every blade, claw and
+  spike is ONE solid piece, a flat-faced hull with a kite section at least 0.03 thick at its root, showing a lit
+  face and a shaded one. A crest standing up sets the model's height and shrinks the body: laid back it does not.
+- **A body made wholly of loose hulls** (Nosepass, Porygon) carries its eyes on one thin fused plate inside the
+  front; a patch's outer edge stays inside the plate's flat part, or it loses faces with no warning but a lower
+  vertex count. Hulls are wound outward by a check on each face's normal against the hull's middle.
+- **A glyph of strokes** (Unown): `unown.py` builds a letter from a description (an eye and a list of lines,
+  arcs and dots swept as round tubes), and Fierce on its one middle eye is a V cut into the white's own outline.
+  A stroke's root stays off the eye's white, or the eye's patch lands on it.
+- **An aura round a core** (Rotom): an opaque shell of its own colour set a little BEHIND the core, so it shows as
+  a rim from the front and leaves the face free. A pattern that radiates from a point on a ball (Palkia's pearl
+  and ribs) is one patch cast down that point's axis.
+- **A colour edge that crosses a crease** (a cap's edge over a cheek) is ragged as paint: a patch over the front
+  whose outline is the edge, with paint only filling below it. A frame built as `stack([a, cross(a, up), up])`
+  is left-handed: use the negative of the cross product.
 
 ## Not tried yet
 
