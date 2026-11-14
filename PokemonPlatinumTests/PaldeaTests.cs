@@ -33,7 +33,7 @@ public class PaldeaTests
         "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia", "stony_cliff",
         "open_sky", "lurking_steel", "quaking_earth", "false_dragon",
         // Plan 34 · PD5: Starfall Street, a stand-in north of Mesagoza until PD6
-        "starfall_street" };
+        "starfall_street",
         "asado_desert", "cascarrafa", "west_province_area_two", "porto_marinada", "west_province_area_one", "medali" };
 
     [Fact]
