@@ -183,6 +183,8 @@ public sealed partial class GameFlow
     public Models.StageShow.ShowRecords StageShow { get; } = new();
     /// <summary>The arcade's records (plan 42 · PS6).</summary>
     public Models.Cabinets.CabinetRecords Cabinets { get; } = new();
+    /// <summary>The rides' records (plan 42 · PS7; saved).</summary>
+    public Models.Rides.RideRecords Rides { get; } = new();
 
     /// <summary>The film studio's takes and bests (plan 42 · PS4; saved).</summary>
     public Models.Studio.StudioRecords Studio { get; } = new();

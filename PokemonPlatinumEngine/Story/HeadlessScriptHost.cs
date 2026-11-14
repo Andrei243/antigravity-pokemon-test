@@ -79,6 +79,11 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>What the dressing room's screen answers (1 a dressing kept), and the place the stage's show ends in (0 backed out).</summary>
     public int DressingAnswer { get; set; } = 1;
     public int StagePlace { get; set; } = 1;
+
+    /// <summary>The rides (plan 42 · PS7): the records, and the place (0 backed out of) and score a course's screen ends with.</summary>
+    public Models.Rides.RideRecords? Rides { get; set; } = new();
+    public int RidePlace { get; set; } = 1;
+    public int RideScore { get; set; } = 6000;
     public GiftFacts GiftFacts { get; set; } = new();
 
     /// <summary>The gift the box's screen chooses (from 1), <see cref="GiftBoxAnswers.Words"/> for TELL WORDS, 0 to back out.</summary>
@@ -1018,6 +1023,13 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         if (screen == ScriptScreen.GiftBox) Answer = GiftChoice;
         // The theatre (plan 42 · PS1, PS2): a dressing kept, a show ended in the place the test says, its fan set waiting
         if (screen == ScriptScreen.DressingRoom) Answer = DressingAnswer;
+        // A course of trick surfing (plan 42 · PS7): ridden to the place the test says, recorded and paid as the game does
+        if (screen == ScriptScreen.Ride)
+        {
+            Answer = RidePlace;
+            if (RidePlace > 0 && Rides != null && Models.Rides.SurfCourses.Get(counter ?? "") is { } surfCourse)
+                Frontier.GivePoints(Rides.Record(surfCourse, RideScore, RidePlace).Paid);
+        }
         if (screen == ScriptScreen.StageShow)
         {
             Answer = StagePlace;

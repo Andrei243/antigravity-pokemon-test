@@ -271,6 +271,10 @@ public class SaveData
     /// <summary>The arcade's cabinets (plan 42 · PS6, <see cref="Models.Cabinets.CabinetRecords"/>): stages cleared, best scores, pictures solved. Null while empty.</summary>
     public Models.Cabinets.CabinetsSave? Cabinets { get; set; }
 
+    /// <summary>The rides (plan 42 · PS7, <see cref="Models.Rides.RideRecords"/>): each course's best and runs, the Battle Points paid. Null while empty, so no save version was raised.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.Rides.RidesSave? Rides { get; set; }
+
     /// <summary>
     /// The film studio (plan 42 · PS4, <see cref="Models.Studio.StudioRecords"/>): each film's takes shot, its best stars
     /// and best take. Null while no film has been shot, and in every save from before it, so no save version was raised.

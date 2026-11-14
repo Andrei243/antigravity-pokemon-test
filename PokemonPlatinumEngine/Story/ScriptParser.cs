@@ -659,6 +659,14 @@ public static class ScriptParser
                 // On or off the Bicycle by the story's say (plan 19 · K6: FireRed's ForcePlayerOntoBike on the Cycling Road)
                 return new Instruction { Op = Op.Bicycle, Line = line, Option = r.OneOf("on", "off") == "on" };
             case "ride":
+                // A ride of the beaches (plan 42 · PS7): `ride surf "hauoli"`, `ride runs "hauoli"`, `ride best "hauoli"`
+                if (r.PeekWord("surf") || r.PeekWord("runs") || r.PeekWord("best"))
+                {
+                    string rideWord = r.OneOf("surf", "runs", "best");
+                    string course = r.Text("a course's id");
+                    if (Models.Rides.SurfCourses.Get(course) == null) throw r.Error($"'{course}' is no course of surf-courses.json");
+                    return new Instruction { Op = Op.Ride, Line = line, Name = rideWord, Other = course };
+                }
                 // On a Ride Pager's Pokémon or off it (plan 23, wave 91): `ride "Tauros"`, `ride off`
                 if (r.PeekWord("off"))
                 {

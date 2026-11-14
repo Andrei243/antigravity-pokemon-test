@@ -105,6 +105,8 @@ public sealed partial class GameFlow
     public BugContestResultsScreen BugContestResultsScreen { get; } = new();
     /// <summary>The Pokéathlon's courses, team and events (plan 15 · E6).</summary>
     public AthlonScreen AthlonScreen { get; } = new();
+    /// <summary>Trick surfing off a beach (plan 42 · PS7).</summary>
+    public RideScreen RideScreen { get; } = new();
     public PhraseScreen PhraseScreen { get; } = new();
     public RivalNamingScreen RivalNamingScreen { get; } = new();
     /// <summary>The keyboard for a Pokémon's name (plan 12 · Q19).</summary>

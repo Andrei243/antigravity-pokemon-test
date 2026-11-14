@@ -818,6 +818,10 @@ A file that can't be read is `Damaged`; `BattleRecordFile.Read` says which of th
 
 `Data/cabinets.json` (plan 42 · PS6, `Models/Cabinets/CabinetRecords.cs`; ours, read strictly). `stages` are the match-three's in the order they are offered, each with its `id`, the `foe` (a species of the data, whose types the chart reads), its `hp`, the `swaps` a stage allows, the `seed` its board is drawn from (SplitMix), the `coins` a clear pays and the `coinsPerSwapLeft` added for each swap left over. `helpers` are the species that fill a board's places the team leaves empty, in order. `pictures` are what a picture of each grid `size` (10, 15, 20) pays: its `coins`, less `perMistake` for each mistake, never under `least`.
 
+## Trick surfing's courses
+
+`Data/surf-courses.json` (plan 42 · PS7, `Models/Rides/TrickSurf.cs`; ours, read strictly). `courses` are ridden off a beach on a Mantine the hut lends, each with its `id` (the script's `ride surf "<id>"`, the words `rides.course.<id>`), its `beach` (the area its hut stands in), its `seconds`, its `swell` (the wave's height as a share of the first course's; every jump's air is lengthened by it), the surf `club`'s three who ride it beside the player (each a `name`, its words `rides.club.<name>`, and a `knack` from 0 to 1: how well they ride) and its `pay`: bands of a `score` and the Battle Point `points` a first place reaching it wins, in rising order from a score of 0 (every first place pays). No band pays more than a first round of seven at the Battle Tower (3), which `RideTests` holds.
+
 ## The trade board
 
 `Data/trade-board.json` (plan 40 · GE8, `Models/TradeBoard.cs`, schema `trade-board.schema.json`; ours, read strictly): the made-up trainers' `names`, their `looks` (of `characters.json`), the `languages` a trainer from abroad speaks and the `items` a Pokémon offered may hold. The board draws from them by the date and the region with `SplitMix`, never `Dice`.

@@ -85,6 +85,9 @@
   // The great days of the year (plan 40 · GE9's note of part D, the user's word: every region): a decorated pine at
   // Christmas, a basket of eggs at Easter, a banner at New Year and, quietly, a heart on St Valentine's Day
   "npcs": [
+    // The surf club's hut on the beach (plan 42 · PS7): its captain lends a Mantine for the course off the beach
+    // (hauoli_city.SurfHut); a hut of its own and the club's three on the sand are owed
+    {"id": "hauoli_city.SurfCaptain", "name": "Surf Captain", "npcType": "swimmer_m", "x": 306, "y": 177, "facing": "Up", "script": "SurfHut"},
     {"id": "hauoli_city.Festival_christmas", "name": "Decorated pine", "npcType": "FestivalHolidayTree", "x": 284, "y": 162, "facing": "Down", "shownBy": "FLAG_FESTIVAL_CHRISTMAS"},
     {"id": "hauoli_city.Festival_easter", "name": "Basket of eggs", "npcType": "FestivalEggBasket", "x": 284, "y": 165, "facing": "Down", "shownBy": "FLAG_FESTIVAL_EASTER"},
     {"id": "hauoli_city.Festival_new_year", "name": "New Year's banner", "npcType": "FestivalNewYearBanner", "x": 277, "y": 161, "facing": "Down", "shownBy": "FLAG_FESTIVAL_NEW_YEAR"},

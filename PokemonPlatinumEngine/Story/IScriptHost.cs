@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, GiftBox, TradeBoard, MissionBoard, DressingRoom, StageShow, PhotoBook, PhotoStudio, PhotoTour, TourReport, Delve, DelveBoard }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament, Jobs, PhotoAlbum, GlobalLink, Crafting, Training, GiftBox, TradeBoard, MissionBoard, DressingRoom, StageShow, PhotoBook, PhotoStudio, PhotoTour, TourReport, Delve, DelveBoard, Ride }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -117,6 +117,13 @@ public interface IScriptHost
     /// (<see cref="Answer"/> 1 when a dressing was kept) and <see cref="ScriptScreen.StageShow"/> (the place, 1 to 4, or 0).
     /// </summary>
     Models.StageShow.ShowRecords? StageShow => null;
+
+    /// <summary>
+    /// The rides' records (plan 42 · PS7, <c>ride surf</c>): each course's best and runs; null for a host that has none,
+    /// where nothing is ridden. Its screen is <see cref="ScriptScreen.Ride"/> (the counter the course's id;
+    /// <see cref="Answer"/> the place, 1 to 4, or 0 backed out of), which pays its Battle Points as it closes.
+    /// </summary>
+    Models.Rides.RideRecords? Rides => null;
 
     /// <summary>
     /// The film studio's records (plan 42 · PS4, <c>studio</c>): each film's takes and best, the studio's rank; null for a

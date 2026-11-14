@@ -231,6 +231,8 @@ public enum Op
     Tale,
     // Galar's Battle Tower ladder in Rose Tower (plan 33 · GL7, part b): ten ranks with the Frontier's rules lent, Leon at the Master Rank
     GalarTower,
+    // The rides of the beaches (plan 42 · PS7): a course surfed off a beach's hut, its runs and its best
+    Ride,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

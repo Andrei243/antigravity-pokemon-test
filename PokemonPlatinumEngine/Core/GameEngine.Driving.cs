@@ -78,6 +78,9 @@ public partial class GameEngine
         /// <summary>The Pokéathlon's records and its screen (plan 15 · E6).</summary>
         public AthlonRecords Athlon => game.flow.Athlon;
         public AthlonScreen AthlonScreen => game.flow.AthlonScreen;
+        /// <summary>Trick surfing's screen and the rides' records (plan 42 · PS7).</summary>
+        public RideScreen RideScreen => game.flow.RideScreen;
+        public Models.Rides.RideRecords Rides => game.flow.Rides;
         // Hoenn's contests and Pokéblocks (plan 21 · H11)
         public AppealScreen AppealScreen => game.flow.AppealScreen;
         public BlenderScreen BlenderScreen => game.flow.BlenderScreen;

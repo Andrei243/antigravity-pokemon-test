@@ -66,6 +66,8 @@ public static class AthlonBonuses
         CirclePush c => (c.Pushers[team].Held >= 24 * AthlonEvent.FramesPerSecond, c.Pushers[team].Alone >= 45),
         // A goal and none into its own; three goals
         GoalRoll g => (g.Players[team].Goals > 0 && g.Players[team].OwnGoals == 0, g.Players[team].Goals >= 3),
+        // Trick surfing (plan 42 · PS7), a ride the dome never offers: at most two falls with a trick landed, and a combo of four
+        Rides.TrickSurf ts => (ts.Riders[team].Falls <= 2 && ts.Riders[team].Landed > 0, ts.Riders[team].BestCombo >= 4),
         _ => (false, false)
     };
 }

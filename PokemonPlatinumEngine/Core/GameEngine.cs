@@ -189,7 +189,9 @@ public enum GameState
     /// <summary>The Book of Tales: the tales learned, a page each (plan 46 · CP11).</summary>
     BookOfTales,
     /// <summary>An arcade cabinet, the match-three or the picture-logic puzzle, a script's <c>gamecorner cabinet</c> waiting on it (plan 42 · PS6).</summary>
-    Cabinet
+    Cabinet,
+    /// <summary>A ride of the beaches, trick surfing, a script's <c>ride surf</c> waiting on it (plan 42 · PS7).</summary>
+    Ride
 }
 
 public partial class GameEngine
@@ -562,6 +564,7 @@ public partial class GameEngine
         flow.Records.Clear();
         flow.StageShow.Clear();
         flow.Cabinets.Clear();
+        flow.Rides.Clear();
         flow.Studio.Clear();
         flow.Board.Clear();
         flow.Plaza.Clear();
@@ -851,6 +854,7 @@ public partial class GameEngine
         flow.Records.Load(save.MixedRecords);
         flow.StageShow.Load(save.StageShow);
         flow.Cabinets.Load(save.Cabinets);
+        flow.Rides.Load(save.Rides);
         flow.Studio.Load(save.Studio);
         flow.Board.Load(save.TradeBoard);
         // Pennant Hall and the Week's Work (plan 41 · EG3, EG6): none in an older save, and none until first opened
@@ -1096,6 +1100,7 @@ public partial class GameEngine
             MixedRecords = flow.Records.ToSave(),
             StageShow = flow.StageShow.ToSave(),
             Cabinets = flow.Cabinets.ToSave(),
+            Rides = flow.Rides.ToSave(),
             Studio = flow.Studio.ToSave(),
             TradeBoard = flow.Board.ToSave(),
             Plaza = flow.Plaza.ToSave(),
@@ -1900,6 +1905,9 @@ public partial class GameEngine
                 break;
             case GameState.Cabinet:
                 UpdateCabinet(dt);
+                break;
+            case GameState.Ride:
+                UpdateRide(dt);
                 break;
             case GameState.CardFlip:
                 UpdateCardFlip(dt);
@@ -3874,6 +3882,9 @@ public partial class GameEngine
             case GameState.Cabinet:
                 flow.MatchThreeScreen.Draw(VirtualWidth, VirtualHeight);
                 flow.PictureLogicScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Ride:
+                flow.RideScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.CardFlip:
                 flow.CardFlipScreen.Draw(VirtualWidth, VirtualHeight);
