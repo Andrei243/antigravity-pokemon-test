@@ -1079,6 +1079,44 @@
     }
   },
 
+  "rides": {
+    "title": "SURF CU TRUCURI",
+    "surfing": "SURF CU TRUCURI PE UN MANTINE ÎMPRUMUTAT",
+    "start": "Pornește",
+    "seconds": "{n} SECUNDE",
+    "howTo": "Ține apăsat în jos ca să cobori valul și să prinzi viteză, ține în sus ca să urci înapoi spre creastă și apasă butonul acolo ca să sari. În aer, ține o săgeată pentru un truc. Apasă din nou chiar înainte de apă ca să aterizezi drept: o aterizare strâmbă te doboară, iar trucurile reușite la rând fac un combo.",
+    "best": "REZULTATUL TĂU: {score}",
+    "notRidden": "ÎNCĂ NEPARCURS",
+    "pays": "O VICTORIE PLĂTEȘTE PÂNĂ LA {most} BP",
+    "straight": "DREPT!",
+    "crooked": "STRÂMB!",
+    "pop": "{trick} +{points}",
+    "combo": "COMBO ×{n}",
+    "go": "HAI!",
+    "results": "REZULTATE",
+    "score": "SCOR",
+    "bestCombo": "CEL MAI BUN COMBO",
+    "tricks": "TRUCURI",
+    "yourScore": "Scorul tău: {score}",
+    "newRecord": "RECORD NOU",
+    "battlePoints": "PUNCTE DE LUPTĂ",
+    "none": "NICIUNUL DE ASTĂ DATĂ",
+    "held": "BP deținute: {points}",
+    "course": {
+      "hauoli": "Hau'oli Beach"
+    },
+    "club": {
+      "kai": "KAI",
+      "leilani": "LEILANI",
+      "makoa": "MAKOA"
+    },
+    "trick": {
+      "spin": "ROTIRE",
+      "roll": "ROSTOGOLIRE",
+      "flip": "SALTO",
+      "dive": "PICAJ"
+    }
+  },
   "athlon": {
     "title": "POKÉATHLON",
     "courses": "TRASEE",
