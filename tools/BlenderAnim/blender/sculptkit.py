@@ -161,6 +161,13 @@ class Kit:
         """
         V, F = shape
         col = srgb(color) if isinstance(color, str) else color
+        if not fuse and not carve:
+            # A loose piece is drawn as it is wound: inside out, Blender itself shows nothing wrong (it draws both
+            # sides of a face alike) and the game, which draws the outer side and inks the inner, shows the piece
+            # dull, with no outline, or grey and see-through. Told once for the piece being built (_tell_wound)
+            wrong = winding(V, F)
+            if wrong:
+                self.__dict__.setdefault("_wound", []).append((name, wrong))
         if not mirror:
             self.parts.append(dict(name=name, V=V, F=F, color=col, bone=bone, fuse=fuse, glow=glow, surface=surface, carve=carve))
             return
@@ -228,6 +235,7 @@ class Kit:
         middle it gives more than a half are left out (a window in a shell of hair); surface: the name of a piece
         built before, for decals to lie on when this piece has nothing fused of its own.
         """
+        self._tell_wound()
         nb = len(self.bones)
         bi = {b: i for i, b in enumerate(self.bones)}
         fused = [p for p in self.parts if p["fuse"] and not p["carve"]]
@@ -433,7 +441,17 @@ class Kit:
             lay(state)
             self.build(name=f"eyes.{state}", surface=surface or self.name)
 
+    def _tell_wound(self):
+        """One line for the loose pieces added since the last that are wound wrongly (add finds them)."""
+        wound = self.__dict__.pop("_wound", [])
+        if wound:
+            names = [n for n, _ in wound]
+            print(f"KIT: !! {len(wound)} loose piece{'s' if len(wound) > 1 else ''} wound wrongly"
+                  f" ({', '.join(sorted({w for _, w in wound}))}): {', '.join(names[:8])}{', ...' if len(names) > 8 else ''}."
+                  " The game draws such a piece dull and without its outline: turn its faces (outward(shape))")
+
     def export(self, out):
+        self._tell_wound()
         bpy.ops.export_scene.gltf(
             filepath=out, export_format="GLB", export_yup=True,
             export_vertex_color="MATERIAL", export_all_vertex_colors=False,
@@ -486,7 +504,11 @@ def sheet(at, nu, nv, thick):
 
 
 def leaf(base, d, length, width, thick=0.014):
-    """A flat pointed piece from base along d (a leaf, a feather, a plate), its face turned to the sky's side of d."""
+    """
+    A flat pointed piece from base along d (a leaf, a feather, a plate), its face turned to the sky's side of d.
+    Its frame is left-handed, so its faces are wound inside out, and they are left so: turned over here, every model
+    that fuses a leaf would be built to other bytes (Infernape's was tried). A loose leaf is outward(leaf(...)).
+    """
     d = np.array(d, float); d /= np.linalg.norm(d)
     side = np.cross(d, (0, 0, 1.0))
     if np.linalg.norm(side) < 1e-3:
@@ -598,3 +620,238 @@ def unit(x, y, z):
 def args():
     a = sys.argv[sys.argv.index("--") + 1:]
     return a[0], a[1]
+
+
+# --- the kit session's (plan 48): what every batch's scripts had come to copy from one another ---------------------
+# Every shape here that is a closed piece ends by asking its own signed volume and turning its faces if they came out
+# inside out, so it is wound outward whatever frame it was handed and under add(mirror=True).
+
+def volume(V, F):
+    """The signed volume a closed piece's faces enclose: below nought, the piece is wound inside out."""
+    V = np.asarray(V, float)
+    if len(V) == 0 or len(F) == 0:
+        return 0.0
+    V = V - V.mean(axis=0)
+    a, b, c = [], [], []
+    for f in F:
+        for i in range(1, len(f) - 1):
+            a.append(f[0]); b.append(f[i]); c.append(f[i + 1])
+    return float((V[a] * np.cross(V[b], V[c])).sum() / 6)
+
+
+def winding(V, F):
+    """
+    What is wrong with the way a loose piece's faces are wound, or None. The points are welded by their places first
+    (a hard-edged plate keeps its rim's points twice), then each closed shell is asked its signed volume. A piece
+    that is open somewhere (a single sheet of faces) can't be told and is passed.
+    """
+    V = np.asarray(V, float)
+    if len(V) == 0 or len(F) == 0:
+        return None
+    _, ids = np.unique(np.round(V / 1e-6).astype(np.int64), axis=0, return_inverse=True)
+    ids = np.asarray(ids).ravel()
+    shell = list(range(int(ids.max()) + 1))
+    def find(i):
+        while shell[i] != i:
+            shell[i] = shell[shell[i]]
+            i = shell[i]
+        return i
+    edges, faces = {}, []
+    for f in F:
+        g = [int(ids[i]) for i in f]
+        g = [g[i] for i in range(len(g)) if g[i] != g[i - 1]]
+        if len(g) < 3:
+            continue
+        faces.append((f, g[0]))
+        for p, q in zip(g, g[1:] + g[:1]):
+            edges[(p, q)] = edges.get((p, q), 0) + 1
+            shell[find(p)] = find(q)
+    # Per shell: is it closed (every edge walked once each way), and are its faces wound alike
+    opened, mixed = set(), set()
+    for (p, q), n in edges.items():
+        back = edges.get((q, p), 0)
+        if n == 2 and back == 0:
+            mixed.add(find(p))           # two faces walk the edge the same way: one of them is turned over
+        elif n != 1 or back != 1:
+            opened.add(find(p))
+    if mixed - opened:
+        return "faces against each other"
+    middle = V.mean(axis=0)
+    sums = {}
+    for f, first in faces:
+        s = find(first)
+        if s in opened or s in mixed:
+            continue
+        P = V[f] - middle
+        sums[s] = sums.get(s, 0.0) + sum(float(np.dot(P[0], np.cross(P[i], P[i + 1]))) for i in range(1, len(f) - 1))
+    bad = [s for s, v in sums.items() if v < -1e-12]
+    if not bad:
+        return None
+    return "inside out" if len(bad) == len(sums) else "a part inside out"
+
+
+def outward(shape):
+    """A closed shape with its faces turned outward, whichever way they came."""
+    V, F = shape
+    return (V, [f[::-1] for f in F]) if volume(V, F) < 0 else (V, F)
+
+
+def axes(d):
+    """Two directions square to d and to each other, right-handed with it (a, b, d): a frame round an axis."""
+    d = np.array(d, float); d /= np.linalg.norm(d)
+    a = np.cross(d, (0, 0, 1.0))
+    if np.linalg.norm(a) < 1e-3:
+        a = np.array([1.0, 0, 0])
+    a /= np.linalg.norm(a)
+    return a, np.cross(d, a)
+
+
+def hull(points, merge=3.0):
+    """
+    Points made into a solid with flat faces and hard edges: their convex hull, faces within merge degrees of one
+    plane made one, each face with points of its own (so it is shaded flat in the game with no more said). A plate of
+    rock or armour, a blade, a claw, a gem, a box: a loose piece (fused, the remesh rounds it off).
+    """
+    bm = bmesh.new()
+    for v in np.asarray(points, float).tolist():
+        bm.verts.new(v)
+    h = bmesh.ops.convex_hull(bm, input=bm.verts[:])
+    spare = [g for g in h["geom_interior"] + h["geom_unused"] if isinstance(g, bmesh.types.BMVert)]
+    bmesh.ops.delete(bm, geom=list(dict.fromkeys(spare)), context="VERTS")
+    if merge:
+        bmesh.ops.dissolve_limit(bm, angle_limit=math.radians(merge), verts=bm.verts[:], edges=bm.edges[:])
+    bm.verts.index_update()
+    P = np.array([v.co[:] for v in bm.verts])
+    faces = [[v.index for v in f.verts] for f in bm.faces]
+    bm.free()
+    V, F = [], []
+    for f in faces:
+        F.append(list(range(len(V), len(V) + len(f))))
+        V.extend(P[f])
+    return outward((np.array(V), F))
+
+
+def earclip(p):
+    """A polygon's triangles (indices into p, an N x 2 outline walked counter-clockwise; it may be concave)."""
+    idx = list(range(len(p)))
+    tris = []
+    def cross(o, a, b):
+        return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    guard = 0
+    while len(idx) > 3 and guard < 100000:
+        guard += 1
+        m = len(idx)
+        cut = False
+        for i in range(m):
+            a, b, c = idx[i - 1], idx[i], idx[(i + 1) % m]
+            if cross(p[a], p[b], p[c]) <= 1e-12:
+                continue
+            ok = True
+            for j in idx:
+                if j in (a, b, c):
+                    continue
+                q = p[j]
+                if cross(p[a], p[b], q) >= 0 and cross(p[b], p[c], q) >= 0 and cross(p[c], p[a], q) >= 0:
+                    ok = False
+                    break
+            if ok:
+                tris.append((a, b, c)); idx.pop(i); cut = True
+                break
+        if not cut:
+            tris.append((idx[-1], idx[0], idx[1])); idx.pop(0)
+    tris.append(tuple(idx))
+    return tris
+
+
+def slab(outline, origin, ex, ez, thick):
+    """
+    A flat plate with hard edges: an outline of (a, b) points (any polygon that doesn't cross itself, walked either
+    way) in the plane through origin of ex and ez, thick across it. A wing, a fin, a bolt, a diamond, a heart: a loose
+    piece. It is stiff: nothing can be laid on it after it is bent (a sheet is for that).
+    """
+    ex = np.array(ex, float); ex /= np.linalg.norm(ex)
+    ez = np.array(ez, float); ez = ez - ex * (ez @ ex); ez /= np.linalg.norm(ez)
+    n = np.cross(ex, ez)
+    p = np.array(outline, float)
+    if (p[:, 0] * np.roll(p[:, 1], -1) - np.roll(p[:, 0], -1) * p[:, 1]).sum() < 0:
+        p = p[::-1]
+    W = np.array(origin, float) + p[:, :1] * ex + p[:, 1:] * ez
+    m = len(p)
+    front, back = W + n * thick / 2, W - n * thick / 2
+    F = []
+    for a, b, c in earclip(p):
+        F.append([a, b, c]); F.append([m + c, m + b, m + a])
+    rim = []
+    for i in range(m):
+        j = (i + 1) % m
+        rim.extend([front[i], back[i], back[j], front[j]])
+        F.append([2 * m + 4 * i + q for q in range(4)])
+    return outward((np.vstack([front, back, np.array(rim)]), F))
+
+
+def ring_band(c, axis, radius, length, thick=0.006, nu=73):
+    """
+    A loose band round a limb, a tail or a body (a stripe that keeps its edges at any size, where paint steps):
+    centred on c, length long along axis, radius its middle's distance from the axis, a number or a function of v
+    (0..1 along the band) for a part that tapers. Its seam is turned to the back. Set the radius some 0.004 over the
+    part's own.
+    """
+    a = np.array(axis, float); a /= np.linalg.norm(a)
+    ref = np.array([0, 0, 1.0]) if abs(a[2]) < 0.9 else np.array([0, 1.0, 0])
+    e1 = np.cross(a, ref); e1 /= np.linalg.norm(e1)
+    e2 = np.cross(a, e1)
+    behind = np.array([0, 1.0, 0]) - a * a[1]
+    phase = math.atan2(np.dot(behind, e2), np.dot(behind, e1)) if np.linalg.norm(behind) > 1e-6 else 0.0
+    c = np.array(c, float)
+    def at(u, v):
+        th = phase + 2 * math.pi * u
+        r = radius(v) if callable(radius) else np.full_like(v, float(radius))
+        off = (v - 0.5) * length
+        return (c[None, None, :] + a[None, None, :] * off[..., None]
+                + r[..., None] * (np.cos(th)[..., None] * e1[None, None, :] + np.sin(th)[..., None] * e2[None, None, :]))
+    return outward(sheet(at, nu, 3, thick))
+
+
+def lathe(c, d, profile, seg=40):
+    """
+    A closed solid of turning with the edges its profile has: profile is (radius, distance along d from c) from the
+    axis round to the axis again (a radius of nought is a point on the axis). A barrel with its bore, a drum, a
+    stone's base, a screw's head: a loose piece.
+    """
+    a, b = axes(d)
+    d = np.array(d, float); d /= np.linalg.norm(d)
+    c = np.array(c, float)
+    V, rows = [], []
+    ang = np.linspace(0, 2 * math.pi, seg, endpoint=False)
+    for r, s in profile:
+        if r < 1e-9:
+            rows.append([len(V)]); V.append(c + d * s)
+        else:
+            rows.append(list(range(len(V), len(V) + seg)))
+            V.extend(c + d * s + r * (math.cos(t) * a + math.sin(t) * b) for t in ang)
+    F = []
+    for r0, r1 in zip(rows, rows[1:]):
+        for j in range(seg):
+            if len(r0) == 1 and len(r1) == 1:
+                continue
+            if len(r0) == 1:
+                F.append([r0[0], r1[(j + 1) % seg], r1[j]])
+            elif len(r1) == 1:
+                F.append([r0[j], r0[(j + 1) % seg], r1[0]])
+            else:
+                F.append([r0[j], r0[(j + 1) % seg], r1[(j + 1) % seg], r1[j]])
+    return outward((np.array(V), F))
+
+
+def sibling(name):
+    """
+    Another sculpt's script as a module ("unown" is sculpts/unown.py), for a form or an evolution that is built by
+    the same functions: `u = sibling("unown"); u.unown(src, out, UNOWN_B)`. The script asked for must do its own
+    building under `if __name__ == "__main__":`, or it builds itself as it is read.
+    """
+    import importlib.util, os
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sculpts", name + ".py")
+    spec = importlib.util.spec_from_file_location("sculpt_" + name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module

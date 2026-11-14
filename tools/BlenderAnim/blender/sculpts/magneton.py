@@ -12,6 +12,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
+import sculptkit
 from sculptkit import Kit, ell, srgb, unit, eye_look, args
 
 STEEL, SCREW, CROSS = "#B4C8D4", "#A3AAB3", "#4A5059"
@@ -136,7 +137,7 @@ def screw(k, name, bone, centre, r, outward, size=SCREW_HEAD, shank=0.0):
     p, q = math.cos(t) * e1 + math.sin(t) * e2, -math.sin(t) * e1 + math.cos(t) * e2
     c = base + a * top
     for ax0, ax1 in ((p, q), (q, p)):
-        k.add(name + "cross", box(c, (a, ax0, ax1), (0.06 * hr, 0.62 * hr, 0.16 * hr)), CROSS, bone, fuse=False,
+        k.add(name + "cross", sculptkit.outward(box(c, (a, ax0, ax1), (0.06 * hr, 0.62 * hr, 0.16 * hr))), CROSS, bone, fuse=False,
               surface="metal")
 
 
@@ -159,7 +160,7 @@ def top_screw(k, name, bone, centre, r, up=(0, 0, 1)):
     a, e1, e2 = frame(d)
     c = base + a * (rise + 1.3 * th)
     for ax0, ax1 in ((e1, e2), (e2, e1)):
-        k.add(name + "cross", box(c, (a, ax0, ax1), (0.03 * hr, 0.55 * hr, 0.09 * hr)), CROSS, bone, fuse=False,
+        k.add(name + "cross", sculptkit.outward(box(c, (a, ax0, ax1), (0.03 * hr, 0.55 * hr, 0.09 * hr))), CROSS, bone, fuse=False,
               surface="metal")
 
 

@@ -4,7 +4,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, leaf, srgb, inside, smoothstep, unit, tri, eye_look, args
+from sculptkit import Kit, ell, tube, blade, leaf, srgb, inside, smoothstep, unit, tri, eye_look, args, outward
 
 src, out = args()
 k = Kit(src, coat="fur")
@@ -46,7 +46,7 @@ def lock(name, pts, face):
     sv = np.cross(d, face); sv /= np.linalg.norm(sv)
     for j, turn in enumerate((0.4, -0.35)):
         dd = d + sv * turn; dd /= np.linalg.norm(dd)
-        k.add(f"{name}fray{j}", leaf(before + (end - before) * 0.5 + sv * turn * 0.03, dd, 0.05, 0.016, thick=0.009),
+        k.add(f"{name}fray{j}", outward(leaf(before + (end - before) * 0.5 + sv * turn * 0.03, dd, 0.05, 0.016, thick=0.009)),
               DEEPPINK, "body", fuse=False)
 lock("locktop", [(-0.06, 0.03, 0.62), (-0.1, 0.035, 0.67), (-0.15, 0.045, 0.7), (-0.19, 0.055, 0.69)], (0, 1, 0))
 for s in (1, -1):

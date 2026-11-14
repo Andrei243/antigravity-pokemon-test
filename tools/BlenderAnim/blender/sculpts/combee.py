@@ -12,7 +12,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, unit, eye_look, args
+from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, unit, eye_look, args, outward
 
 src, out = args()
 k = Kit(src, coat="shell")
@@ -72,7 +72,7 @@ def plate(V):
 
 for i, (c, bone, kind) in enumerate(CELLS):
     c = np.array(c)
-    k.add(f"cell{i}", prism(c, R * 0.985, FRONT, BACK), RIM, bone, fuse=False)
+    k.add(f"cell{i}", outward(prism(c, R * 0.985, FRONT, BACK)), RIM, bone, fuse=False)
     # the face: a slab inset from the rim, its front just proud of the prism's
     k.add(f"face{i}", ell((c[0], FRONT + 0.012, c[2]), (R * 0.84, 0.02, R * 0.84), deform=plate), FACE, bone)
 

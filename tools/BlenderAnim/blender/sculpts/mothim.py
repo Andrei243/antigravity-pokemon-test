@@ -13,7 +13,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, leaf, srgb, inside, smoothstep, unit, eye_look, args
+from sculptkit import Kit, ell, tube, blade, leaf, srgb, inside, smoothstep, unit, eye_look, args, outward
 
 src, out = args()
 k = Kit(src, coat="fur")
@@ -125,8 +125,8 @@ k.paint(lambda P: inside(np.abs(P[:, 2] - 0.266) - 0.034, 0.0025) * inside(np.ab
 k.paint(lambda P: inside(P[:, 2] - 0.232, 0.0025), GREY)
 # The black bow at its end: two flaps spreading down and out
 for s in (1, -1):
-    k.add(f"bow{'R' if s > 0 else 'L'}", leaf((0.004 * s, 0.006, 0.195), (0.75 * s, -0.15, -1.0), 0.055, 0.032,
-                                             thick=0.012), DARK, "body", fuse=False)
+    k.add(f"bow{'R' if s > 0 else 'L'}", outward(leaf((0.004 * s, 0.006, 0.195), (0.75 * s, -0.15, -1.0), 0.055, 0.032,
+                                             thick=0.012)), DARK, "body", fuse=False)
 
 # Legs: a white hook at each side of the thorax, a white nub under it
 k.add("hook", tube([(0.036, -0.022, 0.262), (0.042, -0.04, 0.236), (0.03, -0.05, 0.215), (0.02, -0.05, 0.207)],

@@ -1,5 +1,8 @@
-# A still turntable of a .glb to look at a sculpt: its front, front three-quarter, side and back on one sheet, in the
-# file's own colours (vertex colours and textures, through the materials the importer makes). Run by Blender itself:
+# A still turntable of a .glb to look at a sculpt: its front, front three-quarter, side and back on one sheet, and
+# after them the two views the game's own boards take (`dex` and `dex --back`: 10 degrees up, 31.5 degrees round to
+# one side from the front, and from behind over the other shoulder), in the file's own colours (vertex colours and
+# textures, through the materials the importer makes). A face seen from its inner side is drawn in ink, so a piece
+# wound inside out, which the game shows grey and see-through, is black here. Run by Blender itself:
 #   blender --background --factory-startup --python turntable.py -- <in.glb> <out.png> [size] [engine] [eyes]
 # It prints what the file holds (TT: lines): meshes, colour attributes, materials, clips and bounds.
 import bpy, math, os, sys
@@ -60,6 +63,29 @@ if engine == "BLENDER_WORKBENCH":
     scene.display.shading.light = "STUDIO"
     scene.display.shading.color_type = "VERTEX"
 
+# The game draws a face from its outer side alone and its outline from the inner. Blender draws both sides alike
+# unless told, and a piece wound inside out then looks right here and thin, grey and see-through there (Togetic's
+# wings, plan 48): so a face seen from its inner side is drawn here in ink
+INK = (0.05, 0.05, 0.06, 1)
+for m in bpy.data.materials:
+    tree = m.node_tree if m.use_nodes else None
+    end = next((n for n in tree.nodes if n.type == "OUTPUT_MATERIAL" and n.is_active_output), None) if tree else None
+    if end is None or not end.inputs["Surface"].is_linked:
+        m.use_backface_culling = True
+        continue
+    # A face seen from its inner side is drawn in ink, which is what the game's outline pass makes of it
+    was = end.inputs["Surface"].links[0].from_socket
+    side = tree.nodes.new("ShaderNodeNewGeometry")
+    ink = tree.nodes.new("ShaderNodeEmission")
+    ink.inputs["Color"].default_value = INK
+    mix = tree.nodes.new("ShaderNodeMixShader")
+    tree.links.new(side.outputs["Backfacing"], mix.inputs[0])
+    tree.links.new(was, mix.inputs[1])
+    tree.links.new(ink.outputs[0], mix.inputs[2])
+    tree.links.new(mix.outputs[0], end.inputs["Surface"])
+    m.use_backface_culling = False
+scene.display.shading.show_backface_culling = True
+
 sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
 sun.data.energy = 3.0
 sun.rotation_euler = (math.radians(50), 0, math.radians(-30))
@@ -72,10 +98,13 @@ cam.data.type = "ORTHO"
 cam.data.ortho_scale = reach * 1.25
 
 # The game's front is glTF's +Z, which the importer makes Blender's -Y: a camera at -Y looks at the face
+# The last two are the game's: PokemonStudio turns the model by -0.55 rad (2.6 from behind) under a camera 10 degrees up
+GAME = math.tan(math.radians(10))
 tiles = []
-for name, degrees in (("front", 0), ("threeq", 40), ("side", 90), ("back", 180)):
+for name, degrees, rise in (("front", 0, 0.25), ("threeq", 40, 0.25), ("side", 90, 0.25), ("back", 180, 0.25),
+                            ("game", math.degrees(0.55), GAME), ("gameback", math.degrees(-2.6), GAME)):
     a = math.radians(degrees)
-    cam.location = middle + Vector((math.sin(a), -math.cos(a), 0.25)).normalized() * reach * 4
+    cam.location = middle + Vector((math.sin(a), -math.cos(a), rise)).normalized() * reach * 4
     cam.rotation_euler = (middle - cam.location).to_track_quat("-Z", "Y").to_euler()
     path = f"{out}.{name}.png"
     scene.render.filepath = path

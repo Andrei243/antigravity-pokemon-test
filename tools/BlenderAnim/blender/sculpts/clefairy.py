@@ -63,7 +63,9 @@ def ear_tips(P):
     return inside(-((Q - TIP) @ EA), 0.0025) * (P[:, 2] > 0.5)
 k.paint(ear_tips, BROWN)
 
-# Small wings on its back, flat plates with a dark leading edge that shows beside the head from the front
+# Small wings on its back, flat plates with a dark leading edge that shows beside the head from the front. They rise
+# behind the head, their faces to the back (the kit session, plan 48: carried out to the sides, one tip stood over
+# the head like a stub in the game's front view and the pair read as two unlike plates from behind)
 def wing_plate(base, tip, width, thick, lift):
     base, tip = np.array(base, float), np.array(tip, float)
     d = tip - base; L = np.linalg.norm(d); d /= L
@@ -77,9 +79,9 @@ def wing_plate(base, tip, width, thick, lift):
         return (base[None, None] + d[None, None] * (L * u)[..., None] + side[None, None] * (x * w)[..., None]
                 + face[None, None] * curl[..., None])
     return sheet(at, 20, 9, thick)
-k.add("wing", wing_plate((0.06, 0.13, 0.41), (0.19, 0.27, 0.5), 0.055, 0.016, (1, 0, 0.2)), PINK, "wing{s}",
+k.add("wing", wing_plate((0.06, 0.13, 0.41), (0.165, 0.2, 0.6), 0.055, 0.016, (0, 1, 0.35)), PINK, "wing{s}",
       fuse=False, mirror=True)
-k.add("wingedge", wing_plate((0.064, 0.122, 0.415), (0.195, 0.262, 0.503), 0.04, 0.022, (1, 0, 0.2)), DARK,
+k.add("wingedge", wing_plate((0.064, 0.118, 0.412), (0.17, 0.188, 0.603), 0.04, 0.022, (0, 1, 0.35)), DARK,
       "wing{s}", fuse=False, mirror=True)
 
 # Stubby arms out to the sides and a little raised, three white claws at each end

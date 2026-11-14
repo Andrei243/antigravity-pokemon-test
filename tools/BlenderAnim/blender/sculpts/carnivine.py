@@ -11,7 +11,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, eye_look, polygon, args
+from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, eye_look, polygon, args, outward
 
 src, out = args()
 k = Kit(src, coat="leaf")
@@ -133,7 +133,7 @@ for s, side in ((1, "R"), (-1, "L")):
     ex = np.array((1.0, -0.12, 0.55)) * m
     ez = np.array((-0.55, -0.1, 1.0)) * m
     V, F = flat(LEAFP, root * m, ex, ez, 0.012)
-    k.add(f"leaf{side}", (V, F if s > 0 else [f[::-1] for f in F]), LEAF, f"arm{side}", fuse=False)
+    k.add(f"leaf{side}", outward((V, F if s > 0 else [f[::-1] for f in F])), LEAF, f"arm{side}", fuse=False)
     # the veins: a midrib to the main tip and one into each lobe, a little proud of the front face
     exu, ezu = unit(*ex), unit(*ez)
     nrm = np.cross(exu, ezu) * s

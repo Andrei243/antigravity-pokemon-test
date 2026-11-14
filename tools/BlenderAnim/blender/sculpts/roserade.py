@@ -14,7 +14,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, leaf, sheet, srgb, inside, smoothstep, tri, unit, eye_look, polygon, args
+from sculptkit import Kit, ell, tube, blade, leaf, sheet, srgb, inside, smoothstep, tri, unit, eye_look, polygon, args, outward
 
 src, out = args()
 k = Kit(src, coat="leaf")
@@ -99,7 +99,7 @@ for s, pts in ARMS.items():
     for i in range(6):
         th = i * math.pi / 3 + 0.3
         d = 0.75 * (math.cos(th) * a1 + math.sin(th) * a2) + 0.55 * ax
-        k.add(f"cuff{side}{i}", leaf(hand - ax * 0.008, d, 0.05, 0.02, 0.008), "#B4DC8C", f"arm{side}", fuse=False)
+        k.add(f"cuff{side}{i}", outward(leaf(hand - ax * 0.008, d, 0.05, 0.02, 0.008)), "#B4DC8C", f"arm{side}", fuse=False)
 
 
 def rose(name, c, axis, R, col, dark, bone, turn):

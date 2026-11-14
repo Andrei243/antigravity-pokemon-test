@@ -8,7 +8,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, polygon, eye_look, args
+from sculptkit import Kit, ell, tube, blade, srgb, inside, smoothstep, unit, polygon, eye_look, args, outward
 
 src, out = args()
 k = Kit(src, coat="fur")
@@ -35,7 +35,7 @@ def spoon(grip, tip, bone):
     n = np.cross(side, d)
     V, F = ell((0, 0, 0), (0.042, 0.011, 0.065), sub=3)
     V = V @ np.stack([side, n, d], axis=1).T + neck + d * 0.062
-    k.add("spoonbowl", (V, F), SILVER, bone, fuse=False, surface="metal")
+    k.add("spoonbowl", outward((V, F)), SILVER, bone, fuse=False, surface="metal")
 
 
 def claw(a, d, length, r, bone):

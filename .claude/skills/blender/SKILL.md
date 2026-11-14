@@ -24,7 +24,8 @@ S=<scratch dir>
 # 1. A species' sculpt as a file (the first build is slow; run it alone, in the background)
 dotnet run -c Release --project tools/ShotHarness -- "$S/h" export Turtwig Chimchar Piplup    # -> $S/h/models/<Species>.glb
 
-# 2. Look at it: front, three-quarter, side, back on one sheet, and what the file holds (TT: lines)
+# 2. Look at it: front, three-quarter, side, back and then the game's own two views (dex, dex --back) on one sheet,
+#    a face seen from its inner side in ink (a piece wound inside out is black), and what the file holds (TT: lines)
 "$B" --background --factory-startup --python tools/BlenderAnim/blender/turntable.py -- "$S/h/models/Turtwig.glb" "$S/tt/Turtwig.png" 480
 
 # 3. Change it: an edit script run between import and export (none: an unchanged round trip)
@@ -458,6 +459,60 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
 - **A colour edge that crosses a crease** (a cap's edge over a cheek) is ragged as paint: a patch over the front
   whose outline is the edge, with paint only filling below it. A frame built as `stack([a, cross(a, up), up])`
   is left-handed: use the negative of the cross product.
+
+## The kit's hard-edged shapes and its winding check (the kit session, 2026-11-14)
+
+What eighteen batches of scripts had each written again for themselves is in `sculptkit.py` now. **A new script uses
+these and writes none of its own**; the scripts written before keep theirs, since a built model's bytes must not
+move (the session held it: every model built by the new kit is the file the old kit built).
+
+| Shape | What it is for | Was |
+|---|---|---|
+| `hull(points, merge=3.0)` | A solid with flat faces and hard edges from its corner points: rock, armour, a blade, a claw, a gem, a box. Each face has points of its own, so it is shaded flat with nothing more said | `rhyperior.py`'s `hull` with its `finish()`, `onix.py`'s `stone`, Porygon's faces |
+| `slab(outline, origin, ex, ez, thick)` | A flat plate with a hard rim from any outline that doesn't cross itself (concave too), in the plane of `ex` and `ez`: a wing, a fin, a bolt, a star | `yanmega.py`'s `flat`, `uxie.py`'s `slab`, `beautifly.py`'s `flat` |
+| `ring_band(c, axis, radius, length, thick=0.006)` | A loose band round a limb, a tail or a body, its seam behind; `radius` may be a function of v for a part that tapers. Some 0.004 over the part's own radius | `electivire.py`'s `ring_band` |
+| `lathe(c, d, profile, seg=40)` | A closed solid of turning with the edges its profile has, `(radius, distance along d)` from the axis round to the axis: a barrel with its bore, a drum, a screw's head | `magmortar.py`'s `lathe` |
+| `outward(shape)`, `volume(V, F)`, `winding(V, F)`, `axes(d)` | A closed shape turned outward whichever way it came; its signed volume; what is wrong with its winding, or None; a right-handed frame round an axis | `magmortar.py`'s `outward`, `volume`, `axes` |
+| `sibling(name)` | Another sculpt's script as a module, for a form built by the same functions: `u = sibling("unown"); u.unown(src, out, DESC)`. The script asked for builds under `if __name__ == "__main__":` | new (Unown's letter A built by import is the built file, byte for byte) |
+
+- **Each of these that is a closed piece ends by asking its own signed volume and turning its faces if they came
+  out inside out**, so it is right under any frame, left-handed ones and `mirror=True` included. A shape made by
+  hand is passed through `outward(...)` before `add`.
+- **`Kit.add` checks every loose piece** (`fuse=False`): points welded by place, each closed shell's signed volume,
+  and faces wound against each other. The piece being built is told of in one line, `KIT: !! N loose pieces wound
+  wrongly (inside out): names...`, which `BlenderAnim sculpt` prints with the kit's other lines. It only tells:
+  nothing is turned for a script, so no built model changes. A piece that is open somewhere (one sheet of faces)
+  can't be told and is passed.
+- **`leaf` is wound inside out and stays so**: its frame `(side, face, d)` is left-handed. Turned over in the kit,
+  a model that only fuses a leaf was built to other bytes (Infernape), so the kit keeps it and a loose leaf is
+  `outward(leaf(...))`.
+- **What an inside-out loose piece looks like in the game**: its own colour gone dull and flat with no outline
+  round it (the session's test star), or grey and see-through (Togetic's wings). In Blender's own render nothing shows, since it draws both sides of a face alike; **culling back faces
+  shows nothing either on a thin plate** (the far face is then drawn in the near one's place, 0.014 further off).
+  So `turntable.py` draws a face seen from its inner side in ink: an inside-out piece is black on the sheet.
+- **`turntable.py`'s sheet has six views**: front, three-quarter, side, back as before (so a crop by tile still
+  lands), then the game's own two, as `dex` and `dex --back` take them (10 degrees up; 31.5 degrees round from the
+  front, the model's face turned to the viewer's left; from behind over the other shoulder). Held against the
+  harness's shots of Eevee and of a test model: the same sides, the same parts hidden. They are for seeing what
+  the game's cameras hide before the game is asked; the game is still the judge.
+- **`tools/BlenderAnim/blender/kitcheck.py` is the kit's own check** (Blender runs it in a few seconds, no model
+  built, exit 1 on a finding): every closed shape of the kit wound outward under right-handed, left-handed and
+  slanted frames, and the winding check's answers. A shape added to the kit gets its lines there.
+- **A change to the kit is proved on every built model**: each script run once with the changed kit on the
+  harness's export of its species (`$S/h/models`, which is the export `sculpt` makes, byte for byte), six Blenders
+  at a time, some twenty-five minutes for 215, and `cmp` with `built/models`. `sculpt all` builds each twice one
+  after another and takes three hours.
+- **What that proof found the first time it was run**: the kit moved nothing, but six installed files were older
+  than their own scripts (corrected after the last `sculpt` of their batch and never built again), so the game
+  here showed another build than a release would make; and sixteen models carried loose pieces wound inside out
+  since their batches, each drawn dull and unoutlined and none of them noticed (Burmy's and Wormadam's leaves,
+  Roselia's petals, Hippowdon's teeth, Combee's cells). **After an agent's last correction the main session runs
+  `sculpt` again on that species before the batch is committed**, and reads the kit's lines for `!!`.
+- **`outward` is a common name**: a script with a parameter or a function of that name (the Magnemite line's
+  `screw(..., outward, ...)`, `magmortar.py`'s own `outward(name, shape)`) calls the kit's as `sculptkit.outward`.
+- **A face's orientation is never decided against a point in the face's own plane** (Vespiquen's cells: the back
+  cap was turned by the prism's centre with the cap at depth nought, and rounding turned its triangles each its
+  own way): take a point inside the solid.
 
 ## Not tried yet
 

@@ -9,7 +9,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, tri, unit, boxy, eye_look, args
+from sculptkit import Kit, ell, tube, srgb, inside, smoothstep, tri, unit, boxy, eye_look, args, outward
 
 src, out = args()
 k = Kit(src, coat="scales")
@@ -111,8 +111,8 @@ for s, sh in SHRUBS.items():
             if base[2] < c0[2] - 0.08:                          # none under the clump, into the shell
                 continue
             col = (LEAF, LEAF2, LEAF3)[rs.randint(3)]
-            k.add(f"blade{s}{n}", leaf(base, d, rs.uniform(0.09, 0.19) * g,
-                                       rs.uniform(0.05, 0.075)), col, f"shrub{s}", fuse=False, surface="leaf")
+            k.add(f"blade{s}{n}", outward(leaf(base, d, rs.uniform(0.09, 0.19) * g,
+                                       rs.uniform(0.05, 0.075))), col, f"shrub{s}", fuse=False, surface="leaf")
             n += 1
 
 # The shell's markings: the darker lip at its edge, thin seams between its plates, the brown wedge down its front

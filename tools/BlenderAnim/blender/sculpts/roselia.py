@@ -9,7 +9,7 @@
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, leaf, srgb, inside, smoothstep, tri, unit, eye_look, polygon, args
+from sculptkit import Kit, ell, tube, leaf, srgb, inside, smoothstep, tri, unit, eye_look, polygon, args, outward
 
 src, out = args()
 k = Kit(src, coat="leaf")
@@ -44,9 +44,9 @@ k.add("neck", ell((0, 0.0, 0.355), (0.04, 0.038, 0.035)), GREEN, "head")
 
 # The collar: two pointed leaves out to the sides, a small one behind
 for s in (1, -1):
-    k.add(f"collar{'R' if s > 0 else 'L'}", leaf((0.02 * s, 0.0, 0.352), (s, -0.25, -0.05), 0.145, 0.066, 0.012),
+    k.add(f"collar{'R' if s > 0 else 'L'}", outward(leaf((0.02 * s, 0.0, 0.352), (s, -0.25, -0.05), 0.145, 0.066, 0.012)),
           GREEN, "body", fuse=False)
-k.add("collarB", leaf((0, 0.0, 0.352), (0, 1, -0.1), 0.09, 0.05, 0.012), GREEN, "body", fuse=False)
+k.add("collarB", outward(leaf((0, 0.0, 0.352), (0, 1, -0.1), 0.09, 0.05, 0.012)), GREEN, "body", fuse=False)
 # the yellow wedge down the chest
 k.decal((0, -0.075, 0.29), unit(0, -1, 0.1), (0.026, 0.055), YELLOW, eps=0.003, rings=10, segs=40,
         outline=polygon([(-1, 1), (1, 1), (0.0, -1)]))
@@ -89,7 +89,7 @@ def rose(name, c, axis, R, col, dark, bone):
                 return V
             V, F = ell((0, 0, 0), (w * R, 0.11 * R, hh * R), deform=cup, sub=3)
             V = V @ np.stack([tan, rad, up], axis=1).T + c + r * rho * R + z * h * R
-            k.add(f"{name}p{ring}{i}", (V, F), colr, bone, fuse=False)
+            k.add(f"{name}p{ring}{i}", outward((V, F)), colr, bone, fuse=False)
 
 # The roses: red in the hand on -X, blue in the hand on +X, each bigger than the hand by far
 rose("red", (-0.235, -0.03, 0.305), (-0.45, -1, 0.15), 0.085, srgb("#E2505E"), srgb("#A82A3C"), "armL")
