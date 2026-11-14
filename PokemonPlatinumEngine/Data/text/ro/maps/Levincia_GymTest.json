@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Levincia Gym"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "paldea_gym_trainer_volt": {
+      "name": {
+        "en": [
+          "Volt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Volt: You're live on the stream! Say hello, and then battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Volt: The chat loved that. Go and find the rest of the hidden Wattrel!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "iono": {
+      "name": {
+        "en": [
+          "Iono"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

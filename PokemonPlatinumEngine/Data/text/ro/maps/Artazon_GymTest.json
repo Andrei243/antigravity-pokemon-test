@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Artazon Gym"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "paldea_gym_trainer_hedge": {
+      "name": {
+        "en": [
+          "Hedge"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Hedge: Art is patience! And battling, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Hedge: The Sunflora are hiding in the beds ahead. They're very good at it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "brassius": {
+      "name": {
+        "en": [
+          "Brassius"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
