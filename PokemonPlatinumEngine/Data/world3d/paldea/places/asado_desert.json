@@ -1,0 +1,49 @@
+{
+  // Asado Desert (plan 34 · PD6): the sand north of Quaking Earth's basin, its dunes either side of the road north to
+  // Cascarrafa, where the road east to the West Province's first area leaves it, its Pokémon about the dunes and a
+  // student crossing it
+  "markers": [
+    { "name": "desert_south", "at": [-430, 12.0, -468], "yaw": 0 },
+    { "name": "desert_crossroads", "at": [-430, 12.0, -566], "yaw": 0 },
+    { "name": "desert_north", "at": [-436, 12.0, -596], "yaw": 0 }
+  ],
+  "zones": [
+    {
+      "name": "desert_dunes",
+      "polygon": [[-500, -594], [-456, -594], [-456, -470], [-500, -470]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Silicobra", "minLevel": 22, "maxLevel": 26, "weight": 25 },
+        { "species": "Sandile", "minLevel": 22, "maxLevel": 25, "weight": 20 },
+        { "species": "Hippopotas", "minLevel": 22, "maxLevel": 25, "weight": 20 },
+        { "species": "Trapinch", "minLevel": 22, "maxLevel": 25, "weight": 15 },
+        { "species": "Bramblin", "minLevel": 22, "maxLevel": 25, "weight": 10 },
+        { "species": "Rellor", "minLevel": 22, "maxLevel": 25, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "desert_east",
+      "polygon": [[-404, -540], [-356, -540], [-356, -470], [-404, -470]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Silicobra", "minLevel": 23, "maxLevel": 26, "weight": 30 },
+        { "species": "Sandile", "minLevel": 23, "maxLevel": 26, "weight": 25 },
+        { "species": "Bramblin", "minLevel": 23, "maxLevel": 26, "weight": 25 },
+        { "species": "Hippopotas", "minLevel": 23, "maxLevel": 26, "weight": 20 }
+      ],
+      "density": 2, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "student_dario", "at": [-418, 12.0, -530], "yaw": 270, "trainer": "paldea_student_dario",
+      "lines": ["Sand in my boots, sand in my lunch, sand in my Poké Balls. A battle will take my mind off it!", "At least the sand broke my fall."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "desert_hiker", "at": [-444, 12.0, -580], "yaw": 180, "look": "hiker", "displayName": "Hiker",
+      "lines": ["North is Cascarrafa and its falls. East, the road runs on through the West Province to Medali. Take water either way."]
+    }
+  ]
+}

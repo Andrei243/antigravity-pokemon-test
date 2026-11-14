@@ -4,6 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
+- Paldea's West Province: north out of Cortondo through Asado Desert to Cascarrafa by its falls, west over the hills to Porto Marinada on the sea, and east along the West Province to Medali, each town with a Pokémon Center and a song of its own. Kofu sends you to Porto Marinada's auction for his gym test (bid at the last call), and Larry's test is the Treasure Eatery's secret order, pieced together from what Medali's people let slip; they give the Water and Normal Badges. Gyms after the third are matched to the badges you hold, so taking them out of order is neither a wall nor a walkover. The Titans of Open Sky and Quaking Earth now live in the West Province and the desert.
 - Paldea grows past Mesagoza: out of its west gate to Cortondo among its olive groves, out of its east gate to Artazon and its flower fields, and north from Artazon to Levincia on the eastern sea, each with a Pokémon Center, wild Pokémon along the way and a gym. Katy, Brassius and Iono wait at the end of their gym tests with the Bug, Grass and Electric Badges, and the three may be taken in any order.
 - Brassius's and Iono's gym tests are now searches about their towns: find the Sunflora standing still among Artazon's flowers and the Wattrel hiding about Levincia's streets before the leader will battle you. Katy's olive roll rolls giant olives. Cortondo, Artazon, Levincia and the gyms have songs of their own, and Paldea's places now play their songs as you walk into them.
 

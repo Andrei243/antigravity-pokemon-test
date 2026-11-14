@@ -1,45 +1,44 @@
 {
-  // Open Sky (plan 34 · PD4, its second session): a stand-in for the second Titan's place in the West Province, until
-  // plan 34 · PD6 builds that province and moves the Titan there. A gully north off the South Province's second area
-  // where the Titan Bombirdier waits once the first Titan's herbs are shared; beaten there, it lurches up the ramp to
-  // its den on the ledge at the gully's head, where the second battle is fought and Arven comes up to share the herbs.
-  // Scripts: Data/scripts/open_sky.txt. Our own place, on Scarlet and Violet's beats
+  // Open Sky (plan 34 · PD4, its second session; moved to its province by PD6): the second Titan's place, a gully north
+  // off the West Province's first area where the Titan Bombirdier waits once the first Titan's herbs are shared; beaten
+  // there, it lurches up the ramp to its den on the ledge at the gully's head, where the second battle is fought and Arven
+  // comes up to share the herbs. Scripts: Data/scripts/open_sky.txt. Our own place, on Scarlet and Violet's beats
   "markers": [
-    { "name": "open_sky_mouth", "at": [-238, 12.0, -368], "yaw": 0 },
-    { "name": "open_sky_ramp_foot", "at": [-242, 12.0, -404], "yaw": 180 },
-    { "name": "bombirdier_den", "at": [-238, 18.0, -440], "yaw": 180 },
-    { "name": "open_sky_herbs", "at": [-242, 18.0, -432], "yaw": 0 }
+    { "name": "open_sky_mouth", "at": [-278, 12.0, -608], "yaw": 0 },
+    { "name": "open_sky_ramp_foot", "at": [-282, 12.0, -644], "yaw": 180 },
+    { "name": "bombirdier_den", "at": [-278, 18.0, -680], "yaw": 180 },
+    { "name": "open_sky_herbs", "at": [-282, 18.0, -672], "yaw": 0 }
   ],
   "triggers": [
     // Across the gully before the Titan, once the first Titan is beaten: the first battle
-    { "name": "bombirdier_gully", "box": { "min": [-264, 9, -392], "max": [-212, 16, -380] }, "script": "Bombirdier", "var": "VAR_PALDEA_LEGENDS", "value": 3 },
+    { "name": "bombirdier_gully", "box": { "min": [-304, 9, -632], "max": [-252, 16, -620] }, "script": "Bombirdier", "var": "VAR_PALDEA_LEGENDS", "value": 3 },
     // Up the ramp onto the ledge once the Titan has fled there: its den and the second battle
-    { "name": "bombirdier_den", "cylinder": { "at": [-238, -434], "radius": 6, "bottom": 15, "top": 22 }, "script": "BombirdierDen", "var": "VAR_PALDEA_LEGENDS", "value": 4 }
+    { "name": "bombirdier_den", "cylinder": { "at": [-278, -674], "radius": 6, "bottom": 15, "top": 22 }, "script": "BombirdierDen", "var": "VAR_PALDEA_LEGENDS", "value": 4 }
   ],
   "people": [
     // The Titan in the gully, from the first Titan's herbs until it flees up the ramp
     {
-      "name": "titan_bombirdier", "at": [-238, 12.0, -386], "yaw": 180, "species": "Bombirdier", "size": 3, "displayName": "Bombirdier",
+      "name": "titan_bombirdier", "at": [-278, 12.0, -626], "yaw": 180, "species": "Bombirdier", "size": 3, "displayName": "Bombirdier",
       "script": "Bombirdier", "shownBy": "FLAG_PALDEA_MOUNT_DASH", "hiddenBy": "FLAG_PALDEA_BOMBIRDIER_FLED"
     },
     // The Titan at its den on the ledge, from its flight until it is beaten
     {
-      "name": "titan_bombirdier_den", "at": [-238, 18.0, -442], "yaw": 180, "species": "Bombirdier", "size": 3, "displayName": "Bombirdier",
+      "name": "titan_bombirdier_den", "at": [-278, 18.0, -682], "yaw": 180, "species": "Bombirdier", "size": 3, "displayName": "Bombirdier",
       "script": "BombirdierDen", "shownBy": "FLAG_PALDEA_BOMBIRDIER_FLED", "hiddenBy": "FLAG_PALDEA_BOMBIRDIER_BEATEN"
     },
     // Arven, come up the ramp after the Titan is beaten, until the herbs are shared
     {
-      "name": "arven_open_sky", "at": [-248, 18.0, -430], "yaw": 90, "look": "arven", "displayName": "Arven",
+      "name": "arven_open_sky", "at": [-288, 18.0, -670], "yaw": 90, "look": "arven", "displayName": "Arven",
       "lines": ["Sour Herba Mystica. Good for the sandwich, and for your ride."],
       "shownBy": "FLAG_PALDEA_BOMBIRDIER_BEATEN", "hiddenBy": "FLAG_PALDEA_MOUNT_SWIM"
     },
     {
-      "name": "open_sky_birdwatcher", "at": [-252, 12.0, -366], "yaw": 90, "look": "middle_aged_man", "displayName": "Birdwatcher",
+      "name": "open_sky_birdwatcher", "at": [-292, 12.0, -606], "yaw": 90, "look": "middle_aged_man", "displayName": "Birdwatcher",
       "lines": ["Something huge keeps dropping rocks on this gully from the sky. I've never been so excited to hide."]
     }
   ],
   "trees": [
-    { "at": [-262, -364], "kind": "pine", "size": 0.9 },
-    { "at": [-214, -366], "kind": "pine" }
+    { "at": [-302, -604], "kind": "pine", "size": 0.9 },
+    { "at": [-254, -606], "kind": "pine" }
   ]
 }

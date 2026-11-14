@@ -429,6 +429,11 @@ public static class Objectives
         (814, "paldeaQuaking", AtLeast("VAR_PALDEA_LEGENDS", 9), false),
         (815, "paldeaFalseDragon", AtLeast("VAR_PALDEA_LEGENDS", 11), false),
         (816, "paldeaArvenBattle", AtLeast("VAR_PALDEA_LEGENDS", 12), false),
+        // The West Province's two gyms (plan 34 · PD6, its first session), each done by its own badge, after the Path of
+        // Legends in the list as the first three gyms come before it. Their ids stand at 830, clear of Starfall Street's
+        // (plan 34 · PD5), which a session beside this one builds
+        (830, "paldeaKofu", RegionBadge(RegionDatabase.Paldea, "Water"), false),
+        (831, "paldeaLarry", RegionBadge(RegionDatabase.Paldea, "Normal"), false),
         (899, "paldeaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

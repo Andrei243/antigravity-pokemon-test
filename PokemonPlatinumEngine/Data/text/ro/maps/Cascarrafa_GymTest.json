@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Cascarrafa Gym"
+    ],
+    "text": [
+      "Sala din Cascarrafa"
+    ]
+  },
+  "people": {
+    "paldea_gym_trainer_marisa": {
+      "name": {
+        "en": [
+          "Marisa"
+        ],
+        "text": [
+          "Marisa"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Marisa: Kofu's got you running errands too? Let's see if your legs are as quick as your team!"
+        ],
+        "text": [
+          "Antrenoarea de sală Marisa: Și pe tine te-a pus Kofu să-i faci comisioane? Să vedem dacă picioarele tale sunt la fel de iuți ca echipa!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Marisa: Washed out! Kofu's waiting at the far end, by the pot."
+        ],
+        "text": [
+          "Antrenoarea de sală Marisa: M-a luat apa! Kofu te așteaptă în capăt, lângă oală."
+        ]
+      }
+    },
+    "kofu": {
+      "name": {
+        "en": [
+          "Kofu"
+        ],
+        "text": [
+          "Kofu"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

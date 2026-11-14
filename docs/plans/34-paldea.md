@@ -150,7 +150,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below; its second session the same day: the bot's run to three badges in `PlaythroughTests`, Brassius's and Iono's tests as searches about their towns on the open map and Katy's giant olives as cards, the towns' and the gym's songs, Paldea's Town Map with Fly's places, the new cast's voices designed; "PD3, second session", below. **Waits for the user**: the provinces' distances, decision 3 (taken at its recommendation), the songs by ear, the voices by ear, and how Fly is to be asked for in the open field)
 - [x] PD4 The Path of Legends (its first session 2026-11-14: Arven at the lighthouse, the Stony Cliff and the Titan Klawf beaten twice, the Herba Mystica scene and the mount's dash, Paldea's first climbable crag; "PD4, first session", below; its second session the same day: the four other Titans in stand-in places beside the land that is built, their powers in order, the climb opening the Stony Cliff's crag, Arven's Mabosstiff and battle at the lighthouse, the five beaten by the bot headless and in the harness, the Titans' song; "PD4, second session", below. **Waits for the user**: the stand-ins (PD6 moves the Titans to their provinces), the Titans' fixed order, the song by ear. **Owed**: Arven's voice designed by ear)
 - [ ] PD5 Starfall Street and Let's Go
-- [ ] PD6 The West and North Provinces and the last five gyms
+- [ ] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below. **Session two**: the north, the last three gyms, eight badges and the walk to Glaseado's top)
 - [ ] PD7 Tera Raids and picnics
 - [ ] PD8 The League, Area Zero and the Way Home
 - [ ] PD9 After the Hall of Fame
@@ -383,3 +383,48 @@ area, Great Tusk and Iron Treads to Asado Desert, the Tatsugiri and Dondozo to C
 names, flags and the count so the tests stand; the Stony Cliff is the South Province's own and stays.
 
 **Owed**: Arven's voice designed by ear (provisional in the cast); the bot riding the mount's links (PD2's owed).
+
+## PD6, first session (2026-11-15)
+
+One session of two, beside PD5 (Starfall Street, in its own files) in another worktree; nothing was laid in the region's
+north-west past the towns (`z` under -760, `x` under -520 north of Cascarrafa). The rulings' "The West Province and the
+fourth and fifth gyms" has every decision. The user did not answer the provinces' distances or decision 3, so their
+recommendations stand (PD3's compressed distances; the later gyms scaled to the badges held).
+
+**What there is**
+- **The land** (`terrain/west.json`, `water.json`, `roads.json`, `world.json`): six areas, `asado_desert`,
+  `cascarrafa`, `west_province_area_two`, `porto_marinada`, `west_province_area_one` and `medali`, north and west of
+  Cortondo, each a place's file with its people; the desert and the two areas with zones of wild Pokémon at 22 to 29
+  and a student each; Cascarrafa's falls a river down a slot in the hills into the pool at the city's foot; Porto
+  Marinada at 4 m on its quay over the western sea, come down to by a ramp. `chunks` start at `-26`.
+- **The Titans moved**: Open Sky to a gully north off the West Province's first area, Quaking Earth to the basin at
+  Asado Desert's south end (the road north runs through it), every key, script, flag and the count kept; their
+  stand-ins' brushes are gone from `terrain/titans.json`. Arven's direction to Open Sky rewritten.
+- **Rooms**: `Cascarrafa_PokemonCenter`, `_Gym`, `_GymTest`; `PortoMarinada_PokemonCenter`; `Medali_PokemonCenter`,
+  `_Gym`, `_GymTest`, `Medali_TreasureEatery`; spawns 6 to 8.
+- **Kofu** (Water): his errand to Porto Marinada's auction, won by bidding at the last call (`porto_marinada.txt`), a
+  gym trainer, and his battle. **Larry** (Normal): three hints about Medali and the secret order at the Treasure Eatery,
+  a gym trainer, and his battle. Looks `kofu`, `larry`.
+- **Decision 3's scaling**: a team for each count of badges held (`paldea_kofu_b0` to `_b7`, `paldea_larry_b0` to
+  `_b7`, the plain ids the original's), picked by the leader's script; the best at `paldea.json`'s cap for that count.
+- **Songs** `paldea/west_province`, `cascarrafa`, `porto_marinada`, `medali` (33 to 43 s loops, no clash, in the
+  loudness window). **Town Map** written again from the bake (45 by 28), Fly's eight places. **Objectives** 830
+  `paldeaKofu`, 831 `paldeaLarry`. Romanian for every new line (`docs/localisation-review-ro.md`).
+- **Tests**: `PaldeaWestTests` (the areas, towns, rooms and the Titans in their provinces; Kofu and Larry won in the
+  academy's order at the originals' levels; taken first, scaled down to the badges held; nothing before the welcome),
+  and `PaldeaTests`' lists grown by the new areas, zones, rooms and spawns.
+- **Baked again**: 625 chunks (from 454), 80.4 MB (from 62.0 MB); about five and a half minutes to bake.
+
+**Left for session two**
+- The North Province and Glaseado: Montenevera (Ryme, Ghost, her rap battle), Alfornada (Tulip, Psychic, her photos;
+  in the originals reached from the south-west through a cavern), Glaseado Mountain with Grusha (Ice, his snowboard
+  run), each town's Pokémon Center, rooms, trainers, songs, Fly places and objectives, the three leaders scaled to the
+  badges held as Kofu and Larry are (their `_b0` to `_b7` teams); and the two Titans still in stand-ins, Lurking Steel
+  (Orthworm) to the East Province's third area and False Dragon (Tatsugiri and Dondozo) to Casseroya Lake.
+- The done-when: eight badges won (a test of the eight in the academy's order and in another, beside
+  `PaldeaWestTests`), and the region walked and ridden from Cabo Poco to Glaseado's top with no chunk waited for (an
+  itinerary in `Itineraries.Paldea.cs` and `PlaythroughTests`, and the harness's `paldea` mode timing the ride as the
+  `world` mode times Sinnoh's walks).
+- Owed from this session: the bot's run to the fifth badge in `PlaythroughTests` (only headless tests play Kofu's and
+  Larry's tests); harness shots of the West Province (a `pd*` part of the `paldea` mode); Cascarrafa's bridges over its
+  river; the new cast's voices by ear (Kofu, Larry and the auctioneer have designs, no audio).

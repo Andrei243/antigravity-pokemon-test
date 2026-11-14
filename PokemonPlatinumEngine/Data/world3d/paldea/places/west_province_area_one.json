@@ -1,0 +1,51 @@
+{
+  // The West Province's first area (plan 34 · PD6): the road east out of Asado Desert between the hills to Medali, its
+  // long grass south of the road and by the way into Medali where its Pokémon live, the mouth of Open Sky's gully on its
+  // north side, and a student on the way
+  "markers": [
+    { "name": "west_one_west", "at": [-348, 12.0, -566], "yaw": 90 },
+    { "name": "west_one_east", "at": [-196, 12.0, -596], "yaw": 0 }
+  ],
+  "zones": [
+    {
+      "name": "west_one_south",
+      "polygon": [[-340, -550], [-260, -550], [-260, -536], [-340, -536]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Rockruff", "minLevel": 24, "maxLevel": 28, "weight": 25 },
+        { "species": "Skiddo", "minLevel": 24, "maxLevel": 27, "weight": 20 },
+        { "species": "Gumshoos", "minLevel": 24, "maxLevel": 27, "weight": 20 },
+        { "species": "Flittle", "minLevel": 24, "maxLevel": 27, "weight": 15 },
+        { "species": "Squawkabilly", "minLevel": 24, "maxLevel": 27, "weight": 10 },
+        { "species": "Shroodle", "minLevel": 24, "maxLevel": 27, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "west_one_north",
+      "polygon": [[-232, -592], [-172, -592], [-172, -576], [-232, -576]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Bombirdier", "minLevel": 26, "maxLevel": 29, "weight": 20 },
+        { "species": "Mudbray", "minLevel": 25, "maxLevel": 28, "weight": 25 },
+        { "species": "Skiddo", "minLevel": 25, "maxLevel": 28, "weight": 20 },
+        { "species": "Gothita", "minLevel": 25, "maxLevel": 28, "weight": 20 },
+        { "species": "Rockruff", "minLevel": 25, "maxLevel": 28, "weight": 15 }
+      ],
+      "density": 3, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "student_elena", "at": [-236, 12.0, -560], "yaw": 180, "trainer": "paldea_student_elena",
+      "lines": ["I came out here to study the gully's giant bird. It hasn't shown up, so you'll have to do!", "Note to self: study harder."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-330, -590], "kind": "round" },
+    { "at": [-246, -540], "kind": "round", "size": 0.9 },
+    { "at": [-204, -546], "kind": "pine" },
+    { "at": [-168, -560], "kind": "pine", "size": 1.1 }
+  ]
+}

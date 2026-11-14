@@ -404,5 +404,675 @@
         "teraType": "Dark"
       }
     ]
+  },
+  {
+    "id": "paldea_student_dario",
+    "name": "Dario",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 104,
+    "party": [
+      {
+        "species": "Silicobra",
+        "level": 25,
+        "ivScale": 3,
+        "personality": 458961789
+      },
+      {
+        "species": "Sandile",
+        "level": 26,
+        "ivScale": 3,
+        "personality": 2238221174
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_elena",
+    "name": "Elena",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 112,
+    "party": [
+      {
+        "species": "Rockruff",
+        "level": 27,
+        "ivScale": 3,
+        "personality": 4150922760
+      },
+      {
+        "species": "Flittle",
+        "level": 27,
+        "ivScale": 3,
+        "personality": 4239732195
+      },
+      {
+        "species": "Gothita",
+        "level": 28,
+        "ivScale": 3,
+        "personality": 1531723116
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_pablo",
+    "name": "Pablo",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 116,
+    "party": [
+      {
+        "species": "Wingull",
+        "level": 28,
+        "ivScale": 3,
+        "personality": 2560136361
+      },
+      {
+        "species": "Squawkabilly",
+        "level": 29,
+        "ivScale": 3,
+        "personality": 390690174
+      }
+    ]
+  },
+  {
+    "id": "paldea_gym_trainer_marisa",
+    "name": "Marisa",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1120,
+    "party": [
+      {
+        "species": "Pelipper",
+        "level": 28,
+        "ivScale": 6,
+        "personality": 370746886
+      },
+      {
+        "species": "Clauncher",
+        "level": 28,
+        "ivScale": 6,
+        "personality": 2600056458
+      }
+    ]
+  },
+  {
+    "id": "paldea_gym_trainer_dina",
+    "name": "Dina",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1320,
+    "party": [
+      {
+        "species": "Gumshoos",
+        "level": 33,
+        "ivScale": 6,
+        "personality": 3774882409
+      },
+      {
+        "species": "Oinkologne",
+        "level": 33,
+        "ivScale": 6,
+        "personality": 1606121215
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_b0",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 2675632025
+      },
+      {
+        "species": "Wugtrio",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 2179282214
+      },
+      {
+        "species": "Crabominable",
+        "level": 15,
+        "ivScale": 12,
+        "personality": 1260458628,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_b1",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1700,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 1409950408
+      },
+      {
+        "species": "Wugtrio",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 2604965361
+      },
+      {
+        "species": "Crabominable",
+        "level": 17,
+        "ivScale": 12,
+        "personality": 4000342283,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_b2",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2400,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 4059127627
+      },
+      {
+        "species": "Wugtrio",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 1667010787
+      },
+      {
+        "species": "Crabominable",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 2693588237,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 1191967717
+      },
+      {
+        "species": "Wugtrio",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 3653350853
+      },
+      {
+        "species": "Crabominable",
+        "level": 30,
+        "ivScale": 12,
+        "personality": 2889826591,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_b4",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 562745524
+      },
+      {
+        "species": "Wugtrio",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 3829359587
+      },
+      {
+        "species": "Crabominable",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 502517233,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_b5",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 4105855423
+      },
+      {
+        "species": "Wugtrio",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 760849499
+      },
+      {
+        "species": "Crabominable",
+        "level": 42,
+        "ivScale": 12,
+        "personality": 2483199438,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_b6",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 160547395
+      },
+      {
+        "species": "Wugtrio",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 3269913136
+      },
+      {
+        "species": "Crabominable",
+        "level": 45,
+        "ivScale": 12,
+        "personality": 3654891651,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_b7",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4800,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2720594599
+      },
+      {
+        "species": "Wugtrio",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2788800061
+      },
+      {
+        "species": "Crabominable",
+        "level": 48,
+        "ivScale": 12,
+        "personality": 2207037133,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_b0",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 3265923605
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 369032178
+      },
+      {
+        "species": "Staraptor",
+        "level": 15,
+        "ivScale": 12,
+        "personality": 3680330710,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_b1",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1700,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 2638145973
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 995770565
+      },
+      {
+        "species": "Staraptor",
+        "level": 17,
+        "ivScale": 12,
+        "personality": 328956525,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_b2",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2400,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 776269862
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 81120594
+      },
+      {
+        "species": "Staraptor",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 2838924464,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_b3",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 867323285
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 3410544014
+      },
+      {
+        "species": "Staraptor",
+        "level": 30,
+        "ivScale": 12,
+        "personality": 2270355016,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 573005018
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 571187518
+      },
+      {
+        "species": "Staraptor",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 329036183,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_b5",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 2598792013
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 1294413170
+      },
+      {
+        "species": "Staraptor",
+        "level": 42,
+        "ivScale": 12,
+        "personality": 2704872414,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_b6",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 3086219463
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 2254555522
+      },
+      {
+        "species": "Staraptor",
+        "level": 45,
+        "ivScale": 12,
+        "personality": 119384653,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_b7",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4800,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 1651755212
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2930264184
+      },
+      {
+        "species": "Staraptor",
+        "level": 48,
+        "ivScale": 12,
+        "personality": 3152865714,
+        "teraType": "Normal"
+      }
+    ]
   }
 ]

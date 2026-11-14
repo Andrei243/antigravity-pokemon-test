@@ -1,0 +1,76 @@
+{
+  "Leader": [
+    {
+      "en": [
+        "Larry"
+      ],
+      "text": [
+        "Larry"
+      ]
+    },
+    {
+      "en": [
+        "Ah. The challenger who ordered the secret menu. I'm Larry. I run this gym, among the other things I'm asked to run."
+      ],
+      "text": [
+        "Ah. Provocatorul care a comandat meniul secret. Eu sunt Larry. Conduc sala asta, printre alte lucruri pe care mi se cere să le conduc."
+      ]
+    },
+    {
+      "en": [
+        "Let's get this done. Normal types, nothing fancy. Ordinary isn't the same as easy, though."
+      ],
+      "text": [
+        "Hai să terminăm. Tipul Normal, nimic sofisticat. Dar obișnuit nu înseamnă ușor."
+      ]
+    },
+    {
+      "en": [
+        "Well. That was efficient. Here, the Normal Badge. Please don't make a fuss about it."
+      ],
+      "text": [
+        "Ei bine. A fost eficient. Poftim, Insigna Normală. Te rog, nu face caz de asta."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Normal Badge from Larry!"
+      ],
+      "text": [
+        "{player} a primit Insigna Normală de la Larry!"
+      ]
+    },
+    {
+      "en": [
+        "I have a meeting. I always have a meeting. Good luck out there."
+      ],
+      "text": [
+        "Am o ședință. Am mereu o ședință. Mult noroc mai departe."
+      ]
+    },
+    {
+      "en": [
+        "The test is at the Treasure Eatery on the square. Order the secret menu, then come back. I'll be here. Working."
+      ],
+      "text": [
+        "Proba e la Treasure Eatery, în piață. Comandă meniul secret, apoi revino. Voi fi aici. Lucrând."
+      ]
+    },
+    {
+      "en": [
+        "You're not enrolled at the academy, are you. Then I can't battle you. Rules. Come back once you are."
+      ],
+      "text": [
+        "Nu ești înscris la academie, nu-i așa. Atunci nu mă pot lupta cu tine. Regulament. Revino după ce te înscrii."
+      ]
+    },
+    {
+      "en": [
+        "Back again? I'm on my break. Technically. My breaks are also meetings."
+      ],
+      "text": [
+        "Iar aici? Sunt în pauză. Tehnic vorbind. Pauzele mele sunt tot ședințe."
+      ]
+    }
+  ]
+}

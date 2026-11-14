@@ -1,0 +1,24 @@
+# Medali Gym's lobby (plan 34 · PD6): Larry's gym, the fifth of Victory Road in the academy's suggested order. His test
+# is the Treasure Eatery's secret order (medali.txt, Medali_TreasureEatery.txt); his office is behind the counter
+# (Medali_GymTest.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge normal goto Won
+  say "Welcome to Medali Gym! Larry's gym test is at the Treasure Eatery on the square: order the secret menu."
+  say "Nobody here will tell you what it is. Well. Nobody here. Try asking around town."
+  end
+label Won
+  say "Congratulations on the Normal Badge! Larry said 'good job'. For him, that's a parade."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge normal goto Won
+  say "Larry's Normal types have no weakness but Fighting moves. Bring one, and watch for his Tera at the end."
+  end
+label Won
+  say "You beat Larry! He's already back at his desk."
+  end

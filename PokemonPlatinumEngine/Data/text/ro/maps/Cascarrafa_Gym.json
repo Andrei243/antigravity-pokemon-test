@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Cascarrafa Gym"
+    ],
+    "text": [
+      "Sala din Cascarrafa"
+    ]
+  },
+  "people": {
+    "cascarrafa_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "cascarrafa_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

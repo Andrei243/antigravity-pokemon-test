@@ -781,7 +781,12 @@
     "iono": { "skin": "#f0d0b8", "hairColor": "#e070b0", "hair": "Bunches", "top": "#3a6ad8", "accent": "#f2a2c8", "bottom": "#e070b0", "shoes": "#2a2a3a", "eyes": "#6a4aa0", "skirt": true, "lashes": true, "blush": true, "build": "Adult", "height": 0.96 },
     // The Path of Legends (plan 34 · PD4), our own look: Arven, the academy student who cooks, dark tousled hair with a
     // green streak, the academy's white shirt under an olive field jacket, dark trousers, sturdy boots
-    "arven": { "skin": "#e0b48e", "hairColor": "#2e2a26", "hair": "Swept", "top": "#f2f0ea", "accent": "#8a9a3a", "bottom": "#3a3a34", "shoes": "#4a3a2a", "eyes": "#5a6a3a", "vest": "#6a7a3a", "build": "Adult", "height": 1.08 }
+    "arven": { "skin": "#e0b48e", "hairColor": "#2e2a26", "hair": "Swept", "top": "#f2f0ea", "accent": "#8a9a3a", "bottom": "#3a3a34", "shoes": "#4a3a2a", "eyes": "#5a6a3a", "vest": "#6a7a3a", "build": "Adult", "height": 1.08 },
+    // The West Province's leaders (plan 34 · PD6), our own looks: Kofu, Cascarrafa's cook, broad and sun-browned, his
+    // black hair swept back, an orange shirt with a sea-green trim under a white cook's vest; Larry, Medali's leader, a
+    // tired office worker, short grey-brown hair, a beige coat over a white shirt with a dark tie
+    "kofu": { "skin": "#b8825a", "hairColor": "#1e1c1a", "hair": "Swept", "top": "#e8782e", "accent": "#2e9a8a", "bottom": "#3a3a40", "shoes": "#2a2420", "eyes": "#3a2a1e", "vest": "#f2f0ea", "build": "Adult", "height": 1.1 },
+    "larry": { "skin": "#e0bc9a", "hairColor": "#6a5e52", "hair": "Short", "top": "#f2f0ea", "accent": "#2a2e3a", "bottom": "#4a4a50", "shoes": "#2a2626", "eyes": "#4a4a4a", "coat": true, "build": "Adult", "height": 1.06 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

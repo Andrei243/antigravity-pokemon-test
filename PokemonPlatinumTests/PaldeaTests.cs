@@ -31,7 +31,8 @@ public class PaldeaTests
 
     private static readonly string[] Areas = { "cabo_poco", "poco_path", "los_platos", "south_province_area_one", "mesagoza",
         "south_province_area_two", "cortondo", "south_province_area_three", "artazon", "east_province_area_one", "levincia", "stony_cliff",
-        "open_sky", "lurking_steel", "quaking_earth", "false_dragon" };
+        "open_sky", "lurking_steel", "quaking_earth", "false_dragon",
+        "asado_desert", "cascarrafa", "west_province_area_two", "porto_marinada", "west_province_area_one", "medali" };
 
     [Fact]
     public void PaldeaIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -100,7 +101,7 @@ public class PaldeaTests
         Assert.NotNull(map.Land!.Nav);
         // A door to each room, and each room's way out leads back through it to its marker (but upstairs, come to from
         // downstairs)
-        var behind = new[] { "CaboPoco_PlayersHouse_2F", "Cortondo_GymTest", "Artazon_GymTest", "Levincia_GymTest" };
+        var behind = new[] { "CaboPoco_PlayersHouse_2F", "Cortondo_GymTest", "Artazon_GymTest", "Levincia_GymTest", "Cascarrafa_GymTest", "Medali_GymTest" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
@@ -109,15 +110,16 @@ public class PaldeaTests
             Assert.True(room.IsWalkable(door.RoomX, door.RoomY), $"{door.Name} lands on a blocked tile of {door.Room}");
             Assert.Contains(room.Warps.Where(w => w.TargetMap == "Paldea"), way => Equals(door, map.DoorBackFrom(room.Name, way.SourceX, way.SourceY)));
         }
-        // Wild Pokémon live in the grass of Poco Path, its beach and the South Province, every row a species of the data at
-        // the first chapter's levels
+        // Wild Pokémon live in the grass of Poco Path, its beach, the South and East Provinces and the West (plan 34 · PD6),
+        // every row a species of the data at levels no higher than the West Province's
         Assert.Equal(new[] { "poco_path_west", "poco_path_lighthouse", "poco_beach", "area_one_west", "area_one_east",
-            "area_two_south", "area_two_north", "area_three_south", "area_three_north", "east_one_grass" }.OrderBy(n => n), map.Zones.Select(z => z.Name).OrderBy(n => n));
+            "area_two_south", "area_two_north", "area_three_south", "area_three_north", "east_one_grass",
+            "desert_dunes", "desert_east", "west_one_south", "west_one_north", "west_two_grass" }.OrderBy(n => n), map.Zones.Select(z => z.Name).OrderBy(n => n));
         foreach (var slot in map.Zones.SelectMany(z => z.Slots))
         {
             Assert.NotNull(PokemonDatabase.Get(slot.Species));
-            Assert.InRange(slot.MinLevel, 2, 18);
-            Assert.InRange(slot.MaxLevel, slot.MinLevel, 18);
+            Assert.InRange(slot.MinLevel, 2, 30);
+            Assert.InRange(slot.MaxLevel, slot.MinLevel, 30);
         }
         // The two students are Paldea's own, and Nemona's three teams answer the three starters
         foreach (var person in map.People.Where(p => p.TrainerId != null))
@@ -142,7 +144,8 @@ public class PaldeaTests
         Assert.True(downstairs.IsWalkable(arrival.X, arrival.Y));
         Assert.Equal("Paldea", downstairs.GetWarpAt(arrival.X, arrival.Y + 1)?.TargetMap);
         // A white-out goes home, then to Los Platos's Pokémon Center
-        Assert.Equal(new[] { "CaboPoco_PlayersHouse_1F", "LosPlatos_PokemonCenter", "Cortondo_PokemonCenter", "Artazon_PokemonCenter", "Levincia_PokemonCenter" },
+        Assert.Equal(new[] { "CaboPoco_PlayersHouse_1F", "LosPlatos_PokemonCenter", "Cortondo_PokemonCenter", "Artazon_PokemonCenter", "Levincia_PokemonCenter",
+            "Cascarrafa_PokemonCenter", "PortoMarinada_PokemonCenter", "Medali_PokemonCenter" },
             Region.File!.Spawns.Select(s => s.Room));
     }
 

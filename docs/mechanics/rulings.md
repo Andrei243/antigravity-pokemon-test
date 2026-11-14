@@ -13063,3 +13063,54 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
 - **The Titans' places play a song of their own**, `paldea/titans` (the Stony Cliff's too, which played the South
   Province's).
 - **Objectives** 812 `paldeaBombirdier` to 816 `paldeaArvenBattle`, English and Romanian.
+
+## The West Province and the fourth and fifth gyms (2026-11-15, plan 34 · PD6, its first session)
+
+- **The land grows north and west of Cortondo** (`terrain/west.json`, read after `titans.json`): north out of Cortondo
+  through Quaking Earth's basin into Asado Desert, north again to Cascarrafa under the hills, west from Cascarrafa along
+  the West Province's second area and down a ramp to Porto Marinada on the western sea, and east out of the desert along
+  the West Province's first area to Medali. Every way and town is a floor between hills 28 m higher, as PD3's are, but
+  Porto Marinada's, which stands at 4 m on a quay over the sea. The distances are PD1's and PD3's compressed ones
+  (Cascarrafa about 300 m north of Cortondo, Porto Marinada about 300 m west of Cascarrafa, Medali about 200 m north-west
+  of Mesagoza's walls), for the user's judgment with the rest; nothing was laid in the region's north-west corner past
+  the towns (`z` under -760, `x` under -520 north of Cascarrafa), which Starfall Street's session (PD5) builds beside this.
+  `world.json`'s `chunks` now start at `-26` (the coast); the bake keeps 625 chunks (from 454), 80.4 MB (from 62.0 MB).
+- **Cascarrafa's falls** are a river of `water.json` coming down a slot cut into the hills north of the city (its
+  surface 30 m up, then down to the pool at the city's foot over ten metres), into the pool's bed (a crater) by the
+  Pokémon Center: no falling water is drawn by the open renderer, so the falls are a steep sheet of water in a cleft.
+  The originals' bridges over the river are not built (owed); the city's ways go round its pool.
+- **Two stand-in Titans moved to their provinces**, their keys, scripts, flags and the count kept: Open Sky (Bombirdier)
+  is a gully north off the West Province's first area, its den a ledge at its head as before; Quaking Earth (Great Tusk or
+  Iron Treads) is the basin at Asado Desert's south end, out of Cortondo's north side, its den a rise at the basin's west
+  end (the road north runs through the basin). Lurking Steel (Orthworm, the East Province's third area) and False Dragon
+  (Casseroya Lake, the north) stay stand-ins for session two. Arven's direction to Open Sky and its objective were
+  rewritten (English and Romanian).
+- **Kofu's test is an errand** (Scarlet and Violet's beat): Kofu sends the challenger to Porto Marinada's auction
+  (`FLAG_PALDEA_CASCARRAFA_ERRAND`); the auctioneer on the quay sells the morning's crate to whoever raises the paddle at
+  the last call (raised earlier, the chef outbids and the lot is bid for again; never raised, the chef takes it), which
+  sets `FLAG_PALDEA_CASCARRAFA_TEST_DONE`; Kofu battles once it is brought back. Our own lines and rule.
+- **Larry's test is the Treasure Eatery's secret order**: three townsfolk of Medali each let a part slip (the dish, the
+  side, the words; `FLAG_PALDEA_MEDALI_TEST_1` to `3`), and the order is made at the eatery's counter
+  (`Medali_TreasureEatery`, a room of ours) by three questions; right, `FLAG_PALDEA_MEDALI_TEST_DONE`; wrong anywhere,
+  the dish comes from the menu and it may be ordered again. A challenger may guess it without the hints. The order is
+  ours (grilled rice balls, lemon on the side, extra crispy).
+- **Decision 3, at its recommendation, for the gyms after the third** (the user has not answered it): a leader's team is
+  scaled to the badges the challenger holds as the battle begins, its best at `paldea.json`'s cap for that many badges
+  (15, 17, 24, 30, 36, 42, 45, 48 for nought to seven held) and the rest a level under, the team's species and Tera
+  Type the same. It is data, not a rule of the engine: each leader has a team for each count of badges in
+  `Data/world/paldea/trainers.json` (`paldea_kofu` the original's, at three held; `paldea_kofu_b0` to `_b7` the
+  others; Larry's the same, `paldea_larry` at four held), and the leader's script picks it with `if badges >= N`. In the
+  academy's order every leader meets the original's levels; out of it, one taken early is easier and one taken late
+  harder. Session two's three leaders slot in the same way. The gym trainers keep fixed levels.
+- **The teams** (ours, near the originals' as remembered, not checked against a source): Kofu's Veluza, Wugtrio and
+  Crabominable (best 30 in the academy's order, Crabominable Terastallizing into a Water type), Larry's Komala,
+  Dudunsparce and Staraptor (best 36, Staraptor into a Normal type); the gym trainers Marisa (Pelipper, Clauncher, 28)
+  and Dina (Gumshoos, Oinkologne, 33); students Dario (the desert), Elena (the first area) and Pablo (the second) at 25
+  to 29. Wild Pokémon of the desert and the two areas at 22 to 29.
+- **Looks** `kofu` and `larry` of `characters.json` (ours); **songs** `paldea/west_province` (the three ways),
+  `paldea/cascarrafa`, `paldea/porto_marinada` and `paldea/medali`, each `tools/MusicRender`'s checks clean.
+- **Paldea's Town Map** is written again from `world.json` and the bake (45 by 28 cells, from chunk -25,-26), with the
+  new areas' blocks and Fly's three new towns on their Pokémon Centers' markers (spawns 6 to 8). Fly still can't be
+  asked for in the open field (PD3's second session's question).
+- **Objectives** 830 `paldeaKofu` and 831 `paldeaLarry`, English and Romanian, after the Path of Legends' in the list
+  (as the first three gyms come before it), their ids clear of PD5's.
