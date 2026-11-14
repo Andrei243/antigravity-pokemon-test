@@ -365,7 +365,31 @@ A species is at parity with a hand-built sculpt only with both of these, so ever
   byte for byte and remove what differs.
 - **Mirroring by hand**: multiply only the offsets by the side, never an anchor point that is off the midline.
 - **Thin black paint lines on a fused body hatch** at voxel 0.006 whatever the edge and with or without `on`: they
-  read clean at the game's size, and a loose thin strip is the way where they must be crisp up close.
+  read clean at the game's size, and a loose thin strip is the way where they must be crisp up close. A band as wide
+  as 0.03 (a stripe on a back) hatches the same way: a lens-shaped decal narrower than the back, cast from behind,
+  is crisp, and so is a collar under a chin cast from a little below.
+- **A flat plate triangulated from its outline alone** (the `flat()` the fish scripts copy from one another) is long
+  triangles from edge to edge: once it is bent they cut straight across the curve and bury whatever is laid on the
+  true surface (a fin's flecks were not seen at all). Split its faces (`sub=3`) before bending.
+- **A hard cap with a crisp edge** (a dome on a skull, a helmet) is a loose piece meshed from its top down to a rim
+  on a plane, with a lip turned in under the rim, over a smaller fused skull; the eyes stay patches on the fused
+  skull under its rim. Sinking the lower half of a ball into the head leaves a scalloped rim.
+- **A hard-edged slab** (a wall, a window's frame and pane) is an extruded polygon whose faces each keep their own
+  points. A loose piece with a rounded base wider than a thin slab (a horn on a wall) pokes through its other face.
+- **A pupil with a round edge** inside an eye whose rim is ragged is a patch of its own over the eye's patch.
+- **A plus or an X with corners** is a decal over a `polygon` outline; rounded ends want `segs` of about 120.
+- **`paint` without `on` recolours fused lips and whatever else lies under it**; and `inside(a) * inside(b)` with
+  limits that exclude one another is a mask of nothing, which prints no warning.
+- **A helmet, a hat, a mushroom**: a signature part that should BE the head (Cranidos's dome, Shieldon's shield) reads
+  as something worn when it sits on top of a head that is whole without it, overhangs it all round or shows a neck
+  under it from behind. The head fills it from behind and the face runs up into it. And a biped reptile stood on
+  the skeleton's joints with straight columns for legs reads as a person: thighs fused into a leaning body, short
+  shins.
+- **A flat tail behind the body** (Pikachu's bolt) runs back and some 35 degrees out to the model's +X side
+  (`unit(0.6, 0.8, 0)`): nearly straight back it was hidden behind the body from the front three-quarter and
+  edge-on from behind. An agent cannot see the game's cameras, so the main session checks such a part in the shot.
+- **A patch wider than the thin part it is meant for** (an ear's lining) lands on whatever lies behind it (the tail,
+  a metre away) and prints no warning, since its rays did hit something.
 
 ## Not tried yet
 
