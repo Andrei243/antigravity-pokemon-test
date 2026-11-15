@@ -645,6 +645,40 @@ the brief from the start: five were sent back, against some forty of Kanto's hun
 - **A species the game draws hovering need not reach the ground**: legs as long as the skeleton's height make stilts
   (Vibrava); make them the design's length and let them hang.
 
+## What Hoenn taught (2026-11-15)
+
+A hundred and seven species by thirty-two agents; fourteen sent back. What the game's shots sent back is the last line of
+the brief (`BRIEF.md`): stilts and trousers still, small heads on tall figures, legs longer than the design's, a
+crest laid at the wrong angle, wings as rods, limbs that dwarf the body, a shape misread. What the agents found:
+
+- **Say what each shape in the picture is before building it.** Slakoth's raised arm, curled over its head, was built
+  as a ring-shaped tail; nothing in a build can catch that, only the game's shot beside the reference.
+- **A wing or a great ear is judged from the game's two cameras**, not the turntable's front: a level plate is an edge
+  to both. Bank it, and if no symmetric setting shows a face to both cameras, the two wings may be turned differently
+  (Latias, Latios), which the plain front view then shows.
+- **A patch laid on the side of a coiled tube streaks across to the next turn of the coil** with nothing printed
+  (Rayquaza's rings were long bars in mid-air); paint the marks in the coil's own frame. The sign is a body mesh
+  with more vertices and long faces.
+- **A wide round hollow cut with `carve` leaves a ragged, striped wall** (Lunatone's crescent): sweep a tube along
+  the middle line of the crescent instead.
+- **An open mouth without a carve**: a jaw dropped as its own fused ellipsoid with a coloured mass set back inside
+  gives a big open mouth and a stable vertex count (Huntail, Walrein).
+- **A body of loose hulls carries its eyes on a fused plate that is a dark part of the design** (a black frame, a
+  socket), so its edge needs no hiding (Beldum's line, the Regis). On a flat front such a plate shows its rounded rim
+  once it stands more than about 0.002 proud; 0.001 to 0.0015 hides it.
+- **A wide band of colour on a ball is one patch cast from the front with the band's outline**, crisp where paint
+  hatches as the ball turns away (Registeel); lift the dots above it.
+- **A black sliver past the outline** can be a patch that overhangs the silhouette, not a piece wound inside out:
+  move it in or lower its `eps`.
+- **Small skeletons** (a body joint at 0.1) want a voxel of 0.004 to 0.0055 and `band=0.006`.
+- **A board check on the built mesh** (the span seen at the board's angle against its square) is six lines at the end
+  of `metagross.py`; a four-cornered model that fails it is scaled whole, never by drawing its feet in.
+- **The kit's wish list grew** (each written again in several scripts): a spike or claw hull along a direction, a
+  torus, a helix or spiral tube, a ribbon or streamer along a curve, a partial or toothed lathe (`pad_sweep` in
+  `lotad.py`), a leaf or feather plate with a roll toward a camera, a lock of hair, a cut gem, a crystal prism, a
+  cone, an eye outline that mirrors itself, a decal that ignores parts in front of it, a crisp colour edge along a
+  crease between fused parts, a group of parts scaled about a joint.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
