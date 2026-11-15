@@ -176,6 +176,13 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
                 if (!modelOf.ContainsKey(job.Voice) && !OutForTheDay) { attempt = -1; continue; }
                 return null;
             }
+            // The key's prepaid credits are spent (402): no model will answer until they are topped up, so the run stops
+            if (response.StatusCode == HttpStatusCode.PaymentRequired)
+            {
+                spent.UnionWith(models);
+                Console.Error.WriteLine($"{job.Key}: the key's prepaid credits are spent; nothing more is asked until they are topped up.\n{answer[..Math.Min(600, answer.Length)]}");
+                return null;
+            }
             if (response.StatusCode is HttpStatusCode.TooManyRequests or HttpStatusCode.ServiceUnavailable or HttpStatusCode.InternalServerError)
             {
                 int wait = 10 * (1 << attempt);
