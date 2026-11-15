@@ -614,6 +614,37 @@ scripts); a polygon eye helper that mirrors its outline; a decal turned about it
 soft-edged colour helper; a whole-sculpt offset; **a decal oriented by the mean of its faces** (the inside-out eye
 above is a fault of the kit's, not a wish).
 
+## What Johto taught (2026-11-15)
+
+Sixty-four species by twenty agents, with the wave before's lines on stilts, arms in a T, small heads and thin strokes in
+the brief from the start: five were sent back, against some forty of Kanto's hundred and three. What was new:
+
+- **A script is judged from a build made after its last edit**, whoever makes it. An agent can hand back with edits it
+  never built; build the script before looking.
+- **The review sheet can show the game's own sculpt by mistake**: a name with no build in the folder given is drawn from
+  the C# sculpt. The review script prints `!! no build of <Name>` then, and that line must be read (Skarmory "stood on
+  stilts" a second time that way).
+- **Scratch folders are case-insensitive on Windows**: `A` and `a` are one folder, and two agents overwrote each other's
+  run script. A folder is named after its task (`h17`).
+- **A task's dex numbers can be wrong**; the reference files go by the national number and the name
+  (`270_Lotad_art.png`), and the name decides.
+- **A big flat part must face one of the game's two cameras**: Phanpy's great ears, laid along the head, showed to
+  neither; turned 35 degrees out they read from both.
+- **A decal's centre must lie on the surface**: placed past a tapered snout's tip, its ray misses the head and lands on
+  a shoulder, a thigh or the chest, with nothing printed. A decal beside a raised limb picks the limb up as a streak;
+  the only sign is the eyes' `KIT:` line showing a wider width and length.
+- **What is in every eye state goes before `build()`** (cheek marks); anything added inside `lay(state)` is copied into
+  that state's eye piece alone, which is also how loose eyes that blink are made (Sableye's gems).
+- **A fused tube's rounded cap reaches past its last point by its radius**: below the ground under a foot, or through
+  the face of a loose piece set at that point. End the tube 0.85 of its radius short.
+- **A `ring_band` round a remeshed body stands off it** and reads as a can's rim from behind; segment lines on a smooth
+  body are painted.
+- **A paint mask from two coordinates catches the far side of a round part**: limit all three.
+- **Paint cannot give a crisp edge along the crease between two fused parts of different colours**, even at a band of
+  0.004; a loose piece, or one mass painted by a mask, does.
+- **A species the game draws hovering need not reach the ground**: legs as long as the skeleton's height make stilts
+  (Vibrava); make them the design's length and let them hang.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
