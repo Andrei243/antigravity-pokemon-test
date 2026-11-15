@@ -654,8 +654,10 @@ crest laid at the wrong angle, wings as rods, limbs that dwarf the body, a shape
 - **Say what each shape in the picture is before building it.** Slakoth's raised arm, curled over its head, was built
   as a ring-shaped tail; nothing in a build can catch that, only the game's shot beside the reference.
 - **A wing or a great ear is judged from the game's two cameras**, not the turntable's front: a level plate is an edge
-  to both. Bank it, and if no symmetric setting shows a face to both cameras, the two wings may be turned differently
-  (Latias, Latios), which the plain front view then shows.
+  to both. Make it broad at the root and bank or sweep the pair, as a mirror pair, until neither camera sees it
+  edge-on; the far wing foreshortened is fine. Never turn the two wings of a pair differently to show a face to each
+  camera (Latias and Latios were first accepted so, and put back): the field's four facings and the battle's other
+  shots see the lopsided pair.
 - **A patch laid on the side of a coiled tube streaks across to the next turn of the coil** with nothing printed
   (Rayquaza's rings were long bars in mid-air); paint the marks in the coil's own frame. The sign is a body mesh
   with more vertices and long faces.

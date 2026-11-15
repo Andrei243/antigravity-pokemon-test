@@ -23,7 +23,7 @@ LATIAS = dict(
     LATIOS_FACE=False,
     WING=[(0, -0.08), (0.14, 0.02), (0.24, 0.13), (0.285, 0.205), (0.248, 0.2), (0.252, 0.228), (0.205, 0.215),
           (0.15, 0.225), (0.0, 0.175)],
-    WING_TURN_R=(-20, 0.4), WING_TURN_L=(-7, -0.3),       # (dihedral in degrees, the chord's rise behind)
+    WING_TURN_R=(-12, 0.05), WING_TURN_L=(-12, 0.05),      # (dihedral in degrees, the chord's rise behind)
     FIN_LEN=1.0, TAIL_FIN=[(0, -0.03), (0.055, 0.03), (0.075, 0.1), (0.032, 0.06), (0, 0.11), (-0.032, 0.06),
                            (-0.075, 0.1), (-0.055, 0.03)],
     FLANK_SPIKES=False, LIFT=0.0,
@@ -117,9 +117,8 @@ def lati(src, out, P):
                                     (0, 1, 0), (1, 0, 0.6), G * 0.05, G * 0.02), MAIN, "body", fuse=False, mirror=True)
 
     # --- the wings: broad swept-back jet blades, nearly level, the tips a little down ---------------------------------
-    # A flat plate cannot show its face to both of the game's cameras (one in front, one behind, both 10 degrees up):
-    # each wing is turned to the camera that sees it nearest, the model's right one (+X) to the front three-quarter
-    # (its trailing edge a little up), the left one to the camera behind (its trailing edge down)
+    # A mirror pair (the field and the battle see the model from every side): tips a little down, the trailing edge
+    # raised a little so the upper faces tilt toward the front
     W = [(a * G, b * G) for a, b in P["WING"]]
     for side, (deg, back) in ((1, P["WING_TURN_R"]), (-1, P["WING_TURN_L"])):
         dih = math.radians(deg)
