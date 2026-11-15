@@ -115,5 +115,8 @@ public class SculptExportTests
         Assert.EndsWith("turtwig.py", BlenderAnim.Sculpt.ScriptOf("Turtwig"));
         Assert.EndsWith("mrmime.py", BlenderAnim.Sculpt.ScriptOf("Mr. Mime"));
         Assert.EndsWith("charizardmegax.py", BlenderAnim.Sculpt.ScriptOf("Charizard-Mega-X"));
+        // The two Nidoran differ only by a sign, which is no letter: each has a script of its own
+        Assert.EndsWith("nidoranf.py", BlenderAnim.Sculpt.ScriptOf("Nidoran♀"));
+        Assert.EndsWith("nidoranm.py", BlenderAnim.Sculpt.ScriptOf("Nidoran♂"));
     }
 }

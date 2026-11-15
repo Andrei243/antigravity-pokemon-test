@@ -12,9 +12,16 @@ namespace BlenderAnim;
 /// </summary>
 internal static class Sculpt
 {
-    /// <summary>The script that sculpts a species: its name in lower case, letters and digits only.</summary>
+    /// <summary>
+    /// A species' name as its script's: lower case, letters and digits only, a gender sign as f or m (the two Nidoran
+    /// would otherwise share one script).
+    /// </summary>
+    public static string KeyOf(string species) =>
+        new(species.Replace("♀", "F").Replace("♂", "M").ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray());
+
+    /// <summary>The script that sculpts a species (<see cref="KeyOf"/>).</summary>
     public static string ScriptOf(string species) =>
-        Path.Combine(AppContext.BaseDirectory, "blender", "sculpts", new string(species.ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray()) + ".py");
+        Path.Combine(AppContext.BaseDirectory, "blender", "sculpts", KeyOf(species) + ".py");
 
     /// <summary>The species that have a sculpt, by their scripts' names.</summary>
     public static IEnumerable<string> Sculpted()
@@ -23,7 +30,7 @@ internal static class Sculpt
         if (!Directory.Exists(dir)) yield break;
         var scripts = Directory.GetFiles(dir, "*.py").Select(Path.GetFileNameWithoutExtension).ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (string species in PokemonModels.Species.Concat(PokemonModels.Forms))
-            if (scripts.Contains(new string(species.ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray()))) yield return species;
+            if (scripts.Contains(KeyOf(species))) yield return species;
     }
 
     /// <summary>The game's own sculpt of a species as a .glb, whatever model files there are.</summary>
