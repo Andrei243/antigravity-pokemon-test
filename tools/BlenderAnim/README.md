@@ -82,7 +82,9 @@ inside out, which `sculpt` prints with the kit's other lines. `blender/kitcheck.
 that have a script (plan 48 · BL1): it exports the game's own sculpt with every model file switched off, builds the
 script twice, and installs the file into `built/models` at the repository's root only if both builds are the same
 bytes. Git ignores that folder; the game alone reads it, after every other model folder, and `dotnet publish` copies it
-beside the published game. It prints the eye states, surfaces and clips the game's reader finds in each file.
+beside the published game. It prints the eye states, surfaces and clips the game's reader finds in each file. A
+species' script is its name in lower case, letters and digits only, with a gender sign as f or m (`mrmime.py`,
+`farfetchd.py`, `nidoranf.py` and `nidoranm.py`, `unownexclamation.py`): `Sculpt.KeyOf`.
 
 `sculpts/hero.py` is a person, whom the game reads from no file yet: the boy hero as a wardrobe of pieces (a body in
 parts, a hair cut, two hats, two tops, two bottoms, shoes, a bag, a scarf) on the chibi kit's joints, each piece's

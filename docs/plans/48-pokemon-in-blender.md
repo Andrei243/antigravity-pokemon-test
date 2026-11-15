@@ -474,3 +474,62 @@ The user's choice after Sinnoh's Pokédex was whole: the kit first, then the res
 - **Over the guide**: Heatran's body is 64.9 thousand vertices and Regigigas's 61.1 thousand, against the brief's 60.
 - **Not verified**: the whole suite was not run (`BlenderAnimTests`, `BuiltModelTests` and `ReleaseBuildTests` were). Shaymin's Sky Forme and Arceus's seventeen plates keep the models they had.
 - **Next**: Sinnoh's forms (Unown's twenty-seven letters by `sibling("unown")`, Burmy's and Wormadam's other cloaks, Rotom's appliances, the Origin Formes of Dialga and Palkia, Shaymin's Sky Forme); the female looks from files; BL-S, the shiny looks; then the next region in the order met.
+
+### Sinnoh's forms and Kanto (2026-11-15)
+
+**Forty forms of Sinnoh and the 103 species of Kanto that had no sculpt**, on the user's word to run many more agents
+at once and to go on to the next Pokédexes without asking: eleven agents for the forms, thirty for Kanto, a line of
+evolution (or two short ones) to an agent, up to twenty at a time. With them **every species of Sinnoh and of Kanto
+and every form of Sinnoh but Arceus's seventeen plates has a Blender sculpt**.
+
+- **The forms**: Unown's other twenty-seven letters (five agents; each letter laid out from its own picture on
+  `unown.py`'s eye, the two marks sharing a half-shut eye), Burmy's and Wormadam's sandy and trash cloaks, Rotom's five
+  appliances, Shaymin's Sky Forme, Cherrim in the sun, and the Origin Formes of Dialga and Palkia.
+- **Kanto**: Bulbasaur to Venusaur, Charmander to Charizard, Squirtle to Blastoise, Caterpie to Butterfree, Weedle to
+  Beedrill, Pidgey to Pidgeot, Rattata and Raticate, Spearow and Fearow, Ekans and Arbok, Sandshrew and Sandslash, both
+  Nidoran lines, Vulpix and Ninetales, Jigglypuff and Wigglytuff, Oddish to Vileplume, Paras and Parasect, Venonat and
+  Venomoth, Diglett and Dugtrio, Meowth and Persian, Mankey and Primeape, Growlithe and Arcanine, Poliwag to Poliwrath,
+  Bellsprout to Victreebel, Slowpoke and Slowbro, Farfetch'd, Doduo and Dodrio, Seel and Dewgong, Grimer and Muk,
+  Drowzee and Hypno, Krabby and Kingler, Voltorb and Electrode, Exeggcute and Exeggutor, Cubone and Marowak, Hitmonlee,
+  Hitmonchan, Koffing and Weezing, Kangaskhan, Horsea and Seadra, Staryu and Starmie, Jynx, Pinsir, Tauros, Lapras,
+  Ditto, Omanyte and Omastar, Kabuto and Kabutops, Aerodactyl, Articuno, Zapdos, Moltres, Dratini to Dragonite, Mewtwo
+  and Mew.
+- **How each was judged**: the main session shot every agent's own build in the game from the front and from behind
+  and held the two cells beside the two references before accepting anything; the tool's build (twice, the same bytes)
+  and install came once, for the last version.
+- **Sent back after the game's shot** (one round unless said): Dialga's and Palkia's Origin Formes, Shaymin's Sky
+  Forme and Wormadam's sandy cloak (its ruff of rocks); Unown G to K (strokes thinner than the other letters'); the
+  Squirtle line (arms in a T; Wartortle's ears; Blastoise's cannons, which were long bars across the shell), the
+  Charmander line, Spearow and Fearow, the Pidgey line (tails of stacked boxes), the Bulbasaur line and the female
+  Nidoran's (stilts; her ears round discs on stalks; Nidoqueen thin with a bib of zigzags), Meowth (a stick figure with
+  its arms out), Hypno and Jynx (slender, small heads), Hitmonchan, Mewtwo and Mew (proportions), Koffing and Weezing
+  (the skull mark a faint squiggle under the ball), Muk (rivulets like poles), Kabutops, Krabby and Kingler (bodies
+  high on four stilts), Tauros (the same) and Lapras (flippers like planks), and Ninetales three times (thin tails,
+  then tails drooping from the shoulders, then a fan from the rump).
+- **Where the pictures overruled the briefs** (the agents' reports have each): Poliwag's spiral turns the other way
+  from Poliwhirl's and Poliwrath's, which turn alike; Furret stands upright; Horsea has no cheek fins; Dewgong has no
+  cream muzzle and one fan of a tail; Nidoqueen's eyes are white with a dark pupil; Pinsir's horns are grey with studs
+  on both edges; Primeape's limbs are brown and its shackles black; Victreebel's vine comes from its lid; Kabuto's
+  under-eyes are pink; Hitmonlee's legs are the same coils as its arms.
+- **Still weak**: Kabutops's hood reads as a wide flat hat on a narrow neck. Jynx's gown is still tall. Hitmonchan is
+  slender. Ninetales's tails are one flat fan with a scalloped orange rim, not nine plumes. The Pidgey line's tails are
+  small. Vulpix's six tails fuse into a cloud from behind. Fearow's body is plump and its neck short. Exeggutor sits
+  with its legs out and its heads are small. Dialga's Origin Forme has a long neck and legs short under a deep chest.
+  Metapod is a teardrop where the art is a crescent. Unown's strokes are thinner than the references' at every width
+  (a tube shrinks under the remesh). Victreebel's lid is a flat plate. Lapras's ear curls are buns. Seadra's far wing
+  hides behind its head. Nidoking's back spines are small.
+- **The tool**: `Sculpt.KeyOf` names a script after its species with a gender sign as f or m, since the two Nidoran
+  shared `nidoran.py` (`BuiltModelTests` holds both names).
+- **Faults found in the kit, not yet mended**: a `decal`'s winding is taken from its first, tiny triangle, so a
+  hand-laid patch can come out inside out with nothing printed (one eye did; a lower `eps` cured it); a decal on a
+  steep crease or grazing a neighbour turns black or becomes a streak, also with nothing printed. The skill has both,
+  and the list of shapes the agents asked of the kit.
+- **Slips**: eight agents typed a bare `python -` once (it hung or ended with nothing; none wrote anything), one used
+  `cd`, one waited on other agents' Blenders with `tasklist`; the brief names each now. The session was restarted once
+  while fifteen agents of the next batch worked; they were resumed from their transcripts.
+- **Not verified**: no clip was shot in battle for this batch (the sculpts stand on the game's own skeletons, as
+  before). Only `BlenderAnimTests`, `BuiltModelTests` and `ReleaseBuildTests` were run, not the whole suite. Nothing
+  was looked at in the running game, only on the harness's boards.
+- **Next**: Johto (64 species, at the agents as this is written), then Hoenn in the same way; Arceus's seventeen
+  plates; the female looks from files; BL-S, the shiny looks; a second kit session for the shapes asked for and the
+  decal's winding.

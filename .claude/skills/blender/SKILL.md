@@ -542,6 +542,78 @@ move (the session held it: every model built by the new kit is the file the old 
   its own or printed `KIT: !!`. Asked next: a torus, a seamless closed band, a gem, a swept ellipse along a curve,
   a chain of hulls along a path, an ellipsoid along a direction, a rosette of petals, a spline.
 
+## What the wave of forms and Kanto taught (2026-11-15)
+
+Forty forms of Sinnoh and Kanto's 103 remaining species, by some forty agents, up to twenty at once (a line of
+evolution, or two short ones, to an agent).
+
+**How a wave of many agents is run.** The base of a line builds under `if __name__ == "__main__":` and its
+evolutions import it with `sibling`. An agent's own instructions are three or four lines that point at two files in the
+scratch folder (the standing instructions and the line's own task), so a launch costs the main session nothing to
+repeat when the limit of agents is reached. The main session's first look takes **no build**: the agent's own last
+`.glb` is copied into a scratch folder's `overrides/models`, the harness's `dex` and `dex --back` shoot it, and the two
+cells are cropped at twice their size and laid beside the two references (art | 3d | game front | game back), four
+models to a sheet. The tool's own build (twice) and install are for a script's last version only, one tool at a time
+(a lock folder), queued while the agents work. A session that is restarted stops its agents and keeps their
+transcripts: a message to each resumes it; a background build an agent was waiting for is gone and is started again.
+
+**What the game's shots sent back**, each several times, and now in the brief:
+
+- **Stilts**: a quadruped or a squat biped held high on four straight cylinders with daylight under the belly
+  (Bulbasaur's line, the female Nidoran's, Krabby and Kingler, Tauros, Ninetales). The belly within 0.05 to 0.08 of the
+  height of the ground, upper legs as fat haunches fused into the flanks, a stub of shin and a wide foot, the rump one
+  mass from behind. `bulbasaur.py`'s `underside()` and `legs()` are the worked example.
+- **A slender figure with its arms in a T** where the design is stocky (Squirtle's line, Meowth, Hypno, Jynx,
+  Hitmonchan, Mewtwo, Kabutops): measure head width / body width and limb thickness / body width as well as the
+  heights.
+- **A head too small**: when in doubt a tenth larger than measured.
+- **Thin strokes**: a tube loses some 0.004 of radius to the remesh and the smooth, so a stroke, whisker, tail or leg
+  thinner than 0.03 across is wire in the game (Unown's letters read thinner than their references at every width).
+- **A tail or crest of stacked boxes** (Pidgey's line): a fan of a few thick tapering plates whose faces the back
+  camera sees.
+- **Tails that spring from the wrong place** (Ninetales, three rounds): say where a part's root is (the tail bone's
+  joint) and which way it goes, in numbers, when a round comes back with the part elsewhere.
+
+**Smaller things the agents found:**
+
+- A carved hollow wider than a few voxels does not take its cutter's colour (the smooth moves its walls out of the
+  colouring band): paint its inside by distance from the mouth's axis (`lining` in `bellsprout.py`). A second cutter of
+  another colour kept inside the first gives a mouth a floor (`grimer.py`). A deep tilted bore can come out of the far
+  side with no warning.
+- A `decal`'s winding is decided by its first, tiny triangle: with `eps=0.005` a hand-laid eye came out inside out
+  (drawn in ink on the turntable); a lower `eps` cured it. A decal laid near a dome's top with the default `up`, on a
+  steep crease (where a jaw meets a skull) or grazing a neighbouring part breaks, turns black or becomes a long streak,
+  with nothing printed: move its centre onto plain surface, give it another `up`, turn a face away from its neighbours.
+  A patch under an overhang (a trunk, a nose) names its centre and a normal that looks forward. A `polygon` outline
+  must be star-shaped about the patch's middle, an inset one too.
+- A sideways patch with `mirror=True` mirrors its colour function only: an outline that is not symmetric is laid as
+  two patches by hand, the left one's outline negated.
+- A line drawn inside a patch's colour function steps at the patch's rings: ease the colour over about one ring
+  (`soft` in `poliwag.py`, whose spiral is crisp at 64 rings by 224 segments). A rim's threshold sits between rings,
+  never on one.
+- A loose band round a fused tube sits flush at the tube's radius minus 0.003. A band over a squarish section is
+  lifted 0.0065. A `sheet` wound into a closed tube has its seam at v = 0: start the angle on the side nobody sees.
+- A `tube` bent sharply folds along the inside of the bend: a reared chest or neck is fused ellipsoids.
+- Studs, teeth and claws on a loose piece are loose hulls buried in it; fused, they remesh into pimples.
+- A cream ball fused to brown limbs takes brown onto itself: paint the body's own colour back with an ellipsoid mask.
+- A function's default argument that names a module constant is fixed when the function is defined: an evolution that
+  changes the constant through `sibling` reaches only code that reads it at run time.
+- Several like units (heads, eggs, pegs) are one function or class placed by a frame, each on its own bone
+  (`diglett.py`, `doduo.py`, `koffing.py`); a script that builds as it is read cannot be imported, so every base builds
+  under `__main__`.
+- The two Nidoran are `nidoranf.py` and `nidoranm.py` (`Sculpt.KeyOf`: a gender sign is f or m); reference files carry
+  no leading zeros and keep an apostrophe (`83_Farfetch'd_art.png`), and a build named without it is found all the
+  same by the review's script.
+
+**Asked of the kit** (for its next session, most of them asked by three agents or more): a torus; a spiral or coil
+(a tube along a shrinking spiral in a turned plane) and a spiral-shell; a spline with a belly frame (`Line` in
+`ekans.py` and `dratini.py`); a fur ball with tufts and a scatter of spikes; a feather fan; a cone; a swept solid and
+a chain of hulls along a curve; a curved tapering plate; a crisp band along a curved tube and a banded cone; an
+ellipsoid laid along a frame and a placement "on an ellipsoid at azimuth and elevation" (`on_ell`, copied into six
+scripts); a polygon eye helper that mirrors its outline; a decal turned about its normal and a patch with a rim; a
+soft-edged colour helper; a whole-sculpt offset; **a decal oriented by the mean of its faces** (the inside-out eye
+above is a fault of the kit's, not a wish).
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
