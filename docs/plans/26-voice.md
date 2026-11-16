@@ -549,7 +549,7 @@ The user chose **Gemini TTS** for the Romanian pack (Kokoro has no Romanian; Kok
   (the user's rule: the models' voices of one name differ): a voice keeps the model most of its takes in the pack were
   made by (`GeminiEngine.Pin`, from the entries' `engine`), a voice not begun takes the first model with requests left,
   a voice whose model is spent waits for the next day, and a take made by another model is made again.
-- **Made so far** (2026-11-15): 1,993 of Sinnoh's 6,479 lines in `voice/ro` (git-ignored, as every pack), after the
-  trial reel the user approved; a daily run picks up the rest, some ten more days at five models (2.5-pro allows only
+- **Made so far** (2026-11-16): 2,420 of Sinnoh's 6,479 lines in `voice/ro` (git-ignored, as every pack), after the
+  trial reel the user approved; a daily run picks up the rest, some nine more days at five models (2.5-pro allows only
   50 requests a day on Tier 1). The key's prepaid credits ran out on 2026-11-15 (Gemini answers 402, which now stops
   the run at once); the user topped them up the same day.
