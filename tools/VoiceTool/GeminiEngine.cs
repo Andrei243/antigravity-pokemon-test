@@ -164,8 +164,22 @@ public sealed class GeminiEngine : IVoiceEngine, IDisposable
             string url = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent";
             using var request = new HttpRequestMessage(HttpMethod.Post, url) { Content = new StringContent(json, Encoding.UTF8, "application/json") };
             request.Headers.Add("x-goog-api-key", key);
-            using var response = http.Send(request);
-            string answer = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            HttpResponseMessage sent;
+            string answer;
+            try
+            {
+                sent = http.Send(request);
+                answer = sent.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            }
+            // A request that times out or whose connection drops is asked again after a wait, as a 503 is
+            catch (Exception e) when (e is HttpRequestException or TaskCanceledException or IOException)
+            {
+                int pause = 10 * (1 << attempt);
+                Console.Error.WriteLine($"{job.Key}: the request failed ({e.GetType().Name}); waiting {pause} s.");
+                Thread.Sleep(pause * 1000);
+                continue;
+            }
+            using var response = sent;
             // The day's requests used up (the free tier gives 100 a day): no wait helps, so every line after this one is
             // given up at once, and the voices already made are written into the pack; the next run picks up from there
             if (response.StatusCode == HttpStatusCode.TooManyRequests && answer.Contains("PerDay", StringComparison.Ordinal))
