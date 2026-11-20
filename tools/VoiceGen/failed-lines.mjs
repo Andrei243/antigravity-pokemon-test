@@ -9,7 +9,7 @@ const pack = JSON.parse(fs.readFileSync(packPath, 'utf8'));
 const made = new Set(pack.lines.map(e => e.key));
 
 const keyLine = /^((?:script|map|world|battle):\S+): (.*)$/;
-const quota = /made nothing|said (429|503|500|402)|used up|^seed \d+ of/;
+const quota = /made nothing|said (429|503|500|402)|used up|^seed \d+ of|^the request failed/;
 const found = new Map();   // key -> { reason, at }
 const pending = [];        // keys of this voice's block, given their voice at its summary line
 for (let i = 0; i < lines.length; i++) {
