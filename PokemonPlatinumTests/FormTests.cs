@@ -30,7 +30,8 @@ public class FormTests
         Assert.Equal(34, forms.Count(f => f.Kind == FormKind.Gigantamax));
         // Ours: a Mega Dynamax form for 63 of the Megas (plan 06 · R20c)
         Assert.Equal(78, forms.Count(f => f.Kind == FormKind.MegaDynamax));
-        Assert.Equal(57, forms.Count(f => f.Kind == FormKind.Regional));
+        // The games' 57 and Carpathia's 25 (plan 46 · CP3)
+        Assert.Equal(82, forms.Count(f => f.Kind == FormKind.Regional));
 
         // Each answers to a name of its own, its species' and the form's, which no species has
         Assert.Equal(forms.Count, forms.Select(f => f.Name.ToLowerInvariant()).Distinct().Count());
@@ -226,7 +227,9 @@ public class FormTests
             .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p))
             // The Mega Dynamax forms (plan 06 · R20c) have no sculpts yet: a Pokémon in one asks for its Mega's model (Pokemon.ModelName),
             // and the name itself falls back to the species', as every form without a sculpt of its own does
-            .Concat(PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()).Where(f => f.Kind == FormKind.MegaDynamax && !PokemonModels.HasModel(f.Name)).Select(f => f.Name)).ToArray();
+            .Concat(PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()).Where(f => f.Kind == FormKind.MegaDynamax && !PokemonModels.HasModel(f.Name)).Select(f => f.Name))
+            // The Carpathian forms (plan 46 · CP3) have no sculpts yet either (CP8): each shows its species' until it has one
+            .Concat(PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()).Where(f => f.Name.EndsWith("-Carpathia") && !PokemonModels.HasModel(f.Name)).Select(f => f.Name)).ToArray();
         Assert.True(PokemonModels.Forms.Length >= 483, $"only {PokemonModels.Forms.Length} forms with a model of their own");
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)

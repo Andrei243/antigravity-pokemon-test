@@ -184,6 +184,59 @@ public static class SpeciesOfNothing
         return made;
     }
 
+    /// <summary>The Carpathian forms of existing species (plan 46 · CP3), beside the table.</summary>
+    public const string FormsFileName = "forms-carpathia.json";
+
+    /// <summary>The suffix every Carpathian form's name ends in, as Showdown spells a regional form (<c>Sableye-Carpathia</c>).</summary>
+    public const string FormSuffix = "-Carpathia";
+
+    /// <summary>
+    /// Adds the Carpathian forms of <c>Overrides/forms-carpathia.json</c> (<c>{ species: [forms] }</c>, plan 46 · CP3) to their
+    /// species, each a regional form named <c>&lt;Species&gt;-Carpathia</c>. A form's own <c>evolutions</c> (the field is
+    /// the table's, not the form's) are added to its species' evolutions as evolutions from the form, each into a form of
+    /// the same kind. Its types, abilities and the forms it evolves into are checked as a row of the species table's are.
+    /// Returns the forms added.
+    /// </summary>
+    public static List<PokemonForm> AddForms(List<PokemonSpecies> species, string path, IEnumerable<string> abilities)
+    {
+        var made = new List<PokemonForm>();
+        if (!File.Exists(path)) return made;
+        var abilityNames = abilities.ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var table = JsonNode.Parse(File.ReadAllText(path), documentOptions: new() { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true })!.AsObject();
+        var evolutions = new List<(PokemonSpecies Owner, PokemonForm Form, EvolutionData Evolution)>();
+        foreach (var (name, forms) in table)
+        {
+            var owner = species.FirstOrDefault(s => s.Name == name) ?? throw new InvalidDataException($"{FormsFileName} names {name}, which is no species");
+            foreach (var node in forms!.AsArray())
+            {
+                var row = node!.AsObject().DeepClone().AsObject();
+                var evolves = row["evolutions"]?.Deserialize<List<EvolutionData>>(GameDataFiles.Json) ?? new();
+                row.Remove("evolutions");
+                var form = row.Deserialize<PokemonForm>(GameDataFiles.Json)!;
+                if (form.Name != name + FormSuffix) throw new InvalidDataException($"{name}'s Carpathian form is called {form.Name}, not {name + FormSuffix}");
+                if (form.Kind != FormKind.Regional) throw new InvalidDataException($"{form.Name} is a {form.Kind} form, not a regional one");
+                if (form.Types is not { Count: 1 or 2 } || form.Types.Distinct().Count() != form.Types.Count) throw new InvalidDataException($"{form.Name} has types {string.Join("/", form.Types ?? new())}");
+                foreach (var ability in (form.Abilities ?? new()).Append(form.HiddenAbility).OfType<string>())
+                    if (!abilityNames.Contains(ability)) throw new InvalidDataException($"{form.Name} has {ability}, which is no ability");
+                owner.Forms ??= new();
+                if (owner.Forms.Any(f => f.Name == form.Name)) throw new InvalidDataException($"{form.Name} is a form already");
+                owner.Forms.Add(form);
+                made.Add(form);
+                foreach (var e in evolves) evolutions.Add((owner, form, e));
+            }
+        }
+        foreach (var (owner, form, e) in evolutions)
+        {
+            var target = species.FirstOrDefault(s => s.Name == e.TargetSpecies) ?? throw new InvalidDataException($"{form.Name} evolves into {e.TargetSpecies}, which is no species");
+            if (e.TargetForm == null || target.Forms?.Any(f => f.Name == e.TargetForm) != true)
+                throw new InvalidDataException($"{form.Name} evolves into {e.TargetForm ?? "no form"}, which is no form of {target.Name}");
+            e.FromForm = form.Name;
+            owner.Evolutions ??= new();
+            owner.Evolutions.Add(e);
+        }
+        return made;
+    }
+
     private static PokemonSpecies Make(NothingDesign d) => new()
     {
         DexNumber = NumberOf(d.Number!.Value),
