@@ -924,6 +924,51 @@ grown from its base's script. What the agents found:
 - **A mane or a tail that is the design's largest mass is broad fused masses**, 0.07 or more across and overlapping;
   as separate tubes it reads as wires at the game's size (Rapidash-Galar).
 
+## What the Megas taught (2026-11-21)
+
+A hundred and fourteen forms by thirty-three agents; nine sent back (five cut by their cell, two hiding their
+face from the front camera, one stiff figure, one plain figure, one pair of veils built as tubes). What the agents
+found:
+
+- **The game's front camera sees the model's +X side.** A design that hides half its face (a lock over one eye, a
+  scope, a shield) puts the open half on +X, whichever way the pictures face; a tail, a cape or a plume swept
+  toward −X hides behind the body from that camera (both Absol Megas, Mewtwo-Mega-Y, Scovillain-Mega).
+- **A Mega is often wider than tall, and the cell cuts it.** Print the board check in every build (the four-corner
+  sum, 0.853 × width + 0.522 × length, against the square, 1.3 × the larger of the height and 0.85 × the larger of
+  width and length) and keep the sum at most 0.95 of the square. What brought five forms inside: two long parts
+  given nearly one angle and parted in height instead (Mawile's jaws), parts raised until they set a taller height
+  (Excadrill's head drill, Heatran's smoke, Clefable's wings from 24 to 50 degrees), feet drawn in under the
+  shoulders. A footprint with empty corners shows less than its sum: say so with the numbers.
+- **A level blade on a flyer stays edge on to one camera until its dihedral is about 50 degrees** (Latias-Mega's
+  were rods at 12, 30 and 36); a single midline sail shows its face to both cameras where a splayed pair reads as
+  ears (Feraligatr-Mega).
+- **Of a pincer or claw swept forward, the front camera sees the inner face**: a mark the picture shows on its
+  front in a T pose goes on the inner face, or on both (Scizor-Mega's hinge eyes).
+- **A model of several bodies smears its eye decals**: each patch is cast from 0.35 out along its normal, and the
+  ray hits the neighbouring body first. Tatsugiri's Megas split the fused surface into each fish's share, built
+  each fish's eyes on its own share and joined the three into one mesh per state.
+- **A decal cast near a raised arm or mitt lands on it** with nothing printed (cheeks on Raichu-Mega-X's mitts);
+  **hanging locks catch the rays of patches meant for the limb behind them**: make such marks paint.
+- **`inside(c - z)` paints above the line `z = c`, not below**; a mask written the wrong way round turned
+  Medicham-Mega's trousers white.
+- **A frame's "up" can point down**: `steelix.py`'s `frame()` on some drums and `axes(d)` for a nearly level −Y
+  axis put pieces under the ground or under the cannon; the KIT line's `lowest` shows it.
+- **A base that reads a module global set only under `__main__`** (`pyroar.py`'s `k`) fails when imported: set it
+  on the module (`py.k = k`) before calling; a value worked out once at import (its `E` from `F`) is set again
+  with what it was worked out from.
+- **A base's default argument freezes a colour at import** (`spike(colour=WHITE)`): resetting the module's global
+  does not reach it; recolour the part after it is added, or pass the colour.
+- **Growing a form by handing the base a `Kit` subclass** (`SK.Kit = MegaKit`, which changes parts and paints just
+  before the fuse) keeps the base's function unchanged and uncopied; a later edit of the base then changes the
+  form too, and `deps.js` lists it as out of date.
+- **A picture may be drawn from behind** with only the head in profile (Sceptile-Mega: the seed column running
+  unbroken onto the tail's top shows it). Decide which side the pictures show before placing anything.
+- **A `cd` in one Bash call breaks the relative paths of a build still running in the background**: give every
+  path of a build in full.
+- **A form without pictures** (a Mega of our own) is built from the game's sculptor and a six-view sheet of its
+  export, on the installed base's Blender sculpt: where the export shows an older base's colours, keep the
+  installed base's.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
