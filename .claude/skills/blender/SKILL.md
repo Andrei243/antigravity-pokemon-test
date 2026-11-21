@@ -893,6 +893,35 @@ agents found:
 - **A brief written from memory was wrong about many of Paldea's designs**: the pictures are read first, and the
   report says where they overruled it.
 
+## What the regional forms taught (2026-11-21)
+
+Fifty-eight forms by seventeen agents; four sent back (a flat board lying level, a dark face under a dark helmet,
+two ponies on stilts with their manes as thin tubes). A form is a model of its own, on its own export and skeleton,
+grown from its base's script. What the agents found:
+
+- **Never edit a base to grow a form from it**: every base is installed. Import it through `sibling` and set what
+  changes on the imported module (a `colour(mod)` function that resets its colour globals; frozen default arguments
+  passed again by hand), or copy its way. `grep -L '__name__' sculpts/*.py` lists the scripts that build as they are
+  read and can't be imported (248 of 1,130 on this date).
+- **A script can import only one script that makes a Kit as it is read**: a form of two families copies the second
+  by hand (Arcanine-Hisui took Growlithe-Hisui's open mouth so).
+- **A form's joints are not its base's**: Weezing-Galar's stand 0.049 higher than Weezing's, and Exeggutor-Alola's
+  head and leaf joints stand above the model's own top, so its heads were weighted to the neck. Read the form's own
+  section of the bones before reusing a part's bone or a centre.
+- **One flat plate can't show its face to both game cameras**, which look from nearly opposite sides: fold it into
+  two slabs that meet at an angle, one tilted toward each (Raichu-Alola's board, folded at the bolt's notch).
+- **A deform that projects points onto an upright wall** (a face window drawn in under a shell of hair) **must not
+  scale z below the dome**: it sent points 0.18 under the ground, and only the KIT line's `lowest` showed it
+  (Dugtrio-Alola).
+- **A patch cast from the side lands on whatever stands in front of the flank** (a mane's locks, a chest's puffs),
+  with nothing printed: Growlithe-Hisui's and Arcanine-Hisui's front stripes were dropped for it.
+- **A base's helper that adds a part to every leg adds it to the hind legs too** (Arcanine's tufts read as stains
+  there): pass the legs it is for, or lay the part yourself.
+- **Deepening a trunk and fusing broad masses takes a build past 60,000 vertices**: raise the voxel a step (0.0072
+  to 0.0078 for Ponyta-Galar) rather than thinning what the game's shot asked for.
+- **A mane or a tail that is the design's largest mass is broad fused masses**, 0.07 or more across and overlapping;
+  as separate tubes it reads as wires at the game's size (Rapidash-Galar).
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
