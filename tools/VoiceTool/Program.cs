@@ -17,7 +17,7 @@ string castPath = Path.Combine(engine, "Data", "voice", "cast.json");
 string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
 // The words of the command, leaving out the switches and the values of those that take one
-string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes", "--into" };
+string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes", "--into", "--skip" };
 var words = args.Where((a, i) => !a.StartsWith("--", StringComparison.Ordinal) && (i == 0 || !valued.Contains(args[i - 1]))).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
 string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
@@ -187,6 +187,15 @@ int Generate()
             files[f] = translated;
             if (dropped > 0) Console.WriteLine($"{translated.Voice}: {dropped} lines have no current {LanguageOf()} translation and are left out.");
         }
+    // --skip <file>: lines set aside to be looked at first (tools/VoiceGen/failed-lines.mjs writes the list: [{ "key": … }])
+    if (Option("--skip") is { } skipFile)
+    {
+        using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(skipFile));
+        var skip = doc.RootElement.EnumerateArray().Select(e => e.GetProperty("key").GetString()!).ToHashSet(StringComparer.Ordinal);
+        int skipped = 0;
+        foreach (var f in files) { int before = f.Jobs.Count; f.Jobs = f.Jobs.Where(j => !skip.Contains(j.Key)).ToList(); skipped += before - f.Jobs.Count; }
+        Console.WriteLine($"{skipped} lines set aside by {skipFile}.");
+    }
     // Gemini (tools/VoiceGen/gemini.json), for the languages Kokoro does not speak: one take a line unless --takes says more
     GeminiEngine? gemini = null;
     if (Option("--engine") == "gemini")

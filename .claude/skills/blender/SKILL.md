@@ -681,6 +681,55 @@ crest laid at the wrong angle, wings as rods, limbs that dwarf the body, a shape
   cone, an eye outline that mirrors itself, a decal that ignores parts in front of it, a crisp colour edge along a
   crease between fused parts, a group of parts scaled about a joint.
 
+## What Unova taught (2026-11-21)
+
+A hundred and fifty-six species by forty-seven agents; nineteen sent back. What the game's shots sent back is the last
+line of the brief (`BRIEF.md`): nine sets of arms in a T that their reports called "forward and down", small heads,
+a feature built too small to be the design's largest mass, tusks and blades grown from the wrong place. What the agents
+found:
+
+- **Exports are 0.1 to 1 unit tall, and every absolute number scales with the height**: the voxel (about a hundredth
+  of it), the thickness floor (0.03 of it), decal lifts, `band` and `wband` (the default `wband` of 0.07 is wider
+  than Joltik's whole leg offset: 0.02 there). Tynamo is 0.11 tall and builds at a voxel of 0.0019.
+- **"Forward and down" is checked in numbers**: the hands' x inside the body's half-width and their y in front of the
+  belly. An arm that only points 45 degrees down from the shoulder is still a T from the game's front camera.
+- **A `polygon` outline must contain the patch's own middle**, or it answers 9 with nothing printed and the patch
+  spreads over the whole face (an L-shaped glyph, a scowl bar, an offset drip): centre the patch on a point inside the
+  outline. `min(1, polygon(...))` keeps an oval and lets a straight line cut its top, which is how an eye is cut
+  crisply by a mask or a brow (`cut_outline` in `tirtouga.py`, `eyes` in `larvesta.py`).
+- **Thin lines inside one patch's colour function come out as a barcode**: lay each line as its own thin patch over
+  the first (teeth as triangles over a dark mouth in `trubbish.py`, Scraggy's grin).
+- **A crisp colour edge between two fused parts** is drawn a few thousandths beyond the fillet, by distance from one
+  part's own ellipsoid, not at the crease (`crisp_edge` in `solosis.py`).
+- **A decal goes to whatever its ray meets first.** Marks on a ball's sides land on arms held in front of it
+  (Darmanitan's ovals on its fists), and a patch on the side of a lone tube, tilted toward a camera, streaks onto the
+  body behind (Tornadus's swirls): keep such a patch smaller than the tube is wide, or limit marks to the angles no
+  limb covers. Nothing is printed; only the picture shows it.
+- **A band painted round a pear** needs an elliptical reach, or it goes patchy at the back (Krokorok); a band with
+  plain limits on a head is a hard rectangle, and a superellipse in angle and height reads right (Larvesta's face).
+- **A puff or ruff of fused balls shows ridges** unless the balls overlap heavily (28 round a ring) with `smooth` 6
+  (Jellicent); pointed tufts smooth into bumps after the remesh, so points that must stay sharp are loose hulls.
+- **A flat blade along a long curve renders as a round tube at these sizes**: flatten to about 0.4 and widen it.
+  Overlapping slabs of different colours flicker unless one stands clear of the other by less than its thickness.
+- **Colour that must show on both faces of a thin wing** is stacked slabs, the marks thicker than the wing so they
+  come through both sides (Volcarona's spots, Meloetta's notes).
+- **A pair of fins or ears that runs straight back is an edge to the back camera whatever its bank**: turn each some
+  45 degrees outward in plan (Eelektross's head fins, Haxorus's tusks at 58 degrees).
+- **A model several times longer than tall is seen nearly end-on by both game cameras** (Tynamo): a midline fin there
+  reads as a plate across the body. It is the design, not a fault of the build; say so in the report.
+- **One frame for species that are one design** (`genie` in `tornadus.py`, `Head` in `deino.py`, the
+  gears of `klink.py`): the siblings pass only colours and an extras function.
+- **Hidden eyes** (under hair, under a dome) are still five states: patches of the covering's own colour.
+- **Traps that print nothing useful**: a local variable named `out` in a species function shadows the export path
+  and fails inside the glTF exporter; a part named with `{s}` but without `mirror=True` fails at `build()` as
+  `KeyError: 'wing{s}'`; the `KIT:` line's "height" is the highest point, not the span; `turntable.py` takes the
+  eye state after the engine argument; a sheet written again under the same file name can be shown from a cache, so
+  give each look a new name.
+- **The kit's wish list, again** (each written in several scripts once more): a spike or claw hull along a direction,
+  `on_ell`, an eye outline that mirrors itself, a ribbon along a curve with a rim, a flame, a fan of feathers, a
+  torus, a gear or toothed lathe, a mouth with teeth, a group of parts scaled about a joint, the board check as a line
+  of `build()`, a warning when a decal's ray lands on another part than the one aimed at.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
