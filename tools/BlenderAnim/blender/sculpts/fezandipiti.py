@@ -31,8 +31,8 @@ BEAK = "#E35C9F"
 RED, INK = "#D2322E", "#16141A"
 CLAW = "#1E1E24"
 
-H = np.array([0.0, -0.095, 0.835])
-SC = 1.22                                   # the head a fifth larger than measured: it reads at the game's size
+H = np.array([0.0, -0.15, 0.79])            # carried forward of the chest on the neck's S
+SC = 1.8                                    # the head nearly twice as large as measured: in the game it was a speck
 HR = np.array([0.066, 0.075, 0.068]) * SC
 EYEZ = H[2] + 0.007 * SC
 
@@ -68,7 +68,8 @@ def ribbon(pts, width, thick, face=(0, 0, 1), u0=0.0, u1=1.0, taper=0.6):
 def add_body(k):
     k.add("body", ell((0, 0.02, 0.405), (0.13, 0.15, 0.2), rot=(-12, 0, 0)), BLACK, "body")
     k.add("breast", ell((0, -0.07, 0.49), (0.1, 0.085, 0.115)), BLACK, "body")
-    k.add("neck", tube([(0, -0.065, 0.55), (0, -0.075, 0.66), (0, -0.09, 0.78)], [0.05, 0.043, 0.04]), WHITE, "neck")
+    k.add("neck", tube([(0, -0.06, 0.55), (0, -0.05, 0.62), (0, -0.095, 0.68), (0, -0.15, 0.71)],
+                       [0.066, 0.06, 0.056, 0.055]), WHITE, "neck")
     # the thin orange line round the neck's root, dipping to a point in front
     def collar(P):
         rho = np.hypot(P[:, 0], P[:, 1] + 0.062)
@@ -80,28 +81,31 @@ def add_body(k):
 def add_head(k):
     k.add("head", ell(H, HR), WHITE, "head")
     # the black cap over the crown, the red-orange mask across the eyes from the beak's root round the sides
-    k.paint(lambda P: inside(EYEZ + 0.013 * SC - 0.02 * (P[:, 1] - H[1]) - P[:, 2], 0.002), BLACK, on=["head"])
+    k.paint(lambda P: inside(EYEZ + 0.013 * SC - 0.5 * np.clip(P[:, 1] - H[1] - 0.02, 0, 1) - P[:, 2], 0.002), BLACK, on=["head"])
     k.paint(lambda P: inside(np.abs(P[:, 2] - (EYEZ - 0.001 + 0.04 * (P[:, 1] - H[1]))) - 0.017 * SC, 0.002)
             * (P[:, 1] < H[1] + 0.03), MASK, on=["head"])
-    # the small hooked pink beak
-    b = H + np.array((0, -0.068, -0.008)) * SC
-    k.add("beak", hull([b + np.array(o) * SC for o in ((0.018, 0.0, 0.012), (-0.018, 0.0, 0.012), (0.016, 0.0, -0.014),
-                        (-0.016, 0.0, -0.014), (0.008, -0.03, 0.01), (-0.008, -0.03, 0.01),
-                        (0, -0.05, -0.012), (0, -0.04, -0.03))]), BEAK, "head", fuse=False, surface="shell")
-    # the crown of yellow horns, two a side, curving out and up
+    # the hooked pink beak, long, pointing forward and down
+    b = H + np.array((0, -HR[1] * 0.86, -0.012))
+    k.add("beak", hull([b + (0.03, 0.02, 0.022), b + (-0.03, 0.02, 0.022), b + (0.027, 0.02, -0.024),
+                        b + (-0.027, 0.02, -0.024), b + (0.014, -0.05, 0.012), b + (-0.014, -0.05, 0.012),
+                        b + (0.008, -0.05, -0.018), b + (-0.008, -0.05, -0.018), b + (0, -0.09, -0.03),
+                        b + (0, -0.075, -0.055)]), BEAK, "head", fuse=False, surface="shell")
+    # the crown of yellow horns, two a side, curving out and up from the cap
+    top0, top1 = np.array((0, -0.095, 0.903)), H + np.array((0, 0, HR[2]))
+    def horn(q):
+        return top1 + (np.array(q, float) - top0) * 1.35
     for s in (1, -1):
         for i, (root, mid, tip) in enumerate((
-                ((0.03, -0.1, 0.895), (0.075, -0.1, 0.93), (0.085, -0.095, 0.99)),
-                ((0.04, -0.06, 0.893), (0.1, -0.05, 0.9), (0.125, -0.03, 0.945)))):
+                ((0.03, -0.1, 0.885), (0.075, -0.1, 0.93), (0.085, -0.095, 0.99)),
+                ((0.045, -0.06, 0.88), (0.1, -0.05, 0.9), (0.125, -0.03, 0.945)))):
             m = np.array([s, 1, 1.0])
-            pts = [hp(np.array(root) * m), hp(np.array(mid) * m), hp(np.array(tip) * m)]
-            k.add(f"horn{i}{'R' if s > 0 else 'L'}", outward(tube(pts, [0.019, 0.013, 0.006], seg=12)), YELLOW,
+            pts = [horn(np.array(root) * m), horn(np.array(mid) * m), horn(np.array(tip) * m)]
+            k.add(f"horn{i}{'R' if s > 0 else 'L'}", outward(tube(pts, [0.024, 0.016, 0.007], seg=12)), YELLOW,
                   "head", fuse=False, surface="shell")
-    # a pink plume falling from each cheek, curling up and in at its end
-    pts = [(0.05, -0.11, 0.82), (0.085, -0.115, 0.78), (0.105, -0.11, 0.71), (0.1, -0.1, 0.66), (0.08, -0.105, 0.65),
-           (0.075, -0.115, 0.675)]
-    pts = [hp(q) for q in pts]
-    k.add("plume", outward(tube(pts, [0.02, 0.021, 0.02, 0.019, 0.017, 0.016], seg=12)), PINK, "head",
+    # a thick pink plume from each cheek, sweeping out and back from the head and curling at its end
+    pts = [(0.095, -0.18, 0.775), (0.14, -0.12, 0.765), (0.165, -0.04, 0.74), (0.17, 0.03, 0.69), (0.16, 0.06, 0.645),
+           (0.14, 0.045, 0.635)]
+    k.add("plume", outward(tube(pts, [0.028, 0.029, 0.027, 0.025, 0.022, 0.02], seg=14)), PINK, "head",
           fuse=False, mirror=True, surface="fur")
 
 
@@ -117,7 +121,7 @@ def eye_colour():
         c[np.hypot((u - 0.3) / 0.15, (v - 0.12) / 0.2) < 1] = CW
         rr = np.hypot(u, v) / np.array([rim(t_) for t_ in np.arctan2(v, u)])
         c[(rr > 0.78) & (v > 0.0)] = CI
-        c[rr > 0.86] = CI
+        c[rr > 0.86] = srgb("#F6E8DF")
         return c
     return eye
 
@@ -125,12 +129,12 @@ def eye_colour():
 def lay_eyes(k, state):
     look = eye_look(state, eye_colour(), srgb(MASK), srgb(INK), line=0.17)
     for s in (1, -1):
-        p, n = lt.on_head(0.038 * SC * s, EYEZ, H, HR)
+        p, n = lt.on_head(0.04 * SC * s, EYEZ, H, HR)
         n = unit(n[0] * 1.1, n[1] - 0.25, n[2])
         if s > 0:
-            k.decal(p, n, (0.025, 0.019), look, eps=0.0015, outline=polygon(OUTLINE), rings=20, segs=56)
+            k.decal(p, n, (0.04, 0.03), look, eps=0.0015, outline=polygon(OUTLINE), rings=20, segs=56)
         else:
-            k.decal(p, n, (0.025, 0.019), lambda u, v: look(-u, v), eps=0.0015,
+            k.decal(p, n, (0.04, 0.03), lambda u, v: look(-u, v), eps=0.0015,
                     outline=polygon([(-a, b) for a, b in OUTLINE]), rings=20, segs=56)
 
 
@@ -140,16 +144,17 @@ def add_wings(k):
     # the wing's lower back end red-orange: the flight feathers' roots
     k.paint(lambda P: inside(P[:, 2] - (0.31 + 0.45 * (P[:, 1] - 0.02)), 0.003) * (np.abs(P[:, 0]) > 0.085), ORANGE,
             on=["wing"])
-    for i, (y, z, ln) in enumerate(((-0.04, 0.29, 0.14), (0.02, 0.27, 0.16), (0.08, 0.27, 0.17), (0.14, 0.29, 0.16),
-                                    (0.19, 0.33, 0.13))):
-        root = np.array((0.142, y, z))
-        d = unit(0.25, 0.4 + 0.1 * i, -1.0)
-        a = unit(0, 1, 0.3)
+    for i, (y, z, ln, lean) in enumerate(((-0.02, 0.29, 0.19, 0.3), (0.07, 0.28, 0.22, 0.55), (0.16, 0.31, 0.19, 0.85))):
+        root = np.array((0.14, y, z))
+        d = unit(0.22, lean, -1.0)
+        a = unit(0, 1, 0.35)
+        n = np.array((1.0, 0, 0))
         tip = root + d * ln
-        k.add(f"flight{i}", hull([root + a * 0.03 + (0.013, 0, 0), root + a * 0.03 - (0.013, 0, 0),
-                                  root - a * 0.03 + (0.013, 0, 0), root - a * 0.03 - (0.013, 0, 0),
-                                  tip + a * 0.014, tip - a * 0.01]), ORANGE if i % 2 == 0 else DEEP, "wing{s}",
-              fuse=False, mirror=True, surface="fur")
+        k.add(f"flight{i}", hull([root + a * 0.065 + n * 0.016, root + a * 0.065 - n * 0.016,
+                                  root - a * 0.06 + n * 0.016, root - a * 0.06 - n * 0.016,
+                                  root + d * ln * 0.55 + a * 0.055 + n * 0.008, root + d * ln * 0.55 - a * 0.045,
+                                  tip]), ORANGE if i % 2 == 0 else DEEP, "wing{s}", fuse=False, mirror=True,
+              surface="fur")
 
 
 def add_tail(k):
@@ -158,14 +163,20 @@ def add_tail(k):
     def p(back, z, side=0.0):
         q = out * back + np.array([side, 0, 0])
         return (q[0], 0.12 + q[1], z)
-    path = [p(0.0, 0.42), p(0.1, 0.34), p(0.19, 0.22), p(0.26, 0.115), p(0.31, 0.07), p(0.37, 0.065), p(0.41, 0.075)]
-    face = unit(-out[1], out[0], 0.0)           # the tail's broad faces turned to the side and up
-    face = unit(face[0] * 0.6, face[1] * 0.6, 0.8)
-    k.add("tail", ribbon(path, 0.1, 0.022, face=face, taper=0.55), ORANGE, "tail", fuse=False, surface="fur")
-    k.add("tailband", ribbon(path, 0.104, 0.03, face=face, u0=0.6, u1=0.7, taper=0.55), WHITE, "tail", fuse=False,
-          surface="fur")
-    k.add("tailtip", ribbon(path, 0.104, 0.03, face=face, u0=0.86, u1=1.0, taper=0.55), WHITE, "tail", fuse=False,
-          surface="fur")
+    # a fan of three long tapering feathers, the middle one longest
+    for j, (turn, ln, w) in enumerate(((-18, 0.36, 0.07), (8, 0.42, 0.08), (34, 0.34, 0.07))):
+        t = math.radians(turn)
+        o = np.array((out[0] * math.cos(t) - out[1] * math.sin(t), out[0] * math.sin(t) + out[1] * math.cos(t), 0))
+        def q(back, z):
+            return (o[0] * back, 0.12 + o[1] * back, z)
+        f = ln / 0.4
+        path = [q(0.0, 0.42), q(0.1 * f, 0.34), q(0.19 * f, 0.23), q(0.27 * f, 0.13), q(0.33 * f, 0.085),
+                q(0.4 * f, 0.075)]
+        face = unit(-o[1] * 0.6, o[0] * 0.6, 0.8)
+        k.add(f"tail{j}", ribbon(path, w, 0.022, face=face, taper=0.8), ORANGE if j != 1 else DEEP, "tail",
+              fuse=False, surface="fur")
+        k.add(f"tailband{j}", ribbon(path, w + 0.004, 0.03, face=face, u0=0.62, u1=0.72, taper=0.8), WHITE, "tail",
+              fuse=False, surface="fur")
     k.add("tailroot", ell((0, 0.14, 0.42), (0.07, 0.07, 0.06)), BLACK, "tail")
 
 

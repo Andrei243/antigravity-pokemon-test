@@ -39,7 +39,7 @@ H = np.array([0.0, 0.0, 0.555])
 HR = np.array([0.1, 0.092, 0.118])
 FACE = np.array([0.0, -0.05, 0.51])
 FR = np.array([0.074, 0.05, 0.074])
-MASK = np.array([-0.215, -0.075, 0.585])      # the mask's middle, held up beside the head on the left
+MASK = np.array([-0.19, -0.06, 0.6])           # the mask's middle, held up close beside the head on the left, overlapping it
 
 
 def add_body(k):
@@ -64,11 +64,11 @@ def add_body(k):
 
 
 def add_legs(k):
-    k.add("leg", tube([(0.042, 0.0, 0.32), (0.048, -0.004, 0.17), (0.052, -0.008, 0.05)], [0.034, 0.03, 0.027]),
+    k.add("leg", tube([(0.05, 0.0, 0.32), (0.056, -0.004, 0.17), (0.06, -0.008, 0.06)], [0.05, 0.045, 0.04]),
           DARK, "leg{s}", mirror=True)
-    k.add("foot", ell((0.054, -0.025, 0.026), (0.032, 0.05, 0.027)), DARK, "leg{s}", mirror=True)
+    k.add("foot", ell((0.062, -0.035, 0.036), (0.046, 0.072, 0.037)), DARK, "leg{s}", mirror=True)
     for j, (d, col) in enumerate((((0.4, -0.6, 0.7), GREEN), ((-0.3, -0.7, 0.65), LIGHT))):
-        k.add(f"footleaf{j}", outward(leaf((0.054, -0.05, 0.045), d, 0.04, 0.014, thick=0.008)), col, "leg{s}",
+        k.add(f"footleaf{j}", outward(leaf((0.062, -0.075, 0.06), d, 0.05, 0.017, thick=0.009)), col, "leg{s}",
               fuse=False, mirror=True, surface="leaf")
 
 
@@ -77,7 +77,7 @@ def add_arms(k):
     s, e, w = np.array((0.065, -0.005, 0.455)), np.array((0.1, -0.03, 0.38)), np.array((0.095, -0.06, 0.31))
     k.add("armR", tube([s, e, w], [0.022, 0.02, 0.019]), DARK, "armR")
     k.add("handR", ell(w + (0, -0.008, -0.012), (0.022, 0.022, 0.022)), DARK, "armR")
-    s, e, w = np.array((-0.065, -0.005, 0.455)), np.array((-0.125, -0.04, 0.43)), np.array((-0.165, -0.075, 0.5))
+    s, e, w = np.array((-0.065, -0.005, 0.455)), np.array((-0.12, -0.05, 0.42)), np.array((-0.135, -0.085, 0.5))
     k.add("armL", tube([s, e, w], [0.022, 0.02, 0.019]), DARK, "armL")
     k.add("handL", ell(w, (0.022, 0.022, 0.022)), DARK, "armL")
 
@@ -114,13 +114,13 @@ def add_head(k):
 def add_flaps(k):
     """The two great rounded green flaps from the hood's sides, drooping out and down, pale along their lower edges."""
     for s in (1, -1):
-        c = np.array((0.165 * s, 0.035, 0.47))
-        k.add("flap" + ("R" if s > 0 else "L"), ell(c, (0.115, 0.05, 0.085), rot=(0, -28 * s, 22 * s),
+        c = np.array((0.19 * s, 0.04, 0.465))
+        k.add("flap" + ("R" if s > 0 else "L"), ell(c, (0.144, 0.0625, 0.106), rot=(0, -28 * s, 22 * s),
                                                     deform=boxy(2.4)), FLAP, "head")
-        k.add("flaproot" + ("R" if s > 0 else "L"), ell((0.085 * s, 0.025, 0.53), (0.05, 0.05, 0.06)), FLAP, "head")
+        k.add("flaproot" + ("R" if s > 0 else "L"), ell((0.09 * s, 0.03, 0.53), (0.062, 0.062, 0.075)), FLAP, "head")
     def pale(P):
         x, y, z = np.abs(P[:, 0]), P[:, 1], P[:, 2]
-        edge = 0.42 - 0.35 * (x - 0.12)
+        edge = 0.405 - 0.35 * (x - 0.14)
         return inside(z - edge, 0.003) * (x > 0.08)
     k.paint(pale, FLAPLIGHT, on=["flap"])
 
@@ -129,7 +129,7 @@ def add_flaps(k):
 MN = unit(0.35, -1, 0.0)                     # the way the mask looks: forward and a little in
 
 
-MS = 1.22                                    # the mask as large as the head, as the pictures draw it
+MS = 1.62                                    # the mask taller than the hooded head, as the pictures draw it
 
 
 def add_mask(k):
@@ -176,13 +176,13 @@ def mask_face(k):
     crescent = polygon([(-1, -0.3), (-0.5, 0.38), (0.5, 0.38), (1, -0.3), (0.5, -0.06), (-0.5, -0.06)])
     for s in (1, -1):
         c = MASK + np.array((0.04 * s, -0.03, 0.02)) * MS
-        k.decal(c, MN, (0.032, 0.032), eye, eps=0.0018, outline=crescent, rings=8, segs=48, up=(0, 0, 1))
+        k.decal(c, MN, (0.044, 0.044), eye, eps=0.0018, outline=crescent, rings=8, segs=48, up=(0, 0, 1))
     def grin(u, v):
         c = np.tile(srgb(TEETH), (len(u), 1))
         zig = 0.05 + 0.4 * lt_tri(u * 1.6)
         c[np.abs(v - zig) < 0.2] = CM
         return c
-    k.decal(MASK + np.array((0.0, -0.03, -0.024)) * MS, MN, (0.064, 0.028), grin, eps=0.0018, rings=10, segs=60,
+    k.decal(MASK + np.array((0.0, -0.03, -0.024)) * MS, MN, (0.088, 0.04), grin, eps=0.0018, rings=10, segs=60,
             outline=polygon([(-1, 0.7), (1, 0.7), (0.85, -0.6), (-0.85, -0.6)]))
 
 
