@@ -43,7 +43,10 @@ public class SoundTypeTests
     public void NoSpeciesOrMoveOfTheGamesHasItAndTheirSoundMovesKeepTheirTypes()
     {
         Assert.DoesNotContain(PokemonDatabase.GetAll(), s => s.PrimaryType == PokemonType.Sound || s.SecondaryType == PokemonType.Sound
-            || s.Forms?.Any(f => f.Types?.Contains(PokemonType.Sound) == true) == true);
+            || s.Forms?.Any(f => f.Types?.Contains(PokemonType.Sound) == true && !f.Name.EndsWith("-Carpathia")) == true);
+        // Carpathia's own (plan 46 · CP3) have it: its species and its forms of the games' species
+        Assert.Contains(PokemonDatabase.Carpathia(), s => s.PrimaryType == PokemonType.Sound || s.SecondaryType == PokemonType.Sound);
+        Assert.Contains(PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()), f => f.Name.EndsWith("-Carpathia") && f.Types!.Contains(PokemonType.Sound));
         Assert.All(MoveDatabase.GetAll().Where(m => m.Type == PokemonType.Sound), m => Assert.Equal(0, m.Generation));
         Assert.Equal(PokemonType.Normal, MoveDatabase.Get("Hyper Voice").Type);
         Assert.Equal(PokemonType.Normal, MoveDatabase.Get("Boomburst").Type);
@@ -79,8 +82,8 @@ public class SoundTypeTests
     {
         Assert.Equal(18, TypeChart.GamesTypes.Count);
         Assert.DoesNotContain(PokemonType.Sound, TypeChart.GamesTypes);
-        // With no species of it in the data yet, a choice of a type offers none of it
-        Assert.DoesNotContain(PokemonType.Sound, TypeChart.TypesWithSpecies);
+        // With species of it in the data since plan 46 · CP3, a choice of a type (the Monotype run, the Pokédex's search) offers it
+        Assert.Contains(PokemonType.Sound, TypeChart.TypesWithSpecies);
         Assert.Equal(18, PokemonPlatinumEngine.UI.HelpScreen.Types.Length);
         // The randomiser's shuffle is the eighteen's: a Sound species keeps its type, the others are dealt as ever
         var random = Randomizer.Of(new RandomizerOptions { Seed = 12345, Types = true });

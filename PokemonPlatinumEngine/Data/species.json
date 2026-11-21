@@ -386465,7 +386465,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Crunch"
+        "moveName": "Bite"
       },
       {
         "level": 1,
@@ -386484,31 +386484,35 @@
         "moveName": "Leech Seed"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Pursuit"
       },
       {
-        "level": 20,
+        "level": 18,
         "moveName": "Razor Leaf"
       },
       {
-        "level": 25,
+        "level": 23,
         "moveName": "Stun Spore"
       },
       {
-        "level": 30,
+        "level": 28,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 35,
-        "moveName": "Horn Leech"
-      },
-      {
-        "level": 40,
+        "level": 32,
         "moveName": "Fake Tears"
       },
       {
-        "level": 46,
+        "level": 37,
+        "moveName": "Horn Leech"
+      },
+      {
+        "level": 42,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 47,
         "moveName": "Seed Bomb"
       },
       {
@@ -386875,7 +386879,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Iron Head"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -386890,35 +386894,39 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Ember"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Flame Charge"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Metal Sound"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Fire Fang"
       },
       {
-        "level": 39,
+        "level": 35,
         "moveName": "Steel Wing"
       },
       {
-        "level": 44,
+        "level": 40,
+        "moveName": "Iron Head"
+      },
+      {
+        "level": 46,
         "moveName": "Blaze Kick"
       },
       {
-        "level": 50,
+        "level": 51,
         "moveName": "Flamethrower"
       },
       {
@@ -387038,7 +387046,7 @@
       },
       {
         "level": 26,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 33,
@@ -387185,7 +387193,7 @@
       },
       {
         "level": 30,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 39,
@@ -387298,6 +387306,10 @@
     "dexEntry": "Buciumbill is an Alphorn Pelican Pokémon, Water- and Sound-type, first found in Carpathia. It stands 1.9 m tall and weighs 62.0 kg. It evolves from Pelireed.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Peck"
       },
@@ -387310,11 +387322,15 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Water Gun"
       },
       {
-        "level": 21,
+        "level": 17,
+        "moveName": "Round"
+      },
+      {
+        "level": 24,
         "moveName": "Water Pulse"
       },
       {
@@ -387322,11 +387338,15 @@
         "moveName": "Bubble Beam"
       },
       {
-        "level": 39,
-        "moveName": "Scald"
+        "level": 37,
+        "moveName": "Dive"
       },
       {
-        "level": 47,
+        "level": 43,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 50,
         "moveName": "Muddy Water"
       },
       {
@@ -387441,20 +387461,32 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 13,
+        "level": 9,
         "moveName": "Air Cutter"
       },
       {
-        "level": 22,
-        "moveName": "Fly"
+        "level": 14,
+        "moveName": "Round"
       },
       {
-        "level": 31,
+        "level": 19,
         "moveName": "Screech"
       },
       {
-        "level": 40,
+        "level": 25,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 30,
+        "moveName": "Fly"
+      },
+      {
+        "level": 35,
         "moveName": "Feather Dance"
+      },
+      {
+        "level": 40,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 110,
@@ -387563,7 +387595,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Bug Buzz"
+        "moveName": "Round"
       },
       {
         "level": 1,
@@ -387578,24 +387610,32 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Gust"
       },
       {
-        "level": 19,
-        "moveName": "Round"
+        "level": 15,
+        "moveName": "Snarl"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Screech"
       },
       {
-        "level": 33,
+        "level": 26,
         "moveName": "Bounce"
       },
       {
-        "level": 41,
+        "level": 32,
         "moveName": "Feather Dance"
+      },
+      {
+        "level": 37,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 43,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 48,
@@ -387704,7 +387744,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Bug Buzz"
+        "moveName": "Round"
       },
       {
         "level": 1,
@@ -387719,28 +387759,36 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Gust"
       },
       {
-        "level": 19,
-        "moveName": "Round"
+        "level": 16,
+        "moveName": "Snarl"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Screech"
       },
       {
-        "level": 34,
+        "level": 27,
         "moveName": "Air Slash"
       },
       {
-        "level": 41,
+        "level": 33,
+        "moveName": "Feather Dance"
+      },
+      {
+        "level": 39,
         "moveName": "Bounce"
       },
       {
-        "level": 49,
-        "moveName": "Feather Dance"
+        "level": 44,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 50,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -387992,36 +388040,40 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Tackle"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Covet"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Growl"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Headbutt"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 39,
+        "level": 35,
         "moveName": "Sand Attack"
       },
       {
-        "level": 44,
+        "level": 40,
         "moveName": "Slam"
       },
       {
-        "level": 50,
+        "level": 46,
         "moveName": "Take Down"
+      },
+      {
+        "level": 51,
+        "moveName": "Earthquake"
       },
       {
         "level": 56,
@@ -388247,6 +388299,10 @@
     "dexEntry": "Fiddlecrick is a Fiddler Pokémon, Bug- and Sound-type, first found in Carpathia. It stands 0.8 m tall and weighs 9.0 kg. It evolves from Chirpet.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Pound"
       },
@@ -388263,24 +388319,28 @@
         "moveName": "String Shot"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Struggle Bug"
       },
       {
-        "level": 34,
+        "level": 30,
+        "moveName": "Round"
+      },
+      {
+        "level": 37,
         "moveName": "Signal Beam"
       },
       {
-        "level": 41,
+        "level": 43,
         "moveName": "X-Scissor"
       },
       {
-        "level": 49,
-        "moveName": "Bug Buzz"
+        "level": 50,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -388552,28 +388612,36 @@
         "moveName": "Infestation"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 19,
-        "moveName": "Struggle Bug"
+        "level": 16,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Charm"
       },
       {
-        "level": 34,
+        "level": 27,
+        "moveName": "Struggle Bug"
+      },
+      {
+        "level": 33,
         "moveName": "Signal Beam"
       },
       {
-        "level": 41,
+        "level": 39,
         "moveName": "X-Scissor"
       },
       {
-        "level": 49,
+        "level": 44,
         "moveName": "Bug Buzz"
+      },
+      {
+        "level": 50,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -389487,36 +389555,44 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Leer"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 21,
-        "moveName": "Round"
+        "level": 18,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 27,
+        "level": 23,
         "moveName": "Growl"
       },
       {
-        "level": 33,
+        "level": 28,
+        "moveName": "Round"
+      },
+      {
+        "level": 32,
         "moveName": "Headbutt"
       },
       {
-        "level": 39,
+        "level": 37,
         "moveName": "Charm"
       },
       {
-        "level": 44,
+        "level": 42,
         "moveName": "Tri Attack"
       },
       {
-        "level": 50,
+        "level": 47,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 51,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -389982,24 +390058,32 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Charm"
       },
       {
-        "level": 18,
+        "level": 14,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 19,
         "moveName": "Round"
       },
       {
-        "level": 26,
-        "moveName": "Dazzling Gleam"
-      },
-      {
-        "level": 33,
+        "level": 25,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 40,
+        "level": 30,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 35,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 40,
+        "moveName": "Moonblast"
       },
       {
         "level": 110,
@@ -390054,9 +390138,7 @@
       "TR83"
     ],
     "eggMoves": [
-      "Moonblast",
-      "Sweet Kiss",
-      "Draining Kiss"
+      "Sweet Kiss"
     ],
     "evolutions": [
       {
@@ -390107,7 +390189,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Shadow Ball"
+        "moveName": "Hex"
       },
       {
         "level": 1,
@@ -390122,32 +390204,40 @@
         "moveName": "Astonish"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Charm"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 24,
+        "level": 20,
         "moveName": "Draining Kiss"
       },
       {
-        "level": 30,
+        "level": 25,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 37,
-        "moveName": "Hex"
+        "level": 30,
+        "moveName": "Ominous Wind"
       },
       {
-        "level": 43,
+        "level": 35,
+        "moveName": "Confuse Ray"
+      },
+      {
+        "level": 40,
         "moveName": "Dazzling Gleam"
       },
       {
-        "level": 50,
-        "moveName": "Confuse Ray"
+        "level": 46,
+        "moveName": "Shadow Ball"
+      },
+      {
+        "level": 51,
+        "moveName": "Play Rough"
       },
       {
         "level": 56,
@@ -390424,36 +390514,40 @@
         "moveName": "Leech Seed"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Sand Tomb"
       },
       {
-        "level": 20,
+        "level": 18,
         "moveName": "Razor Leaf"
       },
       {
-        "level": 25,
+        "level": 23,
         "moveName": "Stun Spore"
       },
       {
-        "level": 30,
+        "level": 28,
         "moveName": "Horn Leech"
       },
       {
-        "level": 35,
+        "level": 32,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 40,
+        "level": 37,
         "moveName": "Sand Attack"
       },
       {
-        "level": 46,
+        "level": 42,
         "moveName": "Seed Bomb"
       },
       {
-        "level": 51,
+        "level": 47,
         "moveName": "Leaf Blade"
+      },
+      {
+        "level": 51,
+        "moveName": "Earthquake"
       },
       {
         "level": 56,
@@ -390724,7 +390818,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Crunch"
+        "moveName": "Bite"
       },
       {
         "level": 1,
@@ -390739,27 +390833,31 @@
         "moveName": "Pursuit"
       },
       {
-        "level": 11,
-        "moveName": "Covet"
-      },
-      {
-        "level": 17,
+        "level": 10,
         "moveName": "Growl"
       },
       {
-        "level": 24,
+        "level": 16,
+        "moveName": "Covet"
+      },
+      {
+        "level": 21,
         "moveName": "Headbutt"
       },
       {
-        "level": 30,
-        "moveName": "Sucker Punch"
-      },
-      {
-        "level": 37,
+        "level": 27,
         "moveName": "Fake Tears"
       },
       {
-        "level": 43,
+        "level": 33,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 39,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 44,
         "moveName": "Slam"
       },
       {
@@ -391062,19 +391160,31 @@
         "moveName": "Double Kick"
       },
       {
-        "level": 14,
+        "level": 11,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 25,
+        "level": 17,
         "moveName": "Revenge"
       },
       {
-        "level": 35,
+        "level": 24,
+        "moveName": "Round"
+      },
+      {
+        "level": 30,
         "moveName": "Brick Break"
       },
       {
-        "level": 46,
+        "level": 37,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 43,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 50,
         "moveName": "Hammer Arm"
       },
       {
@@ -391306,28 +391416,36 @@
         "moveName": "Infestation"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 19,
-        "moveName": "Struggle Bug"
+        "level": 16,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Charm"
       },
       {
-        "level": 34,
+        "level": 27,
+        "moveName": "Struggle Bug"
+      },
+      {
+        "level": 33,
         "moveName": "Signal Beam"
       },
       {
-        "level": 41,
+        "level": 39,
         "moveName": "X-Scissor"
       },
       {
-        "level": 49,
+        "level": 44,
         "moveName": "Bug Buzz"
+      },
+      {
+        "level": 50,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -392114,7 +392232,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Shadow Ball"
+        "moveName": "Hex"
       },
       {
         "level": 1,
@@ -392133,32 +392251,36 @@
         "moveName": "Leech Seed"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Astonish"
       },
       {
-        "level": 20,
+        "level": 18,
         "moveName": "Razor Leaf"
       },
       {
-        "level": 25,
+        "level": 23,
         "moveName": "Stun Spore"
       },
       {
-        "level": 30,
-        "moveName": "Hex"
+        "level": 28,
+        "moveName": "Ominous Wind"
       },
       {
-        "level": 35,
-        "moveName": "Giga Drain"
-      },
-      {
-        "level": 40,
+        "level": 32,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 46,
+        "level": 37,
+        "moveName": "Giga Drain"
+      },
+      {
+        "level": 42,
         "moveName": "Seed Bomb"
+      },
+      {
+        "level": 47,
+        "moveName": "Shadow Ball"
       },
       {
         "level": 51,
@@ -392378,7 +392500,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -392393,24 +392515,28 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Fury Cutter"
       },
       {
-        "level": 21,
+        "level": 19,
         "moveName": "U-turn"
       },
       {
-        "level": 30,
-        "moveName": "Rock Slide"
+        "level": 26,
+        "moveName": "Power Gem"
       },
       {
-        "level": 39,
+        "level": 34,
         "moveName": "X-Scissor"
       },
       {
-        "level": 47,
+        "level": 41,
         "moveName": "First Impression"
+      },
+      {
+        "level": 49,
+        "moveName": "Stone Edge"
       },
       {
         "level": 56,
@@ -392524,24 +392650,28 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Sand Attack"
       },
       {
-        "level": 18,
+        "level": 16,
         "moveName": "Covet"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 33,
+        "level": 28,
         "moveName": "Dig"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Earthquake"
       },
       {
         "level": 110,
@@ -392588,9 +392718,9 @@
       "HM08"
     ],
     "eggMoves": [
-      "Earthquake",
       "Bulldoze",
-      "Mud Shot"
+      "Mud Shot",
+      "Earth Power"
     ],
     "evolutions": [
       {
@@ -392639,7 +392769,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Iron Head"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -392654,32 +392784,40 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Sand Attack"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Bullet Punch"
       },
       {
-        "level": 24,
+        "level": 20,
+        "moveName": "Metal Sound"
+      },
+      {
+        "level": 25,
         "moveName": "Bulldoze"
       },
       {
         "level": 30,
-        "moveName": "Metal Sound"
-      },
-      {
-        "level": 37,
         "moveName": "Steel Wing"
       },
       {
-        "level": 43,
+        "level": 35,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 50,
+        "level": 40,
         "moveName": "Dig"
+      },
+      {
+        "level": 46,
+        "moveName": "Iron Head"
+      },
+      {
+        "level": 51,
+        "moveName": "High Horsepower"
       },
       {
         "level": 56,
@@ -393204,7 +393342,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Dark Pulse"
+        "moveName": "Snarl"
       },
       {
         "level": 1,
@@ -393219,27 +393357,31 @@
         "moveName": "Infestation"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Pursuit"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Struggle Bug"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Fake Tears"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Signal Beam"
       },
       {
-        "level": 43,
+        "level": 39,
+        "moveName": "Dark Pulse"
+      },
+      {
+        "level": 44,
         "moveName": "X-Scissor"
       },
       {
@@ -393483,15 +393625,19 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Leer"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 24,
+        "level": 20,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 25,
         "moveName": "Round"
       },
       {
@@ -393499,16 +393645,20 @@
         "moveName": "Headbutt"
       },
       {
-        "level": 37,
+        "level": 35,
         "moveName": "Charm"
       },
       {
-        "level": 43,
+        "level": 40,
         "moveName": "Tri Attack"
       },
       {
-        "level": 50,
+        "level": 46,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 51,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -393756,32 +393906,36 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Covet"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Growl"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Headbutt"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Sand Attack"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Slam"
       },
       {
-        "level": 50,
+        "level": 44,
         "moveName": "Take Down"
+      },
+      {
+        "level": 50,
+        "moveName": "Earthquake"
       },
       {
         "level": 56,
@@ -393897,23 +394051,27 @@
         "moveName": "Pursuit"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Fake Tears"
       },
       {
-        "level": 16,
+        "level": 14,
+        "moveName": "Bite"
+      },
+      {
+        "level": 19,
         "moveName": "Covet"
       },
       {
-        "level": 22,
-        "moveName": "Sucker Punch"
-      },
-      {
-        "level": 28,
+        "level": 25,
         "moveName": "Parting Shot"
       },
       {
-        "level": 34,
+        "level": 30,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 35,
         "moveName": "Crunch"
       },
       {
@@ -393967,9 +394125,9 @@
       "HM08"
     ],
     "eggMoves": [
-      "Knock Off",
       "Night Slash",
-      "Assurance"
+      "Assurance",
+      "Payback"
     ],
     "evolutions": [
       {
@@ -394033,35 +394191,39 @@
         "moveName": "Double Kick"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Fake Tears"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Pursuit"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Bite"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Parting Shot"
       },
       {
-        "level": 33,
+        "level": 30,
+        "moveName": "Knock Off"
+      },
+      {
+        "level": 35,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 39,
+        "level": 40,
         "moveName": "Brick Break"
       },
       {
-        "level": 44,
+        "level": 46,
         "moveName": "Crunch"
       },
       {
-        "level": 50,
+        "level": 51,
         "moveName": "Foul Play"
       },
       {
@@ -394180,20 +394342,24 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Covet"
       },
       {
-        "level": 22,
+        "level": 18,
         "moveName": "Rock Slide"
       },
       {
-        "level": 31,
+        "level": 26,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 33,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -394244,9 +394410,9 @@
       "HM08"
     ],
     "eggMoves": [
-      "Stone Edge",
       "Rock Throw",
-      "Smack Down"
+      "Smack Down",
+      "Head Smash"
     ],
     "evolutions": [
       {
@@ -394314,23 +394480,27 @@
         "moveName": "Double Kick"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Rock Throw"
       },
       {
-        "level": 26,
+        "level": 24,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 30,
         "moveName": "Brick Break"
       },
       {
-        "level": 34,
+        "level": 37,
         "moveName": "Rock Slide"
       },
       {
-        "level": 41,
+        "level": 43,
         "moveName": "Power Gem"
       },
       {
-        "level": 49,
+        "level": 50,
         "moveName": "Stone Edge"
       },
       {
@@ -394570,7 +394740,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Extrasensory"
+        "moveName": "Confusion"
       },
       {
         "level": 1,
@@ -394589,31 +394759,35 @@
         "moveName": "Leech Seed"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Stored Power"
       },
       {
-        "level": 20,
-        "moveName": "Razor Leaf"
-      },
-      {
-        "level": 25,
+        "level": 18,
         "moveName": "Stun Spore"
       },
       {
-        "level": 30,
+        "level": 23,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 28,
         "moveName": "Psybeam"
       },
       {
-        "level": 35,
-        "moveName": "Giga Drain"
-      },
-      {
-        "level": 40,
+        "level": 32,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 46,
+        "level": 37,
+        "moveName": "Giga Drain"
+      },
+      {
+        "level": 42,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 47,
         "moveName": "Seed Bomb"
       },
       {
@@ -394870,23 +395044,27 @@
         "moveName": "Sand Attack"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Bulldoze"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Headbutt"
       },
       {
-        "level": 34,
+        "level": 30,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 41,
+        "level": 37,
         "moveName": "Slam"
       },
       {
-        "level": 49,
+        "level": 43,
+        "moveName": "High Horsepower"
+      },
+      {
+        "level": 50,
         "moveName": "Earthquake"
       },
       {
@@ -395272,7 +395450,7 @@
       },
       {
         "level": 4,
-        "moveName": "Gust"
+        "moveName": "Ruination"
       },
       {
         "level": 8,
@@ -395280,30 +395458,34 @@
       },
       {
         "level": 12,
+        "moveName": "Gust"
+      },
+      {
+        "level": 16,
         "moveName": "Pursuit"
       },
       {
-        "level": 17,
-        "moveName": "Snarl"
-      },
-      {
-        "level": 21,
+        "level": 19,
         "moveName": "Parting Shot"
       },
       {
-        "level": 25,
+        "level": 23,
+        "moveName": "Snarl"
+      },
+      {
+        "level": 27,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 29,
-        "moveName": "Air Slash"
-      },
-      {
-        "level": 33,
+        "level": 31,
         "moveName": "Feather Dance"
       },
       {
-        "level": 37,
+        "level": 35,
+        "moveName": "Air Slash"
+      },
+      {
+        "level": 39,
         "moveName": "Dark Pulse"
       },
       {
@@ -395423,16 +395605,28 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 16,
+        "level": 10,
         "moveName": "Covet"
       },
       {
+        "level": 16,
+        "moveName": "Round"
+      },
+      {
+        "level": 22,
+        "moveName": "Screech"
+      },
+      {
         "level": 28,
-        "moveName": "Take Down"
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 34,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 40,
-        "moveName": "Screech"
+        "moveName": "Take Down"
       },
       {
         "level": 110,
@@ -395470,9 +395664,8 @@
       "TM90"
     ],
     "eggMoves": [
-      "Bug Buzz",
-      "Hyper Voice",
-      "Round"
+      "Noble Roar",
+      "Parting Shot"
     ],
     "evolutions": [
       {
@@ -395521,7 +395714,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Iron Head"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -395536,28 +395729,40 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 13,
+        "level": 10,
         "moveName": "Echoed Voice"
       },
       {
+        "level": 16,
+        "moveName": "Screech"
+      },
+      {
         "level": 21,
+        "moveName": "Snarl"
+      },
+      {
+        "level": 27,
         "moveName": "Round"
       },
       {
-        "level": 30,
-        "moveName": "Screech"
+        "level": 33,
+        "moveName": "Metal Sound"
       },
       {
         "level": 39,
         "moveName": "Steel Wing"
       },
       {
-        "level": 47,
-        "moveName": "Metal Sound"
+        "level": 44,
+        "moveName": "Iron Head"
+      },
+      {
+        "level": 50,
+        "moveName": "Bug Buzz"
       },
       {
         "level": 56,
-        "moveName": "Bug Buzz"
+        "moveName": "Hyper Voice"
       },
       {
         "level": 110,
@@ -395808,7 +396013,7 @@
       },
       {
         "level": 39,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 44,
@@ -396041,7 +396246,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -396056,36 +396261,40 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Toxic"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Acid"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Poison Fang"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Poison Powder"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Cross Poison"
       },
       {
-        "level": 39,
-        "moveName": "Rock Slide"
-      },
-      {
-        "level": 44,
+        "level": 35,
         "moveName": "Poison Jab"
       },
       {
-        "level": 50,
+        "level": 40,
+        "moveName": "Power Gem"
+      },
+      {
+        "level": 46,
         "moveName": "Sludge Bomb"
+      },
+      {
+        "level": 51,
+        "moveName": "Stone Edge"
       },
       {
         "level": 56,
@@ -396304,7 +396513,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Iron Head"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -396323,23 +396532,27 @@
         "moveName": "Fury Cutter"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Metal Sound"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Steel Wing"
       },
       {
-        "level": 34,
+        "level": 30,
         "moveName": "U-turn"
       },
       {
-        "level": 41,
+        "level": 37,
+        "moveName": "Iron Head"
+      },
+      {
+        "level": 43,
         "moveName": "X-Scissor"
       },
       {
-        "level": 49,
+        "level": 50,
         "moveName": "First Impression"
       },
       {
@@ -396987,24 +397200,32 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Charm"
       },
       {
-        "level": 18,
+        "level": 14,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 19,
         "moveName": "Round"
       },
       {
-        "level": 26,
-        "moveName": "Dazzling Gleam"
-      },
-      {
-        "level": 33,
+        "level": 25,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 40,
+        "level": 30,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 35,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 40,
+        "moveName": "Moonblast"
       },
       {
         "level": 110,
@@ -397042,9 +397263,7 @@
       "TM90"
     ],
     "eggMoves": [
-      "Moonblast",
-      "Sweet Kiss",
-      "Draining Kiss"
+      "Sweet Kiss"
     ],
     "evolutions": [
       {
@@ -397095,7 +397314,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Ancient Power"
       },
       {
         "level": 1,
@@ -397110,28 +397329,36 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Charm"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Draining Kiss"
       },
       {
-        "level": 34,
+        "level": 27,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 41,
+        "level": 33,
         "moveName": "Rock Slide"
       },
       {
-        "level": 49,
+        "level": 39,
         "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 44,
+        "moveName": "Power Gem"
+      },
+      {
+        "level": 50,
+        "moveName": "Play Rough"
       },
       {
         "level": 56,
@@ -397235,20 +397462,24 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Covet"
       },
       {
-        "level": 22,
+        "level": 18,
         "moveName": "Rock Slide"
       },
       {
-        "level": 31,
+        "level": 26,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 33,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -397296,9 +397527,9 @@
       "HM06"
     ],
     "eggMoves": [
-      "Stone Edge",
       "Rock Throw",
-      "Smack Down"
+      "Smack Down",
+      "Head Smash"
     ],
     "evolutions": [
       {
@@ -397473,7 +397704,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Extrasensory"
+        "moveName": "Confusion"
       },
       {
         "level": 1,
@@ -397488,27 +397719,35 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Rock Blast"
       },
       {
-        "level": 26,
+        "level": 21,
+        "moveName": "Rock Throw"
+      },
+      {
+        "level": 27,
         "moveName": "Ancient Power"
       },
       {
-        "level": 34,
+        "level": 33,
         "moveName": "Psybeam"
       },
       {
-        "level": 41,
+        "level": 39,
         "moveName": "Rock Slide"
       },
       {
-        "level": 49,
+        "level": 44,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 50,
         "moveName": "Power Gem"
       },
       {
@@ -397618,19 +397857,23 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Metal Sound"
       },
       {
-        "level": 18,
+        "level": 16,
+        "moveName": "Metal Claw"
+      },
+      {
+        "level": 22,
         "moveName": "Round"
       },
       {
-        "level": 26,
+        "level": 28,
         "moveName": "Steel Wing"
       },
       {
-        "level": 33,
+        "level": 34,
         "moveName": "Iron Head"
       },
       {
@@ -397677,9 +397920,9 @@
       "HM06"
     ],
     "eggMoves": [
-      "Metal Claw",
       "Hyper Voice",
-      "Heavy Slam"
+      "Heavy Slam",
+      "Echoed Voice"
     ],
     "evolutions": [
       {
@@ -397728,7 +397971,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Mirror Shot"
+        "moveName": "Steel Wing"
       },
       {
         "level": 1,
@@ -397743,20 +397986,36 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 14,
+        "level": 10,
         "moveName": "Metal Sound"
       },
       {
-        "level": 25,
+        "level": 16,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 35,
+        "level": 21,
         "moveName": "Metal Claw"
       },
       {
-        "level": 46,
+        "level": 27,
+        "moveName": "Round"
+      },
+      {
+        "level": 33,
         "moveName": "Flash Cannon"
+      },
+      {
+        "level": 39,
+        "moveName": "Iron Head"
+      },
+      {
+        "level": 44,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 50,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -397852,16 +398111,20 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Round"
       },
       {
-        "level": 28,
-        "moveName": "Hyper Voice"
+        "level": 22,
+        "moveName": "Screech"
+      },
+      {
+        "level": 31,
+        "moveName": "Bug Buzz"
       },
       {
         "level": 40,
-        "moveName": "Screech"
+        "moveName": "Hyper Voice"
       },
       {
         "level": 110,
@@ -397899,7 +398162,6 @@
       "TM90"
     ],
     "eggMoves": [
-      "Bug Buzz",
       "Noble Roar",
       "Parting Shot"
     ],
@@ -397966,24 +398228,32 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 13,
-        "moveName": "Round"
+        "level": 11,
+        "moveName": "Snarl"
       },
       {
-        "level": 21,
+        "level": 17,
         "moveName": "Screech"
+      },
+      {
+        "level": 24,
+        "moveName": "Round"
       },
       {
         "level": 30,
         "moveName": "Headbutt"
       },
       {
-        "level": 39,
+        "level": 37,
         "moveName": "Leer"
       },
       {
-        "level": 47,
+        "level": 43,
         "moveName": "Bug Buzz"
+      },
+      {
+        "level": 50,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -398088,24 +398358,28 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Sand Attack"
       },
       {
-        "level": 18,
+        "level": 16,
         "moveName": "Covet"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 33,
+        "level": 28,
         "moveName": "Dig"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Earthquake"
       },
       {
         "level": 110,
@@ -398152,9 +398426,9 @@
       "HM08"
     ],
     "eggMoves": [
-      "Earthquake",
       "Bulldoze",
-      "Mud Shot"
+      "Mud Shot",
+      "Earth Power"
     ],
     "evolutions": [
       {
@@ -398218,28 +398492,32 @@
         "moveName": "Double Kick"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Sand Attack"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Sand Tomb"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Bulldoze"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Brick Break"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Dig"
+      },
+      {
+        "level": 44,
+        "moveName": "High Horsepower"
       },
       {
         "level": 50,
@@ -398354,23 +398632,27 @@
         "moveName": "Pursuit"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Fake Tears"
       },
       {
-        "level": 16,
+        "level": 14,
+        "moveName": "Bite"
+      },
+      {
+        "level": 19,
         "moveName": "Covet"
       },
       {
-        "level": 22,
-        "moveName": "Sucker Punch"
-      },
-      {
-        "level": 28,
+        "level": 25,
         "moveName": "Parting Shot"
       },
       {
-        "level": 34,
+        "level": 30,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 35,
         "moveName": "Crunch"
       },
       {
@@ -398424,9 +398706,9 @@
       "HM08"
     ],
     "eggMoves": [
-      "Knock Off",
       "Night Slash",
-      "Assurance"
+      "Assurance",
+      "Payback"
     ],
     "evolutions": [
       {
@@ -398494,31 +398776,35 @@
         "moveName": "Fake Tears"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Pursuit"
       },
       {
-        "level": 20,
+        "level": 18,
         "moveName": "Bite"
       },
       {
-        "level": 25,
+        "level": 23,
         "moveName": "Parting Shot"
       },
       {
-        "level": 30,
+        "level": 28,
         "moveName": "Fire Fang"
       },
       {
-        "level": 35,
-        "moveName": "Sucker Punch"
+        "level": 32,
+        "moveName": "Knock Off"
       },
       {
-        "level": 40,
+        "level": 37,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 46,
+        "level": 42,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 47,
         "moveName": "Crunch"
       },
       {
@@ -398941,28 +399227,40 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Feather Dance"
       },
       {
-        "level": 17,
+        "level": 13,
         "moveName": "Gust"
       },
       {
-        "level": 24,
+        "level": 18,
         "moveName": "Air Cutter"
       },
       {
-        "level": 30,
+        "level": 22,
+        "moveName": "Round"
+      },
+      {
+        "level": 27,
         "moveName": "Air Slash"
       },
       {
-        "level": 37,
+        "level": 32,
         "moveName": "Bounce"
       },
       {
-        "level": 43,
+        "level": 36,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 41,
         "moveName": "Fly"
+      },
+      {
+        "level": 45,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 50,
@@ -399012,7 +399310,7 @@
     "eggMoves": [
       "Wing Attack",
       "Metal Sound",
-      "Bug Buzz"
+      "Pluck"
     ],
     "abilities": [
       "Keen Eye",
@@ -399219,36 +399517,44 @@
         "moveName": "Absorb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Leech Seed"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 21,
-        "moveName": "Razor Leaf"
+        "level": 18,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 27,
+        "level": 23,
         "moveName": "Stun Spore"
       },
       {
-        "level": 33,
+        "level": 28,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 32,
         "moveName": "Giga Drain"
       },
       {
-        "level": 39,
+        "level": 37,
         "moveName": "Charm"
       },
       {
-        "level": 44,
+        "level": 42,
         "moveName": "Seed Bomb"
       },
       {
-        "level": 50,
+        "level": 47,
         "moveName": "Energy Ball"
+      },
+      {
+        "level": 51,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -399653,7 +399959,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Iron Head"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -399672,31 +399978,35 @@
         "moveName": "Leech Seed"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Bullet Punch"
       },
       {
-        "level": 20,
-        "moveName": "Razor Leaf"
-      },
-      {
-        "level": 25,
+        "level": 18,
         "moveName": "Stun Spore"
       },
       {
-        "level": 30,
+        "level": 23,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 28,
         "moveName": "Steel Wing"
       },
       {
-        "level": 35,
-        "moveName": "Horn Leech"
-      },
-      {
-        "level": 40,
+        "level": 32,
         "moveName": "Metal Sound"
       },
       {
-        "level": 46,
+        "level": 37,
+        "moveName": "Horn Leech"
+      },
+      {
+        "level": 42,
+        "moveName": "Iron Head"
+      },
+      {
+        "level": 47,
         "moveName": "Seed Bomb"
       },
       {
@@ -399981,36 +400291,44 @@
         "moveName": "Acid"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Toxic"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 21,
-        "moveName": "Poison Fang"
+        "level": 18,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 27,
+        "level": 23,
         "moveName": "Poison Powder"
       },
       {
-        "level": 33,
+        "level": 28,
+        "moveName": "Poison Fang"
+      },
+      {
+        "level": 32,
         "moveName": "Venoshock"
       },
       {
-        "level": 39,
+        "level": 37,
         "moveName": "Charm"
       },
       {
-        "level": 44,
+        "level": 42,
         "moveName": "Poison Jab"
       },
       {
-        "level": 50,
+        "level": 47,
         "moveName": "Sludge Bomb"
+      },
+      {
+        "level": 51,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -400147,7 +400465,7 @@
       },
       {
         "level": 26,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 33,
@@ -400284,28 +400602,36 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Charm"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Water Gun"
       },
       {
-        "level": 26,
+        "level": 21,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 27,
         "moveName": "Water Pulse"
       },
       {
-        "level": 34,
+        "level": 33,
         "moveName": "Bubble Beam"
       },
       {
-        "level": 41,
-        "moveName": "Scald"
+        "level": 39,
+        "moveName": "Dive"
       },
       {
-        "level": 49,
+        "level": 44,
         "moveName": "Muddy Water"
+      },
+      {
+        "level": 50,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -400569,32 +400895,36 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Sand Attack"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Ice Shard"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Avalanche"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Ice Fang"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Icicle Crash"
       },
       {
+        "level": 44,
+        "moveName": "Ice Beam"
+      },
+      {
         "level": 50,
-        "moveName": "Ice Hammer"
+        "moveName": "Earthquake"
       },
       {
         "level": 56,
@@ -400716,31 +401046,35 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Feather Dance"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Rock Throw"
       },
       {
-        "level": 21,
+        "level": 19,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 24,
         "moveName": "Air Slash"
       },
       {
-        "level": 27,
+        "level": 30,
         "moveName": "Rock Slide"
       },
       {
-        "level": 33,
+        "level": 35,
         "moveName": "Power Gem"
       },
       {
-        "level": 39,
+        "level": 40,
         "moveName": "Bounce"
       },
       {
-        "level": 44,
+        "level": 45,
         "moveName": "Stone Edge"
       },
       {
@@ -400821,7 +401155,7 @@
     "eggMoves": [
       "Gust",
       "Wing Attack",
-      "Smack Down"
+      "Pluck"
     ],
     "abilities": [
       "Keen Eye",
@@ -400874,20 +401208,24 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Covet"
       },
       {
-        "level": 22,
+        "level": 18,
         "moveName": "Rock Slide"
       },
       {
-        "level": 31,
+        "level": 26,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 33,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -400954,9 +401292,9 @@
       "TR94"
     ],
     "eggMoves": [
-      "Stone Edge",
       "Rock Throw",
-      "Smack Down"
+      "Smack Down",
+      "Head Smash"
     ],
     "evolutions": [
       {
@@ -401020,27 +401358,31 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Ember"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Rock Throw"
       },
       {
-        "level": 30,
+        "level": 27,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 33,
         "moveName": "Fire Fang"
       },
       {
-        "level": 37,
+        "level": 39,
         "moveName": "Rock Slide"
       },
       {
-        "level": 43,
+        "level": 44,
         "moveName": "Power Gem"
       },
       {
@@ -401174,19 +401516,23 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Metal Sound"
       },
       {
-        "level": 18,
+        "level": 16,
+        "moveName": "Metal Claw"
+      },
+      {
+        "level": 22,
         "moveName": "Covet"
       },
       {
-        "level": 26,
+        "level": 28,
         "moveName": "Steel Wing"
       },
       {
-        "level": 33,
+        "level": 34,
         "moveName": "Iron Head"
       },
       {
@@ -401254,9 +401600,9 @@
       "TR95"
     ],
     "eggMoves": [
-      "Heavy Slam",
       "Gyro Ball",
-      "Flash Cannon"
+      "Flash Cannon",
+      "Metal Burst"
     ],
     "evolutions": [
       {
@@ -401305,7 +401651,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -401320,32 +401666,40 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Metal Sound"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Bullet Punch"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Metal Claw"
       },
       {
-        "level": 34,
+        "level": 27,
         "moveName": "Steel Wing"
       },
       {
-        "level": 41,
-        "moveName": "Rock Slide"
-      },
-      {
-        "level": 49,
+        "level": 33,
         "moveName": "Iron Head"
       },
       {
-        "level": 56,
+        "level": 39,
+        "moveName": "Power Gem"
+      },
+      {
+        "level": 44,
+        "moveName": "Meteor Mash"
+      },
+      {
+        "level": 50,
         "moveName": "Iron Tail"
+      },
+      {
+        "level": 56,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -401979,6 +402333,10 @@
     "dexEntry": "Vantoroi is a Mountain Wind Pokémon, Flying- and Sound-type, first found in Carpathia. It stands 2.6 m tall and weighs 12.0 kg. It evolves from Vantulet.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Tackle"
       },
@@ -401991,28 +402349,36 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Feather Dance"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Gust"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Air Cutter"
       },
       {
-        "level": 34,
+        "level": 27,
+        "moveName": "Round"
+      },
+      {
+        "level": 33,
         "moveName": "Air Slash"
       },
       {
-        "level": 41,
+        "level": 39,
         "moveName": "Bounce"
       },
       {
-        "level": 49,
+        "level": 44,
         "moveName": "Fly"
+      },
+      {
+        "level": 50,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -402277,7 +402643,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -402296,24 +402662,28 @@
         "moveName": "Aqua Jet"
       },
       {
-        "level": 19,
-        "moveName": "Flip Turn"
+        "level": 17,
+        "moveName": "Water Pulse"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Razor Shell"
       },
       {
-        "level": 34,
-        "moveName": "Rock Slide"
-      },
-      {
-        "level": 41,
+        "level": 30,
         "moveName": "Dive"
       },
       {
-        "level": 49,
+        "level": 37,
+        "moveName": "Power Gem"
+      },
+      {
+        "level": 43,
         "moveName": "Aqua Tail"
+      },
+      {
+        "level": 50,
+        "moveName": "Stone Edge"
       },
       {
         "level": 56,
@@ -402545,7 +402915,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Crunch"
+        "moveName": "Bite"
       },
       {
         "level": 1,
@@ -402560,27 +402930,31 @@
         "moveName": "Aqua Jet"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Fake Tears"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Pursuit"
       },
       {
-        "level": 24,
-        "moveName": "Flip Turn"
+        "level": 21,
+        "moveName": "Water Pulse"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Razor Shell"
       },
       {
-        "level": 43,
+        "level": 39,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 44,
         "moveName": "Dive"
       },
       {
@@ -402732,7 +403106,7 @@
       },
       {
         "level": 26,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 33,
@@ -402854,6 +403228,10 @@
     "dexEntry": "Oracul is a Chorus Pokémon, Water- and Sound-type, first found in Carpathia. It stands 1.0 m tall and weighs 20.0 kg. It evolves from Brotacel.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Pound"
       },
@@ -402866,11 +403244,15 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Water Gun"
       },
       {
-        "level": 21,
+        "level": 17,
+        "moveName": "Round"
+      },
+      {
+        "level": 24,
         "moveName": "Water Pulse"
       },
       {
@@ -402878,11 +403260,15 @@
         "moveName": "Bubble Beam"
       },
       {
-        "level": 39,
-        "moveName": "Scald"
+        "level": 37,
+        "moveName": "Dive"
       },
       {
-        "level": 47,
+        "level": 43,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 50,
         "moveName": "Muddy Water"
       },
       {
@@ -403279,7 +403665,7 @@
       },
       {
         "level": 14,
-        "moveName": "Flip Turn"
+        "moveName": "Water Pulse"
       },
       {
         "level": 19,
@@ -403358,7 +403744,7 @@
     "eggMoves": [
       "Hydro Pump",
       "Absorb",
-      "Water Pulse"
+      "Mega Drain"
     ],
     "evolutions": [
       {
@@ -403444,7 +403830,7 @@
       },
       {
         "level": 35,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 40,
@@ -404010,32 +404396,36 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Covet"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Growl"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Headbutt"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Sand Attack"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Slam"
       },
       {
-        "level": 50,
+        "level": 44,
         "moveName": "Take Down"
+      },
+      {
+        "level": 50,
+        "moveName": "Earthquake"
       },
       {
         "level": 56,
@@ -404161,7 +404551,7 @@
       },
       {
         "level": 26,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 33,
@@ -404265,7 +404655,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Extrasensory"
+        "moveName": "Confusion"
       },
       {
         "level": 1,
@@ -404280,28 +404670,32 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Water Gun"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Water Pulse"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Bubble Beam"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Psybeam"
       },
       {
-        "level": 43,
-        "moveName": "Scald"
+        "level": 39,
+        "moveName": "Dive"
+      },
+      {
+        "level": 44,
+        "moveName": "Extrasensory"
       },
       {
         "level": 50,
@@ -404425,7 +404819,7 @@
       },
       {
         "level": 26,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 33,
@@ -404544,28 +404938,36 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Charm"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Water Gun"
       },
       {
-        "level": 26,
+        "level": 21,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 27,
         "moveName": "Water Pulse"
       },
       {
-        "level": 34,
+        "level": 33,
         "moveName": "Bubble Beam"
       },
       {
-        "level": 41,
-        "moveName": "Scald"
+        "level": 39,
+        "moveName": "Dive"
       },
       {
-        "level": 49,
+        "level": 44,
         "moveName": "Muddy Water"
+      },
+      {
+        "level": 50,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -404668,20 +405070,24 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Covet"
       },
       {
-        "level": 22,
+        "level": 18,
         "moveName": "Rock Slide"
       },
       {
-        "level": 31,
+        "level": 26,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 33,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -404729,9 +405135,9 @@
       "HM06"
     ],
     "eggMoves": [
-      "Stone Edge",
       "Rock Throw",
-      "Smack Down"
+      "Smack Down",
+      "Head Smash"
     ],
     "evolutions": [
       {
@@ -404799,23 +405205,27 @@
         "moveName": "Aqua Jet"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Rock Throw"
       },
       {
-        "level": 26,
+        "level": 24,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 30,
         "moveName": "Razor Shell"
       },
       {
-        "level": 34,
+        "level": 37,
         "moveName": "Rock Slide"
       },
       {
-        "level": 41,
+        "level": 43,
         "moveName": "Power Gem"
       },
       {
-        "level": 49,
+        "level": 50,
         "moveName": "Stone Edge"
       },
       {
@@ -404930,15 +405340,19 @@
         "moveName": "Confuse Ray"
       },
       {
-        "level": 13,
+        "level": 11,
+        "moveName": "Ominous Wind"
+      },
+      {
+        "level": 18,
         "moveName": "Round"
       },
       {
-        "level": 22,
+        "level": 26,
         "moveName": "Hex"
       },
       {
-        "level": 31,
+        "level": 33,
         "moveName": "Shadow Ball"
       },
       {
@@ -405035,7 +405449,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Flash Cannon"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -405050,27 +405464,35 @@
         "moveName": "Confuse Ray"
       },
       {
-        "level": 11,
+        "level": 10,
+        "moveName": "Lick"
+      },
+      {
+        "level": 16,
         "moveName": "Bullet Punch"
       },
       {
-        "level": 19,
-        "moveName": "Ominous Wind"
-      },
-      {
-        "level": 26,
+        "level": 21,
         "moveName": "Metal Sound"
       },
       {
-        "level": 34,
+        "level": 27,
+        "moveName": "Ominous Wind"
+      },
+      {
+        "level": 33,
         "moveName": "Hex"
       },
       {
-        "level": 41,
-        "moveName": "Mirror Shot"
+        "level": 39,
+        "moveName": "Steel Wing"
       },
       {
-        "level": 49,
+        "level": 44,
+        "moveName": "Flash Cannon"
+      },
+      {
+        "level": 50,
         "moveName": "Shadow Ball"
       },
       {
@@ -405283,7 +405705,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -405302,24 +405724,28 @@
         "moveName": "Ice Shard"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Avalanche"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Ice Fang"
       },
       {
-        "level": 34,
-        "moveName": "Rock Slide"
+        "level": 30,
+        "moveName": "Power Gem"
       },
       {
-        "level": 41,
+        "level": 37,
         "moveName": "Icicle Crash"
       },
       {
-        "level": 49,
-        "moveName": "Ice Hammer"
+        "level": 43,
+        "moveName": "Ice Beam"
+      },
+      {
+        "level": 50,
+        "moveName": "Stone Edge"
       },
       {
         "level": 56,
@@ -405433,28 +405859,32 @@
         "moveName": "Fake Tears"
       },
       {
-        "level": 14,
+        "level": 13,
+        "moveName": "Snarl"
+      },
+      {
+        "level": 18,
         "moveName": "Air Cutter"
       },
       {
-        "level": 19,
-        "moveName": "Sucker Punch"
-      },
-      {
-        "level": 25,
+        "level": 22,
         "moveName": "Parting Shot"
       },
       {
-        "level": 30,
+        "level": 27,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 31,
         "moveName": "Dark Pulse"
       },
       {
-        "level": 35,
-        "moveName": "Fly"
+        "level": 36,
+        "moveName": "Feather Dance"
       },
       {
         "level": 40,
-        "moveName": "Feather Dance"
+        "moveName": "Fly"
       },
       {
         "level": 110,
@@ -405556,6 +405986,10 @@
     "dexEntry": "Liliacon is an Echo Pokémon, Dark- and Sound-type, first found in Carpathia. It stands 1.4 m tall and weighs 20.0 kg. It evolves from Liliacel.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Peck"
       },
@@ -405565,31 +405999,43 @@
       },
       {
         "level": 4,
-        "moveName": "Echoed Voice"
+        "moveName": "Ruination"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Fake Tears"
       },
       {
-        "level": 19,
+        "level": 14,
+        "moveName": "Echoed Voice"
+      },
+      {
+        "level": 20,
         "moveName": "Pursuit"
       },
       {
-        "level": 26,
-        "moveName": "Snarl"
-      },
-      {
-        "level": 34,
+        "level": 25,
         "moveName": "Parting Shot"
       },
       {
-        "level": 41,
+        "level": 30,
+        "moveName": "Snarl"
+      },
+      {
+        "level": 35,
+        "moveName": "Round"
+      },
+      {
+        "level": 40,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 49,
+        "level": 46,
         "moveName": "Dark Pulse"
+      },
+      {
+        "level": 51,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -405692,24 +406138,28 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Feather Dance"
       },
       {
-        "level": 18,
+        "level": 16,
         "moveName": "Wing Attack"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Rock Slide"
       },
       {
-        "level": 33,
+        "level": 28,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Fly"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -405819,7 +406269,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Rock Slide"
+        "moveName": "Smack Down"
       },
       {
         "level": 1,
@@ -405838,23 +406288,27 @@
         "moveName": "Feather Dance"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Rock Throw"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Air Slash"
       },
       {
-        "level": 34,
+        "level": 30,
+        "moveName": "Rock Slide"
+      },
+      {
+        "level": 37,
         "moveName": "Power Gem"
       },
       {
-        "level": 41,
+        "level": 43,
         "moveName": "Bounce"
       },
       {
-        "level": 49,
+        "level": 50,
         "moveName": "Stone Edge"
       },
       {
@@ -405970,24 +406424,28 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Leech Seed"
       },
       {
-        "level": 18,
+        "level": 16,
         "moveName": "Razor Leaf"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Rock Slide"
       },
       {
-        "level": 33,
+        "level": 28,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Leaf Blade"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -406117,7 +406575,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Rock Slide"
+        "moveName": "Ancient Power"
       },
       {
         "level": 1,
@@ -406132,27 +406590,31 @@
         "moveName": "Absorb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Leech Seed"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Rock Blast"
       },
       {
-        "level": 24,
-        "moveName": "Ancient Power"
+        "level": 21,
+        "moveName": "Rock Throw"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Giga Drain"
       },
       {
-        "level": 37,
+        "level": 33,
+        "moveName": "Rock Slide"
+      },
+      {
+        "level": 39,
         "moveName": "Power Gem"
       },
       {
-        "level": 43,
+        "level": 44,
         "moveName": "Seed Bomb"
       },
       {
@@ -406262,28 +406724,32 @@
         "moveName": "Mud-Slap"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Sand Attack"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Poison Fang"
       },
       {
-        "level": 22,
+        "level": 19,
         "moveName": "Mud Bomb"
       },
       {
-        "level": 28,
+        "level": 25,
         "moveName": "Toxic"
       },
       {
-        "level": 34,
+        "level": 30,
         "moveName": "Dig"
       },
       {
-        "level": 40,
+        "level": 35,
         "moveName": "Sludge Bomb"
+      },
+      {
+        "level": 40,
+        "moveName": "Earthquake"
       },
       {
         "level": 110,
@@ -406341,9 +406807,9 @@
       "HM06"
     ],
     "eggMoves": [
-      "Bulldoze",
       "Mud Shot",
-      "Poison Jab"
+      "Poison Jab",
+      "Poison Sting"
     ],
     "evolutions": [
       {
@@ -406407,35 +406873,39 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Sand Attack"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Acid"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Bulldoze"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Toxic"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Cross Poison"
       },
       {
-        "level": 39,
+        "level": 35,
         "moveName": "Dig"
       },
       {
-        "level": 44,
+        "level": 40,
         "moveName": "Poison Jab"
       },
       {
-        "level": 50,
+        "level": 46,
+        "moveName": "High Horsepower"
+      },
+      {
+        "level": 51,
         "moveName": "Earthquake"
       },
       {
@@ -406700,7 +407170,7 @@
       },
       {
         "level": 17,
-        "moveName": "Flip Turn"
+        "moveName": "Water Pulse"
       },
       {
         "level": 24,
@@ -406996,7 +407466,7 @@
       },
       {
         "level": 21,
-        "moveName": "Flip Turn"
+        "moveName": "Water Pulse"
       },
       {
         "level": 27,
@@ -407264,7 +407734,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Crunch"
+        "moveName": "Bite"
       },
       {
         "level": 1,
@@ -407279,27 +407749,31 @@
         "moveName": "Aqua Jet"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Fake Tears"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Pursuit"
       },
       {
-        "level": 24,
-        "moveName": "Flip Turn"
+        "level": 21,
+        "moveName": "Water Pulse"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Razor Shell"
       },
       {
-        "level": 43,
+        "level": 39,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 44,
         "moveName": "Dive"
       },
       {
@@ -407562,7 +408036,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Iron Head"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -407577,28 +408051,32 @@
         "moveName": "Aqua Jet"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Metal Sound"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Bullet Punch"
       },
       {
-        "level": 24,
-        "moveName": "Flip Turn"
+        "level": 21,
+        "moveName": "Water Pulse"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Steel Wing"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Razor Shell"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Dive"
+      },
+      {
+        "level": 44,
+        "moveName": "Iron Head"
       },
       {
         "level": 50,
@@ -407722,27 +408200,31 @@
         "moveName": "Fake Tears"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Pursuit"
       },
       {
-        "level": 19,
-        "moveName": "Flip Turn"
+        "level": 18,
+        "moveName": "Bite"
       },
       {
-        "level": 24,
+        "level": 22,
+        "moveName": "Water Pulse"
+      },
+      {
+        "level": 27,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 30,
+        "level": 32,
         "moveName": "Razor Shell"
       },
       {
-        "level": 35,
+        "level": 36,
         "moveName": "Crunch"
       },
       {
-        "level": 40,
+        "level": 41,
         "moveName": "Dive"
       },
       {
@@ -407842,9 +408324,9 @@
       "TR97"
     ],
     "eggMoves": [
-      "Water Gun",
       "Knock Off",
-      "Water Pulse"
+      "Night Slash",
+      "Assurance"
     ],
     "abilities": [
       "Swift Swim",
@@ -408068,36 +408550,44 @@
         "moveName": "Absorb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Leech Seed"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 21,
-        "moveName": "Razor Leaf"
+        "level": 18,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 27,
+        "level": 23,
         "moveName": "Stun Spore"
       },
       {
-        "level": 33,
+        "level": 28,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 32,
         "moveName": "Giga Drain"
       },
       {
-        "level": 39,
+        "level": 37,
         "moveName": "Charm"
       },
       {
-        "level": 44,
+        "level": 42,
         "moveName": "Seed Bomb"
       },
       {
-        "level": 50,
+        "level": 47,
         "moveName": "Energy Ball"
+      },
+      {
+        "level": 51,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -408213,7 +408703,7 @@
       },
       {
         "level": 28,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 34,
@@ -408352,11 +408842,11 @@
       },
       {
         "level": 33,
-        "moveName": "Poison Jab"
+        "moveName": "Dive"
       },
       {
         "level": 39,
-        "moveName": "Scald"
+        "moveName": "Poison Jab"
       },
       {
         "level": 44,
@@ -408601,7 +409091,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -408620,24 +409110,28 @@
         "moveName": "Aqua Jet"
       },
       {
-        "level": 19,
-        "moveName": "Flip Turn"
+        "level": 17,
+        "moveName": "Water Pulse"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Razor Shell"
       },
       {
-        "level": 34,
-        "moveName": "Rock Slide"
-      },
-      {
-        "level": 41,
+        "level": 30,
         "moveName": "Dive"
       },
       {
-        "level": 49,
+        "level": 37,
+        "moveName": "Power Gem"
+      },
+      {
+        "level": 43,
         "moveName": "Aqua Tail"
+      },
+      {
+        "level": 50,
+        "moveName": "Stone Edge"
       },
       {
         "level": 56,
@@ -408782,7 +409276,7 @@
       },
       {
         "level": 17,
-        "moveName": "Flip Turn"
+        "moveName": "Water Pulse"
       },
       {
         "level": 24,
@@ -408869,9 +409363,9 @@
       "TR94"
     ],
     "eggMoves": [
-      "Water Pulse",
       "Bubble Beam",
-      "Brine"
+      "Brine",
+      "Whirlpool"
     ],
     "abilities": [
       "Suction Cups",
@@ -408925,20 +409419,24 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Covet"
       },
       {
-        "level": 22,
+        "level": 18,
         "moveName": "Rock Slide"
       },
       {
-        "level": 31,
+        "level": 26,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 33,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -409011,9 +409509,9 @@
       "TR95"
     ],
     "eggMoves": [
-      "Stone Edge",
       "Rock Throw",
-      "Smack Down"
+      "Smack Down",
+      "Head Smash"
     ],
     "evolutions": [
       {
@@ -409078,23 +409576,27 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Rock Throw"
       },
       {
-        "level": 21,
+        "level": 19,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 26,
         "moveName": "Headbutt"
       },
       {
-        "level": 30,
+        "level": 34,
         "moveName": "Rock Slide"
       },
       {
-        "level": 39,
+        "level": 41,
         "moveName": "Power Gem"
       },
       {
-        "level": 47,
+        "level": 49,
         "moveName": "Stone Edge"
       },
       {
@@ -409391,7 +409893,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Crunch"
+        "moveName": "Bite"
       },
       {
         "level": 1,
@@ -409410,23 +409912,27 @@
         "moveName": "Pursuit"
       },
       {
-        "level": 19,
+        "level": 17,
         "moveName": "Fake Tears"
       },
       {
-        "level": 26,
+        "level": 24,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 34,
+        "level": 30,
         "moveName": "U-turn"
       },
       {
-        "level": 41,
+        "level": 37,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 43,
         "moveName": "X-Scissor"
       },
       {
-        "level": 49,
+        "level": 50,
         "moveName": "First Impression"
       },
       {
@@ -409866,28 +410372,32 @@
         "moveName": "Psycho Shift"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Water Gun"
       },
       {
-        "level": 19,
+        "level": 18,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 22,
         "moveName": "Water Pulse"
       },
       {
-        "level": 24,
+        "level": 27,
         "moveName": "Bubble Beam"
       },
       {
-        "level": 30,
+        "level": 32,
         "moveName": "Psybeam"
       },
       {
-        "level": 35,
-        "moveName": "Extrasensory"
+        "level": 36,
+        "moveName": "Dive"
       },
       {
-        "level": 40,
-        "moveName": "Scald"
+        "level": 41,
+        "moveName": "Extrasensory"
       },
       {
         "level": 45,
@@ -409966,9 +410476,9 @@
       "TR89"
     ],
     "eggMoves": [
-      "Psychic",
       "Zen Headbutt",
-      "Aqua Tail"
+      "Aqua Tail",
+      "Aqua Jet"
     ],
     "abilities": [
       "Oblivious",
@@ -410179,7 +410689,7 @@
       },
       {
         "level": 21,
-        "moveName": "Flip Turn"
+        "moveName": "Water Pulse"
       },
       {
         "level": 27,
@@ -410318,24 +410828,28 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Sand Attack"
       },
       {
-        "level": 18,
+        "level": 16,
         "moveName": "Covet"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 33,
+        "level": 28,
         "moveName": "Dig"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Earthquake"
       },
       {
         "level": 110,
@@ -410416,9 +410930,9 @@
       "TR98"
     ],
     "eggMoves": [
-      "Earthquake",
       "Bulldoze",
-      "Mud Shot"
+      "Mud Shot",
+      "Earth Power"
     ],
     "evolutions": [
       {
@@ -410482,36 +410996,40 @@
         "moveName": "Absorb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Sand Attack"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Mud-Slap"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Mud Shot"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Leech Seed"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Mud Bomb"
       },
       {
-        "level": 39,
+        "level": 35,
         "moveName": "Giga Drain"
       },
       {
-        "level": 44,
+        "level": 40,
         "moveName": "Dig"
       },
       {
-        "level": 50,
+        "level": 46,
         "moveName": "Earth Power"
+      },
+      {
+        "level": 51,
+        "moveName": "Earthquake"
       },
       {
         "level": 56,
@@ -410631,15 +411149,19 @@
         "moveName": "Confuse Ray"
       },
       {
-        "level": 13,
+        "level": 11,
+        "moveName": "Ominous Wind"
+      },
+      {
+        "level": 18,
         "moveName": "Round"
       },
       {
-        "level": 22,
+        "level": 26,
         "moveName": "Hex"
       },
       {
-        "level": 31,
+        "level": 33,
         "moveName": "Shadow Ball"
       },
       {
@@ -410755,7 +411277,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Crunch"
+        "moveName": "Bite"
       },
       {
         "level": 1,
@@ -410770,27 +411292,35 @@
         "moveName": "Confuse Ray"
       },
       {
-        "level": 11,
+        "level": 10,
+        "moveName": "Lick"
+      },
+      {
+        "level": 16,
         "moveName": "Pursuit"
       },
       {
-        "level": 19,
-        "moveName": "Ominous Wind"
-      },
-      {
-        "level": 26,
+        "level": 21,
         "moveName": "Fake Tears"
       },
       {
-        "level": 34,
+        "level": 27,
+        "moveName": "Ominous Wind"
+      },
+      {
+        "level": 33,
         "moveName": "Hex"
       },
       {
-        "level": 41,
+        "level": 39,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 49,
+        "level": 44,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 50,
         "moveName": "Shadow Ball"
       },
       {
@@ -410936,24 +411466,32 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Charm"
       },
       {
-        "level": 18,
+        "level": 14,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 19,
         "moveName": "Round"
       },
       {
-        "level": 26,
-        "moveName": "Dazzling Gleam"
-      },
-      {
-        "level": 33,
+        "level": 25,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 40,
+        "level": 30,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 35,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 40,
+        "moveName": "Moonblast"
       },
       {
         "level": 110,
@@ -411010,9 +411548,7 @@
       "TR85"
     ],
     "eggMoves": [
-      "Moonblast",
-      "Sweet Kiss",
-      "Draining Kiss"
+      "Sweet Kiss"
     ],
     "evolutions": [
       {
@@ -411077,35 +411613,39 @@
         "moveName": "Absorb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Charm"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Draining Kiss"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Giga Drain"
       },
       {
-        "level": 39,
+        "level": 35,
         "moveName": "Dazzling Gleam"
       },
       {
-        "level": 44,
+        "level": 40,
         "moveName": "Leech Seed"
       },
       {
-        "level": 50,
+        "level": 46,
+        "moveName": "Play Rough"
+      },
+      {
+        "level": 51,
         "moveName": "Moonblast"
       },
       {
@@ -411559,16 +412099,24 @@
         "moveName": "Twister"
       },
       {
-        "level": 16,
+        "level": 11,
         "moveName": "Covet"
       },
       {
-        "level": 28,
+        "level": 18,
+        "moveName": "Dragon Breath"
+      },
+      {
+        "level": 26,
         "moveName": "Dragon Pulse"
       },
       {
-        "level": 40,
+        "level": 33,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Dragon Rush"
       },
       {
         "level": 110,
@@ -411630,8 +412178,6 @@
       "TR84"
     ],
     "eggMoves": [
-      "Dragon Rush",
-      "Dragon Claw",
       "Dragon Tail"
     ],
     "evolutions": [
@@ -411697,19 +412243,23 @@
         "moveName": "Twister"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Water Gun"
       },
       {
-        "level": 22,
+        "level": 19,
         "moveName": "Dragon Breath"
       },
       {
-        "level": 30,
+        "level": 26,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 33,
         "moveName": "Dragon Pulse"
       },
       {
-        "level": 39,
+        "level": 41,
         "moveName": "Dragon Rush"
       },
       {
@@ -411846,7 +412396,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Dragon Pulse"
+        "moveName": "Dragon Tail"
       },
       {
         "level": 1,
@@ -411861,23 +412411,31 @@
         "moveName": "Twister"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Water Gun"
       },
       {
-        "level": 21,
+        "level": 17,
         "moveName": "Dragon Breath"
       },
       {
-        "level": 30,
+        "level": 24,
         "moveName": "Bubble Beam"
       },
       {
-        "level": 39,
+        "level": 30,
         "moveName": "Dive"
       },
       {
-        "level": 47,
+        "level": 37,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 43,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 50,
         "moveName": "Dragon Rush"
       },
       {
@@ -412180,36 +412738,44 @@
         "moveName": "Absorb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Leech Seed"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 21,
-        "moveName": "Razor Leaf"
+        "level": 18,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 27,
+        "level": 23,
         "moveName": "Stun Spore"
       },
       {
-        "level": 33,
-        "moveName": "Dazzling Gleam"
+        "level": 28,
+        "moveName": "Razor Leaf"
       },
       {
-        "level": 39,
+        "level": 32,
         "moveName": "Charm"
       },
       {
-        "level": 44,
+        "level": 37,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 42,
         "moveName": "Seed Bomb"
       },
       {
-        "level": 50,
+        "level": 47,
         "moveName": "Energy Ball"
+      },
+      {
+        "level": 51,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -412331,40 +412897,48 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 9,
+        "level": 8,
         "moveName": "Leer"
       },
       {
-        "level": 13,
+        "level": 12,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 18,
-        "moveName": "Round"
+        "level": 16,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 22,
+        "level": 19,
         "moveName": "Growl"
+      },
+      {
+        "level": 23,
+        "moveName": "Round"
       },
       {
         "level": 27,
         "moveName": "Headbutt"
       },
       {
-        "level": 32,
-        "moveName": "Dazzling Gleam"
-      },
-      {
-        "level": 36,
+        "level": 31,
         "moveName": "Charm"
       },
       {
-        "level": 41,
+        "level": 35,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 39,
         "moveName": "Tri Attack"
       },
       {
-        "level": 45,
+        "level": 42,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 46,
+        "moveName": "Moonblast"
       },
       {
         "level": 50,
@@ -412494,19 +413068,23 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 18,
+        "level": 16,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 22,
         "moveName": "Round"
       },
       {
-        "level": 26,
+        "level": 28,
         "moveName": "Psybeam"
       },
       {
-        "level": 33,
+        "level": 34,
         "moveName": "Extrasensory"
       },
       {
@@ -412574,9 +413152,9 @@
       "TR92"
     ],
     "eggMoves": [
-      "Psychic",
       "Zen Headbutt",
-      "Mirror Coat"
+      "Mirror Coat",
+      "Psyshock"
     ],
     "evolutions": [
       {
@@ -412626,7 +413204,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Shadow Ball"
+        "moveName": "Hex"
       },
       {
         "level": 1,
@@ -412641,32 +413219,40 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Astonish"
       },
       {
-        "level": 24,
+        "level": 20,
         "moveName": "Confusion"
       },
       {
-        "level": 30,
+        "level": 25,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 37,
-        "moveName": "Hex"
+        "level": 30,
+        "moveName": "Ominous Wind"
       },
       {
-        "level": 43,
+        "level": 35,
         "moveName": "Psybeam"
       },
       {
-        "level": 50,
+        "level": 40,
         "moveName": "Extrasensory"
+      },
+      {
+        "level": 46,
+        "moveName": "Psyshock"
+      },
+      {
+        "level": 51,
+        "moveName": "Shadow Ball"
       },
       {
         "level": 56,
@@ -412947,7 +413533,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -412962,36 +413548,40 @@
         "moveName": "Bullet Seed"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Leech Seed"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Rock Blast"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Razor Leaf"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Stun Spore"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Horn Leech"
       },
       {
-        "level": 39,
-        "moveName": "Rock Slide"
+        "level": 35,
+        "moveName": "Power Gem"
       },
       {
-        "level": 44,
+        "level": 40,
         "moveName": "Seed Bomb"
       },
       {
-        "level": 50,
+        "level": 46,
         "moveName": "Leaf Blade"
+      },
+      {
+        "level": 51,
+        "moveName": "Stone Edge"
       },
       {
         "level": 56,
@@ -413258,6 +413848,10 @@
     "dexEntry": "Calusar is a Ritual Dance Pokémon, Fighting- and Sound-type, first found in Carpathia. It stands 1.6 m tall and weighs 55.0 kg. It evolves from Calusel.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Pound"
       },
@@ -413270,23 +413864,31 @@
         "moveName": "Double Kick"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 21,
+        "level": 17,
         "moveName": "Revenge"
+      },
+      {
+        "level": 24,
+        "moveName": "Round"
       },
       {
         "level": 30,
         "moveName": "Brick Break"
       },
       {
-        "level": 39,
+        "level": 37,
         "moveName": "Submission"
       },
       {
-        "level": 47,
+        "level": 43,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 50,
         "moveName": "Hammer Arm"
       },
       {
@@ -413418,23 +414020,35 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 12,
+        "level": 9,
         "moveName": "Leer"
       },
       {
-        "level": 19,
+        "level": 14,
         "moveName": "Covet"
       },
       {
-        "level": 27,
+        "level": 19,
+        "moveName": "Round"
+      },
+      {
+        "level": 24,
         "moveName": "Headbutt"
       },
       {
-        "level": 35,
+        "level": 30,
         "moveName": "Slam"
       },
       {
-        "level": 42,
+        "level": 35,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 40,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 45,
         "moveName": "Take Down"
       },
       {
@@ -413567,15 +414181,19 @@
         "moveName": "Confuse Ray"
       },
       {
-        "level": 13,
+        "level": 11,
+        "moveName": "Ominous Wind"
+      },
+      {
+        "level": 18,
         "moveName": "Round"
       },
       {
-        "level": 22,
+        "level": 26,
         "moveName": "Hex"
       },
       {
-        "level": 31,
+        "level": 33,
         "moveName": "Shadow Ball"
       },
       {
@@ -413708,6 +414326,10 @@
     "dexEntry": "Doinatoare is a Doina Pokémon, Ghost- and Sound-type, first found in Carpathia. It stands 1.5 m tall and weighs 3.0 kg. It evolves from Doinel.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Astonish"
       },
@@ -413720,20 +414342,32 @@
         "moveName": "Confuse Ray"
       },
       {
-        "level": 14,
+        "level": 11,
+        "moveName": "Lick"
+      },
+      {
+        "level": 17,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 25,
+        "level": 24,
         "moveName": "Ominous Wind"
       },
       {
-        "level": 35,
+        "level": 30,
+        "moveName": "Round"
+      },
+      {
+        "level": 37,
         "moveName": "Hex"
       },
       {
-        "level": 46,
+        "level": 43,
         "moveName": "Shadow Ball"
+      },
+      {
+        "level": 50,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -413976,6 +414610,10 @@
     "dexEntry": "Nailar is a Panpipe Pokémon, Grass- and Sound-type, first found in Carpathia. It stands 1.3 m tall and weighs 12.0 kg. It evolves from Naiet.",
     "learnset": [
       {
+        "level": 0,
+        "moveName": "Bug Buzz"
+      },
+      {
         "level": 1,
         "moveName": "Peck"
       },
@@ -413988,32 +414626,40 @@
         "moveName": "Absorb"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Leech Seed"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 24,
+        "level": 20,
         "moveName": "Razor Leaf"
       },
       {
-        "level": 30,
+        "level": 25,
         "moveName": "Stun Spore"
       },
       {
-        "level": 37,
+        "level": 30,
+        "moveName": "Round"
+      },
+      {
+        "level": 35,
         "moveName": "Giga Drain"
       },
       {
-        "level": 43,
+        "level": 40,
         "moveName": "Seed Bomb"
       },
       {
-        "level": 50,
+        "level": 46,
         "moveName": "Energy Ball"
+      },
+      {
+        "level": 51,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -414111,19 +414757,23 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Metal Sound"
       },
       {
-        "level": 18,
+        "level": 16,
+        "moveName": "Metal Claw"
+      },
+      {
+        "level": 22,
         "moveName": "Covet"
       },
       {
-        "level": 26,
+        "level": 28,
         "moveName": "Steel Wing"
       },
       {
-        "level": 33,
+        "level": 34,
         "moveName": "Iron Head"
       },
       {
@@ -414170,9 +414820,9 @@
       "HM06"
     ],
     "eggMoves": [
-      "Heavy Slam",
       "Gyro Ball",
-      "Flash Cannon"
+      "Flash Cannon",
+      "Metal Burst"
     ],
     "evolutions": [
       {
@@ -414221,7 +414871,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Extrasensory"
+        "moveName": "Confusion"
       },
       {
         "level": 1,
@@ -414236,32 +414886,40 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Metal Sound"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Bullet Punch"
       },
       {
-        "level": 24,
+        "level": 20,
+        "moveName": "Psycho Shift"
+      },
+      {
+        "level": 25,
         "moveName": "Metal Claw"
       },
       {
         "level": 30,
-        "moveName": "Psycho Shift"
-      },
-      {
-        "level": 37,
-        "moveName": "Mirror Shot"
-      },
-      {
-        "level": 43,
         "moveName": "Psybeam"
       },
       {
-        "level": 50,
+        "level": 35,
+        "moveName": "Steel Wing"
+      },
+      {
+        "level": 40,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 46,
         "moveName": "Flash Cannon"
+      },
+      {
+        "level": 51,
+        "moveName": "Iron Head"
       },
       {
         "level": 56,
@@ -414484,7 +415142,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Flash Cannon"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -414503,32 +415161,36 @@
         "moveName": "Thunder Wave"
       },
       {
-        "level": 14,
+        "level": 13,
         "moveName": "Thunder Shock"
       },
       {
-        "level": 20,
+        "level": 18,
         "moveName": "Charge Beam"
       },
       {
-        "level": 25,
+        "level": 23,
         "moveName": "Eerie Impulse"
       },
       {
-        "level": 30,
-        "moveName": "Mirror Shot"
+        "level": 28,
+        "moveName": "Steel Wing"
       },
       {
-        "level": 35,
-        "moveName": "Volt Switch"
-      },
-      {
-        "level": 40,
+        "level": 32,
         "moveName": "Metal Sound"
       },
       {
-        "level": 46,
+        "level": 37,
+        "moveName": "Volt Switch"
+      },
+      {
+        "level": 42,
         "moveName": "Discharge"
+      },
+      {
+        "level": 47,
+        "moveName": "Flash Cannon"
       },
       {
         "level": 51,
@@ -414632,20 +415294,24 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Covet"
       },
       {
-        "level": 22,
+        "level": 18,
         "moveName": "Rock Slide"
       },
       {
-        "level": 31,
+        "level": 26,
         "moveName": "Power Gem"
       },
       {
-        "level": 40,
+        "level": 33,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Stone Edge"
       },
       {
         "level": 110,
@@ -414694,9 +415360,9 @@
       "HM08"
     ],
     "eggMoves": [
-      "Stone Edge",
       "Rock Throw",
-      "Smack Down"
+      "Smack Down",
+      "Head Smash"
     ],
     "evolutions": [
       {
@@ -414745,7 +415411,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Shadow Ball"
+        "moveName": "Hex"
       },
       {
         "level": 1,
@@ -414760,28 +415426,36 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Astonish"
       },
       {
-        "level": 26,
+        "level": 21,
+        "moveName": "Rock Throw"
+      },
+      {
+        "level": 27,
         "moveName": "Ancient Power"
       },
       {
-        "level": 34,
-        "moveName": "Hex"
+        "level": 33,
+        "moveName": "Ominous Wind"
       },
       {
-        "level": 41,
+        "level": 39,
         "moveName": "Rock Slide"
       },
       {
-        "level": 49,
+        "level": 44,
         "moveName": "Power Gem"
+      },
+      {
+        "level": 50,
+        "moveName": "Shadow Ball"
       },
       {
         "level": 56,
@@ -415017,40 +415691,48 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 9,
+        "level": 8,
         "moveName": "Leer"
       },
       {
-        "level": 13,
+        "level": 12,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 18,
-        "moveName": "Round"
+        "level": 16,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 22,
+        "level": 19,
         "moveName": "Growl"
+      },
+      {
+        "level": 23,
+        "moveName": "Round"
       },
       {
         "level": 27,
         "moveName": "Headbutt"
       },
       {
-        "level": 32,
-        "moveName": "Dazzling Gleam"
-      },
-      {
-        "level": 36,
+        "level": 31,
         "moveName": "Charm"
       },
       {
-        "level": 41,
+        "level": 35,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 39,
         "moveName": "Tri Attack"
       },
       {
-        "level": 45,
+        "level": 42,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 46,
+        "moveName": "Moonblast"
       },
       {
         "level": 50,
@@ -415293,28 +415975,36 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Charm"
       },
       {
-        "level": 19,
+        "level": 16,
         "moveName": "Powder Snow"
       },
       {
-        "level": 26,
+        "level": 21,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 27,
         "moveName": "Icy Wind"
       },
       {
-        "level": 34,
+        "level": 33,
         "moveName": "Aurora Beam"
       },
       {
-        "level": 41,
+        "level": 39,
         "moveName": "Icicle Crash"
       },
       {
-        "level": 49,
+        "level": 44,
         "moveName": "Ice Beam"
+      },
+      {
+        "level": 50,
+        "moveName": "Moonblast"
       },
       {
         "level": 56,
@@ -415419,24 +416109,28 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Sand Attack"
       },
       {
-        "level": 18,
+        "level": 16,
         "moveName": "Covet"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 33,
+        "level": 28,
         "moveName": "Dig"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Take Down"
+      },
+      {
+        "level": 40,
+        "moveName": "Earthquake"
       },
       {
         "level": 110,
@@ -415480,9 +416174,9 @@
       "HM06"
     ],
     "eggMoves": [
-      "Earthquake",
       "Bulldoze",
-      "Mud Shot"
+      "Mud Shot",
+      "Earth Power"
     ],
     "evolutions": [
       {
@@ -415546,35 +416240,39 @@
         "moveName": "Sand Tomb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Sand Attack"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Ember"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Bulldoze"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Fire Fang"
       },
       {
-        "level": 39,
+        "level": 35,
         "moveName": "Stomping Tantrum"
       },
       {
-        "level": 44,
+        "level": 40,
         "moveName": "Dig"
       },
       {
-        "level": 50,
+        "level": 46,
+        "moveName": "High Horsepower"
+      },
+      {
+        "level": 51,
         "moveName": "Earthquake"
       },
       {
@@ -415798,7 +416496,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Extrasensory"
+        "moveName": "Confusion"
       },
       {
         "level": 1,
@@ -415813,35 +416511,39 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Leer"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Round"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Psybeam"
       },
       {
-        "level": 33,
-        "moveName": "Headbutt"
-      },
-      {
-        "level": 39,
+        "level": 30,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 44,
+        "level": 35,
+        "moveName": "Headbutt"
+      },
+      {
+        "level": 40,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 46,
         "moveName": "Tri Attack"
       },
       {
-        "level": 50,
+        "level": 51,
         "moveName": "Hyper Voice"
       },
       {
@@ -415956,32 +416658,36 @@
         "moveName": "Mud-Slap"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Sand Attack"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Mud Shot"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Round"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Mud Bomb"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Dig"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Earth Power"
       },
       {
-        "level": 50,
+        "level": 44,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 50,
+        "moveName": "Earthquake"
       },
       {
         "level": 110,
@@ -416020,7 +416726,6 @@
       "TM90"
     ],
     "eggMoves": [
-      "Bulldoze",
       "Sand Tomb",
       "Stomping Tantrum"
     ],
@@ -416076,28 +416781,32 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Charm"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Draining Kiss"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Round"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 37,
+        "level": 33,
         "moveName": "Dazzling Gleam"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 44,
+        "moveName": "Play Rough"
       },
       {
         "level": 50,
@@ -416136,9 +416845,6 @@
       "TM83",
       "TM87",
       "TM90"
-    ],
-    "eggMoves": [
-      "Sweet Kiss"
     ],
     "abilities": [
       "Sweet Veil",
@@ -416191,19 +416897,23 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Metal Sound"
       },
       {
-        "level": 18,
+        "level": 16,
+        "moveName": "Metal Claw"
+      },
+      {
+        "level": 22,
         "moveName": "Round"
       },
       {
-        "level": 26,
-        "moveName": "Mirror Shot"
+        "level": 28,
+        "moveName": "Steel Wing"
       },
       {
-        "level": 33,
+        "level": 34,
         "moveName": "Flash Cannon"
       },
       {
@@ -416248,9 +416958,9 @@
       "TM91"
     ],
     "eggMoves": [
-      "Iron Head",
       "Heavy Slam",
-      "Gyro Ball"
+      "Gyro Ball",
+      "Metal Burst"
     ],
     "evolutions": [
       {
@@ -416299,7 +417009,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Extrasensory"
+        "moveName": "Confusion"
       },
       {
         "level": 1,
@@ -416314,32 +417024,40 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Metal Sound"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Bullet Punch"
       },
       {
-        "level": 24,
+        "level": 20,
+        "moveName": "Psycho Shift"
+      },
+      {
+        "level": 25,
         "moveName": "Metal Claw"
       },
       {
         "level": 30,
-        "moveName": "Psycho Shift"
-      },
-      {
-        "level": 37,
-        "moveName": "Mirror Shot"
-      },
-      {
-        "level": 43,
         "moveName": "Psybeam"
       },
       {
-        "level": 50,
+        "level": 35,
+        "moveName": "Steel Wing"
+      },
+      {
+        "level": 40,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 46,
         "moveName": "Flash Cannon"
+      },
+      {
+        "level": 51,
+        "moveName": "Iron Head"
       },
       {
         "level": 56,
@@ -416865,7 +417583,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Flash Cannon"
+        "moveName": "Metal Claw"
       },
       {
         "level": 1,
@@ -416880,35 +417598,39 @@
         "moveName": "Bullet Punch"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Ember"
       },
       {
-        "level": 21,
-        "moveName": "Incinerate"
-      },
-      {
-        "level": 27,
+        "level": 20,
         "moveName": "Metal Sound"
       },
       {
-        "level": 33,
-        "moveName": "Mirror Shot"
+        "level": 25,
+        "moveName": "Incinerate"
       },
       {
-        "level": 39,
+        "level": 30,
+        "moveName": "Steel Wing"
+      },
+      {
+        "level": 35,
         "moveName": "Mystical Fire"
       },
       {
-        "level": 44,
+        "level": 40,
+        "moveName": "Flash Cannon"
+      },
+      {
+        "level": 46,
         "moveName": "Lava Plume"
       },
       {
-        "level": 50,
+        "level": 51,
         "moveName": "Flamethrower"
       },
       {
@@ -417014,16 +417736,20 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Round"
       },
       {
-        "level": 28,
-        "moveName": "Hyper Voice"
+        "level": 22,
+        "moveName": "Screech"
+      },
+      {
+        "level": 31,
+        "moveName": "Bug Buzz"
       },
       {
         "level": 40,
-        "moveName": "Screech"
+        "moveName": "Hyper Voice"
       },
       {
         "level": 110,
@@ -417059,7 +417785,6 @@
       "TM90"
     ],
     "eggMoves": [
-      "Bug Buzz",
       "Noble Roar",
       "Parting Shot"
     ],
@@ -417111,7 +417836,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Dark Pulse"
+        "moveName": "Snarl"
       },
       {
         "level": 1,
@@ -417126,28 +417851,36 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Pursuit"
       },
       {
-        "level": 21,
+        "level": 17,
+        "moveName": "Screech"
+      },
+      {
+        "level": 24,
         "moveName": "Round"
       },
       {
         "level": 30,
-        "moveName": "Screech"
-      },
-      {
-        "level": 39,
-        "moveName": "Sucker Punch"
-      },
-      {
-        "level": 47,
         "moveName": "Fake Tears"
       },
       {
-        "level": 56,
+        "level": 37,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 43,
+        "moveName": "Dark Pulse"
+      },
+      {
+        "level": 50,
         "moveName": "Bug Buzz"
+      },
+      {
+        "level": 56,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 110,
@@ -417244,32 +417977,40 @@
         "moveName": "Absorb"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 16,
-        "moveName": "Round"
+        "level": 13,
+        "moveName": "Snarl"
       },
       {
-        "level": 21,
+        "level": 18,
         "moveName": "Screech"
+      },
+      {
+        "level": 22,
+        "moveName": "Round"
       },
       {
         "level": 27,
         "moveName": "Giga Drain"
       },
       {
-        "level": 33,
-        "moveName": "Seed Bomb"
-      },
-      {
-        "level": 39,
+        "level": 32,
         "moveName": "Leech Seed"
       },
       {
-        "level": 44,
+        "level": 36,
+        "moveName": "Seed Bomb"
+      },
+      {
+        "level": 41,
         "moveName": "Bug Buzz"
+      },
+      {
+        "level": 45,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 50,
@@ -417370,16 +418111,28 @@
         "moveName": "Echoed Voice"
       },
       {
-        "level": 16,
+        "level": 10,
         "moveName": "Covet"
       },
       {
+        "level": 16,
+        "moveName": "Round"
+      },
+      {
+        "level": 22,
+        "moveName": "Screech"
+      },
+      {
         "level": 28,
-        "moveName": "Take Down"
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 34,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 40,
-        "moveName": "Screech"
+        "moveName": "Take Down"
       },
       {
         "level": 110,
@@ -417416,9 +418169,8 @@
       "HM06"
     ],
     "eggMoves": [
-      "Bug Buzz",
-      "Hyper Voice",
-      "Round"
+      "Noble Roar",
+      "Parting Shot"
     ],
     "evolutions": [
       {
@@ -417482,24 +418234,32 @@
         "moveName": "Double Kick"
       },
       {
-        "level": 13,
+        "level": 11,
         "moveName": "Echoed Voice"
       },
       {
-        "level": 21,
-        "moveName": "Round"
+        "level": 17,
+        "moveName": "Snarl"
       },
       {
-        "level": 30,
+        "level": 24,
         "moveName": "Screech"
       },
       {
-        "level": 39,
+        "level": 30,
+        "moveName": "Round"
+      },
+      {
+        "level": 37,
         "moveName": "Brick Break"
       },
       {
-        "level": 47,
+        "level": 43,
         "moveName": "Bug Buzz"
+      },
+      {
+        "level": 50,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 56,
@@ -417602,19 +418362,23 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 18,
+        "level": 16,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 22,
         "moveName": "Round"
       },
       {
-        "level": 26,
+        "level": 28,
         "moveName": "Psybeam"
       },
       {
-        "level": 33,
+        "level": 34,
         "moveName": "Extrasensory"
       },
       {
@@ -417662,9 +418426,9 @@
       "TM92"
     ],
     "eggMoves": [
-      "Psychic",
       "Zen Headbutt",
-      "Mirror Coat"
+      "Mirror Coat",
+      "Psyshock"
     ],
     "evolutions": [
       {
@@ -417713,7 +418477,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Shadow Ball"
+        "moveName": "Hex"
       },
       {
         "level": 1,
@@ -417728,32 +418492,40 @@
         "moveName": "Stored Power"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 17,
+        "level": 14,
         "moveName": "Astonish"
       },
       {
-        "level": 24,
+        "level": 20,
         "moveName": "Confusion"
       },
       {
-        "level": 30,
+        "level": 25,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 37,
-        "moveName": "Hex"
+        "level": 30,
+        "moveName": "Ominous Wind"
       },
       {
-        "level": 43,
+        "level": 35,
         "moveName": "Psybeam"
       },
       {
-        "level": 50,
+        "level": 40,
         "moveName": "Extrasensory"
+      },
+      {
+        "level": 46,
+        "moveName": "Psyshock"
+      },
+      {
+        "level": 51,
+        "moveName": "Shadow Ball"
       },
       {
         "level": 56,
@@ -417861,24 +418633,32 @@
         "moveName": "Fairy Wind"
       },
       {
-        "level": 11,
+        "level": 9,
         "moveName": "Charm"
       },
       {
-        "level": 18,
+        "level": 14,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 19,
         "moveName": "Round"
       },
       {
-        "level": 26,
-        "moveName": "Dazzling Gleam"
-      },
-      {
-        "level": 33,
+        "level": 25,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 40,
+        "level": 30,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 35,
         "moveName": "Hyper Voice"
+      },
+      {
+        "level": 40,
+        "moveName": "Moonblast"
       },
       {
         "level": 110,
@@ -417914,9 +418694,7 @@
       "TM90"
     ],
     "eggMoves": [
-      "Moonblast",
-      "Sweet Kiss",
-      "Draining Kiss"
+      "Sweet Kiss"
     ],
     "evolutions": [
       {
@@ -417980,35 +418758,39 @@
         "moveName": "Ember"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Charm"
       },
       {
-        "level": 16,
+        "level": 14,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Draining Kiss"
       },
       {
-        "level": 27,
+        "level": 25,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 33,
+        "level": 30,
         "moveName": "Mystical Fire"
       },
       {
-        "level": 39,
+        "level": 35,
         "moveName": "Dazzling Gleam"
       },
       {
-        "level": 44,
+        "level": 40,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 50,
+        "level": 46,
+        "moveName": "Play Rough"
+      },
+      {
+        "level": 51,
         "moveName": "Moonblast"
       },
       {
@@ -418235,7 +419017,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Shadow Ball"
+        "moveName": "Lick"
       },
       {
         "level": 1,
@@ -418250,35 +419032,39 @@
         "moveName": "Astonish"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Tackle"
       },
       {
-        "level": 16,
-        "moveName": "Covet"
-      },
-      {
-        "level": 21,
+        "level": 14,
         "moveName": "Growl"
       },
       {
-        "level": 27,
+        "level": 20,
+        "moveName": "Covet"
+      },
+      {
+        "level": 25,
         "moveName": "Hex"
       },
       {
-        "level": 33,
-        "moveName": "Headbutt"
-      },
-      {
-        "level": 39,
+        "level": 30,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 44,
+        "level": 35,
+        "moveName": "Headbutt"
+      },
+      {
+        "level": 40,
+        "moveName": "Shadow Ball"
+      },
+      {
+        "level": 46,
         "moveName": "Slam"
       },
       {
-        "level": 50,
+        "level": 51,
         "moveName": "Take Down"
       },
       {
@@ -418413,27 +419199,31 @@
         "moveName": "Astonish"
       },
       {
-        "level": 17,
-        "moveName": "Razor Leaf"
+        "level": 16,
+        "moveName": "Lick"
       },
       {
-        "level": 21,
+        "level": 19,
         "moveName": "Stun Spore"
       },
       {
-        "level": 25,
+        "level": 23,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 27,
         "moveName": "Shadow Claw"
       },
       {
-        "level": 29,
-        "moveName": "Horn Leech"
-      },
-      {
-        "level": 33,
+        "level": 31,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 37,
+        "level": 35,
+        "moveName": "Horn Leech"
+      },
+      {
+        "level": 39,
         "moveName": "Seed Bomb"
       },
       {
@@ -418500,7 +419290,7 @@
     "eggMoves": [
       "Mega Drain",
       "Giga Drain",
-      "Lick"
+      "Hex"
     ],
     "abilities": [
       "Frisk",
@@ -418670,7 +419460,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Power Gem"
+        "moveName": "Rock Slide"
       },
       {
         "level": 1,
@@ -418685,32 +419475,36 @@
         "moveName": "Rock Blast"
       },
       {
-        "level": 11,
+        "level": 10,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 17,
+        "level": 16,
         "moveName": "Ember"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Flame Charge"
       },
       {
-        "level": 30,
+        "level": 27,
         "moveName": "Fire Fang"
       },
       {
-        "level": 37,
-        "moveName": "Rock Slide"
+        "level": 33,
+        "moveName": "Power Gem"
       },
       {
-        "level": 43,
+        "level": 39,
         "moveName": "Blaze Kick"
       },
       {
-        "level": 50,
+        "level": 44,
         "moveName": "Flamethrower"
+      },
+      {
+        "level": 50,
+        "moveName": "Stone Edge"
       },
       {
         "level": 56,
@@ -418841,7 +419635,7 @@
       },
       {
         "level": 32,
-        "moveName": "Scald"
+        "moveName": "Dive"
       },
       {
         "level": 36,
@@ -418967,23 +419761,27 @@
         "moveName": "Pursuit"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Fake Tears"
       },
       {
-        "level": 16,
+        "level": 14,
+        "moveName": "Bite"
+      },
+      {
+        "level": 19,
         "moveName": "Covet"
       },
       {
-        "level": 22,
-        "moveName": "Sucker Punch"
-      },
-      {
-        "level": 28,
+        "level": 25,
         "moveName": "Parting Shot"
       },
       {
-        "level": 34,
+        "level": 30,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 35,
         "moveName": "Crunch"
       },
       {
@@ -419037,9 +419835,9 @@
       "HM08"
     ],
     "eggMoves": [
-      "Knock Off",
       "Night Slash",
-      "Assurance"
+      "Assurance",
+      "Payback"
     ],
     "evolutions": [
       {
@@ -419088,7 +419886,7 @@
     "learnset": [
       {
         "level": 0,
-        "moveName": "Shadow Ball"
+        "moveName": "Lick"
       },
       {
         "level": 1,
@@ -419103,36 +419901,44 @@
         "moveName": "Astonish"
       },
       {
-        "level": 10,
+        "level": 9,
         "moveName": "Fake Tears"
       },
       {
-        "level": 16,
+        "level": 13,
         "moveName": "Pursuit"
       },
       {
-        "level": 21,
-        "moveName": "Bite"
-      },
-      {
-        "level": 27,
+        "level": 18,
         "moveName": "Parting Shot"
       },
       {
-        "level": 33,
-        "moveName": "Shadow Claw"
+        "level": 23,
+        "moveName": "Bite"
       },
       {
-        "level": 39,
-        "moveName": "Sucker Punch"
+        "level": 28,
+        "moveName": "Knock Off"
       },
       {
-        "level": 44,
+        "level": 32,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 50,
+        "level": 37,
+        "moveName": "Shadow Claw"
+      },
+      {
+        "level": 42,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 47,
         "moveName": "Crunch"
+      },
+      {
+        "level": 51,
+        "moveName": "Shadow Ball"
       },
       {
         "level": 56,
@@ -419248,32 +420054,44 @@
         "moveName": "Psycho Shift"
       },
       {
-        "level": 26,
+        "level": 21,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 35,
+        "level": 28,
         "moveName": "Confusion"
       },
       {
-        "level": 44,
+        "level": 34,
         "moveName": "Charm"
       },
       {
-        "level": 53,
+        "level": 41,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 47,
         "moveName": "Psybeam"
       },
       {
-        "level": 62,
+        "level": 54,
         "moveName": "Dazzling Gleam"
       },
       {
-        "level": 71,
+        "level": 60,
         "moveName": "Extrasensory"
       },
       {
-        "level": 80,
+        "level": 67,
+        "moveName": "Psyshock"
+      },
+      {
+        "level": 73,
         "moveName": "Psychic"
+      },
+      {
+        "level": 80,
+        "moveName": "Moonblast"
       },
       {
         "level": 110,
@@ -419382,31 +420200,35 @@
         "moveName": "Psycho Shift"
       },
       {
-        "level": 22,
+        "level": 21,
         "moveName": "Stored Power"
       },
       {
-        "level": 30,
+        "level": 28,
         "moveName": "Confusion"
       },
       {
-        "level": 37,
+        "level": 34,
         "moveName": "Leech Seed"
       },
       {
-        "level": 44,
+        "level": 41,
         "moveName": "Psybeam"
       },
       {
-        "level": 51,
+        "level": 47,
         "moveName": "Giga Drain"
       },
       {
-        "level": 58,
+        "level": 54,
         "moveName": "Extrasensory"
       },
       {
-        "level": 66,
+        "level": 60,
+        "moveName": "Psyshock"
+      },
+      {
+        "level": 67,
         "moveName": "Seed Bomb"
       },
       {
@@ -419524,31 +420346,39 @@
         "moveName": "Psycho Shift"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Astonish"
       },
       {
-        "level": 32,
-        "moveName": "Confusion"
+        "level": 28,
+        "moveName": "Lick"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 48,
+        "level": 41,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 47,
         "moveName": "Hex"
       },
       {
-        "level": 56,
+        "level": 54,
         "moveName": "Psybeam"
       },
       {
-        "level": 64,
+        "level": 60,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 67,
         "moveName": "Shadow Ball"
       },
       {
-        "level": 72,
+        "level": 73,
         "moveName": "Zen Headbutt"
       },
       {
@@ -419673,11 +420503,15 @@
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Twister"
       },
       {
-        "level": 35,
+        "level": 30,
+        "moveName": "Dragon Breath"
+      },
+      {
+        "level": 37,
         "moveName": "Incinerate"
       },
       {
@@ -419685,16 +420519,20 @@
         "moveName": "Fire Fang"
       },
       {
-        "level": 53,
+        "level": 51,
         "moveName": "Lava Plume"
       },
       {
-        "level": 62,
+        "level": 58,
         "moveName": "Dragon Pulse"
       },
       {
-        "level": 71,
+        "level": 66,
         "moveName": "Flamethrower"
+      },
+      {
+        "level": 73,
+        "moveName": "Dragon Rush"
       },
       {
         "level": 80,
@@ -419803,24 +420641,40 @@
         "moveName": "Fake Tears"
       },
       {
-        "level": 29,
+        "level": 21,
         "moveName": "Pursuit"
       },
       {
-        "level": 39,
+        "level": 28,
         "moveName": "Bite"
       },
       {
-        "level": 49,
+        "level": 34,
         "moveName": "Parting Shot"
       },
       {
-        "level": 59,
+        "level": 41,
+        "moveName": "Round"
+      },
+      {
+        "level": 47,
+        "moveName": "Knock Off"
+      },
+      {
+        "level": 54,
         "moveName": "Sucker Punch"
       },
       {
-        "level": 70,
+        "level": 60,
         "moveName": "Crunch"
+      },
+      {
+        "level": 67,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 73,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 80,
@@ -419926,27 +420780,35 @@
         "moveName": "Thunder Wave"
       },
       {
-        "level": 26,
+        "level": 22,
         "moveName": "Twister"
       },
       {
-        "level": 35,
+        "level": 30,
         "moveName": "Dragon Breath"
+      },
+      {
+        "level": 37,
+        "moveName": "Dragon Tail"
       },
       {
         "level": 44,
         "moveName": "Volt Switch"
       },
       {
-        "level": 53,
+        "level": 51,
         "moveName": "Discharge"
       },
       {
-        "level": 62,
+        "level": 58,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 66,
         "moveName": "Dragon Pulse"
       },
       {
-        "level": 71,
+        "level": 73,
         "moveName": "Dragon Rush"
       },
       {
@@ -420049,20 +420911,36 @@
         "moveName": "Twister"
       },
       {
-        "level": 37,
-        "moveName": "Round"
+        "level": 24,
+        "moveName": "Snarl"
       },
       {
-        "level": 51,
+        "level": 32,
         "moveName": "Screech"
       },
       {
-        "level": 66,
+        "level": 40,
+        "moveName": "Dragon Breath"
+      },
+      {
+        "level": 48,
+        "moveName": "Round"
+      },
+      {
+        "level": 56,
         "moveName": "Dragon Pulse"
       },
       {
-        "level": 80,
+        "level": 64,
         "moveName": "Bug Buzz"
+      },
+      {
+        "level": 72,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 80,
+        "moveName": "Dragon Rush"
       },
       {
         "level": 110,
@@ -420161,20 +421039,36 @@
         "moveName": "Charm"
       },
       {
-        "level": 32,
+        "level": 22,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 44,
+        "level": 30,
         "moveName": "Draining Kiss"
       },
       {
-        "level": 56,
+        "level": 37,
         "moveName": "Baby-Doll Eyes"
       },
       {
-        "level": 68,
+        "level": 44,
+        "moveName": "Round"
+      },
+      {
+        "level": 51,
         "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 58,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 66,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 73,
+        "moveName": "Play Rough"
       },
       {
         "level": 80,
@@ -420270,39 +421164,43 @@
         "moveName": "Leech Seed"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Astonish"
       },
       {
-        "level": 28,
+        "level": 26,
         "moveName": "Razor Leaf"
       },
       {
-        "level": 34,
+        "level": 32,
         "moveName": "Stun Spore"
       },
       {
-        "level": 41,
+        "level": 38,
+        "moveName": "Ominous Wind"
+      },
+      {
+        "level": 44,
         "moveName": "Hex"
       },
       {
-        "level": 47,
-        "moveName": "Giga Drain"
-      },
-      {
-        "level": 54,
+        "level": 50,
         "moveName": "Confuse Ray"
       },
       {
-        "level": 60,
+        "level": 56,
+        "moveName": "Giga Drain"
+      },
+      {
+        "level": 62,
         "moveName": "Seed Bomb"
       },
       {
-        "level": 67,
+        "level": 68,
         "moveName": "Shadow Ball"
       },
       {
-        "level": 73,
+        "level": 74,
         "moveName": "Energy Ball"
       },
       {
@@ -420410,24 +421308,36 @@
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 29,
+        "level": 22,
         "moveName": "Ember"
       },
       {
-        "level": 39,
+        "level": 30,
         "moveName": "Incinerate"
       },
       {
-        "level": 49,
+        "level": 37,
+        "moveName": "Round"
+      },
+      {
+        "level": 44,
         "moveName": "Mystical Fire"
       },
       {
-        "level": 59,
+        "level": 51,
         "moveName": "Lava Plume"
       },
       {
-        "level": 70,
+        "level": 58,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 66,
         "moveName": "Flamethrower"
+      },
+      {
+        "level": 73,
+        "moveName": "Hyper Voice"
       },
       {
         "level": 80,
@@ -420531,39 +421441,43 @@
         "moveName": "Fake Tears"
       },
       {
-        "level": 21,
+        "level": 20,
         "moveName": "Pursuit"
       },
       {
-        "level": 28,
+        "level": 26,
         "moveName": "Bite"
       },
       {
-        "level": 34,
+        "level": 32,
         "moveName": "Parting Shot"
       },
       {
-        "level": 41,
+        "level": 38,
         "moveName": "Fire Fang"
       },
       {
-        "level": 47,
-        "moveName": "Sucker Punch"
+        "level": 44,
+        "moveName": "Knock Off"
       },
       {
-        "level": 54,
+        "level": 50,
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 60,
+        "level": 56,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 62,
         "moveName": "Crunch"
       },
       {
-        "level": 67,
+        "level": 68,
         "moveName": "Blaze Kick"
       },
       {
-        "level": 73,
+        "level": 74,
         "moveName": "Foul Play"
       },
       {
@@ -420674,42 +421588,50 @@
       },
       {
         "level": 1,
-        "moveName": "Stored Power"
+        "moveName": "Ruination"
       },
       {
         "level": 1,
         "moveName": "Fake Tears"
       },
       {
-        "level": 22,
+        "level": 20,
+        "moveName": "Stored Power"
+      },
+      {
+        "level": 26,
         "moveName": "Pursuit"
       },
       {
-        "level": 30,
-        "moveName": "Snarl"
-      },
-      {
-        "level": 37,
+        "level": 32,
         "moveName": "Parting Shot"
       },
       {
+        "level": 38,
+        "moveName": "Confusion"
+      },
+      {
         "level": 44,
-        "moveName": "Psybeam"
+        "moveName": "Snarl"
       },
       {
-        "level": 51,
-        "moveName": "Sucker Punch"
-      },
-      {
-        "level": 58,
+        "level": 50,
         "moveName": "Psycho Shift"
       },
       {
-        "level": 66,
+        "level": 56,
+        "moveName": "Psybeam"
+      },
+      {
+        "level": 62,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 68,
         "moveName": "Dark Pulse"
       },
       {
-        "level": 73,
+        "level": 74,
         "moveName": "Extrasensory"
       },
       {
@@ -420827,32 +421749,40 @@
         "moveName": "Will-O-Wisp"
       },
       {
-        "level": 24,
+        "level": 21,
         "moveName": "Fairy Wind"
       },
       {
-        "level": 32,
-        "moveName": "Incinerate"
+        "level": 28,
+        "moveName": "Draining Kiss"
       },
       {
-        "level": 40,
+        "level": 34,
         "moveName": "Charm"
       },
       {
-        "level": 48,
+        "level": 41,
+        "moveName": "Incinerate"
+      },
+      {
+        "level": 47,
         "moveName": "Mystical Fire"
       },
       {
-        "level": 56,
+        "level": 54,
         "moveName": "Dazzling Gleam"
       },
       {
-        "level": 64,
+        "level": 60,
         "moveName": "Lava Plume"
       },
       {
-        "level": 72,
+        "level": 67,
         "moveName": "Flamethrower"
+      },
+      {
+        "level": 73,
+        "moveName": "Moonblast"
       },
       {
         "level": 80,
