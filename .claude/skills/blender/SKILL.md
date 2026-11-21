@@ -825,11 +825,11 @@ design's largest masses built small). What the agents found:
 
 ## What Galar taught (2026-11-21)
 
-Ninety-six species of Galar and Hisui by twenty-eight agents; six sent back (a thin post, a dog on stilts, an ear as
+Ninety-six species of Galar and Hisui by twenty-eight agents; six sent back (a thin post under a small hood, a dog on stilts, an ear as
 a rod, a thin upright figure, a file of six cut by its cell, a tangle with no head). What the agents found:
 
 - **A row of units along the bones' diagonal is cut by its cell at any size** (Falinks): stand the row across the
-  front, the units facing a little apart. And **an eye patch on a unit standing close lands on the neighbour in
+  front. And **an eye patch on a unit standing close lands on the neighbour in
   front of it**: face the units apart, or check each cast is clear.
 - **Two fused parts whose surfaces nearly coincide blend their colours over a wide band**, whatever `band` is: paint
   one colour over both, then the other back (Morgrem's cap of hair).
