@@ -730,6 +730,52 @@ found:
   torus, a gear or toothed lathe, a mouth with teeth, a group of parts scaled about a joint, the board check as a line
   of `build()`, a warning when a decal's ray lands on another part than the one aimed at.
 
+## What Kalos taught (2026-11-21)
+
+Seventy-two species by twenty-four agents; three sent back (an upright dinosaur, a tongue as a level bar, a head lost
+under its hair). What the agents found:
+
+- **Which mode or form is the species** is what the game's own sculptor and the 3D picture show, not always the
+  drawing (Xerneas's drawing is its Active Mode): build that, and keep the other look as an argument of the species'
+  function for the form's script later.
+- **A part standing in front of an eye catches the eye's decal** when it is within the cast's start along the eye's
+  normal (0.35 out): Clauncher's claw took a dark streak, and hands held before Gourgeist's lantern face took its
+  triangles. Make that part a loose piece, or keep it out of the ray. Nothing is printed.
+- **An eye under an overhang** (a dish, a brim, a brow) can look right head-on and be hidden in both game views
+  (Noivern): judge its place on the crop of the two game views.
+- **A pupil drawn inside the eye's own colour function steps at the rings**; lay it as a patch of its own with a
+  `polygon` outline (Scatterbug's upright pupil, Honedge's slit).
+- **A patch laid across the crease where two fused parts meet is stepped** (Pumpkaboo's eyes on its head and collar):
+  move it off the crease.
+- **A small decal on lumpy fused ground that comes out black** is cured by a lower `eps` (0.002 to 0.0012), as for
+  hand-laid eyes (Florges's flowers).
+- **A decal cast straight down on a low coil's top misses the surface** (four warnings on Zygarde): marks on a coil
+  are paint in the coil's own frame, on its top as on its sides.
+- **A paint mask that is a half-space reaches every part it is allowed on**: a collar's paint turned the shell behind
+  it green (Chesnaught). And a mask written with its sign turned round (`inside(0.12 - |x|)`, a throat painted in
+  front of a limit instead of behind) paints the wrong half or nothing, with nothing printed: only the sheet shows a
+  missing sock or a dark mouth.
+- **An ellipsoid flattened by clamping is narrow at its flat end**, so it is no bell or hood: use a `lathe`
+  (Heliolisk's folded frill). A `slab` has straight rims, so stacked plates read as boxes (Avalugg).
+- **A helper that takes a share of a length must not be handed a length** (Fletchling's chevron became a rod 0.1 too
+  tall); name the argument for what it is.
+- **A dish, an ear or a ring of marks that must mirror** wants a frame whose `u` runs outward on both sides
+  (up = cross(n, d) in `noibat.py`'s `ear_dish`), so one outline serves left and right unflipped.
+- **A skeleton may lack the bone the design wants** (the shrimps have one arm bone, Skrelp no tail or fin bone): put
+  the part on the nearest bone that moves as it should and say so; the clips show whether it holds.
+- **An export's bounds read about a unit** when its bone-shape meshes are counted: take the height from the bones
+  file or skip those meshes.
+- **The tool builds from a copy of the scripts made as it starts** (`dotnet run` copies `blender/**/*.py` beside
+  the tool): a script edited while a long `sculpt` run is going is built from its old self, and the built file's date
+  is then newer than the script, so a check by dates passes. Do not correct a script a running install has yet to
+  reach; or build it again afterwards and look at that build.
+- **A name with an accent keeps it**: `flabébé.py`, UTF-8, and `sibling("flabébé")`; any helper that makes a
+  script's name from a species' must keep letters as `Sculpt.cs` does (`char.IsLetterOrDigit`).
+- **The kit's wish list, once more**: `on_ell`, a spike or claw hull along a direction, an eye outline that mirrors
+  itself and cuts with a lid, a ribbon along a curve, a torus, a rock hull and a crystal, a bevelled or tapering slab,
+  a group of parts scaled about a point, a warning when a decal lands on another part or a `polygon` misses its
+  middle.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
