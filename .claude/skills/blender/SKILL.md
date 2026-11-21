@@ -895,8 +895,8 @@ agents found:
 
 ## What the regional forms taught (2026-11-21)
 
-Fifty-eight forms by seventeen agents; four sent back (a flat board lying level, a dark face under a dark helmet,
-two ponies on stilts with their manes as thin tubes). A form is a model of its own, on its own export and skeleton,
+Fifty-eight forms by seventeen agents; five sent back (a flat board lying level, a dark face under a dark helmet, a
+crouch built upright, two ponies on stilts with their manes as thin tubes). A form is a model of its own, on its own export and skeleton,
 grown from its base's script. What the agents found:
 
 - **Never edit a base to grow a form from it**: every base is installed. Import it through `sibling` and set what
@@ -919,6 +919,8 @@ grown from its base's script. What the agents found:
   there): pass the legs it is for, or lay the part yourself.
 - **Deepening a trunk and fusing broad masses takes a build past 60,000 vertices**: raise the voxel a step (0.0072
   to 0.0078 for Ponyta-Galar) rather than thinning what the game's shot asked for.
+- **Locks hanging in front of a limb catch the rays of patches meant for the limb** and draw their colour in bars
+  across the front: make such marks paint, limited to the limb (Zoroark-Hisui's red ovals).
 - **A mane or a tail that is the design's largest mass is broad fused masses**, 0.07 or more across and overlapping;
   as separate tubes it reads as wires at the game's size (Rapidash-Galar).
 
