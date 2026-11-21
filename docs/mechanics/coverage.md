@@ -31,10 +31,10 @@ The data has 1008 moves in all. The games number 919 of them, because each of th
 | 7 | 88 | 68 | 68 | 0 | 0 | 42 | 42 |
 | 8 | 96 | 89 | 89 | 0 | 0 | 33 | 33 |
 | 9 | 120 | 69 | 69 | 0 | 0 | 47 | 47 |
-| Ours | 400 | 72 | 72 | 0 | 0 | 0 | 0 |
-| All | 1425 | 919 | 919 | 0 | 0 | 313 | 313 |
+| Ours | 649 | 72 | 72 | 0 | 0 | 0 | 0 |
+| All | 1674 | 919 | 919 | 0 | 0 | 313 | 313 |
 
-**Forms** (plan 03 · D11): 634, of 250 species: 112 Mega, 2 Primal, 34 Gigantamax, 78 Mega Dynamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 656 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
+**Forms** (plan 03 · D11): 659, of 269 species: 112 Mega, 2 Primal, 34 Gigantamax, 78 Mega Dynamax, 82 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 656 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
 
 ## Move effects still to write
 
@@ -123,26 +123,26 @@ What plan 06 · R20–R23 wrote their rules from, and every part of it runs unde
 
 ## Evolutions
 
-982 evolutions. `Models/Evolution.cs` has a rule for every method (docs/mechanics/evolution.md explains each); some can't be met in the game until something else is built:
+1107 evolutions. `Models/Evolution.cs` has a rule for every method (docs/mechanics/evolution.md explains each); some can't be met in the game until something else is built:
 
 | Method | Evolutions | Set off by | Waits for |
 | --- | --- | --- | --- |
-| Level | 408 | a level-up |  |
-| UseItem | 97 | an item used on it |  |
+| Level | 522 | a level-up |  |
+| UseItem | 101 | an item used on it |  |
 | LevelKnowsMove | 93 | a level-up |  |
 | LevelHoldingItem | 79 | a level-up |  |
 | LevelWithSpeciesInParty | 61 | a level-up |  |
-| LevelNight | 50 | a level-up |  |
+| LevelNight | 52 | a level-up |  |
 | LevelDay | 31 | a level-up |  |
-| Friendship | 21 | a level-up |  |
-| TradeHoldingItem | 16 | a trade | trading with a friend (plan 07 · O5); the game's own trades (plan 06 · R12) and a Linking Cord used on the Pokémon set it off today |
+| Friendship | 23 | a level-up |  |
+| TradeHoldingItem | 17 | a trade | trading with a friend (plan 07 · O5); the game's own trades (plan 06 · R12) and a Linking Cord used on the Pokémon set it off today |
 | LevelInRain | 15 | a level-up |  |
 | LevelAtLocation | 12 | a level-up |  |
 | Trade | 12 | a trade | trading with a friend (plan 07 · O5); the game's own trades (plan 06 · R12) and a Linking Cord used on the Pokémon set it off today |
 | FriendshipDay | 10 | a level-up |  |
+| FriendshipNight | 9 | a level-up |  |
 | LevelHoldingItemNight | 8 | a level-up |  |
 | SpinHoldingItem | 8 | the player spinning |  |
-| FriendshipNight | 7 | a level-up |  |
 | LevelFemale | 7 | a level-up |  |
 | LevelAfterDefeating | 5 | a level-up |  |
 | LevelHoldingItemDay | 5 | a level-up |  |
@@ -174,7 +174,7 @@ What plan 06 · R20–R23 wrote their rules from, and every part of it runs unde
 
 Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read. A language marked (own) also has hand-written `names.<kind>.json` files beside it (plan 17 · N6: Romanian's names and descriptions, made up by us), which the importer never writes and whose entries win.
 
-| Language | Species (1425) | Forms | Moves (1008) | Abilities (313) | Items (1233) | Places | Move descriptions | Ability descriptions | Item descriptions |
+| Language | Species (1674) | Forms | Moves (1008) | Abilities (313) | Items (1233) | Places | Move descriptions | Ability descriptions | Item descriptions |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | de | 1025 | 365 | 901 | 310 | 1106 | 913 | 0 | 191 | 0 |
 | es | 1025 | 0 | 901 | 310 | 1106 | 232 | 0 | 0 | 0 |
@@ -182,6 +182,6 @@ Names and descriptions per language (plan 17 · N3), counted from `Data/text/<ta
 | it | 1025 | 0 | 901 | 310 | 1106 | 232 | 0 | 0 | 0 |
 | ja | 1025 | 1 | 901 | 310 | 1107 | 328 | 0 | 0 | 0 |
 | ko | 1025 | 0 | 901 | 310 | 1074 | 232 | 0 | 0 | 0 |
-| ro (own) | 0 | 0 | 1008 | 313 | 1233 | 0 | 1008 | 313 | 1233 |
+| ro (own) | 249 | 25 | 1008 | 313 | 1233 | 0 | 1008 | 313 | 1233 |
 | zh-Hans | 1025 | 0 | 901 | 310 | 1075 | 62 | 0 | 0 | 0 |
 | zh-Hant | 1025 | 0 | 901 | 310 | 1075 | 62 | 0 | 0 | 0 |
