@@ -679,7 +679,7 @@ internal static partial class PokemonModels
     public static void ForgetSignatures() => Signatures.Clear();
 
     /// <summary>Every species that has a hand-built model (anything else uses a generic shape).</summary>
-    public static readonly string[] Species =
+    public static readonly string[] Species = new[]
     {
         "Turtwig", "Grotle", "Torterra", "Chimchar", "Monferno", "Infernape", "Piplup", "Prinplup", "Empoleon",
         "Starly", "Staravia", "Staraptor", "Bidoof", "Bibarel", "Shinx", "Luxio", "Luxray", "Riolu", "Lucario",
@@ -884,7 +884,7 @@ internal static partial class PokemonModels
         "Tatsushogun", "Clodkaiser", "Farigigiraf", "Dunsprawl", "Tuskendon", "Shriekpuff", "Fungoliath", "Banshemane", "Saurmoth",
         "Lodestatic", "Treadnought", "Cryoparcel", "Gauntletron", "Hydrajet", "Fusionmoth", "Thornframe", "Bullionaire",
         "Tabletruin", "Swordruin", "Vesselruin", "Beadruin", "Lunaroar", "Paladroid", "Chagamage", "Okidaimyo", "Munkiregent", "Fezantessa"
-    };
+    }.Concat(CarpathiaNames()).Where(n => !n.Contains("-")).ToArray();
 
     /// <summary>
     /// Forms with a hand-built model of their own: every form of a hand-built species, Platinum's own (Rotom's
@@ -982,7 +982,7 @@ internal static partial class PokemonModels
         // The Mega Dynamax forms with a sculpt of their own (wave 60: PokemonModels.MegaMax1.cs; MegaMax2.cs adds its own list the same way)
         .Concat(MegaMax1.Names).Concat(new[] {
             "Incineroar-Mega-Mmax", "Infernape-Mega-Mmax", "Inteleon-Mega-Mmax", "Kangaskhan-Mega-Mmax", "Lopunny-Mega-Mmax", "Lucario-Mega-Mmax", "Manectric-Mega-Mmax", "Mawile-Mega-Mmax", "Medicham-Mega-Mmax", "Meganium-Mega-Mmax", "Meowscarada-Mega-Mmax", "Metagross-Mega-Mmax", "Pidgeot-Mega-Mmax", "Pinsir-Mega-Mmax", "Primarina-Mega-Mmax", "Pyroar-Mega-Mmax", "Quaquaval-Mega-Mmax", "Raichu-Mega-X-Mmax", "Raichu-Mega-Y-Mmax", "Rillaboom-Mega-Mmax", "Sableye-Mega-Mmax", "Salamence-Mega-Mmax", "Samurott-Mega-Mmax", "Sceptile-Mega-Mmax", "Scizor-Mega-Mmax", "Scolipede-Mega-Mmax", "Serperior-Mega-Mmax", "Sharpedo-Mega-Mmax", "Skarmory-Mega-Mmax", "Skeledirge-Mega-Mmax", "Slowbro-Mega-Mmax", "Starmie-Mega-Mmax", "Steelix-Mega-Mmax", "Swampert-Mega-Mmax", "Torterra-Mega-Mmax", "Typhlosion-Mega-Mmax", "Tyranitar-Mega-Mmax", "Venusaur-Mega-Mmax", "Victreebel-Mega-Mmax"
-        }).ToArray();
+        }).Concat(CarpathiaNames().Where(n => n.Contains("-"))).ToArray();
 
     /// <summary>
     /// Forms that look just like another form rather than like their species itself, and show that form's sculpt:
@@ -2634,6 +2634,8 @@ internal static partial class PokemonModels
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
         // A species of our own with a sculpt of its own (plan 03 · D14, PokemonModels.Ours.*.cs)
         _ when CreateOurs(species) is { } ours => ours,
+        // A Carpathian Pokémon with a sculpt of its own (plan 46 · CP4 to CP8, PokemonModels.Carpathia*.cs)
+        _ when CreateCarpathia(species) is { } carpathian => carpathian,
         // A Mega of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs)
         _ when CreateOurMega(species.ToUpperInvariant()) is { } mega => mega,
         // A Mega Dynamax form with a sculpt of its own (wave 60, PokemonModels.MegaMax1.cs)
