@@ -776,6 +776,53 @@ under its hair). What the agents found:
   a group of parts scaled about a point, a warning when a decal lands on another part or a `polygon` misses its
   middle.
 
+## What Alola taught (2026-11-21)
+
+Eighty-eight species by twenty-five agents; eight sent back (stilts under a wolf, a mane as a curtain, hair as a cap,
+a cloak as a thin cone, arms to the ground, a crouch as a squat on long shins, wings in one line across the cell, the
+design's largest masses built small). What the agents found:
+
+- **A render with one tile all black is not a winding fault** when many Blenders run at once: the same file drew in
+  colour on the next run (or in Workbench). Render again before changing the script. An `EXCEPTION_ACCESS_VIOLATION`
+  or a bash fork error under the same load is cured the same way.
+- **A decal lands on whatever its ray meets first, with nothing printed**: a cheek mark on a raised hand (Oranguru), a
+  mouth on an arm crossing under the chin (Komala), a flank flame on the forearms (Salazzle), a hind paw's stripes on
+  the foreleg in front of it (Solgaleo), a chest band on fused fists (Crabominable), a window on a tower's inner side
+  on the wall beside it (Palossand). Move the part, cast from the side that is clear, make the mark a loose hull, or
+  paint limited to the part's own radius. A patch tilted down meets hands held below it: cast it level (Tsareena).
+- **A broad paint is laid after the parts' colours**, so it repaints a fused part inside its mask (Bewear's muzzle went
+  pink, Stufful's legs white): clip it to the part it is for, or paint the part's own colour back after it.
+- **Paint at a coarse voxel is ragged for a small face mark** (Oranguru's star and cheeks at 0.0065): use a decal.
+- **A hand-laid eye patch can come out wound inside out** (drawn in ink) at `eps` 0.003; 0.0018 cured it
+  (Incineroar), as it cures a small decal on lumpy ground.
+- **`slab` outlines take local points**: a mark offset on a wing must be shifted by hand, or every hole lands in a row
+  (Ribombee).
+- **A tube's end cap reaches past its last point by its radius**: feet and knobs went under the ground (Bewear,
+  Sandygast); the KIT line's `lowest` shows it.
+- **A sheet's thin rounded end folds into ragged edges**; a flattened ellipsoid bent the same way is clean (Bounsweet's
+  leaves). A convex hull over a flared or hollow profile bulges and buries what stands on it (Stakataka's bricks): make
+  the core of two hulls.
+- **When an egg's lower half is deformed, whatever was placed on it by `on_ell` must be widened to match**, or it sinks
+  into the surface (Rowlet's bow tie).
+- **A helper with a bone's name written into it fails with `KeyError` in a sibling whose skeleton lacks the bone**:
+  pass the bone as an argument.
+- **A fin or tail plate turned 35 degrees out can still be edge-on to the front three-quarter camera**; 50 degrees
+  showed its face (Wishiwashi). Judge it on the crop of the two game views.
+- **A species with no face** has its five eye states as patches of the body's own colour (Nihilego, Xurkitree,
+  Blacephalon). **One whose eyes are always shut** has the shut arc as its Open state, Fierce a tilted one written
+  by hand (Komala, Cosmoem, Dartrix). **A drawn face that is not the creature's** stays in every state, and the game's
+  states go on its own eyes (Mimikyu). **Other creatures' eyes on a body** are marks in every state (Stakataka).
+- **A lid colour that is not the ground's shows as an oval when shut** (Marshadow's eyes hang below its dark band):
+  keep an eye on ground of one colour, or accept the oval.
+- **A design whose largest masses are held away from the body is the exception to arms inside the body's width**
+  (Necrozma's hand prisms, Tapu Koko's shell halves, Buzzwole's arms): say so in the report with the numbers.
+- **A colon can't be in a file's name**: Type: Null's script is `typenull.py`, its references and its built file are
+  `Type Null` (`Sculpt.FileOf`), and the game still finds it.
+- **The kit's wish list, once more**: `on_ell` (written again in ninety-six scripts by now), a spike or claw hull along a
+  direction, an eye outline that mirrors itself and cuts with a lid, a torus and a hex nut, a star and a crescent
+  outline, a frilled collar or skirt, a hollow half-shell with a lining and rim, a band on a deformed solid, the board
+  check as a line of `build()`, and a warning when a decal lands on another part or comes out inside out.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
