@@ -823,6 +823,34 @@ design's largest masses built small). What the agents found:
   outline, a frilled collar or skirt, a hollow half-shell with a lining and rim, a band on a deformed solid, the board
   check as a line of `build()`, and a warning when a decal lands on another part or comes out inside out.
 
+## What Galar taught (2026-11-21)
+
+Ninety-six species of Galar and Hisui by twenty-eight agents; six sent back (a thin post, a dog on stilts, an ear as
+a rod, a thin upright figure, a file of six cut by its cell, a tangle with no head). What the agents found:
+
+- **A row of units along the bones' diagonal is cut by its cell at any size** (Falinks): stand the row across the
+  front, the units facing a little apart. And **an eye patch on a unit standing close lands on the neighbour in
+  front of it**: face the units apart, or check each cast is clear.
+- **Two fused parts whose surfaces nearly coincide blend their colours over a wide band**, whatever `band` is: paint
+  one colour over both, then the other back (Morgrem's cap of hair).
+- **A heap of blocks over a glowing core goes from all red to all black within a narrow range** of block count and
+  size (Carkol: 120 blocks of 0.037, the core at 0.9 of the radius). Change one number at a time.
+- **A body tube whose radius is larger than its centre line's height goes under the ground**, with only the KIT
+  line's `lowest` to show it (Centiskorch).
+- **`mareep.wool` paints Mareep's cream unless it is given `col=`.**
+- **`inside(x - a)` paints where x is below a**, not above: check the sign on the first render.
+- **A `mirror=True` patch with an outline that is not symmetric is wrong on the left**: lay the left one by hand
+  with `outline(pi - th)` and `look(-u, v)`.
+- **A turtle's `arm` bones are its front legs**, and a tooth hull must stand in front of the surface to be seen
+  (Chewtle).
+- **`scyther.py` builds as it is read and can't be imported**: Kleavor wrote its frame again. A base that others may
+  grow from builds under `if __name__ == "__main__":`.
+- **A build is named after its species** (`Mr. Rime.glb`, the colon of Type: Null left out): the review helper finds
+  the newest file by that name and otherwise shoots the game's own sculpt without a word but `!! no build`.
+- **A `cd` in one Bash call lasts into the next**: use full paths.
+- **The review sheet's rows must be checked against the labels burnt into the crops**: the helper once named each
+  crop after the species before it.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
