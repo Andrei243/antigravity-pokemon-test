@@ -106,6 +106,8 @@ HEAD_C, HEAD_R = np.array([0.0, -0.09, 0.628]), np.array([0.05, 0.052, 0.048])
 
 
 def figure(k):
+    """An armoured figure, about half black: black shoulders, forearms, shins, belt, sides and back; green plates
+    between them on the chest, belly, upper arms and thighs. Limbs taper to points."""
     # head and crest
     k.add("head", ell(HEAD_C, HEAD_R), BLACK, "head")
     k.add("jaw", ell(HEAD_C + (0, -0.012, -0.018), (0.028, 0.03, 0.02)), BLACK, "head")
@@ -117,71 +119,94 @@ def figure(k):
                                                        ((0.02 * s, -0.01, 0.025), (0.03 * s, 0.0, 0.015),
                                                         (0.025 * s, 0.01, 0.02), (0.065 * s, 0.005, 0.05))]),
               BLACK2, "head", fuse=False, surface="scales")
-    # neck and body
-    k.add("neck", ell((0, -0.08, 0.585), (0.024, 0.024, 0.03)), BLACK, "body")
-    k.add("chest", ell((0, -0.076, 0.53), (0.068, 0.048, 0.056)), GREEN, "body")
-    k.add("belly", ell((0, -0.072, 0.455), (0.05, 0.04, 0.062)), GREEN, "body")
-    k.add("hips", ell((0, -0.07, 0.37), (0.06, 0.044, 0.045)), GREEN, "body")
-    # the chest's pale glow
-    k.paint(lambda P: inside(np.linalg.norm((P - (0, -0.115, 0.505)) / (0.03, 0.04, 0.045), axis=1) - 1, 0.01)
-            * (P[:, 1] < -0.09), GLOWC)
-    # arms: long green, down and a little forward, black at the elbow
+    # neck, black shoulders, the torso of plates, wider hips
+    k.add("neck", ell((0, -0.08, 0.585), (0.026, 0.026, 0.03)), BLACK, "body")
+    k.add("shoulder", ell((0.062, -0.076, 0.552), (0.042, 0.042, 0.036)), BLACK, "body", mirror=True)
+    k.add("chest", ell((0, -0.076, 0.53), (0.07, 0.05, 0.058)), GREEN, "body")
+    k.add("belly", ell((0, -0.072, 0.455), (0.052, 0.042, 0.064)), GREEN, "body")
+    k.add("hips", ell((0, -0.07, 0.37), (0.074, 0.05, 0.05)), GREEN, "body")
+
+    torso = ["chest", "belly", "hips"]
+
+    def sides(P):
+        """The torso's sides and back black, an armour's seams between the front's plates, a belt."""
+        x, y, z = np.abs(P[:, 0]), P[:, 1], P[:, 2]
+        tall = inside(z - 0.585, 0.002) * inside(0.33 - z, 0.002)
+        side = inside(0.04 + 0.004 * (z > 0.5) - x, 0.002)                  # 1 outside the front's plates
+        back = inside(-0.05 - y, 0.002)                                     # 1 behind y = -0.05
+        belt = inside(np.abs(z - 0.405) - 0.012, 0.002)
+        seam = inside(np.abs(z - 0.49) - 0.004, 0.0015) + inside(np.abs(x) - 0.004, 0.0015) * (z < 0.49)
+        top = inside(0.565 - z, 0.002)
+        return np.clip(np.maximum.reduce([side, back, belt, np.clip(seam, 0, 1), top]), 0, 1) * tall
+    k.paint(sides, BLACK, on=torso)
+    # a green plate down the back, between black, for its row of hexagons
+    k.paint(lambda P: inside(np.abs(P[:, 0]) - 0.02, 0.002) * inside(P[:, 2] - 0.545, 0.002)
+            * inside(0.425 - P[:, 2], 0.002) * (P[:, 1] > -0.04), GREEN, on=torso)
+
+    # arms: a thick green upper arm, a black forearm tapering to a point
     for s, sn in ((1, "R"), (-1, "L")):
         m = np.array([s, 1, 1.0])
-        P = [np.array(p) * m for p in ((0.05, -0.078, 0.54), (0.085, -0.095, 0.47), (0.095, -0.115, 0.4))]
-        k.add("arm" + sn, tube(P, [0.027, 0.024, 0.021], seg=16, per=6), GREEN, "arm" + sn)
-        k.paint(lambda Q, e=P[1]: inside(np.linalg.norm(Q - e, axis=1) - 0.02, 0.002), BLACK, on=["arm" + sn])
-        hand = P[2] + np.array((0, -0.006, -0.012))
-        for j, dx in enumerate((-0.01, 0.0, 0.01)):
-            tip = hand + np.array((dx * s, -0.012, -0.04 + 0.006 * abs(j - 1)))
-            k.add(f"finger{sn}{j}", hull([hand + (0.008, 0, 0.0), hand - (0.008, 0, 0), hand + (0, 0.008, 0),
-                                          hand - (0, 0.008, 0), tip]), BLACK, "arm" + sn, fuse=False,
-                  surface="scales")
-    # a white blade along the right forearm (the model's right, +X... the art's viewer-left arm is the figure's right)
-    k.add("blade", hull([(0.087, -0.11, 0.47), (0.095, -0.1, 0.47), (0.1, -0.13, 0.36), (0.093, -0.14, 0.34),
-                         (0.081, -0.125, 0.42)]), WHITE, "armR", fuse=False, surface="shell")
-    # legs: long green, black at the knees, slim feet
+        P = [np.array(p) * m for p in ((0.06, -0.078, 0.545), (0.097, -0.095, 0.47), (0.103, -0.115, 0.405),
+                                       (0.1, -0.126, 0.362))]
+        k.add("arm" + sn, tube(P, [0.04, 0.03, 0.021, 0.006], seg=18, per=6), GREEN, "arm" + sn)
+        ez = P[1][2]
+        k.paint(lambda Q, ez=ez: inside(Q[:, 2] - ez + 0.004, 0.002), BLACK, on=["arm" + sn])
+        # a black seam down the upper arm's outer side
+        k.paint(lambda Q, s=s, ez=ez: inside(0.02 - (s * Q[:, 0] - (0.06 + (0.545 - Q[:, 2]) * 0.49)), 0.002)
+                * (Q[:, 2] > ez), BLACK, on=["arm" + sn])
+    # a white blade along the right forearm
+    k.add("blade", hull([(0.092, -0.108, 0.47), (0.1, -0.098, 0.47), (0.106, -0.13, 0.36), (0.099, -0.14, 0.34),
+                         (0.086, -0.124, 0.42)]), WHITE, "armR", fuse=False, surface="shell")
+    # legs: thick green thighs with a black seam behind, black shins tapering to pointed feet
     for s, sn in ((1, "R"), (-1, "L")):
         m = np.array([s, 1, 1.0])
-        P = [np.array(p) * m for p in ((0.045, -0.07, 0.35), (0.062, -0.085, 0.24), (0.056, -0.07, 0.125))]
-        k.add("leg" + sn, tube(P, [0.037, 0.031, 0.024], seg=16, per=6), GREEN, "leg" + sn)
-        k.add("foot" + sn, ell(P[2] + np.array((0, -0.012, -0.008)), (0.019, 0.03, 0.016)), BLACK, "leg" + sn)
-        k.paint(lambda Q, e=P[1]: inside(np.linalg.norm(Q - e, axis=1) - 0.024, 0.002), BLACK, on=["leg" + sn])
+        P = [np.array(p) * m for p in ((0.05, -0.07, 0.355), (0.066, -0.085, 0.245), (0.06, -0.078, 0.15),
+                                       (0.056, -0.095, 0.1))]
+        k.add("leg" + sn, tube(P, [0.056, 0.036, 0.024, 0.007], seg=18, per=6), GREEN, "leg" + sn)
+        kz = P[1][2]
+        k.paint(lambda Q, kz=kz: inside(Q[:, 2] - kz + 0.006, 0.002), BLACK, on=["leg" + sn])
+        k.paint(lambda Q, c=P[1]: inside(c[1] + 0.016 - Q[:, 1], 0.002) * (Q[:, 2] > 0.2), BLACK, on=["leg" + sn])
     # the black tail sweeping down behind the right leg, a green stripe along it
-    tail = [(0.03, -0.04, 0.4), (0.07, -0.02, 0.33), (0.1, -0.01, 0.24), (0.12, -0.03, 0.16), (0.1, -0.06, 0.11),
-            (0.075, -0.08, 0.115)]
-    k.add("tail", tube(tail, [0.028, 0.028, 0.025, 0.021, 0.016, 0.012], seg=16, per=6), BLACK, "body")
-    k.paint(lambda P: inside(np.abs(P[:, 0] - 0.115 + 0.4 * (P[:, 2] - 0.25)) - 0.006, 0.002)
-            * (P[:, 0] > 0.05) * (P[:, 2] < 0.34) * (P[:, 2] > 0.15) * (P[:, 1] < -0.015), GREEN, on=["tail"])
+    tail = [(0.03, -0.035, 0.4), (0.08, -0.01, 0.33), (0.115, 0.0, 0.24), (0.135, -0.025, 0.16), (0.115, -0.06, 0.11),
+            (0.09, -0.08, 0.115)]
+    k.add("tail", tube(tail, [0.03, 0.03, 0.026, 0.022, 0.016, 0.01], seg=16, per=6), BLACK, "body")
+    k.paint(lambda P: inside(np.abs(P[:, 0] - 0.13 + 0.4 * (P[:, 2] - 0.25)) - 0.006, 0.002)
+            * (P[:, 0] > 0.07) * (P[:, 2] < 0.34) * (P[:, 2] > 0.15) * (P[:, 1] < -0.005), GREEN, on=["tail"])
 
 
 def ruff(k):
-    """The ruff of black spikes round the shoulders, the gems on the chest."""
-    root = np.array([0, -0.072, 0.565])
-    for i in range(12):
-        t = math.radians(-100 + 200 * i / 11)
-        d = np.array((math.sin(t), -0.55 * math.cos(t) - 0.15, 0.25 - 0.45 * (i % 2) - 0.2 * abs(math.sin(t))))
-        d = unit(*d)
-        r0 = root + np.array((0.04 * math.sin(t), -0.035 * math.cos(t), 0.0))
+    """The ruff of black spikes round the shoulders, twice as wide as the chest; the gems on the chest."""
+    root = np.array([0, -0.07, 0.565])
+    for i in range(14):
+        t = math.radians(-115 + 230 * i / 13)
+        front = abs(math.sin(t)) < 0.55 and math.cos(t) > 0
+        dz = -0.55 if front else 0.28 - 0.5 * (i % 2) - 0.1 * abs(math.sin(t))
+        d = unit(math.sin(t), -0.5 * math.cos(t) - 0.12, dz)
+        r0 = root + np.array((0.05 * math.sin(t), -0.04 * math.cos(t), 0.0))
         a, b = axes(d)
-        ln = 0.11 + 0.025 * (i % 3 == 0)
-        k.add(f"ruff{i}", hull([r0 + a * 0.026, r0 - a * 0.026, r0 + b * 0.018, r0 - b * 0.018,
-                                r0 + d * ln * 0.5 + a * 0.01, r0 + d * ln * 0.5 - a * 0.01, r0 + d * ln]),
+        ln = (0.17 + 0.035 * (i % 3 == 0)) * (0.55 if front else 1.0)
+        k.add(f"ruff{i}", hull([r0 + a * 0.03, r0 - a * 0.03, r0 + b * 0.02, r0 - b * 0.02,
+                                r0 + d * ln * 0.5 + a * 0.013, r0 + d * ln * 0.5 - a * 0.013, r0 + d * ln]),
               BLACK2, "body", fuse=False, surface="scales")
-    k.add("ruffplate", ell((0, -0.085, 0.565), (0.06, 0.035, 0.022)), BLACK, "body")
+    k.add("ruffplate", ell((0, -0.08, 0.566), (0.085, 0.045, 0.024)), BLACK, "body")
     for x, col, rr in ((0.0, RED, 0.016), (0.034, GREEN2, 0.009), (-0.034, BLUE, 0.009)):
         hexo = [(rr * math.cos(math.radians(60 * i + 30)), rr * math.sin(math.radians(60 * i + 30))) for i in range(6)]
-        o = np.array((x, -0.122 + 0.01 * abs(x) / 0.034, 0.567))
+        o = np.array((x, -0.127 + 0.01 * abs(x) / 0.034, 0.567))
         k.add(f"gem{x}", slab(hexo, o, (1, 0, 0), (0, -0.25, 1), 0.012), col, "body", fuse=False, surface="shell")
 
 
 def marks(k):
-    """White and black hexagons on the legs and belly."""
+    """White and pale hexagons down the chest, belly and thighs, and a row down the back."""
     HEX = polygon([(math.cos(math.radians(60 * i)), math.sin(math.radians(60 * i))) for i in range(6)])
-    for c, n, h, col in (((0.045, -0.11, 0.29), (0.3, -1, 0), 0.012, WHITE), ((-0.05, -0.11, 0.3), (-0.3, -1, 0), 0.012, WHITE),
-                         ((0.048, -0.105, 0.18), (0.2, -1, 0), 0.011, BLACK), ((-0.047, -0.1, 0.18), (-0.2, -1, 0), 0.011, BLACK),
-                         ((0.0, -0.105, 0.44), (0, -1, 0), 0.011, WHITE), ((0.0, -0.1, 0.405), (0, -1, 0), 0.011, WHITE)):
+    PALE = "#DDF5B8"
+    for c, n, h, col in (((0.02, -0.124, 0.528), (0.15, -1, 0.1), 0.013, PALE),
+                         ((-0.02, -0.124, 0.528), (-0.15, -1, 0.1), 0.013, PALE),
+                         ((0.0, -0.112, 0.465), (0, -1, 0), 0.012, WHITE), ((0.0, -0.11, 0.432), (0, -1, 0), 0.011, WHITE),
+                         ((0.058, -0.13, 0.305), (0.2, -1, 0), 0.013, WHITE), ((-0.058, -0.13, 0.305), (-0.2, -1, 0), 0.013, WHITE),
+                         ((0.063, -0.12, 0.268), (0.2, -1, 0), 0.01, PALE), ((-0.063, -0.12, 0.268), (-0.2, -1, 0), 0.01, PALE)):
         k.decal(c, unit(*n), (h, h), col, outline=HEX, eps=0.002, rings=6, segs=48)
+    for z in (0.522, 0.49, 0.458, 0.432):
+        k.decal((0, -0.03, z), (0, 1, 0), (0.0115, 0.0115), WHITE, outline=HEX, eps=0.002, rings=6, segs=48)
 
 
 CW, CK, CC = srgb(WHITE), srgb("#141012"), srgb(CYAN)

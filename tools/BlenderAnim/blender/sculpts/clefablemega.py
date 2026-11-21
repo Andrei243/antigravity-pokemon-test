@@ -104,7 +104,7 @@ def clefable_mega(src, out_path):
 
     # The wings: a long pink forewing up and out and swept back, a shorter pink lobe under it, a hindwing pink at the
     # root and yellow outward, each lobe a little behind the one before
-    el, sw = math.radians(24), math.radians(38)
+    el, sw = math.radians(50), math.radians(20)
     wing(k, "fore", (math.cos(el) * math.cos(sw), math.cos(el) * math.sin(sw), math.sin(el)), 0.62, 0.15,
          [(WINGP, 0, 1)], 0.0)
     el, sw = math.radians(-12), math.radians(32)

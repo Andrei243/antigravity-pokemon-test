@@ -3,13 +3,14 @@
 #
 # Grown from mawile.py (copied: that script's build takes no arguments that reach what changes). From the references:
 # two great black jaws in place of one, the design's largest mass, growing from the back of the crown and running far
-# back, one above the other: each arches up from its yellow oval spot and runs back nearly level, open wide along its
-# length (magenta inside, white teeth on both mandibles), the upper mandible's tip curling up, the lower's down, a
-# few jagged spines standing back off the top of the arch. The higher jaw runs back and some 22 degrees out to +X,
-# the lower back and 55 degrees out to +X, as the pictures show them, one over the other and nearly side by side: a
-# jaw run back toward -X was end-on (a pillar over the head) from the game's front three-quarter camera, and both
-# flanks show to both of the game's cameras this way. The body a little yellow figure in a long pink dress flaring to the ground in straight
-# pleats, pink sleeves on its little arms and black ragged hands; a round yellow head with magenta-red eyes, its crown
+# back, one above the other. Each is one mass, an open crocodile's head: a deep wedge at the hinge (its yellow oval
+# spot on each flank, a few short spines on top) joining an upper and a lower mandible, deep and flattened, whose
+# inner faces are magenta with white teeth between; the mouth opens toward the tips, the upper tip curling up, the
+# lower down. After the game's shot (cut by its cell): both jaws a fifth shorter, the upper no higher than a fifth of
+# the height over the head's top, both swung round to 74 and 78 degrees out to +X (across the game's cameras) and
+# parted in height rather than in yaw, the lower pitched down toward its tip, so that they cost the cell one width.
+# A jaw run back toward -X was end-on (a pillar over the head) from the game's front three-quarter camera.
+# The body a little yellow figure in a long pink dress flaring to the ground in straight pleats, pink sleeves on its little arms and black ragged hands; a round yellow head with magenta-red eyes, its crown
 # black, and two long black strands hanging from its sides down the dress.
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -69,18 +70,22 @@ class Jaw:
         return float(np.interp(s, S, [q[1] for q in rows])), float(np.interp(s, S, [q[2] for q in rows]))
 
     def add(self, k, name):
-        UP, LOW = self.up, self.low
-        k.add(f"{name}top", tube([self.pt(s, z) for s, z, r in UP], [r for s, z, r in UP]), BLACK, self.bone)
-        k.add(f"{name}low", tube([self.pt(s, z) for s, z, r in LOW], [r for s, z, r in LOW]), BLACK, self.bone)
-        # the hinge of the open mouth: a web set back between the mandibles near the root only, open toward the tips
+        UP, LOW, HINGE = self.up, self.low, self.hinge
+        # the mandibles: deep and flattened across the jaw, so that each reads as a jaw and not a tentacle
+        k.add(f"{name}top", blade([self.pt(s, z) for s, z, r in UP], [r for s, z, r in UP], self.LAT, 0.72), BLACK,
+              self.bone)
+        k.add(f"{name}low", blade([self.pt(s, z) for s, z, r in LOW], [r for s, z, r in LOW], self.LAT, 0.72), BLACK,
+              self.bone)
+        # the head of the jaw at the hinge: a deep wedge joining the two mandibles from the root to where the mouth
+        # opens, as deep there as half the jaw is long
         mid = []
-        for s in np.linspace(0.04, 0.2, 5):
+        for s, f in zip(np.linspace(0.0, HINGE * 0.65, 5), (1, 1, 1, 0.85, 0.7)):
             zu, ru = self.along(UP, s)
             zl, rl = self.along(LOW, s)
-            mid.append((s, (zu - ru + zl + rl) / 2, max((zu - ru - zl - rl) / 2 + 0.014, 0.02) * (1.15 - s * 2.5)))
-        k.add(f"{name}palate", blade([self.pt(s, z) for s, z, r in mid], [r for s, z, r in mid], self.LAT, 0.4),
-              PINK, self.bone)
-        # the mandibles' inner faces lined magenta, the teeth standing on the lining
+            mid.append((s, (zu + zl) / 2, (zu + ru * 0.8 - zl + rl * 0.8) / 2 * f))
+        k.add(f"{name}hinge", blade([self.pt(s, z) for s, z, r in mid], [r for s, z, r in mid], self.LAT, 0.62),
+              BLACK, self.bone)
+        # the mouth lined magenta: the mandibles' inner faces and the throat at the hinge's front
         root, D = self.root, self.D
 
         def lining(P, rows, below):
@@ -89,48 +94,62 @@ class Jaw:
             zc = np.interp(s, S, [q[1] for q in rows])
             rc = np.interp(s, S, [q[2] for q in rows])
             d = (zc - 0.3 * rc - P[:, 2]) if below else (P[:, 2] - zc - 0.3 * rc)
-            return inside(-d, 0.003) * (s > 0.03)
+            return inside(-d, 0.003) * (s > HINGE * 0.75)
+
+        def throat(P):
+            s = (P - root) @ D
+            zu = np.interp(s, [q[0] for q in UP], [q[1] - 0.3 * q[2] for q in UP])
+            zl = np.interp(s, [q[0] for q in LOW], [q[1] + 0.3 * q[2] for q in LOW])
+            lat = np.abs((P - root) @ self.LAT)
+            return inside(P[:, 2] - zu, 0.003) * inside(zl - P[:, 2], 0.003) * inside(HINGE * 0.55 - s, 0.004) \
+                * inside(lat - 0.022, 0.003)
         k.paint(lambda P: lining(P, UP, True), PINK, on=[f"{name}top"])
         k.paint(lambda P: lining(P, LOW, False), PINK, on=[f"{name}low"])
-        # spines standing back off the top of the arch
-        for j, (s, ln) in enumerate(((0.05, 0.07), (0.12, 0.06), (0.19, 0.045))):
+        k.paint(throat, PINK, on=[f"{name}hinge"])
+        # spines laid back off the top of the head
+        for j, (s, ln) in enumerate(((0.02, 0.045), (0.07, 0.042), (0.12, 0.035))):
             z, r = self.along(UP, s)
             b = self.pt(s, z + r * 0.6)
-            d = self.D * 0.8 + np.array([0, 0, 0.6])
+            d = self.D * 0.6 + np.array([0, 0, 0.8])
             k.add(f"{name}spine{j}", claw(b, d, ln, 0.04, 0.026, up=self.LAT), BLACK, self.bone, fuse=False)
         # teeth: white points down from the upper mandible and up from the lower, on both flanks
         for side in (1, -1):
-            for j, s in enumerate((0.15, 0.25, 0.35, 0.44)):
+            for j, s in enumerate((0.22, 0.28, 0.34, 0.395)):
                 z, r = self.along(UP, s)
-                b = self.pt(s, z - r * 0.85, side * 0.016)
-                dn = unit(*(self.pt(s + 0.015, z - r * 0.85 - 0.06, side * 0.02) - b))
-                k.add(f"{name}tooth{side}{j}", claw(b, dn, 0.042, 0.03, 0.024, up=self.LAT), TEETH, self.bone,
+                b = self.pt(s, z - r * 0.85, side * 0.014)
+                dn = unit(*(self.pt(s + 0.012, z - r * 0.85 - 0.06, side * 0.018) - b))
+                k.add(f"{name}tooth{side}{j}", claw(b, dn, 0.04, 0.03, 0.024, up=self.LAT), TEETH, self.bone,
                       fuse=False, surface="shell")
-            for j, s in enumerate((0.2, 0.31, 0.42)):
+            for j, s in enumerate((0.25, 0.31, 0.37)):
                 z, r = self.along(LOW, s)
-                b = self.pt(s, z + r * 0.8, side * 0.014)
-                upd = unit(*(self.pt(s - 0.012, z + r * 0.8 + 0.05, side * 0.016) - b))
-                k.add(f"{name}fang{side}{j}", claw(b, upd, 0.034, 0.028, 0.022, up=self.LAT), TEETH, self.bone,
+                b = self.pt(s, z + r * 0.8, side * 0.012)
+                upd = unit(*(self.pt(s - 0.01, z + r * 0.8 + 0.05, side * 0.014) - b))
+                k.add(f"{name}fang{side}{j}", claw(b, upd, 0.032, 0.028, 0.022, up=self.LAT), TEETH, self.bone,
                       fuse=False, surface="shell")
 
     def spots(self, k):
-        z, r = self.along(self.up, 0.09)
+        z, r = self.along(self.up, 0.07)
+        zl, rl = self.along(self.low, 0.07)
         for side in (1, -1):
-            n = self.LAT * side + np.array([0, 0, 0.35])
-            k.decal(self.pt(0.09, z + 0.01, side * r * 0.8), n, (0.058, 0.042), SPOT,
+            n = self.LAT * side + np.array([0, 0, 0.25])
+            k.decal(self.pt(0.07, (z + zl) / 2 + 0.02, side * 0.04), n, (0.055, 0.045), SPOT,
                     up=tuple(self.D + np.array([0, 0, 0.4])), eps=0.004, rings=16, segs=56)
 
 
-HIGH = Jaw((-0.02, 0.035, 0.43), 22, "maw",
-           [(-0.01, 0.46, 0.05), (0.06, 0.55, 0.055), (0.15, 0.575, 0.05), (0.26, 0.565, 0.045), (0.36, 0.55, 0.04),
-            (0.45, 0.54, 0.034), (0.52, 0.56, 0.028), (0.56, 0.6, 0.022)],
-           [(0.04, 0.425, 0.03), (0.12, 0.415, 0.034), (0.22, 0.405, 0.034), (0.32, 0.395, 0.032),
-            (0.42, 0.39, 0.028), (0.5, 0.38, 0.024), (0.55, 0.355, 0.02)])
-LOWJ = Jaw((0.02, 0.035, 0.40), 55, "maw2",
-           [(-0.01, 0.43, 0.05), (0.06, 0.45, 0.052), (0.15, 0.43, 0.048), (0.26, 0.4, 0.044), (0.36, 0.38, 0.04),
-            (0.45, 0.37, 0.034), (0.52, 0.39, 0.028), (0.56, 0.43, 0.022)],
-           [(0.04, 0.34, 0.03), (0.12, 0.295, 0.034), (0.22, 0.265, 0.034), (0.32, 0.25, 0.032), (0.42, 0.24, 0.028),
-            (0.5, 0.225, 0.024), (0.55, 0.195, 0.02)])
+# The jaws a fifth shorter than first built, the upper one lowered, both swung round toward +X at nearly one yaw
+# (across the game's cameras, and so that they cost the cell one width, not a width and a length) and parted in
+# height instead, the lower pitched down toward its tip: (s along the jaw, z, radius) for each mandible
+HIGH = Jaw((-0.02, 0.035, 0.43), 78, "maw",
+           [(-0.01, 0.465, 0.05), (0.06, 0.505, 0.054), (0.14, 0.515, 0.05), (0.23, 0.505, 0.045), (0.31, 0.495, 0.04),
+            (0.38, 0.5, 0.032), (0.43, 0.525, 0.024)],
+           [(0.0, 0.405, 0.036), (0.1, 0.39, 0.038), (0.19, 0.383, 0.035), (0.28, 0.377, 0.031), (0.36, 0.372, 0.026),
+            (0.42, 0.352, 0.02)])
+LOWJ = Jaw((0.02, 0.03, 0.31), 74, "maw2",
+           [(-0.01, 0.325, 0.048), (0.06, 0.31, 0.05), (0.14, 0.285, 0.046), (0.23, 0.26, 0.042), (0.31, 0.242, 0.038),
+            (0.38, 0.238, 0.03), (0.43, 0.255, 0.022)],
+           [(0.0, 0.225, 0.034), (0.1, 0.19, 0.035), (0.19, 0.16, 0.032), (0.28, 0.14, 0.029), (0.36, 0.125, 0.025),
+            (0.42, 0.105, 0.02)])
+HIGH.hinge = LOWJ.hinge = 0.17
 
 
 def mawile_mega(src, out):

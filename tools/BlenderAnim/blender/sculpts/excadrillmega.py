@@ -21,7 +21,7 @@ RED_DARK = "#B0303C"
 BODY_C, BODY_R = np.array([0.0, 0.03, 0.245]), np.array([0.165, 0.15, 0.205])
 HEAD_C, HEAD_R = np.array([0.0, -0.105, 0.355]), np.array([0.105, 0.1, 0.088])
 
-ARM_LEN, ARM_R = 0.42, 0.086            # the arm drills: about as long as the body is tall
+ARM_LEN, ARM_R = 0.4, 0.086            # the arm drills: about as long as the body is tall
 HEAD_LEN, HEAD_DR = 0.4, 0.076           # the head's drill
 
 
@@ -108,15 +108,16 @@ def build(src, path):
                (r + t) / 2 + (0.01, 0, 0), (r + t) / 2 - (0.01, 0, 0), t]
         k.add(f"horn{side}", hull(pts), STEEL, "head", fuse=False, surface="metal")
     # the head's drill: from the crown, back and up, red lobes along its top
-    mega_drill(k, "hdrill", (0, -0.03, 0.47), (0, 0.92, 0.4), HEAD_LEN, HEAD_DR, "head", (0, -0.4, 0.92), fins=6,
+    mega_drill(k, "hdrill", (0, -0.03, 0.47), (0, 0.62, 0.78), HEAD_LEN, HEAD_DR, "head", (0, -0.78, 0.62), fins=6,
                spikes=False, lobes=True)
 
-    # arms: thick, forward and down, a huge drill on each, teeth along its underside
+    # arms: thick, forward and down, a huge drill on each raised forward and up to the head's height and some
+    # 30 degrees out from straight ahead (so each shows its side to a camera), teeth along its underside
     for s, side in ((1, "R"), (-1, "L")):
         m = np.array([s, 1, 1.0])
         k.add(f"arm{side}", tube(np.array([(0.09, -0.02, 0.3), (0.16, -0.07, 0.24), (0.2, -0.12, 0.19)]) * m,
                                  [0.07, 0.066, 0.064]), BROWN, f"arm{side}")
-        mega_drill(k, f"drill{side}", np.array((0.215, -0.15, 0.18)) * m, (0.35 * s, -1, -0.2), ARM_LEN, ARM_R,
+        mega_drill(k, f"drill{side}", np.array((0.215, -0.15, 0.18)) * m, (0.335 * s, -0.58, 0.743), ARM_LEN, ARM_R,
                    f"arm{side}", (0.25 * s, 0.0, -1), fins=6)
     # legs: haunches fused into the body, a short thick shin, wide dark feet
     for s, side in ((1, "R"), (-1, "L")):

@@ -5,9 +5,10 @@
 #   1. a pair of great white feathered wings out of the back, rising up and back in a V, five thick feathers each over
 #      a fused root of fur, lavender in their middle;
 #   2. the body and legs of Absol, with large spiky cuffs of fur at the forearms and the hind shins;
-#   3. the hood, its fur now falling as one broad lock over the face's +X side down to the chest, hiding that eye: one
-#      red eye shows, on -X;
-#   4. a short thick crescent horn on the hood's -X side, curving up and back, and a small spike on the +X side;
+#   3. the hood, its fur now falling in a pointed lock over the face's -X side to the jaw, hiding that eye: the open
+#      half of the face, with its one red eye, is on +X, the side the game's front three-quarter camera sees (the
+#      pictures draw the creature facing the other way);
+#   4. a short thick crescent horn on the open (+X) side, curving up and back, and a small spike on the -X side;
 #   5. a broad dark oval on the forehead, a lighter lens in it;
 #   6. a dark tail like a bat's wing, held back level, its trailing edge notched into points.
 # Mega Absol Z, from its own pictures: the same frame in navy, a lighter slate face with an open mouth and a fang,
@@ -113,8 +114,8 @@ def add_head():
     k.add("head", ell(H, HR), W, "head")
     k.add("face", ell(H + (0, -0.045, -0.035), (0.09, 0.094, 0.09)), W, "head")
     k.add("muzzle", ell(H + (0, -0.12, -0.078), (0.04, 0.038, 0.034)), W, "head")
-    for j, (z, d) in enumerate(((0.63, unit(-1, -0.15, 0.2)), (0.585, unit(-1, -0.2, -0.25)), (0.54, unit(-0.8, -0.2, -0.7)))):
-        base = np.array((-0.095, -0.29, z))
+    for j, (z, d) in enumerate(((0.63, unit(1, -0.15, 0.2)), (0.585, unit(1, -0.2, -0.25)), (0.54, unit(0.8, -0.2, -0.7)))):
+        base = np.array((0.095, -0.29, z))
         k.add(f"cheektuft{j}", blade([base, base + d * 0.025, base + d * 0.048], [0.026, 0.016, 0.003], (0, 1, 0), 0.5),
               W, "head")
 
@@ -133,32 +134,40 @@ def add_face_paint():
             outline=polygon([(-1, 1), (1, 1), (1, -0.25), (0.55, -0.45), (0, -0.7), (-0.55, -0.45), (-1, -0.25)]))
 
 
-# --- the lock: the hood's fur falling broad over the face's +X side to the chest, a loose piece ----------------------
+# --- the lock: the hood's fur falling over the face's -X side, a loose piece: the open half of the face, with its
+# eye, the horn and the forehead's mark, is on +X, which the game's front three-quarter camera sees ----------------
 def add_lock():
-    pts = [(0.035, -0.3, 0.77), (0.062, -0.365, 0.72), (0.072, -0.393, 0.63), (0.076, -0.385, 0.53),
-           (0.07, -0.36, 0.43), (0.056, -0.32, 0.35)]
-    radii = [0.05, 0.066, 0.07, 0.064, 0.05, 0.012]
-    k.add("lock", blade(pts, radii, unit(0.35, -1, 0), 0.38), C["FUR"], "head", fuse=False)
+    if not Z:
+        # a pointed tuft ending at the jaw's height, two thirds as wide as the first one
+        pts = [(-0.035, -0.3, 0.77), (-0.06, -0.365, 0.72), (-0.07, -0.39, 0.64), (-0.068, -0.388, 0.565),
+               (-0.06, -0.375, 0.51)]
+        radii = [0.034, 0.044, 0.046, 0.03, 0.004]
+    else:
+        # longer, as its pictures draw it, but narrow, ending in a tapering red point
+        pts = [(-0.035, -0.3, 0.77), (-0.06, -0.365, 0.72), (-0.07, -0.39, 0.64), (-0.072, -0.385, 0.55),
+               (-0.068, -0.365, 0.46), (-0.062, -0.345, 0.4)]
+        radii = [0.034, 0.044, 0.046, 0.042, 0.034, 0.026]
+    k.add("lock", blade(pts, radii, unit(-0.35, -1, 0), 0.4), C["FUR"], "head", fuse=False)
     # a second, narrower strand behind it at the face's outer edge, so the side reads as fur
-    pts2 = [(0.08, -0.3, 0.75), (0.13, -0.33, 0.66), (0.14, -0.33, 0.55), (0.125, -0.31, 0.46)]
-    k.add("lock2", blade(pts2, [0.04, 0.05, 0.042, 0.006], unit(1, -0.4, 0), 0.5), C["FUR"], "head", fuse=False)
+    pts2 = [(-0.08, -0.3, 0.75), (-0.125, -0.33, 0.67), (-0.135, -0.33, 0.58), (-0.12, -0.31, 0.5)]
+    k.add("lock2", blade(pts2, [0.03, 0.036, 0.03, 0.005], unit(-1, -0.4, 0), 0.5), C["FUR"], "head", fuse=False)
     if Z:
-        # the lock's red tip
-        k.add("locktip", blade([(0.064, -0.345, 0.385), (0.06, -0.33, 0.35), (0.052, -0.31, 0.32)], [0.04, 0.03, 0.006],
-                               unit(0.35, -1, 0), 0.5), C["PLUME"], "head", fuse=False)
+        k.add("locktip", blade([(-0.062, -0.345, 0.405), (-0.058, -0.33, 0.35), (-0.053, -0.315, 0.3),
+                                (-0.05, -0.305, 0.265)], [0.027, 0.02, 0.011, 0.002], unit(-0.35, -1, 0), 0.45),
+              C["PLUME"], "head", fuse=False)
 
 
-# --- the horns ---------------------------------------------------------------------------------------------------
+# --- the horns: over the open half (+X), the small spike on the lock's side ------------------------------------------
 def add_horn():
     if not Z:
-        # a short thick crescent on -X, rising up and curving back over the hood
-        pts = [(-0.075, -0.27, 0.72), (-0.11, -0.27, 0.8), (-0.125, -0.23, 0.875), (-0.105, -0.16, 0.92),
-               (-0.07, -0.09, 0.915)]
-        k.add("horn", blade(pts, [0.036, 0.044, 0.04, 0.028, 0.006], unit(1, 0.25, 0), 0.5), C["HORN"], "head",
+        # a short thick crescent rising up and curving back over the hood
+        pts = [(0.075, -0.27, 0.72), (0.11, -0.27, 0.8), (0.125, -0.23, 0.875), (0.105, -0.16, 0.92),
+               (0.07, -0.09, 0.915)]
+        k.add("horn", blade(pts, [0.036, 0.044, 0.04, 0.028, 0.006], unit(1, -0.25, 0), 0.5), C["HORN"], "head",
               fuse=False, surface="shell")
     else:
         # angular and bent: up and out, a corner, then up and forward to a point; flat-faced hulls
-        R, K1, T = np.array([-0.075, -0.25, 0.72]), np.array([-0.17, -0.2, 0.85]), np.array([-0.12, -0.28, 1.0])
+        R, K1, T = np.array([0.075, -0.25, 0.72]), np.array([0.17, -0.2, 0.85]), np.array([0.12, -0.28, 1.0])
         for nm, a, b, ra, rb in (("horn", R, K1, 0.05, 0.046), ("horntip", K1, T, 0.048, 0.0)):
             d = b - a; d /= np.linalg.norm(d)
             s1 = np.cross(d, (0, 1.0, 0)); s1 /= np.linalg.norm(s1)
@@ -169,9 +178,9 @@ def add_horn():
                     ang = math.pi / 2 * t
                     pts.append(p + r * (math.cos(ang) * s1 + 0.45 * math.sin(ang) * s2) if r > 0 else p)
             k.add(nm, hull(np.array(pts)), C["HORN"], "head", fuse=False, surface="shell")
-    # the small spike on the hood's +X side, pointing up and back
-    k.add("spike", blade([(0.075, -0.22, 0.75), (0.105, -0.2, 0.8), (0.125, -0.17, 0.85)], [0.026, 0.02, 0.004],
-                         unit(1, 0.3, 0), 0.6), C["HORN"], "head", fuse=False, surface="shell")
+    # the small spike on the hood's -X side, pointing up and back
+    k.add("spike", blade([(-0.075, -0.22, 0.75), (-0.105, -0.2, 0.8), (-0.125, -0.17, 0.85)], [0.026, 0.02, 0.004],
+                         unit(-1, 0.3, 0), 0.6), C["HORN"], "head", fuse=False, surface="shell")
 
 
 # --- the wings (Mega) or the plumes (Z) ----------------------------------------------------------------------------
@@ -275,7 +284,7 @@ def add_tail():
 
 # --- the forehead's mark: a broad dark oval with a lighter lens -----------------------------------------------------
 def add_mark():
-    n = unit(-0.25, -0.72, 0.65)          # off to the -X side, clear of the lock
+    n = unit(0.25, -0.72, 0.65)           # off to the +X side, the open half the front camera sees
     CM, CL = srgb(C["MARK"]), srgb(C["LENS"])
     def mark(u, v):
         c = np.tile(CM, (len(u), 1))
@@ -303,16 +312,16 @@ def add_mouth():
     CM, CF = srgb(C["MOUTH"]), srgb(C["FANG"])
     def mouth(u, v):
         c = np.tile(CM, (len(u), 1))
-        c[(u < -0.15) & (u > -0.55) & (v > 0.2 - (u + 0.35) ** 2 * 6)] = CF
+        c[(u > 0.15) & (u < 0.55) & (v > 0.2 - (u - 0.35) ** 2 * 6)] = CF      # u runs toward +X: the fang on the open half
         return c
-    k.decal(H + (0, -0.142, -0.1), unit(0, -1, -0.35), (0.03, 0.02), mouth, eps=0.003, rings=14, segs=60,
+    k.decal(H + (0.018, -0.14, -0.1), unit(0.15, -1, -0.35), (0.03, 0.02), mouth, eps=0.003, rings=14, segs=60,
             outline=polygon([(-1, 0.6), (1, 0.6), (0.6, -0.5), (0, -1), (-0.6, -0.5)]))
 
 
-# --- the eye: only the -X one shows, the lock hiding the other -------------------------------------------------------
-HE = 0.037
-EYE_DIR = unit(-0.45, -0.88, 0.08)
-E = np.array([-0.053, -0.37, 0.631])
+# --- the eye: only the +X one shows, the lock hiding the other ------------------------------------------------------
+HE = 0.041                  # a tenth larger than absol.py's
+EYE_DIR = unit(0.45, -0.88, 0.08)
+E = np.array([0.054, -0.37, 0.632])
 
 
 def eye_top(u):
@@ -352,9 +361,9 @@ def eyes(state):
         c[v > eye_top(u) - 0.18] = CI
         return c
     look = eye_look(state, eye, srgb(C["FACE"]), srgb(C["LINE"]), line=0.13)
-    # the -X eye: u runs outward, toward -X, so the picture is flipped as absol.py flips its left eye
-    outline = polygon([(-a, b) for a, b in OUT]) if state in ("Open", "Fierce") else None
-    k.decal(E, EYE_DIR, (HE, HE * 0.85), lambda a, b, f=look: f(-a, b), eps=0.005, outline=outline, rings=20, segs=56)
+    # the +X eye, on the open half: u runs outward, toward +X, as absol.py's right eye
+    outline = polygon(OUT) if state in ("Open", "Fierce") else None
+    k.decal(E, EYE_DIR, (HE, HE * 0.85), look, eps=0.005, outline=outline, rings=20, segs=56)
 
 
 def absol_mega(src, dst, z=False, voxel=0.008):

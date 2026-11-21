@@ -5,15 +5,15 @@
 # by sibling; the head and body copied here and raised by the joints' difference, 0.245: Mega Diancie floats where
 # Diancie stood on its rock). From the references, the masses by size: (1) a great bell of pink crystal under the gown,
 # prisms hanging point down round a pale core, the design's largest mass (0.55 of the height tall, as wide as it is tall
-# at its top); (2) two long white veils from the shoulders, out over the arms and hanging down at the sides; (3) a wide
-# white over-skirt of scallops over a gold band; (4) the crown: the round brilliant grown great on the brow, ringed by
+# at its top); (2) two long white veils of gauze from the shoulders, falling outward and hanging down beside the skirt; (3) a wide
+# flat white over-skirt with a rim of eight scallops over a gold band; (4) the crown: the round brilliant grown great on the brow, ringed by
 # short pale crystals. The grey head and small pointed ears, large red eyes, a small mouth; two cream crescents on the
 # chest facing each other round a small pink diamond; thin grey arms held out a little forward and down. A few small pink
 # gems float under the skirt and the veils. No rock (the pictures and the game's sculptor agree).
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
-from sculptkit import Kit, ell, tube, sheet, lathe, srgb, unit, eye_look, args, hull, outward, axes, sibling
+from sculptkit import Kit, ell, tube, sheet, lathe, slab, tri, srgb, unit, eye_look, args, hull, outward, axes, sibling
 
 D = sibling("diancie")
 C, R = D.C, D.R
@@ -63,11 +63,12 @@ def dianciemega(src, out):
     # --- (3) the gold band and the white over-skirt of scallops -------------------------------------------------------
     k.add("band", lathe((0, 0.0, 0.385), (0, 0, 1), [(0, 0.0), (0.13, 0.0), (0.124, 0.028), (0, 0.028)], seg=40),
           GOLD, "body", fuse=False, surface="metal")
-    k.add("skirtcore", ell((0, 0.0, 0.44), (0.11, 0.1, 0.045)), WHITE, "body")
-    for i in range(12):
-        th = 2 * math.pi * i / 12
-        k.add(f"frill{i}", ell((0.13 * math.sin(th), -0.122 * math.cos(th), 0.42 + 0.006 * (i % 2)),
-                               (0.056, 0.052, 0.03)), WHITE, "body")
+    # a flat white over-skirt: a plate with a sharp rim of eight clear scallops, a low dome over it to the waist
+    scal = [((0.14 + 0.046 * abs(math.cos(4 * t)) ** 0.5) * math.sin(t), -(0.134 + 0.044 * abs(math.cos(4 * t)) ** 0.5) * math.cos(t))
+            for t in np.linspace(0, 2 * math.pi, 96, endpoint=False)]
+    k.add("overskirt", slab(scal, (0, 0.0, 0.436), (1, 0, 0), (0, 1, 0), 0.022), WHITE, "body", fuse=False,
+          surface="cloth")
+    k.add("skirtcore", ell((0, 0.0, 0.448), (0.1, 0.09, 0.026)), WHITE, "body")
     k.add("torso", ell((0, -0.004, 0.5), (0.04, 0.036, 0.052)), WHITE, "body")
 
     # thin grey arms out a little forward and down, a small grey hand
@@ -100,32 +101,40 @@ def dianciemega(src, out):
                              flat=0.7), PINK_LT if i % 2 else PINK, "head")
     glints.flush(k)
 
-    # --- (2) the veils: broad white ribbons from the shoulders, out over the arms and down at the sides ----------------
-    path = np.array([(0.035, 0.02, 0.525), (0.095, 0.03, 0.585), (0.165, 0.045, 0.578), (0.212, 0.06, 0.49),
-                     (0.232, 0.07, 0.34), (0.238, 0.075, 0.2), (0.226, 0.07, 0.11)])
+    # --- (2) the veils: broad flat sheets of gauze, each leaving the shoulder, falling outward and hanging down beside
+    # and behind the skirt to below the bell, widening from 0.05 to 0.17, its lower end ragged; its face to the front
+    # and back cameras, a gap of daylight between it and the skirt ----------------------------------------------------
+    path = np.array([(0.045, 0.02, 0.528), (0.13, 0.045, 0.49), (0.232, 0.09, 0.38), (0.283, 0.12, 0.22),
+                     (0.297, 0.14, 0.04)])
     ext = np.vstack([2 * path[0] - path[1], path, 2 * path[-1] - path[-2]])
     dense = []
     for i in range(len(path) - 1):
         p0, p1, p2, p3 = ext[i], ext[i + 1], ext[i + 2], ext[i + 3]
-        for tt in np.linspace(0, 1, 12, endpoint=False):
+        for tt in np.linspace(0, 1, 16, endpoint=False):
             dense.append(0.5 * ((2 * p1) + (-p0 + p2) * tt + (2 * p0 - 5 * p1 + 4 * p2 - p3) * tt * tt
                                 + (-p0 + 3 * p1 - 3 * p2 + p3) * tt ** 3))
     dense.append(path[-1])
     dense = np.array(dense)
     tang = np.gradient(dense, axis=0)
     across = np.cross(tang, (0, 1.0, 0)); across /= np.linalg.norm(across, axis=1, keepdims=True)
-    q = np.linspace(0, 1, len(dense))
+    nd = len(dense) - 1
+
+    def along(arr, f):
+        i0 = np.clip(np.floor(f).astype(int), 0, nd - 1)
+        t = (f - i0)[..., None]
+        return arr[i0] * (1 - t) + arr[i0 + 1] * t
 
     def veil_at(u, v):
-        # the ribbon's width runs across its path in the front's plane (its face to the cameras)
-        idx = np.clip(np.round(u * (len(dense) - 1)).astype(int), 0, len(dense) - 1)
-        w = (0.014 + 0.026 * np.minimum(q[idx] * 3, 1)) * (v - 0.5) * 2
-        return dense[idx] + across[idx] * w[..., None] + np.array([0, 0.006, 0]) * np.sin(v * math.pi)[..., None]
-    k.add("veil", outward(sheet(veil_at, len(dense), 5, 0.008)), WHITE, "veil{s}", fuse=False, surface="cloth", mirror=True)
+        # the lower end ragged: each strand of the gauze ends at its own length
+        end = 1 - 0.07 * np.abs(tri(v * 2.5 + 0.25))
+        f = np.clip(u * end, 0, 1) * nd
+        w = (0.025 + 0.05 * (f / nd) ** 0.8) * (v - 0.5) * 2
+        return along(dense, f) + along(across, f) * w[..., None]
+    k.add("veil", outward(sheet(veil_at, 64, 11, 0.006)), WHITE, "veil{s}", fuse=False, surface="cloth", mirror=True)
 
-    # --- floating gems under the skirt and the veils -----------------------------------------------------------------
+    # --- floating gems under the skirt -----------------------------------------------------------------
     for i, (x, y, z, s) in enumerate(((0.14, -0.08, 0.06, 0.9), (-0.14, -0.08, 0.06, 0.9),
-                                      (0.245, 0.06, 0.07, 0.9), (-0.245, 0.06, 0.07, 0.9))):
+                                      (0.0, -0.06, 0.03, 0.9),)):
         k.add(f"float{i}", gem((x, y, z - 0.01), (0, 0, 1), 0.034 * s, 0.017 * s), PINK_DK, "body", fuse=False,
               surface="shell")
 
