@@ -20,9 +20,10 @@ T = sibling("tornadus")
 PINK, MAUVE, RED, HEARTINK, WHITE, HORN = "#F28BB8", "#A25F6E", "#E0203E", "#1C1014", "#F6F6F8", "#D8203C"
 EYEYEL, INK, MOUTH = "#F4C430", "#1A1216", "#5A1A2E"
 
-H = np.array([0.0, -0.025, 0.725])          # the head's middle
-HR = np.array([0.074, 0.07, 0.075])
-CLOUD = np.array([0.0, 0.0, 0.235])
+H = np.array([0.0, -0.025, 0.75])           # the head's middle
+S = 1.25                                    # the head grown about its middle, a third over the measured ratio
+HR = np.array([0.074, 0.07, 0.075]) * S
+CLOUD = np.array([0.0, 0.0, 0.245])
 
 
 def heart_outline(size, n=32):
@@ -56,11 +57,11 @@ def torso(k):
         k.add("upper" + bone[-1], tube([SH * m, EL * m], [0.03, 0.026]), PINK, bone)
         k.add("fore" + bone[-1], tube([EL * m, HA * m], [0.026, 0.024]), PINK, bone)
         k.add("hand" + bone[-1], ell(HA * m + (0.006 * s, -0.004, 0), (0.026, 0.024, 0.03)), PINK, bone)
-    # red spots on the arms and hips, a red heart on the chest and one on the belly
+    # red spots on the arms and hips, a red heart on the belly (the chest's is under the coil)
     spots = [((0.11, -0.022, 0.56), 0.012), ((-0.11, -0.022, 0.56), 0.012), ((0.13, -0.012, 0.47), 0.01),
              ((-0.13, -0.012, 0.47), 0.01), ((0.07, -0.05, 0.38), 0.011), ((-0.07, -0.05, 0.38), 0.011)]
     k.paint(T.blob_mask(spots), RED, on=["upper", "fore", "hips"])
-    for c, n, sz in (((0, -0.058, 0.545), (0, -1, 0.1), 0.03), ((0, -0.062, 0.42), (0, -1, 0.0), 0.034)):
+    for c, n, sz in (((0, -0.062, 0.42), (0, -1, 0.0), 0.036),):
         o = polygon([(x / sz, y / sz) for x, y in heart_outline(sz)])
         k.decal(c, n, (sz, sz), RED, eps=0.003, outline=o, rings=12, segs=64)
 
@@ -71,35 +72,28 @@ def head(k):
         V[:, 0] *= 1 - 0.18 * np.clip(-V[:, 2], 0, 1) ** 1.5
         return V
     k.add("head", ell(H, HR, deform=shape), PINK, "head")
-    k.add("muzzle", ell(H + (0, -0.05, -0.035), (0.038, 0.03, 0.03)), PINK, "head")
+    k.add("muzzle", ell(H + S * np.array((0, -0.05, -0.035)), np.array((0.038, 0.03, 0.03)) * S), PINK, "head")
     # long pointed ears out to the sides, a little up
     for s, side in ((1, "R"), (-1, "L")):
-        k.add(f"ear{side}", T.spike((0.06 * s, -0.01, 0.735), (0.155 * s, 0.01, 0.775), 0.026, n=6, flat=0.55), PINK,
+        k.add(f"ear{side}", T.spike(H + S * np.array((0.06 * s, 0.015, 0.01)), H + S * np.array((0.155 * s, 0.035, 0.05)), 0.026 * S, n=6, flat=0.55), PINK,
               "head", fuse=False, surface="fur")
     # small red horns on the brow: one in the middle and one each side
-    for i, (b, tp) in enumerate((((0, -0.06, 0.77), (0, -0.075, 0.805)), ((0.04, -0.045, 0.78), (0.055, -0.05, 0.815)),
-                                 ((-0.04, -0.045, 0.78), (-0.055, -0.05, 0.815)))):
-        k.add(f"horn{i}", T.spike(b, tp, 0.012, n=6), HORN, "head", fuse=False, surface="shell")
+    for i, (b, tp) in enumerate((((0, -0.035, 0.045), (0, -0.05, 0.08)), ((0.04, -0.02, 0.055), (0.055, -0.025, 0.09)),
+                                 ((-0.04, -0.02, 0.055), (-0.055, -0.025, 0.09)))):
+        k.add(f"horn{i}", T.spike(H + S * np.array(b), H + S * np.array(tp), 0.012 * S, n=6), HORN, "head", fuse=False, surface="shell")
     # the white moustache: a mass under the nose curling out at the corners, the hair over the crown
-    k.add("tache", ell(H + (0, -0.072, -0.045), (0.036, 0.016, 0.014)), WHITE, "head")
+    k.add("tache", ell(H + S * np.array((0, -0.072, -0.045)), np.array((0.036, 0.016, 0.014)) * S), WHITE, "head")
     for s, side in ((1, "R"), (-1, "L")):
-        k.add(f"curl{side}", tube([H + (0.02 * s, -0.075, -0.05), H + (0.048 * s, -0.062, -0.058),
-                                   H + (0.058 * s, -0.05, -0.04), H + (0.05 * s, -0.052, -0.028)],
-                                  [0.012, 0.011, 0.009, 0.008]), WHITE, "head", fuse=False, surface="fur")
-    k.add("hair", ell(H + (0, 0.025, 0.05), (0.06, 0.055, 0.035)), WHITE, "head")
+        k.add(f"curl{side}", tube([H + S * np.array((0.02 * s, -0.075, -0.05)), H + S * np.array((0.048 * s, -0.062, -0.058)),
+                                   H + S * np.array((0.058 * s, -0.05, -0.04)), H + S * np.array((0.05 * s, -0.052, -0.028))],
+                                  [0.013, 0.012, 0.011, 0.01]), WHITE, "head", fuse=False, surface="fur")
+    k.add("hair", ell(H + S * np.array((0, 0.025, 0.05)), np.array((0.06, 0.055, 0.035)) * S), WHITE, "head")
     # the heart of hair: two short thick loops rising from the crown and meeting at its point
     for s, side in ((1, "R"), (-1, "L")):
-        P = [H + (0.0, 0.03, 0.08), H + (0.035 * s, 0.035, 0.13), H + (0.065 * s, 0.035, 0.16),
-             H + (0.05 * s, 0.035, 0.19), H + (0.018 * s, 0.035, 0.18), H + (0.004 * s, 0.035, 0.16)]
-        k.add(f"heart{side}", tube(P, [0.016, 0.016, 0.016, 0.016, 0.015, 0.014]), WHITE, "head", fuse=False,
+        P = [H + S * np.array((0.0, 0.03, 0.08)), H + S * np.array((0.035 * s, 0.035, 0.115)), H + S * np.array((0.065 * s, 0.035, 0.14)),
+             H + S * np.array((0.05 * s, 0.035, 0.165)), H + S * np.array((0.018 * s, 0.035, 0.158)), H + S * np.array((0.004 * s, 0.035, 0.14))]
+        k.add(f"heart{side}", tube(P, [0.019, 0.019, 0.019, 0.019, 0.018, 0.017]), WHITE, "head", fuse=False,
               surface="fur")
-    # a small sly grin under the moustache
-    CM, CP = srgb(MOUTH), srgb(PINK)
-    def grin(u, v):
-        c = np.tile(CP, (len(u), 1))
-        c[(np.abs(v - (0.35 * u * u + 0.15 * u - 0.1)) < 0.3) & (np.abs(u) < 0.85)] = CM
-        return c
-    k.decal(H + (0, -0.08, -0.068), unit(0, -1, -0.25), (0.024, 0.012), grin, eps=0.004, rings=8, segs=40)
 
 
 def coil(k):
@@ -160,7 +154,7 @@ def eyes(k):
     E = H + de * np.array([HR[0], HR[1], HR[2]]) * 0.96 + (0, 0, 0.006)
     def lay(state):
         ink = CK if state in ("Open", "Fierce") else srgb("#9A3A62")
-        k.decal(E, de, (0.03, 0.025), eye_look(state, eye, CPK, ink, line=0.17), eps=0.004, rings=20, segs=56,
+        k.decal(E, de, (0.03 * S, 0.025 * S), eye_look(state, eye, CPK, ink, line=0.17), eps=0.004, rings=20, segs=56,
                 mirror=True)
     return lay
 

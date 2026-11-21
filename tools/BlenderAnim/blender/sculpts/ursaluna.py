@@ -60,6 +60,8 @@ def fringe(k):
         a = 2 * math.pi * i / n
         o = np.array([math.sin(a), -math.cos(a), 0.0])
         root = M + o * MR * np.array([0.9, 0.97, 0]) + (0, 0, -0.07 + 0.012 * (i % 2))
+        if o[1] > 0.95:                       # open over the tail, so it shows from behind
+            continue
         if o[1] < -0.6:                       # over the head the rim comes forward and down onto the brow
             root = root + (0, 0.03, -0.01)
         d = o * 0.5 + np.array([0, 0, 0.87])
@@ -67,7 +69,7 @@ def fringe(k):
     for i in range(18):
         a = math.radians(-150 + 300 * i / 17)    # round the sides and back; the front is the head's
         o = np.array([math.sin(a), -math.cos(a), 0.0])
-        if abs(o[0]) < 0.35 and o[1] < 0:
+        if (abs(o[0]) < 0.35 and o[1] < 0) or o[1] > 0.8:     # the front is the head's; none alone on the rump
             continue
         root = np.array([0, 0.05, 0.31]) + o * np.array([0.2, 0.3, 0]) + (0, 0, 0.005 * (i % 2))
         plank(k, f"low{i}", root, o * 0.75 + np.array([0, 0, -0.66]), o, 0.085 + 0.015 * (i % 2), 0.028, 0.022,

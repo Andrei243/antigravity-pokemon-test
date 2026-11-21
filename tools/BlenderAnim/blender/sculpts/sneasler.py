@@ -20,8 +20,9 @@ t = sibling("teddiursa")
 GREY, PALE, VIOLET, DARK, MAGENTA = "#B6C3E4", "#E8EDF6", "#6A5BB2", "#3B2452", "#E2306E"
 GOLD, GOLDRIM, WHITE, INK, RED, MOUTH = "#F4B030", "#C8701E", "#F6F7FA", "#16141E", "#C8283E", "#2A1428"
 
-H = np.array([0.0, -0.035, 0.8])            # the head's middle
-HR = np.array([0.108, 0.098, 0.1])
+H = np.array([0.0, -0.035, 0.815])          # the head's middle
+S = 1.18                                   # the head grown about its middle, a third over the measured ratio
+HR = np.array([0.108, 0.098, 0.1]) * S
 
 
 def spike(base, tip, r, n=5, flat=0.7):
@@ -124,15 +125,16 @@ def head(k):
         return V
     HEAD = ell(H, HR, deform=shape)
     k.add("head", HEAD, GREY, "head")
-    k.add("muzzle", ell(H + (0, -0.075, -0.04), (0.052, 0.04, 0.036)), GREY, "head")
+    k.add("muzzle", ell(H + S * np.array((0, -0.075, -0.04)), np.array((0.052, 0.04, 0.036)) * S), GREY, "head")
     # the pointed ear on the -X side, up and out
-    k.add("ear", blade([H + (-0.06, 0.0, 0.065), H + (-0.085, 0.005, 0.11), H + (-0.105, 0.01, 0.15)],
+    k.add("ear", blade([H + S * np.array((-0.06, 0.0, 0.065)), H + S * np.array((-0.085, 0.005, 0.11)), H + S * np.array((-0.105, 0.01, 0.15))],
                        [0.036, 0.022, 0.004], (0, 1, 0), 0.55), GREY, "head")
     # the violet mask over the lower face, its jagged edge up round the eyes and up the middle to the gem
     z0 = H[2]
     MASK = t.mirrored([(0.0, z0 + 0.03), (0.015, z0 + 0.0), (0.03, z0 - 0.012), (0.06, z0 - 0.025), (0.085, z0 - 0.03),
                        (0.1, z0 - 0.03), (0.09, z0 - 0.06), (0.105, z0 - 0.08), (0.07, z0 - 0.1), (0.04, z0 - 0.085),
                        (0.0, z0 - 0.1)])
+    MASK = [(a * S, z0 + (z - z0) * S) for a, z in MASK]
     FRONT = lambda P: P[:, 1] < H[1] - 0.02
     k.paint(lambda P: t.poly_mask(*t.round_about(P, H, HR[0]), MASK, edge=0.0025) * FRONT(P), VIOLET,
             on=["head", "muzzle"])
@@ -147,10 +149,10 @@ def head(k):
         fang = dark & (v > top - 0.5) & (np.abs(u - 0.45) < 0.2 * (v - (top - 0.5)) / 0.5)
         c[fang] = CF
         return c
-    MC = t.hit(ell(H + (0, -0.075, -0.04), (0.052, 0.04, 0.036)), (0.0, -1, z0 - 0.05), (0, 1, 0))
-    k.decal(MC, unit(0, -1, -0.1), (0.034, 0.02), grin, eps=0.004, rings=12, segs=48)
+    MC = t.hit(ell(H + S * np.array((0, -0.075, -0.04)), np.array((0.052, 0.04, 0.036)) * S), (0.0, -1, z0 - 0.05 * S), (0, 1, 0))
+    k.decal(MC, unit(0, -1, -0.1), (0.034 * S, 0.02 * S), grin, eps=0.004, rings=12, segs=48)
     # the gem on the brow
-    G = t.hit(HEAD, (0, -1, z0 + 0.055), (0, 1, 0))
+    G = t.hit(HEAD, (0, -1, z0 + 0.055 * S), (0, 1, 0))
     k.add("browgem", hull([G + (0, -0.004, 0.026), G + (0, -0.004, -0.022), G + (0.017, -0.003, 0.0),
                            G + (-0.017, -0.003, 0.0), G + (0, -0.014, 0.002), G + (0, 0.006, 0)]), GOLD, "head",
           fuse=False, surface="shell")
@@ -159,11 +161,11 @@ def head(k):
 
 def crest(k):
     """The long crest on the +X side: up over the head, then back and down behind, dark purple turning magenta."""
-    P = [H + (0.06, 0.01, 0.07), H + (0.1, 0.06, 0.13), H + (0.13, 0.15, 0.13), H + (0.15, 0.22, 0.06),
-         H + (0.16, 0.25, -0.05)]
+    P = [H + S * np.array((0.06, 0.01, 0.07)), H + S * np.array((0.1, 0.06, 0.13)), H + S * np.array((0.13, 0.15, 0.13)), H + S * np.array((0.15, 0.22, 0.06)),
+         H + S * np.array((0.16, 0.25, -0.05))]
     k.add("crest", blade(P, [0.026, 0.03, 0.03, 0.028, 0.024], unit(0.8, 0, 0.2), 0.65), DARK, "head", fuse=False,
           surface="fur")
-    Q = [H + (0.158, 0.245, -0.03), H + (0.165, 0.26, -0.16), H + (0.15, 0.24, -0.29), H + (0.13, 0.21, -0.36)]
+    Q = [H + S * np.array((0.158, 0.245, -0.03)), H + S * np.array((0.165, 0.26, -0.16)), H + S * np.array((0.15, 0.24, -0.29)), H + S * np.array((0.13, 0.21, -0.36))]
     k.add("crestend", blade(Q, [0.025, 0.026, 0.022, 0.006], unit(0.9, -0.2, 0), 0.65), MAGENTA, "head", fuse=False,
           surface="fur")
 
@@ -194,11 +196,11 @@ def eye(u, v):
 
 def eyes(k, HEAD):
     de = unit(0.5, -0.86, 0.06)
-    E = t.hit(HEAD, (0.048, -1, H[2] + 0.004), (0, 1, 0))
+    E = t.hit(HEAD, (0.048 * S, -1, H[2] + 0.004), (0, 1, 0))
     def lay(state):
         ink = CI if state in ("Open", "Fierce") else srgb("#4A4070")
         look = eye_look(state, eye, CG, ink, line=0.17)
-        k.decal(E, de, (0.036, 0.03), look, eps=0.004, rings=20, segs=56, mirror=True)
+        k.decal(E, de, (0.036 * S, 0.03 * S), look, eps=0.004, rings=20, segs=56, mirror=True)
     return lay
 
 

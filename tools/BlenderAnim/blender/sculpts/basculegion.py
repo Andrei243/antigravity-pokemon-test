@@ -136,8 +136,8 @@ BELLY_ROOT = [(-0.035, 0.015), (-0.02, -0.006), (0.04, -0.006), (0.04, 0.015)]
 def fins(k):
     for s in (1, -1):
         o = np.array([0.075 * s, -0.04, 0.215])
-        d = unit(0.45 * s, 0.6, -0.65)
-        fin(k, f"pec{'R' if s > 0 else 'L'}", PEC, PEC_ROOT, o, d, unit(0.2 * s, -0.75, 0.4), "body")
+        d = unit(0.4 * s, 0.65, -0.62)              # down and back; spanned with up, its face looks out and forward
+        fin(k, f"pec{'R' if s > 0 else 'L'}", PEC, PEC_ROOT, o, d, (0, 0, 1.0), "body")
     yaw = math.radians(40)
     ex = (math.sin(yaw), math.cos(yaw), 0.0)
     fin(k, "crest", CREST, CREST_ROOT, np.array([0.0, 0.0, 0.42]), ex, (0, 0, 1), "body", scale=1.35)
