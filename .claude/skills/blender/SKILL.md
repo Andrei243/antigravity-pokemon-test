@@ -858,7 +858,8 @@ signature part built small, figures on plain columns, a crouch built bolt uprigh
 agents found:
 
 - **A `polygon` outline that does not contain the patch's own middle floods the patch**, with nothing printed (a
-  crescent eye, an arch of a mouth, a chevron): split it into pieces that each contain their middle.
+  crescent eye, an arch of a mouth, a chevron). It is the rule above ("must contain the patch's own middle"), met
+  three more times: centre the patch on a point inside the outline.
 - **A paint limited only across and in depth reaches the feet and chest of a tall figure** (a visor's dark went down
   the whole of Iron Valiant): limit every paint in height too.
 - **A decal laid where a deform has pinched the surface is cast from the wrong place** (`on_ell` gives the point on
