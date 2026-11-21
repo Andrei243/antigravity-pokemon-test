@@ -23,14 +23,17 @@ pw = sibling("pawniard")
 RED, DARK, BLADE = pw.RED, "#2A2830", pw.BLADE
 BLACK, GOLD, GOLDDK, SILVER, GREY, YELLOW = "#232128", "#E8B83A", "#B98A22", "#D8DCE4", "#55555F", "#F4D020"
 
-HC, HR = np.array([0.0, -0.025, 0.8]), np.array([0.098, 0.094, 0.1])
-CHEST, CR = np.array([0.0, 0.0, 0.6]), np.array([0.15, 0.105, 0.125])
-SHOULDER = np.array([0.15, 0.0, 0.66])
-ELBOW = np.array([0.225, -0.05, 0.53])
-HAND = np.array([0.19, -0.16, 0.44])
-HIP = np.array([0.07, -0.01, 0.36])
-KNEE = np.array([0.2, -0.13, 0.355])
-ANKLE = np.array([0.2, -0.14, 0.085])
+# The squat (the coordinator's round 2): set low and wide, hips at 0.22, thighs level out to the knees, short shins,
+# the chest and pauldrons a quarter larger just above the knees (z below is the parts', not the joints')
+HC, HR = np.array([0.0, -0.03, 0.7]), np.array([0.126, 0.12, 0.124])
+CHEST, CR = np.array([0.0, 0.0, 0.47]), np.array([0.19, 0.13, 0.155])
+SHOULDER = np.array([0.19, 0.0, 0.53])
+ELBOW = np.array([0.29, -0.05, 0.4])
+HAND = np.array([0.29, -0.13, 0.29])
+HIP = np.array([0.08, -0.02, 0.22])
+KNEE = np.array([0.3, -0.1, 0.205])
+ANKLE = np.array([0.32, -0.12, 0.08])
+ZD = -0.13          # how far the old chest's parts are set down
 
 
 def chain(sections):
@@ -45,7 +48,7 @@ def blade_crest(k):
     side = np.array([1.0, 0, 0])
     fwd = np.cross(up, side)
     secs, edge = [], []
-    for t, w, th in ((0.0, 0.05, 0.036), (0.12, 0.062, 0.034), (0.3, 0.056, 0.03), (0.42, 0.034, 0.024), (0.5, 0.0, 0.012)):
+    for t, w, th in ((0.0, 0.05, 0.036), (0.12, 0.062, 0.034), (0.26, 0.056, 0.03), (0.36, 0.034, 0.024), (0.43, 0.0, 0.012)):
         c = base + up * t
         secs.append(np.array([c + side * w + fwd * th * 0.2, c - side * w * 0.8 + fwd * th * 0.2,
                               c + fwd * th, c - fwd * th, c + side * w * 0.4 - fwd * th * 0.6]))
@@ -75,7 +78,7 @@ def brim(k):
         a = unit(0, 0.89, 0.45)          # front to back in its plane
         secs, edge = [], []
         for x, z, w, t in run:
-            c = np.array([s * x, -0.02 + 0.02 * x, z])
+            c = np.array([s * (x + 0.015), HC[1] + 0.005 + 0.02 * x, HC[2] + (z - 0.805)])
             secs.append(np.array([c - a * w + n * t / 2, c - a * w - n * t / 2, c + a * w + n * t / 2, c + a * w - n * t / 2]))
             e = c - a * w - n * t * 0.35
             edge.append(np.array([e, e - a * 0.016, e - n * 0.018, e - a * 0.012 - n * 0.016]))
@@ -90,8 +93,8 @@ def gauntlet(k, s, sname):
     h = HAND * np.array([s, 1, 1])
     fist = [h + (dx, dy, dz) for dx in (-0.04, 0.04) for dy in (-0.045, 0.04) for dz in (-0.035, 0.035)]
     k.add(f"fist{sname}", hull(fist), GOLD, f"arm{sname}", fuse=False)
-    for j, (ang, L) in enumerate(((-25, 0.09), (0, 0.11), (25, 0.09))):
-        d = unit(math.sin(math.radians(ang)) * s * 0.8, -1, -0.15)
+    for j, (ang, L) in enumerate(((-25, 0.065), (0, 0.08), (25, 0.065))):
+        d = unit(math.sin(math.radians(ang)) * s * 0.8, -0.8, -0.6)
         root = h + np.array([s * math.sin(math.radians(ang)) * 0.03, -0.035, 0.0])
         pts = [root + (0.018, 0, 0.022), root + (-0.018, 0, 0.022), root + (0.018, 0, -0.022), root + (-0.018, 0, -0.022),
                root + d * L]
@@ -105,8 +108,8 @@ def kingambit(src, out):
 
     # --- the head: a red helmet over a black face -----------------------------------------------------------------
     k.add("head", ell(HC, HR), RED, "head")
-    k.add("jowl", ell(HC + (0, -0.02, -0.06), (0.075, 0.07, 0.06)), BLACK, "head")
-    k.add("neck", tube([(0, 0.0, 0.66), HC + (0, 0.01, -0.06)], [0.05, 0.05]), DARK, "head")
+    k.add("jowl", ell(HC + (0, -0.022, -0.068), (0.086, 0.08, 0.068)), BLACK, "head")
+    k.add("neck", tube([(0, 0.0, 0.56), HC + (0, 0.01, -0.06)], [0.06, 0.06]), DARK, "head")
     def face(P):
         rel = P - HC
         m = inside(rel[:, 1] + 0.035, 0.003) * inside(rel[:, 2] - 0.018, 0.003)
@@ -118,37 +121,37 @@ def kingambit(src, out):
 
     # --- the body: red armour, gold lapels in a V, a black belt ---------------------------------------------------
     k.add("chest", ell(CHEST, CR), RED, "body")
-    k.add("pauldron", ell(SHOULDER + (0.012, 0, 0.0), (0.07, 0.072, 0.06)), RED, "arm{s}", mirror=True)
-    k.paint(lambda P: inside(np.abs(P[:, 0]) - 0.03 - 0.25 * np.clip(P[:, 2] - 0.55, 0, 1), 0.003)
-            * (P[:, 1] < 0) * inside(P[:, 2] - 0.7, 0.003), GREY, on=["chest"])
+    k.add("pauldron", ell(SHOULDER + (0.015, 0, 0.0), (0.09, 0.09, 0.075)), RED, "arm{s}", mirror=True)
+    k.paint(lambda P: inside(np.abs(P[:, 0]) - 0.038 - 0.25 * np.clip(P[:, 2] - 0.42, 0, 1), 0.003)
+            * (P[:, 1] < 0) * inside(P[:, 2] - 0.6, 0.003), GREY, on=["chest"])
     for s, sname in ((1, "R"), (-1, "L")):
         m = np.array([s, 1, 1.0])
-        lap = [np.array(p) * m for p in ((0.04, -0.1, 0.7), (0.1, -0.08, 0.71), (0.03, -0.125, 0.54),
+        lap = [(np.array(p) * (1.25, 1.22, 1) + (0, 0, ZD)) * m for p in ((0.04, -0.1, 0.7), (0.1, -0.08, 0.71), (0.03, -0.125, 0.54),
                                           (0.065, -0.11, 0.53), (0.04, -0.07, 0.6), (0.11, -0.05, 0.68))]
         k.add(f"lapel{sname}", hull(lap), GOLD, "body", fuse=False)
-    k.add("belt", ell((0, 0.0, 0.47), (0.13, 0.105, 0.05)), BLACK, "body")
-    k.add("pelvis", ell((0, -0.01, 0.4), (0.135, 0.11, 0.075)), RED, "body")
-    for name, z, start, span, rise in (("waistblade", 0.48, -160, 300, -0.012), ("hipblade", 0.45, 160, -300, 0.01)):
-        k.add(name, pw.band((0, 0, 0.47), 0.138, 0.113, z, 0.026, 0.014, span=span, start=start, flare=0.55, rise=rise),
+    k.add("belt", ell((0, 0.0, 0.325), (0.165, 0.13, 0.06)), BLACK, "body")
+    k.add("pelvis", ell((0, -0.01, 0.24), (0.17, 0.13, 0.085)), RED, "body")
+    for name, z, start, span, rise in (("waistblade", 0.34, -160, 300, -0.014), ("hipblade", 0.305, 160, -300, 0.012)):
+        k.add(name, pw.band((0, 0, 0.325), 0.172, 0.138, z, 0.042, 0.018, span=span, start=start, flare=0.75, rise=rise),
               BLADE, "body", fuse=False)
 
     # --- the black mantle, falling behind the shoulders to the ground, and the seat it folds into -----------------
-    k.add("mantle", ell((0, 0.09, 0.5), (0.2, 0.11, 0.24)), BLACK, "tail")
-    k.add("mantlelow", ell((0, 0.08, 0.27), (0.17, 0.12, 0.18)), BLACK, "tail")
-    k.add("seat", tube([(0, 0.04, 0.02), (0, 0.04, 0.3)], [0.12, 0.12]), BLACK, "root")
-    k.paint(lambda P: inside(P[:, 2] - 0.07, 0.01) * inside(0.11 - P[:, 1], 0.02) * 0 + inside(P[:, 2] - 0.05, 0.004)
-            * inside(-P[:, 1] + 0.12, 0.01), RED, on=["mantle"])
+    # a wide low mass behind the hips and shoulders, no taller than the shoulders, spreading sideways; it is the seat
+    k.add("mantle", ell((0, 0.12, 0.34), (0.3, 0.12, 0.2)), BLACK, "tail")
+    k.add("mantlelow", ell((0, 0.09, 0.13), (0.24, 0.14, 0.13)), BLACK, "tail")
+    k.paint(lambda P: inside(P[:, 2] - 0.035, 0.004) * inside(-P[:, 1] + 0.12, 0.01), RED, on=["mantle"])
 
     # --- the legs: wide red breeches, knees out, short thick shins, white blade feet ------------------------------
-    k.add("thigh", tube([HIP, KNEE], [0.075, 0.07]), RED, "leg{s}", mirror=True)
-    k.add("shin", tube([KNEE + (0, 0, -0.02), ANKLE + (0, 0, 0.03)], [0.058, 0.048]), RED, "leg{s}", mirror=True)
-    k.paint(lambda P: inside(np.abs(P[:, 2] - 0.11) - 0.02, 0.003) * inside(0.15 - np.abs(P[:, 0]), 0.003)
-            * inside(P[:, 2] - 0.2, 0.003), GREY, on=["shin"])
+    k.add("thigh", tube([HIP, KNEE], [0.088, 0.08]), RED, "leg{s}", mirror=True)
+    k.add("shin", tube([KNEE + (0, 0, -0.02), ANKLE + (0, 0, 0.03)], [0.064, 0.056]), RED, "leg{s}", mirror=True)
+    k.paint(lambda P: inside(np.abs(P[:, 2] - 0.1) - 0.018, 0.003) * inside(0.2 - np.abs(P[:, 0]), 0.003)
+            * inside(P[:, 2] - 0.15, 0.003), GREY, on=["shin"])
     for s, sname in ((1, "R"), (-1, "L")):
         a = ANKLE * np.array([s, 1, 1])
+        o = 0.035 * s        # the toe turned out
         boot = [a + (0.04, 0.03, 0.03), a + (-0.04, 0.03, 0.03), a + (0.04, -0.03, 0.035), a + (-0.04, -0.03, 0.035),
-                a + (0.035, 0.03, -0.085), a + (-0.035, 0.03, -0.085), a + (0.025, -0.11, -0.085),
-                a + (-0.025, -0.11, -0.085), a + (0, -0.14, -0.08)]
+                a + (0.035, 0.03, -0.08), a + (-0.035, 0.03, -0.08), a + (0.025 + o, -0.105, -0.08),
+                a + (-0.025 + o, -0.105, -0.08), a + (o * 1.6, -0.135, -0.075)]
         k.add(f"boot{sname}", hull(boot), BLADE, f"leg{sname}", fuse=False)
 
     # --- the arms: dark grey, elbows bent, gold gauntlets resting before the knees --------------------------------

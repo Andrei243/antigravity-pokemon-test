@@ -168,7 +168,7 @@ def dolphin(src, out, scale=1.0, heart_mark=False):
     md = unit(0, -0.62, -0.78)
     K.decal(S((0, -0.19, 0.104)), md, (0.032 * k, 0.022 * k), mouth, eps=0.0012, rings=12, segs=48)
     if heart_mark:
-        K.decal(S((0, -0.105, 0.07)), unit(0, -0.71, -0.71), (0.03 * k, 0.03 * k), HEART, up=(0, -1, 0.3),
+        K.decal(S((0, -0.088, 0.072)), unit(0, -0.7, -0.71), (0.026 * k, 0.026 * k), HEART, up=(0, -1, 0.3),
                 eps=0.0014, rings=12, segs=96, outline=polygon(heart()))
     K.build(voxel=0.003 * k, smooth=4, band=0.005 * k, wband=0.03 * k)
     K.eye_states(lambda st: eyes(K, E, (0.022 * k, 0.024 * k), st))

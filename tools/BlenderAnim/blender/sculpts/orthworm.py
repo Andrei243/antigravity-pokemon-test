@@ -19,10 +19,12 @@ RED, PEACH, SILVER, BLUE, RIM = "#E8604E", "#F6C2A8", "#D8D6D8", "#4FA8E0", "#8E
 MOUTH, LIP, INK, SEAM = "#4A1C24", "#F8CCB6", "#1E3A6E", "#B44234"
 
 # (centre, radius, bone, colour) of each ring segment from the tail's end to the neck: the tail curls back behind
-SEGS = [((0.35, 0.15, 0.066), 0.062, "body", RED),
-        ((0.295, 0.065, 0.074), 0.07, "seg2", RED),
-        ((0.21, 0.03, 0.082), 0.078, "seg3", RED),
-        ((0.12, 0.012, 0.09), 0.084, "seg4", RED),
+# (round 2: the lying part curled round behind toward the middle, so the whole worm stays in its cell; the curled
+# segments are on the nearest bones that move with them)
+SEGS = [((-0.12, 0.145, 0.066), 0.062, "body", RED),
+        ((-0.045, 0.178, 0.074), 0.07, "body", RED),
+        ((0.048, 0.158, 0.082), 0.078, "seg5", RED),
+        ((0.09, 0.075, 0.09), 0.084, "seg4", RED),
         ((0.025, -0.008, 0.102), 0.096, "seg6", PEACH),
         ((-0.055, -0.03, 0.158), 0.082, "seg7", RED),
         ((-0.105, -0.06, 0.255), 0.108, "seg9", SILVER)]
@@ -103,6 +105,8 @@ def orthworm(src, out):
             n = unit(*(side * s + np.array([0, 0, 0.25])))
             if i == 6:
                 n = unit(*(np.array([-0.2, -1.0, 0.1]) * (1 if s > 0 else -1) + np.array([0.5 * s, 0, 0])))
+            if i in (1, 3) and (n[:2] @ (np.array([0.0, 0.1]) - c[:2])) > 0:
+                continue        # the coil's inner side: a port there lands across the next turn
             p, nn = on_ell(c, (r * 1.05, r, r), n)
             k.decal(p, nn, (h, h * 1.15), port, eps=0.003, rings=12, segs=40)
             if i == 6:

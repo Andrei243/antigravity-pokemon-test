@@ -107,7 +107,7 @@ def spikes(k):
 
 # --- the head: the black hood with the face coming out of its mouth --------------------------------------------------
 HC, HR = np.array([0, -0.18, 0.925]), np.array([0.128, 0.128, 0.13])
-FC, FR = np.array([0, -0.3, 0.885]), np.array([0.075, 0.1, 0.074])
+FC, FR = np.array([0, -0.3, 0.885]), np.array([0.086, 0.108, 0.084])
 
 
 def rim():
@@ -116,7 +116,7 @@ def rim():
     for th in np.linspace(0, 2 * math.pi, 72, endpoint=False):
         # walk along the face's surface from its front back until it is inside the hood
         best = None
-        for phi in np.linspace(0.05, 1.5, 300):
+        for phi in np.linspace(0.05, 2.8, 400):
             d = np.array([math.sin(phi) * math.cos(th), -math.cos(phi), math.sin(phi) * math.sin(th)])
             q = FC + d * FR
             if (((q - HC) / HR) ** 2).sum() < 1:
@@ -129,31 +129,46 @@ def rim():
 def head(k):
     k.add("hood", ell(HC, HR), HOOD, "head")
     k.add("face", ell(FC, FR, rot=(-8, 0, 0)), CREAM, "head")
-    k.add("cheek", ell((0, -0.315, 0.855), (0.07, 0.085, 0.055)), ORANGE, "head")
+    k.add("cheek", ell((0, -0.32, 0.852), (0.08, 0.09, 0.06)), ORANGE, "head")
     k.add("nose", ell((0, -0.398, 0.866), (0.044, 0.04, 0.04), rot=(-15, 0, 0)), PINK, "head")
     # brown spots on the orange cheek
-    for c in ((0.06, -0.33, 0.85), (-0.06, -0.33, 0.85), (0.052, -0.36, 0.875), (-0.052, -0.36, 0.875)):
+    for c in ((0.07, -0.335, 0.85), (-0.07, -0.335, 0.85), (0.06, -0.37, 0.872), (-0.06, -0.37, 0.872)):
         c = np.array(c)
         k.paint(lambda P, c=c: inside(np.linalg.norm(P - c, axis=1) - 0.011, 0.002), "#9A4A20", on=["cheek"])
     # the fangs round the hood's mouth: big white triangles, above pointing down, below pointing up
-    R = rim()
-    for th, q in R:
-        pass
-    upper = [70, 50, 30, 110, 130, 150]
-    lower = [250, 290]
+    # each a flat triangle lying over the face from the hood's rim toward the face's middle, standing a little proud
+    def face_point(th, phi, lift):
+        d = np.array([math.sin(phi) * math.cos(th), -math.cos(phi), math.sin(phi) * math.sin(th)])
+        q = FC + d * FR
+        n = unit(*((q - FC) / FR ** 2))
+        return q + n * lift, n
+    R = dict(rim())
+    upper = [90, 64, 116]
+    lower = [252, 288]
     for j, deg in enumerate(upper + lower):
         th = math.radians(deg)
-        q = min(R, key=lambda e: abs((e[0] - th + math.pi) % (2 * math.pi) - math.pi))[1]
+        # the rim's angle from the face's front axis at this angle
+        q = min(R.items(), key=lambda e: abs((e[0] - th + math.pi) % (2 * math.pi) - math.pi))[1]
+        phi0 = math.acos(np.clip(-(q - FC)[1] / FR[1], -1, 1)) if q is not None else 1.0
+        # rooted on the black hood just outside its mouth (white on black, as the pictures have them), the point
+        # reaching in over the face's edge
+        # a plate facing forward, laid over the rim: its base on the hood, its point over the face's edge
         if q is None:
             continue
-        inward = unit(*(FC - q)) * np.array([1, 0.3, 1])
-        inward = inward / np.linalg.norm(inward)
-        around = unit(-math.sin(th), 0, math.cos(th))
-        L = 0.045 if deg in (70, 110) else 0.036
-        w = 0.02
-        base = q + np.array([0, -0.006, 0])
-        pts = [base + around * w, base - around * w, base + around * w + (0, 0.03, 0), base - around * w + (0, 0.03, 0),
-               base + inward * L + (0, -0.008, 0), base + inward * L + (0, 0.02, 0)]
+        rho = math.hypot(q[0] - FC[0], q[2] - FC[2])
+        def front_y(c, r, x, z):
+            s = 1 - ((x - c[0]) / r[0]) ** 2 - ((z - c[2]) / r[2]) ** 2
+            return c[1] - r[1] * math.sqrt(max(s, 0.0))
+        def at(rr, a, which):
+            x, z = FC[0] + rr * math.cos(a), FC[2] + rr * math.sin(a)
+            c, r = (HC, HR) if which == "hood" else (FC, FR)
+            return np.array([x, front_y(c, r, x, z) - 0.01, z])
+        big = deg == 90
+        out_r, in_r, da = rho + 0.03, rho - (0.026 if big else 0.018), (0.2 if big else 0.17)
+        b1, b2, tp = at(out_r, th - da, "hood"), at(out_r, th + da, "hood"), at(in_r, th, "face")
+        t = 0.011
+        fwd = np.array([0, 1.0, 0])
+        pts = [b1 + fwd * t, b1 - fwd * t, b2 + fwd * t, b2 - fwd * t, tp + fwd * t * 0.6, tp - fwd * t * 0.6]
         k.add(f"fang{j}", hull(pts), FANG, "head", fuse=False, surface="shell")
     # knobs on stalks on the hood's top: a black pair and the giraffe's own brown one behind
     top = HC + np.array([0, 0, HR[2]])

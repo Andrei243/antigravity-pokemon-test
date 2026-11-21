@@ -27,14 +27,15 @@ EYE_YELLOW = srgb("#F2D23A")
 VOXEL = 0.0068
 
 L = SimpleNamespace(**vars(F.L))
-L.H, L.HR, L.dome_box = np.array([0.0, -0.2, 0.37]), np.array([0.162, 0.155, 0.122]), 2.3
+# The skull is half the creature: long, deep, flat-topped, as wide as the body, carried low and level
+L.H, L.HR, L.dome_box = np.array([0.0, -0.22, 0.28]), np.array([0.18, 0.16, 0.14]), 2.6
 L.dome_col = BONE
-L.hinge = (0.0, -0.29, 0.315)
-L.gape_up, L.gape_down = 1, 3
-L.upper_len, L.upper_r, L.upper_tip, L.upper_col, L.jaw_box = 0.37, (0.122, 0, 0.066), 0.68, BONE, 2.6
-L.lower_len, L.lower_r, L.lower_tip, L.lower_col = 0.34, (0.108, 0, 0.045), 0.7, BONE
+L.hinge = (0.0, -0.3, 0.175)
+L.gape_up, L.gape_down = 1, 2
+L.upper_len, L.upper_r, L.upper_tip, L.upper_col, L.jaw_box = 0.45, (0.165, 0, 0.08), 0.8, BONE, 3.0
+L.lower_len, L.lower_r, L.lower_tip, L.lower_col = 0.41, (0.145, 0, 0.052), 0.8, BONE
 L.open = False
-L.eye_dir, L.eye_shift, L.eye_h = (0.82, -0.36, 0.42), (0, -0.004, 0), (0.031, 0.029)
+L.eye_dir, L.eye_shift, L.eye_h = (0.8, -0.34, 0.46), (0, -0.004, 0), (0.043, 0.04)
 L.lid, L.glint = BLACK, (-0.25, 0.35, 0.22)
 
 
@@ -61,41 +62,54 @@ def teardrop(V):
     return V
 
 
+def billow(V):
+    """The unit sphere made a billow of flame: full and round, drawn to a soft point on top (local +z)."""
+    V = V.copy()
+    t = np.clip(V[:, 2], -1, 1)
+    w = 1 - 0.55 * np.clip(t, 0, 1) ** 2
+    V[:, 0] *= w; V[:, 1] *= w
+    V[:, 2] = np.where(t > 0, t * (1 + 0.25 * t), t)
+    return V
+
+
 def plume(k, side, s, root, sc=1.0):
     """A plume of flame off the side of the head: tongues rising up and out and back from a round foot, yellow blobs
     standing out of its faces."""
     root = np.array(root, float)
     m = np.array([s, 1, 1.0])
-    tongues = [((0.0, 0.0, 0.0), (0.06, 0.05, 0.07), (0, 15, 0)),
-               ((0.035, 0.02, 0.08), (0.032, 0.028, 0.07), (-10, 35, 0)),
-               ((-0.01, 0.045, 0.085), (0.03, 0.026, 0.075), (-30, 12, 0)),
-               ((0.065, -0.02, 0.04), (0.026, 0.024, 0.06), (5, 60, 0)),
-               ((0.02, 0.08, 0.04), (0.028, 0.024, 0.06), (-55, 30, 0)),
-               ((0.07, 0.05, 0.075), (0.022, 0.02, 0.05), (-25, 50, 0))]
+    # A broad billow: a round foot and four thick rounded lobes leaning back and out, each only a little pointed
+    tongues = [((0.0, 0.0, 0.0), (0.085, 0.08, 0.075), (0, 0, 0), False),
+               ((0.03, 0.04, 0.09), (0.068, 0.06, 0.085), (-35, 30, 0), True),
+               ((0.09, 0.0, 0.05), (0.06, 0.055, 0.075), (-15, 60, 0), True),
+               ((-0.01, 0.1, 0.06), (0.062, 0.056, 0.075), (-65, 20, 0), True),
+               ((0.08, 0.09, 0.1), (0.05, 0.046, 0.065), (-45, 50, 0), True)]
     shapes = []
-    for (o, r, rot) in tongues:
+    for (o, r, rot, pointed) in tongues:
         c = (root + np.array(o) * sc) * m
-        shapes.append(ell(c, np.array(r) * sc, rot=(rot[0], rot[1] * s, 0), deform=teardrop if o != (0.0, 0.0, 0.0) else None, sub=3))
+        shapes.append(ell(c, np.array(r) * sc, rot=(rot[0], rot[1] * s, 0), deform=billow if pointed else None, sub=3))
     k.add(f"plume{side}", F.join(*shapes), ORANGE, "head", fuse=False, glow=GLOW_ORANGE)
     blobs = []
-    for o, r in [((0.045, -0.025, 0.01), 0.022), ((0.02, 0.03, 0.06), 0.018), ((0.06, 0.035, 0.03), 0.016),
-                 ((0.005, -0.02, 0.05), 0.014)]:
+    for o, r in [((0.07, -0.03, 0.02), 0.04), ((0.035, 0.05, 0.11), 0.034), ((0.1, 0.04, 0.07), 0.03),
+                 ((0.0, 0.11, 0.08), 0.03)]:
         c = (root + np.array(o) * sc) * m
         blobs.append(ell(c, (r * sc, r * sc * 0.8, r * sc), sub=2))
     k.add(f"plumegold{side}", F.join(*blobs), GOLD, "head", fuse=False, glow=GLOW_GOLD)
 
 
-def bird(k, at):
+def bird(k, at, sc=2.0):
     """The small bird of flame on the snout: a yellow ball, a dark ring of an eye on its front, a tuft of flame."""
     at = np.array(at, float)
-    k.add("bird", ell(at, (0.03, 0.028, 0.03), sub=3), GOLD, "head", fuse=False, glow=GLOW_GOLD)
+    q = sc
+    k.add("bird", ell(at, (0.03 * q, 0.028 * q, 0.03 * q), sub=3), GOLD, "head", fuse=False, glow=GLOW_GOLD)
     d = unit(0.3, -1, 0.15)
-    k.add("birdring", lathe(at + d * 0.026, d, [(0.0, -0.004), (0.017, -0.004), (0.017, 0.004), (0.0, 0.004)]),
-          BLACK, "head", fuse=False)
-    k.add("birdeye", lathe(at + d * 0.03, d, [(0.0, -0.003), (0.0095, -0.003), (0.0095, 0.003), (0.0, 0.003)]),
-          GOLD, "head", fuse=False, glow=GLOW_GOLD)
-    tuft = F.join(ell(at + (0.0, 0.01, 0.045), (0.016, 0.014, 0.03), rot=(-20, 0, 0), deform=teardrop, sub=3),
-                  ell(at + (0.0, 0.03, 0.03), (0.012, 0.011, 0.024), rot=(-55, 0, 0), deform=teardrop, sub=3))
+    k.add("birdring", lathe(at + d * 0.026 * q, d, [(0.0, -0.004 * q), (0.017 * q, -0.004 * q), (0.017 * q, 0.004 * q),
+                                                   (0.0, 0.004 * q)]), BLACK, "head", fuse=False)
+    k.add("birdeye", lathe(at + d * 0.03 * q, d, [(0.0, -0.003 * q), (0.0095 * q, -0.003 * q), (0.0095 * q, 0.003 * q),
+                                                 (0.0, 0.003 * q)]), GOLD, "head", fuse=False, glow=GLOW_GOLD)
+    tuft = F.join(ell(at + np.array((0.0, 0.01, 0.045)) * q, np.array((0.016, 0.014, 0.03)) * q, rot=(-20, 0, 0),
+                      deform=teardrop, sub=3),
+                  ell(at + np.array((0.0, 0.03, 0.03)) * q, np.array((0.012, 0.011, 0.024)) * q, rot=(-55, 0, 0),
+                      deform=teardrop, sub=3))
     k.add("birdflame", tuft, ORANGE, "head", fuse=False, glow=GLOW_ORANGE)
 
 
@@ -103,40 +117,41 @@ def skeledirge(src, out):
     k = Kit(src, coat="scales")
 
     # The body: long and level, low over the legs, a thick neck into the head
-    k.add("torso", ell((0, 0.09, 0.21), (0.172, 0.27, 0.125)), RED, "body")
-    k.add("chest", ell((0, -0.08, 0.215), (0.158, 0.12, 0.118)), RED, "body")
-    k.add("neck", ell((0, -0.17, 0.27), (0.14, 0.12, 0.112)), RED, "head")
-    k.add("rump", ell((0, 0.26, 0.205), (0.155, 0.12, 0.11)), RED, "body")
+    # (a low wedge behind the great head: deepest at the shoulders, falling toward the rump)
+    k.add("torso", ell((0, 0.08, 0.17), (0.18, 0.22, 0.108)), RED, "body")
+    k.add("chest", ell((0, -0.06, 0.185), (0.175, 0.12, 0.118)), RED, "body")
+    k.add("neck", ell((0, -0.13, 0.21), (0.165, 0.11, 0.12)), RED, "head")
+    k.add("rump", ell((0, 0.24, 0.155), (0.15, 0.1, 0.095)), RED, "body")
 
     # The legs: short, splayed, haunches fused into the flanks; broad feet with four black claws; a white band
-    claws = [(-0.036, 0.024, 0.016, (-0.3, -1, -0.4)), (-0.012, 0.026, 0.017, (-0.1, -1, -0.4)),
-             (0.012, 0.026, 0.017, (0.1, -1, -0.4)), (0.036, 0.024, 0.016, (0.3, -1, -0.4))]
+    claws = [(-0.036, 0.024, 0.016, (-0.3, -1, -0.25)), (-0.012, 0.026, 0.017, (-0.1, -1, -0.25)),
+             (0.012, 0.026, 0.017, (0.1, -1, -0.25)), (0.036, 0.024, 0.016, (0.3, -1, -0.25))]
     for s, side in ((1, "R"), (-1, "L")):
         m = np.array([s, 1, 1.0])
-        for name, y, bone in (("fore", -0.09, f"leg{side}"), ("hind", 0.22, f"hind{side}")):
-            k.add(f"{name}haunch{side}", ell(np.array((0.14, y, 0.17)) * m, (0.08, 0.085, 0.085)), RED, bone)
-            k.add(f"{name}shin{side}", tube(np.array([(0.16, y, 0.15), (0.215, y - 0.01, 0.09), (0.225, y - 0.02, 0.045)]) * m,
-                                            [0.06, 0.052, 0.046]), RED, bone)
-            k.add(f"{name}foot{side}", ell(np.array((0.225, y - 0.04, 0.02)) * m, (0.054, 0.066, 0.022)), RED, bone)
+        for name, y, bone in (("fore", -0.06, f"leg{side}"), ("hind", 0.2, f"hind{side}")):
+            k.add(f"{name}haunch{side}", ell(np.array((0.15, y, 0.125)) * m, (0.085, 0.09, 0.075)), RED, bone)
+            k.add(f"{name}shin{side}", tube(np.array([(0.18, y, 0.11), (0.235, y - 0.01, 0.07), (0.25, y - 0.02, 0.05)]) * m,
+                                            [0.058, 0.052, 0.044]), RED, bone)
+            k.add(f"{name}foot{side}", ell(np.array((0.255, y - 0.04, 0.019)) * m, (0.056, 0.068, 0.021)), RED, bone)
             for j, (dx, ln, w, d) in enumerate(claws):
-                base = np.array((0.225 + dx, y - 0.04 - 0.054, 0.014))
+                base = np.array((0.255 + dx, y - 0.04 - 0.056, 0.019))
                 k.add(f"{name}claw{side}{j}", F.fang(base * m, np.array(unit(*d)) * m, ln, w, w * 0.8), BLACK, bone,
                       fuse=False, surface="shell")
-            k.add(f"{name}band{side}", ring_band(np.array((0.21, y - 0.009, 0.1)) * m,
-                                                 np.array((0.1, -0.01, 1.0)) * m, 0.054, 0.026), BONE, bone,
+            k.add(f"{name}band{side}", ring_band(np.array((0.212, y - 0.006, 0.087)) * m,
+                                                 np.array((0.055, -0.01, -0.04)) * m, 0.054, 0.024), BONE, bone,
                   fuse=False, surface="scales")
 
     # The tail: thick at the rump, back and out to +X, rising to a white curled tip
-    TAIL = np.array([(0, 0.3, 0.22), (0.03, 0.43, 0.18), (0.09, 0.53, 0.17), (0.15, 0.6, 0.21), (0.18, 0.63, 0.29)])
-    TAIL_R = [0.11, 0.085, 0.065, 0.048, 0.036]
+    TAIL = np.array([(0, 0.28, 0.16), (0.04, 0.39, 0.12), (0.1, 0.47, 0.12), (0.15, 0.52, 0.17), (0.17, 0.53, 0.25)])
+    TAIL_R = [0.1, 0.078, 0.06, 0.046, 0.036]
     k.add("tail", tube(TAIL, TAIL_R), RED, "tail")
-    k.add("tailtip", tube([(0.18, 0.63, 0.28), (0.18, 0.63, 0.36), (0.155, 0.62, 0.42), (0.12, 0.605, 0.44)],
+    k.add("tailtip", tube([(0.17, 0.53, 0.24), (0.17, 0.53, 0.32), (0.148, 0.52, 0.38), (0.115, 0.505, 0.4)],
                           [0.034, 0.026, 0.018, 0.012]), BONE, "tail")
 
     # The pale ribbed belly, the black band along each flank, the lattice over the back
     def belly(P):
         x, y, z = P[:, 0], P[:, 1], P[:, 2]
-        return inside(z - 0.16, 0.003) * inside(y - 0.32, 0.004) * inside(-0.2 - y, 0.004)
+        return inside(z - 0.115, 0.003) * inside(y - 0.3, 0.004) * inside(-0.17 - y, 0.004)
     k.paint(belly, BELLY, on=["torso", "chest", "rump"])
     def ribs(P):
         y = P[:, 1]
@@ -144,11 +159,11 @@ def skeledirge(src, out):
     k.paint(ribs, RIB, on=["torso", "chest", "rump"])
     def flank(P):
         x, y, z = P[:, 0], P[:, 1], P[:, 2]
-        return inside(np.abs(z - 0.18) - 0.022, 0.003) * inside(np.abs(y - 0.05) - 0.1, 0.004) * (np.abs(x) > 0.08)
+        return inside(np.abs(z - 0.14) - 0.02, 0.003) * inside(np.abs(y - 0.06) - 0.1, 0.004) * (np.abs(x) > 0.08)
     k.paint(flank, BLACK, on=["torso", "chest"])
     def lattice(P):
         x, y, z = P[:, 0], P[:, 1], P[:, 2]
-        return inside(0.285 - z, 0.003) * inside(np.abs(y - 0.1) - 0.15, 0.004)
+        return inside(0.235 - z, 0.003) * inside(np.abs(y - 0.08) - 0.15, 0.004)
     k.paint(lattice, LATTICE, on=["torso"])
     def lattice_lines(P):
         x, y = P[:, 0], P[:, 1]
@@ -165,47 +180,47 @@ def skeledirge(src, out):
         rel = P - hinge
         return -rel[:, 1], rel[:, 2]                 # forward of the hinge, height over the jaw's line
     def onhead(P):
-        return inside(np.abs(P[:, 0]) - 0.16, 0.004)
+        return inside(np.abs(P[:, 0]) - 0.21, 0.004)
     # The purple band along the jaw's line and red teeth biting down into it in a zigzag
     def jawband(P):
         fwd, dz = mouthline(P)
-        return onhead(P) * inside(np.abs(dz + 0.006) - 0.024, 0.0025) * (fwd > -0.02) * (np.abs(P[:, 0]) > 0.025)
+        return onhead(P) * inside(np.abs(dz + 0.008) - 0.032, 0.0025) * (fwd > -0.02) * (np.abs(P[:, 0]) > 0.03)
     k.paint(jawband, PURPLE, on=["upperjaw", "lowerjaw", "dome"])
     def redteeth(P):
         fwd, dz = mouthline(P)
-        edge = 0.0 + 0.026 * (0.5 + 0.5 * tri(fwd / 0.06))
-        return onhead(P) * inside(-0.006 + edge - dz, 0.002) * inside(dz - 0.042, 0.0025) * (fwd > -0.02) \
-            * (np.abs(P[:, 0]) > 0.02)
+        edge = 0.0 + 0.036 * (0.5 + 0.5 * tri(fwd / 0.08))
+        return onhead(P) * inside(-0.008 + edge - dz, 0.002) * inside(dz - 0.058, 0.0025) * (fwd > -0.02) \
+            * (np.abs(P[:, 0]) > 0.025)
     k.paint(redteeth, RED, on=["upperjaw", "lowerjaw", "dome"])
     # The red stripe down the snout's top, with purple marks along it
     def stripe(P):
         fwd, dz = mouthline(P)
-        return inside(np.abs(P[:, 0]) - (0.034 - 0.008 * fwd), 0.002) * inside(0.035 - dz, 0.003) * (fwd > 0.03) \
-            * (fwd < 0.33)
+        return inside(np.abs(P[:, 0]) - (0.05 - 0.012 * fwd), 0.002) * inside(0.07 - dz, 0.003) * (fwd > 0.04) \
+            * (fwd < 0.42)
     k.paint(stripe, RED, on=["upperjaw"])
     def marks(P):
         fwd, dz = mouthline(P)
-        t = (fwd - 0.06) / 0.06
-        return stripe(P) * inside(np.abs(t - np.round(t)) * 0.06 - 0.013, 0.002) * (fwd < 0.27) \
-            * inside(np.abs(P[:, 0]) - 0.02, 0.002)
+        t = (fwd - 0.08) / 0.08
+        return stripe(P) * inside(np.abs(t - np.round(t)) * 0.08 - 0.018, 0.002) * (fwd < 0.36) \
+            * inside(np.abs(P[:, 0]) - 0.03, 0.002)
     k.paint(marks, PURPLE, on=["upperjaw"])
     # The purple band over the crown
     def crownband(P):
         x, y, z = P[:, 0], P[:, 1], P[:, 2]
-        return inside(np.abs(x) - 0.045, 0.002) * inside(np.abs(y + 0.2) - 0.1, 0.003) * inside(0.45 - z, 0.003)
+        return inside(np.abs(x) - 0.06, 0.002) * inside(np.abs(y + 0.22) - 0.12, 0.003) * inside(0.38 - z, 0.003)
     k.paint(crownband, PURPLE, on=["dome"])
 
     # The black sockets, and a red point over each eye
     E, de, right, up = F.eye_frame(L)
-    k.decal(E + up * 0.002, de, (0.052, 0.047), BLACK, eps=0.0012, rings=12, segs=48, mirror=True)
-    k.decal(E + up * 0.062, de + np.array([0, 0, 0.5]), (0.03, 0.03), RED, eps=0.0012, rings=8, segs=40,
+    k.decal(E + up * 0.002, de, (0.071, 0.065), BLACK, eps=0.0012, rings=12, segs=48, mirror=True)
+    k.decal(E + up * 0.085, de + np.array([0, 0, 0.5]), (0.04, 0.04), RED, eps=0.0012, rings=8, segs=40,
             mirror=True, outline=polygon([(-0.9, -0.8), (0.9, -0.8), (0.0, 1.0)]))
 
-    # The plumes of flame off the sides of the head, the bird on the snout
+    # The plumes of flame off the sides of the head, broad billows leaning back and out; the bird on the snout's tip
     for s, side in ((1, "R"), (-1, "L")):
-        plume(k, side, s, (0.16, -0.12, 0.44), 1.3)
-    tip = J.hinge + J.du * L.upper_len * 0.8 + J.upu * L.upper_r[2] * 1.1
-    bird(k, tip + np.array([0, 0, 0.03]))
+        plume(k, side, s, (0.175, -0.1, 0.32), 1.28)
+    tip = J.hinge + J.du * L.upper_len * 0.86 + J.upu * L.upper_r[2] * 1.05
+    bird(k, tip + np.array([0, 0, 0.055]), 2.0)
 
     # The eyes: as the line's, but a shut eye's line is pale, since the lid is the black socket
     lid, pale = srgb(L.lid), srgb("#E6DCD6")
