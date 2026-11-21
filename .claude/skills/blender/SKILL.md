@@ -851,6 +851,47 @@ a rod, a thin upright figure, a file of six cut by its cell, a tangle with no he
 - **The review sheet's rows must be checked against the labels burnt into the crops**: the helper once named each
   crop after the species before it.
 
+## What Paldea taught (2026-11-21)
+
+A hundred and twenty species by thirty-five agents; eleven sent back (a head a third of the pictures' share, a design's
+signature part built small, figures on plain columns, a crouch built bolt upright, a tail out of its cell). What the
+agents found:
+
+- **A `polygon` outline that does not contain the patch's own middle floods the patch**, with nothing printed (a
+  crescent eye, an arch of a mouth, a chevron): split it into pieces that each contain their middle.
+- **A paint limited only across and in depth reaches the feet and chest of a tall figure** (a visor's dark went down
+  the whole of Iron Valiant): limit every paint in height too.
+- **A decal laid where a deform has pinched the surface is cast from the wrong place** (`on_ell` gives the point on
+  the ellipsoid before the deform) and streaks onto the next part: make the mark a loose piece (Armarouge).
+- **A pupil drawn inside an eye's colour function is ragged at 20 rings**: lay it as a patch of its own over the eye,
+  in the open states only (Tarountula, Wattrel).
+- **A face patch across the front of a ball must stop at about 0.8 of the ball's width**, or its sides wrap and
+  leave a sawtooth where they meet the paint (Tadbulb).
+- **A `ring_band` on a tube of some 0.02 radius is half buried or stands off as a collar**: paint between two planes
+  across the tube instead (Grafaiai).
+- **`slab`'s `across` is a vector in the plate's own plane**, not its normal: given the normal, every plate is edge on
+  to the camera it was meant for (Quaquaval).
+- **A rotation of the wrong sign leans a chest back, not forward** (Cyclizar stood bolt upright with `rot=(-30,0,0)`):
+  check the lean in numbers (the head's y in front of the feet's).
+- **A long fish yawed 15 to 20 degrees about its middle shows a flank and its midline fins to both game cameras**
+  (Veluza). Both sides are then made by hand, and the paint masks work in the fish's own frame.
+- **A whole upper body can be leant by a shear above the hips** with the masks written in upright coordinates
+  (Koraidon), at the price of the neck standing a little off its joint.
+- **Where a tube meets a loose cone tip**, give the cone a base radius under the tube's end radius and sink it a
+  radius back, or a ring of the tip's colour shows at the joint. **Thorns set on an ideal sphere float off
+  branches that wobble**: place them from the branch's own points (Bramblin).
+- **A fused part of another colour near a decal's area bleeds into it** (Crocalor's black paws under its chest bars).
+- **Changing a default in a base script's helper changes every sibling that calls it.**
+- **A paint mask that reads a name its own function later reassigns fails at `build()` with an unclear
+  `TypeError`** (a closure): give the mask its own names.
+- **A glow on an orange or pale plate renders white on the turntable**: judge its colour in the game's shot.
+- **Piping Blender into `head` kills it before it exports**, and the sheet then shows an older build. Under Blender
+  a helper script reads `sys.argv[-1]`: `sys.argv[1]` is `--background`.
+- **Scripts that build as they are read and can't be imported**: `wooper.py`, `quagsire.py`, `girafarig.py`,
+  `gardevoir.py`, `gallade.py`, `sneasel.py`, `weavile.py`, `scyther.py`. Copy their way by hand.
+- **A brief written from memory was wrong about many of Paldea's designs**: the pictures are read first, and the
+  report says where they overruled it.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
