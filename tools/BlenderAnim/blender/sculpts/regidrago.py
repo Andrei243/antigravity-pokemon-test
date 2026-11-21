@@ -106,14 +106,12 @@ def upper_jaw(k):
     """On the model's left (-X): the upper jaw and skull, standing tall, open toward the body and the front."""
     pts = [(-0.17, -0.04, 0.21), (-0.225, -0.07, 0.36), (-0.24, -0.08, 0.54), (-0.22, -0.08, 0.7),
            (-0.195, -0.075, 0.81)]
-    radii = [0.1, 0.13, 0.112, 0.07, 0.016]
+    radii = [0.1, 0.13, 0.112, 0.07, 0.009]
     op = lambda t, c, d: (1.0, -0.75, -0.1)
     k.add("skull", jaw_shell(pts, radii, op, 0.34, 0.34, 7), GREEN, "armL", fuse=False, surface="shell")
     k.add("skulllining", jaw_shell(pts, [r * 0.88 for r in radii], op, 0.24, 0.0, 7, thick=0.014), LINING, "armL",
           fuse=False, surface="shell")
-    # the brow ridge over where the dragon's eye would be, and the long spike pointing down from its foot
-    k.add("brow", hull([(-0.31, -0.13, 0.54), (-0.29, -0.18, 0.62), (-0.23, -0.19, 0.64), (-0.25, -0.13, 0.5),
-                        (-0.3, -0.07, 0.56), (-0.26, -0.11, 0.66)]), GREENDEEP, "armL", fuse=False, surface="shell")
+    # the long spike pointing down from its foot
     k.add("spike", hull([(-0.24, -0.04, 0.26), (-0.2, -0.1, 0.24), (-0.27, -0.11, 0.3), (-0.23, -0.02, 0.32),
                          (-0.37, -0.15, 0.03)]), GREEN, "armL", fuse=False, surface="shell")
     k.add("shoulderL", ell((-0.15, -0.02, 0.34), (0.065, 0.075, 0.075)), GREEN, "armL")

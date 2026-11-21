@@ -166,7 +166,6 @@ def sirfetchd(src, out):
     EW, IR, LID, INK = srgb("#E9E9EC"), srgb("#3E3C44"), srgb(WHITE), srgb(BLACK)
     def eye(u, v):
         c = np.tile(EW, (len(u), 1))
-        c[((u + 0.2) / 0.5) ** 2 + ((v + 0.05) / 0.7) ** 2 < 1] = IR
         c[v < -0.72 + 0.25 * u * u] = INK                 # the lower lid's dark line
         return c
     def eyes(state):
@@ -175,6 +174,10 @@ def sirfetchd(src, out):
             look = eye_look(state, eye, LID, INK, line=0.16)
             col = look if s == 1 else (lambda u, v, f=look: f(-u, v))
             k.decal((E + np.array([0, -0.002, -0.004])) * m, de * m, (0.03, 0.022), col, eps=0.005, rings=20, segs=56)
+            if state in ("Open", "Fierce"):
+                # the dark grey iris toward the middle, a patch of its own so its edge is clean
+                k.decal((E + np.array([-0.006, -0.004, -0.005])) * m, de * m, (0.015, 0.016), IR, eps=0.0065,
+                        rings=8, segs=40)
     k.eye_states(eyes)
     k.export(out)
 

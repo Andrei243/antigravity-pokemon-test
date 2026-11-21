@@ -60,6 +60,8 @@ def add_trunk(k, F, coat):
     k.add("chest", ell((0, F["front"], z), (w, 0.14, d)), coat, "body")
     k.add("middle", ell((0, (F["front"] + F["back"]) / 2, z - 0.005), (w + 0.004, 0.2, d * 0.96)), coat, "body")
     k.add("rump", ell((0, F["back"], z + 0.02), (w, 0.12, d * 0.92)), coat, "body")
+    # One long flank over all three, so the sides run smooth between the shoulder and the thigh
+    k.add("flank", ell((0, (F["front"] + F["back"]) / 2, z - 0.01), (w + 0.022, 0.33, d * 0.86)), coat, "body")
 
 
 def add_legs(k, F, coat, low, hoof, scale=1.0):
@@ -205,10 +207,10 @@ def braid(pts, r, n=26):
 
 def add_braids(k, F, color):
     """Two braids a side looping along the flank from the shoulder to the hip, hugging the body."""
-    k.add("braidA", braid([(0.118, -0.12, 0.52), (0.13, -0.05, 0.42), (0.128, 0.04, 0.34), (0.12, 0.13, 0.36),
-                           (0.105, 0.2, 0.44)], 0.019), color, "body", fuse=False, mirror=True, surface="cloth")
-    k.add("braidB", braid([(0.122, -0.15, 0.44), (0.13, -0.06, 0.33), (0.125, 0.04, 0.29), (0.118, 0.13, 0.31),
-                           (0.105, 0.2, 0.36)], 0.017), color, "body", fuse=False, mirror=True, surface="cloth")
+    k.add("braidA", braid([(0.128, -0.12, 0.52), (0.148, -0.05, 0.42), (0.148, 0.04, 0.34), (0.138, 0.13, 0.36),
+                           (0.118, 0.2, 0.44)], 0.019), color, "body", fuse=False, mirror=True, surface="cloth")
+    k.add("braidB", braid([(0.132, -0.15, 0.44), (0.146, -0.06, 0.33), (0.14, 0.04, 0.29), (0.134, 0.13, 0.31),
+                           (0.12, 0.2, 0.36)], 0.017), color, "body", fuse=False, mirror=True, surface="cloth")
     # The red flap curling up and back from each shoulder, where the braids begin
     k.add("flap", outward(blade([(0.112, -0.13, 0.52), (0.135, -0.11, 0.6), (0.14, -0.05, 0.64), (0.13, 0.0, 0.6)],
                                 [0.036, 0.044, 0.032, 0.012], (1, 0, 0), 0.35)), color, "body", fuse=False, mirror=True,
@@ -220,7 +222,7 @@ def add_shoulder_arc(k, color):
     def arc(P):
         d = np.hypot(P[:, 1] - (-0.07), P[:, 2] - 0.46)
         return inside(np.abs(d - 0.1) - 0.012, 0.0025) * (P[:, 2] > 0.47) * (P[:, 1] > -0.15) * (np.abs(P[:, 0]) > 0.04)
-    k.paint(arc, color, on=["chest", "middle"])
+    k.paint(arc, color, on=["chest", "middle", "flank"])
 
 
 def add_scars(k, F, color):

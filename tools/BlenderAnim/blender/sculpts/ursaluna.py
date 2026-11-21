@@ -1,6 +1,6 @@
 # Ursaluna sculpted from nothing on the skeleton and clips of the game's own export of it (sculptkit.py), grown from
-# Ursaring's script (ursaring.py, sibling): its flat shaggy tufts (tuft), and Teddiursa's paws, claws, round ears and
-# the way a place is found on a part (sibling("teddiursa")).
+# Teddiursa's line (Ursaring's kin): Teddiursa's paws, claws, round ears and the way a place is found on a part
+# (sibling("teddiursa")); its own flat planks of bark (plank) where Ursaring had pointed tufts.
 #   blender --background --factory-startup --python sculpts/ursaluna.py -- <the export's Ursaluna.glb> <out.glb>
 #
 # The design, from the references: a huge brown bear on four legs, heavy and low, its head held low and forward; over
@@ -16,7 +16,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 from sculptkit import Kit, ell, tube, hull, polygon, srgb, inside, unit, boxy, tri, lumpy, eye_look, args, sibling
 
-u_ = sibling("ursaring")
 t = sibling("teddiursa")
 BROWN, PEAT, GREY, TAN, YELLOW = "#6B3D2A", "#8E8580", "#A39C97", "#E6C07A", "#F3CF45"
 PLANK, PINK, THROAT, CLAW, INK, NOSE = "#7A4530", "#E2738C", "#9C3550", "#EEF0EE", "#1A1414", "#3E3634"
@@ -39,30 +38,46 @@ def trunk(k):
     k.add("tail", ell((0, 0.35, 0.43), (0.075, 0.07, 0.07)), GREY, "tail")
 
 
+def plank(k, name, root, d, out, length, w, th, bone, short=0.0):
+    """A flat plank of bark: a hard-edged board from root along d, its broad face turned out, its end cut square
+    (one corner short by `short`, as the pictures' planks end ragged)."""
+    root, d, out = np.array(root, float), unit(*d), unit(*out)
+    side = np.cross(d, out); side /= np.linalg.norm(side)
+    n = np.cross(side, d)
+    P = []
+    for s_ in (-1, 1):
+        for q in (-1, 1):
+            P.append(root + side * s_ * w + n * q * th / 2)
+            end = length - (short if s_ > 0 else 0.0)
+            P.append(root + d * end + side * s_ * w * 0.85 + n * q * th * 0.4)
+    k.add(name, hull(P), PLANK, bone, fuse=False, surface="fur")
+
+
 def fringe(k):
-    """The flat brown planks round the mound's rim: a ring standing out and up, a lower one over the flanks."""
-    n = 30
+    """The flat brown planks round the mound's rim: a crown standing up and out, a lower ring over the flanks."""
+    n = 28
     for i in range(n):
         a = 2 * math.pi * i / n
         o = np.array([math.sin(a), -math.cos(a), 0.0])
-        root = M + o * MR * np.array([0.93, 0.93, 0]) + (0, 0, -0.035 + 0.008 * (i % 2))
+        root = M + o * MR * np.array([0.9, 0.97, 0]) + (0, 0, -0.07 + 0.012 * (i % 2))
         if o[1] < -0.6:                       # over the head the rim comes forward and down onto the brow
-            root = root + (0, 0.04, -0.01)
-        ln = 0.125 + 0.025 * (i % 2)
-        u_.tuft(k, f"plank{i}", root, o, (0, 0, 1.3), ln, 0.032, 0.024, "body", PLANK)
+            root = root + (0, 0.03, -0.01)
+        d = o * 0.5 + np.array([0, 0, 0.87])
+        plank(k, f"plank{i}", root, d, o, 0.15 + 0.03 * (i % 2), 0.032, 0.024, "body", short=0.02 * (i % 3 == 0))
     for i in range(18):
         a = math.radians(-150 + 300 * i / 17)    # round the sides and back; the front is the head's
         o = np.array([math.sin(a), -math.cos(a), 0.0])
         if abs(o[0]) < 0.35 and o[1] < 0:
             continue
-        root = np.array([0, 0.05, 0.3]) + o * np.array([0.215, 0.31, 0]) + (0, 0, 0.005 * (i % 2))
-        u_.tuft(k, f"low{i}", root, o, (0, 0, -1), 0.09 + 0.015 * (i % 2), 0.03, 0.022, "body", PLANK)
+        root = np.array([0, 0.05, 0.31]) + o * np.array([0.2, 0.3, 0]) + (0, 0, 0.005 * (i % 2))
+        plank(k, f"low{i}", root, o * 0.75 + np.array([0, 0, -0.66]), o, 0.085 + 0.015 * (i % 2), 0.028, 0.022,
+              "body", short=0.015 * (i % 2))
     # Planks round the head's sides, as the pictures frame the face
     for s in (1, -1):
-        for j, (z, dz) in enumerate(((0.33, 0.2), (0.25, -0.1), (0.18, -0.5))):
-            root = np.array([0.118 * s, -0.32, z])
-            u_.tuft(k, f"cheek{'R' if s > 0 else 'L'}{j}", root, (s, -0.25, dz), (0, 0, -1), 0.06, 0.02, 0.018,
-                    "head", PLANK)
+        for j, (z, dz) in enumerate(((0.35, 0.3), (0.27, -0.1), (0.19, -0.5))):
+            root = np.array([0.125 * s, -0.32, z])
+            plank(k, f"cheek{'R' if s > 0 else 'L'}{j}", root, (s, -0.25, dz), (0, -1, 0.2), 0.06, 0.022, 0.02,
+                  "head")
 
 
 def head(k):
@@ -175,7 +190,7 @@ def ursaluna(src, out):
     fringe(k)
     HEAD = head(k)
     legs(k)
-    k.build(voxel=0.0065, band=0.005)
+    k.build(voxel=0.007, band=0.005)
     k.eye_states(eyes(k, HEAD))
     k.export(out)
 

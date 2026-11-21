@@ -69,7 +69,7 @@ def tail_fin(k, root, out_deg=50, h=0.17, color=FIN):
     k.add("tailfin", slab(FO, root, ex, (0, 0, 1), 0.03), color, "tail", fuse=False)
 
 
-def ice_body(k, C, R, cap_z, lobes=10, cap=True):
+def ice_body(k, C, R, cap_z, lobes=10, cap=True, lobe=0.075):
     """The frozen beast's egg of a body: snow over its top in round lobes, a pale aqua belly, blue sides and back."""
     C, R = np.array(C, float), np.array(R, float)
     k.add("ice", ell(C, R), BLUE, "body")
@@ -79,7 +79,7 @@ def ice_body(k, C, R, cap_z, lobes=10, cap=True):
             a = 2 * math.pi * (i + 0.5) / lobes
             rr = 0.94
             p = C + np.array([math.sin(a) * R[0] * rr, -math.cos(a) * R[1] * rr, cap_z - C[2] + 0.02 * math.cos(3 * a)])
-            k.add(f"lobe{i}", ell(p, (0.075, 0.075, 0.06)), SNOW, "body")
+            k.add(f"lobe{i}", ell(p, (lobe, lobe, lobe * 0.8)), SNOW, "body")
 
     def belly(P):
         q = (P - C) / R

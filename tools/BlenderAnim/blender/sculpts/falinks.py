@@ -8,7 +8,7 @@
 # helmet's crest. The brass, at the front, is the largest and carries a tall red horn leaning back with a red ridge
 # behind it; the five troopers are smaller, two red spikes each.
 # Each trooper is one function placed by a frame (trooper()), on its own bone. The five lean their faces a little to
-# the front left, down the file, as the pictures show them following the brass.
+# the front, the file standing in one line across the front (see FILE below).
 # Skeleton: body (0, -0.2, 0.09), the brass; trooper1..5 from (-0.115, -0.12, 0.077) to (0.245, 0.12, 0.077).
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -18,15 +18,18 @@ from sculptkit import Kit, ell, lathe, srgb, inside, unit, eye_look, args
 BLACK, YELLOW, RED, WHITE, CYAN, INK = "#26262C", "#F2C230", "#D8302C", "#F4F4F0", "#46C8EC", "#121216"
 TOE = "#E8E8E4"
 
-# Where each trooper faces, in degrees from the front toward +X. Its eyes must be free of the others: a patch is cast
-# from 0.35 out and lands on whatever it meets first. Most look a little to the right, away from the one ahead of
-# them down the file (which stands to their front left); the first, beside the brass, looks down the file; the
-# second, boxed in behind the brass, looks out to the right.
-FACING = (-50.0, 69.0, 20.0, 20.0, 20.0)
-EYE_AZ = (25, 25, 19, 25, 25, 25)          # the eyes apart from the face's middle: the second trooper's are closer
+# The file. The game's board looks at a model turned 31.5 degrees and frames a square of 1.3 x max(height, 0.85 x
+# max(width, length)); the file on the joints' own diagonal (the brass at the front left, the troopers stepping back to
+# the right) is seen broadside and was cut at both ends. Stood in one line across the front instead, the brass at the
+# left, each ball drawn some 15% closer to the next than the joints stand (they touch and overlap a little), the board
+# sees the line at 31.5 degrees and the four-corner sum 0.853 w + 0.522 l comes within 0.9 of the square. Each ball
+# stays on its own bone; the parts are drawn off their joints, as the skeleton's file is longer and on a slant.
+BRASS_X, FILE_Y, FIRST_GAP, GAP = -0.236, -0.03, 0.12, 0.095
+FACING = (0.0, 0.0, 0.0, 0.0, 0.0)
+EYE_AZ = (25, 25, 25, 25, 25, 25)
 # (bone, centre, radius, facing, the brass?)
-SQUAD = [("body", (0.0, -0.2, 0.092), 0.078, 0.0, True)] + [
-    (f"trooper{i}", (-0.115 + 0.09 * (i - 1), -0.12 + 0.06 * (i - 1), 0.077), 0.053, FACING[i - 1], False)
+SQUAD = [("body", (BRASS_X, FILE_Y, 0.092), 0.078, 0.0, True)] + [
+    (f"trooper{i}", (BRASS_X + FIRST_GAP + GAP * (i - 1), FILE_Y, 0.077), 0.053, FACING[i - 1], False)
     for i in range(1, 6)]
 VOXEL = 0.0028
 
@@ -112,6 +115,9 @@ def trooper(k, i, bone, c, r, face, brass):
         axis = fr.way(sx, -0.05, -0.08)
         centre = fr.c + axis * fr.R[0] * 0.92
         rad = r * 0.52
+        # a shield between two balls that touch would stand inside the next one: only the outer ones of the line
+        if any(np.linalg.norm(centre - np.array(o[1])) < o[2] * 1.25 for o in SQUAD if o[0] != bone):
+            continue
         k.add(f"shield{i}{sx}", lathe(centre, axis, [(0, -rad * 0.25), (rad * 0.9, -rad * 0.25), (rad, -rad * 0.05),
                                                       (rad * 0.98, rad * 0.12), (0, rad * 0.12)], seg=40),
               YELLOW, bone, fuse=False, surface="metal")
@@ -181,7 +187,9 @@ def falinks(src, out):
     a = math.radians(31.5)
     proj = V[:, 0] * math.cos(a) + V[:, 1] * math.sin(a)
     h, w, l = V[:, 2].max(), np.ptp(V[:, 0]), np.ptp(V[:, 1])
-    print("KIT: board: shows %.3f in a square of %.3f" % (np.ptp(proj), 1.3 * max(h, 0.85 * max(w, l))))
+    sq = 1.3 * max(h, 0.85 * max(w, l))
+    print("KIT: board: shows %.3f in a square of %.3f (%.2f); the four-corner sum %.3f (%.2f)"
+          % (np.ptp(proj), sq, np.ptp(proj) / sq, 0.853 * w + 0.522 * l, (0.853 * w + 0.522 * l) / sq))
 
     def lay(state):
         look = eye_look(state, eye_open, srgb(BLACK), srgb(CYAN), line=0.16)

@@ -29,7 +29,7 @@ INK = "#1E2026"
 def fish_head(k, C, G=1.0, pitch=0.0, body=PALE, top=TOPRED, rim=RIM, open_mouth=True, head="head", jaw="head",
               fin_bone=None, mouth=MOUTH):
     """
-    The fish's head about its middle C, its local front -Y and top +Z turned by pitch degrees about X (positive lifts
+    The fish's head about its middle C, its local front -Y and top +Z turned by pitch degrees about X (positive lowers
     the snout). Returns (to_world, to_local, skull centre, skull radii) for the eyes and marks laid after it.
     """
     C = np.array(C, float)
@@ -105,8 +105,8 @@ def fish_eyes(k, W, SC, SR, R, G=1.0, lid=PALE, bar="upright", d=(0.74, -0.52, 0
     def look(u, v):
         c = np.tile(L, (len(u), 1))
         r = np.hypot(u, v)
-        c[r < 0.9] = WH
-        c[(r >= 0.9)] = I
+        c[r < 0.8] = WH
+        c[r >= 0.8] = I
         if bar == "upright":
             c[(np.abs(u) < 0.2) & (np.abs(v) < 0.62)] = I
         else:
@@ -120,9 +120,9 @@ def fish_eyes(k, W, SC, SR, R, G=1.0, lid=PALE, bar="upright", d=(0.74, -0.52, 0
 
 
 HIPS_C = np.array([0.0, 0.1, 0.33])
-ARCH = [(0, 0.12, 0.36), (0, 0.22, 0.44), (0, 0.265, 0.55), (0, 0.235, 0.645), (0, 0.15, 0.69), (0, 0.07, 0.68)]
-ARCH_R = [0.12, 0.105, 0.095, 0.088, 0.084, 0.082]
-O = np.array([0.0, 0.12, 0.51])         # the arch's middle, where its spikes point
+ARCH = [(0, 0.12, 0.36), (0, 0.26, 0.42), (0, 0.345, 0.52), (0, 0.32, 0.625), (0, 0.22, 0.67), (0, 0.1, 0.665)]
+ARCH_R = [0.1, 0.078, 0.07, 0.068, 0.07, 0.078]
+O = np.array([0.0, 0.17, 0.52])         # the arch's middle, where its spikes point
 HEAD_C = np.array([0.0, -0.075, 0.585])
 HEAD_G = 1.0
 
@@ -149,11 +149,11 @@ def dracovish(src, out):
     k.paint(inner, dz.RED, on=["arch"])
 
     # five pink spikes along the inner side, pointing in toward the arch's middle
-    for i, t in enumerate(np.linspace(0.15, 1.7, 5)):
-        rc = np.interp(t, ath, arho) - 0.06
+    for i, t in enumerate(np.linspace(-0.55, 1.6, 5)):
+        rc = np.interp(t, ath, arho) - 0.05
         base = O + np.array([0, math.cos(t) * rc, math.sin(t) * rc])
         d = O - base + np.array([0, -0.03, 0])
-        dz.spike(k, f"aspike{i}", base, d, 0.11 - 0.01 * abs(i - 2), 0.06, dz.PINK if i % 2 == 0 else dz.ROSE,
+        dz.spike(k, f"aspike{i}", base, d, 0.13 - 0.01 * abs(i - 2), 0.07, dz.PINK if i % 2 == 0 else dz.ROSE,
                  "body" if i < 3 else "head", up=(1, 0, 0), thick=0.03)
 
     # --- the fish's head on the arch's end -----------------------------------------------------------------------

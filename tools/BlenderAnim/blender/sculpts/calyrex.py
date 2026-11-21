@@ -26,7 +26,7 @@ LEAF, LEAFMID = "#1E5A48", "#9AA4DE"
 IRIS = srgb("#4C78D8")
 
 BC, BR = np.array([0.0, 0.02, 0.84]), np.array([0.272, 0.222, 0.19])      # the bulb
-H, HR = np.array([0.0, -0.1, 0.6]), np.array([0.058, 0.062, 0.052])       # the face's skull
+H, HR = np.array([0.0, -0.1, 0.6]), np.array([0.064, 0.068, 0.057])       # the face's skull
 NECK_C, RING_R = np.array([0.0, -0.015, 0.548]), 0.072                    # the collar's ring
 
 
@@ -76,7 +76,7 @@ def calyrex(src, out):
         t = np.clip(-V[:, 1], 0, 1)
         V[:, 0] *= 1 - 0.45 * t; V[:, 2] *= 1 - 0.4 * t
         return V
-    k.add("muzzle", ell((0, -0.16, 0.58), (0.036, 0.055, 0.032), rot=(-12, 0, 0), deform=taper), PALE, "head",
+    k.add("muzzle", ell((0, -0.168, 0.578), (0.04, 0.06, 0.035), rot=(-12, 0, 0), deform=taper), PALE, "head",
           surface="skin")
     k.add("neck", tube([(0, -0.03, 0.52), (0, -0.06, 0.575)], [0.034, 0.034]), PALE, "head", surface="skin")
 
@@ -87,12 +87,12 @@ def calyrex(src, out):
     for s, side in ((1, "R"), (-1, "L")):
         m = np.array([s, 1, 1.0])
         k.add("arm" + side, tube([np.array((0.05, -0.0, 0.565)) * m, np.array((0.085, -0.035, 0.52)) * m,
-                                  np.array((0.08, -0.08, 0.485)) * m], [0.019, 0.017, 0.016]), PALE, "arm" + side,
+                                  np.array((0.08, -0.08, 0.485)) * m], [0.021, 0.02, 0.019]), PALE, "arm" + side,
               surface="skin")
         k.add("hand" + side, ell(np.array((0.078, -0.093, 0.478)) * m, (0.022, 0.022, 0.02)), PALE, "arm" + side,
               surface="skin")
     # two long thin legs ending in points
-    k.add("leg", tube([(0.026, 0.0, 0.43), (0.03, -0.004, 0.3), (0.03, -0.008, 0.162)], [0.021, 0.017, 0.0145]),
+    k.add("leg", tube([(0.026, 0.0, 0.43), (0.03, -0.004, 0.3), (0.03, -0.008, 0.162)], [0.023, 0.02, 0.018]),
           PALE, "leg{s}", mirror=True, surface="skin")
 
     # --- the four sepals: a pair up the bulb's front from the brow, a pair out from under its sides ---------------
@@ -108,13 +108,13 @@ def calyrex(src, out):
     for i, az in enumerate((32, 72, 115, 158, -32, -72, -115, -158)):
         a = math.radians(az)
         o = np.array([math.sin(a), -math.cos(a), 0.0])
-        d = unit(*(o * 0.78 + np.array([0, 0, -0.62])))
+        d = unit(*(o * 0.88 + np.array([0, 0, -0.48])))
         tang = np.cross((0, 0, 1.0), o)
         root = np.array([0, -0.005, 0.475]) + o * 0.05
         ez = tang
-        k.add(f"leaf{i}", slab(leaf_outline(0.12, 0.03), root, d, ez, 0.012), LEAF, "body", fuse=False,
+        k.add(f"leaf{i}", slab(leaf_outline(0.13, 0.034), root, d, ez, 0.012), LEAF, "body", fuse=False,
               surface="leaf")
-        k.add(f"leafmid{i}", slab(leaf_outline(0.085, 0.017), root + d * 0.016, d, ez, 0.018), LEAFMID, "body",
+        k.add(f"leafmid{i}", slab(leaf_outline(0.095, 0.02), root + d * 0.016, d, ez, 0.018), LEAFMID, "body",
               fuse=False, surface="leaf")
 
     # --- the collar: a ring of beads round the neck, its end rolled up behind the left cheek ----------------------
@@ -124,7 +124,7 @@ def calyrex(src, out):
         o = np.array([math.sin(a), -math.cos(a), 0.0])
         c = NECK_C + o * RING_R + np.array([0, 0, 0.008 * math.cos(a)])
         bead(k, f"bead{n}", c, 0.03, o + np.array([0, 0, 0.25])); n += 1
-    for c, r in (((-0.1, 0.02, 0.6), 0.025), ((-0.095, 0.035, 0.645), 0.02)):
+    for c, r in (((-0.098, 0.025, 0.592), 0.024), ((-0.09, 0.04, 0.628), 0.018)):
         bead(k, f"bead{n}", np.array(c), r, (-1, -0.3, 0.3)); n += 1
 
     k.build(voxel=0.0055, smooth=4, band=0.005)
