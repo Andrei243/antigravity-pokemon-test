@@ -119,4 +119,18 @@ public class SculptExportTests
         Assert.EndsWith("nidoranf.py", BlenderAnim.Sculpt.ScriptOf("Nidoran♀"));
         Assert.EndsWith("nidoranm.py", BlenderAnim.Sculpt.ScriptOf("Nidoran♂"));
     }
+
+    [Fact]
+    public void ABuiltFilesNameHoldsNothingAFilesNameMayNot()
+    {
+        // Type: Null's colon would make a file called "Type" on Windows, the model hidden in a stream of it
+        Assert.Equal("Type Null", BlenderAnim.Sculpt.FileOf("Type: Null"));
+        Assert.Equal("Mr. Mime", BlenderAnim.Sculpt.FileOf("Mr. Mime"));
+        Assert.Equal("Flabébé", BlenderAnim.Sculpt.FileOf("Flabébé"));
+        // The game finds a model file by the letters and digits of its name, so the file still answers to its species
+        Assert.Equal(ModelOverrides.Key("Type: Null"), ModelOverrides.Key(BlenderAnim.Sculpt.FileOf("Type: Null")));
+        // No species or form is spelt with anything else a file's name may not hold but that colon
+        foreach (string species in PokemonModels.Species.Concat(PokemonModels.Forms))
+            Assert.DoesNotContain(BlenderAnim.Sculpt.FileOf(species), c => "<>:\"/\\|?*".Contains(c));
+    }
 }
