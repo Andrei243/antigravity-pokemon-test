@@ -65,8 +65,8 @@ def xurkitree(src, out):
             a = math.radians(ang)
             d1 = unit(0.55 * math.cos(a) * s, -0.7, 0.55 * math.sin(a))
             d2 = unit(0.8 * math.cos(a) * s, -0.35, 0.8 * math.sin(a) - 0.25)
-            p1 = w + d1 * 0.05
-            k.add(f"wire{side}{j}", outward(tube([w - d1 * 0.01, p1, p1 + d2 * 0.045], [0.0125, 0.012, 0.011])), COPPER,
+            p1 = w + d1 * 0.06
+            k.add(f"wire{side}{j}", outward(tube([w - d1 * 0.01, p1, p1 + d2 * 0.06], [0.0125, 0.012, 0.011])), COPPER,
                   f"arm{side}", fuse=False, surface="metal")
 
     # --- the legs: twisted cables to black plug feet with copper prongs ----------------------------------------------
@@ -92,7 +92,7 @@ def xurkitree(src, out):
     band(k, "collar", "head", (0, -0.004, 0.745), (0, 0, 1), 0.03, None)
 
     # --- the head: a white star of crystal spikes round a white core -------------------------------------------------
-    k.add("core", ell(HC, (0.06, 0.055, 0.06)), CORE, "head")
+    k.add("core", ell(HC, (0.068, 0.062, 0.068)), CORE, "head")
     golden = math.pi * (3 - math.sqrt(5))
     n = 24
     for i in range(n):
@@ -100,10 +100,10 @@ def xurkitree(src, out):
         ring = math.sqrt(max(1 - u * u, 0))
         a = i * golden
         d = unit(math.sin(a) * ring, -math.cos(a) * ring * 0.55 - 0.15, u)      # fanned toward the front plane
-        L = 0.15 if i % 3 else 0.12
+        L = 0.175 if i % 3 else 0.14
         p, q = axes(d)
-        base = HC + d * 0.035
-        pts = [base + 0.026 * (math.cos(t) * p + math.sin(t) * q) for t in (0.3, 2.4, 4.4)]
+        base = HC + d * 0.04
+        pts = [base + 0.034 * (math.cos(t) * p + math.sin(t) * q) for t in (0.3, 2.4, 4.4)]
         k.add(f"spike{i}", hull(pts + [HC + d * L]), ICE if i % 2 else ICE2, "head", fuse=False, surface="shell")
 
     k.build(voxel=VOXEL, smooth=4, band=0.006, wband=0.05)
@@ -112,7 +112,7 @@ def xurkitree(src, out):
     def lay(state):
         for s in (1, -1):
             d = unit(0.35 * s, -0.9, 0.1)
-            c = HC + d / math.sqrt(((d / np.array([0.06, 0.055, 0.06])) ** 2).sum())
+            c = HC + d / math.sqrt(((d / np.array([0.068, 0.062, 0.068])) ** 2).sum())
             k.decal(c, d, (0.012, 0.012), CORE, eps=0.0015, rings=20, segs=56)
     k.eye_states(lay)
     k.export(out)

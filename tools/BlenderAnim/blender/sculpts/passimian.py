@@ -219,7 +219,8 @@ def passimian(src, out):
     de = unit(0.42, -0.9, 0.05)
     E = hit(HEAD, (0.037, -1, HC[2] - 0.002), (0, 1, 0))
     def lay(state):
-        look = eye_look(state, open_look, srgb(DARK), srgb(INK), line=0.18)
+        ink = srgb(INK) if state in ("Open", "Fierce") else srgb("#C8CAD0")
+        look = eye_look(state, open_look, srgb(DARK), ink, line=0.2)
         for s in (1, -1):
             out_ = polygon(OUT if s > 0 else [(-a, b) for a, b in OUT])
             col = look if s > 0 else (lambda u, v, look=look: look(-u, v))

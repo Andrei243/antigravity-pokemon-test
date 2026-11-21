@@ -8,8 +8,9 @@
 # thin dark legs, each with two red bands near the foot; a long thin tail rising in an S behind, ending in a spiky
 # tuft. (The pictures overrule the task's text: the lower face and the cheek tufts are red as well as the legs'
 # stripes and the forehead's mark; the eyes' pupils are red slits.)
-# Reference ratios (3D picture): head without ears / height to the ear tips 0.64 (it crouches; standing here 0.45 of
-# the height to the ear tips), head width / body width about 2.4, tufts' span / head width 1.47, tail tip a quarter
+# Reference ratios (3D picture): head without ears / height to the ear tips 0.64 (it crouches; standing here 0.44 of
+# the height), head width / body width about 2.4 (here 2.0), tufts' span / head width 1.47 (here 1.5), leg showing under
+# the belly / height 0.34 (here 0.25, belly lowered against stilts), tail tip a quarter
 # above the ear tips (kept at the ear tips here, so the body is not drawn small).
 #
 # Written to be grown from (torracat.py and incineroar.py keep this frame: the head and its front coordinates, the
@@ -240,7 +241,7 @@ def add_bands(k, name, a, b, r, shares, length, color=RED, bone="leg{s}", mirror
     for i, t in enumerate(shares):
         c = a + d * t
         rr = r[0] + (r[1] - r[0]) * t
-        k.add(f"{name}{i}", ring_band(c, d, rr + thick * 0.2, length, thick=thick), color, bone, fuse=False,
+        k.add(f"{name}{i}", ring_band(c, d, rr - thick * 0.3, length, thick=thick), color, bone, fuse=False,
               mirror=mirror, surface="fur")
 
 
@@ -254,7 +255,7 @@ def add_tail_tuft(k, end, d, size, color=DARK, n=5, bone="tail", name="tailspike
         ang = 2 * math.pi * i / n + 0.3
         out = d * 1.0 + (a * math.cos(ang) + b * math.sin(ang)) * (0.9 if i else 0.0)
         out = unit(*out)
-        k.add(f"{name}{i}", spike(end + out * size * 0.2, out, size * (1.25 if i == 0 else 0.95), size * 0.3),
+        k.add(f"{name}{i}", spike(end + out * size * 0.2, out, size * (1.25 if i == 0 else 0.95), size * 0.3, size * 0.3),
               color, bone, fuse=False, surface="fur")
 
 

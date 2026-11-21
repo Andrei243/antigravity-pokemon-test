@@ -5,7 +5,7 @@
 # underneath. Its face is a black blob with rounded lobes on the front: a round cyan eye on each side lobe, two small
 # yellow dots above between them, a pink mouth below. Two stalks of navy gas rise from the top out to the sides and end
 # in puffy clouds of bright sky blue that glitter with white four-pointed sparkles; a little blue droplet of gas floats
-# beside each. A thin gold crescent stands round the ball behind it, its points showing over the top and under the
+# beside each (left out: in the game they read as horns). A thin gold crescent stands round the ball behind it, its points showing over the top and under the
 # bottom.
 # The skeleton: body (0, 0, 0.15), arms (+-0.06, 0, 0.21). The export is 0.42 tall.
 # The line's frame: Cosmoem, Solgaleo and Lunala take this script's colours and its sparkle (sibling("cosmog")).
@@ -103,10 +103,7 @@ def arms(k):
           ((-0.05, 0.012, 0.026), (0.022, 0.022, 0.022)), ((0.0, 0.02, -0.036), (0.03, 0.026, 0.026))]
     for j, (o, r) in enumerate(cl):
         k.add(f"cloud{j}", ell(CLOUD + np.array(o) * CS, np.array(r) * CS), BLUE, "arm{s}", mirror=True)
-    # a droplet of gas floating out beside each cloud
-    tip = CLOUD + (0.083, -0.005, 0.05)
-    k.add("drop", outward(tube([tip + (-0.008, 0, -0.01), tip + (0.003, 0, 0.003), tip + (0.016, 0, 0.012)],
-                               [0.013, 0.009, 0.003])), BLUE, "arm{s}", fuse=False, mirror=True)
+    # the art's little droplets of gas floating beside the clouds are left out: at the game's size they read as horns
 
 
 def crescent(k, gold=GOLD):

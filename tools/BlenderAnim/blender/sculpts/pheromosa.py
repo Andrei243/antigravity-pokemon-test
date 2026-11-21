@@ -18,7 +18,7 @@ from sculptkit import (Kit, ell, tube, hull, sheet, lathe, ring_band, outward, p
 WHITE, SHADE, GOLD, VEIL = "#F3F2EE", "#DEDDD8", "#E1BF63", "#D7D8E0"
 IRIS, INK, LASH = "#5560B8", "#22202C", "#1E1A26"
 
-HC, HR = np.array([0.0, -0.004, 0.79]), np.array([0.056, 0.05, 0.06])
+HC, HR = np.array([0.0, -0.004, 0.797]), np.array([0.063, 0.057, 0.067])
 VOXEL = 0.0042
 
 
@@ -50,11 +50,11 @@ def pheromosa(src, out):
     # the tiara: a gold band across the brow, dipping to a point between the eyes
     def tiara(P):
         x, y, z = P[:, 0], P[:, 1], P[:, 2]
-        low = 0.806 - 0.012 * np.clip(1 - np.abs(x) / 0.02, 0, 1)
-        return inside(low - z, 0.0018) * inside(z - 0.822, 0.0018) * smoothstep(0.0, -0.02, y)
+        low = 0.815 - 0.012 * np.clip(1 - np.abs(x) / 0.02, 0, 1)
+        return inside(low - z, 0.0018) * inside(z - 0.832, 0.0018) * smoothstep(0.0, -0.02, y)
     k.paint(tiara, GOLD, on=["head"])
     for s, side in ((1, "R"), (-1, "L")):
-        b = np.array([0.046 * s, -0.026, 0.808])
+        b = np.array([0.052 * s, -0.028, 0.817])
         k.add(f"tiara{side}", hull([b + (0.0, 0.012, -0.008), b + (0.0, -0.01, -0.008), b + (-0.012 * s, 0.0, 0.004),
                                     b + (0.022 * s, 0.006, 0.042)]), GOLD, "head", fuse=False, surface="metal")
 
@@ -101,8 +101,7 @@ def pheromosa(src, out):
     def veil(u, v):
         x = (u * 2 - 1)                                          # -1..1 across
         z = 0.8 - 0.79 * v                                       # top to foot
-        w = 0.035 + 0.19 * np.sin(np.pi * np.clip(v / 0.72, 0, 1) ** 0.75) ** 0.8 * (v < 0.72) \
-            + (v >= 0.72) * (0.225 + 0.03 * (v - 0.72) / 0.28)
+        w = 0.035 + 0.19 * np.sin(np.pi * np.clip(v / 0.95, 0, 1) ** 0.75) + 0.12 * smoothstep(0.82, 1.0, v)
         fork = 0.07 * (1 - np.abs(x)) * smoothstep(0.85, 1.0, v)  # the foot forked at its middle
         X = x * w
         Y = 0.035 + 0.07 * (1 - x * x) * np.sin(np.pi * np.clip(v, 0.05, 0.95)) + 0.02 * v
@@ -126,13 +125,13 @@ def pheromosa(src, out):
             c = np.tile(srgb("#FFFFFF"), (len(u), 1))
             c[((u + 0.1) / 0.5) ** 2 + ((v + 0.3) / 0.6) ** 2 < 1] = CI
             c[((u + 0.1) / 0.22) ** 2 + ((v + 0.35) / 0.3) ** 2 < 1] = CK
-            lid = base + slope * u
+            lid = base + slope * u + (0.16 * (1 - u * u) if slope < 0.3 else 0)       # an arched, calm lid
             c[v > lid] = CW
             c[np.abs(v - lid) < 0.17] = CL
             c[(v > lid) & (v < lid + 0.4) & (u > 0.55)] = CL            # the lashes swept out at the corner
             return c
         return look
-    open_eye = lidded(0.15, 0.0)
+    open_eye = lidded(0.0, -0.1)
     fierce = lidded(0.45, -0.1)
     ALMOND = [(-1, 0.0), (-0.6, -0.6), (0.2, -0.85), (0.85, -0.45), (1, 0.2), (0.55, 0.7), (-0.2, 0.75), (-0.75, 0.45)]
     def lay(state):
@@ -141,7 +140,7 @@ def pheromosa(src, out):
             shape = polygon([(u * s, v) for u, v in ALMOND])
             col = look if s > 0 else (lambda u, v, f=look: f(-u, v))
             d = unit(0.5 * s, -0.85, 0.05)
-            k.decal(on_ell(HC, HR, d) + (0, 0, -0.012), d, (0.02, 0.015), col, up=(0, 0.1, 1), eps=0.002,
+            k.decal(on_ell(HC, HR, d) + (0, 0, -0.012), d, (0.024, 0.018), col, up=(0, 0.1, 1), eps=0.002,
                     outline=shape, rings=20, segs=56)
     k.eye_states(lay)
     k.export(out)

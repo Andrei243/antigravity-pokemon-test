@@ -119,8 +119,8 @@ def body(k):
 
 
 # --- the eyes: angular cyan almonds, their outer corners swept up, a dark rim, a white glint -----------------------
-EYE_OUT = [(-0.95, -0.25), (-0.45, -0.72), (0.35, -0.7), (0.9, -0.1), (1.0, 0.72), (0.45, 0.42), (-0.4, 0.38),
-           (-0.95, 0.15)]
+EYE_OUT = [(-0.82, -0.25), (-0.45, -0.72), (0.35, -0.7), (0.9, -0.1), (1.0, 0.72), (0.45, 0.42), (-0.4, 0.38),
+           (-0.82, 0.15)]
 EYE_HALF = (0.032, 0.023)
 RIM = 0.8              # the cyan's outline as a share of the dark outline under it
 CC, CI, CG, CM = srgb(CYAN), srgb(INK), srgb(GLINT), srgb(MAGENTA)
@@ -133,7 +133,7 @@ def eye_open(u, v):
 
 
 def eye_frame(s):
-    return np.array([0.03 * s, -0.064, 0.245]), unit(0.42 * s, -1, 0.05)
+    return np.array([0.035 * s, -0.062, 0.245]), unit(0.42 * s, -1, 0.05)
 
 
 def eyes(k, state):

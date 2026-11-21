@@ -41,24 +41,29 @@ def trunk(k):
 
 def legs(k):
     """Thick white legs: shoulders and thighs fused over the upper halves, black paws, an orange band above each."""
-    for nm, bone, y, top in (("f", "leg{s}", FORE_Y, (0.095, FORE_Y, 0.38, 0.082, 0.095, 0.15)),
-                             ("h", "hind{s}", HIND_Y, (0.095, HIND_Y + 0.01, 0.38, 0.088, 0.12, 0.16))):
+    for nm, bone, y, top in (("f", "leg{s}", FORE_Y, (0.093, FORE_Y + 0.005, 0.37, 0.1, 0.11, 0.16)),
+                             ("h", "hind{s}", HIND_Y, (0.093, HIND_Y + 0.015, 0.37, 0.105, 0.13, 0.175))):
         k.add(f"{nm}top", ell(top[:3], top[3:]), WHITE, bone, mirror=True)
         k.add(f"{nm}leg", tube([(LEG_X, y, 0.33), (LEG_X + 0.003, y - 0.01, 0.18), (LEG_X + 0.005, y - 0.014, 0.07)],
-                               [0.07, 0.062, 0.057]), WHITE, bone, mirror=True)
+                               [0.072, 0.058, 0.048]), WHITE, bone, mirror=True)
         k.add(f"{nm}paw", ell((LEG_X + 0.005, y - 0.03, 0.036), (0.068, 0.082, 0.04)), DARK, bone, mirror=True)
-        k.add(f"{nm}band", ring_band((LEG_X + 0.005, y - 0.013, 0.105), (0, 0, 1), 0.057, 0.03, thick=0.008), ORANGE,
+        k.add(f"{nm}band", ring_band((LEG_X + 0.005, y - 0.013, 0.105), (0, 0, 1), 0.05, 0.03, thick=0.008), ORANGE,
               bone, fuse=False, mirror=True)
     # the paws black, crisp below their top
-    k.paint(lambda P: inside(P[:, 2] - 0.066, 0.003) * (np.abs(P[:, 0]) > 0.03), DARK)
+    k.paint(lambda P: inside(P[:, 2] - 0.066, 0.006) * (np.abs(P[:, 0]) > 0.03), DARK)
 
 
 def toe_stripes(k):
     for y in (FORE_Y, HIND_Y):
         for s in (1, -1):
             for dx in (-0.026, 0.0, 0.026):
-                c = np.array([(LEG_X + 0.005 + dx) * s, y - 0.03 - 0.078, 0.036])
-                k.decal(c, unit(dx * 6 * s, -1, 0.25), (0.0065, 0.019), GOLD, eps=0.003, rings=6, segs=28)
+                # loose, on the paw's front: a patch here caught the foreleg in front of the hind paw
+                x = (LEG_X + 0.005 + dx) * s
+                yf = y - 0.03 - 0.082 * math.sqrt(1 - (dx / 0.068) ** 2)
+                pts = [(x + a, yf + b, z) for a in (-0.0065, 0.0065) for b in (-0.003, 0.012) for z in (0.02, 0.055)]
+                k.add(f"toestripe{'f' if y < 0 else 'h'}{'R' if s > 0 else 'L'}{int(dx * 1000)}", hull(pts), GOLD,
+                      "leg" + ("R" if s > 0 else "L") if y < 0 else "hind" + ("R" if s > 0 else "L"), fuse=False,
+                      surface="shell")
 
 
 def flank(k):
@@ -92,7 +97,7 @@ def mane(k):
     k.add("neck", ell((0, -0.24, 0.55), (0.1, 0.11, 0.12)), WHITE, "head")
     n_l = 14
     for i in range(n_l):
-        a = math.radians(i * 360 / n_l + 6)
+        a = math.radians(i * 360 / n_l + 360 / (2 * n_l))
         d = np.array([math.cos(a), 0, math.sin(a) * 0.9])
         L = 0.29 + 0.07 * abs(math.cos(a))
         root = M + d * 0.12 + (0, 0.03, 0)
@@ -118,9 +123,9 @@ def rays(k):
     """Eight gold rays radiating out of the mane from round the face, laid back: solid kites."""
     c = H + (0, -0.03, 0.01)
     for i in range(8):
-        a = math.radians(i * 45 + 22.5)
+        a = math.radians(i * 45)
         d = np.array([math.cos(a), 0, math.sin(a)])
-        L = 0.3 if i % 2 == 0 else 0.23
+        L = 0.3 if i % 2 == 1 else 0.24
         side = np.array([-d[2], 0, d[0]])
         root = c + d * 0.075
         tip = c + d * L + (0, 0.12, 0)

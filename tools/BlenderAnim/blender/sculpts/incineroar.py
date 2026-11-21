@@ -9,10 +9,11 @@
 # short bars slanting off it), the waist pinched at a belt of fire (yellow at its heart, orange and red at its tips);
 # great red arms with three black bands each, huge red hands with white claws (carried forward and down here, raised
 # in the art); thick red thighs, a black band at the knee and one at the ankle, big red feet; a red tail with black
-# bands and a black spiky ruff near its tip. (The pictures overrule the task's text: the head and limbs are red and
-# the chest grey with black marks; the stripes on the arms and legs are black.)
-# Reference ratios (3D picture, to the crown): head crown to chin / height 0.25 (made a third larger: 0.31 here);
-# chest width / height 0.36 (0.37 here); arm thickness / height 0.11 (0.12 here); hand / head width 0.55 (0.5 here);
+# bands and a black spiky ruff near its tip. The back is black after the C# sculpt (the pictures show only the front).
+# Reference ratios (3D picture, to the crown): head crown to chin / height 0.25 (0.31 here, crown 0.808, jaw 0.558);
+# chest width / height 0.36 (0.38 here); arm thickness / height 0.11 (0.13 here); hand / head width 0.55 (0.47 here);
+# arms: hand centres at x +-0.135 inside the chest's half-width 0.155, y -0.2 before the belly's front (-0.09), the elbows
+# bent out to x +-0.275 (the model's width);
 # belt's height / height 0.45 (0.44 here).
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -35,7 +36,7 @@ FLAME_RED, FLAME, FLAME_CORE = "#E8452A", "#F68A2A", "#FFD23A"
 # --- the frame (the skeleton's joints: body (0, 0, 0.42), arms (+-0.12, 0, 0.54), head (0, -0.02, 0.58), legs
 #     (+-0.07, 0, 0.28), tail (0, 0.08, 0.34)) -----------------------------------------------------------------------
 H = np.array([0.0, -0.065, 0.69])
-HR = np.array([0.118, 0.108, 0.112])
+HR = np.array([0.124, 0.113, 0.118])
 BELT = 0.36
 SH = np.array([0.155, 0.0, 0.565])            # the shoulder's middle
 EL = np.array([0.225, -0.03, 0.455])          # the elbow, bent out
@@ -167,7 +168,7 @@ def add_mane(k):
 def add_head(k):
     k.add("head", ell(H, HR, deform=lambda V: V * (1 + 0.06 * np.clip(-V[:, 2], 0, 1))[:, None]), RED, "head")
     k.add("muzzle", ell(H + (0, -0.08, -0.045), (0.086, 0.066, 0.06)), BLACK, "head")
-    k.add("jaw", ell(H + (0, -0.04, -0.085), (0.09, 0.07, 0.04)), BLACK, "head")
+    k.add("jaw", ell(H + (0, -0.04, -0.09), (0.094, 0.072, 0.042)), BLACK, "head")
     # black from under the eyes back along the cheeks, a crisp line
     def mask(P):
         s, z = lt.round_head(P, H, HR)

@@ -25,14 +25,15 @@ VINE, VLEAF, CLAW, BEAKC = "#2C7A4C", "#3C9B5E", "#22304A", "#2A3346"
 
 def frame():
     F = SimpleNamespace()
-    F.H = np.array([0.0, -0.016, 0.53])             # the head's centre, over the head's joint (0, -0.01, 0.49)
-    F.HS = 1.22                                     # the head a fifth larger than measured, as on a tall figure
+    F.H0 = np.array([0.0, -0.016, 0.53])            # the head's centre as the head's parts were first measured
+    F.H = np.array([0.0, -0.016, 0.565])            # the head's centre, over the head's joint (0, -0.01, 0.49)
+    F.HS = 1.52                                     # the head half as large again as measured: a thick hood
     F.HR = np.array([0.078, 0.074, 0.075]) * F.HS
-    F.FC = F.H + (np.array([0.0, -0.05, 0.518]) - F.H) * F.HS     # the flatter face of the mask, for its patches
+    F.FC = F.H + (np.array([0.0, -0.05, 0.518]) - F.H0) * F.HS     # the flatter face of the mask, for its patches
     F.FR = np.array([0.06, 0.042, 0.05]) * F.HS
     F.CHEST = (np.array([0.0, -0.006, 0.415]), np.array([0.066, 0.06, 0.055]))
-    F.LEGX, F.LEGY, F.LEGTOP = 0.047, -0.004, 0.07
-    F.LEGR = (0.017, 0.015)
+    F.LEGX, F.LEGY, F.LEGTOP = 0.05, -0.006, 0.07
+    F.LEGR = (0.024, 0.02)
     F.TOE, F.TOER = 0.046, 0.0085
     F.EYEX, F.EYEZ = 0.027 * F.HS, F.H[2] - 0.006 * F.HS
     F.EYE = (0.02 * F.HS, 0.0175 * F.HS)
@@ -42,24 +43,24 @@ def frame():
 
 def S(F, q):
     """A point measured on the head as first drawn, moved out from the head's centre as the head was made larger."""
-    return F.H + (np.array(q, float) - F.H) * F.HS
+    return F.H + (np.array(q, float) - F.H0) * F.HS
 
 
 def head_poly(half):
     """A mask's outline (round the head's axis, z) as first drawn, grown with the head; mirrored."""
     F = frame()
-    return [(a * F.HS, F.H[2] + (z - F.H[2]) * F.HS) for a, z in p.mirrored(half)]
+    return [(a * F.HS, F.H[2] + (z - F.H0[2]) * F.HS) for a, z in p.mirrored(half)]
 
 
 def body(k, F):
     k.add("head", ell(F.H, F.HR), HOOD, "head")
     k.add("face", ell(F.FC, F.FR), HOOD, "head")
-    k.add("cape", ell((0.0, 0.01, 0.448), (0.1, 0.082, 0.06)), HOOD, "body")
+    k.add("cape", ell((0.0, 0.012, 0.46), (0.135, 0.1, 0.07)), HOOD, "body")
     k.add("chest", ell(*F.CHEST), CREAM, "body")
     k.add("torso", ell((0.0, 0.004, 0.345), (0.066, 0.058, 0.095)), CREAM, "body")
     # stout thighs fused into the hips, the shins tapering to the ankles
-    k.add("thigh", ell((0.044, 0.002, 0.245), (0.047, 0.052, 0.078)), CREAM, "leg{s}", mirror=True)
-    k.add("shin", tube([(0.046, 0.0, 0.2), (0.047, -0.002, 0.12), (0.048, -0.004, 0.065)], [0.026, 0.02, 0.017]),
+    k.add("thigh", ell((0.048, 0.0, 0.225), (0.056, 0.06, 0.085)), CREAM, "leg{s}", mirror=True)
+    k.add("shin", tube([(0.049, 0.0, 0.18), (0.05, -0.004, 0.11), (0.05, -0.006, 0.06)], [0.034, 0.029, 0.024]),
           CREAM, "leg{s}", mirror=True)
     # the dark mask, round the head's axis, its top cut by the fringe
     rc = r.round_coords(F.H[1], 0.078 * F.HS)
@@ -77,14 +78,14 @@ def jagged(k, F):
     for x, ln in ((-0.05, 0.034), (-0.026, 0.04), (0.0, 0.032), (0.026, 0.042), (0.05, 0.034)):
         base = S(F, (x, -0.066, 0.584))
         tip = base + np.array([x * 0.25, -0.036, -ln]) * F.HS
-        k.add("fringe", p.spike(base, tip, 0.03, 0.018, side=(1, 0, 0), at=0.3), HOOD, "head", fuse=False,
+        k.add("fringe", p.spike(base, tip, 0.03 * F.HS, 0.018 * F.HS, side=(1, 0, 0), at=0.3), HOOD, "head", fuse=False,
               surface="fur")
     for a in range(55, 310, 25):
         t = math.radians(a)
         rad = np.array([math.sin(t), -math.cos(t), 0])
         base = H + (rad * np.array([0.074, 0.07, 0]) + np.array([0, 0, -0.035])) * F.HS
-        tip = base + (rad * 0.024 + np.array([0, 0, -0.068])) * F.HS
-        k.add("rim", p.spike(base, tip, 0.04, 0.02, side=(math.cos(t), math.sin(t), 0), at=0.3),
+        tip = base + (rad * 0.04 + np.array([0, 0, -0.062])) * F.HS
+        k.add("rim", p.spike(base, tip, 0.04 * F.HS, 0.02 * F.HS, side=(math.cos(t), math.sin(t), 0), at=0.3),
               HOOD if a % 50 else HOODDARK, "head", fuse=False, surface="fur")
     # higher up the back of the hood, a second row laid down over the first
     for a in range(105, 260, 30):
@@ -92,14 +93,14 @@ def jagged(k, F):
         rad = np.array([math.sin(t), -math.cos(t), 0])
         base = H + (rad * np.array([0.07, 0.068, 0]) + np.array([0, 0, 0.03])) * F.HS
         tip = base + (rad * 0.028 + np.array([0, 0, -0.07])) * F.HS
-        k.add("rim", p.spike(base, tip, 0.042, 0.02, side=(math.cos(t), math.sin(t), 0), at=0.3),
+        k.add("rim", p.spike(base, tip, 0.042 * F.HS, 0.02 * F.HS, side=(math.cos(t), math.sin(t), 0), at=0.3),
               HOODDARK if a % 60 else HOOD, "head", fuse=False, surface="fur")
     for a in range(40, 330, 24):
         t = math.radians(a)
         rad = np.array([math.sin(t), -math.cos(t), 0])
-        base = np.array([0, 0.01, 0.43]) + rad * np.array([0.096, 0.078, 0])
-        tip = base + rad * 0.022 + np.array([0, 0, -0.07])
-        k.add("hem", p.spike(base, tip, 0.045, 0.02, side=(math.cos(t), math.sin(t), 0), at=0.3),
+        base = np.array([0, 0.012, 0.44]) + rad * np.array([0.13, 0.1, 0])
+        tip = base + rad * 0.03 + np.array([0, 0, -0.08])
+        k.add("hem", p.spike(base, tip, 0.055, 0.024, side=(math.cos(t), math.sin(t), 0), at=0.3),
               HOOD if a % 48 else HOODDARK, "body", fuse=False, surface="fur")
 
 
@@ -108,7 +109,8 @@ def crest(k, F):
     for pts, rad in (([(0.0, -0.01, 0.59), (0.004, -0.004, 0.632), (-0.012, 0.006, 0.658), (-0.034, 0.016, 0.648)],
                       [0.013, 0.013, 0.01, 0.003]),
                      ([(0.006, 0.004, 0.592), (0.016, 0.012, 0.614), (0.028, 0.022, 0.618)], [0.01, 0.008, 0.003])):
-        k.add("crest", blade([S(F, q) for q in pts], np.array(rad) * F.HS, (0, 1, 0), 0.55), CREST, "head", fuse=False, surface="fur")
+        root = S(F, (0.0, -0.01, 0.59))     # on the larger crown, the tuft itself only a little larger
+        k.add("crest", blade([root + (np.array(q) - (0.0, -0.01, 0.59)) * 1.15 for q in pts], np.array(rad) * 1.25, (0, 1, 0), 0.55), CREST, "head", fuse=False, surface="fur")
     b = S(F, (0.0, -0.05, 0.594))
     k.add("notch", hull([b + (-0.012, 0, 0.008), b + (0.012, 0, 0.008), b + (0, -0.004, -0.014), b + (0, 0.014, 0.0)]),
           CORAL, "head", fuse=False)
@@ -120,38 +122,60 @@ def beak(k, F):
                           0.014, side=(1, 0, 0), at=0.3), BEAKC, "head", fuse=False, surface="shell")
 
 
+def taper(V):
+    """Narrower toward the hem, as folded wings close in at their tips."""
+    V = V.copy()
+    V[:, :2] *= (1 - 0.25 * np.clip(-V[:, 2], 0, 1))[:, None]
+    return V
+
+
 def cloak(k, F):
-    """The wings folded round as a cloak from the shoulders to the ankles: a curved plate a side, cream at the hem."""
-    th0, th1 = math.radians(42), math.radians(170)
+    """
+    The wings folded round as a cloak from the shoulders to mid-shin: on each side a thick rounded mass hanging at
+    the side, and a narrower one wrapping round the front so only a strip of the cream chest shows; cream at the hem.
+    """
     for s, side in ((1, "R"), (-1, "L")):
         b = f"wing{side}"
-        def at(u, v, grow=0.0, s=s):
-            th = th0 + (th1 - th0) * v
-            R = 0.074 + 0.038 * u + 0.012 * np.sin(math.pi * v) + grow
-            z = 0.47 - 0.42 * u - u * 0.018 * (1 + tri(v * 4.5)) / 2
-            return np.stack([s * R * np.sin(th), 0.006 - R * np.cos(th), z], -1)
-        k.add(f"cloak{side}", outward(sheet(at, 40, 24, 0.016)), CLOAK, b, fuse=False, surface="fur")
-        k.add(f"cloaktip{side}", outward(sheet(lambda u, v: at(0.86 + 0.14 * u, v, 0.006), 8, 24, 0.014)), CLOAKTIP,
-              b, fuse=False, surface="fur")
-        # orange-red triangles in a row under the capelet's hem, pointing down
-        for v in (0.12, 0.3, 0.48, 0.66):
-            c = at(np.array(0.24), np.array(v), 0.009)
-            n = c - np.array([0, 0.006, c[2]]); n /= np.linalg.norm(n)
-            tang = np.cross((0, 0, 1.0), n) * s
-            k.add(f"tri{side}", hull([c + tang * 0.016 + (0, 0, 0.01), c - tang * 0.016 + (0, 0, 0.01),
-                                      c + (0, 0, -0.022), c + n * 0.006 + (0, 0, 0.004)]), CORAL, b, fuse=False)
-        # cream dots down the front edge
-        for u in (0.34, 0.46, 0.58):
-            c = at(np.array(u), np.array(0.06), 0.009)
-            n = c - np.array([0, 0.006, c[2]]); n /= np.linalg.norm(n)
-            k.add(f"dot{side}", r.ell_frame(c, (0.008, 0.004, 0.009), np.cross((0, 0, 1.0), n), n), CLOAKTIP, b,
-                  fuse=False)
-
+        C, R = np.array([s * 0.1, 0.02, 0.28]), np.array([0.06, 0.1, 0.2])
+        k.add(f"cloak{side}", ell(C, R, deform=taper), CLOAK, b, fuse=False, surface="fur")
+        FC_, FR_ = np.array([s * 0.062, -0.058, 0.3]), np.array([0.04, 0.042, 0.165])
+        k.add(f"cloakfront{side}", ell(FC_, FR_, deform=taper), CLOAK, b, fuse=False, surface="fur")
+        # the hem's cream feather tips: pointed flight feathers hanging from under each mass, their faces outward
+        for phi in (35, 85, 135, 185):
+            t = math.radians(phi)
+            o = np.array([s * math.sin(t), -math.cos(t), 0])
+            base = C + o * np.array([0.034, 0.055, 0]) + np.array([0, 0, -0.15])
+            tip = base + o * 0.01 + np.array([0, 0, -0.07])
+            k.add(f"cloaktip{side}", p.spike(base, tip, 0.04, 0.016, side=np.cross((0, 0, 1.0), o), at=0.4), CLOAKTIP,
+                  b, fuse=False, surface="fur")
+        for dx in (-0.012, 0.012):
+            base = FC_ + np.array([dx, -0.018, -0.12])
+            k.add(f"cloaktipf{side}", p.spike(base, base + np.array([dx * 0.5, -0.004, -0.05]), 0.026, 0.012,
+                                             side=(1, 0, 0), at=0.4), CLOAKTIP, b, fuse=False, surface="fur")
+        # orange-red triangles in a row round the side mass's upper part, pointing down
+        dz = 0.12
+        for phi in (50, 80, 110, 140):
+            t = math.radians(phi)
+            q = math.sqrt(1 - (dz / R[2]) ** 2)
+            c = C + np.array([s * R[0] * math.sin(t) * q, -R[1] * math.cos(t) * q, dz])
+            n = (c - C) / R ** 2; n /= np.linalg.norm(n)
+            tang = np.cross((0, 0, 1.0), n); tang /= np.linalg.norm(tang)
+            c = c + n * 0.002
+            k.add(f"tri{side}", hull([c + tang * 0.018 + (0, 0, 0.012), c - tang * 0.018 + (0, 0, 0.012),
+                                      c + (0, 0, -0.024), c + n * 0.007 + (0, 0, 0.004)]), CORAL, b, fuse=False)
+        # cream dots down the front mass
+        for z in (0.36, 0.3, 0.24):
+            dx = s * 0.012
+            q = 1 - ((z - FC_[2]) / FR_[2]) ** 2 - (dx / FR_[0]) ** 2
+            c = np.array([FC_[0] + dx, FC_[1] - FR_[1] * math.sqrt(max(q, 0)), z])
+            n = (c - FC_) / FR_ ** 2; n /= np.linalg.norm(n)
+            k.add(f"dot{side}", r.ell_frame(c + n * 0.002, (0.009, 0.004, 0.01), np.cross((0, 0, 1.0), n), n),
+                  CLOAKTIP, b, fuse=False)
 
 def cross(k, F):
     """The orange-red cross of four petals at the top of the chest, and the vine from it with a leaf at each end."""
     c, rr = F.CHEST
-    C, n = r.on_ell(c, rr, 0.0, 0.43)
+    C, n = r.on_ell((0.0, 0.012, 0.46), (0.135, 0.1, 0.07), 0.0, 0.418)      # on the capelet's open front
     for dx, dz in ((1, 1), (-1, 1), (1, -1), (-1, -1)):
         d = unit(dx, 0, dz)
         d = d - n * (d @ n); d /= np.linalg.norm(d)
@@ -159,18 +183,18 @@ def cross(k, F):
               fuse=False, surface="leaf")
     k.add("knot", r.ell_frame(C + n * 0.01, (0.008, 0.006, 0.008), (1, 0, 0), n), "#C9431F", "body", fuse=False)
     # over the left shoulder (the viewer's left), and down the right side over the cloak
-    for pts, d in (([C + n * 0.008, (-0.045, -0.078, 0.434), (-0.08, -0.08, 0.42), (-0.098, -0.08, 0.392)],
+    for pts, d in (([C + n * 0.008, (-0.045, -0.1, 0.43), (-0.09, -0.108, 0.41), (-0.112, -0.104, 0.38)],
                     (-0.35, -0.3, -1)),
-                   ([C + n * 0.008, (0.05, -0.082, 0.4), (0.1, -0.1, 0.33), (0.118, -0.104, 0.26)], (0.15, -0.3, -1))):
+                   ([C + n * 0.008, (0.05, -0.104, 0.4), (0.085, -0.114, 0.33), (0.096, -0.112, 0.26)], (0.15, -0.3, -1))):
         k.add("vine", tube(pts, [0.009, 0.009, 0.0085, 0.008]), VINE, "body", fuse=False, surface="leaf")
         k.add("vleaf", outward(leaf(pts[-1], d, 0.07, 0.026, thick=0.013)), VLEAF, "body", fuse=False, surface="leaf")
 
 
 def tail(k):
     for s in (1, 0, -1):
-        base = np.array([0.016 * s, 0.07, 0.32])
+        base = np.array([0.016 * s, 0.09, 0.22])
         d = unit(0.08 * s, 0.32, -1)
-        k.add("tail", outward(leaf(base, d, 0.3 - 0.03 * abs(s), 0.032, thick=0.014)),
+        k.add("tail", outward(leaf(base, d, 0.17 - 0.02 * abs(s), 0.034, thick=0.016)),
               HOOD if s == 0 else HOODDARK, "body", fuse=False, surface="leaf")
 
 

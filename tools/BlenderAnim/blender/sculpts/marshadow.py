@@ -141,7 +141,7 @@ def eyes(k, state):
         k.decal(p, n, (0.021, 0.035), col, eps=0.002, rings=20, segs=56)
         if state in ("Open", "Fierce"):
             # the flame-drop over the eye: a round foot, its point upward
-            q, m = on_ell(H, HR, (0.42 * side, -0.88, 0.22))
+            q, m = on_ell(H, HR, (0.42 * side, -0.86, 0.3))
             k.decal(q, m, (0.006, 0.011), drop, eps=0.0026, rings=8, segs=40,
                     outline=lambda th: 1.0 if math.sin(th) < 0 else 1.0 - 0.6 * math.sin(th) ** 3)
 

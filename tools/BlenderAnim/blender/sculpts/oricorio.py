@@ -20,24 +20,26 @@ RED, TIPS, CURL, BILL, LEGC, CLAW = "#DC3238", "#2A2630", "#F6F2F2", "#F2C6CC", 
 
 def frame():
     F = SimpleNamespace()
-    F.H = np.array([0, -0.018, 0.256])              # the head's centre, over its joint (0, -0.01, 0.21)
-    F.HR = np.array([0.04, 0.04, 0.039])
-    F.BODY = ((0, 0.012, 0.15), (0.035, 0.044, 0.041), (12, 0, 0))
-    F.NECK = ([(0, 0.004, 0.172), (0, -0.012, 0.2), (0, -0.016, 0.226)], [0.024, 0.019, 0.019])
-    F.LEGX, F.LEGTOP, F.ANKLE, F.LEGY = 0.018, 0.12, 0.01, 0.002
-    F.LEGR = (0.0048, 0.0043)
-    F.TOE, F.HEEL, F.TOER = 0.026, 0.015, 0.0038
-    F.BILL = ((0, -0.056, 0.25), (0.0115, 0.018, 0.0105), 8)
+    F.H = np.array([0, -0.02, 0.246])               # the head's centre, over its joint (0, -0.01, 0.21)
+    F.HR = np.array([0.05, 0.05, 0.049])
+    F.BODY = ((0, 0.012, 0.136), (0.043, 0.051, 0.048), (12, 0, 0))
+    F.NECK = ([(0, 0.004, 0.16), (0, -0.012, 0.184), (0, -0.016, 0.204)], [0.034, 0.028, 0.028])
+    F.LEGX, F.LEGTOP, F.ANKLE, F.LEGY = 0.02, 0.105, 0.012, 0.002
+    F.LEGR = (0.009, 0.0082)
+    F.TOE, F.HEEL, F.TOER = 0.03, 0.017, 0.0052
+    F.BILL = ((0, -0.07, 0.24), (0.0145, 0.022, 0.013), 8)
     F.EYEDIR = unit(0.6, -0.74, 0.14)
-    F.EYE = (0.0138, 0.0138)
+    F.EYE = (0.017, 0.017)
     F.CURLDIR = unit(0.9, 0.12, 0.3)
+    F.CURL = dict(r0=0.0035, step=0.012, thick=0.004, lift=-0.0012)
     F.VOXEL = 0.0028
-    # a sleeve: root, direction, tiers as (start, length, radius at start, flare), its fan at the end
-    F.WING = dict(root=np.array([0.036, -0.004, 0.182]), d=unit(0.34, -0.6, -0.72), core=0.012, flat=0.55,
-                  tiers=[(0.0, 0.05, 0.014, 0.016), (0.032, 0.05, 0.02, 0.017), (0.064, 0.05, 0.025, 0.017),
-                         (0.096, 0.048, 0.029, 0.016)],
-                  fan=dict(at=0.15, n=5, spread=80, length=0.062, width=0.026, roll=0))
-    F.TAIL = dict(root=np.array([0.0, 0.035, 0.155]), d=unit(0.4, 0.72, 0.56), core=0.012, flat=0.6,
+    F.SCALLOPS, F.HEMFROM = 5, 0.7
+    # a sleeve: root, direction, tiers as (start, length, radius at start, flare), its fan at the end. The wings are
+    # held forward and down before the body like skirts held out: the fans' tips at x 0.07, well before the belly
+    F.WING = dict(root=np.array([0.034, -0.008, 0.168]), d=unit(0.25, -0.79, -0.59), core=0.017, flat=0.6,
+                  tiers=[(0.0, 0.046, 0.02, 0.024), (0.031, 0.046, 0.029, 0.024), (0.062, 0.044, 0.037, 0.021)],
+                  fan=dict(at=0.104, n=5, spread=70, length=0.046, width=0.032, roll=0))
+    F.TAIL = dict(root=np.array([0.0, 0.04, 0.142]), d=unit(0.4, 0.72, 0.56), core=0.012, flat=0.6,
                   tiers=[(0.0, 0.045, 0.016, 0.016), (0.03, 0.045, 0.022, 0.016), (0.06, 0.044, 0.026, 0.014)],
                   fan=dict(at=0.11, n=5, spread=80, length=0.052, width=0.024, roll=0))
     return F
@@ -61,9 +63,10 @@ def bill(k, F, colour=BILL):
     k.add("bill", ell(c, r, rot=(tilt, 0, 0), deform=g.hooked), colour, "head", fuse=False, surface="shell")
 
 
-def curls(k, F, colour=CURL, turns=1.3, r0=0.003, step=0.0105, thick=0.0045):
+def curls(k, F, colour=CURL, turns=1.3):
     """A white curl on the side of the head behind the eye: a tube along a spiral laid on the head (mirror)."""
     n = F.CURLDIR
+    r0, step, thick, lift = F.CURL["r0"], F.CURL["step"], F.CURL["thick"], F.CURL["lift"]
     c = on_head(F, n)
     a, b = axes(n)
     th = np.linspace(0, 2 * math.pi * turns, 90)
@@ -72,7 +75,7 @@ def curls(k, F, colour=CURL, turns=1.3, r0=0.003, step=0.0105, thick=0.0045):
     for t, rr in zip(th, r):
         q = c + rr * (math.cos(t) * a + math.sin(t) * b)
         d = q - F.H
-        pts.append(F.H + d / np.linalg.norm(d / F.HR) + n * 0.0012)
+        pts.append(F.H + d / np.linalg.norm(d / F.HR) + n * lift)
     k.add("curl", tube(pts[::3], [thick] * len(pts[::3]), seg=12, per=4), colour, "head", fuse=False, mirror=True)
 
 
@@ -97,14 +100,14 @@ def sleeve(k, F, S, bone, name, colour=RED, hem=TIPS, mirror=True):
     for i, (s0, ln, r0, fl) in enumerate(S["tiers"]):
         def at(u, v, s0=s0, ln=ln, r0=r0, fl=fl, grow=1.0, v0=0.0):
             t = v0 + (1 - v0) * v
-            reach = ln * (1 + 0.16 * scallop(u)) * t
+            reach = ln * (1 + 0.22 * scallop(u, F.SCALLOPS)) * t
             r = (r0 + fl * t * t) * grow
             ph = phase + 2 * math.pi * (0.005 + 0.99 * u)
             return (root[None, None] + d[None, None] * (s0 + reach)[..., None]
                     + r[..., None] * (np.cos(ph)[..., None] * a[None, None]
                                       + flat * np.sin(ph)[..., None] * b[None, None]))
         k.add(f"{name}tier{i}", outward(sheet(at, 72, 6, 0.004)), colour, bone, fuse=False, mirror=mirror)
-        hemat = lambda u, v, at=at: at(u, v, grow=1.05, v0=0.76)
+        hemat = lambda u, v, at=at: at(u, v, grow=1.05, v0=F.HEMFROM)
         k.add(f"{name}hem{i}", outward(sheet(hemat, 72, 4, 0.0042)), hem, bone, fuse=False, mirror=mirror)
     fan = S["fan"]
     end = root + d * fan["at"]

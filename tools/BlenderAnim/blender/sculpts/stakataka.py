@@ -159,7 +159,7 @@ def windows(k, holes):
     eyes = []
     for (face, i), (m, z0, z1) in holes.items():
         zc = (z0 + z1) / 2
-        p = face_point(face, m, zc, 0.02)
+        p = face_point(face, m, zc, 0.006)
         nrm = face_point(face, m, zc, -1.0) - face_point(face, m, zc, 0.0)
         nrm = nrm / np.linalg.norm(nrm)
         hz = float(half(zc))
@@ -199,8 +199,8 @@ def underside(k):
 # --- legs: crooked stacks of cubes ------------------------------------------------------------------------------------
 LEGS = {
     # bone: points of the stack from under the tower to the ground (on +X; mirrored by the bone's side)
-    "leg": [(0.2, -0.17, 0.27), (0.29, -0.22, 0.24), (0.36, -0.25, 0.17), (0.39, -0.27, 0.1), (0.38, -0.27, 0.042)],
-    "hind": [(0.2, 0.17, 0.27), (0.25, 0.21, 0.205), (0.29, 0.24, 0.14), (0.3, 0.255, 0.08), (0.31, 0.26, 0.042)],
+    "leg": [(0.2, -0.17, 0.27), (0.29, -0.22, 0.24), (0.36, -0.25, 0.17), (0.39, -0.27, 0.1), (0.38, -0.27, 0.052)],
+    "hind": [(0.2, 0.17, 0.27), (0.25, 0.21, 0.205), (0.29, 0.24, 0.14), (0.3, 0.255, 0.08), (0.31, 0.26, 0.052)],
 }
 BLACK_AT = {"leg": (1, 3), "hind": (0, 2)}       # which cubes of a stack are black with an eye
 
@@ -218,7 +218,7 @@ def legs(k, rs):
             bone = f"{kind}{side}"
             for j, p in enumerate(path):
                 c = np.array(p) * (sgn, 1, 1)
-                s = 0.036 if j < len(path) - 1 else 0.038
+                s = 0.04 if j < len(path) - 1 else 0.042
                 rot = (rs.uniform(-14, 14), rs.uniform(-14, 14), rs.uniform(-20, 20))
                 if j in BLACK_AT[kind]:
                     k.add(f"blk{kind}{j}{side}", ell(c, (s, s, s), rot=rot, deform=boxy(7), sub=4), BLACK, bone)

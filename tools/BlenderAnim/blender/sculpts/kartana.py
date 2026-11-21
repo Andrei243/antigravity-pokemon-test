@@ -21,8 +21,8 @@ WHITE, SHADE, ORANGE, RED = "#F4F2EE", "#D9D7D4", "#EE6A1E", "#D4441A"
 GOLD, GOLD_PALE, YELLOW, INK = "#F2BE1C", "#F8DC56", "#F6D21E", "#3A3B42"
 
 # --- the frame --------------------------------------------------------------------------------------------------------
-HEAD_C, HEAD_W, HEAD_H, HEAD_D = np.array([0.0, 0.0, 0.615]), 0.098, 0.135, 0.032
-EYE_C, EYE_HALF = np.array([0.0, -HEAD_D - 0.006, 0.615]), 0.034
+HEAD_C, HEAD_W, HEAD_H, HEAD_D = np.array([0.0, 0.0, 0.615]), 0.106, 0.142, 0.032
+EYE_C, EYE_HALF = np.array([0.0, -HEAD_D - 0.006, 0.613]), 0.05
 THICK = 0.03                       # a blade's thickness at its ridge (the floor at 0.93 tall)
 
 
@@ -104,7 +104,7 @@ def head(k):
     tip = [on_front(0, -1), on_front(0.33, -0.67), on_front(0, -0.5), on_front(-0.33, -0.67)]
     k.add("chin", hull([p for q in tip for p in (q, (q[0], q[1] + 0.006, q[2]))]), RED, "head", fuse=False)
     # the pale hollow with the eye: a fused plate just proud of the front (the eye's patch needs it)
-    k.add("face", ell((0, -HEAD_D - 0.002, c[2] - 0.005), (0.058, 0.0045, 0.058), rot=(0, 45, 0), deform=boxy(5), sub=4),
+    k.add("face", ell((0, -HEAD_D - 0.002, c[2] - 0.005), (0.066, 0.0045, 0.066), rot=(0, 45, 0), deform=boxy(5), sub=4),
           SHADE, "head")
     # two horn blades crossing over the top
     for s in (1, -1):
@@ -183,7 +183,7 @@ def eye_open():
     cy, ck, cg = srgb(YELLOW), srgb(INK), srgb(SHADE)
     def look(u, v):
         # a four-pointed folded star, its left point longest, edged in dark grey
-        a = np.abs(u * np.where(u < 0, 0.8, 1.15)) ** 0.55 + np.abs(v * 1.1) ** 0.55
+        a = np.abs(u * np.where(u < 0, 0.8, 1.15)) ** 0.7 + np.abs(v * 1.1) ** 0.7
         c = np.tile(cg, (len(u), 1))
         c[a < 1.0] = ck
         c[a < 0.78] = cy

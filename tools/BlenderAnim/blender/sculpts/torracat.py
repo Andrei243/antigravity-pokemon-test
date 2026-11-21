@@ -11,9 +11,9 @@
 # on each flank; dark bands round the lower legs and dark claws; the tail dark with two orange bands and a big spiky
 # dark tuft. (The pictures overrule the task's text and the C# sculpt: the body is orange below and dark above, not
 # red with black stripes; the ears are dark, not red horns; the horn on the brow is the forehead mark's.)
-# Reference ratios (3D picture, crouched): head without ears / height to the horn's tip 0.4 (0.38 here, standing);
-# horn above the head's top / head height 0.6 (0.62 here); tufts' span / head width 1.5 (1.45 here); bell / head
-# width 0.27 (0.28 here).
+# Reference ratios (3D picture, crouched): head without ears / height to the horn's tip 0.4 (0.34 here, standing);
+# horn above the head's top / head height 0.6 (0.53 here); tufts' span / head width 1.5 (1.5 here); bell / head
+# width 0.27 (0.25 here); leg showing under the belly / height 0.26 (0.25 here).
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
@@ -64,8 +64,8 @@ def add_legs(k):
         # three dark claws along the paw's front
         for j, dx in enumerate((-0.012, 0.0, 0.012)):
             b = np.array((LEG_X + 0.003 + dx, y - 0.038, 0.008))
-            k.add(f"{nm}claw{j}", hull([b + (0.004, 0.006, 0.004), b + (-0.004, 0.006, 0.004), b + (0.004, 0.006, -0.004),
-                                        b + (-0.004, 0.006, -0.004), b + (0, -0.008, -0.005)]), CLAW, bone,
+            k.add(f"{nm}claw{j}", hull([b + (0.006, 0.006, 0.005), b + (-0.006, 0.006, 0.005), b + (0.006, 0.006, -0.005),
+                                        b + (-0.006, 0.006, -0.005), b + (0, -0.009, -0.005)]), CLAW, bone,
                   fuse=False, mirror=True, surface="shell")
 
 
@@ -112,7 +112,7 @@ def add_bell(k):
 def add_fangs(k, at):
     for s in (1, -1):
         b = at + np.array([s * 0.0085, -0.002, 0.0])
-        k.add("fang" + ("R" if s > 0 else "L"), hull([b + (0.0035, 0, 0.002), b + (-0.0035, 0, 0.002), b + (0, 0.003, 0.002),
+        k.add("fang" + ("R" if s > 0 else "L"), hull([b + (0.0045, 0, 0.002), b + (-0.0045, 0, 0.002), b + (0, 0.0045, 0.002), b + (0, -0.0035, 0.002),
                                                       b + (0, -0.001, -0.007)]), WHITE, "head", fuse=False,
               surface="shell")
 

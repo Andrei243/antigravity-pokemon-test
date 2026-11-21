@@ -35,6 +35,8 @@ def shell(k):
     for i in range(8):
         a = math.radians(i * 45 + 8)
         L = 0.2 if i % 2 == 0 else 0.155
+        if math.sin(a) < -0.6:
+            L = min(L, 0.15)
         d = np.array([math.cos(a), 0, math.sin(a)])
         t = np.array([math.cos(a + 0.12), 0, math.sin(a + 0.12)])          # the tip turned: a pinwheel
         side = np.array([-math.sin(a), 0, math.cos(a)])

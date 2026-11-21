@@ -24,14 +24,14 @@ BLUE, ORANGE, WHITE = "#3CB4F0", "#E58A44", "#F2F2F4"
 MOUTH, TONGUE, NOSE = "#9E2420", "#F0743E", "#15151A"
 EYE_W, EYE_BLUE, EYE_INK = "#F6F8FA", "#2F93DE", "#101418"
 
-H = np.array([0.0, -0.035, 0.6])          # the head's centre
-HR = np.array([0.08, 0.074, 0.072])
-MC = np.array([0.0, -0.098, 0.576])       # the muzzle's
-MR = np.array([0.044, 0.04, 0.034])
+H = np.array([0.0, -0.035, 0.606])          # the head's centre
+HR = np.array([0.09, 0.083, 0.081])
+MC = np.array([0.0, -0.108, 0.578])       # the muzzle's
+MR = np.array([0.048, 0.042, 0.036])
 SHOULDER = np.array([0.088, 0.0, 0.492])
-ELBOW = np.array([0.122, -0.028, 0.418])
-WRIST = np.array([0.104, -0.098, 0.338])
-FIST = np.array([0.096, -0.118, 0.312])
+ELBOW = np.array([0.128, -0.03, 0.43])
+WRIST = np.array([0.108, -0.105, 0.39])
+FIST = np.array([0.098, -0.13, 0.372])
 
 
 def on_ell(c, r, d):
@@ -58,40 +58,40 @@ def spike(base, d, length, w, t, up=(0, 0, 1)):
 def add_head(k):
     k.add("head", ell(H, HR), YELLOW, "head")
     k.add("muzzle", ell(MC, MR, rot=(-8, 0, 0)), FACE, "head")
-    k.add("jowl", ell((0, -0.06, 0.556), (0.056, 0.05, 0.034)), YELLOW, "head")
+    k.add("jowl", ell((0, -0.068, 0.556), (0.062, 0.054, 0.036)), YELLOW, "head")
     # the face dark from the brow down to the muzzle, the yellow framing it at the sides and the top
     def face(P):
         q = P - H
         a = np.arctan2(q[:, 0], -q[:, 1])
         top = H[2] + 0.02 - 0.03 * (np.abs(a) / 0.9) ** 2
         return inside(P[:, 2] - top, 0.003) * inside(np.abs(a) - 0.9, 0.04) * (q[:, 1] < -0.02) \
-            * inside(H[2] - 0.062 - P[:, 2], 0.004)
-    k.paint(face, FACE, on=["head", "jowl"])
+            * inside(0.528 - P[:, 2], 0.004)
+    k.paint(face, FACE, on=["head", "jowl", "muzzle"])
     # the spiky yellow locks hanging over the brow
     for x, d, ln in ((0.0, (0, -0.55, -0.83), 0.05), (0.03, (0.25, -0.6, -0.76), 0.042),
                      (-0.03, (-0.25, -0.6, -0.76), 0.042)):
-        k.add(f"lock{x:+.2f}", spike((x, -0.072, 0.646), d, ln, 0.03, 0.022), YELLOW, "head", fuse=False)
+        k.add(f"lock{x:+.2f}", spike((x, -0.084, 0.664), d, ln * 1.1, 0.032, 0.024), YELLOW, "head", fuse=False)
     # spiky mane behind and beside the head
-    for x, y, z, d, ln in ((0.0, 0.03, 0.66, (0, 0.7, 0.5), 0.07), (0.05, 0.03, 0.64, (0.5, 0.7, 0.2), 0.065),
-                           (-0.05, 0.03, 0.64, (-0.5, 0.7, 0.2), 0.065), (0.0, 0.04, 0.6, (0, 0.85, -0.3), 0.07),
-                           (0.07, -0.01, 0.57, (0.85, 0.2, -0.5), 0.05), (-0.07, -0.01, 0.57, (-0.85, 0.2, -0.5), 0.05)):
+    for x, y, z, d, ln in ((0.0, 0.035, 0.672, (0, 0.7, 0.5), 0.07), (0.055, 0.035, 0.652, (0.5, 0.7, 0.2), 0.065),
+                           (-0.055, 0.035, 0.652, (-0.5, 0.7, 0.2), 0.065), (0.0, 0.048, 0.605, (0, 0.85, -0.3), 0.07),
+                           (0.08, -0.01, 0.572, (0.85, 0.2, -0.5), 0.05), (-0.08, -0.01, 0.572, (-0.85, 0.2, -0.5), 0.05)):
         k.add(f"mane{x:+.2f}{z}", spike((x, y, z), d, ln, 0.04, 0.026), YELLOW, "head", fuse=False)
     # black pointed ears with orange insides
-    k.add("ear", hull([(0.03, 0.006, 0.648), (0.066, 0.008, 0.64), (0.046, 0.024, 0.65), (0.048, -0.008, 0.65),
-                       (0.072, 0.006, 0.722)]), BLACK, "head", fuse=False, mirror=True)
-    k.add("earin", hull([(0.04, -0.008, 0.658), (0.06, -0.006, 0.655), (0.051, 0.002, 0.66), (0.067, -0.002, 0.704),
-                         (0.05, -0.012, 0.662)]), ORANGE, "head", fuse=False, mirror=True)
+    k.add("ear", hull([(0.032, 0.006, 0.664), (0.072, 0.008, 0.654), (0.05, 0.026, 0.664), (0.052, -0.01, 0.664),
+                       (0.08, 0.006, 0.742)]), BLACK, "head", fuse=False, mirror=True)
+    k.add("earin", hull([(0.043, -0.011, 0.672), (0.065, -0.009, 0.668), (0.055, 0.0, 0.674), (0.074, -0.004, 0.722),
+                         (0.054, -0.015, 0.676)]), ORANGE, "head", fuse=False, mirror=True)
     # a great blue crescent rising beside each side of the head, curving forward over the face's edge
-    cres = [(0.0, 0.0), (0.024, 0.026), (0.036, 0.058), (0.034, 0.09), (0.02, 0.118), (0.008, 0.128),
-            (0.012, 0.1), (0.012, 0.07), (0.002, 0.04), (-0.016, 0.018)]
+    cres = [(0.0, 0.0), (0.035, 0.03), (0.055, 0.07), (0.055, 0.11), (0.04, 0.145), (0.02, 0.165), (0.022, 0.13),
+            (0.028, 0.1), (0.022, 0.065), (0.005, 0.035), (-0.015, 0.015)]
     n = unit(0.85, -0.45, 0.0)
     ex = unit(-0.45, -0.85, 0.0)
-    k.add("crescent", slab(cres, (0.074, -0.012, 0.572), ex, (0, 0, 1), 0.022), BLUE, "head", fuse=False,
+    k.add("crescent", slab(cres, (0.08, -0.05, 0.548), ex, (0, 0, 1), 0.024), BLUE, "head", fuse=False,
           mirror=True, surface="shell")
     # a blue bolt of a whisker out from each cheek
     bolt = [(0.0, 0.008), (0.03, 0.013), (0.026, 0.003), (0.056, 0.006), (0.024, -0.012), (0.028, -0.002),
             (0.0, -0.008)]
-    k.add("whisker", slab(bolt, (0.05, -0.072, 0.562), unit(1, 0.35, -0.15), (0, 0, 1), 0.021), BLUE, "head",
+    k.add("whisker", slab(bolt, (0.07, -0.08, 0.556), unit(1, 0.35, -0.15), (0, 0, 1), 0.021), BLUE, "head",
           fuse=False, mirror=True, surface="shell")
     # the nose, and the open mouth: one shape, dark red with an orange tongue
     k.paint(lambda P: inside(np.linalg.norm((P - (MC + (0, -0.036, 0.016))) / (1, 1.6, 1), axis=1) - 0.011, 0.002),
@@ -113,7 +113,7 @@ def add_body(k):
     k.add("hips", ell((0, 0.008, 0.33), (0.07, 0.058, 0.05)), BLACK, "body")
     # the spiky yellow ruff round the neck and over the shoulders
     k.add("ruff", ell((0, 0.004, 0.528), (0.08, 0.068, 0.03), deform=lumpy(6, 1, 0.18)), YELLOW, "body")
-    k.add("tuft", ell(SHOULDER + (0.002, 0, 0.006), (0.048, 0.05, 0.046)), YELLOW, "arm{s}", mirror=True)
+    k.add("tuft", ell(SHOULDER + (0.0, 0, 0.004), (0.04, 0.042, 0.04)), YELLOW, "arm{s}", mirror=True)
     for d, ln in (((0.5, 0.2, 0.84), 0.05), ((0.9, 0.1, -0.1), 0.045), ((0.3, 0.75, 0.3), 0.045)):
         k.add(f"tuftspike{d[2]}", spike(SHOULDER + np.array(d) * 0.03, d, ln, 0.034, 0.024), YELLOW, "arm{s}",
               fuse=False, mirror=True)
@@ -135,10 +135,10 @@ def add_arms(k):
     def bolt(P):
         x = np.abs(P[:, 0])
         t = (P[:, 2] - WRIST[2]) / (ELBOW[2] - WRIST[2])
-        line = 0.125 + 0.008 * tri(t * 2.2)
+        line = 0.15 + 0.008 * tri(t * 2.2)
         return inside(np.abs(x - line) - 0.006, 0.002) * (t > 0.15) * (t < 0.85) * inside(P[:, 1] + 0.03, 0.01) \
-            * inside(-0.09 - P[:, 1], 0.01) * (x > 0.11)
-    k.paint(bolt, BLACK, on=["fore"])
+            * inside(-0.11 - P[:, 1], 0.01) * (x > 0.13)
+    pass
     # white claws curling down from the fist's front
     for i, t in enumerate((-1, 0, 1)):
         base = FIST + np.array([0.018 * t, -0.03, -0.024])
@@ -148,18 +148,18 @@ def add_arms(k):
     for side in (1, -1):
         m = np.array([side, 1, 1.0])
         k.decal(FIST * m + np.array([0, -0.043, 0.0]), (0, -1, 0), (0.024, 0.022), BLUE, eps=0.003, rings=10, segs=40)
-        k.decal((0.088 * side, -0.07, 0.37), unit(-0.5 * side, -0.85, 0.1), (0.011, 0.011), BLUE, eps=0.003,
+        k.decal((0.082 * side, -0.07, 0.41), unit(-0.6 * side, -0.8, 0.1), (0.011, 0.011), BLUE, eps=0.003,
                 rings=8, segs=36)
 
 
 def add_legs(k):
     # great yellow haunches fused into the hips, fur spiking at the knees; black shins and feet
-    k.add("thigh", ell((0.066, -0.012, 0.272), (0.064, 0.07, 0.088)), YELLOW, "leg{s}", mirror=True)
-    k.add("shin", tube([(0.07, -0.02, 0.215), (0.074, -0.004, 0.13), (0.072, 0.008, 0.055)], [0.036, 0.031, 0.028]),
+    k.add("thigh", ell((0.064, -0.014, 0.258), (0.06, 0.068, 0.1)), YELLOW, "leg{s}", mirror=True)
+    k.add("shin", tube([(0.07, -0.02, 0.2), (0.074, -0.004, 0.12), (0.072, 0.008, 0.055)], [0.04, 0.035, 0.031]),
           BLACK, "leg{s}", mirror=True)
     k.add("foot", ell((0.072, -0.03, 0.026), (0.036, 0.058, 0.026)), BLACK, "leg{s}", mirror=True)
     for i, (x, d) in enumerate(((0.06, (-0.3, -0.5, -0.8)), (0.09, (0.4, -0.5, -0.8)), (0.075, (0, -0.7, -0.7)))):
-        k.add(f"knee{i}", spike((x, -0.06, 0.22), d, 0.045, 0.034, 0.024), YELLOW, "leg{s}", fuse=False, mirror=True)
+        k.add(f"knee{i}", spike((x, -0.066, 0.192), d, 0.045, 0.034, 0.024), YELLOW, "leg{s}", fuse=False, mirror=True)
     for i, t in enumerate((-1, 0, 1)):
         k.add(f"toe{i}", spike((0.072 + 0.016 * t, -0.08, 0.016), (0.1 * t, -1, -0.35), 0.026, 0.02, 0.021), WHITE,
               "leg{s}", fuse=False, mirror=True, surface="shell")
@@ -170,7 +170,7 @@ def add_legs(k):
         a = np.arctan2(q[:, 0], -q[:, 1])
         z = P[:, 2]
         path = 0.75 + 0.32 * tri((z - 0.2) * 9)
-        return inside(np.abs(a - path) * 0.066 - 0.008, 0.002) * (z > 0.215) * (z < 0.34)
+        return inside(np.abs(a - path) * 0.066 - 0.008, 0.002) * (z > 0.2) * (z < 0.34)
     k.paint(bolt, BLACK, on=["thigh"])
 
 

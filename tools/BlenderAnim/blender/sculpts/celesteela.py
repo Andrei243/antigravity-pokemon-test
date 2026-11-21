@@ -28,9 +28,9 @@ APRON_GREY, APRON_GREEN, APRON_HEM, PANEL = "#9CB2A4", "#B6E0A2", "#D8E696", "#E
 # --- the frame --------------------------------------------------------------------------------------------------------
 BELL = [(0.0, 0.15), (0.2, 0.15), (0.21, 0.2), (0.195, 0.32), (0.16, 0.44), (0.115, 0.55), (0.075, 0.65),
         (0.046, 0.73), (0.0, 0.76)]                  # (radius, height) of the bell's dark inside
-HEAD_C, HEAD_R = np.array([0.0, 0.0, 0.775]), np.array([0.05, 0.048, 0.042])
-EYE_X, EYE_Z, EYE_HALF = 0.019, 0.786, 0.0115
-SHAFT_B, SHAFT_T, SHAFT_R = np.array([0.29, -0.03, 0.37]), np.array([0.135, 0.02, 0.925]), 0.056
+HEAD_C, HEAD_R = np.array([0.0, 0.0, 0.775]), np.array([0.056, 0.052, 0.046])
+EYE_X, EYE_Z, EYE_HALF = 0.021, 0.787, 0.0128
+SHAFT_B, SHAFT_T, SHAFT_R = np.array([0.315, -0.03, 0.37]), np.array([0.115, 0.02, 0.925]), 0.056
 
 
 def bell_r(z):
@@ -45,7 +45,7 @@ def bell(k):
     # the cloak: a sheet round the bell, open in front, the opening narrowing to the head
     def at(u, v):
         z = 0.2 + v * 0.555
-        half = np.radians(14 + 34 * (1 - v) ** 1.2)        # the opening's half angle
+        half = np.radians(22 + 30 * (1 - v) ** 1.2)        # the opening's half angle
         th = half + u * (2 * math.pi - 2 * half)
         r = np.array([bell_r(zz) for zz in z.ravel()]).reshape(z.shape) + 0.014
         return np.stack([r * np.sin(th), -r * np.cos(th), z], axis=-1)
@@ -56,7 +56,7 @@ def bell(k):
         pts = []
         for v in np.linspace(0.0, 1.0, 9):
             z = 0.2 + v * 0.555
-            half = math.radians(14 + 34 * (1 - v) ** 1.2) + 0.03
+            half = math.radians(22 + 30 * (1 - v) ** 1.2) + 0.03
             r = bell_r(z) + 0.02
             pts.append((s * r * math.sin(half), -r * math.cos(half), z))
         k.add(f"rim{'R' if s > 0 else 'L'}", outward(tube(pts, [0.011] * len(pts), seg=10)), RIM, "body", fuse=False)
@@ -65,18 +65,22 @@ def bell(k):
 def aprons(k):
     """Layered aprons over the bell's foot: grey on the left, light green on the right, yellow-green at the hem, and a
     white panel down the middle."""
-    def wrap(a0, a1, z0, z1, grow, folds=0.0):
+    def wrap(a0, a1, z0, z1, grow, folds=0.0, dip=0.0, at_u=0.5):
+        """A drape round the bell from angle a0 to a1, between heights z0 and z1; dip draws its hem down to a point
+        at the share at_u of its width, and its top edge falls the same toward its sides."""
         def at(u, v):
             th = np.radians(a0 + u * (a1 - a0))
-            z = z1 - v * (z1 - z0)
+            w = 1 - np.abs(u - at_u) / max(at_u, 1 - at_u)
+            top = z1 - dip * 0.6 * (1 - w)
+            z = top - v * (top - (z0 - dip * w))
             r = np.array([bell_r(zz) for zz in z.ravel()]).reshape(z.shape) + grow + 0.02 * v
             r = r + folds * np.abs(np.sin(th * 9))
             return np.stack([r * np.sin(th), -r * np.cos(th), z], axis=-1)
         return outward(sheet(at, 40, 12, 0.01))
     k.add("panel", wrap(-22, 22, 0.13, 0.5, 0.012), PANEL, "body", fuse=False)
-    k.add("apronhem", wrap(-75, 75, 0.1, 0.24, 0.05), APRON_HEM, "body", fuse=False)
-    k.add("aprongreen", wrap(8, 70, 0.17, 0.4, 0.036), APRON_GREEN, "body", fuse=False)
-    k.add("aprongrey", wrap(-72, -6, 0.2, 0.47, 0.042, folds=0.006), APRON_GREY, "body", fuse=False)
+    k.add("apronhem", wrap(-62, 62, 0.13, 0.2, 0.034, dip=0.03), APRON_HEM, "body", fuse=False)
+    k.add("aprongreen", wrap(8, 70, 0.2, 0.4, 0.036, dip=0.05, at_u=0.35), APRON_GREEN, "body", fuse=False)
+    k.add("aprongrey", wrap(-72, -6, 0.24, 0.47, 0.042, folds=0.006, dip=0.06, at_u=0.7), APRON_GREY, "body", fuse=False)
     # the panel's lattice: a few darker diagonal laths, one piece
     # thrusters under the hem
     for i in range(5):

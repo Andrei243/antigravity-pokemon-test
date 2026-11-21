@@ -160,7 +160,7 @@ def oranguru(src, out):
 
     # The cape: a purple mantle over the back and shoulders, wavy lobes falling down and back at both sides
     k.add("mantle", ell((0, 0.06, 0.46), (0.2, 0.13, 0.11), deform=fur(0.05, 7, 3)), PURPLE, "body")
-    k.add("cloak", ell((0, 0.12, 0.33), (0.18, 0.08, 0.15), deform=fur(0.04, 7, 3)), PURPLE, "body")
+    k.add("cloak", ell((0, 0.12, 0.3), (0.185, 0.09, 0.185), deform=fur(0.04, 7, 3)), PURPLE, "body")
     k.add("nape", ell((0, 0.0, 0.53), (0.13, 0.1, 0.08)), PURPLE, "body")
     LOCKS = []
     for s in (1, -1):
@@ -205,12 +205,12 @@ def oranguru(src, out):
     CB, CK = srgb(BLUE), srgb(BLACK)
     def cheek(u, v):
         c = np.tile(CB, (len(u), 1))
-        c[(v < 0.52) & (np.abs(u) < 0.7) & (v > -0.8)] = CK
+        c[(u / 0.74) ** 2 + ((v + 0.14) / 0.74) ** 2 < 1] = CK
         return c
-    CHEEK_OUT = polygon([(-1, 0.85), (0, 1), (1, 0.85), (1, -0.3), (0.5, -0.95), (-0.5, -0.95), (-1, -0.3)])
+    CHEEK_OUT = polygon([(-1, 0.6), (-0.6, 0.95), (0, 1), (0.6, 0.95), (1, 0.6), (0.95, -0.4), (0.5, -0.95), (-0.5, -0.95), (-0.95, -0.4)])
     cn = unit(0.35, -0.93, -0.1)
-    CC = hit(HEAD, np.array([0.05, H[1], z0 - 0.045]) + cn * 0.4, -cn)
-    k.decal(CC, cn, (0.02, 0.04), cheek, outline=CHEEK_OUT, eps=0.0025, rings=22, segs=56, mirror=True)
+    CC = hit(HEAD, np.array([0.032, H[1], z0 - 0.038]) + cn * 0.4, -cn)
+    k.decal(CC, cn, (0.026, 0.036), cheek, outline=CHEEK_OUT, eps=0.0025, rings=22, segs=56, mirror=True)
 
     # The yellow four-pointed star on the hood's brow
     STARP = []
@@ -249,7 +249,7 @@ def oranguru(src, out):
         look = eye_look(state, open_look, srgb(GREY), srgb(INK), line=0.18)
         k.decal(E, de, (0.03, 0.026), look, outline=polygon(OUT), eps=0.003, rings=20, segs=56, mirror=True)
 
-    fan(k, "armL")
+    fan(k, "body")
     k.build(voxel=0.0069, smooth=3, band=0.004, wband=0.05)
     k.eye_states(lay)
     k.export(out)

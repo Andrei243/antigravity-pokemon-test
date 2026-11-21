@@ -88,8 +88,8 @@ def body(k):
         k.add("arm" + sd, tube([(0.026 * s, -0.11, 0.262), (0.045 * s, -0.135, 0.235), (0.04 * s, -0.16, 0.215)],
                                [0.011, 0.01, 0.009]), PURPLE, "arm" + sd)
         for j, dz in enumerate((0.012, -0.012)):
-            k.add(f"pincer{j}" + sd, spike((0.04 * s, -0.162, 0.215 + dz * 0.4), (0.15 * s, -1, dz * 3), 0.032, 0.008,
-                                           0.006, up=(1, 0, 0)), MAGENTA, "arm" + sd, fuse=False, surface="shell")
+            k.add(f"pincer{j}" + sd, spike((0.04 * s, -0.162, 0.215 + dz * 0.4), (0.15 * s, -1, dz * 3), 0.036, 0.012,
+                                           0.009, up=(1, 0, 0)), MAGENTA, "arm" + sd, fuse=False, surface="shell")
 
 
 def head(k):

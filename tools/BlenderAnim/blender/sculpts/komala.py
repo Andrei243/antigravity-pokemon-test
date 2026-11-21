@@ -21,8 +21,8 @@ BLUE, PEACH, WHITE, BELLY = "#9DBEDF", "#F4C59A", "#F4F6F8", "#E2ECF4"
 NOSE, INK, MOUTH, LIP = "#45495A", "#2A2C36", "#E8939A", "#5A3A44"
 BARK, BARK_D, CUT, RING, KNOT, CLAW = "#8A5E3E", "#6E4A30", "#E2CFA4", "#B99A6E", "#4A3424", "#3C3E48"
 
-HC = np.array([0.0, -0.02, 0.29])            # the head's middle (its bone is at 0, -0.01, 0.23)
-HR = np.array([0.108, 0.092, 0.1])
+HC = np.array([0.0, -0.02, 0.283])            # the head's middle (its bone is at 0, -0.01, 0.23)
+HR = np.array([0.116, 0.099, 0.107])
 LOG_C = np.array([-0.1, -0.14, 0.145])        # the log's middle, its axis and half length, its radius
 LOG_D = unit(-0.55, -0.12, 0.82)
 LOG_H, LOG_R = 0.12, 0.054
@@ -104,7 +104,7 @@ def komala(src, out):
             c = HC + np.array([(0.083 + dx) * s, -0.06 + dy, -0.045 + dz])
             k.add(f"puff{'R' if s > 0 else 'L'}{j}", ell(c, (r, r, r)), WHITE, "head")
     for j, x in enumerate((-0.036, -0.018, 0.0, 0.018, 0.036)):
-        k.add(f"bib{j}", ell((x, -0.082 + 0.012 * abs(x) / 0.036, 0.198 - 0.006 * (j % 2)), (0.017, 0.014, 0.015)),
+        k.add(f"bib{j}", ell((x, -0.094 + 0.012 * abs(x) / 0.036, 0.19 - 0.006 * (j % 2)), (0.017, 0.014, 0.015)),
               WHITE, "body")
 
     # Great round ears at the crown's corners, turned 30 degrees out so their faces show; peach low and inward
