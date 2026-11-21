@@ -13,9 +13,11 @@ partial class Harness
         foreach (var species in list)
         {
             var model = PokemonModels.Get(species);
-            string file = Path.Combine(folder, species + ".glb");
+            // a name is a file's without what a file's name may not hold (Type: Null's colon)
+            string name = string.Concat(species.Where(c => !"<>:\"/\\|?*".Contains(c)));
+            string file = Path.Combine(folder, name + ".glb");
             GltfWriter.Save(model, file);
-            Console.WriteLine($"wrote models/{species}.glb ({new FileInfo(file).Length / 1024} KB)");
+            Console.WriteLine($"wrote models/{name}.glb ({new FileInfo(file).Length / 1024} KB)");
         }
     }
 }

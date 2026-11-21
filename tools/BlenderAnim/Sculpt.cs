@@ -19,6 +19,13 @@ internal static class Sculpt
     public static string KeyOf(string species) =>
         new(species.Replace("♀", "F").Replace("♂", "M").ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray());
 
+    /// <summary>
+    /// A species' name as its built file's: what a file's name may not hold left out (Type: Null's colon, which on
+    /// Windows would make a file called "Type" with the model hidden in a stream of it). The game finds a model file by
+    /// the letters and digits of its name, so the file still answers to its species.
+    /// </summary>
+    public static string FileOf(string species) => string.Concat(species.Where(c => !"<>:\"/\\|?*".Contains(c)));
+
     /// <summary>The script that sculpts a species (<see cref="KeyOf"/>).</summary>
     public static string ScriptOf(string species) =>
         Path.Combine(AppContext.BaseDirectory, "blender", "sculpts", KeyOf(species) + ".py");
@@ -91,7 +98,8 @@ internal static class Sculpt
             foreach (string s in species)
             {
                 var clock = Stopwatch.StartNew();
-                string export = Path.Combine(work, s + ".export.glb"), first = Path.Combine(work, s + ".1.glb"), second = Path.Combine(work, s + ".2.glb");
+                string name = FileOf(s);
+                string export = Path.Combine(work, name + ".export.glb"), first = Path.Combine(work, name + ".1.glb"), second = Path.Combine(work, name + ".2.glb");
                 Export(s, export);
                 string said = Build(blender, ScriptOf(s), export, first);
                 Build(blender, ScriptOf(s), export, second);
@@ -101,13 +109,13 @@ internal static class Sculpt
                     failed++;
                     continue;
                 }
-                string file = Path.Combine(target, s + ".glb");
+                string file = Path.Combine(target, name + ".glb");
                 File.Copy(first, file, overwrite: true);
                 // In a worktree the main checkout gets the file too: that is where the game is played from
                 if (outDir == null && MainCheckout(root!) is { } main)
                 {
                     Directory.CreateDirectory(Path.Combine(main, "built", "models"));
-                    File.Copy(first, Path.Combine(main, "built", "models", s + ".glb"), overwrite: true);
+                    File.Copy(first, Path.Combine(main, "built", "models", name + ".glb"), overwrite: true);
                 }
                 var asset = GltfReader.Read(file);
                 var eyes = asset.Nodes.Select(n => ImportedModels.EyesOf(n.Name)).Where(e => e != null).Select(e => e!.Value).Distinct().OrderBy(e => e).ToList();
