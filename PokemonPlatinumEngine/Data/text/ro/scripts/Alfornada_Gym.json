@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Alfornada Gym! Tulip's test is a photo session in her studio. Her photographer calls a mood; you strike the pose that fits."
+      ],
+      "text": [
+        "Bine ai venit la Sala din Alfornada! Proba lui Tulip e o ședință foto în studioul ei. Fotograful spune o stare, iar tu iei poza potrivită."
+      ]
+    },
+    {
+      "en": [
+        "Don't overthink it. The camera can tell."
+      ],
+      "text": [
+        "Nu te gândi prea mult. Aparatul își dă seama."
+      ]
+    },
+    {
+      "en": [
+        "The Psychic Badge! Tulip pinned your photo on the studio wall. That almost never happens."
+      ],
+      "text": [
+        "Insigna Psihică! Tulip ți-a prins fotografia pe peretele studioului. Asta nu se întâmplă aproape niciodată."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Tulip's Psychic types fear Bug, Ghost and Dark moves. Her last one Terastallizes, so keep something in reserve."
+      ],
+      "text": [
+        "Pokémonii de tip Psihic ai lui Tulip se tem de atacurile de tip Insectă, Fantomă și Întuneric. Ultimul ei se Terastalizează, așa că păstrează ceva în rezervă."
+      ]
+    },
+    {
+      "en": [
+        "You beat Tulip! She said you had a striking presence. High praise, from her."
+      ],
+      "text": [
+        "Ai învins-o pe Tulip! A zis că ai o prezență impresionantă. Mare laudă, din partea ei."
+      ]
+    }
+  ]
+}

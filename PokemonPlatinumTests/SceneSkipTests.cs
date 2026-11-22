@@ -1119,6 +1119,9 @@ public class SceneSkipTests
         // Plan 34 · PD6: Kofu's auction on Porto Marinada's quay, an open place's person, played both ways by
         // PaldeaWestTests.TheAuctionPlayedAndSkippedLeavesTheSame
         "porto_marinada.The auction",
+        // Plan 34 · PD6, its second session: Grusha's snowslope run, begun by the coach at the top (an open place's person)
+        // and ended at the line (an open place's trigger), played both ways by PaldeaNorthTests.TheRunsScenesPlayedAndSkippedLeaveTheSame
+        "glaseado_mountain.Grusha's snowslope run", "glaseado_mountain.The end of the snowslope run",
     };
 
     /// <summary>What waited for the player on a way through a script, in order: the battles and the screens the host's log names.</summary>

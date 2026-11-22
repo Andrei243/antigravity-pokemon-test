@@ -1,8 +1,8 @@
 # Lurking Steel (plan 34 · PD4, its second session): the third Titan of the Path of Legends, Orthworm, met as it bursts
-# out of the sand in the cutting east off the East Province's first area, beaten and chased to its den on the ledge at the
+# out of the sand in the cutting east off the East Province's third area, beaten and chased to its den on the ledge at the
 # cutting's end, beaten again there once the Herba Mystica has made it bigger, and the herbs it left shared with the
-# mount, which can leap again. A stand-in for the original's place in the East Province's third area, until plan 34 ·
-# PD6 builds it. VAR_PALDEA_LEGENDS (stony_cliff.txt's header has the whole count) goes on:
+# mount, which can leap again. A stand-in until plan 34 · PD6's second session moved it to the cutting east off the East
+# Province's third area, north of Levincia (places/lurking_steel.json). VAR_PALDEA_LEGENDS (stony_cliff.txt's header has the whole count) goes on:
 #   5  the Titan Bombirdier beaten: the Titan Orthworm lurks in the cutting
 #   6  the Titan Orthworm beaten in the cutting and fled to its den (FLAG_PALDEA_ORTHWORM_FLED)
 #   7  the Titan Orthworm beaten at its den (FLAG_PALDEA_ORTHWORM_BEATEN), its herbs shared: the mount leaps high

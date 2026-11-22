@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Story;
@@ -1263,6 +1263,11 @@ public static class RegionDatabase
                 "Cascarrafa_PokemonCenter", "Cascarrafa_Gym", "Cascarrafa_GymTest",
                 "PortoMarinada_PokemonCenter",
                 "Medali_PokemonCenter", "Medali_Gym", "Medali_GymTest", "Medali_TreasureEatery",
+                // Plan 34 · PD6, its second session: the last three gyms' towns, each a Pokémon Center, a gym and its hall
+                // (Montenevera's concert hall, Alfornada's studio, Glaseado's hall at the mountain's top)
+                "Montenevera_PokemonCenter", "Montenevera_Gym", "Montenevera_GymTest",
+                "Alfornada_PokemonCenter", "Alfornada_Gym", "Alfornada_GymTest",
+                "Glaseado_PokemonCenter", "Glaseado_Gym", "Glaseado_GymTest",
             }
         },
         // Side regions stand after the chain (plan 23 · Z17)

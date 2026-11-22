@@ -1,0 +1,76 @@
+{
+  "Leader": [
+    {
+      "en": [
+        "Grusha"
+      ],
+      "text": [
+        "Grusha"
+      ]
+    },
+    {
+      "en": [
+        "You finished the run. Clean lines, too. I'm Grusha. I used to ride that slope for a living, before I kept this gym."
+      ],
+      "text": [
+        "Ai terminat coborârea. Și curat, pe deasupra. Sunt Grusha. Coboram pârtia aia ca meserie, înainte să conduc sala asta."
+      ]
+    },
+    {
+      "en": [
+        "My Ice types don't do warm welcomes. Let's get this over with before the snow gets in."
+      ],
+      "text": [
+        "Pokémonii mei de tip Gheață nu fac primiri călduroase. Hai să terminăm înainte să intre zăpada."
+      ]
+    },
+    {
+      "en": [
+        "...Huh. That actually warmed me up. Here. The Ice Badge. You've earned it."
+      ],
+      "text": [
+        "...Hm. Chiar m-a încălzit. Poftim. Insigna Gheții. Ai meritat-o."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Ice Badge from Grusha!"
+      ],
+      "text": [
+        "{player} a primit Insigna Gheții de la Grusha!"
+      ]
+    },
+    {
+      "en": [
+        "Don't let the cold get to you on the way down. It's a long way to the bottom."
+      ],
+      "text": [
+        "Nu lăsa frigul să te răzbească la coborâre. E cale lungă până jos."
+      ]
+    },
+    {
+      "en": [
+        "The run first. The coach outside will set you off. Three gates, in order. I'll know if you skip one."
+      ],
+      "text": [
+        "Întâi coborârea. Antrenorul de afară îți dă startul. Trei porți, în ordine. O să știu dacă sari peste una."
+      ]
+    },
+    {
+      "en": [
+        "Not a student at the academy? Then go back down the mountain. I don't battle outside the rules."
+      ],
+      "text": [
+        "Nu ești elev la academie? Atunci coboară de pe munte. Nu mă lupt în afara regulamentului."
+      ]
+    },
+    {
+      "en": [
+        "You again. The badge is yours already. Go and get warm somewhere."
+      ],
+      "text": [
+        "Iar tu. Insigna e deja a ta. Du-te și încălzește-te undeva."
+      ]
+    }
+  ]
+}

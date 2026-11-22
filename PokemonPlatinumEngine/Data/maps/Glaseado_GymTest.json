@@ -1,0 +1,126 @@
+{
+  "name": "Glaseado_GymTest",
+  "displayName": "Glaseado Gym",
+  "bgmTrack": "paldea/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Ice",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Glaseado_Gym",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "paldea_gym_trainer_yuki",
+      "name": "Yuki",
+      "npcType": "boarder",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "paldea_gym_trainer_yuki",
+        "name": "Yuki",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Yuki: You finished the run? Then you're warmed up. Let's keep it that way!",
+        "dialogueAfter": "Gym Trainer Yuki: Cool head, cold hands, good battle. Grusha's at the far end.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "grusha",
+      "name": "Grusha",
+      "npcType": "grusha",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Leader"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,0 +1,41 @@
+{
+  // The North Province's first area (plan 34 · PD6, its second session): the road north out of Medali between the hills
+  // to the foot of Glaseado Mountain, its long grass along the west side, the mouth of Casseroya Lake's hollow on the
+  // east, a student on the way and a hiker who knows the mountain
+  "markers": [
+    { "name": "north_one_south", "at": [-100, 12.0, -726], "yaw": 0 },
+    { "name": "north_one_middle", "at": [-100, 12.0, -812], "yaw": 0 },
+    { "name": "north_one_north", "at": [-100, 12.0, -892], "yaw": 0 }
+  ],
+  "zones": [
+    {
+      "name": "north_one_grass",
+      "polygon": [[-136, -880], [-112, -880], [-112, -780], [-136, -780]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Snom", "minLevel": 36, "maxLevel": 40, "weight": 25 },
+        { "species": "Cetoddle", "minLevel": 36, "maxLevel": 40, "weight": 20 },
+        { "species": "Swablu", "minLevel": 36, "maxLevel": 39, "weight": 20 },
+        { "species": "Bergmite", "minLevel": 36, "maxLevel": 40, "weight": 20 },
+        { "species": "Greavard", "minLevel": 36, "maxLevel": 40, "weight": 15, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "student_marta", "at": [-118, 12.0, -840], "yaw": 90, "trainer": "paldea_student_marta",
+      "lines": ["My breath's turning to clouds already. A battle will warm us both up!", "Well, I'm warm now. Mostly from embarrassment."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "north_one_hiker", "at": [-84, 12.0, -760], "yaw": 180, "look": "hiker", "displayName": "Hiker",
+      "lines": ["North is Glaseado Mountain, with the gym on its very top. East along its foot you'll come to Montenevera. And that hollow to the east holds Casseroya Lake."]
+    }
+  ],
+  "trees": [
+    { "at": [-70, -740], "kind": "pine", "size": 0.9 },
+    { "at": [-72, -870], "kind": "pine" },
+    { "at": [-132, -730], "kind": "pine", "size": 1.1 }
+  ]
+}

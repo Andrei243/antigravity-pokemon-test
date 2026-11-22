@@ -1,0 +1,142 @@
+{
+  "Coach": [
+    {
+      "en": [
+        "Coach"
+      ],
+      "text": [
+        "Antrenorul"
+      ]
+    },
+    {
+      "en": [
+        "Here for Grusha's test? It's the snowslope run. Three gates on the way down, pairs of little pines. Go through each, in order."
+      ],
+      "text": [
+        "Ai venit pentru proba lui Grusha? E coborârea pe pârtie. Trei porți la vale, perechi de brazi mici. Treci prin fiecare, în ordine."
+      ]
+    },
+    {
+      "en": [
+        "Then cross the line at the bottom. Miss a gate and you'll have to come back up and start again."
+      ],
+      "text": [
+        "Apoi treci linia de jos. Dacă ratezi o poartă, trebuie să urci înapoi și s-o iei de la capăt."
+      ]
+    },
+    {
+      "en": [
+        "Ready to start the run?"
+      ],
+      "text": [
+        "Gata de start?"
+      ]
+    },
+    {
+      "en": [
+        "The coach raised a flag and brought it down. The run had begun!"
+      ],
+      "text": [
+        "Antrenorul a ridicat un steag și l-a coborât. Coborârea a început!"
+      ]
+    },
+    {
+      "en": [
+        "Go, go, go! The first gate's down the slope to your left!"
+      ],
+      "text": [
+        "Hai, hai, hai! Prima poartă e la vale, în stânga ta!"
+      ]
+    },
+    {
+      "en": [
+        "Take your time. The slope's not going anywhere."
+      ],
+      "text": [
+        "Nu te grăbi. Pârtia nu pleacă nicăieri."
+      ]
+    },
+    {
+      "en": [
+        "The run's for academy students taking the gym challenge. Come back once you're enrolled."
+      ],
+      "text": [
+        "Coborârea e pentru elevii academiei care fac provocarea sălilor. Revino după ce te înscrii."
+      ]
+    },
+    {
+      "en": [
+        "You finished the run. Grusha's waiting in the gym. And yes, I saw that last turn. Very nice."
+      ],
+      "text": [
+        "Ai terminat coborârea. Grusha te așteaptă în sală. Și da, am văzut ultimul viraj. Foarte frumos."
+      ]
+    }
+  ],
+  "GateOne": [
+    {
+      "en": [
+        "Through the first gate!"
+      ],
+      "text": [
+        "Prin prima poartă!"
+      ]
+    }
+  ],
+  "GateTwo": [
+    {
+      "en": [
+        "Through the second gate!"
+      ],
+      "text": [
+        "Prin a doua poartă!"
+      ]
+    }
+  ],
+  "GateThree": [
+    {
+      "en": [
+        "Through the third gate! Now for the line at the bottom!"
+      ],
+      "text": [
+        "Prin a treia poartă! Acum spre linia de jos!"
+      ]
+    }
+  ],
+  "Finish": [
+    {
+      "en": [
+        "Across the line! A cheer drifted down from the top of the mountain."
+      ],
+      "text": [
+        "Peste linie! Din vârful muntelui a coborât un val de urale."
+      ]
+    },
+    {
+      "en": [
+        "Grusha's test is passed. Back up the slope to the gym!"
+      ],
+      "text": [
+        "Proba lui Grusha e trecută. Înapoi sus, pe pârtie, la sală!"
+      ]
+    }
+  ],
+  "Missed": [
+    {
+      "en": [
+        "Across the line... but a gate was missed. The run doesn't count."
+      ],
+      "text": [
+        "Peste linie... dar o poartă a fost ratată. Coborârea nu se pune."
+      ]
+    },
+    {
+      "en": [
+        "Head back up and ask the coach to start it again."
+      ],
+      "text": [
+        "Urcă înapoi și roagă-l pe antrenor s-o pornească din nou."
+      ]
+    }
+  ]
+}

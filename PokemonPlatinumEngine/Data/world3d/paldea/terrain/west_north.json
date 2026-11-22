@@ -1,0 +1,69 @@
+{
+  // The North Province, Glaseado Mountain and Alfornada (plan 34 · PD6, its second session), and the last two Titans'
+  // places moved out of their stand-ins (Lurking Steel to the East Province's third area, False Dragon to Casseroya Lake).
+  // Read after west.json (".json" sorts before "_north.json"), so its hills are laid over every earlier file's and its
+  // floors cut them. Our own land, from public descriptions of the places and memory of play, nothing traced, at PD1's,
+  // PD3's and PD6's compressed distances (docs/mechanics/rulings.md, "The North Province and the last three gyms"):
+  // - north out of Medali along the North Province's first area to the foot of Glaseado Mountain, a valley at the
+  //   ways' height under the mountain's south face; the mountain's snowslope climbs from the middle of the foot to its
+  //   top, where Glaseado's gym and Pokémon Center stand 40 m over the valley, shut in on its sides by crags too steep to
+  //   climb and higher than the top
+  // - east along the foot to Montenevera in the snow, and on east through the East Province's third area, south to
+  //   Levincia, with Lurking Steel's sandy cutting east off the third area
+  // - Casseroya Lake in its hollow east off the North Province's first area, False Dragon's
+  // - Alfornada west of Cortondo, through Alfornada Cavern, a tunnel cut through the hills between them (carve/alfornada.json)
+  // The bake keeps only the land the areas hold (world.json's bakeRing), so the hills' backs are never baked
+  "brushes": [
+    // The hills of the whole north, north of every place built before (the West Province's hills end at -800 and
+    // Levincia's at -864), and the hills between Medali and the East Province north of Starfall Street's
+    { "kind": "plateau", "name": "the North Province's hills", "polygon": [[-800, -1200], [596, -1200], [596, -804], [-800, -804]], "height": 40, "falloff": 4 },
+    { "kind": "plateau", "name": "the hills north-east of Medali", "polygon": [[-60, -804], [392, -804], [392, -584], [-60, -584]], "height": 40, "falloff": 4 },
+    // Glaseado's crags round the snowslope, higher than its top, so the slope's sides are walls and its top no ledge
+    { "kind": "plateau", "name": "Glaseado's crags", "polygon": [[-160, -1200], [250, -1200], [250, -940], [-160, -940]], "height": 72, "falloff": 4 },
+    // The ways' floors: the North Province's first area north out of Medali, the foot of the mountain east and west,
+    // Montenevera, and the East Province's third area north out of Levincia
+    { "kind": "plateau", "name": "the North Province's first area", "polygon": [[-140, -900], [-60, -900], [-60, -720], [-140, -720]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "Glaseado's foot", "polygon": [[-140, -940], [230, -940], [230, -900], [-140, -900]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "Montenevera", "polygon": [[230, -1000], [420, -1000], [420, -900], [230, -900]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the East Province's third area", "polygon": [[420, -960], [520, -960], [520, -800], [420, -800]], "height": 12, "falloff": 3 },
+    // Glaseado's snowslope: ten steps of 4 m, each 14 m further north and eased into the one below over 14 m, so the
+    // slope climbs evenly from the foot at -916 to the top at -1056 (about 16°); the top is level from there north
+    { "kind": "plateau", "name": "the snowslope, 16 m", "polygon": [[-40, -1120], [120, -1120], [120, -930], [-40, -930]], "height": 16, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 20 m", "polygon": [[-40, -1120], [120, -1120], [120, -944], [-40, -944]], "height": 20, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 24 m", "polygon": [[-40, -1120], [120, -1120], [120, -958], [-40, -958]], "height": 24, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 28 m", "polygon": [[-40, -1120], [120, -1120], [120, -972], [-40, -972]], "height": 28, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 32 m", "polygon": [[-40, -1120], [120, -1120], [120, -986], [-40, -986]], "height": 32, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 36 m", "polygon": [[-40, -1120], [120, -1120], [120, -1000], [-40, -1000]], "height": 36, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 40 m", "polygon": [[-40, -1120], [120, -1120], [120, -1014], [-40, -1014]], "height": 40, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 44 m", "polygon": [[-40, -1120], [120, -1120], [120, -1028], [-40, -1028]], "height": 44, "falloff": 14 },
+    { "kind": "plateau", "name": "the snowslope, 48 m", "polygon": [[-40, -1120], [120, -1120], [120, -1042], [-40, -1042]], "height": 48, "falloff": 14 },
+    { "kind": "plateau", "name": "Glaseado's top", "polygon": [[-40, -1120], [120, -1120], [120, -1056], [-40, -1056]], "height": 52, "falloff": 14 },
+    // Lurking Steel: the cutting east off the East Province's third area, and the Titan Orthworm's ledge at its end
+    { "kind": "plateau", "name": "Lurking Steel's cutting", "polygon": [[520, -940], [580, -940], [580, -888], [520, -888]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the Titan Orthworm's ledge", "polygon": [[580, -936], [612, -936], [612, -892], [580, -892]], "height": 18, "falloff": 12 },
+    // Casseroya Lake: the hollow east off the North Province's first area, its lake's bed in its middle with the shore
+    // round it, the Dondozo's den on the far shore
+    { "kind": "plateau", "name": "Casseroya Lake's hollow", "polygon": [[-60, -872], [64, -872], [64, -800], [-60, -800]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "Casseroya Lake's bed", "polygon": [[-28, -858], [44, -858], [44, -814], [-28, -814]], "height": 8, "falloff": 3 },
+    // Alfornada, west of Cortondo beyond its cavern, on the hills' far side
+    { "kind": "plateau", "name": "Alfornada", "polygon": [[-680, -380], [-560, -380], [-560, -276], [-680, -276]], "height": 12, "falloff": 3 },
+    { "kind": "dome", "name": "the ruins' knoll", "at": [-660, -300], "radius": 14, "rise": 1.5 }
+  ],
+  "paint": [
+    // Glaseado's top, its snowslope and its foot are snow; so are Montenevera's streets but its square, which is paved
+    { "cover": "Paving", "polygon": [[296, -970], [360, -970], [360, -930], [296, -930]] },
+    { "cover": "Paving", "polygon": [[0, -1112], [104, -1112], [104, -1078], [0, -1078]], "minY": 50 },
+    { "cover": "Snow", "polygon": [[-160, -1200], [250, -1200], [250, -900], [-160, -900]] },
+    { "cover": "Snow", "polygon": [[230, -1000], [420, -1000], [420, -900], [230, -900]] },
+    // Alfornada's lanes are paved
+    { "cover": "Paving", "polygon": [[-650, -340], [-596, -340], [-596, -300], [-650, -300]] },
+    // Lurking Steel's cutting and ledge are sand
+    { "cover": "Sand", "polygon": [[520, -940], [612, -940], [612, -888], [520, -888]], "maxY": 18.5 },
+    // The lake's shore round False Dragon's water is sand
+    { "cover": "Sand", "polygon": [[-34, -864], [50, -864], [50, -808], [-34, -808]], "maxY": 12.5 },
+    // The long grass of the North Province's first area, the East Province's third and Alfornada's outskirts
+    { "cover": "GrassDeep", "polygon": [[-136, -880], [-112, -880], [-112, -780], [-136, -780]] },
+    { "cover": "GrassDeep", "polygon": [[490, -940], [516, -940], [516, -840], [490, -840]] },
+    { "cover": "GrassDeep", "polygon": [[-580, -298], [-564, -298], [-564, -280], [-580, -280]] }
+  ]
+}

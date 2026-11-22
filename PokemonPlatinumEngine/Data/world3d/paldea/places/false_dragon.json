@@ -1,41 +1,41 @@
 {
-  // False Dragon (plan 34 · PD4, its second session): a stand-in for the fifth Titan's place at Casseroya Lake, until
-  // plan 34 · PD6 builds it and moves the Titans there. A lake in a hollow east off the East Province's first area: the
-  // Tatsugiri waits on the near shore once the fourth Titan's herbs are shared and, beaten, skims across the water to
-  // its Dondozo on the far shore, which is walked round to by the lake's north or south shore. There the second battle
-  // is fought and Arven comes round the north shore to share the herbs. Scripts: Data/scripts/false_dragon.txt. Our own
-  // place, on Scarlet and Violet's beats
+  // False Dragon (plan 34 · PD4, its second session; moved by PD6's second session from its stand-in east off the East
+  // Province's first area): the fifth Titan's place at Casseroya Lake, in its hollow east off the North Province's first
+  // area. The Tatsugiri waits on the near shore once the fourth Titan's herbs are shared and, beaten, skims across the
+  // water to its Dondozo on the far shore, which is walked round to by the lake's north or south shore. There the second
+  // battle is fought and Arven comes round the north shore to share the herbs. Scripts: Data/scripts/false_dragon.txt.
+  // Our own place, on Scarlet and Violet's beats
   "markers": [
-    { "name": "false_dragon_mouth", "at": [488, 12.0, -436], "yaw": 90 },
-    { "name": "false_dragon_north_shore", "at": [586, 12.0, -467], "yaw": 90 },
-    { "name": "false_dragon_den", "at": [594, 12.0, -436], "yaw": 270 },
-    { "name": "false_dragon_herbs", "at": [596, 12.0, -444], "yaw": 270 }
+    { "name": "false_dragon_mouth", "at": [-52, 12.0, -836], "yaw": 90 },
+    { "name": "false_dragon_north_shore", "at": [46, 12.0, -867], "yaw": 90 },
+    { "name": "false_dragon_den", "at": [54, 12.0, -836], "yaw": 270 },
+    { "name": "false_dragon_herbs", "at": [56, 12.0, -844], "yaw": 270 }
   ],
   "triggers": [
     // Across the near shore before the Tatsugiri, once the fourth Titan is beaten: the first battle
-    { "name": "tatsugiri_shore", "box": { "min": [492, 9, -470], "max": [500, 16, -402] }, "script": "Tatsugiri", "var": "VAR_PALDEA_LEGENDS", "value": 9 },
+    { "name": "tatsugiri_shore", "box": { "min": [-48, 9, -870], "max": [-40, 16, -802] }, "script": "Tatsugiri", "var": "VAR_PALDEA_LEGENDS", "value": 9 },
     // Round to the far shore once the Tatsugiri has fled there: the Dondozo and the second battle
-    { "name": "dondozo_shore", "cylinder": { "at": [594, -436], "radius": 7, "bottom": 9, "top": 16 }, "script": "Dondozo", "var": "VAR_PALDEA_LEGENDS", "value": 10 }
+    { "name": "dondozo_shore", "cylinder": { "at": [54, -836], "radius": 7, "bottom": 9, "top": 16 }, "script": "Dondozo", "var": "VAR_PALDEA_LEGENDS", "value": 10 }
   ],
   "people": [
     // The Tatsugiri on the near shore, from the fourth Titan's herbs until it flees across the lake
     {
-      "name": "titan_tatsugiri", "at": [505, 12.0, -436], "yaw": 270, "species": "Tatsugiri", "size": 4, "displayName": "Tatsugiri",
+      "name": "titan_tatsugiri", "at": [-35, 12.0, -836], "yaw": 270, "species": "Tatsugiri", "size": 4, "displayName": "Tatsugiri",
       "script": "Tatsugiri", "shownBy": "FLAG_PALDEA_MOUNT_GLIDE", "hiddenBy": "FLAG_PALDEA_TATSUGIRI_FLED"
     },
     // The Dondozo on the far shore with the Tatsugiri come to it, from its flight until the two are beaten
     {
-      "name": "titan_dondozo", "at": [599, 12.0, -436], "yaw": 270, "species": "Dondozo", "displayName": "Dondozo",
+      "name": "titan_dondozo", "at": [59, 12.0, -836], "yaw": 270, "species": "Dondozo", "displayName": "Dondozo",
       "script": "Dondozo", "shownBy": "FLAG_PALDEA_TATSUGIRI_FLED", "hiddenBy": "FLAG_PALDEA_DONDOZO_BEATEN"
     },
     // Arven, come round the north shore after the Dondozo is beaten, until the herbs are shared
     {
-      "name": "arven_false_dragon", "at": [588, 12.0, -466], "yaw": 180, "look": "arven", "displayName": "Arven",
+      "name": "arven_false_dragon", "at": [48, 12.0, -866], "yaw": 180, "look": "arven", "displayName": "Arven",
       "lines": ["Sweet Herba Mystica. That's all five flavours."],
       "shownBy": "FLAG_PALDEA_DONDOZO_BEATEN", "hiddenBy": "FLAG_PALDEA_MOUNT_CLIMB"
     },
     {
-      "name": "false_dragon_fisherman", "at": [486, 12.0, -408], "yaw": 90, "look": "fisherman", "displayName": "Fisherman",
+      "name": "false_dragon_fisherman", "at": [-54, 12.0, -808], "yaw": 90, "look": "fisherman", "displayName": "Fisherman",
       "lines": ["Every time I cast, a little orange thing on the far shore glares at me. Then the lake glares at me too."]
     }
   ]

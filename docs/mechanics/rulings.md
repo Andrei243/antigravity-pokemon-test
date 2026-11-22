@@ -13173,6 +13173,68 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
 - **Objectives** 830 `paldeaKofu` and 831 `paldeaLarry`, English and Romanian, after the Path of Legends' in the list
   (as the first three gyms come before it), their ids clear of PD5's.
 
+## The North Province and the last three gyms (2026-11-23, plan 34 · PD6, its second session)
+
+- **The land grows north** (`terrain/west_north.json`, read after `west.json` since `.json` sorts before `_north.json`):
+  north out of Medali along the North Province's first area to the foot of Glaseado Mountain, a valley at the ways'
+  height under the mountain's south face; east along the foot to Montenevera and on through the East Province's third
+  area south to Levincia; and Alfornada west of Cortondo through Alfornada Cavern. Hills at 40 m are laid over the whole
+  north (from `z` -804) and between Medali and the East Province, then every floor is cut into them, as PD3's and PD6's
+  first session's are. The distances are the same compressed ones (Glaseado's foot about 200 m north of Medali, its top
+  140 m further up the slope and 40 m higher, Montenevera 250 m east of the slope, Alfornada 160 m west of Cortondo), for
+  the user's judgment with the rest. `world.json`'s `chunks` now reach `-38` north; the bake keeps 910 chunks (from 625),
+  about 121 MB (from 84.6 MB); it bakes in about a minute and a half on Release.
+- **Glaseado's snowslope** is ten plateaus of 4 m, each 14 m further north and eased into the one below over 14 m, so
+  the slope climbs evenly at about 16° from the foot to the top at 52 m, walked and ridden (the baker's `--walk` goes up
+  it and down through the run's gates with no slide). Crags at 72 m stand round it, higher than the top, so its sides are
+  walls and the top is no ledge onto the hills. The top is a paved terrace with Glaseado's gym and Pokémon Center; the
+  mountain's area has the snow weather. Snow is paint, the foot, slope and Montenevera's streets alike.
+- **Alfornada Cavern** is a carved tunnel (`carve/alfornada.json`, capsules of 3.6 m with a floor at 12 m) through the
+  hills from behind Cortondo's Pokémon Center to Alfornada's east lane, an area of its own (`alfornada_cavern`) between
+  8 and 20 m so the hills over it are not; no road runs through it (a road would grade the hill's top down into a cutting).
+  Alfornada's ruins are five broken pillars of rock (`additions` of the carve file) round a knoll west of its square.
+- **The last two Titans moved out of their stand-ins**, their keys, scripts, flags and the count kept: **Lurking
+  Steel** (Orthworm) is the same sandy cutting with its ledge, east off the East Province's third area north of Levincia;
+  **False Dragon** (the Tatsugiri and its Dondozo) is the same hollow and lake, now Casseroya Lake (the area's name; the
+  key stays `false_dragon`), east off the North Province's first area. Both are their stand-ins moved whole, so every
+  marker, trigger and person stands where it stood relative to its place. The stand-ins' brushes, paint and lake left
+  `titans.json` and `water.json`; Arven's directions and the two objectives were rewritten (English and Romanian). The
+  Titans' order stays fixed (PD4's ruling): the provinces exist now, so opening it is a choice for the user.
+- **Ryme's test is a rap battle** (Scarlet and Violet's beat, our verses): the MC raps three lines and the challenger
+  answers each with the one that rhymes, of three. A line answered right is kept (`VAR_PALDEA_MONTENEVERA_RAP`) and the
+  next follows at once; a miss ends the turn and the same line is given again next time, so a player who misses repeats
+  one line, not three. Three right sets `FLAG_PALDEA_MONTENEVERA_TEST_DONE`. The originals' test is a run of double
+  battles with the rapping trainers and Ryme's battle a double; ours is a question for each line and a single battle,
+  since no gym battle is a double yet. The right answer is never the last one (the cancel button picks the last).
+- **Tulip's test is her photographs**, posed in her studio: the photographer calls three moods (joy, calm, resolve) and
+  the challenger strikes the pose that fits each, of three, kept shot by shot as the rap's lines are
+  (`VAR_PALDEA_ALFORNADA_PHOTOS`, `FLAG_PALDEA_ALFORNADA_TEST_DONE`). Ours: the originals' test is different (the plan
+  names Tulip's photos, and they are what is built).
+- **Grusha's test is the snowslope run**: the coach at the top starts it (`VAR_PALDEA_GLASEADO_RUN` 1), three gates
+  down the slope, each a gap 12 m wide between two young pines with a trigger in it, are passed only in their order (2,
+  3, 4), and the line across the slope's foot ends the run: every gate passed, `FLAG_PALDEA_GLASEADO_TEST_DONE`; a gate
+  missed, it says so and the run must be begun again at the top. **No clock is kept** (the originals time the run); the
+  run is a test of the line taken, on foot or ridden. Grusha battles once it is done, in his hall at the top.
+- **Decision 3, at its recommendation, for the last three leaders**, as Kofu's and Larry's: a team for each count of
+  badges held (`paldea_ryme`, `paldea_tulip`, `paldea_grusha` the originals', at five, six and seven held; `_b0` to `_b7`
+  the others), the best at `paldea.json`'s cap for that count and the rest a level under, the last Terastallizing into
+  the gym's type. In the academy's order every leader meets the original's levels; out of it each is scaled. The teams
+  are ours, near the originals' as remembered and not checked against a source: Ryme's Banette, Mimikyu, Houndstone and
+  Toxtricity (best 42), Tulip's Farigiraf, Gardevoir, Espathra and Florges (45), Grusha's Frosmoth, Beartic, Cetitan and
+  Altaria (48). Gym trainers Tas (Drifblim, Sableye, 40), Bruno (Gothorita, Medicham, 43) and Yuki (Glalie, Abomasnow,
+  46); students Marta (the first area, 38 to 39), Iker and Aitana (Glaseado's foot, 41 to 42), Ines (the third area, 36
+  to 37) and Rosa (the cavern, 43 to 44). Wild Pokémon of the north at 34 to 45.
+- **Looks** `ryme`, `tulip` and `grusha` of `characters.json` (ours); **songs** `paldea/north_province` (the first and
+  third areas), `paldea/glaseado`, `paldea/montenevera` and `paldea/alfornada` (the cavern too), each `tools/MusicRender`'s
+  checks clean (no clash, -17.6 to -19.4 dB loud).
+- **Paldea's Town Map** is written again from `world.json` and the bake (46 by 38 cells, from chunk -25,-36), with the
+  new areas' blocks and Fly's three new places (spawns 9 to 11: Montenevera, Alfornada and Glaseado's top on their
+  Pokémon Centers' markers). The cavern is too narrow to hold a cell's middle and has no block.
+- **Objectives** 832 `paldeaRyme`, 833 `paldeaTulip` and 834 `paldeaGrusha`, English and Romanian.
+- **The playthrough bot** wins the West Province's two gyms (owed by the first session) and the last three: the
+  auction, the rap and the photographs are answered otherwise on each try (`Leg.Vary`), within its four tries, and the
+  run is the coach, the three gates' triggers and the line, in order. It rides the region from Cabo Poco to Glaseado's
+  top, mounted again whenever a battle or a door put it down.
 ## Carpathia's signature moves and abilities (2026-11-22, plan 46 · CP10)
 
 Ours, so no original decides: each is the sentence of `docs/plans/decisions/CP-proposals-starters-legendaries.md`, carried

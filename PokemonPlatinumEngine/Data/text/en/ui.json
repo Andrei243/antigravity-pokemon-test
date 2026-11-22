@@ -984,9 +984,9 @@
     "paldeaArven": "A student called Arven waits at the lighthouse on Poco Path, asking after Titans and herbs.",
     "paldeaKlawf": "The Titan Klawf has dug in at the Stony Cliff, the gully north of the road to Artazon. Beat it twice.",
     "paldeaBombirdier": "The Titan Bombirdier haunts Open Sky, a gully north of the West Province's road east of Asado Desert. Beat it twice.",
-    "paldeaOrthworm": "The Titan Orthworm lurks under the sand of Lurking Steel, east of the road to Levincia. Beat it twice.",
+    "paldeaOrthworm": "The Titan Orthworm lurks under the sand of Lurking Steel, off the road north from Levincia. Beat it twice.",
     "paldeaQuaking": "A Titan shakes the ground of Quaking Earth, the dusty basin north of Cortondo. Beat it twice.",
-    "paldeaFalseDragon": "A Tatsugiri and its Dondozo hold the lake east of the road to Levincia. Beat the False Dragon Titan.",
+    "paldeaFalseDragon": "A Tatsugiri and its Dondozo hold Casseroya Lake, off the road north from Medali. Beat the False Dragon Titan.",
     "paldeaArvenBattle": "Arven wants to show you something at the lighthouse on Poco Path, where the Path of Legends began.",
     "paldeaStarfall": "Someone signing themselves Cassiopeia wants Team Star's bases broken up. Take the pass north out of Mesagoza, east of the academy.",
     "paldeaGiacomo": "Giacomo's crew holds the west gate of Starfall Street. Raid it and face the boss.",
@@ -996,6 +996,9 @@
     "paldeaEri": "Eri's crew holds the gate at the head of Starfall Street. Raid it and face the boss.",
     "paldeaKofu": "North through Asado Desert, Kofu cooks at Cascarrafa Gym. Run his errand to Porto Marinada and win the Water Badge.",
     "paldeaLarry": "East of the desert, Larry keeps Medali Gym. Find the Treasure Eatery's secret order and win the Normal Badge.",
+    "paldeaRyme": "Ryme performs in Montenevera, in the snow east of Glaseado's foot. Win her rap battle and the Ghost Badge.",
+    "paldeaTulip": "Through the cavern west of Cortondo, Tulip keeps Alfornada Gym. Pose for her photographs and win the Psychic Badge.",
+    "paldeaGrusha": "At the top of Glaseado Mountain, Grusha waits. Ride his snowslope run through every gate and win the Ice Badge.",
     "paldeaFree": "Term begins. The treasure hunt is yours: Paldea's gyms, its Titans and more wait beyond Mesagoza."
   },
 

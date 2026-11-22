@@ -1,0 +1,65 @@
+# Grusha's hall at the top of Glaseado Mountain, the end of his gym test (plan 34 · PD6, its second session): the test
+# is the snowslope run outside (glaseado_mountain.txt, FLAG_PALDEA_GLASEADO_TEST_DONE); a gym trainer stands in the
+# hall, and Grusha at its far end battles a challenger who has finished the run. Our own lines.
+
+
+# Grusha's battle for the Ice Badge. He Terastallizes his last into an Ice type. Plan 34 · decision 3 at its
+# recommendation, as the leaders' before him: his team is scaled to the badges the challenger holds, its best at the cap
+# of that many badges, so in the academy's order (seven held) it is the original's (Data/world/paldea/trainers.json:
+# paldea_grusha, paldea_grusha_b0 to _b6)
+script Leader
+  face grusha player
+  speaker "Grusha"
+  if badge ice goto Won
+  if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  if not flag FLAG_PALDEA_GLASEADO_TEST_DONE goto NotYet
+  scene "Grusha"
+  say "You finished the run. Clean lines, too. I'm Grusha. I used to ride that slope for a living, before I kept this gym."
+  say "My Ice types don't do warm welcomes. Let's get this over with before the snow gets in."
+  if badges >= 7 goto Held7
+  if badges >= 6 goto Held6
+  if badges >= 5 goto Held5
+  if badges >= 4 goto Held4
+  if badges >= 3 goto Held3
+  if badges >= 2 goto Held2
+  if badges >= 1 goto Held1
+  battle grusha as "paldea_grusha_b0"
+  goto Beaten
+label Held1
+  battle grusha as "paldea_grusha_b1"
+  goto Beaten
+label Held2
+  battle grusha as "paldea_grusha_b2"
+  goto Beaten
+label Held3
+  battle grusha as "paldea_grusha_b3"
+  goto Beaten
+label Held4
+  battle grusha as "paldea_grusha_b4"
+  goto Beaten
+label Held5
+  battle grusha as "paldea_grusha_b5"
+  goto Beaten
+label Held6
+  battle grusha as "paldea_grusha_b6"
+  goto Beaten
+label Held7
+  battle grusha as "paldea_grusha"
+label Beaten
+  say "...Huh. That actually warmed me up. Here. The Ice Badge. You've earned it."
+  givebadge ice
+  text "{player} received the Ice Badge from Grusha!"
+  setflag FLAG_PALDEA_DEFEATED_GLASEADO_GYM
+  defeat "paldea_gym_trainer_yuki"
+  say "Don't let the cold get to you on the way down. It's a long way to the bottom."
+  endscene
+  end
+label NotYet
+  say "The run first. The coach outside will set you off. Three gates, in order. I'll know if you skip one."
+  end
+label NotEnrolled
+  say "Not a student at the academy? Then go back down the mountain. I don't battle outside the rules."
+  end
+label Won
+  say "You again. The badge is yours already. Go and get warm somewhere."
+  end

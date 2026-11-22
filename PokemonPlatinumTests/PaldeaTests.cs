@@ -34,7 +34,10 @@ public class PaldeaTests
         "open_sky", "lurking_steel", "quaking_earth", "false_dragon",
         "asado_desert", "cascarrafa", "west_province_area_two", "porto_marinada", "west_province_area_one", "medali",
         // Plan 34 · PD5: Starfall Street, a stand-in north of Mesagoza until PD6
-        "starfall_street" };
+        "starfall_street",
+        // Plan 34 · PD6, its second session: the North Province, Glaseado Mountain, Montenevera, the East Province's third
+        // area, and Alfornada through its cavern
+        "north_province_area_one", "glaseado_mountain", "montenevera", "east_province_area_three", "alfornada_cavern", "alfornada" };
 
     [Fact]
     public void PaldeaIsBuiltOnTheOpenWorldWithItsFileAStartAndRoomsOfItsOwn()
@@ -103,7 +106,8 @@ public class PaldeaTests
         Assert.NotNull(map.Land!.Nav);
         // A door to each room, and each room's way out leads back through it to its marker (but upstairs, come to from
         // downstairs)
-        var behind = new[] { "CaboPoco_PlayersHouse_2F", "Cortondo_GymTest", "Artazon_GymTest", "Levincia_GymTest", "Cascarrafa_GymTest", "Medali_GymTest" };
+        var behind = new[] { "CaboPoco_PlayersHouse_2F", "Cortondo_GymTest", "Artazon_GymTest", "Levincia_GymTest", "Cascarrafa_GymTest", "Medali_GymTest",
+            "Montenevera_GymTest", "Alfornada_GymTest", "Glaseado_GymTest" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
@@ -112,16 +116,17 @@ public class PaldeaTests
             Assert.True(room.IsWalkable(door.RoomX, door.RoomY), $"{door.Name} lands on a blocked tile of {door.Room}");
             Assert.Contains(room.Warps.Where(w => w.TargetMap == "Paldea"), way => Equals(door, map.DoorBackFrom(room.Name, way.SourceX, way.SourceY)));
         }
-        // Wild Pokémon live in the grass of Poco Path, its beach, the South and East Provinces and the West (plan 34 · PD6),
-        // every row a species of the data at levels no higher than the West Province's
+        // Wild Pokémon live in the grass of Poco Path, its beach, the South and East Provinces, the West (plan 34 · PD6) and
+        // the North (its second session), every row a species of the data at levels no higher than the cap of seven badges
         Assert.Equal(new[] { "poco_path_west", "poco_path_lighthouse", "poco_beach", "area_one_west", "area_one_east",
             "area_two_south", "area_two_north", "area_three_south", "area_three_north", "east_one_grass",
-            "desert_dunes", "desert_east", "west_one_south", "west_one_north", "west_two_grass" }.OrderBy(n => n), map.Zones.Select(z => z.Name).OrderBy(n => n));
+            "desert_dunes", "desert_east", "west_one_south", "west_one_north", "west_two_grass",
+            "north_one_grass", "glaseado_foot_west", "glaseado_foot_east", "east_three_grass", "alfornada_grass" }.OrderBy(n => n), map.Zones.Select(z => z.Name).OrderBy(n => n));
         foreach (var slot in map.Zones.SelectMany(z => z.Slots))
         {
             Assert.NotNull(PokemonDatabase.Get(slot.Species));
-            Assert.InRange(slot.MinLevel, 2, 30);
-            Assert.InRange(slot.MaxLevel, slot.MinLevel, 30);
+            Assert.InRange(slot.MinLevel, 2, 48);
+            Assert.InRange(slot.MaxLevel, slot.MinLevel, 48);
         }
         // The two students are Paldea's own, and Nemona's three teams answer the three starters
         foreach (var person in map.People.Where(p => p.TrainerId != null))
@@ -147,7 +152,8 @@ public class PaldeaTests
         Assert.Equal("Paldea", downstairs.GetWarpAt(arrival.X, arrival.Y + 1)?.TargetMap);
         // A white-out goes home, then to Los Platos's Pokémon Center
         Assert.Equal(new[] { "CaboPoco_PlayersHouse_1F", "LosPlatos_PokemonCenter", "Cortondo_PokemonCenter", "Artazon_PokemonCenter", "Levincia_PokemonCenter",
-            "Cascarrafa_PokemonCenter", "PortoMarinada_PokemonCenter", "Medali_PokemonCenter" },
+            "Cascarrafa_PokemonCenter", "PortoMarinada_PokemonCenter", "Medali_PokemonCenter",
+            "Montenevera_PokemonCenter", "Alfornada_PokemonCenter", "Glaseado_PokemonCenter" },
             Region.File!.Spawns.Select(s => s.Room));
     }
 
@@ -185,6 +191,13 @@ public class PaldeaTests
         Assert.False(walk.Reaches(OpenPos.FromMetres(-250, 40, -392)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(250, 40, -270)));
         Assert.False(walk.Reaches(OpenPos.FromMetres(540, 40, -520)));
+        // Plan 34 · PD6, its second session: Glaseado's top is come to on foot up its snowslope, Alfornada through its
+        // cavern under the hills west of Cortondo; the crags round the slope and the hills over the cavern never are
+        Assert.True(walk.Reaches(OpenPos.FromMetres(40, 52, -1080)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-520, 12, -345)));
+        Assert.True(walk.Reaches(OpenPos.FromMetres(-620, 12, -322)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-120, 72, -1000)));
+        Assert.False(walk.Reaches(OpenPos.FromMetres(-520, 40, -345)));
     }
 
     [Fact]

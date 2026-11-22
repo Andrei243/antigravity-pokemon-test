@@ -1,0 +1,109 @@
+{
+  // Glaseado Mountain (plan 34 · PD6, its second session): the valley along its foot, east and west of the snowslope
+  // that climbs from the middle of it to the top, where Glaseado's gym and Pokémon Center stand on a paved terrace 40 m
+  // over the valley. Grusha's gym test is the snowslope run (glaseado_mountain.txt): the coach at the top starts it, and
+  // it is passed by riding down through the three gates in their order, each a gap between two young pines, to the line
+  // at the slope's foot; a gate missed sends the challenger back up. The gym and its hall are rooms (Glaseado_Gym,
+  // Glaseado_GymTest)
+  "markers": [
+    { "name": "glaseado_foot_west", "at": [-124, 12.0, -920], "yaw": 90 },
+    { "name": "glaseado_foot", "at": [40, 12.0, -910], "yaw": 0 },
+    { "name": "glaseado_foot_east", "at": [212, 12.0, -920], "yaw": 270 },
+    { "name": "glaseado_top", "at": [40, 52.0, -1078], "yaw": 180 },
+    { "name": "glaseado_run_start", "at": [40, 52.0, -1060], "yaw": 180 },
+    { "name": "glaseado_gym_door", "at": [24, 52.0, -1093], "yaw": 0 },
+    { "name": "glaseado_center_door", "at": [81, 52.0, -1093], "yaw": 0 }
+  ],
+  "triggers": [
+    // The run's three gates in order, then the line at the foot (VAR_PALDEA_GLASEADO_RUN 1 to 4 while it is run); the
+    // line crossed with a gate missed says so and ends the run
+    { "name": "glaseado_gate_one", "cylinder": { "at": [90, -1030], "radius": 5, "bottom": 38, "top": 56 }, "script": "GateOne", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 1 },
+    { "name": "glaseado_gate_two", "cylinder": { "at": [10, -990], "radius": 5, "bottom": 25, "top": 44 }, "script": "GateTwo", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 2 },
+    { "name": "glaseado_gate_three", "cylinder": { "at": [80, -950], "radius": 5, "bottom": 14, "top": 32 }, "script": "GateThree", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 3 },
+    { "name": "glaseado_finish", "box": { "min": [-40, 12, -932], "max": [120, 22, -924] }, "script": "Finish", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 4 },
+    { "name": "glaseado_finish_missed_one", "box": { "min": [-40, 12, -932], "max": [120, 22, -924] }, "script": "Missed", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 1 },
+    { "name": "glaseado_finish_missed_two", "box": { "min": [-40, 12, -932], "max": [120, 22, -924] }, "script": "Missed", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 2 },
+    { "name": "glaseado_finish_missed_three", "box": { "min": [-40, 12, -932], "max": [120, 22, -924] }, "script": "Missed", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 3 }
+  ],
+  "doors": [
+    {
+      "name": "glaseado_gym_door",
+      "box": { "min": [22, 51.5, -1096], "max": [26, 55.5, -1095] },
+      "room": "Glaseado_Gym", "at": [4, 8], "facing": "up",
+      "out": "glaseado_gym_door"
+    },
+    {
+      "name": "glaseado_center_door",
+      "box": { "min": [80, 51.5, -1096], "max": [82, 55, -1095] },
+      "room": "Glaseado_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "glaseado_center_door"
+    }
+  ],
+  "solids": [
+    { "name": "Glaseado Gym", "min": [8, 51, -1112], "max": [40, 60, -1096], "building": { "kind": "gym", "town": "paldea", "sign": "GYM" } },
+    { "name": "Glaseado's Pokémon Center", "min": [74, 51, -1110], "max": [88, 57.5, -1096], "building": { "kind": "pokemonCenter", "town": "paldea" } }
+  ],
+  "zones": [
+    {
+      "name": "glaseado_foot_west",
+      "polygon": [[-136, -936], [-60, -936], [-60, -904], [-136, -904]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Snover", "minLevel": 40, "maxLevel": 44, "weight": 25 },
+        { "species": "Cetoddle", "minLevel": 40, "maxLevel": 44, "weight": 20 },
+        { "species": "Cubchoo", "minLevel": 40, "maxLevel": 44, "weight": 20 },
+        { "species": "Snorunt", "minLevel": 40, "maxLevel": 43, "weight": 20 },
+        { "species": "Sneasel", "minLevel": 40, "maxLevel": 44, "weight": 15, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    },
+    {
+      "name": "glaseado_foot_east",
+      "polygon": [[140, -936], [226, -936], [226, -904], [140, -904]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Frigibax", "minLevel": 40, "maxLevel": 43, "weight": 15 },
+        { "species": "Snover", "minLevel": 40, "maxLevel": 44, "weight": 25 },
+        { "species": "Cubchoo", "minLevel": 40, "maxLevel": 44, "weight": 25 },
+        { "species": "Bergmite", "minLevel": 40, "maxLevel": 44, "weight": 20 },
+        { "species": "Delibird", "minLevel": 40, "maxLevel": 44, "weight": 15 }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    // The coach at the top of the snowslope, who starts Grusha's run
+    {
+      "name": "glaseado_coach", "at": [52, 52.0, -1064], "yaw": 270, "look": "skier_m", "displayName": "Coach",
+      "script": "Coach"
+    },
+    {
+      "name": "student_iker", "at": [-96, 12.0, -926], "yaw": 90, "trainer": "paldea_student_iker",
+      "lines": ["I came up here to train. Mostly I've been training my shivering. Battle me!", "My Pokémon are fine. It's my fingers that froze."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "student_aitana", "at": [176, 12.0, -916], "yaw": 270, "trainer": "paldea_student_aitana",
+      "lines": ["Montenevera's that way, and the gym's at the top. Either way, you go through me first!", "Off you go, then. Mind the ice."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "glaseado_skier", "at": [-112, 12.0, -930], "yaw": 90, "look": "skier_f", "displayName": "Skier",
+      "lines": ["Grusha's test is the run down that slope. Three gates, in order, and he notices if you skip one. Trust me."]
+    }
+  ],
+  "trees": [
+    // The gates of the run, each a pair of young pines 12 m apart
+    { "at": [84, -1030], "kind": "pine", "size": 0.55, "trunk": true },
+    { "at": [96, -1030], "kind": "pine", "size": 0.55, "trunk": true },
+    { "at": [4, -990], "kind": "pine", "size": 0.55, "trunk": true },
+    { "at": [16, -990], "kind": "pine", "size": 0.55, "trunk": true },
+    { "at": [74, -950], "kind": "pine", "size": 0.55, "trunk": true },
+    { "at": [86, -950], "kind": "pine", "size": 0.55, "trunk": true },
+    // Pines along the foot
+    { "at": [-130, -936], "kind": "pine", "size": 1.1 },
+    { "at": [-60, -938], "kind": "pine" },
+    { "at": [140, -938], "kind": "pine" },
+    { "at": [220, -936], "kind": "pine", "size": 1.2 }
+  ]
+}

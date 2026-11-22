@@ -1,8 +1,9 @@
 # False Dragon (plan 34 · PD4, its second session): the fifth and last Titan of the Path of Legends, a Tatsugiri and the
-# Dondozo it commands, on the shores of the lake in a hollow east off the East Province's first area. The Tatsugiri is
+# Dondozo it commands, on the shores of Casseroya Lake in its hollow in the north. The Tatsugiri is
 # met and beaten on the near shore and leaps away across the water to its Dondozo on the far shore, where the second
 # battle is fought against the Dondozo with the Tatsugiri in command; the herbs they left are shared with the mount,
-# which can climb again. A stand-in for the original's Casseroya Lake, until plan 34 · PD6 builds it. VAR_PALDEA_LEGENDS
+# which can climb again. A stand-in until plan 34 · PD6's second session moved it to Casseroya Lake, in its hollow east
+# off the North Province's first area (places/false_dragon.json). VAR_PALDEA_LEGENDS
 # (stony_cliff.txt's header has the whole count) goes on:
 #   9   the fourth Titan beaten: the Tatsugiri waits on the lake's near shore
 #   10  the Tatsugiri beaten and fled across the lake to its Dondozo (FLAG_PALDEA_TATSUGIRI_FLED)

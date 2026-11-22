@@ -202,6 +202,98 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void APaldeaGamePlaysFromTheBedroomInCaboPocoToTheFifthBadge()
+    {
+        // Plan 34 · PD6, owed by its first session: on from the third badge through the West Province's two gyms in the
+        // academy's order, Kofu's errand to the auction at Porto Marinada and Larry's secret order at the Treasure Eatery
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            foreach (var (species, level) in new[] { ("Pawmot", 60), ("Skeledirge", 60), ("Garganacl", 60) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.PaldeaToTheFifthBadge) };
+            Run(bot, 5 * 3600);
+            output.WriteLine($"ended on {game.Map.Name}, badges {game.Story.BadgeCount(RegionDatabase.Paldea)}");
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.Equal(5, game.Story.BadgeCount(RegionDatabase.Paldea));
+            foreach (string badge in new[] { "Bug", "Grass", "Electric", "Water", "Normal" }) Assert.True(game.Story.HasBadge(RegionDatabase.Paldea, badge), badge);
+        }, Seed, RegionDatabase.Paldea);
+    }
+
+    [Fact]
+    public void APaldeaGameWinsTheLastThreeBadgesFromMedali()
+    {
+        // Plan 34 · PD6, its second session: a game with the first five badges put down on Medali's square, the bot
+        // walking to Montenevera for Ryme's rap battle, through Alfornada Cavern for Tulip's photographs, and up Glaseado
+        // for Grusha's run, down through its gates and back up to the gym; a strong team on hand, as the gyms' runs have it
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            foreach (var (species, level) in new[] { ("Pawmot", 75), ("Skeledirge", 75), ("Garganacl", 75) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            game.Story.SetVar("VAR_PALDEA_STORY", 7);
+            foreach (string badge in new[] { "Bug", "Grass", "Electric", "Water", "Normal" }) game.Story.GiveBadge(RegionDatabase.Paldea, badge);
+            game.PlaceOpen(engine.OpenMapNamed("Paldea")!, "medali_square");
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.PaldeaNorthBadges) };
+            Run(bot, 5 * 3600);
+            output.WriteLine($"ended on {game.Map.Name}, badges {game.Story.BadgeCount(RegionDatabase.Paldea)}");
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.Equal(8, game.Story.BadgeCount(RegionDatabase.Paldea));
+            // Crossing into the new towns opened them to Fly on Paldea's Town Map
+            foreach (string town in new[] { "MONTENEVERA", "ALFORNADA", "GLASEADO_MOUNTAIN" }) Assert.True(game.Story.Has("FLAG_FIRST_ARRIVAL_" + town), town);
+        }, Seed, RegionDatabase.Paldea);
+    }
+
+    [Fact]
+    public void APaldeaGameIsRiddenFromCaboPocoToGlaseadosTop()
+    {
+        // Plan 34 · PD6's done-when, headless: the region crossed on the mount from Cabo Poco's lane to the top of Glaseado
+        // Mountain by the bot, mounted again whenever a battle or a door put it down (the harness's `paldea` mode times the
+        // same ride drawn, the chunks streamed as it goes, `pdn90`)
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            foreach (var (species, level) in new[] { ("Pawmot", 75), ("Skeledirge", 75), ("Garganacl", 75) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            game.Story.SetVar("VAR_PALDEA_STORY", 7);
+            game.Story.SetVar(PokemonPlatinumEngine.OpenWorld.MountRules.MountVariable, PokemonPlatinumEngine.OpenWorld.MountRules.Koraidon);
+            game.Story.Set("FLAG_PALDEA_MOUNT_DASH");
+            game.PlaceOpen(engine.OpenMapNamed("Paldea")!, "cabo_poco_lane");
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.PaldeaToGlaseadosTop) };
+            const float dt = 1f / 60f;
+            int ridden = 0, frames = 0;
+            for (double t = 0; t < 2 * 3600 && !bot.Stopped && !bot.Itinerary.Finished; t += dt)
+            {
+                if (engine.InOpenField && game.State == PokemonPlatinumEngine.Core.GameState.Overworld && !game.OpenMounted && !engine.ScriptRunning
+                    && game.WhyNotMount == PokemonPlatinumEngine.OpenWorld.MountRefusal.None)
+                    game.ToggleMount();
+                bot.Frame(dt);
+                frames++;
+                if (game.OpenMounted) ridden++;
+            }
+            bot.Release();
+            output.WriteLine($"{bot.Report.Seconds:0} s of game time, ridden {100.0 * ridden / Math.Max(1, frames):0}% of the frames, ended at {game.OpenPlayer?.Pos}");
+            output.WriteLine(bot.Report.ToMarkdown());
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.Equal("glaseado_mountain", engine.OpenMapNamed("Paldea")!.AreaAt(game.OpenPlayer!.Pos)?.Key);
+            Assert.True(game.OpenPlayer.Pos.MetresY > 45, $"ended at {game.OpenPlayer.Pos}");
+            Assert.True(ridden > frames / 2, $"ridden {ridden} of {frames} frames");
+        }, Seed, RegionDatabase.Paldea);
+    }
+
+    [Fact]
     public void APaldeaGameWalksThePathOfLegendsFromArvensWordToHisBattle()
     {
         // Plan 34 · PD4: a game past the academy's welcome put down at the lighthouse's foot, the bot walking the Path of

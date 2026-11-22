@@ -796,7 +796,15 @@
     // black hair swept back, an orange shirt with a sea-green trim under a white cook's vest; Larry, Medali's leader, a
     // tired office worker, short grey-brown hair, a beige coat over a white shirt with a dark tie
     "kofu": { "skin": "#b8825a", "hairColor": "#1e1c1a", "hair": "Swept", "top": "#e8782e", "accent": "#2e9a8a", "bottom": "#3a3a40", "shoes": "#2a2420", "eyes": "#3a2a1e", "vest": "#f2f0ea", "build": "Adult", "height": 1.1 },
-    "larry": { "skin": "#e0bc9a", "hairColor": "#6a5e52", "hair": "Short", "top": "#f2f0ea", "accent": "#2a2e3a", "bottom": "#4a4a50", "shoes": "#2a2626", "eyes": "#4a4a4a", "coat": true, "build": "Adult", "height": 1.06 }
+    "larry": { "skin": "#e0bc9a", "hairColor": "#6a5e52", "hair": "Short", "top": "#f2f0ea", "accent": "#2a2e3a", "bottom": "#4a4a50", "shoes": "#2a2626", "eyes": "#4a4a4a", "coat": true, "build": "Adult", "height": 1.06 },
+    // The North Province's and Alfornada's leaders (plan 34 · PD6, its second session), our own looks: Ryme, Montenevera's
+    // rapper, white hair in short twists, a black puffer coat over a purple top, dark trousers and bright trainers;
+    // Tulip, Alfornada's make-up artist and photographer, long violet hair, a lilac blouse under a cream jacket and a
+    // long skirt; Grusha, Glaseado's former snowboarder, pale blond hair, a long scarf, a pale blue coat over white, dark
+    // trousers and snow boots
+    "ryme": { "skin": "#8a5a3e", "hairColor": "#f2f2f2", "hair": "Spiky", "top": "#6a3a9a", "accent": "#e8e040", "bottom": "#1e1e26", "shoes": "#e8e040", "eyes": "#3a2a2a", "coat": true, "build": "Adult", "height": 1.0 },
+    "tulip": { "skin": "#f0d4c0", "hairColor": "#8a5ab0", "hair": "Long", "top": "#d8b8e8", "accent": "#f2ead8", "bottom": "#a07ac0", "shoes": "#5a3a6a", "eyes": "#6a4a8a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
+    "grusha": { "skin": "#f2dcc8", "hairColor": "#e8dca0", "hair": "Swept", "top": "#f2f6fa", "accent": "#9ac0e0", "bottom": "#2a3240", "shoes": "#3a4050", "eyes": "#5a7a9a", "coat": true, "build": "Adult", "height": 1.12 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

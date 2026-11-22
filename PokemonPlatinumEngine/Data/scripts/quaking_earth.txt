@@ -76,7 +76,7 @@ label Miraidon
 label Strength
   setflag FLAG_PALDEA_MOUNT_GLIDE
   text "Some of its old strength has come back. It can glide again! (Riding, press jump again in the air to glide.)"
-  say "There's one more. Way out east, past the road to Levincia, there's a lake in a hollow."
+  say "There's one more. Up north, off the road from Medali to the mountain, there's a lake in a hollow."
   say "People say a dragon lives on its shore. A small one, bossing around something huge. We'll see."
   setvar VAR_PALDEA_LEGENDS 9
   endscene

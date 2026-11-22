@@ -86,4 +86,69 @@ public static partial class Itineraries
 
     /// <summary>From the bedroom in Cabo Poco to the Electric Badge.</summary>
     public static IReadOnlyList<Leg> PaldeaToTheThirdBadge => Join(PaldeaToTheAcademy, PaldeaToTheThreeBadges);
+
+    /// <summary>
+    /// Plan 34 · PD6 (owed by its first session, built by its second): on from the third badge to the fifth in the
+    /// academy's order, Kofu's errand to Porto Marinada's auction and Larry's secret order at the Treasure Eatery. The
+    /// auction is a run of questions the bot answers otherwise each time it tries again (<see cref="Leg.Vary"/>): wait,
+    /// wait and raise the paddle is the fourth way it takes, within its tries.
+    /// </summary>
+    public static IReadOnlyList<Leg> PaldeaWestBadges { get; } = new[]
+    {
+        Leg.Talk("Cascarrafa_GymTest", "kofu") with { Until = Flag("FLAG_PALDEA_CASCARRAFA_ERRAND") },
+        Leg.OpenTalk(PaldeaMap, "porto_auctioneer") with { Until = Flag("FLAG_PALDEA_CASCARRAFA_TEST_DONE"), Vary = true },
+        Leg.Heal("Cascarrafa_PokemonCenter"),
+        Leg.Talk("Cascarrafa_GymTest", "kofu") with { Until = PaldeaBadge("Water") },
+        Leg.OpenTalk(PaldeaMap, "medali_regular") with { Until = Flag("FLAG_PALDEA_MEDALI_TEST_1") },
+        Leg.OpenTalk(PaldeaMap, "medali_waiter") with { Until = Flag("FLAG_PALDEA_MEDALI_TEST_2") },
+        Leg.OpenTalk(PaldeaMap, "medali_office_worker") with { Until = Flag("FLAG_PALDEA_MEDALI_TEST_3") },
+        Leg.Talk("Medali_TreasureEatery", "eatery_waiter") with { Until = Flag("FLAG_PALDEA_MEDALI_TEST_DONE") },
+        Leg.Heal("Medali_PokemonCenter"),
+        Leg.Talk("Medali_GymTest", "larry") with { Until = PaldeaBadge("Normal") },
+    };
+
+    /// <summary>From the bedroom in Cabo Poco to the Normal Badge, the fifth.</summary>
+    public static IReadOnlyList<Leg> PaldeaToTheFifthBadge => Join(PaldeaToTheThirdBadge, PaldeaWestBadges);
+
+    private static Func<StoryState, bool> GlaseadoRun(int at) => story => story.Var("VAR_PALDEA_GLASEADO_RUN") >= at;
+
+    /// <summary>
+    /// Plan 34 · PD6, its second session: the last three gyms in the academy's order. Ryme's rap battle and Tulip's
+    /// photographs are answered otherwise each time the MC or the photographer is spoken to again (<see cref="Leg.Vary"/>):
+    /// a line or a shot answered right is kept, so each is passed within three turns; Grusha's run is the coach at the top,
+    /// the three gates in order down the snowslope and the line at its foot, and back up to the gym.
+    /// </summary>
+    public static IReadOnlyList<Leg> PaldeaNorthBadges { get; } = new[]
+    {
+        Leg.Talk("Montenevera_GymTest", "montenevera_mc") with { Until = Flag("FLAG_PALDEA_MONTENEVERA_TEST_DONE"), Vary = true },
+        Leg.Heal("Montenevera_PokemonCenter"),
+        Leg.Talk("Montenevera_GymTest", "ryme") with { Until = PaldeaBadge("Ghost") },
+        Leg.Talk("Alfornada_GymTest", "alfornada_photographer") with { Until = Flag("FLAG_PALDEA_ALFORNADA_TEST_DONE"), Vary = true },
+        Leg.Heal("Alfornada_PokemonCenter"),
+        Leg.Talk("Alfornada_GymTest", "tulip") with { Until = PaldeaBadge("Psychic") },
+        Leg.OpenTalk(PaldeaMap, "glaseado_coach") with { Until = GlaseadoRun(1) },
+        Leg.OpenTrigger(PaldeaMap, "glaseado_gate_one") with { Until = GlaseadoRun(2) },
+        Leg.OpenTrigger(PaldeaMap, "glaseado_gate_two") with { Until = GlaseadoRun(3) },
+        Leg.OpenTrigger(PaldeaMap, "glaseado_gate_three") with { Until = GlaseadoRun(4) },
+        Leg.OpenTrigger(PaldeaMap, "glaseado_finish") with { Until = Flag("FLAG_PALDEA_GLASEADO_TEST_DONE") },
+        Leg.Heal("Glaseado_PokemonCenter"),
+        Leg.Talk("Glaseado_GymTest", "grusha") with { Until = PaldeaBadge("Ice") },
+    };
+
+    /// <summary>
+    /// Plan 34 · PD6's done-when, the region walked and ridden: from Cabo Poco's lane north through Los Platos and
+    /// Mesagoza, west to Cortondo, north through Asado Desert, east to Medali, north along the North Province's first area
+    /// to Glaseado's foot and up its snowslope to the top, a marker of each place in turn.
+    /// </summary>
+    public static IReadOnlyList<Leg> PaldeaToGlaseadosTop { get; } = new[]
+    {
+        Leg.OpenReach(PaldeaMap, "los_platos_south"),
+        Leg.OpenReach(PaldeaMap, "mesagoza_plaza"),
+        Leg.OpenReach(PaldeaMap, "cortondo_square"),
+        Leg.OpenReach(PaldeaMap, "desert_crossroads"),
+        Leg.OpenReach(PaldeaMap, "medali_square"),
+        Leg.OpenReach(PaldeaMap, "north_one_north"),
+        Leg.OpenReach(PaldeaMap, "glaseado_foot"),
+        Leg.OpenReach(PaldeaMap, "glaseado_top"),
+    };
 }
