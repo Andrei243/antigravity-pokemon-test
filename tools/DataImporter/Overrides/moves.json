@@ -130,6 +130,16 @@
   "Relic Song": {"modern":{"type":"Sound"}},
   "Snarl": {"modern":{"type":"Sound"}},
   "Disarming Voice": {"modern":{"type":"Sound"}},
-  "Boomburst": {"modern":{"type":"Sound"}}
+  "Boomburst": {"modern":{"type":"Sound"}},
+  // Plan 46 · CP10: the seven signature moves of the starters' last stages and the four legendaries (ids 3101 to 3107;
+  // CP-proposals-starters-legendaries.md). Each has its effect in BattleCore.Carpathia.cs but Codru's Ambush, which is
+  // First Impression's rule (first turn out only, +2)
+  "Codru's Ambush": {"new":true,"id":3101,"generation":0,"type":"Dark","category":"Physical","power":80,"accuracy":100,"maxPP":10,"priority":2,"description":"Can only be used as the first move after the user enters battle. The ambusher strikes before anything else can.","flags":"Contact, Protect, Mirror","effect":"FirstImpression","zPower":160,"maxPower":130},
+  "Smith's Hammer": {"new":true,"id":3102,"generation":0,"type":"Steel","category":"Physical","power":90,"accuracy":100,"maxPP":10,"description":"A blow struck on an anvil. Raises the user's Defense by one stage if it lands.","targetStatChange":"Defense","statStageAmount":1,"statChangeTargetSelf":true,"statChangeChancePercent":100,"flags":"Contact, Protect, Mirror","zPower":175,"maxPower":130},
+  "Delta Horn": {"new":true,"id":3103,"generation":0,"type":"Sound","category":"Special","power":90,"accuracy":100,"maxPP":10,"description":"A horn call across the whole delta. Hits both foes and may lower their Special Defense.","target":"AllFoes","targetStatChange":"SpDefense","statStageAmount":-1,"statChangeChancePercent":30,"flags":"Sound, Protect, Mirror","zPower":175,"maxPower":130},
+  "Sun Seizure": {"new":true,"id":3104,"generation":0,"type":"Fire","category":"Special","power":120,"accuracy":85,"maxPP":5,"description":"Seizes the sun and holds it over the field for five turns as harsh sunlight, which no other weather can end.","flags":"Protect, Mirror","effect":"SunSeizure","zPower":190,"maxPower":140},
+  "Moon Howl": {"new":true,"id":3105,"generation":0,"type":"Sound","category":"Special","power":110,"accuracy":100,"maxPP":5,"description":"A howl at the moon that hits every foe and blows the weather away.","target":"AllFoes","flags":"Sound, Protect, Mirror","effect":"MoonHowl","zPower":185,"maxPower":140},
+  "Hailstorm Rider": {"new":true,"id":3106,"generation":0,"type":"Electric","category":"Special","power":100,"accuracy":90,"maxPP":5,"description":"Rides the storm in. Sets the weather of the tale told over the field (rain by default) for five turns.","flags":"Protect, Mirror","effect":"HailstormRider","zPower":180,"maxPower":130},
+  "Banner Howl": {"new":true,"id":3107,"generation":0,"type":"Sound","category":"Special","power":100,"accuracy":100,"maxPP":5,"description":"The war banner howls in the wind. Raises the Attack and Sp. Atk of the user and its allies.","flags":"Sound, Protect, Mirror","effect":"BannerHowl","zPower":180,"maxPower":130}
 
 }

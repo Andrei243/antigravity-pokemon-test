@@ -77,8 +77,8 @@ public class CoverageTests
         // past level 100 (plan 06 · R31), counted apart and never in a number of the games'; and the Sound type's own
         // Z-Move and Max Move (plan 46 · CP2), generation 0 like them
         Assert.Equal((35 + 1, 19 + 1, 33), (n.ZMoves, n.MaxMoves, n.GMaxMoves));
-        Assert.Equal(72, n.OurMoves);
-        Assert.Equal(934 + 72 + 2, Moves.Count);
+        Assert.Equal(72 + 7, n.OurMoves); // R31's 72 and CP10's seven signature moves (ids 3101 to 3107)
+        Assert.Equal(934 + 72 + 7 + 2, Moves.Count);
         Assert.Equal(2, Moves.Count(m => m.Kind != MoveKind.Standard && m.Generation == 0));
         Assert.Equal(Moves.Count, Moves.Select(m => m.Name).Distinct().Count());
 

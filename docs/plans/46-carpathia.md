@@ -286,7 +286,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [ ] CP7 Sculpts IV
 - [ ] CP8 Sculpts V and the regional forms
 - [ ] CP9 Entries and names
-- [ ] CP10 Signature moves and abilities
+- [x] CP10 Signature moves and abilities (2026-11-22: the proposals' seven abilities and seven moves, ours; the plan's other ~13 moves and ~8 abilities wait for the species' briefs to name them; see "CP10 as built", at the end)
 - [x] CP11 The Tales: rules (first session 2026-11-13: the engine and five tales; second 2026-11-14: the other seven; see "CP11 as built" and its second session; the Tale Forms are CP12's)
 - [ ] CP12 The Tales: forms, looks, songs and the Book (engine side 2026-11-13: `tale learn`, the songs' tale layers' switch, the Zmeu's held day, the hash; see "CP12 as built"; forms, looks and music owed)
 - [ ] CP13 The masks: rules and making
@@ -305,3 +305,18 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [ ] CP25b The ridge
 - [ ] CP26 The League and the crossing
 - [ ] CP27 After the Hall of Fame
+
+### CP10 as built (2026-11-22; the proposals' signatures, ours)
+- **Built**: the seven abilities and seven moves [the proposals](decisions/CP-proposals-starters-legendaries.md) name, in place of CP3's stand-ins (`Overrides/abilities.json`, ids **3101 to 3107**, generation 0, a new file the importer lays over the games' 313; the moves in `Overrides/moves.json`, ids **3101 to 3107**, generation 0), with their code in `Battle/Effects/CarpathiaAbilityEffects.cs`, `Data/AbilityEffectTable.Carpathia.cs` and `Battle/Sim/BattleCore.Carpathia.cs`, and `CarpathiaSignatureTests` (21 tests). `docs/mechanics/rulings.md`, "Carpathia's signature moves and abilities", has each rule.
+  - **Abilities**: *Forest Hush* (Lynkit's line, hidden: a sound move fails against it at full HP), *Anvil* (Salamint's line, hidden: a contact move that missed deals a quarter), *Echo Pouch* (Pelicub's line, hidden: a damaging sound move strikes again at the end of the turn after, at half power, while its user stays out), *Noonday* (Solzmeu: the harsh sun, a strong weather that goes with its holder), *Eclipse* (Lunacolac: tells the Vârcolac's tale for five turns, where Tales are played and none is told), *Three Heads* (Furtunaur: its first damaging single-target move each turn strikes three times at 40%), *War Cry* (Stindrac: at each turn's end, up to three times, the Attack and Sp. Atk of its side rise a stage).
+  - **Moves**: *Codru's Ambush* (First Impression's rule, +2, first turn out only), ***Smith's Hammer*** (Fierander's, Steel 90, Defense up when it lands), *Delta Horn* (Sound, both foes, 30% Sp. Def down), *Sun Seizure* (Fire 120, 85%, the harsh sun for five turns that no other weather replaces), *Moon Howl* (Sound 110, every foe, the weather blown away unless an ability holds it), *Hailstorm Rider* (Electric 100, 90%, the tale's weather over the field, rain with none) and *Banner Howl* (Sound 100, Attack and Sp. Atk up for the user and its allies). Each learned by its species from level 38 (the starters' last stages) or 64 (the legendaries).
+- **Decided here** (for the user to confirm or change):
+  - **Fierander's move is named *Smith's Hammer***, not Forge Hammer: plan 06 · R31 had already taken *Forge Hammer* (id 3034, Steel 110, Speed down) for the moves past level 100, and a name is a key of the data.
+  - Noonday is **Desolate Land's strong weather** (so Water moves fizzle while it is out), the nearest rule to "the sun stays and can't be replaced"; Sun Seizure's sun is the same weather held five turns with no holder.
+  - Eclipse is the tale itself (accuracy 80%, Dark and Ghost 130%), told by the Pokémon rather than a trainer, so it spends no trainer's one tale and needs no Book; it does nothing under Platinum's rules.
+  - Hailstorm Rider's "teller's chosen weather" is the weather of the tale told over the field (Solomonar's rain, Baba Dochia's cold), or rain where no tale brings one.
+  - Three Heads' "first move each turn" is the first damaging single-target move each turn (a Pokémon makes one a turn in a single battle); a spread move, a charge, a fixed amount and a move of several hits are left as they are, as Parental Bond leaves them.
+  - Only the 14 the proposals name are built, though this plan says "about 20 moves and 15 abilities": no brief names more, so the rest (the species' own abilities, signature moves for lines with no starter) are for the user to name.
+- **Also changed**: the importer's coverage count of "Platinum's abilities" now counts generation 1 to 4 only, so ours (generation 0) stand apart; the tests that counted 72 moves of our own and 313 abilities count 79 and 320.
+- **Owed**: the moves' looks and sounds (each plays its type's template and sound until a Y-style batch gives them their own), the Romanian wording for the user's review (`docs/localisation-review-ro.md`), Echo Pouch's echo and Eclipse's tale seen on screen by the face (the echo is an HP loss on a line, which the face plays as a hit; the harness was not run), and the trainer AI's use of Eclipse's tale (it only comes in with its holder).
+

@@ -1,0 +1,12 @@
+// Plan 46 · CP10: the seven abilities of the starters' last stages and the four legendaries (ids 3101 to 3107, generation 0
+// like the moves of our own), each a row the importer adds to the games' 314. What each does is code: Battle/Effects/
+// CarpathiaAbilityEffects.cs and BattleCore.Carpathia.cs (docs/mechanics/rulings.md, "Carpathia's signature moves and abilities")
+{
+  "Forest Hush": {"new":true,"id":3101,"generation":0,"description":"Moves that make sound fail against it while it is at full HP."},
+  "Anvil": {"new":true,"id":3102,"generation":0,"description":"Its contact moves that miss still deal a quarter of their damage."},
+  "Echo Pouch": {"new":true,"id":3103,"generation":0,"description":"A damaging sound move it uses strikes again the turn after at half power."},
+  "Noonday": {"new":true,"id":3104,"generation":0,"description":"Brings harsh sunlight that no other weather can end while it is on the field."},
+  "Eclipse": {"new":true,"id":3105,"generation":0,"description":"Darkens the field for five turns: every move's accuracy falls and Dark and Ghost moves are stronger."},
+  "Three Heads": {"new":true,"id":3106,"generation":0,"description":"Its first damaging move each turn strikes three times at 40% of its power."},
+  "War Cry": {"new":true,"id":3107,"generation":0,"description":"Raises the Attack and Sp. Atk of its team at the end of each turn it is on the field, up to three times."}
+}

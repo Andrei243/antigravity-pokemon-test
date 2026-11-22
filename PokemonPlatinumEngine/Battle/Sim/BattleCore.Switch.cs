@@ -169,7 +169,7 @@ public sealed partial class BattleCore
     private static readonly (EntryCheck Flag, string[] Abilities)[] EntryPhases =
     {
         (EntryCheck.Trace, new[] { "Trace" }),
-        (EntryCheck.WeatherAbility, new[] { "Drizzle", "Sand Stream", "Drought", "Snow Warning" }),
+        (EntryCheck.WeatherAbility, new[] { "Drizzle", "Sand Stream", "Drought", "Snow Warning", "Noonday", "Eclipse" }),
         (EntryCheck.Intimidate, new[] { "Intimidate" }),
         (EntryCheck.Download, new[] { "Download" }),
         (EntryCheck.Anticipation, new[] { "Anticipation" }),

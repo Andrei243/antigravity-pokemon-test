@@ -13172,3 +13172,29 @@ An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone
   asked for in the open field (PD3's second session's question).
 - **Objectives** 830 `paldeaKofu` and 831 `paldeaLarry`, English and Romanian, after the Path of Legends' in the list
   (as the first three gyms come before it), their ids clear of PD5's.
+
+## Carpathia's signature moves and abilities (2026-11-22, plan 46 · CP10)
+
+Ours, so no original decides: each is the sentence of `docs/plans/decisions/CP-proposals-starters-legendaries.md`, carried
+out where the rules already bite. Ids 3101 to 3107 for both the moves and the abilities, generation 0.
+
+- **Forest Hush**: Soundproof's rule (`AbsorbsMove` on a sound-flagged move) only while the holder is at full HP.
+- **Anvil**: a contact damaging move that *missed* (the accuracy roll; not Protect, a Substitute, an immunity or a target out
+  of reach) deals a quarter of the damage it would have, direct, with a line (`BattleCore.AnvilGlances`, in `AfterStrike`).
+- **Echo Pouch**: each target a damaging sound move landed on is struck again at the end of the next turn at half power
+  (`powerTenths` 5), if the Pokémon that made it is still on the field (a Substitute takes it). Kept in the core's
+  `echoes` and landed beside Future Sight; not saved (a battle is not).
+- **Noonday**: `StrongWeatherBringer(HarshSun)`, so the strong-weather rules apply: no other weather replaces it, Water moves
+  are put out, and it goes when the last holder leaves.
+- **Eclipse**: `IBattleContext.TellTaleFromAbility` tells the Vârcolac's tale as a Pokémon's doing: no trainer, Book or
+  `talesHeard` is spent, nothing happens under rules without the Tales, with no later mechanics allowed or while a tale holds
+  the field.
+- **Three Heads**: as Parental Bond is: a damaging move of one hit at one target strikes three times, each at 1638/4096
+  (40%) of the power (`Turn.HeadStrike`), the first such move of a turn.
+- **War Cry**: at each turn's end, up to three times a stay, +1 Attack and Sp. Atk for everyone of its side on the field.
+- **Moves**: Codru's Ambush is First Impression's rule (+2, first turn out only); Smith's Hammer and Delta Horn are their
+  data's (a sure Defense rise for the user, a 30% Special Defense fall for both foes). Sun Seizure sets the harsh sun for five
+  turns with no holder (`StrongWeatherBy` null), so no weather move replaces it and it runs out by itself; Moon Howl clears the
+  weather unless an ability holds a strong one; Hailstorm Rider sets the weather of the tale told over the field (rain where
+  none brings one) for five turns; Banner Howl raises Attack and Sp. Atk of the user and its allies after it hits.
+- **Smith's Hammer, not Forge Hammer**: plan 06 · R31's move past 100 already has that name.

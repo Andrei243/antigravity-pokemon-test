@@ -56,7 +56,7 @@ public static class Coverage
             later.Count, later.Count(m => m.Support == MoveEffectSupport.Full), later.Count(m => m.Support == MoveEffectSupport.Partial),
             special.Count(m => m.Kind == MoveKind.ZMove), special.Count(m => m.Kind == MoveKind.MaxMove), special.Count(m => m.Kind == MoveKind.GMaxMove),
             special.Count(m => m.Support != MoveEffectSupport.None),
-            abilities.Count(a => a.Generation <= 4), abilities.Count(a => a.Generation <= 4 && run.Contains(a.Name)),
+            abilities.Count(a => a.Generation is >= 1 and <= 4), abilities.Count(a => a.Generation is >= 1 and <= 4 && run.Contains(a.Name)),
             abilities.Count(a => a.Generation > 4), abilities.Count(a => a.Generation > 4 && run.Contains(a.Name)),
             own.Count, own.Count(i => Of(i) == Works.Fully), own.Count(i => Of(i) == Works.Partly), own.Count(i => Of(i) == Works.NothingToRun),
             held.Count, held.Count(HeldItemEffects.IsHoldable),

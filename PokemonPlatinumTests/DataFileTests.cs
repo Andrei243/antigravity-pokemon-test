@@ -215,8 +215,9 @@ public class DataFileTests
         // too, as moves of a kind of their own that nothing learns (CoverageTests counts them)
         var all = MoveDatabase.GetAll().ToList();
         // (and since plan 06 · R31 the 72 moves of our own learned past level 100, generation 0)
+        // (and since plan 46 · CP10 its seven signature moves, ids 3101 to 3107)
         Assert.Equal(847, all.Count(m => m.Kind == MoveKind.Standard && m.Generation > 0));
-        Assert.Equal(72, all.Count(m => m.Kind == MoveKind.Standard && m.Generation == 0));
+        Assert.Equal(72 + 7, all.Count(m => m.Kind == MoveKind.Standard && m.Generation == 0));
         Assert.Equal(467, all.Count(m => m.Id <= 467));
         Assert.Equal(all.Count, all.Select(m => m.Id).Distinct().Count());
         Assert.DoesNotContain(all, m => m.Kind == MoveKind.Standard && m.Name is "Breakneck Blitz" or "Max Strike" or "Catastropika");
@@ -300,7 +301,7 @@ public class DataFileTests
     public void TestAbilitiesLoadFromFile()
     {
         var all = AbilityDatabase.GetAll().ToList();
-        Assert.Equal(313, all.Count);
+        Assert.Equal(313 + 7, all.Count); // the games' 313 and plan 46 · CP10's seven (generation 0)
         Assert.All(all, a => Assert.NotEmpty(a.Description));
 
         // Every ability with battle code is one the data knows

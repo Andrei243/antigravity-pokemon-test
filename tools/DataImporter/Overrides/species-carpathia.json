@@ -2,13 +2,13 @@
 // (tools/DataImporter/SpeciesOfNothing.cs), in the Carpathian Pokédex's order, from the picture briefs
 // docs/plans/decisions/CP-dex-1-plateau.md to CP-dex-6-legends-and-mythicals.md (names, numbers, typing, category, size and
 // evolutions as the briefs give them; the starters' and legendaries' totals and named stats as CP-proposals-starters-legendaries.md
-// gives them). Stats, moves and machines were spread by rule for each stage (plan 46, "CP3 as built"): the signature moves and
-// abilities the proposals name are CP10's, and an existing ability stands in for each until then.
+// gives them). Stats, moves and machines were spread by rule for each stage (plan 46, "CP3 as built"); plan 46 · CP10 then
+// replaced the stand-in abilities of the proposals' eleven with their own and gave each of the seven its signature move.
 {
   "Lynkit": {
     "number": 1, "category": "Fir Kitten", "types": ["Grass"],
     "stats": {"hp":50,"attack":68,"defense":42,"spAttack":36,"spDefense":41,"speed":81},
-    "abilities": ["Overgrow"], "hiddenAbility": "Soundproof", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Overgrow"], "hiddenAbility": "Forest Hush", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Field","Grass"], "effort": {"speed":1}, "baseExperience": 64, "height": 0.4, "weight": 4.2,
     "color": "Green", "shape": "Quadruped", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
     "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Bullet Seed" }, { "level": 9, "moveName": "Leech Seed" }, { "level": 14, "moveName": "Covet" }, { "level": 19, "moveName": "Horn Leech" }, { "level": 25, "moveName": "Stun Spore" }, { "level": 30, "moveName": "Seed Bomb" }, { "level": 35, "moveName": "Take Down" }, { "level": 40, "moveName": "Power Whip" } ],
@@ -18,7 +18,7 @@
   "Firlynx": {
     "number": 2, "category": "Fir Lynx", "types": ["Grass"],
     "stats": {"hp":64,"attack":87,"defense":54,"spAttack":45,"spDefense":52,"speed":103},
-    "abilities": ["Overgrow"], "hiddenAbility": "Soundproof", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Overgrow"], "hiddenAbility": "Forest Hush", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Field","Grass"], "effort": {"speed":2}, "baseExperience": 142, "height": 0.9, "weight": 22.0,
     "color": "Green", "shape": "Quadruped", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
     "learnset": [ { "level": 0, "moveName": "Horn Leech" }, { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Bullet Seed" }, { "level": 10, "moveName": "Leech Seed" }, { "level": 17, "moveName": "Razor Leaf" }, { "level": 23, "moveName": "Covet" }, { "level": 29, "moveName": "Stun Spore" }, { "level": 35, "moveName": "Seed Bomb" }, { "level": 42, "moveName": "Leaf Blade" }, { "level": 48, "moveName": "Take Down" } ],
@@ -28,17 +28,17 @@
   "Codrulynx": {
     "number": 3, "category": "Deep Forest", "types": ["Grass","Dark"],
     "stats": {"hp":85,"attack":113,"defense":70,"spAttack":59,"spDefense":68,"speed":135},
-    "abilities": ["Overgrow"], "hiddenAbility": "Soundproof", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Overgrow"], "hiddenAbility": "Forest Hush", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Field","Grass"], "effort": {"speed":3}, "baseExperience": 265, "height": 1.6, "weight": 88.0,
     "color": "Green", "shape": "Quadruped", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
-    "learnset": [ { "level": 0, "moveName": "Bite" }, { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Bullet Seed" }, { "level": 9, "moveName": "Leech Seed" }, { "level": 13, "moveName": "Pursuit" }, { "level": 18, "moveName": "Razor Leaf" }, { "level": 23, "moveName": "Stun Spore" }, { "level": 28, "moveName": "Sucker Punch" }, { "level": 32, "moveName": "Fake Tears" }, { "level": 37, "moveName": "Horn Leech" }, { "level": 42, "moveName": "Crunch" }, { "level": 47, "moveName": "Seed Bomb" }, { "level": 51, "moveName": "Leaf Blade" }, { "level": 56, "moveName": "Power Whip" } ],
+    "learnset": [ { "level": 0, "moveName": "Bite" }, { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Bullet Seed" }, { "level": 9, "moveName": "Leech Seed" }, { "level": 13, "moveName": "Pursuit" }, { "level": 18, "moveName": "Razor Leaf" }, { "level": 23, "moveName": "Stun Spore" }, { "level": 28, "moveName": "Sucker Punch" }, { "level": 32, "moveName": "Fake Tears" }, { "level": 37, "moveName": "Horn Leech" }, { "level": 42, "moveName": "Crunch" }, { "level": 47, "moveName": "Seed Bomb" }, { "level": 51, "moveName": "Leaf Blade" }, { "level": 56, "moveName": "Power Whip" }, { "level": 38, "moveName": "Codru's Ambush" } ],
     "tmMoves": ["TM06","TM09","TM10","TM12","TM17","TM19","TM21","TM22","TM27","TM32","TM41","TM42","TM43","TM44","TM45","TM46","TM49","TM53","TM56","TM58","TM63","TM66","TM68","TM78","TM79","TM82","TM83","TM86","TM87","TM90","HM01","HM04","HM06","HM08"], "tutorMoves": [], "eggMoves": [],
     "evolutions": []
   },
   "Salamint": {
     "number": 4, "category": "Ember Newt", "types": ["Fire"],
     "stats": {"hp":79,"attack":67,"defense":58,"spAttack":31,"spDefense":50,"speed":33},
-    "abilities": ["Blaze"], "hiddenAbility": "Tough Claws", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Blaze"], "hiddenAbility": "Anvil", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Field","Monster"], "effort": {"hp":1}, "baseExperience": 64, "height": 0.3, "weight": 3.0,
     "color": "Black", "shape": "Quadruped", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
     "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Ember" }, { "level": 10, "moveName": "Will-O-Wisp" }, { "level": 16, "moveName": "Covet" }, { "level": 22, "moveName": "Fire Fang" }, { "level": 28, "moveName": "Blaze Kick" }, { "level": 34, "moveName": "Take Down" }, { "level": 40, "moveName": "Flare Blitz" } ],
@@ -48,7 +48,7 @@
   "Furnander": {
     "number": 5, "category": "Hearth", "types": ["Fire"],
     "stats": {"hp":101,"attack":86,"defense":73,"spAttack":40,"spDefense":63,"speed":42},
-    "abilities": ["Blaze"], "hiddenAbility": "Tough Claws", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Blaze"], "hiddenAbility": "Anvil", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Field","Monster"], "effort": {"hp":2}, "baseExperience": 142, "height": 1.0, "weight": 26.0,
     "color": "Black", "shape": "Upright", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
     "learnset": [ { "level": 0, "moveName": "Fire Fang" }, { "level": 1, "moveName": "Pound" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Ember" }, { "level": 11, "moveName": "Will-O-Wisp" }, { "level": 19, "moveName": "Flame Charge" }, { "level": 26, "moveName": "Covet" }, { "level": 33, "moveName": "Blaze Kick" }, { "level": 41, "moveName": "Flamethrower" }, { "level": 48, "moveName": "Take Down" } ],
@@ -58,17 +58,17 @@
   "Fierander": {
     "number": 6, "category": "Blacksmith", "types": ["Fire","Steel"],
     "stats": {"hp":132,"attack":112,"defense":96,"spAttack":52,"spDefense":83,"speed":55},
-    "abilities": ["Blaze"], "hiddenAbility": "Tough Claws", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Blaze"], "hiddenAbility": "Anvil", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Field","Monster"], "effort": {"hp":3}, "baseExperience": 265, "height": 1.8, "weight": 140.0,
     "color": "Gray", "shape": "Upright", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
-    "learnset": [ { "level": 0, "moveName": "Metal Claw" }, { "level": 1, "moveName": "Pound" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Bullet Punch" }, { "level": 9, "moveName": "Will-O-Wisp" }, { "level": 14, "moveName": "Ember" }, { "level": 20, "moveName": "Flame Charge" }, { "level": 25, "moveName": "Metal Sound" }, { "level": 30, "moveName": "Fire Fang" }, { "level": 35, "moveName": "Steel Wing" }, { "level": 40, "moveName": "Iron Head" }, { "level": 46, "moveName": "Blaze Kick" }, { "level": 51, "moveName": "Flamethrower" }, { "level": 56, "moveName": "Flare Blitz" } ],
+    "learnset": [ { "level": 0, "moveName": "Metal Claw" }, { "level": 1, "moveName": "Pound" }, { "level": 1, "moveName": "Leer" }, { "level": 4, "moveName": "Bullet Punch" }, { "level": 9, "moveName": "Will-O-Wisp" }, { "level": 14, "moveName": "Ember" }, { "level": 20, "moveName": "Flame Charge" }, { "level": 25, "moveName": "Metal Sound" }, { "level": 30, "moveName": "Fire Fang" }, { "level": 35, "moveName": "Steel Wing" }, { "level": 40, "moveName": "Iron Head" }, { "level": 46, "moveName": "Blaze Kick" }, { "level": 51, "moveName": "Flamethrower" }, { "level": 56, "moveName": "Flare Blitz" }, { "level": 38, "moveName": "Smith's Hammer" } ],
     "tmMoves": ["TM06","TM10","TM11","TM17","TM21","TM23","TM27","TM32","TM35","TM38","TM42","TM43","TM44","TM45","TM47","TM50","TM58","TM61","TM68","TM74","TM78","TM82","TM83","TM87","TM90","TM91","HM01","HM04","HM06","HM08"], "tutorMoves": [], "eggMoves": [],
     "evolutions": []
   },
   "Pelicub": {
     "number": 7, "category": "Pouch Chick", "types": ["Water"],
     "stats": {"hp":72,"attack":30,"defense":47,"spAttack":71,"spDefense":59,"speed":39},
-    "abilities": ["Torrent"], "hiddenAbility": "Punk Rock", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Torrent"], "hiddenAbility": "Echo Pouch", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Water 1","Flying"], "effort": {"hp":1}, "baseExperience": 64, "height": 0.4, "weight": 3.5,
     "color": "White", "shape": "Wings", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
     "learnset": [ { "level": 1, "moveName": "Peck" }, { "level": 1, "moveName": "Growl" }, { "level": 4, "moveName": "Water Gun" }, { "level": 11, "moveName": "Round" }, { "level": 18, "moveName": "Bubble Beam" }, { "level": 26, "moveName": "Dive" }, { "level": 33, "moveName": "Hyper Voice" }, { "level": 40, "moveName": "Hydro Pump" } ],
@@ -78,7 +78,7 @@
   "Pelireed": {
     "number": 8, "category": "Reed Pelican", "types": ["Water"],
     "stats": {"hp":91,"attack":38,"defense":60,"spAttack":91,"spDefense":75,"speed":50},
-    "abilities": ["Torrent"], "hiddenAbility": "Punk Rock", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Torrent"], "hiddenAbility": "Echo Pouch", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Water 1","Flying"], "effort": {"hp":2}, "baseExperience": 142, "height": 1.1, "weight": 18.0,
     "color": "White", "shape": "Wings", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
     "learnset": [ { "level": 0, "moveName": "Bubble Beam" }, { "level": 1, "moveName": "Peck" }, { "level": 1, "moveName": "Growl" }, { "level": 4, "moveName": "Water Gun" }, { "level": 13, "moveName": "Round" }, { "level": 22, "moveName": "Water Pulse" }, { "level": 30, "moveName": "Dive" }, { "level": 39, "moveName": "Hyper Voice" }, { "level": 48, "moveName": "Muddy Water" } ],
@@ -88,10 +88,10 @@
   "Buciumbill": {
     "number": 9, "category": "Alphorn Pelican", "types": ["Water","Sound"],
     "stats": {"hp":118,"attack":50,"defense":79,"spAttack":119,"spDefense":99,"speed":65},
-    "abilities": ["Torrent"], "hiddenAbility": "Punk Rock", "catchRate": 45, "growthRate": "MediumSlow",
+    "abilities": ["Torrent"], "hiddenAbility": "Echo Pouch", "catchRate": 45, "growthRate": "MediumSlow",
     "eggGroups": ["Water 1","Flying"], "effort": {"spAttack":2,"hp":1}, "baseExperience": 265, "height": 1.9, "weight": 62.0,
     "color": "White", "shape": "Wings", "genderRatio": 1, "hatchCycles": 20, "friendship": 50,
-    "learnset": [ { "level": 0, "moveName": "Bug Buzz" }, { "level": 1, "moveName": "Peck" }, { "level": 1, "moveName": "Growl" }, { "level": 4, "moveName": "Echoed Voice" }, { "level": 11, "moveName": "Water Gun" }, { "level": 17, "moveName": "Round" }, { "level": 24, "moveName": "Water Pulse" }, { "level": 30, "moveName": "Bubble Beam" }, { "level": 37, "moveName": "Dive" }, { "level": 43, "moveName": "Hyper Voice" }, { "level": 50, "moveName": "Muddy Water" }, { "level": 56, "moveName": "Hydro Pump" } ],
+    "learnset": [ { "level": 0, "moveName": "Bug Buzz" }, { "level": 1, "moveName": "Peck" }, { "level": 1, "moveName": "Growl" }, { "level": 4, "moveName": "Echoed Voice" }, { "level": 11, "moveName": "Water Gun" }, { "level": 17, "moveName": "Round" }, { "level": 24, "moveName": "Water Pulse" }, { "level": 30, "moveName": "Bubble Beam" }, { "level": 37, "moveName": "Dive" }, { "level": 43, "moveName": "Hyper Voice" }, { "level": 50, "moveName": "Muddy Water" }, { "level": 56, "moveName": "Hydro Pump" }, { "level": 38, "moveName": "Delta Horn" } ],
     "tmMoves": ["TM03","TM06","TM10","TM15","TM17","TM18","TM21","TM27","TM32","TM42","TM43","TM44","TM45","TM55","TM58","TM78","TM82","TM83","TM87","TM90","HM03","HM07","HM09"], "tutorMoves": [], "eggMoves": [],
     "evolutions": []
   },
@@ -2388,40 +2388,40 @@
   "Solzmeu": {
     "number": 239, "category": "Sun Thief", "types": ["Fire","Dragon"],
     "stats": {"hp":110,"attack":130,"defense":105,"spAttack":120,"spDefense":105,"speed":110},
-    "abilities": ["Drought"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
+    "abilities": ["Noonday"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
     "eggGroups": ["Undiscovered"], "effort": {"attack":3}, "baseExperience": 340, "height": 3.4, "weight": 310.0,
     "color": "Yellow", "shape": "Humanoid", "genderRatio": -1, "hatchCycles": 120, "friendship": 0,
-    "learnset": [ { "level": 1, "moveName": "Pound" }, { "level": 1, "moveName": "Leer" }, { "level": 1, "moveName": "Ember" }, { "level": 1, "moveName": "Will-O-Wisp" }, { "level": 22, "moveName": "Twister" }, { "level": 30, "moveName": "Dragon Breath" }, { "level": 37, "moveName": "Incinerate" }, { "level": 44, "moveName": "Fire Fang" }, { "level": 51, "moveName": "Lava Plume" }, { "level": 58, "moveName": "Dragon Pulse" }, { "level": 66, "moveName": "Flamethrower" }, { "level": 73, "moveName": "Dragon Rush" }, { "level": 80, "moveName": "Flare Blitz" } ],
+    "learnset": [ { "level": 1, "moveName": "Pound" }, { "level": 1, "moveName": "Leer" }, { "level": 1, "moveName": "Ember" }, { "level": 1, "moveName": "Will-O-Wisp" }, { "level": 22, "moveName": "Twister" }, { "level": 30, "moveName": "Dragon Breath" }, { "level": 37, "moveName": "Incinerate" }, { "level": 44, "moveName": "Fire Fang" }, { "level": 51, "moveName": "Lava Plume" }, { "level": 58, "moveName": "Dragon Pulse" }, { "level": 66, "moveName": "Flamethrower" }, { "level": 73, "moveName": "Dragon Rush" }, { "level": 80, "moveName": "Flare Blitz" }, { "level": 64, "moveName": "Sun Seizure" } ],
     "tmMoves": ["TM02","TM06","TM10","TM11","TM17","TM21","TM27","TM32","TM35","TM38","TM42","TM43","TM44","TM50","TM58","TM59","TM61","TM68","TM82","TM83","TM87","TM90","HM04","HM06","HM08"], "tutorMoves": [], "eggMoves": [],
     "evolutions": [], "legendary": true
   },
   "Lunacolac": {
     "number": 240, "category": "Eclipse", "types": ["Dark","Sound"],
     "stats": {"hp":105,"attack":125,"defense":95,"spAttack":120,"spDefense":110,"speed":125},
-    "abilities": ["Pressure"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
+    "abilities": ["Eclipse"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
     "eggGroups": ["Undiscovered"], "effort": {"attack":2,"speed":1}, "baseExperience": 340, "height": 3.0, "weight": 280.0,
     "color": "Blue", "shape": "Quadruped", "genderRatio": -1, "hatchCycles": 120, "friendship": 0,
-    "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Growl" }, { "level": 1, "moveName": "Echoed Voice" }, { "level": 1, "moveName": "Fake Tears" }, { "level": 21, "moveName": "Pursuit" }, { "level": 28, "moveName": "Bite" }, { "level": 34, "moveName": "Parting Shot" }, { "level": 41, "moveName": "Round" }, { "level": 47, "moveName": "Knock Off" }, { "level": 54, "moveName": "Sucker Punch" }, { "level": 60, "moveName": "Crunch" }, { "level": 67, "moveName": "Bug Buzz" }, { "level": 73, "moveName": "Hyper Voice" }, { "level": 80, "moveName": "Foul Play" } ],
+    "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Growl" }, { "level": 1, "moveName": "Echoed Voice" }, { "level": 1, "moveName": "Fake Tears" }, { "level": 21, "moveName": "Pursuit" }, { "level": 28, "moveName": "Bite" }, { "level": 34, "moveName": "Parting Shot" }, { "level": 41, "moveName": "Round" }, { "level": 47, "moveName": "Knock Off" }, { "level": 54, "moveName": "Sucker Punch" }, { "level": 60, "moveName": "Crunch" }, { "level": 67, "moveName": "Bug Buzz" }, { "level": 73, "moveName": "Hyper Voice" }, { "level": 80, "moveName": "Foul Play" }, { "level": 64, "moveName": "Moon Howl" } ],
     "tmMoves": ["TM06","TM10","TM12","TM17","TM21","TM27","TM32","TM41","TM42","TM43","TM44","TM46","TM49","TM56","TM58","TM63","TM66","TM68","TM79","TM82","TM83","TM87","TM90","HM01","HM04","HM06","HM08"], "tutorMoves": [], "eggMoves": [],
     "evolutions": [], "legendary": true
   },
   "Furtunaur": {
     "number": 241, "category": "Storm Rider", "types": ["Dragon","Electric"],
     "stats": {"hp":100,"attack":110,"defense":100,"spAttack":130,"spDefense":120,"speed":120},
-    "abilities": ["Pressure"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
+    "abilities": ["Three Heads"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
     "eggGroups": ["Undiscovered"], "effort": {"spAttack":3}, "baseExperience": 340, "height": 7.0, "weight": 450.0,
     "color": "Gray", "shape": "Heads", "genderRatio": -1, "hatchCycles": 120, "friendship": 0,
-    "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Growl" }, { "level": 1, "moveName": "Thunder Shock" }, { "level": 1, "moveName": "Thunder Wave" }, { "level": 22, "moveName": "Twister" }, { "level": 30, "moveName": "Dragon Breath" }, { "level": 37, "moveName": "Dragon Tail" }, { "level": 44, "moveName": "Volt Switch" }, { "level": 51, "moveName": "Discharge" }, { "level": 58, "moveName": "Dragon Claw" }, { "level": 66, "moveName": "Dragon Pulse" }, { "level": 73, "moveName": "Dragon Rush" }, { "level": 80, "moveName": "Thunder" } ],
+    "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Growl" }, { "level": 1, "moveName": "Thunder Shock" }, { "level": 1, "moveName": "Thunder Wave" }, { "level": 22, "moveName": "Twister" }, { "level": 30, "moveName": "Dragon Breath" }, { "level": 37, "moveName": "Dragon Tail" }, { "level": 44, "moveName": "Volt Switch" }, { "level": 51, "moveName": "Discharge" }, { "level": 58, "moveName": "Dragon Claw" }, { "level": 66, "moveName": "Dragon Pulse" }, { "level": 73, "moveName": "Dragon Rush" }, { "level": 80, "moveName": "Thunder" }, { "level": 64, "moveName": "Hailstorm Rider" } ],
     "tmMoves": ["TM02","TM06","TM10","TM15","TM17","TM21","TM24","TM25","TM27","TM32","TM34","TM42","TM43","TM44","TM57","TM58","TM59","TM73","TM82","TM83","TM87","TM90"], "tutorMoves": [], "eggMoves": [],
     "evolutions": [], "legendary": true
   },
   "Stindrac": {
     "number": 242, "category": "War Banner", "types": ["Sound","Dragon"],
     "stats": {"hp":97,"attack":108,"defense":87,"spAttack":103,"spDefense":91,"speed":114},
-    "abilities": ["Pressure"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
+    "abilities": ["War Cry"], "hiddenAbility": null, "catchRate": 3, "growthRate": "Slow",
     "eggGroups": ["Undiscovered"], "effort": {"speed":2,"attack":1}, "baseExperience": 300, "height": 4.0, "weight": 60.0,
     "color": "Red", "shape": "Squiggle", "genderRatio": -1, "hatchCycles": 120, "friendship": 0,
-    "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Growl" }, { "level": 1, "moveName": "Echoed Voice" }, { "level": 1, "moveName": "Twister" }, { "level": 24, "moveName": "Snarl" }, { "level": 32, "moveName": "Screech" }, { "level": 40, "moveName": "Dragon Breath" }, { "level": 48, "moveName": "Round" }, { "level": 56, "moveName": "Dragon Pulse" }, { "level": 64, "moveName": "Bug Buzz" }, { "level": 72, "moveName": "Hyper Voice" }, { "level": 80, "moveName": "Dragon Rush" } ],
+    "learnset": [ { "level": 1, "moveName": "Tackle" }, { "level": 1, "moveName": "Growl" }, { "level": 1, "moveName": "Echoed Voice" }, { "level": 1, "moveName": "Twister" }, { "level": 24, "moveName": "Snarl" }, { "level": 32, "moveName": "Screech" }, { "level": 40, "moveName": "Dragon Breath" }, { "level": 48, "moveName": "Round" }, { "level": 56, "moveName": "Dragon Pulse" }, { "level": 64, "moveName": "Bug Buzz" }, { "level": 72, "moveName": "Hyper Voice" }, { "level": 80, "moveName": "Dragon Rush" }, { "level": 64, "moveName": "Banner Howl" } ],
     "tmMoves": ["TM02","TM06","TM10","TM17","TM21","TM27","TM32","TM42","TM43","TM44","TM58","TM59","TM68","TM82","TM83","TM87","TM90","HM04","HM06"], "tutorMoves": [], "eggMoves": [],
     "evolutions": [], "mythical": true
   },
