@@ -168591,6 +168591,13 @@
         "types": [
           "Fairy"
         ]
+      },
+      {
+        "name": "Arceus-Sound",
+        "kind": "Look",
+        "types": [
+          "Sound"
+        ]
       }
     ],
     "modern": {
@@ -236742,6 +236749,13 @@
         "kind": "Look",
         "types": [
           "Fairy"
+        ]
+      },
+      {
+        "name": "Silvally-Sound",
+        "kind": "Look",
+        "types": [
+          "Sound"
         ]
       }
     ]

@@ -34,7 +34,7 @@ The data has 1008 moves in all. The games number 919 of them, because each of th
 | Ours | 649 | 72 | 72 | 0 | 0 | 0 | 0 |
 | All | 1674 | 919 | 919 | 0 | 0 | 313 | 313 |
 
-**Forms** (plan 03 · D11): 659, of 269 species: 112 Mega, 2 Primal, 34 Gigantamax, 78 Mega Dynamax, 82 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 656 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
+**Forms** (plan 03 · D11): 661, of 269 species: 112 Mega, 2 Primal, 34 Gigantamax, 78 Mega Dynamax, 82 regional, 23 for battle only, 85 others with values of their own and 245 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 656 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
 
 ## Move effects still to write
 
@@ -119,7 +119,7 @@ What plan 06 · R20–R23 wrote their rules from, and every part of it runs unde
 - **Max Moves**: 20, and 33 G-Max Moves for 33 Gigantamax forms. 631 moves have a Max Move power.
 - **Mega Stones**: 104, for 104 forms of 98 species, each a form in `species.json`, Mega Evolved in battle by `BattleCore.Mega.cs`.
 - **Z-Crystals**: 36 (19 for a type, 17 for one species' move).
-- **Modern values**: 107 of Platinum's moves have other values in the newest games, which a game played by the modern rules uses.
+- **Modern values**: 115 moves have other values under the modern rules, which every game is played by: Platinum's where the newest games changed them, and 10 sound moves of the games made Sound-type (plan 46 · CP2b).
 
 ## Evolutions
 
@@ -174,7 +174,7 @@ What plan 06 · R20–R23 wrote their rules from, and every part of it runs unde
 
 Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read. A language marked (own) also has hand-written `names.<kind>.json` files beside it (plan 17 · N6: Romanian's names and descriptions, made up by us), which the importer never writes and whose entries win.
 
-| Language | Species (1674) | Forms | Moves (1008) | Abilities (313) | Items (1233) | Places | Move descriptions | Ability descriptions | Item descriptions |
+| Language | Species (1674) | Forms | Moves (1008) | Abilities (313) | Items (1235) | Places | Move descriptions | Ability descriptions | Item descriptions |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | de | 1025 | 365 | 901 | 310 | 1106 | 913 | 0 | 191 | 0 |
 | es | 1025 | 0 | 901 | 310 | 1106 | 232 | 0 | 0 | 0 |
@@ -182,6 +182,6 @@ Names and descriptions per language (plan 17 · N3), counted from `Data/text/<ta
 | it | 1025 | 0 | 901 | 310 | 1106 | 232 | 0 | 0 | 0 |
 | ja | 1025 | 1 | 901 | 310 | 1107 | 328 | 0 | 0 | 0 |
 | ko | 1025 | 0 | 901 | 310 | 1074 | 232 | 0 | 0 | 0 |
-| ro (own) | 249 | 25 | 1008 | 313 | 1233 | 0 | 1008 | 313 | 1233 |
+| ro (own) | 249 | 25 | 1008 | 313 | 1235 | 0 | 1008 | 313 | 1235 |
 | zh-Hans | 1025 | 0 | 901 | 310 | 1075 | 62 | 0 | 0 | 0 |
 | zh-Hant | 1025 | 0 | 901 | 310 | 1075 | 62 | 0 | 0 | 0 |

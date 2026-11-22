@@ -114,6 +114,22 @@
   // signature moves). What a Sound move becomes, as every type's: they carry no flags of their own, so the sound flag
   // of the move they are made of is not theirs (docs/mechanics/rulings.md, "The Sound type")
   "Resounding Finale": {"new":true,"id":3090,"generation":0,"type":"Sound","category":"Physical","power":0,"accuracy":0,"maxPP":1,"description":"The Sound-type Z-Move. Its power comes from the move it is made out of.","effect":"ZMove","kind":"ZMove"},
-  "Max Chorus": {"new":true,"id":3091,"generation":0,"type":"Sound","category":"Physical","power":0,"accuracy":0,"maxPP":10,"description":"The Sound-type Max Move. Its power comes from the move it is made out of. The din drowns the foes' focus.","effect":"MaxMove","kind":"MaxMove"}
+  "Max Chorus": {"new":true,"id":3091,"generation":0,"type":"Sound","category":"Physical","power":0,"accuracy":0,"maxPP":10,"description":"The Sound-type Max Move. Its power comes from the move it is made out of. The din drowns the foes' focus.","effect":"MaxMove","kind":"MaxMove"},
+  // Plan 46 · CP2b (the user's answer of 2026-11-22 to decision 14): ten damaging moves the games flag as sound, whose
+  // sound is what they are, are Sound-type under the modern rules. Each goes through "modern" so Platinum's own rules
+  // (battles-platinum.txt, the oracle of generation 4) keep them as they were; Uproar's and Chatter's modern power is
+  // kept beside the type, since a patch replaces the field whole. Left as they are: Snore, the signatures whose type is
+  // their species' own (Sparkling Aria, Clanging Scales, Overdrive), Eerie Spell, Torch Song, Alluring Voice and
+  // Psychic Noise, the status moves, and the moves of our own (docs/mechanics/rulings.md, "The Sound type")
+  "Uproar": {"modern":{"power":90,"type":"Sound"}},
+  "Hyper Voice": {"modern":{"type":"Sound"}},
+  "Bug Buzz": {"modern":{"type":"Sound"}},
+  "Chatter": {"modern":{"power":65,"type":"Sound"}},
+  "Round": {"modern":{"type":"Sound"}},
+  "Echoed Voice": {"modern":{"type":"Sound"}},
+  "Relic Song": {"modern":{"type":"Sound"}},
+  "Snarl": {"modern":{"type":"Sound"}},
+  "Disarming Voice": {"modern":{"type":"Sound"}},
+  "Boomburst": {"modern":{"type":"Sound"}}
 
 }

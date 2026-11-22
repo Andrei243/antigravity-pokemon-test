@@ -350,7 +350,8 @@ public static class Coverage
         Line($"- **Mega Stones**: {n.MegaStones}, for {items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Form).Distinct().Count()} forms of " +
              $"{items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Species).Distinct().Count()} species, each a form in `species.json`, Mega Evolved in battle by `BattleCore.Mega.cs`.");
         Line($"- **Z-Crystals**: {n.ZCrystals} ({items.Count(i => i.ZCrystal?.Type != null)} for a type, {items.Count(i => i.ZCrystal?.Move != null)} for one species' move).");
-        Line($"- **Modern values**: {standard.Count(m => m.Modern != null)} of Platinum's moves have other values in the newest games, which a game played by the modern rules uses.");
+        Line($"- **Modern values**: {standard.Count(m => m.Modern != null)} moves have other values under the modern rules, which every game is played by: " +
+             $"Platinum's where the newest games changed them, and {standard.Count(m => m.Modern?.Type == PokemonType.Sound)} sound moves of the games made Sound-type (plan 46 · CP2b).");
         Line();
 
         Line("## Evolutions");
