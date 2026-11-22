@@ -1,3 +1,10 @@
 {
-  "known": []
+  "known": [
+    {
+      "name": "Ten sound moves are Sound-type under the modern rules",
+      "owner": "plan 46 CP2b (no session owes it: the type is ours, and Showdown's calculator has no Sound type)",
+      "reason": "The user's answer of 2026-11-22 to plan 46's decision 14 makes Uproar, Hyper Voice, Bug Buzz, Chatter, Round, Echoed Voice, Relic Song, Snarl, Disarming Voice and Boomburst Sound-type under the modern rules (Overrides/moves.json's modern values). The calculator still has them Normal, Bug, Flying, Dark or Fairy, so the same-type bonus, the type chart's row and the type's items part. rulings.md, 'The Sound type', as the user answered.",
+      "when": { "move": [ "Uproar", "Hyper Voice", "Bug Buzz", "Chatter", "Round", "Echoed Voice", "Relic Song", "Snarl", "Disarming Voice", "Boomburst" ] }
+    }
+  ]
 }

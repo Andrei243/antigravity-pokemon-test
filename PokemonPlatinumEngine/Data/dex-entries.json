@@ -5298,6 +5298,13 @@
       "In this form it is kind and bright, and tiny sparkles trail behind. A hush of wonder settles on those who see it."
     ]
   },
+  "Arceus-Sound": {
+    "habitat": "Rare",
+    "entries": [
+      "A plate of deep teal rings at its side like a struck bell. Every step it takes is answered by a low note from the hills.",
+      "In this form a chord follows it wherever it goes. Old songs say the first music of the world was its breathing."
+    ]
+  },
   "Victini": {
     "habitat": "Rare",
     "entries": [
@@ -8663,6 +8670,13 @@
     "entries": [
       "A disc of wonder makes its coat shimmer in pink and white. Glittering motes follow it as it prances along.",
       "In this form it is sweet and bright and brings smiles wherever it goes. A tinkling chime rings with every step."
+    ]
+  },
+  "Silvally-Sound": {
+    "habitat": "Rare",
+    "entries": [
+      "A disc that hums turns its fin and eyes a deep teal. Its claws ring like tuning forks when it scrapes them on stone.",
+      "In this form it hears a trainer's call from far away. It answers with a reedy cry that carries over the whole valley."
     ]
   },
   "Minior": {

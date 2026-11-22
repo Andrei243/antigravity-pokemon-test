@@ -5728,7 +5728,8 @@
     "zPower": 175,
     "maxPower": 130,
     "modern": {
-      "power": 90
+      "power": 90,
+      "type": "Sound"
     }
   },
   {
@@ -6898,7 +6899,10 @@
       "effect": "Basic"
     },
     "zPower": 175,
-    "maxPower": 130
+    "maxPower": 130,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 305,
@@ -9199,7 +9203,10 @@
       "effect": "TwoHeartsWhenVoltageUp"
     },
     "zPower": 175,
-    "maxPower": 130
+    "maxPower": 130,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 406,
@@ -10139,7 +10146,8 @@
     "zPower": 120,
     "maxPower": 120,
     "modern": {
-      "power": 65
+      "power": 65,
+      "type": "Sound"
     }
   },
   {
@@ -11083,7 +11091,10 @@
     "flags": "Sound, Protect, Mirror",
     "effect": "Round",
     "zPower": 120,
-    "maxPower": 110
+    "maxPower": 110,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 497,
@@ -11098,7 +11109,10 @@
     "flags": "Sound, Protect, Mirror",
     "effect": "EchoedVoice",
     "zPower": 100,
-    "maxPower": 90
+    "maxPower": 90,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 498,
@@ -11922,7 +11936,10 @@
     "target": "AllFoes",
     "flags": "Sound, Protect, Mirror",
     "zPower": 140,
-    "maxPower": 130
+    "maxPower": 130,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 548,
@@ -12059,7 +12076,10 @@
     "target": "AllFoes",
     "flags": "Sound, Protect, Mirror",
     "zPower": 100,
-    "maxPower": 110
+    "maxPower": 110,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 556,
@@ -12407,7 +12427,10 @@
     "target": "AllFoes",
     "flags": "Sound, Protect, Mirror",
     "zPower": 100,
-    "maxPower": 90
+    "maxPower": 90,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 575,
@@ -12628,7 +12651,10 @@
     "target": "AllOthers",
     "flags": "Sound, Protect, Mirror",
     "zPower": 200,
-    "maxPower": 140
+    "maxPower": 140,
+    "modern": {
+      "type": "Sound"
+    }
   },
   {
     "id": 587,

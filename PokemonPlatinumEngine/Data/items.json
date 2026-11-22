@@ -15146,6 +15146,33 @@
     "description": "A shard that hums when held to the ear. Fifty of them can turn a Pokémon's Tera Type to Sound."
   },
   {
+    "id": 9925,
+    "name": "Sound Plate",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held: Sound-type moves from the holder do 20% more damage. Changes Arceus's and Judgment's type to Sound.",
+    "holdEffect": "ArceusSound",
+    "holdParam": 20,
+    "flingPower": 90
+  },
+  {
+    "id": 9926,
+    "name": "Sound Memory",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 1000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held: Changes Silvally to its Sound form. Changes Multi-Attack's type to Sound.",
+    "holdEffect": "MemorySound",
+    "flingPower": 50
+  },
+  {
     "id": 9930,
     "name": "Book of Tales",
     "pocket": "KeyItems",
