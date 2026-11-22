@@ -65,7 +65,7 @@ Every session: its rules in GPU-free classes with their tests; its screen on the
 - Shots: `lf10_card_front_plain`, `lf11_card_designer`, `lf12_card_pose`, `lf13_card_background`, `lf14_card_six`, `lf15_card_signature`, `lf16_card_front_designed`, `lf17_card_back_signed`.
 - **Done when** a card designed in the harness shows its pose, background, six and greeting on the front and the signature on the back after a save and a load, and `diff` of `menus` shows a card never designed unchanged.
 
-### LF2 · The cards of the people beaten (optional: a collection nobody asked for, though made from data the game has)
+### LF2 · The cards of the people beaten (a collection nobody had asked for, though made from data the game has; asked for by the user on 2026-11-22)
 - `Models/CardAlbum.cs` and `SaveData.CardAlbum`: a card is given once, as the first battle with a Leader, a member of an Elite Four or a Champion of any region is won (`EndBattle`, the class by `BattleMeeting.ClassRow`; no script changes), and is made from data alone: the look (`CharacterStyles.InBattle`), the class and region, the team's icons, the band's colours (`SceneTransition.BandOf`, `PlainBand` where a region has no bands yet) and their first line of `trainer-lines.json` where they have one.
 - `CardPage.Cards` at the enum's end (the seam's rule: plan 18 · W2 owns `CardPage`), nine cards a page, one opened large; the busts rendered as the bands' are, for the page in view only, and freed on leaving.
 - Tests: a Leader's first win gives the card once and a rematch none; Kanto's and Hoenn's Champions each give theirs; the order by region and then by when beaten; a save round trip; every Leader, Elite Four member and Champion of every built region can be made into a card.
@@ -155,22 +155,25 @@ Every session: its rules in GPU-free classes with their tests; its screen on the
 3. **The home's room.** *Recommended:* the room goes with its door: wherever the base is opened it is the room it was first made in with everything where it was, and MOVE IN HERE at its PC takes the spot's own room, each room's last layout kept. The alternative is Emerald's rule as Hoenn has it today: each spot its own room, and a base opened elsewhere packed up into the PC.
 4. **The phone.** *Recommended:* one phone of our own for Unova and every region after it (the Lumiose era too), in the region's colour, beside the Pokégear and the PokéNav, which stay Johto's and Hoenn's. The alternative is a device of our own in each region after each game's own idea (a wrist phone, a projector, a phone with a Pokémon in it): five screens instead of one.
 5. **The photo book.** *Recommended:* a hundred photographs at 1920 × 1080 beside the saves, each with a small copy for its page, photo mode's own 4K picture still written to the screenshots folder. The alternative keeps the book's pictures at 4K (about four times the disk) or keeps no book (the pictures in the screenshots folder alone, the spots counted with nothing to look at).
-6. **The optional sessions.** *Recommended:* LF2 (the cards of the people beaten), LF8 (the neighbours) and LF10 (the film desk) built only if asked for after the rest. The alternative builds them in the plan's order.
+6. **The optional sessions.** *Recommended:* LF2 (the cards of the people beaten), LF8 (the neighbours) and LF10 (the film desk) built only if asked for after the rest. The alternative builds them in the plan's order. *Answered 2026-11-22*: asked for: LF2 by name ("build it") and the rest with "Plans 42 to 44: finish them" ([ANSWERS-2026-11-22.md](decisions/ANSWERS-2026-11-22.md)).
 
 7. **Two homes in Sinnoh.** LF7 and LF8 give Sinnoh a home opened by Secret Power from a spot, beside the Underground's base (plan 06 · R16a), so a Sinnoh game has two bases. *Recommended:* keep both, each for what it is: the Underground's base for digging, flags and its Spheres as Platinum has it, the home for living in, decorating and carrying across regions; they share only the decorating seam, and the home's neighbours (LF8) are the Underground's diggers' counterpart outside Sinnoh's tunnels. The alternative makes the Underground's base the home in Sinnoh (its spot is the tunnels, its room the base's), with the home's spots in the other regions alone, which means one base's room travelling across the Underground's rules and plan 38 · EX6's statues moving with it.
 
 ## Status
 
 - [x] LF1 The card the player designs (as built below)
-- [ ] LF2 The cards of the people beaten (optional; left unbuilt by the answer sheet's question 57, its default)
+- [ ] LF2 The cards of the people beaten (left unbuilt by the answer sheet's question 57, its default; **wanted** since the user's answers of 2026-11-22, "Cards of the people beaten: build it", so no longer optional)
 - [x] LF3 The salon and the dye house (as built below; its own room owed)
 - [x] LF4 Photographs: poses, the photo book and the photo spots (as built below; every built region's five spots since 2026-11-12's second session)
 - [x] LF5 The photo studio (as built below; its room owed; its pointer, its last composition saved and Lumiose's counter since 2026-11-12's second session)
 - [x] LF6 A phone for the later regions (2026-11-12, two sessions: as built below; the shots taken, see the second session's note)
 - [x] LF7 A home that goes with the player (with Mom's savings in Johto) (2026-11-12 and 2026-11-13, two sessions: as built below)
-- [ ] LF8 Neighbours, flags and the home's rank (optional)
-- [ ] LF9 Cafés and the travelling folk
-- [ ] LF10 The film desk (optional)
+- [ ] LF8 Neighbours, flags and the home's rank (optional; the user wants plans 42 to 44 finished, 2026-11-22)
+- [ ] LF9 Cafés and the travelling folk (the next unticked session; its folk at the sheet's defaults of 2026-11-10)
+- [ ] LF10 The film desk (optional; the user wants plans 42 to 44 finished, 2026-11-22)
+
+**The user's answers of 2026-11-22** ([ANSWERS-2026-11-22.md](decisions/ANSWERS-2026-11-22.md), "Optional builds, now wanted"): **LF2 is wanted** ("Cards of the people beaten: build it"), and **plans 42 to 44 are to be finished**, which for this plan means LF9 and the two optional sessions still open, LF8 and LF10, built after it. Decision 6's "built only if asked for" is answered by it: asked for.
+
 ## As built (2026-11-12)
 
 Decisions 1 to 7 stand at "Recommended" (the answer sheet of 2026-11-10 changed none of plan 43's; its part F, the folk, is LF9's and stands at its defaults; question 57 leaves LF2, LF8 and LF10 unbuilt).

@@ -162,7 +162,7 @@ Every session builds its rules with their tests (`dotnet test --filter`), writes
 2. **Where the arcade stands.** *Recommended:* a room of ours behind one of Lumiose City's shut doors (Kalos had no Game Corner, and Lumiose is drawn by hand). The alternatives are Goldenrod's hall beside the card tables, or plan 41's hub.
 3. **HeartGold's Celadon tables.** *Recommended:* the card game, as HeartGold has them; Veilstone, FireRed's Celadon and Mauville keep their machines, so no region loses its slots. The alternative keeps Celadon's slots and plays the card game at Goldenrod alone.
 4. **The riding race (PS8).** *Recommended:* optional, built only if asked, at a stable of ours in Kalos, on the player's own Pokémon. The alternative drops it: trick surfing is the plan's ride.
-5. **The link rooms' games, the pinball table and the café of orders (PS9, PS10).** *Recommended:* optional and last, PS9 first, since its two rooms and their blank boards already wait. The alternative drops them: the boards stay blank, as they are.
+5. **The link rooms' games, the pinball table and the café of orders (PS9, PS10).** *Recommended:* optional and last, PS9 first, since its two rooms and their blank boards already wait. The alternative drops them: the boards stay blank, as they are. *Answered 2026-11-22*: build them ("Plans 42 to 44: finish them"), PS9 first.
 6. **A live contest show (Omega Ruby's Contest Spectacular).** *Recommended:* left out: Hoenn's halls play Emerald's contest whole, its crowd's meter included, and Sinnoh's play Platinum's, so a third set of rules in the same halls is a duplicate, and its own beats are a costumed mascot and a host, which new content may not recreate. The alternative is an optional session of a third rule set on `AppealRound` (the crowd's meter to a finale, Mega Evolution on stage) in a hall of ours in Kalos.
 
 ## Status
@@ -175,8 +175,10 @@ Every session builds its rules with their tests (`dotnet test --filter`), writes
 - [x] PS6 The arcade: a match-three and a picture-logic puzzle (2026-11-12; its shots owed, below)
 - [x] PS7 Trick surfing (2026-11-14; below)
 - [x] PS8 A riding race (2026-11-14; below)
-- [ ] PS9 The link rooms' games, played alone (optional)
-- [ ] PS10 A pinball table and a café of orders (optional)
+- [ ] PS9 The link rooms' games, played alone (optional; wanted: the user's "Plans 42 to 44: finish them" of 2026-11-22)
+- [ ] PS10 A pinball table and a café of orders (optional; wanted since 2026-11-22, as PS9; its café after plan 43 · LF9's cafés, as "Needs and gives" has it)
+
+**The user's answers of 2026-11-22** ([ANSWERS-2026-11-22.md](decisions/ANSWERS-2026-11-22.md), "Optional builds, now wanted"): **plans 42 to 44 are to be finished**. For this plan that is PS9 and then PS10, which decision 5 left optional and last; the user had already un-deferred the optional sessions on 2026-11-14, when PS7 and PS8 were built. Decision 6's live contest show was never a session and is not asked for.
 
 ## As built (2026-11-12)
 
