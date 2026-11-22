@@ -400,7 +400,7 @@ public class BattleMechanicsTests
 
         // Every ability of Platinum's has its code since plan 06 · R7, and every later one since R27b
         var records = GameDataFiles.Load<List<AbilityDatabase.AbilityRecord>>(AbilityDatabase.FileName);
-        var platinums = records.Where(r => r.Generation <= 4).Select(r => r.Name).ToList();
+        var platinums = records.Where(r => r.Generation is >= 1 and <= 4).Select(r => r.Name).ToList();
         Assert.Equal(123, platinums.Count);
         var pending = AbilityDatabase.GetAll().Where(a => !a.IsImplemented).Select(a => a.Name).ToList();
         Assert.Empty(platinums.Intersect(pending));

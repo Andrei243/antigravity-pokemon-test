@@ -884,7 +884,7 @@ internal static partial class PokemonModels
         "Tatsushogun", "Clodkaiser", "Farigigiraf", "Dunsprawl", "Tuskendon", "Shriekpuff", "Fungoliath", "Banshemane", "Saurmoth",
         "Lodestatic", "Treadnought", "Cryoparcel", "Gauntletron", "Hydrajet", "Fusionmoth", "Thornframe", "Bullionaire",
         "Tabletruin", "Swordruin", "Vesselruin", "Beadruin", "Lunaroar", "Paladroid", "Chagamage", "Okidaimyo", "Munkiregent", "Fezantessa"
-    }.Concat(CarpathiaNames()).Where(n => !n.Contains("-")).ToArray();
+    }.Concat(CarpathiaNames().Where(n => !n.Contains("-"))).ToArray();
 
     /// <summary>
     /// Forms with a hand-built model of their own: every form of a hand-built species, Platinum's own (Rotom's

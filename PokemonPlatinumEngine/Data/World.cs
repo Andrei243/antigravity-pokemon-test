@@ -1830,7 +1830,12 @@ public static class WorldMapBuilder
             {
                 if (!IsRock(x, z)) continue;
                 bool floorBehind = map.InBounds(x, z - 1) && !IsRock(x, z - 1);
-                map.SetHeight(x, z, near[z * w + x] + (floorBehind ? CaveLipRise : CaveWallRise));
+                float stands = near[z * w + x];
+                // A lip before a lower floor, with a higher floor beside it (a cave's two levels): level with the higher
+                // floor and no more, the edge of the upper level. With a lip's rise on top of that it stood a tile and
+                // three quarters over whoever walked the lower floor behind it, and hid them to the shoulders
+                if (floorBehind && onTheHigherFloor && stands >= near[(z - 1) * w + x] + CaveLipRise) map.SetHeight(x, z, stands);
+                else map.SetHeight(x, z, stands + (floorBehind ? CaveLipRise : CaveWallRise));
             }
     }
 

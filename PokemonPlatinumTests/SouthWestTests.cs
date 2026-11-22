@@ -150,11 +150,16 @@ public class SouthWestTests
         // (4,4) to (10,4): the lower floor to the north, the upper one, a tile higher, to the south
         float lower = room.HeightAt(5, 3), upper = room.HeightAt(5, 5);
         Assert.Equal(lower + 1f, upper);
+        // The rock between them is the upper level's edge, level with it: a lip's rise on top of that hid whoever
+        // walked the lower floor behind it to the shoulders
         for (int x = 4; x <= 10; x++)
         {
             Assert.Equal(TileType.CaveWall, room.GetGroundTile(x, 4));
-            Assert.Equal(upper + WorldMapBuilder.CaveLipRise, room.HeightAt(x, 4));
+            Assert.Equal(upper, room.HeightAt(x, 4));
         }
+        // A lip with the upper floor behind it is a lip as anywhere: (6,6), the upper floor north of it, the lower south
+        Assert.Equal((upper, lower), (room.HeightAt(6, 5), room.HeightAt(7, 7)));
+        Assert.Equal(upper + WorldMapBuilder.CaveLipRise, room.HeightAt(6, 6));
         // Rock beside the ramp between the levels stands on the ramp's upper end, as its neighbours on the upper floor
         Assert.NotEqual(0f, room.SlopeAt(6, 14).X + room.SlopeAt(6, 14).Z);
         Assert.Equal(upper + WorldMapBuilder.CaveWallRise, room.HeightAt(8, 14));
