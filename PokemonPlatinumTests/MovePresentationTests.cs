@@ -693,7 +693,7 @@ public class MovePresentationTests
     {
         // Plan 06 · R31: none has a look or a sound of its own yet, and each draws something by its type's template
         var ours = MoveDatabase.GetAll().Where(IsOurs).ToList();
-        Assert.Equal(72, ours.Count);
+        Assert.Equal(72 + 7, ours.Count); // plus plan 46 · CP10's seven signature moves
         foreach (var move in ours)
         {
             Assert.Null(MoveFx.BatchOf(move.Name));

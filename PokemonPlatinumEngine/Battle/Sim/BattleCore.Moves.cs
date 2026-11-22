@@ -980,6 +980,7 @@ public sealed partial class BattleCore
 
         use.StrikeCount = Math.Max(1, effect.Strikes?.Invoke(this, use) ?? 1);
         ParentalBond(use);
+        ThreeHeads(use);
         bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility) || DamageCalculator.IgnoresAbilities(use.Data);
         foreach (var t in use.Targets)
         {
@@ -1030,6 +1031,7 @@ public sealed partial class BattleCore
         }
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
         NoteLanded(use);
+        EchoPouch(use);
 
         AfterStrike(use);
         // Relic Song turns Meloetta (plan 06 · R19b)
@@ -1292,6 +1294,8 @@ public sealed partial class BattleCore
             {
                 Say(hit.FailLine ?? (several || !IsSingle ? Text.Of("battle.avoidedTheAttack", ("target", t.Name)) : Text.Of("battle.attackMissed", ("user", user.Name))));
                 Unlock(user);
+                // Anvil: a contact move that missed still deals a quarter (plan 46 · CP10)
+                if (hit.Missed && !hit.OutOfReach && hit.FailLine == null) AnvilGlances(use, hit);
                 use.Effect.OnMiss(this, use, hit);
                 continue;
             }

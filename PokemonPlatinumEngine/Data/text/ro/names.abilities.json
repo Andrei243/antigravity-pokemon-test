@@ -312,7 +312,14 @@
     "Spicy Spray": "Spray Iute",
     "Eelevate": "Plutire de Țipar",
     "Fire Mane": "Coamă de Foc",
-    "Aura Guard": "Gardă de Aură"
+    "Aura Guard": "Gardă de Aură",
+    "Forest Hush": "Tăcerea Codrului",
+    "Anvil": "Nicovală",
+    "Echo Pouch": "Pungă cu Ecou",
+    "Noonday": "Amiază",
+    "Eclipse": "Eclipsă",
+    "Three Heads": "Trei Capete",
+    "War Cry": "Strigăt de Luptă"
   },
   "descriptions": {
     "abilities": {
@@ -628,7 +635,14 @@
       "Spicy Spray": "Când primește pagubă de la o mișcare, îl arde pe atacator.",
       "Eelevate": "Plutește: Pământul și capcanele de pe câmp nu-l ating. Când doboară o țintă, cea mai mare statistică crește cu o treaptă.",
       "Fire Mane": "Mișcările de Foc lovesc cu 50% mai tare.",
-      "Aura Guard": "Mișcările de contact îi fac jumătate din pagubă."
+      "Aura Guard": "Mișcările de contact îi fac jumătate din pagubă.",
+      "Forest Hush": "Mișcările care fac sunet eșuează împotriva lui cât are toată viața.",
+      "Anvil": "Mișcările lui de contact care ratează tot îi fac un sfert din pagubă.",
+      "Echo Pouch": "O mișcare de sunet care face pagubă lovește din nou tura următoare, cu jumătate de putere.",
+      "Noonday": "Aduce soarele arzător, pe care nicio altă vreme nu-l poate opri cât timp e pe teren.",
+      "Eclipse": "Întunecă terenul cinci ture: precizia tuturor scade, iar mișcările de tip Întuneric și Fantomă sunt mai puternice.",
+      "Three Heads": "Prima lui mișcare cu pagubă din fiecare tură lovește de trei ori, cu 40% din putere.",
+      "War Cry": "La sfârșitul fiecărei ture în care e pe teren, Atacul și Atacul Special al echipei lui cresc, de cel mult trei ori."
     }
   }
 }

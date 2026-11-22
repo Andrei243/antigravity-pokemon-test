@@ -386309,7 +386309,7 @@
     "abilities": [
       "Overgrow"
     ],
-    "hiddenAbility": "Soundproof"
+    "hiddenAbility": "Forest Hush"
   },
   {
     "dexNumber": 10002,
@@ -386441,7 +386441,7 @@
     "abilities": [
       "Overgrow"
     ],
-    "hiddenAbility": "Soundproof"
+    "hiddenAbility": "Forest Hush"
   },
   {
     "dexNumber": 10003,
@@ -386538,6 +386538,10 @@
         "moveName": "Power Whip"
       },
       {
+        "level": 38,
+        "moveName": "Codru's Ambush"
+      },
+      {
         "level": 110,
         "moveName": "Verdant Renewal"
       },
@@ -386601,7 +386605,7 @@
     "abilities": [
       "Overgrow"
     ],
-    "hiddenAbility": "Soundproof"
+    "hiddenAbility": "Forest Hush"
   },
   {
     "dexNumber": 10004,
@@ -386728,7 +386732,7 @@
     "abilities": [
       "Blaze"
     ],
-    "hiddenAbility": "Tough Claws"
+    "hiddenAbility": "Anvil"
   },
   {
     "dexNumber": 10005,
@@ -386855,7 +386859,7 @@
     "abilities": [
       "Blaze"
     ],
-    "hiddenAbility": "Tough Claws"
+    "hiddenAbility": "Anvil"
   },
   {
     "dexNumber": 10006,
@@ -386948,6 +386952,10 @@
         "moveName": "Flare Blitz"
       },
       {
+        "level": 38,
+        "moveName": "Smith's Hammer"
+      },
+      {
         "level": 110,
         "moveName": "Kindle"
       },
@@ -387003,7 +387011,7 @@
     "abilities": [
       "Blaze"
     ],
-    "hiddenAbility": "Tough Claws"
+    "hiddenAbility": "Anvil"
   },
   {
     "dexNumber": 10007,
@@ -387146,7 +387154,7 @@
     "abilities": [
       "Torrent"
     ],
-    "hiddenAbility": "Punk Rock"
+    "hiddenAbility": "Echo Pouch"
   },
   {
     "dexNumber": 10008,
@@ -387282,7 +387290,7 @@
     "abilities": [
       "Torrent"
     ],
-    "hiddenAbility": "Punk Rock"
+    "hiddenAbility": "Echo Pouch"
   },
   {
     "dexNumber": 10009,
@@ -387368,6 +387376,10 @@
         "moveName": "Hydro Pump"
       },
       {
+        "level": 38,
+        "moveName": "Delta Horn"
+      },
+      {
         "level": 110,
         "moveName": "Tidal Ward"
       },
@@ -387427,7 +387439,7 @@
     "abilities": [
       "Torrent"
     ],
-    "hiddenAbility": "Punk Rock"
+    "hiddenAbility": "Echo Pouch"
   },
   {
     "dexNumber": 10010,
@@ -420553,6 +420565,10 @@
         "moveName": "Flare Blitz"
       },
       {
+        "level": 64,
+        "moveName": "Sun Seizure"
+      },
+      {
         "level": 110,
         "moveName": "Kindle"
       },
@@ -420601,7 +420617,7 @@
       "HM08"
     ],
     "abilities": [
-      "Drought"
+      "Noonday"
     ]
   },
   {
@@ -420695,6 +420711,10 @@
         "moveName": "Foul Play"
       },
       {
+        "level": 64,
+        "moveName": "Moon Howl"
+      },
+      {
         "level": 110,
         "moveName": "Dread Aura"
       },
@@ -420741,7 +420761,7 @@
       "HM08"
     ],
     "abilities": [
-      "Pressure"
+      "Eclipse"
     ]
   },
   {
@@ -420830,6 +420850,10 @@
         "moveName": "Thunder"
       },
       {
+        "level": 64,
+        "moveName": "Hailstorm Rider"
+      },
+      {
         "level": 110,
         "moveName": "Wyrm Dance"
       },
@@ -420871,7 +420895,7 @@
       "TM90"
     ],
     "abilities": [
-      "Pressure"
+      "Three Heads"
     ]
   },
   {
@@ -420957,6 +420981,10 @@
         "moveName": "Dragon Rush"
       },
       {
+        "level": 64,
+        "moveName": "Banner Howl"
+      },
+      {
         "level": 110,
         "moveName": "Wyrm Dance"
       },
@@ -420999,7 +421027,7 @@
       "HM06"
     ],
     "abilities": [
-      "Pressure"
+      "War Cry"
     ]
   },
   {

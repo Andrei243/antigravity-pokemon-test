@@ -466,6 +466,9 @@ internal sealed class Volatiles
     /// <summary>Supreme Overlord: how many of its side had fainted as it came in, five at most (Showdown's <c>fallen</c>).</summary>
     public int Fallen;
 
+    /// <summary>War Cry (plan 46 · CP10, ours): the turn ends it has rallied its team since it came in, three at most.</summary>
+    public int WarCries;
+
     /// <summary>Cud Chew: the berry it ate and will chew again, and the turn ends left until it does (Showdown's <c>counter</c>).</summary>
     public ItemData? CudChewBerry;
     public int CudChewTurns;
@@ -617,6 +620,9 @@ internal sealed class TurnFlags
     /// Bond's second (a quarter as strong).
     /// </summary>
     public bool AteBoosted, SheerForced, ParentalChild;
+
+    /// <summary>Three Heads (plan 46 · CP10, ours): the move being used is its three strikes at 40% of the power; <see cref="HeadsUsed"/>: its first damaging move this turn has been used.</summary>
+    public bool HeadStrike, HeadsUsed;
 
     /// <summary>A Gem went off for the move it is using (plan 06 · R28a): its power is 5325/4096 of itself.</summary>
     public bool GemBoosted;
