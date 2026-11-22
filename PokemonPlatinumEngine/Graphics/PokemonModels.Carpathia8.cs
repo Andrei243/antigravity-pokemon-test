@@ -200,7 +200,7 @@ internal static partial class PokemonModels
             }
             // Ferns at its edges and moss hanging over its flanks
             foreach (var (x, z, lean) in new[] { (0.15f, 0.12f, 0.6f), (-0.15f, 0.1f, -0.6f), (0.14f, -0.16f, 0.5f), (-0.13f, -0.18f, -0.5f) })
-                Carp8Fern(b, Body, V(x * k, 0.42f * k, z * k), V(lean, 1f, 0.2f), 0.13f * k, Rgb(78, 150, 58));
+                Carp8Fern(b, Body, V(x * 0.6f * k, 0.42f * k, z * k), V(lean, 1f, 0.2f), 0.13f * k, Rgb(78, 150, 58));
             foreach (var (x, z) in new[] { (0.16f, 0.0f), (-0.16f, -0.04f), (0.12f, -0.14f), (-0.11f, 0.12f) })
                 b.Ell(Body, V(x * k, 0.34f * k, z * k), V(0.03f * k, 0.06f * k, 0.035f * k), moss, mat: Leaf, blend: 0.02f);
         }
@@ -225,7 +225,7 @@ internal static partial class PokemonModels
         b.PaintEll(head, V(0, 0.775f * k, 0.38f * k), V(0.055f * k, 0.022f * k, 0.06f * k), cream);
         PokeBuilder.Both(s => b.Ell(head, V(0.018f * s * k, 0.815f * k, 0.43f * k), V(0.006f * k, 0.006f * k, 0.005f * k), Rgb(70, 86, 46), blend: 0.004f));
         if (big)
-            foreach (var (x, y, z) in new[] { (0f, 0.88f, 0.3f), (0.03f, 0.87f, 0.26f), (-0.03f, 0.87f, 0.26f), (0f, 0.86f, 0.22f) })
+            foreach (var (x, y, z) in new[] { (0f, 0.88f, 0.3f), (0.03f, 0.87f, 0.26f), (-0.03f, 0.87f, 0.26f), (0f, 0.865f, 0.28f) })
                 b.Ell(head, V(x * k, y * k, z * k), V(0.016f * k, 0.012f * k, 0.016f * k), stone, mat: Shell, blend: 0.006f);
         else
             Carp8Fern(b, head, V(0.02f * k, 0.78f * k, 0.42f * k), V(0.8f, -0.5f, 0.4f), 0.17f * k, Rgb(84, 160, 60));
@@ -439,6 +439,7 @@ internal static partial class PokemonModels
         b.PaintEll(tail, V(0, 0.32f, -0.64f), V(0.03f, 0.1f, 0.06f), Rgb(110, 140, 186), V(-20f, 0, 0));
 
         int head = b.Head(V(0, 0.74f, 0.03f));
+        b.Limb(head, V(0, 0.7f, 0.03f), V(0, 0.82f, 0.05f), 0.085f, 0.08f, brown);
         var c = V(0, 0.86f, 0.06f);
         var r = V(0.12f, 0.1f, 0.11f);
         b.Ell(head, c, r, brown);
@@ -490,6 +491,7 @@ internal static partial class PokemonModels
         b.Ell(Body, V(0, 0.2f, 0), V(0.15f, 0.17f, 0.13f), russet);
         b.PaintEll(Body, V(0, 0.17f, 0.08f), V(0.11f, 0.13f, 0.08f), belly);
         int tail = b.Tail(V(0, 0.08f, -0.12f));
+        b.Limb(tail, V(0, 0.16f, -0.07f), V(0, 0.06f, -0.13f), 0.05f, 0.04f, russet);
         Carp8Paddle(b, tail, V(0, 0.05f, -0.1f), V(0, 0.03f, -0.38f), 0.085f);
 
         int head = b.Head(V(0, 0.32f, 0.02f));
@@ -534,6 +536,7 @@ internal static partial class PokemonModels
         b.Ell(Body, V(0, 0.34f, -0.02f), V(0.24f, 0.24f, 0.3f), red);
         b.PaintEll(Body, V(0, 0.24f, 0.14f), V(0.17f, 0.15f, 0.14f), belly);
         int tail = b.Tail(V(0, 0.14f, -0.28f));
+        b.Limb(tail, V(0, 0.3f, -0.2f), V(0, 0.1f, -0.3f), 0.07f, 0.05f, red);
         Carp8Paddle(b, tail, V(0, 0.08f, -0.26f), V(0, 0.04f, -0.66f), 0.13f);
 
         // The lodge on its back: a mound of woven branches with leaves sprouting from it
@@ -938,7 +941,7 @@ internal static partial class PokemonModels
             b.Tube(arm, Smooth(3, pts), 0.02f, 0.014f, stem, blend: 0.01f);
             Petal(b, arm, pts[^1], pts[^1] + Vector3.Normalize(pts[^1] - pts[^2]) * 0.06f, 0.022f, leaf, Leaf, 0.008f);
             if (s < 0)
-                b.Tube(arm, Spiral(V(-0.24f, 0.5f, 0.04f), V(-1, 0, 0), V(0, 1, 0), 0.035f, 0.012f, 0f, 1.6f * MathF.PI, 12), 0.009f, 0.006f, stem, blend: 0.004f);
+                b.Tube(arm, Spiral(V(-0.225f, 0.44f, 0.04f), V(-1, 0, 0), V(0, 1, 0), 0.035f, 0.012f, 0f, 1.6f * MathF.PI, 12), 0.009f, 0.006f, stem, blend: 0.004f);
         });
 
         // A pale face, eyes shut, crowned by a pink bud in its green sepals
