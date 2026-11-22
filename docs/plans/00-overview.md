@@ -50,7 +50,7 @@ Counted again on 2026-11-22 from every plan's status list (the count of 2026-11-
 | 30 · Free movement | FM0–FM3, FM6–FM10, FM12, FM13; the Kalos gate opened 2026-11-12 | FM4, FM5 (built, the user's word), FM14 | FM14 is Paldea's story (PD1 to PD8); the crossing's scene of decision 4's note (chibi to grown and back, old wave 98) is to check; FM11 optional |
 | 32 · Open-world engine | OW0 to OW10 (2026-11-09; "After OW10" 2026-11-12) | — | the floors and decision 17 are the user's (item 1); to move to finished/ |
 | 33 · Galar | GL1–GL7 (2026-11-09 to 2026-11-14; the bot catches the Weald's legend) | owed only | owed: the `galar` mode's shots, Route 10, the Rotom Bike, the rest of the Wild Area; GL8, GL9 optional |
-| 34 · Paldea | PD1–PD5, PD6's first session (2026-11-13 to 2026-11-15) | PD6's second session (**running**), PD7, PD8, PD9 | PD10–PD12 optional |
+| 34 · Paldea | PD1–PD6 (2026-11-13 to 2026-11-15; PD6's second session merged 2026-11-23: the North Province, Glaseado, eight badges, the ride with no chunk waited for) | PD7, PD8, PD9 | PD10–PD12 optional |
 | 35 · Bonding | BN1–BN7 (BN7 optional, built) | — | BN8 optional |
 | 36 · Training | TR1–TR9 | — | to move to finished/ |
 | 37 · Battle facilities | FC1–FC8 | — | FC9, FC10 optional |
@@ -135,7 +135,7 @@ LF9 was marked H when it was laid (old wave 107); here it waits for its folk's l
 
 Each column is in its order; a row goes into the first wave that has room under the rules above.
 
-- **Paldea (lane 7, plan 34)**: PD6's second session (running) → PD7 → PD8 (with 30 · FM14) → PD9 after the Hall of Fame (with 03 · D15's Paldea placements and Paldea's share of the stones of our own Megas that 40 · GE11 owes to Alola, Galar and Paldea). Owed from the sessions built, for the shots pass or the next session: the bot playing a raid and riding the mount's links, the academy's halls past the entrance hall, Cascarrafa's falls drawn falling, the new cast's voices by ear. Optional, last and only if its story is played through: PD10 to PD12.
+- **Paldea (lane 7, plan 34)**: PD6 (done, merged 2026-11-23) → PD7 → PD8 (with 30 · FM14) → PD9 after the Hall of Fame (with 03 · D15's Paldea placements and Paldea's share of the stones of our own Megas that 40 · GE11 owes to Alola, Galar and Paldea). Owed from the sessions built, for the shots pass or the next session: the bot playing a raid and riding the mount's links, the academy's halls past the entrance hall, Cascarrafa's falls drawn falling, the new cast's voices by ear. Optional, last and only if its story is played through: PD10 to PD12.
 - **Carpathia (plan 46)**:
   - *The species, beside the waves* (decision 9): CP4, CP5 and CP7 done (merged 2026-11-23: batches 1 to 6, 8 and 10 to 13, three batches to a session line) → CP6's batches 7 and 9 → CP8's batch 14 (the regional forms), each H and U (the user's board); CP9 any time.
   - *The gimmicks*: CP12's sculpts in two sessions (CP12a and CP12b, 30 Tale Forms and Nazdravan's and Maiastra's: decision 21), each after the species it binds are sculpted, with the tales' field looks, the wake cue and the songs' tale layers (H, the user's ear); CP13 (rules, lane 3) → CP14 (the four masks on every body, H); CP16 (seasons in the open world, lane 7, beside Paldea's sessions when lane 7 is free); CP17 (Carpathian architecture, H).
