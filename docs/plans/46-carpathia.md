@@ -149,8 +149,8 @@ Answered on 2026-11-09:
 
 Open, each with its recommendation (the session named goes ahead on it unless the user says otherwise):
 
-13. **Sound's matchups** (CP2). *Recommended:* the tables above. Arceus and Silvally get no Sound form.
-14. **Existing sound moves** (CP2). *Recommended:* they keep their types; Sound-type moves are new. The alternative retypes a few (Boomburst, Hyper Voice), which moves the golden battles and the oracle.
+13. **Sound's matchups** (CP2). *Answered 2026-11-22 (the Decision Sheet):* the tables above, written as a table of their own, **and Arceus and Silvally DO get a Sound form** (a Sound Plate and a Sound Memory). See [ANSWERS-2026-11-22](decisions/ANSWERS-2026-11-22.md); this overrules CP2's first build.
+14. **Existing sound moves** (CP2). *Answered 2026-11-22:* retype a few (Boomburst, Hyper Voice and the like), which moves the golden battles and the oracle; the moves are chosen when the follow-up runs and shown to the user.
 15. **One tale and one mask a battle** (CP11, CP13). *Recommended:* each side may tell one tale (and answer once) and mask one Pokémon. The alternative lets a mask be worn only by a Pokémon bound to the tale being told.
 16. **The map's sketch and the towns' names** (CP18). The user judges the sketch, the first town and the names before the rest is built.
 17. **The professor, the rival and the villain team's name** (CP18). Proposed with the starters' file. *Answered 2026-11-12*: two professors, Doina Lupescu and Ilie Sorescu; the rival Radu or Ilinca by the look; Team Zenith under Aurelian Zenovie; the apprentices Mara and Costel ([the outline](decisions/CP-story-outline.md)). The Champion, the executives and the leaders are proposed in [the chapters](decisions/CP-story-chapters.md), with eight questions of their own.
@@ -271,7 +271,8 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 ## Status
 
 - [x] CP1 Species made from nothing (2026-11-12; the table empty until CP3; see "As built", below)
-- [x] CP2 The Sound type (2026-11-12; decisions 13 and 14 carried out as recommended; see "As built", below)
+- [x] CP2 The Sound type (2026-11-12; built on the recommendations of decisions 13 and 14; **the user answered both otherwise on 2026-11-22: see CP2b**)
+- [ ] CP2b The Sound type, as answered (Sound Plate and Sound Memory, Arceus-Sound and Silvally-Sound with models, a few existing sound moves retyped with the goldens and the oracle accepted; decisions 13 and 14 as answered)
 - [x] CP3 The first proposals approved (starters and legendaries approved 2026-11-09; every species and form of the briefs made data 2026-11-21 at the user's word to start modelling; see "CP3 as built")
 - [x] The story's outline (2026-11-12: the user's beats, answers and names approved) and its chapters (2026-11-12, docs; ten open questions (two added 2026-11-12 with the new mythicals) waiting for the user)
 - [ ] CP4 Sculpts I

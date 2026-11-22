@@ -776,9 +776,12 @@ public sealed partial class WorldRenderer
         // "Climates"); the things of the map, drawn before them, are lit as the rock they stand among is
         if (rig.PeopleWash > 0f) shaders.SetPeopleLight(ArtLook.ForPeople(light, rig.PeopleWash));
         // In a room the people and the Pokémon stand straight on screen, though the room keeps its perspective
+        // (each about the floor it stands on: a Gym's decks and tiers are floors too, and the room isn't straightened)
         if (indoors) shaders.SetUprightCards(ArtLook.FieldUpright, pitchDeg);
+        roomCards = indoors;
         DrawPokemon(CharacterPass.Color);
         DrawPeople(CharacterPass.Color, FrameSection.Scene);
+        roomCards = false;
         if (indoors) shaders.SetUprightCards(0f, pitchDeg);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
@@ -1132,11 +1135,14 @@ public sealed partial class WorldRenderer
         public readonly FieldSeating? Seating;
         /// <summary>How far a grown rig is drawn off its feet, which its motion never sees (the player's step back in a talk).</summary>
         public readonly Vector3 Drawn;
+        /// <summary>The drawn height of the floor they stand on: what a room's card is straightened about (<see cref="FieldShaders.SetCardFloor"/>).</summary>
+        public readonly float Floor;
 
-        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null, object? who = null, bool sprite = false, FieldSeating? seating = null, Vector3 drawn = default)
+        public Actor(CharacterRig rig, Vector3 feet, float yaw, CharacterPose pose, (float X0, float X1, float Top)? over = null, object? who = null, bool sprite = false, FieldSeating? seating = null, Vector3 drawn = default, float floor = 0f)
         {
             Seating = seating;
             Drawn = drawn;
+            Floor = floor;
             Rig = rig;
             Feet = feet;
             Yaw = yaw;
@@ -1200,10 +1206,13 @@ public sealed partial class WorldRenderer
 
     // The Pokémon the player rides on water, when there is one to draw: the swimmer every Pokémon shares, or the
     // carrier's own field sprite (plan 10 · F1)
-    private (Vector3 At, float Yaw, FieldSprites.Strip? Own)? mount;
+    private (Vector3 At, float Yaw, FieldSprites.Strip? Own, float Floor)? mount;
+
+    // Whether the cards being drawn are a room's, each straightened about its own floor (FieldShaders.SetCardFloor)
+    private bool roomCards;
 
     // The Pokémon standing in the field in view (plan 10 · F1), and how many field sprites a frame may still bake
-    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving, float Scale, bool Locked)> pokemon = new();
+    private readonly List<(Vector3 At, string Name, int Facing, int Frame, bool Moving, float Scale, bool Locked, float Floor)> pokemon = new();
     private int fieldBakes = 1;
 
     /// <summary>How many rows of the card a hop over a ledge lifts a Pokémon of the map at its height (plan 10 · F3): a quarter of a tile, as the player's.</summary>
@@ -1256,9 +1265,10 @@ public sealed partial class WorldRenderer
                 bool up = moving && !walks && MathF.Sin(npc.WalkCycle * MathF.Tau * 2f) > 0f;
                 // A hop a script or the follower's ledge gives it (plan 10 · F3), and a Pokémon in the water half under it
                 float hop = (up ? Rows(2f) : 0f) + Rows(npc.Hop * HopRows);
-                float ground = (npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz)) - SinkAt(map, sx, sz) - Rows(npc.Wading);
+                float floorUnder = npc.Level is { } deck ? Relief.Under(map, sx, sz, deck) : Relief.At(map, sx, sz);
+                float ground = floorUnder - SinkAt(map, sx, sz) - Rows(npc.Wading);
                 pokemon.Add((new Vector3(sx + nudge, ground + hop, sz), species, facingIndex,
-                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving, npc.Scale, npc.Locked));
+                    walks ? FieldSprites.WalkFrameAt(npc.WalkCycle) : moving ? (up ? 1 : 0) : FieldSprites.FrameAt(time + SeedOf(npc.Name + npc.Key) * 10f), moving, npc.Scale, npc.Locked, floorUnder));
                 continue;
             }
             if (npc.IsBerrySoil)
@@ -1310,7 +1320,8 @@ public sealed partial class WorldRenderer
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
             var rig = CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders);
-            var at = new Vector3(nx + nudge, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz);
+            float standsOn = npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz);
+            var at = new Vector3(nx + nudge, standsOn - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz);
             // Sitting or lying on their furniture, never in it (plan 11 · C7; style guide, "Characters", "Stances")
             pose.Stance = map.StanceOf(npc);
             // A grown region's fisher holds the rod, as the player fishing does (plan 30, the gate's owed); a chibi one is
@@ -1333,7 +1344,7 @@ public sealed partial class WorldRenderer
                 at = Seated(rig, pose.Stance, at, npc.Facing, underThem, npc.Level != null, MapScene.PitchOf(map));
             }
             actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose, Relief.DeckOver(map, at.X, at.Z, at.Y), npc,
-                !FieldRigChoice.LiveIn(pose.Stance) || rig.Kind != RigKind.Humanoid, seating));
+                !FieldRigChoice.LiveIn(pose.Stance) || rig.Kind != RigKind.Humanoid, seating, floor: standsOn));
         }
         strokesSince = Life.Now;
 
@@ -1345,7 +1356,7 @@ public sealed partial class WorldRenderer
         {
             string shown = GrownField ? FieldSprites.GrownName(avatar) : avatar;
             int avatarFacing = CharacterSprites.FacingIndex(player.Yaw);
-            pokemon.Add((new Vector3(px + NudgeOf(null), groundY + lift - SinkAt(map, px, pz), pz), shown, avatarFacing, FieldSprites.FrameAt(time), false, 1f, false));
+            pokemon.Add((new Vector3(px + NudgeOf(null), groundY + lift - SinkAt(map, px, pz), pz), shown, avatarFacing, FieldSprites.FrameAt(time), false, 1f, false, groundY));
             return;
         }
 
@@ -1436,18 +1447,18 @@ public sealed partial class WorldRenderer
             // (a grown player fishes, surfs and rides on land as a live rig, plan 30's owed: the rod in their hands,
             // kneeling on the Pokémon's back, astride a ride's)
             !(FieldRigChoice.LiveIn(playerPose.Stance) || fishing) || (riding && !grownRide), playerSeating,
-            new Vector3(0f, 0f, TalkBackOf(map, player))));
+            new Vector3(0f, 0f, TalkBackOf(map, player)), floor: groundY));
 
         if (player.Mount is { } ridden)
         {
             float mx = ridden.X + 0.5f, mz = ridden.Y + 0.5f;
             // A little nearer the camera than its rider, so its back covers the rider's shoes
             float sunk = carrier != null ? CarrierSunk(carrier) + FieldSprites.FootRows : 2f;
-            mount = (new Vector3(mx, Relief.At(map, mx, mz) + bob - Rows(sunk), mz + 0.06f), player.Yaw, carrier);
+            mount = (new Vector3(mx, Relief.At(map, mx, mz) + bob - Rows(sunk), mz + 0.06f), player.Yaw, carrier, Relief.At(map, mx, mz));
         }
         // A ride on land stands on the ground under its rider, a little nearer the camera, so its back covers their shoes
         else if (riding && carrier != null)
-            mount = (new Vector3(px + NudgeOf(null), groundY + lift + bob - Rows(FieldSprites.FootRows), pz + (grownRide ? rideAhead : 0.06f)), player.Yaw, carrier);
+            mount = (new Vector3(px + NudgeOf(null), groundY + lift + bob - Rows(FieldSprites.FootRows), pz + (grownRide ? rideAhead : 0.06f)), player.Yaw, carrier, groundY);
     }
 
     /// <summary>How many rows above the ground a rider of a ride on land sits: a little under half of the Pokémon's height (plan 23, wave 91).</summary>
@@ -1602,6 +1613,7 @@ public sealed partial class WorldRenderer
         {
             // Whoever stands under a bridge's deck is hidden by its boards (style guide, "Relief")
             if (actor.Over != null && pass == CharacterPass.Color) shaders.SetDeckOver(actor.Over);
+            if (roomCards) shaders.SetCardFloor(actor.Floor);
             CharacterSprites.DrawBillboard(context, actor.Rig, actor.Pose, actor.Yaw, actor.Feet, VerticalScale, pass);
             if (actor.Over != null && pass == CharacterPass.Color) shaders.SetDeckOver(null);
         }
@@ -1611,6 +1623,7 @@ public sealed partial class WorldRenderer
     /// <summary>The Pokémon the player rides: its own field sprite, or the swimmer every Pokémon shares.</summary>
     private void DrawMount(CharacterPass pass)
     {
+        if (roomCards && mount is { } stood) shaders.SetCardFloor(stood.Floor);
         if (mount is { Own: { } own } carried)
             CharacterSprites.DrawCard(own.Frames[0], carried.At, VerticalScale, pass);
         else if (mount is { } m) SurfMount.Draw(context, m.At, m.Yaw, VerticalScale, pass);
@@ -1623,8 +1636,9 @@ public sealed partial class WorldRenderer
     private void DrawPokemon(CharacterPass pass)
     {
         // An alpha's sprite is its species' drawn at its own size, its foot where a plain one's is (plan 10 · F10)
-        foreach (var (at, name, facing, frame, moving, scale, locked) in pokemon)
+        foreach (var (at, name, facing, frame, moving, scale, locked, floor) in pokemon)
         {
+            if (roomCards) shaders.SetCardFloor(floor);
             // A locked heart walking with the player is drawn in the lock's grey (plan 44 · SD2)
             Color? tint = locked ? CharacterSprites.LockedTint : null;
             // The walk strip once it is baked and the Pokémon is on the move (plan 10 · F2)

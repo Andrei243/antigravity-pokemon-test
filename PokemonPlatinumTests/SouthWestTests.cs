@@ -74,14 +74,122 @@ public class SouthWestTests
         Assert.DoesNotContain(Tiles(meadow), t => meadow.GetGroundTile(t.X, t.Y) is TileType.CaveWall or TileType.CaveFloor);
     }
 
+    // Whether a tile of the dark lies at the far end of a flight of side stairs, or right beside a way by side stairs
+    // whose flight the world has no plate for
+    private static bool PastASideFlight(Map cave, int x, int y)
+    {
+        foreach (int side in new[] { 1, -1 })
+        {
+            int tx = x - side;
+            while (cave.InBounds(tx, y) && cave.IsSolid(tx, y) && cave.GetGroundTile(tx, y) == TileType.Stairs) tx -= side;
+            if (cave.InBounds(tx, y) && !cave.IsSolid(tx, y) && cave.GetWarpAt(tx, y) != null
+                && cave.BehaviourAt(tx, y) == (side > 0 ? TileBehavior.StairsEast : TileBehavior.StairsWest)) return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// A way between a cave's floors by stairs at its side is seen (style guide, "Caves", "Ways between floors"): buried
+    /// in two tiles of rock, Iron Island's ways down were floor tiles like any other.
+    /// </summary>
+    [Fact]
+    public void ACavesSideStairsAreAFlightIntoTheDark()
+    {
+        var hall = MapNamed("IronIsland1F");
+        float floor = hall.HeightAt(6, 5);
+        foreach (var (way, side) in new[] { ((X: 4, Y: 3), -1), ((X: 8, Y: 3), 1) })
+        {
+            // The way itself is floor, walked onto, and the two tiles past it are steps going down, a tile a tile
+            Assert.False(hall.IsSolid(way.X, way.Y));
+            Assert.NotNull(hall.GetWarpAt(way.X, way.Y));
+            for (int k = 1; k <= 2; k++)
+            {
+                int x = way.X + side * k;
+                Assert.Equal((TileType.Stairs, true), (hall.GetGroundTile(x, way.Y), hall.IsSolid(x, way.Y)));
+                Assert.Equal(floor + 0.5f - k, hall.HeightAt(x, way.Y), 2);
+                Assert.Equal(-side, hall.SlopeAt(x, way.Y).X, 2);
+                // The rock south of the flight is its flank: no higher than the flight, so the camera sees down it
+                Assert.Equal(TileType.CaveWall, hall.GetGroundTile(x, way.Y + 1));
+                Assert.Equal(hall.HeightAt(x, way.Y), hall.HeightAt(x, way.Y + 1), 2);
+            }
+            // Past the flight, the dark of a passage at the height the flight comes down to
+            int dark = way.X + side * 3;
+            Assert.Equal((TileType.CaveMouth, true), (hall.GetGroundTile(dark, way.Y), hall.IsSolid(dark, way.Y)));
+            Assert.Equal(floor - 2f, hall.HeightAt(dark, way.Y), 2);
+            // The rock behind the flight stands as the rest of the cave's does
+            Assert.Equal(floor + WorldMapBuilder.CaveWallRise, hall.HeightAt(way.X + side, way.Y - 2));
+        }
+
+        // The other end of the west flight, a floor down, goes up into the dark
+        var below = MapNamed("IronIslandB1FLeft");
+        Assert.Equal(TileBehavior.StairsEast, below.BehaviourAt(15, 3));
+        Assert.Equal((TileType.Stairs, true), (below.GetGroundTile(16, 3), below.IsSolid(16, 3)));
+        Assert.True(below.HeightAt(17, 3) > below.HeightAt(16, 3) && below.HeightAt(16, 3) > below.HeightAt(15, 3));
+        Assert.Equal(TileType.CaveMouth, below.GetGroundTile(18, 3));
+
+        // In every cave of Sinnoh a way by side stairs has steps or the dark right beside it
+        foreach (var cave in BuiltMaps.Value.Values.Where(m => m.IsCave))
+            foreach (var warp in cave.Warps)
+            {
+                int side = cave.BehaviourAt(warp.SourceX, warp.SourceY) switch { TileBehavior.StairsEast => 1, TileBehavior.StairsWest => -1, _ => 0 };
+                if (side == 0 || cave.IsSolid(warp.SourceX, warp.SourceY)) continue;
+                var beside = cave.GetGroundTile(warp.SourceX + side, warp.SourceY);
+                Assert.True(beside is TileType.Stairs or TileType.CaveMouth || !cave.IsSolid(warp.SourceX + side, warp.SourceY) || cave.GetWarpAt(warp.SourceX + side, warp.SourceY) != null,
+                    $"{cave.Name}: the way at ({warp.SourceX},{warp.SourceY}) by side stairs has {beside} beside it");
+            }
+    }
+
+    /// <summary>
+    /// Where a cave has floors on two levels its rock stands on the higher one beside it, and rock tops are level
+    /// (style guide, "Caves"): Iron Island's walls between its levels had slanted tops, a quarter of a tile off.
+    /// </summary>
+    [Fact]
+    public void ACavesRockStandsOnTheHigherFloorBesideIt()
+    {
+        var room = MapNamed("IronIslandB1FLeft");
+        // (4,4) to (10,4): the lower floor to the north, the upper one, a tile higher, to the south
+        float lower = room.HeightAt(5, 3), upper = room.HeightAt(5, 5);
+        Assert.Equal(lower + 1f, upper);
+        for (int x = 4; x <= 10; x++)
+        {
+            Assert.Equal(TileType.CaveWall, room.GetGroundTile(x, 4));
+            Assert.Equal(upper + WorldMapBuilder.CaveLipRise, room.HeightAt(x, 4));
+        }
+        // Rock beside the ramp between the levels stands on the ramp's upper end, as its neighbours on the upper floor
+        Assert.NotEqual(0f, room.SlopeAt(6, 14).X + room.SlopeAt(6, 14).Z);
+        Assert.Equal(upper + WorldMapBuilder.CaveWallRise, room.HeightAt(8, 14));
+        Assert.Equal(room.HeightAt(8, 13), room.HeightAt(8, 14));
+
+        // The top of every tile of rock is drawn level: a step to rock that stands a little higher, never a slope
+        foreach (var (x, y) in Tiles(room).Where(t => room.GetGroundTile(t.X, t.Y) == TileType.CaveWall && room.SlopeAt(t.X, t.Y) == (0f, 0f)))
+        {
+            var c = Relief.Corners(room, x, y);
+            Assert.True(c.NW == c.NE && c.NE == c.SW && c.SW == c.SE, $"the rock at ({x},{y}) is drawn sloping: {c}");
+        }
+
+        // Steps the import knows by their texture that touch no floor are rock (Iron Island's lower left room)
+        var deep = MapNamed("IronIslandB2FLeft");
+        foreach (var (x, y) in new[] { (9, 43), (9, 44), (8, 45), (9, 45) })
+            Assert.Equal((TileType.CaveWall, true), (deep.GetGroundTile(x, y), deep.IsSolid(x, y)));
+        Assert.DoesNotContain(Tiles(deep), t => deep.GetGroundTile(t.X, t.Y) == TileType.Stairs && deep.IsSolid(t.X, t.Y)
+            && !new[] { (0, 1), (1, 0), (-1, 0), (0, -1) }.Any(d => deep.InBounds(t.X + d.Item1, t.Y + d.Item2)
+                && (!deep.IsSolid(t.X + d.Item1, t.Y + d.Item2) || deep.GetGroundTile(t.X + d.Item1, t.Y + d.Item2) == TileType.Stairs)));
+    }
+
     [Fact]
     public void ACavesWallsStandAboveItsFloor()
     {
         var gate = BuiltMaps.Value["OreburghGate1F"];
-        bool IsRock(int x, int y) => gate.GetGroundTile(x, y) == TileType.CaveWall;
+        // (the flight of its side stairs and the dark past it are laid over the rock once it stands, and the rock right
+        // south of them is their flank, no higher than they are: ACavesSideStairsAreAFlightIntoTheDark)
+        bool OfAFlight(int x, int y) => gate.InBounds(x, y) && gate.IsSolid(x, y)
+            && (gate.GetGroundTile(x, y) == TileType.Stairs
+                || gate.GetGroundTile(x, y) == TileType.CaveMouth && (gate.GetGroundTile(x - 1, y) == TileType.Stairs || gate.GetGroundTile(x + 1, y) == TileType.Stairs));
+        bool IsRock(int x, int y) => gate.GetGroundTile(x, y) == TileType.CaveWall && !OfAFlight(x, y - 1);
+        bool WasRock(int x, int y) => gate.GetGroundTile(x, y) == TileType.CaveWall || OfAFlight(x, y);
 
         // The gate's floor is all on one level
-        float floor = Assert.Single(Tiles(gate).Where(t => !IsRock(t.X, t.Y)).Select(t => gate.HeightAt(t.X, t.Y)).Distinct());
+        float floor = Assert.Single(Tiles(gate).Where(t => !WasRock(t.X, t.Y)).Select(t => gate.HeightAt(t.X, t.Y)).Distinct());
         var rises = Tiles(gate).Where(t => IsRock(t.X, t.Y)).Select(t => gate.HeightAt(t.X, t.Y) - floor).Distinct().OrderBy(r => r).ToList();
         Assert.Equal(new[] { WorldMapBuilder.CaveLipRise, WorldMapBuilder.CaveWallRise }, rises);
 
@@ -89,13 +197,13 @@ public class SouthWestTests
         // everything else stands the full height
         foreach (var (x, y) in Tiles(gate).Where(t => IsRock(t.X, t.Y)))
         {
-            bool floorBehind = gate.InBounds(x, y - 1) && !IsRock(x, y - 1);
+            bool floorBehind = gate.InBounds(x, y - 1) && !WasRock(x, y - 1);
             Assert.Equal(floor + (floorBehind ? WorldMapBuilder.CaveLipRise : WorldMapBuilder.CaveWallRise), gate.HeightAt(x, y));
         }
 
         // The lip is a step with a face, not a slope: the floor beside it is drawn flat
         Assert.True(WorldMapBuilder.CaveLipRise >= Relief.WeldLimit);
-        Assert.All(Tiles(gate).Where(t => !IsRock(t.X, t.Y)), t =>
+        Assert.All(Tiles(gate).Where(t => !WasRock(t.X, t.Y)), t =>
         {
             var c = Relief.Corners(gate, t.X, t.Y);
             Assert.True(c.NW == c.NE && c.NE == c.SW && c.SW == c.SE, $"the floor at ({t.X},{t.Y}) is drawn sloping: {c}");
@@ -243,13 +351,15 @@ public class SouthWestTests
         Assert.True(mouths >= 20, $"only {mouths} tiles of cave mouth on the map");
 
         // Inside a cave the dark lies only on the rock just past a way out, at the mat's height: the Ravaged Path's
-        // north exit, which looked like more wall, is a gap in it
+        // north exit, which looked like more wall, is a gap in it (or past the flight of a way between floors:
+        // ACavesSideStairsAreAFlightIntoTheDark)
         foreach (string name in Caves)
         {
             var cave = BuiltMaps.Value[name];
             foreach (var (x, y) in Tiles(cave).Where(t => cave.GetGroundTile(t.X, t.Y) == TileType.CaveMouth))
             {
                 Assert.True(cave.IsSolid(x, y), $"{name}: the dark at ({x},{y}) can be walked on");
+                if (PastASideFlight(cave, x, y)) continue;
                 var mat = new[] { (0, -1, TileBehavior.ExitSouth), (0, 1, TileBehavior.ExitNorth), (-1, 0, TileBehavior.ExitEast), (1, 0, TileBehavior.ExitWest) }
                     .Select(n => (X: x + n.Item1, Y: y + n.Item2, Way: n.Item3))
                     .FirstOrDefault(n => cave.InBounds(n.X, n.Y) && cave.BehaviourAt(n.X, n.Y) == n.Way && cave.GetWarpAt(n.X, n.Y) != null);
