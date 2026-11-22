@@ -434,6 +434,11 @@ public static class Objectives
         // (plan 34 · PD5), which a session beside this one builds
         (830, "paldeaKofu", RegionBadge(RegionDatabase.Paldea, "Water"), false),
         (831, "paldeaLarry", RegionBadge(RegionDatabase.Paldea, "Normal"), false),
+        // The last three gyms (plan 34 · PD6, its second session), in the academy's order: Montenevera's in the snow,
+        // Alfornada's beyond its cavern, and Glaseado's at the top of the mountain
+        (832, "paldeaRyme", RegionBadge(RegionDatabase.Paldea, "Ghost"), false),
+        (833, "paldeaTulip", RegionBadge(RegionDatabase.Paldea, "Psychic"), false),
+        (834, "paldeaGrusha", RegionBadge(RegionDatabase.Paldea, "Ice"), false),
         // Starfall Street (plan 34 · PD5) by VAR_PALDEA_STARFALL, starfall_street.txt's count: Cassiopeia's first call,
         // then each of the five bases by its boss beaten (the 850s, kept apart from the gyms' ids PD6 adds)
         (850, "paldeaStarfall", AtLeast("VAR_PALDEA_STARFALL", 1), false),

@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Alfornada Gym"
+    ],
+    "text": [
+      "Sala din Alfornada"
+    ]
+  },
+  "people": {
+    "alfornada_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "alfornada_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

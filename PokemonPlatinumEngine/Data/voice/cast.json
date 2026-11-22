@@ -263,6 +263,23 @@
       "note": "first spoken at starfall_street.txt(211)",
       "provisional": true
     },
+    "auctioneer": {
+      "note": "first spoken at porto_marinada.txt(9)",
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Porto Marinada's auctioneer: a quayside showman, rattling through the lots, enjoying the chef's bad luck a little too much"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.6,am_echo:0.4",
+        "speed": 1.1,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
     "aukai": {
       "note": "first spoken at HauoliCity_TrainersSchool.txt(40)",
       "brief": {
@@ -4097,6 +4114,23 @@
       "note": "first spoken at castelia_city_3.txt(18)",
       "provisional": true
     },
+    "coach": {
+      "note": "first spoken at glaseado_mountain.txt(16)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Glaseado's snowslope coach: brisk and outdoorsy, a starter's shout and a grin behind it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.6,am_michael:0.4",
+        "speed": 1.05,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
     "collector": {
       "note": "first spoken at valor_lakefront.txt(138)",
       "brief": {
@@ -5134,6 +5168,23 @@
       "note": "first spoken at LumioseCity_GroomingSalon.txt(9)",
       "provisional": true
     },
+    "grusha": {
+      "note": "first spoken at Glaseado_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Grusha, Glaseado's Ice-type gym leader, a former snowboarder: cool, clipped and a little guarded, warming only at the very end"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.6,am_eric:0.4",
+        "speed": 0.95,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
     "guide_gent": {
       "note": "first spoken at cherrygrove.txt(21)",
       "provisional": true
@@ -5711,6 +5762,23 @@
     "kiri": {
       "note": "first spoken at sootopolis_city.txt(159)",
       "provisional": true
+    },
+    "kofu": {
+      "note": "first spoken at Cascarrafa_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "Kofu, Cascarrafa's Water-type gym leader and cook: big, hearty and loud, bursting with enthusiasm, every line a shout across a busy kitchen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,am_puck:0.4",
+        "speed": 1.06,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "koga": {
       "note": "first spoken at fuchsia_city_gym.txt(11)",
@@ -9217,6 +9285,23 @@
         "accent": "en-us"
       }
     },
+    "mc": {
+      "note": "first spoken at Montenevera_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Ryme's MC in Montenevera's hall: a hype man with rhythm in every line, hyping the crowd and the challenger alike"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.7,am_echo:0.3",
+        "speed": 1.1,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
+    },
     "meadow_keeper": {
       "note": "first spoken at common.txt(4526)",
       "brief": {
@@ -9613,6 +9698,10 @@
       "note": "first spoken at lumiose_city.txt(214)",
       "provisional": true
     },
+    "office_worker": {
+      "note": "first spoken at medali.txt(26)",
+      "provisional": true
+    },
     "officer": {
       "note": "first spoken at new_bark_elms_lab_1f.txt(118)",
       "provisional": true
@@ -9727,6 +9816,23 @@
     "palace_owner": {
       "note": "first spoken at KalosRoute6_ParfumPalace.txt(10)",
       "provisional": true
+    },
+    "paldea_larry": {
+      "note": "first spoken at Medali_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Larry, Medali's Normal-type gym leader: a tired office worker, flat and dry, every line said as if it were the end of a long shift"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_onyx:0.4",
+        "speed": 0.9,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
     },
     "palmer": {
       "note": "first spoken at BattleTowerBattleRoom.txt(75)",
@@ -10361,6 +10467,23 @@
       "note": "first spoken at mauville_city_bike_shop.txt(12)",
       "provisional": true
     },
+    "ryme": {
+      "note": "first spoken at Montenevera_GymTest.txt(50)",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "Ryme, Montenevera's Ghost-type gym leader and rapper: husky, confident and rhythmic, every line half a verse"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.6,af_kore:0.4",
+        "speed": 1.04,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
+    },
     "sabrina": {
       "note": "first spoken at saffron_city_gym.txt(11)",
       "brief": {
@@ -10949,6 +11072,23 @@
       "note": "first spoken at BattleDome.txt(70)",
       "provisional": true
     },
+    "tulip": {
+      "note": "first spoken at Alfornada_GymTest.txt(49)",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Tulip, Alfornada's Psychic-type gym leader, a make-up artist and photographer: soft, poised and gently teasing, calling everyone darling"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.6,af_heart:0.4",
+        "speed": 0.94,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
     "tuscany": {
       "note": "first spoken at route_29.txt(45)",
       "provisional": true
@@ -11352,61 +11492,6 @@
     "zuki": {
       "note": "first spoken at ecruteak_dance_theater.txt(81)",
       "provisional": true
-    },
-    "auctioneer": {
-      "note": "first spoken at porto_marinada.txt(9)",
-      "brief": {
-        "register": "man",
-        "age": "elder",
-        "pitch": "middle",
-        "pace": "quick",
-        "manner": "Porto Marinada's auctioneer: a quayside showman, rattling through the lots, enjoying the chef's bad luck a little too much"
-      },
-      "design": {
-        "engine": "kokoro-82m",
-        "blend": "am_santa:0.6,am_echo:0.4",
-        "speed": 1.1,
-        "pitch": 1,
-        "accent": "en-us"
-      }
-    },
-    "kofu": {
-      "note": "first spoken at Cascarrafa_GymTest.txt(12)",
-      "brief": {
-        "register": "man",
-        "age": "adult",
-        "pitch": "low",
-        "pace": "quick",
-        "manner": "Kofu, Cascarrafa's Water-type gym leader and cook: big, hearty and loud, bursting with enthusiasm, every line a shout across a busy kitchen"
-      },
-      "design": {
-        "engine": "kokoro-82m",
-        "blend": "am_fenrir:0.6,am_puck:0.4",
-        "speed": 1.06,
-        "pitch": 0.98,
-        "accent": "en-us"
-      }
-    },
-    "paldea_larry": {
-      "note": "first spoken at Medali_GymTest.txt(12)",
-      "brief": {
-        "register": "man",
-        "age": "adult",
-        "pitch": "low",
-        "pace": "slow",
-        "manner": "Larry, Medali's Normal-type gym leader: a tired office worker, flat and dry, every line said as if it were the end of a long shift"
-      },
-      "design": {
-        "engine": "kokoro-82m",
-        "blend": "am_eric:0.6,am_onyx:0.4",
-        "speed": 0.9,
-        "pitch": 0.96,
-        "accent": "en-us"
-      }
-    },
-    "office_worker": {
-      "note": "first spoken at medali.txt(26)",
-      "provisional": true
     }
   },
   "names": {
@@ -11446,6 +11531,7 @@
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
     "Atticus": "atticus",
+    "Auctioneer": "auctioneer",
     "Aukai": "aukai",
     "Avery": "avery",
     "AZ": "az",
@@ -11536,6 +11622,7 @@
     "Clothilde": "clothilde",
     "Club Clerk": "club_clerk",
     "Clyde": "clyde",
+    "Coach": "coach",
     "Collector": "collector",
     "Colress": "colress",
     "Commander Jupiter": "jupiter",
@@ -11657,6 +11744,7 @@
     "Grimsley": "grimsley",
     "Groomer": "groomer",
     "Grunt": "look:grunt",
+    "Grusha": "grusha",
     "Guard": "look:guard",
     "Guide": "look:gym_guide",
     "Guide Gent": "guide_gent",
@@ -11723,6 +11811,7 @@
     "Kimono Girl": "kimono_girl",
     "Kira": "kira",
     "Kiri": "kiri",
+    "Kofu": "kofu",
     "Koga": "koga",
     "Koichi": "koichi",
     "Koji": "koji",
@@ -11794,6 +11883,7 @@
     "Matt": "matt",
     "Maxie": "maxie",
     "Maylene": "maylene",
+    "MC": "mc",
     "Meadow Keeper": "meadow_keeper",
     "Mechadoll 1": "mechadoll_1",
     "Mechadoll 2": "mechadoll_2",
@@ -11845,6 +11935,7 @@
     "Octave": "octave",
     "Odette": "odette",
     "Odile": "odile",
+    "Office Worker": "office_worker",
     "Officer": "officer",
     "Ola": "ola",
     "Old Lady": "old_lady",
@@ -11939,6 +12030,7 @@
     "Roxanne": "roxanne",
     "Roxie": "roxie",
     "Rydel": "rydel",
+    "Ryme": "ryme",
     "Sabrina": "sabrina",
     "Safari Guide": "safari_guide",
     "Sage": "sage",
@@ -12016,6 +12108,7 @@
     "Trick Master": "trick_master",
     "Tristan": "tristan",
     "Tucker": "tucker",
+    "Tulip": "tulip",
     "Tuscany": "tuscany",
     "Tutor": "tutor",
     "TV": "tv",
@@ -12068,10 +12161,7 @@
     "Youngster": "look:youngster",
     "Zac": "zac",
     "Zinzolin": "zinzolin",
-    "Zuki": "zuki",
-    "Auctioneer": "auctioneer",
-    "Kofu": "kofu",
-    "Office Worker": "office_worker"
+    "Zuki": "zuki"
   },
   "looks": {
     "archie": "archie",

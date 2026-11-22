@@ -150,9 +150,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below; its second session the same day: the bot's run to three badges in `PlaythroughTests`, Brassius's and Iono's tests as searches about their towns on the open map and Katy's giant olives as cards, the towns' and the gym's songs, Paldea's Town Map with Fly's places, the new cast's voices designed; "PD3, second session", below. **Waits for the user**: the provinces' distances, decision 3 (taken at its recommendation), the songs by ear, the voices by ear, and how Fly is to be asked for in the open field)
 - [x] PD4 The Path of Legends (its first session 2026-11-14: Arven at the lighthouse, the Stony Cliff and the Titan Klawf beaten twice, the Herba Mystica scene and the mount's dash, Paldea's first climbable crag; "PD4, first session", below; its second session the same day: the four other Titans in stand-in places beside the land that is built, their powers in order, the climb opening the Stony Cliff's crag, Arven's Mabosstiff and battle at the lighthouse, the five beaten by the bot headless and in the harness, the Titans' song; "PD4, second session", below. **Waits for the user**: the stand-ins (PD6 moves the Titans to their provinces), the Titans' fixed order, the song by ear. **Owed**: Arven's voice designed by ear)
 - [x] PD5 Starfall Street and Let's Go (2026-11-15, one session: Let's Go on its key, the five bases in a stand-in valley north of Mesagoza with their raids' clock, the bosses and Starmobiles on a stage of their own, Cassiopeia's calls; "PD5 as built", below. **Waits for the user**: the stand-in valley (PD6 moves the bases), the raid's numbers (fifteen in five minutes), the song and the five bosses' looks by eye. **Owed**: the bot playing a raid, Let's Go's materials for the crafting kit, the new cast's voices by ear)
-- [ ] PD6 The West and North Provinces and the last five gyms
-- [ ] PD5 Starfall Street and Let's Go
-- [ ] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below. **Session two**: the north, the last three gyms, eight badges and the walk to Glaseado's top)
+- [x] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below; its second session 2026-11-23: the North Province, Glaseado Mountain and its snowslope, Montenevera, the East Province's third area, Alfornada through its cavern, Ryme's rap battle, Tulip's photographs and Grusha's run with the three leaders scaled, Lurking Steel and False Dragon moved to their provinces, the eight badges won in two orders headless, the bot to the fifth badge, through the last three and riding from Cabo Poco to Glaseado's top; "PD6, second session", below. **Waits for the user**: the north's distances and looks, the tests ours where the originals differ (Ryme's and Tulip's), the run with no clock, the songs by ear, the new cast's voices by ear, `profile`'s ride on the Windows machine. **Owed**: Starfall Street's bases still in their stand-in valley; Cascarrafa's falls drawn falling and its bridges; the open places' people's lines untranslated, as every open map's are)
 - [ ] PD7 Tera Raids and picnics
 - [ ] PD8 The League, Area Zero and the Way Home
 - [ ] PD9 After the Hall of Fame
@@ -492,3 +490,78 @@ recommendations stand (PD3's compressed distances; the later gyms scaled to the 
 - Owed from this session: the bot's run to the fifth badge in `PlaythroughTests` (only headless tests play Kofu's and
   Larry's tests); Cascarrafa's falls drawn falling (`pdw05`: the cleft and the river show, the drop down the face doesn't) and its bridges over its
   river; the new cast's voices by ear (Kofu, Larry and the auctioneer have designs, no audio).
+
+## PD6, second session (2026-11-23)
+
+One session, alone in its worktree beside a docs session and a Carpathia sculpts session (the second harness agent).
+The rulings' "The North Province and the last three gyms" has every decision. The user had not answered the provinces'
+distances or decision 3, so their recommendations stand, as in the first session.
+
+**What there is**
+- **The land** (`terrain/west_north.json`, read after `west.json`; `carve/alfornada.json`; `water.json`, `roads.json`,
+  `world.json`): six areas, `north_province_area_one` (north out of Medali), `glaseado_mountain` (the foot east and west
+  of the snowslope, the slope and the top, with the snow weather), `montenevera`, `east_province_area_three` (north out of
+  Levincia to Montenevera's east gate), `alfornada_cavern` (a carved tunnel from behind Cortondo's Pokémon Center) and
+  `alfornada` with its ruins' pillars; hills at 40 m over the whole north and crags at 72 m round the slope. Glaseado's
+  top is 40 m over its foot, 140 m up an even slope of about 16°. `chunks` reach `-38`.
+- **The last two Titans moved**: Lurking Steel (Orthworm) to a cutting east off the East Province's third area, north of
+  Levincia; False Dragon (the Tatsugiri and the Dondozo) to Casseroya Lake (the `false_dragon` area's name), east off the
+  North Province's first area; each its stand-in moved whole, keys, scripts, flags and the count kept. The stand-ins'
+  brushes, paint and lake are gone from `titans.json` and `water.json`; Arven's directions (`open_sky.txt`,
+  `quaking_earth.txt`, `poco_path.txt`) and the two objectives rewritten.
+- **Rooms**: `Montenevera_PokemonCenter`, `_Gym`, `_GymTest`; `Alfornada_PokemonCenter`, `_Gym`, `_GymTest`;
+  `Glaseado_PokemonCenter`, `_Gym`, `_GymTest`; spawns 9 to 11.
+- **Ryme** (Ghost): her MC's rap battle in her hall (`Montenevera_GymTest.txt`, three lines, the rhyme the right answer,
+  each kept as it is got right), a gym trainer and her battle. **Tulip** (Psychic): her photographer's three moods in her
+  studio (`Alfornada_GymTest.txt`), a gym trainer and her battle. **Grusha** (Ice): the snowslope run
+  (`glaseado_mountain.txt`: the coach at the top, three gates of young pines in order, the line at the foot; a gate
+  missed sends the challenger back up), a gym trainer and his battle in the hall at the top. Looks `ryme`, `tulip`,
+  `grusha`.
+- **Decision 3's scaling** for the three: `paldea_ryme` (at five held), `paldea_tulip` (six), `paldea_grusha` (seven),
+  and `_b0` to `_b7` for the other counts, picked by each leader's script; gym trainers Tas, Bruno and Yuki; students
+  Marta, Iker, Aitana, Ines and Rosa; wild Pokémon of the north at 34 to 45.
+- **Songs** `paldea/north_province`, `glaseado`, `montenevera`, `alfornada` (40 to 50 s loops, no clash, -17.6 to -19.4
+  dB loud). **Town Map** written again from the bake (46 by 38 cells from chunk -25,-36), Fly's three new places.
+  **Objectives** 832 `paldeaRyme`, 833 `paldeaTulip`, 834 `paldeaGrusha`. Romanian for every new line of the scripts,
+  rooms, objectives and the Town Map (`docs/localisation-review-ro.md`); voices designed for Ryme, Tulip, Grusha, the MC
+  and the coach (`Data/voice/cast.json`, briefs and Kokoro blends, unheard).
+- **The done-when**: `PaldeaNorthTests.TheEightBadgesAreWonInTheAcademysOrderAndInAnother` wins the eight in the academy's
+  order (each later leader with the original's team) and with the last three first and the first three last (each later
+  leader with the team for the badges held); the region walked and ridden: `Itineraries.PaldeaToGlaseadosTop` played by
+  `PlaythroughTests.APaldeaGameIsRiddenFromCaboPocoToGlaseadosTop` headless, and drawn by the harness's `paldea` mode
+  (`pdn90`): **10,570 frames (176 s) from Cabo Poco's lane to Glaseado's top, ridden 97% of them, no chunk waited for**
+  (4,611 chunks made ready on the way). Its milliseconds (9.8 ms a frame, the worst 277 ms in the South Province's second
+  area; the stream's worst upload frame 2.3 s, most likely the first frames' uploads) were taken on a busy machine with a
+  second harness agent running, so they are owed to the quiet Windows machine.
+- **Owed by the first session, done**: the bot's run to the fifth badge (`Itineraries.PaldeaWestBadges`,
+  `PlaythroughTests.APaldeaGamePlaysFromTheBedroomInCaboPocoToTheFifthBadge`; the auction answered otherwise on each try,
+  within the bot's four); and on to the eighth (`Itineraries.PaldeaNorthBadges`,
+  `PlaythroughTests.APaldeaGameWinsTheLastThreeBadgesFromMedali`).
+- **Baked again**: 910 chunks (from 625), about 121 MB (from 84.6 MB); about 80 s on Release.
+- **Tests**: `PaldeaNorthTests` (the areas, towns, rooms and the two Titans moved; the eight badges in two orders; the
+  three leaders scaled; a rhyme missed, a pose wrong and a gate skipped each sending the challenger back; the run's two
+  scenes played and skipped alike); `PaldeaTests`' lists grown by the new areas, zones, rooms and spawns, and its walk now
+  reaching Glaseado's top and Alfornada through its cavern and never the crags or the hills over the cavern; the three
+  `PlaythroughTests` above; `SceneSkipTests`' list of open scenes; goldens `scripts.txt`, `levels.txt` and
+  `levels-crossed.txt` accepted (the new rooms' trainers and scripts only), `species-owed.md` regenerated.
+- **Shots** (the `paldea` mode, `Modes/PaldeaNorth.cs`, `SHOTS_FILTER=pdn`): `pdn00` to `pdn15` the places (the slope from
+  its foot and from the top, the gym on the top, a gate of the run, Montenevera's gym, Lurking Steel, Casseroya Lake, the
+  cavern, Alfornada's gym and ruins), `pdn08n` Montenevera after dark, `pdn20` to `pdn28` the nine rooms, `pdn30` to
+  `pdn32` the leaders, `pdn90` the ride's end on Koraidon at the top. Looked at: the cavern reads as a cave with daylight
+  at its end; the ruins' pillars stand round the knoll; the run's gates are two young pines each on the slope; the top's
+  terrace and gym stand in the snow. **Findings, unchanged**: the snowslope seen from its foot fills the picture with
+  snow and nothing else (the camera sits low against a long white slope); the hills between the places read as cliffs
+  with flat green tops, as everywhere in Paldea; the three gyms are the open kit's plain gym (Montenevera's no stage,
+  Glaseado's no snow on its roof); Ryme's hall has the Ghost arena's purple and nothing of a stage.
+
+**Owed**
+- Starfall Street's five bases are still in PD5's stand-in valley (PD5's "What PD6 replaces"): the provinces exist now,
+  and the move is a session's work of its own (the bases' places, scripts' markers and `StarBases.File`).
+- Cascarrafa's falls drawn falling (the open renderer draws no falls) and its bridges, owed from the first session.
+- The open places' people's lines (the hiker, the skier, the fan, the elder...) are untranslated, as every open map's
+  are: no translation file covers an open place's people yet.
+- The run keeps no clock; the gym tests of Ryme and Tulip are ours, not the originals'; no gym battle is a double.
+- The new cast's voices by ear; the four songs by ear; `profile`'s ride and the north's scenes on the Windows machine.
+
+**Waits for the user**: the north's distances and looks (from the `pdn` shots), the tests as built, the run with no
+clock, the songs and voices by ear, the ride's milliseconds on the quiet Windows machine.

@@ -1,5 +1,8 @@
 # The levels of every place with wild Pokémon or trainers in it (plan 03 · D13), made by GoldenLevelTests. Rewritten by: GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden
 # A place's wild Pokémon by how they are met, then its trainers with the levels of their teams, each trainer by id with the highest of its own.
+=== Alfornada_GymTest
+Alfornada Gym
+trainers 1, 43: paldea_gym_trainer_bruno 43
 === AnistarCity_Gym
 Anistar Gym
 trainers 2, 42-43: kalos_psychic_aurele 43, kalos_psychic_lucile 42
@@ -59,6 +62,9 @@ trainers 3, 19-20: galar_fisherman_cormac 20, galar_worker_hale 19, galar_yell_g
 === GeosengeTown_FlareHQ
 Team Flare Secret HQ
 trainers 4, 48-50: kalos_bryony_1 50, kalos_celosia_1 50, kalos_flare_grunt_hq_1 48, kalos_flare_grunt_hq_2 49
+=== Glaseado_GymTest
+Glaseado Gym
+trainers 1, 46: paldea_gym_trainer_yuki 46
 === GlimwoodTangle
 Glimwood Tangle
 grass 30-33
@@ -150,6 +156,9 @@ trainers 2, 32-33: kalos_schoolboy_hugo 33, kalos_schoolgirl_adele 33
 === Medali_GymTest
 Medali Gym
 trainers 1, 33: paldea_gym_trainer_dina 33
+=== Montenevera_GymTest
+Montenevera Gym
+trainers 1, 40: paldea_gym_trainer_tas 40
 === Motostoke_StadiumMission
 Motostoke Stadium
 trainers 2, 24-25: galar_gym_trainer_ash 24, galar_gym_trainer_ember 25

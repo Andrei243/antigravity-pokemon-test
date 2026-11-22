@@ -1,0 +1,216 @@
+{
+  "Photos": [
+    {
+      "en": [
+        "Photographer"
+      ],
+      "text": [
+        "Fotograful"
+      ]
+    },
+    {
+      "en": [
+        "Ah, the challenger! Tulip wants three shots of you before she'll battle. I call the mood, you give me the pose. Ready?"
+      ],
+      "text": [
+        "A, provocatorul! Tulip vrea trei fotografii cu tine înainte să se lupte. Eu spun starea, tu îmi dai poza. Gata?"
+      ]
+    },
+    {
+      "en": [
+        "First: joy! Show me pure, sunny joy!"
+      ],
+      "text": [
+        "Întâi: bucurie! Arată-mi bucurie curată, însorită!"
+      ]
+    },
+    {
+      "en": [
+        "Strike a pose!",
+        "A wide smile, arms flung open",
+        "A thoughtful frown",
+        "Back to the camera"
+      ],
+      "text": [
+        "Ia o poză!",
+        "Un zâmbet larg, cu brațele deschise",
+        "O încruntare gânditoare",
+        "Cu spatele la aparat"
+      ]
+    },
+    {
+      "en": [
+        "Click! The flash went off."
+      ],
+      "text": [
+        "Clic! Blițul a sclipit."
+      ]
+    },
+    {
+      "en": [
+        "Lovely! Next: calm. The stillness of a lake at dawn."
+      ],
+      "text": [
+        "Minunat! Acum: liniște. Nemișcarea unui lac în zori."
+      ]
+    },
+    {
+      "en": [
+        "Strike a pose!",
+        "Jumping in the air",
+        "Eyes half closed, hands folded",
+        "Pointing at the camera"
+      ],
+      "text": [
+        "Ia o poză!",
+        "Un salt în aer",
+        "Ochii pe jumătate închiși, mâinile împreunate",
+        "Cu degetul spre aparat"
+      ]
+    },
+    {
+      "en": [
+        "Click! The flash went off."
+      ],
+      "text": [
+        "Clic! Blițul a sclipit."
+      ]
+    },
+    {
+      "en": [
+        "Gorgeous. Last one: resolve. You're about to face a gym leader. Show me."
+      ],
+      "text": [
+        "Splendid. Ultima: hotărâre. Urmează să înfrunți un lider de sală. Arată-mi."
+      ]
+    },
+    {
+      "en": [
+        "Strike a pose!",
+        "A big yawn",
+        "Chin up, fist clenched, looking straight ahead",
+        "A nervous wave"
+      ],
+      "text": [
+        "Ia o poză!",
+        "Un căscat mare",
+        "Bărbia sus, pumnul strâns, privirea drept înainte",
+        "Un salut emoționat"
+      ]
+    },
+    {
+      "en": [
+        "Click! The flash went off, and the photographer lowered the camera with a satisfied sigh."
+      ],
+      "text": [
+        "Clic! Blițul a sclipit, iar fotograful a coborât aparatul cu un oftat mulțumit."
+      ]
+    },
+    {
+      "en": [
+        "Perfect, perfect, perfect. Tulip will love these. You've passed the test! She's waiting at the back."
+      ],
+      "text": [
+        "Perfect, perfect, perfect. Lui Tulip o să-i placă. Ai trecut proba! Te așteaptă în spate."
+      ]
+    },
+    {
+      "en": [
+        "Click! The photographer looked at the picture and winced."
+      ],
+      "text": [
+        "Clic! Fotograful s-a uitat la poză și s-a strâmbat."
+      ]
+    },
+    {
+      "en": [
+        "Hmm. That's not quite the mood, darling. Come back to me and we'll take that shot again."
+      ],
+      "text": [
+        "Hmm. Nu e chiar starea potrivită, dragă. Mai vino la mine și refacem fotografia asta."
+      ]
+    },
+    {
+      "en": [
+        "Your photos are drying on the wall. Go on, Tulip's waiting."
+      ],
+      "text": [
+        "Fotografiile tale se usucă pe perete. Hai, Tulip te așteaptă."
+      ]
+    }
+  ],
+  "Leader": [
+    {
+      "en": [
+        "Tulip"
+      ],
+      "text": [
+        "Tulip"
+      ]
+    },
+    {
+      "en": [
+        "I've seen your photographs. Lovely work. I'm Tulip, Alfornada's gym leader, and I make people look their best."
+      ],
+      "text": [
+        "Ți-am văzut fotografiile. Frumoasă treabă. Sunt Tulip, liderul sălii din Alfornada, și îi fac pe oameni să arate cât mai bine."
+      ]
+    },
+    {
+      "en": [
+        "My Psychic types are beautiful, and beauty can be very, very strong. Shall we?"
+      ],
+      "text": [
+        "Pokémonii mei de tip Psihic sunt frumoși, iar frumusețea poate fi foarte, foarte puternică. Începem?"
+      ]
+    },
+    {
+      "en": [
+        "Oh, that was exquisite. You've earned this. The Psychic Badge, and a little of my admiration too."
+      ],
+      "text": [
+        "Oh, a fost minunat. Ai meritat-o. Insigna Psihică, și puțin din admirația mea pe deasupra."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Psychic Badge from Tulip!"
+      ],
+      "text": [
+        "{player} a primit Insigna Psihică de la Tulip!"
+      ]
+    },
+    {
+      "en": [
+        "Do come back when you have a new team. I'd love to photograph them."
+      ],
+      "text": [
+        "Revino neapărat când ai o echipă nouă. Mi-ar plăcea să-i fotografiez."
+      ]
+    },
+    {
+      "en": [
+        "Not until I've seen your photographs, darling. My photographer is by the door."
+      ],
+      "text": [
+        "Nu până nu-ți văd fotografiile, dragă. Fotograful meu e lângă ușă."
+      ]
+    },
+    {
+      "en": [
+        "You're not enrolled at the academy, are you? Then I'm afraid I can't battle you. Rules, darling."
+      ],
+      "text": [
+        "Nu ești înscris la academie, nu-i așa? Atunci mă tem că nu mă pot lupta cu tine. Regulament, dragă."
+      ]
+    },
+    {
+      "en": [
+        "Back again? You still have that glow. Must be the badge."
+      ],
+      "text": [
+        "Iar aici? Încă strălucești. Trebuie să fie de la insignă."
+      ]
+    }
+  ]
+}

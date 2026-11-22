@@ -1275,5 +1275,1181 @@
         "teraType": "Normal"
       }
     ]
+  },
+  {
+    "id": "paldea_ryme_b0",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 1557703003
+      },
+      {
+        "species": "Mimikyu",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 2853772648
+      },
+      {
+        "species": "Houndstone",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 1072299669
+      },
+      {
+        "species": "Toxtricity",
+        "level": 15,
+        "ivScale": 12,
+        "personality": 336356572,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme_b1",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1700,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 1223063177
+      },
+      {
+        "species": "Mimikyu",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 3663581410
+      },
+      {
+        "species": "Houndstone",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 2526406375
+      },
+      {
+        "species": "Toxtricity",
+        "level": 17,
+        "ivScale": 12,
+        "personality": 1222993594,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme_b2",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2400,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 624793138
+      },
+      {
+        "species": "Mimikyu",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 1695905141
+      },
+      {
+        "species": "Houndstone",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 3499158102
+      },
+      {
+        "species": "Toxtricity",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 374727422,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme_b3",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 4276593570
+      },
+      {
+        "species": "Mimikyu",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 1891174155
+      },
+      {
+        "species": "Houndstone",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 3419685550
+      },
+      {
+        "species": "Toxtricity",
+        "level": 30,
+        "ivScale": 12,
+        "personality": 1204592806,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme_b4",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 1934211405
+      },
+      {
+        "species": "Mimikyu",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 2143584997
+      },
+      {
+        "species": "Houndstone",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 3331572833
+      },
+      {
+        "species": "Toxtricity",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 933084435,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 1153167833
+      },
+      {
+        "species": "Mimikyu",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 3826078832
+      },
+      {
+        "species": "Houndstone",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 850628545
+      },
+      {
+        "species": "Toxtricity",
+        "level": 42,
+        "ivScale": 12,
+        "personality": 787783147,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme_b6",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 1556695507
+      },
+      {
+        "species": "Mimikyu",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 2675939096
+      },
+      {
+        "species": "Houndstone",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 2810602085
+      },
+      {
+        "species": "Toxtricity",
+        "level": 45,
+        "ivScale": 12,
+        "personality": 1675066642,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme_b7",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4800,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2342180654
+      },
+      {
+        "species": "Mimikyu",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2155493092
+      },
+      {
+        "species": "Houndstone",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2374121486
+      },
+      {
+        "species": "Toxtricity",
+        "level": 48,
+        "ivScale": 12,
+        "personality": 2050300694,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_b0",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 2617947392
+      },
+      {
+        "species": "Gardevoir",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 3652355259
+      },
+      {
+        "species": "Espathra",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 404421764
+      },
+      {
+        "species": "Florges",
+        "level": 15,
+        "ivScale": 12,
+        "personality": 1486134754,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_b1",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1700,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 926710893
+      },
+      {
+        "species": "Gardevoir",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 2359663042
+      },
+      {
+        "species": "Espathra",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 1343767738
+      },
+      {
+        "species": "Florges",
+        "level": 17,
+        "ivScale": 12,
+        "personality": 1159671382,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_b2",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2400,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 182305525
+      },
+      {
+        "species": "Gardevoir",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 1752047452
+      },
+      {
+        "species": "Espathra",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 2632696232
+      },
+      {
+        "species": "Florges",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 3063819449,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_b3",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 1688074676
+      },
+      {
+        "species": "Gardevoir",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 1090259073
+      },
+      {
+        "species": "Espathra",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 979456166
+      },
+      {
+        "species": "Florges",
+        "level": 30,
+        "ivScale": 12,
+        "personality": 596764357,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_b4",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 277993755
+      },
+      {
+        "species": "Gardevoir",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 1879836917
+      },
+      {
+        "species": "Espathra",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 3091709350
+      },
+      {
+        "species": "Florges",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 2570000923,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_b5",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 1914093668
+      },
+      {
+        "species": "Gardevoir",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 3555942729
+      },
+      {
+        "species": "Espathra",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 1035669402
+      },
+      {
+        "species": "Florges",
+        "level": 42,
+        "ivScale": 12,
+        "personality": 3634023283,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 3978768634
+      },
+      {
+        "species": "Gardevoir",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 4214872769
+      },
+      {
+        "species": "Espathra",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 3865500750
+      },
+      {
+        "species": "Florges",
+        "level": 45,
+        "ivScale": 12,
+        "personality": 1871666204,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_b7",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4800,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 3315275018
+      },
+      {
+        "species": "Gardevoir",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 1770157675
+      },
+      {
+        "species": "Espathra",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 995262091
+      },
+      {
+        "species": "Florges",
+        "level": 48,
+        "ivScale": 12,
+        "personality": 805355008,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_b0",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 2423222237
+      },
+      {
+        "species": "Beartic",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 892869900
+      },
+      {
+        "species": "Cetitan",
+        "level": 14,
+        "ivScale": 12,
+        "personality": 2587040787
+      },
+      {
+        "species": "Altaria",
+        "level": 15,
+        "ivScale": 12,
+        "personality": 3030754201,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_b1",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 1700,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 641717841
+      },
+      {
+        "species": "Beartic",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 2400330754
+      },
+      {
+        "species": "Cetitan",
+        "level": 16,
+        "ivScale": 12,
+        "personality": 1755931047
+      },
+      {
+        "species": "Altaria",
+        "level": 17,
+        "ivScale": 12,
+        "personality": 1798176852,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_b2",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 2400,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 2121705283
+      },
+      {
+        "species": "Beartic",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 2804298770
+      },
+      {
+        "species": "Cetitan",
+        "level": 23,
+        "ivScale": 12,
+        "personality": 910967962
+      },
+      {
+        "species": "Altaria",
+        "level": 24,
+        "ivScale": 12,
+        "personality": 260053469,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_b3",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 1745017486
+      },
+      {
+        "species": "Beartic",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 4041160943
+      },
+      {
+        "species": "Cetitan",
+        "level": 29,
+        "ivScale": 12,
+        "personality": 4149327711
+      },
+      {
+        "species": "Altaria",
+        "level": 30,
+        "ivScale": 12,
+        "personality": 2770879549,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_b4",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 3600,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 85772915
+      },
+      {
+        "species": "Beartic",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 1662360551
+      },
+      {
+        "species": "Cetitan",
+        "level": 35,
+        "ivScale": 12,
+        "personality": 3906300382
+      },
+      {
+        "species": "Altaria",
+        "level": 36,
+        "ivScale": 12,
+        "personality": 3878196754,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_b5",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 1592209930
+      },
+      {
+        "species": "Beartic",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 2815652178
+      },
+      {
+        "species": "Cetitan",
+        "level": 41,
+        "ivScale": 12,
+        "personality": 3925480106
+      },
+      {
+        "species": "Altaria",
+        "level": 42,
+        "ivScale": 12,
+        "personality": 4140077160,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_b6",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4500,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 3315299446
+      },
+      {
+        "species": "Beartic",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 1116922506
+      },
+      {
+        "species": "Cetitan",
+        "level": 44,
+        "ivScale": 12,
+        "personality": 488703168
+      },
+      {
+        "species": "Altaria",
+        "level": 45,
+        "ivScale": 12,
+        "personality": 3479836788,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 4800,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2269022651
+      },
+      {
+        "species": "Beartic",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 277033857
+      },
+      {
+        "species": "Cetitan",
+        "level": 47,
+        "ivScale": 12,
+        "personality": 2646976362
+      },
+      {
+        "species": "Altaria",
+        "level": 48,
+        "ivScale": 12,
+        "personality": 2998394312,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_gym_trainer_tas",
+    "name": "Tas",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1600,
+    "party": [
+      {
+        "species": "Drifblim",
+        "level": 40,
+        "ivScale": 6,
+        "personality": 3804960855
+      },
+      {
+        "species": "Sableye",
+        "level": 40,
+        "ivScale": 6,
+        "personality": 1655795397
+      }
+    ]
+  },
+  {
+    "id": "paldea_gym_trainer_bruno",
+    "name": "Bruno",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1720,
+    "party": [
+      {
+        "species": "Gothorita",
+        "level": 43,
+        "ivScale": 6,
+        "personality": 1610843407
+      },
+      {
+        "species": "Medicham",
+        "level": 43,
+        "ivScale": 6,
+        "personality": 1572538600
+      }
+    ]
+  },
+  {
+    "id": "paldea_gym_trainer_yuki",
+    "name": "Yuki",
+    "class": "Gym Trainer",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 1840,
+    "party": [
+      {
+        "species": "Glalie",
+        "level": 46,
+        "ivScale": 6,
+        "personality": 3631726660
+      },
+      {
+        "species": "Abomasnow",
+        "level": 46,
+        "ivScale": 6,
+        "personality": 3354216695
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_marta",
+    "name": "Marta",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 156,
+    "party": [
+      {
+        "species": "Swablu",
+        "level": 38,
+        "ivScale": 3,
+        "personality": 2913676749
+      },
+      {
+        "species": "Bergmite",
+        "level": 38,
+        "ivScale": 3,
+        "personality": 2911604670
+      },
+      {
+        "species": "Snom",
+        "level": 39,
+        "ivScale": 3,
+        "personality": 433686139
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_iker",
+    "name": "Iker",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 168,
+    "party": [
+      {
+        "species": "Snover",
+        "level": 41,
+        "ivScale": 3,
+        "personality": 3252868195
+      },
+      {
+        "species": "Cubchoo",
+        "level": 41,
+        "ivScale": 3,
+        "personality": 2509417922
+      },
+      {
+        "species": "Snorunt",
+        "level": 42,
+        "ivScale": 3,
+        "personality": 2427355857
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_aitana",
+    "name": "Aitana",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 168,
+    "party": [
+      {
+        "species": "Frigibax",
+        "level": 42,
+        "ivScale": 3,
+        "personality": 4275235778
+      },
+      {
+        "species": "Delibird",
+        "level": 42,
+        "ivScale": 3,
+        "personality": 532537928
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_ines",
+    "name": "Ines",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 148,
+    "party": [
+      {
+        "species": "Skiddo",
+        "level": 36,
+        "ivScale": 3,
+        "personality": 1334938084
+      },
+      {
+        "species": "Rufflet",
+        "level": 36,
+        "ivScale": 3,
+        "personality": 3233589556
+      },
+      {
+        "species": "Toedscool",
+        "level": 37,
+        "ivScale": 3,
+        "personality": 2658691022
+      }
+    ]
+  },
+  {
+    "id": "paldea_student_rosa",
+    "name": "Rosa",
+    "class": "Student",
+    "ai": [
+      "CheckHp"
+    ],
+    "items": [],
+    "prizeMoney": 176,
+    "party": [
+      {
+        "species": "Flittle",
+        "level": 43,
+        "ivScale": 3,
+        "personality": 2074634082
+      },
+      {
+        "species": "Hatenna",
+        "level": 43,
+        "ivScale": 3,
+        "personality": 2769269792
+      },
+      {
+        "species": "Girafarig",
+        "level": 44,
+        "ivScale": 3,
+        "personality": 2726194950
+      }
+    ]
   }
 ]

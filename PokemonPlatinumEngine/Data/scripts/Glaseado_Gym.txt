@@ -1,0 +1,24 @@
+# Glaseado Gym's lobby (plan 34 · PD6, its second session): Grusha's gym at the top of Glaseado Mountain, the eighth of
+# Victory Road in the academy's suggested order. His test is the snowslope run outside (glaseado_mountain.txt); his hall
+# is behind the counter (Glaseado_GymTest.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge ice goto Won
+  say "Welcome to Glaseado Gym! Grusha's test is the snowslope run. The coach outside will start you off."
+  say "Ride down through the three gates in order, all the way to the line at the bottom. Then come back up here."
+  end
+label Won
+  say "The Ice Badge! That makes eight, doesn't it? The League will be expecting you."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge ice goto Won
+  say "Grusha's Ice types hate Fire, Fighting, Rock and Steel moves. His last one Terastallizes. Dress warmly."
+  end
+label Won
+  say "You beat Grusha! He even took his scarf off for a second. A second!"
+  end

@@ -1,0 +1,216 @@
+{
+  "RapBattle": [
+    {
+      "en": [
+        "MC"
+      ],
+      "text": [
+        "MC"
+      ]
+    },
+    {
+      "en": [
+        "Yo! You want Ryme? You go through me first. Three lines, you answer each one with a line that rhymes. Ready? Hit it!"
+      ],
+      "text": [
+        "Yo! O vrei pe Ryme? Întâi treci de mine. Trei versuri, iar tu răspunzi fiecăruia cu unul care rimează. Gata? Dă-i drumul!"
+      ]
+    },
+    {
+      "en": [
+        "Came up the mountain where the cold wind blows..."
+      ],
+      "text": [
+        "Am urcat pe munte, unde vântul șuieră-n zăpadă..."
+      ]
+    },
+    {
+      "en": [
+        "Answer the MC!",
+        "Got my team behind me, and the whole crowd knows!",
+        "I forgot my scarf at home.",
+        "Is there a café here?"
+      ],
+      "text": [
+        "Răspunde-i MC-ului!",
+        "Cu echipa lângă mine, toată sala vrea să vadă!",
+        "Mi-am uitat fularul acasă.",
+        "E vreo cafenea pe-aici?"
+      ]
+    },
+    {
+      "en": [
+        "Ha! Not bad! That's one."
+      ],
+      "text": [
+        "Ha! Nu-i rău! Asta-i unu."
+      ]
+    },
+    {
+      "en": [
+        "Line two! Here in Montenevera, the snow don't quit..."
+      ],
+      "text": [
+        "Versul doi! Aici, în Montenevera, ninge fără oprire..."
+      ]
+    },
+    {
+      "en": [
+        "Answer the MC!",
+        "Can we turn the heating up?",
+        "So I came to battle, and I'm hot as it!",
+        "I like snow, actually."
+      ],
+      "text": [
+        "Răspunde-i MC-ului!",
+        "Putem da căldura mai tare?",
+        "Am venit să lupt și ard de nerăbdare-n fire!",
+        "Mie chiar îmi place zăpada."
+      ]
+    },
+    {
+      "en": [
+        "Ooh, the crowd felt that! That's two."
+      ],
+      "text": [
+        "Uuu, publicul a simțit-o! Asta-i doi."
+      ]
+    },
+    {
+      "en": [
+        "Last one! Ryme's on the stage, and the lights are bright..."
+      ],
+      "text": [
+        "Ultimul! Ryme e pe scenă, luminile ard tare..."
+      ]
+    },
+    {
+      "en": [
+        "Answer the MC!",
+        "Could someone dim them a bit?",
+        "So I step up now, and I'm ready to fight!",
+        "Is that the time already?"
+      ],
+      "text": [
+        "Răspunde-i MC-ului!",
+        "Poate cineva să le mai stingă puțin?",
+        "Așa că urc și eu, gata de-ncercare!",
+        "Chiar e ora asta deja?"
+      ]
+    },
+    {
+      "en": [
+        "The crowd roared. The MC threw both arms in the air."
+      ],
+      "text": [
+        "Publicul a urlat. MC-ul a ridicat ambele brațe în aer."
+      ]
+    },
+    {
+      "en": [
+        "That's three for three! You passed Ryme's test! Get up on that stage, the boss is waiting!"
+      ],
+      "text": [
+        "Trei din trei! Ai trecut proba lui Ryme! Urcă pe scenă, șefa te așteaptă!"
+      ]
+    },
+    {
+      "en": [
+        "The beat stumbled. Somewhere in the crowd, somebody winced."
+      ],
+      "text": [
+        "Ritmul s-a împiedicat. Undeva în public, cineva s-a strâmbat."
+      ]
+    },
+    {
+      "en": [
+        "Ohhh, you lost the rhyme! No shame. Talk to me again and I'll give you that line one more time."
+      ],
+      "text": [
+        "Ohhh, ai pierdut rima! Nicio rușine. Mai vorbește cu mine și-ți dau versul ăla încă o dată."
+      ]
+    },
+    {
+      "en": [
+        "You already got the crowd. Now go get the boss!"
+      ],
+      "text": [
+        "Ai cucerit deja publicul. Acum du-te după șefă!"
+      ]
+    }
+  ],
+  "Leader": [
+    {
+      "en": [
+        "Ryme"
+      ],
+      "text": [
+        "Ryme"
+      ]
+    },
+    {
+      "en": [
+        "So you're the one who got my crowd going. I'm Ryme. Montenevera's gym leader, and the loudest thing on this mountain."
+      ],
+      "text": [
+        "Deci tu ești cel care mi-a încins publicul. Sunt Ryme. Liderul sălii din Montenevera și cel mai gălăgios lucru de pe muntele ăsta."
+      ]
+    },
+    {
+      "en": [
+        "My Ghost types keep the beat even after the music stops. Let's see if you can keep up!"
+      ],
+      "text": [
+        "Pokémonii mei de tip Fantomă țin ritmul și după ce muzica se oprește. Să vedem dacă ții pasul!"
+      ]
+    },
+    {
+      "en": [
+        "That's a mic drop if I ever heard one. The Ghost Badge is yours. Wear it loud."
+      ],
+      "text": [
+        "Asta da încheiere cu microfonul pe jos. Insigna Fantomă e a ta. Poart-o cu zgomot."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Ghost Badge from Ryme!"
+      ],
+      "text": [
+        "{player} a primit Insigna Fantomă de la Ryme!"
+      ]
+    },
+    {
+      "en": [
+        "Come back for a show some night. I'll save you a spot by the stage."
+      ],
+      "text": [
+        "Vino la un spectacol într-o seară. Îți păstrez un loc lângă scenă."
+      ]
+    },
+    {
+      "en": [
+        "Get past my MC first. Rap battle, three lines. The crowd'll tell you when you've got it."
+      ],
+      "text": [
+        "Întâi treci de MC-ul meu. Duel de rap, trei versuri. Publicul îți spune când ai reușit."
+      ]
+    },
+    {
+      "en": [
+        "Not enrolled at the academy? Then this stage isn't yours yet. Come back with a student card."
+      ],
+      "text": [
+        "Nu ești înscris la academie? Atunci scena asta nu e încă a ta. Revino cu carnetul de elev."
+      ]
+    },
+    {
+      "en": [
+        "Back for an encore? The badge is yours already. The crowd still remembers you, though."
+      ],
+      "text": [
+        "Te-ai întors pentru un bis? Insigna e deja a ta. Dar publicul încă își amintește de tine."
+      ]
+    }
+  ]
+}

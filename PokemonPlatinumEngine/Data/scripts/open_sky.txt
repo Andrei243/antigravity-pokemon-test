@@ -54,7 +54,7 @@ label Miraidon
 label Strength
   setflag FLAG_PALDEA_MOUNT_SWIM
   text "Some of its old strength has come back. It can swim again! (Riding, go into deep water to swim.)"
-  say "Next one I've heard of is out east: something made of steel, digging under the sand past the road to Levincia."
+  say "Next one I've heard of is way out east: something made of steel, digging under the sand north of Levincia."
   say "Ride out there when you're ready. I'll catch up."
   setvar VAR_PALDEA_LEGENDS 5
   endscene

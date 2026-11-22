@@ -72,7 +72,7 @@ label Quaking
   say "The next Titan's in the dusty basin north of Cortondo. Mind your footing when it starts to run."
   end
 label FalseDragon
-  say "Last one's at the lake in the hollow east of the road to Levincia. A small dragon and a huge friend."
+  say "Last one's at Casseroya Lake, in the hollow off the road north from Medali. A small dragon and a huge friend."
   end
 label Done
   say "Mabosstiff's been bouncing off the walls since. Come back any time. I'll cook."

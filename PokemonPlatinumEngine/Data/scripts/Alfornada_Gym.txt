@@ -1,0 +1,24 @@
+# Alfornada Gym's lobby (plan 34 · PD6, its second session): Tulip's gym, the seventh of Victory Road in the academy's
+# suggested order. Her test is her photographs, posed in her studio behind the counter (Alfornada_GymTest.txt). Our own
+# lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge psychic goto Won
+  say "Welcome to Alfornada Gym! Tulip's test is a photo session in her studio. Her photographer calls a mood; you strike the pose that fits."
+  say "Don't overthink it. The camera can tell."
+  end
+label Won
+  say "The Psychic Badge! Tulip pinned your photo on the studio wall. That almost never happens."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge psychic goto Won
+  say "Tulip's Psychic types fear Bug, Ghost and Dark moves. Her last one Terastallizes, so keep something in reserve."
+  end
+label Won
+  say "You beat Tulip! She said you had a striking presence. High praise, from her."
+  end

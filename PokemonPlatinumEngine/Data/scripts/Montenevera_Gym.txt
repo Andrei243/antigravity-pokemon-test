@@ -1,0 +1,24 @@
+# Montenevera Gym's lobby (plan 34 · PD6, its second session): Ryme's gym, the sixth of Victory Road in the academy's
+# suggested order. Her test is a rap battle against the MC in her hall behind the counter (Montenevera_GymTest.txt).
+# Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge ghost goto Won
+  say "Welcome to Montenevera Gym! Ryme's gym test is a rap battle in the hall. Answer the MC's lines in time with the beat."
+  say "The trick is to listen for the rhyme. The crowd always knows before the challenger does."
+  end
+label Won
+  say "The Ghost Badge! The crowd's still chanting your name. Well, one of them is."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge ghost goto Won
+  say "Ryme's Ghost types shrug off Normal and Fighting moves. Dark and Ghost moves hit them hard. Watch for her Tera at the end."
+  end
+label Won
+  say "You beat Ryme! She'll be writing a verse about it, I'd bet."
+  end

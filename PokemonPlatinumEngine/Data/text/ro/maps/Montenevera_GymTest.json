@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Montenevera Gym"
+    ],
+    "text": [
+      "Sala din Montenevera"
+    ]
+  },
+  "people": {
+    "paldea_gym_trainer_tas": {
+      "name": {
+        "en": [
+          "Tas"
+        ],
+        "text": [
+          "Tas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Tas: You beat the beat? Then let's see you beat me. One more verse, and this one hits back!"
+        ],
+        "text": [
+          "Antrenorul de sală Tas: Ai prins ritmul? Atunci să te văd cum mă prinzi pe mine. Încă o strofă, și asta lovește înapoi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Tas: You've got rhythm. Ryme's waiting on stage."
+        ],
+        "text": [
+          "Antrenorul de sală Tas: Ai ritm, n-am ce zice. Ryme te așteaptă pe scenă."
+        ]
+      }
+    },
+    "montenevera_mc": {
+      "name": {
+        "en": [
+          "MC"
+        ],
+        "text": [
+          "MC"
+        ]
+      }
+    },
+    "ryme": {
+      "name": {
+        "en": [
+          "Ryme"
+        ],
+        "text": [
+          "Ryme"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Glaseado Gym! Grusha's test is the snowslope run. The coach outside will start you off."
+      ],
+      "text": [
+        "Bine ai venit la Sala din Glaseado! Proba lui Grusha e coborârea pe pârtie. Antrenorul de afară îți dă startul."
+      ]
+    },
+    {
+      "en": [
+        "Ride down through the three gates in order, all the way to the line at the bottom. Then come back up here."
+      ],
+      "text": [
+        "Coboară prin cele trei porți, în ordine, până la linia de jos. Apoi urcă înapoi aici."
+      ]
+    },
+    {
+      "en": [
+        "The Ice Badge! That makes eight, doesn't it? The League will be expecting you."
+      ],
+      "text": [
+        "Insigna Gheții! Cu asta ai opt, nu-i așa? Liga te va aștepta."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Grusha's Ice types hate Fire, Fighting, Rock and Steel moves. His last one Terastallizes. Dress warmly."
+      ],
+      "text": [
+        "Pokémonii de tip Gheață ai lui Grusha urăsc atacurile de tip Foc, Luptă, Rocă și Oțel. Ultimul lui se Terastalizează. Îmbracă-te gros."
+      ]
+    },
+    {
+      "en": [
+        "You beat Grusha! He even took his scarf off for a second. A second!"
+      ],
+      "text": [
+        "L-ai învins pe Grusha! Și-a scos chiar fularul pentru o secundă. O secundă!"
+      ]
+    }
+  ]
+}

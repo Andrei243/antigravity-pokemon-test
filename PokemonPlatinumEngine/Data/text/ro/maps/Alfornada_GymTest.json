@@ -1,0 +1,59 @@
+{
+  "displayName": {
+    "en": [
+      "Alfornada Gym"
+    ],
+    "text": [
+      "Sala din Alfornada"
+    ]
+  },
+  "people": {
+    "paldea_gym_trainer_bruno": {
+      "name": {
+        "en": [
+          "Bruno"
+        ],
+        "text": [
+          "Bruno"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Bruno: Hold that pose! No, wait, that's my job. Battle first, portraits later!"
+        ],
+        "text": [
+          "Antrenorul de sală Bruno: Rămâi așa! Stai, asta e treaba mea. Întâi lupta, portretele mai târziu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Bruno: Your best angle is winning, apparently. Tulip's at the back."
+        ],
+        "text": [
+          "Antrenorul de sală Bruno: Se pare că cel mai bun unghi al tău e victoria. Tulip e în spate."
+        ]
+      }
+    },
+    "alfornada_photographer": {
+      "name": {
+        "en": [
+          "Photographer"
+        ],
+        "text": [
+          "Fotograful"
+        ]
+      }
+    },
+    "tulip": {
+      "name": {
+        "en": [
+          "Tulip"
+        ],
+        "text": [
+          "Tulip"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

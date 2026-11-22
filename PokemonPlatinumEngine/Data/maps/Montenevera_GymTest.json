@@ -1,0 +1,135 @@
+{
+  "name": "Montenevera_GymTest",
+  "displayName": "Montenevera Gym",
+  "bgmTrack": "paldea/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Ghost",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Montenevera_Gym",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "paldea_gym_trainer_tas",
+      "name": "Tas",
+      "npcType": "guitarist",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "paldea_gym_trainer_tas",
+        "name": "Tas",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Tas: You beat the beat? Then let's see you beat me. One more verse, and this one hits back!",
+        "dialogueAfter": "Gym Trainer Tas: You've got rhythm. Ryme's waiting on stage.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "montenevera_mc",
+      "name": "MC",
+      "npcType": "street_dancer",
+      "x": 8,
+      "y": 16,
+      "facing": "Left",
+      "script": "RapBattle"
+    },
+    {
+      "id": "ryme",
+      "name": "Ryme",
+      "npcType": "ryme",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Leader"
+    }
+  ],
+  "wildEncounters": []
+}

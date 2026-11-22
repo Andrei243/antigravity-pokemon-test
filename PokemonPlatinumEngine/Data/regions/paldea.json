@@ -67,7 +67,11 @@
     // Plan 34 · PD6: the West Province's three towns
     { "id": 6, "area": "cascarrafa", "x": 0, "y": 0, "room": "Cascarrafa_PokemonCenter", "map": "Paldea" },
     { "id": 7, "area": "porto_marinada", "x": 0, "y": 0, "room": "PortoMarinada_PokemonCenter", "map": "Paldea" },
-    { "id": 8, "area": "medali", "x": 0, "y": 0, "room": "Medali_PokemonCenter", "map": "Paldea" }
+    { "id": 8, "area": "medali", "x": 0, "y": 0, "room": "Medali_PokemonCenter", "map": "Paldea" },
+    // Plan 34 · PD6, its second session: the North Province's two towns, Glaseado's top, and Alfornada
+    { "id": 9, "area": "montenevera", "x": 0, "y": 0, "room": "Montenevera_PokemonCenter", "map": "Paldea" },
+    { "id": 10, "area": "alfornada", "x": 0, "y": 0, "room": "Alfornada_PokemonCenter", "map": "Paldea" },
+    { "id": 11, "area": "glaseado_mountain", "x": 0, "y": 0, "room": "Glaseado_PokemonCenter", "map": "Paldea" }
   ],
   // Plan 18 · W4 with plan 03 · D14's Paldea proposals (their question 1) and the level curve study: Scarlet and
   // Violet's levels for a team that crossed from Galar, from Galar's Champion at 242 the first route stands at 242 to

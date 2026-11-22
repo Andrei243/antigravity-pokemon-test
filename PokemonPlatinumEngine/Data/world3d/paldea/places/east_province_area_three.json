@@ -1,0 +1,35 @@
+{
+  // The East Province's third area (plan 34 · PD6, its second session): the road north out of Levincia between the
+  // hills to Montenevera's east gate, its long grass along the east side, the mouth of Lurking Steel's cutting east
+  // off it, and a student on the way
+  "markers": [
+    { "name": "east_three_south", "at": [436, 12.0, -806], "yaw": 0 },
+    { "name": "east_three_north", "at": [452, 12.0, -944], "yaw": 0 }
+  ],
+  "zones": [
+    {
+      "name": "east_three_grass",
+      "polygon": [[490, -940], [516, -940], [516, -840], [490, -840]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Skiddo", "minLevel": 34, "maxLevel": 38, "weight": 25 },
+        { "species": "Toedscool", "minLevel": 34, "maxLevel": 38, "weight": 20 },
+        { "species": "Rufflet", "minLevel": 34, "maxLevel": 38, "weight": 20 },
+        { "species": "Bronzor", "minLevel": 34, "maxLevel": 38, "weight": 20 },
+        { "species": "Orthworm", "minLevel": 34, "maxLevel": 37, "weight": 15 }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "student_ines", "at": [486, 12.0, -872], "yaw": 270, "trainer": "paldea_student_ines",
+      "lines": ["The road north goes all the way to Montenevera. Prove you can make it!", "You'll make it. I'll be here, catching my breath."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [424, -880], "kind": "pine" },
+    { "at": [512, -812], "kind": "round", "size": 0.9 }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Glaseado Gym"
+    ],
+    "text": [
+      "Sala din Glaseado"
+    ]
+  },
+  "people": {
+    "paldea_gym_trainer_yuki": {
+      "name": {
+        "en": [
+          "Yuki"
+        ],
+        "text": [
+          "Yuki"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Yuki: You finished the run? Then you're warmed up. Let's keep it that way!"
+        ],
+        "text": [
+          "Antrenoarea de sală Yuki: Ai terminat coborârea? Atunci te-ai încălzit. Hai să rămână așa!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Yuki: Cool head, cold hands, good battle. Grusha's at the far end."
+        ],
+        "text": [
+          "Antrenoarea de sală Yuki: Cap limpede, mâini reci, luptă bună. Grusha e în capăt."
+        ]
+      }
+    },
+    "grusha": {
+      "name": {
+        "en": [
+          "Grusha"
+        ],
+        "text": [
+          "Grusha"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

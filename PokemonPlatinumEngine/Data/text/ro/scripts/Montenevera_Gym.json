@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Montenevera Gym! Ryme's gym test is a rap battle in the hall. Answer the MC's lines in time with the beat."
+      ],
+      "text": [
+        "Bine ai venit la Sala din Montenevera! Proba lui Ryme e un duel de rap în sală. Răspunde versurilor MC-ului pe ritm."
+      ]
+    },
+    {
+      "en": [
+        "The trick is to listen for the rhyme. The crowd always knows before the challenger does."
+      ],
+      "text": [
+        "Secretul e să asculți rima. Publicul o simte mereu înaintea provocatorului."
+      ]
+    },
+    {
+      "en": [
+        "The Ghost Badge! The crowd's still chanting your name. Well, one of them is."
+      ],
+      "text": [
+        "Insigna Fantomă! Publicul încă îți scandează numele. Mă rog, unul dintre ei."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Ryme's Ghost types shrug off Normal and Fighting moves. Dark and Ghost moves hit them hard. Watch for her Tera at the end."
+      ],
+      "text": [
+        "Pokémonii de tip Fantomă ai lui Ryme nu simt atacurile de tip Normal și Luptă. Atacurile de tip Întuneric și Fantomă îi lovesc tare. Ai grijă la Tera ei de la final."
+      ]
+    },
+    {
+      "en": [
+        "You beat Ryme! She'll be writing a verse about it, I'd bet."
+      ],
+      "text": [
+        "Ai învins-o pe Ryme! Pun pariu că o să scrie o strofă despre asta."
+      ]
+    }
+  ]
+}
