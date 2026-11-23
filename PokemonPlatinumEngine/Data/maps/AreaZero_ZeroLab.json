@@ -1,0 +1,175 @@
+{
+  "name": "AreaZero_ZeroLab",
+  "displayName": "Zero Lab",
+  "bgmTrack": "paldea/alfornada",
+  "interior": "Lab",
+  "trees": "Round",
+  "battleArena": "League",
+  "width": 15,
+  "height": 14,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.##..###..##.#",
+    "#.##.......##.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Tank",
+      "x": 2,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "Tank",
+      "x": 11,
+      "y": 3,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "type": "NetworkMachine",
+      "x": 6,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 1,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 13,
+      "y": 6,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 6,
+      "y": 2,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "AreaZero",
+      "targetX": 10,
+      "targetY": 37,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 7,
+      "y": 3,
+      "text": "The machine hums. Its panel shows one word over and over: OPEN."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "ai_sada",
+      "name": "Professor Sada",
+      "npcType": "sada",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Professor",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_SADA"
+    },
+    {
+      "id": "ai_turo",
+      "name": "Professor Turo",
+      "npcType": "turo",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Professor",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_TURO"
+    },
+    {
+      "id": "koraidon_ai",
+      "name": "Koraidon",
+      "npcType": "Pokemon",
+      "x": 10,
+      "y": 6,
+      "facing": "Down",
+      "script": "Professor",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_KORAIDON",
+      "species": "Koraidon"
+    },
+    {
+      "id": "miraidon_ai",
+      "name": "Miraidon",
+      "npcType": "Pokemon",
+      "x": 10,
+      "y": 6,
+      "facing": "Down",
+      "script": "Professor",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_MIRAIDON",
+      "species": "Miraidon"
+    },
+    {
+      "id": "arven",
+      "name": "Arven",
+      "npcType": "arven",
+      "x": 5,
+      "y": 9,
+      "facing": "Up",
+      "script": "Arven"
+    },
+    {
+      "id": "nemona",
+      "name": "Nemona",
+      "npcType": "nemona",
+      "x": 9,
+      "y": 9,
+      "facing": "Up",
+      "script": "Nemona"
+    },
+    {
+      "id": "penny",
+      "name": "Penny",
+      "npcType": "penny",
+      "x": 4,
+      "y": 10,
+      "facing": "Up",
+      "script": "Penny"
+    }
+  ],
+  "wildEncounters": []
+}

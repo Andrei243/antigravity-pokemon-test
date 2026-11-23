@@ -303,6 +303,84 @@ way -
 from Olympia at 6,4 of AnistarCity_Gym
 way -
   Olympia> The stars say you are not yet ready to face me. Visit Laverre's Gym first, and its tree.
+=== AreaZero.ParadoxA
+from Great Tusk at 16,10 of AreaZero
+from Iron Treads at 16,10 of AreaZero
+way 0
+  > A huge tusked Pokémon paws at the ground. It looks like a Donphan from a time long before any Donphan.
+  * wildbattle Great Tusk 56 Won
+  + FLAG_PALDEA_ZERO_PARADOX_A_MET
+way 1, from answer 1
+  * wildbattle Great Tusk 56 Lost
+=== AreaZero.ParadoxB
+from Flutter Mane at 5,28 of AreaZero
+from Iron Moth at 5,28 of AreaZero
+way 0
+  > A ghostly Pokémon drifts out of the crystals, trailing a long tattered veil. It hums a strange old song.
+  * wildbattle Flutter Mane 56 Won
+  + FLAG_PALDEA_ZERO_PARADOX_B_MET
+way 1, from answer 1
+  * wildbattle Flutter Mane 56 Lost
+=== AreaZero.StationFour
+from the trigger at 2,29 of AreaZero
+way -
+  Professor Sada> The last station. The lab is in the rock below you. Come in when you're ready. I have a great deal to tell you.
+  Arven> That voice... it's right, but it's too calm. They were never this calm. Something's off.
+  Nemona> Then we go in together and find out. Ready, Lucas?
+  * scene AreaZero.Research Station Four
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 5
+  + seen AreaZero.Research Station Four
+=== AreaZero.StationOne
+from the trigger at 4,6 of AreaZero
+way -
+  > A voice comes from the station's speaker as the four pass its door.
+  Professor Sada> The first station. Good. Below here the crater is another world: the Pokémon you meet may not be the ones in any book.
+  Nemona> Look at all those crystals! The whole wall is glittering. I want to battle everything down here.
+  Arven> Stay close. The ledges only go down, so there's no turning back halfway.
+  * scene AreaZero.Research Station One
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 2
+  + seen AreaZero.Research Station One
+=== AreaZero.StationThree
+from the trigger at 2,22 of AreaZero
+way -
+  Professor Sada> The third station. The crystals here are what makes Terastallization possible. The whole of Paldea's shine starts down here.
+  Nemona> Wait, so every Tera Pokémon I've ever battled... it all comes from this crater? That's so cool!
+  Penny> And kind of scary. I think the deeper we go, the less this place wants visitors.
+  * scene AreaZero.Research Station Three
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 4
+  + seen AreaZero.Research Station Three
+=== AreaZero.StationTwo
+from the trigger at 3,15 of AreaZero
+way -
+  Professor Sada> The second station. You're making good time. Mind the tall grass: what lives in it is older, or newer, than it looks.
+  Penny> This place has its own weather. The light comes down green. It's kind of beautiful, actually.
+  Arven> There's a journal in there. The professor's handwriting... I'd know it anywhere. Let's keep going.
+  * scene AreaZero.Research Station Two
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 3
+  + seen AreaZero.Research Station Two
+=== AreaZero_ZeroLab.Arven
+from Arven at 5,9 of AreaZero_ZeroLab
+way -
+  Arven> Whatever's waiting in there, we face it together. Go on, I've got your back.
+=== AreaZero_ZeroLab.Nemona
+from Nemona at 9,9 of AreaZero_ZeroLab
+way -
+  Nemona> My heart's pounding! The best battles are always the scary ones, right?
+=== AreaZero_ZeroLab.Penny
+from Penny at 4,10 of AreaZero_ZeroLab
+way -
+  Penny> I'll stay right here. Near the door. In case we need to run. That's a plan, right?
+=== AreaZero_ZeroLab.Professor
+from Koraidon at 10,6 of AreaZero_ZeroLab
+from Miraidon at 10,6 of AreaZero_ZeroLab
+from Professor Sada at 7,5 of AreaZero_ZeroLab
+from Professor Turo at 7,5 of AreaZero_ZeroLab
+way -
+  Professor Sada> Follow the stations down. I'll be waiting.
 === Artazon_Gym.GymGuide
 from Gym Guide at 2,7 of Artazon_Gym
 way -
@@ -7997,7 +8075,6 @@ way 0
   * warp CaboPoco_PlayersHouse_2F 4 6
   * save
   * sound save
-  * open Credits
   + PaldeaHallOfFame
   = VAR_PALDEA_LEAGUE 0 -> 7
   + beaten paldea_nemona_8c

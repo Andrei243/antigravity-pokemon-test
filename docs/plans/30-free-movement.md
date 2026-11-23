@@ -300,7 +300,7 @@ In all: 13 to 20 sessions before FM11, and 4 to 5 more for Paldea's mount (FM12 
 - [ ] FM11 Click to walk (optional)
 - [x] FM12 The mount: rules and powers (built 2026-11-09 on plan 32's open world as plan 34 · PD2 has it, GPU-free rules and the game's key, fades, scripts and save; no region lists `Mount` yet; "FM12 as built", below. Owed: the navigation mesh's power links, the baker's climbable brush in a world, the stand-in box and the harness's ride; the power links and the lab's painted face built 2026-11-13 as plan 34 · PD2, its "PD2 as built")
 - [x] FM13 The mount as a rig (built 2026-11-12 on plan 32's open world: the ride forms' battle models, their seats found on their own meshes, the rider astride and in four stances, getting on and off, a change of form, how the mount stands gliding, swimming and climbing, its shadows and reflections, the camera over it; "FM13 as built", below. Waits for the user's word on `fw70` to `fw89`; owed: the 8 ms judged on the user's card, the picnic's mount; the navigation mesh's power links built 2026-11-13, plan 34's "PD2 as built", the bot riding them still owed)
-- [ ] FM14 The mount in Paldea's story
+- [x] FM14 The mount in Paldea's story (ticked with plan 34 · PD8, 2026-11-23: given in Inlet Grotto, its powers after the Titans, ridden by the bot from Cabo Poco to the Zero Gate, its battle form beside the player in the Zero Lab, and on the team after the Way Home; plan 34's "PD8, second session")
 
 ## FM0 as built (2026-11-02)
 

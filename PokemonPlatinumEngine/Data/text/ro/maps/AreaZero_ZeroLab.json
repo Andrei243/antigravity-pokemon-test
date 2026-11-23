@@ -1,0 +1,92 @@
+{
+  "displayName": {
+    "en": [
+      "Zero Lab"
+    ],
+    "text": [
+      "Zero Lab"
+    ]
+  },
+  "people": {
+    "ai_sada": {
+      "name": {
+        "en": [
+          "Professor Sada"
+        ],
+        "text": [
+          "Profesoara Sada"
+        ]
+      }
+    },
+    "ai_turo": {
+      "name": {
+        "en": [
+          "Professor Turo"
+        ],
+        "text": [
+          "Profesorul Turo"
+        ]
+      }
+    },
+    "koraidon_ai": {
+      "name": {
+        "en": [
+          "Koraidon"
+        ],
+        "text": [
+          "Koraidon"
+        ]
+      }
+    },
+    "miraidon_ai": {
+      "name": {
+        "en": [
+          "Miraidon"
+        ],
+        "text": [
+          "Miraidon"
+        ]
+      }
+    },
+    "arven": {
+      "name": {
+        "en": [
+          "Arven"
+        ],
+        "text": [
+          "Arven"
+        ]
+      }
+    },
+    "nemona": {
+      "name": {
+        "en": [
+          "Nemona"
+        ],
+        "text": [
+          "Nemona"
+        ]
+      }
+    },
+    "penny": {
+      "name": {
+        "en": [
+          "Penny"
+        ],
+        "text": [
+          "Penny"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "7,3": {
+      "en": [
+        "The machine hums. Its panel shows one word over and over: OPEN."
+      ],
+      "text": [
+        "Mașina zumzăie. Panoul ei arată același cuvânt iar și iar: DESCHIS."
+      ]
+    }
+  }
+}

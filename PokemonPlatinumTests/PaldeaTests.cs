@@ -107,7 +107,7 @@ public class PaldeaTests
         // A door to each room, and each room's way out leads back through it to its marker (but upstairs, come to from
         // downstairs)
         var behind = new[] { "CaboPoco_PlayersHouse_2F", "Cortondo_GymTest", "Artazon_GymTest", "Levincia_GymTest", "Cascarrafa_GymTest", "Medali_GymTest",
-            "Montenevera_GymTest", "Alfornada_GymTest", "Glaseado_GymTest", "PaldeaLeague_Court" };
+            "Montenevera_GymTest", "Alfornada_GymTest", "Glaseado_GymTest", "PaldeaLeague_Court", "AreaZero", "AreaZero_ZeroLab" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {

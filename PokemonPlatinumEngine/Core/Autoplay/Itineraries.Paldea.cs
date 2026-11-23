@@ -135,6 +135,37 @@ public static partial class Itineraries
         Leg.Talk("Glaseado_GymTest", "grusha") with { Until = PaldeaBadge("Ice") },
     };
 
+    private static Func<StoryState, bool> PaldeaLeague(int at) => story => story.Var("VAR_PALDEA_LEAGUE") >= at;
+    private static Func<StoryState, bool> PaldeaZero(int at) => story => story.Var("VAR_PALDEA_ZERO") >= at;
+
+    /// <summary>
+    /// Plan 34 · PD8 (its first session's League, owed, and its second session's Area Zero): from the eighth badge,
+    /// with the Path of Legends and Starfall Street behind the player, Rika's interview in the League's lobby, the four,
+    /// Geeta and Nemona on the court to the Hall of Fame and home to Cabo Poco; then north across the region to the Zero
+    /// Gate, where the friends wait and open it; down the lift into Area Zero, past its four research stations to the
+    /// Zero Lab, the professor's AI and the legendary's battle form, and the Way Home. Each leg is done when
+    /// <c>VAR_PALDEA_LEAGUE</c> (PaldeaLeague_Court.txt) or <c>VAR_PALDEA_ZERO</c> (AreaZero.txt) says so.
+    /// </summary>
+    public static IReadOnlyList<Leg> PaldeaLeagueToTheWayHome { get; } = new[]
+    {
+        Leg.Talk("PaldeaLeague_Lobby", "rika") with { Until = PaldeaLeague(1) },
+        Leg.Talk("PaldeaLeague_Court", "rika") with { Until = PaldeaLeague(2) },
+        Leg.Talk("PaldeaLeague_Court", "poppy") with { Until = PaldeaLeague(3) },
+        Leg.Talk("PaldeaLeague_Court", "larry") with { Until = PaldeaLeague(4) },
+        Leg.Talk("PaldeaLeague_Court", "hassel") with { Until = PaldeaLeague(5) },
+        Leg.Talk("PaldeaLeague_Court", "geeta") with { Until = PaldeaLeague(6) },
+        Leg.Talk("PaldeaLeague_Court", "nemona") with { Until = Flag("PaldeaHallOfFame") },
+        Leg.OpenTalk(PaldeaMap, "arven_zero_gate") with { Until = Flag("FLAG_PALDEA_ZERO_GATE_OPEN") },
+        Leg.Enter("AreaZero_Gate"),
+        Leg.Enter("AreaZero"),
+        Leg.Trigger("AreaZero", "StationOne") with { Until = PaldeaZero(2) },
+        Leg.Trigger("AreaZero", "StationTwo") with { Until = PaldeaZero(3) },
+        Leg.Trigger("AreaZero", "StationThree") with { Until = PaldeaZero(4) },
+        Leg.Trigger("AreaZero", "StationFour") with { Until = PaldeaZero(5) },
+        Leg.Enter("AreaZero_ZeroLab"),
+        Leg.Talk("AreaZero_ZeroLab", "ai_sada") with { Until = Flag("FLAG_PALDEA_WAY_HOME") },
+    };
+
     /// <summary>
     /// Plan 34 · PD6's done-when, the region walked and ridden: from Cabo Poco's lane north through Los Platos and
     /// Mesagoza, west to Cortondo, north through Asado Desert, east to Medali, north along the North Province's first area

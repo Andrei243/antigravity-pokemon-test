@@ -5,3 +5,54 @@ script CrystalNorthOne1
   raid crystal "north_one_1"
   call TeraCrystal
   end
+
+# The Zero Gate (plan 34 · PD8, its second session): Arven, Nemona and Penny wait before it once the League is won
+# (PaldeaHallOfFame shows them). Spoken to, any of them begins the meeting when the Path of Legends and Starfall Street
+# are done too (VAR_PALDEA_LEGENDS 12, VAR_PALDEA_STARFALL 6), or says which is still to do. The meeting: Penny owns up to
+# being Cassiopeia, Arven tells of the professor's message, and the professor's voice opens the gate
+# (FLAG_PALDEA_ZERO_GATE_OPEN, which the door waits for; VAR_PALDEA_ZERO 1, AreaZero.txt's count). Our own lines.
+script ZeroGate
+  if flag FLAG_PALDEA_ZERO_GATE_OPEN goto Open
+  if flag PaldeaHallOfFame goto Champion
+  end
+label Champion
+  speaker "Arven"
+  if var VAR_PALDEA_LEGENDS < 12 goto Legends
+  if var VAR_PALDEA_STARFALL < 6 goto Starfall
+  scene "The friends at the Zero Gate"
+  say "There you are. A Champion now, huh? Nemona hasn't stopped talking about it the whole way up the valley."
+  speaker "Nemona"
+  say "Because it's amazing! But Arven says this is even bigger than the League, so here I am."
+  speaker "Penny"
+  say "...Hi. You know my voice, I think. I'm Penny. I'm the one who called herself Cassiopeia."
+  say "Team Star were my friends. I wanted them to stop before the academy threw them out, and you made them stop. Thank you."
+  speaker "Arven"
+  say "The professor sent me a message: come down to the Zero Lab at the bottom of the crater, and bring the strongest Trainers I know."
+  say "Yeah, that professor. The one I grew up waiting for. I'm not going down there alone, so... this is the team."
+  text "The speaker beside the gate crackles into life."
+  call Voice
+  say "You've come, all four of you. The gate is open. Take the lift down, and follow the research stations to the lab."
+  text "With a deep hum, the Zero Gate unlocks."
+  setflag FLAG_PALDEA_ZERO_GATE_OPEN
+  setvar VAR_PALDEA_ZERO 1
+  endscene
+  end
+label Legends
+  say "Not yet. The Herba Mystica come first, and there's still a Titan out there guarding one."
+  end
+label Starfall
+  speaker "Penny"
+  say "Um... not yet. Team Star still has a boss on Starfall Street. I'd like that to be over before we go down."
+  end
+label Open
+  end
+
+
+# The professor's voice, by the version (VAR_PALDEA_VERSION: 1 Scarlet's Sada, 2 Violet's Turo)
+script Voice
+  if var VAR_PALDEA_VERSION == 2 goto Turo
+  speaker "Professor Sada"
+  return
+label Turo
+  speaker "Professor Turo"
+  return

@@ -2844,5 +2844,201 @@
         "teraType": "Grass"
       }
     ]
+  },
+  {
+    "id": "paldea_ai_sada",
+    "name": "Sada",
+    "class": "Pokémon Professor",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Slither Wing",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 325803391
+      },
+      {
+        "species": "Scream Tail",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 1692161508
+      },
+      {
+        "species": "Brute Bonnet",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 1973739844
+      },
+      {
+        "species": "Flutter Mane",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 2086642486
+      },
+      {
+        "species": "Sandy Shocks",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 1867095887
+      },
+      {
+        "species": "Roaring Moon",
+        "level": 67,
+        "ivScale": 31,
+        "personality": 1723591783,
+        "teraType": "Dark"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ai_turo",
+    "name": "Turo",
+    "class": "Pokémon Professor",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Iron Moth",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 1896770187
+      },
+      {
+        "species": "Iron Bundle",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 392179190
+      },
+      {
+        "species": "Iron Hands",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 1297219203
+      },
+      {
+        "species": "Iron Jugulis",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 2099047631
+      },
+      {
+        "species": "Iron Thorns",
+        "level": 66,
+        "ivScale": 31,
+        "personality": 149347844
+      },
+      {
+        "species": "Iron Valiant",
+        "level": 67,
+        "ivScale": 31,
+        "personality": 305251642,
+        "teraType": "Fairy"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ai_sada_legend",
+    "name": "Sada",
+    "class": "Pokémon Professor",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Koraidon",
+        "level": 72,
+        "ivScale": 31,
+        "personality": 1000443148
+      },
+      {
+        "species": "Roaring Moon",
+        "level": 70,
+        "ivScale": 31,
+        "personality": 61724
+      }
+    ]
+  },
+  {
+    "id": "paldea_ai_turo_legend",
+    "name": "Turo",
+    "class": "Pokémon Professor",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Miraidon",
+        "level": 72,
+        "ivScale": 31,
+        "personality": 1072602614
+      },
+      {
+        "species": "Iron Valiant",
+        "level": 70,
+        "ivScale": 31,
+        "personality": 90215
+      }
+    ]
+  },
+  {
+    "id": "paldea_partner_koraidon",
+    "name": "Koraidon",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Koraidon",
+        "level": 68,
+        "ivScale": 31,
+        "personality": 1044256093
+      }
+    ]
+  },
+  {
+    "id": "paldea_partner_miraidon",
+    "name": "Miraidon",
+    "class": "Pokémon Trainer",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Miraidon",
+        "level": 68,
+        "ivScale": 31,
+        "personality": 853799896
+      }
+    ]
   }
 ]

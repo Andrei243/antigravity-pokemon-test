@@ -1,0 +1,344 @@
+{
+  "name": "AreaZero",
+  "displayName": "Area Zero",
+  "bgmTrack": "paldea/alfornada",
+  "interior": "None",
+  "trees": "Round",
+  "battleArena": "Cave",
+  "encounterRate": 8,
+  "setting": "Cave",
+  "width": 21,
+  "height": 40,
+  "ground": [
+    "XXXXXXXXXXXXXXXXXXXXX",
+    "XXXXXXXXXXcXXXXXXXXXX",
+    "XXXXXXXXXcccXXXXXXXXX",
+    "XXXXXXXHHHHHHHXXXXXXX",
+    "XXXXXXXHHHHHHHXXXXXXX",
+    "XXXXXcccccccccwwwXXXX",
+    "XXXXccccccccccwwwwXXX",
+    "XXXcccccccccccwwwwXXX",
+    "XXXvvvvvvvvvvvvvvvXXX",
+    "XX~~cccccccccccccccXX",
+    "XX~~cccwwwwwccccccccX",
+    "XX~~ccwwwwwwwcccccccX",
+    "XXXXccccccccHHHHHHHXX",
+    "XXXXccccccccHHHHHHHXX",
+    "XXXcccccccccccccccccX",
+    "XXXcccccccccccccccccX",
+    "XXXccccwwwwccccccccXX",
+    "XXXvvvvvvvvvvvvvvvvXX",
+    "XXcccccccccccccccc~~X",
+    "XXHHHHHHHccccwwwww~~X",
+    "XXHHHHHHHccccwwwww~~X",
+    "XXcccccccccccwwwwwccX",
+    "XXcccccccccccccccccXX",
+    "XXXccccccccwwwwccccXX",
+    "XXXvvvvvvvvvvvvvvvvXX",
+    "XXccccccccccccccccccX",
+    "X~~cccccccccccHHHHHXX",
+    "X~~cccwwwwccccHHHHHXX",
+    "X~~cccwwwwcccccccccXX",
+    "XXccccccccccccccccccX",
+    "XXXccccccccccccccccXX",
+    "XXXvvvvvvvvvvvvvvvvXX",
+    "XXcccccccccccccccccXX",
+    "XXcc~~~cccccc~~~cccXX",
+    "XXcc~~~XXXXXXX~~~ccXX",
+    "XXccccXXXXXXXXXccccXX",
+    "XXccccXXXXMXXXXccccXX",
+    "XXcccccccccccccccccXX",
+    "XXXcccccccccccccccXXX",
+    "XXXXXXXXXXXXXXXXXXXXX"
+  ],
+  "solid": [
+    "#####################",
+    "##########.##########",
+    "#########...#########",
+    "#########.....#######",
+    "#######.......#######",
+    "#####...........#####",
+    "####..............###",
+    "###...............###",
+    "###...............###",
+    "####...............##",
+    "####...............##",
+    "####................#",
+    "####.............####",
+    "####...............##",
+    "####................#",
+    "###.................#",
+    "###................##",
+    "###................##",
+    "##................###",
+    "####..............###",
+    "##................###",
+    "##.................##",
+    "##.................##",
+    "###................##",
+    "###................##",
+    "###.................#",
+    "###..............####",
+    "###................##",
+    "###................##",
+    "##.................##",
+    "###................##",
+    "###................##",
+    "##.................##",
+    "##..###......###...##",
+    "##..#############..##",
+    "##....#########....##",
+    "##....####.####....##",
+    "###...............###",
+    "###...............###",
+    "#####################"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 17,
+      "y": 12,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 2,
+      "y": 19,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 17,
+      "y": 26,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 16,
+      "y": 5,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 19,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 3,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 19,
+      "y": 21,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 2,
+      "y": 25,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 19,
+      "y": 29,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 2,
+      "y": 37,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "ChargeStone",
+      "x": 18,
+      "y": 37,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 1,
+      "targetMap": "AreaZero_Gate",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 10,
+      "sourceY": 36,
+      "targetMap": "AreaZero_ZeroLab",
+      "targetX": 7,
+      "targetY": 12,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 7,
+      "y": 3,
+      "text": "Research Station No. 1. Its door is sealed, and a sign asks visitors to keep to the marked way down."
+    },
+    {
+      "x": 17,
+      "y": 12,
+      "text": "Research Station No. 2. Through the window: a desk of old papers under a lamp nobody has switched off."
+    },
+    {
+      "x": 2,
+      "y": 19,
+      "text": "Research Station No. 3. Crystals have grown over its far wall. A meter on the door ticks and ticks."
+    },
+    {
+      "x": 17,
+      "y": 26,
+      "text": "Research Station No. 4, the last before the lab. The way below it leads into the rock."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "paradox_a_scarlet",
+      "name": "Great Tusk",
+      "npcType": "Pokemon",
+      "x": 16,
+      "y": 10,
+      "facing": "Left",
+      "script": "ParadoxA",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_PARADOX_A_SCARLET",
+      "species": "Great Tusk"
+    },
+    {
+      "id": "paradox_a_violet",
+      "name": "Iron Treads",
+      "npcType": "Pokemon",
+      "x": 16,
+      "y": 10,
+      "facing": "Left",
+      "script": "ParadoxA",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_PARADOX_A_VIOLET",
+      "species": "Iron Treads"
+    },
+    {
+      "id": "paradox_b_scarlet",
+      "name": "Flutter Mane",
+      "npcType": "Pokemon",
+      "x": 5,
+      "y": 28,
+      "facing": "Right",
+      "script": "ParadoxB",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_PARADOX_B_SCARLET",
+      "species": "Flutter Mane"
+    },
+    {
+      "id": "paradox_b_violet",
+      "name": "Iron Moth",
+      "npcType": "Pokemon",
+      "x": 5,
+      "y": 28,
+      "facing": "Right",
+      "script": "ParadoxB",
+      "hiddenBy": "FLAG_PALDEA_ZERO_HIDE_PARADOX_B_VIOLET",
+      "species": "Iron Moth"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 4,
+      "y": 6,
+      "width": 14,
+      "depth": 1,
+      "script": "StationOne",
+      "variable": "VAR_PALDEA_ZERO",
+      "value": 1
+    },
+    {
+      "x": 3,
+      "y": 15,
+      "width": 17,
+      "depth": 1,
+      "script": "StationTwo",
+      "variable": "VAR_PALDEA_ZERO",
+      "value": 2
+    },
+    {
+      "x": 2,
+      "y": 22,
+      "width": 17,
+      "depth": 1,
+      "script": "StationThree",
+      "variable": "VAR_PALDEA_ZERO",
+      "value": 3
+    },
+    {
+      "x": 2,
+      "y": 29,
+      "width": 18,
+      "depth": 1,
+      "script": "StationFour",
+      "variable": "VAR_PALDEA_ZERO",
+      "value": 4
+    }
+  ],
+  "wildEncounters": [
+    {
+      "speciesName": "Glimmet",
+      "minLevel": 52,
+      "maxLevel": 55,
+      "weight": 30
+    },
+    {
+      "speciesName": "Garganacl",
+      "minLevel": 53,
+      "maxLevel": 56,
+      "weight": 15
+    },
+    {
+      "speciesName": "Tinkatuff",
+      "minLevel": 52,
+      "maxLevel": 55,
+      "weight": 15
+    },
+    {
+      "speciesName": "Bronzong",
+      "minLevel": 53,
+      "maxLevel": 56,
+      "weight": 15
+    },
+    {
+      "speciesName": "Rabsca",
+      "minLevel": 53,
+      "maxLevel": 56,
+      "weight": 15
+    },
+    {
+      "speciesName": "Glimmora",
+      "minLevel": 55,
+      "maxLevel": 57,
+      "weight": 10
+    }
+  ]
+}

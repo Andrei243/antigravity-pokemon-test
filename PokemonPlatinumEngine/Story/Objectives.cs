@@ -442,6 +442,9 @@ public static class Objectives
         // The Pokémon League (plan 34 · PD8, its first session): the interview, the Elite Four, Geeta and Nemona, done by
         // the Hall of Fame
         (835, "paldeaLeague", F("PaldeaHallOfFame"), false),
+        // Area Zero and the Way Home (plan 34 · PD8, its second session): the Zero Gate opened with the friends, the
+        // crater's four stations, the Zero Lab, the professor's AI, and home
+        (836, "paldeaAreaZero", F("FLAG_PALDEA_WAY_HOME"), false),
         // Starfall Street (plan 34 · PD5) by VAR_PALDEA_STARFALL, starfall_street.txt's count: Cassiopeia's first call,
         // then each of the five bases by its boss beaten (the 850s, kept apart from the gyms' ids PD6 adds)
         (850, "paldeaStarfall", AtLeast("VAR_PALDEA_STARFALL", 1), false),

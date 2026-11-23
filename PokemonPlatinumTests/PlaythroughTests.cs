@@ -294,6 +294,57 @@ public class PlaythroughTests
     }
 
     [Fact]
+    public void APaldeaGameRunsFromTheLeagueThroughAreaZeroToTheWayHome()
+    {
+        // Plan 34 · PD8's done-when, its last leg (the legs before it are the runs above: the bedroom to the academy's
+        // door, the badges, the Path of Legends, the ride to Glaseado's top): a game with the eight badges, the five
+        // Titans and the five bases behind it put down before the League's door; the bot through Rika's interview, the
+        // Elite Four, Geeta and Nemona to the Hall of Fame and home to Cabo Poco, then riding north across the region to
+        // the Zero Gate (mounted again whenever a battle or a door put it down), down Area Zero past its four stations to
+        // the Zero Lab, the professor's AI, the legendary's battle form beside the player, and the Way Home
+        Headless.Play(engine =>
+        {
+            var game = engine.Drive;
+            foreach (var (species, level) in new[] { ("Pawmot", 100), ("Skeledirge", 100), ("Garganacl", 100), ("Meowscarada", 100), ("Kingambit", 100) })
+                game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, level));
+            game.Flow.EncounterAids.RepelSteps = 1_000_000;
+            game.Story.SetVar("VAR_PALDEA_STORY", 7);
+            game.Story.SetVar("VAR_PALDEA_VERSION", 1);
+            game.Story.SetVar(PokemonPlatinumEngine.OpenWorld.MountRules.MountVariable, PokemonPlatinumEngine.OpenWorld.MountRules.Koraidon);
+            game.Story.Set("FLAG_PALDEA_MOUNT_DASH");
+            game.Story.SetVar("VAR_PALDEA_LEGENDS", Itineraries.PaldeaLegendsEnd);
+            game.Story.SetVar("VAR_PALDEA_STARFALL", 6);
+            foreach (string badge in new[] { "Bug", "Grass", "Electric", "Water", "Normal", "Ghost", "Psychic", "Ice" }) game.Story.GiveBadge(RegionDatabase.Paldea, badge);
+            game.PlaceOpen(engine.OpenMapNamed("Paldea")!, "league_front");
+            var bot = new Autoplayer(engine, seed: 1) { Itinerary = new Itinerary(Itineraries.PaldeaLeagueToTheWayHome) };
+            const float dt = 1f / 60f;
+            int ridden = 0, open = 0;
+            var started = DateTime.UtcNow;
+            for (double t = 0; t < 3 * 3600 && !bot.Stopped; t += dt)
+            {
+                if (engine.InOpenField && game.State == PokemonPlatinumEngine.Core.GameState.Overworld && !game.OpenMounted && !engine.ScriptRunning
+                    && game.WhyNotMount == PokemonPlatinumEngine.OpenWorld.MountRefusal.None)
+                    game.ToggleMount();
+                bot.Frame(dt);
+                if (engine.InOpenField) { open++; if (game.OpenMounted) ridden++; }
+                if (bot.Itinerary!.Finished && game.State == PokemonPlatinumEngine.Core.GameState.Overworld) break;
+            }
+            bot.Release();
+            output.WriteLine($"{bot.Report.Seconds:0} s of game time in {(DateTime.UtcNow - started).TotalSeconds:0} s; ridden {100.0 * ridden / Math.Max(1, open):0}% of the open map's frames; ended on {game.Map.Name}; VAR_PALDEA_ZERO {game.Story.Var("VAR_PALDEA_ZERO")}, WAY_HOME {game.Story.Has("FLAG_PALDEA_WAY_HOME")}, LEAGUE {game.Story.Var("VAR_PALDEA_LEAGUE")}");
+            output.WriteLine(bot.Report.ToMarkdown());
+            var report = bot.Report;
+            Assert.True(report.Clean, report.ToMarkdown());
+            Assert.Empty(report.LegsGivenUp);
+            Assert.True(bot.Itinerary!.Finished, report.ToMarkdown());
+            Assert.True(game.Story.Has("PaldeaHallOfFame"));
+            Assert.True(game.Story.Has("FLAG_PALDEA_WAY_HOME"));
+            Assert.Equal(8, game.Story.Var("VAR_PALDEA_ZERO"));
+            Assert.Contains(game.Party.Members, p => p.Species.Name == "Koraidon");
+            Assert.True(ridden > open / 2, $"ridden {ridden} of {open} open frames");
+        }, Seed, RegionDatabase.Paldea);
+    }
+
+    [Fact]
     public void APaldeaGameWalksThePathOfLegendsFromArvensWordToHisBattle()
     {
         // Plan 34 · PD4: a game past the academy's welcome put down at the lighthouse's foot, the bot walking the Path of
