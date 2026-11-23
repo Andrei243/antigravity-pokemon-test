@@ -13260,3 +13260,70 @@ out where the rules already bite. Ids 3101 to 3107 for both the moves and the ab
   weather unless an ability holds a strong one; Hailstorm Rider sets the weather of the tale told over the field (rain where
   none brings one) for five turns; Banner Howl raises Attack and Sp. Atk of the user and its allies after it hits.
 - **Smith's Hammer, not Forge Hammer**: plan 06 · R31's move past 100 already has that name.
+
+## Tera Raids and picnics (2026-11-23, plan 34 · PD7)
+
+- **A Tera Raid is Galar's raid** (BattleFormat.Raid, RaidTerms) with a Tera Type (RaidTerms.Tera, IsTera): the
+  same four places, the same three raiders thought for by the trainer AI, nobody switching, nothing from the bag, a raider
+  back on their feet at the turn's end. Under Platinum's rules it is the single it began as, as a den's is.
+- **The boss** is Terastallized into the crystal's Tera Type as the battle opens and stays so (BeginTheTeraRaid, the
+  core's own Terastallize, so its type, its Tera bonus and the crown follow); it never Dynamaxes, and nobody in a Tera
+  Raid may (WhyNotDynamax refuses: a crystal knows no Dynamax energy). Its HP is raised to so many times its own by its
+  stars (RaidRules.TeraHpTimes: three at one star, four, six, eight, twelve, sixteen, twenty at seven; ours). It acts once
+  a turn, as Scarlet's boss does; its clock is the pressure (no ActsTwice).
+- **The crystal shield** (Scarlet's, our numbers): from four stars it goes up once as a hit takes the boss to a share of
+  its HP (RaidRules.TeraShieldAt: half at four stars, three quarters from five), the hit stopping at that share; it takes
+  as many hits as the boss's stars (TeraShields), each letting a fifth of its damage through and never the last HP, and
+  a hit from a Terastallized raider breaks three at once (CrystalBreaksOf). The same RaidBarrier event as a den's
+  barrier, so the screen's pips count it; its lines are attle.teraShieldUp, 	eraShieldBroke, 	eraShieldDown.
+- **The raiders' Tera Orbs** charge by the moves their Pokémon use (RaidRules.OrbCharge, three; OrbChargeOf,
+  attle.teraOrbCharged); until then Terastallizing is refused with attle.teraOrbNotCharged, and then it is allowed
+  once a battle as anywhere. The three raiders carry orbs of their own in a Tera Raid (HasTeraOrb); the player needs
+  theirs, and the crystal's script asks for it before the raid.
+- **The clock** replaces the fourth fall: the raid lasts RaidRules.TeraTurns turns (ten to two stars, twelve to four,
+  fifteen at five, eighteen at six and seven), and every raider's fall takes two off it (FallCost); at the turn's end
+  once they are spent the crystal's light swallows the raiders (attle.teraRaidTimeUp) and the raid is lost with no
+  white-out. The clock is told as the raid opens (attle.teraRaidClock); TeraTurnsLeft counts it. CannotFail never
+  loses, as for a den.
+- **The catch never fails**: aid catch after a Tera Raid takes the boss with any ball of the bag and throws no die
+  (Raids.CatchChance(…, tera: true)), and the Pokémon keeps the crystal's Tera Type. Before it aid shards puts the
+  boss's Tera Shards of its type into the bag (Raids.ShardsOf: two at one star up to sixteen at seven, ours), which plan
+  36 · TR5's Tera keeper reads as any shards.
+- **The crystals** are Data/world/paldea/crystals.json, the dens' shape (RaidDensFile, RaidRowFile.Tera for a row whose
+  type is fixed): twelve sites on Paldea's open map, each a trigger crystal_<id> of its place calling its own script
+  (aid crystal "<id>", call TeraCrystal). What a crystal holds on a day is drawn as a den's is, by the day's number,
+  the crystal's id and VAR_PALDEA_VERSION, never the dice (Raids.CrystalToday; the plan's "spawner on Dice" read as
+  the dens' day-drawn spawner, so the picture and the script always agree): lit one day in two, a row by weight among the
+  stars Paldea's badges allow (TeraMostStars: two to two badges, three to five, four to seven, five with eight), its
+  level by its stars (TeraLevelsOf, then mapped to the region's levels as every raid's boss is), its Tera Type the row's
+  where fixed, else one of the species' own types two times in three and any of the eighteen the third (never Stellar or
+  Carpathia's Sound). A crystal felled today is quiet until tomorrow (FLAG_DAILY_PALDEA_CRYSTAL_<ID>_DONE); one not lit
+  isn't drawn and says nothing. The raiders are seven of the academy's students, ours. The black crystals of six and
+  seven stars are PD9's (the rules already run to seven).
+- **The crystal's look** (DenBeams, DenBeam.Tera): a crystal at the trigger's foot, two crossed bright ribbons
+  narrowing to a point, in its Tera Type's colour (a move's colours, Stellar white), and over it a glow of that colour half
+  a den's beam's width and fourteen metres high, breathing as a den's beam does.
+- **Kept by the Vs. Recorder's file**: RaidTera (the Tera Type's name; none for a den's raid); a Tera Raid replays.
+- **Picnics** (decision 4 at its recommendation): Paldea's camp is a picnic, offered there whatever the FOLLOWER and TEAM
+  CARE rows say, and its pot makes **sandwiches**: ecipes.json's sandwiches, a second section of the camp's one table
+  shape (KitchenRecipes) cooked on the same Kitchen (the stirring is the pot's for now, the table's own look owed), with
+  no crafting kit needed in Paldea (GameEngine.CampKitchenNow). Seven sandwiches, ours: a plain one, and one for each of
+  the Type, Encounter, Egg, EXP, Catching and Sparkling Powers, each lasting half an hour of play (1,800 seconds, every
+  grade) at a level of one, one, two and three by its grade. The pantry's goods are sold with no kit at Mesagoza's deli
+  (craft deli, the kit's own PANTRY screen).
+- **Two new powers** at PowerKind's end, each with its one reader: **Egg** (powers.json 10, 20, 35), read by the picnic
+  basket; **Sparkling** (1, 2, 3), a power of a type like the Type Power (PowerTable.TakesType), read by
+  GameEngine.MakeWild as that many more shiny rolls for a Pokémon of its type, drawn only then.
+- **The powers on the spawner**: on Paldea's open map the Type Power weighs a row of its type (one and its strength)
+  times in its zone's draw (OpenWildField.Favoured, WeightOf), and the Encounter Power has each zone want its strength
+  by ten more standing (MoreStanding); both are set from the powers in force every frame (FavouredBy, MoreStandingBy),
+  so they change the draws of the area the player is in and wear off with the power. With no power in force every draw is
+  as it was.
+- **The picnic basket** (PicnicBasket): Paldea's Eggs, the Day Care being Sinnoh's. As a Paldean picnic is packed up, the
+  first two of the team who would get on at a Day Care leave an Egg one try a minute of the picnic, each taking one at
+  the pair's own Day Care chance (20, 50 or 70) and the Egg Power's strength more, ten at most; each Egg is the Day Care's
+  (Breeding.MakeEgg), and goes to the team or the boxes with a line on the toast (picnic.eggs). Drawn on a generator
+  seeded by the picnic, never moving another draw; nothing anywhere but Paldea.
+- **Owed**: the raid's clock and each raider's orb drawn on the raid's screen; the bot playing a raid; the black crystals
+  (PD9); the picnic table's own look (a sandwich stacked rather than a pot stirred); the crystal's look judged by the user;
+  the Romanian of the open map's people (the deli clerk's name), which no open map can translate yet.

@@ -1825,6 +1825,25 @@ What `openproto` draws, as the gate's look was judged: the same units, scene, ca
   half times it), red `255,92,70` at the foot deepening to `214,36,52` at the top, the strength falling as the square
   of the height left; hidden behind hills by the scene's depth, drawn within 420 m, a boss of more stars a little
   brighter. A Wishing Piece thrown in lights the same beam.
+
+### Tera crystals (plan 34 · PD7)
+
+- **A crystal** stands only where it is lit today: a point of crystal about a metre wide and 1.6 m high at its trigger's
+  foot, drawn as two crossed ribbons narrowing to the point, in four lengths, its body in its Tera Type's colour (a
+  move's main colour of that type, `MoveFx.ColorsOf`; a Stellar crystal near white) and a bright core half as wide mixed
+  halfway to white. Our own.
+- **Its glow** rises from the point to fourteen metres, half a den's beam's width, in the same three widths and six
+  lengths, in the crystal's colour, fading as the square of the height left and breathing with the dens' two-second
+  breath (`Graphics/OpenWorld/DenBeams.cs`, `DenBeam.Tera`), so a crystal reads as a den's smaller cousin: seen across a
+  province by day, bright after dark. A boss of more stars is a little brighter.
+- **The raid's screen** is the den's (the boss's box with its pips, the four raiders' boxes); the boss wears its Tera
+  crown from the first line. Owed: the clock and each raider's orb on the screen.
+
+### The picnic (plan 34 · PD7)
+
+- **In Paldea the camp is a picnic**: the clearing, the team and the tent as the camp's, titled PICNIC, and its pot's
+  screen titled THE PICNIC TABLE, with ON THE BREAD for what is in the pot and MAKE for COOK. The stirring is the pot's for
+  now: a sandwich stacked on the table, its own look, is owed.
 - **A raid's battle** puts the player's four Pokémon on four platforms in an arc on their side and the boss alone,
   giant, on the other; its barrier's shields show as small pips on its HP box, one to a shield. The boss's box is a
   single foe's at the top left, the shields a tray of rounded steel plates rimmed in white hanging under it; the four

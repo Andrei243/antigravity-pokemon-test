@@ -7,6 +7,10 @@
     { "name": "desert_crossroads", "at": [-430, 12.0, -566], "yaw": 0 },
     { "name": "desert_north", "at": [-436, 12.0, -596], "yaw": 0 }
   ],
+  // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+  "triggers": [
+    { "name": "crystal_desert_1", "cylinder": { "at": [-478, -534], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalDesert1" }
+  ],
   "zones": [
     {
       "name": "desert_dunes",

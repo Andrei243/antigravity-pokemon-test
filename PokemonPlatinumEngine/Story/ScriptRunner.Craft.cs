@@ -88,6 +88,14 @@ public sealed partial class ScriptRunner
             if (Result == 1) host.Open(ScriptScreen.Crafting, Subject, "pantry");
             return;
         }
+        // A Paldean deli's counter (plan 34 · PD7): the pantry's goods for a picnic's sandwiches, sold into the pouch with
+        // no kit needed, on the kit's own PANTRY screen
+        if (i.Name == "deli")
+        {
+            Result = pouch != null ? 1 : 0;
+            if (Result == 1) host.Open(ScriptScreen.Crafting, Subject, "pantry");
+            return;
+        }
         // The workshop garden's keeper (plan 39 · CR8): the kit's screen on its CROSSES tab, the table of what crosses
         if (i.Name == "crosses")
         {

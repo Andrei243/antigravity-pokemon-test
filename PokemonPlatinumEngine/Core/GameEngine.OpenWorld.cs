@@ -84,6 +84,9 @@ public partial class GameEngine
         field.Wild.Now = GameClock.Now;
         // and under each zone's weather of the day (plan 33 · GL2)
         field.Wild.WeatherOf ??= zone => OpenWeather.OfZone(field.Map, zone, GameClock.Today);
+        // and with a sandwich's Type and Encounter Powers on the spawner's draws (plan 34 · PD7)
+        field.Wild.Favoured = OpenWildField.FavouredBy(flow.Powers);
+        field.Wild.MoreStanding = OpenWildField.MoreStandingBy(flow.Powers);
         if (ScriptRunning)
         {
             // A script that begins takes the player off the mount (plan 30 · FM12)

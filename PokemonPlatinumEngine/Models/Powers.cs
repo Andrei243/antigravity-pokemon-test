@@ -10,8 +10,9 @@ namespace PokemonPlatinumEngine.Models;
 /// A timed power (plan 36 · Powers, "The rule"; <c>docs/mechanics/rulings.md</c>, "Powers"). The first eight are plan 36's
 /// and their readers are its session TR7's; plan 39 · CR6 added <see cref="TypeEncounter"/> and <see cref="Materials"/> at
 /// the end. A new kind is a value at the end, a row of <c>Data/powers.json</c> and its one reader.
+/// Plan 34 · PD7 added <see cref="Egg"/> (the picnic basket's Eggs) and <see cref="Sparkling"/> (shiny rolls for a type), Paldea's sandwiches'.
 /// </summary>
-public enum PowerKind { Exp, Effort, Money, Bargain, Catch, Encounter, Stealth, Hatch, TypeEncounter, Materials }
+public enum PowerKind { Exp, Effort, Money, Bargain, Catch, Encounter, Stealth, Hatch, TypeEncounter, Materials, Egg, Sparkling }
 
 /// <summary>One kind's row of <c>Data/powers.json</c>: what it comes to at each of its three levels (its reader says in what).</summary>
 public sealed class PowerRow
@@ -101,6 +102,9 @@ public sealed class PowersSave
 /// </summary>
 public static class PowerTable
 {
+    /// <summary>Whether a kind is of a type (a type's encounters, and since plan 34 · PD7 a sandwich's sparkling): granted only with one.</summary>
+    public static bool TakesType(PowerKind kind) => kind is PowerKind.TypeEncounter or PowerKind.Sparkling;
+
     /// <summary>The most a power's level comes to.</summary>
     public const int TopLevel = 3;
 
@@ -121,7 +125,7 @@ public static class PowerTable
     /// <see cref="PowerKind.Stealth"/> by a step's odds (<c>Map.RollWildEncounter</c>), <see cref="PowerKind.TypeEncounter"/> by
     /// the grass's slots (<c>EncounterSlots.Grass</c>), <see cref="PowerKind.Hatch"/> by the Eggs' cycles
     /// (<see cref="Breeding.CountDown"/>) and <see cref="PowerKind.Materials"/> by what a wild Pokémon leaves
-    /// (<see cref="MaterialDrops.For(Pokemon, Random, int)"/>). Every kind is read since TR7.
+    /// (<see cref="MaterialDrops.For(Pokemon, Random, int)"/>). Every kind is read since TR7. Plan 34 · PD7's <see cref="PowerKind.Egg"/> by the picnic basket (<see cref="PicnicBasket"/>) and <see cref="PowerKind.Sparkling"/> by a wild Pokémon's shiny rolls (<c>GameEngine.MakeWild</c>); and on Paldea's open map <see cref="PowerKind.TypeEncounter"/> and <see cref="PowerKind.Encounter"/> by the spawner's draws (<c>OpenWildField.Favoured</c>).
     /// </summary>
     public static readonly IReadOnlySet<PowerKind> Read = new HashSet<PowerKind>(Enum.GetValues<PowerKind>());
 
@@ -198,7 +202,7 @@ public sealed class PowerState
     /// </summary>
     public bool Grant(PowerKind kind, int level, float seconds, PokemonType? type = null)
     {
-        if (seconds <= 0 || level < 1 || (kind == PowerKind.TypeEncounter) != (type != null)) return false;
+        if (seconds <= 0 || level < 1 || PowerTable.TakesType(kind) != (type != null)) return false;
         level = Math.Min(level, PowerTable.TopLevel);
         if (kind == PowerKind.Encounter) inForce.Remove(PowerKind.Stealth);
         if (kind == PowerKind.Stealth) inForce.Remove(PowerKind.Encounter);
@@ -332,7 +336,7 @@ public sealed class PowerState
         inForce.Clear();
         learned.Clear();
         foreach (var p in save?.InForce ?? new())
-            if (p.Seconds > 0 && p.Level >= 1 && (p.Kind == PowerKind.TypeEncounter) == (p.Type != null))
+            if (p.Seconds > 0 && p.Level >= 1 && PowerTable.TakesType(p.Kind) == (p.Type != null))
                 inForce[p.Kind] = new ActivePower(p.Kind, Math.Min(p.Level, PowerTable.TopLevel), p.Seconds, p.Type);
         foreach (var (name, level) in save?.Learned ?? new())
             if (Enum.TryParse<PowerKind>(name, out var kind) && PowerTable.Taught.Contains(kind) && level >= 1)

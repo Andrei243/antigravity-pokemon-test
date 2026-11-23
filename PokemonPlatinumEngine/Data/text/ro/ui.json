@@ -4191,6 +4191,14 @@
     "raidBlownOut": "Furtuna de energie Dynamax i-a aruncat pe toți afară din vizuină!",
     "raidActsAgain": "{pokemon} e încă furios!",
     "raidNoSwitch": "Fiecare luptător rămâne cu Pokémonul cu care a venit!",
+    "teraRaidBegins": "Lumina cristalului izbucnește! {pokemon} arde de energie Tera!",
+    "teraRaidClock": "Lumina cristalului va ține {n} ture!",
+    "teraRaidTimeUp": "Lumina cristalului i-a înghițit pe toți! Raidul Tera s-a încheiat.",
+    "teraShieldUp": "{pokemon} s-a învelit într-un scut de cristal Tera!",
+    "teraShieldBroke": "Un ciob din scutul de cristal al lui {pokemon} s-a desprins! Mai rămân {n}.",
+    "teraShieldDown": "Scutul de cristal al lui {pokemon} s-a sfărâmat!",
+    "teraOrbCharged": "Globul Tera al lui {pokemon} s-a încărcat!",
+    "teraOrbNotCharged": "Globul Tera nu s-a încărcat încă!",
     "tooStrongToCatch": "E încă prea puternic ca să fie prins! Câștigă mai întâi mai multe insigne.",
     "cantBeTouched": "Nu poate fi atins!",
     "onlyWatches": "Doar privește...",
@@ -7516,6 +7524,10 @@
   },
   "campPot": {
     "title": "OALA",
+    "picnicTitle": "PICNIC",
+    "tableTitle": "MASA DE PICNIC",
+    "onTheTable": "PE PÂINE",
+    "make": "PREGĂTEȘTE",
     "pantry": "LA ÎNDEMÂNĂ",
     "pot": "ÎN OALĂ",
     "cook": "GĂTEȘTE",
@@ -7545,7 +7557,10 @@
     "dish": {
       "name": {
         "campStew": "Tocăniță de Tabără", "beanHotpot": "Ghiveci de Fasole", "berryPilaf": "Pilaf cu Boabe", "honeyOatCakes": "Turte de Ovăz cu Miere",
-        "mushroomBake": "Ciuperci la Cuptor", "quietBroth": "Supă Liniștită", "spicedFlatbread": "Lipie Picantă", "potatoHash": "Cartofi Rumeniți"
+        "mushroomBake": "Ciuperci la Cuptor", "quietBroth": "Supă Liniștită", "spicedFlatbread": "Lipie Picantă", "potatoHash": "Cartofi Rumeniți",
+        "picnicSandwich": "Sandviș de Picnic", "berryJamSandwich": "Sandviș cu Gem de Boabe", "tomatoCheeseSandwich": "Sandviș cu Roșii și Brânză",
+        "honeyButterSandwich": "Sandviș cu Miere și Unt", "spicedOnionSandwich": "Sandviș cu Ceapă Picantă", "herbFlatbreadSandwich": "Lipie cu Ierburi",
+        "starlightSandwich": "Sandvișul Luminii de Stele"
       },
       "desc": {
         "campStew": "Ce s-a găsit la îndemână, fiert laolaltă. Sățioasă, și atât.",
@@ -7555,7 +7570,14 @@
         "mushroomBake": "Bogat și auriu. Pokémonii sălbatici învinși apoi lasă mai multe în urmă.",
         "quietBroth": "O supă blândă care liniștește. Mai puțini Pokémoni sălbatici te deranjează.",
         "spicedFlatbread": "Lipie fierbinte cu margine afumată. Pokémonii sălbatici urmează mirosul.",
-        "potatoHash": "Cartofi crocanți prăjiți în unt. Pokémonii învinși lasă mai multe în urmă."
+        "potatoHash": "Cartofi crocanți prăjiți în unt. Pokémonii învinși lasă mai multe în urmă.",
+        "picnicSandwich": "Ce era în coș, între două felii de pâine. Te satură, și atât.",
+        "berryJamSandwich": "Unt și o boabă strivită în gem. Pokémonii de tipul boabei apar mai des.",
+        "tomatoCheeseSandwich": "Roșii coapte și brânză tare. Mai mulți Pokémoni sălbatici ies să vadă ce miroase atât de bine.",
+        "honeyButterSandwich": "Miere dulce pe unt moale. Ouăle apar mai des în coșul de picnic.",
+        "spicedOnionSandwich": "Ceapă prăjită cu mirodenii. Pokémonii primesc mai mult EXP în luptă.",
+        "herbFlatbreadSandwich": "Lipie cu ierburi și brânză topită. Pokémonii sălbatici se prind mai ușor.",
+        "starlightSandwich": "Un turn din tot ce e mai bun. Pokémonii de tipul boabei strălucesc ceva mai des."
       }
     }
   },
@@ -7581,16 +7603,19 @@
     },
     "short": {
       "exp": "EXP", "effort": "EF", "money": "$", "bargain": "%", "catch": "CAP", "encounter": "ÎNT", "stealth": "DIS", "hatch": "OU",
-      "typeEncounter": "TIP", "materials": "MAT"
+      "typeEncounter": "TIP", "materials": "MAT", "egg": "COȘ", "sparkling": "SCL"
     }
   },
   "timedPowers": {
     "kind": {
       "exp": "Puterea EXP", "effort": "Puterea Efortului", "money": "Puterea Premiilor", "bargain": "Puterea Reducerilor", "catch": "Puterea Capturii",
       "encounter": "Puterea Întâlnirilor", "stealth": "Puterea Discreției", "hatch": "Puterea Eclozării", "typeEncounter": "Puterea Tipului",
-      "materials": "Puterea Culesului"
+      "materials": "Puterea Culesului", "egg": "Puterea Ouălor", "sparkling": "Puterea Sclipirii"
     },
     "wornOff": "{list} a expirat."
+  },
+  "picnic": {
+    "eggs": { "one": "Un Ou te aștepta în coșul de picnic!", "few": "{n} Ouă te așteptau în coșul de picnic!", "other": "{n} de Ouă te așteptau în coșul de picnic!" }
   },
   "versus": {
     "first": "Jucătorul 1",

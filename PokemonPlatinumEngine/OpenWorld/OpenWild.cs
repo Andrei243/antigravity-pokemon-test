@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.OpenWorld;
@@ -194,6 +195,34 @@ public sealed class OpenWildField
     /// <summary>The temperaments (the game's file unless told: a test's own).</summary>
     public OpenWildKinds? Kinds { get; set; }
 
+    /// <summary>
+    /// A sandwich's powers on the spawner (plan 34 · PD7; the engine's, from the powers in force each frame; none unless
+    /// told): <see cref="Favoured"/> the Type Power's type and its strength, by which a row of that type weighs (one and the
+    /// strength) times as much in its zone's draw; <see cref="MoreStanding"/> how many more each zone wants standing at once
+    /// under the Encounter Power. With neither, every draw is as it was.
+    /// </summary>
+    public (PokemonType Type, int Strength)? Favoured { get; set; }
+    public int MoreStanding { get; set; }
+
+    /// <summary>The favoured type and strength the powers in force give the spawner: the Type Power's, or none.</summary>
+    public static (PokemonType Type, int Strength)? FavouredBy(Models.PowerState powers) =>
+        powers.TypeOf(Models.PowerKind.TypeEncounter) is { } type ? (type, powers.Strength(Models.PowerKind.TypeEncounter)) : null;
+
+    /// <summary>How many more each zone wants standing under the powers in force: the Encounter Power's strength by ten (one, two, three).</summary>
+    public static int MoreStandingBy(Models.PowerState powers) => powers.Strength(Models.PowerKind.Encounter) / 10;
+
+    /// <summary>A row's weight in its zone's draw, a favoured type's raised (<see cref="Favoured"/>).</summary>
+    public int WeightOf(OpenSlot slot) =>
+        Favoured is { Strength: > 0 } f && IsOfType(slot.Species, f.Type) ? slot.Weight * (1 + f.Strength) : slot.Weight;
+
+    /// <summary>Whether a row's species (or form) is of a type.</summary>
+    public static bool IsOfType(string speciesOrForm, PokemonType type)
+    {
+        if (PokemonDatabase.Get(speciesOrForm) is { } plain) return plain.PrimaryType == type || plain.SecondaryType == type;
+        if (PokemonDatabase.SpeciesOfForm(speciesOrForm) is not { } species) return false;
+        return species.Form(speciesOrForm)?.Types is { Count: > 0 } types ? types.Contains(type) : species.PrimaryType == type || species.SecondaryType == type;
+    }
+
     /// <summary>Ticks of grace left (<see cref="Grace"/>).</summary>
     public int GraceLeft => grace;
 
@@ -383,11 +412,12 @@ public sealed class OpenWildField
         if (Tick % SpawnEvery != 0) return;
         int standing = 0;
         foreach (var w in all) if (w.Zone == zone) standing++;
-        if (standing >= TargetOf(zone)) return;
+        // (more under a sandwich's Encounter Power, plan 34 · PD7)
+        if (standing >= TargetOf(zone) + Math.Max(0, MoreStanding)) return;
         // The rows met at this time of day, and their weights
         int total = 0;
         var weather = WeatherOf?.Invoke(zone) ?? FieldWeather.Clear;
-        foreach (var slot in zone.Slots) if (MetAt(slot, Now, weather)) total += slot.Weight;
+        foreach (var slot in zone.Slots) if (MetAt(slot, Now, weather)) total += WeightOf(slot);
         if (total == 0) return;
 
         int minX = int.MaxValue, minZ = int.MaxValue, maxX = int.MinValue, maxZ = int.MinValue;
@@ -419,7 +449,7 @@ public sealed class OpenWildField
             foreach (var slot in zone.Slots)
             {
                 if (!MetAt(slot, Now, weather)) continue;
-                if ((pick -= slot.Weight) < 0) { row = slot; break; }
+                if ((pick -= WeightOf(slot)) < 0) { row = slot; break; }
             }
             if (row == null) return;
             int level = row.MinLevel + draws.Int(row.MaxLevel - row.MinLevel + 1);
@@ -478,7 +508,7 @@ public sealed class OpenWildField
     {
         var weather = WeatherOf?.Invoke(r.Zone) ?? FieldWeather.Clear;
         int total = 0;
-        foreach (var slot in r.Zone.Rustle) if (MetAt(slot, Now, weather)) total += slot.Weight;
+        foreach (var slot in r.Zone.Rustle) if (MetAt(slot, Now, weather)) total += WeightOf(slot);
         if (total == 0) return null;
         var draws = new SplitMix(r.Seed);
         int pick = draws.Int(total);
@@ -486,7 +516,7 @@ public sealed class OpenWildField
         foreach (var slot in r.Zone.Rustle)
         {
             if (!MetAt(slot, Now, weather)) continue;
-            if ((pick -= slot.Weight) < 0) { row = slot; break; }
+            if ((pick -= WeightOf(slot)) < 0) { row = slot; break; }
         }
         if (row == null) return null;
         int level = row.MinLevel + draws.Int(row.MaxLevel - row.MinLevel + 1);

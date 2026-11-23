@@ -984,6 +984,8 @@ public sealed partial class BattleCore : IBattleContext
         MoveToTheCentre();
         // A rotation battle's fallen front with nobody to send in turns away (plan 14 · B7)
         TurnPastTheFallen();
+        // A Tera Raid's clock runs out (plan 34 · PD7)
+        if (TheTeraClockRanOut()) yield break;
         Turn++;
         SetUpNextTurn();
         // The original's switch-in check opens every turn: Slow Start's five turns end here, and a shape follows the weather

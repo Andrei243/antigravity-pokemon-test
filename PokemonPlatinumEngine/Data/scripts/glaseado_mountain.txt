@@ -73,3 +73,9 @@ script Missed
   text "Across the line... but a gate was missed. The run doesn't count."
   text "Head back up and ask the coach to start it again."
   end
+
+# Its Tera crystal (plan 34 · PD7): what it holds today is drawn by the day (Models/Raids.cs), the raid is common.TeraCrystal
+script CrystalGlaseado1
+  raid crystal "glaseado_1"
+  call TeraCrystal
+  end

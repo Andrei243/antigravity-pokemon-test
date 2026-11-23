@@ -191,6 +191,8 @@ public sealed partial class BattleCore
         bool wentOn = Perform(use, goesOn);
         bool failed = failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed));
         if (failed) failedOnTurn[user.Pokemon!] = Turn;
+        // A raider's Tera Orb charges with every move it uses (plan 34 · PD7)
+        if (!goesOn) ChargeTheOrb(user);
         // The Battle Arena's judge counts the move for Mind and how it came off for Skill (plan 14 · B9)
         JudgeTheMove(use, failed, wentOn);
         failedNow = false;

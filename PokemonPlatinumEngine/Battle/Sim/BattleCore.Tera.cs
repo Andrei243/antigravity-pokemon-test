@@ -48,8 +48,12 @@ public sealed partial class BattleCore
 
     private const string EmbodyAspect = "Embody Aspect";
 
-    /// <summary>The trainer of the place has a Tera Orb: the player's own (<see cref="TeraOrb"/>), a trainer's or a partner's.</summary>
-    private bool HasTeraOrb(Battler b) => b.Trainer != null ? b.Trainer.TeraOrb : b.IsPlayerSide && TeraOrb;
+    /// <summary>
+    /// The trainer of the place has a Tera Orb: the player's own (<see cref="TeraOrb"/>), a trainer's or a partner's. In a
+    /// Tera Raid (plan 34 · PD7) every raider of the player's side carries one: the three who answer a crystal's call come
+    /// with their own.
+    /// </summary>
+    private bool HasTeraOrb(Battler b) => IsTeraRaid && b.IsPlayerSide && b.Trainer != null || (b.Trainer != null ? b.Trainer.TeraOrb : b.IsPlayerSide && TeraOrb);
 
     /// <summary>The Pokémon in a place has Terastallized (and into what), for the screen and the tests.</summary>
     public static TeraType? TeraOf(Battler b) => b.Pokemon?.Terastallized;
@@ -68,6 +72,8 @@ public sealed partial class BattleCore
         string no = Text.Of("battle.cantTerastallize", ("pokemon", mine.Name));
         if (!Rules.Terastallization || LaterMechanicsBarred || mine.Pokemon is not { } p || p.IsEgg || !HasTeraOrb(mine) || p.Terastallized != null) return no;
         if (teraUsed.Contains(MegaKey(mine))) return Text.Of("battle.teraOnlyOnce");
+        // A raider's orb charges by the moves it uses before it can Terastallize in a Tera Raid (plan 34 · PD7)
+        if (IsTeraRaid && mine.IsPlayerSide && OrbChargeOf(mine) < RaidRules.OrbCharge) return Text.Of("battle.teraOrbNotCharged");
         if (p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null || p.FormData?.Kind is FormKind.Mega or FormKind.Primal or FormKind.MegaDynamax || p.Form == UltraForm) return no;
         if (mine.Volatile.Dynamaxed) return no;
         return null;
