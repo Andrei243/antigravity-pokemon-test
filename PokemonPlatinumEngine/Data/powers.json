@@ -15,7 +15,11 @@
     { "kind": "Stealth", "strength": [-10, -20, -30] },
     { "kind": "Hatch", "strength": [1, 2, 3] },
     { "kind": "TypeEncounter", "strength": [2, 4, 6] },
-    { "kind": "Materials", "strength": [1, 2, 3] }
+    { "kind": "Materials", "strength": [1, 2, 3] },
+    // Paldea's sandwiches (plan 34 · PD7): the picnic basket's chance of an Egg each minute raised by so many in a hundred,
+    // and shiny rolls more for a wild Pokémon of the power's type
+    { "kind": "Egg", "strength": [10, 20, 35] },
+    { "kind": "Sparkling", "strength": [1, 2, 3] }
   ],
   // The Power Watch's charge (plan 36 · TR7): a point every 200 steps, ten at most; a power costs its level
   "chargeMost": 10,

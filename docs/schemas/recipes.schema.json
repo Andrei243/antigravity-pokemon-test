@@ -198,6 +198,8 @@
                   "Hatch",
                   "TypeEncounter",
                   "Materials",
+                  "Egg",
+                  "Sparkling",
                   null
                 ]
               }
@@ -273,6 +275,24 @@
         ],
         "additionalProperties": false
       }
+    },
+    "sandwiches": {
+      "type": "object",
+      "properties": {
+        "most": {
+          "type": "integer"
+        },
+        "plain": {
+          "type": "string"
+        },
+        "grades": {
+          "$ref": "#/properties/kitchen/properties/grades"
+        },
+        "dishes": {
+          "$ref": "#/properties/kitchen/properties/dishes"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

@@ -71,6 +71,8 @@ partial class Harness
         PaldeaStarfall(paldea);
         PaldeaWest(paldea);
         PaldeaNorth(paldea);
+        // Tera Raids and picnics (plan 34 · PD7)
+        PaldeaRaidsAndPicnics(paldea);
 
         PaldeaChapter();
         PaldeaLegendsPlayed();

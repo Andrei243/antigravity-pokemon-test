@@ -18219,6 +18219,9 @@ way -
   TV> "It's 10:00 on Monday, and this is the time check!"
   TV> "Good morning! The dew is still on the grass, and the Pokémon are waking up."
   TV> "That was the time check. Stay tuned!"
+=== common.TeraCrystal
+from a trainer with lines of their own
+way -
 === common.TeraKeeper
 from a trainer with lines of their own
 way -

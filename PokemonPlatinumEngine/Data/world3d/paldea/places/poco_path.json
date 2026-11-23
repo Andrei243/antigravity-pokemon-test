@@ -19,6 +19,8 @@
     }
   ],
   "triggers": [
+    // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+    { "name": "crystal_poco_1", "cylinder": { "at": [-24, -80], "radius": 1.5, "bottom": 1, "top": 33 }, "script": "CrystalPoco1" },
     // On the beach under the cliffs once the battle is over: the roar out of the grotto
     { "name": "a_roar", "box": { "min": [-80, 0, -140], "max": [-52, 5, -120] }, "script": "ARoar", "var": "VAR_PALDEA_STORY", "value": 2 },
     // At the lighthouse's foot with the legendary along: Nemona's lesson in catching

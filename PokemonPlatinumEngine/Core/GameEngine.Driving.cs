@@ -359,6 +359,8 @@ public partial class GameEngine
         public UI.NicknameScreen Nickname => game.flow.NicknameScreen;
 
         public void StartWildBattle(WildEncounterEntry entry) => game.StartWildBattle(entry);
+        /// <summary>A raid begun as a den's or a crystal's script begins it (plan 33 · GL3, plan 34 · PD7's Tera Raids): the boss and its terms as given.</summary>
+        public void StartRaid(Pokemon boss, Battle.Sim.RaidTerms raid) => game.MeetWildPokemon(boss, BattleKind.Normal, raid: raid);
         public void StartTrainerBattle(NPC trainer, NPC? second = null, Trainer? partner = null, bool firstBattle = false) =>
             game.StartTrainerBattle(trainer, second, partner, firstBattle);
         /// <summary>A Battle Royal against three trainers of the map, each for themselves (plan 14 · B13), begun as any trainer's battle.</summary>

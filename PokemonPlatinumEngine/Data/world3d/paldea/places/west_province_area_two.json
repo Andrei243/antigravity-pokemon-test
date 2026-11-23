@@ -5,6 +5,10 @@
     { "name": "west_two_east", "at": [-524, 12.0, -668], "yaw": 270 },
     { "name": "west_two_west", "at": [-622, 12.0, -668], "yaw": 270 }
   ],
+  // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+  "triggers": [
+    { "name": "crystal_west_two_1", "cylinder": { "at": [-586, -690], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalWestTwo1" }
+  ],
   "zones": [
     {
       "name": "west_two_grass",

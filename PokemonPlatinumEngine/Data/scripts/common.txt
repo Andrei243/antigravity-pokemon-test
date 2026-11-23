@@ -4340,6 +4340,54 @@ label Quiet
   goto Look
 
 
+# ---------------------------------------------------------------- Tera crystals (plan 34 · PD7)
+#
+# A Tera crystal of Paldea's open map, looked into by its own script's `raid crystal "<id>"` first (RESULT 1 where its light
+# stands today and its boss wasn't felled today; VAR_PALDEA_RAID_STARS, _SPECIES and _LEVEL say what waits, {type} its Tera
+# Type). A Tera Orb is needed to answer it; the raid is fought beside three of the academy's students, and a felled boss
+# leaves Tera Shards of its type and is always caught (docs/mechanics/rulings.md, "Tera Raids and picnics"). A crystal whose
+# light doesn't stand today isn't drawn, so nothing is said at it.
+script TeraCrystal
+  if result == 0 return
+  if not item "Tera Orb" goto NoOrb
+  text "A Tera crystal glitters in the grass. Inside it a {species:VAR_PALDEA_RAID_SPECIES} of {var:VAR_PALDEA_RAID_STARS} stars is glowing with {type} Tera light!"
+  ask "Hold up your Tera Orb and call three other Trainers to the crystal?"
+  if no return
+  raid fight
+  if won goto Felled
+  text "The crystal's light faded. Everyone's Pokémon are safe, but the raid is over for now."
+  return
+label Felled
+  text "The crystal shattered, and the {species:VAR_PALDEA_RAID_SPECIES} sank to the ground, worn out."
+  raid shards
+  if result == 0 goto Throw
+  text "{player} picked up {item} ×{result} from the crystal's pieces!"
+label Throw
+  choose "Throw a ball?" "Poké Ball" "Great Ball" "Ultra Ball" "Let it go"
+  if result == 0 goto Poke
+  if result == 1 goto Great
+  if result == 2 goto Ultra
+  text "The {species:VAR_PALDEA_RAID_SPECIES} got up and wandered off into the grass."
+  return
+label Poke
+  raid catch "Poké Ball"
+  goto Thrown
+label Great
+  raid catch "Great Ball"
+  goto Thrown
+label Ultra
+  raid catch "Ultra Ball"
+label Thrown
+  if result == 2 goto NoBall
+  text "Gotcha! The {species:VAR_PALDEA_RAID_SPECIES} was caught!"
+  return
+label NoBall
+  text "There was no ball of that kind in the Bag, and the {species:VAR_PALDEA_RAID_SPECIES} wandered off into the grass."
+  return
+label NoOrb
+  text "A Tera crystal glitters in the grass, humming with a light that wants a Tera Orb to answer it."
+
+
 
 # ---------------------------------------------------------------- Legendaries met again (plan 40 · GE6)
 #

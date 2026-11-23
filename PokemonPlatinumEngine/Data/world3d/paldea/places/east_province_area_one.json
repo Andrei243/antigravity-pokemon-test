@@ -5,6 +5,10 @@
     { "name": "east_one_south", "at": [446, 12.0, -390], "yaw": 180 },
     { "name": "east_one_north", "at": [442, 12.0, -634], "yaw": 180 }
   ],
+  // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+  "triggers": [
+    { "name": "crystal_east_one_1", "cylinder": { "at": [418, -522], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalEastOne1" }
+  ],
   "zones": [
     {
       "name": "east_one_grass",

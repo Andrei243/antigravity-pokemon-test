@@ -151,7 +151,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD4 The Path of Legends (its first session 2026-11-14: Arven at the lighthouse, the Stony Cliff and the Titan Klawf beaten twice, the Herba Mystica scene and the mount's dash, Paldea's first climbable crag; "PD4, first session", below; its second session the same day: the four other Titans in stand-in places beside the land that is built, their powers in order, the climb opening the Stony Cliff's crag, Arven's Mabosstiff and battle at the lighthouse, the five beaten by the bot headless and in the harness, the Titans' song; "PD4, second session", below. **Waits for the user**: the stand-ins (PD6 moves the Titans to their provinces), the Titans' fixed order, the song by ear. **Owed**: Arven's voice designed by ear)
 - [x] PD5 Starfall Street and Let's Go (2026-11-15, one session: Let's Go on its key, the five bases in a stand-in valley north of Mesagoza with their raids' clock, the bosses and Starmobiles on a stage of their own, Cassiopeia's calls; "PD5 as built", below. **Waits for the user**: the stand-in valley (PD6 moves the bases), the raid's numbers (fifteen in five minutes), the song and the five bosses' looks by eye. **Owed**: the bot playing a raid, Let's Go's materials for the crafting kit, the new cast's voices by ear)
 - [x] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below; its second session 2026-11-23: the North Province, Glaseado Mountain and its snowslope, Montenevera, the East Province's third area, Alfornada through its cavern, Ryme's rap battle, Tulip's photographs and Grusha's run with the three leaders scaled, Lurking Steel and False Dragon moved to their provinces, the eight badges won in two orders headless, the bot to the fifth badge, through the last three and riding from Cabo Poco to Glaseado's top; "PD6, second session", below. **Waits for the user**: the north's distances and looks, the tests ours where the originals differ (Ryme's and Tulip's), the run with no clock, the songs by ear, the new cast's voices by ear, `profile`'s ride on the Windows machine. **Owed**: Starfall Street's bases still in their stand-in valley; Cascarrafa's falls drawn falling and its bridges; the open places' people's lines untranslated, as every open map's are)
-- [ ] PD7 Tera Raids and picnics
+- [x] PD7 Tera Raids and picnics (2026-11-23, one session: the Tera foe on Galar's `Raid` with its crystal shield, the raiders' orbs charged by their moves and a clock of turns; twelve crystals on Paldea's open map drawn by the day and the badges, their glow in their Tera Type's colour, the catch that never fails and the Tera Shards it leaves; the picnic's sandwiches as `recipes.json`'s second section on the camp's pot with no kit in Paldea, the Egg and Sparkling Powers, the Type and Encounter Powers on the open map's spawner; the picnic basket's Eggs; Mesagoza's deli; "PD7 as built", below. **Waits for the user**: the crystal's look and the raid's numbers (HP, shield, clock), the sandwiches and their powers' numbers, the picnic's look. **Owed**: the raid's clock and the orbs on the raid's screen, the bot playing a raid, the black crystals (PD9), the picnic table's own look)
 - [ ] PD8 The League, Area Zero and the Way Home
 - [ ] PD9 After the Hall of Fame
 - [ ] PD10 The Teal Mask (optional)
@@ -565,3 +565,58 @@ distances or decision 3, so their recommendations stand, as in the first session
 
 **Waits for the user**: the north's distances and looks (from the `pdn` shots), the tests as built, the run with no
 clock, the songs and voices by ear, the ride's milliseconds on the quiet Windows machine.
+
+## PD7 as built (2026-11-23)
+
+One session, in its own worktree beside the lead's full test run (so nothing was timed). The rulings' "Tera Raids and
+picnics" has every decision. Taken at recommendations: decision 4 (the sandwiches a second section of ecipes.json on
+the camp's one pot); the plan's "spawner on Dice and the day" read as the dens' day-drawn spawner (the day's number and
+the crystal's id, never the dice), so the crystal drawn on the map and its script always agree and a test replays it.
+
+**What there is**
+- **Tera Raids** (Battle/Sim/BattleCore.Raid.cs): RaidTerms.Tera; the boss Terastallized into the crystal's type for
+  the whole battle, its HP raised by its stars (RaidRules.TeraHpTimes), no Dynamax in a Tera Raid; the crystal shield
+  from four stars (TeraShieldAt, TeraShields, a fifth through, three broken by a Terastallized raider's hit); the
+  raiders' orbs charged by three moves (OrbCharge, OrbChargeOf, refused with attle.teraOrbNotCharged till then,
+  the students carrying orbs of their own); the clock (TeraTurns, two more for every fall, TeraTurnsLeft,
+  TheTeraClockRanOut) in place of the fourth fall; the boss acting once a turn. BattleRecordFile.RaidTera keeps it.
+- **The crystals** (Data/world/paldea/crystals.json, Models/Raids.cs): twelve sites in the South, East, West and North
+  Provinces, Poco Path and Glaseado's foot, each a trigger crystal_<id> of its place with its own script
+  (aid crystal "<id>", call TeraCrystal; nine script files new, for places that had none); Raids.CrystalToday
+  (lit one day in two, stars by Paldea's badges, TeraMostStars, levels by stars, the Tera Type the row's or drawn),
+  seven students as raiders. common.TeraCrystal asks for a Tera Orb, fights, gives the shards (aid shards,
+  Raids.ShardsOf, the shard items TR5's keeper reads) and throws a ball that never fails (aid catch, the Tera Type
+  kept). The glow is DenBeams' crystal (DenBeam.Tera), the style guide's "Tera crystals" first.
+- **Picnics**: ecipes.json's sandwiches (seven, ours; half an hour each), RecipeTable.Sandwiches, Meals taking
+  its table, CampKitchen.Table, and in Paldea CampKitchenNow giving the picnic's table with no kit and HasCamp
+  offering it; the screen titled PICNIC and THE PICNIC TABLE (campPot.picnicTitle, 	ableTitle, onTheTable, make).
+  PowerKind.Egg and Sparkling at the enum's end (powers.json, PowerTable.TakesType); readers: the picnic basket,
+  GameEngine.MakeWild's shiny rolls (SparklingRolls), and on the open map OpenWildField.Favoured and
+  MoreStanding from the Type and Encounter Powers (FavouredBy, MoreStandingBy, set each frame by
+  UpdateOpenField). Models/PicnicBasket.cs: the couple, a try a minute at the Day Care's chance and the Egg Power's
+  strength, ten at most, given as the picnic is packed up (EmptyThePicnicBasket, picnic.eggs).
+- **Mesagoza's deli**: a clerk before the café (mesagoza_deli, MesagozaDeli), craft deli opening the kit's PANTRY
+  screen with no kit.
+- **The harness**: Modes/PaldeaRaidsPicnics.cs in the paldea mode (SHOTS_FILTER=ft72,27g), with the driver's
+  StartRaid: t72b_tera_crystal and t72c_tera_crystal_night (a crystal lit today, by day and after dark),
+  t72a_tera_raid_begins, t72_tera_raid (a four-star Baxcalibur's raid at the menu with its crown and three shields
+  standing, turn 3 of 12), 27g_picnic, 27g_picnic_table (butter and an Oran Berry making a Berry Jam Sandwich) and
+  27g_picnic_sandwich (its Type Power for half an hour). Looked at; the picnic's title was "THE POT" at first and is
+  now its own.
+- **Tests**: PaldeaTeraRaidTests (the boss and its HP, the orb's charge, the shield broken three at a time, the clock
+  losing a raid no fall ends, the replay from its file, a crystal's day, the crystal's script to its catch and shards and
+  its need of an orb, every trigger a crystal and the glow) and PaldeaPicnicTests (the sandwiches held to the
+  kitchen's rules, a sandwich's power for half an hour, the Type Power changing the meadow's draws and wearing off to
+  the plain draws exactly, the Encounter Power's more and its wearing off, the basket's Eggs, the deli). Run beside them:
+  GalarRaidTests, KitchenTests, TrainingPowersTests, OpenWorldWildTests, GalarWildAreaTests, ScriptTests,
+  ContentTests, MealStandTests, the Tera, record, oracle and golden battle tests and RomanianTests, all passing;
+  goldens accepted: scripts.txt (common.TeraCrystal's block) and the two schemas (ecipes, powers), no battle
+  golden moved. ContentCheck finds nothing; the Paldea bake's --check is the same to the byte; Romanian for every new
+  line (docs/localisation-review-ro.md), TextTool report rewritten.
+
+**Waits for the user**: the crystal's look (t72b, t72c); the raid's numbers (HP times, the shield's shares and hits,
+the clock's turns, the shards); the sandwiches, their makings and their powers' strengths; the picnic's look.
+
+**Owed**: the raid's clock and each raider's orb drawn on the raid's screen; the bot playing a raid (PlaythroughTests);
+the black crystals of six and seven stars (PD9); a sandwich stacked on the table rather than a pot stirred; the deli clerk's
+name in Romanian (no open map's people are translated yet); profile of a crystal's glow is not needed (a few ribbons).

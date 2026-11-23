@@ -26,6 +26,18 @@ public partial class GameEngine
     /// F5): its species (a randomised run's), its level, personality, form and coat, drawn on the field's own chance in
     /// the order a step in the grass draws them.
     /// </summary>
+    /// <summary>
+    /// The shiny rolls a sandwich's Sparkling Power adds for a species (or a form) met (plan 34 · PD7): its strength where the
+    /// power's type is one of the Pokémon's, none otherwise or with no power in force.
+    /// </summary>
+    internal int SparklingRolls(PokemonSpecies species, string? form) =>
+        flow.Powers.TypeOf(PowerKind.Sparkling) is { } type && OfType(species, form, type) ? flow.Powers.Strength(PowerKind.Sparkling) : 0;
+
+    /// <summary>Whether a species, or its form where one is named and has types of its own, is of a type.</summary>
+    internal static bool OfType(PokemonSpecies species, string? form, PokemonType type) =>
+        form != null && species.Form(form)?.Types is { Count: > 0 } formTypes ? formTypes.Contains(type)
+        : species.PrimaryType == type || species.SecondaryType == type;
+
     internal Pokemon MakeWild(WildEncounterEntry entry, MapArea? area)
     {
         // A randomised run meets the species its table's species go to (plan 13 · V6); every other run, the table's own
@@ -48,6 +60,8 @@ public partial class GameEngine
         if (!entry.Shiny && OutbreakRolls(area, entry.SpeciesName) is > 0 and var outbreakRolls) wild.RerollForShiny(rng, outbreakRolls, entry.Gender, entry.Nature);
         // An hour's rift: one shiny roll more for what is met out of it, drawn only then (plan 38 · EX5)
         if (!entry.Shiny && entry.Rift) wild.RerollForShiny(rng, Overworld.Rifts.ShinyRolls, entry.Gender, entry.Nature);
+        // A sandwich's Sparkling Power: shiny rolls more for a Pokémon of its type, drawn only then (plan 34 · PD7)
+        if (!entry.Shiny && SparklingRolls(wildSpecies, entry.FormName) is > 0 and var sparkle) wild.RerollForShiny(rng, sparkle, entry.Gender, entry.Nature);
         // The chain of hooks on a rod: two rolls more for each hook of the species before it at the spot, drawn only then (plan 38 · EX3)
         if (!entry.Shiny && hookRolls > 0) wild.RerollForShiny(rng, hookRolls, entry.Gender, entry.Nature);
         if (entry.Moves is { Count: > 0 } outbreakMoves) Overworld.Outbreaks.GiveMoves(wild, outbreakMoves);

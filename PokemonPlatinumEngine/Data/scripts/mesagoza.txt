@@ -15,3 +15,12 @@ script NemonaAtTheGate
   objective paldeaAcademy
   endscene
   end
+
+
+# The deli before the café (plan 34 · PD7): the pantry's goods for a picnic's sandwiches, sold with no crafting kit needed
+script MesagozaDeli
+  speaker "Deli Clerk"
+  say "Off on a picnic? Everything a good sandwich needs is right here: butter, cheese, tomatoes, onions and the rest."
+  say "Bring a berry or some Honey from your Bag, and you can make something really special."
+  craft deli
+  end

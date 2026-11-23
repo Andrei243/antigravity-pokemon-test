@@ -15,6 +15,8 @@
     { "name": "glaseado_center_door", "at": [81, 52.0, -1093], "yaw": 0 }
   ],
   "triggers": [
+    // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+    { "name": "crystal_glaseado_1", "cylinder": { "at": [184, -920], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalGlaseado1" },
     // The run's three gates in order, then the line at the foot (VAR_PALDEA_GLASEADO_RUN 1 to 4 while it is run); the
     // line crossed with a gate missed says so and ends the run
     { "name": "glaseado_gate_one", "cylinder": { "at": [90, -1030], "radius": 5, "bottom": 38, "top": 56 }, "script": "GateOne", "var": "VAR_PALDEA_GLASEADO_RUN", "value": 1 },

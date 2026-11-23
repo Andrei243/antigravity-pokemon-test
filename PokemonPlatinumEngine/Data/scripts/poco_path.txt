@@ -98,3 +98,9 @@ label Mabosstiff
   setvar VAR_PALDEA_LEGENDS 12
   endscene
   end
+
+# Its Tera crystal (plan 34 · PD7): what it holds today is drawn by the day (Models/Raids.cs), the raid is common.TeraCrystal
+script CrystalPoco1
+  raid crystal "poco_1"
+  call TeraCrystal
+  end

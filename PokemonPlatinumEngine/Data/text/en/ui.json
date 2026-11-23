@@ -3527,6 +3527,10 @@
   },
   "campPot": {
     "title": "THE POT",
+    "picnicTitle": "PICNIC",
+    "tableTitle": "THE PICNIC TABLE",
+    "onTheTable": "ON THE BREAD",
+    "make": "MAKE",
     "pantry": "IN REACH",
     "pot": "IN THE POT",
     "cook": "COOK",
@@ -3556,7 +3560,10 @@
     "dish": {
       "name": {
         "campStew": "Camp Stew", "beanHotpot": "Bean Hotpot", "berryPilaf": "Berry Pilaf", "honeyOatCakes": "Honey Oat Cakes",
-        "mushroomBake": "Mushroom Bake", "quietBroth": "Quiet Broth", "spicedFlatbread": "Spiced Flatbread", "potatoHash": "Potato Hash"
+        "mushroomBake": "Mushroom Bake", "quietBroth": "Quiet Broth", "spicedFlatbread": "Spiced Flatbread", "potatoHash": "Potato Hash",
+        "picnicSandwich": "Picnic Sandwich", "berryJamSandwich": "Berry Jam Sandwich", "tomatoCheeseSandwich": "Tomato and Cheese Sandwich",
+        "honeyButterSandwich": "Honey Butter Sandwich", "spicedOnionSandwich": "Spiced Onion Sandwich", "herbFlatbreadSandwich": "Herb Flatbread Sandwich",
+        "starlightSandwich": "Starlight Sandwich"
       },
       "desc": {
         "campStew": "Whatever was to hand, simmered together. Filling, if nothing more.",
@@ -3566,7 +3573,14 @@
         "mushroomBake": "Rich and golden. Wild Pokémon beaten afterwards leave more behind.",
         "quietBroth": "A gentle broth that calms the nerves. Fewer wild Pokémon bother you.",
         "spicedFlatbread": "Hot flatbread with a smoky edge. Wild Pokémon follow the scent.",
-        "potatoHash": "Crisp potatoes fried in butter. Beaten Pokémon leave more behind."
+        "potatoHash": "Crisp potatoes fried in butter. Beaten Pokémon leave more behind.",
+        "picnicSandwich": "Whatever was in the basket, between two slices of bread. Filling, and nothing more.",
+        "berryJamSandwich": "Butter and a berry crushed into jam. Pokémon of the berry's type come out more often.",
+        "tomatoCheeseSandwich": "Ripe tomato and sharp cheese. More wild Pokémon come out to see what smells so good.",
+        "honeyButterSandwich": "Sweet honey on soft butter. Eggs turn up in the picnic basket more often.",
+        "spicedOnionSandwich": "Onions fried with spices. Pokémon gain more EXP in battle.",
+        "herbFlatbreadSandwich": "Flatbread with herbs and melted cheese. Wild Pokémon are easier to catch.",
+        "starlightSandwich": "A towering stack of everything good. Pokémon of the berry's type shine a little more often."
       }
     }
   },
@@ -3592,16 +3606,19 @@
     },
     "short": {
       "exp": "EXP", "effort": "EV", "money": "$", "bargain": "%", "catch": "CAT", "encounter": "ENC", "stealth": "SNK", "hatch": "EGG",
-      "typeEncounter": "TYP", "materials": "MAT"
+      "typeEncounter": "TYP", "materials": "MAT", "egg": "BSK", "sparkling": "SHN"
     }
   },
   "timedPowers": {
     "kind": {
       "exp": "EXP Power", "effort": "Effort Power", "money": "Prize Power", "bargain": "Bargain Power", "catch": "Catching Power",
       "encounter": "Encounter Power", "stealth": "Stealth Power", "hatch": "Hatching Power", "typeEncounter": "Type Power",
-      "materials": "Gathering Power"
+      "materials": "Gathering Power", "egg": "Egg Power", "sparkling": "Sparkling Power"
     },
     "wornOff": "Your {list} wore off."
+  },
+  "picnic": {
+    "eggs": { "one": "An Egg was waiting in the picnic basket!", "other": "{n} Eggs were waiting in the picnic basket!" }
   },
   "ribbonPage": {
     "title": "RIBBONS",
@@ -4136,6 +4153,14 @@
     "raidBlownOut": "The storm of Dynamax energy blew everyone out of the den!",
     "raidActsAgain": "{pokemon} is still raging!",
     "raidNoSwitch": "Each raider fights with the Pokémon they came with!",
+    "teraRaidBegins": "The crystal's light bursts! {pokemon} is ablaze with Tera energy!",
+    "teraRaidClock": "The crystal's light will hold for {n} turns!",
+    "teraRaidTimeUp": "The crystal's light swallowed everyone! The Tera Raid is over.",
+    "teraShieldUp": "{pokemon} is wrapped in a shield of Tera crystal!",
+    "teraShieldBroke": "A shard of {pokemon}'s crystal shield broke off! {n} still stand.",
+    "teraShieldDown": "{pokemon}'s crystal shield shattered!",
+    "teraOrbCharged": "{pokemon}'s Tera Orb is charged!",
+    "teraOrbNotCharged": "The Tera Orb isn't charged yet!",
     "tooStrongToCatch": "It's too strong to be caught yet! Win more badges first.",
     "cantBeTouched": "It can't be touched!",
     "onlyWatches": "It only watches...",

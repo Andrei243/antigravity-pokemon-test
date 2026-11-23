@@ -53,7 +53,9 @@ internal static partial class ModernUi
     public static void DrawCamp(int sw, int sh, CampScreen screen, float appear)
     {
         Backdrop(sw, sh);
-        ScreenTitle(screen.Phase == CampPhase.Team ? Text.Of("camp.title") : Text.Of("campPot.title"));
+        // (a Paldean picnic's table makes sandwiches, plan 34 · PD7: its own title and labels)
+        bool picnic = screen.Supplies?.Sandwiches == true;
+        ScreenTitle(screen.Phase == CampPhase.Team ? Text.Of(picnic ? "campPot.picnicTitle" : "camp.title") : Text.Of(picnic ? "campPot.tableTitle" : "campPot.title"));
         switch (screen.Phase)
         {
             case CampPhase.Pantry:
@@ -167,7 +169,7 @@ internal static partial class ModernUi
             if (index == screen.OnHand.Count)
             {
                 ListRow(r, selected, "", nameX: 112, size: 30);
-                UiFonts.DrawCentered(Text.Of("campPot.cook"), r.X + 112, r.Y + r.Height / 2f, 30, selected ? Color.White : Green, UiWeight.Black);
+                UiFonts.DrawCentered(Text.Of(screen.Supplies?.Sandwiches == true ? "campPot.make" : "campPot.cook"), r.X + 112, r.Y + r.Height / 2f, 30, selected ? Color.White : Green, UiWeight.Black);
                 continue;
             }
             var ingredient = screen.OnHand[index];
@@ -179,7 +181,7 @@ internal static partial class ModernUi
         ScrollBar(list, screen.PantryFirst, CampScreen.PantryRows, rows, 10);
 
         // What is in the pot, and the dish it would make
-        Label(Text.Of("campPot.pot"), rx, right.Y + 30);
+        Label(Text.Of(screen.Supplies?.Sandwiches == true ? "campPot.onTheTable" : "campPot.pot"), rx, right.Y + 30);
         float y = right.Y + 86;
         foreach (var ingredient in screen.Pot)
         {
@@ -187,7 +189,7 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(ingredient.Name, rx + 64, y, 30, Ink, UiWeight.ExtraBold);
             y += 52;
         }
-        y = right.Y + 86 + 52 * Meals.Table.Most + 10;
+        y = right.Y + 86 + 52 * screen.Recipes.Most + 10;
         UiShapes.Fill(new Rectangle(rx, y, room, 3), 1.5f, Rule);
         Label(Text.Of("campPot.makes"), rx, y + 20);
         if (screen.Pot.Count == 0) return;
@@ -252,7 +254,7 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(title, cx - Math.Min(w, card.Width - 88) / 2f, card.Y + 70, size, Ink, UiWeight.Black);
         for (int s = 0; s < 4; s++)
             Star(new Vector2(cx + (s - 1.5f) * 64, card.Y + 150), 24, s <= (int)served.Grade ? Gold : Rule);
-        var row = Meals.GradeRow(served.Grade);
+        var row = Meals.GradeRow(served.Grade, screen.Recipes);
         string healed = Text.Of("campPot.healed", ("n", row.Heal));
         UiFonts.DrawCentered(healed, cx - UiFonts.Measure(healed, 30, UiWeight.ExtraBold) / 2f, card.Y + 230, 30, Ink, UiWeight.ExtraBold);
         string power = served.Power is { } p

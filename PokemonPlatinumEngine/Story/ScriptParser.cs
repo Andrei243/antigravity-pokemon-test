@@ -1305,8 +1305,15 @@ public static class ScriptParser
             case "raid":
             {
                 // Galar's Max Raid dens (plan 33 · GL3): `raid den "rolling_1"`, `raid watts`, `raid fight`, `raid catch "Poké Ball"`, and `raid wish`, a Wishing Piece thrown into the den looked into
-                string what = r.OneOf("den", "watts", "fight", "catch", "wish", "boss");
+                // and Paldea's Tera crystals (plan 34 · PD7): `raid crystal "cortondo_1"` looked into, `raid shards` its felled boss's Tera Shards
+                string what = r.OneOf("den", "watts", "fight", "catch", "wish", "boss", "crystal", "shards");
                 if (what == "den") return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = r.Text("a den's id") };
+                if (what == "crystal")
+                {
+                    string crystal = r.Text("a crystal's id");
+                    if (Models.Raids.Crystal(crystal) == null) throw r.Error($"there is no crystal '{crystal}' (Data/world/paldea/crystals.json)");
+                    return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = crystal };
+                }
                 // A boss the story brings (plan 33 · GL6, Eternamax): `raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail
                 // with "galar_raid_hop" "galar_raid_zacian" "galar_raid_zamazenta"`, its raiders three trainers of the data
                 if (what == "boss")
@@ -1335,7 +1342,8 @@ public static class ScriptParser
 
             case "craft":
             {
-                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared", "crosses");
+                // (plan 34 · PD7's `craft deli`: the pantry's goods sold at a Paldean deli, with no kit needed)
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared", "crosses", "deli");
                 // A dish eaten there and then (plan 39 · CR6): `craft meal "beanHotpot"`, or with its grade, `craft meal "beanHotpot" superb`
                 if (what == "meal")
                 {

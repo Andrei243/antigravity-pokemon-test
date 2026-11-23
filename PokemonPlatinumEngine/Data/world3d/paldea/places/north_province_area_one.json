@@ -7,6 +7,10 @@
     { "name": "north_one_middle", "at": [-100, 12.0, -812], "yaw": 0 },
     { "name": "north_one_north", "at": [-100, 12.0, -892], "yaw": 0 }
   ],
+  // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+  "triggers": [
+    { "name": "crystal_north_one_1", "cylinder": { "at": [-124, -832], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalNorthOne1" }
+  ],
   "zones": [
     {
       "name": "north_one_grass",
