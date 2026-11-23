@@ -152,7 +152,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD5 Starfall Street and Let's Go (2026-11-15, one session: Let's Go on its key, the five bases in a stand-in valley north of Mesagoza with their raids' clock, the bosses and Starmobiles on a stage of their own, Cassiopeia's calls; "PD5 as built", below. **Waits for the user**: the stand-in valley (PD6 moves the bases), the raid's numbers (fifteen in five minutes), the song and the five bosses' looks by eye. **Owed**: the bot playing a raid, Let's Go's materials for the crafting kit, the new cast's voices by ear)
 - [x] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below; its second session 2026-11-23: the North Province, Glaseado Mountain and its snowslope, Montenevera, the East Province's third area, Alfornada through its cavern, Ryme's rap battle, Tulip's photographs and Grusha's run with the three leaders scaled, Lurking Steel and False Dragon moved to their provinces, the eight badges won in two orders headless, the bot to the fifth badge, through the last three and riding from Cabo Poco to Glaseado's top; "PD6, second session", below. **Waits for the user**: the north's distances and looks, the tests ours where the originals differ (Ryme's and Tulip's), the run with no clock, the songs by ear, the new cast's voices by ear, `profile`'s ride on the Windows machine. **Owed**: Starfall Street's bases still in their stand-in valley; Cascarrafa's falls drawn falling and its bridges; the open places' people's lines untranslated, as every open map's are)
 - [x] PD7 Tera Raids and picnics (2026-11-23, one session: the Tera foe on Galar's `Raid` with its crystal shield, the raiders' orbs charged by their moves and a clock of turns; twelve crystals on Paldea's open map drawn by the day and the badges, their glow in their Tera Type's colour, the catch that never fails and the Tera Shards it leaves; the picnic's sandwiches as `recipes.json`'s second section on the camp's pot with no kit in Paldea, the Egg and Sparkling Powers, the Type and Encounter Powers on the open map's spawner; the picnic basket's Eggs; Mesagoza's deli; "PD7 as built", below. **Waits for the user**: the crystal's look and the raid's numbers (HP, shield, clock), the sandwiches and their powers' numbers, the picnic's look. **Owed**: the raid's clock and the orbs on the raid's screen, the bot playing a raid, the black crystals (PD9), the picnic table's own look)
-- [ ] PD8 The League, Area Zero and the Way Home
+- [ ] PD8 The League, Area Zero and the Way Home (its first session 2026-11-23: the Pokémon League's building on its terrace under Mesagoza's south wall, the lobby with Rika's interview and the battle court, the Elite Four, Geeta and Nemona at the originals' levels, `PaldeaHallOfFame` with the Hall of Fame's scene, home and the credits, refused without eight badges; "PD8, first session", below. **Left for session two**: the Zero Gate, Area Zero and its research stations, the Zero Lab, the professor's AI, the legendary's battle form, the Way Home, and the done-when's bot run. **Waits for the user**: the League's place and look, the interview's questions, one court for all six, the credits rolling before the Way Home)
 - [ ] PD9 After the Hall of Fame
 - [ ] PD10 The Teal Mask (optional)
 - [ ] PD11 The Indigo Disk (optional)
@@ -620,3 +620,61 @@ the clock's turns, the shards); the sandwiches, their makings and their powers' 
 **Owed**: the raid's clock and each raider's orb drawn on the raid's screen; the bot playing a raid (PlaythroughTests);
 the black crystals of six and seven stars (PD9); a sandwich stacked on the table rather than a pot stirred; the deli clerk's
 name in Romanian (no open map's people are translated yet); profile of a crystal's glow is not needed (a few ribbons).
+
+## PD8, first session (2026-11-23)
+
+One session, alone in its worktree (`session/pd8a`). The rulings' "Paldea's Pokémon League" has every decision. Plan 34's
+decisions stay at their recommendations; decision 3 does not reach the League (it asks eight badges, so every team is at
+the originals' levels).
+
+**What there is**
+- **The building** (`places/south_province_area_one.json`, `terrain/south_league.json`): the Pokémon League, a hall of three
+  storeys signed LEAGUE, on a terrace at 10 m in the South Province's first area east of the road and just under
+  Mesagoza's south wall, its door facing south; markers `league_door`, `league_front`. Baked again (910 chunks, six of them
+  changed, and the navigation mesh); `--check` the same to the byte.
+- **Rooms**: `PaldeaLeague_Lobby` (nurse, shop counter, staff, Rika's desk) and `PaldeaLeague_Court` (the one court).
+- **The interview**: Rika's three questions (`PaldeaLeague_Lobby.txt`, `Interview`), none wrong, refused without the eight
+  badges; then the court (`PaldeaLeague_Court.txt`): Rika, Poppy, Larry and Hassel of the Elite Four, the Top Champion
+  Geeta, and Nemona's battle as the assessment's end, each shown at the court's far end in turn (`VAR_PALDEA_LEAGUE` 1 to
+  7). After Nemona: `halloffame`, **`PaldeaHallOfFame`** (the region's `StoryCompleteFlag`), the Hall of Fame's scene, home
+  to Cabo Poco, the save and the credits, as `Wyndon_StadiumPitch.txt` ends Galar's.
+- **Teams** (`Data/world/paldea/trainers.json`): `paldea_rika` (58), `paldea_poppy` (59), `paldea_larry_elite` (60),
+  `paldea_hassel` (61), `paldea_geeta` (62, the last cap), `paldea_nemona_8a` to `8c` (66, by the player's starter); each
+  Terastallizes its last. Looks `rika`, `poppy`, `hassel`, `geeta`. **Objective** 835 `paldeaLeague`. No new song (the
+  rooms play `paldea/gym`; the battles fall back to the gym leader's battle song). Romanian for every new line
+  (`docs/localisation-review-ro.md`; the TextTool report rewritten: no Romanian line left untranslated by this session).
+- **Tests**: `PaldeaLeagueTests` (the building, its door and rooms; the League won from eight badges: the court refusing
+  before the interview, the interview, the four, Geeta, Nemona, the Hall of Fame, `PaldeaHallOfFame` set, home, the
+  objective done and the Hub opened with a second region's Hall of Fame; refused with seven badges; Nemona's team by the
+  starter; the teams' levels, Tera Types and classes). `PaldeaTests`' rooms behind a room grown by the court. Run: the
+  filter of `Paldea`, `ScriptTests`, `StoryTests`, `ContentTests`, `Romanian`, `Golden` and `SceneSkip` (941 tests; the one
+  failure, the walk's reach of `league_front`, fixed by moving the marker onto the terrace and run again with `PaldeaTests`
+  and `PaldeaLeagueTests`, 22 passing). Goldens accepted: `scripts.txt` (the eight new blocks of the two League scripts
+  only) and `levels-crossed.txt` (the eight new League trainers' lines only). ContentCheck finds nothing.
+- **Shots** (the `paldea` mode's last part, `Modes/PaldeaLeague.cs`, `SHOTS_FILTER=pdg`): `pdg00_league_outside`,
+  `pdg01_league_from_the_road`, `pdg02_league_lobby`, `pdg03_the_interview` (its first question), `pdg04_court_poppy`,
+  `pdg05_poppy_battle`, `pdg06_court_geeta`, `pdg07_geeta_battle`, `pdg08_hall_of_fame` (the first card). Looked at: the
+  hall reads as a big civic building with its sign over the door; the interview's question and answers show; the battles
+  open on the League's stage. **Findings, unchanged**: the deep grass of the first area's east field runs up to the
+  building's foot (its paint and its wild Pokémon's zone end at `z` -280, the paving shows only as a strip before the
+  door), so the terrace reads as a lawn; the court is a plain tiled room with no court markings; a member stood at the
+  court's far end is half hidden behind the player at the talking spot (Poppy, small, most of all).
+
+**Decisions taken at a recommendation (ours, for the user)**: the League near Mesagoza's south gate; one court for the four,
+Geeta and Nemona (the originals give Geeta another); a loss keeps the challenger's place; Nemona's battle on the court
+straight after Geeta; the credits roll after the Hall of Fame (the originals hold them for the Way Home); the questions
+ours.
+
+**Left for session two**: the Zero Gate, Area Zero's four research stations down the crater, the Zero Lab, the professor's
+AI (Sada or Turo by `VAR_PALDEA_VERSION`), the legendary's battle form, the Way Home and its credits' place; the done-when,
+a Paldea game from Cabo Poco to the Way Home in `PlaythroughTests` (an itinerary through the League's interview and court
+is owed with it).
+
+**Owed**: the League's own songs (lobby, the Elite Four's and the Champion's battles); the terrace paved and kept clear of
+the field's grass and zone; the court's look (markings, the originals' second court for Geeta); a spawn and Fly place
+for the League if wanted; the new cast's voices (Rika, Poppy, Hassel, Geeta) designed by ear; the black crystals and
+rematches after the Hall of Fame (PD9). **Paldea has no departure**: it is the chain's last region with maps, so no
+attendant takes a Champion out of Paldea until plan 46 links Carpathia after it (or the user asks for a way back sooner).
+
+**Waits for the user**: the League's place and look (`pdg00` to `pdg02`), the interview's questions, the one court, the
+credits' place, the new looks, and the Romanian lines.

@@ -4,7 +4,23 @@
   // Scripts: Data/scripts/south_province_area_one.txt
   "markers": [
     { "name": "area_one_south", "at": [10, 8.0, -214], "yaw": 180 },
-    { "name": "area_one_north", "at": [2, 11.4, -290], "yaw": 180 }
+    { "name": "area_one_north", "at": [2, 11.4, -290], "yaw": 180 },
+    // The Pokémon League (plan 34 · PD8, its first session): its door, and the terrace before it, facing the building
+    { "name": "league_door", "at": [46, 10.0, -282], "yaw": 0 },
+    { "name": "league_front", "at": [46, 10.0, -278], "yaw": 180 }
+  ],
+  // The Pokémon League's door: its lobby, where Rika's interview is held, and the battle court behind it (grid rooms)
+  "doors": [
+    {
+      "name": "league_door",
+      "box": { "min": [44, 9.5, -285], "max": [48, 13.5, -284] },
+      "room": "PaldeaLeague_Lobby", "at": [7, 10], "facing": "up",
+      "out": "league_door"
+    }
+  ],
+  // The Pokémon League's building on its terrace under Mesagoza's south wall, east of the road (terrain/south_league.json)
+  "solids": [
+    { "name": "the Pokémon League", "min": [30, 9.5, -295], "max": [62, 22, -285], "building": { "kind": "hall", "town": "paldea", "sign": "LEAGUE", "storeys": 3 } }
   ],
   // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
   "triggers": [

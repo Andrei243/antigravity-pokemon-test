@@ -77,6 +77,8 @@ partial class Harness
         PaldeaChapter();
         PaldeaLegendsPlayed();
         PaldeaLetsGoPlayed();
+        // The Pokémon League (plan 34 · PD8, its first session), last since it leaves the game in the Hall of Fame's scene
+        PaldeaLeague(paldea);
     }
 
     /// <summary>

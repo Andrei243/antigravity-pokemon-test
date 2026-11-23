@@ -1,0 +1,69 @@
+# The Pokémon League's lobby by Mesagoza's south wall (plan 34 · PD8, its first session): its nurse and its shop, the
+# staff at the counter, and Rika's desk, where a challenger with Paldea's eight badges is interviewed before the Elite
+# Four. The interview asks three questions; every answer is heard and none is wrong (VAR_PALDEA_LEAGUE 1 once it is
+# done, PaldeaLeague_Court.txt's count). Our own lines and questions.
+
+
+# Rika's interview, the Champion assessment's first step
+script Interview
+  face rika player
+  speaker "Rika"
+  if var VAR_PALDEA_LEAGUE >= 1 goto Done
+  if badges >= 8 goto Interview
+  say "Welcome to the Pokémon League. I hold the interviews for the Champion assessment, and I can only see challengers who carry all eight of Paldea's badges."
+  say "Come back when your case is full. I'll keep the chair warm for you."
+  end
+label Interview
+  scene "The League's interview"
+  say "Eight badges, all present and polished. So you're here for the Champion assessment. Sit down. I'm Rika, and before anybody battles, I ask the questions."
+  say "Don't look so worried. There aren't any wrong answers. Only dull ones."
+  choose "First: what brings you to the League today?" "To become a Champion" "To see how strong my team is" "Nemona sent me"
+  if result == 2 goto SentByNemona
+  if result == 1 goto ToMeasure
+  say "Straight to the point. I like that in a challenger."
+  goto Second
+label ToMeasure
+  say "Sensible. The four of us make a very good measuring stick."
+  goto Second
+label SentByNemona
+  say "Ha! She sends us somebody every year. Usually she just turns up herself."
+label Second
+  choose "Which gym gave you the hardest time?" "Cortondo's" "Levincia's" "Medali's" "Glaseado's" "None of them"
+  if result == 2 goto Medali
+  if result == 4 goto NoneOfThem
+  say "That leader will be glad to hear it. Hard is the whole point of a gym."
+  goto Third
+label Medali
+  say "Larry's? Don't tell him I said so, but he'll be pleased. Very quietly pleased."
+  goto Third
+label NoneOfThem
+  say "None at all? Bold words, said to the person who's about to battle you."
+label Third
+  choose "Last one. Your team, in a single word?" "Trusted" "Strong" "Fun"
+  say "Noted, in my very best handwriting."
+  setvar VAR_PALDEA_LEAGUE 1
+  setflag FLAG_PALDEA_LEAGUE_INTERVIEWED
+  say "That's the interview over. Now the practical part. The battle court is through the door at the back, and the first of the Elite Four you'll meet there is... me."
+  say "Go on through. I'll be right behind you."
+  hide rika
+  endscene
+  end
+label Done
+  say "The court's through the door at the back. The Elite Four are waiting for you."
+  end
+
+
+# The staff at the counter
+script Staff
+  face league_staff player
+  speaker "League Staff"
+  if flag PaldeaHallOfFame goto Champion
+  if var VAR_PALDEA_LEAGUE >= 1 goto Interviewed
+  say "Welcome to the Pokémon League. Challengers for the Champion assessment see Rika at the desk for their interview first."
+  end
+label Interviewed
+  say "The battle court is through the door at the back. Good luck. Truly."
+  end
+label Champion
+  say "Welcome back, Champion. Your name is on the League's register now, beside Nemona's."
+  end

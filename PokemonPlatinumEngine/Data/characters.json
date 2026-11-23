@@ -804,7 +804,15 @@
     // trousers and snow boots
     "ryme": { "skin": "#8a5a3e", "hairColor": "#f2f2f2", "hair": "Spiky", "top": "#6a3a9a", "accent": "#e8e040", "bottom": "#1e1e26", "shoes": "#e8e040", "eyes": "#3a2a2a", "coat": true, "build": "Adult", "height": 1.0 },
     "tulip": { "skin": "#f0d4c0", "hairColor": "#8a5ab0", "hair": "Long", "top": "#d8b8e8", "accent": "#f2ead8", "bottom": "#a07ac0", "shoes": "#5a3a6a", "eyes": "#6a4a8a", "skirt": true, "lashes": true, "build": "Adult", "height": 1.02 },
-    "grusha": { "skin": "#f2dcc8", "hairColor": "#e8dca0", "hair": "Swept", "top": "#f2f6fa", "accent": "#9ac0e0", "bottom": "#2a3240", "shoes": "#3a4050", "eyes": "#5a7a9a", "coat": true, "build": "Adult", "height": 1.12 }
+    "grusha": { "skin": "#f2dcc8", "hairColor": "#e8dca0", "hair": "Swept", "top": "#f2f6fa", "accent": "#9ac0e0", "bottom": "#2a3240", "shoes": "#3a4050", "eyes": "#5a7a9a", "coat": true, "build": "Adult", "height": 1.12 },
+    // Paldea's Pokémon League (plan 34 · PD8, its first session), our own looks: Rika, the interviewer and first of the
+    // Elite Four, dark hair cut short, a white shirt under dark braces and black trousers; Poppy, the youngest of the
+    // four, fair hair in bunches, a pink dress and a gold trim; Hassel, the art teacher, tall, greying hair, a green coat
+    // over a cream shirt; Geeta, the Top Champion, tall, long pale hair, a black suit with a gold accent
+    "rika": { "skin": "#ecc8a8", "hairColor": "#2a2626", "hair": "Short", "top": "#f2f0ea", "accent": "#2a2a36", "bottom": "#1e1e24", "shoes": "#2a2626", "eyes": "#3a3a3a", "lashes": true, "build": "Adult", "height": 1.04 },
+    "poppy": { "skin": "#f4dcc8", "hairColor": "#f0d890", "hair": "Bunches", "top": "#f0a0b8", "accent": "#e8c050", "bottom": "#f0a0b8", "shoes": "#c06a80", "eyes": "#5a8ac0", "skirt": true, "lashes": true, "blush": true, "build": "Little", "height": 0.8 },
+    "hassel": { "skin": "#9a6a4a", "hairColor": "#8a8478", "hair": "Swept", "top": "#f2ead8", "accent": "#3a6a4a", "bottom": "#3a3a34", "shoes": "#3a2a22", "eyes": "#3a3a2a", "coat": true, "build": "Adult", "height": 1.18 },
+    "geeta": { "skin": "#f2dcc8", "hairColor": "#f0e6c8", "hair": "Long", "top": "#1e1e24", "accent": "#d8b040", "bottom": "#1e1e24", "shoes": "#1e1e24", "eyes": "#6a5a8a", "coat": true, "lashes": true, "build": "Adult", "height": 1.14 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

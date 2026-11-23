@@ -2451,5 +2451,398 @@
         "personality": 2726194950
       }
     ]
+  },
+  {
+    "id": "paldea_rika",
+    "name": "Rika",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 5800,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Whiscash",
+        "level": 57,
+        "ivScale": 16,
+        "personality": 651610552
+      },
+      {
+        "species": "Camerupt",
+        "level": 57,
+        "ivScale": 16,
+        "personality": 3947493567
+      },
+      {
+        "species": "Donphan",
+        "level": 57,
+        "ivScale": 16,
+        "personality": 3734228343
+      },
+      {
+        "species": "Dugtrio",
+        "level": 57,
+        "ivScale": 16,
+        "personality": 3793497792
+      },
+      {
+        "species": "Clodsire",
+        "level": 58,
+        "ivScale": 16,
+        "personality": 2594437689,
+        "teraType": "Ground"
+      }
+    ]
+  },
+  {
+    "id": "paldea_poppy",
+    "name": "Poppy",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 5900,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Copperajah",
+        "level": 58,
+        "ivScale": 16,
+        "personality": 298656867
+      },
+      {
+        "species": "Magnezone",
+        "level": 58,
+        "ivScale": 16,
+        "personality": 2000912349
+      },
+      {
+        "species": "Bronzong",
+        "level": 58,
+        "ivScale": 16,
+        "personality": 2088527303
+      },
+      {
+        "species": "Corviknight",
+        "level": 58,
+        "ivScale": 16,
+        "personality": 1915941883
+      },
+      {
+        "species": "Tinkaton",
+        "level": 59,
+        "ivScale": 16,
+        "personality": 4007454889,
+        "teraType": "Steel"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_elite",
+    "name": "Larry",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Tropius",
+        "level": 59,
+        "ivScale": 16,
+        "personality": 2747528348
+      },
+      {
+        "species": "Oricorio",
+        "form": "Oricorio-Pom-Pom",
+        "level": 59,
+        "ivScale": 16,
+        "personality": 4127365751
+      },
+      {
+        "species": "Altaria",
+        "level": 59,
+        "ivScale": 16,
+        "personality": 3021110901
+      },
+      {
+        "species": "Staraptor",
+        "level": 59,
+        "ivScale": 16,
+        "personality": 55857089
+      },
+      {
+        "species": "Flamigo",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 3782590240,
+        "teraType": "Flying"
+      }
+    ]
+  },
+  {
+    "id": "paldea_hassel",
+    "name": "Hassel",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 6100,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Noivern",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 1481188558
+      },
+      {
+        "species": "Haxorus",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 3159584225
+      },
+      {
+        "species": "Dragalge",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 2763552124
+      },
+      {
+        "species": "Flapple",
+        "level": 60,
+        "ivScale": 16,
+        "personality": 192540113
+      },
+      {
+        "species": "Baxcalibur",
+        "level": 61,
+        "ivScale": 16,
+        "personality": 4164552644,
+        "teraType": "Dragon"
+      }
+    ]
+  },
+  {
+    "id": "paldea_geeta",
+    "name": "Geeta",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 12400,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Espathra",
+        "level": 61,
+        "ivScale": 20,
+        "personality": 3491400227
+      },
+      {
+        "species": "Gogoat",
+        "level": 61,
+        "ivScale": 20,
+        "personality": 4273139637
+      },
+      {
+        "species": "Veluza",
+        "level": 61,
+        "ivScale": 20,
+        "personality": 3123708930
+      },
+      {
+        "species": "Avalugg",
+        "level": 61,
+        "ivScale": 20,
+        "personality": 3485259961
+      },
+      {
+        "species": "Kingambit",
+        "level": 61,
+        "ivScale": 20,
+        "personality": 373598095
+      },
+      {
+        "species": "Glimmora",
+        "level": 62,
+        "ivScale": 20,
+        "personality": 1500492980,
+        "teraType": "Rock"
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_8a",
+    "name": "Nemona",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 13200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 1758775822
+      },
+      {
+        "species": "Goodra",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 2480747065
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 3551940818
+      },
+      {
+        "species": "Orthworm",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 1152147485
+      },
+      {
+        "species": "Pawmot",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 3391263323
+      },
+      {
+        "species": "Skeledirge",
+        "level": 66,
+        "ivScale": 20,
+        "personality": 1296751491,
+        "teraType": "Fire"
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_8b",
+    "name": "Nemona",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 13200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 2716921087
+      },
+      {
+        "species": "Goodra",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 1745881441
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 3676571392
+      },
+      {
+        "species": "Orthworm",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 1515029601
+      },
+      {
+        "species": "Pawmot",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 4223723288
+      },
+      {
+        "species": "Quaquaval",
+        "level": 66,
+        "ivScale": 20,
+        "personality": 411965855,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_8c",
+    "name": "Nemona",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 13200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 4125754956
+      },
+      {
+        "species": "Goodra",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 3762728976
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 2931370651
+      },
+      {
+        "species": "Orthworm",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 964442598
+      },
+      {
+        "species": "Pawmot",
+        "level": 65,
+        "ivScale": 20,
+        "personality": 1706140565
+      },
+      {
+        "species": "Meowscarada",
+        "level": 66,
+        "ivScale": 20,
+        "personality": 3153785412,
+        "teraType": "Grass"
+      }
+    ]
   }
 ]

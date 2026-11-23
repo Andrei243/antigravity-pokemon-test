@@ -439,6 +439,9 @@ public static class Objectives
         (832, "paldeaRyme", RegionBadge(RegionDatabase.Paldea, "Ghost"), false),
         (833, "paldeaTulip", RegionBadge(RegionDatabase.Paldea, "Psychic"), false),
         (834, "paldeaGrusha", RegionBadge(RegionDatabase.Paldea, "Ice"), false),
+        // The Pokémon League (plan 34 · PD8, its first session): the interview, the Elite Four, Geeta and Nemona, done by
+        // the Hall of Fame
+        (835, "paldeaLeague", F("PaldeaHallOfFame"), false),
         // Starfall Street (plan 34 · PD5) by VAR_PALDEA_STARFALL, starfall_street.txt's count: Cassiopeia's first call,
         // then each of the five bases by its boss beaten (the 850s, kept apart from the gyms' ids PD6 adds)
         (850, "paldeaStarfall", AtLeast("VAR_PALDEA_STARFALL", 1), false),

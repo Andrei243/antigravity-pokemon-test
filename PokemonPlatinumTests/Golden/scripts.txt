@@ -7930,6 +7930,110 @@ way 1.1, from answer 2
   Park Attendant> The score is the Pokémon's own points, plus points for catching them quickly, and for never catching two of a type in a row. A good score earns a berry!
   ? What shall I read out of the manual? = The Catching Show
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
+=== PaldeaLeague_Court.Geeta
+from Geeta at 7,5 of PaldeaLeague_Court
+way 0
+  Geeta> Welcome. I am Geeta, chair of the Pokémon League and its Top Champion. The four have told me about you, and they rarely agree.
+  Geeta> The last step of the assessment is mine. Show me the Trainer Paldea's gyms and Elite Four have shaped.
+  Geeta> ...Well. There's no arguing with that. By the League's authority, you are a Champion of Paldea. Congratulations.
+  Geeta> Only, it seems somebody has been waiting for that word longer than any of us.
+  * scene PaldeaLeague_Court.Geeta the Top Champion
+  * battle paldea_geeta Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_NEMONA
+  = VAR_PALDEA_LEAGUE 0 -> 6
+  + beaten paldea_geeta
+  + seen PaldeaLeague_Court.Geeta the Top Champion
+way 1, from answer 1
+  * battle paldea_geeta Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Hassel
+from Hassel at 7,5 of PaldeaLeague_Court
+way 0
+  Hassel> Ah. You've come so far, and you've come in colour. I'm Hassel. At the academy I teach art; here, I am the last of the Elite Four.
+  Hassel> A battle is a canvas, and my dragons paint with a heavy brush. Show me what you've made of your journey!
+  Hassel> Magnificent... I may weep. A masterpiece, and not of my making. Geeta, the Top Champion, waits for you now.
+  * scene PaldeaLeague_Court.Hassel of the Elite Four
+  * battle paldea_hassel Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_GEETA
+  = VAR_PALDEA_LEAGUE 0 -> 5
+  + beaten paldea_hassel
+  + seen PaldeaLeague_Court.Hassel of the Elite Four
+way 1, from answer 1
+  * battle paldea_hassel Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Larry
+from Larry at 7,5 of PaldeaLeague_Court
+way 0
+  Larry> You again. Yes, I keep Medali's gym. I also sit on the Elite Four. The League found out I was good at both and gave me both. Typical.
+  Larry> Normal types are my day job. Up here I fly. Let's get this done before the overtime starts.
+  Larry> ...Right. Beaten twice by the same challenger. I'll file that under things I'm not surprised by. Hassel's next.
+  * scene PaldeaLeague_Court.Larry of the Elite Four
+  * battle paldea_larry_elite Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_HASSEL
+  = VAR_PALDEA_LEAGUE 0 -> 4
+  + beaten paldea_larry_elite
+  + seen PaldeaLeague_Court.Larry of the Elite Four
+way 1, from answer 1
+  * battle paldea_larry_elite Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Nemona
+from Nemona at 7,5 of PaldeaLeague_Court
+way 0
+  Nemona> Lucas! You did it! Geeta says you're a Champion, so that makes two of us, and you know what that means.
+  Nemona> Ever since that first battle on my terrace I've wanted this one: you and me, both at our very best, no holding back.
+  Nemona> Okay. Deep breath. Let's go!
+  Nemona> ...That was the best battle of my whole life. I mean it. I've never been so happy to lose!
+  Nemona> Come on, rival. Let's get your team into the Hall of Fame where it belongs. Then we start all over again tomorrow!
+  > Lucas saved the game.
+  * scene PaldeaLeague_Court.Nemona Champion to Champion
+  * battle paldea_nemona_8c Won
+  * endscene
+  * fade out
+  * halloffame
+  * open Ceremony
+  * warp CaboPoco_PlayersHouse_2F 4 6
+  * save
+  * sound save
+  * open Credits
+  + PaldeaHallOfFame
+  = VAR_PALDEA_LEAGUE 0 -> 7
+  + beaten paldea_nemona_8c
+  + seen PaldeaLeague_Court.Nemona Champion to Champion
+way 1, from answer 1
+  * battle paldea_nemona_8c Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Poppy
+from Poppy at 7,5 of PaldeaLeague_Court
+way 0
+  Poppy> Hi hi! I'm Poppy, and I'm one of the Elite Four too. The grown-ups always look surprised when I say that.
+  Poppy> My Pokémon are super tough, tougher than steel. Ready? You'd better be!
+  Poppy> Aww, you beat me fair and square. That's okay. I'll get even stronger and then I'll beat you back!
+  * scene PaldeaLeague_Court.Poppy of the Elite Four
+  * battle paldea_poppy Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_LARRY
+  = VAR_PALDEA_LEAGUE 0 -> 3
+  + beaten paldea_poppy
+  + seen PaldeaLeague_Court.Poppy of the Elite Four
+way 1, from answer 1
+  * battle paldea_poppy Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Rika
+from Rika at 7,5 of PaldeaLeague_Court
+way -
+  Rika> Interview first, then battles. My desk's in the lobby.
+=== PaldeaLeague_Lobby.Interview
+from Rika at 2,8 of PaldeaLeague_Lobby
+way -
+  Rika> Welcome to the Pokémon League. I hold the interviews for the Champion assessment, and I can only see challengers who carry all eight of Paldea's badges.
+  Rika> Come back when your case is full. I'll keep the chair warm for you.
+=== PaldeaLeague_Lobby.Staff
+from League Staff at 9,8 of PaldeaLeague_Lobby
+way -
+  League Staff> Welcome to the Pokémon League. Challengers for the Champion assessment see Rika at the desk for their interview first.
 === PaniolaRanch_Nursery.Keeper
 from Nursery Keeper at 6,4 of PaniolaRanch_Nursery
 way -

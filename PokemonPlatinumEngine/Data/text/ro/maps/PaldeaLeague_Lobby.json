@@ -1,0 +1,61 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Stocking up before the Elite Four? Very wise. Nobody has ever regretted one more Full Restore."
+        ],
+        "text": [
+          "Vânzătoarea: Faci provizii înainte de Elita celor Patru? Foarte înțelept. Nimeni n-a regretat vreodată un Full Restore în plus."
+        ]
+      }
+    },
+    "rika": {
+      "name": {
+        "en": [
+          "Rika"
+        ],
+        "text": [
+          "Rika"
+        ]
+      }
+    },
+    "league_staff": {
+      "name": {
+        "en": [
+          "League Staff"
+        ],
+        "text": [
+          "Personalul Ligii"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
