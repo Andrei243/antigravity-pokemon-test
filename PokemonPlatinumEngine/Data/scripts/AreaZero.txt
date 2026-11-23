@@ -1,0 +1,134 @@
+# Area Zero (plan 34 · PD8, its second session): the Great Crater's descent from the Zero Gate's lift to the Zero Lab,
+# a cave-set grid map at our compressed scale (plan 34 · decision 1): four terraces, each with its research station,
+# down ledges that go one way only, to the lab's way in at the crater's bottom. Each station's trigger lies across the
+# whole way down, so it is crossed; at each the professor's voice speaks from the station and the friends talk. The
+# Paradox Pokémon met here are the version's (Scarlet's ancient, Violet's future ones). Our own lines.
+#
+# VAR_PALDEA_ZERO counts the chapter:
+#   0  not begun
+#   1  the Zero Gate opened with the friends (north_province_area_one.txt, ZeroGate)
+#   2 to 5  the first to fourth research station passed
+#   6  the professor's AI beaten (AreaZero_ZeroLab.txt)
+#   7  the legendary's battle won
+#   8  the Way Home, home in Cabo Poco (FLAG_PALDEA_WAY_HOME)
+
+
+script OnEnter
+  setflag FLAG_PALDEA_ZERO_HIDE_PARADOX_A_SCARLET
+  setflag FLAG_PALDEA_ZERO_HIDE_PARADOX_A_VIOLET
+  setflag FLAG_PALDEA_ZERO_HIDE_PARADOX_B_SCARLET
+  setflag FLAG_PALDEA_ZERO_HIDE_PARADOX_B_VIOLET
+  if var VAR_PALDEA_VERSION == 2 goto Violet
+  if flag FLAG_PALDEA_ZERO_PARADOX_A_MET goto ScarletB
+  clearflag FLAG_PALDEA_ZERO_HIDE_PARADOX_A_SCARLET
+label ScarletB
+  if flag FLAG_PALDEA_ZERO_PARADOX_B_MET goto Done
+  clearflag FLAG_PALDEA_ZERO_HIDE_PARADOX_B_SCARLET
+  end
+label Violet
+  if flag FLAG_PALDEA_ZERO_PARADOX_A_MET goto VioletB
+  clearflag FLAG_PALDEA_ZERO_HIDE_PARADOX_A_VIOLET
+label VioletB
+  if flag FLAG_PALDEA_ZERO_PARADOX_B_MET goto Done
+  clearflag FLAG_PALDEA_ZERO_HIDE_PARADOX_B_VIOLET
+label Done
+  end
+
+
+# The professor's voice, by the version (VAR_PALDEA_VERSION: 1 Scarlet's Sada, 2 Violet's Turo)
+script Voice
+  if var VAR_PALDEA_VERSION == 2 goto Turo
+  speaker "Professor Sada"
+  return
+label Turo
+  speaker "Professor Turo"
+  return
+
+
+# The first station, on the crater's upper wall under the lift
+script StationOne
+  scene "Research Station One"
+  text "A voice comes from the station's speaker as the four pass its door."
+  call Voice
+  say "The first station. Good. Below here the crater is another world: the Pokémon you meet may not be the ones in any book."
+  speaker "Nemona"
+  say "Look at all those crystals! The whole wall is glittering. I want to battle everything down here."
+  speaker "Arven"
+  say "Stay close. The ledges only go down, so there's no turning back halfway."
+  setvar VAR_PALDEA_ZERO 2
+  endscene
+  end
+
+
+# The second, beside the grass of the second terrace
+script StationTwo
+  scene "Research Station Two"
+  call Voice
+  say "The second station. You're making good time. Mind the tall grass: what lives in it is older, or newer, than it looks."
+  speaker "Penny"
+  say "This place has its own weather. The light comes down green. It's kind of beautiful, actually."
+  speaker "Arven"
+  say "There's a journal in there. The professor's handwriting... I'd know it anywhere. Let's keep going."
+  setvar VAR_PALDEA_ZERO 3
+  endscene
+  end
+
+
+# The third, its far wall grown over with crystals
+script StationThree
+  scene "Research Station Three"
+  call Voice
+  say "The third station. The crystals here are what makes Terastallization possible. The whole of Paldea's shine starts down here."
+  speaker "Nemona"
+  say "Wait, so every Tera Pokémon I've ever battled... it all comes from this crater? That's so cool!"
+  speaker "Penny"
+  say "And kind of scary. I think the deeper we go, the less this place wants visitors."
+  setvar VAR_PALDEA_ZERO 4
+  endscene
+  end
+
+
+# The fourth and last, over the way into the rock where the lab is
+script StationFour
+  scene "Research Station Four"
+  call Voice
+  say "The last station. The lab is in the rock below you. Come in when you're ready. I have a great deal to tell you."
+  speaker "Arven"
+  say "That voice... it's right, but it's too calm. They were never this calm. Something's off."
+  speaker "Nemona"
+  say "Then we go in together and find out. Ready, {player}?"
+  setvar VAR_PALDEA_ZERO 5
+  endscene
+  end
+
+
+# The second terrace's Paradox Pokémon: Scarlet's Great Tusk or Violet's Iron Treads, met once
+script ParadoxA
+  if var VAR_PALDEA_VERSION == 2 goto Treads
+  text "A huge tusked Pokémon paws at the ground. It looks like a Donphan from a time long before any Donphan."
+  wildbattle "Great Tusk" 56
+  hide paradox_a_scarlet
+  goto Met
+label Treads
+  text "A Pokémon of riveted plates rolls up the slope. It looks like a Donphan built of metal."
+  wildbattle "Iron Treads" 56
+  hide paradox_a_violet
+label Met
+  setflag FLAG_PALDEA_ZERO_PARADOX_A_MET
+  end
+
+
+# The fourth terrace's: Scarlet's Flutter Mane or Violet's Iron Moth, met once
+script ParadoxB
+  if var VAR_PALDEA_VERSION == 2 goto Moth
+  text "A ghostly Pokémon drifts out of the crystals, trailing a long tattered veil. It hums a strange old song."
+  wildbattle "Flutter Mane" 56
+  hide paradox_b_scarlet
+  goto Met
+label Moth
+  text "A Pokémon of steel and glowing panels hovers over the stones, its wings throwing off heat."
+  wildbattle "Iron Moth" 56
+  hide paradox_b_violet
+label Met
+  setflag FLAG_PALDEA_ZERO_PARADOX_B_MET
+  end

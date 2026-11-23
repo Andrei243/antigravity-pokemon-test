@@ -6,6 +6,9 @@ trainers 1, 43: paldea_gym_trainer_bruno 43
 === AnistarCity_Gym
 Anistar Gym
 trainers 2, 42-43: kalos_psychic_aurele 43, kalos_psychic_lucile 42
+=== AreaZero
+Area Zero
+grass 52-57
 === Artazon_GymTest
 Artazon Gym
 trainers 1, 15: paldea_gym_trainer_hedge 15

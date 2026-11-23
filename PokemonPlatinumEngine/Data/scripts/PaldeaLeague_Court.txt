@@ -1,8 +1,8 @@
 # The Pokémon League's battle court (plan 34 · PD8, its first session): the Champion assessment after Rika's interview
 # in the lobby. The Elite Four battle one after another on the same spot of the court (Rika, Poppy, Larry, Hassel), then
 # the Top Champion Geeta, and last Nemona, who ends the assessment with the battle she has wanted since Cabo Poco; then
-# the Hall of Fame, Paldea's story to here ended (PaldeaHallOfFame), home to Cabo Poco, the game saved there and the
-# credits. Whoever is due stands at the court's far end, shown by the court's arrival. Everyone Terastallizes their last
+# the Hall of Fame, Paldea's story to here ended (PaldeaHallOfFame), home to Cabo Poco and the game saved there (the
+# credits roll after the Way Home, AreaZero_ZeroLab.txt, since plan 34 · PD8's second session). Whoever is due stands at the court's far end, shown by the court's arrival. Everyone Terastallizes their last
 # Pokémon. A loss keeps the challenger's place: the one who won waits for them again. Levels are the originals' (plan 34 ·
 # decision 3: the League asks eight badges, so nothing is scaled). Our own lines.
 #
@@ -200,7 +200,6 @@ label Fought
 label NotSaved
   text "The game could not be saved."
 label Roll
-  credits
   end
 label Done
   say "Champion to Champion, any time you like. And I mean any time!"

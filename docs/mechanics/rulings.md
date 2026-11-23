@@ -13367,3 +13367,43 @@ out where the rules already bite. Ids 3101 to 3107 for both the moves and the ab
 - **Paldea has no departure of its own**: it is the chain's last region with maps (`RegionDatabase.LinkFrom` has no link
   from it until plan 46's Carpathia joins the chain), so no attendant stands anywhere in Paldea after its Hall of Fame.
   The flag counts toward the Hub's opening as every region's does; a way out of Paldea is left to plan 46 or to the user.
+
+## Area Zero and the Way Home (2026-11-23, plan 34 · PD8, its second session)
+
+- **Built as grid rooms behind a door, not carved open terrain.** The plan's design has Area Zero as the open map's carved
+  terrain at its deepest; this session built it as three grid maps behind the Zero Gate's door (plan 32 · decision 6), the
+  cheaper of the two faithful ways: a carved crater would have meant a new terrain file, the carve, the bake and the
+  navigation mesh's climbs and glides down 100 m of wall, and the open renderer draws no falls yet. The grid's cave
+  setting gives the crater's light and rock, ledges give the descent one way, and Inlet Grotto is the precedent. The
+  three: `AreaZero_Gate` (the gate's hall and its lift), `AreaZero` (a cave-set map of four terraces with a research
+  station on each, crystals, pools and tall grass, 21 by 40 tiles: our compressed scale) and `AreaZero_ZeroLab`. The
+  carved crater on the open map stays the plan's design for later, if the user wants it.
+- **The Zero Gate** is a hall of two storeys signed ZERO GATE on the east side of the North Province's first area, built
+  against the hills that wall the Great Crater off, its door facing south (`places/north_province_area_one.json`;
+  `zero_gate_door`, `zero_gate_front`). Its door waits for `FLAG_PALDEA_ZERO_GATE_OPEN`. The originals put the gate on the
+  crater's rim elsewhere; ours is where the North Province's road passes nearest the crater.
+- **The order**: the gate opens after all three paths, as the originals' "The Way Home" waits for Victory Road, the Path
+  of Legends and Starfall Street. Arven, Nemona and Penny stand before the gate once `PaldeaHallOfFame` is set; any of them
+  spoken to begins the meeting when `VAR_PALDEA_LEGENDS` is 12 and `VAR_PALDEA_STARFALL` 6, or says which path is
+  still open. The meeting is where Penny owns up to being Cassiopeia (PD5 left who she is to here) and the professor's
+  voice opens the gate.
+- **`VAR_PALDEA_ZERO`**: 1 the gate opened, 2 to 5 the four stations passed (each station's trigger lies across the whole
+  way down its terrace), 6 the AI beaten, 7 the legendary's battle won, 8 home (`FLAG_PALDEA_WAY_HOME`, objective 836
+  `paldeaAreaZero`).
+- **The professor's AI** is Sada's in a Scarlet game and Turo's in a Violet one (`VAR_PALDEA_VERSION`, plan 34 ·
+  decision 2), shown by the lab's arrival; looks `sada`, `turo` and `penny` are ours. Its team is the version's six
+  Paradox Pokémon at 66 and 67 (`paldea_ai_sada`: Slither Wing, Scream Tail, Brute Bonnet, Flutter Mane, Sandy Shocks,
+  Roaring Moon Tera Dark; `paldea_ai_turo`: Iron Moth, Iron Bundle, Iron Hands, Iron Jugulis, Iron Thorns, Iron Valiant
+  Tera Fairy), ours near the originals' as remembered, not checked against a source.
+- **The legendary's battle form** (plan 30 · decision 15): the Koraidon or Miraidon the professor kept comes out of the
+  machine in its battle form with a Roaring Moon or an Iron Valiant beside it (`paldea_ai_sada_legend`,
+  `paldea_ai_turo_legend`, 72 and 70), and the player's own mount fights beside them in its battle form (`battle … with
+  "paldea_partner_koraidon"`, a tag battle; the partner at 68). The originals have the player fight with the mount alone;
+  ours keeps the team and puts the mount beside it, the engine's tag battle, and the foe two so the double is a full one.
+- **The Way Home**: the AI goes through the machine and shuts it, the friends speak, the four climb out, and the mount
+  joins the team at last (`givepokemon "Koraidon" 68`; it still carries the player, as the ride is `VAR_PALDEA_MOUNT`'s,
+  not the team's); home to Cabo Poco with Mom, the save and the **credits, moved here** from after the Hall of Fame
+  (`PaldeaLeague_Court.txt` now ends with the save), as the originals hold them. A full team sends the mount to a box.
+- **Wild Pokémon**: the crater's tall grass has Glimmet, Garganacl, Tinkatuff, Bronzong, Rabsca and Glimmora at 52 to 57;
+  two Paradox Pokémon of the version stand on its terraces to be battled once at 56 (Great Tusk and Flutter Mane, or Iron
+  Treads and Iron Moth). Songs: none new (the gate's hall `paldea/titans`, the crater and the lab `paldea/alfornada`).

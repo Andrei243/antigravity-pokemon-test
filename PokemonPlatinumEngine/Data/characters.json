@@ -812,7 +812,14 @@
     "rika": { "skin": "#ecc8a8", "hairColor": "#2a2626", "hair": "Short", "top": "#f2f0ea", "accent": "#2a2a36", "bottom": "#1e1e24", "shoes": "#2a2626", "eyes": "#3a3a3a", "lashes": true, "build": "Adult", "height": 1.04 },
     "poppy": { "skin": "#f4dcc8", "hairColor": "#f0d890", "hair": "Bunches", "top": "#f0a0b8", "accent": "#e8c050", "bottom": "#f0a0b8", "shoes": "#c06a80", "eyes": "#5a8ac0", "skirt": true, "lashes": true, "blush": true, "build": "Little", "height": 0.8 },
     "hassel": { "skin": "#9a6a4a", "hairColor": "#8a8478", "hair": "Swept", "top": "#f2ead8", "accent": "#3a6a4a", "bottom": "#3a3a34", "shoes": "#3a2a22", "eyes": "#3a3a2a", "coat": true, "build": "Adult", "height": 1.18 },
-    "geeta": { "skin": "#f2dcc8", "hairColor": "#f0e6c8", "hair": "Long", "top": "#1e1e24", "accent": "#d8b040", "bottom": "#1e1e24", "shoes": "#1e1e24", "eyes": "#6a5a8a", "coat": true, "lashes": true, "build": "Adult", "height": 1.14 }
+    "geeta": { "skin": "#f2dcc8", "hairColor": "#f0e6c8", "hair": "Long", "top": "#1e1e24", "accent": "#d8b040", "bottom": "#1e1e24", "shoes": "#1e1e24", "eyes": "#6a5a8a", "coat": true, "lashes": true, "build": "Adult", "height": 1.14 },
+    // Area Zero (plan 34 · PD8, its second session), our own looks: Penny, the quiet student behind Cassiopeia, short
+    // dark-pink hair under big glasses, an oversized dark hoodie over the academy's skirt; the professor's AI, Sada's in a
+    // Scarlet game (wild dark hair, a rough explorer's top of hide and fur, red trim) and Turo's in a Violet one (neat
+    // grey hair, a sleek white suit with violet trim), each a little pale and blue, as a projection is
+    "penny": { "skin": "#f0d4bc", "hairColor": "#c85a7a", "hair": "Bowl", "top": "#3a3446", "accent": "#e2a23a", "bottom": "#3a3446", "shoes": "#2a2430", "eyes": "#6a5a7a", "glasses": "#2a2a2a", "skirt": true, "lashes": true, "build": "Adult", "height": 0.94 },
+    "sada": { "skin": "#d8c0b8", "hairColor": "#2a2226", "hair": "Long", "top": "#8a5a3a", "accent": "#c8343a", "bottom": "#4a3a2e", "shoes": "#3a2a22", "eyes": "#c8343a", "vest": "#d8c8a8", "lashes": true, "build": "Adult", "height": 1.1 },
+    "turo": { "skin": "#d8d4dc", "hairColor": "#9a9aa2", "hair": "Swept", "top": "#f2f2f6", "accent": "#7a4ad8", "bottom": "#f2f2f6", "shoes": "#2a2a34", "eyes": "#7a4ad8", "coat": true, "build": "Adult", "height": 1.12 }
   },
   // Kalos's cast in the grown kit (plan 30 · FM10; style guide, "Grown characters", "Kalos's cast"): the grown twin of
   // every look a person of Kalos stands as, asked for first wherever a look is asked in the grown kit

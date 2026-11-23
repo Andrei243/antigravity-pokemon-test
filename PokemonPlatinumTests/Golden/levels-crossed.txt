@@ -1616,6 +1616,10 @@ galar_youngster_reggie 225 (7) [Blipbug → Orbeetle, Nickit → Thievul]
 === region Paldea
 levels 2 → 242, 62 → 258
 caps 245 246 248 249 251 253 253 254 258 (own 15 17 24 30 36 42 45 48 62)
+paldea_ai_sada 259 (67) [Slither Wing → Saurmoth, Scream Tail → Shriekpuff, Brute Bonnet → Fungoliath, Flutter Mane → Banshemane, Sandy Shocks → Lodestatic, Roaring Moon → Lunaroar]
+paldea_ai_sada_legend 260 (72) [Roaring Moon → Lunaroar]
+paldea_ai_turo 259 (67) [Iron Moth → Fusionmoth, Iron Bundle → Cryoparcel, Iron Hands → Gauntletron, Iron Jugulis → Hydrajet, Iron Thorns → Thornframe, Iron Valiant → Paladroid]
+paldea_ai_turo_legend 260 (72) [Iron Valiant → Paladroid]
 paldea_arven 258 (61) [Greedent → Larderous, Cloyster → Clamspire, Scovillain → Habanerogue, Toedscruel → Myceliarch, Mabosstiff → Mastiffdon]
 paldea_brassius 246 (17) [Petilil → Ballerilly, Smoliv → Arboliva, Sudowoodo → Mimicedar]
 paldea_geeta 258 (62) [Espathra → Mirastrich, Gogoat → Alpicorn, Veluza → Sashimaru, Avalugg → Glacitadel, Glimmora → Geodiadem]
@@ -1653,6 +1657,8 @@ paldea_nemona_1c 243 (5) [Sprigatito → Meowscarada]
 paldea_nemona_8a 259 (66) [Lycanroc → Lupinacle, Dudunsparce → Dunsprawl, Orthworm → Orthobore]
 paldea_nemona_8b 259 (66) [Lycanroc → Lupinacle, Dudunsparce → Dunsprawl, Orthworm → Orthobore]
 paldea_nemona_8c 259 (66) [Lycanroc → Lupinacle, Dudunsparce → Dunsprawl, Orthworm → Orthobore]
+paldea_partner_koraidon 260 (68)
+paldea_partner_miraidon 260 (68)
 paldea_poppy 257 (59) [Copperajah → Verdigrand, Bronzong → Dotakuron]
 paldea_rika 257 (58) [Whiscash → Namazuro, Camerupt → Volcamel, Donphan → Siegephant, Dugtrio → Molemount, Clodsire → Clodkaiser]
 paldea_ryme 253 (42) [Banette → Effigrim, Mimikyu → Masqueradoll, Houndstone → Barrowhound, Toxtricity → Amplipunk]
@@ -1697,6 +1703,9 @@ trainers 1, 253 (own 43): paldea_gym_trainer_bruno 253 (43) [Gothorita → Gothi
 === AnistarCity_Gym
 Anistar Gym, Kalos
 trainers 2, 197 (own 42-43): kalos_psychic_aurele 197 (43) [Duosion → Reuniclus, Grumpig → Boarcane], kalos_psychic_lucile 197 (42) [Kirlia → Gardevoir, Chingling → Carillone]
+=== AreaZero
+Area Zero, Paldea
+grass 255-257 (own 52-57)
 === Artazon_GymTest
 Artazon Gym, Paldea
 trainers 1, 245 (own 15): paldea_gym_trainer_hedge 245 (15) [Hoppip → Jumpluff, Petilil → Ballerilly]

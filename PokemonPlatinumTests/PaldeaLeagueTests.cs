@@ -67,11 +67,11 @@ public class PaldeaLeagueTests
         Assert.True(map.Marker("league_door")!.Pos.MetresX > 20);
         Assert.Contains(RegionDatabase.Get(RegionDatabase.Paldea)!.Maps, m => m == "PaldeaLeague_Court");
         var lobby = Rooms.Value("PaldeaLeague_Lobby");
-        Assert.Contains(lobby.NPCs, n => n.IsHealingNurse);
-        Assert.Contains(lobby.NPCs, n => n.Script == "Interview");
+        Assert.Contains(lobby.Everyone, n => n.IsHealingNurse);
+        Assert.Contains(lobby.Everyone, n => n.Script == "Interview");
         var court = Rooms.Value("PaldeaLeague_Court");
-        foreach (var (script, _) in Court) Assert.Contains(court.NPCs, n => n.Script == script);
-        Assert.Contains(court.NPCs, n => n.Script == "Nemona");
+        foreach (var (script, _) in Court) Assert.Contains(court.Everyone, n => n.Script == script);
+        Assert.Contains(court.Everyone, n => n.Script == "Nemona");
         Assert.NotNull(door);
     }
 

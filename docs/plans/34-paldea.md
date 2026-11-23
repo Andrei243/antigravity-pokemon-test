@@ -152,7 +152,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD5 Starfall Street and Let's Go (2026-11-15, one session: Let's Go on its key, the five bases in a stand-in valley north of Mesagoza with their raids' clock, the bosses and Starmobiles on a stage of their own, Cassiopeia's calls; "PD5 as built", below. **Waits for the user**: the stand-in valley (PD6 moves the bases), the raid's numbers (fifteen in five minutes), the song and the five bosses' looks by eye. **Owed**: the bot playing a raid, Let's Go's materials for the crafting kit, the new cast's voices by ear)
 - [x] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below; its second session 2026-11-23: the North Province, Glaseado Mountain and its snowslope, Montenevera, the East Province's third area, Alfornada through its cavern, Ryme's rap battle, Tulip's photographs and Grusha's run with the three leaders scaled, Lurking Steel and False Dragon moved to their provinces, the eight badges won in two orders headless, the bot to the fifth badge, through the last three and riding from Cabo Poco to Glaseado's top; "PD6, second session", below. **Waits for the user**: the north's distances and looks, the tests ours where the originals differ (Ryme's and Tulip's), the run with no clock, the songs by ear, the new cast's voices by ear, `profile`'s ride on the Windows machine. **Owed**: Starfall Street's bases still in their stand-in valley; Cascarrafa's falls drawn falling and its bridges; the open places' people's lines untranslated, as every open map's are)
 - [x] PD7 Tera Raids and picnics (2026-11-23, one session: the Tera foe on Galar's `Raid` with its crystal shield, the raiders' orbs charged by their moves and a clock of turns; twelve crystals on Paldea's open map drawn by the day and the badges, their glow in their Tera Type's colour, the catch that never fails and the Tera Shards it leaves; the picnic's sandwiches as `recipes.json`'s second section on the camp's pot with no kit in Paldea, the Egg and Sparkling Powers, the Type and Encounter Powers on the open map's spawner; the picnic basket's Eggs; Mesagoza's deli; "PD7 as built", below. **Waits for the user**: the crystal's look and the raid's numbers (HP, shield, clock), the sandwiches and their powers' numbers, the picnic's look. **Owed**: the raid's clock and the orbs on the raid's screen, the bot playing a raid, the black crystals (PD9), the picnic table's own look)
-- [ ] PD8 The League, Area Zero and the Way Home (its first session 2026-11-23: the Pokémon League's building on its terrace under Mesagoza's south wall, the lobby with Rika's interview and the battle court, the Elite Four, Geeta and Nemona at the originals' levels, `PaldeaHallOfFame` with the Hall of Fame's scene, home and the credits, refused without eight badges; "PD8, first session", below. **Left for session two**: the Zero Gate, Area Zero and its research stations, the Zero Lab, the professor's AI, the legendary's battle form, the Way Home, and the done-when's bot run. **Waits for the user**: the League's place and look, the interview's questions, one court for all six, the credits rolling before the Way Home)
+- [x] PD8 The League, Area Zero and the Way Home (its first session 2026-11-23: the Pokémon League's building on its terrace under Mesagoza's south wall, the lobby with Rika's interview and the battle court, the Elite Four, Geeta and Nemona at the originals' levels, `PaldeaHallOfFame` with the Hall of Fame's scene, home and the credits, refused without eight badges; "PD8, first session", below. its second session the same day: the Zero Gate in the North Province with the friends' meeting and Penny's Cassiopeia, Area Zero as grid rooms behind its door (the gate's hall, the crater's four terraces and research stations, the Zero Lab), the professor's AI by the version, the legendary's battle form beside the player's mount, the Way Home with the credits moved to it, and the done-when: the bot from the League's door through the Hall of Fame, riding north to the Zero Gate and down to the Way Home; "PD8, second session", below. **Waits for the user**: the League's place and look, the interview's questions, one court for all six; Area Zero as grid rooms rather than the open map's carved crater, the gate's place, the mount beside the team in the last battle, the credits after the Way Home)
 - [ ] PD9 After the Hall of Fame
 - [ ] PD10 The Teal Mask (optional)
 - [ ] PD11 The Indigo Disk (optional)
@@ -678,3 +678,70 @@ attendant takes a Champion out of Paldea until plan 46 links Carpathia after it 
 
 **Waits for the user**: the League's place and look (`pdg00` to `pdg02`), the interview's questions, the one court, the
 credits' place, the new looks, and the Romanian lines.
+
+## PD8, second session (2026-11-23)
+
+One session, alone in its worktree (`session/pd8b`). The rulings' "Area Zero and the Way Home" has every decision. Plan 34's
+decisions stay at their recommendations.
+
+**The choice of how**: Area Zero is three grid rooms behind the Zero Gate's door (plan 32 · decision 6), not the design's
+carved terrain on the open map. A carved crater 100 m deep would have been a terrain file, a carve, the bake, the
+navigation mesh's climbs and glides and falls the open renderer can't draw yet; the cave-set grid map (Inlet Grotto's
+precedent) gives the crater's rock and light, ledges give the one-way descent, and the stations are triggers across each
+terrace. The open map gained only the gate's hall and its door, so the bake moved nothing but the navigation round a
+new solid.
+
+**What there is**
+- **The Zero Gate** (`places/north_province_area_one.json`): a hall signed ZERO GATE against the hills on the North
+  Province's first area's east side, its door south (`zero_gate_door`, `zero_gate_front`), shut until
+  `FLAG_PALDEA_ZERO_GATE_OPEN`. Arven, Nemona and Penny stand before it once `PaldeaHallOfFame` is set; spoken to with the
+  Path of Legends (12) and Starfall Street (6) done they meet the player: Penny owns up to being Cassiopeia, Arven tells of
+  the professor's message, the professor's voice opens the gate (`north_province_area_one.txt`, `ZeroGate`). Baked again
+  (910 chunks; the navigation mesh round the hall).
+- **Rooms**: `AreaZero_Gate` (the hall and its lift), `AreaZero` (the crater: four terraces down ledges, a research
+  station's deck and console on each, crystals, pools, tall grass with Glimmet to Glimmora at 52 to 57, the version's two
+  Paradox Pokémon to battle once), `AreaZero_ZeroLab`.
+- **The story** (`AreaZero.txt`, `AreaZero_ZeroLab.txt`; `VAR_PALDEA_ZERO` 1 to 8): the four stations with the professor's
+  voice and the friends; the AI (Sada's or Turo's by `VAR_PALDEA_VERSION`) owning up and battling with the version's
+  Paradox six (`paldea_ai_sada`, `paldea_ai_turo`, 66 and 67, the last Terastallized); the Koraidon or Miraidon the
+  professor kept in its battle form with a Roaring Moon or Iron Valiant (72, 70), the player's own mount in its battle
+  form beside the player (a tag battle with `paldea_partner_koraidon` or `_miraidon`, 68); the Way Home: the AI shuts the
+  machine from the far side, the four climb out, the mount joins the team (still ridden), home to Mom in Cabo Poco, the
+  save and the **credits, moved here** from the court (`PaldeaLeague_Court.txt` now ends with the save).
+- Looks `penny`, `sada`, `turo` (ours); objective 836 `paldeaAreaZero` (done by `FLAG_PALDEA_WAY_HOME`); no new song (the
+  hall plays `paldea/titans`, the crater and the lab `paldea/alfornada`). Romanian for every new line
+  (`docs/localisation-review-ro.md`; the TextTool report rewritten).
+- **The done-when**: `Itineraries.PaldeaLeagueToTheWayHome`, played by
+  `PlaythroughTests.APaldeaGameRunsFromTheLeagueThroughAreaZeroToTheWayHome`: from the League's door with the eight
+  badges, the Titans and the bases behind it, Rika's interview, the four, Geeta and Nemona to the Hall of Fame and home,
+  then riding from Cabo Poco north across the region to the Zero Gate (97% of the open map's frames ridden; mounted again
+  after every door and battle), the meeting, down the lift, the four stations, the Zero Lab, both battles and the Way
+  Home (about 450 s of game time, 6 s headless). With the runs before it (the bedroom to the academy's door, the badges,
+  the Path of Legends, the ride to Glaseado's top) a Paldea game runs from Cabo Poco to the Way Home in
+  `PlaythroughTests`, riding where it can, leg by leg from saved states as every region's runs are. It needs a strong
+  team: with three at 90 the bot lost Nemona once and the AI every time; the test's five are at 100.
+- **Tests**: `PaldeaAreaZeroTests` (the gate, its door and the rooms; the gate shut before the League and with a Titan
+  still out, opened by the meeting after; the four stations, the AI's and the legendary's battles and the Way Home's flag
+  in both versions, the mount on the team, the credits; the AI's teams; the meeting played and skipped alike);
+  `PaldeaTests`' rooms behind a room grown by the crater and the lab; `PaldeaLeagueTests` reading `Everyone` where it read
+  the people present (the court's and lobby's people come and go with the story's flags, so the order the class's tests
+  ran in decided it); `SceneSkipTests`' list grown by the meeting. Run: the filter of `Paldea`, `ScriptTests`, `StoryTests`,
+  `ContentTests`, `Romanian`, `Golden` and `SceneSkip`, 948 passing. Goldens accepted: `scripts.txt` (the new blocks of
+  `AreaZero`, `AreaZero_ZeroLab` and `north_province_area_one.ZeroGate`, and the court's Nemona block losing its credits),
+  `levels.txt` and `levels-crossed.txt` (the crater's grass and the six new trainers only). ContentCheck finds nothing.
+- **Shots** (the `paldea` mode's very last part, `Modes/PaldeaAreaZero.cs`, `SHOTS_FILTER=pdz`): `pdz00_zero_gate` (the
+  hall and the three friends), `pdz01_crater_station` (the second terrace from its station, Great Tusk, the crystals and
+  pools), `pdz02_zero_lab` (Sada's AI, the professor's Koraidon and the friends), `pdz03_ai_battle`,
+  `pdz04_legend_battle` (Koraidon and Roaring Moon against the player's lead and Koraidon beside it), `pdz05_way_home`
+  (Mom's welcome back). Looked at; fixed: the gate's door was drawn on no face while it faced west (the open kit draws a
+  building's door on its south face), so the door now faces south; the Way Home's first line was spoken in the dark (a
+  `fade in` after the warp home). **Findings, unchanged**: the gate is the open kit's plain hall, nothing of a gate into a
+  crater; the stations' decks are the steel walkway of solar panels; the crater is a cave's rock under a dark sky, with no
+  view down into it; Director Clavell stands in the player's house in `pdz05` (the harness's own new game, not the story).
+
+**Owed**: Area Zero carved on the open map if the user wants the design's crater; the originals' last battle with the
+mount alone; Area Zero's own song; the new cast's voices (Penny, Sada, Turo) by ear; the black crystals and the post-game
+(PD9).
+
+**Waits for the user**: the grid rooms in place of the carved crater, the gate's place and look (`pdz00`), the meeting's
+order (all three paths), the AI's teams, the tag battle, the credits after the Way Home, the Romanian lines.

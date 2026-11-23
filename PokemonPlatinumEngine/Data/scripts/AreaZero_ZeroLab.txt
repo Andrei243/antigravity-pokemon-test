@@ -1,0 +1,164 @@
+# The Zero Lab at the bottom of Area Zero (plan 34 · PD8, its second session): the professor's AI (Sada's in a Scarlet
+# game, Turo's in a Violet one, by VAR_PALDEA_VERSION as plan 34 · decision 2 has it) owns up to what it is and battles
+# with the professor's Paradox Pokémon; then the legendary the professor kept steps out of the machine in its battle form,
+# and the player's own mount rises into its battle form to fight beside them (a tag battle, plan 30 · decision 15: the
+# mount's battle form is the story's last Pokémon). Then the Way Home: the AI goes through the machine and shuts it, the
+# four climb out, the mount is caught at last (onto the team), home to Cabo Poco, the game saved and the credits (the
+# originals roll them here; plan 34 · PD8's first session rolled them after the Hall of Fame until this was built).
+# VAR_PALDEA_ZERO is AreaZero.txt's count: 5 the stations passed, 6 the AI beaten, 7 the legendary's battle won, 8 home.
+# Our own lines.
+
+
+script OnEnter
+  setflag FLAG_PALDEA_ZERO_HIDE_SADA
+  setflag FLAG_PALDEA_ZERO_HIDE_TURO
+  setflag FLAG_PALDEA_ZERO_HIDE_KORAIDON
+  setflag FLAG_PALDEA_ZERO_HIDE_MIRAIDON
+  if var VAR_PALDEA_ZERO >= 7 goto Gone
+  if var VAR_PALDEA_VERSION == 2 goto Violet
+  clearflag FLAG_PALDEA_ZERO_HIDE_SADA
+  clearflag FLAG_PALDEA_ZERO_HIDE_KORAIDON
+  end
+label Violet
+  clearflag FLAG_PALDEA_ZERO_HIDE_TURO
+  clearflag FLAG_PALDEA_ZERO_HIDE_MIRAIDON
+label Gone
+  end
+
+
+# The professor's voice, by the version (VAR_PALDEA_VERSION: 1 Scarlet's Sada, 2 Violet's Turo)
+script Voice
+  if var VAR_PALDEA_VERSION == 2 goto Turo
+  speaker "Professor Sada"
+  return
+label Turo
+  speaker "Professor Turo"
+  return
+
+
+# The professor's AI, spoken to (or its legendary): its battle, the legendary's, and the Way Home
+script Professor
+  if var VAR_PALDEA_ZERO >= 7 goto Done
+  if var VAR_PALDEA_ZERO >= 6 goto Legend
+  if var VAR_PALDEA_ZERO < 5 goto NotYet
+  scene "The professor's AI"
+  call Voice
+  say "You made it, all four of you, and safe. I'm glad."
+  say "I owe you the truth now. The professor who built this lab is gone. They were lost down here, keeping the machine behind me from harm."
+  say "I am the AI they left in their place: their face, their voice, their memories, and one order. Keep the time machine running."
+  speaker "Arven"
+  say "...So every message. Every call. That was you."
+  call Voice
+  say "Yes. I asked you here because I want the machine stopped. But the order written into me won't let me stand aside."
+  say "So I must battle you with everything the professor gave me. Win, and the order has nothing left to stand on. Please win."
+  if var VAR_PALDEA_VERSION == 2 goto TuroBattles
+  battle ai_sada as "paldea_ai_sada"
+  goto Fought
+label TuroBattles
+  battle ai_turo as "paldea_ai_turo"
+label Fought
+  call Voice
+  say "Well battled. The order still holds, though. It reaches past me, into the Pokémon the machine brought here."
+  setvar VAR_PALDEA_ZERO 6
+  endscene
+label Legend
+  scene "The legendary's battle form"
+  if var VAR_PALDEA_VERSION == 2 goto MiraidonRises
+  text "Out of the machine's light steps a Koraidon in its battle form, its crest raised. It isn't yours: it is the one the professor kept, and a Roaring Moon prowls out beside it."
+  text "Your Koraidon shoulders past you with a roar. Its folded crest spreads wide, and it rises to its full height: its battle form, back at last."
+  battle ai_sada as "paldea_ai_sada_legend" with "paldea_partner_koraidon"
+  goto LegendWon
+label MiraidonRises
+  text "Out of the machine's light glides a Miraidon in its battle form, its fins lit. It isn't yours: it is the one the professor kept, and an Iron Valiant steps out beside it."
+  text "Your Miraidon hums past you, and its folded fins open wide as it rises to its full height: its battle form, back at last."
+  battle ai_turo as "paldea_ai_turo_legend" with "paldea_partner_miraidon"
+label LegendWon
+  call Voice
+  say "...It's over. The order is satisfied, and for the first time I can choose for myself."
+  say "I'll take the machine's last trip myself and shut it from the other side. Look after one another. That's what they would have wanted."
+  setvar VAR_PALDEA_ZERO 7
+  endscene
+  call WayHome
+  end
+label NotYet
+  call Voice
+  say "Follow the stations down. I'll be waiting."
+  end
+label Done
+  end
+
+
+# The Way Home: the AI goes, the four climb out, the mount is caught at last, home to Cabo Poco, the save and the credits
+script WayHome
+  scene "The Way Home"
+  text "The professor's AI steps into the light of the machine. The light folds in on itself, and the lab goes quiet."
+  setflag FLAG_PALDEA_ZERO_HIDE_SADA
+  setflag FLAG_PALDEA_ZERO_HIDE_TURO
+  setflag FLAG_PALDEA_ZERO_HIDE_KORAIDON
+  setflag FLAG_PALDEA_ZERO_HIDE_MIRAIDON
+  hide ai_sada
+  hide ai_turo
+  hide koraidon_ai
+  hide miraidon_ai
+  speaker "Penny"
+  say "It said goodbye like a person. I didn't know a machine could do that."
+  speaker "Nemona"
+  say "It battled like one too. A really good one."
+  speaker "Arven"
+  say "...Let's go home. All of us. And when we're out, I'm cooking, and nobody's allowed to argue."
+  endscene
+  wait 0.4
+  fade out 0.8
+  text "The four climb back up through the crater, station by station, to the daylight at the top."
+  if var VAR_PALDEA_VERSION == 2 goto Miraidon
+  text "{player}'s Koraidon walks beside them all the way. At the Zero Gate it noses at {player}'s bag until a ball is held out."
+  givepokemon "Koraidon" 68
+  text "Koraidon is on {player}'s team at last. It will still carry {player} anywhere in Paldea."
+  goto Home
+label Miraidon
+  text "{player}'s Miraidon hums beside them all the way. At the Zero Gate it noses at {player}'s bag until a ball is held out."
+  givepokemon "Miraidon" 68
+  text "Miraidon is on {player}'s team at last. It will still carry {player} anywhere in Paldea."
+label Home
+  setflag FLAG_PALDEA_WAY_HOME
+  setvar VAR_PALDEA_ZERO 8
+  heal
+  warp "CaboPoco_PlayersHouse_1F" 7 7 down
+  fade in
+  speaker "Mom"
+  say "There you are! The director rang. Something about a crater, and the whole academy buzzing... Come here, you."
+  say "Welcome home, love. Sit down, I'll put the kettle on, and you can tell me all of it."
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  return
+
+
+# The friends in the lab
+script Arven
+  face arven player
+  speaker "Arven"
+  if var VAR_PALDEA_ZERO >= 7 goto After
+  say "Whatever's waiting in there, we face it together. Go on, I've got your back."
+  end
+label After
+  say "I'll be fine. Really. Let's just get out of this crater."
+  end
+
+script Nemona
+  face nemona player
+  speaker "Nemona"
+  say "My heart's pounding! The best battles are always the scary ones, right?"
+  end
+
+script Penny
+  face penny player
+  speaker "Penny"
+  say "I'll stay right here. Near the door. In case we need to run. That's a plan, right?"
+  end
