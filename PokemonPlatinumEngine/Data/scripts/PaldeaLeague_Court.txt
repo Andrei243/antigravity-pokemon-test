@@ -1,0 +1,207 @@
+# The Pokémon League's battle court (plan 34 · PD8, its first session): the Champion assessment after Rika's interview
+# in the lobby. The Elite Four battle one after another on the same spot of the court (Rika, Poppy, Larry, Hassel), then
+# the Top Champion Geeta, and last Nemona, who ends the assessment with the battle she has wanted since Cabo Poco; then
+# the Hall of Fame, Paldea's story to here ended (PaldeaHallOfFame), home to Cabo Poco, the game saved there and the
+# credits. Whoever is due stands at the court's far end, shown by the court's arrival. Everyone Terastallizes their last
+# Pokémon. A loss keeps the challenger's place: the one who won waits for them again. Levels are the originals' (plan 34 ·
+# decision 3: the League asks eight badges, so nothing is scaled). Our own lines.
+#
+# VAR_PALDEA_LEAGUE: 1 interviewed, 2 Rika beaten, 3 Poppy, 4 Larry, 5 Hassel, 6 Geeta (a Champion), 7 Nemona and the
+# Hall of Fame entered.
+
+
+script OnEnter
+  clearflag FLAG_PALDEA_LEAGUE_RIKA
+  clearflag FLAG_PALDEA_LEAGUE_POPPY
+  clearflag FLAG_PALDEA_LEAGUE_LARRY
+  clearflag FLAG_PALDEA_LEAGUE_HASSEL
+  clearflag FLAG_PALDEA_LEAGUE_GEETA
+  clearflag FLAG_PALDEA_LEAGUE_NEMONA
+  if var VAR_PALDEA_LEAGUE == 1 goto RikaDue
+  if var VAR_PALDEA_LEAGUE == 2 goto PoppyDue
+  if var VAR_PALDEA_LEAGUE == 3 goto LarryDue
+  if var VAR_PALDEA_LEAGUE == 4 goto HasselDue
+  if var VAR_PALDEA_LEAGUE == 5 goto GeetaDue
+  if var VAR_PALDEA_LEAGUE == 6 goto NemonaDue
+  end
+label RikaDue
+  setflag FLAG_PALDEA_LEAGUE_RIKA
+  end
+label PoppyDue
+  setflag FLAG_PALDEA_LEAGUE_POPPY
+  end
+label LarryDue
+  setflag FLAG_PALDEA_LEAGUE_LARRY
+  end
+label HasselDue
+  setflag FLAG_PALDEA_LEAGUE_HASSEL
+  end
+label GeetaDue
+  setflag FLAG_PALDEA_LEAGUE_GEETA
+  end
+label NemonaDue
+  setflag FLAG_PALDEA_LEAGUE_NEMONA
+  end
+
+
+# The first of the Elite Four: Rika, Ground
+script Rika
+  face rika player
+  speaker "Rika"
+  if var VAR_PALDEA_LEAGUE >= 2 goto Done
+  if var VAR_PALDEA_LEAGUE < 1 goto NotYet
+  scene "Rika of the Elite Four"
+  say "Told you I'd be right behind you. The interview was the easy part. Now let's see whether your team answers as well as you did."
+  say "I'm Rika of the Elite Four, and my Pokémon keep their feet on the ground. Let's dig in!"
+  battle rika as "paldea_rika"
+  say "Well, well. That answer I'll be writing down in capital letters. Poppy's next, and don't let her size fool you."
+  setvar VAR_PALDEA_LEAGUE 2
+  clearflag FLAG_PALDEA_LEAGUE_RIKA
+  setflag FLAG_PALDEA_LEAGUE_POPPY
+  hide rika
+  show poppy
+  endscene
+  end
+label NotYet
+  say "Interview first, then battles. My desk's in the lobby."
+  end
+label Done
+  say "On you go. The next one's waiting."
+  end
+
+
+# The second: Poppy, Steel
+script Poppy
+  face poppy player
+  speaker "Poppy"
+  if var VAR_PALDEA_LEAGUE >= 3 goto Done
+  scene "Poppy of the Elite Four"
+  say "Hi hi! I'm Poppy, and I'm one of the Elite Four too. The grown-ups always look surprised when I say that."
+  say "My Pokémon are super tough, tougher than steel. Ready? You'd better be!"
+  battle poppy as "paldea_poppy"
+  say "Aww, you beat me fair and square. That's okay. I'll get even stronger and then I'll beat you back!"
+  setvar VAR_PALDEA_LEAGUE 3
+  clearflag FLAG_PALDEA_LEAGUE_POPPY
+  setflag FLAG_PALDEA_LEAGUE_LARRY
+  hide poppy
+  show larry
+  endscene
+  end
+label Done
+  say "Go go go! The next one's waiting!"
+  end
+
+
+# The third: Larry again, Medali's leader, here with his Flying types
+script Larry
+  face larry player
+  speaker "Larry"
+  if var VAR_PALDEA_LEAGUE >= 4 goto Done
+  scene "Larry of the Elite Four"
+  say "You again. Yes, I keep Medali's gym. I also sit on the Elite Four. The League found out I was good at both and gave me both. Typical."
+  say "Normal types are my day job. Up here I fly. Let's get this done before the overtime starts."
+  battle larry as "paldea_larry_elite"
+  say "...Right. Beaten twice by the same challenger. I'll file that under things I'm not surprised by. Hassel's next."
+  setvar VAR_PALDEA_LEAGUE 4
+  clearflag FLAG_PALDEA_LEAGUE_LARRY
+  setflag FLAG_PALDEA_LEAGUE_HASSEL
+  hide larry
+  show hassel
+  endscene
+  end
+label Done
+  say "Go on. I'm off duty in five minutes."
+  end
+
+
+# The last of the four: Hassel, Dragon
+script Hassel
+  face hassel player
+  speaker "Hassel"
+  if var VAR_PALDEA_LEAGUE >= 5 goto Done
+  scene "Hassel of the Elite Four"
+  say "Ah. You've come so far, and you've come in colour. I'm Hassel. At the academy I teach art; here, I am the last of the Elite Four."
+  say "A battle is a canvas, and my dragons paint with a heavy brush. Show me what you've made of your journey!"
+  battle hassel as "paldea_hassel"
+  say "Magnificent... I may weep. A masterpiece, and not of my making. Geeta, the Top Champion, waits for you now."
+  setvar VAR_PALDEA_LEAGUE 5
+  clearflag FLAG_PALDEA_LEAGUE_HASSEL
+  setflag FLAG_PALDEA_LEAGUE_GEETA
+  hide hassel
+  show geeta
+  endscene
+  end
+label Done
+  say "The Top Champion will see you now. Go and finish your painting."
+  end
+
+
+# The Top Champion, Geeta: a challenger who beats her is a Champion, and Nemona comes onto the court
+script Geeta
+  face geeta player
+  speaker "Geeta"
+  if var VAR_PALDEA_LEAGUE >= 6 goto Done
+  scene "Geeta the Top Champion"
+  say "Welcome. I am Geeta, chair of the Pokémon League and its Top Champion. The four have told me about you, and they rarely agree."
+  say "The last step of the assessment is mine. Show me the Trainer Paldea's gyms and Elite Four have shaped."
+  battle geeta as "paldea_geeta"
+  say "...Well. There's no arguing with that. By the League's authority, you are a Champion of Paldea. Congratulations."
+  say "Only, it seems somebody has been waiting for that word longer than any of us."
+  setvar VAR_PALDEA_LEAGUE 6
+  clearflag FLAG_PALDEA_LEAGUE_GEETA
+  setflag FLAG_PALDEA_LEAGUE_NEMONA
+  hide geeta
+  show nemona
+  endscene
+  end
+label Done
+  say "A Champion should never keep a rival waiting."
+  end
+
+
+# Nemona, the champion assessment's end: the battle she promised in Cabo Poco, one Champion to another; then the Hall
+# of Fame and home
+script Nemona
+  face nemona player
+  speaker "Nemona"
+  if var VAR_PALDEA_LEAGUE >= 7 goto Done
+  scene "Nemona Champion to Champion"
+  say "{player}! You did it! Geeta says you're a Champion, so that makes two of us, and you know what that means."
+  say "Ever since that first battle on my terrace I've wanted this one: you and me, both at our very best, no holding back."
+  say "Okay. Deep breath. Let's go!"
+  if starter "Sprigatito" goto AgainstSprigatito
+  if starter "Fuecoco" goto AgainstFuecoco
+  battle nemona as "paldea_nemona_8c"
+  goto Fought
+label AgainstSprigatito
+  battle nemona as "paldea_nemona_8a"
+  goto Fought
+label AgainstFuecoco
+  battle nemona as "paldea_nemona_8b"
+label Fought
+  speaker "Nemona"
+  say "...That was the best battle of my whole life. I mean it. I've never been so happy to lose!"
+  say "Come on, rival. Let's get your team into the Hall of Fame where it belongs. Then we start all over again tomorrow!"
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  setflag PaldeaHallOfFame
+  setvar VAR_PALDEA_LEAGUE 7
+  clearflag FLAG_PALDEA_LEAGUE_NEMONA
+  halloffame show
+  heal
+  warp "CaboPoco_PlayersHouse_2F" 4 6 down
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end
+label Done
+  say "Champion to Champion, any time you like. And I mean any time!"
+  end

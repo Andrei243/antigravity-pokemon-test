@@ -13327,3 +13327,43 @@ out where the rules already bite. Ids 3101 to 3107 for both the moves and the ab
 - **Owed**: the raid's clock and each raider's orb drawn on the raid's screen; the bot playing a raid; the black crystals
   (PD9); the picnic table's own look (a sandwich stacked rather than a pot stirred); the crystal's look judged by the user;
   the Romanian of the open map's people (the deli clerk's name), which no open map can translate yet.
+
+## Paldea's Pokémon League (2026-11-23, plan 34 · PD8, its first session)
+
+- **The building** stands on a terrace of its own at 10 m (`terrain/south_league.json`, a plateau laid over Mesagoza's
+  rise) in the South Province's first area, east of the road north and just under Mesagoza's south wall, its door facing
+  south (`places/south_province_area_one.json`: the solid, the door, the markers `league_door` and `league_front`). The
+  originals put the League's building outside Mesagoza on the province's plain; ours is near the city's south gate,
+  for the user's judgment with the rest of the distances. No spawn and no Fly place of its own: Mesagoza's are a minute
+  away.
+- **Two grid rooms**: `PaldeaLeague_Lobby` (a nurse, a shop counter, the staff, and Rika at her desk) and
+  `PaldeaLeague_Court` (one court where everyone battles). The originals battle the Elite Four on the same court and
+  Geeta on another; ours keeps one court for all six, whoever is due stood at its far end by the court's arrival
+  (`OnEnter`, as Wyndon's pitch does).
+- **The interview** is Rika's, at her desk: three questions (why the League, the hardest gym, the team in a word), each
+  answer heard and none wrong, our own; it asks the eight badges and refuses without them. It sets
+  `VAR_PALDEA_LEAGUE` 1 and `FLAG_PALDEA_LEAGUE_INTERVIEWED` (her desk empties: she goes ahead to the court).
+- **The order** is fixed: Rika (Ground), Poppy (Steel), Larry (Flying), Hassel (Dragon), the Top Champion Geeta, then
+  Nemona; `VAR_PALDEA_LEAGUE` 2 to 7 counts them. A loss keeps the challenger's place (the one who won waits again), where
+  the originals' rules for a loss at the League are not checked; ours is the gentler.
+- **Nemona's battle ends the assessment**, on the same court straight after Geeta names the challenger a Champion; her
+  team's last is the starter strong against the player's (`paldea_nemona_8a` to `8c`, as her first battle chooses).
+  Then `halloffame`, `PaldeaHallOfFame` (the region's `StoryCompleteFlag`, which the Hub's two Halls of Fame, the cups,
+  the Partners' Tree and the requests read as every region's), the Hall of Fame's scene, home to the bedroom in Cabo Poco,
+  the save and the credits, as Galar's Leon ends GL6. The originals keep the credits for after the Way Home; this plan
+  has the Hall of Fame before it (plan 34's design), and the credits roll here.
+- **Teams** (ours, near the originals' as remembered, not checked against a source), at the originals' levels: the League
+  asks the eight badges, so decision 3's scaling never applies. Rika's Whiscash, Camerupt, Donphan, Dugtrio and Clodsire
+  (best 58); Poppy's Copperajah, Magnezone, Bronzong, Corviknight and Tinkaton (59); Larry's Tropius, Oricorio (Pom-Pom),
+  Altaria, Staraptor and Flamigo (60; `paldea_larry_elite`, apart from his gym's teams); Hassel's Noivern, Haxorus,
+  Dragalge, Flapple and Baxcalibur (61); Geeta's Espathra, Gogoat, Veluza, Avalugg, Kingambit and Glimmora (62, Paldea's
+  last cap); Nemona's Lycanroc, Goodra, Dudunsparce, Orthworm, Pawmot and her starter's last form (66). Each
+  Terastallizes the last into the type of the gym or the member's speciality (Geeta's Glimmora Rock; Nemona's starter its
+  own type). Classes `Elite Four` and `Champion`.
+- **Looks** `rika`, `poppy`, `hassel` and `geeta` of `characters.json` (ours); Larry and Nemona keep theirs. **Songs**: none
+  new; the rooms play `paldea/gym`, and the battles fall back through the music director's roles (the Elite Four's and the
+  Champion's battle songs to the gym leader's) until Paldea has League songs.
+- **Objective** 835 `paldeaLeague`, English and Romanian, done by `PaldeaHallOfFame`.
+- **Paldea has no departure of its own**: it is the chain's last region with maps (`RegionDatabase.LinkFrom` has no link
+  from it until plan 46's Carpathia joins the chain), so no attendant stands anywhere in Paldea after its Hall of Fame.
+  The flag counts toward the Hub's opening as every region's does; a way out of Paldea is left to plan 46 or to the user.

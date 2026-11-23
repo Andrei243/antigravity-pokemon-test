@@ -1,0 +1,164 @@
+{
+  "name": "PaldeaLeague_Lobby",
+  "displayName": "Pokémon League",
+  "bgmTrack": "paldea/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "width": 15,
+  "height": 12,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.###.....###.#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 4,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 3,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 10,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 11,
+      "targetMap": "Paldea",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 3,
+      "targetMap": "PaldeaLeague_Court",
+      "targetX": 7,
+      "targetY": 14,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "nurse",
+      "name": "Nurse Joy",
+      "npcType": "Nurse",
+      "x": 3,
+      "y": 4,
+      "facing": "Down",
+      "isHealingNurse": true
+    },
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 11,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "Clerk: Stocking up before the Elite Four? Very wise. Nobody has ever regretted one more Full Restore."
+      ],
+      "isPokeMartClerk": true
+    },
+    {
+      "id": "rika",
+      "name": "Rika",
+      "npcType": "rika",
+      "x": 2,
+      "y": 8,
+      "facing": "Right",
+      "script": "Interview",
+      "hiddenBy": "FLAG_PALDEA_LEAGUE_INTERVIEWED"
+    },
+    {
+      "id": "league_staff",
+      "name": "League Staff",
+      "npcType": "receptionist",
+      "x": 9,
+      "y": 8,
+      "facing": "Left",
+      "script": "Staff"
+    }
+  ],
+  "wildEncounters": []
+}

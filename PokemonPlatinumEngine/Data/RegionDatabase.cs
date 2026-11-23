@@ -1268,6 +1268,9 @@ public static class RegionDatabase
                 "Montenevera_PokemonCenter", "Montenevera_Gym", "Montenevera_GymTest",
                 "Alfornada_PokemonCenter", "Alfornada_Gym", "Alfornada_GymTest",
                 "Glaseado_PokemonCenter", "Glaseado_Gym", "Glaseado_GymTest",
+                // Plan 34 · PD8, its first session: the Pokémon League by Mesagoza's south wall, its lobby (Rika's
+                // interview) and the battle court of the Elite Four, Geeta and Nemona
+                "PaldeaLeague_Lobby", "PaldeaLeague_Court",
             }
         },
         // Side regions stand after the chain (plan 23 · Z17)

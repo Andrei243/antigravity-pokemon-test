@@ -1,0 +1,11 @@
+{
+  // The Pokémon League's terrace (plan 34 · PD8, its first session): a level step of the plain at 10 m under Mesagoza's
+  // south wall, east of the road north, where the League's building stands, eased into the rise round it; paved before
+  // the building's door. Read after shape.json (the names' order), so it is laid over Mesagoza's rise
+  "brushes": [
+    { "kind": "plateau", "name": "the League's terrace", "polygon": [[24, -296], [68, -296], [68, -276], [24, -276]], "height": 10, "falloff": 3 }
+  ],
+  "paint": [
+    { "cover": "Paving", "polygon": [[26, -295], [66, -295], [66, -277], [26, -277]], "minY": 9, "maxY": 11 }
+  ]
+}
