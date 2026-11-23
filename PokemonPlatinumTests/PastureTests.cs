@@ -278,10 +278,11 @@ public class PastureTests
 
             // A berry eaten, and a full Pokémon refuses the sixth
             var berry = ItemDatabase.Get("Oran Berry")!;
+            int had = game.Bag.GetQuantity(berry); // a find above may have been an Oran Berry, by the day
             game.Bag.AddItem(berry, 10);
             for (int i = 0; i < CareRules.Fullness; i++) Assert.Equal(1, game.Pasture("feed", subject: body, item: berry.Name).Result);
             Assert.Equal(0, game.Pasture("feed", subject: body, item: berry.Name).Result);
-            Assert.Equal(10 - CareRules.Fullness, game.Bag.GetQuantity(berry));
+            Assert.Equal(had + 10 - CareRules.Fullness, game.Bag.GetQuantity(berry));
         }
         finally
         {

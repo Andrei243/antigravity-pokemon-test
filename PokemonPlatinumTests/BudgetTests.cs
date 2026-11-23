@@ -112,8 +112,10 @@ public class BudgetTests
             () => OpenWorldBake.RegionBake.Chunk(land, description.World, 0, 0), "2026-11-09");
         var level0 = OpenWorldBake.RegionBake.ChunksOf(description.World).Select(c => OpenWorldBake.RegionBake.Finest(land, description.World, c.X, c.Z)).ToList();
         var (solids, waters) = OpenWorldBake.RegionBake.PlacedOf(description);
-        Hold("OpenWorldBake: the lab's navigation mesh (NavBake.Build of 16 chunks)", 720, 2,
-            () => OpenWorldBake.NavBake.Build(level0, solids, waters), "2026-11-09");
+        // Measured again on 2026-11-23 (720 ms on 2026-11-09): plan 34 · PD2 (2026-11-13) gave the lab a mount, so the
+        // mesh now also finds its hop, high jump, climb and glide links, which the first figure never counted
+        Hold("OpenWorldBake: the lab's navigation mesh (NavBake.Build of 16 chunks)", 3600, 2,
+            () => OpenWorldBake.NavBake.Build(level0, solids, waters), "2026-11-23");
     }
 
     [Fact]
