@@ -17,7 +17,7 @@ string castPath = Path.Combine(engine, "Data", "voice", "cast.json");
 string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
 // The words of the command, leaving out the switches and the values of those that take one
-string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes", "--into", "--skip" };
+string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes", "--into", "--skip", "--from" };
 var words = args.Where((a, i) => !a.StartsWith("--", StringComparison.Ordinal) && (i == 0 || !valued.Contains(args[i - 1]))).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
 string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
@@ -33,8 +33,8 @@ if (words.Count == 0 || !commands.Contains(words[0]))
 if (!args.Contains("--wav")) VoiceGeneration.Encoder = OggEncode.Take;
 return words[0] switch
 {
-    // ogg [--pack <folder> | --language <tag>]: a pack's WAV takes written again as Ogg Vorbis
-    "ogg" => OggEncode.Convert(PackFolderOption()),
+    // ogg [--pack <folder> | --language <tag>] [--from <wav backup>]: a pack's WAV takes written again as Ogg Vorbis (with --from, only the takes check finds wrong, from their WAVs)
+    "ogg" => Option("--from") is { } wavs ? OggEncode.Redo(PackFolderOption(), Path.GetFullPath(wavs), CatalogueNow()) : OggEncode.Convert(PackFolderOption()),
     "catalogue" => Catalogue(),
     "export" => Export(),
     "manifest" => Manifest(),

@@ -15,6 +15,15 @@ static class OggEncode
 
     public static byte[] Encode(float[] samples, int rate)
     {
+        // The codec rings past a take's edges and over its loudest peak: 25 ms of silence each side (5 left some ends ringing) keep
+        // its ends at nothing (no click), and a ceiling of -2 dB keeps the decoded peak under the check's -1 dB
+        const float ceiling = 0.79f;
+        int pad = rate / 40;
+        float peak = samples.Length == 0 ? 0 : samples.Max(MathF.Abs);
+        float gain = peak > ceiling ? ceiling / peak : 1f;
+        var padded = new float[samples.Length + 2 * pad];
+        for (int i = 0; i < samples.Length; i++) padded[pad + i] = samples[i] * gain;
+        samples = padded;
         var info = OggVorbisEncoder.VorbisInfo.InitVariableBitRate(1, rate, Quality);
         // A fixed serial, so the same take encodes to the same bytes and its hash holds from run to run
         var stream = new OggVorbisEncoder.OggStream(1);
@@ -54,6 +63,34 @@ static class OggEncode
         }
         Pages(true);
         return output.ToArray();
+    }
+
+    /// <summary>
+    /// The takes <see cref="VoicePacks.Check"/> finds wrong encoded again from their WAVs kept elsewhere (a backup of the
+    /// pack as it was before <see cref="Convert"/>), so none is encoded twice from an Ogg.
+    /// </summary>
+    public static int Redo(string folder, string wavFolder, VoiceFile catalogue)
+    {
+        string packPath = Path.Combine(folder, VoiceLibrary.PackFileName);
+        var library = VoiceLibrary.Open(folder) ?? throw new InvalidOperationException($"no pack at {folder}");
+        var wrong = VoicePacks.Check(library, catalogue).Wrong.Select(f => f.Key).ToHashSet(StringComparer.Ordinal);
+        var pack = GameDataFiles.Deserialize<VoicePackFile>(File.ReadAllText(packPath));
+        var wav = new WavDecoder();
+        int done = 0, missing = 0;
+        foreach (var entry in pack.Lines.Where(e => wrong.Contains(e.Key)))
+        {
+            string from = Path.Combine(wavFolder, Path.ChangeExtension(entry.File, ".wav"));
+            if (!File.Exists(from)) { missing++; continue; }
+            byte[] bytes = Encode(wav.Decode(File.ReadAllBytes(from)), Synthesizer.DsRate);
+            string relative = Path.ChangeExtension(entry.File, ".ogg").Replace('\\', '/');
+            File.WriteAllBytes(Path.Combine(folder, relative), bytes);
+            entry.File = relative;
+            entry.FileHash = VoiceLibrary.FileHashOf(bytes);
+            done++;
+        }
+        File.WriteAllText(packPath, GameDataFiles.Serialize(pack));
+        Console.WriteLine($"{folder}: {done} of {wrong.Count} takes found wrong encoded again from {wavFolder}" + (missing > 0 ? $"; {missing} had no WAV there" : "") + ".");
+        return missing > 0 ? 1 : 0;
     }
 
     /// <summary>
