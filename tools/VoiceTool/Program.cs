@@ -23,14 +23,18 @@ var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToH
 string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
 Dictionary<string, SortedSet<string>>? selfMap = null;
 string lexiconPath = Path.Combine(engine, "Data", "voice", "lexicon.json");
-string[] commands = { "catalogue", "export", "manifest", "check", "vowels", "check-samples", "bake-samples", "bake", "jobs", "generate", "reroll", "trial", "reel", "lexicon", "status", "design", "speak" };
+string[] commands = { "catalogue", "export", "manifest", "check", "vowels", "check-samples", "bake-samples", "bake", "jobs", "generate", "reroll", "trial", "reel", "lexicon", "status", "design", "speak", "ogg" };
 if (words.Count == 0 || !commands.Contains(words[0]))
 {
     Console.Error.WriteLine("Say one of: " + string.Join(", ", commands) + ". tools/VoiceTool/README.md says what each does.");
     return 2;
 }
+// Every take a pack gains is Ogg Vorbis (a tenth of a WAV, for Git LFS), unless --wav asks for the WAV of before
+if (!args.Contains("--wav")) VoiceGeneration.Encoder = OggEncode.Take;
 return words[0] switch
 {
+    // ogg [--pack <folder> | --language <tag>]: a pack's WAV takes written again as Ogg Vorbis
+    "ogg" => OggEncode.Convert(PackFolderOption()),
     "catalogue" => Catalogue(),
     "export" => Export(),
     "manifest" => Manifest(),
