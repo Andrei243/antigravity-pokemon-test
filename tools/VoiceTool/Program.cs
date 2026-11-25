@@ -17,20 +17,24 @@ string castPath = Path.Combine(engine, "Data", "voice", "cast.json");
 string coverageFile = Path.Combine(repo, "docs", "voice", "coverage.md");
 
 // The words of the command, leaving out the switches and the values of those that take one
-string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes", "--into", "--skip" };
+string[] valued = { "--language", "--voice", "--out", "--pack", "--engine", "--which", "--jobs", "--count", "--top", "--region", "--takes", "--into", "--skip", "--from" };
 var words = args.Where((a, i) => !a.StartsWith("--", StringComparison.Ordinal) && (i == 0 || !valued.Contains(args[i - 1]))).ToList();
 var switches = args.Where(a => a.StartsWith("--", StringComparison.Ordinal)).ToHashSet();
 string samplesRoot = Path.Combine(engine, "Data", "voice", "samples");
 Dictionary<string, SortedSet<string>>? selfMap = null;
 string lexiconPath = Path.Combine(engine, "Data", "voice", "lexicon.json");
-string[] commands = { "catalogue", "export", "manifest", "check", "vowels", "check-samples", "bake-samples", "bake", "jobs", "generate", "reroll", "trial", "reel", "lexicon", "status", "design", "speak" };
+string[] commands = { "catalogue", "export", "manifest", "check", "vowels", "check-samples", "bake-samples", "bake", "jobs", "generate", "reroll", "trial", "reel", "lexicon", "status", "design", "speak", "ogg" };
 if (words.Count == 0 || !commands.Contains(words[0]))
 {
     Console.Error.WriteLine("Say one of: " + string.Join(", ", commands) + ". tools/VoiceTool/README.md says what each does.");
     return 2;
 }
+// Every take a pack gains is Ogg Vorbis (a tenth of a WAV, for Git LFS), unless --wav asks for the WAV of before
+if (!args.Contains("--wav")) VoiceGeneration.Encoder = OggEncode.Take;
 return words[0] switch
 {
+    // ogg [--pack <folder> | --language <tag>] [--from <wav backup>]: a pack's WAV takes written again as Ogg Vorbis (with --from, only the takes check finds wrong, from their WAVs)
+    "ogg" => Option("--from") is { } wavs ? OggEncode.Redo(PackFolderOption(), Path.GetFullPath(wavs), CatalogueNow()) : OggEncode.Convert(PackFolderOption()),
     "catalogue" => Catalogue(),
     "export" => Export(),
     "manifest" => Manifest(),

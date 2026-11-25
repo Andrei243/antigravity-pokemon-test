@@ -27,11 +27,28 @@ public sealed class OggVoiceDecoder : IVoiceDecoder
                     mono.Add(channels == 1 ? buffer[i] : (buffer[i] + buffer[i + 1]) * 0.5f);
             if (mono.Count == 0) throw new InvalidDataException("an Ogg file with no audio");
             var samples = mono.ToArray();
-            return rate == Synthesizer.DsRate ? samples : WavDecoder.Resample(samples, rate, Synthesizer.DsRate);
+            samples = rate == Synthesizer.DsRate ? samples : WavDecoder.Resample(samples, rate, Synthesizer.DsRate);
+            FadeEnds(samples);
+            return samples;
         }
         catch (Exception e) when (e is not InvalidDataException)
         {
             throw new InvalidDataException("not a readable Ogg Vorbis file: " + e.Message, e);
+        }
+    }
+
+    /// <summary>
+    /// Vorbis rings a little past a take's edges, so a take that began and ended at nothing as a WAV may not as an Ogg:
+    /// its first and last 2 ms are faded in and out, which keeps it from clicking as it starts and is cut.
+    /// </summary>
+    private static void FadeEnds(float[] samples)
+    {
+        int n = Math.Min(Synthesizer.DsRate / 500, samples.Length / 2);
+        for (int i = 0; i < n; i++)
+        {
+            float g = i / (float)n;
+            samples[i] *= g;
+            samples[^(i + 1)] *= g;
         }
     }
 }
