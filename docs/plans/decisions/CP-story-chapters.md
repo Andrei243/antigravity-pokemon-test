@@ -2,6 +2,8 @@
 
 Written 2026-11-12, the same day as [the outline](CP-story-outline.md) and the user's answers to it, at the user's request ("the story plan should go on"). It turns the approved framework into chapters, scene by scene, so that CP18 to CP27 each know what they build. **Everything here is a proposal** except what the outline marks as the user's and the answers of 2026-11-12; names are invented with Romanian roots (decision 4), and every Romanian word I am not sure of is in the review table at the end (decision 7). Nothing is taken from any game: the beats are ours, the lines are outlines to be written in the sessions.
 
+**Answered 2026-11-22.** The user answered section 8's ten questions on the Decision Sheet ([ANSWERS-2026-11-22.md](ANSWERS-2026-11-22.md)): nine at their recommendations and one otherwise, **the roamers catchable from the ridge on** (question 2). Section 8 records each answer, and the places below that the answers change say so: settlement 5 (the labs), the prologue's `namerival`, section 5's Tale Forms, section 6's roamers, section 7's CP25b and CP27 rows and section 9's Tale Forms. The mythicals of section 9 were approved the same day.
+
 Read with: [plan 46](../46-carpathia.md), [the outline](CP-story-outline.md), [the starters and legendaries](CP-proposals-starters-legendaries.md), [the Pokédex briefs](CP-dex-1-plateau.md) (files 1 to 6, with the `b` files; 249 species and 25 forms since 2026-11-12), [the study](../studies/romania-region-study.md).
 
 ## What this settles
@@ -12,7 +14,7 @@ The sources were written over three days and disagree in places. The order of au
 2. **The twelve tales are plan 46's twelve.** The outline's table had the cold tale twice (the high pass and the ice cave) and a "sea-tale" that is not among them. Here each of the twelve is found once (section 5).
 3. **The Solomonar's tale is Furtunaur's**, found in its chained book on the ridge after the catch, as the proposals call it "the region's last tale". The outline had it at the opera; the opera gets the Miorița.
 4. **Solzmeu and Lunacolac are not found at the stronghold** (the proposals' Story lines): they do not exist until the ridge, where the professors become them. The stronghold holds the Stilling machine.
-5. **Who keeps the labs.** The outline gives the labs to Mara and Costel and also says the rival "becomes the apprentice who keeps a lab open". Settled here as: **Mara keeps Doina's lab; Costel keeps Ilie's observatory, and the rival comes to help him** (he keeps its door and its lamp; Costel keeps the instruments). Open question 7 asks the user to confirm.
+5. **Who keeps the labs.** The outline gives the labs to Mara and Costel and also says the rival "becomes the apprentice who keeps a lab open". Settled here as: **Mara keeps Doina's lab; Costel keeps Ilie's observatory, and the rival comes to help him** (he keeps its door and its lamp; Costel keeps the instruments). Open question 7 asked the user to confirm; *confirmed 2026-11-22*.
 6. **The prologue is a *șezătoare***, the village's evening of tales, held whatever the calendar says, where the outline had the Sânziene night: the festivals keep their own dates (plan 40), and a new game may begin in any month. The Sânziene stay as the first tale taught.
 7. **The Draco's tale** is found whole at the Dacian sanctuary in the post-game, not in two parts (the outline's "first part" in the wooden north is dropped: the wooden north gives Muma Pădurii's, the Grass starter's tale).
 8. **The region file's one professor is Doina.** She speaks the new-game introduction and gives the starters; Ilie is the story's second professor, met in the prologue at his observatory.
@@ -49,7 +51,7 @@ Eight gyms in any order, so nothing waits for a gym by name: a scene waits for *
 
 **P2 · The painted chest.** Professor **Doina Lupescu** opens a painted dowry chest (*lada de zestre*) with the three starters on its lid's three painted panels: Lynkit, Salamint, Pelicub. She asks the player to choose; the rival takes the one strong against the player's (Lynkit against Pelicub, Salamint against Lynkit, Pelicub against Salamint). Doina's line to remember: *a tale told long enough gets a body*.
 - *Gets*: the starter.
-- *Features*: the briefcase's screen re-skinned as the chest (`StarterSelectScreen` with the region's look), `{starter}` words, `namerival` (Radu or Ilinca by the player's look, open question 8 asks whether the player may rename them).
+- *Features*: the briefcase's screen re-skinned as the chest (`StarterSelectScreen` with the region's look), `{starter}` words, `namerival` (Radu or Ilinca by the player's look; *answered 2026-11-22*, open question 8: the name is asked, with Radu or Ilinca already typed in, as Sinnoh's rival is).
 
 **P3 · The first battle.** Outside under the walnut tree, the rival's battle at once (`battle rival as … first canlose`). Doina watches, then asks the player to come to her lab in the plateau town tomorrow.
 
@@ -173,7 +175,7 @@ This is the user's climax. Each step below is one scene (`scene`), and the whole
 
 **A-1 · The empty labs.** Doina's lab and Ilie's observatory are open; Mara and Costel keep them. Each lab has a **table of unfinished notes** the player can read page by page (a reading screen, like the Journal): the professor's notes on tales and the sky, and on the last page **what each wrote about the other** (Doina: that Ilie is the only man she knows who argues with the sun and loses gracefully; Ilie: that Lupescu's tales are truer than his telescope, and he will never tell her so). The rival is at the observatory from now on, keeping its door.
 
-**A-2 · The roamers** (section 6). Solzmeu by day, Lunacolac by night, at the Tale sites the professors showed the player.
+**A-2 · The roamers** (section 6). Solzmeu by day, Lunacolac by night, at the Tale sites the professors showed the player, for whoever has not caught them since the ridge (catchable from III-8 on since the answer of 2026-11-22).
 
 **A-3 · The Dacian sanctuary.** Ruxandra, after her defeat, tells the player of the stone circles in the forest of the south-west mountains. The sanctuary is open (a new area). At its stone sun-disc, at dawn, **Stindrac** the war banner coils down howling; the **Draco's tale** is carved on the circle's andesite blocks (found there, so the twelfth tale is had). Stindrac is battled (level 68) and may be caught.
 
@@ -258,24 +260,24 @@ Any order (decision 8): the first three won are fixed at 15, 22 and 29; the four
 
 ## 5 · The twelve tales
 
-Plan 46's twelve, each found once, never bought. "Rule" is plan 46's line (CP11 balances it). The **Tale Form species** are the final stages bound to the tale; **bindings the proposals already gave are marked (P)**, every other binding is mine and is a CP12 sculpt to approve. Two species need the user's approval of their mythical first (Ielele, Mumapadura: "if approved").
+Plan 46's twelve, each found once, never bought. "Rule" is plan 46's line (CP11 balances it). The **Tale Form species** are the final stages bound to the tale; **bindings the proposals already gave are marked (P)**, every other binding is mine and is a CP12 sculpt to approve. Two species needed the user's approval of their mythical first (Ielele, Mumapadura: "if approved"); *both mythicals were approved on 2026-11-22*, so their Tale Forms stand.
 
 | # | Tale | Rule in one line | Found where, told by whom | Badges | Tale Forms |
 |---|---|---|---|---|---|
-| 1 | **The Sânziene's** (midsummer) | healing doubled | Doina's lab, P5 | 0 | Sanziana, Buburoza |
-| 2 | **Făt-Frumos'** (youth without age) | no stat may fall | Ilie's observatory, I-2 | 1 | Fierander (P), Hutulmare |
+| 1 | **The Sânziene's** (midsummer) | healing doubled | Doina's lab, P5 | 0 | Sanziana, Buburoza, Maiastra (question 9, 2026-11-22) |
+| 2 | **Făt-Frumos'** (youth without age) | no stat may fall | Ilie's observatory, I-2 | 1 | Fierander (P), Hutulmare, Nazdravan (question 9, 2026-11-22) |
 | 3 | **The Spiriduș'** (the house sprite) | items work twice | the casino's card room, Vălureanu | her badge | Spiriduke, Harciogre |
-| 4 | **The Ielele's** (the night dance) | Sound moves strike twice | the reed meadow at night, Stufaru | his badge | Buciumbill (P), Privigale, Ielele (if approved) |
+| 4 | **The Ielele's** (the night dance) | Sound moves strike twice | the reed meadow at night, Stufaru | his badge | Buciumbill (P), Privigale, Ielele (approved 2026-11-22) |
 | 5 | **Baba Dochia's** (the cold returns) | each switch-in sheds a layer of its defence | the rock of the last coat, Stâncu | his badge | Babadochia, Capraneagra |
 | 6 | **The Uriași's** (the giants) | the heaviest hit hardest | the ice pillars, Ghețaru | her badge | Zimbrunt, Ursabrun, Hategant |
-| 7 | **Muma Pădurii's** (the forest closes) | Grass heals, the foe's switches are held | the old forest's carved gate, Lemnaru | his badge | Codrulynx (P), Hribarde, Mumapadura (if approved) |
+| 7 | **Muma Pădurii's** (the forest closes) | Grass heals, the foe's switches are held | the old forest's carved gate, Lemnaru | his badge | Codrulynx (P), Hribarde, Mumapadura (approved 2026-11-22) |
 | 8 | **The Vârcolac's** (the eclipse) | the field dark, Dark and Ghost stronger, accuracy down | the castle chapel's roof, Umbrescu | her badge | Lunacolac (P), Strigoion, Liliacon |
 | 9 | **The Zmeu's** (the sun cannot set) | Fire stronger, no night forms | the great stone face, Chipescu | his badge | Solzmeu (P), Zburator |
 | 10 | **The Miorița's** (the shepherd's lament) | when a Pokémon faints, an ally takes its strength | the opera's stage, Cântărescu | her badge | Mioritar, Turcanica, Nailar |
 | 11 | **The Solomonar's** (the storm) | a weather the teller owns | Furtunaur's chained book on the crest, III-9 | 7 and the ridge | Furtunaur (P), Stimalaur |
 | 12 | **The Draco's** (the war banner) | the team's attacks rise each turn | the Dacian sanctuary's stones, A-3 | the Hall of Fame | Stindrac (P), Lupodac, Acviltor |
 
-That is **30 Tale Forms** (7 the proposals', 23 mine, 2 of them waiting on a mythical), about one session of sculpts more than plan 46's CP12 counted. Open question 5 asks whether to keep two to three a tale or to cut to the proposals' seven and one more each.
+That is **30 Tale Forms** (7 the proposals', 23 mine, 2 of them waiting on a mythical), about one session of sculpts more than plan 46's CP12 counted. Open question 5 asked whether to keep two to three a tale or to cut to the proposals' seven and one more each. *Answered 2026-11-22*: **all 30**, with CP12 split into two sculpt sessions; and by question 9 **Nazdravan** (under Făt-Frumos', tale 2) and **Maiastra** (under the Sânziene's, tale 1) have Tale Forms too, so 32 sculpts in all (to check with the user, since the sheet's answer 5 says 30).
 
 **Trainers' tales**: a trainer knows the tales of the places they stand in and before (the rival from I-4, the executives from their first battle: Teodor the stolen ones, Spiriduș' and Sânziene's; Sabina the Zmeu's; Grigore Făt-Frumos'; Zamfira Baba Dochia's), and the AI tells and answers by CP11's rule.
 
@@ -302,7 +304,7 @@ The user's answer 2: at certain moments Solzmeu and Lunacolac speak **a human ph
 
 ### The roamers
 
-- **When**: they roam from III-8 on. **Before the Hall of Fame they are seen and flee** (they are seen creatures of the open map, never battled, and run if the player comes within 30 m); **from the Hall of Fame they can be battled and caught** (open question 2).
+- **When**: they roam from III-8 on. **They can be battled and caught at once, from the ridge on** (the user's answer to open question 2, 2026-11-22, which replaced this line's "seen and flee until the Hall of Fame"): they are seen creatures of the open map and run if the player comes within 30 m, as before, and a meeting by touch is a battle at level 70 in which either may be caught.
 - **Never together**: **Solzmeu by day** (6:00 to 18:00), **Lunacolac by night** (18:00 to 6:00), and on a given day **never in the same area**: each day's places are drawn from the day's number for each so that their areas differ.
 - **Where**: the Tale sites the professors showed the player and the places of their lives: Solzmeu at the observatory's pass, the stone faces, the coast's harbour at noon, the high pass; Lunacolac at the plateau town's lab garden, the reed meadow, the old forest's gate, the castle's chapel roof. Each appears at one of its places a day.
 - **Levels**: 70 [about 296, under the cap of 300], HP kept between meetings as roamers' is.
@@ -323,9 +325,9 @@ The user's answer 2: at certain moments Solzmeu and Lunacolac speak **a human ph
 | **CP23** · the wooden north | the monastery, the carved gates, the old forest | the Grass gym and Muma Pădurii's tale; **I-5** (Teodor) | the wall's scene that changes by flag, the dance's rhythm task (plan 12 · Q24's timing assist) |
 | **CP24** · the capital | the boulevards, the arch, the opera, the palace's outside | the Sound gym and the Miorița's tale; **II-4** (Sabina's second sun, and Miezilă under the arch as it ends) | the opera's choir task |
 | **CP25** · the villain and the sun | the castle on the crag: the Ghost gym's halls and the keep | **I-7**, **II-2** (the stronghold, with Murgilă caged in the Stilling machine and freed), the Ghost gym and the Vârcolac's tale | the Stillers' trainers in a grid keep, the tag battle with Ruxandra, the hour released |
-| **CP25b** · the ridge (new, proposed) | the crest's scene | **III-0 to III-10** (with the Fates' glimpse at III-6, the dawn and Zorilă at III-9b, the empty stall at III-10) | `hidelevel`, `untouchable`, `canlose` and `hp` on a wild battle (need 1), the Nuzlocke's exception (need 2), `passive`, the two tales told by people of the map, the transformation's effects, the Pokémon of the map, the beast voices (need 8) and text (need 9), and **the roamers' first half**: seen on the open map by the day's draw and fleeing on approach, with V1 and V2 (need 5) |
+| **CP25b** · the ridge (new, proposed) | the crest's scene | **III-0 to III-10** (with the Fates' glimpse at III-6, the dawn and Zorilă at III-9b, the empty stall at III-10) | `hidelevel`, `untouchable`, `canlose` and `hp` on a wild battle (need 1), the Nuzlocke's exception (need 2), `passive`, the two tales told by people of the map, the transformation's effects, the Pokémon of the map, the beast voices (need 8) and text (need 9), and **the roamers whole** (since the answer of 2026-11-22 to question 2): seen on the open map by the day's draw and fleeing on approach, battled and caught from III-8 on (`passive` turns, the flee rule, HP kept), with V1 to V4 (need 5) |
 | **CP26** · the League and the crossing | the palace's rooms | **L-1 to L-5**, Ruxandra's team, the credits' last picture | — |
-| **CP27** · after the Hall of Fame | the sanctuary | **A-1 to A-7** (A-7, the mythicals, added 2026-11-12), the roamers' second half (battled and caught from the Hall of Fame: `passive` turns, the flee rule, HP kept; need 5), V3 to V6, Stindrac and the Draco's tale, the notes' reading screen | the roamers' battles (need 5), the cry option (need 10), the notes' screen (the Journal's) |
+| **CP27** · after the Hall of Fame | the sanctuary | **A-1 to A-7** (A-7, the mythicals, added 2026-11-12), the roamers roaming on for whoever has not caught them (their battles moved to CP25b on 2026-11-22), V5 and V6, Stindrac and the Draco's tale, the notes' reading screen | the cry option (need 10), the notes' screen (the Journal's) |
 
 CP11 and CP12 (the tales) must be built before CP18's P5 can teach a tale; CP13 (the masks) before P6's pattern. The executives' and the Champion's teams are `our-trainers.json` rows of Carpathian species (CP19 to CP26 each write theirs).
 
@@ -343,20 +345,20 @@ CP11 and CP12 (the tales) must be built before CP18's P5 can teach a tale; CP13 
 10. **A cry with a voice's contour under it**, for two species.
 11. **A mythical met at its hour** (A-7): a wild battle of the map's own that is there only within an hour's window (dusk, midnight, dawn, noon) and only once a set of flags is held; the staged battle's terms are enough, the window is new.
 
-## 8 · Open questions for the user
+## 8 · Open questions for the user (answered 2026-11-22)
 
-Each has my recommendation; the session named goes ahead on it unless the user says otherwise.
+Each has my recommendation; the session named goes ahead on it unless the user says otherwise. **All ten were answered on 2026-11-22** ([ANSWERS-2026-11-22.md](ANSWERS-2026-11-22.md)); each answer is under its question.
 
-1. **The Champion: Ruxandra Zorescu**, a woman of about forty who plays the *bucium* and trusts the dawn, with the team above? *Recommended*: yes. (CP18 needs her look for I-1.)
-2. **When can the roamers be caught?** *Recommended*: seen from the ridge on, battled and caught only after the Hall of Fame (so the player is not chasing the professors while the League waits, and they are met at level 70 by a team that can stand them). The alternative: catchable at once after the ridge.
-3. **The ridge needs the plateau's and the castle's badges among the seven**, because their leaders give the two tales the binding reads. *Recommended*: yes. The alternative: those two tales can be found at their sites without the badge, so any seven open the ridge.
-4. **Runs that bar what the climax forces.** *Recommended*: the ??? fight never counts as a loss for a Nuzlocke or Hardcore run (no burial, no end); under "no catching" Furtunaur is beaten and stays on the crest to be met again after the Hall of Fame; under Monotype it goes to the box.
-5. **How many Tale Forms**: 30 as proposed (two or three a tale), or the proposals' seven and one more a tale (about 19)? *Recommended*: 30, with CP12 split into two sculpt sessions.
-6. **The beast voice and text**: a doubled, octave-lowered take of each professor's own voice with the cry under it, and a text style with no name and a tremor? *Recommended*: yes, both, and the user hears the two voices before anything is baked.
-7. **Who keeps the labs after the ridge**: Mara Doina's lab, Costel Ilie's observatory with the rival helping him? *Recommended*: yes (it settles the outline's two sentences that disagreed).
-8. **The rival's name**: fixed as Radu or Ilinca by the player's look, or asked (`namerival`) with those as the defaults? *Recommended*: asked, with Radu or Ilinca already typed, as Sinnoh's rival is.
-9. **Tale Forms for the new mythicals** (section 9, added 2026-11-12): do Nazdravan, Maiastra and the three brothers get a Tale Form under the tale they belong to (Ielele and Mumapadura already have one each in section 5)? *Recommended*: Nazdravan under Făt-Frumos' and Maiastra under the Sânziene's (two sculpts more), the brothers none, since their tale is Ruxandra's and not one of the twelve.
-10. **The mythicals' places in the story** (section 9): the caged dusk at the stronghold, the midnight under the arch, the dawn at the lake, Ilie's ember-eating horse, the rival's voice taken and given back, the roots in the monastery's wall, the bird at the sanctuary, the Fates at the binding. *Recommended*: as written; each can be dropped alone without touching the user's fixed beats.
+1. **The Champion: Ruxandra Zorescu**, a woman of about forty who plays the *bucium* and trusts the dawn, with the team above? *Recommended*: yes. (CP18 needs her look for I-1.) **Answered: yes.**
+2. **When can the roamers be caught?** *Recommended*: seen from the ridge on, battled and caught only after the Hall of Fame (so the player is not chasing the professors while the League waits, and they are met at level 70 by a team that can stand them). The alternative: catchable at once after the ridge. **Answered: the alternative**, catchable at once after the ridge (met at level 70); section 6's roamers and section 7's CP25b and CP27 rows are rewritten for it, and the flee radius and "roam from III-8 on" stand.
+3. **The ridge needs the plateau's and the castle's badges among the seven**, because their leaders give the two tales the binding reads. *Recommended*: yes. The alternative: those two tales can be found at their sites without the badge, so any seven open the ridge. **Answered: yes.**
+4. **Runs that bar what the climax forces.** *Recommended*: the ??? fight never counts as a loss for a Nuzlocke or Hardcore run (no burial, no end); under "no catching" Furtunaur is beaten and stays on the crest to be met again after the Hall of Fame; under Monotype it goes to the box. **Answered: as recommended.**
+5. **How many Tale Forms**: 30 as proposed (two or three a tale), or the proposals' seven and one more a tale (about 19)? *Recommended*: 30, with CP12 split into two sculpt sessions. **Answered: 30, CP12 split into two sculpt sessions.**
+6. **The beast voice and text**: a doubled, octave-lowered take of each professor's own voice with the cry under it, and a text style with no name and a tremor? *Recommended*: yes, both, and the user hears the two voices before anything is baked. **Answered: as recommended.**
+7. **Who keeps the labs after the ridge**: Mara Doina's lab, Costel Ilie's observatory with the rival helping him? *Recommended*: yes (it settles the outline's two sentences that disagreed). **Answered: yes**, Mara keeps Doina's lab and Costel Ilie's observatory with the rival helping.
+8. **The rival's name**: fixed as Radu or Ilinca by the player's look, or asked (`namerival`) with those as the defaults? *Recommended*: asked, with Radu or Ilinca already typed, as Sinnoh's rival is. **Answered: asked** (`namerival`), with Radu or Ilinca typed in.
+9. **Tale Forms for the new mythicals** (section 9, added 2026-11-12): do Nazdravan, Maiastra and the three brothers get a Tale Form under the tale they belong to (Ielele and Mumapadura already have one each in section 5)? *Recommended*: Nazdravan under Făt-Frumos' and Maiastra under the Sânziene's (two sculpts more), the brothers none, since their tale is Ruxandra's and not one of the twelve. **Answered: as recommended**: Nazdravan under Făt-Frumos' tale, Maiastra under the Sânziene's, the brothers none.
+10. **The mythicals' places in the story** (section 9): the caged dusk at the stronghold, the midnight under the arch, the dawn at the lake, Ilie's ember-eating horse, the rival's voice taken and given back, the roots in the monastery's wall, the bird at the sanctuary, the Fates at the binding. *Recommended*: as written; each can be dropped alone without touching the user's fixed beats. **Answered: as written.**
 
 ## 9 · The mythicals in the story
 
@@ -375,7 +377,7 @@ Added 2026-11-12, when the user asked for a Pokédex of about 250 species and fo
 
 **The Fates.** The *Ursitoare* (Ursivia, Ursifira, Ursimora), the minor legendary trio, are not mythicals but are in the story too: the village elder tells of them at the *șezătoare* (P1: they spun the player a long thread), and they are glimpsed for one heartbeat at the binding (III-6), silent, spinning, measuring and cutting. After the Hall of Fame each is met alone: Ursivia at the home village on the night of the next *șezătoare*, Ursifira in Doina's lab garden, Ursimora on the crest where the binding was (never beside the lantern: Zenovie's fate stays unspoken).
 
-**What it changes elsewhere.** The Tale Form table (section 5) is unchanged: whether the new mythicals get Tale Forms is open question 9. The new species of the Pokédex (Nos. 31 to 52, 87 to 114, 147 to 173, 207 to 235) are free for the gym leaders', executives' and trainers' teams that CP19 to CP26 write; the teams above are left as the chapters gave them.
+**What it changes elsewhere.** The Tale Form table (section 5) was unchanged when this was written: whether the new mythicals get Tale Forms was open question 9, answered on 2026-11-22 (Nazdravan's and Maiastra's added to section 5's rows 2 and 1). The new species of the Pokédex (Nos. 31 to 52, 87 to 114, 147 to 173, 207 to 235) are free for the gym leaders', executives' and trainers' teams that CP19 to CP26 write; the teams above are left as the chapters gave them.
 
 ## Romanian words to review (decision 7)
 

@@ -1,0 +1,47 @@
+{
+  // The Stony Cliff (plan 34 · PD4, its first session): the gully north off the South Province's third area where the
+  // Titan Klawf lives, its crag, and the ledge at its head where the Titan keeps its den and its Herba Mystica. The
+  // Titan waits in the gully's mouth once Arven has asked the player's help at the lighthouse; beaten there, it runs up
+  // the ramp to its den, where the herbs make it bigger and the second battle is fought, and Arven comes up to share the
+  // herbs left over. Scripts: Data/scripts/stony_cliff.txt. Our own place, on Scarlet and Violet's beats
+  "markers": [
+    { "name": "stony_cliff_mouth", "at": [226, 12.0, -368], "yaw": 0 },
+    { "name": "stony_cliff_crag_foot", "at": [243, 12.0, -394], "yaw": 0 },
+    { "name": "stony_cliff_ramp_foot", "at": [222, 12.0, -404], "yaw": 180 },
+    { "name": "klawf_den", "at": [226, 18.0, -440], "yaw": 180 },
+    { "name": "stony_cliff_herbs", "at": [222, 18.0, -432], "yaw": 0 }
+  ],
+  "triggers": [
+    // Across the gully before the Titan, once Arven has asked: the first battle, so the giant is met as it is come to
+    // and not only by walking into its body to speak to it
+    { "name": "klawf_gully", "box": { "min": [200, 9, -392], "max": [252, 16, -380] }, "script": "Klawf", "var": "VAR_PALDEA_LEGENDS", "value": 1 },
+    // Up the ramp onto the ledge once the Titan has fled there: its den and the second battle
+    { "name": "klawf_den", "cylinder": { "at": [226, -434], "radius": 6, "bottom": 15, "top": 22 }, "script": "KlawfDen", "var": "VAR_PALDEA_LEGENDS", "value": 2 }
+  ],
+  "people": [
+    // The Titan in the gully's mouth, from Arven's word at the lighthouse until it flees up the ramp
+    {
+      "name": "titan_klawf", "at": [226, 12.0, -386], "yaw": 180, "species": "Klawf", "size": 3, "displayName": "Klawf",
+      "script": "Klawf", "shownBy": "FLAG_PALDEA_LEGENDS_BEGUN", "hiddenBy": "FLAG_PALDEA_KLAWF_FLED"
+    },
+    // The Titan at its den on the ledge, from its flight until it is beaten
+    {
+      "name": "titan_klawf_den", "at": [226, 18.0, -442], "yaw": 180, "species": "Klawf", "size": 3, "displayName": "Klawf",
+      "script": "KlawfDen", "shownBy": "FLAG_PALDEA_KLAWF_FLED", "hiddenBy": "FLAG_PALDEA_KLAWF_BEATEN"
+    },
+    // Arven, come up the ramp after the Titan is beaten, until the herbs are shared
+    {
+      "name": "arven_stony_cliff", "at": [216, 18.0, -430], "yaw": 90, "look": "arven", "displayName": "Arven",
+      "lines": ["Herba Mystica. It's real, and there's some left."],
+      "shownBy": "FLAG_PALDEA_KLAWF_BEATEN", "hiddenBy": "FLAG_PALDEA_MOUNT_DASH"
+    },
+    {
+      "name": "stony_cliff_hiker", "at": [210, 12.0, -366], "yaw": 90, "look": "hiker", "displayName": "Hiker",
+      "lines": ["Rocks keep falling in this gully, and not by themselves. Something big has dug in up at the top."]
+    }
+  ],
+  "trees": [
+    { "at": [204, -364], "kind": "pine", "size": 0.9 },
+    { "at": [250, -366], "kind": "pine" }
+  ]
+}

@@ -122,5 +122,255 @@
         "A fost o luptă de campioni! Revino mâine și o luăm de la capăt."
       ]
     }
+  ],
+  "TowerDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Tower! You stand at Rank {number} of ten. Three wins take you up a rank."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "BATTLE",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon who will battle for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very good! Your opponent is waiting. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! Your run is waiting for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Three Pokémon battle for you, all of different species and holding different items, at Level 50 or under. Nothing from the Bag may be used."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Three wins take you up a rank. A loss ends your run, and from Rank 5 on it costs you a win as well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "At the Master Rank, the tenth, Leon himself waits for whoever wins twice there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Times you have beaten Leon here: {number}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon of different species, holding different items, to battle here. {banned} may not take part."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're ready to battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two Pokémon of the same species can't battle together here. Please choose again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two Pokémon holding the same item can't battle together here. Please choose again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We hope to see you on the ladder soon!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ladder": [
+    {
+      "en": [
+        "Rank {number} of the Battle Tower."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{foe} steps onto the court to battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Master Rank! Then it's my turn. Three on three, Champion, and this time I'm not holding anything back!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A win! Will you battle on?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rank up! {player} is now at Rank {number}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you battle on?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Leon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beaten at the top of my own tower! That's what a real Champion looks like. Come climb back up to me any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The run ends here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! For your run you've earned {number} Battle Points."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome back! Please battle again soon."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

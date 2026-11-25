@@ -91,6 +91,12 @@ public sealed class OpenPerson
     /// <summary>The look they are drawn with (a look of <c>characters.json</c>); null for the plain townsperson.</summary>
     public string? Look { get; init; }
 
+    /// <summary>A Pokémon standing in the place (plan 34 · PD4: a Titan): the species or form it is drawn as, or null for a person.</summary>
+    public string? Species { get; init; }
+
+    /// <summary>How many times its species' own height a Pokémon of the place is drawn at (a Titan's is several).</summary>
+    public double Size { get; init; } = 1;
+
     /// <summary>The name over what they say; null for their trainer's name, or nobody's.</summary>
     public string? ShownName { get; init; }
 

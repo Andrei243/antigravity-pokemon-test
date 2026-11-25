@@ -1,7 +1,7 @@
 {
   "name": "Cortondo_Gym",
   "displayName": "Cortondo Gym",
-  "bgmTrack": "paldea/academy",
+  "bgmTrack": "paldea/gym",
   "interior": "Gym",
   "trees": "Round",
   "width": 11,

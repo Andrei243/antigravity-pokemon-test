@@ -58,6 +58,8 @@ public static partial class DamageCalculator
         if (attacker.Turn.AteBoosted) bp.Add(4915);
         // Parental Bond's second hit is a quarter as strong (generation 7 on)
         if (attacker.Turn.ParentalChild) bp.Add(1024);
+        // Three Heads: each of its three strikes is 40% (plan 46 · CP10, ours)
+        if (attacker.Turn.HeadStrike) bp.Add(1638);
         // Supreme Overlord: a tenth again for each of its side that had fainted as it came in, five at most (Showdown's
         // onStart and its table of powers: plan 06 · R27b's audit, where R27 counted at each hit and added 410 a faint)
         if (mine == "Supreme Overlord" && attacker.Volatile.Fallen > 0) bp.Add(OverlordPower[Math.Min(5, attacker.Volatile.Fallen)]);

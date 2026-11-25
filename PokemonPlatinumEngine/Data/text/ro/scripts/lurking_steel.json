@@ -1,0 +1,102 @@
+{
+  "Orthworm": [
+    {
+      "en": [
+        "The sand heaves. A length of steel as thick as a tree trunk rears up out of the ground, its feelers glowing red!"
+      ],
+      "text": [
+        "Nisipul se umflă. O bucată de oțel groasă cât un trunchi de copac se ridică din pământ, cu antenele roșii aprinse!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Orthworm grinds its segments, burrows into the sand and bursts out again at the cutting's far end!"
+      ],
+      "text": [
+        "Titanul Orthworm își scrâșnește inelele, se îngroapă în nisip și iese din nou în capătul celălalt al tăieturii!"
+      ]
+    }
+  ],
+  "OrthwormDen": [
+    {
+      "en": [
+        "The Titan Orthworm is coiled round a clump of glowing herbs, swallowing them stalks and all."
+      ],
+      "text": [
+        "Titanul Orthworm stă încolăcit în jurul unui smoc de ierburi strălucitoare și le înghite cu tulpini cu tot."
+      ]
+    },
+    {
+      "en": [
+        "Its steel plates ring like a bell and its feelers blaze. It uncoils toward {player}!"
+      ],
+      "text": [
+        "Plăcile de oțel îi sună ca un clopot și antenele îi ard. Se descolăcește spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Orthworm is beaten. It shrinks to an ordinary Orthworm and tunnels away under the sand."
+      ],
+      "text": [
+        "Titanul Orthworm e învins. Se micșorează la loc într-un Orthworm obișnuit și se îngroapă sub nisip."
+      ]
+    },
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "Three! I could feel that one through my boots the whole way here. These herbs are bitter. Perfect."
+      ],
+      "text": [
+        "Trei! L-am simțit prin bocanci tot drumul până aici. Ierburile astea sunt amare. Perfect."
+      ]
+    },
+    {
+      "en": [
+        "Koraidon ate the sandwich, crouched low, and sprang straight up higher than Arven's head."
+      ],
+      "text": [
+        "Koraidon a mâncat sandvișul, s-a ghemuit și a sărit drept în sus, mai sus de capul lui Arven."
+      ]
+    },
+    {
+      "en": [
+        "Miraidon ate the sandwich, sank on its legs, and shot straight up higher than Arven's head."
+      ],
+      "text": [
+        "Miraidon a mâncat sandvișul, s-a lăsat pe picioare și a țâșnit drept în sus, mai sus de capul lui Arven."
+      ]
+    },
+    {
+      "en": [
+        "Some of its old strength has come back. It can leap high again! (Riding, the jump button now clears ledges twice as tall.)"
+      ],
+      "text": [
+        "I-a revenit o parte din puterea de altădată. Poate sări sus din nou! (Călare, butonul de sărit trece acum de praguri de două ori mai înalte.)"
+      ]
+    },
+    {
+      "en": [
+        "The next Titan's in the dusty basin north of Cortondo. People say the ground shakes when it runs."
+      ],
+      "text": [
+        "Următorul Titan e în căldarea prăfuită de la nord de Cortondo. Lumea zice că se cutremură pământul când aleargă."
+      ]
+    },
+    {
+      "en": [
+        "That's a long way west. Good thing your ride's feeling better."
+      ],
+      "text": [
+        "E departe spre vest. Bine că prietenul tău se simte mai bine."
+      ]
+    }
+  ]
+}

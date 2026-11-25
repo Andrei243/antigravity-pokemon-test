@@ -1,0 +1,30 @@
+# Medali on the open map (plan 34 · PD6). Larry's gym test is the Treasure Eatery's secret order, as Scarlet and
+# Violet's is: three of the townsfolk each let a part of it slip (each part its own flag, FLAG_PALDEA_MEDALI_TEST_1 to 3),
+# and the order is made at the eatery's counter (Medali_TreasureEatery.txt), which a challenger may also try by guessing.
+# Our own lines and our own order.
+
+
+# The regular on the square: the dish
+script Hint1
+  speaker "Old Man"
+  say "The Treasure Eatery? Best food in the province. The regulars all start with the grilled rice balls, you know."
+  say "Never the stew. The stew is for people who read the menu."
+  setflag FLAG_PALDEA_MEDALI_TEST_1
+  end
+
+
+# The waitress taking her break: the side
+script Hint2
+  speaker "Waitress"
+  say "Shh, I'm on my break. But if you're after the secret order: a wedge of lemon on the side. That's what gives it away."
+  setflag FLAG_PALDEA_MEDALI_TEST_2
+  end
+
+
+# The office worker on his way back to work: the magic words
+script Hint3
+  speaker "Office Worker"
+  say "You want to know how the boss orders? He says 'extra crispy'. Every single time. Doesn't even look up."
+  say "Our boss is Larry, by the way. Gym leader, and the least excitable man in Paldea."
+  setflag FLAG_PALDEA_MEDALI_TEST_3
+  end

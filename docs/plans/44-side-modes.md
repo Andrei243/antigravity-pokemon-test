@@ -175,7 +175,7 @@ Every session: the style guide first for what it draws and the rulings for what 
 5. **How a delve fights.** *Recommended:* on the floor's grid, a turn a step, with the moves' reach and the game's own damage. The alternative fights each meeting on the battle screen: a session cheaper, but a second Pyramid.
 6. **What a delve gives.** *Recommended:* a recruit that reaches the end may come home to the boxes. The alternative sends recruits off at the end, with items, money and rank the only rewards.
 7. **Where the tour and the camp stand.** *Recommended:* the tour's guide on Pastoria City's observatory floor once the National Pokédex is had, the camp in the Survival Area after Sinnoh's Hall of Fame, and plan 41's hub a second door for each. The alternative puts both in plan 41's hub alone, which waits for it.
-8. **The loop catch.** *Recommended:* not built; SD10 stays optional. The alternative builds it after SD9.
+8. **The loop catch.** *Recommended:* not built; SD10 stays optional. The alternative builds it after SD9. *Answered 2026-11-22*: the alternative ("Plans 42 to 44: finish them"); SD9 is built, so SD10 can come.
 9. **The words.** *Recommended:* as written (Lockwork, the Reclaimer, a locked Pokémon, the photo tour, the delve and its hollows). The alternative is the user's own, chosen before SD3 writes its lines.
 10. **Who gives the Reclaimer.** *Recommended:* Looker (Platinum's own, plan 02), who has tracked the syndicate and has his bureau make the device from a part seized at the quay; it ties to plan 41's agency and leaves no defector who built the machine. The alternative is a figure of ours with no tie to the syndicate's making (a ferry-keeper who carried its crates and learned the spring's rite from an old tale), at the cost of one more person to write.
 
@@ -190,7 +190,9 @@ Every session: the style guide first for what it draws and the rulings for what 
 - [x] SD7 The delve's rules (2026-11-12, as built below; what it owes is listed there)
 - [x] SD8 The delve on screen (2026-11-12, finished 2026-11-13, as built below)
 - [x] SD9 The hollow camp, its board and the hollows (2026-11-12, finished 2026-11-13, as built below)
-- [ ] SD10 The loop catch (optional)
+- [ ] SD10 The loop catch (optional; wanted: the user's "Plans 42 to 44: finish them" of 2026-11-22)
+
+**The user's answers of 2026-11-22** ([ANSWERS-2026-11-22.md](decisions/ANSWERS-2026-11-22.md), "Optional builds, now wanted"): **plans 42 to 44 are to be finished**. For this plan that is SD10 alone, which decision 8 left unbuilt; it comes after SD9, as the decision's alternative has it.
 
 ## SD1 to SD4 as built (2026-11-12)
 

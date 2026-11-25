@@ -376,14 +376,15 @@ public static class ScriptParser
                 var staged = new Battle.BattleTerms();
                 while (r.More)
                 {
-                    string option = r.OneOf("nofleeing", "shiny", "holding", "totem", "ally", "canlose", "hidelevel", "untouchable", "passive", "endafter", "mayrun");
+                    // `titan defense [2]` (plan 34 · PD4): a Titan of the Path of Legends, a totem's aura fought alone
+                    string option = r.OneOf("nofleeing", "shiny", "holding", "totem", "titan", "ally", "canlose", "hidelevel", "untouchable", "passive", "endafter", "mayrun");
                     if (option == "shiny") shiny = true;
                     // A staged battle's terms, and a loss the story goes on from (docs/mechanics/rulings.md, "Staged battles")
                     else if (option is "hidelevel" or "untouchable" or "passive" or "endafter") staged = StagedTerm(r, option, staged);
                     else if (option == "canlose") mayLose = true;
                     else if (option == "mayrun") mayRun = true;
                     else if (option == "holding") held = r.Text("an item's name");
-                    else if (option == "totem")
+                    else if (option is "totem" or "titan")
                     {
                         var stats = new List<StatType>();
                         while (Battle.Sim.TotemAura.StatWords.FirstOrDefault(r.PeekWord) is { } statWord)
@@ -394,12 +395,14 @@ public static class ScriptParser
                         if (stats.Count == 0) throw r.Error("a totem's aura names the stats it raises (attack, defense, spattack, spdefense, speed, accuracy, evasion or all)");
                         int stages = r.PeekNumber ? r.Int("its stages") : 1;
                         if (stages is < 1 or > 6) throw r.Error("an aura raises a stat by one to six stages");
-                        totem = new Battle.Sim.TotemAura(stats, stages);
+                        if (totem != null) throw r.Error("a battle has one totem or Titan");
+                        totem = new Battle.Sim.TotemAura(stats, stages, Titan: option == "titan");
                         noFleeing = true;
                     }
                     else if (option == "ally")
                     {
                         if (totem == null) throw r.Error("only a totem names its ally: `totem <stats>` comes first");
+                        if (totem.Titan) throw r.Error("a Titan is fought alone and calls nobody");
                         totem = totem with { Ally = r.Text("a species' name") };
                     }
                     else noFleeing = true;
@@ -660,6 +663,14 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Bicycle, Line = line, Option = r.OneOf("on", "off") == "on" };
             case "ride":
                 // A ride of the beaches (plan 42 · PS7): `ride surf "hauoli"`, `ride runs "hauoli"`, `ride best "hauoli"`
+                // and of the riding race (plan 42 · PS8): `ride race "blossom"`, `ride racebest "blossom"`, `ride raceruns "blossom"`
+                if (r.PeekWord("race") || r.PeekWord("racebest") || r.PeekWord("raceruns"))
+                {
+                    string raceWord = r.OneOf("race", "racebest", "raceruns");
+                    string track = r.Text("a track's id");
+                    if (Models.Rides.RaceTracks.Get(track) == null) throw r.Error($"'{track}' is no track of race-tracks.json");
+                    return new Instruction { Op = Op.Ride, Line = line, Name = raceWord, Other = track };
+                }
                 if (r.PeekWord("surf") || r.PeekWord("runs") || r.PeekWord("best"))
                 {
                     string rideWord = r.OneOf("surf", "runs", "best");
@@ -1294,8 +1305,15 @@ public static class ScriptParser
             case "raid":
             {
                 // Galar's Max Raid dens (plan 33 · GL3): `raid den "rolling_1"`, `raid watts`, `raid fight`, `raid catch "Poké Ball"`, and `raid wish`, a Wishing Piece thrown into the den looked into
-                string what = r.OneOf("den", "watts", "fight", "catch", "wish", "boss");
+                // and Paldea's Tera crystals (plan 34 · PD7): `raid crystal "cortondo_1"` looked into, `raid shards` its felled boss's Tera Shards
+                string what = r.OneOf("den", "watts", "fight", "catch", "wish", "boss", "crystal", "shards");
                 if (what == "den") return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = r.Text("a den's id") };
+                if (what == "crystal")
+                {
+                    string crystal = r.Text("a crystal's id");
+                    if (Models.Raids.Crystal(crystal) == null) throw r.Error($"there is no crystal '{crystal}' (Data/world/paldea/crystals.json)");
+                    return new Instruction { Op = Op.Raid, Line = line, Name = what, Other = crystal };
+                }
                 // A boss the story brings (plan 33 · GL6, Eternamax): `raid boss "Eternatus-Eternamax" 60 stars 5 cannotfail
                 // with "galar_raid_hop" "galar_raid_zacian" "galar_raid_zamazenta"`, its raiders three trainers of the data
                 if (what == "boss")
@@ -1324,7 +1342,8 @@ public static class ScriptParser
 
             case "craft":
             {
-                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared", "crosses");
+                // (plan 34 · PD7's `craft deli`: the pantry's goods sold at a Paldean deli, with no kit needed)
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared", "crosses", "deli");
                 // A dish eaten there and then (plan 39 · CR6): `craft meal "beanHotpot"`, or with its grade, `craft meal "beanHotpot" superb`
                 if (what == "meal")
                 {
@@ -1537,6 +1556,15 @@ public static class ScriptParser
             {
                 bool on = r.OneOf("on", "off") == "on";
                 return new Instruction { Op = Op.Letterbox, Line = line, Option = on, Seconds = r.More ? r.Seconds() : CameraRig.BarSeconds };
+            }
+            // A raid on a Team Star base's gate begun (plan 34 · PD5): starraid begin "giacomo"
+            case "starraid":
+            {
+                r.OneOf("begin");
+                string key = r.Text("a base of Starfall Street");
+                if (Models.StarBases.Get(key) == null)
+                    throw r.Error($"no base of Starfall Street is called {key} ({string.Join(", ", Models.StarBases.All.Select(b => b.Key))})");
+                return new Instruction { Op = Op.StarRaid, Line = line, Name = "begin", Other = key };
             }
             // The field's light held at an hour (plan 20, part w): lighting 21 | lighting clock
             case "lighting":

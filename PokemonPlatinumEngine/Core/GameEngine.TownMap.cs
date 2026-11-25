@@ -30,6 +30,9 @@ public partial class GameEngine
     /// </summary>
     private (int X, int Y)? RegionCellNow(RegionMap region)
     {
+        // In an open map the region's map is painted from (plan 34 · PD3's second session): the chunk the player stands in
+        if (flow.Open is { } open && open.Map.Land is { } land && string.Equals(open.Map.Name, region.Map, StringComparison.OrdinalIgnoreCase))
+            return RegionMapArt.OpenCellOf(land, open.Player.Pos);
         if (region.IsOverworld(flow.Map.Name)) return region.CellOn(flow.Map.Name, flow.Player.GridX, flow.Player.GridY);
         if (flow.ExitSpot is { } exit && region.IsOverworld(exit.Map)) return region.CellOn(exit.Map, exit.X, exit.Y);
         if (regionPlaces == null || regionPlacesOf != region.Region)
@@ -44,8 +47,10 @@ public partial class GameEngine
     /// Whether a town is there to fly to: its area open on the map it lies on, the region's overworld or a map of its own
     /// (Sootopolis City inside its crater, plan 21 · H8, part c).
     /// </summary>
-    private static bool Reachable(SpawnLocation town) =>
-        MapDatabase.MapNames.Contains(town.Map) && MapDatabase.Get(town.Map).Areas.Any(a => a.Key == town.Area && a.Open);
+    private bool Reachable(SpawnLocation town) =>
+        MapDatabase.MapNames.Contains(town.Map) ? MapDatabase.Get(town.Map).Areas.Any(a => a.Key == town.Area && a.Open)
+        // a town of an open map (plan 34 · PD3's second session): its area is one of the map's
+        : OpenMapNamed(town.Map) is { } open && open.Areas.Any(a => a.Key == town.Area);
 
     /// <summary>What the game has put on the region's map now.</summary>
     private TownMapState? TownMapNow()

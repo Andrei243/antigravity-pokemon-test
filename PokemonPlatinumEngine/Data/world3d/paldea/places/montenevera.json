@@ -1,0 +1,49 @@
+{
+  // Montenevera (plan 34 · PD6, its second session): the snowy town east of Glaseado's foot, its paved square before
+  // the gym, a concert hall where Ryme performs, its Pokémon Center on the street east of the square. Ryme's test is a
+  // rap battle in her hall (Montenevera_GymTest.txt); the gym and the hall are rooms (Montenevera_Gym,
+  // Montenevera_GymTest)
+  "markers": [
+    { "name": "montenevera_west", "at": [240, 12.0, -922], "yaw": 90 },
+    { "name": "montenevera_square", "at": [328, 12.0, -950], "yaw": 0 },
+    { "name": "montenevera_gym_door", "at": [322, 12.0, -973], "yaw": 0 },
+    { "name": "montenevera_center_door", "at": [383, 12.0, -943], "yaw": 0 },
+    { "name": "montenevera_east", "at": [414, 12.0, -930], "yaw": 270 }
+  ],
+  "doors": [
+    {
+      "name": "montenevera_gym_door",
+      "box": { "min": [320, 11.5, -976], "max": [324, 15.5, -975] },
+      "room": "Montenevera_Gym", "at": [4, 8], "facing": "up",
+      "out": "montenevera_gym_door"
+    },
+    {
+      "name": "montenevera_center_door",
+      "box": { "min": [382, 11.5, -946], "max": [384, 15, -945] },
+      "room": "Montenevera_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "montenevera_center_door"
+    }
+  ],
+  "solids": [
+    { "name": "Montenevera Gym, Ryme's hall", "min": [304, 11, -996], "max": [340, 22, -976], "building": { "kind": "gym", "town": "paldea", "sign": "GYM", "storeys": 2 } },
+    { "name": "Montenevera's Pokémon Center", "min": [376, 11, -960], "max": [390, 17.5, -946], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the house by the west gate", "min": [248, 11, -990], "max": [262, 16.5, -978], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the house behind the hall", "min": [396, 11, -990], "max": [410, 16.5, -978], "building": { "kind": "house", "town": "paldea", "storeys": 2 } }
+  ],
+  "people": [
+    {
+      "name": "montenevera_fan", "at": [300, 12.0, -944], "yaw": 90, "look": "lass", "displayName": "Fan",
+      "lines": ["Ryme's show tonight is sold out. Every night is sold out. If you want in, you'll have to battle your way in."]
+    },
+    {
+      "name": "montenevera_old_woman", "at": [360, 12.0, -960], "yaw": 270, "look": "old_woman", "displayName": "Old Woman",
+      "lines": ["The snow never quite leaves Montenevera. Neither do the ghosts, they say. They come for the music."]
+    }
+  ],
+  "trees": [
+    { "at": [236, -996], "kind": "pine", "size": 1.1 },
+    { "at": [276, -906], "kind": "pine" },
+    { "at": [366, -996], "kind": "pine", "size": 0.9 },
+    { "at": [414, -906], "kind": "pine" }
+  ]
+}

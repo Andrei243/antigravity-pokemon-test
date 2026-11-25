@@ -1,0 +1,116 @@
+{
+  "RaceStable": [
+    {
+      "en": [
+        "Stable Master"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Blossom Road stable! Rhyhorn, Tauros and Rapidash are bred for speed here, and we race them round the track."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Any Pokémon big enough to carry a rider can run it. Hold the run button to push, press the button to jump the rocks, and lean into every turn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Back on the track? Your best here is {number} points."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Care to race your own Pokémon against my three riders?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A good run! The track is hard on newcomers. Come back when you have found its rhythm."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Third place, and in front of the dust of the last of us. Take the stable's thanks for the ride."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} Battle Point(s)!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Second place! You were close. The stable pays a little for a place like that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} Battle Point(s)!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "First home! Not one of my riders has beaten that. Here is the stable's prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} Battle Point(s)!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "None of your Pokémon is big enough to carry a rider, or they are not fit to run. Come back with a sturdier one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No hurry. The track isn't going anywhere. Come back whenever you like!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

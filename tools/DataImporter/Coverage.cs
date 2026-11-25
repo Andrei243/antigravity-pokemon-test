@@ -56,7 +56,7 @@ public static class Coverage
             later.Count, later.Count(m => m.Support == MoveEffectSupport.Full), later.Count(m => m.Support == MoveEffectSupport.Partial),
             special.Count(m => m.Kind == MoveKind.ZMove), special.Count(m => m.Kind == MoveKind.MaxMove), special.Count(m => m.Kind == MoveKind.GMaxMove),
             special.Count(m => m.Support != MoveEffectSupport.None),
-            abilities.Count(a => a.Generation <= 4), abilities.Count(a => a.Generation <= 4 && run.Contains(a.Name)),
+            abilities.Count(a => a.Generation is >= 1 and <= 4), abilities.Count(a => a.Generation is >= 1 and <= 4 && run.Contains(a.Name)),
             abilities.Count(a => a.Generation > 4), abilities.Count(a => a.Generation > 4 && run.Contains(a.Name)),
             own.Count, own.Count(i => Of(i) == Works.Fully), own.Count(i => Of(i) == Works.Partly), own.Count(i => Of(i) == Works.NothingToRun),
             held.Count, held.Count(HeldItemEffects.IsHoldable),
@@ -350,7 +350,8 @@ public static class Coverage
         Line($"- **Mega Stones**: {n.MegaStones}, for {items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Form).Distinct().Count()} forms of " +
              $"{items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Species).Distinct().Count()} species, each a form in `species.json`, Mega Evolved in battle by `BattleCore.Mega.cs`.");
         Line($"- **Z-Crystals**: {n.ZCrystals} ({items.Count(i => i.ZCrystal?.Type != null)} for a type, {items.Count(i => i.ZCrystal?.Move != null)} for one species' move).");
-        Line($"- **Modern values**: {standard.Count(m => m.Modern != null)} of Platinum's moves have other values in the newest games, which a game played by the modern rules uses.");
+        Line($"- **Modern values**: {standard.Count(m => m.Modern != null)} moves have other values under the modern rules, which every game is played by: " +
+             $"Platinum's where the newest games changed them, and {standard.Count(m => m.Modern?.Type == PokemonType.Sound)} sound moves of the games made Sound-type (plan 46 · CP2b).");
         Line();
 
         Line("## Evolutions");

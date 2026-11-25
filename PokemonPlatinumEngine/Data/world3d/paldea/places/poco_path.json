@@ -19,6 +19,8 @@
     }
   ],
   "triggers": [
+    // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+    { "name": "crystal_poco_1", "cylinder": { "at": [-24, -80], "radius": 1.5, "bottom": 1, "top": 33 }, "script": "CrystalPoco1" },
     // On the beach under the cliffs once the battle is over: the roar out of the grotto
     { "name": "a_roar", "box": { "min": [-80, 0, -140], "max": [-52, 5, -120] }, "script": "ARoar", "var": "VAR_PALDEA_STORY", "value": 2 },
     // At the lighthouse's foot with the legendary along: Nemona's lesson in catching
@@ -73,6 +75,16 @@
       "name": "nemona_lighthouse", "at": [53, 10.0, -78], "yaw": 90, "look": "nemona", "displayName": "Nemona",
       "lines": ["Over here! There's no better view of Paldea than from this lighthouse."],
       "hiddenBy": "FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE"
+    },
+    // Arven at the lighthouse once term has begun (plan 34 · PD4): where the Path of Legends begins
+    {
+      "name": "arven_lighthouse", "at": [60, 10.0, -80], "yaw": 270, "look": "arven", "displayName": "Arven",
+      "script": "ArvenLighthouse", "hiddenBy": "FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE"
+    },
+    // Arven's Mabosstiff beside him once the five Titans' herbs have made it well again (PD4's second session)
+    {
+      "name": "mabosstiff_lighthouse", "at": [58, 10.0, -78], "yaw": 270, "species": "Mabosstiff", "displayName": "Mabosstiff",
+      "script": "ArvenLighthouse", "shownBy": "FLAG_PALDEA_LEGENDS_DONE"
     },
     {
       "name": "poco_hiker", "at": [0, 8.0, -90], "yaw": 90, "look": "hiker", "displayName": "Hiker",

@@ -1,0 +1,78 @@
+{
+  // The North Province's first area (plan 34 · PD6, its second session): the road north out of Medali between the hills
+  // to the foot of Glaseado Mountain, its long grass along the west side, the mouth of Casseroya Lake's hollow on the
+  // east, a student on the way and a hiker who knows the mountain
+  "markers": [
+    { "name": "north_one_south", "at": [-100, 12.0, -726], "yaw": 0 },
+    { "name": "north_one_middle", "at": [-100, 12.0, -812], "yaw": 0 },
+    { "name": "north_one_north", "at": [-100, 12.0, -892], "yaw": 0 },
+    // The Zero Gate (plan 34 · PD8, its second session): its door on the south face of its hall, built against the
+    // crater's side of the valley, and the ground before it where the friends wait, facing the gate
+    { "name": "zero_gate_door", "at": [-68, 12.0, -767], "yaw": 0 },
+    { "name": "zero_gate_front", "at": [-68, 12.0, -759], "yaw": 180 }
+  ],
+  // The Zero Gate's door: its hall, with the lift down into Area Zero (grid rooms), shut until the friends have met
+  // before it with everything else done (north_province_area_one.txt, ZeroGate)
+  "doors": [
+    {
+      "name": "zero_gate_door",
+      "box": { "min": [-70, 11.5, -770], "max": [-66, 15.5, -769] },
+      "room": "AreaZero_Gate", "at": [5, 8], "facing": "up",
+      "out": "zero_gate_door",
+      "openedBy": "FLAG_PALDEA_ZERO_GATE_OPEN"
+    }
+  ],
+  // The Zero Gate's hall, built against the hills that wall the Great Crater off from the valley's east side
+  "solids": [
+    { "name": "the Zero Gate", "min": [-75, 11.5, -788], "max": [-61, 21, -770], "building": { "kind": "hall", "town": "paldea", "sign": "ZERO GATE", "storeys": 2 } }
+  ],
+  // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+  "triggers": [
+    { "name": "crystal_north_one_1", "cylinder": { "at": [-124, -832], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalNorthOne1" }
+  ],
+  "zones": [
+    {
+      "name": "north_one_grass",
+      "polygon": [[-136, -880], [-112, -880], [-112, -780], [-136, -780]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Snom", "minLevel": 36, "maxLevel": 40, "weight": 25 },
+        { "species": "Cetoddle", "minLevel": 36, "maxLevel": 40, "weight": 20 },
+        { "species": "Swablu", "minLevel": 36, "maxLevel": 39, "weight": 20 },
+        { "species": "Bergmite", "minLevel": 36, "maxLevel": 40, "weight": 20 },
+        { "species": "Greavard", "minLevel": 36, "maxLevel": 40, "weight": 15, "time": "Night" }
+      ],
+      "density": 3, "cap": 5
+    }
+  ],
+  "people": [
+    {
+      "name": "student_marta", "at": [-118, 12.0, -840], "yaw": 90, "trainer": "paldea_student_marta",
+      "lines": ["My breath's turning to clouds already. A battle will warm us both up!", "Well, I'm warm now. Mostly from embarrassment."],
+      "sight": { "length": 9, "angle": 50 }
+    },
+    {
+      "name": "north_one_hiker", "at": [-84, 12.0, -760], "yaw": 180, "look": "hiker", "displayName": "Hiker",
+      "lines": ["North is Glaseado Mountain, with the gym on its very top. East along its foot you'll come to Montenevera. And that hollow to the east holds Casseroya Lake."]
+    },
+    // The three friends at the Zero Gate once the League is won (plan 34 · PD8, its second session), until the gate is
+    // opened; any of them spoken to begins the meeting, or says what is still to be done
+    {
+      "name": "arven_zero_gate", "at": [-72, 12.0, -763], "yaw": 180, "look": "arven", "displayName": "Arven",
+      "script": "ZeroGate", "shownBy": "PaldeaHallOfFame", "hiddenBy": "FLAG_PALDEA_ZERO_GATE_OPEN"
+    },
+    {
+      "name": "nemona_zero_gate", "at": [-64, 12.0, -763], "yaw": 180, "look": "nemona", "displayName": "Nemona",
+      "script": "ZeroGate", "shownBy": "PaldeaHallOfFame", "hiddenBy": "FLAG_PALDEA_ZERO_GATE_OPEN"
+    },
+    {
+      "name": "penny_zero_gate", "at": [-75, 12.0, -766], "yaw": 135, "look": "penny", "displayName": "Penny",
+      "script": "ZeroGate", "shownBy": "PaldeaHallOfFame", "hiddenBy": "FLAG_PALDEA_ZERO_GATE_OPEN"
+    }
+  ],
+  "trees": [
+    { "at": [-70, -740], "kind": "pine", "size": 0.9 },
+    { "at": [-72, -870], "kind": "pine" },
+    { "at": [-132, -730], "kind": "pine", "size": 1.1 }
+  ]
+}

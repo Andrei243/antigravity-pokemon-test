@@ -126,6 +126,13 @@ public interface IScriptHost
     Models.Rides.RideRecords? Rides => null;
 
     /// <summary>
+    /// The species of the Pokémon of the team that would carry the player in a riding race (plan 42 · PS8,
+    /// <c>ride race</c>): the first able one of a riding size; null where there is none or the host has no races. Its screen
+    /// is <see cref="ScriptScreen.Ride"/> with the counter <c>race:&lt;track&gt;</c>.
+    /// </summary>
+    string? RaceMount => null;
+
+    /// <summary>
     /// The film studio's records (plan 42 · PS4, <c>studio</c>): each film's takes and best, the studio's rank; null for a
     /// host that has none, where nothing can be shot.
     /// </summary>
@@ -236,6 +243,13 @@ public interface IScriptHost
     /// w): the picture's alone, never the hour the rules read. A hold lasts until the player next changes place.
     /// </summary>
     void HoldLight(float? hour) { }
+
+    /// <summary>
+    /// A raid on a Team Star base's gate begins (plan 34 · PD5; <see cref="Models.StarBases"/>): the field's own play
+    /// with Let's Go against the clock, round the base's yard. The script goes on at once (and is meant to end); the
+    /// game starts the base's script won or lost as the raid ends. A host with no field only notes it.
+    /// </summary>
+    void BeginStarRaid(string @base) { }
 
     /// <summary>
     /// The field runs at a <paramref name="share"/> of its pace for <paramref name="seconds"/> and is back by itself

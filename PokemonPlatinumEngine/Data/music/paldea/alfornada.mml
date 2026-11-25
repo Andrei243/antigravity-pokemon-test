@@ -1,0 +1,44 @@
+# Alfornada and its cavern: an oboe's slow line in G minor over a nylon guitar's arpeggios, strings held like the old
+# temple's stones, a bowed bass and a cajon's soft knock, nothing hurried: the ruins on the knoll and Tulip's quiet
+# studio; at night a flute. Original composition for this game (plan 34 · PD6, its second session), in the modern sound.
+title Alfornada
+tempo 76
+meter 4/4
+reverb 0.36
+nighttempo 0.92
+room hall 1.8
+
+track lead oboe night=flute vol=0.72 pan=0.05 rev=0.36
+  o4 g2. r4 | L o5 d2 o4 b-4 g4 | o4 g2 b-4 o5 e-4 | o5 d2 f4 d4 |
+  o5 c2 o4 a4 f4 | o4 g2 b-4 o5 d4 | o5 e-2 g4 e-4 | o5 c2 e-4 g4 |
+  o5 f+2 d4 o4 a4 | o5 g2. d4 | o5 e-2 o4 b-4 g4 | o5 f2 d4 o4 b-4 |
+  o5 a2 f4 c4 | o5 g2 e-4 c4 | o5 a2 f+4 d4 | o5 d2 o4 b-4 o5 d4 |
+  o5 g2. r4 |
+
+track arp nylonguitar vol=0.42 pan=-0.28 rev=0.3
+  o3 g8 o4 d8 o4 g8 o4 b-8 o5 d8 o4 b-8 o4 g8 o4 d8 | L o3 g8 o4 d8 o4 g8 o4 b-8 o5 d8 o4 b-8 o4 g8 o4 d8 | o3 e-8 o3 b-8 o4 e-8 o4 g8 o4 b-8 o4 g8 o4 e-8 o3 b-8 | o2 b-8 o3 f8 o3 b-8 o4 d8 o4 f8 o4 d8 o3 b-8 o3 f8 |
+  o3 f8 o4 c8 o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 c8 | o3 g8 o4 d8 o4 g8 o4 b-8 o5 d8 o4 b-8 o4 g8 o4 d8 | o3 e-8 o3 b-8 o4 e-8 o4 g8 o4 b-8 o4 g8 o4 e-8 o3 b-8 | o3 c8 o3 g8 o4 c8 o4 e-8 o4 g8 o4 e-8 o4 c8 o3 g8 |
+  o3 d8 o3 a8 o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o3 a8 | o3 g8 o4 d8 o4 g8 o4 b-8 o5 d8 o4 b-8 o4 g8 o4 d8 | o3 e-8 o3 b-8 o4 e-8 o4 g8 o4 b-8 o4 g8 o4 e-8 o3 b-8 | o2 b-8 o3 f8 o3 b-8 o4 d8 o4 f8 o4 d8 o3 b-8 o3 f8 |
+  o3 f8 o4 c8 o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 c8 | o3 c8 o3 g8 o4 c8 o4 e-8 o4 g8 o4 e-8 o4 c8 o3 g8 | o3 d8 o3 a8 o4 d8 o4 f+8 o4 a8 o4 f+8 o4 d8 o3 a8 | o3 g8 o4 d8 o4 g8 o4 b-8 o5 d8 o4 b-8 o4 g8 o4 d8 |
+  o3 g8 o4 d8 o4 g8 o4 b-8 o5 d8 o4 b-8 o4 g8 o4 d8 |
+
+track pad strings vol=0.2 pan=0.25 rev=0.45
+  o4 (g b- > d)1 | L o4 (g b- > d)1 | o4 (e- g b-)1 | o3 (b- > d f)1 |
+  o4 (f a > c)1 | o4 (g b- > d)1 | o4 (e- g b-)1 | o4 (c e- g)1 |
+  o4 (d f+ a)1 | o4 (g b- > d)1 | o4 (e- g b-)1 | o3 (b- > d f)1 |
+  o4 (f a > c)1 | o4 (c e- g)1 | o4 (d f+ a)1 | o4 (g b- > d)1 |
+  o4 (g b- > d)1 |
+
+track bass contrabass vol=0.72 rev=0.1
+  o2 g2 o3 d2 | L o2 g2 o3 d2 | o2 e-2 o2 b-2 | o1 b-2 o2 f2 |
+  o2 f2 o3 c2 | o2 g2 o3 d2 | o2 e-2 o2 b-2 | o2 c2 o2 g2 |
+  o2 d2 o2 a2 | o2 g2 o3 d2 | o2 e-2 o2 b-2 | o1 b-2 o2 f2 |
+  o2 f2 o3 c2 | o2 c2 o2 g2 | o2 d2 o2 a2 | o2 g2 o3 d2 |
+  o2 g2 o3 d2 |
+
+track drums kit vol=0.24 pan=0.1 rev=0.16
+  v36 b4 r4 v30 x4 r4 | L v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 |
+  v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 |
+  v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 |
+  v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 | v36 b4 r4 v30 x4 r4 |
+  v36 b4 r4 v30 x4 r4 |

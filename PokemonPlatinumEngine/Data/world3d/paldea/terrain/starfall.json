@@ -1,0 +1,25 @@
+{
+  // Starfall Street (plan 34 · PD5): a stand-in valley of our own north of Mesagoza, where Team Star's five bases stand
+  // until plan 34 · PD6 builds the West and North Provinces the originals scatter them over and moves each base there.
+  // Its floor is at the plaza's height, shut in by hills on every side, and a pass cut through Mesagoza's north
+  // mountains east of the academy leads into it. Read after south_and_east.json and before titans.json (their names
+  // sort so), and kept clear of every polygon of titans.json, whose hills would otherwise be laid over it. Our own land,
+  // nothing traced
+  "brushes": [
+    // The hills round the valley, laid first, so the floor is cut into them
+    { "kind": "plateau", "name": "the hills round Starfall Street", "polygon": [[-92, -584], [92, -584], [92, -400], [-92, -400]], "height": 40, "falloff": 3 },
+    { "kind": "plateau", "name": "Starfall Street's floor", "polygon": [[-86, -538], [86, -538], [86, -404], [-86, -404]], "height": 12, "falloff": 3 },
+    // The pass through Mesagoza's north mountains, east of the academy, from the plaza's level onto the valley's floor
+    { "kind": "plateau", "name": "the pass to Starfall Street", "polygon": [[48, -410], [64, -410], [64, -372], [48, -372]], "height": 12, "falloff": 3 }
+  ],
+  "paint": [
+    // The valley's floor is beaten earth, the yards before the five gates paths worn bare by the crews
+    { "cover": "Path", "polygon": [[48, -410], [64, -410], [64, -372], [48, -372]], "maxY": 12.5 },
+    { "cover": "Path", "polygon": [[-86, -538], [86, -538], [86, -404], [-86, -404]], "maxY": 12.5 },
+    { "cover": "Mud", "polygon": [[-68, -448], [-32, -448], [-32, -412], [-68, -412]], "maxY": 12.5 },
+    { "cover": "Mud", "polygon": [[32, -448], [68, -448], [68, -412], [32, -412]], "maxY": 12.5 },
+    { "cover": "Mud", "polygon": [[-68, -508], [-32, -508], [-32, -472], [-68, -472]], "maxY": 12.5 },
+    { "cover": "Mud", "polygon": [[32, -508], [68, -508], [68, -472], [32, -472]], "maxY": 12.5 },
+    { "cover": "Mud", "polygon": [[-18, -528], [18, -528], [18, -492], [-18, -492]], "maxY": 12.5 }
+  ]
+}

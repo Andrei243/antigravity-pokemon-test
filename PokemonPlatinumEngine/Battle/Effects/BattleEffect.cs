@@ -102,6 +102,12 @@ public interface IBattleContext
     /// </summary>
     bool SetTerrain(FieldCondition terrain, Battler? setter, string? line = null);
 
+    /// <summary>
+    /// The holder's ability tells a tale over the field for the tale's turns (plan 46 · CP10, Eclipse): none where tales aren't played
+    /// (the rules without them) or while another is told. Says <paramref name="line"/> and the tale's own. False when nothing came of it.
+    /// </summary>
+    bool TellTaleFromAbility(Battler holder, string tale, string line);
+
     /// <summary>Someone on the field, still standing, has this ability in force (Damp against Aftermath).</summary>
     bool AnyoneHas(string ability);
 

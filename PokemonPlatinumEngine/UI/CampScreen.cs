@@ -27,7 +27,14 @@ public enum CampPhase { Team, Pantry, Stirring, Served }
 /// What the camp cooks with (plan 39 · CR6): the kit's pouch, the bag, the powers a dish starts, the timing assist and the
 /// seed the pots of this visit are worked out from. The camp has none without the crafting kit.
 /// </summary>
-public sealed record CampKitchen(MaterialPouch Pouch, Inventory Bag, PowerState Powers, TimingAssist Assist, uint Seed);
+public sealed record CampKitchen(MaterialPouch Pouch, Inventory Bag, PowerState Powers, TimingAssist Assist, uint Seed, KitchenRecipes? Table = null)
+{
+    /// <summary>The table the pot cooks from: the camp's dishes, or at a Paldean picnic the sandwiches (plan 34 · PD7).</summary>
+    public KitchenRecipes Recipes => Table ?? Meals.Table;
+
+    /// <summary>Whether the pot makes the picnic's sandwiches (plan 34 · PD7).</summary>
+    public bool Sandwiches => ReferenceEquals(Recipes, Meals.Sandwiches);
+}
 
 /// <summary>
 /// The camp's screen (plan 10 · F6; style guide, "Menu screens (G10)", "The camp"): the team stands in two rows of
@@ -228,7 +235,10 @@ public sealed class CampScreen
     public List<KitchenIngredient> Pot { get; } = new();
 
     /// <summary>The dish the pot would cook now.</summary>
-    public KitchenDish Expected => Meals.DishFor(Pot);
+    public KitchenDish Expected => Meals.DishFor(Pot, Recipes);
+
+    /// <summary>The table the pot cooks from (the camp's dishes, or a picnic's sandwiches: plan 34 · PD7).</summary>
+    public KitchenRecipes Recipes => Supplies?.Recipes ?? Meals.Table;
 
     /// <summary>The pot on the fire while it is stirred; null otherwise.</summary>
     public Kitchen? Stirring { get; private set; }
@@ -250,7 +260,7 @@ public sealed class CampScreen
     public void AskToCook()
     {
         if (Supplies is not { } s || Phase != CampPhase.Team) return;
-        OnHand = Meals.OnHand(s.Pouch, s.Bag);
+        OnHand = Meals.OnHand(s.Pouch, s.Bag, s.Recipes);
         if (OnHand.Count == 0)
         {
             Note = Text.Of("campPot.note.nothing");
@@ -261,7 +271,7 @@ public sealed class CampScreen
         PantryCursor = 0;
         PantryFirst = 0;
         Phase = CampPhase.Pantry;
-        Note = Text.Of("campPot.note.choose", ("n", Meals.Table.Most));
+        Note = Text.Of("campPot.note.choose", ("n", Recipes.Most));
         AudioManager.PlaySound("select");
     }
 
@@ -296,7 +306,7 @@ public sealed class CampScreen
             return;
         }
         var ingredient = OnHand[PantryCursor];
-        if (Pot.Count >= Meals.Table.Most) { Refuse(Text.Of("campPot.note.full", ("n", Meals.Table.Most))); return; }
+        if (Pot.Count >= Recipes.Most) { Refuse(Text.Of("campPot.note.full", ("n", Recipes.Most))); return; }
         if (InPot(ingredient) >= Meals.Held(ingredient, s.Pouch, s.Bag)) { Refuse(Text.Of("campPot.note.noMore", ("name", ingredient.Name))); return; }
         Pot.Add(ingredient);
         Note = Text.Of("campPot.note.added", ("name", ingredient.Name), ("dish", Meals.NameOf(Expected)));
@@ -310,7 +320,7 @@ public sealed class CampScreen
         if (Pot.Count > 0)
         {
             Pot.RemoveAt(Pot.Count - 1);
-            Note = Pot.Count > 0 ? Text.Of("campPot.note.added", ("name", Pot[^1].Name), ("dish", Meals.NameOf(Expected))) : Text.Of("campPot.note.choose", ("n", Meals.Table.Most));
+            Note = Pot.Count > 0 ? Text.Of("campPot.note.added", ("name", Pot[^1].Name), ("dish", Meals.NameOf(Expected))) : Text.Of("campPot.note.choose", ("n", Recipes.Most));
             AudioManager.PlaySound("cancel");
             return;
         }
@@ -353,7 +363,7 @@ public sealed class CampScreen
         var dish = Expected;
         var type = Meals.TypeFor(Pot);
         Meals.Use(Pot, s.Pouch, s.Bag);
-        Served = Meals.Serve(Party, dish, pot.Grade, s.Powers, Visit, type);
+        Served = Meals.Serve(Party, dish, pot.Grade, s.Powers, Visit, type, s.Recipes);
         cooked++;
         Stirring = null;
         ServedFor = 0f;

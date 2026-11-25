@@ -1,0 +1,39 @@
+# Artazon on the open map (plan 34 · PD3's second session). Brassius's gym test, the hidden Sunflora, is a search about
+# the town as Scarlet and Violet's is: three Sunflora stand perfectly still among the flowers and the sculptures, each
+# found with a word and sent hopping back to the gym (its own flag, which takes it off the map); the
+# third found, whichever it is, sets the test done. Brassius battles only
+# a challenger who has found all three (Artazon_GymTest.txt). Our own lines.
+
+
+script HiddenSunflora1
+  text "That flower by the beds has eyes... It's a Sunflora, standing perfectly still! {player} said hello."
+  text "Found out, the Sunflora hopped off toward the gym!"
+  setflag FLAG_PALDEA_ARTAZON_TEST_1
+  call AllFound
+  end
+
+
+script HiddenSunflora2
+  text "This sunflower by the house is a little too cheerful. It's another Sunflora! {player} tapped it on the leaf."
+  text "It giggled and hopped away toward the gym!"
+  setflag FLAG_PALDEA_ARTAZON_TEST_2
+  call AllFound
+  end
+
+
+script HiddenSunflora3
+  text "A Sunflora was hiding in plain sight beside the gym. {player} found it!"
+  text "It spun round and hopped inside. Every Sunflora has been found!"
+  setflag FLAG_PALDEA_ARTAZON_TEST_3
+  call AllFound
+  end
+
+
+# The test is done once all three are found, in any order: the flag the leader asks for
+script AllFound
+  if not flag FLAG_PALDEA_ARTAZON_TEST_1 goto Return
+  if not flag FLAG_PALDEA_ARTAZON_TEST_2 goto Return
+  if not flag FLAG_PALDEA_ARTAZON_TEST_3 goto Return
+  setflag FLAG_PALDEA_ARTAZON_TEST_DONE
+label Return
+  return

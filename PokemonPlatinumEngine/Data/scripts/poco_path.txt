@@ -31,3 +31,76 @@ script NemonasLesson
   objective paldeaMesagoza
   endscene
   end
+
+
+# Arven at the lighthouse once term has begun (plan 34 · PD4): the Path of Legends begins. VAR_PALDEA_LEGENDS is
+# stony_cliff.txt's count
+script ArvenLighthouse
+  speaker "Arven"
+  if var VAR_PALDEA_STORY < 7 goto Busy
+  if var VAR_PALDEA_LEGENDS >= 1 goto Begun
+  scene "Arven at the lighthouse"
+  faceto arven_lighthouse player
+  say "You're the transfer student with the strange ride, aren't you? The director said you might come out here."
+  say "I'm Arven. I'm looking for Herba Mystica: herbs so strong that one leaf makes any dish a cure."
+  say "The trouble is, they only grow where the Titans live. Huge Pokémon, bigger than anything you've seen, and furious."
+  say "One of them has dug in at the Stony Cliff: the gully north of the road from Mesagoza to Artazon. A Klawf."
+  say "I can cook, but I can't beat a Titan alone. Help me, and whatever herbs we find, your ride gets its share."
+  setflag FLAG_PALDEA_LEGENDS_BEGUN
+  setvar VAR_PALDEA_LEGENDS 1
+  endscene
+  end
+label Busy
+  say "Hm? I'm busy. Go on, the academy's waiting for you."
+  end
+label Begun
+  if var VAR_PALDEA_LEGENDS >= 12 goto Done
+  if var VAR_PALDEA_LEGENDS >= 11 goto Mabosstiff
+  if var VAR_PALDEA_LEGENDS >= 9 goto FalseDragon
+  if var VAR_PALDEA_LEGENDS >= 7 goto Quaking
+  if var VAR_PALDEA_LEGENDS >= 5 goto LurkingSteel
+  if var VAR_PALDEA_LEGENDS >= 3 goto OpenSky
+  say "The Stony Cliff's the gully north of the road east out of Mesagoza, before Artazon. Be careful of the rocks."
+  end
+label OpenSky
+  say "Next Titan's a bird, they say, in a gully off the West Province's road, east of Asado Desert."
+  end
+label LurkingSteel
+  say "The next one's east: a cutting off the road north from Artazon to Levincia. Something steel's under the sand."
+  end
+label Quaking
+  say "The next Titan's in the dusty basin north of Cortondo. Mind your footing when it starts to run."
+  end
+label FalseDragon
+  say "Last one's at Casseroya Lake, in the hollow off the road north from Medali. A small dragon and a huge friend."
+  end
+label Done
+  say "Mabosstiff's been bouncing off the walls since. Come back any time. I'll cook."
+  end
+
+
+# Back at the lighthouse after the fifth Titan (plan 34 · PD4, its second session): why Arven wanted the herbs, his
+# Mabosstiff well again, and his battle. VAR_PALDEA_LEGENDS 11 to 12 (FLAG_PALDEA_LEGENDS_DONE)
+label Mabosstiff
+  scene "Arven's Mabosstiff"
+  faceto arven_lighthouse player
+  say "You came. I owe you the truth about the herbs. They were never really for cooking."
+  say "My Mabosstiff got hurt protecting me, years back. Nothing the doctors did helped. I've been feeding it herbs since."
+  say "I don't know if it was the fifth batch or all five together, but... watch."
+  cry "Mabosstiff"
+  text "A Mabosstiff bounds out from behind the lighthouse and slams into Arven's legs, its tail going like a drum."
+  say "Ha! Easy, easy! See? It's back. It's really back. And it wants to battle, I can tell. So do I."
+  say "Show me what you and your ride's friends can do. I won't hold back. My partner wouldn't let me."
+  battle arven_lighthouse as "paldea_arven"
+  say "You're strong. Stronger than a Titan. Thanks for walking the Path of Legends with me."
+  say "Say thanks too, buddy. ...That's a lick. That counts."
+  setflag FLAG_PALDEA_LEGENDS_DONE
+  setvar VAR_PALDEA_LEGENDS 12
+  endscene
+  end
+
+# Its Tera crystal (plan 34 · PD7): what it holds today is drawn by the day (Models/Raids.cs), the raid is common.TeraCrystal
+script CrystalPoco1
+  raid crystal "poco_1"
+  call TeraCrystal
+  end

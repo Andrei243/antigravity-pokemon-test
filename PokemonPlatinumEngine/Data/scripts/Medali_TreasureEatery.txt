@@ -1,0 +1,34 @@
+# The Treasure Eatery (plan 34 · PD6): Larry's gym test is the secret order at its counter, three choices made as the
+# hints about the town give them (medali.txt): the grilled rice balls, lemon on the side, extra crispy. Right, the test
+# is done (FLAG_PALDEA_MEDALI_TEST_DONE, which Larry asks for: Medali_GymTest.txt); wrong anywhere, the dish comes as the
+# menu has it and the order may be made again. Our own lines and our own order.
+
+
+script Order
+  speaker "Waiter"
+  if flag FLAG_PALDEA_MEDALI_TEST_DONE goto Done
+  say "Welcome to the Treasure Eatery! What can I get you?"
+  choose "What will you order?" "Grilled rice balls" "Seafood stew" "Nothing, thanks"
+  if result == 2 goto Leave
+  if result == 1 goto Plain
+  choose "Anything on the side?" "Lemon" "Mustard" "No side"
+  if result != 0 goto Plain
+  choose "And how would you like them?" "Extra crispy" "Just as they come"
+  if result != 0 goto Plain
+  scene "The secret order"
+  text "The waiter's eyebrows went up. He leaned in and lowered his voice."
+  say "Grilled rice balls, lemon on the side, extra crispy. That's the secret order. You've passed Larry's test!"
+  say "Head up to the gym when you've eaten. He'll be expecting you. Probably. He's always expecting something."
+  setflag FLAG_PALDEA_MEDALI_TEST_DONE
+  endscene
+  end
+label Plain
+  say "Coming right up, just as it is on the menu. Enjoy your meal!"
+  text "It was very good. But it wasn't the secret order."
+  end
+label Leave
+  say "Take your time. Ask around town, if you're after something special."
+  end
+label Done
+  say "The usual? Grilled rice balls, lemon on the side, extra crispy. You're a regular now!"
+  end

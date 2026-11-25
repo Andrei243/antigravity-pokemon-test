@@ -388,6 +388,9 @@ public sealed partial class BattleCore
             if (!Settle()) return;
         }
 
+        // Echo Pouch's sound strikes again (plan 46 · CP10)
+        if (!EchoesLand()) return;
+
         // A perish count falls; at nothing its Pokémon faints
         foreach (var b in speedOrder.ToList())
         {

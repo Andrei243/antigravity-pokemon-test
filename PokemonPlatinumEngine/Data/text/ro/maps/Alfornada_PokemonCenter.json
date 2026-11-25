@@ -1,0 +1,69 @@
+{
+  "displayName": {
+    "en": [
+      "Alfornada Pokémon Center"
+    ],
+    "text": [
+      "Centrul Pokémon din Alfornada"
+    ]
+  },
+  "people": {
+    "nurse": {
+      "name": {
+        "en": [
+          "Nurse Joy"
+        ],
+        "text": [
+          "Asistenta Joy"
+        ]
+      }
+    },
+    "12,3": {
+      "name": {
+        "en": [
+          "PC Terminal"
+        ],
+        "text": [
+          "Terminal PC"
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clerk: Welcome! In Paldea the shop counter is right here in the Pokémon Center."
+        ],
+        "text": [
+          "Vânzător: Bun venit! În Paldea, tejgheaua magazinului e chiar aici, în Centrul Pokémon."
+        ]
+      }
+    },
+    "student": {
+      "name": {
+        "en": [
+          "Student"
+        ],
+        "text": [
+          "Elevul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Alfornada's a long way from anywhere, but people come for the ruins and stay for Tulip's photographs."
+        ],
+        "text": [
+          "Alfornada e departe de orice, dar oamenii vin pentru ruine și rămân pentru fotografiile lui Tulip."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

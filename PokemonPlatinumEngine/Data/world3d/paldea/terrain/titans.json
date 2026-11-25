@@ -1,0 +1,32 @@
+{
+  // The Titans' places of the Path of Legends (plan 34 · PD4), cut into the hills the provinces' ways run between. Read
+  // after south_and_east.json (its name sorts after it), so its floors cut the hills that file lays. Our own land, from
+  // public descriptions of the places and memory of play, nothing traced
+  //
+  // The Stony Cliff (PD4's first session): a gully cut north into the hills from the middle of the South Province's
+  // third area, its floor at the road's height, climbing at its head over a ramp onto a ledge six metres up where the
+  // Titan Klawf keeps its den and its Herba Mystica. In the gully stands a crag of rock whose south face is painted
+  // climbable: the mount can stand on its top only once it climbs (the fifth Titan's power, PD4's second session)
+  //
+  // The other four (PD4's second session) were stand-ins laid beside the land then built, until PD6 built the provinces
+  // the originals stand in and moved each Titan there: Open Sky (Bombirdier) and Quaking Earth (Great Tusk or Iron
+  // Treads) to the West Province and Asado Desert in its first session (west.json), Lurking Steel (Orthworm) to the East
+  // Province's third area and False Dragon (Tatsugiri and Dondozo) to Casseroya Lake in its second (west_north.json)
+  "brushes": [
+    // The hills north of the third area run on past the gully's head (south_and_east.json's stop at its edge), so the
+    // ledge is shut in on every side but the ramp
+    { "kind": "plateau", "name": "the hills round the Stony Cliff", "polygon": [[96, -512], [352, -512], [352, -410], [96, -410]], "height": 40, "falloff": 4 },
+    // The hills north of Cortondo and of the South Province's second area run on as far, round Open Sky and Quaking Earth
+    { "kind": "plateau", "name": "the hills north of Cortondo", "polygon": [[-512, -540], [-96, -540], [-96, -410], [-512, -410]], "height": 40, "falloff": 4 },
+    { "kind": "plateau", "name": "the Stony Cliff's gully", "polygon": [[200, -420], [252, -420], [252, -360], [200, -360]], "height": 12, "falloff": 3 },
+    { "kind": "plateau", "name": "the Titan Klawf's ledge", "polygon": [[204, -452], [248, -452], [248, -420], [204, -420]], "height": 18, "falloff": 12 }
+    // (Open Sky, Quaking Earth, Lurking Steel and False Dragon were stand-ins here until plan 34 · PD6 moved them to
+    // their provinces: west.json and west_north.json)
+  ],
+  "paint": [
+    // The gully's floor is broken stone, the ledge bare rock
+    { "cover": "Rock", "polygon": [[204, -452], [248, -452], [248, -420], [204, -420]], "minY": 17 },
+    // The crag's south face, from its foot to its top (carve/titans.json's box), painted climbable
+    { "cover": "ClimbableRock", "polygon": [[237.6, -398.6], [248.4, -398.6], [248.4, -397.4], [237.6, -397.4]] }
+  ]
+}

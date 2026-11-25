@@ -1,0 +1,44 @@
+# Montenevera, the town of Ryme's stage: a bright pulse lead bouncing over a synth bass in A minor, a kit with a backbeat
+# that knows it is being watched, a pad of warm breath in the cold and a marimba's riff; at night a muted trumpet.
+# Original composition for this game (plan 34 · PD6, its second session), in the modern sound.
+title Montenevera
+tempo 92
+meter 4/4
+reverb 0.26
+nighttempo 0.94
+room chamber 1.2
+
+track lead pulse night=mutedtrumpet vol=0.74 pan=0.08 rev=0.22
+  r1 | L o5 a8 a8 r8 e8 c4 e4 | o5 c8 c8 r8 a8 f4 a4 | o5 g8 g8 r8 e8 c4 e4 |
+  o5 d8 d8 r8 o4 b8 g4 b4 | o5 e8 e8 r8 c8 o4 a4 o5 c4 | o5 f8 f8 r8 c8 o4 a4 o5 c4 | o5 g8 g8 r8 d8 o4 b4 o5 d4 |
+  o5 e8 e8 r8 o4 b8 g+4 b4 | o5 a4 e8 c8 e4 a4 | o5 a4 f8 c8 f4 a4 | o5 g4 e8 c8 e4 g4 |
+  o5 g4 d8 o4 b8 o5 d4 g4 | o5 f4 c8 o4 a8 o5 c4 f4 | o5 d4 o4 b8 g8 b4 o5 d4 | o5 e4 c8 o4 a8 o5 c4 e4 |
+  o5 a2. r4 |
+
+track arp marimba vol=0.46 pan=-0.3 rev=0.2
+  o3 a8 o4 e8 o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o4 e8 | L o3 a8 o4 e8 o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o4 e8 | o3 f8 o4 c8 o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 c8 | o3 c8 o3 g8 o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o3 g8 |
+  o3 g8 o4 d8 o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 d8 | o3 a8 o4 e8 o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o4 e8 | o3 f8 o4 c8 o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 c8 | o3 g8 o4 d8 o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 d8 |
+  o3 e8 o3 b8 o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o3 b8 | o3 a8 o4 e8 o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o4 e8 | o3 f8 o4 c8 o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 c8 | o3 c8 o3 g8 o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o3 g8 |
+  o3 g8 o4 d8 o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 d8 | o3 f8 o4 c8 o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 c8 | o3 g8 o4 d8 o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 d8 | o3 a8 o4 e8 o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o4 e8 |
+  o3 a8 o4 e8 o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o4 e8 |
+
+track pad warmpad vol=0.22 pan=0.25 rev=0.4
+  o4 (a > c e)1 | L o4 (a > c e)1 | o4 (f a > c)1 | o4 (c e g)1 |
+  o4 (g b > d)1 | o4 (a > c e)1 | o4 (f a > c)1 | o4 (g b > d)1 |
+  o4 (e g+ b)1 | o4 (a > c e)1 | o4 (f a > c)1 | o4 (c e g)1 |
+  o4 (g b > d)1 | o4 (f a > c)1 | o4 (g b > d)1 | o4 (a > c e)1 |
+  o4 (a > c e)1 |
+
+track bass synthbass vol=0.9 rev=0.06
+  o2 a2 o3 e2 | L o2 a2 o3 e2 | o2 f2 o3 c2 | o2 c2 o2 g2 |
+  o2 g2 o3 d2 | o2 a2 o3 e2 | o2 f2 o3 c2 | o2 g2 o3 d2 |
+  o2 e2 o2 b2 | o2 a2 o3 e2 | o2 f2 o3 c2 | o2 c2 o2 g2 |
+  o2 g2 o3 d2 | o2 f2 o3 c2 | o2 g2 o3 d2 | o2 a2 o3 e2 |
+  o2 a2 o3 e2 |
+
+track drums kit vol=0.34 pan=0.1 rev=0.1
+  v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | L v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 |
+  v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 |
+  v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 |
+  v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 | v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 |
+  v52 b8 v30 h8 v48 x8 v30 h8 v46 b8 v52 b8 v48 x8 v30 h8 |

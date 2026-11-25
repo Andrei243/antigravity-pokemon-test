@@ -419,6 +419,40 @@ public static class Objectives
         (807, "paldeaKaty", RegionBadge(RegionDatabase.Paldea, "Bug"), false),
         (808, "paldeaBrassius", RegionBadge(RegionDatabase.Paldea, "Grass"), false),
         (809, "paldeaIono", RegionBadge(RegionDatabase.Paldea, "Electric"), false),
+        // The Path of Legends (plan 34 · PD4) by VAR_PALDEA_LEGENDS, stony_cliff.txt's count: Arven at the lighthouse,
+        // then the Titan Klawf at the Stony Cliff
+        (810, "paldeaArven", AtLeast("VAR_PALDEA_LEGENDS", 1), false),
+        (811, "paldeaKlawf", AtLeast("VAR_PALDEA_LEGENDS", 3), false),
+        // PD4's second session: the other four Titans, each beaten twice, and Arven's battle back at the lighthouse
+        (812, "paldeaBombirdier", AtLeast("VAR_PALDEA_LEGENDS", 5), false),
+        (813, "paldeaOrthworm", AtLeast("VAR_PALDEA_LEGENDS", 7), false),
+        (814, "paldeaQuaking", AtLeast("VAR_PALDEA_LEGENDS", 9), false),
+        (815, "paldeaFalseDragon", AtLeast("VAR_PALDEA_LEGENDS", 11), false),
+        (816, "paldeaArvenBattle", AtLeast("VAR_PALDEA_LEGENDS", 12), false),
+        // The West Province's two gyms (plan 34 · PD6, its first session), each done by its own badge, after the Path of
+        // Legends in the list as the first three gyms come before it. Their ids stand at 830, clear of Starfall Street's
+        // (plan 34 · PD5), which a session beside this one builds
+        (830, "paldeaKofu", RegionBadge(RegionDatabase.Paldea, "Water"), false),
+        (831, "paldeaLarry", RegionBadge(RegionDatabase.Paldea, "Normal"), false),
+        // The last three gyms (plan 34 · PD6, its second session), in the academy's order: Montenevera's in the snow,
+        // Alfornada's beyond its cavern, and Glaseado's at the top of the mountain
+        (832, "paldeaRyme", RegionBadge(RegionDatabase.Paldea, "Ghost"), false),
+        (833, "paldeaTulip", RegionBadge(RegionDatabase.Paldea, "Psychic"), false),
+        (834, "paldeaGrusha", RegionBadge(RegionDatabase.Paldea, "Ice"), false),
+        // The Pokémon League (plan 34 · PD8, its first session): the interview, the Elite Four, Geeta and Nemona, done by
+        // the Hall of Fame
+        (835, "paldeaLeague", F("PaldeaHallOfFame"), false),
+        // Area Zero and the Way Home (plan 34 · PD8, its second session): the Zero Gate opened with the friends, the
+        // crater's four stations, the Zero Lab, the professor's AI, and home
+        (836, "paldeaAreaZero", F("FLAG_PALDEA_WAY_HOME"), false),
+        // Starfall Street (plan 34 · PD5) by VAR_PALDEA_STARFALL, starfall_street.txt's count: Cassiopeia's first call,
+        // then each of the five bases by its boss beaten (the 850s, kept apart from the gyms' ids PD6 adds)
+        (850, "paldeaStarfall", AtLeast("VAR_PALDEA_STARFALL", 1), false),
+        (851, "paldeaGiacomo", F("FLAG_PALDEA_STAR_GIACOMO_BEATEN"), false),
+        (852, "paldeaMela", F("FLAG_PALDEA_STAR_MELA_BEATEN"), false),
+        (853, "paldeaAtticus", F("FLAG_PALDEA_STAR_ATTICUS_BEATEN"), false),
+        (854, "paldeaOrtega", F("FLAG_PALDEA_STAR_ORTEGA_BEATEN"), false),
+        (855, "paldeaEri", F("FLAG_PALDEA_STAR_ERI_BEATEN"), false),
         (899, "paldeaFree", null, false));
 
     private static readonly Dictionary<string, Objective> ByName = All.ToDictionary(o => o.Name, StringComparer.Ordinal);

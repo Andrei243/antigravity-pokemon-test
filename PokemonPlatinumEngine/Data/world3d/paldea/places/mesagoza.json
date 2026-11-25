@@ -48,6 +48,10 @@
     {
       "name": "mesagoza_gentleman", "at": [16, 12.0, -318], "yaw": 270, "look": "gentleman", "displayName": "Gentleman",
       "lines": ["Mesagoza was a city long before the academy was built on its hill. These streets are older than any of us."]
+    },
+    // The deli before the café at the stairs' foot (plan 34 · PD7): the pantry's goods for a picnic's sandwiches, no kit needed
+    {
+      "name": "mesagoza_deli", "at": [-21, 12.0, -342.5], "yaw": 0, "look": "clerk", "displayName": "Deli Clerk", "script": "MesagozaDeli"
     }
   ],
   "trees": [

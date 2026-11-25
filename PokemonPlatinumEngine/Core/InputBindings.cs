@@ -192,6 +192,7 @@ public sealed class InputBindings
         Set(GameAction.Report, Of(K(KeyboardKey.F8)));
         Set(GameAction.Photo, Of(K(KeyboardKey.F9), GamepadButton.MiddleLeft));
         Set(GameAction.Mount, Of(K(KeyboardKey.C), GamepadButton.RightFaceLeft));
+        Set(GameAction.LetsGo, Of(K(KeyboardKey.R), GamepadButton.RightTrigger2));
         return table;
     }
 

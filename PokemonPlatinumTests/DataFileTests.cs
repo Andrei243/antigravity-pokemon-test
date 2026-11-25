@@ -136,14 +136,15 @@ public class DataFileTests
     public void EveryFormHasItsOwnWrittenEntries()
     {
         // Plan 08 · P17: all 541 forms, each by its Showdown name, with two entries and a habitat of its own for the FORMS page
-        var forms = PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new List<PokemonForm>()).ToList();
+        // Carpathia's forms and species (plan 46 · CP3) wait for their entries until CP9; the generated sentence shows meanwhile
+        var forms = PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new List<PokemonForm>()).Where(f => !f.Name.EndsWith("-Carpathia")).ToList();
         Assert.True(forms.Count >= 541, "The data has " + forms.Count + " forms");
         var missing = forms.Where(f => DexEntries.Of(f.Name) == null).Select(f => f.Name).ToList();
         Assert.True(missing.Count == 0, "No written entries for " + string.Join(", ", missing));
         foreach (var form in forms)
             Assert.Equal(2, DexEntries.EntriesOf(form.Name)!.Count);
         // The file holds exactly the species, ours too (plan 03 · D14), and the forms
-        Assert.Equal(PokemonDatabase.Everyone().Count() + forms.Count, DexEntries.All.Count);
+        Assert.Equal(PokemonDatabase.Everyone().Count(s => !s.IsCarpathian) + forms.Count, DexEntries.All.Count);
     }
 
     [Fact]
@@ -214,8 +215,9 @@ public class DataFileTests
         // too, as moves of a kind of their own that nothing learns (CoverageTests counts them)
         var all = MoveDatabase.GetAll().ToList();
         // (and since plan 06 · R31 the 72 moves of our own learned past level 100, generation 0)
+        // (and since plan 46 · CP10 its seven signature moves, ids 3101 to 3107)
         Assert.Equal(847, all.Count(m => m.Kind == MoveKind.Standard && m.Generation > 0));
-        Assert.Equal(72, all.Count(m => m.Kind == MoveKind.Standard && m.Generation == 0));
+        Assert.Equal(72 + 7, all.Count(m => m.Kind == MoveKind.Standard && m.Generation == 0));
         Assert.Equal(467, all.Count(m => m.Id <= 467));
         Assert.Equal(all.Count, all.Select(m => m.Id).Distinct().Count());
         Assert.DoesNotContain(all, m => m.Kind == MoveKind.Standard && m.Name is "Breakneck Blitz" or "Max Strike" or "Catastropika");
@@ -299,7 +301,7 @@ public class DataFileTests
     public void TestAbilitiesLoadFromFile()
     {
         var all = AbilityDatabase.GetAll().ToList();
-        Assert.Equal(313, all.Count);
+        Assert.Equal(313 + 7, all.Count); // the games' 313 and plan 46 · CP10's seven (generation 0)
         Assert.All(all, a => Assert.NotEmpty(a.Description));
 
         // Every ability with battle code is one the data knows

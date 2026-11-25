@@ -1,0 +1,936 @@
+{
+  "CassiopeiaCalls": [
+    {
+      "en": [
+        "{player}'s phone buzzes. The caller's name is nothing but a little star."
+      ],
+      "text": [
+        "Telefonul lui {player} vibrează. În locul numelui apelantului e doar o steluță."
+      ]
+    },
+    {
+      "en": [
+        "Cassiopeia"
+      ],
+      "text": [
+        "Cassiopeia"
+      ]
+    },
+    {
+      "en": [
+        "Hello. You don't know me, and that's fine. Call me Cassiopeia."
+      ],
+      "text": [
+        "Bună. Nu mă cunoști, și e în regulă. Spune-mi Cassiopeia."
+      ]
+    },
+    {
+      "en": [
+        "This street is where Team Star keeps its five bases. They used to be students. Now they mostly guard gates."
+      ],
+      "text": [
+        "Pe strada asta își ține Team Star cele cinci baze. Erau elevi odată. Acum mai mult păzesc porți."
+      ]
+    },
+    {
+      "en": [
+        "I want them broken up. Raid a gate, beat the boss behind it. I'll be watching. Good luck, {player}."
+      ],
+      "text": [
+        "Vreau să fie desființate. Atacă o poartă, învinge-l pe șeful din spatele ei. Voi fi atentă. Baftă, {player}."
+      ]
+    }
+  ],
+  "CassiopeiaAfter": [
+    {
+      "en": [
+        "Cassiopeia"
+      ],
+      "text": [
+        "Cassiopeia"
+      ]
+    },
+    {
+      "en": [
+        "I saw that. One more crew without its boss. The others will have heard by now."
+      ],
+      "text": [
+        "Am văzut. Încă o echipă fără șef. Ceilalți au aflat deja, sigur."
+      ]
+    },
+    {
+      "en": [
+        "Take a rest if you need it. The gates aren't going anywhere."
+      ],
+      "text": [
+        "Odihnește-te dacă ai nevoie. Porțile nu pleacă nicăieri."
+      ]
+    },
+    {
+      "en": [
+        "That's the fifth. Every base on Starfall Street has lost its boss."
+      ],
+      "text": [
+        "Asta a fost a cincea. Toate bazele de pe Starfall Street și-au pierdut șeful."
+      ]
+    },
+    {
+      "en": [
+        "Thank you, {player}. Really. There's more I should tell you, but not over the phone. Not yet."
+      ],
+      "text": [
+        "Îți mulțumesc, {player}. Sincer. Mai am să-ți spun câte ceva, dar nu la telefon. Nu încă."
+      ]
+    }
+  ],
+  "GiacomoGate": [
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "A raid? On us? Fine! Our Pokémon will run you right off the street."
+      ],
+      "text": [
+        "Un atac? Asupra noastră? Bine! Pokémonii noștri te gonesc de pe stradă."
+      ]
+    },
+    {
+      "en": [
+        "Start the raid on the gate?"
+      ],
+      "text": [
+        "Începi atacul asupra porții?"
+      ]
+    },
+    {
+      "en": [
+        "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+      ],
+      "text": [
+        "Învinge cincisprezece Pokémoni ai echipei până expiră timpul! Trimite-ți echipa cu Let's Go!"
+      ]
+    },
+    {
+      "en": [
+        "Thought so. Off you go."
+      ],
+      "text": [
+        "Așa mă gândeam. Hai, pleacă."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "Nothing to see here. This is a Team Star gate, so keep walking."
+      ],
+      "text": [
+        "Nimic de văzut aici. E o poartă Team Star, așa că mergi mai departe."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The boss is out. Don't look at me, go and talk to him."
+      ],
+      "text": [
+        "Șeful a ieșit. Nu te uita la mine, du-te și vorbește cu el."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "No boss, no base. Guess I'll go to class tomorrow. Maybe."
+      ],
+      "text": [
+        "Fără șef, fără bază. Poate mă duc mâine la ore. Poate."
+      ]
+    }
+  ],
+  "GiacomoRaidWon": [
+    {
+      "en": [
+        "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+      ],
+      "text": [
+        "Ultimul Pokémon al echipei se retrage, iar oblonul porții se ridică zăngănind."
+      ]
+    },
+    {
+      "en": [
+        "Giacomo"
+      ],
+      "text": [
+        "Giacomo"
+      ]
+    },
+    {
+      "en": [
+        "So you're the one wrecking my set. I spin the tracks on this street, and the music's not over."
+      ],
+      "text": [
+        "Deci tu îmi strici setul. Eu pun muzica pe strada asta, și piesa nu s-a terminat."
+      ]
+    },
+    {
+      "en": [
+        "Meet the Starmobile. Let's turn it up!"
+      ],
+      "text": [
+        "Fă cunoștință cu Starmobilul. Hai să dăm volumul mai tare!"
+      ]
+    }
+  ],
+  "GiacomoRaidLost": [
+    {
+      "en": [
+        "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+      ],
+      "text": [
+        "Timpul a expirat! Echipa se regrupează și poarta rezistă. Trage-ți sufletul și încearcă din nou."
+      ]
+    }
+  ],
+  "GiacomoBoss": [
+    {
+      "en": [
+        "Giacomo"
+      ],
+      "text": [
+        "Giacomo"
+      ]
+    },
+    {
+      "en": [
+        "Back for an encore? Fine by me."
+      ],
+      "text": [
+        "Te-ai întors pentru un bis? N-am nimic împotrivă."
+      ]
+    }
+  ],
+  "GiacomoFight": [
+    {
+      "en": [
+        "Giacomo"
+      ],
+      "text": [
+        "Giacomo"
+      ]
+    },
+    {
+      "en": [
+        "The record skipped. All right, you win. The crew's done here."
+      ],
+      "text": [
+        "S-a zgâriat discul. Bine, ai câștigat. Echipa termină aici."
+      ]
+    }
+  ],
+  "MelaGate": [
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "You want to raid Mela's gate? You'll get burned, kid."
+      ],
+      "text": [
+        "Vrei să ataci poarta Melei? O să te arzi, puștiule."
+      ]
+    },
+    {
+      "en": [
+        "Start the raid on the gate?"
+      ],
+      "text": [
+        "Începi atacul asupra porții?"
+      ]
+    },
+    {
+      "en": [
+        "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+      ],
+      "text": [
+        "Învinge cincisprezece Pokémoni ai echipei până expiră timpul! Trimite-ți echipa cu Let's Go!"
+      ]
+    },
+    {
+      "en": [
+        "Smart. Stay cool."
+      ],
+      "text": [
+        "Înțelept. Rămâi calm."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "This gate's off limits. Unless you want trouble, and you don't."
+      ],
+      "text": [
+        "Poarta asta e interzisă. Doar dacă vrei necazuri, și nu vrei."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The boss is out, and she's furious. I'd hurry if I were you."
+      ],
+      "text": [
+        "Șefa a ieșit și e furioasă. Eu m-aș grăbi în locul tău."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The fire's out. The boss says we're done here."
+      ],
+      "text": [
+        "Focul s-a stins. Șefa zice că am terminat aici."
+      ]
+    }
+  ],
+  "MelaRaidWon": [
+    {
+      "en": [
+        "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+      ],
+      "text": [
+        "Ultimul Pokémon al echipei se retrage, iar oblonul porții se ridică zăngănind."
+      ]
+    },
+    {
+      "en": [
+        "Mela"
+      ],
+      "text": [
+        "Mela"
+      ]
+    },
+    {
+      "en": [
+        "You've got some nerve, knocking over my crew like that."
+      ],
+      "text": [
+        "Ai tupeu să-mi dobori echipa așa."
+      ]
+    },
+    {
+      "en": [
+        "The Starmobile's warmed up. Don't blame me when you get scorched!"
+      ],
+      "text": [
+        "Starmobilul s-a încălzit. Să nu dai vina pe mine când te pârlești!"
+      ]
+    }
+  ],
+  "MelaRaidLost": [
+    {
+      "en": [
+        "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+      ],
+      "text": [
+        "Timpul a expirat! Echipa se regrupează și poarta rezistă. Trage-ți sufletul și încearcă din nou."
+      ]
+    }
+  ],
+  "MelaBoss": [
+    {
+      "en": [
+        "Mela"
+      ],
+      "text": [
+        "Mela"
+      ]
+    },
+    {
+      "en": [
+        "Back again? Good. I wasn't done."
+      ],
+      "text": [
+        "Iar aici? Bine. Nu terminasem."
+      ]
+    }
+  ],
+  "MelaFight": [
+    {
+      "en": [
+        "Mela"
+      ],
+      "text": [
+        "Mela"
+      ]
+    },
+    {
+      "en": [
+        "Fine. You win. Just this once. The crew's yours to send home."
+      ],
+      "text": [
+        "Bine. Ai câștigat. Doar de data asta. Poți trimite echipa acasă."
+      ]
+    }
+  ],
+  "AtticusGate": [
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The master Atticus is not to be disturbed. Unless you mean to raid us? Then do your worst."
+      ],
+      "text": [
+        "Maestrul Atticus nu trebuie deranjat. Sau ai venit să ne ataci? Atunci fă ce știi mai rău."
+      ]
+    },
+    {
+      "en": [
+        "Start the raid on the gate?"
+      ],
+      "text": [
+        "Începi atacul asupra porții?"
+      ]
+    },
+    {
+      "en": [
+        "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+      ],
+      "text": [
+        "Învinge cincisprezece Pokémoni ai echipei până expiră timpul! Trimite-ți echipa cu Let's Go!"
+      ]
+    },
+    {
+      "en": [
+        "A wise retreat. Begone."
+      ],
+      "text": [
+        "O retragere înțeleaptă. Pleacă."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "Away with you. This gate is guarded day and night."
+      ],
+      "text": [
+        "Pleacă de aici. Poarta asta e păzită zi și noapte."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The master awaits you within the yard. Do not keep him waiting."
+      ],
+      "text": [
+        "Maestrul te așteaptă în curte. Nu-l lăsa să aștepte."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "Our master has laid down his blade. So must we."
+      ],
+      "text": [
+        "Maestrul nostru și-a lăsat sabia jos. La fel trebuie să facem și noi."
+      ]
+    }
+  ],
+  "AtticusRaidWon": [
+    {
+      "en": [
+        "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+      ],
+      "text": [
+        "Ultimul Pokémon al echipei se retrage, iar oblonul porții se ridică zăngănind."
+      ]
+    },
+    {
+      "en": [
+        "Atticus"
+      ],
+      "text": [
+        "Atticus"
+      ]
+    },
+    {
+      "en": [
+        "The blossoms fall, and so falls my crew. A poem in itself. Yet one verse remains."
+      ],
+      "text": [
+        "Cad florile, și cade și echipa mea. Un poem în sine. Dar a mai rămas un vers."
+      ]
+    },
+    {
+      "en": [
+        "Face the Starmobile, and the venom it carries!"
+      ],
+      "text": [
+        "Înfruntă Starmobilul și veninul pe care-l poartă!"
+      ]
+    }
+  ],
+  "AtticusRaidLost": [
+    {
+      "en": [
+        "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+      ],
+      "text": [
+        "Timpul a expirat! Echipa se regrupează și poarta rezistă. Trage-ți sufletul și încearcă din nou."
+      ]
+    }
+  ],
+  "AtticusBoss": [
+    {
+      "en": [
+        "Atticus"
+      ],
+      "text": [
+        "Atticus"
+      ]
+    },
+    {
+      "en": [
+        "You return. The duel resumes."
+      ],
+      "text": [
+        "Te întorci. Duelul continuă."
+      ]
+    }
+  ],
+  "AtticusFight": [
+    {
+      "en": [
+        "Atticus"
+      ],
+      "text": [
+        "Atticus"
+      ]
+    },
+    {
+      "en": [
+        "Struck down with honour. I yield. My crew shall go home."
+      ],
+      "text": [
+        "Doborât cu onoare. Mă predau. Echipa mea se va duce acasă."
+      ]
+    }
+  ],
+  "OrtegaGate": [
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The boss says nobody raids this gate. You want to try anyway? Your funeral."
+      ],
+      "text": [
+        "Șeful zice că nimeni nu atacă poarta asta. Tot vrei să încerci? Treaba ta."
+      ]
+    },
+    {
+      "en": [
+        "Start the raid on the gate?"
+      ],
+      "text": [
+        "Începi atacul asupra porții?"
+      ]
+    },
+    {
+      "en": [
+        "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+      ],
+      "text": [
+        "Învinge cincisprezece Pokémoni ai echipei până expiră timpul! Trimite-ți echipa cu Let's Go!"
+      ]
+    },
+    {
+      "en": [
+        "Yeah, run along."
+      ],
+      "text": [
+        "Da, fugi de aici."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "Private gate. Members only. You're not a member."
+      ],
+      "text": [
+        "Poartă privată. Doar pentru membri. Tu nu ești membru."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The boss came out himself. He's in a mood. Good luck."
+      ],
+      "text": [
+        "Șeful a ieșit chiar el. E prost dispus. Baftă."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The boss is sulking. That means we're finished."
+      ],
+      "text": [
+        "Șeful e bosumflat. Asta înseamnă că am terminat."
+      ]
+    }
+  ],
+  "OrtegaRaidWon": [
+    {
+      "en": [
+        "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+      ],
+      "text": [
+        "Ultimul Pokémon al echipei se retrage, iar oblonul porții se ridică zăngănind."
+      ]
+    },
+    {
+      "en": [
+        "Ortega"
+      ],
+      "text": [
+        "Ortega"
+      ]
+    },
+    {
+      "en": [
+        "Hey! That was my crew! Who said you could just walk in here and do that?"
+      ],
+      "text": [
+        "Hei! Aia era echipa mea! Cine ți-a zis că poți să intri așa și să faci asta?"
+      ]
+    },
+    {
+      "en": [
+        "Fine. The Starmobile will settle this. It's adorable, and it will flatten you!"
+      ],
+      "text": [
+        "Bine. Starmobilul o să rezolve asta. E adorabil și o să te facă praf!"
+      ]
+    }
+  ],
+  "OrtegaRaidLost": [
+    {
+      "en": [
+        "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+      ],
+      "text": [
+        "Timpul a expirat! Echipa se regrupează și poarta rezistă. Trage-ți sufletul și încearcă din nou."
+      ]
+    }
+  ],
+  "OrtegaBoss": [
+    {
+      "en": [
+        "Ortega"
+      ],
+      "text": [
+        "Ortega"
+      ]
+    },
+    {
+      "en": [
+        "You again? I'm not scared. You're scared."
+      ],
+      "text": [
+        "Iar tu? Nu mi-e frică. Ție ți-e frică."
+      ]
+    }
+  ],
+  "OrtegaFight": [
+    {
+      "en": [
+        "Ortega"
+      ],
+      "text": [
+        "Ortega"
+      ]
+    },
+    {
+      "en": [
+        "That's not fair. Ugh. Fine. The crew can go."
+      ],
+      "text": [
+        "Nu e corect. Uf. Bine. Echipa poate pleca."
+      ]
+    }
+  ],
+  "EriGate": [
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "You're here to raid the boss's gate? Then fight like you mean it!"
+      ],
+      "text": [
+        "Ai venit să ataci poarta șefei? Atunci luptă pe bune!"
+      ]
+    },
+    {
+      "en": [
+        "Start the raid on the gate?"
+      ],
+      "text": [
+        "Începi atacul asupra porții?"
+      ]
+    },
+    {
+      "en": [
+        "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+      ],
+      "text": [
+        "Învinge cincisprezece Pokémoni ai echipei până expiră timpul! Trimite-ți echipa cu Let's Go!"
+      ]
+    },
+    {
+      "en": [
+        "Come back when you're ready, then."
+      ],
+      "text": [
+        "Atunci întoarce-te când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "This is the head of the street. Nobody gets this far without a fight."
+      ],
+      "text": [
+        "Aici e capătul străzii. Nimeni nu ajunge până aici fără luptă."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The boss is waiting for you in the yard. She doesn't like waiting."
+      ],
+      "text": [
+        "Șefa te așteaptă în curte. Nu-i place să aștepte."
+      ]
+    },
+    {
+      "en": [
+        "Team Star Grunt"
+      ],
+      "text": [
+        "Membru Team Star"
+      ]
+    },
+    {
+      "en": [
+        "The boss lost fair and square. That's that."
+      ],
+      "text": [
+        "Șefa a pierdut cinstit. Asta e."
+      ]
+    }
+  ],
+  "EriRaidWon": [
+    {
+      "en": [
+        "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+      ],
+      "text": [
+        "Ultimul Pokémon al echipei se retrage, iar oblonul porții se ridică zăngănind."
+      ]
+    },
+    {
+      "en": [
+        "Eri"
+      ],
+      "text": [
+        "Eri"
+      ]
+    },
+    {
+      "en": [
+        "So you're the one who's been taking down the other bosses. I've heard."
+      ],
+      "text": [
+        "Deci tu i-ai doborât pe ceilalți șefi. Am auzit."
+      ]
+    },
+    {
+      "en": [
+        "I won't go down so easy. Starmobile, full power!"
+      ],
+      "text": [
+        "Pe mine nu mă dobori așa ușor. Starmobil, la putere maximă!"
+      ]
+    }
+  ],
+  "EriRaidLost": [
+    {
+      "en": [
+        "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+      ],
+      "text": [
+        "Timpul a expirat! Echipa se regrupează și poarta rezistă. Trage-ți sufletul și încearcă din nou."
+      ]
+    }
+  ],
+  "EriBoss": [
+    {
+      "en": [
+        "Eri"
+      ],
+      "text": [
+        "Eri"
+      ]
+    },
+    {
+      "en": [
+        "Again? Good. I respect that."
+      ],
+      "text": [
+        "Din nou? Bine. Respect asta."
+      ]
+    }
+  ],
+  "EriFight": [
+    {
+      "en": [
+        "Eri"
+      ],
+      "text": [
+        "Eri"
+      ]
+    },
+    {
+      "en": [
+        "You're strong. Stronger than me. I'll keep my word: the crew stands down."
+      ],
+      "text": [
+        "Ești puternic. Mai puternic ca mine. Îmi țin cuvântul: echipa se retrage."
+      ]
+    }
+  ]
+}

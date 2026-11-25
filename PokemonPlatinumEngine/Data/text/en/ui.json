@@ -981,6 +981,26 @@
     "paldeaKaty": "West out of Mesagoza, Katy waits at Cortondo Gym with her olive roll and the Bug Badge.",
     "paldeaBrassius": "East out of Mesagoza, Brassius waits at Artazon Gym with his hidden Sunflora and the Grass Badge.",
     "paldeaIono": "North of Artazon, Iono streams from Levincia Gym. Find her Wattrel and win the Electric Badge.",
+    "paldeaArven": "A student called Arven waits at the lighthouse on Poco Path, asking after Titans and herbs.",
+    "paldeaKlawf": "The Titan Klawf has dug in at the Stony Cliff, the gully north of the road to Artazon. Beat it twice.",
+    "paldeaBombirdier": "The Titan Bombirdier haunts Open Sky, a gully north of the West Province's road east of Asado Desert. Beat it twice.",
+    "paldeaOrthworm": "The Titan Orthworm lurks under the sand of Lurking Steel, off the road north from Levincia. Beat it twice.",
+    "paldeaQuaking": "A Titan shakes the ground of Quaking Earth, the dusty basin north of Cortondo. Beat it twice.",
+    "paldeaFalseDragon": "A Tatsugiri and its Dondozo hold Casseroya Lake, off the road north from Medali. Beat the False Dragon Titan.",
+    "paldeaArvenBattle": "Arven wants to show you something at the lighthouse on Poco Path, where the Path of Legends began.",
+    "paldeaStarfall": "Someone signing themselves Cassiopeia wants Team Star's bases broken up. Take the pass north out of Mesagoza, east of the academy.",
+    "paldeaGiacomo": "Giacomo's crew holds the west gate of Starfall Street. Raid it and face the boss.",
+    "paldeaMela": "Mela's crew holds the east gate of Starfall Street. Raid it and face the boss.",
+    "paldeaAtticus": "Atticus's crew holds the far west gate of Starfall Street. Raid it and face the boss.",
+    "paldeaOrtega": "Ortega's crew holds the far east gate of Starfall Street. Raid it and face the boss.",
+    "paldeaEri": "Eri's crew holds the gate at the head of Starfall Street. Raid it and face the boss.",
+    "paldeaKofu": "North through Asado Desert, Kofu cooks at Cascarrafa Gym. Run his errand to Porto Marinada and win the Water Badge.",
+    "paldeaLarry": "East of the desert, Larry keeps Medali Gym. Find the Treasure Eatery's secret order and win the Normal Badge.",
+    "paldeaRyme": "Ryme performs in Montenevera, in the snow east of Glaseado's foot. Win her rap battle and the Ghost Badge.",
+    "paldeaTulip": "Through the cavern west of Cortondo, Tulip keeps Alfornada Gym. Pose for her photographs and win the Psychic Badge.",
+    "paldeaGrusha": "At the top of Glaseado Mountain, Grusha waits. Ride his snowslope run through every gate and win the Ice Badge.",
+    "paldeaLeague": "With all eight badges, go to the Pokémon League under Mesagoza's south wall. Pass Rika's interview, then face the Elite Four, Geeta and Nemona.",
+    "paldeaAreaZero": "With the League, the Titans and Team Star behind you, meet your friends at the Zero Gate in the North Province. Go down into Area Zero, to the lab at the crater's bottom.",
     "paldeaFree": "Term begins. The treasure hunt is yours: Paldea's gyms, its Titans and more wait beyond Mesagoza."
   },
 
@@ -1960,7 +1980,8 @@
     "safariBalls": "SAFARI BALLS",
     "streak": "STREAK",
     "hooks": "HOOKS",
-    "steps": "STEPS"
+    "steps": "STEPS",
+    "starRaid": { "felled": "FELLED", "count": "{felled}/{goal}", "clock": "TIME" }
   },
   "riftToast": {
     "opened": "A rift has opened on {place}! It will close within the hour.",
@@ -3508,6 +3529,10 @@
   },
   "campPot": {
     "title": "THE POT",
+    "picnicTitle": "PICNIC",
+    "tableTitle": "THE PICNIC TABLE",
+    "onTheTable": "ON THE BREAD",
+    "make": "MAKE",
     "pantry": "IN REACH",
     "pot": "IN THE POT",
     "cook": "COOK",
@@ -3537,7 +3562,10 @@
     "dish": {
       "name": {
         "campStew": "Camp Stew", "beanHotpot": "Bean Hotpot", "berryPilaf": "Berry Pilaf", "honeyOatCakes": "Honey Oat Cakes",
-        "mushroomBake": "Mushroom Bake", "quietBroth": "Quiet Broth", "spicedFlatbread": "Spiced Flatbread", "potatoHash": "Potato Hash"
+        "mushroomBake": "Mushroom Bake", "quietBroth": "Quiet Broth", "spicedFlatbread": "Spiced Flatbread", "potatoHash": "Potato Hash",
+        "picnicSandwich": "Picnic Sandwich", "berryJamSandwich": "Berry Jam Sandwich", "tomatoCheeseSandwich": "Tomato and Cheese Sandwich",
+        "honeyButterSandwich": "Honey Butter Sandwich", "spicedOnionSandwich": "Spiced Onion Sandwich", "herbFlatbreadSandwich": "Herb Flatbread Sandwich",
+        "starlightSandwich": "Starlight Sandwich"
       },
       "desc": {
         "campStew": "Whatever was to hand, simmered together. Filling, if nothing more.",
@@ -3547,7 +3575,14 @@
         "mushroomBake": "Rich and golden. Wild Pokémon beaten afterwards leave more behind.",
         "quietBroth": "A gentle broth that calms the nerves. Fewer wild Pokémon bother you.",
         "spicedFlatbread": "Hot flatbread with a smoky edge. Wild Pokémon follow the scent.",
-        "potatoHash": "Crisp potatoes fried in butter. Beaten Pokémon leave more behind."
+        "potatoHash": "Crisp potatoes fried in butter. Beaten Pokémon leave more behind.",
+        "picnicSandwich": "Whatever was in the basket, between two slices of bread. Filling, and nothing more.",
+        "berryJamSandwich": "Butter and a berry crushed into jam. Pokémon of the berry's type come out more often.",
+        "tomatoCheeseSandwich": "Ripe tomato and sharp cheese. More wild Pokémon come out to see what smells so good.",
+        "honeyButterSandwich": "Sweet honey on soft butter. Eggs turn up in the picnic basket more often.",
+        "spicedOnionSandwich": "Onions fried with spices. Pokémon gain more EXP in battle.",
+        "herbFlatbreadSandwich": "Flatbread with herbs and melted cheese. Wild Pokémon are easier to catch.",
+        "starlightSandwich": "A towering stack of everything good. Pokémon of the berry's type shine a little more often."
       }
     }
   },
@@ -3573,16 +3608,19 @@
     },
     "short": {
       "exp": "EXP", "effort": "EV", "money": "$", "bargain": "%", "catch": "CAT", "encounter": "ENC", "stealth": "SNK", "hatch": "EGG",
-      "typeEncounter": "TYP", "materials": "MAT"
+      "typeEncounter": "TYP", "materials": "MAT", "egg": "BSK", "sparkling": "SHN"
     }
   },
   "timedPowers": {
     "kind": {
       "exp": "EXP Power", "effort": "Effort Power", "money": "Prize Power", "bargain": "Bargain Power", "catch": "Catching Power",
       "encounter": "Encounter Power", "stealth": "Stealth Power", "hatch": "Hatching Power", "typeEncounter": "Type Power",
-      "materials": "Gathering Power"
+      "materials": "Gathering Power", "egg": "Egg Power", "sparkling": "Sparkling Power"
     },
     "wornOff": "Your {list} wore off."
+  },
+  "picnic": {
+    "eggs": { "one": "An Egg was waiting in the picnic basket!", "other": "{n} Eggs were waiting in the picnic basket!" }
   },
   "ribbonPage": {
     "title": "RIBBONS",
@@ -3759,7 +3797,7 @@
     "action": {
       "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
       "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
-      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay", "Photo": "Photo mode", "Mount": "Ride or get off"
+      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay", "Photo": "Photo mode", "Mount": "Ride or get off", "LetsGo": "Let's Go"
     },
     "page": {
       "title": "CONTROLS",
@@ -4079,6 +4117,9 @@
     "totemAura": "{pokemon} is wrapped in a totem's aura!",
     "totemCantBeCaught": "The totem's aura turned the Ball aside! A totem can't be caught!",
     "defeatedTheTotem": "{player} defeated the totem {pokemon}! Its allies scattered!",
+    "titanAura": "The Titan {pokemon} rears up, huge and furious!",
+    "titanCantBeCaught": "The Titan knocked the Ball away! A Titan can't be caught!",
+    "defeatedTheTitan": "{player} defeated the Titan {pokemon}!",
     "shiftedToTheCentre": "{pokemon} moved to the center!",
     "movedToTheCentre": "The Pokémon moved to the center!",
     "isOutOfReach": "{pokemon} is out of reach!",
@@ -4114,6 +4155,14 @@
     "raidBlownOut": "The storm of Dynamax energy blew everyone out of the den!",
     "raidActsAgain": "{pokemon} is still raging!",
     "raidNoSwitch": "Each raider fights with the Pokémon they came with!",
+    "teraRaidBegins": "The crystal's light bursts! {pokemon} is ablaze with Tera energy!",
+    "teraRaidClock": "The crystal's light will hold for {n} turns!",
+    "teraRaidTimeUp": "The crystal's light swallowed everyone! The Tera Raid is over.",
+    "teraShieldUp": "{pokemon} is wrapped in a shield of Tera crystal!",
+    "teraShieldBroke": "A shard of {pokemon}'s crystal shield broke off! {n} still stand.",
+    "teraShieldDown": "{pokemon}'s crystal shield shattered!",
+    "teraOrbCharged": "{pokemon}'s Tera Orb is charged!",
+    "teraOrbNotCharged": "The Tera Orb isn't charged yet!",
     "tooStrongToCatch": "It's too strong to be caught yet! Win more badges first.",
     "cantBeTouched": "It can't be touched!",
     "onlyWatches": "It only watches...",
@@ -4332,6 +4381,10 @@
     "taleKeepsItem": "The tale of {tale} kept {pokemon}'s {item} for another time!",
     "taleForestHeals": "The forest of {tale} restored {pokemon}'s HP!",
     "taleHoldsFoe": "The forest of {tale} holds {pokemon} fast!",
+    "anvilGlances": "{pokemon}'s {ability} glanced a blow off {target}!",
+    "echoLands": "The echo of {move} struck {target}!",
+    "eclipseFalls": "{pokemon}'s {ability} darkened the field!",
+    "warCry": "{pokemon}'s {ability} rallied its team!",
     "taleTakesStrength": "{pokemon} took up the strength of {fallen}!",
     "stellarType": "Stellar",
     "teraformZero": "{pokemon}'s {ability} cleared the weather and the terrain away!",
@@ -5054,6 +5107,7 @@
     "SchoolKid": "School Kid",
     "SchoolKidM": "School Kid",
     "Student": "Student",
+    "TeamStarBoss": "Team Star Boss",
     "Scientist": "Scientist",
     "ScientistGs": "Scientist",
     "SisAndBro": "Sis and Bro",
@@ -5574,8 +5628,31 @@
     "battlePoints": "BATTLE POINTS",
     "none": "NONE THIS TIME",
     "held": "BP held: {points}",
+    "racing": "RIDING RACE ON YOUR OWN POKÉMON",
+    "raceHowTo": "Hold Run to push for speed, which spends its stamina, and press the button to jump the rocks. Mud slows a mount that lacks the strength, so push through it. In a turn, hold the arrow it points to, or lose speed. The first home wins.",
+    "racePays": "FIRST PLACE PAYS {most} BP",
+    "raceTime": "TIME",
+    "raceStumbles": "STUMBLES",
+    "raceTurns": "TURNS",
+    "raceHome": "{time} s",
+    "raceOut": "NOT HOME",
+    "raceStamina": "STAMINA",
+    "raceYourTime": "Your time: {time} s",
+    "raceYourPlace": "You came {place} of four.",
+    "stumble": "STUMBLE!",
+    "cleared": "CLEARED!",
+    "leaned": "LEANED!",
+    "swung": "WIDE!",
     "course": {
       "hauoli": "Hau'oli Beach"
+    },
+    "track": {
+      "blossom": "Blossom Road Track"
+    },
+    "rider": {
+      "adele": "ADÈLE",
+      "bastien": "BASTIEN",
+      "colette": "COLETTE"
     },
     "club": {
       "kai": "KAI",

@@ -67,8 +67,21 @@ partial class Harness
         }
 
         PaldeaProvinces(paldea);
+        PaldeaLegends(paldea);
+        PaldeaStarfall(paldea);
+        PaldeaWest(paldea);
+        PaldeaNorth(paldea);
+        // Tera Raids and picnics (plan 34 · PD7)
+        PaldeaRaidsAndPicnics(paldea);
 
         PaldeaChapter();
+        PaldeaLegendsPlayed();
+        PaldeaLetsGoPlayed();
+        // The Pokémon League (plan 34 · PD8, its first session), last since it leaves the game in the Hall of Fame's scene
+        PaldeaLeague(paldea);
+        // Area Zero and the Way Home (plan 34 · PD8, its second session), after everything since it leaves the game in the
+        // credits (with SHOTS_FILTER=pdz the League's part shoots nothing)
+        PaldeaAreaZero(paldea);
     }
 
     /// <summary>

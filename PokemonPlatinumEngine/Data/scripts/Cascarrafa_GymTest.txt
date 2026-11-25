@@ -1,0 +1,72 @@
+# Kofu's hall, the end of his gym test (plan 34 · PD6): Kofu sends a challenger west to Porto Marinada's auction for the
+# morning's best crate (FLAG_PALDEA_CASCARRAFA_ERRAND), the crate is won there (porto_marinada.txt), and he battles once it
+# is brought back; a gym trainer stands by the hall. Our own lines, on Scarlet and Violet's beat of the errand.
+
+
+# Kofu's battle for the Water Badge. He Terastallizes his last into a Water type. Plan 34 · decision 3 at its
+# recommendation: from the fourth gym on, a leader's team is scaled to the badges the challenger holds, its best at the
+# cap of that many badges (paldea.json's "caps"), so in the academy's order (three held) Kofu's team is the original's
+# and taken first it is no harder than Katy's (Data/world/paldea/trainers.json: paldea_kofu, paldea_kofu_b0 to _b7)
+script Leader
+  face kofu player
+  speaker "Kofu"
+  if badge water goto Won
+  if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  if flag FLAG_PALDEA_CASCARRAFA_TEST_DONE goto Battle
+  if flag FLAG_PALDEA_CASCARRAFA_ERRAND goto Waiting
+  say "A challenger! Wonderful, wonderful. I'm Kofu, Cascarrafa's gym leader, and today I'm cooking for the whole gym!"
+  say "Only I'm short one thing. Go west over the hills to Porto Marinada, and win me the morning's sea urchins at the auction."
+  say "Bring me that crate and we'll battle while the pot boils. Off you go, quick as a current!"
+  setflag FLAG_PALDEA_CASCARRAFA_ERRAND
+  end
+label Waiting
+  say "The auction's at Porto Marinada, west over the hills and down to the sea. Bid smart, and bring me those urchins!"
+  end
+label Battle
+  scene "Kofu"
+  say "You got them! And still cold, too. That's the spirit I like to see in a challenger. Fantastic!"
+  say "Now then. My Water types move like the tide: they come in slow, and then they come in all at once!"
+  if badges >= 7 goto Held7
+  if badges >= 6 goto Held6
+  if badges >= 5 goto Held5
+  if badges >= 4 goto Held4
+  if badges >= 3 goto Held3
+  if badges >= 2 goto Held2
+  if badges >= 1 goto Held1
+  battle kofu as "paldea_kofu_b0"
+  goto Beaten
+label Held1
+  battle kofu as "paldea_kofu_b1"
+  goto Beaten
+label Held2
+  battle kofu as "paldea_kofu_b2"
+  goto Beaten
+label Held3
+  battle kofu as "paldea_kofu"
+  goto Beaten
+label Held4
+  battle kofu as "paldea_kofu_b4"
+  goto Beaten
+label Held5
+  battle kofu as "paldea_kofu_b5"
+  goto Beaten
+label Held6
+  battle kofu as "paldea_kofu_b6"
+  goto Beaten
+label Held7
+  battle kofu as "paldea_kofu_b7"
+label Beaten
+  say "Swept away! What a feast of a battle. You've earned it, challenger: the Water Badge!"
+  givebadge water
+  text "{player} received the Water Badge from Kofu!"
+  setflag FLAG_PALDEA_DEFEATED_CASCARRAFA_GYM
+  defeat "paldea_gym_trainer_marisa"
+  say "Stay for supper next time. There's always more in the pot than I meant to make!"
+  endscene
+  end
+label NotEnrolled
+  say "A challenger who isn't a student? Ah, no, no. Enrol at the academy in Mesagoza first, then come back hungry!"
+  end
+label Won
+  say "Back again? The urchins went into the best stew I've made all year. Thanks to you!"
+  end

@@ -5,8 +5,11 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics.OpenWorld;
 
-/// <summary>A Max Raid den whose beam stands today: the middle of its ring on the ground, in metres, and its boss's stars.</summary>
-internal readonly record struct DenBeam(Vector3 Foot, int Stars);
+/// <summary>
+/// A Max Raid den whose beam stands today: the middle of its ring on the ground, in metres, and its boss's stars; or a Tera
+/// crystal of Paldea's (plan 34 · PD7), whose <see cref="Tera"/> colours a shorter glow over a crystal at its foot.
+/// </summary>
+internal readonly record struct DenBeam(Vector3 Foot, int Stars, Models.TeraType? Tera = null);
 
 /// <summary>
 /// The beams of light over Galar's lit Max Raid dens (plan 33 · GL3, its second session; style guide, "Max Raid dens"):
@@ -40,6 +43,11 @@ internal static class DenBeams
         foreach (var beam in beams)
         {
             if (Vector3.DistanceSquared(beam.Foot, eye) > Reach * Reach) continue;
+            if (beam.Tera is { } tera)
+            {
+                Crystal(beam, tera, breath, into);
+                continue;
+            }
             // A boss of more stars stands a little brighter in its column (four and five stars the brightest)
             float stars = 0.85f + 0.05f * Math.Clamp(beam.Stars, 1, 5);
             for (int i = 0; i < Lengths; i++)
@@ -56,6 +64,49 @@ internal static class DenBeams
                     into.Add(new WeatherPiece(beam.Foot + new Vector3(0, y1, 0), beam.Foot + new Vector3(0, y0, 0), Width * share,
                         new Color(colour.R, colour.G, colour.B, (byte)Math.Min(255, alpha))));
                 }
+            }
+        }
+    }
+
+    /// <summary>How high a Tera crystal's glow reaches, and how tall and wide the crystal at its foot stands, in metres (plan 34 · PD7).</summary>
+    public const float CrystalGlow = 14f, CrystalHeight = 1.6f, CrystalWidth = 1.1f;
+
+    /// <summary>The colour of a Tera Type's crystal: its type's own light (a move's colours), a Stellar crystal white.</summary>
+    public static Color CrystalColour(Models.TeraType tera) =>
+        tera.IsStellar ? new Color(250, 250, 255, 255) : MoveFx.ColorsOf(tera.Type).Main;
+
+    /// <summary>
+    /// A Tera crystal's pieces (plan 34 · PD7; style guide, "Tera crystals"): the crystal itself, two crossed bright ribbons
+    /// narrowing to a point at its top, and over it a glow of its type's colour, half as wide as a den's beam and under half
+    /// as high, fading to nothing as it climbs and breathing as a den's does.
+    /// </summary>
+    private static void Crystal(DenBeam beam, Models.TeraType tera, float breath, List<WeatherPiece> into)
+    {
+        var colour = CrystalColour(tera);
+        var light = Mix(colour, new Color(255, 255, 255, 255), 0.55f);
+        float stars = 0.85f + 0.03f * Math.Clamp(beam.Stars, 1, 7);
+        // The crystal: a bright core and its body, each in four lengths narrowing toward the point
+        for (int i = 0; i < 4; i++)
+        {
+            float y0 = CrystalHeight * i / 4, y1 = CrystalHeight * (i + 1) / 4;
+            float width = CrystalWidth * (1f - (i + 0.5f) / 4f * 0.85f);
+            into.Add(new WeatherPiece(beam.Foot + new Vector3(0, y1, 0), beam.Foot + new Vector3(0, y0, 0), width,
+                new Color(colour.R, colour.G, colour.B, (byte)Math.Min(255, (int)(225 * breath * stars)))));
+            into.Add(new WeatherPiece(beam.Foot + new Vector3(0, y1, 0), beam.Foot + new Vector3(0, y0, 0), width * 0.45f,
+                new Color(light.R, light.G, light.B, (byte)Math.Min(255, (int)(235 * breath)))));
+        }
+        // The glow over it
+        for (int i = 0; i < Lengths; i++)
+        {
+            float y0 = CrystalHeight + (CrystalGlow - CrystalHeight) * i / Lengths, y1 = CrystalHeight + (CrystalGlow - CrystalHeight) * (i + 1) / Lengths;
+            float fade = 1f - (i + 0.5f) / Lengths;
+            fade *= fade;
+            foreach (var (share, strength) in Layers)
+            {
+                int alpha = (int)MathF.Round(255f * strength * 0.8f * fade * breath * stars);
+                if (alpha <= 0) continue;
+                into.Add(new WeatherPiece(beam.Foot + new Vector3(0, y1, 0), beam.Foot + new Vector3(0, y0, 0), Width * 0.5f * share,
+                    new Color(colour.R, colour.G, colour.B, (byte)Math.Min(255, alpha))));
             }
         }
     }

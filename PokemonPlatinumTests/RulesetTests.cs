@@ -243,7 +243,7 @@ public class RulesetTests
         Assert.True(changed.Count > 100, $"only {changed.Count} of Platinum's moves have other values in the newest games");
         Assert.All(changed, m =>
         {
-            Assert.True(m.Generation is >= 1 and <= 4, $"{m.Name} came after Platinum and has modern values of its own");
+            Assert.True(m.Generation is >= 1 and <= 4 || m.Modern!.Type == PokemonType.Sound, $"{m.Name} came after Platinum and has modern values of its own");
             var v = m.Modern!;
             Assert.True(v.Power != null || v.Accuracy != null || v.MaxPP != null || v.Priority != null || v.Type != null || v.Category != null,
                 $"{m.Name} has an empty set of modern values");

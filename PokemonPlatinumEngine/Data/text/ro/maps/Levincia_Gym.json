@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Levincia Gym"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "levincia_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "levincia_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

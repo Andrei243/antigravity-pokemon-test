@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using PokemonPlatinumEngine.Core.Diagnostics;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.OpenWorld;
 
 namespace PokemonPlatinumEngine.Core;
@@ -52,10 +54,15 @@ public partial class GameEngine
         // What the player is put down in is no crossing (plan 32 · OW5)
         openCrossings.Settle(map, pos);
         openWalk = null;
+        // A raid and a Let's Go don't outlast being put down elsewhere (plan 34 · PD5)
+        ForgetTheLetsGo();
         // Everyone back where they were put, and whoever travels along behind the player (OW6)
         BeginTheOpenPeople(flow.Open);
         // The orbit camera begun behind them (plan 32 · OW8)
         BeginTheOpenCamera(yaw);
+        // The area come to (plan 34 · PD3's second session)
+        openAreaKey = null;
+        ComeToTheOpenArea(flow.Open);
     }
 
     /// <summary>
@@ -77,6 +84,9 @@ public partial class GameEngine
         field.Wild.Now = GameClock.Now;
         // and under each zone's weather of the day (plan 33 · GL2)
         field.Wild.WeatherOf ??= zone => OpenWeather.OfZone(field.Map, zone, GameClock.Today);
+        // and with a sandwich's Type and Encounter Powers on the spawner's draws (plan 34 · PD7)
+        field.Wild.Favoured = OpenWildField.FavouredBy(flow.Powers);
+        field.Wild.MoreStanding = OpenWildField.MoreStandingBy(flow.Powers);
         if (ScriptRunning)
         {
             // A script that begins takes the player off the mount (plan 30 · FM12)
@@ -100,6 +110,8 @@ public partial class GameEngine
         bool pressed = InputManager.IsActionPressed(GameAction.Confirm);
         if (pressed && TalkInTheOpen(field)) return;
         if (InputManager.IsActionPressed(GameAction.Mount)) ToggleMount();
+        // Let's Go: the lead sent at the wild Pokémon nearest, or a raid's crew (plan 34 · PD5); a real battle met instead ends the frame
+        if (InputManager.IsActionPressed(GameAction.LetsGo) && LetsGo(field)) return;
         KeepTheMountsPowers(field);
         // What the story grants the walker (plan 33 · GL5: Galar's bike fitted for the water), derived every frame
         field.Grants = OpenGrants.Of(flow.Story);
@@ -113,9 +125,40 @@ public partial class GameEngine
             var tick = jump ? input with { Jump = true } : input;
             jump = false;
             return tick;
-        }, f => CrossTheVolumes(f) || LookForOpenTrainers(f) || MeetOpenWild(f));
+        }, f => RaidTick(f) || CrossTheVolumes(f) || LookForOpenTrainers(f) || starRaid == null && MeetOpenWild(f));
+        // The area the player stands in now (plan 34 · PD3's second session): its song and its first arrival
+        ComeToTheOpenArea(field);
+        // A Let's Go's show played out is let go (plan 34 · PD5)
+        if (letsGoShow is { } show && show.Over(field.Wild.Tick)) letsGoShow = null;
         // A wild Pokémon that noticed the player in those ticks cries out (plan 32, after OW10)
         HearTheNoticed(field);
+    }
+
+    // The open area the player was last told to be in (its key), so a crossing into another is told once
+    private string? openAreaKey;
+
+    /// <summary>
+    /// The area of an open map the player stands in (plan 34 · PD3's second session), told once as they cross into it, as
+    /// a grid area is (<see cref="NoteArrival"/>): a town of the region's spawns is come to (its first arrival's flag, which
+    /// Fly's place waits for, and a line of the Journal the first time), the region's map hears of a first arrival it
+    /// waits for, and the area's song plays. A place come to by a door or a save is told the same way.
+    /// </summary>
+    private void ComeToTheOpenArea(OpenField field)
+    {
+        if (field.Map.AreaAt(field.Player.Pos) is not { } area || area.Key == openAreaKey) return;
+        openAreaKey = area.Key;
+        if (SpawnLocations.ArrivedIn(Here.Id, area.Key) is { } town)
+        {
+            if (!flow.Story.Has(town.ArrivalFlag)) flow.Journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, area.Name));
+            flow.Story.Set(town.ArrivalFlag);
+        }
+        if (RegionMap.ForMap(field.Map.Name) is { } region)
+            foreach (string flag in region.ArrivalFlags(area.Key)) flow.Story.Set(flag);
+        if (area.Music is { Length: > 0 } song && MusicLibrary.Exists(song))
+        {
+            AudioManager.Region = Here.Id;
+            AudioManager.PlayMusic(song);
+        }
     }
 
     /// <summary>
@@ -125,6 +168,9 @@ public partial class GameEngine
     private void TakeUpOpenPlace(SaveData save)
     {
         flow.Open = null;
+        openAreaKey = null;
+        // A raid and a Let's Go are never saved (plan 34 · PD5)
+        ForgetTheLetsGo();
         if (save.OpenPlace is not { } saved) return;
         var place = saved.ToPlace();
         if (OpenMapNamed(place.Map) is { } map)

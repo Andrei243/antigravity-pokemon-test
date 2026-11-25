@@ -10,9 +10,22 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    /// <summary>Opens a course of trick surfing: nothing where the table has no such course.</summary>
+    /// <summary>The first Pokémon of the team that would carry the player in a riding race (plan 42 · PS8): able and of a riding size.</summary>
+    internal Models.Pokemon? RaceMountNow() => flow.Party.Members.FirstOrDefault(Models.Rides.RidingRace.CanCarry);
+
+    /// <summary>Opens a course of trick surfing, or a riding race told as <c>race:&lt;track&gt;</c>: nothing where the table has none.</summary>
     internal void OpenRide(string courseId)
     {
+        if (courseId.StartsWith(RaceTracks.Prefix, System.StringComparison.Ordinal))
+        {
+            var track = RaceTracks.Get(courseId.Substring(RaceTracks.Prefix.Length));
+            var mount = RaceMountNow();
+            if (track == null || mount == null) return;
+            if (!IsHeadless) PokemonSprites.Request(mount.ModelName);
+            flow.RideScreen.OpenRace(track, new Models.Athlete(mount.Species.Name, Models.AthleteStats.Of(mount)), flow.Rides, Dice.New(), flow.Frontier.BattlePoints);
+            flow.State = GameState.Ride;
+            return;
+        }
         var course = SurfCourses.Get(courseId);
         if (course == null) return;
         if (!IsHeadless) PokemonSprites.Request(SurfCourses.Mount);

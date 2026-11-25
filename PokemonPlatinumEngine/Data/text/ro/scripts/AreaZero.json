@@ -1,0 +1,232 @@
+{
+  "Voice": [
+    {
+      "en": [
+        "Professor Sada"
+      ],
+      "text": [
+        "Profesoara Sada"
+      ]
+    },
+    {
+      "en": [
+        "Professor Turo"
+      ],
+      "text": [
+        "Profesorul Turo"
+      ]
+    }
+  ],
+  "StationOne": [
+    {
+      "en": [
+        "A voice comes from the station's speaker as the four pass its door."
+      ],
+      "text": [
+        "Din difuzorul stației se aude o voce când cei patru trec pe lângă ușă."
+      ]
+    },
+    {
+      "en": [
+        "The first station. Good. Below here the crater is another world: the Pokémon you meet may not be the ones in any book."
+      ],
+      "text": [
+        "Prima stație. Bine. Mai jos craterul e o altă lume: Pokémonii pe care îi întâlniți s-ar putea să nu fie în nicio carte."
+      ]
+    },
+    {
+      "en": [
+        "Nemona"
+      ],
+      "text": [
+        "Nemona"
+      ]
+    },
+    {
+      "en": [
+        "Look at all those crystals! The whole wall is glittering. I want to battle everything down here."
+      ],
+      "text": [
+        "Uită-te la cristalele alea! Tot peretele sclipește. Vreau să mă lupt cu tot ce trăiește aici jos."
+      ]
+    },
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "Stay close. The ledges only go down, so there's no turning back halfway."
+      ],
+      "text": [
+        "Stați aproape. Treptele de stâncă duc doar în jos, deci nu ne mai putem întoarce de la jumătate."
+      ]
+    }
+  ],
+  "StationTwo": [
+    {
+      "en": [
+        "The second station. You're making good time. Mind the tall grass: what lives in it is older, or newer, than it looks."
+      ],
+      "text": [
+        "A doua stație. Mergeți bine. Atenție la iarba înaltă: ce trăiește în ea e mai vechi, sau mai nou, decât pare."
+      ]
+    },
+    {
+      "en": [
+        "Penny"
+      ],
+      "text": [
+        "Penny"
+      ]
+    },
+    {
+      "en": [
+        "This place has its own weather. The light comes down green. It's kind of beautiful, actually."
+      ],
+      "text": [
+        "Locul ăsta are vremea lui. Lumina cade verde. De fapt, e chiar frumos."
+      ]
+    },
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "There's a journal in there. The professor's handwriting... I'd know it anywhere. Let's keep going."
+      ],
+      "text": [
+        "Acolo e un jurnal. Scrisul profesorului... l-aș recunoaște oriunde. Hai să mergem mai departe."
+      ]
+    }
+  ],
+  "StationThree": [
+    {
+      "en": [
+        "The third station. The crystals here are what makes Terastallization possible. The whole of Paldea's shine starts down here."
+      ],
+      "text": [
+        "A treia stație. Cristalele de aici fac posibilă Terastalizarea. Toată strălucirea din Paldea pornește de aici, de jos."
+      ]
+    },
+    {
+      "en": [
+        "Nemona"
+      ],
+      "text": [
+        "Nemona"
+      ]
+    },
+    {
+      "en": [
+        "Wait, so every Tera Pokémon I've ever battled... it all comes from this crater? That's so cool!"
+      ],
+      "text": [
+        "Stai, deci fiecare Pokémon Tera cu care m-am luptat vreodată... totul vine din craterul ăsta? Ce tare!"
+      ]
+    },
+    {
+      "en": [
+        "Penny"
+      ],
+      "text": [
+        "Penny"
+      ]
+    },
+    {
+      "en": [
+        "And kind of scary. I think the deeper we go, the less this place wants visitors."
+      ],
+      "text": [
+        "Și cam înfricoșător. Cred că, cu cât coborâm mai adânc, cu atât locul ăsta vrea mai puțin vizitatori."
+      ]
+    }
+  ],
+  "StationFour": [
+    {
+      "en": [
+        "The last station. The lab is in the rock below you. Come in when you're ready. I have a great deal to tell you."
+      ],
+      "text": [
+        "Ultima stație. Laboratorul e în stânca de sub voi. Intrați când sunteți gata. Am multe să vă spun."
+      ]
+    },
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "That voice... it's right, but it's too calm. They were never this calm. Something's off."
+      ],
+      "text": [
+        "Vocea aia... sună cum trebuie, dar e prea calmă. Nu vorbea niciodată atât de calm. Ceva nu e în regulă."
+      ]
+    },
+    {
+      "en": [
+        "Nemona"
+      ],
+      "text": [
+        "Nemona"
+      ]
+    },
+    {
+      "en": [
+        "Then we go in together and find out. Ready, {player}?"
+      ],
+      "text": [
+        "Atunci intrăm împreună și aflăm. Gata, {player}?"
+      ]
+    }
+  ],
+  "ParadoxA": [
+    {
+      "en": [
+        "A huge tusked Pokémon paws at the ground. It looks like a Donphan from a time long before any Donphan."
+      ],
+      "text": [
+        "Un Pokémon uriaș cu colți scormonește pământul. Arată ca un Donphan dintr-o vreme de mult dinaintea oricărui Donphan."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon of riveted plates rolls up the slope. It looks like a Donphan built of metal."
+      ],
+      "text": [
+        "Un Pokémon din plăci nituite urcă panta rostogolindu-se. Arată ca un Donphan făcut din metal."
+      ]
+    }
+  ],
+  "ParadoxB": [
+    {
+      "en": [
+        "A ghostly Pokémon drifts out of the crystals, trailing a long tattered veil. It hums a strange old song."
+      ],
+      "text": [
+        "Un Pokémon ca o fantomă plutește dintre cristale, cu un văl lung și zdrențuit după el. Fredonează un cântec vechi și ciudat."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon of steel and glowing panels hovers over the stones, its wings throwing off heat."
+      ],
+      "text": [
+        "Un Pokémon din oțel și panouri luminoase plutește deasupra pietrelor, iar aripile lui împrăștie căldură."
+      ]
+    }
+  ]
+}

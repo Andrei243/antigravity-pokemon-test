@@ -1,0 +1,79 @@
+{
+  "displayName": {
+    "en": [
+      "Cortondo Gym"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "giant_olive_1": {
+      "name": {
+        "en": [
+          "Giant Olive"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "giant_olive_2": {
+      "name": {
+        "en": [
+          "Giant Olive"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "giant_olive_3": {
+      "name": {
+        "en": [
+          "Giant Olive"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "paldea_gym_trainer_olive": {
+      "name": {
+        "en": [
+          "Olive"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Olive: Katy's course is no picnic! Well. It is a little bit of a picnic."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Olive: Roll on, then. Katy's at the end of the course."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "katy": {
+      "name": {
+        "en": [
+          "Katy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

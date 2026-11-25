@@ -1,0 +1,39 @@
+{
+  // The West Province's second area (plan 34 · PD6): the road west out of Cascarrafa between the hills, its long grass
+  // on the south side where its Pokémon live, to the ramp down to Porto Marinada on the sea, and a student on the way
+  "markers": [
+    { "name": "west_two_east", "at": [-524, 12.0, -668], "yaw": 270 },
+    { "name": "west_two_west", "at": [-622, 12.0, -668], "yaw": 270 }
+  ],
+  // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+  "triggers": [
+    { "name": "crystal_west_two_1", "cylinder": { "at": [-586, -690], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalWestTwo1" }
+  ],
+  "zones": [
+    {
+      "name": "west_two_grass",
+      "polygon": [[-630, -696], [-540, -696], [-540, -684], [-630, -684]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Wingull", "minLevel": 26, "maxLevel": 29, "weight": 25 },
+        { "species": "Squawkabilly", "minLevel": 26, "maxLevel": 29, "weight": 20 },
+        { "species": "Rookidee", "minLevel": 26, "maxLevel": 29, "weight": 20 },
+        { "species": "Wattrel", "minLevel": 26, "maxLevel": 29, "weight": 15 },
+        { "species": "Bramblin", "minLevel": 26, "maxLevel": 29, "weight": 10 },
+        { "species": "Murkrow", "minLevel": 26, "maxLevel": 29, "weight": 10, "time": "Night" }
+      ],
+      "density": 3, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "student_pablo", "at": [-580, 12.0, -656], "yaw": 180, "trainer": "paldea_student_pablo",
+      "lines": ["I'm on my way to the auction in Porto Marinada. A win first, for luck!", "So much for luck. I'd better not bid on anything today."],
+      "sight": { "length": 9, "angle": 50 }
+    }
+  ],
+  "trees": [
+    { "at": [-548, -650], "kind": "round" },
+    { "at": [-610, -648], "kind": "round", "size": 0.9 }
+  ]
+}

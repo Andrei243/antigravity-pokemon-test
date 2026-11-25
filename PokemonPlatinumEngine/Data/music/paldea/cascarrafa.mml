@@ -1,0 +1,51 @@
+# The city of the falls: Kofu's kitchen, the market and the water coming down out of the hills, a trumpet's tune in A
+# minor over a marimba's running arpeggio, castanets and a dry kit, bright as a market morning; at night a clarinet.
+# Original composition for this game (plan 34 · PD6), in the modern sound.
+title Cascarrafa
+tempo 104
+meter 4/4
+reverb 0.26
+nighttempo 0.92
+room chamber 1.5
+
+track lead trumpet night=clarinet vol=0.62 pan=0.05 rev=0.26
+  o5 e2. r4 | L o5 a4 o6 c8 e8 d4 c4 | o5 f4 a8 o6 d8 c4 o5 a4 | o5 g+4 b8 o6 d8 c4 o5 b4 |
+  o5 a2. r4 | o5 a4 o6 c8 f8 a4 f4 | o5 b4 o6 d8 g8 f4 d4 | o6 e4 d8 c8 o5 g4 e4 |
+  o5 g+2 b4 e4 | o5 e4 a8 b8 o6 c4 e4 | o6 f4 e8 d8 c4 o5 a4 | o5 b4 o6 d8 c8 o5 b4 g4 |
+  o5 g2 e4 g4 | o5 f4 a8 o6 c8 f4 e4 | o6 e4 d8 c8 o5 b4 g+4 | o5 a4 b8 o6 c8 e4 o5 a4 |
+  o5 a2. r4 |
+
+track mallets marimba vol=0.38 pan=-0.3 rev=0.2
+  o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | L o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 d8 o4 f8 o4 a8 o4 f8 o4 d8 o4 f8 o4 a8 o4 f8 | o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 |
+  o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 | o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 |
+  o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 | o4 d8 o4 f8 o4 a8 o4 f8 o4 d8 o4 f8 o4 a8 o4 f8 | o4 g8 o4 b8 o5 d8 o4 b8 o4 g8 o4 b8 o5 d8 o4 b8 |
+  o4 c8 o4 e8 o4 g8 o4 e8 o4 c8 o4 e8 o4 g8 o4 e8 | o4 f8 o4 a8 o5 c8 o4 a8 o4 f8 o4 a8 o5 c8 o4 a8 | o4 e8 o4 g+8 o4 b8 o4 g+8 o4 e8 o4 g+8 o4 b8 o4 g+8 | o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 |
+  o4 a8 o5 c8 o5 e8 o5 c8 o4 a8 o5 c8 o5 e8 o5 c8 |
+
+track chords pizzicato vol=0.25 pan=0.3 rev=0.24
+  o4 r4 (a > c e)4 r4 (a > c e)4 | L o4 r4 (a > c e)4 r4 (a > c e)4 | o4 r4 (d f a)4 r4 (d f a)4 | o4 r4 (e g+ b)4 r4 (e g+ b)4 |
+  o4 r4 (a > c e)4 r4 (a > c e)4 | o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 |
+  o4 r4 (e g+ b)4 r4 (e g+ b)4 | o4 r4 (a > c e)4 r4 (a > c e)4 | o4 r4 (d f a)4 r4 (d f a)4 | o4 r4 (g b > d)4 r4 (g b > d)4 |
+  o4 r4 (c e g)4 r4 (c e g)4 | o4 r4 (f a > c)4 r4 (f a > c)4 | o4 r4 (e g+ b)4 r4 (e g+ b)4 | o4 r4 (a > c e)4 r4 (a > c e)4 |
+  o4 r4 (a > c e)4 r4 (a > c e)4 |
+
+track bass bass vol=0.7 rev=0.08
+  o2 a4 r8 a8 e4 a4 | L o2 a4 r8 a8 e4 a4 | o2 d4 r8 d8 a4 d4 | o2 e4 r8 e8 b4 e4 |
+  o2 a4 r8 a8 e4 a4 | o2 f4 r8 f8 c4 f4 | o2 g4 r8 g8 d4 g4 | o2 c4 r8 c8 g4 c4 |
+  o2 e4 r8 e8 b4 e4 | o2 a4 r8 a8 e4 a4 | o2 d4 r8 d8 a4 d4 | o2 g4 r8 g8 d4 g4 |
+  o2 c4 r8 c8 g4 c4 | o2 f4 r8 f8 c4 f4 | o2 e4 r8 e8 b4 e4 | o2 a4 r8 a8 e4 a4 |
+  o2 a4 r8 a8 e4 a4 |
+
+track castanets castanets vol=0.2 pan=0.3 rev=0.18
+  o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | L o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 | o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 |
+  o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 f16 f16 v90 f8 r4 v60 f16 f16 v90 f8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 |
+  o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+  o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 f16 f16 v90 f8 r4 v60 f16 f16 v90 f8 r4 | o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 |
+  o7 v60 a16 a16 v90 a8 r4 v60 a16 a16 v90 a8 r4 |
+
+track drums kit vol=0.28 pan=0.1 rev=0.12
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | L v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 | v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |
+  v54 b8 v32 h8 v44 x8 v32 h8 v54 b8 v32 h8 v44 x8 v32 h8 |

@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Medali Gym"
+    ],
+    "text": [
+      "Sala din Medali"
+    ]
+  },
+  "people": {
+    "paldea_gym_trainer_dina": {
+      "name": {
+        "en": [
+          "Dina"
+        ],
+        "text": [
+          "Dina"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gym Trainer Dina: You ordered the secret menu? Then you can handle a perfectly normal battle."
+        ],
+        "text": [
+          "Antrenoarea de sală Dina: Ai comandat meniul secret? Atunci te descurci și cu o luptă perfect normală."
+        ]
+      },
+      "after": {
+        "en": [
+          "Gym Trainer Dina: Nothing normal about that. Larry's at the far desk."
+        ],
+        "text": [
+          "Antrenoarea de sală Dina: Nimic normal în asta. Larry e la biroul din capăt."
+        ]
+      }
+    },
+    "larry": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          "Larry"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

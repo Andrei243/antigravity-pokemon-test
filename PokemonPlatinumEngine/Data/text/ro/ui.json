@@ -1102,8 +1102,31 @@
     "battlePoints": "PUNCTE DE LUPTĂ",
     "none": "NICIUNUL DE ASTĂ DATĂ",
     "held": "BP deținute: {points}",
+    "racing": "CURSĂ CALARE PE POKÉMONUL TĂU",
+    "raceHowTo": "Ține apăsat Alergare ca să împingi pentru viteză, ceea ce îi consumă răsuflarea, și apasă butonul ca să sari peste stânci. Noroiul încetinește o montură fără putere, așa că împinge prin el. Într-o curbă, ține săgeata spre care arată sau pierzi viteză. Câștigă cine ajunge primul.",
+    "racePays": "LOCUL ÎNTÂI PLĂTEȘTE {most} BP",
+    "raceTime": "TIMP",
+    "raceStumbles": "ÎMPIEDICĂRI",
+    "raceTurns": "CURBE",
+    "raceHome": "{time} s",
+    "raceOut": "NESOSIT",
+    "raceStamina": "RĂSUFLARE",
+    "raceYourTime": "Timpul tău: {time} s",
+    "raceYourPlace": "Ai ieșit pe locul {place} din patru.",
+    "stumble": "ÎMPIEDICARE!",
+    "cleared": "SĂRIT!",
+    "leaned": "ÎNCLINAT!",
+    "swung": "LARG!",
     "course": {
       "hauoli": "Hau'oli Beach"
+    },
+    "track": {
+      "blossom": "Pista Drumului Înflorit"
+    },
+    "rider": {
+      "adele": "ADÈLE",
+      "bastien": "BASTIEN",
+      "colette": "COLETTE"
     },
     "club": {
       "kai": "KAI",
@@ -1440,6 +1463,26 @@
     "paldeaKaty": "La vest de Mesagoza, Katy te așteaptă la Arena din Cortondo cu rostogolirea măslinelor și Insigna Gândac.",
     "paldeaBrassius": "La est de Mesagoza, Brassius te așteaptă la Arena din Artazon cu Sunflora ascunse și Insigna Iarbă.",
     "paldeaIono": "La nord de Artazon, Iono transmite live din Arena din Levincia. Găsește-i Wattrel-ii și câștigă Insigna Electrică.",
+    "paldeaArven": "Un elev pe nume Arven așteaptă la farul de pe Poco Path și întreabă de Titani și de ierburi.",
+    "paldeaKlawf": "Titanul Klawf s-a ascuns la Stony Cliff, defileul de la nord de drumul spre Artazon. Învinge-l de două ori.",
+    "paldeaBombirdier": "Titanul Bombirdier bântuie Open Sky, un defileu la nord de drumul din West Province, la est de Asado Desert. Învinge-l de două ori.",
+    "paldeaOrthworm": "Titanul Orthworm pândește sub nisipul de la Lurking Steel, lângă drumul spre nord din Levincia. Învinge-l de două ori.",
+    "paldeaQuaking": "Un Titan cutremură pământul la Quaking Earth, căldarea prăfuită de la nord de Cortondo. Învinge-l de două ori.",
+    "paldeaFalseDragon": "Un Tatsugiri și Dondozo-ul lui stăpânesc lacul Casseroya, lângă drumul spre nord din Medali. Învinge Titanul False Dragon.",
+    "paldeaArvenBattle": "Arven vrea să-ți arate ceva la farul de pe Poco Path, unde a început Path of Legends.",
+    "paldeaStarfall": "Cineva care semnează Cassiopeia vrea ca bazele Team Star să fie desființate. Ia trecătoarea spre nord din Mesagoza, la est de academie.",
+    "paldeaGiacomo": "Echipa lui Giacomo ține poarta de vest a Starfall Street. Atac-o și înfruntă-l pe șef.",
+    "paldeaMela": "Echipa Melei ține poarta de est a Starfall Street. Atac-o și înfrunt-o pe șefă.",
+    "paldeaAtticus": "Echipa lui Atticus ține poarta din capătul de vest al Starfall Street. Atac-o și înfruntă-l pe șef.",
+    "paldeaOrtega": "Echipa lui Ortega ține poarta din capătul de est al Starfall Street. Atac-o și înfruntă-l pe șef.",
+    "paldeaEri": "Echipa lui Eri ține poarta din capul Starfall Street. Atac-o și înfrunt-o pe șefă.",
+    "paldeaKofu": "Spre nord, prin Asado Desert, Kofu gătește la Arena din Cascarrafa. Fă-i comisionul până la Porto Marinada și câștigă Insigna Apei.",
+    "paldeaLarry": "La est de deșert, Larry ține Arena din Medali. Află comanda secretă de la Treasure Eatery și câștigă Insigna Normală.",
+    "paldeaRyme": "Ryme cântă în Montenevera, în zăpada de la est de poalele muntelui Glaseado. Câștigă duelul ei de rap și Insigna Fantomă.",
+    "paldeaTulip": "Dincolo de peștera de la vest de Cortondo, Tulip ține Arena din Alfornada. Pozează pentru fotografiile ei și câștigă Insigna Psihică.",
+    "paldeaGrusha": "Pe vârful muntelui Glaseado te așteaptă Grusha. Coboară pârtia lui prin toate porțile și câștigă Insigna Gheții.",
+    "paldeaLeague": "Cu toate cele opt insigne, mergi la Liga Pokémon de sub zidul de sud al orașului Mesagoza. Treci de interviul Rikăi, apoi înfruntă Elita celor Patru, pe Geeta și pe Nemona.",
+    "paldeaAreaZero": "Cu Liga, Titanii și Team Star în urmă, întâlnește-te cu prietenii tăi la Zero Gate, în North Province. Coboară în Area Zero, până la laboratorul de pe fundul craterului.",
     "paldeaFree": "Începe semestrul. Vânătoarea de comori e a ta: arenele, Titanii și multe altele te așteaptă dincolo de Mesagoza.",
     "kalosRamos": "Ia Drumul 12 până în Coumarine City și câștigă de la Ramos Insigna Plantă.",
     "kalosPowerPlant": "Mergi spre nord din Coumarine City pe Drumul 13, la Centrala Electrică, unde Team Flare a tăiat curentul din Lumiose.",
@@ -2390,7 +2433,8 @@
     "safariBalls": "SAFARI BALLS",
     "streak": "ȘIR",
     "hooks": "AGĂȚATE",
-    "steps": "PAȘI"
+    "steps": "PAȘI",
+    "starRaid": { "felled": "ÎNVINȘI", "count": "{felled}/{goal}", "clock": "TIMP" }
   },
   "riftToast": {
     "opened": "S-a deschis o ruptură pe {place}! Se închide în ora asta.",
@@ -3790,7 +3834,7 @@
     "action": {
       "Up": "Sus", "Down": "Jos", "Left": "Stânga", "Right": "Dreapta", "Confirm": "Confirmă, vorbește, citește", "Cancel": "Înapoi", "Menu": "Meniu",
       "Run": "Fugă (ținut apăsat)", "Item": "Obiect înregistrat", "Poketch": "Scoate sau ascunde Pokétch-ul", "PoketchApp": "Următoarea aplicație Pokétch",
-      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto", "Mount": "Urcă sau coboară"
+      "PoketchTouch": "Atinge Pokétch-ul", "PageLeft": "Pagina înapoi", "PageRight": "Pagina înainte", "Fullscreen": "Ecran complet", "Mute": "Sunet pornit sau oprit", "Screenshot": "Fă o captură de ecran", "Report": "Scrie un raport de reluat", "Photo": "Modul foto", "Mount": "Urcă sau coboară", "LetsGo": "Hai, la luptă"
     },
     "page": {
       "title": "COMENZI",
@@ -4149,6 +4193,14 @@
     "raidBlownOut": "Furtuna de energie Dynamax i-a aruncat pe toți afară din vizuină!",
     "raidActsAgain": "{pokemon} e încă furios!",
     "raidNoSwitch": "Fiecare luptător rămâne cu Pokémonul cu care a venit!",
+    "teraRaidBegins": "Lumina cristalului izbucnește! {pokemon} arde de energie Tera!",
+    "teraRaidClock": "Lumina cristalului va ține {n} ture!",
+    "teraRaidTimeUp": "Lumina cristalului i-a înghițit pe toți! Raidul Tera s-a încheiat.",
+    "teraShieldUp": "{pokemon} s-a învelit într-un scut de cristal Tera!",
+    "teraShieldBroke": "Un ciob din scutul de cristal al lui {pokemon} s-a desprins! Mai rămân {n}.",
+    "teraShieldDown": "Scutul de cristal al lui {pokemon} s-a sfărâmat!",
+    "teraOrbCharged": "Globul Tera al lui {pokemon} s-a încărcat!",
+    "teraOrbNotCharged": "Globul Tera nu s-a încărcat încă!",
     "tooStrongToCatch": "E încă prea puternic ca să fie prins! Câștigă mai întâi mai multe insigne.",
     "cantBeTouched": "Nu poate fi atins!",
     "onlyWatches": "Doar privește...",
@@ -4366,6 +4418,10 @@
     "taleKeepsItem": "Basmul lui {tale} i-a păstrat lui {pokemon} {item} pentru altă dată!",
     "taleForestHeals": "Pădurea lui {tale} i-a refăcut HP-ul lui {pokemon}!",
     "taleHoldsFoe": "Pădurea lui {tale} îl ține pe loc pe {pokemon}!",
+    "anvilGlances": "Abilitatea {ability} a lui {pokemon} a lovit în trecere în {target}!",
+    "echoLands": "Ecoul lui {move} l-a lovit pe {target}!",
+    "eclipseFalls": "Abilitatea {ability} a lui {pokemon} a întunecat câmpul!",
+    "warCry": "Abilitatea {ability} a lui {pokemon} și-a însuflețit echipa!",
     "taleTakesStrength": "{pokemon} a preluat puterea lui {fallen}!",
     "stellarType": "Stelar",
     "teraformZero": "{ability} lui {pokemon} a șters vremea și terenul!",
@@ -4757,7 +4813,10 @@
     },
     "totemAura": "{pokemon} e învăluit în aura unui totem!",
     "totemCantBeCaught": "Aura totemului a abătut Ball-ul! Un totem nu poate fi prins!",
-    "defeatedTheTotem": "{player} a învins totemul {pokemon}! Aliații lui s-au împrăștiat!"
+    "defeatedTheTotem": "{player} a învins totemul {pokemon}! Aliații lui s-au împrăștiat!",
+    "titanAura": "Titanul {pokemon} se ridică, uriaș și furios!",
+    "titanCantBeCaught": "Titanul a respins Ball-ul! Un Titan nu poate fi prins!",
+    "defeatedTheTitan": "{player} a învins Titanul {pokemon}!"
   },
 
   "battleInfo": {
@@ -5088,6 +5147,7 @@
     "SchoolKid": "Școlar",
     "SchoolKidM": "Școlar",
     "Student": "Elev",
+    "TeamStarBoss": "Șef Team Star",
     "Scientist": "Om de știință",
     "ScientistGs": "Om de știință",
     "SisAndBro": "Soră și frate",
@@ -7466,6 +7526,10 @@
   },
   "campPot": {
     "title": "OALA",
+    "picnicTitle": "PICNIC",
+    "tableTitle": "MASA DE PICNIC",
+    "onTheTable": "PE PÂINE",
+    "make": "PREGĂTEȘTE",
     "pantry": "LA ÎNDEMÂNĂ",
     "pot": "ÎN OALĂ",
     "cook": "GĂTEȘTE",
@@ -7495,7 +7559,10 @@
     "dish": {
       "name": {
         "campStew": "Tocăniță de Tabără", "beanHotpot": "Ghiveci de Fasole", "berryPilaf": "Pilaf cu Boabe", "honeyOatCakes": "Turte de Ovăz cu Miere",
-        "mushroomBake": "Ciuperci la Cuptor", "quietBroth": "Supă Liniștită", "spicedFlatbread": "Lipie Picantă", "potatoHash": "Cartofi Rumeniți"
+        "mushroomBake": "Ciuperci la Cuptor", "quietBroth": "Supă Liniștită", "spicedFlatbread": "Lipie Picantă", "potatoHash": "Cartofi Rumeniți",
+        "picnicSandwich": "Sandviș de Picnic", "berryJamSandwich": "Sandviș cu Gem de Boabe", "tomatoCheeseSandwich": "Sandviș cu Roșii și Brânză",
+        "honeyButterSandwich": "Sandviș cu Miere și Unt", "spicedOnionSandwich": "Sandviș cu Ceapă Picantă", "herbFlatbreadSandwich": "Lipie cu Ierburi",
+        "starlightSandwich": "Sandvișul Luminii de Stele"
       },
       "desc": {
         "campStew": "Ce s-a găsit la îndemână, fiert laolaltă. Sățioasă, și atât.",
@@ -7505,7 +7572,14 @@
         "mushroomBake": "Bogat și auriu. Pokémonii sălbatici învinși apoi lasă mai multe în urmă.",
         "quietBroth": "O supă blândă care liniștește. Mai puțini Pokémoni sălbatici te deranjează.",
         "spicedFlatbread": "Lipie fierbinte cu margine afumată. Pokémonii sălbatici urmează mirosul.",
-        "potatoHash": "Cartofi crocanți prăjiți în unt. Pokémonii învinși lasă mai multe în urmă."
+        "potatoHash": "Cartofi crocanți prăjiți în unt. Pokémonii învinși lasă mai multe în urmă.",
+        "picnicSandwich": "Ce era în coș, între două felii de pâine. Te satură, și atât.",
+        "berryJamSandwich": "Unt și o boabă strivită în gem. Pokémonii de tipul boabei apar mai des.",
+        "tomatoCheeseSandwich": "Roșii coapte și brânză tare. Mai mulți Pokémoni sălbatici ies să vadă ce miroase atât de bine.",
+        "honeyButterSandwich": "Miere dulce pe unt moale. Ouăle apar mai des în coșul de picnic.",
+        "spicedOnionSandwich": "Ceapă prăjită cu mirodenii. Pokémonii primesc mai mult EXP în luptă.",
+        "herbFlatbreadSandwich": "Lipie cu ierburi și brânză topită. Pokémonii sălbatici se prind mai ușor.",
+        "starlightSandwich": "Un turn din tot ce e mai bun. Pokémonii de tipul boabei strălucesc ceva mai des."
       }
     }
   },
@@ -7531,16 +7605,19 @@
     },
     "short": {
       "exp": "EXP", "effort": "EF", "money": "$", "bargain": "%", "catch": "CAP", "encounter": "ÎNT", "stealth": "DIS", "hatch": "OU",
-      "typeEncounter": "TIP", "materials": "MAT"
+      "typeEncounter": "TIP", "materials": "MAT", "egg": "COȘ", "sparkling": "SCL"
     }
   },
   "timedPowers": {
     "kind": {
       "exp": "Puterea EXP", "effort": "Puterea Efortului", "money": "Puterea Premiilor", "bargain": "Puterea Reducerilor", "catch": "Puterea Capturii",
       "encounter": "Puterea Întâlnirilor", "stealth": "Puterea Discreției", "hatch": "Puterea Eclozării", "typeEncounter": "Puterea Tipului",
-      "materials": "Puterea Culesului"
+      "materials": "Puterea Culesului", "egg": "Puterea Ouălor", "sparkling": "Puterea Sclipirii"
     },
     "wornOff": "{list} a expirat."
+  },
+  "picnic": {
+    "eggs": { "one": "Un Ou te aștepta în coșul de picnic!", "few": "{n} Ouă te așteptau în coșul de picnic!", "other": "{n} de Ouă te așteptau în coșul de picnic!" }
   },
   "versus": {
     "first": "Jucătorul 1",

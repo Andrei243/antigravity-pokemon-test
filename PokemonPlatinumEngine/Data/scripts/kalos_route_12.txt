@@ -1,0 +1,42 @@
+# The stable on the Blossom Road (plan 42 · PS8; rulings, "The riding race"): its master runs a track beside the road. The
+# player races their own Pokémon of a riding size against three of the stable's riders on their own mounts; first place
+# pays Battle Points. Nothing in Kalos's games was ever raced on, so the race and its words are ours.
+script RaceStable
+  speaker "Stable Master"
+  ride raceruns "blossom"
+  if result > 0 goto Again
+  say "Welcome to the Blossom Road stable! Rhyhorn, Tauros and Rapidash are bred for speed here, and we race them round the track."
+  say "Any Pokémon big enough to carry a rider can run it. Hold the run button to push, press the button to jump the rocks, and lean into every turn."
+  goto Ask
+label Again
+  ride racebest "blossom"
+  say "Back on the track? Your best here is {number} points."
+label Ask
+  ask "Care to race your own Pokémon against my three riders?"
+  if no goto Later
+  ride race "blossom"
+  if result == -1 goto NoMount
+  if result == 0 goto Later
+  if result == 1 goto Won
+  if result == 2 goto Second
+  if result == 3 goto Third
+  say "A good run! The track is hard on newcomers. Come back when you have found its rhythm."
+  end
+label Third
+  say "Third place, and in front of the dust of the last of us. Take the stable's thanks for the ride."
+  text "{player} received {number} Battle Point(s)!"
+  end
+label Second
+  say "Second place! You were close. The stable pays a little for a place like that."
+  text "{player} received {number} Battle Point(s)!"
+  end
+label Won
+  say "First home! Not one of my riders has beaten that. Here is the stable's prize."
+  text "{player} received {number} Battle Point(s)!"
+  end
+label NoMount
+  say "None of your Pokémon is big enough to carry a rider, or they are not fit to run. Come back with a sturdier one!"
+  end
+label Later
+  say "No hurry. The track isn't going anywhere. Come back whenever you like!"
+  end

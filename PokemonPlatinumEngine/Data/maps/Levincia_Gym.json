@@ -1,7 +1,7 @@
 {
   "name": "Levincia_Gym",
   "displayName": "Levincia Gym",
-  "bgmTrack": "paldea/academy",
+  "bgmTrack": "paldea/gym",
   "interior": "Gym",
   "trees": "Round",
   "width": 11,

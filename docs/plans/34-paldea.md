@@ -147,12 +147,12 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 
 - [x] PD1 Paldea's file, Cabo Poco, Los Platos and Mesagoza (2026-11-13, its first session: the file, the open map of five areas described and baked, six rooms, the chapter from the bedroom to the academy's door headless, the plane from Galar landing; "PD1 as built", below; its second session 2026-11-14: the harness's `paldea` mode with every owed shot, the bot's run from the bedroom to the academy's door in `PlaythroughTests`, `profile`'s Mesagoza plaza; "PD1's second session", below. **Waits for the user**: the look of Cabo Poco and Mesagoza, judged from the `paldea` mode's shots, as the done-when has it (the second session's findings, below, are the things to judge first); the bake's footprint for the whole region (the question below); `Architecture.Paldea` seen in the game. **Owed**: the academy's halls past the entrance hall, the voices of the new cast designed by ear, and whatever the user's judgment of the findings asks)
 - [x] PD2 The mount on the open world (its rules built 2026-11-09 as plan 30 · FM12, its rig 2026-11-12 as FM13, and its last part 2026-11-13: the navigation mesh's hop, high jump, climb and glide links for a region whose `world.json` says `mount`, the lab's yard with a painted climbable face, the done-when ridden in `MountLabTests`, Paldea's mesh baked again with them; "PD2 as built", below. **Owed**: the playthrough bot riding the links; the user's word on the yard's shots `fwy0` to `fwy6`)
-- [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below. **Owed**: the bot's run to three badges, the tests as searches of the towns, the towns' and gyms' songs, the new cast's voices, the user's word on the provinces' distances)
-- [ ] PD4 The Path of Legends
-- [ ] PD5 Starfall Street and Let's Go
-- [ ] PD6 The West and North Provinces and the last five gyms
-- [ ] PD7 Tera Raids and picnics
-- [ ] PD8 The League, Area Zero and the Way Home
+- [x] PD3 The South and East Provinces and the first three gyms (2026-11-14, its first session: the map's storage is the user's option b, the baker baking only the areas' land; Cortondo, Artazon and Levincia with the three ways between them, their Pokémon Centers and gyms, Katy, Brassius and Iono with their tests at fixed levels; the three badges won headless in two orders, the done-when; "PD3 as built", below; its second session the same day: the bot's run to three badges in `PlaythroughTests`, Brassius's and Iono's tests as searches about their towns on the open map and Katy's giant olives as cards, the towns' and the gym's songs, Paldea's Town Map with Fly's places, the new cast's voices designed; "PD3, second session", below. **Waits for the user**: the provinces' distances, decision 3 (taken at its recommendation), the songs by ear, the voices by ear, and how Fly is to be asked for in the open field)
+- [x] PD4 The Path of Legends (its first session 2026-11-14: Arven at the lighthouse, the Stony Cliff and the Titan Klawf beaten twice, the Herba Mystica scene and the mount's dash, Paldea's first climbable crag; "PD4, first session", below; its second session the same day: the four other Titans in stand-in places beside the land that is built, their powers in order, the climb opening the Stony Cliff's crag, Arven's Mabosstiff and battle at the lighthouse, the five beaten by the bot headless and in the harness, the Titans' song; "PD4, second session", below. **Waits for the user**: the stand-ins (PD6 moves the Titans to their provinces), the Titans' fixed order, the song by ear. **Owed**: Arven's voice designed by ear)
+- [x] PD5 Starfall Street and Let's Go (2026-11-15, one session: Let's Go on its key, the five bases in a stand-in valley north of Mesagoza with their raids' clock, the bosses and Starmobiles on a stage of their own, Cassiopeia's calls; "PD5 as built", below. **Waits for the user**: the stand-in valley (PD6 moves the bases), the raid's numbers (fifteen in five minutes), the song and the five bosses' looks by eye. **Owed**: the bot playing a raid, Let's Go's materials for the crafting kit, the new cast's voices by ear)
+- [x] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below; its second session 2026-11-23: the North Province, Glaseado Mountain and its snowslope, Montenevera, the East Province's third area, Alfornada through its cavern, Ryme's rap battle, Tulip's photographs and Grusha's run with the three leaders scaled, Lurking Steel and False Dragon moved to their provinces, the eight badges won in two orders headless, the bot to the fifth badge, through the last three and riding from Cabo Poco to Glaseado's top; "PD6, second session", below. **Waits for the user**: the north's distances and looks, the tests ours where the originals differ (Ryme's and Tulip's), the run with no clock, the songs by ear, the new cast's voices by ear, `profile`'s ride on the Windows machine. **Owed**: Starfall Street's bases still in their stand-in valley; Cascarrafa's falls drawn falling and its bridges; the open places' people's lines untranslated, as every open map's are)
+- [x] PD7 Tera Raids and picnics (2026-11-23, one session: the Tera foe on Galar's `Raid` with its crystal shield, the raiders' orbs charged by their moves and a clock of turns; twelve crystals on Paldea's open map drawn by the day and the badges, their glow in their Tera Type's colour, the catch that never fails and the Tera Shards it leaves; the picnic's sandwiches as `recipes.json`'s second section on the camp's pot with no kit in Paldea, the Egg and Sparkling Powers, the Type and Encounter Powers on the open map's spawner; the picnic basket's Eggs; Mesagoza's deli; "PD7 as built", below. **Waits for the user**: the crystal's look and the raid's numbers (HP, shield, clock), the sandwiches and their powers' numbers, the picnic's look. **Owed**: the raid's clock and the orbs on the raid's screen, the bot playing a raid, the black crystals (PD9), the picnic table's own look)
+- [x] PD8 The League, Area Zero and the Way Home (its first session 2026-11-23: the Pokémon League's building on its terrace under Mesagoza's south wall, the lobby with Rika's interview and the battle court, the Elite Four, Geeta and Nemona at the originals' levels, `PaldeaHallOfFame` with the Hall of Fame's scene, home and the credits, refused without eight badges; "PD8, first session", below. its second session the same day: the Zero Gate in the North Province with the friends' meeting and Penny's Cassiopeia, Area Zero as grid rooms behind its door (the gate's hall, the crater's four terraces and research stations, the Zero Lab), the professor's AI by the version, the legendary's battle form beside the player's mount, the Way Home with the credits moved to it, and the done-when: the bot from the League's door through the Hall of Fame, riding north to the Zero Gate and down to the Way Home; "PD8, second session", below. **Waits for the user**: the League's place and look, the interview's questions, one court for all six; Area Zero as grid rooms rather than the open map's carved crater, the gate's place, the mount beside the team in the last battle, the credits after the Way Home)
 - [ ] PD9 After the Hall of Fame
 - [ ] PD10 The Teal Mask (optional)
 - [ ] PD11 The Indigo Disk (optional)
@@ -197,6 +197,31 @@ them), and the gym trainers stand in the worker's look.
 originals' searches about the towns on the open map, and a giant olive's card; the towns' and the gyms' songs (the
 gym song loops too soon for a room's theme); the voices of the new cast designed by ear; Fly's places on a Town Map of
 Paldea; the user's word on the provinces' distances.
+
+## PD3, second session (2026-11-14)
+
+What PD3's first session owed, but for the user's word on the provinces' distances (left as they are) and decision 3
+(still at its recommendation). The rulings' "PD3's second session" has the decisions.
+
+- **The bot's run to three badges** (`Itineraries.PaldeaToTheThreeBadges`, `PaldeaToTheThirdBadge`;
+  `PlaythroughTests.APaldeaGamePlaysFromTheBedroomInCaboPocoToTheThirdBadge`): from the bedroom on through the academy's
+  welcome, then Cortondo, Artazon and Levincia in the academy's order, each test, the town's nurse and the leader, a
+  strong team on hand as Galar's run has it.
+- **The tests as searches**: Brassius's three Sunflora and Iono's three Wattrel stand about Artazon and Levincia on the
+  open map (`species` of a place's person, new: drawn as the species' model, `GatherOpenFigures`), each gone once found;
+  the two leaders battle only once all three are found. Katy's olive roll stays in her gym's room, its olives cards of a
+  giant olive (`GiantOlive`, a thing of the map; style guide first). `PaldeaTests` holds both.
+- **Songs**: `paldea/cortondo`, `paldea/artazon`, `paldea/levincia` (40, 38 and 33 s loops) and `paldea/gym` lengthened
+  to a 30 s loop, played by the six gym rooms; `tools/MusicRender` reports no clash and each within the loudness window.
+  **Open areas now play their songs** as they are crossed into (`GameEngine.ComeToTheOpenArea`), which they never had.
+- **Paldea's Town Map** (`Data/world/paldea/townmap.json`, 36 by 28 cells from the bake) with Fly's five places on markers,
+  the arrival flags set as the towns are crossed into, and the engine's Town Map taught an open map's region, cell and
+  reachable towns; `PaldeaTests.PaldeasTownMapIsTheBakesGridAndFlyLandsOnEachTownsMarker`. **Fly still can't be asked
+  for**: the open field has no start menu (`UpdateOpenField` runs none), so a session must add one or the flying taxi.
+- **Voices**: briefs and designs for Katy, Brassius, Iono, Director Clavell and Nemona (`cast.json`), the catalogue run
+  with `--add-missing`; no audio made. They wait for the user's ear.
+- **Not done**: no harness shot of the searches, the olive cards or the Town Map was taken in this session (the
+  `paldea` mode's PD3 shots stand as they were; its gym-test shots now show empty gaps in Artazon's and Levincia's rooms).
 
 ## PD2 as built (2026-11-13)
 
@@ -280,3 +305,443 @@ One session, which left the map-storage question (above) alone and built nothing
 - **5, Inlet Grotto**: its room is a cave (`"setting": "Cave"`, `"battleArena": "Cave"`): rock stood up round its floor, the cave's camera and stage. The Galar Mine has the same file and look, left for Galar's sessions.
 
 **Left**: 6, the house's side is the same stucco in the afternoon's shade, with plainer windows than its front (unchanged: the open kit's sides are `BuildingArt.PaintSide`'s, shared with every grid town); 8, the paths' saw-tooth edges (the cover is a vertex's, decided on level 0's 0.5 m cells; a fix is the ground program's or the baker's, shared by every open region); 9, the field's Pokémon as specks (`OpenWild`'s distances, 12 to 56 m, are plan 32 · OW7's for every open map); 10, the pale Sprigatito: its green is `CatLeafLight` (176, 216, 146) in `PokemonModels.Paldea1.cs`, a sculpt file this session didn't touch; a deeper green there (about 120, 196, 104) is the one-line fix. The bake was made again; where a merge meets PD3's bake, baking again after it settles it.
+
+## PD4, first session (2026-11-14)
+
+(This section was lost in a merge with PD3's second session and put back by PD4's second session as it was written.)
+
+One session of two, beside PD3's second session (the bot's run, the songs, the voices) in another worktree. The rulings'
+"The Path of Legends, its first Titan" has every decision.
+
+**What there is**
+- **Arven's lighthouse**: Arven (`arven` of `characters.json`, our own look) at the foot of Poco Path's lighthouse from
+  the academy's welcome on, whose director now sends the player to him; his scene begins the path
+  (`VAR_PALDEA_LEGENDS` 1, `FLAG_PALDEA_LEGENDS_BEGUN`; `poco_path.txt`'s `ArvenLighthouse`).
+- **The Stony Cliff** (`stony_cliff`, a new area of the open map: `terrain/titans.json`, `carve/titans.json`,
+  `places/stony_cliff.json`, `scripts/stony_cliff.txt`): a gully cut north into the hills from the South Province's
+  third area, a ramp at its head onto the den's ledge 6 m up, and a crag 6.5 m high with its south face painted
+  climbable.
+- **The first Titan**: Klawf at three times its height in the gully's mouth (a Pokémon may now stand in an open place:
+  `species` and `size` of a place's person), beaten (`wildbattle … titan`, a totem's aura fought alone, `TotemAura.Titan`),
+  fleeing up the ramp to its den, beaten again there under a stronger aura once it has eaten its Herba Mystica.
+- **The Herba Mystica scene**: Arven up the ramp, the sandwich, the mount's first power, the dash
+  (`FLAG_PALDEA_MOUNT_DASH`), `VAR_PALDEA_LEGENDS` 3.
+- **Objectives** 810 `paldeaArven` and 811 `paldeaKlawf`, English and Romanian; the Titan's three battle lines.
+- **Baked again**: Paldea's navigation mesh now has 12 climbs (all up the crag's face), 20 hops, 47 high jumps, 1431
+  glides. **A merge with PD3's second session that touches the bake is settled by baking again after it**
+  (`dotnet run --project tools/OpenWorldBake -- paldea`).
+- **Shots** (the `paldea` mode, `Modes/PaldeaLegends.cs`, `SHOTS_FILTER=pd9`): `pd90` Arven at the lighthouse, `pd91`
+  the Titan Klawf in the gully's mouth, `pd92` at its den on the ledge (shut in by rock on three sides), `pd93` the
+  crag. Looked at: the Titan is asked at three times Klawf's height (3.9 m), drawn at the open figures' clamp of 3.5 m,
+  and reads as a giant beside the player; the gully's floor is lawn and its west bank a green wall, as PD3's hills are
+  (finding, unchanged).
+- **Tests** (`PaldeaLegendsTests`): the place, its Titan and den; the path headless from Arven's word to the dash, the
+  Titan's two battles fought as Titans; the three scenes played and skipped alike; the mount ridden up the gully on
+  Paldea's own bake trotting before the Titan and sprinting after; and the crag climbed by the capsule and the
+  navigation mesh only with the climb, never with every other power.
+
+## PD4, second session (2026-11-14)
+
+The four other Titans, their powers, Arven's end of the path and the done-when. The rulings' "The Path of Legends, its
+last four Titans" has every decision; the user did not answer the stand-in question, so its recommendation was taken.
+
+**What there is**
+- **Four stand-in places** (`terrain/titans.json`, `water.json`'s False Dragon lake, `places/<key>.json`,
+  `scripts/<key>.txt`), each an area of the open map shut in by hills but for its mouth, beside the land that is built:
+  - `open_sky`: the Titan Bombirdier (20) in a gully north off the South Province's second area, its den a ledge; swim
+  - `lurking_steel`: the Titan Orthworm (29) in a sandy cutting east off the East Province's first area, its den a
+    ledge; high jump
+  - `quaking_earth`: the Titan Great Tusk (Koraidon) or Iron Treads (Miraidon) (45) in a dusty basin north of Cortondo,
+    its den a rise; glide
+  - `false_dragon`: the Tatsugiri (57) on a lake's near shore, the Dondozo (56) with it in command on the far shore;
+    climb
+- **The order**: each waits once the one before it is beaten (`VAR_PALDEA_LEGENDS` 3 to 11); then Arven at the
+  lighthouse, his Mabosstiff well again and his battle (`paldea_arven`, 12, `FLAG_PALDEA_LEGENDS_DONE`).
+- **A Titan's flight is short** (to its ramp's foot), Klawf's too: the real-engine pass found Klawf's walk to its den
+  holding the field still for over ten seconds.
+- **The done-when**: `PaldeaLegendsTests.TheLastTitansHerbsLetTheMountClimbTheStonyCliffsCragItCouldntBefore` takes
+  the grants from the story just before the False Dragon's herbs and just after, and on Paldea's own bake the
+  navigation mesh and the capsule reach the Stony Cliff's crag only after. `TheFiveTitansAreBeatenInOrderAndEachGrantsTheNextPower`
+  beats the five headless with each mount, `PlaythroughTests.APaldeaGameWalksThePathOfLegendsFromArvensWordToHisBattle`
+  plays the path with the bot from the lighthouse on foot (`Itineraries.PaldeaPathOfLegends`), every trigger, Titan,
+  battle and walk the game's own, and the scenes are played and skipped alike.
+- **Shots** (`paldea` mode): `pd94` to `pd98` the four places' Titans where they wait; `pdl01` on, every battle the bot
+  meets walking the path, at its menu (`PaldeaLegendsPlayed`, `SHOTS_FILTER=pdl`): the Titans under their aura, two
+  students on the way, Arven. Looked at: the places read as gullies, a sand cutting and basin and a lake in rock walls,
+  the Titans stand where they should and the aura glows in battle. Findings, unchanged: the floors are the same lawn
+  and grass tufts as PD3's ways; the Tatsugiri is small even at four times its height; a Titan's battle is fought on the
+  meadow's stage whatever its place's cover. The harness's bot (three Pokémon at 70) lost once to the Tatsugiri (57, its special attack raised), woke at a
+  Pokémon Center and won on coming back (Arven's battle also came twice, most likely the same): the loss and the Titan waiting again work in the real engine.
+  It prints how each battle ended.
+- **Song** `paldea/titans` (37 s loop, no clash, in the loudness window), played by the five places.
+- **Baked again**: 454 chunks (from 389; the bake 62.0 MB, from 52.9 MB); the mesh's 25 hops, 47 high jumps, 12 climbs (the crag's alone), 1429 glides.
+
+**What PD6 replaces**: the four stand-ins `open_sky`, `lurking_steel`, `quaking_earth` and `false_dragon` (their
+`world.json` areas, their brushes and paint in `terrain/titans.json`, False Dragon's lake in `water.json`, their places
+and scripts), moving each Titan to its province (Bombirdier to the West Province, Orthworm to the East Province's third
+area, Great Tusk and Iron Treads to Asado Desert, the Tatsugiri and Dondozo to Casseroya Lake), keeping the scripts'
+names, flags and the count so the tests stand; the Stony Cliff is the South Province's own and stays.
+
+**Owed**: Arven's voice designed by ear (provisional in the cast); the bot riding the mount's links (PD2's owed).
+
+## PD5 as built (2026-11-15)
+
+One session, beside PD6 in another worktree. The rulings' "Starfall Street and Let's Go" has every decision; the plan
+asked nothing new of the user, and nothing was waited on.
+
+**What there is**
+- **Let's Go** (`Models/LetsGo.cs`; `Core/GameEngine.LetsGo.cs`): `GameAction.LetsGo` at the enum's end (R, the pad's
+  right trigger, in every preset), on foot in an open map, sends the lead at the nearest wild Pokémon within 10 m; the
+  battle is `BattleCore`'s with nobody watching, the lead's moves AUTO's (`Battle/Sim/MoveSuggestion.cs`, which
+  `BattleEngine.Suggest` now asks: one scorer), its record a `BattleRecordFile` that replays. A higher level, a shiny or
+  a Nuzlocke run meets it in a real battle. The field shows the lead running out, the target flickering with the hits
+  and shrinking away, and the lead running back (`LetsGoShow`, figures of `GatherOpenFigures`).
+- **Starfall Street** (`starfall_street`, a stand-in): `terrain/starfall.json` (a valley north of Mesagoza at the
+  plaza's height, the hills round it, a pass through Mesagoza's north mountains east of the academy),
+  `places/starfall_street.json` (five gates, each a hall of the crew, a yard's marker `<boss>_yard`, the gate's
+  `<boss>_gate`, a grunt and the boss), `scripts/starfall_street.txt`, one area line in `world.json` (and its name in
+  the map's list). Baked again: 486 chunks (from 454), the mesh's 25 hops, 47 high jumps, 12 climbs, 1597 glides.
+- **The raids** (`Models/StarRaids.cs`): `starraid begin "<boss>"` (a new script command, both hosts, `docs/scripts.md`),
+  fifteen to fell in five minutes of the field's ticks, the crew's Pokémon standing round the yard, the first three
+  sent in turn; the corner's count and clock (`ModernUi.StarRaidCount`); the game starts `<Boss>RaidWon` or
+  `<Boss>RaidLost` as it ends.
+- **The bosses** (`Data/world/paldea/trainers.json`, `paldea_star_giacomo` … `paldea_star_eri`, class `Team Star Boss`,
+  `format` `"starmobile"`), each team ending with its Starmobile, a Revavroom with its crew's Torque move, fought on
+  `BattleArena.StarBase` (style guide's row first). Looks of ours for the five and the grunts.
+- **Cassiopeia's calls**: the first as the street is first walked into, one after each boss, her thanks after the fifth
+  (`VAR_PALDEA_STARFALL` 0 to 6).
+- **Song** `paldea/team_star` (a garage band's bluster in E minor, 25.6 s loop; `tools/MusicRender`: no clash, -19.3 dB,
+  in the loudness window).
+- **Objectives** 850 to 855, English and Romanian; Romanian for every line (`ro/scripts/starfall_street.json`).
+- **Tests**: `LetsGoTests` (a Let's Go battle replays from its record and gives its EXP; the same seed fights the same
+  battle; a higher level or a shiny is no Let's Go; an outmatched lead faints; a base's clock ends a raid on the gate;
+  a raid felled to its goal is won; the three leads in turn; the bases' species and bosses) and `LetsGoGameTests` (the
+  key in the whole game on Paldea's bake: a wild Pokémon felled and gone, the lead's EXP; a raid's clock run out and the
+  player put back on the gate by its script; a raid won bringing the boss's battle) and `StarfallStreetTests` (the
+  street's places, Cassiopeia's first call only after the academy's welcome, the grunt's question, a raid lost and won
+  headless, the five bosses counted, every scene played and skipped alike).
+- **Shots** (`paldea` mode, `Modes/PaldeaStarfall.cs`): `pd99` the street from its mouth, `pd99b` Giacomo's gate,
+  `l80_lets_go` (with `l80b` the hits and `l80c` the fade), `l81_star_raid` and `l81b`, `l82_star_boss` on the stage.
+  Looked at: the lead runs out to the Lechonk from the player's side and it shrinks away; the raid's crew stand round
+  the yard with the corner's count and clock over them, and a Let's Go in the raid fells one (1/15); Giacomo's battle
+  stands on the star pads before the striped tent. **Findings, unchanged**: the five bases are the open kit's plain
+  `hall` (pale walls, a straw-coloured hip roof, a STAR sign), nothing of the crews' black and pink; the valley's floor
+  reads as sand and the yards' mud paint doesn't show; the crew's Pokémon face the yard's middle and never move. In a
+  crossed game the Starmobile grows into Turbovroom with the rest of the boss's team (`levels-crossed.txt`).
+
+**What PD6 replaces**: the stand-in valley (`terrain/starfall.json`, the `starfall_street` area of `world.json` and
+`places/starfall_street.json`), moving each base to its province (Giacomo's to the West Province's first area, Mela's to
+the East Province's first area, Atticus's to Tagtree Thicket, Ortega's to the North Province's third area, Eri's to its
+second), keeping the scripts' names, flags, the markers `<boss>_yard` and `<boss>_gate` and `StarBases.File` (or
+changing that one constant), so the tests stand. A merge of PD5 and PD6 that touches the bake is settled by baking again
+(`dotnet run -c Release --project tools/OpenWorldBake -- paldea`).
+
+**Owed**: the playthrough bot playing a raid (`Autoplayer.Open` presses no Let's Go); Let's Go's materials for the
+crafting kit (`MaterialsAfterBattle` reads a `BattleEngine`); the five bosses' and Cassiopeia's voices designed by ear
+(provisional in the cast); the song by ear; who Cassiopeia is (PD8).
+## PD6, first session (2026-11-15)
+
+One session of two, beside PD5 (Starfall Street, in its own files) in another worktree; the West's areas stop at `z` -740 and its hills (to -800) step round Starfall Street's, north of Mesagoza, so neither buries the other: **after merging the two, bake again and
+run both sessions' walk tests**. The rulings' "The West Province and the
+fourth and fifth gyms" has every decision. The user did not answer the provinces' distances or decision 3, so their
+recommendations stand (PD3's compressed distances; the later gyms scaled to the badges held).
+
+**What there is**
+- **The land** (`terrain/west.json`, `water.json`, `roads.json`, `world.json`): six areas, `asado_desert`,
+  `cascarrafa`, `west_province_area_two`, `porto_marinada`, `west_province_area_one` and `medali`, north and west of
+  Cortondo, each a place's file with its people; the desert and the two areas with zones of wild Pokémon at 22 to 29
+  and a student each; Cascarrafa's falls a river down a slot in the hills into the pool at the city's foot; Porto
+  Marinada at 4 m on its quay over the western sea, come down to by a ramp. `chunks` start at `-26`.
+- **The Titans moved**: Open Sky to a gully north off the West Province's first area, Quaking Earth to the basin at
+  Asado Desert's south end (the road north runs through it), every key, script, flag and the count kept; their
+  stand-ins' brushes are gone from `terrain/titans.json`. Arven's direction to Open Sky rewritten.
+- **Rooms**: `Cascarrafa_PokemonCenter`, `_Gym`, `_GymTest`; `PortoMarinada_PokemonCenter`; `Medali_PokemonCenter`,
+  `_Gym`, `_GymTest`, `Medali_TreasureEatery`; spawns 6 to 8.
+- **Kofu** (Water): his errand to Porto Marinada's auction, won by bidding at the last call (`porto_marinada.txt`), a
+  gym trainer, and his battle. **Larry** (Normal): three hints about Medali and the secret order at the Treasure Eatery,
+  a gym trainer, and his battle. Looks `kofu`, `larry`.
+- **Decision 3's scaling**: a team for each count of badges held (`paldea_kofu_b0` to `_b7`, `paldea_larry_b0` to
+  `_b7`, the plain ids the original's), picked by the leader's script; the best at `paldea.json`'s cap for that count.
+- **Songs** `paldea/west_province`, `cascarrafa`, `porto_marinada`, `medali` (33 to 43 s loops, no clash, in the
+  loudness window). **Town Map** written again from the bake (45 by 28), Fly's eight places. **Objectives** 830
+  `paldeaKofu`, 831 `paldeaLarry`. Romanian for every new line (`docs/localisation-review-ro.md`).
+- **Tests**: `PaldeaWestTests` (the areas, towns, rooms and the Titans in their provinces; Kofu and Larry won in the
+  academy's order at the originals' levels; taken first, scaled down to the badges held; nothing before the welcome),
+  and `PaldeaTests`' lists grown by the new areas, zones, rooms and spawns.
+- **Baked again**: 625 chunks (from 454), 84.6 MB (from 62.0 MB); about five and a half minutes to bake.
+- **Shots** (the `paldea` mode, `Modes/PaldeaWest.cs`, `SHOTS_FILTER=pdw`): `pdw00` to `pdw13` the places from their
+  markers and the gyms and the eatery faced from their squares, `pdw20` to `pdw27` the eight rooms, `pdw30` Kofu and `pdw31`
+  Larry at the far end of their halls. Looked at: Porto Marinada reads as a port, its quay paved over the sea with the
+  auction house and the Pokémon Center on it. The first shot of the falls (`pdw05`) showed only the pool: the river's slot ended inside the
+  cliff's face, so its drop sat in the rock; the slot now cuts through the face to the floor's edge, and the river runs
+  out of a cleft at the foot of the hills into the pool. **The falling water down the face is still not drawn** (the open
+  renderer draws no falls; the river's steep stretch is hidden in the cleft). Findings, unchanged: the towns and ways are lawn as PD3's are, Cascarrafa's houses far apart.
+
+**Left for session two**
+- The North Province and Glaseado: Montenevera (Ryme, Ghost, her rap battle), Alfornada (Tulip, Psychic, her photos;
+  in the originals reached from the south-west through a cavern), Glaseado Mountain with Grusha (Ice, his snowboard
+  run), each town's Pokémon Center, rooms, trainers, songs, Fly places and objectives, the three leaders scaled to the
+  badges held as Kofu and Larry are (their `_b0` to `_b7` teams); and the two Titans still in stand-ins, Lurking Steel
+  (Orthworm) to the East Province's third area and False Dragon (Tatsugiri and Dondozo) to Casseroya Lake.
+- The done-when: eight badges won (a test of the eight in the academy's order and in another, beside
+  `PaldeaWestTests`), and the region walked and ridden from Cabo Poco to Glaseado's top with no chunk waited for (an
+  itinerary in `Itineraries.Paldea.cs` and `PlaythroughTests`, and the harness's `paldea` mode timing the ride as the
+  `world` mode times Sinnoh's walks).
+- Owed from this session: the bot's run to the fifth badge in `PlaythroughTests` (only headless tests play Kofu's and
+  Larry's tests); Cascarrafa's falls drawn falling (`pdw05`: the cleft and the river show, the drop down the face doesn't) and its bridges over its
+  river; the new cast's voices by ear (Kofu, Larry and the auctioneer have designs, no audio).
+
+## PD6, second session (2026-11-23)
+
+One session, alone in its worktree beside a docs session and a Carpathia sculpts session (the second harness agent).
+The rulings' "The North Province and the last three gyms" has every decision. The user had not answered the provinces'
+distances or decision 3, so their recommendations stand, as in the first session.
+
+**What there is**
+- **The land** (`terrain/west_north.json`, read after `west.json`; `carve/alfornada.json`; `water.json`, `roads.json`,
+  `world.json`): six areas, `north_province_area_one` (north out of Medali), `glaseado_mountain` (the foot east and west
+  of the snowslope, the slope and the top, with the snow weather), `montenevera`, `east_province_area_three` (north out of
+  Levincia to Montenevera's east gate), `alfornada_cavern` (a carved tunnel from behind Cortondo's Pokémon Center) and
+  `alfornada` with its ruins' pillars; hills at 40 m over the whole north and crags at 72 m round the slope. Glaseado's
+  top is 40 m over its foot, 140 m up an even slope of about 16°. `chunks` reach `-38`.
+- **The last two Titans moved**: Lurking Steel (Orthworm) to a cutting east off the East Province's third area, north of
+  Levincia; False Dragon (the Tatsugiri and the Dondozo) to Casseroya Lake (the `false_dragon` area's name), east off the
+  North Province's first area; each its stand-in moved whole, keys, scripts, flags and the count kept. The stand-ins'
+  brushes, paint and lake are gone from `titans.json` and `water.json`; Arven's directions (`open_sky.txt`,
+  `quaking_earth.txt`, `poco_path.txt`) and the two objectives rewritten.
+- **Rooms**: `Montenevera_PokemonCenter`, `_Gym`, `_GymTest`; `Alfornada_PokemonCenter`, `_Gym`, `_GymTest`;
+  `Glaseado_PokemonCenter`, `_Gym`, `_GymTest`; spawns 9 to 11.
+- **Ryme** (Ghost): her MC's rap battle in her hall (`Montenevera_GymTest.txt`, three lines, the rhyme the right answer,
+  each kept as it is got right), a gym trainer and her battle. **Tulip** (Psychic): her photographer's three moods in her
+  studio (`Alfornada_GymTest.txt`), a gym trainer and her battle. **Grusha** (Ice): the snowslope run
+  (`glaseado_mountain.txt`: the coach at the top, three gates of young pines in order, the line at the foot; a gate
+  missed sends the challenger back up), a gym trainer and his battle in the hall at the top. Looks `ryme`, `tulip`,
+  `grusha`.
+- **Decision 3's scaling** for the three: `paldea_ryme` (at five held), `paldea_tulip` (six), `paldea_grusha` (seven),
+  and `_b0` to `_b7` for the other counts, picked by each leader's script; gym trainers Tas, Bruno and Yuki; students
+  Marta, Iker, Aitana, Ines and Rosa; wild Pokémon of the north at 34 to 45.
+- **Songs** `paldea/north_province`, `glaseado`, `montenevera`, `alfornada` (40 to 50 s loops, no clash, -17.6 to -19.4
+  dB loud). **Town Map** written again from the bake (46 by 38 cells from chunk -25,-36), Fly's three new places.
+  **Objectives** 832 `paldeaRyme`, 833 `paldeaTulip`, 834 `paldeaGrusha`. Romanian for every new line of the scripts,
+  rooms, objectives and the Town Map (`docs/localisation-review-ro.md`); voices designed for Ryme, Tulip, Grusha, the MC
+  and the coach (`Data/voice/cast.json`, briefs and Kokoro blends, unheard).
+- **The done-when**: `PaldeaNorthTests.TheEightBadgesAreWonInTheAcademysOrderAndInAnother` wins the eight in the academy's
+  order (each later leader with the original's team) and with the last three first and the first three last (each later
+  leader with the team for the badges held); the region walked and ridden: `Itineraries.PaldeaToGlaseadosTop` played by
+  `PlaythroughTests.APaldeaGameIsRiddenFromCaboPocoToGlaseadosTop` headless, and drawn by the harness's `paldea` mode
+  (`pdn90`): **10,570 frames (176 s) from Cabo Poco's lane to Glaseado's top, ridden 97% of them, no chunk waited for**
+  (4,611 chunks made ready on the way). Its milliseconds (9.8 ms a frame, the worst 277 ms in the South Province's second
+  area; the stream's worst upload frame 2.3 s, most likely the first frames' uploads) were taken on a busy machine with a
+  second harness agent running, so they are owed to the quiet Windows machine.
+- **Owed by the first session, done**: the bot's run to the fifth badge (`Itineraries.PaldeaWestBadges`,
+  `PlaythroughTests.APaldeaGamePlaysFromTheBedroomInCaboPocoToTheFifthBadge`; the auction answered otherwise on each try,
+  within the bot's four); and on to the eighth (`Itineraries.PaldeaNorthBadges`,
+  `PlaythroughTests.APaldeaGameWinsTheLastThreeBadgesFromMedali`).
+- **Baked again**: 910 chunks (from 625), about 121 MB (from 84.6 MB); about 80 s on Release.
+- **Tests**: `PaldeaNorthTests` (the areas, towns, rooms and the two Titans moved; the eight badges in two orders; the
+  three leaders scaled; a rhyme missed, a pose wrong and a gate skipped each sending the challenger back; the run's two
+  scenes played and skipped alike); `PaldeaTests`' lists grown by the new areas, zones, rooms and spawns, and its walk now
+  reaching Glaseado's top and Alfornada through its cavern and never the crags or the hills over the cavern; the three
+  `PlaythroughTests` above; `SceneSkipTests`' list of open scenes; goldens `scripts.txt`, `levels.txt` and
+  `levels-crossed.txt` accepted (the new rooms' trainers and scripts only), `species-owed.md` regenerated.
+- **Shots** (the `paldea` mode, `Modes/PaldeaNorth.cs`, `SHOTS_FILTER=pdn`): `pdn00` to `pdn15` the places (the slope from
+  its foot and from the top, the gym on the top, a gate of the run, Montenevera's gym, Lurking Steel, Casseroya Lake, the
+  cavern, Alfornada's gym and ruins), `pdn08n` Montenevera after dark, `pdn20` to `pdn28` the nine rooms, `pdn30` to
+  `pdn32` the leaders, `pdn90` the ride's end on Koraidon at the top. Looked at: the cavern reads as a cave with daylight
+  at its end; the ruins' pillars stand round the knoll; the run's gates are two young pines each on the slope; the top's
+  terrace and gym stand in the snow. **Findings, unchanged**: the snowslope seen from its foot fills the picture with
+  snow and nothing else (the camera sits low against a long white slope); the hills between the places read as cliffs
+  with flat green tops, as everywhere in Paldea; the three gyms are the open kit's plain gym (Montenevera's no stage,
+  Glaseado's no snow on its roof); Ryme's hall has the Ghost arena's purple and nothing of a stage.
+
+**Owed**
+- Starfall Street's five bases are still in PD5's stand-in valley (PD5's "What PD6 replaces"): the provinces exist now,
+  and the move is a session's work of its own (the bases' places, scripts' markers and `StarBases.File`).
+- Cascarrafa's falls drawn falling (the open renderer draws no falls) and its bridges, owed from the first session.
+- The open places' people's lines (the hiker, the skier, the fan, the elder...) are untranslated, as every open map's
+  are: no translation file covers an open place's people yet.
+- The run keeps no clock; the gym tests of Ryme and Tulip are ours, not the originals'; no gym battle is a double.
+- The new cast's voices by ear; the four songs by ear; `profile`'s ride and the north's scenes on the Windows machine.
+
+**Waits for the user**: the north's distances and looks (from the `pdn` shots), the tests as built, the run with no
+clock, the songs and voices by ear, the ride's milliseconds on the quiet Windows machine.
+
+## PD7 as built (2026-11-23)
+
+One session, in its own worktree beside the lead's full test run (so nothing was timed). The rulings' "Tera Raids and
+picnics" has every decision. Taken at recommendations: decision 4 (the sandwiches a second section of ecipes.json on
+the camp's one pot); the plan's "spawner on Dice and the day" read as the dens' day-drawn spawner (the day's number and
+the crystal's id, never the dice), so the crystal drawn on the map and its script always agree and a test replays it.
+
+**What there is**
+- **Tera Raids** (Battle/Sim/BattleCore.Raid.cs): RaidTerms.Tera; the boss Terastallized into the crystal's type for
+  the whole battle, its HP raised by its stars (RaidRules.TeraHpTimes), no Dynamax in a Tera Raid; the crystal shield
+  from four stars (TeraShieldAt, TeraShields, a fifth through, three broken by a Terastallized raider's hit); the
+  raiders' orbs charged by three moves (OrbCharge, OrbChargeOf, refused with attle.teraOrbNotCharged till then,
+  the students carrying orbs of their own); the clock (TeraTurns, two more for every fall, TeraTurnsLeft,
+  TheTeraClockRanOut) in place of the fourth fall; the boss acting once a turn. BattleRecordFile.RaidTera keeps it.
+- **The crystals** (Data/world/paldea/crystals.json, Models/Raids.cs): twelve sites in the South, East, West and North
+  Provinces, Poco Path and Glaseado's foot, each a trigger crystal_<id> of its place with its own script
+  (aid crystal "<id>", call TeraCrystal; nine script files new, for places that had none); Raids.CrystalToday
+  (lit one day in two, stars by Paldea's badges, TeraMostStars, levels by stars, the Tera Type the row's or drawn),
+  seven students as raiders. common.TeraCrystal asks for a Tera Orb, fights, gives the shards (aid shards,
+  Raids.ShardsOf, the shard items TR5's keeper reads) and throws a ball that never fails (aid catch, the Tera Type
+  kept). The glow is DenBeams' crystal (DenBeam.Tera), the style guide's "Tera crystals" first.
+- **Picnics**: ecipes.json's sandwiches (seven, ours; half an hour each), RecipeTable.Sandwiches, Meals taking
+  its table, CampKitchen.Table, and in Paldea CampKitchenNow giving the picnic's table with no kit and HasCamp
+  offering it; the screen titled PICNIC and THE PICNIC TABLE (campPot.picnicTitle, 	ableTitle, onTheTable, make).
+  PowerKind.Egg and Sparkling at the enum's end (powers.json, PowerTable.TakesType); readers: the picnic basket,
+  GameEngine.MakeWild's shiny rolls (SparklingRolls), and on the open map OpenWildField.Favoured and
+  MoreStanding from the Type and Encounter Powers (FavouredBy, MoreStandingBy, set each frame by
+  UpdateOpenField). Models/PicnicBasket.cs: the couple, a try a minute at the Day Care's chance and the Egg Power's
+  strength, ten at most, given as the picnic is packed up (EmptyThePicnicBasket, picnic.eggs).
+- **Mesagoza's deli**: a clerk before the café (mesagoza_deli, MesagozaDeli), craft deli opening the kit's PANTRY
+  screen with no kit.
+- **The harness**: Modes/PaldeaRaidsPicnics.cs in the paldea mode (SHOTS_FILTER=ft72,27g), with the driver's
+  StartRaid: t72b_tera_crystal and t72c_tera_crystal_night (a crystal lit today, by day and after dark),
+  t72a_tera_raid_begins, t72_tera_raid (a four-star Baxcalibur's raid at the menu with its crown and three shields
+  standing, turn 3 of 12), 27g_picnic, 27g_picnic_table (butter and an Oran Berry making a Berry Jam Sandwich) and
+  27g_picnic_sandwich (its Type Power for half an hour). Looked at; the picnic's title was "THE POT" at first and is
+  now its own.
+- **Tests**: PaldeaTeraRaidTests (the boss and its HP, the orb's charge, the shield broken three at a time, the clock
+  losing a raid no fall ends, the replay from its file, a crystal's day, the crystal's script to its catch and shards and
+  its need of an orb, every trigger a crystal and the glow) and PaldeaPicnicTests (the sandwiches held to the
+  kitchen's rules, a sandwich's power for half an hour, the Type Power changing the meadow's draws and wearing off to
+  the plain draws exactly, the Encounter Power's more and its wearing off, the basket's Eggs, the deli). Run beside them:
+  GalarRaidTests, KitchenTests, TrainingPowersTests, OpenWorldWildTests, GalarWildAreaTests, ScriptTests,
+  ContentTests, MealStandTests, the Tera, record, oracle and golden battle tests and RomanianTests, all passing;
+  goldens accepted: scripts.txt (common.TeraCrystal's block) and the two schemas (ecipes, powers), no battle
+  golden moved. ContentCheck finds nothing; the Paldea bake's --check is the same to the byte; Romanian for every new
+  line (docs/localisation-review-ro.md), TextTool report rewritten.
+
+**Waits for the user**: the crystal's look (t72b, t72c); the raid's numbers (HP times, the shield's shares and hits,
+the clock's turns, the shards); the sandwiches, their makings and their powers' strengths; the picnic's look.
+
+**Owed**: the raid's clock and each raider's orb drawn on the raid's screen; the bot playing a raid (PlaythroughTests);
+the black crystals of six and seven stars (PD9); a sandwich stacked on the table rather than a pot stirred; the deli clerk's
+name in Romanian (no open map's people are translated yet); profile of a crystal's glow is not needed (a few ribbons).
+
+## PD8, first session (2026-11-23)
+
+One session, alone in its worktree (`session/pd8a`). The rulings' "Paldea's Pokémon League" has every decision. Plan 34's
+decisions stay at their recommendations; decision 3 does not reach the League (it asks eight badges, so every team is at
+the originals' levels).
+
+**What there is**
+- **The building** (`places/south_province_area_one.json`, `terrain/south_league.json`): the Pokémon League, a hall of three
+  storeys signed LEAGUE, on a terrace at 10 m in the South Province's first area east of the road and just under
+  Mesagoza's south wall, its door facing south; markers `league_door`, `league_front`. Baked again (910 chunks, six of them
+  changed, and the navigation mesh); `--check` the same to the byte.
+- **Rooms**: `PaldeaLeague_Lobby` (nurse, shop counter, staff, Rika's desk) and `PaldeaLeague_Court` (the one court).
+- **The interview**: Rika's three questions (`PaldeaLeague_Lobby.txt`, `Interview`), none wrong, refused without the eight
+  badges; then the court (`PaldeaLeague_Court.txt`): Rika, Poppy, Larry and Hassel of the Elite Four, the Top Champion
+  Geeta, and Nemona's battle as the assessment's end, each shown at the court's far end in turn (`VAR_PALDEA_LEAGUE` 1 to
+  7). After Nemona: `halloffame`, **`PaldeaHallOfFame`** (the region's `StoryCompleteFlag`), the Hall of Fame's scene, home
+  to Cabo Poco, the save and the credits, as `Wyndon_StadiumPitch.txt` ends Galar's.
+- **Teams** (`Data/world/paldea/trainers.json`): `paldea_rika` (58), `paldea_poppy` (59), `paldea_larry_elite` (60),
+  `paldea_hassel` (61), `paldea_geeta` (62, the last cap), `paldea_nemona_8a` to `8c` (66, by the player's starter); each
+  Terastallizes its last. Looks `rika`, `poppy`, `hassel`, `geeta`. **Objective** 835 `paldeaLeague`. No new song (the
+  rooms play `paldea/gym`; the battles fall back to the gym leader's battle song). Romanian for every new line
+  (`docs/localisation-review-ro.md`; the TextTool report rewritten: no Romanian line left untranslated by this session).
+- **Tests**: `PaldeaLeagueTests` (the building, its door and rooms; the League won from eight badges: the court refusing
+  before the interview, the interview, the four, Geeta, Nemona, the Hall of Fame, `PaldeaHallOfFame` set, home, the
+  objective done and the Hub opened with a second region's Hall of Fame; refused with seven badges; Nemona's team by the
+  starter; the teams' levels, Tera Types and classes). `PaldeaTests`' rooms behind a room grown by the court. Run: the
+  filter of `Paldea`, `ScriptTests`, `StoryTests`, `ContentTests`, `Romanian`, `Golden` and `SceneSkip` (941 tests; the one
+  failure, the walk's reach of `league_front`, fixed by moving the marker onto the terrace and run again with `PaldeaTests`
+  and `PaldeaLeagueTests`, 22 passing). Goldens accepted: `scripts.txt` (the eight new blocks of the two League scripts
+  only) and `levels-crossed.txt` (the eight new League trainers' lines only). ContentCheck finds nothing.
+- **Shots** (the `paldea` mode's last part, `Modes/PaldeaLeague.cs`, `SHOTS_FILTER=pdg`): `pdg00_league_outside`,
+  `pdg01_league_from_the_road`, `pdg02_league_lobby`, `pdg03_the_interview` (its first question), `pdg04_court_poppy`,
+  `pdg05_poppy_battle`, `pdg06_court_geeta`, `pdg07_geeta_battle`, `pdg08_hall_of_fame` (the first card). Looked at: the
+  hall reads as a big civic building with its sign over the door; the interview's question and answers show; the battles
+  open on the League's stage. **Findings, unchanged**: the deep grass of the first area's east field runs up to the
+  building's foot (its paint and its wild Pokémon's zone end at `z` -280, the paving shows only as a strip before the
+  door), so the terrace reads as a lawn; the court is a plain tiled room with no court markings; a member stood at the
+  court's far end is half hidden behind the player at the talking spot (Poppy, small, most of all).
+
+**Decisions taken at a recommendation (ours, for the user)**: the League near Mesagoza's south gate; one court for the four,
+Geeta and Nemona (the originals give Geeta another); a loss keeps the challenger's place; Nemona's battle on the court
+straight after Geeta; the credits roll after the Hall of Fame (the originals hold them for the Way Home); the questions
+ours.
+
+**Left for session two**: the Zero Gate, Area Zero's four research stations down the crater, the Zero Lab, the professor's
+AI (Sada or Turo by `VAR_PALDEA_VERSION`), the legendary's battle form, the Way Home and its credits' place; the done-when,
+a Paldea game from Cabo Poco to the Way Home in `PlaythroughTests` (an itinerary through the League's interview and court
+is owed with it).
+
+**Owed**: the League's own songs (lobby, the Elite Four's and the Champion's battles); the terrace paved and kept clear of
+the field's grass and zone; the court's look (markings, the originals' second court for Geeta); a spawn and Fly place
+for the League if wanted; the new cast's voices (Rika, Poppy, Hassel, Geeta) designed by ear; the black crystals and
+rematches after the Hall of Fame (PD9). **Paldea has no departure**: it is the chain's last region with maps, so no
+attendant takes a Champion out of Paldea until plan 46 links Carpathia after it (or the user asks for a way back sooner).
+
+**Waits for the user**: the League's place and look (`pdg00` to `pdg02`), the interview's questions, the one court, the
+credits' place, the new looks, and the Romanian lines.
+
+## PD8, second session (2026-11-23)
+
+One session, alone in its worktree (`session/pd8b`). The rulings' "Area Zero and the Way Home" has every decision. Plan 34's
+decisions stay at their recommendations.
+
+**The choice of how**: Area Zero is three grid rooms behind the Zero Gate's door (plan 32 · decision 6), not the design's
+carved terrain on the open map. A carved crater 100 m deep would have been a terrain file, a carve, the bake, the
+navigation mesh's climbs and glides and falls the open renderer can't draw yet; the cave-set grid map (Inlet Grotto's
+precedent) gives the crater's rock and light, ledges give the one-way descent, and the stations are triggers across each
+terrace. The open map gained only the gate's hall and its door, so the bake moved nothing but the navigation round a
+new solid.
+
+**What there is**
+- **The Zero Gate** (`places/north_province_area_one.json`): a hall signed ZERO GATE against the hills on the North
+  Province's first area's east side, its door south (`zero_gate_door`, `zero_gate_front`), shut until
+  `FLAG_PALDEA_ZERO_GATE_OPEN`. Arven, Nemona and Penny stand before it once `PaldeaHallOfFame` is set; spoken to with the
+  Path of Legends (12) and Starfall Street (6) done they meet the player: Penny owns up to being Cassiopeia, Arven tells of
+  the professor's message, the professor's voice opens the gate (`north_province_area_one.txt`, `ZeroGate`). Baked again
+  (910 chunks; the navigation mesh round the hall).
+- **Rooms**: `AreaZero_Gate` (the hall and its lift), `AreaZero` (the crater: four terraces down ledges, a research
+  station's deck and console on each, crystals, pools, tall grass with Glimmet to Glimmora at 52 to 57, the version's two
+  Paradox Pokémon to battle once), `AreaZero_ZeroLab`.
+- **The story** (`AreaZero.txt`, `AreaZero_ZeroLab.txt`; `VAR_PALDEA_ZERO` 1 to 8): the four stations with the professor's
+  voice and the friends; the AI (Sada's or Turo's by `VAR_PALDEA_VERSION`) owning up and battling with the version's
+  Paradox six (`paldea_ai_sada`, `paldea_ai_turo`, 66 and 67, the last Terastallized); the Koraidon or Miraidon the
+  professor kept in its battle form with a Roaring Moon or Iron Valiant (72, 70), the player's own mount in its battle
+  form beside the player (a tag battle with `paldea_partner_koraidon` or `_miraidon`, 68); the Way Home: the AI shuts the
+  machine from the far side, the four climb out, the mount joins the team (still ridden), home to Mom in Cabo Poco, the
+  save and the **credits, moved here** from the court (`PaldeaLeague_Court.txt` now ends with the save).
+- Looks `penny`, `sada`, `turo` (ours); objective 836 `paldeaAreaZero` (done by `FLAG_PALDEA_WAY_HOME`); no new song (the
+  hall plays `paldea/titans`, the crater and the lab `paldea/alfornada`). Romanian for every new line
+  (`docs/localisation-review-ro.md`; the TextTool report rewritten).
+- **The done-when**: `Itineraries.PaldeaLeagueToTheWayHome`, played by
+  `PlaythroughTests.APaldeaGameRunsFromTheLeagueThroughAreaZeroToTheWayHome`: from the League's door with the eight
+  badges, the Titans and the bases behind it, Rika's interview, the four, Geeta and Nemona to the Hall of Fame and home,
+  then riding from Cabo Poco north across the region to the Zero Gate (97% of the open map's frames ridden; mounted again
+  after every door and battle), the meeting, down the lift, the four stations, the Zero Lab, both battles and the Way
+  Home (about 450 s of game time, 6 s headless). With the runs before it (the bedroom to the academy's door, the badges,
+  the Path of Legends, the ride to Glaseado's top) a Paldea game runs from Cabo Poco to the Way Home in
+  `PlaythroughTests`, riding where it can, leg by leg from saved states as every region's runs are. It needs a strong
+  team: with three at 90 the bot lost Nemona once and the AI every time; the test's five are at 100.
+- **Tests**: `PaldeaAreaZeroTests` (the gate, its door and the rooms; the gate shut before the League and with a Titan
+  still out, opened by the meeting after; the four stations, the AI's and the legendary's battles and the Way Home's flag
+  in both versions, the mount on the team, the credits; the AI's teams; the meeting played and skipped alike);
+  `PaldeaTests`' rooms behind a room grown by the crater and the lab; `PaldeaLeagueTests` reading `Everyone` where it read
+  the people present (the court's and lobby's people come and go with the story's flags, so the order the class's tests
+  ran in decided it); `SceneSkipTests`' list grown by the meeting. Run: the filter of `Paldea`, `ScriptTests`, `StoryTests`,
+  `ContentTests`, `Romanian`, `Golden` and `SceneSkip`, 948 passing. Goldens accepted: `scripts.txt` (the new blocks of
+  `AreaZero`, `AreaZero_ZeroLab` and `north_province_area_one.ZeroGate`, and the court's Nemona block losing its credits),
+  `levels.txt` and `levels-crossed.txt` (the crater's grass and the six new trainers only). ContentCheck finds nothing.
+- **Shots** (the `paldea` mode's very last part, `Modes/PaldeaAreaZero.cs`, `SHOTS_FILTER=pdz`): `pdz00_zero_gate` (the
+  hall and the three friends), `pdz01_crater_station` (the second terrace from its station, Great Tusk, the crystals and
+  pools), `pdz02_zero_lab` (Sada's AI, the professor's Koraidon and the friends), `pdz03_ai_battle`,
+  `pdz04_legend_battle` (Koraidon and Roaring Moon against the player's lead and Koraidon beside it), `pdz05_way_home`
+  (Mom's welcome back). Looked at; fixed: the gate's door was drawn on no face while it faced west (the open kit draws a
+  building's door on its south face), so the door now faces south; the Way Home's first line was spoken in the dark (a
+  `fade in` after the warp home). **Findings, unchanged**: the gate is the open kit's plain hall, nothing of a gate into a
+  crater; the stations' decks are the steel walkway of solar panels; the crater is a cave's rock under a dark sky, with no
+  view down into it; Director Clavell stands in the player's house in `pdz05` (the harness's own new game, not the story).
+
+**Owed**: Area Zero carved on the open map if the user wants the design's crater; the originals' last battle with the
+mount alone; Area Zero's own song; the new cast's voices (Penny, Sada, Turo) by ear; the black crystals and the post-game
+(PD9).
+
+**Waits for the user**: the grid rooms in place of the carved crater, the gate's place and look (`pdz00`), the meeting's
+order (all three paths), the AI's teams, the tag battle, the credits after the Way Home, the Romanian lines.

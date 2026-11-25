@@ -69,7 +69,7 @@ public sealed partial class BattleCore
         string? ability = user.Ability?.Name;
         if (use.Move.Data == StruggleData)
         {
-            user.Turn.AteBoosted = user.Turn.SheerForced = user.Turn.ParentalChild = false;
+            user.Turn.AteBoosted = user.Turn.SheerForced = user.Turn.ParentalChild = user.Turn.HeadStrike = false;
             return;
         }
         var shaped = ShapedBy(user, use.Move.Data);
@@ -94,7 +94,7 @@ public sealed partial class BattleCore
     /// </summary>
     internal static MoveData ShapedBy(Battler user, MoveData data)
     {
-        user.Turn.AteBoosted = user.Turn.SheerForced = user.Turn.ParentalChild = false;
+        user.Turn.AteBoosted = user.Turn.SheerForced = user.Turn.ParentalChild = user.Turn.HeadStrike = false;
         string? ability = user.Ability?.Name;
         if (ability == null) return data;
         PokemonType? ate = AteType(ability);

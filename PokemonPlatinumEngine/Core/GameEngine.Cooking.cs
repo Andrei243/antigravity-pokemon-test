@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI;
 
@@ -21,9 +22,13 @@ public partial class GameEngine
     /// What the camp cooks with: the kit's pouch, the bag, the powers and the timing assist, with a seed worked out from
     /// the play time (no draw: a game that never cooks rolls as before). None without the kit.
     /// </summary>
-    private CampKitchen? CampKitchenNow() => HasCraftingKit
-        ? new CampKitchen(flow.Crafting.Pouch, flow.Bag, flow.Powers, Settings.TimingAssist, SplitMix.Hash((int)(flow.PlayTime * 30), 0xC00C1E5u))
-        : null;
+    private CampKitchen? CampKitchenNow() =>
+        // In Paldea the camp is a picnic, whose table makes sandwiches with no kit needed (plan 34 · PD7)
+        Here.Id == RegionDatabase.Paldea
+            ? new CampKitchen(flow.Crafting.Pouch, flow.Bag, flow.Powers, Settings.TimingAssist, SplitMix.Hash((int)(flow.PlayTime * 30), 0xC00C1E5u), Meals.Sandwiches)
+        : HasCraftingKit
+            ? new CampKitchen(flow.Crafting.Pouch, flow.Bag, flow.Powers, Settings.TimingAssist, SplitMix.Hash((int)(flow.PlayTime * 30), 0xC00C1E5u))
+            : null;
 
     /// <summary>The powers count down by a frame of play; those that wear off are told once the field is free.</summary>
     private void KeepThePowers(float dt)

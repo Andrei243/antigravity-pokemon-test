@@ -1,0 +1,73 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      "Liga Pokémon"
+    ]
+  },
+  "people": {
+    "rika": {
+      "name": {
+        "en": [
+          "Rika"
+        ],
+        "text": [
+          "Rika"
+        ]
+      }
+    },
+    "poppy": {
+      "name": {
+        "en": [
+          "Poppy"
+        ],
+        "text": [
+          "Poppy"
+        ]
+      }
+    },
+    "larry": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          "Larry"
+        ]
+      }
+    },
+    "hassel": {
+      "name": {
+        "en": [
+          "Hassel"
+        ],
+        "text": [
+          "Hassel"
+        ]
+      }
+    },
+    "geeta": {
+      "name": {
+        "en": [
+          "Geeta"
+        ],
+        "text": [
+          "Geeta"
+        ]
+      }
+    },
+    "nemona": {
+      "name": {
+        "en": [
+          "Nemona"
+        ],
+        "text": [
+          "Nemona"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

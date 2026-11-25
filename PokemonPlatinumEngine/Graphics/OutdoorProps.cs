@@ -946,6 +946,33 @@ internal static class OutdoorProps
         Pix.Outline(c);
     }
 
+    /// <summary>
+    /// A giant olive of Katy's olive roll, 30 by 28 (plan 34 · PD3's second session; style guide, "A giant olive"): a round
+    /// olive-green fruit as wide as the card, lit up and to the left and shaded along its foot and right, a pale glint high
+    /// on its left, a short brown stalk with one leaf at its top.
+    /// </summary>
+    public static void PaintGiantOlive(PixelCanvas c)
+    {
+        var olive = Rgb(120, 140, 58);
+        var lit = Rgb(168, 186, 92);
+        var shade = Rgb(78, 94, 40);
+        var glint = Rgb(214, 224, 150);
+        var stalk = Rgb(104, 78, 46);
+        var leaf = Rgb(86, 120, 52);
+        for (int y = 4; y < 28; y++)
+            for (int x = 1; x < 29; x++)
+            {
+                float u = (x + 0.5f - 15f) / 13.5f, v = (y + 0.5f - 16f) / 11.5f;
+                if (u * u + v * v > 1f) continue;
+                c.Set(x, y, v > 0.6f || u > 0.75f ? shade : u + v < -0.7f ? lit : olive);
+            }
+        c.Rect(8, 9, 2, 2, glint);
+        c.Rect(14, 1, 2, 4, stalk);
+        c.Rect(16, 1, 4, 2, leaf);
+        c.Set(20, 2, leaf);
+        Pix.Outline(c);
+    }
+
     /// <summary>A Pokédex laid on a desk, 16 by 12: a closed red book with a hinge line and a small blue lens.</summary>
     public static void PaintDeskPokedex(PixelCanvas c)
     {
@@ -1042,6 +1069,7 @@ public static class ThingCards
             PropType.CratePile => (30, 34, GymArt.PaintCratePile),
             PropType.DeoxysTriangle => (HoennArt.TriangleWidth, HoennArt.TriangleHeight, HoennArt.PaintTriangle),
             PropType.ZygardeCell => (16, 16, OutdoorProps.PaintZygardeCell),
+            PropType.GiantOlive => (30, 28, OutdoorProps.PaintGiantOlive),
             PropType.Seagallop => (SeviiArt.SeagallopWidth, SeviiArt.SeagallopHeight, SeviiArt.PaintSeagallop),
             PropType.NetworkMachine => (SeviiArt.MachineWidth, SeviiArt.MachineHeight, SeviiArt.PaintNetworkMachine),
             PropType.FestivalLanterns => (FestivalArt.LanternsWidth, FestivalArt.LanternsHeight, FestivalArt.PaintLanterns),

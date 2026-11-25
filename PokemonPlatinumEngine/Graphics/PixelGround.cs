@@ -48,7 +48,8 @@ internal static class PixelGround
     public const int RockFootprint = 11;
 
     /// <summary>A ground other than lawn and path: flat base, lighter patches, a darker rim where it meets other ground.</summary>
-    private readonly record struct Kind(TileType Type, Color Base, Color Patch, Color Rim, Color Mark, int Salt);
+    /// <param name="RimWidth">How many texels wide the rim is: one, but for the top of a cave's rock, whose lit edge is two.</param>
+    private readonly record struct Kind(TileType Type, Color Base, Color Patch, Color Rim, Color Mark, int Salt, int RimWidth = 1);
 
     private static readonly Kind[] Kinds =
     {
@@ -59,8 +60,9 @@ internal static class PixelGround
         new(TileType.Rock, new(158, 152, 150, 255), new(176, 170, 166, 255), new(112, 106, 116, 255), new(104, 100, 112, 255), 75),
         new(TileType.Ice, new(150, 200, 236, 255), new(172, 214, 242, 255), new(112, 166, 216, 255), new(232, 246, 255, 255), 76),
         new(TileType.Marsh, new(124, 106, 86, 255), new(140, 122, 98, 255), new(90, 76, 66, 255), new(98, 112, 108, 255), 77),
-        // The top of a cave's wall: the dark of rock nobody stands on
-        new(TileType.CaveWall, new(66, 58, 70, 255), new(78, 70, 80, 255), new(44, 38, 52, 255), new(52, 46, 60, 255), 78),
+        // The top of a cave's wall: the dark of rock nobody stands on, darker lit than the floor is in shade, with a lit
+        // edge where it ends (style guide, "Caves")
+        new(TileType.CaveWall, new(40, 35, 46, 255), new(46, 40, 52, 255), new(104, 94, 110, 255), new(30, 26, 36, 255), 78, RimWidth: 2),
         // The dark inside the mouth of a cave, seen from the open country
         new(TileType.CaveMouth, new(24, 20, 30, 255), new(30, 26, 38, 255), new(12, 10, 18, 255), new(18, 16, 26, 255), 79),
         // The dark under the trees where a forest is entered
@@ -206,6 +208,9 @@ internal static class PixelGround
         var c = new PixelCanvas(w, h);
         bool Inside(float[] m, int x, int y) => x >= 0 && y >= 0 && x < w && y < h && m[y * w + x] >= 0.5f;
         bool Edge(float[] m, int x, int y) => !Inside(m, x - 1, y) || !Inside(m, x + 1, y) || !Inside(m, x, y - 1) || !Inside(m, x, y + 1);
+        // (a rim two texels wide: the texels a step further in as well, and those at a corner)
+        bool Edge2(float[] m, int x, int y) => Edge(m, x, y) || !Inside(m, x - 2, y) || !Inside(m, x + 2, y) || !Inside(m, x, y - 2) || !Inside(m, x, y + 2)
+            || !Inside(m, x - 1, y - 1) || !Inside(m, x + 1, y - 1) || !Inside(m, x - 1, y + 1) || !Inside(m, x + 1, y + 1);
         // (A mask is null where none of its tiles is in the window: most chunks have no water, or no tall grass, or no building)
 
         // The noise of the lawn and of each kind of ground, each keeping the cell it is in from texel to texel
@@ -236,7 +241,7 @@ internal static class PixelGround
                     if (mask == null) continue;
                     if (Kinds[k].Type == TileType.Sand && mask[i] > 0.25f) sandy = true;
                     if (mask[i] < 0.5f) continue;
-                    col = Edge(mask, x, y) ? Kinds[k].Rim
+                    col = (Kinds[k].RimWidth > 1 ? Edge2(mask, x, y) : Edge(mask, x, y)) ? Kinds[k].Rim
                         : patches[k].At(gx / 3f, gy / 3f) > 0.58f ? Kinds[k].Patch : Kinds[k].Base;
                 }
 
@@ -812,6 +817,12 @@ internal static class PixelGround
                     for (int d = 0; d <= 4; d++) c.SetRaw(x + d, y + 1, kind.Mark);
                     for (int d = 1; d <= 3; d++) c.SetRaw(x + d, y + 2, kind.Mark);
                     c.SetRaw(x + 1, y + 1, new Color(150, 168, 164, 255));
+                    break;
+                case TileType.CaveWall:
+                    // A crack and nothing else: the pale pebbles are the floor's, and on the rock's top read as more floor
+                    c.SetRaw(x, y, kind.Mark); c.SetRaw(x + 1, y + 1, kind.Mark); c.SetRaw(x + 2, y + 1, kind.Mark);
+                    c.SetRaw(x + 3, y + 2, kind.Mark);
+                    if (k == 0) { c.SetRaw(x + 4, y + 2, kind.Mark); c.SetRaw(x + 4, y + 3, kind.Mark); }
                     break;
                 default:
                     if (k == 0)

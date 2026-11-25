@@ -47,7 +47,8 @@ public class SpeciesOfNothingTests
 
     private static List<PokemonSpecies> Made(string json, out List<PokemonSpecies> all)
     {
-        all = PokemonDatabase.Everyone().ToList();
+        // The placeholder stands where the table's own would (the shipped table left out, so its numbers are free)
+        all = PokemonDatabase.Everyone().Where(s => !s.IsCarpathian).ToList();
         return SpeciesOfNothing.Add(all, SpeciesOfNothing.Parse(json), Moves, Abilities);
     }
 

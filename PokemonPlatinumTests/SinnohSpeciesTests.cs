@@ -218,7 +218,7 @@ public class SinnohSpeciesTests
         had.UnionWith(new[] { "Castform-Sunny", "Castform-Rainy", "Castform-Snowy", "Cherrim-Sunshine", "Deoxys-Attack", "Deoxys-Defense", "Deoxys-Speed" });
 
         var platinums = PokemonDatabase.GetAll().Where(s => s.DexNumber is 201 or 351 or 386 or 412 or 413 or 421 or 422 or 423 or 479 or 487 or 492 or 493)
-            .SelectMany(s => (s.Forms ?? new()).Select(f => f.Name)).Where(f => f != "Arceus-Fairy" && PokemonDatabase.SpeciesOfForm(f) != null).ToList();
+            .SelectMany(s => (s.Forms ?? new()).Select(f => f.Name)).Where(f => f is not ("Arceus-Fairy" or "Arceus-Sound") && PokemonDatabase.SpeciesOfForm(f) != null).ToList();
         var missing = platinums.Where(f => !had.Contains(f) && !FormsAwaiting.ContainsKey(f)).ToList();
         var given = FormsAwaiting.Keys.Where(had.Contains).ToList();
         Assert.True(missing.Count == 0 && given.Count == 0, $"Had nowhere: {string.Join(", ", missing)}. Listed as awaiting but had: {string.Join(", ", given)}");

@@ -1,0 +1,61 @@
+# Open Sky (plan 34 · PD4, its second session): the second Titan of the Path of Legends, Bombirdier, met in the gully
+# north off the West Province's first area, beaten and chased up the ramp to its den, beaten again there once the
+# Herba Mystica has made it bigger, and the herbs it left shared with the mount, which can swim again. Moved to its
+# province by plan 34 · PD6. VAR_PALDEA_LEGENDS (stony_cliff.txt's
+# header has the whole count) goes on:
+#   3  the Titan Klawf beaten: the Titan Bombirdier waits in Open Sky's gully
+#   4  the Titan Bombirdier beaten in the gully and fled to its den (FLAG_PALDEA_BOMBIRDIER_FLED)
+#   5  the Titan Bombirdier beaten at its den (FLAG_PALDEA_BOMBIRDIER_BEATEN), its herbs shared: the mount swims (FLAG_PALDEA_MOUNT_SWIM)
+# The lines are our own, on Scarlet and Violet's beats.
+
+
+# The Titan in the gully: the first battle, and its flight up the ramp
+script Bombirdier
+  if var VAR_PALDEA_LEGENDS == 3 goto Titan
+  end
+label Titan
+  scene "The Open Sky Titan"
+  faceto titan_bombirdier player
+  cry "Bombirdier"
+  text "A shadow sweeps over the gully. A Bombirdier as big as a sail drops a boulder at {player}'s feet and lands!"
+  wildbattle "Bombirdier" 20 titan speed
+  text "The Titan Bombirdier shrieks, beats its wings and lurches off up the gully toward the ledge at its head!"
+  walkto titan_bombirdier open_sky_ramp_foot fast
+  setflag FLAG_PALDEA_BOMBIRDIER_FLED
+  setvar VAR_PALDEA_LEGENDS 4
+  endscene
+  end
+
+
+# Up on the ledge: the Titan at its Herba Mystica, the second battle, and Arven come up the ramp to share the herbs
+script BombirdierDen
+  if var VAR_PALDEA_LEGENDS == 4 goto Den
+  end
+label Den
+  scene "The Open Sky Titan's Herba Mystica"
+  faceto player titan_bombirdier_den
+  text "The Titan Bombirdier is hunched over a clump of glowing herbs, tearing at them with its beak."
+  text "Its feathers bristle and its wings spread wider than the ledge. It rounds on {player}!"
+  wildbattle "Bombirdier" 20 titan all
+  text "The Titan Bombirdier is beaten. It shrinks to an ordinary Bombirdier and flaps off over the hills."
+  setflag FLAG_PALDEA_BOMBIRDIER_BEATEN
+  placeat arven_open_sky open_sky_ramp_foot
+  walkto arven_open_sky open_sky_herbs fast
+  faceto player arven_open_sky
+  speaker "Arven"
+  say "Two down! I had to duck a rock on the way up. That bird could throw."
+  say "And there's the herbs. A sour one this time, but sour's good in a sandwich if you balance it."
+  faceto arven_open_sky player
+  if var VAR_PALDEA_MOUNT == 2 goto Miraidon
+  text "Koraidon crunched the sandwich down, then sniffed the air and padded about as if looking for water."
+  goto Strength
+label Miraidon
+  text "Miraidon took the sandwich in one gulp, then hummed and turned its head toward the distant sea."
+label Strength
+  setflag FLAG_PALDEA_MOUNT_SWIM
+  text "Some of its old strength has come back. It can swim again! (Riding, go into deep water to swim.)"
+  say "Next one I've heard of is way out east: something made of steel, digging under the sand north of Levincia."
+  say "Ride out there when you're ready. I'll catch up."
+  setvar VAR_PALDEA_LEGENDS 5
+  endscene
+  end

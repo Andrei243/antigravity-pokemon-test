@@ -110,6 +110,8 @@ public sealed class BattleRecordFile
     public int RaidStars { get; set; }
     public List<RecordedTrainer>? RaidAllies { get; set; }
     public bool? RaidCannotFail { get; set; }
+    /// <summary>A Tera Raid's Tera Type (plan 34 · PD7: "Fire", "Stellar"), the boss's for the battle; null for a den's raid, as a file without it.</summary>
+    public string? RaidTera { get; set; }
 
     /// <summary>The difficulty the battle was fought under (plan 13 · V2): Easy gives more EXP, so a replay needs it. A file without it is Normal.</summary>
     public Difficulty Difficulty { get; set; } = Difficulty.Normal;
@@ -211,6 +213,7 @@ public sealed class BattleRecordFile
             RaidStars = setup.Raid?.Stars ?? 0,
             RaidAllies = setup.Raid?.Allies.Select(RecordedTrainer.Of).ToList(),
             RaidCannotFail = setup.Raid?.CannotFail == true ? true : null,
+            RaidTera = setup.Raid?.Tera?.Name,
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
             CrossedExp = setup.CrossedExp,
@@ -349,7 +352,7 @@ public sealed class BattleRecordFile
             OffersSwitch = OffersSwitch,
             MegaMaxDen = MegaMaxDen,
             Reclaimer = Reclaimer,
-            Raid = RaidStars > 0 ? new RaidTerms(RaidStars, (RaidAllies ?? new()).Select(t => t.ToTrainer(rules)).ToList(), RaidCannotFail == true) : null,
+            Raid = RaidStars > 0 ? new RaidTerms(RaidStars, (RaidAllies ?? new()).Select(t => t.ToTrainer(rules)).ToList(), RaidCannotFail == true, Tera: TeraType.Parse(RaidTera)) : null,
             Difficulty = Difficulty,
             RunLevelCap = RunLevelCap,
             CrossedExp = CrossedExp,

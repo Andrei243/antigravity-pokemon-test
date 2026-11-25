@@ -1,0 +1,49 @@
+{
+  // Porto Marinada (plan 34 · PD6): the market port on the western sea, down the ramp at the end of the road west from
+  // Cascarrafa, its paved quay over the sea, the auction house where the morning's catch is sold, warehouses and the
+  // Pokémon Center. Kofu's errand is won at the auction (porto_marinada.txt's Auctioneer); its other people only talk
+  "markers": [
+    { "name": "porto_east", "at": [-664, 4.0, -668], "yaw": 270 },
+    { "name": "porto_quay", "at": [-716, 4.0, -668], "yaw": 270 },
+    { "name": "porto_center_door", "at": [-693, 4.0, -633], "yaw": 0 },
+    { "name": "porto_auction", "at": [-708, 4.0, -692], "yaw": 180 }
+  ],
+  "doors": [
+    {
+      "name": "porto_center_door",
+      "box": { "min": [-694, 3.5, -636], "max": [-692, 7, -635] },
+      "room": "PortoMarinada_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "porto_center_door"
+    }
+  ],
+  "solids": [
+    { "name": "Porto Marinada's Pokémon Center", "min": [-700, 3, -650], "max": [-686, 9.5, -636], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the auction house", "min": [-722, 3, -716], "max": [-700, 9, -700], "building": { "kind": "shop", "town": "paldea" } },
+    { "name": "the warehouse by the ramp", "min": [-668, 3, -716], "max": [-650, 10, -700], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the house on the quay", "min": [-722, 3, -648], "max": [-710, 8.5, -636], "building": { "kind": "house", "town": "paldea", "storeys": 1 } }
+  ],
+  "people": [
+    // The auctioneer before the auction house's doors: Kofu's errand (Cascarrafa_GymTest.txt sends the player here)
+    {
+      "name": "porto_auctioneer", "at": [-711, 4.0, -697], "yaw": 180, "look": "gentleman", "displayName": "Auctioneer",
+      "script": "Auctioneer"
+    },
+    {
+      "name": "porto_chef", "at": [-702, 4.0, -694], "yaw": 270, "look": "chef", "displayName": "Chef",
+      "lines": ["I bid on every crate the old fellow calls. I never win. I think he does it on purpose."]
+    },
+    {
+      "name": "porto_sailor", "at": [-724, 4.0, -668], "yaw": 90, "look": "sailor", "displayName": "Sailor",
+      "lines": ["Boats come in at dawn, and the auction starts the moment the first crate's on the quay. Bid late, I always say."]
+    },
+    {
+      "name": "porto_lass", "at": [-676, 4.0, -660], "yaw": 180, "look": "lass", "displayName": "Girl",
+      "lines": ["Cascarrafa's gym leader comes down here to shop himself, some mornings. He haggles for fun!"],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [-660, -630], "kind": "round", "size": 0.9 },
+    { "at": [-650, -690], "kind": "round" }
+  ]
+}

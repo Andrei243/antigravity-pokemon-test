@@ -12840,6 +12840,14 @@ built; what is still owed is listed at the end and in plan 21's last note.
 - **What leaves it out**: Hidden Power (Platinum's sixteen), Arceus's plates and Silvally's memories (decision 13), the Battle Hall's board (Platinum's seventeen), the Legend Plate's Judgment, the Pokétch's Move Tester, and whatever draws or lists the games' types (`TypeChart.GamesTypes`): the randomiser's shuffle (a seed deals what it always dealt), the Friend Safari, the sparring room, Conversion 2 (so no battle's draw moves) and the help's chart (shown eighteen wide until a shot of it nineteen wide is looked at). A choice of a type the player makes (the Monotype run, the Pokédex's search) offers the types some species has (`TypeChart.TypesWithSpecies`), so Sound joins it by itself with the first Sound species.
 - **What must not move**: no species or move of the games has the type, so the golden battles of both rules stand; the Sound items are kept out of the battle corpus's draw (`BattleCorpus`), and the oracle's scenarios never draw Sound (Showdown has no such type).
 
+### As the user answered (2026-11-22, plan 46 · CP2b)
+
+The user answered decisions 13 and 14 the other way from the recommendations: Arceus and Silvally have a Sound form, and a few of the games' sound moves are Sound-type. The two bullets above that say otherwise (the games' sound moves keep their types; plates and memories leave Sound out) are replaced by these.
+
+- **The Sound Plate and the Sound Memory** (items 9925 and 9926, ours): a plate as the Pixie Plate is (`ArceusSound`, a fifth more to Sound moves, Arceus and its Judgment Sound under Multitype) and a memory as the Fairy Memory is (`MemorySound`, Silvally and its Multi-Attack Sound under RKS System). Everything that reads a plate's or a memory's type goes by the hold effect's name, so nothing but the hold effect's row (`HeldItemEffects.Later.cs`) was written for them. Their forms are `Arceus-Sound` and `Silvally-Sound` (kind `Look`, the type alone, as every other plate's and memory's; Showdown's naming), drawn as the other sixteen are, in Sound's teal (no note or reed of their own yet). The battle corpus's draw leaves them out with the other Sound items (their hold effects end in `Sound`), and the oracle draws no `Look` form. **Where they are had is owed** (`docs/mechanics/where-items-are-found.md`): Carpathia's places (plan 46, CP19 to CP27), as every Sound item of CP2's.
+- **Ten of the games' sound moves are Sound-type under the modern rules** (decision 14's alternative): Uproar, Hyper Voice, Bug Buzz, Chatter, Round, Echoed Voice, Relic Song, Snarl, Disarming Voice and Boomburst, the damaging moves the data flags as sound whose sound is what they are. Each is a `modern` value (`Overrides/moves.json`), so **Platinum's rules keep them as they were**: `battles-platinum.txt` and the oracle of generation 4 stand. Left as they are: Snore; the signatures whose type is their species' own (Sparkling Aria, Clanging Scales, Overdrive); the later moves whose sound is secondary (Eerie Spell, Torch Song, Alluring Voice, Psychic Noise); the status moves; and the moves of our own.
+- **What follows from it, and is left as the rules give it** (for the user to weigh): no species of the games is Sound, so every one of the ten loses its user's same-type bonus (an Exploud's Boomburst, a Chatot's Chatter, a Vivillon's Bug Buzz); Pixilate, Aerilate, Refrigerate and Galvanize turn Normal moves only, so they no longer touch Hyper Voice or Boomburst (Liquid Voice, which turns sound moves, still does); a Normal Tera type no longer strengthens them. Showdown's calculator knows no Sound type, so the oracle of generation 9 disagrees wherever a scenario uses one of the ten: `known-gen9.json` names them, owed to nobody (ours is the rule).
+
 ## Paldea's first chapter, on the open world (2026-11-13, plan 34 · PD1, its first session)
 
 - **The plan's decisions, unanswered, at their recommendations** (plan 34 · "Decisions for the user"): (1) about a third
@@ -12948,3 +12956,454 @@ built; what is still owed is listed at the end and in plan 21's last note.
   `battle <who> as "paldea_<who>"`, never as trainers of the map; their teams are in `Data/world/paldea/trainers.json`
   with the class `Leader` (the plain band), three gym trainers and three students beside them. Iono's line before her
   battle names no Wattrel, since a crossed-in team's Wattrel is met as Terawattrel (`GrownNamesTests`).
+
+## The riding race (2026-11-14, plan 42 · PS8)
+
+An idea from the tales of Kalos's Rhyhorn racing, which X and Y never let anyone play: no game had a race to play, so the track, the rules and every number are ours. Built at the plan's recommendation (decision 4), at a stable of ours on Route 12 in Kalos, on the player's own Pokémon.
+
+- **A race is an event of the Pokéathlon's shape** (`RidingRace`, `AthlonEventKind.Race`, `AthlonEvent.IsRide`): thirty frames a second, four riders each a team of one. The player's mount is the first able Pokémon of the team of a riding size (`RidingRace.CanCarry`: 0.9 to 3.2 m and 20 to 450 kg, no Egg), its numbers by `AthleteStats.Of`; the stable's three ride Rhyhorn (Adèle, knack 0.55), Tauros (Bastien, 0.68) and Rapidash (Colette, 0.8). No course of the dome names it, the dome never offers it, and its two bonuses (home without a stumble; home first) are counted only so the bonus tests hold every kind alike.
+- **Speed**: a top speed of 2 + 0.3 × Speed units a frame, reached at 0.05 a frame. Run held pushes: a fifth more speed while Stamina lasts (it spends 1/(60 + 20 × Stamina) of its bar a frame, and comes back at 1/150 a frame when let go); a mount out of breath, in the air or stunned does not push.
+- **Rocks**: a press jumps (12 + 2 × Jump frames in the air). A rock crossed in the air is cleared; crossed on the ground it is a stumble: the speed to a third and the rider stunned 16 − Skill frames (not under 4), during which it cannot jump or push and runs at half its top speed at most.
+- **Mud**: on the ground in a mud stretch a rider is held to 0.4 + 0.1 × Power of its top speed; pushing lifts that by 0.15 of the top at a double cost in Stamina; in the air mud holds nobody.
+- **Turns**: an arrow held on the turn's side while the rider is within 40 units of its middle leans into it; a turn not leant into costs the speed a share kept by Skill (0.55 + 0.05 × Skill, at most 0.8).
+- **The end**: the first home wins; the race ends when all four are home or the clock (the track's seconds) runs out, the riders not home placed by how far they got. A rider's score is 10,000 less its finishing frame, or one not home its share of the track in five thousandths, which a track's best is kept in.
+- **The rivals** (`Think`, on the race's own generator): jump at a distance before a rock by their knack's wobble, lean into a turn with a chance of 0.35 + 0.65 × knack, push while Stamina is above 0.15 + 0.4 × (1 − knack) and the ground is open.
+- **The pay** (`RaceTrack.PayFor`, `RideRecords.RecordRace`, both hosts): by place, 3, 2, 1 and 0 Battle Points on the Blossom Road, none over a first round of seven at the Battle Tower; unlike the surf a second and a third place pay, because a race has no score band to pay by.
+- **The stable** (`kalos_route_12.RaceStable`): the Stable Master stands at 220, 481 on Route 12 (a person of the overlay, `gentleman`), asks nothing of the story, and turns away a team with nothing of a riding size (RESULT -1). The race's controls are Run held to push, the button to jump and the arrows to lean (the surf's button and landing window are not in it).
+- **What is kept**: `RideRecords`' best and runs under `race:<track>` and the Battle Points paid, in `SaveData.Rides` as the surf's are (no version raised). Owed: a stable of its own (the Master stands on the grass), the rivals' mounts drawn as riders and not as icons, a track beyond the first, the race's own song and sounds (the surf's stand in).
+### PD3's second session (2026-11-14)
+
+- **Brassius's and Iono's tests are searches about their towns**, as Scarlet and Violet's are: three Sunflora stand
+  about Artazon and three Wattrel about Levincia on the open map, each a person of the place's file with a `species`
+  (`OpenPersonFile.Species`: drawn as the species' model, spoken to like anyone), found by a word (`artazon.txt`'s
+  `HiddenSunflora1` to `3`, `levincia.txt`'s `HiddenWattrel1` to `3`) and gone once found by its test's flag. Their
+  gyms' rooms keep the leader's course with nobody in its gaps, so **Brassius and Iono battle only a challenger who has
+  found all three**. Katy's olive roll stays in her gym's room, its three olives now **cards of a giant olive** of ours
+  (`NPC.GiantOliveType`, `PropType.GiantOlive`; style guide, "A giant olive"), since the open world draws no cards.
+- **The towns' and gyms' songs are ours**: `paldea/cortondo` (an oboe in G over a nylon guitar and an accordion),
+  `paldea/artazon` (a flute in D over a marimba and pizzicato), `paldea/levincia` (a saw lead in A minor over a synth bass
+  and a four-on-the-floor kit), and `paldea/gym` given a second half (its loop now 30 s), which the six gym rooms play
+  in place of the academy's song. They wait for the user's ear.
+- **An open area is told as the player crosses into it** (`GameEngine.ComeToTheOpenArea`): its song plays (open areas'
+  `music` had been read and never played), a town of the region's spawns is come to (its first arrival's flag and a
+  line of the Journal), and the region's map hears of a first arrival it waits for. Galar's areas are told the same way.
+- **Paldea's Town Map** (`Data/world/paldea/townmap.json`) is a cell to each chunk of the baked land's bounds (36 by
+  28), painted from the bake (plan 32 · OW10); its blocks are the areas built so far, and Fly lands on a marker of the
+  places' files (the player's door, each town's Pokémon Center's door) once the town's first arrival's flag is set.
+  Paldea's spawns now name their open map (`"map": "Paldea"`), `RegionMap.ForMap` finds an open map's region, the cell
+  of a player in an open map is the chunk they stand in, and a town of an open map is reachable when its area is one of
+  the map's. **The open field has no start menu yet, so Fly can't be asked for in Paldea**: the map and its landings
+  wait for a way to open them (a question for the user: the original's flying taxi, or the start menu in the open field).
+
+## The Path of Legends, its first Titan (2026-11-14, plan 34 · PD4, its first session)
+
+- **The path's count** is `VAR_PALDEA_LEGENDS` (`stony_cliff.txt`'s header): 0 not begun, 1 Arven met at Poco Path's
+  lighthouse (`FLAG_PALDEA_LEGENDS_BEGUN`), 2 the Titan Klawf beaten in the Stony Cliff's mouth and fled to its den
+  (`FLAG_PALDEA_KLAWF_FLED`), 3 beaten at its den (`FLAG_PALDEA_KLAWF_BEATEN`) and its herbs shared, the mount's dash
+  granted (`FLAG_PALDEA_MOUNT_DASH`, plan 30 · decision 16's first power, `MountRules.Powers`). PD4's second session
+  goes on from 3 with the other four Titans.
+- **Arven's lighthouse** is Poco Path's (PD1's): he stands at its foot from the academy's welcome on
+  (`FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE`, set by `common.PaldeaNewGame` and cleared by the welcome, whose director now
+  sends the player to him; a save from before this session has the flag unset, so its Arven stands there at once and
+  says only that he is busy until term begins). The path is gated by nothing but its own flags: the gyms' badges and
+  the path's Titans may be had in any order. The originals' battle with Arven is not built.
+- **A Titan is a totem's aura fought alone** (`wildbattle "Klawf" 16 titan defense`; `TotemAura.Titan`): the aura's
+  stat stages as the battle opens, no running, no ball ("A Titan can't be caught!"), the battle won once it falls, and
+  lines of its own; unlike a trial's totem it is a single battle in which nothing calls for help (the engine meets it
+  with `sos: false`). It can be lost: the player wakes at the last Pokémon Center and the Titan waits where it was.
+- **The chase is a flight and a den**, each a person of the place: the Titan in the gully's mouth (`titan_klawf`,
+  shown from Arven's word), beaten, runs up the ramp (`walkto … fast`) and is the Titan at its den from then on
+  (`titan_klawf_den`), which the ledge's trigger and the Titan itself both start: it eats its Herba Mystica, grows, and
+  the second battle is fought under a stronger aura (`titan all`). The originals' chase over open ground with the
+  Titan's health carried from one battle to the next is ours made two whole battles at the original's level (16).
+- **A Pokémon may stand in a place** (`species` and `size` of an open place's person, `OpenPerson.Species`, `Size`):
+  drawn as a Pokémon of the field at its species' height times its size (the open figures' clamp of 3.5 m holds a
+  Titan to a house's storey), a Pokémon to the scripts (`NPC.PokemonType`, its species), its model asked for behind
+  the fade with the rest. Klawf stands at three times its own height.
+- **The Herba Mystica scene** is Arven come up the ramp once the Titan is beaten (shown by `FLAG_PALDEA_KLAWF_BEATEN`,
+  hidden by the power's own flag): he makes a sandwich of the herbs left over and the mount eats it (its name by
+  `VAR_PALDEA_MOUNT`). The power is a story flag, so a mount ridden before the scene trots (6 m/s) and after it
+  sprints (11 m/s) with nothing saved but the flag.
+- **The Stony Cliff** is an area of ours (`stony_cliff`, `terrain/titans.json`, `carve/titans.json`,
+  `places/stony_cliff.json`): a gully cut north into the hills from the middle of the South Province's third area, its
+  floor at the road's height, a ramp at its head onto a ledge 6 m up where the den is. **In the gully stands a crag**
+  6.5 m high whose south face is painted `ClimbableRock`: Paldea's first climb links (12), so the fifth Titan's power
+  has a cliff to open that nothing else reaches (the second session's done-when). Its song is the South Province's.
+- **Objectives** 810 `paldeaArven` and 811 `paldeaKlawf` (English and Romanian), each done by the path's count; they
+  come after the three gyms' in the list, so the line names a gym still to win before the path.
+
+## The Path of Legends, its last four Titans (2026-11-14, plan 34 · PD4, its second session)
+
+- **Stand-in places.** The originals' four other Titans live in provinces not built yet (the West Province, the East
+  Province's third area, Asado Desert, Casseroya Lake: PD6's). The user did not answer which way to go, so the
+  recommendation was taken: each is a small place of ours laid beside the land that is built, shut in by hills but for
+  its mouth, until PD6 builds the province and moves the Titan there (the plan's "PD4, second session" lists what PD6
+  replaces). **Open Sky** (`open_sky`, Bombirdier) is a gully north off the South Province's second area, its den a
+  ledge at its head; **Lurking Steel** (`lurking_steel`, Orthworm) a sandy cutting east off the East Province's first
+  area, its den a ledge at its end; **Quaking Earth** (`quaking_earth`, the version's Titan) a dusty basin north of
+  Cortondo, its den a rise at its north end; **False Dragon** (`false_dragon`, Tatsugiri and Dondozo) a hollow east off
+  the East Province's first area with a lake at 11.2 m in it, its den the far shore, walked round to by either shore.
+  Every den is reached on foot: nothing of the path asks a power the path has not given, and the playthrough bot,
+  which rides no link yet, walks all five.
+- **The order is the story's**: each Titan waits only once the one before it is beaten (`VAR_PALDEA_LEGENDS` 3 to 11;
+  each place's script header has its steps), so the powers come in plan 30 · decision 16's order (dash, swim, high
+  jump, glide, climb) by construction. The originals let the Titans be taken in any order and give the powers in the
+  same fixed order whichever is beaten; ours fixes the Titans' order instead, which the stand-ins (no province to
+  wander in yet) make no worse. PD6 may open the order once the provinces exist.
+- **The version's Titan** is told by the mount (`VAR_PALDEA_MOUNT` 1 Koraidon, Scarlet: Great Tusk; 2 Miraidon,
+  Violet: Iron Treads), as `stony_cliff.txt` tells the mount's name: Orthworm's herbs scene sets
+  `FLAG_PALDEA_QUAKING_TUSK` or `_TREADS`, which shows one of two people standing on the same spot, and the flight sets
+  `FLAG_PALDEA_GREAT_TUSK_FLED` or `FLAG_PALDEA_IRON_TREADS_FLED` for the den's.
+- **The False Dragon is two battles**: a Titan is fought alone (`titan` calls nobody), so the Tatsugiri is the first
+  battle on the near shore (`titan spattack`, level 57) and the Dondozo with the Tatsugiri in its mouth the second on
+  the far shore (`titan all`, 56); the Commander's part is told, not fought.
+- **Levels** are ours, near the originals' as remembered and not checked against a source: Bombirdier 20, Orthworm 29,
+  Great Tusk and Iron Treads 45, Tatsugiri 57, Dondozo 56; each first battle's aura raises one stat (Bombirdier speed,
+  Orthworm defense, Great Tusk attack, Iron Treads defense, Tatsugiri special attack), each den's all five.
+- **A Titan's flight is short**: it walks to the foot of its den's ramp and is gone from there (its `…_FLED` flag),
+  the first session's Klawf too, which had walked the whole way up to its den. The playthrough bot's first real-engine
+  pass of the first Titan found Klawf's walk of 54 m holding the player still for over ten seconds after the battle
+  (its softlock check); the False Dragon's Arven comes from the shore's north-east corner for the same reason.
+- **Arven at the lighthouse** after the fifth: he tells why he wanted the herbs, his Mabosstiff runs out well again
+  (`mabosstiff_lighthouse`, shown by `FLAG_PALDEA_LEGENDS_DONE`) and he battles (`battle arven_lighthouse as
+  "paldea_arven"`, `Data/world/paldea/trainers.json`, six Pokémon at 58 to 61, his Mabosstiff Terastallizing into a
+  Dark type). The path's count ends at 12.
+- **The Titans' places play a song of their own**, `paldea/titans` (the Stony Cliff's too, which played the South
+  Province's).
+- **Objectives** 812 `paldeaBombirdier` to 816 `paldeaArvenBattle`, English and Romanian.
+
+## Starfall Street and Let's Go (2026-11-15, plan 34 · PD5)
+
+- **Let's Go** (`Models/LetsGo.cs`, `Core/GameEngine.LetsGo.cs`): the key `GameAction.LetsGo` (R, the pad's right
+  trigger: free in every preset), read in an open map on foot only, sends the team's first Pokémon able to fight at
+  the wild Pokémon of the field nearest the player within 10 m (and 3 m of height). The battle is the rules' own,
+  `BattleCore` with nobody watching, on a seed the field's chance draws for it at the press, after the wild Pokémon is made on the
+  same chance as walking into it would make it (nothing is drawn on a press that sends nobody); the lead's moves are AUTO's (`Battle/Sim/MoveSuggestion.cs`, the one scorer the bot, AUTO
+  and Let's Go share, which `BattleEngine.Suggest` now asks), answered from outside so they are the record's; the wild
+  side chooses inside the rules as a wild Pokémon does. The record is a `BattleRecordFile` taken from the setup before
+  the rules touch it, which `Replay()` fights again to the same log (`LetsGoTests`).
+- **What it gives**: the lead is the team's own object, alone on a party of its own, so its HP, PP, EXP, levels and
+  friendship are what the battle left; the place's conditions, the run's difficulty, the level cap and a crossed
+  region's EXP are handed over as a real battle's. A level asks after evolution as a real battle's end does. A move that
+  wants a place among four already known is passed by (the Move Relearner remembers it). Nothing is caught, nothing
+  from the bag is used, neither side runs; one that comes to no end in 12 turns is broken off. **Ours**: a lead that
+  faints comes back fainted with no white-out, the wild Pokémon staying, as the originals' Let's Go has it. Let's Go
+  leaves no materials for the crafting kit yet (plan 39's pouch reads a `BattleEngine`; owed).
+- **What is met in a real battle instead**: a wild Pokémon of a higher level than the lead, a shiny one, and under the
+  Nuzlocke any one (its catches and burials are a real battle's), met as walking into it would meet it.
+- **The field's show** (`LetsGoShow`): the lead runs out to a metre short of its target over half a second, stands
+  there for the hits (the target flickering, drawn on alternate twentieths of a second), the target shrinks into the
+  ground over half a second where it was felled, and the lead runs back; all by the field's ticks, drawing and nothing
+  else. The key sends nobody else until the lead is home.
+- **Starfall Street is a stand-in** (the user named no place; the originals scatter the five bases over the West and
+  North Provinces, PD6's): a valley of ours north of Mesagoza, `terrain/starfall.json`, its floor at the plaza's height
+  shut in by hills, reached by a pass cut through Mesagoza's north mountains east of the academy; one area,
+  `starfall_street`, five gates, each a crew's black hall against the valley's side with a yard before it. PD6 moves
+  each base to its province, keeping the scripts' names and flags (the plan's "PD5 as built" lists what it replaces).
+- **A raid** (`Models/StarRaids.cs`, `StarRaid`; Scarlet and Violet's, our numbers): begun by a script's
+  `starraid begin "giacomo"` at a grunt's question; fifteen of the crew's Pokémon to fell in five minutes of the field's
+  ticks (the originals' thirty in ten), six standing at once on a ring of 9 m round the yard's middle, a felled one's
+  spot filled again two seconds later; each from the base's four species at its levels, drawn from a SplitMix of the
+  base's key and the count, never `Dice`. The key sends the first three able to fight in turn at the nearest within
+  16 m, whatever its level (the crew's are never shiny). Touching a crew's Pokémon meets nothing. Leaving the street or
+  having nobody able to fight gives the raid up. Won or lost, the game starts the base's `<Boss>RaidWon` or
+  `<Boss>RaidLost`; lost puts the player back on the gate, won sets `FLAG_PALDEA_STAR_<BOSS>_RAIDED` and the boss comes
+  out and battles at once. A raid is not saved (an open field has no save but the game's own; one put down is lost).
+- **The bosses and their Starmobiles**: one trainer battle each, the Starmobile the team's last (a Revavroom with its
+  crew's Torque move: Wicked, Blazing, Noxious, Magical and Combat; our levels, near the originals' as remembered:
+  Giacomo 21, Mela 28, Atticus 33, Ortega 51, Eri 57, fixed in any order), class `Team Star Boss` (the eye song
+  `galactic`), trainers' `format` `"starmobile"` (`Trainer.AtAStarBase`), which the battle sets on a stage of its own,
+  `BattleArena.StarBase` (style guide, "Arenas (G8)", "Star base"). A boss lost to waits in the yard and battles again
+  when spoken to.
+- **Cassiopeia's calls** are scenes of the street's script with the phone's ring: the first as the street is first
+  walked into after the academy's welcome (`VAR_PALDEA_STARFALL` 1), one after each boss, and her thanks after the fifth
+  (`VAR_PALDEA_STARFALL` 6). Who she is waits for PD8.
+- **Objectives** 850 `paldeaStarfall` and 851 to 855 a boss each, English and Romanian (the 850s, apart from the gyms'
+  ids PD6 adds); looks of ours `star_grunt`, `giacomo`, `mela`, `atticus`, `ortega`, `eri`; the street's song
+  `paldea/team_star`.
+## The West Province and the fourth and fifth gyms (2026-11-15, plan 34 · PD6, its first session)
+
+- **The land grows north and west of Cortondo** (`terrain/west.json`, read after `titans.json`): north out of Cortondo
+  through Quaking Earth's basin into Asado Desert, north again to Cascarrafa under the hills, west from Cascarrafa along
+  the West Province's second area and down a ramp to Porto Marinada on the western sea, and east out of the desert along
+  the West Province's first area to Medali. Every way and town is a floor between hills 28 m higher, as PD3's are, but
+  Porto Marinada's, which stands at 4 m on a quay over the sea. The distances are PD1's and PD3's compressed ones
+  (Cascarrafa about 350 m north of Cortondo, Porto Marinada about 260 m west of Cascarrafa, Medali about 270 m north
+  of Mesagoza's walls and a little west), for the user's judgment with the rest; the areas stop at `z` -740; the West's hills and the falls' slot run on to -800, and the hills step round
+  the north-west corner of Starfall Street's (PD5's `terrain/starfall.json`, built beside this north of Mesagoza), since
+  `west.json` sorts after it and its hills would otherwise bury that valley's floor.
+  `world.json`'s `chunks` now start at `-26` (the coast); the bake keeps 625 chunks (from 454), 84.6 MB (from 62.0 MB).
+- **Cascarrafa's falls** are a river of `water.json` coming down a slot cut into the hills north of the city (its
+  surface 30 m up, then down to the pool at the city's foot over ten metres), into the pool's bed (a crater) by the
+  Pokémon Center; the slot is cut through the cliff's face to the floor's edge, so from the city the river is seen running out of a cleft at the hills' foot into the pool (the harness's `pdw05`). No falling water is drawn by the open renderer, so the drop down the face itself is owed.
+  The originals' bridges over the river are not built (owed); the city's ways go round its pool.
+- **Two stand-in Titans moved to their provinces**, their keys, scripts, flags and the count kept: Open Sky (Bombirdier)
+  is a gully north off the West Province's first area, its den a ledge at its head as before; Quaking Earth (Great Tusk or
+  Iron Treads) is the basin at Asado Desert's south end, out of Cortondo's north side, its den a rise at the basin's west
+  end (the road north runs through the basin). Lurking Steel (Orthworm, the East Province's third area) and False Dragon
+  (Casseroya Lake, the north) stay stand-ins for session two. Arven's direction to Open Sky and its objective were
+  rewritten (English and Romanian).
+- **Kofu's test is an errand** (Scarlet and Violet's beat): Kofu sends the challenger to Porto Marinada's auction
+  (`FLAG_PALDEA_CASCARRAFA_ERRAND`); the auctioneer on the quay sells the morning's crate to whoever raises the paddle at
+  the last call (raised earlier, the chef outbids and the lot is bid for again; never raised, the chef takes it), which
+  sets `FLAG_PALDEA_CASCARRAFA_TEST_DONE`; Kofu battles once it is brought back. Our own lines and rule.
+- **Larry's test is the Treasure Eatery's secret order**: three townsfolk of Medali each let a part slip (the dish, the
+  side, the words; `FLAG_PALDEA_MEDALI_TEST_1` to `3`), and the order is made at the eatery's counter
+  (`Medali_TreasureEatery`, a room of ours) by three questions; right, `FLAG_PALDEA_MEDALI_TEST_DONE`; wrong anywhere,
+  the dish comes from the menu and it may be ordered again. A challenger may guess it without the hints. The order is
+  ours (grilled rice balls, lemon on the side, extra crispy).
+- **Decision 3, at its recommendation, for the gyms after the third** (the user has not answered it): a leader's team is
+  scaled to the badges the challenger holds as the battle begins, its best at `paldea.json`'s cap for that many badges
+  (15, 17, 24, 30, 36, 42, 45, 48 for nought to seven held) and the rest a level under, the team's species and Tera
+  Type the same. It is data, not a rule of the engine: each leader has a team for each count of badges in
+  `Data/world/paldea/trainers.json` (`paldea_kofu` the original's, at three held; `paldea_kofu_b0` to `_b7` the
+  others; Larry's the same, `paldea_larry` at four held), and the leader's script picks it with `if badges >= N`. In the
+  academy's order every leader meets the original's levels; out of it, one taken early is easier and one taken late
+  harder. Session two's three leaders slot in the same way. The gym trainers keep fixed levels.
+- **The teams** (ours, near the originals' as remembered, not checked against a source): Kofu's Veluza, Wugtrio and
+  Crabominable (best 30 in the academy's order, Crabominable Terastallizing into a Water type), Larry's Komala,
+  Dudunsparce and Staraptor (best 36, Staraptor into a Normal type); the gym trainers Marisa (Pelipper, Clauncher, 28)
+  and Dina (Gumshoos, Oinkologne, 33); students Dario (the desert), Elena (the first area) and Pablo (the second) at 25
+  to 29. Wild Pokémon of the desert and the two areas at 22 to 29.
+- **Looks** `kofu` and `larry` of `characters.json` (ours); **songs** `paldea/west_province` (the three ways),
+  `paldea/cascarrafa`, `paldea/porto_marinada` and `paldea/medali`, each `tools/MusicRender`'s checks clean.
+- **Paldea's Town Map** is written again from `world.json` and the bake (45 by 28 cells, from chunk -25,-26), with the
+  new areas' blocks and Fly's three new towns on their Pokémon Centers' markers (spawns 6 to 8). Fly still can't be
+  asked for in the open field (PD3's second session's question).
+- **Objectives** 830 `paldeaKofu` and 831 `paldeaLarry`, English and Romanian, after the Path of Legends' in the list
+  (as the first three gyms come before it), their ids clear of PD5's.
+
+## The North Province and the last three gyms (2026-11-23, plan 34 · PD6, its second session)
+
+- **The land grows north** (`terrain/west_north.json`, read after `west.json` since `.json` sorts before `_north.json`):
+  north out of Medali along the North Province's first area to the foot of Glaseado Mountain, a valley at the ways'
+  height under the mountain's south face; east along the foot to Montenevera and on through the East Province's third
+  area south to Levincia; and Alfornada west of Cortondo through Alfornada Cavern. Hills at 40 m are laid over the whole
+  north (from `z` -804) and between Medali and the East Province, then every floor is cut into them, as PD3's and PD6's
+  first session's are. The distances are the same compressed ones (Glaseado's foot about 200 m north of Medali, its top
+  140 m further up the slope and 40 m higher, Montenevera 250 m east of the slope, Alfornada 160 m west of Cortondo), for
+  the user's judgment with the rest. `world.json`'s `chunks` now reach `-38` north; the bake keeps 910 chunks (from 625),
+  about 121 MB (from 84.6 MB); it bakes in about a minute and a half on Release.
+- **Glaseado's snowslope** is ten plateaus of 4 m, each 14 m further north and eased into the one below over 14 m, so
+  the slope climbs evenly at about 16° from the foot to the top at 52 m, walked and ridden (the baker's `--walk` goes up
+  it and down through the run's gates with no slide). Crags at 72 m stand round it, higher than the top, so its sides are
+  walls and the top is no ledge onto the hills. The top is a paved terrace with Glaseado's gym and Pokémon Center; the
+  mountain's area has the snow weather. Snow is paint, the foot, slope and Montenevera's streets alike.
+- **Alfornada Cavern** is a carved tunnel (`carve/alfornada.json`, capsules of 3.6 m with a floor at 12 m) through the
+  hills from behind Cortondo's Pokémon Center to Alfornada's east lane, an area of its own (`alfornada_cavern`) between
+  8 and 20 m so the hills over it are not; no road runs through it (a road would grade the hill's top down into a cutting).
+  Alfornada's ruins are five broken pillars of rock (`additions` of the carve file) round a knoll west of its square.
+- **The last two Titans moved out of their stand-ins**, their keys, scripts, flags and the count kept: **Lurking
+  Steel** (Orthworm) is the same sandy cutting with its ledge, east off the East Province's third area north of Levincia;
+  **False Dragon** (the Tatsugiri and its Dondozo) is the same hollow and lake, now Casseroya Lake (the area's name; the
+  key stays `false_dragon`), east off the North Province's first area. Both are their stand-ins moved whole, so every
+  marker, trigger and person stands where it stood relative to its place. The stand-ins' brushes, paint and lake left
+  `titans.json` and `water.json`; Arven's directions and the two objectives were rewritten (English and Romanian). The
+  Titans' order stays fixed (PD4's ruling): the provinces exist now, so opening it is a choice for the user.
+- **Ryme's test is a rap battle** (Scarlet and Violet's beat, our verses): the MC raps three lines and the challenger
+  answers each with the one that rhymes, of three. A line answered right is kept (`VAR_PALDEA_MONTENEVERA_RAP`) and the
+  next follows at once; a miss ends the turn and the same line is given again next time, so a player who misses repeats
+  one line, not three. Three right sets `FLAG_PALDEA_MONTENEVERA_TEST_DONE`. The originals' test is a run of double
+  battles with the rapping trainers and Ryme's battle a double; ours is a question for each line and a single battle,
+  since no gym battle is a double yet. The right answer is never the last one (the cancel button picks the last).
+- **Tulip's test is her photographs**, posed in her studio: the photographer calls three moods (joy, calm, resolve) and
+  the challenger strikes the pose that fits each, of three, kept shot by shot as the rap's lines are
+  (`VAR_PALDEA_ALFORNADA_PHOTOS`, `FLAG_PALDEA_ALFORNADA_TEST_DONE`). Ours: the originals' test is different (the plan
+  names Tulip's photos, and they are what is built).
+- **Grusha's test is the snowslope run**: the coach at the top starts it (`VAR_PALDEA_GLASEADO_RUN` 1), three gates
+  down the slope, each a gap 12 m wide between two young pines with a trigger in it, are passed only in their order (2,
+  3, 4), and the line across the slope's foot ends the run: every gate passed, `FLAG_PALDEA_GLASEADO_TEST_DONE`; a gate
+  missed, it says so and the run must be begun again at the top. **No clock is kept** (the originals time the run); the
+  run is a test of the line taken, on foot or ridden. Grusha battles once it is done, in his hall at the top.
+- **Decision 3, at its recommendation, for the last three leaders**, as Kofu's and Larry's: a team for each count of
+  badges held (`paldea_ryme`, `paldea_tulip`, `paldea_grusha` the originals', at five, six and seven held; `_b0` to `_b7`
+  the others), the best at `paldea.json`'s cap for that count and the rest a level under, the last Terastallizing into
+  the gym's type. In the academy's order every leader meets the original's levels; out of it each is scaled. The teams
+  are ours, near the originals' as remembered and not checked against a source: Ryme's Banette, Mimikyu, Houndstone and
+  Toxtricity (best 42), Tulip's Farigiraf, Gardevoir, Espathra and Florges (45), Grusha's Frosmoth, Beartic, Cetitan and
+  Altaria (48). Gym trainers Tas (Drifblim, Sableye, 40), Bruno (Gothorita, Medicham, 43) and Yuki (Glalie, Abomasnow,
+  46); students Marta (the first area, 38 to 39), Iker and Aitana (Glaseado's foot, 41 to 42), Ines (the third area, 36
+  to 37) and Rosa (the cavern, 43 to 44). Wild Pokémon of the north at 34 to 45.
+- **Looks** `ryme`, `tulip` and `grusha` of `characters.json` (ours); **songs** `paldea/north_province` (the first and
+  third areas), `paldea/glaseado`, `paldea/montenevera` and `paldea/alfornada` (the cavern too), each `tools/MusicRender`'s
+  checks clean (no clash, -17.6 to -19.4 dB loud).
+- **Paldea's Town Map** is written again from `world.json` and the bake (46 by 38 cells, from chunk -25,-36), with the
+  new areas' blocks and Fly's three new places (spawns 9 to 11: Montenevera, Alfornada and Glaseado's top on their
+  Pokémon Centers' markers). The cavern is too narrow to hold a cell's middle and has no block.
+- **Objectives** 832 `paldeaRyme`, 833 `paldeaTulip` and 834 `paldeaGrusha`, English and Romanian.
+- **The playthrough bot** wins the West Province's two gyms (owed by the first session) and the last three: the
+  auction, the rap and the photographs are answered otherwise on each try (`Leg.Vary`), within its four tries, and the
+  run is the coach, the three gates' triggers and the line, in order. It rides the region from Cabo Poco to Glaseado's
+  top, mounted again whenever a battle or a door put it down.
+## Carpathia's signature moves and abilities (2026-11-22, plan 46 · CP10)
+
+Ours, so no original decides: each is the sentence of `docs/plans/decisions/CP-proposals-starters-legendaries.md`, carried
+out where the rules already bite. Ids 3101 to 3107 for both the moves and the abilities, generation 0.
+
+- **Forest Hush**: Soundproof's rule (`AbsorbsMove` on a sound-flagged move) only while the holder is at full HP.
+- **Anvil**: a contact damaging move that *missed* (the accuracy roll; not Protect, a Substitute, an immunity or a target out
+  of reach) deals a quarter of the damage it would have, direct, with a line (`BattleCore.AnvilGlances`, in `AfterStrike`).
+- **Echo Pouch**: each target a damaging sound move landed on is struck again at the end of the next turn at half power
+  (`powerTenths` 5), if the Pokémon that made it is still on the field (a Substitute takes it). Kept in the core's
+  `echoes` and landed beside Future Sight; not saved (a battle is not).
+- **Noonday**: `StrongWeatherBringer(HarshSun)`, so the strong-weather rules apply: no other weather replaces it, Water moves
+  are put out, and it goes when the last holder leaves.
+- **Eclipse**: `IBattleContext.TellTaleFromAbility` tells the Vârcolac's tale as a Pokémon's doing: no trainer, Book or
+  `talesHeard` is spent, nothing happens under rules without the Tales, with no later mechanics allowed or while a tale holds
+  the field.
+- **Three Heads**: as Parental Bond is: a damaging move of one hit at one target strikes three times, each at 1638/4096
+  (40%) of the power (`Turn.HeadStrike`), the first such move of a turn.
+- **War Cry**: at each turn's end, up to three times a stay, +1 Attack and Sp. Atk for everyone of its side on the field.
+- **Moves**: Codru's Ambush is First Impression's rule (+2, first turn out only); Smith's Hammer and Delta Horn are their
+  data's (a sure Defense rise for the user, a 30% Special Defense fall for both foes). Sun Seizure sets the harsh sun for five
+  turns with no holder (`StrongWeatherBy` null), so no weather move replaces it and it runs out by itself; Moon Howl clears the
+  weather unless an ability holds a strong one; Hailstorm Rider sets the weather of the tale told over the field (rain where
+  none brings one) for five turns; Banner Howl raises Attack and Sp. Atk of the user and its allies after it hits.
+- **Smith's Hammer, not Forge Hammer**: plan 06 · R31's move past 100 already has that name.
+
+## Tera Raids and picnics (2026-11-23, plan 34 · PD7)
+
+- **A Tera Raid is Galar's raid** (BattleFormat.Raid, RaidTerms) with a Tera Type (RaidTerms.Tera, IsTera): the
+  same four places, the same three raiders thought for by the trainer AI, nobody switching, nothing from the bag, a raider
+  back on their feet at the turn's end. Under Platinum's rules it is the single it began as, as a den's is.
+- **The boss** is Terastallized into the crystal's Tera Type as the battle opens and stays so (BeginTheTeraRaid, the
+  core's own Terastallize, so its type, its Tera bonus and the crown follow); it never Dynamaxes, and nobody in a Tera
+  Raid may (WhyNotDynamax refuses: a crystal knows no Dynamax energy). Its HP is raised to so many times its own by its
+  stars (RaidRules.TeraHpTimes: three at one star, four, six, eight, twelve, sixteen, twenty at seven; ours). It acts once
+  a turn, as Scarlet's boss does; its clock is the pressure (no ActsTwice).
+- **The crystal shield** (Scarlet's, our numbers): from four stars it goes up once as a hit takes the boss to a share of
+  its HP (RaidRules.TeraShieldAt: half at four stars, three quarters from five), the hit stopping at that share; it takes
+  as many hits as the boss's stars (TeraShields), each letting a fifth of its damage through and never the last HP, and
+  a hit from a Terastallized raider breaks three at once (CrystalBreaksOf). The same RaidBarrier event as a den's
+  barrier, so the screen's pips count it; its lines are attle.teraShieldUp, 	eraShieldBroke, 	eraShieldDown.
+- **The raiders' Tera Orbs** charge by the moves their Pokémon use (RaidRules.OrbCharge, three; OrbChargeOf,
+  attle.teraOrbCharged); until then Terastallizing is refused with attle.teraOrbNotCharged, and then it is allowed
+  once a battle as anywhere. The three raiders carry orbs of their own in a Tera Raid (HasTeraOrb); the player needs
+  theirs, and the crystal's script asks for it before the raid.
+- **The clock** replaces the fourth fall: the raid lasts RaidRules.TeraTurns turns (ten to two stars, twelve to four,
+  fifteen at five, eighteen at six and seven), and every raider's fall takes two off it (FallCost); at the turn's end
+  once they are spent the crystal's light swallows the raiders (attle.teraRaidTimeUp) and the raid is lost with no
+  white-out. The clock is told as the raid opens (attle.teraRaidClock); TeraTurnsLeft counts it. CannotFail never
+  loses, as for a den.
+- **The catch never fails**: aid catch after a Tera Raid takes the boss with any ball of the bag and throws no die
+  (Raids.CatchChance(…, tera: true)), and the Pokémon keeps the crystal's Tera Type. Before it aid shards puts the
+  boss's Tera Shards of its type into the bag (Raids.ShardsOf: two at one star up to sixteen at seven, ours), which plan
+  36 · TR5's Tera keeper reads as any shards.
+- **The crystals** are Data/world/paldea/crystals.json, the dens' shape (RaidDensFile, RaidRowFile.Tera for a row whose
+  type is fixed): twelve sites on Paldea's open map, each a trigger crystal_<id> of its place calling its own script
+  (aid crystal "<id>", call TeraCrystal). What a crystal holds on a day is drawn as a den's is, by the day's number,
+  the crystal's id and VAR_PALDEA_VERSION, never the dice (Raids.CrystalToday; the plan's "spawner on Dice" read as
+  the dens' day-drawn spawner, so the picture and the script always agree): lit one day in two, a row by weight among the
+  stars Paldea's badges allow (TeraMostStars: two to two badges, three to five, four to seven, five with eight), its
+  level by its stars (TeraLevelsOf, then mapped to the region's levels as every raid's boss is), its Tera Type the row's
+  where fixed, else one of the species' own types two times in three and any of the eighteen the third (never Stellar or
+  Carpathia's Sound). A crystal felled today is quiet until tomorrow (FLAG_DAILY_PALDEA_CRYSTAL_<ID>_DONE); one not lit
+  isn't drawn and says nothing. The raiders are seven of the academy's students, ours. The black crystals of six and
+  seven stars are PD9's (the rules already run to seven).
+- **The crystal's look** (DenBeams, DenBeam.Tera): a crystal at the trigger's foot, two crossed bright ribbons
+  narrowing to a point, in its Tera Type's colour (a move's colours, Stellar white), and over it a glow of that colour half
+  a den's beam's width and fourteen metres high, breathing as a den's beam does.
+- **Kept by the Vs. Recorder's file**: RaidTera (the Tera Type's name; none for a den's raid); a Tera Raid replays.
+- **Picnics** (decision 4 at its recommendation): Paldea's camp is a picnic, offered there whatever the FOLLOWER and TEAM
+  CARE rows say, and its pot makes **sandwiches**: ecipes.json's sandwiches, a second section of the camp's one table
+  shape (KitchenRecipes) cooked on the same Kitchen (the stirring is the pot's for now, the table's own look owed), with
+  no crafting kit needed in Paldea (GameEngine.CampKitchenNow). Seven sandwiches, ours: a plain one, and one for each of
+  the Type, Encounter, Egg, EXP, Catching and Sparkling Powers, each lasting half an hour of play (1,800 seconds, every
+  grade) at a level of one, one, two and three by its grade. The pantry's goods are sold with no kit at Mesagoza's deli
+  (craft deli, the kit's own PANTRY screen).
+- **Two new powers** at PowerKind's end, each with its one reader: **Egg** (powers.json 10, 20, 35), read by the picnic
+  basket; **Sparkling** (1, 2, 3), a power of a type like the Type Power (PowerTable.TakesType), read by
+  GameEngine.MakeWild as that many more shiny rolls for a Pokémon of its type, drawn only then.
+- **The powers on the spawner**: on Paldea's open map the Type Power weighs a row of its type (one and its strength)
+  times in its zone's draw (OpenWildField.Favoured, WeightOf), and the Encounter Power has each zone want its strength
+  by ten more standing (MoreStanding); both are set from the powers in force every frame (FavouredBy, MoreStandingBy),
+  so they change the draws of the area the player is in and wear off with the power. With no power in force every draw is
+  as it was.
+- **The picnic basket** (PicnicBasket): Paldea's Eggs, the Day Care being Sinnoh's. As a Paldean picnic is packed up, the
+  first two of the team who would get on at a Day Care leave an Egg one try a minute of the picnic, each taking one at
+  the pair's own Day Care chance (20, 50 or 70) and the Egg Power's strength more, ten at most; each Egg is the Day Care's
+  (Breeding.MakeEgg), and goes to the team or the boxes with a line on the toast (picnic.eggs). Drawn on a generator
+  seeded by the picnic, never moving another draw; nothing anywhere but Paldea.
+- **Owed**: the raid's clock and each raider's orb drawn on the raid's screen; the bot playing a raid; the black crystals
+  (PD9); the picnic table's own look (a sandwich stacked rather than a pot stirred); the crystal's look judged by the user;
+  the Romanian of the open map's people (the deli clerk's name), which no open map can translate yet.
+
+## Paldea's Pokémon League (2026-11-23, plan 34 · PD8, its first session)
+
+- **The building** stands on a terrace of its own at 10 m (`terrain/south_league.json`, a plateau laid over Mesagoza's
+  rise) in the South Province's first area, east of the road north and just under Mesagoza's south wall, its door facing
+  south (`places/south_province_area_one.json`: the solid, the door, the markers `league_door` and `league_front`). The
+  originals put the League's building outside Mesagoza on the province's plain; ours is near the city's south gate,
+  for the user's judgment with the rest of the distances. No spawn and no Fly place of its own: Mesagoza's are a minute
+  away.
+- **Two grid rooms**: `PaldeaLeague_Lobby` (a nurse, a shop counter, the staff, and Rika at her desk) and
+  `PaldeaLeague_Court` (one court where everyone battles). The originals battle the Elite Four on the same court and
+  Geeta on another; ours keeps one court for all six, whoever is due stood at its far end by the court's arrival
+  (`OnEnter`, as Wyndon's pitch does).
+- **The interview** is Rika's, at her desk: three questions (why the League, the hardest gym, the team in a word), each
+  answer heard and none wrong, our own; it asks the eight badges and refuses without them. It sets
+  `VAR_PALDEA_LEAGUE` 1 and `FLAG_PALDEA_LEAGUE_INTERVIEWED` (her desk empties: she goes ahead to the court).
+- **The order** is fixed: Rika (Ground), Poppy (Steel), Larry (Flying), Hassel (Dragon), the Top Champion Geeta, then
+  Nemona; `VAR_PALDEA_LEAGUE` 2 to 7 counts them. A loss keeps the challenger's place (the one who won waits again), where
+  the originals' rules for a loss at the League are not checked; ours is the gentler.
+- **Nemona's battle ends the assessment**, on the same court straight after Geeta names the challenger a Champion; her
+  team's last is the starter strong against the player's (`paldea_nemona_8a` to `8c`, as her first battle chooses).
+  Then `halloffame`, `PaldeaHallOfFame` (the region's `StoryCompleteFlag`, which the Hub's two Halls of Fame, the cups,
+  the Partners' Tree and the requests read as every region's), the Hall of Fame's scene, home to the bedroom in Cabo Poco,
+  the save and the credits, as Galar's Leon ends GL6. The originals keep the credits for after the Way Home; this plan
+  has the Hall of Fame before it (plan 34's design), and the credits roll here.
+- **Teams** (ours, near the originals' as remembered, not checked against a source), at the originals' levels: the League
+  asks the eight badges, so decision 3's scaling never applies. Rika's Whiscash, Camerupt, Donphan, Dugtrio and Clodsire
+  (best 58); Poppy's Copperajah, Magnezone, Bronzong, Corviknight and Tinkaton (59); Larry's Tropius, Oricorio (Pom-Pom),
+  Altaria, Staraptor and Flamigo (60; `paldea_larry_elite`, apart from his gym's teams); Hassel's Noivern, Haxorus,
+  Dragalge, Flapple and Baxcalibur (61); Geeta's Espathra, Gogoat, Veluza, Avalugg, Kingambit and Glimmora (62, Paldea's
+  last cap); Nemona's Lycanroc, Goodra, Dudunsparce, Orthworm, Pawmot and her starter's last form (66). Each
+  Terastallizes the last into the type of the gym or the member's speciality (Geeta's Glimmora Rock; Nemona's starter its
+  own type). Classes `Elite Four` and `Champion`.
+- **Looks** `rika`, `poppy`, `hassel` and `geeta` of `characters.json` (ours); Larry and Nemona keep theirs. **Songs**: none
+  new; the rooms play `paldea/gym`, and the battles fall back through the music director's roles (the Elite Four's and the
+  Champion's battle songs to the gym leader's) until Paldea has League songs.
+- **Objective** 835 `paldeaLeague`, English and Romanian, done by `PaldeaHallOfFame`.
+- **Paldea has no departure of its own**: it is the chain's last region with maps (`RegionDatabase.LinkFrom` has no link
+  from it until plan 46's Carpathia joins the chain), so no attendant stands anywhere in Paldea after its Hall of Fame.
+  The flag counts toward the Hub's opening as every region's does; a way out of Paldea is left to plan 46 or to the user.
+
+## Area Zero and the Way Home (2026-11-23, plan 34 · PD8, its second session)
+
+- **Built as grid rooms behind a door, not carved open terrain.** The plan's design has Area Zero as the open map's carved
+  terrain at its deepest; this session built it as three grid maps behind the Zero Gate's door (plan 32 · decision 6), the
+  cheaper of the two faithful ways: a carved crater would have meant a new terrain file, the carve, the bake and the
+  navigation mesh's climbs and glides down 100 m of wall, and the open renderer draws no falls yet. The grid's cave
+  setting gives the crater's light and rock, ledges give the descent one way, and Inlet Grotto is the precedent. The
+  three: `AreaZero_Gate` (the gate's hall and its lift), `AreaZero` (a cave-set map of four terraces with a research
+  station on each, crystals, pools and tall grass, 21 by 40 tiles: our compressed scale) and `AreaZero_ZeroLab`. The
+  carved crater on the open map stays the plan's design for later, if the user wants it.
+- **The Zero Gate** is a hall of two storeys signed ZERO GATE on the east side of the North Province's first area, built
+  against the hills that wall the Great Crater off, its door facing south (`places/north_province_area_one.json`;
+  `zero_gate_door`, `zero_gate_front`). Its door waits for `FLAG_PALDEA_ZERO_GATE_OPEN`. The originals put the gate on the
+  crater's rim elsewhere; ours is where the North Province's road passes nearest the crater.
+- **The order**: the gate opens after all three paths, as the originals' "The Way Home" waits for Victory Road, the Path
+  of Legends and Starfall Street. Arven, Nemona and Penny stand before the gate once `PaldeaHallOfFame` is set; any of them
+  spoken to begins the meeting when `VAR_PALDEA_LEGENDS` is 12 and `VAR_PALDEA_STARFALL` 6, or says which path is
+  still open. The meeting is where Penny owns up to being Cassiopeia (PD5 left who she is to here) and the professor's
+  voice opens the gate.
+- **`VAR_PALDEA_ZERO`**: 1 the gate opened, 2 to 5 the four stations passed (each station's trigger lies across the whole
+  way down its terrace), 6 the AI beaten, 7 the legendary's battle won, 8 home (`FLAG_PALDEA_WAY_HOME`, objective 836
+  `paldeaAreaZero`).
+- **The professor's AI** is Sada's in a Scarlet game and Turo's in a Violet one (`VAR_PALDEA_VERSION`, plan 34 ·
+  decision 2), shown by the lab's arrival; looks `sada`, `turo` and `penny` are ours. Its team is the version's six
+  Paradox Pokémon at 66 and 67 (`paldea_ai_sada`: Slither Wing, Scream Tail, Brute Bonnet, Flutter Mane, Sandy Shocks,
+  Roaring Moon Tera Dark; `paldea_ai_turo`: Iron Moth, Iron Bundle, Iron Hands, Iron Jugulis, Iron Thorns, Iron Valiant
+  Tera Fairy), ours near the originals' as remembered, not checked against a source.
+- **The legendary's battle form** (plan 30 · decision 15): the Koraidon or Miraidon the professor kept comes out of the
+  machine in its battle form with a Roaring Moon or an Iron Valiant beside it (`paldea_ai_sada_legend`,
+  `paldea_ai_turo_legend`, 72 and 70), and the player's own mount fights beside them in its battle form (`battle … with
+  "paldea_partner_koraidon"`, a tag battle; the partner at 68). The originals have the player fight with the mount alone;
+  ours keeps the team and puts the mount beside it, the engine's tag battle, and the foe two so the double is a full one.
+- **The Way Home**: the AI goes through the machine and shuts it, the friends speak, the four climb out, and the mount
+  joins the team at last (`givepokemon "Koraidon" 68`; it still carries the player, as the ride is `VAR_PALDEA_MOUNT`'s,
+  not the team's); home to Cabo Poco with Mom, the save and the **credits, moved here** from after the Hall of Fame
+  (`PaldeaLeague_Court.txt` now ends with the save), as the originals hold them. A full team sends the mount to a box.
+- **Wild Pokémon**: the crater's tall grass has Glimmet, Garganacl, Tinkatuff, Bronzong, Rabsca and Glimmora at 52 to 57;
+  two Paradox Pokémon of the version stand on its terraces to be battled once at 56 (Great Tusk and Flutter Mane, or Iron
+  Treads and Iron Moth). Songs: none new (the gate's hall `paldea/titans`, the crater and the lab `paldea/alfornada`).

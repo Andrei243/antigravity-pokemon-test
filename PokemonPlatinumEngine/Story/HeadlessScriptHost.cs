@@ -83,6 +83,8 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     /// <summary>The rides (plan 42 · PS7): the records, and the place (0 backed out of) and score a course's screen ends with.</summary>
     public Models.Rides.RideRecords? Rides { get; set; } = new();
     public int RidePlace { get; set; } = 1;
+    /// <summary>The species that would carry the player in a riding race (null for none), and what a race's screen ends with is <see cref="RidePlace"/> and <see cref="RideScore"/>.</summary>
+    public string? RaceMount { get; set; } = "Rhyhorn";
     public int RideScore { get; set; } = 6000;
     public GiftFacts GiftFacts { get; set; } = new();
 
@@ -580,6 +582,15 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         HeldLight = hour;
     }
 
+    /// <summary>The base whose raid a script last began (plan 34 · PD5), or null: a host with no field plays no raid, and a test plays its end's script.</summary>
+    public string? StarRaidBegun { get; private set; }
+
+    public void BeginStarRaid(string @base)
+    {
+        Log.Add($"starraid {@base}");
+        StarRaidBegun = @base;
+    }
+
     /// <summary>The effects held on their tiles: the kind and the tile each.</summary>
     public SortedSet<string> HeldEffects { get; } = new(StringComparer.Ordinal);
 
@@ -957,7 +968,7 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
         if (Outcome == BattleOutcome.Caught) Outcome = BattleOutcome.Won;
         string ally = aura.Ally is { } named ? $" ally {named}" : "";
-        Log.Add($"totembattle {wild.Species.Name} {wild.Level} {string.Join(",", aura.Stats)}+{aura.Stages}{ally} {Outcome}");
+        Log.Add($"{(aura.Titan ? "titanbattle" : "totembattle")} {wild.Species.Name} {wild.Level} {string.Join(",", aura.Stats)}+{aura.Stages}{ally} {Outcome}");
         if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 
@@ -970,7 +981,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
         Outcome = Fight?.Invoke(null) ?? BattleOutcome.Won;
         if (Outcome == BattleOutcome.Caught) Outcome = BattleOutcome.Won;
         string megaMax = raid.MegaMaxDen ? $" megamax holding {boss.HeldItem?.Name}" : "";
-        Log.Add($"raidbattle {boss.Species.Name} {boss.Level} {raid.Stars} stars with {string.Join(",", raid.Allies.Select(a => a.Name + ":" + a.Party.Members[0].Species.Name))}{megaMax} {Outcome}");
+        // (a Tera Raid's Tera Type, plan 34 · PD7)
+        string tera = raid.Tera is { } type ? $" tera {type.Name}" : "";
+        Log.Add($"raidbattle {boss.Species.Name} {boss.Level} {raid.Stars} stars with {string.Join(",", raid.Allies.Select(a => a.Name + ":" + a.Party.Members[0].Species.Name))}{megaMax}{tera} {Outcome}");
         if (Outcome == BattleOutcome.Lost) Party.HealAll();
     }
 
@@ -1029,6 +1042,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             Answer = RidePlace;
             if (RidePlace > 0 && Rides != null && Models.Rides.SurfCourses.Get(counter ?? "") is { } surfCourse)
                 Frontier.GivePoints(Rides.Record(surfCourse, RideScore, RidePlace).Paid);
+            else if (RidePlace > 0 && Rides != null && (counter ?? "").StartsWith(Models.Rides.RaceTracks.Prefix, StringComparison.Ordinal)
+                && Models.Rides.RaceTracks.Get((counter ?? "").Substring(Models.Rides.RaceTracks.Prefix.Length)) is { } raceTrack)
+                Frontier.GivePoints(Rides.RecordRace(raceTrack, RideScore, RidePlace).Paid);
         }
         if (screen == ScriptScreen.StageShow)
         {

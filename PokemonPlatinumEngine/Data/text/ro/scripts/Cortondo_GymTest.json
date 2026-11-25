@@ -1,0 +1,122 @@
+{
+  "Test1": [
+    {
+      "en": [
+        "A giant olive, taller than a Smoliv, sits in the gap. {player} gave it a push..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It rolled away down the course and into the goal!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Test2": [
+    {
+      "en": [
+        "Another giant olive, glossy and green. {player} gave it a push..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It bumped off the rail and trundled into the goal!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Test3": [
+    {
+      "en": [
+        "The last olive was the roundest of all. {player} gave it a good push..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It rolled straight into the goal. The olive roll is cleared!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Leader": [
+    {
+      "en": [
+        "Katy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh my, you rolled every one of them in! You must be a challenger from the academy. I'm Katy, Cortondo's gym leader."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Bug types are small, but sweet things can sting. Let's see how your team takes the heat of my oven!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, I never! That was baked to perfection. You've earned this: the Bug Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Bug Badge from Katy!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come by the bakery any time. And good luck with the rest of Victory Road!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A challenger? Oh, but you aren't enrolled at the academy yet. Come back once term has started, dear."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time. I'll save you a pastry."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

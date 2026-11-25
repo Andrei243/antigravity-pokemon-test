@@ -4389,6 +4389,96 @@
       ]
     }
   ],
+  "TeraCrystal": [
+    {
+      "en": [
+        "A Tera crystal glitters in the grass. Inside it a {species:VAR_PALDEA_RAID_SPECIES} of {var:VAR_PALDEA_RAID_STARS} stars is glowing with {type} Tera light!"
+      ],
+      "text": [
+        "Un cristal Tera sclipește în iarbă. Înăuntru, un {species:VAR_PALDEA_RAID_SPECIES} de {var:VAR_PALDEA_RAID_STARS} stele strălucește în lumina Tera de tip {type}!"
+      ]
+    },
+    {
+      "en": [
+        "Hold up your Tera Orb and call three other Trainers to the crystal?"
+      ],
+      "text": [
+        "Ridici Globul Tera și chemi alți trei Antrenori la cristal?"
+      ]
+    },
+    {
+      "en": [
+        "The crystal's light faded. Everyone's Pokémon are safe, but the raid is over for now."
+      ],
+      "text": [
+        "Lumina cristalului s-a stins. Pokémonii tuturor sunt în siguranță, dar raidul s-a încheiat pentru moment."
+      ]
+    },
+    {
+      "en": [
+        "The crystal shattered, and the {species:VAR_PALDEA_RAID_SPECIES} sank to the ground, worn out."
+      ],
+      "text": [
+        "Cristalul s-a sfărâmat, iar {species:VAR_PALDEA_RAID_SPECIES} s-a prăbușit la pământ, sleit de puteri."
+      ]
+    },
+    {
+      "en": [
+        "{player} picked up {item} ×{result} from the crystal's pieces!"
+      ],
+      "text": [
+        "{player} a strâns {item} ×{result} dintre cioburile cristalului!"
+      ]
+    },
+    {
+      "en": [
+        "Throw a ball?",
+        "Poké Ball",
+        "Great Ball",
+        "Ultra Ball",
+        "Let it go"
+      ],
+      "text": [
+        "Arunci o bilă?",
+        "Poké Ball",
+        "Great Ball",
+        "Ultra Ball",
+        "Dă-i drumul"
+      ]
+    },
+    {
+      "en": [
+        "The {species:VAR_PALDEA_RAID_SPECIES} got up and wandered off into the grass."
+      ],
+      "text": [
+        "{species:VAR_PALDEA_RAID_SPECIES} s-a ridicat și s-a îndepărtat prin iarbă."
+      ]
+    },
+    {
+      "en": [
+        "Gotcha! The {species:VAR_PALDEA_RAID_SPECIES} was caught!"
+      ],
+      "text": [
+        "Gata! {species:VAR_PALDEA_RAID_SPECIES} a fost prins!"
+      ]
+    },
+    {
+      "en": [
+        "There was no ball of that kind in the Bag, and the {species:VAR_PALDEA_RAID_SPECIES} wandered off into the grass."
+      ],
+      "text": [
+        "Nu era nicio bilă de felul acela în Rucsac, iar {species:VAR_PALDEA_RAID_SPECIES} s-a îndepărtat prin iarbă."
+      ]
+    },
+    {
+      "en": [
+        "A Tera crystal glitters in the grass, humming with a light that wants a Tera Orb to answer it."
+      ],
+      "text": [
+        "Un cristal Tera sclipește în iarbă, vibrând de o lumină căreia doar un Glob Tera îi poate răspunde."
+      ]
+    }
+  ],
   "HubGuide": [
     {
       "en": [

@@ -110,14 +110,31 @@ Decisions 3 to 5 were not asked. As built, decision 3 answers itself: with no fi
 - **Owed in the scripts**: `people_grown.py` calls `pp.k.build` itself to pass `band` and `wband`, which `People.piece` should take, and its `garment_body` reaches into the kit's parts to flatten a hem; hair's vertex counts (up to 17,000 for a long cut) are where a file's size would come down first.
 - `--safe-mode` and `CharacterFiles.Enabled = false` draw everyone from the sculpting kits, which therefore stay.
 
+## Clothing floors (2026-11-22)
+
+The user's answers of 2026-11-22 ([ANSWERS-2026-11-22.md](decisions/ANSWERS-2026-11-22.md)) settle **decision 5**:
+every garment it named (a hoodie with its hood, a skirt, a coat, boots, a second and a third bag), **no new slots**, and
+"a lot more clothing", with **a new floor of clothes in each region's mall or department store**, in that region's look.
+A docs-only session the same day wrote the list the answer asks to be shown first:
+**[WD-clothing-floors.md](decisions/WD-clothing-floors.md)**. In brief: eleven floors (Veilstone's new 5F under its
+rooftop, Celadon's 6F, Goldenrod's 7F and Lilycove's 6F by their lifts, a third floor of Shopping Mall Nine, an upper
+floor of Lumiose's boutique, Royal Avenue's Megamart 2F, the standing boutiques of Motostoke and Mesagoza given doors,
+Hisui's locked clothier opened, and Carpathia's capital store with plan 46 · CP24), about 30 garments a floor, **324
+new rows** (70 in decision 5's six new shapes, 86 in shapes the kits already draw, 144 recolours, 24 in four regional
+shapes: a flat cap, a uniform tie, an embroidered blouse, a fur hat). It adds a session **WD7** (three parts: the grid
+stores, the drawn stores and the mall, the open regions), grows **WD4** to two sessions, and asks eleven questions,
+each with a default. **Waiting on the user**: the list, the counts and the eleven questions; nothing of WD7 is built
+before the answer.
+
 ## Status
 
-- [~] Decisions 1 and 2 answered and the face decided (2026-11-13: route b, everyone, a modelled face); 3 to 5 open
+- [~] Decisions 1 and 2 answered and the face decided (2026-11-13: route b, everyone, a modelled face); 5 answered 2026-11-22 (all six new garments, no new slots, a lot more clothing); 3 and 4 open
 - [~] WD1 · The reader, the format and both kits' files built behind "no file, no change" (2026-11-13); the user's look at the boards and where the files live are open
 - [ ] WD2 · Every garment of today as a piece
 - [ ] WD3 · The switch thrown
 - [ ] WD4 · New shapes
 - [ ] WD5 · The grown player
 - [ ] WD6 · Optional
+- [ ] WD7 · The clothing floors (proposal written 2026-11-22, [WD-clothing-floors.md](decisions/WD-clothing-floors.md); **waiting on the user** for the list, the counts and its eleven questions)
 
 Built before the plan, as drafts (2026-11-12, uncommitted when this was written): `tools/BlenderAnim/blender/sculptkit.py` (a model built a piece at a time, zones, `cut`, decals on another piece), `sculpts/hero.py` (the 18 pieces and the file's format in its header) and `sculpts/hero_outfits.py` (the board).

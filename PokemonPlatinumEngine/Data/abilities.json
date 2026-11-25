@@ -1876,5 +1876,47 @@
     "name": "Aura Guard",
     "generation": 9,
     "description": "A Pokémon with Aura Guard takes half damage from moves that make contact."
+  },
+  {
+    "id": 3101,
+    "name": "Forest Hush",
+    "generation": 0,
+    "description": "Moves that make sound fail against it while it is at full HP."
+  },
+  {
+    "id": 3102,
+    "name": "Anvil",
+    "generation": 0,
+    "description": "Its contact moves that miss still deal a quarter of their damage."
+  },
+  {
+    "id": 3103,
+    "name": "Echo Pouch",
+    "generation": 0,
+    "description": "A damaging sound move it uses strikes again the turn after at half power."
+  },
+  {
+    "id": 3104,
+    "name": "Noonday",
+    "generation": 0,
+    "description": "Brings harsh sunlight that no other weather can end while it is on the field."
+  },
+  {
+    "id": 3105,
+    "name": "Eclipse",
+    "generation": 0,
+    "description": "Darkens the field for five turns: every move's accuracy falls and Dark and Ghost moves are stronger."
+  },
+  {
+    "id": 3106,
+    "name": "Three Heads",
+    "generation": 0,
+    "description": "Its first damaging move each turn strikes three times at 40% of its power."
+  },
+  {
+    "id": 3107,
+    "name": "War Cry",
+    "generation": 0,
+    "description": "Raises the Attack and Sp. Atk of its team at the end of each turn it is on the field, up to three times."
   }
 ]

@@ -1,0 +1,50 @@
+{
+  // Quaking Earth (plan 34 · PD4, its second session; moved to its province by PD6): the fourth Titan's place, the dusty
+  // basin at Asado Desert's south end, out of Cortondo's north side, where the version's Titan (Great Tusk with
+  // Koraidon, Iron Treads with Miraidon) charges about once the third Titan's herbs are shared; beaten there, it flees up
+  // onto the rise at the basin's west end, where the second battle is fought and Arven comes up to share the herbs. The
+  // two Titans stand on the same spots, each shown by its version's flag. The road north to the desert runs through the
+  // basin. Scripts: Data/scripts/quaking_earth.txt. Our own place, on Scarlet and Violet's beats
+  "markers": [
+    { "name": "quaking_earth_mouth", "at": [-440, 12.0, -392], "yaw": 0 },
+    { "name": "quaking_earth_ramp_foot", "at": [-462, 12.0, -428], "yaw": 270 },
+    { "name": "quaking_earth_den", "at": [-492, 18.0, -428], "yaw": 90 },
+    { "name": "quaking_earth_herbs", "at": [-488, 18.0, -436], "yaw": 0 }
+  ],
+  "triggers": [
+    // Across the basin before the Titan, once the third Titan is beaten: the first battle
+    { "name": "quaking_basin", "box": { "min": [-468, 9, -420], "max": [-352, 16, -408] }, "script": "Quaking", "var": "VAR_PALDEA_LEGENDS", "value": 7 },
+    // Up onto the rise once the Titan has fled there: its den and the second battle
+    { "name": "quaking_den", "cylinder": { "at": [-490, -428], "radius": 6, "bottom": 15, "top": 22 }, "script": "QuakingDen", "var": "VAR_PALDEA_LEGENDS", "value": 8 }
+  ],
+  "people": [
+    // The version's Titan in the basin, from the third Titan's herbs until it flees up onto the rise
+    {
+      "name": "titan_great_tusk", "at": [-450, 12.0, -432], "yaw": 180, "species": "Great Tusk", "size": 2, "displayName": "Great Tusk",
+      "script": "Quaking", "shownBy": "FLAG_PALDEA_QUAKING_TUSK", "hiddenBy": "FLAG_PALDEA_QUAKING_FLED"
+    },
+    {
+      "name": "titan_iron_treads", "at": [-450, 12.0, -432], "yaw": 180, "species": "Iron Treads", "size": 2, "displayName": "Iron Treads",
+      "script": "Quaking", "shownBy": "FLAG_PALDEA_QUAKING_TREADS", "hiddenBy": "FLAG_PALDEA_QUAKING_FLED"
+    },
+    // The Titan at its den on the rise, from its flight until it is beaten
+    {
+      "name": "titan_great_tusk_den", "at": [-494, 18.0, -428], "yaw": 90, "species": "Great Tusk", "size": 2, "displayName": "Great Tusk",
+      "script": "QuakingDen", "shownBy": "FLAG_PALDEA_GREAT_TUSK_FLED", "hiddenBy": "FLAG_PALDEA_QUAKING_BEATEN"
+    },
+    {
+      "name": "titan_iron_treads_den", "at": [-494, 18.0, -428], "yaw": 90, "species": "Iron Treads", "size": 2, "displayName": "Iron Treads",
+      "script": "QuakingDen", "shownBy": "FLAG_PALDEA_IRON_TREADS_FLED", "hiddenBy": "FLAG_PALDEA_QUAKING_BEATEN"
+    },
+    // Arven, come up after the Titan is beaten, until the herbs are shared
+    {
+      "name": "arven_quaking_earth", "at": [-486, 18.0, -442], "yaw": 0, "look": "arven", "displayName": "Arven",
+      "lines": ["Salty Herba Mystica. The last flavour's somewhere out east."],
+      "shownBy": "FLAG_PALDEA_QUAKING_BEATEN", "hiddenBy": "FLAG_PALDEA_MOUNT_GLIDE"
+    },
+    {
+      "name": "quaking_earth_backpacker", "at": [-380, 12.0, -396], "yaw": 270, "look": "backpacker_f", "displayName": "Backpacker",
+      "lines": ["The whole basin shook last night. My tent's still somewhere out there, I think."]
+    }
+  ]
+}

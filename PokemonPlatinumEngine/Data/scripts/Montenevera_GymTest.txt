@@ -1,0 +1,103 @@
+# Ryme's hall, the end of her gym test (plan 34 · PD6, its second session). The test is a rap battle, as Scarlet and
+# Violet's beat has it: the MC raps three lines and the challenger answers each with the line that rhymes. Each line
+# answered right is kept (VAR_PALDEA_MONTENEVERA_RAP 1 and 2) and the next follows at once; a line missed ends the
+# turn, and the MC gives that same line again next time. Three right and the test is passed
+# (FLAG_PALDEA_MONTENEVERA_TEST_DONE). A gym trainer stands in the hall, and Ryme at the stage's far end battles a
+# challenger who has passed. Our own lines and our own verses.
+
+
+# The MC's rap battle: three lines, each answered by one of three, the rhyme the right one (never the last answer, which
+# the cancel button picks)
+script RapBattle
+  speaker "MC"
+  if flag FLAG_PALDEA_MONTENEVERA_TEST_DONE goto Done
+  if var VAR_PALDEA_MONTENEVERA_RAP >= 2 goto LineThree
+  if var VAR_PALDEA_MONTENEVERA_RAP >= 1 goto LineTwo
+  say "Yo! You want Ryme? You go through me first. Three lines, you answer each one with a line that rhymes. Ready? Hit it!"
+  say "Came up the mountain where the cold wind blows..."
+  choose "Answer the MC!" "Got my team behind me, and the whole crowd knows!" "I forgot my scarf at home." "Is there a café here?"
+  if result != 0 goto Missed
+  setvar VAR_PALDEA_MONTENEVERA_RAP 1
+  say "Ha! Not bad! That's one."
+label LineTwo
+  say "Line two! Here in Montenevera, the snow don't quit..."
+  choose "Answer the MC!" "Can we turn the heating up?" "So I came to battle, and I'm hot as it!" "I like snow, actually."
+  if result != 1 goto Missed
+  setvar VAR_PALDEA_MONTENEVERA_RAP 2
+  say "Ooh, the crowd felt that! That's two."
+label LineThree
+  say "Last one! Ryme's on the stage, and the lights are bright..."
+  choose "Answer the MC!" "Could someone dim them a bit?" "So I step up now, and I'm ready to fight!" "Is that the time already?"
+  if result != 1 goto Missed
+  text "The crowd roared. The MC threw both arms in the air."
+  say "That's three for three! You passed Ryme's test! Get up on that stage, the boss is waiting!"
+  setflag FLAG_PALDEA_MONTENEVERA_TEST_DONE
+  end
+label Missed
+  text "The beat stumbled. Somewhere in the crowd, somebody winced."
+  say "Ohhh, you lost the rhyme! No shame. Talk to me again and I'll give you that line one more time."
+  end
+label Done
+  say "You already got the crowd. Now go get the boss!"
+  end
+
+# Ryme's battle for the Ghost Badge. She Terastallizes her last into a Ghost type. Plan 34 · decision 3 at its
+# recommendation, as Kofu's and Larry's are (Cascarrafa_GymTest.txt): her team is scaled to the badges the challenger
+# holds, its best at the cap of that many badges, so in the academy's order (five held) it is the original's
+# (Data/world/paldea/trainers.json: paldea_ryme, paldea_ryme_b0 to _b7)
+script Leader
+  face ryme player
+  speaker "Ryme"
+  if badge ghost goto Won
+  if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  if not flag FLAG_PALDEA_MONTENEVERA_TEST_DONE goto NotYet
+  scene "Ryme"
+  say "So you're the one who got my crowd going. I'm Ryme. Montenevera's gym leader, and the loudest thing on this mountain."
+  say "My Ghost types keep the beat even after the music stops. Let's see if you can keep up!"
+  if badges >= 7 goto Held7
+  if badges >= 6 goto Held6
+  if badges >= 5 goto Held5
+  if badges >= 4 goto Held4
+  if badges >= 3 goto Held3
+  if badges >= 2 goto Held2
+  if badges >= 1 goto Held1
+  battle ryme as "paldea_ryme_b0"
+  goto Beaten
+label Held1
+  battle ryme as "paldea_ryme_b1"
+  goto Beaten
+label Held2
+  battle ryme as "paldea_ryme_b2"
+  goto Beaten
+label Held3
+  battle ryme as "paldea_ryme_b3"
+  goto Beaten
+label Held4
+  battle ryme as "paldea_ryme_b4"
+  goto Beaten
+label Held5
+  battle ryme as "paldea_ryme"
+  goto Beaten
+label Held6
+  battle ryme as "paldea_ryme_b6"
+  goto Beaten
+label Held7
+  battle ryme as "paldea_ryme_b7"
+label Beaten
+  say "That's a mic drop if I ever heard one. The Ghost Badge is yours. Wear it loud."
+  givebadge ghost
+  text "{player} received the Ghost Badge from Ryme!"
+  setflag FLAG_PALDEA_DEFEATED_MONTENEVERA_GYM
+  defeat "paldea_gym_trainer_tas"
+  say "Come back for a show some night. I'll save you a spot by the stage."
+  endscene
+  end
+label NotYet
+  say "Get past my MC first. Rap battle, three lines. The crowd'll tell you when you've got it."
+  end
+label NotEnrolled
+  say "Not enrolled at the academy? Then this stage isn't yours yet. Come back with a student card."
+  end
+label Won
+  say "Back for an encore? The badge is yours already. The crowd still remembers you, though."
+  end

@@ -1,0 +1,7 @@
+# south_province_area_three (plan 34 · PD7): the place's Tera crystal.
+
+# Its Tera crystal (plan 34 · PD7): what it holds today is drawn by the day (Models/Raids.cs), the raid is common.TeraCrystal
+script CrystalAreaThree1
+  raid crystal "area_three_1"
+  call TeraCrystal
+  end
