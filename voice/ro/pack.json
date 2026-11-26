@@ -3162,6 +3162,42 @@
       "seed": 1867673302
     },
     {
+      "key": "script:Route208House.BerryMaster#0.0",
+      "voice": "berry_master",
+      "file": "berry_master/script+Route208House.BerryMaster#0.0.ogg",
+      "textHash": "5a9e4110",
+      "fileHash": "f0a200d2",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1574837927
+    },
+    {
+      "key": "script:Route208House.BerryMaster#0.1",
+      "voice": "berry_master",
+      "file": "berry_master/script+Route208House.BerryMaster#0.1.ogg",
+      "textHash": "a9a443af",
+      "fileHash": "d635ca02",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 671873264
+    },
+    {
+      "key": "script:Route208House.BerryMaster#1.0",
+      "voice": "berry_master",
+      "file": "berry_master/script+Route208House.BerryMaster#1.0.ogg",
+      "textHash": "7fd49fcf",
+      "fileHash": "412bc0a6",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1079894556
+    },
+    {
+      "key": "script:Route208House.BerryMaster#1.1",
+      "voice": "berry_master",
+      "file": "berry_master/script+Route208House.BerryMaster#1.1.ogg",
+      "textHash": "599115f2",
+      "fileHash": "7ac5f124",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1069587219
+    },
+    {
       "key": "script:PokemonLeagueBerthaRoom.Bertha#1.0",
       "voice": "bertha",
       "file": "bertha/script+PokemonLeagueBerthaRoom.Bertha#1.0.ogg",
@@ -3592,6 +3628,51 @@
       "fileHash": "2d3da98a",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 913420855
+    },
+    {
+      "key": "script:BattlePyramidFloor.Stairs#1.0",
+      "voice": "brandon",
+      "file": "brandon/script+BattlePyramidFloor.Stairs#1.0.ogg",
+      "textHash": "44df7412",
+      "fileHash": "6deb1018",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1375063343
+    },
+    {
+      "key": "script:BattlePyramidFloor.Stairs#2.0",
+      "voice": "brandon",
+      "file": "brandon/script+BattlePyramidFloor.Stairs#2.0.ogg",
+      "textHash": "ecaa215d",
+      "fileHash": "d2a22871",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1481177822
+    },
+    {
+      "key": "script:BattlePyramidFloor.Stairs#4.0",
+      "voice": "brandon",
+      "file": "brandon/script+BattlePyramidFloor.Stairs#4.0.ogg",
+      "textHash": "569b3bc5",
+      "fileHash": "1c3d9a5a",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 833035192
+    },
+    {
+      "key": "world:route_204_north.bug_catcher_brandon.after.0",
+      "voice": "brandon",
+      "file": "brandon/world+route_204_north.bug_catcher_brandon.after.0.ogg",
+      "textHash": "33975ff2",
+      "fileHash": "ea0a0db4",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 779699054
+    },
+    {
+      "key": "world:route_204_north.bug_catcher_brandon.before.0",
+      "voice": "brandon",
+      "file": "brandon/world+route_204_north.bug_catcher_brandon.before.0.ogg",
+      "textHash": "69caee4a",
+      "fileHash": "48b02ab2",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1897044329
     },
     {
       "key": "map:BattleFrontierGateToFightArea.pokemon_breeder_m.dialog.0",
@@ -4879,6 +4960,69 @@
       "fileHash": "1ff3a646",
       "engine": "Gemini gemini-3.1-flash-tts-preview",
       "seed": 1585207984
+    },
+    {
+      "key": "script:common.Crossing#0.0",
+      "voice": "captain",
+      "file": "captain/script+common.Crossing#0.0.ogg",
+      "textHash": "56bec4de",
+      "fileHash": "ee575b5d",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1808845853
+    },
+    {
+      "key": "script:common.Crossing#1.0",
+      "voice": "captain",
+      "file": "captain/script+common.Crossing#1.0.ogg",
+      "textHash": "31349900",
+      "fileHash": "6b571450",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 2083569338
+    },
+    {
+      "key": "script:common.Crossing#2.0",
+      "voice": "captain",
+      "file": "captain/script+common.Crossing#2.0.ogg",
+      "textHash": "2831708a",
+      "fileHash": "31ceb125",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1674821163
+    },
+    {
+      "key": "script:HearthomeFanClub.Chairman#1.0",
+      "voice": "chairman",
+      "file": "chairman/script+HearthomeFanClub.Chairman#1.0.ogg",
+      "textHash": "21d2a247",
+      "fileHash": "15d379d2",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 658474770
+    },
+    {
+      "key": "script:HearthomeFanClub.Chairman#2.0",
+      "voice": "chairman",
+      "file": "chairman/script+HearthomeFanClub.Chairman#2.0.ogg",
+      "textHash": "db773855",
+      "fileHash": "6d02c362",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1902402979
+    },
+    {
+      "key": "script:HearthomeFanClub.Chairman#3.0",
+      "voice": "chairman",
+      "file": "chairman/script+HearthomeFanClub.Chairman#3.0.ogg",
+      "textHash": "3b4a34d9",
+      "fileHash": "293e8511",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2133443192
+    },
+    {
+      "key": "script:HearthomeFanClub.Chairman#4.0",
+      "voice": "chairman",
+      "file": "chairman/script+HearthomeFanClub.Chairman#4.0.ogg",
+      "textHash": "eb22cd9f",
+      "fileHash": "3e38253b",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1911038881
     },
     {
       "key": "script:GalacticHQControlRoom.Charon#1.0",
@@ -6231,6 +6375,177 @@
       "seed": 1045635429
     },
     {
+      "key": "map:SevenStarsRestaurant.artist_ismael.after.0",
+      "voice": "class:artist#1",
+      "file": "class+artist#1/map+SevenStarsRestaurant.artist_ismael.after.0.ogg",
+      "textHash": "c05ae889",
+      "fileHash": "ba241a7f",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 611340042
+    },
+    {
+      "key": "map:SevenStarsRestaurant.artist_ismael.before.0",
+      "voice": "class:artist#1",
+      "file": "class+artist#1/map+SevenStarsRestaurant.artist_ismael.before.0.ogg",
+      "textHash": "7871d9ed",
+      "fileHash": "688f9cea",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1579590645
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "class:artist#1",
+      "file": "class+artist#1/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "127fa3ac",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "class:artist#1",
+      "file": "class+artist#1/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "1e4e36b7",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "class:artist#1",
+      "file": "class+artist#1/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "39233f2b",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
+      "key": "world:iron_island_b2f_left_room.battle_girl_tyler.after.0",
+      "voice": "class:battle_girl#1",
+      "file": "class+battle_girl#1/world+iron_island_b2f_left_room.battle_girl_tyler.after.0.ogg",
+      "textHash": "93459ef3",
+      "fileHash": "5936b602",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1733485109
+    },
+    {
+      "key": "world:iron_island_b2f_left_room.battle_girl_tyler.before.0",
+      "voice": "class:battle_girl#1",
+      "file": "class+battle_girl#1/world+iron_island_b2f_left_room.battle_girl_tyler.before.0.ogg",
+      "textHash": "4046d997",
+      "fileHash": "836800c6",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 230215420
+    },
+    {
+      "key": "world:route_205_south.battle_girl_kelsey.after.0",
+      "voice": "class:battle_girl#1",
+      "file": "class+battle_girl#1/world+route_205_south.battle_girl_kelsey.after.0.ogg",
+      "textHash": "0a4a9a15",
+      "fileHash": "ac85599e",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 395570616
+    },
+    {
+      "key": "world:route_205_south.battle_girl_kelsey.before.0",
+      "voice": "class:battle_girl#1",
+      "file": "class+battle_girl#1/world+route_205_south.battle_girl_kelsey.before.0.ogg",
+      "textHash": "b35471ca",
+      "fileHash": "7fef21d0",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 355854023
+    },
+    {
+      "key": "map:SevenStarsRestaurant.beauty_gabriella.after.0",
+      "voice": "class:beauty#1",
+      "file": "class+beauty#1/map+SevenStarsRestaurant.beauty_gabriella.after.0.ogg",
+      "textHash": "6de872d5",
+      "fileHash": "58367378",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1976236747
+    },
+    {
+      "key": "map:SevenStarsRestaurant.beauty_gabriella.before.0",
+      "voice": "class:beauty#1",
+      "file": "class+beauty#1/map+SevenStarsRestaurant.beauty_gabriella.before.0.ogg",
+      "textHash": "0a636435",
+      "fileHash": "2120f64d",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 418865606
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "class:beauty#1",
+      "file": "class+beauty#1/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "bce7f81e",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "class:beauty#1",
+      "file": "class+beauty#1/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "0ad31b46",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "class:beauty#1",
+      "file": "class+beauty#1/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "e337f7f8",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
+      "key": "map:SevenStarsRestaurant.beauty_harley.after.0",
+      "voice": "class:beauty#2",
+      "file": "class+beauty#2/map+SevenStarsRestaurant.beauty_harley.after.0.ogg",
+      "textHash": "bac6def6",
+      "fileHash": "3deb8c17",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 779275687
+    },
+    {
+      "key": "map:SevenStarsRestaurant.beauty_harley.before.0",
+      "voice": "class:beauty#2",
+      "file": "class+beauty#2/map+SevenStarsRestaurant.beauty_harley.before.0.ogg",
+      "textHash": "83116993",
+      "fileHash": "9e76fcb5",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 556341122
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "class:beauty#2",
+      "file": "class+beauty#2/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "6fc73fa2",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "class:beauty#2",
+      "file": "class+beauty#2/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "44236174",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "class:beauty#2",
+      "file": "class+beauty#2/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "82291c26",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
       "key": "world:route_213.beauty_cyndy.after.0",
       "voice": "class:beauty#3",
       "file": "class+beauty#3/world+route_213.beauty_cyndy.after.0.ogg",
@@ -6283,6 +6598,42 @@
       "fileHash": "8ad8412e",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 727148352
+    },
+    {
+      "key": "map:LostTower4F.pa_bob.after.0",
+      "voice": "class:belle_&_pa#1",
+      "file": "class+belle_&_pa#1/map+LostTower4F.pa_bob.after.0.ogg",
+      "textHash": "9c441cfb",
+      "fileHash": "967644ae",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 858344220
+    },
+    {
+      "key": "map:LostTower4F.pa_bob.before.0",
+      "voice": "class:belle_&_pa#1",
+      "file": "class+belle_&_pa#1/map+LostTower4F.pa_bob.before.0.ogg",
+      "textHash": "aaecccde",
+      "fileHash": "f50a32a9",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1449192203
+    },
+    {
+      "key": "world:route_210_south.belle_ava.after.0",
+      "voice": "class:belle_&_pa#1",
+      "file": "class+belle_&_pa#1/world+route_210_south.belle_ava.after.0.ogg",
+      "textHash": "845b50d6",
+      "fileHash": "3385b8ed",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1037268858
+    },
+    {
+      "key": "world:route_210_south.belle_ava.before.0",
+      "voice": "class:belle_&_pa#1",
+      "file": "class+belle_&_pa#1/world+route_210_south.belle_ava.before.0.ogg",
+      "textHash": "44943ca6",
+      "fileHash": "14882750",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 18396261
     },
     {
       "key": "world:route_210_north.bird_keeper_brianna.after.0",
@@ -6789,6 +7140,105 @@
       "seed": 2115556745
     },
     {
+      "key": "world:eterna_forest.bug_catcher_jack.after.0",
+      "voice": "class:bug_catcher#1",
+      "file": "class+bug_catcher#1/world+eterna_forest.bug_catcher_jack.after.0.ogg",
+      "textHash": "60db947f",
+      "fileHash": "6fa6e887",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 545264648
+    },
+    {
+      "key": "world:eterna_forest.bug_catcher_jack.before.0",
+      "voice": "class:bug_catcher#1",
+      "file": "class+bug_catcher#1/world+eterna_forest.bug_catcher_jack.before.0.ogg",
+      "textHash": "66afce5e",
+      "fileHash": "f5692cb9",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 301534359
+    },
+    {
+      "key": "world:eterna_forest.bug_catcher_phillip.after.0",
+      "voice": "class:bug_catcher#1",
+      "file": "class+bug_catcher#1/world+eterna_forest.bug_catcher_phillip.after.0.ogg",
+      "textHash": "c0785406",
+      "fileHash": "0d66af0a",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2103394129
+    },
+    {
+      "key": "world:eterna_forest.bug_catcher_phillip.before.0",
+      "voice": "class:bug_catcher#1",
+      "file": "class+bug_catcher#1/world+eterna_forest.bug_catcher_phillip.before.0.ogg",
+      "textHash": "3a47547c",
+      "fileHash": "4b787671",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1906743432
+    },
+    {
+      "key": "world:eterna_forest.bug_catcher_donald.after.0",
+      "voice": "class:bug_catcher#2",
+      "file": "class+bug_catcher#2/world+eterna_forest.bug_catcher_donald.after.0.ogg",
+      "textHash": "052c7230",
+      "fileHash": "609e0e47",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1112187723
+    },
+    {
+      "key": "world:eterna_forest.bug_catcher_donald.before.0",
+      "voice": "class:bug_catcher#2",
+      "file": "class+bug_catcher#2/world+eterna_forest.bug_catcher_donald.before.0.ogg",
+      "textHash": "66d8cb42",
+      "fileHash": "85bc40d3",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 99459910
+    },
+    {
+      "key": "map:SevenStarsRestaurant.cameraman_darryl.after.0",
+      "voice": "class:cameraman#2",
+      "file": "class+cameraman#2/map+SevenStarsRestaurant.cameraman_darryl.after.0.ogg",
+      "textHash": "e83d56d5",
+      "fileHash": "dd3a5d34",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 826214805
+    },
+    {
+      "key": "map:SevenStarsRestaurant.cameraman_darryl.before.0",
+      "voice": "class:cameraman#2",
+      "file": "class+cameraman#2/map+SevenStarsRestaurant.cameraman_darryl.before.0.ogg",
+      "textHash": "b5ee2f62",
+      "fileHash": "9f9429f3",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 681012956
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "class:cameraman#2",
+      "file": "class+cameraman#2/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "bd7a0025",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "class:cameraman#2",
+      "file": "class+cameraman#2/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "bd759bdc",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "class:cameraman#2",
+      "file": "class+cameraman#2/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "6bcce4b6",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
       "key": "world:iron_island_b1f_left_room.camper_lawrence.after.0",
       "voice": "class:camper#1",
       "file": "class+camper#1/world+iron_island_b1f_left_room.camper_lawrence.after.0.ogg",
@@ -6841,6 +7291,78 @@
       "fileHash": "d9ee117a",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 1206938078
+    },
+    {
+      "key": "world:oreburgh_gate_1f.camper_curtis.after.0",
+      "voice": "class:camper#2",
+      "file": "class+camper#2/world+oreburgh_gate_1f.camper_curtis.after.0.ogg",
+      "textHash": "9c220eb4",
+      "fileHash": "c3fed416",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1078728325
+    },
+    {
+      "key": "world:oreburgh_gate_1f.camper_curtis.before.0",
+      "voice": "class:camper#2",
+      "file": "class+camper#2/world+oreburgh_gate_1f.camper_curtis.before.0.ogg",
+      "textHash": "fdc02c27",
+      "fileHash": "00f776ed",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 662028428
+    },
+    {
+      "key": "world:route_205_south.camper_jacob.after.0",
+      "voice": "class:camper#2",
+      "file": "class+camper#2/world+route_205_south.camper_jacob.after.0.ogg",
+      "textHash": "9971f7e9",
+      "fileHash": "5a573e14",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 415904107
+    },
+    {
+      "key": "world:route_205_south.camper_jacob.before.0",
+      "voice": "class:camper#2",
+      "file": "class+camper#2/world+route_205_south.camper_jacob.before.0.ogg",
+      "textHash": "39336a26",
+      "fileHash": "84b79bc8",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1075617254
+    },
+    {
+      "key": "world:route_205_south.camper_zackary.after.0",
+      "voice": "class:camper#3",
+      "file": "class+camper#3/world+route_205_south.camper_zackary.after.0.ogg",
+      "textHash": "538847eb",
+      "fileHash": "19b2021a",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 145734079
+    },
+    {
+      "key": "world:route_205_south.camper_zackary.before.0",
+      "voice": "class:camper#3",
+      "file": "class+camper#3/world+route_205_south.camper_zackary.before.0.ogg",
+      "textHash": "40482f6a",
+      "fileHash": "24ab1906",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1071352410
+    },
+    {
+      "key": "world:route_207.camper_anthony.after.0",
+      "voice": "class:camper#3",
+      "file": "class+camper#3/world+route_207.camper_anthony.after.0.ogg",
+      "textHash": "7d4b6066",
+      "fileHash": "6b44d937",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1871977313
+    },
+    {
+      "key": "world:route_207.camper_anthony.before.0",
+      "voice": "class:camper#3",
+      "file": "class+camper#3/world+route_207.camper_anthony.before.0.ogg",
+      "textHash": "8c16cb8b",
+      "fileHash": "50db4200",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 540751064
     },
     {
       "key": "world:route_212_south.collector_dean.after.0",
@@ -6996,6 +7518,42 @@
       "seed": 1522345023
     },
     {
+      "key": "world:route_206.cyclist_john.after.0",
+      "voice": "class:cyclist#1",
+      "file": "class+cyclist#1/world+route_206.cyclist_john.after.0.ogg",
+      "textHash": "2b4380d2",
+      "fileHash": "216261f5",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1328868283
+    },
+    {
+      "key": "world:route_206.cyclist_john.before.0",
+      "voice": "class:cyclist#1",
+      "file": "class+cyclist#1/world+route_206.cyclist_john.before.0.ogg",
+      "textHash": "d774eda4",
+      "fileHash": "8b2fd51f",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1225028534
+    },
+    {
+      "key": "world:route_206.cyclist_nicole.after.0",
+      "voice": "class:cyclist#1",
+      "file": "class+cyclist#1/world+route_206.cyclist_nicole.after.0.ogg",
+      "textHash": "8c60c7cb",
+      "fileHash": "160bbc55",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1301188698
+    },
+    {
+      "key": "world:route_206.cyclist_nicole.before.0",
+      "voice": "class:cyclist#1",
+      "file": "class+cyclist#1/world+route_206.cyclist_nicole.before.0.ogg",
+      "textHash": "bd8b15b1",
+      "fileHash": "43e12dea",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1355086021
+    },
+    {
       "key": "world:route_206.cyclist_james.after.0",
       "voice": "class:cyclist#2",
       "file": "class+cyclist#2/world+route_206.cyclist_james.after.0.ogg",
@@ -7066,6 +7624,42 @@
       "fileHash": "cdaee747",
       "engine": "Gemini gemini-3.8-flash-lite-tts",
       "seed": 1585582231
+    },
+    {
+      "key": "world:route_206.cyclist_axel.after.0",
+      "voice": "class:cyclist#3",
+      "file": "class+cyclist#3/world+route_206.cyclist_axel.after.0.ogg",
+      "textHash": "86d36c1a",
+      "fileHash": "ce62dbeb",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 867261018
+    },
+    {
+      "key": "world:route_206.cyclist_axel.before.0",
+      "voice": "class:cyclist#3",
+      "file": "class+cyclist#3/world+route_206.cyclist_axel.before.0.ogg",
+      "textHash": "ec35f288",
+      "fileHash": "63ecc38c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 428406469
+    },
+    {
+      "key": "world:route_206.cyclist_rachel.after.0",
+      "voice": "class:cyclist#3",
+      "file": "class+cyclist#3/world+route_206.cyclist_rachel.after.0.ogg",
+      "textHash": "93d3d281",
+      "fileHash": "8c70da38",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1522916381
+    },
+    {
+      "key": "world:route_206.cyclist_rachel.before.0",
+      "voice": "class:cyclist#3",
+      "file": "class+cyclist#3/world+route_206.cyclist_rachel.before.0.ogg",
+      "textHash": "f5f004bb",
+      "fileHash": "ab22cc96",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 584842596
     },
     {
       "key": "world:route_210_north.double_team_trainer_jen.after.0",
@@ -7534,6 +8128,42 @@
       "fileHash": "8c274e2c",
       "engine": "Gemini gemini-3.8-flash-lite-tts",
       "seed": 1930179054
+    },
+    {
+      "key": "world:route_222.fisherman_alec.after.0",
+      "voice": "class:fisherman#3",
+      "file": "class+fisherman#3/world+route_222.fisherman_alec.after.0.ogg",
+      "textHash": "a9a36e50",
+      "fileHash": "7bd8177f",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 772138007
+    },
+    {
+      "key": "world:route_222.fisherman_alec.before.0",
+      "voice": "class:fisherman#3",
+      "file": "class+fisherman#3/world+route_222.fisherman_alec.before.0.ogg",
+      "textHash": "f2119182",
+      "fileHash": "51b70fd0",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1051079410
+    },
+    {
+      "key": "world:route_222.fisherman_brett.after.0",
+      "voice": "class:fisherman#3",
+      "file": "class+fisherman#3/world+route_222.fisherman_brett.after.0.ogg",
+      "textHash": "a611d3bd",
+      "fileHash": "67aa9909",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 507862011
+    },
+    {
+      "key": "world:route_222.fisherman_brett.before.0",
+      "voice": "class:fisherman#3",
+      "file": "class+fisherman#3/world+route_222.fisherman_brett.before.0.ogg",
+      "textHash": "50b0fe0b",
+      "fileHash": "633b9280",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 478657270
     },
     {
       "key": "map:GalacticHQ2F.galactic_grunt_1.after.0",
@@ -8292,6 +8922,51 @@
       "seed": 1779123838
     },
     {
+      "key": "map:SevenStarsRestaurant.gentleman_leonardo.after.0",
+      "voice": "class:gentleman#1",
+      "file": "class+gentleman#1/map+SevenStarsRestaurant.gentleman_leonardo.after.0.ogg",
+      "textHash": "ed7f0d80",
+      "fileHash": "fc67303c",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2080208909
+    },
+    {
+      "key": "map:SevenStarsRestaurant.gentleman_leonardo.before.0",
+      "voice": "class:gentleman#1",
+      "file": "class+gentleman#1/map+SevenStarsRestaurant.gentleman_leonardo.before.0.ogg",
+      "textHash": "b607093b",
+      "fileHash": "1fa8ed51",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 66015764
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "class:gentleman#1",
+      "file": "class+gentleman#1/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "95a4f1a3",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "class:gentleman#1",
+      "file": "class+gentleman#1/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "73f1cabe",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "class:gentleman#1",
+      "file": "class+gentleman#1/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "9d432492",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
       "key": "world:route_205_south.hiker_daniel.after.0",
       "voice": "class:hiker#2",
       "file": "class+hiker#2/world+route_205_south.hiker_daniel.after.0.ogg",
@@ -8490,6 +9165,114 @@
       "seed": 729485249
     },
     {
+      "key": "world:route_209.jogger_raul.after.0",
+      "voice": "class:jogger#3",
+      "file": "class+jogger#3/world+route_209.jogger_raul.after.0.ogg",
+      "textHash": "39479ea5",
+      "fileHash": "21b7a37c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 898512656
+    },
+    {
+      "key": "world:route_209.jogger_raul.before.0",
+      "voice": "class:jogger#3",
+      "file": "class+jogger#3/world+route_209.jogger_raul.before.0.ogg",
+      "textHash": "7bf85b94",
+      "fileHash": "4b944ae4",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 86754911
+    },
+    {
+      "key": "world:route_215.jogger_craig.after.0",
+      "voice": "class:jogger#3",
+      "file": "class+jogger#3/world+route_215.jogger_craig.after.0.ogg",
+      "textHash": "094485d6",
+      "fileHash": "eba97df3",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1352899953
+    },
+    {
+      "key": "world:route_215.jogger_craig.before.0",
+      "voice": "class:jogger#3",
+      "file": "class+jogger#3/world+route_215.jogger_craig.before.0.ogg",
+      "textHash": "4d68029a",
+      "fileHash": "5439955a",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 225542440
+    },
+    {
+      "key": "map:SevenStarsRestaurant.lady_kylie.after.0",
+      "voice": "class:lady#3",
+      "file": "class+lady#3/map+SevenStarsRestaurant.lady_kylie.after.0.ogg",
+      "textHash": "642ed76b",
+      "fileHash": "2ff746bf",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1535145420
+    },
+    {
+      "key": "map:SevenStarsRestaurant.lady_kylie.before.0",
+      "voice": "class:lady#3",
+      "file": "class+lady#3/map+SevenStarsRestaurant.lady_kylie.before.0.ogg",
+      "textHash": "f4517e6e",
+      "fileHash": "afbd5272",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1231920443
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "class:lady#3",
+      "file": "class+lady#3/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "38050045",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "class:lady#3",
+      "file": "class+lady#3/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "0cb1ad81",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "class:lady#3",
+      "file": "class+lady#3/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "75bceeff",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
+      "key": "map:EternaGym.lass_caroline.before.0",
+      "voice": "class:lass#1",
+      "file": "class+lass#1/map+EternaGym.lass_caroline.before.0.ogg",
+      "textHash": "b1bf4cdc",
+      "fileHash": "85c25689",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1894995786
+    },
+    {
+      "key": "world:route_204_south.lass_sarah.after.0",
+      "voice": "class:lass#1",
+      "file": "class+lass#1/world+route_204_south.lass_sarah.after.0.ogg",
+      "textHash": "8309af8d",
+      "fileHash": "7077a65c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1146499425
+    },
+    {
+      "key": "world:route_204_south.lass_sarah.before.0",
+      "voice": "class:lass#1",
+      "file": "class+lass#1/world+route_204_south.lass_sarah.before.0.ogg",
+      "textHash": "196b17d7",
+      "fileHash": "b8fcba54",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 230938328
+    },
+    {
       "key": "map:HearthomeGymRoom1.lass_molly.after.0",
       "voice": "class:lass#2",
       "file": "class+lass#2/map+HearthomeGymRoom1.lass_molly.after.0.ogg",
@@ -8661,6 +9444,42 @@
       "seed": 444975510
     },
     {
+      "key": "world:route_211_west.ninja_boy_zach.after.0",
+      "voice": "class:ninja_boy#1",
+      "file": "class+ninja_boy#1/world+route_211_west.ninja_boy_zach.after.0.ogg",
+      "textHash": "6e3d7e22",
+      "fileHash": "02d72927",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 550792188
+    },
+    {
+      "key": "world:route_211_west.ninja_boy_zach.before.0",
+      "voice": "class:ninja_boy#1",
+      "file": "class+ninja_boy#1/world+route_211_west.ninja_boy_zach.before.0.ogg",
+      "textHash": "e647bd95",
+      "fileHash": "8cb89807",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1370623723
+    },
+    {
+      "key": "world:route_217.ninja_boy_matthew.after.0",
+      "voice": "class:ninja_boy#1",
+      "file": "class+ninja_boy#1/world+route_217.ninja_boy_matthew.after.0.ogg",
+      "textHash": "315f1e11",
+      "fileHash": "7802c53c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1311697508
+    },
+    {
+      "key": "world:route_217.ninja_boy_matthew.before.0",
+      "voice": "class:ninja_boy#1",
+      "file": "class+ninja_boy#1/world+route_217.ninja_boy_matthew.before.0.ogg",
+      "textHash": "a441223b",
+      "fileHash": "755b5693",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 377334035
+    },
+    {
       "key": "world:route_210_north.ninja_boy_davido.after.0",
       "voice": "class:ninja_boy#2",
       "file": "class+ninja_boy#2/world+route_210_north.ninja_boy_davido.after.0.ogg",
@@ -8805,6 +9624,51 @@
       "seed": 695528441
     },
     {
+      "key": "map:SevenStarsRestaurant.pi_kendrick.after.0",
+      "voice": "class:pi#1",
+      "file": "class+pi#1/map+SevenStarsRestaurant.pi_kendrick.after.0.ogg",
+      "textHash": "8bcbbbaa",
+      "fileHash": "b6a69901",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1729961020
+    },
+    {
+      "key": "map:SevenStarsRestaurant.pi_kendrick.before.0",
+      "voice": "class:pi#1",
+      "file": "class+pi#1/map+SevenStarsRestaurant.pi_kendrick.before.0.ogg",
+      "textHash": "d1a39e7f",
+      "fileHash": "075da0fc",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1282633771
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "class:pi#1",
+      "file": "class+pi#1/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "e77cc258",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "class:pi#1",
+      "file": "class+pi#1/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "d93a9e91",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "class:pi#1",
+      "file": "class+pi#1/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "a8d98a10",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
       "key": "world:iron_island_b1f_right_room.picnicker_summer.after.0",
       "voice": "class:picnicker#1",
       "file": "class+picnicker#1/world+iron_island_b1f_right_room.picnicker_summer.after.0.ogg",
@@ -8875,6 +9739,78 @@
       "fileHash": "ea0736ef",
       "engine": "Gemini gemini-3.8-flash-lite-tts",
       "seed": 210117257
+    },
+    {
+      "key": "world:route_205_south.picnicker_siena.after.0",
+      "voice": "class:picnicker#2",
+      "file": "class+picnicker#2/world+route_205_south.picnicker_siena.after.0.ogg",
+      "textHash": "7211ae10",
+      "fileHash": "1b511cee",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 461479252
+    },
+    {
+      "key": "world:route_205_south.picnicker_siena.before.0",
+      "voice": "class:picnicker#2",
+      "file": "class+picnicker#2/world+route_205_south.picnicker_siena.before.0.ogg",
+      "textHash": "9b851f14",
+      "fileHash": "2fd26390",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 878570371
+    },
+    {
+      "key": "world:wayward_cave_1f.picnicker_tori.after.0",
+      "voice": "class:picnicker#2",
+      "file": "class+picnicker#2/world+wayward_cave_1f.picnicker_tori.after.0.ogg",
+      "textHash": "de2b066b",
+      "fileHash": "365320ee",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 36931610
+    },
+    {
+      "key": "world:wayward_cave_1f.picnicker_tori.before.0",
+      "voice": "class:picnicker#2",
+      "file": "class+picnicker#2/world+wayward_cave_1f.picnicker_tori.before.0.ogg",
+      "textHash": "6a096ff6",
+      "fileHash": "9ff67845",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1478052485
+    },
+    {
+      "key": "map:SunyshoreGymRoom2.poke_kid_meghan.after.0",
+      "voice": "class:poké_kid#1",
+      "file": "class+poké_kid#1/map+SunyshoreGymRoom2.poke_kid_meghan.after.0.ogg",
+      "textHash": "4411550d",
+      "fileHash": "710c3a76",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 969755535
+    },
+    {
+      "key": "map:SunyshoreGymRoom2.poke_kid_meghan.before.0",
+      "voice": "class:poké_kid#1",
+      "file": "class+poké_kid#1/map+SunyshoreGymRoom2.poke_kid_meghan.before.0.ogg",
+      "textHash": "99deaa71",
+      "fileHash": "ca4b8297",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1484208746
+    },
+    {
+      "key": "world:route_209.poke_kid_danielle.after.0",
+      "voice": "class:poké_kid#1",
+      "file": "class+poké_kid#1/world+route_209.poke_kid_danielle.after.0.ogg",
+      "textHash": "06409626",
+      "fileHash": "f2921f66",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1723164488
+    },
+    {
+      "key": "world:route_209.poke_kid_danielle.before.0",
+      "voice": "class:poké_kid#1",
+      "file": "class+poké_kid#1/world+route_209.poke_kid_danielle.before.0.ogg",
+      "textHash": "6c76fa51",
+      "fileHash": "1ba5c3cf",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 864681687
     },
     {
       "key": "map:LostTower3F.pokefan_leonard.after.0",
@@ -9021,6 +9957,42 @@
       "seed": 2126255819
     },
     {
+      "key": "world:route_209.breeder_jennifer.after.0",
+      "voice": "class:pokémon_breeder#3",
+      "file": "class+pokémon_breeder#3/world+route_209.breeder_jennifer.after.0.ogg",
+      "textHash": "349ffac6",
+      "fileHash": "c2ba3a28",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 232698348
+    },
+    {
+      "key": "world:route_209.breeder_jennifer.before.0",
+      "voice": "class:pokémon_breeder#3",
+      "file": "class+pokémon_breeder#3/world+route_209.breeder_jennifer.before.0.ogg",
+      "textHash": "aa0f728e",
+      "fileHash": "880e5816",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 810607579
+    },
+    {
+      "key": "world:route_210_south.breeder_amber.after.0",
+      "voice": "class:pokémon_breeder#3",
+      "file": "class+pokémon_breeder#3/world+route_210_south.breeder_amber.after.0.ogg",
+      "textHash": "ee7f1700",
+      "fileHash": "e2a35147",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1755265962
+    },
+    {
+      "key": "world:route_210_south.breeder_amber.before.0",
+      "voice": "class:pokémon_breeder#3",
+      "file": "class+pokémon_breeder#3/world+route_210_south.breeder_amber.before.0.ogg",
+      "textHash": "f6b963b7",
+      "fileHash": "72cc5c8b",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 479890325
+    },
+    {
       "key": "world:route_212_south.ranger_allison.after.0",
       "voice": "class:pokémon_ranger#1",
       "file": "class+pokémon_ranger#1/world+route_212_south.ranger_allison.after.0.ogg",
@@ -9091,6 +10063,150 @@
       "fileHash": "d5542d12",
       "engine": "Gemini gemini-3.8-flash-lite-tts",
       "seed": 829482252
+    },
+    {
+      "key": "world:route_225.ranger_ashlee.after.0",
+      "voice": "class:pokémon_ranger#2",
+      "file": "class+pokémon_ranger#2/world+route_225.ranger_ashlee.after.0.ogg",
+      "textHash": "0da5bed3",
+      "fileHash": "cd27483c",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1354149
+    },
+    {
+      "key": "world:route_225.ranger_ashlee.before.0",
+      "voice": "class:pokémon_ranger#2",
+      "file": "class+pokémon_ranger#2/world+route_225.ranger_ashlee.before.0.ogg",
+      "textHash": "aa18b303",
+      "fileHash": "c261fbf5",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1936216236
+    },
+    {
+      "key": "world:route_227.ranger_felicia.after.0",
+      "voice": "class:pokémon_ranger#2",
+      "file": "class+pokémon_ranger#2/world+route_227.ranger_felicia.after.0.ogg",
+      "textHash": "b04a353a",
+      "fileHash": "1c1e869f",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 44180372
+    },
+    {
+      "key": "world:route_227.ranger_felicia.before.0",
+      "voice": "class:pokémon_ranger#2",
+      "file": "class+pokémon_ranger#2/world+route_227.ranger_felicia.before.0.ogg",
+      "textHash": "1b16c39e",
+      "fileHash": "914927ca",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 943860163
+    },
+    {
+      "key": "world:route_228.ranger_kyler.after.0",
+      "voice": "class:pokémon_ranger#2",
+      "file": "class+pokémon_ranger#2/world+route_228.ranger_kyler.after.0.ogg",
+      "textHash": "20ca354a",
+      "fileHash": "e89c975d",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1886795457
+    },
+    {
+      "key": "world:route_228.ranger_kyler.before.0",
+      "voice": "class:pokémon_ranger#2",
+      "file": "class+pokémon_ranger#2/world+route_228.ranger_kyler.before.0.ogg",
+      "textHash": "64ad7e06",
+      "fileHash": "3aa2511b",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1933248184
+    },
+    {
+      "key": "world:route_212_north.policeman_caleb.after.0",
+      "voice": "class:policeman#1",
+      "file": "class+policeman#1/world+route_212_north.policeman_caleb.after.0.ogg",
+      "textHash": "ebc0811e",
+      "fileHash": "4f1069f4",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 87837453
+    },
+    {
+      "key": "world:route_212_north.policeman_caleb.before.0",
+      "voice": "class:policeman#1",
+      "file": "class+policeman#1/world+route_212_north.policeman_caleb.before.0.ogg",
+      "textHash": "cdcdfc92",
+      "fileHash": "e4bfb48c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 299203348
+    },
+    {
+      "key": "world:route_212_south.policeman_danny.after.0",
+      "voice": "class:policeman#1",
+      "file": "class+policeman#1/world+route_212_south.policeman_danny.after.0.ogg",
+      "textHash": "fb7e84cf",
+      "fileHash": "061140ef",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 447435278
+    },
+    {
+      "key": "world:route_212_south.policeman_danny.before.0",
+      "voice": "class:policeman#1",
+      "file": "class+policeman#1/world+route_212_south.policeman_danny.before.0.ogg",
+      "textHash": "a4bac561",
+      "fileHash": "ace0dacb",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1118179977
+    },
+    {
+      "key": "world:route_212_north.policeman_alex.after.0",
+      "voice": "class:policeman#2",
+      "file": "class+policeman#2/world+route_212_north.policeman_alex.after.0.ogg",
+      "textHash": "91f5d09b",
+      "fileHash": "40c9c95e",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 682435320
+    },
+    {
+      "key": "world:route_212_north.policeman_alex.before.0",
+      "voice": "class:policeman#2",
+      "file": "class+policeman#2/world+route_212_north.policeman_alex.before.0.ogg",
+      "textHash": "f0489ce9",
+      "fileHash": "ced2d387",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 2119427847
+    },
+    {
+      "key": "world:route_222.policeman_thomas.after.0",
+      "voice": "class:policeman#2",
+      "file": "class+policeman#2/world+route_222.policeman_thomas.after.0.ogg",
+      "textHash": "82784a4f",
+      "fileHash": "e056447d",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 2062404121
+    },
+    {
+      "key": "world:route_222.policeman_thomas.before.0",
+      "voice": "class:policeman#2",
+      "file": "class+policeman#2/world+route_222.policeman_thomas.before.0.ogg",
+      "textHash": "039df272",
+      "fileHash": "9f220bff",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 2003339760
+    },
+    {
+      "key": "world:eterna_forest.psychic_lindsey.after.0",
+      "voice": "class:psychic#1",
+      "file": "class+psychic#1/world+eterna_forest.psychic_lindsey.after.0.ogg",
+      "textHash": "312b6017",
+      "fileHash": "76b54a7d",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 765307469
+    },
+    {
+      "key": "world:eterna_forest.psychic_lindsey.before.0",
+      "voice": "class:psychic#1",
+      "file": "class+psychic#1/world+eterna_forest.psychic_lindsey.before.0.ogg",
+      "textHash": "993647be",
+      "fileHash": "2cb4d35b",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1557872468
     },
     {
       "key": "world:eterna_forest.psychic_kody.after.0",
@@ -9516,6 +10632,42 @@
       "seed": 291172248
     },
     {
+      "key": "world:route_224.ruin_maniac_larry.after.0",
+      "voice": "class:ruin_maniac#2",
+      "file": "class+ruin_maniac#2/world+route_224.ruin_maniac_larry.after.0.ogg",
+      "textHash": "1dda4764",
+      "fileHash": "3456626b",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 2136713655
+    },
+    {
+      "key": "world:route_224.ruin_maniac_larry.before.0",
+      "voice": "class:ruin_maniac#2",
+      "file": "class+ruin_maniac#2/world+route_224.ruin_maniac_larry.before.0.ogg",
+      "textHash": "520f15fe",
+      "fileHash": "50266d63",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1273668242
+    },
+    {
+      "key": "world:solaceon_ruins_room_3.ruin_maniac_karl.after.0",
+      "voice": "class:ruin_maniac#2",
+      "file": "class+ruin_maniac#2/world+solaceon_ruins_room_3.ruin_maniac_karl.after.0.ogg",
+      "textHash": "6302708d",
+      "fileHash": "d3809aef",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 163684397
+    },
+    {
+      "key": "world:solaceon_ruins_room_3.ruin_maniac_karl.before.0",
+      "voice": "class:ruin_maniac#2",
+      "file": "class+ruin_maniac#2/world+solaceon_ruins_room_3.ruin_maniac_karl.before.0.ogg",
+      "textHash": "2e50b8b2",
+      "fileHash": "b01ad68b",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 847622836
+    },
+    {
       "key": "map:PastoriaGym.sailor_damian.after.0",
       "voice": "class:sailor#1",
       "file": "class+sailor#1/map+PastoriaGym.sailor_damian.after.0.ogg",
@@ -9568,6 +10720,60 @@
       "fileHash": "36b519d4",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 172771644
+    },
+    {
+      "key": "world:route_218.sailor_skyler.after.0",
+      "voice": "class:sailor#2",
+      "file": "class+sailor#2/world+route_218.sailor_skyler.after.0.ogg",
+      "textHash": "c3ced248",
+      "fileHash": "90342296",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1013430164
+    },
+    {
+      "key": "world:route_218.sailor_skyler.before.0",
+      "voice": "class:sailor#2",
+      "file": "class+sailor#2/world+route_218.sailor_skyler.before.0.ogg",
+      "textHash": "0dda03a9",
+      "fileHash": "0ae5d465",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 709502403
+    },
+    {
+      "key": "world:route_222.sailor_marc.after.0",
+      "voice": "class:sailor#2",
+      "file": "class+sailor#2/world+route_222.sailor_marc.after.0.ogg",
+      "textHash": "3985ea19",
+      "fileHash": "18784a89",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 685733336
+    },
+    {
+      "key": "world:route_222.sailor_marc.before.0",
+      "voice": "class:sailor#2",
+      "file": "class+sailor#2/world+route_222.sailor_marc.before.0.ogg",
+      "textHash": "11f836f5",
+      "fileHash": "0b7455fb",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 947639271
+    },
+    {
+      "key": "world:route_213.sailor_paul.after.0",
+      "voice": "class:sailor#3",
+      "file": "class+sailor#3/world+route_213.sailor_paul.after.0.ogg",
+      "textHash": "923dae85",
+      "fileHash": "66301275",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1344857547
+    },
+    {
+      "key": "world:route_213.sailor_paul.before.0",
+      "voice": "class:sailor#3",
+      "file": "class+sailor#3/world+route_213.sailor_paul.before.0.ogg",
+      "textHash": "fb272f47",
+      "fileHash": "79ac921d",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1523602118
     },
     {
       "key": "map:HearthomeGymRoom2.school_kid_chance.after.0",
@@ -9750,6 +10956,42 @@
       "seed": 303770371
     },
     {
+      "key": "map:GalacticHQ1F.scientist_fredrick.after.0",
+      "voice": "class:scientist#3",
+      "file": "class+scientist#3/map+GalacticHQ1F.scientist_fredrick.after.0.ogg",
+      "textHash": "bfbe4057",
+      "fileHash": "c83f28a0",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 763097331
+    },
+    {
+      "key": "map:GalacticHQ1F.scientist_fredrick.before.0",
+      "voice": "class:scientist#3",
+      "file": "class+scientist#3/map+GalacticHQ1F.scientist_fredrick.before.0.ogg",
+      "textHash": "4ee9b9e9",
+      "fileHash": "a4965052",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 690118542
+    },
+    {
+      "key": "map:TeamGalacticEternaBuilding3F.scientist_travon.after.0",
+      "voice": "class:scientist#3",
+      "file": "class+scientist#3/map+TeamGalacticEternaBuilding3F.scientist_travon.after.0.ogg",
+      "textHash": "79ea9991",
+      "fileHash": "5c528cf7",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 800883280
+    },
+    {
+      "key": "map:TeamGalacticEternaBuilding3F.scientist_travon.before.0",
+      "voice": "class:scientist#3",
+      "file": "class+scientist#3/map+TeamGalacticEternaBuilding3F.scientist_travon.before.0.ogg",
+      "textHash": "634268b2",
+      "fileHash": "648149b7",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 802710431
+    },
+    {
       "key": "world:route_216.skier_andrea.after.0",
       "voice": "class:skier#1",
       "file": "class+skier#1/world+route_216.skier_andrea.after.0.ogg",
@@ -9802,6 +11044,42 @@
       "fileHash": "6c244d92",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 330233897
+    },
+    {
+      "key": "world:route_217.skier_bjorn.after.0",
+      "voice": "class:skier#2",
+      "file": "class+skier#2/world+route_217.skier_bjorn.after.0.ogg",
+      "textHash": "53004740",
+      "fileHash": "a1514d6b",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1339244216
+    },
+    {
+      "key": "world:route_217.skier_bjorn.before.0",
+      "voice": "class:skier#2",
+      "file": "class+skier#2/world+route_217.skier_bjorn.before.0.ogg",
+      "textHash": "c3429612",
+      "fileHash": "bfc771e7",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 551709127
+    },
+    {
+      "key": "world:route_217.skier_shawn.after.0",
+      "voice": "class:skier#2",
+      "file": "class+skier#2/world+route_217.skier_shawn.after.0.ogg",
+      "textHash": "f5cd3d11",
+      "fileHash": "8f0bc1ea",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 700667066
+    },
+    {
+      "key": "world:route_217.skier_shawn.before.0",
+      "voice": "class:skier#2",
+      "file": "class+skier#2/world+route_217.skier_shawn.before.0.ogg",
+      "textHash": "022d136d",
+      "fileHash": "e329671f",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 628019877
     },
     {
       "key": "world:route_216.skier_bradley.after.0",
@@ -10380,6 +11658,42 @@
       "seed": 350111021
     },
     {
+      "key": "world:route_213.tuber_chelsea.after.0",
+      "voice": "class:tuber#1",
+      "file": "class+tuber#1/world+route_213.tuber_chelsea.after.0.ogg",
+      "textHash": "1b2ae623",
+      "fileHash": "2b4d8e65",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1834351654
+    },
+    {
+      "key": "world:route_213.tuber_chelsea.before.0",
+      "voice": "class:tuber#1",
+      "file": "class+tuber#1/world+route_213.tuber_chelsea.before.0.ogg",
+      "textHash": "cba2a02d",
+      "fileHash": "7d593643",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 159858913
+    },
+    {
+      "key": "world:route_222.tuber_conner.after.0",
+      "voice": "class:tuber#1",
+      "file": "class+tuber#1/world+route_222.tuber_conner.after.0.ogg",
+      "textHash": "cb510d5f",
+      "fileHash": "bc480bc1",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1234623606
+    },
+    {
+      "key": "world:route_222.tuber_conner.before.0",
+      "voice": "class:tuber#1",
+      "file": "class+tuber#1/world+route_222.tuber_conner.before.0.ogg",
+      "textHash": "4d276dba",
+      "fileHash": "4db3a401",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1923031409
+    },
+    {
       "key": "world:route_213.tuber_jared.after.0",
       "voice": "class:tuber#2",
       "file": "class+tuber#2/world+route_213.tuber_jared.after.0.ogg",
@@ -10486,6 +11800,96 @@
       "fileHash": "e93f1a48",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 1117673222
+    },
+    {
+      "key": "world:route_204_north.twin_liv.after.0",
+      "voice": "class:twins#1",
+      "file": "class+twins#1/world+route_204_north.twin_liv.after.0.ogg",
+      "textHash": "4c650157",
+      "fileHash": "35869b4c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 867338604
+    },
+    {
+      "key": "world:route_204_north.twin_liv.before.0",
+      "voice": "class:twins#1",
+      "file": "class+twins#1/world+route_204_north.twin_liv.before.0.ogg",
+      "textHash": "3ca969c2",
+      "fileHash": "8af313a6",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1020076635
+    },
+    {
+      "key": "world:route_210_south.twin_tia.after.0",
+      "voice": "class:twins#1",
+      "file": "class+twins#1/world+route_210_south.twin_tia.after.0.ogg",
+      "textHash": "890a0fbe",
+      "fileHash": "7afe1d66",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 635597916
+    },
+    {
+      "key": "world:route_210_south.twin_tia.before.0",
+      "voice": "class:twins#1",
+      "file": "class+twins#1/world+route_210_south.twin_tia.before.0.ogg",
+      "textHash": "7b149e21",
+      "fileHash": "3406603d",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1249548619
+    },
+    {
+      "key": "world:victory_road_1f_room_2.veteran_brenden.after.0",
+      "voice": "class:veteran#1",
+      "file": "class+veteran#1/world+victory_road_1f_room_2.veteran_brenden.after.0.ogg",
+      "textHash": "ccd47290",
+      "fileHash": "ea3481f3",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 908196280
+    },
+    {
+      "key": "world:victory_road_1f_room_2.veteran_brenden.before.0",
+      "voice": "class:veteran#1",
+      "file": "class+veteran#1/world+victory_road_1f_room_2.veteran_brenden.before.0.ogg",
+      "textHash": "1ce50cd0",
+      "fileHash": "46a16473",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 785566407
+    },
+    {
+      "key": "world:victory_road_1f_room_2.veteran_terrell.after.0",
+      "voice": "class:veteran#1",
+      "file": "class+veteran#1/world+victory_road_1f_room_2.veteran_terrell.after.0.ogg",
+      "textHash": "e04f2854",
+      "fileHash": "7f401807",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1508966032
+    },
+    {
+      "key": "world:victory_road_1f_room_2.veteran_terrell.before.0",
+      "voice": "class:veteran#1",
+      "file": "class+veteran#1/world+victory_road_1f_room_2.veteran_terrell.before.0.ogg",
+      "textHash": "ca7e8b1d",
+      "fileHash": "f3c7362a",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1286329567
+    },
+    {
+      "key": "world:victory_road_2f.veteran_clayton.after.0",
+      "voice": "class:veteran#1",
+      "file": "class+veteran#1/world+victory_road_2f.veteran_clayton.after.0.ogg",
+      "textHash": "3c86abfb",
+      "fileHash": "5e4a725e",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 291213688
+    },
+    {
+      "key": "world:victory_road_2f.veteran_clayton.before.0",
+      "voice": "class:veteran#1",
+      "file": "class+veteran#1/world+victory_road_2f.veteran_clayton.before.0.ogg",
+      "textHash": "f373f570",
+      "fileHash": "91c1b1ce",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1223416455
     },
     {
       "key": "world:route_224.veteran_armando.after.0",
@@ -10731,6 +12135,114 @@
       "seed": 213433217
     },
     {
+      "key": "world:fuego_ironworks_building.worker_holden.after.0",
+      "voice": "class:worker#2",
+      "file": "class+worker#2/world+fuego_ironworks_building.worker_holden.after.0.ogg",
+      "textHash": "074b0022",
+      "fileHash": "d9f4f57c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 880239281
+    },
+    {
+      "key": "world:fuego_ironworks_building.worker_holden.before.0",
+      "voice": "class:worker#2",
+      "file": "class+worker#2/world+fuego_ironworks_building.worker_holden.before.0.ogg",
+      "textHash": "abe68a26",
+      "fileHash": "5bad6caf",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1356927080
+    },
+    {
+      "key": "world:iron_island_b2f_left_room.worker_brendon.after.0",
+      "voice": "class:worker#2",
+      "file": "class+worker#2/world+iron_island_b2f_left_room.worker_brendon.after.0.ogg",
+      "textHash": "927470e8",
+      "fileHash": "87fbbaa6",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1979151924
+    },
+    {
+      "key": "world:iron_island_b2f_left_room.worker_brendon.before.0",
+      "voice": "class:worker#2",
+      "file": "class+worker#2/world+iron_island_b2f_left_room.worker_brendon.before.0.ogg",
+      "textHash": "58b747bc",
+      "fileHash": "38b89292",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1735848291
+    },
+    {
+      "key": "map:CanalaveGym.worker_gary.after.0",
+      "voice": "class:worker#3",
+      "file": "class+worker#3/map+CanalaveGym.worker_gary.after.0.ogg",
+      "textHash": "ac671bb3",
+      "fileHash": "71b39ae8",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 179151702
+    },
+    {
+      "key": "map:CanalaveGym.worker_gary.before.0",
+      "voice": "class:worker#3",
+      "file": "class+worker#3/map+CanalaveGym.worker_gary.before.0.ogg",
+      "textHash": "770c5377",
+      "fileHash": "0527ccb3",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 283542737
+    },
+    {
+      "key": "world:fuego_ironworks_building.worker_conrad.after.0",
+      "voice": "class:worker#3",
+      "file": "class+worker#3/world+fuego_ironworks_building.worker_conrad.after.0.ogg",
+      "textHash": "9ac8cf02",
+      "fileHash": "3c01a572",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1687178748
+    },
+    {
+      "key": "world:fuego_ironworks_building.worker_conrad.before.0",
+      "voice": "class:worker#3",
+      "file": "class+worker#3/world+fuego_ironworks_building.worker_conrad.before.0.ogg",
+      "textHash": "527c23d6",
+      "fileHash": "37c14adc",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1920390379
+    },
+    {
+      "key": "map:LostTower4F.young_couple_trainer_mike.after.0",
+      "voice": "class:young_couple#3",
+      "file": "class+young_couple#3/map+LostTower4F.young_couple_trainer_mike.after.0.ogg",
+      "textHash": "eb84b71c",
+      "fileHash": "cd9d73f6",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1091589869
+    },
+    {
+      "key": "map:LostTower4F.young_couple_trainer_mike.before.0",
+      "voice": "class:young_couple#3",
+      "file": "class+young_couple#3/map+LostTower4F.young_couple_trainer_mike.before.0.ogg",
+      "textHash": "aaf5d71e",
+      "fileHash": "b5b2d561",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 562157684
+    },
+    {
+      "key": "world:route_209.young_couple_trainer_sue.after.0",
+      "voice": "class:young_couple#3",
+      "file": "class+young_couple#3/world+route_209.young_couple_trainer_sue.after.0.ogg",
+      "textHash": "ebfef79f",
+      "fileHash": "d4e4d55c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1108866268
+    },
+    {
+      "key": "world:route_209.young_couple_trainer_sue.before.0",
+      "voice": "class:young_couple#3",
+      "file": "class+young_couple#3/world+route_209.young_couple_trainer_sue.before.0.ogg",
+      "textHash": "df2ff7eb",
+      "fileHash": "66655f89",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 850649803
+    },
+    {
       "key": "map:HearthomeGymRoom1.youngster_donny.after.0",
       "voice": "class:youngster#1",
       "file": "class+youngster#1/map+HearthomeGymRoom1.youngster_donny.after.0.ogg",
@@ -10801,6 +12313,42 @@
       "fileHash": "023280df",
       "engine": "Gemini gemini-3.8-flash-lite-tts",
       "seed": 1302365477
+    },
+    {
+      "key": "world:route_202.youngster_logan.after.0",
+      "voice": "class:youngster#2",
+      "file": "class+youngster#2/world+route_202.youngster_logan.after.0.ogg",
+      "textHash": "f1a0ebd7",
+      "fileHash": "b8557e08",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 585258360
+    },
+    {
+      "key": "world:route_202.youngster_logan.before.0",
+      "voice": "class:youngster#2",
+      "file": "class+youngster#2/world+route_202.youngster_logan.before.0.ogg",
+      "textHash": "393c2e32",
+      "fileHash": "19fa4172",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1611818631
+    },
+    {
+      "key": "world:route_203.youngster_sebastian.after.0",
+      "voice": "class:youngster#2",
+      "file": "class+youngster#2/world+route_203.youngster_sebastian.after.0.ogg",
+      "textHash": "77c84f91",
+      "fileHash": "768c80f3",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 400642888
+    },
+    {
+      "key": "world:route_203.youngster_sebastian.before.0",
+      "voice": "class:youngster#2",
+      "file": "class+youngster#2/world+route_203.youngster_sebastian.before.0.ogg",
+      "textHash": "b78a1485",
+      "fileHash": "3418f0de",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 464421591
     },
     {
       "key": "map:OreburghGym.youngster_darius.after.0",
@@ -10891,6 +12439,69 @@
       "fileHash": "c51102b9",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 1808727597
+    },
+    {
+      "key": "script:route_218.ClefairyNorth#1.0",
+      "voice": "clefairy",
+      "file": "clefairy/script+route_218.ClefairyNorth#1.0.ogg",
+      "textHash": "76d47f4e",
+      "fileHash": "44f1394b",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 682869290
+    },
+    {
+      "key": "script:route_218.ClefairySouth#1.0",
+      "voice": "clefairy",
+      "file": "clefairy/script+route_218.ClefairySouth#1.0.ogg",
+      "textHash": "1f33c429",
+      "fileHash": "8862d2bb",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 75529276
+    },
+    {
+      "key": "script:common.TrainingExchange#1.0",
+      "voice": "club_clerk",
+      "file": "club_clerk/script+common.TrainingExchange#1.0.ogg",
+      "textHash": "72f70ed7",
+      "fileHash": "5399065f",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1050162817
+    },
+    {
+      "key": "script:common.TrainingExchange#3.0",
+      "voice": "club_clerk",
+      "file": "club_clerk/script+common.TrainingExchange#3.0.ogg",
+      "textHash": "125d5d55",
+      "fileHash": "716f8007",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1996224207
+    },
+    {
+      "key": "script:common.TrainingExchange#4.0",
+      "voice": "club_clerk",
+      "file": "club_clerk/script+common.TrainingExchange#4.0.ogg",
+      "textHash": "e2a3b30c",
+      "fileHash": "1d813e12",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 350392946
+    },
+    {
+      "key": "script:common.TrainingExchange#5.0",
+      "voice": "club_clerk",
+      "file": "club_clerk/script+common.TrainingExchange#5.0.ogg",
+      "textHash": "698f9e17",
+      "fileHash": "e3f116a9",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1995406581
+    },
+    {
+      "key": "script:common.TrainingExchange#6.0",
+      "voice": "club_clerk",
+      "file": "club_clerk/script+common.TrainingExchange#6.0.ogg",
+      "textHash": "ae242b9e",
+      "fileHash": "cccb1d44",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1104204120
     },
     {
       "key": "map:GlobalTerminal1F.collector.dialog.0",
@@ -12385,6 +13996,42 @@
       "fileHash": "57273ad9",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 1805908890
+    },
+    {
+      "key": "world:oreburgh_gate_b1f.cyclist_f.dialog.0",
+      "voice": "cyclist",
+      "file": "cyclist/world+oreburgh_gate_b1f.cyclist_f.dialog.0.ogg",
+      "textHash": "b4910545",
+      "fileHash": "96e31134",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1930015910
+    },
+    {
+      "key": "world:oreburgh_gate_b1f.cyclist_f.dialog.1",
+      "voice": "cyclist",
+      "file": "cyclist/world+oreburgh_gate_b1f.cyclist_f.dialog.1.ogg",
+      "textHash": "6bf4e3b1",
+      "fileHash": "366b0110",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 414412085
+    },
+    {
+      "key": "world:route_207.cyclist_m.dialog.0",
+      "voice": "cyclist",
+      "file": "cyclist/world+route_207.cyclist_m.dialog.0.ogg",
+      "textHash": "b944cc32",
+      "fileHash": "da8be7e8",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 2122504476
+    },
+    {
+      "key": "world:route_207.cyclist_m.dialog.1",
+      "voice": "cyclist",
+      "file": "cyclist/world+route_207.cyclist_m.dialog.1.ogg",
+      "textHash": "36b9f9bb",
+      "fileHash": "01ca5304",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 2112197139
     },
     {
       "key": "script:PokemonLeagueChampionRoom.OnEnter#1.0",
@@ -15726,6 +17373,33 @@
       "seed": 759121837
     },
     {
+      "key": "script:VeilstoneGameCorner.Farmer#0.0",
+      "voice": "farmer",
+      "file": "farmer/script+VeilstoneGameCorner.Farmer#0.0.ogg",
+      "textHash": "05060ee5",
+      "fileHash": "92defd19",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 595724763
+    },
+    {
+      "key": "script:VeilstoneGameCorner.Farmer#2.0",
+      "voice": "farmer",
+      "file": "farmer/script+VeilstoneGameCorner.Farmer#2.0.ogg",
+      "textHash": "64d817ae",
+      "fileHash": "4e9bcc77",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 521089421
+    },
+    {
+      "key": "script:VeilstoneGameCorner.Farmer#3.0",
+      "voice": "farmer",
+      "file": "farmer/script+VeilstoneGameCorner.Farmer#3.0.ogg",
+      "textHash": "85bbd0ca",
+      "fileHash": "ff461411",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 456215146
+    },
+    {
       "key": "script:PokemonLeagueFlintRoom.Flint#1.0",
       "voice": "flint",
       "file": "flint/script+PokemonLeagueFlintRoom.Flint#1.0.ogg",
@@ -16518,6 +18192,24 @@
       "seed": 1120381722
     },
     {
+      "key": "world:oreburgh_gate_b1f.veteran_grant.after.0",
+      "voice": "grant",
+      "file": "grant/world+oreburgh_gate_b1f.veteran_grant.after.0.ogg",
+      "textHash": "0b1cd5c4",
+      "fileHash": "009327f5",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1382776884
+    },
+    {
+      "key": "world:oreburgh_gate_b1f.veteran_grant.before.0",
+      "voice": "grant",
+      "file": "grant/world+oreburgh_gate_b1f.veteran_grant.before.0.ogg",
+      "textHash": "7f7af57e",
+      "fileHash": "f1a79de3",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1914875747
+    },
+    {
       "key": "script:common.TrainingCoach#1.0",
       "voice": "head_coach",
       "file": "head_coach/script+common.TrainingCoach#1.0.ogg",
@@ -16777,6 +18469,24 @@
       "fileHash": "581b70ec",
       "engine": "Gemini gemini-3.1-flash-tts-preview",
       "seed": 394413672
+    },
+    {
+      "key": "map:EternaCityHerbShop.cashier_f.dialog.0",
+      "voice": "herbalist",
+      "file": "herbalist/map+EternaCityHerbShop.cashier_f.dialog.0.ogg",
+      "textHash": "0a416363",
+      "fileHash": "ef43f6e3",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1474246945
+    },
+    {
+      "key": "script:common.Clerk#0.0",
+      "voice": "herbalist",
+      "file": "herbalist/script+common.Clerk#0.0.ogg",
+      "textHash": "f8faca7e",
+      "fileHash": "b666e8cf",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 107623442
     },
     {
       "key": "script:floaroma_meadow.Grunts#11.0",
@@ -17409,6 +19119,42 @@
       "seed": 1661817992
     },
     {
+      "key": "script:PalParkLobby.KantoAttendant#1.0",
+      "voice": "kanto_attendant",
+      "file": "kanto_attendant/script+PalParkLobby.KantoAttendant#1.0.ogg",
+      "textHash": "56fe619b",
+      "fileHash": "7e45c036",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 561192572
+    },
+    {
+      "key": "script:PalParkLobby.KantoAttendant#2.0",
+      "voice": "kanto_attendant",
+      "file": "kanto_attendant/script+PalParkLobby.KantoAttendant#2.0.ogg",
+      "textHash": "1e6239eb",
+      "fileHash": "36d0cedf",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 435876793
+    },
+    {
+      "key": "script:PalParkLobby.KantoAttendant#3.0",
+      "voice": "kanto_attendant",
+      "file": "kanto_attendant/script+PalParkLobby.KantoAttendant#3.0.ogg",
+      "textHash": "3eb46266",
+      "fileHash": "3158a8da",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1977942422
+    },
+    {
+      "key": "script:PalParkLobby.KantoAttendant#5.0",
+      "voice": "kanto_attendant",
+      "file": "kanto_attendant/script+PalParkLobby.KantoAttendant#5.0.ogg",
+      "textHash": "75110e90",
+      "fileHash": "b6fc2c26",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 33546160
+    },
+    {
       "key": "script:ContestHallLobby.OnEnter#1.0",
       "voice": "keira",
       "file": "keira/script+ContestHallLobby.OnEnter#1.0.ogg",
@@ -17517,6 +19263,33 @@
       "seed": 871058305
     },
     {
+      "key": "script:PokemonMansion.Challenge#35.0",
+      "voice": "lady_celeste",
+      "file": "lady_celeste/script+PokemonMansion.Challenge#35.0.ogg",
+      "textHash": "c9415702",
+      "fileHash": "d79545aa",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1023977693
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#37.0",
+      "voice": "lady_celeste",
+      "file": "lady_celeste/script+PokemonMansion.Challenge#37.0.ogg",
+      "textHash": "f020a5b9",
+      "fileHash": "1d9f0253",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 889953003
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#37.1",
+      "voice": "lady_celeste",
+      "file": "lady_celeste/script+PokemonMansion.Challenge#37.1.ogg",
+      "textHash": "97a0c82a",
+      "fileHash": "b4c08482",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1112489076
+    },
+    {
       "key": "script:galar_route_2.WishingStars#10.0",
       "voice": "leon",
       "file": "leon/script+galar_route_2.WishingStars#10.0.ogg",
@@ -17596,6 +19369,78 @@
       "fileHash": "37d23650",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 597228465
+    },
+    {
+      "key": "script:CanalaveLibrary1F.Receptionist#1.0",
+      "voice": "librarian",
+      "file": "librarian/script+CanalaveLibrary1F.Receptionist#1.0.ogg",
+      "textHash": "9656ebd8",
+      "fileHash": "8bcee84a",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 870694501
+    },
+    {
+      "key": "script:CanalaveLibrary1F.Receptionist#2.0",
+      "voice": "librarian",
+      "file": "librarian/script+CanalaveLibrary1F.Receptionist#2.0.ogg",
+      "textHash": "66a61053",
+      "fileHash": "3bad252a",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 640602952
+    },
+    {
+      "key": "script:CanalaveLibrary1F.Receptionist#3.0",
+      "voice": "librarian",
+      "file": "librarian/script+CanalaveLibrary1F.Receptionist#3.0.ogg",
+      "textHash": "8edd85c1",
+      "fileHash": "21556df7",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 201095219
+    },
+    {
+      "key": "script:ResortAreaRibbonSyndicateElevator.Lift#0.0",
+      "voice": "lift_attendant",
+      "file": "lift_attendant/script+ResortAreaRibbonSyndicateElevator.Lift#0.0.ogg",
+      "textHash": "7bfd01d9",
+      "fileHash": "69536356",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1496906543
+    },
+    {
+      "key": "script:ResortAreaRibbonSyndicateElevator.Lift#1.0",
+      "voice": "lift_attendant",
+      "file": "lift_attendant/script+ResortAreaRibbonSyndicateElevator.Lift#1.0.ogg",
+      "textHash": "a047b5dc",
+      "fileHash": "48532d17",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 622903012
+    },
+    {
+      "key": "script:ResortAreaRibbonSyndicateElevator.Lift#2.0",
+      "voice": "lift_attendant",
+      "file": "lift_attendant/script+ResortAreaRibbonSyndicateElevator.Lift#2.0.ogg",
+      "textHash": "31620183",
+      "fileHash": "93eede73",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 732474081
+    },
+    {
+      "key": "script:ResortAreaRibbonSyndicateElevator.Lift#3.0",
+      "voice": "lift_attendant",
+      "file": "lift_attendant/script+ResortAreaRibbonSyndicateElevator.Lift#3.0.ogg",
+      "textHash": "cfed7222",
+      "fileHash": "f056931a",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1603021022
+    },
+    {
+      "key": "script:ResortAreaRibbonSyndicateElevator.Lift#4.0",
+      "voice": "lift_attendant",
+      "file": "lift_attendant/script+ResortAreaRibbonSyndicateElevator.Lift#4.0.ogg",
+      "textHash": "0d7025c3",
+      "fileHash": "03ed0eba",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 723838179
     },
     {
       "key": "map:CanalaveCitySailorEldritchHouse.little_boy.dialog.0",
@@ -17751,6 +19596,42 @@
       "seed": 2116541942
     },
     {
+      "key": "world:celestic_town.ace_trainer_f.dialog.0",
+      "voice": "look:ace_trainer_f#3",
+      "file": "look+ace_trainer_f#3/world+celestic_town.ace_trainer_f.dialog.0.ogg",
+      "textHash": "5c12e7c9",
+      "fileHash": "247007bd",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 928287835
+    },
+    {
+      "key": "world:celestic_town.ace_trainer_f.dialog.1",
+      "voice": "look:ace_trainer_f#3",
+      "file": "look+ace_trainer_f#3/world+celestic_town.ace_trainer_f.dialog.1.ogg",
+      "textHash": "d70ec59a",
+      "fileHash": "ad46c7f4",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 965189668
+    },
+    {
+      "key": "world:jubilife_city.ace_trainer_f.dialog.0",
+      "voice": "look:ace_trainer_f#3",
+      "file": "look+ace_trainer_f#3/world+jubilife_city.ace_trainer_f.dialog.0.ogg",
+      "textHash": "1b94b8e8",
+      "fileHash": "988ac917",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2075350868
+    },
+    {
+      "key": "world:jubilife_city.ace_trainer_f.dialog.1",
+      "voice": "look:ace_trainer_f#3",
+      "file": "look+ace_trainer_f#3/world+jubilife_city.ace_trainer_f.dialog.1.ogg",
+      "textHash": "6788285f",
+      "fileHash": "cd164746",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 76548043
+    },
+    {
       "key": "world:great_marsh_6.ace_trainer_m.dialog.0",
       "voice": "look:ace_trainer_m#1",
       "file": "look+ace_trainer_m#1/world+great_marsh_6.ace_trainer_m.dialog.0.ogg",
@@ -17785,6 +19666,105 @@
       "fileHash": "d0a98311",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 1483052104
+    },
+    {
+      "key": "world:jubilife_city.ace_trainer_m_2.dialog.0",
+      "voice": "look:ace_trainer_m#1",
+      "file": "look+ace_trainer_m#1/world+jubilife_city.ace_trainer_m_2.dialog.0.ogg",
+      "textHash": "2f8bdac8",
+      "fileHash": "c62c60d8",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1512318124
+    },
+    {
+      "key": "world:jubilife_city.ace_trainer_m_2.dialog.1",
+      "voice": "look:ace_trainer_m#1",
+      "file": "look+ace_trainer_m#1/world+jubilife_city.ace_trainer_m_2.dialog.1.ogg",
+      "textHash": "545806d0",
+      "fileHash": "a051ddaf",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1289833635
+    },
+    {
+      "key": "world:pastoria_city.ace_trainer_m_1.dialog.0",
+      "voice": "look:ace_trainer_m#1",
+      "file": "look+ace_trainer_m#1/world+pastoria_city.ace_trainer_m_1.dialog.0.ogg",
+      "textHash": "452cde23",
+      "fileHash": "36d463fe",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 237741154
+    },
+    {
+      "key": "world:pastoria_city.ace_trainer_m_1.dialog.1",
+      "voice": "look:ace_trainer_m#1",
+      "file": "look+ace_trainer_m#1/world+pastoria_city.ace_trainer_m_1.dialog.1.ogg",
+      "textHash": "6fa78a1f",
+      "fileHash": "d9765e65",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1363803089
+    },
+    {
+      "key": "world:jubilife_city.ace_trainer_m_3.dialog.0",
+      "voice": "look:ace_trainer_m#2",
+      "file": "look+ace_trainer_m#2/world+jubilife_city.ace_trainer_m_3.dialog.0.ogg",
+      "textHash": "e81f687d",
+      "fileHash": "85d3ef2d",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 549801837
+    },
+    {
+      "key": "world:jubilife_city.ace_trainer_m_3.dialog.1",
+      "voice": "look:ace_trainer_m#2",
+      "file": "look+ace_trainer_m#2/world+jubilife_city.ace_trainer_m_3.dialog.1.ogg",
+      "textHash": "4a00422c",
+      "fileHash": "1fe9b551",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1411600542
+    },
+    {
+      "key": "script:route_211_east.PsychUp#0.0",
+      "voice": "look:ace_trainer_m#3",
+      "file": "look+ace_trainer_m#3/script+route_211_east.PsychUp#0.0.ogg",
+      "textHash": "6f3f9fc8",
+      "fileHash": "73e6cb76",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1059249514
+    },
+    {
+      "key": "script:route_211_east.PsychUp#1.0",
+      "voice": "look:ace_trainer_m#3",
+      "file": "look+ace_trainer_m#3/script+route_211_east.PsychUp#1.0.ogg",
+      "textHash": "47ad4af7",
+      "fileHash": "0d708cc5",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1124123789
+    },
+    {
+      "key": "script:route_211_east.PsychUp#2.0",
+      "voice": "look:ace_trainer_m#3",
+      "file": "look+ace_trainer_m#3/script+route_211_east.PsychUp#2.0.ogg",
+      "textHash": "666001a4",
+      "fileHash": "16703d78",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1861196592
+    },
+    {
+      "key": "world:pastoria_city.ace_trainer_m_2.dialog.0",
+      "voice": "look:ace_trainer_m#3",
+      "file": "look+ace_trainer_m#3/world+pastoria_city.ace_trainer_m_2.dialog.0.ogg",
+      "textHash": "b86a74de",
+      "fileHash": "c1653df6",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 980129097
+    },
+    {
+      "key": "world:pastoria_city.ace_trainer_m_2.dialog.1",
+      "voice": "look:ace_trainer_m#3",
+      "file": "look+ace_trainer_m#3/world+pastoria_city.ace_trainer_m_2.dialog.1.ogg",
+      "textHash": "99a615ba",
+      "fileHash": "d52c8275",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 704721722
     },
     {
       "key": "script:BattleDome.OnEnter#2.0",
@@ -17857,6 +19837,60 @@
       "fileHash": "b7eae58c",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 1924290252
+    },
+    {
+      "key": "script:SunyshoreWorkshop.Apprentice#2.0",
+      "voice": "look:apprentice#3",
+      "file": "look+apprentice#3/script+SunyshoreWorkshop.Apprentice#2.0.ogg",
+      "textHash": "827d5b58",
+      "fileHash": "daa322df",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1406035570
+    },
+    {
+      "key": "script:SunyshoreWorkshop.Apprentice#4.0",
+      "voice": "look:apprentice#3",
+      "file": "look+apprentice#3/script+SunyshoreWorkshop.Apprentice#4.0.ogg",
+      "textHash": "dc3b785f",
+      "fileHash": "99f8e940",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1083688324
+    },
+    {
+      "key": "script:SunyshoreWorkshop.Apprentice#5.0",
+      "voice": "look:apprentice#3",
+      "file": "look+apprentice#3/script+SunyshoreWorkshop.Apprentice#5.0.ogg",
+      "textHash": "e0052a74",
+      "fileHash": "8b120288",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 904383183
+    },
+    {
+      "key": "script:SunyshoreWorkshop.Apprentice#6.0",
+      "voice": "look:apprentice#3",
+      "file": "look+apprentice#3/script+SunyshoreWorkshop.Apprentice#6.0.ogg",
+      "textHash": "3ba4bc9b",
+      "fileHash": "b646e83f",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1573103358
+    },
+    {
+      "key": "world:hearthome_city.mr_goods.dialog.0",
+      "voice": "look:artist#2",
+      "file": "look+artist#2/world+hearthome_city.mr_goods.dialog.0.ogg",
+      "textHash": "113ab6b4",
+      "fileHash": "6ef063d2",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 431246549
+    },
+    {
+      "key": "world:hearthome_city.mr_goods.dialog.1",
+      "voice": "look:artist#2",
+      "file": "look+artist#2/world+hearthome_city.mr_goods.dialog.1.ogg",
+      "textHash": "807db8ff",
+      "fileHash": "4b0de065",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1946850374
     },
     {
       "key": "script:BattleArcade.ChallengeEnded#1.0",
@@ -18750,6 +20784,42 @@
       "seed": 498019003
     },
     {
+      "key": "map:BattleFrontierAnnex.royal_dalla.dialog.0",
+      "voice": "look:battle_girl#1",
+      "file": "look+battle_girl#1/map+BattleFrontierAnnex.royal_dalla.dialog.0.ogg",
+      "textHash": "60634d1b",
+      "fileHash": "b985e087",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1095772909
+    },
+    {
+      "key": "map:BattleFrontierAnnex.royal_dalla.dialog.1",
+      "voice": "look:battle_girl#1",
+      "file": "look+battle_girl#1/map+BattleFrontierAnnex.royal_dalla.dialog.1.ogg",
+      "textHash": "a72aa3fb",
+      "fileHash": "842c4268",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1957571614
+    },
+    {
+      "key": "world:veilstone_city.battle_girl_1.dialog.0",
+      "voice": "look:battle_girl#1",
+      "file": "look+battle_girl#1/world+veilstone_city.battle_girl_1.dialog.0.ogg",
+      "textHash": "fba8d380",
+      "fileHash": "15124ca9",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 290712994
+    },
+    {
+      "key": "world:veilstone_city.battle_girl_1.dialog.1",
+      "voice": "look:battle_girl#1",
+      "file": "look+battle_girl#1/world+veilstone_city.battle_girl_1.dialog.1.ogg",
+      "textHash": "74b3b1bc",
+      "fileHash": "b924ac1d",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1416774929
+    },
+    {
       "key": "world:oreburgh_city.battle_girl_1.dialog.0",
       "voice": "look:battle_girl#2",
       "file": "look+battle_girl#2/world+oreburgh_city.battle_girl_1.dialog.0.ogg",
@@ -18901,6 +20971,42 @@
       "fileHash": "3b601abb",
       "engine": "Gemini gemini-3.1-flash-tts-preview",
       "seed": 757693562
+    },
+    {
+      "key": "script:resort_area.GiveVilla#1.0",
+      "voice": "look:boy#1",
+      "file": "look+boy#1/script+resort_area.GiveVilla#1.0.ogg",
+      "textHash": "074e959a",
+      "fileHash": "42981e16",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 595768073
+    },
+    {
+      "key": "script:resort_area.GiveVilla#2.0",
+      "voice": "look:boy#1",
+      "file": "look+boy#1/script+resort_area.GiveVilla#2.0.ogg",
+      "textHash": "462728dc",
+      "fileHash": "a5e56c0f",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 381241996
+    },
+    {
+      "key": "script:resort_area.GiveVilla#2.1",
+      "voice": "look:boy#1",
+      "file": "look+boy#1/script+resort_area.GiveVilla#2.1.ogg",
+      "textHash": "2c4dc0c6",
+      "fileHash": "20577c51",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 529922819
+    },
+    {
+      "key": "script:resort_area.GiveVilla#3.0",
+      "voice": "look:boy#1",
+      "file": "look+boy#1/script+resort_area.GiveVilla#3.0.ogg",
+      "textHash": "27ddadc4",
+      "fileHash": "f92ccc78",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1222852695
     },
     {
       "key": "script:ResortAreaVilla.OnEnter#1.0",
@@ -19180,6 +21286,123 @@
       "fileHash": "8f54c0be",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 938502818
+    },
+    {
+      "key": "script:eterna_city.BikeNews#0.0",
+      "voice": "look:bug_catcher#3",
+      "file": "look+bug_catcher#3/script+eterna_city.BikeNews#0.0.ogg",
+      "textHash": "41d16f1d",
+      "fileHash": "a07f69bc",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 617153369
+    },
+    {
+      "key": "script:eterna_city.BikeNews#1.0",
+      "voice": "look:bug_catcher#3",
+      "file": "look+bug_catcher#3/script+eterna_city.BikeNews#1.0.ogg",
+      "textHash": "75cef94c",
+      "fileHash": "4d6dfe89",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 592840374
+    },
+    {
+      "key": "world:eterna_forest.bug_catcher.dialog.0",
+      "voice": "look:bug_catcher#3",
+      "file": "look+bug_catcher#3/world+eterna_forest.bug_catcher.dialog.0.ogg",
+      "textHash": "04c21ae5",
+      "fileHash": "7b08fef1",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 148619368
+    },
+    {
+      "key": "world:eterna_forest.bug_catcher.dialog.1",
+      "voice": "look:bug_catcher#3",
+      "file": "look+bug_catcher#3/world+eterna_forest.bug_catcher.dialog.1.ogg",
+      "textHash": "8ad11270",
+      "fileHash": "df7a6120",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 323894687
+    },
+    {
+      "key": "script:PokemonMansionOffice.Backlot#10.0",
+      "voice": "look:butler#3",
+      "file": "look+butler#3/script+PokemonMansionOffice.Backlot#10.0.ogg",
+      "textHash": "7258e0fe",
+      "fileHash": "7adeb37f",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 254210621
+    },
+    {
+      "key": "script:PokemonMansionOffice.Backlot#7.0",
+      "voice": "look:butler#3",
+      "file": "look+butler#3/script+PokemonMansionOffice.Backlot#7.0.ogg",
+      "textHash": "6c669624",
+      "fileHash": "0d82c602",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 961688859
+    },
+    {
+      "key": "world:floaroma_town.camper.dialog.0",
+      "voice": "look:camper#1",
+      "file": "look+camper#1/world+floaroma_town.camper.dialog.0.ogg",
+      "textHash": "b0acdf13",
+      "fileHash": "07b1e37a",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 640202416
+    },
+    {
+      "key": "world:floaroma_town.camper.dialog.1",
+      "voice": "look:camper#1",
+      "file": "look+camper#1/world+floaroma_town.camper.dialog.1.ogg",
+      "textHash": "d40e2d4a",
+      "fileHash": "aa12295b",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1543167079
+    },
+    {
+      "key": "world:oreburgh_city.camper.dialog.0",
+      "voice": "look:camper#2",
+      "file": "look+camper#2/world+oreburgh_city.camper.dialog.0.ogg",
+      "textHash": "d9cd9301",
+      "fileHash": "408f7f48",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 959693908
+    },
+    {
+      "key": "world:oreburgh_city.camper.dialog.1",
+      "voice": "look:camper#2",
+      "file": "look+camper#2/world+oreburgh_city.camper.dialog.1.ogg",
+      "textHash": "bdb91ba8",
+      "fileHash": "adc73dd4",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1108374731
+    },
+    {
+      "key": "script:route_201.MartWorker#0.0",
+      "voice": "look:cashier_m#3",
+      "file": "look+cashier_m#3/script+route_201.MartWorker#0.0.ogg",
+      "textHash": "0df7f331",
+      "fileHash": "e1d3a491",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 2098894437
+    },
+    {
+      "key": "world:route_201.cashier_m.dialog.0",
+      "voice": "look:cashier_m#3",
+      "file": "look+cashier_m#3/world+route_201.cashier_m.dialog.0.ogg",
+      "textHash": "2921ee2c",
+      "fileHash": "3c87f9c0",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 887714922
+    },
+    {
+      "key": "world:route_201.cashier_m.dialog.1",
+      "voice": "look:cashier_m#3",
+      "file": "look+cashier_m#3/world+route_201.cashier_m.dialog.1.ogg",
+      "textHash": "e5c59414",
+      "fileHash": "9e90a30c",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 977488057
     },
     {
       "key": "map:FightAreaPokeMart.cashier_f.dialog.0",
@@ -21162,6 +23385,24 @@
       "seed": 1104359325
     },
     {
+      "key": "world:amity_square.collector.dialog.0",
+      "voice": "look:collector#1",
+      "file": "look+collector#1/world+amity_square.collector.dialog.0.ogg",
+      "textHash": "3c59e583",
+      "fileHash": "151adf43",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 815258891
+    },
+    {
+      "key": "world:amity_square.collector.dialog.1",
+      "voice": "look:collector#1",
+      "file": "look+collector#1/world+amity_square.collector.dialog.1.ogg",
+      "textHash": "8ee57f24",
+      "fileHash": "17969f4b",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 666578068
+    },
+    {
       "key": "script:amity_square.GiftMan#0.0",
       "voice": "look:collector#3",
       "file": "look+collector#3/script+amity_square.GiftMan#0.0.ogg",
@@ -21457,6 +23698,60 @@
       "fileHash": "7971d476",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 2010654593
+    },
+    {
+      "key": "world:jubilife_city.expert_m_2.dialog.0",
+      "voice": "look:expert_m#3",
+      "file": "look+expert_m#3/world+jubilife_city.expert_m_2.dialog.0.ogg",
+      "textHash": "2a88f39d",
+      "fileHash": "46a40847",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1009606713
+    },
+    {
+      "key": "world:jubilife_city.expert_m_2.dialog.1",
+      "voice": "look:expert_m#3",
+      "file": "look+expert_m#3/world+jubilife_city.expert_m_2.dialog.1.ogg",
+      "textHash": "72e5f9bc",
+      "fileHash": "fa88f6d8",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 919833578
+    },
+    {
+      "key": "world:battle_frontier.fisherman.dialog.0",
+      "voice": "look:fisherman#2",
+      "file": "look+fisherman#2/world+battle_frontier.fisherman.dialog.0.ogg",
+      "textHash": "b4fef2b6",
+      "fileHash": "bc3bbca1",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1487733687
+    },
+    {
+      "key": "world:battle_frontier.fisherman.dialog.1",
+      "voice": "look:fisherman#2",
+      "file": "look+fisherman#2/world+battle_frontier.fisherman.dialog.1.ogg",
+      "textHash": "0205f08c",
+      "fileHash": "8df7e1f6",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 972186240
+    },
+    {
+      "key": "world:route_222.fisherman.dialog.0",
+      "voice": "look:fisherman#2",
+      "file": "look+fisherman#2/world+route_222.fisherman.dialog.0.ogg",
+      "textHash": "f9cbf317",
+      "fileHash": "abfc8c84",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 243285473
+    },
+    {
+      "key": "world:route_222.fisherman.dialog.1",
+      "voice": "look:fisherman#2",
+      "file": "look+fisherman#2/world+route_222.fisherman.dialog.1.ogg",
+      "textHash": "07c62e4a",
+      "fileHash": "39cd237c",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1460632434
     },
     {
       "key": "script:fight_area.Fisherman#0.0",
@@ -30270,6 +32565,114 @@
       "seed": 652435562
     },
     {
+      "key": "world:lake_valor_drained.grunt_f.dialog.0",
+      "voice": "look:grunt_f#3",
+      "file": "look+grunt_f#3/world+lake_valor_drained.grunt_f.dialog.0.ogg",
+      "textHash": "3083b80c",
+      "fileHash": "d1495087",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1045703861
+    },
+    {
+      "key": "world:lake_valor_drained.grunt_f.dialog.1",
+      "voice": "look:grunt_f#3",
+      "file": "look+grunt_f#3/world+lake_valor_drained.grunt_f.dialog.1.ogg",
+      "textHash": "52f1512c",
+      "fileHash": "62616f66",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 413824038
+    },
+    {
+      "key": "world:floaroma_meadow.grunt_m_east.dialog.0",
+      "voice": "look:grunt_m#1",
+      "file": "look+grunt_m#1/world+floaroma_meadow.grunt_m_east.dialog.0.ogg",
+      "textHash": "9a56cd24",
+      "fileHash": "e9ef2fbf",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1664263237
+    },
+    {
+      "key": "world:lake_valor_drained.grunt_m_1.dialog.0",
+      "voice": "look:grunt_m#1",
+      "file": "look+grunt_m#1/world+lake_valor_drained.grunt_m_1.dialog.0.ogg",
+      "textHash": "bb1400bb",
+      "fileHash": "ef963c10",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 322548830
+    },
+    {
+      "key": "world:veilstone_city.grunt_m_southeast.dialog.0",
+      "voice": "look:grunt_m#1",
+      "file": "look+grunt_m#1/world+veilstone_city.grunt_m_southeast.dialog.0.ogg",
+      "textHash": "89ee4214",
+      "fileHash": "fbc7c4f0",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 806096806
+    },
+    {
+      "key": "world:veilstone_city.grunt_m_southeast.dialog.1",
+      "voice": "look:grunt_m#1",
+      "file": "look+grunt_m#1/world+veilstone_city.grunt_m_southeast.dialog.1.ogg",
+      "textHash": "81e8d2e2",
+      "fileHash": "5af71e9c",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1437976629
+    },
+    {
+      "key": "world:floaroma_meadow.grunt_m_west.dialog.0",
+      "voice": "look:grunt_m#3",
+      "file": "look+grunt_m#3/world+floaroma_meadow.grunt_m_west.dialog.0.ogg",
+      "textHash": "9a56cd24",
+      "fileHash": "8d3befcf",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1005159891
+    },
+    {
+      "key": "world:lake_valor_drained.grunt_m_2.dialog.0",
+      "voice": "look:grunt_m#3",
+      "file": "look+grunt_m#3/world+lake_valor_drained.grunt_m_2.dialog.0.ogg",
+      "textHash": "62796f5f",
+      "fileHash": "ccfbc219",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1577631653
+    },
+    {
+      "key": "script:PokemonMansionOffice.BlockStatue#1.0",
+      "voice": "look:guard#1",
+      "file": "look+guard#1/script+PokemonMansionOffice.BlockStatue#1.0.ogg",
+      "textHash": "d001e362",
+      "fileHash": "7051bd10",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 788036250
+    },
+    {
+      "key": "script:common.CyclistsOnly#1.0",
+      "voice": "look:guard#1",
+      "file": "look+guard#1/script+common.CyclistsOnly#1.0.ogg",
+      "textHash": "c15de967",
+      "fileHash": "3719540e",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1243615930
+    },
+    {
+      "key": "script:Route206CyclingRoadNorthGate.OnlyBicycles#1.0",
+      "voice": "look:guard#2",
+      "file": "look+guard#2/script+Route206CyclingRoadNorthGate.OnlyBicycles#1.0.ogg",
+      "textHash": "cb47b68d",
+      "fileHash": "5152293c",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2117979927
+    },
+    {
+      "key": "script:Route206CyclingRoadSouthGate.OnlyBicycles#1.0",
+      "voice": "look:guard#2",
+      "file": "look+guard#2/script+Route206CyclingRoadSouthGate.OnlyBicycles#1.0.ogg",
+      "textHash": "0a8b044c",
+      "fileHash": "8907992e",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2042501029
+    },
+    {
       "key": "script:PokemonLeagueNorthPokemonCenter.DoorGuard#1.0",
       "voice": "look:guard#3",
       "file": "look+guard#3/script+PokemonLeagueNorthPokemonCenter.DoorGuard#1.0.ogg",
@@ -30864,6 +33267,33 @@
       "seed": 2018227994
     },
     {
+      "key": "script:oreburgh_gate_1f.Explain#1.0",
+      "voice": "look:hiker#1",
+      "file": "look+hiker#1/script+oreburgh_gate_1f.Explain#1.0.ogg",
+      "textHash": "73deef36",
+      "fileHash": "abff6133",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 585472456
+    },
+    {
+      "key": "script:oreburgh_gate_1f.Explain#2.0",
+      "voice": "look:hiker#1",
+      "file": "look+hiker#1/script+oreburgh_gate_1f.Explain#2.0.ogg",
+      "textHash": "54252714",
+      "fileHash": "356aae80",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 815564005
+    },
+    {
+      "key": "world:hearthome_city.hiker_2.dialog.0",
+      "voice": "look:hiker#1",
+      "file": "look+hiker#1/world+hearthome_city.hiker_2.dialog.0.ogg",
+      "textHash": "6026cc92",
+      "fileHash": "80c09b44",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1137678589
+    },
+    {
       "key": "script:oreburgh_gate_1f.GiveHm#1.0",
       "voice": "look:hiker#2",
       "file": "look+hiker#2/script+oreburgh_gate_1f.GiveHm#1.0.ogg",
@@ -31015,6 +33445,42 @@
       "fileHash": "acfc1e6d",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 1022889750
+    },
+    {
+      "key": "script:underground.HikerTreasures#1.0",
+      "voice": "look:hiker#3",
+      "file": "look+hiker#3/script+underground.HikerTreasures#1.0.ogg",
+      "textHash": "02dc7039",
+      "fileHash": "686b0a71",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1164196033
+    },
+    {
+      "key": "script:underground.HikerTreasures#3.0",
+      "voice": "look:hiker#3",
+      "file": "look+hiker#3/script+underground.HikerTreasures#3.0.ogg",
+      "textHash": "61a0ad1f",
+      "fileHash": "48857128",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2110257423
+    },
+    {
+      "key": "world:route_206.hiker.dialog.0",
+      "voice": "look:hiker#3",
+      "file": "look+hiker#3/world+route_206.hiker.dialog.0.ogg",
+      "textHash": "b09d0aa9",
+      "fileHash": "dbf5c828",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 674938867
+    },
+    {
+      "key": "world:route_206.hiker.dialog.1",
+      "voice": "look:hiker#3",
+      "file": "look+hiker#3/world+route_206.hiker.dialog.1.ogg",
+      "textHash": "c9ed80d4",
+      "fileHash": "6bb3d09d",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 526258044
     },
     {
       "key": "script:BattleArcadeBattleRoom.OnEnter#1.0",
@@ -31233,6 +33699,24 @@
       "seed": 947844235
     },
     {
+      "key": "world:battle_frontier.idol.dialog.0",
+      "voice": "look:idol#3",
+      "file": "look+idol#3/world+battle_frontier.idol.dialog.0.ogg",
+      "textHash": "bffc23c1",
+      "fileHash": "16f56f28",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 453999042
+    },
+    {
+      "key": "world:battle_frontier.idol.dialog.1",
+      "voice": "look:idol#3",
+      "file": "look+idol#3/world+battle_frontier.idol.dialog.1.ogg",
+      "textHash": "200d426a",
+      "fileHash": "844aaa9d",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1559272625
+    },
+    {
       "key": "world:route_209.jogger_richard_no_battle.dialog.0",
       "voice": "look:jogger#1",
       "file": "look+jogger#1/world+route_209.jogger_richard_no_battle.dialog.0.ogg",
@@ -31285,6 +33769,60 @@
       "fileHash": "aedb5425",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 1983295574
+    },
+    {
+      "key": "world:route_209.jogger_raul_no_battle.dialog.0",
+      "voice": "look:jogger#2",
+      "file": "look+jogger#2/world+route_209.jogger_raul_no_battle.dialog.0.ogg",
+      "textHash": "06d39eee",
+      "fileHash": "1d7f29a6",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1965426143
+    },
+    {
+      "key": "world:route_209.jogger_raul_no_battle.dialog.1",
+      "voice": "look:jogger#2",
+      "file": "look+jogger#2/world+route_209.jogger_raul_no_battle.dialog.1.ogg",
+      "textHash": "46bb5d2e",
+      "fileHash": "def8d4af",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1790150824
+    },
+    {
+      "key": "world:route_215.jogger_craig_no_battle.dialog.0",
+      "voice": "look:jogger#2",
+      "file": "look+jogger#2/world+route_215.jogger_craig_no_battle.dialog.0.ogg",
+      "textHash": "996878bf",
+      "fileHash": "0e69d939",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1248228964
+    },
+    {
+      "key": "world:route_215.jogger_craig_no_battle.dialog.1",
+      "voice": "look:jogger#2",
+      "file": "look+jogger#2/world+route_215.jogger_craig_no_battle.dialog.1.ogg",
+      "textHash": "0b682996",
+      "fileHash": "69376498",
+      "engine": "Gemini gemini-3.1-flash-tts-preview",
+      "seed": 1211327131
+    },
+    {
+      "key": "world:jubilife_city.kid_with_nds_2.dialog.0",
+      "voice": "look:kid_with_nds#1",
+      "file": "look+kid_with_nds#1/world+jubilife_city.kid_with_nds_2.dialog.0.ogg",
+      "textHash": "4a61bc74",
+      "fileHash": "932ccbba",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1277864854
+    },
+    {
+      "key": "world:jubilife_city.kid_with_nds_2.dialog.1",
+      "voice": "look:kid_with_nds#1",
+      "file": "look+kid_with_nds#1/world+jubilife_city.kid_with_nds_2.dialog.1.ogg",
+      "textHash": "ce5b21a1",
+      "fileHash": "c3c302be",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2105721509
     },
     {
       "key": "map:BattleDome.spectator_3.dialog.0",
@@ -35949,6 +38487,96 @@
       "seed": 1361205377
     },
     {
+      "key": "script:ValleyWindworksBuilding.Mars#14.0",
+      "voice": "look:little_girl#3",
+      "file": "look+little_girl#3/script+ValleyWindworksBuilding.Mars#14.0.ogg",
+      "textHash": "cddae3ac",
+      "fileHash": "9177f58e",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 502593899
+    },
+    {
+      "key": "script:ValleyWindworksBuilding.Mars#18.0",
+      "voice": "look:little_girl#3",
+      "file": "look+little_girl#3/script+ValleyWindworksBuilding.Mars#18.0.ogg",
+      "textHash": "6e412536",
+      "fileHash": "2e8bcabb",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 244326687
+    },
+    {
+      "key": "script:route_205_south.Help#1.0",
+      "voice": "look:little_girl#3",
+      "file": "look+little_girl#3/script+route_205_south.Help#1.0.ogg",
+      "textHash": "e3afaa16",
+      "fileHash": "120242dc",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 481276457
+    },
+    {
+      "key": "script:route_205_south.Help#2.0",
+      "voice": "look:little_girl#3",
+      "file": "look+little_girl#3/script+route_205_south.Help#2.0.ogg",
+      "textHash": "65b5258d",
+      "fileHash": "f15ea285",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2082570796
+    },
+    {
+      "key": "world:eterna_city.ninja_boy.dialog.0",
+      "voice": "look:ninja_boy#1",
+      "file": "look+ninja_boy#1/world+eterna_city.ninja_boy.dialog.0.ogg",
+      "textHash": "c4cfc298",
+      "fileHash": "7126b5c7",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2095498598
+    },
+    {
+      "key": "world:eterna_city.ninja_boy.dialog.1",
+      "voice": "look:ninja_boy#1",
+      "file": "look+ninja_boy#1/world+eterna_city.ninja_boy.dialog.1.ogg",
+      "textHash": "94010b57",
+      "fileHash": "33bf3702",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 579894773
+    },
+    {
+      "key": "world:battle_frontier.ninja_boy.dialog.0",
+      "voice": "look:ninja_boy#2",
+      "file": "look+ninja_boy#2/world+battle_frontier.ninja_boy.dialog.0.ogg",
+      "textHash": "fe8b38e8",
+      "fileHash": "a13fc2ee",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 756227025
+    },
+    {
+      "key": "world:battle_frontier.ninja_boy.dialog.1",
+      "voice": "look:ninja_boy#2",
+      "file": "look+ninja_boy#2/world+battle_frontier.ninja_boy.dialog.1.ogg",
+      "textHash": "050ff2fc",
+      "fileHash": "74bfd81e",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1777648738
+    },
+    {
+      "key": "world:celestic_town.ninja_boy.dialog.0",
+      "voice": "look:ninja_boy#2",
+      "file": "look+ninja_boy#2/world+celestic_town.ninja_boy.dialog.0.ogg",
+      "textHash": "a409a961",
+      "fileHash": "ae829cc0",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1308476416
+    },
+    {
+      "key": "world:celestic_town.ninja_boy.dialog.1",
+      "voice": "look:ninja_boy#2",
+      "file": "look+ninja_boy#2/world+celestic_town.ninja_boy.dialog.1.ogg",
+      "textHash": "e1884cb7",
+      "fileHash": "fffa2de5",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1824023863
+    },
+    {
       "key": "map:CanalavePokemonCenterB1F.wifi_plaza_attendant_f.dialog.0",
       "voice": "look:nurse#1",
       "file": "look+nurse#1/map+CanalavePokemonCenterB1F.wifi_plaza_attendant_f.dialog.0.ogg",
@@ -36822,6 +39450,42 @@
       "seed": 2100169358
     },
     {
+      "key": "script:CelesticTownNorthHouse.Mesprit#4.0",
+      "voice": "look:old_man#1",
+      "file": "look+old_man#1/script+CelesticTownNorthHouse.Mesprit#4.0.ogg",
+      "textHash": "0afe7198",
+      "fileHash": "7158aecb",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 311906003
+    },
+    {
+      "key": "script:CelesticTownNorthHouse.Mesprit#5.0",
+      "voice": "look:old_man#1",
+      "file": "look+old_man#1/script+CelesticTownNorthHouse.Mesprit#5.0.ogg",
+      "textHash": "d43ed3ad",
+      "fileHash": "1ec52dbd",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 145378920
+    },
+    {
+      "key": "script:CelesticTownNorthHouse.Mesprit#6.0",
+      "voice": "look:old_man#1",
+      "file": "look+old_man#1/script+CelesticTownNorthHouse.Mesprit#6.0.ogg",
+      "textHash": "5139d1b7",
+      "fileHash": "13ad5fb3",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1430579973
+    },
+    {
+      "key": "script:CelesticTownNorthHouse.Mesprit#7.0",
+      "voice": "look:old_man#1",
+      "file": "look+old_man#1/script+CelesticTownNorthHouse.Mesprit#7.0.ogg",
+      "textHash": "11dfb5b4",
+      "fileHash": "a5261c2f",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1784751682
+    },
+    {
       "key": "script:Battleground.OldMan#1.0",
       "voice": "look:old_man#2",
       "file": "look+old_man#2/script+Battleground.OldMan#1.0.ogg",
@@ -36892,6 +39556,87 @@
       "fileHash": "3f1bb971",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 640116252
+    },
+    {
+      "key": "script:Battleground.Welcome#1.0",
+      "voice": "look:old_man#3",
+      "file": "look+old_man#3/script+Battleground.Welcome#1.0.ogg",
+      "textHash": "b666c673",
+      "fileHash": "aa67cd1c",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2054938460
+    },
+    {
+      "key": "script:Battleground.Welcome#2.0",
+      "voice": "look:old_man#3",
+      "file": "look+old_man#3/script+Battleground.Welcome#2.0.ogg",
+      "textHash": "6c7ad36e",
+      "fileHash": "529462ac",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1537669017
+    },
+    {
+      "key": "script:Battleground.Welcome#3.0",
+      "voice": "look:old_man#3",
+      "file": "look+old_man#3/script+Battleground.Welcome#3.0.ogg",
+      "textHash": "5078a31f",
+      "fileHash": "4e06e681",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1513356022
+    },
+    {
+      "key": "script:Battleground.Welcome#4.0",
+      "voice": "look:old_man#3",
+      "file": "look+old_man#3/script+Battleground.Welcome#4.0.ogg",
+      "textHash": "75dca7a5",
+      "fileHash": "9aed4c90",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1054005947
+    },
+    {
+      "key": "world:pastoria_city.parasol_lady.dialog.0",
+      "voice": "look:parasol_lady#1",
+      "file": "look+parasol_lady#1/world+pastoria_city.parasol_lady.dialog.0.ogg",
+      "textHash": "165862c6",
+      "fileHash": "378cad8a",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1664219514
+    },
+    {
+      "key": "world:battle_frontier.parasol_lady.dialog.0",
+      "voice": "look:parasol_lady#3",
+      "file": "look+parasol_lady#3/world+battle_frontier.parasol_lady.dialog.0.ogg",
+      "textHash": "2a70e361",
+      "fileHash": "3af5e218",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1968497331
+    },
+    {
+      "key": "world:battle_frontier.parasol_lady.dialog.1",
+      "voice": "look:parasol_lady#3",
+      "file": "look+parasol_lady#3/world+battle_frontier.parasol_lady.dialog.1.ogg",
+      "textHash": "dbd38510",
+      "fileHash": "bac50066",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1819816508
+    },
+    {
+      "key": "world:great_marsh_2.parasol_lady.dialog.0",
+      "voice": "look:parasol_lady#3",
+      "file": "look+parasol_lady#3/world+great_marsh_2.parasol_lady.dialog.0.ogg",
+      "textHash": "9cd1a7c5",
+      "fileHash": "17870ace",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1478980473
+    },
+    {
+      "key": "world:great_marsh_2.parasol_lady.dialog.1",
+      "voice": "look:parasol_lady#3",
+      "file": "look+parasol_lady#3/world+great_marsh_2.parasol_lady.dialog.1.ogg",
+      "textHash": "f9c79b5d",
+      "fileHash": "800cea66",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1389207338
     },
     {
       "key": "script:common.Rumour#0.0",
@@ -37090,6 +39835,24 @@
       "fileHash": "b8d6dacb",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 1373046486
+    },
+    {
+      "key": "world:battle_frontier.picnicker.dialog.0",
+      "voice": "look:picnicker#3",
+      "file": "look+picnicker#3/world+battle_frontier.picnicker.dialog.0.ogg",
+      "textHash": "873d95c4",
+      "fileHash": "4c611268",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 126740994
+    },
+    {
+      "key": "world:battle_frontier.picnicker.dialog.1",
+      "voice": "look:picnicker#3",
+      "file": "look+picnicker#3/world+battle_frontier.picnicker.dialog.1.ogg",
+      "textHash": "d996903c",
+      "fileHash": "b7d26c73",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1232014577
     },
     {
       "key": "script:VistaLighthouse.SkyBattle#0.0",
@@ -37603,6 +40366,24 @@
       "fileHash": "31ba548d",
       "engine": "Gemini gemini-2.5-flash-preview-tts",
       "seed": 677658833
+    },
+    {
+      "key": "world:battle_frontier.pokefan_m.dialog.0",
+      "voice": "look:pokefan_m#1",
+      "file": "look+pokefan_m#1/world+battle_frontier.pokefan_m.dialog.0.ogg",
+      "textHash": "71447077",
+      "fileHash": "632e9fd3",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2052760668
+    },
+    {
+      "key": "world:battle_frontier.pokefan_m.dialog.1",
+      "voice": "look:pokefan_m#1",
+      "file": "look+pokefan_m#1/world+battle_frontier.pokefan_m.dialog.1.ogg",
+      "textHash": "0ef589ef",
+      "fileHash": "18a91237",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2042453331
     },
     {
       "key": "script:route_229.Pokefan#0.0",
@@ -38154,6 +40935,78 @@
       "seed": 435778307
     },
     {
+      "key": "world:amity_square.pokemon_breeder_f.dialog.0",
+      "voice": "look:pokemon_breeder_f#2",
+      "file": "look+pokemon_breeder_f#2/world+amity_square.pokemon_breeder_f.dialog.0.ogg",
+      "textHash": "27fff917",
+      "fileHash": "7864083f",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 150166104
+    },
+    {
+      "key": "world:amity_square.pokemon_breeder_f.dialog.1",
+      "voice": "look:pokemon_breeder_f#2",
+      "file": "look+pokemon_breeder_f#2/world+amity_square.pokemon_breeder_f.dialog.1.ogg",
+      "textHash": "5a8358dd",
+      "fileHash": "f9ac85d9",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2075165263
+    },
+    {
+      "key": "world:sandgem_town.pokemon_breeder_f.dialog.0",
+      "voice": "look:pokemon_breeder_f#2",
+      "file": "look+pokemon_breeder_f#2/world+sandgem_town.pokemon_breeder_f.dialog.0.ogg",
+      "textHash": "37599447",
+      "fileHash": "7db8747d",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1361092526
+    },
+    {
+      "key": "world:sandgem_town.pokemon_breeder_f.dialog.1",
+      "voice": "look:pokemon_breeder_f#2",
+      "file": "look+pokemon_breeder_f#2/world+sandgem_town.pokemon_breeder_f.dialog.1.ogg",
+      "textHash": "60c3e69c",
+      "fileHash": "2f0e650d",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 313711165
+    },
+    {
+      "key": "world:battle_frontier.pokemon_breeder_f.dialog.0",
+      "voice": "look:pokemon_breeder_f#3",
+      "file": "look+pokemon_breeder_f#3/world+battle_frontier.pokemon_breeder_f.dialog.0.ogg",
+      "textHash": "a3219ba3",
+      "fileHash": "a9c596a2",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1703301716
+    },
+    {
+      "key": "world:battle_frontier.pokemon_breeder_f.dialog.1",
+      "voice": "look:pokemon_breeder_f#3",
+      "file": "look+pokemon_breeder_f#3/world+battle_frontier.pokemon_breeder_f.dialog.1.ogg",
+      "textHash": "f4055caf",
+      "fileHash": "116b6910",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1851982539
+    },
+    {
+      "key": "world:hearthome_city.pokemon_breeder_f_1.dialog.0",
+      "voice": "look:pokemon_breeder_f#3",
+      "file": "look+pokemon_breeder_f#3/world+hearthome_city.pokemon_breeder_f_1.dialog.0.ogg",
+      "textHash": "d40b5209",
+      "fileHash": "ba3f9d55",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1481670309
+    },
+    {
+      "key": "world:hearthome_city.pokemon_breeder_f_1.dialog.1",
+      "voice": "look:pokemon_breeder_f#3",
+      "file": "look+pokemon_breeder_f#3/world+hearthome_city.pokemon_breeder_f_1.dialog.1.ogg",
+      "textHash": "d0a9f167",
+      "fileHash": "f1d7ca09",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 653813654
+    },
+    {
       "key": "script:canalave_city.Man#0.0",
       "voice": "look:pokemon_breeder_m#1",
       "file": "look+pokemon_breeder_m#1/script+canalave_city.Man#0.0.ogg",
@@ -38233,6 +41086,78 @@
       "fileHash": "37911b23",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 264027194
+    },
+    {
+      "key": "world:fight_area.pokemon_breeder_m.dialog.0",
+      "voice": "look:pokemon_breeder_m#2",
+      "file": "look+pokemon_breeder_m#2/world+fight_area.pokemon_breeder_m.dialog.0.ogg",
+      "textHash": "8a145bd3",
+      "fileHash": "d028101b",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 276803797
+    },
+    {
+      "key": "world:fight_area.pokemon_breeder_m.dialog.1",
+      "voice": "look:pokemon_breeder_m#2",
+      "file": "look+pokemon_breeder_m#2/world+fight_area.pokemon_breeder_m.dialog.1.ogg",
+      "textHash": "7e041fa3",
+      "fileHash": "a686ed02",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1792407622
+    },
+    {
+      "key": "world:eterna_city.pokemon_breeder_m.dialog.0",
+      "voice": "look:pokemon_breeder_m#3",
+      "file": "look+pokemon_breeder_m#3/world+eterna_city.pokemon_breeder_m.dialog.0.ogg",
+      "textHash": "84cd61b2",
+      "fileHash": "5e3c8add",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 512848104
+    },
+    {
+      "key": "world:eterna_city.pokemon_breeder_m.dialog.1",
+      "voice": "look:pokemon_breeder_m#3",
+      "file": "look+pokemon_breeder_m#3/world+eterna_city.pokemon_breeder_m.dialog.1.ogg",
+      "textHash": "323de4ef",
+      "fileHash": "aa602d2c",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 688123423
+    },
+    {
+      "key": "world:solaceon_town.rancher_1.dialog.0",
+      "voice": "look:rancher#1",
+      "file": "look+rancher#1/world+solaceon_town.rancher_1.dialog.0.ogg",
+      "textHash": "15f7bb51",
+      "fileHash": "11a16212",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 98912960
+    },
+    {
+      "key": "world:solaceon_town.rancher_1.dialog.1",
+      "voice": "look:rancher#1",
+      "file": "look+rancher#1/world+solaceon_town.rancher_1.dialog.1.ogg",
+      "textHash": "2ecb6d2e",
+      "fileHash": "71c82ba0",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 614460407
+    },
+    {
+      "key": "world:solaceon_town.rancher_2.dialog.0",
+      "voice": "look:rancher#1",
+      "file": "look+rancher#1/world+solaceon_town.rancher_2.dialog.0.ogg",
+      "textHash": "61eded44",
+      "fileHash": "33a2ff67",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1371679763
+    },
+    {
+      "key": "world:solaceon_town.rancher_2.dialog.1",
+      "voice": "look:rancher#1",
+      "file": "look+rancher#1/world+solaceon_town.rancher_2.dialog.1.ogg",
+      "textHash": "6ba3db1d",
+      "fileHash": "e22cd1e9",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1381987100
     },
     {
       "key": "script:BattleFrontierAnnex.PalaceDesk#1.0",
@@ -39126,6 +42051,105 @@
       "seed": 331091832
     },
     {
+      "key": "script:route_222.RichBoy#0.0",
+      "voice": "look:rich_boy#1",
+      "file": "look+rich_boy#1/script+route_222.RichBoy#0.0.ogg",
+      "textHash": "d6902e97",
+      "fileHash": "ce2ffdbe",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 726531430
+    },
+    {
+      "key": "script:route_222.RichBoy#1.0",
+      "voice": "look:rich_boy#1",
+      "file": "look+rich_boy#1/script+route_222.RichBoy#1.0.ogg",
+      "textHash": "5d6ec2ba",
+      "fileHash": "72150f17",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1705262857
+    },
+    {
+      "key": "script:route_222.RichBoy#2.0",
+      "voice": "look:rich_boy#1",
+      "file": "look+rich_boy#1/script+route_222.RichBoy#2.0.ogg",
+      "textHash": "5ee85718",
+      "fileHash": "a86ce3f7",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1490736780
+    },
+    {
+      "key": "script:route_222.RichBoy#3.0",
+      "voice": "look:rich_boy#1",
+      "file": "look+rich_boy#1/script+route_222.RichBoy#3.0.ogg",
+      "textHash": "b0a16dae",
+      "fileHash": "50f8b87e",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 184863831
+    },
+    {
+      "key": "script:veilstone_city.Roughneck2#0.0",
+      "voice": "look:roughneck#3",
+      "file": "look+roughneck#3/script+veilstone_city.Roughneck2#0.0.ogg",
+      "textHash": "0644cc2e",
+      "fileHash": "f8b39f79",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1016507109
+    },
+    {
+      "key": "script:veilstone_city.Roughneck2#1.0",
+      "voice": "look:roughneck#3",
+      "file": "look+roughneck#3/script+veilstone_city.Roughneck2#1.0.ogg",
+      "textHash": "b5733011",
+      "fileHash": "e5388036",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 22210210
+    },
+    {
+      "key": "script:veilstone_city.Roughneck2#2.0",
+      "voice": "look:roughneck#3",
+      "file": "look+roughneck#3/script+veilstone_city.Roughneck2#2.0.ogg",
+      "textHash": "b63cd10a",
+      "fileHash": "6337aad5",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 346907827
+    },
+    {
+      "key": "world:veilstone_city.roughneck_1.dialog.0",
+      "voice": "look:roughneck#3",
+      "file": "look+roughneck#3/world+veilstone_city.roughneck_1.dialog.0.ogg",
+      "textHash": "7a9a84d5",
+      "fileHash": "6e29d1d2",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1482388771
+    },
+    {
+      "key": "world:veilstone_city.roughneck_1.dialog.1",
+      "voice": "look:roughneck#3",
+      "file": "look+roughneck#3/world+veilstone_city.roughneck_1.dialog.1.ogg",
+      "textHash": "17207324",
+      "fileHash": "5327774d",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1704873260
+    },
+    {
+      "key": "world:great_marsh_1.ruin_maniac.dialog.0",
+      "voice": "look:ruin_maniac#1",
+      "file": "look+ruin_maniac#1/world+great_marsh_1.ruin_maniac.dialog.0.ogg",
+      "textHash": "a8f6bb30",
+      "fileHash": "5f6408f4",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 1876022059
+    },
+    {
+      "key": "world:great_marsh_1.ruin_maniac.dialog.1",
+      "voice": "look:ruin_maniac#1",
+      "file": "look+ruin_maniac#1/world+great_marsh_1.ruin_maniac.dialog.1.ogg",
+      "textHash": "3c3bffc2",
+      "fileHash": "1d44a2fa",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2098558132
+    },
+    {
       "key": "script:solaceon_town.RuinManiac#0.0",
       "voice": "look:ruin_maniac#3",
       "file": "look+ruin_maniac#3/script+solaceon_town.RuinManiac#0.0.ogg",
@@ -39819,6 +42843,24 @@
       "seed": 822370006
     },
     {
+      "key": "world:pastoria_city.scientist_m.dialog.0",
+      "voice": "look:scientist_m#3",
+      "file": "look+scientist_m#3/world+pastoria_city.scientist_m.dialog.0.ogg",
+      "textHash": "6fff3a9d",
+      "fileHash": "3f328e90",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 360466767
+    },
+    {
+      "key": "world:pastoria_city.scientist_m.dialog.1",
+      "voice": "look:scientist_m#3",
+      "file": "look+scientist_m#3/world+pastoria_city.scientist_m.dialog.1.ogg",
+      "textHash": "b66c4407",
+      "fileHash": "92ef3341",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 582951256
+    },
+    {
       "key": "script:common.TrainingTutor#0.0",
       "voice": "look:training_tutor#2",
       "file": "look+training_tutor#2/script+common.TrainingTutor#0.0.ogg",
@@ -39943,6 +42985,204 @@
       "fileHash": "d636ae25",
       "engine": "Gemini gemini-3.1-flash-tts-preview",
       "seed": 1179254554
+    },
+    {
+      "key": "world:amity_square.twin.dialog.0",
+      "voice": "look:twin#2",
+      "file": "look+twin#2/world+amity_square.twin.dialog.0.ogg",
+      "textHash": "1b94801b",
+      "fileHash": "c506c35d",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1045040450
+    },
+    {
+      "key": "world:amity_square.twin.dialog.1",
+      "voice": "look:twin#2",
+      "file": "look+twin#2/world+amity_square.twin.dialog.1.ogg",
+      "textHash": "d639dcac",
+      "fileHash": "0e7e5413",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 2830385
+    },
+    {
+      "key": "world:jubilife_city.twin.dialog.0",
+      "voice": "look:twin#2",
+      "file": "look+twin#2/world+jubilife_city.twin.dialog.0.ogg",
+      "textHash": "592c7c42",
+      "fileHash": "46fb2b93",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1326880956
+    },
+    {
+      "key": "world:oreburgh_mine_b1f.twin.dialog.0",
+      "voice": "look:twin#3",
+      "file": "look+twin#3/world+oreburgh_mine_b1f.twin.dialog.0.ogg",
+      "textHash": "d4c7c626",
+      "fileHash": "0d0bb9d1",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 969071010
+    },
+    {
+      "key": "world:oreburgh_mine_b1f.twin.dialog.1",
+      "voice": "look:twin#3",
+      "file": "look+twin#3/world+oreburgh_mine_b1f.twin.dialog.1.ogg",
+      "textHash": "c98ffe3b",
+      "fileHash": "5c7986f8",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2095132945
+    },
+    {
+      "key": "script:EternaPokemonCenter.FriendshipChecker#1.0",
+      "voice": "look:woman#1",
+      "file": "look+woman#1/script+EternaPokemonCenter.FriendshipChecker#1.0.ogg",
+      "textHash": "48ad1769",
+      "fileHash": "f57470b9",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1446968385
+    },
+    {
+      "key": "script:EternaPokemonCenter.FriendshipChecker#2.0",
+      "voice": "look:woman#1",
+      "file": "look+woman#1/script+EternaPokemonCenter.FriendshipChecker#2.0.ogg",
+      "textHash": "aa482db6",
+      "fileHash": "88b04d3d",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 424851268
+    },
+    {
+      "key": "script:EternaPokemonCenter.FriendshipChecker#4.0",
+      "voice": "look:woman#1",
+      "file": "look+woman#1/script+EternaPokemonCenter.FriendshipChecker#4.0.ogg",
+      "textHash": "2c7a430f",
+      "fileHash": "1494fb63",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 747198514
+    },
+    {
+      "key": "script:HearthomeFanClub.Beauty#1.0",
+      "voice": "look:woman#1",
+      "file": "look+woman#1/script+HearthomeFanClub.Beauty#1.0.ogg",
+      "textHash": "02607716",
+      "fileHash": "16470811",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1019524601
+    },
+    {
+      "key": "script:eterna_city.WomanUnderground#1.0",
+      "voice": "look:woman#1",
+      "file": "look+woman#1/script+eterna_city.WomanUnderground#1.0.ogg",
+      "textHash": "7ee175ae",
+      "fileHash": "9a193fbe",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1545090723
+    },
+    {
+      "key": "script:eterna_city.WomanBuilding#1.0",
+      "voice": "look:woman#2",
+      "file": "look+woman#2/script+eterna_city.WomanBuilding#1.0.ogg",
+      "textHash": "2316532b",
+      "fileHash": "4c5bca00",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 2123197148
+    },
+    {
+      "key": "script:eterna_city.WomanBuilding#2.0",
+      "voice": "look:woman#2",
+      "file": "look+woman#2/script+eterna_city.WomanBuilding#2.0.ogg",
+      "textHash": "68901e91",
+      "fileHash": "0ffc1a1c",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1605927705
+    },
+    {
+      "key": "script:eterna_city.WomanBuilding#3.0",
+      "voice": "look:woman#2",
+      "file": "look+woman#2/script+eterna_city.WomanBuilding#3.0.ogg",
+      "textHash": "f1132668",
+      "fileHash": "0028ff6e",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1581614710
+    },
+    {
+      "key": "world:oreburgh_mine_b1f.worker.dialog.0",
+      "voice": "look:worker#1",
+      "file": "look+worker#1/world+oreburgh_mine_b1f.worker.dialog.0.ogg",
+      "textHash": "ed2d2697",
+      "fileHash": "bfd2dd80",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1326079746
+    },
+    {
+      "key": "world:oreburgh_mine_b1f.worker.dialog.1",
+      "voice": "look:worker#1",
+      "file": "look+worker#1/world+oreburgh_mine_b1f.worker.dialog.1.ogg",
+      "textHash": "90656a8c",
+      "fileHash": "c67d4d18",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 283869681
+    },
+    {
+      "key": "world:oreburgh_mine_b2f.worker.dialog.0",
+      "voice": "look:worker#1",
+      "file": "look+worker#1/world+oreburgh_mine_b2f.worker.dialog.0.ogg",
+      "textHash": "b5bc0b48",
+      "fileHash": "03c98a79",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1208584925
+    },
+    {
+      "key": "world:oreburgh_mine_b2f.worker.dialog.1",
+      "voice": "look:worker#1",
+      "file": "look+worker#1/world+oreburgh_mine_b2f.worker.dialog.1.ogg",
+      "textHash": "1ed1633e",
+      "fileHash": "095f5208",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 87745870
+    },
+    {
+      "key": "script:oreburgh_city.Worker2#1.0",
+      "voice": "look:worker#2",
+      "file": "look+worker#2/script+oreburgh_city.Worker2#1.0.ogg",
+      "textHash": "79022f28",
+      "fileHash": "489c774a",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1428150729
+    },
+    {
+      "key": "script:oreburgh_city.Worker2#2.0",
+      "voice": "look:worker#2",
+      "file": "look+worker#2/script+oreburgh_city.Worker2#2.0.ogg",
+      "textHash": "5f36e996",
+      "fileHash": "8d0aa87d",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1213624652
+    },
+    {
+      "key": "world:oreburgh_city.worker_3.dialog.0",
+      "voice": "look:worker#2",
+      "file": "look+worker#2/world+oreburgh_city.worker_3.dialog.0.ogg",
+      "textHash": "0ac5cc35",
+      "fileHash": "b014023a",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 607219718
+    },
+    {
+      "key": "world:oreburgh_city.worker_3.dialog.1",
+      "voice": "look:worker#2",
+      "file": "look+worker#2/world+oreburgh_city.worker_3.dialog.1.ogg",
+      "textHash": "82c2b604",
+      "fileHash": "491341b2",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1239099541
+    },
+    {
+      "key": "world:route_221.worker_east.dialog.0",
+      "voice": "look:worker#2",
+      "file": "look+worker#2/world+route_221.worker_east.dialog.0.ogg",
+      "textHash": "274d61d4",
+      "fileHash": "7860f3ef",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 490506421
     },
     {
       "key": "world:oreburgh_city.worker_1.dialog.0",
@@ -43059,6 +46299,33 @@
       "seed": 2114270794
     },
     {
+      "key": "script:BattlePikeRoom.OnEnter#26.0",
+      "voice": "lucy",
+      "file": "lucy/script+BattlePikeRoom.OnEnter#26.0.ogg",
+      "textHash": "27b775d6",
+      "fileHash": "c275e12a",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1164603697
+    },
+    {
+      "key": "script:BattlePikeRoom.OnEnter#27.0",
+      "voice": "lucy",
+      "file": "lucy/script+BattlePikeRoom.OnEnter#27.0.ogg",
+      "textHash": "fb4736b0",
+      "fileHash": "cbb48e80",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1499383534
+    },
+    {
+      "key": "script:BattlePikeRoom.OnEnter#29.0",
+      "voice": "lucy",
+      "file": "lucy/script+BattlePikeRoom.OnEnter#29.0.ogg",
+      "textHash": "b9c02bff",
+      "fileHash": "a75ac345",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1456885984
+    },
+    {
       "key": "map:PokemonMansion.maid_east.dialog.0",
       "voice": "maid",
       "file": "maid/map+PokemonMansion.maid_east.dialog.0.ogg",
@@ -43417,6 +46684,96 @@
       "fileHash": "d926d9b3",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 1026878193
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#5.0",
+      "voice": "maid_belinda",
+      "file": "maid_belinda/script+PokemonMansion.Challenge#5.0.ogg",
+      "textHash": "22cdd7dd",
+      "fileHash": "1fe7ab0a",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 218949218
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#7.0",
+      "voice": "maid_belinda",
+      "file": "maid_belinda/script+PokemonMansion.Challenge#7.0.ogg",
+      "textHash": "33543c42",
+      "fileHash": "d8c61270",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 983154568
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#22.0",
+      "voice": "maid_clare",
+      "file": "maid_clare/script+PokemonMansion.Challenge#22.0.ogg",
+      "textHash": "80ecf24d",
+      "fileHash": "f9d6b876",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 476893209
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#24.0",
+      "voice": "maid_clare",
+      "file": "maid_clare/script+PokemonMansion.Challenge#24.0.ogg",
+      "textHash": "86f7d45b",
+      "fileHash": "2467280f",
+      "engine": "Gemini gemini-2.5-pro-preview-tts",
+      "seed": 2140713787
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#17.0",
+      "voice": "maid_elena",
+      "file": "maid_elena/script+PokemonMansion.Challenge#17.0.ogg",
+      "textHash": "92647ab0",
+      "fileHash": "1a22b78d",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 560177557
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#19.0",
+      "voice": "maid_elena",
+      "file": "maid_elena/script+PokemonMansion.Challenge#19.0.ogg",
+      "textHash": "807405f9",
+      "fileHash": "75730d7f",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1597742247
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#13.0",
+      "voice": "maid_emily",
+      "file": "maid_emily/script+PokemonMansion.Challenge#13.0.ogg",
+      "textHash": "b7f234cc",
+      "fileHash": "47243ffd",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 457866145
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#15.0",
+      "voice": "maid_emily",
+      "file": "maid_emily/script+PokemonMansion.Challenge#15.0.ogg",
+      "textHash": "eea6e527",
+      "fileHash": "33eeeb33",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 449230243
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#11.0",
+      "voice": "maid_sophie",
+      "file": "maid_sophie/script+PokemonMansion.Challenge#11.0.ogg",
+      "textHash": "f1387ebe",
+      "fileHash": "ad3a3ba2",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1222298607
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#9.0",
+      "voice": "maid_sophie",
+      "file": "maid_sophie/script+PokemonMansion.Challenge#9.0.ogg",
+      "textHash": "865de063",
+      "fileHash": "6ff436f8",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 853706374
     },
     {
       "key": "script:EternaCycleShop.Manager#1.0",
@@ -43939,6 +47296,51 @@
       "fileHash": "df67ccee",
       "engine": "Gemini gemini-3.1-flash-tts-preview",
       "seed": 1028299238
+    },
+    {
+      "key": "script:MastersHall.Master#0.0",
+      "voice": "master",
+      "file": "master/script+MastersHall.Master#0.0.ogg",
+      "textHash": "dd81946c",
+      "fileHash": "89677925",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1496988420
+    },
+    {
+      "key": "script:MastersHall.Receptionist#11.0",
+      "voice": "master",
+      "file": "master/script+MastersHall.Receptionist#11.0.ogg",
+      "textHash": "5f1f5528",
+      "fileHash": "330dfde8",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1594518459
+    },
+    {
+      "key": "script:MastersHall.Receptionist#12.0",
+      "voice": "master",
+      "file": "master/script+MastersHall.Receptionist#12.0.ogg",
+      "textHash": "f20885bf",
+      "fileHash": "d6296207",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1807238218
+    },
+    {
+      "key": "script:MastersHall.Receptionist#13.0",
+      "voice": "master",
+      "file": "master/script+MastersHall.Receptionist#13.0.ogg",
+      "textHash": "bbbbf6a4",
+      "fileHash": "7a71e0d3",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 565708781
+    },
+    {
+      "key": "script:MastersHall.Receptionist#14.0",
+      "voice": "master",
+      "file": "master/script+MastersHall.Receptionist#14.0.ogg",
+      "textHash": "9813773f",
+      "fileHash": "2092830a",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 447967324
     },
     {
       "key": "script:Battleground.Maylene#10.0",
@@ -45165,6 +48567,33 @@
       "seed": 1872306056
     },
     {
+      "key": "map:BattlePalace.attendant.dialog.0",
+      "voice": "palace_maven",
+      "file": "palace_maven/map+BattlePalace.attendant.dialog.0.ogg",
+      "textHash": "020095a2",
+      "fileHash": "1ebb4c91",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 415665913
+    },
+    {
+      "key": "script:BattlePalace.OnEnter#4.0",
+      "voice": "palace_maven",
+      "file": "palace_maven/script+BattlePalace.OnEnter#4.0.ogg",
+      "textHash": "02510a40",
+      "fileHash": "e705f204",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1333930717
+    },
+    {
+      "key": "script:BattlePalace.OnEnter#9.0",
+      "voice": "palace_maven",
+      "file": "palace_maven/script+BattlePalace.OnEnter#9.0.ogg",
+      "textHash": "d8a1e0ec",
+      "fileHash": "ffafd4d1",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1967227982
+    },
+    {
       "key": "script:BattleTowerBattleRoom.OnEnter#10.0",
       "voice": "palmer",
       "file": "palmer/script+BattleTowerBattleRoom.OnEnter#10.0.ogg",
@@ -45235,6 +48664,33 @@
       "fileHash": "15b208f5",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 980803503
+    },
+    {
+      "key": "script:ValleyWindworksBuilding.Mars#11.0",
+      "voice": "papa",
+      "file": "papa/script+ValleyWindworksBuilding.Mars#11.0.ogg",
+      "textHash": "490cc4c3",
+      "fileHash": "cf3937c9",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1726149324
+    },
+    {
+      "key": "script:ValleyWindworksBuilding.Mars#12.0",
+      "voice": "papa",
+      "file": "papa/script+ValleyWindworksBuilding.Mars#12.0.ogg",
+      "textHash": "2c2921dc",
+      "fileHash": "9b3bb98b",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1940675401
+    },
+    {
+      "key": "script:ValleyWindworksBuilding.Mars#16.0",
+      "voice": "papa",
+      "file": "papa/script+ValleyWindworksBuilding.Mars#16.0.ogg",
+      "textHash": "65fb6609",
+      "fileHash": "51b2f460",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 636618589
     },
     {
       "key": "script:PalParkLobby.OnEnter#1.0",
@@ -45804,6 +49260,33 @@
       "seed": 570466555
     },
     {
+      "key": "script:galar_route_2.WishingStars#5.0",
+      "voice": "prof_magnolia",
+      "file": "prof_magnolia/script+galar_route_2.WishingStars#5.0.ogg",
+      "textHash": "3e77e6f1",
+      "fileHash": "21753860",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 500067343
+    },
+    {
+      "key": "script:galar_route_2.WishingStars#6.0",
+      "voice": "prof_magnolia",
+      "file": "prof_magnolia/script+galar_route_2.WishingStars#6.0.ogg",
+      "textHash": "cab9cf91",
+      "fileHash": "22431ec0",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1168787518
+    },
+    {
+      "key": "script:galar_route_2.WishingStars#7.0",
+      "voice": "prof_magnolia",
+      "file": "prof_magnolia/script+galar_route_2.WishingStars#7.0.ogg",
+      "textHash": "2e20c5de",
+      "fileHash": "36c45fe9",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1701489601
+    },
+    {
       "key": "map:RowanLab.prof_oak.dialog.0",
       "voice": "prof_oak",
       "file": "prof_oak/map+RowanLab.prof_oak.dialog.0.ogg",
@@ -46324,6 +49807,69 @@
       "fileHash": "7bf26e16",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 744781585
+    },
+    {
+      "key": "map:BattleArena.referee.dialog.0",
+      "voice": "referee",
+      "file": "referee/map+BattleArena.referee.dialog.0.ogg",
+      "textHash": "020095a2",
+      "fileHash": "32f23ff2",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1328472657
+    },
+    {
+      "key": "script:BattleArena.OnEnter#4.0",
+      "voice": "referee",
+      "file": "referee/script+BattleArena.OnEnter#4.0.ogg",
+      "textHash": "e9daf4c3",
+      "fileHash": "22e3ea9d",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 877887550
+    },
+    {
+      "key": "script:BattleArena.OnEnter#9.0",
+      "voice": "referee",
+      "file": "referee/script+BattleArena.OnEnter#9.0.ogg",
+      "textHash": "c9e19311",
+      "fileHash": "788e6351",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 419637837
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#29.0",
+      "voice": "rich_boy_liam",
+      "file": "rich_boy_liam/script+PokemonMansion.Challenge#29.0.ogg",
+      "textHash": "1db07481",
+      "fileHash": "b6e6d9ca",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 239658852
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#29.1",
+      "voice": "rich_boy_liam",
+      "file": "rich_boy_liam/script+PokemonMansion.Challenge#29.1.ogg",
+      "textHash": "bc665965",
+      "fileHash": "29795446",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 202757019
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#31.0",
+      "voice": "rich_boy_liam",
+      "file": "rich_boy_liam/script+PokemonMansion.Challenge#31.0.ogg",
+      "textHash": "1924ebcb",
+      "fileHash": "800b3e3a",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 180550857
+    },
+    {
+      "key": "script:PokemonMansion.Challenge#31.1",
+      "voice": "rich_boy_liam",
+      "file": "rich_boy_liam/script+PokemonMansion.Challenge#31.1.ogg",
+      "textHash": "d80bb738",
+      "fileHash": "0b494d13",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2052627130
     },
     {
       "key": "script:BattleTowerBattleSalon.Riley#1.0",
@@ -48450,6 +51996,33 @@
       "seed": 1263579600
     },
     {
+      "key": "script:PlayerHouse.Mom#12.0",
+      "voice": "rival_mom",
+      "file": "rival_mom/script+PlayerHouse.Mom#12.0.ogg",
+      "textHash": "bc0cdedd",
+      "fileHash": "44b6e873",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1826253439
+    },
+    {
+      "key": "script:PlayerHouse.Mom#16.0",
+      "voice": "rival_mom",
+      "file": "rival_mom/script+PlayerHouse.Mom#16.0.ogg",
+      "textHash": "a6c8c445",
+      "fileHash": "b7a2c587",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 669721587
+    },
+    {
+      "key": "script:PlayerHouse.Mom#17.0",
+      "voice": "rival_mom",
+      "file": "rival_mom/script+PlayerHouse.Mom#17.0.ogg",
+      "textHash": "83c5e2a4",
+      "fileHash": "5dbb33a6",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1109229320
+    },
+    {
       "key": "script:Battleground.Roark#1.0",
       "voice": "roark",
       "file": "roark/script+Battleground.Roark#1.0.ogg",
@@ -48817,6 +52390,42 @@
       "fileHash": "975e2900",
       "engine": "Gemini gemini-2.5-pro-preview-tts",
       "seed": 1161548792
+    },
+    {
+      "key": "script:BattleCastle.Roughneck#0.0",
+      "voice": "roughneck",
+      "file": "roughneck/script+BattleCastle.Roughneck#0.0.ogg",
+      "textHash": "f0172047",
+      "fileHash": "2ec3fc6a",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1868290410
+    },
+    {
+      "key": "script:BattleCastle.Roughneck#1.0",
+      "voice": "roughneck",
+      "file": "roughneck/script+BattleCastle.Roughneck#1.0.ogg",
+      "textHash": "dc20b3cb",
+      "fileHash": "d9c75a11",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1933164685
+    },
+    {
+      "key": "world:battle_frontier.roughneck.dialog.0",
+      "voice": "roughneck",
+      "file": "roughneck/world+battle_frontier.roughneck.dialog.0.ogg",
+      "textHash": "0af1e817",
+      "fileHash": "5dde7abf",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 779923160
+    },
+    {
+      "key": "world:battle_frontier.roughneck.dialog.1",
+      "voice": "roughneck",
+      "file": "roughneck/world+battle_frontier.roughneck.dialog.1.ogg",
+      "textHash": "2ba3291c",
+      "fileHash": "3c2d783a",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 557438671
     },
     {
       "key": "map:CanalaveLibrary3F.prof_rowan.dialog.0",
@@ -51060,6 +54669,87 @@
       "seed": 1892680753
     },
     {
+      "key": "script:EternaCycleShop.ShopBoy#1.0",
+      "voice": "shop_boy",
+      "file": "shop_boy/script+EternaCycleShop.ShopBoy#1.0.ogg",
+      "textHash": "bdf91bcc",
+      "fileHash": "38a92559",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 2082078892
+    },
+    {
+      "key": "script:EternaCycleShop.ShopBoy#2.0",
+      "voice": "shop_boy",
+      "file": "shop_boy/script+EternaCycleShop.ShopBoy#2.0.ogg",
+      "textHash": "bedc3a4d",
+      "fileHash": "686abaa6",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 480784553
+    },
+    {
+      "key": "map:CelesticTownNorthwestHouse.expert_f.dialog.0",
+      "voice": "shopkeeper",
+      "file": "shopkeeper/map+CelesticTownNorthwestHouse.expert_f.dialog.0.ogg",
+      "textHash": "0418da36",
+      "fileHash": "74ee4daa",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1544329437
+    },
+    {
+      "key": "map:CelesticTownNorthwestHouse.expert_m.dialog.0",
+      "voice": "shopkeeper",
+      "file": "shopkeeper/map+CelesticTownNorthwestHouse.expert_m.dialog.0.ogg",
+      "textHash": "7f1644eb",
+      "fileHash": "8fe65e94",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1191066126
+    },
+    {
+      "key": "script:common.Clerk#0.0",
+      "voice": "shopkeeper",
+      "file": "shopkeeper/script+common.Clerk#0.0.ogg",
+      "textHash": "f8faca7e",
+      "fileHash": "d85b127e",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 107623442
+    },
+    {
+      "key": "script:sunyshore_city.TrainingHallSign#1.0",
+      "voice": "sign",
+      "file": "sign/script+sunyshore_city.TrainingHallSign#1.0.ogg",
+      "textHash": "922f6ba0",
+      "fileHash": "fe7639e6",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1125712737
+    },
+    {
+      "key": "script:sunyshore_city.TrainingHallSign#1.1",
+      "voice": "sign",
+      "file": "sign/script+sunyshore_city.TrainingHallSign#1.1.ogg",
+      "textHash": "0af0bbd8",
+      "fileHash": "aafe3400",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 195576050
+    },
+    {
+      "key": "script:sunyshore_city.WorkshopSign#1.0",
+      "voice": "sign",
+      "file": "sign/script+sunyshore_city.WorkshopSign#1.0.ogg",
+      "textHash": "8b47edfe",
+      "fileHash": "5bacfc14",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 838151513
+    },
+    {
+      "key": "script:sunyshore_city.WorkshopSign#1.1",
+      "voice": "sign",
+      "file": "sign/script+sunyshore_city.WorkshopSign#1.1.ogg",
+      "textHash": "be10a688",
+      "fileHash": "8b010957",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 960555530
+    },
+    {
       "key": "map:HearthomePokemonCenter.socialite.dialog.0",
       "voice": "socialite",
       "file": "socialite/map+HearthomePokemonCenter.socialite.dialog.0.ogg",
@@ -51213,6 +54903,24 @@
       "seed": 35267684
     },
     {
+      "key": "script:BattleTower.Teala#0.0",
+      "voice": "teala",
+      "file": "teala/script+BattleTower.Teala#0.0.ogg",
+      "textHash": "8fd62c3f",
+      "fileHash": "8e454e7d",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 384293652
+    },
+    {
+      "key": "script:BattleTower.Trophy#3.0",
+      "voice": "teala",
+      "file": "teala/script+BattleTower.Trophy#3.0.ogg",
+      "textHash": "73cd12ae",
+      "fileHash": "182731db",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1019372016
+    },
+    {
       "key": "script:snowpoint_city.Guard#1.0",
       "voice": "temple_guard",
       "file": "temple_guard/script+snowpoint_city.Guard#1.0.ogg",
@@ -51283,6 +54991,33 @@
       "fileHash": "1760b7e1",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 1934521037
+    },
+    {
+      "key": "script:BattleFactoryBattleRoom.OnEnter#2.0",
+      "voice": "thorton",
+      "file": "thorton/script+BattleFactoryBattleRoom.OnEnter#2.0.ogg",
+      "textHash": "f6c68be5",
+      "fileHash": "42399f17",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 2027274056
+    },
+    {
+      "key": "script:BattleFactoryBattleRoom.OnEnter#6.0",
+      "voice": "thorton",
+      "file": "thorton/script+BattleFactoryBattleRoom.OnEnter#6.0.ogg",
+      "textHash": "6c1537c4",
+      "fileHash": "2ef2654a",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1126304116
+    },
+    {
+      "key": "script:BattleFactoryBattleRoom.OnEnter#7.0",
+      "voice": "thorton",
+      "file": "thorton/script+BattleFactoryBattleRoom.OnEnter#7.0.ogg",
+      "textHash": "5e231cec",
+      "fileHash": "ccee317a",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 596814527
     },
     {
       "key": "script:CanalaveLibrary3F.Meeting#39.0",
@@ -51400,6 +55135,42 @@
       "fileHash": "529482a1",
       "engine": "Gemini gemini-3.8-flash-tts",
       "seed": 1180525100
+    },
+    {
+      "key": "script:jubilife_city.TeamGalactic#24.0",
+      "voice": "tv_producer",
+      "file": "tv_producer/script+jubilife_city.TeamGalactic#24.0.ogg",
+      "textHash": "45a6c2c0",
+      "fileHash": "226f8fac",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 164014365
+    },
+    {
+      "key": "script:jubilife_city.TeamGalactic#25.0",
+      "voice": "tv_producer",
+      "file": "tv_producer/script+jubilife_city.TeamGalactic#25.0.ogg",
+      "textHash": "cdd4435b",
+      "fileHash": "c95a5c3c",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 438737850
+    },
+    {
+      "key": "script:jubilife_city.TeamGalactic#28.0",
+      "voice": "tv_producer",
+      "file": "tv_producer/script+jubilife_city.TeamGalactic#28.0.ogg",
+      "textHash": "bf97fe54",
+      "fileHash": "8e7c1401",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 794195025
+    },
+    {
+      "key": "world:jubilife_city.collector.dialog.0",
+      "voice": "tv_producer",
+      "file": "tv_producer/world+jubilife_city.collector.dialog.0.ogg",
+      "textHash": "d00c8dff",
+      "fileHash": "637220ad",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 114733557
     },
     {
       "key": "script:EternaUndergroundManHouse.UndergroundMan#1.0",
@@ -51960,6 +55731,51 @@
       "seed": 197291354
     },
     {
+      "key": "map:SevenStarsRestaurant.reporter_valerie.after.0",
+      "voice": "valerie",
+      "file": "valerie/map+SevenStarsRestaurant.reporter_valerie.after.0.ogg",
+      "textHash": "77e2c39e",
+      "fileHash": "73f4ff55",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 479752101
+    },
+    {
+      "key": "map:SevenStarsRestaurant.reporter_valerie.before.0",
+      "voice": "valerie",
+      "file": "valerie/map+SevenStarsRestaurant.reporter_valerie.before.0.ogg",
+      "textHash": "081fd0b5",
+      "fileHash": "bab22f6c",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1457062572
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#0.0",
+      "voice": "valerie",
+      "file": "valerie/script+SevenStarsRestaurant.Ask#0.0.ogg",
+      "textHash": "04d8bce5",
+      "fileHash": "36ff2ee7",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1517137910
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#1.0",
+      "voice": "valerie",
+      "file": "valerie/script+SevenStarsRestaurant.Ask#1.0.ogg",
+      "textHash": "738d0ce1",
+      "fileHash": "1b0efff9",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 1541450905
+    },
+    {
+      "key": "script:SevenStarsRestaurant.Ask#2.0",
+      "voice": "valerie",
+      "file": "valerie/script+SevenStarsRestaurant.Ask#2.0.ogg",
+      "textHash": "bcdcb91b",
+      "fileHash": "12e72e84",
+      "engine": "Gemini gemini-3.8-flash-tts",
+      "seed": 2058720348
+    },
+    {
       "key": "map:BattleCastleCorridor.valet.dialog.0",
       "voice": "valet",
       "file": "valet/map+BattleCastleCorridor.valet.dialog.0.ogg",
@@ -52120,6 +55936,33 @@
       "fileHash": "4a273c83",
       "engine": "Gemini gemini-3.8-flash-lite-tts",
       "seed": 414828372
+    },
+    {
+      "key": "map:BattlePikeRoom.visitor.dialog.0",
+      "voice": "visitor",
+      "file": "visitor/map+BattlePikeRoom.visitor.dialog.0.ogg",
+      "textHash": "fdb9bf0a",
+      "fileHash": "19ccdedc",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1411440624
+    },
+    {
+      "key": "script:BattlePikeRoom.OnEnter#13.0",
+      "voice": "visitor",
+      "file": "visitor/script+BattlePikeRoom.OnEnter#13.0.ogg",
+      "textHash": "a27d16ff",
+      "fileHash": "3bc01f9e",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 297422797
+    },
+    {
+      "key": "script:BattlePikeRoom.OnEnter#14.0",
+      "voice": "visitor",
+      "file": "visitor/script+BattlePikeRoom.OnEnter#14.0.ogg",
+      "textHash": "467f7411",
+      "fileHash": "fa6460fd",
+      "engine": "Gemini gemini-2.5-flash-preview-tts",
+      "seed": 1562142012
     },
     {
       "key": "script:Battleground.Volkner#1.0",
@@ -52516,6 +56359,42 @@
       "fileHash": "9a9a24cb",
       "engine": "Gemini gemini-3.1-flash-tts-preview",
       "seed": 117108588
+    },
+    {
+      "key": "map:SevenStarsRestaurant.waiter.dialog.0",
+      "voice": "waiter",
+      "file": "waiter/map+SevenStarsRestaurant.waiter.dialog.0.ogg",
+      "textHash": "79a95e78",
+      "fileHash": "9270d586",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 556816137
+    },
+    {
+      "key": "map:SevenStarsRestaurant.waiter.dialog.1",
+      "voice": "waiter",
+      "file": "waiter/map+SevenStarsRestaurant.waiter.dialog.1.ogg",
+      "textHash": "25a67901",
+      "fileHash": "020da2a6",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 281408762
+    },
+    {
+      "key": "script:SevenStarsRestaurant.OnEnter#1.0",
+      "voice": "waiter",
+      "file": "waiter/script+SevenStarsRestaurant.OnEnter#1.0.ogg",
+      "textHash": "8e9c308d",
+      "fileHash": "1e4a4c04",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 1092013085
+    },
+    {
+      "key": "script:SevenStarsRestaurant.OnEnter#1.1",
+      "voice": "waiter",
+      "file": "waiter/script+SevenStarsRestaurant.OnEnter#1.1.ogg",
+      "textHash": "271a2a69",
+      "fileHash": "6c4d19cd",
+      "engine": "Gemini gemini-3.8-flash-lite-tts",
+      "seed": 2118657678
     },
     {
       "key": "map:FightAreaPokemonCenter.waitress.dialog.0",
