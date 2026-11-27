@@ -1,0 +1,24 @@
+{"what":"SaveManager.Read and Write of w5-s30-v3-past-the-opening.json","ms":1.524}
+{"what":"PixelGround.Bake of one chunk","ms":100.801}
+{"what":"MapDatabase.Initialize","ms":2848.511}
+{"what":"ScriptLibrary.Load","ms":191.81}
+{"what":"World.LoadAll and WorldMapBuilder.Build of Sinnoh","ms":352.377}
+{"what":"species.json (PokemonDatabase)","ms":41.507}
+{"what":"moves.json (MoveDatabase)","ms":1.956}
+{"what":"abilities.json (AbilityDatabase)","ms":0.168}
+{"what":"items.json (ItemDatabase)","ms":1.71}
+{"what":"trainers.json (TrainerDatabase\u0027s first read)","ms":2.091}
+{"what":"SdfMesher.Mesh of Turtwig (PokemonModels.Build)","ms":349.33}
+{"what":"SdfMesher.Mesh of a rig (CharacterModels.Build)","ms":860.424}
+{"what":"Mml.Parse of 543 songs","ms":65.78}
+{"what":"OpenWorldBake: the lab\u0027s descriptions read and made a land","ms":0.538}
+{"what":"OpenWorldBake: the hill\u0027s chunk at level 0 (RegionBake.Finest)","ms":182.88}
+{"what":"OpenWorldBake: the hill\u0027s chunk at three levels (RegionBake.Chunk)","ms":433.686}
+{"what":"start-up: moves","ms":0.065}
+{"what":"start-up: species","ms":0.033}
+{"what":"start-up: items","ms":0.009}
+{"what":"start-up: maps","ms":1851.778}
+{"what":"start-up: scripts","ms":101.62}
+{"what":"start-up: migrate folder","ms":0.982}
+{"what":"start-up: the save","ms":45.042}
+{"what":"headless start-up, in all","ms":2180.846}
