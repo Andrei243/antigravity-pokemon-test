@@ -30,6 +30,8 @@ for (let i = 0; i < lines.length; i++) {
     found.set(m[1], { key: m[1], voice: found.get(m[1])?.voice ?? null, reason, at: i + 1 });
     pending.push(m[1]);
 }
+// Lines set aside before are kept while they still have no take: a run that skipped them has no word of them in its log
+if (fs.existsSync(outPath)) for (const old of JSON.parse(fs.readFileSync(outPath, "utf8"))) if (!found.has(old.key)) found.set(old.key, old);
 const out = [...found.values()].filter(f => !made.has(f.key)).sort((a, b) => a.key.localeCompare(b.key));
 fs.writeFileSync(outPath, JSON.stringify(out, null, 2) + '\n');
 const byReason = {};
