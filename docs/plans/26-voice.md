@@ -549,8 +549,8 @@ The user chose **Gemini TTS** for the Romanian pack (Kokoro has no Romanian; Kok
   (the user's rule: the models' voices of one name differ): a voice keeps the model most of its takes in the pack were
   made by (`GeminiEngine.Pin`, from the entries' `engine`), a voice not begun takes the first model with requests left,
   a voice whose model is spent waits for the next day, and a take made by another model is made again.
-- **Made so far** (2026-11-26): 6,279 of Sinnoh's 6,479 lines in `voice/ro` (kept in Git LFS as Ogg Vorbis since 2026-11-25, with `voice/en`: `VoiceTool ogg` wrote both packs again, 4.5 GB of WAV to 650 MB, and `generate` writes Ogg from then on), after the
-  trial reel the user approved; a daily run picks up the rest, one more day for the last lines, then the 28 set aside at five models (2.5-pro allows only
+- **Made so far** (2026-11-27): 6,446 of Sinnoh's 6,479 lines in `voice/ro` (kept in Git LFS as Ogg Vorbis since 2026-11-25, with `voice/en`: `VoiceTool ogg` wrote both packs again, 4.5 GB of WAV to 650 MB, and `generate` writes Ogg from then on), after the
+  trial reel the user approved; a daily run picks up the rest, every line made but the 30 set aside, which are shown to the user and then run at five models (2.5-pro allows only
   50 requests a day on Tier 1). The key's prepaid credits ran out on 2026-11-15 (Gemini answers 402, which now stops
   the run at once); the user topped them up the same day. Since 2026-11-19 the lines Gemini gives no audio for are set aside
   (`node tools/VoiceGen/failed-lines.mjs <log> <pack.json> <out.json>` lists them from the run's log, `generate --skip <out.json>`
