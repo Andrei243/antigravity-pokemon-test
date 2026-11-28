@@ -296,6 +296,13 @@ public sealed class Ruleset
     public bool Tales { get; private init; }
 
     /// <summary>
+    /// The winter masks (plan 46 · CP13, our own; <c>docs/mechanics/rulings.md</c>, "The winter masks"): a trainer with a
+    /// mask may put it on one Pokémon once a battle with a move, its second type and ability the mask's and its role for
+    /// the rest of the battle (<see cref="WinterMasks"/>). Platinum has none of it, and the masks are Carpathia's.
+    /// </summary>
+    public bool Masks { get; private init; }
+
+    /// <summary>
     /// Mega Dynamax (plan 06 · R20c, our own; <c>docs/mechanics/rulings.md</c>, "Mega Dynamax"): a trainer with the Mega Max
     /// Band may Dynamax a Mega of a species that is neither legendary nor mythical, in the same choice as its Mega
     /// Evolution or on a later turn, spending both. Platinum has none of it.
@@ -459,6 +466,7 @@ public sealed class Ruleset
         Dynamax = true,
         Terastallization = true,
         Tales = true,
+        Masks = true,
         LaterBalls = true,
         Hordes = true,
         SosCalls = true,

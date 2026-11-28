@@ -28,6 +28,12 @@ public sealed class CraftRecipe
     public int Count { get; set; } = 1;
     public int Value { get; set; }
     public List<CraftNeed> Takes { get; set; } = new();
+
+    /// <summary>
+    /// The pattern a recipe waits for (plan 46 · CP13: a winter mask's, <c>mask_bear</c>): it is listed and made only once
+    /// the pattern is learned (<c>craft learn</c>, <see cref="CraftingState.Patterns"/>); null for a recipe every kit knows.
+    /// </summary>
+    public string? Pattern { get; set; }
 }
 
 /// <summary>What <see cref="Crafting.Make"/> did: how many were made, or why none was (and nothing taken).</summary>
@@ -57,6 +63,12 @@ public static class Crafting
 
     public static CraftRecipe? Get(string id) => Recipes.FirstOrDefault(r => r.Id == id);
 
+    /// <summary>The patterns the recipes wait for (plan 46 · CP13), in the table's order: what a script may learn.</summary>
+    public static IReadOnlyList<string> Patterns => Recipes.Where(r => r.Pattern != null).Select(r => r.Pattern!).Distinct().ToList();
+
+    /// <summary>A recipe the kit knows: one with no pattern, or whose pattern is learned.</summary>
+    public static bool Known(CraftRecipe recipe, CraftingState? state) => recipe.Pattern == null || state?.Patterns.Contains(recipe.Pattern) == true;
+
     /// <summary>The item a recipe makes; null where the data has none (a mistake of the file, which the content check names).</summary>
     public static ItemData? ItemOf(CraftRecipe recipe) => ItemDatabase.Get(recipe.Makes);
 
@@ -76,9 +88,9 @@ public static class Crafting
         need.Material != null ? MaterialTable.NameOf(need.Material) : ItemDatabase.Get(need.Item ?? "")?.DisplayName ?? need.Item ?? "";
 
     /// <summary>The most times the recipe can be made with what is held, the bag's room and <see cref="MostAtOnce"/>; nought for none.</summary>
-    public static int MostOf(CraftRecipe recipe, Inventory bag, MaterialPouch pouch)
+    public static int MostOf(CraftRecipe recipe, Inventory bag, MaterialPouch pouch, CraftingState? state = null)
     {
-        if (ItemOf(recipe) is not { } item) return 0;
+        if (ItemOf(recipe) is not { } item || !Known(recipe, state)) return 0;
         int most = MostAtOnce;
         foreach (var need in recipe.Takes)
             if (need.Count > 0) most = Math.Min(most, Held(need, bag, pouch) / need.Count);
@@ -90,9 +102,9 @@ public static class Crafting
     /// Why the recipe can't be made <paramref name="times"/> times now, in words, or null when it can: a material or an item
     /// short (the first named), or the bag holding all it can of what it makes.
     /// </summary>
-    public static string? WhyNot(CraftRecipe recipe, int times, Inventory bag, MaterialPouch pouch)
+    public static string? WhyNot(CraftRecipe recipe, int times, Inventory bag, MaterialPouch pouch, CraftingState? state = null)
     {
-        if (ItemOf(recipe) is not { } item || times < 1) return Text.Of("crafting.make.why.nothing");
+        if (ItemOf(recipe) is not { } item || times < 1 || !Known(recipe, state)) return Text.Of("crafting.make.why.nothing");
         foreach (var need in recipe.Takes)
             if (Held(need, bag, pouch) < need.Count * times) return Text.Of("crafting.make.why.short", ("name", NameOf(need)));
         if (bag.GetQuantity(item) + recipe.Count * times > MostInBag) return Text.Of("crafting.make.why.full", ("name", item.DisplayName));
@@ -100,9 +112,9 @@ public static class Crafting
     }
 
     /// <summary>Makes the recipe <paramref name="times"/> times: takes its needs and puts what it makes in the bag. Nothing changes when it can't be.</summary>
-    public static CraftMade Make(CraftRecipe recipe, int times, Inventory bag, MaterialPouch pouch)
+    public static CraftMade Make(CraftRecipe recipe, int times, Inventory bag, MaterialPouch pouch, CraftingState? state = null)
     {
-        if (WhyNot(recipe, times, bag, pouch) is { } why) return CraftMade.Refused(why);
+        if (WhyNot(recipe, times, bag, pouch, state) is { } why) return CraftMade.Refused(why);
         foreach (var need in recipe.Takes)
         {
             if (need.Material != null) pouch.Take(need.Material, need.Count * times);

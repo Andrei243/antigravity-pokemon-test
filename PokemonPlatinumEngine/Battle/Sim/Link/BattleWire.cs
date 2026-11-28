@@ -48,7 +48,9 @@ public static class BattleWire
         typeof(RaidBarrier),
         typeof(LockShown), typeof(BrokeLoose), typeof(Calmed), typeof(ExpHeld),
         // (plan 46 · CP11's Tales)
-        typeof(TaleTold), typeof(TaleAnswered), typeof(TaleEnded), typeof(TaleFormChanged)
+        typeof(TaleTold), typeof(TaleAnswered), typeof(TaleEnded), typeof(TaleFormChanged),
+        // (plan 46 · CP13's masks)
+        typeof(MaskWorn)
     };
 
     /// <summary>Every question the core asks.</summary>

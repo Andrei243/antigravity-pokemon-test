@@ -98,6 +98,12 @@
               ],
               "additionalProperties": false
             }
+          },
+          "pattern": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [

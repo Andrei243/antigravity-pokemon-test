@@ -116,6 +116,9 @@ public sealed class CraftingSave
 
     /// <summary>The berries crossing has given (plan 39 · CR5), for the kit's CROSSES page.</summary>
     public List<string>? Crosses { get; set; }
+
+    /// <summary>The kit's patterns learned (plan 46 · CP13: the winter masks'), in the order learned.</summary>
+    public List<string>? Patterns { get; set; }
 }
 
 /// <summary>
@@ -198,6 +201,18 @@ public sealed class CraftingState
     /// <summary>The berries crossing has given (plan 39 · CR5), in the order found.</summary>
     public List<string> Crosses { get; } = new();
 
+    /// <summary>The patterns learned (plan 46 · CP13; <see cref="CraftRecipe.Pattern"/>), in the order learned.</summary>
+    public List<string> Patterns { get; } = new();
+
+    /// <summary>A pattern learned, once: true when it is new.</summary>
+    public bool Learn(string pattern)
+    {
+        if (Patterns.Contains(pattern)) return false;
+        Patterns.Add(pattern);
+        Revision++;
+        return true;
+    }
+
     /// <summary>Counts every change of the spots and the crosses, so whoever shows them knows to look again. Not saved.</summary>
     public int Revision { get; private set; }
 
@@ -225,18 +240,21 @@ public sealed class CraftingState
         foreach (var (spot, day) in save?.Picked ?? new()) Picked[spot] = day;
         Crosses.Clear();
         Crosses.AddRange((save?.Crosses ?? new()).Distinct());
+        Patterns.Clear();
+        Patterns.AddRange((save?.Patterns ?? new()).Distinct());
         Revision++;
     }
 
     public CraftingSave? ToSave()
     {
         var pouch = Pouch.ToSave();
-        if (pouch == null && Picked.Count == 0 && Crosses.Count == 0) return null;
+        if (pouch == null && Picked.Count == 0 && Crosses.Count == 0 && Patterns.Count == 0) return null;
         return new CraftingSave
         {
             Pouch = pouch,
             Picked = Picked.Count == 0 ? null : Picked.OrderBy(p => p.Key, StringComparer.Ordinal).ToDictionary(p => p.Key, p => p.Value),
-            Crosses = Crosses.Count == 0 ? null : Crosses.ToList()
+            Crosses = Crosses.Count == 0 ? null : Crosses.ToList(),
+            Patterns = Patterns.Count == 0 ? null : Patterns.ToList()
         };
     }
 }

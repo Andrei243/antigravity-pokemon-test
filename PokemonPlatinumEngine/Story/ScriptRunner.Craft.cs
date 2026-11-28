@@ -46,6 +46,14 @@ public sealed partial class ScriptRunner
             return;
         }
         var pouch = host.Crafting?.Pouch;
+        // A pattern of the kit (plan 46 · CP13): learned once (RESULT 1 when new, 0 when known already), with or without
+        // the kit in the bag, which is only what makes it; asked with `knows`. A host that keeps no kit answers 0
+        if (i.Name is "learn" or "knows")
+        {
+            var state = host.Crafting;
+            Result = state == null ? 0 : i.Name == "learn" ? (state.Learn(i.Other) ? 1 : 0) : (state.Patterns.Contains(i.Other) ? 1 : 0);
+            return;
+        }
         // The TM maker of a PC (plan 39 · CR4): the kit's screen on its TMs tab; nothing without the kit in the bag
         if (i.Name == "tm")
         {

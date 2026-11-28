@@ -88,6 +88,8 @@ public sealed partial class BattleCore
         if (choice.Terastallize && WhyNotTeraChoice(choice, b) is { } noTera) return noTera;
         // And a tale (plan 46 · CP11)
         if (choice.Tale != null && WhyNotTaleChoice(choice, b) is { } noTale) return noTale;
+        // And a mask (plan 46 · CP13)
+        if (choice.Mask != null && WhyNotMaskChoice(choice, b) is { } noMask) return noMask;
         switch (choice.Kind)
         {
             case ChoiceKind.Fight:

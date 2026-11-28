@@ -117,7 +117,9 @@ public enum ItemPocket
     KeyItems,
     Berries,
     Mail,
-    BattleItems
+    BattleItems,
+    /// <summary>Carpathia's winter masks (plan 46 · CP13): the bag shows the pocket only while it holds one.</summary>
+    Masks
 }
 
 public enum Direction

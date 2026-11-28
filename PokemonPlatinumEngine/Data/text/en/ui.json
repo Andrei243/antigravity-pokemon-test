@@ -14,7 +14,8 @@
       "enter": "Enter",
       "x": "X",
       "c": "C",
-      "pageRight": "E"
+      "pageRight": "E",
+      "pageLeft": "Q"
     },
     "hints": {
       "here": "Here",
@@ -1358,7 +1359,8 @@
       "Berries": "BERRIES",
       "Mail": "MAIL",
       "BattleItems": "BATTLE ITEMS",
-      "KeyItems": "KEY ITEMS"
+      "KeyItems": "KEY ITEMS",
+      "Masks": "MASKS"
     },
     "action": {
       "Use": "USE", "Give": "GIVE", "Toss": "TOSS", "Register": "REGISTER", "Deselect": "DESELECT", "Open": "OPEN", "Cancel": "CANCEL"
@@ -1557,6 +1559,12 @@
     "id": "ID No.",
     "type": "TYPE",
     "earlier": "EARLIER TEAMS"
+  },
+  "masks": {
+    "bear": { "role": "the bear" },
+    "goat": { "role": "the goat" },
+    "horse": { "role": "the horse" },
+    "stag": { "role": "the stag" }
   },
   "basme": {
     "zmeu": {
@@ -3850,7 +3858,8 @@
     "putInCase": { "one": "{player} put it away in the Fashion Case.", "other": "{player} put them away in the Fashion Case." },
     "pocket": {
       "Items": "Items", "Medicine": "Medicine", "PokeBalls": "Poké Balls", "TMsAndHMs": "TMs & HMs", "KeyItems": "Key Items",
-      "Berries": "Berries", "Mail": "Mail", "BattleItems": "Battle Items"
+      "Berries": "Berries", "Mail": "Mail", "BattleItems": "Battle Items",
+      "Masks": "Masks"
     }
   },
   "engine": {
@@ -4378,6 +4387,11 @@
     "taleWoke": "{pokemon} woke to the tale of {tale}!",
     "taleSlept": "{pokemon} was itself again.",
     "taleKeepsStats": "The tale of {tale} keeps {target}'s stats from falling!",
+    "cantWearMask": "{pokemon} can't wear a mask now!",
+    "maskOnlyOnce": "Only one mask can be worn in a battle!",
+    "maskWorn": "{trainer} put the {mask} on {pokemon}!",
+    "maskRole": "{pokemon} dances as {role}, with {ability}!",
+    "stagLeads": "{pokemon} leads the dance!",
     "taleKeepsItem": "The tale of {tale} kept {pokemon}'s {item} for another time!",
     "taleForestHeals": "The forest of {tale} restored {pokemon}'s HP!",
     "taleHoldsFoe": "The forest of {tale} holds {pokemon} fast!",

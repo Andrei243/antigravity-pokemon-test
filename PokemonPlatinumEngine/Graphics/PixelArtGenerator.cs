@@ -201,6 +201,18 @@ public static class PixelArtGenerator
                     c.Rect(16, 12, 2, 2, gold);
                     break;
                 }
+                case ItemPocket.Masks:
+                {
+                    // A winter mask (plan 46 · CP13): a carved face, two dark eyeholes, a white stripe, two small horns
+                    var wood = new Color(196, 58, 52, 255);
+                    c.Ball(10, 11, 7f, 7.5f, wood);
+                    c.Rect(4, 3, 2, 3, new Color(232, 220, 196, 255));
+                    c.Rect(14, 3, 2, 3, new Color(232, 220, 196, 255));
+                    c.Rect(5, 13, 10, 1, white);
+                    c.Disc(7, 9, 1.6f, new Color(30, 22, 26, 255));
+                    c.Disc(13, 9, 1.6f, new Color(30, 22, 26, 255));
+                    break;
+                }
                 case ItemPocket.BattleItems:
                 {
                     // A tonic bottle with an arrow up its label

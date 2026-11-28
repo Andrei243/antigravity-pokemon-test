@@ -73,15 +73,17 @@ public class CraftingKitTests
     public void EverythingARecipeTakesCanBeHad()
     {
         // Every material a recipe takes is a Pokémon's, which wild Pokémon of its type leave (the rare one now and then, or
-        // three common ones at the apprentice's), or the pantry's, sold at the workshop's counter. The field's materials are
-        // CR2's gathering, which no recipe of CR3 asks for
+        // three common ones at the apprentice's), or the pantry's, sold at the workshop's counter; or, since plan 46 · CP13's
+        // masks, a field material that CR2's gathering spots give
         foreach (var recipe in Crafting.Recipes)
             foreach (var need in recipe.Takes)
             {
                 if (need.Material is { } id)
                 {
                     var material = MaterialTable.Get(id)!;
-                    Assert.True(material.Kind is MaterialKind.Pokemon or MaterialKind.Pantry, $"{recipe.Id} takes {id}, which nothing gives yet (plan 39 · CR2)");
+                    bool gathered = material.Kind == MaterialKind.Field
+                        && Enum.GetValues<GatherKind>().Any(k => Gathering.FindsOf(k).Any(f => f.Material == id));
+                    Assert.True(material.Kind is MaterialKind.Pokemon or MaterialKind.Pantry || gathered, $"{recipe.Id} takes {id}, which nothing gives yet (plan 39 · CR2)");
                     if (material.Kind == MaterialKind.Pokemon)
                         Assert.Contains(PokemonDatabase.GetAll(), s => s.PrimaryType == material.Type || s.SecondaryType == material.Type);
                 }

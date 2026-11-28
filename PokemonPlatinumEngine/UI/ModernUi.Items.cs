@@ -13,7 +13,7 @@ namespace PokemonPlatinumEngine.UI;
 /// <summary>The screens that list items: the bag and a shop's counter.</summary>
 internal static partial class ModernUi
 {
-    /// <summary>A pocket's name, sign and colour, in the order of <see cref="BagScreen.Pockets"/>.</summary>
+    /// <summary>A pocket's name, sign and colour, in the order of <see cref="BagScreen.AllPockets"/>.</summary>
     public static (string Label, UiIcon Icon, Color Color)[] PocketTabs => new[]
     {
         (Text.Of("bag.pocket.Items"), UiIcon.Pouch, Gold),
@@ -23,11 +23,13 @@ internal static partial class ModernUi
         (Text.Of("bag.pocket.Berries"), UiIcon.Berry, Green),
         (Text.Of("bag.pocket.Mail"), UiIcon.Letter, new Color(84, 168, 216, 255)),
         (Text.Of("bag.pocket.BattleItems"), UiIcon.Boost, new Color(238, 134, 60, 255)),
-        (Text.Of("bag.pocket.KeyItems"), UiIcon.Key, new Color(150, 104, 200, 255))
+        (Text.Of("bag.pocket.KeyItems"), UiIcon.Key, new Color(150, 104, 200, 255)),
+        // Carpathia's winter masks (plan 46 · CP13), shown only while one is held
+        (Text.Of("bag.pocket.Masks"), UiIcon.Star, new Color(196, 58, 52, 255))
     };
 
     public static (string Label, UiIcon Icon, Color Color) PocketTab(ItemPocket pocket) =>
-        PocketTabs[Math.Max(0, Array.IndexOf(BagScreen.Pockets, pocket))];
+        PocketTabs[Math.Max(0, Array.IndexOf(BagScreen.AllPockets, pocket))];
 
     /// <summary>
     /// The bag: the pockets as tabs, the pocket's items as a list and the chosen one on the right, with what
@@ -42,8 +44,8 @@ internal static partial class ModernUi
         else
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.pocket"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
 
-        int pocket = Math.Max(0, Array.IndexOf(BagScreen.Pockets, bag.CurrentPocket));
-        Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), PocketTabs, pocket);
+        int pocket = Math.Max(0, Array.IndexOf(bag.Pockets, bag.CurrentPocket));
+        Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), PocketTabs[..bag.Pockets.Length], pocket);
 
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
         var items = inventory.GetPocketItems(bag.CurrentPocket);

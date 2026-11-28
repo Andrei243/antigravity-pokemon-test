@@ -228,8 +228,8 @@ public class PointerTests
         Assert.Equal(2, bag.SelectedIndex);
 
         // A tab opens its pocket on a click, and a hover leaves it be
-        var tabs = ModernUi.TabRects(ModernUi.BagTabStrip(GameEngine.VirtualWidth), BagScreen.Pockets.Length);
-        int balls = Array.IndexOf(BagScreen.Pockets, ItemPocket.PokeBalls);
+        var tabs = ModernUi.TabRects(ModernUi.BagTabStrip(GameEngine.VirtualWidth), bag.Pockets.Length);
+        int balls = Array.IndexOf(bag.Pockets, ItemPocket.PokeBalls);
         Assert.Equal(BagScreen.TabHits + balls, bag.HitTest(Middle(tabs[balls]), inventory, party));
         bag.PointAt(BagScreen.TabHits + balls, inventory, party);
         Assert.Equal(ItemPocket.Medicine, bag.CurrentPocket);

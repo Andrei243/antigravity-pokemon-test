@@ -36,7 +36,8 @@
       "enter": "Enter",
       "x": "X",
       "c": "C",
-      "pageRight": "E"
+      "pageRight": "E",
+      "pageLeft": "Q"
     },
     "hints": {
       "open": "Deschide",
@@ -1892,7 +1893,8 @@
       "Berries": "BOABE",
       "Mail": "SCRISORI",
       "BattleItems": "PENTRU LUPTĂ",
-      "KeyItems": "OBIECTE CHEIE"
+      "KeyItems": "OBIECTE CHEIE",
+      "Masks": "MĂȘTI"
     },
     "action": {
       "Use": "FOLOSEȘTE", "Give": "DĂ", "Toss": "ARUNCĂ", "Register": "ÎNREGISTREAZĂ", "Deselect": "SCOATE", "Open": "DESCHIDE", "Cancel": "ANULEAZĂ"
@@ -2089,6 +2091,12 @@
     "id": "Nr. ID",
     "type": "TIP",
     "earlier": "ECHIPE MAI VECHI"
+  },
+  "masks": {
+    "bear": { "role": "ursul" },
+    "goat": { "role": "capra" },
+    "horse": { "role": "căluțul" },
+    "stag": { "role": "cerbul" }
   },
   "basme": {
     "zmeu": {
@@ -3887,7 +3895,8 @@
     "putInCase": { "one": "{player} l-a pus în Cutia de Modă.", "few": "{player} le-a pus în Cutia de Modă.", "other": "{player} le-a pus în Cutia de Modă." },
     "pocket": {
       "Items": "Obiecte", "Medicine": "Medicamente", "PokeBalls": "Poké Balls", "TMsAndHMs": "TM & HM", "KeyItems": "Obiecte cheie",
-      "Berries": "Boabe", "Mail": "Scrisori", "BattleItems": "Pentru luptă"
+      "Berries": "Boabe", "Mail": "Scrisori", "BattleItems": "Pentru luptă",
+      "Masks": "Măști"
     }
   },
   "engine": {
@@ -4415,6 +4424,11 @@
     "taleWoke": "{pokemon} s-a trezit la basmul lui {tale}!",
     "taleSlept": "{pokemon} a redevenit ce era.",
     "taleKeepsStats": "Basmul lui {tale} nu lasă statisticile lui {target} să scadă!",
+    "cantWearMask": "{pokemon} nu poate purta o mască acum!",
+    "maskOnlyOnce": "O singură mască se poate purta într-o luptă!",
+    "maskWorn": "{trainer} i-a pus lui {pokemon} {mask}!",
+    "maskRole": "{pokemon} dansează ca {role}, cu {ability}!",
+    "stagLeads": "{pokemon} conduce dansul!",
     "taleKeepsItem": "Basmul lui {tale} i-a păstrat lui {pokemon} {item} pentru altă dată!",
     "taleForestHeals": "Pădurea lui {tale} i-a refăcut HP-ul lui {pokemon}!",
     "taleHoldsFoe": "Pădurea lui {tale} îl ține pe loc pe {pokemon}!",

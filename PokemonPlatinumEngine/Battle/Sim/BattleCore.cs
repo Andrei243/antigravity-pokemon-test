@@ -172,6 +172,12 @@ public sealed class CoreSetup
     public TaleTable? TaleTable { get; init; }
 
     /// <summary>
+    /// The winter masks the player holds (plan 46 · CP13; <see cref="WinterMasks"/>'s ids, those in the bag); null or
+    /// empty for none. A trainer has theirs as <see cref="Trainer.Masks"/>.
+    /// </summary>
+    public IReadOnlyList<string>? Masks { get; init; }
+
+    /// <summary>
     /// The player has a Tera Orb (plan 06 · R23): under rules with <see cref="Ruleset.Terastallization"/> one of their
     /// own Pokémon may Terastallize once in the battle. A trainer has theirs as <see cref="Trainer.TeraOrb"/>.
     /// </summary>
@@ -408,6 +414,7 @@ public sealed partial class BattleCore : IBattleContext
         TeraOrb = setup.TeraOrb;
         PlayerTales = setup.Tales;
         talesGiven = setup.TaleTable;
+        PlayerMasks = setup.Masks is { Count: > 0 } masks ? masks : null;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;
         Field.Inverse = Conditions.Inverse;
@@ -535,6 +542,8 @@ public sealed partial class BattleCore : IBattleContext
                 RefuseTwoTera(choices);
                 // And one tale (plan 46 · CP11)
                 RefuseTwoTales(choices);
+                // And one mask (plan 46 · CP13)
+                RefuseTwoMasks(choices);
                 break;
             case ReplacementRequest replacement:
                 if (choices.Count != 1 || choices[0].Kind != ChoiceKind.Switch || choices[0].Who != replacement.Place || !CanSendIn(At(replacement.Place), choices[0].SwitchTo))
@@ -749,6 +758,8 @@ public sealed partial class BattleCore : IBattleContext
                 chosen = AsTheTeraRulesLet(b, chosen);
                 // And tell a tale only where they let it (plan 46 · CP11)
                 chosen = AsTheTaleRulesLet(b, chosen);
+                // And wear a mask only where they let it (plan 46 · CP13)
+                chosen = AsTheMaskRulesLet(b, chosen);
                 ChooseMegas(new[] { chosen });
                 choices.Add(chosen);
             }
@@ -854,6 +865,8 @@ public sealed partial class BattleCore : IBattleContext
         }
         Field.Side(BattleSide.Player).FollowMe = null;
         Field.Side(BattleSide.Enemy).FollowMe = null;
+        // A Pokémon in the bear's mask draws the foes' moves meant for its allies (plan 46 · CP13)
+        BearsDrawTheFoes();
 
         // Every place draws a number for the turn; a Quick Claw works on one in five of them
         for (int i = 0; i < speedRolls.Length; i++) speedRolls[i] = rng.Roll(RollKind.Speed, 65536);
@@ -877,7 +890,8 @@ public sealed partial class BattleCore : IBattleContext
                 // The Dynamaxes come after them (plan 06 · R22; Showdown's runDynamax, order 105)
                 // And the Terastallizations after those (plan 06 · R23; Showdown's terastallize, order 106)
                 // And the tales after those (plan 46 · CP11)
-                if (MegaEvolutions(waiting) | Dynamaxes(waiting) | Terastallizations(waiting) | TellTales(waiting))
+                // And the masks after the tales (plan 46 · CP13)
+                if (MegaEvolutions(waiting) | Dynamaxes(waiting) | Terastallizations(waiting) | TellTales(waiting) | WearMasks(waiting))
                 {
                     if (Result != BattleResult.None) yield break;
                     waiting = Order(waiting);
@@ -1483,6 +1497,8 @@ public sealed partial class BattleCore : IBattleContext
         GiveBackMegas();
         // And a Terastallization ends (plan 06 · R23)
         EndTerastallizations();
+        // And every mask comes off, its wearer's ability given back (plan 46 · CP13)
+        TakeOffMasks();
         foreach (var (pokemon, item) in knockedOff) pokemon.HeldItem ??= item;
         knockedOff.Clear();
         if (result == BattleResult.PlayerVictory && !Frontier && !NoRewards) PickUp();

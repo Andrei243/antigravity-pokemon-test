@@ -41,7 +41,7 @@ partial class Harness
         Point(overBag, click: true);
         Frames(30);
         Console.WriteLine($"pointer: the click opened {game.State}");
-        var ballsTab = Middle(ModernUi.TabRects(ModernUi.BagTabStrip(GameEngine.VirtualWidth), PokemonPlatinumEngine.UI.BagScreen.Pockets.Length)[1]);
+        var ballsTab = Middle(ModernUi.TabRects(ModernUi.BagTabStrip(GameEngine.VirtualWidth), game.BagScreen.Pockets.Length)[1]);
         Point(ballsTab, click: true);
         Frames(10);
         Tell("28g_pointer_bag_tab", ballsTab);

@@ -212,6 +212,8 @@ public sealed partial class BattleCore
             // Its ability, then its item twice over, as the original has it: a berry it is time for
             // (BattleSystem_TriggerHeldItem), then Leftovers or Black Sludge (BattleSystem_TriggerLeftovers)
             b.Ability?.Effect?.AtEndOfTurn(this, b);
+            // The stag's mask leads its side's dance (plan 46 · CP13)
+            if (b.IsActive) StagLeads(b);
             if (b.IsActive) ItemEffectOf(b)?.OnConditionChanged(this, b, null);
             if (b.IsActive) ItemEffectOf(b)?.AtEndOfTurn(this, b);
             Digest(turnEnd: true);

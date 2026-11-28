@@ -85,7 +85,7 @@ public sealed class CraftingScreen
     public TmCost? SelectedCost => SelectedMachine is { } machine ? TmMaker.CostOf(machine) : null;
 
     /// <summary>The kit's recipes (plan 39 · CR3), in the table's order, and the cursor and first row of their list.</summary>
-    public IReadOnlyList<CraftRecipe> Recipes => Crafting.Recipes;
+    public IReadOnlyList<CraftRecipe> Recipes => Crafting.Recipes.Where(r => Crafting.Known(r, state)).ToList();
     public int RecipeCursor { get; private set; }
     public int RecipeFirst { get; private set; }
 
@@ -115,7 +115,7 @@ public sealed class CraftingScreen
     /// <summary>The most "how many?" may come to now: the times the recipe can be made, or the goods the purse and the pouch take.</summary>
     public int MostNow => Tab switch
     {
-        CraftingTab.Make when SelectedRecipe is { } recipe => Crafting.MostOf(recipe, bag, state.Pouch),
+        CraftingTab.Make when SelectedRecipe is { } recipe => Crafting.MostOf(recipe, bag, state.Pouch, state),
         CraftingTab.Pantry when SelectedGood is { } good => Math.Max(0, Math.Min(Crafting.MostAtOnce,
             Math.Min(money / Math.Max(1, good.Worth), MaterialTable.Limit - state.Pouch.Count(good.Id)))),
         _ => 0
@@ -223,7 +223,7 @@ public sealed class CraftingScreen
         {
             if (Tab == CraftingTab.Make && SelectedRecipe is { } recipe)
             {
-                if (Crafting.WhyNot(recipe, 1, bag, state.Pouch) is { } why) { Refuse(why); return; }
+                if (Crafting.WhyNot(recipe, 1, bag, state.Pouch, state) is { } why) { Refuse(why); return; }
             }
             else if (Tab == CraftingTab.Pantry && SelectedGood is { } good)
             {
@@ -240,7 +240,7 @@ public sealed class CraftingScreen
         HowMany = 0;
         if (Tab == CraftingTab.Make && SelectedRecipe is { } making)
         {
-            var made = Crafting.Make(making, times, bag, state.Pouch);
+            var made = Crafting.Make(making, times, bag, state.Pouch, state);
             LastMade = made.Made;
             if (!made.Made) { Refuse(made.Why ?? ""); return; }
             Notice = Text.Of("crafting.make.made", ("name", Crafting.ItemOf(making)!.DisplayName), ("n", made.Count));

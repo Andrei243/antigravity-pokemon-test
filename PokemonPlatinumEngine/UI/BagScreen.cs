@@ -30,15 +30,26 @@ public class BagScreen
     /// <summary>How many rows of a pocket show at once.</summary>
     public const int VisibleRows = 8;
 
-    /// <summary>Platinum's pockets, in its order.</summary>
-    public static readonly ItemPocket[] Pockets =
+    /// <summary>Platinum's pockets, in its order, and after them Carpathia's MASKS (plan 46 · CP13).</summary>
+    public static readonly ItemPocket[] AllPockets =
     {
         ItemPocket.Items, ItemPocket.Medicine, ItemPocket.PokeBalls, ItemPocket.TMsAndHMs,
-        ItemPocket.Berries, ItemPocket.Mail, ItemPocket.BattleItems, ItemPocket.KeyItems
+        ItemPocket.Berries, ItemPocket.Mail, ItemPocket.BattleItems, ItemPocket.KeyItems, ItemPocket.Masks
     };
 
+    private static readonly ItemPocket[] PlatinumPockets = AllPockets[..^1];
+
+    /// <summary>
+    /// The bag holds a winter mask (plan 46 · CP13): the MASKS pocket shows after the key items. Set every frame by the
+    /// engine, as <see cref="Sorting"/> is; with none held the bag is Platinum's eight pockets, as it always was.
+    /// </summary>
+    public bool ShowsMasks { get; set; }
+
+    /// <summary>The pockets the bag shows now, in their order.</summary>
+    public ItemPocket[] Pockets => ShowsMasks ? AllPockets : PlatinumPockets;
+
     // Each pocket remembers where its cursor was, as in the games
-    private readonly int[] cursors = new int[Pockets.Length], firsts = new int[Pockets.Length];
+    private readonly int[] cursors = new int[AllPockets.Length], firsts = new int[AllPockets.Length];
     private readonly HeldKey upDown = new();
     private readonly CursorTick tick = new();
     private float openAge;
@@ -46,7 +57,10 @@ public class BagScreen
     public ItemPocket CurrentPocket { get; set; } = ItemPocket.Items;
     public bool IsActive { get; set; } = false;
 
-    private int PocketIndex => Math.Max(0, Array.IndexOf(Pockets, CurrentPocket));
+    private int PocketIndex => Math.Max(0, Array.IndexOf(AllPockets, CurrentPocket));
+
+    /// <summary>Where the open pocket stands among those shown.</summary>
+    private int ShownIndex => Math.Max(0, Array.IndexOf(Pockets, CurrentPocket));
 
     public int SelectedIndex
     {
@@ -173,7 +187,7 @@ public class BagScreen
     public static bool Fits(string what, ItemData item) => what switch
     {
         "mulch" => Overworld.BerryPatches.MulchOf(item.Name) != Overworld.Mulch.None,
-        "gift" => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs),
+        "gift" => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs or ItemPocket.Masks),
         // A meal of the care close-up (plan 35 · BN3): a berry or a treat (the treats are in the Items pocket)
         "meal" => item.Berry != null || item.Treat != null,
         _ => item.Berry != null
@@ -310,7 +324,7 @@ public class BagScreen
     public void MovePocket(int step)
     {
         if (step == 0 || Actions != null || Tossing) return;
-        CurrentPocket = Pockets[UiNav.Wrap(PocketIndex, step, Pockets.Length)];
+        CurrentPocket = Pockets[UiNav.Wrap(ShownIndex, step, Pockets.Length)];
         AudioManager.PlaySound("page");
     }
 
@@ -373,7 +387,7 @@ public class BagScreen
     public static bool UsedInBag(ItemData item) => EncounterAids.IsAid(item) || ItemUse.RevivesAll(item);
 
     /// <summary>As in Platinum, a Pokémon can hold anything but a Key Item or a TM.</summary>
-    public static bool CanGive(ItemData item) => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs);
+    public static bool CanGive(ItemData item) => item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs or ItemPocket.Masks);
 
     /// <summary>Whether it can be thrown away: anything but a key item, or an item the table says can't be (an HM).</summary>
     public static bool CanToss(ItemData item) => item.Pocket != ItemPocket.KeyItems && !item.CantBeTossed;
@@ -667,7 +681,7 @@ public class BagScreen
     public bool Press(int index)
     {
         if (choosingFor != null || index < TabHits || index >= ActionHits) return false;
-        MovePocket(index - TabHits - PocketIndex);
+        MovePocket(index - TabHits - ShownIndex);
         return true;
     }
 

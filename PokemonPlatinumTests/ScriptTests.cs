@@ -255,6 +255,8 @@ public class ScriptTests
           craft tradable
           craft trade
           craft pantry
+          craft learn "mask_bear"
+          craft knows "mask_bear"
           craft crosses
           craft meal "beanHotpot"
           craft meal "campStew" superb

@@ -291,6 +291,8 @@ public partial class GameEngine
         flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
+        // The MASKS pocket shows while a winter mask is held (plan 46 · CP13)
+        flow.BagScreen.ShowsMasks = flow.Bag.GetPocketItems(ItemPocket.Masks).Count > 0;
         flow.BagScreen.RunCap = CurrentLevelCap();
         flow.BagScreen.CubeMoves = FormChanges.CubeMovesFor(flow.Story.Has);
         flow.BagScreen.NoRevives = flow.Run.Nuzlocke;

@@ -153,7 +153,8 @@ public sealed partial class BattleCore
         }
         else if (p.FormData?.Kind is FormKind.Mega or FormKind.Primal or FormKind.MegaDynamax || p.Form == UltraForm || p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null) return no;
         // (Nor a Terastallized one: one mechanic a Pokémon, plan 06 · R23)
-        if (NeverDynamax.Contains(p.Species.Name) || p.IsEgg || p.Terastallized != null) return no;
+        // (Nor a masked one: plan 46 · CP13)
+        if (NeverDynamax.Contains(p.Species.Name) || p.IsEgg || p.Terastallized != null || p.WornMask != null) return no;
         return p.Moves.Any(m => WhyNotMaxMove(mine, m) == null) ? null : no;
     }
 

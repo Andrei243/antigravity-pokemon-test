@@ -15187,6 +15187,50 @@
     "fieldUse": "BookOfTales"
   },
   {
+    "id": 9931,
+    "name": "Bear Mask",
+    "pocket": "Masks",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A winter mask of the bear's dance, carved and hung with dark fur. Worn by a Pokémon once in a battle: its second type turns Ground, its ability Fur Coat, and it draws the foes' attacks meant for its allies."
+  },
+  {
+    "id": 9932,
+    "name": "Goat Mask",
+    "pocket": "Masks",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A winter mask of the goat's dance, its wooden jaw on a string to clack. Worn by a Pokémon once in a battle: its second type turns Dark, its ability Prankster, and its attacks steal the target's raised stats."
+  },
+  {
+    "id": 9933,
+    "name": "Horse Mask",
+    "pocket": "Masks",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A winter mask of the horse's dance, a wooden head with a mane of plant fibre. Worn by a Pokémon once in a battle: its second type turns Fighting, its ability Regenerator, and its attacks carry it out to an ally."
+  },
+  {
+    "id": 9934,
+    "name": "Stag Mask",
+    "pocket": "Masks",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A winter mask of the stag's dance, crowned with antlers of carved wood. Worn by a Pokémon once in a battle: its second type turns Grass, its ability Sap Sipper, and it leads its side's stats up turn by turn."
+  },
+  {
     "id": 10000,
     "name": "TM93",
     "pocket": "TMsAndHMs",

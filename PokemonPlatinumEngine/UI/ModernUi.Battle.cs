@@ -823,6 +823,8 @@ internal static partial class ModernUi
         LaterButton(battle);
         // And the TALE button above it (plan 46 · CP11)
         TaleButton(battle);
+        // And the MASK button above those (plan 46 · CP13)
+        MaskButton(battle);
 
         var info = new Rectangle(1172, 848, 700, 188);
         Panel(info, 28);

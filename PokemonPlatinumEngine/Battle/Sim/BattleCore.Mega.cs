@@ -104,7 +104,7 @@ public sealed partial class BattleCore
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantMegaEvolve", ("pokemon", mine.Name));
-        if (!Rules.MegaEvolution || LaterMechanicsBarred || mine.Pokemon == null || !HasKeyStone(mine) || mine.Volatile.Transformed || MegaFormOf(mine.Pokemon) == null) return no;
+        if (!Rules.MegaEvolution || LaterMechanicsBarred || mine.Pokemon == null || !HasKeyStone(mine) || mine.Volatile.Transformed || MegaFormOf(mine.Pokemon) == null || mine.Pokemon.WornMask != null) return no;
         if (megaUsed.Contains(MegaKey(mine))) return Text.Of("battle.megaOnlyOnce");
         return null;
     }
@@ -125,6 +125,8 @@ public sealed partial class BattleCore
         ChooseTera(chosen);
         // And the tales (plan 46 · CP11)
         ChooseTale(chosen);
+        // And the masks (plan 46 · CP13)
+        ChooseMask(chosen);
     }
 
     /// <summary>
