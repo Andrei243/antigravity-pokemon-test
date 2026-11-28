@@ -15636,5 +15636,439 @@
       "It has rested so long that old twisted oaks and vines have grown along its back. Wild horses wander across it and never seem to notice that it is alive.",
       "Hoofprints are pressed into its sides beneath a long ridge of rippled golden sand. It lies low and wide with patient eyes."
     ]
+  },
+  "Strigoias": {
+    "habitat": "Rare",
+    "entries": [
+      "It knocks on shutters at night and giggles from the dark when someone comes to look. A wreath of garlic flowers sends it off in a huff.",
+      "Only its round glowing eyes and cheeky grin show beneath a rough linen sheet. The tattered hem floats just above the ground."
+    ]
+  },
+  "Strigoion": {
+    "habitat": "Rare",
+    "entries": [
+      "Village tales warn that it comes back to doorsteps it knew long ago. Those who leave a light burning for it say it passes by without a sound.",
+      "A ragged cloak of homespun hangs on its gaunt frame, with a shock of white hair above red violet eyes. Below, it trails off into mist and dead leaves."
+    ]
+  },
+  "Sanzienel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It glows among the yellow meadow flowers on the shortest nights of the year. Girls who weave those flowers into crowns sometimes find it hiding inside one.",
+      "A bunch of golden blossoms makes its body, with a small round face at the centre. Its wings are as fine as dandelion down."
+    ]
+  },
+  "Sanziana": {
+    "habitat": "Grassland",
+    "entries": [
+      "She dances over the meadows on midsummer night, and the herbs she passes are said to gain healing power. Villagers gather them at dawn.",
+      "A crown of yellow blossoms sits on her golden hair, which trails into strands of flowers. Her white dress is embroidered with gold, and tiny lights circle her."
+    ]
+  },
+  "Zburel": {
+    "habitat": "Rare",
+    "entries": [
+      "It darts across the night sky and leaves a short streak of sparks. People who see it say a wish, hoping it is listening.",
+      "Its round body of warm fire has an orange middle and golden edges. A long tail of sparks follows it, below two bright eyes and a mischievous smile."
+    ]
+  },
+  "Zburator": {
+    "habitat": "Rare",
+    "entries": [
+      "It crosses the night like a blazing comet and passes over sleeping villages. Old tales blame it for restless dreams and sudden sighs on summer nights.",
+      "Wings of long ribbons of flame spread from its body of glowing coal. A white-hot crest rises above its proud face, and sparks trail behind it."
+    ]
+  },
+  "Stimel": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It peeks out of mountain lakes and ducks under at the sound of voices. It likes to carry a piece of its eggshell around long after it hatches.",
+      "It has a round head, small fins for ears and two stubby legs. Its deep blue back fades to a pale belly beneath large shy eyes."
+    ]
+  },
+  "Stimara": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It rises through the mist on still lakes in the early morning. Shepherds who see it water their flocks somewhere else that day, out of respect.",
+      "A mane of flowing fins like water weed runs down its slender blue body. It has silver belly scales, small horn buds and webbed claws."
+    ]
+  },
+  "Stimalaur": {
+    "habitat": "Rare",
+    "entries": [
+      "Old people say every deep mountain lake has a guardian, and storms rise when it is angered. It watches over the waters and everything that lives in them.",
+      "Its long coiling body shines in teal and glacier blue, with fins like veils of water. Pale icy horns crown its head above a beard of mist."
+    ]
+  },
+  "Ghiocel": {
+    "habitat": "Forest",
+    "entries": [
+      "It pokes up through the last of the snow and nods its head in greeting. People smile when they see one, since it means that winter is nearly over.",
+      "Its head is a nodding white bell with a tiny face inside, capped with a little snow. Two slim leaves serve as arms."
+    ]
+  },
+  "Martisoara": {
+    "habitat": "Forest",
+    "entries": [
+      "It dances through the thawing woods and ties bits of red and white thread to young branches. Those who find one are said to have good luck all spring.",
+      "A cluster of snowdrop blossoms is tied round with a red and white cord ending in two tassels. A little clover charm hangs at its chest."
+    ]
+  },
+  "Oupictat": {
+    "habitat": "Urban",
+    "entries": [
+      "It rolls among the baskets of painted eggs at spring festivals and hides in plain sight. If someone picks it up by mistake, it squeaks.",
+      "Fine patterns in red, black, white and yellow cover its shell. A thin crack across the top lets a soft light shine out."
+    ]
+  },
+  "Frescuta": {
+    "habitat": "Urban",
+    "entries": [
+      "It slips out of old wall paintings at night to wander the cloisters. By morning it is back in place, though sometimes in a slightly different pose.",
+      "It is as flat as a picture, painted deep blue with ochre and red. A round golden disc glows behind its head."
+    ]
+  },
+  "Frescanta": {
+    "habitat": "Urban",
+    "entries": [
+      "It guards painted walls that have stood through centuries of rain and sun. Visitors who stare long enough say the little scenes on its body begin to move.",
+      "Tall and flat, it floats in deep blue robes painted with clouds, figures and gold. Its edges are cracked like old plaster, and its sleeves hang long."
+    ]
+  },
+  "Dulgherel": {
+    "habitat": "Forest",
+    "entries": [
+      "It carves little patterns into fallen branches with its sharp jaws. Woodcarvers are said to have copied the twisting lines it leaves behind.",
+      "A rope pattern is carved into its brown shell, and curls of wood shavings ride on its back. A thin twig rests behind one feeler."
+    ]
+  },
+  "Poartaur": {
+    "habitat": "Urban",
+    "entries": [
+      "It stands at the entrance to villages and lets friendly visitors walk under it. When someone with ill will comes, it quietly refuses to move aside.",
+      "Two oak pillars serve as its legs under a shingled roof. A carved sun in the middle of the beam forms its face, and ivy climbs the sides."
+    ]
+  },
+  "Calusel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It cannot stay on the ground for long and leaps at every beat of music. The small bells on its ankles tell everyone exactly where it has landed.",
+      "It wears a white embroidered shirt and a red sash, with bells round its ankles. It carries a short stick in one paw."
+    ]
+  },
+  "Calusar": {
+    "habitat": "Grassland",
+    "entries": [
+      "It leaps so high in its dance that people once believed it could drive sickness away. Villages welcome it at spring festivals with food and music.",
+      "Red and white sashes cross its chest, and ribbons stream from a hat crowned with flowers. Brass bells ring on its powerful legs as it swings a long staff."
+    ]
+  },
+  "Horuta": {
+    "habitat": "Grassland",
+    "entries": [
+      "Three of them dance in a ring around a small glowing light and never let go of each other. Anyone invited to join finds it hard to stop.",
+      "Each of the three round dancers wears an embroidered vest of a different colour, red, yellow or blue. They smile as they step in time."
+    ]
+  },
+  "Doinel": {
+    "habitat": "Rare",
+    "entries": [
+      "It drifts along quiet paths singing softly of something it can no longer remember. Travellers who hear it often find themselves thinking of home.",
+      "Its pale blue body is shaped like a falling tear with a long trailing tail. A faint wavering line of music follows behind it."
+    ]
+  },
+  "Doinatoare": {
+    "habitat": "Rare",
+    "entries": [
+      "It sings long slow songs with no set rhythm, and listeners find their sorrows lighter afterwards. Shepherds say it answers the sound of a lonely flute.",
+      "A dark embroidered scarf frames its pale face, and its eyes stay closed while it sings. Ribbons of light spiral up from its mouth over a veil of dusky mist."
+    ]
+  },
+  "Naiet": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It stands in reed beds and whistles whenever the wind blows through it. When it finds a note it likes, it holds still so the sound goes on.",
+      "Its body is a bundle of hollow reeds of different lengths, tied with a band of green leaf. It walks on two little leaf feet."
+    ]
+  },
+  "Nailar": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It spreads its wings in the breeze and plays soft melodies as it glides. Panpipe players practise near the water in the hope of learning its tune.",
+      "Its curved wings are rows of reed pipes that grow shorter toward the tips, bound with carved bands. Slender reed stems form its long neck."
+    ]
+  },
+  "Coloanel": {
+    "habitat": "Urban",
+    "entries": [
+      "It stacks itself on top of anything flat and stays there for hours. It seems to enjoy rhythm, and rocks from side to side in a steady beat.",
+      "Two rounded diamond-shaped beads of golden metal sit one on top of the other. The upper one has a simple face, and tiny feet hold it up."
+    ]
+  },
+  "Coloanfinit": {
+    "habitat": "Urban",
+    "entries": [
+      "Its body seems to go on without end into the sky. People who sit quietly beneath it say their worries start to feel small and far away.",
+      "Identical golden modules are stacked high, with a calm face on one of them. The top fades into light as the whole column gently sways."
+    ]
+  },
+  "Tramvaiel": {
+    "habitat": "Urban",
+    "entries": [
+      "It rolls along city streets and rings happily at every corner. When two meet on the same narrow lane, each waits politely for the other to go first.",
+      "Its cream and red body has round windows for eyes and a bumper for a mouth. A single pole on its head sparks as it rolls on four wheels."
+    ]
+  },
+  "Tramvaior": {
+    "habitat": "Urban",
+    "entries": [
+      "It carries passengers along city lines without ever grumbling about the load. It runs best after a thunderstorm, when its charge is full to the brim.",
+      "Rows of lit windows run along its long jointed body, with headlamp eyes at the front. Two crackling arms rise above it while its wheels throw sparks."
+    ]
+  },
+  "Turnulet": {
+    "habitat": "Mountain",
+    "entries": [
+      "It likes to stand on hilltops and watch the roads below. If it spots something unusual, it stamps its stone feet until someone notices.",
+      "A pointed red tiled roof sits on its round stone body like a hat. An arched window serves as its eye, and ivy climbs one side."
+    ]
+  },
+  "Cetatoare": {
+    "habitat": "Mountain",
+    "entries": [
+      "It stands on a crag of its own and watches the valley through the glowing windows. People who shelter inside say they hear old stories whispered at night.",
+      "White walls and grey turrets with steep red roofs rise from legs of rock. A wooden drawbridge forms its mouth, and mist drifts round its towers."
+    ]
+  },
+  "Sarmaluta": {
+    "habitat": "Urban",
+    "entries": [
+      "It nestles in warm clay pots in village kitchens and pops up when the lid is lifted. At winter feasts, people set a little pot aside just for it.",
+      "Its body is a neatly rolled cabbage leaf with a small face peeking out of one end. A sprig of dill and a dab of cream crown it."
+    ]
+  },
+  "Cozonacel": {
+    "habitat": "Urban",
+    "entries": [
+      "It appears in warm kitchens when festive bread is baking. The sweet smell that follows it makes everyone nearby feel hungry and a little more cheerful.",
+      "Its golden brown crust surrounds a swirl of cocoa and walnut that spirals across its face. Crumbs and a dusting of sugar fall as it moves."
+    ]
+  },
+  "Dochita": {
+    "habitat": "Mountain",
+    "entries": [
+      "It trudges up snowy paths bundled in many coats and grumbles that spring is late. When it shivers, a cold snap often follows.",
+      "Layers of white sheepskin hide all but its frosty nose and twinkling eyes. Little icicles hang from the hem, and it carries a tiny crook."
+    ]
+  },
+  "Babadochia": {
+    "habitat": "Mountain",
+    "entries": [
+      "The old tale says she climbed with her flock in March and shed her coats as the sun grew warm. Then the cold came back and caught her.",
+      "Nine sheepskin coats of white and grey layer her stooped frame, one slipping off her shoulders. She leans on a staff, and snowdrops grow where she stands."
+    ]
+  },
+  "Ulcel": {
+    "habitat": "Urban",
+    "entries": [
+      "It waddles round village yards and gets filled with rainwater whenever it stands still. It likes to be carried to the table, though it spills easily.",
+      "Brown and green swirls and a little rooster are painted on its cream glaze. It has a narrow neck, one curved handle and stubby clay feet."
+    ]
+  },
+  "Ulcior": {
+    "habitat": "Urban",
+    "entries": [
+      "It keeps the water inside it warm even on the coldest days. Potters greet it before they light their kilns, hoping every pot will come out whole.",
+      "Its wide mouth glows orange like a kiln, and heat shimmers above it. Painted roosters and spirals circle its round body between two handle arms."
+    ]
+  },
+  "Covoras": {
+    "habitat": "Urban",
+    "entries": [
+      "It humps along floors like a caterpillar and curls up by the door to be stepped on. Beating the dust from it makes it giggle.",
+      "A pattern of red, black and white wool covers its flat body, which moves on many tassel feet. Two round eyes peek from one end."
+    ]
+  },
+  "Covoron": {
+    "habitat": "Urban",
+    "entries": [
+      "It glides over rooftops on moonlit nights, and the patterns on its back shift as it flies. Children dream of being carried away on it.",
+      "The tree of life and other folk shapes rearrange themselves across its red, black and white weave. Its long fringes curl like legs beneath it."
+    ]
+  },
+  "Mamaligel": {
+    "habitat": "Urban",
+    "entries": [
+      "It sits steaming on kitchen tables and wobbles with joy when a family gathers to eat. It hardens and sulks if left alone too long.",
+      "It is a golden block of cornmeal with a smooth domed top and a pat of butter melting on its head. A thin line crosses its middle."
+    ]
+  },
+  "Papanas": {
+    "habitat": "Urban",
+    "entries": [
+      "It bounces round festival stalls, leaving a trail of cream and jam behind it. People say a bad mood rarely lasts once it hops onto the table.",
+      "A golden ring of fried dough carries a smaller ball on top like a hat. White cream and dark jam drip down its sides."
+    ]
+  },
+  "Ceasulet": {
+    "habitat": "Urban",
+    "entries": [
+      "It ticks faster whenever someone around it is running late. It is forever worried about the time, though it cannot show the hour itself.",
+      "Two anxious eyes sit on a cream face with no hands. A thin chain trails behind its brass case like a tail."
+    ]
+  },
+  "Orologiu": {
+    "habitat": "Urban",
+    "entries": [
+      "It stands in old town squares and chimes at noon with great dignity. Some say time slows around it when it raises one hand.",
+      "The two hands on its great round face move like eyes. Small bells hang in the arches beneath its pointed tiled roof, above two sturdy legs."
+    ]
+  },
+  "Porumbel": {
+    "habitat": "Urban",
+    "entries": [
+      "It bobs along pavements looking for crumbs and follows anyone carrying bread. At the clap of hands it takes off, then lands again a moment later.",
+      "A green and violet sheen shines on its neck above soft grey feathers. Two dark bars cross its wings, and its feet are pink."
+    ]
+  },
+  "Porumbor": {
+    "habitat": "Urban",
+    "entries": [
+      "It perches on the heads of statues and looks down on the square as if it owns it. Crumbs offered by hand are accepted only with great ceremony.",
+      "Its puffed chest shimmers green and violet like a coat covered with medals. Slate grey wings fold at its sides while it struts."
+    ]
+  },
+  "Felinarel": {
+    "habitat": "Urban",
+    "entries": [
+      "It hops along side streets at dusk and lights corners that people find dark. Its little flame flickers when it feels shy.",
+      "A black iron cap tops its small glass lantern, where a dancing flame serves as its eye. It stands on one thin leg with a curl of iron behind."
+    ]
+  },
+  "Felinaroi": {
+    "habitat": "Urban",
+    "entries": [
+      "It stands tall along the grand boulevards and keeps watch through the night. Lost travellers are said to find their way by following its warm glow.",
+      "Curling arms of wrought iron shaped like flowers each hold a glowing lantern. A crowned lamp head shines golden above its slim black body."
+    ]
+  },
+  "Cobzel": {
+    "habitat": "Urban",
+    "entries": [
+      "It plucks its own strings when nobody is listening and stops shyly if anyone claps. A slow tune from a corner of the house often means it is there.",
+      "Its round back is shaped like a pear of polished honey-brown wood. Three thin strings stretch over its belly beneath two button eyes."
+    ]
+  },
+  "Cobzar": {
+    "habitat": "Urban",
+    "entries": [
+      "It plays late into the night under windows and in quiet inns. Its songs can make people confess things they never meant to say.",
+      "A dark velvet coat with a high collar wraps its lute-shaped body. Its long fingers pluck the strings across its own chest, while its eyes glint in shadow."
+    ]
+  },
+  "Fluieras": {
+    "habitat": "Grassland",
+    "entries": [
+      "It pipes on hillsides while flocks graze, and the sheep drift toward the sound. Shepherds say a good tune from it keeps wolves far from the fold.",
+      "Zigzags are carved along its pale wooden body above a row of finger holes. It wears a tiny felt hat as its tune curls out in rings."
+    ]
+  },
+  "Tobel": {
+    "habitat": "Urban",
+    "entries": [
+      "It bounces down the street thumping itself and startles anyone dozing nearby. Children march behind it in a line whenever it passes.",
+      "Taut goatskin covers its round top, and zigzags of red and blue run round its rim. It hops on two thin legs like sticks."
+    ]
+  },
+  "Tobosar": {
+    "habitat": "Urban",
+    "entries": [
+      "It beats its own belly to lead processions through town. Its deep boom can be felt in the chest long before it comes into sight.",
+      "Bright zigzags and coloured ribbons decorate its great drum of a body. Its arms end in round fists like drumsticks, and ribbons stream from them."
+    ]
+  },
+  "Filuta": {
+    "habitat": "Urban",
+    "entries": [
+      "It flutters out of old libraries on windy days and lands on people's shoulders. It seems to want someone to read the words written on it.",
+      "It is a single yellowed sheet with soft curled corners. A face drawn in black ink looks out inside a little border of painted flowers."
+    ]
+  },
+  "Carturel": {
+    "habitat": "Urban",
+    "entries": [
+      "It hovers among shelves and flips to whichever tale suits the person who opens it. Reading to the very end before it shuts is thought to be wise.",
+      "Painted pictures move across its fluttering pages, which flap like wings. Two pale eyes glow in the fold, and a long ribbon trails behind it."
+    ]
+  },
+  "Steluta": {
+    "habitat": "Urban",
+    "entries": [
+      "It bobs from door to door in the winter season along with the carol singers. Households that welcome it are said to have a warm year ahead.",
+      "A paper star with silver and red points sits on a short wooden stick. A candle glow shines from its middle around its small face."
+    ]
+  },
+  "Stelar": {
+    "habitat": "Urban",
+    "entries": [
+      "It spins in the snowy streets and sings so brightly that windows open all along the way. Its light is said to guide carol singers home.",
+      "Gilded paper and ribbons make up its many points, around a shining centre. Long coloured streamers trail from them as it turns on its pole."
+    ]
+  },
+  "Mascuta": {
+    "habitat": "Urban",
+    "entries": [
+      "It peeks round corners during winter festivals and makes strange noises to startle people. When someone laughs at it, it dances with delight.",
+      "A red and white painted face with small horns is fringed with wool. Only two tiny glints show in its dark eyeholes as it walks on wooden legs."
+    ]
+  },
+  "Mascaron": {
+    "habitat": "Urban",
+    "entries": [
+      "It joins the masked dancers at the turn of the year, and nobody can tell it apart from them. At the end of the night it is simply gone.",
+      "Curved horns and a long fur fringe frame its boldly painted face. A thick sheepskin cloak hung with little bells drapes it, and its eyeholes hold only darkness."
+    ]
+  },
+  "Sperietoare": {
+    "habitat": "Grassland",
+    "entries": [
+      "It stands guard in maize fields by day and walks along the furrows at night. The crows are not afraid of it and often sit on its arms.",
+      "It has a straw body in an old embroidered shirt and a battered wide hat. Two tiny lights glow beneath the brim."
+    ]
+  },
+  "Sobitel": {
+    "habitat": "Urban",
+    "entries": [
+      "It trots to whoever looks coldest and settles down beside them. Its little door creaks open when it is pleased, letting out a wave of warmth.",
+      "Glazed green tiles cover its square body, with an iron door for a mouth glowing orange inside. A small pipe on its head puffs thin smoke."
+    ]
+  },
+  "Teracotor": {
+    "habitat": "Urban",
+    "entries": [
+      "It holds its heat all night, so grandmothers tell stories leaning against its side. Cats and children both fight for the warmest place beside it.",
+      "Green and cream glazed tiles with raised flowers cover its great body. A stout chimney rises from its head above a glowing iron door."
+    ]
+  },
+  "Cumpanel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It stands by country roads and offers cool water to those who ask politely. Throwing rubbish into it is certain to get you soaked.",
+      "A long pole on a forked post rises from its little roofed stone well, dipping a bucket like a head on a neck. Eyes peer from inside."
+    ]
+  },
+  "Pricolel": {
+    "habitat": "Rare",
+    "entries": [
+      "It trots just behind travellers on dark roads and vanishes whenever they turn to look. It means no harm, but it likes to follow someone home.",
+      "Its matted black fur, ragged ears and oversized paws make it look scruffy. Yellow eyes glow, and a thin mist clings to its feet."
+    ]
+  },
+  "Pricolici": {
+    "habitat": "Rare",
+    "entries": [
+      "Old tales warn of a great dog that walks upright when the night is darkest. People who stay indoors with a lit fire are said to be safe.",
+      "It stands on its hind legs with long arms and curved claws. Its eyes burn like coals, and grey mist trails from its shaggy black fur."
+    ]
   }
 }
