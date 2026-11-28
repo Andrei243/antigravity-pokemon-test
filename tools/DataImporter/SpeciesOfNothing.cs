@@ -184,6 +184,43 @@ public static class SpeciesOfNothing
         return made;
     }
 
+    /// <summary>The Tale Forms of Carpathia's own species (plan 46 · CP12), beside the table.</summary>
+    public const string TaleFormsFileName = "forms-tale.json";
+
+    /// <summary>The suffix every Tale Form's name ends in (<c>Sanziana-Tale</c>).</summary>
+    public const string TaleSuffix = "-Tale";
+
+    /// <summary>
+    /// Adds the Tale Forms of <c>Overrides/forms-tale.json</c> (<c>{ species: [forms] }</c>, plan 46 · CP12) to their
+    /// Carpathian species, each a form of the kind <see cref="FormKind.Tale"/> named <c>&lt;Species&gt;-Tale</c>, a look of
+    /// its species woken while its tale is told (<c>Data/tales.json</c>'s <c>forms</c> bind it). It holds nothing but its
+    /// name and kind unless the row gives more, and never a learnset: a form held in battle keeps the moves it had.
+    /// Returns the forms added.
+    /// </summary>
+    public static List<PokemonForm> AddTaleForms(List<PokemonSpecies> species, string path)
+    {
+        var made = new List<PokemonForm>();
+        if (!File.Exists(path)) return made;
+        var table = JsonNode.Parse(File.ReadAllText(path), documentOptions: new() { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true })!.AsObject();
+        foreach (var (name, forms) in table)
+        {
+            var owner = species.FirstOrDefault(s => s.Name == name) ?? throw new InvalidDataException($"{TaleFormsFileName} names {name}, which is no species");
+            if (!owner.IsCarpathian) throw new InvalidDataException($"{TaleFormsFileName} names {name}, which is no Carpathian species");
+            foreach (var node in forms!.AsArray())
+            {
+                var form = node.Deserialize<PokemonForm>(GameDataFiles.Json)!;
+                if (form.Name != name + TaleSuffix) throw new InvalidDataException($"{name}'s Tale Form is called {form.Name}, not {name + TaleSuffix}");
+                if (form.Kind != FormKind.Tale) throw new InvalidDataException($"{form.Name} is a {form.Kind} form, not a Tale Form");
+                if (form.Learnset != null) throw new InvalidDataException($"{form.Name} has a learnset: a Tale Form keeps the moves it had");
+                owner.Forms ??= new();
+                if (owner.Forms.Any(f => f.Name == form.Name)) throw new InvalidDataException($"{form.Name} is a form already");
+                owner.Forms.Add(form);
+                made.Add(form);
+            }
+        }
+        return made;
+    }
+
     /// <summary>The Carpathian forms of existing species (plan 46 · CP3), beside the table.</summary>
     public const string FormsFileName = "forms-carpathia.json";
 
