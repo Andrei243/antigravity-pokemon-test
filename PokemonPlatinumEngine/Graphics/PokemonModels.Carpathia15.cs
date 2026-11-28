@@ -262,7 +262,7 @@ internal static partial class PokemonModels
         {
             var b = Take(Sanziana(), "Sanziana-Tale");
             var d = Moved(b, V(0, 0.78f, 0));
-            Swap(b, (Rgb(236, 238, 230), Rgb(252, 240, 188)), (Rgb(240, 200, 96), Rgb(252, 208, 76)), (Rgb(230, 182, 52), Bedstraw));
+            Swap(b, (Rgb(236, 238, 230), Rgb(252, 226, 128)), (Rgb(240, 200, 96), Rgb(252, 208, 76)), (Rgb(230, 182, 52), Bedstraw));
             C14Material(b, Bedstraw, Glow);
             // The wreath of sânziene: sprigs of bedstraw standing up round the crown, a bloom of light at each tip
             int head = BoneOf(b, "head");
@@ -548,7 +548,7 @@ internal static partial class PokemonModels
             foreach (var (x, z, s) in new[] { (-0.12f, 0.2f, 0.028f), (0.2f, 0.18f, 0.024f), (-0.32f, -0.02f, 0.026f), (0.0f, -0.32f, 0.022f), (0.3f, -0.18f, 0.024f) })
             {
                 var dir = V(x / cr.X, 0.65f, z / cr.Z);
-                Glowcap(b, Out(cc, cr, default, dir), s);
+                Glowcap(b, Out(cc, cr, default, dir), s * 1.5f);
             }
             var bc = V(0, 0.38f, 0) + d;
             var br = V(0.25f, 0.3f, 0.22f);
