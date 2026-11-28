@@ -5,7 +5,7 @@
         "Brassius"
       ],
       "text": [
-        ""
+        "Brassius"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "You found them all! Your eye for art is keen. I am Brassius, Artazon's gym leader, and an artist of the grass."
       ],
       "text": [
-        ""
+        "Le-ai găsit pe toate! Ai ochi de artist. Eu sunt Brassius, liderul sălii din Artazon, și artist al ierbii."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "A battle is a sculpture made in a moment. Let us shape something magnificent together!"
       ],
       "text": [
-        ""
+        "O luptă e o sculptură făcută într-o clipă. Hai să modelăm împreună ceva măreț!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Bravo! A masterpiece of a battle. Take this, the Grass Badge, as a frame for your triumph."
       ],
       "text": [
-        ""
+        "Bravo! O capodoperă de luptă. Ia Insigna Iarbă, ca ramă pentru triumful tău."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} received the Grass Badge from Brassius!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Iarbă de la Brassius!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Go forth and find your art, young challenger. Victory Road has much more to show you."
       ],
       "text": [
-        ""
+        "Du-te și găsește-ți arta, tinere provocator. Drumul Victoriei mai are multe să-ți arate."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Ah, a challenger! But my Sunflora are still hiding about Artazon. Find all three, and then we shall make art."
       ],
       "text": [
-        ""
+        "Ah, un provocator! Dar Sunflora mele încă se ascund prin Artazon. Găsește-le pe toate trei, și apoi vom face artă."
       ]
     },
     {
@@ -61,7 +61,31 @@
         "A challenger who is not yet a student? Enrol at the academy first, and then we shall make art."
       ],
       "text": [
-        ""
+        "Un provocator care nu e încă elev? Înscrie-te întâi la academie, și apoi vom face artă."
+      ]
+    },
+    {
+      "en": [
+        "Champion! My art has grown since our battle. Will you be the audience for my newest work?"
+      ],
+      "text": [
+        "Campioane! Arta mea a crescut de la lupta noastră. Vrei să fii publicul celei mai noi lucrări?"
+      ]
+    },
+    {
+      "en": [
+        "Then behold! Every leaf of it is a brushstroke!"
+      ],
+      "text": [
+        "Atunci privește! Fiecare frunză e o tușă de pensulă!"
+      ]
+    },
+    {
+      "en": [
+        "A masterpiece, again. Yours, not mine. Return tomorrow, and I shall have reworked it."
+      ],
+      "text": [
+        "Iar o capodoperă. A ta, nu a mea. Revino mâine, și o voi fi refăcut."
       ]
     },
     {
@@ -69,7 +93,7 @@
         "Your battle still inspires me. I have begun a new sculpture in its honour."
       ],
       "text": [
-        ""
+        "Lupta ta încă mă inspiră. Am început o sculptură nouă în cinstea ei."
       ]
     }
   ]

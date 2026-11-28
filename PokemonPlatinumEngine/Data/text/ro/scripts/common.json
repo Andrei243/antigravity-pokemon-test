@@ -5060,5 +5060,245 @@
         "{self} a terminat la {thing}. Adu-l înapoi de la panoul de lângă șopron."
       ]
     }
+  ],
+  "PaldeaStakePulledPurple": [
+    {
+      "en": [
+        "A purple stake stood in the ground, humming faintly. {player} pulled it out!"
+      ],
+      "text": [
+        "Un țăruș mov stătea înfipt în pământ, bâzâind încet. {player} l-a smuls!"
+      ]
+    },
+    {
+      "en": [
+        "Purple stakes pulled so far: {var:VAR_PALDEA_STAKES_PURPLE} of eight."
+      ],
+      "text": [
+        "Țăruși mov smulși până acum: {var:VAR_PALDEA_STAKES_PURPLE} din opt."
+      ]
+    },
+    {
+      "en": [
+        "That was the last of the eight purple stakes. Somewhere, a shrine's seal has broken."
+      ],
+      "text": [
+        "A fost ultimul dintre cei opt țăruși mov. Undeva, sigiliul unui altar s-a rupt."
+      ]
+    }
+  ],
+  "PaldeaShrineWoChien": [
+    {
+      "en": [
+        "The shrine's seal has crumbled away. From the dark inside comes a rustle of withered leaves..."
+      ],
+      "text": [
+        "Sigiliul altarului s-a sfărâmat. Din întunericul dinăuntru vine un foșnet de frunze uscate..."
+      ]
+    },
+    {
+      "en": [
+        "The presence sank back into the shrine. It is still in there, waiting."
+      ],
+      "text": [
+        "Prezența s-a retras înapoi în altar. E încă acolo, așteptând."
+      ]
+    },
+    {
+      "en": [
+        "An old shrine, sealed shut. Eight purple stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_PURPLE} of eight."
+      ],
+      "text": [
+        "Un altar vechi, sigilat. Opt țăruși mov îi țin sigiliul. Smulși până acum: {var:VAR_PALDEA_STAKES_PURPLE} din opt."
+      ]
+    },
+    {
+      "en": [
+        "The shrine stands open, and empty."
+      ],
+      "text": [
+        "Altarul stă deschis și gol."
+      ]
+    }
+  ],
+  "PaldeaStakePulledYellow": [
+    {
+      "en": [
+        "A yellow stake stood in the ground, humming faintly. {player} pulled it out!"
+      ],
+      "text": [
+        "Un țăruș galben stătea înfipt în pământ, bâzâind încet. {player} l-a smuls!"
+      ]
+    },
+    {
+      "en": [
+        "Yellow stakes pulled so far: {var:VAR_PALDEA_STAKES_YELLOW} of eight."
+      ],
+      "text": [
+        "Țăruși galbeni smulși până acum: {var:VAR_PALDEA_STAKES_YELLOW} din opt."
+      ]
+    },
+    {
+      "en": [
+        "That was the last of the eight yellow stakes. Somewhere, a shrine's seal has broken."
+      ],
+      "text": [
+        "A fost ultimul dintre cei opt țăruși galbeni. Undeva, sigiliul unui altar s-a rupt."
+      ]
+    }
+  ],
+  "PaldeaShrineChienPao": [
+    {
+      "en": [
+        "The shrine's seal has crumbled away. From the dark inside comes a frozen mist..."
+      ],
+      "text": [
+        "Sigiliul altarului s-a sfărâmat. Din întunericul dinăuntru vine o ceață înghețată..."
+      ]
+    },
+    {
+      "en": [
+        "The presence sank back into the shrine. It is still in there, waiting."
+      ],
+      "text": [
+        "Prezența s-a retras înapoi în altar. E încă acolo, așteptând."
+      ]
+    },
+    {
+      "en": [
+        "An old shrine, sealed shut. Eight yellow stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_YELLOW} of eight."
+      ],
+      "text": [
+        "Un altar vechi, sigilat. Opt țăruși galbeni îi țin sigiliul. Smulși până acum: {var:VAR_PALDEA_STAKES_YELLOW} din opt."
+      ]
+    },
+    {
+      "en": [
+        "The shrine stands open, and empty."
+      ],
+      "text": [
+        "Altarul stă deschis și gol."
+      ]
+    }
+  ],
+  "PaldeaStakePulledGreen": [
+    {
+      "en": [
+        "A green stake stood in the ground, humming faintly. {player} pulled it out!"
+      ],
+      "text": [
+        "Un țăruș verde stătea înfipt în pământ, bâzâind încet. {player} l-a smuls!"
+      ]
+    },
+    {
+      "en": [
+        "Green stakes pulled so far: {var:VAR_PALDEA_STAKES_GREEN} of eight."
+      ],
+      "text": [
+        "Țăruși verzi smulși până acum: {var:VAR_PALDEA_STAKES_GREEN} din opt."
+      ]
+    },
+    {
+      "en": [
+        "That was the last of the eight green stakes. Somewhere, a shrine's seal has broken."
+      ],
+      "text": [
+        "A fost ultimul dintre cei opt țăruși verzi. Undeva, sigiliul unui altar s-a rupt."
+      ]
+    }
+  ],
+  "PaldeaShrineTingLu": [
+    {
+      "en": [
+        "The shrine's seal has crumbled away. From the dark inside comes a rumble of cracking earth..."
+      ],
+      "text": [
+        "Sigiliul altarului s-a sfărâmat. Din întunericul dinăuntru vine un huruit de pământ crăpat..."
+      ]
+    },
+    {
+      "en": [
+        "The presence sank back into the shrine. It is still in there, waiting."
+      ],
+      "text": [
+        "Prezența s-a retras înapoi în altar. E încă acolo, așteptând."
+      ]
+    },
+    {
+      "en": [
+        "An old shrine, sealed shut. Eight green stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_GREEN} of eight."
+      ],
+      "text": [
+        "Un altar vechi, sigilat. Opt țăruși verzi îi țin sigiliul. Smulși până acum: {var:VAR_PALDEA_STAKES_GREEN} din opt."
+      ]
+    },
+    {
+      "en": [
+        "The shrine stands open, and empty."
+      ],
+      "text": [
+        "Altarul stă deschis și gol."
+      ]
+    }
+  ],
+  "PaldeaStakePulledBlue": [
+    {
+      "en": [
+        "A blue stake stood in the ground, humming faintly. {player} pulled it out!"
+      ],
+      "text": [
+        "Un țăruș albastru stătea înfipt în pământ, bâzâind încet. {player} l-a smuls!"
+      ]
+    },
+    {
+      "en": [
+        "Blue stakes pulled so far: {var:VAR_PALDEA_STAKES_BLUE} of eight."
+      ],
+      "text": [
+        "Țăruși albaștri smulși până acum: {var:VAR_PALDEA_STAKES_BLUE} din opt."
+      ]
+    },
+    {
+      "en": [
+        "That was the last of the eight blue stakes. Somewhere, a shrine's seal has broken."
+      ],
+      "text": [
+        "A fost ultimul dintre cei opt țăruși albaștri. Undeva, sigiliul unui altar s-a rupt."
+      ]
+    }
+  ],
+  "PaldeaShrineChiYu": [
+    {
+      "en": [
+        "The shrine's seal has crumbled away. From the dark inside comes a flicker of flame..."
+      ],
+      "text": [
+        "Sigiliul altarului s-a sfărâmat. Din întunericul dinăuntru vine o pâlpâire de flacără..."
+      ]
+    },
+    {
+      "en": [
+        "The presence sank back into the shrine. It is still in there, waiting."
+      ],
+      "text": [
+        "Prezența s-a retras înapoi în altar. E încă acolo, așteptând."
+      ]
+    },
+    {
+      "en": [
+        "An old shrine, sealed shut. Eight blue stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_BLUE} of eight."
+      ],
+      "text": [
+        "Un altar vechi, sigilat. Opt țăruși albaștri îi țin sigiliul. Smulși până acum: {var:VAR_PALDEA_STAKES_BLUE} din opt."
+      ]
+    },
+    {
+      "en": [
+        "The shrine stands open, and empty."
+      ],
+      "text": [
+        "Altarul stă deschis și gol."
+      ]
+    }
   ]
 }

@@ -1,0 +1,150 @@
+{
+  "Match": [
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitrul"
+      ]
+    },
+    {
+      "en": [
+        "Round one of the Academy Ace Tournament! Trainers, take your places!"
+      ],
+      "text": [
+        "Runda întâi a Turneului Așilor Academiei! Antrenori, la locurile voastre!"
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitrul"
+      ]
+    },
+    {
+      "en": [
+        "The winner of round one: {player}! On to round two."
+      ],
+      "text": [
+        "Câștigătorul rundei întâi: {player}! Mai departe, în runda a doua."
+      ]
+    },
+    {
+      "en": [
+        "Round two! The Elite Four have entered too, and here comes one of them now!"
+      ],
+      "text": [
+        "Runda a doua! S-au înscris și cei din Elita celor Patru, și iată că vine unul dintre ei!"
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitrul"
+      ]
+    },
+    {
+      "en": [
+        "{player} goes through to the final! Nobody saw that coming. Well, everyone did."
+      ],
+      "text": [
+        "{player} merge în finală! Nimeni nu se aștepta. Mă rog, toată lumea se aștepta."
+      ]
+    },
+    {
+      "en": [
+        "The final of the Academy Ace Tournament! The whole academy is watching!"
+      ],
+      "text": [
+        "Finala Turneului Așilor Academiei! Toată academia privește!"
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitrul"
+      ]
+    },
+    {
+      "en": [
+        "And the winner of the Academy Ace Tournament is... {player}! What a final!"
+      ],
+      "text": [
+        "Iar câștigătorul Turneului Așilor Academiei este... {player}! Ce finală!"
+      ]
+    },
+    {
+      "en": [
+        "First title! They say the black crystals out in Paldea burn even brighter for an ace. Seven stars, apparently."
+      ],
+      "text": [
+        "Primul titlu! Se spune că cristalele negre din Paldea ard și mai tare pentru un as. Șapte stele, se pare."
+      ]
+    },
+    {
+      "en": [
+        "The tournament runs again whenever you like. Sign up at the desk in the entrance hall."
+      ],
+      "text": [
+        "Turneul se ține din nou oricând vrei. Înscrie-te la ghișeul din holul de la intrare."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokémon were restored for the next round."
+      ],
+      "text": [
+        "Pokémonii lui {player} au fost refăcuți pentru runda următoare."
+      ]
+    },
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitrul"
+      ]
+    },
+    {
+      "en": [
+        "{player} is out of the tournament! A fine run all the same. Sign up again at the desk any time."
+      ],
+      "text": [
+        "{player} a ieșit din turneu! A fost totuși un parcurs frumos. Înscrie-te din nou la ghișeu oricând."
+      ]
+    }
+  ],
+  "Referee": [
+    {
+      "en": [
+        "Referee"
+      ],
+      "text": [
+        "Arbitrul"
+      ]
+    },
+    {
+      "en": [
+        "Your next opponent is waiting on the court. Good luck!"
+      ],
+      "text": [
+        "Următorul adversar te așteaptă pe teren. Mult noroc!"
+      ]
+    },
+    {
+      "en": [
+        "The court's closed between tournaments. Sign up at the desk in the entrance hall."
+      ],
+      "text": [
+        "Terenul e închis între turnee. Înscrie-te la ghișeul din holul de la intrare."
+      ]
+    }
+  ]
+}

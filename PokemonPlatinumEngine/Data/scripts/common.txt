@@ -4927,7 +4927,7 @@ script PaldeaShrineWoChien
   if not flag FLAG_PALDEA_WAY_HOME goto Quiet
   if flag FLAG_PALDEA_CAUGHT_WO_CHIEN goto Empty
   if var VAR_PALDEA_STAKES_PURPLE < 8 goto Sealed
-  text "The shrine's seal has crumbled away. From the dark inside comes withered leaves..."
+  text "The shrine's seal has crumbled away. From the dark inside comes a rustle of withered leaves..."
   cry "Wo-Chien"
   wildbattle "Wo-Chien" 60
   if result == 3 goto Caught
@@ -5151,7 +5151,7 @@ script PaldeaShrineTingLu
   if not flag FLAG_PALDEA_WAY_HOME goto Quiet
   if flag FLAG_PALDEA_CAUGHT_TING_LU goto Empty
   if var VAR_PALDEA_STAKES_GREEN < 8 goto Sealed
-  text "The shrine's seal has crumbled away. From the dark inside comes cracked earth..."
+  text "The shrine's seal has crumbled away. From the dark inside comes a rumble of cracking earth..."
   cry "Ting-Lu"
   wildbattle "Ting-Lu" 60
   if result == 3 goto Caught

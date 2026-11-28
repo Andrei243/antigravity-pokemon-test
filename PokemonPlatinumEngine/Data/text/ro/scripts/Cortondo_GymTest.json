@@ -5,7 +5,7 @@
         "A giant olive, taller than a Smoliv, sits in the gap. {player} gave it a push..."
       ],
       "text": [
-        ""
+        "O măslină uriașă, mai înaltă decât un Smoliv, stă în breșă. {player} i-a dat un brânci..."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "It rolled away down the course and into the goal!"
       ],
       "text": [
-        ""
+        "S-a rostogolit pe traseu până în poartă!"
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "Another giant olive, glossy and green. {player} gave it a push..."
       ],
       "text": [
-        ""
+        "Încă o măslină uriașă, lucioasă și verde. {player} i-a dat un brânci..."
       ]
     },
     {
@@ -31,7 +31,7 @@
         "It bumped off the rail and trundled into the goal!"
       ],
       "text": [
-        ""
+        "S-a lovit de balustradă și s-a rostogolit în poartă!"
       ]
     }
   ],
@@ -41,7 +41,7 @@
         "The last olive was the roundest of all. {player} gave it a good push..."
       ],
       "text": [
-        ""
+        "Ultima măslină era cea mai rotundă dintre toate. {player} i-a dat un brânci zdravăn..."
       ]
     },
     {
@@ -49,7 +49,7 @@
         "It rolled straight into the goal. The olive roll is cleared!"
       ],
       "text": [
-        ""
+        "S-a rostogolit drept în poartă. Proba măslinelor e trecută!"
       ]
     }
   ],
@@ -59,7 +59,7 @@
         "Katy"
       ],
       "text": [
-        ""
+        "Katy"
       ]
     },
     {
@@ -67,7 +67,7 @@
         "Oh my, you rolled every one of them in! You must be a challenger from the academy. I'm Katy, Cortondo's gym leader."
       ],
       "text": [
-        ""
+        "Vai, le-ai rostogolit pe toate! Trebuie să fii un provocator de la academie. Eu sunt Katy, liderul sălii din Cortondo."
       ]
     },
     {
@@ -75,7 +75,7 @@
         "My Bug types are small, but sweet things can sting. Let's see how your team takes the heat of my oven!"
       ],
       "text": [
-        ""
+        "Pokémonii mei de tip Insectă sunt mici, dar și lucrurile dulci pot înțepa. Să vedem cum rezistă echipa ta la căldura cuptorului meu!"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "Well, I never! That was baked to perfection. You've earned this: the Bug Badge."
       ],
       "text": [
-        ""
+        "Ei, poftim! A ieșit coaptă la perfecție. Ai meritat-o: Insigna Insectă."
       ]
     },
     {
@@ -91,7 +91,7 @@
         "{player} received the Bug Badge from Katy!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Insectă de la Katy!"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Come by the bakery any time. And good luck with the rest of Victory Road!"
       ],
       "text": [
-        ""
+        "Treci pe la brutărie oricând. Și mult noroc cu restul Drumului Victoriei!"
       ]
     },
     {
@@ -107,7 +107,31 @@
         "A challenger? Oh, but you aren't enrolled at the academy yet. Come back once term has started, dear."
       ],
       "text": [
-        ""
+        "Un provocator? Oh, dar nu ești încă înscris la academie. Revino după ce începe semestrul, dragă."
+      ]
+    },
+    {
+      "en": [
+        "Our new Champion, in my bakery's gym! I've been training a new batch. Care to taste-test it?"
+      ],
+      "text": [
+        "Noul nostru Campion, în sala brutăriei mele! Am pregătit o șarjă nouă. Vrei s-o guști?"
+      ]
+    },
+    {
+      "en": [
+        "Wonderful! Fresh out of the oven, and every bit as tough as it looks!"
+      ],
+      "text": [
+        "Minunat! Proaspăt scoasă din cuptor, și la fel de tare pe cât arată!"
+      ]
+    },
+    {
+      "en": [
+        "Delicious work, Champion. Come back tomorrow and I'll have something new rising."
+      ],
+      "text": [
+        "Treabă delicioasă, Campioane. Revino mâine și voi avea ceva nou la dospit."
       ]
     },
     {
@@ -115,7 +139,7 @@
         "Come back any time. I'll save you a pastry."
       ],
       "text": [
-        ""
+        "Revino oricând. Îți păstrez o prăjitură."
       ]
     }
   ]

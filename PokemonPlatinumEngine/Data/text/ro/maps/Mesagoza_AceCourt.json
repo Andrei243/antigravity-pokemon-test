@@ -1,0 +1,163 @@
+{
+  "displayName": {
+    "en": [
+      "Academy Battle Court"
+    ],
+    "text": [
+      "Terenul de luptă al academiei"
+    ]
+  },
+  "people": {
+    "ace_katy": {
+      "name": {
+        "en": [
+          "Katy"
+        ],
+        "text": [
+          "Katy"
+        ]
+      }
+    },
+    "ace_brassius": {
+      "name": {
+        "en": [
+          "Brassius"
+        ],
+        "text": [
+          "Brassius"
+        ]
+      }
+    },
+    "ace_iono": {
+      "name": {
+        "en": [
+          "Iono"
+        ],
+        "text": [
+          "Iono"
+        ]
+      }
+    },
+    "ace_kofu": {
+      "name": {
+        "en": [
+          "Kofu"
+        ],
+        "text": [
+          "Kofu"
+        ]
+      }
+    },
+    "ace_larry": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          "Larry"
+        ]
+      }
+    },
+    "ace_ryme": {
+      "name": {
+        "en": [
+          "Ryme"
+        ],
+        "text": [
+          "Ryme"
+        ]
+      }
+    },
+    "ace_tulip": {
+      "name": {
+        "en": [
+          "Tulip"
+        ],
+        "text": [
+          "Tulip"
+        ]
+      }
+    },
+    "ace_grusha": {
+      "name": {
+        "en": [
+          "Grusha"
+        ],
+        "text": [
+          "Grusha"
+        ]
+      }
+    },
+    "ace_rika": {
+      "name": {
+        "en": [
+          "Rika"
+        ],
+        "text": [
+          "Rika"
+        ]
+      }
+    },
+    "ace_poppy": {
+      "name": {
+        "en": [
+          "Poppy"
+        ],
+        "text": [
+          "Poppy"
+        ]
+      }
+    },
+    "ace_larry_elite": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          "Larry"
+        ]
+      }
+    },
+    "ace_hassel": {
+      "name": {
+        "en": [
+          "Hassel"
+        ],
+        "text": [
+          "Hassel"
+        ]
+      }
+    },
+    "ace_geeta": {
+      "name": {
+        "en": [
+          "Geeta"
+        ],
+        "text": [
+          "Geeta"
+        ]
+      }
+    },
+    "ace_nemona": {
+      "name": {
+        "en": [
+          "Nemona"
+        ],
+        "text": [
+          "Nemona"
+        ]
+      }
+    },
+    "ace_referee": {
+      "name": {
+        "en": [
+          "Referee"
+        ],
+        "text": [
+          "Arbitrul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

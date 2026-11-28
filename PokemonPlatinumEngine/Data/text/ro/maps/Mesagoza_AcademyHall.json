@@ -43,6 +43,16 @@
           "Biblioteca e la etajul doi, iar cantina la primul. Încă mă rătăcesc în fiecare dimineață."
         ]
       }
+    },
+    "ace_desk": {
+      "name": {
+        "en": [
+          "Tournament Desk"
+        ],
+        "text": [
+          "Ghișeul turneului"
+        ]
+      }
     }
   },
   "signs": {}
