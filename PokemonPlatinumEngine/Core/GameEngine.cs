@@ -1115,6 +1115,7 @@ public partial class GameEngine
             DexNav = flow.DexNav.IsEmpty ? null : flow.DexNav.ToSave(),
             Photos = flow.Photos.ToSave(),
             CardDesign = CardDesignToSave(),
+            CardAlbum = flow.CardAlbum.ToSave(),
             PhotoBook = flow.PhotoBook.ToSave(),
             LastStudioShot = flow.LastStudioShot,
             PhotoTour = flow.PhotoTour.ToSave(),
@@ -3194,7 +3195,7 @@ public partial class GameEngine
                 flow.State = GameState.TrainerCard;
             {
                 var card = TrainerCardNow();
-                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false });
+                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(InTheKitHere(PlayerIdentity.Character))), card.RegionPages.Count, card.Run != null, card.Titles.Count, card.Counts is { IsEmpty: false }, card.Counts is { IsEmpty: false } || card.Medals is { IsEmpty: false }, ReadTheAlbum());
             }
                 break;
             case StartMenuChoice.Options:
@@ -3313,6 +3314,7 @@ public partial class GameEngine
                 .Concat(MasterTitles.Won(flow.Story).Select(t => new CardTitle(t.Number, MasterTitles.Title(t.Species)))).ToList(),
             TitlesOf = MasterTitles.Total,
             LatestTitle = CardTitleNow(),
+            Album = AlbumNow(),
             Design = CardFaceNow()
         };
     }
@@ -3496,6 +3498,8 @@ public partial class GameEngine
         if (shown == GameState.Transition && flow.Closing) band.Render(renderContext);
         // ... and a travel phone's caller's face while the call goes on (plan 43 · LF6)
         RenderTheCallersFace();
+        // ... and the busts of the cards of the people beaten, while their page is up (plan 43 · LF2)
+        RenderTheAlbumsBusts(scene);
 
         // The first run's measuring, a frame of it, and the share of the preset this frame's scene is drawn at (plan 16 · T23)
         MeasureAFrame();
@@ -3690,7 +3694,7 @@ public partial class GameEngine
                 flow.PokedexScreen.Draw(VirtualWidth, VirtualHeight, flow.Pokedex);
                 break;
             case GameState.TrainerCard:
-                flow.TrainerCardScreen.Draw(VirtualWidth, VirtualHeight, TrainerCardNow());
+                flow.TrainerCardScreen.Draw(VirtualWidth, VirtualHeight, TrainerCardNow(), AlbumBustNow);
                 break;
             case GameState.Salon:
                 flow.SalonScreen.Draw(VirtualWidth, VirtualHeight, flow.Money);
@@ -4041,6 +4045,7 @@ public partial class GameEngine
     {
         if (IsHeadless) return;
         band.End();
+        albumBusts.End();
         openRenderer?.Unload();
         renderContext.Unload();
         RegionMapPictures.Unload();

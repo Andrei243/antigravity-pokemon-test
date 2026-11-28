@@ -431,6 +431,10 @@ public class SaveData
     /// <summary>The Trainer Card as the player designed it (plan 43 · LF1); null for a card never designed, which is today's front.</summary>
     public Models.CardDesign? CardDesign { get; set; }
 
+    /// <summary>The cards of the people beaten (plan 43 · LF2), in the order they were won; null while empty, so an older save needs nothing.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<Models.AlbumCard>? CardAlbum { get; set; }
+
     /// <summary>The photo book's records (plan 43 · LF4); null while empty. Its pictures are files of `photos/` beside the saves.</summary>
     public List<Models.PhotoPrint>? PhotoBook { get; set; }
 

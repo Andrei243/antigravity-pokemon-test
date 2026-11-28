@@ -127,6 +127,9 @@ public partial class GameEngine
                 return flow.MatchThreeScreen.IsActive ? flow.MatchThreeScreen : flow.PictureLogicScreen;
             case GameState.CardFlip:
                 return flow.CardFlipScreen;
+            // The cards of the people beaten, on the Trainer Card's last page (plan 43 · LF2)
+            case GameState.TrainerCard when flow.TrainerCardScreen.OnCards:
+                return new Pointable(flow.TrainerCardScreen.HitTest, flow.TrainerCardScreen.PointAt);
             // The card designer (plan 43 · LF1): its rows, the six's list and the signature's pad
             case GameState.CardDesign:
                 return new Pointable(flow.CardDesignScreen.HitTest, flow.CardDesignScreen.PointAt);

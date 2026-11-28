@@ -6,6 +6,8 @@ What changes from one release to the next, for players. Every session's close-ou
 
 - Sixteen Carpathian Pokémon now wake into a Tale Form of their own when their trainer tells the tale they belong to: Sanziana and Buburoza turn midsummer gold, Fierander glows white-hot and Hutulmare grows a mane of golden fire, Spiriduke's smoke catches fire, Buciumbill's horn rings in a ring of light, Babadochia and Capraneagra frost over, Zimbrunt, Ursabrun and Hategant are crowned with standing stones, Codrulynx is cloaked in moss, and more.
 
+- Cards of the people you beat: your first win over a Gym Leader, one of an Elite Four or a Champion of any region gives you their card, with their portrait, their team, their colours and a line of theirs. They are on a new last page of the Trainer Card, nine to a sheet by region, and any one opens large. On a save from before this, a person you had already beaten gives their card only if you beat them again (a rematch, or their team beyond the League); one the game never lets you battle again has no card in that save.
+
 - The Carpathian species and the Carpathian forms have their own Pokédex entries (two each, with a habitat) in place of the plain sentence made from their data, and in Romanian the species' kinds are in Romanian.
 
 - The Floccesy Reserve in Unova: once you have entered Unova's Hall of Fame, a warden at Floccesy Ranch takes you to a reserve of rare Pokémon. For $500 you get thirty Safari Balls and five hundred steps among a meadow, woods and crags, and the ranger at the gate lets you set objects down on each ground to bring in Pokémon from other regions.
