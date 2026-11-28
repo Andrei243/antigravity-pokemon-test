@@ -35,6 +35,9 @@ public sealed partial class GameFlow
     /// <summary>The camp's board on a screen of its own (plan 44 · SD9).</summary>
     public DelveBoardScreen DelveBoardScreen { get; } = new();
 
+    /// <summary>The loop catch's screen (plan 44 · SD10); a try is never saved.</summary>
+    public LoopScreen LoopScreen { get; } = new();
+
     /// <summary>The photo tour's report on a screen of its own (plan 44 · SD6).</summary>
     public TourReportScreen TourReportScreen { get; } = new();
 

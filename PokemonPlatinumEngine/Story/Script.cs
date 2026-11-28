@@ -236,6 +236,8 @@ public enum Op
     // A raid on a Team Star base's gate begun (plan 34 · PD5): the field's own play with Let's Go against the clock,
     // which the game ends by starting the base's script won or lost
     StarRaid,
+    // The loop catch (plan 44 · SD10): a try at one of the station's tasks
+    Loop,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

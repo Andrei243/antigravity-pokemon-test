@@ -2181,6 +2181,20 @@ Plan 44 · SD8 and SD9 (`Core/GameEngine.Delve.cs`, `UI/DelveScreen.cs`, `UI/Del
 
 The day's three requests (`DelveBoard`, drawn from the day's number) over the dimmed field: a panel 1200 wide at the middle, THE CAMP'S BOARD in Black 44 and the camp's rank at its right in ExtraBold 26 Muted; a row of 116 for each request, its words (brisk and kind, the user's answer 62a) in Black 28 and what it pays under them in ExtraBold 22 Muted, the cursor's row tinted warm, a done request's words Muted with DONE in Green Black 26 at its right.
 
+### The loop catch
+
+Plan 44 · SD10 (`Models/LoopCatch.cs`, `UI/LoopScreen.cs`, `ModernUi.Loop.cs`). A screen of its own, flat: no 3D scene, no field behind it. One Pokémon is calmed by drawing loops round it with the station's disc.
+
+- **The ground**: the whole screen a meadow seen from straight above, a gradient from (96, 160, 92) at the top to (62, 122, 76) at the bottom, with tufts of three short strokes in a lighter and a darker green at places fixed by the screen's own hash (never moving). No stripes and no frame: the disc's whole field is the screen between the top row (130) and 1010.
+- **The Pokémon**: its menu sprite (front) at 2× (256 units) with the middle of its lower half on its place, mirrored to face the way it moves; a soft shadow of two ellipses under it. It hops by its gait while it moves (6 units for a walker, 14 for a darter; a flier and a drifter float 18 to 30 over their shadow and bob). Its body, what the rules judge, is a circle of 70 round the middle of the sprite's lower half, never drawn.
+- **The disc**: a ring of radius 20, 7 wide, white while lifted; while it draws, filled Gold (250, 196, 60) with a white rim.
+- **The line**: round-ended strokes 10 wide in Gold along the points drawn, over a glow stroke 22 wide at a quarter of its strength; the oldest fifth fades out, since the line has a length.
+- **A strike's warning**: while the Pokémon winds up, a ring in Red round its middle at the strike's reach, 6 wide, growing from nothing to the reach over the wind-up, over a faint red disc at the full reach (alpha 36); a "!" in Black 56 over its head. As the strike lands, a white ring at the reach fading over 0.25 s; a line it broke flashes Red and is gone.
+- **A loop counted**: a white ring from the body out to 220, fading over 0.4 s.
+- **The cards**: top left, a panel with the Pokémon's name in Black 34 and CALM with three pips (discs of 15, filled Green once earned); top right under the hints, a panel DISC with four pips in Gold, spent ones Rule.
+- **The brief**, before the disc is out: the ground dimmed (alpha 120), a panel 1100 by 470 at the middle with THE LOOP CATCH in Black 44, the species' portrait at 2× on its disc and its name, three lines of how to play in Bold 30 on 46 leading, and START / BACK in the hints.
+- **The end**: the same dimmed ground, a panel 900 by 260 with CALMED in Black 56 in Green, or IT SLIPPED AWAY in Muted, and a line under it in Bold 30; the hint to go on.
+
 ### Menu screens (G10)
 
 Every full-screen menu is the same frame: the backdrop, its title at the top left, key hints at the top right, and its content between rows 132 and 1032 with 64 margins and 32 gutters. Its parts rise or slide into place over 0.25–0.45 s when it opens.

@@ -13532,3 +13532,43 @@ out where the rules already bite. Ids 3101 to 3107 for both the moves and the ab
   `OpenWildField.OursOpen`), so nothing before it moves, and is met at its own levels, never mapped. Paldea's batch of 50
   placeable species stand in the ten zones of level 22 and up, five to a zone (six on the western coast), weight 1 each
   beside the zone's own 100 or so, at their evolution level to four above.
+
+## The loop catch (plan 44 · SD10)
+
+Ranger's drawn loop as a mechanic, everything in it ours: the station, its warden Mira Penhallow, the disc she lends and
+the eight tasks (decision 8, answered 2026-11-22: build it). The numbers are ours. The rules are `Models/LoopCatch.cs`,
+GPU-free; the tasks are `Data/loop-catch.json`.
+
+- **Nothing of the player's is in it.** The disc is lent and is no item; the team plays no part; no battle is fought and
+  nothing of `BattleCore` is touched. The Pokémon is never the player's: it does its task for the station and goes free,
+  so the Pokédex, the research record, the Nuzlocke and the randomiser's species are told nothing. The warden's rewards
+  are ordinary `give`s, which the randomiser maps as any gift.
+- **The field** is the screen's own, in layout units: the disc goes anywhere from 120 to 1800 across and 130 to 1010
+  down; the Pokémon keeps to 380 to 1540 across and 390 to 750 down, so a loop fits round it wherever it stands. The
+  game runs sixty ticks a second.
+- **The disc** moves with the pointer, or with the arrows or the stick at 900 units a second. It draws while Confirm or
+  the mouse's button is held, and lifting it takes the line away at no cost. The line is 1,900 units long at most: its
+  oldest end is let go.
+- **A loop** is counted when the newest stretch of the line crosses an earlier one, the shape so closed holds the middle
+  of the Pokémon's body, goes round the whole of it (it passes no nearer that middle than the body's 70) and is no smaller than 15,000 square units. A
+  shape closed that holds nothing is cut out of the line, which goes on from where it crossed. A counted loop clears the
+  line, calms the Pokémon a step and sets its next strike back. **Three loops calm it.**
+- **Its movement** goes by its Pokédex shape and base Speed (40 + 1.6 × Speed units a second, between 60 and 260):
+  a four-legged one runs and stands by turns, an upright one walks and stops, a winged one never stops and sweeps in
+  arcs, a long one weaves, a fish darts and glides, a round or floating one drifts. Each loop slows it by a fifth. Its
+  chance is its own generator on the seed (`SplitMix`, drawn from `Dice` once as the screen opens), and nothing the
+  player does draws from it.
+- **A strike**: every so often (each task's own interval, a quarter either way) it winds up for 0.9 s, moving at a third
+  of its pace, and strikes round itself at the task's reach. **A line any part of which is within the reach is broken**,
+  and the disc must be lifted before it draws again; it costs one of the disc's four charges, and a disc with none left
+  ends the try: the Pokémon slips away. Lifting the disc, or keeping the whole line out of reach, costs nothing. Each
+  loop counted makes the strikes a quarter rarer. The timing assist (plan 12 · Q24) asks its usual: Generous doubles the
+  wind-up, Automatic lifts the disc for the player as a strike would have broken the line.
+- **Leaving** with Cancel is the try given up: the same as the Pokémon slipping away. A try costs nothing and may be had
+  again at once.
+- **The station's tasks** come one at a time in the order of the file, easiest first (the story's
+  `VAR_LOOP_CATCH_TASKS` counts those done; no save field). Each pays its own prize once. With all eight done the
+  station has one errand a day, one of the eight drawn on the script's die, paying a Revive (`FLAG_DAILY_LOOP_CATCH`,
+  set only when the Pokémon is calmed, so a try that fails may be had again that day).
+- **A game with no window** plays a try at once by the autopilot (`LoopAutopilot`: rings drawn round the Pokémon just
+  outside its reach, the disc lifted at a wind-up).

@@ -1393,6 +1393,10 @@ public partial class GameEngine
                     // A course of trick surfing (plan 42 · PS7): the script hears the place as the field comes back
                     game.OpenRide(counter ?? "");
                     break;
+                case ScriptScreen.LoopCatch:
+                    // A try of the loop catch (plan 44 · SD10): the script hears whether the Pokémon was calmed
+                    game.OpenLoop(counter ?? "");
+                    break;
                 case ScriptScreen.DelveBoard:
                     // The camp's board (plan 44 · SD9): the script waits until it is put down
                     game.OpenDelveBoard();

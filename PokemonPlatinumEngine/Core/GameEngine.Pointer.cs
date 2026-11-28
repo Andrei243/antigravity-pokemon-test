@@ -15,6 +15,8 @@ public partial class GameEngine
     private readonly UiPointer pointer = new();
     private PointerFrame? pointerSet;
     private bool clickHeld;
+    /// <summary>The mouse's frame as the pointer last took it, for what reads the button held itself (the loop catch's disc).</summary>
+    private PointerFrame pointerNow;
 
     /// <summary>Where the picture stands in the window, as the last frame drawn fitted it (plan 12 · Q6).</summary>
     public Viewport Viewport { get; private set; } = Viewport.Identity;
@@ -39,6 +41,7 @@ public partial class GameEngine
             frame = set;
             pointerSet = null;
         }
+        pointerNow = frame;
         var actions = InputManager.Fed ?? ActionFrame.None;
         pointer.Update(frame, actions.Pressed != 0, dt);
         if (!frame.Held) clickHeld = false;
@@ -122,6 +125,9 @@ public partial class GameEngine
                 return new Pointable(flow.TownMapScreen.HitTest, flow.TownMapScreen.PointAt);
             case GameState.Evolution:
                 return new Pointable(flow.EvolutionScreen.HitTest, flow.EvolutionScreen.PointAt);
+            // The loop catch (plan 44 · SD10): a click reads on past its brief and its end; the try itself reads the button held
+            case GameState.Loop when flow.LoopScreen.Phase != LoopPhase.Playing:
+                return Pointable.ReadsOn;
             // The card-flip table (plan 42 · PS3)
             case GameState.Cabinet:
                 return flow.MatchThreeScreen.IsActive ? flow.MatchThreeScreen : flow.PictureLogicScreen;

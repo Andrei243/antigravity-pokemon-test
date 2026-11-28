@@ -411,6 +411,9 @@ public sealed class ScriptLibrary
                     case Op.Delve when i.Other != null && Models.Delve.DelveHollows.Get(i.Other) == null:
                         Wrong(i, $"there is no hollow '{i.Other}'");
                         break;
+                    case Op.Loop when Models.LoopTasks.Get(i.Other) == null:
+                        Wrong(i, $"there is no loop catch task '{i.Other}'");
+                        break;
                     case Op.Tour when i.Other != null && Models.PhotoTourCourses.Get(i.Other) == null:
                         Wrong(i, $"there is no photo tour course '{i.Other}'");
                         break;

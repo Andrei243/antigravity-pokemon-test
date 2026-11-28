@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "The loop catch's tasks (Data/loop-catch.json, plan 44 · SD10)",
+  "description": "Written by SchemaTests (plan 24 · X4) from the records the game reads the file into; don't edit by hand. The game reads the file strictly: a key no field has stops it.",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "species": {
+            "type": "string"
+          },
+          "strikeEvery": {
+            "type": "number"
+          },
+          "reach": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "species",
+          "strikeEvery",
+          "reach"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

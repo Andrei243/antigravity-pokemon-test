@@ -191,7 +191,9 @@ public enum GameState
     /// <summary>An arcade cabinet, the match-three or the picture-logic puzzle, a script's <c>gamecorner cabinet</c> waiting on it (plan 42 · PS6).</summary>
     Cabinet,
     /// <summary>A ride of the beaches, trick surfing, a script's <c>ride surf</c> waiting on it (plan 42 · PS7).</summary>
-    Ride
+    Ride,
+    /// <summary>The loop catch at the warden's station, a script's <c>loop go</c> waiting on it (plan 44 · SD10).</summary>
+    Loop
 }
 
 public partial class GameEngine
@@ -1837,6 +1839,9 @@ public partial class GameEngine
                 break;
             case GameState.DelveBoard:
                 UpdateDelveBoard();
+                break;
+            case GameState.Loop:
+                UpdateLoop(dt);
                 break;
             case GameState.PhotoTour:
                 UpdatePhotoTour(dt);
@@ -3706,6 +3711,9 @@ public partial class GameEngine
                 break;
             case GameState.DelveBoard:
                 DrawDelveBoard();
+                break;
+            case GameState.Loop:
+                DrawLoop();
                 break;
             case GameState.TourReport:
                 DrawTourReport();

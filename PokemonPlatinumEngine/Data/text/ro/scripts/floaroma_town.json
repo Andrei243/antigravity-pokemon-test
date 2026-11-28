@@ -24,5 +24,245 @@
         "Nu te mai văita. Ordinul e ordin. Acum fă-te că ești dur, ne privește un copil."
       ]
     }
+  ],
+  "LoopWarden": [
+    {
+      "en": [
+        "I'm Mira Penhallow, warden of the field station. When a job is too big for me, I ask a Pokémon."
+      ],
+      "text": [
+        "Sunt Mira Penhallow, paznica stației de teren. Când o treabă mă depășește, rog un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "A frightened one won't listen. This disc draws a loop of light round it, and three loops calm it."
+      ],
+      "text": [
+        "Unul speriat nu ascultă. Discul acesta trage o buclă de lumină în jurul lui, iar trei bucle îl liniștesc."
+      ]
+    },
+    {
+      "en": [
+        "Will you take the disc and lend me a hand?",
+        "YES",
+        "HOW?",
+        "NOT NOW"
+      ],
+      "text": [
+        "Iei discul și îmi dai o mână de ajutor?",
+        "DA",
+        "CUM?",
+        "NU ACUM"
+      ]
+    },
+    {
+      "en": [
+        "Hold the disc down and draw right round the Pokémon, until your line crosses itself."
+      ],
+      "text": [
+        "Ține discul apăsat și desenează de jur împrejurul Pokémonului, până când linia se încrucișează."
+      ]
+    },
+    {
+      "en": [
+        "When it winds up to strike, lift the disc or keep your line well clear. A struck line snaps."
+      ],
+      "text": [
+        "Când își ia avânt să lovească, ridică discul sau ține linia departe. Linia lovită se rupe."
+      ]
+    },
+    {
+      "en": [
+        "The disc holds four charges and each snapped line costs one. Come back whenever you're ready."
+      ],
+      "text": [
+        "Discul are patru încărcături și fiecare linie ruptă costă una. Revino când ești gata."
+      ]
+    },
+    {
+      "en": [
+        "No hurry. The jobs will keep."
+      ],
+      "text": [
+        "Nicio grabă. Treburile pot aștepta."
+      ]
+    },
+    {
+      "en": [
+        "It slipped away! No harm done. Come back and we'll try again."
+      ],
+      "text": [
+        "A scăpat! Nu-i nimic. Revino și mai încercăm."
+      ]
+    },
+    {
+      "en": [
+        "A fallen trunk blocks the path to the meadow. A Bidoof lives nearby, and nothing gnaws like it."
+      ],
+      "text": [
+        "Un trunchi căzut blochează poteca spre pajiște. Pe aproape stă un Bidoof, și nimeni nu roade ca el."
+      ]
+    },
+    {
+      "en": [
+        "Look at those teeth go! The path is clear, and the Bidoof trots off home."
+      ],
+      "text": [
+        "Ce mai lucrează dinții aceia! Poteca e liberă, iar Bidoof pleacă spre casă."
+      ]
+    },
+    {
+      "en": [
+        "Rocks have rolled into the spring and the flowers are going thirsty. A Geodude could shift them."
+      ],
+      "text": [
+        "Niște pietre s-au rostogolit în izvor și florilor li se face sete. Un Geodude le-ar putea muta."
+      ]
+    },
+    {
+      "en": [
+        "One rock after another, up and out! The water runs again, and the Geodude rolls away."
+      ],
+      "text": [
+        "Piatră după piatră, sus și afară! Apa curge din nou, iar Geodude se rostogolește mai departe."
+      ]
+    },
+    {
+      "en": [
+        "The wind took a little girl's ribbon to the top of a tall tree. A Starly could fetch it."
+      ],
+      "text": [
+        "Vântul a dus panglica unei fetițe în vârful unui copac înalt. Un Starly o poate aduce."
+      ]
+    },
+    {
+      "en": [
+        "Up it goes, and down it comes with the ribbon in its beak. Then it's off over the rooftops."
+      ],
+      "text": [
+        "Zboară sus și coboară cu panglica în cioc. Apoi dispare peste acoperișuri."
+      ]
+    },
+    {
+      "en": [
+        "The station's lantern has gone out. A Pachirisu's cheeks would charge it up in no time."
+      ],
+      "text": [
+        "Lanterna stației s-a stins. Obrajii unui Pachirisu ar încărca-o cât ai clipi."
+      ]
+    },
+    {
+      "en": [
+        "One spark from its cheeks and the lantern glows! The Pachirisu scampers back into the trees."
+      ],
+      "text": [
+        "O scânteie din obraji și lanterna luminează! Pachirisu o zbughește înapoi printre copaci."
+      ]
+    },
+    {
+      "en": [
+        "Our water gauge's float washed away down the stream. A Buizel could swim it back."
+      ],
+      "text": [
+        "Plutitorul de la măsurătorul apei a fost luat de pârâu. Un Buizel l-ar putea aduce înot."
+      ]
+    },
+    {
+      "en": [
+        "There it comes, pushing the float against the current! It dives, and it's gone."
+      ],
+      "text": [
+        "Iată-l cum împinge plutitorul contra curentului! Se scufundă și dus a fost."
+      ]
+    },
+    {
+      "en": [
+        "The flowerbeds by the shop are drooping. A Roselia knows just how to perk them up."
+      ],
+      "text": [
+        "Straturile de flori de lângă prăvălie s-au ofilit. O Roselia știe cum să le învioreze."
+      ]
+    },
+    {
+      "en": [
+        "Every stem stands straight again. The Roselia takes a last look and wanders off."
+      ],
+      "text": [
+        "Toate tulpinile stau iar drepte. Roselia mai aruncă o privire și pleacă agale."
+      ]
+    },
+    {
+      "en": [
+        "A slide of loose sand buried our boundary post. A Hippopotas could dig it out."
+      ],
+      "text": [
+        "O alunecare de nisip ne-a îngropat stâlpul de hotar. Un Hippopotas l-ar putea dezgropa."
+      ]
+    },
+    {
+      "en": [
+        "Sand flies everywhere, and there's the post! The Hippopotas plods off, very pleased."
+      ],
+      "text": [
+        "Zboară nisip peste tot, și iată stâlpul! Hippopotas pleacă tacticos, foarte mulțumit."
+      ]
+    },
+    {
+      "en": [
+        "The last one is the hardest. The water pump has stopped, and a Luxio could jolt it awake."
+      ],
+      "text": [
+        "Ultima e cea mai grea. Pompa de apă s-a oprit, iar un Luxio ar trezi-o cu o descărcare."
+      ]
+    },
+    {
+      "en": [
+        "A crack of sparks, a cough, and the pump is humming! The Luxio gives a nod and leaves."
+      ],
+      "text": [
+        "Un pocnet de scântei, o tuse, și pompa toarce din nou! Luxio dă din cap și pleacă."
+      ]
+    },
+    {
+      "en": [
+        "That was every job on my list. Drop by any day. There's always some errand or other."
+      ],
+      "text": [
+        "Acestea au fost toate treburile de pe listă. Treci oricând. Se mai găsește câte ceva de făcut."
+      ]
+    },
+    {
+      "en": [
+        "There's an errand going today. Will you take the disc?"
+      ],
+      "text": [
+        "Azi avem o treabă. Iei discul?"
+      ]
+    },
+    {
+      "en": [
+        "Here's the disc. Our helper today is waiting just over there."
+      ],
+      "text": [
+        "Poftim discul. Ajutorul nostru de azi așteaptă chiar acolo."
+      ]
+    },
+    {
+      "en": [
+        "Errand done, and our helper is free again. This is for your trouble."
+      ],
+      "text": [
+        "Treaba e gata, iar ajutorul nostru e din nou liber. Asta e pentru osteneală."
+      ]
+    },
+    {
+      "en": [
+        "That's today's errand done. Come by tomorrow."
+      ],
+      "text": [
+        "Treaba de azi e făcută. Treci mâine."
+      ]
+    }
   ]
 }

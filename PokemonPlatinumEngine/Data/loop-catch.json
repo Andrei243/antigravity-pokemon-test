@@ -1,0 +1,15 @@
+// The loop catch (plan 44 · SD10; docs/mechanics/rulings.md, "The loop catch"). Written by hand, read strictly.
+// The warden's tasks in the order she gives them, easiest first: the species, the seconds between its strikes (a quarter
+// either way) and how far a strike reaches from the middle of its body, in the layout's units (150 to 220).
+{
+  "tasks": [
+    { "id": "fallen_trunk", "species": "Bidoof", "strikeEvery": 4.0, "reach": 150 },
+    { "id": "choked_spring", "species": "Geodude", "strikeEvery": 3.7, "reach": 165 },
+    { "id": "caught_ribbon", "species": "Starly", "strikeEvery": 3.5, "reach": 170 },
+    { "id": "dim_lantern", "species": "Pachirisu", "strikeEvery": 3.3, "reach": 175 },
+    { "id": "lost_float", "species": "Buizel", "strikeEvery": 3.1, "reach": 185 },
+    { "id": "dry_flowerbeds", "species": "Roselia", "strikeEvery": 2.9, "reach": 195 },
+    { "id": "buried_marker", "species": "Hippopotas", "strikeEvery": 2.7, "reach": 205 },
+    { "id": "stopped_pump", "species": "Luxio", "strikeEvery": 2.5, "reach": 215 }
+  ]
+}

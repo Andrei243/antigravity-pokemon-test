@@ -401,6 +401,8 @@ public sealed partial class ScriptRunner
         Op.Tour => i.Name is "ride" or "report",
         // A run down a hollow and the board are played by the player; the rest only reads or hands over
         Op.Delve => i.Name is "go" or "board",
+        // A try of the loop catch is the player's to play (plan 44 · SD10)
+        Op.Loop => true,
         // A drill is a screen the player plays; the rest is asked and changed without one (plan 36 · TR2)
         Op.Train => i.Name == "drill" || i.Name is "peak" or "tera" && i.Other != "check",
         // A power is learned or granted without a screen (plan 36 · TR8)
@@ -1619,6 +1621,10 @@ public sealed partial class ScriptRunner
             case Op.Delve:
                 DelveCommand(i);
                 break;
+            // The loop catch (plan 44 · SD10)
+            case Op.Loop:
+                LoopCommand(i);
+                break;
             // The training hall (plan 36 · TR2)
             case Op.Train:
                 TrainCommand(i);
@@ -2392,6 +2398,17 @@ public sealed partial class ScriptRunner
                 break;
             }
         }
+    }
+
+    /// <summary>
+    /// The loop catch (plan 44 · SD10): <c>loop go "&lt;task&gt;"</c> opens a try at one of the station's tasks, the script
+    /// waiting until it is left; RESULT 1 when the Pokemon was calmed, else 0.
+    /// </summary>
+    private void LoopCommand(Instruction i)
+    {
+        if (Models.LoopTasks.Get(i.Other) is not { } task) throw Wrong(i, $"there is no loop catch task '{i.Other}'");
+        host.Open(ScriptScreen.LoopCatch, Subject, task.Id);
+        afterBusy = () => Result = host.Answer;
     }
 
     private void TourCommand(Instruction i)

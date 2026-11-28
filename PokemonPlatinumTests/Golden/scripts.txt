@@ -22709,6 +22709,28 @@ from Galactic Grunt at 163,641 of Sinnoh
 way -
   Galactic Grunt> Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?
   Galactic Grunt> Quit moaning. Orders are orders. Now look tough, there's a kid watching.
+=== floaroma_town.LoopWarden
+from Mira Penhallow at 168,662 of Sinnoh
+way 0
+  Mira Penhallow> I'm Mira Penhallow, warden of the field station. When a job is too big for me, I ask a Pokémon.
+  Mira Penhallow> A frightened one won't listen. This disc draws a loop of light round it, and three loops calm it.
+  Mira Penhallow> Will you take the disc and lend me a hand?
+  Mira Penhallow> A fallen trunk blocks the path to the meadow. A Bidoof lives nearby, and nothing gnaws like it.
+  Mira Penhallow> Look at those teeth go! The path is clear, and the Bidoof trots off home.
+  > Lucas received 3 × Potion!
+  > Lucas put them away in the Medicine pocket.
+  ? Will you take the disc and lend me a hand? = YES
+  * open LoopCatch fallen_trunk 1
+  * fanfare FanfareItem
+  = VAR_LOOP_CATCH_TASKS 0 -> 1
+way 2, from answer 1
+  Mira Penhallow> No hurry. The jobs will keep.
+  ? Will you take the disc and lend me a hand? = NOT NOW
+way 1, from answer 1
+  Mira Penhallow> Hold the disc down and draw right round the Pokémon, until your line crosses itself.
+  Mira Penhallow> When it winds up to strike, lift the disc or keep your line well clear. A struck line snaps.
+  Mira Penhallow> The disc holds four charges and each snapped line costs one. Come back whenever you're ready.
+  ? Will you take the disc and lend me a hand? = HOW?
 === floaroma_town.PhotoSpot
 from the tile read at 182,662 of Sinnoh
 way -

@@ -7687,6 +7687,24 @@
       "Peak": "Peak of the Day"
     }
   },
+  "loopCatch": {
+    "title": "THE LOOP CATCH",
+    "calm": "CALM",
+    "disc": "DISC",
+    "start": "START",
+    "draw": "DRAW",
+    "giveUp": "GIVE UP",
+    "goOn": "GO ON",
+    "how": {
+      "draw": "Hold the disc down and move it to draw a line of light.",
+      "loops": "Close three loops right round the whole Pokémon to calm it.",
+      "strike": "A line within reach of a strike snaps. Lift the disc."
+    },
+    "calmed": "CALMED",
+    "slipped": "IT SLIPPED AWAY",
+    "calmedLine": "{pokemon} is ready to lend a hand.",
+    "slippedLine": "{pokemon} ran off. You can try again."
+  },
   "delve": {
     "floor": "Floor {n} of {of}",
     "leader": "LEADER",

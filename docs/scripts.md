@@ -970,6 +970,14 @@ Plan 44 · SD8, SD9 (`Models/Delve/`, `Core/GameEngine.Delve.cs`; rulings, "The 
 | `delve rank` | `RESULT` the camp's rank: the hollows cleared. |
 | `delve reward` | The next prize the board's requests have earned, handed over as `give` hands an item (its fanfare, its two lines), `RESULT` 1; nothing waiting, 0. |
 
+### The loop catch
+
+Plan 44 · SD10 (`Models/LoopCatch.cs`, `Core/GameEngine.Loop.cs`; rulings, "The loop catch"). The warden's one command, `loop`; a task is an id of `Data/loop-catch.json`.
+
+| Command | What it does |
+|---|---|
+| `loop go "<task>"` | A try at the task (`GameState.Loop`, `LoopScreen`): its Pokémon is calmed by three loops drawn round it. The script waits until the screen is left and hears `RESULT` 1 when it was calmed, else 0 (it slipped away, or the try was given up). Nothing of the player's is touched, and what a task pays is the script's own `give`. A game with no window plays the try at once by the autopilot (a test has it fail with `HeadlessScriptHost.LoopSlips`). It stops a scene's hurry. |
+
 ### Treats
 
 Plan 35 · BN3; `docs/mechanics/rulings.md`, "Care". The bakers' one command, `treat`; the confectioners sell with `shop "treats"`.
