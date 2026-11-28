@@ -26,11 +26,11 @@ public class LoopCatchTests
     private static List<Vector2> Ring(Vector2 at, float radius, int points = 32) =>
         Enumerable.Range(0, points).Select(i => at + new Vector2(MathF.Cos(i * MathF.Tau / points), MathF.Sin(i * MathF.Tau / points)) * radius).ToList();
 
-    /// <summary>A circle drawn round where the Pokémon stood as it began, a little past a full turn, at once.</summary>
+    /// <summary>A circle drawn round the Pokémon as it goes, past a full turn until the line crosses itself.</summary>
     private static LoopEvents DrawRound(LoopCatch game, float radius, Func<Vector2>? middle = null, int steps = 28)
     {
         var all = LoopEvents.None;
-        for (int i = 0; i <= steps + 3; i++)
+        for (int i = 0; i <= steps * 3 / 2; i++)
         {
             float a = i * MathF.Tau / steps;
             var at = (middle?.Invoke() ?? game.At) + new Vector2(MathF.Cos(a), MathF.Sin(a)) * radius;
@@ -277,6 +277,56 @@ public class LoopCatchTests
             var lost = Enumerable.Range(1, 100).Where(seed => LoopAutopilot.Play(new LoopCatch(task, (uint)seed)) != LoopOutcome.Calmed).ToList();
             Assert.True(lost.Count == 0, $"{task.Id} slipped away on seeds {string.Join(", ", lost)}");
         }
+    }
+
+    /// <summary>A hand on the arrows or a stick: no pointer, the disc moved at its own speed round a ring outside the reach.</summary>
+    private static LoopInput ByStick(LoopCatch game)
+    {
+        float radius = game.Task.Reach + LoopAutopilot.Margin;
+        var from = game.Disc - game.At;
+        float angle = MathF.Atan2(from.Y, from.X);
+        bool onTheRing = MathF.Abs(from.Length() - radius) < 40f;
+        var aim = game.At + new Vector2(MathF.Cos(angle + 0.25f), MathF.Sin(angle + 0.25f)) * radius;
+        var stick = (aim - game.Disc) / (LoopCatch.DiscSpeed * LoopCatch.Tick);
+        if (stick.LengthSquared() > 1f) stick = Vector2.Normalize(stick);
+        return new LoopInput(stick, null, !game.WindingUp && (game.Drawing || onTheRing));
+    }
+
+    [Fact]
+    public void EveryTaskCanBeWonByTheStickAlone()
+    {
+        foreach (var task in LoopTasks.All)
+        {
+            var lost = new List<int>();
+            for (int seed = 1; seed <= 40; seed++)
+            {
+                var game = new LoopCatch(task, (uint)seed);
+                while (game.Outcome == LoopOutcome.Going && game.Ticks < LoopAutopilot.TickCap) game.Step(ByStick(game));
+                if (game.Outcome != LoopOutcome.Calmed) lost.Add(seed);
+            }
+            Assert.True(lost.Count == 0, $"{task.Id} was lost by the stick on seeds {string.Join(", ", lost)}");
+        }
+    }
+
+    [Fact]
+    public void ItAnswersEveryLoopButTheLastWithAStrike()
+    {
+        var game = new LoopCatch(Task(), 7);
+        DrawRound(game, 160);
+        int ticks = 0;
+        while ((game.Step(Lifted) & LoopEvents.WindUp) == 0) ticks++;
+        Assert.InRange(ticks * LoopCatch.Tick, LoopCatch.StartleSeconds - 0.1f, LoopCatch.StartleSeconds + 0.1f);
+        // and the autopilot's whole tries meet them: two at least in every one
+        foreach (var task in LoopTasks.All)
+            for (int seed = 1; seed <= 100; seed++)
+            {
+                var played = new LoopCatch(task, (uint)seed);
+                var hand = new LoopAutopilot();
+                int struck = 0;
+                while (played.Outcome == LoopOutcome.Going && played.Ticks < LoopAutopilot.TickCap)
+                    if ((played.Step(hand.Next(played)) & LoopEvents.Struck) != 0) struck++;
+                Assert.True(struck >= LoopCatch.CalmNeeded - 1, $"{task.Id} seed {seed}: {struck} strikes");
+            }
     }
 
     [Fact]

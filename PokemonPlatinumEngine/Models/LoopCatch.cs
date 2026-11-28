@@ -94,6 +94,8 @@ public sealed class LoopCatch
     public const int CalmNeeded = 3;
     public const int Charges = 4;
     public const float WindUpSeconds = 0.9f;
+    /// <summary>A loop startles it: it winds up this soon after one that doesn't calm it.</summary>
+    public const float StartleSeconds = 0.4f;
     /// <summary>The pace's share kept with each loop, and how much longer the wait for a strike grows with each.</summary>
     public const float CalmedPace = 0.8f, CalmedPatience = 1.25f;
     private const float WindUpPace = 0.35f;
@@ -327,7 +329,8 @@ public sealed class LoopCatch
         line.Clear();
         line.Add(to);
         windUp = 0f;
-        untilStrike = NextWait();
+        // It strikes back at once: every loop but the last has to be got away from
+        untilStrike = StartleSeconds;
         if (Calm < CalmNeeded) return LoopEvents.Looped;
         Outcome = LoopOutcome.Calmed;
         Velocity = Vector2.Zero;

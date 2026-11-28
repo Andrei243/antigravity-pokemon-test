@@ -13552,7 +13552,8 @@ GPU-free; the tasks are `Data/loop-catch.json`.
 - **A loop** is counted when the newest stretch of the line crosses an earlier one, the shape so closed holds the middle
   of the Pokémon's body, goes round the whole of it (it passes no nearer that middle than the body's 70) and is no smaller than 15,000 square units. A
   shape closed that holds nothing is cut out of the line, which goes on from where it crossed. A counted loop clears the
-  line, calms the Pokémon a step and sets its next strike back. **Three loops calm it.**
+  line and calms the Pokémon a step, and it **startles**: any strike winding up is dropped and a new one begins 0.4 s
+  later, so every loop but the last is answered by a strike to be got away from. **Three loops calm it.**
 - **Its movement** goes by its Pokédex shape and base Speed (40 + 1.6 × Speed units a second, between 60 and 260):
   a four-legged one runs and stands by turns, an upright one walks and stops, a winged one never stops and sweeps in
   arcs, a long one weaves, a fish darts and glides, a round or floating one drifts. Each loop slows it by a fifth. Its
@@ -13562,7 +13563,7 @@ GPU-free; the tasks are `Data/loop-catch.json`.
   of its pace, and strikes round itself at the task's reach. **A line any part of which is within the reach is broken**,
   and the disc must be lifted before it draws again; it costs one of the disc's four charges, and a disc with none left
   ends the try: the Pokémon slips away. Lifting the disc, or keeping the whole line out of reach, costs nothing. Each
-  loop counted makes the strikes a quarter rarer. The timing assist (plan 12 · Q24) asks its usual: Generous doubles the
+  loop counted makes the strikes after the startled one a quarter rarer. The timing assist (plan 12 · Q24) asks its usual: Generous doubles the
   wind-up, Automatic lifts the disc for the player as a strike would have broken the line.
 - **Leaving** with Cancel is the try given up: the same as the Pokémon slipping away. A try costs nothing and may be had
   again at once.

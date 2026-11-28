@@ -327,15 +327,20 @@ The rulings' "The loop catch" has every number; the style guide's "The loop catc
   the Nuzlocke and the randomiser's species are told nothing. No medal (the session's list names none).
 - **Decision (a loop goes round the whole body)**: a loop passes no nearer the middle than the body's 70. At half that,
   three tiny circles could be drawn through the Pokémon before its first strike.
+- **Decision (it answers a loop)**: every loop but the last startles it into a strike 0.4 s later. With the wait set
+  back instead, a steady ring was closed before any strike came, so the strike never played.
 - **The script command** `Op.Loop` (`loop go "<task>"`), both hosts (`HeadlessScriptHost.LoopSeed`, `LoopSlips`); it
   stops a scene's hurry.
 - **Tests** (`LoopCatchTests`): a loop closing round a point, one that holds nothing, three loops calming it; the path
   the same for a seed and untouched by the disc; the ground kept; the gaits; a strike breaking a line and one that
   doesn't reach; the charges; the assist; the line's length; the stick; the screen by buttons alone; the warden's tasks
-  in turn, her errand once a day and her two ways out; a game with no window.
+  in turn, her errand once a day and her two ways out; a game with no window; every task won by a hand that has only the
+  stick (seeds 1 to 40); two strikes at least in each of the autopilot's tries.
 - **Shots**: the `loop` mode (`tools/ShotHarness/Modes/LoopCatch.cs`, not part of `all`; it builds, **never run**):
   lp01_station, lp02_brief, lp03_drawing, lp04_strike, lp05_first_loop, lp06_calmed.
 - **Owed**: those shots taken and looked at, so "done when" holds only in tests; the difficulty (intervals, reach,
-  pace) tried by hand with a pad's stick and a mouse, since only the autopilot has played it; the mode's line in
+  pace) tried by hand with a pad's stick and a mouse, since only the autopilot and the tests' stick hand (both know every
+  wind-up the tick it begins) have played it; the user's word on the warden having no condition, so the daily errand's
+  Revive is to be had from Floaroma Town on; the mode's line in
   `CLAUDE.md`'s commands (`dotnet run --project tools/ShotHarness -- <out dir> loop`); sounds and a song of its own
   (it plays the field's, with the menu's and the field's effects and the species' cry); a hub door (plan 41).
