@@ -273,6 +273,7 @@ if (mode == "gifts") h.GiftsMode();
 if (mode == "lifestyle") h.LifestyleMode();
 if (mode == "tour") h.TourMode();
 if (mode == "delve") h.DelveMode();
+if (mode == "loop") h.LoopMode();
 
 h.Close();
 Raylib.CloseWindow();

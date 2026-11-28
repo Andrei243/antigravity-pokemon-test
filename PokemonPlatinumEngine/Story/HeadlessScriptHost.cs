@@ -244,6 +244,13 @@ public sealed partial class HeadlessScriptHost : IScriptHost
     public Models.Delve.DelveRecord? DelveRecord { get; set; } = new();
     public uint DelveSeed { get; set; } = 1;
 
+    /// <summary>
+    /// The loop catch (plan 44 · SD10): a try is played at once by the autopilot on <see cref="LoopSeed"/>, unless
+    /// <see cref="LoopSlips"/> has the player give it up.
+    /// </summary>
+    public uint LoopSeed { get; set; } = 1;
+    public bool LoopSlips { get; set; }
+
     /// <summary>The runs played, the last last (a test's eye on what a run did).</summary>
     public List<Models.Delve.DelveRun> DelveRuns { get; } = new();
 
@@ -1127,6 +1134,12 @@ public sealed partial class HeadlessScriptHost : IScriptHost
             TourAutopilot.Play(ride);
             Answer = PhotoTour.Take(ride);
             Log[^1] = $"open {screen} {course.Id} {Answer}";
+        }
+        // A try of the loop catch (plan 44 · SD10)
+        if (screen == ScriptScreen.LoopCatch && Models.LoopTasks.Get(counter) is { } loop)
+        {
+            Answer = !LoopSlips && Models.LoopAutopilot.Play(new Models.LoopCatch(loop, LoopSeed)) == Models.LoopOutcome.Calmed ? 1 : 0;
+            Log[^1] = $"open {screen} {loop.Id} {Answer}";
         }
         // A run down a hollow (plan 44 · SD8, SD9): played at once by the plain policy and settled at the camp
         if (screen == ScriptScreen.Delve && Models.Delve.DelveHollows.Get(counter) is { } hollow && DelveRecord != null)

@@ -304,6 +304,7 @@ public class ScriptTests
           delve board
           delve rank
           delve reward
+          loop go "fallen_trunk"
           train open
           train drill
           train reset all

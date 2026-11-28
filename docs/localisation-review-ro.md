@@ -80,4 +80,6 @@ Written by a translation session (plan 17 · N6); for the user's review. Each ro
 
 | `ui.json` | VERSUS for four (plan 13 · V21): battleRoom.menu.multi, blurb.multi, pick.multiFirstSide, multiSecondSide; versus.third, fourth | VERSUS, TWO ON TWO / {player}, first side: which team? | VERSUS, DOI CONTRA DOI / {player}, prima parte: ce echipă? | "parte" for a battle's side; "tabără" is the other choice |
 
+| `scripts/floaroma_town.json` (LoopWarden), `world/floaroma_town.json`, `ui.json` loopCatch.* | the loop catch: the warden Mira Penhallow's lines and the screen's words (plan 44 · SD10) | THE LOOP CATCH / warden / disc / Close three loops right round the whole Pokémon to calm it. / IT SLIPPED AWAY | PRINDEREA ÎN BUCLĂ / paznica / disc / Închide trei bucle de jur împrejurul întregului Pokémon ca să-l liniștești. / A SCĂPAT | written fresh, for the user's review; "paznica" for the warden as the Floccesy Reserve's lines have it; CALM stays "CALM" (the same word in Romanian) |
+
 Place names and people's names (Looker, Quincy Rowan-Pike, Ione Calder, towns of the games) are kept in English, as the existing files do.

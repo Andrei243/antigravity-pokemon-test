@@ -19,3 +19,148 @@ script Grunts
 script PhotoSpot
   photo spot "sinnoh_floaroma_flowers"
   end
+
+
+# The loop catch (plan 44 · SD10; ours): Mira Penhallow, warden of the field station west of the flowerbeds, lends a
+# looping disc. Her eight tasks come one at a time (VAR_LOOP_CATCH_TASKS counts those done), each a Pokemon calmed by
+# three loops that does one job for the station and goes free. With all eight done she has one errand a day.
+script LoopWarden
+  face self player
+  speaker self
+  if var VAR_LOOP_CATCH_TASKS >= 8 goto Daily
+  if var VAR_LOOP_CATCH_TASKS >= 1 goto Offer
+  say "I'm Mira Penhallow, warden of the field station. When a job is too big for me, I ask a Pokémon."
+  say "A frightened one won't listen. This disc draws a loop of light round it, and three loops calm it."
+label Offer
+  choose "Will you take the disc and lend me a hand?" "YES" "HOW?" "NOT NOW"
+  if result == 1 goto How
+  if result == 2 goto Later
+  if var VAR_LOOP_CATCH_TASKS == 0 goto Trunk
+  if var VAR_LOOP_CATCH_TASKS == 1 goto Spring
+  if var VAR_LOOP_CATCH_TASKS == 2 goto Ribbon
+  if var VAR_LOOP_CATCH_TASKS == 3 goto Lantern
+  if var VAR_LOOP_CATCH_TASKS == 4 goto Float
+  if var VAR_LOOP_CATCH_TASKS == 5 goto Beds
+  if var VAR_LOOP_CATCH_TASKS == 6 goto Marker
+  goto Pump
+label How
+  say "Hold the disc down and draw right round the Pokémon, until your line crosses itself."
+  say "When it winds up to strike, lift the disc or keep your line well clear. A struck line snaps."
+  say "The disc holds four charges and each snapped line costs one. Come back whenever you're ready."
+  end
+label Later
+  say "No hurry. The jobs will keep."
+  end
+label GotAway
+  say "It slipped away! No harm done. Come back and we'll try again."
+  end
+label Trunk
+  say "A fallen trunk blocks the path to the meadow. A Bidoof lives nearby, and nothing gnaws like it."
+  loop go "fallen_trunk"
+  if result == 0 goto GotAway
+  say "Look at those teeth go! The path is clear, and the Bidoof trots off home."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Potion" 3
+  end
+label Spring
+  say "Rocks have rolled into the spring and the flowers are going thirsty. A Geodude could shift them."
+  loop go "choked_spring"
+  if result == 0 goto GotAway
+  say "One rock after another, up and out! The water runs again, and the Geodude rolls away."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Escape Rope" 2
+  end
+label Ribbon
+  say "The wind took a little girl's ribbon to the top of a tall tree. A Starly could fetch it."
+  loop go "caught_ribbon"
+  if result == 0 goto GotAway
+  say "Up it goes, and down it comes with the ribbon in its beak. Then it's off over the rooftops."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Poké Ball" 10
+  end
+label Lantern
+  say "The station's lantern has gone out. A Pachirisu's cheeks would charge it up in no time."
+  loop go "dim_lantern"
+  if result == 0 goto GotAway
+  say "One spark from its cheeks and the lantern glows! The Pachirisu scampers back into the trees."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Super Potion" 3
+  end
+label Float
+  say "Our water gauge's float washed away down the stream. A Buizel could swim it back."
+  loop go "lost_float"
+  if result == 0 goto GotAway
+  say "There it comes, pushing the float against the current! It dives, and it's gone."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Net Ball" 5
+  end
+label Beds
+  say "The flowerbeds by the shop are drooping. A Roselia knows just how to perk them up."
+  loop go "dry_flowerbeds"
+  if result == 0 goto GotAway
+  say "Every stem stands straight again. The Roselia takes a last look and wanders off."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Sitrus Berry" 3
+  end
+label Marker
+  say "A slide of loose sand buried our boundary post. A Hippopotas could dig it out."
+  loop go "buried_marker"
+  if result == 0 goto GotAway
+  say "Sand flies everywhere, and there's the post! The Hippopotas plods off, very pleased."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Revive" 2
+  end
+label Pump
+  say "The last one is the hardest. The water pump has stopped, and a Luxio could jolt it awake."
+  loop go "stopped_pump"
+  if result == 0 goto GotAway
+  say "A crack of sparks, a cough, and the pump is humming! The Luxio gives a nod and leaves."
+  addvar VAR_LOOP_CATCH_TASKS 1
+  give "Ultra Ball" 5
+  say "That was every job on my list. Drop by any day. There's always some errand or other."
+  end
+label Daily
+  if flag FLAG_DAILY_LOOP_CATCH goto Tomorrow
+  ask "There's an errand going today. Will you take the disc?"
+  if no goto Later
+  say "Here's the disc. Our helper today is waiting just over there."
+  random 8
+  if result == 1 goto AgainSpring
+  if result == 2 goto AgainRibbon
+  if result == 3 goto AgainLantern
+  if result == 4 goto AgainFloat
+  if result == 5 goto AgainBeds
+  if result == 6 goto AgainMarker
+  if result == 7 goto AgainPump
+  loop go "fallen_trunk"
+  goto Errand
+label AgainSpring
+  loop go "choked_spring"
+  goto Errand
+label AgainRibbon
+  loop go "caught_ribbon"
+  goto Errand
+label AgainLantern
+  loop go "dim_lantern"
+  goto Errand
+label AgainFloat
+  loop go "lost_float"
+  goto Errand
+label AgainBeds
+  loop go "dry_flowerbeds"
+  goto Errand
+label AgainMarker
+  loop go "buried_marker"
+  goto Errand
+label AgainPump
+  loop go "stopped_pump"
+  goto Errand
+label Errand
+  if result == 0 goto GotAway
+  say "Errand done, and our helper is free again. This is for your trouble."
+  setflag FLAG_DAILY_LOOP_CATCH
+  give "Revive"
+  end
+label Tomorrow
+  say "That's today's errand done. Come by tomorrow."
+  end

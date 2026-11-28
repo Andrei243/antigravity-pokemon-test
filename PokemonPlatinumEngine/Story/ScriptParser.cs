@@ -1270,6 +1270,13 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Tour, Line = line, Name = tourWord, Other = tourWord is "ride" or "open" ? r.Text("a course's id") : null };
             }
 
+            // The loop catch (plan 44 · SD10): `loop go "<task>"`
+            case "loop":
+            {
+                string loopWord = r.OneOf("go");
+                return new Instruction { Op = Op.Loop, Line = line, Name = loopWord, Other = r.Text("a task's id") };
+            }
+
             // The delve (plan 44 · SD8, SD9): `delve go "<hollow>"`, `delve open "<hollow>"`, `delve able`, `delve board`,
             // `delve rank`, `delve reward`
             case "delve":

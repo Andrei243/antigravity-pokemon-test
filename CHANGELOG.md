@@ -11,6 +11,8 @@ What changes from one release to the next, for players. Every session's close-ou
 - VERSUS, TWO ON TWO in the Battle Room: four people at one screen, two on a side with a team each, in a double battle at level 50. Partners choose one after the other, a curtain comes down between the two sides, and each of the four can use a controller of their own or pass one round. A side loses when both its teams are out.
 - With a friend as your partner, you can now both switch to the Pokémon in the same position of your own teams in one turn.
 
+
+- The loop catch: Mira Penhallow, a warden west of the flowerbeds in Floaroma Town, lends you a disc that draws a loop of light. Close three loops round a Pokémon (with the arrows or stick while holding the confirm button, or by dragging the mouse) to calm it, and lift the disc or stay clear when it strikes. It does a job for her and goes free. She has eight jobs, each with its own reward, and one errand a day after that.
 - The Carpathian species and the Carpathian forms have their own Pokédex entries (two each, with a habitat) in place of the plain sentence made from their data, and in Romanian the species' kinds are in Romanian.
 
 - The Floccesy Reserve in Unova: once you have entered Unova's Hall of Fame, a warden at Floccesy Ranch takes you to a reserve of rare Pokémon. For $500 you get thirty Safari Balls and five hundred steps among a meadow, woods and crags, and the ranger at the gate lets you set objects down on each ground to bring in Pokémon from other regions.

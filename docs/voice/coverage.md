@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 160 | 160 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1814 | 1751 | 63 | 1 | 0 |
-| Scripts (`script:`) | 14213 | 13627 | 586 | 17 | 36 |
+| Scripts (`script:`) | 14242 | 13656 | 586 | 17 | 36 |
 | People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 24429 | 23738 | 691 | 22 | 36 |
+| **All** | 24458 | 23767 | 691 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -22,7 +22,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 260 |
-| a question's answers | 1243 |
+| a question's answers | 1246 |
 | a sign | 1789 |
 | a thing's words | 81 |
 | the game's own voice (speaker none) | 330 |
@@ -155,6 +155,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `waiter` | 42 | 0 |
 | `backers` | 41 | 0 |
 | `leon` | 41 | 1 |
+| `look:ranger_f (any)` | 41 | 0 |
 | `policeman` | 41 | 0 |
 | `rood` | 41 | 0 |
 | `breeder` | 40 | 8 |

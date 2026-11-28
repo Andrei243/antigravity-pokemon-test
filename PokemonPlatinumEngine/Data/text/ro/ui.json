@@ -8059,6 +8059,24 @@
       "Peak": "Culmea zilei"
     }
   },
+  "loopCatch": {
+    "title": "PRINDEREA ÎN BUCLĂ",
+    "calm": "CALM",
+    "disc": "DISC",
+    "start": "START",
+    "draw": "DESENEAZĂ",
+    "giveUp": "RENUNȚĂ",
+    "goOn": "CONTINUĂ",
+    "how": {
+      "draw": "Ține discul apăsat și mișcă-l ca să desenezi o linie de lumină.",
+      "loops": "Închide trei bucle de jur împrejurul întregului Pokémon ca să-l liniștești.",
+      "strike": "Linia prinsă de o lovitură se rupe. Ridică discul."
+    },
+    "calmed": "S-A LINIȘTIT",
+    "slipped": "A SCĂPAT",
+    "calmedLine": "{pokemon} e gata să dea o mână de ajutor.",
+    "slippedLine": "{pokemon} a fugit. Poți încerca din nou."
+  },
   "delve": {
     "floor": "Etajul {n} din {of}",
     "leader": "LIDER",

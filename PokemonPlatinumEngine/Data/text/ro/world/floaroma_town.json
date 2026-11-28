@@ -205,6 +205,16 @@
           "Negustor: Sunt Zilele Florilor! Fiecare petală din oraș a ieșit să te vadă."
         ]
       }
+    },
+    "loop_warden": {
+      "name": {
+        "en": [
+          "Mira Penhallow"
+        ],
+        "text": [
+          "Mira Penhallow"
+        ]
+      }
     }
   },
   "signs": {

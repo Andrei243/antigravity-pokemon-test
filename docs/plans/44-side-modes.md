@@ -190,7 +190,7 @@ Every session: the style guide first for what it draws and the rulings for what 
 - [x] SD7 The delve's rules (2026-11-12, as built below; what it owes is listed there)
 - [x] SD8 The delve on screen (2026-11-12, finished 2026-11-13, as built below)
 - [x] SD9 The hollow camp, its board and the hollows (2026-11-12, finished 2026-11-13, as built below)
-- [ ] SD10 The loop catch (optional; wanted: the user's "Plans 42 to 44: finish them" of 2026-11-22)
+- [x] SD10 The loop catch (2026-11-28, built and tested, as built below; **the harness's `loop` mode has not been run**, so lp01 to lp06 are owed and nobody has seen the screen)
 
 **The user's answers of 2026-11-22** ([ANSWERS-2026-11-22.md](decisions/ANSWERS-2026-11-22.md), "Optional builds, now wanted"): **plans 42 to 44 are to be finished**. For this plan that is SD10 alone, which decision 8 left unbuilt; it comes after SD9, as the decision's alternative has it.
 
@@ -303,3 +303,44 @@ The first sitting (2026-11-12) built both and left them unticked: the harness's 
 - **A headless walk to each cell** (`HeartsWalkTests`): a game with no window, its region's Hall of Fame entered, walked by the playthrough bot from the port to the doorman, down his warp and up to the admin, whose battle the bot fights and wins; Unova's through the tower's door on Castelia's avenue.
 - **Shots** (the `hearts` mode, `HEARTS_PART=cells` alone, looked at): lh10 Looker in the Survival Area, lh11 the spring, lh12 to lh26 each region's port, cell and admin at the battle's menu, lh27 and lh28 the head, lh29 the courier, lh30 and lh31 a locked heart following and the same opened.
 - **Still owed**: the cells and the tower's floors are one plain room with a desk and crates (the head's machine is not drawn); a cell's battle is fought on the indoor stage of books; the user's ear on the songs.
+
+## SD10 as built (2026-11-28)
+
+The rulings' "The loop catch" has every number; the style guide's "The loop catch" says what is drawn. `BattleCore`,
+`BattleCore.Give` and `CatchCalculator.Shakes` are untouched.
+
+- **The rules, GPU-free** (`Models/LoopCatch.cs`): sixty ticks a second; the Pokémon moves by its Pokédex shape (six
+  gaits) and base Speed, on its own `SplitMix` from a seed, which nothing the player does draws from; the disc is told a
+  stick, a pointer's place and whether it is down; a loop is counted where the line crosses itself round the whole body;
+  a strike winds up for 0.9 s and breaks a line within its reach, at the cost of one of four charges; three loops calm
+  it; the timing assist as ever. `LoopAutopilot` plays a try (it calms every task's Pokémon on seeds 1 to 100).
+- **Tasks** (`Data/loop-catch.json`, strict, `loop-catch.schema.json`): eight, Bidoof to Luxio, each a species, a
+  strike's interval and its reach.
+- **The screen** (`UI/LoopScreen.cs`, `ModernUi.Loop.cs`, `GameState.Loop`, `Core/GameEngine.Loop.cs`): flat, drawn with
+  the kit and the species' menu sprite (no 3D scene); the brief, the try, the end. Arrows or the stick with Confirm
+  held, or the mouse dragged (`pointerNow`, the button's `Held`; a click only reads on past the brief and the end).
+  A game with no window plays it at once by the autopilot.
+- **The station**: Mira Penhallow, a warden of ours (`ranger_f`), at 168, 662 west of Floaroma Town's flowerbeds
+  (`floaroma_town.LoopWarden`), with no condition to be met. The tasks come in turn, each paying once; then one errand a
+  day. **Decision**: no save field and no item: `VAR_LOOP_CATCH_TASKS` and `FLAG_DAILY_LOOP_CATCH`, the disc lent in
+  words, the prizes plain `give`s (so the randomiser maps them); the Pokémon is never the player's, so the Pokédex,
+  the Nuzlocke and the randomiser's species are told nothing. No medal (the session's list names none).
+- **Decision (a loop goes round the whole body)**: a loop passes no nearer the middle than the body's 70. At half that,
+  three tiny circles could be drawn through the Pokémon before its first strike.
+- **Decision (it answers a loop)**: every loop but the last startles it into a strike 0.4 s later. With the wait set
+  back instead, a steady ring was closed before any strike came, so the strike never played.
+- **The script command** `Op.Loop` (`loop go "<task>"`), both hosts (`HeadlessScriptHost.LoopSeed`, `LoopSlips`); it
+  stops a scene's hurry.
+- **Tests** (`LoopCatchTests`): a loop closing round a point, one that holds nothing, three loops calming it; the path
+  the same for a seed and untouched by the disc; the ground kept; the gaits; a strike breaking a line and one that
+  doesn't reach; the charges; the assist; the line's length; the stick; the screen by buttons alone; the warden's tasks
+  in turn, her errand once a day and her two ways out; a game with no window; every task won by a hand that has only the
+  stick (seeds 1 to 40); two strikes at least in each of the autopilot's tries.
+- **Shots**: the `loop` mode (`tools/ShotHarness/Modes/LoopCatch.cs`, not part of `all`; it builds, **never run**):
+  lp01_station, lp02_brief, lp03_drawing, lp04_strike, lp05_first_loop, lp06_calmed.
+- **Owed**: those shots taken and looked at, so "done when" holds only in tests; the difficulty (intervals, reach,
+  pace) tried by hand with a pad's stick and a mouse, since only the autopilot and the tests' stick hand (both know every
+  wind-up the tick it begins) have played it; the user's word on the warden having no condition, so the daily errand's
+  Revive is to be had from Floaroma Town on; the mode's line in
+  `CLAUDE.md`'s commands (`dotnet run --project tools/ShotHarness -- <out dir> loop`); sounds and a song of its own
+  (it plays the field's, with the menu's and the field's effects and the species' cry); a hub door (plan 41).
