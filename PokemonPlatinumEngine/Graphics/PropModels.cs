@@ -137,6 +137,8 @@ internal static class PropModels
             case PropType.WarpPanel: WarpPanel(kit, wayOut: false); break;
             case PropType.WarpPanelOut: WarpPanel(kit, wayOut: true); break;
             case PropType.Tank: Tank(kit, w, d); break;
+            // The Zero Lab's great machine (plan 34 · PD8), Celio's painted as a card of a room
+            case PropType.NetworkMachine: kit.Sprite(kit.Face("networkmachine", SeviiArt.MachineWidth, SeviiArt.MachineHeight, SeviiArt.PaintNetworkMachine), w / 2f, d / 2f + 8); break;
             // The S.S. Aqua's engines (plan 20 · J15, part s): a tile of machinery, its sides shown where floor is beside it
             case PropType.ShipEngine: ShipEngine(kit, map, p.X, p.Y); break;
             // The seats of the rooms rebuilt to the original's plans (plan 01 · M11): walked onto, never in the way

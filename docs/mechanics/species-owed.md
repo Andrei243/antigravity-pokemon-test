@@ -47,10 +47,10 @@ The later generations, owed by their regions' plans until each plan's last sessi
 | plan 23: Alola | 88 | 88 | 0 |
 | plan 33: Galar | 89 | 57 | 32 |
 | plan 23: Hisui | 7 | 1 | 6 |
-| plan 34: Paldea | 120 | 68 | 52 |
+| plan 34: Paldea | 120 | 91 | 29 |
 
 **plan 33: Galar**, not yet had: Flapple, Appletun, Cramorant, Sinistea, Polteageist, Obstagoon, Cursola, Mr. Rime, Runerigus, Milcery, Alcremie, Falinks, Pincurchin, Eiscue, Morpeko, Cufant, Copperajah, Dracozolt, Arctozolt, Dracovish, Arctovish, Dreepy, Drakloak, Dragapult, Kubfu, Urshifu, Zarude, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex.
 
 **plan 23: Hisui**, not yet had: Kleavor, Ursaluna, Basculegion, Sneasler, Overqwil, Enamorus.
 
-**plan 34: Paldea**, not yet had: Tandemaus, Maushold, Fidough, Dachsbun, Charcadet, Armarouge, Ceruledge, Maschiff, Mabosstiff, Capsakid, Scovillain, Finizen, Palafin, Varoom, Revavroom, Cyclizar, Flamigo, Veluza, Clodsire, Scream Tail, Brute Bonnet, Slither Wing, Sandy Shocks, Iron Bundle, Iron Hands, Iron Jugulis, Iron Thorns, Gimmighoul, Gholdengo, Wo-Chien, Chien-Pao, Ting-Lu, Chi-Yu, Roaring Moon, Iron Valiant, Walking Wake, Iron Leaves, Dipplin, Poltchageist, Sinistcha, Okidogi, Munkidori, Fezandipiti, Ogerpon, Archaludon, Hydrapple, Gouging Fire, Raging Bolt, Iron Boulder, Iron Crown, Terapagos, Pecharunt.
+**plan 34: Paldea**, not yet had: Clodsire, Scream Tail, Brute Bonnet, Slither Wing, Sandy Shocks, Iron Bundle, Iron Hands, Iron Jugulis, Iron Thorns, Gimmighoul, Gholdengo, Roaring Moon, Iron Valiant, Walking Wake, Iron Leaves, Dipplin, Sinistcha, Okidogi, Munkidori, Fezandipiti, Ogerpon, Archaludon, Hydrapple, Gouging Fire, Raging Bolt, Iron Boulder, Iron Crown, Terapagos, Pecharunt.

@@ -295,7 +295,9 @@ public class PokemonTests
         // And the two Kalos Gyms whose floors are parts joined only by warps of their own (plan 23 · Z4): Anistar's islands
         // by its thirteen warp panels, as Sabrina's are, and Laverre's rooms by its eleven doors.
         bool cutInTwo = RoomPlanTests.UpperFloors.Contains(mapName) || RoomPlanTests.GalacticHeadquarters.Contains(mapName)
-            || mapName is "AnistarCity_Gym" or "LaverreCity_Gym";
+            || mapName is "AnistarCity_Gym" or "LaverreCity_Gym"
+            // and Area Zero, four terraces joined only by ledges hopped down (plan 34 · PD8)
+            || mapName == "AreaZero";
         var reachedFromAny = new HashSet<(int, int)>();
 
         foreach (var (startX, startY) in arrivals)

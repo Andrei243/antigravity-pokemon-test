@@ -19,6 +19,10 @@ public class LegendaryScenesTests
     /// </summary>
     private static readonly Dictionary<string, string> StillBare = new()
     {
+        ["common.PaldeaShrineWoChien Wo-Chien"] = "plan 34 PD9's Treasures of Ruin, met on the open map with a line and a cry; their beat is owed to plan 29 LS",
+        ["common.PaldeaShrineChienPao Chien-Pao"] = "plan 34 PD9's Treasures of Ruin, met on the open map with a line and a cry; their beat is owed to plan 29 LS",
+        ["common.PaldeaShrineTingLu Ting-Lu"] = "plan 34 PD9's Treasures of Ruin, met on the open map with a line and a cry; their beat is owed to plan 29 LS",
+        ["common.PaldeaShrineChiYu Chi-Yu"] = "plan 34 PD9's Treasures of Ruin, met on the open map with a line and a cry; their beat is owed to plan 29 LS",
         ["GeosengeTown_FlareHQ.Xerneas Xerneas"] = "Kalos Z4: Xerneas wakes in a scene of its own (wks85); its LS beat is plan 29's to write",
         ["ns_castle_5.Zekrom Zekrom"] = "Unova U10: Zekrom's meeting before plan 29 LS beats; owed",
         ["abundant_shrine.Tornadus Tornadus"] = "plan 40 GE3 placed it; its beat is owed to plan 29 LS",
