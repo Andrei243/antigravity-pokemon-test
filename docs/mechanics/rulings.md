@@ -5729,6 +5729,30 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
 - **Not built**: HeartGold's areas swapped in and out (the twelve stay side by side), objects earned by visits (all
   twelve are in every store from the start), and the Safari Zone Link.
 
+### The Floccesy Reserve (2026-11-28, plan 38 · EX9)
+
+- **All ours.** Black 2 has no Safari Zone; the reserve is built for parity because the user asked for it (2026-11-22,
+  decision 9 of plan 38). No place, person, table or line of it comes from a game.
+- **The way in.** A warden of ours stands on Floccesy Ranch once Unova's Hall of Fame is entered (`shownBy`
+  `UnovaHallOfFame`; nobody is there before, so the story and its shots are untouched), and takes the player to the
+  reserve's gate, a room of ours (`UnovaReserve_Gate`), whose door leads back to the ranch beside the warden. No tile of the imported ranch changes, and no flag or story version is added but the gate's own variable.
+- **The game** is the Great Marsh's `SafariGame`: $500, thirty Safari Balls and five hundred steps (`safari start 500`),
+  Platinum's Safari battles with Bait and Mud. It ends at the last step or the last ball (the common ends bring a player
+  of Unova back to the gate, `VAR_UNOVA_RESERVE` 2) or when the player walks out through the way in and says so; no
+  sends them back in. Nobody flies or teleports out of it, and the BOXES entry is shut.
+- **The zone** (`UnovaReserve`, a map file of ours, 40 by 32) has three grounds: the Crags across the north, the Meadow
+  south-west and the Woods south-east. Each has a table of ten in its tall grass, met as often as one another, at Black 2's
+  scale of levels (55 to 61; a team that crossed into Unova meets them mapped as any wild Pokémon), and no water
+  encounters.
+- **The objects are EX8's**, with their points and days ("The Johto Safari Zone's objects", above), counted in the ground
+  alone. Each ground has six slots for them, Pokémon of other regions at 57 to 60 (`UnovaReserve.Grounds`); the k-th, open,
+  takes slot k of the ground's table. The ranger at the gate arranges a ground for anyone the gate has let in (no Owner's
+  test: the Hall of Fame is the gate's own), on the shared decorating screen (`safari reserve`). The floor is the ground's
+  open grass: no tall grass, no warp, nothing within two tiles of the ground's edge or of the way in. They are saved with
+  Johto's in `SaveData.SafariObjects`, so no version was raised.
+- **The Pokédex's area page** doesn't list the reserve, as it lists none of the objects' slots; the species checks count
+  its tables and slots as Unova's ways.
+
 ## The north of Johto, first part (2026-10-20, plan 20 · J10, part a)
 
 Route 42 and Mt. Mortar, Mahogany Town, Route 43 and the Lake of Rage, Route 44, the Ice Path, Blackthorn City and the

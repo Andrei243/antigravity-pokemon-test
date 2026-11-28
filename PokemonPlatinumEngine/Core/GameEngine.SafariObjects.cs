@@ -14,50 +14,59 @@ namespace PokemonPlatinumEngine.Core;
 /// </summary>
 public partial class GameEngine
 {
-    /// <summary>The area being arranged at the Area Customizer, by its number in <see cref="SafariObjects.AreaKeys"/>; -1 for none.</summary>
+    /// <summary>The area being arranged, by its number in <see cref="SafariObjects.Arrangeable"/>; -1 for none.</summary>
     private int arrangingSafari = -1;
 
     /// <summary>The area of the Area Customizer's order opened to arrange (the script's <c>safari objects</c>); false where it can't be.</summary>
     private bool ArrangeSafari(int area)
     {
-        if (area < 0 || area >= SafariObjects.AreaKeys.Length) return false;
-        var map = MapDatabase.Get(SafariObjects.ZoneMap);
-        string key = SafariObjects.AreaKeys[area];
-        if (map.Name != SafariObjects.ZoneMap || map.AreaBounds(key) is not { } bounds) return false;
+        if (area < 0 || area >= SafariObjects.Arrangeable.Count) return false;
+        string key = SafariObjects.Arrangeable[area];
+        // Johto's areas are parts of its zone's map; a ground of Unova's reserve (plan 38 · EX9) is a part of ours
+        var ground = UnovaReserve.Ground(key);
+        string zone = ground != null ? UnovaReserve.ZoneMap : SafariObjects.ZoneMap;
+        var map = MapDatabase.Get(zone);
+        if (map.Name != zone || (ground?.Bounds ?? map.AreaBounds(key)) is not { } bounds) return false;
         var before = flow.SafariObjects.In(key);
         var store = SafariObjects.StoreOf(before);
-        var room = SafariObjects.Room(map, bounds, before, store);
+        var room = ground != null
+            ? SafariObjects.Room(map, bounds, before, store, UnovaReserve.ArrivalX, UnovaReserve.ArrivalY)
+            : SafariObjects.Room(map, bounds, before, store);
         arrangingSafari = area;
         flow.State = GameState.Decoration;
         var session = new DecoratingSession(room, store, SafariObjects.KindOf);
         int number = area + 1;
-        flow.DecorationScreen.Open(session, Text.Of("safariObjects.title", ("area", Text.Of($"safariObjects.area.{number}"))), piece => SafariArt.PlanLook(piece.Kind));
+        flow.DecorationScreen.Open(session, Text.Of(ground != null ? "safariObjects.reserveTitle" : "safariObjects.title", ("area", Text.Of($"safariObjects.area.{number}"))), piece => SafariArt.PlanLook(piece.Kind));
         return true;
     }
 
     /// <summary>The arranging done: what stands in the area is kept, laid out in the zone at once, and the field is the player's again.</summary>
     private void FinishSafariArrangement()
     {
-        string key = SafariObjects.AreaKeys[arrangingSafari];
+        string key = SafariObjects.Arrangeable[arrangingSafari];
         arrangingSafari = -1;
         var today = ApricornBox.DayOf(GameClock.Today);
         flow.SafariObjects.Set(key, SafariObjects.Keep(flow.DecorationScreen.Session.Room, flow.SafariObjects.In(key), today));
-        LayOutSafariObjects();
+        LayOutSafariObjects(UnovaReserve.Ground(key) != null ? UnovaReserve.ZoneMap : SafariObjects.ZoneMap);
         flow.State = GameState.Overworld;
     }
 
-    /// <summary>Every object standing in the zone set down as a prop of ours on its tiles (none of which it blocks), the areas built again.</summary>
-    private void LayOutSafariObjects()
+    /// <summary>
+    /// Every object standing in a zone set down as a prop of ours on its tiles (none of which it blocks), the areas built
+    /// again: the Johto Safari Zone's, or Unova's reserve's (plan 38 · EX9).
+    /// </summary>
+    private void LayOutSafariObjects(string zone = SafariObjects.ZoneMap)
     {
-        var map = MapDatabase.Get(SafariObjects.ZoneMap);
-        if (map.Name != SafariObjects.ZoneMap) return;
+        var map = MapDatabase.Get(zone);
+        if (map.Name != zone) return;
+        var keys = zone == UnovaReserve.ZoneMap ? UnovaReserve.Grounds.Select(g => g.Key).ToArray() : SafariObjects.AreaKeys;
         lock (map.Props) map.Props.RemoveAll(p => p.Model.StartsWith(SafariArt.ModelPrefix, StringComparison.Ordinal));
-        foreach (string key in SafariObjects.AreaKeys)
+        foreach (string key in keys)
             foreach (var o in flow.SafariObjects.In(key))
                 if (SafariObjects.TypeOf(o.Type) is { } type)
                     lock (map.Props) map.Props.Add(new Prop { Type = PropType.SafariObject, X = o.X, Y = o.Y, Width = type.Width, Depth = type.Depth, Model = SafariArt.ModelPrefix + type.Key });
-        foreach (string key in SafariObjects.AreaKeys)
-            if (map.AreaBounds(key) is { } b) world?.Forget(map, b.X, b.Y, b.Width, b.Height);
+        foreach (string key in keys)
+            if ((UnovaReserve.Ground(key)?.Bounds ?? map.AreaBounds(key)) is { } b) world?.Forget(map, b.X, b.Y, b.Width, b.Height);
     }
 
     private sealed partial class FieldHost
@@ -72,6 +81,6 @@ public partial class GameEngine
         /// <summary>An area opened at the Area Customizer, as <c>safari objects</c> opens it.</summary>
         public bool ArrangeSafari(int area) => game.ArrangeSafari(area);
         /// <summary>The objects laid out in the zone as an arrival lays them.</summary>
-        public void LayOutSafariObjects() => game.LayOutSafariObjects();
+        public void LayOutSafariObjects(string zone = SafariObjects.ZoneMap) => game.LayOutSafariObjects(zone);
     }
 }

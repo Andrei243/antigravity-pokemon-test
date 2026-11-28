@@ -28,6 +28,27 @@ label Home
   end
 
 
+# The warden of the Floccesy Reserve (plan 38 · EX9; ours), on the ranch once the player has entered Unova's Hall of Fame
+# (the overlay's shownBy): the way to its gate. The word to anyone else is kept for a warden met without it.
+script ReserveWarden
+  speaker reserve_warden "Warden"
+  if not flag UnovaHallOfFame goto NotYet
+  ask "Champion! The Floccesy Reserve is open to you. Shall I take you to its gate?"
+  if no goto Later
+  say "Follow me. It's just beyond the trees!"
+  fade out
+  warp "UnovaReserve_Gate" 5 7 up
+  fade in
+  end
+label NotYet
+  say "I look after a reserve beyond those trees, where rare Pokémon are left to roam."
+  say "We open its gate only to a Champion of Unova. Come back once you are one!"
+  end
+label Later
+  say "Whenever you like. The Pokémon aren't going anywhere."
+  end
+
+
 # Into the field (trigger 0, on 0): Hugh, training, wants a battle; the Town Map from his sister; then the ranch's
 # owners, whose Herdier has gone missing, and Hugh's anger at how lightly they take it.
 script HughAtTheRanch

@@ -201,6 +201,8 @@ public class ScriptTests
           safari start endless
           safari objects
           safari objects 4
+          safari reserve
+          safari reserve 2
           safari end
           bicycle on
           bicycle off

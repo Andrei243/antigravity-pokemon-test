@@ -1,0 +1,80 @@
+{
+  "name": "UnovaReserve_Gate",
+  "displayName": "Reserve Gate",
+  "bgmTrack": "unova/floccesy",
+  "interior": "House",
+  "trees": "Round",
+  "noBoxLink": true,
+  "width": 11,
+  "height": 9,
+  "ground": [
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "##.......##",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 8,
+      "targetMap": "FloccesyRanch",
+      "targetX": 49,
+      "targetY": 40,
+      "targetFacing": "Right"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "reserve_attendant",
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "x": 2,
+      "y": 4,
+      "facing": "Right",
+      "script": "Counter"
+    },
+    {
+      "id": "reserve_ranger",
+      "name": "Ranger",
+      "npcType": "ranger_m",
+      "x": 8,
+      "y": 4,
+      "facing": "Left",
+      "script": "Ranger"
+    }
+  ],
+  "wildEncounters": []
+}

@@ -1,4 +1,54 @@
 {
+  "ReserveWarden": [
+    {
+      "en": [
+        "Warden"
+      ],
+      "text": [
+        "Paznicul"
+      ]
+    },
+    {
+      "en": [
+        "Champion! The Floccesy Reserve is open to you. Shall I take you to its gate?"
+      ],
+      "text": [
+        "Campionule! Rezervația Floccesy îți este deschisă. Te duc până la poartă?"
+      ]
+    },
+    {
+      "en": [
+        "Follow me. It's just beyond the trees!"
+      ],
+      "text": [
+        "Urmează-mă. E chiar dincolo de copaci!"
+      ]
+    },
+    {
+      "en": [
+        "I look after a reserve beyond those trees, where rare Pokémon are left to roam."
+      ],
+      "text": [
+        "Am grijă de o rezervație de dincolo de copaci, unde Pokémon rari umblă în voie."
+      ]
+    },
+    {
+      "en": [
+        "We open its gate only to a Champion of Unova. Come back once you are one!"
+      ],
+      "text": [
+        "Poarta ei se deschide doar pentru un Campion din Unova. Întoarce-te când vei fi unul!"
+      ]
+    },
+    {
+      "en": [
+        "Whenever you like. The Pokémon aren't going anywhere."
+      ],
+      "text": [
+        "Când vrei tu. Pokémonii nu pleacă nicăieri."
+      ]
+    }
+  ],
   "HughAtTheRanch": [
     {
       "en": [

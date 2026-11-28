@@ -954,6 +954,8 @@ public static class RegionDatabase
             {
                 // Plan 35 · BN5: the pasture every PC of the region leads to (a copy of one plan)
                 "UnovaPasture",
+                // Plan 38 · EX9: the Floccesy Reserve and its gate, maps of ours
+                "UnovaReserve_Gate", "UnovaReserve",
                 "Unova",
                 // Plan 22 · U2: Aspertia City's rooms, its gate to Route 19, its school and the Gym behind it, Floccesy
                 // Town's rooms and the ranch's field, each a matrix of the import

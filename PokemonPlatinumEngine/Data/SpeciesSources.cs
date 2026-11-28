@@ -406,6 +406,10 @@ public sealed class SpeciesSources
                     else f.Item(e.Item, $"{g.Area}: a Hidden Grotto");
                 }
 
+        // The Floccesy Reserve (plan 38 · EX9): its grounds' own tables and the slots its objects open, after Unova's Hall of Fame
+        if (rooms.Any(r => r.Name == Models.UnovaReserve.ZoneMap))
+            foreach (var (ground, species) in Models.UnovaReserve.Species()) f.Species(species, $"{ground}: the Floccesy Reserve", true);
+
         // The tables that belong to no one area (plan 06 · R13)
         if (tablesOf != null)
         {

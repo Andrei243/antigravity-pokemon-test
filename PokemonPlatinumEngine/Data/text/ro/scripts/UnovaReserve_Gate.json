@@ -1,0 +1,160 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Îngrijitorul"
+      ]
+    },
+    {
+      "en": [
+        "You still have time left. Would you like to leave the reserve?"
+      ],
+      "text": [
+        "Mai ai timp. Vrei să ieși din rezervație?"
+      ]
+    },
+    {
+      "en": [
+        "Very well. I'll take the Safari Balls you have left."
+      ],
+      "text": [
+        "Foarte bine. Iau Safari Ball-urile rămase."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for visiting. Come again!"
+      ],
+      "text": [
+        "Mulțumim pentru vizită. Mai vino!"
+      ]
+    },
+    {
+      "en": [
+        "Then off you go. Enjoy yourself!"
+      ],
+      "text": [
+        "Atunci mergi. Distracție plăcută!"
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Îngrijitorul"
+      ]
+    },
+    {
+      "en": [
+        "Did you have fun? Please come again!"
+      ],
+      "text": [
+        "Te-ai distrat? Te mai așteptăm!"
+      ]
+    }
+  ],
+  "Counter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        "Îngrijitorul"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Floccesy Reserve! For $500 you get thirty Safari Balls and five hundred steps. Would you like to go in?"
+      ],
+      "text": [
+        "Bine ai venit în Rezervația Floccesy! Pentru $500 primești treizeci de Safari Ball și cinci sute de pași. Vrei să intri?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received 30 Safari Balls from the attendant."
+      ],
+      "text": [
+        "{player} a primit 30 de Safari Ball de la îngrijitor."
+      ]
+    },
+    {
+      "en": [
+        "We'll call you back when your time is up. Have fun out there!"
+      ],
+      "text": [
+        "Te chemăm înapoi când ți se termină timpul. Distracție plăcută!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money. Please come again."
+      ],
+      "text": [
+        "Îmi pare rău, nu ai destui bani. Te mai așteptăm."
+      ]
+    },
+    {
+      "en": [
+        "All right. Come back whenever you like."
+      ],
+      "text": [
+        "Bine. Întoarce-te când vrei."
+      ]
+    }
+  ],
+  "Ranger": [
+    {
+      "en": [
+        "Ranger"
+      ],
+      "text": [
+        "Pădurarul"
+      ]
+    },
+    {
+      "en": [
+        "I tend the grounds. Set objects down on one and different Pokémon move in."
+      ],
+      "text": [
+        "Eu am grijă de terenuri. Pune obiecte pe unul și vin alți Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "An object counts from the day after it's set down, and twice over once it has stood for ten days."
+      ],
+      "text": [
+        "Un obiect contează din ziua de după ce e pus, și dublu după zece zile."
+      ]
+    },
+    {
+      "en": [
+        "Shall we arrange one of the grounds?"
+      ],
+      "text": [
+        "Aranjăm unul dintre terenuri?"
+      ]
+    },
+    {
+      "en": [
+        "Which ground?",
+        "Meadow",
+        "Woods",
+        "Crags",
+        "Cancel"
+      ],
+      "text": [
+        "Care teren?",
+        "Lunca",
+        "Crângul",
+        "Stâncăriile",
+        "Renunță"
+      ]
+    }
+  ]
+}
