@@ -1524,6 +1524,7 @@ script BlackOutHome
 # steps, and the player is taken back before the counter of the Safari Zone's gate hall, which sees them off
 # (HeartGold's VAR_SCENE_SAFARI_ZONE_ENTRANCE, our 2). In Hoenn (plan 21 · H6, part b) the player is taken back inside
 # the zone's door in Route 121's gate, whose arrival walks them out past the counter (Emerald's VAR_SAFARI_ZONE_STATE 1).
+# In Unova (plan 38 · EX9) the game is the Floccesy Reserve's, and the player is taken back to its gate (ours).
 script SafariTimeUp
   speaker "Attendant"
   say "Ding-dong! That's time! Your Safari Game is over."
@@ -1532,6 +1533,7 @@ script SafariTimeUp
   if region "Kanto" goto Kanto
   if region "Johto" goto Johto
   if region "Hoenn" goto Hoenn
+  if region "Unova" goto Unova
   setvar VAR_SAFARI_GAME_STATE 2
   warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
@@ -1546,6 +1548,10 @@ label Johto
 label Hoenn
   setvar VAR_SAFARI_ZONE_STATE 1
   warp "Route121_SafariZoneEntrance" 2 4 right
+  end
+label Unova
+  setvar VAR_UNOVA_RESERVE 2
+  warp "UnovaReserve_Gate" 5 3 down
   end
 
 script SafariOutOfBalls
@@ -1556,6 +1562,7 @@ script SafariOutOfBalls
   if region "Kanto" goto Kanto
   if region "Johto" goto Johto
   if region "Hoenn" goto Hoenn
+  if region "Unova" goto Unova
   setvar VAR_SAFARI_GAME_STATE 2
   warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
@@ -1570,6 +1577,10 @@ label Johto
 label Hoenn
   setvar VAR_SAFARI_ZONE_STATE 1
   warp "Route121_SafariZoneEntrance" 2 4 right
+  end
+label Unova
+  setvar VAR_UNOVA_RESERVE 2
+  warp "UnovaReserve_Gate" 5 3 down
   end
 
 # A Pokéblock feeder of Hoenn's Safari Zone (plan 21 · H11, part d; Emerald's EventScript_PokeBlockFeeder), read on its

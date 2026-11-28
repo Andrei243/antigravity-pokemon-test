@@ -89,6 +89,12 @@ public sealed class SafariObjects
     /// <summary>The tile the gate's warp puts a player down on in the zone, and the ring of tiles kept clear round it.</summary>
     public const int ArrivalX = 79, ArrivalY = 99, ArrivalClear = 2;
 
+    /// <summary>
+    /// The grounds an arranger may be handed, by number: Johto's twelve areas in the Area Customizer's order, then the
+    /// three of Unova's reserve (plan 38 · EX9, <see cref="UnovaReserve.Grounds"/>).
+    /// </summary>
+    public static IReadOnlyList<string> Arrangeable => AreaKeys.Concat(UnovaReserve.Grounds.Select(g => g.Key)).ToArray();
+
     /// <summary>The objects of ours, in the store's order.</summary>
     public static IReadOnlyList<SafariObjectType> Catalogue { get; } = new SafariObjectType[]
     {
@@ -191,11 +197,11 @@ public sealed class SafariObjects
     // ------------------------------------------------------------------ the Area Customizer
 
     /// <summary>Whether an object's corner may stand on a tile of an area: every tile it takes open floor of the area.</summary>
-    public static bool FloorAt(Map map, (int X, int Y, int Width, int Height) bounds, int x, int y)
+    public static bool FloorAt(Map map, (int X, int Y, int Width, int Height) bounds, int x, int y, int arrivalX = ArrivalX, int arrivalY = ArrivalY)
     {
         // The area's edge is where the ways between areas run, and the gate's warp puts the player down by the way in
         if (x < bounds.X + 2 || y < bounds.Y + 2 || x >= bounds.X + bounds.Width - 2 || y >= bounds.Y + bounds.Height - 2) return false;
-        if (Math.Abs(x - ArrivalX) <= ArrivalClear && Math.Abs(y - ArrivalY) <= ArrivalClear) return false;
+        if (Math.Abs(x - arrivalX) <= ArrivalClear && Math.Abs(y - arrivalY) <= ArrivalClear) return false;
         if (!map.InBounds(x, y) || !map.IsWalkable(x, y) || map.GetWarpAt(x, y) != null || map.IsTallGrass(x, y)) return false;
         return true;
     }
@@ -204,13 +210,15 @@ public sealed class SafariObjects
     /// The area as a room to decorate: its rectangle on the zone's map, its open floor, the objects standing (each a
     /// piece of its store's slot), thirty at most. The store is <see cref="StoreOf"/>'s, built from the same objects.
     /// </summary>
-    public static DecorationRoom Room(Map map, (int X, int Y, int Width, int Height) bounds, IReadOnlyList<PlacedSafariObject> objects, IReadOnlyList<StoredDecoration> store)
+    public static DecorationRoom Room(Map map, (int X, int Y, int Width, int Height) bounds, IReadOnlyList<PlacedSafariObject> objects, IReadOnlyList<StoredDecoration> store,
+        int arrivalX = ArrivalX, int arrivalY = ArrivalY)
     {
+        bool Floor(int x, int y) => FloorAt(map, bounds, x, y, arrivalX, arrivalY);
         bool Fits(int x, int y, int w, int d)
         {
             for (int ty = y; ty < y + d; ty++)
                 for (int tx = x; tx < x + w; tx++)
-                    if (!FloorAt(map, bounds, tx, ty)) return false;
+                    if (!Floor(tx, ty)) return false;
             return true;
         }
         var pieces = new List<RoomPiece>();
@@ -225,7 +233,7 @@ public sealed class SafariObjects
         // The cursor starts in the middle of the area, or the nearest tile of floor to it
         int cx = bounds.X + bounds.Width / 2, cy = bounds.Y + bounds.Height / 2;
         var start = Enumerable.Range(bounds.Y, bounds.Height).SelectMany(y => Enumerable.Range(bounds.X, bounds.Width).Select(x => (x, y)))
-            .Where(t => FloorAt(map, bounds, t.x, t.y)).OrderBy(t => Math.Abs(t.x - cx) + Math.Abs(t.y - cy)).ThenBy(t => t.y).ThenBy(t => t.x)
+            .Where(t => Floor(t.x, t.y)).OrderBy(t => Math.Abs(t.x - cx) + Math.Abs(t.y - cy)).ThenBy(t => t.y).ThenBy(t => t.x)
             .Select(t => ((int, int)?)t).FirstOrDefault() ?? (cx, cy);
         return new DecorationRoom
         {
@@ -237,7 +245,7 @@ public sealed class SafariObjects
             Limit = MostInAnArea,
             Start = start,
             Allows = (piece, x, y) => Fits(x, y, piece.Width, piece.Depth),
-            TileAt = (x, y) => FloorAt(map, bounds, x, y) ? RoomTile.Floor : RoomTile.Rock
+            TileAt = (x, y) => Floor(x, y) ? RoomTile.Floor : RoomTile.Rock
         };
     }
 

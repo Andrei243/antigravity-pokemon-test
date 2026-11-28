@@ -1,0 +1,67 @@
+# The gate of the Floccesy Reserve (plan 38 · EX9), ours: Black 2 has no Safari Zone. docs/scripts.md describes the
+# language; docs/mechanics/rulings.md, "The Floccesy Reserve", says what it is.
+#
+# The attendant takes $500 and gives thirty Safari Balls for five hundred steps (`safari start 500`;
+# Models/SafariGame.cs), and the player is taken into the reserve. The game is over at the last step or the last ball
+# (common.SafariTimeUp and SafariOutOfBalls, which bring a player of Unova back here with VAR_UNOVA_RESERVE 2) or when
+# the player walks back out through the reserve's way in and says so (the gate's arrival asks). The ranger arranges
+# the grounds with the objects of the Johto Safari Zone (`safari reserve`, Models/UnovaReserve.cs).
+
+
+script OnEnter
+  if var VAR_UNOVA_RESERVE == 2 goto Over
+  if safari goto Back
+  end
+label Back
+  speaker "Attendant"
+  ask "You still have time left. Would you like to leave the reserve?"
+  if no goto Again
+  say "Very well. I'll take the Safari Balls you have left."
+  safari end
+  setvar VAR_UNOVA_RESERVE 0
+  say "Thank you for visiting. Come again!"
+  end
+label Again
+  say "Then off you go. Enjoy yourself!"
+  warp "UnovaReserve" 20 30 up
+  end
+label Over
+  setvar VAR_UNOVA_RESERVE 0
+  speaker "Attendant"
+  say "Did you have fun? Please come again!"
+  end
+
+
+script Counter
+  speaker "Attendant"
+  ask "Welcome to the Floccesy Reserve! For $500 you get thirty Safari Balls and five hundred steps. Would you like to go in?"
+  if no goto Away
+  takemoney 500
+  if result == 0 goto Short
+  sound "select"
+  safari start 500
+  setvar VAR_UNOVA_RESERVE 1
+  text "{player} received 30 Safari Balls from the attendant."
+  say "We'll call you back when your time is up. Have fun out there!"
+  warp "UnovaReserve" 20 30 up
+  end
+label Short
+  say "I'm sorry, you don't have enough money. Please come again."
+  end
+label Away
+  say "All right. Come back whenever you like."
+  end
+
+
+script Ranger
+  speaker "Ranger"
+  say "I tend the grounds. Set objects down on one and different Pokémon move in."
+  say "An object counts from the day after it's set down, and twice over once it has stood for ten days."
+  ask "Shall we arrange one of the grounds?"
+  if no goto Leave
+  choose "Which ground?" "Meadow" "Woods" "Crags" "Cancel"
+  if result == 3 goto Leave
+  safari reserve
+  end
+label Leave
+  end

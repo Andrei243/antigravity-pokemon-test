@@ -1427,9 +1427,9 @@ public sealed partial class HeadlessScriptHost : IScriptHost
 
     public bool ArrangeSafari(int area)
     {
-        if (area < 0 || area >= Models.SafariObjects.AreaKeys.Length) return false;
+        if (area < 0 || area >= Models.SafariObjects.Arrangeable.Count) return false;
         Arranged.Add(area);
-        Log.Add($"safari objects {Models.SafariObjects.AreaKeys[area]}");
+        Log.Add($"safari objects {Models.SafariObjects.Arrangeable[area]}");
         return true;
     }
 

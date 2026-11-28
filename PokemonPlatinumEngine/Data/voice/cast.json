@@ -4448,6 +4448,10 @@
         "accent": "en-us"
       }
     },
+    "deli_clerk": {
+      "note": "first spoken at mesagoza.txt(22)",
+      "provisional": true
+    },
     "delivery_man": {
       "note": "first spoken at ResortAreaVilla.txt(168)",
       "brief": {
@@ -5060,6 +5064,10 @@
       "note": "first spoken at Hulbury_StadiumMission.txt(8)",
       "provisional": true
     },
+    "geeta": {
+      "note": "first spoken at PaldeaLeague_Court.txt(142)",
+      "provisional": true
+    },
     "ghetsis": {
       "note": "first spoken at giant_chasm_6.txt(22)",
       "provisional": true
@@ -5215,6 +5223,10 @@
     },
     "harlequin": {
       "note": "first spoken at CasteliaCity.txt(22)",
+      "provisional": true
+    },
+    "hassel": {
+      "note": "first spoken at PaldeaLeague_Court.txt(120)",
       "provisional": true
     },
     "hau": {
@@ -5895,6 +5907,10 @@
     },
     "lanette": {
       "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
+      "provisional": true
+    },
+    "larry": {
+      "note": "first spoken at PaldeaLeague_Court.txt(98)",
       "provisional": true
     },
     "league_staff": {
@@ -9910,6 +9926,10 @@
         "accent": "en-us"
       }
     },
+    "penny": {
+      "note": "first spoken at AreaZero.txt(68)",
+      "provisional": true
+    },
     "petrel": {
       "note": "first spoken at goldenrod_radio_tower_5f.txt(51)",
       "provisional": true
@@ -10000,6 +10020,10 @@
       "note": "first spoken at route_114.txt(36)",
       "provisional": true
     },
+    "poppy": {
+      "note": "first spoken at PaldeaLeague_Court.txt(76)",
+      "provisional": true
+    },
     "president": {
       "note": "first spoken at PoketchCompany.txt(8)",
       "brief": {
@@ -10071,6 +10095,14 @@
     },
     "professor_oak": {
       "note": "first spoken at pallet_town_oaks_lab.txt(12)",
+      "provisional": true
+    },
+    "professor_sada": {
+      "note": "first spoken at AreaZero.txt(41)",
+      "provisional": true
+    },
+    "professor_turo": {
+      "note": "first spoken at AreaZero.txt(44)",
       "provisional": true
     },
     "prospector": {
@@ -10292,6 +10324,10 @@
         "pitch": 1.104,
         "accent": "en-us"
       }
+    },
+    "rika": {
+      "note": "first spoken at PaldeaLeague_Court.txt(50)",
+      "provisional": true
     },
     "riley": {
       "brief": {
@@ -11653,6 +11689,7 @@
     "Darach": "darach",
     "Day-Care Lady": "day_care_lady",
     "Day-Care Man": "day_care_man",
+    "Deli Clerk": "deli_clerk",
     "Delivery Man": "delivery_man",
     "Denae": "denae",
     "Depot Agent": "depot_agent",
@@ -11727,6 +11764,7 @@
     "Gate Guard": "gate_guard",
     "Gate Keeper": "look:guard",
     "Gatekeeper": "gatekeeper",
+    "Geeta": "geeta",
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
     "Ghost": "ghost",
@@ -11757,6 +11795,7 @@
     "Hala": "hala",
     "Hapu": "hapu",
     "Harlequin": "harlequin",
+    "Hassel": "hassel",
     "Hau": "hau",
     "Head Coach": "head_coach",
     "Héloïse": "heloise",
@@ -11826,6 +11865,7 @@
     "Lana": "lana",
     "Lance": "lance",
     "Lanette": "lanette",
+    "Larry": "larry",
     "Lass": "look:lass",
     "League Staff": "league_staff",
     "League Steward": "league_steward",
@@ -11959,6 +11999,7 @@
     "Parry": "parry",
     "Pasture Keeper": "pasture_keeper",
     "Paxton": "paxton",
+    "Penny": "penny",
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
     "Philibert": "philibert",
@@ -11975,6 +12016,7 @@
     "Pokémon Ranger": "pokemon_ranger",
     "Policeman": "policeman",
     "Poochyena": "poochyena",
+    "Poppy": "poppy",
     "President": "president",
     "Prof. Birch": "prof_birch",
     "Prof. Cedric Juniper": "prof_cedric_juniper",
@@ -11989,6 +12031,8 @@
     "Prof. Sycamore": "prof_sycamore",
     "Professor Oak": "professor_oak",
     "Professor Rowan": "rowan",
+    "Professor Sada": "professor_sada",
+    "Professor Turo": "professor_turo",
     "Prospector": "prospector",
     "Proton": "proton",
     "Pryce": "pryce",
@@ -12016,6 +12060,7 @@
     "Rhona": "rhona",
     "Rich Boy Liam": "rich_boy_liam",
     "Ricky": "ricky",
+    "Rika": "rika",
     "Riley": "riley",
     "Roark": "roark",
     "Robert": "robert",

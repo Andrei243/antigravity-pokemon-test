@@ -10587,6 +10587,39 @@ way -
 from Lamp Keeper's Wife at 7,6 of UltraMegalopolis_LampHouse
 way -
   Lamp Keeper's Wife> My husband keeps the city's lamps. Without them we'd never find our own front doors.
+=== UnovaReserve_Gate.Counter
+from Attendant at 2,4 of UnovaReserve_Gate
+way 0
+  Attendant> Welcome to the Floccesy Reserve! For $500 you get thirty Safari Balls and five hundred steps. Would you like to go in?
+  > Lucas received 30 Safari Balls from the attendant.
+  Attendant> We'll call you back when your time is up. Have fun out there!
+  ? Welcome to the Floccesy Reserve! For $500 you get thirty Safari Balls and five hundred steps. Would you like to go in? = Yes
+  * sound select
+  * warp UnovaReserve 20 30
+  = VAR_UNOVA_RESERVE 0 -> 1
+way 1, from answer 1
+  Attendant> All right. Come back whenever you like.
+  ? Welcome to the Floccesy Reserve! For $500 you get thirty Safari Balls and five hundred steps. Would you like to go in? = No
+=== UnovaReserve_Gate.Ranger
+from Ranger at 8,4 of UnovaReserve_Gate
+way 0.0
+  Ranger> I tend the grounds. Set objects down on one and different Pokémon move in.
+  Ranger> An object counts from the day after it's set down, and twice over once it has stood for ten days.
+  Ranger> Shall we arrange one of the grounds?
+  Ranger> Which ground?
+  ? Shall we arrange one of the grounds? = Yes
+  ? Which ground? = Meadow
+  * safari objects unova_reserve_meadow
+way 0.3, from answer 2
+  ? Which ground? = Cancel
+way 0.2, from answer 2
+  ? Which ground? = Crags
+  * safari objects unova_reserve_crags
+way 0.1, from answer 2
+  ? Which ground? = Woods
+  * safari objects unova_reserve_woods
+way 1, from answer 1
+  ? Shall we arrange one of the grounds? = No
 === ValleyWindworksBuilding.Girl
 from Little Girl at 10,8 of ValleyWindworksBuilding
 way -
@@ -22606,6 +22639,11 @@ way -
 from Owner at 46,52 of FloccesyRanch
 way -
   Owner> It's strange for Herdier to wander off. It always plays with the other one, or helps out on the ranch.
+=== floccesy_ranch_2.ReserveWarden
+from Warden at 50,40 of FloccesyRanch
+way -
+  Warden> I look after a reserve beyond those trees, where rare Pokémon are left to roam.
+  Warden> We open its gate only to a Champion of Unova. Come back once you are one!
 === floccesy_ranch_2.TheHerdier
 from the trigger at 50,24 of FloccesyRanch
 way -

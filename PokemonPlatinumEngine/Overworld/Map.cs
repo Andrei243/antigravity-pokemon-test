@@ -1680,7 +1680,9 @@ public class Map
             if (!dark && moment?.LandSet is int set && set > 0 && set <= area.LandSets.Count) land = area.LandSets[set - 1];
             return (moment == null ? land : EncounterSlots.Grass(area, moment, land), dark ? tables.DarkGrassRate : tables.LandRate);
         }
-        return water ? (Array.Empty<WildEncounterEntry>(), 0) : (WildEncounters, EncounterRate);
+        if (water) return (Array.Empty<WildEncounterEntry>(), 0);
+        // Unova's reserve (plan 38 · EX9) is a map of ours with grounds of its own, each with the slots its objects open
+        return Name == Models.UnovaReserve.ZoneMap ? (Models.UnovaReserve.Table(x, y, moment), EncounterRate) : (WildEncounters, EncounterRate);
     }
 
     /// <summary>

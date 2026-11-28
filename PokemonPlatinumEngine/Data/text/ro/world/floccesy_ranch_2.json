@@ -245,6 +245,16 @@
           "Scorbură"
         ]
       }
+    },
+    "floccesy_ranch_2.reserve_warden": {
+      "name": {
+        "en": [
+          "Warden"
+        ],
+        "text": [
+          "Paznicul"
+        ]
+      }
     }
   },
   "signs": {

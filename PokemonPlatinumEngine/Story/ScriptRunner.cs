@@ -355,7 +355,7 @@ public sealed partial class ScriptRunner
         Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape or Op.Dive => true,
         Op.Poketch or Op.PoketchApp or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle or Op.RidePokemon => false,
         // A Safari Game begun or ended is as told; the Area Customizer's screen is the player's to work (plan 38 · EX8)
-        Op.Safari => i.Name == "objects",
+        Op.Safari => i.Name is "objects" or "reserve",
         // A puzzle's pieces move while the field waits
         Op.FlowerClock or Op.PressButton or Op.GearButton => true,
         Op.PlatformLift => !i.Option,
@@ -1055,6 +1055,14 @@ public sealed partial class ScriptRunner
                 break;
             case Op.PoketchApp:
                 host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
+                break;
+            case Op.Safari when i.Name == "reserve":
+                // The reserve's grounds follow Johto's twelve areas (plan 38 · EX9); anything past them is none
+                {
+                    int ground = i.Number > 0 ? i.Number - 1 : Result;
+                    Result = ground >= 0 && ground < Models.UnovaReserve.Grounds.Count
+                        && host.ArrangeSafari(Models.SafariObjects.AreaKeys.Length + ground) ? 1 : 0;
+                }
                 break;
             case Op.Safari when i.Name == "objects":
                 // RESULT 1 where the area was opened to arrange, 0 where it wasn't (no such area, or nobody to arrange it)

@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Reserve Gate"
+    ],
+    "text": [
+      "Poarta rezervației"
+    ]
+  },
+  "people": {
+    "reserve_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          "Îngrijitorul"
+        ]
+      }
+    },
+    "reserve_ranger": {
+      "name": {
+        "en": [
+          "Ranger"
+        ],
+        "text": [
+          "Pădurarul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

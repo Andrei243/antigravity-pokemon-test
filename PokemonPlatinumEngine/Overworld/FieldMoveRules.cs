@@ -306,8 +306,9 @@ public static class FieldMoveRules
             Surfing = walker.Mode == TravelMode.Surfing,
             Region = RegionDatabase.RegionOfMap(map.Name)?.Id ?? RegionDatabase.Sinnoh,
             // (nobody flies, teleports or digs out of the pasture: its gate is the way back to the PC, plan 35 · BN5)
-            // (nor out of a cave made from a map file: a hideaway, plan 38 · EX6)
-            FlyAllowed = area?.FlyAllowed ?? (!map.IsIndoors && !map.IsCave && !Pasture.IsPasture(map.Name)),
+            // (nor out of a cave made from a map file: a hideaway, plan 38 · EX6; nor out of Unova's reserve, whose
+            // Safari Game ends at its gate, plan 38 · EX9)
+            FlyAllowed = area?.FlyAllowed ?? (!map.IsIndoors && !map.IsCave && !Pasture.IsPasture(map.Name) && map.Name != Models.UnovaReserve.ZoneMap),
             Town = area?.IsTown ?? false,
             CaveWithAWayOut = (area?.IsCave ?? map.Setting == MapSetting.Cave) && (area?.EscapeRopeAllowed ?? false)
         };

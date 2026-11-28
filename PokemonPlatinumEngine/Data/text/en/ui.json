@@ -7778,7 +7778,10 @@
       "9": "MARSHLAND",
       "10": "WASTELAND",
       "11": "MOUNTAIN",
-      "12": "DESERT"
+      "12": "DESERT",
+      "13": "MEADOW",
+      "14": "WOODS",
+      "15": "CRAGS"
     },
     "name": {
       "flowerPatch": "Flower Patch",
