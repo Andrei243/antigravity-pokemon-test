@@ -1046,6 +1046,42 @@ Seventy-nine species of the project's own region, each from one picture, a writt
 - **Asked of the kit again**: the board check printed in the `KIT:` line, a feather outline, a ring tube, a draped
   cloth, a flower, a lock that follows a surface, a frill along a curve, a decal mirrored with its outline.
 
+## What Carpathia's second wave taught (2026-11-28)
+
+Eighty-five more, twenty-four of them on skeletons the game generates by rule.
+
+- **A species with no C# sculptor** exports as a smooth stand-in on a generated skeleton. Take the bones, the clips
+  and the size; build the picture's body. Before choosing bones, measure what each clip does to each bone (the
+  joint's place and the largest turn): a part hung from a joint far from its own root, or on a bone that turns it
+  the wrong way, stays on `body`. A bone with nothing on it is fine. Where the picture stands another way than the
+  stand-in (an upright seahorse on a level fish), the export's longest side is the picture's longest.
+- **Scenery and drawn effects are not the creature**: no perch, pebble, wave, ripple, ring of sound, spark, spore
+  or breath. A base the brief names (a stone, a pad, a root mat) is part of it and goes on `root` or `body`.
+- **An action in the picture becomes the rest pose** (every foot down, level, facing forward); a pose that is the
+  creature's identity (hanging head down, floating on its back, sitting) is kept, with its parts on `body` where
+  the bones would swing them from the wrong end.
+- **The board check is not excused by a round footprint**: three round-footed builds whose reports waved the
+  four-corner sum away were cut by their cells. Pass the sum, or print the true span at the camera's angle and hold
+  it to 0.9 of the square.
+- **From a camera that looks down a little**: a flat crown or cap is a plate (give it a dome's volume, rounded
+  underneath); a long body coiled on itself is a stub (one gentle bend, rear half toward +X).
+- **Thin stays thin**: strings, veins and cracks as bars hide the surface they lie on. A crack mask as the distance
+  to the plane halfway between two seeds, `(d2*d2 - d1*d1) / (2 * |s2 - s1|)`, keeps lines even where `d2 - d1`
+  widens them.
+- **What reads as the wrong thing**: even level bands as a screw thread, tubes with balls as arms with fists, a
+  ball in a rimmed cup as an ice cream, a round body on two straight tubes as a bird on stilts, fins hung under a
+  body as legs, pale wings larger than their bodies as petals, a hard-edged patch as a label.
+- **Colours are sampled from the picture**, not taken from the animal's name.
+- **Traps met again**: `inside(d)` is 1 below nought (a mask written the other way round paints everywhere, or
+  only the face); a `polygon` patch whose outline does not hold its own middle floods the surface; a tube's end
+  cap swallows a disc set at its tip (start the disc 0.7 of the end radius past it) and reaches under the ground
+  (a negative `lowest`); `hull()` of points along a curved top fills straight across underneath; a `facets`
+  deform with depth under 1 shrinks its ball by about 15%; the kit's `leaf()` lies edge-on in a sideways frame
+  (use a `slab` outline through `outward`); a sheet-built frill needs `outward()` like any closed loose piece.
+- **Asked of the kit again**, by nearly every agent: the board check (with the true span) printed in the `KIT:`
+  line, `on_ell`, a ring tube, a ribbon that tapers and curls, a draped cloth, a fern or lobed leaf outline, a
+  coiled-shell sweep, plates laid over a surface with rivets, crack paint, a decal mirrored with its outline.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
