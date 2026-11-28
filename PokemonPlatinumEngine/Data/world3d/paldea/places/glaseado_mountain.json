@@ -15,6 +15,10 @@
     { "name": "glaseado_center_door", "at": [81, 52.0, -1093], "yaw": 0 }
   ],
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_yellow_4", "cylinder": { "at": [40, -910], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow4" },
+    { "name": "stake_yellow_5", "cylinder": { "at": [212, -920], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow5" },
+    { "name": "shrine_chien_pao", "cylinder": { "at": [-124, -920], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaShrineChienPao" },
     // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
     { "name": "crystal_glaseado_1", "cylinder": { "at": [184, -920], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalGlaseado1" },
     // The run's three gates in order, then the line at the foot (VAR_PALDEA_GLASEADO_RUN 1 to 4 while it is run); the
@@ -55,7 +59,19 @@
         { "species": "Cetoddle", "minLevel": 40, "maxLevel": 44, "weight": 20 },
         { "species": "Cubchoo", "minLevel": 40, "maxLevel": 44, "weight": 20 },
         { "species": "Snorunt", "minLevel": 40, "maxLevel": 43, "weight": 20 },
-        { "species": "Sneasel", "minLevel": 40, "maxLevel": 44, "weight": 15, "time": "Night" }
+        { "species": "Sneasel", "minLevel": 40, "maxLevel": 44, "weight": 15, "time": "Night" },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Cetiberg", "minLevel": 252, "maxLevel": 256, "weight": 1 },
+        { "species": "Cryoparcel", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Banshemane", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Velocidrake", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Hydrajet", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Lunaroar", "minLevel": 254, "maxLevel": 258, "weight": 1 },
+        { "species": "Paladroid", "minLevel": 254, "maxLevel": 258, "weight": 1 },
+        { "species": "Gauntletron", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Geodiadem", "minLevel": 252, "maxLevel": 256, "weight": 1 },
+        { "species": "Dunsprawl", "minLevel": 252, "maxLevel": 256, "weight": 1 }
       ],
       "density": 3, "cap": 5
     },

@@ -2,6 +2,10 @@
   // Porto Marinada (plan 34 · PD6): the market port on the western sea, down the ramp at the end of the road west from
   // Cascarrafa, its paved quay over the sea, the auction house where the morning's catch is sold, warehouses and the
   // Pokémon Center. Kofu's errand is won at the auction (porto_marinada.txt's Auctioneer); its other people only talk
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_blue_8", "cylinder": { "at": [-664, -668], "radius": 1.5, "bottom": -2, "top": 24 }, "script": "PaldeaStakeBlue8" }
+  ],
   "markers": [
     { "name": "porto_east", "at": [-664, 4.0, -668], "yaw": 270 },
     { "name": "porto_quay", "at": [-716, 4.0, -668], "yaw": 270 },

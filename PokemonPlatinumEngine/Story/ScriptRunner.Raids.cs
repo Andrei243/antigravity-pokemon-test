@@ -49,7 +49,7 @@ public sealed partial class ScriptRunner
                 raidCrystal = true;
                 raidShardsTaken = false;
                 int version = Math.Max(1, host.Story.Var("VAR_PALDEA_VERSION"));
-                raidToday = Raids.CrystalToday(raidDen, host.DayNumber, version, host.Story.BadgeCount(host.Region));
+                raidToday = Raids.CrystalTodayUpTo(raidDen, host.DayNumber, version, Raids.TeraMostStarsOf(host.Story));
                 var species = PokemonDatabase.Get(raidToday.Species) ?? PokemonDatabase.SpeciesOfForm(raidToday.Species);
                 host.Story.SetVar(CrystalStarsVariable, raidToday.Stars);
                 host.Story.SetVar(CrystalSpeciesVariable, species?.DexNumber ?? 0);

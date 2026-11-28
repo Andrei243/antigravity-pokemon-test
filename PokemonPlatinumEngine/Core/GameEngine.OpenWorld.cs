@@ -87,6 +87,8 @@ public partial class GameEngine
         // and with a sandwich's Type and Encounter Powers on the spawner's draws (plan 34 · PD7)
         field.Wild.Favoured = OpenWildField.FavouredBy(flow.Powers);
         field.Wild.MoreStanding = OpenWildField.MoreStandingBy(flow.Powers);
+        // and with the rows of our own species once the region's slots of ours are open (plan 03 · D15, plan 34 · PD9)
+        field.Wild.OursOpen = Overworld.OursSlots.Open(Here, flow.Story);
         if (ScriptRunning)
         {
             // A script that begins takes the player off the mount (plan 30 · FM12)

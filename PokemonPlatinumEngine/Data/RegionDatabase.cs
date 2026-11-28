@@ -1274,6 +1274,8 @@ public static class RegionDatabase
                 // Plan 34 · PD8, its second session: the Zero Gate's hall on the crater's rim, Area Zero down the crater
                 // with its four research stations (a cave-set grid map), and the Zero Lab at its bottom
                 "AreaZero_Gate", "AreaZero", "AreaZero_ZeroLab",
+                // Plan 34 · PD9: the academy's battle court, where the Academy Ace Tournament is fought after the Way Home
+                "Mesagoza_AceCourt",
             }
         },
         // Side regions stand after the chain (plan 23 · Z17)

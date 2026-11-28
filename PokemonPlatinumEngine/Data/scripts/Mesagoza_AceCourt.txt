@@ -1,0 +1,204 @@
+# The academy's battle court (plan 34 · PD9): the Academy Ace Tournament, entered at the desk in the entrance hall
+# (Mesagoza_AcademyHall.txt's AceDesk) once the Way Home is behind the player. Three rounds in order on one spot of the
+# court, as Galar's Champion Cup is fought (docs/mechanics/rulings.md, "After Paldea's Hall of Fame": the bracket isn't
+# drawn): the first round against one of the eight gym leaders, the second against one of the Elite Four, the final
+# against the Top Champion Geeta or Nemona, each drawn at the desk (VAR_PALDEA_ACE_FIRST, _SECOND, _FINAL) and fought
+# with their rematch teams (Data/world/paldea/trainers.json, paldea_<who>_rematch). The team is healed before each round;
+# a loss ends the tournament. The first title sets FLAG_PALDEA_ACE_TOURNAMENT_WON, which lets the seven-star black
+# crystals stand (Models/Raids.cs, Raids.TeraMostStarsOf); every title is counted in VAR_PALDEA_ACE_TITLES. Our own lines.
+#
+# VAR_PALDEA_ACE: 0 no tournament under way, 1 the first round due, 2 the second, 3 the final.
+
+
+script OnEnter
+  clearflag FLAG_PALDEA_ACE_KATY
+  clearflag FLAG_PALDEA_ACE_BRASSIUS
+  clearflag FLAG_PALDEA_ACE_IONO
+  clearflag FLAG_PALDEA_ACE_KOFU
+  clearflag FLAG_PALDEA_ACE_LARRY
+  clearflag FLAG_PALDEA_ACE_RYME
+  clearflag FLAG_PALDEA_ACE_TULIP
+  clearflag FLAG_PALDEA_ACE_GRUSHA
+  clearflag FLAG_PALDEA_ACE_RIKA
+  clearflag FLAG_PALDEA_ACE_POPPY
+  clearflag FLAG_PALDEA_ACE_LARRY_ELITE
+  clearflag FLAG_PALDEA_ACE_HASSEL
+  clearflag FLAG_PALDEA_ACE_GEETA
+  clearflag FLAG_PALDEA_ACE_NEMONA
+  if var VAR_PALDEA_ACE == 1 goto FirstDue
+  if var VAR_PALDEA_ACE == 2 goto SecondDue
+  if var VAR_PALDEA_ACE == 3 goto FinalDue
+  end
+label FirstDue
+  if var VAR_PALDEA_ACE_FIRST == 0 goto ShowKaty
+  if var VAR_PALDEA_ACE_FIRST == 1 goto ShowBrassius
+  if var VAR_PALDEA_ACE_FIRST == 2 goto ShowIono
+  if var VAR_PALDEA_ACE_FIRST == 3 goto ShowKofu
+  if var VAR_PALDEA_ACE_FIRST == 4 goto ShowLarry
+  if var VAR_PALDEA_ACE_FIRST == 5 goto ShowRyme
+  if var VAR_PALDEA_ACE_FIRST == 6 goto ShowTulip
+  setflag FLAG_PALDEA_ACE_GRUSHA
+  end
+label ShowKaty
+  setflag FLAG_PALDEA_ACE_KATY
+  end
+label ShowBrassius
+  setflag FLAG_PALDEA_ACE_BRASSIUS
+  end
+label ShowIono
+  setflag FLAG_PALDEA_ACE_IONO
+  end
+label ShowKofu
+  setflag FLAG_PALDEA_ACE_KOFU
+  end
+label ShowLarry
+  setflag FLAG_PALDEA_ACE_LARRY
+  end
+label ShowRyme
+  setflag FLAG_PALDEA_ACE_RYME
+  end
+label ShowTulip
+  setflag FLAG_PALDEA_ACE_TULIP
+  end
+label SecondDue
+  if var VAR_PALDEA_ACE_SECOND == 0 goto ShowRika
+  if var VAR_PALDEA_ACE_SECOND == 1 goto ShowPoppy
+  if var VAR_PALDEA_ACE_SECOND == 2 goto ShowLarryElite
+  setflag FLAG_PALDEA_ACE_HASSEL
+  end
+label ShowRika
+  setflag FLAG_PALDEA_ACE_RIKA
+  end
+label ShowPoppy
+  setflag FLAG_PALDEA_ACE_POPPY
+  end
+label ShowLarryElite
+  setflag FLAG_PALDEA_ACE_LARRY_ELITE
+  end
+label FinalDue
+  if var VAR_PALDEA_ACE_FINAL == 0 goto ShowGeeta
+  setflag FLAG_PALDEA_ACE_NEMONA
+  end
+label ShowGeeta
+  setflag FLAG_PALDEA_ACE_GEETA
+  end
+
+
+# Whoever stands on the court's spot: the round's match with their rematch team
+script Match
+  speaker "Referee"
+  if var VAR_PALDEA_ACE == 1 goto First
+  if var VAR_PALDEA_ACE == 2 goto Second
+  if var VAR_PALDEA_ACE == 3 goto Final
+  end
+label First
+  say "Round one of the Academy Ace Tournament! Trainers, take your places!"
+  if var VAR_PALDEA_ACE_FIRST == 0 goto FirstKaty
+  if var VAR_PALDEA_ACE_FIRST == 1 goto FirstBrassius
+  if var VAR_PALDEA_ACE_FIRST == 2 goto FirstIono
+  if var VAR_PALDEA_ACE_FIRST == 3 goto FirstKofu
+  if var VAR_PALDEA_ACE_FIRST == 4 goto FirstLarry
+  if var VAR_PALDEA_ACE_FIRST == 5 goto FirstRyme
+  if var VAR_PALDEA_ACE_FIRST == 6 goto FirstTulip
+  battle self as "paldea_grusha_rematch" canlose
+  goto FirstFought
+label FirstKaty
+  battle self as "paldea_katy_rematch" canlose
+  goto FirstFought
+label FirstBrassius
+  battle self as "paldea_brassius_rematch" canlose
+  goto FirstFought
+label FirstIono
+  battle self as "paldea_iono_rematch" canlose
+  goto FirstFought
+label FirstKofu
+  battle self as "paldea_kofu_rematch" canlose
+  goto FirstFought
+label FirstLarry
+  battle self as "paldea_larry_rematch" canlose
+  goto FirstFought
+label FirstRyme
+  battle self as "paldea_ryme_rematch" canlose
+  goto FirstFought
+label FirstTulip
+  battle self as "paldea_tulip_rematch" canlose
+label FirstFought
+  if lost goto Out
+  speaker "Referee"
+  say "The winner of round one: {player}! On to round two."
+  setvar VAR_PALDEA_ACE 2
+  goto NextRound
+label Second
+  say "Round two! The Elite Four have entered too, and here comes one of them now!"
+  if var VAR_PALDEA_ACE_SECOND == 0 goto SecondRika
+  if var VAR_PALDEA_ACE_SECOND == 1 goto SecondPoppy
+  if var VAR_PALDEA_ACE_SECOND == 2 goto SecondLarry
+  battle self as "paldea_hassel_rematch" canlose
+  goto SecondFought
+label SecondRika
+  battle self as "paldea_rika_rematch" canlose
+  goto SecondFought
+label SecondPoppy
+  battle self as "paldea_poppy_rematch" canlose
+  goto SecondFought
+label SecondLarry
+  battle self as "paldea_larry_elite_rematch" canlose
+label SecondFought
+  if lost goto Out
+  speaker "Referee"
+  say "{player} goes through to the final! Nobody saw that coming. Well, everyone did."
+  setvar VAR_PALDEA_ACE 3
+  goto NextRound
+label Final
+  say "The final of the Academy Ace Tournament! The whole academy is watching!"
+  if var VAR_PALDEA_ACE_FINAL == 0 goto FinalGeeta
+  if starter "Sprigatito" goto FinalSprigatito
+  if starter "Fuecoco" goto FinalFuecoco
+  battle self as "paldea_nemona_8c_rematch" canlose
+  goto FinalFought
+label FinalSprigatito
+  battle self as "paldea_nemona_8a_rematch" canlose
+  goto FinalFought
+label FinalFuecoco
+  battle self as "paldea_nemona_8b_rematch" canlose
+  goto FinalFought
+label FinalGeeta
+  battle self as "paldea_geeta_rematch" canlose
+label FinalFought
+  if lost goto Out
+  speaker "Referee"
+  say "And the winner of the Academy Ace Tournament is... {player}! What a final!"
+  setvar VAR_PALDEA_ACE 0
+  addvar VAR_PALDEA_ACE_TITLES 1
+  if flag FLAG_PALDEA_ACE_TOURNAMENT_WON goto Prize
+  setflag FLAG_PALDEA_ACE_TOURNAMENT_WON
+  say "First title! They say the black crystals out in Paldea burn even brighter for an ace. Seven stars, apparently."
+label Prize
+  give "Rare Candy" 3
+  give "Exp. Candy XL"
+  say "The tournament runs again whenever you like. Sign up at the desk in the entrance hall."
+  warp "Mesagoza_AcademyHall" 12 10 down
+  end
+label NextRound
+  heal
+  text "{player}'s Pokémon were restored for the next round."
+  warp "Mesagoza_AceCourt" 7 12 up
+  end
+label Out
+  speaker "Referee"
+  say "{player} is out of the tournament! A fine run all the same. Sign up again at the desk any time."
+  setvar VAR_PALDEA_ACE 0
+  heal
+  warp "Mesagoza_AcademyHall" 12 10 down
+  end
+
+
+# The referee at the court's side
+script Referee
+  speaker "Referee"
+  if var VAR_PALDEA_ACE == 0 goto Done
+  say "Your next opponent is waiting on the court. Good luck!"
+  end
+label Done
+  say "The court's closed between tournaments. Sign up at the desk in the entrance hall."
+  end

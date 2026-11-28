@@ -41,5 +41,20 @@ label Missed
   endscene
   end
 label Sold
+  if flag PaldeaHallOfFame goto Champion
   say "Kofu's runner! That crate made the whole morning. Come back any time you want to bid."
+  end
+# Plan 34 · PD9: after the Hall of Fame the auction's oddities lot (the two suits of armour Charcadet wear to evolve, and
+# a boxing glove nobody else wanted) goes to the Champion for nothing, once (FLAG_PALDEA_AUCTION_ODDITIES)
+label Champion
+  if flag FLAG_PALDEA_AUCTION_ODDITIES goto Regular
+  say "The new Champion, at my auction! Here, take today's oddities lot. Nobody bid on it, and I'd rather it went to you."
+  give "Auspicious Armor"
+  give "Malicious Armor"
+  give "Punching Glove"
+  setflag FLAG_PALDEA_AUCTION_ODDITIES
+  say "Old armour that a Charcadet might take a liking to, and a glove for anyone who punches. Paldea is full of surprises."
+  end
+label Regular
+  say "Bids on every crate, all morning long! The Champion's welcome to bid like anyone else."
   end

@@ -4,6 +4,11 @@
   // the north-west, the road west out of the avenue to the West Province's second area and Porto Marinada, and the
   // Pokémon Center by the pool. Its people only talk; Kofu's test is an errand to Porto Marinada's auction
   // (porto_marinada.txt), and the gym and his hall are rooms (Cascarrafa_Gym, Cascarrafa_GymTest)
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_blue_3", "cylinder": { "at": [-436, -604], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeBlue3" },
+    { "name": "stake_blue_4", "cylinder": { "at": [-390, -696], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeBlue4" }
+  ],
   "markers": [
     { "name": "cascarrafa_south", "at": [-436, 12.0, -604], "yaw": 0 },
     { "name": "cascarrafa_square", "at": [-452, 12.0, -668], "yaw": 0 },

@@ -85,20 +85,24 @@ internal static class DenBeams
         var colour = CrystalColour(tera);
         var light = Mix(colour, new Color(255, 255, 255, 255), 0.55f);
         float stars = 0.85f + 0.03f * Math.Clamp(beam.Stars, 1, 7);
+        // A black crystal (plan 34 · PD9, six and seven stars): a body near black, a fifth taller, lit from within
+        bool black = IsBlack(beam.Stars);
+        var body = black ? BlackBody : colour;
+        float height = black ? CrystalHeight * 1.2f : CrystalHeight;
         // The crystal: a bright core and its body, each in four lengths narrowing toward the point
         for (int i = 0; i < 4; i++)
         {
-            float y0 = CrystalHeight * i / 4, y1 = CrystalHeight * (i + 1) / 4;
+            float y0 = height * i / 4, y1 = height * (i + 1) / 4;
             float width = CrystalWidth * (1f - (i + 0.5f) / 4f * 0.85f);
             into.Add(new WeatherPiece(beam.Foot + new Vector3(0, y1, 0), beam.Foot + new Vector3(0, y0, 0), width,
-                new Color(colour.R, colour.G, colour.B, (byte)Math.Min(255, (int)(225 * breath * stars)))));
+                new Color(body.R, body.G, body.B, (byte)Math.Min(255, (int)(225 * breath * stars)))));
             into.Add(new WeatherPiece(beam.Foot + new Vector3(0, y1, 0), beam.Foot + new Vector3(0, y0, 0), width * 0.45f,
                 new Color(light.R, light.G, light.B, (byte)Math.Min(255, (int)(235 * breath)))));
         }
         // The glow over it
         for (int i = 0; i < Lengths; i++)
         {
-            float y0 = CrystalHeight + (CrystalGlow - CrystalHeight) * i / Lengths, y1 = CrystalHeight + (CrystalGlow - CrystalHeight) * (i + 1) / Lengths;
+            float y0 = height + (CrystalGlow - height) * i / Lengths, y1 = height + (CrystalGlow - height) * (i + 1) / Lengths;
             float fade = 1f - (i + 0.5f) / Lengths;
             fade *= fade;
             foreach (var (share, strength) in Layers)
@@ -110,6 +114,12 @@ internal static class DenBeams
             }
         }
     }
+
+    /// <summary>The body of a black crystal (plan 34 · PD9; style guide, "Tera crystals"): near black, lit from within by its core.</summary>
+    public static readonly Color BlackBody = new(28, 22, 34, 255);
+
+    /// <summary>Whether a crystal of so many stars is a black one: six and seven, after Paldea's Hall of Fame.</summary>
+    public static bool IsBlack(int stars) => stars >= 6;
 
     private static Color Mix(Color a, Color b, float t) =>
         new((byte)(a.R + (b.R - a.R) * t), (byte)(a.G + (b.G - a.G) * t), (byte)(a.B + (b.B - a.B) * t), (byte)255);

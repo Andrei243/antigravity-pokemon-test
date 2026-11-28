@@ -13407,3 +13407,43 @@ out where the rules already bite. Ids 3101 to 3107 for both the moves and the ab
 - **Wild Pokémon**: the crater's tall grass has Glimmet, Garganacl, Tinkatuff, Bronzong, Rabsca and Glimmora at 52 to 57;
   two Paradox Pokémon of the version stand on its terraces to be battled once at 56 (Great Tusk and Flutter Mane, or Iron
   Treads and Iron Moth). Songs: none new (the gate's hall `paldea/titans`, the crater and the lab `paldea/alfornada`).
+
+## After Paldea's Hall of Fame (2026-11-28, plan 34 · PD9)
+
+- **The Academy Ace Tournament is fought as Galar's Cup is**, the plan's "as Galar's Cup is" read literally: three rounds
+  in order on one spot of the academy's battle court (`Mesagoza_AceCourt`, a room of ours reached from the entrance hall's
+  desk), the bracket not drawn and the other matches not fought. The plan's "on `Bracket`" is left for a later pass: the
+  World Tournament's `Tournament` brings every Pokémon to level 50 and a team of three, which the originals' Ace
+  Tournament doesn't, and a model of its own would be a new script command for one place. Its opponents are drawn at the
+  desk by `random` (a gym leader, one of the Elite Four, Geeta or Nemona) and fight with their rematch teams; the team is
+  healed before each round and a loss ends it. Open once the Way Home is behind the player (`FLAG_PALDEA_WAY_HOME`), as
+  the originals open it after the story's end. Each title gives three Rare Candies and an Exp. Candy XL (ours); the first
+  sets `FLAG_PALDEA_ACE_TOURNAMENT_WON`.
+- **The rematches**: each gym leader asks for a rematch once a day after `PaldeaHallOfFame` in their gym's test room
+  (`FLAG_DAILY_PALDEA_<WHO>_REMATCH`, the Leaders' rematches' rule of plan 41 · EG5) with `paldea_<who>_rematch`, five
+  Pokémon with the best at 70, the first team's species grown up and one more of the type (ours). The Elite Four's,
+  Geeta's and Nemona's rematch teams (the first teams raised to 72, 74 and 75) are fought in the tournament's second
+  round and final. The badge-scaled teams of plan 34 · decision 3 (`_b0` to `_b7`) are one leader's first team at other
+  levels and need no rematch of their own.
+- **The black crystals**: rows of six and seven stars at the end of every crystal's table (`crystals.json`, two of six
+  and one of seven each, the seven-star a Paldean partner's final form with its own Tera Type), drawn among only once
+  `PaldeaHallOfFame` is set (six) and the Ace Tournament has been won (seven) (`Raids.TeraMostStarsOf`); before the Hall of
+  Fame every crystal's day draws what PD7's did. A black crystal is drawn near black and lit from within (style guide,
+  "Tera crystals").
+- **The Treasures of Ruin: four shrines, not eight.** The plan's "eight shrines" is a slip: the originals have four
+  shrines, each sealed by eight stakes of its colour. Ours: 32 stakes as triggers of the open map, on its markers spread
+  over the provinces (purple in the south for Wo-Chien, yellow in the north for Chien-Pao, green in the east for Ting-Lu,
+  blue in the west and the desert for Chi-Yu), each pulled by walking onto it once the Way Home is behind the player; the
+  shrines are triggers at Alfornada's ruins, Glaseado's western foot, the East Province's third area's north end and the
+  desert's north end. With its eight pulled a shrine wakes its Treasure at 60; one beaten and not caught waits to be met
+  again. The stakes stand where nothing marks them yet (no drawn stake, owed).
+- **The partners' Mega Stones** (plan 40 · GE11; decisions/R20b-mega-proposals.md, "Where the stones are found"): the
+  professor is gone after the Way Home, so the academy's director, Clavell, stands in for the region's professor and
+  hands over the Meowscaradite, Skeledirgite and Quaquavalite once the bag holds a Key Stone. **The armours and the
+  Punching Glove** are Porto Marinada's auctioneer's oddities lot, given once after the Hall of Fame (the originals sell
+  the armours at that auction).
+- **Our species in the open map** (plan 03 · D15, design B on an open map): a zone row whose species is one of ours
+  (`OpenSlot.Ours`) is left out of its zone's draw until the region's slots of ours are open (Paldea's Hall of Fame,
+  `OpenWildField.OursOpen`), so nothing before it moves, and is met at its own levels, never mapped. Paldea's batch of 50
+  placeable species stand in the ten zones of level 22 and up, five to a zone (six on the western coast), weight 1 each
+  beside the zone's own 100 or so, at their evolution level to four above.

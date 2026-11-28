@@ -45,6 +45,8 @@ label Done
 # recommendation, as Kofu's and Larry's are (Cascarrafa_GymTest.txt): her team is scaled to the badges the challenger
 # holds, its best at the cap of that many badges, so in the academy's order (five held) it is the original's
 # (Data/world/paldea/trainers.json: paldea_ryme, paldea_ryme_b0 to _b7)
+# Plan 34 · PD9: after Paldea's Hall of Fame the leader asks for a rematch once a day (FLAG_DAILY_PALDEA_RYME_REMATCH;
+# docs/mechanics/rulings.md, "After Paldea's Hall of Fame"), with the team of paldea_ryme_rematch
 script Leader
   face ryme player
   speaker "Ryme"
@@ -99,5 +101,15 @@ label NotEnrolled
   say "Not enrolled at the academy? Then this stage isn't yours yet. Come back with a student card."
   end
 label Won
+  if not flag PaldeaHallOfFame goto Chat
+  if flag FLAG_DAILY_PALDEA_RYME_REMATCH goto Chat
+  ask "Champion in the house! The crowd's been chanting for an encore. Ready to drop a new verse?"
+  if no goto Chat
+  say "Mic check, one two. Let's give them a show!"
+  battle ryme as "paldea_ryme_rematch"
+  say "That's a wrap! The crowd wants another tomorrow, and so do I."
+  setflag FLAG_DAILY_PALDEA_RYME_REMATCH
+  end
+label Chat
   say "Back for an encore? The badge is yours already. The crowd still remembers you, though."
   end

@@ -5,6 +5,8 @@
 
 # Brassius's battle for the Grass Badge. He Terastallizes his Sudowoodo into a Grass type. His levels are fixed,
 # whatever order the gyms are taken in (plan 34 · decision 3)
+# Plan 34 · PD9: after Paldea's Hall of Fame the leader asks for a rematch once a day (FLAG_DAILY_PALDEA_BRASSIUS_REMATCH;
+# docs/mechanics/rulings.md, "After Paldea's Hall of Fame"), with the team of paldea_brassius_rematch
 script Leader
   face brassius player
   speaker "Brassius"
@@ -30,5 +32,15 @@ label NotEnrolled
   say "A challenger who is not yet a student? Enrol at the academy first, and then we shall make art."
   end
 label Won
+  if not flag PaldeaHallOfFame goto Chat
+  if flag FLAG_DAILY_PALDEA_BRASSIUS_REMATCH goto Chat
+  ask "Champion! My art has grown since our battle. Will you be the audience for my newest work?"
+  if no goto Chat
+  say "Then behold! Every leaf of it is a brushstroke!"
+  battle brassius as "paldea_brassius_rematch"
+  say "A masterpiece, again. Yours, not mine. Return tomorrow, and I shall have reworked it."
+  setflag FLAG_DAILY_PALDEA_BRASSIUS_REMATCH
+  end
+label Chat
   say "Your battle still inspires me. I have begun a new sculpture in its honour."
   end

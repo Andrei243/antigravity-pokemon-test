@@ -7,6 +7,8 @@
 # recommendation: from the fourth gym on, a leader's team is scaled to the badges the challenger holds, its best at the
 # cap of that many badges (paldea.json's "caps"), so in the academy's order (three held) Kofu's team is the original's
 # and taken first it is no harder than Katy's (Data/world/paldea/trainers.json: paldea_kofu, paldea_kofu_b0 to _b7)
+# Plan 34 · PD9: after Paldea's Hall of Fame the leader asks for a rematch once a day (FLAG_DAILY_PALDEA_KOFU_REMATCH;
+# docs/mechanics/rulings.md, "After Paldea's Hall of Fame"), with the team of paldea_kofu_rematch
 script Leader
   face kofu player
   speaker "Kofu"
@@ -68,5 +70,15 @@ label NotEnrolled
   say "A challenger who isn't a student? Ah, no, no. Enrol at the academy in Mesagoza first, then come back hungry!"
   end
 label Won
+  if not flag PaldeaHallOfFame goto Chat
+  if flag FLAG_DAILY_PALDEA_KOFU_REMATCH goto Chat
+  ask "The Champion! My team's been training on a diet of the finest catch. Fancy a second helping?"
+  if no goto Chat
+  say "Ha! Fresh from the sea, and full of fight!"
+  battle kofu as "paldea_kofu_rematch"
+  say "Delectable! Come back tomorrow. I'll have a new recipe for you."
+  setflag FLAG_DAILY_PALDEA_KOFU_REMATCH
+  end
+label Chat
   say "Back again? The urchins went into the best stew I've made all year. Thanks to you!"
   end

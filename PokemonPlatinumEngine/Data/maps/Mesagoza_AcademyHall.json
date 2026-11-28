@@ -154,6 +154,15 @@
       "dialog": [
         "The library's on the second floor and the cafeteria's on the first. I still get lost every morning."
       ]
+    },
+    {
+      "id": "ace_desk",
+      "name": "Tournament Desk",
+      "npcType": "receptionist",
+      "x": 13,
+      "y": 9,
+      "facing": "Left",
+      "script": "AceDesk"
     }
   ],
   "wildEncounters": []

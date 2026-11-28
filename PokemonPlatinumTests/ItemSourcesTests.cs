@@ -77,8 +77,6 @@ public class ItemSourcesTests
     private const string IsleOfArmor = "plan 33 · GL8 (optional): the Isle of Armor";
     private const string CrownTundra = "plan 33 · GL9 (optional): the Crown Tundra";
     private const string Provinces = "plan 34 · PD3: the provinces' chests and roaming Gimmighoul (and PD6's)";
-    private const string Paldea = "plan 34 · PD9: Paldea's last session, after its Hall of Fame";
-    private const string PaldeaStones = "plan 34 · PD9: Paldea's Hall of Fame, its professor's gift once the bag holds a Key Stone (decisions/R20b-mega-proposals.md)";
     private const string TealMask = "plan 34 · PD10 (optional): the Teal Mask";
     private const string IndigoDisk = "plan 34 · PD11 (optional): the Indigo Disk";
     private const string Carpathia = "plan 46 · CP18: Carpathia's file and first town, where the Sound type's items are first had (CP2 made them)";
@@ -121,8 +119,8 @@ public class ItemSourcesTests
         // Paldea, with the Teal Mask and the Indigo Disk
         // (the Tera Orb is had since PD1: Mesagoza's academy hall hands it to a bag without one)
         (Provinces, new[] { "Gimmighoul Coin" }),
-        (Paldea, new[] { "Malicious Armor", "Auspicious Armor", "Punching Glove" }),
-        (PaldeaStones, new[] { "Meowscaradite", "Skeledirgite", "Quaquavalite" }),
+        // (the Armors and the Punching Glove are the Porto Marinada auctioneer's after the Hall of Fame, and the three partners' stones
+        // Director Clavell's once the bag holds a Key Stone, since plan 34 · PD9)
         (TealMask, new[] { "Syrupy Apple", "Unremarkable Teacup", "Masterpiece Teacup" }),
         (IndigoDisk, new[] { "Metal Alloy" }),
         // Carpathia, the region of our own (plan 46): the Sound type's Gem and Z-Crystal
@@ -324,10 +322,14 @@ public class ItemSourcesTests
         foreach (var (region, _, _, _, stones) in Professors)
             foreach (string stone in stones)
                 Assert.True(ItemSources.In(region).Has(stone, ItemSourceKind.Given), $"{region} gives no {stone}");
-        // The other six wait for their regions' professors after their Halls of Fame
+        // The other three (Galar's) wait for their region's professor after their Halls of Fame
         var given = Professors.SelectMany(p => p.Stones).ToHashSet();
+        // (Paldea's three are Director Clavell's since plan 34 · PD9: an open region, which ItemSources.In doesn't read, so
+        // PaldeaPostgameTests holds his gift and Everywhere counts it)
+        given.UnionWith(new[] { "Meowscaradite", "Skeledirgite", "Quaquavalite" });
+        Assert.All(new[] { "Meowscaradite", "Skeledirgite", "Quaquavalite" }, stone => Assert.True(ItemSources.Everywhere.Has(stone, ItemSourceKind.Given), stone));
         Assert.All(ours.Where(s => !given.Contains(s)), stone => Assert.Contains("the bag holds a Key Stone", Owed[stone], StringComparison.Ordinal));
-        Assert.Equal(6, ours.Count(s => !given.Contains(s)));
+        Assert.Equal(3, ours.Count(s => !given.Contains(s)));
     }
 
     // ------------------------------------------------------------------ Unova's form items

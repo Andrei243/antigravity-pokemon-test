@@ -100,6 +100,20 @@ public static class Raids
     /// <summary>The most stars a crystal holds by Paldea's badges: two with none to two, three with three to five, four with six or seven, five with all eight.</summary>
     public static int TeraMostStars(int badges) => badges >= 8 ? 5 : badges >= 6 ? 4 : badges >= 3 ? 3 : 2;
 
+    /// <summary>
+    /// The most stars a crystal holds after Paldea's Hall of Fame too (plan 34 · PD9): the black crystals' six once
+    /// <c>PaldeaHallOfFame</c> is set, seven once the Academy Ace Tournament has been won (<see cref="AceTitleFlag"/>);
+    /// before either, the badges' alone, so no crystal's draw before the Hall of Fame moves.
+    /// </summary>
+    public static int TeraMostStars(int badges, bool champion, bool aceTitle) => aceTitle && champion ? 7 : champion ? 6 : TeraMostStars(badges);
+
+    /// <summary>The flag the Academy Ace Tournament's first title sets (plan 34 · PD9), which lets the seven-star crystals stand.</summary>
+    public const string AceTitleFlag = "FLAG_PALDEA_ACE_TOURNAMENT_WON";
+
+    /// <summary>The most stars Paldea's crystals hold for a story: the badges, the Hall of Fame and the Ace Tournament's title.</summary>
+    public static int TeraMostStarsOf(PokemonPlatinumEngine.Story.StoryState story) =>
+        TeraMostStars(story.BadgeCount(RegionDatabase.Paldea), story.Has("PaldeaHallOfFame"), story.Has(AceTitleFlag));
+
     /// <summary>The level of a crystal's boss of so many stars (ours, on Scarlet's ladder): a range of three from the stars' floor.</summary>
     public static (int Least, int Most) TeraLevelsOf(int stars) => stars switch
     {
@@ -130,11 +144,15 @@ public static class Raids
     /// stars; its Tera Type the row's where it names one, otherwise one of the species' own types two times in three and any
     /// of the eighteen the third.
     /// </summary>
-    public static RaidToday CrystalToday(RaidDenFile crystal, uint day, int version, int badges)
+    public static RaidToday CrystalToday(RaidDenFile crystal, uint day, int version, int badges) =>
+        CrystalTodayUpTo(crystal, day, version, TeraMostStars(badges));
+
+    /// <summary>What a Tera crystal holds on a day, among the rows of at most <paramref name="mostStars"/> (<see cref="TeraMostStarsOf"/>; plan 34 · PD9's black crystals).</summary>
+    public static RaidToday CrystalTodayUpTo(RaidDenFile crystal, uint day, int version, int mostStars)
     {
         var draws = DrawsOf("crystal/" + crystal.Id, day, version);
         bool lit = draws.Int(2) == 0;
-        var rows = crystal.Rows.Where(r => (r.Version == 0 || r.Version == version) && r.Stars <= TeraMostStars(badges)).ToList();
+        var rows = crystal.Rows.Where(r => (r.Version == 0 || r.Version == version) && r.Stars <= mostStars).ToList();
         if (rows.Count == 0) rows = crystal.Rows.Where(r => r.Version == 0 || r.Version == version).OrderBy(r => r.Stars).Take(1).ToList();
         int total = rows.Sum(r => Math.Max(1, r.Weight));
         int pick = draws.Int(Math.Max(1, total));
@@ -168,6 +186,10 @@ public static class Raids
     /// <summary>Whether a crystal's light stands today: lit by the day's draw and its boss not felled today, the same question <c>raid crystal</c> asks.</summary>
     public static bool CrystalStands(RaidDenFile crystal, uint day, int version, int badges, bool felled) =>
         !felled && CrystalToday(crystal, day, version, badges).Lit;
+
+    /// <summary>Whether a crystal's light stands today, among the rows of at most <paramref name="mostStars"/>.</summary>
+    public static bool CrystalStandsUpTo(RaidDenFile crystal, uint day, int version, int mostStars, bool felled) =>
+        !felled && CrystalTodayUpTo(crystal, day, version, mostStars).Lit;
 
     /// <summary>The most stars a den holds by the badges won: two with none or one, three with two or three, four with four or five, five with six or more.</summary>
     public static int MostStars(int badges) => badges >= 6 ? 5 : badges >= 4 ? 4 : badges >= 2 ? 3 : 2;

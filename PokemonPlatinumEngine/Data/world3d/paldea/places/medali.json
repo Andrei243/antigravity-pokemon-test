@@ -3,6 +3,10 @@
   // to Larry's gym, the Treasure Eatery on the square and the Pokémon Center beside it. Larry's test is the eatery's
   // secret order: three of the townsfolk each let a part of it slip (medali.txt's Hint1 to 3), and it is ordered inside
   // (Medali_TreasureEatery); the gym and Larry's office are rooms (Medali_Gym, Medali_GymTest)
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_yellow_8", "cylinder": { "at": [-196, -604], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow8" }
+  ],
   "markers": [
     { "name": "medali_south", "at": [-196, 12.0, -604], "yaw": 0 },
     { "name": "medali_square", "at": [-176, 12.0, -664], "yaw": 0 },

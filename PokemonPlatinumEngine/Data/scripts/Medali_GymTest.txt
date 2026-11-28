@@ -7,6 +7,8 @@
 # recommendation: his team is scaled to the badges the challenger holds as Kofu's is (Cascarrafa_GymTest.txt), its best
 # at the cap of that many badges, so in the academy's order (four held) it is the original's
 # (Data/world/paldea/trainers.json: paldea_larry, paldea_larry_b0 to _b7)
+# Plan 34 · PD9: after Paldea's Hall of Fame the leader asks for a rematch once a day (FLAG_DAILY_PALDEA_LARRY_REMATCH;
+# docs/mechanics/rulings.md, "After Paldea's Hall of Fame"), with the team of paldea_larry_rematch
 script Leader
   face larry player
   speaker paldea_larry "Larry"
@@ -61,5 +63,15 @@ label NotEnrolled
   say "You're not enrolled at the academy, are you. Then I can't battle you. Rules. Come back once you are."
   end
 label Won
+  if not flag PaldeaHallOfFame goto Chat
+  if flag FLAG_DAILY_PALDEA_LARRY_REMATCH goto Chat
+  ask "You again. Fine. My manager says I should battle the Champion. Officially. Shall we?"
+  if no goto Chat
+  say "Right. Let's keep this efficient."
+  battle larry as "paldea_larry_rematch"
+  say "...That'll go in the report. Come back tomorrow. I'll still be here. Unfortunately."
+  setflag FLAG_DAILY_PALDEA_LARRY_REMATCH
+  end
+label Chat
   say "Back again? I'm on my break. Technically. My breaks are also meetings."
   end

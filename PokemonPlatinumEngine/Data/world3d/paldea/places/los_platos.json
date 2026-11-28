@@ -1,6 +1,10 @@
 {
   // Los Platos (plan 34 · PD1): the crossroads village on the road north, its Pokémon Center the first a student comes
   // to, and a few houses either side of its street. Scripts: Data/scripts/los_platos.txt
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_purple_4", "cylinder": { "at": [10, -206], "radius": 1.5, "bottom": 2, "top": 28 }, "script": "PaldeaStakePurple4" }
+  ],
   "markers": [
     { "name": "los_platos_south", "at": [8, 8.0, -154], "yaw": 180 },
     { "name": "center_door", "at": [14, 8.0, -177], "yaw": 0 },

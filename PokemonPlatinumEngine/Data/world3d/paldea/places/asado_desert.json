@@ -9,6 +9,10 @@
   ],
   // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_blue_1", "cylinder": { "at": [-430, -468], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeBlue1" },
+    { "name": "stake_blue_2", "cylinder": { "at": [-430, -566], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeBlue2" },
+    { "name": "shrine_chi_yu", "cylinder": { "at": [-436, -596], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaShrineChiYu" },
     { "name": "crystal_desert_1", "cylinder": { "at": [-478, -534], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalDesert1" }
   ],
   "zones": [
@@ -22,7 +26,13 @@
         { "species": "Hippopotas", "minLevel": 22, "maxLevel": 25, "weight": 20 },
         { "species": "Trapinch", "minLevel": 22, "maxLevel": 25, "weight": 15 },
         { "species": "Bramblin", "minLevel": 22, "maxLevel": 25, "weight": 10 },
-        { "species": "Rellor", "minLevel": 22, "maxLevel": 25, "weight": 10, "time": "Night" }
+        { "species": "Rellor", "minLevel": 22, "maxLevel": 25, "weight": 10, "time": "Night" },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Habanerogue", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Lodestatic", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Tuskendon", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Treadnought", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Bullionaire", "minLevel": 256, "maxLevel": 260, "weight": 1 }
       ],
       "density": 3, "cap": 5
     },
@@ -34,7 +44,13 @@
         { "species": "Silicobra", "minLevel": 23, "maxLevel": 26, "weight": 30 },
         { "species": "Sandile", "minLevel": 23, "maxLevel": 26, "weight": 25 },
         { "species": "Bramblin", "minLevel": 23, "maxLevel": 26, "weight": 25 },
-        { "species": "Hippopotas", "minLevel": 23, "maxLevel": 26, "weight": 20 }
+        { "species": "Hippopotas", "minLevel": 23, "maxLevel": 26, "weight": 20 },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Thornwraith", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Clodkaiser", "minLevel": 244, "maxLevel": 248, "weight": 1 },
+        { "species": "Orthobore", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Klawlossus", "minLevel": 246, "maxLevel": 250, "weight": 1 },
+        { "species": "Thornframe", "minLevel": 250, "maxLevel": 254, "weight": 1 }
       ],
       "density": 2, "cap": 4
     }

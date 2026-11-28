@@ -44,6 +44,8 @@ label Done
 # recommendation, as the leaders' before her: her team is scaled to the badges the challenger holds, its best at the cap
 # of that many badges, so in the academy's order (six held) it is the original's (Data/world/paldea/trainers.json:
 # paldea_tulip, paldea_tulip_b0 to _b7)
+# Plan 34 · PD9: after Paldea's Hall of Fame the leader asks for a rematch once a day (FLAG_DAILY_PALDEA_TULIP_REMATCH;
+# docs/mechanics/rulings.md, "After Paldea's Hall of Fame"), with the team of paldea_tulip_rematch
 script Leader
   face tulip player
   speaker "Tulip"
@@ -98,5 +100,15 @@ label NotEnrolled
   say "You're not enrolled at the academy, are you? Then I'm afraid I can't battle you. Rules, darling."
   end
 label Won
+  if not flag PaldeaHallOfFame goto Chat
+  if flag FLAG_DAILY_PALDEA_TULIP_REMATCH goto Chat
+  ask "Champion! You simply must let me see your team in its full beauty. A rematch?"
+  if no goto Chat
+  say "Wonderful. Hold still, darling, and shine for me."
+  battle tulip as "paldea_tulip_rematch"
+  say "Exquisite. Come again tomorrow. I'd love to see how you've grown."
+  setflag FLAG_DAILY_PALDEA_TULIP_REMATCH
+  end
+label Chat
   say "Back again? You still have that glow. Must be the badge."
   end

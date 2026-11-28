@@ -8,6 +8,8 @@
   ],
   // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_blue_5", "cylinder": { "at": [-196, -596], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeBlue5" },
     { "name": "crystal_west_one_1", "cylinder": { "at": [-302, -543], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalWestOne1" }
   ],
   "zones": [
@@ -21,7 +23,13 @@
         { "species": "Gumshoos", "minLevel": 24, "maxLevel": 27, "weight": 20 },
         { "species": "Flittle", "minLevel": 24, "maxLevel": 27, "weight": 15 },
         { "species": "Squawkabilly", "minLevel": 24, "maxLevel": 27, "weight": 10 },
-        { "species": "Shroodle", "minLevel": 24, "maxLevel": 27, "weight": 10, "time": "Night" }
+        { "species": "Shroodle", "minLevel": 24, "maxLevel": 27, "weight": 10, "time": "Night" },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Trufflord", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Graffitape", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Bossquawk", "minLevel": 244, "maxLevel": 248, "weight": 1 },
+        { "species": "Pyropaladin", "minLevel": 252, "maxLevel": 256, "weight": 1 },
+        { "species": "Duskenblade", "minLevel": 252, "maxLevel": 256, "weight": 1 }
       ],
       "density": 3, "cap": 5
     },
@@ -34,7 +42,12 @@
         { "species": "Mudbray", "minLevel": 25, "maxLevel": 28, "weight": 25 },
         { "species": "Skiddo", "minLevel": 25, "maxLevel": 28, "weight": 20 },
         { "species": "Gothita", "minLevel": 25, "maxLevel": 28, "weight": 20 },
-        { "species": "Rockruff", "minLevel": 25, "maxLevel": 28, "weight": 15 }
+        { "species": "Rockruff", "minLevel": 25, "maxLevel": 28, "weight": 15 },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Bomberon", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Flamenkick", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Chagamage", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Thunderbelly", "minLevel": 248, "maxLevel": 252, "weight": 1 }
       ],
       "density": 3, "cap": 4
     }

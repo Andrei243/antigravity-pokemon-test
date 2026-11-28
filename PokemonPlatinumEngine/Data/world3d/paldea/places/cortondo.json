@@ -3,6 +3,10 @@
   // knoll south-west of it and north-east by the hills, the gym at the head of the lane north from the square and the
   // Pokémon Center on the square's west side. Its people only talk; the gym and its test are rooms (Cortondo_Gym,
   // Cortondo_GymTest)
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_purple_8", "cylinder": { "at": [-356, -322], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakePurple8" }
+  ],
   "markers": [
     { "name": "cortondo_east", "at": [-356, 12.0, -322], "yaw": 270 },
     { "name": "cortondo_square", "at": [-416, 12.0, -322], "yaw": 0 },

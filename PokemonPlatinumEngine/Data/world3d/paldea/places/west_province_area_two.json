@@ -7,6 +7,9 @@
   ],
   // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_blue_6", "cylinder": { "at": [-524, -668], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeBlue6" },
+    { "name": "stake_blue_7", "cylinder": { "at": [-622, -668], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeBlue7" },
     { "name": "crystal_west_two_1", "cylinder": { "at": [-586, -690], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalWestTwo1" }
   ],
   "zones": [
@@ -20,7 +23,14 @@
         { "species": "Rookidee", "minLevel": 26, "maxLevel": 29, "weight": 20 },
         { "species": "Wattrel", "minLevel": 26, "maxLevel": 29, "weight": 15 },
         { "species": "Bramblin", "minLevel": 26, "maxLevel": 29, "weight": 10 },
-        { "species": "Murkrow", "minLevel": 26, "maxLevel": 29, "weight": 10, "time": "Night" }
+        { "species": "Murkrow", "minLevel": 26, "maxLevel": 29, "weight": 10, "time": "Night" },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Terawattrel", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Wugsextet", "minLevel": 244, "maxLevel": 248, "weight": 1 },
+        { "species": "Sashimaru", "minLevel": 246, "maxLevel": 250, "weight": 1 },
+        { "species": "Grandozo", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Tatsushogun", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Zerofin", "minLevel": 248, "maxLevel": 252, "weight": 1 }
       ],
       "density": 3, "cap": 4
     }

@@ -153,7 +153,7 @@ Each session: the places built as plan 32's data and baked, their rooms as grid 
 - [x] PD6 The West and North Provinces and the last five gyms (its first session 2026-11-15: Asado Desert, Cascarrafa, Porto Marinada, the West Province's two areas and Medali, Kofu and Larry with their tests and decision 3's scaling, the Open Sky and Quaking Earth Titans moved to their provinces; "PD6, first session", below; its second session 2026-11-23: the North Province, Glaseado Mountain and its snowslope, Montenevera, the East Province's third area, Alfornada through its cavern, Ryme's rap battle, Tulip's photographs and Grusha's run with the three leaders scaled, Lurking Steel and False Dragon moved to their provinces, the eight badges won in two orders headless, the bot to the fifth badge, through the last three and riding from Cabo Poco to Glaseado's top; "PD6, second session", below. **Waits for the user**: the north's distances and looks, the tests ours where the originals differ (Ryme's and Tulip's), the run with no clock, the songs by ear, the new cast's voices by ear, `profile`'s ride on the Windows machine. **Owed**: Starfall Street's bases still in their stand-in valley; Cascarrafa's falls drawn falling and its bridges; the open places' people's lines untranslated, as every open map's are)
 - [x] PD7 Tera Raids and picnics (2026-11-23, one session: the Tera foe on Galar's `Raid` with its crystal shield, the raiders' orbs charged by their moves and a clock of turns; twelve crystals on Paldea's open map drawn by the day and the badges, their glow in their Tera Type's colour, the catch that never fails and the Tera Shards it leaves; the picnic's sandwiches as `recipes.json`'s second section on the camp's pot with no kit in Paldea, the Egg and Sparkling Powers, the Type and Encounter Powers on the open map's spawner; the picnic basket's Eggs; Mesagoza's deli; "PD7 as built", below. **Waits for the user**: the crystal's look and the raid's numbers (HP, shield, clock), the sandwiches and their powers' numbers, the picnic's look. **Owed**: the raid's clock and the orbs on the raid's screen, the bot playing a raid, the black crystals (PD9), the picnic table's own look)
 - [x] PD8 The League, Area Zero and the Way Home (its first session 2026-11-23: the Pokémon League's building on its terrace under Mesagoza's south wall, the lobby with Rika's interview and the battle court, the Elite Four, Geeta and Nemona at the originals' levels, `PaldeaHallOfFame` with the Hall of Fame's scene, home and the credits, refused without eight badges; "PD8, first session", below. its second session the same day: the Zero Gate in the North Province with the friends' meeting and Penny's Cassiopeia, Area Zero as grid rooms behind its door (the gate's hall, the crater's four terraces and research stations, the Zero Lab), the professor's AI by the version, the legendary's battle form beside the player's mount, the Way Home with the credits moved to it, and the done-when: the bot from the League's door through the Hall of Fame, riding north to the Zero Gate and down to the Way Home; "PD8, second session", below. **Waits for the user**: the League's place and look, the interview's questions, one court for all six; Area Zero as grid rooms rather than the open map's carved crater, the gate's place, the mount beside the team in the last battle, the credits after the Way Home)
-- [ ] PD9 After the Hall of Fame
+- [x] PD9 After the Hall of Fame (2026-11-28, one session: the Academy Ace Tournament on the academy's battle court in three rounds as Galar's Cup is, the gym leaders' daily rematches, the black crystals of six and seven stars, the four shrines of the Treasures of Ruin behind their 32 stakes, the partners' Mega Stones from Clavell and the auction's armours and glove (plan 40 · GE11), and Paldea's 50 species of ours in the open map's zones after the Hall of Fame (plan 03 · D15); "PD9 as built", below. **Waits for the user**: the tournament without a drawn bracket, four shrines for the plan's eight, the stakes' and shrines' places, the rematch teams, the black crystals' look. **Owed**: the stakes and shrines drawn, the bracket drawn, the shots)
 - [ ] PD10 The Teal Mask (optional)
 - [ ] PD11 The Indigo Disk (optional)
 - [ ] PD12 Mochi Mayhem (optional)
@@ -745,3 +745,29 @@ mount alone; Area Zero's own song; the new cast's voices (Penny, Sada, Turo) by 
 
 **Waits for the user**: the grid rooms in place of the carved crater, the gate's place and look (`pdz00`), the meeting's
 order (all three paths), the AI's teams, the tag battle, the credits after the Way Home, the Romanian lines.
+
+## PD9 as built (2026-11-28)
+
+One session, in its own worktree (`session/w113-pd9`). The rulings' "After Paldea's Hall of Fame" has every decision.
+
+**What there is**
+- **The Academy Ace Tournament**: a desk in the academy's entrance hall (`Mesagoza_AcademyHall.txt`, `AceDesk`), open after
+  the Way Home, draws the three rounds' opponents and walks the player onto `Mesagoza_AceCourt` (a room of ours copied from
+  the League's court); the round's opponent stands on the court's spot by the arrival (`VAR_PALDEA_ACE` 1 to 3), and one
+  script, `Match`, fights each with their rematch team. A title counts in `VAR_PALDEA_ACE_TITLES`; the first sets
+  `FLAG_PALDEA_ACE_TOURNAMENT_WON`. The bracket is not drawn (Galar's Cup's precedent); `Bracket` is unused here.
+- **Rematches**: `paldea_<who>_rematch` for the eight leaders (fought in their test rooms once a day), the Elite Four, Geeta
+  and Nemona's three (fought in the tournament), in `Data/world/paldea/trainers.json`; `RematchParityTests` has Paldea's
+  rows and no longer owes them.
+- **Black crystals**: rows of six and seven stars on every crystal, `Raids.TeraMostStarsOf` (badges, the Hall of Fame, the
+  title) used by both the glow and `raid crystal`, and `DenBeams` drawing them near black.
+- **The Treasures of Ruin**: 32 stake triggers and four shrine triggers on Paldea's open map's markers, their scripts in
+  `common.txt` (`PaldeaStake<Colour><n>`, `PaldeaShrine<Treasure>`); no new solid, so the bake is unchanged.
+- **Plan 40 · GE11**: Clavell's stones once a Key Stone is in the bag, Porto Marinada's oddities lot; both lines off
+  `ItemSourcesTests.Owed`.
+- **Plan 03 · D15**: `OpenSlot.Ours` (a species of ours in a zone's row), `OpenWildField.OursOpen` set each frame from
+  `OursSlots.Open`, a row of ours out of every draw until then and met unmapped; 50 rows in ten zones.
+- **Tests**: `PaldeaPostgameTests`.
+
+**Owed**: the stakes and shrines drawn on the map (they are triggers only); the bracket drawn; the Treasures' own song;
+the shots (`pd9*`) not taken; Snacksworth's legendaries (PD11); the new lines' voices.

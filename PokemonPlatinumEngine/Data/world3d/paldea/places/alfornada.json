@@ -4,6 +4,10 @@
   // the south hills, its Pokémon Center east of the square and the ruins of the old temple on the knoll to the west.
   // Tulip's test is her photographs, posed in her studio (Alfornada_GymTest.txt); the gym and the studio are rooms
   // (Alfornada_Gym, Alfornada_GymTest)
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "shrine_wo_chien", "cylinder": { "at": [-644, -298], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaShrineWoChien" }
+  ],
   "markers": [
     { "name": "alfornada_cavern_east", "at": [-484, 12.0, -345], "yaw": 270 },
     { "name": "alfornada_cavern_middle", "at": [-520, 12.0, -345], "yaw": 270 },
@@ -42,7 +46,13 @@
         { "species": "Hatenna", "minLevel": 42, "maxLevel": 45, "weight": 20 },
         { "species": "Indeedee", "minLevel": 42, "maxLevel": 45, "weight": 15 },
         { "species": "Girafarig", "minLevel": 42, "maxLevel": 45, "weight": 20 },
-        { "species": "Gothita", "minLevel": 42, "maxLevel": 45, "weight": 20 }
+        { "species": "Gothita", "minLevel": 42, "maxLevel": 45, "weight": 20 },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Mirastrich", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Farigigiraf", "minLevel": 252, "maxLevel": 256, "weight": 1 },
+        { "species": "Khepristar", "minLevel": 246, "maxLevel": 250, "weight": 1 },
+        { "species": "Shriekpuff", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Squeakshire", "minLevel": 246, "maxLevel": 250, "weight": 1 }
       ],
       "density": 2, "cap": 4
     }

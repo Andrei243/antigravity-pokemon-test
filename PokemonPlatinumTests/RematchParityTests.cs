@@ -53,6 +53,24 @@ public class RematchParityTests
         (RegionDatabase.Kanto, "kanto_champion_first_squirtle", "kanto_champion_rematch_squirtle"),
         (RegionDatabase.Kanto, "kanto_champion_first_bulbasaur", "kanto_champion_rematch_bulbasaur"),
         (RegionDatabase.Kanto, "kanto_champion_first_charmander", "kanto_champion_rematch_charmander"),
+        // Paldea (plan 34 · PD9): the eight leaders in their gyms once a day, and the Elite Four, Geeta and Nemona in the
+        // Academy Ace Tournament's second round and final (Mesagoza_AceCourt.txt)
+        (RegionDatabase.Paldea, "paldea_katy", "paldea_katy_rematch"),
+        (RegionDatabase.Paldea, "paldea_brassius", "paldea_brassius_rematch"),
+        (RegionDatabase.Paldea, "paldea_iono", "paldea_iono_rematch"),
+        (RegionDatabase.Paldea, "paldea_kofu", "paldea_kofu_rematch"),
+        (RegionDatabase.Paldea, "paldea_larry", "paldea_larry_rematch"),
+        (RegionDatabase.Paldea, "paldea_ryme", "paldea_ryme_rematch"),
+        (RegionDatabase.Paldea, "paldea_tulip", "paldea_tulip_rematch"),
+        (RegionDatabase.Paldea, "paldea_grusha", "paldea_grusha_rematch"),
+        (RegionDatabase.Paldea, "paldea_rika", "paldea_rika_rematch"),
+        (RegionDatabase.Paldea, "paldea_poppy", "paldea_poppy_rematch"),
+        (RegionDatabase.Paldea, "paldea_larry_elite", "paldea_larry_elite_rematch"),
+        (RegionDatabase.Paldea, "paldea_hassel", "paldea_hassel_rematch"),
+        (RegionDatabase.Paldea, "paldea_geeta", "paldea_geeta_rematch"),
+        (RegionDatabase.Paldea, "paldea_nemona_8a", "paldea_nemona_8a_rematch"),
+        (RegionDatabase.Paldea, "paldea_nemona_8b", "paldea_nemona_8b_rematch"),
+        (RegionDatabase.Paldea, "paldea_nemona_8c", "paldea_nemona_8c_rematch"),
         // Johto: the sixteen by phone (Saffron's dojo), the Four's and Lance's second round in their rooms (EG5)
         (RegionDatabase.Johto, "johto_leader_falkner_falkner", "johto_leader_falkner_falkner_2"),
         (RegionDatabase.Johto, "johto_leader_bugsy_bugsy", "johto_leader_bugsy_bugsy_2"),
@@ -133,7 +151,9 @@ public class RematchParityTests
     private static bool IsFirstTeam(TrainerRecord t) =>
         (t.Class == "Leader" || t.Class == "Elite Four" || t.Class == "Champion" || t.Class.StartsWith("Leader ", StringComparison.Ordinal) || t.Class.StartsWith("Elite Four ", StringComparison.Ordinal))
         && !Regex.IsMatch(t.Id, "_[2-9]$") && !t.Id.Contains("_rematch", StringComparison.Ordinal) && !t.Id.Contains("_beyond", StringComparison.Ordinal)
-        && !t.Id.Contains("_megamax", StringComparison.Ordinal) && !t.Id.Contains("_fight_area", StringComparison.Ordinal);
+        && !t.Id.Contains("_megamax", StringComparison.Ordinal) && !t.Id.Contains("_fight_area", StringComparison.Ordinal)
+        // (Paldea's leaders scaled to the badges held, plan 34 · decision 3: one leader's first team at another level)
+        && !Regex.IsMatch(t.Id, "_b[0-9]$");
 
     /// <summary>Regions built after Unova that have a story, and the session that owes their rows.</summary>
     public static readonly Dictionary<string, string> Owed = new()
@@ -143,8 +163,6 @@ public class RematchParityTests
         // A side region with no Gyms and no League (plan 23 · Z17): its Nobles and the Pearl and Diamond Clans' wardens
         // are fought in plan 23 · Z19 and Z20, whose sessions decide whether they are fought again
         [RegionDatabase.Hisui] = "plan 23 · Z19 and Z20 (Hisui's Nobles and wardens)",
-        // PD1 gave Paldea its story's first steps; its Gyms, Titans, Star Barrage and League come in later sessions
-        [RegionDatabase.Paldea] = "plan 34 (Paldea's Gyms and League, after PD1)",
     };
 
     private static IEnumerable<TrainerRecord> Everyone() =>

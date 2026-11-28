@@ -1,0 +1,246 @@
+{
+  "name": "Mesagoza_AceCourt",
+  "displayName": "Academy Battle Court",
+  "bgmTrack": "paldea/academy",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 15,
+      "targetMap": "Mesagoza_AcademyHall",
+      "targetX": 12,
+      "targetY": 10,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "ace_katy",
+      "name": "Katy",
+      "npcType": "katy",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_KATY"
+    },
+    {
+      "id": "ace_brassius",
+      "name": "Brassius",
+      "npcType": "brassius",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_BRASSIUS"
+    },
+    {
+      "id": "ace_iono",
+      "name": "Iono",
+      "npcType": "iono",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_IONO"
+    },
+    {
+      "id": "ace_kofu",
+      "name": "Kofu",
+      "npcType": "kofu",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_KOFU"
+    },
+    {
+      "id": "ace_larry",
+      "name": "Larry",
+      "npcType": "larry",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_LARRY"
+    },
+    {
+      "id": "ace_ryme",
+      "name": "Ryme",
+      "npcType": "ryme",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_RYME"
+    },
+    {
+      "id": "ace_tulip",
+      "name": "Tulip",
+      "npcType": "tulip",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_TULIP"
+    },
+    {
+      "id": "ace_grusha",
+      "name": "Grusha",
+      "npcType": "grusha",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_GRUSHA"
+    },
+    {
+      "id": "ace_rika",
+      "name": "Rika",
+      "npcType": "rika",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_RIKA"
+    },
+    {
+      "id": "ace_poppy",
+      "name": "Poppy",
+      "npcType": "poppy",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_POPPY"
+    },
+    {
+      "id": "ace_larry_elite",
+      "name": "Larry",
+      "npcType": "larry",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_LARRY_ELITE"
+    },
+    {
+      "id": "ace_hassel",
+      "name": "Hassel",
+      "npcType": "hassel",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_HASSEL"
+    },
+    {
+      "id": "ace_geeta",
+      "name": "Geeta",
+      "npcType": "geeta",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_GEETA"
+    },
+    {
+      "id": "ace_nemona",
+      "name": "Nemona",
+      "npcType": "nemona",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Match",
+      "shownBy": "FLAG_PALDEA_ACE_NEMONA"
+    },
+    {
+      "id": "ace_referee",
+      "name": "Referee",
+      "npcType": "school_kid_f",
+      "x": 12,
+      "y": 12,
+      "facing": "Left",
+      "script": "Referee"
+    }
+  ],
+  "wildEncounters": []
+}

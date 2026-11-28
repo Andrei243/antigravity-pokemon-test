@@ -3,6 +3,11 @@
   // the gym, a concert hall where Ryme performs, its Pokémon Center on the street east of the square. Ryme's test is a
   // rap battle in her hall (Montenevera_GymTest.txt); the gym and the hall are rooms (Montenevera_Gym,
   // Montenevera_GymTest)
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_yellow_6", "cylinder": { "at": [240, -922], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow6" },
+    { "name": "stake_yellow_7", "cylinder": { "at": [414, -930], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow7" }
+  ],
   "markers": [
     { "name": "montenevera_west", "at": [240, 12.0, -922], "yaw": 90 },
     { "name": "montenevera_square", "at": [328, 12.0, -950], "yaw": 0 },
