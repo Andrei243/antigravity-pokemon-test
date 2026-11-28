@@ -136,7 +136,7 @@ public class DataFileTests
     public void EveryFormHasItsOwnWrittenEntries()
     {
         // Plan 08 · P17: all 541 forms, each by its Showdown name, with two entries and a habitat of its own for the FORMS page
-        // Carpathia's forms and species (plan 46 · CP3) wait for their entries until CP9; the generated sentence shows meanwhile
+        // Carpathia's forms (plan 46 · CP3) wait for their entries until CP9's last batch; the generated sentence shows meanwhile
         var forms = PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new List<PokemonForm>()).Where(f => !f.Name.EndsWith("-Carpathia")).ToList();
         Assert.True(forms.Count >= 541, "The data has " + forms.Count + " forms");
         var missing = forms.Where(f => DexEntries.Of(f.Name) == null).Select(f => f.Name).ToList();
@@ -144,7 +144,19 @@ public class DataFileTests
         foreach (var form in forms)
             Assert.Equal(2, DexEntries.EntriesOf(form.Name)!.Count);
         // The file holds exactly the species, ours too (plan 03 · D14), and the forms
-        Assert.Equal(PokemonDatabase.Everyone().Count(s => !s.IsCarpathian) + forms.Count, DexEntries.All.Count);
+        Assert.Equal(PokemonDatabase.Everyone().Count(s => !s.IsCarpathian || s.DexNumber <= CarpathiaEntriesThrough) + forms.Count, DexEntries.All.Count);
+    }
+
+    /// <summary>Carpathia's floor (plan 46 · CP9): every species of the region to this number has its entries.</summary>
+    private const int CarpathiaEntriesThrough = 10052;
+
+    [Fact]
+    public void EveryCarpathianSpeciesUpToTheFloorHasItsWrittenEntries()
+    {
+        var wanted = PokemonDatabase.Carpathia().Where(s => s.DexNumber <= CarpathiaEntriesThrough).ToList();
+        Assert.Equal(CarpathiaEntriesThrough - PokemonDatabase.CarpathiaFrom + 1, wanted.Count);
+        var missing = wanted.Where(s => DexEntries.Of(s.Name) == null).Select(s => s.Name).ToList();
+        Assert.True(missing.Count == 0, "No written entries for " + string.Join(", ", missing));
     }
 
     [Fact]

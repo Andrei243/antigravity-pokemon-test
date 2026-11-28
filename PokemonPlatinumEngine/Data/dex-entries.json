@@ -14425,5 +14425,369 @@
       "It breaks through sea ice as thick as a house. Bergmite live in the cracks of its back and are carried along with it across the frozen sea.",
       "Its jaw of rock and ice juts forward like the bow of a ship. Slabs of tilted ice cover its back, groaning loudly whenever it moves."
     ]
+  },
+  "Lynkit": {
+    "habitat": "Forest",
+    "entries": [
+      "It pads after anything that rustles, tumbling over paws far too big for it. Where it naps, the air smells faintly of resin, and villagers say fir seedlings come up there later.",
+      "Its ear tufts are bunches of fir needles, and a ruff of pale moss circles its cheeks. The darker spots on its coat help it vanish among shaded roots."
+    ]
+  },
+  "Firlynx": {
+    "habitat": "Forest",
+    "entries": [
+      "It stalks the fir slopes without snapping a single twig. When a stranger wanders in, it follows just out of sight until the intruder turns back toward the village.",
+      "Brown and green stripes run along its flanks like bark. The sprigs on its ears have stiffened into small branches, and soft pads of moss muffle each long stride."
+    ]
+  },
+  "Codrulynx": {
+    "habitat": "Forest",
+    "entries": [
+      "Woodcutters ask its leave before they enter the old forest. It watches over the oldest trees, and anyone who takes more than they need may find the paths closing behind them.",
+      "A heavy mane of dark fir boughs covers its shoulders, and lichen hangs from its chin like a beard. Its gold eyes shine like lanterns once the light begins to fail."
+    ]
+  },
+  "Salamint": {
+    "habitat": "Mountain",
+    "entries": [
+      "It hides under warm stones near hearths and campfires. A coal sits on the tip of its tail, and shepherds say it keeps burning through the wettest night.",
+      "The yellow blotches on its glossy black skin glow gently from within. When it is pleased they brighten, and when it is frightened they dim to a dull orange."
+    ]
+  },
+  "Furnander": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It curls up beside village ovens and keeps them warm through winter nights. In return, bakers leave it a crust, and a household that feeds one is thought lucky.",
+      "Soot-black scales cover it like hearth bricks, and glowing cracks run between them. Smoke curls from the vents along its back whenever it grows excited."
+    ]
+  },
+  "Fierander": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "In the old tales the village smith learned his craft from this Pokémon. It heats scrap iron in its own glowing seams and hammers it into shape with its tail.",
+      "Iron plates are riveted over its black skin, and its head is as broad and flat as an anvil. The hammer at the end of its tail throws sparks with every blow."
+    ]
+  },
+  "Pelicub": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It scoops up everything it finds along the reedy banks, pebbles and all. Its pouch is so large that it often topples forward while trying to carry a good catch.",
+      "White down with a blue sheen covers its round body. Its short wings cannot lift it yet, so it paddles after its parents on wide orange feet."
+    ]
+  },
+  "Pelireed": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It struts along the delta channels and drums on its own striped pouch to call its friends. A whole flock will gather when one beats out a lively rhythm.",
+      "Blades like reeds form a crest on its head, and green tips mark its wings. Its pouch is banded in blue and cream like the skin of a little drum."
+    ]
+  },
+  "Buciumbill": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its long call rolls far across the water at dawn and dusk. Fishers use it to find their way home through fog, following the deep notes from channel to channel.",
+      "Its beak has grown into a shepherd's alphorn, bound with woven bark and flared at the tip. The blue pouch beneath it resonates like a drum and makes every note swell."
+    ]
+  },
+  "Trillet": {
+    "habitat": "Forest",
+    "entries": [
+      "It sings the moment it hatches and rarely stops. If another bird answers, it puffs itself into a tiny ball and sings louder until one of them runs out of breath.",
+      "Little curls of light shaped like music notes drift from its open beak. Its plain brown feathers hide it well, so it is heard far more often than seen."
+    ]
+  },
+  "Nightrill": {
+    "habitat": "Forest",
+    "entries": [
+      "It practises by night in the hedges along village lanes. Each one learns new phrases from its neighbours, so the songs of one valley differ from those of the next.",
+      "Its fanned rufous tail looks like sheets of music. Whenever it sings after dark, a soft glow shows through the feathers of its throat."
+    ]
+  },
+  "Privigale": {
+    "habitat": "Forest",
+    "entries": [
+      "When it sings on a still summer night, whole villages open their windows. It is said that no one can stay angry while its voice carries over the fields.",
+      "Long tail feathers of russet and silver trail behind it, banded like lines of written music. The glowing ruff at its throat sends rings of pale light outward."
+    ]
+  },
+  "Harciog": {
+    "habitat": "Grassland",
+    "entries": [
+      "It spends the harvest running back and forth between the fields and its burrow. Its cheeks are packed so tightly that it sometimes cannot squeeze through its own door.",
+      "It has a rusty orange back, white cheek patches and a black belly. When threatened, it rears up and shows the dark fur underneath to look much larger."
+    ]
+  },
+  "Harciogre": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It guards its hoard of grain with great stubbornness and snaps at anyone who comes close. Farmers who dig into its burrow can find enough seed to sow a whole field.",
+      "Its forepaws have become broad spades caked with earth. A woven sack held on by a strap of roots rides on its back, heavy with seed."
+    ]
+  },
+  "Chirpet": {
+    "habitat": "Grassland",
+    "entries": [
+      "On warm evenings it rubs its front legs against its wings to tune up. If another cricket plays a wrong note, it stops and waits politely before starting again.",
+      "Its wing cases carry rows of fine ridges that make its sharp chirp. Long thin antennae twitch in time whenever it hears music, even far off."
+    ]
+  },
+  "Fiddlecrick": {
+    "habitat": "Grassland",
+    "entries": [
+      "It plays all summer and rarely thinks of tomorrow. When the cold comes, kind neighbours often let it in by the stove in exchange for a tune.",
+      "Its folded wing cases look like a varnished violin with curved sound holes. It draws one long hind leg across them like a bow, beneath a jaunty straw hat."
+    ]
+  },
+  "Buburel": {
+    "habitat": "Grassland",
+    "entries": [
+      "Children let it climb to the tip of a finger and wait to see which way it flies. That, they say, is where luck will come from next.",
+      "It has a red shell with seven black spots and two white dots on its cheeks. A faint wisp of light holds it aloft as it prepares to take off."
+    ]
+  },
+  "Buburoza": {
+    "habitat": "Grassland",
+    "entries": [
+      "It brings small wild flowers to people who are having a hard day. A field where several of them gather is thought to give a very good harvest.",
+      "Its red shell has opened like the petals of a wild rose, and its spots have turned pale gold. Its thin wings shimmer pink as it carries its bouquet."
+    ]
+  },
+  "Arichip": {
+    "habitat": "Forest",
+    "entries": [
+      "It rolls through fallen leaves to dress its back before autumn ends. If it passes under an apple tree, it often leaves with a piece of fruit stuck on its spines.",
+      "Its spines are dry leaves of yellow, orange and brown. When it curls up on the forest floor, nobody can tell it from a drift of leaves."
+    ]
+  },
+  "Aricorn": {
+    "habitat": "Forest",
+    "entries": [
+      "It walks slowly from farm to farm and lets hungry travellers pick fruit from its back. In return, it likes to rest in the shade of a well-tended orchard.",
+      "Its back has grown into a thicket of green leaves bearing apples, plums and pears. The fruit ripens in turn, so something is ready for most of the season."
+    ]
+  },
+  "Ciobipup": {
+    "habitat": "Grassland",
+    "entries": [
+      "It practises herding on anything that moves, from chickens to children. It circles them until they stand together, then sits down and wags its curled tail proudly.",
+      "Its thick white and cream coat has dark patches round the eyes. A little woollen collar with a red and white tassel marks the flock it belongs to."
+    ]
+  },
+  "Mioritar": {
+    "habitat": "Mountain",
+    "entries": [
+      "It stays awake while the flock sleeps and will stand against a whole pack of wolves. Shepherds trust it so much that they leave the sheep with it for days.",
+      "Long white and grey cords of fur hang over its body like a fleece cloak. A broad leather collar set with iron spikes protects its throat."
+    ]
+  },
+  "Lanita": {
+    "habitat": "Mountain",
+    "entries": [
+      "It follows the sound of the bell round its own neck and bleats whenever it falls silent. A lamb that is lost is usually found standing quite still, listening.",
+      "Wavy cream wool hangs so long that it covers its eyes. Its black face and legs show clearly against the snow on the high pastures."
+    ]
+  },
+  "Turcanica": {
+    "habitat": "Mountain",
+    "entries": [
+      "It leads the flock down from the summer pastures when the weather turns. Weavers gather the wool it sheds, which keeps its soft glow even after spinning.",
+      "White ringlets of wool reach the ground like a long shawl, laced with red and black ribbons in old patterns. Two long horns spiral from its head."
+    ]
+  },
+  "Barzlet": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It carries its little nest of twigs everywhere, since it is not yet sure where to settle. It naps inside it and defends it with loud clicks of its beak.",
+      "Grey down patches its white body, and its pink legs are far too long for it. It trips often while learning to walk through wet meadows."
+    ]
+  },
+  "Barzanor": {
+    "habitat": "Grassland",
+    "entries": [
+      "Villagers welcome it home each spring and leave chimneys and poles free for its nest. A house it chooses is believed to be safe from fire and bad luck.",
+      "It wears a crown of woven twigs on its head, like the nests storks build. Standing on one leg, it clatters its long red beak to greet the morning."
+    ]
+  },
+  "Spiridel": {
+    "habitat": "Urban",
+    "entries": [
+      "It lives behind stoves and in the corners of old houses, moving spoons about for fun. Treated kindly, it helps with chores; ignored, it hides things until someone notices it.",
+      "It wears a floppy red cap and carries a wooden spoon taller than itself. A small tail flickers behind it like the flame of a candle."
+    ]
+  },
+  "Spiriduke": {
+    "habitat": "Urban",
+    "entries": [
+      "It keeps watch over a household through the night and jangles its keys when something is wrong. Old families say it knows every secret ever whispered by their hearth.",
+      "Its lower body fades into wisps of hearth smoke as it floats. It carries a ring of iron keys and a clay oil lamp that lights its sly grin."
+    ]
+  },
+  "Hribling": {
+    "habitat": "Forest",
+    "entries": [
+      "It dozes in damp moss after the rain and wakes only when someone steps nearby. Mushroom pickers learn to spot its sleepy eyes so they leave it alone.",
+      "Its glossy chestnut cap shades its face, and its stout cream stem serves as a body. Two stubby feet carry it slowly from one patch of moss to the next."
+    ]
+  },
+  "Hribarde": {
+    "habitat": "Forest",
+    "entries": [
+      "It rarely moves, and ferns and small mushrooms take root on its broad cap. Travellers lost in the woods sometimes rest beneath it, where the ground stays dry.",
+      "Thick roots splay from its stem like feet, and a long beard of white threads hangs below its cracked cap. Those threads reach far into the soil."
+    ]
+  },
+  "Pisicut": {
+    "habitat": "Urban",
+    "entries": [
+      "It spends most of the day curled on a warm tiled stove, purring so softly that only the people of the house can hear it.",
+      "Soft grey stripes mark its coat, and a red woollen thread is tied in a bow round its neck. It keeps its sleepy green eyes half shut."
+    ]
+  },
+  "Motanor": {
+    "habitat": "Urban",
+    "entries": [
+      "It prowls the rooftops after dark and returns at sunrise looking pleased with itself. The old tales give it a clever tongue and a taste for stolen cream.",
+      "One ear is notched, and silver shows round its muzzle. It sits upright on a fence post at night, watching with narrow yellow eyes and swinging its long striped tail."
+    ]
+  },
+  "Cocosel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It practises its crow at all hours and gets it wrong more often than right. The older roosters pretend not to notice, but they answer when it finally succeeds.",
+      "Its russet feathers shade to green on the wings and tail. Yellow legs too long for its body make it walk with an exaggerated, high-stepping strut."
+    ]
+  },
+  "Cocosor": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its crow is said to send night spirits fleeing at the first light of day. A village with one nearby seldom oversleeps, and never has trouble finding the morning.",
+      "A tall comb shaped like a flame crowns its head, and golden feathers flare round its neck. It faces the sunrise on spurred legs as rings of sound spread out."
+    ]
+  },
+  "Albinut": {
+    "habitat": "Grassland",
+    "entries": [
+      "It hums to itself while it visits flower after flower. If it finds an especially good meadow, it flies home and dances until the others follow.",
+      "Soft golden down covers its striped body, and a little cap of pale wax sits on its head. Its stubby legs dangle as it hovers."
+    ]
+  },
+  "Stupara": {
+    "habitat": "Grassland",
+    "entries": [
+      "She directs every worker with a gentle buzz and never lets any of them go hungry. Beekeepers speak softly to her and tell her the news of the household.",
+      "Her abdomen is a round straw hive with honey slowly dripping from its rim. A small crown of wax rests on her head while attendant bees circle her."
+    ]
+  },
+  "Iepurel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It lies flat among the tall grass and holds perfectly still until danger is very close. Then it bursts away in a zigzag that leaves hunters baffled.",
+      "One black-tipped ear often flops to the side. Though it is young, its hind legs are already long enough to carry it over a ditch in a single bound."
+    ]
+  },
+  "Iepuroi": {
+    "habitat": "Grassland",
+    "entries": [
+      "In early spring it spars with rivals on the open fields for hours. When the bout is over, both usually flop down side by side and share a patch of clover.",
+      "It stands upright on mighty hind legs with a pale chest and thick forearms. Its tall black-tipped ears wave like banners as it raises its fists to guard."
+    ]
+  },
+  "Soarel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It turns its face to follow the sun across the sky all day long. At night it faces east and waits patiently for the light to return.",
+      "A ring of short yellow petals frames its little face above a green bud body. It waves two small leaves like arms when the sun comes out."
+    ]
+  },
+  "Floarsol": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its face shines so warmly that frost melts around it on cold mornings. Farmers plant seeds near its roots, trusting it to bring the crops on early.",
+      "Dark seeds dot its broad golden face like freckles, and wide leaves serve as arms. The air round its head ripples with heat on bright days."
+    ]
+  },
+  "Panusel": {
+    "habitat": "Grassland",
+    "entries": [
+      "Children braid it from dried husks at harvest and sometimes find it standing somewhere else by morning. It likes to be near people who sing while they work.",
+      "String ties its dry husk body at the neck and waist. A tuft of golden corn silk makes its hair, and two small dark seeds are its eyes."
+    ]
+  },
+  "Panusa": {
+    "habitat": "Grassland",
+    "entries": [
+      "It walks the stubble fields at dusk, looking for the hands that made it. Anyone who calls it back by name is said to be left in peace.",
+      "Layers of pale husk rustle round its thin legs like a skirt. It has no face but two glowing amber seeds, and its silk hair drifts without any wind."
+    ]
+  },
+  "Melcut": {
+    "habitat": "Grassland",
+    "entries": [
+      "It stretches out its eye stalks to greet the morning dew. Children sing it a little rhyme to coax it out of its shell, and sometimes it obliges.",
+      "Its round shell is striped in pale yellow and brown. A faint shining trail follows wherever it creeps, so its path across a garden is easy to follow."
+    ]
+  },
+  "Melcobor": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It moves only a short distance in a whole day. Moss grows over its shell, and travellers sometimes sit on it for a rest before it begins to creep away.",
+      "Its spiral shell is made of grey limestone pressed with the ridged outlines of ancient creatures. Two dark eyes peer out from the ends of its wrinkled stalks."
+    ]
+  },
+  "Cartitel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It can barely see, but it feels the steps of passers-by through the soil. It pops up beside them to sniff, then ducks back down in an instant.",
+      "It has velvety black fur, a long pink snout and broad hands like spades. A little mound of fresh earth often rests on its head like a hat."
+    ]
+  },
+  "Cartiton": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It tunnels so fast that fields look freshly ploughed behind it. Miners are glad to find its burrows, since they often lead toward seams of metal.",
+      "Its great iron claws are shaped like ploughshares and scarred from long use. An amber glow on the tip of its nose lights the way underground."
+    ]
+  },
+  "Pupazel": {
+    "habitat": "Forest",
+    "entries": [
+      "It begs loudly from its nest in a hollow tree and will not stop until it is fed. Its calls can be heard from the far end of a village.",
+      "It wears cinnamon down with black and white bars on its wings. A small fan of a crest rises and falls on its head as it cries."
+    ]
+  },
+  "Pupazoi": {
+    "habitat": "Forest",
+    "entries": [
+      "It perches in old linden trees and announces itself to everyone who passes beneath. It likes to be noticed and sulks if people walk by without looking up.",
+      "Its tall crest opens like a crown edged in black. A long curved beak and barred wings, half spread as it calls, make it unmistakable among the branches."
+    ]
+  },
+  "Noptila": {
+    "habitat": "Forest",
+    "entries": [
+      "It creeps out to feed once the sun has set. Birds that peck at it often back away, fooled by the staring marks on its back.",
+      "Soft grey-brown bristles cover its curved body. Two pale spots on its back look like watching eyes, while its own small dark face stays hidden."
+    ]
+  },
+  "Fluturnopt": {
+    "habitat": "Forest",
+    "entries": [
+      "It is drawn to the lanterns of night travellers and flutters around them for hours. Its dust makes people drowsy, so old carters kept their lamps shaded.",
+      "Broad feathery antennae curl in front of its plush body. Its dusk-purple wings bear great owl eyes of pale gold and grey that startle anything hunting it."
+    ]
+  },
+  "Nevastel": {
+    "habitat": "Grassland",
+    "entries": [
+      "It stands up on its hind legs to look around, then darts off before anyone can get a good look. It squeezes through gaps no wider than a coin.",
+      "Its slim body has a warm brown back and a clean white belly and throat. Small round ears and bright black eyes give it a curious look."
+    ]
+  },
+  "Nevastuica": {
+    "habitat": "Grassland",
+    "entries": [
+      "Villagers speak to it kindly and never call it by its plain name, for fear of offending it. Those who treat it well find their chickens left alone.",
+      "It wears a tiny bridal veil edged in red and black thread and a wreath of wild flowers. It often pauses half turned away, one paw raised."
+    ]
   }
 }
