@@ -12,6 +12,9 @@ public sealed partial class GameFlow
     /// <summary>The Trainer Card as the player designed it (plan 43 · LF1); null for a card never designed.</summary>
     public CardDesign? CardDesign { get; set; }
 
+    /// <summary>The cards of the people beaten (plan 43 · LF2).</summary>
+    public CardAlbum CardAlbum { get; } = new();
+
     /// <summary>The card designer (plan 43 · LF1).</summary>
     public CardDesignScreen CardDesignScreen { get; } = new();
 

@@ -7710,6 +7710,23 @@
       "never": "LASĂ"
     }
   },
+  "cardAlbum": {
+    "title": "CEI ÎNVINȘI",
+    "count": "Cartonașe: {count}",
+    "sheet": "Fila {page} din {pages}",
+    "team": "ECHIPA",
+    "rank": {
+      "Leader": "LIDER DE SALĂ",
+      "EliteFour": "ELITA CELOR PATRU",
+      "Champion": "CAMPION"
+    },
+    "hints": {
+      "choose": "alege",
+      "look": "privește",
+      "putBack": "pune la loc",
+      "other": "alt cartonaș"
+    }
+  },
   "cardDesign": {
     "heading": "CREATORUL DE CARD",
     "row": {

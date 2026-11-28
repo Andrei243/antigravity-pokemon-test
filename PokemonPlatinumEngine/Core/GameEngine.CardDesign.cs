@@ -43,6 +43,7 @@ public partial class GameEngine
     private void LoadTheLife(SaveData? save)
     {
         flow.CardDesign = save?.CardDesign?.Copy();
+        LoadTheAlbum(save);
         flow.PhotoBook.Load(save?.PhotoBook);
         // The studio's last composition (plan 43 · LF5's leftover): what is no longer had falls back as the studio opens
         flow.LastStudioShot = save?.LastStudioShot;

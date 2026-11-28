@@ -278,11 +278,15 @@ internal static partial class ModernUi
 
     /// <summary>The card on any of its pages (plan 18 · W2): <paramref name="shown"/> as it turns from <paramref name="from"/>.</summary>
     /// <param name="titleRow">The first row of the Masters' Hall's titles the titles' page shows (plan 14 · B15).</param>
-    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip, int titleRow = 0, int statTab = 0, int medalTab = 0)
+    public static void DrawTrainerCard(int sw, int sh, TrainerCardInfo info, Texture2D? portrait, float appear, CardSide shown, CardSide from, float flip, int titleRow = 0, int statTab = 0, int medalTab = 0, AlbumShown album = default)
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("card.title"));
-        if (info.RegionPages.Count > 0 || info.Run != null || info.Titles.Count > 0 || info.Counts is { IsEmpty: false } || info.Medals is { IsEmpty: false })
+        if (shown.Page == CardPage.Cards)
+            Hints(sw - Margin, 44, album.Opened
+                ? new[] { Hint("shared.keys.leftRight", "cardAlbum.hints.other"), Hint("shared.keys.z", "cardAlbum.hints.putBack"), Hint("shared.keys.esc", "shared.hints.back") }
+                : new[] { Hint("shared.keys.arrows", "cardAlbum.hints.choose"), Hint("shared.keys.z", "cardAlbum.hints.look"), Hint("shared.keys.esc", "shared.hints.back") });
+        else if (info.RegionPages.Count > 0 || info.Run != null || info.Titles.Count > 0 || info.Counts is { IsEmpty: false } || info.Medals is { IsEmpty: false } || info.Album.Count > 0)
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "card.page"), Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
         else Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
 
@@ -347,6 +351,9 @@ internal static partial class ModernUi
                 break;
             case CardPage.Titles when info.Titles.Count > 0:
                 CardTitlesPage(card, info, titleRow);
+                break;
+            case CardPage.Cards when info.Album.Count > 0:
+                CardAlbumPage(card, info.Album, album);
                 break;
             default:
                 CardFront(card, info, portrait, colour);

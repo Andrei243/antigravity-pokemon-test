@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
@@ -92,6 +94,9 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
     /// <summary>The title won last, as the class is named ("Bidoof Master"), under the player's name on the front; empty for none.</summary>
     public string LatestTitle { get; init; } = "";
 
+    /// <summary>The cards of the people beaten (plan 43 · LF2), by region and then by when they were won; empty for none, which gives the card no page for them.</summary>
+    public IReadOnlyList<AlbumEntry> Album { get; init; } = Array.Empty<AlbumEntry>();
+
     /// <summary>The card as the player designed it (plan 43 · LF1); null for a card never designed, whose front is today's.</summary>
     public TrainerCardFace? Design { get; init; }
 }
@@ -105,6 +110,19 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
 public sealed record TrainerCardFace(Models.CardBackground? Background, int? Backdrop, Models.CardFrame? Frame, Texture2D? Figure,
     IReadOnlyList<Pokemon> Shown, string Greeting, string Title, Models.SignaturePad? Signature);
 
+/// <summary>
+/// A card of the people beaten as the album shows it (plan 43 · LF2), resolved once when the card opens: their name,
+/// their rank and region in the language chosen, the look their bust is of (in their region's kit), the team first
+/// beaten, the colours of their band and what they say in battle (empty for nothing).
+/// </summary>
+public sealed record AlbumEntry(string Name, string Rank, string Region, string Look, IReadOnlyList<AlbumMon> Team, BattleBand Band, string Line);
+
+/// <summary>A Pokémon of a card's team: the model its icon is of, and its species' name in the language chosen.</summary>
+public sealed record AlbumMon(string Model, string Species);
+
+/// <summary>Where the cards' page stands as it is drawn (plan 43 · LF2): the card chosen, whether it is opened, and its busts by their look and size.</summary>
+public readonly record struct AlbumShown(int Cursor, bool Opened, Func<string, bool, Texture2D?>? Bust);
+
 /// <summary>A title of the Masters' Hall as the card lists it (plan 14 · B15): its species' National Pokédex number and the title, in the language chosen.</summary>
 public sealed record CardTitle(int Number, string Title);
 
@@ -115,7 +133,7 @@ public sealed record CardFallen(string Name, string Species, int Level, string P
 /// The pages of the Trainer Card (plan 18 · W2; plan 13 · V1, V13 add theirs at the end): the front, its back, and a
 /// page for each region the player has been in.
 /// </summary>
-public enum CardPage { Front, Back, Run, Statistics, Region, Titles, Medals }
+public enum CardPage { Front, Back, Run, Statistics, Region, Titles, Medals, Cards }
 
 /// <summary>
 /// The Trainer Card: who the player is, what they have, how long they have played and the badges they have
@@ -171,8 +189,93 @@ public class TrainerCardScreen
     private int MedalsPageIndex => hasMedals ? 2 + (hasRun ? 1 : 0) + (hasStats ? 1 : 0) : -1;
     private int TitlesPageIndex => titles > 0 ? 2 + (hasRun ? 1 : 0) + (hasStats ? 1 : 0) + (hasMedals ? 1 : 0) : -1;
     private int FirstRegionPage => 2 + (hasRun ? 1 : 0) + (hasStats ? 1 : 0) + (hasMedals ? 1 : 0) + (titles > 0 ? 1 : 0);
-    private int RegionOf(int index) => index >= FirstRegionPage ? index - FirstRegionPage : -1;
-    private int LastPage => FirstRegionPage - 1 + RegionPages;
+    private int RegionOf(int index) => index >= FirstRegionPage && index < FirstRegionPage + RegionPages ? index - FirstRegionPage : -1;
+    // The cards of the people beaten come last, after the regions' (plan 43 · LF2)
+    private int CardsPageIndex => cards > 0 ? FirstRegionPage + RegionPages : -1;
+    private int LastPage => FirstRegionPage - 1 + RegionPages + (cards > 0 ? 1 : 0);
+
+    // ------------------------------------------------------------------ the cards of the people beaten (plan 43 · LF2)
+
+    /// <summary>How many cards stand side by side on the cards' page, and how many rows of them.</summary>
+    public const int CardColumns = 3, CardRows = 3;
+
+    /// <summary>How many cards a sheet of the page holds.</summary>
+    public const int CardsPerSheet = CardColumns * CardRows;
+
+    private int cards;
+
+    /// <summary>Whether the card has the cards' page (plan 43 · LF2): only once one is won.</summary>
+    public bool HasCardsPage => cards > 0;
+
+    /// <summary>The card chosen on the cards' page, by its place in the album.</summary>
+    public int CardCursor { get; private set; }
+
+    /// <summary>Whether the chosen card is opened large.</summary>
+    public bool CardOpened { get; private set; }
+
+    /// <summary>The sheet of nine the chosen card stands on, and how many sheets there are.</summary>
+    public int Sheet => CardCursor / CardsPerSheet;
+    public int Sheets => Math.Max(1, (cards + CardsPerSheet - 1) / CardsPerSheet);
+
+    /// <summary>Whether the cards' page is the one shown.</summary>
+    public bool OnCards => IsActive && Page == CardPage.Cards;
+
+    /// <summary>
+    /// The arrows on the cards' page: left and right a card, up and down a row (a sheet runs on into the next), and left
+    /// on the very first card turns back to the page before. Opened large, left and right go through the cards.
+    /// </summary>
+    public bool MoveCard(int dx, int dy)
+    {
+        if (!OnCards || (CardOpened && dy != 0)) return false;
+        if (!CardOpened && dx < 0 && CardCursor == 0) return Turn(-1);
+        int to = CardCursor + Math.Sign(dx) + Math.Sign(dy) * CardColumns;
+        // Down onto a last row that is shorter lands on its end
+        if (dy > 0 && to >= cards && CardCursor / CardColumns < (cards - 1) / CardColumns) to = cards - 1;
+        if (to < 0 || to >= cards || to == CardCursor) return false;
+        CardCursor = to;
+        AudioManager.PlaySound("cursor");
+        return true;
+    }
+
+    /// <summary>The A button: on the cards' page it opens the chosen card large and puts it back; elsewhere it turns the card over.</summary>
+    public void PressConfirm()
+    {
+        if (!IsActive) return;
+        if (!OnCards)
+        {
+            Flip();
+            return;
+        }
+        CardOpened = !CardOpened;
+        AudioManager.PlaySound("page");
+    }
+
+    /// <summary>The B button: puts an opened card back, or else puts the Trainer Card away.</summary>
+    public void PressCancel()
+    {
+        if (!IsActive) return;
+        if (CardOpened) CardOpened = false;
+        else Close();
+        AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>The pointer: the card of the sheet under it, anywhere while one is opened (a click puts it back); nothing on the other pages.</summary>
+    public int? HitTest(Vector2 at)
+    {
+        if (!OnCards) return null;
+        if (CardOpened) return UiPointer.Anywhere;
+        var rects = ModernUi.AlbumCells(1920, Math.Min(CardsPerSheet, cards - Sheet * CardsPerSheet));
+        int? hit = UiPointer.Hit(rects, at);
+        return hit is int i ? Sheet * CardsPerSheet + i : null;
+    }
+
+    /// <summary>The pointer over a card of the sheet brings the cursor onto it.</summary>
+    public void PointAt(int index)
+    {
+        if (!OnCards || CardOpened || index < 0 || index >= cards || index == CardCursor) return;
+        CardCursor = index;
+        AudioManager.PlaySound("cursor");
+    }
 
     /// <summary>Whether the card has a page for the ways the game is played (plan 13 · V1): only when they are not Normal.</summary>
     public bool HasRunPage => hasRun;
@@ -246,7 +349,8 @@ public class TrainerCardScreen
 
     private CardPage PageOf(int index) =>
         index == 0 ? CardPage.Front : index == 1 ? CardPage.Back : index == RunPageIndex ? CardPage.Run
-        : index == StatsPageIndex ? CardPage.Statistics : index == MedalsPageIndex ? CardPage.Medals : index == TitlesPageIndex ? CardPage.Titles : CardPage.Region;
+        : index == StatsPageIndex ? CardPage.Statistics : index == MedalsPageIndex ? CardPage.Medals : index == TitlesPageIndex ? CardPage.Titles
+        : index == CardsPageIndex ? CardPage.Cards : CardPage.Region;
 
     /// <summary>Turns the card over: the front to its back and the back to its front; a region's page goes back to the front.</summary>
     public void Flip() => TurnTo(page == 0 ? 1 : 0);
@@ -262,6 +366,7 @@ public class TrainerCardScreen
 
     private void TurnTo(int to)
     {
+        CardOpened = false;
         from = page;
         page = to;
         flipAge = 0f;
@@ -271,8 +376,12 @@ public class TrainerCardScreen
     /// <param name="portrait">The player's field sprite (baked outside any texture mode); none in tests.</param>
     /// <param name="regionPages">How many regions' pages the card has (<see cref="TrainerCardInfo.RegionPages"/>).</param>
     /// <param name="titles">How many of the Masters' Hall's titles are won (plan 14 · B15); the card has their page with one or more.</param>
-    public void Open(Texture2D? portrait = null, int regionPages = 0, bool hasRun = false, int titles = 0, bool hasStats = false, bool hasMedals = false)
+    /// <param name="cards">How many cards of the people beaten the album holds (plan 43 · LF2); the card has their page with one or more.</param>
+    public void Open(Texture2D? portrait = null, int regionPages = 0, bool hasRun = false, int titles = 0, bool hasStats = false, bool hasMedals = false, int cards = 0)
     {
+        this.cards = Math.Max(0, cards);
+        CardCursor = 0;
+        CardOpened = false;
         IsActive = true;
         this.hasStats = hasStats;
         this.hasMedals = hasMedals;
@@ -310,13 +419,20 @@ public class TrainerCardScreen
         openAge += dt;
         flipAge += dt;
 
-        if (InputManager.IsActionPressed(GameAction.Confirm)) Flip();
+        if (InputManager.IsActionPressed(GameAction.Confirm)) PressConfirm();
         else if (InputManager.IsActionPressed(GameAction.Item)) AskForDesigner();
-        else if (InputManager.IsActionPressed(GameAction.Item)) AskForDesigner();
-        else if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Menu))
+        else if (InputManager.IsActionPressed(GameAction.Cancel)) PressCancel();
+        else if (InputManager.IsActionPressed(GameAction.Menu))
         {
             Close();
             AudioManager.PlaySound("cancel");
+        }
+        else if (OnCards)
+        {
+            if (InputManager.IsActionPressed(GameAction.Left)) MoveCard(-1, 0);
+            else if (InputManager.IsActionPressed(GameAction.Right)) MoveCard(1, 0);
+            else if (InputManager.IsActionPressed(GameAction.Up)) MoveCard(0, -1);
+            else if (InputManager.IsActionPressed(GameAction.Down)) MoveCard(0, 1);
         }
         else if (InputManager.IsActionPressed(GameAction.Left)) Turn(-1);
         else if (InputManager.IsActionPressed(GameAction.Right)) Turn(1);
@@ -328,11 +444,13 @@ public class TrainerCardScreen
         else if (Page == CardPage.Titles && InputManager.IsActionPressed(GameAction.Up)) ScrollTitles(-1);
     }
 
-    public void Draw(int screenWidth, int screenHeight, TrainerCardInfo info)
+    /// <param name="bust">A card's bust by its look, large (opened) or small; null while there is none (a plain bust shows).</param>
+    public void Draw(int screenWidth, int screenHeight, TrainerCardInfo info, Func<string, bool, Texture2D?>? bust = null)
     {
         if (!IsActive) return;
         ModernUi.DrawTrainerCard(screenWidth, screenHeight, info, portrait, Math.Clamp(openAge / AppearTime, 0f, 1f),
-            new CardSide(Page, RegionShown), new CardSide(PageOf(from), RegionOf(from)), Math.Clamp(flipAge / FlipTime, 0f, 1f), TitleRow, StatTab, MedalTab);
+            new CardSide(Page, RegionShown), new CardSide(PageOf(from), RegionOf(from)), Math.Clamp(flipAge / FlipTime, 0f, 1f), TitleRow, StatTab, MedalTab,
+            new AlbumShown(CardCursor, CardOpened, bust));
     }
 }
 

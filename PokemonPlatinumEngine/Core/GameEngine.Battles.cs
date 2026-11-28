@@ -851,6 +851,8 @@ public partial class GameEngine
         OpenWildAfterBattle(flow.Battle);
         // Wild Pokémon felled or caught leave materials in the kit's pouch, if the kit is in the bag (plan 39 · CR1)
         if (flow.Battle != null) MaterialsAfterBattle(flow.Battle, isDefeat);
+        // A first win over a Leader, one of an Elite Four or a Champion gives their card (plan 43 · LF2)
+        if (flow.Battle != null) CardsAfterBattle(flow.Battle);
         // The care book hears how it went: the marks of where it was fought, and the mood (plan 35 · BN1)
         if (flow.Battle != null) CareAfterBattle(flow.Battle, isDefeat);
         // Lockwork's locked Pokémon: those reclaimed come home, those knocked out are missed, and the team's own locks fall (plan 44 · SD1)
