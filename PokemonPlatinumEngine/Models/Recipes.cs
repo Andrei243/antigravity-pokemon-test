@@ -48,6 +48,12 @@ public sealed class RecipesFile
 
     /// <summary>The waiters' and stalls' menus (plan 39 · CR7): a row to a dish served somewhere, with its price.</summary>
     public List<MealStand> Stands { get; set; } = new();
+
+    /// <summary>
+    /// Paldea's picnic sandwiches (plan 34 · PD7, decision 4 at its recommendation): a second section on the same pot, the
+    /// camp's <see cref="Kitchen"/>, whose dishes are made at a Paldean picnic and start Paldea's powers.
+    /// </summary>
+    public KitchenRecipes Sandwiches { get; set; } = new();
 }
 
 /// <summary>
@@ -78,6 +84,9 @@ public static class RecipeTable
 
     /// <summary>The camp's dishes and grades (plan 39 · CR6).</summary>
     public static KitchenRecipes Kitchen => File.Kitchen;
+
+    /// <summary>The picnic's sandwiches and grades (plan 34 · PD7).</summary>
+    public static KitchenRecipes Sandwiches => File.Sandwiches;
 
     /// <summary>The dishes served at a stand (plan 39 · CR7), by the stand's script file, in the file's order.</summary>
     public static IReadOnlyList<MealStand> StandAt(string place) => File.Stands.Where(s => s.Place == place).ToList();

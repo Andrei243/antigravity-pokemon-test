@@ -191,6 +191,8 @@ public sealed partial class BattleCore
         bool wentOn = Perform(use, goesOn);
         bool failed = failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed));
         if (failed) failedOnTurn[user.Pokemon!] = Turn;
+        // A raider's Tera Orb charges with every move it uses (plan 34 · PD7)
+        if (!goesOn) ChargeTheOrb(user);
         // The Battle Arena's judge counts the move for Mind and how it came off for Skill (plan 14 · B9)
         JudgeTheMove(use, failed, wentOn);
         failedNow = false;
@@ -980,6 +982,7 @@ public sealed partial class BattleCore
 
         use.StrikeCount = Math.Max(1, effect.Strikes?.Invoke(this, use) ?? 1);
         ParentalBond(use);
+        ThreeHeads(use);
         bool userBreaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility) || DamageCalculator.IgnoresAbilities(use.Data);
         foreach (var t in use.Targets)
         {
@@ -1030,6 +1033,7 @@ public sealed partial class BattleCore
         }
         use.DamageDealt = use.Hits.Where(h => h.Landed).Sum(h => h.Dealt);
         NoteLanded(use);
+        EchoPouch(use);
 
         AfterStrike(use);
         // Relic Song turns Meloetta (plan 06 · R19b)
@@ -1292,6 +1296,8 @@ public sealed partial class BattleCore
             {
                 Say(hit.FailLine ?? (several || !IsSingle ? Text.Of("battle.avoidedTheAttack", ("target", t.Name)) : Text.Of("battle.attackMissed", ("user", user.Name))));
                 Unlock(user);
+                // Anvil: a contact move that missed still deals a quarter (plan 46 · CP10)
+                if (hit.Missed && !hit.OutOfReach && hit.FailLine == null) AnvilGlances(use, hit);
                 use.Effect.OnMiss(this, use, hit);
                 continue;
             }

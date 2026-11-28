@@ -1,0 +1,63 @@
+# False Dragon (plan 34 · PD4, its second session): the fifth and last Titan of the Path of Legends, a Tatsugiri and the
+# Dondozo it commands, on the shores of Casseroya Lake in its hollow in the north. The Tatsugiri is
+# met and beaten on the near shore and leaps away across the water to its Dondozo on the far shore, where the second
+# battle is fought against the Dondozo with the Tatsugiri in command; the herbs they left are shared with the mount,
+# which can climb again. A stand-in until plan 34 · PD6's second session moved it to Casseroya Lake, in its hollow east
+# off the North Province's first area (places/false_dragon.json). VAR_PALDEA_LEGENDS
+# (stony_cliff.txt's header has the whole count) goes on:
+#   9   the fourth Titan beaten: the Tatsugiri waits on the lake's near shore
+#   10  the Tatsugiri beaten and fled across the lake to its Dondozo (FLAG_PALDEA_TATSUGIRI_FLED)
+#   11  the Dondozo beaten (FLAG_PALDEA_DONDOZO_BEATEN), its herbs shared: the mount climbs (FLAG_PALDEA_MOUNT_CLIMB)
+# The lines are our own, on Scarlet and Violet's beats. A Titan is fought alone (`titan` calls nobody), so the two are
+# two battles and the Tatsugiri's command is told, not fought (docs/mechanics/rulings.md, "The Path of Legends, its
+# last four Titans").
+
+
+# The near shore: the Tatsugiri, the first battle, and its leap across the water
+script Tatsugiri
+  if var VAR_PALDEA_LEGENDS == 9 goto Titan
+  end
+label Titan
+  scene "The False Dragon Titan"
+  faceto titan_tatsugiri player
+  cry "Tatsugiri"
+  text "Something small and orange puffs itself up on the shore, glaring like a dragon ten times its size!"
+  wildbattle "Tatsugiri" 57 titan spattack
+  text "The Tatsugiri squeaks, flips into the lake and skims away across the water toward the far shore!"
+  setflag FLAG_PALDEA_TATSUGIRI_FLED
+  setvar VAR_PALDEA_LEGENDS 10
+  endscene
+  end
+
+
+# The far shore: the Dondozo with the Tatsugiri in command, the second battle, and Arven round the shore with the herbs
+script Dondozo
+  if var VAR_PALDEA_LEGENDS == 10 goto Den
+  end
+label Den
+  scene "The False Dragon Titan's Herba Mystica"
+  faceto player titan_dondozo
+  text "A Dondozo as long as a boat lies on the far shore beside a clump of glowing herbs, its mouth wide open."
+  text "The Tatsugiri hops into its mouth. The Dondozo's eyes go sharp, and it heaves itself up at {player}!"
+  cry "Dondozo"
+  wildbattle "Dondozo" 56 titan all
+  text "The Dondozo is beaten. It spits out the dizzy Tatsugiri, scoops it up again and slides off into the lake."
+  setflag FLAG_PALDEA_DONDOZO_BEATEN
+  placeat arven_false_dragon false_dragon_north_shore
+  walkto arven_false_dragon false_dragon_herbs fast
+  faceto player arven_false_dragon
+  speaker "Arven"
+  say "That's five. Five! Every Titan I heard of, and all their Herba Mystica. Sweet ones, this time."
+  faceto arven_false_dragon player
+  if var VAR_PALDEA_MOUNT == 2 goto Miraidon
+  text "Koraidon ate the sandwich, dug its claws into the rocks of the hollow's side and hauled itself up a little way."
+  goto Strength
+label Miraidon
+  text "Miraidon ate the sandwich, set its feet against the rocks of the hollow's side and walked a little way up them."
+label Strength
+  setflag FLAG_PALDEA_MOUNT_CLIMB
+  text "Some of its old strength has come back. It can climb again! (Riding, go straight at a rock face with grips.)"
+  say "Thanks. Really. There's something I want to show you. Meet me at the lighthouse on Poco Path, where we started."
+  setvar VAR_PALDEA_LEGENDS 11
+  endscene
+  end

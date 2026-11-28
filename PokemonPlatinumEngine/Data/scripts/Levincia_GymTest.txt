@@ -1,29 +1,6 @@
-# Iono's gym test, the stream hunt (plan 34 · PD3): three Wattrel hiding on the studio's set in its three gaps, each
-# found on camera and sent flapping off, a gym trainer by the set, and Iono at its end with the Electric Badge. A
-# Wattrel found stays gone (its own flag). The hunt is a word, not a search, as Galar's herding is
-# (docs/mechanics/rulings.md, "The South and East Provinces and the first three gyms"). Our own lines, on Scarlet and
-# Violet's beat of a hide-and-seek streamed live.
-
-
-script Test1
-  text "Something is fluttering behind the light rig. It's a Wattrel! {player} pointed it out to the camera."
-  text "The Wattrel squawked and flew off the set!"
-  setflag FLAG_PALDEA_LEVINCIA_TEST_1
-  end
-
-
-script Test2
-  text "A Wattrel is hiding in a coil of cable. {player} found it!"
-  text "It flapped away to a round of cheering from the chat!"
-  setflag FLAG_PALDEA_LEVINCIA_TEST_2
-  end
-
-
-script Test3
-  text "The last Wattrel was perched right on top of the camera. {player} spotted it!"
-  text "It took off in a shower of sparks. Every Wattrel has been found!"
-  setflag FLAG_PALDEA_LEVINCIA_TEST_3
-  end
+# Iono's studio, the end of her gym test (plan 34 · PD3): the Wattrel of the stream hunt hide about the city on the open
+# map (levincia.txt, PD3's second session, as Scarlet and Violet's search is), a gym trainer by the set, and Iono at its
+# end with the Electric Badge, who battles a challenger who has found all three. Our own lines.
 
 
 # Iono's battle for the Electric Badge. She Terastallizes her Mismagius into an Electric type. Her levels are fixed,
@@ -33,6 +10,7 @@ script Leader
   speaker "Iono"
   if badge electric goto Won
   if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  if not flag FLAG_PALDEA_LEVINCIA_TEST_DONE goto NotYet
   scene "Iono"
   say "Hey hey, you found every last one of my hiders! Welcome to the stream, everyone! I'm Iono, Levincia's gym leader and streamer!"
   say "Today's challenger is a real one, chat! Let's see if they can survive my electrifying team!"
@@ -44,6 +22,9 @@ script Leader
   defeat "paldea_gym_trainer_volt"
   say "Don't forget to like and subscribe! And come back for a rematch some time!"
   endscene
+  end
+label NotYet
+  say "Whoa, slow down, challenger! My little hiders are still out in Levincia. Find all three on stream, then come back!"
   end
 label NotEnrolled
   say "A challenger who isn't a student yet? The chat says enrol at the academy first! Then come back, okay?"

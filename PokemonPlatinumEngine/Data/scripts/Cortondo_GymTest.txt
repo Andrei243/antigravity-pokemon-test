@@ -1,26 +1,26 @@
-# Katy's gym test, the olive roll (plan 34 · PD3): three Smoliv curled up like olives in the course's three gaps, each
-# rolled on with a nudge into the goal, a gym trainer beside the course, and Katy at its end with the Bug Badge. A
-# Smoliv rolled away stays gone (its own flag). The roll is a nudge, not a puzzle, as Galar's herding is
-# (docs/mechanics/rulings.md, "The South and East Provinces and the first three gyms"). Our own lines, on Scarlet and
+# Katy's gym test, the olive roll (plan 34 · PD3): three giant olives in the course's three gaps (cards of our own, PD3's
+# second session), each rolled on with a push into the goal, a gym trainer beside the course, and Katy at its end with
+# the Bug Badge. An olive rolled away stays gone (its own flag). The roll is a nudge, not a puzzle, as Galar's herding
+# is (docs/mechanics/rulings.md, "The South and East Provinces and the first three gyms"). Our own lines, on Scarlet and
 # Violet's beat of rolling a giant olive into a goal.
 
 
 script Test1
-  text "A Smoliv has curled up into a ball in the gap, as round as an olive. {player} gave it a push..."
+  text "A giant olive, taller than a Smoliv, sits in the gap. {player} gave it a push..."
   text "It rolled away down the course and into the goal!"
   setflag FLAG_PALDEA_CORTONDO_TEST_1
   end
 
 
 script Test2
-  text "Another Smoliv, rolled up tight. {player} gave it a push..."
+  text "Another giant olive, glossy and green. {player} gave it a push..."
   text "It bumped off the rail and trundled into the goal!"
   setflag FLAG_PALDEA_CORTONDO_TEST_2
   end
 
 
 script Test3
-  text "The last Smoliv was the roundest of all. {player} gave it a good push..."
+  text "The last olive was the roundest of all. {player} gave it a good push..."
   text "It rolled straight into the goal. The olive roll is cleared!"
   setflag FLAG_PALDEA_CORTONDO_TEST_3
   end

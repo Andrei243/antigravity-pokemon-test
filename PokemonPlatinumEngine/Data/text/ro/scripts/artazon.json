@@ -1,0 +1,56 @@
+{
+  "HiddenSunflora1": [
+    {
+      "en": [
+        "That flower by the beds has eyes... It's a Sunflora, standing perfectly still! {player} said hello."
+      ],
+      "text": [
+        "Floarea aceea de lângă straturi are ochi... E un Sunflora, nemișcat ca o statuie! {player} l-a salutat."
+      ]
+    },
+    {
+      "en": [
+        "Found out, the Sunflora hopped off toward the gym!"
+      ],
+      "text": [
+        "Descoperit, Sunflora a sărit spre sala de luptă!"
+      ]
+    }
+  ],
+  "HiddenSunflora2": [
+    {
+      "en": [
+        "This sunflower by the house is a little too cheerful. It's another Sunflora! {player} tapped it on the leaf."
+      ],
+      "text": [
+        "Floarea-soarelui de lângă casă e puțin prea veselă. E alt Sunflora! {player} l-a atins pe frunză."
+      ]
+    },
+    {
+      "en": [
+        "It giggled and hopped away toward the gym!"
+      ],
+      "text": [
+        "A chicotit și a sărit mai departe spre sala de luptă!"
+      ]
+    }
+  ],
+  "HiddenSunflora3": [
+    {
+      "en": [
+        "A Sunflora was hiding in plain sight beside the gym. {player} found it!"
+      ],
+      "text": [
+        "Un Sunflora se ascundea la vedere, lângă sala de luptă. {player} l-a găsit!"
+      ]
+    },
+    {
+      "en": [
+        "It spun round and hopped inside. Every Sunflora has been found!"
+      ],
+      "text": [
+        "S-a rotit și a sărit înăuntru. Toți Sunflora au fost găsiți!"
+      ]
+    }
+  ]
+}

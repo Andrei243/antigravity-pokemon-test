@@ -463,7 +463,9 @@ internal static partial class PokemonModels
         ("Ice", Rgb(140, 212, 220), Rgb(196, 240, 244)),
         ("Dragon", Rgb(110, 64, 236), Rgb(160, 126, 250)),
         ("Dark", Rgb(98, 78, 68), Rgb(150, 126, 110)),
-        ("Fairy", Rgb(238, 150, 190), Rgb(250, 196, 222))
+        ("Fairy", Rgb(238, 150, 190), Rgb(250, 196, 222)),
+        // Plan 46 · CP2b: the Sound Plate, in the Sound type's teal (style guide, the types' colours)
+        ("Sound", Rgb(64, 168, 152), Rgb(132, 216, 200))
     };
 
     /// <summary>

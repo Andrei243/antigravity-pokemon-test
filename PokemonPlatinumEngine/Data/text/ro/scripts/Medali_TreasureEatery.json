@@ -1,0 +1,116 @@
+{
+  "Order": [
+    {
+      "en": [
+        "Waiter"
+      ],
+      "text": [
+        "Chelner"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Treasure Eatery! What can I get you?"
+      ],
+      "text": [
+        "Bine ai venit la Treasure Eatery! Ce să-ți aduc?"
+      ]
+    },
+    {
+      "en": [
+        "What will you order?",
+        "Grilled rice balls",
+        "Seafood stew",
+        "Nothing, thanks"
+      ],
+      "text": [
+        "Ce comanzi?",
+        "Bile de orez la grătar",
+        "Tocană de fructe de mare",
+        "Nimic, mulțumesc"
+      ]
+    },
+    {
+      "en": [
+        "Anything on the side?",
+        "Lemon",
+        "Mustard",
+        "No side"
+      ],
+      "text": [
+        "Ceva pe lângă?",
+        "Lămâie",
+        "Muștar",
+        "Nimic pe lângă"
+      ]
+    },
+    {
+      "en": [
+        "And how would you like them?",
+        "Extra crispy",
+        "Just as they come"
+      ],
+      "text": [
+        "Și cum le vrei?",
+        "Extra crocante",
+        "Așa cum vin"
+      ]
+    },
+    {
+      "en": [
+        "The waiter's eyebrows went up. He leaned in and lowered his voice."
+      ],
+      "text": [
+        "Ospătarul a ridicat din sprâncene. S-a aplecat spre tine și a coborât vocea."
+      ]
+    },
+    {
+      "en": [
+        "Grilled rice balls, lemon on the side, extra crispy. That's the secret order. You've passed Larry's test!"
+      ],
+      "text": [
+        "Bile de orez la grătar, cu lămâie pe lângă, extra crocante. Asta e comanda secretă. Ai trecut proba lui Larry!"
+      ]
+    },
+    {
+      "en": [
+        "Head up to the gym when you've eaten. He'll be expecting you. Probably. He's always expecting something."
+      ],
+      "text": [
+        "Urcă la sală după ce mănânci. Te așteaptă. Probabil. El așteaptă mereu ceva."
+      ]
+    },
+    {
+      "en": [
+        "Coming right up, just as it is on the menu. Enjoy your meal!"
+      ],
+      "text": [
+        "Vine imediat, exact ca în meniu. Poftă bună!"
+      ]
+    },
+    {
+      "en": [
+        "It was very good. But it wasn't the secret order."
+      ],
+      "text": [
+        "A fost foarte bun. Dar nu era comanda secretă."
+      ]
+    },
+    {
+      "en": [
+        "Take your time. Ask around town, if you're after something special."
+      ],
+      "text": [
+        "Nu te grăbi. Întreabă prin oraș, dacă vrei ceva special."
+      ]
+    },
+    {
+      "en": [
+        "The usual? Grilled rice balls, lemon on the side, extra crispy. You're a regular now!"
+      ],
+      "text": [
+        "Ca de obicei? Bile de orez la grătar, cu lămâie pe lângă, extra crocante. Acum ești client fidel!"
+      ]
+    }
+  ]
+}

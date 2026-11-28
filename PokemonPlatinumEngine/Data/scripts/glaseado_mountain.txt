@@ -1,0 +1,81 @@
+# Glaseado Mountain on the open map (plan 34 · PD6, its second session). Grusha's gym test is the snowslope run, as
+# Scarlet and Violet's beat has it: the coach at the top of the snowslope starts it, and the challenger rides down
+# through the three gates in their order (each a gap between two young pines) to the line at the slope's foot. A gate
+# missed, the line says so and the run must be started again from the top; no clock is kept (ours: the original times
+# the run). VAR_PALDEA_GLASEADO_RUN counts the run while it is ridden:
+#   0  no run under way
+#   1  started by the coach: the first gate waits
+#   2  the first gate passed
+#   3  the second gate passed
+#   4  the third gate passed: the line at the foot ends the run and the test is done (FLAG_PALDEA_GLASEADO_TEST_DONE)
+# Our own lines.
+
+
+# The coach at the top of the snowslope
+script Coach
+  speaker "Coach"
+  if flag FLAG_PALDEA_GLASEADO_TEST_DONE goto Done
+  if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  say "Here for Grusha's test? It's the snowslope run. Three gates on the way down, pairs of little pines. Go through each, in order."
+  say "Then cross the line at the bottom. Miss a gate and you'll have to come back up and start again."
+  ask "Ready to start the run?"
+  if no goto Later
+  scene "Grusha's snowslope run"
+  setvar VAR_PALDEA_GLASEADO_RUN 1
+  text "The coach raised a flag and brought it down. The run had begun!"
+  say "Go, go, go! The first gate's down the slope to your left!"
+  endscene
+  end
+label Later
+  say "Take your time. The slope's not going anywhere."
+  end
+label NotEnrolled
+  say "The run's for academy students taking the gym challenge. Come back once you're enrolled."
+  end
+label Done
+  say "You finished the run. Grusha's waiting in the gym. And yes, I saw that last turn. Very nice."
+  end
+
+
+# The three gates, each passed only in its turn
+script GateOne
+  text "Through the first gate!"
+  setvar VAR_PALDEA_GLASEADO_RUN 2
+  end
+
+
+script GateTwo
+  text "Through the second gate!"
+  setvar VAR_PALDEA_GLASEADO_RUN 3
+  end
+
+
+script GateThree
+  text "Through the third gate! Now for the line at the bottom!"
+  setvar VAR_PALDEA_GLASEADO_RUN 4
+  end
+
+
+# The line at the foot with every gate passed
+script Finish
+  scene "The end of the snowslope run"
+  setvar VAR_PALDEA_GLASEADO_RUN 0
+  setflag FLAG_PALDEA_GLASEADO_TEST_DONE
+  text "Across the line! A cheer drifted down from the top of the mountain."
+  text "Grusha's test is passed. Back up the slope to the gym!"
+  endscene
+  end
+
+
+# The line at the foot with a gate missed
+script Missed
+  setvar VAR_PALDEA_GLASEADO_RUN 0
+  text "Across the line... but a gate was missed. The run doesn't count."
+  text "Head back up and ask the coach to start it again."
+  end
+
+# Its Tera crystal (plan 34 · PD7): what it holds today is drawn by the day (Models/Raids.cs), the raid is common.TeraCrystal
+script CrystalGlaseado1
+  raid crystal "glaseado_1"
+  call TeraCrystal
+  end

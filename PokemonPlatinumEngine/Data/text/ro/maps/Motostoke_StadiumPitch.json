@@ -107,6 +107,16 @@
           "Kabu"
         ]
       }
+    },
+    "shielbert_pitch": {
+      "name": {
+        "en": [
+          "Shielbert"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

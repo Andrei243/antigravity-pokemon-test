@@ -1,0 +1,7 @@
+# west_province_area_two (plan 34 · PD7): the place's Tera crystal.
+
+# Its Tera crystal (plan 34 · PD7): what it holds today is drawn by the day (Models/Raids.cs), the raid is common.TeraCrystal
+script CrystalWestTwo1
+  raid crystal "west_two_1"
+  call TeraCrystal
+  end

@@ -180,12 +180,21 @@ public static class Meals
 {
     public static KitchenRecipes Table => RecipeTable.Kitchen;
 
-    public static KitchenDish? Dish(string id) => Table.Dishes.FirstOrDefault(d => d.Id == id);
+    /// <summary>The sandwiches' section (plan 34 · PD7): a second table for the same pot, cooked at a Paldean picnic.</summary>
+    public static KitchenRecipes Sandwiches => RecipeTable.Sandwiches;
 
-    public static KitchenDish Plain => Dish(Table.Plain) ?? new KitchenDish { Id = Table.Plain };
+    public static KitchenDish? Dish(string id, KitchenRecipes? table = null) => (table ?? Table).Dishes.FirstOrDefault(d => d.Id == id);
 
-    public static KitchenGrade GradeRow(DishGrade grade) =>
-        Table.Grades.Count == 0 ? new KitchenGrade { Heal = 25, Level = 1, Seconds = PowerTable.Seconds } : Table.Grades[Math.Min((int)grade, Table.Grades.Count - 1)];
+    public static KitchenDish Plain => PlainOf(Table);
+
+    /// <summary>A table's plain dish (the camp's stew, the picnic's plain sandwich).</summary>
+    public static KitchenDish PlainOf(KitchenRecipes table) => Dish(table.Plain, table) ?? new KitchenDish { Id = table.Plain };
+
+    public static KitchenGrade GradeRow(DishGrade grade, KitchenRecipes? table = null)
+    {
+        var grades = (table ?? Table).Grades;
+        return grades.Count == 0 ? new KitchenGrade { Heal = 25, Level = 1, Seconds = PowerTable.Seconds } : grades[Math.Min((int)grade, grades.Count - 1)];
+    }
 
     /// <summary>The name a dish is shown by, and what it is (<c>campPot.dish.name.*</c>, <c>campPot.dish.desc.*</c>).</summary>
     public static string NameOf(KitchenDish dish)
@@ -208,18 +217,18 @@ public static class Meals
     }
 
     /// <summary>Whether something of the pouch or the bag may go in the pot: the pantry's goods, the bag's berries, and the items a dish names.</summary>
-    public static bool IsIngredient(KitchenIngredient ingredient) =>
+    public static bool IsIngredient(KitchenIngredient ingredient, KitchenRecipes? table = null) =>
         ingredient.IsMaterial ? MaterialTable.Get(ingredient.Id)?.Kind == MaterialKind.Pantry
-        : ItemDatabase.Get(ingredient.Id) is { } item && (item.Pocket == ItemPocket.Berries || Table.Dishes.Any(d => d.Needs.Any(n => n.Items?.Contains(item.Name) == true)));
+        : ItemDatabase.Get(ingredient.Id) is { } item && (item.Pocket == ItemPocket.Berries || (table ?? Table).Dishes.Any(d => d.Needs.Any(n => n.Items?.Contains(item.Name) == true)));
 
     /// <summary>What may go in the pot from what is held: the pantry's goods of the pouch in the table's order, then the bag's berries and named items in the bag's.</summary>
-    public static List<KitchenIngredient> OnHand(MaterialPouch pouch, Inventory bag)
+    public static List<KitchenIngredient> OnHand(MaterialPouch pouch, Inventory bag, KitchenRecipes? table = null)
     {
         var list = MaterialTable.All.Where(m => m.Kind == MaterialKind.Pantry && pouch.Count(m.Id) > 0)
             .Select(m => new KitchenIngredient(m.Id, true)).ToList();
         foreach (var pocket in new[] { ItemPocket.Items, ItemPocket.Berries })
             foreach (var stack in bag.GetPocketItems(pocket))
-                if (stack.Quantity > 0 && new KitchenIngredient(stack.Name, false) is var ingredient && IsIngredient(ingredient) && !list.Contains(ingredient))
+                if (stack.Quantity > 0 && new KitchenIngredient(stack.Name, false) is var ingredient && IsIngredient(ingredient, table) && !list.Contains(ingredient))
                     list.Add(ingredient);
         return list;
     }
@@ -247,9 +256,12 @@ public static class Meals
     /// The dish a pot cooks: of the dishes whose wants the pot holds, the one that wants the most (the table's order breaks
     /// a tie); the plain dish from anything else.
     /// </summary>
-    public static KitchenDish DishFor(IReadOnlyList<KitchenIngredient> pot) =>
-        Table.Dishes.Where(d => d.Id != Table.Plain && d.Needs.Count > 0 && Holds(d, pot))
-            .OrderByDescending(d => d.Needs.Count).FirstOrDefault() ?? Plain;
+    public static KitchenDish DishFor(IReadOnlyList<KitchenIngredient> pot, KitchenRecipes? table = null)
+    {
+        var t = table ?? Table;
+        return t.Dishes.Where(d => d.Id != t.Plain && d.Needs.Count > 0 && Holds(d, pot))
+            .OrderByDescending(d => d.Needs.Count).FirstOrDefault() ?? PlainOf(t);
+    }
 
     /// <summary>The type of a type's encounters a pot gives: its first berry's Natural Gift type, Normal for a berry with none.</summary>
     public static PokemonType? TypeFor(IReadOnlyList<KitchenIngredient> pot) =>
@@ -275,9 +287,9 @@ public static class Meals
     /// condition but fainting cured, each fed once a visit at the camp (<paramref name="visit"/>; a meal elsewhere befriends
     /// nobody), and the dish's power started, a type's encounters of <paramref name="type"/> (none started without one).
     /// </summary>
-    public static MealServed Serve(Party party, KitchenDish dish, DishGrade grade, PowerState? powers, CampVisit? visit, PokemonType? type)
+    public static MealServed Serve(Party party, KitchenDish dish, DishGrade grade, PowerState? powers, CampVisit? visit, PokemonType? type, KitchenRecipes? table = null)
     {
-        var row = GradeRow(grade);
+        var row = GradeRow(grade, table);
         int healed = 0, cured = 0, fed = 0;
         foreach (var p in party.Members)
         {
@@ -298,7 +310,7 @@ public static class Meals
         }
         ActivePower? started = null;
         if (dish.Power is { } kind && powers != null && PowerTable.Read.Contains(kind)
-            && powers.Grant(kind, row.Level, row.Seconds, kind == PowerKind.TypeEncounter ? type ?? PokemonType.Normal : null))
+            && powers.Grant(kind, row.Level, row.Seconds, PowerTable.TakesType(kind) ? type ?? PokemonType.Normal : null))
             started = powers.InForce.First(a => a.Kind == kind);
         return new MealServed(dish, grade, healed, cured, fed, started);
     }
@@ -329,7 +341,7 @@ public static class Meals
             if (dish.Id.Length == 0 || !dish.Id.All(char.IsAsciiLetterOrDigit)) yield return (dish.Id, "has no id of letters and digits");
             if (dish.Needs.Count > table.Most) yield return (dish.Id, "wants more than the pot holds");
             if (dish.Power is { } kind && !PowerTable.Read.Contains(kind)) yield return (dish.Id, $"starts {kind}, which nothing reads yet (plan 36 · TR7)");
-            if (dish.Power == PowerKind.TypeEncounter && !dish.Needs.Any(n => n.Berry)) yield return (dish.Id, "starts a type's encounters and wants no berry to take its type from");
+            if (dish.Power is { } typed && PowerTable.TakesType(typed) && !dish.Needs.Any(n => n.Berry)) yield return (dish.Id, "starts a power of a type and wants no berry to take its type from");
             foreach (var need in dish.Needs)
             {
                 int named = (need.Material != null ? 1 : 0) + (need.Items != null ? 1 : 0) + (need.Berry ? 1 : 0);

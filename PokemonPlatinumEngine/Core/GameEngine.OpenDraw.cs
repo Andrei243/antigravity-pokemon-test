@@ -176,18 +176,34 @@ public partial class GameEngine
         int badges = flow.Story.BadgeCount(RegionDatabase.Galar);
         foreach (var trigger in open.Map.Triggers)
         {
+            // A Tera crystal of Paldea's (plan 34 · PD7): its glow in its Tera Type's colour, where its script would call it lit
+            if (Raids.CrystalOfTrigger(trigger.Name) is { } crystal)
+            {
+                int paldeaVersion = Math.Max(1, flow.Story.Var("VAR_PALDEA_VERSION"));
+                int paldeaBadges = flow.Story.BadgeCount(RegionDatabase.Paldea);
+                if (!Raids.CrystalStands(crystal, key.DailyNumber, paldeaVersion, paldeaBadges, flow.Story.Has(Story.ScriptRunner.CrystalFlag(crystal.Id)))) continue;
+                var today = Raids.CrystalToday(crystal, key.DailyNumber, paldeaVersion, paldeaBadges);
+                openBeams.Add(new DenBeam(FootOf(open, trigger), today.Stars, today.Tera));
+                continue;
+            }
             if (Raids.DenOfTrigger(trigger.Name) is not { } den) continue;
             bool wished = flow.Story.Has(Story.ScriptRunner.DenFlag(den.Id, "WISHED"));
             bool felled = flow.Story.Has(Story.ScriptRunner.DenFlag(den.Id, "DONE"));
             if (!Raids.BeamStands(den, key.DailyNumber, version, badges, wished, felled, Raids.IsOpen(den, flow.Story.Has))) continue;
-            var middle = trigger.Shape.Base;
-            double x = middle.X / (double)OpenPos.PerMetre, z = middle.Z / (double)OpenPos.PerMetre;
-            double top = trigger.Shape.Max.Y / (double)OpenPos.PerMetre, bottom = trigger.Shape.Min.Y / (double)OpenPos.PerMetre;
-            double y = open.Map.Ground.Footing(x, z, top, bottom)?.Y ?? bottom + 1;
             int stars = Raids.Today(den, key.DailyNumber, version, badges, wished).Stars;
-            openBeams.Add(new DenBeam(new Vector3((float)x, (float)y, (float)z), stars));
+            openBeams.Add(new DenBeam(FootOf(open, trigger), stars));
         }
         return openBeams;
+    }
+
+    /// <summary>The ground under a trigger's middle, in metres (its floor's height plus one where no ground is found).</summary>
+    private static Vector3 FootOf(OpenField open, OpenTrigger trigger)
+    {
+        var middle = trigger.Shape.Base;
+        double x = middle.X / (double)OpenPos.PerMetre, z = middle.Z / (double)OpenPos.PerMetre;
+        double top = trigger.Shape.Max.Y / (double)OpenPos.PerMetre, bottom = trigger.Shape.Min.Y / (double)OpenPos.PerMetre;
+        double y = open.Map.Ground.Footing(x, z, top, bottom)?.Y ?? bottom + 1;
+        return new Vector3((float)x, (float)y, (float)z);
     }
 
     // ------------------------------------------------------------------ the mount as a rig (plan 30 · FM13)

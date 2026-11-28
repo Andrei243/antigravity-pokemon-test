@@ -1429,8 +1429,132 @@ public static class WorldMapBuilder
         for (int z = 0; z < h; z++)
             for (int x = 0; x < w; x++)
                 if (!map.IsSolid(x, z) && !reached[z * w + x]) map.SetGroundTile(x, z, TileType.CaveWall, isSolid: true);
+        StraySteps(map, reached);
+        // (the flights are read before the rock is stood up over them, and laid after)
+        var flights = SideFlights(map, entrances);
         OpenWaysOut(map, entrances);
-        RaiseRock(map, IsRock);
+        RaiseRock(map, IsRock, onTheHigherFloor: true);
+        LaySideFlights(map, flights);
+    }
+
+    /// <summary>
+    /// Steps nobody can come to are rock (style guide, "Caves"): a blocked flight the import knows by its texture that
+    /// touches no floor of the cave (a piece of another level's stairs, seen through the original's floor) stood in the
+    /// rock as a flight that led nowhere (Iron Island's lower left room).
+    /// </summary>
+    private static void StraySteps(Map map, bool[] reached)
+    {
+        int w = map.Width, h = map.Height;
+        var seen = new bool[w * h];
+        var group = new List<(int X, int Z)>();
+        var open = new Queue<(int X, int Z)>();
+        for (int z0 = 0; z0 < h; z0++)
+            for (int x0 = 0; x0 < w; x0++)
+            {
+                if (seen[z0 * w + x0] || map.GetGroundTile(x0, z0) != TileType.Stairs) continue;
+                group.Clear();
+                bool comeTo = false;
+                seen[z0 * w + x0] = true;
+                open.Enqueue((x0, z0));
+                while (open.Count > 0)
+                {
+                    var (x, z) = open.Dequeue();
+                    group.Add((x, z));
+                    if (!map.IsSolid(x, z)) comeTo = true;
+                    foreach (var (dx, dz) in new[] { (0, -1), (1, 0), (-1, 0), (0, 1) })
+                    {
+                        int nx = x + dx, nz = z + dz;
+                        if (!map.InBounds(nx, nz)) continue;
+                        if (reached[nz * w + nx]) comeTo = true;
+                        if (seen[nz * w + nx] || map.GetGroundTile(nx, nz) != TileType.Stairs) continue;
+                        seen[nz * w + nx] = true;
+                        open.Enqueue((nx, nz));
+                    }
+                }
+                if (comeTo) continue;
+                foreach (var (x, z) in group) map.SetGroundTile(x, z, TileType.CaveWall, isSolid: true);
+            }
+    }
+
+    /// <summary>How many tiles a flight of side stairs may run from the way it is taken by: the original's are two.</summary>
+    public const int SideFlightReach = 3;
+
+    /// <summary>A tile of a flight of side stairs: its height at its middle and its rise per tile eastward, as the world has them.</summary>
+    private readonly record struct FlightTile(int X, int Z, float Height, float SlopeX);
+
+    /// <summary>A way between a cave's floors by stairs at its side: the way's own tile, which side the flight lies on, and the flight's tiles from the way outward.</summary>
+    private sealed record SideFlight(int X, int Z, int Side, float WayHeight, List<FlightTile> Tiles);
+
+    /// <summary>
+    /// The flights of a cave's side stairs (style guide, "Caves", "Ways between floors"): a way on a tile of the original's
+    /// <c>StairsEast</c> or <c>StairsWest</c> is taken by walking onto the stairs beside it, which the world knows only as
+    /// blocked tiles on a plate that slopes away from the way. Read before the cave's rock is stood up, which would bury
+    /// them two tiles deep.
+    /// </summary>
+    private static List<SideFlight> SideFlights(Map map, HashSet<(int X, int Z)> entrances)
+    {
+        var flights = new List<SideFlight>();
+        foreach (var (x, z) in entrances)
+        {
+            if (!map.InBounds(x, z) || map.IsSolid(x, z)) continue;
+            int side = map.BehaviourAt(x, z) switch { TileBehavior.StairsEast => 1, TileBehavior.StairsWest => -1, _ => 0 };
+            if (side == 0) continue;
+            var tiles = new List<FlightTile>();
+            float way = map.HeightAt(x, z);
+            for (int k = 1; k <= SideFlightReach; k++)
+            {
+                int tx = x + side * k;
+                if (!map.InBounds(tx, z) || !map.IsSolid(tx, z) || entrances.Contains((tx, z))) break;
+                if (map.GetGroundTile(tx, z) is not (TileType.CaveWall or TileType.Stairs)) break;
+                float slope = map.SlopeAt(tx, z).X;
+                // (a flight runs one way: the first tile says which)
+                if (slope == 0f || tiles.Count > 0 && MathF.Sign(slope) != MathF.Sign(tiles[0].SlopeX)) break;
+                // The flight begins at the way's own height: the world's plates are off it by a thousandth of a tile,
+                // which the rule of small steps (Relief) would carry on into the floor and the rock round the flight
+                float height = map.HeightAt(tx, z), fromTheWay = way + side * slope * (k - 0.5f);
+                tiles.Add(new FlightTile(tx, z, MathF.Abs(height - fromTheWay) < 0.1f ? fromTheWay : height, slope));
+            }
+            flights.Add(new SideFlight(x, z, side, way, tiles));
+        }
+        // (in the map's own order, whatever order the set gives its ways in)
+        flights.Sort((a, b) => a.Z != b.Z ? a.Z.CompareTo(b.Z) : a.X.CompareTo(b.X));
+        return flights;
+    }
+
+    /// <summary>
+    /// Lays a cave's side stairs where they are seen (style guide, "Caves", "Ways between floors"): each tile of a flight
+    /// is steps at the world's own height and slope, still blocked (the way is taken from the tile before them), and the
+    /// rock past the flight's far end is the dark of a passage at the height the flight comes to, as past a cave's way
+    /// out. The rock right south of a flight and of its dark lies no higher than they do, as the flight's flank: stood
+    /// two tiles up like the rest, it hid from the field's camera the whole of a flight that goes down and most of one
+    /// that goes up. A way with no flight the world knows of has the dark right beside it.
+    /// </summary>
+    private static void LaySideFlights(Map map, List<SideFlight> flights)
+    {
+        foreach (var flight in flights)
+        {
+            float end = flight.WayHeight;
+            int last = flight.X;
+            foreach (var t in flight.Tiles)
+            {
+                map.SetGroundTile(t.X, t.Z, TileType.Stairs, isSolid: true);
+                map.SetHeight(t.X, t.Z, t.Height, t.SlopeX);
+                Flank(t.X, t.Z, t.Height, t.SlopeX);
+                end = t.Height + flight.Side * 0.5f * t.SlopeX;
+                last = t.X;
+            }
+            int mx = last + flight.Side;
+            if (!map.InBounds(mx, flight.Z) || map.GetGroundTile(mx, flight.Z) != TileType.CaveWall) continue;
+            map.SetGroundTile(mx, flight.Z, TileType.CaveMouth, isSolid: true);
+            map.SetHeight(mx, flight.Z, end);
+            Flank(mx, flight.Z, end, 0f);
+        }
+
+        void Flank(int x, int z, float height, float slope)
+        {
+            if (!map.InBounds(x, z + 1) || map.GetGroundTile(x, z + 1) != TileType.CaveWall || map.HeightAt(x, z + 1) <= height) return;
+            map.SetHeight(x, z + 1, height, slope);
+        }
     }
 
     /// <summary>
@@ -1654,13 +1778,20 @@ public static class WorldMapBuilder
     internal static void RaiseCaveRock(Map map) =>
         RaiseRock(map, (x, z) => map.GetGroundTile(x, z) == TileType.CaveWall && map.IsSolid(x, z));
 
-    private static void RaiseRock(Map map, Func<int, int, bool> IsRock)
+    /// <param name="onTheHigherFloor">
+    /// In a cave of the world (style guide, "Caves"): rock as near to a higher floor as to a lower one stands on the
+    /// higher, and rock beside a ramp on the ramp's upper end. Standing on whichever floor the search came to first, a
+    /// wall between a room's two levels was a lip a quarter of a tile under the upper floor, joined to it by a slope,
+    /// and the walls along a ramp half a tile off their neighbours: faces with slanted tops (Iron Island).
+    /// </param>
+    private static void RaiseRock(Map map, Func<int, int, bool> IsRock, bool onTheHigherFloor = false)
     {
         int w = map.Width, h = map.Height;
 
         // Each tile of rock stands on the height of the nearest ground that isn't rock
         var near = new float[w * h];
         var seen = new bool[w * h];
+        var far = onTheHigherFloor ? new int[w * h] : null;
         var front = new Queue<(int X, int Z)>();
         for (int z = 0; z < h; z++)
             for (int x = 0; x < w; x++)
@@ -1668,6 +1799,8 @@ public static class WorldMapBuilder
                 if (IsRock(x, z)) continue;
                 // Water is drawn level with its banks (Relief), so rock beside it stands on the bank's height
                 near[z * w + x] = map.IsDeepWater(x, z) ? MathF.Ceiling(map.HeightAt(x, z) - 0.01f) : map.HeightAt(x, z);
+                if (onTheHigherFloor && map.SlopeAt(x, z) is var (slopeX, slopeZ) && (slopeX != 0f || slopeZ != 0f))
+                    near[z * w + x] += (MathF.Abs(slopeX) + MathF.Abs(slopeZ)) / 2f;
                 seen[z * w + x] = true;
                 front.Enqueue((x, z));
             }
@@ -1678,9 +1811,16 @@ public static class WorldMapBuilder
             foreach (var (dx, dz) in new[] { (0, 1), (1, 0), (-1, 0), (0, -1) })
             {
                 int nx = x + dx, nz = z + dz;
-                if (!map.InBounds(nx, nz) || seen[nz * w + nx]) continue;
+                if (!map.InBounds(nx, nz)) continue;
+                if (seen[nz * w + nx])
+                {
+                    // (as near to this ground as to the one it was first come to from: the higher of the two)
+                    if (far != null && far[nz * w + nx] == far[z * w + x] + 1 && near[z * w + x] > near[nz * w + nx]) near[nz * w + nx] = near[z * w + x];
+                    continue;
+                }
                 seen[nz * w + nx] = true;
                 near[nz * w + nx] = near[z * w + x];
+                if (far != null) far[nz * w + nx] = far[z * w + x] + 1;
                 front.Enqueue((nx, nz));
             }
         }
@@ -1690,7 +1830,12 @@ public static class WorldMapBuilder
             {
                 if (!IsRock(x, z)) continue;
                 bool floorBehind = map.InBounds(x, z - 1) && !IsRock(x, z - 1);
-                map.SetHeight(x, z, near[z * w + x] + (floorBehind ? CaveLipRise : CaveWallRise));
+                float stands = near[z * w + x];
+                // A lip before a lower floor, with a higher floor beside it (a cave's two levels): level with the higher
+                // floor and no more, the edge of the upper level. With a lip's rise on top of that it stood a tile and
+                // three quarters over whoever walked the lower floor behind it, and hid them to the shoulders
+                if (floorBehind && onTheHigherFloor && stands >= near[(z - 1) * w + x] + CaveLipRise) map.SetHeight(x, z, stands);
+                else map.SetHeight(x, z, stands + (floorBehind ? CaveLipRise : CaveWallRise));
             }
     }
 

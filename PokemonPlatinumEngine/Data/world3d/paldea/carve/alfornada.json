@@ -1,0 +1,16 @@
+{
+  // Alfornada (plan 34 · PD6, its second session): Alfornada Cavern, a tunnel cut through the hills west of Cortondo
+  // from behind its Pokémon Center to Alfornada's east lane, its floor at the towns' height, as the originals reach the
+  // town through a cavern; and the ruins Alfornada is known for, broken pillars of the old temple round the knoll west
+  // of the square. Our own
+  "carves": [
+    { "kind": "capsules", "name": "Alfornada Cavern", "points": [[-474, 14.6, -345], [-500, 14.6, -347], [-536, 14.6, -343], [-566, 14.6, -345]], "radius": 3.6, "floor": 12 }
+  ],
+  "additions": [
+    { "kind": "pillar", "name": "a pillar of Alfornada's ruins", "at": [-670, -290], "radius": 0.9, "bottom": 11, "top": 17.5 },
+    { "kind": "pillar", "name": "a pillar of Alfornada's ruins", "at": [-660, -286], "radius": 0.9, "bottom": 11, "top": 15 },
+    { "kind": "pillar", "name": "a pillar of Alfornada's ruins", "at": [-650, -290], "radius": 0.9, "bottom": 11, "top": 18 },
+    { "kind": "pillar", "name": "a pillar of Alfornada's ruins", "at": [-670, -310], "radius": 0.9, "bottom": 11, "top": 14 },
+    { "kind": "pillar", "name": "a pillar of Alfornada's ruins", "at": [-650, -310], "radius": 0.9, "bottom": 11, "top": 16.5 }
+  ]
+}

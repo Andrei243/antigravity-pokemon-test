@@ -1,0 +1,83 @@
+# Quaking Earth (plan 34 · PD4, its second session): the fourth Titan of the Path of Legends, the version's own: Great
+# Tusk in a game with Koraidon (Scarlet), Iron Treads in one with Miraidon (Violet), as the version is told by the mount
+# (VAR_PALDEA_MOUNT 1 or 2, set with the version in Inlet Grotto). Met charging across the dusty basin north of Cortondo,
+# beaten and chased to its den on the rise at the basin's north end, beaten again there once the Herba Mystica has made
+# it bigger, and the herbs it left shared with the mount, which can glide again. A stand-in for the original's place in
+# Asado Desert, until plan 34 · PD6 builds it. VAR_PALDEA_LEGENDS (stony_cliff.txt's header has the whole count) goes on:
+#   7  the Titan Orthworm beaten: the version's Titan charges about the basin (FLAG_PALDEA_QUAKING_TUSK or _TREADS)
+#   8  the Titan beaten in the basin and fled to its den (FLAG_PALDEA_QUAKING_FLED, and FLAG_PALDEA_GREAT_TUSK_FLED or
+#      FLAG_PALDEA_IRON_TREADS_FLED for which of the two stands at the den)
+#   9  the Titan beaten at its den (FLAG_PALDEA_QUAKING_BEATEN), its herbs shared: the mount glides (FLAG_PALDEA_MOUNT_GLIDE)
+# The lines are our own, on Scarlet and Violet's beats.
+
+
+# The Titan in the basin: the first battle, and its flight up onto the rise
+script Quaking
+  if var VAR_PALDEA_LEGENDS == 7 goto Titan
+  end
+label Titan
+  scene "The Quaking Earth Titan"
+  if var VAR_PALDEA_MOUNT == 2 goto Treads
+  faceto titan_great_tusk player
+  cry "Great Tusk"
+  text "The ground shudders. A Great Tusk bigger than a house curls into a ball and comes rolling across the basin!"
+  wildbattle "Great Tusk" 45 titan attack
+  text "The Titan Great Tusk uncurls, stamps hard enough to crack the ground, and pounds off up onto the rise!"
+  walkto titan_great_tusk quaking_earth_ramp_foot fast
+  setflag FLAG_PALDEA_GREAT_TUSK_FLED
+  goto Fled
+label Treads
+  faceto titan_iron_treads player
+  cry "Iron Treads"
+  text "The ground shudders. An Iron Treads bigger than a house comes spinning across the basin, throwing up dust!"
+  wildbattle "Iron Treads" 45 titan defense
+  text "The Titan Iron Treads sparks and whirs, then spins away up onto the rise at the basin's end!"
+  walkto titan_iron_treads quaking_earth_ramp_foot fast
+  setflag FLAG_PALDEA_IRON_TREADS_FLED
+label Fled
+  setflag FLAG_PALDEA_QUAKING_FLED
+  setvar VAR_PALDEA_LEGENDS 8
+  endscene
+  end
+
+
+# Up on the rise: the Titan at its Herba Mystica, the second battle, and Arven come up after it to share the herbs
+script QuakingDen
+  if var VAR_PALDEA_LEGENDS == 8 goto Den
+  end
+label Den
+  scene "The Quaking Earth Titan's Herba Mystica"
+  if var VAR_PALDEA_MOUNT == 2 goto Treads
+  faceto player titan_great_tusk_den
+  text "The Titan Great Tusk is gulping down a clump of glowing herbs, dust pouring off its hide."
+  text "Its tusks gleam and its back swells. It lowers its head at {player}!"
+  wildbattle "Great Tusk" 45 titan all
+  text "The Titan Great Tusk is beaten. It shrinks back to an ordinary size and lumbers off into the hills."
+  goto Beaten
+label Treads
+  faceto player titan_iron_treads_den
+  text "The Titan Iron Treads has rolled over a clump of glowing herbs. Its plates hum louder and louder."
+  text "Light runs along its seams and its wheel spins up. It turns on {player}!"
+  wildbattle "Iron Treads" 45 titan all
+  text "The Titan Iron Treads is beaten. It shrinks back to an ordinary size and rolls off into the hills."
+label Beaten
+  setflag FLAG_PALDEA_QUAKING_BEATEN
+  placeat arven_quaking_earth quaking_earth_ramp_foot
+  walkto arven_quaking_earth quaking_earth_herbs fast
+  faceto player arven_quaking_earth
+  speaker "Arven"
+  say "Four! I've never seen anything that size move that fast. These herbs are salty, like the desert's in them."
+  faceto arven_quaking_earth player
+  if var VAR_PALDEA_MOUNT == 2 goto Miraidon
+  text "Koraidon ate the sandwich and spread the fins along its sides wide, like wings catching the wind."
+  goto Strength
+label Miraidon
+  text "Miraidon ate the sandwich and opened the fins along its sides, which lit up like a glider's wings."
+label Strength
+  setflag FLAG_PALDEA_MOUNT_GLIDE
+  text "Some of its old strength has come back. It can glide again! (Riding, press jump again in the air to glide.)"
+  say "There's one more. Up north, off the road from Medali to the mountain, there's a lake in a hollow."
+  say "People say a dragon lives on its shore. A small one, bossing around something huge. We'll see."
+  setvar VAR_PALDEA_LEGENDS 9
+  endscene
+  end

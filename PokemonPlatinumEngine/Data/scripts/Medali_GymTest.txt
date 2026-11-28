@@ -1,0 +1,65 @@
+# Larry's office, the end of his gym test (plan 34 · PD6): the secret order is made at the Treasure Eatery
+# (Medali_TreasureEatery.txt, from the hints about the town in medali.txt), a gym trainer by the desks, and Larry at the
+# far end with the Normal Badge, who battles a challenger who has made the order. Our own lines.
+
+
+# Larry's battle for the Normal Badge. He Terastallizes his last into a Normal type. Plan 34 · decision 3 at its
+# recommendation: his team is scaled to the badges the challenger holds as Kofu's is (Cascarrafa_GymTest.txt), its best
+# at the cap of that many badges, so in the academy's order (four held) it is the original's
+# (Data/world/paldea/trainers.json: paldea_larry, paldea_larry_b0 to _b7)
+script Leader
+  face larry player
+  speaker paldea_larry "Larry"
+  if badge normal goto Won
+  if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  if not flag FLAG_PALDEA_MEDALI_TEST_DONE goto NotYet
+  scene "Larry"
+  say "Ah. The challenger who ordered the secret menu. I'm Larry. I run this gym, among the other things I'm asked to run."
+  say "Let's get this done. Normal types, nothing fancy. Ordinary isn't the same as easy, though."
+  if badges >= 7 goto Held7
+  if badges >= 6 goto Held6
+  if badges >= 5 goto Held5
+  if badges >= 4 goto Held4
+  if badges >= 3 goto Held3
+  if badges >= 2 goto Held2
+  if badges >= 1 goto Held1
+  battle larry as "paldea_larry_b0"
+  goto Beaten
+label Held1
+  battle larry as "paldea_larry_b1"
+  goto Beaten
+label Held2
+  battle larry as "paldea_larry_b2"
+  goto Beaten
+label Held3
+  battle larry as "paldea_larry_b3"
+  goto Beaten
+label Held4
+  battle larry as "paldea_larry"
+  goto Beaten
+label Held5
+  battle larry as "paldea_larry_b5"
+  goto Beaten
+label Held6
+  battle larry as "paldea_larry_b6"
+  goto Beaten
+label Held7
+  battle larry as "paldea_larry_b7"
+label Beaten
+  say "Well. That was efficient. Here, the Normal Badge. Please don't make a fuss about it."
+  givebadge normal
+  text "{player} received the Normal Badge from Larry!"
+  setflag FLAG_PALDEA_DEFEATED_MEDALI_GYM
+  defeat "paldea_gym_trainer_dina"
+  say "I have a meeting. I always have a meeting. Good luck out there."
+  endscene
+  end
+label NotYet
+  say "The test is at the Treasure Eatery on the square. Order the secret menu, then come back. I'll be here. Working."
+  end
+label NotEnrolled
+  say "You're not enrolled at the academy, are you. Then I can't battle you. Rules. Come back once you are."
+  end
+label Won
+  say "Back again? I'm on my break. Technically. My breaks are also meetings."
+  end

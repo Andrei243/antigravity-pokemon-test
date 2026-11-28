@@ -1,0 +1,135 @@
+{
+  "name": "Alfornada_GymTest",
+  "displayName": "Alfornada Gym",
+  "bgmTrack": "paldea/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "arenaType": "Psychic",
+  "width": 13,
+  "height": 20,
+  "ground": [
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "######D######"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "######.######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 18,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 19,
+      "targetMap": "Alfornada_Gym",
+      "targetX": 5,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "paldea_gym_trainer_bruno",
+      "name": "Bruno",
+      "npcType": "artist",
+      "x": 2,
+      "y": 11,
+      "facing": "Right",
+      "trainer": {
+        "id": "paldea_gym_trainer_bruno",
+        "name": "Bruno",
+        "trainerClass": "Gym Trainer",
+        "party": [],
+        "prizeMoney": 300,
+        "dialogueBefore": "Gym Trainer Bruno: Hold that pose! No, wait, that's my job. Battle first, portraits later!",
+        "dialogueAfter": "Gym Trainer Bruno: Your best angle is winning, apparently. Tulip's at the back.",
+        "sightRange": 4
+      }
+    },
+    {
+      "id": "alfornada_photographer",
+      "name": "Photographer",
+      "npcType": "cameraman",
+      "x": 8,
+      "y": 16,
+      "facing": "Left",
+      "script": "Photos"
+    },
+    {
+      "id": "tulip",
+      "name": "Tulip",
+      "npcType": "tulip",
+      "x": 6,
+      "y": 3,
+      "facing": "Down",
+      "script": "Leader"
+    }
+  ],
+  "wildEncounters": []
+}

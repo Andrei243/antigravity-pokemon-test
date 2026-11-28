@@ -1,0 +1,56 @@
+{
+  "HiddenWattrel1": [
+    {
+      "en": [
+        "Something is fluttering behind the tree by the avenue. It's a Wattrel! {player} pointed it out to the camera."
+      ],
+      "text": [
+        "Ceva flutură în spatele copacului de pe bulevard. E un Wattrel! {player} l-a arătat camerei."
+      ]
+    },
+    {
+      "en": [
+        "The Wattrel squawked and flew back to the studio!"
+      ],
+      "text": [
+        "Wattrel a țipat și a zburat înapoi spre studio!"
+      ]
+    }
+  ],
+  "HiddenWattrel2": [
+    {
+      "en": [
+        "A Wattrel is perched on the sea wall, pretending to be a gull. {player} found it!"
+      ],
+      "text": [
+        "Un Wattrel stă cocoțat pe digul mării, prefăcându-se pescăruș. {player} l-a găsit!"
+      ]
+    },
+    {
+      "en": [
+        "It flapped away to a round of cheering from the chat!"
+      ],
+      "text": [
+        "A zburat mai departe, între ovațiile din chat!"
+      ]
+    }
+  ],
+  "HiddenWattrel3": [
+    {
+      "en": [
+        "The last Wattrel was hiding right under the studio's sign. {player} spotted it!"
+      ],
+      "text": [
+        "Ultimul Wattrel se ascundea chiar sub firma studioului. {player} l-a zărit!"
+      ]
+    },
+    {
+      "en": [
+        "It took off in a shower of sparks. Every Wattrel has been found!"
+      ],
+      "text": [
+        "A decolat într-o ploaie de scântei. Toți Wattrel au fost găsiți!"
+      ]
+    }
+  ]
+}

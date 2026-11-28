@@ -1,7 +1,7 @@
 {
   // Levincia (plan 34 · PD3): the bright city on the eastern sea at the end of the road north, its avenue to the
   // studio where Iono's gym is, the Pokémon Center on the avenue, tall houses about its paved streets and its sea wall
-  // on the east. Its people only talk; the gym and its test are rooms (Levincia_Gym, Levincia_GymTest)
+  // on the east. Its people only talk but for its gym test's three finds about the town (PD3's second session); the gym and its leader's course are rooms (Levincia_Gym, Levincia_GymTest)
   "markers": [
     { "name": "levincia_south", "at": [452, 12.0, -646], "yaw": 180 },
     { "name": "levincia_plaza", "at": [496, 12.0, -730], "yaw": 180 },
@@ -31,6 +31,11 @@
     { "name": "the shop on the plaza", "min": [516, 11, -740], "max": [530, 17, -726], "building": { "kind": "shop", "town": "paldea" } }
   ],
   "people": [
+    // Iono's stream hunt (plan 34 · PD3's second session): three Wattrel hiding about the city for the stream, each found by
+    // a word and gone once found (levincia.txt's HiddenWattrel1 to 3)
+    { "name": "hidden_wattrel_1", "at": [476, 12.0, -690], "yaw": 90, "species": "Wattrel", "displayName": "Wattrel", "script": "HiddenWattrel1", "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_1" },
+    { "name": "hidden_wattrel_2", "at": [580, 12.0, -706], "yaw": 270, "species": "Wattrel", "displayName": "Wattrel", "script": "HiddenWattrel2", "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_2" },
+    { "name": "hidden_wattrel_3", "at": [522, 12.0, -764], "yaw": 180, "species": "Wattrel", "displayName": "Wattrel", "script": "HiddenWattrel3", "hiddenBy": "FLAG_PALDEA_LEVINCIA_TEST_3" },
     {
       "name": "levincia_fan", "at": [486, 12.0, -740], "yaw": 90, "look": "lass", "displayName": "Fan",
       "lines": ["Iono's stream starts any minute! If you're taking on her gym, you'll be on it. Everyone will see!"]

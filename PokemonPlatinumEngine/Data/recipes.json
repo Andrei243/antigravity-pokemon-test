@@ -74,6 +74,25 @@
       { "id": "potatoHash", "needs": [ { "material": "potatoes" }, { "material": "butter" } ], "power": "Materials" }
     ]
   },
+  "sandwiches": {
+    "most": 4,
+    "plain": "picnicSandwich",
+    "grades": [
+      { "heal": 10, "level": 1, "seconds": 1800 },
+      { "heal": 20, "level": 1, "seconds": 1800 },
+      { "heal": 30, "level": 2, "seconds": 1800 },
+      { "heal": 40, "level": 3, "seconds": 1800 }
+    ],
+    "dishes": [
+      { "id": "picnicSandwich" },
+      { "id": "berryJamSandwich", "needs": [ { "material": "butter" }, { "berry": true } ], "power": "TypeEncounter" },
+      { "id": "tomatoCheeseSandwich", "needs": [ { "material": "tomatoes" }, { "material": "cheese" } ], "power": "Encounter" },
+      { "id": "honeyButterSandwich", "needs": [ { "material": "butter" }, { "items": [ "Honey" ] } ], "power": "Egg" },
+      { "id": "spicedOnionSandwich", "needs": [ { "material": "onions" }, { "material": "spices" } ], "power": "Exp" },
+      { "id": "herbFlatbreadSandwich", "needs": [ { "material": "flour" }, { "material": "spices" }, { "material": "cheese" } ], "power": "Catch" },
+      { "id": "starlightSandwich", "needs": [ { "material": "cheese" }, { "material": "tomatoes" }, { "berry": true }, { "items": [ "Honey" ] } ], "power": "Sparkling" }
+    ]
+  },
   "crosses": {
     "inHundred": 40,
     "rows": [

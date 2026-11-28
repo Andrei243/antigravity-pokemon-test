@@ -29,7 +29,9 @@
               "Stealth",
               "Hatch",
               "TypeEncounter",
-              "Materials"
+              "Materials",
+              "Egg",
+              "Sparkling"
             ]
           },
           "strength": {
@@ -70,7 +72,9 @@
             "Stealth",
             "Hatch",
             "TypeEncounter",
-            "Materials"
+            "Materials",
+            "Egg",
+            "Sparkling"
           ]
         }
       }

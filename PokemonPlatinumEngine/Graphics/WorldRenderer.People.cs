@@ -113,6 +113,8 @@ public sealed partial class WorldRenderer
     /// </summary>
     private void DrawPeople(CharacterPass pass, FrameSection section)
     {
+        // (whoever isn't drawn as a sprite of this renderer's stands on a room's floor at nought: no Pokémon's floor is left set)
+        if (roomCards) shaders.SetCardFloor(0f);
         if (People != null) People.Draw(context, pass);
         else if (GrownField)
         {

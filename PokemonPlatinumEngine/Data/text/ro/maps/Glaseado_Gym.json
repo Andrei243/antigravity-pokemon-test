@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Glaseado Gym"
+    ],
+    "text": [
+      "Sala din Glaseado"
+    ]
+  },
+  "people": {
+    "glaseado_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "glaseado_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

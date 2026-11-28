@@ -205,7 +205,8 @@ internal static class OracleScenarios
         string? form = gender == "F" ? species.Form(species.Name + "-Female")?.Name : null;
         if (form == null && species.Form(species.Name + "-Female") == null)
         {
-            var forms = (species.Forms ?? new()).Where(f => f.Kind is FormKind.Regional or FormKind.Alternate && !FormsNotInGeneration9.Contains(f.Name)).ToList();
+            var forms = (species.Forms ?? new()).Where(f => f.Kind is FormKind.Regional or FormKind.Alternate && !FormsNotInGeneration9.Contains(f.Name)
+                && !f.Name.EndsWith("-Carpathia", StringComparison.Ordinal)).ToList(); // Carpathia's forms are ours (plan 46 · CP3): Showdown knows none
             if (forms.Count > 0 && dice.Next(3) == 0) form = forms[dice.Next(forms.Count)].Name;
         }
 

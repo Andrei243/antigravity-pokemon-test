@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Montenevera Gym"
+    ],
+    "text": [
+      "Sala din Montenevera"
+    ]
+  },
+  "people": {
+    "montenevera_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "montenevera_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

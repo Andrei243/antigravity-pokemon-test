@@ -139,6 +139,7 @@
         "Underwater",
         "City",
         "Sky",
+        "StarBase",
         null
       ]
     },
@@ -1094,7 +1095,8 @@
               "Seagallop",
               "NetworkMachine",
               "BaseEntrance",
-              "SafariObject"
+              "SafariObject",
+              "GiantOlive"
             ]
           },
           "x": {

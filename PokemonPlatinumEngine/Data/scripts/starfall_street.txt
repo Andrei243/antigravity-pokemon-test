@@ -1,0 +1,367 @@
+# Starfall Street (plan 34 · PD5): Team Star's five bases in a stand-in valley north of Mesagoza, until plan 34 · PD6
+# moves each to its province. At each gate a grunt starts a raid (`starraid begin`): the player's first three Pokémon
+# sent by Let's Go at the crew's Pokémon round the yard against the clock (Models/StarRaids.cs). The game starts the
+# base's RaidWon or RaidLost script as the raid ends; won, the boss comes out of the gate and battles with the
+# Starmobile, on the base's own stage. Cassiopeia calls as the street is first come to and after each boss.
+# VAR_PALDEA_STARFALL counts:
+#   0  not begun
+#   1  Cassiopeia's first call heard at the street's mouth (the academy's welcome first, VAR_PALDEA_STORY 7)
+#   2  to 6  one more for each boss beaten (FLAG_PALDEA_STAR_<BOSS>_BEATEN), 6 the five
+# Each base: FLAG_PALDEA_STAR_<BOSS>_RAIDED once its raid is won (the boss shown), _BEATEN once the boss is.
+# The lines are our own, on Scarlet and Violet's beats.
+
+
+# Out of the pass onto the street: the first call
+script CassiopeiaCalls
+  if var VAR_PALDEA_STORY < 7 goto NotYet
+  scene "Cassiopeia's first call"
+  sound "phone_ring"
+  text "{player}'s phone buzzes. The caller's name is nothing but a little star."
+  speaker "Cassiopeia"
+  say "Hello. You don't know me, and that's fine. Call me Cassiopeia."
+  say "This street is where Team Star keeps its five bases. They used to be students. Now they mostly guard gates."
+  say "I want them broken up. Raid a gate, beat the boss behind it. I'll be watching. Good luck, {player}."
+  setvar VAR_PALDEA_STARFALL 1
+  endscene
+  end
+label NotYet
+  end
+
+
+# Cassiopeia after a boss: a word for each, and her thanks after the fifth
+script CassiopeiaAfter
+  sound "phone_ring"
+  speaker "Cassiopeia"
+  if var VAR_PALDEA_STARFALL >= 6 goto AllFive
+  say "I saw that. One more crew without its boss. The others will have heard by now."
+  say "Take a rest if you need it. The gates aren't going anywhere."
+  return
+label AllFive
+  say "That's the fifth. Every base on Starfall Street has lost its boss."
+  say "Thank you, {player}. Really. There's more I should tell you, but not over the phone. Not yet."
+  return
+
+
+# ---------------------------------------------------------------- Giacomo's base: the Dark crew, the west gate
+
+script GiacomoGate
+  if flag FLAG_PALDEA_STAR_GIACOMO_BEATEN goto Quiet
+  if flag FLAG_PALDEA_STAR_GIACOMO_RAIDED goto Out
+  if var VAR_PALDEA_STARFALL < 1 goto Shoo
+  faceto giacomo_grunt player
+  speaker "Team Star Grunt"
+  say "A raid? On us? Fine! Our Pokémon will run you right off the street."
+  ask "Start the raid on the gate?"
+  if no goto Later
+  placeat player giacomo_gate
+  text "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+  starraid begin "giacomo"
+  end
+label Later
+  say "Thought so. Off you go."
+  end
+label Shoo
+  speaker "Team Star Grunt"
+  say "Nothing to see here. This is a Team Star gate, so keep walking."
+  end
+label Out
+  speaker "Team Star Grunt"
+  say "The boss is out. Don't look at me, go and talk to him."
+  end
+label Quiet
+  speaker "Team Star Grunt"
+  say "No boss, no base. Guess I'll go to class tomorrow. Maybe."
+  end
+
+script GiacomoRaidWon
+  scene "Giacomo comes out of his gate"
+  setflag FLAG_PALDEA_STAR_GIACOMO_RAIDED
+  text "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+  faceto player giacomo_boss
+  speaker "Giacomo"
+  say "So you're the one wrecking my set. I spin the tracks on this street, and the music's not over."
+  say "Meet the Starmobile. Let's turn it up!"
+  endscene
+  call GiacomoFight
+  end
+
+script GiacomoRaidLost
+  placeat player giacomo_gate
+  text "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+  end
+
+script GiacomoBoss
+  faceto giacomo_boss player
+  speaker "Giacomo"
+  say "Back for an encore? Fine by me."
+  call GiacomoFight
+  end
+
+script GiacomoFight
+  battle giacomo_boss as "paldea_star_giacomo"
+  speaker "Giacomo"
+  say "The record skipped. All right, you win. The crew's done here."
+  setflag FLAG_PALDEA_STAR_GIACOMO_BEATEN
+  addvar VAR_PALDEA_STARFALL 1
+  call CassiopeiaAfter
+  return
+
+
+# ---------------------------------------------------------------- Mela's base: the Fire crew, the east gate
+
+script MelaGate
+  if flag FLAG_PALDEA_STAR_MELA_BEATEN goto Quiet
+  if flag FLAG_PALDEA_STAR_MELA_RAIDED goto Out
+  if var VAR_PALDEA_STARFALL < 1 goto Shoo
+  faceto mela_grunt player
+  speaker "Team Star Grunt"
+  say "You want to raid Mela's gate? You'll get burned, kid."
+  ask "Start the raid on the gate?"
+  if no goto Later
+  placeat player mela_gate
+  text "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+  starraid begin "mela"
+  end
+label Later
+  say "Smart. Stay cool."
+  end
+label Shoo
+  speaker "Team Star Grunt"
+  say "This gate's off limits. Unless you want trouble, and you don't."
+  end
+label Out
+  speaker "Team Star Grunt"
+  say "The boss is out, and she's furious. I'd hurry if I were you."
+  end
+label Quiet
+  speaker "Team Star Grunt"
+  say "The fire's out. The boss says we're done here."
+  end
+
+script MelaRaidWon
+  scene "Mela comes out of her gate"
+  setflag FLAG_PALDEA_STAR_MELA_RAIDED
+  text "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+  faceto player mela_boss
+  speaker "Mela"
+  say "You've got some nerve, knocking over my crew like that."
+  say "The Starmobile's warmed up. Don't blame me when you get scorched!"
+  endscene
+  call MelaFight
+  end
+
+script MelaRaidLost
+  placeat player mela_gate
+  text "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+  end
+
+script MelaBoss
+  faceto mela_boss player
+  speaker "Mela"
+  say "Back again? Good. I wasn't done."
+  call MelaFight
+  end
+
+script MelaFight
+  battle mela_boss as "paldea_star_mela"
+  speaker "Mela"
+  say "Fine. You win. Just this once. The crew's yours to send home."
+  setflag FLAG_PALDEA_STAR_MELA_BEATEN
+  addvar VAR_PALDEA_STARFALL 1
+  call CassiopeiaAfter
+  return
+
+
+# ---------------------------------------------------------------- Atticus's base: the Poison crew, the far west gate
+
+script AtticusGate
+  if flag FLAG_PALDEA_STAR_ATTICUS_BEATEN goto Quiet
+  if flag FLAG_PALDEA_STAR_ATTICUS_RAIDED goto Out
+  if var VAR_PALDEA_STARFALL < 1 goto Shoo
+  faceto atticus_grunt player
+  speaker "Team Star Grunt"
+  say "The master Atticus is not to be disturbed. Unless you mean to raid us? Then do your worst."
+  ask "Start the raid on the gate?"
+  if no goto Later
+  placeat player atticus_gate
+  text "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+  starraid begin "atticus"
+  end
+label Later
+  say "A wise retreat. Begone."
+  end
+label Shoo
+  speaker "Team Star Grunt"
+  say "Away with you. This gate is guarded day and night."
+  end
+label Out
+  speaker "Team Star Grunt"
+  say "The master awaits you within the yard. Do not keep him waiting."
+  end
+label Quiet
+  speaker "Team Star Grunt"
+  say "Our master has laid down his blade. So must we."
+  end
+
+script AtticusRaidWon
+  scene "Atticus comes out of his gate"
+  setflag FLAG_PALDEA_STAR_ATTICUS_RAIDED
+  text "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+  faceto player atticus_boss
+  speaker "Atticus"
+  say "The blossoms fall, and so falls my crew. A poem in itself. Yet one verse remains."
+  say "Face the Starmobile, and the venom it carries!"
+  endscene
+  call AtticusFight
+  end
+
+script AtticusRaidLost
+  placeat player atticus_gate
+  text "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+  end
+
+script AtticusBoss
+  faceto atticus_boss player
+  speaker "Atticus"
+  say "You return. The duel resumes."
+  call AtticusFight
+  end
+
+script AtticusFight
+  battle atticus_boss as "paldea_star_atticus"
+  speaker "Atticus"
+  say "Struck down with honour. I yield. My crew shall go home."
+  setflag FLAG_PALDEA_STAR_ATTICUS_BEATEN
+  addvar VAR_PALDEA_STARFALL 1
+  call CassiopeiaAfter
+  return
+
+
+# ---------------------------------------------------------------- Ortega's base: the Fairy crew, the far east gate
+
+script OrtegaGate
+  if flag FLAG_PALDEA_STAR_ORTEGA_BEATEN goto Quiet
+  if flag FLAG_PALDEA_STAR_ORTEGA_RAIDED goto Out
+  if var VAR_PALDEA_STARFALL < 1 goto Shoo
+  faceto ortega_grunt player
+  speaker "Team Star Grunt"
+  say "The boss says nobody raids this gate. You want to try anyway? Your funeral."
+  ask "Start the raid on the gate?"
+  if no goto Later
+  placeat player ortega_gate
+  text "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+  starraid begin "ortega"
+  end
+label Later
+  say "Yeah, run along."
+  end
+label Shoo
+  speaker "Team Star Grunt"
+  say "Private gate. Members only. You're not a member."
+  end
+label Out
+  speaker "Team Star Grunt"
+  say "The boss came out himself. He's in a mood. Good luck."
+  end
+label Quiet
+  speaker "Team Star Grunt"
+  say "The boss is sulking. That means we're finished."
+  end
+
+script OrtegaRaidWon
+  scene "Ortega comes out of his gate"
+  setflag FLAG_PALDEA_STAR_ORTEGA_RAIDED
+  text "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+  faceto player ortega_boss
+  speaker "Ortega"
+  say "Hey! That was my crew! Who said you could just walk in here and do that?"
+  say "Fine. The Starmobile will settle this. It's adorable, and it will flatten you!"
+  endscene
+  call OrtegaFight
+  end
+
+script OrtegaRaidLost
+  placeat player ortega_gate
+  text "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+  end
+
+script OrtegaBoss
+  faceto ortega_boss player
+  speaker "Ortega"
+  say "You again? I'm not scared. You're scared."
+  call OrtegaFight
+  end
+
+script OrtegaFight
+  battle ortega_boss as "paldea_star_ortega"
+  speaker "Ortega"
+  say "That's not fair. Ugh. Fine. The crew can go."
+  setflag FLAG_PALDEA_STAR_ORTEGA_BEATEN
+  addvar VAR_PALDEA_STARFALL 1
+  call CassiopeiaAfter
+  return
+
+
+# ---------------------------------------------------------------- Eri's base: the Fighting crew, the gate at the head
+
+script EriGate
+  if flag FLAG_PALDEA_STAR_ERI_BEATEN goto Quiet
+  if flag FLAG_PALDEA_STAR_ERI_RAIDED goto Out
+  if var VAR_PALDEA_STARFALL < 1 goto Shoo
+  faceto eri_grunt player
+  speaker "Team Star Grunt"
+  say "You're here to raid the boss's gate? Then fight like you mean it!"
+  ask "Start the raid on the gate?"
+  if no goto Later
+  placeat player eri_gate
+  text "Fell fifteen of the crew's Pokémon before the clock runs out! Send your team out with Let's Go!"
+  starraid begin "eri"
+  end
+label Later
+  say "Come back when you're ready, then."
+  end
+label Shoo
+  speaker "Team Star Grunt"
+  say "This is the head of the street. Nobody gets this far without a fight."
+  end
+label Out
+  speaker "Team Star Grunt"
+  say "The boss is waiting for you in the yard. She doesn't like waiting."
+  end
+label Quiet
+  speaker "Team Star Grunt"
+  say "The boss lost fair and square. That's that."
+  end
+
+script EriRaidWon
+  scene "Eri comes out of her gate"
+  setflag FLAG_PALDEA_STAR_ERI_RAIDED
+  text "The last of the crew's Pokémon falls back, and the gate's shutter rattles up."
+  faceto player eri_boss
+  speaker "Eri"
+  say "So you're the one who's been taking down the other bosses. I've heard."
+  say "I won't go down so easy. Starmobile, full power!"
+  endscene
+  call EriFight
+  end
+
+script EriRaidLost
+  placeat player eri_gate
+  text "Time's up! The crew rallies and the gate holds. Catch your breath and try again."
+  end
+
+script EriBoss
+  faceto eri_boss player
+  speaker "Eri"
+  say "Again? Good. I respect that."
+  call EriFight
+  end
+
+script EriFight
+  battle eri_boss as "paldea_star_eri"
+  speaker "Eri"
+  say "You're strong. Stronger than me. I'll keep my word: the crew stands down."
+  setflag FLAG_PALDEA_STAR_ERI_BEATEN
+  addvar VAR_PALDEA_STARFALL 1
+  call CassiopeiaAfter
+  return

@@ -1,0 +1,36 @@
+{
+  // The riding race's tracks (plan 42 · PS8; docs/data-files.md, "The riding race's tracks"): written by hand, ours. Each
+  // track is raced from a stable on the player's own Pokémon of a riding size: its id (the script's `ride race "<id>"` and
+  // the words `rides.track.<id>`), the area of its stable, its length in units (a rider covers two to three and a half a
+  // frame, thirty frames a second), the most seconds a race lasts, its obstacles in order along it (a `Rock` at a place, a
+  // `Mud` stretch from a place for a length, a `Turn` with its middle at a place and its side, -1 left, 1 right), the
+  // stable's three riders (their names `rides.rider.<name>`, their mounts' species and how well they ride, 0 to 1) and
+  // what first, second, third and fourth place pay in Battle Points. No race pays more than a first round of seven at
+  // the Battle Tower (3).
+  "tracks": [
+    {
+      "id": "blossom",
+      "stable": "kalos_route_12",
+      "length": 1800,
+      "seconds": 60,
+      "obstacles": [
+        { "kind": "Rock", "at": 260 },
+        { "kind": "Turn", "at": 420, "dir": 1 },
+        { "kind": "Mud", "at": 520, "length": 140 },
+        { "kind": "Rock", "at": 760 },
+        { "kind": "Rock", "at": 830 },
+        { "kind": "Turn", "at": 980, "dir": -1 },
+        { "kind": "Mud", "at": 1100, "length": 160 },
+        { "kind": "Rock", "at": 1350 },
+        { "kind": "Turn", "at": 1500, "dir": 1 },
+        { "kind": "Rock", "at": 1640 }
+      ],
+      "riders": [
+        { "name": "adele", "mount": "Rhyhorn", "knack": 0.55 },
+        { "name": "bastien", "mount": "Tauros", "knack": 0.68 },
+        { "name": "colette", "mount": "Rapidash", "knack": 0.8 }
+      ],
+      "pay": [3, 2, 1, 0]
+    }
+  ]
+}

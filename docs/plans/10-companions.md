@@ -175,7 +175,7 @@ Written 2026-10-06, before any session.
 - [x] F5 Wild Pokémon in sight
 - [x] F6 The camp (2026-11-04; its shots owed)
 - [x] F7 Affection's perks
-- [ ] F8 Cooking (optional: a second check judged it low value)
+- [x] F8 Cooking (optional: a second check judged it low value; taken over by plan 39 · CR6, cooking at the camp, built 2026-11-09: see plan 39's status. Ticked here on 2026-11-22 by the overview's paperwork pass, so every session of this plan is ticked)
 - [x] F9 Marks and titles (2026-11-04; its shots owed)
 - [x] F10 Alphas (2026-11-07: rules, data, saved size, mark, cry, the battle scale; 2026-11-09: the field body's 1.5 draw (`NPC.Scale` from `Follower.Dress`, `CharacterSprites.DrawCard`'s scale), the held fierce eyes through the renderer (`EyesOf(pose, fierce)`, `PokemonRenderer.Draw`'s `fierce`; not `PokePose.Fierce`, a field of a sculpt file: the style guide and rulings say so), the harness's `versus … Bidoof-alpha`, `pokemon … Bidoof-alpha` and `companions`' `cp20_alpha_in_the_grass`, `cp21_alpha_battle`; shots `95_versus_turtwig_bidoof-alpha`, `97_field_bidoof-alpha`)
 - [x] F11 What lives here (`Habitats.At`, the HERE list, the item and the save done 2026-11-03; 2026-11-07: the HERE panel's logic and painter, the style guide's HERE paragraph, the item given with the National Pokédex; 2026-11-09: shots `26n_pokedex_here_morning`, `26o_pokedex_here_night`, the last of `menus` (`Modes/MenusHere.cs`, `MENUS_PART=here` alone))

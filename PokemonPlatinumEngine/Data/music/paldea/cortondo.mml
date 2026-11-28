@@ -1,0 +1,51 @@
+# The olive-growing town west of Mesagoza: its groves, its square and Katy's bakery, an oboe's tune in G over a nylon
+# guitar's strum, an accordion on the off-beats, castanets and a soft kit, warm as fresh bread; at night a clarinet and
+# a harp. Original composition for this game (plan 34 · PD3's second session), in the modern sound.
+title Cortondo
+tempo 100
+meter 4/4
+reverb 0.28
+nighttempo 0.92
+room chamber 1.5
+
+track lead oboe night=clarinet vol=0.62 pan=0.05 rev=0.28
+  o5 d2. r4 | L o5 d4 g8 b8 o6 d4 o5 b4 | o5 e4 g8 o6 c8 e4 c4 | o5 f+4 a8 o6 d8 o5 a4 f+4 |
+  o5 g2 b4 d4 | o5 e4 g8 b8 e4 g4 | o5 g4 e8 c8 e4 g4 | o5 a4 f+8 d8 f+4 a4 |
+  o5 a2. r4 | o5 b4 o6 d8 o5 b8 g4 d4 | o5 c4 e8 g8 o6 c4 o5 g4 | o5 d4 f+8 a8 o6 d4 o5 a4 |
+  o5 b4 g8 e8 g4 b4 | o6 c4 o5 g8 e8 g4 o6 c4 | o5 a4 f+8 d8 a4 f+4 | o5 g4 b8 o6 d8 o5 b4 g4 |
+  o5 g2. r4 | o5 d2. r4 |
+
+track guitar nylonguitar night=harp vol=0.34 pan=-0.3 rev=0.24
+  o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | L o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 | o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 |
+  o3 (e g b)4 (e g b)8 (e g b)8 r8 (e g b)8 (e g b)4 | o3 (c e g)4 (c e g)8 (c e g)8 r8 (c e g)8 (c e g)4 | o3 (d f+ a)4 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (d f+ a)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 |
+  o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 | o3 (g b > d)4 (g b > d)8 (g b > d)8 r8 (g b > d)8 (g b > d)4 |
+
+track box accordion vol=0.17 pan=0.3 rev=0.28
+  o4 r4 (g b > d)4 r4 (g b > d)4 | L o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+  o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (e g b)4 r4 (e g b)4 | o4 r4 (c e g)4 r4 (c e g)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+  o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (c e g)4 r4 (c e g)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 |
+  o4 r4 (e g b)4 r4 (e g b)4 | o4 r4 (c e g)4 r4 (c e g)4 | o4 r4 (d f+ a)4 r4 (d f+ a)4 | o4 r4 (g b > d)4 r4 (g b > d)4 |
+  o4 r4 (g b > d)4 r4 (g b > d)4 | o4 r4 (g b > d)4 r4 (g b > d)4 |
+
+track bass bass vol=0.56 rev=0.08
+  o3 g4 d8 g8 b4 d4 | L o3 g4 d8 g8 b4 d4 | o3 c4 g8 c8 e4 g4 | o3 d4 a8 d8 f+4 a4 |
+  o3 g4 d8 g8 b4 d4 | o3 e4 b8 e8 g4 b4 | o3 c4 g8 c8 e4 g4 | o3 d4 a8 d8 f+4 a4 |
+  o3 d4 a8 d8 f+4 a4 | o3 g4 d8 g8 b4 d4 | o3 c4 g8 c8 e4 g4 | o3 d4 a8 d8 f+4 a4 |
+  o3 e4 b8 e8 g4 b4 | o3 c4 g8 c8 e4 g4 | o3 d4 a8 d8 f+4 a4 | o3 g4 d8 g8 b4 d4 |
+  o3 g4 d8 g8 b4 d4 | o3 g4 d8 g8 b4 d4 |
+
+track castanets castanets vol=0.18 pan=0.3 rev=0.18
+  o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | L o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 |
+  o7 v60 e16 e16 v90 e8 r4 v60 e16 e16 v90 e8 r4 | o7 v60 c16 c16 v90 c8 r4 v60 c16 c16 v90 c8 r4 | o7 v60 d16 d16 v90 d8 r4 v60 d16 d16 v90 d8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+  o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 | o7 v60 g16 g16 v90 g8 r4 v60 g16 g16 v90 g8 r4 |
+
+track drums kit vol=0.24 pan=0.1 rev=0.12
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | L v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |
+  v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 | v58 b8 v36 h8 v48 x8 v36 h8 v58 b8 v36 h8 v48 x8 v36 h8 |

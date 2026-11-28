@@ -182,6 +182,12 @@ public static class VoiceGeneration
     /// <c>&lt;voice&gt;/&lt;key&gt;.wav</c> and its entry into <c>pack.json</c> (an entry for the same key and voice is replaced;
     /// every other entry is kept). Returns what was kept, and the lines whose every take failed.
     /// </summary>
+    /// <summary>
+    /// How a kept take is written into its pack: its bytes and their extension. Null writes a WAV; the voice tool sets
+    /// its Ogg Vorbis encoder here, which the engine itself doesn't carry.
+    /// </summary>
+    public static Func<float[], int, (byte[] Bytes, string Extension)>? Encoder { get; set; }
+
     public static (List<VoicePackEntry> Kept, List<(string Key, List<string> Findings)> Failed) Generate(VoiceJobFile jobs, IVoiceEngine engine, string packFolder,
         Action<string>? progress = null)
     {
@@ -205,11 +211,14 @@ public static class VoiceGeneration
                 failed.Add((job.Key, best?.Baked.Findings ?? new List<string> { "the engine made nothing" }));
                 continue;
             }
-            string relative = VoicePacks.FileOf(job.Voice, job.Key);
+            var (bytes, extension) = Encoder?.Invoke(best.Baked.Samples, best.Baked.Rate) ?? (WavDecoder.Encode(best.Baked.Samples, best.Baked.Rate), ".wav");
+            string relative = VoicePacks.FileOf(job.Voice, job.Key, extension);
             string path = Path.Combine(packFolder, relative);
             Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-            byte[] bytes = WavDecoder.Encode(best.Baked.Samples, best.Baked.Rate);
             File.WriteAllBytes(path, bytes);
+            // A take kept before in another file (a WAV the Ogg replaces) goes with its entry
+            foreach (var old in pack.Lines.Where(e => e.Key == job.Key && e.Voice == job.Voice && e.File != relative))
+                File.Delete(Path.Combine(packFolder, old.File));
             var entry = new VoicePackEntry
             {
                 Key = job.Key, Voice = job.Voice, File = relative, TextHash = VoiceCatalogue.HashOf(job.English), FileHash = VoiceLibrary.FileHashOf(bytes),

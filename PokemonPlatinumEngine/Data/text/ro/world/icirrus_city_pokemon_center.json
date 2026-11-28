@@ -1,23 +1,5 @@
 {
   "people": {
-    "1": {
-      "name": {
-        "en": [
-          "Clerk"
-        ],
-        "text": [
-          "Funcționar"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome! How can I help you?"
-        ],
-        "text": [
-          "Bun venit! Cu ce vă pot ajuta?"
-        ]
-      }
-    },
     "2": {
       "name": {
         "en": [
@@ -33,6 +15,16 @@
         ],
         "text": [
           "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistentă"
         ]
       }
     },
@@ -54,13 +46,21 @@
         ]
       }
     },
-    "4": {
+    "1": {
       "name": {
         "en": [
-          "Nurse"
+          "Clerk"
         ],
         "text": [
-          "Asistentă"
+          "Funcționar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },

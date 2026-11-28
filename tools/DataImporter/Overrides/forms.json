@@ -62,5 +62,13 @@
   // Water / Fighting kept, Dancer (N). 530 -> 630
   "Quaquaval": [
     { "name": "Quaquaval-Mega", "kind": "Mega", "baseStats": { "hp": 85, "attack": 155, "defense": 100, "spAttack": 85, "spDefense": 90, "speed": 115 }, "abilities": [ "Dancer" ], "height": 2.0, "weight": 70.0 }
+  ],
+  // Plan 46 · CP2b (the user's answer of 2026-11-22 to decision 13): the Sound type's forms of Arceus and Silvally, looks
+  // as each of their others is (the Sound Plate's and the Sound Memory's), named as Showdown would name them
+  "Arceus": [
+    { "name": "Arceus-Sound", "kind": "Look", "types": [ "Sound" ] }
+  ],
+  "Silvally": [
+    { "name": "Silvally-Sound", "kind": "Look", "types": [ "Sound" ] }
   ]
 }

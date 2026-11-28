@@ -21,6 +21,8 @@ label HasOrb
 label TreasureHunt
   say "Tomorrow the treasure hunt begins: every student goes out into Paldea to find what matters to them."
   say "The gyms, the Titans, whatever calls you. Settle in tonight. Paldea will still be there in the morning."
+  say "Oh, and a student called Arven is waiting at the lighthouse on Poco Path. Something about Titans and herbs."
+  clearflag FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE
   setvar VAR_PALDEA_STORY 7
   objective paldeaFree
   endscene

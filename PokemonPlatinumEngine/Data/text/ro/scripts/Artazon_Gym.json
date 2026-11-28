@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Artazon Gym! Brassius's gym test is out in the town: find the Sunflora hiding among Artazon's flowers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They stand perfectly still, like sculptures. Find all three, then come through to Brassius's garden."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on the Grass Badge! Levincia's gym is up the road north, and Cortondo's is west of Mesagoza."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Brassius's Grass types can't stand fire, ice, flying, poison or bug moves. Plenty to choose from!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Brassius! He's probably sculpting your victory as we speak."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

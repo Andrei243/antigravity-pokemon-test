@@ -1,0 +1,21 @@
+{
+  "displayName": {
+    "en": [
+      "Zero Gate"
+    ],
+    "text": [
+      "Zero Gate"
+    ]
+  },
+  "people": {},
+  "signs": {
+    "2,3": {
+      "en": [
+        "The gate's log: the lift runs down to the first research station on the crater's wall. Beyond it, the way goes on down to the lab."
+      ],
+      "text": [
+        "Jurnalul porții: liftul coboară până la prima stație de cercetare de pe peretele craterului. De acolo, drumul continuă în jos până la laborator."
+      ]
+    }
+  }
+}

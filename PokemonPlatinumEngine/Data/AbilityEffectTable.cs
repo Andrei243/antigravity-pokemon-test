@@ -156,6 +156,8 @@ public static partial class AbilityEffectTable
 
         // The later generations' (plan 06 · R27): AbilityEffectTable.Later.cs
         AddLater();
+        // Carpathia's own (plan 46 · CP10): AbilityEffectTable.Carpathia.cs
+        AddCarpathia();
     }
 
     private static void Add(string name, BattleEffect effect) => Effects[name] = effect;

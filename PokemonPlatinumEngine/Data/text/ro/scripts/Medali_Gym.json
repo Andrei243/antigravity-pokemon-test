@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Medali Gym! Larry's gym test is at the Treasure Eatery on the square: order the secret menu."
+      ],
+      "text": [
+        "Bine ai venit la Sala din Medali! Proba lui Larry e la Treasure Eatery, în piață: comandă meniul secret."
+      ]
+    },
+    {
+      "en": [
+        "Nobody here will tell you what it is. Well. Nobody here. Try asking around town."
+      ],
+      "text": [
+        "Nimeni de aici nu-ți va spune ce e. Mă rog. Nimeni de aici. Încearcă să întrebi prin oraș."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on the Normal Badge! Larry said 'good job'. For him, that's a parade."
+      ],
+      "text": [
+        "Felicitări pentru Insigna Normală! Larry a zis „bravo”. Pentru el, asta e paradă."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Larry's Normal types have no weakness but Fighting moves. Bring one, and watch for his Tera at the end."
+      ],
+      "text": [
+        "Pokémonii de tip Normal ai lui Larry n-au altă slăbiciune decât atacurile de tip Luptă. Adu unul și ai grijă la Tera lui de la final."
+      ]
+    },
+    {
+      "en": [
+        "You beat Larry! He's already back at his desk."
+      ],
+      "text": [
+        "L-ai învins pe Larry! E deja înapoi la birou."
+      ]
+    }
+  ]
+}

@@ -34,11 +34,12 @@ internal static partial class ModernUi
     {
         Backdrop(sw, sh);
         float rise = (1f - UiMotion.EaseOut(screen.Appear)) * 60f;
+        bool race = screen.Track != null;
         switch (screen.Phase)
         {
-            case RidePhase.Briefing: RideBriefing(sw, screen, rise); break;
-            case RidePhase.Riding: RideRiding(sw, sh, screen); break;
-            case RidePhase.Results: RideResults(sw, screen, rise); break;
+            case RidePhase.Briefing: if (race) RaceBriefing(sw, screen, rise); else RideBriefing(sw, screen, rise); break;
+            case RidePhase.Riding: if (race) RaceRiding(sw, sh, screen); else RideRiding(sw, sh, screen); break;
+            case RidePhase.Results: if (race) RaceResults(sw, screen, rise); else RideResults(sw, screen, rise); break;
             case RidePhase.Points: RidePoints(sw, sh, screen, rise); break;
         }
     }
@@ -55,6 +56,8 @@ internal static partial class ModernUi
     {
         if (team.IsPlayer) return PlayerIdentity.Name;
         string name = team.Name;
+        // The stable's riders (plan 42 · PS8) are named under rides.rider, the surf club's under rides.club
+        if (RaceTracks.All.Any(t => t.Riders.Any(r => r.Name == name))) return Text.Of($"rides.rider.{name}");
         return Text.Of($"rides.club.{name}");
     }
 

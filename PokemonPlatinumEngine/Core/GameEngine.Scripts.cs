@@ -1054,6 +1054,7 @@ public partial class GameEngine
         public GiftBox? Gifts => game.flow.Gifts;
         public Models.StageShow.ShowRecords? StageShow => game.flow.StageShow;
         public Models.Rides.RideRecords? Rides => game.flow.Rides;
+        public string? RaceMount => game.RaceMountNow()?.Species.Name;
         // The film studio (plan 42 · PS4)
         public Models.Studio.StudioRecords? Studio => game.flow.Studio;
         public void StudioShoot(Models.Studio.StudioFilm film) => game.StartStudioFilm(film);
@@ -1239,6 +1240,9 @@ public partial class GameEngine
             if (game.world != null) game.world.HeldHour = hour;
         }
 
+        // A raid on a Team Star base's gate (plan 34 · PD5), played in the field once the script has ended
+        public void BeginStarRaid(string @base) => game.BeginStarRaid(@base);
+
         public void SlowMotion(float share, float seconds)
         {
             // (Slow motion passes by itself: a hurry never begins it)
@@ -1323,8 +1327,9 @@ public partial class GameEngine
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
             wild.Relevel(game.LevelHere(wild.Level));
-            // A trial's totem (plan 23 · Z6): no running, an SOS battle under its aura, and nothing to catch
-            game.MeetWildPokemon(wild, BattleKind.Normal, cannotFlee: true, sos: true, totem: aura);
+            // A trial's totem (plan 23 · Z6): no running, an SOS battle under its aura, and nothing to catch; a Titan
+            // (plan 34 · PD4) is the same aura fought alone
+            game.MeetWildPokemon(wild, BattleKind.Normal, cannotFlee: true, sos: !aura.Titan, totem: aura);
         }
 
         /// <summary>A Max Raid den's battle (plan 33 · GL3): the boss at the region's levels, the three raiders beside the player, nothing to catch in the battle.</summary>

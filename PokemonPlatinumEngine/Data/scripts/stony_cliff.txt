@@ -1,0 +1,61 @@
+# The Stony Cliff (plan 34 · PD4, its first session): the first Titan of the Path of Legends, Klawf, met in the gully's
+# mouth, beaten and chased up the ramp to its den, beaten again there once the Herba Mystica has made it bigger, and the
+# herbs it left shared with the mount, which can dash again. VAR_PALDEA_LEGENDS is the path's count:
+#   0  not begun
+#   1  Arven met at Poco Path's lighthouse (FLAG_PALDEA_LEGENDS_BEGUN)
+#   2  the Titan Klawf beaten in the gully's mouth and fled to its den (FLAG_PALDEA_KLAWF_FLED)
+#   3  the Titan Klawf beaten at its den (FLAG_PALDEA_KLAWF_BEATEN), its herbs shared: the mount dashes (FLAG_PALDEA_MOUNT_DASH)
+# The lines are our own, on Scarlet and Violet's beats; the Titans are a totem's aura fought alone (`titan`).
+
+
+# The Titan in the gully's mouth: the first battle, and its flight up the ramp
+script Klawf
+  if var VAR_PALDEA_LEGENDS == 1 goto Titan
+  end
+label Titan
+  scene "The Stony Cliff Titan"
+  faceto titan_klawf player
+  cry "Klawf"
+  text "Rocks clatter down the gully. A Klawf the size of a cart scrambles out of the stones, its claws wide!"
+  wildbattle "Klawf" 16 titan defense
+  text "The Titan Klawf reels back... then turns and scuttles off up the gully toward the ledge at its head!"
+  walkto titan_klawf stony_cliff_ramp_foot fast
+  setflag FLAG_PALDEA_KLAWF_FLED
+  setvar VAR_PALDEA_LEGENDS 2
+  endscene
+  end
+
+
+# Up on the ledge: the Titan at its Herba Mystica, the second battle, and Arven come up the ramp to share the herbs
+script KlawfDen
+  if var VAR_PALDEA_LEGENDS == 2 goto Den
+  end
+label Den
+  scene "The Titan's Herba Mystica"
+  faceto player titan_klawf_den
+  text "The Titan Klawf is crouched at the back of the ledge, gulping down a clump of herbs that glow like embers."
+  text "Its shell swells and shines. It turns on {player}, bigger than ever!"
+  wildbattle "Klawf" 16 titan all
+  text "The Titan Klawf is beaten. It shrinks back to an ordinary Klawf and slips away between the rocks."
+  setflag FLAG_PALDEA_KLAWF_BEATEN
+  placeat arven_stony_cliff stony_cliff_ramp_foot
+  walkto arven_stony_cliff stony_cliff_herbs fast
+  faceto player arven_stony_cliff
+  speaker "Arven"
+  say "You did it! I heard the whole fight from the bottom of the ramp. And look: it didn't eat all of them."
+  say "Herba Mystica. Five flavours, one in each Titan's den. Nothing in Paldea makes food stronger."
+  say "Your ride's been limping since you met it, right? Hold on. Bread, a smear of this, a few herbs on top..."
+  faceto arven_stony_cliff player
+  if var VAR_PALDEA_MOUNT == 2 goto Miraidon
+  text "Arven held out the sandwich. Koraidon wolfed it down in two bites and shook itself from head to tail."
+  goto Strength
+label Miraidon
+  text "Arven held out the sandwich. Miraidon swallowed it whole and its lights blinked on, one after another."
+label Strength
+  setflag FLAG_PALDEA_MOUNT_DASH
+  text "Some of its old strength has come back. It can dash again! (Riding, hold the run button to sprint.)"
+  say "That's the first. There are four more Titans out there, and four more piles of herbs."
+  say "I'll find out where the next one's hiding. You keep riding. That thing's going to want to stretch its legs."
+  setvar VAR_PALDEA_LEGENDS 3
+  endscene
+  end

@@ -11,8 +11,10 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 /// A totem's aura (plan 23 · Z6; <c>docs/mechanics/rulings.md</c>, "Totems and their aura"): the stat stages a trial's
 /// totem takes as the battle opens (<see cref="Stats"/>, each by <see cref="Stages"/>), and, where it isn't its own line,
 /// the species its first call for help brings (<see cref="Ally"/>). Plain values, so the Vs. Recorder's file keeps it.
+/// A <see cref="Titan"/> (plan 34 · PD4: Paldea's Titans of the Path of Legends) takes the same aura and is no more to
+/// be caught or run from, but is fought alone, as a single battle in which nobody is called, with lines of its own.
 /// </summary>
-public sealed record TotemAura(IReadOnlyList<StatType> Stats, int Stages = 1, string? Ally = null)
+public sealed record TotemAura(IReadOnlyList<StatType> Stats, int Stages = 1, string? Ally = null, bool Titan = false)
 {
     /// <summary>The words a script names an aura's stats by (<c>wildbattle "Gumshoos" 12 totem defense</c>): <c>all</c> is the five.</summary>
     public static readonly string[] StatWords = { "attack", "defense", "spattack", "spdefense", "speed", "accuracy", "evasion", "all" };
@@ -54,6 +56,9 @@ public sealed partial class BattleCore
     /// <summary>What a ball thrown in a totem's battle meets: a line of our own.</summary>
     public static string TotemRefusal => Text.Of("battle.totemCantBeCaught");
 
+    /// <summary>What a ball thrown at a Titan meets (plan 34 · PD4): a line of our own.</summary>
+    public static string TitanRefusal => Text.Of("battle.titanCantBeCaught");
+
     /// <summary>The totem has fallen: the battle is won.</summary>
     private bool TotemFell => totem is { IsFainted: true };
 
@@ -64,7 +69,7 @@ public sealed partial class BattleCore
         var first = EnemySlots.FirstOrDefault(b => b.IsActive);
         if (first?.Pokemon == null) return;
         totem = first.Pokemon;
-        Say(Text.Of("battle.totemAura", ("pokemon", first.Name))).With(new TotemAuraRaised(first.Place));
+        Say(Text.Of(aura.Titan ? "battle.titanAura" : "battle.totemAura", ("pokemon", first.Name))).With(new TotemAuraRaised(first.Place));
         foreach (var stat in aura.Stats.Distinct()) ChangeStat(first, stat, aura.Stages, null, false, By.Other);
     }
 

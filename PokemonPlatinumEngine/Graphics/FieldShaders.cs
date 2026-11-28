@@ -1145,13 +1145,40 @@ void main()
     /// </summary>
     public void SetUprightCards(float amount, float pitchDeg)
     {
+        cardPitchSin = MathF.Sin(pitchDeg * MathF.PI / 180f);
+        cardFloor = 0f;
         foreach (var shader in new[] { Character, Sprite })
         {
             Set(shader, "upright", amount);
-            Set(shader, "pitchSin", MathF.Sin(pitchDeg * MathF.PI / 180f));
+            Set(shader, "pitchSin", cardPitchSin);
             Set(shader, "uprightBase", 0f);
         }
     }
+
+    // The pitch the room's cards were last straightened under, and the floor the next card stands on
+    private float cardPitchSin, cardFloor;
+
+    /// <summary>
+    /// The drawn height of the floor the next card of a room stands on (style guide, "Rooms"): between two calls of
+    /// <see cref="SetUprightCards"/> a card is straightened about its own floor, not about the room's lowest. A room
+    /// isn't straightened, so a card on a deck ten tiles up (the Canalave Gym's) that was straightened about the floor
+    /// far under it was drawn well to the side of the tile it stood on. On a floor at nought it changes nothing.
+    /// </summary>
+    public void SetCardFloor(float floor)
+    {
+        if (floor == cardFloor) return;
+        cardFloor = floor;
+        float b = CardBase(floor, cardPitchSin);
+        Set(Character, "uprightBase", b);
+        Set(Sprite, "uprightBase", b);
+    }
+
+    /// <summary>
+    /// The <c>uprightBase</c> that straightens a card about a floor drawn at <paramref name="floor"/>: the vertex shader
+    /// divides x by <c>w + (y · pitchSin + uprightBase) · upright</c>, which is the vertex's own depth at the floor's
+    /// height with this base, so the feet stay where the room draws their tile. Nought, exactly, on a floor at nought.
+    /// </summary>
+    internal static float CardBase(float floor, float pitchSin) => floor == 0f ? 0f : -floor * pitchSin;
 
     // What the mirror pass draws with (plan 09 · L10): the scenery, the sprites and the cards, and their depth
     private Shader[] MirroredPrograms => new[] { World, Prepass, Character, Sprite };

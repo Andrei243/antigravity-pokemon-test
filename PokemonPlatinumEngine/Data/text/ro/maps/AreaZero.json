@@ -1,0 +1,86 @@
+{
+  "displayName": {
+    "en": [
+      "Area Zero"
+    ],
+    "text": [
+      "Area Zero"
+    ]
+  },
+  "people": {
+    "paradox_a_scarlet": {
+      "name": {
+        "en": [
+          "Great Tusk"
+        ],
+        "text": [
+          "Great Tusk"
+        ]
+      }
+    },
+    "paradox_a_violet": {
+      "name": {
+        "en": [
+          "Iron Treads"
+        ],
+        "text": [
+          "Iron Treads"
+        ]
+      }
+    },
+    "paradox_b_scarlet": {
+      "name": {
+        "en": [
+          "Flutter Mane"
+        ],
+        "text": [
+          "Flutter Mane"
+        ]
+      }
+    },
+    "paradox_b_violet": {
+      "name": {
+        "en": [
+          "Iron Moth"
+        ],
+        "text": [
+          "Iron Moth"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "7,3": {
+      "en": [
+        "Research Station No. 1. Its door is sealed, and a sign asks visitors to keep to the marked way down."
+      ],
+      "text": [
+        "Stația de Cercetare nr. 1. Ușa e sigilată, iar un semn le cere vizitatorilor să țină drumul marcat în jos."
+      ]
+    },
+    "17,12": {
+      "en": [
+        "Research Station No. 2. Through the window: a desk of old papers under a lamp nobody has switched off."
+      ],
+      "text": [
+        "Stația de Cercetare nr. 2. Prin fereastră: un birou cu hârtii vechi, sub o lampă pe care n-a stins-o nimeni."
+      ]
+    },
+    "2,19": {
+      "en": [
+        "Research Station No. 3. Crystals have grown over its far wall. A meter on the door ticks and ticks."
+      ],
+      "text": [
+        "Stația de Cercetare nr. 3. Cristalele i-au acoperit peretele din spate. Un aparat de pe ușă ticăie întruna."
+      ]
+    },
+    "17,26": {
+      "en": [
+        "Research Station No. 4, the last before the lab. The way below it leads into the rock."
+      ],
+      "text": [
+        "Stația de Cercetare nr. 4, ultima înainte de laborator. Drumul de sub ea intră în stâncă."
+      ]
+    }
+  }
+}

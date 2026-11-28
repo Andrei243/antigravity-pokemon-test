@@ -38,6 +38,12 @@ public partial class GameEngine
         {
             if (!p.Present) continue;
             bool exclaiming = openApproach is { } a && a.Trainer == p && a.Exclaiming || openPairApproach is { } b && b.Trainer == p && b.Exclaiming;
+            // A Pokémon standing in a place in place of a person (plan 34 · PD3's second session), at its species' height times its size (a Titan's is several)
+            if (p.Species is { } species)
+            {
+                openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "person:" + p.Key, species, Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming, HeightOf(species) * (float)p.Size));
+                continue;
+            }
             openFigures.Add(new OpenFigure(OpenFigureKind.Person, "person:" + p.Key, OpenLookOf(map, p), Feet(p.Pos), (float)OpenYaw.Radians(p.Yaw), exclaiming));
         }
         if (field.Follower is { } follower)
@@ -64,6 +70,8 @@ public partial class GameEngine
             openFigures.Add(new OpenFigure(OpenFigureKind.Pokemon, "wild:" + wild.Id, wild.Species, feet, (float)OpenYaw.Radians(wild.Yaw),
                 field.Wild.Exclaiming(wild), HeightOf(wild.Species)));
         }
+        // A raid's crew round its yard, and a Let's Go under way (plan 34 · PD5)
+        GatherLetsGoFigures(field);
         // A tool's figures put in by hand (the harness's crowd, standing about the village)
         if (OpenFiguresByHand is { } byHand) openFigures.AddRange(byHand);
         return openFigures;
@@ -126,7 +134,11 @@ public partial class GameEngine
     {
         if (IsHeadless) return;
         var looks = new List<string>();
-        foreach (var p in field.Map.People) looks.Add(OpenLookOf(field.Map, p));
+        foreach (var p in field.Map.People)
+        {
+            if (p.Species is { } species) PokemonModels.Request(species);
+            else looks.Add(OpenLookOf(field.Map, p));
+        }
         CharacterModels.Preload(looks);
         if (field.Follower is { TrainerId: null } f) PokemonModels.Request(f.Who);
         // The species the map's zones bring out (plan 32 · OW7), so a wild Pokémon coming into view has its model

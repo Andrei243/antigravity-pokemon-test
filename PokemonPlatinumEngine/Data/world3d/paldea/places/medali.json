@@ -1,0 +1,65 @@
+{
+  // Medali (plan 34 · PD6): the quiet town north-east of the West Province's first area, its paved square, its street up
+  // to Larry's gym, the Treasure Eatery on the square and the Pokémon Center beside it. Larry's test is the eatery's
+  // secret order: three of the townsfolk each let a part of it slip (medali.txt's Hint1 to 3), and it is ordered inside
+  // (Medali_TreasureEatery); the gym and Larry's office are rooms (Medali_Gym, Medali_GymTest)
+  "markers": [
+    { "name": "medali_south", "at": [-196, 12.0, -604], "yaw": 0 },
+    { "name": "medali_square", "at": [-176, 12.0, -664], "yaw": 0 },
+    { "name": "medali_gym_door", "at": [-182, 12.0, -697], "yaw": 0 },
+    { "name": "medali_center_door", "at": [-125, 12.0, -643], "yaw": 0 },
+    { "name": "medali_eatery_door", "at": [-160, 12.0, -643], "yaw": 0 }
+  ],
+  "doors": [
+    {
+      "name": "medali_gym_door",
+      "box": { "min": [-184, 11.5, -700], "max": [-180, 15.5, -699] },
+      "room": "Medali_Gym", "at": [4, 8], "facing": "up",
+      "out": "medali_gym_door"
+    },
+    {
+      "name": "medali_center_door",
+      "box": { "min": [-126, 11.5, -646], "max": [-124, 15, -645] },
+      "room": "Medali_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "medali_center_door"
+    },
+    {
+      "name": "medali_eatery_door",
+      "box": { "min": [-162, 11.5, -646], "max": [-158, 15, -645] },
+      "room": "Medali_TreasureEatery", "at": [5, 8], "facing": "up",
+      "out": "medali_eatery_door"
+    }
+  ],
+  "solids": [
+    { "name": "Medali Gym", "min": [-196, 11, -716], "max": [-168, 20, -700], "building": { "kind": "gym", "town": "paldea", "sign": "GYM" } },
+    { "name": "Medali's Pokémon Center", "min": [-132, 11, -660], "max": [-118, 17.5, -646], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the Treasure Eatery", "min": [-170, 11, -660], "max": [-150, 16.5, -646], "building": { "kind": "shop", "town": "paldea" } },
+    { "name": "the house by the street", "min": [-222, 11, -680], "max": [-208, 16.5, -668], "building": { "kind": "house", "town": "paldea", "storeys": 2 } },
+    { "name": "the house behind the square", "min": [-142, 11, -704], "max": [-128, 17, -690], "building": { "kind": "house", "town": "paldea", "storeys": 2 } }
+  ],
+  "people": [
+    // Larry's test (plan 34 · PD6): three townsfolk who each let part of the eatery's secret order slip
+    {
+      "name": "medali_regular", "at": [-204, 12.0, -644], "yaw": 90, "look": "old_man", "displayName": "Old Man",
+      "script": "Hint1"
+    },
+    {
+      "name": "medali_waiter", "at": [-146, 12.0, -672], "yaw": 270, "look": "waitress", "displayName": "Waitress",
+      "script": "Hint2"
+    },
+    {
+      "name": "medali_office_worker", "at": [-214, 12.0, -660], "yaw": 90, "look": "gentleman", "displayName": "Office Worker",
+      "script": "Hint3"
+    },
+    {
+      "name": "medali_kid", "at": [-170, 12.0, -630], "yaw": 180, "look": "school_kid_f", "displayName": "Girl",
+      "lines": ["Larry runs the gym, and he works for the League, and he's an Elite Four member too. No wonder he always looks tired."],
+      "moves": "wander", "radius": 3
+    }
+  ],
+  "trees": [
+    { "at": [-224, -620], "kind": "round" },
+    { "at": [-112, -620], "kind": "round", "size": 0.9 },
+    { "at": [-110, -700], "kind": "pine" }
+  ]
+}

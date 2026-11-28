@@ -1,0 +1,8 @@
+{
+  // The Titans' places (plan 34 · PD4): the Stony Cliff's crag, a block of rock in the gully 6.5 m high, over any jump
+  // of the mount's; its south face is painted climbable (terrain/titans.json), so its top is the mount's only once the
+  // fifth Titan's power lets it climb. Our own
+  "additions": [
+    { "kind": "box", "name": "the Stony Cliff's crag", "min": [238, 10, -406], "max": [248, 18.5, -398] }
+  ]
+}

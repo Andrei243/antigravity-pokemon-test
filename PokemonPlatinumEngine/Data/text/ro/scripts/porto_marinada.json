@@ -1,0 +1,160 @@
+{
+  "Auctioneer": [
+    {
+      "en": [
+        "Auctioneer"
+      ],
+      "text": [
+        "Licitatorul"
+      ]
+    },
+    {
+      "en": [
+        "Bids on every crate, all morning long! Fish, shellfish, sea salt by the sack. Come back when you've something to buy."
+      ],
+      "text": [
+        "Licitații pentru fiecare ladă, toată dimineața! Pește, fructe de mare, sare de mare la sac. Revino când ai ceva de cumpărat."
+      ]
+    },
+    {
+      "en": [
+        "Kofu sent you, did he? Then you'll want the next lot: one crate of the morning's finest sea urchins, fresh off the boat!"
+      ],
+      "text": [
+        "Te-a trimis Kofu, nu-i așa? Atunci vei vrea lotul următor: o ladă cu cei mai buni arici de mare ai dimineții, proaspăt descărcați de pe barcă!"
+      ]
+    },
+    {
+      "en": [
+        "Paddles ready. The bidding is open!"
+      ],
+      "text": [
+        "Pregătiți paletele. Licitația a început!"
+      ]
+    },
+    {
+      "en": [
+        "The chef across the quay is watching you.",
+        "Raise the paddle",
+        "Wait"
+      ],
+      "text": [
+        "Bucătarul de peste chei se uită la tine.",
+        "Ridică paleta",
+        "Așteaptă"
+      ]
+    },
+    {
+      "en": [
+        "Do I hear a bid? Going once!"
+      ],
+      "text": [
+        "Aud o ofertă? Prima strigare!"
+      ]
+    },
+    {
+      "en": [
+        "The chef is fiddling with his paddle.",
+        "Raise the paddle",
+        "Wait"
+      ],
+      "text": [
+        "Bucătarul se joacă cu paleta lui.",
+        "Ridică paleta",
+        "Așteaptă"
+      ]
+    },
+    {
+      "en": [
+        "Going twice! Last call for the urchins!"
+      ],
+      "text": [
+        "A doua strigare! Ultima ofertă pentru arici!"
+      ]
+    },
+    {
+      "en": [
+        "The chef has looked away.",
+        "Raise the paddle",
+        "Wait"
+      ],
+      "text": [
+        "Bucătarul s-a uitat în altă parte.",
+        "Ridică paleta",
+        "Așteaptă"
+      ]
+    },
+    {
+      "en": [
+        "{player} raised the paddle at the very last moment!"
+      ],
+      "text": [
+        "{player} a ridicat paleta în ultima clipă!"
+      ]
+    },
+    {
+      "en": [
+        "Sold! To Kofu's runner, before the chef could blink. Here you are, one crate, packed in ice."
+      ],
+      "text": [
+        "Vândut! Curierului lui Kofu, înainte ca bucătarul să apuce să clipească. Poftim, o ladă, pusă la gheață."
+      ]
+    },
+    {
+      "en": [
+        "{player} received a crate of sea urchins for Kofu."
+      ],
+      "text": [
+        "{player} a primit o ladă cu arici de mare pentru Kofu."
+      ]
+    },
+    {
+      "en": [
+        "Take it straight up to Cascarrafa. Kofu doesn't like his urchins kept waiting."
+      ],
+      "text": [
+        "Du-o direct sus, la Cascarrafa. Lui Kofu nu-i place să-și aștepte aricii."
+      ]
+    },
+    {
+      "en": [
+        "The chef raised his paddle at once. {player} raised again, and so did he, and again, and again..."
+      ],
+      "text": [
+        "Bucătarul și-a ridicat paleta imediat. {player} a ridicat-o din nou, și el la fel, și iar, și iar..."
+      ]
+    },
+    {
+      "en": [
+        "Sold, to the chef! The price got away from you, I'm afraid. Another crate comes in soon. Try again!"
+      ],
+      "text": [
+        "Vândut, bucătarului! Mi-e teamă că prețul ți-a scăpat. Curând vine altă ladă. Mai încearcă!"
+      ]
+    },
+    {
+      "en": [
+        "Nobody raised a paddle... until the chef did, at the very last second."
+      ],
+      "text": [
+        "Nimeni n-a ridicat paleta... până când a ridicat-o bucătarul, în ultima secundă."
+      ]
+    },
+    {
+      "en": [
+        "Sold, to the chef! You've got to bid before the hammer falls. Another crate comes in soon. Try again!"
+      ],
+      "text": [
+        "Vândut, bucătarului! Trebuie să licitezi înainte să cadă ciocănelul. Curând vine altă ladă. Mai încearcă!"
+      ]
+    },
+    {
+      "en": [
+        "Kofu's runner! That crate made the whole morning. Come back any time you want to bid."
+      ],
+      "text": [
+        "Curierul lui Kofu! Lada aceea mi-a făcut toată dimineața. Revino oricând vrei să licitezi."
+      ]
+    }
+  ]
+}

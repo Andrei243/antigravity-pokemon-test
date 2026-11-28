@@ -723,6 +723,9 @@ public class StoryTests
         started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.PyramidScripts);
         // The Laurel Gallery's plinths, each read on a tile the game furnishes as the story stands (plan 41 · EG2)
         started.UnionWith(PokemonPlatinumEngine.Models.LaurelGallery.EveryPlace().Select(p => Scripts.Find(p.Script, PokemonPlatinumEngine.Models.LaurelGallery.Map)!.FullName));
+        // A raid on a Team Star base's gate, won or lost, which the game starts as it ends (plan 34 · PD5)
+        started.UnionWith(PokemonPlatinumEngine.Models.StarBases.All.SelectMany(b => new[] { b.WonScript, b.LostScript })
+            .Select(s => Scripts.Find(s, PokemonPlatinumEngine.Models.StarBases.File)!.FullName));
         // The Trainer Hill's floor: its trainers, on a map laid as the climb goes (plan 21, part l)
         started.Add($"{PokemonPlatinumEngine.Models.Frontier.TrainerHillFloor.MapName}.Trainer");
         // A field move worked at a braille spot, which the party menu starts as the place's own script (plan 21 · H12, part a)

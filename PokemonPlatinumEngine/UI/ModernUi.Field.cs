@@ -470,4 +470,19 @@ internal static partial class ModernUi
         Count(Text.Of("field.safariBalls"), balls, Models.SafariGame.StartBalls / 5, r.X + 28);
         if (!endless) Count(Text.Of("field.steps"), steps, Models.SafariGame.StartSteps / 5, r.X + 184);
     }
+
+    /// <summary>
+    /// A raid on a Team Star base's gate (plan 34 · PD5; style guide, "Field menus and notices"), at the top right as the
+    /// Safari Game's count is: the crew felled of the goal, and the clock's minutes and seconds, red in its last thirty.
+    /// </summary>
+    public static void StarRaidCount(int sw, int felled, int goal, int secondsLeft)
+    {
+        const float width = 340;
+        var r = new Rectangle(sw - 32 - width, 32, width, 96);
+        Panel(r, 24);
+        Label(Text.Of("field.starRaid.felled"), r.X + 28, r.Y + 18);
+        UiFonts.Draw(Text.Of("field.starRaid.count", ("felled", felled), ("goal", goal)), r.X + 28, r.Y + 44, 36, felled >= goal ? Green : Ink, UiWeight.Black);
+        Label(Text.Of("field.starRaid.clock"), r.X + 196, r.Y + 18);
+        UiFonts.Draw($"{secondsLeft / 60}:{secondsLeft % 60:00}", r.X + 196, r.Y + 44, 36, secondsLeft <= 30 ? Red : Ink, UiWeight.Black);
+    }
 }

@@ -1,0 +1,39 @@
+# Levincia on the open map (plan 34 · PD3's second session). Iono's gym test, the stream hunt, is a search about the
+# city as Scarlet and Violet's is: three Wattrel hide about its streets while the stream watches, each found with a word
+# and sent flapping back to the studio (its own flag, which takes it off the map); the
+# third found, whichever it is, sets the test done. Iono battles only a challenger who
+# has found all three (Levincia_GymTest.txt). Our own lines.
+
+
+script HiddenWattrel1
+  text "Something is fluttering behind the tree by the avenue. It's a Wattrel! {player} pointed it out to the camera."
+  text "The Wattrel squawked and flew back to the studio!"
+  setflag FLAG_PALDEA_LEVINCIA_TEST_1
+  call AllFound
+  end
+
+
+script HiddenWattrel2
+  text "A Wattrel is perched on the sea wall, pretending to be a gull. {player} found it!"
+  text "It flapped away to a round of cheering from the chat!"
+  setflag FLAG_PALDEA_LEVINCIA_TEST_2
+  call AllFound
+  end
+
+
+script HiddenWattrel3
+  text "The last Wattrel was hiding right under the studio's sign. {player} spotted it!"
+  text "It took off in a shower of sparks. Every Wattrel has been found!"
+  setflag FLAG_PALDEA_LEVINCIA_TEST_3
+  call AllFound
+  end
+
+
+# The test is done once all three are found, in any order: the flag the leader asks for
+script AllFound
+  if not flag FLAG_PALDEA_LEVINCIA_TEST_1 goto Return
+  if not flag FLAG_PALDEA_LEVINCIA_TEST_2 goto Return
+  if not flag FLAG_PALDEA_LEVINCIA_TEST_3 goto Return
+  setflag FLAG_PALDEA_LEVINCIA_TEST_DONE
+label Return
+  return

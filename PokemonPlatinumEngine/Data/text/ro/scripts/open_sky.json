@@ -1,0 +1,110 @@
+{
+  "Bombirdier": [
+    {
+      "en": [
+        "A shadow sweeps over the gully. A Bombirdier as big as a sail drops a boulder at {player}'s feet and lands!"
+      ],
+      "text": [
+        "O umbră trece peste defileu. Un Bombirdier mare cât o pânză de corabie aruncă un bolovan la picioarele lui {player} și aterizează!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Bombirdier shrieks, beats its wings and lurches off up the gully toward the ledge at its head!"
+      ],
+      "text": [
+        "Titanul Bombirdier țipă, bate din aripi și se clatină în sus pe defileu, spre pervazul din capătul lui!"
+      ]
+    }
+  ],
+  "BombirdierDen": [
+    {
+      "en": [
+        "The Titan Bombirdier is hunched over a clump of glowing herbs, tearing at them with its beak."
+      ],
+      "text": [
+        "Titanul Bombirdier stă aplecat peste un smoc de ierburi strălucitoare și le smulge cu ciocul."
+      ]
+    },
+    {
+      "en": [
+        "Its feathers bristle and its wings spread wider than the ledge. It rounds on {player}!"
+      ],
+      "text": [
+        "I se zbârlesc penele și își întinde aripile mai larg decât pervazul. Se întoarce spre {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The Titan Bombirdier is beaten. It shrinks to an ordinary Bombirdier and flaps off over the hills."
+      ],
+      "text": [
+        "Titanul Bombirdier e învins. Se micșorează la loc într-un Bombirdier obișnuit și zboară peste dealuri."
+      ]
+    },
+    {
+      "en": [
+        "Arven"
+      ],
+      "text": [
+        "Arven"
+      ]
+    },
+    {
+      "en": [
+        "Two down! I had to duck a rock on the way up. That bird could throw."
+      ],
+      "text": [
+        "Doi! A trebuit să mă feresc de o piatră pe drum. Pasărea aia știa să arunce."
+      ]
+    },
+    {
+      "en": [
+        "And there's the herbs. A sour one this time, but sour's good in a sandwich if you balance it."
+      ],
+      "text": [
+        "Și uite ierburile. De data asta acrișoare, dar acrul e bun într-un sandviș dacă îl echilibrezi."
+      ]
+    },
+    {
+      "en": [
+        "Koraidon crunched the sandwich down, then sniffed the air and padded about as if looking for water."
+      ],
+      "text": [
+        "Koraidon a ronțăit sandvișul, apoi a adulmecat aerul și s-a plimbat de colo-colo ca și cum ar căuta apă."
+      ]
+    },
+    {
+      "en": [
+        "Miraidon took the sandwich in one gulp, then hummed and turned its head toward the distant sea."
+      ],
+      "text": [
+        "Miraidon a înghițit sandvișul dintr-odată, apoi a bâzâit și și-a întors capul spre marea din depărtare."
+      ]
+    },
+    {
+      "en": [
+        "Some of its old strength has come back. It can swim again! (Riding, go into deep water to swim.)"
+      ],
+      "text": [
+        "I-a revenit o parte din puterea de altădată. Poate înota din nou! (Călare, intră în apă adâncă ca să înoți.)"
+      ]
+    },
+    {
+      "en": [
+        "Next one I've heard of is way out east: something made of steel, digging under the sand north of Levincia."
+      ],
+      "text": [
+        "Următorul de care am auzit e departe, spre est: ceva de oțel care sapă sub nisip, la nord de Levincia."
+      ]
+    },
+    {
+      "en": [
+        "Ride out there when you're ready. I'll catch up."
+      ],
+      "text": [
+        "Mergi acolo când ești gata. Te ajung eu din urmă."
+      ]
+    }
+  ]
+}

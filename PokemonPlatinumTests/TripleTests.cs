@@ -353,6 +353,7 @@ public class TripleTests
         foreach (string region in TrainerDatabase.Regions)
             foreach (var record in TrainerDatabase.OfRegion(region))
                 if (record.Format is { } format && !(format == "sky" && record.Id.StartsWith("kalos_sky_trainer_", StringComparison.Ordinal))
+                    && !(format == "starmobile" && record.Id.StartsWith("paldea_star_", StringComparison.Ordinal))
                     && !(staff.TryGetValue(record.Id, out var theirs) && theirs == format))
                     others.Add($"{region}: {record.Id} {format}");
         Assert.True(others.Count == 0, "Trainers of a region's table in a later format:\n" + string.Join("\n", others));

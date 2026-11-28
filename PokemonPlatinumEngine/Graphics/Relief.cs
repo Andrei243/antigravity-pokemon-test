@@ -39,6 +39,9 @@ internal static class Relief
     {
         if (!map.HasRelief || !map.InBounds(tx, ty)) return 0f;
         float h = Own(map, tx, ty, vx, vy);
+        // The top of a cave's rock is level: it meets whatever stands a little higher (the wall of another floor, the
+        // upper floor itself) by a step, never by a slope (style guide, "Caves": such a lip had a slanted top)
+        if (IsCaveRock(map, tx, ty)) return h;
 
         Span<float> others = stackalloc float[3];
         int n = 0;
@@ -57,6 +60,8 @@ internal static class Relief
             if (others[i] > h && others[i] - h < WeldLimit) h = others[i];
         return h;
     }
+
+    private static bool IsCaveRock(Map map, int tx, int ty) => map.GetGroundTile(tx, ty) == TileType.CaveWall && map.IsSolid(tx, ty);
 
     /// <summary>The drawn heights of a tile's four corners.</summary>
     public static (float NW, float NE, float SW, float SE) Corners(Map map, int tx, int ty) =>

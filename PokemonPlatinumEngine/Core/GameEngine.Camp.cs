@@ -18,9 +18,10 @@ public partial class GameEngine
 
     /// <summary>
     /// Whether the start menu offers CAMP now: a Pokémon on the team, and the options' FOLLOWER row on or the crafting kit in
-    /// the bag (plan 39 · CR6, whose pot is the camp's: so the start menu is as it was until Sinnoh's Hall of Fame).
+    /// the bag (plan 39 · CR6, whose pot is the camp's: so the start menu is as it was until Sinnoh's Hall of Fame). In
+    /// Paldea the camp is the region's picnic, offered whatever the rows say (plan 34 · PD7).
     /// </summary>
-    internal bool HasCamp => (Settings.Follower || CareOn || HasCraftingKit) && flow.Party.Count > 0;
+    internal bool HasCamp => (Settings.Follower || CareOn || HasCraftingKit || Here.Id == RegionDatabase.Paldea) && flow.Party.Count > 0;
 
     /// <summary>The options' TEAM CARE row in force (plan 35 · BN2, decision 1): on unless turned off under the modern rules.</summary>
     internal bool CareOn => Overworld.FieldHelp.On(Settings.Care, Ruleset.Current.Preset);
@@ -51,10 +52,33 @@ public partial class GameEngine
                 OpenCare();
                 return;
             case CampRequest.Close:
+                EmptyThePicnicBasket();
                 flow.State = GameState.Overworld;
                 return;
         }
-        if (!flow.CampScreen.IsActive) flow.State = GameState.Overworld;
+        if (!flow.CampScreen.IsActive)
+        {
+            EmptyThePicnicBasket();
+            flow.State = GameState.Overworld;
+        }
+    }
+
+    /// <summary>
+    /// A Paldean picnic packed up (plan 34 · PD7): the Eggs the basket holds for the time the team picnicked go to the team,
+    /// or the boxes once it is full, with a line on the toast. Nothing, and no draw, anywhere but Paldea.
+    /// </summary>
+    private void EmptyThePicnicBasket()
+    {
+        if (Here.Id != RegionDatabase.Paldea) return;
+        var eggs = PicnicBasket.Find(flow.Party, flow.CampScreen.Age, flow.Powers.Strength(PowerKind.Egg),
+            SplitMix.Hash((int)(flow.PlayTime * 30), 0xB45EE7u), PlayerIdentity.Number, Ruleset.Current, ShinyCharm.Held(flow.Bag));
+        if (eggs.Count == 0) return;
+        foreach (var egg in eggs)
+        {
+            egg.Met(PlaceName(), GameClock.Today);
+            if (!flow.Party.Add(egg)) flow.Boxes.Store(egg);
+        }
+        ShowNotification(Text.Of("picnic.eggs", ("n", eggs.Count)));
     }
 
     // The bag put away: the berry chosen is eaten by whoever stands under the camp's cursor, and the camp is back

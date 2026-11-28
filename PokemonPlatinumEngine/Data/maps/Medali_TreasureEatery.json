@@ -1,0 +1,121 @@
+{
+  "name": "Medali_TreasureEatery",
+  "displayName": "Treasure Eatery",
+  "bgmTrack": "paldea/medali",
+  "interior": "House",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#..#....#.#",
+    "#.#######.#",
+    "#.........#",
+    "#.##...##.#",
+    "#.........#",
+    "#.........#",
+    "#####.#####"
+  ],
+  "behaviours": [
+    { "x": 3, "y": 4, "width": 5, "depth": 1, "behaviour": "Counter" }
+  ],
+  "props": [
+    {
+      "type": "KitchenCounter",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Stove",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 4,
+      "width": 7,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 2,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Table",
+      "x": 7,
+      "y": 6,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "Paldea",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "eatery_waiter",
+      "name": "Waiter",
+      "npcType": "chef",
+      "x": 5,
+      "y": 3,
+      "facing": "Down",
+      "script": "Order"
+    },
+    {
+      "id": "eatery_diner",
+      "name": "Diner",
+      "npcType": "gentleman",
+      "x": 9,
+      "y": 7,
+      "facing": "Left",
+      "dialog": [
+        "Diner: I come here every day. I've never once worked up the courage to ask for the secret menu."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

@@ -197,6 +197,10 @@
         "accent": "en-us"
       }
     },
+    "arven": {
+      "note": "first spoken at poco_path.txt(39)",
+      "provisional": true
+    },
     "assistant": {
       "note": "The character the player isn't, under the default name: chosen by the player's look when a talk starts.",
       "chooses": [
@@ -252,6 +256,27 @@
         "blend": "af_bella:0.6,af_heart:0.4",
         "speed": 1.06,
         "pitch": 1.07,
+        "accent": "en-us"
+      }
+    },
+    "atticus": {
+      "note": "first spoken at starfall_street.txt(211)",
+      "provisional": true
+    },
+    "auctioneer": {
+      "note": "first spoken at porto_marinada.txt(9)",
+      "brief": {
+        "register": "man",
+        "age": "elder",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Porto Marinada's auctioneer: a quayside showman, rattling through the lots, enjoying the chef's bad luck a little too much"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_santa:0.6,am_echo:0.4",
+        "speed": 1.1,
+        "pitch": 1,
         "accent": "en-us"
       }
     },
@@ -518,7 +543,20 @@
     },
     "brassius": {
       "note": "first spoken at Artazon_GymTest.txt(33)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "even",
+        "manner": "Brassius, Artazon's Grass-type gym leader and sculptor: theatrical, grand, every line a declaration about art"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_onyx:0.5,am_fenrir:0.5",
+        "speed": 0.96,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "brawly": {
       "note": "first spoken at dewford_town_gym.txt(12)",
@@ -703,6 +741,10 @@
     },
     "caretaker": {
       "note": "first spoken at AlolaRoute2_BerryFieldsHouse.txt(5)",
+      "provisional": true
+    },
+    "cassiopeia": {
+      "note": "first spoken at starfall_street.txt(20)",
       "provisional": true
     },
     "castellan_aubert": {
@@ -4072,6 +4114,23 @@
       "note": "first spoken at castelia_city_3.txt(18)",
       "provisional": true
     },
+    "coach": {
+      "note": "first spoken at glaseado_mountain.txt(16)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Glaseado's snowslope coach: brisk and outdoorsy, a starter's shout and a grin behind it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_adam:0.6,am_michael:0.4",
+        "speed": 1.05,
+        "pitch": 1,
+        "accent": "en-us"
+      }
+    },
     "collector": {
       "note": "first spoken at valor_lakefront.txt(138)",
       "brief": {
@@ -4453,7 +4512,20 @@
     },
     "director_clavell": {
       "note": "first spoken at CaboPoco_PlayersHouse_1F.txt(16)",
-      "provisional": true
+      "brief": {
+        "register": "man",
+        "age": "middle-aged",
+        "pitch": "low",
+        "pace": "even",
+        "manner": "Director Clavell of the academy in Mesagoza: courteous, measured, a kindly headmaster with a touch of formality"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_michael:0.6,am_adam:0.4",
+        "speed": 0.95,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
     },
     "director_wren": {
       "note": "first spoken at JubilifeTV1F.txt(121)",
@@ -4674,6 +4746,10 @@
         "pitch": 0.976,
         "accent": "en-us"
       }
+    },
+    "eri": {
+      "note": "first spoken at starfall_street.txt(341)",
+      "provisional": true
     },
     "erika": {
       "note": "first spoken at celadon_city_gym.txt(10)",
@@ -5005,6 +5081,10 @@
         "accent": "en-us"
       }
     },
+    "giacomo": {
+      "note": "first spoken at starfall_street.txt(81)",
+      "provisional": true
+    },
     "gideon": {
       "note": "first spoken at five_island_rocket_warehouse.txt(45)",
       "brief": {
@@ -5087,6 +5167,23 @@
     "groomer": {
       "note": "first spoken at LumioseCity_GroomingSalon.txt(9)",
       "provisional": true
+    },
+    "grusha": {
+      "note": "first spoken at Glaseado_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Grusha, Glaseado's Ice-type gym leader, a former snowboarder: cool, clipped and a little guarded, warming only at the very end"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_liam:0.6,am_eric:0.4",
+        "speed": 0.95,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "guide_gent": {
       "note": "first spoken at cherrygrove.txt(21)",
@@ -5263,7 +5360,20 @@
     },
     "iono": {
       "note": "first spoken at Levincia_GymTest.txt(33)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "young",
+        "pitch": "high",
+        "pace": "quick",
+        "manner": "Iono, Levincia's Electric-type gym leader and streamer: bubbly, loud, playing to her chat, never still"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_sky:0.6,af_nova:0.4",
+        "speed": 1.08,
+        "pitch": 1.04,
+        "accent": "en-us"
+      }
     },
     "iris": {
       "note": "first spoken at CasteliaCity.txt(51)",
@@ -5584,7 +5694,20 @@
     },
     "katy": {
       "note": "first spoken at Cortondo_GymTest.txt(34)",
-      "provisional": true
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Katy, Cortondo's Bug-type gym leader and baker: warm, soft, motherly, a teasing sweetness with a sting under it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_heart:0.6,af_sarah:0.4",
+        "speed": 0.94,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "keahi": {
       "note": "first spoken at HauoliCity_TrainersSchool.txt(10)",
@@ -5639,6 +5762,23 @@
     "kiri": {
       "note": "first spoken at sootopolis_city.txt(159)",
       "provisional": true
+    },
+    "kofu": {
+      "note": "first spoken at Cascarrafa_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "Kofu, Cascarrafa's Water-type gym leader and cook: big, hearty and loud, bursting with enthusiasm, every line a shout across a busy kitchen"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_fenrir:0.6,am_puck:0.4",
+        "speed": 1.06,
+        "pitch": 0.98,
+        "accent": "en-us"
+      }
     },
     "koga": {
       "note": "first spoken at fuchsia_city_gym.txt(11)",
@@ -9145,6 +9285,23 @@
         "accent": "en-us"
       }
     },
+    "mc": {
+      "note": "first spoken at Montenevera_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "young",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Ryme's MC in Montenevera's hall: a hype man with rhythm in every line, hyping the crowd and the challenger alike"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_puck:0.7,am_echo:0.3",
+        "speed": 1.1,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
+    },
     "meadow_keeper": {
       "note": "first spoken at common.txt(4526)",
       "brief": {
@@ -9184,6 +9341,10 @@
     },
     "mechanic": {
       "note": "first spoken at galar_route_9.txt(12)",
+      "provisional": true
+    },
+    "mela": {
+      "note": "first spoken at starfall_street.txt(146)",
       "provisional": true
     },
     "melony": {
@@ -9468,7 +9629,20 @@
     },
     "nemona": {
       "note": "first spoken at cabo_poco.txt(27)",
-      "provisional": true
+      "brief": {
+        "register": "girl",
+        "age": "teen",
+        "pitch": "middle",
+        "pace": "quick",
+        "manner": "Nemona, the student council president and the rival: sunny, eager, battle-mad and generous with it"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.6,af_river:0.4",
+        "speed": 1.05,
+        "pitch": 1.02,
+        "accent": "en-us"
+      }
     },
     "nessa": {
       "note": "first spoken at Hulbury_StadiumPitch.txt(8)",
@@ -9522,6 +9696,10 @@
     },
     "odile": {
       "note": "first spoken at lumiose_city.txt(214)",
+      "provisional": true
+    },
+    "office_worker": {
+      "note": "first spoken at medali.txt(26)",
       "provisional": true
     },
     "officer": {
@@ -9598,6 +9776,10 @@
         "accent": "en-gb"
       }
     },
+    "ortega": {
+      "note": "first spoken at starfall_street.txt(276)",
+      "provisional": true
+    },
     "oskin": {
       "note": "first spoken at AlolaRoute1_PlayersHouse.txt(54)",
       "provisional": true
@@ -9634,6 +9816,23 @@
     "palace_owner": {
       "note": "first spoken at KalosRoute6_ParfumPalace.txt(10)",
       "provisional": true
+    },
+    "paldea_larry": {
+      "note": "first spoken at Medali_GymTest.txt(12)",
+      "brief": {
+        "register": "man",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "slow",
+        "manner": "Larry, Medali's Normal-type gym leader: a tired office worker, flat and dry, every line said as if it were the end of a long shift"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "am_eric:0.6,am_onyx:0.4",
+        "speed": 0.9,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
     },
     "palmer": {
       "note": "first spoken at BattleTowerBattleRoom.txt(75)",
@@ -10268,6 +10467,23 @@
       "note": "first spoken at mauville_city_bike_shop.txt(12)",
       "provisional": true
     },
+    "ryme": {
+      "note": "first spoken at Montenevera_GymTest.txt(50)",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "low",
+        "pace": "quick",
+        "manner": "Ryme, Montenevera's Ghost-type gym leader and rapper: husky, confident and rhythmic, every line half a verse"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_nicole:0.6,af_kore:0.4",
+        "speed": 1.04,
+        "pitch": 0.96,
+        "accent": "en-us"
+      }
+    },
     "sabrina": {
       "note": "first spoken at saffron_city_gym.txt(11)",
       "brief": {
@@ -10629,6 +10845,10 @@
       "note": "first spoken at BattlePalace.txt(65)",
       "provisional": true
     },
+    "stable_master": {
+      "note": "first spoken at kalos_route_12.txt(5)",
+      "provisional": true
+    },
     "stall_keeper": {
       "note": "first spoken at common.txt(2892)",
       "brief": {
@@ -10727,6 +10947,10 @@
         "pitch": 1.01,
         "accent": "en-us"
       }
+    },
+    "team_star_grunt": {
+      "note": "first spoken at starfall_street.txt(52)",
+      "provisional": true
     },
     "team_yell_grunt": {
       "note": "first spoken at Motostoke_Hotel.txt(9)",
@@ -10847,6 +11071,23 @@
     "tucker": {
       "note": "first spoken at BattleDome.txt(70)",
       "provisional": true
+    },
+    "tulip": {
+      "note": "first spoken at Alfornada_GymTest.txt(49)",
+      "brief": {
+        "register": "woman",
+        "age": "adult",
+        "pitch": "middle",
+        "pace": "slow",
+        "manner": "Tulip, Alfornada's Psychic-type gym leader, a make-up artist and photographer: soft, poised and gently teasing, calling everyone darling"
+      },
+      "design": {
+        "engine": "kokoro-82m",
+        "blend": "af_bella:0.6,af_heart:0.4",
+        "speed": 0.94,
+        "pitch": 1,
+        "accent": "en-us"
+      }
     },
     "tuscany": {
       "note": "first spoken at route_29.txt(45)",
@@ -11286,8 +11527,11 @@
     "Ariana": "ariana",
     "Arthur": "arthur",
     "Artist": "artist",
+    "Arven": "arven",
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
+    "Atticus": "atticus",
+    "Auctioneer": "auctioneer",
     "Aukai": "aukai",
     "Avery": "avery",
     "AZ": "az",
@@ -11347,6 +11591,7 @@
     "Captain Stern": "captain_stern",
     "Capucine": "capucine",
     "Caretaker": "caretaker",
+    "Cassiopeia": "cassiopeia",
     "Castellan Aubert": "castellan_aubert",
     "Casting Clerk": "casting_clerk",
     "Catherine": "catherine",
@@ -11377,6 +11622,7 @@
     "Clothilde": "clothilde",
     "Club Clerk": "club_clerk",
     "Clyde": "clyde",
+    "Coach": "coach",
     "Collector": "collector",
     "Colress": "colress",
     "Commander Jupiter": "jupiter",
@@ -11438,6 +11684,7 @@
     "Emmet": "emmet",
     "Energy Guru": "energy_guru",
     "Engineer": "engineer",
+    "Eri": "eri",
     "Erika": "erika",
     "Erin": "erin",
     "Ernest": "ernest",
@@ -11483,6 +11730,7 @@
     "Gentleman": "look:gentleman",
     "Ghetsis": "ghetsis",
     "Ghost": "ghost",
+    "Giacomo": "giacomo",
     "Gideon": "gideon",
     "Gift Runner": "gift_runner",
     "Giovanni": "giovanni",
@@ -11496,6 +11744,7 @@
     "Grimsley": "grimsley",
     "Groomer": "groomer",
     "Grunt": "look:grunt",
+    "Grusha": "grusha",
     "Guard": "look:guard",
     "Guide": "look:gym_guide",
     "Guide Gent": "guide_gent",
@@ -11562,6 +11811,7 @@
     "Kimono Girl": "kimono_girl",
     "Kira": "kira",
     "Kiri": "kiri",
+    "Kofu": "kofu",
     "Koga": "koga",
     "Koichi": "koichi",
     "Koji": "koji",
@@ -11633,6 +11883,7 @@
     "Matt": "matt",
     "Maxie": "maxie",
     "Maylene": "maylene",
+    "MC": "mc",
     "Meadow Keeper": "meadow_keeper",
     "Mechadoll 1": "mechadoll_1",
     "Mechadoll 2": "mechadoll_2",
@@ -11640,6 +11891,7 @@
     "Mechadoll 4": "mechadoll_4",
     "Mechadoll 5": "mechadoll_5",
     "Mechanic": "mechanic",
+    "Mela": "mela",
     "Melony": "melony",
     "Member": "member",
     "Miguel": "miguel",
@@ -11683,6 +11935,7 @@
     "Octave": "octave",
     "Odette": "odette",
     "Odile": "odile",
+    "Office Worker": "office_worker",
     "Officer": "officer",
     "Ola": "ola",
     "Old Lady": "old_lady",
@@ -11693,6 +11946,7 @@
     "Olympia": "olympia",
     "Ombeline": "ombeline",
     "Opal": "opal",
+    "Ortega": "ortega",
     "Oskin": "oskin",
     "Ottoline": "ottoline",
     "Owner": "owner",
@@ -11776,6 +12030,7 @@
     "Roxanne": "roxanne",
     "Roxie": "roxie",
     "Rydel": "rydel",
+    "Ryme": "ryme",
     "Sabrina": "sabrina",
     "Safari Guide": "safari_guide",
     "Sage": "sage",
@@ -11819,6 +12074,7 @@
     "Sordward": "sordward",
     "Sparring Coach": "sparring_coach",
     "Spenser": "spenser",
+    "Stable Master": "stable_master",
     "Stall Keeper": "stall_keeper",
     "Station Agent": "station_agent",
     "Station Attendant": "station_attendant",
@@ -11836,6 +12092,7 @@
     "Teala": "teala",
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",
+    "Team Star Grunt": "team_star_grunt",
     "Team Yell Grunt": "team_yell_grunt",
     "Temple Guard": "temple_guard",
     "Thalia": "thalia",
@@ -11851,6 +12108,7 @@
     "Trick Master": "trick_master",
     "Tristan": "tristan",
     "Tucker": "tucker",
+    "Tulip": "tulip",
     "Tuscany": "tuscany",
     "Tutor": "tutor",
     "TV": "tv",

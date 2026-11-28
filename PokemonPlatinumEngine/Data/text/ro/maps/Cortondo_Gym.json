@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Cortondo Gym"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "cortondo_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cortondo_guide": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

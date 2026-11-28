@@ -136,24 +136,6 @@
         ]
       }
     },
-    "11": {
-      "name": {
-        "en": [
-          "Socialite"
-        ],
-        "text": [
-          "Mondena"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Iris was only a girl when she came to this city. Now she's the Champion of Unova. Wasn't that quick?"
-        ],
-        "text": [
-          "Iris era doar o fetiță când a venit în acest oraș. Acum e Campioana Unovei. Nu a fost repede?"
-        ]
-      }
-    },
     "12": {
       "name": {
         "en": [
@@ -169,6 +151,24 @@
         ],
         "text": [
           "Fericirea unui Pokémon se vede după cum mănâncă. Al meu mănâncă precum un dragon. Adică mult."
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          "Mondena"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Iris was only a girl when she came to this city. Now she's the Champion of Unova. Wasn't that quick?"
+        ],
+        "text": [
+          "Iris era doar o fetiță când a venit în acest oraș. Acum e Campioana Unovei. Nu a fost repede?"
         ]
       }
     },

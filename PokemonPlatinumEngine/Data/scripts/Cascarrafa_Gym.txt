@@ -1,0 +1,24 @@
+# Cascarrafa Gym's lobby (plan 34 · PD6): Kofu's gym, the fourth of Victory Road in the academy's suggested order. His
+# test is an errand to Porto Marinada's auction (porto_marinada.txt); his hall is behind the counter
+# (Cascarrafa_GymTest.txt). Our own lines.
+
+
+script Receptionist
+  speaker "Receptionist"
+  if badge water goto Won
+  say "Welcome to Cascarrafa Gym! Kofu's gym test is an errand. Go through and he'll tell you what he needs."
+  say "Between you and me, it's always something from the market in Porto Marinada. He's a cook before he's anything else."
+  end
+label Won
+  say "Congratulations on the Water Badge! Kofu's been humming in the kitchen ever since."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if badge water goto Won
+  say "Kofu's Water types hit hard and take a hit well. Grass and Electric moves will serve you best here."
+  end
+label Won
+  say "You beat Kofu! Smells like he's celebrating with a stew."
+  end

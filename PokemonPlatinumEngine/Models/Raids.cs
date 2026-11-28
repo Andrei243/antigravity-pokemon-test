@@ -17,6 +17,8 @@ public sealed class RaidRowFile
     public int Version { get; set; }
     /// <summary>The item the boss holds (plan 33 · GL7, part b: a Mega Max den's boss holds its Mega Stone), or none.</summary>
     public string? Item { get; set; }
+    /// <summary>A Tera crystal's row whose Tera Type is fixed ("Fire", "Stellar"; plan 34 · PD7); none for one drawn by the day.</summary>
+    public string? Tera { get; set; }
 }
 
 /// <summary>A Max Raid den (plan 33 · GL3): its id (what its script names it by), the area it is in and its table.</summary>
@@ -51,8 +53,8 @@ public sealed class RaiderFile
     [DataRequired] public List<string> Species { get; set; } = new();
 }
 
-/// <summary>What a den holds today: its species, its stars, the level it is met at, and whether its beam is lit.</summary>
-public readonly record struct RaidToday(string Species, int Stars, int Level, bool Lit, string? Item = null);
+/// <summary>What a den or a Tera crystal holds today: its species, its stars, the level it is met at, whether its beam is lit, and a crystal's Tera Type.</summary>
+public readonly record struct RaidToday(string Species, int Stars, int Level, bool Lit, string? Item = null, TeraType? Tera = null);
 
 /// <summary>
 /// Max Raid dens out of a battle (plan 33 · GL3; <c>docs/mechanics/rulings.md</c>, "Max Raid dens"): which Pokémon a den
@@ -73,6 +75,99 @@ public static class Raids
 
     /// <summary>A den by its id, or null.</summary>
     public static RaidDenFile? Den(string id) => Galar.Dens.FirstOrDefault(d => d.Id == id);
+
+    // ---------------------------------------------------------------- Paldea's Tera crystals (plan 34 · PD7)
+
+    private static RaidDensFile? paldea;
+
+    /// <summary>
+    /// <c>Data/world/paldea/crystals.json</c>: Paldea's Tera crystals, each a site of the open map (a trigger <c>crystal_&lt;id&gt;</c>)
+    /// with its table, and the academy's students who answer a crystal's call; the same shape as Galar's dens. Read strictly.
+    /// </summary>
+    public static RaidDensFile Paldea
+    {
+        get => paldea ??= GameDataFiles.Load<RaidDensFile>("world/paldea/crystals.json", strict: true);
+        set => paldea = value;
+    }
+
+    /// <summary>A Tera crystal by its id, or null.</summary>
+    public static RaidDenFile? Crystal(string id) => Paldea.Dens.FirstOrDefault(d => d.Id == id);
+
+    /// <summary>The crystal an open place's trigger stands for (<c>crystal_cortondo_1</c> is crystal <c>cortondo_1</c>), or null.</summary>
+    public static RaidDenFile? CrystalOfTrigger(string triggerName) =>
+        triggerName.StartsWith("crystal_", StringComparison.Ordinal) ? Crystal(triggerName[8..]) : null;
+
+    /// <summary>The most stars a crystal holds by Paldea's badges: two with none to two, three with three to five, four with six or seven, five with all eight.</summary>
+    public static int TeraMostStars(int badges) => badges >= 8 ? 5 : badges >= 6 ? 4 : badges >= 3 ? 3 : 2;
+
+    /// <summary>The level of a crystal's boss of so many stars (ours, on Scarlet's ladder): a range of three from the stars' floor.</summary>
+    public static (int Least, int Most) TeraLevelsOf(int stars) => stars switch
+    {
+        1 => (12, 14),
+        2 => (20, 22),
+        3 => (35, 37),
+        4 => (45, 47),
+        5 => (65, 67),
+        6 => (80, 82),
+        _ => (90, 92)
+    };
+
+    /// <summary>The Tera Shards a felled crystal's boss leaves, by its stars (ours): two at one star up to sixteen at seven.</summary>
+    public static int ShardsOf(int stars) => stars switch
+    {
+        <= 1 => 2,
+        2 => 3,
+        3 => 4,
+        4 => 6,
+        5 => 8,
+        6 => 12,
+        _ => 16
+    };
+
+    /// <summary>
+    /// What a Tera crystal holds on a day (plan 34 · PD7), drawn as a den's is by the day's number and the crystal's id and
+    /// never the dice: lit one day in two; a row by weight among those of the version Paldea's badges allow; its level by its
+    /// stars; its Tera Type the row's where it names one, otherwise one of the species' own types two times in three and any
+    /// of the eighteen the third.
+    /// </summary>
+    public static RaidToday CrystalToday(RaidDenFile crystal, uint day, int version, int badges)
+    {
+        var draws = DrawsOf("crystal/" + crystal.Id, day, version);
+        bool lit = draws.Int(2) == 0;
+        var rows = crystal.Rows.Where(r => (r.Version == 0 || r.Version == version) && r.Stars <= TeraMostStars(badges)).ToList();
+        if (rows.Count == 0) rows = crystal.Rows.Where(r => r.Version == 0 || r.Version == version).OrderBy(r => r.Stars).Take(1).ToList();
+        int total = rows.Sum(r => Math.Max(1, r.Weight));
+        int pick = draws.Int(Math.Max(1, total));
+        var row = rows[0];
+        foreach (var r in rows)
+        {
+            if ((pick -= Math.Max(1, r.Weight)) < 0) { row = r; break; }
+        }
+        var (least, most) = crystal.Levels is { Count: 2 } levels ? (levels[0], levels[1]) : TeraLevelsOf(row.Stars);
+        int level = least + draws.Int(most - least + 1);
+        TeraType tera;
+        if (TeraType.Parse(row.Tera) is { } fixedType) tera = fixedType;
+        else
+        {
+            var species = PokemonDatabase.Get(row.Species) ?? PokemonDatabase.SpeciesOfForm(row.Species);
+            var own = new List<PokemonType>();
+            // (a form's own types where the row names a form: Paldea's Wooper is Poison and Ground)
+            if (species?.Form(row.Species)?.Types is { Count: > 0 } formTypes) own.AddRange(formTypes);
+            else if (species != null)
+            {
+                own.Add(species.PrimaryType);
+                if (species.SecondaryType is { } second) own.Add(second);
+            }
+            // (the eighteen of the games: Carpathia's Sound is no crystal's)
+            var every = Enum.GetValues<PokemonType>().Where(t => t != PokemonType.Sound).ToList();
+            tera = own.Count > 0 && draws.Int(3) < 2 ? TeraType.Of(own[draws.Int(own.Count)]) : TeraType.Of(every[draws.Int(every.Count)]);
+        }
+        return new RaidToday(row.Species, row.Stars, level, lit, row.Item, tera);
+    }
+
+    /// <summary>Whether a crystal's light stands today: lit by the day's draw and its boss not felled today, the same question <c>raid crystal</c> asks.</summary>
+    public static bool CrystalStands(RaidDenFile crystal, uint day, int version, int badges, bool felled) =>
+        !felled && CrystalToday(crystal, day, version, badges).Lit;
 
     /// <summary>The most stars a den holds by the badges won: two with none or one, three with two or three, four with four or five, five with six or more.</summary>
     public static int MostStars(int badges) => badges >= 6 ? 5 : badges >= 4 ? 4 : badges >= 2 ? 3 : 2;
@@ -122,10 +217,10 @@ public static class Raids
     /// The three raiders who answer a den's call on a day: three of the file's raiders, each with one of their species at
     /// the boss's level, drawn as the den's day is (a test or the game, the same three). Trainer AI flags of a partner's.
     /// </summary>
-    public static List<Trainer> Allies(RaidDenFile den, uint day, int version, int level)
+    public static List<Trainer> Allies(RaidDenFile den, uint day, int version, int level, RaidDensFile? of = null)
     {
         var draws = DrawsOf(den.Id, day, version + 16);
-        var pool = Galar.Raiders.ToList();
+        var pool = (of ?? Galar).Raiders.ToList();
         var allies = new List<Trainer>();
         for (int i = 0; i < 3 && pool.Count > 0; i++)
         {
@@ -164,9 +259,10 @@ public static class Raids
         open && !felled && Today(den, day, version, badges, wished).Lit;
 
     /// <summary>The chance in a hundred a ball takes a felled boss of so many stars: by its stars, a Master Ball always, a Great or Ultra Ball better (ours).</summary>
-    public static int CatchChance(int stars, string ball)
+    public static int CatchChance(int stars, string ball, bool tera = false)
     {
-        if (ball == "Master Ball") return 100;
+        // A felled Tera Raid boss is always taken, as Scarlet's (plan 34 · PD7)
+        if (ball == "Master Ball" || tera) return 100;
         int chance = stars switch { <= 1 => 100, 2 => 90, 3 => 75, 4 => 60, _ => 45 };
         chance += ball switch { "Ultra Ball" => 15, "Great Ball" => 10, "Dream Ball" or "Beast Ball" => 20, _ => 0 };
         return Math.Min(100, chance);

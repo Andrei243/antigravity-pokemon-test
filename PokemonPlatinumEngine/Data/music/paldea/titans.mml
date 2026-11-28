@@ -1,0 +1,39 @@
+# The Titans' places of the Path of Legends: a wary flamenco guitar picking down the Andalusian cadence in D minor over
+# a low pad and a heavy, slow kit, something huge somewhere ahead. Played by the Stony Cliff, Open Sky, Lurking Steel,
+# Quaking Earth and False Dragon. Original composition for this game (plan 34 · PD4, its second session), in the modern sound.
+title The Path of Legends
+tempo 104
+meter 4/4
+reverb 0.24
+night none
+room hall 1.5
+
+track lead flamencoguitar vol=0.78 pan=0.08 rev=0.24
+  o4 d2 r2 | L o5 d4 c8 o4 a8 f4 a4 | o4 g4 e8 c8 e4 g4 | o4 b-2 f8 d8 f8 b-8 | o4 c+2 e4 a4 |
+  o5 d4 e8 f8 e4 d4 | o5 c4 o4 b-8 a8 g4 a4 | o4 b-4 f8 d8 f4 d4 | o4 a2. r4 |
+  o5 f4 c8 o4 a8 o5 c4 o4 a4 | o5 e4 d8 c8 o4 b-4 g4 | o5 d4 c8 o4 b-8 a4 f4 | o4 e4 g8 b-8 a4 c+4 |
+  o4 d8 f8 a8 o5 d8 c4 o4 a4 | o4 b-8 a8 g8 f8 e4 g4 | o4 a8 e8 c+8 e8 a4 e4 | o4 d2. r4 |
+
+track pad warmpad vol=0.26 pan=-0.2 rev=0.36
+  o3 (d a > d f)1 | L o3 (d f a)1 | o3 (c e g)1 | o3 (b- > d f)1 | o3 (a > c+ e)1 |
+  o3 (d f a)1 | o3 (c e g)1 | o3 (b- > d f)1 | o3 (a > c+ e)1 |
+  o3 (f a > c)1 | o3 (c e g)1 | o3 (b- > d f)1 | o3 (a > c+ e)1 |
+  o3 (d f a)1 | o3 (c e g)1 | o3 (a > c+ e)1 | o3 (d f a)1 |
+
+track pluck marimba vol=0.24 pan=0.35 rev=0.2
+  r1 | L o4 d8 a8 o5 d8 o4 a8 d8 a8 o5 d8 o4 a8 | o4 c8 g8 o5 c8 o4 g8 c8 g8 o5 c8 o4 g8 | o3 b-8 o4 f8 b-8 f8 o3 b-8 o4 f8 b-8 f8 | o3 a8 o4 e8 a8 e8 o3 a8 o4 e8 a8 e8 |
+  o4 d8 a8 o5 d8 o4 a8 d8 a8 o5 d8 o4 a8 | o4 c8 g8 o5 c8 o4 g8 c8 g8 o5 c8 o4 g8 | o3 b-8 o4 f8 b-8 f8 o3 b-8 o4 f8 b-8 f8 | o3 a8 o4 e8 a8 e8 o3 a8 o4 e8 a8 e8 |
+  o4 f8 o5 c8 f8 c8 o4 f8 o5 c8 f8 c8 | o4 c8 g8 o5 c8 o4 g8 c8 g8 o5 c8 o4 g8 | o3 b-8 o4 f8 b-8 f8 o3 b-8 o4 f8 b-8 f8 | o3 a8 o4 e8 a8 e8 o3 a8 o4 e8 a8 e8 |
+  o4 d8 a8 o5 d8 o4 a8 d8 a8 o5 d8 o4 a8 | o4 c8 g8 o5 c8 o4 g8 c8 g8 o5 c8 o4 g8 | o3 a8 o4 e8 a8 e8 o3 a8 o4 e8 a8 e8 | o4 d8 a8 o5 d8 o4 a8 d8 a8 o5 d8 o4 a8 |
+
+track bass synthbass vol=0.72 rev=0.06
+  o2 d2 d2 | L o2 d4. d8 a4 d4 | o2 c4. c8 g4 c4 | o1 b-4. b-8 o2 f4 o1 b-4 | o1 a4. a8 o2 e4 o1 a4 |
+  o2 d4. d8 a4 d4 | o2 c4. c8 g4 c4 | o1 b-4. b-8 o2 f4 o1 b-4 | o1 a4. a8 o2 e4 o1 a4 |
+  o2 f4. f8 o3 c4 o2 f4 | o2 c4. c8 g4 c4 | o1 b-4. b-8 o2 f4 o1 b-4 | o1 a4. a8 o2 e4 o1 a4 |
+  o2 d4. d8 a4 d4 | o2 c4. c8 g4 c4 | o1 a4. a8 o2 e4 o1 a4 | o2 d4. d8 a4 d4 |
+
+track drums kit vol=0.48 rev=0.12
+  v100 b4 r4 v70 b4 r4 | L v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 h8 h8 v90 s4 h8 h8 | v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 h8 h8 v90 s4 v80 s8 s8 |
+  v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 h8 h8 v90 s4 h8 h8 | v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 h8 h8 v90 s4 v80 s8 s8 |
+  v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 h8 h8 v90 s4 h8 h8 | v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 h8 h8 v90 s4 v80 s8 s8 |
+  v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 h8 h8 v90 s4 h8 h8 | v100 b4 h8 h8 v90 s4 h8 v70 b8 | v100 b4 b8 b8 v90 s4 s8 s8 |

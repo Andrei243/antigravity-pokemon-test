@@ -22,6 +22,23 @@
     { "name": "the road east to Artazon", "points": [[104, -326], [180, -326], [250, -330], [310, -326], [352, -324]], "width": 4, "shoulder": 2.5 },
     { "name": "Artazon's street", "points": [[352, -324], [416, -324], [416, -354]], "width": 5, "shoulder": 2 },
     { "name": "the road north to Levincia", "points": [[416, -324], [446, -336], [446, -384], [440, -460], [448, -540], [440, -640], [470, -690]], "width": 4, "shoulder": 2.5 },
-    { "name": "Levincia's avenue", "points": [[470, -690], [496, -720], [496, -776]], "width": 6, "shoulder": 2, "surface": "Paving" }
+    { "name": "Levincia's avenue", "points": [[470, -690], [496, -720], [496, -776]], "width": 6, "shoulder": 2, "surface": "Paving" },
+    // The West Province (plan 34 · PD6): north out of Cortondo through Quaking Earth's basin and Asado Desert to
+    // Cascarrafa and up its avenue to the gym; west from the avenue along the West Province's second area and down the
+    // ramp to Porto Marinada's quay; and east out of the desert along the first area to Medali's square and its gym
+    { "name": "the road north to Asado Desert", "points": [[-416, -322], [-446, -336], [-446, -384], [-436, -430], [-424, -500], [-430, -560], [-436, -600]], "width": 4, "shoulder": 2.5 },
+    { "name": "Cascarrafa's avenue", "points": [[-436, -600], [-440, -640], [-460, -670], [-490, -700], [-496, -714]], "width": 5, "shoulder": 2, "surface": "Paving" },
+    { "name": "the road west to Porto Marinada", "points": [[-460, -670], [-520, -668], [-590, -668], [-626, 12, -668], [-660, 4, -668], [-700, 4, -668]], "width": 4, "shoulder": 2.5 },
+    { "name": "the road east through the West Province", "points": [[-430, -566], [-380, -566], [-300, -566], [-240, -570], [-200, -590], [-184, -620]], "width": 4, "shoulder": 2.5 },
+    { "name": "Medali's street", "points": [[-184, -620], [-190, -650], [-184, -680], [-182, -696]], "width": 5, "shoulder": 2, "surface": "Paving" },
+    // The North Province (plan 34 · PD6, its second session): north out of Medali's square along the first area to the
+    // foot of Glaseado Mountain, east along the foot to Montenevera's square, and on east and south through the East
+    // Province's third area to Levincia's avenue; and Alfornada's lane from its cavern's mouth to its square. The
+    // snowslope has no road: it is the run's (glaseado_mountain.json); nor has the cavern, which a road would open up
+    { "name": "the road north from Medali", "points": [[-150, -664], [-118, -680], [-100, -716], [-100, -780], [-104, -840], [-100, -890], [-90, -908]], "width": 4, "shoulder": 2.5 },
+    { "name": "the way along Glaseado's foot", "points": [[-90, -908], [-20, -908], [60, -906], [150, -908], [232, -914]], "width": 4, "shoulder": 2.5 },
+    { "name": "Montenevera's street", "points": [[232, -914], [290, -936], [328, -950], [370, -940], [410, -930], [436, -928]], "width": 5, "shoulder": 2, "surface": "Paving" },
+    { "name": "the road north from Levincia", "points": [[470, -690], [440, -730], [434, -796], [450, -850], [468, -900], [436, -928]], "width": 4, "shoulder": 2.5 },
+    { "name": "Alfornada's lane", "points": [[-574, 12, -345], [-600, -340], [-622, -322], [-640, -320]], "width": 4, "shoulder": 2, "surface": "Paving" }
   ]
 }

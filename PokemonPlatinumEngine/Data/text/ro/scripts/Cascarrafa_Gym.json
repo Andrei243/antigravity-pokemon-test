@@ -1,0 +1,62 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Cascarrafa Gym! Kofu's gym test is an errand. Go through and he'll tell you what he needs."
+      ],
+      "text": [
+        "Bine ai venit la Sala din Cascarrafa! Proba lui Kofu e un comision. Intră, și o să-ți spună ce are nevoie."
+      ]
+    },
+    {
+      "en": [
+        "Between you and me, it's always something from the market in Porto Marinada. He's a cook before he's anything else."
+      ],
+      "text": [
+        "Între noi fie vorba, e mereu ceva de la piața din Porto Marinada. Înainte de orice, e bucătar."
+      ]
+    },
+    {
+      "en": [
+        "Congratulations on the Water Badge! Kofu's been humming in the kitchen ever since."
+      ],
+      "text": [
+        "Felicitări pentru Insigna Apei! De atunci, Kofu fredonează întruna în bucătărie."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Kofu's Water types hit hard and take a hit well. Grass and Electric moves will serve you best here."
+      ],
+      "text": [
+        "Pokémonii de tip Apă ai lui Kofu lovesc tare și rezistă bine. Aici te ajută cel mai mult atacurile de tip Iarbă și Electric."
+      ]
+    },
+    {
+      "en": [
+        "You beat Kofu! Smells like he's celebrating with a stew."
+      ],
+      "text": [
+        "L-ai învins pe Kofu! Miroase a tocană, sărbătorește."
+      ]
+    }
+  ]
+}

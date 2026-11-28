@@ -1,0 +1,102 @@
+# Tulip's studio, the end of her gym test (plan 34 · PD6, its second session). The test is her photographs: the
+# photographer calls three moods, and the challenger strikes the pose that fits each. Each shot taken right is kept
+# (VAR_PALDEA_ALFORNADA_PHOTOS 1 and 2) and the next is called at once; a pose that doesn't fit ends the turn, and that
+# same mood is called again next time. All three and the test is passed (FLAG_PALDEA_ALFORNADA_TEST_DONE). A gym trainer
+# stands in the studio, and Tulip at its far end battles a challenger who has passed. Our own lines, moods and poses.
+
+
+# The photographer's session: three moods, each matched by one of three poses (never the last, which the cancel button
+# picks)
+script Photos
+  speaker "Photographer"
+  if flag FLAG_PALDEA_ALFORNADA_TEST_DONE goto Done
+  if var VAR_PALDEA_ALFORNADA_PHOTOS >= 2 goto Resolve
+  if var VAR_PALDEA_ALFORNADA_PHOTOS >= 1 goto Calm
+  say "Ah, the challenger! Tulip wants three shots of you before she'll battle. I call the mood, you give me the pose. Ready?"
+  say "First: joy! Show me pure, sunny joy!"
+  choose "Strike a pose!" "A wide smile, arms flung open" "A thoughtful frown" "Back to the camera"
+  if result != 0 goto Blurred
+  text "Click! The flash went off."
+  setvar VAR_PALDEA_ALFORNADA_PHOTOS 1
+label Calm
+  say "Lovely! Next: calm. The stillness of a lake at dawn."
+  choose "Strike a pose!" "Jumping in the air" "Eyes half closed, hands folded" "Pointing at the camera"
+  if result != 1 goto Blurred
+  text "Click! The flash went off."
+  setvar VAR_PALDEA_ALFORNADA_PHOTOS 2
+label Resolve
+  say "Gorgeous. Last one: resolve. You're about to face a gym leader. Show me."
+  choose "Strike a pose!" "A big yawn" "Chin up, fist clenched, looking straight ahead" "A nervous wave"
+  if result != 1 goto Blurred
+  text "Click! The flash went off, and the photographer lowered the camera with a satisfied sigh."
+  say "Perfect, perfect, perfect. Tulip will love these. You've passed the test! She's waiting at the back."
+  setflag FLAG_PALDEA_ALFORNADA_TEST_DONE
+  end
+label Blurred
+  text "Click! The photographer looked at the picture and winced."
+  say "Hmm. That's not quite the mood, darling. Come back to me and we'll take that shot again."
+  end
+label Done
+  say "Your photos are drying on the wall. Go on, Tulip's waiting."
+  end
+
+# Tulip's battle for the Psychic Badge. She Terastallizes her last into a Psychic type. Plan 34 · decision 3 at its
+# recommendation, as the leaders' before her: her team is scaled to the badges the challenger holds, its best at the cap
+# of that many badges, so in the academy's order (six held) it is the original's (Data/world/paldea/trainers.json:
+# paldea_tulip, paldea_tulip_b0 to _b7)
+script Leader
+  face tulip player
+  speaker "Tulip"
+  if badge psychic goto Won
+  if var VAR_PALDEA_STORY < 7 goto NotEnrolled
+  if not flag FLAG_PALDEA_ALFORNADA_TEST_DONE goto NotYet
+  scene "Tulip"
+  say "I've seen your photographs. Lovely work. I'm Tulip, Alfornada's gym leader, and I make people look their best."
+  say "My Psychic types are beautiful, and beauty can be very, very strong. Shall we?"
+  if badges >= 7 goto Held7
+  if badges >= 6 goto Held6
+  if badges >= 5 goto Held5
+  if badges >= 4 goto Held4
+  if badges >= 3 goto Held3
+  if badges >= 2 goto Held2
+  if badges >= 1 goto Held1
+  battle tulip as "paldea_tulip_b0"
+  goto Beaten
+label Held1
+  battle tulip as "paldea_tulip_b1"
+  goto Beaten
+label Held2
+  battle tulip as "paldea_tulip_b2"
+  goto Beaten
+label Held3
+  battle tulip as "paldea_tulip_b3"
+  goto Beaten
+label Held4
+  battle tulip as "paldea_tulip_b4"
+  goto Beaten
+label Held5
+  battle tulip as "paldea_tulip_b5"
+  goto Beaten
+label Held6
+  battle tulip as "paldea_tulip"
+  goto Beaten
+label Held7
+  battle tulip as "paldea_tulip_b7"
+label Beaten
+  say "Oh, that was exquisite. You've earned this. The Psychic Badge, and a little of my admiration too."
+  givebadge psychic
+  text "{player} received the Psychic Badge from Tulip!"
+  setflag FLAG_PALDEA_DEFEATED_ALFORNADA_GYM
+  defeat "paldea_gym_trainer_bruno"
+  say "Do come back when you have a new team. I'd love to photograph them."
+  endscene
+  end
+label NotYet
+  say "Not until I've seen your photographs, darling. My photographer is by the door."
+  end
+label NotEnrolled
+  say "You're not enrolled at the academy, are you? Then I'm afraid I can't battle you. Rules, darling."
+  end
+label Won
+  say "Back again? You still have that glow. Must be the badge."
+  end

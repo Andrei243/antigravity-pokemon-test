@@ -3,6 +3,19 @@
   "sea": { "level": 0, "polygon": [[-130, -420], [-80, -420], [-80, 44], [130, 44], [130, 100], [-130, 100]] },
   // The eastern sea off Levincia's sea wall (plan 34 · PD3), over the seabed terrain/south_and_east.json lays
   "lakes": [
-    { "name": "the sea off Levincia", "polygon": [[600, -864], [672, -864], [672, -600], [600, -600]], "level": 0 }
+    { "name": "the sea off Levincia", "polygon": [[600, -864], [672, -864], [672, -600], [600, -600]], "level": 0 },
+    // Casseroya Lake, False Dragon's (plan 34 · PD4's second session, a stand-in east off the East Province's first area
+    // until PD6's second session moved it): the lake in its hollow east off the North Province's first area, over the
+    // bed terrain/west_north.json lays
+    { "name": "False Dragon's lake", "polygon": [[-32, -862], [48, -862], [48, -810], [-32, -810]], "level": 11.2 },
+    // The West Province (plan 34 · PD6): the pool at the foot of Cascarrafa's falls, and the western sea off Porto
+    // Marinada's quay, over the beds terrain/west.json lays
+    { "name": "the pool under Cascarrafa's falls", "polygon": [[-404, -730], [-376, -730], [-376, -702], [-404, -702]], "level": 11.2 },
+    { "name": "the sea off Porto Marinada", "polygon": [[-800, -760], [-730, -760], [-730, -590], [-800, -590]], "level": 0 }
+  ],
+  // Cascarrafa's falls (plan 34 · PD6): the river comes down its slot in the hills north of the city and drops into the
+  // pool at the city's foot
+  "rivers": [
+    { "name": "Cascarrafa's falls", "points": [[-390, 30, -790], [-390, 30, -752], [-390, 11.2, -742], [-390, 11.2, -722]], "width": 8 }
   ]
 }

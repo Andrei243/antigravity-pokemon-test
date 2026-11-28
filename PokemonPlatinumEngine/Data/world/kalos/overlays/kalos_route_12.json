@@ -41,6 +41,10 @@
       }
     }
   },
+  // The stable beside the road (plan 42 · PS8): its master runs the riding race (kalos_route_12.RaceStable)
+  "npcs": [
+    {"id": "kalos_route_12.StableMaster", "name": "Stable Master", "npcType": "Gentleman", "x": 220, "y": 481, "facing": "Down", "script": "RaceStable"}
+  ],
   "signs": {
     "RouteSign": "Route 12 · Blossom Road\nWest: Route 9\nEast: Coumarine City"
   }

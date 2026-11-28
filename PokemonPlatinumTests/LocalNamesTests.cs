@@ -94,7 +94,10 @@ public class LocalNamesTests
         // PokeAPI has no Romanian, so the importer writes no names.json for it; its names are hand-written names.<kind>.json (plan 17 · N6)
         Assert.True(LocalNames.Has("ro"));
         Assert.DoesNotContain(LocalNames.FilesOf("ro"), f => Path.GetFileName(f) == LocalNames.FileName);
-        Assert.Empty(LocalNames.Section("ro", "species"));
+        // The games' species keep their English names; Carpathia's are named in Romanian by hand (plan 46 · CP3, names.species.json)
+        Assert.All(LocalNames.Section("ro", "species").Keys, name => Assert.True(PokemonDatabase.Get(name)?.IsCarpathian == true, name));
+        Assert.Equal(PokemonDatabase.Carpathia().Count, LocalNames.Section("ro", "species").Count);
+        Assert.All(LocalNames.Section("ro", "forms").Keys, name => Assert.EndsWith("-Carpathia", name));
         Assert.Contains(Language.Offered, l => l.Tag == "ro");
         // A species keeps its English name; a move takes the name made up for it
         Assert.Equal(("Bulbasaur", "Izbitură"), InLanguage("ro", () => (PokemonDatabase.Get("Bulbasaur")!.DisplayName, MoveDatabase.Get("Tackle")!.DisplayName)));

@@ -1,0 +1,157 @@
+{
+  "name": "PaldeaLeague_Court",
+  "displayName": "Pokémon League",
+  "bgmTrack": "paldea/gym",
+  "interior": "Gym",
+  "trees": "Round",
+  "battleArena": "League",
+  "width": 15,
+  "height": 16,
+  "ground": [
+    "###############",
+    "###############",
+    "###############",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#_____________#",
+    "#######D#######"
+  ],
+  "solid": [
+    "###############",
+    "###############",
+    "###############",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#######.#######"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 13,
+      "y": 14,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "WallEmblem",
+      "x": 7,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 7,
+      "sourceY": 15,
+      "targetMap": "PaldeaLeague_Lobby",
+      "targetX": 7,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "rika",
+      "name": "Rika",
+      "npcType": "rika",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Rika",
+      "shownBy": "FLAG_PALDEA_LEAGUE_RIKA"
+    },
+    {
+      "id": "poppy",
+      "name": "Poppy",
+      "npcType": "poppy",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Poppy",
+      "shownBy": "FLAG_PALDEA_LEAGUE_POPPY"
+    },
+    {
+      "id": "larry",
+      "name": "Larry",
+      "npcType": "larry",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Larry",
+      "shownBy": "FLAG_PALDEA_LEAGUE_LARRY"
+    },
+    {
+      "id": "hassel",
+      "name": "Hassel",
+      "npcType": "hassel",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Hassel",
+      "shownBy": "FLAG_PALDEA_LEAGUE_HASSEL"
+    },
+    {
+      "id": "geeta",
+      "name": "Geeta",
+      "npcType": "geeta",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Geeta",
+      "shownBy": "FLAG_PALDEA_LEAGUE_GEETA"
+    },
+    {
+      "id": "nemona",
+      "name": "Nemona",
+      "npcType": "nemona",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "script": "Nemona",
+      "shownBy": "FLAG_PALDEA_LEAGUE_NEMONA"
+    }
+  ],
+  "wildEncounters": []
+}

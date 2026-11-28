@@ -166,7 +166,7 @@ public class RunRulesTests
         Assert.Equal(PokemonType.Normal, panel.Rules.Monotype);
         panel.Change(-1);
         panel.Change(-1);
-        Assert.Equal(PokemonType.Fairy, panel.Rules.Monotype);
+        Assert.Equal(PokemonType.Sound, panel.Rules.Monotype);
         panel.Change(1);
         Assert.Null(panel.Rules.Monotype);
 

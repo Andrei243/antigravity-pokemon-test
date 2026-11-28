@@ -1,0 +1,118 @@
+{
+  "name": "AreaZero_Gate",
+  "displayName": "Zero Gate",
+  "bgmTrack": "paldea/titans",
+  "interior": "Lab",
+  "trees": "Round",
+  "width": 11,
+  "height": 10,
+  "ground": [
+    "###########",
+    "###########",
+    "###########",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#_________#",
+    "#####D#####"
+  ],
+  "solid": [
+    "###########",
+    "###########",
+    "###########",
+    "#.##...##.#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#####.#####"
+  ],
+  "props": [
+    {
+      "type": "LabMachine",
+      "x": 2,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LabMachine",
+      "x": 7,
+      "y": 3,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "LiftCar",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LiftIndicator",
+      "x": 5,
+      "y": 2,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 2,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Window",
+      "x": 7,
+      "y": 2,
+      "width": 2,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 8,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 5,
+      "sourceY": 9,
+      "targetMap": "Paldea",
+      "targetX": 0,
+      "targetY": 0,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 3,
+      "targetMap": "AreaZero",
+      "targetX": 10,
+      "targetY": 2,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 2,
+      "y": 3,
+      "text": "The gate's log: the lift runs down to the first research station on the crater's wall. Beyond it, the way goes on down to the lab."
+    }
+  ],
+  "npcs": [],
+  "wildEncounters": []
+}

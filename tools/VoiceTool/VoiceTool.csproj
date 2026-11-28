@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+    <!-- Takes written as Ogg Vorbis (MIT), the encoder the tests already use -->
+    <PackageReference Include="OggVorbisEncoder" Version="1.2.2" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,41 @@
+{
+  "displayName": {
+    "en": [
+      "Treasure Eatery"
+    ],
+    "text": [
+      "Treasure Eatery"
+    ]
+  },
+  "people": {
+    "eatery_waiter": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          "Chelner"
+        ]
+      }
+    },
+    "eatery_diner": {
+      "name": {
+        "en": [
+          "Diner"
+        ],
+        "text": [
+          "Clientul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Diner: I come here every day. I've never once worked up the courage to ask for the secret menu."
+        ],
+        "text": [
+          "Clientul: Vin aici în fiecare zi. Niciodată n-am avut curajul să cer meniul secret."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

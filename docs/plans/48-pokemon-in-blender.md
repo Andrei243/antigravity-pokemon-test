@@ -109,7 +109,7 @@ Every name of `PokemonModels.Species` and `Forms` has an approved file or a line
 - [ ] BL1 · Parity: begun 2026-11-13 (below)
 - [ ] BL2 · The kit for a whole line
 - [ ] BL3 · The pilot and its gate
-- [ ] BL4 on · Batches (sized after BL3): every one of the 1,025 species has its sculpt since 2026-11-21 (the regions' sections below, Kanto to Paldea); left are the forms not yet done, Arceus's seventeen plates, the female looks from files and BL-S's shiny looks
+- [ ] BL4 on · Batches (sized after BL3): every one of the 1,025 species has its sculpt since 2026-11-21 (the regions' sections below, Kanto to Paldea); left are the forms not yet done, Arceus's seventeen plates, the female looks from files and BL-S's shiny looks, and **Carpathia's 249 species and 25 forms** (plan 46: sculpted in C# by CP4 to CP8 for now, to be sculpted again in Blender; the user takes them up the week of 2026-11-23, said 2026-11-22). The plan is not done until they are
 - [ ] BL-A · Clips of their own (optional)
 
 Built before the plan, as drafts (2026-11-12): the kit, the three starters' scripts, and what the skill records of them. The user's first correction is in them: Chimchar's and Piplup's eyes set further apart.

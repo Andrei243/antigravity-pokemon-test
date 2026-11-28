@@ -763,6 +763,8 @@ public partial class GameEngine
         flow.Player.Facing = start.Facing;
         // A new game begins on the grid (plan 32 · OW1: no region's start is in an open map yet)
         flow.Open = null;
+        // with no raid or Let's Go of an earlier game under way (plan 34 · PD5)
+        ForgetTheLetsGo();
         // As in Platinum, the adventure begins with an empty bag and no Pokémon: the first comes from the
         // professor's briefcase on Route 201 (plan 02 · S4). A region whose story isn't written yet (Kanto) still
         // starts as every game did before: a Pokémon, its first starter, and a few items (plan 18 · W1: by the record's HasStory).
@@ -3632,6 +3634,8 @@ public partial class GameEngine
                 if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Endless);
                 // ...or, where neither game is on, the catch streak and the chain of hooks (plan 38 · EX3)
                 else if (!InBugContest && StreakShown is var (streakSpecies, streak, hooks)) ModernUi.StreakCount(VirtualWidth, streakSpecies, streak, hooks);
+                // A raid on a Team Star base's gate: its count and its clock (plan 34 · PD5)
+                DrawStarRaidCorner();
                 DrawBugContestCount();
                 DrawParkCount();
                 DrawBattlePoints();

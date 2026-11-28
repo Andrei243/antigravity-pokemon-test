@@ -32,5 +32,31 @@
         "Urcă. Ne vedem mai târziu: i-am promis unei prietene o luptă în piață. Sau trei."
       ]
     }
+  ],
+  "MesagozaDeli": [
+    {
+      "en": [
+        "Deli Clerk"
+      ],
+      "text": [
+        "Vânzătorul de la Delicatese"
+      ]
+    },
+    {
+      "en": [
+        "Off on a picnic? Everything a good sandwich needs is right here: butter, cheese, tomatoes, onions and the rest."
+      ],
+      "text": [
+        "Pleci la picnic? Tot ce-i trebuie unui sandviș bun e chiar aici: unt, brânză, roșii, ceapă și restul."
+      ]
+    },
+    {
+      "en": [
+        "Bring a berry or some Honey from your Bag, and you can make something really special."
+      ],
+      "text": [
+        "Adu o boabă sau niște Miere din Rucsac și poți face ceva cu adevărat deosebit."
+      ]
+    }
   ]
 }

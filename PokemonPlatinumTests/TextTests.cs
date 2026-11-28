@@ -100,6 +100,8 @@ public class TextTests
         ["Core/GameEngine.OpenPeople.cs"] = new[] { "Trainer" },
         // Key prefixes of the open map's figures list (a person's name or a wild one's id), data and no words (plan 32 · OW9)
         ["Core/GameEngine.OpenFigures.cs"] = new[] { "person:", "wild:" },
+        // The same keys of a raid's crew and a Let's Go's target (plan 34 · PD5)
+        ["Core/GameEngine.LetsGo.cs"] = new[] { "raid:", "letsgo:target" },
         // What the mount's drawing tells a tool (`openMountTold`, the harness's print), never drawn; the reader cuts its nested
         // interpolation in two (plan 32)
         ["Core/GameEngine.OpenDraw.cs"] = new[]

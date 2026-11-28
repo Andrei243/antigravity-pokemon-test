@@ -90,6 +90,41 @@ from Officer at 3,3 of AkalaRoute9_PoliceStation
 way -
   Officer> Konikoni's quiet, mostly. The miners come through the tunnel, the tourists go to the market, and everybody behaves.
   Officer> Except Team Skull. They don't behave anywhere.
+=== Alfornada_Gym.GymGuide
+from Gym Guide at 2,7 of Alfornada_Gym
+way -
+  Gym Guide> Tulip's Psychic types fear Bug, Ghost and Dark moves. Her last one Terastallizes, so keep something in reserve.
+=== Alfornada_Gym.Receptionist
+from Receptionist at 6,4 of Alfornada_Gym
+way -
+  Receptionist> Welcome to Alfornada Gym! Tulip's test is a photo session in her studio. Her photographer calls a mood; you strike the pose that fits.
+  Receptionist> Don't overthink it. The camera can tell.
+=== Alfornada_GymTest.Leader
+from Tulip at 6,3 of Alfornada_GymTest
+way -
+  Tulip> You're not enrolled at the academy, are you? Then I'm afraid I can't battle you. Rules, darling.
+=== Alfornada_GymTest.Photos
+from Photographer at 8,16 of Alfornada_GymTest
+way 0.0
+  Photographer> Ah, the challenger! Tulip wants three shots of you before she'll battle. I call the mood, you give me the pose. Ready?
+  Photographer> First: joy! Show me pure, sunny joy!
+  Photographer> Strike a pose!
+  > Click! The flash went off.
+  Photographer> Lovely! Next: calm. The stillness of a lake at dawn.
+  Photographer> Strike a pose!
+  > Click! The photographer looked at the picture and winced.
+  Photographer> Hmm. That's not quite the mood, darling. Come back to me and we'll take that shot again.
+  ? Strike a pose! = A wide smile, arms flung open
+  ? Strike a pose! = Jumping in the air
+  = VAR_PALDEA_ALFORNADA_PHOTOS 0 -> 1
+way 2, from answer 1
+  > Click! The photographer looked at the picture and winced.
+  Photographer> Hmm. That's not quite the mood, darling. Come back to me and we'll take that shot again.
+  ? Strike a pose! = Back to the camera
+way 1, from answer 1
+  > Click! The photographer looked at the picture and winced.
+  Photographer> Hmm. That's not quite the mood, darling. Come back to me and we'll take that shot again.
+  ? Strike a pose! = A thoughtful frown
 === AlolaLeague_AcerolaRoom.League
 from Acerola at 6,5 of AlolaLeague_AcerolaRoom
 way 0
@@ -268,6 +303,84 @@ way -
 from Olympia at 6,4 of AnistarCity_Gym
 way -
   Olympia> The stars say you are not yet ready to face me. Visit Laverre's Gym first, and its tree.
+=== AreaZero.ParadoxA
+from Great Tusk at 16,10 of AreaZero
+from Iron Treads at 16,10 of AreaZero
+way 0
+  > A huge tusked Pokémon paws at the ground. It looks like a Donphan from a time long before any Donphan.
+  * wildbattle Great Tusk 56 Won
+  + FLAG_PALDEA_ZERO_PARADOX_A_MET
+way 1, from answer 1
+  * wildbattle Great Tusk 56 Lost
+=== AreaZero.ParadoxB
+from Flutter Mane at 5,28 of AreaZero
+from Iron Moth at 5,28 of AreaZero
+way 0
+  > A ghostly Pokémon drifts out of the crystals, trailing a long tattered veil. It hums a strange old song.
+  * wildbattle Flutter Mane 56 Won
+  + FLAG_PALDEA_ZERO_PARADOX_B_MET
+way 1, from answer 1
+  * wildbattle Flutter Mane 56 Lost
+=== AreaZero.StationFour
+from the trigger at 2,29 of AreaZero
+way -
+  Professor Sada> The last station. The lab is in the rock below you. Come in when you're ready. I have a great deal to tell you.
+  Arven> That voice... it's right, but it's too calm. They were never this calm. Something's off.
+  Nemona> Then we go in together and find out. Ready, Lucas?
+  * scene AreaZero.Research Station Four
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 5
+  + seen AreaZero.Research Station Four
+=== AreaZero.StationOne
+from the trigger at 4,6 of AreaZero
+way -
+  > A voice comes from the station's speaker as the four pass its door.
+  Professor Sada> The first station. Good. Below here the crater is another world: the Pokémon you meet may not be the ones in any book.
+  Nemona> Look at all those crystals! The whole wall is glittering. I want to battle everything down here.
+  Arven> Stay close. The ledges only go down, so there's no turning back halfway.
+  * scene AreaZero.Research Station One
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 2
+  + seen AreaZero.Research Station One
+=== AreaZero.StationThree
+from the trigger at 2,22 of AreaZero
+way -
+  Professor Sada> The third station. The crystals here are what makes Terastallization possible. The whole of Paldea's shine starts down here.
+  Nemona> Wait, so every Tera Pokémon I've ever battled... it all comes from this crater? That's so cool!
+  Penny> And kind of scary. I think the deeper we go, the less this place wants visitors.
+  * scene AreaZero.Research Station Three
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 4
+  + seen AreaZero.Research Station Three
+=== AreaZero.StationTwo
+from the trigger at 3,15 of AreaZero
+way -
+  Professor Sada> The second station. You're making good time. Mind the tall grass: what lives in it is older, or newer, than it looks.
+  Penny> This place has its own weather. The light comes down green. It's kind of beautiful, actually.
+  Arven> There's a journal in there. The professor's handwriting... I'd know it anywhere. Let's keep going.
+  * scene AreaZero.Research Station Two
+  * endscene
+  = VAR_PALDEA_ZERO 0 -> 3
+  + seen AreaZero.Research Station Two
+=== AreaZero_ZeroLab.Arven
+from Arven at 5,9 of AreaZero_ZeroLab
+way -
+  Arven> Whatever's waiting in there, we face it together. Go on, I've got your back.
+=== AreaZero_ZeroLab.Nemona
+from Nemona at 9,9 of AreaZero_ZeroLab
+way -
+  Nemona> My heart's pounding! The best battles are always the scary ones, right?
+=== AreaZero_ZeroLab.Penny
+from Penny at 4,10 of AreaZero_ZeroLab
+way -
+  Penny> I'll stay right here. Near the door. In case we need to run. That's a plan, right?
+=== AreaZero_ZeroLab.Professor
+from Koraidon at 10,6 of AreaZero_ZeroLab
+from Miraidon at 10,6 of AreaZero_ZeroLab
+from Professor Sada at 7,5 of AreaZero_ZeroLab
+from Professor Turo at 7,5 of AreaZero_ZeroLab
+way -
+  Professor Sada> Follow the stations down. I'll be waiting.
 === Artazon_Gym.GymGuide
 from Gym Guide at 2,7 of Artazon_Gym
 way -
@@ -275,30 +388,12 @@ way -
 === Artazon_Gym.Receptionist
 from Receptionist at 6,4 of Artazon_Gym
 way -
-  Receptionist> Welcome to Artazon Gym! Brassius's gym test is behind me: find the Sunflora hiding in his garden.
-  Receptionist> They stand perfectly still among the flowers. Find all three and Brassius will see you.
+  Receptionist> Welcome to Artazon Gym! Brassius's gym test is out in the town: find the Sunflora hiding among Artazon's flowers.
+  Receptionist> They stand perfectly still, like sculptures. Find all three, then come through to Brassius's garden.
 === Artazon_GymTest.Leader
 from Brassius at 6,3 of Artazon_GymTest
 way -
   Brassius> A challenger who is not yet a student? Enrol at the academy first, and then we shall make art.
-=== Artazon_GymTest.Test1
-from Sunflora at 6,13 of Artazon_GymTest
-way -
-  > That flower in the gap has eyes... It's a Sunflora, standing perfectly still! Lucas said hello.
-  > Found out, the Sunflora hopped off into the flower beds!
-  + FLAG_PALDEA_ARTAZON_TEST_1
-=== Artazon_GymTest.Test2
-from Sunflora at 6,9 of Artazon_GymTest
-way -
-  > This sunflower is a little too cheerful. It's another Sunflora! Lucas tapped it on the leaf.
-  > It giggled and hopped away!
-  + FLAG_PALDEA_ARTAZON_TEST_2
-=== Artazon_GymTest.Test3
-from Sunflora at 6,5 of Artazon_GymTest
-way -
-  > The last Sunflora was hiding in plain sight. Lucas found it!
-  > It spun round and hopped off. Every Sunflora has been found!
-  + FLAG_PALDEA_ARTAZON_TEST_3
 === Ballonlea_Stadium.GymGuide
 from Gym Guide at 2,7 of Ballonlea_Stadium
 way -
@@ -2718,6 +2813,19 @@ way 1, from answer 1
 from Youngster at 3,7 of CanalaveLibrary3F
 way -
   Youngster> There's one book I'm after, and it's out on loan every single time I come. Every time!
+=== Cascarrafa_Gym.GymGuide
+from Gym Guide at 2,7 of Cascarrafa_Gym
+way -
+  Gym Guide> Kofu's Water types hit hard and take a hit well. Grass and Electric moves will serve you best here.
+=== Cascarrafa_Gym.Receptionist
+from Receptionist at 6,4 of Cascarrafa_Gym
+way -
+  Receptionist> Welcome to Cascarrafa Gym! Kofu's gym test is an errand. Go through and he'll tell you what he needs.
+  Receptionist> Between you and me, it's always something from the market in Porto Marinada. He's a cook before he's anything else.
+=== Cascarrafa_GymTest.Leader
+from Kofu at 6,3 of Cascarrafa_GymTest
+way -
+  Kofu> A challenger who isn't a student? Ah, no, no. Enrol at the academy in Mesagoza first, then come back hungry!
 === CasteliaCity.Harlequin
 from Harlequin at 44,8 of CasteliaCity
 way -
@@ -3755,21 +3863,21 @@ from Katy at 6,3 of Cortondo_GymTest
 way -
   Katy> A challenger? Oh, but you aren't enrolled at the academy yet. Come back once term has started, dear.
 === Cortondo_GymTest.Test1
-from Smoliv at 6,13 of Cortondo_GymTest
+from Giant Olive at 6,13 of Cortondo_GymTest
 way -
-  > A Smoliv has curled up into a ball in the gap, as round as an olive. Lucas gave it a push...
+  > A giant olive, taller than a Smoliv, sits in the gap. Lucas gave it a push...
   > It rolled away down the course and into the goal!
   + FLAG_PALDEA_CORTONDO_TEST_1
 === Cortondo_GymTest.Test2
-from Smoliv at 6,9 of Cortondo_GymTest
+from Giant Olive at 6,9 of Cortondo_GymTest
 way -
-  > Another Smoliv, rolled up tight. Lucas gave it a push...
+  > Another giant olive, glossy and green. Lucas gave it a push...
   > It bumped off the rail and trundled into the goal!
   + FLAG_PALDEA_CORTONDO_TEST_2
 === Cortondo_GymTest.Test3
-from Smoliv at 6,5 of Cortondo_GymTest
+from Giant Olive at 6,5 of Cortondo_GymTest
 way -
-  > The last Smoliv was the roundest of all. Lucas gave it a good push...
+  > The last olive was the roundest of all. Lucas gave it a good push...
   > It rolled straight into the goal. The olive roll is cleared!
   + FLAG_PALDEA_CORTONDO_TEST_3
 === CoumarineCity_EastHouse.GoodRod
@@ -4861,6 +4969,19 @@ way -
 from Xerneas at 10,4 of GeosengeTown_FlareHQ
 way -
   > A great Pokémon sleeps among the machines, its horns as still and grey as a dead tree.
+=== Glaseado_Gym.GymGuide
+from Gym Guide at 2,7 of Glaseado_Gym
+way -
+  Gym Guide> Grusha's Ice types hate Fire, Fighting, Rock and Steel moves. His last one Terastallizes. Dress warmly.
+=== Glaseado_Gym.Receptionist
+from Receptionist at 6,4 of Glaseado_Gym
+way -
+  Receptionist> Welcome to Glaseado Gym! Grusha's test is the snowslope run. The coach outside will start you off.
+  Receptionist> Ride down through the three gates in order, all the way to the line at the bottom. Then come back up here.
+=== Glaseado_GymTest.Leader
+from Grusha at 6,3 of Glaseado_GymTest
+way -
+  Grusha> Not a student at the academy? Then go back down the mountain. I don't battle outside the rules.
 === GlobalTerminal1F.BackdropLady
 from Breeder at 13,3 of GlobalTerminal1F
 way -
@@ -6677,30 +6798,12 @@ way -
 === Levincia_Gym.Receptionist
 from Receptionist at 6,4 of Levincia_Gym
 way -
-  Receptionist> Welcome to Levincia Gym! Iono's gym test is live on her stream: find her Wattrel hiding on the set.
-  Receptionist> Three of them, tucked away behind the lights. Find them all and Iono will battle you on camera!
+  Receptionist> Welcome to Levincia Gym! Iono's gym test is live on her stream: find her Wattrel hiding about the city.
+  Receptionist> Three of them, tucked away in the streets and on the sea wall. Find them all and Iono will battle you on camera!
 === Levincia_GymTest.Leader
 from Iono at 6,3 of Levincia_GymTest
 way -
   Iono> A challenger who isn't a student yet? The chat says enrol at the academy first! Then come back, okay?
-=== Levincia_GymTest.Test1
-from Wattrel at 6,13 of Levincia_GymTest
-way -
-  > Something is fluttering behind the light rig. It's a Wattrel! Lucas pointed it out to the camera.
-  > The Wattrel squawked and flew off the set!
-  + FLAG_PALDEA_LEVINCIA_TEST_1
-=== Levincia_GymTest.Test2
-from Wattrel at 6,9 of Levincia_GymTest
-way -
-  > A Wattrel is hiding in a coil of cable. Lucas found it!
-  > It flapped away to a round of cheering from the chat!
-  + FLAG_PALDEA_LEVINCIA_TEST_2
-=== Levincia_GymTest.Test3
-from Wattrel at 6,5 of Levincia_GymTest
-way -
-  > The last Wattrel was perched right on top of the camera. Lucas spotted it!
-  > It took off in a shower of sparks. Every Wattrel has been found!
-  + FLAG_PALDEA_LEVINCIA_TEST_3
 === LockworkCellHoenn.Admin
 from Rafe Ottoline at 6,4 of LockworkCellHoenn
 way 0
@@ -7521,6 +7624,55 @@ way 1.0.0, from answer 1
 way 1.0.1, from answer 3
   Master> Not this time. Raise Turtwig a little more, and the two of you come back to me.
   * battle master_turtwig alone Turtwig noitems Lost
+=== Medali_Gym.GymGuide
+from Gym Guide at 2,7 of Medali_Gym
+way -
+  Gym Guide> Larry's Normal types have no weakness but Fighting moves. Bring one, and watch for his Tera at the end.
+=== Medali_Gym.Receptionist
+from Receptionist at 6,4 of Medali_Gym
+way -
+  Receptionist> Welcome to Medali Gym! Larry's gym test is at the Treasure Eatery on the square: order the secret menu.
+  Receptionist> Nobody here will tell you what it is. Well. Nobody here. Try asking around town.
+=== Medali_GymTest.Leader
+from Larry at 6,3 of Medali_GymTest
+way -
+  Larry> You're not enrolled at the academy, are you. Then I can't battle you. Rules. Come back once you are.
+=== Medali_TreasureEatery.Order
+from Waiter at 5,3 of Medali_TreasureEatery
+way 0.0.0
+  Waiter> Welcome to the Treasure Eatery! What can I get you?
+  Waiter> What will you order?
+  Waiter> Anything on the side?
+  Waiter> And how would you like them?
+  > The waiter's eyebrows went up. He leaned in and lowered his voice.
+  Waiter> Grilled rice balls, lemon on the side, extra crispy. That's the secret order. You've passed Larry's test!
+  Waiter> Head up to the gym when you've eaten. He'll be expecting you. Probably. He's always expecting something.
+  ? What will you order? = Grilled rice balls
+  ? Anything on the side? = Lemon
+  ? And how would you like them? = Extra crispy
+  * scene Medali_TreasureEatery.The secret order
+  * endscene
+  + FLAG_PALDEA_MEDALI_TEST_DONE
+  + seen Medali_TreasureEatery.The secret order
+way 0.0.1, from answer 3
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? And how would you like them? = Just as they come
+way 0.2, from answer 2
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? Anything on the side? = No side
+way 0.1, from answer 2
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? Anything on the side? = Mustard
+way 2, from answer 1
+  Waiter> Take your time. Ask around town, if you're after something special.
+  ? What will you order? = Nothing, thanks
+way 1, from answer 1
+  Waiter> Coming right up, just as it is on the menu. Enjoy your meal!
+  > It was very good. But it wasn't the secret order.
+  ? What will you order? = Seafood stew
 === MegaloTower.Necrozma
 from Necrozma at 7,4 of MegaloTower
 way 0
@@ -7561,6 +7713,41 @@ way -
 from Director Clavell at 7,4 of Mesagoza_AcademyHall
 way -
   Director Clavell> Welcome to the academy. Term begins properly tomorrow; tonight, settle in.
+=== Montenevera_Gym.GymGuide
+from Gym Guide at 2,7 of Montenevera_Gym
+way -
+  Gym Guide> Ryme's Ghost types shrug off Normal and Fighting moves. Dark and Ghost moves hit them hard. Watch for her Tera at the end.
+=== Montenevera_Gym.Receptionist
+from Receptionist at 6,4 of Montenevera_Gym
+way -
+  Receptionist> Welcome to Montenevera Gym! Ryme's gym test is a rap battle in the hall. Answer the MC's lines in time with the beat.
+  Receptionist> The trick is to listen for the rhyme. The crowd always knows before the challenger does.
+=== Montenevera_GymTest.Leader
+from Ryme at 6,3 of Montenevera_GymTest
+way -
+  Ryme> Not enrolled at the academy? Then this stage isn't yours yet. Come back with a student card.
+=== Montenevera_GymTest.RapBattle
+from MC at 8,16 of Montenevera_GymTest
+way 0.0
+  MC> Yo! You want Ryme? You go through me first. Three lines, you answer each one with a line that rhymes. Ready? Hit it!
+  MC> Came up the mountain where the cold wind blows...
+  MC> Answer the MC!
+  MC> Ha! Not bad! That's one.
+  MC> Line two! Here in Montenevera, the snow don't quit...
+  MC> Answer the MC!
+  > The beat stumbled. Somewhere in the crowd, somebody winced.
+  MC> Ohhh, you lost the rhyme! No shame. Talk to me again and I'll give you that line one more time.
+  ? Answer the MC! = Got my team behind me, and the whole crowd knows!
+  ? Answer the MC! = Can we turn the heating up?
+  = VAR_PALDEA_MONTENEVERA_RAP 0 -> 1
+way 2, from answer 1
+  > The beat stumbled. Somewhere in the crowd, somebody winced.
+  MC> Ohhh, you lost the rhyme! No shame. Talk to me again and I'll give you that line one more time.
+  ? Answer the MC! = Is there a café here?
+way 1, from answer 1
+  > The beat stumbled. Somewhere in the crowd, somebody winced.
+  MC> Ohhh, you lost the rhyme! No shame. Talk to me again and I'll give you that line one more time.
+  ? Answer the MC! = I forgot my scarf at home.
 === Motostoke_Hotel.HotelClerk
 from Hotel Clerk at 5,4 of Motostoke_Hotel
 way -
@@ -7821,6 +8008,109 @@ way 1.1, from answer 2
   Park Attendant> The score is the Pokémon's own points, plus points for catching them quickly, and for never catching two of a type in a row. A good score earns a berry!
   ? What shall I read out of the manual? = The Catching Show
   + FLAG_TALKED_TO_PAL_PARK_LOBBY_RECEPTIONIST
+=== PaldeaLeague_Court.Geeta
+from Geeta at 7,5 of PaldeaLeague_Court
+way 0
+  Geeta> Welcome. I am Geeta, chair of the Pokémon League and its Top Champion. The four have told me about you, and they rarely agree.
+  Geeta> The last step of the assessment is mine. Show me the Trainer Paldea's gyms and Elite Four have shaped.
+  Geeta> ...Well. There's no arguing with that. By the League's authority, you are a Champion of Paldea. Congratulations.
+  Geeta> Only, it seems somebody has been waiting for that word longer than any of us.
+  * scene PaldeaLeague_Court.Geeta the Top Champion
+  * battle paldea_geeta Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_NEMONA
+  = VAR_PALDEA_LEAGUE 0 -> 6
+  + beaten paldea_geeta
+  + seen PaldeaLeague_Court.Geeta the Top Champion
+way 1, from answer 1
+  * battle paldea_geeta Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Hassel
+from Hassel at 7,5 of PaldeaLeague_Court
+way 0
+  Hassel> Ah. You've come so far, and you've come in colour. I'm Hassel. At the academy I teach art; here, I am the last of the Elite Four.
+  Hassel> A battle is a canvas, and my dragons paint with a heavy brush. Show me what you've made of your journey!
+  Hassel> Magnificent... I may weep. A masterpiece, and not of my making. Geeta, the Top Champion, waits for you now.
+  * scene PaldeaLeague_Court.Hassel of the Elite Four
+  * battle paldea_hassel Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_GEETA
+  = VAR_PALDEA_LEAGUE 0 -> 5
+  + beaten paldea_hassel
+  + seen PaldeaLeague_Court.Hassel of the Elite Four
+way 1, from answer 1
+  * battle paldea_hassel Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Larry
+from Larry at 7,5 of PaldeaLeague_Court
+way 0
+  Larry> You again. Yes, I keep Medali's gym. I also sit on the Elite Four. The League found out I was good at both and gave me both. Typical.
+  Larry> Normal types are my day job. Up here I fly. Let's get this done before the overtime starts.
+  Larry> ...Right. Beaten twice by the same challenger. I'll file that under things I'm not surprised by. Hassel's next.
+  * scene PaldeaLeague_Court.Larry of the Elite Four
+  * battle paldea_larry_elite Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_HASSEL
+  = VAR_PALDEA_LEAGUE 0 -> 4
+  + beaten paldea_larry_elite
+  + seen PaldeaLeague_Court.Larry of the Elite Four
+way 1, from answer 1
+  * battle paldea_larry_elite Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Nemona
+from Nemona at 7,5 of PaldeaLeague_Court
+way 0
+  Nemona> Lucas! You did it! Geeta says you're a Champion, so that makes two of us, and you know what that means.
+  Nemona> Ever since that first battle on my terrace I've wanted this one: you and me, both at our very best, no holding back.
+  Nemona> Okay. Deep breath. Let's go!
+  Nemona> ...That was the best battle of my whole life. I mean it. I've never been so happy to lose!
+  Nemona> Come on, rival. Let's get your team into the Hall of Fame where it belongs. Then we start all over again tomorrow!
+  > Lucas saved the game.
+  * scene PaldeaLeague_Court.Nemona Champion to Champion
+  * battle paldea_nemona_8c Won
+  * endscene
+  * fade out
+  * halloffame
+  * open Ceremony
+  * warp CaboPoco_PlayersHouse_2F 4 6
+  * save
+  * sound save
+  + PaldeaHallOfFame
+  = VAR_PALDEA_LEAGUE 0 -> 7
+  + beaten paldea_nemona_8c
+  + seen PaldeaLeague_Court.Nemona Champion to Champion
+way 1, from answer 1
+  * battle paldea_nemona_8c Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Poppy
+from Poppy at 7,5 of PaldeaLeague_Court
+way 0
+  Poppy> Hi hi! I'm Poppy, and I'm one of the Elite Four too. The grown-ups always look surprised when I say that.
+  Poppy> My Pokémon are super tough, tougher than steel. Ready? You'd better be!
+  Poppy> Aww, you beat me fair and square. That's okay. I'll get even stronger and then I'll beat you back!
+  * scene PaldeaLeague_Court.Poppy of the Elite Four
+  * battle paldea_poppy Won
+  * endscene
+  + FLAG_PALDEA_LEAGUE_LARRY
+  = VAR_PALDEA_LEAGUE 0 -> 3
+  + beaten paldea_poppy
+  + seen PaldeaLeague_Court.Poppy of the Elite Four
+way 1, from answer 1
+  * battle paldea_poppy Lost
+  * scene over, unseen
+=== PaldeaLeague_Court.Rika
+from Rika at 7,5 of PaldeaLeague_Court
+way -
+  Rika> Interview first, then battles. My desk's in the lobby.
+=== PaldeaLeague_Lobby.Interview
+from Rika at 2,8 of PaldeaLeague_Lobby
+way -
+  Rika> Welcome to the Pokémon League. I hold the interviews for the Champion assessment, and I can only see challengers who carry all eight of Paldea's badges.
+  Rika> Come back when your case is full. I'll keep the chair warm for you.
+=== PaldeaLeague_Lobby.Staff
+from League Staff at 9,8 of PaldeaLeague_Lobby
+way -
+  League Staff> Welcome to the Pokémon League. Challengers for the Champion assessment see Rika at the desk for their interview first.
 === PaniolaRanch_Nursery.Keeper
 from Nursery Keeper at 6,4 of PaniolaRanch_Nursery
 way -
@@ -17699,6 +17989,7 @@ way -
 === common.PaldeaNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_PALDEA_HIDE_ARVEN_LIGHTHOUSE
   + FLAG_PALDEA_HIDE_CLAVELL_TERRACE
   + FLAG_PALDEA_HIDE_GROTTO_LEGENDS
   + FLAG_PALDEA_HIDE_NEMONA_GATE
@@ -18109,6 +18400,9 @@ way -
   TV> "It's 10:00 on Monday, and this is the time check!"
   TV> "Good morning! The dew is still on the grass, and the Pokémon are waking up."
   TV> "That was the time check. Stay tuned!"
+=== common.TeraCrystal
+from a trainer with lines of their own
+way -
 === common.TeraKeeper
 from a trainer with lines of their own
 way -
@@ -25616,6 +25910,19 @@ way 0
   + FLAG_DAILY_ALOLA_SCAN_HORSEA_MET
 way 1, from answer 1
   * wildbattle Horsea 18 Lost
+=== kalos_route_12.RaceStable
+from Stable Master at 220,481 of Kalos
+way 0
+  Stable Master> Welcome to the Blossom Road stable! Rhyhorn, Tauros and Rapidash are bred for speed here, and we race them round the track.
+  Stable Master> Any Pokémon big enough to carry a rider can run it. Hold the run button to push, press the button to jump the rocks, and lean into every turn.
+  Stable Master> Care to race your own Pokémon against my three riders?
+  Stable Master> First home! Not one of my riders has beaten that. Here is the stable's prize.
+  > Lucas received 3 Battle Point(s)!
+  ? Care to race your own Pokémon against my three riders? = Yes
+  * open Ride
+way 1, from answer 1
+  Stable Master> No hurry. The track isn't going anywhere. Come back whenever you like!
+  ? Care to race your own Pokémon against my three riders? = No
 === kalos_route_14.Neighbour
 from the trigger at 358,276 of Kalos
 way 0

@@ -1,0 +1,66 @@
+{
+  // Alfornada (plan 34 · PD6, its second session): the quiet town in the hills west of Cortondo, come to through
+  // Alfornada Cavern from behind Cortondo's Pokémon Center (carve/alfornada.json), its paved square, its gym against
+  // the south hills, its Pokémon Center east of the square and the ruins of the old temple on the knoll to the west.
+  // Tulip's test is her photographs, posed in her studio (Alfornada_GymTest.txt); the gym and the studio are rooms
+  // (Alfornada_Gym, Alfornada_GymTest)
+  "markers": [
+    { "name": "alfornada_cavern_east", "at": [-484, 12.0, -345], "yaw": 270 },
+    { "name": "alfornada_cavern_middle", "at": [-520, 12.0, -345], "yaw": 270 },
+    { "name": "alfornada_east", "at": [-562, 12.0, -345], "yaw": 270 },
+    { "name": "alfornada_square", "at": [-622, 12.0, -322], "yaw": 180 },
+    { "name": "alfornada_gym_door", "at": [-640, 12.0, -355], "yaw": 0 },
+    { "name": "alfornada_center_door", "at": [-589, 12.0, -299], "yaw": 0 },
+    { "name": "alfornada_ruins", "at": [-644, 12.0, -298], "yaw": 270 }
+  ],
+  "doors": [
+    {
+      "name": "alfornada_gym_door",
+      "box": { "min": [-642, 11.5, -358], "max": [-638, 15.5, -357] },
+      "room": "Alfornada_Gym", "at": [4, 8], "facing": "up",
+      "out": "alfornada_gym_door"
+    },
+    {
+      "name": "alfornada_center_door",
+      "box": { "min": [-590, 11.5, -302], "max": [-588, 15, -301] },
+      "room": "Alfornada_PokemonCenter", "at": [8, 12], "facing": "up",
+      "out": "alfornada_center_door"
+    }
+  ],
+  "solids": [
+    { "name": "Alfornada Gym", "min": [-660, 11, -378], "max": [-620, 20, -358], "building": { "kind": "gym", "town": "paldea", "sign": "GYM" } },
+    { "name": "Alfornada's Pokémon Center", "min": [-596, 11, -316], "max": [-582, 17.5, -302], "building": { "kind": "pokemonCenter", "town": "paldea" } },
+    { "name": "the house on the square", "min": [-612, 11, -298], "max": [-600, 16.5, -286], "building": { "kind": "house", "town": "paldea", "storeys": 1 } }
+  ],
+  "zones": [
+    {
+      "name": "alfornada_grass",
+      "polygon": [[-580, -298], [-564, -298], [-564, -280], [-580, -280]],
+      "minY": 8, "maxY": 18,
+      "slots": [
+        { "species": "Flittle", "minLevel": 42, "maxLevel": 45, "weight": 25 },
+        { "species": "Hatenna", "minLevel": 42, "maxLevel": 45, "weight": 20 },
+        { "species": "Indeedee", "minLevel": 42, "maxLevel": 45, "weight": 15 },
+        { "species": "Girafarig", "minLevel": 42, "maxLevel": 45, "weight": 20 },
+        { "species": "Gothita", "minLevel": 42, "maxLevel": 45, "weight": 20 }
+      ],
+      "density": 2, "cap": 4
+    }
+  ],
+  "people": [
+    {
+      "name": "student_rosa", "at": [-530, 12.0, -341], "yaw": 90, "trainer": "paldea_student_rosa",
+      "lines": ["Nobody comes through this cavern without a battle. Well, I say nobody. You're the first in a week!", "The town's just ahead. Tulip will want your photo."],
+      "sight": { "length": 9, "angle": 40 }
+    },
+    {
+      "name": "alfornada_elder", "at": [-640, 12.0, -306], "yaw": 270, "look": "old_man", "displayName": "Old Man",
+      "lines": ["Those pillars were a temple once, before anyone wrote down when. We keep the grass off them. It seems polite."]
+    }
+  ],
+  "trees": [
+    { "at": [-672, -340], "kind": "round", "size": 0.9 },
+    { "at": [-566, -370], "kind": "round" },
+    { "at": [-676, -282], "kind": "pine" }
+  ]
+}

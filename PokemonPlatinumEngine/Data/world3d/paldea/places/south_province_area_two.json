@@ -5,6 +5,10 @@
     { "name": "area_two_east", "at": [-100, 12.0, -326], "yaw": 270 },
     { "name": "area_two_west", "at": [-346, 12.0, -322], "yaw": 270 }
   ],
+  // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
+  "triggers": [
+    { "name": "crystal_area_two_1", "cylinder": { "at": [-262, -344], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalAreaTwo1" }
+  ],
   "zones": [
     {
       "name": "area_two_south",

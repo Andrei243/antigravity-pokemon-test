@@ -28,6 +28,24 @@ public sealed partial class ScriptRunner
                     lastNumber = host.Answer > 0 ? records.LastPaid : 0;
                 };
                 break;
+            case "race":
+                // The player's own mount (RESULT -1 with none of a riding size and able): the screen is told the track as race:<id>
+                if (records == null || RaceTracks.Get(course) == null) { Result = 0; lastNumber = 0; break; }
+                if (host.RaceMount == null) { Result = -1; lastNumber = 0; break; }
+                host.Open(ScriptScreen.Ride, Subject, RaceTracks.Prefix + course);
+                afterBusy = () =>
+                {
+                    Result = host.Answer;
+                    lastNumber = host.Answer > 0 ? records.LastPaid : 0;
+                };
+                break;
+            case "raceruns":
+                Result = records?.RunsOf(RaceTracks.Prefix + course) ?? 0;
+                break;
+            case "racebest":
+                Result = records?.BestOf(RaceTracks.Prefix + course) ?? 0;
+                lastNumber = Result;
+                break;
             case "runs":
                 Result = records?.RunsOf(course) ?? 0;
                 break;

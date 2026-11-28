@@ -984,6 +984,8 @@ public sealed partial class BattleCore : IBattleContext
         MoveToTheCentre();
         // A rotation battle's fallen front with nobody to send in turns away (plan 14 · B7)
         TurnPastTheFallen();
+        // A Tera Raid's clock runs out (plan 34 · PD7)
+        if (TheTeraClockRanOut()) yield break;
         Turn++;
         SetUpNextTurn();
         // The original's switch-in check opens every turn: Slow Start's five turns end here, and a shape follows the weather
@@ -1458,7 +1460,7 @@ public sealed partial class BattleCore : IBattleContext
         else
         {
             Say(IsHorde ? Text.Of("battle.defeatedTheHorde", ("player", playerName))
-                : TotemFell ? Text.Of("battle.defeatedTheTotem", ("player", playerName), ("pokemon", totem!.DisplayName))
+                : TotemFell ? Text.Of(Totem!.Titan ? "battle.defeatedTheTitan" : "battle.defeatedTheTotem",("player", playerName), ("pokemon", totem!.DisplayName))
                 : Text.Of("battle.defeatedTheWild", ("player", playerName), ("pokemon", JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName)))));
         }
         // What Pay Day scattered, up to the original's most
