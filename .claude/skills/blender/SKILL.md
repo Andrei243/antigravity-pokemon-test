@@ -1012,6 +1012,40 @@ bars, clouds that widened a model past its cell). Each form is its Mega's script
 - **A long thing held between two bones follows one of them**: a chain from the chest to a jaw is on the body's
   bone and drifts off the jaw as the jaw moves. Hang it from the part that moves most, or keep it short.
 
+## What Carpathia's first wave taught (2026-11-28)
+
+Seventy-nine species of the project's own region, each from one picture, a written brief and an older C# sculptor.
+
+- **A design with no game behind it is built from its picture, measured**: head height against the whole, head width
+  against the body, the largest part's size against the body, each written down for the picture and for the build.
+  The brief says what a blurred part is; the older sculptor says what parts someone found. The picture is one view:
+  the back is built from what the brief implies (a tail, a pack, the pattern carried round), never left plain.
+- **Build to the export's height, not the brief's metres.** The export stands where the game draws the species.
+- **The front camera sees the +X front three-quarter**: whatever the picture has on one side goes on +X; a crest, fan
+  or fin in the midline is edge-on until it leans 25 to 35 degrees toward +X; a door, a moon or a mark on the chest
+  sits on the +X front three-quarter.
+- **Nothing covers the face.** Fists, a held thing, a hammer beak: at chest height or on a shaft long enough to stand
+  clear, and a head with a long part before it may be turned some 20 degrees toward -X in the rest pose.
+- **Fur reads by its outline**: twelve to sixteen thick tapered locks that lift clear at their tips, a darker root and
+  a paler tip. Forty thin strands laid on a dome are a shell of feathers.
+- **A glower is a brow that cuts the top third of the eye** on a slope toward the nose, the eye large enough to show
+  the cut; a fused brow standing over an eye patch shadows the whole eye grey under EEVEE with nothing printed, so
+  keep the brow flat or paint it.
+- **A raised wing's hanging primaries are plates of their own**, each with its own frame: a chord cannot point down
+  within the raised wing's plane, and one sheet grows wide sideways.
+- **A closed profile turned by `lathe` is a ring**: coils of straw standing 0.02 proud of a fused core read as a
+  skep; a wreath is the same ring with flowers on it.
+- **A band on thin cloth is a strip thicker than the cloth**, so that it shows on both faces.
+- **Drips built as separate drops read as fangs or pearls**: make them short round lobes of the mass they hang from.
+- **Decals**: `decal()` takes its winding from its first triangle (move the centre a thousandth if a patch comes out
+  reversed); a decal cast along a steep normal under a brim lands on the brim (cast it forward); an eye with a
+  lifted corner needs two hand-mirrored patches; a lambda in `lay_eyes` captures a loop variable late (bind it as a
+  default).
+- **Paint with `on=` that includes the shoulder and thigh masses rings every leg**: paint the belly before the legs
+  are in the list, or keep the masses out.
+- **Asked of the kit again**: the board check printed in the `KIT:` line, a feather outline, a ring tube, a draped
+  cloth, a flower, a lock that follows a surface, a frill along a curve, a decal mirrored with its outline.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;

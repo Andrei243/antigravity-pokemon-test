@@ -338,6 +338,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - **Seen**: batch 5's board (`dex`, `94_dex_01`) looked at; Clopotitan close up. The boards of the salvaged batches are for the user's eye, a batch at a time (`dotnet run --project tools/ShotHarness -- <out dir> dex <species...>`).
 - **Left** (2026-11-28): none of the sculpts. Batches 7, 9 and 14, written on 2026-11-21, were found unmerged in their agents' worktrees and merged, with two fixes (Stalaghet's glints painted; the blind Proteu's row of the eye count). Clopotitan's strap bow round the roof is mostly inside the needle and shows only as its two front loops.
 - **The user's word of 2026-11-22**: these C# sculpts are what the game draws until the user sculpts Carpathia again in Blender ([plan 48](48-pokemon-in-blender.md)), from the week of 2026-11-23; the C# sculpts stay as the fallback, as every other species' do.
+- **Since 2026-11-28**: the first 79 species (Nos. 10001 to 10079, Lynkit to Coltarina) are sculpted again in Blender ([plan 48](48-pokemon-in-blender.md), "Carpathia, the first wave"), from the same pictures and briefs, with these sculptors read as a list of parts; the game draws the built files (`built/models`, git-ignored) where they are installed and these C# sculpts otherwise. The model tests of each batch still hold the C# sculpts. The later waves and the 25 regional forms follow in plan 48.
 
 ### CP8 forms as built (batch 14)
 

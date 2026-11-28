@@ -130,7 +130,26 @@ public class SculptExportTests
         // The game finds a model file by the letters and digits of its name, so the file still answers to its species
         Assert.Equal(ModelOverrides.Key("Type: Null"), ModelOverrides.Key(BlenderAnim.Sculpt.FileOf("Type: Null")));
         // No species or form is spelt with anything else a file's name may not hold but that colon
-        foreach (string species in PokemonModels.Species.Concat(PokemonModels.Forms))
+        foreach (string species in BlenderAnim.Sculpt.Names())
             Assert.DoesNotContain(BlenderAnim.Sculpt.FileOf(species), c => "<>:\"/\\|?*".Contains(c));
+    }
+
+    [Fact]
+    public void ASpeciesTheGameDrawsByRuleMayBeSculptedToo()
+    {
+        // The tool once took only the names the game sculpts by hand, and refused Carpathia's species with no sculptor
+        var names = BlenderAnim.Sculpt.Names().ToList();
+        Assert.Equal(names.Count, names.Distinct().Count());
+        foreach (string handBuilt in PokemonModels.Species.Concat(PokemonModels.Forms)) Assert.Contains(handBuilt, names);
+        foreach (var species in PokemonPlatinumEngine.Data.PokemonDatabase.Everyone())
+        {
+            Assert.Contains(species.Name, names);
+            foreach (var form in species.Forms ?? new()) Assert.Contains(form.Name, names);
+        }
+        // The hand-built come first and in their own order, so `sculpt all` builds what it always built first
+        Assert.Equal(PokemonModels.Species.Concat(PokemonModels.Forms).Distinct(), names.Take(PokemonModels.Species.Concat(PokemonModels.Forms).Distinct().Count()));
+        // A script is found by its name's letters and digits: no two names may come to one script
+        var byKey = names.GroupBy(BlenderAnim.Sculpt.KeyOf).Where(g => g.Count() > 1).Select(g => string.Join(" = ", g)).ToList();
+        Assert.True(byKey.Count == 0, "names that share a script: " + string.Join("; ", byKey));
     }
 }

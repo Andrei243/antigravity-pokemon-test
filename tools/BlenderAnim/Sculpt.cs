@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 
 namespace BlenderAnim;
@@ -30,13 +31,24 @@ internal static class Sculpt
     public static string ScriptOf(string species) =>
         Path.Combine(AppContext.BaseDirectory, "blender", "sculpts", KeyOf(species) + ".py");
 
+    /// <summary>
+    /// Every name a sculpt may be written for: the species and forms the game sculpts by hand, in their lists' order,
+    /// and after them every other species and form of the data. A species the game draws by rule (Carpathia's last
+    /// forty and its regional forms have no sculptor, plan 46) is sculpted in Blender all the same: its export is the
+    /// generated body, which gives the skeleton and the clips.
+    /// </summary>
+    public static IEnumerable<string> Names() =>
+        PokemonModels.Species.Concat(PokemonModels.Forms)
+            .Concat(PokemonDatabase.Everyone().SelectMany(s => (s.Forms ?? new()).Select(f => f.Name).Prepend(s.Name)))
+            .Distinct();
+
     /// <summary>The species that have a sculpt, by their scripts' names.</summary>
     public static IEnumerable<string> Sculpted()
     {
         string dir = Path.Combine(AppContext.BaseDirectory, "blender", "sculpts");
         if (!Directory.Exists(dir)) yield break;
         var scripts = Directory.GetFiles(dir, "*.py").Select(Path.GetFileNameWithoutExtension).ToHashSet(StringComparer.OrdinalIgnoreCase);
-        foreach (string species in PokemonModels.Species.Concat(PokemonModels.Forms))
+        foreach (string species in Names())
             if (scripts.Contains(KeyOf(species))) yield return species;
     }
 
@@ -81,9 +93,10 @@ internal static class Sculpt
     {
         var species = named.Count == 1 && named[0] == "all" ? Sculpted().ToList() : named.ToList();
         if (species.Count == 0) { Console.Error.WriteLine("no species has a sculpt in blender/sculpts"); return 2; }
+        var names = Names().ToHashSet();
         foreach (string s in species)
         {
-            if (!PokemonModels.Species.Concat(PokemonModels.Forms).Contains(s)) { Console.Error.WriteLine($"{s}: no species or form of that name (as PokemonModels spells it)"); return 2; }
+            if (!names.Contains(s)) { Console.Error.WriteLine($"{s}: no species or form of that name (as PokemonModels and the data spell it)"); return 2; }
             if (!File.Exists(ScriptOf(s))) { Console.Error.WriteLine($"{s}: no sculpt at blender/sculpts/{Path.GetFileName(ScriptOf(s))}"); return 2; }
         }
         string? root = RepositoryRoot();
