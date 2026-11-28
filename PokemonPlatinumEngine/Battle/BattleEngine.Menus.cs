@@ -155,10 +155,19 @@ public partial class BattleEngine
     /// outside because <see cref="BattleSetup.FriendPartner"/> gave it no mind of its own.
     /// </summary>
     public bool FriendChoosing => core.FriendPartner && MenuBattler.Trainer != null && Result == BattleResult.None
-        && (core.Request is ActionRequest || replacing);
+        && (Asking is ActionRequest || replacing);
 
     /// <summary>Whether a friend chooses for the partner's place in this battle (plan 13 · V20).</summary>
     public bool HasFriendPartner => core.FriendPartner;
+
+    /// <summary>
+    /// The pill over the commands where two share a side's menus: whose turn it is. A friend beside the player (plan 13 ·
+    /// V20) is "a friend"; in a battle of four (V21) each of the side's two trainers goes by their own name. Null where
+    /// one chooser has the menus.
+    /// </summary>
+    public string? TurnPill => !HasFriendPartner ? null
+        : link?.Client.Seats is { } seats ? Text.Of("battleMenu.playersTurn", ("player", FriendChoosing ? seats.Partner.Name : link.Client.Name))
+        : Text.Of(FriendChoosing ? "battleMenu.friendsTurn" : "battleMenu.playersTurn", ("player", PlayerIdentity.Name));
 
     /// <summary>
     /// The team the switch menu lists: the place's own (plan 13 · V20: a friend at the partner's place switches among
@@ -559,7 +568,8 @@ public partial class BattleEngine
         if (chosen.IsEgg) refusal = Text.Of("battle.anEggCantBattle");
         else if (PlayerSlots.Any(b => b.Pokemon == chosen && !chosen.IsFainted)) refusal = Text.Of("battle.isAlreadyInBattle", ("pokemon", chosen.DisplayName));
         else if (chosen.IsFainted) refusal = Text.Of("battle.hasNoEnergyLeft", ("pokemon", chosen.DisplayName));
-        else if (choices.Values.Any(a => a.Kind == ChoiceKind.Switch && a.SwitchTo == partyIndex)) refusal = Text.Of("battle.isAlreadyGoingIn", ("pokemon", chosen.DisplayName));
+        // (by the team: two who each have a team of their own may both send in their second, plan 13 · V20 and V21)
+        else if (choices.Any(a => a.Value.Kind == ChoiceKind.Switch && a.Value.SwitchTo == partyIndex && PlayerSlots[a.Key].Roster == MenuBattler.Roster)) refusal = Text.Of("battle.isAlreadyGoingIn", ("pokemon", chosen.DisplayName));
 
         // Something may be holding the Pokémon on the field (a fainted one's place is free to fill)
         if (refusal == null && link != null) refusal = LinkWhyNotSwitch(MenuBattler, partyIndex);

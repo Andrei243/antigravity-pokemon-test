@@ -6993,7 +6993,8 @@
       "gauntletBest": "Record {n}/{of}",
       "streakBest": "Record {n}",
       "puzzlesSolved": "{n}/{of} rezolvate",
-      "versus": "VERSUS"
+      "versus": "VERSUS",
+      "multi": "VERSUS, DOI CONTRA DOI"
     },
     "blurb": {
       "teams": "Construiește echipe de la zero: orice specie, cu nivelul, firea, abilitatea, obiectul și patru atacuri pe care le poate ști. Echipele sunt păstrate pe acest calculator, separat de orice salvare.",
@@ -7002,7 +7003,8 @@
       "puzzles": "O luptă oprită la jumătate, cu un scop: câștigă tura aceasta, rezistă unui atac, prinde un Pokémon. Fiecare aruncare a zarului e fixată, așa că doar ideea bună merge.",
       "friends": "Luptă cu antrenorul unui prieten la nivelul 50: un fișier de antrenor pus în dosarul trainers sau un cod lipit din clipboard. Îți poți trimite echipele în același fel.",
       "daily": "O rundă a Fabricii de Luptă trasă din data de azi: aceleași șase Pokémon de închiriat și aceiași șapte antrenori pentru toată lumea azi. Închiriază trei, fă un schimb după o victorie și vezi cât de departe ajungi. Se păstrează prima rundă a zilei.",
-      "versus": "Doi oameni la același ecran: fiecare alege o echipă și se luptă la nivelul 50. Fiecare alege pe rând, în spatele unei perdele, ca să nu vadă celălalt alegerea. Nimic nu se păstrează."
+      "versus": "Doi oameni la același ecran: fiecare alege o echipă și se luptă la nivelul 50. Fiecare alege pe rând, în spatele unei perdele, ca să nu vadă celălalt alegerea. Nimic nu se păstrează.",
+      "multi": "Patru oameni la același ecran, câte doi de fiecare parte, fiecare cu echipa lui, într-o luptă dublă la nivelul 50. Partenerii aleg pe rând; între cele două părți cade o perdea. Nimic nu se păstrează."
     },
     "clears": "Terminată de {n} ori",
     "daily": {
@@ -7024,7 +7026,9 @@
       "itemTitle": "Alege un obiect de ținut",
       "moveTitle": "Alege un atac",
       "versusFirst": "{player}: ce echipă?",
-      "versusSecond": "{player}: ce echipă?"
+      "versusSecond": "{player}: ce echipă?",
+      "multiFirstSide": "{player}, prima parte: ce echipă?",
+      "multiSecondSide": "{player}, a doua parte: ce echipă?"
     },
     "hint": {
       "begin": "Începe",
@@ -7636,6 +7640,8 @@
   "versus": {
     "first": "Jucătorul 1",
     "second": "Jucătorul 2",
+    "third": "Jucătorul 3",
+    "fourth": "Jucătorul 4",
     "curtain": {
       "pass": "Dă controlerul lui {player}",
       "lookAway": "{player}, uită-te în altă parte cât alege celălalt.",

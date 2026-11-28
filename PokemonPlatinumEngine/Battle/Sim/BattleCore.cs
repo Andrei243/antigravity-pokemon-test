@@ -787,6 +787,10 @@ public sealed partial class BattleCore : IBattleContext
         {
             Emit(new TrainersStand(Trainers[0].TrainerClass, Trainers.Count > 1 ? Trainers[1].TrainerClass : null));
             Say(IsRoyal ? RoyalBegins()
+                // A battle of four between players: each side reads the other's two (plan 13 · V21)
+                : Link && Partner != null && Trainers.Count > 1
+                ? Narration.Sided(BattleSide.Player, Text.Of("battle.wouldLikeToBattle", ("trainer", Trainers[0].FullTitle), ("trainer2", Trainers[1].FullTitle)),
+                    Text.Of("battle.wouldLikeToBattle", ("trainer", PlayerTitle), ("trainer2", Partner.FullTitle)))
                 : Trainers.Count > 1
                 ? Text.Of("battle.wouldLikeToBattle", ("trainer", Trainers[0].FullTitle), ("trainer2", Trainers[1].FullTitle))
                 : Link ? Narration.Sided(BattleSide.Player, Text.Of("battle.wantsToBattle", ("trainer", Trainers[0].FullTitle)), Text.Of("battle.wantsToBattle", ("trainer", PlayerTitle)))
@@ -1432,8 +1436,9 @@ public sealed partial class BattleCore : IBattleContext
         // A raid ends at the raiders' fourth fall, or as the boss falls, and never because the raiders are all down at once (plan 33 · GL3)
         if (EndTheRaid()) return;
         // Beside a partner the player is beaten once their own party is down, whatever the partner has left
-        // (BattleControllerPlayer_CheckBattleOver, for a battle with an AI partner)
-        bool beaten = !IsRaid && (Partner != null ? !PlayerParty.Members.Any(p => !p.IsFainted) : SideDefeated(PlayerSlots));
+        // (BattleControllerPlayer_CheckBattleOver, for a battle with an AI partner). A battle of four between players
+        // has no AI partner: its first side, like its second, is beaten once both its teams are down (plan 13 · V21)
+        bool beaten = !IsRaid && (Partner != null && !Link ? !PlayerParty.Members.Any(p => !p.IsFainted) : SideDefeated(PlayerSlots));
         if (beaten)
         {
             // subscript_battle_lost: a share of the money, by the team's highest level and the badges

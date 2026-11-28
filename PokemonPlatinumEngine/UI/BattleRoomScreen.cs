@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.UI;
 public enum RoomPage { Menu, PickTeam, Puzzles, Between, RunOver, PuzzleOver }
 
 /// <summary>The battle room's menu, in its order.</summary>
-public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles, Friends, Daily, Versus }
+public enum RoomEntry { Teams, Gauntlet, Streak, Puzzles, Friends, Daily, Versus, Multi }
 
 /// <summary>What the battle room asks the engine for, handed over once (<see cref="BattleRoomScreen.TakeRequest"/>).</summary>
 public abstract record RoomRequest;
@@ -28,6 +28,8 @@ public sealed record BeginDaily : RoomRequest;
 public sealed record TradeDaily : RoomRequest;
 /// <summary>Two people at one machine (plan 13 · V12): the first player's team and the second's, battling at level 50.</summary>
 public sealed record BeginVersus(int First, int Second) : RoomRequest;
+/// <summary>Four at one machine (plan 13 · V21): the four players' teams in their order, the first two against the last two.</summary>
+public sealed record BeginMulti(IReadOnlyList<int> Teams) : RoomRequest;
 
 /// <summary>
 /// The battle room (plan 13 · V13, V26; style guide, "Opening and title screen" and "Menu screens", "The battle room"): the
@@ -77,6 +79,10 @@ public sealed class BattleRoomScreen
 
     /// <summary>VERSUS's first player's team, once picked (plan 13 · V12); −1 while it is the first player's pick.</summary>
     public int VersusFirst { get; private set; } = -1;
+
+    /// <summary>The teams picked so far for a battle of four (plan 13 · V21), in the players' order.</summary>
+    public IReadOnlyList<int> MultiPicks => multiPicks;
+    private readonly List<int> multiPicks = new();
 
     /// <summary>Which challenge a team is being picked for.</summary>
     public RoomChallenge Picking => picking;
@@ -199,6 +205,10 @@ public sealed class BattleRoomScreen
                         VersusFirst = -1;
                         PickFor(RoomChallenge.Versus);
                         break;
+                    case RoomEntry.Multi:
+                        multiPicks.Clear();
+                        PickFor(RoomChallenge.Multi);
+                        break;
                     case RoomEntry.Puzzles:
                         AudioManager.PlaySound("select");
                         Show(RoomPage.Puzzles, 0);
@@ -218,6 +228,19 @@ public sealed class BattleRoomScreen
                         break;
                     }
                     Ask(new BeginVersus(VersusFirst, Cursor));
+                    break;
+                }
+                // Four at one machine picks four times (plan 13 · V21)
+                if (picking == RoomChallenge.Multi)
+                {
+                    multiPicks.Add(Cursor);
+                    if (multiPicks.Count < 4)
+                    {
+                        AudioManager.PlaySound("select");
+                        Show(RoomPage.PickTeam, Cursor);
+                        break;
+                    }
+                    Ask(new BeginMulti(multiPicks.ToList()));
                     break;
                 }
                 Ask(new BeginRun(picking, Cursor));
@@ -274,6 +297,16 @@ public sealed class BattleRoomScreen
                 AudioManager.PlaySound("cancel");
                 Show(RoomPage.Menu, (int)RoomEntry.Versus);
                 break;
+            case RoomPage.PickTeam when picking == RoomChallenge.Multi && multiPicks.Count > 0:
+                // Back to the player before
+                AudioManager.PlaySound("cancel");
+                Show(RoomPage.PickTeam, multiPicks[^1]);
+                multiPicks.RemoveAt(multiPicks.Count - 1);
+                break;
+            case RoomPage.PickTeam when picking == RoomChallenge.Multi:
+                AudioManager.PlaySound("cancel");
+                Show(RoomPage.Menu, (int)RoomEntry.Multi);
+                break;
             case RoomPage.PickTeam or RoomPage.Puzzles:
                 AudioManager.PlaySound("cancel");
                 Show(RoomPage.Menu, Page == RoomPage.Puzzles ? (int)RoomEntry.Puzzles : picking == RoomChallenge.Friend ? (int)RoomEntry.Friends : picking == RoomChallenge.Gauntlet ? (int)RoomEntry.Gauntlet : (int)RoomEntry.Streak);
@@ -304,14 +337,15 @@ public sealed class BattleRoomScreen
         Show(RoomPage.Menu, (int)RoomEntry.Friends);
     }
 
-    /// <summary>A VERSUS battle is over (plan 13 · V12): the room's menu again, on its row.</summary>
+    /// <summary>A VERSUS battle is over (plan 13 · V12, V21): the room's menu again, on the row it was begun from.</summary>
     public void AfterVersus(IReadOnlyList<BuiltTeam> teams)
     {
         Teams = teams;
         VersusFirst = -1;
+        multiPicks.Clear();
         IsActive = true;
         age = AppearTime;
-        Show(RoomPage.Menu, (int)RoomEntry.Versus);
+        Show(RoomPage.Menu, (int)(picking == RoomChallenge.Multi ? RoomEntry.Multi : RoomEntry.Versus));
     }
 
     private void PickFor(RoomChallenge kind)

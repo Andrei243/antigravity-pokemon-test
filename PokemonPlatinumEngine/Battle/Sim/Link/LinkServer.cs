@@ -127,8 +127,12 @@ public sealed class LinkServer
         var setup = Setup.Battle(picks[0]!, picks[1]!, Seed);
         Opening = BattleRecordFile.Opening(setup);
         Core = new BattleCore(setup);
-        views[0] = new SideView(BattleSide.Player, new[] { Core.PlayerParty.Members }, Core.Trainers[0].Party.Members);
-        views[1] = new SideView(BattleSide.Enemy, new[] { Core.Trainers[0].Party.Members }, Core.PlayerParty.Members);
+        // A side's own teams (a battle of four has two a side, plan 13 · V21), and where the other side's second begins
+        var player = new[] { Core.PlayerParty }.Concat(Core.Partner is { } with ? new[] { with.Party } : Array.Empty<Models.Party>())
+            .Select(p => (IReadOnlyList<Models.Pokemon>)p.Members).ToList();
+        var enemy = Core.Trainers.Select(t => (IReadOnlyList<Models.Pokemon>)t.Party.Members).ToList();
+        views[0] = new SideView(BattleSide.Player, player, enemy.SelectMany(t => t).ToList(), foeSplit: enemy.Count > 1 ? enemy[0].Count : 0);
+        views[1] = new SideView(BattleSide.Enemy, enemy, player.SelectMany(t => t).ToList(), foeSplit: player.Count > 1 ? player[0].Count : 0);
         Core.Start();
         Flush();
     }

@@ -67,14 +67,18 @@ public static class InputManager
     public static int PadIndex => padIndex;
 
     /// <summary>
-    /// A friend's turn in a battle (plan 13 · V20): set by the engine while a friend chooses for the partner's place, so
-    /// that the second pad (<see cref="FriendPad"/>), where one is plugged in, answers in place of the first, with the
-    /// first's buttons. The keyboard answers either turn. Off once <see cref="Reset"/>.
+    /// Whose turn it is where several share a battle, 0 to 3: set by the engine while a friend chooses for the partner's
+    /// place (plan 13 · V20: seat 1) and in a battle of four (V21: each of the four by their own), so that the seat's
+    /// own pad (<see cref="PadOfSeat"/>), where one is plugged in, answers in place of the first, with the first's
+    /// buttons. The keyboard answers any turn. 0 once <see cref="Reset"/>.
     /// </summary>
-    public static bool FriendsTurn { get; set; }
+    public static int Seat { get; set; }
 
-    /// <summary>The friend's pad: the one after the player's, round to the first.</summary>
-    public static int FriendPad => (padIndex + 1) % 4;
+    /// <summary>A seat's pad: seat 0's is the player's, the others the ones after it, round to the first.</summary>
+    public static int PadOfSeat(int seat) => (padIndex + seat) % 4;
+
+    /// <summary>The pad read on a seat's turn: its own where it is plugged in, else the player's (one controller passed round).</summary>
+    public static int PadFor(int seat, Func<int, bool> plugged) => seat != 0 && plugged(PadOfSeat(seat)) ? PadOfSeat(seat) : padIndex;
 
     /// <summary>
     /// Which device the player touched last (plan 12 · Q4): what a prompt names the controls of, and the pad that
@@ -108,7 +112,7 @@ public static class InputManager
         lastDevice = (int)InputDevice.Keyboard;
         CaptureRequested = false;
         Captured = null;
-        FriendsTurn = false;
+        Seat = 0;
         stick.Reset();
     }
 
@@ -245,8 +249,8 @@ public static class InputManager
     /// <summary>The pad as raylib reports it (the thin layer: everything made of it is <see cref="InputBindings"/>'s).</summary>
     private static PadSnapshot ReadPad()
     {
-        // A friend's turn in a battle reads the second pad where one is plugged in (plan 13 · V20)
-        int pad = FriendsTurn && Raylib.IsGamepadAvailable(FriendPad) ? FriendPad : padIndex;
+        // A shared battle reads the pad of whoever's turn it is, where one is plugged in (plan 13 · V20, V21)
+        int pad = PadFor(Seat, p => Raylib.IsGamepadAvailable(p));
         if (!Raylib.IsGamepadAvailable(pad)) return PadSnapshot.None;
         uint down = 0, pressed = 0;
         foreach (var button in Enum.GetValues<GamepadButton>())

@@ -111,9 +111,9 @@ public class VersusMatchTests
     }
 
     [Fact]
-    public void VersusIsTheBattleRoomsLastRowAndPicksTwoTeams()
+    public void VersusIsARowOfTheBattleRoomAndPicksTwoTeams()
     {
-        Assert.Equal(RoomEntry.Versus, BattleRoomScreen.Entries[^1]);
+        Assert.Contains(RoomEntry.Versus, BattleRoomScreen.Entries);
         var room = new BattleRoomScreen();
         var team = new BuiltTeam();
         room.Open(new[] { team, team }, Array.Empty<PuzzleFile>(), new BattleRoomRecords());

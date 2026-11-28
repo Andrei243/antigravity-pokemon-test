@@ -38,7 +38,14 @@ public partial class BattleEngine
     public bool WaitingForOther => link != null && HUD.MenuState == BattleMenuState.Waiting;
 
     /// <summary>The line the screen shows while it waits: "Waiting for {name}…", empty otherwise.</summary>
-    public string WaitingLine => WaitingForOther ? Text.Of("linkRoom.waiting", ("player", link!.Client.Hello?.FoeName ?? "")) : "";
+    public string WaitingLine => WaitingForOther ? Text.Of("linkRoom.waiting", ("player", FoeSideNames())) : "";
+
+    /// <summary>The other side as the waiting line names it: one player, or both trainers of a battle of four (plan 13 · V21).</summary>
+    private string FoeSideNames()
+    {
+        string first = link!.Client.Hello?.FoeName ?? "";
+        return link.Client.Seats is { } seats ? BattleCore.JoinNames(new[] { first, seats.FoePartnerName }) : first;
+    }
 
     /// <summary>
     /// A link battle's screen (plan 28 · I3): plays <paramref name="client"/>'s view as it comes and answers what the
@@ -47,32 +54,44 @@ public partial class BattleEngine
     /// </summary>
     /// <param name="playerLook">Who stands on the player's platform (their look); the class's look when null.</param>
     /// <param name="foeLook">Who stands across the field.</param>
-    public static BattleEngine ForLink(LinkClient client, bool scene = true, string? playerLook = null, string? foeLook = null)
+    /// <param name="partnerLook">Who stands beside the player in a battle of four (plan 13 · V21).</param>
+    /// <param name="foePartnerLook">And beside the one across the field.</param>
+    public static BattleEngine ForLink(LinkClient client, bool scene = true, string? playerLook = null, string? foeLook = null,
+        string? partnerLook = null, string? foePartnerLook = null)
     {
         if (client.Hello is not { } hello) throw new System.InvalidOperationException("The room hasn't greeted this player yet");
         client.AnswersByItself = false;
         var mine = new Party();
         foreach (var p in client.Own) mine.Add(p);
-        var foe = new Trainer
+        Trainer Seat(string name, IEnumerable<Pokemon> team)
         {
-            Id = "link_" + hello.FoeName,
-            Name = hello.FoeName,
-            TrainerClass = LinkSetup.PlayerClass,
-            Look = null,
-            DoubleBattle = hello.Room.Format == BattleFormat.Double
-        };
-        // A foe is known by its preview: its bar is drawn on its stand-in's own scale, full until the view says otherwise
-        foreach (var standIn in client.FoeStandIns)
-        {
-            standIn.CurrentHP = standIn.MaxHP;
-            foe.Party.Add(standIn);
+            var seated = new Trainer
+            {
+                Id = "link_" + name,
+                Name = name,
+                TrainerClass = LinkSetup.PlayerClass,
+                Look = null,
+                DoubleBattle = hello.Room.Format == BattleFormat.Double
+            };
+            foreach (var p in team) seated.Party.Add(p);
+            return seated;
         }
+        // A foe is known by its preview: its bar is drawn on its stand-in's own scale, full until the view says otherwise
+        foreach (var standIn in client.FoeStandIns) standIn.CurrentHP = standIn.MaxHP;
+        // A battle of four (plan 13 · V21): the foe's preview is its two trainers' one after the other, and this side's
+        // second trainer stands in its second place, chosen for through the same menus as a friend's (V20)
+        var seats = client.Seats;
+        var foes = seats == null
+            ? new List<Trainer> { Seat(hello.FoeName, client.FoeStandIns) }
+            : new List<Trainer> { Seat(hello.FoeName, client.FoeStandIns.Take(seats.FoeSplit)), Seat(seats.FoePartnerName, client.FoeStandIns.Skip(seats.FoeSplit)) };
         var setup = new BattleSetup
         {
             PlayerParty = mine,
             Inventory = new Inventory(),
             Pokedex = new Pokedex(),
-            Trainers = new List<Trainer> { foe },
+            Trainers = foes,
+            Partner = seats == null ? null : Seat(seats.Partner.Name, client.PartnerOwn),
+            FriendPartner = seats != null,
             Format = hello.Room.Format,
             // The stage is never started: it draws nothing, from these dice or the game's
             Random = new BattleRandom(0),
@@ -85,6 +104,11 @@ public partial class BattleEngine
         var face = new BattleEngine(setup, null, new LinkScreenFeed(client));
         // The other player stands across the field in their own look, where the screen was told it
         if (foeLook != null) face.Anim.EnemyTrainer = foeLook;
+        if (seats != null)
+        {
+            if (partnerLook != null) face.Anim.PartnerTrainer = partnerLook;
+            if (foePartnerLook != null) face.Anim.EnemyTrainer2 = foePartnerLook;
+        }
         return face;
     }
 

@@ -214,8 +214,8 @@ internal static partial class ModernUi
                 bool balls = battle.Kind is BattleKind.Safari or BattleKind.PalPark;
                 // In a rotation battle the box names the one the turntable is turned to (plan 14 · B7)
                 MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : battle.IsRotation ? battle.Fighter.DisplayName : active.DisplayName,
-                    // Whose turn it is where a friend shares the menus (plan 13 · V20)
-                    speaker: battle.HasFriendPartner ? Text.Of(battle.FriendChoosing ? "battleMenu.friendsTurn" : "battleMenu.playersTurn", ("player", PlayerIdentity.Name)) : null);
+                    // Whose turn it is where two share the menus (plan 13 · V20, V21)
+                    speaker: battle.TurnPill);
                 var (big, labels) = CommandLabels(battle);
                 Color[] colors = { Gold, Green, Blue };
                 Button(CommandRect(0), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);

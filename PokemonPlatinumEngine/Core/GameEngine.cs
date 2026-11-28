@@ -1427,8 +1427,8 @@ public partial class GameEngine
         // The mouse (plan 12 · Q6, Q7): a hover moves the screen's cursor, a click is its Confirm, a right click its Cancel
         KeepThePointer(dt);
 
-        // A friend at the partner's place answers their turns on the second pad, read from the next frame (plan 13 · V20)
-        InputManager.FriendsTurn = flow.State == GameState.Battle && flow.Battle?.FriendChoosing == true;
+        // Whoever shares a battle answers on their own pad, read from the next frame (plan 13 · V20, V21)
+        InputManager.Seat = SeatNow();
 
         switch (flow.State)
         {
