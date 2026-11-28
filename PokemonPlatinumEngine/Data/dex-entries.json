@@ -14789,5 +14789,439 @@
       "Villagers speak to it kindly and never call it by its plain name, for fear of offending it. Those who treat it well find their chickens left alone.",
       "It wears a tiny bridal veil edged in red and black thread and a wreath of wild flowers. It often pauses half turned away, one paw raised."
     ]
+  },
+  "Urslet": {
+    "habitat": "Forest",
+    "entries": [
+      "It will climb any tree that smells of honey, whatever the bees may think of it. Afterwards it licks its sticky nose and curls up for a long nap.",
+      "A pale crescent marks the fur on its chest, and its muzzle is the colour of honey. Its small round ears prick up at the faintest buzzing."
+    ]
+  },
+  "Ursabrun": {
+    "habitat": "Mountain",
+    "entries": [
+      "It digs for roots and bulbs on the high slopes, turning the soil over as it goes. Mountain people give it a wide path and speak of it with great respect.",
+      "A hump of muscle rises over its shoulders, and a grizzled silver mane runs down its back. Moss and pine needles cling to its thick coat."
+    ]
+  },
+  "Lupling": {
+    "habitat": "Forest",
+    "entries": [
+      "It howls at passing clouds, bells and even its own echo, hoping someone will answer. When the pack replies, it wags its tail so hard that it topples over.",
+      "A darker saddle lies across its grey back, and a pale mask surrounds its amber eyes. A tuft of fur falls over its forehead like a fringe."
+    ]
+  },
+  "Lupodac": {
+    "habitat": "Mountain",
+    "entries": [
+      "People of old carried its likeness into battle on their banners. It never fights alone if it can help it, and it will not abandon a wounded packmate.",
+      "Bronze bands of fur circle its forelegs like a warrior's bracers. A thick collar spreads over its shoulders like a cloak beneath its dark mane."
+    ]
+  },
+  "Caprita": {
+    "habitat": "Mountain",
+    "entries": [
+      "It practises leaping from stone to stone until it can land on a point no wider than its hoof. A slip only makes it try again.",
+      "Two small hooked horns top its head, and a dark stripe runs through each eye. Pebbles cling to its legs, and its hooves are hard as stone."
+    ]
+  },
+  "Capraneagra": {
+    "habitat": "Mountain",
+    "entries": [
+      "It watches from high ledges where few others can follow. When rocks begin to fall, it whistles a sharp warning that echoes across the whole valley.",
+      "In winter its coat turns almost black around a white face. Plates of stone shield its shoulders and knees as it leaps from crag to crag."
+    ]
+  },
+  "Cerbel": {
+    "habitat": "Forest",
+    "entries": [
+      "It lies still in the ferns while its mother feeds, and its spotted coat blends into the dappled shade. It rarely makes a sound until she returns.",
+      "Two small green shoots with tiny leaves sprout where antlers will one day grow. White spots are scattered along its reddish brown back."
+    ]
+  },
+  "Cerbanor": {
+    "habitat": "Forest",
+    "entries": [
+      "Hunters who meet its gaze often lower their bows without knowing why. It is said to sense every living creature that moves through its part of the forest.",
+      "Moss, ivy and white flowers drape antlers as broad as the boughs of a tree. A faint ring of light hangs between the tines."
+    ]
+  },
+  "Zimbrel": {
+    "habitat": "Forest",
+    "entries": [
+      "It butts at stumps and rocks to try its stubby horns. The herd keeps it in the middle of the group, where nothing can reach it.",
+      "A short woolly hump rises from its back, and a curly forelock falls over its brow. A pale star marks the middle of its forehead."
+    ]
+  },
+  "Zimbrunt": {
+    "habitat": "Grassland",
+    "entries": [
+      "Once it plants its hooves, even a rushing flood cannot move it. Old stories say a ruler once chose where to build a town after following one.",
+      "A six-pointed star shines between its short curved horns. Its great dark hump and heavy beard make it look even larger than it is."
+    ]
+  },
+  "Acvilet": {
+    "habitat": "Mountain",
+    "entries": [
+      "It flaps its half-grown wings from the edge of the nest long before it can fly. Its parents bring food and ignore its fierce little shrieks.",
+      "White down still covers most of its body while dark feathers grow in. Its big talons and hooked beak look too large for such a small bird."
+    ]
+  },
+  "Acviltor": {
+    "habitat": "Mountain",
+    "entries": [
+      "It circles the highest peaks and dives faster than the eye can follow. It likes a fair contest, and screeches a challenge before it strikes.",
+      "A cape of golden feathers covers its nape. Its wing feathers end in sharp edges that shine like bronze when it banks into the sun."
+    ]
+  },
+  "Huhurez": {
+    "habitat": "Forest",
+    "entries": [
+      "It sits motionless in the old beech woods through the night. Villagers who hear its deep call beside their window take it as a warning to stay indoors.",
+      "Dark streaks on its pale chest form a shape like a crescent moon. It can turn its flat round face almost all the way behind it."
+    ]
+  },
+  "Ciocbit": {
+    "habitat": "Forest",
+    "entries": [
+      "It cannot pass a hollow trunk without tapping it to hear how it sounds. A good one keeps it drumming from morning until its beak aches.",
+      "It props itself on its stiff tail while it pecks, and a red cap sits on its spotted head. Little puffs of rhythm rise from the wood."
+    ]
+  },
+  "Ciocanor": {
+    "habitat": "Forest",
+    "entries": [
+      "Its drumming carries from one ridge to the next and tells others where it is. Blacksmiths sometimes time their hammers to its steady beat.",
+      "Its beak shines like polished steel, and a steel plate on its brow soaks up the shock of every blow. Its tail feathers are tipped with metal."
+    ]
+  },
+  "Tritonel": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It lives in cold mountain pools and rarely strays far from them. When the water runs low, it burrows into the damp mud and waits for rain.",
+      "Bright orange spots cover its belly, and a small wavy crest runs down its back. Its flat tail helps it dart between the stones."
+    ]
+  },
+  "Tritanor": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It rears up on its hind legs and spreads its crest to warn others away. Anyone who ignores the warning finds the poison along its edges very unpleasant.",
+      "A jagged crest runs from its head to the tip of its tail, lined with violet glands. Its orange belly is marked with black spots."
+    ]
+  },
+  "Viperin": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It warms itself on sunny rocks and coils tight when disturbed. It prefers to give a warning hiss and slip away rather than bite.",
+      "A dark zigzag runs down its thick grey back, and its head is shaped like an arrow. A tiny soft bump sits on the tip of its snout."
+    ]
+  },
+  "Cornviper": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It lies among limestone rubble where its rough scales look just like the stones. Goats graze around it without ever knowing it is there.",
+      "A horn like a sliver of stone juts from the tip of its snout. Its craggy side scales scrape loudly when it glides over rock."
+    ]
+  },
+  "Radascuta": {
+    "habitat": "Forest",
+    "entries": [
+      "It chews through rotten oak logs for many seasons while it grows. When two meet, they wrestle with their stubby pincers until one gives up.",
+      "A glossy chestnut shell covers its back, and its head is cream coloured. Its short jaws are not yet strong enough to lift much more than a leaf."
+    ]
+  },
+  "Radaskon": {
+    "habitat": "Forest",
+    "entries": [
+      "It rises on its hind legs and challenges rivals on the broad limbs of old oaks. The winner holds the branch until the next challenger arrives.",
+      "Its huge jaws branch like antlers of dark iron tipped with bronze. Its polished chestnut wing cases gleam like the armour of a knight."
+    ]
+  },
+  "Fluturel": {
+    "habitat": "Mountain",
+    "entries": [
+      "It curls up on the leaves of small mountain plants and sleeps through the cold nights. Warm morning sun wakes it, and it starts eating at once.",
+      "Rows of orange spots and soft white tufts run along its velvety black body. Its round face wears a sleepy smile as it chews."
+    ]
+  },
+  "Fluturapol": {
+    "habitat": "Mountain",
+    "entries": [
+      "It drifts over high meadows on the warm air and seldom flaps its wings. Shepherds say its coming means the snow has left the summer pastures.",
+      "Its broad white wings are slightly see-through, marked with black spots and red eyes ringed in black. White knobs tip its antennae."
+    ]
+  },
+  "Bradlet": {
+    "habitat": "Forest",
+    "entries": [
+      "It walks in short hops between the shadows of taller firs, looking for a bright spot to root. It stays still whenever someone is watching.",
+      "Its body is a cone of dark needles over a short brown trunk. A small cone hangs at its back like a tail."
+    ]
+  },
+  "Bradonor": {
+    "habitat": "Mountain",
+    "entries": [
+      "It stands among the snow-bound firs and shelters smaller creatures beneath its boughs. In the hardest winters, whole families of birds nest within it.",
+      "Its tiers of boughs hang heavy with snow and icicles. Two calm frost blue eyes look out from deep inside, above a beard of frost."
+    ]
+  },
+  "Floricolt": {
+    "habitat": "Mountain",
+    "entries": [
+      "It clings to cracks in the cliffs where little else can grow. Climbers who find one leave it alone, since picking it is said to bring ill luck.",
+      "A white star of felted petals surrounds its pale yellow face. Its short woolly stem has two small leaves that wave like arms."
+    ]
+  },
+  "Coltarina": {
+    "habitat": "Mountain",
+    "entries": [
+      "It grows from a crag of its own and watches over climbers on dangerous ledges. Many tell of a soft light that guided them down after dark.",
+      "A great felted white flower crowns its head, ringed by smaller stars. Woolly grey green leaves hang from it like long sleeves."
+    ]
+  },
+  "Babut": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It sits so still on windy slopes that walkers mistake it for any other stone. If someone sits on it, it grumbles and rolls away.",
+      "The wind has worn two hollows and a crease into its front that look like a face. Yellow and orange lichen speckles its grey surface."
+    ]
+  },
+  "Babelith": {
+    "habitat": "Mountain",
+    "entries": [
+      "It stands for years in one spot while the wind slowly shapes it. Shepherds greet it as they pass, in case it is in a talkative mood.",
+      "A narrow neck holds up a broad cap weathered into the face of a stern old figure. Pale and rusty bands of rock stripe its body."
+    ]
+  },
+  "Babelossus": {
+    "habitat": "Mountain",
+    "entries": [
+      "It watches over the high plateau, and some say it remembers every storm that has crossed it. Its gaze is said to settle even a quarrelsome mind.",
+      "Layers of sandstone stack into a towering shape with an enormous solemn face on top. Violet marks like old writing glow across its brow."
+    ]
+  },
+  "Clopotel": {
+    "habitat": "Grassland",
+    "entries": [
+      "Flocks wander in whatever direction it jingles, so shepherds keep a careful eye on it. When it is happy, it rings softly from morning until night.",
+      "Its dented bronze body has a leather strap tied in a bow on top like hair. A small round clapper serves as its tongue."
+    ]
+  },
+  "Clopotitan": {
+    "habitat": "Mountain",
+    "entries": [
+      "It tolls the hours in mountain villages and rings wildly when a storm is on its way. People know its voice and hurry home when they hear that alarm.",
+      "Dark weathered shingles cover its tall body up to a needle roof. A great bronze bell swings in its open top like a beating heart."
+    ]
+  },
+  "Tambalet": {
+    "habitat": "Grassland",
+    "entries": [
+      "It plays itself with the tiny hammers on its antennae while it wanders. When it finds a tune it likes, it repeats it until it knows it by heart.",
+      "Its flat shell is made of polished wood strung with rows of gleaming strings. It walks slowly on four short legs so it stays in tune."
+    ]
+  },
+  "Tambalon": {
+    "habitat": "Rare",
+    "entries": [
+      "It plays at weddings if invited and is said to bring joy to the couple. Guests who dance to its music rarely notice how late it has become.",
+      "Its broad back is a concert instrument of carved wood with folk patterns and hundreds of strings. Two long feelers end in padded hammers."
+    ]
+  },
+  "Mistretel": {
+    "habitat": "Forest",
+    "entries": [
+      "It roots through fallen leaves for acorns and gets its snout thoroughly muddy. It squeals loudly if its mother moves out of sight.",
+      "Cream stripes run along its brown back, and tiny buds of tusks show beside its upturned snout. Its short tail curls tightly."
+    ]
+  },
+  "Mistretor": {
+    "habitat": "Forest",
+    "entries": [
+      "When it charges, saplings snap in its path and it does not slow down for them. It loves to wallow in mud afterwards to cool off.",
+      "Stiff black bristles stand along its spine like a crest. Two thick curved tusks sweep from its jaw, and dried mud cakes its legs."
+    ]
+  },
+  "Vulpita": {
+    "habitat": "Grassland",
+    "entries": [
+      "It watches how others find food and then tries to get it without any effort of its own. When caught, it puts on its most innocent face.",
+      "It has a white tip on its tail, white cheeks and dark stockings on its paws. Its narrow eyes always seem to be planning something."
+    ]
+  },
+  "Vulpoi": {
+    "habitat": "Forest",
+    "entries": [
+      "In old stories it talks other creatures out of their dinner with sweet words. Even those who have been fooled often end up believing it again.",
+      "The tip of its bushy tail flickers like a glowing ember. It tilts its head and half closes one eye while it thinks up its next trick."
+    ]
+  },
+  "Veverel": {
+    "habitat": "Forest",
+    "entries": [
+      "It stuffs its cheeks with nuts and then forgets where it buried them. Many of those lost nuts later grow into young hazel bushes.",
+      "Long tufts stick up from its ears, and its fluffy tail curls over its back. It holds each nut in both small paws."
+    ]
+  },
+  "Veverar": {
+    "habitat": "Forest",
+    "entries": [
+      "It guards its winter store fiercely and counts it again and again. In a hard season, it has been seen sharing a few nuts with hungry neighbours.",
+      "Its huge tail is a plume of fir needles and golden beech leaves. A hollow in its chest fur holds acorns and nuts like a knot in a tree."
+    ]
+  },
+  "Cocomunte": {
+    "habitat": "Mountain",
+    "entries": [
+      "At daybreak in spring it struts in forest clearings and sings its clicking courtship song. So lost is it in its music that it scarcely hears anything else.",
+      "Its slate plumage shows a green sheen on the breast, and a red brow glows above its eyes. Its broad tail fans out proudly."
+    ]
+  },
+  "Capriorel": {
+    "habitat": "Forest",
+    "entries": [
+      "It stays hidden among the ferns, where its spots look like patches of sunlight. At the snap of a twig it bounds away on its wobbly legs.",
+      "It has very large ears and long thin legs. A tiny green sprout grows between its ears, and cream spots dot its reddish coat."
+    ]
+  },
+  "Caprioara": {
+    "habitat": "Forest",
+    "entries": [
+      "It steps through the beech woods so lightly that fallen leaves barely stir. Flowers seem to open along the paths it takes each spring.",
+      "Bluebells and other wild flowers catch in the fur of its neck. It has a white patch on its rump and large dark eyes."
+    ]
+  },
+  "Ghindel": {
+    "habitat": "Forest",
+    "entries": [
+      "It rocks on its pointed base until it rolls to a cosy patch of soil. If a squirrel comes by, it holds perfectly still and hopes to be missed.",
+      "A rough brown cap tips over one eye, and two little green leaves sprout from the top. Its glossy shell shines after rain."
+    ]
+  },
+  "Stejarel": {
+    "habitat": "Forest",
+    "entries": [
+      "It practises standing tall and still, as the old oaks do. It sways in the strongest winds but stubbornly refuses to fall over.",
+      "A slim ridged trunk supports two branching arms and a crown of lobed leaves. One acorn dangles from its side like a keepsake."
+    ]
+  },
+  "Stejaron": {
+    "habitat": "Forest",
+    "entries": [
+      "It has stood through more winters than anyone can count. Village gatherings were once held beneath one, in the belief that nobody could lie in its shade.",
+      "Its bark looks like plates of riveted iron, with acorns set along its limbs like rivets. Dull amber eyes glow from two deep knots."
+    ]
+  },
+  "Palariuta": {
+    "habitat": "Forest",
+    "entries": [
+      "It hides half buried in the moss after rain and watches whoever passes. Its spores make the nose itch, so most creatures leave it alone.",
+      "White dots cover its small red cap, and its pale stalk is short. Two bright eyes peer out from under the rim."
+    ]
+  },
+  "Muscarita": {
+    "habitat": "Forest",
+    "entries": [
+      "It dances in circles on damp nights and leaves rings of little mushrooms behind. Travellers are warned never to step inside a fresh ring.",
+      "Its wide scarlet cap flares like a skirt over a slim white stalk with a frilled collar. Its sweet smile hides a strong poison."
+    ]
+  },
+  "Izvoras": {
+    "habitat": "Mountain",
+    "entries": [
+      "It bubbles up from between mossy rocks where cold water first reaches the light. Thirsty hikers who thank it before drinking find the water extra sweet.",
+      "Its body is a rounded drop of clear water with a ripple on its head. Tufts of green moss cling to the stone at its base."
+    ]
+  },
+  "Izvorana": {
+    "habitat": "Mountain",
+    "entries": [
+      "It watches over the springs that feed the streams below. If someone fouls its water, the spring may run dry until the damage is mended.",
+      "Streams of flowing water trail from its arms like long ribbons. Ferns and watercress make a crown above its calm pale blue eyes."
+    ]
+  },
+  "Nametel": {
+    "habitat": "Mountain",
+    "entries": [
+      "It bounces across fresh snow and leaves little crumbs of itself behind. It grows a little rounder with each new snowfall and shrinks when the sun shines.",
+      "Two twig arms stick out of its powdery body, and two dark eyes look from its face. A pink blush colours its cheeks."
+    ]
+  },
+  "Nameton": {
+    "habitat": "Mountain",
+    "entries": [
+      "It rests on steep slopes through the winter and looks like any other drift. When it moves, snow slides after it with a great roar.",
+      "A heap of packed snow covers its grey rocky core. Icicles hang from its chin and brow, and its breath rolls out as frost."
+    ]
+  },
+  "Zaganul": {
+    "habitat": "Mountain",
+    "entries": [
+      "It carries bones high into the air and drops them on the rocks to break them open. Each one has favourite stones it returns to for the job.",
+      "It has a rust orange breast, long dark wings and a black beard of bristles under its hooked beak. A dark mask crosses its red-rimmed eyes."
+    ]
+  },
+  "Cremenel": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It throws off small sparks as it rolls along stony tracks. People who find one near their camp sometimes borrow a spark to light a fire.",
+      "Its smooth grey black surface looks like glass, with sharp chipped edges. Two bright eyes shine from the middle of the stone."
+    ]
+  },
+  "Cremenor": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It clashes its plates together to warn others off, and the sparks fly high. Ancient toolmakers are thought to have studied the way its edges break.",
+      "Dark glassy plates with keen edges make up its broad body. Glowing orange cracks run between them while its fists stay clenched."
+    ]
+  },
+  "Aurel": {
+    "habitat": "Cave",
+    "entries": [
+      "It hides behind pebbles in mountain streams so nobody will notice its gleam. Gold panners who spot it are said to lose it the moment they reach out.",
+      "Its lumpy body shines like polished gold, with two large dark eyes in the middle. Drops of stream water still cling to it."
+    ]
+  },
+  "Aurifer": {
+    "habitat": "Cave",
+    "entries": [
+      "It keeps watch over abandoned mine galleries and stands in the way of the careless. Old miners say it only blocks tunnels that are about to fall in.",
+      "Veins of bright gold run through its pale quartz body. Spurs of crystal jut from its back, and its arms are as thick as mine timbers."
+    ]
+  },
+  "Norel": {
+    "habitat": "Mountain",
+    "entries": [
+      "It floats just above the ground and sulks when the weather is fine. Anyone who pats it gets a small jolt and a very cross look.",
+      "Static makes the edges of its grey fluffy body stand on end. Two yellow eyes glare while little sparks leap from its underside."
+    ]
+  },
+  "Tunetor": {
+    "habitat": "Mountain",
+    "entries": [
+      "It rolls over the peaks and rumbles so loudly that sheep huddle together. Farmers listen for it and hurry to bring in the hay before the downpour.",
+      "Wings made of falling rain spread from its dark indigo sides. Lightning glows in its belly and flickers along its edges."
+    ]
+  },
+  "Grindinel": {
+    "habitat": "Mountain",
+    "entries": [
+      "It appears out of summer storms and rattles on rooftops before it moves on. Old people ring bells or bang pans to chase it away from the fields.",
+      "White hailstones are bound together by crackling blue sparks, with two eyes in the central one. Smaller stones circle it like a loose ring."
+    ]
+  },
+  "Vantulet": {
+    "habitat": "Grassland",
+    "entries": [
+      "It spins lazily over the grass and hums to itself on bright days. It likes to snatch hats off heads and drop them a little further along.",
+      "A pale spiral of air whirls round a single green leaf, with a round whistling face. Two small eddies serve it as arms."
+    ]
+  },
+  "Vantoroi": {
+    "habitat": "Mountain",
+    "entries": [
+      "It howls through the mountain passes and can shove a loaded cart off the road. Travellers wait in shelter until its voice has moved on.",
+      "A wide funnel of grey air trails streamers of cloud behind it, spinning leaves and flecks of snow. Two narrow eyes glow near the top."
+    ]
   }
 }
