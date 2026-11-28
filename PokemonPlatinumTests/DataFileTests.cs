@@ -135,16 +135,25 @@ public class DataFileTests
     [Fact]
     public void EveryFormHasItsOwnWrittenEntries()
     {
-        // Plan 08 · P17: all 541 forms, each by its Showdown name, with two entries and a habitat of its own for the FORMS page
-        // Carpathia's forms and species (plan 46 · CP3) wait for their entries until CP9; the generated sentence shows meanwhile
-        var forms = PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new List<PokemonForm>()).Where(f => !f.Name.EndsWith("-Carpathia")).ToList();
+        // Plan 08 · P17: every form, each by its Showdown name, with two entries and a habitat of its own for the FORMS page
+        // (Carpathia's 25 regional forms among them since plan 46 · CP9)
+        var forms = PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new List<PokemonForm>()).ToList();
         Assert.True(forms.Count >= 541, "The data has " + forms.Count + " forms");
         var missing = forms.Where(f => DexEntries.Of(f.Name) == null).Select(f => f.Name).ToList();
         Assert.True(missing.Count == 0, "No written entries for " + string.Join(", ", missing));
         foreach (var form in forms)
             Assert.Equal(2, DexEntries.EntriesOf(form.Name)!.Count);
-        // The file holds exactly the species, ours too (plan 03 · D14), and the forms
-        Assert.Equal(PokemonDatabase.Everyone().Count(s => !s.IsCarpathian) + forms.Count, DexEntries.All.Count);
+        // The file holds exactly the species, ours too (plan 03 · D14, plan 46), and the forms
+        Assert.Equal(PokemonDatabase.Everyone().Count() + forms.Count, DexEntries.All.Count);
+    }
+
+    [Fact]
+    public void EveryCarpathianSpeciesHasItsWrittenEntries()
+    {
+        var wanted = PokemonDatabase.Carpathia().ToList();
+        Assert.Equal(249, wanted.Count);
+        var missing = wanted.Where(s => DexEntries.Of(s.Name) == null).Select(s => s.Name).ToList();
+        Assert.True(missing.Count == 0, "No written entries for " + string.Join(", ", missing));
     }
 
     [Fact]
