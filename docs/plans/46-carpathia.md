@@ -299,3 +299,9 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [ ] CP25b The ridge
 - [ ] CP26 The League and the crossing
 - [ ] CP27 After the Hall of Fame
+
+### CP8 forms as built (batch 14)
+
+- The 25 regional forms (`PokemonModels.Carpathia14.cs`, helpers named `C14...` since the other batches share the partial class) are each their species' own hand-built sculpt taken whole through `Become`, and changed by the briefs of `decisions/CP-dex-5-forms.md`: new colours (`C14Swap` also changes a decal's white and pupil, which `Recolour` leaves), parts taken away by bone (Whismur's and Loudred's ears, Dunsparce's and Dudunsparce's fins, the goats' leaves) and parts of our own added (flutes and alphorns of wood banded with bark, leathery wings and horn crests, a fresco and a gold disc of a halo, salt cubes, firs on Golurk's shoulders, ribbons with bells, beads and mirrors, a clacking jaw, sun rays round the bronze discs, linden flowers). The paper lanterns glow (`Glow` on their paper). Nothing floats: every form is one piece as its species is, with its species' eyes; the lifted ones are lifted again (`Lift`) after their additions.
+- `CarpathiaSculpts14Tests` holds them: hand-built, each signature its own and not its species', one piece, on the ground or hovering as the model tests ask, every bone carrying surface, every decal covered, a Pokémon in a form asking for its own model.
+- Not drawn, since they would float apart: the music notes and ribbons of light round the singers, the sound rings of the Noibat line and Chimecho. A later pass (or plan 48's Blender kit) may add them as effects.

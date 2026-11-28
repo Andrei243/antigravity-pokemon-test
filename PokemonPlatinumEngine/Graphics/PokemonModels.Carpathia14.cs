@@ -192,11 +192,13 @@ internal static partial class PokemonModels
         var b = Become(Wigglytuff(), "Wigglytuff-Carpathia", 0.74f);
         var sheepskin = Rgb(176, 128, 82);
         C14Swap(b, null, (Rgb(252, 198, 212), C14Wool), (Rgb(252, 246, 248), Rgb(238, 214, 150)), (Rgb(48, 40, 52), Rgb(96, 70, 52)));
-        // The vest: two panels of sheepskin over its sides, a band of white fleece along their edges
+        // The vest: sheepskin round its body from hips to shoulders, open down the front over its pale gold belly,
+        // a band of white fleece along each edge of the opening
+        b.PaintEll(Body, V(0, 0.25f, -0.01f), V(0.24f, 0.15f, 0.22f), sheepskin);
+        b.PaintEll(Body, V(0, 0.24f, 0.12f), V(0.07f, 0.2f, 0.1f), Rgb(238, 214, 150));
         PokeBuilder.Both(s =>
         {
-            b.PaintEll(Body, V(0.15f * s, 0.24f, 0.06f), V(0.1f, 0.17f, 0.14f), sheepskin);
-            b.PaintEll(Body, V(0.085f * s, 0.24f, 0.15f), V(0.016f, 0.16f, 0.04f), Rgb(250, 244, 232));
+            b.PaintEll(Body, V(0.075f * s, 0.25f, 0.15f), V(0.014f, 0.15f, 0.05f), Rgb(250, 244, 232));
             foreach (float y in new[] { 0.3f, 0.22f, 0.14f })
             {
                 var at = On(V(0, 0.29f, 0), V(0.2f, 0.26f, 0.18f), 0.13f * s, y);
