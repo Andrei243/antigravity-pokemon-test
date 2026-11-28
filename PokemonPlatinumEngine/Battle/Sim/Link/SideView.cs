@@ -26,6 +26,19 @@ public static class TeamPreview
         return (entries.Select(e => e.Entry).ToList(), placeOf);
     }
 
+    /// <summary>
+    /// The preview of two teams one after the other (plan 13 · V21, a side of two trainers): the first
+    /// <paramref name="split"/> of <paramref name="team"/> are the first trainer's, and each part is a preview of its own,
+    /// so a screen knows whose each stand-in is. A split of 0 is one preview of them all.
+    /// </summary>
+    public static (List<PreviewEntry> Preview, int[] PlaceOf) Of(IReadOnlyList<Pokemon> team, int split)
+    {
+        if (split <= 0 || split >= team.Count) return Of(team);
+        var first = Of(team.Take(split).ToList());
+        var second = Of(team.Skip(split).ToList());
+        return (first.Preview.Concat(second.Preview).ToList(), first.PlaceOf.Concat(second.PlaceOf.Select(i => i + split)).ToArray());
+    }
+
     /// <summary>What the preview shows of one Pokémon.</summary>
     public static PreviewEntry EntryOf(Pokemon p) => new(p.Species.DexNumber, p.Form, p.Level, p.Gender, p.IsShiny);
 
@@ -93,10 +106,10 @@ public sealed class SideView
     /// <param name="foes">Every Pokémon of the other side, as the battle holds them; the preview is made of them.</param>
     /// <param name="startingHp">The most HP each Pokémon went in with, where it is not its <see cref="Pokemon.MaxHP"/> now (one that has levelled since); left out, now's.</param>
     public SideView(BattleSide side, IReadOnlyList<IReadOnlyList<Pokemon>> ownTeams, IReadOnlyList<Pokemon> foes,
-        IReadOnlyDictionary<Pokemon, int>? startingHp = null)
+        IReadOnlyDictionary<Pokemon, int>? startingHp = null, int foeSplit = 0)
     {
         Side = side;
-        var (preview, placeOf) = TeamPreview.Of(foes);
+        var (preview, placeOf) = TeamPreview.Of(foes, foeSplit);
         foePreview = preview;
         standIns = preview.Select(TeamPreview.StandIn).ToList();
         for (int i = 0; i < foes.Count; i++) standInOf[foes[i]] = standIns[placeOf[i]];

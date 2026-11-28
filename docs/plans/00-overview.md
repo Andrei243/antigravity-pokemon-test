@@ -41,7 +41,7 @@ Counted again on 2026-11-22 from every plan's status list (the count of 2026-11-
 | 05 · Sound and music | A1–A5, A7 | rolls | A6 rolls on with each region's chapters: Galar's and Paldea's songs are written, Carpathia's to come |
 | 07 · Online | O2–O6, O7's game side | O1 and the user | O1, the core library split, the freeze at the end; O7's first deployment is the user's; O8 optional |
 | 10 · Companions | every session (F8 as plan 39 · CR6, ticked 2026-11-22) | — | to move to finished/ |
-| 13 · Ways to play | V1–V20, V22–V24, V26 | V21 | V21 can go now (V12's VERSUS built 2026-11-07); V25 optional, the user's word and a Discord application |
+| 13 · Ways to play | V1–V24, V26 | V21's shots and a try on four pads | V25 optional, the user's word and a Discord application |
 | 16 · Tooling and shipping | all but what T10 and T11 owe | the user | T10's `MapScene.Prepare` figures are the Windows machine's; T11's `diff` of `all` goes to a shots pass |
 | 17 · Localisation | N1–N5, N6 a to zi and every wave's Romanian since | rolls | N6 each wave beside the rest; whether the last names (the accessories', traps', credits' and boxes' defaults, old wave 107) are done is to check |
 | 23 · Later regions | Kalos finished (Z1–Z4, Z4b); Alola finished (Z5–Z8, 2026-11-09); Z17, Hisui's branch and Jubilife Village (2026-11-09) | Z18–Z20 (wanted since 2026-11-22), Z21–Z23 | Z24 optional |

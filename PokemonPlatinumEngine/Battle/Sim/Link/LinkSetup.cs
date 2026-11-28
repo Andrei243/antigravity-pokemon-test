@@ -32,6 +32,39 @@ public sealed class LinkSetup
     public LinkPlayer A { get; }
     public LinkPlayer B { get; }
 
+    /// <summary>The second trainer of each side in a battle of four (plan 13 · V21, <see cref="BringMulti"/>): null for two players.</summary>
+    public LinkPlayer? PartnerA { get; private init; }
+    public LinkPlayer? PartnerB { get; private init; }
+
+    /// <summary>The second trainers' teams as copies at the room's level; empty for two players.</summary>
+    public IReadOnlyList<Pokemon> PartnerTeamA { get; private init; } = Array.Empty<Pokemon>();
+    public IReadOnlyList<Pokemon> PartnerTeamB { get; private init; } = Array.Empty<Pokemon>();
+
+    /// <summary>A battle of four: two trainers a side with a place each (plan 13 · V21).</summary>
+    public bool Multi => PartnerA != null;
+
+    /// <summary>
+    /// A room of four (plan 13 · V21): two trainers a side with a place each, in a double room. Each of the four brings
+    /// only what goes in (the first of their team in its order, as many as the room picks), so a side's preview and its
+    /// view number the same Pokémon. A side's first trainer is its player (the one greeted, who picks and answers for
+    /// both places); the second's team goes in as brought.
+    /// </summary>
+    public static LinkSetup BringMulti(LinkRoom room, LinkPlayer a, LinkPlayer partnerA, LinkPlayer b, LinkPlayer partnerB)
+    {
+        if (room.Format != BattleFormat.Double) throw new ArgumentException("A battle of four is a double battle");
+        LinkPlayer Trimmed(LinkPlayer p) => p with { Team = p.Team.Take(room.Picks).ToList() };
+        var four = new[] { Trimmed(a), Trimmed(partnerA), Trimmed(b), Trimmed(partnerB) };
+        var faults = four.SelectMany(p => Check(room, p).Select(f => $"{p.Name}: {f}")).ToList();
+        if (faults.Count > 0) throw new LinkRefusedException(string.Join("\n", faults));
+        return new LinkSetup(room, four[0], four[2])
+        {
+            PartnerA = four[1],
+            PartnerB = four[3],
+            PartnerTeamA = Copies(room, four[1].Team),
+            PartnerTeamB = Copies(room, four[3].Team)
+        };
+    }
+
     private LinkSetup(LinkRoom room, LinkPlayer a, LinkPlayer b)
     {
         Room = room;
@@ -97,7 +130,13 @@ public sealed class LinkSetup
     }
 
     /// <summary>What side A's or side B's foe is shown before the battle: the other's six as the preview has them.</summary>
-    public List<PreviewEntry> PreviewFor(BattleSide side) => TeamPreview.Of(side == BattleSide.Player ? TeamB : TeamA).Preview;
+    public List<PreviewEntry> PreviewFor(BattleSide side)
+    {
+        var first = TeamPreview.Of(side == BattleSide.Player ? TeamB : TeamA).Preview;
+        // In a battle of four the second trainer's follow the first's, each team in a preview of its own
+        if (Multi) first.AddRange(TeamPreview.Of(side == BattleSide.Player ? PartnerTeamB : PartnerTeamA).Preview);
+        return first;
+    }
 
     /// <summary>Why an order picked can't be taken; null when it can: as many as the room picks, of the six, none twice.</summary>
     public string? WhyNot(IReadOnlyList<int> order, BattleSide side)
@@ -121,10 +160,20 @@ public sealed class LinkSetup
         foreach (int i in orderA) mine.Add(TeamA[i].Clone());
         var theirs = new Trainer { Id = "link_" + B.Name, Name = B.Name, TrainerClass = PlayerClass, DoubleBattle = Room.Format == BattleFormat.Double };
         foreach (int i in orderB) theirs.Party.Add(TeamB[i].Clone());
+        var trainers = new List<Trainer> { theirs };
+        Trainer? partner = null;
+        // A battle of four (plan 13 · V21): each side's second trainer, their team whole and in its order
+        if (Multi)
+        {
+            partner = Seated(PartnerA!, PartnerTeamA);
+            trainers.Add(Seated(PartnerB!, PartnerTeamB));
+        }
         return new CoreSetup
         {
             PlayerParty = mine,
-            Trainers = new List<Trainer> { theirs },
+            Trainers = trainers,
+            Partner = partner,
+            PartnerController = null,
             Format = Room.Format,
             Random = new BattleRandom(seed),
             Rules = Rules,
@@ -134,6 +183,13 @@ public sealed class LinkSetup
             Frontier = true,
             Link = true
         };
+    }
+
+    private static Trainer Seated(LinkPlayer player, IReadOnlyList<Pokemon> team)
+    {
+        var trainer = new Trainer { Id = "link_" + player.Name, Name = player.Name, TrainerClass = PlayerClass, DoubleBattle = true };
+        foreach (var p in team) trainer.Party.Add(p.Clone());
+        return trainer;
     }
 
     /// <summary>What a battle's end comes to as a link's result.</summary>

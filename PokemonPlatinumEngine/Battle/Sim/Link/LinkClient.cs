@@ -16,6 +16,13 @@ public interface ILinkChooser
 }
 
 /// <summary>
+/// The other two seats of a battle of four as one side's client knows them (plan 13 · V21): its own second trainer with
+/// their team (cut to what goes in, as <see cref="LinkSetup.BringMulti"/> cuts it), the other side's second trainer's
+/// name, and how many of the foe's preview are its first trainer's.
+/// </summary>
+public sealed record LinkSeats(LinkPlayer Partner, string FoePartnerName, int FoeSplit);
+
+/// <summary>
 /// What a player's machine knows of a link battle (plan 28 · I3): only what it was sent. Its own team (rebuilt from
 /// what it brought, as the server rebuilt it), the foe's six as the preview's stand-ins, the view's events as they come,
 /// and what they add up to (<see cref="ViewState"/>). It never runs the rules and never sees the other side's menus:
@@ -26,6 +33,17 @@ public sealed class LinkClient
 {
     public string Name { get; }
     public IReadOnlyList<RecordedPokemon> Team { get; }
+
+    /// <summary>
+    /// A battle of four (plan 13 · V21): the second trainer of this side and of the other, handed to a client in the same
+    /// process as its server (the wire says nothing of them; online rooms of four are plan 07 · O8's). Null for two players.
+    /// </summary>
+    public LinkSeats? Seats { get; init; }
+
+    /// <summary>The second trainer's own Pokémon, as copies at the room's level; empty for two players.</summary>
+    public IReadOnlyList<Pokemon> PartnerOwn => partnerOwn;
+
+    private readonly List<Pokemon> partnerOwn = new();
 
     /// <summary>Answers by itself as each question comes; off, a question waits in <see cref="Asked"/> for <see cref="Answer"/>.</summary>
     public bool AnswersByItself { get; set; } = true;
@@ -116,8 +134,11 @@ public sealed class LinkClient
         own.Clear();
         own.AddRange(order.Select(i => copies[i]));
         events.Clear();
-        roster = new BattleRoster(BattleRoster.Team(Side, 0, own).Concat(BattleRoster.Team(Other, 0, foe)));
-        State.Begin(own, foe);
+        // The second trainer of a battle of four goes in whole, in the order brought, as this side's second team
+        partnerOwn.Clear();
+        if (Seats != null) partnerOwn.AddRange(LinkSetup.Copies(hello.Room, Seats.Partner.Team));
+        roster = new BattleRoster(BattleRoster.Team(Side, 0, own).Concat(BattleRoster.Team(Side, 1, partnerOwn)).Concat(BattleRoster.Team(Other, 0, foe)));
+        State.Begin(own.Concat(partnerOwn), foe);
         if (hello.Picked == null) channel.Send(BattleWire.WriteMessage(new LinkPick(order), null));
     }
 

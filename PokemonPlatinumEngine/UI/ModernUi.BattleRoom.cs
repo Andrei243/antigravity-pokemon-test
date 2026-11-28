@@ -80,7 +80,7 @@ internal static partial class ModernUi
                 RoomEntry.Teams => Text.Of("battleRoom.menu.teamsCount", ("n", room.Teams.Count)),
                 RoomEntry.Gauntlet => Text.Of("battleRoom.menu.gauntletBest", ("n", room.Records.GauntletBest), ("of", GauntletData.Default.Order.Count)),
                 RoomEntry.Streak => Text.Of("battleRoom.menu.streakBest", ("n", room.Records.StreakBest)),
-                RoomEntry.Friends or RoomEntry.Versus => "",
+                RoomEntry.Friends or RoomEntry.Versus or RoomEntry.Multi => "",
                 RoomEntry.Daily => room.DailyRecords.On(room.Today) is { } day
                     ? Text.Of("battleRoom.daily.today", ("n", day.Wins), ("of", DailyRun.Battles))
                     : Text.Of("battleRoom.daily.notYet"),
@@ -124,12 +124,16 @@ internal static partial class ModernUi
         RoomEntry.Friends => "friends",
         RoomEntry.Daily => "daily",
         RoomEntry.Versus => "versus",
+        RoomEntry.Multi => "multi",
         _ => "puzzles"
     };
 
     private static void RoomPickTeam(int sw, BattleRoomScreen room, float rise)
     {
-        ScreenTitle(room.Picking == RoomChallenge.Versus
+        ScreenTitle(room.Picking == RoomChallenge.Multi
+            ? Text.Of(room.MultiPicks.Count < 2 ? "battleRoom.pick.multiFirstSide" : "battleRoom.pick.multiSecondSide",
+                ("player", Core.GameEngine.VersusName(Math.Min(room.MultiPicks.Count, 3))))
+            : room.Picking == RoomChallenge.Versus
             ? Text.Of(room.VersusFirst < 0 ? "battleRoom.pick.versusFirst" : "battleRoom.pick.versusSecond", ("player", Text.Of(room.VersusFirst < 0 ? "versus.first" : "versus.second")))
             : Text.Of(room.Picking == RoomChallenge.Gauntlet ? "battleRoom.pick.gauntlet" : room.Picking == RoomChallenge.Friend ? "battleRoom.pick.friend" : "battleRoom.pick.streak"));
         Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "battleRoom.hint.begin"), Hint("shared.keys.esc", "shared.hints.back"));

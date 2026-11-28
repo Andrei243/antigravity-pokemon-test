@@ -332,7 +332,8 @@ public partial class BattleEngine
         // A link battle's screen shows the client's own Pokémon and the foe's stand-ins as they are: they are the
         // view's, and the stage below holds copies it never touches (plan 28 · I3)
         if (linked != null)
-            foreach (var p in setup.PlayerParty.Members.Concat(setup.Trainers.SelectMany(t => t.Party.Members))) mirror.Know(p);
+            foreach (var p in setup.PlayerParty.Members.Concat(setup.Trainers.SelectMany(t => t.Party.Members))
+                .Concat(setup.Partner?.Party.Members ?? Enumerable.Empty<Pokemon>())) mirror.Know(p);
         PlayerParty = setup.PlayerParty;
         PlayerInventory = setup.Inventory;
         Pokeblocks = setup.Pokeblocks;

@@ -24,24 +24,39 @@ public partial class GameEngine
     /// <summary>The look each player stands in: the boy's and the girl's of the introduction, as the battle room has no game.</summary>
     private static readonly string[] VersusLooks = { "PLAYER", "DAWN" };
 
-    /// <summary>The room's rules for VERSUS: level 50 under the modern rules (the builder's teams may hold any species), as many of each team as the smaller brings, no clauses (the teams are the players' own).</summary>
-    public static LinkRoom VersusRoom(int first, int second) => LinkRoom.Default with
+    /// <summary>And in a battle of four (plan 13 · V21), in the players' order: each side's two.</summary>
+    private static readonly string[] FourLooks = { "PLAYER", "DAWN", "ace_trainer_m", "ace_trainer_f" };
+
+    /// <summary>
+    /// The room's rules for VERSUS: level 50 under the modern rules (the builder's teams may hold any species), as many of
+    /// each team as the smallest brings, no clauses (the teams are the players' own). Given four teams' sizes it is a
+    /// double room, for a battle of four (plan 13 · V21).
+    /// </summary>
+    public static LinkRoom VersusRoom(params int[] sizes) => LinkRoom.Default with
     {
         Rules = RulesPreset.Modern,
-        Picks = System.Math.Max(1, System.Math.Min(first, second)),
+        Format = sizes.Length == 4 ? BattleFormat.Double : BattleFormat.Single,
+        Picks = System.Math.Max(1, sizes.Min()),
         SpeciesClause = false,
         ItemClause = false
     };
 
-    private void BeginTheVersus(BuiltTeam first, BuiltTeam second)
+    /// <summary>What each player is called, in their order.</summary>
+    internal static string VersusName(int player) => Text.Of(player switch { 0 => "versus.first", 1 => "versus.second", 2 => "versus.third", _ => "versus.fourth" });
+
+    /// <summary>Two teams are two players' battle; four are two sides of two, the first two against the last two.</summary>
+    private void BeginTheVersus(params BuiltTeam[] teams)
     {
-        var a = new LinkPlayer(Text.Of("versus.first"), BuiltTeams.PartyOf(first).Members.Select(RecordedPokemon.Of).ToList());
-        var b = new LinkPlayer(Text.Of("versus.second"), BuiltTeams.PartyOf(second).Members.Select(RecordedPokemon.Of).ToList());
+        var players = teams.Select((t, i) => new LinkPlayer(VersusName(i), BuiltTeams.PartyOf(t).Members.Select(RecordedPokemon.Of).ToList())).ToArray();
+        var room = VersusRoom(players.Select(p => p.Team.Count).ToArray());
         VersusMatch match;
         try
         {
             // Its own seed, drawn from the game's chance once; everything after it from the seed
-            match = new VersusMatch(a, b, VersusRoom(a.Team.Count, b.Team.Count), (uint)Dice.Shared.Next(), Settings.BattleScene, VersusLooks);
+            uint seed = (uint)Dice.Shared.Next();
+            match = players.Length == 4
+                ? VersusMatch.OfFour(players[0], players[1], players[2], players[3], room, seed, Settings.BattleScene, FourLooks)
+                : new VersusMatch(players[0], players[1], room, seed, Settings.BattleScene, VersusLooks);
         }
         catch (LinkRefusedException e)
         {
@@ -51,7 +66,7 @@ public partial class GameEngine
             return;
         }
         versus = match;
-        ShowLinkBattle(match.Faces.SelectMany(f => f.LinkClient!.Own), () => match.Face, KeepTheVersus, () =>
+        ShowLinkBattle(match.Faces.SelectMany(f => f.LinkClient!.Own.Concat(f.LinkClient.PartnerOwn)), () => match.Face, KeepTheVersus, () =>
         {
             StartTransition(GameState.BattleRoom, () =>
             {
@@ -62,6 +77,14 @@ public partial class GameEngine
             });
         });
     }
+
+    /// <summary>
+    /// Whose pad the next frame reads (plan 13 · V20, V21): in a battle of four the seat of whoever's turn it is (behind
+    /// the curtain, whoever it waits for), else a friend's while a friend chooses, else the player's.
+    /// </summary>
+    private int SeatNow() => flow.State != GameState.Battle ? 0
+        : versus is { Four: true } four ? four.Seat
+        : flow.Battle?.FriendChoosing == true && versus == null ? 1 : 0;
 
     /// <summary>A frame of VERSUS beside the shown screen: the other played along, and the curtain lifted by a press.</summary>
     private void KeepTheVersus(float dt)

@@ -87,6 +87,9 @@ public partial class GameEngine
             case BeginVersus pair:
                 BeginTheVersus(room.Teams[pair.First], room.Teams[pair.Second]);
                 break;
+            case BeginMulti four:
+                BeginTheVersus(four.Teams.Select(i => room.Teams[i]).ToArray());
+                break;
             case BeginDaily:
                 BeginTheDailyRun();
                 break;

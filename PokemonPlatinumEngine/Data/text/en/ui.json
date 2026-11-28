@@ -6930,6 +6930,7 @@
       "friends": "FRIENDS' TRAINERS",
       "daily": "DAILY RUN",
       "versus": "VERSUS",
+      "multi": "VERSUS, TWO ON TWO",
       "teamsCount": "{n} kept",
       "gauntletBest": "Best {n}/{of}",
       "streakBest": "Best {n}",
@@ -6942,7 +6943,8 @@
       "puzzles": "A battle stopped halfway, with a goal: win this turn, outlast an attack, make a catch. Every roll is fixed, so only the right idea works.",
       "friends": "Fight a friend's trainer at level 50: a trainer file dropped in the trainers folder, or a code pasted from the clipboard. You can send your own teams the same way.",
       "daily": "A round of the Battle Factory drawn from today's date: the same six rentals and the same seven trainers for everyone today. Rent three, trade after a win, and see how far you get. The first run of the day is the one kept.",
-      "versus": "Two people at one screen: each picks a team and they battle at level 50. Each chooses in turn behind a curtain, so neither sees the other's choice. Nothing is kept."
+      "versus": "Two people at one screen: each picks a team and they battle at level 50. Each chooses in turn behind a curtain, so neither sees the other's choice. Nothing is kept.",
+      "multi": "Four people at one screen, two on a side with a team each, in a double battle at level 50. Partners choose one after the other; a curtain comes down between the sides. Nothing is kept."
     },
     "clears": "Cleared {n} times",
     "daily": {
@@ -6962,6 +6964,8 @@
       "friend": "Which team takes on this trainer?",
       "versusFirst": "{player}: which team?",
       "versusSecond": "{player}: which team?",
+      "multiFirstSide": "{player}, first side: which team?",
+      "multiSecondSide": "{player}, second side: which team?",
       "speciesTitle": "Choose a species",
       "itemTitle": "Choose an item to hold",
       "moveTitle": "Choose a move"
@@ -7164,6 +7168,8 @@
   "versus": {
     "first": "Player 1",
     "second": "Player 2",
+    "third": "Player 3",
+    "fourth": "Player 4",
     "curtain": {
       "pass": "Pass the controller to {player}",
       "lookAway": "{player}, look away while they choose.",
