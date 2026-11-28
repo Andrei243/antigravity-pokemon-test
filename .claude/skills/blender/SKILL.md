@@ -969,6 +969,49 @@ found:
   export, on the installed base's Blender sculpt: where the export shows an older base's colours, keep the
   installed base's.
 
+## What the Mega Dynamax forms taught (2026-11-21)
+
+Seventy-eight forms by twenty agents; four sent back (two emblems out of the front camera's sight, threads built as
+bars, clouds that widened a model past its cell). Each form is its Mega's script with additions laid over it:
+
+- **To lay parts over an installed sculpt without copying it, wrap `Kit.build`**: keep the method, replace it by
+  one that calls your `maxed(kit)` on its first call only (the eyes' five states build through the same method
+  afterwards) and then the kept method; then `sibling("<base>")` and call its build function with `*args()`. A
+  base that builds as it is read needs only the `sibling` line: it runs with your script's own arguments. The wrap
+  goes in before the `sibling` line. A base whose kit is a subclass that calls `super().build` takes the same wrap.
+  A base with its build inline under `__main__` and no function is replayed line for line, or run with
+  `runpy.run_path(..., run_name="__main__")`; then write `sibling("<base>")` in a comment, since the dependency
+  scan reads only that. `prompts/mmax_example.py` in the plan's scratch was the pilot; any `*megammax.py` is one.
+- **Prove the base unchanged by its `KIT: eyes.*` lines**: build the base once beside the form; the five lines
+  must be the same numbers. A kit flag you switch inside the wrap is still set when the eyes are laid (a
+  `stretch` left off moved Typhlosion's eyes by 0.04): put it back.
+- **Your parts are in the kit before the base's paints, patches and decals.** A paint with no `on` recolours them
+  (Raichu-X's shin paint turned the clouds brown, Charizard's belly paint turned them blue): after the base's
+  paints, paint each of your fused parts its own colour with `on=[that part]`. A patch's ray stops at the first
+  surface: keep additions clear of markings, or build them loose.
+- **Or build the additions as a mesh of their own**: in the wrap's first call set the kit's parts, paints and
+  decals aside, add the clouds, build them under a name of their own, put the base's back and go on. The game
+  draws every node not named `eyes.*`. The base's body is then the same to the vertex, nothing catches a marking,
+  and the clouds can take a coarser voxel. A base that counts faces from the end of its body's mesh (Steelix's
+  flat shading) allows no other way.
+- **Clouds are fused mounds, not loose discs**: clumps of three to five round puffs of mixed sizes, a puff about
+  0.08 of the model's height (pebbles under a tall model otherwise), one small puff riding on top, a clump one
+  colour with one puff of another, on the `root` bone, three cells clear of the feet. Fused at a fine voxel they
+  cost 15 to 35 thousand vertices; loose `sub=2` or 3 puffs in clumps, or a mesh of their own, cost a tenth.
+- **A wisp built as a tube reads as a handle, as a string of puffs as beads**: a tight cluster of three or four
+  puffs reads best, and none at all is better than a thin one.
+- **An emblem is a glowing disc in a glowing ring of another colour, loose, a hair off the surface, 0.06 of the
+  height across or more**, and on a surface the front camera sees: cast a ray from it toward the camera (the +X
+  front three-quarter, up to 30 degrees above) and move it if anything is hit (a low head, a snout, raised arms
+  and a shield hid five). A star inside it smaller than a twentieth of the height does not show.
+- **`glow` is a colour string**, not an array; a fused part cannot glow apart from its neighbours; pale glowing
+  colours wash out to white on the turntable and must be judged in the game's shot. Use saturated ones.
+- **An addition that raises the height shrinks the whole model in its cell** (a gem, a staff, a wave: up to a
+  quarter smaller). Lay it back or to the side before making it tall; clouds widen the footprint and can push a
+  wide model past its cell (print the board check after the body is built).
+- **A long thing held between two bones follows one of them**: a chain from the chest to a jaw is on the body's
+  bone and drifts off the jaw as the jaw moves. Hang it from the part that moves most, or keep it short.
+
 ## Not tried yet
 
 Record each here as verified or as failing, with what was run: moving or scaling a part by its bone's vertex group;
