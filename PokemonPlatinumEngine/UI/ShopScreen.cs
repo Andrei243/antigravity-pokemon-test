@@ -104,7 +104,7 @@ public class ShopScreen
 
     /// <summary>The bag's items that a shop buys, pocket by pocket in the bag's order.</summary>
     public static List<ItemData> Sellable(Inventory inventory) =>
-        BagScreen.Pockets.SelectMany(p => inventory.GetPocketItems(p)).Select(s => s.Data).Where(CanSell).ToList();
+        BagScreen.AllPockets.SelectMany(p => inventory.GetPocketItems(p)).Select(s => s.Data).Where(CanSell).ToList();
 
     /// <summary>The most of an item this money buys at once: none if even one is too dear.</summary>
     public static int MostAffordable(ItemData item, int money, Difficulty difficulty = Difficulty.Normal) =>

@@ -115,12 +115,15 @@ public class MenuScreenTests
         {
             ItemPocket.Items, ItemPocket.Medicine, ItemPocket.PokeBalls, ItemPocket.TMsAndHMs,
             ItemPocket.Berries, ItemPocket.Mail, ItemPocket.BattleItems, ItemPocket.KeyItems
-        }, BagScreen.Pockets);
-        Assert.Equal(BagScreen.Pockets.Length, ModernUi.PocketTabs.Length);
-        Assert.Equal(BagScreen.Pockets.Length, ModernUi.PocketTabs.Select(t => (t.Color.R, t.Color.G, t.Color.B)).Distinct().Count());
-        Assert.Equal(BagScreen.Pockets.Length, ModernUi.PocketTabs.Select(t => t.Icon).Distinct().Count());
+        }, new BagScreen().Pockets);
+        // And Carpathia's MASKS after them, shown only while a mask is held (plan 46 · CP13)
+        Assert.Equal(ItemPocket.Masks, BagScreen.AllPockets[^1]);
+        Assert.Equal(BagScreen.AllPockets, new BagScreen { ShowsMasks = true }.Pockets);
+        Assert.Equal(BagScreen.AllPockets.Length, ModernUi.PocketTabs.Length);
+        Assert.Equal(BagScreen.AllPockets.Length, ModernUi.PocketTabs.Select(t => (t.Color.R, t.Color.G, t.Color.B)).Distinct().Count());
+        Assert.Equal(BagScreen.AllPockets.Length, ModernUi.PocketTabs.Select(t => t.Icon).Distinct().Count());
         // Every item of the game has a pocket the bag shows
-        Assert.All(ItemDatabase.GetAll(), item => Assert.Contains(item.Pocket, BagScreen.Pockets));
+        Assert.All(ItemDatabase.GetAll(), item => Assert.Contains(item.Pocket, BagScreen.AllPockets));
 
         var bag = new BagScreen();
         bag.Open();
@@ -214,7 +217,7 @@ public class MenuScreenTests
         Assert.Equal(new[] { BagAction.Use, BagAction.Toss, BagAction.Cancel }, BagScreen.ActionsFor(Item("TM01")));
         Assert.Equal(new[] { BagAction.Use, BagAction.Cancel }, BagScreen.ActionsFor(Item("HM01")));
         Assert.All(ItemDatabase.GetAll(), item =>
-            Assert.Equal(item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs), BagScreen.CanGive(item)));
+            Assert.Equal(item.Pocket is not (ItemPocket.KeyItems or ItemPocket.TMsAndHMs or ItemPocket.Masks), BagScreen.CanGive(item)));
     }
 
     [Fact]

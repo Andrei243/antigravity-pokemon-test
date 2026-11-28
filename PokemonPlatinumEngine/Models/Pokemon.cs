@@ -660,6 +660,13 @@ public class Pokemon
     /// </summary>
     internal TeraType? Terastallized { get; set; }
 
+    /// <summary>
+    /// The winter mask it wears in the battle being fought (plan 46 · CP13; <see cref="Data.WinterMasks"/>), through
+    /// switches until the battle ends; null when it wears none. Only a battle's rules set it, and the screen's copy from
+    /// the log's event (<see cref="Battle.Sim.MaskWorn"/>).
+    /// </summary>
+    internal string? WornMask { get; set; }
+
     /// <summary>The types a Stellar Terastallization has spent its one boost on, by name, "Stellar" among them (Showdown's <c>stellarBoostedTypes</c>).</summary>
     internal HashSet<string>? StellarBoosted { get; set; }
 

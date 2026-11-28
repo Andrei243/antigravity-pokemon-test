@@ -225,7 +225,7 @@ internal static partial class ModernUi
             var recipe = recipes[index];
             var item = Crafting.ItemOf(recipe);
             var r = RowRect(list, row, 24, scrolls);
-            bool can = Crafting.WhyNot(recipe, 1, screen.Bag, screen.Pouch) == null;
+            bool can = Crafting.WhyNot(recipe, 1, screen.Bag, screen.Pouch, screen.State) == null;
             var ink = ListRow(r, index == screen.RecipeCursor, item?.DisplayName ?? recipe.Makes, enabled: can, nameX: 112, size: 32);
             var colour = RecipeColour(recipe);
             var at = new Vector2(r.X + 56, r.Y + r.Height / 2f);

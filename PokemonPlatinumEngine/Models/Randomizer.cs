@@ -355,7 +355,7 @@ public sealed partial class Randomizer
     public bool Protected(ItemData item)
     {
         protectedItems ??= ScriptLibrary.Default.ItemsAsked.ToHashSet(StringComparer.OrdinalIgnoreCase);
-        return item.Pocket == ItemPocket.KeyItems || item.CantBeTossed || item.MegaStone != null || item.ZCrystal != null
+        return item.Pocket is ItemPocket.KeyItems or ItemPocket.Masks || item.CantBeTossed || item.MegaStone != null || item.ZCrystal != null
             || IsHm(item) || protectedItems.Contains(item.Name);
     }
 

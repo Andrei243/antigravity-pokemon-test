@@ -501,3 +501,10 @@ public sealed record TaleEnded(string Tale) : BattleEvent;
 /// <paramref name="Form"/> is the form it now stands in (null: its species' own). It rides on the line that says so.
 /// </summary>
 public sealed record TaleFormChanged(Place Place, string? Form, bool Woke) : BattleEvent;
+
+/// <summary>
+/// A winter mask put on (plan 46 · CP13): the Pokémon in <paramref name="Place"/> wears <paramref name="Mask"/>
+/// (<see cref="Data.WinterMasks"/>'s id) for the rest of the battle, its second type and ability the mask's. It rides on
+/// the line that says so.
+/// </summary>
+public sealed record MaskWorn(Place Place, string Mask) : BattleEvent;

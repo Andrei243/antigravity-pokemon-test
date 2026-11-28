@@ -75,7 +75,8 @@ public sealed partial class BattleCore
         // A raider's orb charges by the moves it uses before it can Terastallize in a Tera Raid (plan 34 · PD7)
         if (IsTeraRaid && mine.IsPlayerSide && OrbChargeOf(mine) < RaidRules.OrbCharge) return Text.Of("battle.teraOrbNotCharged");
         if (p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null || p.FormData?.Kind is FormKind.Mega or FormKind.Primal or FormKind.MegaDynamax || p.Form == UltraForm) return no;
-        if (mine.Volatile.Dynamaxed) return no;
+        // (Nor a masked one: plan 46 · CP13)
+        if (mine.Volatile.Dynamaxed || p.WornMask != null) return no;
         return null;
     }
 

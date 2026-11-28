@@ -163,7 +163,7 @@ public sealed partial class BattleCore
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantUltraBurst", ("pokemon", mine.Name));
-        if (!Rules.ZMoves || LaterMechanicsBarred || mine.Pokemon is not { } p || !HasZRing(mine) || mine.Volatile.Transformed || UltraBurstFormOf(p) == null) return no;
+        if (!Rules.ZMoves || LaterMechanicsBarred || mine.Pokemon is not { } p || !HasZRing(mine) || mine.Volatile.Transformed || UltraBurstFormOf(p) == null || p.WornMask != null) return no;
         return burstUsed.Contains(MegaKey(mine)) ? Text.Of("battle.ultraBurstOnlyOnce") : null;
     }
 

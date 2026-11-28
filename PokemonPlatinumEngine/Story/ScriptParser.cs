@@ -1343,7 +1343,7 @@ public static class ScriptParser
             case "craft":
             {
                 // (plan 34 · PD7's `craft deli`: the pantry's goods sold at a Paldean deli, with no kit needed)
-                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared", "crosses", "deli");
+                string what = r.OneOf("has", "give", "take", "count", "open", "tm", "tradable", "trade", "pantry", "meal", "gather", "cleared", "crosses", "deli", "learn", "knows");
                 // A dish eaten there and then (plan 39 · CR6): `craft meal "beanHotpot"`, or with its grade, `craft meal "beanHotpot" superb`
                 if (what == "meal")
                 {
@@ -1355,6 +1355,13 @@ public static class ScriptParser
                 // What a tree cut or a rock smashed leaves (plan 39 · CR2): `craft cleared tree`, `craft cleared rock`
                 if (what == "cleared")
                     return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = r.OneOf("tree", "rock") };
+                // A pattern of the kit (plan 46 · CP13): `craft learn "mask_bear"`, `craft knows "mask_bear"`
+                if (what is "learn" or "knows")
+                {
+                    string pattern = r.Text("a pattern's id");
+                    if (!Models.Crafting.Patterns.Contains(pattern)) throw r.Error($"'{pattern}' is no pattern (Data/recipes.json's kit)");
+                    return new Instruction { Op = Op.Craft, Line = line, Name = what, Other = pattern };
+                }
                 if (what == "give" && r.PeekWord("kit"))
                 {
                     r.Next();

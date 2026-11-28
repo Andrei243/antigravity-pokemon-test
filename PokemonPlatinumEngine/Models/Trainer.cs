@@ -165,6 +165,9 @@ public class Trainer
     /// <summary>The tales the trainer may tell, with a Book of Tales of their own (plan 46 · CP11), under rules that have them; none of anyone's yet: Carpathia's chapters give its trainers theirs.</summary>
     public List<string>? Tales { get; set; }
 
+    /// <summary>The winter masks the trainer holds (plan 46 · CP13; <see cref="Data.WinterMasks"/>'s ids), one of which they may put on a Pokémon once a battle under rules that have them; none of anyone's yet: Carpathia's chapters give its trainers theirs.</summary>
+    public List<string>? Masks { get; set; }
+
     /// <summary>
     /// The team, prize money and mind were taken from Platinum's data (<c>trainers.json</c>), because the map wrote
     /// only the trainer's id: a map written back out leaves them to the data again (<c>MapFile.FromMap</c>).

@@ -52,7 +52,15 @@
     { "id": "stableMulch", "makes": "Stable Mulch", "takes": [
       { "material": "grittySand", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "rockFlake", "count": 4 } ] },
     { "id": "gooeyMulch", "makes": "Gooey Mulch", "takes": [
-      { "material": "grittySand", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "murkDrop", "count": 3 } ] }
+      { "material": "grittySand", "count": 6 }, { "material": "leafScrap", "count": 4 }, { "material": "murkDrop", "count": 3 } ] },
+    { "id": "bearMask", "makes": "Bear Mask", "value": 250, "pattern": "mask_bear", "takes": [
+      { "material": "nightFur", "count": 8 }, { "material": "softFluff", "count": 6 }, { "material": "timber", "count": 4 } ] },
+    { "id": "goatMask", "makes": "Goat Mask", "value": 250, "pattern": "mask_goat", "takes": [
+      { "material": "softFluff", "count": 8 }, { "material": "timber", "count": 6 }, { "material": "umbralClaw", "count": 1 } ] },
+    { "id": "horseMask", "makes": "Horse Mask", "value": 250, "pattern": "mask_horse", "takes": [
+      { "material": "timber", "count": 10 }, { "material": "plantFibre", "count": 8 }, { "material": "tornWrap", "count": 4 } ] },
+    { "id": "stagMask", "makes": "Stag Mask", "value": 250, "pattern": "mask_stag", "takes": [
+      { "material": "timber", "count": 8 }, { "material": "leafScrap", "count": 6 }, { "material": "softFluff", "count": 2 }, { "material": "plushTuft", "count": 1 } ] }
   ],
   "kitchen": {
     "most": 4,

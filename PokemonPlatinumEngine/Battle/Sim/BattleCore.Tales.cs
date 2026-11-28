@@ -164,7 +164,8 @@ public sealed partial class BattleCore
     {
         if (Field.Tale is not { } told || told.Teller != b.Side) return;
         var rule = told.Rule;
-        if (b.Pokemon is not { } p || p.IsEgg || b.Volatile.Transformed || beforeTale.ContainsKey(p)) return;
+        // (A masked Pokémon dances its mask's role and wakes to no tale: plan 46 · CP13)
+        if (b.Pokemon is not { } p || p.IsEgg || b.Volatile.Transformed || beforeTale.ContainsKey(p) || p.WornMask != null) return;
         if (p.FormData?.Kind is FormKind.Mega or FormKind.Primal or FormKind.MegaDynamax || p.Form == UltraForm || b.Volatile.Dynamaxed) return;
         if (rule.FormFor(p.Species.Name) is not { } form || p.Species.Form(form) == null || p.Form == form) return;
         beforeTale[p] = (p.Form, p.AbilityName);

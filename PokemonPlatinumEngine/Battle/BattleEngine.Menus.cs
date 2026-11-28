@@ -228,6 +228,8 @@ public partial class BattleEngine
         choice = WithTeraArmed(choice);
         // And with the tale armed for it (plan 46 · CP11)
         choice = WithTaleArmed(choice);
+        // And with the mask armed for it (plan 46 · CP13)
+        choice = WithMaskArmed(choice);
         // A move chosen with a turn of a rotation battle's turntable goes alone (plan 14 · B7)
         if (choice.Rotation != 0) choice = choice with { Mega = false, ZMove = false, UltraBurst = false, Dynamax = false, Terastallize = false };
         RotationArmed = 0;
@@ -969,6 +971,12 @@ public partial class BattleEngine
                 if (!IsRotation && InputManager.IsActionPressed(GameAction.PageRight))
                 {
                     AudioManager.PlaySound(ToggleTale() ? "select" : "cancel");
+                    return;
+                }
+                // And PageLeft the mask (plan 46 · CP13), where it doesn't turn a rotation battle's turntable
+                if (!IsRotation && InputManager.IsActionPressed(GameAction.PageLeft))
+                {
+                    AudioManager.PlaySound(ToggleMask() ? "select" : "cancel");
                     return;
                 }
                 if (TurnedTheTable()) return;

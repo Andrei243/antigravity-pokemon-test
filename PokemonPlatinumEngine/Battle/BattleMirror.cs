@@ -48,7 +48,8 @@ internal sealed class BattleMirror
         DynamaxBand = trainer.DynamaxBand,
         MegaMaxBand = trainer.MegaMaxBand,
         TeraOrb = trainer.TeraOrb,
-        Tales = trainer.Tales
+        Tales = trainer.Tales,
+        Masks = trainer.Masks
     };
 
     /// <summary>

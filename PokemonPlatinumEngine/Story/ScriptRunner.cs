@@ -2735,6 +2735,7 @@ public sealed partial class ScriptRunner
         ItemPocket.Berries => Text.Of("found.pocket.Berries"),
         ItemPocket.Mail => Text.Of("found.pocket.Mail"),
         ItemPocket.BattleItems => Text.Of("found.pocket.BattleItems"),
+        ItemPocket.Masks => Text.Of("found.pocket.Masks"),
         _ => Text.Of("found.pocket.Items")
     };
 

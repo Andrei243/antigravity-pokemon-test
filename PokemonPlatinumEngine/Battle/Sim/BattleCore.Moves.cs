@@ -990,6 +990,8 @@ public sealed partial class BattleCore
             use.Hits.Add(hit);
             if (!Reaches(use, t, hit)) continue;
             effect.OnReach(this, use, t);
+            // The goat's mask takes the target's raised stats before the hit (plan 46 · CP13)
+            GoatSteals(use, t);
 
             float effectiveness = use.Data == StruggleData || effect.HitsAnything ? 1f : DamageCalculator.Effectiveness(user, t, move, Rules);
             var guards = BattleEffects.Of(t, includeAbility: !userBreaks).ToList();
@@ -1373,6 +1375,8 @@ public sealed partial class BattleCore
             }
 
             if (user.IsActive) use.Effect.AfterHits(this, use);
+            // The horse's mask carries its wearer out once its move has landed (plan 46 · CP13)
+            if (user.IsActive) HorseCarries(use);
         }
 
         // Now whoever the move knocked out goes down; the user of Explosion after its targets

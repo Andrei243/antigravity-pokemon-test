@@ -134,6 +134,10 @@ public sealed class BattleRecordFile
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public List<string>? Tales { get; set; }
 
+    /// <summary>The winter masks the player held (plan 46 · CP13); null, as a file without them, for none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? Masks { get; set; }
+
     /// <summary>A Battle Palace's battle and a Battle Arena's bouts (plan 14 · B9): both change how it goes. A file without them is neither.</summary>
     public bool Palace { get; set; }
     public int TurnLimit { get; set; }
@@ -224,6 +228,7 @@ public sealed class BattleRecordFile
             MegaMaxBand = setup.MegaMaxBand,
             TeraOrb = setup.TeraOrb,
             Tales = setup.Tales?.ToList(),
+            Masks = setup.Masks?.ToList(),
             Palace = setup.Palace,
             TurnLimit = setup.TurnLimit,
             HideLevel = setup.HideLevel,
@@ -363,6 +368,7 @@ public sealed class BattleRecordFile
             MegaMaxBand = MegaMaxBand,
             TeraOrb = TeraOrb,
             Tales = Tales,
+            Masks = Masks,
             Palace = Palace,
             TurnLimit = TurnLimit,
             HideLevel = HideLevel,
@@ -516,6 +522,10 @@ public sealed class RecordedTrainer
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public List<string>? Tales { get; set; }
 
+    /// <summary>The winter masks the trainer held (plan 46 · CP13); null, as a file without them, for none.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? Masks { get; set; }
+
     /// <summary>The look the person who carries them is drawn in, for a replay's screen; the rules never read it.</summary>
     public string? Look { get; set; }
 
@@ -536,6 +546,7 @@ public sealed class RecordedTrainer
         MegaMaxBand = t.MegaMaxBand,
         TeraOrb = t.TeraOrb,
         Tales = t.Tales?.ToList(),
+        Masks = t.Masks?.ToList(),
         Look = t.Look,
         Party = t.Party.Members.Select(RecordedPokemon.Of).ToList()
     };
@@ -557,6 +568,7 @@ public sealed class RecordedTrainer
             MegaMaxBand = MegaMaxBand,
             TeraOrb = TeraOrb,
             Tales = Tales?.ToList(),
+            Masks = Masks?.ToList(),
             Look = Look
         };
         foreach (var p in Party) trainer.Party.Add(p.ToPokemon(rules));
@@ -625,6 +637,10 @@ public sealed class RecordedChoice
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public string? Tale { get; set; }
 
+    /// <summary>The winter mask put on with the move (plan 46 · CP13); null in every other answer.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Mask { get; set; }
+
     /// <summary>A rotation battle's turn of the turntable with the move (plan 14 · B7); 0 in every other answer.</summary>
     public int Rotation { get; set; }
 
@@ -644,6 +660,7 @@ public sealed class RecordedChoice
         Dynamax = c.Dynamax,
         Terastallize = c.Terastallize,
         Tale = c.Tale,
+        Mask = c.Mask,
         Rotation = c.Rotation
     };
 
@@ -659,6 +676,7 @@ public sealed class RecordedChoice
         Dynamax = Dynamax,
         Terastallize = Terastallize,
         Tale = Tale,
+        Mask = Mask,
         Rotation = Rotation
     };
 }

@@ -156,7 +156,16 @@ public sealed class Battler
 
     /// <summary>Its types as they would be without a Terastallization (Showdown's <c>getTypes(false, true)</c>), what the same-type bonus still counts.</summary>
     public bool HasTypeBeforeTera(PokemonType type) =>
-        PlateType is { } plate ? type == plate : Volatile.Types != null ? Volatile.Types.Contains(type) : Pokemon != null && Pokemon.HasType(type);
+        PlateType is { } plate ? type == plate : Volatile.Types != null ? Volatile.Types.Contains(type)
+        : MaskTypes is { } masked ? masked.Contains(type) : Pokemon != null && Pokemon.HasType(type);
+
+    /// <summary>
+    /// A winter mask's types (plan 46 · CP13): its own first type, then the mask's in place of its second (one already of
+    /// the mask's type is that type alone); null with no mask. A move that sets its types (Conversion, Soak) goes over it.
+    /// </summary>
+    private PokemonType[]? MaskTypes => Pokemon?.WornMask is { } id && WinterMasks.Get(id) is { } mask
+        ? Pokemon.PrimaryType == mask.Type ? new[] { mask.Type } : new[] { Pokemon.PrimaryType, mask.Type }
+        : null;
 
     /// <summary>Its types right now, one or two, the first its own first.</summary>
     public IReadOnlyList<PokemonType> Types
@@ -166,6 +175,7 @@ public sealed class Battler
             if (TeraShown is { } tera) return new[] { tera };
             if (PlateType is { } plate) return new[] { plate };
             if (Volatile.Types != null) return Volatile.Types;
+            if (MaskTypes is { } masked) return masked;
             if (Pokemon == null) return System.Array.Empty<PokemonType>();
             return Pokemon.SecondaryType is { } second && second != Pokemon.PrimaryType
                 ? new[] { Pokemon.PrimaryType, second }

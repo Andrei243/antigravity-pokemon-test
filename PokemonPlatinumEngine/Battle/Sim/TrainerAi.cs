@@ -57,7 +57,31 @@ public sealed class TrainerAi : IBattleController
         // And a tale (plan 46 · CP11), with any move: its best where it helps its side more than the foe's, or an answer
         // to the other side's tale where that one hurts it
         if (choice.Kind == ChoiceKind.Fight && TaleNow(battle, mine) is { } tale) choice = choice with { Tale = tale };
+        // And a mask (plan 46 · CP13), where nothing that changes the Pokémon was chosen, on the last or the ace
+        if (choice.Kind == ChoiceKind.Fight && !choice.Mega && !choice.UltraBurst && !choice.Dynamax && !choice.Terastallize
+            && MaskNow(battle, mine) is { } mask)
+            choice = choice with { Mask = mask };
         return choice;
+    }
+
+    /// <summary>
+    /// The winter mask to put on now, if any (plan 46 · CP13; drawing nothing): only on the trainer's last able Pokémon or
+    /// its ace, the first turn it stands on the field (any turn for the last). Of the masks held: the goat where a foe on the
+    /// field has a stat raised, the bear where an ally stands beside it, the horse where another of the team could come in
+    /// and this one isn't the ace, and else the stag; and where the one wanted isn't held, the first held in the dances' order.
+    /// </summary>
+    internal static string? MaskNow(BattleCore battle, Battler mine)
+    {
+        var masks = battle.MasksToWear(mine);
+        if (masks.Count == 0) return null;
+        bool last = LastStanding(mine);
+        if (!last && !(IsAce(mine) && mine.Volatile.FirstTurn >= battle.Turn)) return null;
+        var wanted = new List<string>();
+        if (battle.ActiveFoes(mine).Any(f => f.Pokemon!.StatStages.Values.Any(v => v > 0))) wanted.Add(WinterMasks.Goat);
+        if (battle.AllBattlers.Any(b => b != mine && b.Side == mine.Side && b.IsActive)) wanted.Add(WinterMasks.Bear);
+        if (!last && !IsAce(mine)) wanted.Add(WinterMasks.Horse);
+        wanted.Add(WinterMasks.Stag);
+        return wanted.FirstOrDefault(masks.Contains) ?? masks[0];
     }
 
     /// <summary>
