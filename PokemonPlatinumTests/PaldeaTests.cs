@@ -107,7 +107,9 @@ public class PaldeaTests
         // A door to each room, and each room's way out leads back through it to its marker (but upstairs, come to from
         // downstairs)
         var behind = new[] { "CaboPoco_PlayersHouse_2F", "Cortondo_GymTest", "Artazon_GymTest", "Levincia_GymTest", "Cascarrafa_GymTest", "Medali_GymTest",
-            "Montenevera_GymTest", "Alfornada_GymTest", "Glaseado_GymTest", "PaldeaLeague_Court", "AreaZero", "AreaZero_ZeroLab" };
+            "Montenevera_GymTest", "Alfornada_GymTest", "Glaseado_GymTest", "PaldeaLeague_Court", "AreaZero", "AreaZero_ZeroLab",
+            // (the Ace Tournament's court, walked onto from the entrance hall's desk by its script: plan 34 · PD9)
+            "Mesagoza_AceCourt" };
         Assert.Equal(Region.Maps.Where(m => !behind.Contains(m)).OrderBy(m => m), map.Doors.Select(d => d.Room).Distinct().OrderBy(m => m));
         foreach (var door in map.Doors)
         {
@@ -122,7 +124,8 @@ public class PaldeaTests
             "area_two_south", "area_two_north", "area_three_south", "area_three_north", "east_one_grass",
             "desert_dunes", "desert_east", "west_one_south", "west_one_north", "west_two_grass",
             "north_one_grass", "glaseado_foot_west", "glaseado_foot_east", "east_three_grass", "alfornada_grass" }.OrderBy(n => n), map.Zones.Select(z => z.Name).OrderBy(n => n));
-        foreach (var slot in map.Zones.SelectMany(z => z.Slots))
+        // (a row of our own species keeps its own levels after the Hall of Fame: plan 03 · D15, PaldeaPostgameTests)
+        foreach (var slot in map.Zones.SelectMany(z => z.Slots).Where(s => !s.Ours))
         {
             Assert.NotNull(PokemonDatabase.Get(slot.Species));
             Assert.InRange(slot.MinLevel, 2, 48);
