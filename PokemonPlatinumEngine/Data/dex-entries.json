@@ -580,11 +580,25 @@
       "Its body is soft and stretchy, and it can puff up like a balloon. It sulks when it is ignored."
     ]
   },
+  "Jigglypuff-Carpathia": {
+    "habitat": "Urban",
+    "entries": [
+      "It sings slow songs of longing that fill whole rooms. Listeners often drift off before the song is done, much to its disappointment.",
+      "A red and white tassel curls on its head, and a stitched scarf is knotted under its ears. Long ribbons of pale light drift from its mouth."
+    ]
+  },
   "Wigglytuff": {
     "habitat": "Grassland",
     "entries": [
       "Wigglytuff is gentle and loves to be hugged. Its long ears twitch with pleasure when it is stroked.",
       "Its fluffy coat makes it a favorite cushion for napping children. It sings in a voice softer and warmer than Jigglypuff's."
+    ]
+  },
+  "Wigglytuff-Carpathia": {
+    "habitat": "Urban",
+    "entries": [
+      "It gathers others around it and leads them in song at village feasts. When the whole group sings together, its fleece ripples in time.",
+      "It wears a stitched sheepskin vest over cream and pale gold fleece. Red and white tassels hang from the tips of its long ears."
     ]
   },
   "Zubat": {
@@ -1994,6 +2008,13 @@
       "It is fond of its trainer and follows them happily. Its round eyes sparkle when it is pleased."
     ]
   },
+  "Igglybuff-Carpathia": {
+    "habitat": "Urban",
+    "entries": [
+      "It hums a gentle tune that sends small children to sleep. Mothers say a cradle with one nearby seldom wakes in the night.",
+      "It is soft cream like wool, with a red and black stitched band round its middle. A little tuft of wool curls on its head."
+    ]
+  },
   "Togepi": {
     "habitat": "Forest",
     "entries": [
@@ -2435,6 +2456,13 @@
       "Few people have spotted one, since it keeps to dim, quiet places. Its stubby wings flutter when it is nervous."
     ]
   },
+  "Dunsparce-Carpathia": {
+    "habitat": "Cave",
+    "entries": [
+      "Villagers say it is a young dragon that will grow great one day. It sleeps under floorboards and wakes only when it smells food.",
+      "Moss green scales cover its plump body above a pale belly. It has leathery little wings and a row of small horns along its back."
+    ]
+  },
   "Gligar": {
     "habitat": "Mountain",
     "entries": [
@@ -2727,6 +2755,13 @@
     "entries": [
       "Smeargle loves to draw and dabs its tail across rocks and walls. Each one paints in its own style.",
       "It is curious and studies other Pokémon closely, copying what they do. Its tail fluid changes color with its mood."
+    ]
+  },
+  "Smeargle-Carpathia": {
+    "habitat": "Urban",
+    "entries": [
+      "It paints on the walls of old monasteries with the deep blue from its tail. The monks say no human hand can mix a colour quite like it.",
+      "It wears an ochre painter's smock over cream fur, with gold stars and blue clouds on its back. A small golden disc floats behind its flat capped head."
     ]
   },
   "Tyrogue": {
@@ -3219,6 +3254,13 @@
       "Whismur lives in quiet caves where its voice echoes. It practises squeaks and murmurs for hours and gets shy when others listen."
     ]
   },
+  "Whismur-Carpathia": {
+    "habitat": "Grassland",
+    "entries": [
+      "It whistles softly while it follows flocks, and the sheep seem to find it soothing. When it cries, every dog nearby comes running.",
+      "Its cream fur is patterned like a sheep's fleece. The ends of its big ears are shaped like wooden flutes with finger holes."
+    ]
+  },
   "Loudred": {
     "habitat": "Cave",
     "entries": [
@@ -3226,11 +3268,25 @@
       "Loudred listens for echoes to learn the shape of the dark places it explores. A pair of big ears stand up whenever it hears a new sound."
     ]
   },
+  "Loudred-Carpathia": {
+    "habitat": "Mountain",
+    "entries": [
+      "It calls from hilltop to hilltop and carries news between distant farms. A shepherd who knows its calls can tell what is happening beyond the ridge.",
+      "Long wooden horns bound with bark sit where its ears should be. Red and black folk patterns are stitched across its brown and cream belly."
+    ]
+  },
   "Exploud": {
     "habitat": "Cave",
     "entries": [
       "The tubes along its body gather air and fire it out as a roar that can be heard across a mountain. Its mouth gapes wide when it shouts.",
       "Exploud uses different calls to signal to its friends, and a trained one can sing along with music. The sound it makes is gentle at a short range."
+    ]
+  },
+  "Exploud-Carpathia": {
+    "habitat": "Mountain",
+    "entries": [
+      "When it calls from a mountaintop, the sound comes back from every valley around. Villages once relied on its warning when strangers came up the road.",
+      "Wooden horns bound in bark open all over its brown and cream body. A sheepskin cloak rests on its shoulders above a red and black belt."
     ]
   },
   "Makuhita": {
@@ -3294,6 +3350,13 @@
     "entries": [
       "The great gem it holds as a shield is now crowned by a ring of smaller gems that glitter in every colour of the deep earth.",
       "It grins from behind its shield as though it knows a secret. Miners claim its eyes can see every jewel buried in a mountain."
+    ]
+  },
+  "Sableye-Carpathia": {
+    "habitat": "Cave",
+    "entries": [
+      "Deep in the salt workings it licks the walls and nibbles at pink crystals. Miners leave one alone, since it knows which galleries are safe.",
+      "White and pink salt crusts its pale body, with small cubes on its shoulders. Its eyes and chest stone are clear amber crystal."
     ]
   },
   "Mawile": {
@@ -3553,6 +3616,13 @@
     "entries": [
       "No two are marked alike, and the spots on its face give it a different expression each time. It sways in an unsteady lurching walk.",
       "Spinda wanders in a dizzy zigzag as though lost, but somehow reaches its destination. Collectors like to compare their patterns."
+    ]
+  },
+  "Spinda-Carpathia": {
+    "habitat": "Grassland",
+    "entries": [
+      "It whirls in the round dance until it can no longer walk straight. Then it stumbles happily into the next dancer and starts over again.",
+      "Red and black patterns like stitching replace its spots, different on every one. A red sash circles its waist, and ribbons trail from its ears."
     ]
   },
   "Trapinch": {
@@ -3826,6 +3896,13 @@
     "entries": [
       "Its body is shaped like a delicate bell, and a pure chime rings out as it floats. The sound is so clear that it calms a whole room.",
       "In this form it has grown icy and fine. Its song is a high, thin ringing that can cut through steel."
+    ]
+  },
+  "Chimecho-Carpathia": {
+    "habitat": "Urban",
+    "entries": [
+      "It knocks out calls like the wooden boards struck to gather people together. When it knocks at an odd hour, neighbours come out to see why.",
+      "Spirals and twisting cords are carved into its hollow pale wooden body. A long woven red strip trails behind it as a tail."
     ]
   },
   "Absol": {
@@ -4528,11 +4605,25 @@
       "A Drifloon that is pricked by a thorn lets out a long, mournful wheeze but comes to no harm. By the next evening it is round and full again."
     ]
   },
+  "Drifloon-Carpathia": {
+    "habitat": "Rare",
+    "entries": [
+      "It floats up on the shortest night of the year like a lantern set free. People who see it rise make a wish for the harvest.",
+      "Its balloon is thin waxed paper, glowing warm yellow from a little flame inside. A painted yellow flower marks its side above two strings of woven grass."
+    ]
+  },
   "Drifblim": {
     "habitat": "Mountain",
     "entries": [
       "It hangs in the air above quiet fields for hours, turning slowly in the breeze. Its striped arms trail beneath it like ribbons.",
       "A Drifblim's body swells and shrinks with the temperature, so it floats higher on hot afternoons and lower on cool mornings. In frost it barely leaves the ground."
+    ]
+  },
+  "Drifblim-Carpathia": {
+    "habitat": "Rare",
+    "entries": [
+      "Great flocks of them drift over the fields on midsummer nights and light the whole sky. Nobody knows where they go once their fires burn low.",
+      "Painted flowers cover its glowing amber and rose paper body. Its arms are long ribbons of woven grass and red thread, and a flame flickers within."
     ]
   },
   "Buneary": {
@@ -4598,6 +4689,13 @@
       "The cord on its head flutters in the slightest breeze. Young Chingling tug at one another's cords in play until an elder chimes them back into line."
     ]
   },
+  "Chingling-Carpathia": {
+    "habitat": "Grassland",
+    "entries": [
+      "It taps out rhythms with the little striker inside it. Villagers once told the time of day by the patterns it knocked on the wind.",
+      "It is a small round body of carved pale beech wood, with folk patterns round its rim. It keeps the same round knot on top."
+    ]
+  },
   "Stunky": {
     "habitat": "Grassland",
     "entries": [
@@ -4619,11 +4717,25 @@
       "A Bronzor that bumps into a rock gives a dull clang and spins away. Its metal surface never rusts, however damp the cave where it rests."
     ]
   },
+  "Bronzor-Carpathia": {
+    "habitat": "Rare",
+    "entries": [
+      "It turns up among the stone circles of ancient sanctuaries. Some believe people once honoured it as a small image of the sun.",
+      "Weathered bronze, green with age, makes up its flat disc, with carved sun rays round the rim. Stone dust fills its grooves round two small eyes."
+    ]
+  },
   "Bronzong": {
     "habitat": "Cave",
     "entries": [
       "It hangs motionless in the middle of large caverns for weeks on end. A deep hum rises from inside its body that cavers feel in their chests before they hear it.",
       "The arms on its sides sway gently when it is about to move. A Bronzong is patient beyond measure and can wait out a whole winter in one spot."
+    ]
+  },
+  "Bronzong-Carpathia": {
+    "habitat": "Rare",
+    "entries": [
+      "It hangs still above old sacred stones and rises to face the sun at dawn. Ancient builders are thought to have lined up their circles with it.",
+      "Carved sun rays and stone panels ring its green bronze bell body. Spirals are cut into its short arms, and its eyes glow gold."
     ]
   },
   "Bonsly": {
@@ -6467,6 +6579,13 @@
       "Golett roams around ancient ruins with a blank, dull stare. When it gets going, its stiff legs thump on the ground."
     ]
   },
+  "Golett-Carpathia": {
+    "habitat": "Mountain",
+    "entries": [
+      "Tales say the giants of old made it from mountain stone to keep them company. It still wanders the slopes as if looking for them.",
+      "Moss grows in the seams of its rough grey stone body. A spiral is carved on its chest, and its eyes glow pale gold."
+    ]
+  },
   "Golurk": {
     "habitat": "RoughTerrain",
     "entries": [
@@ -6479,6 +6598,13 @@
     "entries": [
       "Its body grows huge, and a ghostly glow seeps from its seams. Its fists fly with a speed that no one expects from such a giant.",
       "In this form it is a ruthless guardian, and it acts without orders. Its steps sound like a drumbeat from the underworld."
+    ]
+  },
+  "Golurk-Carpathia": {
+    "habitat": "Mountain",
+    "entries": [
+      "People call it one of the giants of the old tales. It sits so still for so long that shepherds have grazed their flocks upon its shoulders.",
+      "Grass and young firs grow on its weathered grey shoulders. A band of carved spirals crosses its chest, and its eyes shine gold."
     ]
   },
   "Pawniard": {
@@ -7482,11 +7608,25 @@
       "Skiddo is a calm, sensible creature that follows its herd. It is not hard to get along with, and it makes a good riding companion."
     ]
   },
+  "Skiddo-Carpathia": {
+    "habitat": "Grassland",
+    "entries": [
+      "At the turn of the year it leaps and prances among the village dancers. Children chase it from door to door, laughing at the jingle of its bells.",
+      "A blanket of red, yellow, green and blue ribbons covers its back. Small bells hang from the ribbons and ring with every hop."
+    ]
+  },
   "Gogoat": {
     "habitat": "Grassland",
     "entries": [
       "People can ride on its back, holding its horns like reins. It steps lightly over rough mountain trails with a sure hoof.",
       "Gogoat senses a rider's mood and moves in time with it. Farmers prize it for its strength and good temper."
+    ]
+  },
+  "Gogoat-Carpathia": {
+    "habitat": "Grassland",
+    "entries": [
+      "It leads the winter processions and clacks its jaw to the beat of the drums. Households give it treats in the hope of a fertile year.",
+      "A long shaggy cloak of ribbons, beads and tiny mirrors covers its back. Red cloth wraps its horns, and a wooden jaw clacks on its muzzle."
     ]
   },
   "Pancham": {
@@ -7965,11 +8105,25 @@
       "Noibat hangs upside down at noon and flies out at night. With its ears, it never misses a sound in the dark."
     ]
   },
+  "Noibat-Carpathia": {
+    "habitat": "Cave",
+    "entries": [
+      "It calls into the caves and listens until the last echo has died. It uses the answers to find the narrowest way out in complete darkness.",
+      "Its fur is a deep cave brown. The insides of its great ears are ridged like the bell of a shepherd's horn and glow faintly gold."
+    ]
+  },
   "Noivern": {
     "habitat": "Cave",
     "entries": [
       "It flies silently and unleashes shrieks that shatter rock. A blast of sound can knock a foe senseless in a heartbeat.",
       "Noivern is a fierce hunter at dusk and a cunning ambusher. Its great wings carry it over a mountain in seconds."
+    ]
+  },
+  "Noivern-Carpathia": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its deep call rolls through the valleys like thunder on a clear day. Shepherds once took it for an alphorn blown from the next ridge.",
+      "Its huge ears flare like two wooden horns bound in bark. Patterns from old weaving edge its deep amber wing membranes."
     ]
   },
   "Xerneas": {
@@ -9568,6 +9722,13 @@
       "This Sinistea is a prized treasure of a collector. It rests in its cup with a quiet and dignified air."
     ]
   },
+  "Sinistea-Carpathia": {
+    "habitat": "Urban",
+    "entries": [
+      "It slips into a cup of linden tea left on a kitchen table. Its soothing steam is said to calm anyone who sits beside it.",
+      "It lives in a clay cup painted with brown and green swirls. A linden flower floats in the pale gold tea it makes its home."
+    ]
+  },
   "Polteageist": {
     "habitat": "Urban",
     "entries": [
@@ -9580,6 +9741,13 @@
     "entries": [
       "It lives in a fine, old teapot that is worth a fortune. It pours out a rich, strong brew when it is pleased.",
       "This Polteageist has the pride of a collector's piece. It sits quietly on a shelf until someone dares to take a sip."
+    ]
+  },
+  "Polteageist-Carpathia": {
+    "habitat": "Urban",
+    "entries": [
+      "It brews linden tea inside its pot and pours it for guests it likes. Anyone it dislikes finds the tea has gone quite cold.",
+      "A cream teapot painted with spirals and a rooster serves as its home. Its body swirls out as pale tea, with small flowers drifting in the steam."
     ]
   },
   "Hatenna": {
@@ -11197,6 +11365,13 @@
     "entries": [
       "Its body has an extra segment, and it digs a deeper and larger burrow. Its longer tail can pound the ground and dig great tunnels.",
       "This Dudunsparce is rarer than its two-segmented kin. The long body lets it hide in a labyrinth under the hills."
+    ]
+  },
+  "Dudunsparce-Carpathia": {
+    "habitat": "Cave",
+    "entries": [
+      "It naps under old stone bridges and rumbles when carts roll over them. People still step lightly there, so as not to wake it.",
+      "Small horns line its long moss green segmented body above a cream belly. Its leathery wings are larger, and its drill tail is forked."
     ]
   },
   "Kingambit": {
