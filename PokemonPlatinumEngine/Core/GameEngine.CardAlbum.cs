@@ -71,11 +71,13 @@ public partial class GameEngine
         string name = card.Name.Length > 0 ? card.Name : dataName;
         var band = SceneTransition.BandOf(bandClass, bandName) with { Name = name };
         string look = CardAlbumLook(card.Look, region);
-        var team = record.Party.Select(m => new AlbumMon(m.Form ?? m.Species, LocalNames.Species(m.Species))).ToList();
+        // (as the data builds each, so a female with a look of her own is drawn in it; built from her personality alone)
+        var team = record.Party.Select(m => new AlbumMon(TrainerDatabase.Build(m).LookName, LocalNames.Species(m.Species))).ToList();
+        int generation = region?.Generation ?? 4;
         string line = TrainerLines.SetOf(card.Id)?.Lines.FirstOrDefault() is { } said
             ? RichText.Plain(PlayerIdentity.Fill(Text.OfData(said.Text)))
             : "";
-        return new AlbumEntry(name, Text.Of($"cardAlbum.rank.{rank}"), Text.Of($"dexText.region.{region?.Generation ?? 4}").ToUpperInvariant(),
+        return new AlbumEntry(name, Text.Of($"cardAlbum.rank.{rank}"), Text.Of($"dexText.region.{generation}").ToUpperInvariant(),
             look, team, band, line);
     }
 
@@ -83,23 +85,25 @@ public partial class GameEngine
     private static string CardAlbumLook(string look, Region? region) =>
         region?.Kit == CharacterKit.Grown && CharacterModels.KindOf(look) == RigKind.Humanoid ? CharacterStyle.InKit(look, CharacterKit.Grown) : look;
 
-    /// <summary>The busts the page has in view: the opened card's, large, or the sheet's nine.</summary>
+    /// <summary>The busts the page has in view: the sheet's nine, and the opened card's, large, over them.</summary>
     internal IReadOnlyList<(string Look, bool Large)> AlbumBustsInView()
     {
         var screen = flow.TrainerCardScreen;
-        if (!screen.OnCards) return Array.Empty<(string, bool)>();
+        if (!screen.ShowsCards) return Array.Empty<(string, bool)>();
         var album = AlbumNow();
         if (album.Count == 0) return Array.Empty<(string, bool)>();
-        if (screen.CardOpened) return new[] { (album[Math.Min(screen.CardCursor, album.Count - 1)].Look, true) };
-        return album.Skip(screen.Sheet * TrainerCardScreen.CardsPerSheet).Take(TrainerCardScreen.CardsPerSheet)
-            .Select(c => (c.Look, false)).Distinct().ToList();
+        var views = album.Skip(screen.Sheet * TrainerCardScreen.CardsPerSheet).Take(TrainerCardScreen.CardsPerSheet)
+            .Select(c => (c.Look, Large: false)).Distinct().ToList();
+        // (the nine are kept while one is opened, so that putting it back shows them at once)
+        if (screen.CardOpened) views.Add((album[Math.Min(screen.CardCursor, album.Count - 1)].Look, true));
+        return views;
     }
 
     /// <summary>The offscreen phase of a frame: the busts of the cards in view, and none once the page is left.</summary>
     private void RenderTheAlbumsBusts(GameState scene)
     {
         if (IsHeadless) return;
-        if (scene != GameState.TrainerCard || !flow.TrainerCardScreen.OnCards) albumBusts.End();
+        if (scene != GameState.TrainerCard || !flow.TrainerCardScreen.ShowsCards) albumBusts.End();
         else albumBusts.Show(renderContext, AlbumBustsInView());
     }
 

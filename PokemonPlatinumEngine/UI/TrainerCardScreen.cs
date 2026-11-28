@@ -220,6 +220,9 @@ public class TrainerCardScreen
     /// <summary>Whether the cards' page is the one shown.</summary>
     public bool OnCards => IsActive && Page == CardPage.Cards;
 
+    /// <summary>Whether the cards' page is in the picture: shown, or still turning away (the card's first half of a turn).</summary>
+    public bool ShowsCards => IsActive && (Page == CardPage.Cards || (flipAge < FlipTime / 2f && PageOf(from) == CardPage.Cards));
+
     /// <summary>
     /// The arrows on the cards' page: left and right a card, up and down a row (a sheet runs on into the next), and left
     /// on the very first card turns back to the page before. Opened large, left and right go through the cards.

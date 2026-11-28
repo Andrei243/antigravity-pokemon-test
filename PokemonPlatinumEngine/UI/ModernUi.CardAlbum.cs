@@ -99,24 +99,25 @@ internal static partial class ModernUi
 
         if (entry.Line.Length > 0)
         {
-            var plate = new Rectangle(x, y + 166, wide, 190);
+            var plate = new Rectangle(x, y + 160, wide, 170);
             UiShapes.Shape(plate, 24, PanelTop, PanelBottom, Rule, 3);
             var lines = Wrap("“" + entry.Line + "”", wide - 48, 30, UiWeight.ExtraBold);
             for (int i = 0; i < lines.Count && i < AlbumLineRows; i++)
-                UiFonts.Draw(lines[i], x + 24, plate.Y + 22 + i * 38, 30, Ink, UiWeight.ExtraBold);
+                UiFonts.Draw(lines[i], x + 24, plate.Y + 16 + i * 36, 30, Ink, UiWeight.ExtraBold);
         }
 
-        Label(Text.Of("cardAlbum.team"), x, y + 376);
+        Label(Text.Of("cardAlbum.team"), x, y + 346);
         float cellWide = wide / 3f;
         for (int i = 0; i < entry.Team.Count && i < Models.Party.MaxSize; i++)
         {
-            var c = new Vector2(x + (i % 3) * cellWide + cellWide / 2f, y + 446 + (i / 3) * 136);
+            // (two rows end well inside the card's foot: the second row's names at 800 under the card's top)
+            var c = new Vector2(x + (i % 3) * cellWide + cellWide / 2f, y + 416 + (i / 3) * 130);
             UiShapes.Circle(c, 48, Disc);
             UiShapes.Ring(c, 48, 3, band.Base);
             AlbumIcon(entry.Team[i].Model, c, 2);
             string species = entry.Team[i].Species;
             float size = FitSize(species, cellWide - 12, 22, UiWeight.Black);
-            UiFonts.DrawCentered(species, c.X - UiFonts.Measure(species, size, UiWeight.Black) / 2f, c.Y + 66, size, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(species, c.X - UiFonts.Measure(species, size, UiWeight.Black) / 2f, c.Y + 64, size, Ink, UiWeight.Black);
         }
     }
 

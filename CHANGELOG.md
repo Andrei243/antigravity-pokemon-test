@@ -4,7 +4,7 @@ What changes from one release to the next, for players. Every session's close-ou
 
 ## [Unreleased]
 
-- Cards of the people you beat: your first win over a Gym Leader, one of an Elite Four or a Champion of any region gives you their card, with their portrait, their team, their colours and a line of theirs. They are on a new last page of the Trainer Card, nine to a sheet by region, and any one opens large. On a save from before this, a person you have already beaten gives their card the next time you beat them.
+- Cards of the people you beat: your first win over a Gym Leader, one of an Elite Four or a Champion of any region gives you their card, with their portrait, their team, their colours and a line of theirs. They are on a new last page of the Trainer Card, nine to a sheet by region, and any one opens large. On a save from before this, a person you had already beaten gives their card only if you beat them again (a rematch, or their team beyond the League); one the game never lets you battle again has no card in that save.
 
 - The Carpathian species and the Carpathian forms have their own Pokédex entries (two each, with a habitat) in place of the plain sentence made from their data, and in Romanian the species' kinds are in Romanian.
 

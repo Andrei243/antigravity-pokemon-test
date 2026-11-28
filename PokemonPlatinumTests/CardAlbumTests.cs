@@ -285,7 +285,8 @@ public class CardAlbumTests
             Assert.Single(game.AlbumBustsInView);
             Run(engine, ActionFrame.Press(GameAction.Confirm));
             Assert.True(game.TrainerCard.CardOpened);
-            Assert.True(Assert.Single(game.AlbumBustsInView).Large);
+            // The sheet's busts are kept under the opened card's large one
+            Assert.Equal(new[] { false, true }, game.AlbumBustsInView.Select(b => b.Large));
             Assert.Equal(0, game.AlbumBustsRendered);
             var entry = Assert.Single(game.CardNow.Album);
             Assert.Equal(TrainerDatabase.Get("leader_roark")!.Party.Select(m => m.Species), entry.Team.Select(m => m.Model));
