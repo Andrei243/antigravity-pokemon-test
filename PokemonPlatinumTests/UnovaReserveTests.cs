@@ -82,6 +82,26 @@ public class UnovaReserveTests
     }
 
     [Fact]
+    public void MeetingsAreDrawnFromEveryRowOfAGroundAndFromAnOpenedSlot()
+    {
+        var meadow = UnovaReserve.Grounds[0];
+        var placed = new SafariObjects();
+        placed.Set(meadow.Key, new[] { Placed("haystack", 1), Placed("haystack", 1) });
+        var rng = new Random(38);
+        HashSet<string> Met(EncounterMoment? moment)
+        {
+            var table = UnovaReserve.Table(meadow.X + 3, meadow.Y + 3, moment);
+            var met = new HashSet<string>();
+            for (int i = 0; i < 600; i++) met.Add(WildEncounterRules.Meet(table, false, null, rng)!.SpeciesName);
+            return met;
+        }
+        Assert.Equal(meadow.Table.Select(s => s.Species).ToHashSet(), Met(null));
+        var opened = Met(new EncounterMoment { SafariObjects = placed, SafariDay = 2 });
+        Assert.Contains("Kangaskhan", opened);
+        Assert.DoesNotContain(meadow.Table[0].Species, opened);
+    }
+
+    [Fact]
     public void EachGroundIsARoomOfOpenFloorForTheObjects()
     {
         var map = Zone();

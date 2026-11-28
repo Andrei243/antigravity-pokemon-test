@@ -7766,6 +7766,7 @@
   },
   "safariObjects": {
     "title": "AREA CUSTOMIZER: {area}",
+    "reserveTitle": "RESERVE GROUNDS: {area}",
     "area": {
       "1": "PLAINS",
       "2": "MEADOW",

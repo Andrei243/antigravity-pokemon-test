@@ -36,7 +36,7 @@ public partial class GameEngine
         flow.State = GameState.Decoration;
         var session = new DecoratingSession(room, store, SafariObjects.KindOf);
         int number = area + 1;
-        flow.DecorationScreen.Open(session, Text.Of("safariObjects.title", ("area", Text.Of($"safariObjects.area.{number}"))), piece => SafariArt.PlanLook(piece.Kind));
+        flow.DecorationScreen.Open(session, Text.Of(ground != null ? "safariObjects.reserveTitle" : "safariObjects.title", ("area", Text.Of($"safariObjects.area.{number}"))), piece => SafariArt.PlanLook(piece.Kind));
         return true;
     }
 

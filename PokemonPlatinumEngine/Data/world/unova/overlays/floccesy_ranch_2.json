@@ -7,7 +7,7 @@
   "npcs": [
     { "id": "grotto_mouth_1", "name": "Hollow", "npcType": "GrottoHollow", "x": 50, "y": 20, "facing": "Down", "script": "GrottoMouth" },
     // The warden of the Floccesy Reserve (plan 38 · EX9): takes a Champion of Unova to its gate, a map of ours
-    { "id": "floccesy_ranch_2.reserve_warden", "name": "Warden", "npcType": "ranger_f", "x": 50, "y": 40, "facing": "Left", "script": "ReserveWarden" }
+    { "id": "floccesy_ranch_2.reserve_warden", "name": "Warden", "npcType": "ranger_f", "x": 50, "y": 40, "facing": "Left", "script": "ReserveWarden", "shownBy": "UnovaHallOfFame" }
   ],
   "bgmTrack": "unova/route19",
   "trees": "Round",

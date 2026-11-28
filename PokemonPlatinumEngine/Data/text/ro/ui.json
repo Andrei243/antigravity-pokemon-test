@@ -8115,6 +8115,7 @@
   },
   "safariObjects": {
     "title": "PERSONALIZATORUL DE ZONE: {area}",
+    "reserveTitle": "TERENURILE REZERVAȚIEI: {area}",
     "area": {
       "1": "CÂMPIE",
       "2": "LUNCĂ",

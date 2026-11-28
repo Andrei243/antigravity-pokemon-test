@@ -28,10 +28,10 @@ label Home
   end
 
 
-# The warden of the Floccesy Reserve (plan 38 · EX9; ours): until the player has entered Unova's Hall of Fame only the
-# word of it, and from then on the way to its gate.
+# The warden of the Floccesy Reserve (plan 38 · EX9; ours), on the ranch once the player has entered Unova's Hall of Fame
+# (the overlay's shownBy): the way to its gate. The word to anyone else is kept for a warden met without it.
 script ReserveWarden
-  speaker "Warden"
+  speaker reserve_warden "Warden"
   if not flag UnovaHallOfFame goto NotYet
   ask "Champion! The Floccesy Reserve is open to you. Shall I take you to its gate?"
   if no goto Later

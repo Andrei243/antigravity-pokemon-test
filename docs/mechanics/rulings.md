@@ -5714,9 +5714,9 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
 
 - **All ours.** Black 2 has no Safari Zone; the reserve is built for parity because the user asked for it (2026-11-22,
   decision 9 of plan 38). No place, person, table or line of it comes from a game.
-- **The way in.** A warden at Floccesy Ranch only talks until Unova's Hall of Fame is entered (`UnovaHallOfFame`), and
-  then takes the player to the reserve's gate, a room of ours (`UnovaReserve_Gate`), whose door leads back to the ranch
-  beside him. No tile of the imported ranch changes, and no flag or story version is added but the gate's own variable.
+- **The way in.** A warden of ours stands on Floccesy Ranch once Unova's Hall of Fame is entered (`shownBy`
+  `UnovaHallOfFame`; nobody is there before, so the story and its shots are untouched), and takes the player to the
+  reserve's gate, a room of ours (`UnovaReserve_Gate`), whose door leads back to the ranch beside the warden. No tile of the imported ranch changes, and no flag or story version is added but the gate's own variable.
 - **The game** is the Great Marsh's `SafariGame`: $500, thirty Safari Balls and five hundred steps (`safari start 500`),
   Platinum's Safari battles with Bait and Mud. It ends at the last step or the last ball (the common ends bring a player
   of Unova back to the gate, `VAR_UNOVA_RESERVE` 2) or when the player walks out through the way in and says so; no
