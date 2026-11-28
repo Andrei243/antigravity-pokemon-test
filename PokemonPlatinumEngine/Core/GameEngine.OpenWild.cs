@@ -49,6 +49,8 @@ public partial class GameEngine
             FormName = form,
             MinLevel = seen.Level,
             MaxLevel = seen.Level,
+            // A row of our own species is met at its own levels, never the region's (plan 03 · D15)
+            Unmapped = seen.Slot.Ours,
             Nature = WildEncounterRules.NatureFor(lead, fieldRandom),
             Gender = WildEncounterRules.GenderFor(species, lead, fieldRandom)
         };

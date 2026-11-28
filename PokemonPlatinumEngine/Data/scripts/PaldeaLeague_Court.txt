@@ -95,7 +95,7 @@ label Done
 # The third: Larry again, Medali's leader, here with his Flying types
 script Larry
   face larry player
-  speaker "Larry"
+  speaker paldea_larry "Larry"
   if var VAR_PALDEA_LEAGUE >= 4 goto Done
   scene "Larry of the Elite Four"
   say "You again. Yes, I keep Medali's gym. I also sit on the Elite Four. The League found out I was good at both and gave me both. Typical."

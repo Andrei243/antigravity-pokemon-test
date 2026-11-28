@@ -26,6 +26,8 @@
     }
   ],
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_purple_1", "cylinder": { "at": [12, -26], "radius": 1.5, "bottom": 2, "top": 28 }, "script": "PaldeaStakePurple1" },
     // Up on the president's terrace with the director's word: the three, and Nemona's first battle
     { "name": "the_three", "cylinder": { "at": [31, 24], "radius": 4, "bottom": 9, "top": 14 }, "script": "TheThree", "var": "VAR_PALDEA_STORY", "value": 1 }
   ],

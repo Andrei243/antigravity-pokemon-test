@@ -19,6 +19,9 @@
     }
   ],
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_purple_2", "cylinder": { "at": [12, -34], "radius": 1.5, "bottom": 2, "top": 28 }, "script": "PaldeaStakePurple2" },
+    { "name": "stake_purple_3", "cylinder": { "at": [8, -146], "radius": 1.5, "bottom": 2, "top": 28 }, "script": "PaldeaStakePurple3" },
     // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
     { "name": "crystal_poco_1", "cylinder": { "at": [-24, -80], "radius": 1.5, "bottom": 1, "top": 33 }, "script": "CrystalPoco1" },
     // On the beach under the cliffs once the battle is over: the roar out of the grotto

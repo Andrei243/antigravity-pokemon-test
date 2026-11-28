@@ -204,6 +204,16 @@ public sealed class OpenWildField
     public (PokemonType Type, int Strength)? Favoured { get; set; }
     public int MoreStanding { get; set; }
 
+    /// <summary>
+    /// Whether the rows of species of ours are met (plan 03 · D15, plan 34 · PD9; the engine's, from
+    /// <see cref="Overworld.OursSlots.Open"/> each frame; shut unless told): shut, a row of ours is left out of its zone's
+    /// draw altogether, so every draw is as it was without it.
+    /// </summary>
+    public bool OursOpen { get; set; }
+
+    /// <summary>Whether a row is in its zone's draw now: met at the hour and the weather, and a row of ours only while they are open.</summary>
+    public bool InTheDraw(OpenSlot slot, FieldWeather weather) => (OursOpen || !slot.Ours) && MetAt(slot, Now, weather);
+
     /// <summary>The favoured type and strength the powers in force give the spawner: the Type Power's, or none.</summary>
     public static (PokemonType Type, int Strength)? FavouredBy(Models.PowerState powers) =>
         powers.TypeOf(Models.PowerKind.TypeEncounter) is { } type ? (type, powers.Strength(Models.PowerKind.TypeEncounter)) : null;
@@ -417,7 +427,7 @@ public sealed class OpenWildField
         // The rows met at this time of day, and their weights
         int total = 0;
         var weather = WeatherOf?.Invoke(zone) ?? FieldWeather.Clear;
-        foreach (var slot in zone.Slots) if (MetAt(slot, Now, weather)) total += WeightOf(slot);
+        foreach (var slot in zone.Slots) if (InTheDraw(slot, weather)) total += WeightOf(slot);
         if (total == 0) return;
 
         int minX = int.MaxValue, minZ = int.MaxValue, maxX = int.MinValue, maxZ = int.MinValue;
@@ -448,7 +458,7 @@ public sealed class OpenWildField
             OpenSlot? row = null;
             foreach (var slot in zone.Slots)
             {
-                if (!MetAt(slot, Now, weather)) continue;
+                if (!InTheDraw(slot, weather)) continue;
                 if ((pick -= WeightOf(slot)) < 0) { row = slot; break; }
             }
             if (row == null) return;
@@ -477,7 +487,7 @@ public sealed class OpenWildField
         foreach (var r in rustles) if (r.Zone == zone) return;
         var weather = WeatherOf?.Invoke(zone) ?? FieldWeather.Clear;
         bool any = false;
-        foreach (var slot in zone.Rustle) if (MetAt(slot, Now, weather)) { any = true; break; }
+        foreach (var slot in zone.Rustle) if (InTheDraw(slot, weather)) { any = true; break; }
         if (!any) return;
         int minX = int.MaxValue, minZ = int.MaxValue, maxX = int.MinValue, maxZ = int.MinValue;
         foreach (var (x, z) in zone.Polygon) { minX = Math.Min(minX, x); maxX = Math.Max(maxX, x); minZ = Math.Min(minZ, z); maxZ = Math.Max(maxZ, z); }
@@ -508,14 +518,14 @@ public sealed class OpenWildField
     {
         var weather = WeatherOf?.Invoke(r.Zone) ?? FieldWeather.Clear;
         int total = 0;
-        foreach (var slot in r.Zone.Rustle) if (MetAt(slot, Now, weather)) total += WeightOf(slot);
+        foreach (var slot in r.Zone.Rustle) if (InTheDraw(slot, weather)) total += WeightOf(slot);
         if (total == 0) return null;
         var draws = new SplitMix(r.Seed);
         int pick = draws.Int(total);
         OpenSlot? row = null;
         foreach (var slot in r.Zone.Rustle)
         {
-            if (!MetAt(slot, Now, weather)) continue;
+            if (!InTheDraw(slot, weather)) continue;
             if ((pick -= WeightOf(slot)) < 0) { row = slot; break; }
         }
         if (row == null) return null;

@@ -3,6 +3,11 @@
   // both sides, its paved square, the gym north of the square and the Pokémon Center south of it; the road north to the
   // East Province leaves from its north-east corner. Its people only talk but for its gym test's three finds about the town (PD3's second session); the gym and its leader's course are rooms (Artazon_Gym,
   // Artazon_GymTest)
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_green_1", "cylinder": { "at": [356, -324], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeGreen1" },
+    { "name": "stake_green_2", "cylinder": { "at": [446, -378], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeGreen2" }
+  ],
   "markers": [
     { "name": "artazon_west", "at": [356, 12.0, -324], "yaw": 90 },
     { "name": "artazon_square", "at": [416, 12.0, -324], "yaw": 0 },

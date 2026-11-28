@@ -13450,3 +13450,85 @@ out where the rules already bite. Ids 3101 to 3107 for both the moves and the ab
 - **Wild Pokémon**: the crater's tall grass has Glimmet, Garganacl, Tinkatuff, Bronzong, Rabsca and Glimmora at 52 to 57;
   two Paradox Pokémon of the version stand on its terraces to be battled once at 56 (Great Tusk and Flutter Mane, or Iron
   Treads and Iron Moth). Songs: none new (the gate's hall `paldea/titans`, the crater and the lab `paldea/alfornada`).
+
+  The flag counts toward the Hub's opening as every region's does; a way out of Paldea is left to plan 46 or to the user.
+
+## Area Zero and the Way Home (2026-11-23, plan 34 · PD8, its second session)
+
+- **Built as grid rooms behind a door, not carved open terrain.** The plan's design has Area Zero as the open map's carved
+  terrain at its deepest; this session built it as three grid maps behind the Zero Gate's door (plan 32 · decision 6), the
+  cheaper of the two faithful ways: a carved crater would have meant a new terrain file, the carve, the bake and the
+  navigation mesh's climbs and glides down 100 m of wall, and the open renderer draws no falls yet. The grid's cave
+  setting gives the crater's light and rock, ledges give the descent one way, and Inlet Grotto is the precedent. The
+  three: `AreaZero_Gate` (the gate's hall and its lift), `AreaZero` (a cave-set map of four terraces with a research
+  station on each, crystals, pools and tall grass, 21 by 40 tiles: our compressed scale) and `AreaZero_ZeroLab`. The
+  carved crater on the open map stays the plan's design for later, if the user wants it.
+- **The Zero Gate** is a hall of two storeys signed ZERO GATE on the east side of the North Province's first area, built
+  against the hills that wall the Great Crater off, its door facing south (`places/north_province_area_one.json`;
+  `zero_gate_door`, `zero_gate_front`). Its door waits for `FLAG_PALDEA_ZERO_GATE_OPEN`. The originals put the gate on the
+  crater's rim elsewhere; ours is where the North Province's road passes nearest the crater.
+- **The order**: the gate opens after all three paths, as the originals' "The Way Home" waits for Victory Road, the Path
+  of Legends and Starfall Street. Arven, Nemona and Penny stand before the gate once `PaldeaHallOfFame` is set; any of them
+  spoken to begins the meeting when `VAR_PALDEA_LEGENDS` is 12 and `VAR_PALDEA_STARFALL` 6, or says which path is
+  still open. The meeting is where Penny owns up to being Cassiopeia (PD5 left who she is to here) and the professor's
+  voice opens the gate.
+- **`VAR_PALDEA_ZERO`**: 1 the gate opened, 2 to 5 the four stations passed (each station's trigger lies across the whole
+  way down its terrace), 6 the AI beaten, 7 the legendary's battle won, 8 home (`FLAG_PALDEA_WAY_HOME`, objective 836
+  `paldeaAreaZero`).
+- **The professor's AI** is Sada's in a Scarlet game and Turo's in a Violet one (`VAR_PALDEA_VERSION`, plan 34 ·
+  decision 2), shown by the lab's arrival; looks `sada`, `turo` and `penny` are ours. Its team is the version's six
+  Paradox Pokémon at 66 and 67 (`paldea_ai_sada`: Slither Wing, Scream Tail, Brute Bonnet, Flutter Mane, Sandy Shocks,
+  Roaring Moon Tera Dark; `paldea_ai_turo`: Iron Moth, Iron Bundle, Iron Hands, Iron Jugulis, Iron Thorns, Iron Valiant
+  Tera Fairy), ours near the originals' as remembered, not checked against a source.
+- **The legendary's battle form** (plan 30 · decision 15): the Koraidon or Miraidon the professor kept comes out of the
+  machine in its battle form with a Roaring Moon or an Iron Valiant beside it (`paldea_ai_sada_legend`,
+  `paldea_ai_turo_legend`, 72 and 70), and the player's own mount fights beside them in its battle form (`battle … with
+  "paldea_partner_koraidon"`, a tag battle; the partner at 68). The originals have the player fight with the mount alone;
+  ours keeps the team and puts the mount beside it, the engine's tag battle, and the foe two so the double is a full one.
+- **The Way Home**: the AI goes through the machine and shuts it, the friends speak, the four climb out, and the mount
+  joins the team at last (`givepokemon "Koraidon" 68`; it still carries the player, as the ride is `VAR_PALDEA_MOUNT`'s,
+  not the team's); home to Cabo Poco with Mom, the save and the **credits, moved here** from after the Hall of Fame
+  (`PaldeaLeague_Court.txt` now ends with the save), as the originals hold them. A full team sends the mount to a box.
+- **Wild Pokémon**: the crater's tall grass has Glimmet, Garganacl, Tinkatuff, Bronzong, Rabsca and Glimmora at 52 to 57;
+  two Paradox Pokémon of the version stand on its terraces to be battled once at 56 (Great Tusk and Flutter Mane, or Iron
+  Treads and Iron Moth). Songs: none new (the gate's hall `paldea/titans`, the crater and the lab `paldea/alfornada`).
+
+## After Paldea's Hall of Fame (2026-11-28, plan 34 · PD9)
+
+- **The Academy Ace Tournament is fought as Galar's Cup is**, the plan's "as Galar's Cup is" read literally: three rounds
+  in order on one spot of the academy's battle court (`Mesagoza_AceCourt`, a room of ours reached from the entrance hall's
+  desk), the bracket not drawn and the other matches not fought. The plan's "on `Bracket`" is left for a later pass: the
+  World Tournament's `Tournament` brings every Pokémon to level 50 and a team of three, which the originals' Ace
+  Tournament doesn't, and a model of its own would be a new script command for one place. Its opponents are drawn at the
+  desk by `random` (a gym leader, one of the Elite Four, Geeta or Nemona) and fight with their rematch teams; the team is
+  healed before each round and a loss ends it. Open once the Way Home is behind the player (`FLAG_PALDEA_WAY_HOME`), as
+  the originals open it after the story's end. Each title gives three Rare Candies and an Exp. Candy XL (ours); the first
+  sets `FLAG_PALDEA_ACE_TOURNAMENT_WON`.
+- **The rematches**: each gym leader asks for a rematch once a day after `PaldeaHallOfFame` in their gym's test room
+  (`FLAG_DAILY_PALDEA_<WHO>_REMATCH`, the Leaders' rematches' rule of plan 41 · EG5) with `paldea_<who>_rematch`, five
+  Pokémon with the best at 70, the first team's species grown up and one more of the type (ours). The Elite Four's,
+  Geeta's and Nemona's rematch teams (the first teams raised to 72, 74 and 75) are fought in the tournament's second
+  round and final. The badge-scaled teams of plan 34 · decision 3 (`_b0` to `_b7`) are one leader's first team at other
+  levels and need no rematch of their own.
+- **The black crystals**: rows of six and seven stars at the end of every crystal's table (`crystals.json`, two of six
+  and one of seven each, the seven-star a Paldean partner's final form with its own Tera Type), drawn among only once
+  `PaldeaHallOfFame` is set (six) and the Ace Tournament has been won (seven) (`Raids.TeraMostStarsOf`); before the Hall of
+  Fame every crystal's day draws what PD7's did. A black crystal is drawn near black and lit from within (style guide,
+  "Tera crystals").
+- **The Treasures of Ruin: four shrines, not eight.** The plan's "eight shrines" is a slip: the originals have four
+  shrines, each sealed by eight stakes of its colour. Ours: 32 stakes as triggers of the open map, on its markers spread
+  over the provinces (purple in the south for Wo-Chien, yellow in the north for Chien-Pao, green in the east for Ting-Lu,
+  blue in the west and the desert for Chi-Yu), each pulled by walking onto it once the Way Home is behind the player; the
+  shrines are triggers at Alfornada's ruins, Glaseado's western foot, the East Province's third area's north end and the
+  desert's north end. With its eight pulled a shrine wakes its Treasure at 60; one beaten and not caught waits to be met
+  again. The stakes stand where nothing marks them yet (no drawn stake, owed).
+- **The partners' Mega Stones** (plan 40 · GE11; decisions/R20b-mega-proposals.md, "Where the stones are found"): the
+  professor is gone after the Way Home, so the academy's director, Clavell, stands in for the region's professor and
+  hands over the Meowscaradite, Skeledirgite and Quaquavalite once the bag holds a Key Stone. **The armours and the
+  Punching Glove** are Porto Marinada's auctioneer's oddities lot, given once after the Hall of Fame (the originals sell
+  the armours at that auction).
+- **Our species in the open map** (plan 03 · D15, design B on an open map): a zone row whose species is one of ours
+  (`OpenSlot.Ours`) is left out of its zone's draw until the region's slots of ours are open (Paldea's Hall of Fame,
+  `OpenWildField.OursOpen`), so nothing before it moves, and is met at its own levels, never mapped. Paldea's batch of 50
+  placeable species stand in the ten zones of level 22 and up, five to a zone (six on the western coast), weight 1 each
+  beside the zone's own 100 or so, at their evolution level to four above.

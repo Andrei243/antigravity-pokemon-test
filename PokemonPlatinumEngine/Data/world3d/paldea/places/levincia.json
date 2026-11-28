@@ -2,6 +2,10 @@
   // Levincia (plan 34 · PD3): the bright city on the eastern sea at the end of the road north, its avenue to the
   // studio where Iono's gym is, the Pokémon Center on the avenue, tall houses about its paved streets and its sea wall
   // on the east. Its people only talk but for its gym test's three finds about the town (PD3's second session); the gym and its leader's course are rooms (Levincia_Gym, Levincia_GymTest)
+  "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_green_7", "cylinder": { "at": [452, -646], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeGreen7" }
+  ],
   "markers": [
     { "name": "levincia_south", "at": [452, 12.0, -646], "yaw": 180 },
     { "name": "levincia_plaza", "at": [496, 12.0, -730], "yaw": 180 },

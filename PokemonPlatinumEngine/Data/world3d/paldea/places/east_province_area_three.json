@@ -8,6 +8,9 @@
   ],
   // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_green_8", "cylinder": { "at": [436, -806], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeGreen8" },
+    { "name": "shrine_ting_lu", "cylinder": { "at": [452, -944], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaShrineTingLu" },
     { "name": "crystal_east_three_1", "cylinder": { "at": [503, -892], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalEastThree1" }
   ],
   "zones": [
@@ -20,7 +23,13 @@
         { "species": "Toedscool", "minLevel": 34, "maxLevel": 38, "weight": 20 },
         { "species": "Rufflet", "minLevel": 34, "maxLevel": 38, "weight": 20 },
         { "species": "Bronzor", "minLevel": 34, "maxLevel": 38, "weight": 20 },
-        { "species": "Orthworm", "minLevel": 34, "maxLevel": 37, "weight": 15 }
+        { "species": "Orthworm", "minLevel": 34, "maxLevel": 37, "weight": 15 },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Myceliarch", "minLevel": 252, "maxLevel": 256, "weight": 1 },
+        { "species": "Fungoliath", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Saurmoth", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Fusionmoth", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Turbovroom", "minLevel": 250, "maxLevel": 254, "weight": 1 }
       ],
       "density": 3, "cap": 5
     }

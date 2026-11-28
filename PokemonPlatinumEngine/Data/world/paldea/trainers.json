@@ -3040,5 +3040,805 @@
         "personality": 853799896
       }
     ]
+  },
+  {
+    "id": "paldea_katy_rematch",
+    "name": "Katy",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lokix",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 747139331
+      },
+      {
+        "species": "Spidops",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1690231558
+      },
+      {
+        "species": "Forretress",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1763466246
+      },
+      {
+        "species": "Heracross",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1009144899
+      },
+      {
+        "species": "Ursaring",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 4016689972,
+        "teraType": "Bug"
+      }
+    ]
+  },
+  {
+    "id": "paldea_brassius_rematch",
+    "name": "Brassius",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lilligant",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2201619232
+      },
+      {
+        "species": "Arboliva",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 4176524639
+      },
+      {
+        "species": "Breloom",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 209841687
+      },
+      {
+        "species": "Bellossom",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1383216827
+      },
+      {
+        "species": "Sudowoodo",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 1024377029,
+        "teraType": "Grass"
+      }
+    ]
+  },
+  {
+    "id": "paldea_iono_rematch",
+    "name": "Iono",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Kilowattrel",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2978383197
+      },
+      {
+        "species": "Bellibolt",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2196399810
+      },
+      {
+        "species": "Luxray",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1606857101
+      },
+      {
+        "species": "Electrode",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 4150676055
+      },
+      {
+        "species": "Mismagius",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 4282689796,
+        "teraType": "Electric"
+      }
+    ]
+  },
+  {
+    "id": "paldea_kofu_rematch",
+    "name": "Kofu",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Veluza",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2510458810
+      },
+      {
+        "species": "Wugtrio",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 3637527752
+      },
+      {
+        "species": "Clawitzer",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 493153299
+      },
+      {
+        "species": "Pelipper",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1497704526
+      },
+      {
+        "species": "Crabominable",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 582300272,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_rematch",
+    "name": "Larry",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Komala",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2806740052
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2627930793
+      },
+      {
+        "species": "Oinkologne",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 356789265
+      },
+      {
+        "species": "Bibarel",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1971779344
+      },
+      {
+        "species": "Staraptor",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 3694123331,
+        "teraType": "Normal"
+      }
+    ]
+  },
+  {
+    "id": "paldea_ryme_rematch",
+    "name": "Ryme",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Banette",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2396759925
+      },
+      {
+        "species": "Mimikyu",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1960519714
+      },
+      {
+        "species": "Houndstone",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2281575503
+      },
+      {
+        "species": "Spiritomb",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1582499841
+      },
+      {
+        "species": "Toxtricity",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 1586696725,
+        "teraType": "Ghost"
+      }
+    ]
+  },
+  {
+    "id": "paldea_tulip_rematch",
+    "name": "Tulip",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Farigiraf",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2308174395
+      },
+      {
+        "species": "Gardevoir",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 487336557
+      },
+      {
+        "species": "Espathra",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 3053598304
+      },
+      {
+        "species": "Gallade",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 3800371562
+      },
+      {
+        "species": "Florges",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 4230881360,
+        "teraType": "Psychic"
+      }
+    ]
+  },
+  {
+    "id": "paldea_grusha_rematch",
+    "name": "Grusha",
+    "class": "Leader",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Hyper Potion"
+    ],
+    "prizeMoney": 7000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Frosmoth",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2147136847
+      },
+      {
+        "species": "Beartic",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 3194452338
+      },
+      {
+        "species": "Cetitan",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 1767350413
+      },
+      {
+        "species": "Glalie",
+        "level": 69,
+        "ivScale": 24,
+        "personality": 2706234622
+      },
+      {
+        "species": "Altaria",
+        "level": 70,
+        "ivScale": 24,
+        "personality": 3938485187,
+        "teraType": "Ice"
+      }
+    ]
+  },
+  {
+    "id": "paldea_rika_rematch",
+    "name": "Rika",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Whiscash",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 779184880
+      },
+      {
+        "species": "Camerupt",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 2093272819
+      },
+      {
+        "species": "Donphan",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 1844848316
+      },
+      {
+        "species": "Dugtrio",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 1443395538
+      },
+      {
+        "species": "Clodsire",
+        "level": 72,
+        "ivScale": 28,
+        "personality": 3863833052,
+        "teraType": "Ground"
+      }
+    ]
+  },
+  {
+    "id": "paldea_poppy_rematch",
+    "name": "Poppy",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Copperajah",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 2321174811
+      },
+      {
+        "species": "Magnezone",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 293477084
+      },
+      {
+        "species": "Bronzong",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 2371654573
+      },
+      {
+        "species": "Corviknight",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 3529059850
+      },
+      {
+        "species": "Tinkaton",
+        "level": 72,
+        "ivScale": 28,
+        "personality": 1552288633,
+        "teraType": "Steel"
+      }
+    ]
+  },
+  {
+    "id": "paldea_larry_elite_rematch",
+    "name": "Larry",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Tropius",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 1841846966
+      },
+      {
+        "species": "Oricorio",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 628010778
+      },
+      {
+        "species": "Altaria",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 3222154518
+      },
+      {
+        "species": "Staraptor",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 3074187094
+      },
+      {
+        "species": "Flamigo",
+        "level": 72,
+        "ivScale": 28,
+        "personality": 850688396,
+        "teraType": "Flying"
+      }
+    ]
+  },
+  {
+    "id": "paldea_hassel_rematch",
+    "name": "Hassel",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7200,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Noivern",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 2246959974
+      },
+      {
+        "species": "Haxorus",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 3872115968
+      },
+      {
+        "species": "Dragalge",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 1678257257
+      },
+      {
+        "species": "Flapple",
+        "level": 71,
+        "ivScale": 28,
+        "personality": 340271915
+      },
+      {
+        "species": "Baxcalibur",
+        "level": 72,
+        "ivScale": 28,
+        "personality": 3331774239,
+        "teraType": "Dragon"
+      }
+    ]
+  },
+  {
+    "id": "paldea_geeta_rematch",
+    "name": "Geeta",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 14800,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Espathra",
+        "level": 73,
+        "ivScale": 30,
+        "personality": 2067518795
+      },
+      {
+        "species": "Gogoat",
+        "level": 73,
+        "ivScale": 30,
+        "personality": 3492220979
+      },
+      {
+        "species": "Veluza",
+        "level": 73,
+        "ivScale": 30,
+        "personality": 3843200093
+      },
+      {
+        "species": "Avalugg",
+        "level": 73,
+        "ivScale": 30,
+        "personality": 1851954059
+      },
+      {
+        "species": "Kingambit",
+        "level": 73,
+        "ivScale": 30,
+        "personality": 948638899
+      },
+      {
+        "species": "Glimmora",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 2877129643,
+        "teraType": "Rock"
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_8a_rematch",
+    "name": "Nemona",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 3005304519
+      },
+      {
+        "species": "Goodra",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 1113143844
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 2405661952
+      },
+      {
+        "species": "Orthworm",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 204734343
+      },
+      {
+        "species": "Pawmot",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 3419261148
+      },
+      {
+        "species": "Skeledirge",
+        "level": 75,
+        "ivScale": 30,
+        "personality": 415654336,
+        "teraType": "Fire"
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_8b_rematch",
+    "name": "Nemona",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 2060229007
+      },
+      {
+        "species": "Goodra",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 1270906763
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 3900373761
+      },
+      {
+        "species": "Orthworm",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 4201463304
+      },
+      {
+        "species": "Pawmot",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 4105154368
+      },
+      {
+        "species": "Quaquaval",
+        "level": 75,
+        "ivScale": 30,
+        "personality": 2871001030,
+        "teraType": "Water"
+      }
+    ]
+  },
+  {
+    "id": "paldea_nemona_8c_rematch",
+    "name": "Nemona",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15000,
+    "teraOrb": true,
+    "party": [
+      {
+        "species": "Lycanroc",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 1781050363
+      },
+      {
+        "species": "Goodra",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 3589325193
+      },
+      {
+        "species": "Dudunsparce",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 4139868595
+      },
+      {
+        "species": "Orthworm",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 1406398404
+      },
+      {
+        "species": "Pawmot",
+        "level": 74,
+        "ivScale": 30,
+        "personality": 2435132256
+      },
+      {
+        "species": "Meowscarada",
+        "level": 75,
+        "ivScale": 30,
+        "personality": 3564233455,
+        "teraType": "Grass"
+      }
+    ]
   }
 ]

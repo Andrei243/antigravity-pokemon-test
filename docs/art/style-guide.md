@@ -1837,6 +1837,9 @@ What `openproto` draws, as the gate's look was judged: the same units, scene, ca
   lengths, in the crystal's colour, fading as the square of the height left and breathing with the dens' two-second
   breath (`Graphics/OpenWorld/DenBeams.cs`, `DenBeam.Tera`), so a crystal reads as a den's smaller cousin: seen across a
   province by day, bright after dark. A boss of more stars is a little brighter.
+- **A black crystal** (plan 34 · PD9: a boss of six or seven stars, after Paldea's Hall of Fame) is the same point and
+  glow with its body near black (`DenBeams.BlackBody`, 28, 22, 34) and its core and glow in its Tera Type's colour, so
+  it reads as a dark shard lit from within; it stands a fifth taller than a crystal of five stars.
 - **The raid's screen** is the den's (the boss's box with its pips, the four raiders' boxes); the boss wears its Tera
   crown from the first line. Owed: the clock and each raider's orb on the screen.
 

@@ -7709,10 +7709,34 @@ way -
 from Veyra at 5,7 of MegaloTower
 way -
   Veyra> Necrozma has never let anyone this close. It knows you are different.
+=== Mesagoza_AcademyHall.AceDesk
+from Tournament Desk at 13,9 of Mesagoza_AcademyHall
+way -
+  Receptionist> The Academy Ace Tournament is for students who've finished their treasure hunt. Come back once yours is done!
 === Mesagoza_AcademyHall.Clavell
 from Director Clavell at 7,4 of Mesagoza_AcademyHall
 way -
   Director Clavell> Welcome to the academy. Term begins properly tomorrow; tonight, settle in.
+=== Mesagoza_AceCourt.Match
+from Brassius at 7,5 of Mesagoza_AceCourt
+from Geeta at 7,5 of Mesagoza_AceCourt
+from Grusha at 7,5 of Mesagoza_AceCourt
+from Hassel at 7,5 of Mesagoza_AceCourt
+from Iono at 7,5 of Mesagoza_AceCourt
+from Katy at 7,5 of Mesagoza_AceCourt
+from Kofu at 7,5 of Mesagoza_AceCourt
+from Larry at 7,5 of Mesagoza_AceCourt
+from Larry at 7,5 of Mesagoza_AceCourt
+from Nemona at 7,5 of Mesagoza_AceCourt
+from Poppy at 7,5 of Mesagoza_AceCourt
+from Rika at 7,5 of Mesagoza_AceCourt
+from Ryme at 7,5 of Mesagoza_AceCourt
+from Tulip at 7,5 of Mesagoza_AceCourt
+way -
+=== Mesagoza_AceCourt.Referee
+from Referee at 12,12 of Mesagoza_AceCourt
+way -
+  Referee> The court's closed between tournaments. Sign up at the desk in the entrance hall.
 === Montenevera_Gym.GymGuide
 from Gym Guide at 2,7 of Montenevera_Gym
 way -
@@ -18029,6 +18053,134 @@ way -
   + FLAG_PALDEA_HIDE_NEMONA_LIGHTHOUSE
   + FLAG_PALDEA_HIDE_NEMONA_TERRACE
   + FLAG_PALDEA_STORY_BEGUN
+=== common.PaldeaShrineChiYu
+from a trainer with lines of their own
+way -
+=== common.PaldeaShrineChienPao
+from a trainer with lines of their own
+way -
+=== common.PaldeaShrineTingLu
+from a trainer with lines of their own
+way -
+=== common.PaldeaShrineWoChien
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue1
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue2
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue3
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue4
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue5
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue6
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue7
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeBlue8
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen1
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen2
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen3
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen4
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen5
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen6
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen7
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeGreen8
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePulledBlue
+from a trainer with lines of their own
+way -
+  > A blue stake stood in the ground, humming faintly. Lucas pulled it out!
+  > Blue stakes pulled so far: 0 of eight.
+=== common.PaldeaStakePulledGreen
+from a trainer with lines of their own
+way -
+  > A green stake stood in the ground, humming faintly. Lucas pulled it out!
+  > Green stakes pulled so far: 0 of eight.
+=== common.PaldeaStakePulledPurple
+from a trainer with lines of their own
+way -
+  > A purple stake stood in the ground, humming faintly. Lucas pulled it out!
+  > Purple stakes pulled so far: 0 of eight.
+=== common.PaldeaStakePulledYellow
+from a trainer with lines of their own
+way -
+  > A yellow stake stood in the ground, humming faintly. Lucas pulled it out!
+  > Yellow stakes pulled so far: 0 of eight.
+=== common.PaldeaStakePurple1
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePurple2
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePurple3
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePurple4
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePurple5
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePurple6
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePurple7
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakePurple8
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow1
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow2
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow3
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow4
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow5
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow6
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow7
+from a trainer with lines of their own
+way -
+=== common.PaldeaStakeYellow8
+from a trainer with lines of their own
+way -
 === common.PastureBoard
 from a trainer with lines of their own
 way 0

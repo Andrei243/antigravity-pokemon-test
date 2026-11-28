@@ -1,7 +1,8 @@
 {
   // Paldea's Tera crystals (plan 34 · PD7; docs/mechanics/rulings.md, "Tera Raids and picnics"): each crystal's id (what its
   // trigger, crystal_<id>, and its script name it by), the place it stands in and its table, every row a species or form, its
-  // stars (one to five; the black crystals' six and seven are PD9's), how often it waits there, its version (0 both, 1 Scarlet,
+  // stars (one to five, and the black crystals' six once Paldea's Hall of Fame is entered and seven once the Academy Ace
+  // Tournament is won: plan 34 · PD9, Raids.TeraMostStarsOf), how often it waits there, its version (0 both, 1 Scarlet,
   // 2 Violet) and, where it is fixed, its Tera Type. Which row a crystal holds on a day, whether its light stands and its Tera
   // Type are drawn by the day's number and the crystal's id (Models/Raids.cs, Raids.CrystalToday), among the rows Paldea's
   // badges allow (Raids.TeraMostStars). And the academy's students who answer a crystal's call, three to a raid. Our own
@@ -11,64 +12,76 @@
       { "species": "Lechonk", "stars": 1, "weight": 25 }, { "species": "Hoppip", "stars": 1, "weight": 25 },
       { "species": "Fletchling", "stars": 2, "weight": 20 }, { "species": "Tarountula", "stars": 2, "weight": 20 },
       { "species": "Pawmo", "stars": 3, "weight": 10 }, { "species": "Oinkologne", "stars": 4, "weight": 6 },
-      { "species": "Jumpluff", "stars": 4, "weight": 6 }, { "species": "Talonflame", "stars": 5, "weight": 4 } ] },
+      { "species": "Jumpluff", "stars": 4, "weight": 6 }, { "species": "Talonflame", "stars": 5, "weight": 4 }, 
+      { "species": "Pelipper", "stars": 6, "weight": 6 }, { "species": "Talonflame", "stars": 6, "weight": 6 }, { "species": "Meowscarada", "stars": 7, "weight": 2, "tera": "Grass" } ] },
     { "id": "area_one_1", "area": "south_province_area_one", "rows": [
       { "species": "Lechonk", "stars": 1, "weight": 25 }, { "species": "Skwovet", "stars": 1, "weight": 25 },
       { "species": "Scatterbug", "stars": 1, "weight": 20 }, { "species": "Spewpa", "stars": 2, "weight": 20 },
       { "species": "Greedent", "stars": 3, "weight": 10 }, { "species": "Spidops", "stars": 3, "weight": 10 },
-      { "species": "Noctowl", "stars": 4, "weight": 6 }, { "species": "Oinkologne", "stars": 5, "weight": 4 } ] },
+      { "species": "Noctowl", "stars": 4, "weight": 6 }, { "species": "Oinkologne", "stars": 5, "weight": 4 }, 
+      { "species": "Oinkologne", "stars": 6, "weight": 6 }, { "species": "Lokix", "stars": 6, "weight": 6 }, { "species": "Skeledirge", "stars": 7, "weight": 2, "tera": "Fire" } ] },
     { "id": "area_one_2", "area": "south_province_area_one", "rows": [
       { "species": "Pawmi", "stars": 1, "weight": 25 }, { "species": "Nymble", "stars": 1, "weight": 25 },
       { "species": "Shinx", "stars": 2, "weight": 20 }, { "species": "Buneary", "stars": 2, "weight": 20 },
       { "species": "Luxio", "stars": 3, "weight": 10 }, { "species": "Lopunny", "stars": 4, "weight": 6 },
-      { "species": "Lokix", "stars": 4, "weight": 6 }, { "species": "Luxray", "stars": 5, "weight": 4 } ] },
+      { "species": "Lokix", "stars": 4, "weight": 6 }, { "species": "Luxray", "stars": 5, "weight": 4 }, 
+      { "species": "Corviknight", "stars": 6, "weight": 6 }, { "species": "Honchkrow", "stars": 6, "weight": 6 }, { "species": "Quaquaval", "stars": 7, "weight": 2, "tera": "Water" } ] },
     { "id": "area_two_1", "area": "south_province_area_two", "rows": [
       { "species": "Smoliv", "stars": 1, "weight": 25 }, { "species": "Sunkern", "stars": 1, "weight": 25 },
       { "species": "Hoppip", "stars": 2, "weight": 20 }, { "species": "Dolliv", "stars": 3, "weight": 10 },
       { "species": "Sunflora", "stars": 3, "weight": 10 }, { "species": "Jumpluff", "stars": 4, "weight": 6 },
-      { "species": "Arboliva", "stars": 5, "weight": 4 } ] },
+      { "species": "Arboliva", "stars": 5, "weight": 4 }, 
+      { "species": "Gardevoir", "stars": 6, "weight": 6 }, { "species": "Gallade", "stars": 6, "weight": 6 }, { "species": "Meowscarada", "stars": 7, "weight": 2, "tera": "Grass" } ] },
     { "id": "area_three_1", "area": "south_province_area_three", "rows": [
       { "species": "Petilil", "stars": 1, "weight": 25 }, { "species": "Bonsly", "stars": 1, "weight": 25 },
       { "species": "Smoliv", "stars": 2, "weight": 20 }, { "species": "Sudowoodo", "stars": 3, "weight": 10 },
       { "species": "Pawmo", "stars": 3, "weight": 10 }, { "species": "Lilligant", "stars": 4, "weight": 6 },
-      { "species": "Pawmot", "stars": 5, "weight": 4 } ] },
+      { "species": "Pawmot", "stars": 5, "weight": 4 }, 
+      { "species": "Amoonguss", "stars": 6, "weight": 6 }, { "species": "Toxapex", "stars": 6, "weight": 6 }, { "species": "Skeledirge", "stars": 7, "weight": 2, "tera": "Fire" } ] },
     { "id": "east_one_1", "area": "east_province_area_one", "rows": [
       { "species": "Shinx", "stars": 1, "weight": 25 }, { "species": "Mareep", "stars": 1, "weight": 25 },
       { "species": "Tadbulb", "stars": 2, "weight": 20 }, { "species": "Wattrel", "stars": 2, "weight": 20 },
       { "species": "Flaaffy", "stars": 3, "weight": 10 }, { "species": "Bellibolt", "stars": 4, "weight": 6 },
-      { "species": "Kilowattrel", "stars": 4, "weight": 6 }, { "species": "Ampharos", "stars": 5, "weight": 4 } ] },
+      { "species": "Kilowattrel", "stars": 4, "weight": 6 }, { "species": "Ampharos", "stars": 5, "weight": 4 }, 
+      { "species": "Tyranitar", "stars": 6, "weight": 6 }, { "species": "Garganacl", "stars": 6, "weight": 6 }, { "species": "Quaquaval", "stars": 7, "weight": 2, "tera": "Water" } ] },
     { "id": "desert_1", "area": "asado_desert", "rows": [
       { "species": "Silicobra", "stars": 1, "weight": 25 }, { "species": "Sandile", "stars": 1, "weight": 25 },
       { "species": "Rellor", "stars": 2, "weight": 20 }, { "species": "Krokorok", "stars": 3, "weight": 10 },
       { "species": "Hippowdon", "stars": 4, "weight": 6 }, { "species": "Rabsca", "stars": 4, "weight": 6 },
-      { "species": "Sandaconda", "stars": 5, "weight": 4, "version": 1 }, { "species": "Krookodile", "stars": 5, "weight": 4, "version": 2 } ] },
+      { "species": "Sandaconda", "stars": 5, "weight": 4, "version": 1 }, { "species": "Krookodile", "stars": 5, "weight": 4, "version": 2 }, 
+      { "species": "Garchomp", "stars": 6, "weight": 6 }, { "species": "Hippowdon", "stars": 6, "weight": 6 }, { "species": "Meowscarada", "stars": 7, "weight": 2, "tera": "Grass" } ] },
     { "id": "west_one_1", "area": "west_province_area_one", "rows": [
       { "species": "Rockruff", "stars": 1, "weight": 25 }, { "species": "Shroodle", "stars": 1, "weight": 25 },
       { "species": "Skiddo", "stars": 2, "weight": 20 }, { "species": "Squawkabilly", "stars": 2, "weight": 20 },
       { "species": "Gumshoos", "stars": 3, "weight": 10 }, { "species": "Grafaiai", "stars": 3, "weight": 10 },
       { "species": "Gogoat", "stars": 4, "weight": 6 }, { "species": "Lycanroc", "stars": 4, "weight": 6 },
-      { "species": "Mudsdale", "stars": 5, "weight": 4 } ] },
+      { "species": "Mudsdale", "stars": 5, "weight": 4 }, 
+      { "species": "Dragonite", "stars": 6, "weight": 6 }, { "species": "Glimmora", "stars": 6, "weight": 6 }, { "species": "Skeledirge", "stars": 7, "weight": 2, "tera": "Fire" } ] },
     { "id": "west_two_1", "area": "west_province_area_two", "rows": [
       { "species": "Wingull", "stars": 1, "weight": 25 }, { "species": "Rookidee", "stars": 1, "weight": 25 },
       { "species": "Wattrel", "stars": 2, "weight": 20 }, { "species": "Murkrow", "stars": 2, "weight": 20 },
       { "species": "Corvisquire", "stars": 3, "weight": 10 }, { "species": "Pelipper", "stars": 3, "weight": 10 },
-      { "species": "Honchkrow", "stars": 4, "weight": 6 }, { "species": "Corviknight", "stars": 5, "weight": 4 } ] },
+      { "species": "Honchkrow", "stars": 4, "weight": 6 }, { "species": "Corviknight", "stars": 5, "weight": 4 }, 
+      { "species": "Salamence", "stars": 6, "weight": 6 }, { "species": "Volcarona", "stars": 6, "weight": 6 }, { "species": "Quaquaval", "stars": 7, "weight": 2, "tera": "Water" } ] },
     { "id": "east_three_1", "area": "east_province_area_three", "rows": [
       { "species": "Skiddo", "stars": 1, "weight": 25 }, { "species": "Toedscool", "stars": 2, "weight": 20 },
       { "species": "Rufflet", "stars": 2, "weight": 20 }, { "species": "Bronzor", "stars": 3, "weight": 10 },
       { "species": "Toedscruel", "stars": 4, "weight": 6 }, { "species": "Bronzong", "stars": 4, "weight": 6 },
-      { "species": "Braviary", "stars": 4, "weight": 6 }, { "species": "Orthworm", "stars": 5, "weight": 4, "tera": "Steel" } ] },
+      { "species": "Braviary", "stars": 4, "weight": 6 }, { "species": "Orthworm", "stars": 5, "weight": 4, "tera": "Steel" }, 
+      { "species": "Kingambit", "stars": 6, "weight": 6 }, { "species": "Annihilape", "stars": 6, "weight": 6 }, { "species": "Meowscarada", "stars": 7, "weight": 2, "tera": "Grass" } ] },
     { "id": "north_one_1", "area": "north_province_area_one", "rows": [
       { "species": "Snom", "stars": 1, "weight": 25 }, { "species": "Swablu", "stars": 2, "weight": 20 },
       { "species": "Greavard", "stars": 2, "weight": 20 }, { "species": "Bergmite", "stars": 3, "weight": 10 },
       { "species": "Altaria", "stars": 4, "weight": 6 }, { "species": "Houndstone", "stars": 4, "weight": 6 },
-      { "species": "Frosmoth", "stars": 5, "weight": 4 } ] },
+      { "species": "Frosmoth", "stars": 5, "weight": 4 }, 
+      { "species": "Hydreigon", "stars": 6, "weight": 6 }, { "species": "Gengar", "stars": 6, "weight": 6 }, { "species": "Skeledirge", "stars": 7, "weight": 2, "tera": "Fire" } ] },
     { "id": "glaseado_1", "area": "glaseado_mountain", "rows": [
       { "species": "Snover", "stars": 1, "weight": 25 }, { "species": "Cubchoo", "stars": 1, "weight": 25 },
       { "species": "Frigibax", "stars": 2, "weight": 20 }, { "species": "Snorunt", "stars": 2, "weight": 20 },
       { "species": "Arctibax", "stars": 3, "weight": 10 }, { "species": "Beartic", "stars": 4, "weight": 6 },
       { "species": "Glalie", "stars": 4, "weight": 6, "version": 1 }, { "species": "Froslass", "stars": 4, "weight": 6, "version": 2 },
-      { "species": "Baxcalibur", "stars": 5, "weight": 4, "tera": "Dragon" }, { "species": "Abomasnow", "stars": 5, "weight": 4 } ] }
+      { "species": "Baxcalibur", "stars": 5, "weight": 4, "tera": "Dragon" }, { "species": "Abomasnow", "stars": 5, "weight": 4 }, 
+      { "species": "Baxcalibur", "stars": 6, "weight": 6 }, { "species": "Cetitan", "stars": 6, "weight": 6 }, { "species": "Quaquaval", "stars": 7, "weight": 2, "tera": "Water" } ] }
   ],
   "raiders": [
     { "name": "Marisol", "look": "school_kid_f", "species": ["Pawmot", "Arboliva", "Kilowattrel"] },

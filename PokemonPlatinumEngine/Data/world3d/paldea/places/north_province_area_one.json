@@ -28,6 +28,10 @@
   ],
   // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_yellow_1", "cylinder": { "at": [-100, -726], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow1" },
+    { "name": "stake_yellow_2", "cylinder": { "at": [-100, -812], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow2" },
+    { "name": "stake_yellow_3", "cylinder": { "at": [-100, -892], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeYellow3" },
     { "name": "crystal_north_one_1", "cylinder": { "at": [-124, -832], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalNorthOne1" }
   ],
   "zones": [
@@ -40,7 +44,13 @@
         { "species": "Cetoddle", "minLevel": 36, "maxLevel": 40, "weight": 20 },
         { "species": "Swablu", "minLevel": 36, "maxLevel": 39, "weight": 20 },
         { "species": "Bergmite", "minLevel": 36, "maxLevel": 40, "weight": 20 },
-        { "species": "Greavard", "minLevel": 36, "maxLevel": 40, "weight": 15, "time": "Night" }
+        { "species": "Greavard", "minLevel": 36, "maxLevel": 40, "weight": 15, "time": "Night" },
+        // Species of our own (plan 03 · D15, plan 34 · PD9): met once Paldea's Hall of Fame is entered, at their own levels
+        { "species": "Barrowhound", "minLevel": 248, "maxLevel": 252, "weight": 1 },
+        { "species": "Mastiffdon", "minLevel": 250, "maxLevel": 254, "weight": 1 },
+        { "species": "Brioschund", "minLevel": 246, "maxLevel": 250, "weight": 1 },
+        { "species": "Locustorm", "minLevel": 246, "maxLevel": 250, "weight": 1 },
+        { "species": "Fortarach", "minLevel": 244, "maxLevel": 248, "weight": 1 }
       ],
       "density": 3, "cap": 5
     }

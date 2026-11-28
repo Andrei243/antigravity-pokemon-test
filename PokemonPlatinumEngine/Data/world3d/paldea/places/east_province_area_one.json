@@ -7,6 +7,9 @@
   ],
   // Its Tera crystal (plan 34 · PD7): stepping to it looks in; a lit crystal's boss may be raided
   "triggers": [
+    // The Treasures of Ruin's stakes and shrines (plan 34 · PD9): each a trigger whose script, after the Way Home, pulls the stake or opens the shrine (common.txt)
+    { "name": "stake_green_5", "cylinder": { "at": [446, -390], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeGreen5" },
+    { "name": "stake_green_6", "cylinder": { "at": [442, -634], "radius": 1.5, "bottom": 6, "top": 32 }, "script": "PaldeaStakeGreen6" },
     { "name": "crystal_east_one_1", "cylinder": { "at": [418, -522], "radius": 1.5, "bottom": 4, "top": 38 }, "script": "CrystalEastOne1" }
   ],
   "zones": [

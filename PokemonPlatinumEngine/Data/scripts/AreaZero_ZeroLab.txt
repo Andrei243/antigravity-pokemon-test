@@ -64,12 +64,12 @@ label Fought
 label Legend
   scene "The legendary's battle form"
   if var VAR_PALDEA_VERSION == 2 goto MiraidonRises
-  text "Out of the machine's light steps a Koraidon in its battle form, its crest raised. It isn't yours: it is the one the professor kept, and a Roaring Moon prowls out beside it."
+  text "Out of the machine's light steps a Koraidon in its battle form, its crest raised. It isn't yours: it is the one the professor kept, and a Lunaroar prowls out beside it."
   text "Your Koraidon shoulders past you with a roar. Its folded crest spreads wide, and it rises to its full height: its battle form, back at last."
   battle ai_sada as "paldea_ai_sada_legend" with "paldea_partner_koraidon"
   goto LegendWon
 label MiraidonRises
-  text "Out of the machine's light glides a Miraidon in its battle form, its fins lit. It isn't yours: it is the one the professor kept, and an Iron Valiant steps out beside it."
+  text "Out of the machine's light glides a Miraidon in its battle form, its fins lit. It isn't yours: it is the one the professor kept, and a Paladroid steps out beside it."
   text "Your Miraidon hums past you, and its folded fins open wide as it rises to its full height: its battle form, back at last."
   battle ai_turo as "paldea_ai_turo_legend" with "paldea_partner_miraidon"
 label LegendWon

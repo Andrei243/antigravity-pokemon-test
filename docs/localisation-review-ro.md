@@ -73,4 +73,8 @@ Written by a translation session (plan 17 · N6); for the user's review. Each ro
 
 | `scripts/floccesy_ranch_2.json` (ReserveWarden), `scripts/UnovaReserve_Gate.json`, `maps/UnovaReserve*.json`, `world/floccesy_ranch_2.json`, `ui.json` safariObjects.area.13 to 15 (plan 38 · EX9) | the Floccesy Reserve's lines: the warden, the attendant, the ranger and the three grounds, Meadow / Woods / Crags | Rezervația Floccesy; Paznicul, Îngrijitorul, Pădurarul; Lunca / Crângul / Stâncăriile | written fresh, for the user's review; "Lunca" is also the Johto Meadow area's word; "Pădurarul" for the ranger |
 
+| `scripts/Mesagoza_AceCourt.json`, `Mesagoza_AcademyHall.json`, `maps/Mesagoza_AceCourt.json` | the Academy Ace Tournament's desk, referee and rounds, Clavell's stones (plan 34 · PD9) | Academy Ace Tournament / Academy Battle Court / Tournament Desk | Turneul Așilor Academiei / Terenul de luptă al academiei / Ghișeul turneului | "Ace" rendered as "Așilor"; a shorter title may read better on the box |
+| `scripts/common.json` | the Treasures of Ruin's stakes and shrines (plan 34 · PD9) | stake, shrine, seal | țăruș, altar, sigiliu | "altar" for shrine (not "sanctuar"); "bâzâind" for humming |
+| `scripts/*_GymTest.json`, `porto_marinada.json` | the leaders' rematch offers and the auction's oddities lot (plan 34 · PD9); Brassius's, Katy's and Iono's earlier lines, untranslated until now | rematch, oddities lot | revanșă, lot de ciudățenii | Iono's streamer slang kept close to the English (chat, stream, like) |
+
 Place names and people's names (Looker, Quincy Rowan-Pike, Ione Calder, towns of the games) are kept in English, as the existing files do.

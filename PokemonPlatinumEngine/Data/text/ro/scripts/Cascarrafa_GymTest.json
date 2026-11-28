@@ -90,10 +90,37 @@
     },
     {
       "en": [
+        "The Champion! My team's been training on a diet of the finest catch. Fancy a second helping?"
+      ],
+      "text": [
+        "Campionul! Echipa mea s-a antrenat cu cea mai bună pradă a mării. Mai vrei o porție?"
+      ],
+      "was": [
+        "Iar aici? Aricii au intrat în cea mai bună tocană pe care am făcut-o anul ăsta. Datorită ție!"
+      ]
+    },
+    {
+      "en": [
+        "Ha! Fresh from the sea, and full of fight!"
+      ],
+      "text": [
+        "Ha! Proaspăt din mare, și plin de luptă!"
+      ]
+    },
+    {
+      "en": [
+        "Delectable! Come back tomorrow. I'll have a new recipe for you."
+      ],
+      "text": [
+        "Delicios! Revino mâine. Voi avea o rețetă nouă pentru tine."
+      ]
+    },
+    {
+      "en": [
         "Back again? The urchins went into the best stew I've made all year. Thanks to you!"
       ],
       "text": [
-        "Iar aici? Aricii au intrat în cea mai bună tocană pe care am făcut-o anul ăsta. Datorită ție!"
+        "Iar aici? Aricii de mare au ajuns în cea mai bună tocăniță pe care am făcut-o anul ăsta. Mulțumită ție!"
       ]
     }
   ]

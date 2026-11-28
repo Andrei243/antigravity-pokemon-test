@@ -4834,3 +4834,459 @@ script PastureWorker
 label Done
   say "{self} has finished in the {thing}. Bring it back at the board by the shed."
   end
+
+
+# The Treasures of Ruin (plan 34 · PD9; docs/mechanics/rulings.md, "After Paldea's Hall of Fame"): four shrines, each sealed by
+# eight stakes of its colour scattered over Paldea's open map, every stake a trigger of its place whose script pulls it
+# once the Way Home is behind the player (FLAG_PALDEA_STAKE_<COLOUR>_<N>, counted in VAR_PALDEA_STAKES_<COLOUR>), and
+# every shrine a trigger that, with its eight pulled, wakes its Treasure at level 60: Wo-Chien by the purple stakes,
+# Chien-Pao the yellow, Ting-Lu the green and Chi-Yu the blue. One not caught waits in its shrine to be met again.
+# Before the Way Home a stake or a shrine says nothing. Our own lines
+
+
+script PaldeaStakePurple1
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_1 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_1
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePurple2
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_2 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_2
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePurple3
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_3 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_3
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePurple4
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_4 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_4
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePurple5
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_5 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_5
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePurple6
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_6 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_6
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePurple7
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_7 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_7
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePurple8
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_PURPLE_8 goto Quiet
+  setflag FLAG_PALDEA_STAKE_PURPLE_8
+  addvar VAR_PALDEA_STAKES_PURPLE 1
+  call PaldeaStakePulledPurple
+label Quiet
+  end
+
+
+script PaldeaStakePulledPurple
+  text "A purple stake stood in the ground, humming faintly. {player} pulled it out!"
+  if var VAR_PALDEA_STAKES_PURPLE >= 8 goto All
+  text "Purple stakes pulled so far: {var:VAR_PALDEA_STAKES_PURPLE} of eight."
+  return
+label All
+  text "That was the last of the eight purple stakes. Somewhere, a shrine's seal has broken."
+  return
+
+
+script PaldeaShrineWoChien
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_CAUGHT_WO_CHIEN goto Empty
+  if var VAR_PALDEA_STAKES_PURPLE < 8 goto Sealed
+  text "The shrine's seal has crumbled away. From the dark inside comes a rustle of withered leaves..."
+  cry "Wo-Chien"
+  wildbattle "Wo-Chien" 60
+  if result == 3 goto Caught
+  text "The presence sank back into the shrine. It is still in there, waiting."
+  end
+label Caught
+  setflag FLAG_PALDEA_CAUGHT_WO_CHIEN
+  end
+label Sealed
+  text "An old shrine, sealed shut. Eight purple stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_PURPLE} of eight."
+  end
+label Empty
+  text "The shrine stands open, and empty."
+label Quiet
+  end
+
+
+script PaldeaStakeYellow1
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_1 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_1
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakeYellow2
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_2 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_2
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakeYellow3
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_3 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_3
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakeYellow4
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_4 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_4
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakeYellow5
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_5 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_5
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakeYellow6
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_6 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_6
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakeYellow7
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_7 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_7
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakeYellow8
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_YELLOW_8 goto Quiet
+  setflag FLAG_PALDEA_STAKE_YELLOW_8
+  addvar VAR_PALDEA_STAKES_YELLOW 1
+  call PaldeaStakePulledYellow
+label Quiet
+  end
+
+
+script PaldeaStakePulledYellow
+  text "A yellow stake stood in the ground, humming faintly. {player} pulled it out!"
+  if var VAR_PALDEA_STAKES_YELLOW >= 8 goto All
+  text "Yellow stakes pulled so far: {var:VAR_PALDEA_STAKES_YELLOW} of eight."
+  return
+label All
+  text "That was the last of the eight yellow stakes. Somewhere, a shrine's seal has broken."
+  return
+
+
+script PaldeaShrineChienPao
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_CAUGHT_CHIEN_PAO goto Empty
+  if var VAR_PALDEA_STAKES_YELLOW < 8 goto Sealed
+  text "The shrine's seal has crumbled away. From the dark inside comes a frozen mist..."
+  cry "Chien-Pao"
+  wildbattle "Chien-Pao" 60
+  if result == 3 goto Caught
+  text "The presence sank back into the shrine. It is still in there, waiting."
+  end
+label Caught
+  setflag FLAG_PALDEA_CAUGHT_CHIEN_PAO
+  end
+label Sealed
+  text "An old shrine, sealed shut. Eight yellow stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_YELLOW} of eight."
+  end
+label Empty
+  text "The shrine stands open, and empty."
+label Quiet
+  end
+
+
+script PaldeaStakeGreen1
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_1 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_1
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakeGreen2
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_2 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_2
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakeGreen3
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_3 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_3
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakeGreen4
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_4 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_4
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakeGreen5
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_5 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_5
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakeGreen6
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_6 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_6
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakeGreen7
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_7 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_7
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakeGreen8
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_GREEN_8 goto Quiet
+  setflag FLAG_PALDEA_STAKE_GREEN_8
+  addvar VAR_PALDEA_STAKES_GREEN 1
+  call PaldeaStakePulledGreen
+label Quiet
+  end
+
+
+script PaldeaStakePulledGreen
+  text "A green stake stood in the ground, humming faintly. {player} pulled it out!"
+  if var VAR_PALDEA_STAKES_GREEN >= 8 goto All
+  text "Green stakes pulled so far: {var:VAR_PALDEA_STAKES_GREEN} of eight."
+  return
+label All
+  text "That was the last of the eight green stakes. Somewhere, a shrine's seal has broken."
+  return
+
+
+script PaldeaShrineTingLu
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_CAUGHT_TING_LU goto Empty
+  if var VAR_PALDEA_STAKES_GREEN < 8 goto Sealed
+  text "The shrine's seal has crumbled away. From the dark inside comes a rumble of cracking earth..."
+  cry "Ting-Lu"
+  wildbattle "Ting-Lu" 60
+  if result == 3 goto Caught
+  text "The presence sank back into the shrine. It is still in there, waiting."
+  end
+label Caught
+  setflag FLAG_PALDEA_CAUGHT_TING_LU
+  end
+label Sealed
+  text "An old shrine, sealed shut. Eight green stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_GREEN} of eight."
+  end
+label Empty
+  text "The shrine stands open, and empty."
+label Quiet
+  end
+
+
+script PaldeaStakeBlue1
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_1 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_1
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakeBlue2
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_2 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_2
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakeBlue3
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_3 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_3
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakeBlue4
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_4 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_4
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakeBlue5
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_5 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_5
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakeBlue6
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_6 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_6
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakeBlue7
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_7 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_7
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakeBlue8
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_STAKE_BLUE_8 goto Quiet
+  setflag FLAG_PALDEA_STAKE_BLUE_8
+  addvar VAR_PALDEA_STAKES_BLUE 1
+  call PaldeaStakePulledBlue
+label Quiet
+  end
+
+
+script PaldeaStakePulledBlue
+  text "A blue stake stood in the ground, humming faintly. {player} pulled it out!"
+  if var VAR_PALDEA_STAKES_BLUE >= 8 goto All
+  text "Blue stakes pulled so far: {var:VAR_PALDEA_STAKES_BLUE} of eight."
+  return
+label All
+  text "That was the last of the eight blue stakes. Somewhere, a shrine's seal has broken."
+  return
+
+
+script PaldeaShrineChiYu
+  if not flag FLAG_PALDEA_WAY_HOME goto Quiet
+  if flag FLAG_PALDEA_CAUGHT_CHI_YU goto Empty
+  if var VAR_PALDEA_STAKES_BLUE < 8 goto Sealed
+  text "The shrine's seal has crumbled away. From the dark inside comes a flicker of flame..."
+  cry "Chi-Yu"
+  wildbattle "Chi-Yu" 60
+  if result == 3 goto Caught
+  text "The presence sank back into the shrine. It is still in there, waiting."
+  end
+label Caught
+  setflag FLAG_PALDEA_CAUGHT_CHI_YU
+  end
+label Sealed
+  text "An old shrine, sealed shut. Eight blue stakes hold its seal. Pulled so far: {var:VAR_PALDEA_STAKES_BLUE} of eight."
+  end
+label Empty
+  text "The shrine stands open, and empty."
+label Quiet
+  end

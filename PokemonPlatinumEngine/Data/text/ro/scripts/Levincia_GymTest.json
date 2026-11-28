@@ -5,7 +5,7 @@
         "Iono"
       ],
       "text": [
-        ""
+        "Iono"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hey hey, you found every last one of my hiders! Welcome to the stream, everyone! I'm Iono, Levincia's gym leader and streamer!"
       ],
       "text": [
-        ""
+        "Hei hei, mi-ai găsit toți ascunșii, până la ultimul! Bun venit pe stream, tuturor! Eu sunt Iono, liderul sălii din Levincia și streamer!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Today's challenger is a real one, chat! Let's see if they can survive my electrifying team!"
       ],
       "text": [
-        ""
+        "Provocatorul de azi e unul adevărat, chat! Să vedem dacă supraviețuiește echipei mele electrizante!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "No way! The views on this one are going to be off the charts. You've earned the Electric Badge!"
       ],
       "text": [
-        ""
+        "Nu se poate! Vizualizările de la asta o să explodeze. Ai câștigat Insigna Electrică!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} received the Electric Badge from Iono!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Electrică de la Iono!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Don't forget to like and subscribe! And come back for a rematch some time!"
       ],
       "text": [
-        ""
+        "Nu uita de like și abonare! Și revino cândva pentru o revanșă!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Whoa, slow down, challenger! My little hiders are still out in Levincia. Find all three on stream, then come back!"
       ],
       "text": [
-        ""
+        "Uau, mai încet, provocatorule! Micii mei ascunși încă sunt prin Levincia. Găsește-i pe toți trei pe stream, apoi revino!"
       ]
     },
     {
@@ -61,7 +61,31 @@
         "A challenger who isn't a student yet? The chat says enrol at the academy first! Then come back, okay?"
       ],
       "text": [
-        ""
+        "Un provocator care nu e încă elev? Chatul zice să te înscrii întâi la academie! Apoi revino, bine?"
+      ]
+    },
+    {
+      "en": [
+        "The Champion's here, chat! A rematch would break the stream. You in?"
+      ],
+      "text": [
+        "Campionul e aici, chat! O revanșă ar sparge streamul. Intri?"
+      ]
+    },
+    {
+      "en": [
+        "Ahaha! Lights up, cameras on, let's go!"
+      ],
+      "text": [
+        "Ahaha! Luminile aprinse, camerele pornite, hai!"
+      ]
+    },
+    {
+      "en": [
+        "Chat's going wild! Same time tomorrow? I'll bring my best for the stream!"
+      ],
+      "text": [
+        "Chatul a înnebunit! Mâine, la aceeași oră? Vin cu ce am mai bun pentru stream!"
       ]
     },
     {
@@ -69,7 +93,7 @@
         "My stream's still buzzing about our battle. Thanks for the views!"
       ],
       "text": [
-        ""
+        "Streamul meu încă vuiește despre lupta noastră. Mersi pentru vizualizări!"
       ]
     }
   ]

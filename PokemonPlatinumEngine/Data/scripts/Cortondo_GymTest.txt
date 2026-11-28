@@ -29,6 +29,8 @@ script Test3
 # Katy's battle for the Bug Badge. She Terastallizes her Teddiursa into a Bug type (the trainer AI's own use, plan 06 ·
 # R30, with the Tera Type her team gives it). Her levels are fixed, whatever order the gyms are taken in (plan 34 ·
 # decision 3: the first three gyms keep the original's levels)
+# Plan 34 · PD9: after Paldea's Hall of Fame the leader asks for a rematch once a day (FLAG_DAILY_PALDEA_KATY_REMATCH;
+# docs/mechanics/rulings.md, "After Paldea's Hall of Fame"), with the team of paldea_katy_rematch
 script Leader
   face katy player
   speaker "Katy"
@@ -50,5 +52,15 @@ label NotEnrolled
   say "A challenger? Oh, but you aren't enrolled at the academy yet. Come back once term has started, dear."
   end
 label Won
+  if not flag PaldeaHallOfFame goto Chat
+  if flag FLAG_DAILY_PALDEA_KATY_REMATCH goto Chat
+  ask "Our new Champion, in my bakery's gym! I've been training a new batch. Care to taste-test it?"
+  if no goto Chat
+  say "Wonderful! Fresh out of the oven, and every bit as tough as it looks!"
+  battle katy as "paldea_katy_rematch"
+  say "Delicious work, Champion. Come back tomorrow and I'll have something new rising."
+  setflag FLAG_DAILY_PALDEA_KATY_REMATCH
+  end
+label Chat
   say "Come back any time. I'll save you a pastry."
   end

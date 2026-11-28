@@ -94,6 +94,13 @@ public sealed record OpenSlot(string Species, int MinLevel, int MaxLevel, int We
     /// any: a row that names some is passed over while its zone's area has another (<see cref="OpenWildField.MetAt(OpenSlot, Core.TimeOfDay, Overworld.FieldWeather)"/>).
     /// </summary>
     public IReadOnlyList<Overworld.FieldWeather>? Weather { get; init; }
+
+    /// <summary>
+    /// A row of a species of our own (plan 03 · D15 on an open map, plan 34 · PD9): met only once the region's slots of
+    /// ours are open (<see cref="OpenWildField.OursOpen"/>, <see cref="Overworld.OursSlots.Open"/>), left out of the zone's
+    /// draw before, and met at its own levels, never mapped by the region's.
+    /// </summary>
+    public bool Ours { get; init; }
 }
 
 /// <summary>

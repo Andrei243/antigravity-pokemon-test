@@ -68,10 +68,95 @@
     },
     {
       "en": [
+        "A Key Stone! Then perhaps you can make sense of what the professor left in the lab's last crate."
+      ],
+      "text": [
+        "O Piatră Cheie! Atunci poate înțelegi ce a lăsat profesorul în ultima ladă a laboratorului."
+      ],
+      "was": [
+        "Vânătoarea de comori n-are drum greșit. Arene, Titani sau ceva la care nu s-a gândit nimeni: alege singur."
+      ]
+    },
+    {
+      "en": [
+        "Three stones, each labelled with the name of one of the academy's first partners. I believe they were meant for you."
+      ],
+      "text": [
+        "Trei pietre, fiecare cu numele unuia dintre primii parteneri ai academiei. Cred că erau menite pentru tine."
+      ]
+    },
+    {
+      "en": [
+        "Whichever partner walked with you from Cabo Poco, it can go further still. Do show me one day."
+      ],
+      "text": [
+        "Oricare partener a pornit cu tine din Cabo Poco, poate merge și mai departe. Arată-mi și mie într-o zi."
+      ]
+    },
+    {
+      "en": [
+        "Our Champion, back in the halls! Sign up for the Academy Ace Tournament at the desk whenever you are ready."
+      ],
+      "text": [
+        "Campionul nostru, din nou pe holuri! Înscrie-te la Turneul Așilor Academiei la ghișeu, când ești gata."
+      ]
+    },
+    {
+      "en": [
         "The treasure hunt has no wrong road. Gyms, Titans, or something nobody has thought of yet: choose for yourself."
       ],
       "text": [
-        "Vânătoarea de comori n-are drum greșit. Arene, Titani sau ceva la care nu s-a gândit nimeni: alege singur."
+        "Vânătoarea de comori nu are drum greșit. Săli, Titani sau ceva la care nu s-a gândit nimeni încă: alege singur."
+      ]
+    }
+  ],
+  "AceDesk": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "This is the desk for the Academy Ace Tournament: three rounds, and only the strongest at the academy enter. Sign up?"
+      ],
+      "text": [
+        "Acesta e ghișeul Turneului Așilor Academiei: trei runde, și intră doar cei mai puternici ai academiei. Te înscrii?"
+      ]
+    },
+    {
+      "en": [
+        "You're signed up! Your Pokémon are rested and ready. The court's this way."
+      ],
+      "text": [
+        "Ești înscris! Pokémonii tăi sunt odihniți și pregătiți. Terenul e pe aici."
+      ]
+    },
+    {
+      "en": [
+        "Your tournament is still under way! Back to the court with you."
+      ],
+      "text": [
+        "Turneul tău e încă în desfășurare! Înapoi pe teren cu tine."
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. The tournament runs every day."
+      ],
+      "text": [
+        "Când ești gata. Turneul are loc în fiecare zi."
+      ]
+    },
+    {
+      "en": [
+        "The Academy Ace Tournament is for students who've finished their treasure hunt. Come back once yours is done!"
+      ],
+      "text": [
+        "Turneul Așilor Academiei e pentru elevii care și-au terminat vânătoarea de comori. Revino când o termini pe a ta!"
       ]
     }
   ]

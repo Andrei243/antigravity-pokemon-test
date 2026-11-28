@@ -7,6 +7,8 @@
 # recommendation, as the leaders' before him: his team is scaled to the badges the challenger holds, its best at the cap
 # of that many badges, so in the academy's order (seven held) it is the original's (Data/world/paldea/trainers.json:
 # paldea_grusha, paldea_grusha_b0 to _b6)
+# Plan 34 · PD9: after Paldea's Hall of Fame the leader asks for a rematch once a day (FLAG_DAILY_PALDEA_GRUSHA_REMATCH;
+# docs/mechanics/rulings.md, "After Paldea's Hall of Fame"), with the team of paldea_grusha_rematch
 script Leader
   face grusha player
   speaker "Grusha"
@@ -61,5 +63,15 @@ label NotEnrolled
   say "Not a student at the academy? Then go back down the mountain. I don't battle outside the rules."
   end
 label Won
+  if not flag PaldeaHallOfFame goto Chat
+  if flag FLAG_DAILY_PALDEA_GRUSHA_REMATCH goto Chat
+  ask "The Champion, up a cold mountain. My team's colder than ever. Want to test it?"
+  if no goto Chat
+  say "Don't expect me to go easy. The snow never does."
+  battle grusha as "paldea_grusha_rematch"
+  say "...Cool. Come back tomorrow if you want another run."
+  setflag FLAG_DAILY_PALDEA_GRUSHA_REMATCH
+  end
+label Chat
   say "You again. The badge is yours already. Go and get warm somewhere."
   end

@@ -5909,10 +5909,6 @@
       "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
       "provisional": true
     },
-    "larry": {
-      "note": "first spoken at PaldeaLeague_Court.txt(98)",
-      "provisional": true
-    },
     "league_staff": {
       "note": "first spoken at motostoke.txt(27)",
       "provisional": true
@@ -11869,7 +11865,6 @@
     "Lana": "lana",
     "Lance": "lance",
     "Lanette": "lanette",
-    "Larry": "larry",
     "Lass": "look:lass",
     "League Staff": "league_staff",
     "League Steward": "league_steward",

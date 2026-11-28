@@ -180,9 +180,9 @@ public partial class GameEngine
             if (Raids.CrystalOfTrigger(trigger.Name) is { } crystal)
             {
                 int paldeaVersion = Math.Max(1, flow.Story.Var("VAR_PALDEA_VERSION"));
-                int paldeaBadges = flow.Story.BadgeCount(RegionDatabase.Paldea);
-                if (!Raids.CrystalStands(crystal, key.DailyNumber, paldeaVersion, paldeaBadges, flow.Story.Has(Story.ScriptRunner.CrystalFlag(crystal.Id)))) continue;
-                var today = Raids.CrystalToday(crystal, key.DailyNumber, paldeaVersion, paldeaBadges);
+                int paldeaStars = Raids.TeraMostStarsOf(flow.Story);
+                if (!Raids.CrystalStandsUpTo(crystal, key.DailyNumber, paldeaVersion, paldeaStars, flow.Story.Has(Story.ScriptRunner.CrystalFlag(crystal.Id)))) continue;
+                var today = Raids.CrystalTodayUpTo(crystal, key.DailyNumber, paldeaVersion, paldeaStars);
                 openBeams.Add(new DenBeam(FootOf(open, trigger), today.Stars, today.Tera));
                 continue;
             }

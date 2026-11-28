@@ -29,11 +29,61 @@ label TreasureHunt
   end
 
 
+# Plan 34 · PD9: after the Way Home the professor is gone, and the academy's director stands in for the region's
+# professor of decisions/R20b-mega-proposals.md ("Where the stones are found"): once the bag holds a Key Stone he hands
+# over the stones of the Megas of our own whose line is Paldea's, once (FLAG_PALDEA_CLAVELL_MEGA_STONES)
 script Clavell
   speaker "Director Clavell"
   if var VAR_PALDEA_STORY >= 7 goto Hunt
   sayown
   end
 label Hunt
+  if not flag FLAG_PALDEA_WAY_HOME goto Talk
+  if flag FLAG_PALDEA_CLAVELL_MEGA_STONES goto Champion
+  if not item "Key Stone" goto Champion
+  say "A Key Stone! Then perhaps you can make sense of what the professor left in the lab's last crate."
+  say "Three stones, each labelled with the name of one of the academy's first partners. I believe they were meant for you."
+  give "Meowscaradite"
+  give "Skeledirgite"
+  give "Quaquavalite"
+  setflag FLAG_PALDEA_CLAVELL_MEGA_STONES
+  say "Whichever partner walked with you from Cabo Poco, it can go further still. Do show me one day."
+  end
+label Champion
+  say "Our Champion, back in the halls! Sign up for the Academy Ace Tournament at the desk whenever you are ready."
+  end
+label Talk
   say "The treasure hunt has no wrong road. Gyms, Titans, or something nobody has thought of yet: choose for yourself."
+  end
+
+
+# The Academy Ace Tournament's desk (plan 34 · PD9): open once the Way Home is behind the player. Entering draws the
+# three rounds' opponents (a gym leader, one of the Elite Four, the final Geeta's or Nemona's) and walks the player onto
+# the battle court (Mesagoza_AceCourt.txt). A tournament left unfinished is taken up where it stood
+script AceDesk
+  speaker "Receptionist"
+  if not flag FLAG_PALDEA_WAY_HOME goto Closed
+  if var VAR_PALDEA_ACE >= 1 goto Resume
+  ask "This is the desk for the Academy Ace Tournament: three rounds, and only the strongest at the academy enter. Sign up?"
+  if no goto Later
+  random 8
+  setvar VAR_PALDEA_ACE_FIRST RESULT
+  random 4
+  setvar VAR_PALDEA_ACE_SECOND RESULT
+  random 2
+  setvar VAR_PALDEA_ACE_FINAL RESULT
+  setvar VAR_PALDEA_ACE 1
+  heal
+  say "You're signed up! Your Pokémon are rested and ready. The court's this way."
+  warp "Mesagoza_AceCourt" 7 12 up
+  end
+label Resume
+  say "Your tournament is still under way! Back to the court with you."
+  warp "Mesagoza_AceCourt" 7 12 up
+  end
+label Later
+  say "Whenever you're ready. The tournament runs every day."
+  end
+label Closed
+  say "The Academy Ace Tournament is for students who've finished their treasure hunt. Come back once yours is done!"
   end

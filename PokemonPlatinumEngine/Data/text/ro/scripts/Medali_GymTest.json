@@ -66,10 +66,37 @@
     },
     {
       "en": [
+        "You again. Fine. My manager says I should battle the Champion. Officially. Shall we?"
+      ],
+      "text": [
+        "Iar tu. Bine. Șeful meu zice că ar trebui să mă lupt cu Campionul. Oficial. Începem?"
+      ],
+      "was": [
+        "Iar aici? Sunt în pauză. Tehnic vorbind. Pauzele mele sunt tot ședințe."
+      ]
+    },
+    {
+      "en": [
+        "Right. Let's keep this efficient."
+      ],
+      "text": [
+        "Bun. Să fim eficienți."
+      ]
+    },
+    {
+      "en": [
+        "...That'll go in the report. Come back tomorrow. I'll still be here. Unfortunately."
+      ],
+      "text": [
+        "...Asta intră în raport. Revino mâine. O să fiu tot aici. Din păcate."
+      ]
+    },
+    {
+      "en": [
         "Back again? I'm on my break. Technically. My breaks are also meetings."
       ],
       "text": [
-        "Iar aici? Sunt în pauză. Tehnic vorbind. Pauzele mele sunt tot ședințe."
+        "Iar aici? Sunt în pauză. Tehnic vorbind. Pauzele mele sunt și ședințe."
       ]
     }
   ]

@@ -11,9 +11,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | battle | 140 | 137 | 3 | 0 | 0 |
 | The introduction (`intro:`) | 160 | 160 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1814 | 1751 | 63 | 1 | 0 |
-| Scripts (`script:`) | 14166 | 13583 | 583 | 17 | 36 |
+| Scripts (`script:`) | 14213 | 13627 | 586 | 17 | 36 |
 | People of the world (`world:`) | 8102 | 8063 | 39 | 4 | 0 |
-| **All** | 24382 | 23694 | 688 | 22 | 36 |
+| **All** | 24429 | 23738 | 691 | 22 | 36 |
 
 ## Not voiced, by decision
 
@@ -26,11 +26,11 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a sign | 1789 |
 | a thing's words | 81 |
 | the game's own voice (speaker none) | 330 |
-| the game's own voice (text) | 2419 |
+| the game's own voice (text) | 2448 |
 
 ## The cast
 
-- Named characters: 1026 voices (418 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 1025 voices (417 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Designed for Kokoro-82M (a `design`: a blend of its voices, a speed and a pitch): 603 voices.
 - Archetypes in use: 247, with 746 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 429.
@@ -49,7 +49,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lass (any)` | 553 | 22 |
 | `look:youngster (any)` | 521 | 32 |
 | `@self` | 429 | 69 |
-| `look:receptionist (any)` | 395 | 44 |
+| `look:receptionist (any)` | 400 | 44 |
 | `look:attendant (any)` | 352 | 15 |
 | `look:scientist (any)` | 329 | 13 |
 | `look:nurse (any)` | 297 | 2 |
@@ -95,7 +95,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:twins (any)` | 84 | 0 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `beauty` | 82 | 6 |
-| `class:camper (any)` | 80 | 0 |
+| `class:camper (any)` | 82 | 0 |
 | `kanto_rival` | 79 | 0 |
 | `class:veteran (any)` | 76 | 0 |
 | `look:girl (any)` | 75 | 0 |
@@ -151,6 +151,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:clown (any)` | 43 | 0 |
 | `mystery` | 43 | 4 |
 | `class:bird_keeper_gs (any)` | 42 | 0 |
+| `class:ruin_maniac (any)` | 42 | 0 |
 | `waiter` | 42 | 0 |
 | `backers` | 41 | 0 |
 | `leon` | 41 | 1 |
@@ -160,7 +161,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `candice` | 40 | 0 |
 | `class:gym_trainer (any)` | 40 | 0 |
 | `class:pokémon_breeder (any)` | 40 | 0 |
-| `class:ruin_maniac (any)` | 40 | 0 |
 | `director` | 40 | 1 |
 | `iris` | 40 | 0 |
 | `jupiter` | 40 | 0 |
@@ -177,6 +177,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `byron` | 37 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
 | `class:school_kid (any)` | 36 | 0 |
+| `director_clavell` | 36 | 0 |
 | `look:battle_girl (any)` | 36 | 2 |
 | `look:magma_grunt (any)` | 36 | 0 |
 | `look:trainer (any)` | 36 | 0 |
@@ -196,7 +197,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `alder` | 32 | 1 |
 | `class:ace_trainer_m (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |
-| `director_clavell` | 32 | 0 |
 | `giovanni` | 32 | 2 |
 | `look:expert_m (any)` | 32 | 0 |
 | `zinzolin` | 32 | 0 |
@@ -212,6 +212,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `florist` | 30 | 0 |
 | `head_coach` | 30 | 1 |
 | `lillie` | 30 | 0 |
+| `referee` | 30 | 8 |
 | `roxie` | 30 | 1 |
 | `sabrina` | 30 | 0 |
 | `team_star_grunt` | 30 | 0 |
@@ -275,6 +276,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `skyla` | 23 | 1 |
 | `valet` | 23 | 5 |
 | `class:parasol_lady (any)` | 22 | 0 |
+| `class:poke_maniac (any)` | 22 | 0 |
 | `class:pokemaniac (any)` | 22 | 0 |
 | `class:sis_and_bro (any)` | 22 | 0 |
 | `fan` | 22 | 0 |
@@ -300,7 +302,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:collector (any)` | 20 | 0 |
 | `class:double_team (any)` | 20 | 0 |
 | `class:pkmn_ranger (any)` | 20 | 0 |
-| `class:poke_maniac (any)` | 20 | 0 |
 | `class:tuber (any)` | 20 | 0 |
 | `gladion` | 20 | 4 |
 | `look:rich_boy (any)` | 20 | 0 |

@@ -186,7 +186,7 @@ public class PaldeaTeraRaidTests
             foreach (var row in c.Rows)
             {
                 Assert.True(PokemonDatabase.Get(row.Species) != null || PokemonDatabase.SpeciesOfForm(row.Species) != null, row.Species);
-                Assert.InRange(row.Stars, 1, 5);
+                Assert.InRange(row.Stars, 1, 7); // (six and seven the black crystals, plan 34 · PD9)
                 if (row.Tera != null) Assert.NotNull(TeraType.Parse(row.Tera));
             }
         foreach (var raider in Raids.Paldea.Raiders)

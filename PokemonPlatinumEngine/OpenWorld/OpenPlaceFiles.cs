@@ -320,7 +320,12 @@ public static class OpenPlaceFiles
 
     /// <summary>A row of a zone's table as the map keeps it.</summary>
     static OpenSlot SlotOf(OpenSlotFile s) =>
-        new(s.Species, s.MinLevel, s.MaxLevel, s.Weight, s.Time) { Weather = s.Weather is { Count: > 0 } w ? w.ToList() : null };
+        new(s.Species, s.MinLevel, s.MaxLevel, s.Weight, s.Time)
+        {
+            Weather = s.Weather is { Count: > 0 } w ? w.ToList() : null,
+            // (a species of ours: plan 03 · D15, its row waiting for the region's Hall of Fame)
+            Ours = Data.PokemonDatabase.Get(s.Species)?.IsPastHundred == true
+        };
 
     /// <summary>A tree of a place as the map keeps it (plan 32 · OW9).</summary>
     public static OpenTree TreeOf(OpenTreeFile t)
