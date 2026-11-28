@@ -1260,7 +1260,7 @@ internal static partial class PokemonModels
         for (int i = 0; i < 6; i++)
             b.PaintEll(Body, V(0, 0.22f + 0.08f * i, 0), V(0.22f, 0.013f, 0.18f), i % 2 == 0 ? deep : pale, V(0, 0, 4f * (i % 2 == 0 ? 1 : -1)), 0.01f);
         foreach (var (x, y) in new[] { (0.05f, 0.36f), (-0.07f, 0.44f), (0.02f, 0.52f), (-0.03f, 0.3f) })
-            b.Mark(Body, V(x, y, 0.135f), V(x * 2f, 0, 1f), 0.007f, 0.007f, pale);
+            b.PaintEll(Body, V(x, y, 0.13f), V(0.012f, 0.012f, 0.03f), pale, soft: 0.006f);
         // Long arms of icicles, broken to points that hang down
         PokeBuilder.Both(s =>
         {

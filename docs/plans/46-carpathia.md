@@ -288,9 +288,9 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - [x] The story's outline (2026-11-12: the user's beats, answers and names approved) and its chapters (2026-11-12, docs; their ten open questions answered by the user on 2026-11-22, decision 21: the roamers catchable from the ridge on, the rest at their recommendations)
 - [x] CP4 Sculpts I: batches 1 to 3, Lynkit to Cerbanor, 60 species (2026-11-21 and 2026-11-22; see "CP4 as built", at the end; the batches' files are `PokemonModels.Carpathia1.cs` to `Carpathia14.cs`, three batches to a session line)
 - [x] CP5 Sculpts II: batches 4 to 6, Zimbrel to Oracul, 60 species (2026-11-21 and 2026-11-22)
-- [ ] CP6 Sculpts III: batches 7 to 9; batch 8, Hatzlet to Rapanel (20), done 2026-11-21; batches 7 and 9 (40 species) not begun
+- [x] CP6 Sculpts III: batches 7 to 9, Starcel to Stimel (2026-11-28 for batches 7 and 9, found unmerged in their worktrees; batch 8 on 2026-11-21)
 - [x] CP7 Sculpts IV: batches 10 to 12, Stimara to Lunacolac, 60 species (2026-11-21 and 2026-11-22)
-- [ ] CP8 Sculpts V and the regional forms: batches 13 and 14; batch 13, Furtunaur to Nazdravan (the 9 legendaries and mythicals), done 2026-11-22; batch 14, the 25 regional forms, not begun
+- [x] CP8 Sculpts V and the regional forms: batches 13 and 14, the 9 legendaries and mythicals (2026-11-22) and the 25 regional forms (merged 2026-11-28)
 - [ ] CP9 Entries and names
 - [x] CP10 Signature moves and abilities (2026-11-22: the proposals' seven abilities and seven moves, ours; the plan's other ~13 moves and ~8 abilities wait for the species' briefs to name them; see "CP10 as built", at the end)
 - [x] CP11 The Tales: rules (first session 2026-11-13: the engine and five tales; second 2026-11-14: the other seven; see "CP11 as built" and its second session; the Tale Forms are CP12's)
@@ -336,7 +336,7 @@ Three tracks. **Species and type** (CP1 to CP10) may start beside the waves now 
 - **Batch 13's notes**: the three brothers of the night share one kit (`C13Cloud`, `C13Stars`): a mane and a tail of cloud puffs with stars in them, dusk-violet for Murgila, night-blue for Miezila, pink and gold light for Zorila. Since the model tests ask two eyes of every model they don't name, Furtunaur's two side heads have glowing marks for eyes and two of the three Iele closed lashes as marks; a row of `PokemonModelTests.EyesOf` (`["Furtunaur"] = 6`, `["Ielele"] = 6`) would let them have eyes. Left out as loose pieces across the batches: the sound rings, Furtunaur's hailstones, Nazdravan's smoke and sparks, Zorila's dew, Miezila's ring of still air, the spores of the fly agarics.
 - **Tests**: every batch's tests and the model-wide ones (`PokemonModelTests`, `ShinyTests`, `FootprintTests`, `OurSculptTests`, `FormTests`, `BuiltModelTests`), 8,790 in all, pass on the branch. The full suite was not run (it runs once after the merge).
 - **Seen**: batch 5's board (`dex`, `94_dex_01`) looked at; Clopotitan close up. The boards of the salvaged batches are for the user's eye, a batch at a time (`dotnet run --project tools/ShotHarness -- <out dir> dex <species...>`).
-- **Left**: batches 7 and 9 (40 species, CP6) and batch 14 (the 25 regional forms, CP8); Clopotitan's strap bow round the roof is mostly inside the needle and shows only as its two front loops.
+- **Left** (2026-11-28): none of the sculpts. Batches 7, 9 and 14, written on 2026-11-21, were found unmerged in their agents' worktrees and merged, with two fixes (Stalaghet's glints painted; the blind Proteu's row of the eye count). Clopotitan's strap bow round the roof is mostly inside the needle and shows only as its two front loops.
 - **The user's word of 2026-11-22**: these C# sculpts are what the game draws until the user sculpts Carpathia again in Blender ([plan 48](48-pokemon-in-blender.md)), from the week of 2026-11-23; the C# sculpts stay as the fallback, as every other species' do.
 
 ### CP8 forms as built (batch 14)

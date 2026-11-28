@@ -34,6 +34,8 @@ public class PokemonModelTests
         ["Honedge"] = 1, ["Aegislash"] = 1, ["Aegislash-Blade"] = 1,
         // Plan 03 · D14's of Sinnoh: Yanmega's heir has its eyes sculpted, Carnivine's two heads two pairs
         ["Meganeuron"] = 0, ["Flytrapex"] = 4,
+        // Plan 46: the olm of the caves is blind
+        ["Proteu"] = 0,
         ["Binacle"] = 4, ["Trevenant"] = 1,
         ["Type: Null"] = 0, ["Dhelmise"] = 1,
         ["Nihilego"] = 0, ["Xurkitree"] = 0, ["Celesteela"] = 0, ["Kartana"] = 0, ["Blacephalon"] = 0, ["Meltan"] = 1, ["Melmetal"] = 1,
