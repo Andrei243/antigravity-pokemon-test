@@ -148,7 +148,7 @@ public class DataFileTests
     }
 
     /// <summary>Carpathia's floor (plan 46 · CP9): every species of the region to this number has its entries.</summary>
-    private const int CarpathiaEntriesThrough = 10235;
+    private const int CarpathiaEntriesThrough = 10249;
 
     [Fact]
     public void EveryCarpathianSpeciesUpToTheFloorHasItsWrittenEntries()
