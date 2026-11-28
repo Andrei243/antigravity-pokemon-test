@@ -25,13 +25,22 @@
       "id": "dochia",
       "weather": "Hail",
       "sky": { "color": [176, 204, 236], "amount": 0.3, "grey": 0.15 },
-      "songLayer": "tale_dochia"
+      "songLayer": "tale_dochia",
+      "forms": [
+        { "species": "Babadochia", "form": "Babadochia-Tale" },
+        { "species": "Capraneagra", "form": "Capraneagra-Tale" }
+      ]
     },
     {
       "id": "ielele",
       "boost": { "types": ["Sound"], "flags": ["Sound"], "percent": 130 },
       "sky": { "color": [96, 64, 156], "amount": 0.35 },
-      "songLayer": "tale_ielele"
+      "songLayer": "tale_ielele",
+      "forms": [
+        { "species": "Buciumbill", "form": "Buciumbill-Tale" },
+        { "species": "Privigale", "form": "Privigale-Tale" },
+        { "species": "Ielele", "form": "Ielele-Tale" }
+      ]
     },
     {
       "id": "miorita",
@@ -44,31 +53,52 @@
       "grassHeals": 16,
       "holdsFoes": true,
       "sky": { "color": [40, 72, 40], "amount": 0.4, "grey": 0.1 },
-      "songLayer": "tale_mumapadurii"
+      "songLayer": "tale_mumapadurii",
+      "forms": [
+        { "species": "Codrulynx", "form": "Codrulynx-Tale" },
+        { "species": "Hribarde", "form": "Hribarde-Tale" }
+      ]
     },
     {
       "id": "fatfrumos",
       "noStatFalls": true,
       "sky": { "color": [255, 236, 190], "amount": 0.2 },
-      "songLayer": "tale_fatfrumos"
+      "songLayer": "tale_fatfrumos",
+      "forms": [
+        { "species": "Fierander", "form": "Fierander-Tale" },
+        { "species": "Hutulmare", "form": "Hutulmare-Tale" }
+      ]
     },
     {
       "id": "uriasi",
       "heavier": 130,
       "sky": { "color": [120, 104, 84], "amount": 0.3, "grey": 0.2 },
-      "songLayer": "tale_uriasi"
+      "songLayer": "tale_uriasi",
+      "forms": [
+        { "species": "Zimbrunt", "form": "Zimbrunt-Tale" },
+        { "species": "Ursabrun", "form": "Ursabrun-Tale" },
+        { "species": "Hategant", "form": "Hategant-Tale" }
+      ]
     },
     {
       "id": "spiridus",
       "itemsTwice": true,
       "sky": { "color": [232, 120, 48], "amount": 0.25 },
-      "songLayer": "tale_spiridus"
+      "songLayer": "tale_spiridus",
+      "forms": [
+        { "species": "Spiriduke", "form": "Spiriduke-Tale" },
+        { "species": "Harciogre", "form": "Harciogre-Tale" }
+      ]
     },
     {
       "id": "sanziene",
       "healing": 200,
       "sky": { "color": [236, 220, 96], "amount": 0.22 },
-      "songLayer": "tale_sanziene"
+      "songLayer": "tale_sanziene",
+      "forms": [
+        { "species": "Sanziana", "form": "Sanziana-Tale" },
+        { "species": "Buburoza", "form": "Buburoza-Tale" }
+      ]
     },
     {
       "id": "draco",

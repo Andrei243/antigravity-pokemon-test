@@ -1,0 +1,23 @@
+// Plan 46 · CP12a (2026-11-28): the Tale Forms of Carpathia's own species (docs/plans/decisions/CP-story-chapters.md,
+// section 5), the first half: tales 1 to 6 and the first two of tale 7. Each is a look of its species woken while its
+// tale is told (Data/tales.json's "forms" bind it, FormKind.Tale): its species' types, stats, abilities and moves, its
+// own sculpt (PokemonModels.Carpathia15.cs). CP12b adds the other sixteen (Mumapadura's, the Vârcolac's to the Draco's,
+// Nazdravan's and Maiastra's).
+{
+  "Sanziana": [ { "name": "Sanziana-Tale", "kind": "Tale" } ],
+  "Buburoza": [ { "name": "Buburoza-Tale", "kind": "Tale" } ],
+  "Fierander": [ { "name": "Fierander-Tale", "kind": "Tale" } ],
+  "Hutulmare": [ { "name": "Hutulmare-Tale", "kind": "Tale" } ],
+  "Spiriduke": [ { "name": "Spiriduke-Tale", "kind": "Tale" } ],
+  "Harciogre": [ { "name": "Harciogre-Tale", "kind": "Tale" } ],
+  "Buciumbill": [ { "name": "Buciumbill-Tale", "kind": "Tale" } ],
+  "Privigale": [ { "name": "Privigale-Tale", "kind": "Tale" } ],
+  "Ielele": [ { "name": "Ielele-Tale", "kind": "Tale" } ],
+  "Babadochia": [ { "name": "Babadochia-Tale", "kind": "Tale" } ],
+  "Capraneagra": [ { "name": "Capraneagra-Tale", "kind": "Tale" } ],
+  "Zimbrunt": [ { "name": "Zimbrunt-Tale", "kind": "Tale" } ],
+  "Ursabrun": [ { "name": "Ursabrun-Tale", "kind": "Tale" } ],
+  "Hategant": [ { "name": "Hategant-Tale", "kind": "Tale" } ],
+  "Codrulynx": [ { "name": "Codrulynx-Tale", "kind": "Tale" } ],
+  "Hribarde": [ { "name": "Hribarde-Tale", "kind": "Tale" } ]
+}

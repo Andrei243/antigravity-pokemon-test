@@ -118,6 +118,9 @@ Console.WriteLine($"  species made from nothing: {carpathian.Count}");
 // Their region's forms of existing species (plan 46 · CP3), each a regional form with its evolutions from the form
 var carpathianForms = SpeciesOfNothing.AddForms(species, Path.Combine(overrides, SpeciesOfNothing.FormsFileName), abilities.Select(a => a.Name));
 Console.WriteLine($"  Carpathian forms: {carpathianForms.Count}");
+// The Tale Forms of Carpathia's own species (plan 46 · CP12), each a look woken while its tale is told
+var taleForms = SpeciesOfNothing.AddTaleForms(species, Path.Combine(overrides, SpeciesOfNothing.TaleFormsFileName));
+Console.WriteLine($"  Tale Forms: {taleForms.Count}");
 // The moves of our own past level 100 (plan 06 · R31), handed out by their rule after the species' own learnsets
 var pastHundred = MovesPastHundred.Append(species, moves);
 Console.WriteLine($"  moves past 100: {string.Join(", ", pastHundred.Select(c => $"{c.Value} species learn {c.Key}"))} ({pastHundred.Sum(c => c.Key * c.Value)} learnings)");

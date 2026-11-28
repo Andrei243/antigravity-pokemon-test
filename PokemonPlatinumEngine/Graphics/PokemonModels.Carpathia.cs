@@ -5,7 +5,7 @@ namespace PokemonPlatinumEngine.Graphics;
 
 // Carpathia's hand-built Pokémon (plan 46 · CP4 to CP8, sculpted in C# first: the Blender kit of plan 48 follows). Each batch is a file of
 // its own, PokemonModels.Carpathia<N>.cs, with its names (CarpathiaNames<N>) and its builders (CreateCarpathia<N>, by name in capitals,
-// null for any other); the forms ("<Species>-Carpathia") are batch 14's. This file only joins them.
+// null for any other); the regional forms ("<Species>-Carpathia") are batch 14's and the Tale Forms ("<Species>-Tale") batch 15's. This file only joins them.
 internal static partial class PokemonModels
 {
     /// <summary>Every Carpathian species and form with a sculpt of its own, in batch order.</summary>
@@ -25,10 +25,11 @@ internal static partial class PokemonModels
             .Concat(CarpathiaNames12())
             .Concat(CarpathiaNames13())
             .Concat(CarpathiaNames14())
+            .Concat(CarpathiaNames15())
             .ToArray();
 
-    /// <summary>The names of the forms among them (batch 14), added to <see cref="Forms"/>.</summary>
-    private static string[] CarpathiaFormNames() => CarpathiaNames14();
+    /// <summary>The names of the forms among them (batch 14, the regional forms, and batch 15, the Tale Forms), added to <see cref="Forms"/>.</summary>
+    private static string[] CarpathiaFormNames() => CarpathiaNames14().Concat(CarpathiaNames15()).ToArray();
 
     /// <summary>The Carpathian sculpt of a species or form, by name in capitals, or null.</summary>
     private static PokeBuilder? CreateCarpathia(string species)
@@ -47,6 +48,7 @@ internal static partial class PokemonModels
             ?? CreateCarpathia11(s)
             ?? CreateCarpathia12(s)
             ?? CreateCarpathia13(s)
-            ?? CreateCarpathia14(s);
+            ?? CreateCarpathia14(s)
+            ?? CreateCarpathia15(s);
     }
 }

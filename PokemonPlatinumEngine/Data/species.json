@@ -386605,7 +386605,13 @@
     "abilities": [
       "Overgrow"
     ],
-    "hiddenAbility": "Forest Hush"
+    "hiddenAbility": "Forest Hush",
+    "forms": [
+      {
+        "name": "Codrulynx-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10004,
@@ -387011,7 +387017,13 @@
     "abilities": [
       "Blaze"
     ],
-    "hiddenAbility": "Anvil"
+    "hiddenAbility": "Anvil",
+    "forms": [
+      {
+        "name": "Fierander-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10007,
@@ -387439,7 +387451,13 @@
     "abilities": [
       "Torrent"
     ],
-    "hiddenAbility": "Echo Pouch"
+    "hiddenAbility": "Echo Pouch",
+    "forms": [
+      {
+        "name": "Buciumbill-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10010,
@@ -387880,7 +387898,13 @@
       "Keen Eye",
       "Early Bird"
     ],
-    "hiddenAbility": "Punk Rock"
+    "hiddenAbility": "Punk Rock",
+    "forms": [
+      {
+        "name": "Privigale-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10013,
@@ -388168,7 +388192,13 @@
       "Cheek Pouch",
       "Thick Fat"
     ],
-    "hiddenAbility": "Gluttony"
+    "hiddenAbility": "Gluttony",
+    "forms": [
+      {
+        "name": "Harciogre-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10015,
@@ -388720,7 +388750,13 @@
       "Flower Veil",
       "Serene Grace"
     ],
-    "hiddenAbility": "Triage"
+    "hiddenAbility": "Triage",
+    "forms": [
+      {
+        "name": "Buburoza-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10019,
@@ -390336,7 +390372,13 @@
       "Prankster",
       "Pickpocket"
     ],
-    "hiddenAbility": "Magician"
+    "hiddenAbility": "Magician",
+    "forms": [
+      {
+        "name": "Spiriduke-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10029,
@@ -390657,7 +390699,13 @@
       "Effect Spore",
       "Regenerator"
     ],
-    "hiddenAbility": "Mycelium Might"
+    "hiddenAbility": "Mycelium Might",
+    "forms": [
+      {
+        "name": "Hribarde-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10031,
@@ -394030,7 +394078,13 @@
       "Guts",
       "Thick Fat"
     ],
-    "hiddenAbility": "Unnerve"
+    "hiddenAbility": "Unnerve",
+    "forms": [
+      {
+        "name": "Ursabrun-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10055,
@@ -394595,7 +394649,13 @@
       "Rock Head",
       "Sturdy"
     ],
-    "hiddenAbility": "Defiant"
+    "hiddenAbility": "Defiant",
+    "forms": [
+      {
+        "name": "Capraneagra-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10059,
@@ -395161,7 +395221,13 @@
       "Thick Fat",
       "Stamina"
     ],
-    "hiddenAbility": "Rock Head"
+    "hiddenAbility": "Rock Head",
+    "forms": [
+      {
+        "name": "Zimbrunt-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10063,
@@ -404520,7 +404586,13 @@
       "Stamina",
       "Sturdy"
     ],
-    "hiddenAbility": "Own Tempo"
+    "hiddenAbility": "Own Tempo",
+    "forms": [
+      {
+        "name": "Hutulmare-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10129,
@@ -406702,7 +406774,13 @@
       "Solid Rock",
       "Regenerator"
     ],
-    "hiddenAbility": "Grass Pelt"
+    "hiddenAbility": "Grass Pelt",
+    "forms": [
+      {
+        "name": "Hategant-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10145,
@@ -411756,7 +411834,13 @@
       "Flower Veil",
       "Natural Cure"
     ],
-    "hiddenAbility": "Dancer"
+    "hiddenAbility": "Dancer",
+    "forms": [
+      {
+        "name": "Sanziana-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10178,
@@ -416088,7 +416172,13 @@
       "Snow Cloak",
       "Thick Fat"
     ],
-    "hiddenAbility": "Snow Warning"
+    "hiddenAbility": "Snow Warning",
+    "forms": [
+      {
+        "name": "Babadochia-Tale",
+        "kind": "Tale"
+      }
+    ]
   },
   {
     "dexNumber": 10207,
@@ -421154,6 +421244,12 @@
     ],
     "abilities": [
       "Dancer"
+    ],
+    "forms": [
+      {
+        "name": "Ielele-Tale",
+        "kind": "Tale"
+      }
     ]
   },
   {
